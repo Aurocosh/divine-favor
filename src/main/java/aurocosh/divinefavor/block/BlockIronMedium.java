@@ -3,9 +3,10 @@ package aurocosh.divinefavor.block;
 import aurocosh.divinefavor.ModBlocks;
 import net.minecraft.block.material.Material;
 
-public class BlockFastFurnace extends DivineFavorBlock {
-    public BlockFastFurnace() {
-        super(ModBlocks.FAST_FURNACE,Material.IRON);
+public class BlockIronMedium extends BlockImmaterialMedium {
+
+    public BlockIronMedium() {
+        super(ModBlocks.IRON_MEDIUM, Material.IRON);
         setHarvestLevel("pickaxe",1);
     }
 }
