@@ -39,21 +39,21 @@ repositories {
 }
 
 version = "0.1.0"
-group= "mcjty.modtut"
-archivesBaseName = "modtut"
+group= "aurocosh.divinefavor"
+archivesBaseName = "divinefavor"
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
 minecraft {
-    version = "1.12-14.21.0.2385"
+    version = "1.12.2-14.23.5.2775"
     runDir = "run"
     mappings = "snapshot_20170628"
     useDepAts = true
 }
 
 dependencies {
-    deobfCompile "mezz.jei:jei_1.12:4.7.0.67"
+    deobfCompile "mezz.jei:jei_1.12.2:4.13.1.222"
     deobfCompile "mcp.mobius.waila:Hwyla:1.8.18-B32_1.12:api"
     deobfCompile "cofh:RedstoneFlux:1.12-2.0.0.1:universal"
     deobfCompile "mcjty.theoneprobe:TheOneProbe-1.12:1.12-1.4.14-7"
