@@ -42,7 +42,9 @@ public class DivineFavorCreativeTab extends CreativeTabs {
         addBlock(ModBlocks.blockFastFurnace);
         addBlock(ModBlocks.blockIronMedium);
 
-        addItem(ModItems.talisman);
+        addItem(ModItems.arrow_throw_talisman);
+        addItem(ModItems.bonemeal_talisman);
+        addItem(ModItems.ignition_talisman);
     }
 
     private void addItem(Item item) {

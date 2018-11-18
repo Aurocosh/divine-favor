@@ -1,6 +1,6 @@
 {
     "parent": "item/generated",
     "textures": {
-        "layer0": "divinefavor:items/talisman"
+        "layer0": "divinefavor:items/ignition_talisman"
     }
 }
