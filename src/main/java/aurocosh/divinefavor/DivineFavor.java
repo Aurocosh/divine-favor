@@ -1,51 +1,39 @@
 package aurocosh.divinefavor;
 
-import aurocosh.divinefavor.proxy.CommonProxy;
-import mcjty.theoneprobe.items.ModItems;
+import aurocosh.divinefavor.common.block.base.ModBlocks;
+import aurocosh.divinefavor.common.core.DivineFavorCreativeTab;
+import aurocosh.divinefavor.common.lib.LibMisc;
+import aurocosh.divinefavor.common.core.proxy.CommonProxy;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
-import org.apache.logging.log4j.Logger;
+import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
 
-@Mod(modid = DivineFavor.MODID, name = DivineFavor.MODNAME, version = DivineFavor.MODVERSION, dependencies = "required-after:forge@[14.23.5.2768,)", useMetadata = true)
+@Mod(modid = LibMisc.MOD_ID, name = LibMisc.MOD_NAME, version = LibMisc.VERSION, guiFactory = LibMisc.GUI_FACTORY, dependencies = LibMisc.DEPENDENCIES)
 public class DivineFavor {
-
-    public static final String MODID = "divinefavor";
-    public static final String MODNAME = "Divine Favor";
-    public static final String MODVERSION= "0.0.1";
-
-    @SidedProxy(clientSide = "aurocosh.divinefavor.proxy.ClientProxy", serverSide = "aurocosh.divinefavor.proxy.ServerProxy")
-    public static CommonProxy proxy;
-
-    public static CreativeTabs tabDivineFavor = new CreativeTabs("Divine Favor") {
-        @Override
-        public ItemStack getTabIconItem() {
-            return new ItemStack(ModBlocks.blockFastFurnace);
-        }
-    };
-
-    @Mod.Instance
+    @Mod.Instance(LibMisc.MOD_ID)
     public static DivineFavor instance;
 
-    public static Logger logger;
+    DivineFavorCreativeTab tab = DivineFavorCreativeTab.INSTANCE;
+
+    @SidedProxy(serverSide = LibMisc.PROXY_COMMON, clientSide = LibMisc.PROXY_CLIENT)
+    public static CommonProxy proxy;
 
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent event) {
-        logger = event.getModLog();
         proxy.preInit(event);
     }
 
     @Mod.EventHandler
-    public void init(FMLInitializationEvent e) {
-        proxy.init(e);
+    public void init(FMLInitializationEvent event) {
+        proxy.init(event);
     }
 
     @Mod.EventHandler
-    public void postInit(FMLPostInitializationEvent e) {
-        proxy.postInit(e);
+    public void serverStartingEvent(FMLServerStartingEvent event) {
+//		event.registerServerCommand(new CommandDownloadLatest());
     }
 }
