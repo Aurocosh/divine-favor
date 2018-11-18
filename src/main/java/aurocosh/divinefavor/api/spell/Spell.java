@@ -5,10 +5,13 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.util.FakePlayer;
 
+import java.util.Random;
 import java.util.regex.Pattern;
 
 public abstract class Spell {
     private static final Pattern FAKE_PLAYER_PATTERN = Pattern.compile("^(?:\\[.*\\])|(?:ComputerCraft)$");
+    protected static Random spellRand = new Random();
+
 
     public String name = "";
 
