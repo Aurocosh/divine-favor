@@ -1,9 +1,6 @@
 package aurocosh.divinefavor.common.item.base;
 
-import aurocosh.divinefavor.common.item.ItemArrowThrowTalisman;
-import aurocosh.divinefavor.common.item.ItemBonemealTalisman;
-import aurocosh.divinefavor.common.item.ItemIgnitionTalisman;
-import aurocosh.divinefavor.common.item.ItemSnowballThrowTalisman;
+import aurocosh.divinefavor.common.item.*;
 import vazkii.arl.item.ItemMod;
 
 public final class ModItems {
@@ -12,12 +9,14 @@ public final class ModItems {
     public static ItemMod bonemeal_talisman;
     public static ItemMod ignition_talisman;
     public static ItemMod snowball_throw_talisman;
+    public static ItemMod stoneball;
 
     public static void preInit() {
         arrow_throw_talisman = new ItemArrowThrowTalisman();
         bonemeal_talisman = new ItemBonemealTalisman();
         ignition_talisman = new ItemIgnitionTalisman();
         snowball_throw_talisman = new ItemSnowballThrowTalisman();
+        stoneball = new ItemStoneball();
     }
 
     public static void init() {

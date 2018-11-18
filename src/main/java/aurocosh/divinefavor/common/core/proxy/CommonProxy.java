@@ -3,6 +3,7 @@ package aurocosh.divinefavor.common.core.proxy;
 import aurocosh.divinefavor.DivineFavor;
 import aurocosh.divinefavor.common.block.base.ModBlocks;
 import aurocosh.divinefavor.common.core.handlers.PlayerDataHandler;
+import aurocosh.divinefavor.common.entity.ModEntities;
 import aurocosh.divinefavor.common.item.base.ModItems;
 import aurocosh.divinefavor.common.network.GuiHandler;
 import aurocosh.divinefavor.common.network.MessageRegister;
@@ -26,6 +27,7 @@ public class CommonProxy {
 
         ModItems.preInit();
         ModBlocks.preInit();
+        ModEntities.init();
         ModSpells.init();
         //ModCraftingRecipes.init();
 
