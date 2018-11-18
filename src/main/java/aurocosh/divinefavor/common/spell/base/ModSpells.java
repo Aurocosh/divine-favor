@@ -2,16 +2,14 @@ package aurocosh.divinefavor.common.spell.base;
 
 import aurocosh.divinefavor.api.spell.Spell;
 import aurocosh.divinefavor.common.lib.LibSpellNames;
-import aurocosh.divinefavor.common.spell.SpellArrowThrow;
-import aurocosh.divinefavor.common.spell.SpellBonemeal;
-import aurocosh.divinefavor.common.spell.SpellIgnition;
-import aurocosh.divinefavor.common.spell.SpellSnowballThrow;
+import aurocosh.divinefavor.common.spell.*;
 
 public final class ModSpells {
     public static Spell arrow_throw;
     public static Spell bonemeal;
     public static Spell ignition;
     public static Spell snowball_throw;
+    public static Spell stoneball_throw;
 
     public static void init() {
 
@@ -19,6 +17,7 @@ public final class ModSpells {
         bonemeal = register(new SpellBonemeal(), LibSpellNames.BONEMEAL);
         ignition = register(new SpellIgnition(), LibSpellNames.IGNITION);
         snowball_throw = register(new SpellSnowballThrow(), LibSpellNames.SNOWBALL_THROW);
+        stoneball_throw = register(new SpellStoneballThrow(), LibSpellNames.STONEBALL_THROW);
     }
 
     public static Spell register(Spell spell, String name) {

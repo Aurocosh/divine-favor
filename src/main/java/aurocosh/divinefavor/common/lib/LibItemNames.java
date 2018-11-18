@@ -5,5 +5,6 @@ public final class LibItemNames {
     public static final String BONEMEAL_TALISMAN = "bonemeal_talisman";
     public static final String IGNITION_TALISMAN = "ignition_talisman";
     public static final String SNOWBALL_THROW_TALISMAN = "snowball_throw_talisman";
+    public static final String STONEBALL_THROW_TALISMAN = "stoneball_throw_talisman";
     public static final String STONEBALL = "stoneball";
 }
