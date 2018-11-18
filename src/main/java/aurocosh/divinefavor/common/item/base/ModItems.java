@@ -9,6 +9,7 @@ public final class ModItems {
     public static ItemMod bonemeal_talisman;
     public static ItemMod ignition_talisman;
     public static ItemMod snowball_throw_talisman;
+    public static ItemMod stoneball_throw_talisman;
     public static ItemMod stoneball;
 
     public static void preInit() {
@@ -16,6 +17,7 @@ public final class ModItems {
         bonemeal_talisman = new ItemBonemealTalisman();
         ignition_talisman = new ItemIgnitionTalisman();
         snowball_throw_talisman = new ItemSnowballThrowTalisman();
+        stoneball_throw_talisman = new ItemStoneballThrowTalisman();
         stoneball = new ItemStoneball();
     }
 

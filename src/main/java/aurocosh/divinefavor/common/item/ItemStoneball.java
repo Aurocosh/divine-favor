@@ -42,7 +42,7 @@ public class ItemStoneball extends ItemMod implements IDivineFavorItem {
         if (!worldIn.isRemote)
         {
             EntityStoneball entityStoneball = new EntityStoneball(worldIn, playerIn);
-            entityStoneball.setHeadingFromThrower(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, 0.0F, 1.5F, 1.0F);
+            entityStoneball.setHeadingFromThrower(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, 0.0F, 1.0F, 1.0F);
             worldIn.spawnEntity(entityStoneball);
         }
 

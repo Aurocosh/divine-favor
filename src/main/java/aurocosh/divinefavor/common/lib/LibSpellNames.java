@@ -5,4 +5,5 @@ public final class LibSpellNames {
     public static final String BONEMEAL = "bonemeal";
     public static final String IGNITION = "ignition";
     public static final String SNOWBALL_THROW = "snowball_throw";
+    public static final String STONEBALL_THROW = "stoneball_throw";
 }

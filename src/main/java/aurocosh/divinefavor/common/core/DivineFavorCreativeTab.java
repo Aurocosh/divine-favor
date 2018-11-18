@@ -46,6 +46,7 @@ public class DivineFavorCreativeTab extends CreativeTabs {
         addItem(ModItems.bonemeal_talisman);
         addItem(ModItems.ignition_talisman);
         addItem(ModItems.snowball_throw_talisman);
+        addItem(ModItems.stoneball_throw_talisman);
         addItem(ModItems.stoneball);
     }
 
