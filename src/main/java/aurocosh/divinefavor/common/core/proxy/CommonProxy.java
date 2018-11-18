@@ -2,11 +2,11 @@ package aurocosh.divinefavor.common.core.proxy;
 
 import aurocosh.divinefavor.DivineFavor;
 import aurocosh.divinefavor.common.block.base.ModBlocks;
-import aurocosh.divinefavor.common.core.handlers.ConfigHandler;
 import aurocosh.divinefavor.common.core.handlers.PlayerDataHandler;
+import aurocosh.divinefavor.common.item.base.ModItems;
 import aurocosh.divinefavor.common.network.GuiHandler;
 import aurocosh.divinefavor.common.network.MessageRegister;
-import mcjty.theoneprobe.items.ModItems;
+import aurocosh.divinefavor.common.spell.base.ModSpells;
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
@@ -24,7 +24,9 @@ public class CommonProxy {
     public void preInit(FMLPreInitializationEvent e) {
         //ConfigHandler.init(event.getSuggestedConfigurationFile());
 
+        ModItems.preInit();
         ModBlocks.preInit();
+        ModSpells.init();
         //ModCraftingRecipes.init();
 
         MessageRegister.init();

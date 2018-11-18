@@ -13,6 +13,6 @@ public class BlockFastFurnace extends BlockMod implements IDivineFavorBlock {
         setHardness(2.0F);
         setResistance(10.0F);
         setSoundType(SoundType.METAL);
-        //setCreativeTab(DivineFavorCreativeTab.INSTANCE);
+        setCreativeTab(DivineFavorCreativeTab.INSTANCE);
     }
 }
