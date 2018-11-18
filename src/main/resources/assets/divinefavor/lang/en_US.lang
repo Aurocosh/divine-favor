@@ -1,0 +1,12 @@
+# MISC
+itemGroup.divinefavor=Divine favor
+
+# BLOCK NAMES
+tile.divinefavor:fast_furnace.name=Fast furnace
+tile.divinefavor:Iron medium.name=Iron medium
+
+# ITEM NAMES
+item.divinefavor:arrow_throw_talisman.name=Arrow throw talisman
+item.divinefavor:bonemeal_talisman.name=Bone meal talisman
+item.divinefavor:ignition_talisman.name=Ignition talisman
+item.divinefavor:snowball_throw_talisman.name=Snowball talisman
