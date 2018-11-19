@@ -11,6 +11,7 @@ public final class ModSpells {
     public static Spell ignition;
     public static Spell snowball_throw;
     public static Spell stoneball_throw;
+    public static Spell small_fireball_throw;
 
     public static void init() {
 
@@ -20,6 +21,7 @@ public final class ModSpells {
         ignition = register(new SpellIgnition(), LibSpellNames.IGNITION);
         snowball_throw = register(new SpellSnowballThrow(), LibSpellNames.SNOWBALL_THROW);
         stoneball_throw = register(new SpellStoneballThrow(), LibSpellNames.STONEBALL_THROW);
+        small_fireball_throw = register(new SpellSmallFireballThrow(), LibSpellNames.SMALL_FIREBALL_THROW);
     }
 
     public static Spell register(Spell spell, String name) {
