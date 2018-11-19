@@ -2,7 +2,11 @@ package aurocosh.divinefavor.common.block.base;
 
 import aurocosh.divinefavor.common.block.BlockFastFurnace;
 import aurocosh.divinefavor.common.block.BlockIronMedium;
+import aurocosh.divinefavor.common.block.tile.TileIronMedium;
+import aurocosh.divinefavor.common.lib.LibBlockNames;
+import aurocosh.divinefavor.common.lib.LibResources;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 import vazkii.arl.block.BlockMod;
 
 public class ModBlocks {
@@ -24,13 +28,11 @@ public class ModBlocks {
     }
 
     private static void initTileEntities() {
-        //registerTile(TileCADAssembler.class, LibBlockNames.CAD_ASSEMBLER);
-        //registerTile(TileProgrammer.class, LibBlockNames.PROGRAMMER);
-        //registerTile(TileConjured.class, LibBlockNames.CONJURED);
+        registerTile(TileIronMedium.class, LibBlockNames.IRON_MEDIUM);
     }
 
     private static void registerTile(Class<? extends TileEntity> clazz, String key) {
-        //GameRegistry.registerTileEntity(clazz, LibResources.PREFIX_MOD + key);
+        GameRegistry.registerTileEntity(clazz, LibResources.PREFIX_MOD + key);
     }
 
 

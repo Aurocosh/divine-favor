@@ -11,8 +11,5 @@
 package aurocosh.divinefavor.common.lib;
 
 public final class LibGuiIDs {
-
-	public static final int CAD_ASSEMBLER = 0;
-	public static final int PROGRAMMER = 1;
-
+	public static final int IRON_MEDIUM = 0;
 }

@@ -17,10 +17,6 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 public final class HUDHandler {
 
-    private static final ResourceLocation psiBar = new ResourceLocation(LibResources.GUI_PSI_BAR);
-    private static final ResourceLocation psiBarMask = new ResourceLocation(LibResources.GUI_PSI_BAR_MASK);
-    private static final ResourceLocation psiBarShatter = new ResourceLocation(LibResources.GUI_PSI_BAR_SHATTER);
-
     private static final int secondaryTextureUnit = 7;
 
     private static boolean registeredMask = false;
