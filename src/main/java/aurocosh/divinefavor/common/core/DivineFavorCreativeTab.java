@@ -2,6 +2,7 @@ package aurocosh.divinefavor.common.core;
 
 import aurocosh.divinefavor.common.block.base.ModBlocks;
 import aurocosh.divinefavor.common.item.base.ModItems;
+import aurocosh.divinefavor.common.lib.LibMisc;
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
@@ -13,7 +14,7 @@ public class DivineFavorCreativeTab extends CreativeTabs {
     NonNullList list;
 
     public DivineFavorCreativeTab() {
-        super("Divine Favor");
+        super(LibMisc.MOD_ID);
         //LibMisc.MOD_ID
 
         //setNoTitle();
