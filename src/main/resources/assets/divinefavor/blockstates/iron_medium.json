@@ -1,13 +1,27 @@
 {
   "forge_marker": 1,
   "defaults": {
-    "model": "cube_all",
+    "model": "cube",
     "textures":{
-      "all": "divinefavor:blocks/iron_medium"
+      "particle": "divinefavor:blocks/iron_medium_side",
+      "down": "divinefavor:blocks/iron_medium_bottom",
+      "up": "divinefavor:blocks/iron_medium_top",
+      "east": "divinefavor:blocks/iron_medium_side",
+      "west": "divinefavor:blocks/iron_medium_side",
+      "north": "divinefavor:blocks/iron_medium_front",
+      "south": "divinefavor:blocks/iron_medium_side"
     }
   },
   "variants": {
     "normal": [{}],
-    "inventory": [{}]
+    "inventory": [{}],
+    "facing": {
+      "north": {},
+      "south": {"y": 180},
+      "west": {"y": 270},
+      "east": {"y": 90},
+      "up": {"x": -90},
+      "down": {"x": 90}
+    }
   }
 }
