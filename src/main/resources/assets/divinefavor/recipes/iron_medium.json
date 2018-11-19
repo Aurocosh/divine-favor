@@ -1,0 +1,19 @@
+{
+  "result": {
+    "item": "divinefavor:iron_medium"
+  },
+  "pattern": [
+    " r ",
+    "rir",
+    " r "
+  ],
+  "type": "forge:ore_shaped",
+  "key": {
+    "i": {
+      "item": "minecraft:iron_block"
+    },
+    "r": {
+      "item": "minecraft:redstone"
+    }
+  }
+}
