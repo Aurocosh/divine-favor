@@ -43,7 +43,7 @@ public class SpellSmallFireballThrow extends Spell {
 
             Vec3d looking = playerIn.getLookVec();
             if (looking == null)
-            return false;
+                return false;
 
             EntitySmallFireball fireball = new EntitySmallFireball(worldIn,playerIn,0,0,0);
             fireball.posY += playerIn.eyeHeight;
