@@ -1,4 +1,4 @@
-package aurocosh.divinefavor.common.utility;
+package aurocosh.divinefavor.common.util;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockLiquid;

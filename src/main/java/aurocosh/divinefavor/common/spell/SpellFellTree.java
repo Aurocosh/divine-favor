@@ -2,27 +2,21 @@ package aurocosh.divinefavor.common.spell;
 
 import aurocosh.divinefavor.api.spell.Spell;
 import aurocosh.divinefavor.api.spell.SpellContext;
-import aurocosh.divinefavor.common.entity.EntityStoneball;
 import aurocosh.divinefavor.common.events.TalismanEvent;
 import aurocosh.divinefavor.common.lib.LibSpellNames;
-import aurocosh.divinefavor.common.utility.TalismanHelper;
-import com.google.common.collect.ImmutableList;
+import aurocosh.divinefavor.common.util.TalismanHelper;
 import com.google.common.collect.Lists;
 import gnu.trove.set.hash.THashSet;
-import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumFacing;
-import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 
-import java.util.List;
 import java.util.Queue;
 import java.util.Set;
 import java.util.Stack;
