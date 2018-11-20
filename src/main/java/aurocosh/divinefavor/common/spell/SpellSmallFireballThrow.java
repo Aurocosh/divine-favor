@@ -2,22 +2,13 @@ package aurocosh.divinefavor.common.spell;
 
 import aurocosh.divinefavor.api.spell.Spell;
 import aurocosh.divinefavor.api.spell.SpellContext;
-import aurocosh.divinefavor.common.entity.EntityStoneball;
 import aurocosh.divinefavor.common.lib.LibSpellNames;
-import aurocosh.divinefavor.common.utility.TalismanHelper;
-import net.minecraft.block.BlockDispenser;
-import net.minecraft.dispenser.IPosition;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.projectile.EntityFireball;
 import net.minecraft.entity.projectile.EntitySmallFireball;
-import net.minecraft.entity.projectile.EntitySnowball;
 import net.minecraft.init.SoundEvents;
-import net.minecraft.util.EnumFacing;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
-
-import java.util.Random;
 
 public class SpellSmallFireballThrow extends Spell {
     public SpellSmallFireballThrow() {

@@ -3,10 +3,14 @@ package aurocosh.divinefavor.common.core;
 import aurocosh.divinefavor.common.block.base.ModBlocks;
 import aurocosh.divinefavor.common.item.base.ModItems;
 import aurocosh.divinefavor.common.lib.LibMisc;
+import aurocosh.divinefavor.common.potion.PotionTypeDivine;
+import aurocosh.divinefavor.common.potion.PotionTypeRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.potion.PotionUtils;
 import net.minecraft.util.NonNullList;
 
 public class DivineFavorCreativeTab extends CreativeTabs {
@@ -51,6 +55,13 @@ public class DivineFavorCreativeTab extends CreativeTabs {
         addItem(ModItems.stoneball_throw_talisman);
         addItem(ModItems.small_fireball_throw_talisman);
         addItem(ModItems.stoneball);
+
+        for (PotionTypeDivine pt : PotionTypeRegistry.potions) {
+            list.add(PotionUtils.addPotionToItemStack(new ItemStack(Items.POTIONITEM), pt));
+            list.add(PotionUtils.addPotionToItemStack(new ItemStack(Items.SPLASH_POTION), pt));
+            list.add(PotionUtils.addPotionToItemStack(new ItemStack(Items.LINGERING_POTION), pt));
+            list.add(PotionUtils.addPotionToItemStack(new ItemStack(Items.TIPPED_ARROW), pt));
+        }
     }
 
     private void addItem(Item item) {
