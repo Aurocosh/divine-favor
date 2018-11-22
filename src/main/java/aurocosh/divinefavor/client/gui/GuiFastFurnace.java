@@ -30,7 +30,21 @@ public class GuiFastFurnace extends GuiContainer {
 
     @Override
     protected void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY) {
+        drawDefaultBackground();
         mc.getTextureManager().bindTexture(texture);
         drawTexturedModalRect(guiLeft, guiTop, 0, 0, xSize, ySize);
+        renderHoveredToolTip(mouseX,mouseY);
+
+        if (fastFurnace.getProgress() > 0) {
+            int percentage = 100 - fastFurnace.getProgress() * 100 / TileFastFurnace.MAX_PROGRESS;
+            drawString(mc.fontRenderer, "Progress: " + percentage + "%", guiLeft + 10, guiTop + 50, 0xffffff);
+        }
+    }
+
+    @Override
+    public void drawScreen(int mouseX, int mouseY, float partialTicks) {
+        drawDefaultBackground();
+        super.drawScreen(mouseX, mouseY, partialTicks);
+        renderHoveredToolTip(mouseX,mouseY);
     }
 }

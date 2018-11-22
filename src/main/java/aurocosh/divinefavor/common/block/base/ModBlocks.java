@@ -1,7 +1,8 @@
 package aurocosh.divinefavor.common.block.base;
 
-import aurocosh.divinefavor.common.block.BlockFastFurnace;
+import aurocosh.divinefavor.common.block.BlockFastFurnaceMod;
 import aurocosh.divinefavor.common.block.BlockIronMedium;
+import aurocosh.divinefavor.common.block.tile.TileFastFurnace;
 import aurocosh.divinefavor.common.block.tile.TileIronMedium;
 import aurocosh.divinefavor.common.lib.LibBlockNames;
 import aurocosh.divinefavor.common.lib.LibResources;
@@ -14,7 +15,7 @@ public class ModBlocks {
     public static BlockMod blockIronMedium;
 
     public static void preInit() {
-        blockFastFurnace = new BlockFastFurnace();
+        blockFastFurnace = new BlockFastFurnaceMod();
         blockIronMedium = new BlockIronMedium();
 
         initTileEntities();
@@ -28,6 +29,7 @@ public class ModBlocks {
     }
 
     private static void initTileEntities() {
+        registerTile(TileFastFurnace.class, LibBlockNames.FAST_FURNACE);
         registerTile(TileIronMedium.class, LibBlockNames.IRON_MEDIUM);
     }
 

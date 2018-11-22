@@ -1,6 +1,7 @@
 package aurocosh.divinefavor.common.block;
 
 import aurocosh.divinefavor.DivineFavor;
+import aurocosh.divinefavor.common.block.base.BlockTileMod;
 import aurocosh.divinefavor.common.block.base.IDivineFavorBlock;
 import aurocosh.divinefavor.common.block.tile.TileIronMedium;
 import aurocosh.divinefavor.common.core.DivineFavorCreativeTab;
@@ -25,7 +26,7 @@ import net.minecraft.world.World;
 import vazkii.arl.block.BlockMod;
 import vazkii.arl.block.BlockModContainer;
 
-public class BlockIronMedium extends BlockMod implements IDivineFavorBlock, ITileEntityProvider {
+public class BlockIronMedium extends BlockTileMod implements IDivineFavorBlock {
     public static final PropertyDirection FACING = PropertyDirection.create("facing");
 
     public BlockIronMedium() {

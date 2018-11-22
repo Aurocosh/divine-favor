@@ -5,6 +5,7 @@ import aurocosh.divinefavor.common.block.tile.TileFastFurnace;
 import aurocosh.divinefavor.common.block.tile.TileIronMedium;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Container;
+import net.minecraft.inventory.IContainerListener;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
@@ -13,6 +14,8 @@ import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.SlotItemHandler;
 
 public class ContainerFastFurnace extends Container {
+    private static final int PROGRESS_ID = 0;
+
     public TileFastFurnace fastFurnace;
 
     public ContainerFastFurnace(EntityPlayer player, TileFastFurnace fastFurnace) {
@@ -98,5 +101,19 @@ public class ContainerFastFurnace extends Container {
         }
 
         return itemstack;
+    }
+
+    @Override
+    public void detectAndSendChanges() {
+        super.detectAndSendChanges();
+        for (IContainerListener listener : listeners) {
+            listener.sendWindowProperty(this, PROGRESS_ID, fastFurnace.getProgress());
+        }
+    }
+    @Override
+    public void updateProgressBar(int id, int data) {
+        if (id == PROGRESS_ID) {
+            fastFurnace.setProgress(data);
+        }
     }
 }
