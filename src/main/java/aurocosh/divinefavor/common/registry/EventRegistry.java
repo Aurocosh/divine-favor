@@ -2,7 +2,7 @@ package aurocosh.divinefavor.common.registry;
 
 import java.util.ArrayList;
 
-import aurocosh.divinefavor.common.potion.EventPotionTick;
+import aurocosh.divinefavor.common.effect.EventPotionTick;
 import net.minecraftforge.common.MinecraftForge;
 
 public class EventRegistry {

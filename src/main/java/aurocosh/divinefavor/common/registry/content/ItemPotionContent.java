@@ -1,8 +1,8 @@
 package aurocosh.divinefavor.common.registry.content;
 
 import aurocosh.divinefavor.IContent;
+import aurocosh.divinefavor.common.effect.ModPotionEffects;
 import aurocosh.divinefavor.common.lib.LibMisc;
-import aurocosh.divinefavor.common.potion.PotionEffectRegistry;
 import aurocosh.divinefavor.common.potion.PotionTypeDivine;
 import aurocosh.divinefavor.common.potion.PotionTypeRegistry;
 import net.minecraft.init.Items;
@@ -22,7 +22,7 @@ public class ItemPotionContent implements IContent {
   @Override
   public void register() {
     if (ItemPotionContent.enableWaterwalk) {
-      potionTypeWaterwalk = PotionTypeRegistry.addPotionType(new PotionEffect(PotionEffectRegistry.waterwalk, NORMAL), "waterwalk", new ItemStack(Items.FISH, 1, ItemFishFood.FishType.COD.getMetadata()));
+      potionTypeWaterwalk = PotionTypeRegistry.addPotionType(new PotionEffect(ModPotionEffects.waterwalk, NORMAL), "waterwalk", new ItemStack(Items.FISH, 1, ItemFishFood.FishType.COD.getMetadata()));
     }
   }
 

@@ -12,4 +12,5 @@ package aurocosh.divinefavor.common.lib;
 
 public final class LibGuiIDs {
 	public static final int IRON_MEDIUM = 0;
+	public static final int FAST_FURNACE = 1;
 }
