@@ -1,4 +1,4 @@
-package aurocosh.divinefavor.common.potion.effect;
+package aurocosh.divinefavor.common.effect.effect;
 
 import javax.annotation.Nullable;
 

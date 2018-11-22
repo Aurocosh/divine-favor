@@ -9,6 +9,7 @@ public class LibResources {
     public static final String PREFIX_MISC = PREFIX_MOD + "textures/misc/";
 
     public static final String GUI_IRON_MEDIUM = PREFIX_GUI + "iron_medium.png";
+    public static final String GUI_FAST_FURNACE = PREFIX_GUI + "fast_furnace.png";
 
 
 }

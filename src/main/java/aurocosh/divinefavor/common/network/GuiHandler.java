@@ -10,8 +10,11 @@
  */
 package aurocosh.divinefavor.common.network;
 
+import aurocosh.divinefavor.client.gui.GuiFastFurnace;
 import aurocosh.divinefavor.client.gui.GuiIronMedium;
+import aurocosh.divinefavor.common.block.tile.TileFastFurnace;
 import aurocosh.divinefavor.common.block.tile.TileIronMedium;
+import aurocosh.divinefavor.common.block.tile.container.ContainerFastFurnace;
 import aurocosh.divinefavor.common.block.tile.container.ContainerIronMedium;
 import aurocosh.divinefavor.common.lib.LibGuiIDs;
 import net.minecraft.entity.player.EntityPlayer;
@@ -26,7 +29,10 @@ public class GuiHandler implements IGuiHandler {
 		switch(ID) {
 		case LibGuiIDs.IRON_MEDIUM:
 			return new ContainerIronMedium(player, (TileIronMedium) world.getTileEntity(new BlockPos(x, y, z)));
+		case LibGuiIDs.FAST_FURNACE:
+			return new ContainerFastFurnace(player, (TileFastFurnace) world.getTileEntity(new BlockPos(x, y, z)));
 		}
+
 
 		return null;
 	}
@@ -36,6 +42,8 @@ public class GuiHandler implements IGuiHandler {
 		switch(ID) {
 		case LibGuiIDs.IRON_MEDIUM:
 			return new GuiIronMedium(player, (TileIronMedium) world.getTileEntity(new BlockPos(x, y, z)));
+		case LibGuiIDs.FAST_FURNACE:
+			return new GuiFastFurnace(player, (TileFastFurnace) world.getTileEntity(new BlockPos(x, y, z)));
 		}
 
 		return null;

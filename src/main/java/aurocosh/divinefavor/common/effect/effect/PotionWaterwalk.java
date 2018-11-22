@@ -21,7 +21,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  ******************************************************************************/
-package aurocosh.divinefavor.common.potion.effect;
+package aurocosh.divinefavor.common.effect.effect;
 
 import net.minecraft.block.Block;
 import net.minecraft.entity.EntityLivingBase;
