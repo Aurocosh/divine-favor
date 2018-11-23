@@ -7,6 +7,7 @@ import aurocosh.divinefavor.client.render.entity.ModRendering;
 import aurocosh.divinefavor.common.core.handlers.PersistencyHandler;
 import aurocosh.divinefavor.common.core.handlers.PlayerDataHandler;
 import aurocosh.divinefavor.common.core.proxy.CommonProxy;
+import com.google.common.util.concurrent.ListenableFuture;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraftforge.common.MinecraftForge;
@@ -38,17 +39,12 @@ public class ClientProxy extends CommonProxy {
     }
 
     @Override
+    public ListenableFuture<Object> addScheduledTaskClient(Runnable runnableToSchedule) {
+        return Minecraft.getMinecraft().addScheduledTask(runnableToSchedule);
+    }
+
+    @Override
     public EntityPlayer getClientPlayer() {
         return Minecraft.getMinecraft().player;
-    }
-
-    @Override
-    public void onLevelUp(int level) {
-        HUDHandler.levelUp(level);
-    }
-
-    @Override
-    public void savePersistency() {
-        PersistencyHandler.save(PlayerDataHandler.get(getClientPlayer()).level);
     }
 }

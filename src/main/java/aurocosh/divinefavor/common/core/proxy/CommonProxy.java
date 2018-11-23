@@ -12,7 +12,9 @@ import aurocosh.divinefavor.common.lib.LibEntityNames;
 import aurocosh.divinefavor.common.lib.LibMisc;
 import aurocosh.divinefavor.common.network.GuiHandler;
 import aurocosh.divinefavor.common.network.MessageRegister;
+import aurocosh.divinefavor.common.network.Messages;
 import aurocosh.divinefavor.common.spell.base.ModSpells;
+import com.google.common.util.concurrent.ListenableFuture;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod;
@@ -32,6 +34,7 @@ public class CommonProxy {
         ModEntities.init();
         ModSpells.init();
         //ModCraftingRecipes.init();
+        Messages.registerMessages("divinefavor");
 
         MessageRegister.init();
 
@@ -48,15 +51,10 @@ public class CommonProxy {
     public void postInit(FMLPostInitializationEvent e) {
     }
 
+    public ListenableFuture<Object> addScheduledTaskClient(Runnable runnableToSchedule) {
+        throw new IllegalStateException("This should only be called from client side");
+    }
     public EntityPlayer getClientPlayer() {
-        return null;
-    }
-
-    public void onLevelUp(int level) {
-        // proxy override
-    }
-
-    public void savePersistency() {
-        // proxy override
+        throw new IllegalStateException("This should only be called from client side");
     }
 }
