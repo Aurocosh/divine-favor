@@ -106,14 +106,14 @@ public class ContainerFastFurnace extends Container {
     @Override
     public void detectAndSendChanges() {
         super.detectAndSendChanges();
-        for (IContainerListener listener : listeners) {
-            listener.sendWindowProperty(this, PROGRESS_ID, fastFurnace.getProgress());
-        }
+        if(fastFurnace.getProgress() != fastFurnace.getClientProgress())
+            for (IContainerListener listener : listeners)
+                listener.sendWindowProperty(this, PROGRESS_ID, fastFurnace.getProgress());
     }
     @Override
     public void updateProgressBar(int id, int data) {
         if (id == PROGRESS_ID) {
-            fastFurnace.setProgress(data);
+            fastFurnace.setClientProgress(data);
         }
     }
 }
