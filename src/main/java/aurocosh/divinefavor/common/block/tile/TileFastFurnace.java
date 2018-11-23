@@ -1,5 +1,6 @@
 package aurocosh.divinefavor.common.block.tile;
 
+import aurocosh.divinefavor.common.tool.EnergyStorage;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.FurnaceRecipes;
@@ -8,6 +9,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ITickable;
 import net.minecraftforge.common.capabilities.Capability;
+import net.minecraftforge.energy.CapabilityEnergy;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 import net.minecraftforge.items.wrapper.CombinedInvWrapper;
@@ -20,8 +22,14 @@ public class TileFastFurnace extends TileEntity implements ITickable {
     public static final int SIZE = INPUT_SIZE + OUTPUT_SIZE;
     public static final int MAX_PROGRESS = 40;
 
+    public static final int MAX_RF_CAPACITY = 10000;
+    public static final int MAX_RF_TRANSFER = 200;
+    public static final int RF_CONSUMPTION = 40;
+
     private int progress = 0;
     private int clientProgress = -1;
+
+    private EnergyStorage energyStorage = new EnergyStorage(MAX_RF_CAPACITY,MAX_RF_TRANSFER);
 
     // This item handler will hold our input slots
     private ItemStackHandler inputHandler = new ItemStackHandler(INPUT_SIZE) {
@@ -54,13 +62,12 @@ public class TileFastFurnace extends TileEntity implements ITickable {
     @Override
     public void readFromNBT(NBTTagCompound compound) {
         super.readFromNBT(compound);
-        if (compound.hasKey("itemsIn")) {
+        if (compound.hasKey("itemsIn"))
             inputHandler.deserializeNBT((NBTTagCompound) compound.getTag("itemsIn"));
-        }
-        if (compound.hasKey("itemsOut")) {
+        if (compound.hasKey("itemsOut"))
             outputHandler.deserializeNBT((NBTTagCompound) compound.getTag("itemsOut"));
-        }
         progress = compound.getInteger("progress");
+        energyStorage.readFromNBT(compound);
     }
 
     @Override
@@ -69,6 +76,7 @@ public class TileFastFurnace extends TileEntity implements ITickable {
         compound.setTag("itemsIn", inputHandler.serializeNBT());
         compound.setTag("itemsOut", outputHandler.serializeNBT());
         compound.setInteger("progress", progress);
+        energyStorage.writeToNBT(compound);
         return compound;
     }
 
@@ -80,6 +88,9 @@ public class TileFastFurnace extends TileEntity implements ITickable {
     @Override
     public boolean hasCapability(Capability<?> capability, EnumFacing facing) {
         if (capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) {
+            return true;
+        }
+        else if (capability == CapabilityEnergy.ENERGY) {
             return true;
         }
         return super.hasCapability(capability, facing);
@@ -95,16 +106,24 @@ public class TileFastFurnace extends TileEntity implements ITickable {
             else
                 return CapabilityItemHandler.ITEM_HANDLER_CAPABILITY.cast(outputHandler);
         }
+        else if(capability == CapabilityEnergy.ENERGY){
+            return CapabilityEnergy.ENERGY.cast(energyStorage);
+        }
         return super.getCapability(capability, facing);
     }
 
     @Override
     public void update() {
+        if (world.isRemote)
+            return;
+        if (energyStorage.extractEnergy(RF_CONSUMPTION,true) != RF_CONSUMPTION)
+            return;
+
         if (progress > 0) {
+            energyStorage.extractEnergy(RF_CONSUMPTION, false);
             progress--;
-            if (progress <= 0) {
+            if (progress <= 0)
                 attemptSmelt();
-            }
             markDirty();
         } else {
             startSmelt();
