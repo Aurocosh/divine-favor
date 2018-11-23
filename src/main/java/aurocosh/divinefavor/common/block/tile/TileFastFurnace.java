@@ -28,6 +28,7 @@ public class TileFastFurnace extends TileEntity implements ITickable {
 
     private int progress = 0;
     private int clientProgress = -1;
+    private int clientEnergy = -1;
 
     private EnergyStorage energyStorage = new EnergyStorage(MAX_RF_CAPACITY,MAX_RF_TRANSFER);
 
@@ -181,5 +182,15 @@ public class TileFastFurnace extends TileEntity implements ITickable {
 
     public void setClientProgress(int clientProgress) {
         this.clientProgress = clientProgress;
+    }
+
+    public int getClientEnergy() {
+        return clientEnergy;
+    }
+    public void setClientEnergy(int clientEnergy) {
+        this.clientEnergy = clientEnergy;
+    }
+    public int getEnergy() {
+        return energyStorage.getEnergyStored();
     }
 }

@@ -3,7 +3,11 @@ package aurocosh.divinefavor.common.block.tile.container;
 import aurocosh.divinefavor.DivineFavor;
 import aurocosh.divinefavor.common.block.tile.TileFastFurnace;
 import aurocosh.divinefavor.common.block.tile.TileIronMedium;
+import aurocosh.divinefavor.common.network.Messages;
+import aurocosh.divinefavor.common.network.PacketSyncPower;
+import aurocosh.divinefavor.common.tool.IEnergyContainer;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.IContainerListener;
 import net.minecraft.inventory.IInventory;
@@ -13,7 +17,7 @@ import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.SlotItemHandler;
 
-public class ContainerFastFurnace extends Container {
+public class ContainerFastFurnace extends Container implements IEnergyContainer {
     private static final int PROGRESS_ID = 0;
 
     public TileFastFurnace fastFurnace;
@@ -52,7 +56,7 @@ public class ContainerFastFurnace extends Container {
         int subount = slotCount / 2;
 
         int x = 10;
-        int y = 6;
+        int y = 19;
 
         // Add our own slots
         int slotIndex = 0;
@@ -111,11 +115,25 @@ public class ContainerFastFurnace extends Container {
             for (IContainerListener listener : listeners)
                 listener.sendWindowProperty(this, PROGRESS_ID, fastFurnace.getProgress());
         }
+        if (fastFurnace.getEnergy() != fastFurnace.getClientEnergy()) {
+            fastFurnace.setClientEnergy(fastFurnace.getEnergy());
+            for (IContainerListener listener : listeners) {
+                if (listener instanceof EntityPlayerMP) {
+                    EntityPlayerMP player = (EntityPlayerMP) listener;
+                    Messages.INSTANCE.sendTo(new PacketSyncPower(fastFurnace.getEnergy()), player);
+                }
+            }
+        }
     }
     @Override
     public void updateProgressBar(int id, int data) {
         if (id == PROGRESS_ID) {
             fastFurnace.setClientProgress(data);
         }
+    }
+
+    @Override
+    public void syncPower(int energy) {
+        fastFurnace.setClientEnergy(energy);
     }
 }

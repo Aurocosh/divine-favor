@@ -29,7 +29,7 @@ public class MessageDataSync extends NetworkMessage {
             PlayerData data = PlayerDataHandler.get(DivineFavor.proxy.getClientPlayer());
             data.lastAvailablePsi = data.availablePsi;
             data.readFromNBT(cmp);
-            DivineFavor.proxy.savePersistency();
+            //DivineFavor.proxy.savePersistency();
         });
 
         return null;
