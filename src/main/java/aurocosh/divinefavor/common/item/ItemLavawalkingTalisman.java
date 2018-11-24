@@ -5,21 +5,19 @@ import aurocosh.divinefavor.common.core.DivineFavorCreativeTab;
 import aurocosh.divinefavor.common.lib.LibItemNames;
 import aurocosh.divinefavor.common.spell.base.ModSpells;
 
-public class ItemWaterwalkingTalisman extends ItemTalisman {
-    public ItemWaterwalkingTalisman() {
-        super(LibItemNames.WATERWALKING_TALISMAN,true,true);
-
-        //new AssemblyScavengeRecipe();
+public class ItemLavawalkingTalisman extends ItemTalisman {
+    public ItemLavawalkingTalisman() {
+        super(LibItemNames.LAVAWALKING_TALISMAN,true,true);
         setCreativeTab(DivineFavorCreativeTab.INSTANCE);
     }
 
     @Override
     public boolean castUse(SpellContext context) {
-        return ModSpells.waterwalking.cast(context);
+        return ModSpells.lavawalking.cast(context);
     }
 
     @Override
     public boolean castRightClick(SpellContext context) {
-        return ModSpells.waterwalking.cast(context);
+        return ModSpells.lavawalking.cast(context);
     }
 }

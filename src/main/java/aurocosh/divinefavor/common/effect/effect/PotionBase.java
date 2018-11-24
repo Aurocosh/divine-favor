@@ -14,47 +14,54 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 public abstract class PotionBase extends Potion {
 
-  private ResourceLocation icon;
-  private boolean beneficial;
+    enum EffectType {
+        TIMED,
+        PERMAMENT
+    }
 
-  public PotionBase(String name, boolean b, int potionColor) {
-    super(false, potionColor);
-    this.beneficial = b;
-    this.setIcon(new ResourceLocation(LibMisc.MOD_ID, "textures/potions/" + name + ".png"));
-    this.setPotionName("potion." + name);
-  }
+    private ResourceLocation icon;
+    private boolean beneficial;
+    private EffectType effectType;
 
-  @Override
-  public void affectEntity(@Nullable Entity source, @Nullable Entity indirectSource, EntityLivingBase entityLivingBaseIn, int amplifier, double health) {
-    super.affectEntity(source, indirectSource, entityLivingBaseIn, amplifier, health);
-  }
+    public PotionBase(String name, boolean b, int potionColor) {
+        super(false, potionColor);
+        this.beneficial = b;
+        this.setIcon(new ResourceLocation(LibMisc.MOD_ID, "textures/potions/" + name + ".png"));
+        this.setPotionName("potion." + name);
+        effectType = EffectType.TIMED;
+    }
 
-  @Override
-  @SideOnly(Side.CLIENT)
-  public boolean isBeneficial() {
+    @Override
+        public void affectEntity(@Nullable Entity source, @Nullable Entity indirectSource, EntityLivingBase entityLivingBaseIn, int amplifier, double health) {
+        super.affectEntity(source, indirectSource, entityLivingBaseIn, amplifier, health);
+    }
+
+    @Override
+    @SideOnly(Side.CLIENT)
+    public boolean isBeneficial() {
     return this.beneficial;//decides top or bottom row
-  }
+    }
 
-  @Override
-  @SideOnly(Side.CLIENT)
-  public void renderInventoryEffect(int x, int y, PotionEffect effect, net.minecraft.client.Minecraft mc) {
-    UtilTextureRender.drawTextureSquare(getIcon(), x + 6, y + 6, LibMisc.SQ - 2);
-  }
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void renderInventoryEffect(int x, int y, PotionEffect effect, net.minecraft.client.Minecraft mc) {
+        UtilTextureRender.drawTextureSquare(getIcon(), x + 6, y + 6, LibMisc.SQ - 2);
+    }
 
-  @Override
-  @SideOnly(Side.CLIENT)
-  public void renderHUDEffect(int x, int y, PotionEffect effect, net.minecraft.client.Minecraft mc, float alpha) {
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void renderHUDEffect(int x, int y, PotionEffect effect, net.minecraft.client.Minecraft mc, float alpha) {
     if (mc.gameSettings.showDebugInfo == false)//dont texture on top of the debug text
-      UtilTextureRender.drawTextureSquare(getIcon(), x + 4, y + 4, LibMisc.SQ - 2);
-  }
+        UtilTextureRender.drawTextureSquare(getIcon(), x + 4, y + 4, LibMisc.SQ - 2);
+    }
 
-  public ResourceLocation getIcon() {
+    public ResourceLocation getIcon() {
     return icon;
-  }
+    }
 
-  public void setIcon(ResourceLocation icon) {
+    public void setIcon(ResourceLocation icon) {
     this.icon = icon;
-  }
+    }
 
-  public void tick(EntityLivingBase entity) {}
+    public void tick(EntityLivingBase entity) {}
 }

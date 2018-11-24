@@ -9,6 +9,7 @@ public final class ModSpells {
     public static Spell bonemeal;
     public static Spell fell_tree;
     public static Spell ignition;
+    public static Spell lavawalking;
     public static Spell snowball_throw;
     public static Spell stoneball_throw;
     public static Spell small_fireball_throw;
@@ -20,6 +21,7 @@ public final class ModSpells {
         bonemeal = register(new SpellBonemeal(), LibSpellNames.BONEMEAL);
         fell_tree = register(new SpellFellTree(), LibSpellNames.FELL_TREE);
         ignition = register(new SpellIgnition(), LibSpellNames.IGNITION);
+        lavawalking = register(new SpellLavawalking(), LibSpellNames.LAVAWALKING);
         snowball_throw = register(new SpellSnowballThrow(), LibSpellNames.SNOWBALL_THROW);
         stoneball_throw = register(new SpellStoneballThrow(), LibSpellNames.STONEBALL_THROW);
         small_fireball_throw = register(new SpellSmallFireballThrow(), LibSpellNames.SMALL_FIREBALL_THROW);
