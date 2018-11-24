@@ -3,6 +3,7 @@ package aurocosh.divinefavor.common.effect;
 import java.util.ArrayList;
 
 import aurocosh.divinefavor.DivineFavor;
+import aurocosh.divinefavor.common.effect.effect.PotionLavawalk;
 import aurocosh.divinefavor.common.lib.LibMisc;
 import aurocosh.divinefavor.common.effect.effect.PotionBase;
 import aurocosh.divinefavor.common.effect.effect.PotionWaterwalk;
@@ -16,12 +17,14 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 @Mod.EventBusSubscriber
 public class ModPotionEffects {
     public static ArrayList<Potion> potions = new ArrayList<>();
+    public static ArrayList<PotionBase> potionEffects = new ArrayList<>();
 
     public static final PotionBase waterwalk = new PotionWaterwalk();
-    public static ArrayList<PotionBase> potionEffects = new ArrayList<PotionBase>();
+    public static final PotionBase lavawalk = new PotionLavawalk();
 
     public static void register() {
         registerPotionEffect(waterwalk);
+        registerPotionEffect(lavawalk);
     }
 
     private static void registerPotionEffect(PotionBase effect) {
