@@ -7,6 +7,7 @@ public final class ModItems {
 
     public static ItemMod arrow_throw_talisman;
     public static ItemMod bonemeal_talisman;
+    public static ItemMod empower_axe_talisman;
     public static ItemMod fell_tree_talisman;
     public static ItemMod ignition_talisman;
     public static ItemMod lavawalking_talisman;
@@ -19,6 +20,7 @@ public final class ModItems {
     public static void preInit() {
         arrow_throw_talisman = new ItemArrowThrowTalisman();
         bonemeal_talisman = new ItemBonemealTalisman();
+        empower_axe_talisman = new ItemEmpowerAxeTalisman();
         fell_tree_talisman = new ItemFellTreeTalisman();
         ignition_talisman = new ItemIgnitionTalisman();
         lavawalking_talisman = new ItemLavawalkingTalisman();

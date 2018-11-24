@@ -4,7 +4,7 @@ import aurocosh.divinefavor.api.spell.Spell;
 import aurocosh.divinefavor.api.spell.SpellContext;
 import aurocosh.divinefavor.common.events.TalismanEvent;
 import aurocosh.divinefavor.common.lib.LibSpellNames;
-import aurocosh.divinefavor.common.util.TalismanHelper;
+import aurocosh.divinefavor.common.util.UtilBlock;
 import com.google.common.collect.Lists;
 import gnu.trove.set.hash.THashSet;
 import net.minecraft.block.state.IBlockState;
@@ -184,7 +184,7 @@ public class SpellFellTree extends Spell {
                 }
 
                 // break it, wooo!
-                TalismanHelper.removeBlockWithDrops(player, world, tool, pos, false);
+                UtilBlock.removeBlockWithDrops(player, world, tool, pos, false);
                 left--;
             }
         }
