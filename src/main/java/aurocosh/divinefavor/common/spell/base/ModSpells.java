@@ -7,6 +7,7 @@ import aurocosh.divinefavor.common.spell.*;
 public final class ModSpells {
     public static Spell arrow_throw;
     public static Spell bonemeal;
+    public static Spell empower_axe;
     public static Spell fell_tree;
     public static Spell ignition;
     public static Spell lavawalking;
@@ -19,6 +20,7 @@ public final class ModSpells {
 
         arrow_throw = register(new SpellArrowThrow(), LibSpellNames.ARROW_THROW);
         bonemeal = register(new SpellBonemeal(), LibSpellNames.BONEMEAL);
+        empower_axe = register(new SpellEmpowerAxe(), LibSpellNames.EMPOWER_AXE);
         fell_tree = register(new SpellFellTree(), LibSpellNames.FELL_TREE);
         ignition = register(new SpellIgnition(), LibSpellNames.IGNITION);
         lavawalking = register(new SpellLavawalking(), LibSpellNames.LAVAWALKING);

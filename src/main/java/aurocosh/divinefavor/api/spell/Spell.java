@@ -12,27 +12,21 @@ public abstract class Spell {
     private static final Pattern FAKE_PLAYER_PATTERN = Pattern.compile("^(?:\\[.*\\])|(?:ComputerCraft)$");
     protected static Random spellRand = new Random();
 
-
-    public String name = "";
+    public String name;
 
     public Spell(String name) {
         this.name = name;
     }
 
     public boolean cast(SpellContext context) {
+        if(context.worldIn.isRemote)
+            return true;
         if(!isTruePlayer(context.playerIn))
             return false;
-
-        //if(!world.isRemote)
-        //    player.sendMessage(new TextComponentTranslation("psimisc.weakCad").setStyle(new Style().setColor(TextFormatting.RED)));
-
         if(!claimCost(context))
             return false;
 
         performAction(context);
-
-        //if(!world.isRemote)
-        //    world.playSound(null, player.posX, player.posY, player.posZ, PsiSoundHandler.cadShoot, SoundCategory.PLAYERS, sound, (float) (0.5 + Math.random() * 0.5));
         return true;
     }
 

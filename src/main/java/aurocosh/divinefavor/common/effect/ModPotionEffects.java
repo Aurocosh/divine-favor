@@ -3,11 +3,10 @@ package aurocosh.divinefavor.common.effect;
 import java.util.ArrayList;
 
 import aurocosh.divinefavor.DivineFavor;
-import aurocosh.divinefavor.common.effect.effect.PotionLavawalk;
+import aurocosh.divinefavor.common.effect.effect.*;
+import aurocosh.divinefavor.common.effect.effect.PotionEmpowerAxe;
 import aurocosh.divinefavor.common.lib.LibMisc;
-import aurocosh.divinefavor.common.effect.effect.PotionBase;
-import aurocosh.divinefavor.common.effect.effect.PotionWaterwalk;
-import aurocosh.divinefavor.common.util.UtilChat;
+import aurocosh.divinefavor.common.effect.effect.DivineFavorPotion;
 import net.minecraft.potion.Potion;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.event.RegistryEvent;
@@ -17,17 +16,19 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 @Mod.EventBusSubscriber
 public class ModPotionEffects {
     public static ArrayList<Potion> potions = new ArrayList<>();
-    public static ArrayList<PotionBase> potionEffects = new ArrayList<>();
+    public static ArrayList<DivineFavorPotion> potionEffects = new ArrayList<>();
 
-    public static final PotionBase waterwalk = new PotionWaterwalk();
-    public static final PotionBase lavawalk = new PotionLavawalk();
+    public static final DivineFavorPotion waterwalk = new PotionWaterwalk();
+    public static final DivineFavorPotion lavawalk = new PotionLavawalk();
+    public static final DivineFavorPotion empower_axe = new PotionEmpowerAxe();
 
     public static void register() {
         registerPotionEffect(waterwalk);
         registerPotionEffect(lavawalk);
+        registerPotionEffect(empower_axe);
     }
 
-    private static void registerPotionEffect(PotionBase effect) {
+    private static void registerPotionEffect(DivineFavorPotion effect) {
         effect.setIcon(effect.getIcon());
         effect.setRegistryName(new ResourceLocation(LibMisc.MOD_ID, effect.getName()));
         potions.add(effect);

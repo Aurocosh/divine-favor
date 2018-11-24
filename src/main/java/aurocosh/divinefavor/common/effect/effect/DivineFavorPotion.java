@@ -6,13 +6,18 @@ import aurocosh.divinefavor.common.lib.LibMisc;
 import aurocosh.divinefavor.common.util.UtilTextureRender;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.init.Items;
+import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public abstract class PotionBase extends Potion {
+import java.util.ArrayList;
+import java.util.List;
+
+public abstract class DivineFavorPotion extends Potion {
 
     enum EffectType {
         TIMED,
@@ -23,11 +28,11 @@ public abstract class PotionBase extends Potion {
     private boolean beneficial;
     private EffectType effectType;
 
-    public PotionBase(String name, boolean b, int potionColor) {
+    public DivineFavorPotion(String name, boolean b, int potionColor) {
         super(false, potionColor);
         this.beneficial = b;
         this.setIcon(new ResourceLocation(LibMisc.MOD_ID, "textures/potions/" + name + ".png"));
-        this.setPotionName("potion." + name);
+        this.setPotionName("potion." + LibMisc.MOD_ID + ":" + name);
         effectType = EffectType.TIMED;
     }
 
@@ -64,4 +69,12 @@ public abstract class PotionBase extends Potion {
     }
 
     public void tick(EntityLivingBase entity) {}
+
+    @Override
+    public List<ItemStack> getCurativeItems()
+    {
+        ArrayList<ItemStack> ret = new java.util.ArrayList<>();
+        ret.add(new ItemStack(Items.MILK_BUCKET));
+        return ret;
+    }
 }

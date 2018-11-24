@@ -6,22 +6,18 @@ import aurocosh.divinefavor.common.effect.ModPotionEffects;
 import aurocosh.divinefavor.common.lib.LibSpellNames;
 import net.minecraft.potion.PotionEffect;
 
-public class SpellWaterwalking extends Spell {
+public class SpellEmpowerAxe extends Spell {
     private final int SHORT = 1800;
     private final int NORMAL = 3600;
 
-    public SpellWaterwalking() {
-        super(LibSpellNames.WATERWALKING);
+    public SpellEmpowerAxe() {
+        super(LibSpellNames.EMPOWER_AXE);
     }
 
     @Override
     protected boolean performAction(SpellContext context) {
-        //if(context.playerIn.getEntityWorld().isRemote)
-        //    return true;
-
-        PotionEffect potioneffect = new PotionEffect(ModPotionEffects.waterwalk, NORMAL);
-        context.playerIn.addPotionEffect(potioneffect);
-
+        PotionEffect effect = new PotionEffect(ModPotionEffects.empower_axe, NORMAL);
+        context.playerIn.addPotionEffect(effect);
         return true;
     }
 
