@@ -22,9 +22,6 @@ public class ClientProxy extends CommonProxy {
 
         ModRendering.preInit();
 
-//		if(ConfigHandler.versionCheckEnabled)
-//			new VersionChecker().init();
-
         MinecraftForge.EVENT_BUS.register(new HUDHandler());
         MinecraftForge.EVENT_BUS.register(new ClientTickHandler());
 

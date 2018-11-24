@@ -3,8 +3,7 @@ package aurocosh.divinefavor.common.block.tile.container;
 import aurocosh.divinefavor.DivineFavor;
 import aurocosh.divinefavor.common.block.tile.TileFastFurnace;
 import aurocosh.divinefavor.common.block.tile.TileIronMedium;
-import aurocosh.divinefavor.common.network.Messages;
-import aurocosh.divinefavor.common.network.PacketSyncPower;
+import aurocosh.divinefavor.common.network.message.SyncPowerMessage;
 import aurocosh.divinefavor.common.tool.IEnergyContainer;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
@@ -16,11 +15,12 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.SlotItemHandler;
+import vazkii.arl.network.NetworkHandler;
 
 public class ContainerFastFurnace extends Container implements IEnergyContainer {
     private static final int PROGRESS_ID = 0;
 
-    public TileFastFurnace fastFurnace;
+    private TileFastFurnace fastFurnace;
 
     public ContainerFastFurnace(EntityPlayer player, TileFastFurnace fastFurnace) {
         this.fastFurnace = fastFurnace;
@@ -86,22 +86,19 @@ public class ContainerFastFurnace extends Container implements IEnergyContainer 
         Slot slot = this.inventorySlots.get(index);
 
         if (slot != null && slot.getHasStack()) {
-            ItemStack itemstack1 = slot.getStack();
-            itemstack = itemstack1.copy();
+            ItemStack otherItemstack = slot.getStack();
+            itemstack = otherItemstack.copy();
 
             if (index < TileIronMedium.SIZE) {
-                if (!this.mergeItemStack(itemstack1, TileIronMedium.SIZE, this.inventorySlots.size(), true)) {
+                if (!this.mergeItemStack(otherItemstack, TileIronMedium.SIZE, this.inventorySlots.size(), true))
                     return ItemStack.EMPTY;
-                }
-            } else if (!this.mergeItemStack(itemstack1, 0, TileIronMedium.SIZE, false)) {
+            } else if (!this.mergeItemStack(otherItemstack, 0, TileIronMedium.SIZE, false))
                 return ItemStack.EMPTY;
-            }
 
-            if (itemstack1.isEmpty()) {
+            if (otherItemstack.isEmpty())
                 slot.putStack(ItemStack.EMPTY);
-            } else {
+            else
                 slot.onSlotChanged();
-            }
         }
 
         return itemstack;
@@ -120,7 +117,8 @@ public class ContainerFastFurnace extends Container implements IEnergyContainer 
             for (IContainerListener listener : listeners) {
                 if (listener instanceof EntityPlayerMP) {
                     EntityPlayerMP player = (EntityPlayerMP) listener;
-                    Messages.INSTANCE.sendTo(new PacketSyncPower(fastFurnace.getEnergy()), player);
+                    SyncPowerMessage message = new SyncPowerMessage(fastFurnace.getEnergy());
+                    NetworkHandler.INSTANCE.sendTo(message, player);
                 }
             }
         }

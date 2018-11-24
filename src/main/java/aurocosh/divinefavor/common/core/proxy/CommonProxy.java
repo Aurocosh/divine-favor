@@ -2,17 +2,11 @@ package aurocosh.divinefavor.common.core.proxy;
 
 import aurocosh.divinefavor.DivineFavor;
 import aurocosh.divinefavor.common.block.base.ModBlocks;
-import aurocosh.divinefavor.common.block.tile.TileFastFurnace;
-import aurocosh.divinefavor.common.block.tile.TileIronMedium;
 import aurocosh.divinefavor.common.core.handlers.PlayerDataHandler;
 import aurocosh.divinefavor.common.entity.ModEntities;
 import aurocosh.divinefavor.common.item.base.ModItems;
-import aurocosh.divinefavor.common.lib.LibBlockNames;
-import aurocosh.divinefavor.common.lib.LibEntityNames;
-import aurocosh.divinefavor.common.lib.LibMisc;
 import aurocosh.divinefavor.common.network.GuiHandler;
 import aurocosh.divinefavor.common.network.MessageRegister;
-import aurocosh.divinefavor.common.network.Messages;
 import aurocosh.divinefavor.common.spell.base.ModSpells;
 import com.google.common.util.concurrent.ListenableFuture;
 import net.minecraft.entity.player.EntityPlayer;
@@ -22,7 +16,6 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
-import net.minecraftforge.fml.common.registry.GameRegistry;
 
 @Mod.EventBusSubscriber
 public class CommonProxy {
@@ -33,8 +26,6 @@ public class CommonProxy {
         ModBlocks.preInit();
         ModEntities.init();
         ModSpells.init();
-        //ModCraftingRecipes.init();
-        Messages.registerMessages("divinefavor");
 
         MessageRegister.init();
 
