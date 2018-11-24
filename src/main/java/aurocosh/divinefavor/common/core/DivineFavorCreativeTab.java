@@ -55,6 +55,7 @@ public class DivineFavorCreativeTab extends CreativeTabs {
         addItem(ModItems.stoneball_throw_talisman);
         addItem(ModItems.small_fireball_throw_talisman);
         addItem(ModItems.stoneball);
+        addItem(ModItems.waterwalking_talisman);
 
         for (PotionTypeDivine pt : PotionTypeRegistry.potions) {
             list.add(PotionUtils.addPotionToItemStack(new ItemStack(Items.POTIONITEM), pt));

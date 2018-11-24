@@ -13,6 +13,7 @@ public final class ModItems {
     public static ItemMod stoneball_throw_talisman;
     public static ItemMod small_fireball_throw_talisman;
     public static ItemMod stoneball;
+    public static ItemMod waterwalking_talisman;
 
     public static void preInit() {
         arrow_throw_talisman = new ItemArrowThrowTalisman();
@@ -23,6 +24,7 @@ public final class ModItems {
         stoneball_throw_talisman = new ItemStoneballThrowTalisman();
         small_fireball_throw_talisman = new ItemSmallFireballThrowTalisman();
         stoneball = new ItemStoneball();
+        waterwalking_talisman = new ItemWaterwalkingTalisman();
     }
 
     public static void init() {
