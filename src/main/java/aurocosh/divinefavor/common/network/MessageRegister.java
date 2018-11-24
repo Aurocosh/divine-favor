@@ -12,6 +12,7 @@ package aurocosh.divinefavor.common.network;
 
 import aurocosh.divinefavor.common.network.message.MessageDeductPsi;
 import aurocosh.divinefavor.common.network.message.MessageLevelUp;
+import aurocosh.divinefavor.common.network.message.SyncPowerMessage;
 import net.minecraftforge.fml.relauncher.Side;
 import vazkii.arl.network.NetworkHandler;
 
@@ -20,7 +21,6 @@ public class MessageRegister {
 	public static void init() {
 		NetworkHandler.register(MessageDeductPsi.class, Side.CLIENT);
 		NetworkHandler.register(MessageLevelUp.class, Side.CLIENT);
-
-//		NetworkMessage.mapHandler(Spell.class, MessageRegister::readSpell, MessageRegister::writeSpell);
+		NetworkHandler.register(SyncPowerMessage.class, Side.CLIENT);
 	}
 }
