@@ -1,8 +1,7 @@
-package aurocosh.divinefavor.api.spell;
+package aurocosh.divinefavor.common.spell.base;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.util.FakePlayer;
 
 import java.util.Random;

@@ -18,6 +18,6 @@ item.divinefavor:waterwalking_talisman.name=Waterwalking talisman
 item.divinefavor:stoneball.name=Pebble
 
 # EFFECT NAMES
-potion.divinefavor:empower_axe=Empower axe
-potion.divinefavor:lavawalking=Lava walking
-potion.divinefavor:waterwalking=Water walking
+empower_axe=Empower axe
+lavawalk=Lava walking
+waterwalk=Water walking

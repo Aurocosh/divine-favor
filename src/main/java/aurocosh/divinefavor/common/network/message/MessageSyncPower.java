@@ -10,11 +10,11 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import vazkii.arl.network.NetworkMessage;
 
-public class SyncPowerMessage extends NetworkMessage {
+public class MessageSyncPower extends NetworkMessage {
     public int energy;
 
-    public SyncPowerMessage() { }
-    public SyncPowerMessage(int energy) {
+    public MessageSyncPower() { }
+    public MessageSyncPower(int energy) {
         this.energy = energy;
     }
 

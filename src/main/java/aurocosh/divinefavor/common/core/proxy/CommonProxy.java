@@ -7,6 +7,7 @@ import aurocosh.divinefavor.common.entity.ModEntities;
 import aurocosh.divinefavor.common.item.base.ModItems;
 import aurocosh.divinefavor.common.network.GuiHandler;
 import aurocosh.divinefavor.common.network.MessageRegister;
+import aurocosh.divinefavor.common.requirements.base.ModSpellRequirements;
 import aurocosh.divinefavor.common.spell.base.ModSpells;
 import com.google.common.util.concurrent.ListenableFuture;
 import net.minecraft.entity.player.EntityPlayer;
@@ -25,6 +26,7 @@ public class CommonProxy {
         ModItems.preInit();
         ModBlocks.preInit();
         ModEntities.init();
+        ModSpellRequirements.init();
         ModSpells.init();
 
         MessageRegister.init();
@@ -32,7 +34,6 @@ public class CommonProxy {
         NetworkRegistry.INSTANCE.registerGuiHandler(DivineFavor.instance, new GuiHandler());
 
         MinecraftForge.EVENT_BUS.register(new PlayerDataHandler.EventHandler());
-//        MinecraftForge.EVENT_BUS.register(new EmpowerAxeEventHandler());
     }
 
     public void init(FMLInitializationEvent e) {

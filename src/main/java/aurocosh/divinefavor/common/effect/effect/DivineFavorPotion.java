@@ -32,7 +32,7 @@ public abstract class DivineFavorPotion extends Potion {
         super(false, potionColor);
         this.beneficial = b;
         this.setIcon(new ResourceLocation(LibMisc.MOD_ID, "textures/potions/" + name + ".png"));
-        this.setPotionName("potion." + LibMisc.MOD_ID + ":" + name);
+        this.setPotionName(name);
         effectType = EffectType.TIMED;
     }
 

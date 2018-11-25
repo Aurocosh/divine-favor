@@ -1,11 +1,10 @@
 package aurocosh.divinefavor.common.spell;
 
-import aurocosh.divinefavor.api.spell.Spell;
-import aurocosh.divinefavor.api.spell.SpellContext;
+import aurocosh.divinefavor.common.spell.base.Spell;
+import aurocosh.divinefavor.common.spell.base.SpellContext;
 import aurocosh.divinefavor.common.entity.EntityStoneball;
 import aurocosh.divinefavor.common.lib.LibSpellNames;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.projectile.EntitySnowball;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.world.World;

@@ -55,7 +55,7 @@ public class ConfigHandler {
         maxPsiBarScale = loadPropInt("Maximum Psi Bar Scale", desc, maxPsiBarScale);
 
         desc = "How many compiled spells should be kept in a cache. Probably best not to mess with it if you don't know what you're doing.";
-        spellCacheSize = loadPropInt("Spell Cache Size", desc, spellCacheSize);
+        spellCacheSize = loadPropInt("SpellRequirement Cache Size", desc, spellCacheSize);
 
         desc = "The harvest level of a CAD for the purposes of block breaking spells. 3 is diamond level. Defaults to 2 (iron level)";
         cadHarvestLevel = loadPropInt("CAD Harvest Level", desc, cadHarvestLevel);

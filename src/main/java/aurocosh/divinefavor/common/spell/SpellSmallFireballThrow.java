@@ -1,7 +1,7 @@
 package aurocosh.divinefavor.common.spell;
 
-import aurocosh.divinefavor.api.spell.Spell;
-import aurocosh.divinefavor.api.spell.SpellContext;
+import aurocosh.divinefavor.common.spell.base.Spell;
+import aurocosh.divinefavor.common.spell.base.SpellContext;
 import aurocosh.divinefavor.common.lib.LibSpellNames;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntitySmallFireball;
@@ -28,7 +28,7 @@ public class SpellSmallFireballThrow extends Spell {
 
     public boolean throwSmallFireball(World worldIn, EntityPlayer playerIn) {
         worldIn.playSound(null, playerIn.posX, playerIn.posY, playerIn.posZ, SoundEvents.ENTITY_SNOWBALL_THROW, SoundCategory.NEUTRAL, 0.5F, 0.4F / (spellRand.nextFloat() * 0.4F + 0.8F));
-        if (!worldIn.isRemote)
+        if (!playerIn.world.isRemote)
         {
             //UtilBlock.setHeadingFromThrower(playerIn, entitySmallFireball, playerIn.rotationPitch, playerIn.rotationYaw, 0.0F, 1.5F, 0.0F);
 

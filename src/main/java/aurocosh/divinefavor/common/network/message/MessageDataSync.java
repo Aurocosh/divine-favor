@@ -27,9 +27,7 @@ public class MessageDataSync extends NetworkMessage {
     public IMessage handleMessage(MessageContext context) {
         ClientTickHandler.scheduledActions.add(() -> {
             PlayerData data = PlayerDataHandler.get(DivineFavor.proxy.getClientPlayer());
-            data.lastAvailablePsi = data.availablePsi;
             data.readFromNBT(cmp);
-            //DivineFavor.proxy.savePersistency();
         });
 
         return null;

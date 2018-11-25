@@ -1,22 +1,14 @@
 package aurocosh.divinefavor.common.item;
 
-import aurocosh.divinefavor.api.internal.Vector3;
-import aurocosh.divinefavor.api.spell.SpellContext;
 import aurocosh.divinefavor.common.core.DivineFavorCreativeTab;
-import aurocosh.divinefavor.common.core.handlers.PlayerDataHandler;
 import aurocosh.divinefavor.common.entity.EntityStoneball;
 import aurocosh.divinefavor.common.item.base.IDivineFavorItem;
 import aurocosh.divinefavor.common.lib.LibItemNames;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.projectile.EntitySnowball;
 import net.minecraft.init.SoundEvents;
-import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.stats.StatList;
 import net.minecraft.util.*;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
 import vazkii.arl.item.ItemMod;
 

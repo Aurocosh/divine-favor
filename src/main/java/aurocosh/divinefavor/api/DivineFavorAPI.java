@@ -1,7 +1,5 @@
 package aurocosh.divinefavor.api;
 
-import aurocosh.divinefavor.api.internal.DummyMethodHandler;
-import aurocosh.divinefavor.api.internal.IInternalMethodHandler;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.Item.ToolMaterial;
 import net.minecraft.item.ItemArmor.ArmorMaterial;
@@ -17,7 +15,6 @@ public final class DivineFavorAPI {
      *
      * <b>DO NOT EVER, EVER, OVERWRITE THIS VALUE</b>
      */
-    public static IInternalMethodHandler internalHandler = new DummyMethodHandler();
 
     /*
     public static RegistryNamespaced<String, Class<? extends SpellPiece>> spellPieceRegistry = new RegistryNamespaced();
@@ -36,7 +33,7 @@ public final class DivineFavorAPI {
     public static int levelCap = 1;
 
     /**
-     * Registers a Spell Piece given its class, by which, it puts it in the registry.
+     * Registers a SpellRequirement Piece given its class, by which, it puts it in the registry.
      */
 
     /*
