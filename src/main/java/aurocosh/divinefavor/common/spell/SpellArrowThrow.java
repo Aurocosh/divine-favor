@@ -118,7 +118,7 @@ public class SpellArrowThrow extends Spell {
     }
 
     /**
-     * Gets the velocity of the arrow entity from the bow's charge
+     * Gets the velocity of the arrow entity from the bow's favorCost
      */
     public static float getArrowVelocity(int charge)
     {

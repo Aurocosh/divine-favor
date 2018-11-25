@@ -1,6 +1,5 @@
 package aurocosh.divinefavor.common.item;
 
-import aurocosh.divinefavor.DivineFavor;
 import aurocosh.divinefavor.api.internal.Vector3;
 import aurocosh.divinefavor.common.block.base.ModBlocks;
 import aurocosh.divinefavor.common.requirements.base.ModSpellRequirements;
@@ -118,7 +117,7 @@ public abstract class ItemTalisman extends ItemMod implements IDivineFavorItem {
             return;
 
         PlayerDataHandler.PlayerData data = PlayerDataHandler.get(playerIn);
-        data.provideSpellCharge(getRequirement().getChargeType(),1);
+        data.provideSpellCharge(getRequirement().getFavorType(),1);
     }
 
     public SpellRequirement getRequirement() {
