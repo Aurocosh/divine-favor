@@ -86,7 +86,7 @@ public final class HUDHandler {
         }
 
         int ticks = ReflectionHelper.getPrivateValue(GuiIngame.class, mc.ingameGUI, LibObfuscation.REMAINING_HIGHLIGHT_TICKS);
-        ticks -= 10;
+        //ticks -= 10;
 
         if (ticks > 0) {
             int alpha = Math.min(255, (int) ((ticks - pticks) * 256.0F / 10.0F));
