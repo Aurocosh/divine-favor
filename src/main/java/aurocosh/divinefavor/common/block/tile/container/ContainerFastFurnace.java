@@ -3,7 +3,7 @@ package aurocosh.divinefavor.common.block.tile.container;
 import aurocosh.divinefavor.DivineFavor;
 import aurocosh.divinefavor.common.block.tile.TileFastFurnace;
 import aurocosh.divinefavor.common.block.tile.TileIronMedium;
-import aurocosh.divinefavor.common.network.message.SyncPowerMessage;
+import aurocosh.divinefavor.common.network.message.MessageSyncPower;
 import aurocosh.divinefavor.common.tool.IEnergyContainer;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
@@ -117,7 +117,7 @@ public class ContainerFastFurnace extends Container implements IEnergyContainer 
             for (IContainerListener listener : listeners) {
                 if (listener instanceof EntityPlayerMP) {
                     EntityPlayerMP player = (EntityPlayerMP) listener;
-                    SyncPowerMessage message = new SyncPowerMessage(fastFurnace.getEnergy());
+                    MessageSyncPower message = new MessageSyncPower(fastFurnace.getEnergy());
                     NetworkHandler.INSTANCE.sendTo(message, player);
                 }
             }

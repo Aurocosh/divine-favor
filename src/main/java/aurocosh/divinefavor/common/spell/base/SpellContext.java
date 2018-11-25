@@ -1,4 +1,4 @@
-package aurocosh.divinefavor.api.spell;
+package aurocosh.divinefavor.common.spell.base;
 
 import aurocosh.divinefavor.common.core.handlers.PlayerDataHandler.PlayerData;
 import net.minecraft.entity.player.EntityPlayer;

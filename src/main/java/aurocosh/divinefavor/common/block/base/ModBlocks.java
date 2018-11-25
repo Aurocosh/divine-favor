@@ -1,5 +1,6 @@
 package aurocosh.divinefavor.common.block.base;
 
+import aurocosh.divinefavor.common.block.BlockDiviner;
 import aurocosh.divinefavor.common.block.BlockFastFurnaceMod;
 import aurocosh.divinefavor.common.block.BlockIronMedium;
 import aurocosh.divinefavor.common.block.tile.TileFastFurnace;
@@ -13,10 +14,12 @@ import vazkii.arl.block.BlockMod;
 public class ModBlocks {
     public static BlockMod blockFastFurnace;
     public static BlockMod blockIronMedium;
+    public static BlockMod blockDiviner;
 
     public static void preInit() {
         blockFastFurnace = new BlockFastFurnaceMod();
         blockIronMedium = new BlockIronMedium();
+        blockDiviner = new BlockDiviner();
 
         initTileEntities();
     }

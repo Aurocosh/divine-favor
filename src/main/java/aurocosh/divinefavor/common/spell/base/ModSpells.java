@@ -1,6 +1,5 @@
 package aurocosh.divinefavor.common.spell.base;
 
-import aurocosh.divinefavor.api.spell.Spell;
 import aurocosh.divinefavor.common.lib.LibSpellNames;
 import aurocosh.divinefavor.common.spell.*;
 

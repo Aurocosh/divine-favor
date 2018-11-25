@@ -1,11 +1,9 @@
 package aurocosh.divinefavor.common.spell;
 
-import aurocosh.divinefavor.api.spell.Spell;
-import aurocosh.divinefavor.api.spell.SpellContext;
+import aurocosh.divinefavor.common.spell.base.Spell;
+import aurocosh.divinefavor.common.spell.base.SpellContext;
 import aurocosh.divinefavor.common.lib.LibSpellNames;
-import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemDye;
 import net.minecraft.item.ItemStack;

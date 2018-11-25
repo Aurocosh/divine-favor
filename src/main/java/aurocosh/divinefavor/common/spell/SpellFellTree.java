@@ -1,7 +1,7 @@
 package aurocosh.divinefavor.common.spell;
 
-import aurocosh.divinefavor.api.spell.Spell;
-import aurocosh.divinefavor.api.spell.SpellContext;
+import aurocosh.divinefavor.common.spell.base.Spell;
+import aurocosh.divinefavor.common.spell.base.SpellContext;
 import aurocosh.divinefavor.common.events.TalismanEvent;
 import aurocosh.divinefavor.common.lib.LibSpellNames;
 import aurocosh.divinefavor.common.util.UtilBlock;
