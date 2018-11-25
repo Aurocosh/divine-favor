@@ -23,10 +23,10 @@ public class CommonProxy {
     public void preInit(FMLPreInitializationEvent e) {
         //ConfigHandler.init(event.getSuggestedConfigurationFile());
 
+        ModSpellRequirements.init();
         ModItems.preInit();
         ModBlocks.preInit();
         ModEntities.init();
-        ModSpellRequirements.init();
         ModSpells.init();
 
         MessageRegister.init();
