@@ -22,13 +22,13 @@ import vazkii.arl.item.ItemMod;
 public abstract class ItemTalisman extends ItemMod implements IDivineFavorItem {
     private boolean castOnUse;
     private boolean castOnRightClick;
-    private String requirementName;
     private SpellRequirement requirement;
 
     public ItemTalisman(String name, String requirementName, boolean castOnUse, boolean castOnRightClick) {
         super(name);
-        requirement = null;
-        this.requirementName = requirementName;
+        requirement = ModSpellRequirements.getRequirement(requirementName);
+        if(requirement == null)
+            requirement = ModSpellRequirements.free;
         setMaxStackSize(1);
         setCreativeTab(DivineFavorCreativeTab.INSTANCE);
         this.castOnUse = castOnUse;
@@ -100,39 +100,31 @@ public abstract class ItemTalisman extends ItemMod implements IDivineFavorItem {
     private boolean claimCost(SpellContext context){
         if(context.worldIn.isRemote)
             return false;
-        return getRequirement().claimCost(context);
+        return requirement.claimCost(context);
     }
 
     private void announceCost(World world){
         if(!world.isRemote)
             return;
-        Minecraft.getMinecraft().player.sendChatMessage(getRequirement().toString());
+        Minecraft.getMinecraft().player.sendChatMessage(requirement.toString());
     }
 
     private void addCharge(EntityPlayer playerIn){
         if(playerIn.world.isRemote)
             return;
-        SpellRequirement requirement = getRequirement();
         if(requirement == ModSpellRequirements.free)
             return;
 
         PlayerDataHandler.PlayerData data = PlayerDataHandler.get(playerIn);
-        data.provideSpellCharge(getRequirement().getFavorType(),1);
-    }
-
-    public SpellRequirement getRequirement() {
-        if(requirement == null) {
-            requirement = ModSpellRequirements.getRequirement(requirementName);
-            if(requirement == null)
-                requirement = ModSpellRequirements.free;
-        }
-        return requirement;
+        data.provideSpellCharge(requirement.getFavorType(),1);
     }
 
     @Override
     public EnumRarity getRarity(ItemStack stack) {
         return EnumRarity.RARE;
     }
+
+    public SpellRequirement getRequirement() { return requirement; }
 
     public static RayTraceResult raycast(World world, Vector3 origin, Vector3 ray, double len) {
         Vector3 end = origin.copy().add(ray.copy().normalize().multiply(len));
