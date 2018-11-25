@@ -16,7 +16,7 @@ public class SpellRequrementEmpowerAxe extends SpellRequirement {
     @Override
     protected boolean claim(SpellContext context)
     {
-        PlayerDataHandler.PlayerData data = PlayerDataHandler.get(DivineFavor.proxy.getClientPlayer());
+        PlayerDataHandler.PlayerData data = PlayerDataHandler.get(context.playerIn);
         return data.consumeSpellCharge(chargeType,1);
     }
 }
