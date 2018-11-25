@@ -8,7 +8,7 @@ import aurocosh.divinefavor.common.spell.base.ModSpells;
 
 public class ItemWaterwalkingTalisman extends ItemTalisman {
     public ItemWaterwalkingTalisman() {
-        super(LibItemNames.WATERWALKING_TALISMAN, LibSpellRequirementNames.FREE,true,true);
+        super(LibItemNames.WATERWALKING_TALISMAN, LibSpellRequirementNames.WATERWALKING,true,true);
 
         //new AssemblyScavengeRecipe();
         setCreativeTab(DivineFavorCreativeTab.INSTANCE);

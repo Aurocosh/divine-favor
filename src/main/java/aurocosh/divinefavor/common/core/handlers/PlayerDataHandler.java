@@ -2,7 +2,7 @@ package aurocosh.divinefavor.common.core.handlers;
 
 import aurocosh.divinefavor.common.network.message.MessageDataSync;
 import aurocosh.divinefavor.common.network.message.MessageSyncSpellCharge;
-import aurocosh.divinefavor.common.spell.base.SpellChargeType;
+import aurocosh.divinefavor.common.lib.LibFavorType;
 import aurocosh.divinefavor.common.util.UtilSerialize;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
@@ -13,10 +13,7 @@ import net.minecraftforge.fml.common.gameevent.PlayerEvent;
 import vazkii.arl.network.NetworkHandler;
 
 import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
 import java.util.Map.Entry;
 
 public class PlayerDataHandler {
@@ -86,14 +83,26 @@ public class PlayerDataHandler {
     }
 
     public static class PlayerData {
-        private static final String TAG_EMPOWER_AXE_CHARGES = "EmpowerAxeCharges";
+        private static final String TAG_ARROW_THROW_FAVOR = "ArrowThrowFavor";
+        private static final String TAG_BONEMEAL_FAVOR = "BonemealFavor";
+        private static final String TAG_EMPOWER_AXE_FAVOR = "EmpowerAxeFavor";
+        private static final String TAG_FELL_TREE_FAVOR = "FellTreeFavor";
+        private static final String TAG_SMALL_FIREBALL_THROW_FAVOR = "FireballThrowFavor";
+        private static final String TAG_IGNITION_FAVOR = "IgnitionFavor";
+        private static final String TAG_LAVAWALKING_FAVOR = "LavawalkingFavor";
+        private static final String TAG_SNOWBALL_THROW_FAVOR = "SnowballThrowFavor";
+        private static final String TAG_STONEBALL_THROW_FAVOR = "StoneballThrowFavor";
+        private static final String TAG_WATERWALKING_FAVOR = "WaterwalkingFavor";
+
         private static final String TAG_WOOD_BLOCKS_BROKEN = "WoodBlocksBroken";
 
         private static final String TAG_ALTAR_POSITIONS = "AltarPositions";
         private static final String TAG_LAST_CLICKED_POSITIONS = "LastClickedPositions";
 
-        public int empowerAxeCharges;
-        public int woodBlocksBroken;
+        private static Map<Integer, Integer> favorValues = new HashMap<>();
+        private static Map<Integer, String> favorTags = new HashMap<>();
+
+        int woodBlocksBroken;
 
         private ArrayList<BlockPos> altarPositions;
         private ArrayList<BlockPos> lastClickedPositions;
@@ -105,7 +114,17 @@ public class PlayerDataHandler {
             playerWR = new WeakReference(player);
             client = player.world.isRemote;
 
-            empowerAxeCharges = 0;
+            addFavorType(LibFavorType.ARROW_THROW,TAG_ARROW_THROW_FAVOR);
+            addFavorType(LibFavorType.BONEMEAL,TAG_BONEMEAL_FAVOR);
+            addFavorType(LibFavorType.EMPOWER_AXE,TAG_EMPOWER_AXE_FAVOR);
+            addFavorType(LibFavorType.FELL_TREE,TAG_FELL_TREE_FAVOR);
+            addFavorType(LibFavorType.SMALL_FIREBALL_THROW,TAG_SMALL_FIREBALL_THROW_FAVOR);
+            addFavorType(LibFavorType.IGNITION,TAG_IGNITION_FAVOR);
+            addFavorType(LibFavorType.LAVAWALKING,TAG_LAVAWALKING_FAVOR);
+            addFavorType(LibFavorType.SNOWBALL_THROW,TAG_SNOWBALL_THROW_FAVOR);
+            addFavorType(LibFavorType.STONEBALL_THROW,TAG_STONEBALL_THROW_FAVOR);
+            addFavorType(LibFavorType.WATERWALKING,TAG_WATERWALKING_FAVOR);
+
             woodBlocksBroken = 0;
 
             altarPositions = new ArrayList<>();
@@ -114,55 +133,55 @@ public class PlayerDataHandler {
             load();
         }
 
+        public void addFavorType(int type, String tag){
+            favorValues.put(type,0);
+            favorTags.put(type,tag);
+        }
+
         public void tick() {
 //            EntityPlayer player = playerWR.get();
 //            int dimension = player.getEntityWorld().provider.getDimension();
         }
 
-        public int getSpellCharge(SpellChargeType dataType) {
-            if (dataType == SpellChargeType.SPELL_EMPOWER_AXE)
-                return empowerAxeCharges;
-            return 0;
+        public int getSpellCharge(int favorType) {
+            Integer favors = favorValues.get(favorType);
+            if(favors == null)
+                return 0;
+            return favors;
         }
 
-        public void setSpellCharge(SpellChargeType dataType, int charge) {
-            if (dataType == SpellChargeType.SPELL_EMPOWER_AXE)
-                empowerAxeCharges = charge;
+        public void setSpellCharge(int favorType, int favorCount) {
+            favorValues.put(favorType,favorCount);
             save();
         }
 
-        private int changeSpellCharge(SpellChargeType dataType, int charge) {
-            int charges = 0;
-            if (dataType == SpellChargeType.SPELL_EMPOWER_AXE){
-                empowerAxeCharges += charge;
-                charges = empowerAxeCharges;
-            }
+        private int changeSpellCharge(int favorType, int favorCount) {
+            int favors = getSpellCharge(favorType);
+            favors += favorCount;
+            setSpellCharge(favorType,favors);
             save();
-            return charges;
+            return favors;
         }
 
-        public boolean hasSpellCharge(SpellChargeType dataType, int charge) {
-            return getSpellCharge(dataType) >= charge;
-        }
-
-        public boolean consumeSpellCharge(SpellChargeType dataType, int charge) {
-            if(!hasSpellCharge(dataType,charge))
+        public boolean consumeSpellCharge(int favorType, int favorCount) {
+            int favors = getSpellCharge(favorType);
+            if(favors < favorCount)
                 return false;
 
-            int charges = changeSpellCharge(dataType,-charge);
+            int charges = changeSpellCharge(favorType,-favorCount);
 
             if(playerWR.get() instanceof EntityPlayerMP) {
-                MessageSyncSpellCharge message = new MessageSyncSpellCharge(dataType,charges);
+                MessageSyncSpellCharge message = new MessageSyncSpellCharge(favorType,charges);
                 NetworkHandler.INSTANCE.sendTo(message, (EntityPlayerMP) playerWR.get());
             }
             return true;
         }
 
-        public boolean provideSpellCharge(SpellChargeType dataType, int charge) {
-            int charges = changeSpellCharge(dataType,charge);
+        public boolean provideSpellCharge(int favorType, int favorCount) {
+            int charges = changeSpellCharge(favorType,favorCount);
 
             if(playerWR.get() instanceof EntityPlayerMP) {
-                MessageSyncSpellCharge message = new MessageSyncSpellCharge(dataType,charges);
+                MessageSyncSpellCharge message = new MessageSyncSpellCharge(favorType,charges);
                 NetworkHandler.INSTANCE.sendTo(message, (EntityPlayerMP) playerWR.get());
             }
             return true;
@@ -180,8 +199,12 @@ public class PlayerDataHandler {
         }
 
         public void writeToNBT(NBTTagCompound cmp) {
-            cmp.setInteger(TAG_EMPOWER_AXE_CHARGES, empowerAxeCharges);
             cmp.setInteger(TAG_WOOD_BLOCKS_BROKEN, woodBlocksBroken);
+
+            for (Map.Entry<Integer, String> entry : favorTags.entrySet()) {
+                int value = favorValues.get(entry.getKey());
+                cmp.setInteger(entry.getValue(),value);
+            }
 
             int[] altarArray = UtilSerialize.SerializeBlockPosArray(altarPositions);
             cmp.setIntArray(TAG_ALTAR_POSITIONS, altarArray);
@@ -202,8 +225,12 @@ public class PlayerDataHandler {
         }
 
         public void readFromNBT(NBTTagCompound cmp) {
-            empowerAxeCharges = cmp.getInteger(TAG_EMPOWER_AXE_CHARGES);
             woodBlocksBroken = cmp.getInteger(TAG_WOOD_BLOCKS_BROKEN);
+
+            for (Map.Entry<Integer, String> entry : favorTags.entrySet()) {
+                int value = cmp.getInteger(entry.getValue());
+                favorValues.put(entry.getKey(),value);
+            }
 
             int[] altarArray = cmp.getIntArray(TAG_ALTAR_POSITIONS);
             altarPositions = UtilSerialize.DeserializeBlockPosArray(altarArray);
@@ -211,7 +238,5 @@ public class PlayerDataHandler {
             int[] clickedArray = cmp.getIntArray(TAG_LAST_CLICKED_POSITIONS);
             lastClickedPositions = UtilSerialize.DeserializeBlockPosArray(clickedArray);
         }
-
-
     }
 }

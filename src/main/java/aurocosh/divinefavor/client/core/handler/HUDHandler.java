@@ -1,11 +1,8 @@
 package aurocosh.divinefavor.client.core.handler;
 
-import aurocosh.divinefavor.api.DivineFavorAPI;
-import aurocosh.divinefavor.common.core.handlers.ConfigHandler;
 import aurocosh.divinefavor.common.core.handlers.PlayerDataHandler;
 import aurocosh.divinefavor.common.item.ItemTalisman;
 import aurocosh.divinefavor.common.lib.LibObfuscation;
-import aurocosh.divinefavor.common.lib.LibResources;
 import aurocosh.divinefavor.common.requirements.base.ModSpellRequirements;
 import aurocosh.divinefavor.common.requirements.base.SpellRequirement;
 import net.minecraft.client.Minecraft;
@@ -14,7 +11,6 @@ import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumHand;
-import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.client.event.RenderGameOverlayEvent.ElementType;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -22,8 +18,6 @@ import net.minecraftforge.fml.relauncher.ReflectionHelper;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import org.lwjgl.opengl.GL11;
-
-import java.awt.*;
 
 public final class HUDHandler {
 
@@ -81,7 +75,7 @@ public final class HUDHandler {
         if(requirement != ModSpellRequirements.free)
         {
             PlayerDataHandler.PlayerData data = PlayerDataHandler.get(mc.player);
-            int charges = data.getSpellCharge(requirement.getChargeType());
+            int charges = data.getSpellCharge(requirement.getFavorType());
             spellCharges = "Charges: " + charges;
         }
 

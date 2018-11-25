@@ -2,13 +2,13 @@ package aurocosh.divinefavor.common.requirements;
 
 import aurocosh.divinefavor.common.lib.LibSpellRequirementNames;
 import aurocosh.divinefavor.common.requirements.base.SpellRequirement;
-import aurocosh.divinefavor.common.spell.base.SpellChargeType;
+import aurocosh.divinefavor.common.lib.LibFavorType;
 import aurocosh.divinefavor.common.spell.base.SpellContext;
 
 public class SpellRequrementFree extends SpellRequirement {
     public SpellRequrementFree()
     {
-        super(LibSpellRequirementNames.FREE, SpellChargeType.NOT_SET, true);
+        super(LibSpellRequirementNames.FREE, LibFavorType.NOT_SET, false);
     }
 
     @Override

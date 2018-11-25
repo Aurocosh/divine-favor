@@ -8,9 +8,7 @@ import aurocosh.divinefavor.common.spell.base.ModSpells;
 
 public class ItemFellTreeTalisman extends ItemTalisman {
     public ItemFellTreeTalisman() {
-        super(LibItemNames.FELL_TREE_TALISMAN, LibSpellRequirementNames.FREE,true,false);
-
-        //new AssemblyScavengeRecipe();
+        super(LibItemNames.FELL_TREE_TALISMAN, LibSpellRequirementNames.FELL_TREE,true,false);
         setCreativeTab(DivineFavorCreativeTab.INSTANCE);
     }
 

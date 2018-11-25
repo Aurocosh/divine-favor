@@ -8,9 +8,7 @@ import aurocosh.divinefavor.common.spell.base.ModSpells;
 
 public class ItemBonemealTalisman extends ItemTalisman {
     public ItemBonemealTalisman() {
-        super(LibItemNames.BONEMEAL_TALISMAN, LibSpellRequirementNames.FREE,true,false);
-
-        //new AssemblyScavengeRecipe();
+        super(LibItemNames.BONEMEAL_TALISMAN, LibSpellRequirementNames.BONEMEAL,true,false);
         setCreativeTab(DivineFavorCreativeTab.INSTANCE);
     }
 

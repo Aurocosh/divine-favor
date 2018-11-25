@@ -8,7 +8,7 @@ import aurocosh.divinefavor.common.spell.base.ModSpells;
 
 public class ItemSmallFireballThrowTalisman extends ItemTalisman {
     public ItemSmallFireballThrowTalisman() {
-        super(LibItemNames.SMALL_FIREBALL_THROW_TALISMAN, LibSpellRequirementNames.FREE,false,true);
+        super(LibItemNames.SMALL_FIREBALL_THROW_TALISMAN, LibSpellRequirementNames.SMALL_FIREBALL_THROW,false,true);
 
         setCreativeTab(DivineFavorCreativeTab.INSTANCE);
     }

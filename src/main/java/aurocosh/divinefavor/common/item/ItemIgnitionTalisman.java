@@ -8,7 +8,7 @@ import aurocosh.divinefavor.common.spell.base.ModSpells;
 
 public class ItemIgnitionTalisman extends ItemTalisman {
     public ItemIgnitionTalisman() {
-        super(LibItemNames.IGNITION_TALISMAN, LibSpellRequirementNames.FREE,true,false);
+        super(LibItemNames.IGNITION_TALISMAN, LibSpellRequirementNames.IGNITION,true,false);
 
         //new AssemblyScavengeRecipe();
         setCreativeTab(DivineFavorCreativeTab.INSTANCE);
