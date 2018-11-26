@@ -114,16 +114,8 @@ public class PlayerDataHandler {
             playerWR = new WeakReference(player);
             client = player.world.isRemote;
 
-            addFavorType(LibFavorType.ARROW_THROW,TAG_ARROW_THROW_FAVOR);
-            addFavorType(LibFavorType.BONEMEAL,TAG_BONEMEAL_FAVOR);
-            addFavorType(LibFavorType.EMPOWER_AXE,TAG_EMPOWER_AXE_FAVOR);
-            addFavorType(LibFavorType.FELL_TREE,TAG_FELL_TREE_FAVOR);
-            addFavorType(LibFavorType.SMALL_FIREBALL_THROW,TAG_SMALL_FIREBALL_THROW_FAVOR);
-            addFavorType(LibFavorType.IGNITION,TAG_IGNITION_FAVOR);
-            addFavorType(LibFavorType.LAVAWALKING,TAG_LAVAWALKING_FAVOR);
-            addFavorType(LibFavorType.SNOWBALL_THROW,TAG_SNOWBALL_THROW_FAVOR);
-            addFavorType(LibFavorType.STONEBALL_THROW,TAG_STONEBALL_THROW_FAVOR);
-            addFavorType(LibFavorType.WATERWALKING,TAG_WATERWALKING_FAVOR);
+            addFavorType(LibFavorType.TIMBER,TAG_ARROW_THROW_FAVOR);
+            addFavorType(LibFavorType.ALLFIRE,TAG_BONEMEAL_FAVOR);
 
             woodBlocksBroken = 0;
 

@@ -8,7 +8,7 @@ import aurocosh.divinefavor.common.spell.base.ModSpells;
 
 public class ItemLavawalkingTalisman extends ItemTalisman {
     public ItemLavawalkingTalisman() {
-        super(LibItemNames.LAVAWALKING_TALISMAN, LibSpellRequirementNames.LAVAWALKING,true,true);
+        super(LibItemNames.LAVAWALKING_TALISMAN, LibSpellRequirementNames.FREE,true,true);
         setCreativeTab(DivineFavorCreativeTab.INSTANCE);
     }
 

@@ -9,6 +9,7 @@ import aurocosh.divinefavor.common.network.GuiHandler;
 import aurocosh.divinefavor.common.network.MessageRegister;
 import aurocosh.divinefavor.common.requirements.base.ModSpellRequirements;
 import aurocosh.divinefavor.common.spell.base.ModSpells;
+import aurocosh.divinefavor.common.util.UtilAssets;
 import com.google.common.util.concurrent.ListenableFuture;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraftforge.common.MinecraftForge;
@@ -18,10 +19,14 @@ import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 
+import java.io.File;
+
 @Mod.EventBusSubscriber
 public class CommonProxy {
     public void preInit(FMLPreInitializationEvent e) {
         //ConfigHandler.init(event.getSuggestedConfigurationFile());
+
+        UtilAssets.Test();
 
         ModSpellRequirements.init();
         ModItems.preInit();
@@ -34,6 +39,8 @@ public class CommonProxy {
         NetworkRegistry.INSTANCE.registerGuiHandler(DivineFavor.instance, new GuiHandler());
 
         MinecraftForge.EVENT_BUS.register(new PlayerDataHandler.EventHandler());
+
+
     }
 
     public void init(FMLInitializationEvent e) {
