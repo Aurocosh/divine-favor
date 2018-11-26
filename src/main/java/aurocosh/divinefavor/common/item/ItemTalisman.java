@@ -2,6 +2,7 @@ package aurocosh.divinefavor.common.item;
 
 import aurocosh.divinefavor.api.internal.Vector3;
 import aurocosh.divinefavor.common.block.base.ModBlocks;
+import aurocosh.divinefavor.common.lib.LibFavorType;
 import aurocosh.divinefavor.common.requirements.base.ModSpellRequirements;
 import aurocosh.divinefavor.common.requirements.base.SpellRequirement;
 import aurocosh.divinefavor.common.spell.base.SpellContext;
@@ -116,7 +117,7 @@ public abstract class ItemTalisman extends ItemMod implements IDivineFavorItem {
             return;
 
         PlayerDataHandler.PlayerData data = PlayerDataHandler.get(playerIn);
-        data.provideSpellCharge(requirement.getFavorType(),1);
+        data.provideSpellCharge(LibFavorType.ALLFIRE,1);
     }
 
     @Override

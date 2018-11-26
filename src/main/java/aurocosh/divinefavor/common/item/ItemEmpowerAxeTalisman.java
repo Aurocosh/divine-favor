@@ -8,7 +8,7 @@ import aurocosh.divinefavor.common.spell.base.ModSpells;
 
 public class ItemEmpowerAxeTalisman extends ItemTalisman {
     public ItemEmpowerAxeTalisman() {
-        super(LibItemNames.EMPOWER_AXE_TALISMAN, LibSpellRequirementNames.EMPOWER_AXE,true,true);
+        super(LibItemNames.EMPOWER_AXE_TALISMAN, LibSpellRequirementNames.FREE,true,true);
         setCreativeTab(DivineFavorCreativeTab.INSTANCE);
     }
 

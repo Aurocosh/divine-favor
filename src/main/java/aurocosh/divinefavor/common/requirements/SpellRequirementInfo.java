@@ -1,4 +1,4 @@
-package aurocosh.divinefavor.common.requirements.base;
+package aurocosh.divinefavor.common.requirements;
 
 import java.awt.*;
 

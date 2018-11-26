@@ -2,6 +2,7 @@ package aurocosh.divinefavor.client.core.handler;
 
 import aurocosh.divinefavor.common.core.handlers.PlayerDataHandler;
 import aurocosh.divinefavor.common.item.ItemTalisman;
+import aurocosh.divinefavor.common.lib.LibFavorType;
 import aurocosh.divinefavor.common.lib.LibObfuscation;
 import aurocosh.divinefavor.common.requirements.base.ModSpellRequirements;
 import aurocosh.divinefavor.common.requirements.base.SpellRequirement;
@@ -75,7 +76,8 @@ public final class HUDHandler {
         if(requirement != ModSpellRequirements.free)
         {
             PlayerDataHandler.PlayerData data = PlayerDataHandler.get(mc.player);
-            int charges = data.getSpellCharge(requirement.getFavorType());
+//            int charges = data.getSpellCharge(requirement.getFavorType());
+            int charges = data.getSpellCharge(LibFavorType.ALLFIRE);
             spellCharges = "Charges: " + charges;
         }
 
