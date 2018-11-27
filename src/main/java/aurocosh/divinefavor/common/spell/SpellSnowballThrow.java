@@ -3,6 +3,7 @@ package aurocosh.divinefavor.common.spell;
 import aurocosh.divinefavor.common.spell.base.Spell;
 import aurocosh.divinefavor.common.spell.base.SpellContext;
 import aurocosh.divinefavor.common.constants.LibSpellNames;
+import aurocosh.divinefavor.common.spell.base.SpellType;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntitySnowball;
 import net.minecraft.init.SoundEvents;
@@ -11,7 +12,7 @@ import net.minecraft.world.World;
 
 public class SpellSnowballThrow extends Spell {
     public SpellSnowballThrow() {
-        super(LibSpellNames.SNOWBALL_THROW);
+        super(SpellType.SNOWBALL_THROW);
     }
 
     @Override

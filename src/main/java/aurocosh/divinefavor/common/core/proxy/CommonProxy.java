@@ -30,10 +30,10 @@ public class CommonProxy {
         UtilAssets.Test2();
 
         ModSpellRequirements.init();
+        ModSpells.init();
         ModItems.preInit();
         ModBlocks.preInit();
         ModEntities.init();
-        ModSpells.init();
 
         MessageRegister.init();
 

@@ -4,6 +4,7 @@ import aurocosh.divinefavor.common.spell.base.Spell;
 import aurocosh.divinefavor.common.spell.base.SpellContext;
 import aurocosh.divinefavor.common.effect.ModPotionEffects;
 import aurocosh.divinefavor.common.constants.LibSpellNames;
+import aurocosh.divinefavor.common.spell.base.SpellType;
 import net.minecraft.potion.PotionEffect;
 
 public class SpellWaterwalking extends Spell {
@@ -11,7 +12,7 @@ public class SpellWaterwalking extends Spell {
     private final int NORMAL = 3600;
 
     public SpellWaterwalking() {
-        super(LibSpellNames.WATERWALKING);
+        super(SpellType.WATERWALKING);
     }
 
     @Override

@@ -2,6 +2,7 @@ package aurocosh.divinefavor.common.util;
 
 import aurocosh.divinefavor.DivineFavor;
 import aurocosh.divinefavor.common.constants.LibMisc;
+import aurocosh.divinefavor.common.item.base.TalismanData;
 import aurocosh.divinefavor.common.lib.RuntimeTypeAdapterFactory;
 import aurocosh.divinefavor.common.requirements.base.SpellRequirement;
 import aurocosh.divinefavor.common.requirements.base.SpellRequirementFree;
@@ -9,6 +10,7 @@ import aurocosh.divinefavor.common.requirements.base.SpellRequirementNotFree;
 import aurocosh.divinefavor.common.requirements.requirement.Cost;
 import aurocosh.divinefavor.common.requirements.requirement.CostFavor;
 import aurocosh.divinefavor.common.requirements.requirement.CostMultipleOptions;
+import aurocosh.divinefavor.common.spell.base.SpellType;
 import com.google.gson.*;
 import com.google.gson.annotations.Expose;
 import net.minecraftforge.common.crafting.CraftingHelper;
@@ -41,7 +43,7 @@ public class UtilAssets {
 
     }
 
-    public ArrayList<String> getAssetPaths(ModContainer mod, String assetFolderPath, String fileFormat)
+    public static ArrayList<String> getAssetPaths(ModContainer mod, String assetFolderPath, String fileFormat)
     {
         ArrayList<String> foundPaths = new ArrayList<>();
         String id = mod.getModId();
@@ -59,7 +61,7 @@ public class UtilAssets {
         return foundPaths;
     }
 
-    private <T> ArrayList<T> loadObjectsFromJsonAssets(Class<T> clazz, ModContainer mod, ArrayList<String> assetPaths, Gson gson){
+    public static <T> ArrayList<T> loadObjectsFromJsonAssets(Class<T> clazz, ModContainer mod, ArrayList<String> assetPaths, Gson gson){
         ArrayList<T> objectList = new ArrayList<>();
         Class modClass = mod.getMod().getClass();
         for (String path:assetPaths) {
@@ -81,6 +83,8 @@ public class UtilAssets {
 
         SpellRequirementNotFree spellRequirementNotFree = new SpellRequirementNotFree("reqtest",costMultipleOptions);
 
+        TalismanData talismanData = new TalismanData("ignition", SpellType.IGNITION,spellRequirementNotFree,true,false);
+
         RuntimeTypeAdapterFactory<SpellRequirement> spellFactory = RuntimeTypeAdapterFactory
                 .of(SpellRequirement.class, "type")
                 .registerSubtype(SpellRequirementFree.class)
@@ -92,7 +96,7 @@ public class UtilAssets {
 
         final Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().setPrettyPrinting().registerTypeAdapterFactory(spellFactory).registerTypeAdapterFactory(costFactory).create();
 
-        String result = gson.toJson(spellRequirementNotFree,SpellRequirement.class);
+        String result = gson.toJson(talismanData,TalismanData.class);
         try {
             File file = new File("D:/Test/test.txt");
             FileWriter fileWriter = new FileWriter(file);
@@ -104,6 +108,6 @@ public class UtilAssets {
             e.printStackTrace();
         }
 
-        SpellRequirement deserial = gson.fromJson(result,SpellRequirement.class);
+        TalismanData deserial = gson.fromJson(result,TalismanData.class);
     }
 }

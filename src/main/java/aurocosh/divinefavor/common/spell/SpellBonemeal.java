@@ -3,6 +3,7 @@ package aurocosh.divinefavor.common.spell;
 import aurocosh.divinefavor.common.spell.base.Spell;
 import aurocosh.divinefavor.common.spell.base.SpellContext;
 import aurocosh.divinefavor.common.constants.LibSpellNames;
+import aurocosh.divinefavor.common.spell.base.SpellType;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemDye;
@@ -11,7 +12,7 @@ import net.minecraft.util.math.BlockPos;
 
 public class SpellBonemeal extends Spell {
     public SpellBonemeal() {
-        super(LibSpellNames.BONEMEAL);
+        super(SpellType.BONEMEAL);
     }
 
     @Override
