@@ -1,0 +1,15 @@
+{
+  "item":"empower",
+  "castOnUse":true,
+  "castOnRight":true,
+  "spell":"empower",
+
+  "type": "notFree",
+  "name": "ignition",
+  "cost": {
+    "type":"favor",
+    "priority":0,
+    "favorType":2,
+    "favorCount":1
+  }
+}

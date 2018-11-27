@@ -1,9 +1,9 @@
 package aurocosh.divinefavor.common.item;
 
-import aurocosh.divinefavor.common.lib.LibSpellRequirementNames;
+import aurocosh.divinefavor.common.constants.LibSpellRequirementNames;
 import aurocosh.divinefavor.common.spell.base.SpellContext;
 import aurocosh.divinefavor.common.core.DivineFavorCreativeTab;
-import aurocosh.divinefavor.common.lib.LibItemNames;
+import aurocosh.divinefavor.common.constants.LibItemNames;
 import aurocosh.divinefavor.common.spell.base.ModSpells;
 
 public class ItemIgnitionTalisman extends ItemTalisman {

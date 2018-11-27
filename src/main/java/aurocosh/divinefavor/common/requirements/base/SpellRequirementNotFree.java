@@ -3,6 +3,7 @@ package aurocosh.divinefavor.common.requirements.base;
 import aurocosh.divinefavor.common.requirements.requirement.Cost;
 import aurocosh.divinefavor.common.spell.base.SpellContext;
 import com.google.gson.JsonObject;
+import com.google.gson.annotations.Expose;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.JsonUtils;
@@ -12,7 +13,7 @@ import java.util.ArrayList;
 import java.util.regex.Pattern;
 
 public class SpellRequirementNotFree extends SpellRequirement {
-    public String name;
+    @Expose
     public Cost cost;
 
     public SpellRequirementNotFree(String name, Cost cost)

@@ -1,6 +1,6 @@
 package aurocosh.divinefavor.common.requirements.base;
 
-import aurocosh.divinefavor.common.lib.LibSpellRequirementNames;
+import aurocosh.divinefavor.common.constants.LibSpellRequirementNames;
 import aurocosh.divinefavor.common.spell.base.SpellContext;
 import com.google.gson.JsonObject;
 

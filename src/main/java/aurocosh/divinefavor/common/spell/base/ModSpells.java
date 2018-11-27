@@ -1,6 +1,6 @@
 package aurocosh.divinefavor.common.spell.base;
 
-import aurocosh.divinefavor.common.lib.LibSpellNames;
+import aurocosh.divinefavor.common.constants.LibSpellNames;
 import aurocosh.divinefavor.common.spell.*;
 
 public final class ModSpells {

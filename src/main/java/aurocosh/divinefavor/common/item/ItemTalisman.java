@@ -2,7 +2,7 @@ package aurocosh.divinefavor.common.item;
 
 import aurocosh.divinefavor.api.internal.Vector3;
 import aurocosh.divinefavor.common.block.base.ModBlocks;
-import aurocosh.divinefavor.common.lib.LibFavorType;
+import aurocosh.divinefavor.common.constants.LibFavorType;
 import aurocosh.divinefavor.common.requirements.base.ModSpellRequirements;
 import aurocosh.divinefavor.common.requirements.base.SpellRequirement;
 import aurocosh.divinefavor.common.spell.base.SpellContext;

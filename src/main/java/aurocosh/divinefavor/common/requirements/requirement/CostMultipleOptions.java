@@ -3,11 +3,13 @@ package aurocosh.divinefavor.common.requirements.requirement;
 import aurocosh.divinefavor.common.spell.base.SpellContext;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
+import com.google.gson.annotations.Expose;
 import net.minecraft.util.JsonUtils;
 
 import java.util.ArrayList;
 
 public class CostMultipleOptions extends Cost {
+    @Expose
     protected ArrayList<Cost> costOptions;
 
     public CostMultipleOptions(int priority, ArrayList<Cost> costOptions)

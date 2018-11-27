@@ -1,6 +1,6 @@
 package aurocosh.divinefavor.common.registry;
 
-import aurocosh.divinefavor.common.lib.LibMisc;
+import aurocosh.divinefavor.common.constants.LibMisc;
 import aurocosh.divinefavor.common.requirements.base.SpellRequirement;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.event.RegistryEvent;

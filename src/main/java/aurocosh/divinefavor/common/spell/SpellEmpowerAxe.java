@@ -3,7 +3,7 @@ package aurocosh.divinefavor.common.spell;
 import aurocosh.divinefavor.common.spell.base.Spell;
 import aurocosh.divinefavor.common.spell.base.SpellContext;
 import aurocosh.divinefavor.common.effect.ModPotionEffects;
-import aurocosh.divinefavor.common.lib.LibSpellNames;
+import aurocosh.divinefavor.common.constants.LibSpellNames;
 import net.minecraft.potion.PotionEffect;
 
 public class SpellEmpowerAxe extends Spell {

@@ -3,7 +3,7 @@ package aurocosh.divinefavor.common.item;
 import aurocosh.divinefavor.common.core.DivineFavorCreativeTab;
 import aurocosh.divinefavor.common.entity.EntityStoneball;
 import aurocosh.divinefavor.common.item.base.IDivineFavorItem;
-import aurocosh.divinefavor.common.lib.LibItemNames;
+import aurocosh.divinefavor.common.constants.LibItemNames;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;

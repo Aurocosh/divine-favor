@@ -2,7 +2,7 @@ package aurocosh.divinefavor.common.core.handlers;
 
 import aurocosh.divinefavor.common.network.message.MessageDataSync;
 import aurocosh.divinefavor.common.network.message.MessageSyncSpellCharge;
-import aurocosh.divinefavor.common.lib.LibFavorType;
+import aurocosh.divinefavor.common.constants.LibFavorType;
 import aurocosh.divinefavor.common.util.UtilSerialize;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;

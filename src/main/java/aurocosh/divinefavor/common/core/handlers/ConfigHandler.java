@@ -1,11 +1,10 @@
 package aurocosh.divinefavor.common.core.handlers;
 
-import aurocosh.divinefavor.common.lib.LibMisc;
+import aurocosh.divinefavor.common.constants.LibMisc;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.common.config.Property;
 import net.minecraftforge.fml.client.event.ConfigChangedEvent;
-import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 import java.io.File;

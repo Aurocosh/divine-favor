@@ -2,7 +2,7 @@ package aurocosh.divinefavor.common.core;
 
 import aurocosh.divinefavor.common.block.base.ModBlocks;
 import aurocosh.divinefavor.common.item.base.ModItems;
-import aurocosh.divinefavor.common.lib.LibMisc;
+import aurocosh.divinefavor.common.constants.LibMisc;
 import aurocosh.divinefavor.common.potion.PotionTypeDivine;
 import aurocosh.divinefavor.common.potion.PotionTypeRegistry;
 import net.minecraft.block.Block;

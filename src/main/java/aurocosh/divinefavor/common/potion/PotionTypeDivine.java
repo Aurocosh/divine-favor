@@ -23,7 +23,7 @@
  ******************************************************************************/
 package aurocosh.divinefavor.common.potion;
 
-import aurocosh.divinefavor.common.lib.LibMisc;
+import aurocosh.divinefavor.common.constants.LibMisc;
 import net.minecraft.init.PotionTypes;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;

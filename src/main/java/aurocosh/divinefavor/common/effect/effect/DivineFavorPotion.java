@@ -2,7 +2,7 @@ package aurocosh.divinefavor.common.effect.effect;
 
 import javax.annotation.Nullable;
 
-import aurocosh.divinefavor.common.lib.LibMisc;
+import aurocosh.divinefavor.common.constants.LibMisc;
 import aurocosh.divinefavor.common.util.UtilTextureRender;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;

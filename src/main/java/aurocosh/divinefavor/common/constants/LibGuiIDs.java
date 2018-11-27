@@ -8,7 +8,7 @@
  *
  * File Created @ [10/01/2016, 15:10:23 (GMT)]
  */
-package aurocosh.divinefavor.common.lib;
+package aurocosh.divinefavor.common.constants;
 
 public final class LibGuiIDs {
 	public static final int IRON_MEDIUM = 0;

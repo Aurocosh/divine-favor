@@ -2,6 +2,7 @@ package aurocosh.divinefavor.common.requirements.requirement;
 
 import aurocosh.divinefavor.common.spell.base.SpellContext;
 import com.google.gson.JsonObject;
+import com.google.gson.annotations.Expose;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.JsonUtils;
@@ -10,6 +11,7 @@ import net.minecraftforge.common.util.FakePlayer;
 import java.util.regex.Pattern;
 
 public abstract class Cost {
+    @Expose
     public int priority;
 
     public Cost(int priority)

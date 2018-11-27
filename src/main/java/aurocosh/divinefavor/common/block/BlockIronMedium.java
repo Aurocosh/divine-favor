@@ -5,9 +5,8 @@ import aurocosh.divinefavor.common.block.base.BlockTileMod;
 import aurocosh.divinefavor.common.block.base.IDivineFavorBlock;
 import aurocosh.divinefavor.common.block.tile.TileIronMedium;
 import aurocosh.divinefavor.common.core.DivineFavorCreativeTab;
-import aurocosh.divinefavor.common.lib.LibBlockNames;
-import aurocosh.divinefavor.common.lib.LibGuiIDs;
-import net.minecraft.block.ITileEntityProvider;
+import aurocosh.divinefavor.common.constants.LibBlockNames;
+import aurocosh.divinefavor.common.constants.LibGuiIDs;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
@@ -23,8 +22,6 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import vazkii.arl.block.BlockMod;
-import vazkii.arl.block.BlockModContainer;
 
 public class BlockIronMedium extends BlockTileMod implements IDivineFavorBlock {
     public static final PropertyDirection FACING = PropertyDirection.create("facing");

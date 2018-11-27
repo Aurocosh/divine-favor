@@ -1,6 +1,6 @@
 package aurocosh.divinefavor.common.effect.effect;
 
-import aurocosh.divinefavor.common.lib.LibEffectNames;
+import aurocosh.divinefavor.common.constants.LibEffectNames;
 import net.minecraft.block.Block;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;

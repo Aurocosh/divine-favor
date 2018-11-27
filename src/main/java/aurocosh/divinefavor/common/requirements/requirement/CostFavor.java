@@ -4,10 +4,13 @@ import aurocosh.divinefavor.DivineFavor;
 import aurocosh.divinefavor.common.core.handlers.PlayerDataHandler;
 import aurocosh.divinefavor.common.spell.base.SpellContext;
 import com.google.gson.JsonObject;
+import com.google.gson.annotations.Expose;
 import net.minecraft.util.JsonUtils;
 
 public class CostFavor extends Cost {
+    @Expose
     protected int favorType;
+    @Expose
     protected int favorCount;
 
     public CostFavor(int priority, int favorType, int favorCount)

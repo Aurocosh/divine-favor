@@ -2,7 +2,7 @@ package aurocosh.divinefavor.common.spell;
 
 import aurocosh.divinefavor.common.spell.base.Spell;
 import aurocosh.divinefavor.common.spell.base.SpellContext;
-import aurocosh.divinefavor.common.lib.LibSpellNames;
+import aurocosh.divinefavor.common.constants.LibSpellNames;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.math.BlockPos;

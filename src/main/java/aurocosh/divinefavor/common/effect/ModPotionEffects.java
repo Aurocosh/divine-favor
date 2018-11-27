@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import aurocosh.divinefavor.DivineFavor;
 import aurocosh.divinefavor.common.effect.effect.*;
 import aurocosh.divinefavor.common.effect.effect.PotionEmpowerAxe;
-import aurocosh.divinefavor.common.lib.LibMisc;
+import aurocosh.divinefavor.common.constants.LibMisc;
 import aurocosh.divinefavor.common.effect.effect.DivineFavorPotion;
 import net.minecraft.potion.Potion;
 import net.minecraft.util.ResourceLocation;
