@@ -6,6 +6,7 @@ tile.divinefavor:fast_furnace.name=Fast furnace
 tile.divinefavor:iron_medium.name=Iron medium
 
 # ITEM NAMES
+# TALISMANS
 item.divinefavor:arrow_throw_talisman.name=Arrow throw talisman
 item.divinefavor:bonemeal_talisman.name=Bone meal talisman
 item.divinefavor:empower_axe_talisman.name=Empower axe talisman
@@ -16,7 +17,9 @@ item.divinefavor:snowball_throw_talisman.name=Snowball talisman
 item.divinefavor:small_fireball_throw_talisman.name=Small fireball talisman
 item.divinefavor:stoneball_throw_talisman.name=Pebble talisman
 item.divinefavor:waterwalking_talisman.name=Waterwalking talisman
-item.divinefavor:stoneball.name=Pebble
+
+# WISHING STONES
+item.divinefavor:allfire_wishing_stone.name=Allfire wishing stone
 
 # EFFECT NAMES
 empower_axe=Empower axe

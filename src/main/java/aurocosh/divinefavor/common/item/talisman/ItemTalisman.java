@@ -1,10 +1,8 @@
-package aurocosh.divinefavor.common.item;
+package aurocosh.divinefavor.common.item.talisman;
 
 import aurocosh.divinefavor.api.internal.Vector3;
 import aurocosh.divinefavor.common.block.base.ModBlocks;
 import aurocosh.divinefavor.common.constants.LibFavorType;
-import aurocosh.divinefavor.common.item.base.TalismanData;
-import aurocosh.divinefavor.common.lib.IInitiatable;
 import aurocosh.divinefavor.common.requirements.base.SpellRequirement;
 import aurocosh.divinefavor.common.requirements.requirement.CostFree;
 import aurocosh.divinefavor.common.spell.base.ModSpell;
@@ -89,6 +87,8 @@ public class ItemTalisman extends ItemMod implements IDivineFavorItem {
     @Override
     public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand hand) {
         ItemStack itemStackIn = playerIn.getHeldItem(hand);
+        if(hand == EnumHand.OFF_HAND)
+            return new ActionResult<>(EnumActionResult.PASS, itemStackIn);
         if(!castOnRightClick)
             return new ActionResult<>(EnumActionResult.PASS, itemStackIn);
 

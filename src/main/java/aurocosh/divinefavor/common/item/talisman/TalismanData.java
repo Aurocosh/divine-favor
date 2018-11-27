@@ -1,4 +1,4 @@
-package aurocosh.divinefavor.common.item.base;
+package aurocosh.divinefavor.common.item.talisman;
 
 import aurocosh.divinefavor.common.requirements.base.SpellRequirement;
 import aurocosh.divinefavor.common.spell.base.SpellType;

@@ -2,7 +2,10 @@ package aurocosh.divinefavor.common.item.base;
 
 import aurocosh.divinefavor.DivineFavor;
 import aurocosh.divinefavor.common.item.ItemStoneball;
-import aurocosh.divinefavor.common.item.ItemTalisman;
+import aurocosh.divinefavor.common.item.talisman.ItemTalisman;
+import aurocosh.divinefavor.common.item.talisman.TalismanData;
+import aurocosh.divinefavor.common.item.wishing_stone.ItemWishingStone;
+import aurocosh.divinefavor.common.item.wishing_stone.WishingStoneData;
 import aurocosh.divinefavor.common.lib.RuntimeTypeAdapterFactory;
 import aurocosh.divinefavor.common.requirements.requirement.Cost;
 import aurocosh.divinefavor.common.requirements.requirement.CostFavor;
@@ -21,12 +24,23 @@ import java.util.Map;
 
 public final class ModItems {
     public static ItemMod stoneball;
-    private static Map<String, ItemMod> talismans = new HashMap<>();
+    private static Map<String, ItemMod> items = new HashMap<>();
 
     public static void preInit() {
         stoneball = new ItemStoneball();
 
         ModContainer mod = Loader.instance().getModObjectList().inverse().get(DivineFavor.instance);
+        loadTalismans(mod);
+        loadWishingStones(mod);
+    }
+
+    public static void init() {
+        // Psi oredict mappings
+//        OreDictionary.registerOre("dustPsi", new ItemStack(material, 1, 0));
+//        OreDictionary.registerOre("ingotPsi", new ItemStack(material, 1, 1));
+    }
+
+    private static void loadTalismans(ModContainer mod) {
         ArrayList<String> requirementPaths = UtilAssets.getAssetPaths(mod,"talismans",".json");
 
         RuntimeTypeAdapterFactory<Cost> costFactory = RuntimeTypeAdapterFactory
@@ -41,23 +55,31 @@ public final class ModItems {
         talismanDataList.forEach((data -> registerTalisman(data)));
     }
 
-    public static void init() {
-        // Psi oredict mappings
-//        OreDictionary.registerOre("dustPsi", new ItemStack(material, 1, 0));
-//        OreDictionary.registerOre("ingotPsi", new ItemStack(material, 1, 1));
+    private static void loadWishingStones(ModContainer mod) {
+        ArrayList<String> paths = UtilAssets.getAssetPaths(mod,"wishing_stones",".json");
+        Gson gson = new GsonBuilder().create();
+
+        ArrayList<WishingStoneData> dataArrayList = UtilAssets.loadObjectsFromJsonAssets(WishingStoneData.class,mod,paths,gson);
+        dataArrayList.forEach(data -> registerWishingStone(data));
     }
 
     public static ItemMod getTalisman(String name) {
-        return talismans.get(name);
+        return items.get(name);
     }
 
     public static ItemMod registerTalisman(TalismanData talismanData) {
         ItemMod talisman = new ItemTalisman(talismanData);
-        talismans.put(talismanData.name, talisman);
+        items.put(talismanData.name, talisman);
         return talisman;
     }
 
-    public static Map<String, ItemMod> getTalismans(){
-        return new HashMap<>(talismans);
+    public static ItemMod registerWishingStone(WishingStoneData stoneData) {
+        ItemMod talisman = new ItemWishingStone(stoneData);
+        items.put(stoneData.name, talisman);
+        return talisman;
+    }
+
+    public static Map<String, ItemMod> getItems(){
+        return new HashMap<>(items);
     }
 }

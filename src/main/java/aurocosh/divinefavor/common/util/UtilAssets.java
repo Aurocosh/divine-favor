@@ -1,13 +1,11 @@
 package aurocosh.divinefavor.common.util;
 
 import aurocosh.divinefavor.DivineFavor;
-import aurocosh.divinefavor.common.item.base.TalismanData;
 import aurocosh.divinefavor.common.lib.RuntimeTypeAdapterFactory;
 import aurocosh.divinefavor.common.requirements.base.SpellRequirement;
 import aurocosh.divinefavor.common.requirements.requirement.Cost;
 import aurocosh.divinefavor.common.requirements.requirement.CostFavor;
 import aurocosh.divinefavor.common.requirements.requirement.CostMultipleOptions;
-import aurocosh.divinefavor.common.spell.base.SpellType;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import net.minecraftforge.common.crafting.CraftingHelper;

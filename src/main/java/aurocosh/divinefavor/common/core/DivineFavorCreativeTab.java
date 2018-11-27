@@ -53,7 +53,7 @@ public class DivineFavorCreativeTab extends CreativeTabs {
 
         addItem(ModItems.stoneball);
 
-        Map<String, ItemMod> talismans = ModItems.getTalismans();
+        Map<String, ItemMod> talismans = ModItems.getItems();
         talismans.forEach((name, talisman) -> addItem(talisman));
 
         for (PotionTypeDivine pt : PotionTypeRegistry.potions) {

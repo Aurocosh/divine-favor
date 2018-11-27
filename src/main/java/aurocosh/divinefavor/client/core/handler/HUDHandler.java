@@ -1,15 +1,11 @@
 package aurocosh.divinefavor.client.core.handler;
 
 import aurocosh.divinefavor.DivineFavor;
-import aurocosh.divinefavor.common.core.handlers.PlayerDataHandler;
-import aurocosh.divinefavor.common.item.ItemTalisman;
-import aurocosh.divinefavor.common.constants.LibFavorType;
+import aurocosh.divinefavor.common.item.talisman.ItemTalisman;
 import aurocosh.divinefavor.common.constants.LibObfuscation;
 import aurocosh.divinefavor.common.requirements.base.SpellRequirement;
 import aurocosh.divinefavor.common.spell.base.SpellContext;
-import ibxm.Player;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.client.gui.GuiIngame;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.renderer.GlStateManager;
