@@ -4,6 +4,7 @@ import aurocosh.divinefavor.common.spell.base.Spell;
 import aurocosh.divinefavor.common.spell.base.SpellContext;
 import aurocosh.divinefavor.common.effect.ModPotionEffects;
 import aurocosh.divinefavor.common.constants.LibSpellNames;
+import aurocosh.divinefavor.common.spell.base.SpellType;
 import net.minecraft.potion.PotionEffect;
 
 public class SpellEmpowerAxe extends Spell {
@@ -11,7 +12,7 @@ public class SpellEmpowerAxe extends Spell {
     private final int NORMAL = 3600;
 
     public SpellEmpowerAxe() {
-        super(LibSpellNames.EMPOWER_AXE);
+        super(SpellType.EMPOWER_AXE);
     }
 
     @Override

@@ -1,0 +1,10 @@
+{
+  "name": "ignition_talisman",
+  "spellType": "IGNITION",
+  "requirement": {
+    "type": "SpellRequirementFree",
+    "name": "free"
+  },
+  "castOnUse": true,
+  "castOnRightClick": false
+}

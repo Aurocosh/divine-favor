@@ -3,12 +3,16 @@ package aurocosh.divinefavor.common.item;
 import aurocosh.divinefavor.api.internal.Vector3;
 import aurocosh.divinefavor.common.block.base.ModBlocks;
 import aurocosh.divinefavor.common.constants.LibFavorType;
+import aurocosh.divinefavor.common.item.base.TalismanData;
 import aurocosh.divinefavor.common.requirements.base.ModSpellRequirements;
 import aurocosh.divinefavor.common.requirements.base.SpellRequirement;
+import aurocosh.divinefavor.common.spell.base.ModSpells;
+import aurocosh.divinefavor.common.spell.base.Spell;
 import aurocosh.divinefavor.common.spell.base.SpellContext;
 import aurocosh.divinefavor.common.core.DivineFavorCreativeTab;
 import aurocosh.divinefavor.common.core.handlers.PlayerDataHandler;
 import aurocosh.divinefavor.common.item.base.IDivineFavorItem;
+import aurocosh.divinefavor.common.spell.base.SpellType;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
@@ -20,25 +24,34 @@ import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
 import vazkii.arl.item.ItemMod;
 
-public abstract class ItemTalisman extends ItemMod implements IDivineFavorItem {
+public class ItemTalisman extends ItemMod implements IDivineFavorItem {
     private boolean castOnUse;
     private boolean castOnRightClick;
+    private Spell spell;
     private SpellRequirement requirement;
 
-    public ItemTalisman(String name, String requirementName, boolean castOnUse, boolean castOnRightClick) {
-        super(name);
-        requirement = ModSpellRequirements.getRequirement(requirementName);
-        if(requirement == null)
-            requirement = ModSpellRequirements.free;
-        setMaxStackSize(1);
-        setCreativeTab(DivineFavorCreativeTab.INSTANCE);
-        this.castOnUse = castOnUse;
-        this.castOnRightClick = castOnRightClick;
+    public ItemTalisman(TalismanData talismanData){
+        this(talismanData.name,talismanData.spellType,talismanData.requirement,talismanData.castOnUse,talismanData.castOnRightClick);
     }
 
-    public abstract boolean castUse(SpellContext context);
+    public ItemTalisman(String name, SpellType spellType, SpellRequirement requirement, boolean castOnUse, boolean castOnRightClick) {
+        super(name);
+        this.spell = ModSpells.get(spellType);
+        this.requirement = requirement;
+        if(this.requirement == null)
+            this.requirement = ModSpellRequirements.free;
+        this.castOnUse = castOnUse;
+        this.castOnRightClick = castOnRightClick;
+        setMaxStackSize(1);
+        setCreativeTab(DivineFavorCreativeTab.INSTANCE);
+    }
 
-    public abstract boolean castRightClick(SpellContext context);
+    public boolean castUse(SpellContext context) {
+        return spell.cast(context);
+    }
+    public boolean castRightClick(SpellContext context) {
+        return spell.cast(context);
+    }
 
     @Override
     public EnumActionResult onItemUse(EntityPlayer playerIn, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {

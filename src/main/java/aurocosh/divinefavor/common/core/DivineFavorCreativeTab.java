@@ -12,6 +12,9 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionUtils;
 import net.minecraft.util.NonNullList;
+import vazkii.arl.item.ItemMod;
+
+import java.util.Map;
 
 public class DivineFavorCreativeTab extends CreativeTabs {
     public static DivineFavorCreativeTab INSTANCE = new DivineFavorCreativeTab();
@@ -48,17 +51,10 @@ public class DivineFavorCreativeTab extends CreativeTabs {
         addBlock(ModBlocks.blockIronMedium);
         addBlock(ModBlocks.blockDiviner);
 
-        addItem(ModItems.arrow_throw_talisman);
-        addItem(ModItems.bonemeal_talisman);
-        addItem(ModItems.empower_axe_talisman);
-        addItem(ModItems.fell_tree_talisman);
-        addItem(ModItems.ignition_talisman);
-        addItem(ModItems.snowball_throw_talisman);
-        addItem(ModItems.stoneball_throw_talisman);
-        addItem(ModItems.small_fireball_throw_talisman);
         addItem(ModItems.stoneball);
-        addItem(ModItems.waterwalking_talisman);
-        addItem(ModItems.lavawalking_talisman);
+
+        Map<String, ItemMod> talismans = ModItems.getTalismans();
+        talismans.forEach((name, talisman) -> addItem(talisman));
 
         for (PotionTypeDivine pt : PotionTypeRegistry.potions) {
             list.add(PotionUtils.addPotionToItemStack(new ItemStack(Items.POTIONITEM), pt));

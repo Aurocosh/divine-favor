@@ -3,6 +3,7 @@ package aurocosh.divinefavor.common.spell;
 import aurocosh.divinefavor.common.spell.base.Spell;
 import aurocosh.divinefavor.common.spell.base.SpellContext;
 import aurocosh.divinefavor.common.constants.LibSpellNames;
+import aurocosh.divinefavor.common.spell.base.SpellType;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntityArrow;
@@ -16,7 +17,7 @@ import net.minecraft.world.World;
 
 public class SpellArrowThrow extends Spell {
     public SpellArrowThrow() {
-        super(LibSpellNames.BONEMEAL);
+        super(SpellType.ARROW_THROW);
     }
 
     @Override

@@ -1,39 +1,69 @@
 package aurocosh.divinefavor.common.item.base;
 
+import aurocosh.divinefavor.DivineFavor;
 import aurocosh.divinefavor.common.item.*;
+import aurocosh.divinefavor.common.lib.RuntimeTypeAdapterFactory;
+import aurocosh.divinefavor.common.requirements.base.SpellRequirement;
+import aurocosh.divinefavor.common.requirements.base.SpellRequirementFree;
+import aurocosh.divinefavor.common.requirements.base.SpellRequirementNotFree;
+import aurocosh.divinefavor.common.requirements.requirement.Cost;
+import aurocosh.divinefavor.common.requirements.requirement.CostFavor;
+import aurocosh.divinefavor.common.requirements.requirement.CostMultipleOptions;
+import aurocosh.divinefavor.common.spell.base.Spell;
+import aurocosh.divinefavor.common.spell.base.SpellType;
+import aurocosh.divinefavor.common.util.UtilAssets;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import net.minecraftforge.fml.common.Loader;
+import net.minecraftforge.fml.common.ModContainer;
 import vazkii.arl.item.ItemMod;
 
-public final class ModItems {
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
-    public static ItemMod arrow_throw_talisman;
-    public static ItemMod bonemeal_talisman;
-    public static ItemMod empower_axe_talisman;
-    public static ItemMod fell_tree_talisman;
-    public static ItemMod ignition_talisman;
-    public static ItemMod lavawalking_talisman;
-    public static ItemMod snowball_throw_talisman;
-    public static ItemMod stoneball_throw_talisman;
-    public static ItemMod small_fireball_throw_talisman;
+public final class ModItems {
     public static ItemMod stoneball;
-    public static ItemMod waterwalking_talisman;
+    private static Map<String, ItemMod> talismans = new HashMap<>();
 
     public static void preInit() {
-        arrow_throw_talisman = new ItemArrowThrowTalisman();
-        bonemeal_talisman = new ItemBonemealTalisman();
-        empower_axe_talisman = new ItemEmpowerAxeTalisman();
-        fell_tree_talisman = new ItemFellTreeTalisman();
-        ignition_talisman = new ItemIgnitionTalisman();
-        lavawalking_talisman = new ItemLavawalkingTalisman();
-        snowball_throw_talisman = new ItemSnowballThrowTalisman();
-        stoneball_throw_talisman = new ItemStoneballThrowTalisman();
-        small_fireball_throw_talisman = new ItemSmallFireballThrowTalisman();
         stoneball = new ItemStoneball();
-        waterwalking_talisman = new ItemWaterwalkingTalisman();
+
+        ModContainer mod = Loader.instance().getModObjectList().inverse().get(DivineFavor.instance);
+        ArrayList<String> requirementPaths = UtilAssets.getAssetPaths(mod,"talismans",".json");
+
+        RuntimeTypeAdapterFactory<SpellRequirement> spellFactory = RuntimeTypeAdapterFactory
+                .of(SpellRequirement.class, "type")
+                .registerSubtype(SpellRequirementFree.class)
+                .registerSubtype(SpellRequirementNotFree.class);
+        RuntimeTypeAdapterFactory<Cost> costFactory = RuntimeTypeAdapterFactory
+                .of(Cost.class, "type")
+                .registerSubtype(CostFavor.class)
+                .registerSubtype(CostMultipleOptions.class);
+
+        Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().setPrettyPrinting().registerTypeAdapterFactory(spellFactory).registerTypeAdapterFactory(costFactory).create();
+
+        ArrayList<TalismanData> talismanDataList = UtilAssets.loadObjectsFromJsonAssets(TalismanData.class,mod,requirementPaths,gson);
+        talismanDataList.forEach((data -> registerTalisman(data)));
     }
 
     public static void init() {
         // Psi oredict mappings
 //        OreDictionary.registerOre("dustPsi", new ItemStack(material, 1, 0));
 //        OreDictionary.registerOre("ingotPsi", new ItemStack(material, 1, 1));
+    }
+
+    public static ItemMod getTalisman(String name) {
+        return talismans.get(name);
+    }
+
+    public static ItemMod registerTalisman(TalismanData talismanData) {
+        ItemMod talisman = new ItemTalisman(talismanData);
+        talismans.put(talismanData.name, talisman);
+        return talisman;
+    }
+
+    public static Map<String, ItemMod> getTalismans(){
+        return new HashMap<>(talismans);
     }
 }

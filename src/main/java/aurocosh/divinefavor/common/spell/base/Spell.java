@@ -12,9 +12,11 @@ public abstract class Spell {
     protected static Random spellRand = new Random();
 
     public String name;
+    public SpellType type;
 
-    public Spell(String name) {
-        this.name = name;
+    public Spell(SpellType type) {
+        this.name = type.toString();
+        this.type = type;
     }
 
     public boolean cast(SpellContext context) {
@@ -24,7 +26,6 @@ public abstract class Spell {
             return false;
         if(!claimCost(context))
             return false;
-
         performAction(context);
         return true;
     }

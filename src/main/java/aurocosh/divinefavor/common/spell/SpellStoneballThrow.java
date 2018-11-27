@@ -4,6 +4,7 @@ import aurocosh.divinefavor.common.spell.base.Spell;
 import aurocosh.divinefavor.common.spell.base.SpellContext;
 import aurocosh.divinefavor.common.entity.EntityStoneball;
 import aurocosh.divinefavor.common.constants.LibSpellNames;
+import aurocosh.divinefavor.common.spell.base.SpellType;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.util.SoundCategory;
@@ -11,7 +12,7 @@ import net.minecraft.world.World;
 
 public class SpellStoneballThrow extends Spell {
     public SpellStoneballThrow() {
-        super(LibSpellNames.STONEBALL_THROW);
+        super(SpellType.STONEBALL_THROW);
     }
 
     @Override

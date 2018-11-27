@@ -3,6 +3,7 @@ package aurocosh.divinefavor.common.spell;
 import aurocosh.divinefavor.common.spell.base.Spell;
 import aurocosh.divinefavor.common.spell.base.SpellContext;
 import aurocosh.divinefavor.common.constants.LibSpellNames;
+import aurocosh.divinefavor.common.spell.base.SpellType;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.math.BlockPos;
@@ -10,7 +11,7 @@ import net.minecraft.world.World;
 
 public class SpellIgnition extends Spell {
     public SpellIgnition() {
-        super(LibSpellNames.IGNITION);
+        super(SpellType.IGNITION);
     }
 
     @Override
