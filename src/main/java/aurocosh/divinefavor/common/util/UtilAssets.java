@@ -1,43 +1,35 @@
 package aurocosh.divinefavor.common.util;
 
 import aurocosh.divinefavor.DivineFavor;
-import aurocosh.divinefavor.common.constants.LibMisc;
 import aurocosh.divinefavor.common.item.base.TalismanData;
 import aurocosh.divinefavor.common.lib.RuntimeTypeAdapterFactory;
 import aurocosh.divinefavor.common.requirements.base.SpellRequirement;
-import aurocosh.divinefavor.common.requirements.base.SpellRequirementFree;
-import aurocosh.divinefavor.common.requirements.base.SpellRequirementNotFree;
 import aurocosh.divinefavor.common.requirements.requirement.Cost;
 import aurocosh.divinefavor.common.requirements.requirement.CostFavor;
 import aurocosh.divinefavor.common.requirements.requirement.CostMultipleOptions;
 import aurocosh.divinefavor.common.spell.base.SpellType;
-import com.google.gson.*;
-import com.google.gson.annotations.Expose;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import net.minecraftforge.common.crafting.CraftingHelper;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.ModContainer;
-import net.minecraftforge.registries.IForgeRegistryEntry;
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;
-import java.nio.file.*;
-import java.util.*;
+import java.nio.file.Files;
+import java.util.ArrayList;
 
 public class UtilAssets {
     public void Test(){
         ModContainer mod = Loader.instance().getModObjectList().inverse().get(DivineFavor.instance);
         ArrayList<String> requirementPaths = getAssetPaths(mod,"requirements",".json");
 
-        RuntimeTypeAdapterFactory<SpellRequirement> spellFactory = RuntimeTypeAdapterFactory
-                .of(SpellRequirement.class, "type")
-                .registerSubtype(SpellRequirementFree.class)
-                .registerSubtype(SpellRequirementNotFree.class);
         RuntimeTypeAdapterFactory<Cost> costFactory = RuntimeTypeAdapterFactory
                 .of(Cost.class, "type")
                 .registerSubtype(CostFavor.class)
                 .registerSubtype(CostMultipleOptions.class);
 
-        Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().setPrettyPrinting().registerTypeAdapterFactory(spellFactory).registerTypeAdapterFactory(costFactory).create();
+        Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().setPrettyPrinting().registerTypeAdapterFactory(costFactory).create();
 
         ArrayList<SpellRequirement> requirements = loadObjectsFromJsonAssets(SpellRequirement.class,mod,requirementPaths,gson);
 
@@ -81,20 +73,16 @@ public class UtilAssets {
         costs.add(new CostFavor(0,2,1));
         CostMultipleOptions costMultipleOptions = new CostMultipleOptions(0,costs);
 
-        SpellRequirementNotFree spellRequirementNotFree = new SpellRequirementNotFree("reqtest",costMultipleOptions);
+        SpellRequirement spellRequirementNotFree = new SpellRequirement("reqtest",costMultipleOptions);
 
         TalismanData talismanData = new TalismanData("ignition", SpellType.IGNITION,spellRequirementNotFree,true,false);
 
-        RuntimeTypeAdapterFactory<SpellRequirement> spellFactory = RuntimeTypeAdapterFactory
-                .of(SpellRequirement.class, "type")
-                .registerSubtype(SpellRequirementFree.class)
-                .registerSubtype(SpellRequirementNotFree.class);
         RuntimeTypeAdapterFactory<Cost> costFactory = RuntimeTypeAdapterFactory
                 .of(Cost.class, "type")
                 .registerSubtype(CostFavor.class)
                 .registerSubtype(CostMultipleOptions.class);
 
-        final Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().setPrettyPrinting().registerTypeAdapterFactory(spellFactory).registerTypeAdapterFactory(costFactory).create();
+        final Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().setPrettyPrinting().registerTypeAdapterFactory(costFactory).create();
 
         String result = gson.toJson(talismanData,TalismanData.class);
         try {

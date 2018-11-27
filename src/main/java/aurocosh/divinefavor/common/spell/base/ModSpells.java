@@ -1,8 +1,6 @@
 package aurocosh.divinefavor.common.spell.base;
 
-import aurocosh.divinefavor.common.constants.LibSpellNames;
-import aurocosh.divinefavor.common.registry.SpellRequirementRegestry;
-import aurocosh.divinefavor.common.requirements.base.SpellRequirement;
+import aurocosh.divinefavor.common.registry.SpellRegestry;
 import aurocosh.divinefavor.common.spell.*;
 
 import java.util.HashMap;
@@ -41,7 +39,7 @@ public final class ModSpells {
 
     public static Spell register(Spell spell) {
         spellMap.put(spell.type, spell);
-//        SpellRequirementRegestry.register(spell);
+        SpellRegestry.register(spell);
         return spell;
     }
 }

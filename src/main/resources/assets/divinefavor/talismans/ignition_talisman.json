@@ -2,7 +2,9 @@
   "name": "ignition_talisman",
   "spellType": "IGNITION",
   "requirement": {
-    "type": "SpellRequirementFree",
+    "cost": {
+      "type": "CostFree"
+    },
     "name": "free"
   },
   "castOnUse": true,

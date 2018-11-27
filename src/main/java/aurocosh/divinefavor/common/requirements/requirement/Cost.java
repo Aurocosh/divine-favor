@@ -8,11 +8,25 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.JsonUtils;
 import net.minecraftforge.common.util.FakePlayer;
 
+import java.util.Comparator;
 import java.util.regex.Pattern;
 
 public abstract class Cost {
+    public static class CostComparator implements  Comparator<Cost> {
+        @Override
+        public int compare(Cost o1, Cost o2) {
+            if(o1.getPriority() == o2.getPriority())
+                return 0;
+            return o1.getPriority() > o2.getPriority() ? -1 : 1;
+        }
+    }
+
     @Expose
-    public int priority;
+    private int priority;
+
+    public int getPriority() {
+        return priority;
+    }
 
     public Cost(int priority)
     {
@@ -21,16 +35,5 @@ public abstract class Cost {
 
     public abstract boolean canClaim(SpellContext context);
     public abstract boolean claim(SpellContext context);
-
-    public abstract String toString();
-
-    public static Cost deserialize(JsonObject json)
-    {
-        String type = JsonUtils.getString(json,"type");
-        if(type.equals("favor"))
-            return CostFavor.deserialize(json);
-        else if(type.equals("multiple"))
-            return CostMultipleOptions.deserialize(json);
-        return null;
-    }
+    public abstract String getUsageInfo(SpellContext context);
 }

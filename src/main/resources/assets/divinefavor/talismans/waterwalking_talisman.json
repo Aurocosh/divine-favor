@@ -2,7 +2,9 @@
   "name": "waterwalking_talisman",
   "spellType": "WATERWALKING",
   "requirement": {
-    "type": "SpellRequirementFree",
+    "cost": {
+      "type": "CostFree"
+    },
     "name": "free"
   },
   "castOnUse": true,

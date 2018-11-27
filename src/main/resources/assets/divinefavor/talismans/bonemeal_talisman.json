@@ -2,7 +2,9 @@
   "name": "bonemeal_talisman",
   "spellType": "BONEMEAL",
   "requirement": {
-    "type": "SpellRequirementFree",
+    "cost": {
+      "type": "CostFree"
+    },
     "name": "free"
   },
   "castOnUse": true,

@@ -39,17 +39,10 @@ public class CostFavor extends Cost {
     }
 
     @Override
-    public String toString()
-    {
-        PlayerDataHandler.PlayerData data = PlayerDataHandler.get(DivineFavor.proxy.getClientPlayer());
-        return " current_charge: " + data.getSpellCharge(favorType);
-    }
-
-    public static CostFavor deserialize(JsonObject json)
-    {
-        int priority = JsonUtils.getInt(json, "priority", 0);
-        int favorType = JsonUtils.getInt(json, "favorType", 0);
-        int favorCount = JsonUtils.getInt(json, "favorCount", 1);
-        return new CostFavor(priority,favorType,favorCount);
+    public String getUsageInfo(SpellContext context) {
+        PlayerDataHandler.PlayerData data = PlayerDataHandler.get(context.playerIn);
+        int favorsLeft = data.getSpellCharge(favorType);
+        int usesLeft = favorsLeft / favorCount;
+        return "Uses left: " + usesLeft;
     }
 }

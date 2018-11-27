@@ -1,12 +1,15 @@
 package aurocosh.divinefavor.client.core.handler;
 
+import aurocosh.divinefavor.DivineFavor;
 import aurocosh.divinefavor.common.core.handlers.PlayerDataHandler;
 import aurocosh.divinefavor.common.item.ItemTalisman;
 import aurocosh.divinefavor.common.constants.LibFavorType;
 import aurocosh.divinefavor.common.constants.LibObfuscation;
-import aurocosh.divinefavor.common.requirements.base.ModSpellRequirements;
 import aurocosh.divinefavor.common.requirements.base.SpellRequirement;
+import aurocosh.divinefavor.common.spell.base.SpellContext;
+import ibxm.Player;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.client.gui.GuiIngame;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.renderer.GlStateManager;
@@ -72,14 +75,8 @@ public final class HUDHandler {
         ItemTalisman talisman = (ItemTalisman)stack.getItem();
         SpellRequirement requirement = talisman.getRequirement();
 
-        String spellCharges = "";
-        if(requirement != ModSpellRequirements.free)
-        {
-            PlayerDataHandler.PlayerData data = PlayerDataHandler.get(mc.player);
-//            int charges = data.getSpellCharge(requirement.getFavorType());
-            int charges = data.getSpellCharge(LibFavorType.ALLFIRE);
-            spellCharges = "Charges: " + charges;
-        }
+        SpellContext context = new SpellContext(DivineFavor.proxy.getClientPlayer());
+        String description = requirement.getUsageInfo(context);
 
         int ticks = ReflectionHelper.getPrivateValue(GuiIngame.class, mc.ingameGUI, LibObfuscation.REMAINING_HIGHLIGHT_TICKS);
         //ticks -= 10;
@@ -88,18 +85,18 @@ public final class HUDHandler {
             int alpha = Math.min(255, (int) ((ticks - pticks) * 256.0F / 10.0F));
             int color = (0 << 0) + (128 << 8) + (0 << 16) + (alpha << 24);
 
-            int x = res.getScaledWidth() / 2 - mc.fontRenderer.getStringWidth(spellCharges) / 2;
+            int x = res.getScaledWidth() / 2 - mc.fontRenderer.getStringWidth(description) / 2;
             int y = res.getScaledHeight() - 71;
             if (mc.player.capabilities.isCreativeMode)
                 y += 14;
 
             GlStateManager.enableBlend();
             GlStateManager.blendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
-            mc.fontRenderer.drawStringWithShadow(spellCharges, x, y, color);
+            mc.fontRenderer.drawStringWithShadow(description, x, y, color);
 
-            int w = mc.fontRenderer.getStringWidth(spellCharges);
+            int w = mc.fontRenderer.getStringWidth(description);
             GlStateManager.pushMatrix();
-            GlStateManager.translate(x - 16, y - 6, 0);
+            GlStateManager.translate(x - 20, y - 6, 0);
             GlStateManager.scale(alpha / 255F, 1F, 1);
             GlStateManager.color(1F, 1F, 1F);
             mc.getRenderItem().renderItemIntoGUI(stack, 0, 0);
