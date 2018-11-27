@@ -1,0 +1,10 @@
+{
+  "name": "snowball_throw_talisman",
+  "spellType": "SNOWBALL_THROW",
+  "requirement": {
+    "type": "SpellRequirementFree",
+    "name": "free"
+  },
+  "castOnUse": true,
+  "castOnRightClick": true
+}

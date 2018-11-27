@@ -1,0 +1,10 @@
+{
+  "name": "bonemeal_talisman",
+  "spellType": "BONEMEAL",
+  "requirement": {
+    "type": "SpellRequirementFree",
+    "name": "free"
+  },
+  "castOnUse": true,
+  "castOnRightClick": false
+}

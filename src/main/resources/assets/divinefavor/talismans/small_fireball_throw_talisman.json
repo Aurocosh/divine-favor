@@ -1,0 +1,10 @@
+{
+  "name": "small_fireball_throw_talisman",
+  "spellType": "SMALL_FIREBALL_THROW",
+  "requirement": {
+    "type": "SpellRequirementFree",
+    "name": "free"
+  },
+  "castOnUse": true,
+  "castOnRightClick": true
+}

@@ -1,0 +1,10 @@
+{
+  "name": "lavawalking_talisman",
+  "spellType": "LAVAWALKING",
+  "requirement": {
+    "type": "SpellRequirementFree",
+    "name": "free"
+  },
+  "castOnUse": true,
+  "castOnRightClick": true
+}
