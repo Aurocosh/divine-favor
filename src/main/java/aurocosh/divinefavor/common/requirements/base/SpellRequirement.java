@@ -1,9 +1,9 @@
 package aurocosh.divinefavor.common.requirements.base;
 
-import aurocosh.divinefavor.common.lib.LibMisc;
-import aurocosh.divinefavor.common.registry.SpellRequirementRegestry;
+import aurocosh.divinefavor.common.constants.LibMisc;
 import aurocosh.divinefavor.common.spell.base.SpellContext;
 import com.google.gson.JsonObject;
+import com.google.gson.annotations.Expose;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.JsonUtils;
@@ -15,6 +15,7 @@ import java.util.regex.Pattern;
 public abstract class SpellRequirement extends IForgeRegistryEntry.Impl<SpellRequirement> {
     private static final Pattern FAKE_PLAYER_PATTERN = Pattern.compile("^(?:\\[.*\\])|(?:ComputerCraft)$");
 
+    @Expose
     public String name;
 
     public SpellRequirement(String name)

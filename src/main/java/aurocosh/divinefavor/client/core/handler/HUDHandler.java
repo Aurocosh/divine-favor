@@ -2,8 +2,8 @@ package aurocosh.divinefavor.client.core.handler;
 
 import aurocosh.divinefavor.common.core.handlers.PlayerDataHandler;
 import aurocosh.divinefavor.common.item.ItemTalisman;
-import aurocosh.divinefavor.common.lib.LibFavorType;
-import aurocosh.divinefavor.common.lib.LibObfuscation;
+import aurocosh.divinefavor.common.constants.LibFavorType;
+import aurocosh.divinefavor.common.constants.LibObfuscation;
 import aurocosh.divinefavor.common.requirements.base.ModSpellRequirements;
 import aurocosh.divinefavor.common.requirements.base.SpellRequirement;
 import net.minecraft.client.Minecraft;

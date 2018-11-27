@@ -1,4 +1,4 @@
-package aurocosh.divinefavor.common.lib;
+package aurocosh.divinefavor.common.constants;
 
 public final class LibEffectNames {
     public static final String WATERWALK = "waterwalk";

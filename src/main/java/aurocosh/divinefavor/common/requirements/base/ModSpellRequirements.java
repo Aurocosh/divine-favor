@@ -1,13 +1,9 @@
 package aurocosh.divinefavor.common.requirements.base;
 
-import aurocosh.divinefavor.common.lib.LibMisc;
+import aurocosh.divinefavor.common.constants.LibMisc;
 import aurocosh.divinefavor.common.registry.SpellRequirementRegestry;
-import aurocosh.divinefavor.common.util.UtilAssets;
-import com.google.gson.JsonObject;
 import net.minecraft.util.ResourceLocation;
 
-import java.nio.file.Path;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 

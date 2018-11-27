@@ -1,7 +1,7 @@
 package aurocosh.divinefavor.common.entity;
 
 import aurocosh.divinefavor.DivineFavor;
-import aurocosh.divinefavor.common.lib.LibEntityNames;
+import aurocosh.divinefavor.common.constants.LibEntityNames;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.registry.EntityRegistry;

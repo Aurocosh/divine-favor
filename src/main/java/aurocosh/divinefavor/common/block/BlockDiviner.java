@@ -2,7 +2,7 @@ package aurocosh.divinefavor.common.block;
 
 import aurocosh.divinefavor.common.block.base.IDivineFavorBlock;
 import aurocosh.divinefavor.common.core.DivineFavorCreativeTab;
-import aurocosh.divinefavor.common.lib.LibBlockNames;
+import aurocosh.divinefavor.common.constants.LibBlockNames;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.item.EnumRarity;

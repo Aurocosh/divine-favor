@@ -16,7 +16,7 @@ import aurocosh.divinefavor.common.block.tile.TileFastFurnace;
 import aurocosh.divinefavor.common.block.tile.TileIronMedium;
 import aurocosh.divinefavor.common.block.tile.container.ContainerFastFurnace;
 import aurocosh.divinefavor.common.block.tile.container.ContainerIronMedium;
-import aurocosh.divinefavor.common.lib.LibGuiIDs;
+import aurocosh.divinefavor.common.constants.LibGuiIDs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;

@@ -2,7 +2,7 @@ package aurocosh.divinefavor.client.gui;
 
 import aurocosh.divinefavor.common.block.tile.TileIronMedium;
 import aurocosh.divinefavor.common.block.tile.container.ContainerIronMedium;
-import aurocosh.divinefavor.common.lib.LibResources;
+import aurocosh.divinefavor.common.constants.LibResources;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.ResourceLocation;

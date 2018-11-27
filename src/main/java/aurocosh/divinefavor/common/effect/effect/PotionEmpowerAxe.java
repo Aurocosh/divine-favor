@@ -1,7 +1,7 @@
 package aurocosh.divinefavor.common.effect.effect;
 
 import aurocosh.divinefavor.common.effect.ModPotionEffects;
-import aurocosh.divinefavor.common.lib.LibEffectNames;
+import aurocosh.divinefavor.common.constants.LibEffectNames;
 import aurocosh.divinefavor.common.util.UtilBlock;
 import aurocosh.divinefavor.common.util.UtilBlockClick;
 import aurocosh.divinefavor.common.util.UtilRandom;

@@ -1,4 +1,4 @@
-package aurocosh.divinefavor.common.lib;
+package aurocosh.divinefavor.common.constants;
 
 public final class LibMisc {
     // Mod Constants

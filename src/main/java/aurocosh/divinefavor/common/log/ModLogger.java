@@ -24,7 +24,7 @@
 package aurocosh.divinefavor.common.log;
 
 import aurocosh.divinefavor.common.config.IHasConfig;
-import aurocosh.divinefavor.common.lib.LibMisc;
+import aurocosh.divinefavor.common.constants.LibMisc;
 import net.minecraftforge.common.config.Configuration;
 import org.apache.logging.log4j.Logger;
 

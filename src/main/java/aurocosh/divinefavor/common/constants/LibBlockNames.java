@@ -1,4 +1,4 @@
-package aurocosh.divinefavor.common.lib;
+package aurocosh.divinefavor.common.constants;
 
 public class LibBlockNames {
     public static final String FAST_FURNACE = "fast_furnace";

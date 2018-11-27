@@ -26,7 +26,8 @@ public class CommonProxy {
     public void preInit(FMLPreInitializationEvent e) {
         //ConfigHandler.init(event.getSuggestedConfigurationFile());
 
-        UtilAssets.Test();
+        //UtilAssets.Test();
+        UtilAssets.Test2();
 
         ModSpellRequirements.init();
         ModItems.preInit();

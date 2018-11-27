@@ -1,7 +1,7 @@
 package aurocosh.divinefavor.client.gui;
 
 import aurocosh.divinefavor.common.core.handlers.ConfigHandler;
-import aurocosh.divinefavor.common.lib.LibMisc;
+import aurocosh.divinefavor.common.constants.LibMisc;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraftforge.common.config.ConfigElement;
 import net.minecraftforge.common.config.Configuration;
