@@ -4,6 +4,7 @@ import aurocosh.divinefavor.DivineFavor;
 import aurocosh.divinefavor.common.block.base.ModBlocks;
 import aurocosh.divinefavor.common.core.handlers.PlayerDataHandler;
 import aurocosh.divinefavor.common.entity.ModEntities;
+import aurocosh.divinefavor.common.favors.ModFavors;
 import aurocosh.divinefavor.common.item.base.ModItems;
 import aurocosh.divinefavor.common.network.GuiHandler;
 import aurocosh.divinefavor.common.network.MessageRegister;
@@ -17,20 +18,17 @@ import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 
-import java.io.File;
-
 @Mod.EventBusSubscriber
 public class CommonProxy {
     public void preInit(FMLPreInitializationEvent e) {
-        //ConfigHandler.init(event.getSuggestedConfigurationFile());
-
         //UtilAssets.Test();
         //UtilAssets.Test2();
 
-        ModSpells.init();
+        ModFavors.preInit();
+        ModSpells.preInit();
         ModItems.preInit();
         ModBlocks.preInit();
-        ModEntities.init();
+        ModEntities.preInit();
 
         MessageRegister.init();
 

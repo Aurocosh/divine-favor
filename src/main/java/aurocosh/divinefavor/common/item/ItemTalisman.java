@@ -4,10 +4,11 @@ import aurocosh.divinefavor.api.internal.Vector3;
 import aurocosh.divinefavor.common.block.base.ModBlocks;
 import aurocosh.divinefavor.common.constants.LibFavorType;
 import aurocosh.divinefavor.common.item.base.TalismanData;
+import aurocosh.divinefavor.common.lib.IInitiatable;
 import aurocosh.divinefavor.common.requirements.base.SpellRequirement;
 import aurocosh.divinefavor.common.requirements.requirement.CostFree;
+import aurocosh.divinefavor.common.spell.base.ModSpell;
 import aurocosh.divinefavor.common.spell.base.ModSpells;
-import aurocosh.divinefavor.common.spell.base.Spell;
 import aurocosh.divinefavor.common.spell.base.SpellContext;
 import aurocosh.divinefavor.common.core.DivineFavorCreativeTab;
 import aurocosh.divinefavor.common.core.handlers.PlayerDataHandler;
@@ -27,7 +28,7 @@ import vazkii.arl.item.ItemMod;
 public class ItemTalisman extends ItemMod implements IDivineFavorItem {
     private boolean castOnUse;
     private boolean castOnRightClick;
-    private Spell spell;
+    private ModSpell modSpell;
     private SpellRequirement requirement;
 
     public ItemTalisman(TalismanData talismanData){
@@ -36,21 +37,22 @@ public class ItemTalisman extends ItemMod implements IDivineFavorItem {
 
     public ItemTalisman(String name, SpellType spellType, SpellRequirement requirement, boolean castOnUse, boolean castOnRightClick) {
         super(name);
-        this.spell = ModSpells.get(spellType);
+        this.modSpell = ModSpells.get(spellType);
         this.requirement = requirement;
         if(this.requirement == null)
             this.requirement = new SpellRequirement("free",new CostFree(0));
+        requirement.init();
         this.castOnUse = castOnUse;
         this.castOnRightClick = castOnRightClick;
         setMaxStackSize(1);
         setCreativeTab(DivineFavorCreativeTab.INSTANCE);
     }
-
     public boolean castUse(SpellContext context) {
-        return spell.cast(context);
+        return modSpell.cast(context);
     }
+
     public boolean castRightClick(SpellContext context) {
-        return spell.cast(context);
+        return modSpell.cast(context);
     }
 
     @Override

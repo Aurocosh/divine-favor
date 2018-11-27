@@ -18,7 +18,12 @@ public class CostMultipleOptions extends Cost {
     {
         super(priority);
         this.costOptions = costOptions;
+    }
+
+    @Override
+    public void init() {
         Collections.sort(this.costOptions,new CostComparator());
+        costOptions.forEach(Cost::init);
     }
 
     @Override

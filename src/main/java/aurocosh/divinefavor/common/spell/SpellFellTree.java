@@ -1,9 +1,8 @@
 package aurocosh.divinefavor.common.spell;
 
-import aurocosh.divinefavor.common.spell.base.Spell;
+import aurocosh.divinefavor.common.spell.base.ModSpell;
 import aurocosh.divinefavor.common.spell.base.SpellContext;
 import aurocosh.divinefavor.common.events.TalismanEvent;
-import aurocosh.divinefavor.common.constants.LibSpellNames;
 import aurocosh.divinefavor.common.spell.base.SpellType;
 import aurocosh.divinefavor.common.util.UtilBlock;
 import com.google.common.collect.Lists;
@@ -22,7 +21,7 @@ import java.util.Queue;
 import java.util.Set;
 import java.util.Stack;
 
-public class SpellFellTree extends Spell {
+public class SpellFellTree extends ModSpell {
     public SpellFellTree() {
         super(SpellType.STONEBALL_THROW);
     }

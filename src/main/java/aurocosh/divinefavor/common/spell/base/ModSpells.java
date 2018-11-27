@@ -7,20 +7,20 @@ import java.util.HashMap;
 import java.util.Map;
 
 public final class ModSpells {
-    private static Map<SpellType, Spell> spellMap = new HashMap<>();
+    private static Map<SpellType, ModSpell> spellMap = new HashMap<>();
 
-    public static Spell arrow_throw;
-    public static Spell bonemeal;
-    public static Spell empower_axe;
-    public static Spell fell_tree;
-    public static Spell ignition;
-    public static Spell lavawalking;
-    public static Spell snowball_throw;
-    public static Spell stoneball_throw;
-    public static Spell small_fireball_throw;
-    public static Spell waterwalking;
+    public static ModSpell arrow_throw;
+    public static ModSpell bonemeal;
+    public static ModSpell empower_axe;
+    public static ModSpell fell_tree;
+    public static ModSpell ignition;
+    public static ModSpell lavawalking;
+    public static ModSpell snowball_throw;
+    public static ModSpell stoneball_throw;
+    public static ModSpell small_fireball_throw;
+    public static ModSpell waterwalking;
 
-    public static void init() {
+    public static void preInit() {
         arrow_throw = register(new SpellArrowThrow());
         bonemeal = register(new SpellBonemeal());
         empower_axe = register(new SpellEmpowerAxe());
@@ -33,13 +33,13 @@ public final class ModSpells {
         waterwalking = register(new SpellWaterwalking());
     }
 
-    public static Spell get(SpellType name) {
+    public static ModSpell get(SpellType name) {
         return spellMap.get(name);
     }
 
-    public static Spell register(Spell spell) {
-        spellMap.put(spell.type, spell);
-        SpellRegestry.register(spell);
-        return spell;
+    public static ModSpell register(ModSpell modSpell) {
+        spellMap.put(modSpell.type, modSpell);
+        SpellRegestry.register(modSpell);
+        return modSpell;
     }
 }

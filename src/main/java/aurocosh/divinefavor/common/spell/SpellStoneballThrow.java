@@ -1,16 +1,15 @@
 package aurocosh.divinefavor.common.spell;
 
-import aurocosh.divinefavor.common.spell.base.Spell;
+import aurocosh.divinefavor.common.spell.base.ModSpell;
 import aurocosh.divinefavor.common.spell.base.SpellContext;
 import aurocosh.divinefavor.common.entity.EntityStoneball;
-import aurocosh.divinefavor.common.constants.LibSpellNames;
 import aurocosh.divinefavor.common.spell.base.SpellType;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.world.World;
 
-public class SpellStoneballThrow extends Spell {
+public class SpellStoneballThrow extends ModSpell {
     public SpellStoneballThrow() {
         super(SpellType.STONEBALL_THROW);
     }
