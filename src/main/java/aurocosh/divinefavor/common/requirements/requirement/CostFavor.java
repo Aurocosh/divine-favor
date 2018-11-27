@@ -1,47 +1,49 @@
 package aurocosh.divinefavor.common.requirements.requirement;
 
-import aurocosh.divinefavor.DivineFavor;
 import aurocosh.divinefavor.common.core.handlers.PlayerDataHandler;
+import aurocosh.divinefavor.common.favors.ModFavor;
+import aurocosh.divinefavor.common.favors.ModFavors;
 import aurocosh.divinefavor.common.spell.base.SpellContext;
-import com.google.gson.JsonObject;
 import com.google.gson.annotations.Expose;
-import net.minecraft.util.JsonUtils;
 
 public class CostFavor extends Cost {
     @Expose
-    protected int favorType;
+    private String favorName;
     @Expose
-    protected int favorCount;
+    private int favorCount;
 
-    public CostFavor(int priority, int favorType, int favorCount)
-    {
-        super(priority);
-        this.favorType = favorType;
-        this.favorCount= favorCount;
+    private ModFavor favor;
+
+    @Override
+    public void init() {
+        favor = ModFavors.getByName(favorName);
     }
 
-    public int getFavorType(){
-        return favorType;
+    public CostFavor(int priority, String favorName, int favorCount)
+    {
+        super(priority);
+        this.favorName = favorName;
+        this.favorCount= favorCount;
     }
 
     @Override
     public boolean canClaim(SpellContext context)
     {
         PlayerDataHandler.PlayerData data = PlayerDataHandler.get(context.playerIn);
-        return data.getSpellCharge(favorType) > favorCount;
+        return data.getSpellCharge(favor.getId()) > favorCount;
     }
 
     @Override
     public boolean claim(SpellContext context)
     {
         PlayerDataHandler.PlayerData data = PlayerDataHandler.get(context.playerIn);
-        return data.consumeSpellCharge(favorType,favorCount);
+        return data.consumeSpellCharge(favor.getId(),favorCount);
     }
 
     @Override
     public String getUsageInfo(SpellContext context) {
         PlayerDataHandler.PlayerData data = PlayerDataHandler.get(context.playerIn);
-        int favorsLeft = data.getSpellCharge(favorType);
+        int favorsLeft = data.getSpellCharge(favor.getId());
         int usesLeft = favorsLeft / favorCount;
         return "Uses left: " + usesLeft;
     }

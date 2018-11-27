@@ -7,7 +7,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
 
 public final class ModEntities {
-    public static void init() {
+    public static void preInit() {
         int id = 0;
         registerModEntity(EntityStoneball.class, LibEntityNames.STONEBALL, id++, DivineFavor.instance, 256, 10, true);
     }

@@ -1,5 +1,6 @@
 package aurocosh.divinefavor.common.requirements.base;
 
+import aurocosh.divinefavor.common.lib.IInitiatable;
 import aurocosh.divinefavor.common.requirements.requirement.Cost;
 import aurocosh.divinefavor.common.spell.base.SpellContext;
 import com.google.gson.annotations.Expose;
@@ -9,13 +10,18 @@ import net.minecraftforge.common.util.FakePlayer;
 
 import java.util.regex.Pattern;
 
-public class SpellRequirement {
+public class SpellRequirement implements IInitiatable {
     private static final Pattern FAKE_PLAYER_PATTERN = Pattern.compile("^(?:\\[.*\\])|(?:ComputerCraft)$");
 
     @Expose
     public String name;
     @Expose
     public Cost cost;
+
+    @Override
+    public void init() {
+        cost.init();
+    }
 
     public SpellRequirement(String name, Cost cost)
     {

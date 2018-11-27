@@ -1,5 +1,6 @@
 package aurocosh.divinefavor.common.requirements.requirement;
 
+import aurocosh.divinefavor.common.lib.IInitiatable;
 import aurocosh.divinefavor.common.spell.base.SpellContext;
 import com.google.gson.JsonObject;
 import com.google.gson.annotations.Expose;
@@ -11,7 +12,10 @@ import net.minecraftforge.common.util.FakePlayer;
 import java.util.Comparator;
 import java.util.regex.Pattern;
 
-public abstract class Cost {
+public abstract class Cost implements IInitiatable {
+    @Override
+    public void init() {}
+
     public static class CostComparator implements  Comparator<Cost> {
         @Override
         public int compare(Cost o1, Cost o2) {

@@ -9,13 +9,13 @@ import vazkii.arl.network.NetworkMessage;
 
 public class MessageSyncSpellCharge extends NetworkMessage {
 
-    public int favorType;
+    public int favorId;
 	public int favorCount;
 
 	public MessageSyncSpellCharge() { }
 
-	public MessageSyncSpellCharge(int favorType, int count) {
-	    this.favorType = favorType;
+	public MessageSyncSpellCharge(int favorId, int count) {
+	    this.favorId = favorId;
 	    this.favorCount = count;
 	}
 
@@ -23,7 +23,7 @@ public class MessageSyncSpellCharge extends NetworkMessage {
 	public IMessage handleMessage(MessageContext context) {
         ClientTickHandler.scheduledActions.add(() -> {
             PlayerDataHandler.PlayerData data = PlayerDataHandler.get(DivineFavor.proxy.getClientPlayer());
-            data.setSpellCharge(favorType, favorCount);
+            data.setSpellCharge(favorId, favorCount);
         });
         return null;
     }

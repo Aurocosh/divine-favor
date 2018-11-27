@@ -1,5 +1,7 @@
 package aurocosh.divinefavor.common.core.handlers;
 
+import aurocosh.divinefavor.common.favors.ModFavor;
+import aurocosh.divinefavor.common.favors.ModFavors;
 import aurocosh.divinefavor.common.network.message.MessageDataSync;
 import aurocosh.divinefavor.common.network.message.MessageSyncSpellCharge;
 import aurocosh.divinefavor.common.constants.LibFavorType;
@@ -83,24 +85,12 @@ public class PlayerDataHandler {
     }
 
     public static class PlayerData {
-        private static final String TAG_ARROW_THROW_FAVOR = "ArrowThrowFavor";
-        private static final String TAG_BONEMEAL_FAVOR = "BonemealFavor";
-        private static final String TAG_EMPOWER_AXE_FAVOR = "EmpowerAxeFavor";
-        private static final String TAG_FELL_TREE_FAVOR = "FellTreeFavor";
-        private static final String TAG_SMALL_FIREBALL_THROW_FAVOR = "FireballThrowFavor";
-        private static final String TAG_IGNITION_FAVOR = "IgnitionFavor";
-        private static final String TAG_LAVAWALKING_FAVOR = "LavawalkingFavor";
-        private static final String TAG_SNOWBALL_THROW_FAVOR = "SnowballThrowFavor";
-        private static final String TAG_STONEBALL_THROW_FAVOR = "StoneballThrowFavor";
-        private static final String TAG_WATERWALKING_FAVOR = "WaterwalkingFavor";
-
         private static final String TAG_WOOD_BLOCKS_BROKEN = "WoodBlocksBroken";
 
         private static final String TAG_ALTAR_POSITIONS = "AltarPositions";
         private static final String TAG_LAST_CLICKED_POSITIONS = "LastClickedPositions";
 
         private static Map<Integer, Integer> favorValues = new HashMap<>();
-        private static Map<Integer, String> favorTags = new HashMap<>();
 
         int woodBlocksBroken;
 
@@ -114,8 +104,8 @@ public class PlayerDataHandler {
             playerWR = new WeakReference(player);
             client = player.world.isRemote;
 
-            addFavorType(LibFavorType.TIMBER,TAG_ARROW_THROW_FAVOR);
-            addFavorType(LibFavorType.ALLFIRE,TAG_BONEMEAL_FAVOR);
+            ArrayList<Integer> favors = ModFavors.getFavorIds();
+            favors.forEach(id -> favorValues.put(id,0));
 
             woodBlocksBroken = 0;
 
@@ -123,11 +113,6 @@ public class PlayerDataHandler {
             lastClickedPositions = new ArrayList<>();
 
             load();
-        }
-
-        public void addFavorType(int type, String tag){
-            favorValues.put(type,0);
-            favorTags.put(type,tag);
         }
 
         public void tick() {
@@ -193,9 +178,10 @@ public class PlayerDataHandler {
         public void writeToNBT(NBTTagCompound cmp) {
             cmp.setInteger(TAG_WOOD_BLOCKS_BROKEN, woodBlocksBroken);
 
-            for (Map.Entry<Integer, String> entry : favorTags.entrySet()) {
-                int value = favorValues.get(entry.getKey());
-                cmp.setInteger(entry.getValue(),value);
+            ArrayList<ModFavor> favors = ModFavors.getFavorList();
+            for (ModFavor favor : favors) {
+                int value = favorValues.get(favor.getId());
+                cmp.setInteger(favor.getTag(),value);
             }
 
             int[] altarArray = UtilSerialize.SerializeBlockPosArray(altarPositions);
@@ -219,9 +205,10 @@ public class PlayerDataHandler {
         public void readFromNBT(NBTTagCompound cmp) {
             woodBlocksBroken = cmp.getInteger(TAG_WOOD_BLOCKS_BROKEN);
 
-            for (Map.Entry<Integer, String> entry : favorTags.entrySet()) {
-                int value = cmp.getInteger(entry.getValue());
-                favorValues.put(entry.getKey(),value);
+            ArrayList<ModFavor> favors = ModFavors.getFavorList();
+            for (ModFavor favor : favors) {
+                int value = cmp.getInteger(favor.getTag());
+                favorValues.put(favor.getId(),value);
             }
 
             int[] altarArray = cmp.getIntArray(TAG_ALTAR_POSITIONS);
