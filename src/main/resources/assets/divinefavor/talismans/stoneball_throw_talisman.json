@@ -2,7 +2,9 @@
   "name": "stoneball_throw_talisman",
   "spellType": "STONEBALL_THROW",
   "requirement": {
-    "type": "SpellRequirementFree",
+    "cost": {
+      "type": "CostFree"
+    },
     "name": "free"
   },
   "castOnUse": true,

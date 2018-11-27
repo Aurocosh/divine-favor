@@ -2,7 +2,9 @@
   "name": "empower_axe_talisman",
   "spellType": "EMPOWER_AXE",
   "requirement": {
-    "type": "SpellRequirementFree",
+    "cost": {
+      "type": "CostFree"
+    },
     "name": "free"
   },
   "castOnUse": true,

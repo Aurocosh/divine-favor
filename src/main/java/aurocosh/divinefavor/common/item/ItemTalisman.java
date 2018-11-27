@@ -4,8 +4,8 @@ import aurocosh.divinefavor.api.internal.Vector3;
 import aurocosh.divinefavor.common.block.base.ModBlocks;
 import aurocosh.divinefavor.common.constants.LibFavorType;
 import aurocosh.divinefavor.common.item.base.TalismanData;
-import aurocosh.divinefavor.common.requirements.base.ModSpellRequirements;
 import aurocosh.divinefavor.common.requirements.base.SpellRequirement;
+import aurocosh.divinefavor.common.requirements.requirement.CostFree;
 import aurocosh.divinefavor.common.spell.base.ModSpells;
 import aurocosh.divinefavor.common.spell.base.Spell;
 import aurocosh.divinefavor.common.spell.base.SpellContext;
@@ -39,7 +39,7 @@ public class ItemTalisman extends ItemMod implements IDivineFavorItem {
         this.spell = ModSpells.get(spellType);
         this.requirement = requirement;
         if(this.requirement == null)
-            this.requirement = ModSpellRequirements.free;
+            this.requirement = new SpellRequirement("free",new CostFree(0));
         this.castOnUse = castOnUse;
         this.castOnRightClick = castOnRightClick;
         setMaxStackSize(1);
@@ -125,8 +125,6 @@ public class ItemTalisman extends ItemMod implements IDivineFavorItem {
 
     private void addCharge(EntityPlayer playerIn){
         if(playerIn.world.isRemote)
-            return;
-        if(requirement == ModSpellRequirements.free)
             return;
 
         PlayerDataHandler.PlayerData data = PlayerDataHandler.get(playerIn);

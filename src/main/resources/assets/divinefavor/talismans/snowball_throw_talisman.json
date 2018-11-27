@@ -2,7 +2,9 @@
   "name": "snowball_throw_talisman",
   "spellType": "SNOWBALL_THROW",
   "requirement": {
-    "type": "SpellRequirementFree",
+    "cost": {
+      "type": "CostFree"
+    },
     "name": "free"
   },
   "castOnUse": true,

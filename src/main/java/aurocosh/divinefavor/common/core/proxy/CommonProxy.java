@@ -7,9 +7,7 @@ import aurocosh.divinefavor.common.entity.ModEntities;
 import aurocosh.divinefavor.common.item.base.ModItems;
 import aurocosh.divinefavor.common.network.GuiHandler;
 import aurocosh.divinefavor.common.network.MessageRegister;
-import aurocosh.divinefavor.common.requirements.base.ModSpellRequirements;
 import aurocosh.divinefavor.common.spell.base.ModSpells;
-import aurocosh.divinefavor.common.util.UtilAssets;
 import com.google.common.util.concurrent.ListenableFuture;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraftforge.common.MinecraftForge;
@@ -27,9 +25,8 @@ public class CommonProxy {
         //ConfigHandler.init(event.getSuggestedConfigurationFile());
 
         //UtilAssets.Test();
-        UtilAssets.Test2();
+        //UtilAssets.Test2();
 
-        ModSpellRequirements.init();
         ModSpells.init();
         ModItems.preInit();
         ModBlocks.preInit();

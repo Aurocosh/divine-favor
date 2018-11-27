@@ -2,7 +2,9 @@
   "name": "fell_tree_talisman",
   "spellType": "FELL_TREE",
   "requirement": {
-    "type": "SpellRequirementFree",
+    "cost": {
+      "type": "CostFree"
+    },
     "name": "free"
   },
   "castOnUse": true,

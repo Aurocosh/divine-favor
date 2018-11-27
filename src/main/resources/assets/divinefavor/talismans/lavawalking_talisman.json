@@ -2,7 +2,9 @@
   "name": "lavawalking_talisman",
   "spellType": "LAVAWALKING",
   "requirement": {
-    "type": "SpellRequirementFree",
+    "cost": {
+      "type": "CostFree"
+    },
     "name": "free"
   },
   "castOnUse": true,

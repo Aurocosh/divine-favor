@@ -2,7 +2,9 @@
   "name": "arrow_throw_talisman",
   "spellType": "ARROW_THROW",
   "requirement": {
-    "type": "SpellRequirementFree",
+    "cost": {
+      "type": "CostFree"
+    },
     "name": "free"
   },
   "castOnUse": true,
