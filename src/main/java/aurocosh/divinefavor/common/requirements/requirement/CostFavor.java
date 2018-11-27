@@ -30,7 +30,7 @@ public class CostFavor extends Cost {
     public boolean canClaim(SpellContext context)
     {
         PlayerDataHandler.PlayerData data = PlayerDataHandler.get(context.playerIn);
-        return data.getSpellCharge(favor.getId()) > favorCount;
+        return data.getSpellCharge(favor.getId()) >= favorCount;
     }
 
     @Override
@@ -42,6 +42,8 @@ public class CostFavor extends Cost {
 
     @Override
     public String getUsageInfo(SpellContext context) {
+        if(favorCount == 0)
+            return "Unlimited use";
         PlayerDataHandler.PlayerData data = PlayerDataHandler.get(context.playerIn);
         int favorsLeft = data.getSpellCharge(favor.getId());
         int usesLeft = favorsLeft / favorCount;

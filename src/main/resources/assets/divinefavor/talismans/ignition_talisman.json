@@ -3,9 +3,11 @@
   "spellType": "IGNITION",
   "requirement": {
     "cost": {
-      "type": "CostFree"
+      "type": "CostFavor",
+      "favorName": "favor_of_allfire",
+      "favorCount": 1
     },
-    "name": "free"
+    "name": "ignition_cost"
   },
   "castOnUse": true,
   "castOnRightClick": false

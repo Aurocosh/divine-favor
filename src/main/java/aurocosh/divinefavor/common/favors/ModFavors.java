@@ -1,19 +1,11 @@
 package aurocosh.divinefavor.common.favors;
 
 import aurocosh.divinefavor.DivineFavor;
-import aurocosh.divinefavor.common.item.base.TalismanData;
-import aurocosh.divinefavor.common.lib.RuntimeTypeAdapterFactory;
 import aurocosh.divinefavor.common.registry.FavorRegistry;
-import aurocosh.divinefavor.common.registry.SpellRegestry;
-import aurocosh.divinefavor.common.requirements.requirement.Cost;
-import aurocosh.divinefavor.common.requirements.requirement.CostFavor;
-import aurocosh.divinefavor.common.requirements.requirement.CostFree;
-import aurocosh.divinefavor.common.requirements.requirement.CostMultipleOptions;
 import aurocosh.divinefavor.common.util.UtilAssets;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import net.minecraftforge.fml.common.Loader;
-import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.ModContainer;
 
 import java.util.ArrayList;
