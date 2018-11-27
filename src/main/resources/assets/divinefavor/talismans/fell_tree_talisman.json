@@ -1,0 +1,10 @@
+{
+  "name": "fell_tree_talisman",
+  "spellType": "FELL_TREE",
+  "requirement": {
+    "type": "SpellRequirementFree",
+    "name": "free"
+  },
+  "castOnUse": true,
+  "castOnRightClick": false
+}

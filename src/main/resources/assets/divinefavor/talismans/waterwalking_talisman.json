@@ -1,0 +1,10 @@
+{
+  "name": "waterwalking_talisman",
+  "spellType": "WATERWALKING",
+  "requirement": {
+    "type": "SpellRequirementFree",
+    "name": "free"
+  },
+  "castOnUse": true,
+  "castOnRightClick": true
+}

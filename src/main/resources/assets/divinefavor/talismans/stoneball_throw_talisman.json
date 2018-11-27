@@ -1,0 +1,10 @@
+{
+  "name": "stoneball_throw_talisman",
+  "spellType": "STONEBALL_THROW",
+  "requirement": {
+    "type": "SpellRequirementFree",
+    "name": "free"
+  },
+  "castOnUse": true,
+  "castOnRightClick": true
+}

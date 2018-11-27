@@ -1,0 +1,10 @@
+{
+  "name": "arrow_throw_talisman",
+  "spellType": "ARROW_THROW",
+  "requirement": {
+    "type": "SpellRequirementFree",
+    "name": "free"
+  },
+  "castOnUse": true,
+  "castOnRightClick": true
+}
