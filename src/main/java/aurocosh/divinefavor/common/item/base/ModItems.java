@@ -79,7 +79,7 @@ public final class ModItems {
         return talisman;
     }
 
-    public static Map<String, ItemMod> getItems(){
-        return new HashMap<>(items);
+    public static ArrayList<ItemMod> getItems(){
+        return new ArrayList<>(items.values());
     }
 }
