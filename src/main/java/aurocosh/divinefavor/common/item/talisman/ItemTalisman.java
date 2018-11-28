@@ -3,6 +3,8 @@ package aurocosh.divinefavor.common.item.talisman;
 import aurocosh.divinefavor.api.internal.Vector3;
 import aurocosh.divinefavor.common.block.base.ModBlocks;
 import aurocosh.divinefavor.common.constants.LibFavorType;
+import aurocosh.divinefavor.common.constants.LibMisc;
+import aurocosh.divinefavor.common.item.base.IDescriptionProvider;
 import aurocosh.divinefavor.common.requirements.base.SpellRequirement;
 import aurocosh.divinefavor.common.requirements.requirement.CostFree;
 import aurocosh.divinefavor.common.spell.base.ModSpell;
@@ -23,7 +25,7 @@ import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
 import vazkii.arl.item.ItemMod;
 
-public class ItemTalisman extends ItemMod implements IDivineFavorItem {
+public class ItemTalisman extends ItemMod implements IDivineFavorItem, IDescriptionProvider {
     private boolean castOnUse;
     private boolean castOnRightClick;
     private ModSpell modSpell;
@@ -144,5 +146,10 @@ public class ItemTalisman extends ItemMod implements IDivineFavorItem {
         Vector3 end = origin.copy().add(ray.copy().normalize().multiply(len));
         RayTraceResult pos = world.rayTraceBlocks(origin.toVec3D(), end.toVec3D());
         return pos;
+    }
+
+    @Override
+    public String getTranslationKey() {
+        return LibMisc.MOD_ID + ":" + getRegistryName().getResourcePath();
     }
 }
