@@ -10,6 +10,7 @@ public class LibResources {
 
     public static final String GUI_IRON_MEDIUM = PREFIX_GUI + "iron_medium.png";
     public static final String GUI_FAST_FURNACE = PREFIX_GUI + "fast_furnace.png";
+    public static final String GUI_TALISMAN = PREFIX_GUI + "talisman.png";
 
 
 }
