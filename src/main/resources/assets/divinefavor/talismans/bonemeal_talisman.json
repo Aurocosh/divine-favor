@@ -1,12 +1,7 @@
 {
   "name": "bonemeal_talisman",
   "spellType": "BONEMEAL",
-  "requirement": {
-    "cost": {
-      "type": "CostFree"
-    },
-    "name": "free"
-  },
+  "requirement": {},
   "castOnUse": true,
   "castOnRightClick": false
 }

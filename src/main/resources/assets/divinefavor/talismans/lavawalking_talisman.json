@@ -1,12 +1,7 @@
 {
   "name": "lavawalking_talisman",
   "spellType": "LAVAWALKING",
-  "requirement": {
-    "cost": {
-      "type": "CostFree"
-    },
-    "name": "free"
-  },
+  "requirement": {},
   "castOnUse": true,
   "castOnRightClick": true
 }

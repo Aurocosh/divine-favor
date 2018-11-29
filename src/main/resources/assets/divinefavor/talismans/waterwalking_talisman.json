@@ -1,12 +1,7 @@
 {
   "name": "waterwalking_talisman",
   "spellType": "WATERWALKING",
-  "requirement": {
-    "cost": {
-      "type": "CostFree"
-    },
-    "name": "free"
-  },
+  "requirement": {},
   "castOnUse": true,
   "castOnRightClick": true
 }

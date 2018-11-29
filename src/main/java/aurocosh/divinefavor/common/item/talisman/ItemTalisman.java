@@ -8,7 +8,6 @@ import aurocosh.divinefavor.common.constants.LibGuiIDs;
 import aurocosh.divinefavor.common.constants.LibMisc;
 import aurocosh.divinefavor.common.item.base.IDescriptionProvider;
 import aurocosh.divinefavor.common.requirements.base.SpellRequirement;
-import aurocosh.divinefavor.common.requirements.requirement.CostFree;
 import aurocosh.divinefavor.common.spell.base.ModSpell;
 import aurocosh.divinefavor.common.spell.base.ModSpells;
 import aurocosh.divinefavor.common.spell.base.SpellContext;
@@ -43,7 +42,7 @@ public class ItemTalisman extends ItemMod implements IDivineFavorItem, IDescript
         this.modSpell = ModSpells.get(spellType);
         this.requirement = requirement;
         if(this.requirement == null)
-            this.requirement = new SpellRequirement("free",new CostFree(0));
+            this.requirement = new SpellRequirement();
         requirement.init();
         this.castOnUse = castOnUse;
         this.castOnRightClick = castOnRightClick;

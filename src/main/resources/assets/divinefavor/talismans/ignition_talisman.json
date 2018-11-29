@@ -1,14 +1,7 @@
 {
   "name": "ignition_talisman",
   "spellType": "IGNITION",
-  "requirement": {
-    "cost": {
-      "type": "CostFavor",
-      "favorName": "favor_of_allfire",
-      "favorCount": 1
-    },
-    "name": "ignition_cost"
-  },
+  "requirement": {},
   "castOnUse": true,
   "castOnRightClick": false
 }
