@@ -37,7 +37,7 @@ repositories {
         url = "http://maven.covers1624.net"
     }
     maven { // Bookshelf
-        name = "Some other repo"
+        name = "Some jei repo"
         url = "https://maven.mcmoddev.com"
     }
 }

@@ -1,8 +1,10 @@
 package aurocosh.divinefavor.common.item.talisman;
 
+import aurocosh.divinefavor.DivineFavor;
 import aurocosh.divinefavor.api.internal.Vector3;
 import aurocosh.divinefavor.common.block.base.ModBlocks;
 import aurocosh.divinefavor.common.constants.LibFavorType;
+import aurocosh.divinefavor.common.constants.LibGuiIDs;
 import aurocosh.divinefavor.common.constants.LibMisc;
 import aurocosh.divinefavor.common.item.base.IDescriptionProvider;
 import aurocosh.divinefavor.common.requirements.base.SpellRequirement;
@@ -14,6 +16,7 @@ import aurocosh.divinefavor.common.core.DivineFavorCreativeTab;
 import aurocosh.divinefavor.common.core.handlers.PlayerDataHandler;
 import aurocosh.divinefavor.common.item.base.IDivineFavorItem;
 import aurocosh.divinefavor.common.spell.base.SpellType;
+import net.darkhax.bookshelf.util.GameUtils;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
@@ -90,6 +93,15 @@ public class ItemTalisman extends ItemMod implements IDivineFavorItem, IDescript
     public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand hand) {
         ItemStack itemStackIn = playerIn.getHeldItem(hand);
         if(hand == EnumHand.OFF_HAND)
+            return new ActionResult<>(EnumActionResult.PASS, itemStackIn);
+        if(playerIn.isSneaking()){
+            if(!GameUtils.isClient())
+                return new ActionResult<>(EnumActionResult.PASS, itemStackIn);
+            playerIn.openGui(DivineFavor.instance, LibGuiIDs.TALISMAN, worldIn, (int)playerIn.posX, (int)playerIn.posY, (int)playerIn.posZ);
+            return new ActionResult<>(EnumActionResult.SUCCESS, itemStackIn);
+        }
+
+        if(GameUtils.isClient())
             return new ActionResult<>(EnumActionResult.PASS, itemStackIn);
         if(!castOnRightClick)
             return new ActionResult<>(EnumActionResult.PASS, itemStackIn);

@@ -46,7 +46,7 @@ public final class DivineFavorAPI {
     /**
      * Registers a spell piece and tries to create its relative texture given the current loading mod.
      * The spell texture should be in /assets/(yourmod)/textures/spell/(key).png.<br>
-     * If you want to put the spell piece elsewhere or use some other type of resource location, feel free to map
+     * If you want to put the spell piece elsewhere or use some jei type of resource location, feel free to map
      * the texture directly through {@link #simpleSpellTextures}.<br>
      * As SpellPiece objects can have custom renders, depending on how you wish to handle yours, you might
      * not even need to use this. In that case use {@link #registerSpellPiece(String, Class)}

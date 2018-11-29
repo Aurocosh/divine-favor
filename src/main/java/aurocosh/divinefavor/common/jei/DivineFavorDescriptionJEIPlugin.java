@@ -1,4 +1,4 @@
-package aurocosh.divinefavor.common.other;
+package aurocosh.divinefavor.common.jei;
 
 import aurocosh.divinefavor.DivineFavor;
 import aurocosh.divinefavor.common.item.base.IDescriptionProvider;
@@ -13,7 +13,7 @@ import net.minecraft.util.text.translation.I18n;
 import net.minecraftforge.oredict.OreDictionary;
 
 @JEIPlugin
-public class DivineFavorJEIPlugin implements IModPlugin {
+public class DivineFavorDescriptionJEIPlugin implements IModPlugin {
     @Override
     public void register (IModRegistry registry) {
 
