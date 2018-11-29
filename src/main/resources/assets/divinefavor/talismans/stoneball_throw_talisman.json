@@ -1,12 +1,7 @@
 {
   "name": "stoneball_throw_talisman",
   "spellType": "STONEBALL_THROW",
-  "requirement": {
-    "cost": {
-      "type": "CostFree"
-    },
-    "name": "free"
-  },
+  "requirement": {},
   "castOnUse": true,
   "castOnRightClick": true
 }

@@ -3,9 +3,8 @@ package aurocosh.divinefavor.common.util;
 import aurocosh.divinefavor.DivineFavor;
 import aurocosh.divinefavor.common.lib.RuntimeTypeAdapterFactory;
 import aurocosh.divinefavor.common.requirements.base.SpellRequirement;
-import aurocosh.divinefavor.common.requirements.requirement.Cost;
-import aurocosh.divinefavor.common.requirements.requirement.CostFavor;
-import aurocosh.divinefavor.common.requirements.requirement.CostMultipleOptions;
+import aurocosh.divinefavor.common.requirements.cost.costs.Cost;
+import aurocosh.divinefavor.common.requirements.cost.costs.CostFavor;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import net.minecraftforge.common.crafting.CraftingHelper;
@@ -24,8 +23,7 @@ public class UtilAssets {
 
         RuntimeTypeAdapterFactory<Cost> costFactory = RuntimeTypeAdapterFactory
                 .of(Cost.class, "type")
-                .registerSubtype(CostFavor.class)
-                .registerSubtype(CostMultipleOptions.class);
+                .registerSubtype(CostFavor.class);
 
         Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().setPrettyPrinting().registerTypeAdapterFactory(costFactory).create();
 

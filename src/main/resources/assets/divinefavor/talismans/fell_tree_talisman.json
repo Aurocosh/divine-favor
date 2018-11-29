@@ -1,12 +1,7 @@
 {
   "name": "fell_tree_talisman",
   "spellType": "FELL_TREE",
-  "requirement": {
-    "cost": {
-      "type": "CostFree"
-    },
-    "name": "free"
-  },
+  "requirement": {},
   "castOnUse": true,
   "castOnRightClick": false
 }

@@ -2,9 +2,9 @@ package aurocosh.divinefavor.client.gui;
 
 import aurocosh.divinefavor.common.constants.LibResources;
 import aurocosh.divinefavor.common.container.ContainerTalisman;
+import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 
@@ -20,6 +20,7 @@ public class GuiTalismanContainer extends GuiContainer {
         this.xSize = 176;
         this.ySize = 166;
         super.initGui();
+        this.buttonList.add(new GuiButtonSelectCostUnit(this,1, guiLeft + 7, guiTop + 81));
     }
 
     @Override
@@ -27,6 +28,15 @@ public class GuiTalismanContainer extends GuiContainer {
         this.drawDefaultBackground();
         super.drawScreen(mouseX, mouseY, partialTicks);
         this.renderHoveredToolTip(mouseX, mouseY);
+    }
+
+    @Override
+    protected void actionPerformed(GuiButton B)
+    {
+        if(B.id == 1)
+        {
+            System.out.println("My Button is Clicked!");
+        }
     }
 
     @Override

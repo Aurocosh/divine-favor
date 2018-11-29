@@ -1,13 +1,8 @@
-package aurocosh.divinefavor.common.requirements.requirement;
+package aurocosh.divinefavor.common.requirements.cost.costs;
 
 import aurocosh.divinefavor.common.spell.base.SpellContext;
 
 public class CostFree extends Cost {
-    public CostFree(int priority)
-    {
-        super(priority);
-    }
-
     @Override
     public boolean canClaim(SpellContext context)
     {
@@ -23,5 +18,10 @@ public class CostFree extends Cost {
     @Override
     public String getUsageInfo(SpellContext context) {
         return "Unlimited use";
+    }
+
+    @Override
+    public int getUseCount(SpellContext context) {
+        return -1;
     }
 }

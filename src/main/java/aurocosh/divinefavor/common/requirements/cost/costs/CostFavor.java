@@ -1,4 +1,4 @@
-package aurocosh.divinefavor.common.requirements.requirement;
+package aurocosh.divinefavor.common.requirements.cost.costs;
 
 import aurocosh.divinefavor.common.core.handlers.PlayerDataHandler;
 import aurocosh.divinefavor.common.favors.ModFavor;
@@ -19,9 +19,8 @@ public class CostFavor extends Cost {
         favor = ModFavors.getByName(favorName);
     }
 
-    public CostFavor(int priority, String favorName, int favorCount)
+    public CostFavor(String favorName, int favorCount)
     {
-        super(priority);
         this.favorName = favorName;
         this.favorCount= favorCount;
     }
@@ -42,11 +41,18 @@ public class CostFavor extends Cost {
 
     @Override
     public String getUsageInfo(SpellContext context) {
-        if(favorCount == 0)
+        int usesLeft = getUseCount(context);
+        if(favorCount == -1)
             return "Unlimited use";
+        return "Uses left: " + usesLeft;
+    }
+
+    @Override
+    public int getUseCount(SpellContext context) {
+        if(favorCount == 0)
+            return -1;
         PlayerDataHandler.PlayerData data = PlayerDataHandler.get(context.playerIn);
         int favorsLeft = data.getSpellCharge(favor.getId());
-        int usesLeft = favorsLeft / favorCount;
-        return "Uses left: " + usesLeft;
+        return favorsLeft / favorCount;
     }
 }

@@ -1,12 +1,7 @@
 {
   "name": "small_fireball_throw_talisman",
   "spellType": "SMALL_FIREBALL_THROW",
-  "requirement": {
-    "cost": {
-      "type": "CostFree"
-    },
-    "name": "free"
-  },
+  "requirement": {},
   "castOnUse": true,
   "castOnRightClick": true
 }

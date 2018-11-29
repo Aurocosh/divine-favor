@@ -7,10 +7,9 @@ import aurocosh.divinefavor.common.item.talisman.TalismanData;
 import aurocosh.divinefavor.common.item.wishing_stone.ItemWishingStone;
 import aurocosh.divinefavor.common.item.wishing_stone.WishingStoneData;
 import aurocosh.divinefavor.common.lib.RuntimeTypeAdapterFactory;
-import aurocosh.divinefavor.common.requirements.requirement.Cost;
-import aurocosh.divinefavor.common.requirements.requirement.CostFavor;
-import aurocosh.divinefavor.common.requirements.requirement.CostFree;
-import aurocosh.divinefavor.common.requirements.requirement.CostMultipleOptions;
+import aurocosh.divinefavor.common.requirements.cost.costs.Cost;
+import aurocosh.divinefavor.common.requirements.cost.costs.CostFavor;
+import aurocosh.divinefavor.common.requirements.cost.costs.CostFree;
 import aurocosh.divinefavor.common.util.UtilAssets;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -46,8 +45,7 @@ public final class ModItems {
         RuntimeTypeAdapterFactory<Cost> costFactory = RuntimeTypeAdapterFactory
                 .of(Cost.class, "type")
                 .registerSubtype(CostFavor.class)
-                .registerSubtype(CostFree.class)
-                .registerSubtype(CostMultipleOptions.class);
+                .registerSubtype(CostFree.class);
 
         Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().setPrettyPrinting().registerTypeAdapterFactory(costFactory).create();
 

@@ -1,12 +1,7 @@
 {
   "name": "empower_axe_talisman",
   "spellType": "EMPOWER_AXE",
-  "requirement": {
-    "cost": {
-      "type": "CostFree"
-    },
-    "name": "free"
-  },
+  "requirement": {},
   "castOnUse": true,
   "castOnRightClick": true
 }
