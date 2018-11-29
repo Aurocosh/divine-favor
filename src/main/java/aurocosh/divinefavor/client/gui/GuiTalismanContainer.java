@@ -2,6 +2,8 @@ package aurocosh.divinefavor.client.gui;
 
 import aurocosh.divinefavor.common.constants.LibResources;
 import aurocosh.divinefavor.common.container.ContainerTalisman;
+import aurocosh.divinefavor.common.item.talisman.capability.TalismanDataHandler;
+import aurocosh.divinefavor.common.item.talisman.capability.ITalismanCostHandler;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.entity.player.EntityPlayer;
@@ -10,9 +12,11 @@ import net.minecraft.util.ResourceLocation;
 
 public class GuiTalismanContainer extends GuiContainer {
     private static final ResourceLocation texture = new ResourceLocation(LibResources.GUI_TALISMAN);
+    private ItemStack talisman;
 
-    public GuiTalismanContainer(EntityPlayer player, ItemStack journal) {
-        super(new ContainerTalisman(player, journal));
+    public GuiTalismanContainer(EntityPlayer player, ItemStack talisman) {
+        super(new ContainerTalisman(player, talisman));
+        this.talisman = talisman;
     }
 
     @Override
@@ -20,7 +24,19 @@ public class GuiTalismanContainer extends GuiContainer {
         this.xSize = 176;
         this.ySize = 166;
         super.initGui();
-        this.buttonList.add(new GuiButtonSelectCostUnit(this,1, guiLeft + 7, guiTop + 81));
+
+        ITalismanCostHandler costHandler = TalismanDataHandler.getHandler(talisman);
+        if(costHandler == null)
+            return;
+
+        int nextButtonId = 0;
+
+        int xShift = 14;
+        for (int i = 0; i < 5; i++) {
+            int id = nextButtonId++;
+            GuiButtonSelectCostUnit button = new GuiButtonSelectCostUnit(costHandler, id, guiLeft + 7, guiTop + 81 + xShift * i, i);
+            this.buttonList.add(button);
+        }
     }
 
     @Override
@@ -33,10 +49,10 @@ public class GuiTalismanContainer extends GuiContainer {
     @Override
     protected void actionPerformed(GuiButton B)
     {
-        if(B.id == 1)
-        {
-            System.out.println("My Button is Clicked!");
-        }
+        IActionButton button = (IActionButton)B;
+        if(button == null)
+            return;
+        button.performAction();
     }
 
     @Override
