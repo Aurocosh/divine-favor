@@ -20,5 +20,6 @@ public class MessageRegister {
         NetworkHandler.register(MessageDataSync.class, Side.CLIENT);
 		NetworkHandler.register(MessageSyncPower.class, Side.CLIENT);
         NetworkHandler.register(MessageSyncSpellCharge.class, Side.CLIENT);
+        NetworkHandler.register(MessageSyncTalismanUnitIndex.class, Side.SERVER);
 	}
 }

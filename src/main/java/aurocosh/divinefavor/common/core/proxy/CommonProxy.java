@@ -6,6 +6,7 @@ import aurocosh.divinefavor.common.core.handlers.PlayerDataHandler;
 import aurocosh.divinefavor.common.entity.ModEntities;
 import aurocosh.divinefavor.common.favors.ModFavors;
 import aurocosh.divinefavor.common.item.base.ModItems;
+import aurocosh.divinefavor.common.item.talisman.capability.TalismanDataHandler;
 import aurocosh.divinefavor.common.network.GuiHandler;
 import aurocosh.divinefavor.common.network.MessageRegister;
 import aurocosh.divinefavor.common.spell.base.ModSpells;
@@ -23,6 +24,8 @@ public class CommonProxy {
     public void preInit(FMLPreInitializationEvent e) {
         //UtilAssets.Test();
         //UtilAssets.Test2();
+
+        TalismanDataHandler.register();
 
         ModFavors.preInit();
         ModSpells.preInit();
