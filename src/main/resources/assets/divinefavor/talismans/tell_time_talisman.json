@@ -1,0 +1,7 @@
+{
+  "name": "tell_time_talisman",
+  "spellType": "TELL_TIME",
+  "requirement": {},
+  "castOnUse": true,
+  "castOnRightClick": true
+}

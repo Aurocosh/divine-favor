@@ -8,10 +8,11 @@ import net.minecraft.init.Items;
 import net.minecraft.item.ItemDye;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
+import net.minecraftforge.fml.relauncher.Side;
 
 public class SpellBonemeal extends ModSpell {
     public SpellBonemeal() {
-        super(SpellType.BONEMEAL);
+        super(SpellType.BONEMEAL, Side.SERVER);
     }
 
     @Override
@@ -23,11 +24,6 @@ public class SpellBonemeal extends ModSpell {
         if(!bonemeal(context.playerIn, pos))
             bonemeal(context.playerIn, pos.down());
 
-        return true;
-    }
-
-    @Override
-    protected boolean claimCost(SpellContext context) {
         return true;
     }
 

@@ -7,7 +7,10 @@ import aurocosh.divinefavor.common.item.talisman.TalismanData;
 import aurocosh.divinefavor.common.item.wishing_stone.ItemWishingStone;
 import aurocosh.divinefavor.common.item.wishing_stone.WishingStoneData;
 import aurocosh.divinefavor.common.lib.RuntimeTypeAdapterFactory;
+import aurocosh.divinefavor.common.requirements.cost.containers.CostUnit;
+import aurocosh.divinefavor.common.requirements.cost.containers.CostUnitBuilder;
 import aurocosh.divinefavor.common.requirements.cost.costs.Cost;
+import aurocosh.divinefavor.common.requirements.cost.costs.CostDayTime;
 import aurocosh.divinefavor.common.requirements.cost.costs.CostFavor;
 import aurocosh.divinefavor.common.requirements.cost.costs.CostFree;
 import aurocosh.divinefavor.common.util.UtilAssets;
@@ -39,12 +42,20 @@ public final class ModItems {
 //        OreDictionary.registerOre("ingotPsi", new ItemStack(material, 1, 1));
     }
 
+    public static void generateTalismans() {
+//        CostUnit costUnit = new CostUnitBuilder()
+//                .setPriority(0)
+//                .addCost(new CostFavor("allfire",1))
+//                .create();
+    }
+
     private static void loadTalismans(ModContainer mod) {
         ArrayList<String> requirementPaths = UtilAssets.getAssetPaths(mod,"talismans",".json");
 
         RuntimeTypeAdapterFactory<Cost> costFactory = RuntimeTypeAdapterFactory
                 .of(Cost.class, "type")
                 .registerSubtype(CostFavor.class)
+                .registerSubtype(CostDayTime.class)
                 .registerSubtype(CostFree.class);
 
         Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().setPrettyPrinting().registerTypeAdapterFactory(costFactory).create();

@@ -1,8 +1,9 @@
-package aurocosh.divinefavor.client.gui;
+package aurocosh.divinefavor.client.gui.buttons;
 
+import aurocosh.divinefavor.client.gui.IActionButton;
 import aurocosh.divinefavor.common.constants.LibResources;
 import aurocosh.divinefavor.common.item.talisman.capability.ITalismanCostHandler;
-import aurocosh.divinefavor.common.network.message.MessageSyncTalismanUnitIndex;
+import aurocosh.divinefavor.common.network.message.MessageSyncTalismanIndexes;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.util.ResourceLocation;
@@ -12,12 +13,14 @@ public class GuiButtonSelectCostUnit extends GuiButton implements IActionButton 
     private static final ResourceLocation textureInactive = new ResourceLocation(LibResources.GUI_SELECT_COST_UNIT_BUTTON);
 
     private ITalismanCostHandler costHandler;
-    private int slotIndex;
+    private int unitIndex;
+    private int costIndex;
 
-    public GuiButtonSelectCostUnit(ITalismanCostHandler costHandler, int id, int x, int y, int slotIndex) {
+    public GuiButtonSelectCostUnit(ITalismanCostHandler costHandler, int id, int x, int y, int unitIndex, int costIndex) {
         super(id, x, y, 10, 10, "");
         this.costHandler = costHandler;
-        this.slotIndex = slotIndex;
+        this.unitIndex = unitIndex;
+        this.costIndex = costIndex;
     }
 
     @Override
@@ -27,14 +30,14 @@ public class GuiButtonSelectCostUnit extends GuiButton implements IActionButton 
             int k = getHoverState(hovered);
 
             mc.renderEngine.bindTexture(textureInactive);
-            int textureStartY = 0;
-            if(costHandler.getSelectedUnitIndex() == slotIndex)
-                textureStartY = -20;
+            float textureStartY = 0;
+            if(costHandler.getSelectedUnitIndex() == unitIndex)
+                textureStartY = 20;
             else if(k == 2)
-                textureStartY = -10;
+                textureStartY = 10;
 
             //GlStateManager.color(1F, 1F, 1F, 1F);
-            drawTexturedModalRect(x, y, 0, textureStartY, width, height);
+            drawModalRectWithCustomSizedTexture (x, y, 0, textureStartY, width, height,10,30);
 
             //if(k == 2)
 //                gui.tooltip.add(TextFormatting.GREEN + I18n.translateToLocal("psimisc.learn"));
@@ -43,8 +46,9 @@ public class GuiButtonSelectCostUnit extends GuiButton implements IActionButton 
 
     @Override
     public void performAction() {
-        costHandler.setSelectedUnitIndex(slotIndex);
-        MessageSyncTalismanUnitIndex message = new MessageSyncTalismanUnitIndex(slotIndex);
+        costHandler.setUnitIndex(unitIndex);
+        costHandler.setCostIndex(costIndex);
+        MessageSyncTalismanIndexes message = new MessageSyncTalismanIndexes(unitIndex,costIndex);
         NetworkHandler.INSTANCE.sendToServer(message);
     }
 }

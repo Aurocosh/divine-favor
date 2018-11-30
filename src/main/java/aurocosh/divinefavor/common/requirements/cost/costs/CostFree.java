@@ -1,8 +1,14 @@
 package aurocosh.divinefavor.common.requirements.cost.costs;
 
+import aurocosh.divinefavor.common.requirements.cost.CostType;
 import aurocosh.divinefavor.common.spell.base.SpellContext;
 
 public class CostFree extends Cost {
+    @Override
+    public void init() {
+        type = CostType.FREE;
+    }
+
     @Override
     public boolean canClaim(SpellContext context)
     {
