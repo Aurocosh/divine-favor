@@ -6,19 +6,20 @@ import aurocosh.divinefavor.common.requirements.cost.costs.CostFree;
 import aurocosh.divinefavor.common.spell.base.SpellContext;
 import com.google.gson.annotations.Expose;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 
 public class CostUnit implements IInitiatable {
     @Expose
     private int priority;
-
     @Expose
     private List<Cost> costs;
+
     public int getPriority() {
         return priority;
+    }
+
+    public List<Cost> getCosts() {
+        return Collections.unmodifiableList(costs);
     }
 
     public CostUnit(int priority, Cost cost) {

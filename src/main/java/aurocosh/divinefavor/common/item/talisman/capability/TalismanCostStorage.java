@@ -19,7 +19,7 @@ public class TalismanCostStorage implements Capability.IStorage<ITalismanCostHan
     @Override
     public void readNBT (Capability<ITalismanCostHandler> capability, ITalismanCostHandler instance, EnumFacing side, NBTBase nbt) {
         final NBTTagCompound tag = (NBTTagCompound) nbt;
-        instance.setSelectedUnitIndex(tag.getInteger("unitIndex"));
-        instance.setSelectedCostIndex(tag.getInteger("costIndex"));
+        instance.setUnitIndex(tag.getInteger("unitIndex"));
+        instance.setCostIndex(tag.getInteger("costIndex"));
     }
 }

@@ -48,7 +48,7 @@ public class TalismanDataHandler {
         }
 
         @Override
-        public int setSelectedUnitIndex(int index) {
+        public int setUnitIndex(int index) {
             return unitIndex = index;
         }
 
@@ -58,7 +58,7 @@ public class TalismanDataHandler {
         }
 
         @Override
-        public int setSelectedCostIndex(int index) {
+        public int setCostIndex(int index) {
             return costIndex = index;
         }
     }

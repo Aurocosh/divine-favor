@@ -5,13 +5,14 @@ import aurocosh.divinefavor.common.spell.base.SpellContext;
 import aurocosh.divinefavor.common.effect.ModPotionEffects;
 import aurocosh.divinefavor.common.spell.base.SpellType;
 import net.minecraft.potion.PotionEffect;
+import net.minecraftforge.fml.relauncher.Side;
 
 public class SpellLavawalking extends ModSpell {
     private final int SHORT = 1800;
     private final int NORMAL = 3600;
 
     public SpellLavawalking() {
-        super(SpellType.LAVAWALKING);
+        super(SpellType.LAVAWALKING, Side.SERVER);
     }
 
     @Override
@@ -22,11 +23,6 @@ public class SpellLavawalking extends ModSpell {
         PotionEffect potioneffect = new PotionEffect(ModPotionEffects.lavawalk, NORMAL);
         context.playerIn.addPotionEffect(potioneffect);
 
-        return true;
-    }
-
-    @Override
-    protected boolean claimCost(SpellContext context) {
         return true;
     }
 }

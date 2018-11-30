@@ -9,20 +9,16 @@ import net.minecraft.init.SoundEvents;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
 
 public class SpellSmallFireballThrow extends ModSpell {
     public SpellSmallFireballThrow() {
-        super(SpellType.SMALL_FIREBALL_THROW);
+        super(SpellType.SMALL_FIREBALL_THROW, Side.SERVER);
     }
 
     @Override
     protected boolean performAction(SpellContext context) {
         throwSmallFireball(context.worldIn,context.playerIn);
-        return true;
-    }
-
-    @Override
-    protected boolean claimCost( SpellContext context) {
         return true;
     }
 

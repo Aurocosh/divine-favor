@@ -11,23 +11,26 @@ import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 import vazkii.arl.network.NetworkMessage;
 
 
-public class MessageSyncTalismanUnitIndex extends NetworkMessage {
-    public int index;
+public class MessageSyncTalismanIndexes extends NetworkMessage {
+    public int unitIndex;
+    public int costIndex;
 
-	public MessageSyncTalismanUnitIndex() { }
+	public MessageSyncTalismanIndexes() { }
 
-    public MessageSyncTalismanUnitIndex(int index) {
-        this.index = index;
+    public MessageSyncTalismanIndexes(int unitIndex, int costIndex) {
+        this.unitIndex = unitIndex;
+        this.costIndex = costIndex;
     }
 
-	@Override
+    @Override
 	public IMessage handleMessage(MessageContext context) {
         ClientTickHandler.scheduledActions.add(() -> {
             ItemStack heldItem = DivineFavor.proxy.getClientPlayer().getHeldItem(EnumHand.MAIN_HAND);
             ITalismanCostHandler handler = TalismanDataHandler.getHandler(heldItem);
             if(handler == null)
                 return;
-            handler.setSelectedUnitIndex(index);
+            handler.setUnitIndex(unitIndex);
+            handler.setCostIndex(costIndex);
         });
         return null;
     }

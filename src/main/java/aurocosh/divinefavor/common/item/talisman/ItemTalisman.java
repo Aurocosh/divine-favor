@@ -59,6 +59,9 @@ public class ItemTalisman extends ItemMod implements IDivineFavorItem, IDescript
 
     @Override
     public EnumActionResult onItemUse(EntityPlayer playerIn, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
+        if(modSpell.isWrongSpellSide())
+            return EnumActionResult.SUCCESS;
+
         IBlockState state = worldIn.getBlockState(pos);
         if(state.getBlock() == ModBlocks.blockDiviner)
         {
@@ -73,9 +76,6 @@ public class ItemTalisman extends ItemMod implements IDivineFavorItem, IDescript
         }
 
         if(!castOnUse)
-            return EnumActionResult.SUCCESS;
-
-        if(worldIn.isRemote)
             return EnumActionResult.SUCCESS;
 
         PlayerDataHandler.PlayerData data = PlayerDataHandler.get(playerIn);
@@ -100,7 +100,7 @@ public class ItemTalisman extends ItemMod implements IDivineFavorItem, IDescript
             return new ActionResult<>(EnumActionResult.SUCCESS, itemStackIn);
         }
 
-        if(GameUtils.isClient())
+        if(modSpell.isWrongSpellSide())
             return new ActionResult<>(EnumActionResult.PASS, itemStackIn);
         if(!castOnRightClick)
             return new ActionResult<>(EnumActionResult.PASS, itemStackIn);

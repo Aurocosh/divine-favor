@@ -16,6 +16,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
+import net.minecraftforge.fml.relauncher.Side;
 
 import java.util.Queue;
 import java.util.Set;
@@ -23,7 +24,7 @@ import java.util.Stack;
 
 public class SpellFellTree extends ModSpell {
     public SpellFellTree() {
-        super(SpellType.STONEBALL_THROW);
+        super(SpellType.STONEBALL_THROW, Side.SERVER);
     }
 
     @Override
@@ -33,11 +34,6 @@ public class SpellFellTree extends ModSpell {
         if(detectTree(context.worldIn, context.pos)) {
             return fellTree(talisman, context.pos, context.playerIn);
         }
-        return true;
-    }
-
-    @Override
-    protected boolean claimCost( SpellContext context) {
         return true;
     }
 

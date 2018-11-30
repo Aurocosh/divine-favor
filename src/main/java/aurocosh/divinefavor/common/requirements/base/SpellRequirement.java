@@ -21,6 +21,10 @@ public class SpellRequirement implements IInitiatable {
     @Expose
     private List<CostUnit> costUnits;
 
+    public List<CostUnit> getCostUnits() {
+        return Collections.unmodifiableList(costUnits);
+    }
+
     @Override
     public void init() {
         Collections.sort(this.costUnits,new CostUnit.CostUnitComparator());

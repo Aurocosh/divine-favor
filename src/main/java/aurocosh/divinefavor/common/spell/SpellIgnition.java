@@ -7,10 +7,11 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
 
 public class SpellIgnition extends ModSpell {
     public SpellIgnition() {
-        super(SpellType.IGNITION);
+        super(SpellType.IGNITION, Side.SERVER);
     }
 
     @Override
@@ -31,11 +32,6 @@ public class SpellIgnition extends ModSpell {
                 world.setBlockState(pos, Blocks.FIRE.getDefaultState());
         }
 
-        return true;
-    }
-
-    @Override
-    protected boolean claimCost(SpellContext context) {
         return true;
     }
 }

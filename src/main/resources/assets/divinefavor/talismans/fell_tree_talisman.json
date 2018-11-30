@@ -1,7 +1,21 @@
 {
   "name": "fell_tree_talisman",
   "spellType": "FELL_TREE",
-  "requirement": {},
+  "requirement": {
+    "costUnits": [
+      { "priority": 0,
+        "costs": [
+          { "type": "CostDayTime",
+            "dayTime": "DAY"
+          },
+          { "type": "CostFavor",
+            "favorName": "favor_of_timber",
+            "favorCount": 1
+          }
+        ]
+      }
+    ]
+  },
   "castOnUse": true,
   "castOnRightClick": false
 }

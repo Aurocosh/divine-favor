@@ -1,7 +1,29 @@
 {
   "name": "snowball_throw_talisman",
   "spellType": "SNOWBALL_THROW",
-  "requirement": {},
+  "requirement": {
+    "costUnits": [
+      {
+        "priority": 1,
+        "costs": [
+          {
+            "type": "CostDayTime",
+            "dayTime": "NIGHT"
+          }
+        ]
+      },
+      {
+        "priority": 0,
+        "costs": [
+          {
+            "type": "CostFavor",
+            "favorName": "favor_of_timber",
+            "favorCount": 1
+          }
+        ]
+      }
+    ]
+  },
   "castOnUse": true,
   "castOnRightClick": true
 }

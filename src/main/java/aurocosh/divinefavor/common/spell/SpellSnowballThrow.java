@@ -8,20 +8,16 @@ import net.minecraft.entity.projectile.EntitySnowball;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
 
 public class SpellSnowballThrow extends ModSpell {
     public SpellSnowballThrow() {
-        super(SpellType.SNOWBALL_THROW);
+        super(SpellType.SNOWBALL_THROW, Side.SERVER);
     }
 
     @Override
     protected boolean performAction(SpellContext context) {
         throwSnowball(context.worldIn,context.playerIn);
-        return true;
-    }
-
-    @Override
-    protected boolean claimCost( SpellContext context) {
         return true;
     }
 

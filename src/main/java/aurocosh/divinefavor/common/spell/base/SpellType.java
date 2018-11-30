@@ -10,7 +10,8 @@ public enum SpellType {
     SNOWBALL_THROW(7,"snowball_throw"),
     STONEBALL_THROW(8,"stoneball_throw"),
     SMALL_FIREBALL_THROW(9,"small_fireball_throw"),
-    WATERWALKING(10,"waterwalking");
+    TELL_TIME(10,"tell_time"),
+    WATERWALKING(11,"waterwalking");
 
     private final int id;
     private final String spellName;
