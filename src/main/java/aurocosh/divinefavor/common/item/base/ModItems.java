@@ -5,6 +5,7 @@ import aurocosh.divinefavor.common.constants.LibItemNames;
 import aurocosh.divinefavor.common.favors.ModFavor;
 import aurocosh.divinefavor.common.favors.ModFavors;
 import aurocosh.divinefavor.common.item.ItemStoneball;
+import aurocosh.divinefavor.common.item.ritual_pouch.RitualPouch;
 import aurocosh.divinefavor.common.item.talisman.ItemTalisman;
 import aurocosh.divinefavor.common.item.talisman.TalismanBuilder;
 import aurocosh.divinefavor.common.item.wishing_stone.ItemWishingStone;
@@ -30,6 +31,7 @@ public final class ModItems {
 
 
     public static ItemMod stoneball;
+    public static ItemMod ritual_pouch;
 
     public static ItemMod arrowThrowTalisman;
     public static ItemMod bonemeal_talisman;
@@ -46,7 +48,8 @@ public final class ModItems {
     public static ItemMod timber_wishing_stone;
 
     public static void preInit() {
-        stoneball = new ItemStoneball();
+        stoneball = registerItem(new ItemStoneball());
+        ritual_pouch = registerItem(new RitualPouch());
         generateTalismans();
         generateWishingStones();
 
@@ -148,6 +151,11 @@ public final class ModItems {
         items.add(talisman);
         wishingStones.add(talisman);
         return talisman;
+    }
+
+    public static ItemMod registerItem(ItemMod item) {
+        items.add(item);
+        return item;
     }
 
     public static List<ItemMod> getItems() {
