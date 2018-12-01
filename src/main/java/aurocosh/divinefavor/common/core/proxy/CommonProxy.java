@@ -9,6 +9,7 @@ import aurocosh.divinefavor.common.item.base.ModItems;
 import aurocosh.divinefavor.common.item.talisman.capability.TalismanDataHandler;
 import aurocosh.divinefavor.common.network.GuiHandler;
 import aurocosh.divinefavor.common.network.MessageRegister;
+import aurocosh.divinefavor.common.receipes.ModRecipes;
 import aurocosh.divinefavor.common.spell.base.ModSpells;
 import com.google.common.util.concurrent.ListenableFuture;
 import net.minecraft.entity.player.EntityPlayer;
@@ -32,6 +33,7 @@ public class CommonProxy {
         ModItems.preInit();
         ModBlocks.preInit();
         ModEntities.preInit();
+        ModRecipes.init();
 
         MessageRegister.init();
 

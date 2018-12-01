@@ -51,7 +51,7 @@ public class BlockIronMedium extends BlockTileMod implements IDivineFavorBlock {
 
     public int getMetaFromState(IBlockState state)
     {
-        return ((EnumFacing)state.getValue(FACING)).getIndex();
+        return state.getValue(FACING).getIndex();
     }
 
     @Override
