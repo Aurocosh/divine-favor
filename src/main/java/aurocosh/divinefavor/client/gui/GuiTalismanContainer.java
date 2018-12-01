@@ -2,6 +2,8 @@ package aurocosh.divinefavor.client.gui;
 
 import aurocosh.divinefavor.client.gui.buttons.GuiButtonSelectCost;
 import aurocosh.divinefavor.client.gui.buttons.GuiButtonSelectCostUnit;
+import aurocosh.divinefavor.client.gui.container.GuiCustomScreen;
+import aurocosh.divinefavor.client.gui.text.GuiTextBlock;
 import aurocosh.divinefavor.common.constants.LibResources;
 import aurocosh.divinefavor.common.container.ContainerTalisman;
 import aurocosh.divinefavor.common.item.talisman.ItemTalisman;
@@ -11,7 +13,6 @@ import aurocosh.divinefavor.common.requirements.cost.CostType;
 import aurocosh.divinefavor.common.requirements.cost.containers.CostUnit;
 import aurocosh.divinefavor.common.requirements.cost.costs.Cost;
 import net.minecraft.client.gui.GuiButton;
-import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
@@ -20,7 +21,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class GuiTalismanContainer extends GuiContainer {
+public class GuiTalismanContainer extends GuiCustomScreen {
     private static final ResourceLocation texture = new ResourceLocation(LibResources.GUI_TALISMAN);
     private static final ResourceLocation costMarkerTexture = new ResourceLocation(LibResources.GUI_COST_MARKER);
     private static final Map<CostType,ResourceLocation> costTextureResources = new HashMap<>();
@@ -48,6 +49,10 @@ public class GuiTalismanContainer extends GuiContainer {
         costHandler = TalismanDataHandler.getHandler(talisman);
         if(costHandler == null)
             return;
+        String test = "Australian grayling; snake mudhead pricklefish yellowfin pike lumpsucker lake whitefish coelacanth midshipman. Goldeye swampfish deepwater flathead sábalo: shiner northern lampfish jewel tetra. Seahorse bala shark brown trout, \"platyfish slimehead kappy cookie-cutter shark.\" Kelpfish anemonefish parasitic catfish, yellowmargin triggerfish?";
+
+        GuiTextBlock textBlock = new GuiTextBlock(7,25,170,100,test);
+        addElement(textBlock);
 
         ItemTalisman itemTalisman = (ItemTalisman) talisman.getItem();
         List<CostUnit> costUnits = itemTalisman.getRequirement().getCostUnits();
