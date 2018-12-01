@@ -1,12 +1,10 @@
 package aurocosh.divinefavor.common.spell.base;
 
 import aurocosh.divinefavor.common.constants.LibMisc;
-import aurocosh.divinefavor.common.util.UtilCommon;
-import net.darkhax.bookshelf.util.GameUtils;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.world.World;
 import net.minecraftforge.common.util.FakePlayer;
-import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.registries.IForgeRegistryEntry;
 
 import java.util.Random;
@@ -18,7 +16,7 @@ public abstract class ModSpell extends IForgeRegistryEntry.Impl<ModSpell> {
 
     protected String name;
     protected SpellType type;
-    protected Side spellSide;
+    protected boolean isServerSide;
 
     public String getName() {
         return name;
@@ -28,19 +26,19 @@ public abstract class ModSpell extends IForgeRegistryEntry.Impl<ModSpell> {
         return type;
     }
 
-    public boolean isWrongSpellSide(){
-        return UtilCommon.getCodeSide() != spellSide;
+    public boolean isCodeSideCorrect(World world){
+        return (!world.isRemote) == isServerSide;
     }
 
-    public ModSpell(SpellType type, Side spellSide) {
+    public ModSpell(SpellType type, boolean isServerSide) {
         this.name = type.toString();
         this.type = type;
-        this.spellSide = spellSide;
+        this.isServerSide = isServerSide;
         setRegistryName(LibMisc.MOD_ID,"spell." + name);
     }
 
     public boolean cast(SpellContext context) {
-        if(isWrongSpellSide())
+        if(!isCodeSideCorrect(context.worldIn))
             return true;
         if(!isTruePlayer(context.playerIn))
             return false;

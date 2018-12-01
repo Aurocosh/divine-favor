@@ -6,22 +6,22 @@ import aurocosh.divinefavor.common.block.base.ModBlocks;
 import aurocosh.divinefavor.common.constants.LibFavorType;
 import aurocosh.divinefavor.common.constants.LibGuiIDs;
 import aurocosh.divinefavor.common.constants.LibMisc;
-import aurocosh.divinefavor.common.item.base.IDescriptionProvider;
-import aurocosh.divinefavor.common.requirements.base.SpellRequirement;
-import aurocosh.divinefavor.common.spell.base.ModSpell;
-import aurocosh.divinefavor.common.spell.base.ModSpells;
-import aurocosh.divinefavor.common.spell.base.SpellContext;
 import aurocosh.divinefavor.common.core.DivineFavorCreativeTab;
 import aurocosh.divinefavor.common.core.handlers.PlayerDataHandler;
+import aurocosh.divinefavor.common.item.base.IDescriptionProvider;
 import aurocosh.divinefavor.common.item.base.IDivineFavorItem;
-import aurocosh.divinefavor.common.spell.base.SpellType;
-import net.darkhax.bookshelf.util.GameUtils;
+import aurocosh.divinefavor.common.requirements.base.SpellRequirement;
+import aurocosh.divinefavor.common.spell.base.ModSpell;
+import aurocosh.divinefavor.common.spell.base.SpellContext;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.*;
+import net.minecraft.util.ActionResult;
+import net.minecraft.util.EnumActionResult;
+import net.minecraft.util.EnumFacing;
+import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
@@ -33,17 +33,10 @@ public class ItemTalisman extends ItemMod implements IDivineFavorItem, IDescript
     private ModSpell modSpell;
     private SpellRequirement requirement;
 
-    public ItemTalisman(TalismanData talismanData){
-        this(talismanData.name,talismanData.spellType,talismanData.requirement,talismanData.castOnUse,talismanData.castOnRightClick);
-    }
-
-    public ItemTalisman(String name, SpellType spellType, SpellRequirement requirement, boolean castOnUse, boolean castOnRightClick) {
+    public ItemTalisman(String name, ModSpell spell, SpellRequirement requirement, boolean castOnUse, boolean castOnRightClick) {
         super(name);
-        this.modSpell = ModSpells.get(spellType);
+        this.modSpell = spell;
         this.requirement = requirement;
-        if(this.requirement == null)
-            this.requirement = new SpellRequirement();
-        requirement.init();
         this.castOnUse = castOnUse;
         this.castOnRightClick = castOnRightClick;
         setMaxStackSize(1);
@@ -59,7 +52,7 @@ public class ItemTalisman extends ItemMod implements IDivineFavorItem, IDescript
 
     @Override
     public EnumActionResult onItemUse(EntityPlayer playerIn, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
-        if(modSpell.isWrongSpellSide())
+        if(modSpell.isCodeSideCorrect(worldIn))
             return EnumActionResult.SUCCESS;
 
         IBlockState state = worldIn.getBlockState(pos);
@@ -94,13 +87,13 @@ public class ItemTalisman extends ItemMod implements IDivineFavorItem, IDescript
         if(hand == EnumHand.OFF_HAND)
             return new ActionResult<>(EnumActionResult.PASS, itemStackIn);
         if(playerIn.isSneaking()){
-            if(!GameUtils.isClient())
+            if(!worldIn.isRemote)
                 return new ActionResult<>(EnumActionResult.PASS, itemStackIn);
             playerIn.openGui(DivineFavor.instance, LibGuiIDs.TALISMAN, worldIn, (int)playerIn.posX, (int)playerIn.posY, (int)playerIn.posZ);
             return new ActionResult<>(EnumActionResult.SUCCESS, itemStackIn);
         }
 
-        if(modSpell.isWrongSpellSide())
+        if(!modSpell.isCodeSideCorrect(worldIn))
             return new ActionResult<>(EnumActionResult.PASS, itemStackIn);
         if(!castOnRightClick)
             return new ActionResult<>(EnumActionResult.PASS, itemStackIn);

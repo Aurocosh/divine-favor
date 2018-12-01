@@ -12,7 +12,7 @@ import net.minecraftforge.fml.relauncher.Side;
 
 public class SpellStoneballThrow extends ModSpell {
     public SpellStoneballThrow() {
-        super(SpellType.STONEBALL_THROW, Side.SERVER);
+        super(SpellType.STONEBALL_THROW, true);
     }
 
     @Override

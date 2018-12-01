@@ -14,7 +14,7 @@ import net.minecraftforge.fml.relauncher.Side;
 
 public class SpellTellTime extends ModSpell {
     public SpellTellTime() {
-        super(SpellType.TELL_TIME, Side.CLIENT);
+        super(SpellType.TELL_TIME, true);
     }
 
     @Override

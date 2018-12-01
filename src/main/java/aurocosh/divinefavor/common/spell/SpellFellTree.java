@@ -24,7 +24,7 @@ import java.util.Stack;
 
 public class SpellFellTree extends ModSpell {
     public SpellFellTree() {
-        super(SpellType.STONEBALL_THROW, Side.SERVER);
+        super(SpellType.STONEBALL_THROW, true);
     }
 
     @Override

@@ -12,7 +12,7 @@ public class SpellWaterwalking extends ModSpell {
     private final int NORMAL = 3600;
 
     public SpellWaterwalking() {
-        super(SpellType.WATERWALKING, Side.SERVER);
+        super(SpellType.WATERWALKING, true);
     }
 
     @Override

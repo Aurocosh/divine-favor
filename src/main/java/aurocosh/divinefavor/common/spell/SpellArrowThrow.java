@@ -17,7 +17,7 @@ import net.minecraftforge.fml.relauncher.Side;
 
 public class SpellArrowThrow extends ModSpell {
     public SpellArrowThrow() {
-        super(SpellType.ARROW_THROW, Side.SERVER);
+        super(SpellType.ARROW_THROW, true);
     }
 
     @Override

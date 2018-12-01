@@ -104,7 +104,7 @@ public class PlayerDataHandler {
             playerWR = new WeakReference(player);
             client = player.world.isRemote;
 
-            ArrayList<Integer> favors = ModFavors.getFavorIds();
+            List<Integer> favors = ModFavors.getFavorIds();
             favors.forEach(id -> favorValues.put(id,0));
 
             woodBlocksBroken = 0;
@@ -178,7 +178,7 @@ public class PlayerDataHandler {
         public void writeToNBT(NBTTagCompound cmp) {
             cmp.setInteger(TAG_WOOD_BLOCKS_BROKEN, woodBlocksBroken);
 
-            ArrayList<ModFavor> favors = ModFavors.getFavorList();
+            List<ModFavor> favors = ModFavors.getFavorList();
             for (ModFavor favor : favors) {
                 int value = favorValues.get(favor.getId());
                 cmp.setInteger(favor.getTag(),value);
@@ -205,7 +205,7 @@ public class PlayerDataHandler {
         public void readFromNBT(NBTTagCompound cmp) {
             woodBlocksBroken = cmp.getInteger(TAG_WOOD_BLOCKS_BROKEN);
 
-            ArrayList<ModFavor> favors = ModFavors.getFavorList();
+            List<ModFavor> favors = ModFavors.getFavorList();
             for (ModFavor favor : favors) {
                 int value = cmp.getInteger(favor.getTag());
                 favorValues.put(favor.getId(),value);

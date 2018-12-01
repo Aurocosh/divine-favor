@@ -12,7 +12,7 @@ public class SpellEmpowerAxe extends ModSpell {
     private final int NORMAL = 3600;
 
     public SpellEmpowerAxe() {
-        super(SpellType.EMPOWER_AXE, Side.SERVER);
+        super(SpellType.EMPOWER_AXE, true);
     }
 
     @Override

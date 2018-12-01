@@ -11,7 +11,7 @@ import net.minecraftforge.fml.relauncher.Side;
 
 public class SpellIgnition extends ModSpell {
     public SpellIgnition() {
-        super(SpellType.IGNITION, Side.SERVER);
+        super(SpellType.IGNITION, true);
     }
 
     @Override
