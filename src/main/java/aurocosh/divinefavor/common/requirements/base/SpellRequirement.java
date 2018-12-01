@@ -73,6 +73,8 @@ public class SpellRequirement implements IInitiatable {
     }
 
     public String getUsageInfo(SpellContext context){
+        if(costs.size() == 0)
+            return "Unlimited use";
         if(costs.size() == 1)
             return costs.get(0).getUsageInfo(context);
 
