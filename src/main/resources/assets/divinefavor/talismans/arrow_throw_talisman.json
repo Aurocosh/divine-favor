@@ -2,14 +2,10 @@
   "name": "arrow_throw_talisman",
   "spellType": "ARROW_THROW",
   "requirement": {
-    "costUnits": [
-      { "priority": 0,
-        "costs": [
-          { "type": "CostFavor",
-            "favorName": "favor_of_allfire",
-            "favorCount": 1
-          }
-        ]
+    "costs": [
+      { "type": "CostFavor",
+        "favorName": "favor_of_allfire",
+        "favorCount": 1
       }
     ]
   },
