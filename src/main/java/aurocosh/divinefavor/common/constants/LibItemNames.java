@@ -10,6 +10,8 @@ public final class LibItemNames {
     public static final String SNOWBALL_THROW_TALISMAN = "snowball_throw_talisman";
     public static final String STONEBALL_THROW_TALISMAN = "stoneball_throw_talisman";
     public static final String SMALL_FIREBALL_THROW_TALISMAN = "small_fireball_throw_talisman";
-    public static final String STONEBALL = "stoneball";
     public static final String WATERWALKING_TALISMAN = "waterwalking_talisman";
+
+    public static final String RITUAL_POUCH = "ritual_pouch";
+    public static final String STONEBALL = "stoneball";
 }

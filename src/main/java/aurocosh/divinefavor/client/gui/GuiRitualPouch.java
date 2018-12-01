@@ -1,22 +1,23 @@
 package aurocosh.divinefavor.client.gui;
 
-import aurocosh.divinefavor.common.block.tile.TileIronMedium;
-import aurocosh.divinefavor.common.block.tile.container.ContainerIronMedium;
 import aurocosh.divinefavor.common.constants.LibResources;
+import aurocosh.divinefavor.common.item.ritual_pouch.RitualBagContainer;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.items.CapabilityItemHandler;
 
-public class GuiIronMedium extends GuiContainer {
+public class GuiRitualPouch extends GuiContainer {
     public static final int WIDTH = 175;
     public static final int HEIGHT = 165;
-    private static final ResourceLocation texture = new ResourceLocation(LibResources.GUI_IMMATERIAL_MEDIUM);
+    private static final ResourceLocation texture = new ResourceLocation(LibResources.GUI_RITUAL_POUCH);
 
-    TileIronMedium ironMedium;
+    ItemStack pouch;
 
-    public GuiIronMedium(EntityPlayer player, TileIronMedium ironMedium) {
-        super(new ContainerIronMedium(player, ironMedium));
-        this.ironMedium = ironMedium;
+    public GuiRitualPouch(EntityPlayer player, ItemStack pouch) {
+        super(new RitualBagContainer(player, pouch.getCapability( CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null )));
+        this.pouch = pouch;
     }
 
     @Override
