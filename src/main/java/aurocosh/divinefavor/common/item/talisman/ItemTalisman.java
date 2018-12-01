@@ -52,7 +52,7 @@ public class ItemTalisman extends ItemMod implements IDivineFavorItem, IDescript
 
     @Override
     public EnumActionResult onItemUse(EntityPlayer playerIn, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
-        if(modSpell.isCodeSideCorrect(worldIn))
+        if(!modSpell.isCodeSideCorrect(worldIn))
             return EnumActionResult.SUCCESS;
 
         IBlockState state = worldIn.getBlockState(pos);
