@@ -13,7 +13,7 @@ import net.minecraftforge.fml.relauncher.Side;
 
 public class SpellSmallFireballThrow extends ModSpell {
     public SpellSmallFireballThrow() {
-        super(SpellType.SMALL_FIREBALL_THROW, Side.SERVER);
+        super(SpellType.SMALL_FIREBALL_THROW, true);
     }
 
     @Override

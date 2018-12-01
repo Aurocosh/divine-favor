@@ -12,7 +12,7 @@ import net.minecraftforge.fml.relauncher.Side;
 
 public class SpellBonemeal extends ModSpell {
     public SpellBonemeal() {
-        super(SpellType.BONEMEAL, Side.SERVER);
+        super(SpellType.BONEMEAL, true);
     }
 
     @Override

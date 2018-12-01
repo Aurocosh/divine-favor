@@ -34,9 +34,9 @@ public class SpellRequirement implements IInitiatable {
         this.costs = Arrays.asList(new CostFree());
     }
 
-    public SpellRequirement(ArrayList<Cost> Costs)
+    public SpellRequirement(List<Cost> costs)
     {
-        this.costs = Costs;
+        this.costs = costs;
     }
 
     public boolean canClaimCost(SpellContext context) {

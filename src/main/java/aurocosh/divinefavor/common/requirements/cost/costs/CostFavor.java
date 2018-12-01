@@ -2,29 +2,15 @@ package aurocosh.divinefavor.common.requirements.cost.costs;
 
 import aurocosh.divinefavor.common.core.handlers.PlayerDataHandler;
 import aurocosh.divinefavor.common.favors.ModFavor;
-import aurocosh.divinefavor.common.favors.ModFavors;
-import aurocosh.divinefavor.common.requirements.cost.CostType;
 import aurocosh.divinefavor.common.spell.base.SpellContext;
-import com.google.gson.annotations.Expose;
 
 public class CostFavor extends Cost {
-    @Expose
-    private String favorName;
-    @Expose
     private int favorCount;
-
     private ModFavor favor;
 
-    @Override
-    public void init() {
-
-        favor = ModFavors.getByName(favorName);
-        type = CostType.FAVOR;
-    }
-
-    public CostFavor(String favorName, int favorCount)
+    public CostFavor(ModFavor favor, int favorCount)
     {
-        this.favorName = favorName;
+        this.favor = favor;
         this.favorCount= favorCount;
     }
 

@@ -1,49 +1,30 @@
 package aurocosh.divinefavor.common.favors;
 
-import aurocosh.divinefavor.DivineFavor;
 import aurocosh.divinefavor.common.registry.FavorRegistry;
-import aurocosh.divinefavor.common.util.UtilAssets;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import net.minecraftforge.fml.common.Loader;
-import net.minecraftforge.fml.common.ModContainer;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.Collections;
+import java.util.List;
 
 public final class ModFavors {
     private static int nextId = 0;
-    private static ArrayList<ModFavor> favors = new ArrayList<>();
-    private static ArrayList<Integer> favorsIds = new ArrayList<>();
-    private static Map<String, ModFavor> favorsByName = new HashMap<>();
-    private static Map<Integer, ModFavor> favorsById = new HashMap<>();
+    private static List<ModFavor> favors = new ArrayList<>();
+    private static List<Integer> favorsIds = new ArrayList<>();
+
+    public static ModFavor favor_of_allfire;
+    public static ModFavor favor_of_timber;
 
     public static void preInit() {
-        ModContainer mod = Loader.instance().getModObjectList().inverse().get(DivineFavor.instance);
-        ArrayList<String> favorPaths = UtilAssets.getAssetPaths(mod,"favors",".json");
-
-        Gson gson = new GsonBuilder().create();
-
-        ArrayList<FavorData> favorDataList = UtilAssets.loadObjectsFromJsonAssets(FavorData.class,mod,favorPaths,gson);
-        favorDataList.forEach((data -> register(data)));
+        favor_of_allfire = register("favor_of_allfire","favor_of_allfire");
+        favor_of_timber = register("favor_of_timber","favor_of_timber");
     }
 
-    public static ModFavor getByName(String name) {
-        return favorsByName.get(name);
-    }
-    public static ModFavor getById(int id) {
-        return favorsById.get(id);
-    }
+    public static List<ModFavor> getFavorList(){return Collections.unmodifiableList(favors);}
+    public static List<Integer> getFavorIds(){return Collections.unmodifiableList(favorsIds);}
 
-    public static ArrayList<ModFavor> getFavorList(){return new ArrayList<>(favors);}
-    public static ArrayList<Integer> getFavorIds(){return new ArrayList<>(favorsIds);}
-
-    public static ModFavor register(FavorData favorData) {
-        ModFavor favor = new ModFavor(favorData.name,favorData.tag,nextId++);
+    public static ModFavor register(String name, String tag) {
+        ModFavor favor = new ModFavor(name,tag,nextId++);
         favors.add(favor);
-        favorsByName.put(favor.getName(), favor);
-        favorsById.put(favor.getId(), favor);
         FavorRegistry.register(favor);
         return favor;
     }

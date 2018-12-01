@@ -1,8 +1,8 @@
 package aurocosh.divinefavor.common.core;
 
 import aurocosh.divinefavor.common.block.base.ModBlocks;
-import aurocosh.divinefavor.common.item.base.ModItems;
 import aurocosh.divinefavor.common.constants.LibMisc;
+import aurocosh.divinefavor.common.item.base.ModItems;
 import aurocosh.divinefavor.common.potion.PotionTypeDivine;
 import aurocosh.divinefavor.common.potion.PotionTypeRegistry;
 import net.minecraft.block.Block;
@@ -14,8 +14,7 @@ import net.minecraft.potion.PotionUtils;
 import net.minecraft.util.NonNullList;
 import vazkii.arl.item.ItemMod;
 
-import java.util.ArrayList;
-import java.util.Map;
+import java.util.List;
 
 public class DivineFavorCreativeTab extends CreativeTabs {
     public static DivineFavorCreativeTab INSTANCE = new DivineFavorCreativeTab();
@@ -54,7 +53,7 @@ public class DivineFavorCreativeTab extends CreativeTabs {
 
         addItem(ModItems.stoneball);
 
-        ArrayList<ItemMod> talismans = ModItems.getItems();
+        List<ItemMod> talismans = ModItems.getItems();
         talismans.forEach((talisman) -> addItem(talisman));
 
         for (PotionTypeDivine pt : PotionTypeRegistry.potions) {

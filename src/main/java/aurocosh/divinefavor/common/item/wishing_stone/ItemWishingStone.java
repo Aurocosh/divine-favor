@@ -18,13 +18,9 @@ public class ItemWishingStone extends ItemMod implements IDivineFavorItem {
     private ModFavor favor;
     private int favorCount;
 
-    public ItemWishingStone(WishingStoneData stoneData){
-        this(stoneData.name,stoneData.favorName,stoneData.favorCount);
-    }
-
-    public ItemWishingStone(String name, String favorName, int favorCount) {
+    public ItemWishingStone(String name, ModFavor favor, int favorCount) {
         super(name);
-        this.favor = ModFavors.getByName(favorName);
+        this.favor = favor;
         this.favorCount = favorCount;
         setMaxStackSize(1);
         setCreativeTab(DivineFavorCreativeTab.INSTANCE);
