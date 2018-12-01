@@ -159,6 +159,10 @@ public class ItemTalisman extends ItemMod implements IDivineFavorItem, IDescript
         return pos;
     }
 
+    public String getCostTranslationKey(){
+        return  "cost." + getTranslationKey();
+    }
+
     @Override
     public String getTranslationKey() {
         return LibMisc.MOD_ID + ":" + getRegistryName().getResourcePath();

@@ -1,8 +1,7 @@
 package aurocosh.divinefavor.client.gui.text;
 
-import aurocosh.divinefavor.client.gui.IGuiSimpleElement;
+import aurocosh.divinefavor.client.gui.widgets.GuiWidget;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.Gui;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -12,20 +11,12 @@ import java.util.List;
 
 import static java.lang.Integer.min;
 
-public class GuiTextBlock extends Gui implements IGuiSimpleElement {
-    public int x;
-    public int y;
-    public int width;
-    public int height;
-
+public class GuiTextBlock extends GuiWidget {
     private static final int lineSpacing = 2;
     private List<String> description;
 
     public GuiTextBlock(int x, int y, int width, int height, String text) {
-        this.x = x;
-        this.y = y;
-        this.width = width;
-        this.height = height;
+        super(x, y, width, height);
         setText(text);
     }
 

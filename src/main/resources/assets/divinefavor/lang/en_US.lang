@@ -18,7 +18,6 @@ item.divinefavor:small_fireball_throw_talisman.name=Small fireball talisman
 item.divinefavor:stoneball_throw_talisman.name=Pebble talisman
 item.divinefavor:waterwalking_talisman.name=Waterwalking talisman
 
-jei.divinefavor:arrow_throw_talisman=Arrow throw talisman. Throws arrows duh..
 
 # WISHING STONES
 item.divinefavor:allfire_wishing_stone.name=Allfire wishing stone
@@ -27,3 +26,11 @@ item.divinefavor:allfire_wishing_stone.name=Allfire wishing stone
 empower_axe=Empower axe
 lavawalk=Lava walking
 waterwalk=Water walking
+
+
+
+
+jei.divinefavor:arrow_throw_talisman=Arrow throw talisman. Throws arrows duh..
+
+
+cost.divinefavor:arrow_throw_talisman=Arrow throw talisman cost
