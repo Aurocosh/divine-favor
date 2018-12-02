@@ -6,15 +6,15 @@ import net.minecraft.util.ResourceLocation;
 
 public class ImmaterialMediumRecipe {
     public final ResourceLocation name;
-    public final Ingredient[] ingredients;
     public final ItemStack result;
-    public final int time;
+    public final Ingredient callingStone;
+    public final Ingredient[] ingredients;
 
-    public ImmaterialMediumRecipe(ResourceLocation name, ItemStack result, int time, Ingredient... ingredients) {
+    public ImmaterialMediumRecipe(ResourceLocation name, ItemStack result, Ingredient callingStone, Ingredient[] ingredients) {
         this.name = name;
-        this.ingredients = ingredients;
         this.result = result;
-        this.time = time;
+        this.callingStone = callingStone;
+        this.ingredients = ingredients;
     }
 
     public ImmaterialMediumRecipe register() {

@@ -47,8 +47,8 @@ public class ImmaterialMediumCategory implements IRecipeCategory<ImmaterialMediu
         IGuiItemStackGroup group = recipeLayout.getItemStacks();
         ImmaterialMediumRecipe recipe = recipeWrapper.recipe;
 
-//        group.init(0, true, 34, 34);
-//        group.set(0, Arrays.asList(recipe.saplingType.getMatchingStacks()));
+        group.init(0, true, 72, 34);
+        group.set(0, Arrays.asList(recipe.callingStone.getMatchingStacks()));
 
         group.init(1, true, 124, 34);
         group.set(1, recipe.result);

@@ -1,12 +1,8 @@
 package aurocosh.divinefavor.common.receipes;
 
-import aurocosh.divinefavor.common.constants.LibItemNames;
-import aurocosh.divinefavor.common.constants.LibMisc;
 import aurocosh.divinefavor.common.item.base.ModItems;
+import aurocosh.divinefavor.common.item.symbol.ItemCallingStone;
 import aurocosh.divinefavor.common.util.helper_classes.ItemStackIdComparator;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntComparators;
-import it.unimi.dsi.fastutil.ints.IntList;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -20,14 +16,17 @@ public class ModRecipes {
     public static final Map<String,ImmaterialMediumRecipe> recipeLookup = new HashMap<>();
 
     public static void init() {
-        register(
-                new ImmaterialMediumRecipe(new ResourceLocation(LibMisc.MOD_ID, LibItemNames.ARROW_THROW_TALISMAN),
-                        new ItemStack(ModItems.arrowThrowTalisman),
-                        10,
-                        Ingredient.fromStacks(new ItemStack(Items.ARROW,8)),
-                        Ingredient.fromItem(Items.GOLD_INGOT)
-                )
+        register(new RecipeBuilder(new ItemStack(ModItems.arrowThrowTalisman),(ItemCallingStone) ModItems.timber_calling_stone)
+                .addIngredient(Items.ARROW,8)
+                .addIngredient(Items.GOLD_INGOT)
+                .create()
         );
+        register(new RecipeBuilder(new ItemStack(ModItems.ignition_talisman),(ItemCallingStone) ModItems.allfire_calling_stone)
+                .addIngredient(Items.COAL,32)
+                .addIngredient(Items.GUNPOWDER,2)
+                .create()
+        );
+
     }
 
     public static ImmaterialMediumRecipe findMatchingRecipe(List<ItemStack> stacks){
