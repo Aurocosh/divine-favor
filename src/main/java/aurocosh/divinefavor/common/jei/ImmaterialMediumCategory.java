@@ -53,7 +53,15 @@ public class ImmaterialMediumCategory implements IRecipeCategory<ImmaterialMediu
         group.init(1, true, 124, 34);
         group.set(1, recipe.result);
 
-        int[][] positions = new int[][]{{35, 1}, {35, 69}, {1, 35}, {69, 35}, {12, 12}, {58, 58}, {58, 12}, {12, 58}};
+        int[][] positions = new int[][]{
+                {7, 17}, //Top left
+                {25, 17}, //Top center
+                {43, 17}, //Top right
+                {25, 35}, //Center
+                {7, 53}, //Bottom left
+                {25, 53}, //Bottom center
+                {43, 53}, //Bottom right
+        };
         for (int i = 0; i < recipe.ingredients.length; i++) {
             group.init(i + 2, true, positions[i][0] - 1, positions[i][1] - 1);
             group.set(i + 2, Arrays.asList(recipe.ingredients[i].getMatchingStacks()));

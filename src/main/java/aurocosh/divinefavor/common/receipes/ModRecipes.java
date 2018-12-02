@@ -3,6 +3,7 @@ package aurocosh.divinefavor.common.receipes;
 import aurocosh.divinefavor.common.constants.LibItemNames;
 import aurocosh.divinefavor.common.constants.LibMisc;
 import aurocosh.divinefavor.common.item.base.ModItems;
+import aurocosh.divinefavor.common.util.helper_classes.ItemStackIdComparator;
 import it.unimi.dsi.fastutil.ints.IntArrayList;
 import it.unimi.dsi.fastutil.ints.IntComparators;
 import it.unimi.dsi.fastutil.ints.IntList;
@@ -37,13 +38,17 @@ public class ModRecipes {
 
     public static ImmaterialMediumRecipe register(ImmaterialMediumRecipe recipe) {
         recipes.put(recipe.name, recipe);
+
         List<ItemStack> stacks = getIngridientStacks(recipe.ingredients);
+        Collections.sort(stacks,new ItemStackIdComparator());
         String ingredientString = getStackListString(stacks);
         recipeLookup.put(ingredientString,recipe);
         return recipe;
     }
 
     public static ItemStack getRecipeResult(List<ItemStack> stacks){
+        List<ItemStack> itemStacks = new ArrayList<>(stacks);
+        Collections.sort(itemStacks,new ItemStackIdComparator());
         ImmaterialMediumRecipe recipe = findMatchingRecipe(stacks);
         if(recipe == null)
             return ItemStack.EMPTY;
@@ -58,14 +63,12 @@ public class ModRecipes {
     }
 
     private static String getStackListString(List<ItemStack> stacks){
-        IntList allMatchingStacksPacked = new IntArrayList();
-        for (ItemStack stack: stacks)
-            allMatchingStacksPacked.add(Item.REGISTRY.getIDForObject(stack.getItem()));
-        allMatchingStacksPacked.sort(IntComparators.NATURAL_COMPARATOR);
-
         StringJoiner joiner = new StringJoiner("_");
-        for (int value : allMatchingStacksPacked)
-            joiner.add(String.valueOf(value));
+        for (ItemStack itemStack : stacks){
+            int id = Item.REGISTRY.getIDForObject(itemStack.getItem());
+            String value = id + ":" + itemStack.getCount();
+            joiner.add(value);
+        }
         return joiner.toString();
     }
 }
