@@ -3,6 +3,7 @@ package aurocosh.divinefavor.common.block;
 import aurocosh.divinefavor.DivineFavor;
 import aurocosh.divinefavor.common.block.base.BlockTileMod;
 import aurocosh.divinefavor.common.block.base.IDivineFavorBlock;
+import aurocosh.divinefavor.common.block.tile.TileFastFurnace;
 import aurocosh.divinefavor.common.block.tile.TileIronMedium;
 import aurocosh.divinefavor.common.core.DivineFavorCreativeTab;
 import aurocosh.divinefavor.common.constants.LibBlockNames;
@@ -11,6 +12,7 @@ import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyDirection;
+import net.minecraft.block.properties.PropertyEnum;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
@@ -21,10 +23,14 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.ChunkCache;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import net.minecraft.world.chunk.Chunk;
 
 public class BlockIronMedium extends BlockTileMod implements IDivineFavorBlock {
     public static final PropertyDirection FACING = PropertyDirection.create("facing");
+    public static final PropertyEnum<MediumState> STATE = PropertyEnum.<MediumState>create("state", MediumState.class);
 
     public BlockIronMedium() {
         super(LibBlockNames.IRON_MEDIUM, Material.IRON);
@@ -35,13 +41,23 @@ public class BlockIronMedium extends BlockTileMod implements IDivineFavorBlock {
     }
 
     @Override
+    public IBlockState getActualState(IBlockState state, IBlockAccess world, BlockPos pos) {
+        TileEntity te = world instanceof ChunkCache ? ((ChunkCache)world).getTileEntity(pos, Chunk.EnumCreateEntityType.CHECK) : world.getTileEntity(pos);
+        if (te instanceof TileIronMedium) {
+            return state.withProperty(STATE, ((TileIronMedium) te).getState());
+        }
+        return super.getActualState(state, world, pos);
+    }
+
+
+    @Override
     public IBlockState getStateForPlacement(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer) {
         return this.getDefaultState().withProperty(FACING,EnumFacing.getDirectionFromEntityLiving(pos,placer));
     }
 
-    protected BlockStateContainer createBlockState()
-    {
-        return new BlockStateContainer(this, new IProperty[] {FACING});
+    @Override
+    protected BlockStateContainer createBlockState() {
+        return new BlockStateContainer(this, FACING, STATE);
     }
 
     public IBlockState getStateFromMeta(int meta)
