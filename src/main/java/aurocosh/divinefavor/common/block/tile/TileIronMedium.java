@@ -55,6 +55,9 @@ public class TileIronMedium extends TickableTileEntity {
     @Override
     public void readFromNBT(NBTTagCompound compound) {
         super.readFromNBT(compound);
+        if (compound.hasKey("stone")) {
+            stoneStackHandler.deserializeNBT((NBTTagCompound) compound.getTag("stone"));
+        }
         if (compound.hasKey("items")) {
             itemStackHandler.deserializeNBT((NBTTagCompound) compound.getTag("items"));
         }
@@ -63,6 +66,7 @@ public class TileIronMedium extends TickableTileEntity {
     @Override
     public NBTTagCompound writeToNBT(NBTTagCompound compound) {
         super.writeToNBT(compound);
+        compound.setTag("stone", stoneStackHandler.serializeNBT());
         compound.setTag("items", itemStackHandler.serializeNBT());
         return compound;
     }
@@ -158,8 +162,12 @@ public class TileIronMedium extends TickableTileEntity {
         if(handler == null)
             return;
 
+        ItemStack stoneStack = stoneStackHandler.getStackInSlot(0);
+        if(stoneStack == ItemStack.EMPTY)
+            return;
+
         List<ItemStack> pouchStacks = UtilHandler.getNotEmptyStacks(handler);
-        ItemStack result = ModRecipes.getRecipeResult(pouchStacks);
+        ItemStack result = ModRecipes.getRecipeResult(stoneStack.getItem(),pouchStacks);
         if(result == ItemStack.EMPTY)
             return;
         int slot = slotStack.getIndex();
