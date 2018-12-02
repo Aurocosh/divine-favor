@@ -35,7 +35,6 @@ public class CommonProxy {
         ModItems.preInit();
         ModBlocks.preInit();
         ModEntities.preInit();
-        ModRecipes.init();
 
         MessageRegister.init();
 
@@ -47,6 +46,7 @@ public class CommonProxy {
     public void init(FMLInitializationEvent e) {
         ModItems.init();
         ModBlocks.init();
+        ModRecipes.init();
     }
 
     public void postInit(FMLPostInitializationEvent e) {
