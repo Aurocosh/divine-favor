@@ -7,6 +7,7 @@ import net.minecraft.inventory.Container;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.EnumFacing;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.SlotItemHandler;
@@ -17,8 +18,13 @@ public class ContainerIronMedium extends GenericContainer {
     public ContainerIronMedium(EntityPlayer player, TileIronMedium ironMedium) {
         this.ironMedium = ironMedium;
 
+        IItemHandler figurineHandler = this.ironMedium.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, EnumFacing.UP);
+        this.addSlotToContainer(new SlotItemHandler(figurineHandler, 0, 80, 36));
+
         IItemHandler itemHandler = this.ironMedium.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null);
-        generateCustomSlotsGrid(itemHandler,8,18,3,9,0);
+        int slotIndex = generateCustomSlotsGrid(itemHandler,8,18,3,3,0);
+        generateCustomSlotsGrid(itemHandler,116,18,3,3, slotIndex);
+
         generateInventorySlots(player.inventory,8,84);
         generateHotbarSlots(player.inventory,8,142);
     }

@@ -11,6 +11,7 @@ import aurocosh.divinefavor.common.network.GuiHandler;
 import aurocosh.divinefavor.common.network.MessageRegister;
 import aurocosh.divinefavor.common.receipes.ModRecipes;
 import aurocosh.divinefavor.common.spell.base.ModSpells;
+import aurocosh.divinefavor.common.spirit.ModSpirits;
 import com.google.common.util.concurrent.ListenableFuture;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraftforge.common.MinecraftForge;
@@ -28,6 +29,7 @@ public class CommonProxy {
 
         TalismanDataHandler.register();
 
+        ModSpirits.preInit();
         ModFavors.preInit();
         ModSpells.preInit();
         ModItems.preInit();

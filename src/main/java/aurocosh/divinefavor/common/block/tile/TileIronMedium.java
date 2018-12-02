@@ -1,10 +1,13 @@
 package aurocosh.divinefavor.common.block.tile;
 
 import aurocosh.divinefavor.common.item.base.ModItems;
+import aurocosh.divinefavor.common.item.symbol.ItemCallingStone;
 import aurocosh.divinefavor.common.receipes.ModRecipes;
+import aurocosh.divinefavor.common.spirit.ModSpirit;
 import aurocosh.divinefavor.common.util.UtilHandler;
 import aurocosh.divinefavor.common.util.helper_classes.SlotStack;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumFacing;
@@ -12,15 +15,24 @@ import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
-import vazkii.arl.recipe.ModRecipe;
 
-import java.util.ArrayList;
+import javax.annotation.Nonnull;
 import java.util.List;
 
 public class TileIronMedium extends TickableTileEntity {
     public static final int SIZE = 27;
 
-    // This item handler will hold our nine inventory slots
+    private ItemStackHandler stoneStackHandler = new ItemStackHandler(1) {
+        @Override
+        public boolean isItemValid(int slot, @Nonnull ItemStack stack) {
+            return stack.getItem() instanceof ItemCallingStone;
+        }
+        @Override
+        protected void onContentsChanged(int slot) {
+            TileIronMedium.this.markDirty();
+        }
+    };
+
     private ItemStackHandler itemStackHandler = new ItemStackHandler(SIZE) {
         @Override
         protected void onContentsChanged(int slot) {
@@ -65,13 +77,24 @@ public class TileIronMedium extends TickableTileEntity {
     @Override
     public <T> T getCapability(Capability<T> capability, EnumFacing facing) {
         if (capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) {
-            return CapabilityItemHandler.ITEM_HANDLER_CAPABILITY.cast(itemStackHandler);
+            if(facing == EnumFacing.UP)
+                return CapabilityItemHandler.ITEM_HANDLER_CAPABILITY.cast(stoneStackHandler);
+            else
+                return CapabilityItemHandler.ITEM_HANDLER_CAPABILITY.cast(itemStackHandler);
         }
         return super.getCapability(capability, facing);
     }
 
     @Override
     protected void updateFiltered() {
+        ItemStack stack = stoneStackHandler.getStackInSlot(0);
+        if(stack == ItemStack.EMPTY)
+            return;
+        ItemCallingStone item = (ItemCallingStone)stack.getItem();
+        ModSpirit spirit = item.getSpirit();
+        if(!spirit.isActive(world))
+            return;
+
         List<SlotStack> slotStacks = UtilHandler.getNotEmptyStacksWithSlotIndexes(itemStackHandler);
         for (SlotStack slotStack : slotStacks) {
             if(slotStack.getStack().getItem() == ModItems.ritual_pouch)
