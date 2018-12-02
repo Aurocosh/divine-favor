@@ -1,22 +1,18 @@
 package aurocosh.divinefavor.common.item.base;
 
-import aurocosh.divinefavor.DivineFavor;
 import aurocosh.divinefavor.common.constants.LibItemNames;
+import aurocosh.divinefavor.common.constants.items.LibCallingStoneNames;
 import aurocosh.divinefavor.common.favors.ModFavor;
 import aurocosh.divinefavor.common.favors.ModFavors;
 import aurocosh.divinefavor.common.item.ItemStoneball;
 import aurocosh.divinefavor.common.item.ritual_pouch.RitualPouch;
+import aurocosh.divinefavor.common.item.symbol.ItemCallingStone;
 import aurocosh.divinefavor.common.item.talisman.ItemTalisman;
 import aurocosh.divinefavor.common.item.talisman.TalismanBuilder;
 import aurocosh.divinefavor.common.item.wishing_stone.ItemWishingStone;
-import aurocosh.divinefavor.common.item.wishing_stone.WishingStoneData;
 import aurocosh.divinefavor.common.requirements.cost.costs.CostFavor;
 import aurocosh.divinefavor.common.spell.base.ModSpells;
-import aurocosh.divinefavor.common.util.UtilAssets;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import net.minecraftforge.fml.common.Loader;
-import net.minecraftforge.fml.common.ModContainer;
+import aurocosh.divinefavor.common.spirit.ModSpirits;
 import vazkii.arl.item.ItemMod;
 
 import java.util.ArrayList;
@@ -28,7 +24,7 @@ public final class ModItems {
 
     private static List<ItemTalisman> talismans = new ArrayList<>();
     private static List<ItemWishingStone> wishingStones = new ArrayList<>();
-
+    private static List<ItemCallingStone> callingStones = new ArrayList<>();
 
     public static ItemMod stoneball;
     public static ItemMod ritual_pouch;
@@ -44,6 +40,9 @@ public final class ModItems {
     public static ItemMod small_fireball_throw_talisman;
     public static ItemMod waterwalking_talisman;
 
+    public static ItemMod allfire_calling_stone;
+    public static ItemMod timber_calling_stone;
+
     public static ItemMod allfire_wishing_stone;
     public static ItemMod timber_wishing_stone;
 
@@ -51,6 +50,7 @@ public final class ModItems {
         stoneball = registerItem(new ItemStoneball());
         ritual_pouch = registerItem(new RitualPouch());
         generateTalismans();
+        generateCallingStones();
         generateWishingStones();
 
 //        ModContainer mod = Loader.instance().getModObjectList().inverse().get(DivineFavor.instance);
@@ -63,58 +63,63 @@ public final class ModItems {
     }
 
     public static void generateTalismans() {
-        arrowThrowTalisman = registerTalisman( new TalismanBuilder(LibItemNames.ARROW_THROW_TALISMAN)
+        arrowThrowTalisman = register( new TalismanBuilder(LibItemNames.ARROW_THROW_TALISMAN)
                 .setSpell(ModSpells.arrow_throw)
                 .castOnUse()
                 .castOnRighClick()
                 .addCost(new CostFavor(ModFavors.favor_of_allfire,1))
                 .create());
-        bonemeal_talisman = registerTalisman( new TalismanBuilder(LibItemNames.BONEMEAL_TALISMAN)
+        bonemeal_talisman = register( new TalismanBuilder(LibItemNames.BONEMEAL_TALISMAN)
                 .setSpell(ModSpells.bonemeal)
                 .castOnUse()
                 .create());
-        empower_axe_talisman = registerTalisman( new TalismanBuilder(LibItemNames.EMPOWER_AXE_TALISMAN)
+        empower_axe_talisman = register( new TalismanBuilder(LibItemNames.EMPOWER_AXE_TALISMAN)
                 .setSpell(ModSpells.empower_axe)
                 .castOnUse()
                 .castOnRighClick()
                 .create());
-        fell_tree_talisman = registerTalisman( new TalismanBuilder(LibItemNames.FELL_TREE_TALISMAN)
+        fell_tree_talisman = register( new TalismanBuilder(LibItemNames.FELL_TREE_TALISMAN)
                 .setSpell(ModSpells.fell_tree)
                 .castOnUse()
                 .create());
-        ignition_talisman = registerTalisman( new TalismanBuilder(LibItemNames.IGNITION_TALISMAN)
+        ignition_talisman = register( new TalismanBuilder(LibItemNames.IGNITION_TALISMAN)
                 .setSpell(ModSpells.ignition)
                 .castOnUse()
                 .create());
-        lavawalking_talisman = registerTalisman( new TalismanBuilder(LibItemNames.LAVAWALKING_TALISMAN)
+        lavawalking_talisman = register( new TalismanBuilder(LibItemNames.LAVAWALKING_TALISMAN)
                 .setSpell(ModSpells.lavawalking)
                 .castOnUse()
                 .castOnRighClick()
                 .create());
-        snowball_throw_talisman = registerTalisman( new TalismanBuilder(LibItemNames.SNOWBALL_THROW_TALISMAN)
+        snowball_throw_talisman = register( new TalismanBuilder(LibItemNames.SNOWBALL_THROW_TALISMAN)
                 .setSpell(ModSpells.snowball_throw)
                 .castOnUse()
                 .castOnRighClick()
                 .create());
-        stoneball_throw_talisman = registerTalisman( new TalismanBuilder(LibItemNames.STONEBALL_THROW_TALISMAN)
+        stoneball_throw_talisman = register( new TalismanBuilder(LibItemNames.STONEBALL_THROW_TALISMAN)
                 .setSpell(ModSpells.stoneball_throw)
                 .castOnUse()
                 .castOnRighClick()
                 .create());
-        small_fireball_throw_talisman = registerTalisman( new TalismanBuilder(LibItemNames.SMALL_FIREBALL_THROW_TALISMAN)
+        small_fireball_throw_talisman = register( new TalismanBuilder(LibItemNames.SMALL_FIREBALL_THROW_TALISMAN)
                 .setSpell(ModSpells.small_fireball_throw)
                 .castOnRighClick()
                 .create());
-        waterwalking_talisman = registerTalisman( new TalismanBuilder(LibItemNames.WATERWALKING_TALISMAN)
+        waterwalking_talisman = register( new TalismanBuilder(LibItemNames.WATERWALKING_TALISMAN)
                 .setSpell(ModSpells.waterwalking)
                 .castOnUse()
                 .castOnRighClick()
                 .create());
     }
 
+    private static void generateCallingStones() {
+        allfire_calling_stone = register(new ItemCallingStone(LibCallingStoneNames.ALLFIRE_CALLING_STONE, ModSpirits.allfire));
+        timber_calling_stone = register(new ItemCallingStone(LibCallingStoneNames.TIMBER_CALLING_STONE, ModSpirits.timber));
+    }
+
     private static void generateWishingStones(){
-        allfire_wishing_stone = registerWishingStone("allfire_wishing_stone",ModFavors.favor_of_allfire,1);
-        timber_wishing_stone = registerWishingStone("timber_wishing_stone",ModFavors.favor_of_timber,1);
+        allfire_wishing_stone = register(new ItemWishingStone("allfire_wishing_stone",ModFavors.favor_of_allfire,1));
+        timber_wishing_stone = register(new ItemWishingStone("timber_wishing_stone",ModFavors.favor_of_timber,1));
     }
 //
 //    private static void loadTalismans(ModContainer mod) {
@@ -140,17 +145,22 @@ public final class ModItems {
 //        dataArrayList.forEach(data -> registerWishingStone(data));
 //    }
 
-    public static ItemMod registerTalisman(ItemTalisman talisman) {
+    public static ItemMod register(ItemTalisman talisman) {
         items.add(talisman);
         talismans.add(talisman);
         return talisman;
     }
 
-    public static ItemMod registerWishingStone(String name, ModFavor favor, int favorCount) {
-        ItemWishingStone talisman = new ItemWishingStone(name,favor,favorCount);
-        items.add(talisman);
-        wishingStones.add(talisman);
-        return talisman;
+    public static ItemMod register(ItemCallingStone callingStone) {
+        items.add(callingStone);
+        callingStones.add(callingStone);
+        return callingStone;
+    }
+
+    public static ItemMod register(ItemWishingStone wishingStone) {
+        items.add(wishingStone);
+        wishingStones.add(wishingStone);
+        return wishingStone;
     }
 
     public static ItemMod registerItem(ItemMod item) {

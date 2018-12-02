@@ -2,12 +2,13 @@ package aurocosh.divinefavor.common.spell.base;
 
 import aurocosh.divinefavor.common.registry.SpellRegestry;
 import aurocosh.divinefavor.common.spell.*;
+import net.minecraft.util.ResourceLocation;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public final class ModSpells {
-    private static Map<SpellType, ModSpell> spellMap = new HashMap<>();
+    private static Map<ResourceLocation, ModSpell> spells = new HashMap<>();
 
     public static ModSpell arrow_throw;
     public static ModSpell bonemeal;
@@ -35,12 +36,8 @@ public final class ModSpells {
         waterwalking = register(new SpellWaterwalking());
     }
 
-    public static ModSpell get(SpellType name) {
-        return spellMap.get(name);
-    }
-
     public static ModSpell register(ModSpell modSpell) {
-        spellMap.put(modSpell.type, modSpell);
+        spells.put(modSpell.getRegistryName(), modSpell);
         SpellRegestry.register(modSpell);
         return modSpell;
     }

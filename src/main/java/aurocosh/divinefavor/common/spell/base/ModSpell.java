@@ -15,15 +15,10 @@ public abstract class ModSpell extends IForgeRegistryEntry.Impl<ModSpell> {
     protected static Random spellRand = new Random();
 
     protected String name;
-    protected SpellType type;
     protected boolean isServerSide;
 
     public String getName() {
         return name;
-    }
-
-    public SpellType getType() {
-        return type;
     }
 
     public boolean isCodeSideCorrect(World world){
@@ -32,7 +27,6 @@ public abstract class ModSpell extends IForgeRegistryEntry.Impl<ModSpell> {
 
     public ModSpell(SpellType type, boolean isServerSide) {
         this.name = type.toString();
-        this.type = type;
         this.isServerSide = isServerSide;
         setRegistryName(LibMisc.MOD_ID,"spell." + name);
     }
