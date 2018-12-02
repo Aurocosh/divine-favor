@@ -42,8 +42,6 @@ public class CommonProxy {
         NetworkRegistry.INSTANCE.registerGuiHandler(DivineFavor.instance, new GuiHandler());
 
         MinecraftForge.EVENT_BUS.register(new PlayerDataHandler.EventHandler());
-
-
     }
 
     public void init(FMLInitializationEvent e) {

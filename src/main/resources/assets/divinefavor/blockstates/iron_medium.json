@@ -8,7 +8,7 @@
       "up": "divinefavor:blocks/iron_medium_side",
       "east": "divinefavor:blocks/iron_medium_side",
       "west": "divinefavor:blocks/iron_medium_side",
-      "north": "divinefavor:blocks/iron_medium_front",
+      "north": "divinefavor:blocks/iron_medium_front_incorrect",
       "south": "divinefavor:blocks/iron_medium_side"
     }
   },
@@ -22,6 +22,11 @@
       "east": {"y": 90},
       "up": {"x": -90},
       "down": {"x": 90}
+    },
+    "state": {
+      "incorrect": {},
+      "correct": { "textures": { "north": "divinefavor:blocks/iron_medium_front_correct" } },
+      "active": { "textures": { "north": "divinefavor:blocks/iron_medium_front_active" } }
     }
   }
 }
