@@ -6,6 +6,8 @@ import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.items.IItemHandler;
+import net.minecraftforge.items.SlotItemHandler;
 
 public class GenericContainer extends Container {
     @Override
@@ -28,6 +30,17 @@ public class GenericContainer extends Container {
             int x = xStart + row * 18;
             this.addSlotToContainer(new Slot(playerInventory, row, x, yStart));
         }
+    }
+
+    protected int generateCustomSlotsGrid(IItemHandler itemHandler, int xStart, int yStart, int rows, int columns, int nextSlotIndex){
+        for (int row = 0; row < rows; ++row) {
+            for (int col = 0; col < columns; ++col) {
+                int x = xStart + col * 18;
+                int y = yStart + row * 18;
+                this.addSlotToContainer(new SlotItemHandler(itemHandler, nextSlotIndex++, x, y));
+            }
+        }
+        return nextSlotIndex;
     }
 
     @Override

@@ -1,14 +1,23 @@
 package aurocosh.divinefavor.common.block.tile;
 
+import aurocosh.divinefavor.common.item.base.ModItems;
+import aurocosh.divinefavor.common.receipes.ModRecipes;
+import aurocosh.divinefavor.common.util.UtilHandler;
+import aurocosh.divinefavor.common.util.helper_classes.SlotStack;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.items.CapabilityItemHandler;
+import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
+import vazkii.arl.recipe.ModRecipe;
 
-public class TileIronMedium extends TileEntity {
+import java.util.ArrayList;
+import java.util.List;
+
+public class TileIronMedium extends TickableTileEntity {
     public static final int SIZE = 27;
 
     // This item handler will hold our nine inventory slots
@@ -20,6 +29,10 @@ public class TileIronMedium extends TileEntity {
             TileIronMedium.this.markDirty();
         }
     };
+
+    public TileIronMedium() {
+        super(false, true);
+    }
 
     @Override
     public void readFromNBT(NBTTagCompound compound) {
@@ -55,5 +68,29 @@ public class TileIronMedium extends TileEntity {
             return CapabilityItemHandler.ITEM_HANDLER_CAPABILITY.cast(itemStackHandler);
         }
         return super.getCapability(capability, facing);
+    }
+
+    @Override
+    protected void updateFiltered() {
+        List<SlotStack> slotStacks = UtilHandler.getNotEmptyStacksWithSlotIndexes(itemStackHandler);
+        for (SlotStack slotStack : slotStacks) {
+            if(slotStack.getStack().getItem() == ModItems.ritual_pouch)
+                exchangeRitualPouch(slotStack);
+        }
+    }
+
+    private void exchangeRitualPouch(SlotStack slotStack){
+        ItemStack stack = slotStack.getStack();
+        IItemHandler handler = stack.getCapability( CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null );
+        if(handler == null)
+            return;
+
+        List<ItemStack> pouchStacks = UtilHandler.getNotEmptyStacks(handler);
+        ItemStack result = ModRecipes.getRecipeResult(pouchStacks);
+        if(result == ItemStack.EMPTY)
+            return;
+        int slot = slotStack.getIndex();
+        itemStackHandler.extractItem(slot,1,false);
+        itemStackHandler.insertItem(slot,result,false);
     }
 }
