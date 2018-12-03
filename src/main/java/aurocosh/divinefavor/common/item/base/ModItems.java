@@ -2,10 +2,10 @@ package aurocosh.divinefavor.common.item.base;
 
 import aurocosh.divinefavor.common.constants.LibItemNames;
 import aurocosh.divinefavor.common.constants.items.LibCallingStoneNames;
-import aurocosh.divinefavor.common.favors.ModFavor;
 import aurocosh.divinefavor.common.favors.ModFavors;
 import aurocosh.divinefavor.common.item.ItemStoneball;
-import aurocosh.divinefavor.common.item.ritual_pouch.RitualPouch;
+import aurocosh.divinefavor.common.item.mystic_architect_stick.ItemMysticArchitectStick;
+import aurocosh.divinefavor.common.item.ritual_pouch.ItemRitualPouch;
 import aurocosh.divinefavor.common.item.symbol.ItemCallingStone;
 import aurocosh.divinefavor.common.item.talisman.ItemTalisman;
 import aurocosh.divinefavor.common.item.talisman.TalismanBuilder;
@@ -13,6 +13,8 @@ import aurocosh.divinefavor.common.item.wishing_stone.ItemWishingStone;
 import aurocosh.divinefavor.common.requirements.cost.costs.CostFavor;
 import aurocosh.divinefavor.common.spell.base.ModSpells;
 import aurocosh.divinefavor.common.spirit.ModSpirits;
+import net.minecraftforge.event.world.BlockEvent;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import vazkii.arl.item.ItemMod;
 
 import java.util.ArrayList;
@@ -45,10 +47,12 @@ public final class ModItems {
 
     public static ItemMod allfire_wishing_stone;
     public static ItemMod timber_wishing_stone;
+    public static ItemMod mystic_architect_stick;
 
     public static void preInit() {
         stoneball = registerItem(new ItemStoneball());
-        ritual_pouch = registerItem(new RitualPouch());
+        ritual_pouch = registerItem(new ItemRitualPouch());
+        mystic_architect_stick = registerItem(new ItemMysticArchitectStick());
         generateTalismans();
         generateCallingStones();
         generateWishingStones();
@@ -62,6 +66,18 @@ public final class ModItems {
 //        OreDictionary.registerOre("ingotPsi", new ItemStack(material, 1, 1));
     }
 
+    @SubscribeEvent
+    public static void onBreakEvent(BlockEvent.BreakEvent event) {
+
+        System.out.println(event.getPlayer());
+
+        /*
+        while (true) {
+            String test = String.valueOf(breakEvent.getPlayer());
+            System.out.println(test);
+        }
+        */
+    }
     public static void generateTalismans() {
         arrowThrowTalisman = register( new TalismanBuilder(LibItemNames.ARROW_THROW_TALISMAN)
                 .setSpell(ModSpells.arrow_throw)

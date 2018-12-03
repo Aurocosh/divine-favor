@@ -51,8 +51,6 @@ public class DivineFavorCreativeTab extends CreativeTabs {
         addBlock(ModBlocks.blockIronMedium);
         addBlock(ModBlocks.blockDiviner);
 
-        addItem(ModItems.stoneball);
-
         List<ItemMod> talismans = ModItems.getItems();
         talismans.forEach((talisman) -> addItem(talisman));
 

@@ -1,7 +1,7 @@
 package aurocosh.divinefavor.common.item.talisman;
 
 import aurocosh.divinefavor.DivineFavor;
-import aurocosh.divinefavor.api.internal.Vector3;
+import aurocosh.divinefavor.common.lib.math.Vector3;
 import aurocosh.divinefavor.common.block.base.ModBlocks;
 import aurocosh.divinefavor.common.constants.LibFavorType;
 import aurocosh.divinefavor.common.constants.LibGuiIDs;
