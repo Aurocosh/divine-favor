@@ -13,5 +13,6 @@ public final class LibItemNames {
     public static final String WATERWALKING_TALISMAN = "waterwalking_talisman";
 
     public static final String RITUAL_POUCH = "ritual_pouch";
+    public static final String MYSTIC_ARCHITECT_STICK = "mystic_architect_stick";
     public static final String STONEBALL = "stoneball";
 }

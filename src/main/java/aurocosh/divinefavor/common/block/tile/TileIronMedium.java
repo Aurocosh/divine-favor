@@ -118,8 +118,6 @@ public class TileIronMedium extends TickableTileEntity {
             world.markBlockRangeForRenderUpdate(pos, pos);
         }
     }
-
-
     public void setState(MediumState state) {
         if (this.state != state) {
             this.state = state;

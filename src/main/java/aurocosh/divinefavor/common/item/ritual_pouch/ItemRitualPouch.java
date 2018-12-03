@@ -16,8 +16,8 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
 import vazkii.arl.item.ItemMod;
 
-public class RitualPouch extends ItemMod implements IDivineFavorItem {
-    public RitualPouch() {
+public class ItemRitualPouch extends ItemMod implements IDivineFavorItem {
+    public ItemRitualPouch() {
         super(LibItemNames.RITUAL_POUCH);
         setMaxStackSize(1);
         setCreativeTab(DivineFavorCreativeTab.INSTANCE);

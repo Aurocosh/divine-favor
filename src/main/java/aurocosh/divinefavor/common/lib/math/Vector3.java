@@ -1,5 +1,6 @@
-package aurocosh.divinefavor.api.internal;
+package aurocosh.divinefavor.common.lib.math;
 
+import aurocosh.divinefavor.api.internal.Quat;
 import net.minecraft.entity.Entity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.AxisAlignedBB;

@@ -3,6 +3,8 @@ package aurocosh.divinefavor.api.internal;
 /**
  * This class was created by <ChickenBones>.
  */
+import aurocosh.divinefavor.common.lib.math.Vector3;
+
 import java.util.Formatter;
 import java.util.Locale;
 
