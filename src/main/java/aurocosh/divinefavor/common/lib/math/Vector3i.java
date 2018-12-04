@@ -1,9 +1,15 @@
 package aurocosh.divinefavor.common.lib.math;
 
+import aurocosh.divinefavor.common.util.helper_classes.IDeepCopy;
 import net.minecraft.util.math.BlockPos;
 
-public class Vector3i {
+import java.util.ArrayList;
+import java.util.List;
+
+public class Vector3i implements IDeepCopy<Vector3i> {
     public static final Vector3i ZERO = new Vector3i(0, 0, 0);
+    public static final Vector3i MIN = new Vector3i(Integer.MIN_VALUE, Integer.MIN_VALUE, Integer.MIN_VALUE);
+    public static final Vector3i MAX = new Vector3i(Integer.MAX_VALUE, Integer.MAX_VALUE, Integer.MAX_VALUE);
 
     public static final Vector3i WEST = new Vector3i(-1, 0, 0);
     public static final Vector3i EAST = new Vector3i(1, 0, 0);
@@ -26,6 +32,24 @@ public class Vector3i {
         x = n;
         y = n;
         z = n;
+    }
+
+    public static Vector3i convert(BlockPos pos) {
+        return new Vector3i(pos.getX(), pos.getY(), pos.getZ());
+    }
+
+    public static List<BlockPos> convert(List<Vector3i> vectors) {
+        List<BlockPos> posList = new ArrayList<>(vectors.size());
+        for (Vector3i vector : vectors)
+            posList.add(vector.toBlockPos());
+        return posList;
+    }
+
+    public static BlockPos[] convert(Vector3i[] vectors) {
+        BlockPos[] posList = new BlockPos[vectors.length];
+        for (int i = 0; i < vectors.length; i++)
+            posList[i] = vectors[i].toBlockPos();
+        return posList;
     }
 
     @Override
@@ -92,6 +116,20 @@ public class Vector3i {
         return x * other.x + y * other.y + z * other.z;
     }
 
+    public Vector3i getMinCoordinates(Vector3i vector) {
+        int xMin = Math.min(x, vector.x);
+        int yMin = Math.min(y, vector.y);
+        int zMin = Math.min(z, vector.z);
+        return new Vector3i(xMin, yMin, zMin);
+    }
+
+    public Vector3i getMaxCoordinates(Vector3i vector) {
+        int xMax = Math.max(x, vector.x);
+        int yMax = Math.max(y, vector.y);
+        int zMax = Math.max(z, vector.z);
+        return new Vector3i(xMax, yMax, zMax);
+    }
+
     public boolean orthogonal(Vector3i other) {
         return dot(other) == 0;
     }
@@ -111,11 +149,23 @@ public class Vector3i {
         return x * x + y * y + z * z;
     }
 
-    public static Vector3i fromBlockPos(BlockPos pos) {
-        return new Vector3i(pos.getX(), pos.getY(), pos.getZ());
+    public BlockPos toBlockPos() {
+        return new BlockPos(x, y, z);
     }
 
-    public static BlockPos toBlockPos(Vector3i vector) {
-        return new BlockPos(vector.x,vector.y,vector.z);
+    @Override
+    public Vector3i deepCopy() {
+        return new Vector3i(x, y, z);
+    }
+
+    /**
+     * Serialize this BlockPos into a long value
+     */
+    public long toLong() {
+        return toBlockPos().toLong();
+    }
+
+    public Vector3i fromLong(long value){
+        return Vector3i.convert(BlockPos.fromLong(value));
     }
 }

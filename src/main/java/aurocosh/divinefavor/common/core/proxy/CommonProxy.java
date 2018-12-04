@@ -7,6 +7,7 @@ import aurocosh.divinefavor.common.entity.ModEntities;
 import aurocosh.divinefavor.common.favors.ModFavors;
 import aurocosh.divinefavor.common.item.base.ModItems;
 import aurocosh.divinefavor.common.item.talisman.capability.TalismanDataHandler;
+import aurocosh.divinefavor.common.muliblock.ModMultiBlocks;
 import aurocosh.divinefavor.common.network.GuiHandler;
 import aurocosh.divinefavor.common.network.MessageRegister;
 import aurocosh.divinefavor.common.receipes.ModRecipes;
@@ -32,6 +33,7 @@ public class CommonProxy {
         ModSpirits.preInit();
         ModFavors.preInit();
         ModSpells.preInit();
+        ModMultiBlocks.preInit();
         ModItems.preInit();
         ModBlocks.preInit();
         ModEntities.preInit();

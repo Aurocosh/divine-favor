@@ -1,5 +1,6 @@
-package aurocosh.divinefavor.common.util.helper_classes;
+package aurocosh.divinefavor.common.muliblock;
 
+import aurocosh.divinefavor.common.lib.math.Vector3i;
 import aurocosh.divinefavor.common.util.UtilBlockPos;
 import aurocosh.divinefavor.common.util.UtilMap;
 import net.minecraft.block.Block;
@@ -14,12 +15,12 @@ public class MultiblockTemplateData {
     private int[] blockNameIndexes;
     private Map<Integer, String> blockIndexToNameMap;
 
-    public MultiblockTemplateData(List<MultiblockBlockData> multiblockBlockData) {
-        List<BlockPos> posList = new ArrayList<>(multiblockBlockData.size());
-        List<String> names = new ArrayList<>(multiblockBlockData.size());
+    public MultiblockTemplateData(List<MultiBlockPart> multiBlockData) {
+        List<BlockPos> posList = new ArrayList<>(multiBlockData.size());
+        List<String> names = new ArrayList<>(multiBlockData.size());
 
-        for (MultiblockBlockData data : multiblockBlockData) {
-            posList.add(data.pos);
+        for (MultiBlockPart data : multiBlockData) {
+            posList.add(data.position.toBlockPos());
             names.add(data.block.getRegistryName().toString());
         }
 
@@ -30,9 +31,9 @@ public class MultiblockTemplateData {
         this.blockNameIndexes = UtilMap.generateValueIndexArray(names,blockNameToIndexMap);
     }
 
-    public List<MultiblockBlockData> getBlockDataList(){
+    public List<MultiBlockPart> getBlockDataList(){
         List<BlockPos> posList = UtilBlockPos.deserializePositions(blockPositionsSerialized);
-        List<MultiblockBlockData> dataList = new ArrayList<>(blockPositionsSerialized.length);
+        List<MultiBlockPart> dataList = new ArrayList<>(blockPositionsSerialized.length);
         for (int i = 0; i < blockPositionsSerialized.length; i++) {
             int nameIndex = blockNameIndexes[i];
             String blockName = blockIndexToNameMap.get(nameIndex);
@@ -40,7 +41,7 @@ public class MultiblockTemplateData {
             if(block == null)
                 continue;
             BlockPos pos = posList.get(i);
-            dataList.add(new MultiblockBlockData(pos,block));
+            dataList.add(new MultiBlockPart(Vector3i.convert(pos),block));
         }
         return dataList;
     }

@@ -1,7 +1,8 @@
-package aurocosh.divinefavor.common.item.symbol;
+package aurocosh.divinefavor.common.item.calling_stone;
 
 import aurocosh.divinefavor.common.core.DivineFavorCreativeTab;
 import aurocosh.divinefavor.common.item.base.IDivineFavorItem;
+import aurocosh.divinefavor.common.muliblock.ModMultiBlock;
 import aurocosh.divinefavor.common.spirit.ModSpirit;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumRarity;
@@ -13,17 +14,15 @@ import net.minecraft.world.World;
 import vazkii.arl.item.ItemMod;
 
 public class ItemCallingStone extends ItemMod implements IDivineFavorItem {
-    private ModSpirit spirit;
+    public final ModSpirit spirit;
+    public final ModMultiBlock multiBlock;
 
-    public ItemCallingStone(String name, ModSpirit spirit) {
+    public ItemCallingStone(String name, ModSpirit spirit, ModMultiBlock multiBlock) {
         super(name);
         this.spirit = spirit;
+        this.multiBlock = multiBlock;
         setMaxStackSize(1);
         setCreativeTab(DivineFavorCreativeTab.INSTANCE);
-    }
-
-    public ModSpirit getSpirit() {
-        return spirit;
     }
 
     @Override

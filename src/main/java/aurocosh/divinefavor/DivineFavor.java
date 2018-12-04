@@ -8,7 +8,9 @@ import aurocosh.divinefavor.common.registry.ConfigRegistry;
 import aurocosh.divinefavor.common.registry.EventRegistry;
 import aurocosh.divinefavor.common.registry.content.ItemPotionContent;
 import net.minecraftforge.common.config.Configuration;
+import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.common.ModContainer;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
@@ -22,6 +24,7 @@ public class DivineFavor {
     @Mod.Instance(LibMisc.MOD_ID)
     public static DivineFavor instance;
     public static ModLogger logger;
+    public static ModContainer container;
     public EventRegistry events;
     private ArrayList<IContent> content;
     //public static SimpleNetworkWrapper network = NetworkRegistry.INSTANCE.newSimpleChannel(LibMisc.MOD_ID);
@@ -34,6 +37,7 @@ public class DivineFavor {
 
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent event) {
+        container = Loader.instance().getModObjectList().inverse().get(instance);
         logger = new ModLogger(event.getModLog());
         ConfigRegistry.oreConfig = new Configuration(new File(event.getModConfigurationDirectory(), "cyclic_ores.cfg"));
         ConfigRegistry.init(new Configuration(event.getSuggestedConfigurationFile()));
