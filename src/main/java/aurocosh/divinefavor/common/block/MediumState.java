@@ -3,8 +3,9 @@ package aurocosh.divinefavor.common.block;
 import net.minecraft.util.IStringSerializable;
 
 public enum MediumState implements IStringSerializable {
-    INCORRECT("incorrect"),
-    CORRECT("correct"),
+    NO_CALLING_STONE("no_calling_stone"),
+    NO_MULTI_BLOCK("no_multi_block"),
+    VALID("valid"),
     ACTIVE("active");
 
     // Optimization

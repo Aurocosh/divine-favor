@@ -1,13 +1,12 @@
 package aurocosh.divinefavor.common.receipes;
 
 import aurocosh.divinefavor.common.item.base.ModItems;
-import aurocosh.divinefavor.common.item.symbol.ItemCallingStone;
+import aurocosh.divinefavor.common.item.calling_stone.ItemCallingStone;
 import aurocosh.divinefavor.common.util.helper_classes.ItemStackIdComparator;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
-import net.minecraft.nbt.NBTUtil;
 import net.minecraft.util.ResourceLocation;
 
 import java.util.*;

@@ -3,15 +3,13 @@ package aurocosh.divinefavor.common.block;
 import aurocosh.divinefavor.DivineFavor;
 import aurocosh.divinefavor.common.block.base.BlockTileMod;
 import aurocosh.divinefavor.common.block.base.IDivineFavorBlock;
-import aurocosh.divinefavor.common.block.tile.TileFastFurnace;
 import aurocosh.divinefavor.common.block.tile.TileIronMedium;
-import aurocosh.divinefavor.common.core.DivineFavorCreativeTab;
 import aurocosh.divinefavor.common.constants.LibBlockNames;
 import aurocosh.divinefavor.common.constants.LibGuiIDs;
+import aurocosh.divinefavor.common.core.DivineFavorCreativeTab;
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
-import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyDirection;
 import net.minecraft.block.properties.PropertyEnum;
 import net.minecraft.block.state.BlockStateContainer;
@@ -31,7 +29,7 @@ import net.minecraft.world.chunk.Chunk;
 
 public class BlockIronMedium extends BlockTileMod implements IDivineFavorBlock {
     public static final PropertyDirection FACING = PropertyDirection.create("facing");
-    public static final PropertyEnum<MediumState> STATE = PropertyEnum.<MediumState>create("state", MediumState.class);
+    public static final PropertyEnum<MediumState> STATE = PropertyEnum.create("state", MediumState.class);
 
     public BlockIronMedium() {
         super(LibBlockNames.IRON_MEDIUM, Material.IRON);
@@ -87,9 +85,6 @@ public class BlockIronMedium extends BlockTileMod implements IDivineFavorBlock {
         return new TileIronMedium();
     }
 
-
-
-
     @Override
     public void neighborChanged(IBlockState state, World worldIn, BlockPos pos, Block blockIn, BlockPos fromPos) {
         if(!worldIn.isRemote && !canPlaceBlockAt(worldIn, pos)) {
@@ -98,4 +93,13 @@ public class BlockIronMedium extends BlockTileMod implements IDivineFavorBlock {
         }
     }
 
+    @Override
+    public void breakBlock(World worldIn, BlockPos pos, IBlockState state) {
+        super.breakBlock(worldIn, pos, state);
+        TileEntity entity = worldIn.getTileEntity(pos);
+        if(!(entity instanceof TileIronMedium))
+            return;
+        TileIronMedium medium = (TileIronMedium)entity;
+        medium.multiblockDamaged();
+    }
 }

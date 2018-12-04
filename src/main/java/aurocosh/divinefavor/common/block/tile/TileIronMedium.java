@@ -2,14 +2,18 @@ package aurocosh.divinefavor.common.block.tile;
 
 import aurocosh.divinefavor.common.block.MediumState;
 import aurocosh.divinefavor.common.item.base.ModItems;
-import aurocosh.divinefavor.common.item.symbol.ItemCallingStone;
+import aurocosh.divinefavor.common.item.calling_stone.ItemCallingStone;
+import aurocosh.divinefavor.common.lib.math.Vector3i;
+import aurocosh.divinefavor.common.muliblock.IMultiblockController;
+import aurocosh.divinefavor.common.muliblock.ModMultiBlock;
+import aurocosh.divinefavor.common.muliblock.ModMultiBlockInstance;
+import aurocosh.divinefavor.common.muliblock.MultiBlockWatcher;
 import aurocosh.divinefavor.common.receipes.ModRecipes;
 import aurocosh.divinefavor.common.spirit.ModSpirit;
 import aurocosh.divinefavor.common.util.UtilHandler;
 import aurocosh.divinefavor.common.util.helper_classes.SlotStack;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.NetworkManager;
@@ -24,9 +28,14 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.List;
 
-public class TileIronMedium extends TickableTileEntity {
+public class TileIronMedium extends TickableTileEntity implements IMultiblockController {
     public static final int SIZE = 27;
-    private MediumState state = MediumState.INCORRECT;
+    private MediumState state = MediumState.NO_CALLING_STONE;
+
+// server side
+    private ModMultiBlockInstance multiBlockInstance;
+// client side
+    private boolean multiBlockValid;
 
     private ItemStackHandler stoneStackHandler = new ItemStackHandler(1) {
         @Override
@@ -50,6 +59,7 @@ public class TileIronMedium extends TickableTileEntity {
 
     public TileIronMedium() {
         super(false, true);
+        multiBlockValid = false;
     }
 
     @Override
@@ -95,7 +105,6 @@ public class TileIronMedium extends TickableTileEntity {
         return super.getCapability(capability, facing);
     }
 
-
     @Override
     public NBTTagCompound getUpdateTag() {
         NBTTagCompound nbtTag = super.getUpdateTag();
@@ -135,14 +144,19 @@ public class TileIronMedium extends TickableTileEntity {
     protected void updateFiltered() {
         ItemStack stack = stoneStackHandler.getStackInSlot(0);
         if(stack == ItemStack.EMPTY) {
-            setState(MediumState.INCORRECT);
+            setState(MediumState.NO_CALLING_STONE);
+            return;
+        }
+
+        if(multiBlockInstance == null){
+            setState(MediumState.NO_MULTI_BLOCK);
             return;
         }
 
         ItemCallingStone item = (ItemCallingStone)stack.getItem();
-        ModSpirit spirit = item.getSpirit();
+        ModSpirit spirit = item.spirit;
         if(!spirit.isActive(world)) {
-            setState(MediumState.CORRECT);
+            setState(MediumState.VALID);
             return;
         }
         setState(MediumState.ACTIVE);
@@ -171,5 +185,33 @@ public class TileIronMedium extends TickableTileEntity {
         int slot = slotStack.getIndex();
         itemStackHandler.extractItem(slot,1,false);
         itemStackHandler.insertItem(slot,result,false);
+    }
+
+    @Override
+    public ModMultiBlockInstance getMultiblockInstance() {
+        return multiBlockInstance;
+    }
+
+    @Override
+    public void multiblockDamaged() {
+        multiBlockInstance = null;
+        MultiBlockWatcher.unRegisterController(this);
+    }
+
+    @Override
+    public void tryToFormMultiBlock() {
+        if(multiBlockInstance != null)
+            return;
+        ItemStack stack = stoneStackHandler.getStackInSlot(0);
+        if(stack == ItemStack.EMPTY)
+            return;
+
+        ItemCallingStone callingStone = (ItemCallingStone) stack.getItem();
+        ModMultiBlock multiBlock = callingStone.multiBlock;
+        if(!multiBlock.isValid(world,pos))
+            return;
+
+        multiBlockInstance = new ModMultiBlockInstance(multiBlock,Vector3i.convert(pos));
+        MultiBlockWatcher.registerController(this);
     }
 }

@@ -10,6 +10,7 @@ import com.google.gson.GsonBuilder;
 import net.minecraftforge.common.crafting.CraftingHelper;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.ModContainer;
+import org.apache.commons.io.IOUtils;
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;
@@ -17,53 +18,52 @@ import java.nio.file.Files;
 import java.util.ArrayList;
 
 public class UtilAssets {
-    public void Test(){
-        ModContainer mod = Loader.instance().getModObjectList().inverse().get(DivineFavor.instance);
-        ArrayList<String> requirementPaths = getAssetPaths(mod,"requirements",".json");
-
-        RuntimeTypeAdapterFactory<Cost> costFactory = RuntimeTypeAdapterFactory
-                .of(Cost.class, "type")
-                .registerSubtype(CostFavor.class);
-
-        Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().setPrettyPrinting().registerTypeAdapterFactory(costFactory).create();
-
-        ArrayList<SpellRequirement> requirements = loadObjectsFromJsonAssets(SpellRequirement.class,mod,requirementPaths,gson);
-
-    }
-
-    public static ArrayList<String> getAssetPaths(ModContainer mod, String assetFolderPath, String fileFormat)
-    {
+    public static ArrayList<String> getAssetPaths(ModContainer mod, String assetFolderPath, String fileFormat) {
         ArrayList<String> foundPaths = new ArrayList<>();
         String id = mod.getModId();
         String base = String.format("assets/%s/%s", id, assetFolderPath);
 
         CraftingHelper.findFiles(mod, base, (path) -> Files.exists(path),
-            (path, file) -> {
-                if(file.toString().endsWith(fileFormat)) {
-                    String fileStr = file.toString().replaceAll("\\\\", "/");
-                    String assetPath = fileStr.substring(fileStr.indexOf("/assets"));
-                    foundPaths.add(assetPath);
-                }
-                return true;
-            },false, true);
+                (path, file) -> {
+                    if (file.toString().endsWith(fileFormat)) {
+                        String fileStr = file.toString().replaceAll("\\\\", "/");
+                        String assetPath = fileStr.substring(fileStr.indexOf("/assets"));
+                        foundPaths.add(assetPath);
+                    }
+                    return true;
+                }, false, true);
         return foundPaths;
     }
 
-    public static <T> ArrayList<T> loadObjectsFromJsonAssets(Class<T> clazz, ModContainer mod, ArrayList<String> assetPaths, Gson gson){
+    public static <T> ArrayList<T> loadObjectsFromJsonAssets(Class<T> clazz, ModContainer mod, ArrayList<String> assetPaths, Gson gson) {
         ArrayList<T> objectList = new ArrayList<>();
         Class modClass = mod.getMod().getClass();
-        for (String path:assetPaths) {
+        for (String path : assetPaths) {
             InputStream stream = modClass.getResourceAsStream(path);
             Reader reader = new BufferedReader(new InputStreamReader(stream, StandardCharsets.UTF_8));
 
-            T object = gson.fromJson(reader,clazz);
+            T object = gson.fromJson(reader, clazz);
             objectList.add(object);
         }
         return objectList;
     }
 
-    public static void Test2()
-    {
+    public static String loadTextFile(ModContainer mod, String path){
+        Class modClass = mod.getMod().getClass();
+        InputStream stream = modClass.getResourceAsStream(path);
+        if(stream == null)
+            return "";
+
+        try {
+            return IOUtils.toString(stream, StandardCharsets.UTF_8);
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+        return "";
+    }
+
+    public static void Test2() {
 //        ArrayList<Cost> costs = new ArrayList<>();
 //        costs.add(new CostFavor(0,1,1));
 //        costs.add(new CostFavor(0,2,1));
@@ -93,5 +93,19 @@ public class UtilAssets {
 //        }
 //
 //        TalismanData deserial = gson.fromJson(result,TalismanData.class);
+    }
+
+    public void Test() {
+        ModContainer mod = Loader.instance().getModObjectList().inverse().get(DivineFavor.instance);
+        ArrayList<String> requirementPaths = getAssetPaths(mod, "requirements", ".json");
+
+        RuntimeTypeAdapterFactory<Cost> costFactory = RuntimeTypeAdapterFactory
+                .of(Cost.class, "type")
+                .registerSubtype(CostFavor.class);
+
+        Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().setPrettyPrinting().registerTypeAdapterFactory(costFactory).create();
+
+        ArrayList<SpellRequirement> requirements = loadObjectsFromJsonAssets(SpellRequirement.class, mod, requirementPaths, gson);
+
     }
 }

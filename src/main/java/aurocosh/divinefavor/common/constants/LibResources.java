@@ -14,4 +14,6 @@ public class LibResources {
     public static final String GUI_TALISMAN = PREFIX_GUI + "talisman.png";
     public static final String GUI_SELECT_COST_UNIT_BUTTON = PREFIX_GUI + "select_cost_unit_button.png";
     public static final String GUI_JEI_IMMATERIAL_MEDIUM_RECIPE = PREFIX_GUI + "jei/immaterial_medium.png";
+
+    public static final String MULTIBLOCK_ASSETS = "/assets/" + LibMisc.MOD_ID + "/multi_blocks/";
 }

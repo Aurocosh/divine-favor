@@ -6,9 +6,9 @@ import aurocosh.divinefavor.common.core.DivineFavorCreativeTab;
 import aurocosh.divinefavor.common.item.base.IDivineFavorItem;
 import aurocosh.divinefavor.common.lib.math.Vector3i;
 import aurocosh.divinefavor.common.util.UtilNbt;
-import aurocosh.divinefavor.common.util.helper_classes.MultiblockBlockData;
-import aurocosh.divinefavor.common.util.helper_classes.CubeCoordinates;
-import aurocosh.divinefavor.common.util.helper_classes.MultiblockTemplateData;
+import aurocosh.divinefavor.common.muliblock.MultiBlockPart;
+import aurocosh.divinefavor.common.lib.math.CubeCoordinates;
+import aurocosh.divinefavor.common.muliblock.MultiblockTemplateData;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import net.minecraft.block.Block;
@@ -25,7 +25,6 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.world.World;
-import net.minecraftforge.common.MinecraftForge;
 import vazkii.arl.item.ItemMod;
 
 import java.util.*;
@@ -98,19 +97,20 @@ public class ItemMysticArchitectStick extends ItemMod implements IDivineFavorIte
     }
 
     private String getTemplateData(World world, BlockPos firstCorner, BlockPos secondCorner, BlockPos controllerPos) {
-        CubeCoordinates coordinates = new CubeCoordinates(firstCorner, secondCorner);
-        BlockPos[] positions = coordinates.getAllPositionsInside();
-        coordinates.setCenter(Vector3i.fromBlockPos(controllerPos));
-        BlockPos[] relativePositions = coordinates.getAllPositionsInside();
+        CubeCoordinates coordinatesWorld = new CubeCoordinates(firstCorner, secondCorner);
+        BlockPos[] positions = Vector3i.convert(coordinatesWorld.getAllPositionsInside());
 
-        List<MultiblockBlockData> dataList = new ArrayList<>();
+        CubeCoordinates coordinatesRelative = coordinatesWorld.getCenteredCube(Vector3i.convert(controllerPos));
+        Vector3i[] relativePositions = coordinatesRelative.getAllPositionsInside();
+
+        List<MultiBlockPart> dataList = new ArrayList<>();
         for (int i = 0; i < positions.length; i++) {
-            BlockPos relativePos = relativePositions[i];
             BlockPos pos = positions[i];
+            Vector3i relativePos = relativePositions[i];
             IBlockState state = world.getBlockState(pos);
             Block block = state.getBlock();
             if (block != Blocks.AIR)
-                dataList.add(new MultiblockBlockData(relativePos, block));
+                dataList.add(new MultiBlockPart(relativePos, block));
         }
 
         MultiblockTemplateData template = new MultiblockTemplateData(dataList);

@@ -1,20 +1,21 @@
 package aurocosh.divinefavor.common.item.base;
 
+import aurocosh.divinefavor.common.block.base.ModBlocks;
 import aurocosh.divinefavor.common.constants.LibItemNames;
 import aurocosh.divinefavor.common.constants.items.LibCallingStoneNames;
 import aurocosh.divinefavor.common.favors.ModFavors;
 import aurocosh.divinefavor.common.item.ItemStoneball;
+import aurocosh.divinefavor.common.item.bone_key.ItemBoneKey;
 import aurocosh.divinefavor.common.item.mystic_architect_stick.ItemMysticArchitectStick;
 import aurocosh.divinefavor.common.item.ritual_pouch.ItemRitualPouch;
-import aurocosh.divinefavor.common.item.symbol.ItemCallingStone;
+import aurocosh.divinefavor.common.item.calling_stone.ItemCallingStone;
 import aurocosh.divinefavor.common.item.talisman.ItemTalisman;
 import aurocosh.divinefavor.common.item.talisman.TalismanBuilder;
 import aurocosh.divinefavor.common.item.wishing_stone.ItemWishingStone;
+import aurocosh.divinefavor.common.muliblock.ModMultiBlocks;
 import aurocosh.divinefavor.common.requirements.cost.costs.CostFavor;
 import aurocosh.divinefavor.common.spell.base.ModSpells;
 import aurocosh.divinefavor.common.spirit.ModSpirits;
-import net.minecraftforge.event.world.BlockEvent;
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import vazkii.arl.item.ItemMod;
 
 import java.util.ArrayList;
@@ -28,8 +29,10 @@ public final class ModItems {
     private static List<ItemWishingStone> wishingStones = new ArrayList<>();
     private static List<ItemCallingStone> callingStones = new ArrayList<>();
 
-    public static ItemMod stoneball;
+    public static ItemMod bone_key;
+    public static ItemMod mystic_architect_stick;
     public static ItemMod ritual_pouch;
+    public static ItemMod stoneball;
 
     public static ItemMod arrowThrowTalisman;
     public static ItemMod bonemeal_talisman;
@@ -47,12 +50,13 @@ public final class ModItems {
 
     public static ItemMod allfire_wishing_stone;
     public static ItemMod timber_wishing_stone;
-    public static ItemMod mystic_architect_stick;
 
     public static void preInit() {
-        stoneball = registerItem(new ItemStoneball());
-        ritual_pouch = registerItem(new ItemRitualPouch());
-        mystic_architect_stick = registerItem(new ItemMysticArchitectStick());
+        bone_key = register(new ItemBoneKey());
+        mystic_architect_stick = register(new ItemMysticArchitectStick());
+        ritual_pouch = register(new ItemRitualPouch());
+        stoneball = register(new ItemStoneball());
+
         generateTalismans();
         generateCallingStones();
         generateWishingStones();
@@ -61,23 +65,10 @@ public final class ModItems {
     }
 
     public static void init() {
-        // Psi oredict mappings
 //        OreDictionary.registerOre("dustPsi", new ItemStack(material, 1, 0));
 //        OreDictionary.registerOre("ingotPsi", new ItemStack(material, 1, 1));
     }
 
-    @SubscribeEvent
-    public static void onBreakEvent(BlockEvent.BreakEvent event) {
-
-        System.out.println(event.getPlayer());
-
-        /*
-        while (true) {
-            String test = String.valueOf(breakEvent.getPlayer());
-            System.out.println(test);
-        }
-        */
-    }
     public static void generateTalismans() {
         arrowThrowTalisman = register( new TalismanBuilder(LibItemNames.ARROW_THROW_TALISMAN)
                 .setSpell(ModSpells.arrow_throw)
@@ -129,8 +120,8 @@ public final class ModItems {
     }
 
     private static void generateCallingStones() {
-        allfire_calling_stone = register(new ItemCallingStone(LibCallingStoneNames.ALLFIRE_CALLING_STONE, ModSpirits.allfire));
-        timber_calling_stone = register(new ItemCallingStone(LibCallingStoneNames.TIMBER_CALLING_STONE, ModSpirits.timber));
+        allfire_calling_stone = register(new ItemCallingStone(LibCallingStoneNames.ALLFIRE_CALLING_STONE, ModSpirits.allfire, ModMultiBlocks.allfire_altar));
+        timber_calling_stone = register(new ItemCallingStone(LibCallingStoneNames.TIMBER_CALLING_STONE, ModSpirits.timber, ModMultiBlocks.timber_altar));
     }
 
     private static void generateWishingStones(){
@@ -179,7 +170,7 @@ public final class ModItems {
         return wishingStone;
     }
 
-    public static ItemMod registerItem(ItemMod item) {
+    public static ItemMod register(ItemMod item) {
         items.add(item);
         return item;
     }
