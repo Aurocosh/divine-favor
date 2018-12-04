@@ -4,11 +4,13 @@ import aurocosh.divinefavor.DivineFavor;
 import aurocosh.divinefavor.common.constants.LibItemNames;
 import aurocosh.divinefavor.common.core.DivineFavorCreativeTab;
 import aurocosh.divinefavor.common.item.base.IDivineFavorItem;
+import aurocosh.divinefavor.common.lib.math.Vector3i;
 import aurocosh.divinefavor.common.util.UtilNbt;
 import aurocosh.divinefavor.common.util.helper_classes.MultiblockBlockData;
 import aurocosh.divinefavor.common.util.helper_classes.CubeCoordinates;
 import aurocosh.divinefavor.common.util.helper_classes.MultiblockTemplateData;
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
@@ -23,6 +25,7 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.world.World;
+import net.minecraftforge.common.MinecraftForge;
 import vazkii.arl.item.ItemMod;
 
 import java.util.*;
@@ -30,6 +33,7 @@ import java.util.*;
 import static net.minecraft.client.gui.GuiScreen.setClipboardString;
 
 public class ItemMysticArchitectStick extends ItemMod implements IDivineFavorItem {
+    private final String TAG_CURRENT_IS_SECOND = "CurrentIsSecond";
     private final String TAG_POS_FIRST = "PosFirst";
     private final String TAG_POS_SECOND = "PosSecond";
 
@@ -49,10 +53,32 @@ public class ItemMysticArchitectStick extends ItemMod implements IDivineFavorIte
         ItemStack stack = playerIn.getHeldItemMainhand();
         NBTTagCompound compound = UtilNbt.getEistingOrNewNBT(stack);
 
-        if (playerIn.isSneaking())
-            UtilNbt.setBlockPos(compound, TAG_POS_FIRST, pos);
-        else
-            UtilNbt.setBlockPos(compound, TAG_POS_SECOND, pos);
+
+
+        if (!playerIn.isSneaking()) {
+            boolean currentIsSecond = compound.getBoolean(TAG_CURRENT_IS_SECOND);
+            if(currentIsSecond)
+                UtilNbt.setBlockPos(compound, TAG_POS_SECOND, pos);
+            else
+                UtilNbt.setBlockPos(compound, TAG_POS_FIRST, pos);
+            compound.setBoolean(TAG_CURRENT_IS_SECOND,!currentIsSecond);
+            return EnumActionResult.SUCCESS;
+
+        }
+
+        boolean isCornersSet = UtilNbt.checkForTags(stack, TAG_POS_FIRST, TAG_POS_SECOND);
+        if (!isCornersSet)
+            return EnumActionResult.SUCCESS;
+
+        BlockPos firstCorner = UtilNbt.getBlockPos(compound, TAG_POS_FIRST);
+        BlockPos secondCorner = UtilNbt.getBlockPos(compound, TAG_POS_SECOND);
+
+        String templateString = getTemplateData(worldIn, firstCorner, secondCorner, pos);
+        setClipboardString(templateString);
+
+        TextComponentString component = new TextComponentString("Template copied to clipboard");
+        DivineFavor.proxy.getClientPlayer().sendMessage(component);
+
         return EnumActionResult.SUCCESS;
     }
 
@@ -68,33 +94,27 @@ public class ItemMysticArchitectStick extends ItemMod implements IDivineFavorIte
         if (!isCornersSet)
             return new ActionResult<>(EnumActionResult.PASS, stack);
 
-        NBTTagCompound compound = stack.getTagCompound();
-        BlockPos firstCorner = UtilNbt.getBlockPos(compound, TAG_POS_FIRST);
-        BlockPos secondCorner = UtilNbt.getBlockPos(compound, TAG_POS_SECOND);
-
-        String templateString = getTemplateData(worldIn, firstCorner, secondCorner);
-        setClipboardString(templateString);
-
-        TextComponentString component = new TextComponentString("Template copied to clipboard");
-        DivineFavor.proxy.getClientPlayer().sendMessage(component);
         return new ActionResult<>(EnumActionResult.SUCCESS, stack);
     }
 
-    private String getTemplateData(World world, BlockPos firstCorner, BlockPos secondCorner) {
+    private String getTemplateData(World world, BlockPos firstCorner, BlockPos secondCorner, BlockPos controllerPos) {
         CubeCoordinates coordinates = new CubeCoordinates(firstCorner, secondCorner);
-        coordinates.moveToCenter();
         BlockPos[] positions = coordinates.getAllPositionsInside();
+        coordinates.setCenter(Vector3i.fromBlockPos(controllerPos));
+        BlockPos[] relativePositions = coordinates.getAllPositionsInside();
 
         List<MultiblockBlockData> dataList = new ArrayList<>();
-        for (BlockPos pos : positions) {
+        for (int i = 0; i < positions.length; i++) {
+            BlockPos relativePos = relativePositions[i];
+            BlockPos pos = positions[i];
             IBlockState state = world.getBlockState(pos);
             Block block = state.getBlock();
-            if(block != Blocks.AIR)
-                dataList.add(new MultiblockBlockData(pos,block));
+            if (block != Blocks.AIR)
+                dataList.add(new MultiblockBlockData(relativePos, block));
         }
 
         MultiblockTemplateData template = new MultiblockTemplateData(dataList);
-        Gson gson = new Gson();
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
         return gson.toJson(template, MultiblockTemplateData.class);
     }
 
