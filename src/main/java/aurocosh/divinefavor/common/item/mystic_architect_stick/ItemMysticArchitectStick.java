@@ -33,9 +33,9 @@ import java.util.*;
 import static net.minecraft.client.gui.GuiScreen.setClipboardString;
 
 public class ItemMysticArchitectStick extends ItemMod implements IDivineFavorItem {
-    private final String TAG_CURRENT_IS_SECOND = "CurrentIsSecond";
-    private final String TAG_POS_FIRST = "PosFirst";
-    private final String TAG_POS_SECOND = "PosSecond";
+    public static final String TAG_CURRENT_IS_SECOND = "CurrentIsSecond";
+    public static final String TAG_POS_FIRST = "PosFirst";
+    public static final String TAG_POS_SECOND = "PosSecond";
 
     public ItemMysticArchitectStick() {
         super(LibItemNames.MYSTIC_ARCHITECT_STICK);
