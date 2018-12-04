@@ -24,6 +24,16 @@ public class CubeCoordinates {
         this.upperCorner = new Vector3i(upperX,upperY,upperZ);
     }
 
+    public CubeCoordinates(BlockPos firstCorner, BlockPos secondCorner, BlockPos center) {
+        this(Vector3i.fromBlockPos(firstCorner),Vector3i.fromBlockPos(secondCorner));
+        setCenter(Vector3i.fromBlockPos(center));
+    }
+
+    public void setCenter(Vector3i center){
+        lowerCorner = lowerCorner.subtract(center);
+        upperCorner = upperCorner.subtract(center);
+    }
+
     public Vector3i getLowerCorner() {
         return lowerCorner;
     }
