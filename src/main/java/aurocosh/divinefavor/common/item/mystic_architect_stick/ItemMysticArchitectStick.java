@@ -5,16 +5,19 @@ import aurocosh.divinefavor.common.constants.LibItemNames;
 import aurocosh.divinefavor.common.core.DivineFavorCreativeTab;
 import aurocosh.divinefavor.common.item.base.IDivineFavorItem;
 import aurocosh.divinefavor.common.lib.math.Vector3i;
+import aurocosh.divinefavor.common.muliblock.parts.BlockStateValidator;
+import aurocosh.divinefavor.common.muliblock.parts.MultiBlockPart;
+import aurocosh.divinefavor.common.muliblock.serialization.StateValidatorSerializer;
+import aurocosh.divinefavor.common.muliblock.serialization.Vector3iSerializer;
 import aurocosh.divinefavor.common.util.UtilNbt;
-import aurocosh.divinefavor.common.muliblock.MultiBlockPart;
+import aurocosh.divinefavor.common.muliblock.parts.StateValidator;
 import aurocosh.divinefavor.common.lib.math.CubeCoordinates;
-import aurocosh.divinefavor.common.muliblock.MultiblockTemplateData;
+import com.google.common.reflect.TypeToken;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Blocks;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -27,6 +30,7 @@ import net.minecraft.util.text.TextComponentString;
 import net.minecraft.world.World;
 import vazkii.arl.item.ItemMod;
 
+import java.lang.reflect.Type;
 import java.util.*;
 
 import static net.minecraft.client.gui.GuiScreen.setClipboardString;
@@ -35,6 +39,8 @@ public class ItemMysticArchitectStick extends ItemMod implements IDivineFavorIte
     public static final String TAG_CURRENT_IS_SECOND = "CurrentIsSecond";
     public static final String TAG_POS_FIRST = "PosFirst";
     public static final String TAG_POS_SECOND = "PosSecond";
+    public static final String TAG_AIR_TYPE = "AirType";
+    public static final String TAG_ANY_TYPE = "AnyType";
 
     public ItemMysticArchitectStick() {
         super(LibItemNames.MYSTIC_ARCHITECT_STICK);
@@ -97,25 +103,33 @@ public class ItemMysticArchitectStick extends ItemMod implements IDivineFavorIte
     }
 
     private String getTemplateData(World world, BlockPos firstCorner, BlockPos secondCorner, BlockPos controllerPos) {
+        Vector3i center = Vector3i.convert(controllerPos);
+
         CubeCoordinates coordinatesWorld = new CubeCoordinates(firstCorner, secondCorner);
-        BlockPos[] positions = Vector3i.convert(coordinatesWorld.getAllPositionsInside());
+        Vector3i[] positions = coordinatesWorld.getAllPositionsInside();
 
-        CubeCoordinates coordinatesRelative = coordinatesWorld.getCenteredCube(Vector3i.convert(controllerPos));
-        Vector3i[] relativePositions = coordinatesRelative.getAllPositionsInside();
-
-        List<MultiBlockPart> dataList = new ArrayList<>();
-        for (int i = 0; i < positions.length; i++) {
-            BlockPos pos = positions[i];
-            Vector3i relativePos = relativePositions[i];
-            IBlockState state = world.getBlockState(pos);
+        Map<Block, List<Vector3i>> partMap = new HashMap<>();
+        for (Vector3i pos : positions) {
+            IBlockState state = world.getBlockState(pos.toBlockPos());
             Block block = state.getBlock();
-            if (block != Blocks.AIR)
-                dataList.add(new MultiBlockPart(relativePos, block));
+
+            List<Vector3i> partPositions = partMap.computeIfAbsent(block, k -> new ArrayList<>());
+            partPositions.add(pos.getRealativePositionTo(center));
         }
 
-        MultiblockTemplateData template = new MultiblockTemplateData(dataList);
-        Gson gson = new GsonBuilder().setPrettyPrinting().create();
-        return gson.toJson(template, MultiblockTemplateData.class);
+        List<MultiBlockPart> parts = new ArrayList<>(partMap.size());
+        for (Map.Entry<Block, List<Vector3i>> entry : partMap.entrySet()) {
+            StateValidator validator = new BlockStateValidator(entry.getKey());
+            parts.add(new MultiBlockPart(validator,entry.getValue()));
+        }
+
+        Gson gson = new GsonBuilder()
+                .registerTypeAdapter(BlockStateValidator.class,new StateValidatorSerializer())
+                .registerTypeAdapter(Vector3i.class,new Vector3iSerializer())
+                .create();
+
+        Type listType = new TypeToken<ArrayList<MultiBlockPart>>(){}.getType();
+        return gson.toJson(parts, listType);
     }
 
     @Override

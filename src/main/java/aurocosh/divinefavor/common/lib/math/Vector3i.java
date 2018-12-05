@@ -130,6 +130,10 @@ public class Vector3i implements IDeepCopy<Vector3i> {
         return new Vector3i(xMax, yMax, zMax);
     }
 
+    public Vector3i getRealativePositionTo(Vector3i relativeTo){
+        return this.subtract(relativeTo);
+    }
+
     public boolean orthogonal(Vector3i other) {
         return dot(other) == 0;
     }
@@ -165,7 +169,7 @@ public class Vector3i implements IDeepCopy<Vector3i> {
         return toBlockPos().toLong();
     }
 
-    public Vector3i fromLong(long value){
+    public static Vector3i fromLong(long value){
         return Vector3i.convert(BlockPos.fromLong(value));
     }
 }
