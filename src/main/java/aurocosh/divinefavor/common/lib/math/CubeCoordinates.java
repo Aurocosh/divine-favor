@@ -31,15 +31,15 @@ public class CubeCoordinates implements IDeepCopy<CubeCoordinates> {
         this.upperCorner = new Vector3i(upperX,upperY,upperZ);
     }
 
-    public CubeCoordinates getCenteredCube(Vector3i center){
-        Vector3i lower = lowerCorner.subtract(center);
-        Vector3i upper = upperCorner.subtract(center);
+    public CubeCoordinates add(Vector3i vector){
+        Vector3i lower = lowerCorner.add(vector);
+        Vector3i upper = upperCorner.add(vector);
         return new CubeCoordinates(lower,upper);
     }
 
-    public CubeCoordinates move(Vector3i vector){
-        Vector3i lower = lowerCorner.add(vector);
-        Vector3i upper = upperCorner.add(vector);
+    public CubeCoordinates subtract(Vector3i vector){
+        Vector3i lower = lowerCorner.subtract(vector);
+        Vector3i upper = upperCorner.subtract(vector);
         return new CubeCoordinates(lower,upper);
     }
 

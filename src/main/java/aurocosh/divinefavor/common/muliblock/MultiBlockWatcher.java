@@ -29,7 +29,7 @@ public class MultiBlockWatcher {
     }
 
     @SubscribeEvent(priority = EventPriority.LOWEST)
-    public void onBreakEvent(BlockEvent.BreakEvent event) {
+    public static void onBreakEvent(BlockEvent.BreakEvent event) {
         Set<IMultiblockController> controllerSet = controllers.get(event.getWorld());
         if(controllerSet == null)
             return;
