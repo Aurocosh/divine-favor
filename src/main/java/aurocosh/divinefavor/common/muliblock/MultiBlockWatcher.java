@@ -36,7 +36,19 @@ public class MultiBlockWatcher {
 
         Vector3i position = Vector3i.convert(event.getPos());
         for (IMultiblockController controller : controllerSet)
-            if (controller.getMultiblockInstance().isPartOfMultiblock(position))
+            if (controller.getMultiblockInstance().isSolidPart(position))
+                controller.multiblockDamaged();
+    }
+
+    @SubscribeEvent(priority = EventPriority.LOWEST)
+    public static void onPlaceEvent(BlockEvent.PlaceEvent event) {
+        Set<IMultiblockController> controllerSet = controllers.get(event.getWorld());
+        if(controllerSet == null)
+            return;
+
+        Vector3i position = Vector3i.convert(event.getPos());
+        for (IMultiblockController controller : controllerSet)
+            if (controller.getMultiblockInstance().isSupposedToBeEmpty(position))
                 controller.multiblockDamaged();
     }
 
