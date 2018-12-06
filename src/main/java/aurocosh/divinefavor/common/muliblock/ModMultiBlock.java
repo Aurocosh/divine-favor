@@ -9,12 +9,14 @@ import net.minecraftforge.registries.IForgeRegistryEntry;
 import java.util.*;
 
 public class ModMultiBlock extends IForgeRegistryEntry.Impl<ModMultiBlock> {
+    public final Vector3i controllerPosition;
     public final List<MultiBlockPart> parts;
     public final Set<Vector3i> positionsSet;
     public final CubeCoordinates boundingBox;
 
-    public ModMultiBlock(String name, List<MultiBlockPart> parts, CubeCoordinates boundingBox) {
+    public ModMultiBlock(String name, Vector3i controllerPosition, List<MultiBlockPart> parts, CubeCoordinates boundingBox) {
         setRegistryName(name);
+        this.controllerPosition = controllerPosition;
         this.boundingBox = boundingBox;
         this.parts = Collections.unmodifiableList(new ArrayList<>(parts));
 
@@ -36,5 +38,9 @@ public class ModMultiBlock extends IForgeRegistryEntry.Impl<ModMultiBlock> {
             if (!part.isAllValid(world, controller))
                 return false;
         return true;
+    }
+
+    public CubeCoordinates getBoundingBoxCentered(){
+        return boundingBox.getCenteredCube(controllerPosition);
     }
 }
