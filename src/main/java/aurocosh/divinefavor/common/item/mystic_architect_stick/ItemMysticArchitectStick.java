@@ -128,7 +128,7 @@ public class ItemMysticArchitectStick extends ItemMod implements IDivineFavorIte
                 centerBlock = block;
             else {
                 List<Vector3i> partPositions = partMap.computeIfAbsent(block, k -> new ArrayList<>());
-                partPositions.add(pos.getRealativePositionTo(lowerCorner));
+                partPositions.add(lowerCorner.getRealativePosition(pos));
             }
         }
 
@@ -142,9 +142,9 @@ public class ItemMysticArchitectStick extends ItemMod implements IDivineFavorIte
                 validator = new BlockStateValidator(entry.getKey().getRegistryName());
             parts.add(new MultiBlockPart(validator, entry.getValue()));
         }
-        parts.add(new MultiBlockPart(new CenterStateValidator(centerBlock.getRegistryName()), Collections.singletonList(center.getRealativePositionTo(lowerCorner))));
+        parts.add(new MultiBlockPart(new CenterStateValidator(centerBlock.getRegistryName()), Collections.singletonList(lowerCorner.getRealativePosition(center))));
 
-        MultiBlockData data = new MultiBlockData(Vector3i.convert(controllerPos).getRealativePositionTo(lowerCorner), parts);
+        MultiBlockData data = new MultiBlockData(lowerCorner.getRealativePosition(Vector3i.convert(controllerPos)), parts);
 
         Gson gson = new GsonBuilder()
                 .registerTypeAdapter(StateValidator.class, new StateValidatorSerializer())
