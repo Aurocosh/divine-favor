@@ -200,6 +200,8 @@ public class TileIronMedium extends TickableTileEntity implements IMultiblockCon
 
     @Override
     public void tryToFormMultiBlock() {
+        if(world.isRemote)
+            return;
         if(multiBlockInstance != null)
             return;
         ItemStack stack = stoneStackHandler.getStackInSlot(0);
