@@ -4,6 +4,8 @@ import aurocosh.divinefavor.common.util.helper_classes.IDeepCopy;
 import net.minecraft.util.math.BlockPos;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class Vector3i implements IDeepCopy<Vector3i> {
@@ -130,8 +132,25 @@ public class Vector3i implements IDeepCopy<Vector3i> {
         return new Vector3i(xMax, yMax, zMax);
     }
 
-    public Vector3i getRealativePositionTo(Vector3i relativeTo){
-        return this.subtract(relativeTo);
+//    public Vector3i getRealativePositionTo(Vector3i relativeTo){
+//        return this.subtract(relativeTo);
+//    }
+    public Vector3i getRealativePosition(Vector3i position){
+        return position.subtract(this);
+    }
+
+    public List<Vector3i> subtract(List<Vector3i> positions){
+        Vector3i[] positionArray = new Vector3i[positions.size()];
+        for (int i = 0; i < positions.size(); i++)
+            positionArray[i] = positions.get(i).subtract(this);
+        return Arrays.asList(positionArray);
+    }
+
+    public List<Vector3i> add(List<Vector3i> positions){
+        Vector3i[] positionArray = new Vector3i[positions.size()];
+        for (int i = 0; i < positions.size(); i++)
+            positionArray[i] = positions.get(i).add(this);
+        return Arrays.asList(positionArray);
     }
 
     public boolean orthogonal(Vector3i other) {

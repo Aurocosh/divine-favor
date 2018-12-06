@@ -2,13 +2,16 @@ package aurocosh.divinefavor.common.muliblock;
 
 import aurocosh.divinefavor.common.lib.math.Vector3i;
 import aurocosh.divinefavor.common.lib.math.CubeCoordinates;
+import aurocosh.divinefavor.common.muliblock.parts.AirStateValidator;
+import aurocosh.divinefavor.common.muliblock.parts.MultiBlockPart;
 
 import java.util.*;
 
 public class ModMultiBlockInstance {
     public final ModMultiBlock multiBlock;
     public final CubeCoordinates boundingBox;
-    public final Set<Vector3i> positions;
+    public final Set<Vector3i> positionsOfSolids;
+    public final Set<Vector3i> positionsOfAir;
 
     public ModMultiBlockInstance(ModMultiBlock multiBlock, Vector3i controllerPosition) {
         this.multiBlock = multiBlock;
@@ -16,11 +19,26 @@ public class ModMultiBlockInstance {
         CubeCoordinates bounds = multiBlock.getBoundingBoxRelative();
         this.boundingBox = bounds.add(controllerPosition);
 
-        List<Vector3i> positions = Arrays.asList(boundingBox.getAllPositionsInside());
-        this.positions = Collections.unmodifiableSet(new HashSet<>(positions));
+        Vector3i multiBlockOrigin = controllerPosition.subtract(multiBlock.controllerRelative);
+
+        Set<Vector3i> air = new HashSet<>();
+        Set<Vector3i> solids = new HashSet<>();
+
+        for (MultiBlockPart part : multiBlock.parts)
+            if (part.validator instanceof AirStateValidator)
+                air.addAll(multiBlockOrigin.add(part.positions));
+            else
+                solids.addAll(multiBlockOrigin.add(part.positions));
+
+        this.positionsOfAir = Collections.unmodifiableSet(air);
+        this.positionsOfSolids = Collections.unmodifiableSet(solids);
     }
 
-    public boolean isPartOfMultiblock(Vector3i position){
-        return boundingBox.isCoordinateInside(position) && positions.contains(position);
+    public boolean isSolidPart(Vector3i position){
+        return boundingBox.isCoordinateInside(position) && positionsOfSolids.contains(position);
+    }
+
+    public boolean isSupposedToBeEmpty(Vector3i position){
+        return boundingBox.isCoordinateInside(position) && positionsOfAir.contains(position);
     }
 }
