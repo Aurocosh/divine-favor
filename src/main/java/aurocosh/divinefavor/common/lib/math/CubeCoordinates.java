@@ -37,6 +37,12 @@ public class CubeCoordinates implements IDeepCopy<CubeCoordinates> {
         return new CubeCoordinates(lower,upper);
     }
 
+    public CubeCoordinates move(Vector3i vector){
+        Vector3i lower = lowerCorner.add(vector);
+        Vector3i upper = upperCorner.add(vector);
+        return new CubeCoordinates(lower,upper);
+    }
+
     public Vector3i getSizeVector(){
          return new Vector3i(getSizeX(),getSizeY(),getSizeZ());
     }
@@ -46,11 +52,11 @@ public class CubeCoordinates implements IDeepCopy<CubeCoordinates> {
     }
 
     public int getSizeY(){
-        return upperCorner.x - lowerCorner.x + 1;
+        return upperCorner.y - lowerCorner.y + 1;
     }
 
     public int getSizeZ(){
-        return upperCorner.x - lowerCorner.x + 1;
+        return upperCorner.z - lowerCorner.z + 1;
     }
 
     public Vector3i[] getAllPositionsInside(){

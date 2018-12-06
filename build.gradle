@@ -65,7 +65,7 @@ dependencies {
     deobfCompile "mcjty.theoneprobe:TheOneProbe-1.12:1.12-1.4.14-7"
     deobfCompile "com.github.mcjty:intwheel:1.12-1.2.7"
     deobfCompile "net.darkhax.bookshelf:Bookshelf-1.12.2:2.3.568"
-    compile "vazkii.patchouli:Patchouli:1.0-10.45"
+    deobfCompile "vazkii.patchouli:Patchouli:1.0-10.45"
 }
 
 processResources

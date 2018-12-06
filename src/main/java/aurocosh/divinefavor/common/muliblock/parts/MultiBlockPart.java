@@ -1,5 +1,6 @@
 package aurocosh.divinefavor.common.muliblock.parts;
 import aurocosh.divinefavor.common.lib.math.Vector3i;
+import com.google.gson.annotations.Expose;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.world.World;
 
@@ -8,7 +9,9 @@ import java.util.Collections;
 import java.util.List;
 
 public class MultiBlockPart {
+    @Expose
     public final StateValidator validator;
+    @Expose
     public final List<Vector3i> positions;
 
     public MultiBlockPart(StateValidator validator, List<Vector3i> positions) {
