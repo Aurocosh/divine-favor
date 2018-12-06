@@ -13,8 +13,8 @@ public class ModMultiBlockInstance {
     public ModMultiBlockInstance(ModMultiBlock multiBlock, Vector3i controllerPosition) {
         this.multiBlock = multiBlock;
 
-        CubeCoordinates bounds = multiBlock.getBoundingBoxCentered();
-        this.boundingBox = bounds.getCenteredCube(controllerPosition);
+        CubeCoordinates bounds = multiBlock.getBoundingBoxRelative();
+        this.boundingBox = bounds.add(controllerPosition);
 
         List<Vector3i> positions = Arrays.asList(boundingBox.getAllPositionsInside());
         this.positions = Collections.unmodifiableSet(new HashSet<>(positions));

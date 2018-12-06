@@ -24,6 +24,8 @@ public class ItemBoneKey extends ItemMod implements IDivineFavorItem {
     public EnumActionResult onItemUse(EntityPlayer playerIn, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
         if(worldIn.isRemote)
             return EnumActionResult.PASS;
+        if(hand == EnumHand.OFF_HAND)
+            return EnumActionResult.PASS;
 
         TileEntity entity = worldIn.getTileEntity(pos);
         if(!(entity instanceof IMultiblockController))

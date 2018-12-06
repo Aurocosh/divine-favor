@@ -34,13 +34,14 @@ public class ModMultiBlock extends IForgeRegistryEntry.Impl<ModMultiBlock> {
     }
 
     public boolean isValid(World world, Vector3i controller){
+        Vector3i multiblockOrigin = controller.subtract(controllerPosition);
         for (MultiBlockPart part : parts)
-            if (!part.isAllValid(world, controller))
+            if (!part.isAllValid(world, multiblockOrigin))
                 return false;
         return true;
     }
 
-    public CubeCoordinates getBoundingBoxCentered(){
-        return boundingBox.getCenteredCube(controllerPosition);
+    public CubeCoordinates getBoundingBoxRelative(){
+        return boundingBox.subtract(controllerPosition);
     }
 }
