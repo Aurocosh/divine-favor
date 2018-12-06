@@ -33,9 +33,9 @@ public class CommonProxy {
         ModSpirits.preInit();
         ModFavors.preInit();
         ModSpells.preInit();
+        ModBlocks.preInit();
         ModMultiBlocks.preInit();
         ModItems.preInit();
-        ModBlocks.preInit();
         ModEntities.preInit();
 
         MessageRegister.init();
@@ -46,6 +46,7 @@ public class CommonProxy {
     }
 
     public void init(FMLInitializationEvent e) {
+        ModMultiBlocks.init();
         ModItems.init();
         ModBlocks.init();
         ModRecipes.init();

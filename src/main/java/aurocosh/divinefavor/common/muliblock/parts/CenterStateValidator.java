@@ -4,10 +4,10 @@ import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.ResourceLocation;
 
-public class BlockStateValidator extends StateValidator {
+public class CenterStateValidator extends StateValidator {
     public final ResourceLocation name;
 
-    public BlockStateValidator(ResourceLocation name) {
+    public CenterStateValidator(ResourceLocation name) {
         this.name = name;
     }
 

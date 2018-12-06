@@ -1,0 +1,16 @@
+{
+  "name": "Altar of Allfire",
+  "icon": "divinefavor:allfire_calling_stone",
+  "category": "altars",
+  "pages": [
+    {
+      "type": "text",
+      "text": "This is a test entry, but it should show up!"
+    },
+    {
+      "type": "multiblock",
+      "multiblock_id": "divinefavor:allfire_altar.patchouli",
+      "text": "Bla bla"
+    }
+  ]
+}

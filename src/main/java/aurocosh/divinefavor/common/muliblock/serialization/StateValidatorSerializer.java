@@ -1,9 +1,11 @@
 package aurocosh.divinefavor.common.muliblock.serialization;
 
+import aurocosh.divinefavor.common.muliblock.parts.AirStateValidator;
 import aurocosh.divinefavor.common.muliblock.parts.BlockStateValidator;
+import aurocosh.divinefavor.common.muliblock.parts.CenterStateValidator;
 import aurocosh.divinefavor.common.muliblock.parts.StateValidator;
 import com.google.gson.*;
-import net.minecraft.block.Block;
+import net.minecraft.util.ResourceLocation;
 
 import java.lang.reflect.Type;
 
@@ -14,9 +16,14 @@ public class StateValidatorSerializer implements JsonDeserializer<StateValidator
         String type = jsonObject.get("type").getAsString();
         if (type.equals("block")) {
             String blockName = jsonObject.get("name").getAsString();
-            Block block = Block.getBlockFromName(blockName);
-            return new BlockStateValidator(block);
+            return new BlockStateValidator(new ResourceLocation(blockName));
         }
+        else if (type.equals("center")) {
+            String blockName = jsonObject.get("name").getAsString();
+            return new CenterStateValidator(new ResourceLocation(blockName));
+        }
+        else if (type.equals("air"))
+            return new AirStateValidator();
         return null;
     }
 
@@ -26,8 +33,15 @@ public class StateValidatorSerializer implements JsonDeserializer<StateValidator
         if (src instanceof BlockStateValidator) {
             json.addProperty("type", "block");
             BlockStateValidator validator = (BlockStateValidator) src;
-            json.addProperty("name", validator.block.getRegistryName().toString());
-            return json;
+            json.addProperty("name", validator.name.toString());
+        }
+        if (src instanceof CenterStateValidator) {
+            json.addProperty("type", "center");
+            CenterStateValidator validator = (CenterStateValidator) src;
+            json.addProperty("name", validator.name.toString());
+        }
+        else if (src instanceof AirStateValidator) {
+            json.addProperty("type", "air");
         }
         return json;
     }
