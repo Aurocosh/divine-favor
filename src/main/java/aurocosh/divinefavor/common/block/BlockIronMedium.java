@@ -86,14 +86,6 @@ public class BlockIronMedium extends BlockTileMod implements IDivineFavorBlock {
     }
 
     @Override
-    public void neighborChanged(IBlockState state, World worldIn, BlockPos pos, Block blockIn, BlockPos fromPos) {
-        if(!worldIn.isRemote && !canPlaceBlockAt(worldIn, pos)) {
-            dropBlockAsItem(worldIn, pos, state, 0);
-            worldIn.setBlockToAir(pos);
-        }
-    }
-
-    @Override
     public void breakBlock(World worldIn, BlockPos pos, IBlockState state) {
         super.breakBlock(worldIn, pos, state);
         TileEntity entity = worldIn.getTileEntity(pos);
