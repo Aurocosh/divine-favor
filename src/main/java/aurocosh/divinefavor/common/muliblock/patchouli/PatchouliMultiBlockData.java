@@ -6,6 +6,7 @@ import aurocosh.divinefavor.common.muliblock.parts.AirStateValidator;
 import aurocosh.divinefavor.common.muliblock.parts.CenterStateValidator;
 import aurocosh.divinefavor.common.muliblock.parts.MultiBlockPart;
 import aurocosh.divinefavor.common.muliblock.parts.StateValidator;
+import vazkii.patchouli.common.multiblock.StateMatcher;
 
 import java.util.*;
 
@@ -56,16 +57,20 @@ public class PatchouliMultiBlockData {
         }
 
         pattern = layers;
-        matchingData = new Object[symbolMap.size() * 2];
-        int i = 0;
+        List<Object> matchers = new ArrayList<>();
+
         for (Map.Entry<StateValidator, Character> entry : symbolMap.entrySet()) {
             Object matcher = entry.getKey().getPatchouliMatcher();
             if(matcher == null)
                 continue;
 
-            matchingData[i++] = entry.getValue();
-            matchingData[i++] = matcher;
+            matchers.add(entry.getValue());
+            matchers.add(matcher);
         }
+
+        matchers.add(' ');
+        matchers.add(StateMatcher.ANY);
+        matchingData = matchers.toArray();
     }
 
     @Override
