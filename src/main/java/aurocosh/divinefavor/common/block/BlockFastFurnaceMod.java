@@ -28,7 +28,6 @@ public class BlockFastFurnaceMod extends BlockTileMod implements IDivineFavorBlo
         setCreativeTab(DivineFavorCreativeTab.INSTANCE);
     }
 
-
     @Override
     public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing side, float hitX, float hitY, float hitZ) {
         playerIn.openGui(DivineFavor.instance, LibGuiIDs.FAST_FURNACE, worldIn, pos.getX(), pos.getY(), pos.getZ());

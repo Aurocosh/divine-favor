@@ -101,8 +101,12 @@ public final class ModMultiBlocks {
         return multiBlock;
     }
 
-    public static ModMultiBlock registerPatchouli(ModMultiBlock multiBlock) {
-        PatchouliMultiBlockData multiBlockData = new PatchouliMultiBlockData(multiBlock);
+    public static void registerPatchouli(ModMultiBlock multiBlock) {
+        if(multiBlock.configurations.size() == 0)
+            return;
+
+        MultiBlockConfiguration configuration = multiBlock.configurations.get(0);
+        PatchouliMultiBlockData multiBlockData = new PatchouliMultiBlockData(configuration);
         System.out.print(multiBlockData.toString());
         System.out.println();
 
@@ -110,6 +114,5 @@ public final class ModMultiBlocks {
         ResourceLocation name = multiBlock.getRegistryName();
         ResourceLocation location = new ResourceLocation(name.getResourceDomain(), name.getResourcePath() + ".patchouli");
         PatchouliAPI.instance.registerMultiblock(location, iMultiblock);
-        return multiBlock;
     }
 }

@@ -48,7 +48,6 @@ public class BlockIronMedium extends BlockTileMod implements IDivineFavorBlock {
         return super.getActualState(state, world, pos);
     }
 
-
     @Override
     public IBlockState getStateForPlacement(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer) {
         return this.getDefaultState().withProperty(FACING,EnumFacing.getDirectionFromEntityLiving(pos,placer));
