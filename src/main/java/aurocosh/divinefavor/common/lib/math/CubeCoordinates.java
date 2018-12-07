@@ -102,4 +102,19 @@ public class CubeCoordinates implements IDeepCopy<CubeCoordinates> {
         }
         return new CubeCoordinates(min,max);
     }
+
+
+    public CubeCoordinates expandBoundingBox(List<Vector3i> positions){
+        if(positions.size() == 0)
+            return this;
+
+        Vector3i min = lowerCorner;
+        Vector3i max = upperCorner;
+
+        for (Vector3i vector3i : positions) {
+            min = min.getMinCoordinates(vector3i);
+            max = max.getMaxCoordinates(vector3i);
+        }
+        return new CubeCoordinates(min,max);
+    }
 }

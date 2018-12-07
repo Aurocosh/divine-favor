@@ -1,7 +1,7 @@
 package aurocosh.divinefavor.common.muliblock.patchouli;
 
 import aurocosh.divinefavor.common.lib.math.Vector3i;
-import aurocosh.divinefavor.common.muliblock.ModMultiBlock;
+import aurocosh.divinefavor.common.muliblock.MultiBlockConfiguration;
 import aurocosh.divinefavor.common.muliblock.parts.AirStateValidator;
 import aurocosh.divinefavor.common.muliblock.parts.CenterStateValidator;
 import aurocosh.divinefavor.common.muliblock.parts.MultiBlockPart;
@@ -16,10 +16,10 @@ public class PatchouliMultiBlockData {
     public final String[][] pattern;
     public final Object[] matchingData;
 
-    public PatchouliMultiBlockData(ModMultiBlock multiBlock) {
+    public PatchouliMultiBlockData(MultiBlockConfiguration configuration) {
         int nextSymbolId = 0;
         Map<StateValidator, Character> symbolMap = new HashMap<>();
-        List<MultiBlockPart> parts = multiBlock.parts;
+        List<MultiBlockPart> parts = configuration.parts;
         for (int i = 0; i < parts.size(); i++) {
             MultiBlockPart part = parts.get(i);
             char symbol;
@@ -33,11 +33,11 @@ public class PatchouliMultiBlockData {
         }
 
         Map<Vector3i, StateValidator> validatorMap = new HashMap<>();
-        for (MultiBlockPart part : multiBlock.parts)
+        for (MultiBlockPart part : configuration.parts)
             for (Vector3i position : part.positions)
                 validatorMap.put(position, part.validator);
 
-        Vector3i size = multiBlock.boundingBox.getSizeVector();
+        Vector3i size = configuration.boundingBox.getSizeVector();
         String[][] layers = new String[size.y][];
         for (int y = 0; y < size.y; y++) {
             String[] layer = new String[size.x];

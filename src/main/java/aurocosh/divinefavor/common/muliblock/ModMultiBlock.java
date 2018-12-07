@@ -9,39 +9,36 @@ import net.minecraftforge.registries.IForgeRegistryEntry;
 import java.util.*;
 
 public class ModMultiBlock extends IForgeRegistryEntry.Impl<ModMultiBlock> {
-    public final Vector3i controllerRelative;
-    public final List<MultiBlockPart> parts;
-    public final Set<Vector3i> positionsSet;
-    public final CubeCoordinates boundingBox;
+    public final List<MultiBlockConfiguration> configurations;
 
     public ModMultiBlock(String name, Vector3i controllerRelative, List<MultiBlockPart> parts, CubeCoordinates boundingBox) {
         setRegistryName(name);
-        this.controllerRelative = controllerRelative;
-        this.boundingBox = boundingBox;
-        this.parts = Collections.unmodifiableList(new ArrayList<>(parts));
 
-        int size = 0;
-        for (MultiBlockPart part : parts)
-            size += part.positions.size();
+        List<MultiBlockConfiguration> configurations = new ArrayList<>();
+        MultiBlockConfiguration configuration = new MultiBlockConfiguration(controllerRelative,parts,boundingBox);
+        configurations.add(configuration);
+        configuration = configuration.rotateClockwise();
+        configurations.add(configuration);
+        configuration = configuration.rotateClockwise();
+        configurations.add(configuration);
+        configuration = configuration.rotateClockwise();
+        configurations.add(configuration);
 
-        int i = 0;
-        Vector3i[] positions = new Vector3i[size];
-        for (MultiBlockPart part : parts)
-            for (Vector3i position : part.positions)
-                positions[i++] = position;
-
-        this.positionsSet = Collections.unmodifiableSet(new HashSet<>(Arrays.asList(positions)));
+        this.configurations = Collections.unmodifiableList(configurations);
     }
+//
+//    public boolean isValid(World world, Vector3i controller){
+//        Vector3i multiblockOrigin = controller.subtract(controllerRelPosition);
+//        for (MultiBlockPart part : parts)
+//            if (!part.isAllValid(world, multiblockOrigin))
+//                return false;
+//        return true;
+//    }
 
-    public boolean isValid(World world, Vector3i controller){
-        Vector3i multiblockOrigin = controller.subtract(controllerRelative);
-        for (MultiBlockPart part : parts)
-            if (!part.isAllValid(world, multiblockOrigin))
-                return false;
-        return true;
-    }
-
-    public CubeCoordinates getBoundingBoxRelative(){
-        return boundingBox.subtract(controllerRelative);
+    public ModMultiBlockInstance makeMultiblock(World world, Vector3i controller){
+        for (MultiBlockConfiguration configuration : configurations)
+            if (configuration.isValid(world, controller))
+                return new ModMultiBlockInstance(this, configuration, controller);
+        return null;
     }
 }

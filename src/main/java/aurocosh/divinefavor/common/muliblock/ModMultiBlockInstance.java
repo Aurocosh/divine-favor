@@ -9,22 +9,24 @@ import java.util.*;
 
 public class ModMultiBlockInstance {
     public final ModMultiBlock multiBlock;
+    public final MultiBlockConfiguration configuration;
     public final CubeCoordinates boundingBox;
     public final Set<Vector3i> positionsOfSolids;
     public final Set<Vector3i> positionsOfAir;
 
-    public ModMultiBlockInstance(ModMultiBlock multiBlock, Vector3i controllerPosition) {
+    public ModMultiBlockInstance(ModMultiBlock multiBlock, MultiBlockConfiguration configuration, Vector3i controllerPosition) {
         this.multiBlock = multiBlock;
+        this.configuration = configuration;
 
-        CubeCoordinates bounds = multiBlock.getBoundingBoxRelative();
+        CubeCoordinates bounds = configuration.getBoundingBoxRelative();
         this.boundingBox = bounds.add(controllerPosition);
 
-        Vector3i multiBlockOrigin = controllerPosition.subtract(multiBlock.controllerRelative);
+        Vector3i multiBlockOrigin = controllerPosition.subtract(configuration.controllerRelPosition);
 
         Set<Vector3i> air = new HashSet<>();
         Set<Vector3i> solids = new HashSet<>();
 
-        for (MultiBlockPart part : multiBlock.parts)
+        for (MultiBlockPart part : configuration.parts)
             if (part.validator instanceof AirStateValidator)
                 air.addAll(multiBlockOrigin.add(part.positions));
             else

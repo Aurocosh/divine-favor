@@ -30,11 +30,13 @@ import java.util.List;
 
 public class TileIronMedium extends TickableTileEntity implements IMultiblockController {
     public static final int SIZE = 27;
+    private final String TAG_CALLING_STONE = "CallingStone";
+    private final String TAG_ITEMS = "Items";
     private MediumState state = MediumState.NO_CALLING_STONE;
 
-// server side
+    // server side
     private ModMultiBlockInstance multiBlockInstance;
-// client side
+    // client side
     private boolean multiBlockValid;
 
     private ItemStackHandler stoneStackHandler = new ItemStackHandler(1) {
@@ -42,9 +44,13 @@ public class TileIronMedium extends TickableTileEntity implements IMultiblockCon
         public boolean isItemValid(int slot, @Nonnull ItemStack stack) {
             return stack.getItem() instanceof ItemCallingStone;
         }
+
         @Override
         protected void onContentsChanged(int slot) {
             TileIronMedium.this.markDirty();
+            if(multiBlockInstance != null)
+                multiblockDamaged();
+            tryToFormMultiBlock();
         }
     };
 
@@ -63,21 +69,26 @@ public class TileIronMedium extends TickableTileEntity implements IMultiblockCon
     }
 
     @Override
+    public void onLoad() {
+        tryToFormMultiBlockInternal();
+    }
+
+    @Override
     public void readFromNBT(NBTTagCompound compound) {
         super.readFromNBT(compound);
-        if (compound.hasKey("stone")) {
-            stoneStackHandler.deserializeNBT((NBTTagCompound) compound.getTag("stone"));
+        if (compound.hasKey(TAG_CALLING_STONE)) {
+            stoneStackHandler.deserializeNBT((NBTTagCompound) compound.getTag(TAG_CALLING_STONE));
         }
-        if (compound.hasKey("items")) {
-            itemStackHandler.deserializeNBT((NBTTagCompound) compound.getTag("items"));
+        if (compound.hasKey(TAG_ITEMS)) {
+            itemStackHandler.deserializeNBT((NBTTagCompound) compound.getTag(TAG_ITEMS));
         }
     }
 
     @Override
     public NBTTagCompound writeToNBT(NBTTagCompound compound) {
         super.writeToNBT(compound);
-        compound.setTag("stone", stoneStackHandler.serializeNBT());
-        compound.setTag("items", itemStackHandler.serializeNBT());
+        compound.setTag(TAG_CALLING_STONE, stoneStackHandler.serializeNBT());
+        compound.setTag(TAG_ITEMS, itemStackHandler.serializeNBT());
         return compound;
     }
 
@@ -97,7 +108,7 @@ public class TileIronMedium extends TickableTileEntity implements IMultiblockCon
     @Override
     public <T> T getCapability(Capability<T> capability, EnumFacing facing) {
         if (capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) {
-            if(facing == EnumFacing.UP)
+            if (facing == EnumFacing.UP)
                 return CapabilityItemHandler.ITEM_HANDLER_CAPABILITY.cast(stoneStackHandler);
             else
                 return CapabilityItemHandler.ITEM_HANDLER_CAPABILITY.cast(itemStackHandler);
@@ -127,6 +138,11 @@ public class TileIronMedium extends TickableTileEntity implements IMultiblockCon
             world.markBlockRangeForRenderUpdate(pos, pos);
         }
     }
+
+    public MediumState getState() {
+        return state;
+    }
+
     public void setState(MediumState state) {
         if (this.state != state) {
             this.state = state;
@@ -136,26 +152,22 @@ public class TileIronMedium extends TickableTileEntity implements IMultiblockCon
         }
     }
 
-    public MediumState getState() {
-        return state;
-    }
-
     @Override
     protected void updateFiltered() {
         ItemStack stack = stoneStackHandler.getStackInSlot(0);
-        if(stack == ItemStack.EMPTY) {
+        if (stack == ItemStack.EMPTY) {
             setState(MediumState.NO_CALLING_STONE);
             return;
         }
 
-        if(multiBlockInstance == null){
+        if (multiBlockInstance == null) {
             setState(MediumState.NO_MULTI_BLOCK);
             return;
         }
 
-        ItemCallingStone item = (ItemCallingStone)stack.getItem();
+        ItemCallingStone item = (ItemCallingStone) stack.getItem();
         ModSpirit spirit = item.spirit;
-        if(!spirit.isActive(world)) {
+        if (!spirit.isActive(world)) {
             setState(MediumState.VALID);
             return;
         }
@@ -163,28 +175,28 @@ public class TileIronMedium extends TickableTileEntity implements IMultiblockCon
 
         List<SlotStack> slotStacks = UtilHandler.getNotEmptyStacksWithSlotIndexes(itemStackHandler);
         for (SlotStack slotStack : slotStacks) {
-            if(slotStack.getStack().getItem() == ModItems.ritual_pouch)
+            if (slotStack.getStack().getItem() == ModItems.ritual_pouch)
                 exchangeRitualPouch(slotStack);
         }
     }
 
-    private void exchangeRitualPouch(SlotStack slotStack){
+    private void exchangeRitualPouch(SlotStack slotStack) {
         ItemStack stack = slotStack.getStack();
-        IItemHandler handler = stack.getCapability( CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null );
-        if(handler == null)
+        IItemHandler handler = stack.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null);
+        if (handler == null)
             return;
 
         ItemStack stoneStack = stoneStackHandler.getStackInSlot(0);
-        if(stoneStack == ItemStack.EMPTY)
+        if (stoneStack == ItemStack.EMPTY)
             return;
 
         List<ItemStack> pouchStacks = UtilHandler.getNotEmptyStacks(handler);
-        ItemStack result = ModRecipes.getRecipeResult(stoneStack.getItem(),pouchStacks);
-        if(result == ItemStack.EMPTY)
+        ItemStack result = ModRecipes.getRecipeResult(stoneStack.getItem(), pouchStacks);
+        if (result == ItemStack.EMPTY)
             return;
         int slot = slotStack.getIndex();
-        itemStackHandler.extractItem(slot,1,false);
-        itemStackHandler.insertItem(slot,result,false);
+        itemStackHandler.extractItem(slot, 1, false);
+        itemStackHandler.insertItem(slot, result, false);
     }
 
     @Override
@@ -196,25 +208,49 @@ public class TileIronMedium extends TickableTileEntity implements IMultiblockCon
     public void multiblockDamaged() {
         multiBlockInstance = null;
         MultiBlockWatcher.unRegisterController(this);
+        setState(MediumState.NO_MULTI_BLOCK);
     }
 
     @Override
     public void tryToFormMultiBlock() {
-        if(world.isRemote)
+        tryToFormMultiBlockInternal();
+        updateState();
+    }
+
+    private void tryToFormMultiBlockInternal() {
+        if (world.isRemote)
             return;
-        if(multiBlockInstance != null)
+        if (multiBlockInstance != null)
             return;
         ItemStack stack = stoneStackHandler.getStackInSlot(0);
-        if(stack == ItemStack.EMPTY)
+        if (stack == ItemStack.EMPTY)
             return;
 
         ItemCallingStone callingStone = (ItemCallingStone) stack.getItem();
         ModMultiBlock multiBlock = callingStone.multiBlock;
         Vector3i position = Vector3i.convert(pos);
-        if(!multiBlock.isValid(world,position))
-            return;
+        multiBlockInstance = multiBlock.makeMultiblock(world, position);
+        if (multiBlockInstance != null)
+            MultiBlockWatcher.registerController(this);
+    }
 
-        multiBlockInstance = new ModMultiBlockInstance(multiBlock,Vector3i.convert(pos));
-        MultiBlockWatcher.registerController(this);
+    private void updateState(){
+        ItemStack stack = stoneStackHandler.getStackInSlot(0);
+        if (stack == ItemStack.EMPTY) {
+            setState(MediumState.NO_CALLING_STONE);
+            return;
+        }
+        if (multiBlockInstance == null) {
+            setState(MediumState.NO_MULTI_BLOCK);
+            return;
+        }
+
+        ItemCallingStone item = (ItemCallingStone) stack.getItem();
+        ModSpirit spirit = item.spirit;
+        if (!spirit.isActive(world)) {
+            setState(MediumState.VALID);
+            return;
+        }
+        setState(MediumState.ACTIVE);
     }
 }
