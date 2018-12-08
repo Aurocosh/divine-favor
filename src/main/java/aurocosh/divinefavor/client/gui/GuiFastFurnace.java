@@ -1,7 +1,7 @@
 package aurocosh.divinefavor.client.gui;
 
-import aurocosh.divinefavor.common.block.tile.TileFastFurnace;
-import aurocosh.divinefavor.common.block.tile.container.ContainerFastFurnace;
+import aurocosh.divinefavor.common.block.fast_furnace.TileFastFurnace;
+import aurocosh.divinefavor.common.block.fast_furnace.ContainerFastFurnace;
 import aurocosh.divinefavor.common.constants.LibResources;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.entity.player.EntityPlayer;

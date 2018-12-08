@@ -1,10 +1,7 @@
-package aurocosh.divinefavor.common.block.tile.container;
+package aurocosh.divinefavor.common.block.medium;
 
-import aurocosh.divinefavor.common.block.tile.TileIronMedium;
 import aurocosh.divinefavor.common.item.base.GenericContainer;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.inventory.Container;
-import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumFacing;
@@ -12,10 +9,10 @@ import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.SlotItemHandler;
 
-public class ContainerIronMedium extends GenericContainer {
-    public TileIronMedium ironMedium;
+public class ContainerMedium extends GenericContainer {
+    public TileMedium ironMedium;
 
-    public ContainerIronMedium(EntityPlayer player, TileIronMedium ironMedium) {
+    public ContainerMedium(EntityPlayer player, TileMedium ironMedium) {
         this.ironMedium = ironMedium;
 
         IItemHandler figurineHandler = this.ironMedium.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, EnumFacing.UP);
@@ -43,11 +40,11 @@ public class ContainerIronMedium extends GenericContainer {
             ItemStack itemstack1 = slot.getStack();
             itemstack = itemstack1.copy();
 
-            if (index < TileIronMedium.SIZE) {
-                if (!this.mergeItemStack(itemstack1, TileIronMedium.SIZE, this.inventorySlots.size(), true)) {
+            if (index < TileMedium.SIZE) {
+                if (!this.mergeItemStack(itemstack1, TileMedium.SIZE, this.inventorySlots.size(), true)) {
                     return ItemStack.EMPTY;
                 }
-            } else if (!this.mergeItemStack(itemstack1, 0, TileIronMedium.SIZE, false)) {
+            } else if (!this.mergeItemStack(itemstack1, 0, TileMedium.SIZE, false)) {
                 return ItemStack.EMPTY;
             }
 

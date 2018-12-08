@@ -1,7 +1,7 @@
 package aurocosh.divinefavor.client.gui;
 
-import aurocosh.divinefavor.common.block.tile.TileIronMedium;
-import aurocosh.divinefavor.common.block.tile.container.ContainerIronMedium;
+import aurocosh.divinefavor.common.block.medium.TileMedium;
+import aurocosh.divinefavor.common.block.medium.ContainerMedium;
 import aurocosh.divinefavor.common.constants.LibResources;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.entity.player.EntityPlayer;
@@ -12,10 +12,10 @@ public class GuiIronMedium extends GuiContainer {
     public static final int HEIGHT = 165;
     private static final ResourceLocation texture = new ResourceLocation(LibResources.GUI_IMMATERIAL_MEDIUM);
 
-    TileIronMedium ironMedium;
+    TileMedium ironMedium;
 
-    public GuiIronMedium(EntityPlayer player, TileIronMedium ironMedium) {
-        super(new ContainerIronMedium(player, ironMedium));
+    public GuiIronMedium(EntityPlayer player, TileMedium ironMedium) {
+        super(new ContainerMedium(player, ironMedium));
         this.ironMedium = ironMedium;
     }
 

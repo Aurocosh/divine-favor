@@ -4,10 +4,10 @@ import aurocosh.divinefavor.client.gui.GuiFastFurnace;
 import aurocosh.divinefavor.client.gui.GuiIronMedium;
 import aurocosh.divinefavor.client.gui.GuiRitualPouch;
 import aurocosh.divinefavor.client.gui.GuiTalismanContainer;
-import aurocosh.divinefavor.common.block.tile.TileFastFurnace;
-import aurocosh.divinefavor.common.block.tile.TileIronMedium;
-import aurocosh.divinefavor.common.block.tile.container.ContainerFastFurnace;
-import aurocosh.divinefavor.common.block.tile.container.ContainerIronMedium;
+import aurocosh.divinefavor.common.block.fast_furnace.TileFastFurnace;
+import aurocosh.divinefavor.common.block.medium.TileMedium;
+import aurocosh.divinefavor.common.block.fast_furnace.ContainerFastFurnace;
+import aurocosh.divinefavor.common.block.medium.ContainerMedium;
 import aurocosh.divinefavor.common.constants.LibGuiIDs;
 import aurocosh.divinefavor.common.container.ContainerTalisman;
 import aurocosh.divinefavor.common.item.ritual_pouch.RitualBagContainer;
@@ -19,9 +19,6 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.common.network.IGuiHandler;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
-import net.minecraftforge.items.IItemHandlerModifiable;
-
-import javax.swing.plaf.basic.BasicComboBoxUI;
 
 public class GuiHandler implements IGuiHandler {
 	
@@ -29,7 +26,7 @@ public class GuiHandler implements IGuiHandler {
 	public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
 		switch(ID) {
 		case LibGuiIDs.IRON_MEDIUM:
-			return new ContainerIronMedium(player, (TileIronMedium) world.getTileEntity(new BlockPos(x, y, z)));
+			return new ContainerMedium(player, (TileMedium) world.getTileEntity(new BlockPos(x, y, z)));
 		case LibGuiIDs.FAST_FURNACE:
 			return new ContainerFastFurnace(player, (TileFastFurnace) world.getTileEntity(new BlockPos(x, y, z)));
         case LibGuiIDs.TALISMAN:
@@ -46,7 +43,7 @@ public class GuiHandler implements IGuiHandler {
 	public Object getClientGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
 		switch(ID) {
 		case LibGuiIDs.IRON_MEDIUM:
-			return new GuiIronMedium(player, (TileIronMedium) world.getTileEntity(new BlockPos(x, y, z)));
+			return new GuiIronMedium(player, (TileMedium) world.getTileEntity(new BlockPos(x, y, z)));
 		case LibGuiIDs.FAST_FURNACE:
 			return new GuiFastFurnace(player, (TileFastFurnace) world.getTileEntity(new BlockPos(x, y, z)));
         case LibGuiIDs.TALISMAN:
