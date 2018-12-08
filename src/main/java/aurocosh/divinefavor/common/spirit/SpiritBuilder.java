@@ -1,9 +1,5 @@
 package aurocosh.divinefavor.common.spirit;
 
-import aurocosh.divinefavor.common.item.talisman.ItemTalisman;
-import aurocosh.divinefavor.common.requirements.base.SpellRequirement;
-import aurocosh.divinefavor.common.requirements.cost.costs.Cost;
-import aurocosh.divinefavor.common.spell.base.ModSpell;
 import aurocosh.divinefavor.common.util.helper_classes.TimePeriod;
 
 import java.util.ArrayList;

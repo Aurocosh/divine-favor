@@ -2,6 +2,7 @@ package aurocosh.divinefavor.common.util.helper_classes;
 
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+
 import java.util.Comparator;
 
 public class ItemStackIdComparator implements Comparator<ItemStack> {

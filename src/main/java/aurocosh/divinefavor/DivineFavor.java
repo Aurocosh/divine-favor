@@ -1,8 +1,8 @@
 package aurocosh.divinefavor;
 
+import aurocosh.divinefavor.common.constants.LibMisc;
 import aurocosh.divinefavor.common.core.DivineFavorCreativeTab;
 import aurocosh.divinefavor.common.core.proxy.CommonProxy;
-import aurocosh.divinefavor.common.constants.LibMisc;
 import aurocosh.divinefavor.common.log.ModLogger;
 import aurocosh.divinefavor.common.registry.ConfigRegistry;
 import aurocosh.divinefavor.common.registry.EventRegistry;

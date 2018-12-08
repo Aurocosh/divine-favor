@@ -8,7 +8,10 @@ import aurocosh.divinefavor.common.muliblock.parts.MultiBlockPart;
 import aurocosh.divinefavor.common.muliblock.parts.StateValidator;
 import vazkii.patchouli.common.multiblock.StateMatcher;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class PatchouliMultiBlockData {
     public static final char[] possibleBlockMarkers = "abcdefghijklmnopqrstuvwxyz".toCharArray();

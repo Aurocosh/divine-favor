@@ -9,7 +9,6 @@ import net.minecraft.init.SoundEvents;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.relauncher.Side;
 
 public class SpellSmallFireballThrow extends ModSpell {
     public SpellSmallFireballThrow() {
@@ -18,7 +17,7 @@ public class SpellSmallFireballThrow extends ModSpell {
 
     @Override
     protected boolean performAction(SpellContext context) {
-        throwSmallFireball(context.worldIn,context.playerIn);
+        throwSmallFireball(context.world,context.player);
         return true;
     }
 
@@ -26,7 +25,7 @@ public class SpellSmallFireballThrow extends ModSpell {
         worldIn.playSound(null, playerIn.posX, playerIn.posY, playerIn.posZ, SoundEvents.ENTITY_SNOWBALL_THROW, SoundCategory.NEUTRAL, 0.5F, 0.4F / (spellRand.nextFloat() * 0.4F + 0.8F));
         if (!playerIn.world.isRemote)
         {
-            //UtilBlock.setHeadingFromThrower(playerIn, entitySmallFireball, playerIn.rotationPitch, playerIn.rotationYaw, 0.0F, 1.5F, 0.0F);
+            //UtilBlock.setHeadingFromThrower(player, entitySmallFireball, player.rotationPitch, player.rotationYaw, 0.0F, 1.5F, 0.0F);
 
             Vec3d looking = playerIn.getLookVec();
             if (looking == null)

@@ -1,7 +1,5 @@
 package aurocosh.divinefavor.client.core.handler;
 
-import aurocosh.divinefavor.common.core.handlers.PersistencyHandler;
-import aurocosh.divinefavor.common.core.handlers.PlayerDataHandler;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -29,28 +27,24 @@ public class ClientTickHandler {
 
     @SubscribeEvent
     public void renderTick(RenderTickEvent event) {
-        if(event.phase == Phase.START)
+        if (event.phase == Phase.START)
             partialTicks = event.renderTickTime;
     }
 
     @SubscribeEvent
     public void clientTickEnd(ClientTickEvent event) {
-        if(event.phase == Phase.END) {
+        if (event.phase == Phase.END) {
             Minecraft mc = Minecraft.getMinecraft();
-            if(mc.world == null)
-                PlayerDataHandler.cleanup();
-            else if(mc.player != null) {
-                PersistencyHandler.init();
-
-                while(!scheduledActions.isEmpty())
+            if (mc.world != null && mc.player != null) {
+                while (!scheduledActions.isEmpty())
                     scheduledActions.poll().run();
             }
 
             HUDHandler.tick();
 
             GuiScreen gui = mc.currentScreen;
-            if(gui == null || !gui.doesGuiPauseGame()) {
-                if(gui == null && KeybindHandler.keybind.isKeyDown())
+            if (gui == null || !gui.doesGuiPauseGame()) {
+                if (gui == null && KeybindHandler.keybind.isKeyDown())
                     KeybindHandler.keyDown();
 
                 ticksInGame++;
@@ -60,5 +54,4 @@ public class ClientTickHandler {
             calcDelta();
         }
     }
-
 }

@@ -8,7 +8,6 @@ import net.minecraft.entity.projectile.EntitySnowball;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.relauncher.Side;
 
 public class SpellSnowballThrow extends ModSpell {
     public SpellSnowballThrow() {
@@ -17,7 +16,7 @@ public class SpellSnowballThrow extends ModSpell {
 
     @Override
     protected boolean performAction(SpellContext context) {
-        throwSnowball(context.worldIn,context.playerIn);
+        throwSnowball(context.world,context.player);
         return true;
     }
 

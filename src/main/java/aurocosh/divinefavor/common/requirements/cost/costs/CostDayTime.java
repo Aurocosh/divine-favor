@@ -43,7 +43,7 @@ public class CostDayTime extends Cost {
 
     private boolean isItTime(SpellContext context)
     {
-        int time = (int) (context.worldIn.getWorldTime() % 24000);
+        int time = (int) (context.world.getWorldTime() % 24000);
         return dayTime.isTimeInPeriod(time);
     }
 }

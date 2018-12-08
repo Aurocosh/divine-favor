@@ -30,7 +30,7 @@ public class ModItem extends Item implements IVariantHolder {
         boolean isVariant = damage < variants.length;
 
         String name = isVariant ? variants[damage] : fullName.getPath();
-        return "item." + fullName.getNamespace() + name;
+        return "item." + fullName.getNamespace() + ":" + name;
     }
 
     @Override

@@ -1,46 +1,39 @@
 package aurocosh.divinefavor.common.util;
 
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockLiquid;
-import net.minecraft.block.state.IBlockState;
+import aurocosh.divinefavor.common.lib.math.Vector3i;
+import aurocosh.divinefavor.common.player_data.interaction_handler.IInteractionHandler;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.ItemStack;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import net.minecraftforge.common.ForgeHooks;
-import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
-import net.minecraftforge.event.world.BlockEvent;
-import net.minecraftforge.fluids.IFluidBlock;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
-import java.util.LinkedList;
-import java.util.Random;
+import static aurocosh.divinefavor.common.player_data.interaction_handler.InteractionDataHandler.CAPABILITY_INTERACTION;
 
 @Mod.EventBusSubscriber
 public class UtilBlockClick {
-    private static int MAX_BLOCKS_REMEBERED = 8;
-    private static LinkedList<BlockPos> clickedBlocks = new LinkedList<>();
-
     @SubscribeEvent(priority = EventPriority.LOWEST)
     public static void onPlayerLeftClickBlock(PlayerInteractEvent.LeftClickBlock event) {
         World world = event.getWorld();
         if(world.isRemote)
             return;
 
-        BlockPos pos = event.getPos();
-        if(clickedBlocks.contains(pos))
+        EntityPlayer player = event.getEntityPlayer();
+        IInteractionHandler interactionHandler = player.getCapability(CAPABILITY_INTERACTION,null);
+        if(interactionHandler == null)
             return;
-        clickedBlocks.add(pos);
-        if(clickedBlocks.size() > MAX_BLOCKS_REMEBERED)
-            clickedBlocks.remove();
+
+        Vector3i vector = Vector3i.convert(event.getPos());
+        interactionHandler.recordLastClickedPosition(vector);
     }
 
-    public static boolean wasBlockLeftClicked(BlockPos pos) {
-        return clickedBlocks.contains(pos);
+    public static boolean wasBlockLeftClicked(EntityPlayer player, BlockPos pos) {
+        IInteractionHandler interactionHandler = player.getCapability(CAPABILITY_INTERACTION,null);
+        if(interactionHandler == null)
+            return false;
+        Vector3i vector = Vector3i.convert(pos);
+        return interactionHandler.wasPositionClicked(vector);
     }
 }

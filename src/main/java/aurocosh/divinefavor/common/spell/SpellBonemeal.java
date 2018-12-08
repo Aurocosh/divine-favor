@@ -8,7 +8,6 @@ import net.minecraft.init.Items;
 import net.minecraft.item.ItemDye;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
-import net.minecraftforge.fml.relauncher.Side;
 
 public class SpellBonemeal extends ModSpell {
     public SpellBonemeal() {
@@ -17,12 +16,12 @@ public class SpellBonemeal extends ModSpell {
 
     @Override
     protected boolean performAction(SpellContext context) {
-        //if(context.playerIn.getEntityWorld().isRemote)
+        //if(context.player.getEntityWorld().isRemote)
         //    return true;
 
         BlockPos pos = context.pos;
-        if(!bonemeal(context.playerIn, pos))
-            bonemeal(context.playerIn, pos.down());
+        if(!bonemeal(context.player, pos))
+            bonemeal(context.player, pos.down());
 
         return true;
     }
