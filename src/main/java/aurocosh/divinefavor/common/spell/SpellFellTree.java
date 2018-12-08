@@ -1,8 +1,8 @@
 package aurocosh.divinefavor.common.spell;
 
+import aurocosh.divinefavor.common.events.TalismanEvent;
 import aurocosh.divinefavor.common.spell.base.ModSpell;
 import aurocosh.divinefavor.common.spell.base.SpellContext;
-import aurocosh.divinefavor.common.events.TalismanEvent;
 import aurocosh.divinefavor.common.spell.base.SpellType;
 import aurocosh.divinefavor.common.util.UtilBlock;
 import com.google.common.collect.Lists;
@@ -28,10 +28,10 @@ public class SpellFellTree extends ModSpell {
 
     @Override
     protected boolean performAction(SpellContext context) {
-        ItemStack talisman = context.playerIn.getHeldItem(context.hand);
+        ItemStack talisman = context.player.getHeldItem(context.hand);
 
-        if(detectTree(context.worldIn, context.pos)) {
-            return fellTree(talisman, context.pos, context.playerIn);
+        if(detectTree(context.world, context.pos)) {
+            return fellTree(talisman, context.pos, context.player);
         }
         return true;
     }

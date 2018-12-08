@@ -13,7 +13,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.relauncher.Side;
 
 public class SpellArrowThrow extends ModSpell {
     public SpellArrowThrow() {
@@ -22,11 +21,11 @@ public class SpellArrowThrow extends ModSpell {
 
     @Override
     protected boolean performAction(SpellContext context) {
-        //if(context.worldIn.isRemote)
+        //if(context.world.isRemote)
         //    return true;
 
-        ItemStack stack = context.playerIn.getHeldItem(context.hand);
-        shootArrow(stack,context.worldIn,context.playerIn,20000);
+        ItemStack stack = context.player.getHeldItem(context.hand);
+        shootArrow(stack,context.world,context.player,20000);
 
         return true;
     }

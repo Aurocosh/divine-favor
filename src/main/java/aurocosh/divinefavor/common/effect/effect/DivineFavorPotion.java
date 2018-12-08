@@ -1,7 +1,5 @@
 package aurocosh.divinefavor.common.effect.effect;
 
-import javax.annotation.Nullable;
-
 import aurocosh.divinefavor.common.constants.LibMisc;
 import aurocosh.divinefavor.common.util.UtilTextureRender;
 import net.minecraft.entity.Entity;
@@ -14,6 +12,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+import javax.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.List;
 

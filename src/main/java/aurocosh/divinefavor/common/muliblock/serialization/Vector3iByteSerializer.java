@@ -1,6 +1,6 @@
 package aurocosh.divinefavor.common.muliblock.serialization;
+
 import aurocosh.divinefavor.common.lib.math.Vector3i;
-import aurocosh.divinefavor.common.muliblock.parts.BlockStateValidator;
 import com.google.gson.*;
 
 import java.lang.reflect.Type;

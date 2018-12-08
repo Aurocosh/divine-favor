@@ -1,8 +1,13 @@
 package aurocosh.divinefavor.common.requirements.cost.costs;
 
-import aurocosh.divinefavor.common.core.handlers.PlayerDataHandler;
 import aurocosh.divinefavor.common.favors.ModFavor;
+import aurocosh.divinefavor.common.network.base.NetworkHandler;
+import aurocosh.divinefavor.common.network.message.MessageSyncFavor;
+import aurocosh.divinefavor.common.player_data.favor.IFavorHandler;
 import aurocosh.divinefavor.common.spell.base.SpellContext;
+import net.minecraft.entity.player.EntityPlayerMP;
+
+import static aurocosh.divinefavor.common.player_data.favor.FavorDataHandler.CAPABILITY_FAVOR;
 
 public class CostFavor extends Cost {
     private int favorCount;
@@ -15,14 +20,27 @@ public class CostFavor extends Cost {
 
     @Override
     public boolean canClaim(SpellContext context) {
-        PlayerDataHandler.PlayerData data = PlayerDataHandler.get(context.playerIn);
-        return data.getSpellCharge(favor.id) >= favorCount;
+        IFavorHandler favorHandler = context.player.getCapability(CAPABILITY_FAVOR, null);
+        if (favorHandler == null)
+            return false;
+        return favorHandler.getFavor(favor.id) >= favorCount;
     }
 
     @Override
     public boolean claim(SpellContext context) {
-        PlayerDataHandler.PlayerData data = PlayerDataHandler.get(context.playerIn);
-        return data.consumeSpellCharge(favor.id, favorCount);
+        IFavorHandler favorHandler = context.player.getCapability(CAPABILITY_FAVOR, null);
+        if (favorHandler == null)
+            return false;
+        boolean consumed = favorHandler.consumeFavor(favor.id,favorCount);
+        if(!consumed)
+            return false;
+
+        int favorValue = favorHandler.getFavor(favor.id);
+        if(context.player instanceof EntityPlayerMP) {
+            MessageSyncFavor message = new MessageSyncFavor(favor.id,favorValue);
+            NetworkHandler.INSTANCE.sendTo(message, (EntityPlayerMP) context.player);
+        }
+        return true;
     }
 
     @Override
@@ -37,8 +55,11 @@ public class CostFavor extends Cost {
     public int getUseCount(SpellContext context) {
         if (favorCount == 0)
             return -1;
-        PlayerDataHandler.PlayerData data = PlayerDataHandler.get(context.playerIn);
-        int favorsLeft = data.getSpellCharge(favor.id);
+
+        IFavorHandler favorHandler = context.player.getCapability(CAPABILITY_FAVOR, null);
+        if (favorHandler == null)
+            return 0;
+        int favorsLeft = favorHandler.getFavor(favor.id);
         return favorsLeft / favorCount;
     }
 }

@@ -2,8 +2,8 @@ package aurocosh.divinefavor.common.block.base;
 
 import aurocosh.divinefavor.common.block.BlockDiviner;
 import aurocosh.divinefavor.common.block.fast_furnace.BlockFastFurnaceMod;
-import aurocosh.divinefavor.common.block.medium.BlockMedium;
 import aurocosh.divinefavor.common.block.fast_furnace.TileFastFurnace;
+import aurocosh.divinefavor.common.block.medium.BlockMedium;
 import aurocosh.divinefavor.common.block.medium.TileMedium;
 import aurocosh.divinefavor.common.constants.LibBlockNames;
 import aurocosh.divinefavor.common.constants.LibResources;

@@ -15,7 +15,6 @@ import aurocosh.divinefavor.common.registry.base.CommonRegistry;
 import aurocosh.divinefavor.common.requirements.cost.costs.CostFavor;
 import aurocosh.divinefavor.common.spell.base.ModSpells;
 import aurocosh.divinefavor.common.spirit.ModSpirits;
-import net.minecraft.item.Item;
 import net.minecraft.util.ResourceLocation;
 
 import java.util.Collection;

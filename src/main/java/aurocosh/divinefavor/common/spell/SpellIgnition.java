@@ -7,7 +7,6 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.relauncher.Side;
 
 public class SpellIgnition extends ModSpell {
     public SpellIgnition() {
@@ -16,11 +15,11 @@ public class SpellIgnition extends ModSpell {
 
     @Override
     protected boolean performAction(SpellContext context) {
-        //if(context.playerIn.getEntityWorld().isRemote)
+        //if(context.player.getEntityWorld().isRemote)
         //    return true;
 
         BlockPos pos = context.pos;
-        World world = context.worldIn;
+        World world = context.world;
 
         IBlockState state = world.getBlockState(pos);
         if(state.getBlock().isAir(state, world, pos) || state.getBlock().isReplaceable(world, pos))

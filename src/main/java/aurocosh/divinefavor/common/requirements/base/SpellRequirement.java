@@ -9,7 +9,6 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraftforge.common.util.FakePlayer;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -40,7 +39,7 @@ public class SpellRequirement implements IInitiatable {
     }
 
     public boolean canClaimCost(SpellContext context) {
-        if(!isTruePlayer(context.playerIn))
+        if(!isTruePlayer(context.player))
             return false;
 
         if (canClaimInternal(context))
@@ -49,9 +48,9 @@ public class SpellRequirement implements IInitiatable {
     }
 
     public boolean claimCost(SpellContext context) {
-        if(context.worldIn.isRemote)
+        if(context.world.isRemote)
             return false;
-        if(!isTruePlayer(context.playerIn))
+        if(!isTruePlayer(context.player))
             return false;
         if (claimInternal(context))
             return true;

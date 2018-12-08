@@ -1,12 +1,12 @@
 package aurocosh.divinefavor.common.util;
 
-import net.minecraft.nbt.NBTTagIntArray;
 import net.minecraft.util.math.BlockPos;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class UtilSerialize {
-    public static int[] SerializeBlockPosArray(ArrayList<BlockPos> posArrayList){
+    public static int[] SerializeBlockPosArray(List<BlockPos> posArrayList){
         int[] array = new int[posArrayList.size() * 3];
         int i = 0;
         for (BlockPos pos : posArrayList) {

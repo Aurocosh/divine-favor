@@ -1,32 +1,28 @@
 package aurocosh.divinefavor.common.spell.base;
 
-import aurocosh.divinefavor.common.core.handlers.PlayerDataHandler;
-import aurocosh.divinefavor.common.core.handlers.PlayerDataHandler.PlayerData;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-import javax.activation.DataHandler;
-
 public class SpellContext {
-    public EntityPlayer playerIn;
-    public World worldIn;
+    public EntityPlayer player;
+    public World world;
     public BlockPos pos;
     public EnumHand hand;
     public EnumFacing facing;
 
-    public SpellContext(EntityPlayer playerIn) {
-        this.playerIn = playerIn;
-        this.worldIn = playerIn.world;
+    public SpellContext(EntityPlayer player) {
+        this.player = player;
+        this.world = player.world;
         this.pos = null;
         this.hand = EnumHand.MAIN_HAND;
     }
 
-    public SpellContext(EntityPlayer playerIn, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, PlayerData data){
-        this.playerIn = playerIn;
-        this.worldIn = worldIn;
+    public SpellContext(EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing facing){
+        this.player = player;
+        this.world = world;
         this.pos = pos;
         this.hand = hand;
         this.facing = facing;
