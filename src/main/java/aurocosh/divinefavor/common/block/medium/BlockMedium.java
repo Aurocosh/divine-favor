@@ -1,8 +1,7 @@
-package aurocosh.divinefavor.common.block;
+package aurocosh.divinefavor.common.block.medium;
 
 import aurocosh.divinefavor.DivineFavor;
 import aurocosh.divinefavor.common.block.base.ModBlock;
-import aurocosh.divinefavor.common.block.tile.TileIronMedium;
 import aurocosh.divinefavor.common.constants.LibBlockNames;
 import aurocosh.divinefavor.common.constants.LibGuiIDs;
 import aurocosh.divinefavor.common.core.DivineFavorCreativeTab;
@@ -24,11 +23,11 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraft.world.chunk.Chunk;
 
-public class BlockIronMedium extends ModBlock implements ITileEntityProvider {
+public class BlockMedium extends ModBlock implements ITileEntityProvider {
     public static final PropertyDirection FACING = PropertyDirection.create("facing");
     public static final PropertyEnum<MediumState> STATE = PropertyEnum.create("state", MediumState.class);
 
-    public BlockIronMedium() {
+    public BlockMedium() {
         super(LibBlockNames.IRON_MEDIUM, Material.IRON);
         setHardness(2.0F);
         setResistance(10.0F);
@@ -39,8 +38,8 @@ public class BlockIronMedium extends ModBlock implements ITileEntityProvider {
     @Override
     public IBlockState getActualState(IBlockState state, IBlockAccess world, BlockPos pos) {
         TileEntity te = world instanceof ChunkCache ? ((ChunkCache) world).getTileEntity(pos, Chunk.EnumCreateEntityType.CHECK) : world.getTileEntity(pos);
-        if (te instanceof TileIronMedium)
-            return state.withProperty(STATE, ((TileIronMedium) te).getState());
+        if (te instanceof TileMedium)
+            return state.withProperty(STATE, ((TileMedium) te).getState());
         return super.getActualState(state, world, pos);
     }
 
@@ -70,16 +69,16 @@ public class BlockIronMedium extends ModBlock implements ITileEntityProvider {
 
     @Override
     public TileEntity createNewTileEntity(World worldIn, int meta) {
-        return new TileIronMedium();
+        return new TileMedium();
     }
 
     @Override
     public void breakBlock(World worldIn, BlockPos pos, IBlockState state) {
         super.breakBlock(worldIn, pos, state);
         TileEntity entity = worldIn.getTileEntity(pos);
-        if (!(entity instanceof TileIronMedium))
+        if (!(entity instanceof TileMedium))
             return;
-        TileIronMedium medium = (TileIronMedium) entity;
+        TileMedium medium = (TileMedium) entity;
         medium.multiblockDamaged();
     }
 }

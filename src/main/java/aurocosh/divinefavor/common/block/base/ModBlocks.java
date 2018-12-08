@@ -1,10 +1,10 @@
 package aurocosh.divinefavor.common.block.base;
 
 import aurocosh.divinefavor.common.block.BlockDiviner;
-import aurocosh.divinefavor.common.block.BlockFastFurnaceMod;
-import aurocosh.divinefavor.common.block.BlockIronMedium;
-import aurocosh.divinefavor.common.block.tile.TileFastFurnace;
-import aurocosh.divinefavor.common.block.tile.TileIronMedium;
+import aurocosh.divinefavor.common.block.fast_furnace.BlockFastFurnaceMod;
+import aurocosh.divinefavor.common.block.medium.BlockMedium;
+import aurocosh.divinefavor.common.block.fast_furnace.TileFastFurnace;
+import aurocosh.divinefavor.common.block.medium.TileMedium;
 import aurocosh.divinefavor.common.constants.LibBlockNames;
 import aurocosh.divinefavor.common.constants.LibResources;
 import aurocosh.divinefavor.common.registry.base.CommonRegistry;
@@ -34,7 +34,7 @@ public class ModBlocks {
 
     public static void preInit() {
         blockFastFurnace = register(new BlockFastFurnaceMod());
-        blockIronMedium = register(new BlockIronMedium());
+        blockIronMedium = register(new BlockMedium());
         blockDiviner = register(new BlockDiviner());
 
         initTileEntities();
@@ -46,7 +46,7 @@ public class ModBlocks {
 
     private static void initTileEntities() {
         registerTile(TileFastFurnace.class, LibBlockNames.FAST_FURNACE);
-        registerTile(TileIronMedium.class, LibBlockNames.IRON_MEDIUM);
+        registerTile(TileMedium.class, LibBlockNames.IRON_MEDIUM);
     }
 
     private static void registerTile(Class<? extends TileEntity> clazz, String key) {

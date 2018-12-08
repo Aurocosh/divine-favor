@@ -1,8 +1,7 @@
-package aurocosh.divinefavor.common.block.tile.container;
+package aurocosh.divinefavor.common.block.fast_furnace;
 
 import aurocosh.divinefavor.DivineFavor;
-import aurocosh.divinefavor.common.block.tile.TileFastFurnace;
-import aurocosh.divinefavor.common.block.tile.TileIronMedium;
+import aurocosh.divinefavor.common.block.medium.TileMedium;
 import aurocosh.divinefavor.common.network.base.NetworkHandler;
 import aurocosh.divinefavor.common.network.message.MessageSyncPower;
 import aurocosh.divinefavor.common.tool.IEnergyContainer;
@@ -89,10 +88,10 @@ public class ContainerFastFurnace extends Container implements IEnergyContainer 
             ItemStack otherItemstack = slot.getStack();
             itemstack = otherItemstack.copy();
 
-            if (index < TileIronMedium.SIZE) {
-                if (!this.mergeItemStack(otherItemstack, TileIronMedium.SIZE, this.inventorySlots.size(), true))
+            if (index < TileMedium.SIZE) {
+                if (!this.mergeItemStack(otherItemstack, TileMedium.SIZE, this.inventorySlots.size(), true))
                     return ItemStack.EMPTY;
-            } else if (!this.mergeItemStack(otherItemstack, 0, TileIronMedium.SIZE, false))
+            } else if (!this.mergeItemStack(otherItemstack, 0, TileMedium.SIZE, false))
                 return ItemStack.EMPTY;
 
             if (otherItemstack.isEmpty())

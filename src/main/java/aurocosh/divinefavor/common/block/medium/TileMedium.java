@@ -1,6 +1,6 @@
-package aurocosh.divinefavor.common.block.tile;
+package aurocosh.divinefavor.common.block.medium;
 
-import aurocosh.divinefavor.common.block.MediumState;
+import aurocosh.divinefavor.common.block.base.TickableTileEntity;
 import aurocosh.divinefavor.common.item.base.ModItems;
 import aurocosh.divinefavor.common.item.calling_stone.ItemCallingStone;
 import aurocosh.divinefavor.common.lib.math.Vector3i;
@@ -28,7 +28,7 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.List;
 
-public class TileIronMedium extends TickableTileEntity implements IMultiblockController {
+public class TileMedium extends TickableTileEntity implements IMultiblockController {
     public static final int SIZE = 27;
     private final String TAG_CALLING_STONE = "CallingStone";
     private final String TAG_ITEMS = "Items";
@@ -50,7 +50,7 @@ public class TileIronMedium extends TickableTileEntity implements IMultiblockCon
             if(multiBlockInstance != null)
                 multiblockDamaged();
             tryToFormMultiBlock();
-            TileIronMedium.this.markDirty();
+            TileMedium.this.markDirty();
         }
     };
 
@@ -59,11 +59,11 @@ public class TileIronMedium extends TickableTileEntity implements IMultiblockCon
         protected void onContentsChanged(int slot) {
             // We need to tell the tile entity that something has changed so
             // that the chest contents is persisted
-            TileIronMedium.this.markDirty();
+            TileMedium.this.markDirty();
         }
     };
 
-    public TileIronMedium() {
+    public TileMedium() {
         super(false, true);
     }
 

@@ -1,4 +1,4 @@
-package aurocosh.divinefavor.common.block.tile;
+package aurocosh.divinefavor.common.block.fast_furnace;
 
 import aurocosh.divinefavor.common.tool.EnergyStorage;
 import net.minecraft.entity.player.EntityPlayer;
