@@ -38,16 +38,15 @@ public class BlockIronMedium extends ModBlock implements ITileEntityProvider {
 
     @Override
     public IBlockState getActualState(IBlockState state, IBlockAccess world, BlockPos pos) {
-        TileEntity te = world instanceof ChunkCache ? ((ChunkCache)world).getTileEntity(pos, Chunk.EnumCreateEntityType.CHECK) : world.getTileEntity(pos);
-        if (te instanceof TileIronMedium) {
+        TileEntity te = world instanceof ChunkCache ? ((ChunkCache) world).getTileEntity(pos, Chunk.EnumCreateEntityType.CHECK) : world.getTileEntity(pos);
+        if (te instanceof TileIronMedium)
             return state.withProperty(STATE, ((TileIronMedium) te).getState());
-        }
         return super.getActualState(state, world, pos);
     }
 
     @Override
     public IBlockState getStateForPlacement(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer) {
-        return this.getDefaultState().withProperty(FACING,EnumFacing.getDirectionFromEntityLiving(pos,placer));
+        return this.getDefaultState().withProperty(FACING, EnumFacing.getDirectionFromEntityLiving(pos, placer));
     }
 
     @Override
@@ -55,13 +54,11 @@ public class BlockIronMedium extends ModBlock implements ITileEntityProvider {
         return new BlockStateContainer(this, FACING, STATE);
     }
 
-    public IBlockState getStateFromMeta(int meta)
-    {
+    public IBlockState getStateFromMeta(int meta) {
         return this.getDefaultState().withProperty(FACING, EnumFacing.byIndex(meta & 7));
     }
 
-    public int getMetaFromState(IBlockState state)
-    {
+    public int getMetaFromState(IBlockState state) {
         return state.getValue(FACING).getIndex();
     }
 
@@ -80,9 +77,9 @@ public class BlockIronMedium extends ModBlock implements ITileEntityProvider {
     public void breakBlock(World worldIn, BlockPos pos, IBlockState state) {
         super.breakBlock(worldIn, pos, state);
         TileEntity entity = worldIn.getTileEntity(pos);
-        if(!(entity instanceof TileIronMedium))
+        if (!(entity instanceof TileIronMedium))
             return;
-        TileIronMedium medium = (TileIronMedium)entity;
+        TileIronMedium medium = (TileIronMedium) entity;
         medium.multiblockDamaged();
     }
 }
