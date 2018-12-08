@@ -1,4 +1,4 @@
-package aurocosh.divinefavor.common.block;
+package aurocosh.divinefavor.common.block.medium;
 
 import net.minecraft.util.IStringSerializable;
 

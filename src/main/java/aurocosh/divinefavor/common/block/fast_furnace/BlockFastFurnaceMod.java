@@ -1,8 +1,7 @@
-package aurocosh.divinefavor.common.block;
+package aurocosh.divinefavor.common.block.fast_furnace;
 
 import aurocosh.divinefavor.DivineFavor;
 import aurocosh.divinefavor.common.block.base.ModBlock;
-import aurocosh.divinefavor.common.block.tile.TileFastFurnace;
 import aurocosh.divinefavor.common.constants.LibBlockNames;
 import aurocosh.divinefavor.common.constants.LibGuiIDs;
 import aurocosh.divinefavor.common.core.DivineFavorCreativeTab;

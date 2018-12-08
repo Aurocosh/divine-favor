@@ -1,6 +1,6 @@
 package aurocosh.divinefavor.common.item.base;
 
-import aurocosh.divinefavor.common.block.tile.TileIronMedium;
+import aurocosh.divinefavor.common.block.medium.TileMedium;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
@@ -52,10 +52,10 @@ public class GenericContainer extends Container {
             ItemStack otherItemstack = slot.getStack();
             itemstack = otherItemstack.copy();
 
-            if (index < TileIronMedium.SIZE) {
-                if (!this.mergeItemStack(otherItemstack, TileIronMedium.SIZE, this.inventorySlots.size(), true))
+            if (index < TileMedium.SIZE) {
+                if (!this.mergeItemStack(otherItemstack, TileMedium.SIZE, this.inventorySlots.size(), true))
                     return ItemStack.EMPTY;
-            } else if (!this.mergeItemStack(otherItemstack, 0, TileIronMedium.SIZE, false))
+            } else if (!this.mergeItemStack(otherItemstack, 0, TileMedium.SIZE, false))
                 return ItemStack.EMPTY;
 
             if (otherItemstack.isEmpty())

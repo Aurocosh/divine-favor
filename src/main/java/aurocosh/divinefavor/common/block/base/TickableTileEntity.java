@@ -1,4 +1,4 @@
-package aurocosh.divinefavor.common.block.tile;
+package aurocosh.divinefavor.common.block.base;
 
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ITickable;
