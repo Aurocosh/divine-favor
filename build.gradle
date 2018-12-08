@@ -42,6 +42,10 @@ repositories {
     maven { // Patchouli
         url 'https://maven.blamejared.com'
     }
+    maven {
+        name = "CurseForge"
+        url = "https://minecraft.curseforge.com/api/maven/"
+    }
 }
 
 version = "0.1.0"
@@ -54,18 +58,19 @@ targetCompatibility = 1.8
 minecraft {
     version = "1.12.2-14.23.5.2775"
     runDir = "run"
-    mappings = "snapshot_20170628"
+    mappings = "stable_39"
     useDepAts = true
 }
 
 dependencies {
-    deobfCompile "mezz.jei:jei_1.12.2:4.13.1.222"
-    deobfCompile "mcp.mobius.waila:Hwyla:1.8.18-B32_1.12:api"
-    deobfCompile "cofh:RedstoneFlux:1.12-2.0.0.1:universal"
-    deobfCompile "mcjty.theoneprobe:TheOneProbe-1.12:1.12-1.4.14-7"
-    deobfCompile "com.github.mcjty:intwheel:1.12-1.2.7"
+    compile "mezz.jei:jei_1.12.2:4.14.0.231"
+    compile "mcp.mobius.waila:Hwyla:1.8.26-B41_1.12.2:api"
+    compile "mcjty.theoneprobe:TheOneProbe-1.12:1.12-1.4.14-7"
+    compile "com.github.mcjty:intwheel:1.12-1.2.7"
+    //compile "cofh:RedstoneFlux:1.12-2.1.0.6:universal"
     deobfCompile "net.darkhax.bookshelf:Bookshelf-1.12.2:2.3.568"
     deobfCompile "vazkii.patchouli:Patchouli:1.0-10.45"
+    //provided "vazkii.autoreglib:AutoRegLib:1.3-21.3"
 }
 
 processResources

@@ -2,9 +2,9 @@ package aurocosh.divinefavor.common.core.handlers;
 
 import aurocosh.divinefavor.common.favors.ModFavor;
 import aurocosh.divinefavor.common.favors.ModFavors;
+import aurocosh.divinefavor.common.network.base.NetworkHandler;
 import aurocosh.divinefavor.common.network.message.MessageDataSync;
 import aurocosh.divinefavor.common.network.message.MessageSyncSpellCharge;
-import aurocosh.divinefavor.common.constants.LibFavorType;
 import aurocosh.divinefavor.common.util.UtilSerialize;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
@@ -12,7 +12,6 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent;
-import vazkii.arl.network.NetworkHandler;
 
 import java.lang.ref.WeakReference;
 import java.util.*;
@@ -178,10 +177,10 @@ public class PlayerDataHandler {
         public void writeToNBT(NBTTagCompound cmp) {
             cmp.setInteger(TAG_WOOD_BLOCKS_BROKEN, woodBlocksBroken);
 
-            List<ModFavor> favors = ModFavors.getFavorList();
+            Collection<ModFavor> favors = ModFavors.getFavorList();
             for (ModFavor favor : favors) {
-                int value = favorValues.get(favor.getId());
-                cmp.setInteger(favor.getTag(),value);
+                int value = favorValues.get(favor.id);
+                cmp.setInteger(favor.tag,value);
             }
 
             int[] altarArray = UtilSerialize.SerializeBlockPosArray(altarPositions);
@@ -205,10 +204,10 @@ public class PlayerDataHandler {
         public void readFromNBT(NBTTagCompound cmp) {
             woodBlocksBroken = cmp.getInteger(TAG_WOOD_BLOCKS_BROKEN);
 
-            List<ModFavor> favors = ModFavors.getFavorList();
+            Collection<ModFavor> favors = ModFavors.getFavorList();
             for (ModFavor favor : favors) {
-                int value = cmp.getInteger(favor.getTag());
-                favorValues.put(favor.getId(),value);
+                int value = cmp.getInteger(favor.tag);
+                favorValues.put(favor.id,value);
             }
 
             int[] altarArray = cmp.getIntArray(TAG_ALTAR_POSITIONS);

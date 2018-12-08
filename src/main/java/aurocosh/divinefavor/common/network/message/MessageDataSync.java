@@ -4,14 +4,14 @@ import aurocosh.divinefavor.DivineFavor;
 import aurocosh.divinefavor.client.core.handler.ClientTickHandler;
 import aurocosh.divinefavor.common.core.handlers.PlayerDataHandler;
 import aurocosh.divinefavor.common.core.handlers.PlayerDataHandler.PlayerData;
+import aurocosh.divinefavor.common.network.base.NetworkAutoMessage;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import vazkii.arl.network.NetworkMessage;
 
-public class MessageDataSync extends NetworkMessage {
+public class MessageDataSync extends NetworkAutoMessage {
 
     public NBTTagCompound cmp;
 

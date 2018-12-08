@@ -26,7 +26,7 @@ public class SpellStoneballThrow extends ModSpell {
         if (!worldIn.isRemote)
         {
             EntityStoneball entityStoneball = new EntityStoneball(worldIn, playerIn);
-            entityStoneball.setHeadingFromThrower(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, 0.0F, 1.0F, 1.0F);
+            entityStoneball.shoot(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, 0.0F, 1.0F, 1.0F);
             worldIn.spawnEntity(entityStoneball);
         }
         return true;

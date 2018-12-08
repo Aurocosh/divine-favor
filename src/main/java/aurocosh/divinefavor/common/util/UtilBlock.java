@@ -40,7 +40,7 @@ public class UtilBlock {
                     IBlockState localState = world.getBlockState(pos);
 
                     if(block.removedByPlayer(state, world, pos, player, true)) {
-                        block.onBlockDestroyedByPlayer(world, pos, state);
+                        block.onPlayerDestroy(world, pos, state);
                         block.harvestBlock(world, player, pos, state, tile, tool);
                     }
                 } else world.setBlockToAir(pos);
