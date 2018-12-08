@@ -32,12 +32,12 @@ public class TileIronMedium extends TickableTileEntity implements IMultiblockCon
     public static final int SIZE = 27;
     private final String TAG_CALLING_STONE = "CallingStone";
     private final String TAG_ITEMS = "Items";
+    private final String TAG_STATE_MEDIUM = "StateMedium";
+
     private MediumState state = MediumState.NO_CALLING_STONE;
 
     // server side
     private ModMultiBlockInstance multiBlockInstance;
-    // client side
-    private boolean multiBlockValid;
 
     private ItemStackHandler stoneStackHandler = new ItemStackHandler(1) {
         @Override
@@ -47,10 +47,10 @@ public class TileIronMedium extends TickableTileEntity implements IMultiblockCon
 
         @Override
         protected void onContentsChanged(int slot) {
-            TileIronMedium.this.markDirty();
             if(multiBlockInstance != null)
                 multiblockDamaged();
             tryToFormMultiBlock();
+            TileIronMedium.this.markDirty();
         }
     };
 
@@ -65,7 +65,6 @@ public class TileIronMedium extends TickableTileEntity implements IMultiblockCon
 
     public TileIronMedium() {
         super(false, true);
-        multiBlockValid = false;
     }
 
     @Override
@@ -76,17 +75,17 @@ public class TileIronMedium extends TickableTileEntity implements IMultiblockCon
     @Override
     public void readFromNBT(NBTTagCompound compound) {
         super.readFromNBT(compound);
-        if (compound.hasKey(TAG_CALLING_STONE)) {
+        state = MediumState.VALUES[compound.getInteger(TAG_STATE_MEDIUM)];
+        if (compound.hasKey(TAG_CALLING_STONE))
             stoneStackHandler.deserializeNBT((NBTTagCompound) compound.getTag(TAG_CALLING_STONE));
-        }
-        if (compound.hasKey(TAG_ITEMS)) {
+        if (compound.hasKey(TAG_ITEMS))
             itemStackHandler.deserializeNBT((NBTTagCompound) compound.getTag(TAG_ITEMS));
-        }
     }
 
     @Override
     public NBTTagCompound writeToNBT(NBTTagCompound compound) {
         super.writeToNBT(compound);
+        compound.setInteger(TAG_STATE_MEDIUM,state.ordinal());
         compound.setTag(TAG_CALLING_STONE, stoneStackHandler.serializeNBT());
         compound.setTag(TAG_ITEMS, itemStackHandler.serializeNBT());
         return compound;
@@ -99,9 +98,8 @@ public class TileIronMedium extends TickableTileEntity implements IMultiblockCon
 
     @Override
     public boolean hasCapability(Capability<?> capability, EnumFacing facing) {
-        if (capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) {
+        if (capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY)
             return true;
-        }
         return super.hasCapability(capability, facing);
     }
 
@@ -119,7 +117,7 @@ public class TileIronMedium extends TickableTileEntity implements IMultiblockCon
     @Override
     public NBTTagCompound getUpdateTag() {
         NBTTagCompound nbtTag = super.getUpdateTag();
-        nbtTag.setInteger("state", state.ordinal());
+        nbtTag.setInteger(TAG_STATE_MEDIUM, state.ordinal());
         return nbtTag;
     }
 
@@ -131,7 +129,7 @@ public class TileIronMedium extends TickableTileEntity implements IMultiblockCon
 
     @Override
     public void onDataPacket(NetworkManager net, SPacketUpdateTileEntity packet) {
-        int stateIndex = packet.getNbtCompound().getInteger("state");
+        int stateIndex = packet.getNbtCompound().getInteger(TAG_STATE_MEDIUM);
 
         if (world.isRemote && stateIndex != state.ordinal()) {
             state = MediumState.VALUES[stateIndex];
