@@ -4,8 +4,6 @@ import aurocosh.divinefavor.client.core.handler.ClientTickHandler;
 import aurocosh.divinefavor.client.core.handler.HUDHandler;
 import aurocosh.divinefavor.client.core.handler.KeybindHandler;
 import aurocosh.divinefavor.client.render.entity.ModRendering;
-import aurocosh.divinefavor.common.core.handlers.PersistencyHandler;
-import aurocosh.divinefavor.common.core.handlers.PlayerDataHandler;
 import aurocosh.divinefavor.common.core.proxy.CommonProxy;
 import com.google.common.util.concurrent.ListenableFuture;
 import net.minecraft.client.Minecraft;

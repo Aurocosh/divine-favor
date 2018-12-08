@@ -1,7 +1,7 @@
 package aurocosh.divinefavor.client.gui;
 
-import aurocosh.divinefavor.common.block.medium.TileMedium;
 import aurocosh.divinefavor.common.block.medium.ContainerMedium;
+import aurocosh.divinefavor.common.block.medium.TileMedium;
 import aurocosh.divinefavor.common.constants.LibResources;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.entity.player.EntityPlayer;

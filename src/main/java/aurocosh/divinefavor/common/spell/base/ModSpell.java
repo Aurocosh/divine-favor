@@ -33,9 +33,9 @@ public abstract class ModSpell extends IForgeRegistryEntry.Impl<ModSpell> {
     }
 
     public boolean cast(SpellContext context) {
-        if(!isCodeSideCorrect(context.worldIn))
+        if(!isCodeSideCorrect(context.world))
             return true;
-        if(!isTruePlayer(context.playerIn))
+        if(!isTruePlayer(context.player))
             return false;
         performAction(context);
         return true;

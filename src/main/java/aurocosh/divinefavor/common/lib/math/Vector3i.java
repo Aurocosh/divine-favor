@@ -5,7 +5,6 @@ import net.minecraft.util.math.BlockPos;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 public class Vector3i implements IDeepCopy<Vector3i> {
@@ -45,6 +44,13 @@ public class Vector3i implements IDeepCopy<Vector3i> {
         for (Vector3i vector : vectors)
             posList.add(vector.toBlockPos());
         return posList;
+    }
+
+    public static List<Vector3i> convertPos(List<BlockPos> posList) {
+        List<Vector3i> vectors = new ArrayList<>(posList.size());
+        for (BlockPos pos : posList)
+            vectors.add(Vector3i.convert(pos));
+        return vectors;
     }
 
     public static BlockPos[] convert(Vector3i[] vectors) {

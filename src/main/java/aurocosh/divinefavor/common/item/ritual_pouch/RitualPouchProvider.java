@@ -1,7 +1,5 @@
 package aurocosh.divinefavor.common.item.ritual_pouch;
 
-import aurocosh.divinefavor.common.item.talisman.capability.TalismanDataHandler;
-import net.minecraft.nbt.NBTBase;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumFacing;
 import net.minecraftforge.common.capabilities.Capability;

@@ -1,17 +1,18 @@
 package aurocosh.divinefavor.common.effect;
 
-import java.util.ArrayList;
-
 import aurocosh.divinefavor.DivineFavor;
-import aurocosh.divinefavor.common.effect.effect.*;
-import aurocosh.divinefavor.common.effect.effect.PotionEmpowerAxe;
 import aurocosh.divinefavor.common.constants.LibMisc;
 import aurocosh.divinefavor.common.effect.effect.DivineFavorPotion;
+import aurocosh.divinefavor.common.effect.effect.PotionEmpowerAxe;
+import aurocosh.divinefavor.common.effect.effect.PotionLavawalk;
+import aurocosh.divinefavor.common.effect.effect.PotionWaterwalk;
 import net.minecraft.potion.Potion;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+
+import java.util.ArrayList;
 
 @Mod.EventBusSubscriber
 public class ModPotionEffects {

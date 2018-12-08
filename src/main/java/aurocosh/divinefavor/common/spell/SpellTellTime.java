@@ -7,10 +7,8 @@ import aurocosh.divinefavor.common.spell.base.SpellType;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.util.SoundCategory;
-import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.relauncher.Side;
 
 public class SpellTellTime extends ModSpell {
     public SpellTellTime() {
@@ -19,8 +17,8 @@ public class SpellTellTime extends ModSpell {
 
     @Override
     protected boolean performAction(SpellContext context) {
-        long time = context.worldIn.getWorldTime();
-        context.playerIn.sendMessage(new TextComponentString("Time: " + time));
+        long time = context.world.getWorldTime();
+        context.player.sendMessage(new TextComponentString("Time: " + time));
         return true;
     }
 

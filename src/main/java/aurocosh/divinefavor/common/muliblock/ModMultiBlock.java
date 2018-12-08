@@ -7,7 +7,9 @@ import aurocosh.divinefavor.common.muliblock.parts.MultiBlockPart;
 import net.minecraft.world.World;
 import net.minecraftforge.registries.IForgeRegistryEntry;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public class ModMultiBlock extends IForgeRegistryEntry.Impl<ModMultiBlock> {
     public final List<MultiBlockConfiguration> configurations;
