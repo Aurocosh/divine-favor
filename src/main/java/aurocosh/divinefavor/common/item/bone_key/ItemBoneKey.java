@@ -2,7 +2,7 @@ package aurocosh.divinefavor.common.item.bone_key;
 
 import aurocosh.divinefavor.common.constants.LibItemNames;
 import aurocosh.divinefavor.common.core.DivineFavorCreativeTab;
-import aurocosh.divinefavor.common.item.base.IDivineFavorItem;
+import aurocosh.divinefavor.common.item.base.ModItem;
 import aurocosh.divinefavor.common.muliblock.IMultiblockController;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
@@ -11,9 +11,8 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import vazkii.arl.item.ItemMod;
 
-public class ItemBoneKey extends ItemMod implements IDivineFavorItem {
+public class ItemBoneKey extends ModItem {
     public ItemBoneKey() {
         super(LibItemNames.BONE_KEY);
         setMaxStackSize(1);

@@ -1,6 +1,6 @@
 package aurocosh.divinefavor.common.spell.base;
 
-import aurocosh.divinefavor.common.constants.LibMisc;
+import aurocosh.divinefavor.common.core.ResourceNamer;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.world.World;
@@ -28,7 +28,8 @@ public abstract class ModSpell extends IForgeRegistryEntry.Impl<ModSpell> {
     public ModSpell(SpellType type, boolean isServerSide) {
         this.name = type.toString();
         this.isServerSide = isServerSide;
-        setRegistryName(LibMisc.MOD_ID,"spell." + name);
+
+        setRegistryName(ResourceNamer.getFullName("spell",name));
     }
 
     public boolean cast(SpellContext context) {

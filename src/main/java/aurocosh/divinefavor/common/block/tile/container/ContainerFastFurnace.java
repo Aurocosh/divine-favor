@@ -3,6 +3,7 @@ package aurocosh.divinefavor.common.block.tile.container;
 import aurocosh.divinefavor.DivineFavor;
 import aurocosh.divinefavor.common.block.tile.TileFastFurnace;
 import aurocosh.divinefavor.common.block.tile.TileIronMedium;
+import aurocosh.divinefavor.common.network.base.NetworkHandler;
 import aurocosh.divinefavor.common.network.message.MessageSyncPower;
 import aurocosh.divinefavor.common.tool.IEnergyContainer;
 import net.minecraft.entity.player.EntityPlayer;
@@ -15,7 +16,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.SlotItemHandler;
-import vazkii.arl.network.NetworkHandler;
 
 public class ContainerFastFurnace extends Container implements IEnergyContainer {
     private static final int PROGRESS_ID = 0;

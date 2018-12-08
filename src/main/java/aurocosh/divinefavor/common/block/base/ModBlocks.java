@@ -7,28 +7,41 @@ import aurocosh.divinefavor.common.block.tile.TileFastFurnace;
 import aurocosh.divinefavor.common.block.tile.TileIronMedium;
 import aurocosh.divinefavor.common.constants.LibBlockNames;
 import aurocosh.divinefavor.common.constants.LibResources;
+import aurocosh.divinefavor.common.registry.base.CommonRegistry;
+import net.minecraft.item.ItemBlock;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.registry.GameRegistry;
-import vazkii.arl.block.BlockMod;
+
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
 
 public class ModBlocks {
-    public static BlockMod blockFastFurnace;
-    public static BlockMod blockIronMedium;
-    public static BlockMod blockDiviner;
+    private static Map<ResourceLocation,ModBlock> blockMap = new HashMap<>();
+    private static Map<ResourceLocation, ItemBlock> itemBlockMap = new HashMap<>();
+
+    public static ModBlock blockFastFurnace;
+    public static ModBlock blockIronMedium;
+    public static ModBlock blockDiviner;
+
+    public static Collection<ModBlock> getBlocks(){
+        return blockMap.values();
+    }
+    public static Collection<ItemBlock> getItemBlocks(){
+        return itemBlockMap.values();
+    }
 
     public static void preInit() {
-        blockFastFurnace = new BlockFastFurnaceMod();
-        blockIronMedium = new BlockIronMedium();
-        blockDiviner = new BlockDiviner();
+        blockFastFurnace = register(new BlockFastFurnaceMod());
+        blockIronMedium = register(new BlockIronMedium());
+        blockDiviner = register(new BlockDiviner());
 
         initTileEntities();
     }
 
     public static void init() {
-        // Psi oredict mappings
         //OreDictionary.registerOre("blockPsiDust", new ItemStack(psiDecorative, 1, 0));
-        //OreDictionary.registerOre("blockPsiMetal", new ItemStack(psiDecorative, 1, 1));
-        //OreDictionary.registerOre("blockPsiGem", new ItemStack(psiDecorative, 1, 2));
     }
 
     private static void initTileEntities() {
@@ -40,10 +53,22 @@ public class ModBlocks {
         GameRegistry.registerTileEntity(clazz, LibResources.PREFIX_MOD + key);
     }
 
-
     //@SideOnly(Side.CLIENT)
     //public static void initModels() {
     //    blockFastFurnace.initModel();
     //    blockIronMedium.initModel();
+
     //}
+
+    private static ModBlock register(ModBlock block) {
+        ResourceLocation name = block.getRegistryName();
+        blockMap.put(name,block);
+        CommonRegistry.register(block);
+
+        ItemBlock itemBlock = new ItemBlock(block);
+        itemBlock.setRegistryName(name);
+        itemBlockMap.put(name,itemBlock);
+        CommonRegistry.register(itemBlock);
+        return block;
+    }
 }

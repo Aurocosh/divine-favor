@@ -44,13 +44,13 @@ public class UtilTextureRender {
       Gui.drawModalRectWithCustomSizedTexture(x, y, 0F, 0F, w, h, w, h);
     }
     catch (NullPointerException e) {
-      DivineFavor.logger.error("Null pointer drawTexture;Simple " + res.getResourcePath());
+      DivineFavor.logger.error("Null pointer drawTexture;Simple " + res.getPath());
       DivineFavor.logger.error(e.getMessage());
       e.printStackTrace();
     }
     catch (net.minecraft.util.ReportedException e) {
       DivineFavor.logger.error("net.minecraft.util.ReportedException ");
-      DivineFavor.logger.error(res.getResourceDomain() + ":" + res.getResourcePath());
+      DivineFavor.logger.error(res.getNamespace() + ":" + res.getPath());
       DivineFavor.logger.error(e.getMessage());
       e.printStackTrace();
     }

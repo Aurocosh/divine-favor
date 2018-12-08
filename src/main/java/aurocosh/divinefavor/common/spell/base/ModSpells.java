@@ -1,6 +1,6 @@
 package aurocosh.divinefavor.common.spell.base;
 
-import aurocosh.divinefavor.common.registry.SpellRegestry;
+import aurocosh.divinefavor.common.registry.base.CommonRegistry;
 import aurocosh.divinefavor.common.spell.*;
 import net.minecraft.util.ResourceLocation;
 
@@ -36,9 +36,9 @@ public final class ModSpells {
         waterwalking = register(new SpellWaterwalking());
     }
 
-    public static ModSpell register(ModSpell modSpell) {
-        spells.put(modSpell.getRegistryName(), modSpell);
-        SpellRegestry.register(modSpell);
-        return modSpell;
+    public static ModSpell register(ModSpell spell) {
+        spells.put(spell.getRegistryName(), spell);
+        CommonRegistry.register(spell);
+        return spell;
     }
 }

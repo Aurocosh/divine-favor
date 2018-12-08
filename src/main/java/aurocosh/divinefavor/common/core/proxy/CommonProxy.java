@@ -9,12 +9,15 @@ import aurocosh.divinefavor.common.item.base.ModItems;
 import aurocosh.divinefavor.common.item.talisman.capability.TalismanDataHandler;
 import aurocosh.divinefavor.common.muliblock.ModMultiBlocks;
 import aurocosh.divinefavor.common.network.GuiHandler;
-import aurocosh.divinefavor.common.network.MessageRegister;
+import aurocosh.divinefavor.common.network.base.MessageRegister;
 import aurocosh.divinefavor.common.receipes.ModRecipes;
 import aurocosh.divinefavor.common.spell.base.ModSpells;
 import aurocosh.divinefavor.common.spirit.ModSpirits;
 import com.google.common.util.concurrent.ListenableFuture;
+import io.netty.buffer.ByteBuf;
+import io.netty.buffer.Unpooled;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.network.PacketBuffer;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
@@ -24,9 +27,18 @@ import net.minecraftforge.fml.common.network.NetworkRegistry;
 
 @Mod.EventBusSubscriber
 public class CommonProxy {
+
+    @FunctionalInterface
+    public static interface Test<T extends Object> {
+        void write(ByteBuf buf, T t);
+    }
+
+    public static interface Test2<T extends Object> {
+        T read(ByteBuf buf);
+    }
     public void preInit(FMLPreInitializationEvent e) {
-        //UtilAssets.Test();
-        //UtilAssets.Test2();
+        //UtilAssets.BufWriter();
+        //UtilAssets.BufReader();
 
         TalismanDataHandler.register();
 
@@ -43,6 +55,27 @@ public class CommonProxy {
         NetworkRegistry.INSTANCE.registerGuiHandler(DivineFavor.instance, new GuiHandler());
 
         MinecraftForge.EVENT_BUS.register(new PlayerDataHandler.EventHandler());
+//
+//        Test<Boolean> writeBool = ByteBuf::writeBoolean;
+//        Test<Short> writeShort = ByteBuf::writeShort;
+//
+//        Test2<Boolean> readBool = ByteBuf::readBoolean;
+//        Test2<Short> readShort = ByteBuf::readShort;
+//
+//        boolean b = true;
+//        short s = 54;
+//
+//        PacketBuffer packetbuffer = new PacketBuffer(Unpooled.buffer());
+//        writeBool.write(packetbuffer,b);
+//        writeShort.write(packetbuffer,s);
+//
+//        boolean b2 = readBool.read(packetbuffer);
+//        short s2 = readShort.read(packetbuffer);
+
+
+
+
+
     }
 
     public void init(FMLInitializationEvent e) {

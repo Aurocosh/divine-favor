@@ -8,40 +8,37 @@ public class CostFavor extends Cost {
     private int favorCount;
     private ModFavor favor;
 
-    public CostFavor(ModFavor favor, int favorCount)
-    {
+    public CostFavor(ModFavor favor, int favorCount) {
         this.favor = favor;
-        this.favorCount= favorCount;
+        this.favorCount = favorCount;
     }
 
     @Override
-    public boolean canClaim(SpellContext context)
-    {
+    public boolean canClaim(SpellContext context) {
         PlayerDataHandler.PlayerData data = PlayerDataHandler.get(context.playerIn);
-        return data.getSpellCharge(favor.getId()) >= favorCount;
+        return data.getSpellCharge(favor.id) >= favorCount;
     }
 
     @Override
-    public boolean claim(SpellContext context)
-    {
+    public boolean claim(SpellContext context) {
         PlayerDataHandler.PlayerData data = PlayerDataHandler.get(context.playerIn);
-        return data.consumeSpellCharge(favor.getId(),favorCount);
+        return data.consumeSpellCharge(favor.id, favorCount);
     }
 
     @Override
     public String getUsageInfo(SpellContext context) {
         int usesLeft = getUseCount(context);
-        if(favorCount == -1)
+        if (favorCount == -1)
             return "Unlimited use";
         return "Uses left: " + usesLeft;
     }
 
     @Override
     public int getUseCount(SpellContext context) {
-        if(favorCount == 0)
+        if (favorCount == 0)
             return -1;
         PlayerDataHandler.PlayerData data = PlayerDataHandler.get(context.playerIn);
-        int favorsLeft = data.getSpellCharge(favor.getId());
+        int favorsLeft = data.getSpellCharge(favor.id);
         return favorsLeft / favorCount;
     }
 }

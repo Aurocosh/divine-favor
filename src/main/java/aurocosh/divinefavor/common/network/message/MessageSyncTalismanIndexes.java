@@ -4,14 +4,13 @@ import aurocosh.divinefavor.DivineFavor;
 import aurocosh.divinefavor.client.core.handler.ClientTickHandler;
 import aurocosh.divinefavor.common.item.talisman.capability.TalismanDataHandler;
 import aurocosh.divinefavor.common.item.talisman.capability.ITalismanCostHandler;
+import aurocosh.divinefavor.common.network.base.NetworkAutoMessage;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumHand;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
-import vazkii.arl.network.NetworkMessage;
 
-
-public class MessageSyncTalismanIndexes extends NetworkMessage {
+public class MessageSyncTalismanIndexes extends NetworkAutoMessage {
     public int unitIndex;
     public int costIndex;
 

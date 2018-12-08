@@ -82,7 +82,7 @@ public class UtilAssets {
 //
 //        String result = gson.toJson(talismanData,TalismanData.class);
 //        try {
-//            File file = new File("D:/Test/test.txt");
+//            File file = new File("D:/BufWriter/test.txt");
 //            FileWriter fileWriter = new FileWriter(file);
 //            fileWriter.write(result);
 //            fileWriter.flush();

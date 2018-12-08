@@ -1,5 +1,6 @@
 package aurocosh.divinefavor.common.muliblock;
 
+import aurocosh.divinefavor.common.core.ResourceNamer;
 import aurocosh.divinefavor.common.lib.math.CubeCoordinates;
 import aurocosh.divinefavor.common.lib.math.Vector3i;
 import aurocosh.divinefavor.common.muliblock.parts.MultiBlockPart;
@@ -12,8 +13,6 @@ public class ModMultiBlock extends IForgeRegistryEntry.Impl<ModMultiBlock> {
     public final List<MultiBlockConfiguration> configurations;
 
     public ModMultiBlock(String name, Vector3i controllerRelative, List<MultiBlockPart> parts, CubeCoordinates boundingBox) {
-        setRegistryName(name);
-
         List<MultiBlockConfiguration> configurations = new ArrayList<>();
         MultiBlockConfiguration configuration = new MultiBlockConfiguration(controllerRelative,parts,boundingBox);
         configurations.add(configuration);
@@ -25,6 +24,7 @@ public class ModMultiBlock extends IForgeRegistryEntry.Impl<ModMultiBlock> {
         configurations.add(configuration);
 
         this.configurations = Collections.unmodifiableList(configurations);
+        setRegistryName(ResourceNamer.getFullName("multi_block",name));
     }
 //
 //    public boolean isValid(World world, Vector3i controller){
@@ -35,7 +35,7 @@ public class ModMultiBlock extends IForgeRegistryEntry.Impl<ModMultiBlock> {
 //        return true;
 //    }
 
-    public ModMultiBlockInstance makeMultiblock(World world, Vector3i controller){
+    public ModMultiBlockInstance makeMultiBlock(World world, Vector3i controller){
         for (MultiBlockConfiguration configuration : configurations)
             if (configuration.isValid(world, controller))
                 return new ModMultiBlockInstance(this, configuration, controller);
