@@ -11,9 +11,8 @@ import aurocosh.divinefavor.common.muliblock.parts.StateValidator;
 import aurocosh.divinefavor.common.muliblock.patchouli.PatchouliMultiBlockData;
 import aurocosh.divinefavor.common.muliblock.serialization.StateValidatorSerializer;
 import aurocosh.divinefavor.common.muliblock.serialization.Vector3iByteSerializer;
-import aurocosh.divinefavor.common.muliblock.serialization.Vector3iSerializer;
+import aurocosh.divinefavor.common.registry.base.CommonRegistry;
 import aurocosh.divinefavor.common.util.UtilAssets;
-import com.google.common.reflect.TypeToken;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonSyntaxException;
@@ -97,7 +96,7 @@ public final class ModMultiBlocks {
 
     public static ModMultiBlock register(ModMultiBlock multiBlock) {
         multiBlockMap.put(multiBlock.getRegistryName(), multiBlock);
-//        SpiritRegestry.register(spirit);
+        CommonRegistry.register(multiBlock);
         return multiBlock;
     }
 
@@ -112,7 +111,7 @@ public final class ModMultiBlocks {
 
         IMultiblock iMultiblock = PatchouliAPI.instance.makeMultiblock(multiBlockData.pattern, multiBlockData.matchingData);
         ResourceLocation name = multiBlock.getRegistryName();
-        ResourceLocation location = new ResourceLocation(name.getResourceDomain(), name.getResourcePath() + ".patchouli");
+        ResourceLocation location = new ResourceLocation(name.getNamespace(), name.getPath() + ".patchouli");
         PatchouliAPI.instance.registerMultiblock(location, iMultiblock);
     }
 }

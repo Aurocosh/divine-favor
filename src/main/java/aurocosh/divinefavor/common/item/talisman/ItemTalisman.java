@@ -1,15 +1,14 @@
 package aurocosh.divinefavor.common.item.talisman;
 
 import aurocosh.divinefavor.DivineFavor;
-import aurocosh.divinefavor.common.lib.math.Vector3;
 import aurocosh.divinefavor.common.block.base.ModBlocks;
 import aurocosh.divinefavor.common.constants.LibFavorType;
 import aurocosh.divinefavor.common.constants.LibGuiIDs;
 import aurocosh.divinefavor.common.constants.LibMisc;
 import aurocosh.divinefavor.common.core.DivineFavorCreativeTab;
 import aurocosh.divinefavor.common.core.handlers.PlayerDataHandler;
-import aurocosh.divinefavor.common.item.base.IDescriptionProvider;
-import aurocosh.divinefavor.common.item.base.IDivineFavorItem;
+import aurocosh.divinefavor.common.item.base.ModItem;
+import aurocosh.divinefavor.common.lib.math.Vector3;
 import aurocosh.divinefavor.common.requirements.base.SpellRequirement;
 import aurocosh.divinefavor.common.spell.base.ModSpell;
 import aurocosh.divinefavor.common.spell.base.SpellContext;
@@ -25,9 +24,8 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
-import vazkii.arl.item.ItemMod;
 
-public class ItemTalisman extends ItemMod implements IDivineFavorItem, IDescriptionProvider {
+public class ItemTalisman extends ModItem {
     private boolean castOnUse;
     private boolean castOnRightClick;
     private ModSpell modSpell;
@@ -158,6 +156,6 @@ public class ItemTalisman extends ItemMod implements IDivineFavorItem, IDescript
 
     @Override
     public String getTranslationKey() {
-        return LibMisc.MOD_ID + ":" + getRegistryName().getResourcePath();
+        return LibMisc.MOD_ID + ":" + getRegistryName().getPath();
     }
 }

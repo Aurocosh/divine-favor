@@ -25,8 +25,10 @@ public class DivineFavor {
     public static DivineFavor instance;
     public static ModLogger logger;
     public static ModContainer container;
+
     public EventRegistry events;
     private ArrayList<IContent> content;
+
     //public static SimpleNetworkWrapper network = NetworkRegistry.INSTANCE.newSimpleChannel(LibMisc.MOD_ID);
     //PacketRegistry.register(network);
 

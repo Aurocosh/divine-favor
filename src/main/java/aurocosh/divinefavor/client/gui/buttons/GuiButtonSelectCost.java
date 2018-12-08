@@ -2,11 +2,11 @@ package aurocosh.divinefavor.client.gui.buttons;
 
 import aurocosh.divinefavor.client.gui.IActionButton;
 import aurocosh.divinefavor.common.item.talisman.capability.ITalismanCostHandler;
+import aurocosh.divinefavor.common.network.base.NetworkHandler;
 import aurocosh.divinefavor.common.network.message.MessageSyncTalismanIndexes;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.util.ResourceLocation;
-import vazkii.arl.network.NetworkHandler;
 
 public class GuiButtonSelectCost extends GuiButton implements IActionButton {
     private ITalismanCostHandler costHandler;

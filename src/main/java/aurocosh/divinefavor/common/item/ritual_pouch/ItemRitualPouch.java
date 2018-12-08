@@ -4,7 +4,7 @@ import aurocosh.divinefavor.DivineFavor;
 import aurocosh.divinefavor.common.constants.LibGuiIDs;
 import aurocosh.divinefavor.common.constants.LibItemNames;
 import aurocosh.divinefavor.common.core.DivineFavorCreativeTab;
-import aurocosh.divinefavor.common.item.base.IDivineFavorItem;
+import aurocosh.divinefavor.common.item.base.ModItem;
 import aurocosh.divinefavor.common.item.base.ModItems;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -14,9 +14,8 @@ import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
 import net.minecraft.world.World;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
-import vazkii.arl.item.ItemMod;
 
-public class ItemRitualPouch extends ItemMod implements IDivineFavorItem {
+public class ItemRitualPouch extends ModItem {
     public ItemRitualPouch() {
         super(LibItemNames.RITUAL_POUCH);
         setMaxStackSize(1);
@@ -31,7 +30,6 @@ public class ItemRitualPouch extends ItemMod implements IDivineFavorItem {
         playerIn.openGui(DivineFavor.instance, LibGuiIDs.RITUAL_POUCH, worldIn, (int)playerIn.posX, (int)playerIn.posY, (int)playerIn.posZ);
         return new ActionResult<>(EnumActionResult.SUCCESS, itemStackIn);
     }
-
 
     @Override
     public ICapabilityProvider initCapabilities(ItemStack item, NBTTagCompound nbt ) {

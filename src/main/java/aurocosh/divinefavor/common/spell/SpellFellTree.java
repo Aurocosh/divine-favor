@@ -16,7 +16,6 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
-import net.minecraftforge.fml.relauncher.Side;
 
 import java.util.Queue;
 import java.util.Set;
@@ -24,7 +23,7 @@ import java.util.Stack;
 
 public class SpellFellTree extends ModSpell {
     public SpellFellTree() {
-        super(SpellType.STONEBALL_THROW, true);
+        super(SpellType.FELL_TREE, true);
     }
 
     @Override

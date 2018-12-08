@@ -3,14 +3,14 @@ package aurocosh.divinefavor.common.item.mystic_architect_stick;
 import aurocosh.divinefavor.DivineFavor;
 import aurocosh.divinefavor.common.constants.LibItemNames;
 import aurocosh.divinefavor.common.core.DivineFavorCreativeTab;
-import aurocosh.divinefavor.common.item.base.IDivineFavorItem;
+import aurocosh.divinefavor.common.item.base.ModItem;
+import aurocosh.divinefavor.common.lib.math.CubeCoordinates;
 import aurocosh.divinefavor.common.lib.math.Vector3i;
 import aurocosh.divinefavor.common.muliblock.MultiBlockData;
 import aurocosh.divinefavor.common.muliblock.parts.*;
 import aurocosh.divinefavor.common.muliblock.serialization.StateValidatorSerializer;
 import aurocosh.divinefavor.common.muliblock.serialization.Vector3iByteSerializer;
 import aurocosh.divinefavor.common.util.UtilNbt;
-import aurocosh.divinefavor.common.lib.math.CubeCoordinates;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import net.minecraft.block.Block;
@@ -25,13 +25,12 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.world.World;
 import org.lwjgl.input.Keyboard;
-import vazkii.arl.item.ItemMod;
 
 import java.util.*;
 
 import static net.minecraft.client.gui.GuiScreen.setClipboardString;
 
-public class ItemMysticArchitectStick extends ItemMod implements IDivineFavorItem {
+public class ItemMysticArchitectStick extends ModItem {
     public static final String TAG_CURRENT_IS_SECOND = "CurrentIsSecond";
     public static final String TAG_POS_FIRST = "PosFirst";
     public static final String TAG_POS_SECOND = "PosSecond";

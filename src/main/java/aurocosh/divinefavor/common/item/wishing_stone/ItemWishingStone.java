@@ -3,8 +3,7 @@ package aurocosh.divinefavor.common.item.wishing_stone;
 import aurocosh.divinefavor.common.core.DivineFavorCreativeTab;
 import aurocosh.divinefavor.common.core.handlers.PlayerDataHandler;
 import aurocosh.divinefavor.common.favors.ModFavor;
-import aurocosh.divinefavor.common.favors.ModFavors;
-import aurocosh.divinefavor.common.item.base.IDivineFavorItem;
+import aurocosh.divinefavor.common.item.base.ModItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
@@ -12,9 +11,8 @@ import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
 import net.minecraft.world.World;
-import vazkii.arl.item.ItemMod;
 
-public class ItemWishingStone extends ItemMod implements IDivineFavorItem {
+public class ItemWishingStone extends ModItem {
     private ModFavor favor;
     private int favorCount;
 
@@ -35,7 +33,7 @@ public class ItemWishingStone extends ItemMod implements IDivineFavorItem {
             return new ActionResult<>(EnumActionResult.PASS, itemStackIn);
 
         PlayerDataHandler.PlayerData data = PlayerDataHandler.get(playerIn);
-        data.provideSpellCharge(favor.getId(),favorCount);
+        data.provideSpellCharge(favor.id,favorCount);
         return new ActionResult<>(EnumActionResult.SUCCESS, itemStackIn);
     }
 

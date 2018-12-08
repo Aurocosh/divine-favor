@@ -229,7 +229,7 @@ public class TileIronMedium extends TickableTileEntity implements IMultiblockCon
         ItemCallingStone callingStone = (ItemCallingStone) stack.getItem();
         ModMultiBlock multiBlock = callingStone.multiBlock;
         Vector3i position = Vector3i.convert(pos);
-        multiBlockInstance = multiBlock.makeMultiblock(world, position);
+        multiBlockInstance = multiBlock.makeMultiBlock(world, position);
         if (multiBlockInstance != null)
             MultiBlockWatcher.registerController(this);
     }
