@@ -23,7 +23,7 @@ public class ModBlocks {
     private static Map<ResourceLocation, ItemBlock> itemBlockMap = new HashMap<>();
 
     public static ModBlock blockFastFurnace;
-    public static ModBlock blockIronMedium;
+    public static ModBlock IMMATERIAL_MEDIUM;
     public static ModBlock blockDiviner;
 
     public static Collection<ModBlock> getBlocks(){
@@ -35,7 +35,7 @@ public class ModBlocks {
 
     public static void preInit() {
         blockFastFurnace = register(new BlockFastFurnaceMod());
-        blockIronMedium = register(new BlockMedium());
+        IMMATERIAL_MEDIUM = register(new BlockMedium());
         blockDiviner = register(new BlockDiviner());
 
         initTileEntities();
@@ -57,7 +57,7 @@ public class ModBlocks {
     //@SideOnly(Side.CLIENT)
     //public static void initModels() {
     //    blockFastFurnace.initModel();
-    //    blockIronMedium.initModel();
+    //    IMMATERIAL_MEDIUM_UID.initModel();
 
     //}
 

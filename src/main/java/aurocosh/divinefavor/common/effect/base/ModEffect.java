@@ -19,7 +19,4 @@ public class ModEffect extends PotionEffect {
     public ModEffect(Potion potionIn, int durationIn, int amplifierIn, boolean ambientIn, boolean showParticlesIn) {
         super(potionIn, durationIn, amplifierIn, ambientIn, showParticlesIn);
     }
-
-
-
 }
