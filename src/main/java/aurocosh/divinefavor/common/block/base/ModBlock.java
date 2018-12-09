@@ -11,6 +11,6 @@ public class ModBlock extends Block {
 //
 //        ItemBlock itemBlock = new ItemBlock(this);
 //        itemBlock.setRegistryName(ResourceNamer.getFullName(name));
-//        CommonRegistry.register(itemBlock);
+//        CommonRegistry.preInit(itemBlock);
     }
 }

@@ -1,6 +1,6 @@
 package aurocosh.divinefavor.common.spirit;
 
-import aurocosh.divinefavor.common.util.helper_classes.TimePeriod;
+import aurocosh.divinefavor.common.lib.TimePeriod;
 
 import java.util.ArrayList;
 import java.util.List;

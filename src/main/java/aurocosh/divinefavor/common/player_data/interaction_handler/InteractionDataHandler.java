@@ -1,6 +1,6 @@
 package aurocosh.divinefavor.common.player_data.interaction_handler;
 
-import aurocosh.divinefavor.common.constants.LibCapabilityNames;
+import aurocosh.divinefavor.common.constants.ConstCapabilityNames;
 import aurocosh.divinefavor.common.core.ResourceNamer;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
@@ -35,7 +35,7 @@ public class InteractionDataHandler {
     @SubscribeEvent
     public void attachCapabilities(AttachCapabilitiesEvent<Entity> event) {
         if (event.getObject() instanceof EntityPlayer)
-            event.addCapability(ResourceNamer.getFullName(LibCapabilityNames.INTERACTION_CAPABILITY), new InteractionProvider());
+            event.addCapability(ResourceNamer.getFullName(ConstCapabilityNames.INTERACTION_CAPABILITY), new InteractionProvider());
     }
 
     @SubscribeEvent

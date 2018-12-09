@@ -2,8 +2,8 @@ package aurocosh.divinefavor.client.gui;
 
 import aurocosh.divinefavor.client.gui.container.GuiCustomScreen;
 import aurocosh.divinefavor.client.gui.text.GuiTextBlock;
-import aurocosh.divinefavor.common.constants.LibResources;
-import aurocosh.divinefavor.common.container.ContainerTalisman;
+import aurocosh.divinefavor.common.constants.ConstResources;
+import aurocosh.divinefavor.common.item.talisman.ContainerTalisman;
 import aurocosh.divinefavor.common.item.talisman.ItemTalisman;
 import mezz.jei.util.Translator;
 import net.minecraft.client.gui.GuiButton;
@@ -13,7 +13,7 @@ import net.minecraft.util.ResourceLocation;
 
 
 public class GuiTalismanContainer extends GuiCustomScreen {
-    private static final ResourceLocation texture = new ResourceLocation(LibResources.GUI_TALISMAN);
+    private static final ResourceLocation texture = new ResourceLocation(ConstResources.GUI_TALISMAN);
 
     private ItemStack talisman;
 

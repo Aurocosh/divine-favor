@@ -1,7 +1,7 @@
 package aurocosh.divinefavor.client.render.entity;
 
 import aurocosh.divinefavor.common.entity.EntityStoneball;
-import aurocosh.divinefavor.common.item.base.ModItems;
+import aurocosh.divinefavor.common.item.common.ModItems;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.RenderItem;
 import net.minecraft.client.renderer.entity.RenderManager;

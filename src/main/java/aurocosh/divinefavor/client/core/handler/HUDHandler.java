@@ -1,7 +1,7 @@
 package aurocosh.divinefavor.client.core.handler;
 
 import aurocosh.divinefavor.DivineFavor;
-import aurocosh.divinefavor.common.item.mystic_architect_stick.ItemMysticArchitectStick;
+import aurocosh.divinefavor.common.item.ItemMysticArchitectStick;
 import aurocosh.divinefavor.common.item.talisman.ItemTalisman;
 import aurocosh.divinefavor.common.util.UtilNbt;
 import net.minecraft.client.Minecraft;

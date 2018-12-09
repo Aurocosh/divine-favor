@@ -1,6 +1,6 @@
 package aurocosh.divinefavor.common.lib.math;
 
-import aurocosh.divinefavor.common.util.helper_classes.IDeepCopy;
+import aurocosh.divinefavor.common.lib.interfaces.IDeepCopy;
 import net.minecraft.util.math.BlockPos;
 
 import java.util.List;

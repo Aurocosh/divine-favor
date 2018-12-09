@@ -3,7 +3,7 @@ package aurocosh.divinefavor.common.favor_sources.builders;
 import aurocosh.divinefavor.common.favor_sources.favor_sources.base.FavorSource;
 import aurocosh.divinefavor.common.favor_sources.favor_sources.regen.TimeOfDayFavorSource;
 import aurocosh.divinefavor.common.favors.ModFavor;
-import aurocosh.divinefavor.common.util.helper_classes.TimePeriod;
+import aurocosh.divinefavor.common.lib.TimePeriod;
 
 public class TimeOfDayFavorSourceBuilder extends RegenFavorSourceBuilder<TimeOfDayFavorSourceBuilder> {
     private TimePeriod timePeriod;
