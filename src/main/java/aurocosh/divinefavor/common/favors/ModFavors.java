@@ -13,8 +13,8 @@ public final class ModFavors {
     private static int nextId = 0;
 
     public static void preInit() {
-        favor_of_allfire = register(new ModFavor("favor_of_allfire", "favor_of_allfire", nextId++));
-        favor_of_timber = register(new ModFavor("favor_of_timber", "favor_of_timber", nextId++));
+        favor_of_allfire = register(new ModFavor("allfire", "allfire", nextId++));
+        favor_of_timber = register(new ModFavor("timber", "timber", nextId++));
     }
 
     public static Collection<ModFavor> getFavorList() {

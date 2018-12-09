@@ -3,6 +3,7 @@ package aurocosh.divinefavor.common.core.proxy;
 import aurocosh.divinefavor.DivineFavor;
 import aurocosh.divinefavor.common.block.base.ModBlocks;
 import aurocosh.divinefavor.common.entity.ModEntities;
+import aurocosh.divinefavor.common.favor_sources.common.ModFavorSources;
 import aurocosh.divinefavor.common.favors.ModFavors;
 import aurocosh.divinefavor.common.item.base.ModItems;
 import aurocosh.divinefavor.common.item.talisman.capability.TalismanDataHandler;
@@ -22,6 +23,8 @@ import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 
+import java.io.File;
+
 @Mod.EventBusSubscriber
 public class CommonProxy {
     public void preInit(FMLPreInitializationEvent e) {
@@ -31,6 +34,7 @@ public class CommonProxy {
         ModFavors.preInit();
         ModSpells.preInit();
         ModMultiBlocks.preInit();
+        ModFavorSources.preInit();
 
         ModBlocks.preInit();
         ModItems.preInit();
@@ -44,6 +48,10 @@ public class CommonProxy {
         NetworkRegistry.INSTANCE.registerGuiHandler(DivineFavor.instance, new GuiHandler());
 
 //        MinecraftForge.EVENT_BUS.register(new PlayerDataHandler.EventHandler());
+
+        File test = e.getModConfigurationDirectory();
+
+//        e.getSuggestedConfigurationFile().getParentFile().getParentFile();
     }
 
     public void init(FMLInitializationEvent e) {

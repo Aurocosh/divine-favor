@@ -14,8 +14,8 @@ public class SpiritBuilder {
         activityPeriods = new ArrayList<>();
     }
 
-    public SpiritBuilder addActivityPeriod(TimePeriod period){
-        activityPeriods.add(period);
+    public SpiritBuilder addActivityPeriod(int start, int stop){
+        activityPeriods.add(TimePeriod.fromHours(start, stop));
         return this;
     }
 
