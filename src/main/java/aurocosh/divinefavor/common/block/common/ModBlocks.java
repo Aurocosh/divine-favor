@@ -1,6 +1,7 @@
-package aurocosh.divinefavor.common.block.base;
+package aurocosh.divinefavor.common.block.common;
 
 import aurocosh.divinefavor.common.block.BlockDiviner;
+import aurocosh.divinefavor.common.block.base.ModBlock;
 import aurocosh.divinefavor.common.block.fast_furnace.BlockFastFurnaceMod;
 import aurocosh.divinefavor.common.block.fast_furnace.TileFastFurnace;
 import aurocosh.divinefavor.common.block.medium.BlockMedium;
@@ -18,7 +19,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ModBlocks {
-    private static Map<ResourceLocation,ModBlock> blockMap = new HashMap<>();
+    private static Map<ResourceLocation, ModBlock> blockMap = new HashMap<>();
     private static Map<ResourceLocation, ItemBlock> itemBlockMap = new HashMap<>();
 
     public static ModBlock blockFastFurnace;

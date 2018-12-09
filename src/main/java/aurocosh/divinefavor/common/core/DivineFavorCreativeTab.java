@@ -1,7 +1,7 @@
 package aurocosh.divinefavor.common.core;
 
 import aurocosh.divinefavor.common.block.base.ModBlock;
-import aurocosh.divinefavor.common.block.base.ModBlocks;
+import aurocosh.divinefavor.common.block.common.ModBlocks;
 import aurocosh.divinefavor.common.constants.LibMisc;
 import aurocosh.divinefavor.common.item.base.ModItem;
 import aurocosh.divinefavor.common.item.base.ModItems;
