@@ -46,8 +46,7 @@ public class ItemTalisman extends ModItem {
 
     public static RayTraceResult raycast(World world, Vector3 origin, Vector3 ray, double len) {
         Vector3 end = origin.copy().add(ray.copy().normalize().multiply(len));
-        RayTraceResult pos = world.rayTraceBlocks(origin.toVec3D(), end.toVec3D());
-        return pos;
+        return world.rayTraceBlocks(origin.toVec3D(), end.toVec3D());
     }
 
     public boolean castUse(SpellContext context) {
@@ -116,7 +115,7 @@ public class ItemTalisman extends ModItem {
         IFavorHandler favorHandler = context.player.getCapability(CAPABILITY_FAVOR, null);
         if(favorHandler == null)
             return false;
-        if(favorHandler.consumeFavor(favor.id,favorPerUse))
+        if(!favorHandler.consumeFavor(favor.id,favorPerUse))
             return false;
 
         int favorValue = favorHandler.getFavor(favor.id);
