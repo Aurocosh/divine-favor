@@ -99,8 +99,10 @@ public final class HUDHandler {
         int ticks = ReflectionHelper.getPrivateValue(GuiIngame.class, mc.ingameGUI, LibObfuscation.REMAINING_HIGHLIGHT_TICKS);
         //ticks -= 10;
 
-        if (ticks > 0) {
-            int alpha = Math.min(255, (int) ((ticks - pticks) * 256.0F / 10.0F));
+        //if (ticks > 0) {
+//            int alpha = Math.min(255, (int) ((ticks - pticks) * 256.0F / 10.0F));
+            int alpha = 255;
+
             int color = (0 << 0) + (128 << 8) + (0 << 16) + (alpha << 24);
 
             int x = res.getScaledWidth() / 2 - mc.fontRenderer.getStringWidth(description) / 2;
@@ -120,7 +122,7 @@ public final class HUDHandler {
             mc.getRenderItem().renderItemIntoGUI(stack, 0, 0);
             GlStateManager.popMatrix();
             GlStateManager.disableBlend();
-        }
+        //}
     }
 
     @SideOnly(Side.CLIENT)
@@ -543,7 +545,7 @@ public final class HUDHandler {
         GlStateManager.enableBlend();
         GlStateManager.tryBlendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO);
 
-        renderBox(tessellator, bufferbuilder, x, y, z, dx, dy, dz, 255, 223, 127); // Draw the box around the blocks we've copied.
+        renderBox(tessellator, bufferbuilder, x, y, z, dx, dy, dz, 255, 223, 127); // Draw the box around the validBlocks we've copied.
 
         GlStateManager.glLineWidth(1.0F);
         GlStateManager.enableLighting();

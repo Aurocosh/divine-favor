@@ -16,13 +16,13 @@ public final class ModSpirits {
     public static void preInit() {
         allfire = register(
                 new SpiritBuilder(LibSpiritNames.ALLFIRE)
-                        .addActivityPeriod(new TimePeriod(10, 14, 1000))
+                        .addActivityPeriod(10, 14)
                         .create()
         );
 
         timber = register(
                 new SpiritBuilder(LibSpiritNames.TIMBER)
-                        .addActivityPeriod(new TimePeriod(6, 12, 1000))
+                        .addActivityPeriod(6, 12)
                         .create()
         );
     }
