@@ -1,9 +1,9 @@
 package aurocosh.divinefavor.common.favor_sources.common;
 
-import aurocosh.divinefavor.common.favor_sources.favor_sources.base.FavorSource;
 import aurocosh.divinefavor.common.favor_sources.builders.BlockBreakFavorSourceBuilder;
 import aurocosh.divinefavor.common.favor_sources.builders.BlockPlaceFavorSourceBuilder;
 import aurocosh.divinefavor.common.favor_sources.builders.TimeOfDayFavorSourceBuilder;
+import aurocosh.divinefavor.common.favor_sources.favor_sources.base.FavorSource;
 import aurocosh.divinefavor.common.favors.ModFavors;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.ResourceLocation;

@@ -3,9 +3,7 @@ package aurocosh.divinefavor.common.favor_sources.builders;
 import aurocosh.divinefavor.common.favors.ModFavor;
 import net.minecraft.util.ResourceLocation;
 
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 public abstract class BlockFavorSourceBuilder<T extends FavorSourceBuilder<T>> extends FavorSourceBuilder<T> {
