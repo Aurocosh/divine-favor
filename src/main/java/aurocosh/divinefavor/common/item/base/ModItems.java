@@ -12,7 +12,6 @@ import aurocosh.divinefavor.common.item.talisman.TalismanBuilder;
 import aurocosh.divinefavor.common.item.wishing_stone.ItemWishingStone;
 import aurocosh.divinefavor.common.muliblock.ModMultiBlocks;
 import aurocosh.divinefavor.common.registry.base.CommonRegistry;
-import aurocosh.divinefavor.common.requirements.cost.costs.CostFavor;
 import aurocosh.divinefavor.common.spell.base.ModSpells;
 import aurocosh.divinefavor.common.spirit.ModSpirits;
 import net.minecraft.util.ResourceLocation;
@@ -69,50 +68,48 @@ public final class ModItems {
     }
 
     public static void generateTalismans() {
-        arrowThrowTalisman = register(new TalismanBuilder(LibItemNames.ARROW_THROW_TALISMAN)
+        arrowThrowTalisman = register(new TalismanBuilder(LibItemNames.ARROW_THROW_TALISMAN, ModFavors.favor_of_allfire, 1)
                 .setSpell(ModSpells.arrow_throw)
                 .castOnUse()
                 .castOnRighClick()
-                .addCost(new CostFavor(ModFavors.favor_of_allfire, 1))
                 .create());
-        bonemeal_talisman = register(new TalismanBuilder(LibItemNames.BONEMEAL_TALISMAN)
+        bonemeal_talisman = register(new TalismanBuilder(LibItemNames.BONEMEAL_TALISMAN, ModFavors.favor_of_allfire, 1)
                 .setSpell(ModSpells.bonemeal)
                 .castOnUse()
-                .addCost(new CostFavor(ModFavors.favor_of_timber, 1))
                 .create());
-        empower_axe_talisman = register(new TalismanBuilder(LibItemNames.EMPOWER_AXE_TALISMAN)
+        empower_axe_talisman = register(new TalismanBuilder(LibItemNames.EMPOWER_AXE_TALISMAN, ModFavors.favor_of_timber, 1)
                 .setSpell(ModSpells.empower_axe)
                 .castOnUse()
                 .castOnRighClick()
                 .create());
-        fell_tree_talisman = register(new TalismanBuilder(LibItemNames.FELL_TREE_TALISMAN)
+        fell_tree_talisman = register(new TalismanBuilder(LibItemNames.FELL_TREE_TALISMAN, ModFavors.favor_of_timber, 1)
                 .setSpell(ModSpells.fell_tree)
                 .castOnUse()
                 .create());
-        ignition_talisman = register(new TalismanBuilder(LibItemNames.IGNITION_TALISMAN)
+        ignition_talisman = register(new TalismanBuilder(LibItemNames.IGNITION_TALISMAN, ModFavors.favor_of_allfire, 1)
                 .setSpell(ModSpells.ignition)
                 .castOnUse()
                 .create());
-        lavawalking_talisman = register(new TalismanBuilder(LibItemNames.LAVAWALKING_TALISMAN)
+        lavawalking_talisman = register(new TalismanBuilder(LibItemNames.LAVAWALKING_TALISMAN, ModFavors.favor_of_allfire, 2)
                 .setSpell(ModSpells.lavawalking)
                 .castOnUse()
                 .castOnRighClick()
                 .create());
-        snowball_throw_talisman = register(new TalismanBuilder(LibItemNames.SNOWBALL_THROW_TALISMAN)
+        snowball_throw_talisman = register(new TalismanBuilder(LibItemNames.SNOWBALL_THROW_TALISMAN, ModFavors.favor_of_allfire, 1)
                 .setSpell(ModSpells.snowball_throw)
                 .castOnUse()
                 .castOnRighClick()
                 .create());
-        stoneball_throw_talisman = register(new TalismanBuilder(LibItemNames.STONEBALL_THROW_TALISMAN)
+        stoneball_throw_talisman = register(new TalismanBuilder(LibItemNames.STONEBALL_THROW_TALISMAN, ModFavors.favor_of_allfire, 1)
                 .setSpell(ModSpells.stoneball_throw)
                 .castOnUse()
                 .castOnRighClick()
                 .create());
-        small_fireball_throw_talisman = register(new TalismanBuilder(LibItemNames.SMALL_FIREBALL_THROW_TALISMAN)
+        small_fireball_throw_talisman = register(new TalismanBuilder(LibItemNames.SMALL_FIREBALL_THROW_TALISMAN, ModFavors.favor_of_allfire, 1)
                 .setSpell(ModSpells.small_fireball_throw)
                 .castOnRighClick()
                 .create());
-        waterwalking_talisman = register(new TalismanBuilder(LibItemNames.WATERWALKING_TALISMAN)
+        waterwalking_talisman = register(new TalismanBuilder(LibItemNames.WATERWALKING_TALISMAN, ModFavors.favor_of_allfire, 1)
                 .setSpell(ModSpells.waterwalking)
                 .castOnUse()
                 .castOnRighClick()

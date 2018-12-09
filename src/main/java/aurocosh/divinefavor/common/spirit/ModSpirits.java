@@ -2,7 +2,6 @@ package aurocosh.divinefavor.common.spirit;
 
 import aurocosh.divinefavor.common.constants.LibSpiritNames;
 import aurocosh.divinefavor.common.registry.base.CommonRegistry;
-import aurocosh.divinefavor.common.util.helper_classes.TimePeriod;
 import net.minecraft.util.ResourceLocation;
 
 import java.util.HashMap;
