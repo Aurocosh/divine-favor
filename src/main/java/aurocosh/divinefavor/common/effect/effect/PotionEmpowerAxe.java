@@ -1,14 +1,13 @@
 package aurocosh.divinefavor.common.effect.effect;
 
 import aurocosh.divinefavor.common.constants.ConstEffectNames;
-import aurocosh.divinefavor.common.effect.common.ModPotionEffects;
+import aurocosh.divinefavor.common.effect.common.ModPotions;
 import aurocosh.divinefavor.common.effect.base.ModPotion;
 import aurocosh.divinefavor.common.util.UtilBlock;
 import aurocosh.divinefavor.common.core.handlers.BlockClickTracker;
 import aurocosh.divinefavor.common.util.UtilRandom;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
@@ -30,7 +29,7 @@ public class PotionEmpowerAxe extends ModPotion {
         if (world.isRemote)
             return;
 
-        if (!event.getEntityPlayer().isPotionActive(ModPotionEffects.empower_axe))
+        if (!event.getEntityPlayer().isPotionActive(ModPotions.empower_axe))
             return;
 
         EntityPlayer player = event.getEntityPlayer();

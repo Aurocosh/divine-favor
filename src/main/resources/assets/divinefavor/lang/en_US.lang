@@ -6,7 +6,9 @@ tile.divinefavor:fast_furnace.name=Fast furnace
 tile.divinefavor:iron_medium.name=Iron medium
 
 # ITEM NAMES
-# TALISMANS
+item.divinefavor:ritual_pouch.name=Ritual pouch
+
+# TALISMAN NAMES
 item.divinefavor:arrow_throw_talisman.name=Arrow throw talisman
 item.divinefavor:bonemeal_talisman.name=Bone meal talisman
 item.divinefavor:empower_axe_talisman.name=Empower axe talisman
@@ -21,16 +23,20 @@ item.divinefavor:waterwalking_talisman.name=Waterwalking talisman
 
 # WISHING STONES
 item.divinefavor:allfire_wishing_stone.name=Allfire wishing stone
+item.divinefavor:timber_wishing_stone.name=Timber wishing stone
+
+
+# CALLING STONES
+item.divinefavor:allfire_calling_stone.name=Allfire's invite
+item.divinefavor:timber_calling_stone.name=Timber's invite
 
 # EFFECT NAMES
 empower_axe=Empower axe
 lavawalk=Lava walking
 waterwalk=Water walking
 
+# JEI tab name
+container.divinefavor:immaterial_medium.name=Spiritual trade
 
-
-
+# JEI ITEM DESCRIPTIONS
 jei.divinefavor:arrow_throw_talisman=Arrow throw talisman. Throws arrows duh..
-
-
-cost.divinefavor:arrow_throw_talisman=Arrow throw talisman cost
