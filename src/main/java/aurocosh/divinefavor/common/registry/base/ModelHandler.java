@@ -1,6 +1,6 @@
 package aurocosh.divinefavor.common.registry.base;
 
-import aurocosh.divinefavor.common.block.base.ModBlocks;
+import aurocosh.divinefavor.common.block.common.ModBlocks;
 import aurocosh.divinefavor.common.item.base.ModItem;
 import aurocosh.divinefavor.common.item.base.ModItems;
 import net.minecraft.client.renderer.ItemMeshDefinition;

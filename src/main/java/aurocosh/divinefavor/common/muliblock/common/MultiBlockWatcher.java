@@ -1,6 +1,7 @@
-package aurocosh.divinefavor.common.muliblock;
+package aurocosh.divinefavor.common.muliblock.common;
 
 import aurocosh.divinefavor.common.lib.math.Vector3i;
+import aurocosh.divinefavor.common.muliblock.IMultiblockController;
 import net.minecraft.world.World;
 import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.fml.common.Mod;

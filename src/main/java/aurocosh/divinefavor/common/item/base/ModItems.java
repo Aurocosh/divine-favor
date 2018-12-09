@@ -10,7 +10,7 @@ import aurocosh.divinefavor.common.item.mystic_architect_stick.ItemMysticArchite
 import aurocosh.divinefavor.common.item.ritual_pouch.ItemRitualPouch;
 import aurocosh.divinefavor.common.item.talisman.TalismanBuilder;
 import aurocosh.divinefavor.common.item.wishing_stone.ItemWishingStone;
-import aurocosh.divinefavor.common.muliblock.ModMultiBlocks;
+import aurocosh.divinefavor.common.muliblock.common.ModMultiBlocks;
 import aurocosh.divinefavor.common.registry.base.CommonRegistry;
 import aurocosh.divinefavor.common.spell.base.ModSpells;
 import aurocosh.divinefavor.common.spirit.ModSpirits;
