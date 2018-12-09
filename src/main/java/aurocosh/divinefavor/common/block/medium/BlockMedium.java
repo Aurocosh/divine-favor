@@ -2,8 +2,8 @@ package aurocosh.divinefavor.common.block.medium;
 
 import aurocosh.divinefavor.DivineFavor;
 import aurocosh.divinefavor.common.block.base.ModBlock;
-import aurocosh.divinefavor.common.constants.LibBlockNames;
-import aurocosh.divinefavor.common.constants.LibGuiIDs;
+import aurocosh.divinefavor.common.constants.ConstBlockNames;
+import aurocosh.divinefavor.common.constants.ConstGuiIDs;
 import aurocosh.divinefavor.common.core.DivineFavorCreativeTab;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.SoundType;
@@ -28,7 +28,7 @@ public class BlockMedium extends ModBlock implements ITileEntityProvider {
     public static final PropertyEnum<MediumState> STATE = PropertyEnum.create("state", MediumState.class);
 
     public BlockMedium() {
-        super(LibBlockNames.IRON_MEDIUM, Material.IRON);
+        super(ConstBlockNames.IRON_MEDIUM, Material.IRON);
         setHardness(2.0F);
         setResistance(10.0F);
         setSoundType(SoundType.METAL);
@@ -63,7 +63,7 @@ public class BlockMedium extends ModBlock implements ITileEntityProvider {
 
     @Override
     public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing side, float hitX, float hitY, float hitZ) {
-        playerIn.openGui(DivineFavor.instance, LibGuiIDs.IRON_MEDIUM, worldIn, pos.getX(), pos.getY(), pos.getZ());
+        playerIn.openGui(DivineFavor.instance, ConstGuiIDs.IRON_MEDIUM, worldIn, pos.getX(), pos.getY(), pos.getZ());
         return true;
     }
 

@@ -1,16 +1,17 @@
 package aurocosh.divinefavor.common.effect.effect;
 
-import aurocosh.divinefavor.common.constants.LibEffectNames;
+import aurocosh.divinefavor.common.constants.ConstEffectNames;
+import aurocosh.divinefavor.common.effect.base.ModPotion;
 import net.minecraft.block.Block;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.world.World;
 
-public class PotionLavawalk extends DivineFavorPotion {
+public class PotionLavawalk extends ModPotion {
 
     public PotionLavawalk() {
-    super(LibEffectNames.LAVAWALK, true, 0x7FB8A4);
+    super(ConstEffectNames.LAVAWALK, true, 0x7FB8A4);
     }
 
     @Override

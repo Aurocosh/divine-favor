@@ -1,7 +1,7 @@
 package aurocosh.divinefavor.common.favor_sources.favor_sources.base;
 
 import aurocosh.divinefavor.common.favors.ModFavor;
-import aurocosh.divinefavor.common.util.helper_classes.TickCounter;
+import aurocosh.divinefavor.common.lib.TickCounter;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.ResourceLocation;
 

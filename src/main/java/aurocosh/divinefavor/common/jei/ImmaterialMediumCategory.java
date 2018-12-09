@@ -1,7 +1,7 @@
 package aurocosh.divinefavor.common.jei;
 
-import aurocosh.divinefavor.common.constants.LibMisc;
-import aurocosh.divinefavor.common.constants.LibResources;
+import aurocosh.divinefavor.common.constants.ConstMisc;
+import aurocosh.divinefavor.common.constants.ConstResources;
 import aurocosh.divinefavor.common.receipes.ImmaterialMediumRecipe;
 import mezz.jei.api.IGuiHelper;
 import mezz.jei.api.gui.IDrawable;
@@ -19,7 +19,7 @@ public class ImmaterialMediumCategory implements IRecipeCategory<ImmaterialMediu
     private final IDrawable background;
 
     public ImmaterialMediumCategory(IGuiHelper helper) {
-        this.background = helper.createDrawable(new ResourceLocation(LibResources.GUI_JEI_IMMATERIAL_MEDIUM_RECIPE), 0, 0, 146, 86);
+        this.background = helper.createDrawable(new ResourceLocation(ConstResources.GUI_JEI_IMMATERIAL_MEDIUM_RECIPE), 0, 0, 146, 86);
     }
 
     @Override
@@ -34,7 +34,7 @@ public class ImmaterialMediumCategory implements IRecipeCategory<ImmaterialMediu
 
     @Override
     public String getModName() {
-        return LibMisc.MOD_NAME;
+        return ConstMisc.MOD_NAME;
     }
 
     @Override

@@ -1,6 +1,6 @@
 package aurocosh.divinefavor.common.player_data.favor;
 
-import aurocosh.divinefavor.common.constants.LibCapabilityNames;
+import aurocosh.divinefavor.common.constants.ConstCapabilityNames;
 import aurocosh.divinefavor.common.core.ResourceNamer;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
@@ -35,7 +35,7 @@ public class FavorDataHandler {
     @SubscribeEvent
     public void attachCapabilities(AttachCapabilitiesEvent<Entity> event) {
         if (event.getObject() instanceof EntityPlayer)
-            event.addCapability(ResourceNamer.getFullName(LibCapabilityNames.FAVOR_CAPABILITY), new FavorProvider());
+            event.addCapability(ResourceNamer.getFullName(ConstCapabilityNames.FAVOR_CAPABILITY), new FavorProvider());
     }
 
     @SubscribeEvent

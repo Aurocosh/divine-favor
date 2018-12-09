@@ -1,9 +1,9 @@
 package aurocosh.divinefavor.common.jei;
 
 import aurocosh.divinefavor.DivineFavor;
-import aurocosh.divinefavor.common.constants.LibMisc;
+import aurocosh.divinefavor.common.constants.ConstMisc;
 import aurocosh.divinefavor.common.item.base.IDescriptionProvider;
-import aurocosh.divinefavor.common.item.base.ModItems;
+import aurocosh.divinefavor.common.item.common.ModItems;
 import aurocosh.divinefavor.common.receipes.ImmaterialMediumRecipe;
 import aurocosh.divinefavor.common.receipes.ModRecipes;
 import mezz.jei.api.IGuiHelper;
@@ -19,7 +19,7 @@ import net.minecraftforge.oredict.OreDictionary;
 
 @JEIPlugin
 public class DivineFavorJEIPlugin implements IModPlugin {
-    public static final String IMMATERIAL_MEDIUM = LibMisc.MOD_ID + ".immaterial_medium";
+    public static final String IMMATERIAL_MEDIUM = ConstMisc.MOD_ID + ".immaterial_medium";
 
     @Override
     public void registerCategories(IRecipeCategoryRegistration registry) {

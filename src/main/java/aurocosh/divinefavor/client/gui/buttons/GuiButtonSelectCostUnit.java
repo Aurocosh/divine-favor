@@ -1,24 +1,19 @@
 package aurocosh.divinefavor.client.gui.buttons;
 
 import aurocosh.divinefavor.client.gui.IActionButton;
-import aurocosh.divinefavor.common.constants.LibResources;
-import aurocosh.divinefavor.common.item.talisman.capability.ITalismanCostHandler;
-import aurocosh.divinefavor.common.network.base.NetworkHandler;
-import aurocosh.divinefavor.common.network.message.MessageSyncTalismanIndexes;
+import aurocosh.divinefavor.common.constants.ConstResources;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.util.ResourceLocation;
 
 public class GuiButtonSelectCostUnit extends GuiButton implements IActionButton {
-    private static final ResourceLocation textureInactive = new ResourceLocation(LibResources.GUI_SELECT_COST_UNIT_BUTTON);
+    private static final ResourceLocation textureInactive = new ResourceLocation(ConstResources.GUI_SELECT_COST_UNIT_BUTTON);
 
-    private ITalismanCostHandler costHandler;
     private int unitIndex;
     private int costIndex;
 
-    public GuiButtonSelectCostUnit(ITalismanCostHandler costHandler, int id, int x, int y, int unitIndex, int costIndex) {
+    public GuiButtonSelectCostUnit(int id, int x, int y, int unitIndex, int costIndex) {
         super(id, x, y, 10, 10, "");
-        this.costHandler = costHandler;
         this.unitIndex = unitIndex;
         this.costIndex = costIndex;
     }
@@ -31,7 +26,7 @@ public class GuiButtonSelectCostUnit extends GuiButton implements IActionButton 
 
             mc.renderEngine.bindTexture(textureInactive);
             float textureStartY = 0;
-            if (costHandler.getSelectedUnitIndex() == unitIndex)
+            if (0 == unitIndex)
                 textureStartY = 20;
             else if (k == 2)
                 textureStartY = 10;
@@ -46,9 +41,5 @@ public class GuiButtonSelectCostUnit extends GuiButton implements IActionButton 
 
     @Override
     public void performAction() {
-        costHandler.setUnitIndex(unitIndex);
-        costHandler.setCostIndex(costIndex);
-        MessageSyncTalismanIndexes message = new MessageSyncTalismanIndexes(unitIndex, costIndex);
-        NetworkHandler.INSTANCE.sendToServer(message);
     }
 }

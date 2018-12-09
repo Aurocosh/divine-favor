@@ -6,9 +6,9 @@ import aurocosh.divinefavor.common.block.fast_furnace.BlockFastFurnaceMod;
 import aurocosh.divinefavor.common.block.fast_furnace.TileFastFurnace;
 import aurocosh.divinefavor.common.block.medium.BlockMedium;
 import aurocosh.divinefavor.common.block.medium.TileMedium;
-import aurocosh.divinefavor.common.constants.LibBlockNames;
-import aurocosh.divinefavor.common.constants.LibResources;
-import aurocosh.divinefavor.common.registry.base.CommonRegistry;
+import aurocosh.divinefavor.common.constants.ConstBlockNames;
+import aurocosh.divinefavor.common.constants.ConstResources;
+import aurocosh.divinefavor.common.registry.CommonRegistry;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
@@ -46,12 +46,12 @@ public class ModBlocks {
     }
 
     private static void initTileEntities() {
-        registerTile(TileFastFurnace.class, LibBlockNames.FAST_FURNACE);
-        registerTile(TileMedium.class, LibBlockNames.IRON_MEDIUM);
+        registerTile(TileFastFurnace.class, ConstBlockNames.FAST_FURNACE);
+        registerTile(TileMedium.class, ConstBlockNames.IRON_MEDIUM);
     }
 
     private static void registerTile(Class<? extends TileEntity> clazz, String key) {
-        GameRegistry.registerTileEntity(clazz, LibResources.PREFIX_MOD + key);
+        GameRegistry.registerTileEntity(clazz, ConstResources.PREFIX_MOD + key);
     }
 
     //@SideOnly(Side.CLIENT)

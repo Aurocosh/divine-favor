@@ -1,6 +1,6 @@
 package aurocosh.divinefavor.common.util;
 
-import aurocosh.divinefavor.common.util.helper_classes.SlotStack;
+import aurocosh.divinefavor.common.misc.SlotStack;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.items.IItemHandler;
 

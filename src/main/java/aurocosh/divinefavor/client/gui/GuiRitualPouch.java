@@ -1,6 +1,6 @@
 package aurocosh.divinefavor.client.gui;
 
-import aurocosh.divinefavor.common.constants.LibResources;
+import aurocosh.divinefavor.common.constants.ConstResources;
 import aurocosh.divinefavor.common.item.ritual_pouch.RitualBagContainer;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.entity.player.EntityPlayer;
@@ -11,7 +11,7 @@ import net.minecraftforge.items.CapabilityItemHandler;
 public class GuiRitualPouch extends GuiContainer {
     public static final int WIDTH = 175;
     public static final int HEIGHT = 165;
-    private static final ResourceLocation texture = new ResourceLocation(LibResources.GUI_RITUAL_POUCH);
+    private static final ResourceLocation texture = new ResourceLocation(ConstResources.GUI_RITUAL_POUCH);
 
     ItemStack pouch;
 

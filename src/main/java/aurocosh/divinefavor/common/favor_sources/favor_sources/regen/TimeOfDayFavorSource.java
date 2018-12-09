@@ -2,7 +2,7 @@ package aurocosh.divinefavor.common.favor_sources.favor_sources.regen;
 
 import aurocosh.divinefavor.common.favor_sources.favor_sources.base.RegenFavorSource;
 import aurocosh.divinefavor.common.favors.ModFavor;
-import aurocosh.divinefavor.common.util.helper_classes.TimePeriod;
+import aurocosh.divinefavor.common.lib.TimePeriod;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.ResourceLocation;
 
