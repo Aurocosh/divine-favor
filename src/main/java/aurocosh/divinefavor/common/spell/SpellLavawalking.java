@@ -1,5 +1,6 @@
 package aurocosh.divinefavor.common.spell;
 
+import aurocosh.divinefavor.common.effect.base.ModEffect;
 import aurocosh.divinefavor.common.effect.common.ModPotions;
 import aurocosh.divinefavor.common.spell.base.ModSpell;
 import aurocosh.divinefavor.common.spell.base.SpellContext;
@@ -19,7 +20,7 @@ public class SpellLavawalking extends ModSpell {
         //if(context.player.getEntityWorld().isRemote)
         //    return true;
 
-        PotionEffect potioneffect = new PotionEffect(ModPotions.lavawalk, NORMAL);
+        PotionEffect potioneffect = new ModEffect(ModPotions.lava_walk, NORMAL);
         context.player.addPotionEffect(potioneffect);
 
         return true;

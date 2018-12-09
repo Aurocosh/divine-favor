@@ -22,14 +22,16 @@ public abstract class ModPotion extends Potion {
     private ResourceLocation icon;
     private boolean beneficial;
     private EffectType effectType;
+
     public ModPotion(String name, boolean beneficial, int potionColor) {
         super(false, potionColor);
         this.beneficial = beneficial;
         this.setIcon(new ResourceLocation(ConstMisc.MOD_ID, "textures/potions/" + name + ".png"));
-        this.setPotionName(name);
         effectType = EffectType.TIMED;
 
-        setRegistryName(ResourceNamer.getFullName(name));
+        ResourceLocation fullName = ResourceNamer.getFullName(name);
+        this.setPotionName("potion." + fullName.toString() + ".name");
+        setRegistryName(fullName);
     }
 
     @Override
@@ -40,7 +42,7 @@ public abstract class ModPotion extends Potion {
     @Override
     @SideOnly(Side.CLIENT)
     public boolean isBeneficial() {
-        return this.beneficial;//decides top or bottom row
+        return this.beneficial;
     }
 
     @Override
@@ -64,7 +66,8 @@ public abstract class ModPotion extends Potion {
         this.icon = icon;
     }
 
-    public void tick(EntityLivingBase entity) {
+    @Override
+    public void performEffect(EntityLivingBase entityLivingBaseIn, int amplifier) {
     }
 
     @Override

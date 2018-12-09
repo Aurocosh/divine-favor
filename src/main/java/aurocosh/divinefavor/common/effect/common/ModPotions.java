@@ -1,31 +1,30 @@
 package aurocosh.divinefavor.common.effect.common;
 
+import aurocosh.divinefavor.common.constants.ConstEffectNames;
 import aurocosh.divinefavor.common.effect.base.ModPotion;
 import aurocosh.divinefavor.common.effect.effect.PotionEmpowerAxe;
-import aurocosh.divinefavor.common.effect.effect.PotionLavawalk;
-import aurocosh.divinefavor.common.effect.effect.PotionWaterwalk;
+import aurocosh.divinefavor.common.effect.effect.PotionLiquidWalking;
 import aurocosh.divinefavor.common.registry.CommonRegistry;
+import net.minecraft.init.Blocks;
 import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.fml.common.Mod;
 
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
 public class ModPotions {
+    public static ModPotion water_walk;
+    public static ModPotion lava_walk;
+    public static ModPotion empower_axe;
     private static Map<ResourceLocation, ModPotion> potionMap = new HashMap<>();
 
-    public static ModPotion waterwalk;
-    public static ModPotion lavawalk;
-    public static ModPotion empower_axe;
-
-    public static Collection<ModPotion> getPotions(){
+    public static Collection<ModPotion> getPotions() {
         return potionMap.values();
     }
 
     public static void preInit() {
-        waterwalk = register(new PotionWaterwalk());
-        lavawalk = register(new PotionLavawalk());
+        water_walk = register(new PotionLiquidWalking(ConstEffectNames.WATERWALK, Blocks.WATER));
+        lava_walk = register(new PotionLiquidWalking(ConstEffectNames.LAVAWALK, Blocks.LAVA));
         empower_axe = register(new PotionEmpowerAxe());
     }
 
