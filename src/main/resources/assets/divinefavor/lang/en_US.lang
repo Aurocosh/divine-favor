@@ -7,6 +7,8 @@ tile.divinefavor:iron_medium.name=Iron medium
 
 # ITEM NAMES
 item.divinefavor:ritual_pouch.name=Ritual pouch
+item.divinefavor:bone_key.name=Bone key
+item.divinefavor:mystic_architect_stick.name=Mystic architect stick
 
 # TALISMAN NAMES
 item.divinefavor:arrow_throw_talisman.name=Arrow throw talisman
