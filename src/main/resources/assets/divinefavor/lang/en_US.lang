@@ -6,6 +6,7 @@ tile.divinefavor:fast_furnace.name=Fast furnace
 tile.divinefavor:iron_medium.name=Iron medium
 
 # ITEM NAMES
+item.divinefavor:stone_ball.name=Stone ball
 item.divinefavor:ritual_pouch.name=Ritual pouch
 item.divinefavor:bone_key.name=Bone key
 item.divinefavor:mystic_architect_stick.name=Mystic architect stick
