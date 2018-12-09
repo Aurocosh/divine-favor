@@ -1,8 +1,8 @@
 package aurocosh.divinefavor.common.block.medium;
 
 import aurocosh.divinefavor.common.block.base.TickableTileEntity;
-import aurocosh.divinefavor.common.item.base.ModItems;
-import aurocosh.divinefavor.common.item.calling_stone.ItemCallingStone;
+import aurocosh.divinefavor.common.item.common.ModItems;
+import aurocosh.divinefavor.common.item.ItemCallingStone;
 import aurocosh.divinefavor.common.lib.math.Vector3i;
 import aurocosh.divinefavor.common.muliblock.IMultiblockController;
 import aurocosh.divinefavor.common.muliblock.ModMultiBlock;
@@ -11,7 +11,7 @@ import aurocosh.divinefavor.common.muliblock.common.MultiBlockWatcher;
 import aurocosh.divinefavor.common.receipes.ModRecipes;
 import aurocosh.divinefavor.common.spirit.ModSpirit;
 import aurocosh.divinefavor.common.util.UtilHandler;
-import aurocosh.divinefavor.common.util.helper_classes.SlotStack;
+import aurocosh.divinefavor.common.misc.SlotStack;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;

@@ -1,11 +1,7 @@
 package aurocosh.divinefavor.common.util;
 
-import aurocosh.divinefavor.DivineFavor;
-import aurocosh.divinefavor.common.lib.RuntimeTypeAdapterFactory;
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import net.minecraftforge.common.crafting.CraftingHelper;
-import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.ModContainer;
 import org.apache.commons.io.IOUtils;
 

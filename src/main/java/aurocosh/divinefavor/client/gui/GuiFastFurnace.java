@@ -2,7 +2,7 @@ package aurocosh.divinefavor.client.gui;
 
 import aurocosh.divinefavor.common.block.fast_furnace.ContainerFastFurnace;
 import aurocosh.divinefavor.common.block.fast_furnace.TileFastFurnace;
-import aurocosh.divinefavor.common.constants.LibResources;
+import aurocosh.divinefavor.common.constants.ConstResources;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.ResourceLocation;
@@ -12,7 +12,7 @@ import java.util.Collections;
 public class GuiFastFurnace extends GuiContainer {
     public static final int WIDTH = 180;
     public static final int HEIGHT = 152;
-    private static final ResourceLocation texture = new ResourceLocation(LibResources.GUI_FAST_FURNACE);
+    private static final ResourceLocation texture = new ResourceLocation(ConstResources.GUI_FAST_FURNACE);
 
     TileFastFurnace fastFurnace;
 

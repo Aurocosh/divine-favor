@@ -1,7 +1,7 @@
 package aurocosh.divinefavor.common.spirit;
 
-import aurocosh.divinefavor.common.constants.LibSpiritNames;
-import aurocosh.divinefavor.common.registry.base.CommonRegistry;
+import aurocosh.divinefavor.common.constants.ConstSpiritNames;
+import aurocosh.divinefavor.common.registry.CommonRegistry;
 import net.minecraft.util.ResourceLocation;
 
 import java.util.HashMap;
@@ -14,13 +14,13 @@ public final class ModSpirits {
 
     public static void preInit() {
         allfire = register(
-                new SpiritBuilder(LibSpiritNames.ALLFIRE)
+                new SpiritBuilder(ConstSpiritNames.ALLFIRE)
                         .addActivityPeriod(10, 14)
                         .create()
         );
 
         timber = register(
-                new SpiritBuilder(LibSpiritNames.TIMBER)
+                new SpiritBuilder(ConstSpiritNames.TIMBER)
                         .addActivityPeriod(6, 12)
                         .create()
         );

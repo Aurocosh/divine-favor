@@ -1,11 +1,11 @@
 package aurocosh.divinefavor.common.item.ritual_pouch;
 
 import aurocosh.divinefavor.DivineFavor;
-import aurocosh.divinefavor.common.constants.LibGuiIDs;
-import aurocosh.divinefavor.common.constants.LibItemNames;
+import aurocosh.divinefavor.common.constants.ConstGuiIDs;
+import aurocosh.divinefavor.common.constants.items.ConstItemNames;
 import aurocosh.divinefavor.common.core.DivineFavorCreativeTab;
 import aurocosh.divinefavor.common.item.base.ModItem;
-import aurocosh.divinefavor.common.item.base.ModItems;
+import aurocosh.divinefavor.common.item.common.ModItems;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -17,7 +17,7 @@ import net.minecraftforge.common.capabilities.ICapabilityProvider;
 
 public class ItemRitualPouch extends ModItem {
     public ItemRitualPouch() {
-        super(LibItemNames.RITUAL_POUCH);
+        super(ConstItemNames.RITUAL_POUCH);
         setMaxStackSize(1);
         setCreativeTab(DivineFavorCreativeTab.INSTANCE);
     }
@@ -27,7 +27,7 @@ public class ItemRitualPouch extends ModItem {
         ItemStack itemStackIn = playerIn.getHeldItem(hand);
         if(hand == EnumHand.OFF_HAND)
             return new ActionResult<>(EnumActionResult.PASS, itemStackIn);
-        playerIn.openGui(DivineFavor.instance, LibGuiIDs.RITUAL_POUCH, worldIn, (int)playerIn.posX, (int)playerIn.posY, (int)playerIn.posZ);
+        playerIn.openGui(DivineFavor.instance, ConstGuiIDs.RITUAL_POUCH, worldIn, (int)playerIn.posX, (int)playerIn.posY, (int)playerIn.posZ);
         return new ActionResult<>(EnumActionResult.SUCCESS, itemStackIn);
     }
 

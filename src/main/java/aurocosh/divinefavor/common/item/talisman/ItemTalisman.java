@@ -1,13 +1,13 @@
 package aurocosh.divinefavor.common.item.talisman;
 
 import aurocosh.divinefavor.DivineFavor;
-import aurocosh.divinefavor.common.constants.LibGuiIDs;
-import aurocosh.divinefavor.common.constants.LibMisc;
+import aurocosh.divinefavor.common.constants.ConstGuiIDs;
+import aurocosh.divinefavor.common.constants.ConstMisc;
 import aurocosh.divinefavor.common.core.DivineFavorCreativeTab;
 import aurocosh.divinefavor.common.favors.ModFavor;
 import aurocosh.divinefavor.common.item.base.ModItem;
 import aurocosh.divinefavor.common.lib.math.Vector3;
-import aurocosh.divinefavor.common.network.base.NetworkHandler;
+import aurocosh.divinefavor.common.network.common.NetworkHandler;
 import aurocosh.divinefavor.common.network.message.MessageSyncFavor;
 import aurocosh.divinefavor.common.player_data.favor.IFavorHandler;
 import aurocosh.divinefavor.common.spell.base.ModSpell;
@@ -82,7 +82,7 @@ public class ItemTalisman extends ModItem {
         if (playerIn.isSneaking()) {
             if (!worldIn.isRemote)
                 return new ActionResult<>(EnumActionResult.PASS, itemStackIn);
-            playerIn.openGui(DivineFavor.instance, LibGuiIDs.TALISMAN, worldIn, (int) playerIn.posX, (int) playerIn.posY, (int) playerIn.posZ);
+            playerIn.openGui(DivineFavor.instance, ConstGuiIDs.TALISMAN, worldIn, (int) playerIn.posX, (int) playerIn.posY, (int) playerIn.posZ);
             return new ActionResult<>(EnumActionResult.SUCCESS, itemStackIn);
         }
 
@@ -148,6 +148,6 @@ public class ItemTalisman extends ModItem {
 
     @Override
     public String getTranslationKey() {
-        return LibMisc.MOD_ID + ":" + getRegistryName().getPath();
+        return ConstMisc.MOD_ID + ":" + getRegistryName().getPath();
     }
 }

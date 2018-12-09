@@ -15,30 +15,32 @@ import net.minecraftforge.fluids.IFluidBlock;
 
 public class UtilBlock {
     public static void removeBlockWithDrops(EntityPlayer player, World world, ItemStack tool, BlockPos pos, boolean particles) {
-        if(!world.isBlockLoaded(pos) || !world.isBlockModifiable(player, pos))
+        if (!world.isBlockLoaded(pos) || !world.isBlockModifiable(player, pos))
             return;
 
         IBlockState state = world.getBlockState(pos);
         Block block = state.getBlock();
-        if(!world.isRemote && block != null && !block.isAir(state, world, pos) && !(block instanceof BlockLiquid) && !(block instanceof IFluidBlock) && block.getPlayerRelativeBlockHardness(state, player, world, pos) > 0) {
-            if(!ForgeHooks.canHarvestBlock(block, player, world, pos))
+        if (!world.isRemote && !block.isAir(state, world, pos) && !(block instanceof BlockLiquid) && !(block instanceof IFluidBlock) && block.getPlayerRelativeBlockHardness(state, player, world, pos) > 0) {
+            if (!ForgeHooks.canHarvestBlock(block, player, world, pos))
                 return;
 
             BlockEvent.BreakEvent event = new BlockEvent.BreakEvent(world, pos, state, player);
             MinecraftForge.EVENT_BUS.post(event);
-            if(!event.isCanceled()) {
-                if(!player.capabilities.isCreativeMode) {
+            if (!event.isCanceled()) {
+                if (!player.capabilities.isCreativeMode) {
                     TileEntity tile = world.getTileEntity(pos);
                     IBlockState localState = world.getBlockState(pos);
 
-                    if(block.removedByPlayer(state, world, pos, player, true)) {
+                    if (block.removedByPlayer(state, world, pos, player, true)) {
                         block.onPlayerDestroy(world, pos, state);
                         block.harvestBlock(world, player, pos, state, tile, tool);
                     }
-                } else world.setBlockToAir(pos);
+                }
+                else
+                    world.setBlockToAir(pos);
             }
 
-            if(particles)
+            if (particles)
                 world.playEvent(2001, pos, Block.getStateId(state));
         }
     }

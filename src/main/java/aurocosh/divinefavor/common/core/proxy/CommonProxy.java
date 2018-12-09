@@ -2,18 +2,18 @@ package aurocosh.divinefavor.common.core.proxy;
 
 import aurocosh.divinefavor.DivineFavor;
 import aurocosh.divinefavor.common.block.common.ModBlocks;
+import aurocosh.divinefavor.common.effect.common.ModPotionEffects;
 import aurocosh.divinefavor.common.entity.ModEntities;
 import aurocosh.divinefavor.common.favor_sources.common.ModFavorSources;
 import aurocosh.divinefavor.common.favors.ModFavors;
-import aurocosh.divinefavor.common.item.base.ModItems;
-import aurocosh.divinefavor.common.item.talisman.capability.TalismanDataHandler;
+import aurocosh.divinefavor.common.item.common.ModItems;
 import aurocosh.divinefavor.common.muliblock.common.ModMultiBlocks;
 import aurocosh.divinefavor.common.network.GuiHandler;
-import aurocosh.divinefavor.common.network.base.MessageRegister;
+import aurocosh.divinefavor.common.network.common.MessageRegister;
 import aurocosh.divinefavor.common.player_data.favor.FavorDataHandler;
 import aurocosh.divinefavor.common.player_data.interaction_handler.InteractionDataHandler;
 import aurocosh.divinefavor.common.receipes.ModRecipes;
-import aurocosh.divinefavor.common.spell.base.ModSpells;
+import aurocosh.divinefavor.common.spell.common.ModSpells;
 import aurocosh.divinefavor.common.spirit.ModSpirits;
 import com.google.common.util.concurrent.ListenableFuture;
 import net.minecraft.entity.player.EntityPlayer;
@@ -28,13 +28,13 @@ import java.io.File;
 @Mod.EventBusSubscriber
 public class CommonProxy {
     public void preInit(FMLPreInitializationEvent e) {
-        TalismanDataHandler.register();
-
         ModSpirits.preInit();
         ModFavors.preInit();
         ModSpells.preInit();
         ModMultiBlocks.preInit();
         ModFavorSources.preInit();
+
+        ModPotionEffects.preInit();
 
         ModBlocks.preInit();
         ModItems.preInit();
@@ -47,7 +47,7 @@ public class CommonProxy {
 
         NetworkRegistry.INSTANCE.registerGuiHandler(DivineFavor.instance, new GuiHandler());
 
-//        MinecraftForge.EVENT_BUS.register(new PlayerDataHandler.EventHandler());
+//        MinecraftForge.EVENT_BUS.preInit(new PlayerDataHandler.EventHandler());
 
         File test = e.getModConfigurationDirectory();
 

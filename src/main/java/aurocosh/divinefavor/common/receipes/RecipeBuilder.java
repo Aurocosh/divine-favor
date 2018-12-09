@@ -1,6 +1,6 @@
 package aurocosh.divinefavor.common.receipes;
 
-import aurocosh.divinefavor.common.item.calling_stone.ItemCallingStone;
+import aurocosh.divinefavor.common.item.ItemCallingStone;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
@@ -12,8 +12,8 @@ import java.util.List;
 public class RecipeBuilder {
     public ResourceLocation name;
     public ItemStack result;
-    public Ingredient callingStone;
-    public List<Ingredient> ingredients;
+    private Ingredient callingStone;
+    private List<Ingredient> ingredients;
 
     public RecipeBuilder(ItemStack result, ItemCallingStone callingStone) {
         name = result.getItem().getRegistryName();

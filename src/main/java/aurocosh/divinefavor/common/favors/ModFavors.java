@@ -1,6 +1,6 @@
 package aurocosh.divinefavor.common.favors;
 
-import aurocosh.divinefavor.common.registry.base.CommonRegistry;
+import aurocosh.divinefavor.common.registry.CommonRegistry;
 import net.minecraft.util.ResourceLocation;
 
 import java.util.*;

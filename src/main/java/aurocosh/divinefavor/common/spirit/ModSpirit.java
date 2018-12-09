@@ -1,7 +1,7 @@
 package aurocosh.divinefavor.common.spirit;
 
 import aurocosh.divinefavor.common.core.ResourceNamer;
-import aurocosh.divinefavor.common.util.helper_classes.TimePeriod;
+import aurocosh.divinefavor.common.lib.TimePeriod;
 import net.minecraft.world.World;
 import net.minecraftforge.registries.IForgeRegistryEntry;
 

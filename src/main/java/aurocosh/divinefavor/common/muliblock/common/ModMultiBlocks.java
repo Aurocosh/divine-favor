@@ -1,9 +1,9 @@
 package aurocosh.divinefavor.common.muliblock.common;
 
 import aurocosh.divinefavor.DivineFavor;
-import aurocosh.divinefavor.common.constants.LibMisc;
-import aurocosh.divinefavor.common.constants.LibMultiBlockNames;
-import aurocosh.divinefavor.common.constants.LibResources;
+import aurocosh.divinefavor.common.constants.ConstMisc;
+import aurocosh.divinefavor.common.constants.ConstMultiBlockNames;
+import aurocosh.divinefavor.common.constants.ConstResources;
 import aurocosh.divinefavor.common.lib.math.CubeCoordinates;
 import aurocosh.divinefavor.common.lib.math.Vector3i;
 import aurocosh.divinefavor.common.muliblock.ModMultiBlock;
@@ -14,7 +14,7 @@ import aurocosh.divinefavor.common.muliblock.parts.StateValidator;
 import aurocosh.divinefavor.common.muliblock.patchouli.PatchouliMultiBlockData;
 import aurocosh.divinefavor.common.muliblock.serialization.StateValidatorSerializer;
 import aurocosh.divinefavor.common.muliblock.serialization.Vector3iByteSerializer;
-import aurocosh.divinefavor.common.registry.base.CommonRegistry;
+import aurocosh.divinefavor.common.registry.CommonRegistry;
 import aurocosh.divinefavor.common.util.UtilAssets;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -47,8 +47,8 @@ public final class ModMultiBlocks {
                 .registerTypeAdapter(Vector3i.class, new Vector3iByteSerializer())
                 .create();
 
-        allfire_altar = createMultiBlock(LibMultiBlockNames.ALLFIRE_ALTAR, gson);
-        timber_altar = createMultiBlock(LibMultiBlockNames.TIMBER_ALTER, gson);
+        allfire_altar = createMultiBlock(ConstMultiBlockNames.ALLFIRE_ALTAR, gson);
+        timber_altar = createMultiBlock(ConstMultiBlockNames.TIMBER_ALTER, gson);
 
         PatchouliAPI.IPatchouliAPI api = PatchouliAPI.instance;
 
@@ -61,7 +61,7 @@ public final class ModMultiBlocks {
                 'S', api.predicateMatcher(Blocks.STONEBRICK, (state) -> state.isOpaqueCube() && state.getMaterial() == Material.ROCK),
                 ' ', api.anyMatcher())
                 .setSymmetrical(true);
-        api.registerMultiblock(new ResourceLocation(LibMisc.MOD_ID, "test"),test);
+        api.registerMultiblock(new ResourceLocation(ConstMisc.MOD_ID, "test"),test);
     }
 
     public static IMultiblock registerMultiblock(ResourceLocation location, IMultiblock multiblock) {
@@ -70,7 +70,7 @@ public final class ModMultiBlocks {
     }
 
     private static ModMultiBlock createMultiBlock(String name, Gson gson) {
-        String jsonString = UtilAssets.loadTextFile(DivineFavor.container, LibResources.MULTIBLOCK_ASSETS + name + ".json");
+        String jsonString = UtilAssets.loadTextFile(DivineFavor.container, ConstResources.MULTIBLOCK_ASSETS + name + ".json");
 
         MultiBlockData data = null;
         try {

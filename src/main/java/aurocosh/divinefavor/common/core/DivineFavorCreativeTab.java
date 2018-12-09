@@ -2,31 +2,29 @@ package aurocosh.divinefavor.common.core;
 
 import aurocosh.divinefavor.common.block.base.ModBlock;
 import aurocosh.divinefavor.common.block.common.ModBlocks;
-import aurocosh.divinefavor.common.constants.LibMisc;
+import aurocosh.divinefavor.common.constants.ConstMisc;
 import aurocosh.divinefavor.common.item.base.ModItem;
-import aurocosh.divinefavor.common.item.base.ModItems;
-import aurocosh.divinefavor.common.potion.PotionTypeDivine;
-import aurocosh.divinefavor.common.potion.PotionTypeRegistry;
+import aurocosh.divinefavor.common.item.common.ModItems;
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.potion.PotionUtils;
 import net.minecraft.util.NonNullList;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.Collection;
 
 public class DivineFavorCreativeTab extends CreativeTabs {
-    public static DivineFavorCreativeTab INSTANCE = new DivineFavorCreativeTab();
-    NonNullList list;
+    public static final DivineFavorCreativeTab INSTANCE = new DivineFavorCreativeTab();
+    private NonNullList list;
 
     public DivineFavorCreativeTab() {
-        super(LibMisc.MOD_ID);
-        //LibMisc.MOD_ID
+        super(ConstMisc.MOD_ID);
+        //ConstMisc.MOD_ID
 
         //setNoTitle();
-        //setBackgroundImageName(LibResources.GUI_CREATIVE);
+        //setBackgroundImageName(ConstResources.GUI_CREATIVE);
     }
 
     @Override
@@ -41,25 +39,19 @@ public class DivineFavorCreativeTab extends CreativeTabs {
 
     @Override
     public boolean hasSearchBar() {
-        return true;
+        return false;
     }
 
     @Override
-    public void displayAllRelevantItems(NonNullList<ItemStack> p_78018_1_) {
-        list = p_78018_1_;
+    @SideOnly(Side.CLIENT)
+    public void displayAllRelevantItems(NonNullList<ItemStack> stacks) {
+        list = stacks;
 
         Collection<ModBlock> blocks = ModBlocks.getBlocks();
-        blocks.forEach((block) -> addBlock(block));
+        blocks.forEach(this::addBlock);
 
         Collection<ModItem> items = ModItems.getItems();
-        items.forEach((item) -> addItem(item));
-
-        for (PotionTypeDivine pt : PotionTypeRegistry.potions) {
-            list.add(PotionUtils.addPotionToItemStack(new ItemStack(Items.POTIONITEM), pt));
-            list.add(PotionUtils.addPotionToItemStack(new ItemStack(Items.SPLASH_POTION), pt));
-            list.add(PotionUtils.addPotionToItemStack(new ItemStack(Items.LINGERING_POTION), pt));
-            list.add(PotionUtils.addPotionToItemStack(new ItemStack(Items.TIPPED_ARROW), pt));
-        }
+        items.forEach(this::addItem);
     }
 
     private void addItem(Item item) {

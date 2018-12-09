@@ -94,7 +94,7 @@ import java.util.Map;
  *   RuntimeTypeAdapterFactory<Shape> shapeAdapterFactory
  *       = RuntimeTypeAdapterFactory.of(Shape.class, "type");
  * }</pre>
- * Next register all of your subtypes. Every subtype must be explicitly
+ * Next preInit all of your subtypes. Every subtype must be explicitly
  * registered. This protects your application from injection attacks. If you
  * don't supply an explicit type label, the type's simple name will be used.
  * <pre>   {@code
@@ -102,7 +102,7 @@ import java.util.Map;
  *   shapeAdapterFactory.registerSubtype(Circle.class, "Circle");
  *   shapeAdapterFactory.registerSubtype(Diamond.class, "Diamond");
  * }</pre>
- * Finally, register the type adapter factory in your application's GSON builder:
+ * Finally, preInit the type adapter factory in your application's GSON builder:
  * <pre>   {@code
  *   Gson gson = new GsonBuilder()
  *       .registerTypeAdapterFactory(shapeAdapterFactory)
@@ -220,7 +220,7 @@ public final class RuntimeTypeAdapterFactory<T> implements TypeAdapterFactory {
         TypeAdapter<R> delegate = (TypeAdapter<R>) labelToDelegate.get(label);
         if (delegate == null) {
           throw new JsonParseException("cannot deserialize " + baseType + " subtype named "
-              + label + "; did you forget to register a subtype?");
+              + label + "; did you forget to preInit a subtype?");
         }
         return delegate.fromJsonTree(jsonElement);
       }
@@ -232,7 +232,7 @@ public final class RuntimeTypeAdapterFactory<T> implements TypeAdapterFactory {
         TypeAdapter<R> delegate = (TypeAdapter<R>) subtypeToDelegate.get(srcType);
         if (delegate == null) {
           throw new JsonParseException("cannot serialize " + srcType.getName()
-              + "; did you forget to register a subtype?");
+              + "; did you forget to preInit a subtype?");
         }
         JsonObject jsonObject = delegate.toJsonTree(value).getAsJsonObject();
 
