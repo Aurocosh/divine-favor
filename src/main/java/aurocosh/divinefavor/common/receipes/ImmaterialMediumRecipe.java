@@ -1,5 +1,6 @@
 package aurocosh.divinefavor.common.receipes;
 
+import aurocosh.divinefavor.common.item.common.ModItems;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.ResourceLocation;

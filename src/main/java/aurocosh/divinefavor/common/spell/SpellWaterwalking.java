@@ -1,6 +1,6 @@
 package aurocosh.divinefavor.common.spell;
 
-import aurocosh.divinefavor.common.effect.common.ModPotionEffects;
+import aurocosh.divinefavor.common.effect.common.ModPotions;
 import aurocosh.divinefavor.common.spell.base.ModSpell;
 import aurocosh.divinefavor.common.spell.base.SpellContext;
 import aurocosh.divinefavor.common.spell.base.SpellType;
@@ -16,7 +16,7 @@ public class SpellWaterwalking extends ModSpell {
 
     @Override
     protected boolean performAction(SpellContext context) {
-        PotionEffect potioneffect = new PotionEffect(ModPotionEffects.waterwalk, NORMAL);
+        PotionEffect potioneffect = new PotionEffect(ModPotions.waterwalk, NORMAL);
         context.player.addPotionEffect(potioneffect);
 
         return true;

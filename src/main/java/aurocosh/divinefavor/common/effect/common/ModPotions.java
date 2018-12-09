@@ -12,14 +12,14 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
-public class ModPotionEffects {
+public class ModPotions {
     private static Map<ResourceLocation, ModPotion> potionMap = new HashMap<>();
 
     public static ModPotion waterwalk;
     public static ModPotion lavawalk;
     public static ModPotion empower_axe;
 
-    public static Collection<ModPotion> getEffects(){
+    public static Collection<ModPotion> getPotions(){
         return potionMap.values();
     }
 

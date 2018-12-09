@@ -1,6 +1,6 @@
 package aurocosh.divinefavor.common.spell;
 
-import aurocosh.divinefavor.common.effect.common.ModPotionEffects;
+import aurocosh.divinefavor.common.effect.common.ModPotions;
 import aurocosh.divinefavor.common.spell.base.ModSpell;
 import aurocosh.divinefavor.common.spell.base.SpellContext;
 import aurocosh.divinefavor.common.spell.base.SpellType;
@@ -17,7 +17,7 @@ public class SpellEmpowerAxe extends ModSpell {
 
     @Override
     protected boolean performAction(SpellContext context) {
-        PotionEffect effect = new PotionEffect(ModPotionEffects.empower_axe, TEST);
+        PotionEffect effect = new PotionEffect(ModPotions.empower_axe, TEST);
         context.player.addPotionEffect(effect);
         return true;
     }
