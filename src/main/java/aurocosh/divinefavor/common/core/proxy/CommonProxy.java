@@ -1,13 +1,13 @@
 package aurocosh.divinefavor.common.core.proxy;
 
 import aurocosh.divinefavor.DivineFavor;
-import aurocosh.divinefavor.common.block.base.ModBlocks;
+import aurocosh.divinefavor.common.block.common.ModBlocks;
 import aurocosh.divinefavor.common.entity.ModEntities;
 import aurocosh.divinefavor.common.favor_sources.common.ModFavorSources;
 import aurocosh.divinefavor.common.favors.ModFavors;
 import aurocosh.divinefavor.common.item.base.ModItems;
 import aurocosh.divinefavor.common.item.talisman.capability.TalismanDataHandler;
-import aurocosh.divinefavor.common.muliblock.ModMultiBlocks;
+import aurocosh.divinefavor.common.muliblock.common.ModMultiBlocks;
 import aurocosh.divinefavor.common.network.GuiHandler;
 import aurocosh.divinefavor.common.network.base.MessageRegister;
 import aurocosh.divinefavor.common.player_data.favor.FavorDataHandler;

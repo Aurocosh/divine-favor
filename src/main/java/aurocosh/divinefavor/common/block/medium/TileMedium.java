@@ -7,7 +7,7 @@ import aurocosh.divinefavor.common.lib.math.Vector3i;
 import aurocosh.divinefavor.common.muliblock.IMultiblockController;
 import aurocosh.divinefavor.common.muliblock.ModMultiBlock;
 import aurocosh.divinefavor.common.muliblock.ModMultiBlockInstance;
-import aurocosh.divinefavor.common.muliblock.MultiBlockWatcher;
+import aurocosh.divinefavor.common.muliblock.common.MultiBlockWatcher;
 import aurocosh.divinefavor.common.receipes.ModRecipes;
 import aurocosh.divinefavor.common.spirit.ModSpirit;
 import aurocosh.divinefavor.common.util.UtilHandler;

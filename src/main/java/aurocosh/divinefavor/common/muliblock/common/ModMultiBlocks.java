@@ -1,4 +1,4 @@
-package aurocosh.divinefavor.common.muliblock;
+package aurocosh.divinefavor.common.muliblock.common;
 
 import aurocosh.divinefavor.DivineFavor;
 import aurocosh.divinefavor.common.constants.LibMisc;
@@ -6,6 +6,9 @@ import aurocosh.divinefavor.common.constants.LibMultiBlockNames;
 import aurocosh.divinefavor.common.constants.LibResources;
 import aurocosh.divinefavor.common.lib.math.CubeCoordinates;
 import aurocosh.divinefavor.common.lib.math.Vector3i;
+import aurocosh.divinefavor.common.muliblock.ModMultiBlock;
+import aurocosh.divinefavor.common.muliblock.MultiBlockConfiguration;
+import aurocosh.divinefavor.common.muliblock.MultiBlockData;
 import aurocosh.divinefavor.common.muliblock.parts.MultiBlockPart;
 import aurocosh.divinefavor.common.muliblock.parts.StateValidator;
 import aurocosh.divinefavor.common.muliblock.patchouli.PatchouliMultiBlockData;
