@@ -1,7 +1,7 @@
 package aurocosh.divinefavor.common.constants;
 
 public final class ConstEffectNames {
-    public static final String WATERWALK = "waterwalk";
-    public static final String LAVAWALK = "lavawalk";
+    public static final String WATERWALK = "water_walk";
+    public static final String LAVAWALK = "lava_walk";
     public static final String EMPOWER_AXE = "empower_axe";
 }
