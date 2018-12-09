@@ -78,6 +78,7 @@ public final class ModItems {
         bonemeal_talisman = register(new TalismanBuilder(LibItemNames.BONEMEAL_TALISMAN)
                 .setSpell(ModSpells.bonemeal)
                 .castOnUse()
+                .addCost(new CostFavor(ModFavors.favor_of_timber, 1))
                 .create());
         empower_axe_talisman = register(new TalismanBuilder(LibItemNames.EMPOWER_AXE_TALISMAN)
                 .setSpell(ModSpells.empower_axe)

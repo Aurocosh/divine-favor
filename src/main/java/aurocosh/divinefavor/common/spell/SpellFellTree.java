@@ -68,7 +68,7 @@ public class SpellFellTree extends ModSpell {
 
         // check if there were enough leaves around the last position
         // pos now contains the block above the topmost log
-        // we want at least 5 leaves in the surrounding 26 blocks
+        // we want at least 5 leaves in the surrounding 26 validBlocks
         int d = 3;
         int o = -1; // -(d-1)/2
         int leaves = 0;
