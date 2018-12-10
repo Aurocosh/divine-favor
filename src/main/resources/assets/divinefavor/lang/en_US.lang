@@ -37,6 +37,7 @@ item.divinefavor:timber_calling_stone.name=Timber's invite
 potion.divinefavor:empower_axe.name=Empower axe
 potion.divinefavor:lava_walk.name=Lava walking
 potion.divinefavor:water_walk.name=Water walking
+potion.divinefavor:wooden_punch.name=Wooden punch
 
 # JEI tab name
 container.divinefavor:immaterial_medium.name=Spiritual trade

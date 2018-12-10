@@ -9,5 +9,6 @@ public class MessageRegister {
         NetworkHandler.register(MessagePartialDataSync.class, Side.CLIENT);
 		NetworkHandler.register(MessageSyncPower.class, Side.CLIENT);
         NetworkHandler.register(MessageSyncFavor.class, Side.CLIENT);
+        NetworkHandler.register(MessageSyncPotionCharge.class, Side.CLIENT);
 	}
 }
