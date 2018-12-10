@@ -32,9 +32,9 @@ public class CommonProxy {
         ModFavors.preInit();
         ModSpells.preInit();
         ModMultiBlocks.preInit();
-        ModFavorSources.preInit();
 
         ModPotions.preInit();
+        ModFavorSources.preInit();
 
         ModBlocks.preInit();
         ModItems.preInit();

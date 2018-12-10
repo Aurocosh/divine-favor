@@ -1,8 +1,10 @@
 package aurocosh.divinefavor.common.favor_sources.common;
 
-import aurocosh.divinefavor.common.favor_sources.builders.BlockBreakFavorSourceBuilder;
-import aurocosh.divinefavor.common.favor_sources.builders.BlockPlaceFavorSourceBuilder;
-import aurocosh.divinefavor.common.favor_sources.builders.TimeOfDayFavorSourceBuilder;
+import aurocosh.divinefavor.common.effect.common.ModPotions;
+import aurocosh.divinefavor.common.favor_sources.builders.EventFavorSourceBuilder;
+import aurocosh.divinefavor.common.favor_sources.builders.TickableFavorSourceBuilder;
+import aurocosh.divinefavor.common.favor_sources.conditions.active_effect.DenyCondition;
+import aurocosh.divinefavor.common.favor_sources.favor_sources.base.FavorEventType;
 import aurocosh.divinefavor.common.favor_sources.favor_sources.base.FavorSource;
 import aurocosh.divinefavor.common.favors.ModFavors;
 import net.minecraft.init.Blocks;
@@ -15,21 +17,19 @@ public final class ModFavorSources {
     private static Map<ResourceLocation, FavorSource> favorSourceMap = new HashMap<>();
 
     public static void preInit() {
-        register(new BlockBreakFavorSourceBuilder(ModFavors.favor_of_timber, 1)
-                .addBlock(Blocks.LOG.getRegistryName())
-                .addBlock(Blocks.PLANKS.getRegistryName())
+        register(new EventFavorSourceBuilder(ModFavors.favor_of_timber, 1, FavorEventType.BLOCK_BREAK)
+                .addBlockEventCondition(Blocks.LOG, Blocks.PLANKS)
+                .addActiveEffectCondition(ModPotions.wooden_punch, DenyCondition.DENY_IF_ACTIVE)
+                .addMaxFavorCondition(ModFavors.favor_of_timber,60)
                 .create());
-        register(new BlockPlaceFavorSourceBuilder(ModFavors.favor_of_allfire, 1)
-                .addBlock(Blocks.FIRE.getRegistryName())
+        register(new EventFavorSourceBuilder(ModFavors.favor_of_allfire, 1, FavorEventType.BLOCK_PLACE)
+                .addBlockEventCondition(Blocks.FIRE)
                 .create());
-        register(new TimeOfDayFavorSourceBuilder(ModFavors.favor_of_timber, 1)
-                .setTickRate(100)
-                .setUpperRegenLimit(20)
-                .setPeriod(6,12)
+        register(new TickableFavorSourceBuilder(ModFavors.favor_of_timber, 1, 100)
+                .addMaxFavorCondition(ModFavors.favor_of_timber, 20)
+                .addPeriodCondition(6,12)
                 .create());
     }
-
-
 
     public static FavorSource register(FavorSource favorSource) {
         favorSourceMap.put(favorSource.getRegistryName(), favorSource);
