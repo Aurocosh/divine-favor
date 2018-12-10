@@ -1,7 +1,6 @@
 package aurocosh.divinefavor.common.muliblock.common;
 
 import aurocosh.divinefavor.DivineFavor;
-import aurocosh.divinefavor.common.constants.ConstMisc;
 import aurocosh.divinefavor.common.constants.ConstMultiBlockNames;
 import aurocosh.divinefavor.common.constants.ConstResources;
 import aurocosh.divinefavor.common.lib.math.CubeCoordinates;
@@ -19,8 +18,6 @@ import aurocosh.divinefavor.common.util.UtilAssets;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonSyntaxException;
-import net.minecraft.block.material.Material;
-import net.minecraft.init.Blocks;
 import net.minecraft.util.ResourceLocation;
 import vazkii.patchouli.api.IMultiblock;
 import vazkii.patchouli.api.PatchouliAPI;
@@ -33,10 +30,9 @@ import java.util.Map;
 public final class ModMultiBlocks {
     public static ModMultiBlock allfire_altar;
     public static ModMultiBlock timber_altar;
-    private static Map<ResourceLocation, ModMultiBlock> multiBlockMap = new HashMap<>();
+    public static ModMultiBlock romol_altar;
 
-    public static final HashMap<ResourceLocation, IMultiblock> MULTIBLOCKS = new HashMap<>();
-    public static IMultiblock test;
+    private static Map<ResourceLocation, ModMultiBlock> multiBlockMap = new HashMap<>();
 
     public static void preInit() {
         //ArrayList<String> requirementPaths = UtilAssets.getAssetPaths(DivineFavor.container, "multi_blocks", ".json");
@@ -49,24 +45,7 @@ public final class ModMultiBlocks {
 
         allfire_altar = createMultiBlock(ConstMultiBlockNames.ALLFIRE_ALTAR, gson);
         timber_altar = createMultiBlock(ConstMultiBlockNames.TIMBER_ALTER, gson);
-
-        PatchouliAPI.IPatchouliAPI api = PatchouliAPI.instance;
-
-
-        test = api.makeMultiblock(new String[][] {
-                        { "   ", " 0 ", "   " },
-                        { "SSS", "SFS", "SSS" }},
-                '0', Blocks.CAULDRON,
-                'F', Blocks.FIRE,
-                'S', api.predicateMatcher(Blocks.STONEBRICK, (state) -> state.isOpaqueCube() && state.getMaterial() == Material.ROCK),
-                ' ', api.anyMatcher())
-                .setSymmetrical(true);
-        api.registerMultiblock(new ResourceLocation(ConstMisc.MOD_ID, "test"),test);
-    }
-
-    public static IMultiblock registerMultiblock(ResourceLocation location, IMultiblock multiblock) {
-        MULTIBLOCKS.put(location, multiblock);
-        return multiblock.setResourceLocation(location);
+        romol_altar = createMultiBlock(ConstMultiBlockNames.ROMOL_ALTAR, gson);
     }
 
     private static ModMultiBlock createMultiBlock(String name, Gson gson) {
@@ -76,11 +55,11 @@ public final class ModMultiBlocks {
         try {
             data = gson.fromJson(jsonString, MultiBlockData.class);
         }
-        catch (JsonSyntaxException e){
+        catch (JsonSyntaxException e) {
             e.printStackTrace();
         }
-        if(data == null)
-            data = new MultiBlockData(Vector3i.ZERO,new ArrayList<>());
+        if (data == null)
+            data = new MultiBlockData(Vector3i.ZERO, new ArrayList<>());
 
         List<Vector3i> localBounds = new ArrayList<>();
         for (MultiBlockPart part : data.parts) {
@@ -104,7 +83,7 @@ public final class ModMultiBlocks {
     }
 
     public static void registerPatchouli(ModMultiBlock multiBlock) {
-        if(multiBlock.configurations.size() == 0)
+        if (multiBlock.configurations.size() == 0)
             return;
 
         MultiBlockConfiguration configuration = multiBlock.configurations.get(0);

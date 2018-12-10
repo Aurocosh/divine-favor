@@ -1,5 +1,6 @@
 package aurocosh.divinefavor.common.favors;
 
+import aurocosh.divinefavor.common.constants.ConstFavorType;
 import aurocosh.divinefavor.common.registry.CommonRegistry;
 import net.minecraft.util.ResourceLocation;
 
@@ -9,20 +10,18 @@ public final class ModFavors {
     private static final Map<ResourceLocation, ModFavor> favors = new HashMap<>();
     public static ModFavor favor_of_allfire;
     public static ModFavor favor_of_timber;
-    private static List<Integer> favorsIds = new ArrayList<>();
+    public static ModFavor favor_of_romol;
+
     private static int nextId = 0;
 
     public static void preInit() {
-        favor_of_allfire = register(new ModFavor("allfire", "allfire", nextId++));
-        favor_of_timber = register(new ModFavor("timber", "timber", nextId++));
+        favor_of_allfire = register(new ModFavor(ConstFavorType.FAVOR_OF_ALLFIRE, nextId++));
+        favor_of_timber = register(new ModFavor(ConstFavorType.FAVOR_OF_TIMBER, nextId++));
+        favor_of_romol = register(new ModFavor(ConstFavorType.FAVOR_OF_ROMOL, nextId++));
     }
 
     public static Collection<ModFavor> getFavorList() {
         return favors.values();
-    }
-
-    public static List<Integer> getFavorIds() {
-        return Collections.unmodifiableList(favorsIds);
     }
 
     private static ModFavor register(ModFavor favor) {
