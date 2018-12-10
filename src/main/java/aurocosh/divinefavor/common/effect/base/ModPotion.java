@@ -18,10 +18,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public abstract class ModPotion extends Potion {
-
-    private ResourceLocation icon;
-    private boolean beneficial;
-    private EffectType effectType;
+    protected ResourceLocation icon;
+    protected boolean beneficial;
+    protected EffectType effectType;
 
     public ModPotion(String name, boolean beneficial, int potionColor) {
         super(false, potionColor);

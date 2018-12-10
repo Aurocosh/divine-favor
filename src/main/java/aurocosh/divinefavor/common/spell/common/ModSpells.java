@@ -22,6 +22,7 @@ public final class ModSpells {
     public static ModSpell small_fireball_throw;
     public static ModSpell waterwalking;
     public static ModSpell tell_time;
+    public static ModSpell wooden_punch;
 
     public static void preInit() {
         arrow_throw = register(new SpellArrowThrow());
@@ -35,6 +36,7 @@ public final class ModSpells {
         small_fireball_throw = register(new SpellSmallFireballThrow());
         tell_time = register(new SpellTellTime());
         waterwalking = register(new SpellWaterwalking());
+        wooden_punch = register(new SpellWoodenPunch());
     }
 
     public static ModSpell register(ModSpell spell) {

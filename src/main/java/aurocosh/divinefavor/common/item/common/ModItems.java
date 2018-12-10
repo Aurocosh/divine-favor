@@ -39,6 +39,8 @@ public final class ModItems {
     public static ModItem stoneball_throw_talisman;
     public static ModItem small_fireball_throw_talisman;
     public static ModItem waterwalking_talisman;
+    public static ModItem wooden_punch_talisman;
+
 
     public static ModItem allfire_calling_stone;
     public static ModItem timber_calling_stone;
@@ -112,6 +114,11 @@ public final class ModItems {
                 .create());
         waterwalking_talisman = register(new TalismanBuilder(ConstItemNames.WATERWALKING_TALISMAN, ModFavors.favor_of_allfire, 1)
                 .setSpell(ModSpells.waterwalking)
+                .castOnUse()
+                .castOnRighClick()
+                .create());
+        wooden_punch_talisman = register(new TalismanBuilder(ConstItemNames.WOODEN_PUNCH_TALISMAN, ModFavors.favor_of_timber, 2)
+                .setSpell(ModSpells.wooden_punch)
                 .castOnUse()
                 .castOnRighClick()
                 .create());
