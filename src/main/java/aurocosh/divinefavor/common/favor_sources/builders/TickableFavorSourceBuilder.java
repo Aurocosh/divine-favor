@@ -1,17 +1,19 @@
 package aurocosh.divinefavor.common.favor_sources.builders;
 
+import aurocosh.divinefavor.common.favor_sources.favor_sources.base.FavorSource;
+import aurocosh.divinefavor.common.favor_sources.favor_sources.base.TickableFavorSource;
 import aurocosh.divinefavor.common.favors.ModFavor;
 
-public abstract class TickableFavorSourceBuilder <T extends FavorSourceBuilder<T>> extends FavorSourceBuilder<T>{
+public class TickableFavorSourceBuilder extends FavorSourceBuilder<TickableFavorSourceBuilder> {
     protected int tickRate;
 
-    public TickableFavorSourceBuilder(ModFavor favor, int favorCount) {
+    public TickableFavorSourceBuilder(ModFavor favor, int favorCount, int tickRate) {
         super(favor, favorCount);
-        tickRate = 400;
+        this.tickRate = tickRate;
     }
 
-    public T setTickRate(int tickRate){
-        this.tickRate = tickRate;
-        return (T) this;
+    @Override
+    public FavorSource create() {
+        return new TickableFavorSource(favor, favorCount, unlockAdvancements, lockAdvancement, conditions, tickRate);
     }
 }

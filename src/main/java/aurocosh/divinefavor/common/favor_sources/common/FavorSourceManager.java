@@ -1,10 +1,8 @@
 package aurocosh.divinefavor.common.favor_sources.common;
 
+import aurocosh.divinefavor.common.favor_sources.favor_sources.base.EventFavorSource;
 import aurocosh.divinefavor.common.favor_sources.favor_sources.base.FavorSource;
-import aurocosh.divinefavor.common.favor_sources.favor_sources.base.FavorToProcess;
 import aurocosh.divinefavor.common.favor_sources.favor_sources.base.TickableFavorSource;
-import aurocosh.divinefavor.common.favor_sources.favor_sources.event.BlockBreakFavorSource;
-import aurocosh.divinefavor.common.favor_sources.favor_sources.event.BlockPlaceFavorSource;
 import aurocosh.divinefavor.common.favors.ModFavor;
 import aurocosh.divinefavor.common.network.common.NetworkHandler;
 import aurocosh.divinefavor.common.network.message.MessagePartialDataSync;
@@ -26,10 +24,7 @@ import net.minecraftforge.fml.common.gameevent.PlayerEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 import net.minecraftforge.fml.relauncher.ReflectionHelper;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import static aurocosh.divinefavor.common.player_data.favor.FavorDataHandler.CAPABILITY_FAVOR;
 
@@ -38,11 +33,8 @@ public class FavorSourceManager {
     public static final AdvancementList ADVANCEMENT_LIST = ReflectionHelper.getPrivateValue(AdvancementManager.class, null, 2);
 
     private static List<FavorSource> favorSources = new ArrayList<>();
-
-    private static List<FavorToProcess> favorSourcesToProcess = new ArrayList<>();
-
-    private static Multimap<EntityPlayer, BlockBreakFavorSource> blockBreakSourcesMultimap = MultimapBuilder.hashKeys().arrayListValues().build();
-    private static Multimap<EntityPlayer, BlockPlaceFavorSource> blockPlaceSourcesMultimap = MultimapBuilder.hashKeys().arrayListValues().build();
+    private static Multimap<EntityPlayer, FavorSource> blockBreakSourcesMultimap = MultimapBuilder.hashKeys().arrayListValues().build();
+    private static Multimap<EntityPlayer, FavorSource> blockPlaceSourcesMultimap = MultimapBuilder.hashKeys().arrayListValues().build();
 
     private static Multimap<TickableFavorSource,EntityPlayerMP> tickableFavorSources = MultimapBuilder.hashKeys().arrayListValues().build();
 
@@ -50,23 +42,33 @@ public class FavorSourceManager {
         favorSources.add(favorSource);
     }
 
+    private static List<FavorToGain> favorSourcesToProcess = new ArrayList<>();
+
     @SubscribeEvent
     public static void onPlayerLogin(PlayerEvent.PlayerLoggedInEvent event) {
-        if (event.player instanceof EntityPlayerMP) {
-            EntityPlayerMP playerMP = (EntityPlayerMP) event.player;
-            PlayerAdvancements advancements = playerMP.getAdvancements();
+        if (!(event.player instanceof EntityPlayerMP))
+            return;
 
-            for (FavorSource favorSource : favorSources) {
-                boolean unlocked = isDone(favorSource.unlockAdvancements, true, advancements);
-                boolean locked = isDone(favorSource.lockAdvancement, false, advancements);
+        EntityPlayerMP playerMP = (EntityPlayerMP) event.player;
+        PlayerAdvancements advancements = playerMP.getAdvancements();
 
-                if (unlocked && !locked) {
-                    if(favorSource instanceof BlockBreakFavorSource)
-                        blockBreakSourcesMultimap.put(playerMP, (BlockBreakFavorSource) favorSource);
-                    else if(favorSource instanceof BlockPlaceFavorSource)
-                        blockPlaceSourcesMultimap.put(playerMP, (BlockPlaceFavorSource) favorSource);
-                    else if(favorSource instanceof TickableFavorSource)
-                        tickableFavorSources.put((TickableFavorSource) favorSource,playerMP);
+        for (FavorSource favorSource : favorSources) {
+            boolean unlocked = isDone(favorSource.unlockAdvancements, true, advancements);
+            boolean locked = isDone(favorSource.lockAdvancement, false, advancements);
+            if(!unlocked || locked)
+                continue;
+
+            if(favorSource instanceof TickableFavorSource)
+                tickableFavorSources.put((TickableFavorSource) favorSource,playerMP);
+            else if(favorSource instanceof EventFavorSource){
+                EventFavorSource eventFavorSource = (EventFavorSource) favorSource;
+                switch (eventFavorSource.eventType){
+                    case BLOCK_BREAK:
+                        blockBreakSourcesMultimap.put(playerMP, favorSource);
+                        break;
+                    case BLOCK_PLACE:
+                        blockPlaceSourcesMultimap.put(playerMP, favorSource);
+                        break;
                 }
             }
         }
@@ -82,27 +84,17 @@ public class FavorSourceManager {
     @SubscribeEvent(priority = EventPriority.LOWEST)
     public static void onBreakEvent(BlockEvent.BreakEvent event) {
         EntityPlayer player = event.getPlayer();
-        Collection<BlockBreakFavorSource> favorSources = blockBreakSourcesMultimap.get(player);
-        if(favorSources.size() == 0)
-            return;
-
-        ResourceLocation blockName = event.getState().getBlock().getRegistryName();
-        for (BlockBreakFavorSource favorSource : favorSources)
-            if (favorSource.isBlockCorrect(blockName))
-                favorSourcesToProcess.add(new FavorToProcess(player,favorSource));
+        for (FavorSource favorSource : blockBreakSourcesMultimap.get(player))
+            if (favorSource.isConditionsMet(player, event))
+                favorSourcesToProcess.add(new FavorToGain(player,favorSource));
     }
 
     @SubscribeEvent(priority = EventPriority.LOWEST)
     public static void onPlaceEvent(BlockEvent.PlaceEvent event) {
         EntityPlayer player = event.getPlayer();
-        Collection<BlockPlaceFavorSource> favorSources = blockPlaceSourcesMultimap.get(player);
-        if(favorSources.size() == 0)
-            return;
-
-        ResourceLocation blockName = event.getState().getBlock().getRegistryName();
-        for (BlockPlaceFavorSource favorSource : favorSources)
-            if (favorSource.isBlockCorrect(blockName))
-                favorSourcesToProcess.add(new FavorToProcess(player,favorSource));
+        for (FavorSource favorSource : blockPlaceSourcesMultimap.get(player))
+            if (favorSource.isConditionsMet(player, event))
+                favorSourcesToProcess.add(new FavorToGain(player,favorSource));
     }
 
     @SubscribeEvent
@@ -113,11 +105,10 @@ public class FavorSourceManager {
         for (TickableFavorSource favorSource : tickableFavorSources.keySet()) {
             if(!favorSource.IsTickNeeded())
                 continue;
-
             Collection<EntityPlayerMP> playerMPS = tickableFavorSources.get(favorSource);
             for (EntityPlayerMP playerMP : playerMPS)
-                if (favorSource.IsFavorNeeded(playerMP))
-                    favorSourcesToProcess.add(new FavorToProcess(playerMP, favorSource));
+                if (favorSource.isConditionsMet(playerMP, null))
+                    favorSourcesToProcess.add(new FavorToGain(playerMP, favorSource));
         }
     }
 
@@ -127,9 +118,9 @@ public class FavorSourceManager {
             return;
 
         Multimap<EntityPlayer, ModFavor> favorsToUpdate = MultimapBuilder.hashKeys().hashSetValues().build();
-        for (FavorToProcess favorToProcess : favorSourcesToProcess) {
-            EntityPlayerMP playerMP = (EntityPlayerMP) favorToProcess.player;
-            FavorSource favorSource = favorToProcess.favorSource;
+        for (FavorToGain favorToGain : favorSourcesToProcess) {
+            EntityPlayerMP playerMP = (EntityPlayerMP) favorToGain.player;
+            FavorSource favorSource = favorToGain.favorSource;
 
             IFavorHandler favorHandler = playerMP.getCapability(CAPABILITY_FAVOR, null);
             if (favorHandler == null)
