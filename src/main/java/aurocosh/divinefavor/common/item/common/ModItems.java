@@ -1,7 +1,8 @@
 package aurocosh.divinefavor.common.item.common;
 
 import aurocosh.divinefavor.common.constants.items.ConstItemNames;
-import aurocosh.divinefavor.common.constants.items.LibCallingStoneNames;
+import aurocosh.divinefavor.common.constants.items.ConstCallingStoneNames;
+import aurocosh.divinefavor.common.constants.items.ConstWishingStoneNames;
 import aurocosh.divinefavor.common.favors.ModFavors;
 import aurocosh.divinefavor.common.item.ItemStoneball;
 import aurocosh.divinefavor.common.item.base.ModItem;
@@ -41,12 +42,13 @@ public final class ModItems {
     public static ModItem waterwalking_talisman;
     public static ModItem wooden_punch_talisman;
 
-
     public static ModItem allfire_calling_stone;
     public static ModItem timber_calling_stone;
+    public static ModItem romol_calling_stone;
 
     public static ModItem allfire_wishing_stone;
     public static ModItem timber_wishing_stone;
+    public static ModItem romol_wishing_stone;
 
     public static Collection<ModItem> getItems() {
         return itemMap.values();
@@ -125,12 +127,14 @@ public final class ModItems {
     }
 
     private static void generateCallingStones() {
-        allfire_calling_stone = register(new ItemCallingStone(LibCallingStoneNames.ALLFIRE_CALLING_STONE, ModSpirits.allfire, ModMultiBlocks.allfire_altar));
-        timber_calling_stone = register(new ItemCallingStone(LibCallingStoneNames.TIMBER_CALLING_STONE, ModSpirits.timber, ModMultiBlocks.timber_altar));
+        allfire_calling_stone = register(new ItemCallingStone(ConstCallingStoneNames.ALLFIRE_CALLING_STONE, ModSpirits.allfire, ModMultiBlocks.allfire_altar));
+        timber_calling_stone = register(new ItemCallingStone(ConstCallingStoneNames.TIMBER_CALLING_STONE, ModSpirits.timber, ModMultiBlocks.timber_altar));
+        romol_calling_stone = register(new ItemCallingStone(ConstCallingStoneNames.ROMOL_CALLING_STONE, ModSpirits.romol, ModMultiBlocks.romol_altar));
     }
     private static void generateWishingStones() {
-        allfire_wishing_stone = register(new ItemWishingStone("allfire_wishing_stone", ModFavors.favor_of_allfire, 1));
-        timber_wishing_stone = register(new ItemWishingStone("timber_wishing_stone", ModFavors.favor_of_timber, 1));
+        allfire_wishing_stone = register(new ItemWishingStone(ConstWishingStoneNames.ALLFIRE_WISHING_STONE, ModFavors.favor_of_allfire, 1));
+        timber_wishing_stone = register(new ItemWishingStone(ConstWishingStoneNames.TIMBER_WISHING_STONE, ModFavors.favor_of_timber, 1));
+        romol_wishing_stone = register(new ItemWishingStone(ConstWishingStoneNames.ROMOL_WISHING_STONE, ModFavors.favor_of_romol, 1));
     }
 //
 //    private static void loadTalismans(ModContainer mod) {

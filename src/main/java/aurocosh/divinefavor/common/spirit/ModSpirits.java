@@ -10,6 +10,7 @@ import java.util.Map;
 public final class ModSpirits {
     public static ModSpirit allfire;
     public static ModSpirit timber;
+    public static ModSpirit romol;
     private static Map<ResourceLocation, ModSpirit> spirits = new HashMap<>();
 
     public static void preInit() {
@@ -22,6 +23,12 @@ public final class ModSpirits {
         timber = register(
                 new SpiritBuilder(ConstSpiritNames.TIMBER)
                         .addActivityPeriod(6, 12)
+                        .create()
+        );
+
+        romol = register(
+                new SpiritBuilder(ConstSpiritNames.ROMOL)
+                        .addActivityPeriod(6, 18)
                         .create()
         );
     }

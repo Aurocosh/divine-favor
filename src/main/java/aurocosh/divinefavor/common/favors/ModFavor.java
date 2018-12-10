@@ -8,9 +8,9 @@ public class ModFavor extends IForgeRegistryEntry.Impl<ModFavor> {
     public final String tag;
     public final int id;
 
-    public ModFavor(String name, String tag, int id) {
+    public ModFavor(String name, int id) {
         this.name = name;
-        this.tag = tag;
+        this.tag = "TAG_FAVOR_" + name.toUpperCase();
         this.id = id;
 
         setRegistryName(ResourceNamer.getFullName("favor", name));
