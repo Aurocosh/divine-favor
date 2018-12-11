@@ -27,11 +27,11 @@ public class GuiTalismanContainer extends GuiCustomScreen {
         this.xSize = 176;
         this.ySize = 166;
         super.initGui();
-
-        ItemTalisman itemTalisman = (ItemTalisman) talisman.getItem();
-        String text = Translator.translateToLocal(itemTalisman.getCostTranslationKey());
-        GuiTextBlock textBlock = new GuiTextBlock(5,7,170,250,text);
-        addElement(textBlock);
+//
+//        ItemTalisman itemTalisman = (ItemTalisman) talisman.getItem();
+//        String text = Translator.translateToLocal(itemTalisman.getCostTranslationKey());
+//        GuiTextBlock textBlock = new GuiTextBlock(5,7,170,250,text);
+//        addElement(textBlock);
     }
 
     @Override

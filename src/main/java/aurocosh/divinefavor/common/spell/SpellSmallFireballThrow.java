@@ -12,7 +12,7 @@ import net.minecraft.world.World;
 
 public class SpellSmallFireballThrow extends ModSpell {
     public SpellSmallFireballThrow() {
-        super(SpellType.SMALL_FIREBALL_THROW, true);
+        super(SpellType.SMALL_FIREBALL_THROW);
     }
 
     @Override

@@ -12,7 +12,7 @@ public class SpellLavawalking extends ModSpell {
     private final int NORMAL = 3600;
 
     public SpellLavawalking() {
-        super(SpellType.LAVAWALKING, true);
+        super(SpellType.LAVAWALKING);
     }
 
     @Override

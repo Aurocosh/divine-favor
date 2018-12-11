@@ -1,5 +1,6 @@
 package aurocosh.divinefavor.common.item;
 
+import aurocosh.divinefavor.common.constants.items.ConstItemNames;
 import aurocosh.divinefavor.common.core.DivineFavorCreativeTab;
 import aurocosh.divinefavor.common.item.base.ModItem;
 import aurocosh.divinefavor.common.muliblock.ModMultiBlock;
@@ -13,21 +14,10 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.world.World;
 
 public class ItemCallingStone extends ModItem {
-    public final ModSpirit spirit;
-    public final ModMultiBlock multiBlock;
-
-    public ItemCallingStone(String name, ModSpirit spirit, ModMultiBlock multiBlock) {
-        super(name);
-        this.spirit = spirit;
-        this.multiBlock = multiBlock;
+    public ItemCallingStone(String texturePath, String[] variants) {
+        super(ConstItemNames.CALLING_STONE, texturePath, variants);
         setMaxStackSize(1);
         setCreativeTab(DivineFavorCreativeTab.INSTANCE);
-    }
-
-    @Override
-    public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand hand) {
-        ItemStack itemStackIn = playerIn.getHeldItem(hand);
-        return new ActionResult<>(EnumActionResult.PASS, itemStackIn);
     }
 
     @Override

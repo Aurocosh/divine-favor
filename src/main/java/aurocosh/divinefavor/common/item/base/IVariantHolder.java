@@ -5,6 +5,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 public interface IVariantHolder {
+    String getTexturePath();
 	String[] getVariants();
 
 	@SideOnly(Side.CLIENT)

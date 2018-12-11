@@ -10,7 +10,7 @@ import net.minecraft.world.World;
 
 public class SpellIgnition extends ModSpell {
     public SpellIgnition() {
-        super(SpellType.IGNITION, true);
+        super(SpellType.IGNITION);
     }
 
     @Override

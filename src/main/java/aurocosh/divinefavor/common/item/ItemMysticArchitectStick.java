@@ -37,7 +37,7 @@ public class ItemMysticArchitectStick extends ModItem {
     public static final String TAG_AIR_TYPE = "AirType";
 
     public ItemMysticArchitectStick() {
-        super(ConstItemNames.MYSTIC_ARCHITECT_STICK);
+        super(ConstItemNames.MYSTIC_ARCHITECT_STICK,"");
         setMaxStackSize(1);
         setCreativeTab(DivineFavorCreativeTab.INSTANCE);
     }

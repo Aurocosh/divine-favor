@@ -1,8 +1,10 @@
 package aurocosh.divinefavor.common.receipes;
 
+import aurocosh.divinefavor.common.item.calling_stones.ModCallingStones;
 import aurocosh.divinefavor.common.item.common.ModItems;
 import aurocosh.divinefavor.common.item.ItemCallingStone;
 import aurocosh.divinefavor.common.lib.ItemStackIdComparator;
+import aurocosh.divinefavor.common.talismans.ModTalismans;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -16,12 +18,12 @@ public class ModRecipes {
     public static final Map<String, ImmaterialMediumRecipe> recipeLookup = new HashMap<>();
 
     public static void init() {
-        register(new RecipeBuilder(new ItemStack(ModItems.arrowThrowTalisman), (ItemCallingStone) ModItems.timber_calling_stone)
+        register(new RecipeBuilder(ModTalismans.getStack(ModTalismans.arrowThrowTalisman), ModCallingStones.timber_calling_stone)
                 .addIngredient(Items.ARROW, 8)
                 .addIngredient(Items.GOLD_INGOT)
                 .create()
         );
-        register(new RecipeBuilder(new ItemStack(ModItems.ignition_talisman), (ItemCallingStone) ModItems.allfire_calling_stone)
+        register(new RecipeBuilder(ModTalismans.getStack(ModTalismans.ignition), ModCallingStones.allfire_calling_stone)
                 .addIngredient(Items.COAL, 32)
                 .addIngredient(Items.GUNPOWDER, 2)
                 .create()
@@ -33,13 +35,13 @@ public class ModRecipes {
 
         List<ItemStack> stacks = getIngridientStacks(recipe.ingredients);
         stacks.sort(new ItemStackIdComparator());
-        Item callingStone = recipe.callingStone.getMatchingStacks()[0].getItem();
+        ItemStack callingStone = recipe.callingStone.getMatchingStacks()[0];
         String ingredientString = getStackListString(callingStone, stacks);
         recipeLookup.put(ingredientString, recipe);
         return recipe;
     }
 
-    public static ItemStack getRecipeResult(Item callingStone, List<ItemStack> stacks) {
+    public static ItemStack getRecipeResult(ItemStack callingStone, List<ItemStack> stacks) {
         List<ItemStack> itemStacks = new ArrayList<>(stacks);
         itemStacks.sort(new ItemStackIdComparator());
 
@@ -58,13 +60,13 @@ public class ModRecipes {
         return stacks;
     }
 
-    private static String getStackListString(Item callingStone, List<ItemStack> stacks) {
+    private static String getStackListString(ItemStack callingStone, List<ItemStack> stacks) {
         StringJoiner joiner = new StringJoiner("_");
         for (ItemStack itemStack : stacks) {
 //            int id = Item.REGISTRY.getIDForObject(itemStack.getItem());
             String value = itemStack.getItem().getRegistryName() + ":" + itemStack.getCount();
             joiner.add(value);
         }
-        return joiner.toString() + "|" + callingStone.getRegistryName();
+        return joiner.toString() + "|" + callingStone.getItem().getRegistryName() + ":" + callingStone.getMetadata();
     }
 }
