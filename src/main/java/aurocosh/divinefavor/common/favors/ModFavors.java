@@ -3,6 +3,7 @@ package aurocosh.divinefavor.common.favors;
 import aurocosh.divinefavor.common.constants.ConstFavorType;
 import aurocosh.divinefavor.common.registry.CommonRegistry;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.registries.RegistryManager;
 
 import java.util.*;
 
@@ -18,6 +19,7 @@ public final class ModFavors {
         favor_of_allfire = register(new ModFavor(ConstFavorType.FAVOR_OF_ALLFIRE, nextId++));
         favor_of_timber = register(new ModFavor(ConstFavorType.FAVOR_OF_TIMBER, nextId++));
         favor_of_romol = register(new ModFavor(ConstFavorType.FAVOR_OF_ROMOL, nextId++));
+
     }
 
     public static Collection<ModFavor> getFavorList() {
