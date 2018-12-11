@@ -4,14 +4,10 @@ import aurocosh.divinefavor.common.constants.items.ConstItemNames;
 import aurocosh.divinefavor.common.constants.items.ConstCallingStoneNames;
 import aurocosh.divinefavor.common.constants.items.ConstWishingStoneNames;
 import aurocosh.divinefavor.common.favors.ModFavors;
-import aurocosh.divinefavor.common.item.ItemStoneball;
+import aurocosh.divinefavor.common.item.*;
 import aurocosh.divinefavor.common.item.base.ModItem;
-import aurocosh.divinefavor.common.item.ItemBoneKey;
-import aurocosh.divinefavor.common.item.ItemCallingStone;
-import aurocosh.divinefavor.common.item.ItemMysticArchitectStick;
 import aurocosh.divinefavor.common.item.ritual_pouch.ItemRitualPouch;
 import aurocosh.divinefavor.common.item.talisman.TalismanBuilder;
-import aurocosh.divinefavor.common.item.ItemWishingStone;
 import aurocosh.divinefavor.common.muliblock.common.ModMultiBlocks;
 import aurocosh.divinefavor.common.registry.CommonRegistry;
 import aurocosh.divinefavor.common.spell.common.ModSpells;
@@ -25,7 +21,9 @@ import java.util.Map;
 public final class ModItems {
     private static final Map<ResourceLocation, ModItem> itemMap = new HashMap<>();
 
+
     public static ModItem bone_key;
+    public static ModItem colored_bone;
     public static ModItem mystic_architect_stick;
     public static ModItem ritual_pouch;
     public static ModItem stoneball;
@@ -56,6 +54,7 @@ public final class ModItems {
 
     public static void preInit() {
         bone_key = register(new ItemBoneKey());
+        colored_bone = register(new ItemColoredBone());
         mystic_architect_stick = register(new ItemMysticArchitectStick());
         ritual_pouch = register(new ItemRitualPouch());
         stoneball = register(new ItemStoneball());

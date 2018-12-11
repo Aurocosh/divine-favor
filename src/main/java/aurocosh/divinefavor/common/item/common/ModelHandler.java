@@ -43,11 +43,17 @@ public final class ModelHandler {
         if(fullName == null)
             return;
 
-        final String namespace = fullName.getNamespace();
         final String[] variants = item.getVariants();
-		for(int i = 0; i < variants.length; i++) {
-			ResourceLocation name = new ResourceLocation(namespace, variants[i]);
-			ModelResourceLocation loc = new ModelResourceLocation(name, "inventory");
+        if(variants.length == 1) {
+            ModelResourceLocation loc = new ModelResourceLocation(fullName, "inventory");
+            ModelLoader.setCustomModelResourceLocation(item, 0, loc);
+            return;
+        }
+
+//        final String namespace = fullName.getNamespace();
+        for(int i = 0; i < variants.length; i++) {
+//			ResourceLocation name = new ResourceLocation(namespace, variants[i]);
+			ModelResourceLocation loc = new ModelResourceLocation(fullName + "_" + variants[i], "inventory");
 			ModelLoader.setCustomModelResourceLocation(item, i, loc);
 		}
 	}
