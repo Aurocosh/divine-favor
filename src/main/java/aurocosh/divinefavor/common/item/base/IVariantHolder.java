@@ -7,10 +7,6 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public interface IVariantHolder {
 	String[] getVariants();
 
-    default String getUniqueModel() {
-        return null;
-    }
-
 	@SideOnly(Side.CLIENT)
 	ItemMeshDefinition getCustomMeshDefinition();
 }
