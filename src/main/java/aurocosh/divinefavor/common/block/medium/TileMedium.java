@@ -1,6 +1,8 @@
 package aurocosh.divinefavor.common.block.medium;
 
 import aurocosh.divinefavor.common.block.base.TickableTileEntity;
+import aurocosh.divinefavor.common.item.calling_stones.CallingStone;
+import aurocosh.divinefavor.common.item.calling_stones.ModCallingStones;
 import aurocosh.divinefavor.common.item.common.ModItems;
 import aurocosh.divinefavor.common.item.ItemCallingStone;
 import aurocosh.divinefavor.common.lib.math.Vector3i;
@@ -30,7 +32,7 @@ import java.util.List;
 
 public class TileMedium extends TickableTileEntity implements IMultiblockController {
     public static final int SIZE = 27;
-    private final String TAG_CALLING_STONE = "CallingStone";
+    private final String TAG_CALLING_STONE = "WishingStone";
     private final String TAG_ITEMS = "Items";
     private final String TAG_STATE_MEDIUM = "StateMedium";
 
@@ -47,9 +49,11 @@ public class TileMedium extends TickableTileEntity implements IMultiblockControl
 
         @Override
         protected void onContentsChanged(int slot) {
-            if(multiBlockInstance != null)
+            ItemStack stack = getStackInSlot(slot);
+            if(stack.isEmpty() && multiBlockInstance != null)
                 multiblockDamaged();
-            tryToFormMultiBlock();
+            else if(multiBlockInstance == null)
+                tryToFormMultiBlock();
             TileMedium.this.markDirty();
         }
     };
@@ -153,7 +157,7 @@ public class TileMedium extends TickableTileEntity implements IMultiblockControl
     @Override
     protected void updateFiltered() {
         ItemStack stack = stoneStackHandler.getStackInSlot(0);
-        if (stack == ItemStack.EMPTY) {
+        if (stack.isEmpty()) {
             setState(MediumState.NO_CALLING_STONE);
             return;
         }
@@ -163,8 +167,8 @@ public class TileMedium extends TickableTileEntity implements IMultiblockControl
             return;
         }
 
-        ItemCallingStone item = (ItemCallingStone) stack.getItem();
-        ModSpirit spirit = item.spirit;
+        CallingStone callingStone = ModCallingStones.getByMeta(stack.getMetadata());
+        ModSpirit spirit = callingStone.spirit;
         if (!spirit.isActive(world)) {
             setState(MediumState.VALID);
             return;
@@ -185,11 +189,11 @@ public class TileMedium extends TickableTileEntity implements IMultiblockControl
             return;
 
         ItemStack stoneStack = stoneStackHandler.getStackInSlot(0);
-        if (stoneStack == ItemStack.EMPTY)
+        if (stoneStack.isEmpty())
             return;
 
         List<ItemStack> pouchStacks = UtilHandler.getNotEmptyStacks(handler);
-        ItemStack result = ModRecipes.getRecipeResult(stoneStack.getItem(), pouchStacks);
+        ItemStack result = ModRecipes.getRecipeResult(stoneStack, pouchStacks);
         if (result == ItemStack.EMPTY)
             return;
         int slot = slotStack.getIndex();
@@ -221,10 +225,10 @@ public class TileMedium extends TickableTileEntity implements IMultiblockControl
         if (multiBlockInstance != null)
             return;
         ItemStack stack = stoneStackHandler.getStackInSlot(0);
-        if (stack == ItemStack.EMPTY)
+        if (stack.isEmpty())
             return;
 
-        ItemCallingStone callingStone = (ItemCallingStone) stack.getItem();
+        CallingStone callingStone = ModCallingStones.getByMeta(stack.getMetadata());
         ModMultiBlock multiBlock = callingStone.multiBlock;
         Vector3i position = Vector3i.convert(pos);
         multiBlockInstance = multiBlock.makeMultiBlock(world, position);
@@ -234,7 +238,7 @@ public class TileMedium extends TickableTileEntity implements IMultiblockControl
 
     private void updateState(){
         ItemStack stack = stoneStackHandler.getStackInSlot(0);
-        if (stack == ItemStack.EMPTY) {
+        if (stack.isEmpty()) {
             setState(MediumState.NO_CALLING_STONE);
             return;
         }
@@ -243,8 +247,8 @@ public class TileMedium extends TickableTileEntity implements IMultiblockControl
             return;
         }
 
-        ItemCallingStone item = (ItemCallingStone) stack.getItem();
-        ModSpirit spirit = item.spirit;
+        CallingStone callingStone = ModCallingStones.getByMeta(stack.getMetadata());
+        ModSpirit spirit = callingStone.spirit;
         if (!spirit.isActive(world)) {
             setState(MediumState.VALID);
             return;

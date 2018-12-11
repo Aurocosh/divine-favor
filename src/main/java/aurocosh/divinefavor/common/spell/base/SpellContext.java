@@ -12,19 +12,22 @@ public class SpellContext {
     public BlockPos pos;
     public EnumHand hand;
     public EnumFacing facing;
+    public CastType castType;
 
     public SpellContext(EntityPlayer player) {
         this.player = player;
         this.world = player.world;
         this.pos = null;
         this.hand = EnumHand.MAIN_HAND;
+        castType = CastType.UNSPECIFIED;
     }
 
-    public SpellContext(EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing facing){
+    public SpellContext(EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing facing, CastType castType){
         this.player = player;
         this.world = world;
         this.pos = pos;
         this.hand = hand;
         this.facing = facing;
+        this.castType = castType;
     }
 }

@@ -13,7 +13,7 @@ public class SpellEmpowerAxe extends ModSpell {
     private final int TEST = 500;
 
     public SpellEmpowerAxe() {
-        super(SpellType.EMPOWER_AXE, true);
+        super(SpellType.EMPOWER_AXE);
     }
 
     @Override

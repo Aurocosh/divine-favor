@@ -12,7 +12,7 @@ import net.minecraft.world.World;
 
 public class SpellTellTime extends ModSpell {
     public SpellTellTime() {
-        super(SpellType.TELL_TIME, true);
+        super(SpellType.TELL_TIME);
     }
 
     @Override

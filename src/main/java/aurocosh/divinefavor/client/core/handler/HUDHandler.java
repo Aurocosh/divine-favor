@@ -3,6 +3,8 @@ package aurocosh.divinefavor.client.core.handler;
 import aurocosh.divinefavor.DivineFavor;
 import aurocosh.divinefavor.common.item.ItemMysticArchitectStick;
 import aurocosh.divinefavor.common.item.talisman.ItemTalisman;
+import aurocosh.divinefavor.common.talismans.ModTalismans;
+import aurocosh.divinefavor.common.talismans.Talisman;
 import aurocosh.divinefavor.common.util.UtilNbt;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScaledResolution;
@@ -55,7 +57,11 @@ public final class HUDHandler {
         ItemStack stack = mc.player.getHeldItem(EnumHand.MAIN_HAND);
         if (stack.isEmpty() || !(stack.getItem() instanceof ItemTalisman))
             return;
-        ItemTalisman talisman = (ItemTalisman)stack.getItem();
+
+        Talisman talisman = ModTalismans.getByMeta(stack.getMetadata());
+        if(talisman == null)
+            return;
+
         EntityPlayer player = DivineFavor.proxy.getClientPlayer();
         int useCount = talisman.getUseCount(player);
 

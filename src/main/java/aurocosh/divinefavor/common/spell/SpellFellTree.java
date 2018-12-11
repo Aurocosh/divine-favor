@@ -23,7 +23,7 @@ import java.util.Stack;
 
 public class SpellFellTree extends ModSpell {
     public SpellFellTree() {
-        super(SpellType.FELL_TREE, true);
+        super(SpellType.FELL_TREE);
     }
 
     @Override

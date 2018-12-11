@@ -1,19 +1,15 @@
 package aurocosh.divinefavor.common.item.talisman;
 
-import aurocosh.divinefavor.DivineFavor;
-import aurocosh.divinefavor.common.constants.ConstGuiIDs;
-import aurocosh.divinefavor.common.constants.ConstMisc;
+import aurocosh.divinefavor.common.constants.items.ConstItemNames;
 import aurocosh.divinefavor.common.core.DivineFavorCreativeTab;
-import aurocosh.divinefavor.common.favors.ModFavor;
 import aurocosh.divinefavor.common.item.base.ModItem;
 import aurocosh.divinefavor.common.lib.math.Vector3;
-import aurocosh.divinefavor.common.network.common.NetworkHandler;
-import aurocosh.divinefavor.common.network.message.MessageSyncFavor;
-import aurocosh.divinefavor.common.player_data.favor.IFavorHandler;
-import aurocosh.divinefavor.common.spell.base.ModSpell;
+import aurocosh.divinefavor.common.spell.base.CastType;
 import aurocosh.divinefavor.common.spell.base.SpellContext;
+import aurocosh.divinefavor.common.talismans.ModTalismans;
+import aurocosh.divinefavor.common.talismans.Talisman;
+import aurocosh.divinefavor.common.util.UtilWorld;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ActionResult;
@@ -24,75 +20,54 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
 
-import static aurocosh.divinefavor.common.player_data.favor.FavorDataHandler.CAPABILITY_FAVOR;
-
 public class ItemTalisman extends ModItem {
-    private final ModSpell spell;
-    private final ModFavor favor;
-    private final int favorPerUse;
-    private final boolean castOnUse;
-    private final boolean castOnRightClick;
-
-    public ItemTalisman(String name, ModSpell spell, ModFavor favor, int favorPerUse, boolean castOnUse, boolean castOnRightClick) {
-        super(name);
-        this.spell = spell;
-        this.favor = favor;
-        this.favorPerUse = favorPerUse;
-        this.castOnUse = castOnUse;
-        this.castOnRightClick = castOnRightClick;
+    public ItemTalisman(String texturePath, String[] variants) {
+        super(ConstItemNames.TALISMAN, texturePath, variants);
         setMaxStackSize(1);
         setCreativeTab(DivineFavorCreativeTab.INSTANCE);
     }
 
-    public static RayTraceResult raycast(World world, Vector3 origin, Vector3 ray, double len) {
-        Vector3 end = origin.copy().add(ray.copy().normalize().multiply(len));
-        return world.rayTraceBlocks(origin.toVec3D(), end.toVec3D());
-    }
-
-    public boolean castUse(SpellContext context) {
-        return spell.cast(context);
-    }
-
-    public boolean castRightClick(SpellContext context) {
-        return spell.cast(context);
-    }
-
     @Override
     public EnumActionResult onItemUse(EntityPlayer playerIn, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
-        if (!spell.isCodeSideCorrect(worldIn))
+        if(worldIn.isRemote)
             return EnumActionResult.SUCCESS;
 
-        if (!castOnUse)
-            return EnumActionResult.SUCCESS;
+        ItemStack stack = playerIn.getHeldItem(hand);
+        if (!(stack.getItem() instanceof ItemTalisman))
+            return EnumActionResult.PASS;
 
-        SpellContext context = new SpellContext(playerIn, worldIn, pos, hand, facing);
-        if (!claimCost(context))
-            return EnumActionResult.SUCCESS;
+        Talisman talisman = ModTalismans.getByMeta(stack.getMetadata());
+        if(talisman == null)
+            return EnumActionResult.PASS;
 
-        castUse(context);
+        if(!talisman.castOnUse)
+            return EnumActionResult.PASS;
+
+        SpellContext context = new SpellContext(playerIn, worldIn, pos, hand, facing, CastType.ITEM_USE_CAST);
+        talisman.cast(context);
         return EnumActionResult.SUCCESS;
     }
 
     @Override
     public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand hand) {
-        ItemStack itemStackIn = playerIn.getHeldItem(hand);
-        if (hand == EnumHand.OFF_HAND)
-            return new ActionResult<>(EnumActionResult.PASS, itemStackIn);
-        if (playerIn.isSneaking()) {
-            if (!worldIn.isRemote)
-                return new ActionResult<>(EnumActionResult.PASS, itemStackIn);
-            playerIn.openGui(DivineFavor.instance, ConstGuiIDs.TALISMAN, worldIn, (int) playerIn.posX, (int) playerIn.posY, (int) playerIn.posZ);
-            return new ActionResult<>(EnumActionResult.SUCCESS, itemStackIn);
-        }
+        ItemStack stack = playerIn.getHeldItem(hand);
+        if (!(stack.getItem() instanceof ItemTalisman))
+            return new ActionResult<>(EnumActionResult.PASS, stack);
 
-        if (!spell.isCodeSideCorrect(worldIn))
-            return new ActionResult<>(EnumActionResult.PASS, itemStackIn);
-        if (!castOnRightClick)
-            return new ActionResult<>(EnumActionResult.PASS, itemStackIn);
+        if(worldIn.isRemote)
+            return new ActionResult<>(EnumActionResult.PASS, stack);
+
+
+        Talisman talisman = ModTalismans.getByMeta(stack.getMetadata());
+        if(talisman == null)
+            return new ActionResult<>(EnumActionResult.PASS, stack);
+
+        if(!talisman.castOnRightClick)
+            return new ActionResult<>(EnumActionResult.PASS, stack);
 
         Vector3 posVec = new Vector3(playerIn.posX, playerIn.posY + playerIn.getEyeHeight(), playerIn.posZ);
         Vector3 lookVec = new Vector3(playerIn.getLookVec());
-        RayTraceResult pos = raycast(worldIn, posVec, lookVec, 20);
+        RayTraceResult pos = UtilWorld.raycast(worldIn, posVec, lookVec, 20);
         BlockPos blockPos = null;
         EnumFacing facing = EnumFacing.UP;
         if (pos != null) {
@@ -100,53 +75,13 @@ public class ItemTalisman extends ModItem {
             facing = pos.sideHit;
         }
 
-        SpellContext context = new SpellContext(playerIn, worldIn, blockPos, hand, facing);
-
-        if (!claimCost(context))
-            return new ActionResult<>(EnumActionResult.PASS, itemStackIn);
-
-        boolean success = castRightClick(context);
-        return new ActionResult<>(success ? EnumActionResult.SUCCESS : EnumActionResult.PASS, itemStackIn);
-    }
-
-    private boolean claimCost(SpellContext context) {
-        if (context.world.isRemote)
-            return false;
-        IFavorHandler favorHandler = context.player.getCapability(CAPABILITY_FAVOR, null);
-        if(favorHandler == null)
-            return false;
-        if(!favorHandler.consumeFavor(favor.id,favorPerUse))
-            return false;
-
-        int favorValue = favorHandler.getFavor(favor.id);
-        MessageSyncFavor message = new MessageSyncFavor(favor.id,favorValue);
-        NetworkHandler.INSTANCE.sendTo(message, (EntityPlayerMP) context.player);
-        return true;
-    }
-
-    public int getUseCount(EntityPlayer player){
-        IFavorHandler favorHandler = player.getCapability(CAPABILITY_FAVOR, null);
-        if(favorHandler == null)
-            return 0;
-
-        int favorCount = favorHandler.getFavor(favor.id);
-        if(favorCount == 0)
-            return 0;
-
-        return favorCount / favorPerUse;
+        SpellContext context = new SpellContext(playerIn, worldIn, blockPos, hand, facing, CastType.RIGHT_CLICK);
+        boolean success = talisman.cast(context);
+        return new ActionResult<>(success ? EnumActionResult.SUCCESS : EnumActionResult.PASS, stack);
     }
 
     @Override
     public EnumRarity getRarity(ItemStack stack) {
         return EnumRarity.RARE;
-    }
-
-    public String getCostTranslationKey() {
-        return "cost." + getTranslationKey();
-    }
-
-    @Override
-    public String getTranslationKey() {
-        return ConstMisc.MOD_ID + ":" + getRegistryName().getPath();
     }
 }

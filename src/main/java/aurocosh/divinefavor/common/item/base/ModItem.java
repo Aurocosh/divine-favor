@@ -9,9 +9,11 @@ import net.minecraft.util.NonNullList;
 import net.minecraft.util.ResourceLocation;
 
 public class ModItem extends Item implements IVariantHolder {
+    private final String texturePath;
     private final String[] variants;
 
-    public ModItem(String name, String... variants) {
+    public ModItem(String name, String texturePath, String... variants) {
+        this.texturePath = texturePath;
         if (variants.length > 1)
             setHasSubtypes(true);
         if (variants.length == 0)
@@ -41,6 +43,11 @@ public class ModItem extends Item implements IVariantHolder {
             return;
         for (int i = 0; i < variants.length; ++i)
             items.add(new ItemStack(this, 1, i));
+    }
+
+    @Override
+    public String getTexturePath() {
+        return texturePath;
     }
 
     @Override

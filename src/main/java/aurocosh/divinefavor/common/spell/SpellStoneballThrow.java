@@ -11,7 +11,7 @@ import net.minecraft.world.World;
 
 public class SpellStoneballThrow extends ModSpell {
     public SpellStoneballThrow() {
-        super(SpellType.STONEBALL_THROW, true);
+        super(SpellType.STONEBALL_THROW);
     }
 
     @Override
