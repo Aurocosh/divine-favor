@@ -16,7 +16,7 @@ import net.minecraft.world.World;
 
 public class SpellArrowThrow extends ModSpell {
     public SpellArrowThrow() {
-        super(SpellType.ARROW_THROW, true);
+        super(SpellType.ARROW_THROW);
     }
 
     @Override

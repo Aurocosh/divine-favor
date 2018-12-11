@@ -1,6 +1,7 @@
 package aurocosh.divinefavor.common.receipes;
 
-import aurocosh.divinefavor.common.item.ItemCallingStone;
+import aurocosh.divinefavor.common.item.calling_stones.CallingStone;
+import aurocosh.divinefavor.common.item.calling_stones.ModCallingStones;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
@@ -15,10 +16,10 @@ public class RecipeBuilder {
     private Ingredient callingStone;
     private List<Ingredient> ingredients;
 
-    public RecipeBuilder(ItemStack result, ItemCallingStone callingStone) {
+    public RecipeBuilder(ItemStack result, CallingStone callingStone) {
         name = result.getItem().getRegistryName();
         this.result = result;
-        this.callingStone = Ingredient.fromItem(callingStone);
+        this.callingStone = Ingredient.fromStacks(ModCallingStones.getStack(callingStone));
         ingredients = new ArrayList<>();
     }
 

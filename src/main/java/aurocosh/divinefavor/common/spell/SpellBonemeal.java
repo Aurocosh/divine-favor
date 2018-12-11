@@ -11,7 +11,7 @@ import net.minecraft.util.math.BlockPos;
 
 public class SpellBonemeal extends ModSpell {
     public SpellBonemeal() {
-        super(SpellType.BONEMEAL, true);
+        super(SpellType.BONEMEAL);
     }
 
     @Override

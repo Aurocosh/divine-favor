@@ -50,10 +50,14 @@ public final class ModelHandler {
             return;
         }
 
+        String namespace = fullName.getNamespace();
+        String texturePath = item.getTexturePath();
+        String path = fullName.getPath();
+        String modelPath = namespace + ":" + texturePath + path + "_";
+
 //        final String namespace = fullName.getNamespace();
         for(int i = 0; i < variants.length; i++) {
-//			ResourceLocation name = new ResourceLocation(namespace, variants[i]);
-			ModelResourceLocation loc = new ModelResourceLocation(fullName + "_" + variants[i], "inventory");
+			ModelResourceLocation loc = new ModelResourceLocation(modelPath + variants[i], "inventory");
 			ModelLoader.setCustomModelResourceLocation(item, i, loc);
 		}
 	}

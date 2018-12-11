@@ -17,7 +17,7 @@ import net.minecraftforge.common.capabilities.ICapabilityProvider;
 
 public class ItemRitualPouch extends ModItem {
     public ItemRitualPouch() {
-        super(ConstItemNames.RITUAL_POUCH);
+        super(ConstItemNames.RITUAL_POUCH,"");
         setMaxStackSize(1);
         setCreativeTab(DivineFavorCreativeTab.INSTANCE);
     }

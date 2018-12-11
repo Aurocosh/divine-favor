@@ -11,7 +11,7 @@ import net.minecraft.world.World;
 
 public class SpellSnowballThrow extends ModSpell {
     public SpellSnowballThrow() {
-        super(SpellType.SNOWBALL_THROW, true);
+        super(SpellType.SNOWBALL_THROW);
     }
 
     @Override

@@ -1,6 +1,5 @@
 package aurocosh.divinefavor.common.spell;
 
-import aurocosh.divinefavor.common.effect.base.ModEffect;
 import aurocosh.divinefavor.common.effect.base.ModEffectCharge;
 import aurocosh.divinefavor.common.effect.common.ModPotions;
 import aurocosh.divinefavor.common.spell.base.ModSpell;
@@ -12,7 +11,7 @@ public class SpellWoodenPunch extends ModSpell {
     private final int USES = 10;
 
     public SpellWoodenPunch() {
-        super(SpellType.WOODEN_PUNCH, true);
+        super(SpellType.WOODEN_PUNCH);
     }
 
     @Override
