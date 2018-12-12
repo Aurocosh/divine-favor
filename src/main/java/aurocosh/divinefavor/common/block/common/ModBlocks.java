@@ -8,7 +8,8 @@ import aurocosh.divinefavor.common.block.medium.BlockMedium;
 import aurocosh.divinefavor.common.block.medium.TileMedium;
 import aurocosh.divinefavor.common.constants.ConstBlockNames;
 import aurocosh.divinefavor.common.constants.ConstResources;
-import aurocosh.divinefavor.common.registry.CommonRegistry;
+import aurocosh.divinefavor.common.registry.RegistryMap;
+import aurocosh.divinefavor.common.registry.common.CommonRegistry;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
@@ -19,24 +20,30 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ModBlocks {
-    private static Map<ResourceLocation, ModBlock> blockMap = new HashMap<>();
-    private static Map<ResourceLocation, ItemBlock> itemBlockMap = new HashMap<>();
+    private static RegistryMap<ModBlock> blocks = new RegistryMap<>();
+    private static RegistryMap<ItemBlock> itemBlocks = new RegistryMap<>();
 
     public static ModBlock blockFastFurnace;
-    public static ModBlock IMMATERIAL_MEDIUM;
+    public static ModBlock immaterial_medium;
     public static ModBlock blockDiviner;
 
     public static Collection<ModBlock> getBlocks(){
-        return blockMap.values();
+        return blocks.getValues();
     }
     public static Collection<ItemBlock> getItemBlocks(){
-        return itemBlockMap.values();
+        return itemBlocks.getValues();
     }
 
     public static void preInit() {
-        blockFastFurnace = register(new BlockFastFurnaceMod());
-        IMMATERIAL_MEDIUM = register(new BlockMedium());
-        blockDiviner = register(new BlockDiviner());
+        blockFastFurnace = blocks.register(new BlockFastFurnaceMod());
+        immaterial_medium = blocks.register(new BlockMedium());
+        blockDiviner = blocks.register(new BlockDiviner());
+
+        for (ModBlock block : blocks.getValues()) {
+            ItemBlock itemBlock = new ItemBlock(block);
+            itemBlock.setRegistryName(block.getRegistryName());
+            itemBlocks.register(itemBlock);
+        }
 
         initTileEntities();
     }
@@ -52,24 +59,5 @@ public class ModBlocks {
 
     private static void registerTile(Class<? extends TileEntity> clazz, String key) {
         GameRegistry.registerTileEntity(clazz, ConstResources.PREFIX_MOD + key);
-    }
-
-    //@SideOnly(Side.CLIENT)
-    //public static void initModels() {
-    //    blockFastFurnace.initModel();
-    //    IMMATERIAL_MEDIUM_UID.initModel();
-
-    //}
-
-    private static ModBlock register(ModBlock block) {
-        ResourceLocation name = block.getRegistryName();
-        blockMap.put(name,block);
-        CommonRegistry.register(block);
-
-        ItemBlock itemBlock = new ItemBlock(block);
-        itemBlock.setRegistryName(name);
-        itemBlockMap.put(name,itemBlock);
-        CommonRegistry.register(itemBlock);
-        return block;
     }
 }

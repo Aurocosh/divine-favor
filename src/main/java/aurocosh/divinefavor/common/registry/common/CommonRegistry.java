@@ -1,4 +1,4 @@
-package aurocosh.divinefavor.common.registry;
+package aurocosh.divinefavor.common.registry.common;
 
 import com.google.common.collect.Multimap;
 import com.google.common.collect.MultimapBuilder;

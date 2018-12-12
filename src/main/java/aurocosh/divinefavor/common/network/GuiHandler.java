@@ -9,7 +9,7 @@ import aurocosh.divinefavor.common.block.fast_furnace.TileFastFurnace;
 import aurocosh.divinefavor.common.block.medium.ContainerMedium;
 import aurocosh.divinefavor.common.block.medium.TileMedium;
 import aurocosh.divinefavor.common.constants.ConstGuiIDs;
-import aurocosh.divinefavor.common.item.talisman.ContainerTalisman;
+import aurocosh.divinefavor.common.item.talismans.ContainerTalisman;
 import aurocosh.divinefavor.common.item.ritual_pouch.RitualBagContainer;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;

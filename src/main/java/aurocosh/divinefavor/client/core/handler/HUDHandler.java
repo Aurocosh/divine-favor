@@ -2,9 +2,9 @@ package aurocosh.divinefavor.client.core.handler;
 
 import aurocosh.divinefavor.DivineFavor;
 import aurocosh.divinefavor.common.item.ItemMysticArchitectStick;
-import aurocosh.divinefavor.common.item.talisman.ItemTalisman;
-import aurocosh.divinefavor.common.talismans.ModTalismans;
-import aurocosh.divinefavor.common.talismans.Talisman;
+import aurocosh.divinefavor.common.item.talismans.ItemTalisman;
+import aurocosh.divinefavor.common.item.talismans.ModTalismans;
+import aurocosh.divinefavor.common.item.talismans.Talisman;
 import aurocosh.divinefavor.common.util.UtilNbt;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScaledResolution;
@@ -58,7 +58,7 @@ public final class HUDHandler {
         if (stack.isEmpty() || !(stack.getItem() instanceof ItemTalisman))
             return;
 
-        Talisman talisman = ModTalismans.getByMeta(stack.getMetadata());
+        Talisman talisman = ModTalismans.getMetaContainer().getByMeta(stack.getMetadata());
         if(talisman == null)
             return;
 

@@ -2,11 +2,9 @@ package aurocosh.divinefavor.common.receipes;
 
 import aurocosh.divinefavor.common.item.calling_stones.ModCallingStones;
 import aurocosh.divinefavor.common.item.common.ModItems;
-import aurocosh.divinefavor.common.item.ItemCallingStone;
 import aurocosh.divinefavor.common.lib.ItemStackIdComparator;
-import aurocosh.divinefavor.common.talismans.ModTalismans;
+import aurocosh.divinefavor.common.item.talismans.ModTalismans;
 import net.minecraft.init.Items;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.ResourceLocation;
@@ -18,12 +16,12 @@ public class ModRecipes {
     public static final Map<String, ImmaterialMediumRecipe> recipeLookup = new HashMap<>();
 
     public static void init() {
-        register(new RecipeBuilder(ModTalismans.getStack(ModTalismans.arrowThrowTalisman), ModCallingStones.timber_calling_stone)
+        register(new RecipeBuilder(ModItems.getTalisman(ModTalismans.arrowThrowTalisman), ModCallingStones.timber_calling_stone)
                 .addIngredient(Items.ARROW, 8)
                 .addIngredient(Items.GOLD_INGOT)
                 .create()
         );
-        register(new RecipeBuilder(ModTalismans.getStack(ModTalismans.ignition), ModCallingStones.allfire_calling_stone)
+        register(new RecipeBuilder(ModItems.getTalisman(ModTalismans.ignition), ModCallingStones.allfire_calling_stone)
                 .addIngredient(Items.COAL, 32)
                 .addIngredient(Items.GUNPOWDER, 2)
                 .create()

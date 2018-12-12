@@ -1,4 +1,4 @@
-package aurocosh.divinefavor.common.item.talisman;
+package aurocosh.divinefavor.common.item.talismans;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Container;
