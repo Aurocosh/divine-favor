@@ -12,30 +12,32 @@ item.divinefavor:bone_key.name=Bone key
 item.divinefavor:mystic_architect_stick.name=Mystic architect stick
 
 # TALISMAN NAMES
-item.divinefavor:arrow_throw_talisman.name=Arrow throw talisman
-item.divinefavor:bonemeal_talisman.name=Bone meal talisman
-item.divinefavor:empower_axe_talisman.name=Empower axe talisman
-item.divinefavor:fell_tree_talisman.name=Fell tree talisman
-item.divinefavor:ignition_talisman.name=Ignition talisman
-item.divinefavor:lavawalking_talisman.name=Lavawalking talisman
-item.divinefavor:snowball_throw_talisman.name=Snowball talisman
-item.divinefavor:small_fireball_throw_talisman.name=Small fireball talisman
-item.divinefavor:stoneball_throw_talisman.name=Pebble talisman
-item.divinefavor:waterwalking_talisman.name=Waterwalking talisman
-
+item.divinefavor:talisman_arrow_throw.name=Arrow throw talisman
+item.divinefavor:talisman_bonemeal.name=Bone meal talisman
+item.divinefavor:talisman_empower_axe.name=Empower axe talisman
+item.divinefavor:talisman_fell_tree.name=Fell tree talisman
+item.divinefavor:talisman_ignition.name=Ignition talisman
+item.divinefavor:talisman_lavawalking.name=Lavawalking talisman
+item.divinefavor:talisman_small_fireball_throw.name=Small fireball talisman
+item.divinefavor:talisman_snowball_throw.name=Snowball talisman
+item.divinefavor:talisman_stone_fever.name=Stone fever talisman
+item.divinefavor:talisman_stoneball_throw.name=Pebble talisman
+item.divinefavor:talisman_waterwalking.name=Waterwalking talisman
 
 # WISHING STONES
-item.divinefavor:allfire_wishing_stone.name=Allfire wishing stone
-item.divinefavor:timber_wishing_stone.name=Timber wishing stone
-
+item.divinefavor:wishing_stone_allfire.name=Allfire wishing stone
+item.divinefavor:wishing_stone_romol.name=Romol wishing stone
+item.divinefavor:wishing_stone_timber.name=Timber wishing stone
 
 # CALLING STONES
-item.divinefavor:allfire_calling_stone.name=Allfire's invite
-item.divinefavor:timber_calling_stone.name=Timber's invite
+item.divinefavor:calling_stone_allfire.name=Allfire's invite
+item.divinefavor:calling_stone_romol.name=Romol's invite
+item.divinefavor:calling_stone_timber.name=Timber's invite
 
 # EFFECT NAMES
 potion.divinefavor:empower_axe.name=Empower axe
 potion.divinefavor:lava_walk.name=Lava walking
+potion.divinefavor:stone_fever.name=Stone fever
 potion.divinefavor:water_walk.name=Water walking
 potion.divinefavor:wooden_punch.name=Wooden punch
 
@@ -43,4 +45,4 @@ potion.divinefavor:wooden_punch.name=Wooden punch
 container.divinefavor:immaterial_medium.name=Spiritual trade
 
 # JEI ITEM DESCRIPTIONS
-jei.divinefavor:arrow_throw_talisman=Arrow throw talisman. Throws arrows duh..
+jei.divinefavor:arrow_throw=Arrow throw talisman. Throws arrows duh..

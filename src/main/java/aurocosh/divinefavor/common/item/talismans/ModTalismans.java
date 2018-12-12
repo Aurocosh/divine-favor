@@ -17,6 +17,7 @@ public final class ModTalismans {
     public static Talisman lavawalking;
     public static Talisman small_fireball_throw;
     public static Talisman snowball_throw;
+    public static Talisman stone_fever;
     public static Talisman stoneball_throw;
     public static Talisman waterwalking;
     public static Talisman wooden_punch;
@@ -53,18 +54,23 @@ public final class ModTalismans {
                 .castOnUse()
                 .castOnRighClick()
                 .create());
+        small_fireball_throw = talismans.register(new TalismanBuilder(ConstTalismanNames.SMALL_FIREBALL_THROW, ModFavors.favor_of_allfire, 1)
+                .setSpell(ModSpells.small_fireball_throw)
+                .castOnRighClick()
+                .create());
         snowball_throw = talismans.register(new TalismanBuilder(ConstTalismanNames.SNOWBALL_THROW, ModFavors.favor_of_allfire, 1)
                 .setSpell(ModSpells.snowball_throw)
+                .castOnUse()
+                .castOnRighClick()
+                .create());
+        stone_fever = talismans.register(new TalismanBuilder(ConstTalismanNames.STONE_FEVER, ModFavors.favor_of_romol, 1)
+                .setSpell(ModSpells.stone_fever)
                 .castOnUse()
                 .castOnRighClick()
                 .create());
         stoneball_throw = talismans.register(new TalismanBuilder(ConstTalismanNames.STONEBALL_THROW, ModFavors.favor_of_allfire, 1)
                 .setSpell(ModSpells.stoneball_throw)
                 .castOnUse()
-                .castOnRighClick()
-                .create());
-        small_fireball_throw = talismans.register(new TalismanBuilder(ConstTalismanNames.SMALL_FIREBALL_THROW, ModFavors.favor_of_allfire, 1)
-                .setSpell(ModSpells.small_fireball_throw)
                 .castOnRighClick()
                 .create());
         waterwalking = talismans.register(new TalismanBuilder(ConstTalismanNames.WATERWALKING, ModFavors.favor_of_allfire, 1)
