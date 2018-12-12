@@ -179,7 +179,7 @@ public class SpellFellTree extends ModSpell {
                 }
 
                 // break it, wooo!
-                UtilBlock.removeBlockWithDrops(player, world, tool, pos, false);
+                UtilBlock.removeBlockWithDrops(player, world, tool, pos, false, false);
                 left--;
             }
         }

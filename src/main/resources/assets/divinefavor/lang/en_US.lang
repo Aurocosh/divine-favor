@@ -15,6 +15,7 @@ item.divinefavor:mystic_architect_stick.name=Mystic architect stick
 item.divinefavor:talisman_arrow_throw.name=Arrow throw talisman
 item.divinefavor:talisman_bonemeal.name=Bone meal talisman
 item.divinefavor:talisman_empower_axe.name=Empower axe talisman
+item.divinefavor:talisman_empower_pickaxe.name=Empower pickaxe talisman
 item.divinefavor:talisman_fell_tree.name=Fell tree talisman
 item.divinefavor:talisman_ignition.name=Ignition talisman
 item.divinefavor:talisman_lavawalking.name=Lavawalking talisman
@@ -23,6 +24,7 @@ item.divinefavor:talisman_snowball_throw.name=Snowball talisman
 item.divinefavor:talisman_stone_fever.name=Stone fever talisman
 item.divinefavor:talisman_stoneball_throw.name=Pebble talisman
 item.divinefavor:talisman_waterwalking.name=Waterwalking talisman
+item.divinefavor:talisman_crushing_palm.name=Crushing palm talisman
 
 # WISHING STONES
 item.divinefavor:wishing_stone_allfire.name=Allfire wishing stone
@@ -36,10 +38,12 @@ item.divinefavor:calling_stone_timber.name=Timber's invite
 
 # EFFECT NAMES
 potion.divinefavor:empower_axe.name=Empower axe
+potion.divinefavor:empower_pickaxe.name=Empower pickaxe
 potion.divinefavor:lava_walk.name=Lava walking
 potion.divinefavor:stone_fever.name=Stone fever
 potion.divinefavor:water_walk.name=Water walking
 potion.divinefavor:wooden_punch.name=Wooden punch
+potion.divinefavor:crushing_palm.name=Crushing palm
 
 # JEI tab name
 container.divinefavor:immaterial_medium.name=Spiritual trade
