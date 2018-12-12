@@ -1,10 +1,8 @@
 package aurocosh.divinefavor.common.registry;
 
-import aurocosh.divinefavor.common.item.base.ModItem;
 import aurocosh.divinefavor.common.registry.interfaces.IMetaContainer;
 import aurocosh.divinefavor.common.registry.interfaces.IValueRegister;
 import aurocosh.divinefavor.common.registry.interfaces.IVariant;
-import net.minecraft.item.ItemStack;
 import net.minecraftforge.registries.IForgeRegistryEntry;
 
 import java.util.*;
