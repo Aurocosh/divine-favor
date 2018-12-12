@@ -18,11 +18,12 @@ public final class ModSpells {
     public static ModSpell fell_tree;
     public static ModSpell ignition;
     public static ModSpell lavawalking;
-    public static ModSpell snowball_throw;
-    public static ModSpell stoneball_throw;
     public static ModSpell small_fireball_throw;
-    public static ModSpell waterwalking;
+    public static ModSpell snowball_throw;
+    public static ModSpell stone_fever;
+    public static ModSpell stoneball_throw;
     public static ModSpell tell_time;
+    public static ModSpell waterwalking;
     public static ModSpell wooden_punch;
 
     public static void preInit() {
@@ -32,9 +33,10 @@ public final class ModSpells {
         fell_tree = spells.register(new SpellFellTree());
         ignition = spells.register(new SpellIgnition());
         lavawalking = spells.register(new SpellLavawalking());
-        snowball_throw = spells.register(new SpellSnowballThrow());
-        stoneball_throw = spells.register(new SpellStoneballThrow());
         small_fireball_throw = spells.register(new SpellSmallFireballThrow());
+        snowball_throw = spells.register(new SpellSnowballThrow());
+        stone_fever = spells.register(new SpellStoneFever());
+        stoneball_throw = spells.register(new SpellStoneballThrow());
         tell_time = spells.register(new SpellTellTime());
         waterwalking = spells.register(new SpellWaterwalking());
         wooden_punch = spells.register(new SpellWoodenPunch());
