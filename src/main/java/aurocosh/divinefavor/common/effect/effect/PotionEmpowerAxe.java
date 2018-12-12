@@ -53,7 +53,7 @@ public class PotionEmpowerAxe extends ModPotion {
         if (!doSomething)
             return;
 
-        UtilBlock.removeBlockWithDrops(player, world, stack, pos, true);
+        UtilBlock.removeBlockWithDrops(player, world, stack, pos, true, true);
         stack.damageItem(5, player);
     }
 

@@ -15,6 +15,7 @@ public final class ModSpells {
     public static ModSpell arrow_throw;
     public static ModSpell bonemeal;
     public static ModSpell empower_axe;
+    public static ModSpell empower_pickaxe;
     public static ModSpell fell_tree;
     public static ModSpell ignition;
     public static ModSpell lavawalking;
@@ -25,11 +26,13 @@ public final class ModSpells {
     public static ModSpell tell_time;
     public static ModSpell waterwalking;
     public static ModSpell wooden_punch;
+    public static ModSpell crushing_palm;
 
     public static void preInit() {
         arrow_throw = spells.register(new SpellArrowThrow());
         bonemeal = spells.register(new SpellBonemeal());
         empower_axe = spells.register(new SpellEmpowerAxe());
+        empower_pickaxe = spells.register(new SpellEmpowerPickaxe());
         fell_tree = spells.register(new SpellFellTree());
         ignition = spells.register(new SpellIgnition());
         lavawalking = spells.register(new SpellLavawalking());
@@ -40,5 +43,6 @@ public final class ModSpells {
         tell_time = spells.register(new SpellTellTime());
         waterwalking = spells.register(new SpellWaterwalking());
         wooden_punch = spells.register(new SpellWoodenPunch());
+        crushing_palm = spells.register(new SpellCrushingPalm());
     }
 }
