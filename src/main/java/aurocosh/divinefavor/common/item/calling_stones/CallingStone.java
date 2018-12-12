@@ -1,5 +1,6 @@
 package aurocosh.divinefavor.common.item.calling_stones;
 
+import aurocosh.divinefavor.common.core.ResourceNamer;
 import aurocosh.divinefavor.common.muliblock.ModMultiBlock;
 import aurocosh.divinefavor.common.registry.interfaces.IVariant;
 import aurocosh.divinefavor.common.spirit.ModSpirit;
@@ -14,6 +15,8 @@ public class CallingStone extends IForgeRegistryEntry.Impl<CallingStone> impleme
         this.name = name;
         this.spirit = spirit;
         this.multiBlock = multiBlock;
+
+        setRegistryName(ResourceNamer.getFullName("calling_stone",name));
     }
 
     @Override

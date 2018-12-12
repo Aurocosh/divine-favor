@@ -10,6 +10,7 @@ import aurocosh.divinefavor.common.util.UtilWorld;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumFacing;
@@ -17,6 +18,8 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
+
+import javax.annotation.Nullable;
 
 public class ItemTalisman extends ModItem {
     public ItemTalisman(String texturePath, String[] variants) {
@@ -82,4 +85,17 @@ public class ItemTalisman extends ModItem {
     public EnumRarity getRarity(ItemStack stack) {
         return EnumRarity.RARE;
     }
+
+    @Override
+    public boolean updateItemStackNBT(NBTTagCompound nbt) {
+        return super.updateItemStackNBT(nbt);
+    }
+
+    @Nullable
+    @Override
+    public NBTTagCompound getNBTShareTag(ItemStack stack) {
+        return super.getNBTShareTag(stack);
+    }
+
+
 }

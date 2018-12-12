@@ -1,5 +1,6 @@
 package aurocosh.divinefavor.common.item.talismans;
 
+import aurocosh.divinefavor.common.core.ResourceNamer;
 import aurocosh.divinefavor.common.favors.ModFavor;
 import aurocosh.divinefavor.common.network.common.NetworkHandler;
 import aurocosh.divinefavor.common.network.message.MessageSyncFavor;
@@ -28,6 +29,8 @@ public class Talisman extends IForgeRegistryEntry.Impl<Talisman> implements IVar
         this.favorPerUse = favorPerUse;
         this.castOnUse = castOnUse;
         this.castOnRightClick = castOnRightClick;
+
+        setRegistryName(ResourceNamer.getFullName("talisman",name));
     }
 
     @Override
