@@ -49,11 +49,13 @@ public class TileMedium extends TickableTileEntity implements IMultiblockControl
 
         @Override
         protected void onContentsChanged(int slot) {
-            ItemStack stack = getStackInSlot(slot);
-            if(stack.isEmpty() && multiBlockInstance != null)
-                multiblockDamaged();
-            else if(multiBlockInstance == null)
-                tryToFormMultiBlock();
+            if(!world.isRemote){
+                ItemStack stack = getStackInSlot(slot);
+                if(stack.isEmpty() && multiBlockInstance != null)
+                    multiblockDamaged();
+                else if(multiBlockInstance == null)
+                    tryToFormMultiBlock();
+            }
             TileMedium.this.markDirty();
         }
     };
