@@ -4,6 +4,8 @@ public final class ConstTalismanNames {
     public static final String ARROW_THROW = "arrow_throw";
     public static final String BONEMEAL = "bonemeal";
     public static final String EMPOWER_AXE  = "empower_axe";
+    public static final String EMPOWER_PICKAXE  = "empower_pickaxe";
+    public static final String CRUSHING_PALM  = "crushing_palm";
     public static final String FELL_TREE = "fell_tree";
     public static final String IGNITION = "ignition";
     public static final String LAVAWALKING = "lavawalking";

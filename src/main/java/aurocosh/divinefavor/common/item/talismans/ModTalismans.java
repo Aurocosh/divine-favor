@@ -12,6 +12,7 @@ public final class ModTalismans {
     public static Talisman arrowThrowTalisman;
     public static Talisman bonemeal;
     public static Talisman empower_axe;
+    public static Talisman empower_pickaxe;
     public static Talisman fell_tree;
     public static Talisman ignition;
     public static Talisman lavawalking;
@@ -21,6 +22,7 @@ public final class ModTalismans {
     public static Talisman stoneball_throw;
     public static Talisman waterwalking;
     public static Talisman wooden_punch;
+    public static Talisman crushing_palm;
 
     public static IMetaContainer<Talisman> getMetaContainer() {
         return talismans;
@@ -38,6 +40,11 @@ public final class ModTalismans {
                 .create());
         empower_axe = talismans.register(new TalismanBuilder(ConstTalismanNames.EMPOWER_AXE, ModFavors.favor_of_timber, 1)
                 .setSpell(ModSpells.empower_axe)
+                .castOnUse()
+                .castOnRighClick()
+                .create());
+        empower_pickaxe = talismans.register(new TalismanBuilder(ConstTalismanNames.EMPOWER_PICKAXE, ModFavors.favor_of_romol, 1)
+                .setSpell(ModSpells.empower_pickaxe)
                 .castOnUse()
                 .castOnRighClick()
                 .create());
@@ -80,6 +87,11 @@ public final class ModTalismans {
                 .create());
         wooden_punch = talismans.register(new TalismanBuilder(ConstTalismanNames.WOODEN_PUNCH, ModFavors.favor_of_timber, 2)
                 .setSpell(ModSpells.wooden_punch)
+                .castOnUse()
+                .castOnRighClick()
+                .create());
+        crushing_palm = talismans.register(new TalismanBuilder(ConstTalismanNames.CRUSHING_PALM, ModFavors.favor_of_romol, 2)
+                .setSpell(ModSpells.crushing_palm)
                 .castOnUse()
                 .castOnRighClick()
                 .create());

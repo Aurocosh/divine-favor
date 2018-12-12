@@ -54,7 +54,7 @@ public class PotionStoneFever extends ModPotion {
             return;
         }
 
-        UtilBlock.removeBlockWithDrops(player, world, stack, pos, true);
+        UtilBlock.removeBlockWithDrops(player, world, stack, pos, true, true);
         stack.damageItem(1, player);
     }
 
