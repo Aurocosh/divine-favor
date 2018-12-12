@@ -42,7 +42,7 @@ public class FavorSourceManager {
         favorSources.add(favorSource);
     }
 
-    private static List<FavorToGain> favorSourcesToProcess = new ArrayList<>();
+    private static List<FavorGain> favorSourcesToProcess = new ArrayList<>();
 
     @SubscribeEvent
     public static void onPlayerLogin(PlayerEvent.PlayerLoggedInEvent event) {
@@ -86,7 +86,7 @@ public class FavorSourceManager {
         EntityPlayer player = event.getPlayer();
         for (FavorSource favorSource : blockBreakSourcesMultimap.get(player))
             if (favorSource.isConditionsMet(player, event))
-                favorSourcesToProcess.add(new FavorToGain(player,favorSource));
+                favorSourcesToProcess.add(new FavorGain(player,favorSource));
     }
 
     @SubscribeEvent(priority = EventPriority.LOWEST)
@@ -94,7 +94,7 @@ public class FavorSourceManager {
         EntityPlayer player = event.getPlayer();
         for (FavorSource favorSource : blockPlaceSourcesMultimap.get(player))
             if (favorSource.isConditionsMet(player, event))
-                favorSourcesToProcess.add(new FavorToGain(player,favorSource));
+                favorSourcesToProcess.add(new FavorGain(player,favorSource));
     }
 
     @SubscribeEvent
@@ -108,7 +108,7 @@ public class FavorSourceManager {
             Collection<EntityPlayerMP> playerMPS = tickableFavorSources.get(favorSource);
             for (EntityPlayerMP playerMP : playerMPS)
                 if (favorSource.isConditionsMet(playerMP, null))
-                    favorSourcesToProcess.add(new FavorToGain(playerMP, favorSource));
+                    favorSourcesToProcess.add(new FavorGain(playerMP, favorSource));
         }
     }
 
@@ -118,9 +118,9 @@ public class FavorSourceManager {
             return;
 
         Multimap<EntityPlayer, ModFavor> favorsToUpdate = MultimapBuilder.hashKeys().hashSetValues().build();
-        for (FavorToGain favorToGain : favorSourcesToProcess) {
-            EntityPlayerMP playerMP = (EntityPlayerMP) favorToGain.player;
-            FavorSource favorSource = favorToGain.favorSource;
+        for (FavorGain favorGain : favorSourcesToProcess) {
+            EntityPlayerMP playerMP = (EntityPlayerMP) favorGain.player;
+            FavorSource favorSource = favorGain.favorSource;
 
             IFavorHandler favorHandler = playerMP.getCapability(CAPABILITY_FAVOR, null);
             if (favorHandler == null)

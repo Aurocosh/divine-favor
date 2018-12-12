@@ -13,7 +13,8 @@ import aurocosh.divinefavor.common.muliblock.parts.StateValidator;
 import aurocosh.divinefavor.common.muliblock.patchouli.PatchouliMultiBlockData;
 import aurocosh.divinefavor.common.muliblock.serialization.StateValidatorSerializer;
 import aurocosh.divinefavor.common.muliblock.serialization.Vector3iByteSerializer;
-import aurocosh.divinefavor.common.registry.CommonRegistry;
+import aurocosh.divinefavor.common.registry.RegistryMap;
+import aurocosh.divinefavor.common.registry.common.CommonRegistry;
 import aurocosh.divinefavor.common.util.UtilAssets;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -32,11 +33,9 @@ public final class ModMultiBlocks {
     public static ModMultiBlock timber_altar;
     public static ModMultiBlock romol_altar;
 
-    private static Map<ResourceLocation, ModMultiBlock> multiBlockMap = new HashMap<>();
+    private static RegistryMap<ModMultiBlock> multiBlocks = new RegistryMap<>();
 
     public static void preInit() {
-        //ArrayList<String> requirementPaths = UtilAssets.getAssetPaths(DivineFavor.container, "multi_blocks", ".json");
-
         Gson gson = new GsonBuilder()
                 .registerTypeAdapter(StateValidator.class, new StateValidatorSerializer())
                 .excludeFieldsWithoutExposeAnnotation()
@@ -68,18 +67,12 @@ public final class ModMultiBlocks {
             localBounds.add(coordinates.upperCorner);
         }
         CubeCoordinates boundingBox = CubeCoordinates.getBoundingBox(localBounds);
-        return register(new ModMultiBlock(name, data.controllerPosition, data.parts, boundingBox));
+        return multiBlocks.register(new ModMultiBlock(name, data.controllerPosition, data.parts, boundingBox));
     }
 
     public static void init() {
-        for (ModMultiBlock multiBlock : multiBlockMap.values())
+        for (ModMultiBlock multiBlock : multiBlocks.getValues())
             registerPatchouli(multiBlock);
-    }
-
-    public static ModMultiBlock register(ModMultiBlock multiBlock) {
-        multiBlockMap.put(multiBlock.getRegistryName(), multiBlock);
-        CommonRegistry.register(multiBlock);
-        return multiBlock;
     }
 
     public static void registerPatchouli(ModMultiBlock multiBlock) {

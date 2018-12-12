@@ -17,7 +17,7 @@ import aurocosh.divinefavor.common.player_data.interaction_handler.InteractionDa
 import aurocosh.divinefavor.common.receipes.ModRecipes;
 import aurocosh.divinefavor.common.spell.common.ModSpells;
 import aurocosh.divinefavor.common.spirit.ModSpirits;
-import aurocosh.divinefavor.common.talismans.ModTalismans;
+import aurocosh.divinefavor.common.item.talismans.ModTalismans;
 import com.google.common.util.concurrent.ListenableFuture;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraftforge.fml.common.Mod;
