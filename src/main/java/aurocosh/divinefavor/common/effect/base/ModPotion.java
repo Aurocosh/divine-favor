@@ -26,6 +26,9 @@ public abstract class ModPotion extends Potion {
         super(false, potionColor);
         this.beneficial = beneficial;
         this.setIcon(new ResourceLocation(ConstMisc.MOD_ID, "textures/potions/" + name + ".png"));
+
+        //potion.setIcon(potion.getIcon());
+
         effectType = EffectType.TIMED;
 
         ResourceLocation fullName = ResourceNamer.getFullName(name);

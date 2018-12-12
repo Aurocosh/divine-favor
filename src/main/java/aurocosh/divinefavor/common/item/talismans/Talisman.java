@@ -1,9 +1,10 @@
-package aurocosh.divinefavor.common.talismans;
+package aurocosh.divinefavor.common.item.talismans;
 
 import aurocosh.divinefavor.common.favors.ModFavor;
 import aurocosh.divinefavor.common.network.common.NetworkHandler;
 import aurocosh.divinefavor.common.network.message.MessageSyncFavor;
 import aurocosh.divinefavor.common.player_data.favor.IFavorHandler;
+import aurocosh.divinefavor.common.registry.interfaces.IVariant;
 import aurocosh.divinefavor.common.spell.base.ModSpell;
 import aurocosh.divinefavor.common.spell.base.SpellContext;
 import net.minecraft.entity.player.EntityPlayer;
@@ -12,8 +13,8 @@ import net.minecraftforge.registries.IForgeRegistryEntry;
 
 import static aurocosh.divinefavor.common.player_data.favor.FavorDataHandler.CAPABILITY_FAVOR;
 
-public class Talisman extends IForgeRegistryEntry.Impl<Talisman> {
-    public final String name;
+public class Talisman extends IForgeRegistryEntry.Impl<Talisman> implements IVariant{
+    private final String name;
     private final ModSpell spell;
     private final ModFavor favor;
     private final int favorPerUse;
@@ -27,6 +28,11 @@ public class Talisman extends IForgeRegistryEntry.Impl<Talisman> {
         this.favorPerUse = favorPerUse;
         this.castOnUse = castOnUse;
         this.castOnRightClick = castOnRightClick;
+    }
+
+    @Override
+    public String getName() {
+        return name;
     }
 
     public boolean cast(SpellContext context) {

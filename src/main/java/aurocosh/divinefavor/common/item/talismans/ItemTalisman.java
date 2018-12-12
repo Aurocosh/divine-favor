@@ -1,4 +1,4 @@
-package aurocosh.divinefavor.common.item.talisman;
+package aurocosh.divinefavor.common.item.talismans;
 
 import aurocosh.divinefavor.common.constants.items.ConstItemNames;
 import aurocosh.divinefavor.common.core.DivineFavorCreativeTab;
@@ -6,8 +6,6 @@ import aurocosh.divinefavor.common.item.base.ModItem;
 import aurocosh.divinefavor.common.lib.math.Vector3;
 import aurocosh.divinefavor.common.spell.base.CastType;
 import aurocosh.divinefavor.common.spell.base.SpellContext;
-import aurocosh.divinefavor.common.talismans.ModTalismans;
-import aurocosh.divinefavor.common.talismans.Talisman;
 import aurocosh.divinefavor.common.util.UtilWorld;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumRarity;
@@ -36,7 +34,7 @@ public class ItemTalisman extends ModItem {
         if (!(stack.getItem() instanceof ItemTalisman))
             return EnumActionResult.PASS;
 
-        Talisman talisman = ModTalismans.getByMeta(stack.getMetadata());
+        Talisman talisman = ModTalismans.getMetaContainer().getByMeta(stack.getMetadata());
         if(talisman == null)
             return EnumActionResult.PASS;
 
@@ -58,7 +56,7 @@ public class ItemTalisman extends ModItem {
             return new ActionResult<>(EnumActionResult.PASS, stack);
 
 
-        Talisman talisman = ModTalismans.getByMeta(stack.getMetadata());
+        Talisman talisman = ModTalismans.getMetaContainer().getByMeta(stack.getMetadata());
         if(talisman == null)
             return new ActionResult<>(EnumActionResult.PASS, stack);
 

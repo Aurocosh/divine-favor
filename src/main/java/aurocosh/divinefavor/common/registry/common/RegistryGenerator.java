@@ -1,4 +1,4 @@
-package aurocosh.divinefavor.common.registry;
+package aurocosh.divinefavor.common.registry.common;
 
 import aurocosh.divinefavor.common.core.ResourceNamer;
 import aurocosh.divinefavor.common.favors.ModFavor;

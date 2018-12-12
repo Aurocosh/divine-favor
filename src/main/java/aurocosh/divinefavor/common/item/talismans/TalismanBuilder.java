@@ -1,4 +1,4 @@
-package aurocosh.divinefavor.common.talismans;
+package aurocosh.divinefavor.common.item.talismans;
 
 import aurocosh.divinefavor.common.favors.ModFavor;
 import aurocosh.divinefavor.common.spell.base.ModSpell;

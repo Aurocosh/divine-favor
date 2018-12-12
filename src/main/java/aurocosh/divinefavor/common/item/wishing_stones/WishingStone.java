@@ -4,13 +4,14 @@ import aurocosh.divinefavor.common.favors.ModFavor;
 import aurocosh.divinefavor.common.network.common.NetworkHandler;
 import aurocosh.divinefavor.common.network.message.MessageSyncFavor;
 import aurocosh.divinefavor.common.player_data.favor.IFavorHandler;
+import aurocosh.divinefavor.common.registry.interfaces.IVariant;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraftforge.registries.IForgeRegistryEntry;
 
 import static aurocosh.divinefavor.common.player_data.favor.FavorDataHandler.CAPABILITY_FAVOR;
 
-public class WishingStone extends IForgeRegistryEntry.Impl<WishingStone> {
+public class WishingStone extends IForgeRegistryEntry.Impl<WishingStone> implements IVariant {
     public final String name;
     private final ModFavor favor;
     private final int favorCount;
@@ -19,6 +20,11 @@ public class WishingStone extends IForgeRegistryEntry.Impl<WishingStone> {
         this.name = name;
         this.favor = favor;
         this.favorCount = favorCount;
+    }
+
+    @Override
+    public String getName() {
+        return name;
     }
 
     public boolean use(EntityPlayer playerIn) {

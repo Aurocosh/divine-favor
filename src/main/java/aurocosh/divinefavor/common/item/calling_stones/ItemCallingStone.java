@@ -1,4 +1,4 @@
-package aurocosh.divinefavor.common.item;
+package aurocosh.divinefavor.common.item.calling_stones;
 
 import aurocosh.divinefavor.common.constants.items.ConstItemNames;
 import aurocosh.divinefavor.common.core.DivineFavorCreativeTab;
