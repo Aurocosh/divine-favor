@@ -1,6 +1,5 @@
 package aurocosh.divinefavor.common.item;
 
-import aurocosh.divinefavor.common.constants.items.ConstItemNames;
 import aurocosh.divinefavor.common.core.DivineFavorCreativeTab;
 import aurocosh.divinefavor.common.item.base.ModItem;
 import aurocosh.divinefavor.common.muliblock.IMultiblockController;
@@ -14,7 +13,7 @@ import net.minecraft.world.World;
 
 public class ItemBoneKey extends ModItem {
     public ItemBoneKey() {
-        super(ConstItemNames.BONE_KEY,"");
+        super("bone_key","");
         setMaxStackSize(1);
         setCreativeTab(DivineFavorCreativeTab.INSTANCE);
     }

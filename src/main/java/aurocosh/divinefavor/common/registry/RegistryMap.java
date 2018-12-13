@@ -18,7 +18,7 @@ public class RegistryMap<T extends IForgeRegistryEntry> {
         this.valueMap = new HashMap<>();
     }
 
-    public T register(T value) {
+    public <K extends T> K register(K value) {
         valueMap.put(value.getRegistryName(), value);
         CommonRegistry.register(value);
         return value;

@@ -1,6 +1,6 @@
-package aurocosh.divinefavor.common.effect.effect;
+package aurocosh.divinefavor.common.potions.effect;
 
-import aurocosh.divinefavor.common.effect.base.ModPotion;
+import aurocosh.divinefavor.common.potions.base.ModPotion;
 import net.minecraft.block.Block;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;

@@ -2,7 +2,7 @@ package aurocosh.divinefavor.common.core.proxy;
 
 import aurocosh.divinefavor.DivineFavor;
 import aurocosh.divinefavor.common.block.common.ModBlocks;
-import aurocosh.divinefavor.common.effect.common.ModPotions;
+import aurocosh.divinefavor.common.potions.common.ModPotions;
 import aurocosh.divinefavor.common.entity.ModEntities;
 import aurocosh.divinefavor.common.favor_sources.common.ModFavorSources;
 import aurocosh.divinefavor.common.favors.ModFavors;

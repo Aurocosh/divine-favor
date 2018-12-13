@@ -1,7 +1,6 @@
 package aurocosh.divinefavor.common.item;
 
 import aurocosh.divinefavor.DivineFavor;
-import aurocosh.divinefavor.common.constants.items.ConstItemNames;
 import aurocosh.divinefavor.common.core.DivineFavorCreativeTab;
 import aurocosh.divinefavor.common.item.base.ModItem;
 import aurocosh.divinefavor.common.lib.math.CubeCoordinates;
@@ -37,7 +36,7 @@ public class ItemMysticArchitectStick extends ModItem {
     public static final String TAG_AIR_TYPE = "AirType";
 
     public ItemMysticArchitectStick() {
-        super(ConstItemNames.MYSTIC_ARCHITECT_STICK,"");
+        super("mystic_architect_stick","");
         setMaxStackSize(1);
         setCreativeTab(DivineFavorCreativeTab.INSTANCE);
     }
