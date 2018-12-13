@@ -1,6 +1,6 @@
 package aurocosh.divinefavor.common.favor_sources.common;
 
-import aurocosh.divinefavor.common.effect.common.ModPotions;
+import aurocosh.divinefavor.common.potions.common.ModPotions;
 import aurocosh.divinefavor.common.favor_sources.builders.EventFavorSourceBuilder;
 import aurocosh.divinefavor.common.favor_sources.builders.TickableFavorSourceBuilder;
 import aurocosh.divinefavor.common.favor_sources.conditions.active_effect.DenyCondition;

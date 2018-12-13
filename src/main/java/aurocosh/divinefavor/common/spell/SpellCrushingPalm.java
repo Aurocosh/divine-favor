@@ -1,7 +1,7 @@
 package aurocosh.divinefavor.common.spell;
 
-import aurocosh.divinefavor.common.effect.base.ModEffectCharge;
-import aurocosh.divinefavor.common.effect.common.ModPotions;
+import aurocosh.divinefavor.common.potions.base.ModEffectCharge;
+import aurocosh.divinefavor.common.potions.common.ModPotions;
 import aurocosh.divinefavor.common.spell.base.ModSpell;
 import aurocosh.divinefavor.common.spell.base.SpellContext;
 import aurocosh.divinefavor.common.spell.base.SpellType;

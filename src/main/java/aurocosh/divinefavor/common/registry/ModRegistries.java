@@ -1,6 +1,7 @@
 package aurocosh.divinefavor.common.registry;
 
 import aurocosh.divinefavor.common.block.base.ModBlock;
+import aurocosh.divinefavor.common.potions.base.ModPotion;
 import aurocosh.divinefavor.common.favors.ModFavor;
 import aurocosh.divinefavor.common.item.base.ModItem;
 import aurocosh.divinefavor.common.muliblock.ModMultiBlock;
@@ -16,4 +17,5 @@ public class ModRegistries {
     public static RegistryMap<ModMultiBlock> multiBlocks = new RegistryMap<>();
     public static RegistryMap<ModSpell> spells = new RegistryMap<>();
     public static RegistryMap<ModSpirit> spirits = new RegistryMap<>();
+    public static RegistryMap<ModPotion> potions = new RegistryMap<>();
 }

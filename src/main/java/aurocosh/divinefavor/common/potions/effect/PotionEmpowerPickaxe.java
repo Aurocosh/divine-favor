@@ -1,9 +1,9 @@
-package aurocosh.divinefavor.common.effect.effect;
+package aurocosh.divinefavor.common.potions.effect;
 
 import aurocosh.divinefavor.common.constants.ConstEffectNames;
 import aurocosh.divinefavor.common.core.handlers.BlockClickTracker;
-import aurocosh.divinefavor.common.effect.base.ModPotion;
-import aurocosh.divinefavor.common.effect.common.ModPotions;
+import aurocosh.divinefavor.common.potions.base.ModPotion;
+import aurocosh.divinefavor.common.potions.common.ModPotions;
 import aurocosh.divinefavor.common.util.UtilBlock;
 import aurocosh.divinefavor.common.util.UtilRandom;
 import net.minecraft.block.Block;
