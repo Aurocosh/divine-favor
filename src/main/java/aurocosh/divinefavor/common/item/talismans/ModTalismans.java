@@ -7,6 +7,8 @@ import aurocosh.divinefavor.common.spell.common.ModSpells;
 public final class ModTalismans {
     public static ItemTalisman arrowThrowTalisman;
     public static ItemTalisman bonemeal;
+    public static ItemTalisman combustion;
+    public static ItemTalisman crushing_palm;
     public static ItemTalisman empower_axe;
     public static ItemTalisman empower_pickaxe;
     public static ItemTalisman fell_tree;
@@ -18,7 +20,6 @@ public final class ModTalismans {
     public static ItemTalisman stoneball_throw;
     public static ItemTalisman waterwalking;
     public static ItemTalisman wooden_punch;
-    public static ItemTalisman crushing_palm;
 
     public static void preInit() {
         arrowThrowTalisman = ModRegistries.items.register(new TalismanBuilder("arrow_throw", ModFavors.favor_of_allfire, 1)
@@ -27,6 +28,10 @@ public final class ModTalismans {
                 .create());
         bonemeal = ModRegistries.items.register(new TalismanBuilder("bonemeal", ModFavors.favor_of_allfire, 1)
                 .setSpell(ModSpells.bonemeal)
+                .castOnUse()
+                .create());
+        combustion = ModRegistries.items.register(new TalismanBuilder("combustion", ModFavors.favor_of_allfire, 3)
+                .setSpell(ModSpells.combustion)
                 .castOnUse()
                 .create());
         empower_axe = ModRegistries.items.register(new TalismanBuilder("empower_axe", ModFavors.favor_of_timber, 1)
