@@ -9,6 +9,7 @@ public final class ModTalismans {
     public static ItemTalisman bonemeal;
     public static ItemTalisman combustion;
     public static ItemTalisman crushing_palm;
+    public static ItemTalisman distant_spark;
     public static ItemTalisman empower_axe;
     public static ItemTalisman empower_pickaxe;
     public static ItemTalisman fell_tree;
@@ -35,6 +36,16 @@ public final class ModTalismans {
         combustion = ModRegistries.items.register(new TalismanBuilder("combustion", ModFavors.favor_of_allfire, 3)
                 .setSpell(ModSpells.combustion)
                 .castOnUse()
+                .create());
+        crushing_palm = ModRegistries.items.register(new TalismanBuilder("crushing_palm", ModFavors.favor_of_romol, 2)
+                .setSpell(ModSpells.crushing_palm)
+                .castOnUse()
+                .castOnRighClick()
+                .create());
+        distant_spark = ModRegistries.items.register(new TalismanBuilder("distant_spark", ModFavors.favor_of_allfire, 3)
+                .setSpell(ModSpells.ignition)
+                .castOnUse()
+                .castOnRighClick()
                 .create());
         empower_axe = ModRegistries.items.register(new TalismanBuilder("empower_axe", ModFavors.favor_of_timber, 1)
                 .setSpell(ModSpells.empower_axe)
@@ -97,11 +108,7 @@ public final class ModTalismans {
                 .castOnUse()
                 .castOnRighClick()
                 .create());
-        crushing_palm = ModRegistries.items.register(new TalismanBuilder("crushing_palm", ModFavors.favor_of_romol, 2)
-                .setSpell(ModSpells.crushing_palm)
-                .castOnUse()
-                .castOnRighClick()
-                .create());
+
     }
 
     public static void init() {
