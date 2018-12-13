@@ -13,14 +13,7 @@ public abstract class ModSpell extends IForgeRegistryEntry.Impl<ModSpell> {
     private static final Pattern FAKE_PLAYER_PATTERN = Pattern.compile("^(?:\\[.*\\])|(?:ComputerCraft)$");
     protected static Random spellRand = new Random();
 
-    protected String name;
-
-    public String getName() {
-        return name;
-    }
-
-    public ModSpell(SpellType type) {
-        this.name = type.toString();
+    public ModSpell(String name) {
         setRegistryName(ResourceNamer.getFullName("spell",name));
     }
 

@@ -3,7 +3,6 @@ package aurocosh.divinefavor.common.spell;
 import aurocosh.divinefavor.common.events.TalismanEvent;
 import aurocosh.divinefavor.common.spell.base.ModSpell;
 import aurocosh.divinefavor.common.spell.base.SpellContext;
-import aurocosh.divinefavor.common.spell.base.SpellType;
 import aurocosh.divinefavor.common.util.UtilBlock;
 import com.google.common.collect.Lists;
 import gnu.trove.set.hash.THashSet;
@@ -23,7 +22,7 @@ import java.util.Stack;
 
 public class SpellFellTree extends ModSpell {
     public SpellFellTree() {
-        super(SpellType.FELL_TREE);
+        super("fell_tree");
     }
 
     @Override
