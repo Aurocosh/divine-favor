@@ -1,4 +1,4 @@
-package aurocosh.divinefavor.common.effect.base;
+package aurocosh.divinefavor.common.potions.base;
 
 import aurocosh.divinefavor.DivineFavor;
 import net.minecraft.entity.EntityLivingBase;

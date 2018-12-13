@@ -2,7 +2,6 @@ package aurocosh.divinefavor.common.item.ritual_pouch;
 
 import aurocosh.divinefavor.DivineFavor;
 import aurocosh.divinefavor.common.constants.ConstGuiIDs;
-import aurocosh.divinefavor.common.constants.items.ConstItemNames;
 import aurocosh.divinefavor.common.core.DivineFavorCreativeTab;
 import aurocosh.divinefavor.common.item.base.ModItem;
 import aurocosh.divinefavor.common.item.common.ModItems;
@@ -17,7 +16,7 @@ import net.minecraftforge.common.capabilities.ICapabilityProvider;
 
 public class ItemRitualPouch extends ModItem {
     public ItemRitualPouch() {
-        super(ConstItemNames.RITUAL_POUCH,"");
+        super("ritual_pouch","");
         setMaxStackSize(1);
         setCreativeTab(DivineFavorCreativeTab.INSTANCE);
     }
