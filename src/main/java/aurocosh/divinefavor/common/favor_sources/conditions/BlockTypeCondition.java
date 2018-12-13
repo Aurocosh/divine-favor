@@ -6,7 +6,6 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraftforge.event.world.BlockEvent;
 
 import javax.annotation.CheckForNull;
-
 import java.util.Set;
 
 public class BlockTypeCondition extends FavorCondition {

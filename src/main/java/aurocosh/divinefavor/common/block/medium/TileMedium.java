@@ -1,11 +1,10 @@
 package aurocosh.divinefavor.common.block.medium;
 
 import aurocosh.divinefavor.common.block.base.TickableTileEntity;
-import aurocosh.divinefavor.common.item.calling_stones.CallingStone;
-import aurocosh.divinefavor.common.item.calling_stones.ModCallingStones;
-import aurocosh.divinefavor.common.item.common.ModItems;
 import aurocosh.divinefavor.common.item.calling_stones.ItemCallingStone;
+import aurocosh.divinefavor.common.item.common.ModItems;
 import aurocosh.divinefavor.common.lib.math.Vector3i;
+import aurocosh.divinefavor.common.misc.SlotStack;
 import aurocosh.divinefavor.common.muliblock.IMultiblockController;
 import aurocosh.divinefavor.common.muliblock.ModMultiBlock;
 import aurocosh.divinefavor.common.muliblock.ModMultiBlockInstance;
@@ -13,7 +12,6 @@ import aurocosh.divinefavor.common.muliblock.common.MultiBlockWatcher;
 import aurocosh.divinefavor.common.receipes.ModRecipes;
 import aurocosh.divinefavor.common.spirit.ModSpirit;
 import aurocosh.divinefavor.common.util.UtilHandler;
-import aurocosh.divinefavor.common.misc.SlotStack;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -169,7 +167,7 @@ public class TileMedium extends TickableTileEntity implements IMultiblockControl
             return;
         }
 
-        CallingStone callingStone = ModCallingStones.getMetaContainer().getByMeta(stack.getMetadata());
+        ItemCallingStone callingStone = (ItemCallingStone) stack.getItem();
         ModSpirit spirit = callingStone.spirit;
         if (!spirit.isActive(world)) {
             setState(MediumState.VALID);
@@ -230,7 +228,7 @@ public class TileMedium extends TickableTileEntity implements IMultiblockControl
         if (stack.isEmpty())
             return;
 
-        CallingStone callingStone = ModCallingStones.getMetaContainer().getByMeta(stack.getMetadata());
+        ItemCallingStone callingStone = (ItemCallingStone) stack.getItem();
         ModMultiBlock multiBlock = callingStone.multiBlock;
         Vector3i position = Vector3i.convert(pos);
         multiBlockInstance = multiBlock.makeMultiBlock(world, position);
@@ -249,7 +247,7 @@ public class TileMedium extends TickableTileEntity implements IMultiblockControl
             return;
         }
 
-        CallingStone callingStone = ModCallingStones.getMetaContainer().getByMeta(stack.getMetadata());
+        ItemCallingStone callingStone = (ItemCallingStone) stack.getItem();
         ModSpirit spirit = callingStone.spirit;
         if (!spirit.isActive(world)) {
             setState(MediumState.VALID);

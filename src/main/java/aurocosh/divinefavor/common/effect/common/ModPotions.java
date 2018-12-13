@@ -5,11 +5,7 @@ import aurocosh.divinefavor.common.effect.base.ModPotion;
 import aurocosh.divinefavor.common.effect.base.ModPotionCharge;
 import aurocosh.divinefavor.common.effect.effect.*;
 import aurocosh.divinefavor.common.registry.RegistryMap;
-import aurocosh.divinefavor.common.registry.common.CommonRegistry;
 import net.minecraft.init.Blocks;
-
-import java.util.Collection;
-import java.util.HashMap;
 
 public class ModPotions {
     public static ModPotion empower_axe;

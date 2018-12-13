@@ -34,7 +34,7 @@ public class TalismanBuilder {
         return this;
     }
 
-    public Talisman create() {
-        return new Talisman(name, spell, favor, favorCost, castOnUse, castOnRightClick);
+    public ItemTalisman create() {
+        return new ItemTalisman(name, spell, favor, favorCost, castOnUse, castOnRightClick);
     }
 }

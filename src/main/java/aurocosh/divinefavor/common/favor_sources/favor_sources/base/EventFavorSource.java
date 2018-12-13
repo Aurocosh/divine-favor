@@ -3,7 +3,6 @@ package aurocosh.divinefavor.common.favor_sources.favor_sources.base;
 import aurocosh.divinefavor.common.favor_sources.conditions.base.FavorCondition;
 import aurocosh.divinefavor.common.favors.ModFavor;
 import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.registries.IForgeRegistryEntry;
 
 import java.util.List;
 

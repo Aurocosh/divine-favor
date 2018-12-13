@@ -1,8 +1,7 @@
 package aurocosh.divinefavor.common.item.common;
 
-import aurocosh.divinefavor.common.block.common.ModBlocks;
 import aurocosh.divinefavor.common.item.base.ModItem;
-import aurocosh.divinefavor.common.item.common.ModItems;
+import aurocosh.divinefavor.common.registry.ModRegistries;
 import net.minecraft.client.renderer.ItemMeshDefinition;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.ItemBlock;
@@ -14,19 +13,15 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import java.util.Collection;
-
 @SideOnly(Side.CLIENT)
 @Mod.EventBusSubscriber
 public final class ModelHandler {
 	@SubscribeEvent
 	public static void onRegister(ModelRegistryEvent event) {
-        Collection<ModItem> items = ModItems.getItems();
-        for (ModItem item : items)
+        for (ModItem item : ModRegistries.items.getValues())
             registerItemModel(item);
 
-        Collection<ItemBlock> itemBlocks = ModBlocks.getItemBlocks();
-        for (ItemBlock itemBlock : itemBlocks)
+        for (ItemBlock itemBlock : ModRegistries.itemBlocks.getValues())
             registerBlockItemModel(itemBlock);
 	}
 
@@ -43,19 +38,12 @@ public final class ModelHandler {
         if(fullName == null)
             return;
 
+        final String namespace = fullName.getNamespace();
+        final String texturePath = item.getTexturePath();
+        final String path = fullName.getPath();
+        final String modelPath = namespace + ":" + texturePath + path;
+
         final String[] variants = item.getVariants();
-        if(variants.length == 1) {
-            ModelResourceLocation loc = new ModelResourceLocation(fullName, "inventory");
-            ModelLoader.setCustomModelResourceLocation(item, 0, loc);
-            return;
-        }
-
-        String namespace = fullName.getNamespace();
-        String texturePath = item.getTexturePath();
-        String path = fullName.getPath();
-        String modelPath = namespace + ":" + texturePath + path + "_";
-
-//        final String namespace = fullName.getNamespace();
         for(int i = 0; i < variants.length; i++) {
 			ModelResourceLocation loc = new ModelResourceLocation(modelPath + variants[i], "inventory");
 			ModelLoader.setCustomModelResourceLocation(item, i, loc);

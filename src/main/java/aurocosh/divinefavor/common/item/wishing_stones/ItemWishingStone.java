@@ -2,8 +2,13 @@ package aurocosh.divinefavor.common.item.wishing_stones;
 
 import aurocosh.divinefavor.common.constants.items.ConstItemNames;
 import aurocosh.divinefavor.common.core.DivineFavorCreativeTab;
+import aurocosh.divinefavor.common.favors.ModFavor;
 import aurocosh.divinefavor.common.item.base.ModItem;
+import aurocosh.divinefavor.common.network.common.NetworkHandler;
+import aurocosh.divinefavor.common.network.message.MessageSyncFavor;
+import aurocosh.divinefavor.common.player_data.favor.IFavorHandler;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ActionResult;
@@ -11,10 +16,17 @@ import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
 import net.minecraft.world.World;
 
-public class ItemWishingStone extends ModItem {
+import static aurocosh.divinefavor.common.player_data.favor.FavorDataHandler.CAPABILITY_FAVOR;
 
-    public ItemWishingStone(String texturePath, String[] variants) {
-        super(ConstItemNames.WISHING_STONE, texturePath, variants);
+public class ItemWishingStone extends ModItem {
+    private final ModFavor favor;
+    private final int favorCount;
+
+    public ItemWishingStone(String name, ModFavor favor, int favorCount) {
+        super(ConstItemNames.WISHING_STONE + "_" + name, "wishing_stones/");
+        this.favor = favor;
+        this.favorCount = favorCount;
+
         setMaxStackSize(1);
         setCreativeTab(DivineFavorCreativeTab.INSTANCE);
     }
@@ -29,16 +41,24 @@ public class ItemWishingStone extends ModItem {
         if (!(stack.getItem() instanceof ItemWishingStone))
             return new ActionResult<>(EnumActionResult.PASS, itemStackIn);
 
-        WishingStone wishingStone = ModWishingStones.getMetaContainer().getByMeta(stack.getMetadata());
-        if(wishingStone == null)
-            return new ActionResult<>(EnumActionResult.PASS, itemStackIn);
 
-        wishingStone.use(playerIn);
+        use(playerIn);
         return new ActionResult<>(EnumActionResult.SUCCESS, itemStackIn);
     }
 
     @Override
     public EnumRarity getRarity(ItemStack stack) {
         return EnumRarity.RARE;
+    }
+
+    public void use(EntityPlayer playerIn) {
+        IFavorHandler favorHandler = playerIn.getCapability(CAPABILITY_FAVOR, null);
+        assert favorHandler != null;
+
+        int favorValue = favorHandler.addFavor(favor.id, favorCount);
+        if(playerIn instanceof EntityPlayerMP) {
+            MessageSyncFavor message = new MessageSyncFavor(favor.id,favorValue);
+            NetworkHandler.INSTANCE.sendTo(message, (EntityPlayerMP) playerIn);
+        }
     }
 }

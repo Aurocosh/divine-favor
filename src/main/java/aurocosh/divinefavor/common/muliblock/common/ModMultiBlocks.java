@@ -13,8 +13,7 @@ import aurocosh.divinefavor.common.muliblock.parts.StateValidator;
 import aurocosh.divinefavor.common.muliblock.patchouli.PatchouliMultiBlockData;
 import aurocosh.divinefavor.common.muliblock.serialization.StateValidatorSerializer;
 import aurocosh.divinefavor.common.muliblock.serialization.Vector3iByteSerializer;
-import aurocosh.divinefavor.common.registry.RegistryMap;
-import aurocosh.divinefavor.common.registry.common.CommonRegistry;
+import aurocosh.divinefavor.common.registry.ModRegistries;
 import aurocosh.divinefavor.common.util.UtilAssets;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -24,16 +23,12 @@ import vazkii.patchouli.api.IMultiblock;
 import vazkii.patchouli.api.PatchouliAPI;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public final class ModMultiBlocks {
     public static ModMultiBlock allfire_altar;
     public static ModMultiBlock timber_altar;
     public static ModMultiBlock romol_altar;
-
-    private static RegistryMap<ModMultiBlock> multiBlocks = new RegistryMap<>();
 
     public static void preInit() {
         Gson gson = new GsonBuilder()
@@ -67,11 +62,11 @@ public final class ModMultiBlocks {
             localBounds.add(coordinates.upperCorner);
         }
         CubeCoordinates boundingBox = CubeCoordinates.getBoundingBox(localBounds);
-        return multiBlocks.register(new ModMultiBlock(name, data.controllerPosition, data.parts, boundingBox));
+        return ModRegistries.multiBlocks.register(new ModMultiBlock(name, data.controllerPosition, data.parts, boundingBox));
     }
 
     public static void init() {
-        for (ModMultiBlock multiBlock : multiBlocks.getValues())
+        for (ModMultiBlock multiBlock : ModRegistries.multiBlocks.getValues())
             registerPatchouli(multiBlock);
     }
 
