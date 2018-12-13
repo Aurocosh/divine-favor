@@ -1,6 +1,5 @@
 package aurocosh.divinefavor.common.item.wishing_stones;
 
-import aurocosh.divinefavor.common.constants.items.ConstItemNames;
 import aurocosh.divinefavor.common.core.DivineFavorCreativeTab;
 import aurocosh.divinefavor.common.favors.ModFavor;
 import aurocosh.divinefavor.common.item.base.ModItem;
@@ -23,7 +22,7 @@ public class ItemWishingStone extends ModItem {
     private final int favorCount;
 
     public ItemWishingStone(String name, ModFavor favor, int favorCount) {
-        super(ConstItemNames.WISHING_STONE + "_" + name, "wishing_stones/");
+        super("wishing_stone_" + name, "wishing_stones/");
         this.favor = favor;
         this.favorCount = favorCount;
 

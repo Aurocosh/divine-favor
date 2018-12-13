@@ -14,6 +14,7 @@ public final class ModTalismans {
     public static ItemTalisman fell_tree;
     public static ItemTalisman ignition;
     public static ItemTalisman lavawalking;
+    public static ItemTalisman searing_pulse;
     public static ItemTalisman small_fireball_throw;
     public static ItemTalisman snowball_throw;
     public static ItemTalisman stone_fever;
@@ -56,6 +57,10 @@ public final class ModTalismans {
                 .setSpell(ModSpells.lavawalking)
                 .castOnUse()
                 .castOnRighClick()
+                .create());
+        searing_pulse = ModRegistries.items.register(new TalismanBuilder("searing_pulse", ModFavors.favor_of_allfire, 3)
+                .setSpell(ModSpells.searing_pulse)
+                .castOnUse()
                 .create());
         small_fireball_throw = ModRegistries.items.register(new TalismanBuilder("small_fireball_throw", ModFavors.favor_of_allfire, 1)
                 .setSpell(ModSpells.small_fireball_throw)
