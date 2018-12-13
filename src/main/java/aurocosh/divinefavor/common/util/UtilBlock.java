@@ -9,7 +9,9 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Vec3i;
 import net.minecraft.world.World;
 import net.minecraftforge.common.ForgeHooks;
 import net.minecraftforge.common.MinecraftForge;
@@ -85,5 +87,15 @@ public class UtilBlock {
             return false;
         world.setBlockState(pos, Blocks.FIRE.getDefaultState());
         return true;
+    }
+
+    public static boolean ignite(World world, BlockPos pos, EnumFacing facing){
+        if(ignite(world, pos))
+            return true;
+
+        Vec3i shift = facing.getDirectionVec();
+        if(ignite(world, pos.add(shift)))
+            return true;
+        return false;
     }
 }
