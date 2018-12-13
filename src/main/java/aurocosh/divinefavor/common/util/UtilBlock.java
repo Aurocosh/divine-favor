@@ -79,4 +79,11 @@ public class UtilBlock {
     public static boolean isAirOrReplaceable(World world, BlockPos pos){
         return world.isAirBlock(pos) || world.getBlockState(pos).getBlock().isReplaceable(world, pos);
     }
+
+    public static boolean ignite(World world, BlockPos pos){
+        if (!isAirOrReplaceable(world, pos))
+            return false;
+        world.setBlockState(pos, Blocks.FIRE.getDefaultState());
+        return true;
+    }
 }
