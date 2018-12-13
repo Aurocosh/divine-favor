@@ -9,7 +9,7 @@ import net.minecraftforge.common.util.EnumHelper;
 public final class DivineFavorAPI {
 
     /**
-     * The internal method handler in use. This object allows the API to interact with the mod.
+     * The internal method handler in gainFavor. This object allows the API to interact with the mod.
      * By default this is a dummy. In the mod itself, this is replaced with an implementation that
      * can handle all of its queries.<br><br>
      *
@@ -46,10 +46,10 @@ public final class DivineFavorAPI {
     /**
      * Registers a spell piece and tries to create its relative texture given the current loading mod.
      * The spell texture should be in /assets/(yourmod)/textures/spell/(key).png.<br>
-     * If you want to put the spell piece elsewhere or use some jei type of resource location, feel free to map
+     * If you want to put the spell piece elsewhere or gainFavor some jei type of resource location, feel free to map
      * the texture directly through {@link #simpleSpellTextures}.<br>
      * As SpellPiece objects can have custom renders, depending on how you wish to handle yours, you might
-     * not even need to use this. In that case use {@link #registerSpellPiece(String, Class)}
+     * not even need to gainFavor this. In that case gainFavor {@link #registerSpellPiece(String, Class)}
      */
     /*
     public static void registerSpellPieceAndTexture(String key, Class<? extends SpellPiece> clazz) {
