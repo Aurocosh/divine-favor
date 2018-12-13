@@ -1,17 +1,10 @@
 package aurocosh.divinefavor.common.spell.common;
 
-import aurocosh.divinefavor.common.registry.RegistryMap;
-import aurocosh.divinefavor.common.registry.common.CommonRegistry;
+import aurocosh.divinefavor.common.registry.ModRegistries;
 import aurocosh.divinefavor.common.spell.*;
 import aurocosh.divinefavor.common.spell.base.ModSpell;
-import net.minecraft.util.ResourceLocation;
-
-import java.util.HashMap;
-import java.util.Map;
 
 public final class ModSpells {
-    private static RegistryMap<ModSpell> spells = new RegistryMap<>();
-
     public static ModSpell arrow_throw;
     public static ModSpell bonemeal;
     public static ModSpell empower_axe;
@@ -29,20 +22,20 @@ public final class ModSpells {
     public static ModSpell crushing_palm;
 
     public static void preInit() {
-        arrow_throw = spells.register(new SpellArrowThrow());
-        bonemeal = spells.register(new SpellBonemeal());
-        empower_axe = spells.register(new SpellEmpowerAxe());
-        empower_pickaxe = spells.register(new SpellEmpowerPickaxe());
-        fell_tree = spells.register(new SpellFellTree());
-        ignition = spells.register(new SpellIgnition());
-        lavawalking = spells.register(new SpellLavawalking());
-        small_fireball_throw = spells.register(new SpellSmallFireballThrow());
-        snowball_throw = spells.register(new SpellSnowballThrow());
-        stone_fever = spells.register(new SpellStoneFever());
-        stoneball_throw = spells.register(new SpellStoneballThrow());
-        tell_time = spells.register(new SpellTellTime());
-        waterwalking = spells.register(new SpellWaterwalking());
-        wooden_punch = spells.register(new SpellWoodenPunch());
-        crushing_palm = spells.register(new SpellCrushingPalm());
+        arrow_throw = ModRegistries.spells.register(new SpellArrowThrow());
+        bonemeal = ModRegistries.spells.register(new SpellBonemeal());
+        empower_axe = ModRegistries.spells.register(new SpellEmpowerAxe());
+        empower_pickaxe = ModRegistries.spells.register(new SpellEmpowerPickaxe());
+        fell_tree = ModRegistries.spells.register(new SpellFellTree());
+        ignition = ModRegistries.spells.register(new SpellIgnition());
+        lavawalking = ModRegistries.spells.register(new SpellLavawalking());
+        small_fireball_throw = ModRegistries.spells.register(new SpellSmallFireballThrow());
+        snowball_throw = ModRegistries.spells.register(new SpellSnowballThrow());
+        stone_fever = ModRegistries.spells.register(new SpellStoneFever());
+        stoneball_throw = ModRegistries.spells.register(new SpellStoneballThrow());
+        tell_time = ModRegistries.spells.register(new SpellTellTime());
+        waterwalking = ModRegistries.spells.register(new SpellWaterwalking());
+        wooden_punch = ModRegistries.spells.register(new SpellWoodenPunch());
+        crushing_palm = ModRegistries.spells.register(new SpellCrushingPalm());
     }
 }

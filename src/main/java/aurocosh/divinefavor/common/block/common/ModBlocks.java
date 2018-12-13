@@ -8,38 +8,27 @@ import aurocosh.divinefavor.common.block.medium.BlockMedium;
 import aurocosh.divinefavor.common.block.medium.TileMedium;
 import aurocosh.divinefavor.common.constants.ConstBlockNames;
 import aurocosh.divinefavor.common.constants.ConstResources;
+import aurocosh.divinefavor.common.registry.ModRegistries;
 import aurocosh.divinefavor.common.registry.RegistryMap;
-import aurocosh.divinefavor.common.registry.common.CommonRegistry;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
+
+import static aurocosh.divinefavor.common.registry.ModRegistries.itemBlocks;
 
 public class ModBlocks {
-    private static RegistryMap<ModBlock> blocks = new RegistryMap<>();
-    private static RegistryMap<ItemBlock> itemBlocks = new RegistryMap<>();
-
     public static ModBlock blockFastFurnace;
     public static ModBlock immaterial_medium;
     public static ModBlock blockDiviner;
 
-    public static Collection<ModBlock> getBlocks(){
-        return blocks.getValues();
-    }
-    public static Collection<ItemBlock> getItemBlocks(){
-        return itemBlocks.getValues();
-    }
-
     public static void preInit() {
-        blockFastFurnace = blocks.register(new BlockFastFurnaceMod());
-        immaterial_medium = blocks.register(new BlockMedium());
-        blockDiviner = blocks.register(new BlockDiviner());
+        blockFastFurnace = ModRegistries.blocks.register(new BlockFastFurnaceMod());
+        immaterial_medium = ModRegistries.blocks.register(new BlockMedium());
+        blockDiviner = ModRegistries.blocks.register(new BlockDiviner());
 
-        for (ModBlock block : blocks.getValues()) {
+        for (ModBlock block : ModRegistries.blocks.getValues()) {
             ItemBlock itemBlock = new ItemBlock(block);
             itemBlock.setRegistryName(block.getRegistryName());
             itemBlocks.register(itemBlock);

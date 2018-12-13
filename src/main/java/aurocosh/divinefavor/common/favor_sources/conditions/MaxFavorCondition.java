@@ -2,14 +2,12 @@ package aurocosh.divinefavor.common.favor_sources.conditions;
 
 import aurocosh.divinefavor.common.favor_sources.conditions.base.FavorCondition;
 import aurocosh.divinefavor.common.favors.ModFavor;
-import aurocosh.divinefavor.common.lib.TimePeriod;
 import aurocosh.divinefavor.common.player_data.favor.IFavorHandler;
 import net.minecraft.entity.player.EntityPlayer;
 
 import javax.annotation.CheckForNull;
 
 import static aurocosh.divinefavor.common.player_data.favor.FavorDataHandler.CAPABILITY_FAVOR;
-import static aurocosh.divinefavor.common.player_data.favor.FavorDataHandler.register;
 
 public class MaxFavorCondition extends FavorCondition {
     private final ModFavor favor;

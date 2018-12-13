@@ -7,6 +7,7 @@ import aurocosh.divinefavor.common.item.base.IDescriptionProvider;
 import aurocosh.divinefavor.common.item.common.ModItems;
 import aurocosh.divinefavor.common.receipes.ImmaterialMediumRecipe;
 import aurocosh.divinefavor.common.receipes.ModRecipes;
+import aurocosh.divinefavor.common.registry.ModRegistries;
 import mezz.jei.api.IGuiHelper;
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.IModRegistry;
@@ -41,7 +42,7 @@ public class DivineFavorJEIPlugin implements IModPlugin {
     }
 
     private void registerDescription(IModRegistry registry) {
-        for (final Item item : ModItems.getItems()) {
+        for (final Item item : ModRegistries.items.getValues()) {
             if(!(item instanceof IDescriptionProvider))
                 continue;
             IDescriptionProvider descriptionProvider = (IDescriptionProvider)item;

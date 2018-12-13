@@ -2,11 +2,7 @@ package aurocosh.divinefavor.common.network.message;
 
 import aurocosh.divinefavor.DivineFavor;
 import aurocosh.divinefavor.common.network.base.NetworkAutoMessage;
-import aurocosh.divinefavor.common.player_data.favor.IFavorHandler;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.network.PacketThreadUtil;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
@@ -14,8 +10,6 @@ import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 import net.minecraftforge.fml.relauncher.ReflectionHelper;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-
-import static aurocosh.divinefavor.common.player_data.favor.FavorDataHandler.CAPABILITY_FAVOR;
 
 public class MessageSyncPotionCharge extends NetworkAutoMessage {
 

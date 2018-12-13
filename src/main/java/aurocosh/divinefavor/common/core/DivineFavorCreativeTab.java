@@ -1,10 +1,8 @@
 package aurocosh.divinefavor.common.core;
 
-import aurocosh.divinefavor.common.block.base.ModBlock;
-import aurocosh.divinefavor.common.block.common.ModBlocks;
 import aurocosh.divinefavor.common.constants.ConstMisc;
-import aurocosh.divinefavor.common.item.base.ModItem;
-import aurocosh.divinefavor.common.item.common.ModItems;
+import aurocosh.divinefavor.common.item.calling_stones.ModCallingStones;
+import aurocosh.divinefavor.common.registry.ModRegistries;
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
@@ -12,8 +10,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-
-import java.util.Collection;
 
 public class DivineFavorCreativeTab extends CreativeTabs {
     public static final DivineFavorCreativeTab INSTANCE = new DivineFavorCreativeTab();
@@ -29,7 +25,7 @@ public class DivineFavorCreativeTab extends CreativeTabs {
 
     @Override
     public ItemStack createIcon() {
-        return new ItemStack(ModItems.calling_stone);
+        return new ItemStack(ModCallingStones.allfire_calling_stone);
     }
 
 //    @Override
@@ -47,11 +43,8 @@ public class DivineFavorCreativeTab extends CreativeTabs {
     public void displayAllRelevantItems(NonNullList<ItemStack> stacks) {
         list = stacks;
 
-        Collection<ModBlock> blocks = ModBlocks.getBlocks();
-        blocks.forEach(this::addBlock);
-
-        Collection<ModItem> items = ModItems.getItems();
-        items.forEach(this::addItem);
+        ModRegistries.blocks.getValues().forEach(this::addBlock);
+        ModRegistries.items.getValues().forEach(this::addItem);
     }
 
     private void addItem(Item item) {

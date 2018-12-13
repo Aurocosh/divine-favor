@@ -14,7 +14,6 @@ import net.minecraft.client.resources.I18n;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.ResourceLocation;
 
-import javax.annotation.Nullable;
 import java.util.Arrays;
 
 public class ImmaterialMediumCategory implements IRecipeCategory<ImmaterialMediumWrapper> {

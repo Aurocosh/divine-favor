@@ -1,15 +1,13 @@
 package aurocosh.divinefavor.common.registry;
 
 import aurocosh.divinefavor.common.registry.common.CommonRegistry;
-import aurocosh.divinefavor.common.registry.interfaces.IRegistryContainer;
-import aurocosh.divinefavor.common.registry.interfaces.IValueRegister;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.registries.IForgeRegistryEntry;
 
 import java.util.Collection;
 import java.util.HashMap;
 
-public class RegistryMap<T extends IForgeRegistryEntry> implements IRegistryContainer, IValueRegister<T> {
+public class RegistryMap<T extends IForgeRegistryEntry> {
     private HashMap<ResourceLocation,T> valueMap;
 
     public Collection<T> getValues(){
