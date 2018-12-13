@@ -14,6 +14,7 @@ public final class ModSpells {
     public static ModSpell fell_tree;
     public static ModSpell ignition;
     public static ModSpell lavawalking;
+    public static ModSpell searing_pulse;
     public static ModSpell small_fireball_throw;
     public static ModSpell snowball_throw;
     public static ModSpell stone_fever;
@@ -32,6 +33,7 @@ public final class ModSpells {
         fell_tree = ModRegistries.spells.register(new SpellFellTree());
         ignition = ModRegistries.spells.register(new SpellIgnition());
         lavawalking = ModRegistries.spells.register(new SpellLavawalking());
+        searing_pulse = ModRegistries.spells.register(new SpellSearingPulse());
         small_fireball_throw = ModRegistries.spells.register(new SpellSmallFireballThrow());
         snowball_throw = ModRegistries.spells.register(new SpellSnowballThrow());
         stone_fever = ModRegistries.spells.register(new SpellStoneFever());

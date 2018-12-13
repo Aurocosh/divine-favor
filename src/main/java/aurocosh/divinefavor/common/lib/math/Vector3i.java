@@ -2,6 +2,7 @@ package aurocosh.divinefavor.common.lib.math;
 
 import aurocosh.divinefavor.common.lib.interfaces.IDeepCopy;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Vec3i;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -58,6 +59,10 @@ public class Vector3i implements IDeepCopy<Vector3i> {
         for (int i = 0; i < vectors.length; i++)
             posList[i] = vectors[i].toBlockPos();
         return posList;
+    }
+
+    public static Vector3i fromLong(long value) {
+        return Vector3i.convert(BlockPos.fromLong(value));
     }
 
     @Override
@@ -138,21 +143,21 @@ public class Vector3i implements IDeepCopy<Vector3i> {
         return new Vector3i(xMax, yMax, zMax);
     }
 
-//    public Vector3i getRealativePositionTo(Vector3i relativeTo){
+    //    public Vector3i getRealativePositionTo(Vector3i relativeTo){
 //        return this.subtract(relativeTo);
 //    }
-    public Vector3i getRealativePosition(Vector3i position){
+    public Vector3i getRealativePosition(Vector3i position) {
         return position.subtract(this);
     }
 
-    public List<Vector3i> subtract(List<Vector3i> positions){
+    public List<Vector3i> subtract(List<Vector3i> positions) {
         Vector3i[] positionArray = new Vector3i[positions.size()];
         for (int i = 0; i < positions.size(); i++)
             positionArray[i] = positions.get(i).subtract(this);
         return Arrays.asList(positionArray);
     }
 
-    public List<Vector3i> add(List<Vector3i> positions){
+    public List<Vector3i> add(List<Vector3i> positions) {
         Vector3i[] positionArray = new Vector3i[positions.size()];
         for (int i = 0; i < positions.size(); i++)
             positionArray[i] = positions.get(i).add(this);
@@ -182,6 +187,10 @@ public class Vector3i implements IDeepCopy<Vector3i> {
         return new BlockPos(x, y, z);
     }
 
+    public Vec3i toVec3i() {
+        return new Vec3i(x, y, z);
+    }
+
     @Override
     public Vector3i deepCopy() {
         return new Vector3i(x, y, z);
@@ -192,9 +201,5 @@ public class Vector3i implements IDeepCopy<Vector3i> {
      */
     public long toLong() {
         return toBlockPos().toLong();
-    }
-
-    public static Vector3i fromLong(long value){
-        return Vector3i.convert(BlockPos.fromLong(value));
     }
 }
