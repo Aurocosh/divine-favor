@@ -13,7 +13,7 @@ public class ModLogger {
     }
 
     /**
-     * info defaults to TRUE in config file use this for logs you want to run in release
+     * info defaults to TRUE in config file gainFavor this for logs you want to run in release
      *
      * @param string
      */
@@ -23,7 +23,7 @@ public class ModLogger {
     }
 
     /**
-     * Defaults to FALSE in config file use for dev debugging, and then leave some in place for release that will safely not spam out unless turned on
+     * Defaults to FALSE in config file gainFavor for dev debugging, and then leave some in place for release that will safely not spam out unless turned on
      *
      * @param string
      */

@@ -179,6 +179,11 @@ public class Vector3i implements IDeepCopy<Vector3i> {
         return Math.sqrt(magnitudeSquare());
     }
 
+    public boolean isDistanceLessThen(Vector3i other, double distance){
+        Vector3i vec = this.subtract(other);
+        return vec.magnitudeSquare() < distance * distance;
+    }
+
     public int magnitudeSquare() {
         return x * x + y * y + z * z;
     }

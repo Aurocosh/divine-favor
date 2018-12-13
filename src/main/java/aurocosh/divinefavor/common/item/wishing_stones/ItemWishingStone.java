@@ -40,8 +40,8 @@ public class ItemWishingStone extends ModItem {
         if (!(stack.getItem() instanceof ItemWishingStone))
             return new ActionResult<>(EnumActionResult.PASS, itemStackIn);
 
-
-        use(playerIn);
+        int count = playerIn.isSneaking() ? 8 : favorCount;
+        gainFavor(playerIn, count);
         return new ActionResult<>(EnumActionResult.SUCCESS, itemStackIn);
     }
 
@@ -50,13 +50,13 @@ public class ItemWishingStone extends ModItem {
         return EnumRarity.RARE;
     }
 
-    public void use(EntityPlayer playerIn) {
+    public void gainFavor(EntityPlayer playerIn, int count) {
         IFavorHandler favorHandler = playerIn.getCapability(CAPABILITY_FAVOR, null);
         assert favorHandler != null;
 
-        int favorValue = favorHandler.addFavor(favor.id, favorCount);
-        if(playerIn instanceof EntityPlayerMP) {
-            MessageSyncFavor message = new MessageSyncFavor(favor.id,favorValue);
+        int favorValue = favorHandler.addFavor(favor.id, count);
+        if (playerIn instanceof EntityPlayerMP) {
+            MessageSyncFavor message = new MessageSyncFavor(favor.id, favorValue);
             NetworkHandler.INSTANCE.sendTo(message, (EntityPlayerMP) playerIn);
         }
     }
