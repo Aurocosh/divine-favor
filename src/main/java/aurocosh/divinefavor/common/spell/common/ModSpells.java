@@ -12,6 +12,7 @@ public final class ModSpells {
     public static ModSpell empower_axe;
     public static ModSpell empower_pickaxe;
     public static ModSpell fell_tree;
+    public static ModSpell heat_wave;
     public static ModSpell ignition;
     public static ModSpell lavawalking;
     public static ModSpell searing_pulse;
@@ -31,6 +32,7 @@ public final class ModSpells {
         empower_axe = ModRegistries.spells.register(new SpellEmpowerAxe());
         empower_pickaxe = ModRegistries.spells.register(new SpellEmpowerPickaxe());
         fell_tree = ModRegistries.spells.register(new SpellFellTree());
+        heat_wave = ModRegistries.spells.register(new SpellHeatWave());
         ignition = ModRegistries.spells.register(new SpellIgnition());
         lavawalking = ModRegistries.spells.register(new SpellLavawalking());
         searing_pulse = ModRegistries.spells.register(new SpellSearingPulse());

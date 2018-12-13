@@ -5,7 +5,7 @@ import java.util.Random;
 public class UtilRandom {
     public static Random random = new Random();
 
-    public static boolean getPercentChance(float chance)
+    public static boolean rollDice(float chance)
     {
         float value = random.nextFloat() * 100;
         return value < chance;

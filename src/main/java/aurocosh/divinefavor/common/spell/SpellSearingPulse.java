@@ -7,15 +7,7 @@ import aurocosh.divinefavor.common.spell.base.SpellContext;
 import aurocosh.divinefavor.common.util.UtilBlock;
 import aurocosh.divinefavor.common.util.UtilRandom;
 import aurocosh.divinefavor.common.util.UtilVector3i;
-import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Blocks;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.FurnaceRecipes;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Vec3i;
-import net.minecraftforge.items.CapabilityItemHandler;
-import net.minecraftforge.items.IItemHandler;
 
 import java.util.*;
 
@@ -38,14 +30,9 @@ public class SpellSearingPulse extends ModSpell {
     protected boolean performAction(SpellContext context) {
         assert context.castType == CastType.ITEM_USE_CAST;
 
-        BlockPos pos = context.pos;
-        TileEntity entity = context.world.getTileEntity(pos);
-        if (entity != null)
-            return false;
-
         Queue<Vector3i> nodesToVisit = new ArrayDeque<>();
         Set<Vector3i> visitedNodes = new HashSet<>();
-        nodesToVisit.add(Vector3i.convert(pos));
+        nodesToVisit.add(Vector3i.convert(context.pos));
 
         int cycleLimit = CYCLE_LIMIT;
         int blocksToSmelt = UtilRandom.nextInt(MIN_BLOCKS_TO_SMELT, MAX_BLOCKS_TO_SMELT);
@@ -53,10 +40,10 @@ public class SpellSearingPulse extends ModSpell {
             Vector3i nextNode = nodesToVisit.remove();
             visitedNodes.add(nextNode);
 
-            if(UtilBlock.isAirOrReplaceable(context.world,pos)){
-                boolean setOnFire = UtilRandom.getPercentChance(CHANCE_TO_CREATE_FIRE);
-                if(setOnFire)
-                    context.world.setBlockState(pos, Blocks.FIRE.getDefaultState());
+            if (UtilBlock.isAirOrReplaceable(context.world, context.pos)) {
+                boolean setOnFire = UtilRandom.rollDice(CHANCE_TO_CREATE_FIRE);
+                if (setOnFire)
+                    context.world.setBlockState(context.pos, Blocks.FIRE.getDefaultState());
                 continue;
             }
 

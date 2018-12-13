@@ -49,7 +49,7 @@ public class PotionEmpowerPickaxe extends ModPotion {
         if (BlockClickTracker.wasBlockLeftClicked(player, pos))
             return;
 
-        boolean doSomething = UtilRandom.getPercentChance(50);
+        boolean doSomething = UtilRandom.rollDice(50);
         if (!doSomething)
             return;
 

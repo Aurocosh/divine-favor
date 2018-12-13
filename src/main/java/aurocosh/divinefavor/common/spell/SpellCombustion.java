@@ -44,7 +44,7 @@ public class SpellCombustion extends ModSpell {
 
             if(result.isEmpty())
                 continue;
-            if(!UtilRandom.getPercentChance(SMELTING_CHANCE))
+            if(!UtilRandom.rollDice(SMELTING_CHANCE))
                 continue;
 
             ItemStack smelted = result.copy();
