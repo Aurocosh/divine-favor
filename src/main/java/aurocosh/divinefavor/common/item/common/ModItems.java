@@ -1,63 +1,23 @@
 package aurocosh.divinefavor.common.item.common;
 
-import aurocosh.divinefavor.common.item.*;
+import aurocosh.divinefavor.common.item.ItemBoneKey;
+import aurocosh.divinefavor.common.item.ItemMysticArchitectStick;
+import aurocosh.divinefavor.common.item.ItemStoneball;
 import aurocosh.divinefavor.common.item.base.ModItem;
-import aurocosh.divinefavor.common.item.calling_stones.CallingStone;
-import aurocosh.divinefavor.common.item.calling_stones.ItemCallingStone;
-import aurocosh.divinefavor.common.item.calling_stones.ModCallingStones;
 import aurocosh.divinefavor.common.item.ritual_pouch.ItemRitualPouch;
-import aurocosh.divinefavor.common.item.talismans.ItemTalisman;
-import aurocosh.divinefavor.common.item.wishing_stones.ItemWishingStone;
-import aurocosh.divinefavor.common.item.wishing_stones.ModWishingStones;
-import aurocosh.divinefavor.common.item.wishing_stones.WishingStone;
-import aurocosh.divinefavor.common.registry.RegistryMap;
-import aurocosh.divinefavor.common.item.talismans.ModTalismans;
-import aurocosh.divinefavor.common.item.talismans.Talisman;
-import net.minecraft.item.ItemStack;
-
-import java.util.Collection;
+import aurocosh.divinefavor.common.registry.ModRegistries;
 
 public final class ModItems {
-    private static final RegistryMap<ModItem> items = new RegistryMap<>();
-
     public static ModItem bone_key;
-    public static ModItem colored_bone;
     public static ModItem mystic_architect_stick;
     public static ModItem ritual_pouch;
     public static ModItem stoneball;
 
-    public static ModItem talisman;
-
-    public static ModItem calling_stone;
-    public static ModItem wishing_stone;
-
-    public static Collection<ModItem> getItems() {
-        return items.getValues();
-    }
-
-    public static ItemStack getCallingStone(CallingStone variant) {
-        return new ItemStack(calling_stone, 1, ModCallingStones.getMetaContainer().getMeta(variant));
-    }
-
-    public static ItemStack getTalisman(Talisman variant) {
-        return new ItemStack(talisman, 1, ModTalismans.getMetaContainer().getMeta(variant));
-    }
-
-    public static ItemStack getWishingStone(WishingStone variant) {
-        return new ItemStack(wishing_stone, 1, ModWishingStones.getMetaContainer().getMeta(variant));
-    }
-
     public static void preInit() {
-        bone_key = items.register(new ItemBoneKey());
-        colored_bone = items.register(new ItemColoredBone());
-        mystic_architect_stick = items.register(new ItemMysticArchitectStick());
-        ritual_pouch = items.register(new ItemRitualPouch());
-        stoneball = items.register(new ItemStoneball());
-
-        talisman = items.register(new ItemTalisman("talismans/", ModTalismans.getMetaContainer().getNames()));
-
-        calling_stone = items.register(new ItemCallingStone("calling_stones/", ModCallingStones.getMetaContainer().getNames()));
-        wishing_stone = items.register(new ItemWishingStone("wishing_stones/", ModWishingStones.getMetaContainer().getNames()));
+        bone_key = ModRegistries.items.register(new ItemBoneKey());
+        mystic_architect_stick = ModRegistries.items.register(new ItemMysticArchitectStick());
+        ritual_pouch = ModRegistries.items.register(new ItemRitualPouch());
+        stoneball = ModRegistries.items.register(new ItemStoneball());
 
 //        ModContainer mod = Loader.instance().getModObjectList().inverse().get(DivineFavor.instance);
     }

@@ -4,7 +4,6 @@ import aurocosh.divinefavor.DivineFavor;
 import aurocosh.divinefavor.common.item.ItemMysticArchitectStick;
 import aurocosh.divinefavor.common.item.talismans.ItemTalisman;
 import aurocosh.divinefavor.common.item.talismans.ModTalismans;
-import aurocosh.divinefavor.common.item.talismans.Talisman;
 import aurocosh.divinefavor.common.util.UtilNbt;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScaledResolution;
@@ -58,11 +57,8 @@ public final class HUDHandler {
         if (stack.isEmpty() || !(stack.getItem() instanceof ItemTalisman))
             return;
 
-        Talisman talisman = ModTalismans.getMetaContainer().getByMeta(stack.getMetadata());
-        if(talisman == null)
-            return;
-
         EntityPlayer player = DivineFavor.proxy.getClientPlayer();
+        ItemTalisman talisman = (ItemTalisman) stack.getItem();
         int useCount = talisman.getUseCount(player);
 
         String description = useCount > 0 ? "Uses left: " + useCount : "Unusable";

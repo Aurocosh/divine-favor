@@ -5,6 +5,7 @@ import aurocosh.divinefavor.common.favors.ModFavor;
 import aurocosh.divinefavor.common.favors.ModFavors;
 import aurocosh.divinefavor.common.network.base.NetworkAutoMessage;
 import aurocosh.divinefavor.common.player_data.favor.IFavorHandler;
+import aurocosh.divinefavor.common.registry.ModRegistries;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
@@ -47,8 +48,7 @@ public class MessagePartialDataSync extends NetworkAutoMessage {
         if (favorHandler == null)
             return;
 
-        Collection<ModFavor> favors = ModFavors.getFavorList();
-        for (ModFavor favor : favors) {
+        for (ModFavor favor : ModRegistries.favors.getValues()) {
             if(!cmp.hasKey(favor.tag))
                 continue;
             int value = cmp.getInteger(favor.tag);

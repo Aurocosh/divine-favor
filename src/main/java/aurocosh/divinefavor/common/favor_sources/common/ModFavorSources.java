@@ -10,8 +10,6 @@ import aurocosh.divinefavor.common.favors.ModFavors;
 import aurocosh.divinefavor.common.registry.RegistryMap;
 import net.minecraft.init.Blocks;
 
-import java.util.HashMap;
-
 public final class ModFavorSources {
     private static RegistryMap<FavorSource> favorSources = new RegistryMap<>();
 

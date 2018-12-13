@@ -3,11 +3,8 @@ package aurocosh.divinefavor.common.favor_sources.conditions;
 import aurocosh.divinefavor.common.favor_sources.conditions.base.FavorCondition;
 import aurocosh.divinefavor.common.lib.TimePeriod;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.event.world.BlockEvent;
 
 import javax.annotation.CheckForNull;
-import java.util.Set;
 
 public class TimeOfDayCondition extends FavorCondition {
     private final TimePeriod timePeriod;

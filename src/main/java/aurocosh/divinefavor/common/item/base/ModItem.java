@@ -33,7 +33,7 @@ public class ModItem extends Item implements IVariantHolder {
         int damage = par1ItemStack.getItemDamage();
         damage = damage < variants.length ? damage : 0;
 
-        return "item." + fullName.toString() + "_" + variants[damage];
+        return "item." + fullName.toString() + variants[damage];
     }
 
     @Override

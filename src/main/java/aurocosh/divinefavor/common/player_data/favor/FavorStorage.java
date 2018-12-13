@@ -2,6 +2,7 @@ package aurocosh.divinefavor.common.player_data.favor;
 
 import aurocosh.divinefavor.common.favors.ModFavor;
 import aurocosh.divinefavor.common.favors.ModFavors;
+import aurocosh.divinefavor.common.registry.ModRegistries;
 import net.minecraft.nbt.NBTBase;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumFacing;
@@ -23,8 +24,7 @@ public class FavorStorage implements Capability.IStorage<IFavorHandler> {
 
     public static NBTTagCompound getNbtTagCompound(IFavorHandler instance) {
         final NBTTagCompound tag = new NBTTagCompound();
-        Collection<ModFavor> favors = ModFavors.getFavorList();
-        for (ModFavor favor : favors) {
+        for (ModFavor favor : ModRegistries.favors.getValues()) {
             int value = instance.getFavor(favor.id);
             tag.setInteger(favor.tag,value);
         }
@@ -32,10 +32,8 @@ public class FavorStorage implements Capability.IStorage<IFavorHandler> {
     }
 
     public static void setDataFromNBT(IFavorHandler instance, NBTTagCompound nbt) {
-        final NBTTagCompound tag = nbt;
-        Collection<ModFavor> favors = ModFavors.getFavorList();
-        for (ModFavor favor : favors) {
-            int value = tag.getInteger(favor.tag);
+        for (ModFavor favor : ModRegistries.favors.getValues()) {
+            int value = nbt.getInteger(favor.tag);
             instance.setFavor(favor.id,value);
         }
     }
