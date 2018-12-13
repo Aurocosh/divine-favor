@@ -4,7 +4,6 @@ import aurocosh.divinefavor.common.potions.base.ModEffect;
 import aurocosh.divinefavor.common.potions.common.ModPotions;
 import aurocosh.divinefavor.common.spell.base.ModSpell;
 import aurocosh.divinefavor.common.spell.base.SpellContext;
-import aurocosh.divinefavor.common.spell.base.SpellType;
 import net.minecraft.potion.PotionEffect;
 
 public class SpellEmpowerPickaxe extends ModSpell {
@@ -13,7 +12,7 @@ public class SpellEmpowerPickaxe extends ModSpell {
     private final int TEST = 500;
 
     public SpellEmpowerPickaxe() {
-        super(SpellType.EMPOWER_PICKAXE);
+        super("empower_pickaxe");
     }
 
     @Override

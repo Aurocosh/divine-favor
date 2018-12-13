@@ -4,14 +4,13 @@ import aurocosh.divinefavor.common.potions.base.ModEffectCharge;
 import aurocosh.divinefavor.common.potions.common.ModPotions;
 import aurocosh.divinefavor.common.spell.base.ModSpell;
 import aurocosh.divinefavor.common.spell.base.SpellContext;
-import aurocosh.divinefavor.common.spell.base.SpellType;
 import net.minecraft.potion.PotionEffect;
 
 public class SpellWoodenPunch extends ModSpell {
     private final int USES = 10;
 
     public SpellWoodenPunch() {
-        super(SpellType.WOODEN_PUNCH);
+        super("wooden_punch");
     }
 
     @Override

@@ -3,7 +3,6 @@ package aurocosh.divinefavor.common.spell;
 import aurocosh.divinefavor.common.entity.EntityStoneball;
 import aurocosh.divinefavor.common.spell.base.ModSpell;
 import aurocosh.divinefavor.common.spell.base.SpellContext;
-import aurocosh.divinefavor.common.spell.base.SpellType;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.util.SoundCategory;
@@ -12,7 +11,7 @@ import net.minecraft.world.World;
 
 public class SpellTellTime extends ModSpell {
     public SpellTellTime() {
-        super(SpellType.TELL_TIME);
+        super("tell_time");
     }
 
     @Override

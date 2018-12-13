@@ -1,6 +1,5 @@
 package aurocosh.divinefavor.common.item.talismans;
 
-import aurocosh.divinefavor.common.constants.items.ConstItemNames;
 import aurocosh.divinefavor.common.core.DivineFavorCreativeTab;
 import aurocosh.divinefavor.common.favors.ModFavor;
 import aurocosh.divinefavor.common.item.base.ModItem;
@@ -38,7 +37,7 @@ public class ItemTalisman extends ModItem {
 
 // Talisman functions
     public ItemTalisman(String name, ModSpell spell, ModFavor favor, int favorPerUse, boolean castOnUse, boolean castOnRightClick) {
-        super(ConstItemNames.TALISMAN + "_" + name, "talismans/");
+        super("talisman_" + name, "talismans/");
 
         this.spell = spell;
         this.favor = favor;

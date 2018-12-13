@@ -4,7 +4,6 @@ import aurocosh.divinefavor.common.potions.base.ModEffect;
 import aurocosh.divinefavor.common.potions.common.ModPotions;
 import aurocosh.divinefavor.common.spell.base.ModSpell;
 import aurocosh.divinefavor.common.spell.base.SpellContext;
-import aurocosh.divinefavor.common.spell.base.SpellType;
 import net.minecraft.potion.PotionEffect;
 
 public class SpellStoneFever extends ModSpell {
@@ -13,7 +12,7 @@ public class SpellStoneFever extends ModSpell {
     private final int TEST = 500;
 
     public SpellStoneFever() {
-        super(SpellType.STONE_FEVER);
+        super("stone_fever");
     }
 
     @Override
