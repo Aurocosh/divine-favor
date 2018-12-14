@@ -15,17 +15,19 @@ public class ModPotions {
     public static ModPotion stone_fever;
     public static ModPotion water_walk;
     public static ModPotionCharge crushing_palm;
-    public static ModPotionTrigger miners_focus;
     public static ModPotionCharge wooden_punch;
+    public static ModPotionTrigger consuming_fury;
+    public static ModPotionTrigger miners_focus;
 
     public static void preInit() {
+        consuming_fury = ModRegistries.potions.register(new PotionConsumingFury());
         crushing_palm = ModRegistries.potions.register(new PotionCrushingPalm());
         empower_axe = ModRegistries.potions.register(new PotionEmpowerAxe());
         empower_pickaxe = ModRegistries.potions.register(new PotionEmpowerPickaxe());
         lava_walk = ModRegistries.potions.register(new PotionLiquidWalking(ConstEffectNames.LAVAWALK, Blocks.LAVA));
+        miners_focus = ModRegistries.potions.register(new PotionMinersFocus());
         stone_fever = ModRegistries.potions.register(new PotionStoneFever());
         water_walk = ModRegistries.potions.register(new PotionLiquidWalking(ConstEffectNames.WATERWALK, Blocks.WATER));
-        miners_focus = ModRegistries.potions.register(new PotionMinersFocus());
         wooden_punch = ModRegistries.potions.register(new PotionWoodenPunch());
     }
 }
