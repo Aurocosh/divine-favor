@@ -8,6 +8,7 @@ public final class ModSpells {
     public static ModSpell arrow_throw;
     public static ModSpell bonemeal;
     public static ModSpell combustion;
+    public static ModSpell consuming_fury;
     public static ModSpell crushing_palm;
     public static ModSpell empower_axe;
     public static ModSpell empower_pickaxe;
@@ -29,6 +30,7 @@ public final class ModSpells {
         arrow_throw = ModRegistries.spells.register(new SpellArrowThrow());
         bonemeal = ModRegistries.spells.register(new SpellBonemeal());
         combustion = ModRegistries.spells.register(new SpellCombustion());
+        consuming_fury = ModRegistries.spells.register(new SpellConsumingFury());
         crushing_palm = ModRegistries.spells.register(new SpellCrushingPalm());
         empower_axe = ModRegistries.spells.register(new SpellEmpowerAxe());
         empower_pickaxe = ModRegistries.spells.register(new SpellEmpowerPickaxe());

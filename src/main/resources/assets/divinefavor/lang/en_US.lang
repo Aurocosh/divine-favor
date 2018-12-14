@@ -42,6 +42,7 @@ item.divinefavor:calling_stone_romol.name=Romol's invite
 item.divinefavor:calling_stone_timber.name=Timber's invite
 
 # EFFECT NAMES
+potion.divinefavor:consuming_fury.name=Consuming fury
 potion.divinefavor:crushing_palm.name=Crushing palm
 potion.divinefavor:empower_axe.name=Empower axe
 potion.divinefavor:empower_pickaxe.name=Empower pickaxe
