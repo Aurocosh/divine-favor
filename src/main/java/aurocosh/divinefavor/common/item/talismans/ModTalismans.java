@@ -16,6 +16,7 @@ public final class ModTalismans {
     public static ItemTalisman heat_wave;
     public static ItemTalisman ignition;
     public static ItemTalisman lavawalking;
+    public static ItemTalisman miners_focus;
     public static ItemTalisman searing_pulse;
     public static ItemTalisman small_fireball_throw;
     public static ItemTalisman snowball_throw;
@@ -72,6 +73,11 @@ public final class ModTalismans {
                 .create());
         lavawalking = ModRegistries.items.register(new TalismanBuilder("lavawalking", ModFavors.favor_of_allfire, 2)
                 .setSpell(ModSpells.lavawalking)
+                .castOnUse()
+                .castOnRighClick()
+                .create());
+        miners_focus = ModRegistries.items.register(new TalismanBuilder("miners_focus", ModFavors.favor_of_romol, 3)
+                .setSpell(ModSpells.miners_focus)
                 .castOnUse()
                 .castOnRighClick()
                 .create());

@@ -1,4 +1,4 @@
-package aurocosh.divinefavor.common.potions.effect;
+package aurocosh.divinefavor.common.potions.potions;
 
 import aurocosh.divinefavor.common.potions.base.ModPotion;
 import net.minecraft.block.Block;

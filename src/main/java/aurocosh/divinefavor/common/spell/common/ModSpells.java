@@ -15,6 +15,7 @@ public final class ModSpells {
     public static ModSpell heat_wave;
     public static ModSpell ignition;
     public static ModSpell lavawalking;
+    public static ModSpell miners_focus;
     public static ModSpell searing_pulse;
     public static ModSpell small_fireball_throw;
     public static ModSpell snowball_throw;
@@ -35,6 +36,7 @@ public final class ModSpells {
         heat_wave = ModRegistries.spells.register(new SpellHeatWave());
         ignition = ModRegistries.spells.register(new SpellIgnition());
         lavawalking = ModRegistries.spells.register(new SpellLavawalking());
+        miners_focus = ModRegistries.spells.register(new SpellMinersFocus());
         searing_pulse = ModRegistries.spells.register(new SpellSearingPulse());
         small_fireball_throw = ModRegistries.spells.register(new SpellSmallFireballThrow());
         snowball_throw = ModRegistries.spells.register(new SpellSnowballThrow());
