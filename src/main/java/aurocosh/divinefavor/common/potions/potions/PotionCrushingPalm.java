@@ -1,4 +1,4 @@
-package aurocosh.divinefavor.common.potions.effect;
+package aurocosh.divinefavor.common.potions.potions;
 
 import aurocosh.divinefavor.common.constants.ConstEffectNames;
 import aurocosh.divinefavor.common.potions.base.ModEffectCharge;
@@ -22,7 +22,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 public class PotionCrushingPalm extends ModPotionCharge {
 
     public PotionCrushingPalm() {
-        super(ConstEffectNames.CRUSHING_PALM, true, 0x7FB8A4);
+        super("crushing_palm", true, 0x7FB8A4);
     }
 
     @SubscribeEvent

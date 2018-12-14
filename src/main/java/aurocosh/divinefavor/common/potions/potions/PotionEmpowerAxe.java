@@ -1,4 +1,4 @@
-package aurocosh.divinefavor.common.potions.effect;
+package aurocosh.divinefavor.common.potions.potions;
 
 import aurocosh.divinefavor.common.constants.ConstEffectNames;
 import aurocosh.divinefavor.common.core.handlers.BlockClickTracker;
@@ -17,10 +17,10 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 @Mod.EventBusSubscriber
-public class PotionEmpowerPickaxe extends ModPotion {
+public class PotionEmpowerAxe extends ModPotion {
 
-    public PotionEmpowerPickaxe() {
-        super(ConstEffectNames.EMPOWER_PICKAXE, true, 0x7FB8A4);
+    public PotionEmpowerAxe() {
+        super("empower_axe", true, 0x7FB8A4);
     }
 
     @SubscribeEvent
@@ -29,7 +29,7 @@ public class PotionEmpowerPickaxe extends ModPotion {
         if (world.isRemote)
             return;
 
-        if (!event.getEntityPlayer().isPotionActive(ModPotions.empower_pickaxe))
+        if (!event.getEntityPlayer().isPotionActive(ModPotions.empower_axe))
             return;
 
         EntityPlayer player = event.getEntityPlayer();
@@ -37,13 +37,13 @@ public class PotionEmpowerPickaxe extends ModPotion {
         if (stack.isEmpty())
             return;
 
-        if (!stack.getItem().getToolClasses(stack).contains("pickaxe"))
+        if (!stack.getItem().getToolClasses(stack).contains("axe"))
             return;
 
         BlockPos pos = event.getPos();
         IBlockState state = world.getBlockState(pos);
         Block block = state.getBlock();
-        if (!block.isToolEffective("pickaxe", state))
+        if (!block.isToolEffective("axe", state))
             return;
 
         if (BlockClickTracker.wasBlockLeftClicked(player, pos))
