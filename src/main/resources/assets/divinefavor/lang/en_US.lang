@@ -22,6 +22,7 @@ item.divinefavor:talisman_empower_pickaxe.name=Empower pickaxe talisman
 item.divinefavor:talisman_fell_tree.name=Fell tree talisman
 item.divinefavor:talisman_ignition.name=Ignition talisman
 item.divinefavor:talisman_lavawalking.name=Lavawalking talisman
+item.divinefavor:talisman_miners_focus.name=Miners focus talisman
 item.divinefavor:talisman_searing_pulse.name=Searing pulse talisman
 item.divinefavor:talisman_small_fireball_throw.name=Small fireball talisman
 item.divinefavor:talisman_snowball_throw.name=Snowball talisman
@@ -41,13 +42,14 @@ item.divinefavor:calling_stone_romol.name=Romol's invite
 item.divinefavor:calling_stone_timber.name=Timber's invite
 
 # EFFECT NAMES
+potion.divinefavor:crushing_palm.name=Crushing palm
 potion.divinefavor:empower_axe.name=Empower axe
 potion.divinefavor:empower_pickaxe.name=Empower pickaxe
 potion.divinefavor:lava_walk.name=Lava walking
+potion.divinefavor:miners_focus.name=Miners focus
 potion.divinefavor:stone_fever.name=Stone fever
 potion.divinefavor:water_walk.name=Water walking
 potion.divinefavor:wooden_punch.name=Wooden punch
-potion.divinefavor:crushing_palm.name=Crushing palm
 
 # JEI tab name
 container.divinefavor:immaterial_medium.name=Spiritual trade

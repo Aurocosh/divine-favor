@@ -7,5 +7,5 @@ public final class ConstEffectNames {
     public static final String STONE_FEVER = "stone_fever";
     public static final String WATERWALK = "water_walk";
     public static final String WOODEN_PUNCH = "wooden_punch";
-    public static final String CRUSHING_PALM = "crushing_palm";
+    public static final String CRUSHING_PALM = "";
 }

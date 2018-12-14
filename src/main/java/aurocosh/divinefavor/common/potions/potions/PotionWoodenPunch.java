@@ -1,4 +1,4 @@
-package aurocosh.divinefavor.common.potions.effect;
+package aurocosh.divinefavor.common.potions.potions;
 
 import aurocosh.divinefavor.common.constants.ConstEffectNames;
 import aurocosh.divinefavor.common.potions.base.ModEffectCharge;
