@@ -1,11 +1,11 @@
 package aurocosh.divinefavor.common.potions.potions;
 
 import aurocosh.divinefavor.common.constants.ConstEffectNames;
-import aurocosh.divinefavor.common.potions.base.ModEffectCharge;
-import aurocosh.divinefavor.common.potions.base.ModPotionCharge;
+import aurocosh.divinefavor.common.potions.base.effect.ModEffectCharge;
+import aurocosh.divinefavor.common.potions.base.potion.ModPotionCharge;
 import aurocosh.divinefavor.common.potions.common.ModPotions;
 import aurocosh.divinefavor.common.network.common.NetworkHandler;
-import aurocosh.divinefavor.common.network.message.MessageSyncPotionCharge;
+import aurocosh.divinefavor.common.network.message.client.MessageSyncPotionCharge;
 import aurocosh.divinefavor.common.util.UtilBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;

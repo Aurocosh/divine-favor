@@ -1,9 +1,9 @@
-package aurocosh.divinefavor.common.network.message;
+package aurocosh.divinefavor.common.network.message.client;
 
 import aurocosh.divinefavor.DivineFavor;
 import aurocosh.divinefavor.common.favors.ModFavor;
-import aurocosh.divinefavor.common.favors.ModFavors;
 import aurocosh.divinefavor.common.network.base.NetworkAutoMessage;
+import aurocosh.divinefavor.common.network.base.NetworkClientMessage;
 import aurocosh.divinefavor.common.player_data.favor.IFavorHandler;
 import aurocosh.divinefavor.common.registry.ModRegistries;
 import net.minecraft.entity.player.EntityPlayer;
@@ -17,8 +17,7 @@ import java.util.Collection;
 
 import static aurocosh.divinefavor.common.player_data.favor.FavorDataHandler.CAPABILITY_FAVOR;
 
-public class MessagePartialDataSync extends NetworkAutoMessage {
-
+public class MessagePartialDataSync extends NetworkClientMessage {
     public NBTTagCompound cmp;
 
     public MessagePartialDataSync() {
@@ -37,12 +36,7 @@ public class MessagePartialDataSync extends NetworkAutoMessage {
 
     @Override
     @SideOnly(Side.CLIENT)
-    public IMessage handleMessage(MessageContext context) {
-        DivineFavor.proxy.addScheduledTaskClient(this::handle);
-        return null;
-    }
-
-    private void handle() {
+    protected void handle() {
         EntityPlayer player = DivineFavor.proxy.getClientPlayer();
         IFavorHandler favorHandler = player.getCapability(CAPABILITY_FAVOR, null);
         if (favorHandler == null)

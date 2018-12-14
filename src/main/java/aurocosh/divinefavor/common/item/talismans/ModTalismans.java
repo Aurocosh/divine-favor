@@ -14,6 +14,7 @@ public final class ModTalismans {
     public static ItemTalisman empower_axe;
     public static ItemTalisman empower_pickaxe;
     public static ItemTalisman fell_tree;
+    public static ItemTalisman grudge;
     public static ItemTalisman heat_wave;
     public static ItemTalisman ignition;
     public static ItemTalisman lavawalking;
@@ -67,6 +68,11 @@ public final class ModTalismans {
         fell_tree = ModRegistries.items.register(new TalismanBuilder("fell_tree", ModFavors.favor_of_timber, 1)
                 .setSpell(ModSpells.fell_tree)
                 .castOnUse()
+                .create());
+        grudge = ModRegistries.items.register(new TalismanBuilder("grudge", ModFavors.favor_of_timber, 1)
+                .setSpell(ModSpells.grudge)
+                .castOnUse()
+                .castOnRighClick()
                 .create());
         heat_wave = ModRegistries.items.register(new TalismanBuilder("heat_wave", ModFavors.favor_of_allfire, 2)
                 .setSpell(ModSpells.heat_wave)

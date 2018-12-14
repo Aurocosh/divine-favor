@@ -1,6 +1,6 @@
 package aurocosh.divinefavor.common.potions.potions;
 
-import aurocosh.divinefavor.common.potions.base.ModPotionTrigger;
+import aurocosh.divinefavor.common.potions.base.potion.ModPotionTrigger;
 import aurocosh.divinefavor.common.potions.common.ModPotions;
 import aurocosh.divinefavor.common.util.UtilChat;
 import net.minecraft.entity.Entity;
@@ -20,7 +20,7 @@ import java.util.Map;
 public class PotionConsumingFury extends ModPotionTrigger {
     private static final int MOBS_TO_KILL = 3;
     private static final float DAMAGE_TO_DEAL = 2;
-    private static final float DAMAGE_MULTIPLIER = 3;
+    public static final float EXTRA_DAMAGE = 16;
 
     private final static Map<EntityPlayer,Integer> killCounts = new HashMap<>();
 
@@ -48,7 +48,7 @@ public class PotionConsumingFury extends ModPotionTrigger {
         EntityPlayer player = (EntityPlayer) entity;
         if(!player.isPotionActive(ModPotions.consuming_fury))
             return;
-        event.setAmount(event.getAmount() * DAMAGE_MULTIPLIER);
+        event.setAmount(event.getAmount() + EXTRA_DAMAGE);
     }
 
     @SubscribeEvent

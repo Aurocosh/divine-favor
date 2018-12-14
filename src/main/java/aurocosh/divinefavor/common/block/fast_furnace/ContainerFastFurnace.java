@@ -3,7 +3,7 @@ package aurocosh.divinefavor.common.block.fast_furnace;
 import aurocosh.divinefavor.DivineFavor;
 import aurocosh.divinefavor.common.block.medium.TileMedium;
 import aurocosh.divinefavor.common.network.common.NetworkHandler;
-import aurocosh.divinefavor.common.network.message.MessageSyncPower;
+import aurocosh.divinefavor.common.network.message.client.MessageSyncPower;
 import aurocosh.divinefavor.common.tool.IEnergyContainer;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
