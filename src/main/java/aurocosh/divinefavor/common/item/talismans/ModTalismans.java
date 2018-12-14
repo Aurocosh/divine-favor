@@ -8,6 +8,7 @@ public final class ModTalismans {
     public static ItemTalisman arrowThrowTalisman;
     public static ItemTalisman bonemeal;
     public static ItemTalisman combustion;
+    public static ItemTalisman consuming_fury;
     public static ItemTalisman crushing_palm;
     public static ItemTalisman distant_spark;
     public static ItemTalisman empower_axe;
@@ -37,6 +38,11 @@ public final class ModTalismans {
         combustion = ModRegistries.items.register(new TalismanBuilder("combustion", ModFavors.favor_of_allfire, 3)
                 .setSpell(ModSpells.combustion)
                 .castOnUse()
+                .create());
+        consuming_fury = ModRegistries.items.register(new TalismanBuilder("consuming_fury", ModFavors.favor_of_romol, 3)
+                .setSpell(ModSpells.consuming_fury)
+                .castOnUse()
+                .castOnRighClick()
                 .create());
         crushing_palm = ModRegistries.items.register(new TalismanBuilder("crushing_palm", ModFavors.favor_of_romol, 2)
                 .setSpell(ModSpells.crushing_palm)
