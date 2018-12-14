@@ -5,7 +5,7 @@ import aurocosh.divinefavor.common.favors.ModFavor;
 import aurocosh.divinefavor.common.item.base.ModItem;
 import aurocosh.divinefavor.common.lib.math.Vector3;
 import aurocosh.divinefavor.common.network.common.NetworkHandler;
-import aurocosh.divinefavor.common.network.message.MessageSyncFavor;
+import aurocosh.divinefavor.common.network.message.client.MessageSyncFavor;
 import aurocosh.divinefavor.common.player_data.favor.IFavorHandler;
 import aurocosh.divinefavor.common.spell.base.CastType;
 import aurocosh.divinefavor.common.spell.base.ModSpell;

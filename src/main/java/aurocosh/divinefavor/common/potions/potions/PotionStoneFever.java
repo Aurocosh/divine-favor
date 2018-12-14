@@ -1,8 +1,8 @@
 package aurocosh.divinefavor.common.potions.potions;
 
 import aurocosh.divinefavor.common.constants.ConstEffectNames;
-import aurocosh.divinefavor.common.potions.base.PotionEffectCurse;
-import aurocosh.divinefavor.common.potions.base.ModPotion;
+import aurocosh.divinefavor.common.potions.base.potion.PotionEffectCurse;
+import aurocosh.divinefavor.common.potions.base.potion.ModPotion;
 import aurocosh.divinefavor.common.potions.common.ModPotions;
 import aurocosh.divinefavor.common.util.UtilBlock;
 import net.minecraft.block.Block;
@@ -11,7 +11,6 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.MobEffects;
 import net.minecraft.item.ItemStack;
-import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;

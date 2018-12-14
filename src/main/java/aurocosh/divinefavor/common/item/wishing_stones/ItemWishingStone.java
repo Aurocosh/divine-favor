@@ -4,7 +4,7 @@ import aurocosh.divinefavor.common.core.DivineFavorCreativeTab;
 import aurocosh.divinefavor.common.favors.ModFavor;
 import aurocosh.divinefavor.common.item.base.ModItem;
 import aurocosh.divinefavor.common.network.common.NetworkHandler;
-import aurocosh.divinefavor.common.network.message.MessageSyncFavor;
+import aurocosh.divinefavor.common.network.message.client.MessageSyncFavor;
 import aurocosh.divinefavor.common.player_data.favor.IFavorHandler;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;

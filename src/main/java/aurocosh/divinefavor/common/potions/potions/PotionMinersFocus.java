@@ -1,7 +1,7 @@
 package aurocosh.divinefavor.common.potions.potions;
 
-import aurocosh.divinefavor.common.potions.base.ModPotionTrigger;
-import aurocosh.divinefavor.common.potions.base.PotionEffectCurse;
+import aurocosh.divinefavor.common.potions.base.potion.ModPotionTrigger;
+import aurocosh.divinefavor.common.potions.base.potion.PotionEffectCurse;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.init.MobEffects;
 import net.minecraftforge.fml.common.Mod;

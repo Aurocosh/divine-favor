@@ -5,7 +5,7 @@ import aurocosh.divinefavor.common.favor_sources.favor_sources.base.FavorSource;
 import aurocosh.divinefavor.common.favor_sources.favor_sources.base.TickableFavorSource;
 import aurocosh.divinefavor.common.favors.ModFavor;
 import aurocosh.divinefavor.common.network.common.NetworkHandler;
-import aurocosh.divinefavor.common.network.message.MessagePartialDataSync;
+import aurocosh.divinefavor.common.network.message.client.MessagePartialDataSync;
 import aurocosh.divinefavor.common.player_data.favor.IFavorHandler;
 import com.google.common.collect.Multimap;
 import com.google.common.collect.MultimapBuilder;

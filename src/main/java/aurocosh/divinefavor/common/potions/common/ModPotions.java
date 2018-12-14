@@ -1,9 +1,10 @@
 package aurocosh.divinefavor.common.potions.common;
 
 import aurocosh.divinefavor.common.constants.ConstEffectNames;
-import aurocosh.divinefavor.common.potions.base.ModPotion;
-import aurocosh.divinefavor.common.potions.base.ModPotionCharge;
-import aurocosh.divinefavor.common.potions.base.ModPotionTrigger;
+import aurocosh.divinefavor.common.potions.base.potion.ModPotion;
+import aurocosh.divinefavor.common.potions.base.potion.ModPotionCharge;
+import aurocosh.divinefavor.common.potions.base.potion.ModPotionToggle;
+import aurocosh.divinefavor.common.potions.base.potion.ModPotionTrigger;
 import aurocosh.divinefavor.common.potions.potions.*;
 import aurocosh.divinefavor.common.registry.ModRegistries;
 import net.minecraft.init.Blocks;
@@ -16,6 +17,7 @@ public class ModPotions {
     public static ModPotion water_walk;
     public static ModPotionCharge crushing_palm;
     public static ModPotionCharge wooden_punch;
+    public static ModPotionToggle grudge;
     public static ModPotionTrigger consuming_fury;
     public static ModPotionTrigger miners_focus;
 
@@ -24,6 +26,7 @@ public class ModPotions {
         crushing_palm = ModRegistries.potions.register(new PotionCrushingPalm());
         empower_axe = ModRegistries.potions.register(new PotionEmpowerAxe());
         empower_pickaxe = ModRegistries.potions.register(new PotionEmpowerPickaxe());
+        grudge = ModRegistries.potions.register(new PotionGrudge());
         lava_walk = ModRegistries.potions.register(new PotionLiquidWalking(ConstEffectNames.LAVAWALK, Blocks.LAVA));
         miners_focus = ModRegistries.potions.register(new PotionMinersFocus());
         stone_fever = ModRegistries.potions.register(new PotionStoneFever());

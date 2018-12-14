@@ -1,5 +1,6 @@
-package aurocosh.divinefavor.common.potions.base;
+package aurocosh.divinefavor.common.potions.base.effect;
 
+import aurocosh.divinefavor.common.potions.base.potion.ModPotion;
 import net.minecraft.potion.PotionEffect;
 
 public class ModEffect extends PotionEffect {
