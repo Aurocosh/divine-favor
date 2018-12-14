@@ -1,7 +1,8 @@
-package aurocosh.divinefavor.common.network.message;
+package aurocosh.divinefavor.common.network.message.client;
 
 import aurocosh.divinefavor.DivineFavor;
 import aurocosh.divinefavor.common.network.base.NetworkAutoMessage;
+import aurocosh.divinefavor.common.network.base.NetworkClientMessage;
 import aurocosh.divinefavor.common.player_data.favor.IFavorHandler;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
@@ -11,7 +12,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import static aurocosh.divinefavor.common.player_data.favor.FavorDataHandler.CAPABILITY_FAVOR;
 
-public class MessageSyncFavor extends NetworkAutoMessage {
+public class MessageSyncFavor extends NetworkClientMessage {
 
     public int favorId;
 	public int favorCount;
@@ -25,16 +26,10 @@ public class MessageSyncFavor extends NetworkAutoMessage {
 
 	@Override
     @SideOnly(Side.CLIENT)
-    public IMessage handleMessage(MessageContext context) {
-        DivineFavor.proxy.addScheduledTaskClient(this::handle);
-        return null;
-    }
-
-    @SideOnly(Side.CLIENT)
-    private void handle() {
+    protected void handle() {
         EntityPlayer player = DivineFavor.proxy.getClientPlayer();
         IFavorHandler favorHandler = player.getCapability(CAPABILITY_FAVOR, null);
-        if (favorHandler != null)
-            favorHandler.setFavor(favorId,favorCount);
+        assert favorHandler != null;
+        favorHandler.setFavor(favorId,favorCount);
     }
 }

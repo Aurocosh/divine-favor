@@ -1,7 +1,7 @@
 package aurocosh.divinefavor.common.player_data.favor;
 
 import aurocosh.divinefavor.common.network.common.NetworkHandler;
-import aurocosh.divinefavor.common.network.message.MessageDataSync;
+import aurocosh.divinefavor.common.network.message.client.MessageDataSync;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;

@@ -1,8 +1,9 @@
-package aurocosh.divinefavor.common.potions.base;
+package aurocosh.divinefavor.common.potions.base.potion;
 
 import aurocosh.divinefavor.common.constants.ConstMisc;
 import aurocosh.divinefavor.common.core.ResourceNamer;
 import aurocosh.divinefavor.common.util.UtilTextureRender;
+import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.init.Items;
@@ -49,13 +50,18 @@ public abstract class ModPotion extends Potion {
 
     @Override
     @SideOnly(Side.CLIENT)
-    public void renderInventoryEffect(int x, int y, PotionEffect effect, net.minecraft.client.Minecraft mc) {
+    public void renderInventoryEffect(int x, int y, PotionEffect effect, Minecraft mc) {
         UtilTextureRender.drawTextureSquare(getIcon(), x + 6, y + 6, ConstMisc.SQ - 2);
+        renderCustomInvText(x, y, effect, mc);
+    }
+
+    @SideOnly(Side.CLIENT)
+    public void renderCustomInvText(int x, int y, PotionEffect effect, Minecraft mc) {
     }
 
     @Override
     @SideOnly(Side.CLIENT)
-    public void renderHUDEffect(int x, int y, PotionEffect effect, net.minecraft.client.Minecraft mc, float alpha) {
+    public void renderHUDEffect(int x, int y, PotionEffect effect, Minecraft mc, float alpha) {
         if (mc.gameSettings.showDebugInfo == false)//dont texture on top of the debug text
             UtilTextureRender.drawTextureSquare(getIcon(), x + 4, y + 4, ConstMisc.SQ - 2);
     }

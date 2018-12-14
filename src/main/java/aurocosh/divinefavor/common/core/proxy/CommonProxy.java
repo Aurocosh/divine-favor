@@ -2,6 +2,8 @@ package aurocosh.divinefavor.common.core.proxy;
 
 import aurocosh.divinefavor.DivineFavor;
 import aurocosh.divinefavor.common.block.common.ModBlocks;
+import aurocosh.divinefavor.common.entity.common.ModGrudgeMobs;
+import aurocosh.divinefavor.common.player_data.grudge.GrudgeDataHandler;
 import aurocosh.divinefavor.common.potions.common.ModPotions;
 import aurocosh.divinefavor.common.entity.ModEntities;
 import aurocosh.divinefavor.common.favor_sources.common.ModFavorSources;
@@ -47,9 +49,12 @@ public class CommonProxy {
         ModItems.preInit();
         ModEntities.preInit();
 
+        ModGrudgeMobs.preInit();
+
         MessageRegister.init();
 
         FavorDataHandler.register();
+        GrudgeDataHandler.register();
         InteractionDataHandler.register();
 
         NetworkRegistry.INSTANCE.registerGuiHandler(DivineFavor.instance, new GuiHandler());
