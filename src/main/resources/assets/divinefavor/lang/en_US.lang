@@ -32,17 +32,20 @@ item.divinefavor:talisman_snowball_throw.name=Snowball talisman
 item.divinefavor:talisman_stone_fever.name=Stone fever talisman
 item.divinefavor:talisman_stoneball_throw.name=Pebble talisman
 item.divinefavor:talisman_waterwalking.name=Waterwalking talisman
+item.divinefavor:talisman_winter_breath.name=Winter breath talisman
 item.divinefavor:talisman_wooden_punch.name=Wooden punch talisman
 
 # WISHING STONES
 item.divinefavor:wishing_stone_allfire.name=Allfire wishing stone
 item.divinefavor:wishing_stone_romol.name=Romol wishing stone
 item.divinefavor:wishing_stone_timber.name=Timber wishing stone
+item.divinefavor:wishing_stone_squarefury.name=Squarefury wishing stone
 
 # CALLING STONES
 item.divinefavor:calling_stone_allfire.name=Allfire's invite
 item.divinefavor:calling_stone_romol.name=Romol's invite
 item.divinefavor:calling_stone_timber.name=Timber's invite
+item.divinefavor:calling_stone_squarefury.name=Squarefury's invite
 
 # EFFECT NAMES
 potion.divinefavor:consuming_fury.name=Consuming fury
