@@ -7,6 +7,7 @@ import aurocosh.divinefavor.common.spell.common.ModSpells;
 public final class ModTalismans {
     public static ItemTalisman arrowThrowTalisman;
     public static ItemTalisman bonemeal;
+    public static ItemTalisman butchering_strike;
     public static ItemTalisman combustion;
     public static ItemTalisman consuming_fury;
     public static ItemTalisman crushing_palm;
@@ -37,6 +38,11 @@ public final class ModTalismans {
         bonemeal = ModRegistries.items.register(new TalismanBuilder("bonemeal", ModFavors.favor_of_allfire, 1)
                 .setSpell(ModSpells.bonemeal)
                 .castOnUse()
+                .create());
+        butchering_strike = ModRegistries.items.register(new TalismanBuilder("butchering_strike", ModFavors.favor_of_squarefury, 5)
+                .setSpell(ModSpells.butchering_strike)
+                .castOnUse()
+                .castOnRighClick()
                 .create());
         combustion = ModRegistries.items.register(new TalismanBuilder("combustion", ModFavors.favor_of_allfire, 3)
                 .setSpell(ModSpells.combustion)

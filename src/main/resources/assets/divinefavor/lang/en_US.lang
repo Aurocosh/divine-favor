@@ -14,6 +14,7 @@ item.divinefavor:mystic_architect_stick.name=Mystic architect stick
 # TALISMAN NAMES
 item.divinefavor:talisman_arrow_throw.name=Arrow throw talisman
 item.divinefavor:talisman_bonemeal.name=Bone meal talisman
+item.divinefavor:talisman_butchering_strike.name=Butchering strike talisman
 item.divinefavor:talisman_combustion.name=Combustion talisman
 item.divinefavor:talisman_consuming_fury.name=Consuming fury talisman
 item.divinefavor:talisman_crushing_palm.name=Crushing palm talisman
@@ -48,6 +49,7 @@ item.divinefavor:calling_stone_timber.name=Timber's invite
 item.divinefavor:calling_stone_squarefury.name=Squarefury's invite
 
 # EFFECT NAMES
+potion.divinefavor:butchering_strike.name=Butchering strike
 potion.divinefavor:consuming_fury.name=Consuming fury
 potion.divinefavor:crushing_palm.name=Crushing palm
 potion.divinefavor:empower_axe.name=Empower axe

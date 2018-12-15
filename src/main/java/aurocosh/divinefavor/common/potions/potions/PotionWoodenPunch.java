@@ -43,10 +43,7 @@ public class PotionWoodenPunch extends ModPotionCharge {
         ModEffectCharge effectCharge = (ModEffectCharge) player.getActivePotionEffect(ModPotions.wooden_punch);
         assert effectCharge != null;
         int charges = effectCharge.consumeCharge();
-        if(player instanceof EntityPlayerMP) {
-            MessageSyncPotionCharge message = new MessageSyncPotionCharge(ModPotions.wooden_punch,charges);
-            NetworkHandler.INSTANCE.sendTo(message, (EntityPlayerMP) player);
-        }
+        new MessageSyncPotionCharge(ModPotions.wooden_punch,charges).sendTo(player);
 
         ItemStack stack = player.getHeldItemMainhand();
         UtilBlock.removeBlockWithDrops(player, world, stack, pos, false, true);
