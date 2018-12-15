@@ -11,6 +11,7 @@ public final class ModSpells {
     public static ModSpell combustion;
     public static ModSpell consuming_fury;
     public static ModSpell crushing_palm;
+    public static ModSpell crystalline_road;
     public static ModSpell empower_axe;
     public static ModSpell empower_pickaxe;
     public static ModSpell fell_tree;
@@ -18,15 +19,14 @@ public final class ModSpells {
     public static ModSpell grudge;
     public static ModSpell heat_wave;
     public static ModSpell ignition;
-    public static ModSpell lavawalking;
     public static ModSpell miners_focus;
+    public static ModSpell obsidian_road;
     public static ModSpell searing_pulse;
     public static ModSpell small_fireball_throw;
     public static ModSpell snowball_throw;
     public static ModSpell stone_fever;
     public static ModSpell stoneball_throw;
     public static ModSpell tell_time;
-    public static ModSpell waterwalking;
     public static ModSpell winter_breath;
     public static ModSpell wooden_punch;
 
@@ -37,6 +37,7 @@ public final class ModSpells {
         combustion = ModRegistries.spells.register(new SpellCombustion());
         consuming_fury = ModRegistries.spells.register(new SpellConsumingFury());
         crushing_palm = ModRegistries.spells.register(new SpellCrushingPalm());
+        crystalline_road = ModRegistries.spells.register(new SpellCrystallineRoad());
         empower_axe = ModRegistries.spells.register(new SpellEmpowerAxe());
         empower_pickaxe = ModRegistries.spells.register(new SpellEmpowerPickaxe());
         fell_tree = ModRegistries.spells.register(new SpellFellTree());
@@ -44,15 +45,14 @@ public final class ModSpells {
         grudge = ModRegistries.spells.register(new SpellGrudge());
         heat_wave = ModRegistries.spells.register(new SpellHeatWave());
         ignition = ModRegistries.spells.register(new SpellIgnition());
-        lavawalking = ModRegistries.spells.register(new SpellLavawalking());
         miners_focus = ModRegistries.spells.register(new SpellMinersFocus());
+        obsidian_road = ModRegistries.spells.register(new SpellObsidianRoad());
         searing_pulse = ModRegistries.spells.register(new SpellSearingPulse());
         small_fireball_throw = ModRegistries.spells.register(new SpellSmallFireballThrow());
         snowball_throw = ModRegistries.spells.register(new SpellSnowballThrow());
         stone_fever = ModRegistries.spells.register(new SpellStoneFever());
         stoneball_throw = ModRegistries.spells.register(new SpellStoneballThrow());
         tell_time = ModRegistries.spells.register(new SpellTellTime());
-        waterwalking = ModRegistries.spells.register(new SpellWaterwalking());
         winter_breath = ModRegistries.spells.register(new SpellWinterBreath());
         wooden_punch = ModRegistries.spells.register(new SpellWoodenPunch());
     }

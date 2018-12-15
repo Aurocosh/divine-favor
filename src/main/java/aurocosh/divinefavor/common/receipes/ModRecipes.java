@@ -16,12 +16,12 @@ public class ModRecipes {
     public static final Map<String, ImmaterialMediumRecipe> recipeLookup = new HashMap<>();
 
     public static void init() {
-        register(new RecipeBuilder(new ItemStack(ModTalismans.arrowThrowTalisman), (ItemCallingStone) ModCallingStones.timber_calling_stone)
+        register(new RecipeBuilder(new ItemStack(ModTalismans.arrowThrowTalisman), (ItemCallingStone) ModCallingStones.calling_stone_timber)
                 .addIngredient(Items.ARROW, 8)
                 .addIngredient(Items.GOLD_INGOT)
                 .create()
         );
-        register(new RecipeBuilder(new ItemStack(ModTalismans.ignition), (ItemCallingStone) ModCallingStones.allfire_calling_stone)
+        register(new RecipeBuilder(new ItemStack(ModTalismans.ignition), (ItemCallingStone) ModCallingStones.calling_stone_allfire)
                 .addIngredient(Items.COAL, 32)
                 .addIngredient(Items.GUNPOWDER, 2)
                 .create()

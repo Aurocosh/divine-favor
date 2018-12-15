@@ -25,7 +25,7 @@ public class DivineFavorCreativeTab extends CreativeTabs {
 
     @Override
     public ItemStack createIcon() {
-        return new ItemStack(ModCallingStones.allfire_calling_stone);
+        return new ItemStack(ModCallingStones.calling_stone_allfire);
     }
 
 //    @Override

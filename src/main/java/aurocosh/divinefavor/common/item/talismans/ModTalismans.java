@@ -11,6 +11,7 @@ public final class ModTalismans {
     public static ItemTalisman combustion;
     public static ItemTalisman consuming_fury;
     public static ItemTalisman crushing_palm;
+    public static ItemTalisman crystalline_road;
     public static ItemTalisman distant_spark;
     public static ItemTalisman empower_axe;
     public static ItemTalisman empower_pickaxe;
@@ -19,14 +20,13 @@ public final class ModTalismans {
     public static ItemTalisman grudge;
     public static ItemTalisman heat_wave;
     public static ItemTalisman ignition;
-    public static ItemTalisman lavawalking;
     public static ItemTalisman miners_focus;
+    public static ItemTalisman obsidian_road;
     public static ItemTalisman searing_pulse;
     public static ItemTalisman small_fireball_throw;
     public static ItemTalisman snowball_throw;
     public static ItemTalisman stone_fever;
     public static ItemTalisman stoneball_throw;
-    public static ItemTalisman waterwalking;
     public static ItemTalisman winter_breath;
     public static ItemTalisman wooden_punch;
 
@@ -55,6 +55,11 @@ public final class ModTalismans {
                 .create());
         crushing_palm = ModRegistries.items.register(new TalismanBuilder("crushing_palm", ModFavors.favor_of_romol, 2)
                 .setSpell(ModSpells.crushing_palm)
+                .castOnUse()
+                .castOnRighClick()
+                .create());
+        crystalline_road = ModRegistries.items.register(new TalismanBuilder("crystalline_road", ModFavors.favor_of_blizrabi, 1)
+                .setSpell(ModSpells.crystalline_road)
                 .castOnUse()
                 .castOnRighClick()
                 .create());
@@ -96,13 +101,13 @@ public final class ModTalismans {
                 .setSpell(ModSpells.ignition)
                 .castOnUse()
                 .create());
-        lavawalking = ModRegistries.items.register(new TalismanBuilder("lavawalking", ModFavors.favor_of_allfire, 2)
-                .setSpell(ModSpells.lavawalking)
+        miners_focus = ModRegistries.items.register(new TalismanBuilder("miners_focus", ModFavors.favor_of_romol, 3)
+                .setSpell(ModSpells.miners_focus)
                 .castOnUse()
                 .castOnRighClick()
                 .create());
-        miners_focus = ModRegistries.items.register(new TalismanBuilder("miners_focus", ModFavors.favor_of_romol, 3)
-                .setSpell(ModSpells.miners_focus)
+        obsidian_road = ModRegistries.items.register(new TalismanBuilder("obsidian_road", ModFavors.favor_of_blizrabi, 2)
+                .setSpell(ModSpells.obsidian_road)
                 .castOnUse()
                 .castOnRighClick()
                 .create());
@@ -114,7 +119,7 @@ public final class ModTalismans {
                 .setSpell(ModSpells.small_fireball_throw)
                 .castOnRighClick()
                 .create());
-        snowball_throw = ModRegistries.items.register(new TalismanBuilder("snowball_throw", ModFavors.favor_of_allfire, 1)
+        snowball_throw = ModRegistries.items.register(new TalismanBuilder("snowball_throw", ModFavors.favor_of_blizrabi, 1)
                 .setSpell(ModSpells.snowball_throw)
                 .castOnUse()
                 .castOnRighClick()
@@ -129,12 +134,7 @@ public final class ModTalismans {
                 .castOnUse()
                 .castOnRighClick()
                 .create());
-        waterwalking = ModRegistries.items.register(new TalismanBuilder("waterwalking", ModFavors.favor_of_allfire, 1)
-                .setSpell(ModSpells.waterwalking)
-                .castOnUse()
-                .castOnRighClick()
-                .create());
-        winter_breath = ModRegistries.items.register(new TalismanBuilder("winter_breath", ModFavors.favor_of_squarefury, 1)
+        winter_breath = ModRegistries.items.register(new TalismanBuilder("winter_breath", ModFavors.favor_of_blizrabi, 1)
                 .setSpell(ModSpells.winter_breath)
                 .castOnUse()
                 .castOnRighClick()
