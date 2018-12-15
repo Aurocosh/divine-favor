@@ -14,6 +14,7 @@ public final class ModSpells {
     public static ModSpell crystalline_road;
     public static ModSpell empower_axe;
     public static ModSpell empower_pickaxe;
+    public static ModSpell fall_negation;
     public static ModSpell fell_tree;
     public static ModSpell focused_fury;
     public static ModSpell grudge;
@@ -43,6 +44,7 @@ public final class ModSpells {
         crystalline_road = ModRegistries.spells.register(new SpellCrystallineRoad());
         empower_axe = ModRegistries.spells.register(new SpellEmpowerAxe());
         empower_pickaxe = ModRegistries.spells.register(new SpellEmpowerPickaxe());
+        fall_negation = ModRegistries.spells.register(new SpellFallNegation());
         fell_tree = ModRegistries.spells.register(new SpellFellTree());
         focused_fury = ModRegistries.spells.register(new SpellFocusedFury());
         grudge = ModRegistries.spells.register(new SpellGrudge());
