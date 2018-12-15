@@ -15,6 +15,7 @@ public final class ModTalismans {
     public static ItemTalisman distant_spark;
     public static ItemTalisman empower_axe;
     public static ItemTalisman empower_pickaxe;
+    public static ItemTalisman fall_negation;
     public static ItemTalisman fell_tree;
     public static ItemTalisman focused_fury;
     public static ItemTalisman grudge;
@@ -78,6 +79,11 @@ public final class ModTalismans {
                 .create());
         empower_pickaxe = ModRegistries.items.register(new TalismanBuilder("empower_pickaxe", ModFavors.favor_of_romol, 1)
                 .setSpell(ModSpells.empower_pickaxe)
+                .castOnUse()
+                .castOnRighClick()
+                .create());
+        fall_negation = ModRegistries.items.register(new TalismanBuilder("fall_negation", ModFavors.favor_of_redwind, 1)
+                .setSpell(ModSpells.fall_negation)
                 .castOnUse()
                 .castOnRighClick()
                 .create());
