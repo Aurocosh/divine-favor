@@ -14,12 +14,10 @@ public class SpellBonemeal extends ModSpell {
     }
 
     @Override
-    protected boolean performAction(SpellContext context) {
+    protected void performActionServer(SpellContext context) {
         BlockPos pos = context.pos;
         if(!bonemeal(context.player, pos))
             bonemeal(context.player, pos.down());
-
-        return true;
     }
 
     public boolean bonemeal(EntityPlayer player, BlockPos pos) {

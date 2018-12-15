@@ -14,9 +14,8 @@ public class SpellToadicJump extends ModSpell {
     }
 
     @Override
-    protected boolean performAction(SpellContext context) {
+    protected void performActionServer(SpellContext context) {
         PotionEffect effect = new ModEffectCharge(ModPotions.toadic_jump, USES);
         context.player.addPotionEffect(effect);
-        return true;
     }
 }

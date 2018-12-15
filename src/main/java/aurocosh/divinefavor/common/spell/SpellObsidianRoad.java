@@ -15,13 +15,8 @@ public class SpellObsidianRoad extends ModSpell {
     }
 
     @Override
-    protected boolean performAction(SpellContext context) {
-        //if(context.player.getEntityWorld().isRemote)
-        //    return true;
-
+    protected void performActionServer(SpellContext context) {
         PotionEffect potioneffect = new ModEffect(ModPotions.obsidian_road, NORMAL);
         context.player.addPotionEffect(potioneffect);
-
-        return true;
     }
 }

@@ -35,12 +35,14 @@ item.divinefavor:talisman_stone_fever.name=Stone fever talisman
 item.divinefavor:talisman_stoneball_throw.name=Pebble talisman
 item.divinefavor:talisman_toadic_jump.name=Toadic jump talisman
 item.divinefavor:talisman_wild_sprint.name=Wild sprint talisman
+item.divinefavor:talisman_wind_step.name=Wind step talisman
 item.divinefavor:talisman_winter_breath.name=Winter breath talisman
 item.divinefavor:talisman_wooden_punch.name=Wooden punch talisman
 
 # WISHING STONES
 item.divinefavor:wishing_stone_allfire.name=Allfire wishing stone
 item.divinefavor:wishing_stone_blizrabi.name=Blizrabi wishing stone
+item.divinefavor:wishing_stone_redwind.name=Redwind wishing stone
 item.divinefavor:wishing_stone_romol.name=Romol wishing stone
 item.divinefavor:wishing_stone_squarefury.name=Squarefury wishing stone
 item.divinefavor:wishing_stone_timber.name=Timber wishing stone

@@ -16,9 +16,8 @@ public class SpellEmpowerPickaxe extends ModSpell {
     }
 
     @Override
-    protected boolean performAction(SpellContext context) {
+    protected void performActionServer(SpellContext context) {
         PotionEffect effect = new ModEffect(ModPotions.empower_pickaxe, SHORT);
         context.player.addPotionEffect(effect);
-        return true;
     }
 }

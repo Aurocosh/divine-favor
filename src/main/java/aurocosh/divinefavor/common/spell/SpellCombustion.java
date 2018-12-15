@@ -25,13 +25,13 @@ public class SpellCombustion extends ModSpell {
     }
 
     @Override
-    protected boolean performAction(SpellContext context) {
+    protected void performActionServer(SpellContext context) {
         assert context.castType == CastType.ITEM_USE_CAST;
 
         BlockPos pos = context.pos;
         IBlockState state = context.world.getBlockState(pos);
         if(state.getBlock() != Blocks.CHEST)
-            return false;
+            return;
 
         TileEntity entity = context.world.getTileEntity(pos);
         IItemHandler stackHandler = entity.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, context.facing);
@@ -57,6 +57,5 @@ public class SpellCombustion extends ModSpell {
 
         boolean damageTerrain = DAMAGE_TERRAIN && !state.getMaterial().isLiquid();
         context.world.newExplosion(context.player, pos.getX(), pos.getY(), pos.getZ(), EXPLOSION_POWER, CAUSE_FIRE, damageTerrain);
-        return true;
     }
 }

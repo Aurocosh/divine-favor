@@ -10,29 +10,22 @@ import java.util.Random;
 import java.util.regex.Pattern;
 
 public abstract class ModSpell extends IForgeRegistryEntry.Impl<ModSpell> {
-    private static final Pattern FAKE_PLAYER_PATTERN = Pattern.compile("^(?:\\[.*\\])|(?:ComputerCraft)$");
     protected static Random spellRand = new Random();
 
     public ModSpell(String name) {
-        setRegistryName(ResourceNamer.getFullName("spell",name));
+        setRegistryName(ResourceNamer.getFullName("spell", name));
     }
 
-    public boolean cast(SpellContext context) {
-        assert !context.world.isRemote;
-        if(!isTruePlayer(context.player))
-            return false;
-        performAction(context);
-        return true;
+    public void cast(SpellContext context) {
+        if (context.world.isRemote)
+            performActionClient(context);
+        else
+            performActionServer(context);
     }
 
-    public static boolean isTruePlayer(Entity e) {
-        if(!(e instanceof EntityPlayer))
-            return false;
-
-        EntityPlayer player = (EntityPlayer) e;
-        String name = player.getName();
-        return !(player instanceof FakePlayer || FAKE_PLAYER_PATTERN.matcher(name).matches());
+    protected void performActionServer(SpellContext context) {
     }
 
-    protected abstract boolean performAction(SpellContext context);
+    protected void performActionClient(SpellContext context) {
+    }
 }

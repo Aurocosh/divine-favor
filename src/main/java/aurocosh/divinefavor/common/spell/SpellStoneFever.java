@@ -16,9 +16,8 @@ public class SpellStoneFever extends ModSpell {
     }
 
     @Override
-    protected boolean performAction(SpellContext context) {
+    protected void performActionServer(SpellContext context) {
         PotionEffect effect = new ModEffect(ModPotions.stone_fever, NORMAL);
         context.player.addPotionEffect(effect);
-        return true;
     }
 }

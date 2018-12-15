@@ -14,9 +14,8 @@ public class SpellCrushingPalm extends ModSpell {
     }
 
     @Override
-    protected boolean performAction(SpellContext context) {
+    protected void performActionServer(SpellContext context) {
         PotionEffect effect = new ModEffectCharge(ModPotions.crushing_palm, USES);
         context.player.addPotionEffect(effect);
-        return true;
     }
 }
