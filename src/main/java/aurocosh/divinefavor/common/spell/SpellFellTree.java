@@ -26,13 +26,10 @@ public class SpellFellTree extends ModSpell {
     }
 
     @Override
-    protected boolean performAction(SpellContext context) {
+    protected void performActionServer(SpellContext context) {
         ItemStack talisman = context.player.getHeldItem(context.hand);
-
-        if(detectTree(context.world, context.pos)) {
-            return fellTree(talisman, context.pos, context.player);
-        }
-        return true;
+        if(detectTree(context.world, context.pos))
+            fellTree(talisman, context.pos, context.player);
     }
 
     protected static boolean claimSubCost() {

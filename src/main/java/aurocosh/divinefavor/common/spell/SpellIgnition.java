@@ -10,7 +10,7 @@ public class SpellIgnition extends ModSpell {
     }
 
     @Override
-    protected boolean performAction(SpellContext context) {
-        return UtilBlock.ignite(context.world, context.pos, context.facing);
+    protected void performActionServer(SpellContext context) {
+        UtilBlock.ignite(context.world, context.pos, context.facing);
     }
 }

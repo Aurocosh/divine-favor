@@ -14,8 +14,7 @@ public class SpellFocusedFury extends ModSpell {
     }
 
     @Override
-    protected boolean performAction(SpellContext context) {
+    protected void performActionServer(SpellContext context) {
         context.player.addPotionEffect(new ModEffectTrigger(ModPotions.focused_fury, FURY_DURATION));
-        return true;
     }
 }

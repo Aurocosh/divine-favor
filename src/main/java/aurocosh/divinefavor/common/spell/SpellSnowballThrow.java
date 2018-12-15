@@ -14,9 +14,8 @@ public class SpellSnowballThrow extends ModSpell {
     }
 
     @Override
-    protected boolean performAction(SpellContext context) {
+    protected void performActionServer(SpellContext context) {
         throwSnowball(context.world, context.player);
-        return true;
     }
 
     public boolean throwSnowball(World worldIn, EntityPlayer playerIn) {

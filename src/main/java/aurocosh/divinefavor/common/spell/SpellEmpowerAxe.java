@@ -16,9 +16,8 @@ public class SpellEmpowerAxe extends ModSpell {
     }
 
     @Override
-    protected boolean performAction(SpellContext context) {
+    protected void performActionServer(SpellContext context) {
         PotionEffect effect = new ModEffect(ModPotions.empower_axe, TEST);
         context.player.addPotionEffect(effect);
-        return true;
     }
 }

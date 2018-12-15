@@ -16,11 +16,10 @@ public class SpellGrudge extends ModSpell {
     }
 
     @Override
-    protected boolean performAction(SpellContext context) {
+    protected void performActionServer(SpellContext context) {
         context.player.addPotionEffect(new ModEffectToggle(ModPotions.grudge));
         IGrudgeHandler grudgeHandler = context.player.getCapability(CAPABILITY_GRUDGE, null);
         assert grudgeHandler != null;
-        MessageSyncGrudge.sync(context.player, grudgeHandler.getMobTypeId());
-        return true;
+        new MessageSyncGrudge(grudgeHandler.getMobTypeId()).sendTo(context.player);
     }
 }

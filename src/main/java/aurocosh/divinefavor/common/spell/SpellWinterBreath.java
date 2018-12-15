@@ -7,8 +7,6 @@ import aurocosh.divinefavor.common.spell.base.SpellContext;
 import aurocosh.divinefavor.common.util.UtilEntity;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.init.Enchantments;
-import net.minecraft.init.MobEffects;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.Vec3d;
 
@@ -25,7 +23,7 @@ public class SpellWinterBreath extends ModSpell {
     }
 
     @Override
-    protected boolean performAction(SpellContext context) {
+    protected void performActionServer(SpellContext context) {
         Vector3i origin = Vector3i.convert(context.player.getPosition());
         Vec3d originVec3d = context.player.getPositionVector();
         Vec3d lookVector = context.player.getLookVec();
@@ -36,7 +34,6 @@ public class SpellWinterBreath extends ModSpell {
             entity.attackEntityFrom(ModDamageSources.frostDamage, EXTRA_DAMAGE);
             UtilEntity.addVelocity(entity, lookVector, KNOCKBACK_FORCE);
         }
-        return true;
     }
 
     private boolean isInRadius(Vector3i origin, Entity entity) {

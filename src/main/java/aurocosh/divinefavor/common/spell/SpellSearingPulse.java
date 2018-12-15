@@ -27,7 +27,7 @@ public class SpellSearingPulse extends ModSpell {
     }
 
     @Override
-    protected boolean performAction(SpellContext context) {
+    protected void performActionServer(SpellContext context) {
         assert context.castType == CastType.ITEM_USE_CAST;
 
         Queue<Vector3i> nodesToVisit = new ArrayDeque<>();
@@ -58,6 +58,5 @@ public class SpellSearingPulse extends ModSpell {
                     nodesToVisit.add(node);
             }
         }
-        return true;
     }
 }

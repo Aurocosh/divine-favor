@@ -15,9 +15,8 @@ public class SpellSmallFireballThrow extends ModSpell {
     }
 
     @Override
-    protected boolean performAction(SpellContext context) {
+    protected void performActionServer(SpellContext context) {
         throwSmallFireball(context.world, context.player);
-        return true;
     }
 
     public boolean throwSmallFireball(World worldIn, EntityPlayer playerIn) {
