@@ -9,11 +9,11 @@ import aurocosh.divinefavor.common.registry.ModRegistries;
 import net.minecraft.init.Blocks;
 
 public class ModPotions {
+    public static ModPotion crystalline_road;
     public static ModPotion empower_axe;
     public static ModPotion empower_pickaxe;
     public static ModPotion obsidian_road;
     public static ModPotion stone_fever;
-    public static ModPotion crystalline_road;
     public static ModPotionCharge butchering_strike;
     public static ModPotionCharge crushing_palm;
     public static ModPotionCharge wooden_punch;
@@ -21,6 +21,7 @@ public class ModPotions {
     public static ModPotionTrigger consuming_fury;
     public static ModPotionTrigger focused_fury;
     public static ModPotionTrigger miners_focus;
+    public static ModPotionTrigger wild_sprint;
 
     public static void preInit() {
         butchering_strike = ModRegistries.potions.register(new PotionButcheringStrike());
@@ -35,5 +36,6 @@ public class ModPotions {
         stone_fever = ModRegistries.potions.register(new PotionStoneFever());
         crystalline_road = ModRegistries.potions.register(new PotionLiquidWalking("crystalline_road", Blocks.WATER));
         wooden_punch = ModRegistries.potions.register(new PotionWoodenPunch());
+        wild_sprint = ModRegistries.potions.register(new PotionWildSprint());
     }
 }

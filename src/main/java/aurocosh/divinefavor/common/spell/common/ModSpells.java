@@ -27,6 +27,7 @@ public final class ModSpells {
     public static ModSpell stone_fever;
     public static ModSpell stoneball_throw;
     public static ModSpell tell_time;
+    public static ModSpell wild_sprint;
     public static ModSpell winter_breath;
     public static ModSpell wooden_punch;
 
@@ -53,6 +54,7 @@ public final class ModSpells {
         stone_fever = ModRegistries.spells.register(new SpellStoneFever());
         stoneball_throw = ModRegistries.spells.register(new SpellStoneballThrow());
         tell_time = ModRegistries.spells.register(new SpellTellTime());
+        wild_sprint = ModRegistries.spells.register(new SpellWildSprint());
         winter_breath = ModRegistries.spells.register(new SpellWinterBreath());
         wooden_punch = ModRegistries.spells.register(new SpellWoodenPunch());
     }
