@@ -14,7 +14,7 @@ public abstract class NetworkWrappedClientMessage extends NetworkClientMessage{
     }
 
     public void sendTo(EntityPlayer player){
-        assert player instanceof EntityPlayerMP;
-        networkWrapper.sendTo(this, (EntityPlayerMP) player);
+        if(player instanceof EntityPlayerMP)
+            networkWrapper.sendTo(this, (EntityPlayerMP) player);
     }
 }
