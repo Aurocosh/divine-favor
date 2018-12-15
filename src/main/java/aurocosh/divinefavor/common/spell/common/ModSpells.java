@@ -26,6 +26,7 @@ public final class ModSpells {
     public static ModSpell stoneball_throw;
     public static ModSpell tell_time;
     public static ModSpell waterwalking;
+    public static ModSpell winter_breath;
     public static ModSpell wooden_punch;
 
     public static void preInit() {
@@ -50,6 +51,7 @@ public final class ModSpells {
         stoneball_throw = ModRegistries.spells.register(new SpellStoneballThrow());
         tell_time = ModRegistries.spells.register(new SpellTellTime());
         waterwalking = ModRegistries.spells.register(new SpellWaterwalking());
+        winter_breath = ModRegistries.spells.register(new SpellWinterBreath());
         wooden_punch = ModRegistries.spells.register(new SpellWoodenPunch());
     }
 }
