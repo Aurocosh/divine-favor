@@ -18,6 +18,7 @@ item.divinefavor:talisman_butchering_strike.name=Butchering strike talisman
 item.divinefavor:talisman_combustion.name=Combustion talisman
 item.divinefavor:talisman_consuming_fury.name=Consuming fury talisman
 item.divinefavor:talisman_crushing_palm.name=Crushing palm talisman
+item.divinefavor:talisman_crystalline_road.name=Crystalline_road talisman
 item.divinefavor:talisman_distant_spark.name=Distant spark talisman
 item.divinefavor:talisman_empower_axe.name=Empower axe talisman
 item.divinefavor:talisman_empower_pickaxe.name=Empower pickaxe talisman
@@ -32,7 +33,7 @@ item.divinefavor:talisman_small_fireball_throw.name=Small fireball talisman
 item.divinefavor:talisman_snowball_throw.name=Snowball talisman
 item.divinefavor:talisman_stone_fever.name=Stone fever talisman
 item.divinefavor:talisman_stoneball_throw.name=Pebble talisman
-item.divinefavor:talisman_crystalline_road.name=Crystalline_road talisman
+item.divinefavor:talisman_wild_sprint.name=Wild sprint talisman
 item.divinefavor:talisman_winter_breath.name=Winter breath talisman
 item.divinefavor:talisman_wooden_punch.name=Wooden punch talisman
 
@@ -54,14 +55,16 @@ item.divinefavor:calling_stone_timber.name=Timber's invite
 potion.divinefavor:butchering_strike.name=Butchering strike
 potion.divinefavor:consuming_fury.name=Consuming fury
 potion.divinefavor:crushing_palm.name=Crushing palm
+potion.divinefavor:crystalline_road.name=Crystalline_road
 potion.divinefavor:empower_axe.name=Empower axe
 potion.divinefavor:empower_pickaxe.name=Empower pickaxe
 potion.divinefavor:focused_fury.name=Focused fury
 potion.divinefavor:grudge.name=Grudge
-potion.divinefavor:obsidian_road.name=Obsidian_road
 potion.divinefavor:miners_focus.name=Miners focus
+potion.divinefavor:obsidian_road.name=Obsidian_road
 potion.divinefavor:stone_fever.name=Stone fever
-potion.divinefavor:crystalline_road.name=Crystalline_road
+potion.divinefavor:wild_charge.name=Wild sprint
+potion.divinefavor:wild_sprint.name=Wild sprint
 potion.divinefavor:wooden_punch.name=Wooden punch
 
 # JEI tab name
