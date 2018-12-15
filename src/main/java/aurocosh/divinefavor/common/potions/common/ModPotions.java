@@ -11,9 +11,9 @@ import net.minecraft.init.Blocks;
 public class ModPotions {
     public static ModPotion empower_axe;
     public static ModPotion empower_pickaxe;
-    public static ModPotion lava_walk;
+    public static ModPotion obsidian_road;
     public static ModPotion stone_fever;
-    public static ModPotion water_walk;
+    public static ModPotion crystalline_road;
     public static ModPotionCharge butchering_strike;
     public static ModPotionCharge crushing_palm;
     public static ModPotionCharge wooden_punch;
@@ -30,10 +30,10 @@ public class ModPotions {
         empower_pickaxe = ModRegistries.potions.register(new PotionEmpowerPickaxe());
         focused_fury = ModRegistries.potions.register(new PotionFocusedFury());
         grudge = ModRegistries.potions.register(new PotionGrudge());
-        lava_walk = ModRegistries.potions.register(new PotionLiquidWalking("lava_walk", Blocks.LAVA));
+        obsidian_road = ModRegistries.potions.register(new PotionLiquidWalking("obsidian_road", Blocks.LAVA));
         miners_focus = ModRegistries.potions.register(new PotionMinersFocus());
         stone_fever = ModRegistries.potions.register(new PotionStoneFever());
-        water_walk = ModRegistries.potions.register(new PotionLiquidWalking("water_walk", Blocks.WATER));
+        crystalline_road = ModRegistries.potions.register(new PotionLiquidWalking("crystalline_road", Blocks.WATER));
         wooden_punch = ModRegistries.potions.register(new PotionWoodenPunch());
     }
 }

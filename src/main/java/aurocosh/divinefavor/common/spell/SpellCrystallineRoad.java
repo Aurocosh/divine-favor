@@ -6,17 +6,17 @@ import aurocosh.divinefavor.common.spell.base.ModSpell;
 import aurocosh.divinefavor.common.spell.base.SpellContext;
 import net.minecraft.potion.PotionEffect;
 
-public class SpellWaterwalking extends ModSpell {
+public class SpellCrystallineRoad extends ModSpell {
     private final int SHORT = 1800;
     private final int NORMAL = 3600;
 
-    public SpellWaterwalking() {
-        super("waterwalking");
+    public SpellCrystallineRoad() {
+        super("crystalline_road");
     }
 
     @Override
     protected boolean performAction(SpellContext context) {
-        PotionEffect potioneffect = new ModEffect(ModPotions.water_walk, NORMAL);
+        PotionEffect potioneffect = new ModEffect(ModPotions.crystalline_road, NORMAL);
         context.player.addPotionEffect(potioneffect);
         return true;
     }

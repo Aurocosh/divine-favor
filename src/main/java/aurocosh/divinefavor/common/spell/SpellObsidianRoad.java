@@ -6,12 +6,12 @@ import aurocosh.divinefavor.common.spell.base.ModSpell;
 import aurocosh.divinefavor.common.spell.base.SpellContext;
 import net.minecraft.potion.PotionEffect;
 
-public class SpellLavawalking extends ModSpell {
+public class SpellObsidianRoad extends ModSpell {
     private final int SHORT = 1800;
     private final int NORMAL = 3600;
 
-    public SpellLavawalking() {
-        super("lavawalking");
+    public SpellObsidianRoad() {
+        super("obsidian_road");
     }
 
     @Override
@@ -19,7 +19,7 @@ public class SpellLavawalking extends ModSpell {
         //if(context.player.getEntityWorld().isRemote)
         //    return true;
 
-        PotionEffect potioneffect = new ModEffect(ModPotions.lava_walk, NORMAL);
+        PotionEffect potioneffect = new ModEffect(ModPotions.obsidian_road, NORMAL);
         context.player.addPotionEffect(potioneffect);
 
         return true;
