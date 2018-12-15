@@ -41,7 +41,7 @@ public final class ModTalismans {
                 .setSpell(ModSpells.combustion)
                 .castOnUse()
                 .create());
-        consuming_fury = ModRegistries.items.register(new TalismanBuilder("consuming_fury", ModFavors.favor_of_romol, 3)
+        consuming_fury = ModRegistries.items.register(new TalismanBuilder("consuming_fury", ModFavors.favor_of_squarefury, 3)
                 .setSpell(ModSpells.consuming_fury)
                 .castOnUse()
                 .castOnRighClick()
@@ -70,12 +70,12 @@ public final class ModTalismans {
                 .setSpell(ModSpells.fell_tree)
                 .castOnUse()
                 .create());
-        focused_fury = ModRegistries.items.register(new TalismanBuilder("focused_fury", ModFavors.favor_of_timber, 1)
+        focused_fury = ModRegistries.items.register(new TalismanBuilder("focused_fury", ModFavors.favor_of_squarefury, 1)
                 .setSpell(ModSpells.focused_fury)
                 .castOnUse()
                 .castOnRighClick()
                 .create());
-        grudge = ModRegistries.items.register(new TalismanBuilder("grudge", ModFavors.favor_of_timber, 1)
+        grudge = ModRegistries.items.register(new TalismanBuilder("grudge", ModFavors.favor_of_squarefury, 1)
                 .setSpell(ModSpells.grudge)
                 .castOnUse()
                 .castOnRighClick()
@@ -132,7 +132,6 @@ public final class ModTalismans {
                 .castOnUse()
                 .castOnRighClick()
                 .create());
-
     }
 
     public static void init() {

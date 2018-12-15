@@ -1,6 +1,5 @@
 package aurocosh.divinefavor.common.potions.potions;
 
-import aurocosh.divinefavor.common.constants.ConstEffectNames;
 import aurocosh.divinefavor.common.potions.base.effect.ModEffectCharge;
 import aurocosh.divinefavor.common.potions.base.potion.ModPotionCharge;
 import aurocosh.divinefavor.common.potions.common.ModPotions;
@@ -22,7 +21,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 public class PotionWoodenPunch extends ModPotionCharge {
 
     public PotionWoodenPunch() {
-        super(ConstEffectNames.WOODEN_PUNCH, true, 0x7FB8A4);
+        super("wooden_punch", true, 0x7FB8A4);
     }
 
     @SubscribeEvent
