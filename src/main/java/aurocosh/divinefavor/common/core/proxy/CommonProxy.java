@@ -3,6 +3,8 @@ package aurocosh.divinefavor.common.core.proxy;
 import aurocosh.divinefavor.DivineFavor;
 import aurocosh.divinefavor.common.block.common.ModBlocks;
 import aurocosh.divinefavor.common.entity.common.ModGrudgeMobs;
+import aurocosh.divinefavor.common.network.base.NetworkWrappedClientMessage;
+import aurocosh.divinefavor.common.network.common.NetworkHandler;
 import aurocosh.divinefavor.common.player_data.focused_fury.FocusedFuryDataHandler;
 import aurocosh.divinefavor.common.player_data.grudge.GrudgeDataHandler;
 import aurocosh.divinefavor.common.potions.common.ModPotions;
@@ -53,6 +55,7 @@ public class CommonProxy {
         ModGrudgeMobs.preInit();
 
         MessageRegister.init();
+        NetworkWrappedClientMessage.setNetworkWrapper(NetworkHandler.INSTANCE);
 
         FavorDataHandler.register();
         FocusedFuryDataHandler.register();

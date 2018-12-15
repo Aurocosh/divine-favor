@@ -14,6 +14,7 @@ public class ModPotions {
     public static ModPotion lava_walk;
     public static ModPotion stone_fever;
     public static ModPotion water_walk;
+    public static ModPotionCharge butchering_strike;
     public static ModPotionCharge crushing_palm;
     public static ModPotionCharge wooden_punch;
     public static ModPotionToggle grudge;
@@ -22,6 +23,7 @@ public class ModPotions {
     public static ModPotionTrigger miners_focus;
 
     public static void preInit() {
+        butchering_strike = ModRegistries.potions.register(new PotionButcheringStrike());
         consuming_fury = ModRegistries.potions.register(new PotionConsumingFury());
         crushing_palm = ModRegistries.potions.register(new PotionCrushingPalm());
         empower_axe = ModRegistries.potions.register(new PotionEmpowerAxe());

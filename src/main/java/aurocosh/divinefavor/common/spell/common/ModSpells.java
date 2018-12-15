@@ -7,6 +7,7 @@ import aurocosh.divinefavor.common.spell.base.ModSpell;
 public final class ModSpells {
     public static ModSpell arrow_throw;
     public static ModSpell bonemeal;
+    public static ModSpell butchering_strike;
     public static ModSpell combustion;
     public static ModSpell consuming_fury;
     public static ModSpell crushing_palm;
@@ -32,6 +33,7 @@ public final class ModSpells {
     public static void preInit() {
         arrow_throw = ModRegistries.spells.register(new SpellArrowThrow());
         bonemeal = ModRegistries.spells.register(new SpellBonemeal());
+        butchering_strike = ModRegistries.spells.register(new SpellButcheringStrike());
         combustion = ModRegistries.spells.register(new SpellCombustion());
         consuming_fury = ModRegistries.spells.register(new SpellConsumingFury());
         crushing_palm = ModRegistries.spells.register(new SpellCrushingPalm());

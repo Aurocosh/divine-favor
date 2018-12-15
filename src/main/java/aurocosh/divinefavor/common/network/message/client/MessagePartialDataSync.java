@@ -4,6 +4,7 @@ import aurocosh.divinefavor.DivineFavor;
 import aurocosh.divinefavor.common.favors.ModFavor;
 import aurocosh.divinefavor.common.network.base.NetworkAutoMessage;
 import aurocosh.divinefavor.common.network.base.NetworkClientMessage;
+import aurocosh.divinefavor.common.network.base.NetworkWrappedClientMessage;
 import aurocosh.divinefavor.common.player_data.favor.IFavorHandler;
 import aurocosh.divinefavor.common.registry.ModRegistries;
 import net.minecraft.entity.player.EntityPlayer;
@@ -17,7 +18,7 @@ import java.util.Collection;
 
 import static aurocosh.divinefavor.common.player_data.favor.FavorDataHandler.CAPABILITY_FAVOR;
 
-public class MessagePartialDataSync extends NetworkClientMessage {
+public class MessagePartialDataSync extends NetworkWrappedClientMessage {
     public NBTTagCompound cmp;
 
     public MessagePartialDataSync() {
