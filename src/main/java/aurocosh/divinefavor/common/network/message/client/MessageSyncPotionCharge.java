@@ -23,7 +23,7 @@ public class MessageSyncPotionCharge extends NetworkClientMessage {
 
     @Override
     @SideOnly(Side.CLIENT)
-    protected void handle() {
+    protected void handleSafe() {
         Potion potion = Potion.getPotionById(potionId);
         EntityPlayer player = DivineFavor.proxy.getClientPlayer();
         PotionEffect effect = player.getActivePotionEffect(potion);
