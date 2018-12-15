@@ -29,6 +29,7 @@ public final class ModSpells {
     public static ModSpell tell_time;
     public static ModSpell toadic_jump;
     public static ModSpell wild_sprint;
+    public static ModSpell wind_step;
     public static ModSpell winter_breath;
     public static ModSpell wooden_punch;
 
@@ -57,6 +58,7 @@ public final class ModSpells {
         tell_time = ModRegistries.spells.register(new SpellTellTime());
         toadic_jump = ModRegistries.spells.register(new SpellToadicJump());
         wild_sprint = ModRegistries.spells.register(new SpellWildSprint());
+        wind_step = ModRegistries.spells.register(new SpellWindStep());
         winter_breath = ModRegistries.spells.register(new SpellWinterBreath());
         wooden_punch = ModRegistries.spells.register(new SpellWoodenPunch());
     }

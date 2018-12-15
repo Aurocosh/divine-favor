@@ -14,9 +14,8 @@ public class SpellWoodenPunch extends ModSpell {
     }
 
     @Override
-    protected boolean performAction(SpellContext context) {
+    protected void performActionServer(SpellContext context) {
         PotionEffect effect = new ModEffectCharge(ModPotions.wooden_punch, USES);
         context.player.addPotionEffect(effect);
-        return true;
     }
 }

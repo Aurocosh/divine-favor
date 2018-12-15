@@ -29,6 +29,7 @@ public final class ModTalismans {
     public static ItemTalisman stoneball_throw;
     public static ItemTalisman toadic_jump;
     public static ItemTalisman wild_sprint;
+    public static ItemTalisman wind_step;
     public static ItemTalisman winter_breath;
     public static ItemTalisman wooden_punch;
 
@@ -148,6 +149,11 @@ public final class ModTalismans {
                 .create());
         winter_breath = ModRegistries.items.register(new TalismanBuilder("winter_breath", ModFavors.favor_of_blizrabi, 1)
                 .setSpell(ModSpells.winter_breath)
+                .castOnUse()
+                .castOnRighClick()
+                .create());
+        wind_step = ModRegistries.items.register(new TalismanBuilder("wind_step", ModFavors.favor_of_redwind, 1)
+                .setSpell(ModSpells.wind_step)
                 .castOnUse()
                 .castOnRighClick()
                 .create());

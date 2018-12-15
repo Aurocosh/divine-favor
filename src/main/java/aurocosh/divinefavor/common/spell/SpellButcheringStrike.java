@@ -13,8 +13,7 @@ public class SpellButcheringStrike extends ModSpell {
     }
 
     @Override
-    protected boolean performAction(SpellContext context) {
+    protected void performActionServer(SpellContext context) {
         context.player.addPotionEffect(new ModEffectCharge(ModPotions.butchering_strike, USES));
-        return true;
     }
 }

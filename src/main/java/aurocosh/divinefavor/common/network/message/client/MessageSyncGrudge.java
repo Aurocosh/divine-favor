@@ -31,7 +31,6 @@ public class MessageSyncGrudge extends NetworkWrappedClientMessage {
     }
 
     public static void sync(EntityPlayer player, int mobTypeId) {
-        MessageSyncGrudge message = new MessageSyncGrudge(mobTypeId);
-        NetworkHandler.INSTANCE.sendTo(message, (EntityPlayerMP) player);
+
     }
 }

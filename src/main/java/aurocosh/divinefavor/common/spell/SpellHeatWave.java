@@ -24,7 +24,7 @@ public class SpellHeatWave extends ModSpell {
     }
 
     @Override
-    protected boolean performAction(SpellContext context) {
+    protected void performActionServer(SpellContext context) {
         Vector3i origin = Vector3i.convert(context.player.getPosition());
         AxisAlignedBB axis = new AxisAlignedBB(origin.x - RADIUS, origin.y - RADIUS, origin.z - RADIUS, origin.x + RADIUS, origin.y + RADIUS, origin.z + RADIUS);
         List<Entity> list = context.world.getEntitiesWithinAABB(Entity.class, axis, (Entity e) -> (e instanceof EntityLivingBase) && e != context.player && isInRadius(origin, e));
@@ -37,7 +37,6 @@ public class SpellHeatWave extends ModSpell {
             if(UtilRandom.rollDice(CHANCE_TO_SET_GROUND_ON_FIRE))
                 UtilBlock.ignite(context.world,entity.getPosition());
         }
-        return true;
     }
 
     private boolean isInRadius(Vector3i origin, Entity entity) {

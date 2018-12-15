@@ -28,14 +28,9 @@ public class SpellArrowThrow extends ModSpell {
     }
 
     @Override
-    protected boolean performAction(SpellContext context) {
-        //if(context.world.isRemote)
-        //    return true;
-
+    protected void performActionServer(SpellContext context) {
         ItemStack stack = context.player.getHeldItem(context.hand);
         shootArrow(stack, context.world, context.player, 20000);
-
-        return true;
     }
 
     private ItemStack findAmmo(EntityPlayer player) {

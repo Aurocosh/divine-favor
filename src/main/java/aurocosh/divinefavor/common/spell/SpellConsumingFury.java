@@ -14,8 +14,7 @@ public class SpellConsumingFury extends ModSpell {
     }
 
     @Override
-    protected boolean performAction(SpellContext context) {
+    protected void performActionServer(SpellContext context) {
         context.player.addPotionEffect(new ModEffectTrigger(ModPotions.consuming_fury, FURY_DURATION));
-        return true;
     }
 }

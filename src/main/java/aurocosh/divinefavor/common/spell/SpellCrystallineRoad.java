@@ -16,9 +16,8 @@ public class SpellCrystallineRoad extends ModSpell {
     }
 
     @Override
-    protected boolean performAction(SpellContext context) {
+    protected void performActionServer(SpellContext context) {
         PotionEffect potioneffect = new ModEffect(ModPotions.crystalline_road, NORMAL);
         context.player.addPotionEffect(potioneffect);
-        return true;
     }
 }

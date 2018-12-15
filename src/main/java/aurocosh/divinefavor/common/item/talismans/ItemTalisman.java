@@ -52,21 +52,22 @@ public class ItemTalisman extends ModItem {
     public boolean cast(SpellContext context) {
         if(!claimCost(context))
             return false;
-        return spell.cast(context);
+        spell.cast(context);
+        return true;
     }
 
     private boolean claimCost(SpellContext context) {
-        if (context.world.isRemote)
-            return false;
         IFavorHandler favorHandler = context.player.getCapability(CAPABILITY_FAVOR, null);
-        assert favorHandler != null;
+        if(favorHandler == null)
+            return false;
 
         if(!favorHandler.consumeFavor(favor.id,favorPerUse))
             return false;
+        if(context.world.isRemote)
+            return true;
 
         int favorValue = favorHandler.getFavor(favor.id);
-        MessageSyncFavor message = new MessageSyncFavor(favor.id,favorValue);
-        NetworkHandler.INSTANCE.sendTo(message, (EntityPlayerMP) context.player);
+        new MessageSyncFavor(favor.id,favorValue).sendTo(context.player);
         return true;
     }
 
@@ -85,9 +86,6 @@ public class ItemTalisman extends ModItem {
 
     @Override
     public EnumActionResult onItemUse(EntityPlayer playerIn, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
-        if(worldIn.isRemote)
-            return EnumActionResult.SUCCESS;
-
         ItemStack stack = playerIn.getHeldItem(hand);
         if (!(stack.getItem() instanceof ItemTalisman))
             return EnumActionResult.PASS;
@@ -105,10 +103,6 @@ public class ItemTalisman extends ModItem {
         ItemStack stack = playerIn.getHeldItem(hand);
         if (!(stack.getItem() instanceof ItemTalisman))
             return new ActionResult<>(EnumActionResult.PASS, stack);
-
-        if(worldIn.isRemote)
-            return new ActionResult<>(EnumActionResult.PASS, stack);
-
         if(!castOnRightClick)
             return new ActionResult<>(EnumActionResult.PASS, stack);
 
