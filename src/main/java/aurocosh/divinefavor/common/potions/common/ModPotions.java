@@ -1,6 +1,5 @@
 package aurocosh.divinefavor.common.potions.common;
 
-import aurocosh.divinefavor.common.constants.ConstEffectNames;
 import aurocosh.divinefavor.common.potions.base.potion.ModPotion;
 import aurocosh.divinefavor.common.potions.base.potion.ModPotionCharge;
 import aurocosh.divinefavor.common.potions.base.potion.ModPotionToggle;
@@ -29,10 +28,10 @@ public class ModPotions {
         empower_pickaxe = ModRegistries.potions.register(new PotionEmpowerPickaxe());
         focused_fury = ModRegistries.potions.register(new PotionFocusedFury());
         grudge = ModRegistries.potions.register(new PotionGrudge());
-        lava_walk = ModRegistries.potions.register(new PotionLiquidWalking(ConstEffectNames.LAVAWALK, Blocks.LAVA));
+        lava_walk = ModRegistries.potions.register(new PotionLiquidWalking("lava_walk", Blocks.LAVA));
         miners_focus = ModRegistries.potions.register(new PotionMinersFocus());
         stone_fever = ModRegistries.potions.register(new PotionStoneFever());
-        water_walk = ModRegistries.potions.register(new PotionLiquidWalking(ConstEffectNames.WATERWALK, Blocks.WATER));
+        water_walk = ModRegistries.potions.register(new PotionLiquidWalking("water_walk", Blocks.WATER));
         wooden_punch = ModRegistries.potions.register(new PotionWoodenPunch());
     }
 }

@@ -1,7 +1,6 @@
 package aurocosh.divinefavor.common.muliblock.common;
 
 import aurocosh.divinefavor.DivineFavor;
-import aurocosh.divinefavor.common.constants.ConstMultiBlockNames;
 import aurocosh.divinefavor.common.constants.ConstResources;
 import aurocosh.divinefavor.common.lib.math.CubeCoordinates;
 import aurocosh.divinefavor.common.lib.math.Vector3i;
@@ -29,6 +28,7 @@ public final class ModMultiBlocks {
     public static ModMultiBlock allfire_altar;
     public static ModMultiBlock timber_altar;
     public static ModMultiBlock romol_altar;
+    public static ModMultiBlock squarefury_altar;
 
     public static void preInit() {
         Gson gson = new GsonBuilder()
@@ -37,13 +37,15 @@ public final class ModMultiBlocks {
                 .registerTypeAdapter(Vector3i.class, new Vector3iByteSerializer())
                 .create();
 
-        allfire_altar = createMultiBlock(ConstMultiBlockNames.ALLFIRE_ALTAR, gson);
-        timber_altar = createMultiBlock(ConstMultiBlockNames.TIMBER_ALTER, gson);
-        romol_altar = createMultiBlock(ConstMultiBlockNames.ROMOL_ALTAR, gson);
+        allfire_altar = createMultiBlock("allfire", gson);
+        timber_altar = createMultiBlock("timber", gson);
+        romol_altar = createMultiBlock("romol", gson);
+        squarefury_altar = createMultiBlock("squarefury", gson);
     }
 
     private static ModMultiBlock createMultiBlock(String name, Gson gson) {
-        String jsonString = UtilAssets.loadTextFile(DivineFavor.container, ConstResources.MULTIBLOCK_ASSETS + name + ".json");
+        String fullName = "altar_" + name;
+        String jsonString = UtilAssets.loadTextFile(DivineFavor.container, ConstResources.MULTIBLOCK_ASSETS + fullName + ".json");
 
         MultiBlockData data = null;
         try {
@@ -62,7 +64,7 @@ public final class ModMultiBlocks {
             localBounds.add(coordinates.upperCorner);
         }
         CubeCoordinates boundingBox = CubeCoordinates.getBoundingBox(localBounds);
-        return ModRegistries.multiBlocks.register(new ModMultiBlock(name, data.controllerPosition, data.parts, boundingBox));
+        return ModRegistries.multiBlocks.register(new ModMultiBlock(fullName, data.controllerPosition, data.parts, boundingBox));
     }
 
     public static void init() {

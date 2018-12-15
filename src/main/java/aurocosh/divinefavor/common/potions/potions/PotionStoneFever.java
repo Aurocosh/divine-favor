@@ -1,6 +1,5 @@
 package aurocosh.divinefavor.common.potions.potions;
 
-import aurocosh.divinefavor.common.constants.ConstEffectNames;
 import aurocosh.divinefavor.common.potions.base.potion.PotionEffectCurse;
 import aurocosh.divinefavor.common.potions.base.potion.ModPotion;
 import aurocosh.divinefavor.common.potions.common.ModPotions;
@@ -21,7 +20,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 public class PotionStoneFever extends ModPotion {
 
     public PotionStoneFever() {
-        super(ConstEffectNames.STONE_FEVER, true, 0x7FB8A4);
+        super("stone_fever", true, 0x7FB8A4);
     }
 
     @SubscribeEvent

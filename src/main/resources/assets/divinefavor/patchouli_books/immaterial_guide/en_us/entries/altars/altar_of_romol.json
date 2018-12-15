@@ -1,6 +1,6 @@
 {
   "name": "Altar of Romol",
-  "icon": "divinefavor:romol_calling_stone",
+  "icon": "divinefavor:calling_stone_romol",
   "category": "altars",
   "pages": [
     {
@@ -9,7 +9,7 @@
     },
     {
       "type": "multiblock",
-      "multiblock_id": "divinefavor:multi_block.romol_altar.patchouli",
+      "multiblock_id": "divinefavor:multi_block.altar_romol.patchouli",
       "text": "Bla bla"
     }
   ]
