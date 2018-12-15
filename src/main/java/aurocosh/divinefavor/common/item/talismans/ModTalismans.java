@@ -27,6 +27,7 @@ public final class ModTalismans {
     public static ItemTalisman snowball_throw;
     public static ItemTalisman stone_fever;
     public static ItemTalisman stoneball_throw;
+    public static ItemTalisman wild_sprint;
     public static ItemTalisman winter_breath;
     public static ItemTalisman wooden_punch;
 
@@ -131,6 +132,11 @@ public final class ModTalismans {
                 .create());
         stoneball_throw = ModRegistries.items.register(new TalismanBuilder("stoneball_throw", ModFavors.favor_of_allfire, 1)
                 .setSpell(ModSpells.stoneball_throw)
+                .castOnUse()
+                .castOnRighClick()
+                .create());
+        wild_sprint = ModRegistries.items.register(new TalismanBuilder("wild_sprint", ModFavors.favor_of_redwind, 1)
+                .setSpell(ModSpells.wild_sprint)
                 .castOnUse()
                 .castOnRighClick()
                 .create());

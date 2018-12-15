@@ -1,6 +1,6 @@
 package aurocosh.divinefavor.common.potions.potions;
 
-import aurocosh.divinefavor.common.potions.base.potion.PotionEffectCurse;
+import aurocosh.divinefavor.common.potions.base.effect.PotionEffectCurse;
 import aurocosh.divinefavor.common.potions.base.potion.ModPotion;
 import aurocosh.divinefavor.common.potions.common.ModPotions;
 import aurocosh.divinefavor.common.util.UtilBlock;
