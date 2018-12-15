@@ -27,9 +27,10 @@ import java.util.List;
 public final class ModMultiBlocks {
     public static ModMultiBlock altar_allfire;
     public static ModMultiBlock altar_blizrabi;
-    public static ModMultiBlock altar_timber;
+    public static ModMultiBlock altar_redwind;
     public static ModMultiBlock altar_romol;
     public static ModMultiBlock altar_squarefury;
+    public static ModMultiBlock altar_timber;
 
     public static void preInit() {
         Gson gson = new GsonBuilder()
@@ -40,9 +41,10 @@ public final class ModMultiBlocks {
 
         altar_allfire = createMultiBlock("allfire", gson);
         altar_blizrabi = createMultiBlock("blizrabi", gson);
-        altar_timber = createMultiBlock("timber", gson);
+        altar_redwind = createMultiBlock("redwind", gson);
         altar_romol = createMultiBlock("romol", gson);
         altar_squarefury = createMultiBlock("squarefury", gson);
+        altar_timber = createMultiBlock("timber", gson);
     }
 
     private static ModMultiBlock createMultiBlock(String name, Gson gson) {

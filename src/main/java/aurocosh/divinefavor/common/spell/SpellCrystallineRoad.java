@@ -4,6 +4,7 @@ import aurocosh.divinefavor.common.potions.base.effect.ModEffect;
 import aurocosh.divinefavor.common.potions.common.ModPotions;
 import aurocosh.divinefavor.common.spell.base.ModSpell;
 import aurocosh.divinefavor.common.spell.base.SpellContext;
+import net.minecraft.init.MobEffects;
 import net.minecraft.potion.PotionEffect;
 
 public class SpellCrystallineRoad extends ModSpell {
