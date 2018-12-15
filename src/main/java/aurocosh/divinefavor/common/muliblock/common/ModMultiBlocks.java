@@ -25,10 +25,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public final class ModMultiBlocks {
-    public static ModMultiBlock allfire_altar;
-    public static ModMultiBlock timber_altar;
-    public static ModMultiBlock romol_altar;
-    public static ModMultiBlock squarefury_altar;
+    public static ModMultiBlock altar_allfire;
+    public static ModMultiBlock altar_blizrabi;
+    public static ModMultiBlock altar_timber;
+    public static ModMultiBlock altar_romol;
+    public static ModMultiBlock altar_squarefury;
 
     public static void preInit() {
         Gson gson = new GsonBuilder()
@@ -37,10 +38,11 @@ public final class ModMultiBlocks {
                 .registerTypeAdapter(Vector3i.class, new Vector3iByteSerializer())
                 .create();
 
-        allfire_altar = createMultiBlock("allfire", gson);
-        timber_altar = createMultiBlock("timber", gson);
-        romol_altar = createMultiBlock("romol", gson);
-        squarefury_altar = createMultiBlock("squarefury", gson);
+        altar_allfire = createMultiBlock("allfire", gson);
+        altar_blizrabi = createMultiBlock("blizrabi", gson);
+        altar_timber = createMultiBlock("timber", gson);
+        altar_romol = createMultiBlock("romol", gson);
+        altar_squarefury = createMultiBlock("squarefury", gson);
     }
 
     private static ModMultiBlock createMultiBlock(String name, Gson gson) {

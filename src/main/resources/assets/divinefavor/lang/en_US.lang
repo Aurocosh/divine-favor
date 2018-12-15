@@ -25,28 +25,30 @@ item.divinefavor:talisman_fell_tree.name=Fell tree talisman
 item.divinefavor:talisman_focused_fury.name=Focused fury talisman
 item.divinefavor:talisman_grudge.name=Grudge talisman
 item.divinefavor:talisman_ignition.name=Ignition talisman
-item.divinefavor:talisman_lavawalking.name=Lavawalking talisman
 item.divinefavor:talisman_miners_focus.name=Miners focus talisman
+item.divinefavor:talisman_obsidian_road.name=Obsidian road talisman
 item.divinefavor:talisman_searing_pulse.name=Searing pulse talisman
 item.divinefavor:talisman_small_fireball_throw.name=Small fireball talisman
 item.divinefavor:talisman_snowball_throw.name=Snowball talisman
 item.divinefavor:talisman_stone_fever.name=Stone fever talisman
 item.divinefavor:talisman_stoneball_throw.name=Pebble talisman
-item.divinefavor:talisman_waterwalking.name=Waterwalking talisman
+item.divinefavor:talisman_crystalline_road.name=Crystalline_road talisman
 item.divinefavor:talisman_winter_breath.name=Winter breath talisman
 item.divinefavor:talisman_wooden_punch.name=Wooden punch talisman
 
 # WISHING STONES
 item.divinefavor:wishing_stone_allfire.name=Allfire wishing stone
+item.divinefavor:wishing_stone_blizrabi.name=Blizrabi wishing stone
 item.divinefavor:wishing_stone_romol.name=Romol wishing stone
-item.divinefavor:wishing_stone_timber.name=Timber wishing stone
 item.divinefavor:wishing_stone_squarefury.name=Squarefury wishing stone
+item.divinefavor:wishing_stone_timber.name=Timber wishing stone
 
 # CALLING STONES
 item.divinefavor:calling_stone_allfire.name=Allfire's invite
+item.divinefavor:calling_stone_blizrabi.name=Blizrabi's invite
 item.divinefavor:calling_stone_romol.name=Romol's invite
-item.divinefavor:calling_stone_timber.name=Timber's invite
 item.divinefavor:calling_stone_squarefury.name=Squarefury's invite
+item.divinefavor:calling_stone_timber.name=Timber's invite
 
 # EFFECT NAMES
 potion.divinefavor:butchering_strike.name=Butchering strike
@@ -56,10 +58,10 @@ potion.divinefavor:empower_axe.name=Empower axe
 potion.divinefavor:empower_pickaxe.name=Empower pickaxe
 potion.divinefavor:focused_fury.name=Focused fury
 potion.divinefavor:grudge.name=Grudge
-potion.divinefavor:lava_walk.name=Lava walking
+potion.divinefavor:obsidian_road.name=Obsidian_road
 potion.divinefavor:miners_focus.name=Miners focus
 potion.divinefavor:stone_fever.name=Stone fever
-potion.divinefavor:water_walk.name=Water walking
+potion.divinefavor:crystalline_road.name=Crystalline_road
 potion.divinefavor:wooden_punch.name=Wooden punch
 
 # JEI tab name
