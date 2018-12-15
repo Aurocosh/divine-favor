@@ -2,6 +2,7 @@ package aurocosh.divinefavor.common.network.message.client;
 
 import aurocosh.divinefavor.DivineFavor;
 import aurocosh.divinefavor.common.network.base.NetworkClientMessage;
+import aurocosh.divinefavor.common.network.base.NetworkWrappedClientMessage;
 import aurocosh.divinefavor.common.network.common.NetworkHandler;
 import aurocosh.divinefavor.common.player_data.grudge.IGrudgeHandler;
 import net.minecraft.entity.player.EntityPlayer;
@@ -11,7 +12,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import static aurocosh.divinefavor.common.player_data.grudge.GrudgeDataHandler.CAPABILITY_GRUDGE;
 
-public class MessageSyncGrudge extends NetworkClientMessage {
+public class MessageSyncGrudge extends NetworkWrappedClientMessage {
     public int mobTypeId;
 
 	public MessageSyncGrudge() { }
