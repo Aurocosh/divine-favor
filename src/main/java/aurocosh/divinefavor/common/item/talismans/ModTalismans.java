@@ -26,6 +26,7 @@ public final class ModTalismans {
     public static ItemTalisman stone_fever;
     public static ItemTalisman stoneball_throw;
     public static ItemTalisman waterwalking;
+    public static ItemTalisman winter_breath;
     public static ItemTalisman wooden_punch;
 
     public static void preInit() {
@@ -124,6 +125,11 @@ public final class ModTalismans {
                 .create());
         waterwalking = ModRegistries.items.register(new TalismanBuilder("waterwalking", ModFavors.favor_of_allfire, 1)
                 .setSpell(ModSpells.waterwalking)
+                .castOnUse()
+                .castOnRighClick()
+                .create());
+        winter_breath = ModRegistries.items.register(new TalismanBuilder("winter_breath", ModFavors.favor_of_squarefury, 1)
+                .setSpell(ModSpells.winter_breath)
                 .castOnUse()
                 .castOnRighClick()
                 .create());
