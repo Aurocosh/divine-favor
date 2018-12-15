@@ -36,7 +36,7 @@ public class MessagePartialDataSync extends NetworkClientMessage {
 
     @Override
     @SideOnly(Side.CLIENT)
-    protected void handle() {
+    protected void handleSafe() {
         EntityPlayer player = DivineFavor.proxy.getClientPlayer();
         IFavorHandler favorHandler = player.getCapability(CAPABILITY_FAVOR, null);
         if (favorHandler == null)
