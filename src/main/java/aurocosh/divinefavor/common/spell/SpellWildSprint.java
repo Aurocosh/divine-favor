@@ -10,7 +10,6 @@ import net.minecraft.init.MobEffects;
 
 public class SpellWildSprint extends ModSpell {
     private final int SLOWNESS_DURATION = UtilTick.secondsToTicks(10);
-    private final int SLOWNESS_LEVEL = 7;
 
     public SpellWildSprint() {
         super("wild_sprint");
@@ -18,8 +17,8 @@ public class SpellWildSprint extends ModSpell {
 
     @Override
     protected boolean performAction(SpellContext context) {
-        context.player.addPotionEffect(new ModEffectTrigger(ModPotions.wild_sprint,SLOWNESS_DURATION));
-        context.player.addPotionEffect(new PotionEffectCurse(MobEffects.SLOWNESS,SLOWNESS_DURATION,SLOWNESS_LEVEL));
+        context.player.addPotionEffect(new ModEffectTrigger(ModPotions.wild_charge,SLOWNESS_DURATION));
+//        context.player.addPotionEffect(new PotionEffectCurse(MobEffects.SLOWNESS,SLOWNESS_DURATION,SLOWNESS_LEVEL));
         return true;
     }
 }
