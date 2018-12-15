@@ -17,6 +17,7 @@ public class ModPotions {
     public static ModPotion wild_sprint;
     public static ModPotionCharge butchering_strike;
     public static ModPotionCharge crushing_palm;
+    public static ModPotionCharge toadic_jump;
     public static ModPotionCharge wooden_punch;
     public static ModPotionToggle grudge;
     public static ModPotionTrigger consuming_fury;
@@ -36,6 +37,7 @@ public class ModPotions {
         miners_focus = ModRegistries.potions.register(new PotionMinersFocus());
         obsidian_road = ModRegistries.potions.register(new PotionLiquidWalking("obsidian_road", Blocks.LAVA));
         stone_fever = ModRegistries.potions.register(new PotionStoneFever());
+        toadic_jump = ModRegistries.potions.register(new PotionToadicJump());
         wild_charge = ModRegistries.potions.register(new PotionWildCharge());
         wild_sprint = ModRegistries.potions.register(new PotionWildSprint());
         wooden_punch = ModRegistries.potions.register(new PotionWoodenPunch());
