@@ -11,11 +11,11 @@ public abstract class NetworkClientMessage extends NetworkAutoMessage{
 
     @Override
     @SideOnly(Side.CLIENT)
-    public IMessage handleMessage(MessageContext context) {
-        DivineFavor.proxy.addScheduledTaskClient(this::handle);
+    public final IMessage handleMessage(MessageContext context) {
+        DivineFavor.proxy.addScheduledTaskClient(this::handleSafe);
         return null;
     }
 
     @SideOnly(Side.CLIENT)
-    protected abstract void handle();
+    protected abstract void handleSafe();
 }

@@ -14,6 +14,7 @@ public final class ModTalismans {
     public static ItemTalisman empower_axe;
     public static ItemTalisman empower_pickaxe;
     public static ItemTalisman fell_tree;
+    public static ItemTalisman focused_fury;
     public static ItemTalisman grudge;
     public static ItemTalisman heat_wave;
     public static ItemTalisman ignition;
@@ -68,6 +69,11 @@ public final class ModTalismans {
         fell_tree = ModRegistries.items.register(new TalismanBuilder("fell_tree", ModFavors.favor_of_timber, 1)
                 .setSpell(ModSpells.fell_tree)
                 .castOnUse()
+                .create());
+        focused_fury = ModRegistries.items.register(new TalismanBuilder("focused_fury", ModFavors.favor_of_timber, 1)
+                .setSpell(ModSpells.focused_fury)
+                .castOnUse()
+                .castOnRighClick()
                 .create());
         grudge = ModRegistries.items.register(new TalismanBuilder("grudge", ModFavors.favor_of_timber, 1)
                 .setSpell(ModSpells.grudge)

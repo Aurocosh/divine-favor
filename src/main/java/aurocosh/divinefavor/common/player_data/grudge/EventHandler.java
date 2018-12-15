@@ -1,6 +1,5 @@
 package aurocosh.divinefavor.common.player_data.grudge;
 
-import aurocosh.divinefavor.common.network.common.NetworkHandler;
 import aurocosh.divinefavor.common.network.message.client.MessageSyncGrudge;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.monster.IMob;

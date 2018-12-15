@@ -19,6 +19,7 @@ public class ModPotions {
     public static ModPotionCharge wooden_punch;
     public static ModPotionToggle grudge;
     public static ModPotionTrigger consuming_fury;
+    public static ModPotionTrigger focused_fury;
     public static ModPotionTrigger miners_focus;
 
     public static void preInit() {
@@ -26,6 +27,7 @@ public class ModPotions {
         crushing_palm = ModRegistries.potions.register(new PotionCrushingPalm());
         empower_axe = ModRegistries.potions.register(new PotionEmpowerAxe());
         empower_pickaxe = ModRegistries.potions.register(new PotionEmpowerPickaxe());
+        focused_fury = ModRegistries.potions.register(new PotionFocusedFury());
         grudge = ModRegistries.potions.register(new PotionGrudge());
         lava_walk = ModRegistries.potions.register(new PotionLiquidWalking(ConstEffectNames.LAVAWALK, Blocks.LAVA));
         miners_focus = ModRegistries.potions.register(new PotionMinersFocus());
