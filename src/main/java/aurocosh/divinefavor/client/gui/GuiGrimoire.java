@@ -2,9 +2,11 @@ package aurocosh.divinefavor.client.gui;
 
 import aurocosh.divinefavor.common.constants.ConstResources;
 import aurocosh.divinefavor.common.item.grimoire.GrimoireContainer;
+import aurocosh.divinefavor.common.item.grimoire.capability.GrimoireDataHandler;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.EnumHand;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.items.CapabilityItemHandler;
 
@@ -15,8 +17,8 @@ public class GuiGrimoire extends GuiContainer {
 
     ItemStack grimoire;
 
-    public GuiGrimoire(EntityPlayer player, ItemStack grimoire) {
-        super(new GrimoireContainer(player, grimoire.getCapability( CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null )));
+    public GuiGrimoire(EntityPlayer player, ItemStack grimoire, EnumHand hand) {
+        super(new GrimoireContainer(player, grimoire.getCapability(GrimoireDataHandler.CAPABILITY_GRIMOIRE, null), hand));
         this.grimoire = grimoire;
     }
 
@@ -37,6 +39,6 @@ public class GuiGrimoire extends GuiContainer {
     public void drawScreen(int mouseX, int mouseY, float partialTicks) {
         drawDefaultBackground();
         super.drawScreen(mouseX, mouseY, partialTicks);
-        renderHoveredToolTip(mouseX,mouseY);
+        renderHoveredToolTip(mouseX, mouseY);
     }
 }

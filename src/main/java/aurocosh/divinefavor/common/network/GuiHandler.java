@@ -7,6 +7,9 @@ import aurocosh.divinefavor.common.block.medium.ContainerMedium;
 import aurocosh.divinefavor.common.block.medium.TileMedium;
 import aurocosh.divinefavor.common.constants.ConstGuiIDs;
 import aurocosh.divinefavor.common.item.grimoire.GrimoireContainer;
+import aurocosh.divinefavor.common.item.grimoire.ItemGrimoire;
+import aurocosh.divinefavor.common.item.grimoire.capability.GrimoireDataHandler;
+import aurocosh.divinefavor.common.item.grimoire.capability.IGrimoireHandler;
 import aurocosh.divinefavor.common.item.ritual_pouch.RitualBagContainer;
 import aurocosh.divinefavor.common.item.talismans.ContainerTalisman;
 import net.minecraft.entity.player.EntityPlayer;
@@ -35,9 +38,14 @@ public class GuiHandler implements IGuiHandler {
                 return new RitualBagContainer(player, handler);
             }
             case ConstGuiIDs.GRIMOIRE: {
-                ItemStack grimoire = player.getHeldItemMainhand();
-                IItemHandler handler = grimoire.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null);
-                return new GrimoireContainer(player, handler);
+                EnumHand hand = EnumHand.MAIN_HAND;
+                ItemStack grimoire = player.getHeldItem(EnumHand.MAIN_HAND);
+                if (grimoire.isEmpty() || !(grimoire.getItem() instanceof ItemGrimoire)) {
+                    grimoire = player.getHeldItem(EnumHand.OFF_HAND);
+                    hand = EnumHand.OFF_HAND;
+                }
+                IGrimoireHandler handler = grimoire.getCapability(GrimoireDataHandler.CAPABILITY_GRIMOIRE, null);
+                return new GrimoireContainer(player, handler, hand);
             }
         }
         return null;
@@ -57,8 +65,13 @@ public class GuiHandler implements IGuiHandler {
                 return new GuiRitualPouch(player, pouch);
             }
             case ConstGuiIDs.GRIMOIRE: {
-                ItemStack pouch = player.getHeldItemMainhand();
-                return new GuiGrimoire(player, pouch);
+                EnumHand hand = EnumHand.MAIN_HAND;
+                ItemStack grimoire = player.getHeldItem(EnumHand.MAIN_HAND);
+                if (grimoire.isEmpty() || !(grimoire.getItem() instanceof ItemGrimoire)) {
+                    grimoire = player.getHeldItem(EnumHand.OFF_HAND);
+                    hand = EnumHand.OFF_HAND;
+                }
+                return new GuiGrimoire(player, grimoire, hand);
             }
         }
         return null;
