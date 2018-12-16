@@ -1,6 +1,7 @@
 package aurocosh.divinefavor.client.core.handler;
 
 import aurocosh.divinefavor.DivineFavor;
+import aurocosh.divinefavor.common.constants.ConstResources;
 import aurocosh.divinefavor.common.item.grimoire.ItemGrimoire;
 import aurocosh.divinefavor.common.item.grimoire.capability.IGrimoireHandler;
 import aurocosh.divinefavor.common.item.talismans.ItemTalisman;
@@ -15,6 +16,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.GL11;
 
 import java.util.List;
@@ -55,6 +57,8 @@ public class GrimoireHUDHandler {
 
     @SideOnly(Side.CLIENT)
     private static void renderSpellSelector(Minecraft mc, ScaledResolution res, float pticks, EntityPlayer player, IGrimoireHandler grimoireHandler) {
+        if (Keyboard.isKeyDown(Keyboard.KEY_LCONTROL))
+            return;
         if(!player.isSneaking())
             return;
         if(handler != grimoireHandler || state != grimoireHandler.getState()){
