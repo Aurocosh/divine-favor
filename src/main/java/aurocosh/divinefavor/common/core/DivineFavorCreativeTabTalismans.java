@@ -1,11 +1,7 @@
 package aurocosh.divinefavor.common.core;
 
-import aurocosh.divinefavor.common.block.common.ModBlocks;
 import aurocosh.divinefavor.common.constants.ConstMisc;
-import aurocosh.divinefavor.common.item.calling_stones.ModCallingStones;
-import aurocosh.divinefavor.common.item.common.ModItems;
-import aurocosh.divinefavor.common.item.talismans.ItemTalisman;
-import aurocosh.divinefavor.common.item.wishing_stones.ItemWishingStone;
+import aurocosh.divinefavor.common.item.talismans.ModTalismans;
 import aurocosh.divinefavor.common.registry.ModRegistries;
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
@@ -15,12 +11,12 @@ import net.minecraft.util.NonNullList;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class DivineFavorCreativeTab extends CreativeTabs {
-    public static final DivineFavorCreativeTab INSTANCE = new DivineFavorCreativeTab();
+public class DivineFavorCreativeTabTalismans extends CreativeTabs {
+    public static final DivineFavorCreativeTabTalismans INSTANCE = new DivineFavorCreativeTabTalismans();
     private NonNullList list;
 
-    public DivineFavorCreativeTab() {
-        super(ConstMisc.MOD_ID);
+    public DivineFavorCreativeTabTalismans() {
+        super(ConstMisc.MOD_ID + "_talismans");
         //ConstMisc.MOD_ID
 
         //setNoTitle();
@@ -29,7 +25,7 @@ public class DivineFavorCreativeTab extends CreativeTabs {
 
     @Override
     public ItemStack createIcon() {
-        return new ItemStack(ModItems.grimoire);
+        return new ItemStack(ModTalismans.wild_sprint);
     }
 
 //    @Override

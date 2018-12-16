@@ -2,6 +2,8 @@ package aurocosh.divinefavor;
 
 import aurocosh.divinefavor.common.constants.ConstMisc;
 import aurocosh.divinefavor.common.core.DivineFavorCreativeTab;
+import aurocosh.divinefavor.common.core.DivineFavorCreativeTabGems;
+import aurocosh.divinefavor.common.core.DivineFavorCreativeTabTalismans;
 import aurocosh.divinefavor.common.core.proxy.CommonProxy;
 import aurocosh.divinefavor.common.log.ModLogger;
 import net.minecraftforge.fml.common.Loader;
@@ -20,6 +22,8 @@ public class DivineFavor {
     public static ModLogger logger;
     public static ModContainer container;
     public static DivineFavorCreativeTab tab;
+    public static DivineFavorCreativeTabGems tabGems;
+    public static DivineFavorCreativeTabTalismans tabTalismans;
 
     @SidedProxy(serverSide = ConstMisc.PROXY_COMMON, clientSide = ConstMisc.PROXY_CLIENT)
     public static CommonProxy proxy;
@@ -29,6 +33,8 @@ public class DivineFavor {
         logger = new ModLogger(event.getModLog());
         container = Loader.instance().getModObjectList().inverse().get(instance);
         tab = DivineFavorCreativeTab.INSTANCE;
+        tabGems = DivineFavorCreativeTabGems.INSTANCE;
+        tabTalismans = DivineFavorCreativeTabTalismans.INSTANCE;
         proxy.preInit(event);
     }
 

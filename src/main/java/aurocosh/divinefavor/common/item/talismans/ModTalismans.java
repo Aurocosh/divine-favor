@@ -35,7 +35,7 @@ public final class ModTalismans {
     public static ItemTalisman wooden_punch;
 
     public static void preInit() {
-        arrowThrowTalisman = ModRegistries.items.register(new TalismanBuilder("arrow_throw", ModFavors.favor_of_allfire, 1)
+        arrowThrowTalisman = ModRegistries.items.register(new TalismanBuilder("arrow_throw", ModFavors.favor_of_arbow, 1)
                 .setSpell(ModSpells.arrow_throw)
                 .castOnUse()
                 .castOnRighClick()
@@ -139,7 +139,7 @@ public final class ModTalismans {
                 .castOnUse()
                 .castOnRighClick()
                 .create());
-        stoneball_throw = ModRegistries.items.register(new TalismanBuilder("stoneball_throw", ModFavors.favor_of_allfire, 1)
+        stoneball_throw = ModRegistries.items.register(new TalismanBuilder("stoneball_throw", ModFavors.favor_of_arbow, 1)
                 .setSpell(ModSpells.stoneball_throw)
                 .castOnUse()
                 .castOnRighClick()

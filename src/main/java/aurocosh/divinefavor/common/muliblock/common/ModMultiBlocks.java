@@ -26,6 +26,7 @@ import java.util.List;
 
 public final class ModMultiBlocks {
     public static ModMultiBlock altar_allfire;
+    public static ModMultiBlock altar_arbow;
     public static ModMultiBlock altar_blizrabi;
     public static ModMultiBlock altar_redwind;
     public static ModMultiBlock altar_romol;
@@ -40,6 +41,7 @@ public final class ModMultiBlocks {
                 .create();
 
         altar_allfire = createMultiBlock("allfire", gson);
+        altar_arbow = createMultiBlock("arbow", gson);
         altar_blizrabi = createMultiBlock("blizrabi", gson);
         altar_redwind = createMultiBlock("redwind", gson);
         altar_romol = createMultiBlock("romol", gson);

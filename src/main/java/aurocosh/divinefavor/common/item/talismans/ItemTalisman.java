@@ -1,6 +1,7 @@
 package aurocosh.divinefavor.common.item.talismans;
 
 import aurocosh.divinefavor.common.core.DivineFavorCreativeTab;
+import aurocosh.divinefavor.common.core.DivineFavorCreativeTabTalismans;
 import aurocosh.divinefavor.common.favors.ModFavor;
 import aurocosh.divinefavor.common.item.base.ModItem;
 import aurocosh.divinefavor.common.lib.math.Vector3;
@@ -41,7 +42,7 @@ public class ItemTalisman extends ModItem {
         this.castOnRightClick = castOnRightClick;
 
         setMaxStackSize(1);
-        setCreativeTab(DivineFavorCreativeTab.INSTANCE);
+        setCreativeTab(DivineFavorCreativeTabTalismans.INSTANCE);
     }
 
     public boolean cast(SpellContext context) {
