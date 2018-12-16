@@ -15,4 +15,5 @@ public final class ConstGuiIDs {
 	public static final int FAST_FURNACE = 1;
     public static final int RITUAL_POUCH = 2;
     public static final int TALISMAN = 3;
+    public static final int GRIMOIRE = 4;
 }

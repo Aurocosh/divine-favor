@@ -5,11 +5,13 @@ import aurocosh.divinefavor.common.item.ItemMysticArchitectStick;
 import aurocosh.divinefavor.common.item.ItemPureApple;
 import aurocosh.divinefavor.common.item.ItemStoneball;
 import aurocosh.divinefavor.common.item.base.ModItem;
+import aurocosh.divinefavor.common.item.grimoire.ItemGrimoire;
 import aurocosh.divinefavor.common.item.ritual_pouch.ItemRitualPouch;
 import aurocosh.divinefavor.common.registry.ModRegistries;
 
 public final class ModItems {
     public static ModItem bone_key;
+    public static ModItem grimoire;
     public static ModItem mystic_architect_stick;
     public static ModItem pure_apple;
     public static ModItem ritual_pouch;
@@ -17,6 +19,7 @@ public final class ModItems {
 
     public static void preInit() {
         bone_key = ModRegistries.items.register(new ItemBoneKey());
+        grimoire = ModRegistries.items.register(new ItemGrimoire());
         mystic_architect_stick = ModRegistries.items.register(new ItemMysticArchitectStick());
         pure_apple = ModRegistries.items.register(new ItemPureApple());
         ritual_pouch = ModRegistries.items.register(new ItemRitualPouch());

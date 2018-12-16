@@ -3,6 +3,7 @@ package aurocosh.divinefavor.common.core.proxy;
 import aurocosh.divinefavor.DivineFavor;
 import aurocosh.divinefavor.common.block.common.ModBlocks;
 import aurocosh.divinefavor.common.entity.common.ModGrudgeMobs;
+import aurocosh.divinefavor.common.item.grimoire.capability.GrimoireDataHandler;
 import aurocosh.divinefavor.common.network.base.NetworkWrappedClientMessage;
 import aurocosh.divinefavor.common.network.common.NetworkHandler;
 import aurocosh.divinefavor.common.player_data.focused_fury.FocusedFuryDataHandler;
@@ -59,6 +60,7 @@ public class CommonProxy {
 
         FavorDataHandler.register();
         FocusedFuryDataHandler.register();
+        GrimoireDataHandler.register();
         GrudgeDataHandler.register();
         InteractionDataHandler.register();
 
