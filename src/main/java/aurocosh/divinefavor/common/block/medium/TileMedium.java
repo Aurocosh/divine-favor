@@ -95,9 +95,9 @@ public class TileMedium extends TickableTileEntity implements IMultiblockControl
         return compound;
     }
 
-    public boolean canInteractWith(EntityPlayer playerIn) {
+    public boolean isUsableByPlayer(EntityPlayer playerIn) {
         // If we are too far away from this tile entity you cannot gainFavor it
-        return !isInvalid() && playerIn.getDistanceSq(pos.add(0.5D, 0.5D, 0.5D)) <= 64D;
+        return state != MediumState.ACTIVE && !isInvalid() && playerIn.getDistanceSq(pos.add(0.5D, 0.5D, 0.5D)) <= 64D;
     }
 
     @Override
