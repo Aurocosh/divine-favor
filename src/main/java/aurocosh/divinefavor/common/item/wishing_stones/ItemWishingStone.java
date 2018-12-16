@@ -1,6 +1,6 @@
 package aurocosh.divinefavor.common.item.wishing_stones;
 
-import aurocosh.divinefavor.common.core.DivineFavorCreativeTab;
+import aurocosh.divinefavor.common.core.DivineFavorCreativeTabGems;
 import aurocosh.divinefavor.common.favors.ModFavor;
 import aurocosh.divinefavor.common.item.base.ModItem;
 import aurocosh.divinefavor.common.network.common.NetworkHandler;
@@ -27,7 +27,7 @@ public class ItemWishingStone extends ModItem {
         this.favorCount = favorCount;
 
         setMaxStackSize(1);
-        setCreativeTab(DivineFavorCreativeTab.INSTANCE);
+        setCreativeTab(DivineFavorCreativeTabGems.INSTANCE);
     }
 
     @Override

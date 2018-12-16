@@ -4,6 +4,7 @@ import aurocosh.divinefavor.common.registry.ModRegistries;
 
 public final class ModSpirits {
     public static ModSpirit allfire;
+    public static ModSpirit arbow;
     public static ModSpirit blizrabi;
     public static ModSpirit redwind;
     public static ModSpirit romol;
@@ -13,6 +14,11 @@ public final class ModSpirits {
     public static void preInit() {
         allfire = ModRegistries.spirits.register(
                 new SpiritBuilder("allfire")
+                        .addActivityPeriod(10, 14)
+                        .create()
+        );
+        arbow = ModRegistries.spirits.register(
+                new SpiritBuilder("arbow")
                         .addActivityPeriod(10, 14)
                         .create()
         );

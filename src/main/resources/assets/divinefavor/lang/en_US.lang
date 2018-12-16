@@ -1,15 +1,19 @@
 # MISC
 itemGroup.divinefavor=Divine Favor
+itemGroup.divinefavor_gems=Divine Favor Gems
+itemGroup.divinefavor_talismans=Divine Favor Talismans
 
 # BLOCK NAMES
 tile.divinefavor:fast_furnace.name=Fast furnace
 tile.divinefavor:iron_medium.name=Iron medium
 
 # ITEM NAMES
-item.divinefavor:stone_ball.name=Stone ball
-item.divinefavor:ritual_pouch.name=Ritual pouch
 item.divinefavor:bone_key.name=Bone key
+item.divinefavor:grimoire.name=Grimoire
 item.divinefavor:mystic_architect_stick.name=Mystic architect stick
+item.divinefavor:mystic_pure_apple.name=Pure apple
+item.divinefavor:ritual_pouch.name=Ritual pouch
+item.divinefavor:stone_ball.name=Stone ball
 
 # TALISMAN NAMES
 item.divinefavor:talisman_arrow_throw.name=Arrow throw talisman
@@ -42,6 +46,7 @@ item.divinefavor:talisman_wooden_punch.name=Wooden punch talisman
 
 # WISHING STONES
 item.divinefavor:wishing_stone_allfire.name=Allfire wishing stone
+item.divinefavor:wishing_stone_arbow.name=Arbow wishing stone
 item.divinefavor:wishing_stone_blizrabi.name=Blizrabi wishing stone
 item.divinefavor:wishing_stone_redwind.name=Redwind wishing stone
 item.divinefavor:wishing_stone_romol.name=Romol wishing stone
@@ -50,7 +55,9 @@ item.divinefavor:wishing_stone_timber.name=Timber wishing stone
 
 # CALLING STONES
 item.divinefavor:calling_stone_allfire.name=Allfire's invite
+item.divinefavor:calling_stone_arbow.name=Arbow's invite
 item.divinefavor:calling_stone_blizrabi.name=Blizrabi's invite
+item.divinefavor:calling_stone_redwind.name=Redwind's invite
 item.divinefavor:calling_stone_romol.name=Romol's invite
 item.divinefavor:calling_stone_squarefury.name=Squarefury's invite
 item.divinefavor:calling_stone_timber.name=Timber's invite
