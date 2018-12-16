@@ -1,0 +1,16 @@
+{
+  "name": "Altar of Arbow",
+  "icon": "divinefavor:calling_stone_arbow",
+  "category": "altars",
+  "pages": [
+    {
+      "type": "text",
+      "text": "This is a test entry, but it should show up!"
+    },
+    {
+      "type": "multiblock",
+      "multiblock_id": "divinefavor:multi_block.altar_arbow.patchouli",
+      "text": "Bla bla"
+    }
+  ]
+}

@@ -5,6 +5,7 @@ import aurocosh.divinefavor.common.registry.ModRegistries;
 
 public final class ModWishingStones {
     public static ItemWishingStone allfire_wishing_stone;
+    public static ItemWishingStone arbow_wishing_stone;
     public static ItemWishingStone blizrabi_wishing_stone;
     public static ItemWishingStone redwind_wishing_stone;
     public static ItemWishingStone romol_wishing_stone;
@@ -13,6 +14,7 @@ public final class ModWishingStones {
 
     public static void preInit() {
         allfire_wishing_stone = ModRegistries.items.register(new ItemWishingStone("allfire", ModFavors.favor_of_allfire, 1));
+        arbow_wishing_stone = ModRegistries.items.register(new ItemWishingStone("arbow", ModFavors.favor_of_arbow, 1));
         blizrabi_wishing_stone = ModRegistries.items.register(new ItemWishingStone("blizrabi", ModFavors.favor_of_blizrabi, 1));
         redwind_wishing_stone = ModRegistries.items.register(new ItemWishingStone("redwind", ModFavors.favor_of_redwind, 1));
         romol_wishing_stone = ModRegistries.items.register(new ItemWishingStone("romol", ModFavors.favor_of_romol, 1));
