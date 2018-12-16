@@ -28,7 +28,7 @@ public class ContainerMedium extends GenericContainer {
 
     @Override
     public boolean canInteractWith(EntityPlayer playerIn) {
-        return ironMedium.canInteractWith(playerIn);
+        return ironMedium.isUsableByPlayer(playerIn);
     }
 
     @Override
