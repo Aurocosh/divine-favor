@@ -36,6 +36,7 @@ public final class ModTalismans {
 
     public static void preInit() {
         arrowThrowTalisman = ModRegistries.items.register(new TalismanBuilder("arrow_throw", ModFavors.favor_of_allfire, 1)
+                .setSpell(ModSpells.arrow_throw)
                 .castOnUse()
                 .castOnRighClick()
                 .create());

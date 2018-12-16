@@ -4,7 +4,6 @@ import aurocosh.divinefavor.common.core.DivineFavorCreativeTab;
 import aurocosh.divinefavor.common.favors.ModFavor;
 import aurocosh.divinefavor.common.item.base.ModItem;
 import aurocosh.divinefavor.common.lib.math.Vector3;
-import aurocosh.divinefavor.common.network.common.NetworkHandler;
 import aurocosh.divinefavor.common.network.message.client.MessageSyncFavor;
 import aurocosh.divinefavor.common.player_data.favor.IFavorHandler;
 import aurocosh.divinefavor.common.spell.base.CastType;
@@ -12,10 +11,8 @@ import aurocosh.divinefavor.common.spell.base.ModSpell;
 import aurocosh.divinefavor.common.spell.base.SpellContext;
 import aurocosh.divinefavor.common.util.UtilWorld;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumFacing;
@@ -24,18 +21,16 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
 
-import javax.annotation.Nullable;
-
 import static aurocosh.divinefavor.common.player_data.favor.FavorDataHandler.CAPABILITY_FAVOR;
 
 public class ItemTalisman extends ModItem {
+    public final boolean castOnUse;
+    public final boolean castOnRightClick;
     private final ModSpell spell;
     private final ModFavor favor;
     private final int favorPerUse;
-    public final boolean castOnUse;
-    public final boolean castOnRightClick;
 
-// Talisman functions
+    // Talisman functions
     public ItemTalisman(String name, ModSpell spell, ModFavor favor, int favorPerUse, boolean castOnUse, boolean castOnRightClick) {
         super("talisman_" + name, "talismans/");
 
@@ -50,7 +45,7 @@ public class ItemTalisman extends ModItem {
     }
 
     public boolean cast(SpellContext context) {
-        if(!claimCost(context))
+        if (!claimCost(context))
             return false;
         spell.cast(context);
         return true;
@@ -58,25 +53,25 @@ public class ItemTalisman extends ModItem {
 
     private boolean claimCost(SpellContext context) {
         IFavorHandler favorHandler = context.player.getCapability(CAPABILITY_FAVOR, null);
-        if(favorHandler == null)
+        if (favorHandler == null)
             return false;
 
-        if(!favorHandler.consumeFavor(favor.id,favorPerUse))
+        if (!favorHandler.consumeFavor(favor.id, favorPerUse))
             return false;
-        if(context.world.isRemote)
+        if (context.world.isRemote)
             return true;
 
         int favorValue = favorHandler.getFavor(favor.id);
-        new MessageSyncFavor(favor.id,favorValue).sendTo(context.player);
+        new MessageSyncFavor(favor.id, favorValue).sendTo(context.player);
         return true;
     }
 
-    public int getUseCount(EntityPlayer player){
+    public int getUseCount(EntityPlayer player) {
         IFavorHandler favorHandler = player.getCapability(CAPABILITY_FAVOR, null);
         assert favorHandler != null;
 
         int favorCount = favorHandler.getFavor(favor.id);
-        if(favorCount == 0)
+        if (favorCount == 0)
             return 0;
 
         return favorCount / favorPerUse;
@@ -89,13 +84,15 @@ public class ItemTalisman extends ModItem {
         ItemStack stack = playerIn.getHeldItem(hand);
         if (!(stack.getItem() instanceof ItemTalisman))
             return EnumActionResult.PASS;
+        castItemUse(playerIn, worldIn, pos, hand, facing, hitX, hitY, hitZ);
+        return EnumActionResult.SUCCESS;
+    }
 
-        if(!castOnUse)
-            return EnumActionResult.PASS;
-
+    public void castItemUse(EntityPlayer playerIn, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
+        if (!castOnUse)
+            return;
         SpellContext context = new SpellContext(playerIn, worldIn, pos, hand, facing, CastType.ITEM_USE_CAST);
         cast(context);
-        return EnumActionResult.SUCCESS;
     }
 
     @Override
@@ -103,8 +100,14 @@ public class ItemTalisman extends ModItem {
         ItemStack stack = playerIn.getHeldItem(hand);
         if (!(stack.getItem() instanceof ItemTalisman))
             return new ActionResult<>(EnumActionResult.PASS, stack);
-        if(!castOnRightClick)
-            return new ActionResult<>(EnumActionResult.PASS, stack);
+        boolean success = castRightClick(worldIn, playerIn, hand);
+        return new ActionResult<>(success ? EnumActionResult.SUCCESS : EnumActionResult.PASS, stack);
+    }
+
+
+    public boolean castRightClick(World worldIn, EntityPlayer playerIn, EnumHand hand) {
+        if (!castOnRightClick)
+            return false;
 
         Vector3 posVec = new Vector3(playerIn.posX, playerIn.posY + playerIn.getEyeHeight(), playerIn.posZ);
         Vector3 lookVec = new Vector3(playerIn.getLookVec());
@@ -117,23 +120,11 @@ public class ItemTalisman extends ModItem {
         }
 
         SpellContext context = new SpellContext(playerIn, worldIn, blockPos, hand, facing, CastType.RIGHT_CLICK);
-        boolean success = cast(context);
-        return new ActionResult<>(success ? EnumActionResult.SUCCESS : EnumActionResult.PASS, stack);
+        return cast(context);
     }
 
     @Override
     public EnumRarity getRarity(ItemStack stack) {
         return EnumRarity.RARE;
-    }
-
-    @Override
-    public boolean updateItemStackNBT(NBTTagCompound nbt) {
-        return super.updateItemStackNBT(nbt);
-    }
-
-    @Nullable
-    @Override
-    public NBTTagCompound getNBTShareTag(ItemStack stack) {
-        return super.getNBTShareTag(stack);
     }
 }

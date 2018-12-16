@@ -5,6 +5,8 @@ import aurocosh.divinefavor.common.constants.ConstGuiIDs;
 import aurocosh.divinefavor.common.core.DivineFavorCreativeTab;
 import aurocosh.divinefavor.common.item.base.ModItem;
 import aurocosh.divinefavor.common.item.common.ModItems;
+import aurocosh.divinefavor.common.item.grimoire.capability.GrimoireStorage;
+import aurocosh.divinefavor.common.item.grimoire.capability.IGrimoireHandler;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -13,8 +15,17 @@ import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
 import net.minecraft.world.World;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
+import net.minecraftforge.items.CapabilityItemHandler;
+import net.minecraftforge.items.IItemHandler;
+import net.minecraftforge.items.ItemStackHandler;
+
+import javax.annotation.Nullable;
+
+import static aurocosh.divinefavor.common.item.grimoire.capability.GrimoireDataHandler.CAPABILITY_GRIMOIRE;
 
 public class ItemRitualPouch extends ModItem {
+    private static String TAG_SHARE = "Ritual";
+
     public ItemRitualPouch() {
         super("ritual_pouch","");
         setMaxStackSize(1);
@@ -35,6 +46,34 @@ public class ItemRitualPouch extends ModItem {
         if(item.getItem() == ModItems.ritual_pouch)
             return new RitualPouchProvider();
         return null;
+    }
+
+    @Override
+    public boolean getShareTag() {
+        return true;
+    }
+
+    @Nullable
+    @Override
+    public NBTTagCompound getNBTShareTag(ItemStack stack) {
+        NBTTagCompound tag = super.getNBTShareTag(stack);
+        if(tag == null)
+            tag = new NBTTagCompound();
+
+        ItemStackHandler inventory = (ItemStackHandler) stack.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null);
+        assert inventory != null;
+        tag.setTag(TAG_SHARE,inventory.serializeNBT());
+        return tag;
+    }
+
+    @Override
+    public void readNBTShareTag(ItemStack stack, @Nullable NBTTagCompound nbt) {
+        super.readNBTShareTag(stack, nbt);
+        if(nbt == null)
+            return;
+        ItemStackHandler inventory = (ItemStackHandler) stack.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null);
+        assert inventory != null;
+        inventory.deserializeNBT(nbt.getCompoundTag(TAG_SHARE));
     }
 }
 

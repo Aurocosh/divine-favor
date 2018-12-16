@@ -13,6 +13,6 @@ public class ModFavor extends IForgeRegistryEntry.Impl<ModFavor> {
         this.tag = "TAG_FAVOR_" + name.toUpperCase();
         this.id = id;
 
-        setRegistryName(ResourceNamer.getFullName("favor", name));
+        setRegistryName(ResourceNamer.getFullName("capability", name));
     }
 }
