@@ -6,34 +6,13 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
-import net.minecraft.util.ResourceLocation;
 
-public class ModItem extends Item implements IVariantHolder {
+public class ModItem extends Item implements IModelHolder {
     private final String texturePath;
-    private final String[] variants;
-
-    public ModItem(String name, String texturePath, String... variants) {
+    public ModItem(String name, String texturePath) {
         this.texturePath = texturePath;
-        if (variants.length > 1)
-            setHasSubtypes(true);
-        if (variants.length == 0)
-            variants = new String[]{""};
-        this.variants = variants;
-
         setTranslationKey(name);
         setRegistryName(ResourceNamer.getFullName(name));
-    }
-
-    @Override
-    public String getTranslationKey(ItemStack par1ItemStack) {
-        ResourceLocation fullName = getRegistryName();
-        if (fullName == null)
-            return "";
-
-        int damage = par1ItemStack.getItemDamage();
-        damage = damage < variants.length ? damage : 0;
-
-        return "item." + fullName.toString() + variants[damage];
     }
 
     @Override
@@ -41,18 +20,12 @@ public class ModItem extends Item implements IVariantHolder {
     {
         if (!this.isInCreativeTab(tab))
             return;
-        for (int i = 0; i < variants.length; ++i)
-            items.add(new ItemStack(this, 1, i));
+        items.add(new ItemStack(this, 1));
     }
 
     @Override
     public String getTexturePath() {
         return texturePath;
-    }
-
-    @Override
-    public String[] getVariants() {
-        return variants;
     }
 
     @Override

@@ -2,26 +2,24 @@ package aurocosh.divinefavor.common.core.proxy;
 
 import aurocosh.divinefavor.DivineFavor;
 import aurocosh.divinefavor.common.block.common.ModBlocks;
-import aurocosh.divinefavor.common.entity.common.ModGrudgeMobs;
-import aurocosh.divinefavor.common.item.grimoire.capability.GrimoireDataHandler;
-import aurocosh.divinefavor.common.network.base.NetworkWrappedClientMessage;
-import aurocosh.divinefavor.common.network.base.NetworkWrappedServerMessage;
-import aurocosh.divinefavor.common.network.common.NetworkHandler;
-import aurocosh.divinefavor.common.player_data.focused_fury.FocusedFuryDataHandler;
-import aurocosh.divinefavor.common.player_data.grudge.GrudgeDataHandler;
-import aurocosh.divinefavor.common.potions.common.ModPotions;
 import aurocosh.divinefavor.common.entity.ModEntities;
-import aurocosh.divinefavor.common.favor_sources.common.ModFavorSources;
-import aurocosh.divinefavor.common.favors.ModFavors;
+import aurocosh.divinefavor.common.entity.common.ModGrudgeMobs;
 import aurocosh.divinefavor.common.item.calling_stones.ModCallingStones;
 import aurocosh.divinefavor.common.item.common.ModItems;
+import aurocosh.divinefavor.common.item.grimoire.capability.GrimoireDataHandler;
 import aurocosh.divinefavor.common.item.talismans.ModTalismans;
 import aurocosh.divinefavor.common.item.wishing_stones.ModWishingStones;
 import aurocosh.divinefavor.common.muliblock.common.ModMultiBlocks;
 import aurocosh.divinefavor.common.network.GuiHandler;
+import aurocosh.divinefavor.common.network.base.NetworkWrappedClientMessage;
+import aurocosh.divinefavor.common.network.base.NetworkWrappedServerMessage;
 import aurocosh.divinefavor.common.network.common.MessageRegister;
-import aurocosh.divinefavor.common.player_data.favor.FavorDataHandler;
+import aurocosh.divinefavor.common.network.common.NetworkHandler;
+import aurocosh.divinefavor.common.player_data.focused_fury.FocusedFuryDataHandler;
+import aurocosh.divinefavor.common.player_data.grudge.GrudgeDataHandler;
 import aurocosh.divinefavor.common.player_data.interaction_handler.InteractionDataHandler;
+import aurocosh.divinefavor.common.player_data.spell_count.SpellUsesDataHandler;
+import aurocosh.divinefavor.common.potions.common.ModPotions;
 import aurocosh.divinefavor.common.receipes.ModRecipes;
 import aurocosh.divinefavor.common.spell.common.ModSpells;
 import aurocosh.divinefavor.common.spirit.ModSpirits;
@@ -38,17 +36,15 @@ import java.io.File;
 @Mod.EventBusSubscriber
 public class CommonProxy {
     public void preInit(FMLPreInitializationEvent e) {
-        ModSpirits.preInit();
-        ModFavors.preInit();
         ModSpells.preInit();
+        ModPotions.preInit();
         ModMultiBlocks.preInit();
 
-        ModPotions.preInit();
-        ModFavorSources.preInit();
-
-        ModWishingStones.preInit();
-        ModCallingStones.preInit();
         ModTalismans.preInit();
+
+        ModSpirits.preInit();
+        ModCallingStones.preInit();
+        ModWishingStones.preInit();
 
         ModBlocks.preInit();
         ModItems.preInit();
@@ -60,11 +56,11 @@ public class CommonProxy {
         NetworkWrappedClientMessage.setNetworkWrapper(NetworkHandler.INSTANCE);
         NetworkWrappedServerMessage.setNetworkWrapper(NetworkHandler.INSTANCE);
 
-        FavorDataHandler.register();
         FocusedFuryDataHandler.register();
         GrimoireDataHandler.register();
         GrudgeDataHandler.register();
         InteractionDataHandler.register();
+        SpellUsesDataHandler.register();
 
         NetworkRegistry.INSTANCE.registerGuiHandler(DivineFavor.instance, new GuiHandler());
 

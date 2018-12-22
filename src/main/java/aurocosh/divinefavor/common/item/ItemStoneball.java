@@ -15,7 +15,7 @@ import net.minecraft.world.World;
 
 public class ItemStoneball extends ModItem {
     public ItemStoneball() {
-        super("stoneball","");
+        super("stoneball","stoneball");
         this.maxStackSize = 16;
         setCreativeTab(DivineFavorCreativeTab.INSTANCE);
     }

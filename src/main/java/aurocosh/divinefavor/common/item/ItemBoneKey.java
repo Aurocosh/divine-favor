@@ -13,7 +13,7 @@ import net.minecraft.world.World;
 
 public class ItemBoneKey extends ModItem {
     public ItemBoneKey() {
-        super("bone_key","");
+        super("bone_key","bone_key");
         setMaxStackSize(1);
         setCreativeTab(DivineFavorCreativeTab.INSTANCE);
     }
