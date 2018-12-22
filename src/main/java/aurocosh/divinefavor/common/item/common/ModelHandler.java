@@ -37,17 +37,9 @@ public final class ModelHandler {
         ResourceLocation fullName = item.getRegistryName();
         if(fullName == null)
             return;
-
-        final String namespace = fullName.getNamespace();
-        final String texturePath = item.getTexturePath();
-        final String path = fullName.getPath();
-        final String modelPath = namespace + ":" + texturePath + path;
-
-        final String[] variants = item.getVariants();
-        for(int i = 0; i < variants.length; i++) {
-			ModelResourceLocation loc = new ModelResourceLocation(modelPath + variants[i], "inventory");
-			ModelLoader.setCustomModelResourceLocation(item, i, loc);
-		}
+        final String modelPath = fullName.getNamespace() + ":" + item.getTexturePath();
+        ModelResourceLocation loc = new ModelResourceLocation(modelPath, "inventory");
+        ModelLoader.setCustomModelResourceLocation(item, 0, loc);
 	}
 
     private static void registerBlockItemModel(ItemBlock item) {

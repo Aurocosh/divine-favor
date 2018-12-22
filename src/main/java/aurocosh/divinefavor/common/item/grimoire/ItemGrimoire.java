@@ -28,7 +28,7 @@ public class ItemGrimoire extends ModItem {
     private static String TAG_SHARE = "Grimoire";
 
     public ItemGrimoire() {
-        super("grimoire", "");
+        super("grimoire", "grimoire");
         setMaxStackSize(1);
         setCreativeTab(DivineFavorCreativeTab.INSTANCE);
     }

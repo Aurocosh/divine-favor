@@ -1,6 +1,0 @@
-{
-    "parent": "item/generated",
-    "textures": {
-        "layer0": "divinefavor:items/talismans/talisman_crystalline_road"
-    }
-}

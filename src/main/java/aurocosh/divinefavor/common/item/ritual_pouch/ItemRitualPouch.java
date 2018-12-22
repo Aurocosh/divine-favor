@@ -27,7 +27,7 @@ public class ItemRitualPouch extends ModItem {
     private static String TAG_SHARE = "Ritual";
 
     public ItemRitualPouch() {
-        super("ritual_pouch","");
+        super("ritual_pouch","ritual_pouch");
         setMaxStackSize(1);
         setCreativeTab(DivineFavorCreativeTab.INSTANCE);
     }

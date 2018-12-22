@@ -1,7 +1,6 @@
 package aurocosh.divinefavor.common.registry.common;
 
 import aurocosh.divinefavor.common.core.ResourceNamer;
-import aurocosh.divinefavor.common.favors.ModFavor;
 import aurocosh.divinefavor.common.muliblock.ModMultiBlock;
 import aurocosh.divinefavor.common.spell.base.ModSpell;
 import aurocosh.divinefavor.common.spirit.ModSpirit;
@@ -19,10 +18,6 @@ public final class RegistryGenerator {
         new RegistryBuilder<ModSpell>()
                 .setType(ModSpell.class)
                 .setName(ResourceNamer.getFullName(REGESTRY_PREFIX,"spells"))
-                .create();
-        new RegistryBuilder<ModFavor>()
-                .setType(ModFavor.class)
-                .setName(ResourceNamer.getFullName(REGESTRY_PREFIX,"favors"))
                 .create();
         new RegistryBuilder<ModSpirit>()
                 .setType(ModSpirit.class)
