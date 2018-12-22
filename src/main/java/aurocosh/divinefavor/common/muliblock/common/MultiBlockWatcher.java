@@ -35,8 +35,11 @@ public class MultiBlockWatcher {
         if(controllerSet == null)
             return;
 
+        IMultiblockController[] controllers = new IMultiblockController[controllerSet.size()];
+        controllers = controllerSet.toArray(controllers);
+
         Vector3i position = Vector3i.convert(event.getPos());
-        for (IMultiblockController controller : controllerSet)
+        for (IMultiblockController controller : controllers)
             if (controller.getMultiblockInstance().isSolidPart(position))
                 controller.multiblockDamaged();
     }

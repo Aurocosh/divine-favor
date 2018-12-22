@@ -26,12 +26,14 @@ import net.minecraftforge.items.ItemStackHandler;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
+import java.util.ArrayList;
 import java.util.List;
 
 public class TileMedium extends TickableTileEntity implements IMultiblockController {
     public static final int SIZE = 27;
     private final String TAG_CALLING_STONE = "WishingStone";
-    private final String TAG_ITEMS = "Items";
+    private final String TAG_ITEMS_LEFT = "ItemsLeft";
+    private final String TAG_ITEMS_RIGHT = "ItemsRight";
     private final String TAG_STATE_MEDIUM = "StateMedium";
 
     private MediumState state = MediumState.NO_CALLING_STONE;
@@ -47,22 +49,27 @@ public class TileMedium extends TickableTileEntity implements IMultiblockControl
 
         @Override
         protected void onContentsChanged(int slot) {
-            if(!world.isRemote){
+            if (!world.isRemote) {
                 ItemStack stack = getStackInSlot(slot);
-                if(stack.isEmpty() && multiBlockInstance != null)
+                if (stack.isEmpty() && multiBlockInstance != null)
                     multiblockDamaged();
-                else if(multiBlockInstance == null)
+                else if (multiBlockInstance == null)
                     tryToFormMultiBlock();
             }
             TileMedium.this.markDirty();
         }
     };
 
-    private ItemStackHandler itemStackHandler = new ItemStackHandler(SIZE) {
+    private ItemStackHandler leftStackHandler = new ItemStackHandler(9) {
         @Override
         protected void onContentsChanged(int slot) {
-            // We need to tell the tile entity that something has changed so
-            // that the chest contents is persisted
+            TileMedium.this.markDirty();
+        }
+    };
+
+    private ItemStackHandler rightStackHandler = new ItemStackHandler(9) {
+        @Override
+        protected void onContentsChanged(int slot) {
             TileMedium.this.markDirty();
         }
     };
@@ -82,16 +89,19 @@ public class TileMedium extends TickableTileEntity implements IMultiblockControl
         state = MediumState.VALUES[compound.getInteger(TAG_STATE_MEDIUM)];
         if (compound.hasKey(TAG_CALLING_STONE))
             stoneStackHandler.deserializeNBT((NBTTagCompound) compound.getTag(TAG_CALLING_STONE));
-        if (compound.hasKey(TAG_ITEMS))
-            itemStackHandler.deserializeNBT((NBTTagCompound) compound.getTag(TAG_ITEMS));
+        if (compound.hasKey(TAG_ITEMS_LEFT))
+            leftStackHandler.deserializeNBT((NBTTagCompound) compound.getTag(TAG_ITEMS_LEFT));
+        if (compound.hasKey(TAG_ITEMS_RIGHT))
+            rightStackHandler.deserializeNBT((NBTTagCompound) compound.getTag(TAG_ITEMS_RIGHT));
     }
 
     @Override
     public NBTTagCompound writeToNBT(NBTTagCompound compound) {
         super.writeToNBT(compound);
-        compound.setInteger(TAG_STATE_MEDIUM,state.ordinal());
+        compound.setInteger(TAG_STATE_MEDIUM, state.ordinal());
         compound.setTag(TAG_CALLING_STONE, stoneStackHandler.serializeNBT());
-        compound.setTag(TAG_ITEMS, itemStackHandler.serializeNBT());
+        compound.setTag(TAG_ITEMS_LEFT, leftStackHandler.serializeNBT());
+        compound.setTag(TAG_ITEMS_RIGHT, rightStackHandler.serializeNBT());
         return compound;
     }
 
@@ -103,7 +113,7 @@ public class TileMedium extends TickableTileEntity implements IMultiblockControl
     @Override
     public boolean hasCapability(Capability<?> capability, EnumFacing facing) {
         if (capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY)
-            return true;
+            return facing == EnumFacing.UP || facing == EnumFacing.WEST || facing == EnumFacing.EAST;
         return super.hasCapability(capability, facing);
     }
 
@@ -112,8 +122,10 @@ public class TileMedium extends TickableTileEntity implements IMultiblockControl
         if (capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) {
             if (facing == EnumFacing.UP)
                 return CapabilityItemHandler.ITEM_HANDLER_CAPABILITY.cast(stoneStackHandler);
-            else
-                return CapabilityItemHandler.ITEM_HANDLER_CAPABILITY.cast(itemStackHandler);
+            else if (facing == EnumFacing.WEST)
+                return CapabilityItemHandler.ITEM_HANDLER_CAPABILITY.cast(leftStackHandler);
+            else if (facing == EnumFacing.EAST)
+                return CapabilityItemHandler.ITEM_HANDLER_CAPABILITY.cast(rightStackHandler);
         }
         return super.getCapability(capability, facing);
     }
@@ -175,21 +187,31 @@ public class TileMedium extends TickableTileEntity implements IMultiblockControl
         }
         setState(MediumState.ACTIVE);
 
-        List<SlotStack> slotStacks = UtilHandler.getNotEmptyStacksWithSlotIndexes(itemStackHandler);
-        for (SlotStack slotStack : slotStacks) {
-            if (slotStack.getStack().getItem() == ModItems.ritual_pouch)
-                exchangeRitualPouch(slotStack);
-        }
+        processCraftingRecipes();
     }
 
-    private void exchangeRitualPouch(SlotStack slotStack) {
+    private void processCraftingRecipes() {
+        ItemStack stoneStack = stoneStackHandler.getStackInSlot(0);
+        if (stoneStack.isEmpty())
+            return;
+
+        List<SlotStack> slotStacks = UtilHandler.getNotEmptyStacksWithSlotIndexes(leftStackHandler);
+        for (SlotStack slotStack : slotStacks)
+            if (slotStack.getStack().getItem() == ModItems.ritual_pouch)
+                exchangeRitualPouch(stoneStack, leftStackHandler, slotStack);
+        slotStacks = UtilHandler.getNotEmptyStacksWithSlotIndexes(rightStackHandler);
+        for (SlotStack slotStack : slotStacks)
+            if (slotStack.getStack().getItem() == ModItems.ritual_pouch)
+                exchangeRitualPouch(stoneStack, rightStackHandler, slotStack);
+
+        exchangeRecipe(stoneStack, leftStackHandler);
+        exchangeRecipe(stoneStack, rightStackHandler);
+    }
+
+    private void exchangeRitualPouch(ItemStack stoneStack, ItemStackHandler stackHandler, SlotStack slotStack) {
         ItemStack stack = slotStack.getStack();
         IItemHandler handler = stack.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null);
         if (handler == null)
-            return;
-
-        ItemStack stoneStack = stoneStackHandler.getStackInSlot(0);
-        if (stoneStack.isEmpty())
             return;
 
         List<ItemStack> pouchStacks = UtilHandler.getNotEmptyStacks(handler);
@@ -197,8 +219,22 @@ public class TileMedium extends TickableTileEntity implements IMultiblockControl
         if (result == ItemStack.EMPTY)
             return;
         int slot = slotStack.getIndex();
-        itemStackHandler.extractItem(slot, 1, false);
-        itemStackHandler.insertItem(slot, result, false);
+        stackHandler.extractItem(slot, 1, false);
+        stackHandler.insertItem(slot, result, false);
+    }
+
+    private void exchangeRecipe(ItemStack stoneStack, ItemStackHandler stackHandler) {
+        List<SlotStack> slotStacks = UtilHandler.getNotEmptyStacksWithSlotIndexes(stackHandler);
+        List<ItemStack> stacks = new ArrayList<>();
+        for (SlotStack slotStack : slotStacks)
+            stacks.add(slotStack.getStack());
+
+        ItemStack result = ModRecipes.getRecipeResult(stoneStack, stacks);
+        if (result == ItemStack.EMPTY)
+            return;
+        for (SlotStack slotStack : slotStacks)
+            stackHandler.extractItem(slotStack.getIndex(), slotStack.getStack().getCount(), false);
+        stackHandler.insertItem(4, result, false);
     }
 
     @Override
@@ -236,7 +272,7 @@ public class TileMedium extends TickableTileEntity implements IMultiblockControl
             MultiBlockWatcher.registerController(this);
     }
 
-    private void updateState(){
+    private void updateState() {
         ItemStack stack = stoneStackHandler.getStackInSlot(0);
         if (stack.isEmpty()) {
             setState(MediumState.NO_CALLING_STONE);

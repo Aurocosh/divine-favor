@@ -2,8 +2,11 @@ package aurocosh.divinefavor.common.receipes;
 
 import aurocosh.divinefavor.common.item.calling_stones.ItemCallingStone;
 import aurocosh.divinefavor.common.item.calling_stones.ModCallingStones;
+import aurocosh.divinefavor.common.item.contract.ItemContract;
 import aurocosh.divinefavor.common.item.talismans.ModTalismans;
 import aurocosh.divinefavor.common.lib.ItemStackIdComparator;
+import aurocosh.divinefavor.common.registry.ModRegistries;
+import aurocosh.divinefavor.common.spirit.ModSpirit;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
@@ -16,16 +19,33 @@ public class ModRecipes {
     public static final Map<String, ImmaterialMediumRecipe> recipeLookup = new HashMap<>();
 
     public static void init() {
-        register(new RecipeBuilder(new ItemStack(ModTalismans.arrowThrowTalisman), (ItemCallingStone) ModCallingStones.calling_stone_timber)
+        register(new RecipeBuilder(new ItemStack(ModTalismans.arrowThrowTalisman), ModCallingStones.calling_stone_timber)
                 .addIngredient(Items.ARROW, 8)
                 .addIngredient(Items.GOLD_INGOT)
                 .create()
         );
-        register(new RecipeBuilder(new ItemStack(ModTalismans.ignition), (ItemCallingStone) ModCallingStones.calling_stone_allfire)
+        register(new RecipeBuilder(new ItemStack(ModTalismans.ignition), ModCallingStones.calling_stone_allfire)
                 .addIngredient(Items.COAL, 32)
                 .addIngredient(Items.GUNPOWDER, 2)
                 .create()
         );
+
+        List<ItemContract> contracts = ModRegistries.items.getValues(ItemContract.class);
+        List<ItemCallingStone> callingStones = ModRegistries.items.getValues(ItemCallingStone.class);
+        Map<ModSpirit,ItemCallingStone> callingStonesMap = new HashMap<>();
+        for (ItemCallingStone callingStone : callingStones)
+            callingStonesMap.put(callingStone.spirit, callingStone);
+
+        for (ItemContract contract : contracts) {
+            ItemCallingStone callingStone = callingStonesMap.get(contract.getSpirit());
+            if(callingStone == null)
+                continue;
+
+            register(new RecipeBuilder(new ItemStack(contract), callingStone)
+                    .addIngredient(Items.PAPER, 1)
+                    .create()
+            );
+        }
     }
 
     public static ImmaterialMediumRecipe register(ImmaterialMediumRecipe recipe) {
