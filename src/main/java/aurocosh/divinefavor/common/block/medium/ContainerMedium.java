@@ -16,7 +16,10 @@ public class ContainerMedium extends GenericContainer {
         this.ironMedium = ironMedium;
 
         IItemHandler stoneHandler = this.ironMedium.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, EnumFacing.UP);
-        this.addSlotToContainer(new SlotItemHandler(stoneHandler, 0, 80, 36));
+        this.addSlotToContainer(new SlotItemHandler(stoneHandler, 0, 80, 27));
+
+        IItemHandler contractHandler = this.ironMedium.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, EnumFacing.DOWN);
+        this.addSlotToContainer(new SlotItemHandler(contractHandler, 0, 80, 45));
 
         IItemHandler leftHandler = this.ironMedium.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, EnumFacing.WEST);
         generateCustomSlotsGrid(leftHandler,8,18,3,3,0);

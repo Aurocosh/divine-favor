@@ -53,6 +53,13 @@ public class DefaultSpellUsesHandler implements ISpellUsesHandler {
     }
 
     @Override
+    public int refreshSpellUses(int talismanId) {
+        SpellUsesData usesData = spellUses.computeIfAbsent(talismanId, k -> getDefaultData(k));
+        usesData.setSpellUses(usesData.getMaxSpellUses());
+        return usesData.getSpellUses();
+    }
+
+    @Override
     public int addMaxSpellUses(int talismanId, int count) {
         SpellUsesData usesData = spellUses.computeIfAbsent(talismanId, k -> getDefaultData(k));
         usesData.setMaxSpellUses(count + usesData.getMaxSpellUses());

@@ -10,9 +10,11 @@ public interface ISpellUsesHandler {
     int setMaxSpellUses(int talismanId, int count);
 
     int addSpellUses(int talismanId, int count);
+    int addMaxSpellUses(int talismanId, int count);
+
     boolean consumeSpellUse(int talismanId);
 
-    int addMaxSpellUses(int talismanId, int count);
+    int refreshSpellUses(int talismanId);
 
     Map<Integer, SpellUsesData> getAllSpellUses();
     void setAllSpellUses(Map<Integer, SpellUsesData> maxSpellCounts);
