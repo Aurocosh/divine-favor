@@ -13,5 +13,6 @@ public class SpellTellTime extends ModSpell {
     protected void performActionClient(SpellContext context) {
         long time = context.world.getWorldTime();
         context.player.sendMessage(new TextComponentString("Time: " + time));
+        context.player.sendMessage(new TextComponentString("Day time: " + time % 24000));
     }
 }
