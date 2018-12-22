@@ -17,7 +17,7 @@ import net.minecraft.world.World;
 
 public class ItemPureApple extends ModItem {
     public ItemPureApple() {
-        super("pure_apple", "");
+        super("pure_apple", "pure_apple");
         setMaxStackSize(1);
         setCreativeTab(DivineFavorCreativeTab.INSTANCE);
     }

@@ -1,20 +1,17 @@
 package aurocosh.divinefavor.common.item.talismans;
 
-import aurocosh.divinefavor.common.favors.ModFavor;
 import aurocosh.divinefavor.common.spell.base.ModSpell;
 
 public class TalismanBuilder {
     private String name;
     private ModSpell spell;
-    private ModFavor favor;
-    private int favorCost;
+    private int startingSpellUses;
     private boolean castOnUse;
     private boolean castOnRightClick;
 
-    public TalismanBuilder(String name, ModFavor favor, int favorCost) {
+    public TalismanBuilder(String name, int startingSpellUses) {
         this.name = name;
-        this.favor = favor;
-        this.favorCost = favorCost;
+        this.startingSpellUses = startingSpellUses;
         castOnUse = false;
         castOnRightClick = false;
     }
@@ -35,6 +32,6 @@ public class TalismanBuilder {
     }
 
     public ItemTalisman create() {
-        return new ItemTalisman(name, spell, favor, favorCost, castOnUse, castOnRightClick);
+        return new ItemTalisman(name, startingSpellUses, spell, castOnUse, castOnRightClick);
     }
 }

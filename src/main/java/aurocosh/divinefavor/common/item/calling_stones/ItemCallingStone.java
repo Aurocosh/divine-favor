@@ -1,6 +1,5 @@
 package aurocosh.divinefavor.common.item.calling_stones;
 
-import aurocosh.divinefavor.common.core.DivineFavorCreativeTab;
 import aurocosh.divinefavor.common.core.DivineFavorCreativeTabGems;
 import aurocosh.divinefavor.common.item.base.ModItem;
 import aurocosh.divinefavor.common.muliblock.ModMultiBlock;
@@ -13,7 +12,7 @@ public class ItemCallingStone extends ModItem {
     public final ModMultiBlock multiBlock;
 
     public ItemCallingStone(String name, ModSpirit spirit, ModMultiBlock multiBlock) {
-        super("calling_stone_" + name, "calling_stones/");
+        super("calling_stone_" + name, "calling_stones/" + name);
         this.spirit = spirit;
         this.multiBlock = multiBlock;
 

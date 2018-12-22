@@ -9,12 +9,9 @@ import aurocosh.divinefavor.common.block.medium.TileMedium;
 import aurocosh.divinefavor.common.constants.ConstBlockNames;
 import aurocosh.divinefavor.common.constants.ConstResources;
 import aurocosh.divinefavor.common.registry.ModRegistries;
-import aurocosh.divinefavor.common.registry.RegistryMap;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.fml.common.registry.GameRegistry;
-
-import java.util.Collection;
 
 import static aurocosh.divinefavor.common.registry.ModRegistries.itemBlocks;
 

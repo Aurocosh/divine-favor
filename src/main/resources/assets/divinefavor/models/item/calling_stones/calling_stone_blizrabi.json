@@ -1,6 +1,0 @@
-{
-    "parent": "item/generated",
-    "textures": {
-        "layer0": "divinefavor:items/calling_stones/calling_stone_blizrabi"
-    }
-}

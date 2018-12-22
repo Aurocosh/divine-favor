@@ -1,16 +1,17 @@
 package aurocosh.divinefavor.common.item.talismans;
 
-import aurocosh.divinefavor.common.core.DivineFavorCreativeTab;
+import aurocosh.divinefavor.common.block.common.ModBlocks;
 import aurocosh.divinefavor.common.core.DivineFavorCreativeTabTalismans;
-import aurocosh.divinefavor.common.favors.ModFavor;
 import aurocosh.divinefavor.common.item.base.ModItem;
+import aurocosh.divinefavor.common.lib.interfaces.IIndexedEntry;
 import aurocosh.divinefavor.common.lib.math.Vector3;
-import aurocosh.divinefavor.common.network.message.client.MessageSyncFavor;
-import aurocosh.divinefavor.common.player_data.favor.IFavorHandler;
+import aurocosh.divinefavor.common.network.message.client.spell_uses.MessageSyncSpellUses;
+import aurocosh.divinefavor.common.player_data.spell_count.ISpellUsesHandler;
 import aurocosh.divinefavor.common.spell.base.CastType;
 import aurocosh.divinefavor.common.spell.base.ModSpell;
 import aurocosh.divinefavor.common.spell.base.SpellContext;
 import aurocosh.divinefavor.common.util.UtilWorld;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
@@ -22,27 +23,39 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
 
-import static aurocosh.divinefavor.common.player_data.favor.FavorDataHandler.CAPABILITY_FAVOR;
+import static aurocosh.divinefavor.common.player_data.spell_count.SpellUsesDataHandler.CAPABILITY_SPELL_USES;
 
-public class ItemTalisman extends ModItem {
-    public final boolean castOnUse;
-    public final boolean castOnRightClick;
+public class ItemTalisman extends ModItem implements IIndexedEntry {
+    private static int nextId = 0;
+
+    private final int id;
+    private final String name;
     private final ModSpell spell;
-    private final ModFavor favor;
-    private final int favorPerUse;
+    private final int startingSpellUses;
+    private final boolean castOnUse;
+    private final boolean castOnRightClick;
 
     // Talisman functions
-    public ItemTalisman(String name, ModSpell spell, ModFavor favor, int favorPerUse, boolean castOnUse, boolean castOnRightClick) {
-        super("talisman_" + name, "talismans/");
+    public ItemTalisman(String name, int startingSpellUses, ModSpell spell, boolean castOnUse, boolean castOnRightClick) {
+        super("talisman_" + name, "talismans/" + name);
 
+        id = nextId++;
+        this.name = name;
         this.spell = spell;
-        this.favor = favor;
-        this.favorPerUse = favorPerUse;
+        this.startingSpellUses = startingSpellUses;
         this.castOnUse = castOnUse;
         this.castOnRightClick = castOnRightClick;
 
         setMaxStackSize(1);
         setCreativeTab(DivineFavorCreativeTabTalismans.INSTANCE);
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getStartingSpellUses() {
+        return startingSpellUses;
     }
 
     public boolean cast(SpellContext context) {
@@ -53,29 +66,23 @@ public class ItemTalisman extends ModItem {
     }
 
     private boolean claimCost(SpellContext context) {
-        IFavorHandler favorHandler = context.player.getCapability(CAPABILITY_FAVOR, null);
-        if (favorHandler == null)
-            return false;
+        ISpellUsesHandler usesHandler = context.player.getCapability(CAPABILITY_SPELL_USES, null);
+        assert usesHandler != null;
 
-        if (!favorHandler.consumeFavor(favor.id, favorPerUse))
+        if (!usesHandler.consumeSpellUse(id))
             return false;
         if (context.world.isRemote)
             return true;
 
-        int favorValue = favorHandler.getFavor(favor.id);
-        new MessageSyncFavor(favor.id, favorValue).sendTo(context.player);
+        int usesLeft = usesHandler.getSpellUses(id);
+        new MessageSyncSpellUses(id, usesLeft).sendTo(context.player);
         return true;
     }
 
     public int getUseCount(EntityPlayer player) {
-        IFavorHandler favorHandler = player.getCapability(CAPABILITY_FAVOR, null);
-        assert favorHandler != null;
-
-        int favorCount = favorHandler.getFavor(favor.id);
-        if (favorCount == 0)
-            return 0;
-
-        return favorCount / favorPerUse;
+        ISpellUsesHandler usesHandler = player.getCapability(CAPABILITY_SPELL_USES, null);
+        assert usesHandler != null;
+        return usesHandler.getSpellUses(id);
     }
 // Talisman functions
 
@@ -85,8 +92,22 @@ public class ItemTalisman extends ModItem {
         ItemStack stack = playerIn.getHeldItem(hand);
         if (!(stack.getItem() instanceof ItemTalisman))
             return EnumActionResult.PASS;
+        if (getSpellUses(playerIn, worldIn, pos, stack))
+            return EnumActionResult.SUCCESS;
         castItemUse(playerIn, worldIn, pos, hand, facing, hitX, hitY, hitZ);
         return EnumActionResult.SUCCESS;
+    }
+
+    private boolean getSpellUses(EntityPlayer playerIn, World worldIn, BlockPos pos, ItemStack stack) {
+        if (!playerIn.isSneaking())
+            return false;
+        IBlockState state = worldIn.getBlockState(pos);
+        if (state.getBlock() != ModBlocks.blockDiviner)
+            return false;
+        ISpellUsesHandler usesHandler = playerIn.getCapability(CAPABILITY_SPELL_USES, null);
+        assert usesHandler != null;
+        usesHandler.addSpellUses(id, 10);
+        return true;
     }
 
     public void castItemUse(EntityPlayer playerIn, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
@@ -127,5 +148,10 @@ public class ItemTalisman extends ModItem {
     @Override
     public EnumRarity getRarity(ItemStack stack) {
         return EnumRarity.RARE;
+    }
+
+    @Override
+    public int getId() {
+        return id;
     }
 }
