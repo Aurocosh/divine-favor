@@ -14,7 +14,7 @@ public class UtilHandler {
 
         for (int i = 0; i < stackCount; i++) {
             ItemStack stack = itemHandler.getStackInSlot(i);
-            if(stack != ItemStack.EMPTY)
+            if(!stack.isEmpty())
                 stackList.add(new SlotStack(i,stack));
         }
         return stackList;
@@ -26,7 +26,7 @@ public class UtilHandler {
 
         for (int i = 0; i < stackCount; i++) {
             ItemStack stack = itemHandler.getStackInSlot(i);
-            if(stack != ItemStack.EMPTY)
+            if(!stack.isEmpty())
                 stackList.add(stack);
         }
         return stackList;

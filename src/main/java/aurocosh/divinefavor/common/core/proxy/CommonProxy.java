@@ -6,6 +6,7 @@ import aurocosh.divinefavor.common.entity.ModEntities;
 import aurocosh.divinefavor.common.entity.common.ModGrudgeMobs;
 import aurocosh.divinefavor.common.item.calling_stones.ModCallingStones;
 import aurocosh.divinefavor.common.item.common.ModItems;
+import aurocosh.divinefavor.common.item.contract.ModContracts;
 import aurocosh.divinefavor.common.item.grimoire.capability.GrimoireDataHandler;
 import aurocosh.divinefavor.common.item.talismans.ModTalismans;
 import aurocosh.divinefavor.common.item.wishing_stones.ModWishingStones;
@@ -43,6 +44,7 @@ public class CommonProxy {
         ModTalismans.preInit();
 
         ModSpirits.preInit();
+        ModContracts.preInit();
         ModCallingStones.preInit();
         ModWishingStones.preInit();
 

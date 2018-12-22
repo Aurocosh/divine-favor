@@ -15,12 +15,14 @@ public class ContainerMedium extends GenericContainer {
     public ContainerMedium(EntityPlayer player, TileMedium ironMedium) {
         this.ironMedium = ironMedium;
 
-        IItemHandler figurineHandler = this.ironMedium.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, EnumFacing.UP);
-        this.addSlotToContainer(new SlotItemHandler(figurineHandler, 0, 80, 36));
+        IItemHandler stoneHandler = this.ironMedium.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, EnumFacing.UP);
+        this.addSlotToContainer(new SlotItemHandler(stoneHandler, 0, 80, 36));
 
-        IItemHandler itemHandler = this.ironMedium.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null);
-        int slotIndex = generateCustomSlotsGrid(itemHandler,8,18,3,3,0);
-        generateCustomSlotsGrid(itemHandler,116,18,3,3, slotIndex);
+        IItemHandler leftHandler = this.ironMedium.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, EnumFacing.WEST);
+        generateCustomSlotsGrid(leftHandler,8,18,3,3,0);
+
+        IItemHandler rightHandler = this.ironMedium.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, EnumFacing.EAST);
+        generateCustomSlotsGrid(rightHandler,116,18,3,3,0);
 
         generateInventorySlots(player.inventory,8,84);
         generateHotbarSlots(player.inventory,8,142);

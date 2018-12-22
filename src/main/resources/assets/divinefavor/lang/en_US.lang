@@ -85,3 +85,5 @@ container.divinefavor:immaterial_medium.name=Spiritual trade
 
 # JEI ITEM DESCRIPTIONS
 jei.divinefavor:arrow_throw=Arrow throw talisman. Throws arrows duh..
+
+item.divinefavor:contract.player=Bound to: %s
