@@ -1,8 +1,10 @@
 package aurocosh.divinefavor.common.lib;
 
+import aurocosh.divinefavor.common.util.UtilMath;
+
 public class TickCounter {
     private int tickRate;
-    private int currentTicks = 0;
+    private int currentTicks;
 
     public TickCounter() {
         tickRate = 1;
@@ -16,6 +18,10 @@ public class TickCounter {
 
     public void setTickRate(int tickRate) {
         this.tickRate = Math.max(1, Math.abs(tickRate));
+    }
+
+    public void setCurrentTicks(int ticks) {
+        currentTicks = UtilMath.clamp(ticks,0, ticks);
     }
 
     public boolean tick() {

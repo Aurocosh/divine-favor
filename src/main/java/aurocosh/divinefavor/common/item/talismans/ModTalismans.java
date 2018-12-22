@@ -35,6 +35,7 @@ public final class ModTalismans {
     public static ItemTalisman wind_step;
     public static ItemTalisman winter_breath;
     public static ItemTalisman wooden_punch;
+    public static ItemTalisman clock;
 
     public static void preInit() {
         arrowThrowTalisman = ModRegistries.items.register(new TalismanBuilder("arrow_throw",20)
@@ -168,6 +169,11 @@ public final class ModTalismans {
                 .create());
         wooden_punch = ModRegistries.items.register(new TalismanBuilder("wooden_punch",30)
                 .setSpell(ModSpells.wooden_punch)
+                .castOnUse()
+                .castOnRighClick()
+                .create());
+        clock = ModRegistries.items.register(new TalismanBuilder("clock",300)
+                .setSpell(ModSpells.tell_time)
                 .castOnUse()
                 .castOnRighClick()
                 .create());
