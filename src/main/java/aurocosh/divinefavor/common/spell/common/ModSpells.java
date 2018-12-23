@@ -28,6 +28,7 @@ public final class ModSpells {
     public static ModSpell snowball_throw;
     public static ModSpell stone_fever;
     public static ModSpell stoneball_throw;
+    public static ModSpell surface_shift;
     public static ModSpell tell_time;
     public static ModSpell toadic_jump;
     public static ModSpell wild_sprint;
@@ -59,6 +60,7 @@ public final class ModSpells {
         snowball_throw = ModRegistries.spells.register(new SpellSnowballThrow());
         stone_fever = ModRegistries.spells.register(new SpellStoneFever());
         stoneball_throw = ModRegistries.spells.register(new SpellStoneballThrow());
+        surface_shift = ModRegistries.spells.register(new SpellSurfaceShift());
         tell_time = ModRegistries.spells.register(new SpellTellTime());
         toadic_jump = ModRegistries.spells.register(new SpellToadicJump());
         wild_sprint = ModRegistries.spells.register(new SpellWildSprint());

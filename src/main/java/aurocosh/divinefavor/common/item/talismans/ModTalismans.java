@@ -32,6 +32,7 @@ public final class ModTalismans {
     public static ItemTalisman snowball_throw;
     public static ItemTalisman stone_fever;
     public static ItemTalisman stoneball_throw;
+    public static ItemTalisman surface_shift;
     public static ItemTalisman toadic_jump;
     public static ItemTalisman wild_sprint;
     public static ItemTalisman wind_step;
@@ -151,6 +152,10 @@ public final class ModTalismans {
                 .setSpell(ModSpells.stoneball_throw)
                 .castOnUse()
                 .castOnRighClick()
+                .create());
+        surface_shift = ModRegistries.items.register(new TalismanBuilder("surface_shift",10)
+                .setSpell(ModSpells.surface_shift)
+                .castOnUse()
                 .create());
         toadic_jump = ModRegistries.items.register(new TalismanBuilder("toadic_jump",15)
                 .setSpell(ModSpells.toadic_jump)
