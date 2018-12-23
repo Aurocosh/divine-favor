@@ -18,6 +18,7 @@ public final class ModSpells {
     public static ModSpell fall_negation;
     public static ModSpell fell_tree;
     public static ModSpell focused_fury;
+    public static ModSpell ground_flow;
     public static ModSpell grudge;
     public static ModSpell heat_wave;
     public static ModSpell ignition;
@@ -50,6 +51,7 @@ public final class ModSpells {
         fall_negation = ModRegistries.spells.register(new SpellFallNegation());
         fell_tree = ModRegistries.spells.register(new SpellFellTree());
         focused_fury = ModRegistries.spells.register(new SpellFocusedFury());
+        ground_flow = ModRegistries.spells.register(new SpellGroundFlow());
         grudge = ModRegistries.spells.register(new SpellGrudge());
         heat_wave = ModRegistries.spells.register(new SpellHeatWave());
         ignition = ModRegistries.spells.register(new SpellIgnition());

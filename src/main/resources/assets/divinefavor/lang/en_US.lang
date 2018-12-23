@@ -79,6 +79,7 @@ potion.divinefavor:toadic_jump.name=Toadic jump
 potion.divinefavor:wild_charge.name=Wild sprint
 potion.divinefavor:wild_sprint.name=Wild sprint
 potion.divinefavor:wooden_punch.name=Wooden punch
+potion.divinefavor:ground_flow.name=Ground flow
 
 # JEI tab name
 container.divinefavor:immaterial_medium.name=Spiritual trade
