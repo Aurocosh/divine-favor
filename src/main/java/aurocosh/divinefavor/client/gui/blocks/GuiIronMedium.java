@@ -1,4 +1,4 @@
-package aurocosh.divinefavor.client.gui;
+package aurocosh.divinefavor.client.gui.blocks;
 
 import aurocosh.divinefavor.common.block.medium.ContainerMedium;
 import aurocosh.divinefavor.common.block.medium.TileMedium;

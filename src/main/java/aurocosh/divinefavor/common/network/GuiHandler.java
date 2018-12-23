@@ -1,11 +1,17 @@
 package aurocosh.divinefavor.common.network;
 
 import aurocosh.divinefavor.client.gui.*;
+import aurocosh.divinefavor.client.gui.blocks.GuiFastFurnace;
+import aurocosh.divinefavor.client.gui.blocks.GuiIronMedium;
+import aurocosh.divinefavor.client.gui.items.GuiContractBinder;
+import aurocosh.divinefavor.client.gui.items.GuiGrimoire;
+import aurocosh.divinefavor.client.gui.items.GuiRitualPouch;
 import aurocosh.divinefavor.common.block.fast_furnace.ContainerFastFurnace;
 import aurocosh.divinefavor.common.block.fast_furnace.TileFastFurnace;
 import aurocosh.divinefavor.common.block.medium.ContainerMedium;
 import aurocosh.divinefavor.common.block.medium.TileMedium;
 import aurocosh.divinefavor.common.constants.ConstGuiIDs;
+import aurocosh.divinefavor.common.item.contract_binder.ContractBinderContainer;
 import aurocosh.divinefavor.common.item.grimoire.GrimoireContainer;
 import aurocosh.divinefavor.common.item.grimoire.ItemGrimoire;
 import aurocosh.divinefavor.common.item.grimoire.capability.GrimoireDataHandler;
@@ -37,6 +43,11 @@ public class GuiHandler implements IGuiHandler {
                 IItemHandler handler = pouch.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null);
                 return new RitualBagContainer(player, handler);
             }
+            case ConstGuiIDs.CONTRACT_BINDER: {
+                ItemStack pouch = player.getHeldItemMainhand();
+                IItemHandler handler = pouch.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null);
+                return new ContractBinderContainer(player, handler);
+            }
             case ConstGuiIDs.GRIMOIRE: {
                 EnumHand hand = EnumHand.MAIN_HAND;
                 ItemStack grimoire = player.getHeldItem(EnumHand.MAIN_HAND);
@@ -63,6 +74,10 @@ public class GuiHandler implements IGuiHandler {
             case ConstGuiIDs.RITUAL_POUCH: {
                 ItemStack pouch = player.getHeldItemMainhand();
                 return new GuiRitualPouch(player, pouch);
+            }
+            case ConstGuiIDs.CONTRACT_BINDER: {
+                ItemStack pouch = player.getHeldItemMainhand();
+                return new GuiContractBinder(player, pouch);
             }
             case ConstGuiIDs.GRIMOIRE: {
                 EnumHand hand = EnumHand.MAIN_HAND;

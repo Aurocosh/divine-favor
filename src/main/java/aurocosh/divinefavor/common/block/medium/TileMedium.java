@@ -4,6 +4,7 @@ import aurocosh.divinefavor.common.block.base.TickableTileEntity;
 import aurocosh.divinefavor.common.item.calling_stones.ItemCallingStone;
 import aurocosh.divinefavor.common.item.common.ModItems;
 import aurocosh.divinefavor.common.item.contract.ItemContract;
+import aurocosh.divinefavor.common.item.contract_binder.ItemContractBinder;
 import aurocosh.divinefavor.common.item.talismans.ItemTalisman;
 import aurocosh.divinefavor.common.lib.math.Vector3i;
 import aurocosh.divinefavor.common.misc.SlotStack;
@@ -36,9 +37,7 @@ import net.minecraftforge.items.ItemStackHandler;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 
 public class TileMedium extends TickableTileEntity implements IMultiblockController {
     public static final int SIZE = 27;
@@ -75,7 +74,7 @@ public class TileMedium extends TickableTileEntity implements IMultiblockControl
     private ItemStackHandler contractStackHandler = new ItemStackHandler(1) {
         @Override
         public boolean isItemValid(int slot, @Nonnull ItemStack stack) {
-            return stack.getItem() instanceof ItemContract;
+            return stack.getItem() instanceof ItemContract || stack.getItem() instanceof ItemContractBinder;
         }
     };
 
@@ -205,19 +204,12 @@ public class TileMedium extends TickableTileEntity implements IMultiblockControl
         ItemStack stack = contractStackHandler.getStackInSlot(0);
         if (stack.isEmpty())
             return;
-        List<ItemStack> contracts = new ArrayList<>();
-        if(stack.getItem() instanceof ItemContract){
-            ItemContract contract = (ItemContract) stack.getItem();
-            if(contract.getSpirit() == callingStone.spirit)
-                contracts.add(stack);
-        }
 
+        List<ItemStack> contracts = getContracts(stack);
+        List<UUID> playerUUIDs = getPlayerUUIDs(contracts, callingStone);
         List<ItemTalisman> talismans = callingStone.spirit.getTalismans();
         PlayerList playerList = world.getMinecraftServer().getPlayerList();
-        for (ItemStack contract : contracts) {
-            UUID uuid = ItemContract.getPlayerId(contract);
-            if(uuid == null)
-                continue;
+        for (UUID uuid : playerUUIDs) {
             EntityPlayerMP player = playerList.getPlayerByUUID(uuid);
             if(player == null)
                 continue;
@@ -228,6 +220,35 @@ public class TileMedium extends TickableTileEntity implements IMultiblockControl
                 usesHandler.refreshSpellUses(talisman.getId());
             new MessageSyncAllSpellUses(usesHandler).sendTo(player);
         }
+    }
+
+    private List<ItemStack> getContracts(ItemStack stack) {
+        List<ItemStack> contracts = new ArrayList<>();
+        if (stack.getItem() instanceof ItemContract) {
+            contracts.add(stack);
+        }
+        else if (stack.getItem() instanceof ItemContractBinder) {
+            IItemHandler handler = stack.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null);
+            if (handler == null)
+                return contracts;
+            for (SlotStack slotStack : UtilHandler.getNotEmptyStacksWithSlotIndexes(handler))
+                contracts.add(slotStack.getStack());
+        }
+        return contracts;
+    }
+
+    private List<UUID> getPlayerUUIDs(List<ItemStack> stacks, ItemCallingStone callingStone){
+        Set<UUID> playerUUIDs = new HashSet<>();
+        for (ItemStack stack : stacks) {
+            ItemContract contract = (ItemContract) stack.getItem();
+            if (contract.getSpirit() != callingStone.spirit)
+                continue;
+            UUID uuid = ItemContract.getPlayerId(stack);
+            if(uuid == null)
+                continue;
+            playerUUIDs.add(uuid);
+        }
+        return new ArrayList<>(playerUUIDs);
     }
 
     @Override
