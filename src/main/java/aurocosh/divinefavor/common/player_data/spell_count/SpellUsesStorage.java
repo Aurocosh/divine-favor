@@ -1,42 +1,39 @@
 package aurocosh.divinefavor.common.player_data.spell_count;
 
+import aurocosh.divinefavor.common.item.talismans.ItemTalisman;
+import aurocosh.divinefavor.common.registry.mappers.ModMappers;
 import net.minecraft.nbt.NBTBase;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumFacing;
 import net.minecraftforge.common.capabilities.Capability;
 
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
 // Handles the actual read/write of the nbt.
 public class SpellUsesStorage implements Capability.IStorage<ISpellUsesHandler> {
-    private static String TAG_SPELL_USES = "SpellUses";
-
     public static NBTTagCompound getNbtTagCompound(ISpellUsesHandler instance) {
         final NBTTagCompound tag = new NBTTagCompound();
         Map<Integer, SpellUsesData> dataMap = instance.getAllSpellUses();
-        int[] serializedMap = new int[dataMap.size() * 3];
-        int i = 0;
+        Map<Integer, ItemTalisman> talismanMap = ModMappers.talismans.getIdMap();
         for (Map.Entry<Integer, SpellUsesData> entry : dataMap.entrySet()) {
-            serializedMap[i++] = entry.getKey();
-
             SpellUsesData usesData = entry.getValue();
-            serializedMap[i++] = usesData.getMaxSpellUses();
-            serializedMap[i++] = usesData.getSpellUses();
+            int[] spellUses = new int[]{usesData.getMaxSpellUses(), usesData.getSpellUses()};
+            ItemTalisman talisman = talismanMap.get(entry.getKey());
+            tag.setIntArray(talisman.getName(), spellUses);
         }
-        tag.setIntArray(TAG_SPELL_USES, serializedMap);
         return tag;
     }
 
     public static void setDataFromNBT(ISpellUsesHandler instance, NBTTagCompound nbt) {
+        Collection<ItemTalisman> talismans = ModMappers.talismans.getIdMap().values();
         Map<Integer, SpellUsesData> dataMap = new HashMap<>();
-        int[] serializedMap = nbt.getIntArray(TAG_SPELL_USES);
-        int i = 0;
-        while (i < serializedMap.length) {
-            int talismanId = serializedMap[i++];
-            int maxSpellUses = serializedMap[i++];
-            int spellUses = serializedMap[i++];
-            dataMap.put(talismanId, new SpellUsesData(maxSpellUses, spellUses));
+        for (ItemTalisman talisman : talismans) {
+            if(!nbt.hasKey(talisman.getName()))
+                continue;
+            int[] spellUses = nbt.getIntArray(talisman.getName());
+            dataMap.put(talisman.getId(), new SpellUsesData(spellUses[0],spellUses[1]));
         }
         instance.setAllSpellUses(dataMap);
     }
