@@ -1,4 +1,4 @@
-package aurocosh.divinefavor.client.gui;
+package aurocosh.divinefavor.client.gui.blocks;
 
 import aurocosh.divinefavor.common.block.fast_furnace.ContainerFastFurnace;
 import aurocosh.divinefavor.common.block.fast_furnace.TileFastFurnace;

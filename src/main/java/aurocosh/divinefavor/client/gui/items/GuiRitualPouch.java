@@ -1,25 +1,23 @@
-package aurocosh.divinefavor.client.gui;
+package aurocosh.divinefavor.client.gui.items;
 
 import aurocosh.divinefavor.common.constants.ConstResources;
-import aurocosh.divinefavor.common.item.grimoire.GrimoireContainer;
-import aurocosh.divinefavor.common.item.grimoire.capability.GrimoireDataHandler;
+import aurocosh.divinefavor.common.item.ritual_pouch.RitualBagContainer;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.EnumHand;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.items.CapabilityItemHandler;
 
-public class GuiGrimoire extends GuiContainer {
+public class GuiRitualPouch extends GuiContainer {
     public static final int WIDTH = 175;
     public static final int HEIGHT = 165;
-    private static final ResourceLocation texture = new ResourceLocation(ConstResources.GUI_GRIMOIRE);
+    private static final ResourceLocation texture = new ResourceLocation(ConstResources.GUI_RITUAL_POUCH);
 
-    ItemStack grimoire;
+    ItemStack pouch;
 
-    public GuiGrimoire(EntityPlayer player, ItemStack grimoire, EnumHand hand) {
-        super(new GrimoireContainer(player, grimoire.getCapability(GrimoireDataHandler.CAPABILITY_GRIMOIRE, null), hand));
-        this.grimoire = grimoire;
+    public GuiRitualPouch(EntityPlayer player, ItemStack pouch) {
+        super(new RitualBagContainer(player, pouch.getCapability( CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null )));
+        this.pouch = pouch;
     }
 
     @Override
@@ -39,6 +37,6 @@ public class GuiGrimoire extends GuiContainer {
     public void drawScreen(int mouseX, int mouseY, float partialTicks) {
         drawDefaultBackground();
         super.drawScreen(mouseX, mouseY, partialTicks);
-        renderHoveredToolTip(mouseX, mouseY);
+        renderHoveredToolTip(mouseX,mouseY);
     }
 }
