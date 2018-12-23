@@ -8,12 +8,13 @@ import net.minecraft.potion.PotionEffect;
 public class ModEffectToggle extends ModEffect {
     private boolean active;
     public ModEffectToggle(ModPotionToggle potion) {
-        super(potion);
+        super(potion, 1);
         active = true;
     }
 
     @Override
     public boolean onUpdate(EntityLivingBase entityIn) {
+        performEffect(entityIn);
         return active;
     }
 

@@ -22,6 +22,7 @@ public final class ModTalismans {
     public static ItemTalisman fall_negation;
     public static ItemTalisman fell_tree;
     public static ItemTalisman focused_fury;
+    public static ItemTalisman ground_flow;
     public static ItemTalisman grudge;
     public static ItemTalisman heat_wave;
     public static ItemTalisman ignition;
@@ -103,6 +104,11 @@ public final class ModTalismans {
                 .create());
         focused_fury = ModRegistries.items.register(new TalismanBuilder("focused_fury",2)
                 .setSpell(ModSpells.focused_fury)
+                .castOnUse()
+                .castOnRighClick()
+                .create());
+        ground_flow = ModRegistries.items.register(new TalismanBuilder("ground_flow",6)
+                .setSpell(ModSpells.ground_flow)
                 .castOnUse()
                 .castOnRighClick()
                 .create());

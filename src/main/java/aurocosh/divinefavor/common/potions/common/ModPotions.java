@@ -18,6 +18,7 @@ public class ModPotions {
     public static ModPotionCharge toadic_jump;
     public static ModPotionToggleLimited wooden_punch;
     public static ModPotionToggle grudge;
+    public static ModPotionToggle ground_flow;
     public static ModPotionTrigger consuming_fury;
     public static ModPotionTrigger focused_fury;
     public static ModPotionTrigger miners_focus;
@@ -33,6 +34,7 @@ public class ModPotions {
         fall_negation = ModRegistries.potions.register(new PotionFallNegation());
         focused_fury = ModRegistries.potions.register(new PotionFocusedFury());
         grudge = ModRegistries.potions.register(new PotionGrudge());
+        ground_flow = ModRegistries.potions.register(new PotionGroundFlow());
         miners_focus = ModRegistries.potions.register(new PotionMinersFocus());
         obsidian_road = ModRegistries.potions.register(new PotionLiquidWalking("obsidian_road", Blocks.LAVA));
         stone_fever = ModRegistries.potions.register(new PotionStoneFever());
