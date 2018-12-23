@@ -12,6 +12,7 @@ public final class ModSpells {
     public static ModSpell consuming_fury;
     public static ModSpell crushing_palm;
     public static ModSpell crystalline_road;
+    public static ModSpell earthen_dive;
     public static ModSpell empower_axe;
     public static ModSpell empower_pickaxe;
     public static ModSpell fall_negation;
@@ -42,6 +43,7 @@ public final class ModSpells {
         consuming_fury = ModRegistries.spells.register(new SpellConsumingFury());
         crushing_palm = ModRegistries.spells.register(new SpellCrushingPalm());
         crystalline_road = ModRegistries.spells.register(new SpellCrystallineRoad());
+        earthen_dive = ModRegistries.spells.register(new SpellEarthenDive());
         empower_axe = ModRegistries.spells.register(new SpellEmpowerAxe());
         empower_pickaxe = ModRegistries.spells.register(new SpellEmpowerPickaxe());
         fall_negation = ModRegistries.spells.register(new SpellFallNegation());
