@@ -10,11 +10,13 @@ public final class ModTalismans {
     public static ItemTalisman arrowThrowTalisman;
     public static ItemTalisman bonemeal;
     public static ItemTalisman butchering_strike;
+    public static ItemTalisman clock;
     public static ItemTalisman combustion;
     public static ItemTalisman consuming_fury;
     public static ItemTalisman crushing_palm;
     public static ItemTalisman crystalline_road;
     public static ItemTalisman distant_spark;
+    public static ItemTalisman earthen_dive;
     public static ItemTalisman empower_axe;
     public static ItemTalisman empower_pickaxe;
     public static ItemTalisman fall_negation;
@@ -35,7 +37,6 @@ public final class ModTalismans {
     public static ItemTalisman wind_step;
     public static ItemTalisman winter_breath;
     public static ItemTalisman wooden_punch;
-    public static ItemTalisman clock;
 
     public static void preInit() {
         arrowThrowTalisman = ModRegistries.items.register(new TalismanBuilder("arrow_throw",20)
@@ -75,6 +76,10 @@ public final class ModTalismans {
                 .setSpell(ModSpells.ignition)
                 .castOnUse()
                 .castOnRighClick()
+                .create());
+        earthen_dive = ModRegistries.items.register(new TalismanBuilder("earthen_dive",10)
+                .setSpell(ModSpells.earthen_dive)
+                .castOnUse()
                 .create());
         empower_axe = ModRegistries.items.register(new TalismanBuilder("empower_axe",3)
                 .setSpell(ModSpells.empower_axe)
