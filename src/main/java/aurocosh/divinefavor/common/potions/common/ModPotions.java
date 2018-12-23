@@ -1,9 +1,6 @@
 package aurocosh.divinefavor.common.potions.common;
 
-import aurocosh.divinefavor.common.potions.base.potion.ModPotion;
-import aurocosh.divinefavor.common.potions.base.potion.ModPotionCharge;
-import aurocosh.divinefavor.common.potions.base.potion.ModPotionToggle;
-import aurocosh.divinefavor.common.potions.base.potion.ModPotionTrigger;
+import aurocosh.divinefavor.common.potions.base.potion.*;
 import aurocosh.divinefavor.common.potions.potions.*;
 import aurocosh.divinefavor.common.registry.ModRegistries;
 import net.minecraft.init.Blocks;
@@ -19,7 +16,7 @@ public class ModPotions {
     public static ModPotionCharge crushing_palm;
     public static ModPotionCharge fall_negation;
     public static ModPotionCharge toadic_jump;
-    public static ModPotionCharge wooden_punch;
+    public static ModPotionToggleLimited wooden_punch;
     public static ModPotionToggle grudge;
     public static ModPotionTrigger consuming_fury;
     public static ModPotionTrigger focused_fury;

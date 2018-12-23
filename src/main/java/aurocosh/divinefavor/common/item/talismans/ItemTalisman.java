@@ -34,9 +34,10 @@ public class ItemTalisman extends ModItem implements IIndexedEntry {
     private final int startingSpellUses;
     private final boolean castOnUse;
     private final boolean castOnRightClick;
+    private final boolean isFree;
 
     // Talisman functions
-    public ItemTalisman(String name, int startingSpellUses, ModSpell spell, boolean castOnUse, boolean castOnRightClick) {
+    public ItemTalisman(String name, int startingSpellUses, ModSpell spell, boolean castOnUse, boolean castOnRightClick, boolean isFree) {
         super("talisman_" + name, "talismans/" + name);
 
         id = nextId++;
@@ -45,6 +46,7 @@ public class ItemTalisman extends ModItem implements IIndexedEntry {
         this.startingSpellUses = startingSpellUses;
         this.castOnUse = castOnUse;
         this.castOnRightClick = castOnRightClick;
+        this.isFree = isFree;
 
         setMaxStackSize(1);
         setCreativeTab(DivineFavorCreativeTabTalismans.INSTANCE);
@@ -59,7 +61,7 @@ public class ItemTalisman extends ModItem implements IIndexedEntry {
     }
 
     public boolean cast(SpellContext context) {
-        if (!claimCost(context))
+        if (!isFree && !claimCost(context))
             return false;
         spell.cast(context);
         return true;
