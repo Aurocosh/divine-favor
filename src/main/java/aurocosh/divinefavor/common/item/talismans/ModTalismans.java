@@ -171,6 +171,7 @@ public final class ModTalismans {
                 .setSpell(ModSpells.wooden_punch)
                 .castOnUse()
                 .castOnRighClick()
+                .setIsFree()
                 .create());
         clock = ModRegistries.items.register(new TalismanBuilder("clock",300)
                 .setSpell(ModSpells.tell_time)

@@ -8,6 +8,7 @@ public class TalismanBuilder {
     private int startingSpellUses;
     private boolean castOnUse;
     private boolean castOnRightClick;
+    private boolean isFree;
 
     public TalismanBuilder(String name, int startingSpellUses) {
         this.name = name;
@@ -26,12 +27,17 @@ public class TalismanBuilder {
         return this;
     }
 
+    public TalismanBuilder setIsFree() {
+        this.isFree = true;
+        return this;
+    }
+
     public TalismanBuilder setSpell(ModSpell spell) {
         this.spell = spell;
         return this;
     }
 
     public ItemTalisman create() {
-        return new ItemTalisman(name, startingSpellUses, spell, castOnUse, castOnRightClick);
+        return new ItemTalisman(name, startingSpellUses, spell, castOnUse, castOnRightClick, isFree);
     }
 }

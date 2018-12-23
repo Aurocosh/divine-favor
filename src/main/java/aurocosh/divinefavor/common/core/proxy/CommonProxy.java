@@ -38,7 +38,6 @@ import java.io.File;
 public class CommonProxy {
     public void preInit(FMLPreInitializationEvent e) {
         ModSpells.preInit();
-        ModPotions.preInit();
         ModMultiBlocks.preInit();
 
         ModTalismans.preInit();
@@ -47,6 +46,8 @@ public class CommonProxy {
         ModContracts.preInit();
         ModCallingStones.preInit();
         ModWishingStones.preInit();
+
+        ModPotions.preInit();
 
         ModBlocks.preInit();
         ModItems.preInit();
