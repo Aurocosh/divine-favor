@@ -83,4 +83,19 @@ public class UtilEntity {
         worldServer.getMinecraftServer().getPlayerList().transferPlayerToDimension(entityPlayerMP, dimension, new CustomTeleporter(worldServer, destination));
         player.setPositionAndUpdate(destination.x, destination.y, destination.z);
     }
+
+    // client side only
+    public static void addVelocity(EntityLivingBase entity, float factor) {
+        if (entity.getRidingEntity() instanceof EntityLivingBase)
+            entity = (EntityLivingBase) entity.getRidingEntity();
+        if(entity.moveForward  <= 0)
+            return;
+        Vec3d extraVelocity = entity.getLookVec().scale(factor);
+        entity.motionX += extraVelocity.x;
+        entity.motionY += extraVelocity.y;
+        entity.motionZ += extraVelocity.z;
+
+//        entity.motionX += MathHelper.sin(-entity.rotationYaw * 0.017453292F) * factor;
+//        entity.motionZ += MathHelper.cos(entity.rotationYaw * 0.017453292F) * factor;
+    }
 }

@@ -10,6 +10,7 @@ import net.minecraftforge.fml.relauncher.Side;
 public class MessageRegister {
 	public static void init() {
         NetworkHandler.register(MessageSyncAllSpellUses.class, Side.CLIENT);
+        NetworkHandler.register(MessageSyncFireImmunity.class, Side.CLIENT);
         NetworkHandler.register(MessageSyncFlyingCapability.class, Side.CLIENT);
         NetworkHandler.register(MessageSyncFury.class, Side.CLIENT);
         NetworkHandler.register(MessageSyncGrudge.class, Side.CLIENT);
