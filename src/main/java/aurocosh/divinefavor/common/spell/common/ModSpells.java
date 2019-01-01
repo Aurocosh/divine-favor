@@ -23,6 +23,7 @@ public final class ModSpells {
     public static ModSpell heat_wave;
     public static ModSpell ignition;
     public static ModSpell miners_focus;
+    public static ModSpell molten_skin;
     public static ModSpell obsidian_road;
     public static ModSpell searing_pulse;
     public static ModSpell small_fireball_throw;
@@ -56,6 +57,7 @@ public final class ModSpells {
         heat_wave = ModRegistries.spells.register(new SpellHeatWave());
         ignition = ModRegistries.spells.register(new SpellIgnition());
         miners_focus = ModRegistries.spells.register(new SpellMinersFocus());
+        molten_skin = ModRegistries.spells.register(new SpellMoltenSkin());
         obsidian_road = ModRegistries.spells.register(new SpellObsidianRoad());
         searing_pulse = ModRegistries.spells.register(new SpellSearingPulse());
         small_fireball_throw = ModRegistries.spells.register(new SpellSmallFireballThrow());

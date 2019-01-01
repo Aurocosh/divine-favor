@@ -22,6 +22,9 @@ public final class ModSpirits {
                         .addTalisman(ModTalismans.searing_pulse)
                         .addTalisman(ModTalismans.small_fireball_throw)
                         .addTalisman(ModTalismans.distant_spark)
+
+
+                        .addTalisman(ModTalismans.molten_skin)
                         .create()
         );
         arbow = ModRegistries.spirits.register(

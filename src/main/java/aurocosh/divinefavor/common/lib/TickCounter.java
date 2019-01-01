@@ -21,7 +21,7 @@ public class TickCounter {
     }
 
     public void setCurrentTicks(int ticks) {
-        currentTicks = UtilMath.clamp(ticks,0, ticks);
+        currentTicks = UtilMath.clamp(ticks,0, tickRate);
     }
 
     public boolean tick() {

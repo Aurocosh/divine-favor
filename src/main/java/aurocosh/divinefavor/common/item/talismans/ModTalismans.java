@@ -27,6 +27,7 @@ public final class ModTalismans {
     public static ItemTalisman heat_wave;
     public static ItemTalisman ignition;
     public static ItemTalisman miners_focus;
+    public static ItemTalisman molten_skin;
     public static ItemTalisman obsidian_road;
     public static ItemTalisman searing_pulse;
     public static ItemTalisman small_fireball_throw;
@@ -128,6 +129,11 @@ public final class ModTalismans {
                 .create());
         miners_focus = ModRegistries.items.register(new TalismanBuilder("miners_focus",2)
                 .setSpell(ModSpells.miners_focus)
+                .castOnUse()
+                .castOnRighClick()
+                .create());
+        molten_skin = ModRegistries.items.register(new TalismanBuilder("molten_skin",6)
+                .setSpell(ModSpells.molten_skin)
                 .castOnUse()
                 .castOnRighClick()
                 .create());
