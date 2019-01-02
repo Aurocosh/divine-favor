@@ -1,7 +1,6 @@
 package aurocosh.divinefavor.common.util;
 
 import aurocosh.divinefavor.common.lib.math.Vector3i;
-import io.netty.buffer.ByteBuf;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.EnumFacing;
@@ -130,5 +129,43 @@ public class UtilCoordinates {
             previousOneIsAir = world.isAirBlock(currentPos);
         }
         return null;
+    }
+
+    public static List<BlockPos> getNeighboursWithSameExposedFace(BlockPos start, World world, EnumFacing facing, int limit) {
+        Vector3i facingVec = new Vector3i(facing.getDirectionVec());
+
+        List<Vector3i> expansionDirs = UtilVector3i.getNeighbourDirections();
+        expansionDirs.remove(facingVec);
+        expansionDirs.remove(facingVec.inverse());
+
+        List<Vector3i> result = new ArrayList<>();
+        Set<Vector3i> explored = new HashSet<>();
+        Queue<Vector3i> expansionFront = new ArrayDeque<>();
+
+        Vector3i startVec = Vector3i.convert(start);
+        expansionFront.add(startVec);
+        explored.add(startVec);
+
+        while (expansionFront.size() > 0 && result.size() < limit) {
+            Vector3i nextPos = expansionFront.remove();
+            result.add(nextPos);
+
+            for (Vector3i expansionDir : expansionDirs) {
+                Vector3i neighbour = nextPos.add(expansionDir);
+                if (explored.contains(neighbour))
+                    continue;
+                explored.add(neighbour);
+
+                BlockPos pos = neighbour.toBlockPos();
+                IBlockState state = world.getBlockState(pos);
+                if (!state.isSideSolid(world, pos, facing))
+                    continue;
+                BlockPos posCover = pos.offset(facing);
+                if (!world.isAirBlock(posCover))
+                    continue;
+                expansionFront.add(neighbour);
+            }
+        }
+        return Vector3i.convert(result);
     }
 }

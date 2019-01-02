@@ -28,6 +28,7 @@ public final class ModSpirits {
                         .addTalisman(ModTalismans.infernal_touch)
                         .addTalisman(ModTalismans.hellisphere)
                         .addTalisman(ModTalismans.nether_surge)
+                        .addTalisman(ModTalismans.piercing_inferno)
                         .create()
         );
         arbow = ModRegistries.spirits.register(

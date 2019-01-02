@@ -32,6 +32,7 @@ public final class ModTalismans {
     public static ItemTalisman molten_skin;
     public static ItemTalisman nether_surge;
     public static ItemTalisman obsidian_road;
+    public static ItemTalisman piercing_inferno;
     public static ItemTalisman searing_pulse;
     public static ItemTalisman small_fireball_throw;
     public static ItemTalisman snowball_throw;
@@ -156,6 +157,10 @@ public final class ModTalismans {
                 .setSpell(ModSpells.obsidian_road)
                 .castOnUse()
                 .castOnRighClick()
+                .create());
+        piercing_inferno = ModRegistries.items.register(new TalismanBuilder("piercing_inferno",12)
+                .setSpell(ModSpells.piercing_inferno)
+                .castOnUse()
                 .create());
         searing_pulse = ModRegistries.items.register(new TalismanBuilder("searing_pulse",6)
                 .setSpell(ModSpells.searing_pulse)
