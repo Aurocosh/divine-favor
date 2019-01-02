@@ -73,6 +73,7 @@ public final class ModSpirits {
                         .addTalisman(ModTalismans.butchering_strike)
                         .addTalisman(ModTalismans.consuming_fury)
                         .addTalisman(ModTalismans.grudge)
+                        .addTalisman(ModTalismans.mist_blade)
                         .create()
         );
         timber = ModRegistries.spirits.register(
