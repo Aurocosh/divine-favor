@@ -21,6 +21,7 @@ public final class ModSpells {
     public static ModSpell ground_flow;
     public static ModSpell grudge;
     public static ModSpell heat_wave;
+    public static ModSpell hellisphere;
     public static ModSpell ignition;
     public static ModSpell infernal_touch;
     public static ModSpell miners_focus;
@@ -56,6 +57,7 @@ public final class ModSpells {
         ground_flow = ModRegistries.spells.register(new SpellGroundFlow());
         grudge = ModRegistries.spells.register(new SpellGrudge());
         heat_wave = ModRegistries.spells.register(new SpellHeatWave());
+        hellisphere = ModRegistries.spells.register(new SpellHellisphere());
         ignition = ModRegistries.spells.register(new SpellIgnition());
         infernal_touch = ModRegistries.spells.register(new SpellInfernalTouch());
         miners_focus = ModRegistries.spells.register(new SpellMinersFocus());

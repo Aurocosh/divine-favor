@@ -25,6 +25,7 @@ public final class ModTalismans {
     public static ItemTalisman ground_flow;
     public static ItemTalisman grudge;
     public static ItemTalisman heat_wave;
+    public static ItemTalisman hellisphere;
     public static ItemTalisman ignition;
     public static ItemTalisman infernal_touch;
     public static ItemTalisman miners_focus;
@@ -123,6 +124,10 @@ public final class ModTalismans {
                 .setSpell(ModSpells.heat_wave)
                 .castOnUse()
                 .castOnRighClick()
+                .create());
+        hellisphere = ModRegistries.items.register(new TalismanBuilder("hellisphere",10)
+                .setSpell(ModSpells.hellisphere)
+                .castOnUse()
                 .create());
         ignition = ModRegistries.items.register(new TalismanBuilder("ignition",30)
                 .setSpell(ModSpells.ignition)
