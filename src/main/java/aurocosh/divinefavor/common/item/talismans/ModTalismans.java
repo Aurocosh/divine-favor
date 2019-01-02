@@ -26,6 +26,7 @@ public final class ModTalismans {
     public static ItemTalisman grudge;
     public static ItemTalisman heat_wave;
     public static ItemTalisman ignition;
+    public static ItemTalisman infernal_touch;
     public static ItemTalisman miners_focus;
     public static ItemTalisman molten_skin;
     public static ItemTalisman obsidian_road;
@@ -125,6 +126,10 @@ public final class ModTalismans {
                 .create());
         ignition = ModRegistries.items.register(new TalismanBuilder("ignition",30)
                 .setSpell(ModSpells.ignition)
+                .castOnUse()
+                .create());
+        infernal_touch = ModRegistries.items.register(new TalismanBuilder("infernal_touch",30)
+                .setSpell(ModSpells.infernal_touch)
                 .castOnUse()
                 .create());
         miners_focus = ModRegistries.items.register(new TalismanBuilder("miners_focus",2)

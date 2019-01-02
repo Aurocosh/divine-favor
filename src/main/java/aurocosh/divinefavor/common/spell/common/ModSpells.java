@@ -22,6 +22,7 @@ public final class ModSpells {
     public static ModSpell grudge;
     public static ModSpell heat_wave;
     public static ModSpell ignition;
+    public static ModSpell infernal_touch;
     public static ModSpell miners_focus;
     public static ModSpell molten_skin;
     public static ModSpell obsidian_road;
@@ -56,6 +57,7 @@ public final class ModSpells {
         grudge = ModRegistries.spells.register(new SpellGrudge());
         heat_wave = ModRegistries.spells.register(new SpellHeatWave());
         ignition = ModRegistries.spells.register(new SpellIgnition());
+        infernal_touch = ModRegistries.spells.register(new SpellInfernalTouch());
         miners_focus = ModRegistries.spells.register(new SpellMinersFocus());
         molten_skin = ModRegistries.spells.register(new SpellMoltenSkin());
         obsidian_road = ModRegistries.spells.register(new SpellObsidianRoad());
