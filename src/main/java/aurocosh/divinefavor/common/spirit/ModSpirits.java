@@ -7,6 +7,7 @@ public final class ModSpirits {
     public static ModSpirit allfire;
     public static ModSpirit arbow;
     public static ModSpirit blizrabi;
+    public static ModSpirit nefir;
     public static ModSpirit redwind;
     public static ModSpirit romol;
     public static ModSpirit squarefury;
@@ -22,13 +23,6 @@ public final class ModSpirits {
                         .addTalisman(ModTalismans.searing_pulse)
                         .addTalisman(ModTalismans.small_fireball_throw)
                         .addTalisman(ModTalismans.distant_spark)
-
-
-                        .addTalisman(ModTalismans.molten_skin)
-                        .addTalisman(ModTalismans.infernal_touch)
-                        .addTalisman(ModTalismans.hellisphere)
-                        .addTalisman(ModTalismans.nether_surge)
-                        .addTalisman(ModTalismans.piercing_inferno)
                         .create()
         );
         arbow = ModRegistries.spirits.register(
@@ -43,6 +37,16 @@ public final class ModSpirits {
                         .addTalisman(ModTalismans.crystalline_road)
                         .addTalisman(ModTalismans.snowball_throw)
                         .addTalisman(ModTalismans.obsidian_road)
+                        .create()
+        );
+        nefir = ModRegistries.spirits.register(
+                new SpiritBuilder("nefir")
+                        .addActivityPeriod(10, 14)
+                        .addTalisman(ModTalismans.molten_skin)
+                        .addTalisman(ModTalismans.infernal_touch)
+                        .addTalisman(ModTalismans.hellisphere)
+                        .addTalisman(ModTalismans.nether_surge)
+                        .addTalisman(ModTalismans.piercing_inferno)
                         .create()
         );
         redwind = ModRegistries.spirits.register(

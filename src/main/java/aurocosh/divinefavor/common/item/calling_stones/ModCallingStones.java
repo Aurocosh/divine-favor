@@ -8,6 +8,7 @@ public final class ModCallingStones {
     public static ItemCallingStone calling_stone_allfire;
     public static ItemCallingStone calling_stone_arbow;
     public static ItemCallingStone calling_stone_blizrabi;
+    public static ItemCallingStone calling_stone_nefir;
     public static ItemCallingStone calling_stone_redwind;
     public static ItemCallingStone calling_stone_romol;
     public static ItemCallingStone calling_stone_squarefury;
@@ -17,6 +18,7 @@ public final class ModCallingStones {
         calling_stone_allfire = ModRegistries.items.register(new ItemCallingStone("allfire", ModSpirits.allfire, ModMultiBlocks.altar_allfire));
         calling_stone_arbow = ModRegistries.items.register(new ItemCallingStone("arbow", ModSpirits.arbow, ModMultiBlocks.altar_arbow));
         calling_stone_blizrabi = ModRegistries.items.register(new ItemCallingStone("blizrabi", ModSpirits.blizrabi, ModMultiBlocks.altar_blizrabi));
+        calling_stone_nefir = ModRegistries.items.register(new ItemCallingStone("nefir", ModSpirits.nefir, ModMultiBlocks.altar_nefir));
         calling_stone_redwind = ModRegistries.items.register(new ItemCallingStone("redwind", ModSpirits.redwind, ModMultiBlocks.altar_redwind));
         calling_stone_romol = ModRegistries.items.register(new ItemCallingStone("romol", ModSpirits.romol, ModMultiBlocks.altar_romol));
         calling_stone_squarefury = ModRegistries.items.register(new ItemCallingStone("squarefury", ModSpirits.squarefury, ModMultiBlocks.altar_squarefury));

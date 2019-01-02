@@ -1,11 +1,7 @@
 package aurocosh.divinefavor.common.core;
 
-import aurocosh.divinefavor.common.block.common.ModBlocks;
 import aurocosh.divinefavor.common.constants.ConstMisc;
-import aurocosh.divinefavor.common.item.calling_stones.ModCallingStones;
 import aurocosh.divinefavor.common.item.common.ModItems;
-import aurocosh.divinefavor.common.item.talismans.ItemTalisman;
-import aurocosh.divinefavor.common.item.wishing_stones.ItemWishingStone;
 import aurocosh.divinefavor.common.registry.ModRegistries;
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
