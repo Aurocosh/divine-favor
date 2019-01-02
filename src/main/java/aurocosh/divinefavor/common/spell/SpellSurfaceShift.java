@@ -2,6 +2,7 @@ package aurocosh.divinefavor.common.spell;
 
 import aurocosh.divinefavor.common.spell.base.ModSpell;
 import aurocosh.divinefavor.common.spell.base.SpellContext;
+import aurocosh.divinefavor.common.util.UtilCoordinates;
 import aurocosh.divinefavor.common.util.UtilEntity;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Blocks;
@@ -18,28 +19,11 @@ public class SpellSurfaceShift extends ModSpell {
 
     @Override
     protected void performActionServer(SpellContext context) {
-        BlockPos targetPos = findPlaceToTeleport(context.pos, context.world, MAX_TELEPORTATION_DISTANCE);
+        BlockPos targetPos = UtilCoordinates.findPlaceToStandAbove(context.pos, context.world, MAX_TELEPORTATION_DISTANCE);
         if (targetPos == null)
             return;
         UtilEntity.teleport(context.player, targetPos);
     }
 
-    private BlockPos findPlaceToTeleport(BlockPos start, World world, int limit) {
-        BlockPos currentPos = start;
-        boolean previousSecondIsAir = false;
-        boolean previousOneIsAir = false;
-        while (limit-- > 0) {
-            currentPos = currentPos.up();
-            if (previousOneIsAir && previousSecondIsAir)
-                return currentPos.down();
 
-            IBlockState state = world.getBlockState(currentPos);
-            if(state.getBlock() == Blocks.BEDROCK)
-                return null;
-
-            previousSecondIsAir = previousOneIsAir;
-            previousOneIsAir = world.isAirBlock(currentPos);
-        }
-        return null;
-    }
 }
