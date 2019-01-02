@@ -8,6 +8,7 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.init.MobEffects;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.EnumSkyBlock;
 import net.minecraft.world.World;
 
@@ -24,8 +25,12 @@ public class PotionNightEye extends ModPotion {
     @Override
     public void performEffect(EntityLivingBase entity, int amplifier) {
         BlockPos pos = entity.getPosition();
-        int level = entity.world.getLightFor(EnumSkyBlock.BLOCK,pos);
-        if(entity.world.getLightFor(EnumSkyBlock.BLOCK,pos) > TOLERABLE_LIGHT_LEVEL && !entity.isPotionActive(MobEffects.BLINDNESS))
+        World world = entity.world;
+
+        int skyLightSub = world.calculateSkylightSubtracted(1.0f);
+        int lightBlock = world.getLightFor(EnumSkyBlock.BLOCK, pos);
+        int lightSky = world.getLightFor(EnumSkyBlock.SKY, pos) - skyLightSub;
+        if (Math.max(lightBlock, lightSky) > TOLERABLE_LIGHT_LEVEL && !entity.isPotionActive(MobEffects.BLINDNESS))
             entity.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, BLINDNESS_DURATION));
     }
 
