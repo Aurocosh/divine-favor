@@ -78,6 +78,15 @@ public class UtilBlock {
         return true;
     }
 
+    public static boolean replaceBlock(EntityPlayer player, World world, BlockPos pos, Block block) {
+        if(world.isRemote)
+            return false;
+        if(!world.isBlockModifiable(player, pos))
+            return false;
+        world.setBlockState(pos, block.getDefaultState());
+        return true;
+    }
+
     public static boolean isAirOrReplaceable(World world, BlockPos pos){
         return world.isAirBlock(pos) || world.getBlockState(pos).getBlock().isReplaceable(world, pos);
     }

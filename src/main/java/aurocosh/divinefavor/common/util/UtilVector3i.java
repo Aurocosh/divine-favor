@@ -34,5 +34,10 @@ public class UtilVector3i {
         return directions;
     }
 
-
+    public static List<Vector3i> getNeighbours(Vector3i position){
+        List<Vector3i> neighbours = new LinkedList<>();
+        for (Vector3i direction : directNeighbours)
+            neighbours.add(position.add(direction));
+        return neighbours;
+    }
 }
