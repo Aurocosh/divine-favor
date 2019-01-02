@@ -28,6 +28,7 @@ public final class ModSpells {
     public static ModSpell molten_skin;
     public static ModSpell nether_surge;
     public static ModSpell obsidian_road;
+    public static ModSpell piercing_inferno;
     public static ModSpell searing_pulse;
     public static ModSpell small_fireball_throw;
     public static ModSpell snowball_throw;
@@ -65,6 +66,7 @@ public final class ModSpells {
         molten_skin = ModRegistries.spells.register(new SpellMoltenSkin());
         nether_surge = ModRegistries.spells.register(new SpellNetherSurge());
         obsidian_road = ModRegistries.spells.register(new SpellObsidianRoad());
+        piercing_inferno = ModRegistries.spells.register(new SpellPiercingInferno());
         searing_pulse = ModRegistries.spells.register(new SpellSearingPulse());
         small_fireball_throw = ModRegistries.spells.register(new SpellSmallFireballThrow());
         snowball_throw = ModRegistries.spells.register(new SpellSnowballThrow());

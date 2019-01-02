@@ -24,6 +24,7 @@ public class Vector3i implements IDeepCopy<Vector3i> {
     public final int y;
     public final int z;
 
+
     public Vector3i(int x, int y, int z) {
         this.x = x;
         this.y = y;
@@ -34,6 +35,18 @@ public class Vector3i implements IDeepCopy<Vector3i> {
         x = n;
         y = n;
         z = n;
+    }
+
+    public Vector3i(BlockPos pos) {
+        this.x = pos.getX();
+        this.y = pos.getY();
+        this.z = pos.getZ();
+    }
+
+    public Vector3i(Vec3i vec) {
+        this.x = vec.getX();
+        this.y = vec.getY();
+        this.z = vec.getZ();
     }
 
     public static Vector3i convert(BlockPos pos) {
