@@ -6,6 +6,7 @@ import aurocosh.divinefavor.common.potions.base.potion.ModPotionToggle;
 import aurocosh.divinefavor.common.potions.common.ModPotions;
 import aurocosh.divinefavor.common.util.UtilEntity;
 import net.minecraft.block.material.Material;
+import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -23,7 +24,7 @@ import static aurocosh.divinefavor.common.player_data.molten_skin.MoltenSkinData
 @Mod.EventBusSubscriber
 public class PotionMoltenSkin extends ModPotionToggle {
     private static float SPEED_MODIFIER = 0.14f;
-    private static int FRAMES_TO_INIT_FOG = 5;
+    private static int FRAMES_TO_INIT_FOG = 20;
 
     private static int intitFrames = FRAMES_TO_INIT_FOG;
 
@@ -55,7 +56,7 @@ public class PotionMoltenSkin extends ModPotionToggle {
     }
 
     @SideOnly(Side.CLIENT)
-    @SubscribeEvent(priority = EventPriority.NORMAL, receiveCanceled = true)
+    @SubscribeEvent(priority = EventPriority.LOW, receiveCanceled = true)
     public static void onFogDensity(EntityViewRenderEvent.FogDensity event) {
         if (isInLavaWithMoltenSkin(event)) {
             if (intitFrames-- <= 0) {

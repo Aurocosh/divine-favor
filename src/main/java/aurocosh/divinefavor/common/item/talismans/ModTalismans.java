@@ -29,6 +29,7 @@ public final class ModTalismans {
     public static ItemTalisman ignition;
     public static ItemTalisman infernal_touch;
     public static ItemTalisman miners_focus;
+    public static ItemTalisman mist_blade;
     public static ItemTalisman molten_skin;
     public static ItemTalisman nether_surge;
     public static ItemTalisman obsidian_road;
@@ -141,6 +142,11 @@ public final class ModTalismans {
                 .create());
         miners_focus = ModRegistries.items.register(new TalismanBuilder("miners_focus",2)
                 .setSpell(ModSpells.miners_focus)
+                .castOnUse()
+                .castOnRighClick()
+                .create());
+        mist_blade = ModRegistries.items.register(new TalismanBuilder("mist_blade",2)
+                .setSpell(ModSpells.mist_blade)
                 .castOnUse()
                 .castOnRighClick()
                 .create());

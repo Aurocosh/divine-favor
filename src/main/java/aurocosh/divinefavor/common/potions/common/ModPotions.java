@@ -9,6 +9,7 @@ public class ModPotions {
     public static ModPotion crystalline_road;
     public static ModPotion empower_axe;
     public static ModPotion empower_pickaxe;
+    public static ModPotion mist_blade;
     public static ModPotion obsidian_road;
     public static ModPotion stone_fever;
     public static ModPotion wild_sprint;
@@ -37,6 +38,7 @@ public class ModPotions {
         ground_flow = ModRegistries.potions.register(new PotionGroundFlow());
         grudge = ModRegistries.potions.register(new PotionGrudge());
         miners_focus = ModRegistries.potions.register(new PotionMinersFocus());
+        mist_blade = ModRegistries.potions.register(new PotionMistBlade());
         molten_skin = ModRegistries.potions.register(new PotionMoltenSkin());
         obsidian_road = ModRegistries.potions.register(new PotionLiquidWalking("obsidian_road", Blocks.LAVA));
         stone_fever = ModRegistries.potions.register(new PotionStoneFever());
