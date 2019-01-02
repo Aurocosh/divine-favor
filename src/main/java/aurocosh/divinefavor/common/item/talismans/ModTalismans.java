@@ -32,6 +32,7 @@ public final class ModTalismans {
     public static ItemTalisman mist_blade;
     public static ItemTalisman molten_skin;
     public static ItemTalisman nether_surge;
+    public static ItemTalisman night_eye;
     public static ItemTalisman obsidian_road;
     public static ItemTalisman piercing_inferno;
     public static ItemTalisman searing_pulse;
@@ -158,6 +159,11 @@ public final class ModTalismans {
         nether_surge = ModRegistries.items.register(new TalismanBuilder("nether_surge",6)
                 .setSpell(ModSpells.nether_surge)
                 .castOnUse()
+                .create());
+        night_eye = ModRegistries.items.register(new TalismanBuilder("night_eye",4)
+                .setSpell(ModSpells.night_eye)
+                .castOnUse()
+                .castOnRighClick()
                 .create());
         obsidian_road = ModRegistries.items.register(new TalismanBuilder("obsidian_road",5)
                 .setSpell(ModSpells.obsidian_road)
