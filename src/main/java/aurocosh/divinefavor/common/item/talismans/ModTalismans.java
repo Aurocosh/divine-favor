@@ -8,6 +8,7 @@ import java.util.List;
 
 public final class ModTalismans {
     public static ItemTalisman arrowThrowTalisman;
+    public static ItemTalisman blink;
     public static ItemTalisman bonemeal;
     public static ItemTalisman butchering_strike;
     public static ItemTalisman clock;
@@ -53,6 +54,11 @@ public final class ModTalismans {
     public static void preInit() {
         arrowThrowTalisman = ModRegistries.items.register(new TalismanBuilder("arrow_throw",20)
                 .setSpell(ModSpells.arrow_throw)
+                .castOnUse()
+                .castOnRighClick()
+                .create());
+        blink = ModRegistries.items.register(new TalismanBuilder("blink",10)
+                .setSpell(ModSpells.blink)
                 .castOnUse()
                 .castOnRighClick()
                 .create());
