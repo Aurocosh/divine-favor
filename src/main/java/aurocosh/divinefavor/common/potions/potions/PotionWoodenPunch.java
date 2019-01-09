@@ -1,5 +1,6 @@
 package aurocosh.divinefavor.common.potions.potions;
 
+import aurocosh.divinefavor.common.item.talismans.ItemTalisman;
 import aurocosh.divinefavor.common.item.talismans.ModTalismans;
 import aurocosh.divinefavor.common.network.message.client.spell_uses.MessageSyncSpellUses;
 import aurocosh.divinefavor.common.player_data.spell_count.ISpellUsesHandler;
@@ -51,6 +52,7 @@ public class PotionWoodenPunch extends ModPotionToggleLimited {
         ISpellUsesHandler usesHandler = player.getCapability(CAPABILITY_SPELL_USES, null);
         assert usesHandler != null;
 
+        ItemTalisman talisman = ModPotions.wooden_punch.getTalisman();
         if (!usesHandler.consumeSpellUse(talisman.getId()))
             return;
         int usesLeft = usesHandler.getSpellUses(talisman.getId());

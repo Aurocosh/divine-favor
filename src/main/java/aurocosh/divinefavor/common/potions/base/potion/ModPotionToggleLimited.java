@@ -15,7 +15,7 @@ import static aurocosh.divinefavor.common.player_data.grudge.GrudgeDataHandler.C
 import static aurocosh.divinefavor.common.player_data.spell_count.SpellUsesDataHandler.CAPABILITY_SPELL_USES;
 
 public abstract class ModPotionToggleLimited extends ModPotionToggle {
-    protected static ItemTalisman talisman;
+    protected ItemTalisman talisman;
 
     public ModPotionToggleLimited(String name, boolean beneficial, int potionColor) {
         super(name, beneficial, potionColor);

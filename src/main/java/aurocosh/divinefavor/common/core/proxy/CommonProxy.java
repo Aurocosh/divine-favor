@@ -16,6 +16,7 @@ import aurocosh.divinefavor.common.network.base.NetworkWrappedClientMessage;
 import aurocosh.divinefavor.common.network.base.NetworkWrappedServerMessage;
 import aurocosh.divinefavor.common.network.common.MessageRegister;
 import aurocosh.divinefavor.common.network.common.NetworkHandler;
+import aurocosh.divinefavor.common.player_data.escape_plan.EscapePlanDataHandler;
 import aurocosh.divinefavor.common.player_data.molten_skin.MoltenSkinDataHandler;
 import aurocosh.divinefavor.common.player_data.focused_fury.FocusedFuryDataHandler;
 import aurocosh.divinefavor.common.player_data.grudge.GrudgeDataHandler;
@@ -60,6 +61,7 @@ public class CommonProxy {
         NetworkWrappedClientMessage.setNetworkWrapper(NetworkHandler.INSTANCE);
         NetworkWrappedServerMessage.setNetworkWrapper(NetworkHandler.INSTANCE);
 
+        EscapePlanDataHandler.register();
         FocusedFuryDataHandler.register();
         GrimoireDataHandler.register();
         GrudgeDataHandler.register();

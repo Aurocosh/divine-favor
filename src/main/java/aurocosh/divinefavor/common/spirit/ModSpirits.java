@@ -82,6 +82,8 @@ public final class ModSpirits {
                         .addActivityPeriod(6, 12)
                         .addTalisman(ModTalismans.fell_tree)
                         .addTalisman(ModTalismans.wooden_punch)
+
+                        .addTalisman(ModTalismans.wall_slip)
                         .create()
         );
     }
