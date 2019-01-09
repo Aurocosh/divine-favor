@@ -32,7 +32,7 @@ public class PotionEscapePlan extends ModPotion {
 
         IEscapePlanHandler planHandler = player.getCapability(CAPABILITY_ESCAPE_PLAN, null);
         assert planHandler != null;
-        UtilEntity.teleport(player, planHandler.getDimension(), planHandler.getPosition());
+        UtilEntity.teleport(player, planHandler.getGlobalPosition());
         player.removePotionEffect(ModPotions.escape_plan);
     }
 

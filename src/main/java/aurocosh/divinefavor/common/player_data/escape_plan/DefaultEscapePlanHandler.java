@@ -1,34 +1,22 @@
 package aurocosh.divinefavor.common.player_data.escape_plan;
 
-import net.minecraft.util.math.BlockPos;
+import aurocosh.divinefavor.common.lib.GlobalBlockPos;
 
 // The default implementation of the capability. Holds all the logic.
 public class DefaultEscapePlanHandler implements IEscapePlanHandler {
-    private BlockPos pos;
-    private int dimensionId;
+    private GlobalBlockPos pos;
 
     public DefaultEscapePlanHandler() {
-        this.pos = new BlockPos(0,0,0);
-        this.dimensionId = 1;
+        pos = new GlobalBlockPos(0, 0, 0, 1);
     }
 
     @Override
-    public BlockPos getPosition() {
+    public GlobalBlockPos getGlobalPosition() {
         return pos;
     }
 
     @Override
-    public void setPosition(BlockPos pos) {
+    public void setGlobalPosition(GlobalBlockPos pos) {
         this.pos = pos;
-    }
-
-    @Override
-    public int getDimension() {
-        return dimensionId;
-    }
-
-    @Override
-    public void setDimension(int dimensionId) {
-        this.dimensionId = dimensionId;
     }
 }

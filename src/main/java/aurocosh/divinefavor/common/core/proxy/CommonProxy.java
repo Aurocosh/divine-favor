@@ -21,6 +21,7 @@ import aurocosh.divinefavor.common.player_data.molten_skin.MoltenSkinDataHandler
 import aurocosh.divinefavor.common.player_data.focused_fury.FocusedFuryDataHandler;
 import aurocosh.divinefavor.common.player_data.grudge.GrudgeDataHandler;
 import aurocosh.divinefavor.common.player_data.interaction_handler.InteractionDataHandler;
+import aurocosh.divinefavor.common.player_data.pearl_crumbs.PearlCrumbsDataHandler;
 import aurocosh.divinefavor.common.player_data.spell_count.SpellUsesDataHandler;
 import aurocosh.divinefavor.common.potions.common.ModPotions;
 import aurocosh.divinefavor.common.receipes.ModRecipes;
@@ -67,6 +68,7 @@ public class CommonProxy {
         GrudgeDataHandler.register();
         InteractionDataHandler.register();
         MoltenSkinDataHandler.register();
+        PearlCrumbsDataHandler.register();
         SpellUsesDataHandler.register();
 
         NetworkRegistry.INSTANCE.registerGuiHandler(DivineFavor.instance, new GuiHandler());

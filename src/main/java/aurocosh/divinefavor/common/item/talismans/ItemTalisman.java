@@ -68,6 +68,9 @@ public class ItemTalisman extends ModItem implements IIndexedEntry {
     }
 
     private boolean claimCost(SpellContext context) {
+        if(!spell.isConsumeCharge(context))
+            return true;
+
         ISpellUsesHandler usesHandler = context.player.getCapability(CAPABILITY_SPELL_USES, null);
         assert usesHandler != null;
 
