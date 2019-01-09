@@ -87,46 +87,62 @@ public class UtilCoordinates {
     }
 
     public static BlockPos findPlaceToSpawn(BlockPos start, World world, int limit) {
-        BlockPos pos = findPlaceToStandAbove(start.down(), world, limit);
+        BlockPos pos = findPlaceToTeleportAbove(start.down(), world, limit);
         if (pos != null)
             return pos;
-        return findPlaceToStandBelow(start.up(), world, limit);
+        return findPlaceToStandBelow(start.up(), world, limit, true);
     }
 
-    public static BlockPos findPlaceToStandAbove(BlockPos start, World world, int limit) {
-        BlockPos currentPos = start;
-        boolean previousSecondIsAir = false;
-        boolean previousOneIsAir = false;
+    public static BlockPos findPlaceToTeleport(BlockPos start, World world, EnumFacing facing, int limit, boolean needPlaceToStand) {
+        BlockPos pos = start;
         while (limit-- > 0) {
-            currentPos = currentPos.up();
-            if (previousOneIsAir && previousSecondIsAir)
-                return currentPos.down();
-
-            IBlockState state = world.getBlockState(currentPos);
+            pos = pos.offset(facing);
+            if(!world.isAirBlock(pos) || !world.isAirBlock(pos.up()))
+                continue;
+            if(!needPlaceToStand)
+                return pos;
+            IBlockState state = world.getBlockState(pos.down());
             if (state.getBlock() == Blocks.BEDROCK)
                 return null;
-
-            previousSecondIsAir = previousOneIsAir;
-            previousOneIsAir = world.isAirBlock(currentPos);
+            if (state.isSideSolid(world, pos.down(), EnumFacing.UP))
+                return pos;
         }
         return null;
     }
 
-    public static BlockPos findPlaceToStandBelow(BlockPos start, World world, int limit) {
-        BlockPos currentPos = start;
+    public static BlockPos findPlaceToTeleportAbove(BlockPos start, World world, int limit) {
+        BlockPos pos = start;
         boolean previousSecondIsAir = false;
         boolean previousOneIsAir = false;
         while (limit-- > 0) {
-            currentPos = currentPos.down();
-            IBlockState state = world.getBlockState(currentPos);
+            pos = pos.up();
+            if (previousOneIsAir && previousSecondIsAir)
+                return pos.down();
 
-            if (previousOneIsAir && previousSecondIsAir && state.isSideSolid(world, currentPos, EnumFacing.UP))
-                return currentPos;
+            IBlockState state = world.getBlockState(pos);
             if (state.getBlock() == Blocks.BEDROCK)
                 return null;
 
             previousSecondIsAir = previousOneIsAir;
-            previousOneIsAir = world.isAirBlock(currentPos);
+            previousOneIsAir = world.isAirBlock(pos);
+        }
+        return null;
+    }
+
+    public static BlockPos findPlaceToStandBelow(BlockPos start, World world, int limit, boolean needPlaceToStand) {
+        BlockPos pos = start;
+        boolean previousSecondIsAir = false;
+        boolean previousOneIsAir = false;
+        while (limit-- > 0) {
+            pos = pos.down();
+            IBlockState state = world.getBlockState(pos);
+            if (previousOneIsAir && previousSecondIsAir && (!needPlaceToStand || state.isSideSolid(world, pos, EnumFacing.UP)))
+                return pos.up();
+            if (state.getBlock() == Blocks.BEDROCK)
+                return null;
+
+            previousSecondIsAir = previousOneIsAir;
+            previousOneIsAir = world.isAirBlock(pos);
         }
         return null;
     }

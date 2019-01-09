@@ -9,6 +9,7 @@ public class ModPotions {
     public static ModPotion crystalline_road;
     public static ModPotion empower_axe;
     public static ModPotion empower_pickaxe;
+    public static ModPotion escape_plan;
     public static ModPotion mist_blade;
     public static ModPotion night_eye;
     public static ModPotion obsidian_road;
@@ -34,6 +35,7 @@ public class ModPotions {
         crystalline_road = ModRegistries.potions.register(new PotionLiquidWalking("crystalline_road", Blocks.WATER));
         empower_axe = ModRegistries.potions.register(new PotionEmpowerAxe());
         empower_pickaxe = ModRegistries.potions.register(new PotionEmpowerPickaxe());
+        escape_plan = ModRegistries.potions.register(new PotionEscapePlan());
         fall_negation = ModRegistries.potions.register(new PotionFallNegation());
         focused_fury = ModRegistries.potions.register(new PotionFocusedFury());
         ground_flow = ModRegistries.potions.register(new PotionGroundFlow());

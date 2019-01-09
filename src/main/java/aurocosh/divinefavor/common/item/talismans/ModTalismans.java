@@ -19,6 +19,7 @@ public final class ModTalismans {
     public static ItemTalisman earthen_dive;
     public static ItemTalisman empower_axe;
     public static ItemTalisman empower_pickaxe;
+    public static ItemTalisman escape_plan;
     public static ItemTalisman fall_negation;
     public static ItemTalisman fell_tree;
     public static ItemTalisman focused_fury;
@@ -42,6 +43,7 @@ public final class ModTalismans {
     public static ItemTalisman stoneball_throw;
     public static ItemTalisman surface_shift;
     public static ItemTalisman toadic_jump;
+    public static ItemTalisman wall_slip;
     public static ItemTalisman wild_sprint;
     public static ItemTalisman wind_step;
     public static ItemTalisman winter_breath;
@@ -97,6 +99,11 @@ public final class ModTalismans {
                 .create());
         empower_pickaxe = ModRegistries.items.register(new TalismanBuilder("empower_pickaxe",3)
                 .setSpell(ModSpells.empower_pickaxe)
+                .castOnUse()
+                .castOnRighClick()
+                .create());
+        escape_plan = ModRegistries.items.register(new TalismanBuilder("escape_plan",3)
+                .setSpell(ModSpells.escape_plan)
                 .castOnUse()
                 .castOnRighClick()
                 .create());
@@ -205,6 +212,10 @@ public final class ModTalismans {
                 .setSpell(ModSpells.toadic_jump)
                 .castOnUse()
                 .castOnRighClick()
+                .create());
+        wall_slip = ModRegistries.items.register(new TalismanBuilder("wall_slip",20)
+                .setSpell(ModSpells.wall_slip)
+                .castOnUse()
                 .create());
         wild_sprint = ModRegistries.items.register(new TalismanBuilder("wild_sprint",3)
                 .setSpell(ModSpells.wild_sprint)

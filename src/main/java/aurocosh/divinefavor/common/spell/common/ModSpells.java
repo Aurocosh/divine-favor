@@ -15,6 +15,7 @@ public final class ModSpells {
     public static ModSpell earthen_dive;
     public static ModSpell empower_axe;
     public static ModSpell empower_pickaxe;
+    public static ModSpell escape_plan;
     public static ModSpell fall_negation;
     public static ModSpell fell_tree;
     public static ModSpell focused_fury;
@@ -39,6 +40,7 @@ public final class ModSpells {
     public static ModSpell surface_shift;
     public static ModSpell tell_time;
     public static ModSpell toadic_jump;
+    public static ModSpell wall_slip;
     public static ModSpell wild_sprint;
     public static ModSpell wind_step;
     public static ModSpell winter_breath;
@@ -55,6 +57,7 @@ public final class ModSpells {
         earthen_dive = ModRegistries.spells.register(new SpellEarthenDive());
         empower_axe = ModRegistries.spells.register(new SpellEmpowerAxe());
         empower_pickaxe = ModRegistries.spells.register(new SpellEmpowerPickaxe());
+        escape_plan = ModRegistries.spells.register(new SpellEscapePlan());
         fall_negation = ModRegistries.spells.register(new SpellFallNegation());
         fell_tree = ModRegistries.spells.register(new SpellFellTree());
         focused_fury = ModRegistries.spells.register(new SpellFocusedFury());
@@ -79,6 +82,7 @@ public final class ModSpells {
         surface_shift = ModRegistries.spells.register(new SpellSurfaceShift());
         tell_time = ModRegistries.spells.register(new SpellTellTime());
         toadic_jump = ModRegistries.spells.register(new SpellToadicJump());
+        wall_slip = ModRegistries.spells.register(new SpellWallSlip());
         wild_sprint = ModRegistries.spells.register(new SpellWildSprint());
         wind_step = ModRegistries.spells.register(new SpellWindStep());
         winter_breath = ModRegistries.spells.register(new SpellWinterBreath());

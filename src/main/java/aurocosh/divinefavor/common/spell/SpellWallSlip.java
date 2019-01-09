@@ -4,24 +4,23 @@ import aurocosh.divinefavor.common.spell.base.ModSpell;
 import aurocosh.divinefavor.common.spell.base.SpellContext;
 import aurocosh.divinefavor.common.util.UtilCoordinates;
 import aurocosh.divinefavor.common.util.UtilEntity;
-import net.minecraft.block.state.IBlockState;
-import net.minecraft.init.Blocks;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
 
-public class SpellEarthenDive extends ModSpell {
+public class SpellWallSlip extends ModSpell {
     private final int MAX_TELEPORTATION_DISTANCE = 64;
 
-    public SpellEarthenDive() {
-        super("earthen_dive");
+    public SpellWallSlip() {
+        super("wall_slip");
     }
 
     @Override
     protected void performActionServer(SpellContext context) {
-        BlockPos targetPos = UtilCoordinates.findPlaceToStandBelow(context.pos, context.world, MAX_TELEPORTATION_DISTANCE, true);
-        if (targetPos == null)
+        EnumFacing facing = context.facing;
+        if(facing == EnumFacing.DOWN || facing == EnumFacing.UP)
             return;
-        UtilEntity.teleport(context.player, targetPos);
+        BlockPos pos = UtilCoordinates.findPlaceToTeleport(context.pos.down(), context.world, facing.getOpposite(), MAX_TELEPORTATION_DISTANCE, false);
+        if (pos != null)
+            UtilEntity.teleport(context.player, pos.down());
     }
 }
