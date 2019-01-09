@@ -35,6 +35,7 @@ public final class ModTalismans {
     public static ItemTalisman nether_surge;
     public static ItemTalisman night_eye;
     public static ItemTalisman obsidian_road;
+    public static ItemTalisman pearl_crumbs;
     public static ItemTalisman piercing_inferno;
     public static ItemTalisman searing_pulse;
     public static ItemTalisman small_fireball_throw;
@@ -174,6 +175,11 @@ public final class ModTalismans {
                 .create());
         obsidian_road = ModRegistries.items.register(new TalismanBuilder("obsidian_road",5)
                 .setSpell(ModSpells.obsidian_road)
+                .castOnUse()
+                .castOnRighClick()
+                .create());
+        pearl_crumbs = ModRegistries.items.register(new TalismanBuilder("pearl_crumbs",10)
+                .setSpell(ModSpells.pearl_crumbs)
                 .castOnUse()
                 .castOnRighClick()
                 .create());

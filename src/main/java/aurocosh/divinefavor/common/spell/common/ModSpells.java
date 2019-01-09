@@ -31,6 +31,7 @@ public final class ModSpells {
     public static ModSpell nether_surge;
     public static ModSpell night_eye;
     public static ModSpell obsidian_road;
+    public static ModSpell pearl_crumbs;
     public static ModSpell piercing_inferno;
     public static ModSpell searing_pulse;
     public static ModSpell small_fireball_throw;
@@ -73,6 +74,7 @@ public final class ModSpells {
         nether_surge = ModRegistries.spells.register(new SpellNetherSurge());
         night_eye = ModRegistries.spells.register(new SpellNightEye());
         obsidian_road = ModRegistries.spells.register(new SpellObsidianRoad());
+        pearl_crumbs = ModRegistries.spells.register(new SpellPearlCrumbs());
         piercing_inferno = ModRegistries.spells.register(new SpellPiercingInferno());
         searing_pulse = ModRegistries.spells.register(new SpellSearingPulse());
         small_fireball_throw = ModRegistries.spells.register(new SpellSmallFireballThrow());

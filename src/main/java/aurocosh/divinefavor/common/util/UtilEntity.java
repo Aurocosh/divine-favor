@@ -1,5 +1,6 @@
 package aurocosh.divinefavor.common.util;
 
+import aurocosh.divinefavor.common.lib.GlobalBlockPos;
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -47,6 +48,10 @@ public class UtilEntity {
 
     public static Vec3d toPlayerPosition(BlockPos pos) {
         return new Vec3d(pos.getX() + 0.5, pos.getY() + 1.5, pos.getZ() + 0.5);
+    }
+
+    public static void teleport(EntityPlayer player, GlobalBlockPos destination) {
+        teleport(player, destination.dimensionId, toPlayerPosition(destination.pos));
     }
 
     public static void teleport(EntityPlayer player, BlockPos destination) {

@@ -1,11 +1,8 @@
 package aurocosh.divinefavor.common.player_data.escape_plan;
 
-import net.minecraft.util.math.BlockPos;
+import aurocosh.divinefavor.common.lib.GlobalBlockPos;
 
 public interface IEscapePlanHandler {
-    BlockPos getPosition();
-    void setPosition(BlockPos pos);
-
-    int getDimension();
-    void setDimension(int dimensionId);
+    GlobalBlockPos getGlobalPosition();
+    void setGlobalPosition(GlobalBlockPos pos);
 }
