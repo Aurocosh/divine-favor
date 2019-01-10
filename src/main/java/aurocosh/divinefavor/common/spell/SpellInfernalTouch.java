@@ -11,10 +11,6 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 public class SpellInfernalTouch extends ModSpell {
-    public SpellInfernalTouch() {
-        super("infernal_touch");
-    }
-
     @Override
     protected void performActionServer(SpellContext context) {
         BlockPos pos = context.pos;

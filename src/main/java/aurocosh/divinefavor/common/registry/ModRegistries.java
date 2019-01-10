@@ -13,7 +13,6 @@ public class ModRegistries {
     public static RegistryAssistant<ModBlock> blocks = new RegistryAssistant<>();
     public static RegistryAssistant<ModItem> items = new RegistryAssistant<>();
     public static RegistryAssistant<ModMultiBlock> multiBlocks = new RegistryAssistant<>();
-    public static RegistryAssistant<ModSpell> spells = new RegistryAssistant<>();
     public static RegistryAssistant<ModSpirit> spirits = new RegistryAssistant<>();
     public static RegistryAssistant<ModPotion> potions = new RegistryAssistant<>();
 }

@@ -11,10 +11,6 @@ import net.minecraft.entity.player.EntityPlayer;
 import static aurocosh.divinefavor.common.player_data.pearl_crumbs.PearlCrumbsDataHandler.CAPABILITY_PEARL_CRUMBS;
 
 public class SpellPearlCrumbs extends ModSpell {
-    public SpellPearlCrumbs() {
-        super("pearl_crumbs");
-    }
-
     @Override
     protected void performActionServer(SpellContext context) {
         EntityPlayer player = context.player;

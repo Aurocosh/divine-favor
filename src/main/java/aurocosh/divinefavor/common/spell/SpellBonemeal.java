@@ -9,10 +9,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
 
 public class SpellBonemeal extends ModSpell {
-    public SpellBonemeal() {
-        super("bonemeal");
-    }
-
     @Override
     protected void performActionServer(SpellContext context) {
         BlockPos pos = context.pos;

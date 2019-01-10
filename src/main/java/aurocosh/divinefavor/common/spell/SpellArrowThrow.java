@@ -2,6 +2,7 @@ package aurocosh.divinefavor.common.spell;
 
 import aurocosh.divinefavor.common.spell.base.ModSpell;
 import aurocosh.divinefavor.common.spell.base.SpellContext;
+import aurocosh.divinefavor.common.util.UtilRandom;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntityArrow;
@@ -14,10 +15,6 @@ import net.minecraft.util.SoundCategory;
 import net.minecraft.world.World;
 
 public class SpellArrowThrow extends ModSpell {
-    public SpellArrowThrow() {
-        super("arrow_throw");
-    }
-
     /**
      * Gets the velocity of the arrow entity from the bow's favorCost
      */
@@ -92,7 +89,7 @@ public class SpellArrowThrow extends ModSpell {
                         worldIn.spawnEntity(entityarrow);
                     }
 
-                    worldIn.playSound((EntityPlayer) null, entityplayer.posX, entityplayer.posY, entityplayer.posZ, SoundEvents.ENTITY_ARROW_SHOOT, SoundCategory.PLAYERS, 1.0F, 1.0F / (spellRand.nextFloat() * 0.4F + 1.2F) + f * 0.5F);
+                    worldIn.playSound((EntityPlayer) null, entityplayer.posX, entityplayer.posY, entityplayer.posZ, SoundEvents.ENTITY_ARROW_SHOOT, SoundCategory.PLAYERS, 1.0F, 1.0F / (UtilRandom.random.nextFloat() * 0.4F + 1.2F) + f * 0.5F);
 
                     if (!flag1 && !entityplayer.capabilities.isCreativeMode) {
                         itemstack.shrink(1);

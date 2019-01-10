@@ -21,10 +21,6 @@ import java.util.Set;
 import java.util.Stack;
 
 public class SpellFellTree extends ModSpell {
-    public SpellFellTree() {
-        super("fell_tree");
-    }
-
     @Override
     protected void performActionServer(SpellContext context) {
         ItemStack talisman = context.player.getHeldItem(context.hand);

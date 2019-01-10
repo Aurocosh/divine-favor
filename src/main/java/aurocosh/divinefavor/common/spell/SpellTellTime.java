@@ -5,10 +5,6 @@ import aurocosh.divinefavor.common.spell.base.SpellContext;
 import net.minecraft.util.text.TextComponentString;
 
 public class SpellTellTime extends ModSpell {
-    public SpellTellTime() {
-        super("tell_time");
-    }
-
     @Override
     protected void performActionClient(SpellContext context) {
         long time = context.world.getWorldTime();

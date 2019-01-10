@@ -9,10 +9,6 @@ import aurocosh.divinefavor.common.util.UtilTick;
 public class SpellWildSprint extends ModSpell {
     private final int SLOWNESS_DURATION = UtilTick.secondsToTicks(10);
 
-    public SpellWildSprint() {
-        super("wild_sprint");
-    }
-
     @Override
     protected void performActionServer(SpellContext context) {
         context.player.addPotionEffect(new ModEffectTrigger(ModPotions.wild_charge,SLOWNESS_DURATION));

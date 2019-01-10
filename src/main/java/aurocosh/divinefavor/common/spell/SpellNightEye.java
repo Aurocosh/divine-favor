@@ -11,10 +11,6 @@ public class SpellNightEye extends ModSpell {
     private final int SHORT = 1800;
     private final int NORMAL = 3600;
 
-    public SpellNightEye() {
-        super("night_eye");
-    }
-
     @Override
     protected void performActionServer(SpellContext context) {
         context.player.addPotionEffect(new ModEffect(ModPotions.night_eye, NORMAL));

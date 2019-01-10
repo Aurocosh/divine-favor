@@ -11,10 +11,6 @@ public class SpellEmpowerAxe extends ModSpell {
     private final int NORMAL = 3600;
     private final int TEST = 500;
 
-    public SpellEmpowerAxe() {
-        super("empower_axe");
-    }
-
     @Override
     protected void performActionServer(SpellContext context) {
         PotionEffect effect = new ModEffect(ModPotions.empower_axe, TEST);

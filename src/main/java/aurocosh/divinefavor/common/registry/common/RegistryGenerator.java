@@ -15,10 +15,6 @@ public final class RegistryGenerator {
 
     @SubscribeEvent
     public static void onCreateRegistry(RegistryEvent.NewRegistry event) {
-        new RegistryBuilder<ModSpell>()
-                .setType(ModSpell.class)
-                .setName(ResourceNamer.getFullName(REGESTRY_PREFIX,"spells"))
-                .create();
         new RegistryBuilder<ModSpirit>()
                 .setType(ModSpirit.class)
                 .setName(ResourceNamer.getFullName(REGESTRY_PREFIX,"spirits"))

@@ -54,10 +54,6 @@ public class SpellNetherSurge extends ModSpell {
         possibleEnemies.add(EntityWither.class, 0.0001d);
     }
 
-    public SpellNetherSurge() {
-        super("nether_surge");
-    }
-
     @Override
     protected void performActionServer(SpellContext context) {
         assert context.castType == CastType.ITEM_USE_CAST;

@@ -11,10 +11,6 @@ public class SpellStoneFever extends ModSpell {
     private final int NORMAL = 3600;
     private final int TEST = 500;
 
-    public SpellStoneFever() {
-        super("stone_fever");
-    }
-
     @Override
     protected void performActionServer(SpellContext context) {
         PotionEffect effect = new ModEffect(ModPotions.stone_fever, NORMAL);

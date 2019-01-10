@@ -10,10 +10,6 @@ public class SpellWindStep extends ModSpell {
     private static float ADDED_VELOCITY_Y = 1.2f;
     private static float ADDED_VELOCITY_XZ = 3;
 
-    public SpellWindStep() {
-        super("wind_step");
-    }
-
     @Override
     protected void performActionServer(SpellContext context) {
         addVelocity(context.player);
