@@ -36,6 +36,8 @@ public final class ModTalismans {
     public static ItemTalisman nether_surge;
     public static ItemTalisman night_eye;
     public static ItemTalisman obsidian_road;
+    public static ItemTalisman overblink;
+    public static ItemTalisman overwarp;
     public static ItemTalisman pearl_crumbs;
     public static ItemTalisman piercing_inferno;
     public static ItemTalisman searing_pulse;
@@ -182,6 +184,16 @@ public final class ModTalismans {
                 .create());
         obsidian_road = ModRegistries.items.register(new TalismanBuilder("obsidian_road",5)
                 .setSpell(new SpellObsidianRoad())
+                .castOnUse()
+                .castOnRighClick()
+                .create());
+        overblink = ModRegistries.items.register(new TalismanBuilder("overblink",10)
+                .setSpell(new SpellBlink(50,true))
+                .castOnUse()
+                .castOnRighClick()
+                .create());
+        overwarp = ModRegistries.items.register(new TalismanBuilder("overwarp",20)
+                .setSpell(new SpellBlink(80,false))
                 .castOnUse()
                 .castOnRighClick()
                 .create());
