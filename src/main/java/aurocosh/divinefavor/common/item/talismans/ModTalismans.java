@@ -45,6 +45,7 @@ public final class ModTalismans {
     public static ItemTalisman snowball_throw;
     public static ItemTalisman stone_fever;
     public static ItemTalisman stoneball_throw;
+    public static ItemTalisman surface_blink;
     public static ItemTalisman surface_shift;
     public static ItemTalisman toadic_jump;
     public static ItemTalisman wall_slip;
@@ -226,6 +227,11 @@ public final class ModTalismans {
                 .create());
         stoneball_throw = ModRegistries.items.register(new TalismanBuilder("stoneball_throw",30)
                 .setSpell(new SpellStoneballThrow())
+                .castOnUse()
+                .castOnRighClick()
+                .create());
+        surface_blink = ModRegistries.items.register(new TalismanBuilder("surface_blink",20)
+                .setSpell(new SpellSurfaceBlink(20))
                 .castOnUse()
                 .castOnRighClick()
                 .create());
