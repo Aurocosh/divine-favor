@@ -9,10 +9,6 @@ import net.minecraft.potion.PotionEffect;
 public class SpellCrushingPalm extends ModSpell {
     private final int USES = 10;
 
-    public SpellCrushingPalm() {
-        super("crushing_palm");
-    }
-
     @Override
     protected void performActionServer(SpellContext context) {
         PotionEffect effect = new ModEffectCharge(ModPotions.crushing_palm, USES);

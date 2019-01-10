@@ -19,10 +19,6 @@ public class SpellHeatWave extends ModSpell {
     private final int CHANCE_TO_SET_ENEMY_ON_FIRE = 80;
     private final int CHANCE_TO_SET_GROUND_ON_FIRE = 20;
 
-    public SpellHeatWave() {
-        super("heat_wave");
-    }
-
     @Override
     protected void performActionServer(SpellContext context) {
         Vector3i origin = Vector3i.convert(context.player.getPosition());

@@ -9,10 +9,6 @@ import net.minecraft.potion.PotionEffect;
 public class SpellToadicJump extends ModSpell {
     private final int USES = 10;
 
-    public SpellToadicJump() {
-        super("toadic_jump");
-    }
-
     @Override
     protected void performActionServer(SpellContext context) {
         PotionEffect effect = new ModEffectCharge(ModPotions.toadic_jump, USES);

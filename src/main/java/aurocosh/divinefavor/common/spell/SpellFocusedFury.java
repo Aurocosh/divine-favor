@@ -9,10 +9,6 @@ import aurocosh.divinefavor.common.util.UtilTick;
 public class SpellFocusedFury extends ModSpell {
     private final int FURY_DURATION = UtilTick.minutesToTicks(1);
 
-    public SpellFocusedFury() {
-        super("focused_fury");
-    }
-
     @Override
     protected void performActionServer(SpellContext context) {
         context.player.addPotionEffect(new ModEffectTrigger(ModPotions.focused_fury, FURY_DURATION));

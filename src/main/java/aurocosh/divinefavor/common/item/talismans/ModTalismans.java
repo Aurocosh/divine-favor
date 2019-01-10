@@ -2,7 +2,7 @@ package aurocosh.divinefavor.common.item.talismans;
 
 import aurocosh.divinefavor.common.registry.ModRegistries;
 import aurocosh.divinefavor.common.registry.mappers.ModMappers;
-import aurocosh.divinefavor.common.spell.common.ModSpells;
+import aurocosh.divinefavor.common.spell.*;
 
 import java.util.List;
 
@@ -46,6 +46,7 @@ public final class ModTalismans {
     public static ItemTalisman surface_shift;
     public static ItemTalisman toadic_jump;
     public static ItemTalisman wall_slip;
+    public static ItemTalisman warp;
     public static ItemTalisman wild_sprint;
     public static ItemTalisman wind_step;
     public static ItemTalisman winter_breath;
@@ -53,205 +54,210 @@ public final class ModTalismans {
 
     public static void preInit() {
         arrowThrowTalisman = ModRegistries.items.register(new TalismanBuilder("arrow_throw",20)
-                .setSpell(ModSpells.arrow_throw)
+                .setSpell(new SpellArrowThrow())
                 .castOnUse()
                 .castOnRighClick()
                 .create());
         blink = ModRegistries.items.register(new TalismanBuilder("blink",10)
-                .setSpell(ModSpells.blink)
+                .setSpell(new SpellBlink(5,true))
                 .castOnUse()
                 .castOnRighClick()
                 .create());
         bonemeal = ModRegistries.items.register(new TalismanBuilder("bonemeal",10)
-                .setSpell(ModSpells.bonemeal)
+                .setSpell(new SpellBonemeal())
                 .castOnUse()
                 .create());
         butchering_strike = ModRegistries.items.register(new TalismanBuilder("butchering_strike",15)
-                .setSpell(ModSpells.butchering_strike)
+                .setSpell(new SpellButcheringStrike())
                 .castOnUse()
                 .castOnRighClick()
                 .create());
         combustion = ModRegistries.items.register(new TalismanBuilder("combustion",3)
-                .setSpell(ModSpells.combustion)
+                .setSpell(new SpellCombustion())
                 .castOnUse()
                 .create());
         consuming_fury = ModRegistries.items.register(new TalismanBuilder("consuming_fury",2)
-                .setSpell(ModSpells.consuming_fury)
+                .setSpell(new SpellConsumingFury())
                 .castOnUse()
                 .castOnRighClick()
                 .create());
         crushing_palm = ModRegistries.items.register(new TalismanBuilder("crushing_palm",20)
-                .setSpell(ModSpells.crushing_palm)
+                .setSpell(new SpellCrushingPalm())
                 .castOnUse()
                 .castOnRighClick()
                 .create());
         crystalline_road = ModRegistries.items.register(new TalismanBuilder("crystalline_road",5)
-                .setSpell(ModSpells.crystalline_road)
+                .setSpell(new SpellCrystallineRoad())
                 .castOnUse()
                 .castOnRighClick()
                 .create());
         distant_spark = ModRegistries.items.register(new TalismanBuilder("distant_spark",10)
-                .setSpell(ModSpells.ignition)
+                .setSpell(new SpellIgnition())
                 .castOnUse()
                 .castOnRighClick()
                 .create());
         earthen_dive = ModRegistries.items.register(new TalismanBuilder("earthen_dive",10)
-                .setSpell(ModSpells.earthen_dive)
+                .setSpell(new SpellEarthenDive())
                 .castOnUse()
                 .create());
         empower_axe = ModRegistries.items.register(new TalismanBuilder("empower_axe",3)
-                .setSpell(ModSpells.empower_axe)
+                .setSpell(new SpellEmpowerAxe())
                 .castOnUse()
                 .castOnRighClick()
                 .create());
         empower_pickaxe = ModRegistries.items.register(new TalismanBuilder("empower_pickaxe",3)
-                .setSpell(ModSpells.empower_pickaxe)
+                .setSpell(new SpellEmpowerPickaxe())
                 .castOnUse()
                 .castOnRighClick()
                 .create());
         escape_plan = ModRegistries.items.register(new TalismanBuilder("escape_plan",3)
-                .setSpell(ModSpells.escape_plan)
+                .setSpell(new SpellEscapePlan())
                 .castOnUse()
                 .castOnRighClick()
                 .create());
         fall_negation = ModRegistries.items.register(new TalismanBuilder("fall_negation",5)
-                .setSpell(ModSpells.fall_negation)
+                .setSpell(new SpellFallNegation())
                 .castOnUse()
                 .castOnRighClick()
                 .create());
         fell_tree = ModRegistries.items.register(new TalismanBuilder("fell_tree",3)
-                .setSpell(ModSpells.fell_tree)
+                .setSpell(new SpellFellTree())
                 .castOnUse()
                 .create());
         focused_fury = ModRegistries.items.register(new TalismanBuilder("focused_fury",2)
-                .setSpell(ModSpells.focused_fury)
+                .setSpell(new SpellFocusedFury())
                 .castOnUse()
                 .castOnRighClick()
                 .create());
         ground_flow = ModRegistries.items.register(new TalismanBuilder("ground_flow",6)
-                .setSpell(ModSpells.ground_flow)
+                .setSpell(new SpellGroundFlow())
                 .castOnUse()
                 .castOnRighClick()
                 .create());
         grudge = ModRegistries.items.register(new TalismanBuilder("grudge",2)
-                .setSpell(ModSpells.grudge)
+                .setSpell(new SpellGrudge())
                 .castOnUse()
                 .castOnRighClick()
                 .create());
         heat_wave = ModRegistries.items.register(new TalismanBuilder("heat_wave",10)
-                .setSpell(ModSpells.heat_wave)
+                .setSpell(new SpellHeatWave())
                 .castOnUse()
                 .castOnRighClick()
                 .create());
         hellisphere = ModRegistries.items.register(new TalismanBuilder("hellisphere",10)
-                .setSpell(ModSpells.hellisphere)
+                .setSpell(new SpellHellisphere())
                 .castOnUse()
                 .create());
         ignition = ModRegistries.items.register(new TalismanBuilder("ignition",30)
-                .setSpell(ModSpells.ignition)
+                .setSpell(new SpellIgnition())
                 .castOnUse()
                 .create());
         infernal_touch = ModRegistries.items.register(new TalismanBuilder("infernal_touch",30)
-                .setSpell(ModSpells.infernal_touch)
+                .setSpell(new SpellInfernalTouch())
                 .castOnUse()
                 .create());
         miners_focus = ModRegistries.items.register(new TalismanBuilder("miners_focus",2)
-                .setSpell(ModSpells.miners_focus)
+                .setSpell(new SpellMinersFocus())
                 .castOnUse()
                 .castOnRighClick()
                 .create());
         mist_blade = ModRegistries.items.register(new TalismanBuilder("mist_blade",2)
-                .setSpell(ModSpells.mist_blade)
+                .setSpell(new SpellMistBlade())
                 .castOnUse()
                 .castOnRighClick()
                 .create());
         molten_skin = ModRegistries.items.register(new TalismanBuilder("molten_skin",6)
-                .setSpell(ModSpells.molten_skin)
+                .setSpell(new SpellMoltenSkin())
                 .castOnUse()
                 .castOnRighClick()
                 .create());
         nether_surge = ModRegistries.items.register(new TalismanBuilder("nether_surge",6)
-                .setSpell(ModSpells.nether_surge)
+                .setSpell(new SpellNetherSurge())
                 .castOnUse()
                 .create());
         night_eye = ModRegistries.items.register(new TalismanBuilder("night_eye",4)
-                .setSpell(ModSpells.night_eye)
+                .setSpell(new SpellNightEye())
                 .castOnUse()
                 .castOnRighClick()
                 .create());
         obsidian_road = ModRegistries.items.register(new TalismanBuilder("obsidian_road",5)
-                .setSpell(ModSpells.obsidian_road)
+                .setSpell(new SpellObsidianRoad())
                 .castOnUse()
                 .castOnRighClick()
                 .create());
         pearl_crumbs = ModRegistries.items.register(new TalismanBuilder("pearl_crumbs",10)
-                .setSpell(ModSpells.pearl_crumbs)
+                .setSpell(new SpellPearlCrumbs())
                 .castOnUse()
                 .castOnRighClick()
                 .create());
         piercing_inferno = ModRegistries.items.register(new TalismanBuilder("piercing_inferno",12)
-                .setSpell(ModSpells.piercing_inferno)
+                .setSpell(new SpellPiercingInferno())
                 .castOnUse()
                 .create());
         searing_pulse = ModRegistries.items.register(new TalismanBuilder("searing_pulse",6)
-                .setSpell(ModSpells.searing_pulse)
+                .setSpell(new SpellSearingPulse())
                 .castOnUse()
                 .create());
         small_fireball_throw = ModRegistries.items.register(new TalismanBuilder("small_fireball_throw",10)
-                .setSpell(ModSpells.small_fireball_throw)
+                .setSpell(new SpellSmallFireballThrow())
                 .castOnRighClick()
                 .create());
         snowball_throw = ModRegistries.items.register(new TalismanBuilder("snowball_throw",30)
-                .setSpell(ModSpells.snowball_throw)
+                .setSpell(new SpellSnowballThrow())
                 .castOnUse()
                 .castOnRighClick()
                 .create());
         stone_fever = ModRegistries.items.register(new TalismanBuilder("stone_fever",2)
-                .setSpell(ModSpells.stone_fever)
+                .setSpell(new SpellStoneFever())
                 .castOnUse()
                 .castOnRighClick()
                 .create());
         stoneball_throw = ModRegistries.items.register(new TalismanBuilder("stoneball_throw",30)
-                .setSpell(ModSpells.stoneball_throw)
+                .setSpell(new SpellStoneballThrow())
                 .castOnUse()
                 .castOnRighClick()
                 .create());
         surface_shift = ModRegistries.items.register(new TalismanBuilder("surface_shift",10)
-                .setSpell(ModSpells.surface_shift)
+                .setSpell(new SpellSurfaceShift())
                 .castOnUse()
                 .create());
         toadic_jump = ModRegistries.items.register(new TalismanBuilder("toadic_jump",15)
-                .setSpell(ModSpells.toadic_jump)
+                .setSpell(new SpellToadicJump())
                 .castOnUse()
                 .castOnRighClick()
                 .create());
         wall_slip = ModRegistries.items.register(new TalismanBuilder("wall_slip",20)
-                .setSpell(ModSpells.wall_slip)
+                .setSpell(new SpellWallSlip())
                 .castOnUse()
                 .create());
+        warp = ModRegistries.items.register(new TalismanBuilder("warp",30)
+                .setSpell(new SpellBlink(8,false))
+                .castOnUse()
+                .castOnRighClick()
+                .create());
         wild_sprint = ModRegistries.items.register(new TalismanBuilder("wild_sprint",3)
-                .setSpell(ModSpells.wild_sprint)
+                .setSpell(new SpellWildSprint())
                 .castOnUse()
                 .castOnRighClick()
                 .create());
         winter_breath = ModRegistries.items.register(new TalismanBuilder("winter_breath",10)
-                .setSpell(ModSpells.winter_breath)
+                .setSpell(new SpellWinterBreath())
                 .castOnUse()
                 .castOnRighClick()
                 .create());
         wind_step = ModRegistries.items.register(new TalismanBuilder("wind_step", 20)
-                .setSpell(ModSpells.wind_step)
+                .setSpell(new SpellWindStep())
                 .castOnUse()
                 .castOnRighClick()
                 .create());
         wooden_punch = ModRegistries.items.register(new TalismanBuilder("wooden_punch",30)
-                .setSpell(ModSpells.wooden_punch)
+                .setSpell(new SpellWoodenPunch())
                 .castOnUse()
                 .castOnRighClick()
                 .setIsFree()
                 .create());
         clock = ModRegistries.items.register(new TalismanBuilder("clock",300)
-                .setSpell(ModSpells.tell_time)
+                .setSpell(new SpellTellTime())
                 .castOnUse()
                 .castOnRighClick()
                 .create());

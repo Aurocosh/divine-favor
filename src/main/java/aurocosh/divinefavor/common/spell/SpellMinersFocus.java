@@ -11,10 +11,6 @@ public class SpellMinersFocus extends ModSpell {
     private final int HASTE_DURATION = (int) (60 * 20 * 0.1);
     private final int HASTE_LEVEL = 4;
 
-    public SpellMinersFocus() {
-        super("miners_focus");
-    }
-
     @Override
     protected void performActionServer(SpellContext context) {
         context.player.addPotionEffect(new ModEffectTrigger(ModPotions.miners_focus,HASTE_DURATION));

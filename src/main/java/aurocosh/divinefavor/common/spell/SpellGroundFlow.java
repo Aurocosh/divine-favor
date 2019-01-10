@@ -6,10 +6,6 @@ import aurocosh.divinefavor.common.spell.base.ModSpell;
 import aurocosh.divinefavor.common.spell.base.SpellContext;
 
 public class SpellGroundFlow extends ModSpell {
-    public SpellGroundFlow() {
-        super("ground_flow");
-    }
-
     @Override
     protected void performActionServer(SpellContext context) {
         context.player.addPotionEffect(new ModEffectToggle(ModPotions.ground_flow));

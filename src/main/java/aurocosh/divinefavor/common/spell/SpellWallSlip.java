@@ -10,10 +10,6 @@ import net.minecraft.util.math.BlockPos;
 public class SpellWallSlip extends ModSpell {
     private final int MAX_TELEPORTATION_DISTANCE = 64;
 
-    public SpellWallSlip() {
-        super("wall_slip");
-    }
-
     @Override
     protected void performActionServer(SpellContext context) {
         EnumFacing facing = context.facing;

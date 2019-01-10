@@ -14,10 +14,6 @@ import net.minecraftforge.client.event.EntityViewRenderEvent;
 import net.minecraftforge.fml.relauncher.ReflectionHelper;
 
 public class SpellMoltenSkin extends ModSpell {
-    public SpellMoltenSkin() {
-        super("molten_skin");
-    }
-
     @Override
     protected void performActionServer(SpellContext context) {
         boolean newImmunityState = !context.player.isPotionActive(ModPotions.molten_skin);

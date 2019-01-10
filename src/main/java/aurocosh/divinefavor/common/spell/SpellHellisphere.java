@@ -15,10 +15,6 @@ import java.util.List;
 public class SpellHellisphere extends ModSpell {
     public static int EFFECT_RADIUS = 6;
 
-    public SpellHellisphere() {
-        super("hellishpere");
-    }
-
     @Override
     protected void performActionServer(SpellContext context) {
         World world = context.world;

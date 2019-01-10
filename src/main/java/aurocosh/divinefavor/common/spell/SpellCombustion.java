@@ -20,10 +20,6 @@ public class SpellCombustion extends ModSpell {
     private final boolean CAUSE_FIRE = false;
     private final boolean DAMAGE_TERRAIN = true;
 
-    public SpellCombustion() {
-        super("combustion");
-    }
-
     @Override
     protected void performActionServer(SpellContext context) {
         assert context.castType == CastType.ITEM_USE_CAST;

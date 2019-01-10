@@ -13,10 +13,6 @@ import net.minecraft.world.World;
 public class SpellEarthenDive extends ModSpell {
     private final int MAX_TELEPORTATION_DISTANCE = 64;
 
-    public SpellEarthenDive() {
-        super("earthen_dive");
-    }
-
     @Override
     protected void performActionServer(SpellContext context) {
         BlockPos targetPos = UtilCoordinates.findPlaceToStandBelow(context.pos, context.world, MAX_TELEPORTATION_DISTANCE, true);

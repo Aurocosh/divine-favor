@@ -14,10 +14,6 @@ import static aurocosh.divinefavor.common.player_data.escape_plan.EscapePlanData
 public class SpellEscapePlan extends ModSpell {
     private final int DURATION = UtilTick.minutesToTicks(1);
 
-    public SpellEscapePlan() {
-        super("escape_plan");
-    }
-
     @Override
     protected void performActionServer(SpellContext context) {
         EntityPlayer player = context.player;

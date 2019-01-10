@@ -10,10 +10,6 @@ public class SpellMistBlade extends ModSpell {
     private final int SHORT = 1800;
     private final int NORMAL = 3600;
 
-    public SpellMistBlade() {
-        super("mist_blade");
-    }
-
     @Override
     protected void performActionServer(SpellContext context) {
         context.player.addPotionEffect(new ModEffect(ModPotions.mist_blade, NORMAL));

@@ -10,11 +10,6 @@ import aurocosh.divinefavor.common.spell.base.SpellContext;
 import static aurocosh.divinefavor.common.player_data.grudge.GrudgeDataHandler.CAPABILITY_GRUDGE;
 
 public class SpellGrudge extends ModSpell {
-
-    public SpellGrudge() {
-        super("grudge");
-    }
-
     @Override
     protected void performActionServer(SpellContext context) {
         context.player.addPotionEffect(new ModEffectToggle(ModPotions.grudge));

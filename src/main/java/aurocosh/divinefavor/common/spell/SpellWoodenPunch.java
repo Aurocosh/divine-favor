@@ -7,10 +7,6 @@ import aurocosh.divinefavor.common.spell.base.SpellContext;
 import net.minecraft.potion.PotionEffect;
 
 public class SpellWoodenPunch extends ModSpell {
-    public SpellWoodenPunch() {
-        super("wooden_punch");
-    }
-
     @Override
     protected void performActionServer(SpellContext context) {
         PotionEffect effect = new ModEffectToggle(ModPotions.wooden_punch);

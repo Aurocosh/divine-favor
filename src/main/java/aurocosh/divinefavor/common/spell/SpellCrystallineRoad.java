@@ -11,10 +11,6 @@ public class SpellCrystallineRoad extends ModSpell {
     private final int SHORT = 1800;
     private final int NORMAL = 3600;
 
-    public SpellCrystallineRoad() {
-        super("crystalline_road");
-    }
-
     @Override
     protected void performActionServer(SpellContext context) {
         PotionEffect potioneffect = new ModEffect(ModPotions.crystalline_road, NORMAL);

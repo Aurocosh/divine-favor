@@ -22,10 +22,6 @@ public class SpellSearingPulse extends ModSpell {
 
     private final int CYCLE_LIMIT = 30;
 
-    public SpellSearingPulse() {
-        super("searing_pulse");
-    }
-
     @Override
     protected void performActionServer(SpellContext context) {
         assert context.castType == CastType.ITEM_USE_CAST;

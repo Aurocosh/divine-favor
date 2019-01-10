@@ -10,10 +10,6 @@ public class SpellObsidianRoad extends ModSpell {
     private final int SHORT = 1800;
     private final int NORMAL = 3600;
 
-    public SpellObsidianRoad() {
-        super("obsidian_road");
-    }
-
     @Override
     protected void performActionServer(SpellContext context) {
         PotionEffect potioneffect = new ModEffect(ModPotions.obsidian_road, NORMAL);

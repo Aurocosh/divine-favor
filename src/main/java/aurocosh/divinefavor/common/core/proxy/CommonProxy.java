@@ -25,7 +25,6 @@ import aurocosh.divinefavor.common.player_data.pearl_crumbs.PearlCrumbsDataHandl
 import aurocosh.divinefavor.common.player_data.spell_count.SpellUsesDataHandler;
 import aurocosh.divinefavor.common.potions.common.ModPotions;
 import aurocosh.divinefavor.common.receipes.ModRecipes;
-import aurocosh.divinefavor.common.spell.common.ModSpells;
 import aurocosh.divinefavor.common.spirit.ModSpirits;
 import com.google.common.util.concurrent.ListenableFuture;
 import net.minecraft.entity.player.EntityPlayer;
@@ -40,7 +39,6 @@ import java.io.File;
 @Mod.EventBusSubscriber
 public class CommonProxy {
     public void preInit(FMLPreInitializationEvent e) {
-        ModSpells.preInit();
         ModMultiBlocks.preInit();
 
         ModTalismans.preInit();

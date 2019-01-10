@@ -2,6 +2,7 @@ package aurocosh.divinefavor.common.spell;
 
 import aurocosh.divinefavor.common.spell.base.ModSpell;
 import aurocosh.divinefavor.common.spell.base.SpellContext;
+import aurocosh.divinefavor.common.util.UtilRandom;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntitySmallFireball;
 import net.minecraft.init.SoundEvents;
@@ -10,17 +11,13 @@ import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 
 public class SpellSmallFireballThrow extends ModSpell {
-    public SpellSmallFireballThrow() {
-        super("small_fireball_throw");
-    }
-
     @Override
     protected void performActionServer(SpellContext context) {
         throwSmallFireball(context.world, context.player);
     }
 
     public boolean throwSmallFireball(World worldIn, EntityPlayer playerIn) {
-        worldIn.playSound(null, playerIn.posX, playerIn.posY, playerIn.posZ, SoundEvents.ENTITY_SNOWBALL_THROW, SoundCategory.NEUTRAL, 0.5F, 0.4F / (spellRand.nextFloat() * 0.4F + 0.8F));
+        worldIn.playSound(null, playerIn.posX, playerIn.posY, playerIn.posZ, SoundEvents.ENTITY_SNOWBALL_THROW, SoundCategory.NEUTRAL, 0.5F, 0.4F / (UtilRandom.random.nextFloat() * 0.4F + 0.8F));
         if (!playerIn.world.isRemote) {
             //UtilBlock.setHeadingFromThrower(player, entitySmallFireball, player.rotationPitch, player.rotationYaw, 0.0F, 1.5F, 0.0F);
 

@@ -18,10 +18,6 @@ public class SpellWinterBreath extends ModSpell {
     private final float EXTRA_DAMAGE = 1;
     private final float KNOCKBACK_FORCE = 2;
 
-    public SpellWinterBreath() {
-        super("winter_breath");
-    }
-
     @Override
     protected void performActionServer(SpellContext context) {
         Vector3i origin = Vector3i.convert(context.player.getPosition());

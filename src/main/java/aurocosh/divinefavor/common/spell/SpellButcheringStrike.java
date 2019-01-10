@@ -8,10 +8,6 @@ import aurocosh.divinefavor.common.spell.base.SpellContext;
 public class SpellButcheringStrike extends ModSpell {
     private final int USES = 4;
 
-    public SpellButcheringStrike() {
-        super("butchering_strike");
-    }
-
     @Override
     protected void performActionServer(SpellContext context) {
         context.player.addPotionEffect(new ModEffectCharge(ModPotions.butchering_strike, USES));

@@ -8,12 +8,6 @@ import net.minecraft.potion.PotionEffect;
 
 public class SpellEmpowerPickaxe extends ModSpell {
     private final int SHORT = 1800;
-    private final int NORMAL = 3600;
-    private final int TEST = 500;
-
-    public SpellEmpowerPickaxe() {
-        super("empower_pickaxe");
-    }
 
     @Override
     protected void performActionServer(SpellContext context) {

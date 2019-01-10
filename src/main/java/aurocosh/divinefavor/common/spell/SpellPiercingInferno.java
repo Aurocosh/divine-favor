@@ -18,10 +18,6 @@ public class SpellPiercingInferno extends ModSpell {
     public static int MAX_PIERCE_DEPTH = 10;
     public static int CHANCE_TO_IGNITE = 20;
 
-    public SpellPiercingInferno() {
-        super("piercing_inferno");
-    }
-
     @Override
     protected void performActionServer(SpellContext context) {
         List<BlockPos> piercingShape = UtilCoordinates.getNeighboursWithSameExposedFace(context.pos, context.world, context.facing, MAX_PIERCE_SHAPE_SIZE);

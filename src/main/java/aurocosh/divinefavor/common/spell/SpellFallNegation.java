@@ -9,10 +9,6 @@ import net.minecraft.potion.PotionEffect;
 public class SpellFallNegation extends ModSpell {
     private final int USES = 10;
 
-    public SpellFallNegation() {
-        super("fall_negation");
-    }
-
     @Override
     protected void performActionServer(SpellContext context) {
         PotionEffect effect = new ModEffectCharge(ModPotions.fall_negation, USES);
