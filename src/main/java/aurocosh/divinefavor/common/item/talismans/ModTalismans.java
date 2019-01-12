@@ -9,6 +9,7 @@ import java.util.List;
 public final class ModTalismans {
     public static ItemTalisman arrowThrowTalisman;
     public static ItemTalisman blink;
+    public static ItemTalisman blood_of_grass;
     public static ItemTalisman bonemeal;
     public static ItemTalisman butchering_strike;
     public static ItemTalisman clock;
@@ -64,6 +65,11 @@ public final class ModTalismans {
                 .create());
         blink = ModRegistries.items.register(new TalismanBuilder("blink",10)
                 .setSpell(new SpellBlink(5,true))
+                .castOnUse()
+                .castOnRighClick()
+                .create());
+        blood_of_grass = ModRegistries.items.register(new TalismanBuilder("blood_of_grass",2)
+                .setSpell(new SpellBloodOfGrass())
                 .castOnUse()
                 .castOnRighClick()
                 .create());

@@ -27,7 +27,7 @@ import net.minecraftforge.fluids.IFluidBlock;
 import javax.annotation.Nullable;
 
 public class UtilBlock {
-    private static boolean canBreakBlock(EntityPlayer player, World world, BlockPos pos, boolean isToolRequired) {
+    public static boolean canBreakBlock(EntityPlayer player, World world, BlockPos pos, boolean isToolRequired) {
         if (world.isRemote)
             return false;
         if (!world.isBlockLoaded(pos))
