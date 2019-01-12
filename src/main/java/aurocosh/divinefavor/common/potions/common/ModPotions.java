@@ -13,6 +13,7 @@ public class ModPotions {
     public static ModPotion mist_blade;
     public static ModPotion night_eye;
     public static ModPotion obsidian_road;
+    public static ModPotion starvation;
     public static ModPotion stone_fever;
     public static ModPotion wild_sprint;
     public static ModPotionCharge butchering_strike;
@@ -45,6 +46,7 @@ public class ModPotions {
         molten_skin = ModRegistries.potions.register(new PotionMoltenSkin());
         night_eye = ModRegistries.potions.register(new PotionNightEye());
         obsidian_road = ModRegistries.potions.register(new PotionLiquidWalking("obsidian_road", Blocks.LAVA));
+        starvation = ModRegistries.potions.register(new PotionStarvation());
         stone_fever = ModRegistries.potions.register(new PotionStoneFever());
         toadic_jump = ModRegistries.potions.register(new PotionToadicJump());
         wild_charge = ModRegistries.potions.register(new PotionWildCharge());

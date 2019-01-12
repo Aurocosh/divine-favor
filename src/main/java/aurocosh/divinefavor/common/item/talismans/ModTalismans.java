@@ -47,6 +47,7 @@ public final class ModTalismans {
     public static ItemTalisman searing_pulse;
     public static ItemTalisman small_fireball_throw;
     public static ItemTalisman snowball_throw;
+    public static ItemTalisman starvation;
     public static ItemTalisman stone_fever;
     public static ItemTalisman stoneball_throw;
     public static ItemTalisman surface_blink;
@@ -242,6 +243,11 @@ public final class ModTalismans {
                 .create());
         snowball_throw = ModRegistries.items.register(new TalismanBuilder("snowball_throw",30)
                 .setSpell(new SpellSnowballThrow())
+                .castOnUse()
+                .castOnRighClick()
+                .create());
+        starvation = ModRegistries.items.register(new TalismanBuilder("starvation",3)
+                .setSpell(new SpellStarvation())
                 .castOnUse()
                 .castOnRighClick()
                 .create());
