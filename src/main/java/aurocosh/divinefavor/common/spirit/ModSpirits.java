@@ -28,7 +28,7 @@ public final class ModSpirits {
         arbow = ModRegistries.spirits.register(
                 new SpiritBuilder("arbow")
                         .addActivityPeriod(10, 14)
-                        .addTalisman(ModTalismans.arrowThrowTalisman)
+                        .addTalisman(ModTalismans.arrow_throw_talisman)
                         .create()
         );
         blizrabi = ModRegistries.spirits.register(

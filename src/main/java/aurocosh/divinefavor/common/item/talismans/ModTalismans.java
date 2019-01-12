@@ -7,7 +7,8 @@ import aurocosh.divinefavor.common.spell.*;
 import java.util.List;
 
 public final class ModTalismans {
-    public static ItemTalisman arrowThrowTalisman;
+    public static ItemTalisman arrow_throw_talisman;
+    public static ItemTalisman blade_of_grass;
     public static ItemTalisman blink;
     public static ItemTalisman blood_of_grass;
     public static ItemTalisman bonemeal;
@@ -58,8 +59,13 @@ public final class ModTalismans {
     public static ItemTalisman wooden_punch;
 
     public static void preInit() {
-        arrowThrowTalisman = ModRegistries.items.register(new TalismanBuilder("arrow_throw",20)
+        arrow_throw_talisman = ModRegistries.items.register(new TalismanBuilder("arrow_throw",20)
                 .setSpell(new SpellArrowThrow())
+                .castOnUse()
+                .castOnRighClick()
+                .create());
+        blade_of_grass = ModRegistries.items.register(new TalismanBuilder("blade_of_grass",5)
+                .setSpell(new SpellBladeOfGrass())
                 .castOnUse()
                 .castOnRighClick()
                 .create());

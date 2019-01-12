@@ -19,7 +19,7 @@ public class ModRecipes {
     public static final Map<String, ImmaterialMediumRecipe> recipeLookup = new HashMap<>();
 
     public static void init() {
-        register(new RecipeBuilder(new ItemStack(ModTalismans.arrowThrowTalisman), ModCallingStones.calling_stone_timber)
+        register(new RecipeBuilder(new ItemStack(ModTalismans.arrow_throw_talisman), ModCallingStones.calling_stone_timber)
                 .addIngredient(Items.ARROW, 8)
                 .addIngredient(Items.GOLD_INGOT)
                 .create()
