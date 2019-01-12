@@ -52,6 +52,7 @@ public final class ModTalismans {
     public static ItemTalisman surface_blink;
     public static ItemTalisman surface_shift;
     public static ItemTalisman toadic_jump;
+    public static ItemTalisman vitalize;
     public static ItemTalisman wall_slip;
     public static ItemTalisman warp;
     public static ItemTalisman wild_sprint;
@@ -265,6 +266,11 @@ public final class ModTalismans {
                 .create());
         toadic_jump = ModRegistries.items.register(new TalismanBuilder("toadic_jump",15)
                 .setSpell(new SpellToadicJump())
+                .castOnUse()
+                .castOnRighClick()
+                .create());
+        vitalize = ModRegistries.items.register(new TalismanBuilder("vitalize",10)
+                .setSpell(new SpellVitalize())
                 .castOnUse()
                 .castOnRighClick()
                 .create());
