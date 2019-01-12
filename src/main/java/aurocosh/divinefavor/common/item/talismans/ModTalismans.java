@@ -26,6 +26,7 @@ public final class ModTalismans {
     public static ItemTalisman fall_negation;
     public static ItemTalisman fell_tree;
     public static ItemTalisman focused_fury;
+    public static ItemTalisman green_cycle;
     public static ItemTalisman ground_flow;
     public static ItemTalisman grudge;
     public static ItemTalisman harvest;
@@ -142,6 +143,11 @@ public final class ModTalismans {
                 .create());
         focused_fury = ModRegistries.items.register(new TalismanBuilder("focused_fury",2)
                 .setSpell(new SpellFocusedFury())
+                .castOnUse()
+                .castOnRighClick()
+                .create());
+        green_cycle = ModRegistries.items.register(new TalismanBuilder("green_cycle",5)
+                .setSpell(new SpellGreenCycle())
                 .castOnUse()
                 .castOnRighClick()
                 .create());

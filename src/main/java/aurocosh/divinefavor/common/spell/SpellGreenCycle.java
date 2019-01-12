@@ -13,23 +13,14 @@ import net.minecraft.block.BlockReed;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import net.minecraftforge.event.ForgeEventFactory;
 
 import java.util.List;
 
-public class SpellHarvest extends ModSpell {
-    public static int EFFECT_RADIUS = 12;
-
-    public static final ImmutableSet<Material> ALLOWED_MATERIALS =
-            ImmutableSet.of(net.minecraft.block.material.Material.WEB,
-                    net.minecraft.block.material.Material.LEAVES,
-                    net.minecraft.block.material.Material.VINE,
-                    net.minecraft.block.material.Material.GOURD,
-                    net.minecraft.block.material.Material.CACTUS);
+public class SpellGreenCycle extends ModSpell {
+    public static int EFFECT_RADIUS = 8;
 
     @Override
     protected void performActionServer(SpellContext context) {
@@ -40,7 +31,7 @@ public class SpellHarvest extends ModSpell {
         List<BlockPos> posList = UtilCoordinates.getBlocksInSphere(player.getPosition(), EFFECT_RADIUS);
         List<BlockPos> plantList = UtilList.filterList(posList, element -> isValidCrop(element, world));
         for (BlockPos pos : plantList)
-            UtilBlock.removeBlockWithDrops(player, world, stack, pos, false, false);
+            UtilBlock.removeBlockAndReplant(player, world, stack, pos, false, false);
     }
 
     private boolean isValidCrop(BlockPos pos, World world) {
@@ -52,6 +43,6 @@ public class SpellHarvest extends ModSpell {
             return true;
         if(block instanceof BlockNetherWart && state.getValue(BlockNetherWart.AGE) == 3)
             return true;
-        return ALLOWED_MATERIALS.contains(state.getMaterial());
+        return false;
     }
 }
