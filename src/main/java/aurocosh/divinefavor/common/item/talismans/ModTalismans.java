@@ -26,6 +26,7 @@ public final class ModTalismans {
     public static ItemTalisman focused_fury;
     public static ItemTalisman ground_flow;
     public static ItemTalisman grudge;
+    public static ItemTalisman harvest;
     public static ItemTalisman heat_wave;
     public static ItemTalisman hellisphere;
     public static ItemTalisman ignition;
@@ -139,6 +140,11 @@ public final class ModTalismans {
                 .create());
         grudge = ModRegistries.items.register(new TalismanBuilder("grudge",2)
                 .setSpell(new SpellGrudge())
+                .castOnUse()
+                .castOnRighClick()
+                .create());
+        harvest = ModRegistries.items.register(new TalismanBuilder("harvest",3)
+                .setSpell(new SpellHarvest())
                 .castOnUse()
                 .castOnRighClick()
                 .create());
