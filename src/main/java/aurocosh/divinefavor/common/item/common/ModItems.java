@@ -1,7 +1,7 @@
 package aurocosh.divinefavor.common.item.common;
 
 import aurocosh.divinefavor.common.item.ItemBoneKey;
-import aurocosh.divinefavor.common.item.ItemMysticArchitectStick;
+import aurocosh.divinefavor.common.item.mystic_architect_stick.ItemMysticArchitectStick;
 import aurocosh.divinefavor.common.item.ItemPureApple;
 import aurocosh.divinefavor.common.item.ItemStoneball;
 import aurocosh.divinefavor.common.item.base.ModItem;

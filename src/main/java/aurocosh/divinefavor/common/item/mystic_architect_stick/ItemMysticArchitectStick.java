@@ -1,4 +1,4 @@
-package aurocosh.divinefavor.common.item;
+package aurocosh.divinefavor.common.item.mystic_architect_stick;
 
 import aurocosh.divinefavor.DivineFavor;
 import aurocosh.divinefavor.common.core.DivineFavorCreativeTab;
@@ -34,6 +34,9 @@ public class ItemMysticArchitectStick extends ModItem {
     public static final String TAG_POS_FIRST = "PosFirst";
     public static final String TAG_POS_SECOND = "PosSecond";
     public static final String TAG_AIR_TYPE = "AirType";
+    public static final String TAG_BASE_POSITION = "BasePosition";
+    public static final String TAG_MEDIUM_POSITION = "BasePosition";
+    public static final String TAG_CURRENT_MODE = "CurrentMode";
 
     public ItemMysticArchitectStick() {
         super("mystic_architect_stick","mystic_architect_stick");
@@ -42,28 +45,14 @@ public class ItemMysticArchitectStick extends ModItem {
     }
 
     @Override
-    public EnumActionResult onItemUse(EntityPlayer playerIn, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
-        if (!worldIn.isRemote)
+    public EnumActionResult onItemUse(EntityPlayer playerIn, World world, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
+        if (!world.isRemote)
             return EnumActionResult.PASS;
         if (hand == EnumHand.OFF_HAND)
             return EnumActionResult.PASS;
 
         ItemStack stack = playerIn.getHeldItemMainhand();
         NBTTagCompound compound = UtilNbt.getEistingOrNewNBT(stack);
-
-        if (Keyboard.isKeyDown(Keyboard.KEY_LCONTROL)) {
-            if (compound.hasKey(TAG_AIR_TYPE)) {
-                compound.removeTag(TAG_AIR_TYPE);
-                DivineFavor.proxy.getClientPlayer().sendMessage(new TextComponentString("Air block marker cleared"));
-            }
-            else {
-                Block block = worldIn.getBlockState(pos).getBlock();
-                String name = block.getRegistryName().toString();
-                compound.setString(TAG_AIR_TYPE, name);
-                DivineFavor.proxy.getClientPlayer().sendMessage(new TextComponentString("Air block marker set to: " + name));
-            }
-            return EnumActionResult.SUCCESS;
-        }
 
         if (!playerIn.isSneaking()) {
             boolean currentIsSecond = compound.getBoolean(TAG_CURRENT_IS_SECOND);
@@ -75,21 +64,70 @@ public class ItemMysticArchitectStick extends ModItem {
             return EnumActionResult.SUCCESS;
 
         }
+        else {
+            int mode = compound.getInteger(ItemMysticArchitectStick.TAG_CURRENT_MODE);
+            ArchitectStickMode stickMode = ArchitectStickMode.VALUES[mode];
 
-        boolean isCornersSet = UtilNbt.checkForTags(stack, TAG_POS_FIRST, TAG_POS_SECOND);
-        if (!isCornersSet)
-            return EnumActionResult.SUCCESS;
+            switch (stickMode) {
+                case SELECT_MULTIBLOCK_BASE:
+                    compound.setLong(TAG_BASE_POSITION, pos.toLong());
+                    DivineFavor.proxy.getClientPlayer().sendMessage(new TextComponentString("Set base position: " + pos.toString()));
+                    break;
+                case SELECT_MEDIUM:
+                    compound.setLong(TAG_MEDIUM_POSITION, pos.toLong());
+                    DivineFavor.proxy.getClientPlayer().sendMessage(new TextComponentString("Set medium position: " + pos.toString()));
+                    break;
+                case SELECT_AIR_BLOCK:
+                    selectAirBlock(world, pos, compound);
+                    break;
+                case CREATE_TEMPLATE:
+                    createTemplate(world, pos, stack, compound);
+                    break;
+            }
+        }
+
+
+
+        return EnumActionResult.SUCCESS;
+    }
+
+    private void selectAirBlock(World worldIn, BlockPos pos, NBTTagCompound compound) {
+        if (compound.hasKey(TAG_AIR_TYPE)) {
+            compound.removeTag(TAG_AIR_TYPE);
+            DivineFavor.proxy.getClientPlayer().sendMessage(new TextComponentString("Air block marker cleared"));
+        }
+        else {
+            Block block = worldIn.getBlockState(pos).getBlock();
+            String name = block.getRegistryName().toString();
+            compound.setString(TAG_AIR_TYPE, name);
+            DivineFavor.proxy.getClientPlayer().sendMessage(new TextComponentString("Air block marker set to: " + name));
+        }
+    }
+
+    private void createTemplate(World worldIn, BlockPos pos, ItemStack stack, NBTTagCompound compound) {
+        if (!UtilNbt.checkForTags(stack, TAG_POS_FIRST, TAG_POS_SECOND)){
+            DivineFavor.proxy.getClientPlayer().sendMessage(new TextComponentString("Corners not set"));
+            return;
+        }
+        if (!UtilNbt.checkForTags(stack, TAG_BASE_POSITION)){
+            DivineFavor.proxy.getClientPlayer().sendMessage(new TextComponentString("Base position not set"));
+            return;
+        }
+        if (!UtilNbt.checkForTags(stack, TAG_MEDIUM_POSITION)){
+            DivineFavor.proxy.getClientPlayer().sendMessage(new TextComponentString("Medium position not set"));
+            return;
+        }
 
         BlockPos firstCorner = UtilNbt.getBlockPos(compound, TAG_POS_FIRST);
         BlockPos secondCorner = UtilNbt.getBlockPos(compound, TAG_POS_SECOND);
+        BlockPos basePosition = UtilNbt.getBlockPos(compound, TAG_BASE_POSITION);
+        BlockPos mediumPosition = UtilNbt.getBlockPos(compound, TAG_MEDIUM_POSITION);
         String airMarker = compound.getString(TAG_AIR_TYPE);
 
-        String templateString = getTemplateData(worldIn, firstCorner, secondCorner, pos, airMarker);
+        String templateString = getTemplateData(worldIn, firstCorner, secondCorner, mediumPosition, basePosition, airMarker);
         setClipboardString(templateString);
 
         DivineFavor.proxy.getClientPlayer().sendMessage(new TextComponentString("Template copied to clipboard"));
-
-        return EnumActionResult.SUCCESS;
     }
 
     @Override
@@ -107,14 +145,14 @@ public class ItemMysticArchitectStick extends ModItem {
         return new ActionResult<>(EnumActionResult.SUCCESS, stack);
     }
 
-    private String getTemplateData(World world, BlockPos firstCorner, BlockPos secondCorner, BlockPos controllerPos, String airMarker) {
+    private String getTemplateData(World world, BlockPos firstCorner, BlockPos secondCorner, BlockPos mediumPosition, BlockPos basePosition, String airMarker) {
         CubeCoordinates coordinatesWorld = new CubeCoordinates(firstCorner, secondCorner);
         Vector3i[] positions = coordinatesWorld.getAllPositionsInside();
         Vector3i lowerCorner = coordinatesWorld.lowerCorner;
         ResourceLocation airMarkerName = new ResourceLocation(airMarker);
 
-        Block centerBlock = Blocks.AIR;
-        Vector3i center = Vector3i.convert(controllerPos);
+        Block baseBlock = Blocks.AIR;
+        Vector3i base = Vector3i.convert(basePosition);
         Map<Block, List<Vector3i>> partMap = new HashMap<>();
         for (Vector3i pos : positions) {
             IBlockState state = world.getBlockState(pos.toBlockPos());
@@ -122,8 +160,8 @@ public class ItemMysticArchitectStick extends ModItem {
             if(block == Blocks.AIR)
                 continue;
 
-            if (pos.equals(center))
-                centerBlock = block;
+            if (pos.equals(base))
+                baseBlock = block;
             else {
                 List<Vector3i> partPositions = partMap.computeIfAbsent(block, k -> new ArrayList<>());
                 partPositions.add(lowerCorner.getRealativePosition(pos));
@@ -140,9 +178,9 @@ public class ItemMysticArchitectStick extends ModItem {
                 validator = new BlockStateValidator(entry.getKey().getRegistryName());
             parts.add(new MultiBlockPart(validator, entry.getValue()));
         }
-        parts.add(new MultiBlockPart(new CenterStateValidator(centerBlock.getRegistryName()), Collections.singletonList(lowerCorner.getRealativePosition(center))));
+        parts.add(new MultiBlockPart(new CenterStateValidator(baseBlock.getRegistryName()), Collections.singletonList(lowerCorner.getRealativePosition(base))));
 
-        MultiBlockData data = new MultiBlockData(lowerCorner.getRealativePosition(Vector3i.convert(controllerPos)), parts);
+        MultiBlockData data = new MultiBlockData(lowerCorner.getRealativePosition(Vector3i.convert(mediumPosition)), parts);
 
         Gson gson = new GsonBuilder()
                 .registerTypeAdapter(StateValidator.class, new StateValidatorSerializer())
