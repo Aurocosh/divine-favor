@@ -7,6 +7,7 @@ public final class ModSpirits {
     public static ModSpirit allfire;
     public static ModSpirit arbow;
     public static ModSpirit blizrabi;
+    public static ModSpirit endererer;
     public static ModSpirit nefir;
     public static ModSpirit redwind;
     public static ModSpirit romol;
@@ -37,6 +38,18 @@ public final class ModSpirits {
                         .addTalisman(ModTalismans.crystalline_road)
                         .addTalisman(ModTalismans.snowball_throw)
                         .addTalisman(ModTalismans.obsidian_road)
+                        .create()
+        );
+        endererer = ModRegistries.spirits.register(
+                new SpiritBuilder("endererer")
+                        .addActivityPeriod(10, 14)
+                        .addTalisman(ModTalismans.escape_plan)
+                        .addTalisman(ModTalismans.pearl_crumbs)
+                        .addTalisman(ModTalismans.blink)
+                        .addTalisman(ModTalismans.warp)
+                        .addTalisman(ModTalismans.overblink)
+                        .addTalisman(ModTalismans.overwarp)
+                        .addTalisman(ModTalismans.surface_blink)
                         .create()
         );
         nefir = ModRegistries.spirits.register(
