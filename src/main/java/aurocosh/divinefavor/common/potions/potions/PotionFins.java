@@ -21,7 +21,7 @@ public class PotionFins extends ModPotion {
         EntityLivingBase entity = event.getEntityLiving();
         if (entity == null)
             return;
-        if (!entity.isPotionActive(ModPotions.molten_skin))
+        if (!entity.isPotionActive(ModPotions.fins))
             return;
         if (!entity.isInWater())
             return;
