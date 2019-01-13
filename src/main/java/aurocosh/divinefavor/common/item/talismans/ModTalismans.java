@@ -53,6 +53,7 @@ public final class ModTalismans {
     public static ItemTalisman searing_pulse;
     public static ItemTalisman small_fireball_throw;
     public static ItemTalisman snowball_throw;
+    public static ItemTalisman spider_might;
     public static ItemTalisman starvation;
     public static ItemTalisman stone_fever;
     public static ItemTalisman stoneball_throw;
@@ -259,6 +260,11 @@ public final class ModTalismans {
                 .create());
         snowball_throw = ModRegistries.items.register(new TalismanBuilder("snowball_throw",30)
                 .setSpell(new SpellSnowballThrow())
+                .castOnUse()
+                .castOnRighClick()
+                .create());
+        spider_might = ModRegistries.items.register(new TalismanBuilder("spider_might",ConfigTalismans.spider_might.uses)
+                .setSpell(new SpellAddPotionEffect(ModPotions.spider_might, ConfigTalismans.spider_might.duration))
                 .castOnUse()
                 .castOnRighClick()
                 .create());

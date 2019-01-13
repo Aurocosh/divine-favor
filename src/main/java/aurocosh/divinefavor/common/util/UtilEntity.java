@@ -7,14 +7,10 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.server.MinecraftServer;
-import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
-
-import javax.annotation.Nullable;
 
 public class UtilEntity {
     public static void addVelocity(Entity entity, Vec3d direction, float velocity){
@@ -104,4 +100,6 @@ public class UtilEntity {
 //        entity.motionX += MathHelper.sin(-entity.rotationYaw * 0.017453292F) * factor;
 //        entity.motionZ += MathHelper.cos(entity.rotationYaw * 0.017453292F) * factor;
     }
+//
+
 }
