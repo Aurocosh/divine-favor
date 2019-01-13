@@ -1,8 +1,10 @@
 package aurocosh.divinefavor.common.item.talismans;
 
+import aurocosh.divinefavor.common.potions.common.ModPotions;
 import aurocosh.divinefavor.common.registry.ModRegistries;
 import aurocosh.divinefavor.common.registry.mappers.ModMappers;
 import aurocosh.divinefavor.common.spell.*;
+import aurocosh.divinefavor.common.spell.base.SpellAddPotionEffectToggle;
 
 import java.util.List;
 
@@ -26,6 +28,7 @@ public final class ModTalismans {
     public static ItemTalisman fall_negation;
     public static ItemTalisman fell_tree;
     public static ItemTalisman focused_fury;
+    public static ItemTalisman gills;
     public static ItemTalisman green_cycle;
     public static ItemTalisman ground_flow;
     public static ItemTalisman grudge;
@@ -145,6 +148,11 @@ public final class ModTalismans {
                 .create());
         focused_fury = ModRegistries.items.register(new TalismanBuilder("focused_fury",2)
                 .setSpell(new SpellFocusedFury())
+                .castOnUse()
+                .castOnRighClick()
+                .create());
+        gills = ModRegistries.items.register(new TalismanBuilder("gills",5)
+                .setSpell(new SpellAddPotionEffectToggle(ModPotions.gills))
                 .castOnUse()
                 .castOnRighClick()
                 .create());
@@ -305,7 +313,7 @@ public final class ModTalismans {
                 .castOnRighClick()
                 .create());
         wooden_punch = ModRegistries.items.register(new TalismanBuilder("wooden_punch",30)
-                .setSpell(new SpellWoodenPunch())
+                .setSpell(new SpellAddPotionEffectToggle(ModPotions.wooden_punch))
                 .castOnUse()
                 .castOnRighClick()
                 .setIsFree()

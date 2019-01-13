@@ -17,6 +17,7 @@ import aurocosh.divinefavor.common.network.base.NetworkWrappedServerMessage;
 import aurocosh.divinefavor.common.network.common.MessageRegister;
 import aurocosh.divinefavor.common.network.common.NetworkHandler;
 import aurocosh.divinefavor.common.player_data.escape_plan.EscapePlanDataHandler;
+import aurocosh.divinefavor.common.player_data.gills.GillsDataHandler;
 import aurocosh.divinefavor.common.player_data.molten_skin.MoltenSkinDataHandler;
 import aurocosh.divinefavor.common.player_data.focused_fury.FocusedFuryDataHandler;
 import aurocosh.divinefavor.common.player_data.grudge.GrudgeDataHandler;
@@ -41,6 +42,7 @@ public class CommonProxy {
     public void preInit(FMLPreInitializationEvent e) {
         ModMultiBlocks.preInit();
 
+        ModPotions.preInit();
         ModTalismans.preInit();
 
         ModSpirits.preInit();
@@ -48,7 +50,6 @@ public class CommonProxy {
         ModCallingStones.preInit();
         ModWishingStones.preInit();
 
-        ModPotions.preInit();
 
         ModBlocks.preInit();
         ModItems.preInit();
@@ -62,6 +63,7 @@ public class CommonProxy {
 
         EscapePlanDataHandler.register();
         FocusedFuryDataHandler.register();
+        GillsDataHandler.register();
         GrimoireDataHandler.register();
         GrudgeDataHandler.register();
         InteractionDataHandler.register();
