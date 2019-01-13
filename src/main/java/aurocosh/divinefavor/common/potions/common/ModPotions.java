@@ -10,6 +10,7 @@ public class ModPotions {
     public static ModPotion empower_axe;
     public static ModPotion empower_pickaxe;
     public static ModPotion escape_plan;
+    public static ModPotion fins;
     public static ModPotion mist_blade;
     public static ModPotion night_eye;
     public static ModPotion obsidian_road;
@@ -39,6 +40,7 @@ public class ModPotions {
         empower_pickaxe = ModRegistries.potions.register(new PotionEmpowerPickaxe());
         escape_plan = ModRegistries.potions.register(new PotionEscapePlan());
         fall_negation = ModRegistries.potions.register(new PotionFallNegation());
+        fins = ModRegistries.potions.register(new PotionFins());
         focused_fury = ModRegistries.potions.register(new PotionFocusedFury());
         gills = ModRegistries.potions.register(new PotionGills());
         ground_flow = ModRegistries.potions.register(new PotionGroundFlow());

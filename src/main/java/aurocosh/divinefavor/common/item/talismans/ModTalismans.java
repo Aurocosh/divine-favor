@@ -1,9 +1,11 @@
 package aurocosh.divinefavor.common.item.talismans;
 
+import aurocosh.divinefavor.common.config.common.ConfigTalismans;
 import aurocosh.divinefavor.common.potions.common.ModPotions;
 import aurocosh.divinefavor.common.registry.ModRegistries;
 import aurocosh.divinefavor.common.registry.mappers.ModMappers;
 import aurocosh.divinefavor.common.spell.*;
+import aurocosh.divinefavor.common.spell.base.SpellAddPotionEffect;
 import aurocosh.divinefavor.common.spell.base.SpellAddPotionEffectToggle;
 
 import java.util.List;
@@ -27,6 +29,7 @@ public final class ModTalismans {
     public static ItemTalisman escape_plan;
     public static ItemTalisman fall_negation;
     public static ItemTalisman fell_tree;
+    public static ItemTalisman fins;
     public static ItemTalisman focused_fury;
     public static ItemTalisman gills;
     public static ItemTalisman green_cycle;
@@ -145,6 +148,11 @@ public final class ModTalismans {
         fell_tree = ModRegistries.items.register(new TalismanBuilder("fell_tree",3)
                 .setSpell(new SpellFellTree())
                 .castOnUse()
+                .create());
+        fins = ModRegistries.items.register(new TalismanBuilder("fins", ConfigTalismans.fins.uses)
+                .setSpell(new SpellAddPotionEffect(ModPotions.fins, ConfigTalismans.fins.duration))
+                .castOnUse()
+                .castOnRighClick()
                 .create());
         focused_fury = ModRegistries.items.register(new TalismanBuilder("focused_fury",2)
                 .setSpell(new SpellFocusedFury())
