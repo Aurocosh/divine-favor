@@ -2,8 +2,7 @@ package aurocosh.divinefavor.common.registry.common;
 
 import aurocosh.divinefavor.common.core.ResourceNamer;
 import aurocosh.divinefavor.common.muliblock.ModMultiBlock;
-import aurocosh.divinefavor.common.spell.base.ModSpell;
-import aurocosh.divinefavor.common.spirit.ModSpirit;
+import aurocosh.divinefavor.common.spirit.base.ModSpirit;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;

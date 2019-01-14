@@ -2,6 +2,10 @@ package aurocosh.divinefavor.common.spirit;
 
 import aurocosh.divinefavor.common.item.talismans.ModTalismans;
 import aurocosh.divinefavor.common.registry.ModRegistries;
+import aurocosh.divinefavor.common.spirit.base.ModSpirit;
+import aurocosh.divinefavor.common.spirit.punishment.BlizrabiPunishment;
+import aurocosh.divinefavor.common.spirit.punishment.NefirPunishment;
+import aurocosh.divinefavor.common.spirit.punishment.SquareFuryPunishment;
 
 public final class ModSpirits {
     public static ModSpirit allfire;
@@ -35,6 +39,7 @@ public final class ModSpirits {
         blizrabi = ModRegistries.spirits.register(
                 new SpiritBuilder("blizrabi")
                         .addActivityPeriod(10, 14)
+                        .setPunishment(new BlizrabiPunishment())
                         .addTalisman(ModTalismans.crystalline_road)
                         .addTalisman(ModTalismans.snowball_throw)
                         .addTalisman(ModTalismans.obsidian_road)
@@ -55,6 +60,7 @@ public final class ModSpirits {
         nefir = ModRegistries.spirits.register(
                 new SpiritBuilder("nefir")
                         .addActivityPeriod(10, 14)
+                        .setPunishment(new NefirPunishment())
                         .addTalisman(ModTalismans.molten_skin)
                         .addTalisman(ModTalismans.infernal_touch)
                         .addTalisman(ModTalismans.hellisphere)
@@ -83,6 +89,7 @@ public final class ModSpirits {
         squarefury = ModRegistries.spirits.register(
                 new SpiritBuilder("squarefury")
                         .addActivityPeriod(15, 21)
+                        .setPunishment(new SquareFuryPunishment())
                         .addTalisman(ModTalismans.butchering_strike)
                         .addTalisman(ModTalismans.consuming_fury)
                         .addTalisman(ModTalismans.grudge)

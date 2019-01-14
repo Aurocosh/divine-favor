@@ -5,7 +5,7 @@ import aurocosh.divinefavor.common.item.base.ModItem;
 import aurocosh.divinefavor.common.item.talismans.ItemTalisman;
 import aurocosh.divinefavor.common.network.message.client.spell_uses.MessageSyncMaxSpellUses;
 import aurocosh.divinefavor.common.player_data.spell_count.ISpellUsesHandler;
-import aurocosh.divinefavor.common.spirit.ModSpirit;
+import aurocosh.divinefavor.common.spirit.base.ModSpirit;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;

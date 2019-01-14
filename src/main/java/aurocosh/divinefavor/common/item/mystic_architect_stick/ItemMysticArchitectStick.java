@@ -35,7 +35,7 @@ public class ItemMysticArchitectStick extends ModItem {
     public static final String TAG_POS_SECOND = "PosSecond";
     public static final String TAG_AIR_TYPE = "AirType";
     public static final String TAG_BASE_POSITION = "BasePosition";
-    public static final String TAG_MEDIUM_POSITION = "BasePosition";
+    public static final String TAG_MEDIUM_POSITION = "MediumPosition";
     public static final String TAG_CURRENT_MODE = "CurrentMode";
 
     public ItemMysticArchitectStick() {
@@ -85,9 +85,6 @@ public class ItemMysticArchitectStick extends ModItem {
                     break;
             }
         }
-
-
-
         return EnumActionResult.SUCCESS;
     }
 

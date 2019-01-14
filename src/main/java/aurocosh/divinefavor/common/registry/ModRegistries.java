@@ -4,8 +4,7 @@ import aurocosh.divinefavor.common.block.base.ModBlock;
 import aurocosh.divinefavor.common.potions.base.potion.ModPotion;
 import aurocosh.divinefavor.common.item.base.ModItem;
 import aurocosh.divinefavor.common.muliblock.ModMultiBlock;
-import aurocosh.divinefavor.common.spell.base.ModSpell;
-import aurocosh.divinefavor.common.spirit.ModSpirit;
+import aurocosh.divinefavor.common.spirit.base.ModSpirit;
 import net.minecraft.item.ItemBlock;
 
 public class ModRegistries {

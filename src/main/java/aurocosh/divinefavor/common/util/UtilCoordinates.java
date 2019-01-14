@@ -37,7 +37,7 @@ public class UtilCoordinates {
             for (Vector3i neighbour : neighbours)
                 if (!visitedNodes.contains(neighbour) && !plannedNodes.contains(neighbour))
                     newNodes.add(neighbour);
-            newNodes = UtilGeneric.selectRandom(newNodes, neighboursToAdd);
+            newNodes = UtilRandom.selectRandom(newNodes, neighboursToAdd);
             nodesToVisit.addAll(newNodes);
             plannedNodes.addAll(newNodes);
         }

@@ -43,10 +43,10 @@ public class PatchouliMultiBlockData {
         Vector3i size = configuration.boundingBox.getSizeVector();
         String[][] layers = new String[size.y][];
         for (int y = 0; y < size.y; y++) {
-            String[] layer = new String[size.x];
-            for (int x = 0; x < size.x; x++) {
-                StringBuilder builder = new StringBuilder(size.z);
-                for (int z = 0; z < size.z; z++) {
+            String[] layer = new String[size.z];
+            for (int z = 0; z < size.z; z++) {
+                StringBuilder builder = new StringBuilder(size.x);
+                for (int x = 0; x < size.x; x++) {
                     Vector3i position = new Vector3i(x,size.y - 1 - y,z);
                     StateValidator validator = validatorMap.get(position);
                     Character symbol = symbolMap.get(validator);
@@ -54,7 +54,7 @@ public class PatchouliMultiBlockData {
                         symbol = ' ';
                     builder.append(symbol);
                 }
-                layer[x] = builder.toString();
+                layer[z] = builder.toString();
             }
             layers[y] = layer;
         }

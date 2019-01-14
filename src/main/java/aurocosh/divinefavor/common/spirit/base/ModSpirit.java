@@ -1,4 +1,4 @@
-package aurocosh.divinefavor.common.spirit;
+package aurocosh.divinefavor.common.spirit.base;
 
 import aurocosh.divinefavor.common.core.ResourceNamer;
 import aurocosh.divinefavor.common.item.talismans.ItemTalisman;
@@ -15,10 +15,13 @@ public class ModSpirit extends IForgeRegistryEntry.Impl<ModSpirit> {
     private final List<TimePeriod> activityPeriods;
     private final List<ItemTalisman> talismans;
 
-    public ModSpirit(String name, List<TimePeriod> activityPeriods, List<ItemTalisman> talismans) {
+    private final SpiritPunishment punishment;
+
+    public ModSpirit(String name, List<TimePeriod> activityPeriods, List<ItemTalisman> talismans, SpiritPunishment punishment) {
         this.name = name;
         this.activityPeriods = Collections.unmodifiableList(new ArrayList<>(activityPeriods));
         this.talismans = talismans;
+        this.punishment = punishment;
         setRegistryName(ResourceNamer.getFullName("spirit", name));
     }
 
@@ -32,6 +35,10 @@ public class ModSpirit extends IForgeRegistryEntry.Impl<ModSpirit> {
 
     public List<ItemTalisman> getTalismans(){
         return Collections.unmodifiableList(talismans);
+    }
+
+    public SpiritPunishment getPunishment() {
+        return punishment;
     }
 
     public boolean isActive(World world) {

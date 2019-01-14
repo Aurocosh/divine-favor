@@ -6,7 +6,7 @@ import aurocosh.divinefavor.common.item.contract.ItemContract;
 import aurocosh.divinefavor.common.item.talismans.ModTalismans;
 import aurocosh.divinefavor.common.lib.ItemStackIdComparator;
 import aurocosh.divinefavor.common.registry.ModRegistries;
-import aurocosh.divinefavor.common.spirit.ModSpirit;
+import aurocosh.divinefavor.common.spirit.base.ModSpirit;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;

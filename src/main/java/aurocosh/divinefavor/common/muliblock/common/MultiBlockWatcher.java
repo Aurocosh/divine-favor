@@ -15,16 +15,16 @@ import java.util.Set;
 
 @Mod.EventBusSubscriber
 public class MultiBlockWatcher {
-    private static Map<World,Set<IMultiblockController>> controllers = new HashMap<>();
+    private static Map<World, Set<IMultiblockController>> controllers = new HashMap<>();
 
-    public static void registerController(IMultiblockController controller){
+    public static void registerController(IMultiblockController controller) {
         Set<IMultiblockController> controllerSet = getOrMakeControllerSet(controller.getWorld());
         controllerSet.add(controller);
     }
 
-    public static void unRegisterController(IMultiblockController controller){
+    public static void unRegisterController(IMultiblockController controller) {
         Set<IMultiblockController> controllerSet = controllers.get(controller.getWorld());
-        if(controllerSet == null)
+        if (controllerSet == null)
             return;
         controllerSet.remove(controller);
     }
@@ -32,7 +32,7 @@ public class MultiBlockWatcher {
     @SubscribeEvent(priority = EventPriority.LOWEST)
     public static void onBreakEvent(BlockEvent.BreakEvent event) {
         Set<IMultiblockController> controllerSet = controllers.get(event.getWorld());
-        if(controllerSet == null)
+        if (controllerSet == null)
             return;
 
         IMultiblockController[] controllers = new IMultiblockController[controllerSet.size()];
@@ -41,28 +41,28 @@ public class MultiBlockWatcher {
         Vector3i position = Vector3i.convert(event.getPos());
         for (IMultiblockController controller : controllers)
             if (controller.getMultiblockInstance().isSolidPart(position))
-                controller.multiblockDamaged();
+                controller.multiblockDamaged(event.getPlayer(), event.getWorld(), event.getPos(), event.getState());
     }
 
     @SubscribeEvent(priority = EventPriority.LOWEST)
     public static void onPlaceEvent(BlockEvent.PlaceEvent event) {
         Set<IMultiblockController> controllerSet = controllers.get(event.getWorld());
-        if(controllerSet == null)
+        if (controllerSet == null)
             return;
 
         Vector3i position = Vector3i.convert(event.getPos());
         for (IMultiblockController controller : controllerSet)
             if (controller.getMultiblockInstance().isSupposedToBeEmpty(position))
-                controller.multiblockDamaged();
+                controller.multiblockDamaged(event.getPlayer(), event.getWorld(), event.getPos(), event.getState());
     }
 
-    private static Set<IMultiblockController> getOrMakeControllerSet(World world){
+    private static Set<IMultiblockController> getOrMakeControllerSet(World world) {
         Set<IMultiblockController> controllerSet = controllers.get(world);
-        if(controllerSet != null)
+        if (controllerSet != null)
             return controllerSet;
 
         controllerSet = new HashSet<>();
-        controllers.put(world,controllerSet);
+        controllers.put(world, controllerSet);
         return controllerSet;
     }
 }
