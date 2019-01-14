@@ -85,6 +85,6 @@ public class BlockMedium extends ModBlock implements ITileEntityProvider {
         if (!(entity instanceof TileMedium))
             return;
         TileMedium medium = (TileMedium) entity;
-        medium.multiblockDamaged();
+        medium.multiblockDeconstructed();
     }
 }

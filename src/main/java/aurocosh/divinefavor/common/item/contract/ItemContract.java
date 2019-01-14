@@ -2,7 +2,7 @@ package aurocosh.divinefavor.common.item.contract;
 
 import aurocosh.divinefavor.common.core.DivineFavorCreativeTab;
 import aurocosh.divinefavor.common.item.base.ModItem;
-import aurocosh.divinefavor.common.spirit.ModSpirit;
+import aurocosh.divinefavor.common.spirit.base.ModSpirit;
 import aurocosh.divinefavor.common.util.UtilNbt;
 import com.mojang.authlib.GameProfile;
 import net.minecraft.client.resources.I18n;

@@ -10,14 +10,13 @@ import aurocosh.divinefavor.common.lib.math.Vector3i;
 import aurocosh.divinefavor.common.misc.SlotStack;
 import aurocosh.divinefavor.common.muliblock.IMultiblockController;
 import aurocosh.divinefavor.common.muliblock.ModMultiBlock;
-import aurocosh.divinefavor.common.muliblock.ModMultiBlockInstance;
+import aurocosh.divinefavor.common.muliblock.MultiBlockInstance;
 import aurocosh.divinefavor.common.muliblock.common.MultiBlockWatcher;
 import aurocosh.divinefavor.common.network.message.client.spell_uses.MessageSyncAllSpellUses;
-import aurocosh.divinefavor.common.network.message.client.spell_uses.MessageSyncSpellUses;
 import aurocosh.divinefavor.common.player_data.spell_count.ISpellUsesHandler;
 import aurocosh.divinefavor.common.player_data.spell_count.SpellUsesDataHandler;
 import aurocosh.divinefavor.common.receipes.ModRecipes;
-import aurocosh.divinefavor.common.spirit.ModSpirit;
+import aurocosh.divinefavor.common.spirit.base.ModSpirit;
 import aurocosh.divinefavor.common.util.UtilHandler;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
@@ -26,11 +25,11 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.NetworkManager;
 import net.minecraft.network.play.server.SPacketUpdateTileEntity;
-import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.management.PlayerList;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
 import net.minecraftforge.common.capabilities.Capability;
-import net.minecraftforge.fml.server.FMLServerHandler;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
@@ -50,7 +49,7 @@ public class TileMedium extends TickableTileEntity implements IMultiblockControl
     private MediumState state = MediumState.NO_CALLING_STONE;
 
     // server side
-    private ModMultiBlockInstance multiBlockInstance;
+    private MultiBlockInstance multiBlockInstance;
 
     private ItemStackHandler stoneStackHandler = new ItemStackHandler(1) {
         @Override
@@ -63,7 +62,7 @@ public class TileMedium extends TickableTileEntity implements IMultiblockControl
             if (!world.isRemote) {
                 ItemStack stack = getStackInSlot(slot);
                 if (stack.isEmpty() && multiBlockInstance != null)
-                    multiblockDamaged();
+                    multiblockDeconstructed();
                 else if (multiBlockInstance == null)
                     tryToFormMultiBlock();
             }
@@ -189,13 +188,13 @@ public class TileMedium extends TickableTileEntity implements IMultiblockControl
         IBlockState blockState = world.getBlockState(pos);
         getWorld().notifyBlockUpdate(pos, blockState, blockState, 3);
 
-        if(world.isRemote)
+        if (world.isRemote)
             return;
-        if(state == MediumState.ACTIVE)
-           refreshSpellUses();
+        if (state == MediumState.ACTIVE)
+            refreshSpellUses();
     }
 
-    private void refreshSpellUses(){
+    private void refreshSpellUses() {
         ItemStack stoneStack = stoneStackHandler.getStackInSlot(0);
         if (stoneStack.isEmpty())
             return;
@@ -211,7 +210,7 @@ public class TileMedium extends TickableTileEntity implements IMultiblockControl
         PlayerList playerList = world.getMinecraftServer().getPlayerList();
         for (UUID uuid : playerUUIDs) {
             EntityPlayerMP player = playerList.getPlayerByUUID(uuid);
-            if(player == null)
+            if (player == null)
                 continue;
 
             ISpellUsesHandler usesHandler = player.getCapability(SpellUsesDataHandler.CAPABILITY_SPELL_USES, null);
@@ -237,14 +236,14 @@ public class TileMedium extends TickableTileEntity implements IMultiblockControl
         return contracts;
     }
 
-    private List<UUID> getPlayerUUIDs(List<ItemStack> stacks, ItemCallingStone callingStone){
+    private List<UUID> getPlayerUUIDs(List<ItemStack> stacks, ItemCallingStone callingStone) {
         Set<UUID> playerUUIDs = new HashSet<>();
         for (ItemStack stack : stacks) {
             ItemContract contract = (ItemContract) stack.getItem();
             if (contract.getSpirit() != callingStone.spirit)
                 continue;
             UUID uuid = ItemContract.getPlayerId(stack);
-            if(uuid == null)
+            if (uuid == null)
                 continue;
             playerUUIDs.add(uuid);
         }
@@ -323,15 +322,23 @@ public class TileMedium extends TickableTileEntity implements IMultiblockControl
     }
 
     @Override
-    public ModMultiBlockInstance getMultiblockInstance() {
+    public MultiBlockInstance getMultiblockInstance() {
         return multiBlockInstance;
     }
 
     @Override
-    public void multiblockDamaged() {
-        multiBlockInstance = null;
+    public void multiblockDeconstructed() {
         MultiBlockWatcher.unRegisterController(this);
         setState(MediumState.NO_MULTI_BLOCK);
+        multiBlockInstance = null;
+    }
+
+    @Override
+    public void multiblockDamaged(EntityPlayer player, World world, BlockPos pos, IBlockState state) {
+        MultiBlockInstance instance = multiBlockInstance;
+        multiblockDeconstructed();
+        if (player != null)
+            instance.spirit.getPunishment().execute(player, world, pos, state, instance);
     }
 
     @Override
@@ -352,7 +359,7 @@ public class TileMedium extends TickableTileEntity implements IMultiblockControl
         ItemCallingStone callingStone = (ItemCallingStone) stack.getItem();
         ModMultiBlock multiBlock = callingStone.multiBlock;
         Vector3i position = Vector3i.convert(pos);
-        multiBlockInstance = multiBlock.makeMultiBlock(world, position);
+        multiBlockInstance = multiBlock.makeMultiBlock(callingStone.spirit, world, position);
         if (multiBlockInstance != null)
             MultiBlockWatcher.registerController(this);
     }

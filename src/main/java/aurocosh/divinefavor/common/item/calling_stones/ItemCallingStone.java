@@ -3,7 +3,7 @@ package aurocosh.divinefavor.common.item.calling_stones;
 import aurocosh.divinefavor.common.core.DivineFavorCreativeTabGems;
 import aurocosh.divinefavor.common.item.base.ModItem;
 import aurocosh.divinefavor.common.muliblock.ModMultiBlock;
-import aurocosh.divinefavor.common.spirit.ModSpirit;
+import aurocosh.divinefavor.common.spirit.base.ModSpirit;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
 

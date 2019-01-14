@@ -4,6 +4,7 @@ import aurocosh.divinefavor.common.core.ResourceNamer;
 import aurocosh.divinefavor.common.lib.math.CubeCoordinates;
 import aurocosh.divinefavor.common.lib.math.Vector3i;
 import aurocosh.divinefavor.common.muliblock.parts.MultiBlockPart;
+import aurocosh.divinefavor.common.spirit.base.ModSpirit;
 import net.minecraft.world.World;
 import net.minecraftforge.registries.IForgeRegistryEntry;
 
@@ -37,10 +38,10 @@ public class ModMultiBlock extends IForgeRegistryEntry.Impl<ModMultiBlock> {
 //        return true;
 //    }
 
-    public ModMultiBlockInstance makeMultiBlock(World world, Vector3i controller){
+    public MultiBlockInstance makeMultiBlock(ModSpirit spirit, World world, Vector3i controller){
         for (MultiBlockConfiguration configuration : configurations)
             if (configuration.isValid(world, controller))
-                return new ModMultiBlockInstance(this, configuration, controller);
+                return new MultiBlockInstance(spirit, this, configuration, controller);
         return null;
     }
 }

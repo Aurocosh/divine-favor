@@ -1,7 +1,7 @@
 package aurocosh.divinefavor.common.item.contract;
 
 import aurocosh.divinefavor.common.registry.ModRegistries;
-import aurocosh.divinefavor.common.spirit.ModSpirit;
+import aurocosh.divinefavor.common.spirit.base.ModSpirit;
 
 import java.util.Collection;
 
