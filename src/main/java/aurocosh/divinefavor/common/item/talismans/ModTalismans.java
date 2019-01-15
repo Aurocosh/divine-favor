@@ -1,6 +1,7 @@
 package aurocosh.divinefavor.common.item.talismans;
 
 import aurocosh.divinefavor.common.config.common.ConfigTalismans;
+import aurocosh.divinefavor.common.potions.base.potion.ModPotion;
 import aurocosh.divinefavor.common.potions.common.ModPotions;
 import aurocosh.divinefavor.common.registry.ModRegistries;
 import aurocosh.divinefavor.common.registry.mappers.ModMappers;
@@ -11,6 +12,7 @@ import aurocosh.divinefavor.common.spell.base.SpellAddPotionEffectToggle;
 import java.util.List;
 
 public final class ModTalismans {
+    public static ItemTalisman armor_of_pacifist;
     public static ItemTalisman arrow_throw_talisman;
     public static ItemTalisman blade_of_grass;
     public static ItemTalisman blink;
@@ -69,6 +71,11 @@ public final class ModTalismans {
     public static ItemTalisman wooden_punch;
 
     public static void preInit() {
+        armor_of_pacifist = ModRegistries.items.register(new TalismanBuilder("armor_of_pacifist",5)
+                .setSpell(new SpellAddPotionEffectToggle(ModPotions.armor_of_pacifist))
+                .castOnUse()
+                .castOnRighClick()
+                .create());
         arrow_throw_talisman = ModRegistries.items.register(new TalismanBuilder("arrow_throw",20)
                 .setSpell(new SpellArrowThrow())
                 .castOnUse()
