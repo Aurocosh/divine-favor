@@ -32,18 +32,20 @@ public class BlizrabiPunishment extends SpiritPunishment {
         BlockPos playerPosition = player.getPosition();
         SuccessCounter counter = new SuccessCounter(WOLFS_TO_SUMMON, SPAWN_ATTEMPTS);
         while (counter.attemptOnceMore())
-            if (spawnWolf(world, playerPosition))
+            if (spawnWolf(player, world, playerPosition))
                 counter.registerSuccess();
     }
 
-    private boolean spawnWolf(World world, BlockPos pos) {
+    private boolean spawnWolf(EntityPlayer player, World world, BlockPos pos) {
         BlockPos spawnPos = UtilCoordinates.getRandomNeighbour(pos, SPAWN_RADIUS, 0, SPAWN_RADIUS);
         spawnPos = UtilCoordinates.findPlaceToSpawn(spawnPos, world, SPAWN_RADIUS);
-        if(spawnPos == null)
+        if (spawnPos == null)
             return false;
 
         EntityWolf entityWolf = new EntityWolf(world);
         entityWolf.setLocationAndAngles(spawnPos.getX(), spawnPos.getY(), spawnPos.getZ(), 0, 0.0F);
+
+        entityWolf.setAttackTarget(player);
         entityWolf.setAngry(true);
         world.spawnEntity(entityWolf);
         return true;

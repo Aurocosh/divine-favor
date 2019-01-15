@@ -337,7 +337,7 @@ public class TileMedium extends TickableTileEntity implements IMultiblockControl
     public void multiblockDamaged(EntityPlayer player, World world, BlockPos pos, IBlockState state) {
         MultiBlockInstance instance = multiBlockInstance;
         multiblockDeconstructed();
-        if (player != null)
+        if (player != null && instance.spirit.isActive(world))
             instance.spirit.getPunishment().execute(player, world, pos, state, instance);
     }
 
