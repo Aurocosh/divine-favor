@@ -23,6 +23,7 @@ public class ModPotions {
     public static ModPotionCharge crushing_palm;
     public static ModPotionCharge fall_negation;
     public static ModPotionCharge toadic_jump;
+    public static ModPotionToggle armor_of_pacifist;
     public static ModPotionToggle gills;
     public static ModPotionToggle ground_flow;
     public static ModPotionToggle grudge;
@@ -34,6 +35,7 @@ public class ModPotions {
     public static ModPotionTrigger wild_charge;
 
     public static void preInit() {
+        armor_of_pacifist = ModRegistries.potions.register(new PotionArmorOfPacifist());
         butchering_strike = ModRegistries.potions.register(new PotionButcheringStrike());
         consuming_fury = ModRegistries.potions.register(new PotionConsumingFury());
         crushing_palm = ModRegistries.potions.register(new PotionCrushingPalm());
