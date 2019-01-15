@@ -79,6 +79,11 @@ public class UtilCoordinates {
         return coordinates;
     }
 
+    public static BlockPos getRandomNeighbourSafe(BlockPos center, int xRadius, int yRadius, int zRadius) {
+        BlockPos destination = UtilCoordinates.getRandomNeighbour(center, xRadius, yRadius, zRadius);
+        return new BlockPos(destination.getX(), Math.max(5,destination.getY()), destination.getZ());
+    }
+
     public static BlockPos getRandomNeighbour(BlockPos center, int xRadius, int yRadius, int zRadius) {
         int xShift = UtilRandom.nextInt(-xRadius, xRadius);
         int yShift = UtilRandom.nextInt(-yRadius, yRadius);
@@ -86,11 +91,21 @@ public class UtilCoordinates {
         return center.add(xShift, yShift, zShift);
     }
 
+    public static BlockPos findBlock(BlockPos start, EnumFacing facing, int limit, UtilList.Predicate<BlockPos> predicate) {
+        BlockPos pos = start;
+        while (limit-- > 0) {
+            pos = pos.offset(facing);
+            if(predicate.select(pos))
+                return pos;
+        }
+        return null;
+    }
+
     public static BlockPos findPlaceToSpawn(BlockPos start, World world, int limit) {
-        BlockPos pos = findPlaceToTeleportAbove(start.down(), world, limit);
+        BlockPos pos = findPlaceToStandBelow(start.up(), world, limit, true);
         if (pos != null)
             return pos;
-        return findPlaceToStandBelow(start.up(), world, limit, true);
+        return findPlaceToTeleportAbove(start.down(), world, limit);
     }
 
     public static BlockPos findPlaceToTeleport(BlockPos start, World world, EnumFacing facing, int limit, boolean needPlaceToStand) {

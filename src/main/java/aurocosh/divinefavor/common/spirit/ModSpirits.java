@@ -3,9 +3,7 @@ package aurocosh.divinefavor.common.spirit;
 import aurocosh.divinefavor.common.item.talismans.ModTalismans;
 import aurocosh.divinefavor.common.registry.ModRegistries;
 import aurocosh.divinefavor.common.spirit.base.ModSpirit;
-import aurocosh.divinefavor.common.spirit.punishment.BlizrabiPunishment;
-import aurocosh.divinefavor.common.spirit.punishment.NefirPunishment;
-import aurocosh.divinefavor.common.spirit.punishment.SquareFuryPunishment;
+import aurocosh.divinefavor.common.spirit.punishment.*;
 
 public final class ModSpirits {
     public static ModSpirit allfire;
@@ -22,6 +20,7 @@ public final class ModSpirits {
         allfire = ModRegistries.spirits.register(
                 new SpiritBuilder("allfire")
                         .addActivityPeriod(10, 14)
+                        .setPunishment(new AllfirePunishment())
                         .addTalisman(ModTalismans.combustion)
                         .addTalisman(ModTalismans.heat_wave)
                         .addTalisman(ModTalismans.ignition)
@@ -48,6 +47,7 @@ public final class ModSpirits {
         endererer = ModRegistries.spirits.register(
                 new SpiritBuilder("endererer")
                         .addActivityPeriod(10, 14)
+                        .setPunishment(new EnderererPunishment())
                         .addTalisman(ModTalismans.escape_plan)
                         .addTalisman(ModTalismans.pearl_crumbs)
                         .addTalisman(ModTalismans.blink)
@@ -100,6 +100,7 @@ public final class ModSpirits {
         timber = ModRegistries.spirits.register(
                 new SpiritBuilder("timber")
                         .addActivityPeriod(6, 12)
+                        .setPunishment(new TimberPunishment())
                         .addTalisman(ModTalismans.fell_tree)
                         .addTalisman(ModTalismans.wooden_punch)
 

@@ -14,6 +14,7 @@ public class ModPotions {
     public static ModPotion mist_blade;
     public static ModPotion night_eye;
     public static ModPotion obsidian_road;
+    public static ModPotion roots;
     public static ModPotion spider_might;
     public static ModPotion starvation;
     public static ModPotion stone_fever;
@@ -51,6 +52,7 @@ public class ModPotions {
         molten_skin = ModRegistries.potions.register(new PotionMoltenSkin());
         night_eye = ModRegistries.potions.register(new PotionNightEye());
         obsidian_road = ModRegistries.potions.register(new PotionLiquidWalking("obsidian_road", Blocks.LAVA));
+        roots = ModRegistries.potions.register(new PotionRoots());
         spider_might = ModRegistries.potions.register(new PotionSpiderMight());
         starvation = ModRegistries.potions.register(new PotionStarvation());
         stone_fever = ModRegistries.potions.register(new PotionStoneFever());

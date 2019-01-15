@@ -11,12 +11,12 @@ import java.util.Collections;
 public class PotionEffectCurse extends PotionEffect {
     public PotionEffectCurse(Potion potion) {
         super(potion);
-        setCurativeItems(new ArrayList<>());
+        setCurativeItems(Collections.singletonList(new ItemStack(ModItems.pure_apple)));
     }
 
     public PotionEffectCurse(Potion potion, int durationIn) {
         super(potion, durationIn);
-        setCurativeItems(new ArrayList<>());
+        setCurativeItems(Collections.singletonList(new ItemStack(ModItems.pure_apple)));
     }
 
     public PotionEffectCurse(Potion potion, int durationIn, int amplifierIn) {

@@ -1,6 +1,7 @@
 package aurocosh.divinefavor.common.muliblock;
 
 import aurocosh.divinefavor.common.lib.math.CubeCoordinates;
+import aurocosh.divinefavor.common.lib.math.Vector3;
 import aurocosh.divinefavor.common.lib.math.Vector3i;
 import aurocosh.divinefavor.common.muliblock.parts.AirStateValidator;
 import aurocosh.divinefavor.common.muliblock.parts.MultiBlockPart;
@@ -15,6 +16,7 @@ public class MultiBlockInstance {
     public final ModMultiBlock multiBlock;
     public final MultiBlockConfiguration configuration;
     public final CubeCoordinates boundingBox;
+    public final Vector3i multiBlockOrigin;
     public final Set<Vector3i> positionsOfSolids;
     public final Set<Vector3i> positionsOfAir;
 
@@ -26,7 +28,7 @@ public class MultiBlockInstance {
         CubeCoordinates bounds = configuration.getBoundingBoxRelative();
         this.boundingBox = bounds.add(controllerPosition);
 
-        Vector3i multiBlockOrigin = controllerPosition.subtract(configuration.controllerRelPosition);
+        multiBlockOrigin = controllerPosition.subtract(configuration.controllerRelPosition);
 
         Set<Vector3i> air = new HashSet<>();
         Set<Vector3i> solids = new HashSet<>();

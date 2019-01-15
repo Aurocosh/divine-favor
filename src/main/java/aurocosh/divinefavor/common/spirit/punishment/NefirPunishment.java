@@ -7,11 +7,9 @@ import aurocosh.divinefavor.common.muliblock.MultiBlockInstance;
 import aurocosh.divinefavor.common.potions.base.effect.PotionEffectCurse;
 import aurocosh.divinefavor.common.spell.base.SpellContext;
 import aurocosh.divinefavor.common.spirit.base.SpiritPunishment;
-import aurocosh.divinefavor.common.util.UtilBlock;
-import aurocosh.divinefavor.common.util.UtilCoordinates;
-import aurocosh.divinefavor.common.util.UtilRandom;
-import aurocosh.divinefavor.common.util.UtilTick;
+import aurocosh.divinefavor.common.util.*;
 import net.minecraft.block.Block;
+import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.boss.EntityWither;
@@ -39,7 +37,7 @@ public class NefirPunishment extends SpiritPunishment {
     private final int SPAWN_RADIUS = 10;
 
     public static int MIN_BLOCKS_TO_MELT = 3;
-    public static int MAX_BLOCKS_TO_MELT = 3;
+    public static int MAX_BLOCKS_TO_MELT = 7;
 
     private static final DistributedRandomList<Class<? extends EntityLiving>> possibleEnemies = new DistributedRandomList<>();
 
@@ -61,13 +59,14 @@ public class NefirPunishment extends SpiritPunishment {
     private void smeltPartsOfAltar(EntityPlayer player, World world, MultiBlockInstance instance) {
         int blocksToSmelt = UtilRandom.nextInt(MIN_BLOCKS_TO_MELT, MAX_BLOCKS_TO_MELT);
         List<BlockPos> solidsPositions = Vector3i.convert(new ArrayList<>(instance.positionsOfSolids));
-        List<BlockPos> selectedPositions = UtilRandom.selectRandom(solidsPositions, blocksToSmelt);
+        List<BlockPos> netherrackPositions = UtilList.filterList(solidsPositions, pos -> world.getBlockState(pos).getBlock() == Blocks.NETHERRACK);
+        List<BlockPos> selectedPositions = UtilRandom.selectRandom(netherrackPositions, blocksToSmelt);
         for (BlockPos position : selectedPositions) {
             if (UtilBlock.canBreakBlock(player, world, position, false)) {
-                IBlockState oldState = world.getBlockState(position);
-                IBlockState newState = Blocks.LAVA.getDefaultState();
-                world.setBlockState(position, newState);
-                world.notifyBlockUpdate(position, oldState, newState, 3);
+//                IBlockState oldState = world.getBlockState(position);
+                IBlockState newState = Blocks.FLOWING_LAVA.getDefaultState();
+                world.setBlockState(position, newState, 11);
+//                world.notifyBlockUpdate(position, oldState, newState, 3);
             }
         }
     }
