@@ -1,7 +1,9 @@
 package aurocosh.divinefavor.common.potions.base.effect;
 
+import aurocosh.divinefavor.common.potions.base.potion.ModPotion;
 import aurocosh.divinefavor.common.potions.base.potion.ModPotionTrigger;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.Potion;
 
 public class ModEffectTrigger extends ModEffect {

@@ -1,8 +1,10 @@
 package aurocosh.divinefavor.common.potions.base.effect;
 
 import aurocosh.divinefavor.DivineFavor;
+import aurocosh.divinefavor.common.potions.base.potion.ModPotion;
 import aurocosh.divinefavor.common.potions.base.potion.ModPotionCharge;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.PotionEffect;
 import net.minecraftforge.fml.relauncher.ReflectionHelper;
 
@@ -32,4 +34,5 @@ public class ModEffectCharge extends ModEffect {
     public boolean onUpdate(EntityLivingBase entityIn) {
         return getAmplifier() > 0;
     }
+
 }

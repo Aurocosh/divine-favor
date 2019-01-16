@@ -1,22 +1,22 @@
 package aurocosh.divinefavor.common.potions.base.effect;
 
-import aurocosh.divinefavor.common.potions.base.potion.ModPotion;
+import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 
 public class ModEffect extends PotionEffect {
-    protected final ModPotion modPotion;
+    protected final Potion modPotion;
 
-    public ModEffect(ModPotion potion) {
+    public ModEffect(Potion potion) {
         super(potion);
         modPotion = potion;
     }
 
-    public ModEffect(ModPotion potion, int durationIn) {
+    public ModEffect(Potion potion, int durationIn) {
         super(potion, durationIn);
         modPotion = potion;
     }
 
-    public ModEffect(ModPotion potion, int durationIn, int amplifierIn) {
+    public ModEffect(Potion potion, int durationIn, int amplifierIn) {
         super(potion, durationIn, amplifierIn);
         modPotion = potion;
     }

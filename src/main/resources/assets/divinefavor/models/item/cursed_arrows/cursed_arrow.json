@@ -1,0 +1,7 @@
+{
+    "parent": "item/generated",
+    "textures": {
+        "layer0": "divinefavor:items/cursed_arrows/roots",
+        "layer1": "divinefavor:items/cursed_arrows/base"
+    }
+}
