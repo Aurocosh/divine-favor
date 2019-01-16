@@ -10,13 +10,17 @@ import java.util.HashMap;
 import java.util.List;
 
 public class RegistryAssistant<T extends IForgeRegistryEntry> {
-    private HashMap<ResourceLocation,T> valueMap;
+    private HashMap<ResourceLocation, T> valueMap;
 
-    public Collection<T> getValues(){
+    public T getValue(ResourceLocation location) {
+        return valueMap.get(location);
+    }
+
+    public Collection<T> getValues() {
         return valueMap.values();
     }
 
-    public <K extends T> List<K> getValues(Class clazz){
+    public <K extends T> List<K> getValues(Class clazz) {
         List<K> values = new ArrayList<>();
         for (T value : valueMap.values())
             if (clazz.isInstance(value))

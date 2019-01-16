@@ -4,6 +4,7 @@ import aurocosh.divinefavor.DivineFavor;
 import aurocosh.divinefavor.common.block.common.ModBlocks;
 import aurocosh.divinefavor.common.entity.ModEntities;
 import aurocosh.divinefavor.common.entity.common.ModGrudgeMobs;
+import aurocosh.divinefavor.common.item.arrows.ModItemCursedArrows;
 import aurocosh.divinefavor.common.item.calling_stones.ModCallingStones;
 import aurocosh.divinefavor.common.item.common.ModItems;
 import aurocosh.divinefavor.common.item.contract.ModContracts;
@@ -43,6 +44,7 @@ public class CommonProxy {
         ModMultiBlocks.preInit();
 
         ModPotions.preInit();
+        ModItemCursedArrows.preInit();
         ModTalismans.preInit();
 
         ModSpirits.preInit();

@@ -4,6 +4,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.math.BlockPos;
 
+import javax.swing.text.html.parser.Entity;
+
 public class UtilNbt {
     public static NBTTagCompound getEistingOrNewNBT(ItemStack stack) {
         if (stack.hasTagCompound())
@@ -16,6 +18,13 @@ public class UtilNbt {
 
     public static boolean checkForTag(ItemStack stack, String tag) {
         return stack.hasTagCompound() && stack.getTagCompound().hasKey(tag);
+    }
+
+    public static boolean checkForTags(NBTTagCompound nbt, String... tags) {
+       for (String tag : tags)
+            if (!nbt.hasKey(tag))
+                return false;
+        return true;
     }
 
     public static boolean checkForTags(ItemStack stack, String... tags) {

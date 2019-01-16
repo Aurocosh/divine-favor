@@ -2,6 +2,7 @@ package aurocosh.divinefavor.common.potions.base.potion;
 
 import aurocosh.divinefavor.common.constants.ConstMisc;
 import aurocosh.divinefavor.common.core.ResourceNamer;
+import aurocosh.divinefavor.common.potions.base.effect.PotionEffectCurse;
 import aurocosh.divinefavor.common.util.UtilTextureRender;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
@@ -21,7 +22,6 @@ import java.util.List;
 public abstract class ModPotion extends Potion {
     protected ResourceLocation icon;
     protected boolean beneficial;
-    protected EffectType effectType;
 
     public ModPotion(String name, boolean beneficial, int potionColor) {
         super(false, potionColor);
@@ -29,8 +29,6 @@ public abstract class ModPotion extends Potion {
         this.setIcon(new ResourceLocation(ConstMisc.MOD_ID, "textures/potions/" + name + ".png"));
 
         //potion.setIcon(potion.getIcon());
-
-        effectType = EffectType.TIMED;
 
         ResourceLocation fullName = ResourceNamer.getFullName(name);
         this.setPotionName("potion." + fullName.toString() + ".name");
@@ -83,10 +81,5 @@ public abstract class ModPotion extends Potion {
         ArrayList<ItemStack> ret = new java.util.ArrayList<>();
         ret.add(new ItemStack(Items.MILK_BUCKET));
         return ret;
-    }
-
-    enum EffectType {
-        TIMED,
-        PERMAMENT
     }
 }
