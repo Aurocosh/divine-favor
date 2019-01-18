@@ -1,0 +1,116 @@
+package aurocosh.divinefavor.common.entity.projectile;
+
+import aurocosh.divinefavor.common.item.arrows.base.ItemSpellArrow;
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.projectile.EntityArrow;
+import net.minecraft.init.Items;
+import net.minecraft.item.ItemStack;
+import net.minecraft.network.datasync.DataParameter;
+import net.minecraft.network.datasync.DataSerializers;
+import net.minecraft.network.datasync.EntityDataManager;
+import net.minecraft.util.EnumParticleTypes;
+import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
+
+public class EntitySpellArrow extends EntityArrow {
+    private static final DataParameter<Integer> COLOR = EntityDataManager.createKey(EntitySpellArrow.class, DataSerializers.VARINT);
+
+    private ItemSpellArrow arrow;
+    private EntityLivingBase shooter;
+
+    public EntitySpellArrow(World worldIn) {
+        super(worldIn);
+        init();
+    }
+
+    public EntitySpellArrow(World worldIn, double x, double y, double z) {
+        super(worldIn, x, y, z);
+        init();
+    }
+
+    public EntitySpellArrow(World worldIn, EntityLivingBase shooter) {
+        super(worldIn, shooter);
+        init();
+    }
+
+    private void init() {
+        setDamage(0.001f);
+    }
+
+    public void setSpell(ItemStack stack, EntityLivingBase shooter) {
+        this.shooter = shooter;
+        arrow = (ItemSpellArrow) stack.getItem();
+        dataManager.set(COLOR, arrow.getColor());
+    }
+
+    protected void entityInit() {
+        super.entityInit();
+        dataManager.register(COLOR, -1);
+    }
+
+    /**
+     * Called to update the entity's position/logic.
+     */
+    public void onUpdate() {
+        super.onUpdate();
+        if (world.isRemote) {
+            if (!inGround)
+                spawnPotionParticles(2);
+            else if (timeInGround % 5 == 0)
+                spawnPotionParticles(1);
+        }
+        else if (inGround && timeInGround != 0 && timeInGround >= 6000) {
+            world.setEntityState(this, (byte) 0);
+            arrow = null;
+            shooter = null;
+            dataManager.set(COLOR, -1);
+        }
+    }
+
+    private void spawnPotionParticles(int particleCount) {
+        int i = getColor();
+        if (i != -1 && particleCount > 0) {
+            double d0 = (double) (i >> 16 & 255) / 255.0D;
+            double d1 = (double) (i >> 8 & 255) / 255.0D;
+            double d2 = (double) (i >> 0 & 255) / 255.0D;
+
+            for (int j = 0; j < particleCount; ++j)
+                world.spawnParticle(EnumParticleTypes.SPELL_MOB, posX + (rand.nextDouble() - 0.5D) * (double) width, posY + rand.nextDouble() * (double) height, posZ + (rand.nextDouble() - 0.5D) * (double) width, d0, d1, d2);
+        }
+    }
+
+    public int getColor() {
+        return dataManager.get(COLOR);
+    }
+
+    protected void arrowHit(EntityLivingBase living) {
+        if (arrow != null && shooter != null)
+            arrow.getSpell().cast(living, shooter, this);
+    }
+
+    protected ItemStack getArrowStack() {
+        return arrow == null ? new ItemStack(Items.ARROW) : new ItemStack(arrow);
+    }
+
+    /**
+     * Handler for {@link World#setEntityState}
+     */
+    @SideOnly(Side.CLIENT)
+    public void handleStatusUpdate(byte id) {
+        if (id == 0) {
+            int i = getColor();
+
+            if (i != -1) {
+                double d0 = (double) (i >> 16 & 255) / 255.0D;
+                double d1 = (double) (i >> 8 & 255) / 255.0D;
+                double d2 = (double) (i >> 0 & 255) / 255.0D;
+
+                for (int j = 0; j < 20; ++j)
+                    world.spawnParticle(EnumParticleTypes.DAMAGE_INDICATOR, posX + (rand.nextDouble() - 0.5D) * (double) width, posY + rand.nextDouble() * (double) height, posZ + (rand.nextDouble() - 0.5D) * (double) width, d0, d1, d2);
+            }
+        }
+        else
+            super.handleStatusUpdate(id);
+    }
+}

@@ -1,7 +1,5 @@
 package aurocosh.divinefavor.common.constants;
 
-import net.minecraft.util.ResourceLocation;
-
 public class ConstResources {
 
     public static final String PREFIX_MOD = "divinefavor:";
@@ -22,6 +20,7 @@ public class ConstResources {
 
     public static final String RES_ARROW = PREFIX_PROJECTILES + "arrow.png";
     public static final String RES_CURSED_ARROW = PREFIX_PROJECTILES + "cursed_arrow.png";
+    public static final String RES_SPELL_ARROW = PREFIX_PROJECTILES + "spell_arrow.png";
 
     public static final String MULTIBLOCK_ASSETS = "/assets/" + ConstMisc.MOD_ID + "/multi_blocks/";
 }
