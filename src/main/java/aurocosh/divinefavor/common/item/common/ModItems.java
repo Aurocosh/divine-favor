@@ -1,9 +1,7 @@
 package aurocosh.divinefavor.common.item.common;
 
-import aurocosh.divinefavor.common.item.ItemBoneKey;
+import aurocosh.divinefavor.common.item.*;
 import aurocosh.divinefavor.common.item.mystic_architect_stick.ItemMysticArchitectStick;
-import aurocosh.divinefavor.common.item.ItemPureApple;
-import aurocosh.divinefavor.common.item.ItemStoneball;
 import aurocosh.divinefavor.common.item.base.ModItem;
 import aurocosh.divinefavor.common.item.contract_binder.ItemContractBinder;
 import aurocosh.divinefavor.common.item.grimoire.ItemGrimoire;
@@ -18,6 +16,8 @@ public final class ModItems {
     public static ModItem pure_apple;
     public static ModItem ritual_pouch;
     public static ModItem stoneball;
+    public static ModItem warp_gem;
+    public static ModItem warp_pebble;
 
     public static void preInit() {
         bone_key = ModRegistries.items.register(new ItemBoneKey());
@@ -27,6 +27,9 @@ public final class ModItems {
         pure_apple = ModRegistries.items.register(new ItemPureApple());
         ritual_pouch = ModRegistries.items.register(new ItemRitualPouch());
         stoneball = ModRegistries.items.register(new ItemStoneball());
+        warp_gem = ModRegistries.items.register(new ItemWarpGem());
+        warp_pebble = ModRegistries.items.register(new ItemWarpPebble());
+
 
 //        ModContainer mod = Loader.instance().getModObjectList().inverse().get(DivineFavor.instance);
     }

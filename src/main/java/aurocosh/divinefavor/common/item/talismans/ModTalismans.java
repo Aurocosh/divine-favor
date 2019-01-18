@@ -1,6 +1,8 @@
 package aurocosh.divinefavor.common.item.talismans;
 
 import aurocosh.divinefavor.common.config.common.ConfigTalismans;
+import aurocosh.divinefavor.common.item.base.ModItem;
+import aurocosh.divinefavor.common.item.common.ModItems;
 import aurocosh.divinefavor.common.potions.base.potion.ModPotion;
 import aurocosh.divinefavor.common.potions.common.ModPotions;
 import aurocosh.divinefavor.common.registry.ModRegistries;
@@ -65,6 +67,8 @@ public final class ModTalismans {
     public static ItemTalisman vitalize;
     public static ItemTalisman wall_slip;
     public static ItemTalisman warp;
+    public static ItemTalisman warp_gem;
+    public static ItemTalisman warp_pebble;
     public static ItemTalisman wild_sprint;
     public static ItemTalisman wind_step;
     public static ItemTalisman winter_breath;
@@ -315,6 +319,16 @@ public final class ModTalismans {
                 .create());
         warp = ModRegistries.items.register(new TalismanBuilder("warp",30)
                 .setSpell(new SpellBlink(8,false))
+                .castOnUse()
+                .castOnRighClick()
+                .create());
+        warp_gem = ModRegistries.items.register(new TalismanBuilder("warp_gem",1)
+                .setSpell(new SpellWarpGem(ModItems.warp_gem))
+                .castOnUse()
+                .castOnRighClick()
+                .create());
+        warp_pebble = ModRegistries.items.register(new TalismanBuilder("warp_pebble",5)
+                .setSpell(new SpellWarpGem(ModItems.warp_pebble))
                 .castOnUse()
                 .castOnRighClick()
                 .create());
