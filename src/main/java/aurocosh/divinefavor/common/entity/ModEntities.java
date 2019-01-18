@@ -12,8 +12,8 @@ public final class ModEntities {
     public static void preInit() {
         int id = 0;
         registerModEntity(EntityStoneball.class, "stoneball", id++, DivineFavor.instance, 256, 10, true);
-        registerModEntity(EntityCursedArrow.class, "cursed_arrow", id++, DivineFavor.instance, 256, 1, false);
-        registerModEntity(EntitySpellArrow.class, "spell_arrow", id++, DivineFavor.instance, 256, 1, false);
+        registerModEntity(EntityCursedArrow.class, "cursed_arrow", id++, DivineFavor.instance, 256, 1, true);
+        registerModEntity(EntitySpellArrow.class, "spell_arrow", id++, DivineFavor.instance, 256, 1, true);
     }
 
     private static void registerModEntity(Class<? extends Entity> entityClass, String entityName, int id, Object mod, int trackingRange, int updateFrequency, boolean sendsVelocityUpdates) {
