@@ -1,15 +1,13 @@
 package aurocosh.divinefavor.common.item.talismans;
 
 import aurocosh.divinefavor.common.config.common.ConfigTalismans;
-import aurocosh.divinefavor.common.item.base.ModItem;
 import aurocosh.divinefavor.common.item.common.ModItems;
-import aurocosh.divinefavor.common.potions.base.potion.ModPotion;
 import aurocosh.divinefavor.common.potions.common.ModPotions;
 import aurocosh.divinefavor.common.registry.ModRegistries;
 import aurocosh.divinefavor.common.registry.mappers.ModMappers;
-import aurocosh.divinefavor.common.spell.*;
-import aurocosh.divinefavor.common.spell.base.SpellAddPotionEffect;
-import aurocosh.divinefavor.common.spell.base.SpellAddPotionEffectToggle;
+import aurocosh.divinefavor.common.spell.talisman.base.SpellAddPotionEffect;
+import aurocosh.divinefavor.common.spell.talisman.base.SpellAddPotionEffectToggle;
+import aurocosh.divinefavor.common.spell.talisman.*;
 
 import java.util.List;
 

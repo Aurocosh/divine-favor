@@ -1,6 +1,6 @@
 package aurocosh.divinefavor.common.entity.projectile;
 
-import aurocosh.divinefavor.common.item.arrows.ItemCursedArrow;
+import aurocosh.divinefavor.common.item.arrows.base.ItemCursedArrow;
 import aurocosh.divinefavor.common.potions.base.effect.PotionEffectCurse;
 import aurocosh.divinefavor.common.registry.ModRegistries;
 import aurocosh.divinefavor.common.util.UtilNbt;

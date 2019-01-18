@@ -1,6 +1,6 @@
 package aurocosh.divinefavor.common.item.common;
 
-import aurocosh.divinefavor.common.item.arrows.ModItemArrow;
+import aurocosh.divinefavor.common.item.arrows.base.ModItemArrow;
 import aurocosh.divinefavor.common.item.base.IModelHolder;
 import aurocosh.divinefavor.common.item.base.ModItem;
 import aurocosh.divinefavor.common.registry.ModRegistries;

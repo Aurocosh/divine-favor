@@ -1,6 +1,6 @@
 package aurocosh.divinefavor.common.item.talismans;
 
-import aurocosh.divinefavor.common.spell.base.ModSpell;
+import aurocosh.divinefavor.common.spell.talisman.base.ModSpell;
 
 public class TalismanBuilder {
     private String name;

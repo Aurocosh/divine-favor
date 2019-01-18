@@ -1,0 +1,7 @@
+{
+    "parent": "item/generated",
+    "textures": {
+        "layer0": "divinefavor:items/spell_arrows/hand_swap",
+        "layer1": "divinefavor:items/spell_arrows/base"
+    }
+}
