@@ -45,6 +45,7 @@ public class CommonProxy {
 
         ModPotions.preInit();
         ModItemCursedArrows.preInit();
+        ModItems.preInit();
         ModTalismans.preInit();
 
         ModSpirits.preInit();
@@ -54,7 +55,6 @@ public class CommonProxy {
 
 
         ModBlocks.preInit();
-        ModItems.preInit();
         ModEntities.preInit();
 
         ModGrudgeMobs.preInit();
