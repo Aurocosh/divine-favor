@@ -2,7 +2,6 @@ package aurocosh.divinefavor.common.item.arrows.base;
 
 import aurocosh.divinefavor.common.core.DivineFavorCreativeTab;
 import aurocosh.divinefavor.common.entity.projectile.EntityCursedArrow;
-import aurocosh.divinefavor.common.item.arrows.base.ModItemArrow;
 import aurocosh.divinefavor.common.potions.base.potion.ModPotion;
 import aurocosh.divinefavor.common.util.UtilNbt;
 import aurocosh.divinefavor.common.util.UtilTick;
@@ -68,7 +67,7 @@ public class ItemCursedArrow extends ModItemArrow {
     }
 
     public static void setDuration(ItemStack stack, int duration) {
-        NBTTagCompound nbt = UtilNbt.getEistingOrNewNBT(stack);
+        NBTTagCompound nbt = UtilNbt.getTag(stack);
         nbt.setInteger(TAG_DURATION, duration);
     }
 

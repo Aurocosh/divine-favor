@@ -2,17 +2,13 @@ package aurocosh.divinefavor.client.core.handler;
 
 import aurocosh.divinefavor.DivineFavor;
 import aurocosh.divinefavor.common.constants.ConstMisc;
-import aurocosh.divinefavor.common.item.grimoire.ItemGrimoire;
-import aurocosh.divinefavor.common.item.grimoire.capability.IGrimoireHandler;
 import aurocosh.divinefavor.common.item.mystic_architect_stick.ArchitectStickMode;
 import aurocosh.divinefavor.common.item.mystic_architect_stick.ItemMysticArchitectStick;
-import aurocosh.divinefavor.common.network.message.sever.MessageSyncGrimoireSlot;
 import aurocosh.divinefavor.common.util.UtilNbt;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.EnumHand;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraftforge.client.event.MouseEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -20,8 +16,6 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import org.lwjgl.input.Keyboard;
-
-import static aurocosh.divinefavor.common.item.grimoire.capability.GrimoireDataHandler.CAPABILITY_GRIMOIRE;
 
 
 @SideOnly(Side.CLIENT)
@@ -44,7 +38,7 @@ public class MysticArchitectStickTickHandler {
         if(!(stack.getItem() instanceof ItemMysticArchitectStick))
             return;
 
-        NBTTagCompound compound = UtilNbt.getEistingOrNewNBT(stack);
+        NBTTagCompound compound = UtilNbt.getTag(stack);
         int mode = compound.getInteger(ItemMysticArchitectStick.TAG_CURRENT_MODE);
         if (dWheel < 0)
             mode--;

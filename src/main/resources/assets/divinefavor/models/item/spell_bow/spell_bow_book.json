@@ -1,0 +1,6 @@
+{
+    "parent": "item/bow",
+    "textures": {
+        "layer0": "divinefavor:items/spell_bow/spell_bow_book"
+    }
+}

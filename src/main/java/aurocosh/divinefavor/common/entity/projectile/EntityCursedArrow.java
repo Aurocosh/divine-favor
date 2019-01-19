@@ -145,7 +145,7 @@ public class EntityCursedArrow extends EntityArrow {
             return new ItemStack(Items.ARROW);
         else {
             ItemStack itemstack = new ItemStack(cursedArrow);
-            NBTTagCompound nbt = UtilNbt.getEistingOrNewNBT(itemstack);
+            NBTTagCompound nbt = UtilNbt.getTag(itemstack);
             nbt.setInteger(TAG_DURATION, duration);
             return itemstack;
         }

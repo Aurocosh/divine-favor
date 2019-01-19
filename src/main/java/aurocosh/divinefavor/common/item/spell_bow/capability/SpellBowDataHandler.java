@@ -1,26 +1,20 @@
-package aurocosh.divinefavor.common.item.grimoire.capability;
+package aurocosh.divinefavor.common.item.spell_bow.capability;
 
-import aurocosh.divinefavor.common.core.ResourceNamer;
-import aurocosh.divinefavor.common.item.common.ModItems;
-import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.CapabilityInject;
 import net.minecraftforge.common.capabilities.CapabilityManager;
-import net.minecraftforge.event.AttachCapabilitiesEvent;
-import net.minecraftforge.event.entity.player.PlayerEvent;
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
-public class GrimoireDataHandler {
+public class SpellBowDataHandler {
     // The Capability field. Used for checks and references.
     // Initialized when forge registers the capability.
-    @CapabilityInject(IGrimoireHandler.class)
-    public static final Capability<IGrimoireHandler> CAPABILITY_GRIMOIRE = null;
+    @CapabilityInject(ISpellBowHandler.class)
+    public static final Capability<ISpellBowHandler> CAPABILITY_SPELL_BOW = null;
 
     // Handles all of the required registration for the capability.
     public static void register() {
-        CapabilityManager.INSTANCE.register(IGrimoireHandler.class, new GrimoireStorage(), DefaultGrimoireHandler.class);
-        MinecraftForge.EVENT_BUS.register(new GrimoireDataHandler());
+        CapabilityManager.INSTANCE.register(ISpellBowHandler.class, new SpellBowStorage(), DefaultSpellBowHandler.class);
+        MinecraftForge.EVENT_BUS.register(new SpellBowDataHandler());
     }
 
 //    // Allows the provider to be attached to a target entity.
