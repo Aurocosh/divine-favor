@@ -23,7 +23,6 @@ import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.world.World;
-import org.lwjgl.input.Keyboard;
 
 import java.util.*;
 
@@ -52,7 +51,7 @@ public class ItemMysticArchitectStick extends ModItem {
             return EnumActionResult.PASS;
 
         ItemStack stack = playerIn.getHeldItemMainhand();
-        NBTTagCompound compound = UtilNbt.getEistingOrNewNBT(stack);
+        NBTTagCompound compound = UtilNbt.getTag(stack);
 
         if (!playerIn.isSneaking()) {
             boolean currentIsSecond = compound.getBoolean(TAG_CURRENT_IS_SECOND);

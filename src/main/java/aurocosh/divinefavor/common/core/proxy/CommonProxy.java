@@ -10,6 +10,7 @@ import aurocosh.divinefavor.common.item.calling_stones.ModCallingStones;
 import aurocosh.divinefavor.common.item.common.ModItems;
 import aurocosh.divinefavor.common.item.contract.ModContracts;
 import aurocosh.divinefavor.common.item.grimoire.capability.GrimoireDataHandler;
+import aurocosh.divinefavor.common.item.spell_bow.capability.SpellBowDataHandler;
 import aurocosh.divinefavor.common.item.talismans.base.ModTalismans;
 import aurocosh.divinefavor.common.item.wishing_stones.ModWishingStones;
 import aurocosh.divinefavor.common.muliblock.common.ModMultiBlocks;
@@ -73,6 +74,7 @@ public class CommonProxy {
         InteractionDataHandler.register();
         MoltenSkinDataHandler.register();
         PearlCrumbsDataHandler.register();
+        SpellBowDataHandler.register();
         TalismanUsesDataHandler.register();
 
         NetworkRegistry.INSTANCE.registerGuiHandler(DivineFavor.instance, new GuiHandler());

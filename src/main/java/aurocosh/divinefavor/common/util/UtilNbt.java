@@ -7,7 +7,7 @@ import net.minecraft.util.math.BlockPos;
 import javax.swing.text.html.parser.Entity;
 
 public class UtilNbt {
-    public static NBTTagCompound getEistingOrNewNBT(ItemStack stack) {
+    public static NBTTagCompound getTag(ItemStack stack) {
         if (stack.hasTagCompound())
             return stack.getTagCompound();
 

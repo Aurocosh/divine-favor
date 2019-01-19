@@ -6,6 +6,7 @@ import aurocosh.divinefavor.common.item.base.ModItem;
 import aurocosh.divinefavor.common.item.contract_binder.ItemContractBinder;
 import aurocosh.divinefavor.common.item.grimoire.ItemGrimoire;
 import aurocosh.divinefavor.common.item.ritual_pouch.ItemRitualPouch;
+import aurocosh.divinefavor.common.item.spell_bow.ItemSpellBow;
 import aurocosh.divinefavor.common.registry.ModRegistries;
 
 public final class ModItems {
@@ -15,6 +16,7 @@ public final class ModItems {
     public static ModItem mystic_architect_stick;
     public static ModItem pure_apple;
     public static ModItem ritual_pouch;
+    public static ModItem spell_bow;
     public static ModItem stoneball;
     public static ModItem warp_gem;
     public static ModItem warp_pebble;
@@ -26,6 +28,7 @@ public final class ModItems {
         mystic_architect_stick = ModRegistries.items.register(new ItemMysticArchitectStick());
         pure_apple = ModRegistries.items.register(new ItemPureApple());
         ritual_pouch = ModRegistries.items.register(new ItemRitualPouch());
+        spell_bow = ModRegistries.items.register(new ItemSpellBow());
         stoneball = ModRegistries.items.register(new ItemStoneball());
         warp_gem = ModRegistries.items.register(new ItemWarpMarker("warp_gem", true));
         warp_pebble = ModRegistries.items.register(new ItemWarpMarker("warp_pebble", false));

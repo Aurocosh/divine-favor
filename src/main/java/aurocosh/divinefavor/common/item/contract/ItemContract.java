@@ -40,7 +40,7 @@ public class ItemContract extends ModItem {
         if (world.isRemote)
             return ActionResult.newResult(EnumActionResult.SUCCESS, stack);
 
-        NBTTagCompound compound = UtilNbt.getEistingOrNewNBT(stack);
+        NBTTagCompound compound = UtilNbt.getTag(stack);
         if(compound.hasKey(NBT_PLAYER_ID))
             return null;
 
@@ -53,7 +53,7 @@ public class ItemContract extends ModItem {
 
     @Nullable
     public static UUID getPlayerId(ItemStack stack) {
-        NBTTagCompound compound = UtilNbt.getEistingOrNewNBT(stack);
+        NBTTagCompound compound = UtilNbt.getTag(stack);
         if(!compound.hasKey(NBT_PLAYER_ID))
             return null;
         return UUID.fromString(compound.getString(NBT_PLAYER_ID));
@@ -67,7 +67,7 @@ public class ItemContract extends ModItem {
     @Override
     public void addInformation(ItemStack stack, @Nullable World world, List<String> tooltip, ITooltipFlag flag) {
         super.addInformation(stack, world, tooltip, flag);
-        NBTTagCompound compound = UtilNbt.getEistingOrNewNBT(stack);
+        NBTTagCompound compound = UtilNbt.getTag(stack);
         if (compound.hasKey(NBT_PLAYER_NAME))
             tooltip.add(I18n.format("item.divinefavor:contract.player", compound.getString(NBT_PLAYER_NAME)));
     }

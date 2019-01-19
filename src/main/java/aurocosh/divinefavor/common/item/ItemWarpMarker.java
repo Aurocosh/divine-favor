@@ -50,7 +50,7 @@ public class ItemWarpMarker extends ModItem {
             return false;
         if(!(stack.getItem() instanceof ItemWarpMarker))
             return false;
-        NBTTagCompound nbt = UtilNbt.getEistingOrNewNBT(stack);
+        NBTTagCompound nbt = UtilNbt.getTag(stack);
         if(!UtilNbt.checkForTags(nbt, TAG_POSITION, TAG_DIMENSION))
             return false;
 
