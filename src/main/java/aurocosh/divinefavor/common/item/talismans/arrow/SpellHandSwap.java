@@ -8,6 +8,10 @@ import net.minecraft.entity.projectile.EntityArrow;
 import net.minecraft.item.ItemStack;
 
 public class SpellHandSwap extends ArrowSpell {
+    public SpellHandSwap() {
+        super(true);
+    }
+
     @Override
     protected void performActionServer(EntityLivingBase target, EntityLivingBase shooter, EntityArrow arrow) {
         if(target instanceof EntityPlayer) {

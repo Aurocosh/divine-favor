@@ -18,12 +18,14 @@ import static aurocosh.divinefavor.common.player_data.talisman_uses.TalismanUses
 public class ItemArrowTalisman extends ItemTalisman {
     private final ArrowSpell spell;
     private final int color;
+    private final boolean breakOnHit;
     private final ArrowType arrowType;
 
-    public ItemArrowTalisman(String name, int startingSpellUses, ArrowSpell spell, int color, ArrowType arrowType) {
+    public ItemArrowTalisman(String name, int startingSpellUses, ArrowSpell spell, int color, boolean breakOnHit, ArrowType arrowType) {
         super("arrow_talisman_" + name, "arrow_talismans/" + name, startingSpellUses);
         this.spell = spell;
         this.color = color;
+        this.breakOnHit = breakOnHit;
         this.arrowType = arrowType;
 
 //        setMaxStackSize(64);
@@ -32,6 +34,10 @@ public class ItemArrowTalisman extends ItemTalisman {
 
     public int getColor() {
         return color;
+    }
+
+    public boolean isBreakOnHit() {
+        return breakOnHit;
     }
 
     public ArrowSpell getSpell() {

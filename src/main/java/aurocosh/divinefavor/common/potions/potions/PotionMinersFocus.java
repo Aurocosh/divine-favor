@@ -1,7 +1,7 @@
 package aurocosh.divinefavor.common.potions.potions;
 
+import aurocosh.divinefavor.common.potions.base.effect.ModEffect;
 import aurocosh.divinefavor.common.potions.base.potion.ModPotionTrigger;
-import aurocosh.divinefavor.common.potions.base.effect.PotionEffectCurse;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.init.MobEffects;
 import net.minecraftforge.fml.common.Mod;
@@ -17,7 +17,7 @@ public class PotionMinersFocus extends ModPotionTrigger {
 
     @Override
     public void trigger(EntityLivingBase player) {
-        player.addPotionEffect(new PotionEffectCurse(MobEffects.MINING_FATIGUE, FATIGUE_DURATION, FATIGUE_LEVEL));
+        player.addPotionEffect(new ModEffect(MobEffects.MINING_FATIGUE, FATIGUE_DURATION, FATIGUE_LEVEL).setIsCurse());
     }
 
     @Override

@@ -8,5 +8,4 @@ public abstract class ModPotionTrigger extends ModPotion {
     }
 
     public abstract void trigger(EntityLivingBase player);
-
 }

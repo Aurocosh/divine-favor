@@ -4,11 +4,16 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.projectile.EntityArrow;
 
 public abstract class ArrowSpell {
-    public ArrowSpell() {
+    private final boolean requiresTarget;
+
+    public ArrowSpell(boolean requiresTarget) {
+        this.requiresTarget = requiresTarget;
     }
 
     public void cast(EntityLivingBase target, EntityLivingBase shooter, EntityArrow arrow) {
-        if (target.world.isRemote)
+        if(requiresTarget && target == null)
+            return;
+        if (arrow.world.isRemote)
             performActionClient(target, shooter, arrow);
         else
             performActionServer(target, shooter, arrow);

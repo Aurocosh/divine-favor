@@ -31,6 +31,7 @@ public class ModPotions {
     public static ModPotionToggleLimited wooden_punch;
     public static ModPotionTrigger consuming_fury;
     public static ModPotionTrigger focused_fury;
+    public static ModPotionTrigger fiery_mark;
     public static ModPotionTrigger miners_focus;
     public static ModPotionTrigger wild_charge;
 
@@ -44,6 +45,7 @@ public class ModPotions {
         empower_pickaxe = ModRegistries.potions.register(new PotionEmpowerPickaxe());
         escape_plan = ModRegistries.potions.register(new PotionEscapePlan());
         fall_negation = ModRegistries.potions.register(new PotionFallNegation());
+        fiery_mark = ModRegistries.potions.register(new PotionFieryMark());
         fins = ModRegistries.potions.register(new PotionFins());
         focused_fury = ModRegistries.potions.register(new PotionFocusedFury());
         gills = ModRegistries.potions.register(new PotionGills());

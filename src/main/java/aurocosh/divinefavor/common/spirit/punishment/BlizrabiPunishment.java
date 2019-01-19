@@ -2,7 +2,7 @@ package aurocosh.divinefavor.common.spirit.punishment;
 
 import aurocosh.divinefavor.common.lib.SuccessCounter;
 import aurocosh.divinefavor.common.muliblock.MultiBlockInstance;
-import aurocosh.divinefavor.common.potions.base.effect.PotionEffectCurse;
+import aurocosh.divinefavor.common.potions.base.effect.ModEffect;
 import aurocosh.divinefavor.common.spirit.base.SpiritPunishment;
 import aurocosh.divinefavor.common.util.UtilCoordinates;
 import aurocosh.divinefavor.common.util.UtilTick;
@@ -26,8 +26,8 @@ public class BlizrabiPunishment extends SpiritPunishment {
 
     @Override
     public void execute(EntityPlayer player, World world, BlockPos pos, IBlockState state, MultiBlockInstance instance) {
-        player.addPotionEffect(new PotionEffectCurse(MobEffects.SLOWNESS, SLOWNESS_DURATION, SLOWNESS_AMPLIFIER));
-        player.addPotionEffect(new PotionEffectCurse(MobEffects.WEAKNESS, WEAKNESS_DURATION, WEAKNESS_AMPLIFIER));
+        player.addPotionEffect(new ModEffect(MobEffects.SLOWNESS, SLOWNESS_DURATION, SLOWNESS_AMPLIFIER).setIsCurse());
+        player.addPotionEffect(new ModEffect(MobEffects.WEAKNESS, WEAKNESS_DURATION, WEAKNESS_AMPLIFIER).setIsCurse());
 
         BlockPos playerPosition = player.getPosition();
         SuccessCounter counter = new SuccessCounter(WOLFS_TO_SUMMON, SPAWN_ATTEMPTS);

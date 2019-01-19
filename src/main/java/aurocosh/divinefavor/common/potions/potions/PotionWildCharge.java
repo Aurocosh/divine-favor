@@ -1,12 +1,11 @@
 package aurocosh.divinefavor.common.potions.potions;
 
-import aurocosh.divinefavor.common.potions.base.effect.PotionEffectCurse;
+import aurocosh.divinefavor.common.potions.base.effect.ModEffect;
 import aurocosh.divinefavor.common.potions.base.potion.ModPotionTrigger;
 import aurocosh.divinefavor.common.potions.common.ModPotions;
 import aurocosh.divinefavor.common.util.UtilTick;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
-import net.minecraft.init.MobEffects;
 import net.minecraftforge.fml.common.Mod;
 
 @Mod.EventBusSubscriber
@@ -22,7 +21,7 @@ public class PotionWildCharge extends ModPotionTrigger {
 
     @Override
     public void trigger(EntityLivingBase player) {
-        player.addPotionEffect(new PotionEffectCurse(ModPotions.wild_sprint, SPEED_DURATION, SPEED_LEVEL));
+        player.addPotionEffect(new ModEffect(ModPotions.wild_sprint, SPEED_DURATION, SPEED_LEVEL).setIsCurse());
     }
 
     @Override
