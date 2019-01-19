@@ -47,43 +47,46 @@ public class UtilEntity {
 //        return new Vec3d(pos.getX() + 0.5, pos.getY() + 1.5, pos.getZ() + 0.5);
     }
 
-    public static void teleport(EntityPlayer player, GlobalBlockPos destination) {
-        teleport(player, destination.dimensionId, toPlayerPosition(destination.pos));
+    public static void teleport(EntityLivingBase livingBase, GlobalBlockPos destination) {
+        teleport(livingBase, destination.dimensionId, toPlayerPosition(destination.pos));
     }
 
-    public static void teleport(EntityPlayer player, BlockPos destination) {
-        teleport(player, player.getEntityWorld().provider.getDimension(), toPlayerPosition(destination));
+    public static void teleport(EntityLivingBase livingBase, BlockPos destination) {
+        teleport(livingBase, livingBase.getEntityWorld().provider.getDimension(), toPlayerPosition(destination));
     }
 
-    public static void teleport(EntityPlayer player, Vec3d destination) {
-        teleport(player, player.getEntityWorld().provider.getDimension(), destination);
+    public static void teleport(EntityLivingBase livingBase, Vec3d destination) {
+        teleport(livingBase, livingBase.getEntityWorld().provider.getDimension(), destination);
     }
 
-    public static void teleport(EntityPlayer player, int dimension, BlockPos destination) {
-        teleport(player, dimension, toPlayerPosition(destination));
+    public static void teleport(EntityLivingBase livingBase, int dimension, BlockPos destination) {
+        teleport(livingBase, dimension, toPlayerPosition(destination));
     }
 
-    public static void teleport(EntityPlayer player, int dimension, Vec3d destination) {
-        float rotationYaw = player.rotationYaw;
-        float rotationPitch = player.rotationPitch;
+    public static void teleport(EntityLivingBase livingBase, int dimension, Vec3d destination) {
+        float rotationYaw = livingBase.rotationYaw;
+        float rotationPitch = livingBase.rotationPitch;
 
-        int oldId = player.getEntityWorld().provider.getDimension();
+        int oldId = livingBase.getEntityWorld().provider.getDimension();
         if (oldId != dimension)
-            teleportToDimension(player, dimension, destination);
+            teleportToDimension(livingBase, dimension, destination);
 
-        player.rotationYaw = rotationYaw;
-        player.rotationPitch = rotationPitch;
-        player.setPositionAndUpdate(destination.x, destination.y, destination.z);
+        livingBase.rotationYaw = rotationYaw;
+        livingBase.rotationPitch = rotationPitch;
+        livingBase.setPositionAndUpdate(destination.x, destination.y, destination.z);
     }
 
-    public static void teleportToDimension(EntityPlayer player, int dimension, Vec3d destination) {
-        EntityPlayerMP entityPlayerMP = (EntityPlayerMP) player;
-        MinecraftServer server = player.getEntityWorld().getMinecraftServer();
+    public static void teleportToDimension(EntityLivingBase livingBase, int dimension, Vec3d destination) {
+        EntityPlayerMP entityPlayerMP = (EntityPlayerMP) livingBase;
+        MinecraftServer server = livingBase.getEntityWorld().getMinecraftServer();
         WorldServer worldServer = server.getWorld(dimension);
-        player.addExperienceLevel(0);
+        if(livingBase instanceof EntityPlayer) {
+            EntityPlayer player = (EntityPlayer) livingBase;
+            player.addExperienceLevel(0);
+        }
 
         worldServer.getMinecraftServer().getPlayerList().transferPlayerToDimension(entityPlayerMP, dimension, new CustomTeleporter(worldServer, destination));
-        player.setPositionAndUpdate(destination.x, destination.y, destination.z);
+        livingBase.setPositionAndUpdate(destination.x, destination.y, destination.z);
     }
 
     // client side only
