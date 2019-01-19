@@ -22,7 +22,7 @@ import aurocosh.divinefavor.common.item.ritual_pouch.RitualBagContainer;
 import aurocosh.divinefavor.common.item.spell_bow.SpellBowContainer;
 import aurocosh.divinefavor.common.item.spell_bow.capability.ISpellBowHandler;
 import aurocosh.divinefavor.common.item.spell_bow.capability.SpellBowDataHandler;
-import aurocosh.divinefavor.common.item.talismans.base.ContainerTalisman;
+import aurocosh.divinefavor.common.item.talismans.base.spell.ContainerTalisman;
 import aurocosh.divinefavor.common.util.UtilPlayer;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;

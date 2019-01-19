@@ -1,6 +1,6 @@
 package aurocosh.divinefavor.common.potions.potions;
 
-import aurocosh.divinefavor.common.item.talismans.base.ItemTalisman;
+import aurocosh.divinefavor.common.item.talismans.base.spell.ItemSpellTalisman;
 import aurocosh.divinefavor.common.network.message.client.spell_uses.MessageSyncSpellUses;
 import aurocosh.divinefavor.common.player_data.talisman_uses.ITalismanUsesHandler;
 import aurocosh.divinefavor.common.potions.base.potion.ModPotionToggleLimited;
@@ -44,7 +44,7 @@ public class PotionCrushingPalm extends ModPotionToggleLimited {
         ITalismanUsesHandler usesHandler = player.getCapability(CAPABILITY_TALISMAN_USES, null);
         assert usesHandler != null;
 
-        ItemTalisman talisman = ModPotions.crushing_palm.getTalisman();
+        ItemSpellTalisman talisman = ModPotions.crushing_palm.getTalisman();
         if (!usesHandler.consumeUse(talisman.getId()))
             return;
         int usesLeft = usesHandler.getUses(talisman.getId());

@@ -1,7 +1,7 @@
 package aurocosh.divinefavor.common.core;
 
 import aurocosh.divinefavor.common.constants.ConstMisc;
-import aurocosh.divinefavor.common.item.talismans.base.ModTalismans;
+import aurocosh.divinefavor.common.item.talismans.common.ModSpellTalismans;
 import aurocosh.divinefavor.common.registry.ModRegistries;
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
@@ -25,7 +25,7 @@ public class DivineFavorCreativeTabTalismans extends CreativeTabs {
 
     @Override
     public ItemStack createIcon() {
-        return new ItemStack(ModTalismans.wild_sprint);
+        return new ItemStack(ModSpellTalismans.wild_sprint);
     }
 
 //    @Override

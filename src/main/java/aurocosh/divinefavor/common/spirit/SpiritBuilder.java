@@ -1,6 +1,6 @@
 package aurocosh.divinefavor.common.spirit;
 
-import aurocosh.divinefavor.common.item.talismans.base.ItemTalisman;
+import aurocosh.divinefavor.common.item.talismans.base.spell.ItemSpellTalisman;
 import aurocosh.divinefavor.common.lib.TimePeriod;
 import aurocosh.divinefavor.common.spirit.base.ModSpirit;
 import aurocosh.divinefavor.common.spirit.base.SpiritPunishment;
@@ -11,7 +11,7 @@ import java.util.List;
 public class SpiritBuilder {
     private String name;
     private List<TimePeriod> activityPeriods;
-    private List<ItemTalisman> talismans;
+    private List<ItemSpellTalisman> talismans;
     private SpiritPunishment punishment;
 
     public SpiritBuilder(String name) {
@@ -26,7 +26,7 @@ public class SpiritBuilder {
         return this;
     }
 
-    public SpiritBuilder addTalisman(ItemTalisman talisman){
+    public SpiritBuilder addTalisman(ItemSpellTalisman talisman){
         talismans.add(talisman);
         return this;
     }

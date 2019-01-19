@@ -1,6 +1,6 @@
 package aurocosh.divinefavor.common.item.spell_bow.capability;
 
-import aurocosh.divinefavor.common.item.talismans.base.ItemTalisman;
+import aurocosh.divinefavor.common.item.talismans.base.arrow.ItemArrowTalisman;
 import aurocosh.divinefavor.common.util.UtilMath;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.items.ItemStackHandler;
@@ -27,7 +27,7 @@ public class DefaultSpellBowHandler implements ISpellBowHandler {
         inventory = new ItemStackHandler(SLOT_COUNT) {
             @Override
             public boolean isItemValid(int slot, @Nonnull ItemStack stack) {
-                return stack.getItem() instanceof ItemTalisman;
+                return stack.getItem() instanceof ItemArrowTalisman;
             }
 
             @Override

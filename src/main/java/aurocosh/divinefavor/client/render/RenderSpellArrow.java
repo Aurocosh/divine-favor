@@ -1,7 +1,6 @@
 package aurocosh.divinefavor.client.render;
 
 import aurocosh.divinefavor.common.constants.ConstResources;
-import aurocosh.divinefavor.common.entity.projectile.EntityCursedArrow;
 import aurocosh.divinefavor.common.entity.projectile.EntitySpellArrow;
 import net.minecraft.client.renderer.entity.RenderArrow;
 import net.minecraft.client.renderer.entity.RenderManager;

@@ -5,7 +5,7 @@ import aurocosh.divinefavor.common.item.calling_stones.ItemCallingStone;
 import aurocosh.divinefavor.common.item.common.ModItems;
 import aurocosh.divinefavor.common.item.contract.ItemContract;
 import aurocosh.divinefavor.common.item.contract_binder.ItemContractBinder;
-import aurocosh.divinefavor.common.item.talismans.base.ItemTalisman;
+import aurocosh.divinefavor.common.item.talismans.base.spell.ItemSpellTalisman;
 import aurocosh.divinefavor.common.lib.math.Vector3i;
 import aurocosh.divinefavor.common.misc.SlotStack;
 import aurocosh.divinefavor.common.muliblock.IMultiblockController;
@@ -206,7 +206,7 @@ public class TileMedium extends TickableTileEntity implements IMultiblockControl
 
         List<ItemStack> contracts = getContracts(stack);
         List<UUID> playerUUIDs = getPlayerUUIDs(contracts, callingStone);
-        List<ItemTalisman> talismans = callingStone.spirit.getTalismans();
+        List<ItemSpellTalisman> talismans = callingStone.spirit.getTalismans();
         PlayerList playerList = world.getMinecraftServer().getPlayerList();
         for (UUID uuid : playerUUIDs) {
             EntityPlayerMP player = playerList.getPlayerByUUID(uuid);
@@ -215,7 +215,7 @@ public class TileMedium extends TickableTileEntity implements IMultiblockControl
 
             ITalismanUsesHandler usesHandler = player.getCapability(TalismanUsesDataHandler.CAPABILITY_TALISMAN_USES, null);
             assert usesHandler != null;
-            for (ItemTalisman talisman : talismans)
+            for (ItemSpellTalisman talisman : talismans)
                 usesHandler.refreshUses(talisman.getId());
             new MessageSyncAllTalismanUses(usesHandler).sendTo(player);
         }
