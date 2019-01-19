@@ -1,6 +1,6 @@
 package aurocosh.divinefavor.common.potions.potions;
 
-import aurocosh.divinefavor.common.potions.base.effect.PotionEffectCurse;
+import aurocosh.divinefavor.common.potions.base.effect.ModEffect;
 import aurocosh.divinefavor.common.potions.base.potion.ModPotion;
 import aurocosh.divinefavor.common.potions.common.ModPotions;
 import aurocosh.divinefavor.common.util.UtilBlock;
@@ -57,9 +57,9 @@ public class PotionStoneFever extends ModPotion {
     private static void punishPlayer(EntityPlayer player){
         player.removePotionEffect(ModPotions.stone_fever);
 
-        player.addPotionEffect(new PotionEffectCurse(MobEffects.SLOWNESS, 1200));
-        player.addPotionEffect(new PotionEffectCurse(MobEffects.BLINDNESS, 200));
-        player.addPotionEffect(new PotionEffectCurse(MobEffects.MINING_FATIGUE, 3600, 5));
+        player.addPotionEffect(new ModEffect(MobEffects.SLOWNESS, 1200).setIsCurse());
+        player.addPotionEffect(new ModEffect(MobEffects.BLINDNESS, 200).setIsCurse());
+        player.addPotionEffect(new ModEffect(MobEffects.MINING_FATIGUE, 3600, 5).setIsCurse());
     }
 
     @Override

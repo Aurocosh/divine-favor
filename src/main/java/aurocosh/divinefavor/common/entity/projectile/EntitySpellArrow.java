@@ -1,6 +1,7 @@
 package aurocosh.divinefavor.common.entity.projectile;
 
 import aurocosh.divinefavor.common.item.talismans.base.arrow.ItemArrowTalisman;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.projectile.EntityArrow;
 import net.minecraft.init.Items;
@@ -9,6 +10,7 @@ import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.util.EnumParticleTypes;
+import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -35,7 +37,7 @@ public class EntitySpellArrow extends EntityArrow {
     }
 
     private void init() {
-        setDamage(0.001f);
+        setDamage(0.0f);
     }
 
     public void setSpell(ItemArrowTalisman talisman, EntityLivingBase shooter) {
@@ -84,9 +86,21 @@ public class EntitySpellArrow extends EntityArrow {
         return dataManager.get(COLOR);
     }
 
-    protected void arrowHit(EntityLivingBase living) {
-        if (talisman != null && shooter != null)
-            talisman.getSpell().cast(living, shooter, this);
+//    protected void arrowHit(EntityLivingBase living) {
+//        if (talisman != null && shooter != null)
+//            talisman.getSpell().cast(living, shooter, this);
+//    }
+
+    @Override
+    protected void onHit(RayTraceResult raytraceResultIn) {
+        super.onHit(raytraceResultIn);
+        if (talisman == null || shooter == null)
+            return;
+        Entity entity = raytraceResultIn.entityHit;
+        EntityLivingBase living = entity instanceof EntityLivingBase ? (EntityLivingBase) entity : null;
+        talisman.getSpell().cast(living, shooter, this);
+        if(talisman.isBreakOnHit())
+            setDead();
     }
 
     protected ItemStack getArrowStack() {
