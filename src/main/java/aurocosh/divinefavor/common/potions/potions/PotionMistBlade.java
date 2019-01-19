@@ -1,6 +1,7 @@
 package aurocosh.divinefavor.common.potions.potions;
 
 import aurocosh.divinefavor.common.potions.base.potion.ModPotion;
+import aurocosh.divinefavor.common.potions.base.potion.ModPotionToggle;
 import aurocosh.divinefavor.common.potions.common.ModPotions;
 import aurocosh.divinefavor.common.util.UtilMob;
 import net.minecraft.client.renderer.GlStateManager;
@@ -17,7 +18,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 @Mod.EventBusSubscriber
-public class PotionMistBlade extends ModPotion {
+public class PotionMistBlade extends ModPotionToggle {
     private static int FRAMES_TO_INIT_FOG = 5;
     public static int EXTRA_DAMAGE = 8;
     public static int EXTRA_RANGED_DAMAGE = 8;

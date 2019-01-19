@@ -11,8 +11,6 @@ public class ModPotions {
     public static ModPotion empower_pickaxe;
     public static ModPotion escape_plan;
     public static ModPotion fins;
-    public static ModPotion mist_blade;
-    public static ModPotion night_eye;
     public static ModPotion obsidian_road;
     public static ModPotion roots;
     public static ModPotion spider_might;
@@ -20,14 +18,16 @@ public class ModPotions {
     public static ModPotion stone_fever;
     public static ModPotion wild_sprint;
     public static ModPotionCharge butchering_strike;
-    public static ModPotionCharge crushing_palm;
     public static ModPotionCharge fall_negation;
-    public static ModPotionCharge toadic_jump;
     public static ModPotionToggle armor_of_pacifist;
     public static ModPotionToggle gills;
     public static ModPotionToggle ground_flow;
     public static ModPotionToggle grudge;
+    public static ModPotionToggle mist_blade;
     public static ModPotionToggle molten_skin;
+    public static ModPotionToggle night_eye;
+    public static ModPotionToggleLimited crushing_palm;
+    public static ModPotionToggleLimited toadic_jump;
     public static ModPotionToggleLimited wooden_punch;
     public static ModPotionTrigger consuming_fury;
     public static ModPotionTrigger focused_fury;

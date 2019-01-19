@@ -1,6 +1,6 @@
 package aurocosh.divinefavor.common.spirit;
 
-import aurocosh.divinefavor.common.item.talismans.ModTalismans;
+import aurocosh.divinefavor.common.item.talismans.base.ModTalismans;
 import aurocosh.divinefavor.common.registry.ModRegistries;
 import aurocosh.divinefavor.common.spirit.base.ModSpirit;
 import aurocosh.divinefavor.common.spirit.punishment.*;

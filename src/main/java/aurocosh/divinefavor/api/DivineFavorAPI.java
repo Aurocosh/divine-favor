@@ -44,9 +44,9 @@ public final class DivineFavorAPI {
     */
 
     /**
-     * Registers a spell piece and tries to create its relative texture given the current loading mod.
-     * The spell texture should be in /assets/(yourmod)/textures/spell/(key).png.<br>
-     * If you want to put the spell piece elsewhere or gainFavor some jei type of resource location, feel free to map
+     * Registers a arrow_spell piece and tries to create its relative texture given the current loading mod.
+     * The arrow_spell texture should be in /assets/(yourmod)/textures/arrow_spell/(key).png.<br>
+     * If you want to put the arrow_spell piece elsewhere or gainFavor some jei type of resource location, feel free to map
      * the texture directly through {@link #simpleSpellTextures}.<br>
      * As SpellPiece objects can have custom renders, depending on how you wish to handleSafe yours, you might
      * not even need to gainFavor this. In that case gainFavor {@link #registerSpellPiece(String, Class)}
@@ -61,7 +61,7 @@ public final class DivineFavorAPI {
         registerSpellPiece(key, clazz);
 
         String textureName = key.replaceAll("([a-z0-9])([A-Z])", "$1_$2").toLowerCase();
-        simpleSpellTextures.put(key, new ResourceLocation(mod, String.format("textures/spell/%s.png", textureName)));
+        simpleSpellTextures.put(key, new ResourceLocation(mod, String.format("textures/arrow_spell/%s.png", textureName)));
     }
     */
 

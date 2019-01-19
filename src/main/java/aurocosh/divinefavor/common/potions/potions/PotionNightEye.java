@@ -1,20 +1,15 @@
 package aurocosh.divinefavor.common.potions.potions;
 
-import aurocosh.divinefavor.common.potions.base.potion.ModPotion;
+import aurocosh.divinefavor.common.potions.base.potion.ModPotionToggle;
 import aurocosh.divinefavor.common.util.UtilTick;
-import net.minecraft.block.Block;
-import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.init.MobEffects;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.EnumSkyBlock;
 import net.minecraft.world.World;
 
-import static aurocosh.divinefavor.common.util.UtilEntity.tickLiquidWalk;
-
-public class PotionNightEye extends ModPotion {
+public class PotionNightEye extends ModPotionToggle {
     public static int TOLERABLE_LIGHT_LEVEL = 4;
     public static int BLINDNESS_DURATION = UtilTick.secondsToTicks(12);
 

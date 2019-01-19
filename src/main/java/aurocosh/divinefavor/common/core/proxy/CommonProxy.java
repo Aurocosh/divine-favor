@@ -10,7 +10,7 @@ import aurocosh.divinefavor.common.item.calling_stones.ModCallingStones;
 import aurocosh.divinefavor.common.item.common.ModItems;
 import aurocosh.divinefavor.common.item.contract.ModContracts;
 import aurocosh.divinefavor.common.item.grimoire.capability.GrimoireDataHandler;
-import aurocosh.divinefavor.common.item.talismans.ModTalismans;
+import aurocosh.divinefavor.common.item.talismans.base.ModTalismans;
 import aurocosh.divinefavor.common.item.wishing_stones.ModWishingStones;
 import aurocosh.divinefavor.common.muliblock.common.ModMultiBlocks;
 import aurocosh.divinefavor.common.network.GuiHandler;
@@ -25,7 +25,7 @@ import aurocosh.divinefavor.common.player_data.focused_fury.FocusedFuryDataHandl
 import aurocosh.divinefavor.common.player_data.grudge.GrudgeDataHandler;
 import aurocosh.divinefavor.common.player_data.interaction_handler.InteractionDataHandler;
 import aurocosh.divinefavor.common.player_data.pearl_crumbs.PearlCrumbsDataHandler;
-import aurocosh.divinefavor.common.player_data.spell_count.SpellUsesDataHandler;
+import aurocosh.divinefavor.common.player_data.talisman_uses.TalismanUsesDataHandler;
 import aurocosh.divinefavor.common.potions.common.ModPotions;
 import aurocosh.divinefavor.common.receipes.ModRecipes;
 import aurocosh.divinefavor.common.spirit.ModSpirits;
@@ -73,7 +73,7 @@ public class CommonProxy {
         InteractionDataHandler.register();
         MoltenSkinDataHandler.register();
         PearlCrumbsDataHandler.register();
-        SpellUsesDataHandler.register();
+        TalismanUsesDataHandler.register();
 
         NetworkRegistry.INSTANCE.registerGuiHandler(DivineFavor.instance, new GuiHandler());
 

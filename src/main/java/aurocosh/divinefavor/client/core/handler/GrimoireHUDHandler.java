@@ -1,10 +1,9 @@
 package aurocosh.divinefavor.client.core.handler;
 
 import aurocosh.divinefavor.DivineFavor;
-import aurocosh.divinefavor.common.constants.ConstResources;
 import aurocosh.divinefavor.common.item.grimoire.ItemGrimoire;
 import aurocosh.divinefavor.common.item.grimoire.capability.IGrimoireHandler;
-import aurocosh.divinefavor.common.item.talismans.ItemTalisman;
+import aurocosh.divinefavor.common.item.talismans.base.ItemTalisman;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.renderer.GlStateManager;

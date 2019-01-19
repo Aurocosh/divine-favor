@@ -1,27 +1,20 @@
 package aurocosh.divinefavor.common.potions.potions;
 
-import aurocosh.divinefavor.common.network.message.client.MessageSyncPotionCharge;
-import aurocosh.divinefavor.common.potions.base.effect.ModEffectCharge;
-import aurocosh.divinefavor.common.potions.base.potion.ModPotionCharge;
+import aurocosh.divinefavor.common.item.talismans.base.ItemTalisman;
+import aurocosh.divinefavor.common.network.message.client.spell_uses.MessageSyncSpellUses;
+import aurocosh.divinefavor.common.player_data.talisman_uses.ITalismanUsesHandler;
+import aurocosh.divinefavor.common.potions.base.potion.ModPotionToggleLimited;
 import aurocosh.divinefavor.common.potions.common.ModPotions;
-import aurocosh.divinefavor.common.util.UtilBlock;
-import aurocosh.divinefavor.common.util.UtilEntity;
-import net.minecraft.block.Block;
-import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.player.EntityPlayerMP;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Vec3d;
-import net.minecraft.world.World;
 import net.minecraftforge.event.entity.living.LivingEvent;
-import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
+import static aurocosh.divinefavor.common.player_data.talisman_uses.TalismanUsesDataHandler.CAPABILITY_TALISMAN_USES;
+
 @Mod.EventBusSubscriber
-public class PotionToadicJump extends ModPotionCharge {
+public class PotionToadicJump extends ModPotionToggleLimited {
     private static float JUMP_BOOST = 0.3f;
 
     public PotionToadicJump() {
@@ -41,10 +34,14 @@ public class PotionToadicJump extends ModPotionCharge {
         if(entity.world.isRemote)
             return;
 
-        ModEffectCharge effectCharge = (ModEffectCharge) player.getActivePotionEffect(ModPotions.toadic_jump);
-        assert effectCharge != null;
-        int charges = effectCharge.consumeCharge();
-        new MessageSyncPotionCharge(ModPotions.toadic_jump, charges).sendTo(player);
+        ITalismanUsesHandler usesHandler = player.getCapability(CAPABILITY_TALISMAN_USES, null);
+        assert usesHandler != null;
+
+        ItemTalisman talisman = ModPotions.toadic_jump.getTalisman();
+        if (!usesHandler.consumeUse(talisman.getId()))
+            return;
+        int usesLeft = usesHandler.getUses(talisman.getId());
+        new MessageSyncSpellUses(talisman.getId(), usesLeft).sendTo(player);
     }
 
     @Override

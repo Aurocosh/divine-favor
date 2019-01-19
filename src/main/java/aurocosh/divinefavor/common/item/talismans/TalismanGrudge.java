@@ -1,0 +1,26 @@
+package aurocosh.divinefavor.common.item.talismans;
+
+import aurocosh.divinefavor.common.item.talismans.base.ItemTalisman;
+import aurocosh.divinefavor.common.network.message.client.MessageSyncGrudge;
+import aurocosh.divinefavor.common.player_data.grudge.IGrudgeHandler;
+import aurocosh.divinefavor.common.potions.base.effect.ModEffectToggle;
+import aurocosh.divinefavor.common.potions.common.ModPotions;
+import aurocosh.divinefavor.common.item.talismans.base.TalismanContext;
+
+import static aurocosh.divinefavor.common.player_data.grudge.GrudgeDataHandler.CAPABILITY_GRUDGE;
+
+public class TalismanGrudge extends ItemTalisman {
+    private static final int USES = 10;
+
+    public TalismanGrudge() {
+        super("grudge", USES, true, true);
+    }
+
+    @Override
+    protected void performActionServer(TalismanContext context) {
+        context.player.addPotionEffect(new ModEffectToggle(ModPotions.grudge));
+        IGrudgeHandler grudgeHandler = context.player.getCapability(CAPABILITY_GRUDGE, null);
+        assert grudgeHandler != null;
+        new MessageSyncGrudge(grudgeHandler.getMobTypeId()).sendTo(context.player);
+    }
+}

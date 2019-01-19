@@ -5,16 +5,16 @@ import aurocosh.divinefavor.common.item.calling_stones.ItemCallingStone;
 import aurocosh.divinefavor.common.item.common.ModItems;
 import aurocosh.divinefavor.common.item.contract.ItemContract;
 import aurocosh.divinefavor.common.item.contract_binder.ItemContractBinder;
-import aurocosh.divinefavor.common.item.talismans.ItemTalisman;
+import aurocosh.divinefavor.common.item.talismans.base.ItemTalisman;
 import aurocosh.divinefavor.common.lib.math.Vector3i;
 import aurocosh.divinefavor.common.misc.SlotStack;
 import aurocosh.divinefavor.common.muliblock.IMultiblockController;
 import aurocosh.divinefavor.common.muliblock.ModMultiBlock;
 import aurocosh.divinefavor.common.muliblock.MultiBlockInstance;
 import aurocosh.divinefavor.common.muliblock.common.MultiBlockWatcher;
-import aurocosh.divinefavor.common.network.message.client.spell_uses.MessageSyncAllSpellUses;
-import aurocosh.divinefavor.common.player_data.spell_count.ISpellUsesHandler;
-import aurocosh.divinefavor.common.player_data.spell_count.SpellUsesDataHandler;
+import aurocosh.divinefavor.common.network.message.client.spell_uses.MessageSyncAllTalismanUses;
+import aurocosh.divinefavor.common.player_data.talisman_uses.ITalismanUsesHandler;
+import aurocosh.divinefavor.common.player_data.talisman_uses.TalismanUsesDataHandler;
 import aurocosh.divinefavor.common.receipes.ModRecipes;
 import aurocosh.divinefavor.common.spirit.base.ModSpirit;
 import aurocosh.divinefavor.common.util.UtilHandler;
@@ -213,11 +213,11 @@ public class TileMedium extends TickableTileEntity implements IMultiblockControl
             if (player == null)
                 continue;
 
-            ISpellUsesHandler usesHandler = player.getCapability(SpellUsesDataHandler.CAPABILITY_SPELL_USES, null);
+            ITalismanUsesHandler usesHandler = player.getCapability(TalismanUsesDataHandler.CAPABILITY_TALISMAN_USES, null);
             assert usesHandler != null;
             for (ItemTalisman talisman : talismans)
-                usesHandler.refreshSpellUses(talisman.getId());
-            new MessageSyncAllSpellUses(usesHandler).sendTo(player);
+                usesHandler.refreshUses(talisman.getId());
+            new MessageSyncAllTalismanUses(usesHandler).sendTo(player);
         }
     }
 

@@ -8,7 +8,7 @@ import aurocosh.divinefavor.common.item.common.ModItems;
 import aurocosh.divinefavor.common.item.grimoire.capability.GrimoireProvider;
 import aurocosh.divinefavor.common.item.grimoire.capability.GrimoireStorage;
 import aurocosh.divinefavor.common.item.grimoire.capability.IGrimoireHandler;
-import aurocosh.divinefavor.common.item.talismans.ItemTalisman;
+import aurocosh.divinefavor.common.item.talismans.base.ItemTalisman;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;

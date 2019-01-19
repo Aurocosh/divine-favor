@@ -2,7 +2,7 @@ package aurocosh.divinefavor.common.item.arrows.base;
 
 import aurocosh.divinefavor.common.core.DivineFavorCreativeTab;
 import aurocosh.divinefavor.common.entity.projectile.EntitySpellArrow;
-import aurocosh.divinefavor.common.spell.arrow.base.ArrowSpell;
+import aurocosh.divinefavor.common.arrow_spell.base.ArrowSpell;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.projectile.EntityArrow;
 import net.minecraft.item.ItemStack;

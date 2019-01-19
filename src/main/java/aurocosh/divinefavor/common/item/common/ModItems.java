@@ -27,8 +27,8 @@ public final class ModItems {
         pure_apple = ModRegistries.items.register(new ItemPureApple());
         ritual_pouch = ModRegistries.items.register(new ItemRitualPouch());
         stoneball = ModRegistries.items.register(new ItemStoneball());
-        warp_gem = ModRegistries.items.register(new ItemWarpGem());
-        warp_pebble = ModRegistries.items.register(new ItemWarpPebble());
+        warp_gem = ModRegistries.items.register(new ItemWarpMarker("warp_gem", true));
+        warp_pebble = ModRegistries.items.register(new ItemWarpMarker("warp_pebble", false));
 
 
 //        ModContainer mod = Loader.instance().getModObjectList().inverse().get(DivineFavor.instance);
