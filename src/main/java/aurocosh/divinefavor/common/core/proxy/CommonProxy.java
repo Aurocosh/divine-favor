@@ -4,14 +4,13 @@ import aurocosh.divinefavor.DivineFavor;
 import aurocosh.divinefavor.common.block.common.ModBlocks;
 import aurocosh.divinefavor.common.entity.ModEntities;
 import aurocosh.divinefavor.common.entity.common.ModGrudgeMobs;
-import aurocosh.divinefavor.common.item.arrows.common.ModItemCursedArrows;
-import aurocosh.divinefavor.common.item.arrows.common.ModItemSpellArrows;
+import aurocosh.divinefavor.common.item.talismans.common.ModArrowTalismans;
 import aurocosh.divinefavor.common.item.calling_stones.ModCallingStones;
 import aurocosh.divinefavor.common.item.common.ModItems;
 import aurocosh.divinefavor.common.item.contract.ModContracts;
 import aurocosh.divinefavor.common.item.grimoire.capability.GrimoireDataHandler;
 import aurocosh.divinefavor.common.item.spell_bow.capability.SpellBowDataHandler;
-import aurocosh.divinefavor.common.item.talismans.base.ModTalismans;
+import aurocosh.divinefavor.common.item.talismans.common.ModSpellTalismans;
 import aurocosh.divinefavor.common.item.wishing_stones.ModWishingStones;
 import aurocosh.divinefavor.common.muliblock.common.ModMultiBlocks;
 import aurocosh.divinefavor.common.network.GuiHandler;
@@ -46,10 +45,9 @@ public class CommonProxy {
         ModMultiBlocks.preInit();
 
         ModPotions.preInit();
-        ModItemCursedArrows.preInit();
-        ModItemSpellArrows.preInit();
+        ModArrowTalismans.preInit();
         ModItems.preInit();
-        ModTalismans.preInit();
+        ModSpellTalismans.preInit();
 
         ModSpirits.preInit();
         ModContracts.preInit();

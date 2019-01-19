@@ -8,7 +8,7 @@ import aurocosh.divinefavor.common.item.common.ModItems;
 import aurocosh.divinefavor.common.item.grimoire.capability.GrimoireProvider;
 import aurocosh.divinefavor.common.item.grimoire.capability.GrimoireStorage;
 import aurocosh.divinefavor.common.item.grimoire.capability.IGrimoireHandler;
-import aurocosh.divinefavor.common.item.talismans.base.ItemTalisman;
+import aurocosh.divinefavor.common.item.talismans.base.spell.ItemSpellTalisman;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -46,7 +46,7 @@ public class ItemGrimoire extends ModItem {
         if (talismanStack.isEmpty())
             return EnumActionResult.PASS;
 
-        ItemTalisman talisman = (ItemTalisman) talismanStack.getItem();
+        ItemSpellTalisman talisman = (ItemSpellTalisman) talismanStack.getItem();
         talisman.castItemUse(playerIn, worldIn, pos, hand, facing, hitX, hitY, hitZ);
         return EnumActionResult.SUCCESS;
     }
@@ -69,7 +69,7 @@ public class ItemGrimoire extends ModItem {
         if (talismanStack.isEmpty())
             return new ActionResult<>(EnumActionResult.PASS, stack);
 
-        ItemTalisman talisman = (ItemTalisman) talismanStack.getItem();
+        ItemSpellTalisman talisman = (ItemSpellTalisman) talismanStack.getItem();
         talisman.castRightClick(worldIn, playerIn, hand);
         return new ActionResult<>(EnumActionResult.SUCCESS, stack);
     }

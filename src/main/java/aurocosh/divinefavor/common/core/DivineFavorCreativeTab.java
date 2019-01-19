@@ -43,7 +43,6 @@ public class DivineFavorCreativeTab extends CreativeTabs {
     public void displayAllRelevantItems(NonNullList<ItemStack> stacks) {
         list = stacks;
 
-        ModRegistries.arrows.getValues().forEach(this::addItem);
         ModRegistries.blocks.getValues().forEach(this::addBlock);
         ModRegistries.items.getValues().forEach(this::addItem);
     }

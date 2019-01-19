@@ -2,7 +2,7 @@ package aurocosh.divinefavor.client.gui;
 
 import aurocosh.divinefavor.client.gui.container.GuiCustomScreen;
 import aurocosh.divinefavor.common.constants.ConstResources;
-import aurocosh.divinefavor.common.item.talismans.base.ContainerTalisman;
+import aurocosh.divinefavor.common.item.talismans.base.spell.ContainerTalisman;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -25,7 +25,7 @@ public class GuiTalismanContainer extends GuiCustomScreen {
         this.ySize = 166;
         super.initGui();
 //
-//        ItemTalisman itemTalisman = (ItemTalisman) talisman.getItem();
+//        ItemSpellTalisman itemTalisman = (ItemSpellTalisman) talisman.getItem();
 //        String text = Translator.translateToLocal(itemTalisman.getCostTranslationKey());
 //        GuiTextBlock textBlock = new GuiTextBlock(5,7,170,250,text);
 //        addElement(textBlock);

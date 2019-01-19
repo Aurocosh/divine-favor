@@ -1,6 +1,6 @@
 package aurocosh.divinefavor.common.item.grimoire.capability;
 
-import aurocosh.divinefavor.common.item.talismans.base.ItemTalisman;
+import aurocosh.divinefavor.common.item.talismans.base.spell.ItemSpellTalisman;
 import aurocosh.divinefavor.common.util.UtilMath;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.items.ItemStackHandler;
@@ -27,7 +27,7 @@ public class DefaultGrimoireHandler implements IGrimoireHandler {
         inventory = new ItemStackHandler(SLOT_COUNT) {
             @Override
             public boolean isItemValid(int slot, @Nonnull ItemStack stack) {
-                return stack.getItem() instanceof ItemTalisman;
+                return stack.getItem() instanceof ItemSpellTalisman;
             }
 
             @Override

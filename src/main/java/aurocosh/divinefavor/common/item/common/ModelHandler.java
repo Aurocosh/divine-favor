@@ -1,6 +1,5 @@
 package aurocosh.divinefavor.common.item.common;
 
-import aurocosh.divinefavor.common.item.arrows.base.ModItemArrow;
 import aurocosh.divinefavor.common.item.base.IModelHolder;
 import aurocosh.divinefavor.common.item.base.ModItem;
 import aurocosh.divinefavor.common.registry.ModRegistries;
@@ -22,9 +21,6 @@ public final class ModelHandler {
 	@SubscribeEvent
 	public static void onRegister(ModelRegistryEvent event) {
         for (ModItem item : ModRegistries.items.getValues())
-            registerItemModel(item);
-
-        for (ModItemArrow item : ModRegistries.arrows.getValues())
             registerItemModel(item);
 
         for (ItemBlock itemBlock : ModRegistries.itemBlocks.getValues())

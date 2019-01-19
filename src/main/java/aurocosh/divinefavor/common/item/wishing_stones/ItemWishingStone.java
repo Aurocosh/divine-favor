@@ -3,6 +3,7 @@ package aurocosh.divinefavor.common.item.wishing_stones;
 import aurocosh.divinefavor.common.core.DivineFavorCreativeTabGems;
 import aurocosh.divinefavor.common.item.base.ModItem;
 import aurocosh.divinefavor.common.item.talismans.base.ItemTalisman;
+import aurocosh.divinefavor.common.item.talismans.base.spell.ItemSpellTalisman;
 import aurocosh.divinefavor.common.network.message.client.spell_uses.MessageSyncMaxSpellUses;
 import aurocosh.divinefavor.common.player_data.talisman_uses.ITalismanUsesHandler;
 import aurocosh.divinefavor.common.spirit.base.ModSpirit;
@@ -18,8 +19,8 @@ import static aurocosh.divinefavor.common.player_data.talisman_uses.TalismanUses
 
 public class ItemWishingStone extends ModItem {
     private final ModSpirit spirit;
-
     private final ItemTalisman talisman;
+
     public ItemWishingStone(ModSpirit spirit, ItemTalisman talisman) {
         super("wishing_stone_" + talisman.getName(), "wishing_stones/" + spirit.getName());
         this.spirit = spirit;

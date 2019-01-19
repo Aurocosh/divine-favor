@@ -1,6 +1,6 @@
 package aurocosh.divinefavor.common.spirit;
 
-import aurocosh.divinefavor.common.item.talismans.base.ModTalismans;
+import aurocosh.divinefavor.common.item.talismans.common.ModSpellTalismans;
 import aurocosh.divinefavor.common.registry.ModRegistries;
 import aurocosh.divinefavor.common.spirit.base.ModSpirit;
 import aurocosh.divinefavor.common.spirit.punishment.*;
@@ -21,90 +21,90 @@ public final class ModSpirits {
                 new SpiritBuilder("allfire")
                         .addActivityPeriod(10, 14)
                         .setPunishment(new AllfirePunishment())
-                        .addTalisman(ModTalismans.combustion)
-                        .addTalisman(ModTalismans.heat_wave)
-                        .addTalisman(ModTalismans.ignition)
-                        .addTalisman(ModTalismans.searing_pulse)
-                        .addTalisman(ModTalismans.small_fireball_throw)
-                        .addTalisman(ModTalismans.distant_spark)
+                        .addTalisman(ModSpellTalismans.combustion)
+                        .addTalisman(ModSpellTalismans.heat_wave)
+                        .addTalisman(ModSpellTalismans.ignition)
+                        .addTalisman(ModSpellTalismans.searing_pulse)
+                        .addTalisman(ModSpellTalismans.small_fireball_throw)
+                        .addTalisman(ModSpellTalismans.distant_spark)
                         .create()
         );
         arbow = ModRegistries.spirits.register(
                 new SpiritBuilder("arbow")
                         .addActivityPeriod(10, 14)
-                        .addTalisman(ModTalismans.arrow_throw_talisman)
+                        .addTalisman(ModSpellTalismans.arrow_throw_talisman)
                         .create()
         );
         blizrabi = ModRegistries.spirits.register(
                 new SpiritBuilder("blizrabi")
                         .addActivityPeriod(10, 14)
                         .setPunishment(new BlizrabiPunishment())
-                        .addTalisman(ModTalismans.crystalline_road)
-                        .addTalisman(ModTalismans.snowball_throw)
-                        .addTalisman(ModTalismans.obsidian_road)
+                        .addTalisman(ModSpellTalismans.crystalline_road)
+                        .addTalisman(ModSpellTalismans.snowball_throw)
+                        .addTalisman(ModSpellTalismans.obsidian_road)
                         .create()
         );
         endererer = ModRegistries.spirits.register(
                 new SpiritBuilder("endererer")
                         .addActivityPeriod(10, 14)
                         .setPunishment(new EnderererPunishment())
-                        .addTalisman(ModTalismans.escape_plan)
-                        .addTalisman(ModTalismans.pearl_crumbs)
-                        .addTalisman(ModTalismans.blink)
-                        .addTalisman(ModTalismans.warp)
-                        .addTalisman(ModTalismans.overblink)
-                        .addTalisman(ModTalismans.overwarp)
-                        .addTalisman(ModTalismans.surface_blink)
+                        .addTalisman(ModSpellTalismans.escape_plan)
+                        .addTalisman(ModSpellTalismans.pearl_crumbs)
+                        .addTalisman(ModSpellTalismans.blink)
+                        .addTalisman(ModSpellTalismans.warp)
+                        .addTalisman(ModSpellTalismans.overblink)
+                        .addTalisman(ModSpellTalismans.overwarp)
+                        .addTalisman(ModSpellTalismans.surface_blink)
                         .create()
         );
         nefir = ModRegistries.spirits.register(
                 new SpiritBuilder("nefir")
                         .addActivityPeriod(10, 14)
                         .setPunishment(new NefirPunishment())
-                        .addTalisman(ModTalismans.molten_skin)
-                        .addTalisman(ModTalismans.infernal_touch)
-                        .addTalisman(ModTalismans.hellisphere)
-                        .addTalisman(ModTalismans.nether_surge)
-                        .addTalisman(ModTalismans.piercing_inferno)
+                        .addTalisman(ModSpellTalismans.molten_skin)
+                        .addTalisman(ModSpellTalismans.infernal_touch)
+                        .addTalisman(ModSpellTalismans.hellisphere)
+                        .addTalisman(ModSpellTalismans.nether_surge)
+                        .addTalisman(ModSpellTalismans.piercing_inferno)
                         .create()
         );
         redwind = ModRegistries.spirits.register(
                 new SpiritBuilder("redwind")
                         .addActivityPeriod(6, 18)
-                        .addTalisman(ModTalismans.fall_negation)
-                        .addTalisman(ModTalismans.toadic_jump)
-                        .addTalisman(ModTalismans.wild_sprint)
-                        .addTalisman(ModTalismans.wind_step)
+                        .addTalisman(ModSpellTalismans.fall_negation)
+                        .addTalisman(ModSpellTalismans.toadic_jump)
+                        .addTalisman(ModSpellTalismans.wild_sprint)
+                        .addTalisman(ModSpellTalismans.wind_step)
                         .create()
         );
         romol = ModRegistries.spirits.register(
                 new SpiritBuilder("romol")
                         .addActivityPeriod(6, 18)
-                        .addTalisman(ModTalismans.crushing_palm)
-                        .addTalisman(ModTalismans.stone_fever)
-                        .addTalisman(ModTalismans.empower_pickaxe)
-                        .addTalisman(ModTalismans.stoneball_throw)
+                        .addTalisman(ModSpellTalismans.crushing_palm)
+                        .addTalisman(ModSpellTalismans.stone_fever)
+                        .addTalisman(ModSpellTalismans.empower_pickaxe)
+                        .addTalisman(ModSpellTalismans.stoneball_throw)
                         .create()
         );
         squarefury = ModRegistries.spirits.register(
                 new SpiritBuilder("squarefury")
                         .addActivityPeriod(15, 21)
                         .setPunishment(new SquareFuryPunishment())
-                        .addTalisman(ModTalismans.butchering_strike)
-                        .addTalisman(ModTalismans.consuming_fury)
-                        .addTalisman(ModTalismans.grudge)
-                        .addTalisman(ModTalismans.mist_blade)
-                        .addTalisman(ModTalismans.night_eye)
+                        .addTalisman(ModSpellTalismans.butchering_strike)
+                        .addTalisman(ModSpellTalismans.consuming_fury)
+                        .addTalisman(ModSpellTalismans.grudge)
+                        .addTalisman(ModSpellTalismans.mist_blade)
+                        .addTalisman(ModSpellTalismans.night_eye)
                         .create()
         );
         timber = ModRegistries.spirits.register(
                 new SpiritBuilder("timber")
                         .addActivityPeriod(6, 12)
                         .setPunishment(new TimberPunishment())
-                        .addTalisman(ModTalismans.fell_tree)
-                        .addTalisman(ModTalismans.wooden_punch)
+                        .addTalisman(ModSpellTalismans.fell_tree)
+                        .addTalisman(ModSpellTalismans.wooden_punch)
 
-                        .addTalisman(ModTalismans.wall_slip)
+                        .addTalisman(ModSpellTalismans.wall_slip)
                         .create()
         );
     }

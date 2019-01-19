@@ -8,11 +8,16 @@ import aurocosh.divinefavor.common.item.common.ModItems;
 import aurocosh.divinefavor.common.item.spell_bow.capability.ISpellBowHandler;
 import aurocosh.divinefavor.common.item.spell_bow.capability.SpellBowProvider;
 import aurocosh.divinefavor.common.item.spell_bow.capability.SpellBowStorage;
+import aurocosh.divinefavor.common.item.talismans.base.ItemTalisman;
+import aurocosh.divinefavor.common.item.talismans.base.arrow.ItemArrowTalisman;
+import aurocosh.divinefavor.common.util.UtilBow;
 import aurocosh.divinefavor.common.util.UtilNbt;
+import aurocosh.divinefavor.common.util.UtilPlayer;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntityArrow;
+import net.minecraft.entity.projectile.EntityTippedArrow;
 import net.minecraft.init.Enchantments;
 import net.minecraft.init.Items;
 import net.minecraft.init.SoundEvents;
@@ -23,8 +28,10 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.stats.StatList;
 import net.minecraft.util.*;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
+import net.minecraftforge.event.ForgeEventFactory;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -36,211 +43,162 @@ public class ItemSpellBow extends ModItem {
     public static final String TAG_IS_IN_BOOK_MODE = "IsInBookMode";
     private static String TAG_SHARE = "SpellBowShare";
 
-    public ItemSpellBow()
-    {
-        super("spell_bow","spell_bow/spell_bow");
-        this.maxStackSize = 1;
+    public ItemSpellBow() {
+        super("spell_bow", "spell_bow/spell_bow");
+        maxStackSize = 1;
         setCreativeTab(DivineFavorCreativeTab.INSTANCE);
-        this.setMaxDamage(384);
+        setMaxDamage(384);
 
-        this.addPropertyOverride(new ResourceLocation("book_mode"), new IItemPropertyGetter()
-        {
+        addPropertyOverride(new ResourceLocation("book_mode"), new IItemPropertyGetter() {
             @SideOnly(Side.CLIENT)
-            public float apply(ItemStack stack, @Nullable World world, @Nullable EntityLivingBase entityLivingBase)
-            {
+            public float apply(ItemStack stack, @Nullable World world, @Nullable EntityLivingBase entityLivingBase) {
                 NBTTagCompound nbt = UtilNbt.getTag(stack);
                 return nbt.getBoolean(TAG_IS_IN_BOOK_MODE) ? 1 : 0;
             }
         });
-        this.addPropertyOverride(new ResourceLocation("pull"), new IItemPropertyGetter()
-        {
+        addPropertyOverride(new ResourceLocation("pull"), new IItemPropertyGetter() {
             @SideOnly(Side.CLIENT)
-            public float apply(ItemStack stack, @Nullable World world, @Nullable EntityLivingBase entityLivingBase)
-            {
+            public float apply(ItemStack stack, @Nullable World world, @Nullable EntityLivingBase entityLivingBase) {
                 if (entityLivingBase == null)
                     return 0.0F;
                 else
                     return entityLivingBase.getActiveItemStack().getItem() != ModItems.spell_bow ? 0.0F : (float) (stack.getMaxItemUseDuration() - entityLivingBase.getItemInUseCount()) / 20.0F;
             }
         });
-        this.addPropertyOverride(new ResourceLocation("pulling"), new IItemPropertyGetter()
-        {
+        addPropertyOverride(new ResourceLocation("pulling"), new IItemPropertyGetter() {
             @SideOnly(Side.CLIENT)
-            public float apply(ItemStack stack, @Nullable World world, @Nullable EntityLivingBase entity)
-            {
+            public float apply(ItemStack stack, @Nullable World world, @Nullable EntityLivingBase entity) {
                 return entity != null && entity.isHandActive() && entity.getActiveItemStack() == stack ? 1.0F : 0.0F;
             }
         });
     }
 
-    private ItemStack findAmmo(EntityPlayer player)
-    {
-        if (this.isArrow(player.getHeldItem(EnumHand.OFF_HAND)))
-        {
-            return player.getHeldItem(EnumHand.OFF_HAND);
-        }
-        else if (this.isArrow(player.getHeldItem(EnumHand.MAIN_HAND)))
-        {
-            return player.getHeldItem(EnumHand.MAIN_HAND);
-        }
-        else
-        {
-            for (int i = 0; i < player.inventory.getSizeInventory(); ++i)
-            {
-                ItemStack itemstack = player.inventory.getStackInSlot(i);
-
-                if (this.isArrow(itemstack))
-                {
-                    return itemstack;
-                }
-            }
-
-            return ItemStack.EMPTY;
-        }
-    }
-
-    protected boolean isArrow(ItemStack stack)
-    {
-        return stack.getItem() instanceof ItemArrow;
+    private ItemStack findAmmo(EntityPlayer player) {
+        return UtilPlayer.findStackInInventory(player, stack -> stack.getItem() instanceof ItemArrow);
     }
 
     /**
      * Called when the player stops using an Item (stops holding the right mouse button).
      */
-    public void onPlayerStoppedUsing(ItemStack stack, World worldIn, EntityLivingBase entityLiving, int timeLeft)
-    {
-        if(UtilNbt.getTag(stack).getBoolean(TAG_IS_IN_BOOK_MODE))
+    public void onPlayerStoppedUsing(ItemStack bowStack, World world, EntityLivingBase entityLiving, int timeLeft) {
+        if (UtilNbt.getTag(bowStack).getBoolean(TAG_IS_IN_BOOK_MODE))
+            return;
+        if (!(entityLiving instanceof EntityPlayer))
             return;
 
-        if (entityLiving instanceof EntityPlayer)
-        {
-            EntityPlayer entityplayer = (EntityPlayer)entityLiving;
-            boolean flag = entityplayer.capabilities.isCreativeMode || EnchantmentHelper.getEnchantmentLevel(Enchantments.INFINITY, stack) > 0;
-            ItemStack itemstack = this.findAmmo(entityplayer);
+        EntityPlayer player = (EntityPlayer) entityLiving;
+        boolean unlimitedArrows = player.capabilities.isCreativeMode || EnchantmentHelper.getEnchantmentLevel(Enchantments.INFINITY, bowStack) > 0;
+        ItemStack arrowStack = findAmmo(player);
 
-            int i = this.getMaxItemUseDuration(stack) - timeLeft;
-            i = net.minecraftforge.event.ForgeEventFactory.onArrowLoose(stack, worldIn, entityplayer, i, !itemstack.isEmpty() || flag);
-            if (i < 0) return;
+        int charge = getMaxItemUseDuration(bowStack) - timeLeft;
+        charge = ForgeEventFactory.onArrowLoose(bowStack, world, player, charge, !arrowStack.isEmpty() || unlimitedArrows);
+        if (charge < 0)
+            return;
+        if (arrowStack.isEmpty() && !unlimitedArrows)
+            return;
 
-            if (!itemstack.isEmpty() || flag)
-            {
-                if (itemstack.isEmpty())
-                {
-                    itemstack = new ItemStack(Items.ARROW);
-                }
+        if (arrowStack.isEmpty())
+            arrowStack = new ItemStack(Items.ARROW);
 
-                float f = getArrowVelocity(i);
+        float velocity = UtilBow.getArrowVelocity(charge);
+        if (!((double) velocity >= 0.1D))
+            return;
 
-                if ((double)f >= 0.1D)
-                {
-                    boolean flag1 = entityplayer.capabilities.isCreativeMode || (itemstack.getItem() instanceof ItemArrow && ((ItemArrow) itemstack.getItem()).isInfinite(itemstack, stack, entityplayer));
+        boolean stackIsInfinite = player.capabilities.isCreativeMode || (arrowStack.getItem() instanceof ItemArrow && ((ItemArrow) arrowStack.getItem()).isInfinite(arrowStack, bowStack, player));
+        if (!world.isRemote) {
+            EntityArrow entityarrow = getArrowEntity(world, bowStack, arrowStack, player);
+            entityarrow.shoot(player, player.rotationPitch, player.rotationYaw, 0.0F, velocity * 3.0F, 1.0F);
 
-                    if (!worldIn.isRemote)
-                    {
-                        ItemArrow itemarrow = (ItemArrow)(itemstack.getItem() instanceof ItemArrow ? itemstack.getItem() : Items.ARROW);
-                        EntityArrow entityarrow = itemarrow.createArrow(worldIn, itemstack, entityplayer);
-                        entityarrow.shoot(entityplayer, entityplayer.rotationPitch, entityplayer.rotationYaw, 0.0F, f * 3.0F, 1.0F);
+            if (velocity == 1.0F)
+                entityarrow.setIsCritical(true);
 
-                        if (f == 1.0F)
-                        {
-                            entityarrow.setIsCritical(true);
-                        }
+            int powerLevel = EnchantmentHelper.getEnchantmentLevel(Enchantments.POWER, bowStack);
+            if (powerLevel > 0)
+                entityarrow.setDamage(entityarrow.getDamage() + (double) powerLevel * 0.5D + 0.5D);
 
-                        int j = EnchantmentHelper.getEnchantmentLevel(Enchantments.POWER, stack);
+            int punchLevel = EnchantmentHelper.getEnchantmentLevel(Enchantments.PUNCH, bowStack);
+            if (punchLevel > 0)
+                entityarrow.setKnockbackStrength(punchLevel);
 
-                        if (j > 0)
-                        {
-                            entityarrow.setDamage(entityarrow.getDamage() + (double)j * 0.5D + 0.5D);
-                        }
+            if (EnchantmentHelper.getEnchantmentLevel(Enchantments.FLAME, bowStack) > 0)
+                entityarrow.setFire(100);
 
-                        int k = EnchantmentHelper.getEnchantmentLevel(Enchantments.PUNCH, stack);
+            bowStack.damageItem(1, player);
 
-                        if (k > 0)
-                        {
-                            entityarrow.setKnockbackStrength(k);
-                        }
-
-                        if (EnchantmentHelper.getEnchantmentLevel(Enchantments.FLAME, stack) > 0)
-                        {
-                            entityarrow.setFire(100);
-                        }
-
-                        stack.damageItem(1, entityplayer);
-
-                        if (flag1 || entityplayer.capabilities.isCreativeMode && (itemstack.getItem() == Items.SPECTRAL_ARROW || itemstack.getItem() == Items.TIPPED_ARROW))
-                        {
-                            entityarrow.pickupStatus = EntityArrow.PickupStatus.CREATIVE_ONLY;
-                        }
-
-                        worldIn.spawnEntity(entityarrow);
-                    }
-
-                    worldIn.playSound((EntityPlayer)null, entityplayer.posX, entityplayer.posY, entityplayer.posZ, SoundEvents.ENTITY_ARROW_SHOOT, SoundCategory.PLAYERS, 1.0F, 1.0F / (itemRand.nextFloat() * 0.4F + 1.2F) + f * 0.5F);
-
-                    if (!flag1 && !entityplayer.capabilities.isCreativeMode)
-                    {
-                        itemstack.shrink(1);
-
-                        if (itemstack.isEmpty())
-                        {
-                            entityplayer.inventory.deleteStack(itemstack);
-                        }
-                    }
-
-                    entityplayer.addStat(StatList.getObjectUseStats(this));
-                }
-            }
+            if (stackIsInfinite || player.capabilities.isCreativeMode && (arrowStack.getItem() == Items.SPECTRAL_ARROW || arrowStack.getItem() == Items.TIPPED_ARROW))
+                entityarrow.pickupStatus = EntityArrow.PickupStatus.CREATIVE_ONLY;
+            world.spawnEntity(entityarrow);
         }
+
+        world.playSound(null, player.posX, player.posY, player.posZ, SoundEvents.ENTITY_ARROW_SHOOT, SoundCategory.PLAYERS, 1.0F, 1.0F / (itemRand.nextFloat() * 0.4F + 1.2F) + velocity * 0.5F);
+
+        if (!stackIsInfinite && !player.capabilities.isCreativeMode)
+            UtilPlayer.damageStack(player, arrowStack);
+        player.addStat(StatList.getObjectUseStats(this));
     }
 
-    /**
-     * Gets the velocity of the arrow entity from the bow's charge
-     */
-    public static float getArrowVelocity(int charge)
-    {
-        float f = (float)charge / 20.0F;
-        f = (f * f + f * 2.0F) / 3.0F;
+    protected EntityArrow getArrowEntity(World world, ItemStack bowStack, ItemStack arrowStack, EntityLivingBase shooter){
+        ISpellBowHandler bowHandler = bowStack.getCapability(CAPABILITY_SPELL_BOW, null);
+        assert bowHandler != null;
 
-        if (f > 1.0F)
-        {
-            f = 1.0F;
+        ItemStack talismanStack = bowHandler.getSelectedStack();
+        if (!talismanStack.isEmpty()) {
+            ItemArrowTalisman talisman = (ItemArrowTalisman) talismanStack.getItem();
+            if (talisman.claimCost(world, shooter))
+                return talisman.createArrow(world, talisman, shooter);
         }
-
-        return f;
+        EntityTippedArrow arrow = new EntityTippedArrow(world, shooter);
+        arrow.setPotionEffect(arrowStack);
+        return arrow;
     }
 
     /**
      * How long it takes to use or consume an item
      */
-    public int getMaxItemUseDuration(ItemStack stack)
-    {
+    public int getMaxItemUseDuration(ItemStack stack) {
         return 72000;
     }
 
     /**
      * returns the action that specifies what animation to play when the items is being used
      */
-    public EnumAction getItemUseAction(ItemStack stack)
-    {
+    public EnumAction getItemUseAction(ItemStack stack) {
         return EnumAction.BOW;
+    }
+
+    @Override
+    public EnumActionResult onItemUse(EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
+        ItemStack stack = player.getHeldItem(hand);
+        if (!(stack.getItem() instanceof ItemSpellBow))
+            return EnumActionResult.PASS;
+
+        ISpellBowHandler bowHandler = stack.getCapability(CAPABILITY_SPELL_BOW, null);
+        assert bowHandler != null;
+
+        ItemStack talismanStack = bowHandler.getSelectedStack();
+        if (talismanStack.isEmpty())
+            return EnumActionResult.PASS;
+        ItemTalisman talisman = (ItemTalisman) talismanStack.getItem();
+        if (talisman.getSpellUses(player, world, pos, stack))
+            return EnumActionResult.SUCCESS;
+        return EnumActionResult.PASS;
     }
 
     /**
      * Called when the equipped item is right clicked.
      */
-    public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand handIn)
-    {
+    public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand handIn) {
         ItemStack itemstack = playerIn.getHeldItem(handIn);
         if (!(itemstack.getItem() instanceof ItemSpellBow))
             return new ActionResult<>(EnumActionResult.PASS, itemstack);
 
         NBTTagCompound nbt = UtilNbt.getTag(itemstack);
         boolean isBook = nbt.getBoolean(TAG_IS_IN_BOOK_MODE);
-        if(playerIn.isSneaking()){
-            nbt.setBoolean(TAG_IS_IN_BOOK_MODE,!isBook);
+        if (playerIn.isSneaking()) {
+            nbt.setBoolean(TAG_IS_IN_BOOK_MODE, !isBook);
             return new ActionResult<>(EnumActionResult.SUCCESS, itemstack);
         }
-        if(isBook)
+        if (isBook)
             return doBookAction(worldIn, playerIn, itemstack);
         else
             return doBowAction(worldIn, playerIn, handIn, itemstack);
@@ -252,27 +210,24 @@ public class ItemSpellBow extends ModItem {
     }
 
     private ActionResult<ItemStack> doBowAction(World worldIn, EntityPlayer playerIn, EnumHand handIn, ItemStack itemstack) {
-        boolean gotArrows = !this.findAmmo(playerIn).isEmpty();
+        boolean gotArrows = !findAmmo(playerIn).isEmpty();
 
-        ActionResult<ItemStack> ret = net.minecraftforge.event.ForgeEventFactory.onArrowNock(itemstack, worldIn, playerIn, handIn, gotArrows);
-        if (ret != null) return ret;
+        ActionResult<ItemStack> ret = ForgeEventFactory.onArrowNock(itemstack, worldIn, playerIn, handIn, gotArrows);
+        if (ret != null)
+            return ret;
 
         if (!playerIn.capabilities.isCreativeMode && !gotArrows)
-        {
             return gotArrows ? new ActionResult(EnumActionResult.PASS, itemstack) : new ActionResult(EnumActionResult.FAIL, itemstack);
-        }
-        else
-        {
+        else {
             playerIn.setActiveHand(handIn);
-            return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, itemstack);
+            return new ActionResult<>(EnumActionResult.SUCCESS, itemstack);
         }
     }
 
     /**
      * Return the enchantability factor of the item, most of the time is based on material.
      */
-    public int getItemEnchantability()
-    {
+    public int getItemEnchantability() {
         return 1;
     }
 

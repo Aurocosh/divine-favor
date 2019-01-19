@@ -3,7 +3,7 @@ package aurocosh.divinefavor.common.receipes;
 import aurocosh.divinefavor.common.item.calling_stones.ItemCallingStone;
 import aurocosh.divinefavor.common.item.calling_stones.ModCallingStones;
 import aurocosh.divinefavor.common.item.contract.ItemContract;
-import aurocosh.divinefavor.common.item.talismans.base.ModTalismans;
+import aurocosh.divinefavor.common.item.talismans.common.ModSpellTalismans;
 import aurocosh.divinefavor.common.lib.ItemStackIdComparator;
 import aurocosh.divinefavor.common.registry.ModRegistries;
 import aurocosh.divinefavor.common.spirit.base.ModSpirit;
@@ -19,12 +19,12 @@ public class ModRecipes {
     public static final Map<String, ImmaterialMediumRecipe> recipeLookup = new HashMap<>();
 
     public static void init() {
-        register(new RecipeBuilder(new ItemStack(ModTalismans.arrow_throw_talisman), ModCallingStones.calling_stone_timber)
+        register(new RecipeBuilder(new ItemStack(ModSpellTalismans.arrow_throw_talisman), ModCallingStones.calling_stone_timber)
                 .addIngredient(Items.ARROW, 8)
                 .addIngredient(Items.GOLD_INGOT)
                 .create()
         );
-        register(new RecipeBuilder(new ItemStack(ModTalismans.ignition), ModCallingStones.calling_stone_allfire)
+        register(new RecipeBuilder(new ItemStack(ModSpellTalismans.ignition), ModCallingStones.calling_stone_allfire)
                 .addIngredient(Items.COAL, 32)
                 .addIngredient(Items.GUNPOWDER, 2)
                 .create()

@@ -1,6 +1,7 @@
 package aurocosh.divinefavor.common.player_data.talisman_uses;
 
 import aurocosh.divinefavor.common.item.talismans.base.ItemTalisman;
+import aurocosh.divinefavor.common.item.talismans.base.spell.ItemSpellTalisman;
 import aurocosh.divinefavor.common.registry.mappers.ModMappers;
 import net.minecraft.nbt.NBTBase;
 import net.minecraft.nbt.NBTTagCompound;

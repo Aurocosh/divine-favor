@@ -1,6 +1,6 @@
 package aurocosh.divinefavor.common.entity.projectile;
 
-import aurocosh.divinefavor.common.item.arrows.base.ItemSpellArrow;
+import aurocosh.divinefavor.common.item.talismans.base.arrow.ItemArrowTalisman;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.projectile.EntityArrow;
 import net.minecraft.init.Items;
@@ -16,7 +16,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class EntitySpellArrow extends EntityArrow {
     private static final DataParameter<Integer> COLOR = EntityDataManager.createKey(EntitySpellArrow.class, DataSerializers.VARINT);
 
-    private ItemSpellArrow arrow;
+    private ItemArrowTalisman talisman;
     private EntityLivingBase shooter;
 
     public EntitySpellArrow(World worldIn) {
@@ -38,10 +38,10 @@ public class EntitySpellArrow extends EntityArrow {
         setDamage(0.001f);
     }
 
-    public void setSpell(ItemStack stack, EntityLivingBase shooter) {
+    public void setSpell(ItemArrowTalisman talisman, EntityLivingBase shooter) {
+        this.talisman = talisman;
         this.shooter = shooter;
-        arrow = (ItemSpellArrow) stack.getItem();
-        dataManager.set(COLOR, arrow.getColor());
+        dataManager.set(COLOR, talisman.getColor());
     }
 
     protected void entityInit() {
@@ -62,7 +62,7 @@ public class EntitySpellArrow extends EntityArrow {
         }
         else if (inGround && timeInGround != 0 && timeInGround >= 6000) {
             world.setEntityState(this, (byte) 0);
-            arrow = null;
+            talisman = null;
             shooter = null;
             dataManager.set(COLOR, -1);
         }
@@ -85,12 +85,12 @@ public class EntitySpellArrow extends EntityArrow {
     }
 
     protected void arrowHit(EntityLivingBase living) {
-        if (arrow != null && shooter != null)
-            arrow.getSpell().cast(living, shooter, this);
+        if (talisman != null && shooter != null)
+            talisman.getSpell().cast(living, shooter, this);
     }
 
     protected ItemStack getArrowStack() {
-        return arrow == null ? new ItemStack(Items.ARROW) : new ItemStack(arrow);
+        return new ItemStack(Items.ARROW);
     }
 
     /**

@@ -2,7 +2,7 @@ package aurocosh.divinefavor.client.core.handler;
 
 import aurocosh.divinefavor.DivineFavor;
 import aurocosh.divinefavor.common.item.mystic_architect_stick.ItemMysticArchitectStick;
-import aurocosh.divinefavor.common.item.talismans.base.ItemTalisman;
+import aurocosh.divinefavor.common.item.talismans.base.spell.ItemSpellTalisman;
 import aurocosh.divinefavor.common.util.UtilNbt;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScaledResolution;
@@ -53,11 +53,11 @@ public final class HUDHandler {
     private void renderSpellRequirements(ScaledResolution res, float pticks) {
         Minecraft mc = Minecraft.getMinecraft();
         ItemStack stack = mc.player.getHeldItem(EnumHand.MAIN_HAND);
-        if (stack.isEmpty() || !(stack.getItem() instanceof ItemTalisman))
+        if (stack.isEmpty() || !(stack.getItem() instanceof ItemSpellTalisman))
             return;
 
         EntityPlayer player = DivineFavor.proxy.getClientPlayer();
-        ItemTalisman talisman = (ItemTalisman) stack.getItem();
+        ItemSpellTalisman talisman = (ItemSpellTalisman) stack.getItem();
         int useCount = talisman.getUseCount(player);
 
         String description = useCount > 0 ? "Uses left: " + useCount : "Unusable";

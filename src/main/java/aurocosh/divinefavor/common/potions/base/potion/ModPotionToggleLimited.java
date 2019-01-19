@@ -1,7 +1,7 @@
 package aurocosh.divinefavor.common.potions.base.potion;
 
 import aurocosh.divinefavor.DivineFavor;
-import aurocosh.divinefavor.common.item.talismans.base.ItemTalisman;
+import aurocosh.divinefavor.common.item.talismans.base.spell.ItemSpellTalisman;
 import aurocosh.divinefavor.common.player_data.talisman_uses.ITalismanUsesHandler;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.resources.I18n;
@@ -13,17 +13,17 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import static aurocosh.divinefavor.common.player_data.talisman_uses.TalismanUsesDataHandler.CAPABILITY_TALISMAN_USES;
 
 public abstract class ModPotionToggleLimited extends ModPotionToggle {
-    protected ItemTalisman talisman;
+    protected ItemSpellTalisman talisman;
 
     public ModPotionToggleLimited(String name, boolean beneficial, int potionColor) {
         super(name, beneficial, potionColor);
     }
 
-    public void setTalisman(ItemTalisman talisman) {
+    public void setTalisman(ItemSpellTalisman talisman) {
         this.talisman = talisman;
     }
 
-    public ItemTalisman getTalisman() {
+    public ItemSpellTalisman getTalisman() {
         return talisman;
     }
 
