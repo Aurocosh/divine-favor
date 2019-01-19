@@ -17,7 +17,7 @@ import aurocosh.divinefavor.common.item.grimoire.ItemGrimoire;
 import aurocosh.divinefavor.common.item.grimoire.capability.GrimoireDataHandler;
 import aurocosh.divinefavor.common.item.grimoire.capability.IGrimoireHandler;
 import aurocosh.divinefavor.common.item.ritual_pouch.RitualBagContainer;
-import aurocosh.divinefavor.common.item.talismans.ContainerTalisman;
+import aurocosh.divinefavor.common.item.talismans.base.ContainerTalisman;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumHand;

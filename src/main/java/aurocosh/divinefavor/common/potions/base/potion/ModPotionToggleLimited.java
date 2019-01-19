@@ -1,9 +1,8 @@
 package aurocosh.divinefavor.common.potions.base.potion;
 
 import aurocosh.divinefavor.DivineFavor;
-import aurocosh.divinefavor.common.item.talismans.ItemTalisman;
-import aurocosh.divinefavor.common.player_data.grudge.IGrudgeHandler;
-import aurocosh.divinefavor.common.player_data.spell_count.ISpellUsesHandler;
+import aurocosh.divinefavor.common.item.talismans.base.ItemTalisman;
+import aurocosh.divinefavor.common.player_data.talisman_uses.ITalismanUsesHandler;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.EntityPlayer;
@@ -11,14 +10,17 @@ import net.minecraft.potion.PotionEffect;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import static aurocosh.divinefavor.common.player_data.grudge.GrudgeDataHandler.CAPABILITY_GRUDGE;
-import static aurocosh.divinefavor.common.player_data.spell_count.SpellUsesDataHandler.CAPABILITY_SPELL_USES;
+import static aurocosh.divinefavor.common.player_data.talisman_uses.TalismanUsesDataHandler.CAPABILITY_TALISMAN_USES;
 
 public abstract class ModPotionToggleLimited extends ModPotionToggle {
     protected ItemTalisman talisman;
 
     public ModPotionToggleLimited(String name, boolean beneficial, int potionColor) {
         super(name, beneficial, potionColor);
+    }
+
+    public void setTalisman(ItemTalisman talisman) {
+        this.talisman = talisman;
     }
 
     public ItemTalisman getTalisman() {
@@ -37,9 +39,9 @@ public abstract class ModPotionToggleLimited extends ModPotionToggle {
         mc.fontRenderer.drawStringWithShadow(potionName, (float) (x + 10 + 18), (float) (y + 6), 16777215);
 
         EntityPlayer player = DivineFavor.proxy.getClientPlayer();
-        ISpellUsesHandler usesHandler = player.getCapability(CAPABILITY_SPELL_USES, null);
+        ITalismanUsesHandler usesHandler = player.getCapability(CAPABILITY_TALISMAN_USES, null);
         assert usesHandler != null;
-        String s = "Uses left: " + usesHandler.getSpellUses(talisman.getId());
+        String s = "Uses left: " + usesHandler.getUses(talisman.getId());
         mc.fontRenderer.drawStringWithShadow(s, (float) (x + 10 + 18), (float) (y + 6 + 10), 8355711);
     }
 }

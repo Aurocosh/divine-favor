@@ -1,7 +1,7 @@
 package aurocosh.divinefavor.common.spirit.base;
 
 import aurocosh.divinefavor.common.core.ResourceNamer;
-import aurocosh.divinefavor.common.item.talismans.ItemTalisman;
+import aurocosh.divinefavor.common.item.talismans.base.ItemTalisman;
 import aurocosh.divinefavor.common.lib.TimePeriod;
 import net.minecraft.world.World;
 import net.minecraftforge.registries.IForgeRegistryEntry;

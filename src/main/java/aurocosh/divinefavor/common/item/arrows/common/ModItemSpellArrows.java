@@ -1,9 +1,8 @@
 package aurocosh.divinefavor.common.item.arrows.common;
 
+import aurocosh.divinefavor.common.arrow_spell.SpellHandSwap;
 import aurocosh.divinefavor.common.item.arrows.base.ItemSpellArrow;
-import aurocosh.divinefavor.common.potions.common.ModPotions;
 import aurocosh.divinefavor.common.registry.ModRegistries;
-import aurocosh.divinefavor.common.spell.arrow.SpellHandSwap;
 
 import java.awt.*;
 

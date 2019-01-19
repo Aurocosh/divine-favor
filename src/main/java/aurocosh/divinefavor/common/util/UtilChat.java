@@ -89,7 +89,7 @@ public class UtilChat {
 
     public static String[] splitIntoLine(String input, int maxCharInLine) {
         // https://stackoverflow.com/questions/7528045/large-string-split-into-lines-with-maximum-length-in-java
-        // better than spell.getInfo().split("(?<=\\G.{25})")
+        // better than arrow_spell.getInfo().split("(?<=\\G.{25})")
         StringTokenizer tok = new StringTokenizer(input, " ");
         StringBuilder output = new StringBuilder(input.length());
         int lineLen = 0;
