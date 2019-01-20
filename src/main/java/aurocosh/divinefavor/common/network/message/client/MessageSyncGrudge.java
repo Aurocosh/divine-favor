@@ -1,16 +1,13 @@
 package aurocosh.divinefavor.common.network.message.client;
 
 import aurocosh.divinefavor.DivineFavor;
-import aurocosh.divinefavor.common.network.base.NetworkClientMessage;
 import aurocosh.divinefavor.common.network.base.NetworkWrappedClientMessage;
-import aurocosh.divinefavor.common.network.common.NetworkHandler;
-import aurocosh.divinefavor.common.player_data.grudge.IGrudgeHandler;
+import aurocosh.divinefavor.common.custom_data.player.grudge.IGrudgeHandler;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import static aurocosh.divinefavor.common.player_data.grudge.GrudgeDataHandler.CAPABILITY_GRUDGE;
+import static aurocosh.divinefavor.common.custom_data.player.grudge.GrudgeDataHandler.CAPABILITY_GRUDGE;
 
 public class MessageSyncGrudge extends NetworkWrappedClientMessage {
     public int mobTypeId;

@@ -2,13 +2,13 @@ package aurocosh.divinefavor.common.item.talismans.spell;
 
 import aurocosh.divinefavor.common.item.talismans.base.spell.ItemSpellTalisman;
 import aurocosh.divinefavor.common.lib.GlobalBlockPos;
-import aurocosh.divinefavor.common.player_data.pearl_crumbs.IPearlCrumbsHandler;
+import aurocosh.divinefavor.common.custom_data.player.pearl_crumbs.IPearlCrumbsHandler;
 import aurocosh.divinefavor.common.item.talismans.base.spell.CastType;
 import aurocosh.divinefavor.common.item.talismans.base.spell.TalismanContext;
 import aurocosh.divinefavor.common.util.UtilEntity;
 import net.minecraft.entity.player.EntityPlayer;
 
-import static aurocosh.divinefavor.common.player_data.pearl_crumbs.PearlCrumbsDataHandler.CAPABILITY_PEARL_CRUMBS;
+import static aurocosh.divinefavor.common.custom_data.player.pearl_crumbs.PearlCrumbsDataHandler.CAPABILITY_PEARL_CRUMBS;
 
 public class SpellTalismanPearlCrumbs extends ItemSpellTalisman {
     private static final int USES = 10;

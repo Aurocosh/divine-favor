@@ -1,7 +1,7 @@
 package aurocosh.divinefavor.common.potions.potions;
 
 import aurocosh.divinefavor.common.potions.base.potion.ModPotion;
-import aurocosh.divinefavor.common.potions.common.ModPotions;
+import aurocosh.divinefavor.common.potions.common.ModCurses;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.math.Vec3d;
 
@@ -19,7 +19,7 @@ public class PotionSkybound extends ModPotion {
         entityLivingBase.motionY = upwardMotion;
         entityLivingBase.onGround = false;
         if(isLookingUp(entityLivingBase))
-            entityLivingBase.removePotionEffect(ModPotions.skybound);
+            entityLivingBase.removePotionEffect(ModCurses.skybound);
     }
 
     @Override

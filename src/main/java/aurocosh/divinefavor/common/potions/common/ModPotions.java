@@ -12,8 +12,6 @@ public class ModPotions {
     public static ModPotion escape_plan;
     public static ModPotion fins;
     public static ModPotion obsidian_road;
-    public static ModPotion roots;
-    public static ModPotion skybound;
     public static ModPotion spider_might;
     public static ModPotion starvation;
     public static ModPotion stone_fever;
@@ -32,7 +30,6 @@ public class ModPotions {
     public static ModPotionToggleLimited wooden_punch;
     public static ModPotionTrigger consuming_fury;
     public static ModPotionTrigger focused_fury;
-    public static ModPotionTrigger fiery_mark;
     public static ModPotionTrigger miners_focus;
     public static ModPotionTrigger wild_charge;
 
@@ -46,7 +43,6 @@ public class ModPotions {
         empower_pickaxe = ModRegistries.potions.register(new PotionEmpowerPickaxe());
         escape_plan = ModRegistries.potions.register(new PotionEscapePlan());
         fall_negation = ModRegistries.potions.register(new PotionFallNegation());
-        fiery_mark = ModRegistries.potions.register(new PotionFieryMark());
         fins = ModRegistries.potions.register(new PotionFins());
         focused_fury = ModRegistries.potions.register(new PotionFocusedFury());
         gills = ModRegistries.potions.register(new PotionGills());
@@ -57,8 +53,6 @@ public class ModPotions {
         molten_skin = ModRegistries.potions.register(new PotionMoltenSkin());
         night_eye = ModRegistries.potions.register(new PotionNightEye());
         obsidian_road = ModRegistries.potions.register(new PotionLiquidWalking("obsidian_road", Blocks.LAVA));
-        roots = ModRegistries.potions.register(new PotionRoots());
-        skybound = ModRegistries.potions.register(new PotionSkybound());
         spider_might = ModRegistries.potions.register(new PotionSpiderMight());
         starvation = ModRegistries.potions.register(new PotionStarvation());
         stone_fever = ModRegistries.potions.register(new PotionStoneFever());

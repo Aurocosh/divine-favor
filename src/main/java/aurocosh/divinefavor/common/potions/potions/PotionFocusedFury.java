@@ -2,7 +2,7 @@ package aurocosh.divinefavor.common.potions.potions;
 
 import aurocosh.divinefavor.DivineFavor;
 import aurocosh.divinefavor.common.network.message.client.MessageSyncFury;
-import aurocosh.divinefavor.common.player_data.focused_fury.IFocusedFuryHandler;
+import aurocosh.divinefavor.common.custom_data.player.focused_fury.IFocusedFuryHandler;
 import aurocosh.divinefavor.common.potions.base.potion.ModPotionTrigger;
 import aurocosh.divinefavor.common.potions.common.ModPotions;
 import net.minecraft.client.Minecraft;
@@ -21,7 +21,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
-import static aurocosh.divinefavor.common.player_data.focused_fury.FocusedFuryDataHandler.CAPABILITY_FOCUSED_FURY;
+import static aurocosh.divinefavor.common.custom_data.player.focused_fury.FocusedFuryDataHandler.CAPABILITY_FOCUSED_FURY;
 
 @Mod.EventBusSubscriber
 public class PotionFocusedFury extends ModPotionTrigger {

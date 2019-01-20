@@ -1,7 +1,9 @@
 package aurocosh.divinefavor.common.item.talismans.base.arrow;
 
+import aurocosh.divinefavor.common.potions.base.effect.ModEffect;
 import aurocosh.divinefavor.common.potions.base.effect.ModEffectTrigger;
 import aurocosh.divinefavor.common.potions.base.potion.ModPotionTrigger;
+import aurocosh.divinefavor.common.util.UtilCurses;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.projectile.EntityArrow;
 
@@ -16,6 +18,6 @@ public class ArrowTalismanCurseCurseTigger extends ItemArrowTalisman {
     }
 
     protected void performActionServer(EntityLivingBase target, EntityLivingBase shooter, EntityArrow arrow) {
-        target.addPotionEffect(new ModEffectTrigger(potion, duration).setIsCurse());
+        UtilCurses.applyCurse(target, shooter, new ModEffectTrigger(potion, duration));
     }
 }

@@ -2,9 +2,9 @@ package aurocosh.divinefavor.common.network.message.client.spell_uses;
 
 import aurocosh.divinefavor.DivineFavor;
 import aurocosh.divinefavor.common.network.base.NetworkWrappedClientMessage;
-import aurocosh.divinefavor.common.player_data.talisman_uses.ITalismanUsesHandler;
-import aurocosh.divinefavor.common.player_data.talisman_uses.TalismanUsesData;
-import aurocosh.divinefavor.common.player_data.talisman_uses.TalismanUsesDataHandler;
+import aurocosh.divinefavor.common.custom_data.player.talisman_uses.ITalismanUsesHandler;
+import aurocosh.divinefavor.common.custom_data.player.talisman_uses.TalismanUsesData;
+import aurocosh.divinefavor.common.custom_data.player.talisman_uses.TalismanUsesDataHandler;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.fml.relauncher.Side;

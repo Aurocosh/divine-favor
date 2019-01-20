@@ -1,7 +1,7 @@
 package aurocosh.divinefavor.common.potions.potions;
 
 import aurocosh.divinefavor.common.potions.base.potion.ModPotionTrigger;
-import aurocosh.divinefavor.common.potions.common.ModPotions;
+import aurocosh.divinefavor.common.potions.common.ModCurses;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.DamageSource;
@@ -29,8 +29,14 @@ public class PotionFieryMark extends ModPotionTrigger {
         if (!(entity instanceof EntityLivingBase))
             return;
         EntityLivingBase livingBase = (EntityLivingBase) entity;
-        if (livingBase.isPotionActive(ModPotions.fiery_mark))
+        if (livingBase.isPotionActive(ModCurses.fiery_mark))
             explode(livingBase);
+    }
+
+    @Override
+    public void performEffect(EntityLivingBase entityLivingBaseIn, int amplifier) {
+        if(entityLivingBaseIn.isInWater())
+            entityLivingBaseIn.removePotionEffect(ModCurses.fiery_mark);
     }
 
     @Override

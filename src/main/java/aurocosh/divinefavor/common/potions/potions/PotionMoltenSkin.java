@@ -1,12 +1,11 @@
 package aurocosh.divinefavor.common.potions.potions;
 
 import aurocosh.divinefavor.common.damage_source.ModDamageSources;
-import aurocosh.divinefavor.common.player_data.molten_skin.IMoltenSkinHandler;
+import aurocosh.divinefavor.common.custom_data.player.molten_skin.IMoltenSkinHandler;
 import aurocosh.divinefavor.common.potions.base.potion.ModPotionToggle;
 import aurocosh.divinefavor.common.potions.common.ModPotions;
 import aurocosh.divinefavor.common.util.UtilEntity;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -18,7 +17,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import static aurocosh.divinefavor.common.player_data.molten_skin.MoltenSkinDataHandler.CAPABILITY_MOLTEN_SKIN;
+import static aurocosh.divinefavor.common.custom_data.player.molten_skin.MoltenSkinDataHandler.CAPABILITY_MOLTEN_SKIN;
 
 
 @Mod.EventBusSubscriber

@@ -2,7 +2,7 @@ package aurocosh.divinefavor.common.spirit.punishment;
 
 import aurocosh.divinefavor.common.muliblock.MultiBlockInstance;
 import aurocosh.divinefavor.common.potions.base.effect.ModEffect;
-import aurocosh.divinefavor.common.potions.common.ModPotions;
+import aurocosh.divinefavor.common.potions.common.ModCurses;
 import aurocosh.divinefavor.common.spirit.base.SpiritPunishment;
 import aurocosh.divinefavor.common.util.UtilTick;
 import net.minecraft.block.state.IBlockState;
@@ -17,7 +17,7 @@ public class TimberPunishment extends SpiritPunishment {
 
     @Override
     public void execute(EntityPlayer player, World world, BlockPos pos, IBlockState state, MultiBlockInstance instance) {
-        player.addPotionEffect(new ModEffect(ModPotions.roots, ROOTS_DURATION).setIsCurse());
+        player.addPotionEffect(new ModEffect(ModCurses.roots, ROOTS_DURATION).setIsCurse());
         player.addPotionEffect(new ModEffect(MobEffects.BLINDNESS, BLINDNESS_DURATION).setIsCurse());
     }
 }

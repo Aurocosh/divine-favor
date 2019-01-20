@@ -1,6 +1,6 @@
 package aurocosh.divinefavor.common.potions.potions;
 
-import aurocosh.divinefavor.common.player_data.escape_plan.IEscapePlanHandler;
+import aurocosh.divinefavor.common.custom_data.player.escape_plan.IEscapePlanHandler;
 import aurocosh.divinefavor.common.potions.base.potion.ModPotion;
 import aurocosh.divinefavor.common.potions.common.ModPotions;
 import aurocosh.divinefavor.common.util.UtilEntity;
@@ -10,7 +10,7 @@ import net.minecraftforge.event.entity.living.LivingDamageEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
-import static aurocosh.divinefavor.common.player_data.escape_plan.EscapePlanDataHandler.CAPABILITY_ESCAPE_PLAN;
+import static aurocosh.divinefavor.common.custom_data.player.escape_plan.EscapePlanDataHandler.CAPABILITY_ESCAPE_PLAN;
 
 @Mod.EventBusSubscriber
 public class PotionEscapePlan extends ModPotion {

@@ -4,7 +4,7 @@ import aurocosh.divinefavor.common.item.talismans.arrow.*;
 import aurocosh.divinefavor.common.item.talismans.base.arrow.ArrowTalismanCurse;
 import aurocosh.divinefavor.common.item.talismans.base.arrow.ArrowTalismanCurseCurseTigger;
 import aurocosh.divinefavor.common.item.talismans.base.arrow.ItemArrowTalisman;
-import aurocosh.divinefavor.common.potions.common.ModPotions;
+import aurocosh.divinefavor.common.potions.common.ModCurses;
 import aurocosh.divinefavor.common.registry.ModRegistries;
 import aurocosh.divinefavor.common.registry.mappers.ModMappers;
 import aurocosh.divinefavor.common.util.UtilTick;
@@ -24,11 +24,11 @@ public class ModArrowTalismans {
     public static void preInit() {
         anti_gravity_arrow = ModRegistries.items.register(new ArrowTalismanAntiGravityArrow());
         blink_arrow = ModRegistries.items.register(new ArrowTalismanBlinkArrow());
-        fiery_mark = ModRegistries.items.register(new ArrowTalismanCurseCurseTigger("fiery_mark", 10, Color.red.getRGB(), ModPotions.fiery_mark, UtilTick.secondsToTicks(10)));
+        fiery_mark = ModRegistries.items.register(new ArrowTalismanCurseCurseTigger("fiery_mark", 10, Color.red.getRGB(), ModCurses.fiery_mark, UtilTick.secondsToTicks(10)));
         hand_swap = ModRegistries.items.register(new ArrowTalismanHandSwap());
         nether_swap = ModRegistries.items.register(new ArrowTalismanNetherSwap());
-        roots = ModRegistries.items.register(new ArrowTalismanCurse("roots", 10, Color.green.getRGB(), ModPotions.roots, UtilTick.secondsToTicks(15)));
-        skybound = ModRegistries.items.register(new ArrowTalismanCurse("skybound", 10, Color.red.getRGB(), ModPotions.skybound, UtilTick.secondsToTicks(8)));
+        roots = ModRegistries.items.register(new ArrowTalismanCurse("roots", 10, Color.green.getRGB(), ModCurses.roots, UtilTick.secondsToTicks(15)));
+        skybound = ModRegistries.items.register(new ArrowTalismanCurse("skybound", 10, Color.red.getRGB(), ModCurses.skybound, UtilTick.secondsToTicks(8)));
         zero_g_arrow = ModRegistries.items.register(new ArrowTalismanZeroGArrow());
 
         ModMappers.talismans.register(ModRegistries.items.getValues(ItemArrowTalisman.class));

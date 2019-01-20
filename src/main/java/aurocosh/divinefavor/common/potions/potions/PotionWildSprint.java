@@ -1,18 +1,10 @@
 package aurocosh.divinefavor.common.potions.potions;
 
 import aurocosh.divinefavor.common.potions.base.potion.ModPotion;
-import aurocosh.divinefavor.common.potions.base.potion.ModPotionTrigger;
-import aurocosh.divinefavor.common.potions.base.effect.PotionEffectCurse;
-import aurocosh.divinefavor.common.util.UtilTick;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.init.Blocks;
-import net.minecraft.init.MobEffects;
-import net.minecraft.potion.Potion;
-import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.Mod;
-
-import java.io.Console;
 
 import static aurocosh.divinefavor.common.util.UtilEntity.tickLiquidWalk;
 
