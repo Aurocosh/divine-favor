@@ -74,7 +74,7 @@ public class ItemSpellBow extends ModItem {
     }
 
     private ItemStack findAmmo(EntityPlayer player) {
-        return UtilPlayer.findStackInInventory(player, stack -> stack.getItem() instanceof ItemArrow);
+        return UtilPlayer.findStackInInventory(player, stack -> stack.getItem() instanceof ItemArrow).stack;
     }
 
     /**

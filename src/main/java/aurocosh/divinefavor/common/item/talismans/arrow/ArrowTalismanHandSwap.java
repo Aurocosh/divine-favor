@@ -3,6 +3,7 @@ package aurocosh.divinefavor.common.item.talismans.arrow;
 import aurocosh.divinefavor.common.item.talismans.base.arrow.ArrowType;
 import aurocosh.divinefavor.common.item.talismans.base.arrow.ItemArrowTalisman;
 import aurocosh.divinefavor.common.util.InventoryIndexes;
+import aurocosh.divinefavor.common.util.UtilPlayer;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntityArrow;
@@ -19,10 +20,7 @@ public class ArrowTalismanHandSwap extends ItemArrowTalisman {
     protected void performActionServer(EntityLivingBase target, EntityLivingBase shooter, EntityArrow arrow) {
         if (target instanceof EntityPlayer) {
             EntityPlayer player = (EntityPlayer) target;
-            ItemStack stackMain = player.getHeldItemMainhand();
-            ItemStack stackOff = player.getHeldItemOffhand();
-            player.inventory.setInventorySlotContents(player.inventory.currentItem, stackOff);
-            player.inventory.setInventorySlotContents(InventoryIndexes.Offhand.getValue(), stackMain);
+            UtilPlayer.swapStacks(player, player.inventory.currentItem, InventoryIndexes.Offhand.getValue());
         }
     }
 }

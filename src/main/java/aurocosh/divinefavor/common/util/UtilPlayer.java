@@ -23,19 +23,35 @@ public class UtilPlayer {
         return null;
     }
 
-    public static ItemStack findStackInInventory(EntityPlayer player, UtilList.Predicate<ItemStack> predicate) {
+    public static SlotData findStackInMainInventory(EntityPlayer player, UtilList.Predicate<ItemStack> predicate) {
+        for (int i = 9; i < player.inventory.getSizeInventory(); i++) {
+            ItemStack stack = player.inventory.getStackInSlot(i);
+            if (predicate.select(stack))
+                return new SlotData(i, stack);
+        }
+        return new SlotData(-1, ItemStack.EMPTY);
+    }
+
+    public static SlotData findStackInInventory(EntityPlayer player, UtilList.Predicate<ItemStack> predicate) {
         ItemStack stack = player.getHeldItemMainhand();
         if (predicate.select(stack))
-            return stack;
+            return new SlotData(player.inventory.currentItem, stack);
         stack = player.getHeldItemOffhand();
         if (predicate.select(stack))
-            return stack;
+            return new SlotData(InventoryIndexes.Offhand.getValue(), stack);
         for (int i = 0; i < player.inventory.getSizeInventory(); i++) {
             stack = player.inventory.getStackInSlot(i);
             if (predicate.select(stack))
-                return stack;
+                return new SlotData(i, stack);
         }
-        return ItemStack.EMPTY;
+        return new SlotData(-1, ItemStack.EMPTY);
+    }
+
+    public static void swapStacks(EntityPlayer player, int firstSlot, int secondSlot){
+        ItemStack firstStack = player.inventory.getStackInSlot(firstSlot);
+        ItemStack secondStack = player.inventory.getStackInSlot(secondSlot);
+        player.inventory.setInventorySlotContents(firstSlot, secondStack);
+        player.inventory.setInventorySlotContents(secondSlot, firstStack);
     }
 
     public static void damageStack(EntityPlayer player, ItemStack stack) {
