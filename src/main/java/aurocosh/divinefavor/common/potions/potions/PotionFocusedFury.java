@@ -1,9 +1,9 @@
 package aurocosh.divinefavor.common.potions.potions;
 
 import aurocosh.divinefavor.DivineFavor;
-import aurocosh.divinefavor.common.network.message.client.MessageSyncFury;
 import aurocosh.divinefavor.common.custom_data.player.focused_fury.IFocusedFuryHandler;
-import aurocosh.divinefavor.common.potions.base.potion.ModPotionTrigger;
+import aurocosh.divinefavor.common.network.message.client.MessageSyncFury;
+import aurocosh.divinefavor.common.potions.base.potion.ModPotion;
 import aurocosh.divinefavor.common.potions.common.ModPotions;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.resources.I18n;
@@ -24,7 +24,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import static aurocosh.divinefavor.common.custom_data.player.focused_fury.FocusedFuryDataHandler.CAPABILITY_FOCUSED_FURY;
 
 @Mod.EventBusSubscriber
-public class PotionFocusedFury extends ModPotionTrigger {
+public class PotionFocusedFury extends ModPotion {
     public static float EXTRA_DAMAGE = 10;
 
     public PotionFocusedFury() {
@@ -94,11 +94,16 @@ public class PotionFocusedFury extends ModPotionTrigger {
     }
 
     @Override
-    public void trigger(EntityLivingBase player) {
+    protected void onPotionRemoved(EntityLivingBase livingBase) {
+        super.onPotionRemoved(livingBase);
+        if(!(livingBase instanceof EntityPlayer))
+            return;
+
+        EntityPlayer player = (EntityPlayer) livingBase;
         IFocusedFuryHandler furyHandler = player.getCapability(CAPABILITY_FOCUSED_FURY, null);
         assert furyHandler != null;
         furyHandler.setMobTypeId(-1);
-        MessageSyncFury.sync((EntityPlayer) player, furyHandler.getMobTypeId());
+        MessageSyncFury.sync(player, furyHandler.getMobTypeId());
     }
 
     @Override

@@ -6,15 +6,19 @@ import aurocosh.divinefavor.common.registry.ModRegistries;
 import net.minecraft.init.Blocks;
 
 public class ModPotions {
+    public static ModPotion consuming_fury;
     public static ModPotion crystalline_road;
     public static ModPotion empower_axe;
     public static ModPotion empower_pickaxe;
     public static ModPotion escape_plan;
     public static ModPotion fins;
+    public static ModPotion focused_fury;
+    public static ModPotion miners_focus;
     public static ModPotion obsidian_road;
     public static ModPotion spider_might;
     public static ModPotion starvation;
     public static ModPotion stone_fever;
+    public static ModPotion wild_charge;
     public static ModPotion wild_sprint;
     public static ModPotionCharge butchering_strike;
     public static ModPotionCharge fall_negation;
@@ -28,10 +32,6 @@ public class ModPotions {
     public static ModPotionToggleLimited crushing_palm;
     public static ModPotionToggleLimited toadic_jump;
     public static ModPotionToggleLimited wooden_punch;
-    public static ModPotionTrigger consuming_fury;
-    public static ModPotionTrigger focused_fury;
-    public static ModPotionTrigger miners_focus;
-    public static ModPotionTrigger wild_charge;
 
     public static void preInit() {
         armor_of_pacifist = ModRegistries.potions.register(new PotionArmorOfPacifist());

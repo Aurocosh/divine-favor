@@ -1,6 +1,6 @@
 package aurocosh.divinefavor.common.potions.potions;
 
-import aurocosh.divinefavor.common.potions.base.potion.ModPotionTrigger;
+import aurocosh.divinefavor.common.potions.base.potion.ModPotion;
 import aurocosh.divinefavor.common.potions.common.ModPotions;
 import aurocosh.divinefavor.common.util.UtilChat;
 import net.minecraft.entity.Entity;
@@ -17,7 +17,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Mod.EventBusSubscriber
-public class PotionConsumingFury extends ModPotionTrigger {
+public class PotionConsumingFury extends ModPotion {
     private static final int MOBS_TO_KILL = 3;
     private static final float DAMAGE_TO_DEAL = 2;
     public static final float EXTRA_DAMAGE = 16;
@@ -29,9 +29,13 @@ public class PotionConsumingFury extends ModPotionTrigger {
     }
 
     @Override
-    public void trigger(EntityLivingBase player) {
-        assert player instanceof EntityPlayer;
-        int killCount = killCounts.computeIfAbsent((EntityPlayer) player, player1 -> 0);
+    protected void onPotionRemoved(EntityLivingBase livingBase) {
+        super.onPotionRemoved(livingBase);
+        if(!(livingBase instanceof EntityPlayer))
+            return;
+
+        EntityPlayer player = (EntityPlayer) livingBase;
+        int killCount = killCounts.computeIfAbsent(player, player1 -> 0);
         killCounts.remove(player);
         if(killCount < MOBS_TO_KILL)
             player.attackEntityFrom(DamageSource.MAGIC, DAMAGE_TO_DEAL);

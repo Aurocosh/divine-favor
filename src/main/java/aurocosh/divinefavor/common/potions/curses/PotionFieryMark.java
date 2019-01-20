@@ -1,6 +1,6 @@
 package aurocosh.divinefavor.common.potions.curses;
 
-import aurocosh.divinefavor.common.potions.base.potion.ModPotionTrigger;
+import aurocosh.divinefavor.common.potions.base.potion.ModPotion;
 import aurocosh.divinefavor.common.potions.common.ModCurses;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -12,7 +12,7 @@ import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 @Mod.EventBusSubscriber
-public class PotionFieryMark extends ModPotionTrigger {
+public class PotionFieryMark extends ModPotion {
     private static final float EXPLOSION_POWER = 4;
     private static final boolean CAUSE_FIRE = false;
     private static final boolean DAMAGE_TERRAIN = true;
@@ -40,7 +40,8 @@ public class PotionFieryMark extends ModPotionTrigger {
     }
 
     @Override
-    public void trigger(EntityLivingBase livingBase) {
+    protected void onPotionRemoved(EntityLivingBase livingBase) {
+        super.onPotionRemoved(livingBase);
         explode(livingBase);
     }
 

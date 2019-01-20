@@ -80,7 +80,7 @@ public final class ModSpellTalismans {
         butchering_strike = ModRegistries.items.register(new SpellTalismanModPotionCharge("butchering_strike", 10, ModPotions.butchering_strike, 6));
         clock = ModRegistries.items.register(new SpellTalismanClock());
         combustion = ModRegistries.items.register(new SpellTalismanCombustion());
-        consuming_fury = ModRegistries.items.register(new SpellTalismanModPotionTrigger("consuming_fury", 10, ModPotions.consuming_fury, UtilTick.minutesToTicks(1)));
+        consuming_fury = ModRegistries.items.register(new SpellTalismanModPotion("consuming_fury", 10, ModPotions.consuming_fury, UtilTick.minutesToTicks(1)));
         crushing_palm = ModRegistries.items.register(new SpellTalismanModPotionToggle("crushing_palm", 10, ModPotions.crushing_palm));
         crystalline_road = ModRegistries.items.register(new SpellTalismanModPotion("crystalline_road", 10, ModPotions.crystalline_road, UtilTick.minutesToTicks(1)));
         distant_spark = ModRegistries.items.register(new SpellTalismanIgnition("distant_spark", 20, true));
@@ -91,8 +91,8 @@ public final class ModSpellTalismans {
         fall_negation = ModRegistries.items.register(new SpellTalismanModPotionCharge("fall_negation", 10, ModPotions.fall_negation, 3));
         fell_tree = ModRegistries.items.register(new SpellTalismanFellTree());
         fins = ModRegistries.items.register(new SpellTalismanModPotion("fins", ConfigTalismans.fins.uses, ModPotions.fins, ConfigTalismans.fins.duration));
-        focused_fury = ModRegistries.items.register(new SpellTalismanModPotionTrigger("focused_fury", 2, ModPotions.focused_fury, UtilTick.minutesToTicks(1)));
-        gills = ModRegistries.items.register(new SpellTalismanModPotionToggle("potion_gills", 5, ModPotions.gills));
+        focused_fury = ModRegistries.items.register(new SpellTalismanModPotion("focused_fury", 2, ModPotions.focused_fury, UtilTick.minutesToTicks(1)));
+        gills = ModRegistries.items.register(new SpellTalismanModPotionToggle("gills", 5, ModPotions.gills));
         green_cycle = ModRegistries.items.register(new SpellTalismanGreenCycle());
         ground_flow = ModRegistries.items.register(new SpellTalismanModPotionToggle("ground_flow", 10, ModPotions.ground_flow));
         grudge = ModRegistries.items.register(new SpellTalismanGrudge());
@@ -126,7 +126,7 @@ public final class ModSpellTalismans {
         warp = ModRegistries.items.register(new SpellTalismanBlink("warp", 30, false, 8));
         warp_gem = ModRegistries.items.register(new SpellTalismanWarpMarker("warp_gem", 1, ModItems.warp_gem));
         warp_pebble = ModRegistries.items.register(new SpellTalismanWarpMarker("warp_pebble", 5, ModItems.warp_pebble));
-        wild_sprint = ModRegistries.items.register(new SpellTalismanModPotionTrigger("wild_sprint", 3, ModPotions.wild_charge, UtilTick.secondsToTicks(10)));
+        wild_sprint = ModRegistries.items.register(new SpellTalismanModPotion("wild_sprint", 3, ModPotions.wild_charge, UtilTick.secondsToTicks(10)));
         wind_step = ModRegistries.items.register(new SpellTalismanWindStep());
         winter_breath = ModRegistries.items.register(new SpellTalismanWinterBreath());
         wooden_punch = ModRegistries.items.register(new SpellTalismanModPotionToggle("wooden_punch", 30, ModPotions.wooden_punch));
