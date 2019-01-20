@@ -14,17 +14,17 @@ public class PotionGills extends ModPotionToggle {
     }
 
     @Override
-    public void performEffect(EntityLivingBase entityLivingBase, int amplifier) {
-        if (!(entityLivingBase instanceof EntityPlayer))
+    public void performEffect(EntityLivingBase livingBase, int amplifier) {
+        if (!(livingBase instanceof EntityPlayer))
             return;
 
-        EntityPlayer player = (EntityPlayer) entityLivingBase;
+        EntityPlayer player = (EntityPlayer) livingBase;
         IGillsHandler gillsHandler= player.getCapability(CAPABILITY_GILLS, null);
         assert gillsHandler != null;
 
-        if (entityLivingBase.isInWater()) {
+        if (livingBase.isInWater()) {
             gillsHandler.resetTime();
-            entityLivingBase.setAir(300);
+            livingBase.setAir(300);
             return;
         }
         if (!gillsHandler.tick())

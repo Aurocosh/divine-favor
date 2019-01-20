@@ -18,15 +18,15 @@ public class PotionNightEye extends ModPotionToggle {
     }
 
     @Override
-    public void performEffect(EntityLivingBase entity, int amplifier) {
-        BlockPos pos = entity.getPosition();
-        World world = entity.world;
+    public void performEffect(EntityLivingBase livingBase, int amplifier) {
+        BlockPos pos = livingBase.getPosition();
+        World world = livingBase.world;
 
         int skyLightSub = world.calculateSkylightSubtracted(1.0f);
         int lightBlock = world.getLightFor(EnumSkyBlock.BLOCK, pos);
         int lightSky = world.getLightFor(EnumSkyBlock.SKY, pos) - skyLightSub;
-        if (Math.max(lightBlock, lightSky) > TOLERABLE_LIGHT_LEVEL && !entity.isPotionActive(MobEffects.BLINDNESS))
-            entity.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, BLINDNESS_DURATION));
+        if (Math.max(lightBlock, lightSky) > TOLERABLE_LIGHT_LEVEL && !livingBase.isPotionActive(MobEffects.BLINDNESS))
+            livingBase.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, BLINDNESS_DURATION));
     }
 
     @Override

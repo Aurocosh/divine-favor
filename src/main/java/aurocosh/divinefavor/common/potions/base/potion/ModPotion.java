@@ -84,7 +84,7 @@ public abstract class ModPotion extends Potion {
     }
 
     @Override
-    public void performEffect(EntityLivingBase entityLivingBaseIn, int amplifier) {
+    public void performEffect(EntityLivingBase livingBase, int amplifier) {
     }
 
     @Override

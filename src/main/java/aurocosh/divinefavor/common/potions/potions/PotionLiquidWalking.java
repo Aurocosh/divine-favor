@@ -15,8 +15,8 @@ public class PotionLiquidWalking extends ModPotion {
     }
 
     @Override
-    public void performEffect(EntityLivingBase entityLivingBase, int amplifier) {
-        tickLiquidWalk(entityLivingBase, block);
+    public void performEffect(EntityLivingBase livingBase, int amplifier) {
+        tickLiquidWalk(livingBase, block);
     }
 
     @Override

@@ -21,14 +21,17 @@ public class TickCounter {
     }
 
     public void setCurrentTicks(int ticks) {
-        currentTicks = UtilMath.clamp(ticks,0, tickRate);
+        currentTicks = UtilMath.clamp(ticks, 0, tickRate);
     }
 
     public boolean tick() {
-        currentTicks++;
-        if (currentTicks < tickRate)
+        if (currentTicks < tickRate) {
+            currentTicks++;
             return false;
-        currentTicks = 0;
-        return true;
+        }
+        else {
+            currentTicks = 0;
+            return true;
+        }
     }
 }

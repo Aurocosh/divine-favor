@@ -1,4 +1,4 @@
-package aurocosh.divinefavor.common.potions.potions;
+package aurocosh.divinefavor.common.potions.curses;
 
 import aurocosh.divinefavor.common.potions.base.potion.ModPotion;
 import aurocosh.divinefavor.common.potions.common.ModCurses;
@@ -15,11 +15,11 @@ public class PotionSkybound extends ModPotion {
     }
 
     @Override
-    public void performEffect(EntityLivingBase entityLivingBase, int amplifier) {
-        entityLivingBase.motionY = upwardMotion;
-        entityLivingBase.onGround = false;
-        if(isLookingUp(entityLivingBase))
-            entityLivingBase.removePotionEffect(ModCurses.skybound);
+    public void performEffect(EntityLivingBase livingBase, int amplifier) {
+        livingBase.motionY = upwardMotion;
+        livingBase.onGround = false;
+        if(isLookingUp(livingBase))
+            livingBase.removePotionEffect(ModCurses.skybound);
     }
 
     @Override
