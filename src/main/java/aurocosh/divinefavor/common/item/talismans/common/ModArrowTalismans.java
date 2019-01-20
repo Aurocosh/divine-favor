@@ -18,6 +18,7 @@ public class ModArrowTalismans {
     public static ItemArrowTalisman hand_swap;
     public static ItemArrowTalisman nether_swap;
     public static ItemArrowTalisman roots;
+    public static ItemArrowTalisman skybound;
     public static ItemArrowTalisman zero_g_arrow;
 
     public static void preInit() {
@@ -27,6 +28,7 @@ public class ModArrowTalismans {
         hand_swap = ModRegistries.items.register(new ArrowTalismanHandSwap());
         nether_swap = ModRegistries.items.register(new ArrowTalismanNetherSwap());
         roots = ModRegistries.items.register(new ArrowTalismanCurse("roots", 10, Color.green.getRGB(), ModPotions.roots, UtilTick.secondsToTicks(15)));
+        skybound = ModRegistries.items.register(new ArrowTalismanCurse("skybound", 10, Color.red.getRGB(), ModPotions.skybound, UtilTick.secondsToTicks(8)));
         zero_g_arrow = ModRegistries.items.register(new ArrowTalismanZeroGArrow());
 
         ModMappers.talismans.register(ModRegistries.items.getValues(ItemArrowTalisman.class));
