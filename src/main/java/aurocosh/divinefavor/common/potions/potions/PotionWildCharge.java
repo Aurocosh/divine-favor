@@ -1,7 +1,7 @@
 package aurocosh.divinefavor.common.potions.potions;
 
 import aurocosh.divinefavor.common.potions.base.effect.ModEffect;
-import aurocosh.divinefavor.common.potions.base.potion.ModPotionTrigger;
+import aurocosh.divinefavor.common.potions.base.potion.ModPotion;
 import aurocosh.divinefavor.common.potions.common.ModPotions;
 import aurocosh.divinefavor.common.util.UtilTick;
 import net.minecraft.entity.EntityLivingBase;
@@ -9,7 +9,7 @@ import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraftforge.fml.common.Mod;
 
 @Mod.EventBusSubscriber
-public class PotionWildCharge extends ModPotionTrigger {
+public class PotionWildCharge extends ModPotion {
     private final int SPEED_DURATION = UtilTick.minutesToTicks(1f);
     private final int SPEED_LEVEL = 4;
     private final float SLOWNESS_FORCE = 4;
@@ -20,8 +20,9 @@ public class PotionWildCharge extends ModPotionTrigger {
     }
 
     @Override
-    public void trigger(EntityLivingBase player) {
-        player.addPotionEffect(new ModEffect(ModPotions.wild_sprint, SPEED_DURATION, SPEED_LEVEL).setIsCurse());
+    protected void onPotionRemoved(EntityLivingBase livingBase) {
+        super.onPotionRemoved(livingBase);
+        livingBase.addPotionEffect(new ModEffect(ModPotions.wild_sprint, SPEED_DURATION, SPEED_LEVEL).setIsCurse());
     }
 
     @Override

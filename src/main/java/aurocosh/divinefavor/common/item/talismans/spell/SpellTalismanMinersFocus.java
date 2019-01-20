@@ -1,9 +1,9 @@
 package aurocosh.divinefavor.common.item.talismans.spell;
 
 import aurocosh.divinefavor.common.item.talismans.base.spell.ItemSpellTalisman;
-import aurocosh.divinefavor.common.potions.base.effect.ModEffectTrigger;
-import aurocosh.divinefavor.common.potions.common.ModPotions;
 import aurocosh.divinefavor.common.item.talismans.base.spell.TalismanContext;
+import aurocosh.divinefavor.common.potions.base.effect.ModEffect;
+import aurocosh.divinefavor.common.potions.common.ModPotions;
 import net.minecraft.init.MobEffects;
 import net.minecraft.potion.PotionEffect;
 
@@ -18,7 +18,7 @@ public class SpellTalismanMinersFocus extends ItemSpellTalisman {
 
     @Override
     protected void performActionServer(TalismanContext context) {
-        context.player.addPotionEffect(new ModEffectTrigger(ModPotions.miners_focus,HASTE_DURATION));
+        context.player.addPotionEffect(new ModEffect(ModPotions.miners_focus,HASTE_DURATION));
         context.player.addPotionEffect(new PotionEffect(MobEffects.HASTE,HASTE_DURATION,HASTE_LEVEL));
     }
 }
