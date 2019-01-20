@@ -1,5 +1,6 @@
 package aurocosh.divinefavor.common.entity.projectile;
 
+import aurocosh.divinefavor.common.item.talismans.base.arrow.ArrowType;
 import aurocosh.divinefavor.common.item.talismans.base.arrow.ItemArrowTalisman;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -17,6 +18,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class EntitySpellArrow extends EntityArrow {
     private static final DataParameter<Integer> COLOR = EntityDataManager.createKey(EntitySpellArrow.class, DataSerializers.VARINT);
+    private static final DataParameter<Integer> TYPE = EntityDataManager.createKey(EntitySpellArrow.class, DataSerializers.VARINT);
 
     private ItemArrowTalisman talisman;
     private EntityLivingBase shooter;
@@ -44,11 +46,13 @@ public class EntitySpellArrow extends EntityArrow {
         this.talisman = talisman;
         this.shooter = shooter;
         dataManager.set(COLOR, talisman.getColor());
+        dataManager.set(TYPE, talisman.getArrowType().getValue());
     }
 
     protected void entityInit() {
         super.entityInit();
         dataManager.register(COLOR, -1);
+        dataManager.register(TYPE, ArrowType.WOODEN_ARROW.getValue());
     }
 
     /**
@@ -80,6 +84,10 @@ public class EntitySpellArrow extends EntityArrow {
             for (int j = 0; j < particleCount; ++j)
                 world.spawnParticle(EnumParticleTypes.SPELL_MOB, posX + (rand.nextDouble() - 0.5D) * (double) width, posY + rand.nextDouble() * (double) height, posZ + (rand.nextDouble() - 0.5D) * (double) width, d0, d1, d2);
         }
+    }
+
+    public ArrowType getArrowType() {
+        return ArrowType.get(dataManager.get(TYPE));
     }
 
     public int getColor() {

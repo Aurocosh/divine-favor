@@ -2,7 +2,6 @@ package aurocosh.divinefavor.common.item.talismans.base.arrow;
 
 import aurocosh.divinefavor.common.core.DivineFavorCreativeTab;
 import aurocosh.divinefavor.common.entity.projectile.EntitySpellArrow;
-import aurocosh.divinefavor.common.entity.projectile.EntitySpellArrowCurse;
 import aurocosh.divinefavor.common.item.talismans.base.ItemTalisman;
 import aurocosh.divinefavor.common.network.message.client.spell_uses.MessageSyncSpellUses;
 import aurocosh.divinefavor.common.player_data.talisman_uses.ITalismanUsesHandler;
@@ -32,6 +31,10 @@ public class ItemArrowTalisman extends ItemTalisman {
         setCreativeTab(DivineFavorCreativeTab.INSTANCE);
     }
 
+    public ArrowSpell getSpell() {
+        return spell;
+    }
+
     public int getColor() {
         return color;
     }
@@ -40,8 +43,8 @@ public class ItemArrowTalisman extends ItemTalisman {
         return breakOnHit;
     }
 
-    public ArrowSpell getSpell() {
-        return spell;
+    public ArrowType getArrowType() {
+        return arrowType;
     }
 
     public boolean claimCost(@Nonnull World world, EntityLivingBase shooter) {
@@ -71,9 +74,7 @@ public class ItemArrowTalisman extends ItemTalisman {
     }
 
     private EntitySpellArrow getArrowByType(@Nonnull World worldIn, EntityLivingBase shooter){
-        if(arrowType == ArrowType.SPELL_ARROW)
-            return new EntitySpellArrow(worldIn, shooter);
-        else
-            return new EntitySpellArrowCurse(worldIn, shooter);
+        // TODO
+        return new EntitySpellArrow(worldIn, shooter);
     }
 }
