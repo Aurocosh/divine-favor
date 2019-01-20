@@ -68,6 +68,8 @@ public final class ModSpellTalismans {
     public static ItemSpellTalisman warp;
     public static ItemSpellTalisman warp_gem;
     public static ItemSpellTalisman warp_pebble;
+    public static ItemSpellTalisman invite_gem;
+    public static ItemSpellTalisman invite_pebble;
     public static ItemSpellTalisman wild_sprint;
     public static ItemSpellTalisman wind_step;
     public static ItemSpellTalisman winter_breath;
@@ -104,6 +106,8 @@ public final class ModSpellTalismans {
         hellisphere = ModRegistries.items.register(new SpellTalismanHellisphere());
         ignition = ModRegistries.items.register(new SpellTalismanIgnition("ignition", 30, false));
         infernal_touch = ModRegistries.items.register(new SpellTalismanInfernalTouch());
+        invite_gem = ModRegistries.items.register(new SpellTalismanInviteMarker("invite_gem", 1, ModItems.invite_gem));
+        invite_pebble = ModRegistries.items.register(new SpellTalismanInviteMarker("invite_pebble", 5, ModItems.invite_pebble));
         miners_focus = ModRegistries.items.register(new SpellTalismanMinersFocus());
         mist_blade = ModRegistries.items.register(new SpellTalismanModPotionToggle("mist_blade", 3, ModPotions.mist_blade));
         molten_skin = ModRegistries.items.register(new SpellTalismanMoltenSkin());
