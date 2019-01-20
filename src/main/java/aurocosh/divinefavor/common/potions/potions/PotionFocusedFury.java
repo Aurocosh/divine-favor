@@ -76,7 +76,7 @@ public class PotionFocusedFury extends ModPotion {
         if (furyHandler.hasFury())
             return;
         furyHandler.setFury((IMob) mob);
-        MessageSyncFury.sync(player, furyHandler.getMobTypeId());
+        new MessageSyncFury(furyHandler.getMobTypeId()).sendTo(player);
     }
 
     @Override
@@ -103,7 +103,7 @@ public class PotionFocusedFury extends ModPotion {
         IFocusedFuryHandler furyHandler = player.getCapability(CAPABILITY_FOCUSED_FURY, null);
         assert furyHandler != null;
         furyHandler.setMobTypeId(-1);
-        MessageSyncFury.sync(player, furyHandler.getMobTypeId());
+        new MessageSyncFury(furyHandler.getMobTypeId()).sendTo(player);
     }
 
     @Override

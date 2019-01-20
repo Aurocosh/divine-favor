@@ -23,7 +23,7 @@ public class EventHandler {
 
         IGrudgeHandler grudgeHandler = event.player.getCapability(CAPABILITY_GRUDGE, null);
         assert grudgeHandler != null;
-        MessageSyncGrudge.sync(event.player, grudgeHandler.getMobTypeId());
+        new MessageSyncGrudge(grudgeHandler.getMobTypeId()).sendTo(event.player);
     }
 
     @SubscribeEvent(priority = EventPriority.LOWEST)
@@ -43,6 +43,6 @@ public class EventHandler {
         }
         else
             grudgeHandler.setMobTypeId(-1);
-        MessageSyncGrudge.sync(player, grudgeHandler.getMobTypeId());
+        new MessageSyncGrudge(grudgeHandler.getMobTypeId()).sendTo(player);
     }
 }

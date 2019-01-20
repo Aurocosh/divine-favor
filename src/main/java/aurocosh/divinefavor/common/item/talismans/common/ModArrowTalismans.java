@@ -20,6 +20,7 @@ public class ModArrowTalismans {
     public static ItemArrowTalisman nether_swap;
     public static ItemArrowTalisman roots;
     public static ItemArrowTalisman skybound;
+    public static ItemArrowTalisman wind_leash;
     public static ItemArrowTalisman zero_g_arrow;
 
     public static void preInit() {
@@ -32,6 +33,7 @@ public class ModArrowTalismans {
         nether_swap = ModRegistries.items.register(new ArrowTalismanNetherSwap());
         roots = ModRegistries.items.register(new ArrowTalismanCurse("roots", 10, Color.green.getRGB(), ModCurses.roots, UtilTick.secondsToTicks(15)));
         skybound = ModRegistries.items.register(new ArrowTalismanCurse("skybound", 10, Color.red.getRGB(), ModCurses.skybound, UtilTick.secondsToTicks(8)));
+        wind_leash = ModRegistries.items.register(new ArrowTalismanCurse("wind_leash", 10, Color.red.getRGB(), ModCurses.wind_leash, UtilTick.secondsToTicks(12)));
         zero_g_arrow = ModRegistries.items.register(new ArrowTalismanZeroGArrow());
 
         ModMappers.talismans.register(ModRegistries.items.getValues(ItemArrowTalisman.class));
