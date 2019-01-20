@@ -5,12 +5,12 @@ import aurocosh.divinefavor.common.potions.base.potion.ModPotionTrigger;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.projectile.EntityArrow;
 
-public class ArrowSpellCurseTigger extends ArrowSpell {
+public class ArrowTalismanCurseCurseTigger extends ItemArrowTalisman {
     private final ModPotionTrigger potion;
     private final int duration;
 
-    public ArrowSpellCurseTigger(ModPotionTrigger potion, int duration) {
-        super(true);
+    public ArrowTalismanCurseCurseTigger(String name, int startingSpellUses, int color, ModPotionTrigger potion, int duration) {
+        super(name, startingSpellUses, color, 0, false, true, ArrowType.CURSED_ARROW);
         this.potion = potion;
         this.duration = duration;
     }
