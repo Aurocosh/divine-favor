@@ -14,6 +14,7 @@ import java.awt.*;
 public class ModArrowTalismans {
     public static ItemArrowTalisman anti_gravity_arrow;
     public static ItemArrowTalisman blink_arrow;
+    public static ItemArrowTalisman disarm;
     public static ItemArrowTalisman fiery_mark;
     public static ItemArrowTalisman hand_swap;
     public static ItemArrowTalisman nether_swap;
@@ -24,6 +25,7 @@ public class ModArrowTalismans {
     public static void preInit() {
         anti_gravity_arrow = ModRegistries.items.register(new ArrowTalismanAntiGravityArrow());
         blink_arrow = ModRegistries.items.register(new ArrowTalismanBlinkArrow());
+        disarm = ModRegistries.items.register(new ArrowTalismanDisarm());
         fiery_mark = ModRegistries.items.register(new ArrowTalismanCurseCurseTigger("fiery_mark", 10, Color.red.getRGB(), ModCurses.fiery_mark, UtilTick.secondsToTicks(10)));
         hand_swap = ModRegistries.items.register(new ArrowTalismanHandSwap());
         nether_swap = ModRegistries.items.register(new ArrowTalismanNetherSwap());
