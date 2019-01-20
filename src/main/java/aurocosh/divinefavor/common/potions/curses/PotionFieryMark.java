@@ -1,4 +1,4 @@
-package aurocosh.divinefavor.common.potions.potions;
+package aurocosh.divinefavor.common.potions.curses;
 
 import aurocosh.divinefavor.common.potions.base.potion.ModPotionTrigger;
 import aurocosh.divinefavor.common.potions.common.ModCurses;
@@ -34,9 +34,9 @@ public class PotionFieryMark extends ModPotionTrigger {
     }
 
     @Override
-    public void performEffect(EntityLivingBase entityLivingBaseIn, int amplifier) {
-        if(entityLivingBaseIn.isInWater())
-            entityLivingBaseIn.removePotionEffect(ModCurses.fiery_mark);
+    public void performEffect(EntityLivingBase livingBase, int amplifier) {
+        if(livingBase.isInWater())
+            livingBase.removePotionEffect(ModCurses.fiery_mark);
     }
 
     @Override

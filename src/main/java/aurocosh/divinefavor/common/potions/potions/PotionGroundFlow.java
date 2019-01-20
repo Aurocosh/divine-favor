@@ -16,11 +16,11 @@ public class PotionGroundFlow extends ModPotionToggle {
     }
 
     @Override
-    public void performEffect(EntityLivingBase entityLivingBase, int amplifier) {
-        assert !entityLivingBase.world.isRemote;
+    public void performEffect(EntityLivingBase livingBase, int amplifier) {
+        assert !livingBase.world.isRemote;
 
-        BlockPos pos = entityLivingBase.getPosition();
-        EntityPlayer player = (EntityPlayer) entityLivingBase;
+        BlockPos pos = livingBase.getPosition();
+        EntityPlayer player = (EntityPlayer) livingBase;
         if(!player.capabilities.allowFlying && pos.getY() <= yLimit)
             player.capabilities.allowFlying = true;
         else if(player.capabilities.allowFlying && pos.getY() > yLimit) {

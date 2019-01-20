@@ -32,19 +32,19 @@ public class PotionMoltenSkin extends ModPotionToggle {
     }
 
     @Override
-    public void performEffect(EntityLivingBase entityLivingBase, int amplifier) {
-        if (!(entityLivingBase instanceof EntityPlayer))
+    public void performEffect(EntityLivingBase livingBase, int amplifier) {
+        if (!(livingBase instanceof EntityPlayer))
             return;
 
-        EntityPlayer player = (EntityPlayer) entityLivingBase;
+        EntityPlayer player = (EntityPlayer) livingBase;
         IMoltenSkinHandler skinHandler = player.getCapability(CAPABILITY_MOLTEN_SKIN, null);
         assert skinHandler != null;
 
-        if (entityLivingBase.isInLava()) {
+        if (livingBase.isInLava()) {
             skinHandler.resetTime();
             return;
         }
-        else if(entityLivingBase.isInWater())
+        else if(livingBase.isInWater())
             skinHandler.setMaxTime();
 
         if (!skinHandler.tick())

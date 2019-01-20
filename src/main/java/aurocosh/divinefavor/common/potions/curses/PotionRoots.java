@@ -1,4 +1,4 @@
-package aurocosh.divinefavor.common.potions.potions;
+package aurocosh.divinefavor.common.potions.curses;
 
 import aurocosh.divinefavor.common.potions.base.potion.ModPotion;
 import net.minecraft.entity.SharedMonsterAttributes;

@@ -13,6 +13,7 @@ import java.awt.*;
 
 public class ModArrowTalismans {
     public static ItemArrowTalisman anti_gravity_arrow;
+    public static ItemArrowTalisman armor_corrosion;
     public static ItemArrowTalisman blink_arrow;
     public static ItemArrowTalisman disarm;
     public static ItemArrowTalisman fiery_mark;
@@ -24,6 +25,7 @@ public class ModArrowTalismans {
 
     public static void preInit() {
         anti_gravity_arrow = ModRegistries.items.register(new ArrowTalismanAntiGravityArrow());
+        armor_corrosion = ModRegistries.items.register(new ArrowTalismanCurse("armor_corrosion", 10, Color.red.getRGB(), ModCurses.armor_corrosion, UtilTick.minutesToTicks(3)));
         blink_arrow = ModRegistries.items.register(new ArrowTalismanBlinkArrow());
         disarm = ModRegistries.items.register(new ArrowTalismanDisarm());
         fiery_mark = ModRegistries.items.register(new ArrowTalismanCurseCurseTigger("fiery_mark", 10, Color.red.getRGB(), ModCurses.fiery_mark, UtilTick.secondsToTicks(10)));
