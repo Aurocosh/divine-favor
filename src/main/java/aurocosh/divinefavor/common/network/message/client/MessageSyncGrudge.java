@@ -26,8 +26,4 @@ public class MessageSyncGrudge extends NetworkWrappedClientMessage {
         assert grudgeHandler != null;
         grudgeHandler.setMobTypeId(mobTypeId);
     }
-
-    public static void sync(EntityPlayer player, int mobTypeId) {
-
-    }
 }

@@ -17,6 +17,6 @@ public class EventHandler {
 
         IFocusedFuryHandler furyHandler = event.player.getCapability(CAPABILITY_FOCUSED_FURY, null);
         assert furyHandler != null;
-        MessageSyncFury.sync(event.player, furyHandler.getMobTypeId());
+        new MessageSyncFury(furyHandler.getMobTypeId()).sendTo(event.player);
     }
 }

@@ -4,6 +4,7 @@ import aurocosh.divinefavor.DivineFavor;
 import aurocosh.divinefavor.common.block.common.ModBlocks;
 import aurocosh.divinefavor.common.custom_data.living.corrosion.ArmorCorrosionGillsDataHandler;
 import aurocosh.divinefavor.common.custom_data.living.potion_status.PotionStatusGillsDataHandler;
+import aurocosh.divinefavor.common.custom_data.living.wind_leash.WindLeashDataHandler;
 import aurocosh.divinefavor.common.entity.ModEntities;
 import aurocosh.divinefavor.common.entity.common.ModGrudgeMobs;
 import aurocosh.divinefavor.common.item.talismans.common.ModArrowTalismans;
@@ -79,6 +80,7 @@ public class CommonProxy {
         PotionStatusGillsDataHandler.register();
         SpellBowDataHandler.register();
         TalismanUsesDataHandler.register();
+        WindLeashDataHandler.register();
 
         NetworkRegistry.INSTANCE.registerGuiHandler(DivineFavor.instance, new GuiHandler());
 

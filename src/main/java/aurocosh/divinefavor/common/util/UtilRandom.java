@@ -16,6 +16,10 @@ public class UtilRandom {
         return random.nextInt(max - min + 1) + min;
     }
 
+    public static double nextDouble(double min, double max) {
+        return min + (max - min) * random.nextDouble();
+    }
+
     public static int nextIntExclusive(int min, int max) {
         return random.nextInt(max - min) + min;
     }

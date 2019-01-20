@@ -1,11 +1,9 @@
 package aurocosh.divinefavor.common.network.message.client;
 
 import aurocosh.divinefavor.DivineFavor;
-import aurocosh.divinefavor.common.network.base.NetworkWrappedClientMessage;
-import aurocosh.divinefavor.common.network.common.NetworkHandler;
 import aurocosh.divinefavor.common.custom_data.player.focused_fury.IFocusedFuryHandler;
+import aurocosh.divinefavor.common.network.base.NetworkWrappedClientMessage;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -27,10 +25,5 @@ public class MessageSyncFury extends NetworkWrappedClientMessage {
         IFocusedFuryHandler furyHandler = player.getCapability(CAPABILITY_FOCUSED_FURY, null);
         assert furyHandler != null;
         furyHandler.setMobTypeId(mobTypeId);
-    }
-
-    public static void sync(EntityPlayer player, int mobTypeId) {
-        MessageSyncFury message = new MessageSyncFury(mobTypeId);
-        NetworkHandler.INSTANCE.sendTo(message, (EntityPlayerMP) player);
     }
 }
