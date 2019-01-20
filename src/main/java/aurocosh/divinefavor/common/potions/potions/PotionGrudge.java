@@ -1,7 +1,7 @@
 package aurocosh.divinefavor.common.potions.potions;
 
 import aurocosh.divinefavor.DivineFavor;
-import aurocosh.divinefavor.common.player_data.grudge.IGrudgeHandler;
+import aurocosh.divinefavor.common.custom_data.player.grudge.IGrudgeHandler;
 import aurocosh.divinefavor.common.potions.base.potion.ModPotionToggle;
 import aurocosh.divinefavor.common.potions.common.ModPotions;
 import net.minecraft.client.Minecraft;
@@ -16,7 +16,7 @@ import net.minecraftforge.event.entity.living.LivingDamageEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
-import static aurocosh.divinefavor.common.player_data.grudge.GrudgeDataHandler.CAPABILITY_GRUDGE;
+import static aurocosh.divinefavor.common.custom_data.player.grudge.GrudgeDataHandler.CAPABILITY_GRUDGE;
 
 @Mod.EventBusSubscriber
 public class PotionGrudge extends ModPotionToggle {

@@ -1,16 +1,16 @@
 package aurocosh.divinefavor.common.potions.potions;
 
-import aurocosh.divinefavor.common.player_data.gills.IGillsHandler;
+import aurocosh.divinefavor.common.custom_data.player.gills.IGillsHandler;
 import aurocosh.divinefavor.common.potions.base.potion.ModPotionToggle;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.DamageSource;
 
-import static aurocosh.divinefavor.common.player_data.gills.GillsDataHandler.CAPABILITY_GILLS;
+import static aurocosh.divinefavor.common.custom_data.player.gills.GillsDataHandler.CAPABILITY_GILLS;
 
 public class PotionGills extends ModPotionToggle {
     public PotionGills() {
-        super("gills", true, 0x7FB8A4);
+        super("potion_gills", true, 0x7FB8A4);
     }
 
     @Override

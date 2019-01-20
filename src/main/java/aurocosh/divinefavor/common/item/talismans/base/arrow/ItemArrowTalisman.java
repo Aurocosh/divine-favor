@@ -4,7 +4,7 @@ import aurocosh.divinefavor.common.core.DivineFavorCreativeTab;
 import aurocosh.divinefavor.common.entity.projectile.EntitySpellArrow;
 import aurocosh.divinefavor.common.item.talismans.base.ItemTalisman;
 import aurocosh.divinefavor.common.network.message.client.spell_uses.MessageSyncSpellUses;
-import aurocosh.divinefavor.common.player_data.talisman_uses.ITalismanUsesHandler;
+import aurocosh.divinefavor.common.custom_data.player.talisman_uses.ITalismanUsesHandler;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntityArrow;
@@ -12,7 +12,7 @@ import net.minecraft.world.World;
 
 import javax.annotation.Nonnull;
 
-import static aurocosh.divinefavor.common.player_data.talisman_uses.TalismanUsesDataHandler.CAPABILITY_TALISMAN_USES;
+import static aurocosh.divinefavor.common.custom_data.player.talisman_uses.TalismanUsesDataHandler.CAPABILITY_TALISMAN_USES;
 
 public class ItemArrowTalisman extends ItemTalisman {
     private final int color;

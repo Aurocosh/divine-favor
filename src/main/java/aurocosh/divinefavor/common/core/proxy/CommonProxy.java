@@ -2,6 +2,7 @@ package aurocosh.divinefavor.common.core.proxy;
 
 import aurocosh.divinefavor.DivineFavor;
 import aurocosh.divinefavor.common.block.common.ModBlocks;
+import aurocosh.divinefavor.common.custom_data.living.potion_status.PotionStatusGillsDataHandler;
 import aurocosh.divinefavor.common.entity.ModEntities;
 import aurocosh.divinefavor.common.entity.common.ModGrudgeMobs;
 import aurocosh.divinefavor.common.item.talismans.common.ModArrowTalismans;
@@ -18,14 +19,15 @@ import aurocosh.divinefavor.common.network.base.NetworkWrappedClientMessage;
 import aurocosh.divinefavor.common.network.base.NetworkWrappedServerMessage;
 import aurocosh.divinefavor.common.network.common.MessageRegister;
 import aurocosh.divinefavor.common.network.common.NetworkHandler;
-import aurocosh.divinefavor.common.player_data.escape_plan.EscapePlanDataHandler;
-import aurocosh.divinefavor.common.player_data.gills.GillsDataHandler;
-import aurocosh.divinefavor.common.player_data.molten_skin.MoltenSkinDataHandler;
-import aurocosh.divinefavor.common.player_data.focused_fury.FocusedFuryDataHandler;
-import aurocosh.divinefavor.common.player_data.grudge.GrudgeDataHandler;
-import aurocosh.divinefavor.common.player_data.interaction_handler.InteractionDataHandler;
-import aurocosh.divinefavor.common.player_data.pearl_crumbs.PearlCrumbsDataHandler;
-import aurocosh.divinefavor.common.player_data.talisman_uses.TalismanUsesDataHandler;
+import aurocosh.divinefavor.common.custom_data.player.escape_plan.EscapePlanDataHandler;
+import aurocosh.divinefavor.common.custom_data.player.gills.GillsDataHandler;
+import aurocosh.divinefavor.common.custom_data.player.molten_skin.MoltenSkinDataHandler;
+import aurocosh.divinefavor.common.custom_data.player.focused_fury.FocusedFuryDataHandler;
+import aurocosh.divinefavor.common.custom_data.player.grudge.GrudgeDataHandler;
+import aurocosh.divinefavor.common.custom_data.player.interaction_handler.InteractionDataHandler;
+import aurocosh.divinefavor.common.custom_data.player.pearl_crumbs.PearlCrumbsDataHandler;
+import aurocosh.divinefavor.common.custom_data.player.talisman_uses.TalismanUsesDataHandler;
+import aurocosh.divinefavor.common.potions.common.ModCurses;
 import aurocosh.divinefavor.common.potions.common.ModPotions;
 import aurocosh.divinefavor.common.receipes.ModRecipes;
 import aurocosh.divinefavor.common.spirit.ModSpirits;
@@ -45,6 +47,7 @@ public class CommonProxy {
         ModMultiBlocks.preInit();
 
         ModPotions.preInit();
+        ModCurses.preInit();
         ModArrowTalismans.preInit();
         ModItems.preInit();
         ModSpellTalismans.preInit();
@@ -71,8 +74,10 @@ public class CommonProxy {
         InteractionDataHandler.register();
         MoltenSkinDataHandler.register();
         PearlCrumbsDataHandler.register();
+        PotionStatusGillsDataHandler.register();
         SpellBowDataHandler.register();
         TalismanUsesDataHandler.register();
+
 
         NetworkRegistry.INSTANCE.registerGuiHandler(DivineFavor.instance, new GuiHandler());
 

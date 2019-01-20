@@ -2,7 +2,7 @@ package aurocosh.divinefavor.common.potions.base.potion;
 
 import aurocosh.divinefavor.DivineFavor;
 import aurocosh.divinefavor.common.item.talismans.base.spell.ItemSpellTalisman;
-import aurocosh.divinefavor.common.player_data.talisman_uses.ITalismanUsesHandler;
+import aurocosh.divinefavor.common.custom_data.player.talisman_uses.ITalismanUsesHandler;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.EntityPlayer;
@@ -10,7 +10,7 @@ import net.minecraft.potion.PotionEffect;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import static aurocosh.divinefavor.common.player_data.talisman_uses.TalismanUsesDataHandler.CAPABILITY_TALISMAN_USES;
+import static aurocosh.divinefavor.common.custom_data.player.talisman_uses.TalismanUsesDataHandler.CAPABILITY_TALISMAN_USES;
 
 public abstract class ModPotionToggleLimited extends ModPotionToggle {
     protected ItemSpellTalisman talisman;

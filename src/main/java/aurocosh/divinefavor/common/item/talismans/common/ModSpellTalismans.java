@@ -92,7 +92,7 @@ public final class ModSpellTalismans {
         fell_tree = ModRegistries.items.register(new SpellTalismanFellTree());
         fins = ModRegistries.items.register(new SpellTalismanModPotion("fins", ConfigTalismans.fins.uses, ModPotions.fins, ConfigTalismans.fins.duration));
         focused_fury = ModRegistries.items.register(new SpellTalismanModPotionTrigger("focused_fury", 2, ModPotions.focused_fury, UtilTick.minutesToTicks(1)));
-        gills = ModRegistries.items.register(new SpellTalismanModPotionToggle("gills", 5, ModPotions.gills));
+        gills = ModRegistries.items.register(new SpellTalismanModPotionToggle("potion_gills", 5, ModPotions.gills));
         green_cycle = ModRegistries.items.register(new SpellTalismanGreenCycle());
         ground_flow = ModRegistries.items.register(new SpellTalismanModPotionToggle("ground_flow", 10, ModPotions.ground_flow));
         grudge = ModRegistries.items.register(new SpellTalismanGrudge());

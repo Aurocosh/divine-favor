@@ -1,7 +1,7 @@
 package aurocosh.divinefavor.common.core.handlers;
 
 import aurocosh.divinefavor.common.lib.math.Vector3i;
-import aurocosh.divinefavor.common.player_data.interaction_handler.IInteractionHandler;
+import aurocosh.divinefavor.common.custom_data.player.interaction_handler.IInteractionHandler;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -10,7 +10,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
-import static aurocosh.divinefavor.common.player_data.interaction_handler.InteractionDataHandler.CAPABILITY_INTERACTION;
+import static aurocosh.divinefavor.common.custom_data.player.interaction_handler.InteractionDataHandler.CAPABILITY_INTERACTION;
 
 @Mod.EventBusSubscriber
 public class BlockClickTracker {

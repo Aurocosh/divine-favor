@@ -4,7 +4,7 @@ import aurocosh.divinefavor.common.core.DivineFavorCreativeTabTalismans;
 import aurocosh.divinefavor.common.item.talismans.base.ItemTalisman;
 import aurocosh.divinefavor.common.lib.math.Vector3;
 import aurocosh.divinefavor.common.network.message.client.spell_uses.MessageSyncSpellUses;
-import aurocosh.divinefavor.common.player_data.talisman_uses.ITalismanUsesHandler;
+import aurocosh.divinefavor.common.custom_data.player.talisman_uses.ITalismanUsesHandler;
 import aurocosh.divinefavor.common.util.UtilWorld;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -16,7 +16,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
 
-import static aurocosh.divinefavor.common.player_data.talisman_uses.TalismanUsesDataHandler.CAPABILITY_TALISMAN_USES;
+import static aurocosh.divinefavor.common.custom_data.player.talisman_uses.TalismanUsesDataHandler.CAPABILITY_TALISMAN_USES;
 
 public class ItemSpellTalisman extends ItemTalisman {
     protected final boolean castOnUse;
