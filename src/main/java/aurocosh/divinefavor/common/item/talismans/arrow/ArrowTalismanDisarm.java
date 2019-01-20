@@ -1,7 +1,7 @@
 package aurocosh.divinefavor.common.item.talismans.arrow;
 
-import aurocosh.divinefavor.common.item.talismans.base.arrow.ArrowType;
-import aurocosh.divinefavor.common.item.talismans.base.arrow.ItemArrowTalisman;
+import aurocosh.divinefavor.common.item.talismans.arrow.base.ArrowType;
+import aurocosh.divinefavor.common.item.talismans.arrow.base.ItemArrowTalisman;
 import aurocosh.divinefavor.common.util.InventoryIndexes;
 import aurocosh.divinefavor.common.util.SlotData;
 import aurocosh.divinefavor.common.util.UtilPlayer;

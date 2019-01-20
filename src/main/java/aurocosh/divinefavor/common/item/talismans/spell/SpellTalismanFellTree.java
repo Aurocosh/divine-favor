@@ -1,8 +1,8 @@
 package aurocosh.divinefavor.common.item.talismans.spell;
 
 import aurocosh.divinefavor.common.events.TalismanEvent;
-import aurocosh.divinefavor.common.item.talismans.base.spell.ItemSpellTalisman;
-import aurocosh.divinefavor.common.item.talismans.base.spell.TalismanContext;
+import aurocosh.divinefavor.common.item.talismans.spell.base.ItemSpellTalisman;
+import aurocosh.divinefavor.common.item.talismans.spell.base.TalismanContext;
 import aurocosh.divinefavor.common.util.UtilBlock;
 import com.google.common.collect.Lists;
 import gnu.trove.set.hash.THashSet;

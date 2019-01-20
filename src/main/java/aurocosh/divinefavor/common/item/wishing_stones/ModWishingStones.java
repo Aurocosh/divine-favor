@@ -1,7 +1,6 @@
 package aurocosh.divinefavor.common.item.wishing_stones;
 
 import aurocosh.divinefavor.common.item.talismans.base.ItemTalisman;
-import aurocosh.divinefavor.common.item.talismans.base.spell.ItemSpellTalisman;
 import aurocosh.divinefavor.common.registry.ModRegistries;
 import aurocosh.divinefavor.common.spirit.base.ModSpirit;
 

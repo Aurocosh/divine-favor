@@ -3,7 +3,7 @@ package aurocosh.divinefavor.client.core.handler.grimoire;
 import aurocosh.divinefavor.DivineFavor;
 import aurocosh.divinefavor.common.item.grimoire.ItemGrimoire;
 import aurocosh.divinefavor.common.item.grimoire.capability.IGrimoireHandler;
-import aurocosh.divinefavor.common.item.talismans.base.spell.ItemSpellTalisman;
+import aurocosh.divinefavor.common.item.talismans.spell.base.ItemSpellTalisman;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.renderer.GlStateManager;

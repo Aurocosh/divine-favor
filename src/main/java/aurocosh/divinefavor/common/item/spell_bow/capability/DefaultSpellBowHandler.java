@@ -1,6 +1,6 @@
 package aurocosh.divinefavor.common.item.spell_bow.capability;
 
-import aurocosh.divinefavor.common.item.talismans.base.arrow.ItemArrowTalisman;
+import aurocosh.divinefavor.common.item.talismans.arrow.base.ItemArrowTalisman;
 import aurocosh.divinefavor.common.util.UtilMath;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.items.ItemStackHandler;

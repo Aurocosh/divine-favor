@@ -1,11 +1,11 @@
 package aurocosh.divinefavor.common.item.talismans.spell;
 
-import aurocosh.divinefavor.common.item.talismans.base.spell.ItemSpellTalisman;
+import aurocosh.divinefavor.common.item.talismans.spell.base.ItemSpellTalisman;
 import aurocosh.divinefavor.common.network.message.client.MessageSyncGrudge;
 import aurocosh.divinefavor.common.custom_data.player.grudge.IGrudgeHandler;
 import aurocosh.divinefavor.common.potions.base.effect.ModEffectToggle;
 import aurocosh.divinefavor.common.potions.common.ModPotions;
-import aurocosh.divinefavor.common.item.talismans.base.spell.TalismanContext;
+import aurocosh.divinefavor.common.item.talismans.spell.base.TalismanContext;
 
 import static aurocosh.divinefavor.common.custom_data.player.grudge.GrudgeDataHandler.CAPABILITY_GRUDGE;
 

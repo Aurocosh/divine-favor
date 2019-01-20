@@ -1,4 +1,4 @@
-package aurocosh.divinefavor.common.item.talismans.base.arrow;
+package aurocosh.divinefavor.common.item.talismans.arrow.base;
 
 import aurocosh.divinefavor.common.core.DivineFavorCreativeTab;
 import aurocosh.divinefavor.common.entity.projectile.EntitySpellArrow;

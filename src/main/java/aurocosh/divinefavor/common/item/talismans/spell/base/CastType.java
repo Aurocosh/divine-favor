@@ -1,4 +1,4 @@
-package aurocosh.divinefavor.common.item.talismans.base.spell;
+package aurocosh.divinefavor.common.item.talismans.spell.base;
 
 public enum CastType{
     UNSPECIFIED,

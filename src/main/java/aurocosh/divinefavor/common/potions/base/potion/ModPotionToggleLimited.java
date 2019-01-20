@@ -1,7 +1,7 @@
 package aurocosh.divinefavor.common.potions.base.potion;
 
 import aurocosh.divinefavor.DivineFavor;
-import aurocosh.divinefavor.common.item.talismans.base.spell.ItemSpellTalisman;
+import aurocosh.divinefavor.common.item.talismans.spell.base.ItemSpellTalisman;
 import aurocosh.divinefavor.common.custom_data.player.talisman_uses.ITalismanUsesHandler;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.resources.I18n;

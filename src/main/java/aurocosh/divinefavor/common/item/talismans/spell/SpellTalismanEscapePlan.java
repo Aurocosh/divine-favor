@@ -1,10 +1,10 @@
 package aurocosh.divinefavor.common.item.talismans.spell;
 
-import aurocosh.divinefavor.common.item.talismans.base.spell.ItemSpellTalisman;
+import aurocosh.divinefavor.common.item.talismans.spell.base.ItemSpellTalisman;
 import aurocosh.divinefavor.common.lib.GlobalBlockPos;
 import aurocosh.divinefavor.common.custom_data.player.escape_plan.IEscapePlanHandler;
 import aurocosh.divinefavor.common.potions.common.ModPotions;
-import aurocosh.divinefavor.common.item.talismans.base.spell.TalismanContext;
+import aurocosh.divinefavor.common.item.talismans.spell.base.TalismanContext;
 import aurocosh.divinefavor.common.util.UtilTick;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.potion.PotionEffect;
