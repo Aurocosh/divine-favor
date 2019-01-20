@@ -5,12 +5,12 @@ import aurocosh.divinefavor.common.potions.base.potion.ModPotion;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.projectile.EntityArrow;
 
-public class ArrowSpellCurse extends ArrowSpell {
+public class ArrowTalismanCurse extends ItemArrowTalisman {
     private final ModPotion potion;
     private final int duration;
 
-    public ArrowSpellCurse(ModPotion potion, int duration) {
-        super(true);
+    public ArrowTalismanCurse(String name, int startingSpellUses, int color, ModPotion potion, int duration) {
+        super(name, startingSpellUses, color, 0, false, true, ArrowType.CURSED_ARROW);
         this.potion = potion;
         this.duration = duration;
     }

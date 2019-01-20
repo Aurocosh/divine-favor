@@ -17,29 +17,25 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class EntitySpellArrow extends EntityArrow {
+    private double gravityValue = 0.05000000074505806D;
+
     private static final DataParameter<Integer> COLOR = EntityDataManager.createKey(EntitySpellArrow.class, DataSerializers.VARINT);
     private static final DataParameter<Integer> TYPE = EntityDataManager.createKey(EntitySpellArrow.class, DataSerializers.VARINT);
+    private static final DataParameter<Boolean> HAS_ANTI_GRAVITY = EntityDataManager.createKey(EntitySpellArrow.class, DataSerializers.BOOLEAN);
 
     private ItemArrowTalisman talisman;
     private EntityLivingBase shooter;
 
     public EntitySpellArrow(World worldIn) {
         super(worldIn);
-        init();
     }
 
     public EntitySpellArrow(World worldIn, double x, double y, double z) {
         super(worldIn, x, y, z);
-        init();
     }
 
     public EntitySpellArrow(World worldIn, EntityLivingBase shooter) {
         super(worldIn, shooter);
-        init();
-    }
-
-    private void init() {
-        setDamage(0.0f);
     }
 
     public void setSpell(ItemArrowTalisman talisman, EntityLivingBase shooter) {
@@ -53,6 +49,7 @@ public class EntitySpellArrow extends EntityArrow {
         super.entityInit();
         dataManager.register(COLOR, -1);
         dataManager.register(TYPE, ArrowType.WOODEN_ARROW.getValue());
+        dataManager.register(HAS_ANTI_GRAVITY, true);
     }
 
     /**
@@ -60,6 +57,8 @@ public class EntitySpellArrow extends EntityArrow {
      */
     public void onUpdate() {
         super.onUpdate();
+        if (hasAntiGravity())
+            this.motionY += gravityValue;
         if (world.isRemote) {
             if (!inGround)
                 spawnPotionParticles(2);
@@ -106,8 +105,8 @@ public class EntitySpellArrow extends EntityArrow {
             return;
         Entity entity = raytraceResultIn.entityHit;
         EntityLivingBase living = entity instanceof EntityLivingBase ? (EntityLivingBase) entity : null;
-        talisman.getSpell().cast(living, shooter, this);
-        if(talisman.isBreakOnHit())
+        talisman.cast(living, shooter, this);
+        if (talisman.isBreakOnHit())
             setDead();
     }
 
@@ -134,5 +133,14 @@ public class EntitySpellArrow extends EntityArrow {
         }
         else
             super.handleStatusUpdate(id);
+    }
+
+
+    public boolean hasAntiGravity() {
+        return this.dataManager.get(HAS_ANTI_GRAVITY);
+    }
+
+    public void setHasAntiGravity(boolean hasAntiGravity) {
+        this.dataManager.set(HAS_ANTI_GRAVITY, hasAntiGravity);
     }
 }
