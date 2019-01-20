@@ -13,6 +13,8 @@ public final class ModItems {
     public static ModItem bone_key;
     public static ModItem contract_binder;
     public static ModItem grimoire;
+    public static ModItem invite_gem;
+    public static ModItem invite_pebble;
     public static ModItem mystic_architect_stick;
     public static ModItem pure_apple;
     public static ModItem ritual_pouch;
@@ -25,6 +27,8 @@ public final class ModItems {
         bone_key = ModRegistries.items.register(new ItemBoneKey());
         contract_binder = ModRegistries.items.register(new ItemContractBinder());
         grimoire = ModRegistries.items.register(new ItemGrimoire());
+        invite_gem = ModRegistries.items.register(new ItemInviteMarker("invite_gem", true));
+        invite_pebble = ModRegistries.items.register(new ItemInviteMarker("invite_pebble", false));
         mystic_architect_stick = ModRegistries.items.register(new ItemMysticArchitectStick());
         pure_apple = ModRegistries.items.register(new ItemPureApple());
         ritual_pouch = ModRegistries.items.register(new ItemRitualPouch());
