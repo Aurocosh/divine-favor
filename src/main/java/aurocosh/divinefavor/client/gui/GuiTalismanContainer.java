@@ -2,7 +2,7 @@ package aurocosh.divinefavor.client.gui;
 
 import aurocosh.divinefavor.client.gui.container.GuiCustomScreen;
 import aurocosh.divinefavor.common.constants.ConstResources;
-import aurocosh.divinefavor.common.item.talismans.base.spell.ContainerTalisman;
+import aurocosh.divinefavor.common.item.talismans.spell.base.ContainerTalisman;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;

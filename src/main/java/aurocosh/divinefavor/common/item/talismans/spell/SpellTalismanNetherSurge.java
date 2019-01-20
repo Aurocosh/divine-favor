@@ -1,9 +1,9 @@
 package aurocosh.divinefavor.common.item.talismans.spell;
 
-import aurocosh.divinefavor.common.item.talismans.base.spell.ItemSpellTalisman;
+import aurocosh.divinefavor.common.item.talismans.spell.base.ItemSpellTalisman;
 import aurocosh.divinefavor.common.lib.DistributedRandomList;
-import aurocosh.divinefavor.common.item.talismans.base.spell.CastType;
-import aurocosh.divinefavor.common.item.talismans.base.spell.TalismanContext;
+import aurocosh.divinefavor.common.item.talismans.spell.base.CastType;
+import aurocosh.divinefavor.common.item.talismans.spell.base.TalismanContext;
 import aurocosh.divinefavor.common.util.UtilBlock;
 import aurocosh.divinefavor.common.util.UtilCoordinates;
 import aurocosh.divinefavor.common.util.UtilRandom;

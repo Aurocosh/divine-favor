@@ -1,6 +1,6 @@
 package aurocosh.divinefavor.common.item.grimoire.capability;
 
-import aurocosh.divinefavor.common.item.talismans.base.spell.ItemSpellTalisman;
+import aurocosh.divinefavor.common.item.talismans.spell.base.ItemSpellTalisman;
 import aurocosh.divinefavor.common.util.UtilMath;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.items.ItemStackHandler;

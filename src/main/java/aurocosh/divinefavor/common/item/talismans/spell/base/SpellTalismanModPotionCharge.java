@@ -1,4 +1,4 @@
-package aurocosh.divinefavor.common.item.talismans.base.spell;
+package aurocosh.divinefavor.common.item.talismans.spell.base;
 
 import aurocosh.divinefavor.common.potions.base.effect.ModEffectCharge;
 import aurocosh.divinefavor.common.potions.base.potion.ModPotionCharge;

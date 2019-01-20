@@ -1,6 +1,6 @@
 package aurocosh.divinefavor.common.item.talismans.spell;
-import aurocosh.divinefavor.common.item.talismans.base.spell.ItemSpellTalisman;
-import aurocosh.divinefavor.common.item.talismans.base.spell.TalismanContext;
+import aurocosh.divinefavor.common.item.talismans.spell.base.ItemSpellTalisman;
+import aurocosh.divinefavor.common.item.talismans.spell.base.TalismanContext;
 import net.minecraft.util.text.TextComponentString;
 
 public class SpellTalismanClock extends ItemSpellTalisman {

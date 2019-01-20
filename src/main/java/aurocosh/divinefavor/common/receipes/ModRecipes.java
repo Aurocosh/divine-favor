@@ -3,7 +3,7 @@ package aurocosh.divinefavor.common.receipes;
 import aurocosh.divinefavor.common.item.calling_stones.ItemCallingStone;
 import aurocosh.divinefavor.common.item.calling_stones.ModCallingStones;
 import aurocosh.divinefavor.common.item.contract.ItemContract;
-import aurocosh.divinefavor.common.item.talismans.common.ModSpellTalismans;
+import aurocosh.divinefavor.common.item.talismans.spell.common.ModSpellTalismans;
 import aurocosh.divinefavor.common.lib.ItemStackIdComparator;
 import aurocosh.divinefavor.common.registry.ModRegistries;
 import aurocosh.divinefavor.common.spirit.base.ModSpirit;

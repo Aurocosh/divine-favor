@@ -1,7 +1,7 @@
 package aurocosh.divinefavor.common.core;
 
 import aurocosh.divinefavor.common.constants.ConstMisc;
-import aurocosh.divinefavor.common.item.talismans.common.ModSpellTalismans;
+import aurocosh.divinefavor.common.item.talismans.spell.common.ModSpellTalismans;
 import aurocosh.divinefavor.common.registry.ModRegistries;
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;

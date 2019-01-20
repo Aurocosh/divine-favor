@@ -1,9 +1,12 @@
-package aurocosh.divinefavor.common.item.talismans.common;
+package aurocosh.divinefavor.common.item.talismans.spell.common;
 
 import aurocosh.divinefavor.common.config.common.ConfigTalismans;
 import aurocosh.divinefavor.common.item.common.ModItems;
-import aurocosh.divinefavor.common.item.talismans.base.spell.*;
 import aurocosh.divinefavor.common.item.talismans.spell.*;
+import aurocosh.divinefavor.common.item.talismans.spell.base.ItemSpellTalisman;
+import aurocosh.divinefavor.common.item.talismans.spell.base.SpellTalismanModPotion;
+import aurocosh.divinefavor.common.item.talismans.spell.base.SpellTalismanModPotionCharge;
+import aurocosh.divinefavor.common.item.talismans.spell.base.SpellTalismanModPotionToggle;
 import aurocosh.divinefavor.common.potions.common.ModPotions;
 import aurocosh.divinefavor.common.registry.ModRegistries;
 import aurocosh.divinefavor.common.registry.mappers.ModMappers;

@@ -9,7 +9,7 @@ import aurocosh.divinefavor.common.item.spell_bow.capability.ISpellBowHandler;
 import aurocosh.divinefavor.common.item.spell_bow.capability.SpellBowProvider;
 import aurocosh.divinefavor.common.item.spell_bow.capability.SpellBowStorage;
 import aurocosh.divinefavor.common.item.talismans.base.ItemTalisman;
-import aurocosh.divinefavor.common.item.talismans.base.arrow.ItemArrowTalisman;
+import aurocosh.divinefavor.common.item.talismans.arrow.base.ItemArrowTalisman;
 import aurocosh.divinefavor.common.util.UtilBow;
 import aurocosh.divinefavor.common.util.UtilNbt;
 import aurocosh.divinefavor.common.util.UtilPlayer;
