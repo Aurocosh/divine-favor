@@ -1,6 +1,6 @@
 package aurocosh.divinefavor.common.potions.curses;
 
-import aurocosh.divinefavor.common.custom_data.living.corrosion.IArmorCorrosionStatusHandler;
+import aurocosh.divinefavor.common.custom_data.player.corrosion.IArmorCorrosionStatusHandler;
 import aurocosh.divinefavor.common.potions.base.potion.ModPotion;
 import aurocosh.divinefavor.common.potions.common.ModCurses;
 import aurocosh.divinefavor.common.util.UtilRandom;
@@ -12,7 +12,7 @@ import net.minecraftforge.fml.common.Mod;
 import java.util.ArrayList;
 import java.util.List;
 
-import static aurocosh.divinefavor.common.custom_data.living.corrosion.ArmorCorrosionGillsDataHandler.CAPABILITY_ARMOR_CORROSION;
+import static aurocosh.divinefavor.common.custom_data.player.corrosion.ArmorCorrosionGillsDataHandler.CAPABILITY_ARMOR_CORROSION;
 
 @Mod.EventBusSubscriber
 public class PotionArmorCorrosion extends ModPotion {

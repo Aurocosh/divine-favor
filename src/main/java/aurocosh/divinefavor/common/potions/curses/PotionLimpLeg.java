@@ -1,6 +1,7 @@
 package aurocosh.divinefavor.common.potions.curses;
 
-import aurocosh.divinefavor.common.custom_data.living.limp_leg.ILimpLegHandler;
+import aurocosh.divinefavor.common.custom_data.living.LivingData;
+import aurocosh.divinefavor.common.custom_data.living.data.limp_leg.LimpLegData;
 import aurocosh.divinefavor.common.potions.base.potion.ModPotion;
 import aurocosh.divinefavor.common.potions.common.ModCurses;
 import net.minecraft.entity.EntityLivingBase;
@@ -8,8 +9,6 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-
-import static aurocosh.divinefavor.common.custom_data.living.limp_leg.LimpLegDataHandler.CAPABILITY_LIMP_LEG;
 
 @Mod.EventBusSubscriber
 public class PotionLimpLeg extends ModPotion {
@@ -20,9 +19,8 @@ public class PotionLimpLeg extends ModPotion {
     @Override
     protected void onPotionAdded(EntityLivingBase livingBase) {
         super.onPotionAdded(livingBase);
-        ILimpLegHandler handler = livingBase.getCapability(CAPABILITY_LIMP_LEG, null);
-        assert handler != null;
-        handler.resetCureTimer();
+        LimpLegData limpLegData = LivingData.get(livingBase).getLimpLegData();
+        limpLegData.resetCureTimer();
     }
 
     @Override
@@ -30,9 +28,8 @@ public class PotionLimpLeg extends ModPotion {
         if(livingBase.world.isRemote)
             return;
         if(livingBase.isSneaking()) {
-            ILimpLegHandler handler = livingBase.getCapability(CAPABILITY_LIMP_LEG, null);
-            assert handler != null;
-            if(handler.cureTick())
+            LimpLegData limpLegData = LivingData.get(livingBase).getLimpLegData();
+            if(limpLegData.cureTick())
                 livingBase.removePotionEffect(ModCurses.limp_leg);
         }
     }

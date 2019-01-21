@@ -2,7 +2,8 @@ package aurocosh.divinefavor.common.potions.base.potion;
 
 import aurocosh.divinefavor.common.constants.ConstMisc;
 import aurocosh.divinefavor.common.core.ResourceNamer;
-import aurocosh.divinefavor.common.custom_data.living.potion_status.IPotionStatusHandler;
+import aurocosh.divinefavor.common.custom_data.living.LivingData;
+import aurocosh.divinefavor.common.custom_data.living.data.curse.CurseData;
 import aurocosh.divinefavor.common.util.UtilTextureRender;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
@@ -19,8 +20,6 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import javax.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.List;
-
-import static aurocosh.divinefavor.common.custom_data.living.potion_status.PotionStatusDataHandler.CAPABILITY_POTION_STATUS;
 
 public abstract class ModPotion extends Potion {
     protected ResourceLocation icon;
@@ -108,17 +107,15 @@ public abstract class ModPotion extends Potion {
 
     protected void onPotionAdded(EntityLivingBase livingBase){
         if(isCurse){
-            IPotionStatusHandler handler = livingBase.getCapability(CAPABILITY_POTION_STATUS, null);
-            assert handler != null;
-            handler.addCurse();
+            CurseData curse = LivingData.get(livingBase).getCurseData();
+            curse.addCurse();
         }
     }
 
     protected void onPotionRemoved(EntityLivingBase livingBase){
         if(isCurse){
-            IPotionStatusHandler handler = livingBase.getCapability(CAPABILITY_POTION_STATUS, null);
-            assert handler != null;
-            handler.removeCurse();
+            CurseData curse = LivingData.get(livingBase).getCurseData();
+            curse.removeCurse();
         }
     }
 }

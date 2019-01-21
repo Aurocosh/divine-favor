@@ -1,6 +1,7 @@
 package aurocosh.divinefavor.common.potions.curses;
 
-import aurocosh.divinefavor.common.custom_data.living.petrification.IPetrificationHandler;
+import aurocosh.divinefavor.common.custom_data.living.LivingData;
+import aurocosh.divinefavor.common.custom_data.living.data.petrification.PetrificationData;
 import aurocosh.divinefavor.common.damage_source.ModDamageSources;
 import aurocosh.divinefavor.common.network.message.sever.petrification.MessagePetrificationCure;
 import aurocosh.divinefavor.common.network.message.sever.petrification.MessagePetrificationDamage;
@@ -10,8 +11,6 @@ import aurocosh.divinefavor.common.potions.common.ModCurses;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraftforge.fml.common.Mod;
-
-import static aurocosh.divinefavor.common.custom_data.living.petrification.PetrificationDataHandler.CAPABILITY_PETRIFICATION;
 
 @Mod.EventBusSubscriber
 public class PotionPetrification extends ModPotion {
@@ -28,9 +27,8 @@ public class PotionPetrification extends ModPotion {
             new MessagePetrificationReset().sendTo((EntityPlayer) livingBase);
         }
         else {
-            IPetrificationHandler handler = livingBase.getCapability(CAPABILITY_PETRIFICATION, null);
-            assert handler != null;
-            handler.resetCureTimer();
+            PetrificationData petrification = LivingData.get(livingBase).getPetrificationData();
+            petrification.resetCureTimer();
         }
     }
 
@@ -45,28 +43,26 @@ public class PotionPetrification extends ModPotion {
     private void performForMob(EntityLivingBase notPlayer) {
         if (notPlayer.world.isRemote)
             return;
-        IPetrificationHandler handler = notPlayer.getCapability(CAPABILITY_PETRIFICATION, null);
-        assert handler != null;
+        PetrificationData petrification = LivingData.get(notPlayer).getPetrificationData();
         if (notPlayer.motionX == 0 && notPlayer.motionZ == 0) {
-            if (handler.cureTick())
+            if (petrification.cureTick())
                 notPlayer.removePotionEffect(ModCurses.petrification);
         }
-        else if (handler.damageTick())
+        else if (petrification.damageTick())
             notPlayer.attackEntityFrom(ModDamageSources.petrificationDamage, DAMAGE);
     }
 
     private void performForPlayer(EntityPlayer player) {
         if (!player.world.isRemote)
             return;
-        IPetrificationHandler handler = player.getCapability(CAPABILITY_PETRIFICATION, null);
-        assert handler != null;
+        PetrificationData petrification = LivingData.get(player).getPetrificationData();
         if (player.motionX == 0 && player.motionZ == 0) {
-            if (handler.cureTick()) {
+            if (petrification.cureTick()) {
                 player.removePotionEffect(ModCurses.petrification);
                 new MessagePetrificationCure().send();
             }
         }
-        else if (handler.damageTick())
+        else if (petrification.damageTick())
             new MessagePetrificationDamage().send();
     }
 
