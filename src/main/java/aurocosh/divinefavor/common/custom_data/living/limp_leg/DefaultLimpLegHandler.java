@@ -14,22 +14,22 @@ public class DefaultLimpLegHandler implements ILimpLegHandler {
     }
 
     @Override
-    public void reset() {
+    public void resetCureTimer() {
         counter.reset();
     }
 
     @Override
-    public boolean sneakingTick() {
+    public boolean cureTick() {
         return counter.count();
     }
 
     @Override
-    public int getCurrentTicks() {
+    public int getCureTicks() {
         return counter.getCount();
     }
 
     @Override
-    public void setCurrentTicks(int ticks) {
+    public void setCureTicks(int ticks) {
         counter.setCount(ticks);
     }
 }

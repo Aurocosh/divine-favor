@@ -19,6 +19,7 @@ public class ModArrowTalismans {
     public static ItemArrowTalisman hand_swap;
     public static ItemArrowTalisman limp_leg;
     public static ItemArrowTalisman nether_swap;
+    public static ItemArrowTalisman petrification;
     public static ItemArrowTalisman roots;
     public static ItemArrowTalisman skyfall;
     public static ItemArrowTalisman wind_leash;
@@ -33,6 +34,7 @@ public class ModArrowTalismans {
         hand_swap = ModRegistries.items.register(new ArrowTalismanHandSwap());
         limp_leg = ModRegistries.items.register(new ArrowTalismanCurse("limp_leg", 10, Color.red.getRGB(), ModCurses.limp_leg, UtilTick.secondsToTicks(60)));
         nether_swap = ModRegistries.items.register(new ArrowTalismanNetherSwap());
+        petrification = ModRegistries.items.register(new ArrowTalismanCurse("petrification", 10, Color.red.getRGB(), ModCurses.petrification, UtilTick.secondsToTicks(40)));
         roots = ModRegistries.items.register(new ArrowTalismanCurse("roots", 10, Color.green.getRGB(), ModCurses.roots, UtilTick.secondsToTicks(15)));
         skyfall = ModRegistries.items.register(new ArrowTalismanCurse("skyfall", 10, Color.red.getRGB(), ModCurses.skyfall, UtilTick.secondsToTicks(8)));
         wind_leash = ModRegistries.items.register(new ArrowTalismanCurse("wind_leash", 10, Color.red.getRGB(), ModCurses.wind_leash, UtilTick.secondsToTicks(12)));

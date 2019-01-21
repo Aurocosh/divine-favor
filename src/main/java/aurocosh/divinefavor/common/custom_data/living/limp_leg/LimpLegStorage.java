@@ -12,13 +12,13 @@ public class LimpLegStorage implements Capability.IStorage<ILimpLegHandler> {
     @Override
     public NBTBase writeNBT(Capability<ILimpLegHandler> capability, ILimpLegHandler instance, EnumFacing side) {
         final NBTTagCompound tag = new NBTTagCompound();
-        tag.setInteger(TAG_SNEAK_TICKS, instance.getCurrentTicks());
+        tag.setInteger(TAG_SNEAK_TICKS, instance.getCureTicks());
         return tag;
     }
 
     @Override
     public void readNBT(Capability<ILimpLegHandler> capability, ILimpLegHandler instance, EnumFacing side, NBTBase nbt) {
         final NBTTagCompound tag = (NBTTagCompound) nbt;
-        instance.setCurrentTicks(tag.getInteger(TAG_SNEAK_TICKS));
+        instance.setCureTicks(tag.getInteger(TAG_SNEAK_TICKS));
     }
 }
