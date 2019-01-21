@@ -16,6 +16,7 @@ public class ModArrowTalismans {
     public static ItemArrowTalisman blink_arrow;
     public static ItemArrowTalisman disarm;
     public static ItemArrowTalisman fiery_mark;
+    public static ItemArrowTalisman fill_lungs;
     public static ItemArrowTalisman hand_swap;
     public static ItemArrowTalisman hollow_leg;
     public static ItemArrowTalisman limp_leg;
@@ -32,6 +33,7 @@ public class ModArrowTalismans {
         blink_arrow = ModRegistries.items.register(new ArrowTalismanBlinkArrow());
         disarm = ModRegistries.items.register(new ArrowTalismanDisarm());
         fiery_mark = ModRegistries.items.register(new ArrowTalismanCurse("fiery_mark", 10, Color.red.getRGB(), ModCurses.fiery_mark, UtilTick.secondsToTicks(10)));
+        fill_lungs = ModRegistries.items.register(new ArrowTalismanCurse("fill_lungs", 10, Color.red.getRGB(), ModCurses.fill_lungs, UtilTick.minutesToTicks(2)));
         hand_swap = ModRegistries.items.register(new ArrowTalismanHandSwap());
         hollow_leg = ModRegistries.items.register(new ArrowTalismanCurse("hollow_leg", 10, Color.red.getRGB(), ModCurses.hollow_leg, UtilTick.minutesToTicks(2)));
         limp_leg = ModRegistries.items.register(new ArrowTalismanCurse("limp_leg", 10, Color.red.getRGB(), ModCurses.limp_leg, UtilTick.secondsToTicks(60)));
