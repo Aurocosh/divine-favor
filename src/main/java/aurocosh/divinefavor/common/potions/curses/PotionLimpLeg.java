@@ -4,7 +4,6 @@ import aurocosh.divinefavor.common.custom_data.living.limp_leg.ILimpLegHandler;
 import aurocosh.divinefavor.common.potions.base.potion.ModPotion;
 import aurocosh.divinefavor.common.potions.common.ModCurses;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.init.MobEffects;
 import net.minecraft.util.math.MathHelper;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -23,7 +22,7 @@ public class PotionLimpLeg extends ModPotion {
         super.onPotionAdded(livingBase);
         ILimpLegHandler handler = livingBase.getCapability(CAPABILITY_LIMP_LEG, null);
         assert handler != null;
-        handler.reset();
+        handler.resetCureTimer();
     }
 
     @Override
@@ -33,7 +32,7 @@ public class PotionLimpLeg extends ModPotion {
         if(livingBase.isSneaking()) {
             ILimpLegHandler handler = livingBase.getCapability(CAPABILITY_LIMP_LEG, null);
             assert handler != null;
-            if(handler.sneakingTick())
+            if(handler.cureTick())
                 livingBase.removePotionEffect(ModCurses.limp_leg);
         }
     }

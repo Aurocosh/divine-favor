@@ -1,9 +1,9 @@
 package aurocosh.divinefavor.common.custom_data.living.limp_leg;
 
 public interface ILimpLegHandler {
-    void reset();
-    boolean sneakingTick();
+    void resetCureTimer();
+    boolean cureTick();
 
-    int getCurrentTicks();
-    void setCurrentTicks(int ticks);
+    int getCureTicks();
+    void setCureTicks(int ticks);
 }
