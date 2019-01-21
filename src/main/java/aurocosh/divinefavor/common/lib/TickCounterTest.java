@@ -2,16 +2,16 @@ package aurocosh.divinefavor.common.lib;
 
 import aurocosh.divinefavor.common.util.UtilMath;
 
-public class TickCounter {
+public class TickCounterTest {
     private int tickRate;
     private int currentTicks;
 
-    public TickCounter() {
+    public TickCounterTest() {
         tickRate = 1;
         currentTicks = 0;
     }
 
-    public TickCounter(int tickRate) {
+    public TickCounterTest(int tickRate) {
         this.tickRate = tickRate;
         currentTicks = 0;
     }
@@ -33,9 +33,5 @@ public class TickCounter {
             currentTicks = 0;
             return true;
         }
-    }
-
-    public boolean isFinished() {
-        return currentTicks >= tickRate;
     }
 }
