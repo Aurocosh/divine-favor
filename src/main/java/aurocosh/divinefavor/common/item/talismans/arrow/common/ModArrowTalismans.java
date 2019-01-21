@@ -14,6 +14,7 @@ public class ModArrowTalismans {
     public static ItemArrowTalisman anti_gravity_arrow;
     public static ItemArrowTalisman armor_corrosion;
     public static ItemArrowTalisman blink_arrow;
+    public static ItemArrowTalisman crawling_mist;
     public static ItemArrowTalisman disarm;
     public static ItemArrowTalisman fiery_mark;
     public static ItemArrowTalisman fill_lungs;
@@ -31,6 +32,7 @@ public class ModArrowTalismans {
         anti_gravity_arrow = ModRegistries.items.register(new ArrowTalismanAntiGravityArrow());
         armor_corrosion = ModRegistries.items.register(new ArrowTalismanCurse("armor_corrosion", 10, Color.red.getRGB(), ModCurses.armor_corrosion, UtilTick.minutesToTicks(3)));
         blink_arrow = ModRegistries.items.register(new ArrowTalismanBlinkArrow());
+        crawling_mist = ModRegistries.items.register(new ArrowTalismanCurse("crawling_mist", 10, Color.red.getRGB(), ModCurses.crawling_mist, UtilTick.minutesToTicks(3)));
         disarm = ModRegistries.items.register(new ArrowTalismanDisarm());
         fiery_mark = ModRegistries.items.register(new ArrowTalismanCurse("fiery_mark", 10, Color.red.getRGB(), ModCurses.fiery_mark, UtilTick.secondsToTicks(10)));
         fill_lungs = ModRegistries.items.register(new ArrowTalismanCurse("fill_lungs", 10, Color.red.getRGB(), ModCurses.fill_lungs, UtilTick.minutesToTicks(2)));

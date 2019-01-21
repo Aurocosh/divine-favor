@@ -3,6 +3,7 @@ package aurocosh.divinefavor.common.core.proxy;
 import aurocosh.divinefavor.DivineFavor;
 import aurocosh.divinefavor.common.block.common.ModBlocks;
 import aurocosh.divinefavor.common.custom_data.living.corrosion.ArmorCorrosionGillsDataHandler;
+import aurocosh.divinefavor.common.custom_data.living.crawling_mist.CrawlingMistDataHandler;
 import aurocosh.divinefavor.common.custom_data.living.limp_leg.LimpLegDataHandler;
 import aurocosh.divinefavor.common.custom_data.living.petrification.PetrificationDataHandler;
 import aurocosh.divinefavor.common.custom_data.living.potion_status.PotionStatusGillsDataHandler;
@@ -71,6 +72,7 @@ public class CommonProxy {
         NetworkWrappedServerMessage.setNetworkWrapper(NetworkHandler.INSTANCE);
 
         ArmorCorrosionGillsDataHandler.register();
+        CrawlingMistDataHandler.register();
         EscapePlanDataHandler.register();
         FocusedFuryDataHandler.register();
         GillsDataHandler.register();
