@@ -1,6 +1,6 @@
 package aurocosh.divinefavor.common.potions.curses;
 
-import aurocosh.divinefavor.common.custom_data.living.crawling_mist.ICrawlingMistHandler;
+import aurocosh.divinefavor.common.custom_data.player.crawling_mist.ICrawlingMistHandler;
 import aurocosh.divinefavor.common.lib.TickCounter;
 import aurocosh.divinefavor.common.lib.math.Vector3i;
 import aurocosh.divinefavor.common.potions.base.potion.ModPotion;
@@ -19,7 +19,7 @@ import net.minecraftforge.fml.common.gameevent.TickEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import static aurocosh.divinefavor.common.custom_data.living.crawling_mist.CrawlingMistDataHandler.CAPABILITY_CRAWLING_MIST;
+import static aurocosh.divinefavor.common.custom_data.player.crawling_mist.CrawlingMistDataHandler.CAPABILITY_CRAWLING_MIST;
 
 @Mod.EventBusSubscriber
 public class PotionCrawlingMist extends ModPotion {

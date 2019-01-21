@@ -1,14 +1,13 @@
 package aurocosh.divinefavor.common.network.message.client;
 
 import aurocosh.divinefavor.DivineFavor;
-import aurocosh.divinefavor.common.custom_data.living.wind_leash.IWindLeashHandler;
+import aurocosh.divinefavor.common.custom_data.living.LivingData;
+import aurocosh.divinefavor.common.custom_data.living.data.wind_leash.WindLeashData;
 import aurocosh.divinefavor.common.network.base.NetworkWrappedClientMessage;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.math.Vec3d;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-
-import static aurocosh.divinefavor.common.custom_data.living.wind_leash.WindLeashDataHandler.CAPABILITY_WIND_LEASH;
 
 public class MessageSyncWindLeash extends NetworkWrappedClientMessage {
     public double x;
@@ -26,8 +25,7 @@ public class MessageSyncWindLeash extends NetworkWrappedClientMessage {
     @SideOnly(Side.CLIENT)
     protected void handleSafe() {
         EntityPlayer player = DivineFavor.proxy.getClientPlayer();
-        IWindLeashHandler handler = player.getCapability(CAPABILITY_WIND_LEASH, null);
-        assert handler != null;
-        handler.setVector(new Vec3d(x, 0, z));
+        WindLeashData windLeash = LivingData.get(player).getWindLeashData();
+        windLeash.setVector(new Vec3d(x, 0, z));
     }
 }
