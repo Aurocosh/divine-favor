@@ -6,6 +6,7 @@ import aurocosh.divinefavor.common.registry.ModRegistries;
 
 public class ModCurses {
     public static ModPotion armor_corrosion;
+    public static ModPotion crawling_mist;
     public static ModPotion fiery_mark;
     public static ModPotion fill_lungs;
     public static ModPotion hollow_leg;
@@ -17,6 +18,7 @@ public class ModCurses {
 
     public static void preInit() {
         armor_corrosion = ModRegistries.curses.register(new PotionArmorCorrosion());
+        crawling_mist = ModRegistries.curses.register(new PotionCrawlingMist());
         fiery_mark = ModRegistries.curses.register(new PotionFieryMark());
         fill_lungs = ModRegistries.curses.register(new PotionFillLungs());
         hollow_leg = ModRegistries.curses.register(new PotionHollowLeg());
