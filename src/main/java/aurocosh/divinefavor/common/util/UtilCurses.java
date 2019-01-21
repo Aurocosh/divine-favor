@@ -5,7 +5,7 @@ import aurocosh.divinefavor.common.potions.base.effect.ModEffect;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 
-import static aurocosh.divinefavor.common.custom_data.living.potion_status.PotionStatusGillsDataHandler.CAPABILITY_POTION_STATUS;
+import static aurocosh.divinefavor.common.custom_data.living.potion_status.PotionStatusDataHandler.CAPABILITY_POTION_STATUS;
 
 public class UtilCurses {
     public static final int CURSE_RESISTANCE_PER_CURSE = 50;

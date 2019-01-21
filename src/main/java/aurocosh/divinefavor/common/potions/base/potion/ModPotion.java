@@ -20,7 +20,7 @@ import javax.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.List;
 
-import static aurocosh.divinefavor.common.custom_data.living.potion_status.PotionStatusGillsDataHandler.CAPABILITY_POTION_STATUS;
+import static aurocosh.divinefavor.common.custom_data.living.potion_status.PotionStatusDataHandler.CAPABILITY_POTION_STATUS;
 
 public abstract class ModPotion extends Potion {
     protected ResourceLocation icon;
