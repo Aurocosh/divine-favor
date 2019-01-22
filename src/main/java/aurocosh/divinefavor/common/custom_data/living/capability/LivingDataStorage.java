@@ -3,6 +3,7 @@ package aurocosh.divinefavor.common.custom_data.living.capability;
 import aurocosh.divinefavor.common.custom_data.living.data.curse.CurseDataSerializer;
 import aurocosh.divinefavor.common.custom_data.living.data.limp_leg.LimpLegDataSerializer;
 import aurocosh.divinefavor.common.custom_data.living.data.petrification.PetrificationDataSerializer;
+import aurocosh.divinefavor.common.custom_data.living.data.suffocating_fumes.SuffocatingFumesDataSerializer;
 import aurocosh.divinefavor.common.custom_data.living.data.wind_leash.WindLeashDataSerializer;
 import net.minecraft.nbt.NBTBase;
 import net.minecraft.nbt.NBTTagCompound;
@@ -14,6 +15,7 @@ public class LivingDataStorage implements Capability.IStorage<ILivingDataHandler
     private static final CurseDataSerializer curseSerializer = new CurseDataSerializer();
     private static final LimpLegDataSerializer limpLegDataSerializer = new LimpLegDataSerializer();
     private static final PetrificationDataSerializer petrificationSerializer = new PetrificationDataSerializer();
+    private static final SuffocatingFumesDataSerializer suffocatingFumesDataSerializer = new SuffocatingFumesDataSerializer();
     private static final WindLeashDataSerializer windLeashSerializer = new WindLeashDataSerializer();
 
     @Override
@@ -22,6 +24,7 @@ public class LivingDataStorage implements Capability.IStorage<ILivingDataHandler
         curseSerializer.serialize(tag, instance.getCurseData());
         limpLegDataSerializer.serialize(tag, instance.getLimpLegData());
         petrificationSerializer.serialize(tag, instance.getPetrificationData());
+        suffocatingFumesDataSerializer.serialize(tag, instance.getSuffocatingFumesData());
         windLeashSerializer.serialize(tag, instance.getWindLeashData());
         return tag;
     }
@@ -32,6 +35,7 @@ public class LivingDataStorage implements Capability.IStorage<ILivingDataHandler
         curseSerializer.deserialize(tag, instance.getCurseData());
         limpLegDataSerializer.deserialize(tag, instance.getLimpLegData());
         petrificationSerializer.deserialize(tag, instance.getPetrificationData());
+        suffocatingFumesDataSerializer.deserialize(tag, instance.getSuffocatingFumesData());
         windLeashSerializer.deserialize(tag, instance.getWindLeashData());
     }
 }

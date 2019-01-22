@@ -14,6 +14,7 @@ public class ModCurses {
     public static ModPotion petrification;
     public static ModPotion roots;
     public static ModPotion skyfall;
+    public static ModPotion suffocating_fumes;
     public static ModPotion wind_leash;
 
     public static void preInit() {
@@ -26,6 +27,7 @@ public class ModCurses {
         petrification = ModRegistries.curses.register(new PotionPetrification());
         roots = ModRegistries.curses.register(new PotionRoots());
         skyfall = ModRegistries.curses.register(new PotionSkyfall());
+        suffocating_fumes = ModRegistries.curses.register(new PotionSuffocatingFumes());
         wind_leash = ModRegistries.curses.register(new PotionWindLeash());
 
         for (ModPotion curse : ModRegistries.curses.getValues())

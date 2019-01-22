@@ -5,7 +5,6 @@ import aurocosh.divinefavor.common.item.talismans.arrow.base.ArrowTalismanCurse;
 import aurocosh.divinefavor.common.item.talismans.arrow.base.ItemArrowTalisman;
 import aurocosh.divinefavor.common.potions.common.ModCurses;
 import aurocosh.divinefavor.common.registry.ModRegistries;
-import aurocosh.divinefavor.common.registry.mappers.ModMappers;
 import aurocosh.divinefavor.common.util.UtilTick;
 
 import java.awt.*;
@@ -25,6 +24,7 @@ public class ModArrowTalismans {
     public static ItemArrowTalisman petrification;
     public static ItemArrowTalisman roots;
     public static ItemArrowTalisman skyfall;
+    public static ItemArrowTalisman suffocating_fumes;
     public static ItemArrowTalisman wind_leash;
     public static ItemArrowTalisman zero_g_arrow;
 
@@ -43,6 +43,7 @@ public class ModArrowTalismans {
         petrification = ModRegistries.items.register(new ArrowTalismanCurse("petrification", 10, Color.red.getRGB(), ModCurses.petrification, UtilTick.secondsToTicks(40)));
         roots = ModRegistries.items.register(new ArrowTalismanCurse("roots", 10, Color.green.getRGB(), ModCurses.roots, UtilTick.secondsToTicks(15)));
         skyfall = ModRegistries.items.register(new ArrowTalismanCurse("skyfall", 10, Color.red.getRGB(), ModCurses.skyfall, UtilTick.secondsToTicks(8)));
+        suffocating_fumes = ModRegistries.items.register(new ArrowTalismanCurse("suffocating_fumes", 10, Color.red.getRGB(), ModCurses.suffocating_fumes, UtilTick.minutesToTicks(2)));
         wind_leash = ModRegistries.items.register(new ArrowTalismanCurse("wind_leash", 10, Color.red.getRGB(), ModCurses.wind_leash, UtilTick.secondsToTicks(12)));
         zero_g_arrow = ModRegistries.items.register(new ArrowTalismanZeroGArrow());
     }
