@@ -137,8 +137,6 @@ public final class ModSpellTalismans {
         wind_step = ModRegistries.items.register(new SpellTalismanWindStep());
         winter_breath = ModRegistries.items.register(new SpellTalismanWinterBreath());
         wooden_punch = ModRegistries.items.register(new SpellTalismanModPotionToggle("wooden_punch", 30, ModPotions.wooden_punch));
-
-        ModMappers.talismans.register(ModRegistries.items.getValues(ItemSpellTalisman.class));
     }
 
     public static void init() {

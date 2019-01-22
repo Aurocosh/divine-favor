@@ -19,6 +19,10 @@ public class EntryMapper<T extends IForgeRegistryEntry & IIndexedEntry> {
         names = HashBiMap.create();
     }
 
+    public int size() {
+        return ids.size();
+    }
+
     public Map<Integer, T> getIdMap() {
         return Collections.unmodifiableMap(ids);
     }
