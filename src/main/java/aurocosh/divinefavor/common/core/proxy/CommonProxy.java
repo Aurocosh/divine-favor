@@ -61,8 +61,8 @@ public class CommonProxy {
 
         GrimoireDataHandler.register();
         LivingDataDataHandler.register();
-        SpellBowDataHandler.register();
         PlayerDataDataHandler.register();
+        SpellBowDataHandler.register();
 
         NetworkRegistry.INSTANCE.registerGuiHandler(DivineFavor.instance, new GuiHandler());
 

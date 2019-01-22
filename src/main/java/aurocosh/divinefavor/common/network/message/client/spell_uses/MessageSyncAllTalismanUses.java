@@ -10,9 +10,6 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import java.util.HashMap;
-import java.util.Map;
-
 public class MessageSyncAllTalismanUses extends NetworkWrappedClientMessage {
     private static String TAG_SPELL_USES = "SpellUses";
 
@@ -35,30 +32,29 @@ public class MessageSyncAllTalismanUses extends NetworkWrappedClientMessage {
 
     public static NBTTagCompound getNbtTagCompound(TalismanUsesData instance) {
         final NBTTagCompound tag = new NBTTagCompound();
-        Map<Integer, TalismanUses> dataMap = instance.getAllUses();
-        int[] serializedMap = new int[dataMap.size() * 3];
+        TalismanUses[] talismanUses = instance.getAllUses();
+        int[] serializedUses = new int[talismanUses.length * 3];
         int i = 0;
-        for (Map.Entry<Integer, TalismanUses> entry : dataMap.entrySet()) {
-            serializedMap[i++] = entry.getKey();
-
-            TalismanUses usesData = entry.getValue();
-            serializedMap[i++] = usesData.getMaxUses();
-            serializedMap[i++] = usesData.getUses();
+        for (int j = 0; j < talismanUses.length; j++) {
+            TalismanUses uses = talismanUses[j];
+            serializedUses[i++] = j;
+            serializedUses[i++] = uses.getMaxUses();
+            serializedUses[i++] = uses.getUses();
         }
-        tag.setIntArray(TAG_SPELL_USES, serializedMap);
+        tag.setIntArray(TAG_SPELL_USES, serializedUses);
         return tag;
     }
 
     public static void setDataFromNBT(TalismanUsesData instance, NBTTagCompound nbt) {
-        Map<Integer, TalismanUses> dataMap = new HashMap<>();
         int[] serializedMap = nbt.getIntArray(TAG_SPELL_USES);
+        TalismanUses[] talismanUses = new TalismanUses[serializedMap.length/3];
         int i = 0;
         while (i < serializedMap.length) {
             int talismanId = serializedMap[i++];
             int maxSpellUses = serializedMap[i++];
             int spellUses = serializedMap[i++];
-            dataMap.put(talismanId, new TalismanUses(maxSpellUses, spellUses));
+            talismanUses[talismanId] = new TalismanUses(maxSpellUses, spellUses);
         }
-        instance.setAllUses(dataMap);
+        instance.setAllUses(talismanUses);
     }
 }

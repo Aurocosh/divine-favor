@@ -45,7 +45,5 @@ public class ModArrowTalismans {
         skyfall = ModRegistries.items.register(new ArrowTalismanCurse("skyfall", 10, Color.red.getRGB(), ModCurses.skyfall, UtilTick.secondsToTicks(8)));
         wind_leash = ModRegistries.items.register(new ArrowTalismanCurse("wind_leash", 10, Color.red.getRGB(), ModCurses.wind_leash, UtilTick.secondsToTicks(12)));
         zero_g_arrow = ModRegistries.items.register(new ArrowTalismanZeroGArrow());
-
-        ModMappers.talismans.register(ModRegistries.items.getValues(ItemArrowTalisman.class));
     }
 }

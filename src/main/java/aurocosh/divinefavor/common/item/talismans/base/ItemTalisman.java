@@ -5,6 +5,7 @@ import aurocosh.divinefavor.common.custom_data.player.PlayerData;
 import aurocosh.divinefavor.common.custom_data.player.data.talisman_uses.TalismanUsesData;
 import aurocosh.divinefavor.common.item.base.ModItem;
 import aurocosh.divinefavor.common.lib.interfaces.IIndexedEntry;
+import aurocosh.divinefavor.common.registry.mappers.ModMappers;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumRarity;
@@ -16,8 +17,6 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 public abstract class ItemTalisman extends ModItem implements IIndexedEntry {
-    private static int nextId = 0;
-
     protected final int id;
     protected final String name;
     protected final int startingSpellUses;
@@ -26,9 +25,10 @@ public abstract class ItemTalisman extends ModItem implements IIndexedEntry {
     public ItemTalisman(String name, String texturePath, int startingSpellUses) {
         super(name, texturePath);
 
-        id = nextId++;
         this.name = name;
         this.startingSpellUses = startingSpellUses;
+
+        id = ModMappers.talismans.register(this);
 
         setMaxStackSize(1);
     }
