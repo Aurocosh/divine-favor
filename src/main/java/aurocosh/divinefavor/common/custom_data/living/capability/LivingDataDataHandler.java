@@ -14,7 +14,7 @@ public class LivingDataDataHandler {
     // The Capability field. Used for checks and references.
     // Initialized when forge registers the capability.
     @CapabilityInject(ILivingDataHandler.class)
-    public static final Capability<ILivingDataHandler> CAPABILITY_POTION_STATUS = null;
+    public static final Capability<ILivingDataHandler> CAPABILITY_LIVING_DATA = null;
 
     // Handles all of the required registration for the capability.
     public static void register() {
@@ -26,6 +26,6 @@ public class LivingDataDataHandler {
     @SubscribeEvent
     public void attachCapabilities(AttachCapabilitiesEvent<Entity> event) {
         if (event.getObject() instanceof EntityLivingBase)
-            event.addCapability(ResourceNamer.getFullName("capability_potion_status"), new LivingDataProvider());
+            event.addCapability(ResourceNamer.getFullName("capability_living_data"), new LivingDataProvider());
     }
 }

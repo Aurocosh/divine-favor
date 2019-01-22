@@ -1,7 +1,8 @@
 package aurocosh.divinefavor.common.potions.potions;
 
+import aurocosh.divinefavor.common.custom_data.player.PlayerData;
+import aurocosh.divinefavor.common.custom_data.player.data.molten_skin.MoltenSkinData;
 import aurocosh.divinefavor.common.damage_source.ModDamageSources;
-import aurocosh.divinefavor.common.custom_data.player.molten_skin.IMoltenSkinHandler;
 import aurocosh.divinefavor.common.potions.base.potion.ModPotionToggle;
 import aurocosh.divinefavor.common.potions.common.ModPotions;
 import aurocosh.divinefavor.common.util.UtilEntity;
@@ -16,8 +17,6 @@ import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-
-import static aurocosh.divinefavor.common.custom_data.player.molten_skin.MoltenSkinDataHandler.CAPABILITY_MOLTEN_SKIN;
 
 
 @Mod.EventBusSubscriber
@@ -37,21 +36,20 @@ public class PotionMoltenSkin extends ModPotionToggle {
             return;
 
         EntityPlayer player = (EntityPlayer) livingBase;
-        IMoltenSkinHandler skinHandler = player.getCapability(CAPABILITY_MOLTEN_SKIN, null);
-        assert skinHandler != null;
 
+        MoltenSkinData skinData = PlayerData.get(player).getMoltenSkinData();
         if (livingBase.isInLava()) {
-            skinHandler.resetTime();
+            skinData.resetTime();
             return;
         }
         else if(livingBase.isInWater())
-            skinHandler.setMaxTime();
+            skinData.setMaxTime();
 
-        if (!skinHandler.tick())
+        if (!skinData.tick())
             return;
 
         player.attackEntityFrom(ModDamageSources.frostDamage, 4);
-        skinHandler.delay();
+        skinData.delay();
     }
 
     @SideOnly(Side.CLIENT)

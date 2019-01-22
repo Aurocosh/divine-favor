@@ -1,6 +1,7 @@
 package aurocosh.divinefavor.common.potions.curses;
 
-import aurocosh.divinefavor.common.custom_data.player.corrosion.IArmorCorrosionStatusHandler;
+import aurocosh.divinefavor.common.custom_data.player.PlayerData;
+import aurocosh.divinefavor.common.custom_data.player.data.corrosion.ArmorCorrosionData;
 import aurocosh.divinefavor.common.potions.base.potion.ModPotion;
 import aurocosh.divinefavor.common.potions.common.ModCurses;
 import aurocosh.divinefavor.common.util.UtilRandom;
@@ -11,8 +12,6 @@ import net.minecraftforge.fml.common.Mod;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import static aurocosh.divinefavor.common.custom_data.player.corrosion.ArmorCorrosionGillsDataHandler.CAPABILITY_ARMOR_CORROSION;
 
 @Mod.EventBusSubscriber
 public class PotionArmorCorrosion extends ModPotion {
@@ -28,6 +27,10 @@ public class PotionArmorCorrosion extends ModPotion {
     @Override
     protected void onPotionAdded(EntityLivingBase livingBase) {
         super.onPotionAdded(livingBase);
+        if(!(livingBase instanceof EntityPlayer)) {
+            livingBase.removePotionEffect(ModCurses.armor_corrosion);
+            return;
+        }
 
         List<Integer> slots = new ArrayList<>();
         slots.add(0);
@@ -35,14 +38,14 @@ public class PotionArmorCorrosion extends ModPotion {
         slots.add(2);
         slots.add(3);
 
-        IArmorCorrosionStatusHandler handler = livingBase.getCapability(CAPABILITY_ARMOR_CORROSION, null);
-        assert handler != null;
-        handler.removeAllCorrosion();
+        EntityPlayer player = (EntityPlayer) livingBase;
+        ArmorCorrosionData corrosionData = PlayerData.get(player).getArmorCorrosionData();
+        corrosionData.removeAllCorrosion();
 
         int slotsToCorrode = UtilRandom.nextInt(MIN_SLOTS_TO_CORRODE, MAX_SLOTS_TO_CORRODE);
         for (int i = 0; i < slotsToCorrode; i++) {
             int index = UtilRandom.getRandomIndex(slots);
-            handler.addCorrosionToArmorSlot(slots.get(index));
+            corrosionData.addCorrosionToArmorSlot(slots.get(index));
             slots.remove(index);
         }
     }
@@ -50,37 +53,33 @@ public class PotionArmorCorrosion extends ModPotion {
     @Override
     protected void onPotionRemoved(EntityLivingBase livingBase) {
         super.onPotionRemoved(livingBase);
-
-        IArmorCorrosionStatusHandler handler = livingBase.getCapability(CAPABILITY_ARMOR_CORROSION, null);
-        assert handler != null;
-        handler.removeAllCorrosion();
+        if(!(livingBase instanceof EntityPlayer))
+            return;
+        EntityPlayer player = (EntityPlayer) livingBase;
+        ArmorCorrosionData corrosionData = PlayerData.get(player).getArmorCorrosionData();
+        corrosionData.removeAllCorrosion();
     }
 
     @Override
     public void performEffect(EntityLivingBase livingBase, int amplifier) {
         if(livingBase.world.isRemote)
             return;
-
-        if (!(livingBase instanceof EntityPlayer)) {
-            livingBase.removePotionEffect(ModCurses.armor_corrosion);
+        if (!(livingBase instanceof EntityPlayer))
             return;
-        }
 
         EntityPlayer player = (EntityPlayer) livingBase;
-        IArmorCorrosionStatusHandler handler = player.getCapability(CAPABILITY_ARMOR_CORROSION, null);
-        assert handler != null;
-
-        if (handler.nothingToCorrode()) {
+        ArmorCorrosionData corrosionData = PlayerData.get(player).getArmorCorrosionData();
+        if (corrosionData.nothingToCorrode()) {
             livingBase.removePotionEffect(ModCurses.armor_corrosion);
             return;
         }
 
-        if (handler.isCorrosionNeeded()) {
-            List<Integer> slots = new ArrayList<>(handler.getCorrodedArmorSlots());
+        if (corrosionData.isCorrosionNeeded()) {
+            List<Integer> slots = new ArrayList<>(corrosionData.getCorrodedArmorSlots());
             for (Integer slot : slots) {
                 ItemStack stack = player.inventory.armorItemInSlot(slot);
                 if (stack.isEmpty())
-                    handler.removeCorrosionFromArmorSlot(slot);
+                    corrosionData.removeCorrosionFromArmorSlot(slot);
                 else
                     stack.damageItem(DAMAGE_RATE, player);
             }

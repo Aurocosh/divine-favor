@@ -3,16 +3,7 @@ package aurocosh.divinefavor.common.core.proxy;
 import aurocosh.divinefavor.DivineFavor;
 import aurocosh.divinefavor.common.block.common.ModBlocks;
 import aurocosh.divinefavor.common.custom_data.living.capability.LivingDataDataHandler;
-import aurocosh.divinefavor.common.custom_data.player.corrosion.ArmorCorrosionGillsDataHandler;
-import aurocosh.divinefavor.common.custom_data.player.crawling_mist.CrawlingMistDataHandler;
-import aurocosh.divinefavor.common.custom_data.player.escape_plan.EscapePlanDataHandler;
-import aurocosh.divinefavor.common.custom_data.player.focused_fury.FocusedFuryDataHandler;
-import aurocosh.divinefavor.common.custom_data.player.gills.GillsDataHandler;
-import aurocosh.divinefavor.common.custom_data.player.grudge.GrudgeDataHandler;
-import aurocosh.divinefavor.common.custom_data.player.interaction_handler.InteractionDataHandler;
-import aurocosh.divinefavor.common.custom_data.player.molten_skin.MoltenSkinDataHandler;
-import aurocosh.divinefavor.common.custom_data.player.pearl_crumbs.PearlCrumbsDataHandler;
-import aurocosh.divinefavor.common.custom_data.player.talisman_uses.TalismanUsesDataHandler;
+import aurocosh.divinefavor.common.custom_data.player.capability.PlayerDataDataHandler;
 import aurocosh.divinefavor.common.entity.ModEntities;
 import aurocosh.divinefavor.common.entity.common.ModGrudgeMobs;
 import aurocosh.divinefavor.common.item.calling_stones.ModCallingStones;
@@ -68,23 +59,14 @@ public class CommonProxy {
         NetworkWrappedClientMessage.setNetworkWrapper(NetworkHandler.INSTANCE);
         NetworkWrappedServerMessage.setNetworkWrapper(NetworkHandler.INSTANCE);
 
-        ArmorCorrosionGillsDataHandler.register();
-        CrawlingMistDataHandler.register();
-        EscapePlanDataHandler.register();
-        FocusedFuryDataHandler.register();
-        GillsDataHandler.register();
         GrimoireDataHandler.register();
-        GrudgeDataHandler.register();
-        InteractionDataHandler.register();
-        MoltenSkinDataHandler.register();
-        PearlCrumbsDataHandler.register();
         LivingDataDataHandler.register();
         SpellBowDataHandler.register();
-        TalismanUsesDataHandler.register();
+        PlayerDataDataHandler.register();
 
         NetworkRegistry.INSTANCE.registerGuiHandler(DivineFavor.instance, new GuiHandler());
 
-//        MinecraftForge.EVENT_BUS.preInit(new PlayerDataHandler.EventHandler());
+//        MinecraftForge.EVENT_BUS.preInit(new PlayerDataHandler.LoginDataSyncer());
 
         File test = e.getModConfigurationDirectory();
 

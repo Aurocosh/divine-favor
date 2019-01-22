@@ -1,12 +1,11 @@
 package aurocosh.divinefavor.common.potions.potions;
 
-import aurocosh.divinefavor.common.custom_data.player.gills.IGillsHandler;
+import aurocosh.divinefavor.common.custom_data.player.PlayerData;
+import aurocosh.divinefavor.common.custom_data.player.data.gills.GillsData;
 import aurocosh.divinefavor.common.potions.base.potion.ModPotionToggle;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.DamageSource;
-
-import static aurocosh.divinefavor.common.custom_data.player.gills.GillsDataHandler.CAPABILITY_GILLS;
 
 public class PotionGills extends ModPotionToggle {
     public PotionGills() {
@@ -19,19 +18,17 @@ public class PotionGills extends ModPotionToggle {
             return;
 
         EntityPlayer player = (EntityPlayer) livingBase;
-        IGillsHandler gillsHandler= player.getCapability(CAPABILITY_GILLS, null);
-        assert gillsHandler != null;
-
+        GillsData gillsData = PlayerData.get(player).getGillsData();
         if (livingBase.isInWater()) {
-            gillsHandler.resetTime();
+            gillsData.resetTime();
             livingBase.setAir(300);
             return;
         }
-        if (!gillsHandler.tick())
+        if (!gillsData.tick())
             return;
 
         player.attackEntityFrom(DamageSource.DROWN, 4);
-        gillsHandler.delay();
+        gillsData.delay();
     }
 
     @Override
