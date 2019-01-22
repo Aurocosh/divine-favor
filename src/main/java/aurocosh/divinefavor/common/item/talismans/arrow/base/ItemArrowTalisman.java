@@ -1,18 +1,17 @@
 package aurocosh.divinefavor.common.item.talismans.arrow.base;
 
 import aurocosh.divinefavor.common.core.DivineFavorCreativeTab;
+import aurocosh.divinefavor.common.custom_data.player.PlayerData;
+import aurocosh.divinefavor.common.custom_data.player.data.talisman_uses.TalismanUsesData;
 import aurocosh.divinefavor.common.entity.projectile.EntitySpellArrow;
 import aurocosh.divinefavor.common.item.talismans.base.ItemTalisman;
 import aurocosh.divinefavor.common.network.message.client.spell_uses.MessageSyncSpellUses;
-import aurocosh.divinefavor.common.custom_data.player.talisman_uses.ITalismanUsesHandler;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntityArrow;
 import net.minecraft.world.World;
 
 import javax.annotation.Nonnull;
-
-import static aurocosh.divinefavor.common.custom_data.player.talisman_uses.TalismanUsesDataHandler.CAPABILITY_TALISMAN_USES;
 
 public class ItemArrowTalisman extends ItemTalisman {
     private final int color;
@@ -57,16 +56,13 @@ public class ItemArrowTalisman extends ItemTalisman {
             return false;
 
         EntityPlayer player = (EntityPlayer) shooter;
-        ITalismanUsesHandler usesHandler = player.getCapability(CAPABILITY_TALISMAN_USES, null);
-        assert usesHandler != null;
-
-        if (!usesHandler.consumeUse(id))
+        TalismanUsesData usesData = PlayerData.get(player).getTalismanUsesData();
+        if (!usesData.consumeUse(id))
             return false;
         if (world.isRemote)
             return true;
 
-        int usesLeft = usesHandler.getUses(id);
-        new MessageSyncSpellUses(id, usesLeft).sendTo(player);
+        new MessageSyncSpellUses(id, usesData).sendTo(player);
         return true;
     }
 // Talisman functions

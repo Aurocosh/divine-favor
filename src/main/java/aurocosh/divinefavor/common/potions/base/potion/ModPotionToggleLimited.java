@@ -1,16 +1,15 @@
 package aurocosh.divinefavor.common.potions.base.potion;
 
 import aurocosh.divinefavor.DivineFavor;
+import aurocosh.divinefavor.common.custom_data.player.PlayerData;
+import aurocosh.divinefavor.common.custom_data.player.data.talisman_uses.TalismanUsesData;
 import aurocosh.divinefavor.common.item.talismans.spell.base.ItemSpellTalisman;
-import aurocosh.divinefavor.common.custom_data.player.talisman_uses.ITalismanUsesHandler;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.potion.PotionEffect;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-
-import static aurocosh.divinefavor.common.custom_data.player.talisman_uses.TalismanUsesDataHandler.CAPABILITY_TALISMAN_USES;
 
 public abstract class ModPotionToggleLimited extends ModPotionToggle {
     protected ItemSpellTalisman talisman;
@@ -39,9 +38,8 @@ public abstract class ModPotionToggleLimited extends ModPotionToggle {
         mc.fontRenderer.drawStringWithShadow(potionName, (float) (x + 10 + 18), (float) (y + 6), 16777215);
 
         EntityPlayer player = DivineFavor.proxy.getClientPlayer();
-        ITalismanUsesHandler usesHandler = player.getCapability(CAPABILITY_TALISMAN_USES, null);
-        assert usesHandler != null;
-        String s = "Uses left: " + usesHandler.getUses(talisman.getId());
+        TalismanUsesData usesData = PlayerData.get(player).getTalismanUsesData();
+        String s = "Uses left: " + usesData.getUses(talisman.getId());
         mc.fontRenderer.drawStringWithShadow(s, (float) (x + 10 + 18), (float) (y + 6 + 10), 8355711);
     }
 }

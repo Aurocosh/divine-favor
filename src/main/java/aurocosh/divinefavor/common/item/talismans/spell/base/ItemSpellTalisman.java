@@ -1,10 +1,11 @@
 package aurocosh.divinefavor.common.item.talismans.spell.base;
 
 import aurocosh.divinefavor.common.core.DivineFavorCreativeTabTalismans;
+import aurocosh.divinefavor.common.custom_data.player.PlayerData;
+import aurocosh.divinefavor.common.custom_data.player.data.talisman_uses.TalismanUsesData;
 import aurocosh.divinefavor.common.item.talismans.base.ItemTalisman;
 import aurocosh.divinefavor.common.lib.math.Vector3;
 import aurocosh.divinefavor.common.network.message.client.spell_uses.MessageSyncSpellUses;
-import aurocosh.divinefavor.common.custom_data.player.talisman_uses.ITalismanUsesHandler;
 import aurocosh.divinefavor.common.util.UtilWorld;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -15,8 +16,6 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
-
-import static aurocosh.divinefavor.common.custom_data.player.talisman_uses.TalismanUsesDataHandler.CAPABILITY_TALISMAN_USES;
 
 public class ItemSpellTalisman extends ItemTalisman {
     protected final boolean castOnUse;
@@ -46,16 +45,13 @@ public class ItemSpellTalisman extends ItemTalisman {
         if(!isConsumeCharge(context))
             return true;
 
-        ITalismanUsesHandler usesHandler = context.player.getCapability(CAPABILITY_TALISMAN_USES, null);
-        assert usesHandler != null;
-
-        if (!usesHandler.consumeUse(id))
+        TalismanUsesData usesData = PlayerData.get(context.player).getTalismanUsesData();
+        if (!usesData.consumeUse(id))
             return false;
         if (context.world.isRemote)
             return true;
 
-        int usesLeft = usesHandler.getUses(id);
-        new MessageSyncSpellUses(id, usesLeft).sendTo(context.player);
+        new MessageSyncSpellUses(id, usesData).sendTo(context.player);
         return true;
     }
 // Talisman functions

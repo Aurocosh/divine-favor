@@ -1,7 +1,8 @@
 package aurocosh.divinefavor.common.potions.potions;
 
 import aurocosh.divinefavor.DivineFavor;
-import aurocosh.divinefavor.common.custom_data.player.focused_fury.IFocusedFuryHandler;
+import aurocosh.divinefavor.common.custom_data.player.PlayerData;
+import aurocosh.divinefavor.common.custom_data.player.data.focused_fury.FocusedFuryData;
 import aurocosh.divinefavor.common.network.message.client.MessageSyncFury;
 import aurocosh.divinefavor.common.potions.base.potion.ModPotion;
 import aurocosh.divinefavor.common.potions.common.ModPotions;
@@ -20,8 +21,6 @@ import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-
-import static aurocosh.divinefavor.common.custom_data.player.focused_fury.FocusedFuryDataHandler.CAPABILITY_FOCUSED_FURY;
 
 @Mod.EventBusSubscriber
 public class PotionFocusedFury extends ModPotion {
@@ -46,11 +45,10 @@ public class PotionFocusedFury extends ModPotion {
         if (!player.isPotionActive(ModPotions.focused_fury))
             return;
 
-        IFocusedFuryHandler furyHandler = player.getCapability(CAPABILITY_FOCUSED_FURY, null);
-        assert furyHandler != null;
-        if(!furyHandler.hasFury())
+        FocusedFuryData furyData = PlayerData.get(player).getFocusedFuryData();
+        if(!furyData.hasFury())
             return;
-        if (furyHandler.hasFury((IMob) entityMob))
+        if (furyData.hasFury((IMob) entityMob))
             event.setAmount(event.getAmount() + EXTRA_DAMAGE);
         else
             event.setCanceled(true);
@@ -71,12 +69,11 @@ public class PotionFocusedFury extends ModPotion {
         if (!(mob instanceof IMob))
             return;
 
-        IFocusedFuryHandler furyHandler = player.getCapability(CAPABILITY_FOCUSED_FURY, null);
-        assert furyHandler != null;
-        if (furyHandler.hasFury())
+        FocusedFuryData furyData = PlayerData.get(player).getFocusedFuryData();
+        if (furyData.hasFury())
             return;
-        furyHandler.setFury((IMob) mob);
-        new MessageSyncFury(furyHandler.getMobTypeId()).sendTo(player);
+        furyData.setFury((IMob) mob);
+        new MessageSyncFury(furyData.getMobTypeId()).sendTo(player);
     }
 
     @Override
@@ -85,11 +82,9 @@ public class PotionFocusedFury extends ModPotion {
         mc.fontRenderer.drawStringWithShadow(potionName, (float) (x + 10 + 18), (float) (y + 6), 16777215);
 
         EntityPlayer player = DivineFavor.proxy.getClientPlayer();
-        IFocusedFuryHandler furyHandler = player.getCapability(CAPABILITY_FOCUSED_FURY, null);
-        assert furyHandler != null;
-
+        FocusedFuryData furyData = PlayerData.get(player).getFocusedFuryData();
         String duration = Potion.getPotionDurationString(effect, 1.0F);
-        String mobName = I18n.format(furyHandler.getMobName());
+        String mobName = I18n.format(furyData.getMobName());
         mc.fontRenderer.drawStringWithShadow(duration + " " + mobName, (float) (x + 10 + 18), (float) (y + 6 + 10), 8355711);
     }
 
@@ -100,10 +95,9 @@ public class PotionFocusedFury extends ModPotion {
             return;
 
         EntityPlayer player = (EntityPlayer) livingBase;
-        IFocusedFuryHandler furyHandler = player.getCapability(CAPABILITY_FOCUSED_FURY, null);
-        assert furyHandler != null;
-        furyHandler.setMobTypeId(-1);
-        new MessageSyncFury(furyHandler.getMobTypeId()).sendTo(player);
+        FocusedFuryData furyData = PlayerData.get(player).getFocusedFuryData();
+        furyData.setMobTypeId(-1);
+        new MessageSyncFury(furyData.getMobTypeId()).sendTo(player);
     }
 
     @Override

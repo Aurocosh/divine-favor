@@ -1,9 +1,10 @@
 package aurocosh.divinefavor.common.item.talismans.base;
 
 import aurocosh.divinefavor.common.block.common.ModBlocks;
+import aurocosh.divinefavor.common.custom_data.player.PlayerData;
+import aurocosh.divinefavor.common.custom_data.player.data.talisman_uses.TalismanUsesData;
 import aurocosh.divinefavor.common.item.base.ModItem;
 import aurocosh.divinefavor.common.lib.interfaces.IIndexedEntry;
-import aurocosh.divinefavor.common.custom_data.player.talisman_uses.ITalismanUsesHandler;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumRarity;
@@ -13,8 +14,6 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-
-import static aurocosh.divinefavor.common.custom_data.player.talisman_uses.TalismanUsesDataHandler.CAPABILITY_TALISMAN_USES;
 
 public abstract class ItemTalisman extends ModItem implements IIndexedEntry {
     private static int nextId = 0;
@@ -43,9 +42,8 @@ public abstract class ItemTalisman extends ModItem implements IIndexedEntry {
     }
 
     public int getUseCount(EntityPlayer player) {
-        ITalismanUsesHandler usesHandler = player.getCapability(CAPABILITY_TALISMAN_USES, null);
-        assert usesHandler != null;
-        return usesHandler.getUses(id);
+        TalismanUsesData usesData = PlayerData.get(player).getTalismanUsesData();
+        return usesData.getUses(id);
     }
 // Talisman functions
 
@@ -60,15 +58,15 @@ public abstract class ItemTalisman extends ModItem implements IIndexedEntry {
         return EnumActionResult.SUCCESS;
     }
 
-    public boolean getSpellUses(EntityPlayer playerIn, World worldIn, BlockPos pos, ItemStack stack) {
-        if (!playerIn.isSneaking())
+    public boolean getSpellUses(EntityPlayer player, World world, BlockPos pos, ItemStack stack) {
+        if (!player.isSneaking())
             return false;
-        IBlockState state = worldIn.getBlockState(pos);
+        IBlockState state = world.getBlockState(pos);
         if (state.getBlock() != ModBlocks.blockDiviner)
             return false;
-        ITalismanUsesHandler usesHandler = playerIn.getCapability(CAPABILITY_TALISMAN_USES, null);
-        assert usesHandler != null;
-        usesHandler.addUses(id, 10);
+
+        TalismanUsesData usesData = PlayerData.get(player).getTalismanUsesData();
+        usesData.addUses(id, 10);
         return true;
     }
 

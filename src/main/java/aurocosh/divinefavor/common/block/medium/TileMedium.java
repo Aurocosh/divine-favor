@@ -1,6 +1,8 @@
 package aurocosh.divinefavor.common.block.medium;
 
 import aurocosh.divinefavor.common.block.base.TickableTileEntity;
+import aurocosh.divinefavor.common.custom_data.player.PlayerData;
+import aurocosh.divinefavor.common.custom_data.player.data.talisman_uses.TalismanUsesData;
 import aurocosh.divinefavor.common.item.calling_stones.ItemCallingStone;
 import aurocosh.divinefavor.common.item.common.ModItems;
 import aurocosh.divinefavor.common.item.contract.ItemContract;
@@ -13,8 +15,6 @@ import aurocosh.divinefavor.common.muliblock.ModMultiBlock;
 import aurocosh.divinefavor.common.muliblock.MultiBlockInstance;
 import aurocosh.divinefavor.common.muliblock.common.MultiBlockWatcher;
 import aurocosh.divinefavor.common.network.message.client.spell_uses.MessageSyncAllTalismanUses;
-import aurocosh.divinefavor.common.custom_data.player.talisman_uses.ITalismanUsesHandler;
-import aurocosh.divinefavor.common.custom_data.player.talisman_uses.TalismanUsesDataHandler;
 import aurocosh.divinefavor.common.receipes.ModRecipes;
 import aurocosh.divinefavor.common.spirit.base.ModSpirit;
 import aurocosh.divinefavor.common.util.UtilHandler;
@@ -213,11 +213,10 @@ public class TileMedium extends TickableTileEntity implements IMultiblockControl
             if (player == null)
                 continue;
 
-            ITalismanUsesHandler usesHandler = player.getCapability(TalismanUsesDataHandler.CAPABILITY_TALISMAN_USES, null);
-            assert usesHandler != null;
+            TalismanUsesData usesData = PlayerData.get(player).getTalismanUsesData();
             for (ItemSpellTalisman talisman : talismans)
-                usesHandler.refreshUses(talisman.getId());
-            new MessageSyncAllTalismanUses(usesHandler).sendTo(player);
+                usesData.refreshUses(talisman.getId());
+            new MessageSyncAllTalismanUses(usesData).sendTo(player);
         }
     }
 

@@ -1,6 +1,7 @@
 package aurocosh.divinefavor.common.potions.potions;
 
-import aurocosh.divinefavor.common.custom_data.player.escape_plan.IEscapePlanHandler;
+import aurocosh.divinefavor.common.custom_data.player.PlayerData;
+import aurocosh.divinefavor.common.custom_data.player.data.escape_plan.EscapePlanData;
 import aurocosh.divinefavor.common.potions.base.potion.ModPotion;
 import aurocosh.divinefavor.common.potions.common.ModPotions;
 import aurocosh.divinefavor.common.util.UtilEntity;
@@ -9,8 +10,6 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraftforge.event.entity.living.LivingDamageEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-
-import static aurocosh.divinefavor.common.custom_data.player.escape_plan.EscapePlanDataHandler.CAPABILITY_ESCAPE_PLAN;
 
 @Mod.EventBusSubscriber
 public class PotionEscapePlan extends ModPotion {
@@ -30,9 +29,8 @@ public class PotionEscapePlan extends ModPotion {
         if (!player.isPotionActive(ModPotions.escape_plan))
             return;
 
-        IEscapePlanHandler planHandler = player.getCapability(CAPABILITY_ESCAPE_PLAN, null);
-        assert planHandler != null;
-        UtilEntity.teleport(player, planHandler.getGlobalPosition());
+        EscapePlanData planData = PlayerData.get(player).getEscapePlanData();
+        UtilEntity.teleport(player, planData.getGlobalPosition());
         player.removePotionEffect(ModPotions.escape_plan);
     }
 
