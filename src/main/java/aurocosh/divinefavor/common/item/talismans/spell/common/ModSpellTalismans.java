@@ -9,7 +9,6 @@ import aurocosh.divinefavor.common.item.talismans.spell.base.SpellTalismanModPot
 import aurocosh.divinefavor.common.item.talismans.spell.base.SpellTalismanModPotionToggle;
 import aurocosh.divinefavor.common.potions.common.ModPotions;
 import aurocosh.divinefavor.common.registry.ModRegistries;
-import aurocosh.divinefavor.common.registry.mappers.ModMappers;
 import aurocosh.divinefavor.common.util.UtilTick;
 
 public final class ModSpellTalismans {
@@ -54,6 +53,9 @@ public final class ModSpellTalismans {
     public static ItemSpellTalisman pearl_crumbs;
     public static ItemSpellTalisman piercing_inferno;
     public static ItemSpellTalisman searing_pulse;
+    public static ItemSpellTalisman invite_gem;
+    public static ItemSpellTalisman invite_pebble;
+    public static ItemSpellTalisman remote_chest;
     public static ItemSpellTalisman small_fireball_throw;
     public static ItemSpellTalisman snowball_throw;
     public static ItemSpellTalisman spider_might;
@@ -68,8 +70,6 @@ public final class ModSpellTalismans {
     public static ItemSpellTalisman warp;
     public static ItemSpellTalisman warp_gem;
     public static ItemSpellTalisman warp_pebble;
-    public static ItemSpellTalisman invite_gem;
-    public static ItemSpellTalisman invite_pebble;
     public static ItemSpellTalisman wild_sprint;
     public static ItemSpellTalisman wind_step;
     public static ItemSpellTalisman winter_breath;
@@ -108,6 +108,7 @@ public final class ModSpellTalismans {
         infernal_touch = ModRegistries.items.register(new SpellTalismanInfernalTouch());
         invite_gem = ModRegistries.items.register(new SpellTalismanInviteMarker("invite_gem", 1, ModItems.invite_gem));
         invite_pebble = ModRegistries.items.register(new SpellTalismanInviteMarker("invite_pebble", 5, ModItems.invite_pebble));
+        remote_chest = ModRegistries.items.register(new SpellTalismanRemoteChest());
         miners_focus = ModRegistries.items.register(new SpellTalismanMinersFocus());
         mist_blade = ModRegistries.items.register(new SpellTalismanModPotionToggle("mist_blade", 3, ModPotions.mist_blade));
         molten_skin = ModRegistries.items.register(new SpellTalismanMoltenSkin());

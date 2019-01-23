@@ -32,7 +32,7 @@ public class ItemWarpMarker extends ModItem {
         ItemStack stack = player.getHeldItem(hand);
         if(!teleportPlayer(stack, player, world))
             return new ActionResult<>(EnumActionResult.PASS, stack);
-        return new ActionResult<>(EnumActionResult.SUCCESS, ItemStack.EMPTY);
+        return new ActionResult<>(EnumActionResult.SUCCESS, stack);
     }
 
     @Override
@@ -60,10 +60,7 @@ public class ItemWarpMarker extends ModItem {
             return false;
 
         UtilEntity.teleport(player, dimension, destination);
-
         stack.shrink(1);
-        if (stack.isEmpty())
-            player.inventory.deleteStack(stack);
         return true;
     }
 }
