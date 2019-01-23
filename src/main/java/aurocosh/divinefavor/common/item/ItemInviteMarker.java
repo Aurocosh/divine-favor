@@ -72,6 +72,7 @@ public class ItemInviteMarker extends ModItem {
             return false;
         UtilEntity.teleport(player, targetPlayer.dimension, targetPlayer.getPosition());
         UtilPlayer.damageStack(player, stack);
+        stack.shrink(1);
         return true;
     }
 
