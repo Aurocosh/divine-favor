@@ -1,6 +1,6 @@
 package aurocosh.divinefavor.common.item.talismans.spell.base;
 
-import aurocosh.divinefavor.common.core.DivineFavorCreativeTabTalismans;
+import aurocosh.divinefavor.common.core.DivineFavorCreativeTabSpellTalismans;
 import aurocosh.divinefavor.common.custom_data.player.PlayerData;
 import aurocosh.divinefavor.common.custom_data.player.data.talisman_uses.TalismanUsesData;
 import aurocosh.divinefavor.common.item.talismans.base.ItemTalisman;
@@ -28,7 +28,7 @@ public class ItemSpellTalisman extends ItemTalisman {
         this.castOnRightClick = castOnRightClick;
 
         setMaxStackSize(1);
-        setCreativeTab(DivineFavorCreativeTabTalismans.INSTANCE);
+        setCreativeTab(DivineFavorCreativeTabSpellTalismans.INSTANCE);
     }
 
     public boolean cast(TalismanContext context) {
