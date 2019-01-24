@@ -59,4 +59,12 @@ public class UtilPlayer {
         if (stack.isEmpty())
             player.inventory.deleteStack(stack);
     }
+
+    public static EnumHand getOtherHand(EnumHand hand) {
+        return hand == EnumHand.MAIN_HAND ? EnumHand.OFF_HAND : EnumHand.MAIN_HAND;
+    }
+
+    public static int getHandIndex(EntityPlayer player, EnumHand hand) {
+        return hand == EnumHand.MAIN_HAND ? player.inventory.currentItem : InventoryIndexes.Offhand.getValue();
+    }
 }
