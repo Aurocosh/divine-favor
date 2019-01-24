@@ -1,6 +1,6 @@
 package aurocosh.divinefavor.common.item.talismans.arrow.base;
 
-import aurocosh.divinefavor.common.core.DivineFavorCreativeTab;
+import aurocosh.divinefavor.common.core.DivineFavorCreativeTabArrowTalismans;
 import aurocosh.divinefavor.common.custom_data.player.PlayerData;
 import aurocosh.divinefavor.common.custom_data.player.data.talisman_uses.TalismanUsesData;
 import aurocosh.divinefavor.common.entity.projectile.EntitySpellArrow;
@@ -32,7 +32,7 @@ public class ItemArrowTalisman extends ItemTalisman {
         gravityType = GravityType.NORMAL;
 
 //        setMaxStackSize(64);
-        setCreativeTab(DivineFavorCreativeTab.INSTANCE);
+        setCreativeTab(DivineFavorCreativeTabArrowTalismans.INSTANCE);
     }
 
     public int getColor() {

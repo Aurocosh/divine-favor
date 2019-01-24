@@ -11,11 +11,11 @@ import net.minecraft.util.NonNullList;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class DivineFavorCreativeTabTalismans extends CreativeTabs {
-    public static final DivineFavorCreativeTabTalismans INSTANCE = new DivineFavorCreativeTabTalismans();
+public class DivineFavorCreativeTabSpellTalismans extends CreativeTabs {
+    public static final DivineFavorCreativeTabSpellTalismans INSTANCE = new DivineFavorCreativeTabSpellTalismans();
     private NonNullList list;
 
-    public DivineFavorCreativeTabTalismans() {
+    public DivineFavorCreativeTabSpellTalismans() {
         super(ConstMisc.MOD_ID + "_talismans");
         //ConstMisc.MOD_ID
 
