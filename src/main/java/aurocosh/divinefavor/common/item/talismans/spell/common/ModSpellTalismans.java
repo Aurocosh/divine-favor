@@ -15,6 +15,7 @@ public final class ModSpellTalismans {
     public static ItemSpellTalisman armor_of_pacifist;
     public static ItemSpellTalisman arrow_throw_talisman;
     public static ItemSpellTalisman blade_of_grass;
+    public static ItemSpellTalisman blazing_palm;
     public static ItemSpellTalisman blink;
     public static ItemSpellTalisman blood_of_grass;
     public static ItemSpellTalisman bonemeal;
@@ -42,6 +43,8 @@ public final class ModSpellTalismans {
     public static ItemSpellTalisman hellisphere;
     public static ItemSpellTalisman ignition;
     public static ItemSpellTalisman infernal_touch;
+    public static ItemSpellTalisman invite_gem;
+    public static ItemSpellTalisman invite_pebble;
     public static ItemSpellTalisman miners_focus;
     public static ItemSpellTalisman mist_blade;
     public static ItemSpellTalisman molten_skin;
@@ -52,10 +55,8 @@ public final class ModSpellTalismans {
     public static ItemSpellTalisman overwarp;
     public static ItemSpellTalisman pearl_crumbs;
     public static ItemSpellTalisman piercing_inferno;
-    public static ItemSpellTalisman searing_pulse;
-    public static ItemSpellTalisman invite_gem;
-    public static ItemSpellTalisman invite_pebble;
     public static ItemSpellTalisman remote_chest;
+    public static ItemSpellTalisman searing_pulse;
     public static ItemSpellTalisman small_fireball_throw;
     public static ItemSpellTalisman snowball_throw;
     public static ItemSpellTalisman spider_might;
@@ -79,6 +80,7 @@ public final class ModSpellTalismans {
         armor_of_pacifist = ModRegistries.items.register(new SpellTalismanModPotionToggle("armor_of_pacifist", 10, ModPotions.armor_of_pacifist));
         arrow_throw_talisman = ModRegistries.items.register(new SpellTalismanArrowThrow());
         blade_of_grass = ModRegistries.items.register(new SpellTalismanBladeOfGrass());
+        blazing_palm = ModRegistries.items.register(new SpellTalismanBlazingPalm());
         blink = ModRegistries.items.register(new SpellTalismanBlink("blink", 10, true, 10));
         blood_of_grass = ModRegistries.items.register(new SpellTalismanBloodOfGrass());
         bonemeal = ModRegistries.items.register(new SpellTalismanBonemeal());
