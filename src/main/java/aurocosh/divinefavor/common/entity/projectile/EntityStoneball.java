@@ -1,4 +1,4 @@
-package aurocosh.divinefavor.common.entity;
+package aurocosh.divinefavor.common.entity.projectile;
 
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;

@@ -63,6 +63,7 @@ public final class ModSpellTalismans {
     public static ItemSpellTalisman starvation;
     public static ItemSpellTalisman stone_fever;
     public static ItemSpellTalisman stoneball_throw;
+    public static ItemSpellTalisman summon_zombie;
     public static ItemSpellTalisman surface_blink;
     public static ItemSpellTalisman surface_shift;
     public static ItemSpellTalisman toadic_jump;
@@ -128,6 +129,7 @@ public final class ModSpellTalismans {
         starvation = ModRegistries.items.register(new SpellTalismanModPotion("starvation", 3, ModPotions.starvation, UtilTick.minutesToTicks(2.5f)));
         stone_fever = ModRegistries.items.register(new SpellTalismanModPotion("stone_fever", 2, ModPotions.stone_fever, UtilTick.minutesToTicks(5)));
         stoneball_throw = ModRegistries.items.register(new SpellTalismanStoneballThrow());
+        summon_zombie = ModRegistries.items.register(new SpellTalismanSummonZombie());
         surface_blink = ModRegistries.items.register(new SpellTalismanSurfaceBlink());
         surface_shift = ModRegistries.items.register(new SpellTalismanSurfaceShift());
         toadic_jump = ModRegistries.items.register(new SpellTalismanModPotionToggle("toadic_jump", 10, ModPotions.toadic_jump));

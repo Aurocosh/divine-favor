@@ -2,9 +2,10 @@ package aurocosh.divinefavor.common.util;
 
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.server.management.PreYggdrasilConverter;
 import net.minecraft.util.math.BlockPos;
 
-import javax.swing.text.html.parser.Entity;
+import java.util.UUID;
 
 public class UtilNbt {
     public static NBTTagCompound getTag(ItemStack stack) {
@@ -43,5 +44,18 @@ public class UtilNbt {
 
     public static BlockPos getBlockPos(NBTTagCompound compound, String tag){
         return BlockPos.fromLong(compound.getLong(tag));
+    }
+
+    public static <T> T getFirstExistingValue(NBTTagCompound nbt, ValueExtractor<T> extractor, T fallback, String... tags) {
+        for (String tag : tags)
+            if (nbt.hasKey(tag))
+                return extractor.next(nbt, tag);
+        return fallback;
+    }
+
+
+    @FunctionalInterface
+    public interface ValueExtractor<T> {
+        T next(NBTTagCompound compound, String tag);
     }
 }
