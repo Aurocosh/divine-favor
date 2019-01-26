@@ -1,6 +1,7 @@
 package aurocosh.divinefavor.common.util;
 
 import aurocosh.divinefavor.common.lib.GlobalBlockPos;
+import aurocosh.divinefavor.common.lib.math.Vector3;
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -8,6 +9,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
@@ -103,6 +105,10 @@ public class UtilEntity {
 //        entity.motionX += MathHelper.sin(-entity.rotationYaw * 0.017453292F) * factor;
 //        entity.motionZ += MathHelper.cos(entity.rotationYaw * 0.017453292F) * factor;
     }
-//
 
+    public static RayTraceResult getBlockPlayerLookingAt(EntityPlayer player) {
+        Vector3 posVec = new Vector3(player.posX, player.posY + player.getEyeHeight(), player.posZ);
+        Vector3 lookVec = new Vector3(player.getLookVec());
+        return UtilWorld.raycast(player.world, posVec, lookVec, 20);
+    }
 }

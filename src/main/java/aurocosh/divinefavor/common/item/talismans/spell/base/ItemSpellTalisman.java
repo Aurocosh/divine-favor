@@ -4,9 +4,8 @@ import aurocosh.divinefavor.common.core.DivineFavorCreativeTabSpellTalismans;
 import aurocosh.divinefavor.common.custom_data.player.PlayerData;
 import aurocosh.divinefavor.common.custom_data.player.data.talisman_uses.TalismanUsesData;
 import aurocosh.divinefavor.common.item.talismans.base.ItemTalisman;
-import aurocosh.divinefavor.common.lib.math.Vector3;
 import aurocosh.divinefavor.common.network.message.client.spell_uses.MessageSyncSpellUses;
-import aurocosh.divinefavor.common.util.UtilWorld;
+import aurocosh.divinefavor.common.util.UtilEntity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ActionResult;
@@ -68,13 +67,6 @@ public class ItemSpellTalisman extends ItemTalisman {
         return EnumActionResult.SUCCESS;
     }
 
-    public void castItemUse(EntityPlayer playerIn, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
-        if (!castOnUse)
-            return;
-        TalismanContext context = new TalismanContext(playerIn, worldIn, pos, hand, facing, CastType.ITEM_USE_CAST);
-        cast(context);
-    }
-
     @Override
     public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand hand) {
         ItemStack stack = playerIn.getHeldItem(hand);
@@ -84,22 +76,18 @@ public class ItemSpellTalisman extends ItemTalisman {
         return new ActionResult<>(success ? EnumActionResult.SUCCESS : EnumActionResult.PASS, stack);
     }
 
+    public void castItemUse(EntityPlayer playerIn, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
+        if (!castOnUse)
+            return;
+        TalismanContext context = new TalismanContext(playerIn, worldIn, pos, hand, facing, CastType.ITEM_USE_CAST);
+        cast(context);
+    }
 
-    public boolean castRightClick(World worldIn, EntityPlayer playerIn, EnumHand hand) {
+    public boolean castRightClick(World world, EntityPlayer player, EnumHand hand) {
         if (!castOnRightClick)
             return false;
-
-        Vector3 posVec = new Vector3(playerIn.posX, playerIn.posY + playerIn.getEyeHeight(), playerIn.posZ);
-        Vector3 lookVec = new Vector3(playerIn.getLookVec());
-        RayTraceResult pos = UtilWorld.raycast(worldIn, posVec, lookVec, 20);
-        BlockPos blockPos = null;
-        EnumFacing facing = EnumFacing.UP;
-        if (pos != null) {
-            blockPos = pos.getBlockPos();
-            facing = pos.sideHit;
-        }
-
-        TalismanContext context = new TalismanContext(playerIn, worldIn, blockPos, hand, facing, CastType.RIGHT_CLICK);
+        RayTraceResult pos = UtilEntity.getBlockPlayerLookingAt(player);
+        TalismanContext context = new TalismanContext(player, world, pos.getBlockPos(), hand, pos.sideHit, CastType.RIGHT_CLICK);
         return cast(context);
     }
 
