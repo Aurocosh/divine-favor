@@ -1,6 +1,6 @@
 package aurocosh.divinefavor.common.item.talismans.spell;
 
-import aurocosh.divinefavor.common.entity.EntityStoneball;
+import aurocosh.divinefavor.common.entity.projectile.EntityStoneball;
 import aurocosh.divinefavor.common.item.talismans.spell.base.ItemSpellTalisman;
 import aurocosh.divinefavor.common.item.talismans.spell.base.TalismanContext;
 import aurocosh.divinefavor.common.util.UtilRandom;

@@ -8,6 +8,7 @@ public class ConstResources {
     public static final String PREFIX_MODEL = PREFIX_MOD + "textures/model/";
     public static final String PREFIX_MISC = PREFIX_MOD + "textures/misc/";
     public static final String PREFIX_PROJECTILES = PREFIX_MOD + "textures/entity/projectiles/";
+    public static final String PREFIX_MINIONS = PREFIX_MOD + "textures/entity/minions/";
 
     public static final String GUI_IMMATERIAL_MEDIUM = PREFIX_GUI + "immaterial_medium.png";
     public static final String GUI_RITUAL_POUCH = PREFIX_GUI + "ritual_pouch.png";
@@ -23,4 +24,14 @@ public class ConstResources {
     public static final String RES_SPELL_ARROW = PREFIX_PROJECTILES + "spell_arrow.png";
 
     public static final String MULTIBLOCK_ASSETS = "/assets/" + ConstMisc.MOD_ID + "/multi_blocks/";
+
+    public static final String TEX_ZOMBIE = PREFIX_MINIONS + "minion_zombie/minion_zombie.png";
+    public static final String TEX_HUSK_ZOMBIE = PREFIX_MINIONS + "minion_zombie/minion_husk.png";
+    public static final String TEX_ZOMBIE_VILLAGER = PREFIX_MINIONS + "minion_zombie_villager/minion_zombie_villager.png";
+
+    public static final String TEX_ZOMBIE_VILLAGER_FARMER = PREFIX_MINIONS + "minion_zombie_villager/minion_zombie_farmer.png";
+    public static final String TEX_ZOMBIE_VILLAGER_LIBRARIAN = PREFIX_MINIONS + "minion_zombie_villager/minion_zombie_librarian.png";
+    public static final String TEX_ZOMBIE_VILLAGER_PRIEST = PREFIX_MINIONS + "minion_zombie_villager/minion_zombie_priest.png";
+    public static final String TEX_ZOMBIE_VILLAGER_SMITH = PREFIX_MINIONS + "minion_zombie_villager/minion_zombie_smith.png";
+    public static final String TEX_ZOMBIE_VILLAGER_BUTCHER = PREFIX_MINIONS + "minion_zombie_villager/minion_zombie_butcher.png";
 }
