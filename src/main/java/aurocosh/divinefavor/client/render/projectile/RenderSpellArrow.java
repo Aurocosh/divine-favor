@@ -1,4 +1,4 @@
-package aurocosh.divinefavor.client.render;
+package aurocosh.divinefavor.client.render.projectile;
 
 import aurocosh.divinefavor.common.constants.ConstResources;
 import aurocosh.divinefavor.common.entity.projectile.EntitySpellArrow;
