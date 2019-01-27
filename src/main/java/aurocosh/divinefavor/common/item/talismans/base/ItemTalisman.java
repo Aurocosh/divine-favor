@@ -8,18 +8,11 @@ import aurocosh.divinefavor.common.registry.ModRegistries;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.EnumActionResult;
-import net.minecraft.util.EnumFacing;
-import net.minecraft.util.EnumHand;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
 
 public abstract class ItemTalisman extends ModItem {
     protected final String name;
     protected final int favorCost;
     protected final ModFavor favor;
-
-    // Talisman functions
 
     public ItemTalisman(String name, String texturePath, ModFavor favor, int favorCost) {
         super(name, texturePath);
@@ -60,13 +53,6 @@ public abstract class ItemTalisman extends ModItem {
         else
             description = "Cost: " + favorCost + " Uses: " + useCount;
         return description;
-    }
-
-// Talisman functions
-    @Override
-    public EnumActionResult onItemUse(EntityPlayer playerIn, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
-        ItemStack stack = playerIn.getHeldItem(hand);
-        return stack.getItem() instanceof ItemTalisman ? EnumActionResult.SUCCESS : EnumActionResult.PASS;
     }
 
     @Override

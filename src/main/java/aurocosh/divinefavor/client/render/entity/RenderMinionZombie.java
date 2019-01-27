@@ -1,4 +1,4 @@
-package aurocosh.divinefavor.client.render;
+package aurocosh.divinefavor.client.render.entity;
 
 import aurocosh.divinefavor.client.models.ModelMinionZombie;
 import aurocosh.divinefavor.common.constants.ConstResources;

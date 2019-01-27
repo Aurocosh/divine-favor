@@ -1,6 +1,7 @@
 package aurocosh.divinefavor.common.item.talismans.spell.common;
 
 import aurocosh.divinefavor.common.config.common.ConfigTalismans;
+import aurocosh.divinefavor.common.entity.minions.MinionHusk;
 import aurocosh.divinefavor.common.entity.minions.MinionZombie;
 import aurocosh.divinefavor.common.favor.ModFavors;
 import aurocosh.divinefavor.common.item.common.ModItems;
@@ -63,6 +64,7 @@ public final class ModSpellTalismans {
     public static ItemSpellTalisman starvation;
     public static ItemSpellTalisman stone_fever;
     public static ItemSpellTalisman stoneball_throw;
+    public static ItemSpellTalisman summon_husk;
     public static ItemSpellTalisman summon_zombie;
     public static ItemSpellTalisman surface_blink;
     public static ItemSpellTalisman surface_shift;
@@ -127,6 +129,7 @@ public final class ModSpellTalismans {
         night_eye = new SpellTalismanModPotionToggle("night_eye", ModFavors.allfire, 4, ModPotions.night_eye);
         spider_might = new SpellTalismanModPotion("spider_might", ModFavors.allfire, ConfigTalismans.spider_might.uses, ModPotions.spider_might, ConfigTalismans.spider_might.duration);
         summon_zombie = new SpellTalismanSummonMinion<>("summon_zombie", ModFavors.allfire, 1, SpellOptions.USE_CAST, MinionZombie.class);
+        summon_husk = new SpellTalismanSummonMinion<>("summon_husk", ModFavors.allfire, 1, SpellOptions.USE_CAST, MinionHusk.class);
         target = new SpellTalismanTarget("target", ModFavors.allfire,0, SpellOptions.ENTITY_CAST);
         follow = new SpellTalismanFollow("follow", ModFavors.allfire,0, SpellOptions.RIGHT_CAST);
 
