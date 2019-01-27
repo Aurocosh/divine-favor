@@ -9,7 +9,7 @@ import aurocosh.divinefavor.common.custom_data.player.data.grudge.GrudgeDataSeri
 import aurocosh.divinefavor.common.custom_data.player.data.interaction_handler.InteractionDataSerializer;
 import aurocosh.divinefavor.common.custom_data.player.data.molten_skin.MoltenSkinDataSerializer;
 import aurocosh.divinefavor.common.custom_data.player.data.pearl_crumbs.PearlCrumbsDataSerializer;
-import aurocosh.divinefavor.common.custom_data.player.data.talisman_uses.TalismanUsesDataSerializer;
+import aurocosh.divinefavor.common.custom_data.player.data.talisman_uses.FavorDataSerializer;
 import net.minecraft.nbt.NBTBase;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumFacing;
@@ -26,7 +26,7 @@ public class PlayerDataStorage implements Capability.IStorage<IPlayerDataHandler
     private static final InteractionDataSerializer interactionDataSerializer = new InteractionDataSerializer();
     private static final MoltenSkinDataSerializer moltenSkinDataSerializer = new MoltenSkinDataSerializer();
     private static final PearlCrumbsDataSerializer pearlCrumbsDataSerializer = new PearlCrumbsDataSerializer();
-    private static final TalismanUsesDataSerializer talismanUsesDataSerializer = new TalismanUsesDataSerializer();
+    private static final FavorDataSerializer FAVOR_DATA_SERIALIZER = new FavorDataSerializer();
 
     @Override
     public NBTBase writeNBT(Capability<IPlayerDataHandler> capability, IPlayerDataHandler instance, EnumFacing side) {
@@ -40,7 +40,7 @@ public class PlayerDataStorage implements Capability.IStorage<IPlayerDataHandler
         interactionDataSerializer.serialize(tag, instance.getInteractionData());
         moltenSkinDataSerializer.serialize(tag, instance.getMoltenSkinData());
         pearlCrumbsDataSerializer.serialize(tag, instance.getPearlCrumbsData());
-        talismanUsesDataSerializer.serialize(tag, instance.getTalismanUsesData());
+        FAVOR_DATA_SERIALIZER.serialize(tag, instance.getFavorData());
         return tag;
     }
 
@@ -56,6 +56,6 @@ public class PlayerDataStorage implements Capability.IStorage<IPlayerDataHandler
         interactionDataSerializer.deserialize(tag, instance.getInteractionData());
         moltenSkinDataSerializer.deserialize(tag, instance.getMoltenSkinData());
         pearlCrumbsDataSerializer.deserialize(tag, instance.getPearlCrumbsData());
-        talismanUsesDataSerializer.deserialize(tag, instance.getTalismanUsesData());
+        FAVOR_DATA_SERIALIZER.deserialize(tag, instance.getFavorData());
     }
 }

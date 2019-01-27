@@ -1,5 +1,7 @@
 package aurocosh.divinefavor.common.item.talismans.spell;
+import aurocosh.divinefavor.common.favor.ModFavor;
 import aurocosh.divinefavor.common.item.talismans.spell.base.ItemSpellTalisman;
+import aurocosh.divinefavor.common.item.talismans.spell.base.SpellOptions;
 import aurocosh.divinefavor.common.item.talismans.spell.base.TalismanContext;
 import aurocosh.divinefavor.common.util.UtilBlock;
 import aurocosh.divinefavor.common.util.UtilCoordinates;
@@ -16,11 +18,11 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
+import java.util.EnumSet;
 import java.util.List;
 
 public class SpellTalismanHarvest extends ItemSpellTalisman {
     public static int EFFECT_RADIUS = 12;
-    private static final int USES = 10;
 
     public static final ImmutableSet<Material> ALLOWED_MATERIALS =
             ImmutableSet.of(net.minecraft.block.material.Material.WEB,
@@ -29,8 +31,8 @@ public class SpellTalismanHarvest extends ItemSpellTalisman {
                     net.minecraft.block.material.Material.GOURD,
                     net.minecraft.block.material.Material.CACTUS);
 
-    public SpellTalismanHarvest() {
-        super("harvest", USES, true, true);
+    public SpellTalismanHarvest(String name, ModFavor favor, int favorCost, EnumSet<SpellOptions> options) {
+        super(name, favor, favorCost, options);
     }
 
     @Override

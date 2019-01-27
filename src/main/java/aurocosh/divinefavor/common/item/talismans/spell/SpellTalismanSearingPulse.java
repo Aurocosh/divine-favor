@@ -1,8 +1,9 @@
 package aurocosh.divinefavor.common.item.talismans.spell;
 
+import aurocosh.divinefavor.common.favor.ModFavor;
 import aurocosh.divinefavor.common.item.talismans.spell.base.ItemSpellTalisman;
 import aurocosh.divinefavor.common.lib.math.Vector3i;
-import aurocosh.divinefavor.common.item.talismans.spell.base.CastType;
+import aurocosh.divinefavor.common.item.talismans.spell.base.SpellOptions;
 import aurocosh.divinefavor.common.item.talismans.spell.base.TalismanContext;
 import aurocosh.divinefavor.common.util.UtilBlock;
 import aurocosh.divinefavor.common.util.UtilRandom;
@@ -23,14 +24,12 @@ public class SpellTalismanSearingPulse extends ItemSpellTalisman {
     private final int CYCLE_LIMIT = 30;
     private static final int USES = 10;
 
-    public SpellTalismanSearingPulse() {
-        super("searing_pulse", USES, true, false);
+    public SpellTalismanSearingPulse(String name, ModFavor favor, int favorCost, EnumSet<SpellOptions> options) {
+        super(name, favor, favorCost, options);
     }
 
     @Override
     protected void performActionServer(TalismanContext context) {
-        assert context.castType == CastType.ITEM_USE_CAST;
-
         Queue<Vector3i> nodesToVisit = new ArrayDeque<>();
         Set<Vector3i> visitedNodes = new HashSet<>();
         nodesToVisit.add(Vector3i.convert(context.pos));

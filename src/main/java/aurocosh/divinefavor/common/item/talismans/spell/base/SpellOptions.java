@@ -1,0 +1,13 @@
+package aurocosh.divinefavor.common.item.talismans.spell.base;
+
+import java.util.EnumSet;
+
+public enum SpellOptions {
+    ItemUseCast,
+    RightClickCast,
+    OnRightCastRayTraceBlock;
+
+    public static final EnumSet<SpellOptions> USE_CAST = EnumSet.of(SpellOptions.ItemUseCast);
+    public static final EnumSet<SpellOptions> ALL_CAST = EnumSet.of(SpellOptions.ItemUseCast, SpellOptions.RightClickCast);
+    public static final EnumSet<SpellOptions> ALL_CAST_TRACE = EnumSet.of(SpellOptions.ItemUseCast, SpellOptions.RightClickCast, SpellOptions.OnRightCastRayTraceBlock);
+}

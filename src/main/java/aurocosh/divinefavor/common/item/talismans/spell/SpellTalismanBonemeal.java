@@ -1,6 +1,8 @@
 package aurocosh.divinefavor.common.item.talismans.spell;
 
+import aurocosh.divinefavor.common.favor.ModFavor;
 import aurocosh.divinefavor.common.item.talismans.spell.base.ItemSpellTalisman;
+import aurocosh.divinefavor.common.item.talismans.spell.base.SpellOptions;
 import aurocosh.divinefavor.common.item.talismans.spell.base.TalismanContext;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
@@ -8,11 +10,11 @@ import net.minecraft.item.ItemDye;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
 
-public class SpellTalismanBonemeal extends ItemSpellTalisman {
-    public static int USES = 20;
+import java.util.EnumSet;
 
-    public SpellTalismanBonemeal() {
-        super("bonemeal", USES, true, false);
+public class SpellTalismanBonemeal extends ItemSpellTalisman {
+    public SpellTalismanBonemeal(String name, ModFavor favor, int favorCost, EnumSet<SpellOptions> options) {
+        super(name, favor, favorCost, options);
     }
 
     @Override

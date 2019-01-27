@@ -1,13 +1,15 @@
 package aurocosh.divinefavor.common.item.talismans.spell;
+import aurocosh.divinefavor.common.favor.ModFavor;
 import aurocosh.divinefavor.common.item.talismans.spell.base.ItemSpellTalisman;
+import aurocosh.divinefavor.common.item.talismans.spell.base.SpellOptions;
 import aurocosh.divinefavor.common.item.talismans.spell.base.TalismanContext;
 import net.minecraft.util.text.TextComponentString;
 
-public class SpellTalismanClock extends ItemSpellTalisman {
-    private static final int USES = 10;
+import java.util.EnumSet;
 
-    public SpellTalismanClock() {
-        super("clock", USES, true, true);
+public class SpellTalismanClock extends ItemSpellTalisman {
+    public SpellTalismanClock(String name, ModFavor favor, int favorCost, EnumSet<SpellOptions> options) {
+        super(name, favor, favorCost, options);
     }
 
     @Override

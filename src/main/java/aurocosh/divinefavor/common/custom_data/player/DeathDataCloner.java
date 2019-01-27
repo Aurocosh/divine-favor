@@ -15,6 +15,6 @@ public class DeathDataCloner {
         cloneData.getGrudgeData().setMobTypeId(originalData.getGrudgeData().getMobTypeId());
         cloneData.getInteractionData().setLastClickedPositions(originalData.getInteractionData().getLastClickedPositions());
         cloneData.getPearlCrumbsData().setAllPositions(originalData.getPearlCrumbsData().getAllPositions());
-        cloneData.getTalismanUsesData().setAllUses(originalData.getTalismanUsesData().getAllUses());
+        cloneData.getFavorData().setFavorValues(originalData.getFavorData().getFavorValues());
     }
 }

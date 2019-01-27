@@ -2,8 +2,8 @@ package aurocosh.divinefavor.common.network.message.client.spell_uses;
 
 import aurocosh.divinefavor.DivineFavor;
 import aurocosh.divinefavor.common.custom_data.player.PlayerData;
-import aurocosh.divinefavor.common.custom_data.player.data.talisman_uses.TalismanUses;
-import aurocosh.divinefavor.common.custom_data.player.data.talisman_uses.TalismanUsesData;
+import aurocosh.divinefavor.common.custom_data.player.data.talisman_uses.FavorValue;
+import aurocosh.divinefavor.common.custom_data.player.data.talisman_uses.FavorData;
 import aurocosh.divinefavor.common.network.base.NetworkWrappedClientMessage;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
@@ -11,14 +11,14 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class MessageSyncAllTalismanUses extends NetworkWrappedClientMessage {
-    private static String TAG_SPELL_USES = "SpellUses";
+    private static String TAG_FAVOR_VALUES = "FavorValues";
 
     public NBTTagCompound tag;
 
     public MessageSyncAllTalismanUses() {
     }
 
-    public MessageSyncAllTalismanUses(TalismanUsesData data) {
+    public MessageSyncAllTalismanUses(FavorData data) {
         tag = getNbtTagCompound(data);
     }
 
@@ -26,35 +26,37 @@ public class MessageSyncAllTalismanUses extends NetworkWrappedClientMessage {
     @SideOnly(Side.CLIENT)
     protected void handleSafe() {
         EntityPlayer player = DivineFavor.proxy.getClientPlayer();
-        TalismanUsesData data = PlayerData.get(player).getTalismanUsesData();
+        FavorData data = PlayerData.get(player).getFavorData();
         setDataFromNBT(data, tag);
     }
 
-    public static NBTTagCompound getNbtTagCompound(TalismanUsesData instance) {
+    public static NBTTagCompound getNbtTagCompound(FavorData instance) {
         final NBTTagCompound tag = new NBTTagCompound();
-        TalismanUses[] talismanUses = instance.getAllUses();
-        int[] serializedUses = new int[talismanUses.length * 3];
+        FavorValue[] favorValues = instance.getFavorValues();
+        int[] serializedFavors = new int[favorValues.length * 4];
         int i = 0;
-        for (int j = 0; j < talismanUses.length; j++) {
-            TalismanUses uses = talismanUses[j];
-            serializedUses[i++] = j;
-            serializedUses[i++] = uses.getMaxUses();
-            serializedUses[i++] = uses.getUses();
+        for (int j = 0; j < favorValues.length; j++) {
+            FavorValue uses = favorValues[j];
+            serializedFavors[i++] = j;
+            serializedFavors[i++] = uses.getFavor();
+            serializedFavors[i++] = uses.getMinLimit();
+            serializedFavors[i++] = uses.getMaxLimit();
         }
-        tag.setIntArray(TAG_SPELL_USES, serializedUses);
+        tag.setIntArray(TAG_FAVOR_VALUES, serializedFavors);
         return tag;
     }
 
-    public static void setDataFromNBT(TalismanUsesData instance, NBTTagCompound nbt) {
-        int[] serializedMap = nbt.getIntArray(TAG_SPELL_USES);
-        TalismanUses[] talismanUses = new TalismanUses[serializedMap.length/3];
+    public static void setDataFromNBT(FavorData instance, NBTTagCompound nbt) {
+        int[] serializedMap = nbt.getIntArray(TAG_FAVOR_VALUES);
+        FavorValue[] favorValues = new FavorValue[serializedMap.length/4];
         int i = 0;
         while (i < serializedMap.length) {
             int talismanId = serializedMap[i++];
-            int maxSpellUses = serializedMap[i++];
             int spellUses = serializedMap[i++];
-            talismanUses[talismanId] = new TalismanUses(maxSpellUses, spellUses);
+            int minSpellUses = serializedMap[i++];
+            int maxSpellUses = serializedMap[i++];
+            favorValues[talismanId] = new FavorValue(spellUses, minSpellUses, maxSpellUses);
         }
-        instance.setAllUses(talismanUses);
+        instance.setFavorValues(favorValues);
     }
 }

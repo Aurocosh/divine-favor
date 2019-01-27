@@ -1,6 +1,8 @@
 package aurocosh.divinefavor.client.core.handler;
 
 import aurocosh.divinefavor.DivineFavor;
+import aurocosh.divinefavor.common.custom_data.player.PlayerData;
+import aurocosh.divinefavor.common.custom_data.player.data.talisman_uses.FavorData;
 import aurocosh.divinefavor.common.item.mystic_architect_stick.ItemMysticArchitectStick;
 import aurocosh.divinefavor.common.item.talismans.spell.base.ItemSpellTalisman;
 import aurocosh.divinefavor.common.util.UtilNbt;
@@ -56,13 +58,11 @@ public final class HUDHandler {
         if (stack.isEmpty() || !(stack.getItem() instanceof ItemSpellTalisman))
             return;
 
-        EntityPlayer player = DivineFavor.proxy.getClientPlayer();
         ItemSpellTalisman talisman = (ItemSpellTalisman) stack.getItem();
-        int useCount = talisman.getUseCount(player);
+        EntityPlayer player = DivineFavor.proxy.getClientPlayer();
+        String description = talisman.getUseInfo(player);
 
-        String description = useCount > 0 ? "Uses left: " + useCount : "Unusable";
         int alpha = 255;
-
         int color = (0 << 0) + (128 << 8) + (0 << 16) + (alpha << 24);
 
         int x = res.getScaledWidth() / 2 - mc.fontRenderer.getStringWidth(description) / 2;

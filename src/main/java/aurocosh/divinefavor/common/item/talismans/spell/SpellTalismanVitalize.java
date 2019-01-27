@@ -1,13 +1,15 @@
 package aurocosh.divinefavor.common.item.talismans.spell;
+import aurocosh.divinefavor.common.favor.ModFavor;
 import aurocosh.divinefavor.common.item.talismans.spell.base.ItemSpellTalisman;
+import aurocosh.divinefavor.common.item.talismans.spell.base.SpellOptions;
 import aurocosh.divinefavor.common.item.talismans.spell.base.TalismanContext;
 import net.minecraft.init.MobEffects;
 
-public class SpellTalismanVitalize extends ItemSpellTalisman {
-    private static final int USES = 10;
+import java.util.EnumSet;
 
-    public SpellTalismanVitalize() {
-        super("vitalize", USES, true, true);
+public class SpellTalismanVitalize extends ItemSpellTalisman {
+    public SpellTalismanVitalize(String name, ModFavor favor, int favorCost, EnumSet<SpellOptions> options) {
+        super(name, favor, favorCost, options);
     }
 
     @Override

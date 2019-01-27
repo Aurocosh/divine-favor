@@ -9,7 +9,7 @@ import aurocosh.divinefavor.common.custom_data.player.data.grudge.GrudgeData;
 import aurocosh.divinefavor.common.custom_data.player.data.interaction_handler.InteractionData;
 import aurocosh.divinefavor.common.custom_data.player.data.molten_skin.MoltenSkinData;
 import aurocosh.divinefavor.common.custom_data.player.data.pearl_crumbs.PearlCrumbsData;
-import aurocosh.divinefavor.common.custom_data.player.data.talisman_uses.TalismanUsesData;
+import aurocosh.divinefavor.common.custom_data.player.data.talisman_uses.FavorData;
 
 // The default implementation of the capability. Holds all the logic.
 public class DefaultPlayerDataHandler implements IPlayerDataHandler {
@@ -22,7 +22,7 @@ public class DefaultPlayerDataHandler implements IPlayerDataHandler {
     private final InteractionData interactionData;
     private final MoltenSkinData moltenSkinData;
     private final PearlCrumbsData pearlCrumbsData;
-    private final TalismanUsesData talismanUsesData;
+    private final FavorData favorData;
 
     public DefaultPlayerDataHandler() {
         armorCorrosionData = new ArmorCorrosionData();
@@ -34,7 +34,7 @@ public class DefaultPlayerDataHandler implements IPlayerDataHandler {
         interactionData = new InteractionData();
         moltenSkinData = new MoltenSkinData();
         pearlCrumbsData = new PearlCrumbsData();
-        talismanUsesData = new TalismanUsesData();
+        favorData = new FavorData();
     }
 
     @Override
@@ -83,7 +83,7 @@ public class DefaultPlayerDataHandler implements IPlayerDataHandler {
     }
 
     @Override
-    public TalismanUsesData getTalismanUsesData() {
-        return talismanUsesData;
+    public FavorData getFavorData() {
+        return favorData;
     }
 }

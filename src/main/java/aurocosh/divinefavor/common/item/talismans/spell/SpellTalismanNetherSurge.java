@@ -1,8 +1,9 @@
 package aurocosh.divinefavor.common.item.talismans.spell;
 
+import aurocosh.divinefavor.common.favor.ModFavor;
 import aurocosh.divinefavor.common.item.talismans.spell.base.ItemSpellTalisman;
 import aurocosh.divinefavor.common.lib.DistributedRandomList;
-import aurocosh.divinefavor.common.item.talismans.spell.base.CastType;
+import aurocosh.divinefavor.common.item.talismans.spell.base.SpellOptions;
 import aurocosh.divinefavor.common.item.talismans.spell.base.TalismanContext;
 import aurocosh.divinefavor.common.util.UtilBlock;
 import aurocosh.divinefavor.common.util.UtilCoordinates;
@@ -20,6 +21,7 @@ import net.minecraft.world.World;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
+import java.util.EnumSet;
 import java.util.List;
 
 public class SpellTalismanNetherSurge extends ItemSpellTalisman {
@@ -54,16 +56,12 @@ public class SpellTalismanNetherSurge extends ItemSpellTalisman {
         possibleEnemies.add(EntityWither.class, 0.0001d);
     }
 
-    private static final int USES = 10;
-
-    public SpellTalismanNetherSurge() {
-        super("nether_surge", USES, true, false);
+    public SpellTalismanNetherSurge(String name, ModFavor favor, int favorCost, EnumSet<SpellOptions> options) {
+        super(name, favor, favorCost, options);
     }
 
     @Override
     protected void performActionServer(TalismanContext context) {
-        assert context.castType == CastType.ITEM_USE_CAST;
-
         int blocksSelect = UtilRandom.nextInt(MIN_BLOCKS_TO_REPLACE, MAX_BLOCKS_TO_REPLACE);
         List<BlockPos> blocksToReplace = UtilCoordinates.getRandomNeighbours(context.pos, context.world, blocksSelect, MIN_NEIGHBOURS_TO_ADD, MAX_NEIGHBOURS_TO_ADD, CYCLE_LIMIT, (world, pos) -> true);
         for (BlockPos pos : blocksToReplace)

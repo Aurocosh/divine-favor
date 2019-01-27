@@ -2,7 +2,7 @@ package aurocosh.divinefavor.common.network.message.client.spell_uses;
 
 import aurocosh.divinefavor.DivineFavor;
 import aurocosh.divinefavor.common.custom_data.player.PlayerData;
-import aurocosh.divinefavor.common.custom_data.player.data.talisman_uses.TalismanUsesData;
+import aurocosh.divinefavor.common.custom_data.player.data.talisman_uses.FavorData;
 import aurocosh.divinefavor.common.network.base.NetworkWrappedClientMessage;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraftforge.fml.relauncher.Side;
@@ -16,16 +16,16 @@ public class MessageSyncSpellUses extends NetworkWrappedClientMessage {
     public MessageSyncSpellUses() {
     }
 
-    public MessageSyncSpellUses(int talismanId, TalismanUsesData usesData) {
+    public MessageSyncSpellUses(int talismanId, FavorData usesData) {
         this.talismanId = talismanId;
-        this.spellUses = usesData.getUses(talismanId);
+        this.spellUses = usesData.getFavor(talismanId);
     }
 
     @Override
     @SideOnly(Side.CLIENT)
     protected void handleSafe() {
         EntityPlayer player = DivineFavor.proxy.getClientPlayer();
-        TalismanUsesData usesData = PlayerData.get(player).getTalismanUsesData();
-        usesData.setUses(talismanId, spellUses);
+        FavorData usesData = PlayerData.get(player).getFavorData();
+        usesData.setFavor(talismanId, spellUses);
     }
 }

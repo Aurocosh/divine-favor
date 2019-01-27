@@ -9,7 +9,7 @@ import aurocosh.divinefavor.common.custom_data.player.data.grudge.GrudgeData;
 import aurocosh.divinefavor.common.custom_data.player.data.interaction_handler.InteractionData;
 import aurocosh.divinefavor.common.custom_data.player.data.molten_skin.MoltenSkinData;
 import aurocosh.divinefavor.common.custom_data.player.data.pearl_crumbs.PearlCrumbsData;
-import aurocosh.divinefavor.common.custom_data.player.data.talisman_uses.TalismanUsesData;
+import aurocosh.divinefavor.common.custom_data.player.data.talisman_uses.FavorData;
 
 public interface IPlayerDataHandler {
     ArmorCorrosionData getArmorCorrosionData();
@@ -21,5 +21,5 @@ public interface IPlayerDataHandler {
     InteractionData getInteractionData();
     MoltenSkinData getMoltenSkinData();
     PearlCrumbsData getPearlCrumbsData();
-    TalismanUsesData getTalismanUsesData();
+    FavorData getFavorData();
 }

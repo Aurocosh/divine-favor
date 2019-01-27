@@ -1,14 +1,17 @@
 package aurocosh.divinefavor.common.item.talismans.spell.base;
 
+import aurocosh.divinefavor.common.favor.ModFavor;
 import aurocosh.divinefavor.common.potions.base.effect.ModEffectCharge;
 import aurocosh.divinefavor.common.potions.base.potion.ModPotionCharge;
+
+import java.util.EnumSet;
 
 public class SpellTalismanModPotionCharge extends ItemSpellTalisman {
     private final ModPotionCharge potion;
     private int charges;
 
-    public SpellTalismanModPotionCharge(String name, int startingSpellUses, ModPotionCharge potion, int charges) {
-        super(name, startingSpellUses, true, true);
+    public SpellTalismanModPotionCharge(String name, ModFavor favor, int favorCost, ModPotionCharge potion, int charges) {
+        super(name, favor, favorCost, SpellOptions.ALL_CAST);
         this.potion = potion;
         this.charges = charges;
     }

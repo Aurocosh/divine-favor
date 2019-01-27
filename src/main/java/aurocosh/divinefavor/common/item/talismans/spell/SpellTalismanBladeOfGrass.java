@@ -1,6 +1,8 @@
 package aurocosh.divinefavor.common.item.talismans.spell;
 
+import aurocosh.divinefavor.common.favor.ModFavor;
 import aurocosh.divinefavor.common.item.talismans.spell.base.ItemSpellTalisman;
+import aurocosh.divinefavor.common.item.talismans.spell.base.SpellOptions;
 import aurocosh.divinefavor.common.lib.math.Vector3i;
 import aurocosh.divinefavor.common.item.talismans.spell.base.TalismanContext;
 import aurocosh.divinefavor.common.util.UtilBlock;
@@ -19,16 +21,16 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 import java.util.ArrayList;
+import java.util.EnumSet;
 import java.util.List;
 
 public class SpellTalismanBladeOfGrass extends ItemSpellTalisman {
     private final double RADIUS = 10;
     private final int SLOWNESS_TIME = UtilTick.secondsToTicks(15);
     private final float DAMAGE = 2;
-    private static final int USES = 2;
 
-    public SpellTalismanBladeOfGrass() {
-        super("blade_of_grass", USES, true, true);
+    public SpellTalismanBladeOfGrass(String name, ModFavor favor, int favorCost, EnumSet<SpellOptions> options) {
+        super(name, favor, favorCost, options);
     }
 
     @Override

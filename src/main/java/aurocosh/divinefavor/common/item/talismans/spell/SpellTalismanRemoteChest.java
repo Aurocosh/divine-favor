@@ -1,9 +1,10 @@
 package aurocosh.divinefavor.common.item.talismans.spell;
 
+import aurocosh.divinefavor.common.favor.ModFavor;
 import aurocosh.divinefavor.common.item.ItemWarpMarker;
 import aurocosh.divinefavor.common.item.base.ModItem;
-import aurocosh.divinefavor.common.item.common.ModItems;
 import aurocosh.divinefavor.common.item.talismans.spell.base.ItemSpellTalisman;
+import aurocosh.divinefavor.common.item.talismans.spell.base.SpellOptions;
 import aurocosh.divinefavor.common.item.talismans.spell.base.TalismanContext;
 import aurocosh.divinefavor.common.util.UtilNbt;
 import net.minecraft.block.state.IBlockState;
@@ -14,12 +15,14 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
+import java.util.EnumSet;
+
 public class SpellTalismanRemoteChest extends ItemSpellTalisman {
     private final ModItem item;
 
-    public SpellTalismanRemoteChest() {
-        super("remote_chest", 10, true, true);
-        this.item = ModItems.storage_gem;
+    public SpellTalismanRemoteChest(String name, ModFavor favor, int favorCost, EnumSet<SpellOptions> options, ModItem item) {
+        super(name, favor, favorCost, options);
+        this.item = item;
     }
 
     @Override

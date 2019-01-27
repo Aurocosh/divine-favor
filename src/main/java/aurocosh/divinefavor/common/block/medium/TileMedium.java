@@ -2,7 +2,7 @@ package aurocosh.divinefavor.common.block.medium;
 
 import aurocosh.divinefavor.common.block.base.TickableTileEntity;
 import aurocosh.divinefavor.common.custom_data.player.PlayerData;
-import aurocosh.divinefavor.common.custom_data.player.data.talisman_uses.TalismanUsesData;
+import aurocosh.divinefavor.common.custom_data.player.data.talisman_uses.FavorData;
 import aurocosh.divinefavor.common.item.calling_stones.ItemCallingStone;
 import aurocosh.divinefavor.common.item.common.ModItems;
 import aurocosh.divinefavor.common.item.contract.ItemContract;
@@ -213,9 +213,9 @@ public class TileMedium extends TickableTileEntity implements IMultiblockControl
             if (player == null)
                 continue;
 
-            TalismanUsesData usesData = PlayerData.get(player).getTalismanUsesData();
+            FavorData usesData = PlayerData.get(player).getFavorData();
             for (ItemSpellTalisman talisman : talismans)
-                usesData.refreshUses(talisman.getId());
+                usesData.refreshFavor(talisman.getFavorId());
             new MessageSyncAllTalismanUses(usesData).sendTo(player);
         }
     }

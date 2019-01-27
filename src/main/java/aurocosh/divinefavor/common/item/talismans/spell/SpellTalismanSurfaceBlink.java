@@ -1,16 +1,19 @@
 package aurocosh.divinefavor.common.item.talismans.spell;
+import aurocosh.divinefavor.common.favor.ModFavor;
 import aurocosh.divinefavor.common.item.talismans.spell.base.ItemSpellTalisman;
+import aurocosh.divinefavor.common.item.talismans.spell.base.SpellOptions;
 import aurocosh.divinefavor.common.item.talismans.spell.base.TalismanContext;
 import aurocosh.divinefavor.common.util.UtilEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 
+import java.util.EnumSet;
+
 public class SpellTalismanSurfaceBlink extends ItemSpellTalisman {
     private static final double blinkDistance = 20;
-    private static final int USES = 10;
 
-    public SpellTalismanSurfaceBlink() {
-        super("surface_blink", USES, true, true);
+    public SpellTalismanSurfaceBlink(String name, ModFavor favor, int favorCost, EnumSet<SpellOptions> options) {
+        super(name, favor, favorCost, options);
     }
 
     @Override

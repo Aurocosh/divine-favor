@@ -1,7 +1,7 @@
 package aurocosh.divinefavor.common.potions.potions;
 
 import aurocosh.divinefavor.common.custom_data.player.PlayerData;
-import aurocosh.divinefavor.common.custom_data.player.data.talisman_uses.TalismanUsesData;
+import aurocosh.divinefavor.common.custom_data.player.data.talisman_uses.FavorData;
 import aurocosh.divinefavor.common.item.talismans.spell.base.ItemSpellTalisman;
 import aurocosh.divinefavor.common.network.message.client.spell_uses.MessageSyncSpellUses;
 import aurocosh.divinefavor.common.potions.base.potion.ModPotionToggleLimited;
@@ -33,11 +33,11 @@ public class PotionToadicJump extends ModPotionToggleLimited {
         if(entity.world.isRemote)
             return;
 
-        TalismanUsesData usesData = PlayerData.get(player).getTalismanUsesData();
+        FavorData usesData = PlayerData.get(player).getFavorData();
         ItemSpellTalisman talisman = ModPotions.toadic_jump.getTalisman();
-        if (!usesData.consumeUse(talisman.getId()))
+        if (!usesData.consumeFavor(talisman.getFavorId()))
             return;
-        new MessageSyncSpellUses(talisman.getId(), usesData).sendTo(player);
+        new MessageSyncSpellUses(talisman.getFavorId(), usesData).sendTo(player);
     }
 
     @Override

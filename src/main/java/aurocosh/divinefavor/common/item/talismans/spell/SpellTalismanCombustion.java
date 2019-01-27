@@ -1,7 +1,8 @@
 package aurocosh.divinefavor.common.item.talismans.spell;
 
+import aurocosh.divinefavor.common.favor.ModFavor;
+import aurocosh.divinefavor.common.item.talismans.spell.base.SpellOptions;
 import aurocosh.divinefavor.common.item.talismans.spell.base.ItemSpellTalisman;
-import aurocosh.divinefavor.common.item.talismans.spell.base.CastType;
 import aurocosh.divinefavor.common.item.talismans.spell.base.TalismanContext;
 import aurocosh.divinefavor.common.util.UtilRandom;
 import net.minecraft.block.state.IBlockState;
@@ -13,6 +14,8 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
 
+import java.util.EnumSet;
+
 public class SpellTalismanCombustion extends ItemSpellTalisman {
     private static final int USES = 3;
     private final int MAX_SMELT_COUNT = 10;
@@ -21,14 +24,12 @@ public class SpellTalismanCombustion extends ItemSpellTalisman {
     private final boolean CAUSE_FIRE = false;
     private final boolean DAMAGE_TERRAIN = true;
 
-    public SpellTalismanCombustion() {
-        super("combustion", USES, true, false);
+    public SpellTalismanCombustion(String name, ModFavor favor, int favorCost, EnumSet<SpellOptions> options) {
+        super(name, favor, favorCost, options);
     }
 
     @Override
     protected void performActionServer(TalismanContext context) {
-        assert context.castType == CastType.ITEM_USE_CAST;
-
         BlockPos pos = context.pos;
         IBlockState state = context.world.getBlockState(pos);
         if(state.getBlock() != Blocks.CHEST)
