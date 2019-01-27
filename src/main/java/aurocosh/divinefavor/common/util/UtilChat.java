@@ -81,7 +81,7 @@ public class UtilChat {
             }
         }
         if (!aLine.isEmpty()) {
-            // the last line did not hit max length so add it now
+            // the last line did not hit max length so addValue it now
             lines.add(aLine);
         }
         return lines;

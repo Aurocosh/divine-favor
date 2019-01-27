@@ -1,8 +1,6 @@
 package aurocosh.divinefavor.client.core.handler;
 
 import aurocosh.divinefavor.DivineFavor;
-import aurocosh.divinefavor.common.custom_data.player.PlayerData;
-import aurocosh.divinefavor.common.custom_data.player.data.talisman_uses.FavorData;
 import aurocosh.divinefavor.common.item.mystic_architect_stick.ItemMysticArchitectStick;
 import aurocosh.divinefavor.common.item.talismans.spell.base.ItemSpellTalisman;
 import aurocosh.divinefavor.common.util.UtilNbt;

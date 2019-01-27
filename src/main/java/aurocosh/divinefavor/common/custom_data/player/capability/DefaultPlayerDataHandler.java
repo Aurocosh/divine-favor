@@ -9,7 +9,7 @@ import aurocosh.divinefavor.common.custom_data.player.data.grudge.GrudgeData;
 import aurocosh.divinefavor.common.custom_data.player.data.interaction_handler.InteractionData;
 import aurocosh.divinefavor.common.custom_data.player.data.molten_skin.MoltenSkinData;
 import aurocosh.divinefavor.common.custom_data.player.data.pearl_crumbs.PearlCrumbsData;
-import aurocosh.divinefavor.common.custom_data.player.data.talisman_uses.FavorData;
+import aurocosh.divinefavor.common.custom_data.player.data.favor.FavorData;
 
 // The default implementation of the capability. Holds all the logic.
 public class DefaultPlayerDataHandler implements IPlayerDataHandler {

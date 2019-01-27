@@ -2,7 +2,7 @@ package aurocosh.divinefavor.common.block.medium;
 
 import aurocosh.divinefavor.common.block.base.TickableTileEntity;
 import aurocosh.divinefavor.common.custom_data.player.PlayerData;
-import aurocosh.divinefavor.common.custom_data.player.data.talisman_uses.FavorData;
+import aurocosh.divinefavor.common.custom_data.player.data.favor.FavorData;
 import aurocosh.divinefavor.common.item.calling_stones.ItemCallingStone;
 import aurocosh.divinefavor.common.item.common.ModItems;
 import aurocosh.divinefavor.common.item.contract.ItemContract;
@@ -14,18 +14,16 @@ import aurocosh.divinefavor.common.muliblock.IMultiblockController;
 import aurocosh.divinefavor.common.muliblock.ModMultiBlock;
 import aurocosh.divinefavor.common.muliblock.MultiBlockInstance;
 import aurocosh.divinefavor.common.muliblock.common.MultiBlockWatcher;
-import aurocosh.divinefavor.common.network.message.client.spell_uses.MessageSyncAllTalismanUses;
+import aurocosh.divinefavor.common.network.message.client.spell_uses.MessageSyncAllFavors;
 import aurocosh.divinefavor.common.receipes.ModRecipes;
 import aurocosh.divinefavor.common.spirit.base.ModSpirit;
 import aurocosh.divinefavor.common.util.UtilHandler;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.NetworkManager;
 import net.minecraft.network.play.server.SPacketUpdateTileEntity;
-import net.minecraft.server.management.PlayerList;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -207,16 +205,16 @@ public class TileMedium extends TickableTileEntity implements IMultiblockControl
         List<ItemStack> contracts = getContracts(stack);
         List<UUID> playerUUIDs = getPlayerUUIDs(contracts, callingStone);
         List<ItemSpellTalisman> talismans = callingStone.spirit.getTalismans();
-        PlayerList playerList = world.getMinecraftServer().getPlayerList();
         for (UUID uuid : playerUUIDs) {
-            EntityPlayerMP player = playerList.getPlayerByUUID(uuid);
+
+            EntityPlayer player = world.getPlayerEntityByUUID(uuid);
             if (player == null)
                 continue;
 
-            FavorData usesData = PlayerData.get(player).getFavorData();
+            FavorData favorData = PlayerData.get(player).getFavorData();
             for (ItemSpellTalisman talisman : talismans)
-                usesData.refreshFavor(talisman.getFavorId());
-            new MessageSyncAllTalismanUses(usesData).sendTo(player);
+                favorData.get(talisman.getFavor()).regenerate();
+            new MessageSyncAllFavors(favorData).sendTo(player);
         }
     }
 

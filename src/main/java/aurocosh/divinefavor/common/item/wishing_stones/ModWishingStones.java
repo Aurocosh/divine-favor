@@ -1,16 +1,17 @@
 package aurocosh.divinefavor.common.item.wishing_stones;
 
-import aurocosh.divinefavor.common.item.talismans.base.ItemTalisman;
-import aurocosh.divinefavor.common.registry.ModRegistries;
-import aurocosh.divinefavor.common.spirit.base.ModSpirit;
+import aurocosh.divinefavor.common.favor.ModFavor;
+import aurocosh.divinefavor.common.registry.mappers.ModMappers;
 
-import java.util.Collection;
+import java.util.ArrayList;
+import java.util.List;
 
 public final class ModWishingStones {
+    public static final List<ItemWishingStone> wishingStones = new ArrayList<>();
+
     public static void preInit() {
-        Collection<ModSpirit> spirits = ModRegistries.spirits.getValues();
-        for (ModSpirit spirit : spirits)
-            for (ItemTalisman talisman : spirit.getTalismans())
-                ModRegistries.items.register(new ItemWishingStone(spirit, talisman));
+        List<ModFavor> spirits = ModMappers.favors.getValues();
+        for (ModFavor favor : spirits)
+            wishingStones.add(new ItemWishingStone(favor, 10, "minor"));
     }
 }

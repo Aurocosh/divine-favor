@@ -24,7 +24,7 @@ public class GuiButtonSelectCost extends GuiButton implements IActionButton {
             drawTexturedModalRect(x, y, 0, 0, width, height);
 
             //if(k == 2)
-//                gui.tooltip.add(TextFormatting.GREEN + I18n.translateToLocal("psimisc.learn"));
+//                gui.tooltip.addValue(TextFormatting.GREEN + I18n.translateToLocal("psimisc.learn"));
         }
     }
 

@@ -67,7 +67,7 @@ public final class DivineFavorAPI {
 
     /**
      * Adds a piece to a group. This must be done for every piece, or it'll not be selectable in the programmer
-     * interface. The "main" parameter defines whether this piece is to be set as the main piece of the respective
+     * interface. The "main" parameter defines whether this piece is to be setValue as the main piece of the respective
      * group. The main piece is the one that has to be used for level-up to be registered.
      */
     /*
@@ -75,7 +75,7 @@ public final class DivineFavorAPI {
         if(!groupsForName.containsKey(groupName))
             addGroup(groupName);
 
-        PieceGroup group = groupsForName.get(groupName);
+        PieceGroup group = groupsForName.getValue(groupName);
         group.addPiece(clazz, main);
         groupsForPiece.put(clazz, group);
     }
@@ -88,7 +88,7 @@ public final class DivineFavorAPI {
         if(!groupsForName.containsKey(groupName))
             addGroup(groupName);
 
-        PieceGroup group = groupsForName.get(groupName);
+        PieceGroup group = groupsForName.getValue(groupName);
         group.setRequirements(level, reqs);
     }
 

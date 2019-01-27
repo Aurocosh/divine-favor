@@ -1,7 +1,7 @@
 package aurocosh.divinefavor.common.favor;
 
 import aurocosh.divinefavor.common.core.ResourceNamer;
-import aurocosh.divinefavor.common.custom_data.player.data.talisman_uses.FavorValue;
+import aurocosh.divinefavor.common.custom_data.player.data.favor.FavorValue;
 import aurocosh.divinefavor.common.lib.interfaces.IIndexedEntry;
 import aurocosh.divinefavor.common.registry.ModRegistries;
 import aurocosh.divinefavor.common.registry.mappers.ModMappers;
@@ -36,6 +36,6 @@ public class ModFavor extends IForgeRegistryEntry.Impl<ModFavor> implements IInd
     }
 
     public FavorValue getDefaultValues() {
-        return new FavorValue(startingValue, 0, startingLimit);
+        return new FavorValue(startingValue, startingValue, 0, startingLimit);
     }
 }

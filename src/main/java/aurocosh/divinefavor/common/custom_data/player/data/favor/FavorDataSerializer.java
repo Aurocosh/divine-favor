@@ -1,4 +1,4 @@
-package aurocosh.divinefavor.common.custom_data.player.data.talisman_uses;
+package aurocosh.divinefavor.common.custom_data.player.data.favor;
 
 import aurocosh.divinefavor.common.favor.ModFavor;
 import aurocosh.divinefavor.common.lib.interfaces.INbtSerializer;
@@ -17,7 +17,11 @@ public class FavorDataSerializer implements INbtSerializer<FavorData> {
         List<ModFavor> favors = ModMappers.favors.getValues();
         for (int i = 0; i < favorValues.length; i++) {
             FavorValue favorValue = favorValues[i];
-            int[] favorSerialized = new int[]{favorValue.getFavor(), favorValue.getMinLimit(), favorValue.getMaxLimit()};
+            int[] favorSerialized = new int[]{
+                    favorValue.getValue(),
+                    favorValue.getRegen(),
+                    favorValue.getMinLimit(),
+                    favorValue.getMaxLimit()};
             ModFavor favor = favors.get(i);
             tag.setIntArray(favor.getName(), favorSerialized);
         }
@@ -31,7 +35,8 @@ public class FavorDataSerializer implements INbtSerializer<FavorData> {
             if (!nbt.hasKey(favor.getName()))
                 continue;
             int[] favorSerialized = nbt.getIntArray(favor.getName());
-            favorValues[favor.getId()] = new FavorValue(favorSerialized[0],favorSerialized[1], favorSerialized[2]);
+            if(favorSerialized.length == 4)
+                favorValues[favor.getId()] = new FavorValue(favorSerialized[0], favorSerialized[1], favorSerialized[2], favorSerialized[3]);
         }
         instance.setFavorValues(favorValues);
     }

@@ -2,11 +2,11 @@ package aurocosh.divinefavor.common.item.wishing_stones;
 
 import aurocosh.divinefavor.common.core.DivineFavorCreativeTabGems;
 import aurocosh.divinefavor.common.custom_data.player.PlayerData;
-import aurocosh.divinefavor.common.custom_data.player.data.talisman_uses.FavorData;
+import aurocosh.divinefavor.common.custom_data.player.data.favor.FavorData;
+import aurocosh.divinefavor.common.favor.ModFavor;
 import aurocosh.divinefavor.common.item.base.ModItem;
-import aurocosh.divinefavor.common.item.talismans.base.ItemTalisman;
-import aurocosh.divinefavor.common.network.message.client.spell_uses.MessageSyncMaxSpellUses;
-import aurocosh.divinefavor.common.spirit.base.ModSpirit;
+import aurocosh.divinefavor.common.network.message.client.spell_uses.MessageSyncFavorValue;
+import aurocosh.divinefavor.common.registry.ModRegistries;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
@@ -15,46 +15,43 @@ import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
 import net.minecraft.world.World;
 
+import javax.annotation.Nonnull;
+
 public class ItemWishingStone extends ModItem {
-    private final ModSpirit spirit;
-    private final ItemTalisman talisman;
+    private final ModFavor favor;
+    private final int favorCount;
 
-    public ItemWishingStone(ModSpirit spirit, ItemTalisman talisman) {
-        super("wishing_stone_" + talisman.getName(), "wishing_stones/" + spirit.getName());
-        this.spirit = spirit;
-        this.talisman = talisman;
+    public ItemWishingStone(ModFavor favor, int favorCount, String typeName) {
+        super("wishing_stone_" + typeName + "_" + favor.getName(), "wishing_stones/" + typeName + "/" + favor.getName());
+        this.favor = favor;
+        this.favorCount = favorCount;
 
-        setMaxStackSize(1);
+        setMaxStackSize(64);
         setCreativeTab(DivineFavorCreativeTabGems.INSTANCE);
-    }
-
-    public ModSpirit getSpirit() {
-        return spirit;
+        ModRegistries.items.register(this);
     }
 
     @Override
-    public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand hand) {
-        ItemStack itemStackIn = playerIn.getHeldItem(hand);
-        if (worldIn.isRemote)
-            return new ActionResult<>(EnumActionResult.PASS, itemStackIn);
+    public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, @Nonnull EnumHand hand) {
+        ItemStack stack = player.getHeldItem(hand);
+        EnumActionResult result = addFavor(player, stack) ? EnumActionResult.SUCCESS : EnumActionResult.PASS;
+        return new ActionResult<>(result, stack);
+    }
 
-        ItemStack stack = playerIn.getHeldItem(hand);
+    private boolean addFavor(EntityPlayer player, ItemStack stack) {
+        if (player.world.isRemote)
+            return false;
         if (!(stack.getItem() instanceof ItemWishingStone))
-            return new ActionResult<>(EnumActionResult.PASS, itemStackIn);
-
-        int count = playerIn.isSneaking() ? 8 : talisman.getFavorCost();
-        gainFavor(playerIn, count);
-        return new ActionResult<>(EnumActionResult.SUCCESS, itemStackIn);
+            return false;
+        FavorData favorData = PlayerData.get(player).getFavorData();
+        favorData.get(favor).addValue(favorCount);
+        new MessageSyncFavorValue(favor, favorData).sendTo(player);
+        stack.shrink(1);
+        return false;
     }
 
     @Override
     public EnumRarity getRarity(ItemStack stack) {
         return EnumRarity.RARE;
-    }
-
-    public void gainFavor(EntityPlayer player, int count) {
-        FavorData usesData = PlayerData.get(player).getFavorData();
-        int maxSpellUses = usesData.addMaxFavor(talisman.getFavorId(), count);
-        new MessageSyncMaxSpellUses(talisman.getFavorId(), maxSpellUses).sendTo(player);
     }
 }

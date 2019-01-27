@@ -15,7 +15,7 @@
 //    public MultiblockTemplateData(List<BlockPos> blockPositions, List<String> blockRegestryNames) {
 //        blockPositionsSerialized = new long[blockPositions.size()];
 //        for (int i = 0; i < blockPositions.size(); i++)
-//            blockPositionsSerialized[i] = blockPositions.get(i).toLong();
+//            blockPositionsSerialized[i] = blockPositions.getValue(i).toLong();
 //
 //        Map<String,Integer> blockNameToIndexMap = new HashMap<>();
 //        int nextIndex = 0;
@@ -29,15 +29,15 @@
 //        blockNameIndexes = new int[blockPositions.size()];
 //
 //        for (int i = 0; i < blockRegestryNames.size(); i++) {
-//            String name = blockRegestryNames.get(i);
-//            blockNameIndexes[i] = blockNameToIndexMap.get(name);
+//            String name = blockRegestryNames.getValue(i);
+//            blockNameIndexes[i] = blockNameToIndexMap.getValue(name);
 //        }
 //    }
 //
 //    public List<BlockPos> getPositions() {
 //        List<BlockPos> posList = new ArrayList<>(blockPositionsSerialized.length);
 //        for (int i = 0; i < blockPositionsSerialized.length; i++)
-//            posList.add(BlockPos.fromLong(blockPositionsSerialized[i]));
+//            posList.addValue(BlockPos.fromLong(blockPositionsSerialized[i]));
 //        return posList;
 //    }
 //
