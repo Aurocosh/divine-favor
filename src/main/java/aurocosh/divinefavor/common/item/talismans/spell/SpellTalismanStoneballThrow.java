@@ -1,7 +1,9 @@
 package aurocosh.divinefavor.common.item.talismans.spell;
 
 import aurocosh.divinefavor.common.entity.projectile.EntityStoneball;
+import aurocosh.divinefavor.common.favor.ModFavor;
 import aurocosh.divinefavor.common.item.talismans.spell.base.ItemSpellTalisman;
+import aurocosh.divinefavor.common.item.talismans.spell.base.SpellOptions;
 import aurocosh.divinefavor.common.item.talismans.spell.base.TalismanContext;
 import aurocosh.divinefavor.common.util.UtilRandom;
 import net.minecraft.entity.player.EntityPlayer;
@@ -9,11 +11,11 @@ import net.minecraft.init.SoundEvents;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.world.World;
 
-public class SpellTalismanStoneballThrow extends ItemSpellTalisman {
-    private static final int USES = 10;
+import java.util.EnumSet;
 
-    public SpellTalismanStoneballThrow() {
-        super("stoneball_throw", USES, true, false);
+public class SpellTalismanStoneballThrow extends ItemSpellTalisman {
+    public SpellTalismanStoneballThrow(String name, ModFavor favor, int favorCost, EnumSet<SpellOptions> options) {
+        super(name, favor, favorCost, options);
     }
 
     @Override

@@ -2,7 +2,7 @@ package aurocosh.divinefavor.common.item.wishing_stones;
 
 import aurocosh.divinefavor.common.core.DivineFavorCreativeTabGems;
 import aurocosh.divinefavor.common.custom_data.player.PlayerData;
-import aurocosh.divinefavor.common.custom_data.player.data.talisman_uses.TalismanUsesData;
+import aurocosh.divinefavor.common.custom_data.player.data.talisman_uses.FavorData;
 import aurocosh.divinefavor.common.item.base.ModItem;
 import aurocosh.divinefavor.common.item.talismans.base.ItemTalisman;
 import aurocosh.divinefavor.common.network.message.client.spell_uses.MessageSyncMaxSpellUses;
@@ -42,7 +42,7 @@ public class ItemWishingStone extends ModItem {
         if (!(stack.getItem() instanceof ItemWishingStone))
             return new ActionResult<>(EnumActionResult.PASS, itemStackIn);
 
-        int count = playerIn.isSneaking() ? 8 : talisman.getStartingSpellUses();
+        int count = playerIn.isSneaking() ? 8 : talisman.getFavorCost();
         gainFavor(playerIn, count);
         return new ActionResult<>(EnumActionResult.SUCCESS, itemStackIn);
     }
@@ -53,8 +53,8 @@ public class ItemWishingStone extends ModItem {
     }
 
     public void gainFavor(EntityPlayer player, int count) {
-        TalismanUsesData usesData = PlayerData.get(player).getTalismanUsesData();
-        int maxSpellUses = usesData.addMaxUses(talisman.getId(), count);
-        new MessageSyncMaxSpellUses(talisman.getId(), maxSpellUses).sendTo(player);
+        FavorData usesData = PlayerData.get(player).getFavorData();
+        int maxSpellUses = usesData.addMaxFavor(talisman.getFavorId(), count);
+        new MessageSyncMaxSpellUses(talisman.getFavorId(), maxSpellUses).sendTo(player);
     }
 }

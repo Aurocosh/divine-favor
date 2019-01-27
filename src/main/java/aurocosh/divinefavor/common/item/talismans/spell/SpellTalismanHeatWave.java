@@ -1,8 +1,10 @@
 package aurocosh.divinefavor.common.item.talismans.spell;
 
+import aurocosh.divinefavor.common.favor.ModFavor;
 import aurocosh.divinefavor.common.item.talismans.spell.base.ItemSpellTalisman;
-import aurocosh.divinefavor.common.lib.math.Vector3i;
+import aurocosh.divinefavor.common.item.talismans.spell.base.SpellOptions;
 import aurocosh.divinefavor.common.item.talismans.spell.base.TalismanContext;
+import aurocosh.divinefavor.common.lib.math.Vector3i;
 import aurocosh.divinefavor.common.util.UtilBlock;
 import aurocosh.divinefavor.common.util.UtilRandom;
 import net.minecraft.entity.Entity;
@@ -10,6 +12,7 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.math.AxisAlignedBB;
 
+import java.util.EnumSet;
 import java.util.List;
 
 public class SpellTalismanHeatWave extends ItemSpellTalisman {
@@ -18,10 +21,9 @@ public class SpellTalismanHeatWave extends ItemSpellTalisman {
     private static final int ENEMY_BURN_TIME_SECONDS = 3;
     private static final int CHANCE_TO_SET_ENEMY_ON_FIRE = 80;
     private static final int CHANCE_TO_SET_GROUND_ON_FIRE = 20;
-    private static final int USES = 10;
 
-    public SpellTalismanHeatWave() {
-        super("heat_wave", USES, true, true);
+    public SpellTalismanHeatWave(String name, ModFavor favor, int favorCost, EnumSet<SpellOptions> options) {
+        super(name, favor, favorCost, options);
     }
 
     @Override

@@ -1,7 +1,9 @@
 package aurocosh.divinefavor.common.item.talismans.spell;
 
 import aurocosh.divinefavor.common.damage_source.ModDamageSources;
+import aurocosh.divinefavor.common.favor.ModFavor;
 import aurocosh.divinefavor.common.item.talismans.spell.base.ItemSpellTalisman;
+import aurocosh.divinefavor.common.item.talismans.spell.base.SpellOptions;
 import aurocosh.divinefavor.common.lib.math.Vector3i;
 import aurocosh.divinefavor.common.item.talismans.spell.base.TalismanContext;
 import aurocosh.divinefavor.common.util.UtilEntity;
@@ -10,6 +12,7 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.Vec3d;
 
+import java.util.EnumSet;
 import java.util.List;
 
 public class SpellTalismanWinterBreath extends ItemSpellTalisman {
@@ -17,10 +20,9 @@ public class SpellTalismanWinterBreath extends ItemSpellTalisman {
     private final float CONE_TOLERANCE = 0.8f;
     private final float EXTRA_DAMAGE = 1;
     private final float KNOCKBACK_FORCE = 2;
-    private static final int USES = 10;
 
-    public SpellTalismanWinterBreath() {
-        super("winter_breath", USES, true, true);
+    public SpellTalismanWinterBreath(String name, ModFavor favor, int favorCost, EnumSet<SpellOptions> options) {
+        super(name, favor, favorCost, options);
     }
 
     @Override

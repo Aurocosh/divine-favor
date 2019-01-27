@@ -8,7 +8,6 @@ import aurocosh.divinefavor.common.item.common.ModItems;
 import aurocosh.divinefavor.common.item.spell_bow.capability.ISpellBowHandler;
 import aurocosh.divinefavor.common.item.spell_bow.capability.SpellBowProvider;
 import aurocosh.divinefavor.common.item.spell_bow.capability.SpellBowStorage;
-import aurocosh.divinefavor.common.item.talismans.base.ItemTalisman;
 import aurocosh.divinefavor.common.item.talismans.arrow.base.ItemArrowTalisman;
 import aurocosh.divinefavor.common.util.UtilBow;
 import aurocosh.divinefavor.common.util.UtilNbt;
@@ -28,7 +27,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.stats.StatList;
 import net.minecraft.util.*;
-import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
 import net.minecraftforge.event.ForgeEventFactory;
@@ -164,24 +162,6 @@ public class ItemSpellBow extends ModItem {
      */
     public EnumAction getItemUseAction(ItemStack stack) {
         return EnumAction.BOW;
-    }
-
-    @Override
-    public EnumActionResult onItemUse(EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
-        ItemStack stack = player.getHeldItem(hand);
-        if (!(stack.getItem() instanceof ItemSpellBow))
-            return EnumActionResult.PASS;
-
-        ISpellBowHandler bowHandler = stack.getCapability(CAPABILITY_SPELL_BOW, null);
-        assert bowHandler != null;
-
-        ItemStack talismanStack = bowHandler.getSelectedStack();
-        if (talismanStack.isEmpty())
-            return EnumActionResult.PASS;
-        ItemTalisman talisman = (ItemTalisman) talismanStack.getItem();
-        if (talisman.getSpellUses(player, world, pos, stack))
-            return EnumActionResult.SUCCESS;
-        return EnumActionResult.PASS;
     }
 
     /**

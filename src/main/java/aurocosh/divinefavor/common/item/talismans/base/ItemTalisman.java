@@ -1,12 +1,10 @@
 package aurocosh.divinefavor.common.item.talismans.base;
 
-import aurocosh.divinefavor.common.block.common.ModBlocks;
 import aurocosh.divinefavor.common.custom_data.player.PlayerData;
-import aurocosh.divinefavor.common.custom_data.player.data.talisman_uses.TalismanUsesData;
+import aurocosh.divinefavor.common.custom_data.player.data.talisman_uses.FavorData;
+import aurocosh.divinefavor.common.favor.ModFavor;
 import aurocosh.divinefavor.common.item.base.ModItem;
-import aurocosh.divinefavor.common.lib.interfaces.IIndexedEntry;
-import aurocosh.divinefavor.common.registry.mappers.ModMappers;
-import net.minecraft.block.state.IBlockState;
+import aurocosh.divinefavor.common.registry.ModRegistries;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
@@ -16,67 +14,63 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-public abstract class ItemTalisman extends ModItem implements IIndexedEntry {
-    protected final int id;
+public abstract class ItemTalisman extends ModItem {
     protected final String name;
-    protected final int startingSpellUses;
+    protected final int favorCost;
+    protected final ModFavor favor;
 
     // Talisman functions
-    public ItemTalisman(String name, String texturePath, int startingSpellUses) {
+
+    public ItemTalisman(String name, String texturePath, ModFavor favor, int favorCost) {
         super(name, texturePath);
 
         this.name = name;
-        this.startingSpellUses = startingSpellUses;
+        this.favor = favor;
+        this.favorCost = favorCost;
 
-        id = ModMappers.talismans.register(this);
-
+        ModRegistries.items.register(this);
         setMaxStackSize(1);
     }
-
     public String getName() {
         return name;
     }
 
-    public int getStartingSpellUses() {
-        return startingSpellUses;
+    public int getFavorCost() {
+        return favorCost;
     }
 
-    public int getUseCount(EntityPlayer player) {
-        TalismanUsesData usesData = PlayerData.get(player).getTalismanUsesData();
-        return usesData.getUses(id);
+    public ModFavor getFavor() {
+        return favor;
     }
+
+    public int getFavorId() {
+        return favor.getId();
+    }
+
+    public String getUseInfo(EntityPlayer player) {
+        FavorData favorData = PlayerData.get(player).getFavorData();
+        int favorValue = favorData.getFavor(getFavorId());
+
+        int useCount = favorCost == 0 ? -1 : favorValue / favorCost;
+        String description;
+        if(useCount < 0)
+            description = "Infinite use";
+        else if(useCount == 0)
+            description = "Unusable";
+        else
+            description = "Uses left: " + useCount;
+        return description;
+    }
+
 // Talisman functions
-
-
     @Override
     public EnumActionResult onItemUse(EntityPlayer playerIn, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
         ItemStack stack = playerIn.getHeldItem(hand);
-        if (!(stack.getItem() instanceof ItemTalisman))
-            return EnumActionResult.PASS;
-        if (getSpellUses(playerIn, worldIn, pos, stack))
-            return EnumActionResult.SUCCESS;
-        return EnumActionResult.SUCCESS;
-    }
-
-    public boolean getSpellUses(EntityPlayer player, World world, BlockPos pos, ItemStack stack) {
-        if (!player.isSneaking())
-            return false;
-        IBlockState state = world.getBlockState(pos);
-        if (state.getBlock() != ModBlocks.blockDiviner)
-            return false;
-
-        TalismanUsesData usesData = PlayerData.get(player).getTalismanUsesData();
-        usesData.addUses(id, 10);
-        return true;
+        return stack.getItem() instanceof ItemTalisman ? EnumActionResult.SUCCESS : EnumActionResult.PASS;
     }
 
     @Override
     public EnumRarity getRarity(ItemStack stack) {
         return EnumRarity.RARE;
-    }
-
-    @Override
-    public int getId() {
-        return id;
     }
 }

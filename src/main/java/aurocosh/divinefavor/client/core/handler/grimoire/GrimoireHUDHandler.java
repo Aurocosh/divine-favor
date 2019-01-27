@@ -101,8 +101,8 @@ public class GrimoireHUDHandler {
         if(talismanStack.isEmpty())
             return;
         ItemSpellTalisman talisman = (ItemSpellTalisman) talismanStack.getItem();
-        int useCount = talisman.getUseCount(player);
-        String description = useCount > 0 ? "Uses left: " + useCount : "Unusable";
+        String description = talisman.getUseInfo(player);
+
         int alpha = 255;
 
         int color = (0 << 0) + (128 << 8) + (0 << 16) + (alpha << 24);

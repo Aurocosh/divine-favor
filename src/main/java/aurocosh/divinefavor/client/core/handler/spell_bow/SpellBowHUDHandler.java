@@ -4,6 +4,7 @@ import aurocosh.divinefavor.DivineFavor;
 import aurocosh.divinefavor.common.item.talismans.arrow.base.ItemArrowTalisman;
 import aurocosh.divinefavor.common.item.spell_bow.ItemSpellBow;
 import aurocosh.divinefavor.common.item.spell_bow.capability.ISpellBowHandler;
+import aurocosh.divinefavor.common.item.talismans.spell.base.ItemSpellTalisman;
 import aurocosh.divinefavor.common.util.UtilPlayer;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScaledResolution;
@@ -100,9 +101,9 @@ public class SpellBowHUDHandler {
         ItemStack talismanStack = bowHandler.getSelectedStack();
         if (talismanStack.isEmpty())
             return;
-        ItemArrowTalisman talisman = (ItemArrowTalisman) talismanStack.getItem();
-        int useCount = talisman.getUseCount(player);
-        String description = useCount > 0 ? "Uses left: " + useCount : "Unusable";
+        ItemSpellTalisman talisman = (ItemSpellTalisman) talismanStack.getItem();
+        String description = talisman.getUseInfo(player);
+
         int alpha = 255;
 
         int color = (0 << 0) + (128 << 8) + (0 << 16) + (alpha << 24);

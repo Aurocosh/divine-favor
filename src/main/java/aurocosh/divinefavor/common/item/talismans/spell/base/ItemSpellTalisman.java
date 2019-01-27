@@ -2,7 +2,8 @@ package aurocosh.divinefavor.common.item.talismans.spell.base;
 
 import aurocosh.divinefavor.common.core.DivineFavorCreativeTabSpellTalismans;
 import aurocosh.divinefavor.common.custom_data.player.PlayerData;
-import aurocosh.divinefavor.common.custom_data.player.data.talisman_uses.TalismanUsesData;
+import aurocosh.divinefavor.common.custom_data.player.data.talisman_uses.FavorData;
+import aurocosh.divinefavor.common.favor.ModFavor;
 import aurocosh.divinefavor.common.item.talismans.base.ItemTalisman;
 import aurocosh.divinefavor.common.network.message.client.spell_uses.MessageSyncSpellUses;
 import aurocosh.divinefavor.common.util.UtilEntity;
@@ -16,15 +17,16 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
 
+import javax.annotation.Nonnull;
+import java.util.EnumSet;
+
 public class ItemSpellTalisman extends ItemTalisman {
-    protected final boolean castOnUse;
-    protected final boolean castOnRightClick;
+    private final EnumSet<SpellOptions> options;
 
     // Talisman functions
-    public ItemSpellTalisman(String name, int startingSpellUses, boolean castOnUse, boolean castOnRightClick) {
-        super("talisman_" + name, "talismans/" + name, startingSpellUses);
-        this.castOnUse = castOnUse;
-        this.castOnRightClick = castOnRightClick;
+    public ItemSpellTalisman(String name, ModFavor favor, int favorCost, EnumSet<SpellOptions> options) {
+        super("talisman_" + name, "talismans/" + name, favor, favorCost);
+        this.options = options;
 
         setMaxStackSize(1);
         setCreativeTab(DivineFavorCreativeTabSpellTalismans.INSTANCE);
@@ -41,16 +43,16 @@ public class ItemSpellTalisman extends ItemTalisman {
     }
 
     private boolean claimCost(TalismanContext context) {
-        if(!isConsumeCharge(context))
+        if (!isConsumeCharge(context))
             return true;
 
-        TalismanUsesData usesData = PlayerData.get(context.player).getTalismanUsesData();
-        if (!usesData.consumeUse(id))
+        FavorData usesData = PlayerData.get(context.player).getFavorData();
+        if (!usesData.consumeFavor(getFavorId()))
             return false;
         if (context.world.isRemote)
             return true;
 
-        new MessageSyncSpellUses(id, usesData).sendTo(context.player);
+        new MessageSyncSpellUses(getFavorId(), usesData).sendTo(context.player);
         return true;
     }
 // Talisman functions
@@ -59,16 +61,15 @@ public class ItemSpellTalisman extends ItemTalisman {
     @Override
     public EnumActionResult onItemUse(EntityPlayer playerIn, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
         ItemStack stack = playerIn.getHeldItem(hand);
-        if (!(stack.getItem() instanceof ItemSpellTalisman))
-            return EnumActionResult.PASS;
-        if (getSpellUses(playerIn, worldIn, pos, stack))
+        if (stack.getItem() instanceof ItemSpellTalisman) {
+            castItemUse(playerIn, worldIn, pos, hand, facing, hitX, hitY, hitZ);
             return EnumActionResult.SUCCESS;
-        castItemUse(playerIn, worldIn, pos, hand, facing, hitX, hitY, hitZ);
-        return EnumActionResult.SUCCESS;
+        }
+        return EnumActionResult.PASS;
     }
 
     @Override
-    public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand hand) {
+    public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, @Nonnull EnumHand hand) {
         ItemStack stack = playerIn.getHeldItem(hand);
         if (!(stack.getItem() instanceof ItemSpellTalisman))
             return new ActionResult<>(EnumActionResult.PASS, stack);
@@ -77,17 +78,28 @@ public class ItemSpellTalisman extends ItemTalisman {
     }
 
     public void castItemUse(EntityPlayer playerIn, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
-        if (!castOnUse)
+        if (!options.contains(SpellOptions.ItemUseCast))
             return;
-        TalismanContext context = new TalismanContext(playerIn, worldIn, pos, hand, facing, CastType.ITEM_USE_CAST);
+        TalismanContext context = new TalismanContext(playerIn, worldIn, pos, hand, facing, CastType.UseCast, options);
         cast(context);
     }
 
     public boolean castRightClick(World world, EntityPlayer player, EnumHand hand) {
-        if (!castOnRightClick)
+        if (!options.contains(SpellOptions.RightClickCast))
             return false;
-        RayTraceResult pos = UtilEntity.getBlockPlayerLookingAt(player);
-        TalismanContext context = new TalismanContext(player, world, pos.getBlockPos(), hand, pos.sideHit, CastType.RIGHT_CLICK);
+
+        BlockPos pos;
+        EnumFacing facing;
+        if (options.contains(SpellOptions.OnRightCastRayTraceBlock)) {
+            RayTraceResult traceResult = UtilEntity.getBlockPlayerLookingAt(player);
+            pos = traceResult.getBlockPos();
+            facing = traceResult.sideHit;
+        }
+        else {
+            pos = player.getPosition();
+            facing = EnumFacing.UP;
+        }
+        TalismanContext context = new TalismanContext(player, world, pos, hand, facing, CastType.RightCast, options);
         return cast(context);
     }
 

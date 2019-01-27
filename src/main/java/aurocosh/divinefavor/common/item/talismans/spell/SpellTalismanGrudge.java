@@ -2,17 +2,19 @@ package aurocosh.divinefavor.common.item.talismans.spell;
 
 import aurocosh.divinefavor.common.custom_data.player.PlayerData;
 import aurocosh.divinefavor.common.custom_data.player.data.grudge.GrudgeData;
+import aurocosh.divinefavor.common.favor.ModFavor;
 import aurocosh.divinefavor.common.item.talismans.spell.base.ItemSpellTalisman;
+import aurocosh.divinefavor.common.item.talismans.spell.base.SpellOptions;
 import aurocosh.divinefavor.common.item.talismans.spell.base.TalismanContext;
 import aurocosh.divinefavor.common.network.message.client.MessageSyncGrudge;
 import aurocosh.divinefavor.common.potions.base.effect.ModEffectToggle;
 import aurocosh.divinefavor.common.potions.common.ModPotions;
 
-public class SpellTalismanGrudge extends ItemSpellTalisman {
-    private static final int USES = 10;
+import java.util.EnumSet;
 
-    public SpellTalismanGrudge() {
-        super("grudge", USES, true, true);
+public class SpellTalismanGrudge extends ItemSpellTalisman {
+    public SpellTalismanGrudge(String name, ModFavor favor, int favorCost, EnumSet<SpellOptions> options) {
+        super(name, favor, favorCost, options);
     }
 
     @Override

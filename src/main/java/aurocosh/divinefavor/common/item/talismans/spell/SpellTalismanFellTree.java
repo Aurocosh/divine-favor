@@ -1,7 +1,9 @@
 package aurocosh.divinefavor.common.item.talismans.spell;
 
 import aurocosh.divinefavor.common.events.TalismanEvent;
+import aurocosh.divinefavor.common.favor.ModFavor;
 import aurocosh.divinefavor.common.item.talismans.spell.base.ItemSpellTalisman;
+import aurocosh.divinefavor.common.item.talismans.spell.base.SpellOptions;
 import aurocosh.divinefavor.common.item.talismans.spell.base.TalismanContext;
 import aurocosh.divinefavor.common.util.UtilBlock;
 import com.google.common.collect.Lists;
@@ -16,15 +18,14 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 
+import java.util.EnumSet;
 import java.util.Queue;
 import java.util.Set;
 import java.util.Stack;
 
 public class SpellTalismanFellTree extends ItemSpellTalisman {
-    private static final int USES = 10;
-
-    public SpellTalismanFellTree() {
-        super("fell_tree", USES, true, false);
+    public SpellTalismanFellTree(String name, ModFavor favor, int favorCost, EnumSet<SpellOptions> options) {
+        super(name, favor, favorCost, options);
     }
 
     @Override

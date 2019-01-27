@@ -6,6 +6,7 @@ import aurocosh.divinefavor.common.custom_data.living.capability.LivingDataDataH
 import aurocosh.divinefavor.common.custom_data.player.capability.PlayerDataDataHandler;
 import aurocosh.divinefavor.common.entity.ModEntities;
 import aurocosh.divinefavor.common.entity.common.ModGrudgeMobs;
+import aurocosh.divinefavor.common.favor.ModFavors;
 import aurocosh.divinefavor.common.item.calling_stones.ModCallingStones;
 import aurocosh.divinefavor.common.item.common.ModItems;
 import aurocosh.divinefavor.common.item.contract.ModContracts;
@@ -37,6 +38,7 @@ import java.io.File;
 @Mod.EventBusSubscriber
 public class CommonProxy {
     public void preInit(FMLPreInitializationEvent e) {
+        ModFavors.preInit();
         ModMultiBlocks.preInit();
 
         ModPotions.preInit();
