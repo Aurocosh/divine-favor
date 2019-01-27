@@ -1,6 +1,7 @@
 package aurocosh.divinefavor.common.entity.minions.base;
 
 import com.google.common.base.Optional;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityCreature;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -102,5 +103,27 @@ public class MinionData<T extends EntityCreature & IMinion> {
 
     public void setAttackTarget(EntityLivingBase livingBase){
         attackTarget = livingBase;
+    }
+
+    public boolean shouldAttack(Entity entity) {
+        Entity owner = getOwner();
+        if (entity == owner)
+            return false;
+        if (entity instanceof IMinion) {
+            IMinion minion = (IMinion) entity;
+            if (minion.getMinionData().getOwner() == owner)
+                return false;
+        }
+        if (!(entity instanceof EntityLivingBase))
+            return false;
+        return ((EntityLivingBase) entity).attackable();
+    }
+
+    public boolean isFollowing() {
+        return getMode() == MinionMode.Follow;
+    }
+
+    public boolean isWaiting() {
+        return getMode() == MinionMode.Wait;
     }
 }

@@ -16,6 +16,9 @@ import net.minecraft.pathfinding.PathNodeType;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
+import javax.annotation.Nonnull;
+import java.util.function.BooleanSupplier;
+
 public class EntityAIFollowOwner<T extends EntityLiving & IMinion> extends EntityAIBase {
     private static final int TELEPORT_ATTEMPTS = 4;
     private static final int TELEPORT_RADIUS = 4;
@@ -24,6 +27,8 @@ public class EntityAIFollowOwner<T extends EntityLiving & IMinion> extends Entit
     private final double followSpeed;
     private final PathNavigate petPathfinder;
     private final boolean teleportIfTooFar;
+    @Nonnull
+    private BooleanSupplier shouldFollow;
 
     private EntityLivingBase owner;
     private World world;
@@ -32,7 +37,7 @@ public class EntityAIFollowOwner<T extends EntityLiving & IMinion> extends Entit
     private float oldWaterCost;
     private int timeToRecalcPath;
 
-    public EntityAIFollowOwner(T minion, double followSpeed, float minDist, float maxDist, boolean teleportIfTooFar) {
+    public EntityAIFollowOwner(T minion, double followSpeed, float minDist, float maxDist, boolean teleportIfTooFar, @Nonnull final BooleanSupplier shouldFollow) {
         this.minion = minion;
         world = minion.world;
         petPathfinder = minion.getNavigator();
@@ -40,6 +45,7 @@ public class EntityAIFollowOwner<T extends EntityLiving & IMinion> extends Entit
         this.minDist = minDist;
         this.maxDist = maxDist;
         this.teleportIfTooFar = teleportIfTooFar;
+        this.shouldFollow = shouldFollow;
         setMutexBits(3);
 
         if (!(minion.getNavigator() instanceof PathNavigateGround))
@@ -56,14 +62,12 @@ public class EntityAIFollowOwner<T extends EntityLiving & IMinion> extends Entit
             return false;
         else if (livingBase.isSpectator())
             return false;
-        else if (minion.getMinionData().getMode() == MinionMode.Wait)
-            return false;
         else if (minion.getDistanceSq(livingBase) < minDist * minDist)
             return false;
-        else {
-            owner = livingBase;
-            return true;
-        }
+        else if (!shouldFollow.getAsBoolean())
+            return false;
+        owner = livingBase;
+        return true;
     }
 
     /**
@@ -71,7 +75,7 @@ public class EntityAIFollowOwner<T extends EntityLiving & IMinion> extends Entit
      */
     @Override
     public boolean shouldContinueExecuting() {
-        return !petPathfinder.noPath() && minion.getDistanceSq(owner) > maxDist * maxDist && minion.getMinionData().getMode() != MinionMode.Wait;
+        return !petPathfinder.noPath() && minion.getDistanceSq(owner) > maxDist * maxDist && shouldFollow.getAsBoolean();
     }
 
     /**

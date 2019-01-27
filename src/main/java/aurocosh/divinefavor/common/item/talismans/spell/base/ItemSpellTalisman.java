@@ -48,9 +48,10 @@ public class ItemSpellTalisman extends ItemTalisman {
     }
 
     private boolean claimCost(TalismanContext context) {
+        if(favorCost == 0)
+            return true;
         if (!isConsumeCharge(context))
             return true;
-
         FavorData usesData = PlayerData.get(context.player).getFavorData();
         if (!usesData.consumeFavor(getFavorId()))
             return false;

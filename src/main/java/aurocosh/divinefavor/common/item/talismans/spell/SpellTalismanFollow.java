@@ -15,16 +15,11 @@ import net.minecraft.util.math.Vec3d;
 import java.util.EnumSet;
 import java.util.List;
 
-public class SpellTalismanTarget extends ItemSpellTalisman {
+public class SpellTalismanFollow extends ItemSpellTalisman {
     private static final double RADIUS = 30;
 
-    public SpellTalismanTarget(String name, ModFavor favor, int favorCost, EnumSet<SpellOptions> options) {
+    public SpellTalismanFollow(String name, ModFavor favor, int favorCost, EnumSet<SpellOptions> options) {
         super(name, favor, favorCost, options);
-    }
-
-    @Override
-    protected boolean validate(TalismanContext context) {
-        return context.target != null;
     }
 
     @Override
@@ -36,8 +31,8 @@ public class SpellTalismanTarget extends ItemSpellTalisman {
         for (Entity entity : entities) {
             IMinion minion = (IMinion) entity;
             MinionData minionData = minion.getMinionData();
-            minionData.setAttackTarget(context.target);
-            minionData.setMode(MinionMode.Normal);
+            minionData.setAttackTarget(null);
+            minionData.setMode(MinionMode.Follow);
         }
     }
 }

@@ -33,6 +33,7 @@ public final class ModSpellTalismans {
     public static ItemSpellTalisman fell_tree;
     public static ItemSpellTalisman fins;
     public static ItemSpellTalisman focused_fury;
+    public static ItemSpellTalisman follow;
     public static ItemSpellTalisman gills;
     public static ItemSpellTalisman green_cycle;
     public static ItemSpellTalisman ground_flow;
@@ -127,9 +128,10 @@ public final class ModSpellTalismans {
         spider_might = new SpellTalismanModPotion("spider_might", ModFavors.allfire, ConfigTalismans.spider_might.uses, ModPotions.spider_might, ConfigTalismans.spider_might.duration);
         summon_zombie = new SpellTalismanSummonMinion<>("summon_zombie", ModFavors.allfire, 1, SpellOptions.USE_CAST, MinionZombie.class);
         target = new SpellTalismanTarget("target", ModFavors.allfire,0, SpellOptions.ENTITY_CAST);
+        follow = new SpellTalismanFollow("follow", ModFavors.allfire,0, SpellOptions.RIGHT_CAST);
 
         // nefir
-        evil_eye = new SpellTalismanTarget("evil_eye", ModFavors.nefir,10, SpellOptions.ENTITY_CAST);
+        evil_eye = new SpellTalismanEvilEye("evil_eye", ModFavors.nefir,10, SpellOptions.ENTITY_CAST);
         hellisphere = new SpellTalismanHellisphere("hellisphere", ModFavors.nefir, 1, SpellOptions.USE_CAST);
         infernal_touch = new SpellTalismanInfernalTouch("infernal_touch", ModFavors.nefir, 1, SpellOptions.USE_CAST);
         molten_skin = new SpellTalismanMoltenSkin("molten_skin", ModFavors.nefir, 1, SpellOptions.ALL_CAST);

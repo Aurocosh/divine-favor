@@ -1,16 +1,20 @@
 package aurocosh.divinefavor.common.entity.ai;
 
 import aurocosh.divinefavor.common.entity.minions.base.IMinion;
-import aurocosh.divinefavor.common.entity.minions.base.MinionMode;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.ai.EntityAIBase;
 
+import javax.annotation.Nonnull;
+import java.util.function.BooleanSupplier;
+
 public class EntityAIMinionWait<T extends EntityLiving & IMinion> extends EntityAIBase {
     private final T minion;
+    private final BooleanSupplier shouldWait;
 
     /** If the EntityTameable is sitting. */
-    public EntityAIMinionWait(T minion) {
+    public EntityAIMinionWait(T minion, @Nonnull final BooleanSupplier shouldWait) {
         this.minion = minion;
+        this.shouldWait = shouldWait;
         setMutexBits(5);
     }
 
@@ -25,10 +29,7 @@ public class EntityAIMinionWait<T extends EntityLiving & IMinion> extends Entity
             return false;
         else if (!minion.onGround)
             return false;
-        else {
-            MinionMode mode = minion.getMinionData().getMode();
-            return mode == MinionMode.Wait;
-        }
+        return shouldWait.getAsBoolean();
     }
 
     /**
@@ -39,10 +40,8 @@ public class EntityAIMinionWait<T extends EntityLiving & IMinion> extends Entity
         minion.getNavigator().clearPath();
     }
 
-    /**
-     * Resets the task
-     */
     @Override
-    public void resetTask() {
+    public boolean shouldContinueExecuting() {
+        return shouldWait.getAsBoolean();
     }
 }

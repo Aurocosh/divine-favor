@@ -8,9 +8,7 @@ import aurocosh.divinefavor.common.entity.minions.base.IMinion;
 import aurocosh.divinefavor.common.entity.minions.base.MinionData;
 import aurocosh.divinefavor.common.entity.minions.base.MinionMode;
 import com.google.common.base.Optional;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
-import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.*;
 import net.minecraft.entity.monster.EntityZombie;
@@ -37,23 +35,30 @@ public class MinionZombie extends EntityZombie implements IMinion {
         super(worldIn);
         minionData = new MinionData<>(this, dataManager, BEGGING, MODE, OWNER_UNIQUE_ID);
         minionData.setMode(MinionMode.Normal);
+
+        initEntityCustomAI();
     }
 
     @Override
     protected void initEntityAI() {
+        // unused because it is called before all data initialized by child classes
+    }
+
+    protected void initEntityCustomAI() {
         tasks.addTask(0, new EntityAISwimming(this));
-        tasks.addTask(1, new EntityAIMinionWait<>(this));
-        tasks.addTask(2, new EntityAIZombieAttack(this, 1.0D, false));
-        tasks.addTask(3, new EntityAITempt(this, 1.1D, Items.CHICKEN, false));
-        tasks.addTask(5, new EntityAIMoveTowardsRestriction(this, 1.0D));
-        tasks.addTask(5, new EntityAIFollowOwner<>(this, 2.0D, 5.0F, 2.0F, false));
-        tasks.addTask(7, new EntityAIWander(this, 1.0D));
-        tasks.addTask(8, new EntityAIWatchClosest(this, EntityPlayer.class, 8.0F));
-        tasks.addTask(8, new EntityAIBeg<>(this, 8.0F, Items.CHICKEN));
+        tasks.addTask(1, new EntityAIFollowOwner<>(this, 2.0D, 5.0F, 2.0F, true, minionData::isFollowing));
+        tasks.addTask(2, new EntityAIMinionWait<>(this, () -> minionData.isFollowing() || minionData.isWaiting()));
+        tasks.addTask(3, new EntityAIZombieAttack(this, 1.0D, false));
+        tasks.addTask(4, new EntityAITempt(this, 1.1D, Items.CHICKEN, false));
+        tasks.addTask(6, new EntityAIMoveTowardsRestriction(this, 1.0D));
+        tasks.addTask(6, new EntityAIFollowOwner<>(this, 2.0D, 5.0F, 2.0F, false, () -> true));
+        tasks.addTask(8, new EntityAIWander(this, 1.0D));
+        tasks.addTask(9, new EntityAIWatchClosest(this, EntityPlayer.class, 8.0F));
+        tasks.addTask(9, new EntityAIBeg<>(this, 8.0F, Items.CHICKEN));
 
         targetTasks.addTask(1, new EntityAIOwnerHurtByTarget<>(this));
-        targetTasks.addTask(2, new EntityAIOwnerOrderedToAttack<>(this));
-        targetTasks.addTask(3, new EntityAINearestAttackableTarget<>(this, EntityLiving.class, 0, true, true, this::shouldAttack));
+        targetTasks.addTask(2, new EntityAIOwnerOrderedToAttack<>(this, minionData));
+        targetTasks.addTask(3, new EntityAINearestAttackableTarget<>(this, EntityLiving.class, 0, true, true, minionData::shouldAttack));
         targetTasks.addTask(4, new EntityAIHurtByTarget(this, false));
     }
 
@@ -112,7 +117,7 @@ public class MinionZombie extends EntityZombie implements IMinion {
             return false;
         if (!minionData.isOwner(player))
             return false;
-        switchMode(minionData.getMode() != MinionMode.Wait ? MinionMode.Wait : MinionMode.Normal);
+        switchMode(minionData.getMode() != MinionMode.Normal ? MinionMode.Normal : MinionMode.Wait);
         return true;
     }
 
@@ -142,12 +147,6 @@ public class MinionZombie extends EntityZombie implements IMinion {
     }
 
     @Override
-    public void attack(EntityLivingBase livingBase) {
-        switchMode(MinionMode.Normal);
-        setAttackTarget(livingBase);
-    }
-
-    @Override
     public MinionData getMinionData() {
         return minionData;
     }
@@ -155,19 +154,5 @@ public class MinionZombie extends EntityZombie implements IMinion {
     @Override
     protected boolean shouldBurnInDay() {
         return false;
-    }
-
-    private boolean shouldAttack(Entity entity) {
-        Entity owner = getMinionData().getOwner();
-        if (entity == owner)
-            return false;
-        if (entity instanceof IMinion) {
-            IMinion minion = (IMinion) entity;
-            if (minion.getMinionData().getOwner() == owner)
-                return false;
-        }
-        if (!(entity instanceof EntityLivingBase))
-            return false;
-        return ((EntityLivingBase) entity).attackable();
     }
 }

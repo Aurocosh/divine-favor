@@ -4,7 +4,8 @@ import net.minecraft.util.math.MathHelper;
 
 public enum MinionMode {
     Normal(0),
-    Wait(1);
+    Follow(1),
+    Wait(2);
 
     // Optimization
     public static final MinionMode[] VALUES = MinionMode.values();
