@@ -7,6 +7,7 @@ import aurocosh.divinefavor.common.favor.ModFavor;
 import aurocosh.divinefavor.common.item.talismans.base.ItemTalisman;
 import aurocosh.divinefavor.common.network.message.client.spell_uses.MessageSyncSpellUses;
 import aurocosh.divinefavor.common.util.UtilEntity;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ActionResult;
@@ -21,6 +22,8 @@ import javax.annotation.Nonnull;
 import java.util.EnumSet;
 
 public class ItemSpellTalisman extends ItemTalisman {
+    private static final double ENTITY_SEARCH_DISTANCE = 30;
+
     private final EnumSet<SpellOptions> options;
 
     // Talisman functions
@@ -33,6 +36,8 @@ public class ItemSpellTalisman extends ItemTalisman {
     }
 
     public boolean cast(TalismanContext context) {
+        if(!validate(context))
+            return false;
         if (!claimCost(context))
             return false;
         if (context.world.isRemote)
@@ -80,7 +85,7 @@ public class ItemSpellTalisman extends ItemTalisman {
     public void castItemUse(EntityPlayer playerIn, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
         if (!options.contains(SpellOptions.ItemUseCast))
             return;
-        TalismanContext context = new TalismanContext(playerIn, worldIn, pos, hand, facing, CastType.UseCast, options);
+        TalismanContext context = new TalismanContext(playerIn, worldIn, pos, hand, facing, null, CastType.UseCast, options);
         cast(context);
     }
 
@@ -90,6 +95,7 @@ public class ItemSpellTalisman extends ItemTalisman {
 
         BlockPos pos;
         EnumFacing facing;
+        EntityLivingBase target = null;
         if (options.contains(SpellOptions.OnRightCastRayTraceBlock)) {
             RayTraceResult traceResult = UtilEntity.getBlockPlayerLookingAt(player);
             pos = traceResult.getBlockPos();
@@ -99,8 +105,15 @@ public class ItemSpellTalisman extends ItemTalisman {
             pos = player.getPosition();
             facing = EnumFacing.UP;
         }
-        TalismanContext context = new TalismanContext(player, world, pos, hand, facing, CastType.RightCast, options);
+        if(options.contains(SpellOptions.OnRightCastFindTargetEntity))
+            target = UtilEntity.getEntityPlayerLookingAt(player, EntityLivingBase.class, ENTITY_SEARCH_DISTANCE, true);
+
+        TalismanContext context = new TalismanContext(player, world, pos, hand, facing, target, CastType.RightCast, options);
         return cast(context);
+    }
+
+    protected boolean validate(TalismanContext context) {
+        return true;
     }
 
     protected boolean isConsumeCharge(TalismanContext context) {

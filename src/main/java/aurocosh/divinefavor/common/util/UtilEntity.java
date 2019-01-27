@@ -2,17 +2,24 @@ package aurocosh.divinefavor.common.util;
 
 import aurocosh.divinefavor.common.lib.GlobalBlockPos;
 import aurocosh.divinefavor.common.lib.math.Vector3;
+import com.google.common.base.Predicate;
+import com.google.common.base.Predicates;
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.server.MinecraftServer;
+import net.minecraft.util.EntitySelectors;
+import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
+
+import javax.annotation.Nullable;
+import java.util.List;
 
 public class UtilEntity {
     public static void addVelocity(Entity entity, Vec3d direction, float velocity){
@@ -110,5 +117,51 @@ public class UtilEntity {
         Vector3 posVec = new Vector3(player.posX, player.posY + player.getEyeHeight(), player.posZ);
         Vector3 lookVec = new Vector3(player.getLookVec());
         return UtilWorld.raycast(player.world, posVec, lookVec, 20);
+    }
+
+    public static <T extends Entity> List<T> getEntitiesInSquareRadius(Class<? extends T> clazz, World world, Vec3d origin, double radius, @Nullable Predicate<? super T> filter){
+        AxisAlignedBB axis = new AxisAlignedBB(origin.x - radius, origin.y - radius, origin.z - radius, origin.x + radius, origin.y + radius, origin.z + radius);
+        return world.getEntitiesWithinAABB(clazz, axis, filter);
+    }
+
+    public static boolean isInRadius(Vec3d origin, Entity entity, double radiusSq) {
+        return origin.squareDistanceTo(entity.getPositionVector()) < radiusSq;
+    }
+
+    public static boolean isInCone(Vec3d playerLookVec, Vec3d origin, Entity entity, double coneTolerance) {
+        Vec3d vec = entity.getPositionVector().subtract(origin).normalize();
+        return vec.dotProduct(playerLookVec) >= coneTolerance;
+    }
+
+    public static <T extends Entity> T getEntityPlayerLookingAt(EntityPlayer player, Class<? extends T> clazz, double searchDistance, boolean ignoreMount){
+        Vec3d entityLook = player.getLook(1);
+        Vec3d positionEyes = player.getPositionEyes(1);
+        Vec3d rayEnd = positionEyes.add(entityLook.x * searchDistance, entityLook.y * searchDistance, entityLook.z * searchDistance);
+
+        AxisAlignedBB searchBoundingBox = player.getEntityBoundingBox().expand(entityLook.x * searchDistance, entityLook.y * searchDistance, entityLook.z * searchDistance).grow(1.0D, 1.0D, 1.0D);
+        Predicate<T> predicate = Predicates.and(EntitySelectors.NOT_SPECTATING, e -> (e != null) && (e != player) && e.canBeCollidedWith() && (ignoreMount || (e.getLowestRidingEntity() == player.getLowestRidingEntity())));
+        List<T> entities = player.world.getEntitiesWithinAABB(clazz, searchBoundingBox, predicate);
+
+        T pointedEntity = null;
+        double hitDistance = searchDistance;
+        for (T entity : entities) {
+            AxisAlignedBB boundingBox = entity.getEntityBoundingBox().grow(entity.getCollisionBorderSize());
+            RayTraceResult rayTraceResult = boundingBox.calculateIntercept(positionEyes, rayEnd);
+
+            if (boundingBox.contains(positionEyes)) {
+                if (hitDistance >= 0.0D) {
+                    pointedEntity = entity;
+                    break;
+                }
+            }
+            else if (rayTraceResult != null) {
+                double newHitDistance = positionEyes.distanceTo(rayTraceResult.hitVec);
+                if (newHitDistance < hitDistance) {
+                    pointedEntity = entity;
+                    hitDistance = newHitDistance;
+                }
+            }
+        }
+        return pointedEntity;
     }
 }

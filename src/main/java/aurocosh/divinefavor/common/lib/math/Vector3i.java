@@ -1,9 +1,11 @@
 package aurocosh.divinefavor.common.lib.math;
 
 import aurocosh.divinefavor.common.lib.interfaces.IDeepCopy;
+import net.minecraft.entity.EntityLiving;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3i;
 
+import javax.swing.text.html.parser.Entity;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
