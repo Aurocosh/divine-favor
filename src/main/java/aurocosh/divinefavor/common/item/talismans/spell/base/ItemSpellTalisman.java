@@ -2,10 +2,10 @@ package aurocosh.divinefavor.common.item.talismans.spell.base;
 
 import aurocosh.divinefavor.common.core.DivineFavorCreativeTabSpellTalismans;
 import aurocosh.divinefavor.common.custom_data.player.PlayerData;
-import aurocosh.divinefavor.common.custom_data.player.data.talisman_uses.FavorData;
+import aurocosh.divinefavor.common.custom_data.player.data.favor.FavorData;
 import aurocosh.divinefavor.common.favor.ModFavor;
 import aurocosh.divinefavor.common.item.talismans.base.ItemTalisman;
-import aurocosh.divinefavor.common.network.message.client.spell_uses.MessageSyncSpellUses;
+import aurocosh.divinefavor.common.network.message.client.spell_uses.MessageSyncFavorValue;
 import aurocosh.divinefavor.common.util.UtilEntity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -52,13 +52,13 @@ public class ItemSpellTalisman extends ItemTalisman {
             return true;
         if (!isConsumeCharge(context))
             return true;
-        FavorData usesData = PlayerData.get(context.player).getFavorData();
-        if (!usesData.consumeFavor(getFavorId()))
+        FavorData favorData = PlayerData.get(context.player).getFavorData();
+        if (!favorData.get(favor).consume(favorCost))
             return false;
         if (context.world.isRemote)
             return true;
 
-        new MessageSyncSpellUses(getFavorId(), usesData).sendTo(context.player);
+        new MessageSyncFavorValue(favor, favorData).sendTo(context.player);
         return true;
     }
 // Talisman functions

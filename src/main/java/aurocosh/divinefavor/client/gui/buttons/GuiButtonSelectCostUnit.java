@@ -35,7 +35,7 @@ public class GuiButtonSelectCostUnit extends GuiButton implements IActionButton 
             drawModalRectWithCustomSizedTexture(x, y, 0, textureStartY, width, height, 10, 30);
 
             //if(k == 2)
-//                gui.tooltip.add(TextFormatting.GREEN + I18n.translateToLocal("psimisc.learn"));
+//                gui.tooltip.addValue(TextFormatting.GREEN + I18n.translateToLocal("psimisc.learn"));
         }
     }
 

@@ -9,7 +9,7 @@ import aurocosh.divinefavor.common.custom_data.player.data.grudge.GrudgeDataSeri
 import aurocosh.divinefavor.common.custom_data.player.data.interaction_handler.InteractionDataSerializer;
 import aurocosh.divinefavor.common.custom_data.player.data.molten_skin.MoltenSkinDataSerializer;
 import aurocosh.divinefavor.common.custom_data.player.data.pearl_crumbs.PearlCrumbsDataSerializer;
-import aurocosh.divinefavor.common.custom_data.player.data.talisman_uses.FavorDataSerializer;
+import aurocosh.divinefavor.common.custom_data.player.data.favor.FavorDataSerializer;
 import net.minecraft.nbt.NBTBase;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumFacing;

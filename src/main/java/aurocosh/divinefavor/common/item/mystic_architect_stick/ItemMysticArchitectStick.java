@@ -96,21 +96,21 @@ public class ItemMysticArchitectStick extends ModItem {
             Block block = worldIn.getBlockState(pos).getBlock();
             String name = block.getRegistryName().toString();
             compound.setString(TAG_AIR_TYPE, name);
-            DivineFavor.proxy.getClientPlayer().sendMessage(new TextComponentString("Air block marker set to: " + name));
+            DivineFavor.proxy.getClientPlayer().sendMessage(new TextComponentString("Air block marker setValue to: " + name));
         }
     }
 
     private void createTemplate(World worldIn, BlockPos pos, ItemStack stack, NBTTagCompound compound) {
         if (!UtilNbt.checkForTags(stack, TAG_POS_FIRST, TAG_POS_SECOND)){
-            DivineFavor.proxy.getClientPlayer().sendMessage(new TextComponentString("Corners not set"));
+            DivineFavor.proxy.getClientPlayer().sendMessage(new TextComponentString("Corners not setValue"));
             return;
         }
         if (!UtilNbt.checkForTags(stack, TAG_BASE_POSITION)){
-            DivineFavor.proxy.getClientPlayer().sendMessage(new TextComponentString("Base position not set"));
+            DivineFavor.proxy.getClientPlayer().sendMessage(new TextComponentString("Base position not setValue"));
             return;
         }
         if (!UtilNbt.checkForTags(stack, TAG_MEDIUM_POSITION)){
-            DivineFavor.proxy.getClientPlayer().sendMessage(new TextComponentString("Medium position not set"));
+            DivineFavor.proxy.getClientPlayer().sendMessage(new TextComponentString("Medium position not setValue"));
             return;
         }
 

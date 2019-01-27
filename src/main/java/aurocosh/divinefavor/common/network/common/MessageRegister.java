@@ -1,9 +1,9 @@
 package aurocosh.divinefavor.common.network.common;
 
 import aurocosh.divinefavor.common.network.message.client.*;
-import aurocosh.divinefavor.common.network.message.client.spell_uses.MessageSyncAllTalismanUses;
-import aurocosh.divinefavor.common.network.message.client.spell_uses.MessageSyncMaxSpellUses;
-import aurocosh.divinefavor.common.network.message.client.spell_uses.MessageSyncSpellUses;
+import aurocosh.divinefavor.common.network.message.client.spell_uses.MessageSyncAllFavors;
+import aurocosh.divinefavor.common.network.message.client.spell_uses.MessageSyncFavor;
+import aurocosh.divinefavor.common.network.message.client.spell_uses.MessageSyncFavorValue;
 import aurocosh.divinefavor.common.network.message.sever.MessageSyncGrimoireSlot;
 import aurocosh.divinefavor.common.network.message.sever.MessageSyncSpellBowSlot;
 import aurocosh.divinefavor.common.network.message.sever.petrification.MessagePetrificationCure;
@@ -14,15 +14,15 @@ import net.minecraftforge.fml.relauncher.Side;
 public class MessageRegister {
 	public static void init() {
         NetworkHandler.register(MessagePetrificationReset.class, Side.CLIENT);
-        NetworkHandler.register(MessageSyncAllTalismanUses.class, Side.CLIENT);
+        NetworkHandler.register(MessageSyncAllFavors.class, Side.CLIENT);
         NetworkHandler.register(MessageSyncFireImmunity.class, Side.CLIENT);
         NetworkHandler.register(MessageSyncFlyingCapability.class, Side.CLIENT);
         NetworkHandler.register(MessageSyncFury.class, Side.CLIENT);
         NetworkHandler.register(MessageSyncGrudge.class, Side.CLIENT);
-        NetworkHandler.register(MessageSyncMaxSpellUses.class, Side.CLIENT);
+        NetworkHandler.register(MessageSyncFavor.class, Side.CLIENT);
         NetworkHandler.register(MessageSyncPotionCharge.class, Side.CLIENT);
         NetworkHandler.register(MessageSyncPower.class, Side.CLIENT);
-        NetworkHandler.register(MessageSyncSpellUses.class, Side.CLIENT);
+        NetworkHandler.register(MessageSyncFavorValue.class, Side.CLIENT);
         NetworkHandler.register(MessageSyncWindLeash.class, Side.CLIENT);
 
         NetworkHandler.register(MessagePetrificationCure.class, Side.SERVER);

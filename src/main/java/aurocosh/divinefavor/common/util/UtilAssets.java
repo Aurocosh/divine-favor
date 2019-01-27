@@ -58,8 +58,8 @@ public class UtilAssets {
 
     public static void Test2() {
 //        ArrayList<Cost> costs = new ArrayList<>();
-//        costs.add(new CostFavor(0,1,1));
-//        costs.add(new CostFavor(0,2,1));
+//        costs.addValue(new CostFavor(0,1,1));
+//        costs.addValue(new CostFavor(0,2,1));
 //        CostMultipleOptions costMultipleOptions = new CostMultipleOptions(0,costs);
 //
 //        SpellRequirement spellRequirementNotFree = new SpellRequirement("reqtest",costMultipleOptions);

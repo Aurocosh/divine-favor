@@ -3,7 +3,6 @@ package aurocosh.divinefavor.common.core;
 import aurocosh.divinefavor.common.constants.ConstMisc;
 import aurocosh.divinefavor.common.item.calling_stones.ItemCallingStone;
 import aurocosh.divinefavor.common.item.calling_stones.ModCallingStones;
-import aurocosh.divinefavor.common.item.wishing_stones.ItemWishingStone;
 import aurocosh.divinefavor.common.registry.ModRegistries;
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
@@ -13,38 +12,34 @@ import net.minecraft.util.NonNullList;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import java.util.Collections;
 import java.util.Comparator;
 
 public class DivineFavorCreativeTabGems extends CreativeTabs {
     public static final DivineFavorCreativeTabGems INSTANCE = new DivineFavorCreativeTabGems();
     private NonNullList list;
 
-    private static Comparator<ItemStack> tabComp = new Comparator<ItemStack>() {
-        @Override
-        public int compare(ItemStack o1, ItemStack o2) {
-            Item item1 = o1.getItem();
-            Item item2 = o2.getItem();
+    private static Comparator<ItemStack> tabComp = (first, second) -> {
+        Item firstItem = first.getItem();
+        Item secondItem = second.getItem();
 
-            boolean isCallingStone1 = item1 instanceof ItemCallingStone;
-            boolean isCallingStone2 = item2 instanceof ItemCallingStone;
+        boolean isCallingStone1 = firstItem instanceof ItemCallingStone;
+        boolean isCallingStone2 = secondItem instanceof ItemCallingStone;
 
-            if(isCallingStone1 && !isCallingStone2)
-                return -1;
-            if(!isCallingStone1 && isCallingStone2)
-                return 1;
-            if(isCallingStone1 && isCallingStone2)
-                return item1.getRegistryName().toString().compareTo(item2.getRegistryName().toString());
+        if(isCallingStone1 && !isCallingStone2)
+            return -1;
+        if(!isCallingStone1 && isCallingStone2)
+            return 1;
+        if(isCallingStone1 && isCallingStone2)
+            return firstItem.getRegistryName().toString().compareTo(secondItem.getRegistryName().toString());
 
-            if(item1 instanceof ItemWishingStone && item2 instanceof ItemWishingStone){
-                ItemWishingStone itemW1 = (ItemWishingStone) item1;
-                ItemWishingStone itemW2 = (ItemWishingStone) item2;
-                int cmp = itemW1.getSpirit().getName().compareToIgnoreCase(itemW2.getSpirit().getName());
-                if(cmp != 0)
-                    return cmp;
-            }
-            return item1.getRegistryName().toString().compareTo(item2.getRegistryName().toString());
-        }
+//            if(firstItem instanceof ItemWishingStone && secondItem instanceof ItemWishingStone){
+//                ItemWishingStone itemW1 = (ItemWishingStone) firstItem;
+//                ItemWishingStone itemW2 = (ItemWishingStone) secondItem;
+//                int cmp = itemW1.getSpirit().getName().compareToIgnoreCase(itemW2.getSpirit().getName());
+//                if(cmp != 0)
+//                    return cmp;
+//            }
+        return firstItem.getRegistryName().toString().compareTo(secondItem.getRegistryName().toString());
     };
     public DivineFavorCreativeTabGems() {
         super(ConstMisc.MOD_ID + "_gems");

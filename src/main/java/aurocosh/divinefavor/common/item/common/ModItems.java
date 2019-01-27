@@ -41,7 +41,7 @@ public final class ModItems {
         warp_pebble = ModRegistries.items.register(new ItemWarpMarker("warp_pebble", false));
 
 
-//        ModContainer mod = Loader.instance().getModObjectList().inverse().get(DivineFavor.instance);
+//        ModContainer mod = Loader.instance().getModObjectList().inverse().getValue(DivineFavor.instance);
     }
 
     public static void init() {

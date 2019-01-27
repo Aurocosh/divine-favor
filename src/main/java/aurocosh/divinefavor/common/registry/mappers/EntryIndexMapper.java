@@ -15,6 +15,10 @@ public class EntryIndexMapper<T extends IForgeRegistryEntry & IIndexedEntry> {
         names = new HashMap<>();
     }
 
+    public T get(int id) {
+        return values.get(id);
+    }
+
     public List<T> getValues() {
         return Collections.unmodifiableList(values);
     }
