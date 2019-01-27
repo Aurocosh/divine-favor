@@ -3,6 +3,7 @@ package aurocosh.divinefavor.common.entity;
 import aurocosh.divinefavor.DivineFavor;
 import aurocosh.divinefavor.common.core.ResourceNamer;
 import aurocosh.divinefavor.common.entity.minions.MinionHusk;
+import aurocosh.divinefavor.common.entity.minions.MinionSkeleton;
 import aurocosh.divinefavor.common.entity.minions.MinionZombie;
 import aurocosh.divinefavor.common.entity.projectile.EntitySpellArrow;
 import aurocosh.divinefavor.common.entity.projectile.EntityStoneball;
@@ -17,6 +18,7 @@ public final class ModEntities {
         registerModEntity(EntitySpellArrow.class, "spell_arrow", id++, DivineFavor.instance, 256, 1, true);
         registerModEntity(MinionZombie.class, "minion_zombie", id++, DivineFavor.instance,80, 3, false);
         registerModEntity(MinionHusk.class, "minion_husk", id++, DivineFavor.instance,80, 3, false);
+        registerModEntity(MinionSkeleton.class, "minion_skeleton", id++, DivineFavor.instance,80, 3, false);
     }
 
     private static void registerModEntity(Class<? extends Entity> entityClass, String entityName, int id, Object mod, int trackingRange, int updateFrequency, boolean sendsVelocityUpdates) {

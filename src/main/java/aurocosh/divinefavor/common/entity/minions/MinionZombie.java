@@ -34,11 +34,12 @@ public class MinionZombie extends EntityZombie implements IMinion {
         minionData = new MinionData<>(this, dataManager, BEGGING, MODE, OWNER_UNIQUE_ID);
         minionData.setMode(MinionMode.Normal);
 
+        MinionBehaviourZombie<MinionZombie> behaviour = new MinionBehaviourZombie<>();
+        behaviour.apply(this, tasks, targetTasks);
+
         interactionHandler = new MinionInteractionHandler<>();
         interactionHandler.addInteraction(new MinionWaitSwitch<>());
         interactionHandler.addInteraction(new MinionFeeding<>(1, Items.CHICKEN, Items.PORKCHOP, Items.BEEF));
-
-        MinionBehaviourZombie.apply(tasks, targetTasks, this);
     }
 
     @Override
