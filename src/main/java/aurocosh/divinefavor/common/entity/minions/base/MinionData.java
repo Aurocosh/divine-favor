@@ -1,7 +1,7 @@
 package aurocosh.divinefavor.common.entity.minions.base;
 
 import com.google.common.base.Optional;
-import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityCreature;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
@@ -11,19 +11,21 @@ import net.minecraft.network.datasync.EntityDataManager;
 import javax.annotation.Nullable;
 import java.util.UUID;
 
-public class MinionData {
+public class MinionData<T extends EntityCreature & IMinion> {
     private static final String TAG_OWNER_UUID = "OwnerUUID";
     private static final String TAG_MODE = "Mode";
 
-    private final Entity entity;
+    private final T minion;
     private final EntityDataManager dataManager;
 
     private final DataParameter<Boolean> begging;
     private final DataParameter<Integer> mode;
     private final DataParameter<Optional<UUID>> ownerUniqueId;
 
-    public MinionData(Entity entity, EntityDataManager dataManager, DataParameter<Boolean> begging, DataParameter<Integer> mode, DataParameter<Optional<UUID>> ownerUniqueId) {
-        this.entity = entity;
+    private EntityLivingBase attackTarget;
+
+    public MinionData(T minion, EntityDataManager dataManager, DataParameter<Boolean> begging, DataParameter<Integer> mode, DataParameter<Optional<UUID>> ownerUniqueId) {
+        this.minion = minion;
         this.dataManager = dataManager;
         this.begging = begging;
         this.mode = mode;
@@ -59,7 +61,7 @@ public class MinionData {
     public EntityPlayer getOwner() {
         try {
             UUID uuid = getOwnerUUID();
-            return uuid == null ? null : entity.world.getPlayerEntityByUUID(uuid);
+            return uuid == null ? null : minion.world.getPlayerEntityByUUID(uuid);
         } catch (IllegalArgumentException var2) {
             return null;
         }
@@ -92,5 +94,13 @@ public class MinionData {
     public void readEntityFromNBT(NBTTagCompound compound) {
         setOwnerByUUID(compound.getString(TAG_OWNER_UUID));
         setMode(MinionMode.fromInt(compound.getInteger(TAG_MODE)));
+    }
+
+    public EntityLivingBase getAttackTarget() {
+        return attackTarget;
+    }
+
+    public void setAttackTarget(EntityLivingBase livingBase){
+        attackTarget = livingBase;
     }
 }
