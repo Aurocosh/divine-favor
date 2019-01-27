@@ -6,14 +6,16 @@ import aurocosh.divinefavor.common.entity.ai.EntityAIOwnerHurtByTarget;
 import aurocosh.divinefavor.common.entity.ai.EntityAIOwnerOrderedToAttack;
 import aurocosh.divinefavor.common.entity.minions.base.IMinion;
 import aurocosh.divinefavor.common.entity.minions.base.MinionData;
+import aurocosh.divinefavor.common.entity.minions.behaviour.base.MinionBehaviour;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.ai.*;
 import net.minecraft.entity.monster.EntityZombie;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 
-public class MinionBehaviourZombie {
-    public static <T extends EntityZombie & IMinion> void apply(EntityAITasks tasks, EntityAITasks targetTasks, T minion) {
+public class MinionBehaviourZombie<T extends EntityZombie & IMinion> extends MinionBehaviour<T> {
+    @Override
+    public void apply(T minion, EntityAITasks tasks, EntityAITasks targetTasks) {
         MinionData minionData = minion.getMinionData();
 
         tasks.addTask(0, new EntityAISwimming(minion));

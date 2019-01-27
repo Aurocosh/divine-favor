@@ -30,6 +30,8 @@ public class ConstResources {
     public static final String TEX_HUSK_ZOMBIE = PREFIX_MINIONS + "minion_zombie/minion_husk.png";
     public static final String TEX_ZOMBIE_VILLAGER = PREFIX_MINIONS + "minion_zombie_villager/minion_zombie_villager.png";
 
+    public static final String TEX_SKELETON = PREFIX_MINIONS + "skeletons/skeleton.png";
+
     public static final String TEX_ZOMBIE_VILLAGER_FARMER = PREFIX_MINIONS + "minion_zombie_villager/minion_zombie_farmer.png";
     public static final String TEX_ZOMBIE_VILLAGER_LIBRARIAN = PREFIX_MINIONS + "minion_zombie_villager/minion_zombie_librarian.png";
     public static final String TEX_ZOMBIE_VILLAGER_PRIEST = PREFIX_MINIONS + "minion_zombie_villager/minion_zombie_priest.png";
