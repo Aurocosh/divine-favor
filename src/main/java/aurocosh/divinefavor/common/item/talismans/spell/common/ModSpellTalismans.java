@@ -28,6 +28,7 @@ public final class ModSpellTalismans {
     public static ItemSpellTalisman empower_axe;
     public static ItemSpellTalisman empower_pickaxe;
     public static ItemSpellTalisman escape_plan;
+    public static ItemSpellTalisman evil_eye;
     public static ItemSpellTalisman fall_negation;
     public static ItemSpellTalisman fell_tree;
     public static ItemSpellTalisman fins;
@@ -64,6 +65,7 @@ public final class ModSpellTalismans {
     public static ItemSpellTalisman summon_zombie;
     public static ItemSpellTalisman surface_blink;
     public static ItemSpellTalisman surface_shift;
+    public static ItemSpellTalisman target;
     public static ItemSpellTalisman toadic_jump;
     public static ItemSpellTalisman vitalize;
     public static ItemSpellTalisman wall_slip;
@@ -124,8 +126,10 @@ public final class ModSpellTalismans {
         night_eye = new SpellTalismanModPotionToggle("night_eye", ModFavors.allfire, 4, ModPotions.night_eye);
         spider_might = new SpellTalismanModPotion("spider_might", ModFavors.allfire, ConfigTalismans.spider_might.uses, ModPotions.spider_might, ConfigTalismans.spider_might.duration);
         summon_zombie = new SpellTalismanSummonMinion<>("summon_zombie", ModFavors.allfire, 1, SpellOptions.USE_CAST, MinionZombie.class);
+        target = new SpellTalismanTarget("target", ModFavors.allfire,0, SpellOptions.ENTITY_CAST);
 
         // nefir
+        evil_eye = new SpellTalismanTarget("evil_eye", ModFavors.nefir,10, SpellOptions.ENTITY_CAST);
         hellisphere = new SpellTalismanHellisphere("hellisphere", ModFavors.nefir, 1, SpellOptions.USE_CAST);
         infernal_touch = new SpellTalismanInfernalTouch("infernal_touch", ModFavors.nefir, 1, SpellOptions.USE_CAST);
         molten_skin = new SpellTalismanMoltenSkin("molten_skin", ModFavors.nefir, 1, SpellOptions.ALL_CAST);

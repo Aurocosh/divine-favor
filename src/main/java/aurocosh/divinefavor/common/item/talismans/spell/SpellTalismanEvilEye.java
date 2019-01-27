@@ -8,8 +8,8 @@ import net.minecraft.util.DamageSource;
 
 import java.util.EnumSet;
 
-public class SpellTalismanTarget extends ItemSpellTalisman {
-    public SpellTalismanTarget(String name, ModFavor favor, int favorCost, EnumSet<SpellOptions> options) {
+public class SpellTalismanEvilEye extends ItemSpellTalisman {
+    public SpellTalismanEvilEye(String name, ModFavor favor, int favorCost, EnumSet<SpellOptions> options) {
         super(name, favor, favorCost, options);
     }
 

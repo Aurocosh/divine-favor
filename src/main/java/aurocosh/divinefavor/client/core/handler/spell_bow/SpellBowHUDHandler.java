@@ -1,10 +1,9 @@
 package aurocosh.divinefavor.client.core.handler.spell_bow;
 
 import aurocosh.divinefavor.DivineFavor;
-import aurocosh.divinefavor.common.item.talismans.arrow.base.ItemArrowTalisman;
 import aurocosh.divinefavor.common.item.spell_bow.ItemSpellBow;
 import aurocosh.divinefavor.common.item.spell_bow.capability.ISpellBowHandler;
-import aurocosh.divinefavor.common.item.talismans.spell.base.ItemSpellTalisman;
+import aurocosh.divinefavor.common.item.talismans.arrow.base.ItemArrowTalisman;
 import aurocosh.divinefavor.common.util.UtilPlayer;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScaledResolution;
@@ -101,7 +100,7 @@ public class SpellBowHUDHandler {
         ItemStack talismanStack = bowHandler.getSelectedStack();
         if (talismanStack.isEmpty())
             return;
-        ItemSpellTalisman talisman = (ItemSpellTalisman) talismanStack.getItem();
+        ItemArrowTalisman talisman = (ItemArrowTalisman) talismanStack.getItem();
         String description = talisman.getUseInfo(player);
 
         int alpha = 255;
