@@ -1,9 +1,9 @@
 package aurocosh.divinefavor.client.core.handler.spell_bow;
 
 import aurocosh.divinefavor.DivineFavor;
+import aurocosh.divinefavor.client.core.handler.hud.UtilHUD;
 import aurocosh.divinefavor.common.item.spell_bow.ItemSpellBow;
 import aurocosh.divinefavor.common.item.spell_bow.capability.ISpellBowHandler;
-import aurocosh.divinefavor.common.item.talismans.arrow.base.ItemArrowTalisman;
 import aurocosh.divinefavor.common.util.UtilPlayer;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScaledResolution;
@@ -96,33 +96,9 @@ public class SpellBowHUDHandler {
     }
 
     @SideOnly(Side.CLIENT)
-    private static void renderSpellRequirements(Minecraft mc, ScaledResolution res, float pticks, EntityPlayer player, ISpellBowHandler bowHandler) {
+    private static void renderSpellRequirements(Minecraft mc, ScaledResolution res, float partialTicks, EntityPlayer player, ISpellBowHandler bowHandler) {
         ItemStack talismanStack = bowHandler.getSelectedStack();
-        if (talismanStack.isEmpty())
-            return;
-        ItemArrowTalisman talisman = (ItemArrowTalisman) talismanStack.getItem();
-        String description = talisman.getUseInfo(player);
-
-        int alpha = 255;
-
-        int color = (0 << 0) + (128 << 8) + (0 << 16) + (alpha << 24);
-
-        int x = res.getScaledWidth() / 2 - mc.fontRenderer.getStringWidth(description) / 2;
-        int y = res.getScaledHeight() - 71;
-        if (mc.player.capabilities.isCreativeMode)
-            y += 14;
-
-        GlStateManager.enableBlend();
-        GlStateManager.blendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
-        mc.fontRenderer.drawStringWithShadow(description, x, y, color);
-
-        int w = mc.fontRenderer.getStringWidth(description);
-        GlStateManager.pushMatrix();
-        GlStateManager.translate(x - 20, y - 6, 0);
-        GlStateManager.scale(alpha / 255F, 1F, 1);
-        GlStateManager.color(1F, 1F, 1F);
-        mc.getRenderItem().renderItemIntoGUI(talismanStack, 0, 0);
-        GlStateManager.popMatrix();
-        GlStateManager.disableBlend();
+        if (!talismanStack.isEmpty())
+            UtilHUD.drawTalismanDescription(mc, res, partialTicks, player, talismanStack);
     }
 }

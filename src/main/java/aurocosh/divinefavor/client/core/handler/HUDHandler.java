@@ -1,6 +1,7 @@
 package aurocosh.divinefavor.client.core.handler;
 
 import aurocosh.divinefavor.DivineFavor;
+import aurocosh.divinefavor.client.core.handler.hud.UtilHUD;
 import aurocosh.divinefavor.common.item.mystic_architect_stick.ItemMysticArchitectStick;
 import aurocosh.divinefavor.common.item.talismans.spell.base.ItemSpellTalisman;
 import aurocosh.divinefavor.common.util.UtilNbt;
@@ -23,7 +24,6 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import org.lwjgl.opengl.GL11;
 
 @Mod.EventBusSubscriber
 public final class HUDHandler {
@@ -32,9 +32,9 @@ public final class HUDHandler {
     public void onDraw(RenderGameOverlayEvent.Post event) {
         if (event.getType() == ElementType.ALL) {
             ScaledResolution resolution = event.getResolution();
+            EntityPlayer player = DivineFavor.proxy.getClientPlayer();
             float partialTicks = event.getPartialTicks();
-
-            renderSpellRequirements(resolution, partialTicks);
+            renderSpellRequirements(resolution, partialTicks, player);
         }
     }
 
@@ -44,52 +44,26 @@ public final class HUDHandler {
         Minecraft mc = Minecraft.getMinecraft();
         EntityPlayer p = mc.player;
         ItemStack heldItem = p.getHeldItemMainhand();
-        if (!(heldItem.getItem() instanceof ItemMysticArchitectStick))
-            return;
-        renderArchitectOverlay(evt, p, heldItem);
+        if (heldItem.getItem() instanceof ItemMysticArchitectStick)
+            renderArchitectOverlay(evt, p, heldItem);
     }
 
     @SideOnly(Side.CLIENT)
-    private void renderSpellRequirements(ScaledResolution res, float pticks) {
+    private void renderSpellRequirements(ScaledResolution res, float partialTicks, EntityPlayer player) {
         Minecraft mc = Minecraft.getMinecraft();
         ItemStack stack = mc.player.getHeldItem(EnumHand.MAIN_HAND);
-        if (stack.isEmpty() || !(stack.getItem() instanceof ItemSpellTalisman))
-            return;
-
-        ItemSpellTalisman talisman = (ItemSpellTalisman) stack.getItem();
-        EntityPlayer player = DivineFavor.proxy.getClientPlayer();
-        String description = talisman.getUseInfo(player);
-
-        int alpha = 255;
-        int color = (0 << 0) + (128 << 8) + (0 << 16) + (alpha << 24);
-
-        int x = res.getScaledWidth() / 2 - mc.fontRenderer.getStringWidth(description) / 2;
-        int y = res.getScaledHeight() - 71;
-        if (mc.player.capabilities.isCreativeMode)
-            y += 14;
-
-        GlStateManager.enableBlend();
-        GlStateManager.blendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
-        mc.fontRenderer.drawStringWithShadow(description, x, y, color);
-
-        int w = mc.fontRenderer.getStringWidth(description);
-        GlStateManager.pushMatrix();
-        GlStateManager.translate(x - 20, y - 6, 0);
-        GlStateManager.scale(alpha / 255F, 1F, 1);
-        GlStateManager.color(1F, 1F, 1F);
-        mc.getRenderItem().renderItemIntoGUI(stack, 0, 0);
-        GlStateManager.popMatrix();
-        GlStateManager.disableBlend();
+        if (stack.getItem() instanceof ItemSpellTalisman)
+            UtilHUD.drawTalismanDescription(mc, res, partialTicks, player, stack);
     }
 
     public static void renderArchitectOverlay(RenderWorldLastEvent evt, EntityPlayer player, ItemStack stack) {
         boolean positionsSet = UtilNbt.checkForTags(stack, ItemMysticArchitectStick.TAG_POS_FIRST, ItemMysticArchitectStick.TAG_POS_SECOND);
-        if(!positionsSet)
+        if (!positionsSet)
             return;
 
         NBTTagCompound compound = stack.getTagCompound();
-        BlockPos startPos = UtilNbt.getBlockPos(compound,ItemMysticArchitectStick.TAG_POS_FIRST);
-        BlockPos endPos = UtilNbt.getBlockPos(compound,ItemMysticArchitectStick.TAG_POS_SECOND);
+        BlockPos startPos = UtilNbt.getBlockPos(compound, ItemMysticArchitectStick.TAG_POS_FIRST);
+        BlockPos endPos = UtilNbt.getBlockPos(compound, ItemMysticArchitectStick.TAG_POS_SECOND);
 
         Minecraft mc = Minecraft.getMinecraft();
         mc.renderEngine.bindTexture(TextureMap.LOCATION_BLOCKS_TEXTURE);

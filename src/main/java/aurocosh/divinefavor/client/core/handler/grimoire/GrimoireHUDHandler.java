@@ -1,9 +1,9 @@
 package aurocosh.divinefavor.client.core.handler.grimoire;
 
 import aurocosh.divinefavor.DivineFavor;
+import aurocosh.divinefavor.client.core.handler.hud.UtilHUD;
 import aurocosh.divinefavor.common.item.grimoire.ItemGrimoire;
 import aurocosh.divinefavor.common.item.grimoire.capability.IGrimoireHandler;
-import aurocosh.divinefavor.common.item.talismans.spell.base.ItemSpellTalisman;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.renderer.GlStateManager;
@@ -41,9 +41,9 @@ public class GrimoireHUDHandler {
 
             Minecraft mc = Minecraft.getMinecraft();
             ItemStack stack = mc.player.getHeldItem(EnumHand.MAIN_HAND);
-            if(stack.isEmpty() || !(stack.getItem() instanceof ItemGrimoire))
+            if (stack.isEmpty() || !(stack.getItem() instanceof ItemGrimoire))
                 stack = mc.player.getHeldItem(EnumHand.OFF_HAND);
-            if(stack.isEmpty() || !(stack.getItem() instanceof ItemGrimoire))
+            if (stack.isEmpty() || !(stack.getItem() instanceof ItemGrimoire))
                 return;
             IGrimoireHandler grimoireHandler = stack.getCapability(CAPABILITY_GRIMOIRE, null);
             assert grimoireHandler != null;
@@ -59,9 +59,9 @@ public class GrimoireHUDHandler {
     private static void renderSpellSelector(Minecraft mc, ScaledResolution res, float pticks, EntityPlayer player, IGrimoireHandler grimoireHandler) {
         if (Keyboard.isKeyDown(Keyboard.KEY_LCONTROL))
             return;
-        if(!player.isSneaking())
+        if (!player.isSneaking())
             return;
-        if(handler != grimoireHandler || state != grimoireHandler.getState()){
+        if (handler != grimoireHandler || state != grimoireHandler.getState()) {
             handler = grimoireHandler;
             state = grimoireHandler.getState();
 
@@ -72,7 +72,7 @@ public class GrimoireHUDHandler {
             for (ItemStack stack : nextStacks)
                 previousStacks.remove(stack);
         }
-        if(selectedStack.isEmpty())
+        if (selectedStack.isEmpty())
             return;
 
         int alpha = 255;
@@ -96,33 +96,9 @@ public class GrimoireHUDHandler {
     }
 
     @SideOnly(Side.CLIENT)
-    private static void renderSpellRequirements(Minecraft mc, ScaledResolution res, float pticks, EntityPlayer player, IGrimoireHandler grimoireHandler) {
+    private static void renderSpellRequirements(Minecraft mc, ScaledResolution res, float partialTicks, EntityPlayer player, IGrimoireHandler grimoireHandler) {
         ItemStack talismanStack = grimoireHandler.getSelectedStack();
-        if(talismanStack.isEmpty())
-            return;
-        ItemSpellTalisman talisman = (ItemSpellTalisman) talismanStack.getItem();
-        String description = talisman.getUseInfo(player);
-
-        int alpha = 255;
-
-        int color = (0 << 0) + (128 << 8) + (0 << 16) + (alpha << 24);
-
-        int x = res.getScaledWidth() / 2 - mc.fontRenderer.getStringWidth(description) / 2;
-        int y = res.getScaledHeight() - 71;
-        if (mc.player.capabilities.isCreativeMode)
-            y += 14;
-
-        GlStateManager.enableBlend();
-        GlStateManager.blendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
-        mc.fontRenderer.drawStringWithShadow(description, x, y, color);
-
-        int w = mc.fontRenderer.getStringWidth(description);
-        GlStateManager.pushMatrix();
-        GlStateManager.translate(x - 20, y - 6, 0);
-        GlStateManager.scale(alpha / 255F, 1F, 1);
-        GlStateManager.color(1F, 1F, 1F);
-        mc.getRenderItem().renderItemIntoGUI(talismanStack, 0, 0);
-        GlStateManager.popMatrix();
-        GlStateManager.disableBlend();
+        if (!talismanStack.isEmpty())
+            UtilHUD.drawTalismanDescription(mc, res, partialTicks, player, talismanStack);
     }
 }
