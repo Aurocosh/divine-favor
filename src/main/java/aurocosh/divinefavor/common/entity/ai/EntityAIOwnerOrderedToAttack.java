@@ -7,13 +7,12 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.ai.EntityAITarget;
 
 public class EntityAIOwnerOrderedToAttack<T extends EntityCreature & IMinion> extends EntityAITarget {
-    private T minion;
     private MinionData minionData;
     private EntityLivingBase orderedTarget;
 
-    public EntityAIOwnerOrderedToAttack(T minion) {
+    public EntityAIOwnerOrderedToAttack(T minion, MinionData minionData) {
         super(minion, false);
-        this.minion = minion;
+        this.minionData = minionData;
         setMutexBits(1);
     }
 
@@ -22,14 +21,13 @@ public class EntityAIOwnerOrderedToAttack<T extends EntityCreature & IMinion> ex
      */
     @Override
     public boolean shouldExecute() {
-        minionData = minion.getMinionData();
         EntityLivingBase owner = minionData.getOwner();
         if (owner == null)
             return false;
         EntityLivingBase attackTarget = minionData.getAttackTarget();
         if(attackTarget == null)
             return false;
-        if(attackTarget == minion)
+        if(attackTarget == taskOwner)
             return false;
         return isSuitableTarget(attackTarget, false);
     }
