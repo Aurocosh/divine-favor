@@ -58,7 +58,7 @@ public abstract class ItemTalisman extends ModItem {
         else if(useCount == 0)
             description = "Unusable";
         else
-            description = "Uses left: " + useCount;
+            description = "Cost: " + favorCost + " Uses: " + useCount;
         return description;
     }
 
