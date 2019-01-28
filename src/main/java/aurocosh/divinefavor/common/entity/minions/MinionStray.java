@@ -3,13 +3,13 @@ package aurocosh.divinefavor.common.entity.minions;
 import aurocosh.divinefavor.common.entity.minions.base.IMinion;
 import aurocosh.divinefavor.common.entity.minions.base.MinionData;
 import aurocosh.divinefavor.common.entity.minions.base.MinionMode;
-import aurocosh.divinefavor.common.entity.minions.behaviour.MinionBehaviourZombie;
+import aurocosh.divinefavor.common.entity.minions.behaviour.MinionBehaviourSkeleton;
 import aurocosh.divinefavor.common.entity.minions.minion_interaction.MinionFeeding;
 import aurocosh.divinefavor.common.entity.minions.minion_interaction.MinionWaitSwitch;
 import aurocosh.divinefavor.common.entity.minions.minion_interaction.base.MinionInteractionHandler;
 import com.google.common.base.Optional;
 import net.minecraft.entity.SharedMonsterAttributes;
-import net.minecraft.entity.monster.EntityZombie;
+import net.minecraft.entity.monster.EntityStray;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.nbt.NBTTagCompound;
@@ -21,25 +21,28 @@ import net.minecraft.world.World;
 
 import java.util.UUID;
 
-public class MinionZombie extends EntityZombie implements IMinion {
-    private static final DataParameter<Boolean> BEGGING = EntityDataManager.createKey(MinionZombie.class, DataSerializers.BOOLEAN);
-    private static final DataParameter<Integer> MODE = EntityDataManager.createKey(MinionZombie.class, DataSerializers.VARINT);
-    private static final DataParameter<Optional<UUID>> OWNER_UNIQUE_ID = EntityDataManager.createKey(MinionZombie.class, DataSerializers.OPTIONAL_UNIQUE_ID);
+public class MinionStray extends EntityStray implements IMinion {
+    private static final DataParameter<Boolean> BEGGING = EntityDataManager.createKey(MinionStray.class, DataSerializers.BOOLEAN);
+    private static final DataParameter<Integer> MODE = EntityDataManager.createKey(MinionStray.class, DataSerializers.VARINT);
+    private static final DataParameter<Optional<UUID>> OWNER_UNIQUE_ID = EntityDataManager.createKey(MinionStray.class, DataSerializers.OPTIONAL_UNIQUE_ID);
 
-    private final MinionData<MinionZombie> minionData;
-    private final MinionInteractionHandler<MinionZombie> interactionHandler;
+    private final MinionData<MinionStray> minionData;
+    private final MinionBehaviourSkeleton<MinionStray> behaviour;
+    private final MinionInteractionHandler<MinionStray> interactionHandler;
 
-    public MinionZombie(World worldIn) {
+    public MinionStray(World worldIn) {
         super(worldIn);
         minionData = new MinionData<>(this, dataManager, BEGGING, MODE, OWNER_UNIQUE_ID);
         minionData.setMode(MinionMode.Normal);
 
-        MinionBehaviourZombie<MinionZombie> behaviour = new MinionBehaviourZombie<>();
+        behaviour = new MinionBehaviourSkeleton<>(this);
         behaviour.apply(this, tasks, targetTasks);
 
         interactionHandler = new MinionInteractionHandler<>();
         interactionHandler.addInteraction(new MinionWaitSwitch<>());
         interactionHandler.addInteraction(new MinionFeeding<>(1, Items.CHICKEN, Items.PORKCHOP, Items.BEEF));
+
+        setCombatTask();
     }
 
     @Override
@@ -48,12 +51,18 @@ public class MinionZombie extends EntityZombie implements IMinion {
     }
 
     @Override
+    public void setCombatTask() {
+        if(behaviour != null)
+            behaviour.applyCombatBehaviour(this, tasks);
+    }
+
+    @Override
     protected void applyEntityAttributes() {
         super.applyEntityAttributes();
 
-        getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(3.0D);
-        getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.23000000417232513D);
-        getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(30.0D);
+//        getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(3.0D);
+//        getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.23000000417232513D);
+//        getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(30.0D);
 
         getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(64.0D);
     }

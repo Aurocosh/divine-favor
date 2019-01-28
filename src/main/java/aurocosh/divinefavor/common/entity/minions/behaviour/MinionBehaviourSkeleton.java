@@ -10,7 +10,6 @@ import aurocosh.divinefavor.common.entity.minions.behaviour.base.MinionBehaviour
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.ai.*;
 import net.minecraft.entity.monster.AbstractSkeleton;
-import net.minecraft.entity.monster.EntitySkeleton;
 import net.minecraft.entity.passive.EntityWolf;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
@@ -18,7 +17,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.world.EnumDifficulty;
 import net.minecraftforge.fml.relauncher.ReflectionHelper;
 
-public class MinionBehaviourSkeleton<T extends EntitySkeleton & IMinion> extends MinionBehaviour<T> {
+public class MinionBehaviourSkeleton<T extends AbstractSkeleton & IMinion> extends MinionBehaviour<T> {
     private static final int AI_ARROW_ATTACK_INDEX = 1;
     private static final int AI_ATTACK_ON_COLLIDE = 2;
 
