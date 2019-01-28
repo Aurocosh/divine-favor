@@ -17,6 +17,7 @@ public class ModCurses {
     public static ModPotion skyfall;
     public static ModPotion suffocating_fumes;
     public static ModPotion wind_leash;
+    public static ModPotion yummy_smell;
 
     public static void preInit() {
         armor_corrosion = ModRegistries.curses.register(new PotionArmorCorrosion());
@@ -31,6 +32,7 @@ public class ModCurses {
         skyfall = ModRegistries.curses.register(new PotionSkyfall());
         suffocating_fumes = ModRegistries.curses.register(new PotionSuffocatingFumes());
         wind_leash = ModRegistries.curses.register(new PotionWindLeash());
+        yummy_smell = ModRegistries.curses.register(new PotionYummySmell());
 
         for (ModPotion curse : ModRegistries.curses.getValues())
             curse.setIsCurse(true);

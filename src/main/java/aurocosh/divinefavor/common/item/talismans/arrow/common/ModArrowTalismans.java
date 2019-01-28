@@ -30,6 +30,7 @@ public class ModArrowTalismans {
     public static ItemArrowTalisman skyfall;
     public static ItemArrowTalisman suffocating_fumes;
     public static ItemArrowTalisman wind_leash;
+    public static ItemArrowTalisman yummy_smell;
     public static ItemArrowTalisman zero_g_arrow;
 
     public static void preInit() {
@@ -50,6 +51,7 @@ public class ModArrowTalismans {
         skyfall = new ArrowTalismanCurse("skyfall", ModFavors.redwind, 1, Color.red.getRGB(), ModCurses.skyfall, UtilTick.secondsToTicks(8));
         suffocating_fumes = new ArrowTalismanCurse("suffocating_fumes", ModFavors.timber, 1, Color.red.getRGB(), ModCurses.suffocating_fumes, UtilTick.minutesToTicks(2));
         wind_leash = new ArrowTalismanCurse("wind_leash", ModFavors.redwind,1, Color.red.getRGB(), ModCurses.wind_leash, UtilTick.secondsToTicks(12));
+        yummy_smell = new ArrowTalismanCurse("yummy_smell", ModFavors.timber,1, Color.red.getRGB(), ModCurses.yummy_smell, UtilTick.secondsToTicks(30));
         zero_g_arrow = new ArrowTalismanZeroGArrow("zero_g_arrow", ModFavors.redwind,15, Color.green.getRGB(), 2, ArrowOptions.NORMAL, ArrowType.WOODEN_ARROW);
     }
 }
