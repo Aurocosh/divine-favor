@@ -1,10 +1,7 @@
 package aurocosh.divinefavor.common.item.talismans.spell.common;
 
 import aurocosh.divinefavor.common.config.common.ConfigTalismans;
-import aurocosh.divinefavor.common.entity.minions.MinionHusk;
-import aurocosh.divinefavor.common.entity.minions.MinionSkeleton;
-import aurocosh.divinefavor.common.entity.minions.MinionStray;
-import aurocosh.divinefavor.common.entity.minions.MinionZombie;
+import aurocosh.divinefavor.common.entity.minions.*;
 import aurocosh.divinefavor.common.favor.ModFavors;
 import aurocosh.divinefavor.common.item.common.ModItems;
 import aurocosh.divinefavor.common.item.talismans.spell.*;
@@ -66,6 +63,7 @@ public final class ModSpellTalismans {
     public static ItemSpellTalisman starvation;
     public static ItemSpellTalisman stone_fever;
     public static ItemSpellTalisman stoneball_throw;
+    public static ItemSpellTalisman summon_creeper;
     public static ItemSpellTalisman summon_husk;
     public static ItemSpellTalisman summon_skeleton;
     public static ItemSpellTalisman summon_stray;
@@ -133,6 +131,7 @@ public final class ModSpellTalismans {
         follow = new SpellTalismanFollow("follow", ModFavors.allfire,0, SpellOptions.RIGHT_CAST);
         night_eye = new SpellTalismanModPotionToggle("night_eye", ModFavors.allfire, 4, ModPotions.night_eye);
         spider_might = new SpellTalismanModPotion("spider_might", ModFavors.allfire, ConfigTalismans.spider_might.uses, ModPotions.spider_might, ConfigTalismans.spider_might.duration);
+        summon_creeper = new SpellTalismanSummonMinion<>("summon_creeper", ModFavors.allfire, 1, SpellOptions.USE_CAST, MinionCreeper.class);
         summon_husk = new SpellTalismanSummonMinion<>("summon_husk", ModFavors.allfire, 1, SpellOptions.USE_CAST, MinionHusk.class);
         summon_skeleton = new SpellTalismanSummonMinion<>("summon_skeleton", ModFavors.allfire, 1, SpellOptions.USE_CAST, MinionSkeleton.class);
         summon_stray = new SpellTalismanSummonMinion<>("summon_stray", ModFavors.allfire, 1, SpellOptions.USE_CAST, MinionStray.class);
