@@ -3,11 +3,8 @@ package aurocosh.divinefavor.common.custom_data.player.data.pearl_crumbs;
 import aurocosh.divinefavor.common.lib.GlobalBlockPos;
 import aurocosh.divinefavor.common.lib.interfaces.INbtSerializer;
 import aurocosh.divinefavor.common.util.UtilSerialize;
-import net.minecraft.nbt.NBTBase;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
-import net.minecraftforge.common.capabilities.Capability;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,14 +26,14 @@ public class PearlCrumbsDataSerializer implements INbtSerializer<PearlCrumbsData
             dimensions[i] = pos.dimensionId;
         }
 
-        nbt.setIntArray(TAG_CRUMBS_POSITIONS, UtilSerialize.SerializeBlockPosArray(posList));
+        nbt.setIntArray(TAG_CRUMBS_POSITIONS, UtilSerialize.serializeBlockPosArray(posList));
         nbt.setIntArray(TAG_CRUMBS_DIMENSIONS, dimensions);
     }
 
     @Override
     public void deserialize(NBTTagCompound nbt, PearlCrumbsData instance) {
 
-        List<BlockPos> posList = UtilSerialize.DeserializeBlockPosArray(nbt.getIntArray(TAG_CRUMBS_POSITIONS));
+        List<BlockPos> posList = UtilSerialize.deserializeBlockPosArray(nbt.getIntArray(TAG_CRUMBS_POSITIONS));
         int[] dimensions = nbt.getIntArray(TAG_CRUMBS_DIMENSIONS);
 
         if (posList.size() != dimensions.length)

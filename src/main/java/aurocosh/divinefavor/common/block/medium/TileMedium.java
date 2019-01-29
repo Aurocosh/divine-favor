@@ -3,6 +3,8 @@ package aurocosh.divinefavor.common.block.medium;
 import aurocosh.divinefavor.common.block.base.TickableTileEntity;
 import aurocosh.divinefavor.common.custom_data.player.PlayerData;
 import aurocosh.divinefavor.common.custom_data.player.data.favor.FavorData;
+import aurocosh.divinefavor.common.custom_data.world.WorldData;
+import aurocosh.divinefavor.common.custom_data.world.data.altars.AltarsData;
 import aurocosh.divinefavor.common.item.calling_stones.ItemCallingStone;
 import aurocosh.divinefavor.common.item.common.ModItems;
 import aurocosh.divinefavor.common.item.contract.ItemContract;
@@ -328,6 +330,8 @@ public class TileMedium extends TickableTileEntity implements IMultiblockControl
         MultiBlockWatcher.unRegisterController(this);
         setState(MediumState.NO_MULTI_BLOCK);
         multiBlockInstance = null;
+        AltarsData altarData = WorldData.get(world).getAltarData();
+        altarData.removeAltarLocation(pos);
     }
 
     @Override
@@ -357,8 +361,11 @@ public class TileMedium extends TickableTileEntity implements IMultiblockControl
         ModMultiBlock multiBlock = callingStone.multiBlock;
         Vector3i position = Vector3i.convert(pos);
         multiBlockInstance = multiBlock.makeMultiBlock(callingStone.spirit, world, position);
-        if (multiBlockInstance != null)
+        if (multiBlockInstance != null) {
             MultiBlockWatcher.registerController(this);
+            AltarsData altarData = WorldData.get(world).getAltarData();
+            altarData.addAltarLocation(callingStone.spirit, pos);
+        }
     }
 
     private void updateState() {

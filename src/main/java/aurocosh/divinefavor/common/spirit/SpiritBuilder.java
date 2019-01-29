@@ -4,6 +4,7 @@ import aurocosh.divinefavor.common.item.talismans.spell.base.ItemSpellTalisman;
 import aurocosh.divinefavor.common.lib.TimePeriod;
 import aurocosh.divinefavor.common.spirit.base.ModSpirit;
 import aurocosh.divinefavor.common.spirit.base.SpiritPunishment;
+import aurocosh.divinefavor.common.util.UtilDayTime;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,7 +23,7 @@ public class SpiritBuilder {
     }
 
     public SpiritBuilder addActivityPeriod(int start, int stop){
-        activityPeriods.add(TimePeriod.fromHours(start, stop));
+        activityPeriods.add(UtilDayTime.fromHours(start, stop));
         return this;
     }
 

@@ -1,18 +1,15 @@
 package aurocosh.divinefavor.common.lib;
 
 import aurocosh.divinefavor.common.util.UtilMath;
+import aurocosh.divinefavor.common.util.UtilDayTime;
 
 public class TimePeriod {
     private final int start;
     private final int stop;
 
     public TimePeriod(int start, int stop) {
-        this.start = UtilMath.clamp(start, 0, 24000);
-        this.stop = UtilMath.clamp(stop, 0, 24000);
-    }
-
-    public static TimePeriod fromHours(int start, int stop) {
-        return new TimePeriod(start * 1000, stop * 1000);
+        this.start = UtilMath.clamp(start, 0, UtilDayTime.TICKS_IN_DAY);
+        this.stop = UtilMath.clamp(stop, 0, UtilDayTime.TICKS_IN_DAY);
     }
 
     /**
@@ -22,6 +19,6 @@ public class TimePeriod {
     public boolean isDayTimeInRange(int value) {
         if (start <= stop)
             return start <= value && value <= stop;
-        return (start <= value && value <= 24000) || (0 <= value && value <= stop);
+        return (start <= value && value <= UtilDayTime.TICKS_IN_DAY) || (0 <= value && value <= stop);
     }
 }
