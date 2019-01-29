@@ -20,6 +20,10 @@ public class TickCounter {
         this.tickRate = Math.max(1, Math.abs(tickRate));
     }
 
+    public int getCurrentTicks() {
+        return currentTicks;
+    }
+
     public void setCurrentTicks(int ticks) {
         currentTicks = UtilMath.clamp(ticks, 0, tickRate);
     }

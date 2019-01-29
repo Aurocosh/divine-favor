@@ -16,14 +16,14 @@ public class InteractionDataSerializer implements INbtSerializer<InteractionData
     public void serialize(NBTTagCompound nbt, InteractionData instance) {
         List<Vector3i> clickedPositions = instance.getLastClickedPositions();
         List<BlockPos> posList = Vector3i.convert(clickedPositions);
-        int[] clickedArray = UtilSerialize.SerializeBlockPosArray(posList);
+        int[] clickedArray = UtilSerialize.serializeBlockPosArray(posList);
         nbt.setIntArray(TAG_LAST_CLICKED_POSITIONS, clickedArray);
     }
 
     @Override
     public void deserialize(NBTTagCompound nbt, InteractionData instance) {
         int[] posArray = nbt.getIntArray(TAG_LAST_CLICKED_POSITIONS);
-        List<BlockPos> posList = UtilSerialize.DeserializeBlockPosArray(posArray);
+        List<BlockPos> posList = UtilSerialize.deserializeBlockPosArray(posArray);
         List<Vector3i> clickedPositions = Vector3i.convertPos(posList);
         instance.setLastClickedPositions(clickedPositions);
     }

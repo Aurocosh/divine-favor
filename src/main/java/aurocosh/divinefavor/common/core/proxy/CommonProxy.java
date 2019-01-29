@@ -4,6 +4,7 @@ import aurocosh.divinefavor.DivineFavor;
 import aurocosh.divinefavor.common.block.common.ModBlocks;
 import aurocosh.divinefavor.common.custom_data.living.capability.LivingDataDataHandler;
 import aurocosh.divinefavor.common.custom_data.player.capability.PlayerDataDataHandler;
+import aurocosh.divinefavor.common.custom_data.world.capability.WorldDataDataHandler;
 import aurocosh.divinefavor.common.entity.ModEntities;
 import aurocosh.divinefavor.common.entity.common.ModGrudgeMobs;
 import aurocosh.divinefavor.common.favor.ModFavors;
@@ -61,9 +62,11 @@ public class CommonProxy {
         NetworkWrappedClientMessage.setNetworkWrapper(NetworkHandler.INSTANCE);
         NetworkWrappedServerMessage.setNetworkWrapper(NetworkHandler.INSTANCE);
 
-        GrimoireDataHandler.register();
         LivingDataDataHandler.register();
         PlayerDataDataHandler.register();
+        WorldDataDataHandler.register();
+
+        GrimoireDataHandler.register();
         SpellBowDataHandler.register();
 
         NetworkRegistry.INSTANCE.registerGuiHandler(DivineFavor.instance, new GuiHandler());
