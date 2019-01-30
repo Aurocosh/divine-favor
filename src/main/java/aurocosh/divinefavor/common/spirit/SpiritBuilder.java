@@ -7,6 +7,7 @@ import aurocosh.divinefavor.common.spirit.base.SpiritPunishment;
 import aurocosh.divinefavor.common.util.UtilDayTime;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class SpiritBuilder {
@@ -22,22 +23,22 @@ public class SpiritBuilder {
         punishment = new SpiritPunishment();
     }
 
-    public SpiritBuilder addActivityPeriod(int start, int stop){
+    public SpiritBuilder addActivityPeriod(int start, int stop) {
         activityPeriods.add(UtilDayTime.fromHours(start, stop));
         return this;
     }
 
-    public SpiritBuilder addTalisman(ItemSpellTalisman talisman){
+    public SpiritBuilder addTalisman(ItemSpellTalisman talisman) {
         talismans.add(talisman);
         return this;
     }
 
-    public SpiritBuilder setPunishment(SpiritPunishment punishment){
+    public SpiritBuilder setPunishment(SpiritPunishment punishment) {
         this.punishment = punishment;
         return this;
     }
 
-    public ModSpirit create(){
-        return new ModSpirit(name,activityPeriods, talismans, punishment);
+    public ModSpirit create() {
+        return new ModSpirit(name, activityPeriods, talismans, Collections.singletonList(0), punishment);
     }
 }

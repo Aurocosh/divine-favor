@@ -1,24 +1,21 @@
 package aurocosh.divinefavor.common.block.medium;
 
 import aurocosh.divinefavor.common.block.base.TickableTileEntity;
-import aurocosh.divinefavor.common.custom_data.player.PlayerData;
-import aurocosh.divinefavor.common.custom_data.player.data.favor.FavorData;
 import aurocosh.divinefavor.common.custom_data.world.WorldData;
 import aurocosh.divinefavor.common.custom_data.world.data.altars.AltarsData;
 import aurocosh.divinefavor.common.item.calling_stones.ItemCallingStone;
 import aurocosh.divinefavor.common.item.common.ModItems;
 import aurocosh.divinefavor.common.item.contract.ItemContract;
 import aurocosh.divinefavor.common.item.contract_binder.ItemContractBinder;
-import aurocosh.divinefavor.common.item.talismans.spell.base.ItemSpellTalisman;
 import aurocosh.divinefavor.common.lib.math.Vector3i;
 import aurocosh.divinefavor.common.misc.SlotStack;
 import aurocosh.divinefavor.common.muliblock.IMultiblockController;
 import aurocosh.divinefavor.common.muliblock.ModMultiBlock;
 import aurocosh.divinefavor.common.muliblock.MultiBlockInstance;
 import aurocosh.divinefavor.common.muliblock.common.MultiBlockWatcher;
-import aurocosh.divinefavor.common.network.message.client.spell_uses.MessageSyncAllFavors;
 import aurocosh.divinefavor.common.receipes.ModRecipes;
 import aurocosh.divinefavor.common.spirit.base.ModSpirit;
+import aurocosh.divinefavor.common.util.UtilContract;
 import aurocosh.divinefavor.common.util.UtilHandler;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
@@ -195,58 +192,43 @@ public class TileMedium extends TickableTileEntity implements IMultiblockControl
     }
 
     private void refreshSpellUses() {
+//        List<ItemStack> contracts = getContracsFromStack(stack);
+//        List<UUID> playerUUIDs = getPlayerUUIDs(contracts, callingStone);
+//        List<ItemSpellTalisman> talismans = callingStone.spirit.getTalismans();
+//        for (UUID uuid : playerUUIDs) {
+//
+//            EntityPlayer player = world.getPlayerEntityByUUID(uuid);
+//            if (player == null)
+//                continue;
+//
+//            FavorData favorData = PlayerData.get(player).getFavorData();
+//            for (ItemSpellTalisman talisman : talismans)
+//                favorData.get(talisman.getFavor()).regenerate();
+//            new MessageSyncAllFavors(favorData).sendTo(player);
+//        }
+    }
+
+    public boolean isMultiblockValid() {
+        return multiBlockInstance != null;
+    }
+
+    public List<ItemStack> getValidContracts() {
         ItemStack stoneStack = stoneStackHandler.getStackInSlot(0);
         if (stoneStack.isEmpty())
-            return;
-        ItemCallingStone callingStone = (ItemCallingStone) stoneStack.getItem();
-
+            return new ArrayList<>();
         ItemStack stack = contractStackHandler.getStackInSlot(0);
         if (stack.isEmpty())
-            return;
+            return new ArrayList<>();
 
-        List<ItemStack> contracts = getContracts(stack);
-        List<UUID> playerUUIDs = getPlayerUUIDs(contracts, callingStone);
-        List<ItemSpellTalisman> talismans = callingStone.spirit.getTalismans();
-        for (UUID uuid : playerUUIDs) {
-
-            EntityPlayer player = world.getPlayerEntityByUUID(uuid);
-            if (player == null)
-                continue;
-
-            FavorData favorData = PlayerData.get(player).getFavorData();
-            for (ItemSpellTalisman talisman : talismans)
-                favorData.get(talisman.getFavor()).regenerate();
-            new MessageSyncAllFavors(favorData).sendTo(player);
+        List<ItemStack> contracts = UtilContract.getContracsFromStack(stack);
+        List<ItemStack> validContracts = new ArrayList<>();
+        ItemCallingStone callingStone = (ItemCallingStone) stoneStack.getItem();
+        for (ItemStack contract : contracts) {
+            ItemContract itemContract = (ItemContract) contract.getItem();
+            if (itemContract.getSpirit() == callingStone.spirit)
+                validContracts.add(contract);
         }
-    }
-
-    private List<ItemStack> getContracts(ItemStack stack) {
-        List<ItemStack> contracts = new ArrayList<>();
-        if (stack.getItem() instanceof ItemContract) {
-            contracts.add(stack);
-        }
-        else if (stack.getItem() instanceof ItemContractBinder) {
-            IItemHandler handler = stack.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null);
-            if (handler == null)
-                return contracts;
-            for (SlotStack slotStack : UtilHandler.getNotEmptyStacksWithSlotIndexes(handler))
-                contracts.add(slotStack.getStack());
-        }
-        return contracts;
-    }
-
-    private List<UUID> getPlayerUUIDs(List<ItemStack> stacks, ItemCallingStone callingStone) {
-        Set<UUID> playerUUIDs = new HashSet<>();
-        for (ItemStack stack : stacks) {
-            ItemContract contract = (ItemContract) stack.getItem();
-            if (contract.getSpirit() != callingStone.spirit)
-                continue;
-            UUID uuid = ItemContract.getPlayerId(stack);
-            if (uuid == null)
-                continue;
-            playerUUIDs.add(uuid);
-        }
-        return new ArrayList<>(playerUUIDs);
+        return validContracts;
     }
 
     @Override
