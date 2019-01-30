@@ -1,8 +1,14 @@
 package aurocosh.divinefavor.common.util;
 
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.ItemStack;
+import net.minecraft.server.MinecraftServer;
+import net.minecraft.server.management.PlayerList;
 import net.minecraft.util.EnumHand;
+import net.minecraft.world.World;
+
+import java.util.UUID;
 
 public class UtilPlayer {
     public static ItemStack findHeldStackHands(EntityPlayer player, UtilList.Predicate<ItemStack> predicate) {

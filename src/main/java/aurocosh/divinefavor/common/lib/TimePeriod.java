@@ -12,6 +12,14 @@ public class TimePeriod {
         this.stop = UtilMath.clamp(stop, 0, UtilDayTime.TICKS_IN_DAY);
     }
 
+    public int getStart() {
+        return start;
+    }
+
+    public int getStop() {
+        return stop;
+    }
+
     /**
      * @param value value between 0 and 20000
      * @return if value is belongs to this time period
