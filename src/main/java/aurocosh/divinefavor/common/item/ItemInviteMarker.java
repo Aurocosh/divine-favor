@@ -61,7 +61,7 @@ public class ItemInviteMarker extends ModItem {
         if(!UtilNbt.checkForTag(stack, TAG_PLAYER_UUID))
             return false;
 
-        NBTTagCompound nbt = UtilNbt.getTag(stack);
+        NBTTagCompound nbt = UtilNbt.getNbt(stack);
         UUID uuid = UUID.fromString(nbt.getString(TAG_PLAYER_UUID));
         PlayerList playerList = world.getMinecraftServer().getPlayerList();
         EntityPlayerMP targetPlayer = playerList.getPlayerByUUID(uuid);
@@ -79,7 +79,7 @@ public class ItemInviteMarker extends ModItem {
     @Override
     public void addInformation(ItemStack stack, @Nullable World world, List<String> tooltip, ITooltipFlag flag) {
         super.addInformation(stack, world, tooltip, flag);
-        NBTTagCompound compound = UtilNbt.getTag(stack);
+        NBTTagCompound compound = UtilNbt.getNbt(stack);
         if (compound.hasKey(TAG_PLAYER_UUID))
             tooltip.add(I18n.format("item.divinefavor:contract.player", compound.getString(TAG_PLAYER_UUID)));
     }

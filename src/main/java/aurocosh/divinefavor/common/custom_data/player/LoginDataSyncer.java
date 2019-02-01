@@ -18,6 +18,7 @@ public class LoginDataSyncer {
 
         IPlayerDataHandler handler = PlayerData.get(event.player);
         new MessageSyncAllFavors(handler.getFavorData()).sendTo(event.player);
+//        new MessageSyncContracts(handler.getContractsData());
         new MessageSyncFury(handler.getFocusedFuryData().getMobTypeId()).sendTo(event.player);
         new MessageSyncGrudge(handler.getGrudgeData().getMobTypeId()).sendTo(event.player);
     }

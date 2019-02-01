@@ -50,7 +50,7 @@ public class ItemSpellBow extends ModItem {
         addPropertyOverride(new ResourceLocation("book_mode"), new IItemPropertyGetter() {
             @SideOnly(Side.CLIENT)
             public float apply(ItemStack stack, @Nullable World world, @Nullable EntityLivingBase entityLivingBase) {
-                NBTTagCompound nbt = UtilNbt.getTag(stack);
+                NBTTagCompound nbt = UtilNbt.getNbt(stack);
                 return nbt.getBoolean(TAG_IS_IN_BOOK_MODE) ? 1 : 0;
             }
         });
@@ -79,7 +79,7 @@ public class ItemSpellBow extends ModItem {
      * Called when the player stops using an Item (stops holding the right mouse button).
      */
     public void onPlayerStoppedUsing(ItemStack bowStack, World world, EntityLivingBase entityLiving, int timeLeft) {
-        if (UtilNbt.getTag(bowStack).getBoolean(TAG_IS_IN_BOOK_MODE))
+        if (UtilNbt.getNbt(bowStack).getBoolean(TAG_IS_IN_BOOK_MODE))
             return;
         if (!(entityLiving instanceof EntityPlayer))
             return;
@@ -172,7 +172,7 @@ public class ItemSpellBow extends ModItem {
         if (!(itemstack.getItem() instanceof ItemSpellBow))
             return new ActionResult<>(EnumActionResult.PASS, itemstack);
 
-        NBTTagCompound nbt = UtilNbt.getTag(itemstack);
+        NBTTagCompound nbt = UtilNbt.getNbt(itemstack);
         boolean isBook = nbt.getBoolean(TAG_IS_IN_BOOK_MODE);
         if (playerIn.isSneaking()) {
             nbt.setBoolean(TAG_IS_IN_BOOK_MODE, !isBook);

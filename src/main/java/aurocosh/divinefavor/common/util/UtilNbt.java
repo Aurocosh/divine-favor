@@ -8,7 +8,7 @@ import net.minecraft.util.math.BlockPos;
 import java.util.UUID;
 
 public class UtilNbt {
-    public static NBTTagCompound getTag(ItemStack stack) {
+    public static NBTTagCompound getNbt(ItemStack stack) {
         if (stack.hasTagCompound())
             return stack.getTagCompound();
 

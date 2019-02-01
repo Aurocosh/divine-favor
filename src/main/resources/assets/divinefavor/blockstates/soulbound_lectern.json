@@ -1,0 +1,39 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "cube",
+    "textures":{
+      "particle": "divinefavor:blocks/soulbound_lectern/unbound_side",
+      "down": "divinefavor:blocks/soulbound_lectern/bottom",
+      "up": "divinefavor:blocks/soulbound_lectern/unbound_top",
+      "east": "divinefavor:blocks/soulbound_lectern/unbound_side",
+      "west": "divinefavor:blocks/soulbound_lectern/unbound_side",
+      "north": "divinefavor:blocks/soulbound_lectern/unbound_side",
+      "south": "divinefavor:blocks/soulbound_lectern/unbound_side"
+    }
+  },
+  "variants": {
+    "normal": [{}],
+    "inventory": [{}],
+    "facing": {
+      "north": {},
+      "south": {"y": 180},
+      "west": {"y": 270},
+      "east": {"y": 90}
+    },
+    "state": {
+      "unbound": {},
+      "bound": {
+		"textures": {
+		  "particle": "divinefavor:blocks/soulbound_lectern/bound_side",
+		  "down": "divinefavor:blocks/soulbound_lectern/bottom",
+		  "up": "divinefavor:blocks/soulbound_lectern/bound_top",
+		  "east": "divinefavor:blocks/soulbound_lectern/bound_side",
+		  "west": "divinefavor:blocks/soulbound_lectern/bound_side",
+		  "north": "divinefavor:blocks/soulbound_lectern/bound_side",
+		  "south": "divinefavor:blocks/soulbound_lectern/bound_side"
+		}
+	  }
+    }
+  }
+}

@@ -10,7 +10,6 @@ import net.minecraftforge.items.SlotItemHandler;
 public class RitualBagContainer extends GenericContainer {
     private int blocked;
     public RitualBagContainer(EntityPlayer player, IItemHandler itemHandler) {
-//        IItemHandler itemHandler = this.ironMedium.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null);
         int x = 62;
         int y = 18;
 

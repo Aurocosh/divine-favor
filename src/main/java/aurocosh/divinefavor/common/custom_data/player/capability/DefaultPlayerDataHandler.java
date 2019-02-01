@@ -1,5 +1,6 @@
 package aurocosh.divinefavor.common.custom_data.player.capability;
 
+import aurocosh.divinefavor.common.custom_data.player.data.contracts.ContractsData;
 import aurocosh.divinefavor.common.custom_data.player.data.corrosion.ArmorCorrosionData;
 import aurocosh.divinefavor.common.custom_data.player.data.crawling_mist.CrawlingMistData;
 import aurocosh.divinefavor.common.custom_data.player.data.escape_plan.EscapePlanData;
@@ -14,6 +15,7 @@ import aurocosh.divinefavor.common.custom_data.player.data.favor.FavorData;
 // The default implementation of the capability. Holds all the logic.
 public class DefaultPlayerDataHandler implements IPlayerDataHandler {
     private final ArmorCorrosionData armorCorrosionData;
+    private final ContractsData contractsData;
     private final CrawlingMistData crawlingMistData;
     private final EscapePlanData escapePlanData;
     private final FocusedFuryData focusedFuryData;
@@ -26,6 +28,7 @@ public class DefaultPlayerDataHandler implements IPlayerDataHandler {
 
     public DefaultPlayerDataHandler() {
         armorCorrosionData = new ArmorCorrosionData();
+        contractsData = new ContractsData();
         crawlingMistData = new CrawlingMistData();
         escapePlanData = new EscapePlanData();
         focusedFuryData = new FocusedFuryData();
@@ -40,6 +43,11 @@ public class DefaultPlayerDataHandler implements IPlayerDataHandler {
     @Override
     public ArmorCorrosionData getArmorCorrosionData() {
         return armorCorrosionData;
+    }
+
+    @Override
+    public ContractsData getContractsData() {
+        return contractsData;
     }
 
     @Override

@@ -25,7 +25,7 @@ public class SpellTalismanInviteMarker extends ItemSpellTalisman {
     protected void performActionServer(TalismanContext context) {
         EntityPlayer player = context.player;
         ItemStack stack = new ItemStack(item);
-        NBTTagCompound nbt = UtilNbt.getTag(stack);
+        NBTTagCompound nbt = UtilNbt.getNbt(stack);
         nbt.setString(ItemInviteMarker.TAG_PLAYER_UUID, player.getGameProfile().getId().toString());
         player.inventory.addItemStackToInventory(stack);
     }

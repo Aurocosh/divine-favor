@@ -28,7 +28,6 @@ public class ItemWishingStone extends ModItem {
 
         setMaxStackSize(64);
         setCreativeTab(DivineFavorCreativeTabGems.INSTANCE);
-        ModRegistries.items.register(this);
     }
 
     @Override

@@ -25,7 +25,7 @@ public class SpellTalismanWarpMarker extends ItemSpellTalisman {
     protected void performActionServer(TalismanContext context) {
         EntityPlayer player = context.player;
         ItemStack stack = new ItemStack(item);
-        NBTTagCompound nbt = UtilNbt.getTag(stack);
+        NBTTagCompound nbt = UtilNbt.getNbt(stack);
         UtilNbt.setBlockPos(nbt, ItemWarpMarker.TAG_POSITION, player.getPosition());
         nbt.setInteger(ItemWarpMarker.TAG_DIMENSION, player.dimension);
         player.inventory.addItemStackToInventory(stack);

@@ -4,7 +4,6 @@ import aurocosh.divinefavor.DivineFavor;
 import aurocosh.divinefavor.common.block.common.ModBlocks;
 import aurocosh.divinefavor.common.core.ResourceNamer;
 import aurocosh.divinefavor.common.item.base.IDescriptionProvider;
-import aurocosh.divinefavor.common.item.common.ModItems;
 import aurocosh.divinefavor.common.receipes.ImmaterialMediumRecipe;
 import aurocosh.divinefavor.common.receipes.ModRecipes;
 import aurocosh.divinefavor.common.registry.ModRegistries;
@@ -21,7 +20,7 @@ import net.minecraftforge.oredict.OreDictionary;
 
 @JEIPlugin
 public class DivineFavorJEIPlugin implements IModPlugin {
-    public static final String IMMATERIAL_MEDIUM_UID = ResourceNamer.getFullName("immaterial_medium").toString();
+    public static final String IMMATERIAL_MEDIUM_UID = ResourceNamer.getFullName("immaterialMedium").toString();
 
     @Override
     public void registerCategories(IRecipeCategoryRegistration registry) {
@@ -38,7 +37,7 @@ public class DivineFavorJEIPlugin implements IModPlugin {
     private void registerRecipes(IModRegistry registry) {
         registry.handleRecipes(ImmaterialMediumRecipe.class, ImmaterialMediumWrapper::new, IMMATERIAL_MEDIUM_UID);
         registry.addRecipes(ModRecipes.recipes.values(), IMMATERIAL_MEDIUM_UID);
-        registry.addRecipeCatalyst(new ItemStack(ModBlocks.immaterial_medium), IMMATERIAL_MEDIUM_UID);
+        registry.addRecipeCatalyst(new ItemStack(ModBlocks.immaterialMedium), IMMATERIAL_MEDIUM_UID);
     }
 
     private void registerDescription(IModRegistry registry) {

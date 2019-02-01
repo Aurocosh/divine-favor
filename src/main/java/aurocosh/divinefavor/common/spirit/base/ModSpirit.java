@@ -5,6 +5,7 @@ import aurocosh.divinefavor.common.global.dayClock.DayClock;
 import aurocosh.divinefavor.common.item.talismans.spell.base.ItemSpellTalisman;
 import aurocosh.divinefavor.common.lib.TimePeriod;
 import aurocosh.divinefavor.common.lib.interfaces.IIndexedEntry;
+import aurocosh.divinefavor.common.registry.ModRegistries;
 import aurocosh.divinefavor.common.registry.mappers.ModMappers;
 import aurocosh.divinefavor.common.spirit.activity.SpiritActivityHandler;
 import aurocosh.divinefavor.common.spirit.activity.SpiritActivityMessage;
@@ -41,6 +42,7 @@ public class ModSpirit extends IForgeRegistryEntry.Impl<ModSpirit> implements II
         spiritBecameInactiveHandler.addActivity(new SpiritActivityMessage("Spirit " + name + " became inactive"));
 
         registerActivityPeriods();
+        ModRegistries.spirits.register(this);
     }
 
     public String getName() {

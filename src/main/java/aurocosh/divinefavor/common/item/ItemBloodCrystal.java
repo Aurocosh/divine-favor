@@ -1,8 +1,7 @@
-package aurocosh.divinefavor.common.item.contract;
+package aurocosh.divinefavor.common.item;
 
 import aurocosh.divinefavor.common.core.DivineFavorCreativeTab;
 import aurocosh.divinefavor.common.item.base.ModItem;
-import aurocosh.divinefavor.common.spirit.base.ModSpirit;
 import aurocosh.divinefavor.common.util.UtilNbt;
 import com.mojang.authlib.GameProfile;
 import net.minecraft.client.resources.I18n;
@@ -11,52 +10,39 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.*;
 import net.minecraft.world.World;
 
 import javax.annotation.Nullable;
-import java.util.*;
+import java.util.List;
+import java.util.UUID;
 
-public class ItemContract extends ModItem {
+public class ItemBloodCrystal extends ModItem {
     private static final String NBT_PLAYER_ID = "Owner";
     private static final String NBT_PLAYER_NAME = "OwnerName";
 
-    private final ModSpirit spirit;
-
-    public ItemContract(ModSpirit spirit) {
-        super("contract_" + spirit.getName(),"contracts/" + spirit.getName());
-        this.spirit = spirit;
+    public ItemBloodCrystal() {
+        super("blood_crystal", "blood_crystal");
         setMaxStackSize(1);
         setCreativeTab(DivineFavorCreativeTab.INSTANCE);
     }
 
-    public ModSpirit getSpirit() {
-        return spirit;
-    }
-
-    @Override
-    public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
-        ItemStack stack = player.getHeldItem(hand);
-        if (world.isRemote)
-            return ActionResult.newResult(EnumActionResult.SUCCESS, stack);
-
-        NBTTagCompound compound = UtilNbt.getNbt(stack);
-        if(compound.hasKey(NBT_PLAYER_ID))
-            return null;
-
-        GameProfile profile = player.getGameProfile();
-        compound.setString(NBT_PLAYER_ID, profile.getId().toString());
-        compound.setString(NBT_PLAYER_NAME, profile.getName());
-
-        return ActionResult.newResult(EnumActionResult.SUCCESS, stack);
+    public static boolean hasOwner(ItemStack stack) {
+        return getPlayerId(stack) != null;
     }
 
     @Nullable
     public static UUID getPlayerId(ItemStack stack) {
         NBTTagCompound compound = UtilNbt.getNbt(stack);
-        if(!compound.hasKey(NBT_PLAYER_ID))
-            return null;
-        return UUID.fromString(compound.getString(NBT_PLAYER_ID));
+        if (compound.hasKey(NBT_PLAYER_ID))
+            return UUID.fromString(compound.getString(NBT_PLAYER_ID));
+        return null;
+    }
+
+    public static void setOwner(ItemStack stack, EntityPlayer player) {
+        NBTTagCompound compound = UtilNbt.getNbt(stack);
+        GameProfile profile = player.getGameProfile();
+        compound.setString(NBT_PLAYER_ID, profile.getId().toString());
+        compound.setString(NBT_PLAYER_NAME, profile.getName());
     }
 
     @Override
@@ -69,6 +55,6 @@ public class ItemContract extends ModItem {
         super.addInformation(stack, world, tooltip, flag);
         NBTTagCompound compound = UtilNbt.getNbt(stack);
         if (compound.hasKey(NBT_PLAYER_NAME))
-            tooltip.add(I18n.format("item.divinefavor:contract.player", compound.getString(NBT_PLAYER_NAME)));
+            tooltip.add(I18n.format("item.divinefavor:blood_crystal.player", compound.getString(NBT_PLAYER_NAME)));
     }
 }

@@ -54,7 +54,7 @@ public class ItemStorageGem extends ModItem {
         if (world.isRemote) {
             return true;
         }
-        NBTTagCompound tag = UtilNbt.getTag(stack);
+        NBTTagCompound tag = UtilNbt.getNbt(stack);
         if (!UtilNbt.checkForTags(tag, TAG_POSITION, TAG_DIMENSION))
             return false;
         BlockPos pos = UtilNbt.getBlockPos(tag, TAG_POSITION);

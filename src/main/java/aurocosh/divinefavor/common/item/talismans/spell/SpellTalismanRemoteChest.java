@@ -32,7 +32,7 @@ public class SpellTalismanRemoteChest extends ItemSpellTalisman {
 
         EntityPlayer player = context.player;
         ItemStack stack = new ItemStack(item);
-        NBTTagCompound nbt = UtilNbt.getTag(stack);
+        NBTTagCompound nbt = UtilNbt.getNbt(stack);
         UtilNbt.setBlockPos(nbt, ItemWarpMarker.TAG_POSITION, context.pos);
         nbt.setInteger(ItemWarpMarker.TAG_DIMENSION, player.dimension);
         player.inventory.addItemStackToInventory(stack);
