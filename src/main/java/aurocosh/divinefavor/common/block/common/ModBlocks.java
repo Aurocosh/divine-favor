@@ -6,30 +6,24 @@ import aurocosh.divinefavor.common.block.fast_furnace.BlockFastFurnaceMod;
 import aurocosh.divinefavor.common.block.fast_furnace.TileFastFurnace;
 import aurocosh.divinefavor.common.block.medium.BlockMedium;
 import aurocosh.divinefavor.common.block.medium.TileMedium;
+import aurocosh.divinefavor.common.block.soulbound_lectern.BlockSoulboundLectern;
+import aurocosh.divinefavor.common.block.soulbound_lectern.TileSoulboundLectern;
 import aurocosh.divinefavor.common.constants.ConstBlockNames;
 import aurocosh.divinefavor.common.constants.ConstResources;
-import aurocosh.divinefavor.common.registry.ModRegistries;
-import net.minecraft.item.ItemBlock;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
-import static aurocosh.divinefavor.common.registry.ModRegistries.itemBlocks;
-
 public class ModBlocks {
-    public static ModBlock blockFastFurnace;
-    public static ModBlock immaterial_medium;
-    public static ModBlock blockDiviner;
+    public static ModBlock diviner;
+    public static ModBlock fastFurnace;
+    public static ModBlock immaterialMedium;
+    public static ModBlock soulboundLectern;
 
     public static void preInit() {
-        blockFastFurnace = ModRegistries.blocks.register(new BlockFastFurnaceMod());
-        immaterial_medium = ModRegistries.blocks.register(new BlockMedium());
-        blockDiviner = ModRegistries.blocks.register(new BlockDiviner());
-
-        for (ModBlock block : ModRegistries.blocks.getValues()) {
-            ItemBlock itemBlock = new ItemBlock(block);
-            itemBlock.setRegistryName(block.getRegistryName());
-            itemBlocks.register(itemBlock);
-        }
+        diviner = new BlockDiviner();
+        fastFurnace = new BlockFastFurnaceMod();
+        immaterialMedium = new BlockMedium();
+        soulboundLectern = new BlockSoulboundLectern();
 
         initTileEntities();
     }
@@ -41,6 +35,7 @@ public class ModBlocks {
     private static void initTileEntities() {
         registerTile(TileFastFurnace.class, ConstBlockNames.FAST_FURNACE);
         registerTile(TileMedium.class, ConstBlockNames.IRON_MEDIUM);
+        registerTile(TileSoulboundLectern.class, ConstBlockNames.SOULBOUND_LECTERN);
     }
 
     private static void registerTile(Class<? extends TileEntity> clazz, String key) {

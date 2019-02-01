@@ -1,7 +1,6 @@
 package aurocosh.divinefavor.common.item.calling_stones;
 
 import aurocosh.divinefavor.common.muliblock.common.ModMultiBlocks;
-import aurocosh.divinefavor.common.registry.ModRegistries;
 import aurocosh.divinefavor.common.spirit.ModSpirits;
 
 public final class ModCallingStones {
@@ -16,14 +15,14 @@ public final class ModCallingStones {
     public static ItemCallingStone calling_stone_timber;
 
     public static void preInit() {
-        calling_stone_allfire = ModRegistries.items.register(new ItemCallingStone("allfire", ModSpirits.allfire, ModMultiBlocks.altar_allfire));
-        calling_stone_arbow = ModRegistries.items.register(new ItemCallingStone("arbow", ModSpirits.arbow, ModMultiBlocks.altar_arbow));
-        calling_stone_blizrabi = ModRegistries.items.register(new ItemCallingStone("blizrabi", ModSpirits.blizrabi, ModMultiBlocks.altar_blizrabi));
-        calling_stone_endererer = ModRegistries.items.register(new ItemCallingStone("endererer", ModSpirits.endererer, ModMultiBlocks.altar_endererer));
-        calling_stone_nefir = ModRegistries.items.register(new ItemCallingStone("nefir", ModSpirits.nefir, ModMultiBlocks.altar_nefir));
-        calling_stone_redwind = ModRegistries.items.register(new ItemCallingStone("redwind", ModSpirits.redwind, ModMultiBlocks.altar_redwind));
-        calling_stone_romol = ModRegistries.items.register(new ItemCallingStone("romol", ModSpirits.romol, ModMultiBlocks.altar_romol));
-        calling_stone_squarefury = ModRegistries.items.register(new ItemCallingStone("squarefury", ModSpirits.squarefury, ModMultiBlocks.altar_squarefury));
-        calling_stone_timber = ModRegistries.items.register(new ItemCallingStone("timber", ModSpirits.timber, ModMultiBlocks.altar_timber));
+        calling_stone_allfire = new ItemCallingStone("allfire", ModSpirits.allfire, ModMultiBlocks.altar_allfire);
+        calling_stone_arbow = new ItemCallingStone("arbow", ModSpirits.arbow, ModMultiBlocks.altar_arbow);
+        calling_stone_blizrabi = new ItemCallingStone("blizrabi", ModSpirits.blizrabi, ModMultiBlocks.altar_blizrabi);
+        calling_stone_endererer = new ItemCallingStone("endererer", ModSpirits.endererer, ModMultiBlocks.altar_endererer);
+        calling_stone_nefir = new ItemCallingStone("nefir", ModSpirits.nefir, ModMultiBlocks.altar_nefir);
+        calling_stone_redwind = new ItemCallingStone("redwind", ModSpirits.redwind, ModMultiBlocks.altar_redwind);
+        calling_stone_romol = new ItemCallingStone("romol", ModSpirits.romol, ModMultiBlocks.altar_romol);
+        calling_stone_squarefury = new ItemCallingStone("squarefury", ModSpirits.squarefury, ModMultiBlocks.altar_squarefury);
+        calling_stone_timber = new ItemCallingStone("timber", ModSpirits.timber, ModMultiBlocks.altar_timber);
     }
 }

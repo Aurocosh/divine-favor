@@ -1,5 +1,6 @@
 package aurocosh.divinefavor.common.custom_data.player.capability;
 
+import aurocosh.divinefavor.common.custom_data.player.data.contracts.ContracsDataSerializer;
 import aurocosh.divinefavor.common.custom_data.player.data.corrosion.ArmorCorrosionDataSerializer;
 import aurocosh.divinefavor.common.custom_data.player.data.crawling_mist.CrawlingMistDataSerializer;
 import aurocosh.divinefavor.common.custom_data.player.data.escape_plan.EscapePlanDataSerializer;
@@ -18,6 +19,7 @@ import net.minecraftforge.common.capabilities.Capability;
 // Handles the actual read/write of the nbt.
 public class PlayerDataStorage implements Capability.IStorage<IPlayerDataHandler> {
     private static final ArmorCorrosionDataSerializer armorCorrosionDataSerializer = new ArmorCorrosionDataSerializer();
+    private static final ContracsDataSerializer contracsDataSerializer = new ContracsDataSerializer();
     private static final CrawlingMistDataSerializer crawlingMistDataSerializer = new CrawlingMistDataSerializer();
     private static final EscapePlanDataSerializer escapePlanDataSerializer = new EscapePlanDataSerializer();
     private static final FocusedFuryDataSerializer focusedFuryDataSerializer = new FocusedFuryDataSerializer();
@@ -32,6 +34,7 @@ public class PlayerDataStorage implements Capability.IStorage<IPlayerDataHandler
     public NBTBase writeNBT(Capability<IPlayerDataHandler> capability, IPlayerDataHandler instance, EnumFacing side) {
         final NBTTagCompound tag = new NBTTagCompound();
         armorCorrosionDataSerializer.serialize(tag, instance.getArmorCorrosionData());
+        contracsDataSerializer.serialize(tag, instance.getContractsData());
         crawlingMistDataSerializer.serialize(tag, instance.getCrawlingMistData());
         escapePlanDataSerializer.serialize(tag, instance.getEscapePlanData());
         focusedFuryDataSerializer.serialize(tag, instance.getFocusedFuryData());
@@ -48,6 +51,7 @@ public class PlayerDataStorage implements Capability.IStorage<IPlayerDataHandler
     public void readNBT(Capability<IPlayerDataHandler> capability, IPlayerDataHandler instance, EnumFacing side, NBTBase nbt) {
         final NBTTagCompound tag = (NBTTagCompound) nbt;
         armorCorrosionDataSerializer.deserialize(tag, instance.getArmorCorrosionData());
+        contracsDataSerializer.deserialize(tag, instance.getContractsData());
         crawlingMistDataSerializer.deserialize(tag, instance.getCrawlingMistData());
         escapePlanDataSerializer.deserialize(tag, instance.getEscapePlanData());
         focusedFuryDataSerializer.deserialize(tag, instance.getFocusedFuryData());

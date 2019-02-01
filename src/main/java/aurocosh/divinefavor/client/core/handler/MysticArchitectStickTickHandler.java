@@ -38,7 +38,7 @@ public class MysticArchitectStickTickHandler {
         if(!(stack.getItem() instanceof ItemMysticArchitectStick))
             return;
 
-        NBTTagCompound compound = UtilNbt.getTag(stack);
+        NBTTagCompound compound = UtilNbt.getNbt(stack);
         int mode = compound.getInteger(ItemMysticArchitectStick.TAG_CURRENT_MODE);
         if (dWheel < 0)
             mode--;

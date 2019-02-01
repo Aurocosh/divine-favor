@@ -12,9 +12,10 @@ public class DeathDataCloner {
         IPlayerDataHandler originalData = PlayerData.get(event.getOriginal());
         IPlayerDataHandler cloneData = PlayerData.get(event.getEntityPlayer());
 
+        cloneData.getContractsData().getStackHandler().deserializeNBT(originalData.getContractsData().getStackHandler().serializeNBT());
+        cloneData.getFavorData().setFavorValues(originalData.getFavorData().getFavorValues());
         cloneData.getGrudgeData().setMobTypeId(originalData.getGrudgeData().getMobTypeId());
         cloneData.getInteractionData().setLastClickedPositions(originalData.getInteractionData().getLastClickedPositions());
         cloneData.getPearlCrumbsData().setAllPositions(originalData.getPearlCrumbsData().getAllPositions());
-        cloneData.getFavorData().setFavorValues(originalData.getFavorData().getFavorValues());
     }
 }

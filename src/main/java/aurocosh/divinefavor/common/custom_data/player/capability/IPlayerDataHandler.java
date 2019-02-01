@@ -1,5 +1,6 @@
 package aurocosh.divinefavor.common.custom_data.player.capability;
 
+import aurocosh.divinefavor.common.custom_data.player.data.contracts.ContractsData;
 import aurocosh.divinefavor.common.custom_data.player.data.corrosion.ArmorCorrosionData;
 import aurocosh.divinefavor.common.custom_data.player.data.crawling_mist.CrawlingMistData;
 import aurocosh.divinefavor.common.custom_data.player.data.escape_plan.EscapePlanData;
@@ -13,13 +14,14 @@ import aurocosh.divinefavor.common.custom_data.player.data.favor.FavorData;
 
 public interface IPlayerDataHandler {
     ArmorCorrosionData getArmorCorrosionData();
+    ContractsData getContractsData();
     CrawlingMistData getCrawlingMistData();
     EscapePlanData getEscapePlanData();
+    FavorData getFavorData();
     FocusedFuryData getFocusedFuryData();
     GillsData getGillsData();
     GrudgeData getGrudgeData();
     InteractionData getInteractionData();
     MoltenSkinData getMoltenSkinData();
     PearlCrumbsData getPearlCrumbsData();
-    FavorData getFavorData();
 }

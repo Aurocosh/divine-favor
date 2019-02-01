@@ -3,6 +3,7 @@ package aurocosh.divinefavor.common.network;
 import aurocosh.divinefavor.client.gui.*;
 import aurocosh.divinefavor.client.gui.blocks.GuiFastFurnace;
 import aurocosh.divinefavor.client.gui.blocks.GuiIronMedium;
+import aurocosh.divinefavor.client.gui.blocks.GuiSoulboundLectern;
 import aurocosh.divinefavor.client.gui.items.GuiContractBinder;
 import aurocosh.divinefavor.client.gui.items.GuiGrimoire;
 import aurocosh.divinefavor.client.gui.items.GuiRitualPouch;
@@ -11,6 +12,8 @@ import aurocosh.divinefavor.common.block.fast_furnace.ContainerFastFurnace;
 import aurocosh.divinefavor.common.block.fast_furnace.TileFastFurnace;
 import aurocosh.divinefavor.common.block.medium.ContainerMedium;
 import aurocosh.divinefavor.common.block.medium.TileMedium;
+import aurocosh.divinefavor.common.block.soulbound_lectern.ContainerSoulboundLectern;
+import aurocosh.divinefavor.common.block.soulbound_lectern.TileSoulboundLectern;
 import aurocosh.divinefavor.common.constants.ConstGuiIDs;
 import aurocosh.divinefavor.common.item.spell_bow.ItemSpellBow;
 import aurocosh.divinefavor.common.item.contract_binder.ContractBinderContainer;
@@ -66,6 +69,8 @@ public class GuiHandler implements IGuiHandler {
                 ISpellBowHandler handler = stack.getCapability(SpellBowDataHandler.CAPABILITY_SPELL_BOW, null);
                 return new SpellBowContainer(player, handler, hand);
             }
+            case ConstGuiIDs.SOULBOUND_LECTERN:
+                return new ContainerSoulboundLectern(player, (TileSoulboundLectern) world.getTileEntity(new BlockPos(x, y, z)));
         }
         return null;
     }
@@ -97,6 +102,8 @@ public class GuiHandler implements IGuiHandler {
                 ItemStack stack = player.getHeldItem(hand);
                 return new GuiSpellBow(player, stack, hand);
             }
+            case ConstGuiIDs.SOULBOUND_LECTERN:
+                return new GuiSoulboundLectern(player, (TileSoulboundLectern) world.getTileEntity(new BlockPos(x, y, z)));
         }
         return null;
     }

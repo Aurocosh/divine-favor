@@ -1,6 +1,7 @@
 package aurocosh.divinefavor.common.item.base;
 
 import aurocosh.divinefavor.common.core.ResourceNamer;
+import aurocosh.divinefavor.common.registry.ModRegistries;
 import net.minecraft.client.renderer.ItemMeshDefinition;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
@@ -13,6 +14,7 @@ public class ModItem extends Item implements IModelHolder {
         this.texturePath = texturePath;
         setTranslationKey(name);
         setRegistryName(ResourceNamer.getFullName(name));
+        ModRegistries.items.register(this);
     }
 
     @Override

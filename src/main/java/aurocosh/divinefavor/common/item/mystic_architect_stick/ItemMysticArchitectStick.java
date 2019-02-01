@@ -51,7 +51,7 @@ public class ItemMysticArchitectStick extends ModItem {
             return EnumActionResult.PASS;
 
         ItemStack stack = playerIn.getHeldItemMainhand();
-        NBTTagCompound compound = UtilNbt.getTag(stack);
+        NBTTagCompound compound = UtilNbt.getNbt(stack);
 
         if (!playerIn.isSneaking()) {
             boolean currentIsSecond = compound.getBoolean(TAG_CURRENT_IS_SECOND);

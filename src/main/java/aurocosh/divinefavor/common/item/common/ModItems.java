@@ -1,16 +1,17 @@
 package aurocosh.divinefavor.common.item.common;
 
 import aurocosh.divinefavor.common.item.*;
-import aurocosh.divinefavor.common.item.mystic_architect_stick.ItemMysticArchitectStick;
 import aurocosh.divinefavor.common.item.base.ModItem;
 import aurocosh.divinefavor.common.item.contract_binder.ItemContractBinder;
 import aurocosh.divinefavor.common.item.grimoire.ItemGrimoire;
-import aurocosh.divinefavor.common.item.storage_gem.ItemStorageGem;
+import aurocosh.divinefavor.common.item.mystic_architect_stick.ItemMysticArchitectStick;
 import aurocosh.divinefavor.common.item.ritual_pouch.ItemRitualPouch;
 import aurocosh.divinefavor.common.item.spell_bow.ItemSpellBow;
-import aurocosh.divinefavor.common.registry.ModRegistries;
+import aurocosh.divinefavor.common.item.storage_gem.ItemStorageGem;
 
 public final class ModItems {
+    public static ModItem blood_crystal;
+    public static ModItem bone_dagger;
     public static ModItem bone_key;
     public static ModItem contract_binder;
     public static ModItem grimoire;
@@ -26,19 +27,21 @@ public final class ModItems {
     public static ModItem warp_pebble;
 
     public static void preInit() {
-        bone_key = ModRegistries.items.register(new ItemBoneKey());
-        contract_binder = ModRegistries.items.register(new ItemContractBinder());
-        grimoire = ModRegistries.items.register(new ItemGrimoire());
-        invite_gem = ModRegistries.items.register(new ItemInviteMarker("invite_gem", true));
-        invite_pebble = ModRegistries.items.register(new ItemInviteMarker("invite_pebble", false));
-        mystic_architect_stick = ModRegistries.items.register(new ItemMysticArchitectStick());
-        pure_apple = ModRegistries.items.register(new ItemPureApple());
-        ritual_pouch = ModRegistries.items.register(new ItemRitualPouch());
-        spell_bow = ModRegistries.items.register(new ItemSpellBow());
-        stoneball = ModRegistries.items.register(new ItemStoneball());
-        storage_gem = ModRegistries.items.register(new ItemStorageGem());
-        warp_gem = ModRegistries.items.register(new ItemWarpMarker("warp_gem", true));
-        warp_pebble = ModRegistries.items.register(new ItemWarpMarker("warp_pebble", false));
+        blood_crystal = new ItemBloodCrystal();
+        bone_dagger = new ItemBoneDagger();
+        bone_key = new ItemBoneKey();
+        contract_binder = new ItemContractBinder();
+        grimoire = new ItemGrimoire();
+        invite_gem = new ItemInviteMarker("invite_gem", true);
+        invite_pebble = new ItemInviteMarker("invite_pebble", false);
+        mystic_architect_stick = new ItemMysticArchitectStick();
+        pure_apple = new ItemPureApple();
+        ritual_pouch = new ItemRitualPouch();
+        spell_bow = new ItemSpellBow();
+        stoneball = new ItemStoneball();
+        storage_gem = new ItemStorageGem();
+        warp_gem = new ItemWarpMarker("warp_gem", true);
+        warp_pebble = new ItemWarpMarker("warp_pebble", false);
 
 
 //        ModContainer mod = Loader.instance().getModObjectList().inverse().getValue(DivineFavor.instance);

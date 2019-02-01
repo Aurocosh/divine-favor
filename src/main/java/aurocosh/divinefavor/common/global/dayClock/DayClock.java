@@ -74,7 +74,7 @@ public class DayClock {
             if (alarm.repeat)
                 alarmsToRepeat.add(alarm);
         }
-        System.out.println(time);
+//        System.out.println(time);
         alarms.addAll(alarmsToRepeat);
     }
 
