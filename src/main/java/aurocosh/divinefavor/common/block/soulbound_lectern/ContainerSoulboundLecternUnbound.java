@@ -6,6 +6,8 @@ import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.SlotItemHandler;
 
+import javax.annotation.Nonnull;
+
 public class ContainerSoulboundLecternUnbound extends GenericContainer {
     private final TileSoulboundLectern soulboundLectern;
     public ContainerSoulboundLecternUnbound(EntityPlayer player, TileSoulboundLectern soulboundLectern) {
@@ -20,7 +22,7 @@ public class ContainerSoulboundLecternUnbound extends GenericContainer {
     }
 
     @Override
-    public boolean canInteractWith(EntityPlayer playerIn) {
-        return soulboundLectern.isUsableByPlayer(playerIn);
+    public boolean canInteractWith(@Nonnull EntityPlayer player) {
+        return soulboundLectern.isUsableByPlayer(player);
     }
 }
