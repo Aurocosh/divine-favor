@@ -99,6 +99,8 @@ public class ItemSpellTalisman extends ItemTalisman {
         EntityLivingBase target = null;
         if (options.contains(SpellOptions.OnRightCastRayTraceBlock)) {
             RayTraceResult traceResult = UtilEntity.getBlockPlayerLookingAt(player);
+            if(traceResult == null)
+                return false;
             pos = traceResult.getBlockPos();
             facing = traceResult.sideHit;
         }
