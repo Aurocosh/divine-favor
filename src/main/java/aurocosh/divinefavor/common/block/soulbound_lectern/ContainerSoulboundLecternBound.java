@@ -8,12 +8,13 @@ import net.minecraftforge.items.ItemStackHandler;
 
 public class ContainerSoulboundLecternBound extends GenericContainer {
     private final TileSoulboundLectern soulboundLectern;
+    private final FavorData favorData;
 
     public ContainerSoulboundLecternBound(EntityPlayer player, TileSoulboundLectern soulboundLectern) {
         super(FavorData.CONTRACT_SLOT_COUNT);
         this.soulboundLectern = soulboundLectern;
 
-        FavorData favorData = PlayerData.get(player).getFavorData();
+        favorData = PlayerData.get(player).getFavorData();
         ItemStackHandler stackHandler = favorData.getContractHandler();
 
         int nextSlotIndex = 0;
@@ -31,5 +32,11 @@ public class ContainerSoulboundLecternBound extends GenericContainer {
     @Override
     public boolean canInteractWith(EntityPlayer playerIn) {
         return soulboundLectern.isUsableByPlayer(playerIn);
+    }
+
+    @Override
+    public void onContainerClosed(EntityPlayer player) {
+        super.onContainerClosed(player);
+        favorData.refreshContracts();
     }
 }
