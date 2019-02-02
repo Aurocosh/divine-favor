@@ -10,12 +10,14 @@ import java.util.Set;
 
 // The default implementation of the capability. Holds all the logic.
 public class ContractsData {
+    public final static int SIZE = 22;
+
     private final Set<ItemContract> contracts;
     private final ItemStackHandler contractsStackHandler;
 
     public ContractsData() {
         contracts = new HashSet<>();
-        contractsStackHandler = new ItemStackHandler(22) {
+        contractsStackHandler = new ItemStackHandler(SIZE) {
             @Override
             public boolean isItemValid(int slot, @Nonnull ItemStack stack) {
                 return stack.getItem() instanceof ItemContract;

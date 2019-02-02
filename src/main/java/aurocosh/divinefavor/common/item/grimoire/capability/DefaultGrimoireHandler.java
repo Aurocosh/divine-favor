@@ -1,5 +1,6 @@
 package aurocosh.divinefavor.common.item.grimoire.capability;
 
+import aurocosh.divinefavor.common.item.grimoire.ItemGrimoire;
 import aurocosh.divinefavor.common.item.talismans.spell.base.ItemSpellTalisman;
 import aurocosh.divinefavor.common.util.UtilMath;
 import net.minecraft.item.ItemStack;
@@ -12,9 +13,7 @@ import java.util.List;
 
 // The default implementation of the capability. Holds all the logic.
 public class DefaultGrimoireHandler implements IGrimoireHandler {
-
-    private final int SLOT_COUNT = 27;
-    private final int MAX_INDEX = SLOT_COUNT - 1;
+    private final int MAX_INDEX = ItemGrimoire.SLOT_COUNT - 1;
     private final int STACKS_DISPLAYED = 3;
 
     private int state;
@@ -24,7 +23,7 @@ public class DefaultGrimoireHandler implements IGrimoireHandler {
     public DefaultGrimoireHandler() {
         state = 0;
         selectedSlotIndex = 0;
-        inventory = new ItemStackHandler(SLOT_COUNT) {
+        inventory = new ItemStackHandler(ItemGrimoire.SLOT_COUNT) {
             @Override
             public boolean isItemValid(int slot, @Nonnull ItemStack stack) {
                 return stack.getItem() instanceof ItemSpellTalisman;

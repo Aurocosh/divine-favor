@@ -25,6 +25,7 @@ import javax.annotation.Nullable;
 import static aurocosh.divinefavor.common.item.grimoire.capability.GrimoireDataHandler.CAPABILITY_GRIMOIRE;
 
 public class ItemGrimoire extends ModItem {
+    public final static int SLOT_COUNT = 27;
     private static String TAG_SHARE = "Grimoire";
 
     public ItemGrimoire() {

@@ -13,6 +13,7 @@ public class ContainerMedium extends GenericContainer {
     public TileMedium ironMedium;
 
     public ContainerMedium(EntityPlayer player, TileMedium ironMedium) {
+        super(TileMedium.SIZE);
         this.ironMedium = ironMedium;
 
         IItemHandler stoneHandler = this.ironMedium.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, EnumFacing.UP);
@@ -22,13 +23,13 @@ public class ContainerMedium extends GenericContainer {
         this.addSlotToContainer(new SlotItemHandler(contractHandler, 0, 80, 45));
 
         IItemHandler leftHandler = this.ironMedium.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, EnumFacing.WEST);
-        generateCustomSlotsGrid(leftHandler,8,18,3,3,0);
+        generateCustomSlotsGrid(leftHandler, 8, 18, 3, 3, 0);
 
         IItemHandler rightHandler = this.ironMedium.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, EnumFacing.EAST);
-        generateCustomSlotsGrid(rightHandler,116,18,3,3,0);
+        generateCustomSlotsGrid(rightHandler, 116, 18, 3, 3, 0);
 
-        generateInventorySlots(player.inventory,8,84);
-        generateHotbarSlots(player.inventory,8,142);
+        generateInventorySlots(player.inventory, 8, 84);
+        generateHotbarSlots(player.inventory, 8, 142);
     }
 
     @Override
@@ -49,13 +50,15 @@ public class ContainerMedium extends GenericContainer {
                 if (!this.mergeItemStack(itemstack1, TileMedium.SIZE, this.inventorySlots.size(), true)) {
                     return ItemStack.EMPTY;
                 }
-            } else if (!this.mergeItemStack(itemstack1, 0, TileMedium.SIZE, false)) {
+            }
+            else if (!this.mergeItemStack(itemstack1, 0, TileMedium.SIZE, false)) {
                 return ItemStack.EMPTY;
             }
 
             if (itemstack1.isEmpty()) {
                 slot.putStack(ItemStack.EMPTY);
-            } else {
+            }
+            else {
                 slot.onSlotChanged();
             }
         }

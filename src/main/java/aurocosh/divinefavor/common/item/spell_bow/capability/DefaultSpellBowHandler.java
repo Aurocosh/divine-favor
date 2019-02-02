@@ -1,5 +1,6 @@
 package aurocosh.divinefavor.common.item.spell_bow.capability;
 
+import aurocosh.divinefavor.common.item.spell_bow.ItemSpellBow;
 import aurocosh.divinefavor.common.item.talismans.arrow.base.ItemArrowTalisman;
 import aurocosh.divinefavor.common.util.UtilMath;
 import net.minecraft.item.ItemStack;
@@ -12,9 +13,7 @@ import java.util.List;
 
 // The default implementation of the capability. Holds all the logic.
 public class DefaultSpellBowHandler implements ISpellBowHandler {
-
-    private final int SLOT_COUNT = 27;
-    private final int MAX_INDEX = SLOT_COUNT - 1;
+    private final int MAX_INDEX = ItemSpellBow.SIZE - 1;
     private final int STACKS_DISPLAYED = 3;
 
     private int state;
@@ -24,7 +23,7 @@ public class DefaultSpellBowHandler implements ISpellBowHandler {
     public DefaultSpellBowHandler() {
         state = 0;
         selectedSlotIndex = 0;
-        inventory = new ItemStackHandler(SLOT_COUNT) {
+        inventory = new ItemStackHandler(ItemSpellBow.SIZE) {
             @Override
             public boolean isItemValid(int slot, @Nonnull ItemStack stack) {
                 return stack.getItem() instanceof ItemArrowTalisman;

@@ -11,7 +11,7 @@ public class ConstResources {
     public static final String PREFIX_MINIONS = PREFIX_MOD + "textures/entity/minions/";
     public static final String PREFIX_FAVOR_ICONS = PREFIX_MOD + "textures/favor_icons/";
 
-    public static final String GUI_IMMATERIAL_MEDIUM = PREFIX_GUI + "immaterialMedium.png";
+    public static final String GUI_IMMATERIAL_MEDIUM = PREFIX_GUI + "immaterial_medium.png";
     public static final String GUI_RITUAL_POUCH = PREFIX_GUI + "ritual_pouch.png";
     public static final String GUI_CONTRACT_BINDER = PREFIX_GUI + "contract_binder.png";
     public static final String GUI_GRIMOIRE = PREFIX_GUI + "grimoire.png";

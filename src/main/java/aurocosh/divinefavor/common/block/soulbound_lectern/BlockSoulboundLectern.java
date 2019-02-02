@@ -68,8 +68,10 @@ public class BlockSoulboundLectern extends ModBlock implements ITileEntityProvid
     }
 
     @Override
-    public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, EnumFacing side, float hitX, float hitY, float hitZ) {
-        TileEntity tileEntity = worldIn.getTileEntity(pos);
+    public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, EnumFacing side, float hitX, float hitY, float hitZ) {
+        if(world.isRemote)
+            return false;
+        TileEntity tileEntity = world.getTileEntity(pos);
         if (!(tileEntity instanceof TileSoulboundLectern))
             return false;
         TileSoulboundLectern soulboundLectern = (TileSoulboundLectern) tileEntity;
@@ -83,9 +85,11 @@ public class BlockSoulboundLectern extends ModBlock implements ITileEntityProvid
             UUID stackUUID = ItemBloodCrystal.getPlayerId(stack);
             if (!playerUUID.equals(stackUUID))
                 return false;
-        }
+            player.openGui(DivineFavor.instance, ConstGuiIDs.SOULBOUND_LECTERN_BOUND, world, pos.getX(), pos.getY(), pos.getZ());
+            return true;
 
-        player.openGui(DivineFavor.instance, ConstGuiIDs.SOULBOUND_LECTERN, worldIn, pos.getX(), pos.getY(), pos.getZ());
+        }
+        player.openGui(DivineFavor.instance, ConstGuiIDs.SOULBOUND_LECTERN_UNBOUND, world, pos.getX(), pos.getY(), pos.getZ());
         return true;
     }
 
