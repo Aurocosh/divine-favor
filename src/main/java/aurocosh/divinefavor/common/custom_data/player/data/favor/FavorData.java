@@ -1,10 +1,16 @@
 package aurocosh.divinefavor.common.custom_data.player.data.favor;
 
+import aurocosh.divinefavor.common.custom_data.CapabilityHelper;
 import aurocosh.divinefavor.common.favor.ModFavor;
 import aurocosh.divinefavor.common.item.contract.ItemContract;
+import aurocosh.divinefavor.common.item.contract_binder.ItemContractBinder;
+import aurocosh.divinefavor.common.misc.SlotStack;
 import aurocosh.divinefavor.common.registry.mappers.ModMappers;
+import aurocosh.divinefavor.common.util.UtilHandler;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 
 import javax.annotation.Nonnull;
@@ -30,12 +36,8 @@ public class FavorData {
         contractsStackHandler = new ItemStackHandler(CONTRACT_SLOT_COUNT) {
             @Override
             public boolean isItemValid(int slot, @Nonnull ItemStack stack) {
-                return stack.getItem() instanceof ItemContract;
-            }
-
-            @Override
-            protected void onContentsChanged(int slot) {
-                refreshContracts();
+                Item item = stack.getItem();
+                return item instanceof ItemContract || item instanceof ItemContractBinder;
             }
         };
     }
@@ -80,7 +82,7 @@ public class FavorData {
     public boolean regenerateFavor(int favorId) {
         FavorStatus status = favorStatuses[favorId];
         int regen = status.getRegen();
-        if(regen == 0)
+        if (regen == 0)
             return false;
         favorValues[favorId] = status.clamp(favorValues[favorId] + regen);
         return true;
@@ -96,16 +98,35 @@ public class FavorData {
     }
 
     private List<ItemContract> getContracts() {
-        List<ItemContract> contracts = new ArrayList<>();
+        List<ItemStack> contractStacks = new ArrayList<>();
         for (int i = 0; i < contractsStackHandler.getSlots(); i++) {
             ItemStack stack = contractsStackHandler.getStackInSlot(i);
             if (!stack.isEmpty())
-                contracts.add((ItemContract) stack.getItem());
+                contractStacks.addAll(getContracsFromStack(stack));
+        }
+
+        List<ItemContract> contracts = new ArrayList<>();
+        for (ItemStack stack : contractStacks)
+            contracts.add((ItemContract) stack.getItem());
+        return contracts;
+    }
+
+    private List<ItemStack> getContracsFromStack(ItemStack stack) {
+        List<ItemStack> contracts = new ArrayList<>();
+        if (stack.getItem() instanceof ItemContract) {
+            contracts.add(stack);
+        }
+        else if (stack.getItem() instanceof ItemContractBinder) {
+            IItemHandler handler = CapabilityHelper.getItemHandler(stack);
+            if (handler == null)
+                return contracts;
+            for (SlotStack slotStack : UtilHandler.getNotEmptyStacksWithSlotIndexes(handler))
+                contracts.add(slotStack.getStack());
         }
         return contracts;
     }
 
-    private void refreshContracts() {
+    public void refreshContracts() {
         for (FavorStatus favorStatus : favorStatuses)
             favorStatus.clear();
 
