@@ -4,7 +4,7 @@ import aurocosh.divinefavor.common.custom_data.player.PlayerData;
 import aurocosh.divinefavor.common.custom_data.player.data.favor.FavorData;
 import aurocosh.divinefavor.common.favor.ModFavor;
 import aurocosh.divinefavor.common.item.talismans.spell.base.ItemSpellTalisman;
-import aurocosh.divinefavor.common.network.message.client.spell_uses.MessageSyncFavorValue;
+import aurocosh.divinefavor.common.network.message.client.spell_uses.MessageSyncFavor;
 import aurocosh.divinefavor.common.potions.base.potion.ModPotionToggleLimited;
 import aurocosh.divinefavor.common.potions.common.ModPotions;
 import aurocosh.divinefavor.common.util.UtilBlock;
@@ -44,9 +44,9 @@ public class PotionWoodenPunch extends ModPotionToggleLimited {
         FavorData favorData = PlayerData.get(player).getFavorData();
         ItemSpellTalisman talisman = ModPotions.wooden_punch.getTalisman();
         ModFavor favor = talisman.getFavor();
-        if (!favorData.get(favor).consume(talisman.getFavorCost()))
+        if (!favorData.consumeFavor(favor.getId(), talisman.getFavorCost()))
             return;
-        new MessageSyncFavorValue(favor, favorData).sendTo(player);
+        new MessageSyncFavor(favor, favorData).sendTo(player);
 
         ItemStack stack = player.getHeldItemMainhand();
         UtilBlock.removeBlockWithDrops(player, world, stack, pos, false, true);

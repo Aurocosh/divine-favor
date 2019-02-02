@@ -1,4 +1,4 @@
-package aurocosh.divinefavor.common.core;
+package aurocosh.divinefavor.common.core.creative_tabs;
 
 import aurocosh.divinefavor.common.constants.ConstMisc;
 import aurocosh.divinefavor.common.item.talismans.arrow.common.ModArrowTalismans;

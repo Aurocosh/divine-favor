@@ -1,62 +1,47 @@
 package aurocosh.divinefavor.common.item.contract;
 
-import aurocosh.divinefavor.common.core.DivineFavorCreativeTab;
+import aurocosh.divinefavor.common.core.creative_tabs.DivineFavorCreativeTabContracts;
+import aurocosh.divinefavor.common.favor.ModFavor;
 import aurocosh.divinefavor.common.item.base.ModItem;
-import aurocosh.divinefavor.common.spirit.base.ModSpirit;
-import aurocosh.divinefavor.common.util.UtilNbt;
-import com.mojang.authlib.GameProfile;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.*;
 import net.minecraft.world.World;
 
 import javax.annotation.Nullable;
-import java.util.*;
+import java.util.List;
 
 public class ItemContract extends ModItem {
-    private static final String NBT_PLAYER_ID = "Owner";
-    private static final String NBT_PLAYER_NAME = "OwnerName";
+    private final ModFavor favor;
+    private final int regen;
+    private final int min;
+    private final int max;
 
-    private final ModSpirit spirit;
-
-    public ItemContract(ModSpirit spirit) {
-        super("contract_" + spirit.getName(),"contracts/" + spirit.getName());
-        this.spirit = spirit;
+    public ItemContract(String name, String texturePath, int orderIndex, ModFavor favor, int regen, int min, int max) {
+        super("contract_" + name, "contracts/" + texturePath, orderIndex);
+        this.favor = favor;
+        this.regen = regen;
+        this.min = min;
+        this.max = max;
         setMaxStackSize(1);
-        setCreativeTab(DivineFavorCreativeTab.INSTANCE);
+        setCreativeTab(DivineFavorCreativeTabContracts.INSTANCE);
     }
 
-    public ModSpirit getSpirit() {
-        return spirit;
+    public ModFavor getFavor() {
+        return favor;
     }
 
-    @Override
-    public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
-        ItemStack stack = player.getHeldItem(hand);
-        if (world.isRemote)
-            return ActionResult.newResult(EnumActionResult.SUCCESS, stack);
-
-        NBTTagCompound compound = UtilNbt.getNbt(stack);
-        if(compound.hasKey(NBT_PLAYER_ID))
-            return null;
-
-        GameProfile profile = player.getGameProfile();
-        compound.setString(NBT_PLAYER_ID, profile.getId().toString());
-        compound.setString(NBT_PLAYER_NAME, profile.getName());
-
-        return ActionResult.newResult(EnumActionResult.SUCCESS, stack);
+    public int getRegen() {
+        return regen;
     }
 
-    @Nullable
-    public static UUID getPlayerId(ItemStack stack) {
-        NBTTagCompound compound = UtilNbt.getNbt(stack);
-        if(!compound.hasKey(NBT_PLAYER_ID))
-            return null;
-        return UUID.fromString(compound.getString(NBT_PLAYER_ID));
+    public int getMin() {
+        return min;
+    }
+
+    public int getMax() {
+        return max;
     }
 
     @Override
@@ -67,8 +52,12 @@ public class ItemContract extends ModItem {
     @Override
     public void addInformation(ItemStack stack, @Nullable World world, List<String> tooltip, ITooltipFlag flag) {
         super.addInformation(stack, world, tooltip, flag);
-        NBTTagCompound compound = UtilNbt.getNbt(stack);
-        if (compound.hasKey(NBT_PLAYER_NAME))
-            tooltip.add(I18n.format("item.divinefavor:contract.player", compound.getString(NBT_PLAYER_NAME)));
+        tooltip.add(I18n.format("item.divinefavor:contract.favor", favor.getName()));
+        if (regen != 0)
+            tooltip.add(I18n.format("item.divinefavor:contract.regen", regen));
+        if (min != 0)
+            tooltip.add(I18n.format("item.divinefavor:contract.min", min));
+        if (max != 0)
+            tooltip.add(I18n.format("item.divinefavor:contract.max", max));
     }
 }

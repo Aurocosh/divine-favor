@@ -1,12 +1,11 @@
 package aurocosh.divinefavor.common.item.wishing_stones;
 
-import aurocosh.divinefavor.common.core.DivineFavorCreativeTabGems;
+import aurocosh.divinefavor.common.core.creative_tabs.DivineFavorCreativeTabGems;
 import aurocosh.divinefavor.common.custom_data.player.PlayerData;
 import aurocosh.divinefavor.common.custom_data.player.data.favor.FavorData;
 import aurocosh.divinefavor.common.favor.ModFavor;
 import aurocosh.divinefavor.common.item.base.ModItem;
-import aurocosh.divinefavor.common.network.message.client.spell_uses.MessageSyncFavorValue;
-import aurocosh.divinefavor.common.registry.ModRegistries;
+import aurocosh.divinefavor.common.network.message.client.spell_uses.MessageSyncFavor;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
@@ -21,8 +20,8 @@ public class ItemWishingStone extends ModItem {
     private final ModFavor favor;
     private final int favorCount;
 
-    public ItemWishingStone(ModFavor favor, int favorCount, String typeName) {
-        super("wishing_stone_" + typeName + "_" + favor.getName(), "wishing_stones/" + typeName + "/" + favor.getName());
+    public ItemWishingStone(ModFavor favor, int favorCount, String typeName, int orderIndex) {
+        super("wishing_stone_" + typeName + "_" + favor.getName(), "wishing_stones/" + typeName + "/" + favor.getName(), orderIndex);
         this.favor = favor;
         this.favorCount = favorCount;
 
@@ -43,8 +42,8 @@ public class ItemWishingStone extends ModItem {
         if (!(stack.getItem() instanceof ItemWishingStone))
             return false;
         FavorData favorData = PlayerData.get(player).getFavorData();
-        favorData.get(favor).addValue(favorCount);
-        new MessageSyncFavorValue(favor, favorData).sendTo(player);
+        favorData.addFavor(favor.getId(), favorCount);
+        new MessageSyncFavor(favor, favorData).sendTo(player);
         stack.shrink(1);
         return false;
     }

@@ -2,7 +2,7 @@ package aurocosh.divinefavor.common.block;
 
 import aurocosh.divinefavor.common.block.base.ModBlock;
 import aurocosh.divinefavor.common.constants.ConstBlockNames;
-import aurocosh.divinefavor.common.core.DivineFavorCreativeTab;
+import aurocosh.divinefavor.common.core.creative_tabs.DivineFavorCreativeTab;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 

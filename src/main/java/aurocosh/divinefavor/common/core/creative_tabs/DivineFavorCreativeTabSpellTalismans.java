@@ -1,7 +1,7 @@
-package aurocosh.divinefavor.common.core;
+package aurocosh.divinefavor.common.core.creative_tabs;
 
 import aurocosh.divinefavor.common.constants.ConstMisc;
-import aurocosh.divinefavor.common.item.common.ModItems;
+import aurocosh.divinefavor.common.item.talismans.spell.common.ModSpellTalismans;
 import aurocosh.divinefavor.common.registry.ModRegistries;
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
@@ -11,12 +11,12 @@ import net.minecraft.util.NonNullList;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class DivineFavorCreativeTab extends CreativeTabs {
-    public static final DivineFavorCreativeTab INSTANCE = new DivineFavorCreativeTab();
+public class DivineFavorCreativeTabSpellTalismans extends CreativeTabs {
+    public static final DivineFavorCreativeTabSpellTalismans INSTANCE = new DivineFavorCreativeTabSpellTalismans();
     private NonNullList list;
 
-    public DivineFavorCreativeTab() {
-        super(ConstMisc.MOD_ID);
+    public DivineFavorCreativeTabSpellTalismans() {
+        super(ConstMisc.MOD_ID + "_talismans");
         //ConstMisc.MOD_ID
 
         //setNoTitle();
@@ -25,7 +25,7 @@ public class DivineFavorCreativeTab extends CreativeTabs {
 
     @Override
     public ItemStack createIcon() {
-        return new ItemStack(ModItems.grimoire);
+        return new ItemStack(ModSpellTalismans.wild_sprint);
     }
 
 //    @Override

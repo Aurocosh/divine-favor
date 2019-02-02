@@ -9,34 +9,30 @@ import java.util.List;
 
 // Handles the actual read/write of the nbt.
 public class FavorDataSerializer implements INbtSerializer<FavorData> {
-    public static final String TAG_FAVOR_VALUES = "FavorValue";
+    private static final String TAG_FAVORS = "Favors";
+    private static final String TAG_CONTRACTS = "Contracts";
 
     public static NBTTagCompound getNbtTagCompound(FavorData instance) {
         final NBTTagCompound tag = new NBTTagCompound();
-        FavorValue[] favorValues = instance.getFavorValues();
+        int[] favorValues = instance.getFavorValues();
         List<ModFavor> favors = ModMappers.favors.getValues();
         for (int i = 0; i < favorValues.length; i++) {
-            FavorValue favorValue = favorValues[i];
-            int[] favorSerialized = new int[]{
-                    favorValue.getValue(),
-                    favorValue.getRegen(),
-                    favorValue.getMinLimit(),
-                    favorValue.getMaxLimit()};
             ModFavor favor = favors.get(i);
-            tag.setIntArray(favor.getName(), favorSerialized);
+            tag.setInteger(favor.getName(), favorValues[i]);
         }
+        tag.setTag(TAG_CONTRACTS, instance.serializeContract());
         return tag;
     }
 
     public static void setDataFromNBT(FavorData instance, NBTTagCompound nbt) {
-        List<ModFavor> talismans = ModMappers.favors.getValues();
-        FavorValue[] favorValues = instance.getFavorValues();
-        for (ModFavor favor : talismans) {
-            if (!nbt.hasKey(favor.getName()))
-                continue;
-            int[] favorSerialized = nbt.getIntArray(favor.getName());
-            if(favorSerialized.length == 4)
-                favorValues[favor.getId()] = new FavorValue(favorSerialized[0], favorSerialized[1], favorSerialized[2], favorSerialized[3]);
+        if (nbt.hasKey(TAG_CONTRACTS))
+            instance.deserializeContract(nbt.getCompoundTag(TAG_CONTRACTS));
+
+        List<ModFavor> favors = ModMappers.favors.getValues();
+        int[] favorValues = new int[favors.size()];
+        for (int i = 0; i < favorValues.length; i++) {
+            ModFavor favor = favors.get(i);
+            favorValues[i] = nbt.getInteger(favor.getName());
         }
         instance.setFavorValues(favorValues);
     }
@@ -44,14 +40,14 @@ public class FavorDataSerializer implements INbtSerializer<FavorData> {
     @Override
     public void serialize(NBTTagCompound nbt, FavorData instance) {
         NBTTagCompound usesTag = getNbtTagCompound(instance);
-        nbt.setTag(TAG_FAVOR_VALUES, usesTag);
+        nbt.setTag(TAG_FAVORS, usesTag);
     }
 
     @Override
     public void deserialize(NBTTagCompound nbt, FavorData instance) {
-        if (!nbt.hasKey(TAG_FAVOR_VALUES))
+        if (!nbt.hasKey(TAG_FAVORS))
             return;
-        NBTTagCompound usesTag = nbt.getCompoundTag(TAG_FAVOR_VALUES);
+        NBTTagCompound usesTag = nbt.getCompoundTag(TAG_FAVORS);
         setDataFromNBT(instance, usesTag);
     }
 }

@@ -38,8 +38,8 @@ public abstract class ModPotionToggleLimited extends ModPotionToggle {
         mc.fontRenderer.drawStringWithShadow(potionName, (float) (x + 10 + 18), (float) (y + 6), 16777215);
 
         EntityPlayer player = DivineFavor.proxy.getClientPlayer();
-        FavorData usesData = PlayerData.get(player).getFavorData();
-        String s = "Uses left: " + usesData.get(talisman.getFavorId());
+        FavorData favorData = PlayerData.get(player).getFavorData();
+        String s = "Uses left: " + favorData.getFavor(talisman.getFavorId());
         mc.fontRenderer.drawStringWithShadow(s, (float) (x + 10 + 18), (float) (y + 6 + 10), 8355711);
     }
 }

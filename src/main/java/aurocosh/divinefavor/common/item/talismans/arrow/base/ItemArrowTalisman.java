@@ -1,12 +1,12 @@
 package aurocosh.divinefavor.common.item.talismans.arrow.base;
 
-import aurocosh.divinefavor.common.core.DivineFavorCreativeTabArrowTalismans;
+import aurocosh.divinefavor.common.core.creative_tabs.DivineFavorCreativeTabArrowTalismans;
 import aurocosh.divinefavor.common.custom_data.player.PlayerData;
 import aurocosh.divinefavor.common.custom_data.player.data.favor.FavorData;
 import aurocosh.divinefavor.common.entity.projectile.EntitySpellArrow;
 import aurocosh.divinefavor.common.favor.ModFavor;
 import aurocosh.divinefavor.common.item.talismans.base.ItemTalisman;
-import aurocosh.divinefavor.common.network.message.client.spell_uses.MessageSyncFavorValue;
+import aurocosh.divinefavor.common.network.message.client.spell_uses.MessageSyncFavor;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntityArrow;
@@ -56,12 +56,12 @@ public class ItemArrowTalisman extends ItemTalisman {
 
         EntityPlayer player = (EntityPlayer) shooter;
         FavorData favorData = PlayerData.get(player).getFavorData();
-        if (!favorData.get(favor).consume(favorCost))
+        if (!favorData.consumeFavor(favor.getId(), favorCost))
             return false;
         if (world.isRemote)
             return true;
 
-        new MessageSyncFavorValue(favor, favorData).sendTo(player);
+        new MessageSyncFavor(favor, favorData).sendTo(player);
         return true;
     }
 // Talisman functions

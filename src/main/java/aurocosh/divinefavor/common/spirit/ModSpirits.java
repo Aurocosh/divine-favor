@@ -1,6 +1,6 @@
 package aurocosh.divinefavor.common.spirit;
 
-import aurocosh.divinefavor.common.item.talismans.spell.common.ModSpellTalismans;
+import aurocosh.divinefavor.common.favor.ModFavors;
 import aurocosh.divinefavor.common.spirit.base.ModSpirit;
 import aurocosh.divinefavor.common.spirit.punishment.*;
 
@@ -19,84 +19,52 @@ public final class ModSpirits {
         allfire = new SpiritBuilder("allfire")
                 .addActivityPeriod(10, 14)
                 .setPunishment(new AllfirePunishment())
-                .addTalisman(ModSpellTalismans.combustion)
-                .addTalisman(ModSpellTalismans.heat_wave)
-                .addTalisman(ModSpellTalismans.ignition)
-                .addTalisman(ModSpellTalismans.searing_pulse)
-                .addTalisman(ModSpellTalismans.small_fireball_throw)
-                .addTalisman(ModSpellTalismans.distant_spark)
+                .addFavor(ModFavors.allfire)
                 .create();
 
         arbow = new SpiritBuilder("arbow")
                 .addActivityPeriod(10, 14)
-                .addTalisman(ModSpellTalismans.arrow_throw_talisman)
+                .addFavor(ModFavors.arbow)
                 .create();
 
         blizrabi = new SpiritBuilder("blizrabi")
                 .addActivityPeriod(10, 14)
                 .setPunishment(new BlizrabiPunishment())
-                .addTalisman(ModSpellTalismans.crystalline_road)
-                .addTalisman(ModSpellTalismans.snowball_throw)
-                .addTalisman(ModSpellTalismans.obsidian_road)
+                .addFavor(ModFavors.blizrabi)
                 .create();
 
         endererer = new SpiritBuilder("endererer")
                 .addActivityPeriod(10, 14)
                 .setPunishment(new EnderererPunishment())
-                .addTalisman(ModSpellTalismans.escape_plan)
-                .addTalisman(ModSpellTalismans.pearl_crumbs)
-                .addTalisman(ModSpellTalismans.blink)
-                .addTalisman(ModSpellTalismans.warp)
-                .addTalisman(ModSpellTalismans.overblink)
-                .addTalisman(ModSpellTalismans.overwarp)
-                .addTalisman(ModSpellTalismans.surface_blink)
+                .addFavor(ModFavors.endererer)
                 .create();
 
         nefir = new SpiritBuilder("nefir")
                 .addActivityPeriod(10, 14)
                 .setPunishment(new NefirPunishment())
-                .addTalisman(ModSpellTalismans.molten_skin)
-                .addTalisman(ModSpellTalismans.infernal_touch)
-                .addTalisman(ModSpellTalismans.hellisphere)
-                .addTalisman(ModSpellTalismans.nether_surge)
-                .addTalisman(ModSpellTalismans.piercing_inferno)
+                .addFavor(ModFavors.nefir)
                 .create();
 
-        redwind =
-                new SpiritBuilder("redwind")
-                        .addActivityPeriod(6, 18)
-                        .addTalisman(ModSpellTalismans.fall_negation)
-                        .addTalisman(ModSpellTalismans.toadic_jump)
-                        .addTalisman(ModSpellTalismans.wild_sprint)
-                        .addTalisman(ModSpellTalismans.wind_step)
-                        .create();
+        redwind = new SpiritBuilder("redwind")
+                .addActivityPeriod(6, 18)
+                .addFavor(ModFavors.redwind)
+                .create();
 
         romol = new SpiritBuilder("romol")
                 .addActivityPeriod(6, 18)
-                .addTalisman(ModSpellTalismans.crushing_palm)
-                .addTalisman(ModSpellTalismans.stone_fever)
-                .addTalisman(ModSpellTalismans.empower_pickaxe)
-                .addTalisman(ModSpellTalismans.stoneball_throw)
+                .addFavor(ModFavors.romol)
                 .create();
 
         squarefury = new SpiritBuilder("squarefury")
                 .addActivityPeriod(15, 21)
                 .setPunishment(new SquareFuryPunishment())
-                .addTalisman(ModSpellTalismans.butchering_strike)
-                .addTalisman(ModSpellTalismans.consuming_fury)
-                .addTalisman(ModSpellTalismans.grudge)
-                .addTalisman(ModSpellTalismans.mist_blade)
-                .addTalisman(ModSpellTalismans.night_eye)
+                .addFavor(ModFavors.squarefury)
                 .create();
 
         timber = new SpiritBuilder("timber")
                 .addActivityPeriod(6, 12)
                 .setPunishment(new TimberPunishment())
-                .addTalisman(ModSpellTalismans.fell_tree)
-                .addTalisman(ModSpellTalismans.wooden_punch)
-
-                .addTalisman(ModSpellTalismans.wall_slip)
+                .addFavor(ModFavors.timber)
                 .create();
-
     }
 }

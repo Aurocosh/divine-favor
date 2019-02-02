@@ -4,7 +4,6 @@ import aurocosh.divinefavor.common.custom_data.player.PlayerData;
 import aurocosh.divinefavor.common.custom_data.player.data.favor.FavorData;
 import aurocosh.divinefavor.common.favor.ModFavor;
 import aurocosh.divinefavor.common.item.base.ModItem;
-import aurocosh.divinefavor.common.registry.ModRegistries;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
@@ -41,7 +40,7 @@ public abstract class ItemTalisman extends ModItem {
 
     public String getUseInfo(EntityPlayer player) {
         FavorData favorData = PlayerData.get(player).getFavorData();
-        int favorValue = favorData.get(favor).getValue();
+        int favorValue = favorData.getFavor(favor.getId());
 
         int useCount = favorCost == 0 ? -1 : favorValue / favorCost;
         String description;

@@ -8,15 +8,12 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.ResourceLocation;
 
 public class GuiSoulboundLecternUnbound extends GuiContainer {
-    public static final int WIDTH = 175;
-    public static final int HEIGHT = 165;
+    private static final int WIDTH = 175;
+    private static final int HEIGHT = 165;
     private static final ResourceLocation textureUnbound = new ResourceLocation(ConstResources.GUI_SOULBOUND_LECTERN_UNBOUND);
-
-    TileSoulboundLectern lectern;
 
     public GuiSoulboundLecternUnbound(EntityPlayer player, TileSoulboundLectern lectern) {
         super(new ContainerSoulboundLecternUnbound(player, lectern));
-        this.lectern = lectern;
     }
 
     @Override

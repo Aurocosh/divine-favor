@@ -1,11 +1,11 @@
 package aurocosh.divinefavor.common.item.talismans.spell.base;
 
-import aurocosh.divinefavor.common.core.DivineFavorCreativeTabSpellTalismans;
+import aurocosh.divinefavor.common.core.creative_tabs.DivineFavorCreativeTabSpellTalismans;
 import aurocosh.divinefavor.common.custom_data.player.PlayerData;
 import aurocosh.divinefavor.common.custom_data.player.data.favor.FavorData;
 import aurocosh.divinefavor.common.favor.ModFavor;
 import aurocosh.divinefavor.common.item.talismans.base.ItemTalisman;
-import aurocosh.divinefavor.common.network.message.client.spell_uses.MessageSyncFavorValue;
+import aurocosh.divinefavor.common.network.message.client.spell_uses.MessageSyncFavor;
 import aurocosh.divinefavor.common.util.UtilEntity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -36,7 +36,7 @@ public class ItemSpellTalisman extends ItemTalisman {
     }
 
     public boolean cast(TalismanContext context) {
-        if(!validate(context))
+        if (!validate(context))
             return false;
         if (!claimCost(context))
             return false;
@@ -48,17 +48,17 @@ public class ItemSpellTalisman extends ItemTalisman {
     }
 
     private boolean claimCost(TalismanContext context) {
-        if(favorCost == 0)
+        if (favorCost == 0)
             return true;
         if (!isConsumeCharge(context))
             return true;
         FavorData favorData = PlayerData.get(context.player).getFavorData();
-        if (!favorData.get(favor).consume(favorCost))
+        if (!favorData.consumeFavor(favor.getId(), favorCost))
             return false;
         if (context.world.isRemote)
             return true;
 
-        new MessageSyncFavorValue(favor, favorData).sendTo(context.player);
+        new MessageSyncFavor(favor, favorData).sendTo(context.player);
         return true;
     }
 // Talisman functions
@@ -106,7 +106,7 @@ public class ItemSpellTalisman extends ItemTalisman {
             pos = player.getPosition();
             facing = EnumFacing.UP;
         }
-        if(options.contains(SpellOptions.OnRightCastFindTargetEntity))
+        if (options.contains(SpellOptions.OnRightCastFindTargetEntity))
             target = UtilEntity.getEntityPlayerLookingAt(player, EntityLivingBase.class, ENTITY_SEARCH_DISTANCE, true);
 
         TalismanContext context = new TalismanContext(player, world, pos, hand, facing, target, CastType.RightCast, options);
