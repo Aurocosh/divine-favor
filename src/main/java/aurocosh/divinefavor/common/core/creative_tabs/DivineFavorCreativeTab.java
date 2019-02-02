@@ -45,6 +45,7 @@ public class DivineFavorCreativeTab extends CreativeTabs {
 
         ModRegistries.blocks.getValues().forEach(this::addBlock);
         ModRegistries.items.getValues().forEach(this::addItem);
+        stacks.sort(new ModItemStackComparator());
     }
 
     private void addItem(Item item) {
