@@ -62,26 +62,28 @@ public class BlockMedium extends ModBlock implements ITileEntityProvider {
     }
 
     @Override
-    public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing side, float hitX, float hitY, float hitZ) {
-        TileEntity tileEntity = worldIn.getTileEntity(pos);
-        if(!(tileEntity instanceof TileMedium))
+    public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, EnumFacing side, float hitX, float hitY, float hitZ) {
+        if (world.isRemote)
+            return false;
+        TileEntity tileEntity = world.getTileEntity(pos);
+        if (!(tileEntity instanceof TileMedium))
             return false;
         TileMedium tileMedium = (TileMedium) tileEntity;
-        if(!tileMedium.isUsableByPlayer(playerIn))
+        if (!tileMedium.isUsableByPlayer(player))
             return false;
-        playerIn.openGui(DivineFavor.instance, ConstGuiIDs.IRON_MEDIUM, worldIn, pos.getX(), pos.getY(), pos.getZ());
+        player.openGui(DivineFavor.instance, ConstGuiIDs.IRON_MEDIUM, world, pos.getX(), pos.getY(), pos.getZ());
         return true;
     }
 
     @Override
-    public TileEntity createNewTileEntity(World worldIn, int meta) {
+    public TileEntity createNewTileEntity(World world, int meta) {
         return new TileMedium();
     }
 
     @Override
-    public void breakBlock(World worldIn, BlockPos pos, IBlockState state) {
-        super.breakBlock(worldIn, pos, state);
-        TileEntity entity = worldIn.getTileEntity(pos);
+    public void breakBlock(World world, BlockPos pos, IBlockState state) {
+        super.breakBlock(world, pos, state);
+        TileEntity entity = world.getTileEntity(pos);
         if (!(entity instanceof TileMedium))
             return;
         TileMedium medium = (TileMedium) entity;

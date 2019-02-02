@@ -10,6 +10,7 @@ public class ContractBinderContainer extends GenericContainer {
     private int blocked;
 
     public ContractBinderContainer(EntityPlayer player, IItemHandler itemHandler) {
+        super(ItemContractBinder.SIZE);
         generateCustomSlotsGrid(itemHandler, 26, 18, 1, 7, 0);
         generateInventorySlots(player.inventory, 8, 48);
         generateHotbarSlots(player.inventory, 8, 106);

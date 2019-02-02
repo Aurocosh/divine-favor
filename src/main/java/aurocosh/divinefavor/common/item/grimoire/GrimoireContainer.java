@@ -15,6 +15,7 @@ public class GrimoireContainer extends GenericContainer {
     private IGrimoireHandler grimoireHandler;
 
     public GrimoireContainer(EntityPlayer player, IGrimoireHandler grimoireHandler, EnumHand hand) {
+        super(ItemGrimoire.SLOT_COUNT);
         this.hand = hand;
         this.player = player;
         this.grimoireHandler = grimoireHandler;
@@ -37,11 +38,11 @@ public class GrimoireContainer extends GenericContainer {
 
         if (slot == blocked)
             return ItemStack.EMPTY;
-        if(flag == ClickType.CLONE){
+        if (flag == ClickType.CLONE) {
             grimoireHandler.setSelectedSlotIndex(slot);
             player.closeScreen();
             int playerSlot = hand == EnumHand.OFF_HAND ? 40 : player.inventory.currentItem;
-            new MessageSyncGrimoireSlot(playerSlot,slot).send();
+            new MessageSyncGrimoireSlot(playerSlot, slot).send();
             return ItemStack.EMPTY;
         }
 

@@ -15,6 +15,7 @@ public class SpellBowContainer extends GenericContainer {
     private ISpellBowHandler spellBowHandler;
 
     public SpellBowContainer(EntityPlayer player, ISpellBowHandler spellBowHandler, EnumHand hand) {
+        super(ItemSpellBow.SIZE);
         this.hand = hand;
         this.player = player;
         this.spellBowHandler = spellBowHandler;

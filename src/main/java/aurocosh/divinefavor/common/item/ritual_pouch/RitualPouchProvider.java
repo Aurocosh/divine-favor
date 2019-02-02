@@ -12,7 +12,7 @@ public class RitualPouchProvider implements ICapabilityProvider, ICapabilitySeri
     private final ItemStackHandler inventory;
 
     public RitualPouchProvider() {
-        inventory = new ItemStackHandler( 7 );
+        inventory = new ItemStackHandler(ItemRitualPouch.SIZE);
     }
 
     @Override
@@ -21,23 +21,21 @@ public class RitualPouchProvider implements ICapabilityProvider, ICapabilitySeri
     }
 
     @Override
-    public void deserializeNBT( NBTTagCompound nbt ) {
+    public void deserializeNBT(NBTTagCompound nbt) {
         inventory.deserializeNBT(nbt);
     }
 
     @Override
-    public boolean hasCapability(Capability<?> capability, EnumFacing facing ) {
-        if( capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY ) {
+    public boolean hasCapability(Capability<?> capability, EnumFacing facing) {
+        if (capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY)
             return true;
-        }
         return false;
     }
 
     @Override
-    public <T> T getCapability( Capability<T> capability, EnumFacing facing ) {
-        if( capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY ) {
-            return (T) inventory;
-        }
+    public <T> T getCapability(Capability<T> capability, EnumFacing facing) {
+        if (capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY)
+            return CapabilityItemHandler.ITEM_HANDLER_CAPABILITY.cast(inventory);
         return null;
     }
 }

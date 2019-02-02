@@ -5,8 +5,6 @@ import aurocosh.divinefavor.common.constants.ConstGuiIDs;
 import aurocosh.divinefavor.common.core.DivineFavorCreativeTab;
 import aurocosh.divinefavor.common.item.base.ModItem;
 import aurocosh.divinefavor.common.item.common.ModItems;
-import aurocosh.divinefavor.common.item.grimoire.capability.GrimoireStorage;
-import aurocosh.divinefavor.common.item.grimoire.capability.IGrimoireHandler;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -16,14 +14,12 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.world.World;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
 import net.minecraftforge.items.CapabilityItemHandler;
-import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 
 import javax.annotation.Nullable;
 
-import static aurocosh.divinefavor.common.item.grimoire.capability.GrimoireDataHandler.CAPABILITY_GRIMOIRE;
-
 public class ItemRitualPouch extends ModItem {
+    public static final int SIZE = 7;
     private static String TAG_SHARE = "Ritual";
 
     public ItemRitualPouch() {

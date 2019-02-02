@@ -12,7 +12,7 @@ public class CintractBinderProvider implements ICapabilityProvider, ICapabilityS
     private final ItemStackHandler inventory;
 
     public CintractBinderProvider() {
-        inventory = new ItemStackHandler(7);
+        inventory = new ItemStackHandler(ItemContractBinder.SIZE);
     }
 
     @Override

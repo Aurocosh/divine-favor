@@ -38,6 +38,7 @@ import javax.annotation.Nullable;
 import static aurocosh.divinefavor.common.item.spell_bow.capability.SpellBowDataHandler.CAPABILITY_SPELL_BOW;
 
 public class ItemSpellBow extends ModItem {
+    public static final int SIZE = 27;
     public static final String TAG_IS_IN_BOOK_MODE = "IsInBookMode";
     private static String TAG_SHARE = "SpellBowShare";
 

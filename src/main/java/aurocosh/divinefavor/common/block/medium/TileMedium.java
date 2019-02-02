@@ -63,7 +63,7 @@ public class TileMedium extends TickableTileEntity implements IMultiblockControl
                 else if (multiBlockInstance == null)
                     tryToFormMultiBlock();
             }
-            TileMedium.this.markDirty();
+            markDirty();
         }
     };
 
@@ -201,9 +201,9 @@ public class TileMedium extends TickableTileEntity implements IMultiblockControl
 //            if (player == null)
 //                continue;
 //
-//            FavorData favorData = PlayerData.get(player).getFavorData();
+//            FavorData favorData = PlayerData.getItemHandler(player).getFavorData();
 //            for (ItemSpellTalisman talisman : talismans)
-//                favorData.get(talisman.getFavor()).regenerate();
+//                favorData.getItemHandler(talisman.getFavor()).regenerate();
 //            new MessageSyncAllFavors(favorData).sendTo(player);
 //        }
     }

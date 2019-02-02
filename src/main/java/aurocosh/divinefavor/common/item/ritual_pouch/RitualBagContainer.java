@@ -10,9 +10,9 @@ import net.minecraftforge.items.SlotItemHandler;
 public class RitualBagContainer extends GenericContainer {
     private int blocked;
     public RitualBagContainer(EntityPlayer player, IItemHandler itemHandler) {
+        super(ItemRitualPouch.SIZE);
         int x = 62;
         int y = 18;
-
 
         // Add our own slots
         int slotIndex = 0;
@@ -31,8 +31,6 @@ public class RitualBagContainer extends GenericContainer {
             addSlotToContainer(new SlotItemHandler(itemHandler, slotIndex++, x, y));
             x += 18;
         }
-
-
 
         generateInventorySlots(player.inventory,8,84);
         generateHotbarSlots(player.inventory,8,142);

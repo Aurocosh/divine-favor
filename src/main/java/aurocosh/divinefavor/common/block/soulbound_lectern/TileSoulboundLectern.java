@@ -17,7 +17,6 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 public class TileSoulboundLectern extends TileEntity {
-    public static final int SIZE = 27;
     private boolean isRejecting;
     private final String TAG_BLOOD_CRYSTAL = "BloodCrystal";
     private final String TAG_STATE_LECTERN = "StateLectern";
@@ -32,8 +31,9 @@ public class TileSoulboundLectern extends TileEntity {
 
         @Override
         protected void onContentsChanged(int slot) {
-            TileSoulboundLectern.this.markDirty();
-            bindToPlayer();
+            if (!world.isRemote && !bloodCrystalStackHandler.getStackInSlot(slot).isEmpty())
+                bindToPlayer();
+            markDirty();
         }
     };
 
@@ -122,5 +122,6 @@ public class TileSoulboundLectern extends TileEntity {
 
     public void bindToPlayer() {
         isRejecting = true;
+        setState(SoulboundLecternState.BOUND);
     }
 }
