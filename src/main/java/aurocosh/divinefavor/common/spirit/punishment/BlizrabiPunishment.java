@@ -1,7 +1,7 @@
 package aurocosh.divinefavor.common.spirit.punishment;
 
 import aurocosh.divinefavor.common.lib.SuccessCounter;
-import aurocosh.divinefavor.common.muliblock.MultiBlockInstance;
+import aurocosh.divinefavor.common.muliblock.instance.MultiBlockInstance;
 import aurocosh.divinefavor.common.potions.base.effect.ModEffect;
 import aurocosh.divinefavor.common.spirit.base.SpiritPunishment;
 import aurocosh.divinefavor.common.util.UtilCoordinates;

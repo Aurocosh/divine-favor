@@ -1,7 +1,7 @@
 package aurocosh.divinefavor.client.gui.blocks.soulbound_lectern;
 
 import aurocosh.divinefavor.common.block.soulbound_lectern.ContainerSoulboundLecternBound;
-import aurocosh.divinefavor.common.block.soulbound_lectern.TileSoulboundLectern;
+import aurocosh.divinefavor.common.block.soulbound_lectern.tile_entities.TileSoulboundLectern;
 import aurocosh.divinefavor.common.constants.ConstResources;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.entity.player.EntityPlayer;

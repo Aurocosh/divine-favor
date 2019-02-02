@@ -2,7 +2,7 @@ package aurocosh.divinefavor.common.item.mystic_architect_stick;
 
 public enum ArchitectStickMode {
     SELECT_MULTIBLOCK_BASE(0, "Select multiblock base"),
-    SELECT_MEDIUM(1, "Select medium"),
+    SELECT_CONTROLLER(1, "Select controller"),
     SELECT_AIR_BLOCK(2, "Select air block"),
     CREATE_TEMPLATE(3, "Create template");
 

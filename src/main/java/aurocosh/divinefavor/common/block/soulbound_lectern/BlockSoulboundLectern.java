@@ -2,10 +2,12 @@ package aurocosh.divinefavor.common.block.soulbound_lectern;
 
 import aurocosh.divinefavor.DivineFavor;
 import aurocosh.divinefavor.common.block.base.ModBlock;
+import aurocosh.divinefavor.common.block.soulbound_lectern.tile_entities.TileSoulboundLectern;
 import aurocosh.divinefavor.common.constants.ConstBlockNames;
 import aurocosh.divinefavor.common.constants.ConstGuiIDs;
 import aurocosh.divinefavor.common.core.creative_tabs.DivineFavorCreativeTab;
 import aurocosh.divinefavor.common.item.ItemBloodCrystal;
+import net.minecraft.block.BlockHorizontal;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
@@ -30,11 +32,13 @@ import net.minecraftforge.items.IItemHandler;
 import java.util.UUID;
 
 public class BlockSoulboundLectern extends ModBlock implements ITileEntityProvider {
-    public static final PropertyDirection FACING = PropertyDirection.create("facing");
+    public static final PropertyDirection FACING = BlockHorizontal.FACING;
     public static final PropertyEnum<SoulboundLecternState> STATE = PropertyEnum.create("state", SoulboundLecternState.class);
+    private final Class<? extends TileSoulboundLectern> entityClass;
 
-    public BlockSoulboundLectern() {
-        super(ConstBlockNames.SOULBOUND_LECTERN, Material.IRON);
+    public BlockSoulboundLectern(String name, Material material, Class<? extends TileSoulboundLectern> entityClass) {
+        super(ConstBlockNames.SOULBOUND_LECTERN + "_" + name, material);
+        this.entityClass = entityClass;
         setHardness(2.0F);
         setResistance(10.0F);
         setSoundType(SoundType.METAL);
@@ -69,7 +73,7 @@ public class BlockSoulboundLectern extends ModBlock implements ITileEntityProvid
 
     @Override
     public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, EnumFacing side, float hitX, float hitY, float hitZ) {
-        if(world.isRemote)
+        if (world.isRemote)
             return false;
         TileEntity tileEntity = world.getTileEntity(pos);
         if (!(tileEntity instanceof TileSoulboundLectern))
@@ -85,6 +89,9 @@ public class BlockSoulboundLectern extends ModBlock implements ITileEntityProvid
             UUID stackUUID = ItemBloodCrystal.getPlayerId(stack);
             if (!playerUUID.equals(stackUUID))
                 return false;
+            if (!soulboundLectern.isMultiblockValid())
+                return false;
+
             player.openGui(DivineFavor.instance, ConstGuiIDs.SOULBOUND_LECTERN_BOUND, world, pos.getX(), pos.getY(), pos.getZ());
             return true;
 
@@ -94,8 +101,14 @@ public class BlockSoulboundLectern extends ModBlock implements ITileEntityProvid
     }
 
     @Override
-    public TileEntity createNewTileEntity(World worldIn, int meta) {
-        return new TileSoulboundLectern();
+    public TileEntity createNewTileEntity(World world, int meta) {
+        try {
+            return entityClass.newInstance();
+        }
+        catch (IllegalAccessException  | InstantiationException e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 
     @Override

@@ -11,11 +11,11 @@ import aurocosh.divinefavor.common.lib.math.Vector3i;
 import aurocosh.divinefavor.common.misc.SlotStack;
 import aurocosh.divinefavor.common.muliblock.IMultiblockController;
 import aurocosh.divinefavor.common.muliblock.ModMultiBlock;
-import aurocosh.divinefavor.common.muliblock.MultiBlockInstance;
+import aurocosh.divinefavor.common.muliblock.instance.MultiBlockInstance;
 import aurocosh.divinefavor.common.muliblock.common.MultiBlockWatcher;
+import aurocosh.divinefavor.common.muliblock.instance.MultiBlockInstanceAltar;
 import aurocosh.divinefavor.common.receipes.ModRecipes;
 import aurocosh.divinefavor.common.spirit.base.ModSpirit;
-import aurocosh.divinefavor.common.util.UtilContract;
 import aurocosh.divinefavor.common.util.UtilHandler;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
@@ -46,7 +46,7 @@ public class TileMedium extends TickableTileEntity implements IMultiblockControl
     private MediumState state = MediumState.NO_CALLING_STONE;
 
     // server side
-    private MultiBlockInstance multiBlockInstance;
+    private MultiBlockInstanceAltar multiBlockInstance;
 
     private ItemStackHandler stoneStackHandler = new ItemStackHandler(1) {
         @Override
@@ -186,10 +186,6 @@ public class TileMedium extends TickableTileEntity implements IMultiblockControl
         getWorld().notifyBlockUpdate(pos, blockState, blockState, 3);
     }
 
-    public boolean isMultiblockValid() {
-        return multiBlockInstance != null;
-    }
-
     @Override
     protected void updateFiltered() {
         ItemStack stack = stoneStackHandler.getStackInSlot(0);
@@ -277,7 +273,7 @@ public class TileMedium extends TickableTileEntity implements IMultiblockControl
 
     @Override
     public void multiblockDamaged(EntityPlayer player, World world, BlockPos pos, IBlockState state) {
-        MultiBlockInstance instance = multiBlockInstance;
+        MultiBlockInstanceAltar instance = multiBlockInstance;
         multiblockDeconstructed();
         if (player != null && instance.spirit.isActive(world))
             instance.spirit.getPunishment().execute(player, world, pos, state, instance);

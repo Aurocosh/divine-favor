@@ -1,0 +1,16 @@
+{
+  "name": "Soulbound lectern stone",
+  "icon": "divinefavor:soulbound_lectern_stone",
+  "category": "soulbound_lectern",
+  "pages": [
+    {
+      "type": "text",
+      "text": "This is a test entry, but it should show up!"
+    },
+    {
+      "type": "multiblock",
+      "multiblock_id": "divinefavor:multi_block.soulbound_lectern_stone.patchouli",
+      "text": "Bla bla"
+    }
+  ]
+}

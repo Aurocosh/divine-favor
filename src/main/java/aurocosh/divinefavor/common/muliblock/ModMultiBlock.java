@@ -3,6 +3,8 @@ package aurocosh.divinefavor.common.muliblock;
 import aurocosh.divinefavor.common.core.ResourceNamer;
 import aurocosh.divinefavor.common.lib.math.CubeCoordinates;
 import aurocosh.divinefavor.common.lib.math.Vector3i;
+import aurocosh.divinefavor.common.muliblock.instance.MultiBlockInstance;
+import aurocosh.divinefavor.common.muliblock.instance.MultiBlockInstanceAltar;
 import aurocosh.divinefavor.common.muliblock.parts.MultiBlockPart;
 import aurocosh.divinefavor.common.spirit.base.ModSpirit;
 import net.minecraft.world.World;
@@ -38,10 +40,17 @@ public class ModMultiBlock extends IForgeRegistryEntry.Impl<ModMultiBlock> {
 //        return true;
 //    }
 
-    public MultiBlockInstance makeMultiBlock(ModSpirit spirit, World world, Vector3i controller){
+    public MultiBlockInstance makeMultiBlock(World world, Vector3i controller){
         for (MultiBlockConfiguration configuration : configurations)
             if (configuration.isValid(world, controller))
-                return new MultiBlockInstance(spirit, this, configuration, controller);
+                return new MultiBlockInstance(this, configuration, controller);
+        return null;
+    }
+
+    public MultiBlockInstanceAltar makeMultiBlock(ModSpirit spirit, World world, Vector3i controller){
+        for (MultiBlockConfiguration configuration : configurations)
+            if (configuration.isValid(world, controller))
+                return new MultiBlockInstanceAltar(this, configuration, controller, spirit);
         return null;
     }
 }

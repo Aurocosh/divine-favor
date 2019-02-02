@@ -4,7 +4,8 @@ import net.minecraft.util.IStringSerializable;
 
 public enum SoulboundLecternState implements IStringSerializable {
     UNBOUND("unbound"),
-    BOUND("bound");
+    BOUND("bound"),
+    ACTIVE("active");
 
     // Optimization
     public static final SoulboundLecternState[] VALUES = SoulboundLecternState.values();

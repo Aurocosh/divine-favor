@@ -1,18 +1,17 @@
-package aurocosh.divinefavor.common.muliblock;
+package aurocosh.divinefavor.common.muliblock.instance;
 
 import aurocosh.divinefavor.common.lib.math.CubeCoordinates;
-import aurocosh.divinefavor.common.lib.math.Vector3;
 import aurocosh.divinefavor.common.lib.math.Vector3i;
+import aurocosh.divinefavor.common.muliblock.ModMultiBlock;
+import aurocosh.divinefavor.common.muliblock.MultiBlockConfiguration;
 import aurocosh.divinefavor.common.muliblock.parts.AirStateValidator;
 import aurocosh.divinefavor.common.muliblock.parts.MultiBlockPart;
-import aurocosh.divinefavor.common.spirit.base.ModSpirit;
 
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
 public class MultiBlockInstance {
-    public final ModSpirit spirit;
     public final ModMultiBlock multiBlock;
     public final MultiBlockConfiguration configuration;
     public final CubeCoordinates boundingBox;
@@ -20,8 +19,7 @@ public class MultiBlockInstance {
     public final Set<Vector3i> positionsOfSolids;
     public final Set<Vector3i> positionsOfAir;
 
-    public MultiBlockInstance(ModSpirit spirit, ModMultiBlock multiBlock, MultiBlockConfiguration configuration, Vector3i controllerPosition) {
-        this.spirit = spirit;
+    public MultiBlockInstance(ModMultiBlock multiBlock, MultiBlockConfiguration configuration, Vector3i controllerPosition) {
         this.multiBlock = multiBlock;
         this.configuration = configuration;
 

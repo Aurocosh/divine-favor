@@ -1,5 +1,6 @@
 package aurocosh.divinefavor.common.block.soulbound_lectern;
 
+import aurocosh.divinefavor.common.block.soulbound_lectern.tile_entities.TileSoulboundLectern;
 import aurocosh.divinefavor.common.item.base.GenericContainer;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraftforge.items.CapabilityItemHandler;

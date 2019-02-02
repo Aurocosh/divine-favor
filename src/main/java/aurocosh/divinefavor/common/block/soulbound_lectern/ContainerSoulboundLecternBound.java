@@ -1,5 +1,6 @@
 package aurocosh.divinefavor.common.block.soulbound_lectern;
 
+import aurocosh.divinefavor.common.block.soulbound_lectern.tile_entities.TileSoulboundLectern;
 import aurocosh.divinefavor.common.custom_data.player.PlayerData;
 import aurocosh.divinefavor.common.custom_data.player.data.favor.FavorData;
 import aurocosh.divinefavor.common.item.base.GenericContainer;

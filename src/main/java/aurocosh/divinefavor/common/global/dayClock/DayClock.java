@@ -68,7 +68,7 @@ public class DayClock {
 
     private static void processAlarms(int time) {
         List<DayTimeAlarm> alarmsToRepeat = new ArrayList<>();
-        while (alarmTriggered(alarms.peek(), time)) {
+        while (alarms.peek() != null && alarms.peek().time == time) {
             DayTimeAlarm alarm = alarms.remove();
             alarm.activate();
             if (alarm.repeat)
@@ -76,12 +76,6 @@ public class DayClock {
         }
 //        System.out.println(time);
         alarms.addAll(alarmsToRepeat);
-    }
-
-    private static boolean alarmTriggered(DayTimeAlarm alarm, int time) {
-        if (alarm == null)
-            return false;
-        return alarm.time <= time;
     }
 
     private static void enqueueAlarm(DayTimeAlarm alarm) {

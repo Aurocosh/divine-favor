@@ -72,7 +72,7 @@ public class ItemMysticArchitectStick extends ModItem {
                     compound.setLong(TAG_BASE_POSITION, pos.toLong());
                     DivineFavor.proxy.getClientPlayer().sendMessage(new TextComponentString("Set base position: " + pos.toString()));
                     break;
-                case SELECT_MEDIUM:
+                case SELECT_CONTROLLER:
                     compound.setLong(TAG_MEDIUM_POSITION, pos.toLong());
                     DivineFavor.proxy.getClientPlayer().sendMessage(new TextComponentString("Set medium position: " + pos.toString()));
                     break;

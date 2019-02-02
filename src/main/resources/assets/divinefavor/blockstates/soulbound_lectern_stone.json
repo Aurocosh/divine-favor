@@ -1,0 +1,42 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "cube",
+    "textures":{
+      "particle": "divinefavor:blocks/soulbound_lectern/stone/side",
+      "down": "divinefavor:blocks/soulbound_lectern/stone/side",
+      "up": "divinefavor:blocks/soulbound_lectern/stone/side",
+      "east": "divinefavor:blocks/soulbound_lectern/stone/inactive_side",
+      "west": "divinefavor:blocks/soulbound_lectern/stone/inactive_side",
+      "north": "divinefavor:blocks/soulbound_lectern/stone/unbound_front",
+      "south": "divinefavor:blocks/soulbound_lectern/stone/side"
+    }
+  },
+  "variants": {
+    "normal": [{}],
+    "inventory": [{}],
+    "facing": {
+      "north": {},
+      "south": {"y": 180},
+      "west": {"y": 270},
+      "east": {"y": 90}
+    },
+    "state": {
+      "unbound": {},
+      "bound": {
+		"textures": {
+		  "east": "divinefavor:blocks/soulbound_lectern/stone/inactive_side",
+		  "west": "divinefavor:blocks/soulbound_lectern/stone/inactive_side",
+		  "north": "divinefavor:blocks/soulbound_lectern/stone/bound_front"
+		}
+	  },
+      "active": {
+		"textures": {
+		  "east": "divinefavor:blocks/soulbound_lectern/stone/active_side",
+		  "west": "divinefavor:blocks/soulbound_lectern/stone/active_side",
+		  "north": "divinefavor:blocks/soulbound_lectern/stone/active_front"
+		}
+	  }
+    }
+  }
+}
