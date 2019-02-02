@@ -1,17 +1,15 @@
 package aurocosh.divinefavor.common.spirit.punishment;
 
 import aurocosh.divinefavor.common.lib.math.Vector3i;
-import aurocosh.divinefavor.common.muliblock.MultiBlockInstance;
+import aurocosh.divinefavor.common.muliblock.instance.MultiBlockInstance;
 import aurocosh.divinefavor.common.spirit.base.SpiritPunishment;
 import aurocosh.divinefavor.common.util.*;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Blocks;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class AllfirePunishment extends SpiritPunishment {

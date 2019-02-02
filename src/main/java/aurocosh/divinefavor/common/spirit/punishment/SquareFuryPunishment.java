@@ -1,7 +1,7 @@
 package aurocosh.divinefavor.common.spirit.punishment;
 
 import aurocosh.divinefavor.common.damage_source.ModDamageSources;
-import aurocosh.divinefavor.common.muliblock.MultiBlockInstance;
+import aurocosh.divinefavor.common.muliblock.instance.MultiBlockInstance;
 import aurocosh.divinefavor.common.spirit.base.SpiritPunishment;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;

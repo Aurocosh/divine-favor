@@ -35,6 +35,9 @@ public final class ModMultiBlocks {
     public static ModMultiBlock altar_squarefury;
     public static ModMultiBlock altar_timber;
 
+    public static ModMultiBlock soulbound_lectern_wood;
+    public static ModMultiBlock soulbound_lectern_stone;
+
     public static void preInit() {
         Gson gson = new GsonBuilder()
                 .registerTypeAdapter(StateValidator.class, new StateValidatorSerializer())
@@ -42,19 +45,22 @@ public final class ModMultiBlocks {
                 .registerTypeAdapter(Vector3i.class, new Vector3iByteSerializer())
                 .create();
 
-        altar_allfire = createMultiBlock("allfire", gson);
-        altar_arbow = createMultiBlock("arbow", gson);
-        altar_blizrabi = createMultiBlock("blizrabi", gson);
-        altar_endererer = createMultiBlock("endererer", gson);
-        altar_nefir = createMultiBlock("nefir", gson);
-        altar_redwind = createMultiBlock("redwind", gson);
-        altar_romol = createMultiBlock("romol", gson);
-        altar_squarefury = createMultiBlock("squarefury", gson);
-        altar_timber = createMultiBlock("timber", gson);
+        altar_allfire = createMultiBlock("altar_allfire", gson);
+        altar_arbow = createMultiBlock("altar_arbow", gson);
+        altar_blizrabi = createMultiBlock("altar_blizrabi", gson);
+        altar_endererer = createMultiBlock("altar_endererer", gson);
+        altar_nefir = createMultiBlock("altar_nefir", gson);
+        altar_redwind = createMultiBlock("altar_redwind", gson);
+        altar_romol = createMultiBlock("altar_romol", gson);
+        altar_squarefury = createMultiBlock("altar_squarefury", gson);
+        altar_timber = createMultiBlock("altar_timber", gson);
+
+        soulbound_lectern_wood = createMultiBlock("soulbound_lectern_wood", gson);
+        soulbound_lectern_stone = createMultiBlock("soulbound_lectern_stone", gson);
     }
 
     private static ModMultiBlock createMultiBlock(String name, Gson gson) {
-        String fullName = "altar_" + name;
+        String fullName = "" + name;
         String jsonString = UtilAssets.loadTextFile(DivineFavor.container, ConstResources.MULTIBLOCK_ASSETS + fullName + ".json");
 
         MultiBlockData data = null;

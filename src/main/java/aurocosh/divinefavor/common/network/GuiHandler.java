@@ -15,7 +15,7 @@ import aurocosh.divinefavor.common.block.medium.ContainerMedium;
 import aurocosh.divinefavor.common.block.medium.TileMedium;
 import aurocosh.divinefavor.common.block.soulbound_lectern.ContainerSoulboundLecternBound;
 import aurocosh.divinefavor.common.block.soulbound_lectern.ContainerSoulboundLecternUnbound;
-import aurocosh.divinefavor.common.block.soulbound_lectern.TileSoulboundLectern;
+import aurocosh.divinefavor.common.block.soulbound_lectern.tile_entities.TileSoulboundLectern;
 import aurocosh.divinefavor.common.constants.ConstGuiIDs;
 import aurocosh.divinefavor.common.item.contract_binder.ContractBinderContainer;
 import aurocosh.divinefavor.common.item.grimoire.GrimoireContainer;
