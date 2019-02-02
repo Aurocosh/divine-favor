@@ -9,6 +9,8 @@ import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.SlotItemHandler;
 
+import javax.annotation.Nonnull;
+
 public class ContainerMedium extends GenericContainer {
     public TileMedium ironMedium;
 
@@ -33,8 +35,8 @@ public class ContainerMedium extends GenericContainer {
     }
 
     @Override
-    public boolean canInteractWith(EntityPlayer playerIn) {
-        return ironMedium.isUsableByPlayer(playerIn);
+    public boolean canInteractWith(@Nonnull EntityPlayer player) {
+        return ironMedium.isUsableByPlayer(player);
     }
 
     @Override

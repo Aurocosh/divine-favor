@@ -9,6 +9,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.SlotItemHandler;
 
+import javax.annotation.Nonnull;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -44,7 +45,7 @@ public class GenericContainer extends Container {
     }
 
     @Override
-    public boolean canInteractWith(EntityPlayer playerIn) {
+    public boolean canInteractWith(@Nonnull EntityPlayer player) {
         return true;
     }
 
@@ -53,15 +54,15 @@ public class GenericContainer extends Container {
             for (int col = 0; col < 9; ++col) {
                 int x = xStart + col * 18;
                 int y = yStart + row * 18;
-                this.addSlotToContainer(new Slot(playerInventory, col + row * 9 + 9, x, y));
+                addSlotToContainer(new Slot(playerInventory, col + row * 9 + 9, x, y));
             }
         }
     }
 
     protected void generateHotbarSlots(InventoryPlayer playerInventory, int xStart, int yStart) {
-        for (int row = 0; row < 9; ++row) {
-            int x = xStart + row * 18;
-            this.addSlotToContainer(new Slot(playerInventory, row, x, yStart));
+        for (int i = 0; i < 9; ++i) {
+            int x = xStart + i * 18;
+            addSlotToContainer(new Slot(playerInventory, i, x, yStart));
         }
     }
 
@@ -70,7 +71,7 @@ public class GenericContainer extends Container {
             for (int col = 0; col < columns; ++col) {
                 int x = xStart + col * 18;
                 int y = yStart + row * 18;
-                this.addSlotToContainer(new SlotItemHandler(itemHandler, nextSlotIndex++, x, y));
+                addSlotToContainer(new SlotItemHandler(itemHandler, nextSlotIndex++, x, y));
             }
         }
         return nextSlotIndex;
@@ -87,7 +88,7 @@ public class GenericContainer extends Container {
 
         if (index < inventorySize && canTransferTo(index) && mergeItemStack(itemStack, inventorySize, inventorySlots.size(), true))
             return itemStackCopy;
-        else if (mergeItemStack(itemStack, 0, inventorySize, false) )
+        else if (mergeItemStack(itemStack, 0, inventorySize, false))
             return itemStackCopy;
 
         if (itemStack.isEmpty())

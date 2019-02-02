@@ -6,6 +6,8 @@ import aurocosh.divinefavor.common.item.base.GenericContainer;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraftforge.items.ItemStackHandler;
 
+import javax.annotation.Nonnull;
+
 public class ContainerSoulboundLecternBound extends GenericContainer {
     private final TileSoulboundLectern soulboundLectern;
     private final FavorData favorData;
@@ -30,8 +32,8 @@ public class ContainerSoulboundLecternBound extends GenericContainer {
     }
 
     @Override
-    public boolean canInteractWith(EntityPlayer playerIn) {
-        return soulboundLectern.isUsableByPlayer(playerIn);
+    public boolean canInteractWith(@Nonnull EntityPlayer player) {
+        return soulboundLectern.isUsableByPlayer(player);
     }
 
     @Override
