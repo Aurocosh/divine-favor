@@ -1,10 +1,7 @@
 package aurocosh.divinefavor;
 
 import aurocosh.divinefavor.common.constants.ConstMisc;
-import aurocosh.divinefavor.common.core.DivineFavorCreativeTab;
-import aurocosh.divinefavor.common.core.DivineFavorCreativeTabArrowTalismans;
-import aurocosh.divinefavor.common.core.DivineFavorCreativeTabGems;
-import aurocosh.divinefavor.common.core.DivineFavorCreativeTabSpellTalismans;
+import aurocosh.divinefavor.common.core.creative_tabs.*;
 import aurocosh.divinefavor.common.core.proxy.CommonProxy;
 import aurocosh.divinefavor.common.log.ModLogger;
 import net.minecraftforge.fml.common.Loader;
@@ -24,6 +21,7 @@ public class DivineFavor {
     public static ModContainer container;
     public static DivineFavorCreativeTab tab;
     public static DivineFavorCreativeTabGems tabGems;
+    public static DivineFavorCreativeTabContracts tabContracts;
     public static DivineFavorCreativeTabArrowTalismans tabArrowTalismans;
     public static DivineFavorCreativeTabSpellTalismans tabSpellTalismans;
 
@@ -36,6 +34,7 @@ public class DivineFavor {
         container = Loader.instance().getModObjectList().inverse().get(instance);
         tab = DivineFavorCreativeTab.INSTANCE;
         tabGems = DivineFavorCreativeTabGems.INSTANCE;
+        tabContracts = DivineFavorCreativeTabContracts.INSTANCE;
         tabArrowTalismans = DivineFavorCreativeTabArrowTalismans.INSTANCE;
         tabSpellTalismans = DivineFavorCreativeTabSpellTalismans.INSTANCE;
         proxy.preInit(event);

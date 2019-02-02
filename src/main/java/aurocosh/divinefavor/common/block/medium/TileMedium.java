@@ -184,51 +184,10 @@ public class TileMedium extends TickableTileEntity implements IMultiblockControl
         markDirty();
         IBlockState blockState = world.getBlockState(pos);
         getWorld().notifyBlockUpdate(pos, blockState, blockState, 3);
-
-        if (world.isRemote)
-            return;
-        if (state == MediumState.ACTIVE)
-            refreshSpellUses();
-    }
-
-    private void refreshSpellUses() {
-//        List<ItemStack> contracts = getContracsFromStack(stack);
-//        List<UUID> playerUUIDs = getPlayerUUIDs(contracts, callingStone);
-//        List<ItemSpellTalisman> talismans = callingStone.spirit.getTalismans();
-//        for (UUID uuid : playerUUIDs) {
-//
-//            EntityPlayer player = world.getPlayerEntityByUUID(uuid);
-//            if (player == null)
-//                continue;
-//
-//            FavorData favorData = PlayerData.getItemHandler(player).getFavorData();
-//            for (ItemSpellTalisman talisman : talismans)
-//                favorData.getItemHandler(talisman.getFavor()).regenerate();
-//            new MessageSyncAllFavors(favorData).sendTo(player);
-//        }
     }
 
     public boolean isMultiblockValid() {
         return multiBlockInstance != null;
-    }
-
-    public List<ItemStack> getValidContracts() {
-        ItemStack stoneStack = stoneStackHandler.getStackInSlot(0);
-        if (stoneStack.isEmpty())
-            return new ArrayList<>();
-        ItemStack stack = contractStackHandler.getStackInSlot(0);
-        if (stack.isEmpty())
-            return new ArrayList<>();
-
-        List<ItemStack> contracts = UtilContract.getContracsFromStack(stack);
-        List<ItemStack> validContracts = new ArrayList<>();
-        ItemCallingStone callingStone = (ItemCallingStone) stoneStack.getItem();
-        for (ItemStack contract : contracts) {
-            ItemContract itemContract = (ItemContract) contract.getItem();
-            if (itemContract.getSpirit() == callingStone.spirit)
-                validContracts.add(contract);
-        }
-        return validContracts;
     }
 
     @Override

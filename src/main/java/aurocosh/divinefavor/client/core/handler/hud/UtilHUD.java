@@ -26,8 +26,8 @@ public class UtilHUD {
         ResourceLocation icon = favor.getIcon();
 
         FavorData favorData = PlayerData.get(player).getFavorData();
-        int value = favorData.get(favor).getValue();
-        int maxLimit = favorData.get(favor).getMaxLimit();
+        int value = favorData.getFavor(favor.getId());
+        int maxLimit = favorData.getMaxFavor(favor.getId());
         String favorDescription = value + "/" + maxLimit;
 
         int alpha = 255;

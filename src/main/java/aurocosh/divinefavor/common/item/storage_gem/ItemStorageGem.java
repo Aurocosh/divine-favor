@@ -1,6 +1,6 @@
 package aurocosh.divinefavor.common.item.storage_gem;
 
-import aurocosh.divinefavor.common.core.DivineFavorCreativeTab;
+import aurocosh.divinefavor.common.core.creative_tabs.DivineFavorCreativeTab;
 import aurocosh.divinefavor.common.item.base.ModItem;
 import aurocosh.divinefavor.common.util.UtilFacing;
 import aurocosh.divinefavor.common.util.UtilNbt;

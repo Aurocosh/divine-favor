@@ -1,10 +1,10 @@
 package aurocosh.divinefavor.common.network.common;
 
 import aurocosh.divinefavor.common.network.message.client.*;
-import aurocosh.divinefavor.common.network.message.client.contracts.MessageSyncContracts;
-import aurocosh.divinefavor.common.network.message.client.spell_uses.MessageSyncAllFavors;
+import aurocosh.divinefavor.common.network.message.client.spell_uses.MessageSyncAllFavorData;
+import aurocosh.divinefavor.common.network.message.client.spell_uses.MessageSyncContracts;
 import aurocosh.divinefavor.common.network.message.client.spell_uses.MessageSyncFavor;
-import aurocosh.divinefavor.common.network.message.client.spell_uses.MessageSyncFavorValue;
+import aurocosh.divinefavor.common.network.message.client.spell_uses.MessageSyncSelectedFavors;
 import aurocosh.divinefavor.common.network.message.sever.MessageSyncGrimoireSlot;
 import aurocosh.divinefavor.common.network.message.sever.MessageSyncSpellBowSlot;
 import aurocosh.divinefavor.common.network.message.sever.petrification.MessagePetrificationCure;
@@ -14,11 +14,12 @@ import net.minecraftforge.fml.relauncher.Side;
 
 public class MessageRegister {
 	public static void init() {
-        NetworkHandler.register(MessagePetrificationReset.class, Side.CLIENT);
-        NetworkHandler.register(MessageSyncAllFavors.class, Side.CLIENT);
+        NetworkHandler.register(MessageSyncAllFavorData.class, Side.CLIENT);
         NetworkHandler.register(MessageSyncContracts.class, Side.CLIENT);
         NetworkHandler.register(MessageSyncFavor.class, Side.CLIENT);
-        NetworkHandler.register(MessageSyncFavorValue.class, Side.CLIENT);
+        NetworkHandler.register(MessageSyncSelectedFavors.class, Side.CLIENT);
+
+        NetworkHandler.register(MessagePetrificationReset.class, Side.CLIENT);
         NetworkHandler.register(MessageSyncFireImmunity.class, Side.CLIENT);
         NetworkHandler.register(MessageSyncFlyingCapability.class, Side.CLIENT);
         NetworkHandler.register(MessageSyncFury.class, Side.CLIENT);

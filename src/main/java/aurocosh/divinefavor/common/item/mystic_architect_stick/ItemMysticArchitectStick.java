@@ -1,7 +1,7 @@
 package aurocosh.divinefavor.common.item.mystic_architect_stick;
 
 import aurocosh.divinefavor.DivineFavor;
-import aurocosh.divinefavor.common.core.DivineFavorCreativeTab;
+import aurocosh.divinefavor.common.core.creative_tabs.DivineFavorCreativeTab;
 import aurocosh.divinefavor.common.item.base.ModItem;
 import aurocosh.divinefavor.common.lib.math.CubeCoordinates;
 import aurocosh.divinefavor.common.lib.math.Vector3i;

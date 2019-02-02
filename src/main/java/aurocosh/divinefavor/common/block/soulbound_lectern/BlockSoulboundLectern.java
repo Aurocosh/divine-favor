@@ -4,7 +4,7 @@ import aurocosh.divinefavor.DivineFavor;
 import aurocosh.divinefavor.common.block.base.ModBlock;
 import aurocosh.divinefavor.common.constants.ConstBlockNames;
 import aurocosh.divinefavor.common.constants.ConstGuiIDs;
-import aurocosh.divinefavor.common.core.DivineFavorCreativeTab;
+import aurocosh.divinefavor.common.core.creative_tabs.DivineFavorCreativeTab;
 import aurocosh.divinefavor.common.item.ItemBloodCrystal;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.SoundType;

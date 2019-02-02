@@ -1,7 +1,6 @@
-package aurocosh.divinefavor.common.core;
+package aurocosh.divinefavor.common.core.creative_tabs;
 
 import aurocosh.divinefavor.common.constants.ConstMisc;
-import aurocosh.divinefavor.common.item.calling_stones.ItemCallingStone;
 import aurocosh.divinefavor.common.item.calling_stones.ModCallingStones;
 import aurocosh.divinefavor.common.registry.ModRegistries;
 import net.minecraft.block.Block;
@@ -12,35 +11,10 @@ import net.minecraft.util.NonNullList;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import java.util.Comparator;
-
 public class DivineFavorCreativeTabGems extends CreativeTabs {
     public static final DivineFavorCreativeTabGems INSTANCE = new DivineFavorCreativeTabGems();
     private NonNullList list;
 
-    private static Comparator<ItemStack> tabComp = (first, second) -> {
-        Item firstItem = first.getItem();
-        Item secondItem = second.getItem();
-
-        boolean isCallingStone1 = firstItem instanceof ItemCallingStone;
-        boolean isCallingStone2 = secondItem instanceof ItemCallingStone;
-
-        if(isCallingStone1 && !isCallingStone2)
-            return -1;
-        if(!isCallingStone1 && isCallingStone2)
-            return 1;
-        if(isCallingStone1 && isCallingStone2)
-            return firstItem.getRegistryName().toString().compareTo(secondItem.getRegistryName().toString());
-
-//            if(firstItem instanceof ItemWishingStone && secondItem instanceof ItemWishingStone){
-//                ItemWishingStone itemW1 = (ItemWishingStone) firstItem;
-//                ItemWishingStone itemW2 = (ItemWishingStone) secondItem;
-//                int cmp = itemW1.getSpirit().getName().compareToIgnoreCase(itemW2.getSpirit().getName());
-//                if(cmp != 0)
-//                    return cmp;
-//            }
-        return firstItem.getRegistryName().toString().compareTo(secondItem.getRegistryName().toString());
-    };
     public DivineFavorCreativeTabGems() {
         super(ConstMisc.MOD_ID + "_gems");
         //ConstMisc.MOD_ID
@@ -71,7 +45,7 @@ public class DivineFavorCreativeTabGems extends CreativeTabs {
 
         ModRegistries.blocks.getValues().forEach(this::addBlock);
         ModRegistries.items.getValues().forEach(this::addItem);
-        stacks.sort(tabComp);
+        stacks.sort(new ModItemStackComparator());
     }
 
     private void addItem(Item item) {

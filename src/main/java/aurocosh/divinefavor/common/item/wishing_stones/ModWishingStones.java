@@ -12,6 +12,6 @@ public final class ModWishingStones {
     public static void preInit() {
         List<ModFavor> spirits = ModMappers.favors.getValues();
         for (ModFavor favor : spirits)
-            wishingStones.add(new ItemWishingStone(favor, 10, "minor"));
+            wishingStones.add(new ItemWishingStone(favor, 10, "minor", 1));
     }
 }

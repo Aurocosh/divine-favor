@@ -35,17 +35,6 @@ public class ModRecipes {
         Map<ModSpirit,ItemCallingStone> callingStonesMap = new HashMap<>();
         for (ItemCallingStone callingStone : callingStones)
             callingStonesMap.put(callingStone.spirit, callingStone);
-
-        for (ItemContract contract : contracts) {
-            ItemCallingStone callingStone = callingStonesMap.get(contract.getSpirit());
-            if(callingStone == null)
-                continue;
-
-            register(new RecipeBuilder(new ItemStack(contract), callingStone)
-                    .addIngredient(Items.PAPER, 1)
-                    .create()
-            );
-        }
     }
 
     public static ImmaterialMediumRecipe register(ImmaterialMediumRecipe recipe) {

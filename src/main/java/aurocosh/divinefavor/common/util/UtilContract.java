@@ -25,17 +25,4 @@ public class UtilContract {
         }
         return contracts;
     }
-
-    public static List<UUID> getPlayerUUIDs(List<ItemStack> contractStacks, ItemCallingStone callingStone) {
-        Set<UUID> playerUUIDs = new HashSet<>();
-        for (ItemStack stack : contractStacks) {
-            ItemContract contract = (ItemContract) stack.getItem();
-            if (contract.getSpirit() != callingStone.spirit)
-                continue;
-            UUID uuid = ItemContract.getPlayerId(stack);
-            if (uuid != null)
-                playerUUIDs.add(uuid);
-        }
-        return new ArrayList<>(playerUUIDs);
-    }
 }

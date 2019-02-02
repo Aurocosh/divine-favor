@@ -1,7 +1,7 @@
 package aurocosh.divinefavor.common.block.soulbound_lectern;
 
 import aurocosh.divinefavor.common.custom_data.player.PlayerData;
-import aurocosh.divinefavor.common.custom_data.player.data.contracts.ContractsData;
+import aurocosh.divinefavor.common.custom_data.player.data.favor.FavorData;
 import aurocosh.divinefavor.common.item.base.GenericContainer;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraftforge.items.ItemStackHandler;
@@ -10,11 +10,11 @@ public class ContainerSoulboundLecternBound extends GenericContainer {
     private final TileSoulboundLectern soulboundLectern;
 
     public ContainerSoulboundLecternBound(EntityPlayer player, TileSoulboundLectern soulboundLectern) {
-        super(ContractsData.SIZE);
+        super(FavorData.CONTRACT_SLOT_COUNT);
         this.soulboundLectern = soulboundLectern;
 
-        ContractsData contractsData = PlayerData.get(player).getContractsData();
-        ItemStackHandler stackHandler = contractsData.getStackHandler();
+        FavorData favorData = PlayerData.get(player).getFavorData();
+        ItemStackHandler stackHandler = favorData.getContractHandler();
 
         int nextSlotIndex = 0;
         nextSlotIndex = generateCustomSlotsGrid(stackHandler, 8, 18, 1, 4, nextSlotIndex);
