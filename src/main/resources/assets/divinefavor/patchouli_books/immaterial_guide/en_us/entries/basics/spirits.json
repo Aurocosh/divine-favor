@@ -1,0 +1,15 @@
+{
+  "name": "Spiritual Contract",
+  "icon": "divinefavor:calling_stone_allfire",
+  "category": "basics",
+  "pages": [
+    {
+      "type": "text",
+      "text": "Welcome seekers of unnatural power. Let me introduce you to art of Spiritual Contract! "
+    },
+    {
+      "type": "text",
+      "text": "Welcome seekers of unnatural power. Let me introduce you to art of Spiritual Contract! "
+    }
+  ]
+}

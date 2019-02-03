@@ -1,12 +1,9 @@
 package aurocosh.divinefavor.common.util;
 
 import aurocosh.divinefavor.common.lib.math.Vector3i;
-import net.minecraft.util.math.Vec3i;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
+import java.util.Collections;
 
 public class UtilVector3i {
     private static List<Vector3i> directNeighbours = Arrays.asList(
@@ -18,8 +15,23 @@ public class UtilVector3i {
             Vector3i.SOUTH
     );
 
+    private static List<Vector3i> horizontalNeighbours = Arrays.asList(
+            Vector3i.WEST,
+            Vector3i.EAST,
+            Vector3i.NORTH,
+            Vector3i.SOUTH,
+            Vector3i.WEST.add(Vector3i.NORTH),
+            Vector3i.EAST.add(Vector3i.NORTH),
+            Vector3i.WEST.add(Vector3i.SOUTH),
+            Vector3i.EAST.add(Vector3i.SOUTH)
+    );
+
     public static List<Vector3i> getNeighbourDirections() {
         return new ArrayList<>(directNeighbours);
+    }
+
+    public static List<Vector3i> getNeighbourDirsHorizontal() {
+        return Collections.unmodifiableList(horizontalNeighbours);
     }
 
     public static Vector3i getRandomDirection() {
