@@ -2,6 +2,8 @@ package aurocosh.divinefavor.common.block.common;
 
 import aurocosh.divinefavor.common.block.BlockDiviner;
 import aurocosh.divinefavor.common.block.base.ModBlock;
+import aurocosh.divinefavor.common.block.bath_heater.BlockBathHeater;
+import aurocosh.divinefavor.common.block.bath_heater.TileBathHeater;
 import aurocosh.divinefavor.common.block.fast_furnace.BlockFastFurnaceMod;
 import aurocosh.divinefavor.common.block.fast_furnace.TileFastFurnace;
 import aurocosh.divinefavor.common.block.medium.BlockMedium;
@@ -16,6 +18,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class ModBlocks {
+    public static ModBlock bathHeater;
     public static ModBlock diviner;
     public static ModBlock fastFurnace;
     public static ModBlock immaterialMedium;
@@ -23,6 +26,7 @@ public class ModBlocks {
     public static ModBlock soulboundLecternStone;
 
     public static void preInit() {
+        bathHeater = new BlockBathHeater();
         diviner = new BlockDiviner();
         fastFurnace = new BlockFastFurnaceMod();
         immaterialMedium = new BlockMedium();
@@ -37,10 +41,11 @@ public class ModBlocks {
     }
 
     private static void initTileEntities() {
+        registerTile(TileBathHeater.class, ConstBlockNames.BATH_HEATER);
         registerTile(TileFastFurnace.class, ConstBlockNames.FAST_FURNACE);
         registerTile(TileMedium.class, ConstBlockNames.IRON_MEDIUM);
-        registerTile(TileSoulboundLecternWood.class, "soulbound_lectern_wood");
         registerTile(TileSoulboundLecternStone.class, "soulbound_lectern_stone");
+        registerTile(TileSoulboundLecternWood.class, "soulbound_lectern_wood");
     }
 
     private static void registerTile(Class<? extends TileEntity> clazz, String key) {

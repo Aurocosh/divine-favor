@@ -81,7 +81,7 @@ public class UtilCoordinates {
 
     public static BlockPos getRandomNeighbourSafe(BlockPos center, int xRadius, int yRadius, int zRadius) {
         BlockPos destination = UtilCoordinates.getRandomNeighbour(center, xRadius, yRadius, zRadius);
-        return new BlockPos(destination.getX(), Math.max(5,destination.getY()), destination.getZ());
+        return new BlockPos(destination.getX(), Math.max(5, destination.getY()), destination.getZ());
     }
 
     public static BlockPos getRandomNeighbour(BlockPos center, int xRadius, int yRadius, int zRadius) {
@@ -95,7 +95,7 @@ public class UtilCoordinates {
         BlockPos pos = start;
         while (limit-- > 0) {
             pos = pos.offset(facing);
-            if(predicate.select(pos))
+            if (predicate.select(pos))
                 return pos;
         }
         return null;
@@ -112,9 +112,9 @@ public class UtilCoordinates {
         BlockPos pos = start;
         while (limit-- > 0) {
             pos = pos.offset(facing);
-            if(!world.isAirBlock(pos) || !world.isAirBlock(pos.up()))
+            if (!world.isAirBlock(pos) || !world.isAirBlock(pos.up()))
                 continue;
-            if(!needPlaceToStand)
+            if (!needPlaceToStand)
                 return pos;
             IBlockState state = world.getBlockState(pos.down());
             if (state.getBlock() == Blocks.BEDROCK)
@@ -198,5 +198,17 @@ public class UtilCoordinates {
             }
         }
         return Vector3i.convert(result);
+    }
+
+
+    public static List<BlockPos> getNeighbours(BlockPos start, World world, UtilList.Predicate<IBlockState> predicate) {
+        List<BlockPos> result = new ArrayList<>();
+        for (Vector3i neighbour : UtilVector3i.getNeighbourDirsHorizontal()) {
+            BlockPos pos = start.add(neighbour.x, neighbour.y, neighbour.z);
+            IBlockState state = world.getBlockState(pos);
+            if(predicate.select(state))
+                result.add(pos);
+        }
+        return result;
     }
 }

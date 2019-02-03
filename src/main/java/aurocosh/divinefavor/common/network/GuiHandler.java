@@ -1,6 +1,7 @@
 package aurocosh.divinefavor.common.network;
 
 import aurocosh.divinefavor.client.gui.GuiTalismanContainer;
+import aurocosh.divinefavor.client.gui.blocks.GuiBathHeater;
 import aurocosh.divinefavor.client.gui.blocks.GuiFastFurnace;
 import aurocosh.divinefavor.client.gui.blocks.GuiIronMedium;
 import aurocosh.divinefavor.client.gui.blocks.soulbound_lectern.GuiSoulboundLecternBound;
@@ -9,6 +10,8 @@ import aurocosh.divinefavor.client.gui.items.GuiContractBinder;
 import aurocosh.divinefavor.client.gui.items.GuiGrimoire;
 import aurocosh.divinefavor.client.gui.items.GuiRitualPouch;
 import aurocosh.divinefavor.client.gui.items.GuiSpellBow;
+import aurocosh.divinefavor.common.block.bath_heater.ContainerBathHeater;
+import aurocosh.divinefavor.common.block.bath_heater.TileBathHeater;
 import aurocosh.divinefavor.common.block.fast_furnace.ContainerFastFurnace;
 import aurocosh.divinefavor.common.block.fast_furnace.TileFastFurnace;
 import aurocosh.divinefavor.common.block.medium.ContainerMedium;
@@ -75,6 +78,8 @@ public class GuiHandler implements IGuiHandler {
                 return new ContainerSoulboundLecternBound(player, (TileSoulboundLectern) world.getTileEntity(new BlockPos(x, y, z)));
             case ConstGuiIDs.SOULBOUND_LECTERN_UNBOUND:
                 return new ContainerSoulboundLecternUnbound(player, (TileSoulboundLectern) world.getTileEntity(new BlockPos(x, y, z)));
+            case ConstGuiIDs.BATH_HEATER:
+                return new ContainerBathHeater(player, (TileBathHeater) world.getTileEntity(new BlockPos(x, y, z)));
         }
         return null;
     }
@@ -110,6 +115,8 @@ public class GuiHandler implements IGuiHandler {
                 return new GuiSoulboundLecternBound(player, (TileSoulboundLectern) world.getTileEntity(new BlockPos(x, y, z)));
             case ConstGuiIDs.SOULBOUND_LECTERN_UNBOUND:
                 return new GuiSoulboundLecternUnbound(player, (TileSoulboundLectern) world.getTileEntity(new BlockPos(x, y, z)));
+            case ConstGuiIDs.BATH_HEATER:
+                return new GuiBathHeater(player, (TileBathHeater) world.getTileEntity(new BlockPos(x, y, z)));
         }
         return null;
     }

@@ -1,0 +1,27 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "cube",
+    "textures":{
+      "particle": "divinefavor:blocks/bath_heater/side",
+      "down": "divinefavor:blocks/bath_heater/bottom",
+      "up": "divinefavor:blocks/bath_heater/top_inactive",
+      "east": "divinefavor:blocks/bath_heater/side",
+      "west": "divinefavor:blocks/bath_heater/side",
+      "north": "divinefavor:blocks/bath_heater/side",
+      "south": "divinefavor:blocks/bath_heater/side"
+    }
+  },
+  "variants": {
+    "normal": [{}],
+    "inventory": [{}],
+    "state": {
+      "inactive": {},
+      "active": {
+		"textures": {
+		  "up": "divinefavor:blocks/bath_heater/top_active"
+		}
+	  }
+    }
+  }
+}

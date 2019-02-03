@@ -11,16 +11,17 @@ public class ConstResources {
     public static final String PREFIX_MINIONS = PREFIX_MOD + "textures/entity/minions/";
     public static final String PREFIX_FAVOR_ICONS = PREFIX_MOD + "textures/favor_icons/";
 
-    public static final String GUI_IMMATERIAL_MEDIUM = PREFIX_GUI + "immaterial_medium.png";
-    public static final String GUI_RITUAL_POUCH = PREFIX_GUI + "ritual_pouch.png";
+    public static final String GUI_BATH_HEATER = PREFIX_GUI + "bath_heater.png";
     public static final String GUI_CONTRACT_BINDER = PREFIX_GUI + "contract_binder.png";
-    public static final String GUI_GRIMOIRE = PREFIX_GUI + "grimoire.png";
     public static final String GUI_FAST_FURNACE = PREFIX_GUI + "fast_furnace.png";
-    public static final String GUI_TALISMAN = PREFIX_GUI + "talisman.png";
-    public static final String GUI_SELECT_COST_UNIT_BUTTON = PREFIX_GUI + "select_cost_unit_button.png";
+    public static final String GUI_GRIMOIRE = PREFIX_GUI + "grimoire.png";
+    public static final String GUI_IMMATERIAL_MEDIUM = PREFIX_GUI + "immaterial_medium.png";
     public static final String GUI_JEI_IMMATERIAL_MEDIUM_RECIPE = PREFIX_GUI + "jei/immaterialMedium.png";
+    public static final String GUI_RITUAL_POUCH = PREFIX_GUI + "ritual_pouch.png";
+    public static final String GUI_SELECT_COST_UNIT_BUTTON = PREFIX_GUI + "select_cost_unit_button.png";
     public static final String GUI_SOULBOUND_LECTERN_BOUND = PREFIX_GUI + "soulbound_lectern_bound.png";
     public static final String GUI_SOULBOUND_LECTERN_UNBOUND = PREFIX_GUI + "soulbound_lectern_unbound.png";
+    public static final String GUI_TALISMAN = PREFIX_GUI + "talisman.png";
 
     public static final String RES_ARROW = PREFIX_PROJECTILES + "arrow.png";
     public static final String RES_CURSED_ARROW = PREFIX_PROJECTILES + "cursed_arrow.png";
