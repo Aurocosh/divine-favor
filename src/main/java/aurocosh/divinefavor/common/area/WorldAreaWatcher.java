@@ -32,7 +32,7 @@ public class WorldAreaWatcher {
     }
 
     @SubscribeEvent(priority = EventPriority.LOWEST)
-    public static void onBreakEvent(BlockEvent.BreakEvent event) {
+    public static void onBlockChanged(BlockEvent event) {
         cleanup();
         Set<IAreaWatcher> controllerSet = watchers.get(event.getWorld());
         if (controllerSet == null)
@@ -40,18 +40,6 @@ public class WorldAreaWatcher {
         Vector3i position = new Vector3i(event.getPos());
         for (IAreaWatcher iAreaWatcher : controllerSet)
             if (iAreaWatcher.getArea().isApartOfArea(position))
-                iAreaWatcher.blockBroken(event.getWorld(), event.getPos(), event.getState(), event.getPlayer());
-    }
-
-    @SubscribeEvent(priority = EventPriority.LOWEST)
-    public static void onPlaceEvent(BlockEvent.PlaceEvent event) {
-        cleanup();
-        Set<IAreaWatcher> controllerSet = watchers.get(event.getWorld());
-        if (controllerSet == null)
-            return;
-        Vector3i position = new Vector3i(event.getPos());
-        for (IAreaWatcher iAreaWatcher : controllerSet)
-            if (iAreaWatcher.getArea().isApartOfArea(position))
-                iAreaWatcher.blockPlaced(event.getWorld(), event.getPos(), event.getState(), event.getPlayer());
+                iAreaWatcher.blockChanged(event.getWorld(), event.getPos(), event.getState());
     }
 }

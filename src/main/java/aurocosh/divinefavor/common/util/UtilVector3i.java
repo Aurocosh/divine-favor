@@ -15,7 +15,14 @@ public class UtilVector3i {
             Vector3i.SOUTH
     );
 
-    private static List<Vector3i> horizontalNeighbours = Arrays.asList(
+    private static List<Vector3i> horizontalDirect = Arrays.asList(
+            Vector3i.WEST,
+            Vector3i.EAST,
+            Vector3i.NORTH,
+            Vector3i.SOUTH
+    );
+
+    private static List<Vector3i> horizontalAll = Arrays.asList(
             Vector3i.WEST,
             Vector3i.EAST,
             Vector3i.NORTH,
@@ -30,8 +37,12 @@ public class UtilVector3i {
         return new ArrayList<>(directNeighbours);
     }
 
-    public static List<Vector3i> getNeighbourDirsHorizontal() {
-        return Collections.unmodifiableList(horizontalNeighbours);
+    public static List<Vector3i> getNeighbourAllHorizontal() {
+        return Collections.unmodifiableList(horizontalAll);
+    }
+
+    public static List<Vector3i> getNeighbourDirectHorizontal() {
+        return Collections.unmodifiableList(horizontalDirect);
     }
 
     public static Vector3i getRandomDirection() {
