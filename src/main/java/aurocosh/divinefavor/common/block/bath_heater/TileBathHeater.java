@@ -1,7 +1,13 @@
 package aurocosh.divinefavor.common.block.bath_heater;
 
+import aurocosh.divinefavor.common.area.IAreaWatcher;
+import aurocosh.divinefavor.common.area.WorldArea;
+import aurocosh.divinefavor.common.area.WorldAreaWatcher;
+import aurocosh.divinefavor.common.lib.math.Vector3i;
 import aurocosh.divinefavor.common.util.UtilCoordinates;
+import aurocosh.divinefavor.common.util.UtilList;
 import aurocosh.divinefavor.common.util.UtilRandom;
+import aurocosh.divinefavor.common.util.UtilSerialize;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
@@ -15,30 +21,39 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.ITickable;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Random;
+import java.util.Set;
 
-public class TileBathHeater extends TileEntity implements ITickable {
-    public static final int MAX_PROGRESS = 100;
+public class TileBathHeater extends TileEntity implements ITickable, IAreaWatcher {
     public static final int FUEL_SIZE = 1;
     public static final int INGREDIENTS_SIZE = 4;
+
+    private static final int MAX_PROGRESS = 100;
+    private static final int RADIUS_OF_EFFECT = 3;
 
     private static final String TAG_FUEL = "FUEL";
     private static final String TAG_MAX_BURN_TIME = "MaxBurnTime";
     private static final String TAG_CURRENT_BURN_TIME = "CurrentBurnTime";
     private static final String TAG_INGREDIENTS = "Ingredients";
     private static final String TAG_STATE_HEATER = "StateHeater";
+    private static final String TAG_WATER_POSITIONS = "WaterPositions";
 
     private int progress;
     private int clientProgress;
     private int maxBurnTime;
     private int currentBurnTime;
 
+    private final WorldArea area;
+    private final Set<Vector3i> waterPositions;
     private BathHeaterState state = BathHeaterState.INACTIVE;
 
     private ItemStackHandler fuelStackHandler = new ItemStackHandler(1) {
@@ -67,6 +82,20 @@ public class TileBathHeater extends TileEntity implements ITickable {
 
     public TileBathHeater() {
         super();
+        area = new WorldArea();
+        waterPositions = new HashSet<>();
+    }
+
+    @Override
+    public void onLoad() {
+        List<BlockPos> posList = UtilCoordinates.getBlocksInRadius(pos, RADIUS_OF_EFFECT, 0, RADIUS_OF_EFFECT);
+        area.addPositions(posList);
+        List<BlockPos> waterPosList = UtilList.filterList(posList, pos -> world.getBlockState(pos).getBlock() == Blocks.WATER);
+        waterPositions.clear();
+        waterPositions.addAll(Vector3i.convertPos(waterPosList));
+        IBlockState blockState = world.getBlockState(pos);
+        getWorld().notifyBlockUpdate(pos, blockState, blockState, 3);
+        WorldAreaWatcher.registerWatcher(this);
     }
 
     @Override
@@ -76,6 +105,8 @@ public class TileBathHeater extends TileEntity implements ITickable {
         currentBurnTime = compound.getInteger(TAG_CURRENT_BURN_TIME);
         progress = maxBurnTime == 0 ? 0 : currentBurnTime / maxBurnTime;
         state = BathHeaterState.VALUES[compound.getInteger(TAG_STATE_HEATER)];
+        waterPositions.clear();
+        waterPositions.addAll(UtilSerialize.deserializeVector3i(compound.getIntArray(TAG_WATER_POSITIONS)));
         if (compound.hasKey(TAG_FUEL))
             fuelStackHandler.deserializeNBT((NBTTagCompound) compound.getTag(TAG_FUEL));
         if (compound.hasKey(TAG_INGREDIENTS))
@@ -88,6 +119,7 @@ public class TileBathHeater extends TileEntity implements ITickable {
         compound.setInteger(TAG_MAX_BURN_TIME, maxBurnTime);
         compound.setInteger(TAG_CURRENT_BURN_TIME, currentBurnTime);
         compound.setInteger(TAG_STATE_HEATER, state.ordinal());
+        compound.setIntArray(TAG_WATER_POSITIONS, UtilSerialize.serializeVector3i(waterPositions));
         compound.setTag(TAG_FUEL, fuelStackHandler.serializeNBT());
         compound.setTag(TAG_INGREDIENTS, ingridientsStackHandler.serializeNBT());
         return compound;
@@ -120,6 +152,7 @@ public class TileBathHeater extends TileEntity implements ITickable {
     public NBTTagCompound getUpdateTag() {
         NBTTagCompound nbtTag = super.getUpdateTag();
         nbtTag.setInteger(TAG_STATE_HEATER, state.ordinal());
+        nbtTag.setIntArray(TAG_WATER_POSITIONS, UtilSerialize.serializeVector3i(waterPositions));
         return nbtTag;
     }
 
@@ -133,10 +166,14 @@ public class TileBathHeater extends TileEntity implements ITickable {
     public void onDataPacket(NetworkManager net, SPacketUpdateTileEntity packet) {
         int stateIndex = packet.getNbtCompound().getInteger(TAG_STATE_HEATER);
 
-        if (world.isRemote && stateIndex != state.ordinal()) {
+        if (!world.isRemote)
+            return;
+        if (stateIndex != state.ordinal()) {
             state = BathHeaterState.VALUES[stateIndex];
             world.markBlockRangeForRenderUpdate(pos, pos);
         }
+        waterPositions.clear();
+        waterPositions.addAll(UtilSerialize.deserializeVector3i(packet.getNbtCompound().getIntArray(TAG_WATER_POSITIONS)));
     }
 
     public boolean isBurning() {
@@ -159,20 +196,22 @@ public class TileBathHeater extends TileEntity implements ITickable {
 
     @Override
     public void update() {
-        if (!world.isRemote) {
+        if (!world.isRemote)
             burn();
-        }
-        else {
-            if(state == BathHeaterState.ACTIVE){
-                List<BlockPos> neighbours = UtilCoordinates.getNeighbours(pos, world, state -> state.getBlock() == Blocks.WATER);
-                for (BlockPos neighbour : neighbours) {
-                    world.spawnParticle(EnumParticleTypes.WATER_BUBBLE,  neighbour.getX() + (UtilRandom.random.nextDouble() ), neighbour.getY() + UtilRandom.random.nextDouble(), neighbour.getZ() + (UtilRandom.random.nextDouble()), 0.0D, 0.0D, 0.0D);
-                }
-            }
+        else
+            bubble();
+    }
+
+    private void bubble() {
+        if (state == BathHeaterState.INACTIVE)
+            return;
+        for (Vector3i waterPos : waterPositions) {
+            Random random = UtilRandom.random;
+            world.spawnParticle(EnumParticleTypes.WATER_BUBBLE, waterPos.x + random.nextDouble(), waterPos.y + random.nextDouble(), waterPos.z + random.nextDouble(), 0.0D, 0.0D, 0.0D);
         }
     }
 
-    public void burn() {
+    private void burn() {
         if (currentBurnTime > 0) {
             currentBurnTime--;
             progress = (int) ((currentBurnTime / (float) maxBurnTime) * 100);
@@ -211,5 +250,23 @@ public class TileBathHeater extends TileEntity implements ITickable {
 
     public void setClientProgress(int clientProgress) {
         this.clientProgress = clientProgress;
+    }
+
+    @Override
+    public WorldArea getArea() {
+        return area;
+    }
+
+    @Override
+    public void blockBroken(World world, BlockPos pos, IBlockState state, EntityPlayer player) {
+    }
+
+    @Override
+    public void blockPlaced(World world, BlockPos pos, IBlockState state, EntityPlayer player) {
+        Vector3i position = new Vector3i(pos);
+        if (state.getBlock() == Blocks.WATER)
+            waterPositions.add(position);
+        else
+            waterPositions.remove(position);
     }
 }

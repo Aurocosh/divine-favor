@@ -1,12 +1,23 @@
 package aurocosh.divinefavor.common.util;
 
 import aurocosh.divinefavor.common.lib.GlobalBlockPos;
+import aurocosh.divinefavor.common.lib.math.Vector3i;
 import net.minecraft.util.math.BlockPos;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 public class UtilSerialize {
+    public static int[] serializeVector3i(Collection<Vector3i> vectors) {
+        return serializeBlockPosArray(Vector3i.convert(vectors));
+    }
+
+    public static List<Vector3i> deserializeVector3i(int[] array) {
+        ArrayList<BlockPos> arrayList = deserializeBlockPosArray(array);
+        return Vector3i.convertPos(arrayList);
+    }
+
     public static int[] serializeBlockPosArray(List<BlockPos> posArrayList) {
         int[] array = new int[posArrayList.size() * 3];
         int i = 0;
