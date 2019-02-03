@@ -1,6 +1,7 @@
 package aurocosh.divinefavor.common.util;
 
 import aurocosh.divinefavor.common.lib.math.Vector3i;
+import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.EnumFacing;
@@ -196,10 +197,30 @@ public class UtilCoordinates {
         return Vector3i.convert(result);
     }
 
+    public static List<BlockPos> floodFill(List<Vector3i> start, List<Vector3i> expansionDirs, UtilList.Predicate<BlockPos> predicate, int limit) {
+        Queue<Vector3i> expansionFront = new ArrayDeque<>(start);
+        Set<Vector3i> explored = new HashSet<>(start);
+        List<Vector3i> result = new ArrayList<>();
+
+        while (expansionFront.size() > 0 && result.size() < limit) {
+            Vector3i nextPos = expansionFront.remove();
+            if (!predicate.select(nextPos.toBlockPos()))
+                continue;
+            result.add(nextPos);
+            for (Vector3i expansionDir : expansionDirs) {
+                Vector3i neighbour = nextPos.add(expansionDir);
+                if (!explored.contains(neighbour)){
+                    expansionFront.add(neighbour);
+                    explored.add(neighbour);
+                }
+            }
+        }
+        return Vector3i.convert(result);
+    }
 
     public static List<BlockPos> getNeighbours(BlockPos start, World world, UtilList.Predicate<IBlockState> predicate) {
         List<BlockPos> result = new ArrayList<>();
-        for (Vector3i neighbour : UtilVector3i.getNeighbourDirsHorizontal()) {
+        for (Vector3i neighbour : UtilVector3i.getNeighbourAllHorizontal()) {
             BlockPos pos = start.add(neighbour.x, neighbour.y, neighbour.z);
             IBlockState state = world.getBlockState(pos);
             if (predicate.select(state))

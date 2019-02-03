@@ -5,9 +5,10 @@ import aurocosh.divinefavor.common.area.WorldArea;
 import aurocosh.divinefavor.common.area.WorldAreaWatcher;
 import aurocosh.divinefavor.common.lib.math.Vector3i;
 import aurocosh.divinefavor.common.util.UtilCoordinates;
-import aurocosh.divinefavor.common.util.UtilList;
 import aurocosh.divinefavor.common.util.UtilRandom;
 import aurocosh.divinefavor.common.util.UtilSerialize;
+import aurocosh.divinefavor.common.util.UtilVector3i;
+import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
@@ -28,10 +29,7 @@ import net.minecraftforge.items.ItemStackHandler;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Random;
-import java.util.Set;
+import java.util.*;
 
 public class TileBathHeater extends TileEntity implements ITickable, IAreaWatcher {
     public static final int FUEL_SIZE = 1;
@@ -51,6 +49,8 @@ public class TileBathHeater extends TileEntity implements ITickable, IAreaWatche
     private int clientProgress;
     private int maxBurnTime;
     private int currentBurnTime;
+    private boolean refresh;
+    private boolean initialized;
 
     private final WorldArea area;
     private final Set<Vector3i> waterPositions;
@@ -82,20 +82,45 @@ public class TileBathHeater extends TileEntity implements ITickable, IAreaWatche
 
     public TileBathHeater() {
         super();
+        initialized = false;
+        refresh = true;
         area = new WorldArea();
         waterPositions = new HashSet<>();
     }
 
-    @Override
-    public void onLoad() {
-        List<BlockPos> posList = UtilCoordinates.getBlocksInRadius(pos, RADIUS_OF_EFFECT, 0, RADIUS_OF_EFFECT);
-        area.addPositions(posList);
-        List<BlockPos> waterPosList = UtilList.filterList(posList, pos -> world.getBlockState(pos).getBlock() == Blocks.WATER);
-        waterPositions.clear();
-        waterPositions.addAll(Vector3i.convertPos(waterPosList));
-        IBlockState blockState = world.getBlockState(pos);
-        getWorld().notifyBlockUpdate(pos, blockState, blockState, 3);
+    public void initialize() {
+        if (initialized)
+            return;
+        initialized = true;
+        area.addPositions(UtilCoordinates.getBlocksInRadius(pos, RADIUS_OF_EFFECT, 0, RADIUS_OF_EFFECT));
         WorldAreaWatcher.registerWatcher(this);
+    }
+
+    private void refreshWaterBlocks() {
+        if (!refresh)
+            return;
+        refresh = false;
+        waterPositions.clear();
+        Vector3i posVector = new Vector3i(pos);
+        List<Vector3i> start = new ArrayList<>();
+        start.add(posVector.add(Vector3i.EAST));
+        start.add(posVector.add(Vector3i.WEST));
+        start.add(posVector.add(Vector3i.NORTH));
+        start.add(posVector.add(Vector3i.SOUTH));
+
+        List<BlockPos> posList = UtilCoordinates.floodFill(start, UtilVector3i.getNeighbourDirectHorizontal(), this::isWater, 50);
+        for (BlockPos blockPos : posList) {
+            Vector3i vector = new Vector3i(blockPos);
+            if (area.isApartOfArea(vector))
+                waterPositions.add(vector);
+        }
+        IBlockState blockState = world.getBlockState(pos);
+        world.notifyBlockUpdate(pos, blockState, blockState, 3);
+    }
+
+    private boolean isWater(BlockPos pos){
+        Block block = world.getBlockState(pos).getBlock();
+        return block == Blocks.WATER || block == Blocks.FLOWING_WATER;
     }
 
     @Override
@@ -196,8 +221,11 @@ public class TileBathHeater extends TileEntity implements ITickable, IAreaWatche
 
     @Override
     public void update() {
-        if (!world.isRemote)
+        initialize();
+        if (!world.isRemote) {
+            refreshWaterBlocks();
             burn();
+        }
         else
             bubble();
     }
@@ -258,15 +286,7 @@ public class TileBathHeater extends TileEntity implements ITickable, IAreaWatche
     }
 
     @Override
-    public void blockBroken(World world, BlockPos pos, IBlockState state, EntityPlayer player) {
-    }
-
-    @Override
-    public void blockPlaced(World world, BlockPos pos, IBlockState state, EntityPlayer player) {
-        Vector3i position = new Vector3i(pos);
-        if (state.getBlock() == Blocks.WATER)
-            waterPositions.add(position);
-        else
-            waterPositions.remove(position);
+    public void blockChanged(World world, BlockPos changedPos, IBlockState state) {
+        refresh = true;
     }
 }
