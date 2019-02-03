@@ -3,6 +3,7 @@ package aurocosh.divinefavor.common.lib.math;
 import aurocosh.divinefavor.common.lib.interfaces.IDeepCopy;
 import net.minecraft.util.math.BlockPos;
 
+import java.util.Collection;
 import java.util.List;
 
 public class CubeCoordinates implements IDeepCopy<CubeCoordinates> {
@@ -89,7 +90,7 @@ public class CubeCoordinates implements IDeepCopy<CubeCoordinates> {
                 && lowerCorner.z <= coordinate.z && coordinate.z <= upperCorner.z;
     }
 
-    public static CubeCoordinates getBoundingBox(List<Vector3i> positions){
+    public static CubeCoordinates getBoundingBox(Collection<Vector3i> positions){
         if(positions.size() == 0)
             return new CubeCoordinates();
 

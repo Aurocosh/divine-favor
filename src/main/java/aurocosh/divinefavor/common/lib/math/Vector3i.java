@@ -1,13 +1,12 @@
 package aurocosh.divinefavor.common.lib.math;
 
 import aurocosh.divinefavor.common.lib.interfaces.IDeepCopy;
-import net.minecraft.entity.EntityLiving;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3i;
 
-import javax.swing.text.html.parser.Entity;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.List;
 
 public class Vector3i implements IDeepCopy<Vector3i> {
@@ -55,14 +54,14 @@ public class Vector3i implements IDeepCopy<Vector3i> {
         return new Vector3i(pos.getX(), pos.getY(), pos.getZ());
     }
 
-    public static List<BlockPos> convert(List<Vector3i> vectors) {
+    public static List<BlockPos> convert(Collection<Vector3i> vectors) {
         List<BlockPos> posList = new ArrayList<>(vectors.size());
         for (Vector3i vector : vectors)
             posList.add(vector.toBlockPos());
         return posList;
     }
 
-    public static List<Vector3i> convertPos(List<BlockPos> posList) {
+    public static List<Vector3i> convertPos(Collection<BlockPos> posList) {
         List<Vector3i> vectors = new ArrayList<>(posList.size());
         for (BlockPos pos : posList)
             vectors.add(Vector3i.convert(pos));

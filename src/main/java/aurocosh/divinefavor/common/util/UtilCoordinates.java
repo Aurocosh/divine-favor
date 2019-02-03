@@ -46,7 +46,7 @@ public class UtilCoordinates {
 
     public static List<BlockPos> getBlocksInSphere(BlockPos center, int radius) {
         List<BlockPos> sphereCoordinates = new ArrayList<>();
-        List<BlockPos> cubeCoordinates = getBlocksInCubeRelative(radius);
+        List<BlockPos> cubeCoordinates = getBlocksInRadius(new BlockPos(0, 0, 0), radius, radius, radius);
         int radiusSq = radius * radius;
 
         for (BlockPos cubeCoordinate : cubeCoordinates) {
@@ -59,8 +59,13 @@ public class UtilCoordinates {
         return shiftCoordinates(sphereCoordinates, center);
     }
 
-    public static List<BlockPos> getBlocksInCube(BlockPos center, int radius) {
-        return shiftCoordinates(getBlocksInCubeRelative(radius), center);
+    public static List<BlockPos> getBlocksInRadius(BlockPos center, int radiusX, int radiusY, int radiusZ) {
+        List<BlockPos> coordinates = new ArrayList<>();
+        for (int x = -radiusX; x <= radiusX; x++)
+            for (int y = -radiusY; y <= radiusY; y++)
+                for (int z = -radiusZ; z <= radiusZ; z++)
+                    coordinates.add(center.add(x, y, z));
+        return coordinates;
     }
 
     public static List<BlockPos> shiftCoordinates(List<BlockPos> coordinates, BlockPos pos) {
@@ -68,15 +73,6 @@ public class UtilCoordinates {
         for (BlockPos coordinate : coordinates)
             newCoordinates.add(coordinate.add(pos.getX(), pos.getY(), pos.getZ()));
         return newCoordinates;
-    }
-
-    public static List<BlockPos> getBlocksInCubeRelative(int radius) {
-        List<BlockPos> coordinates = new ArrayList<>();
-        for (int x = -radius; x <= radius; x++)
-            for (int y = -radius; y <= radius; y++)
-                for (int z = -radius; z <= radius; z++)
-                    coordinates.add(new BlockPos(x, y, z));
-        return coordinates;
     }
 
     public static BlockPos getRandomNeighbourSafe(BlockPos center, int xRadius, int yRadius, int zRadius) {
@@ -206,7 +202,7 @@ public class UtilCoordinates {
         for (Vector3i neighbour : UtilVector3i.getNeighbourDirsHorizontal()) {
             BlockPos pos = start.add(neighbour.x, neighbour.y, neighbour.z);
             IBlockState state = world.getBlockState(pos);
-            if(predicate.select(state))
+            if (predicate.select(state))
                 result.add(pos);
         }
         return result;
