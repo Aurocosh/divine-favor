@@ -24,6 +24,10 @@ public class DayClock {
     private static final LinkedList<DayTimeAlarm> alarms = new LinkedList<>();
     private static int nextId = 0;
 
+    public static int getTime(){
+        return DAY_TIME_COUNTER.getCurrentTicks();
+    }
+
     public static int addAlarm(int dayTimeInTicks, Runnable callback, boolean repeat) {
         DayTimeAlarm alarm = new DayTimeAlarmNormal(nextId++, dayTimeInTicks, repeat, callback);
         enqueueAlarm(alarm);

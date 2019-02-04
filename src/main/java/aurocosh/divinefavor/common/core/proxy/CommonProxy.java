@@ -8,6 +8,7 @@ import aurocosh.divinefavor.common.custom_data.world.capability.WorldDataDataHan
 import aurocosh.divinefavor.common.entity.ModEntities;
 import aurocosh.divinefavor.common.entity.common.ModGrudgeMobs;
 import aurocosh.divinefavor.common.favor.ModFavors;
+import aurocosh.divinefavor.common.item.bathing_blend.ModBathingBlends;
 import aurocosh.divinefavor.common.item.calling_stones.ModCallingStones;
 import aurocosh.divinefavor.common.item.common.ModItems;
 import aurocosh.divinefavor.common.item.contract.ModContracts;
@@ -22,6 +23,8 @@ import aurocosh.divinefavor.common.network.base.NetworkWrappedClientMessage;
 import aurocosh.divinefavor.common.network.base.NetworkWrappedServerMessage;
 import aurocosh.divinefavor.common.network.common.MessageRegister;
 import aurocosh.divinefavor.common.network.common.NetworkHandler;
+import aurocosh.divinefavor.common.potions.common.ModBlendEffects;
+import aurocosh.divinefavor.common.potions.common.ModBlessings;
 import aurocosh.divinefavor.common.potions.common.ModCurses;
 import aurocosh.divinefavor.common.potions.common.ModPotions;
 import aurocosh.divinefavor.common.receipes.ModRecipes;
@@ -44,9 +47,12 @@ public class CommonProxy {
 
         ModPotions.preInit();
         ModCurses.preInit();
+        ModBlendEffects.preInit();
+        ModBlessings.preInit();
         ModArrowTalismans.preInit();
         ModItems.preInit();
         ModSpellTalismans.preInit();
+        ModBathingBlends.preInit();
 
         ModSpirits.preInit();
         ModContracts.preInit();

@@ -12,6 +12,7 @@ public class PotionSkyfall extends ModPotion {
 
     public PotionSkyfall() {
         super("skyfall", false, 0x7FB8A4);
+        setIsCurse(true);
     }
 
     @Override

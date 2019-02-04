@@ -14,7 +14,6 @@ public class ModRegistries {
     public static RegistryAssistant<ModFavor> favors = new RegistryAssistant<>();
     public static RegistryAssistant<ModItem> items = new RegistryAssistant<>();
     public static RegistryAssistant<ModMultiBlock> multiBlocks = new RegistryAssistant<>();
-    public static RegistryAssistant<ModPotion> curses = new RegistryAssistant<>();
     public static RegistryAssistant<ModPotion> potions = new RegistryAssistant<>();
     public static RegistryAssistant<ModSpirit> spirits = new RegistryAssistant<>();
 }

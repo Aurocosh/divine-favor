@@ -201,7 +201,7 @@ public class TileMedium extends TickableTileEntity implements IMultiblockControl
 
         ItemCallingStone callingStone = (ItemCallingStone) stack.getItem();
         ModSpirit spirit = callingStone.spirit;
-        if (!spirit.isActive(world)) {
+        if (!spirit.isActive()) {
             setState(MediumState.VALID);
             return;
         }
@@ -275,7 +275,7 @@ public class TileMedium extends TickableTileEntity implements IMultiblockControl
     public void multiblockDamaged(EntityPlayer player, World world, BlockPos pos, IBlockState state) {
         MultiBlockInstanceAltar instance = multiBlockInstance;
         multiblockDeconstructed();
-        if (player != null && instance.spirit.isActive(world))
+        if (player != null && instance.spirit.isActive())
             instance.spirit.getPunishment().execute(player, world, pos, state, instance);
     }
 
@@ -318,7 +318,7 @@ public class TileMedium extends TickableTileEntity implements IMultiblockControl
 
         ItemCallingStone callingStone = (ItemCallingStone) stack.getItem();
         ModSpirit spirit = callingStone.spirit;
-        if (!spirit.isActive(world)) {
+        if (!spirit.isActive()) {
             setState(MediumState.VALID);
             return;
         }

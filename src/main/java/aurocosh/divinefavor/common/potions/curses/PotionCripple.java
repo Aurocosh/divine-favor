@@ -14,6 +14,7 @@ public class PotionCripple extends ModPotion {
 
     public PotionCripple() {
         super("cripple", true, 0x7FB8A4);
+        setIsCurse(true);
         registerPotionAttributeModifier(SharedMonsterAttributes.MOVEMENT_SPEED, "b171212d-7cd8-4a62-8665-b2258adf68b8", -SLOWNESS_FORCE, 2);
     }
 

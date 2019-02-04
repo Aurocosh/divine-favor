@@ -24,6 +24,7 @@ public class PotionSuffocatingFumes extends ModPotion {
 
     public PotionSuffocatingFumes() {
         super("suffocating_fumes", true, 0x7FB8A4);
+        setIsCurse(true);
     }
 
     @Override

@@ -18,6 +18,7 @@ public class PotionPetrification extends ModPotion {
 
     public PotionPetrification() {
         super("petrification", true, 0x7FB8A4);
+        setIsCurse(true);
     }
 
     @Override

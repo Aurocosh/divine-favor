@@ -22,6 +22,7 @@ public class PotionArmorCorrosion extends ModPotion {
 
     public PotionArmorCorrosion() {
         super("armor_corrosion", true, 0x7FB8A4);
+        setIsCurse(true);
     }
 
     @Override

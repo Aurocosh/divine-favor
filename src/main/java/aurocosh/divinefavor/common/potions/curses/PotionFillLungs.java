@@ -18,6 +18,7 @@ public class PotionFillLungs extends ModPotion {
 
     public PotionFillLungs() {
         super("fill_lungs", true, 0x7FB8A4);
+        setIsCurse(true);
     }
 
     @Override

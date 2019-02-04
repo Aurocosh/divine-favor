@@ -4,6 +4,7 @@ import aurocosh.divinefavor.common.constants.ConstMisc;
 import aurocosh.divinefavor.common.core.ResourceNamer;
 import aurocosh.divinefavor.common.custom_data.living.LivingData;
 import aurocosh.divinefavor.common.custom_data.living.data.curse.CurseData;
+import aurocosh.divinefavor.common.registry.ModRegistries;
 import aurocosh.divinefavor.common.util.UtilTextureRender;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
@@ -36,8 +37,9 @@ public abstract class ModPotion extends Potion {
         //potion.setIcon(potion.getIcon());
 
         ResourceLocation fullName = ResourceNamer.getFullName(name);
-        this.setPotionName("potion." + fullName.toString() + ".name");
+        setPotionName("potion." + fullName.toString() + ".name");
         setRegistryName(fullName);
+        ModRegistries.potions.register(this);
     }
 
     public void setIsCurse(boolean curse) {

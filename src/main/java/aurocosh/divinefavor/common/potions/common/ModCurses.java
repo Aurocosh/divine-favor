@@ -2,7 +2,6 @@ package aurocosh.divinefavor.common.potions.common;
 
 import aurocosh.divinefavor.common.potions.base.potion.ModPotion;
 import aurocosh.divinefavor.common.potions.curses.*;
-import aurocosh.divinefavor.common.registry.ModRegistries;
 
 public class ModCurses {
     public static ModPotion armor_corrosion;
@@ -20,21 +19,18 @@ public class ModCurses {
     public static ModPotion yummy_smell;
 
     public static void preInit() {
-        armor_corrosion = ModRegistries.curses.register(new PotionArmorCorrosion());
-        crawling_mist = ModRegistries.curses.register(new PotionCrawlingMist());
-        cripple = ModRegistries.curses.register(new PotionCripple());
-        fiery_mark = ModRegistries.curses.register(new PotionFieryMark());
-        fill_lungs = ModRegistries.curses.register(new PotionFillLungs());
-        hollow_leg = ModRegistries.curses.register(new PotionHollowLeg());
-        limp_leg = ModRegistries.curses.register(new PotionLimpLeg());
-        petrification = ModRegistries.curses.register(new PotionPetrification());
-        roots = ModRegistries.curses.register(new PotionRoots());
-        skyfall = ModRegistries.curses.register(new PotionSkyfall());
-        suffocating_fumes = ModRegistries.curses.register(new PotionSuffocatingFumes());
-        wind_leash = ModRegistries.curses.register(new PotionWindLeash());
-        yummy_smell = ModRegistries.curses.register(new PotionYummySmell());
-
-        for (ModPotion curse : ModRegistries.curses.getValues())
-            curse.setIsCurse(true);
+        armor_corrosion = new PotionArmorCorrosion();
+        crawling_mist = new PotionCrawlingMist();
+        cripple = new PotionCripple();
+        fiery_mark = new PotionFieryMark();
+        fill_lungs = new PotionFillLungs();
+        hollow_leg = new PotionHollowLeg();
+        limp_leg = new PotionLimpLeg();
+        petrification = new PotionPetrification();
+        roots = new PotionRoots();
+        skyfall = new PotionSkyfall();
+        suffocating_fumes = new PotionSuffocatingFumes();
+        wind_leash = new PotionWindLeash();
+        yummy_smell = new PotionYummySmell();
     }
 }
