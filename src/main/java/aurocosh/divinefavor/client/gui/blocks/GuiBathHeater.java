@@ -31,17 +31,16 @@ public class GuiBathHeater extends GuiContainer {
         mc.getTextureManager().bindTexture(texture);
         drawTexturedModalRect(guiLeft, guiTop, 0, 0, xSize, ySize);
 
-        if (bathHeater.isBurning())
-        {
+        if (bathHeater.isBurning()) {
             int k = bathHeater.getClientProgressBurning() * 13 / 100;
             this.drawTexturedModalRect(guiLeft + 81, guiTop + 42 + 12 - k, 176, 12 - k, 14, k + 1);
         }
 
 
-        if (bathHeater.isBurning())
-        {
-            int k = bathHeater.getClientProgressEffect() * 13 / 100;
-            this.drawTexturedModalRect(guiLeft + 81, guiTop + 42 + 12 - k, 176, 12 - k, 14, k + 1);
+        if (bathHeater.isBurning()) {
+            int k = bathHeater.getClientProgressEffect() * 30 / 100;
+            this.drawTexturedModalRect(guiLeft + 47 + 29 - k, guiTop + 25, 176 + 29 - k, 28, k + 1, 12);
+            this.drawTexturedModalRect(guiLeft + 100, guiTop + 25, 176, 15, k + 1, 12);
         }
     }
 
@@ -49,6 +48,6 @@ public class GuiBathHeater extends GuiContainer {
     public void drawScreen(int mouseX, int mouseY, float partialTicks) {
         drawDefaultBackground();
         super.drawScreen(mouseX, mouseY, partialTicks);
-        renderHoveredToolTip(mouseX,mouseY);
+        renderHoveredToolTip(mouseX, mouseY);
     }
 }
