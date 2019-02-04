@@ -17,6 +17,7 @@ public class PotionWindLeash extends ModPotion {
 
     public PotionWindLeash() {
         super("wind_leash", false, 0x7FB8A4);
+        setIsCurse(true);
     }
 
     @Override

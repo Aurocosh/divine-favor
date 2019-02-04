@@ -11,7 +11,8 @@ import net.minecraftforge.items.SlotItemHandler;
 import javax.annotation.Nonnull;
 
 public class ContainerBathHeater extends GenericContainer {
-    private static final int PROGRESS_ID = 0;
+    private static final int PROGRESS_BURNING_ID = 0;
+    private static final int PROGRESS_EFFECT_ID = 1;
 
     private TileBathHeater bathHeater;
 
@@ -19,11 +20,8 @@ public class ContainerBathHeater extends GenericContainer {
         super(TileBathHeater.FUEL_SIZE + TileBathHeater.INGREDIENTS_SIZE);
         this.bathHeater = bathHeater;
 
-        IItemHandler ingredientsHandler = this.bathHeater.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, EnumFacing.UP);
-        this.addSlotToContainer(new SlotItemHandler(ingredientsHandler, 0, 40, 37));
-        this.addSlotToContainer(new SlotItemHandler(ingredientsHandler, 1, 60, 17));
-        this.addSlotToContainer(new SlotItemHandler(ingredientsHandler, 2, 100, 17));
-        this.addSlotToContainer(new SlotItemHandler(ingredientsHandler, 3, 120, 37));
+        IItemHandler blendHandler = this.bathHeater.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, EnumFacing.UP);
+        this.addSlotToContainer(new SlotItemHandler(blendHandler, 0, 80, 23));
 
         IItemHandler fuelHandler = this.bathHeater.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, EnumFacing.DOWN);
         this.addSlotToContainer(new SlotItemHandler(fuelHandler, 0, 80, 58));
@@ -40,16 +38,23 @@ public class ContainerBathHeater extends GenericContainer {
     @Override
     public void detectAndSendChanges() {
         super.detectAndSendChanges();
-        if(bathHeater.getProgress() != bathHeater.getClientProgress()) {
-            bathHeater.setClientProgress(bathHeater.getProgress());
+        if(bathHeater.getProgressBurning() != bathHeater.getClientProgressBurning()) {
+            bathHeater.setClientProgressBurning(bathHeater.getProgressBurning());
             for (IContainerListener listener : listeners)
-                listener.sendWindowProperty(this, PROGRESS_ID, bathHeater.getProgress());
+                listener.sendWindowProperty(this, PROGRESS_BURNING_ID, bathHeater.getProgressBurning());
+        }
+        if(bathHeater.getProgressEffect() != bathHeater.getClientProgressEffect()) {
+            bathHeater.setClientProgressEffect(bathHeater.getProgressEffect());
+            for (IContainerListener listener : listeners)
+                listener.sendWindowProperty(this, PROGRESS_EFFECT_ID, bathHeater.getProgressEffect());
         }
     }
 
     @Override
     public void updateProgressBar(int id, int data) {
-        if (id == PROGRESS_ID)
-            bathHeater.setClientProgress(data);
+        if (id == PROGRESS_BURNING_ID)
+            bathHeater.setClientProgressBurning(data);
+        else if (id == PROGRESS_EFFECT_ID)
+            bathHeater.setClientProgressEffect(data);
     }
 }

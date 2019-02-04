@@ -1,5 +1,6 @@
 package aurocosh.divinefavor.common.custom_data.player.capability;
 
+import aurocosh.divinefavor.common.custom_data.player.data.burnt_smell.BurntSmellData;
 import aurocosh.divinefavor.common.custom_data.player.data.corrosion.ArmorCorrosionData;
 import aurocosh.divinefavor.common.custom_data.player.data.crawling_mist.CrawlingMistData;
 import aurocosh.divinefavor.common.custom_data.player.data.escape_plan.EscapePlanData;
@@ -10,36 +11,46 @@ import aurocosh.divinefavor.common.custom_data.player.data.interaction_handler.I
 import aurocosh.divinefavor.common.custom_data.player.data.molten_skin.MoltenSkinData;
 import aurocosh.divinefavor.common.custom_data.player.data.pearl_crumbs.PearlCrumbsData;
 import aurocosh.divinefavor.common.custom_data.player.data.favor.FavorData;
+import aurocosh.divinefavor.common.custom_data.player.data.scorching_presence.ScorchingPresenceData;
 
 // The default implementation of the capability. Holds all the logic.
 public class DefaultPlayerDataHandler implements IPlayerDataHandler {
     private final ArmorCorrosionData armorCorrosionData;
+    private final BurntSmellData burntSmellData;
     private final CrawlingMistData crawlingMistData;
     private final EscapePlanData escapePlanData;
+    private final FavorData favorData;
     private final FocusedFuryData focusedFuryData;
     private final GillsData gillsData;
     private final GrudgeData grudgeData;
     private final InteractionData interactionData;
     private final MoltenSkinData moltenSkinData;
     private final PearlCrumbsData pearlCrumbsData;
-    private final FavorData favorData;
+    private final ScorchingPresenceData scorchingPresenceData;
 
     public DefaultPlayerDataHandler() {
         armorCorrosionData = new ArmorCorrosionData();
+        burntSmellData = new BurntSmellData();
         crawlingMistData = new CrawlingMistData();
         escapePlanData = new EscapePlanData();
+        favorData = new FavorData();
         focusedFuryData = new FocusedFuryData();
         gillsData = new GillsData();
         grudgeData = new GrudgeData();
         interactionData = new InteractionData();
         moltenSkinData = new MoltenSkinData();
         pearlCrumbsData = new PearlCrumbsData();
-        favorData = new FavorData();
+        scorchingPresenceData = new ScorchingPresenceData();
     }
 
     @Override
     public ArmorCorrosionData getArmorCorrosionData() {
         return armorCorrosionData;
+    }
+
+    @Override
+    public BurntSmellData getBurntSmellData() {
+        return burntSmellData;
     }
 
     @Override
@@ -80,6 +91,11 @@ public class DefaultPlayerDataHandler implements IPlayerDataHandler {
     @Override
     public PearlCrumbsData getPearlCrumbsData() {
         return pearlCrumbsData;
+    }
+
+    @Override
+    public ScorchingPresenceData getScorchingPresenceData() {
+        return scorchingPresenceData;
     }
 
     @Override

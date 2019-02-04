@@ -33,6 +33,7 @@ public class PotionCrawlingMist extends ModPotion {
 
     public PotionCrawlingMist() {
         super("crawling_mist", true, 0x7FB8A4);
+        setIsCurse(true);
     }
 
     @Override

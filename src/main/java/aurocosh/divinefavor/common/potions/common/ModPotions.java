@@ -1,8 +1,10 @@
 package aurocosh.divinefavor.common.potions.common;
 
-import aurocosh.divinefavor.common.potions.base.potion.*;
+import aurocosh.divinefavor.common.potions.base.potion.ModPotion;
+import aurocosh.divinefavor.common.potions.base.potion.ModPotionCharge;
+import aurocosh.divinefavor.common.potions.base.potion.ModPotionToggle;
+import aurocosh.divinefavor.common.potions.base.potion.ModPotionToggleLimited;
 import aurocosh.divinefavor.common.potions.potions.*;
-import aurocosh.divinefavor.common.registry.ModRegistries;
 import net.minecraft.init.Blocks;
 
 public class ModPotions {
@@ -34,31 +36,31 @@ public class ModPotions {
     public static ModPotionToggleLimited wooden_punch;
 
     public static void preInit() {
-        armor_of_pacifist = ModRegistries.potions.register(new PotionArmorOfPacifist());
-        butchering_strike = ModRegistries.potions.register(new PotionButcheringStrike());
-        consuming_fury = ModRegistries.potions.register(new PotionConsumingFury());
-        crushing_palm = ModRegistries.potions.register(new PotionCrushingPalm());
-        crystalline_road = ModRegistries.potions.register(new PotionLiquidWalking("crystalline_road", Blocks.WATER));
-        empower_axe = ModRegistries.potions.register(new PotionEmpowerAxe());
-        empower_pickaxe = ModRegistries.potions.register(new PotionEmpowerPickaxe());
-        escape_plan = ModRegistries.potions.register(new PotionEscapePlan());
-        fall_negation = ModRegistries.potions.register(new PotionFallNegation());
-        fins = ModRegistries.potions.register(new PotionFins());
-        focused_fury = ModRegistries.potions.register(new PotionFocusedFury());
-        gills = ModRegistries.potions.register(new PotionGills());
-        ground_flow = ModRegistries.potions.register(new PotionGroundFlow());
-        grudge = ModRegistries.potions.register(new PotionGrudge());
-        miners_focus = ModRegistries.potions.register(new PotionMinersFocus());
-        mist_blade = ModRegistries.potions.register(new PotionMistBlade());
-        molten_skin = ModRegistries.potions.register(new PotionMoltenSkin());
-        night_eye = ModRegistries.potions.register(new PotionNightEye());
-        obsidian_road = ModRegistries.potions.register(new PotionLiquidWalking("obsidian_road", Blocks.LAVA));
-        spider_might = ModRegistries.potions.register(new PotionSpiderMight());
-        starvation = ModRegistries.potions.register(new PotionStarvation());
-        stone_fever = ModRegistries.potions.register(new PotionStoneFever());
-        toadic_jump = ModRegistries.potions.register(new PotionToadicJump());
-        wild_charge = ModRegistries.potions.register(new PotionWildCharge());
-        wild_sprint = ModRegistries.potions.register(new PotionWildSprint());
-        wooden_punch = ModRegistries.potions.register(new PotionWoodenPunch());
+        armor_of_pacifist = new PotionArmorOfPacifist();
+        butchering_strike = new PotionButcheringStrike();
+        consuming_fury = new PotionConsumingFury();
+        crushing_palm = new PotionCrushingPalm();
+        crystalline_road = new PotionLiquidWalking("crystalline_road", Blocks.WATER);
+        empower_axe = new PotionEmpowerAxe();
+        empower_pickaxe = new PotionEmpowerPickaxe();
+        escape_plan = new PotionEscapePlan();
+        fall_negation = new PotionFallNegation();
+        fins = new PotionFins();
+        focused_fury = new PotionFocusedFury();
+        gills = new PotionGills();
+        ground_flow = new PotionGroundFlow();
+        grudge = new PotionGrudge();
+        miners_focus = new PotionMinersFocus();
+        mist_blade = new PotionMistBlade();
+        molten_skin = new PotionMoltenSkin();
+        night_eye = new PotionNightEye();
+        obsidian_road = new PotionLiquidWalking("obsidian_road", Blocks.LAVA);
+        spider_might = new PotionSpiderMight();
+        starvation = new PotionStarvation();
+        stone_fever = new PotionStoneFever();
+        toadic_jump = new PotionToadicJump();
+        wild_charge = new PotionWildCharge();
+        wild_sprint = new PotionWildSprint();
+        wooden_punch = new PotionWoodenPunch();
     }
 }

@@ -14,6 +14,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 public class PotionLimpLeg extends ModPotion {
     public PotionLimpLeg() {
         super("limp_leg", true, 0x7FB8A4);
+        setIsCurse(true);
     }
 
     @Override

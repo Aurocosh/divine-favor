@@ -23,6 +23,7 @@ public class PotionYummySmell extends ModPotion {
 
     public PotionYummySmell() {
         super("yummy_smell", false, 0x7FB8A4);
+        setIsCurse(true);
     }
 
     @Override

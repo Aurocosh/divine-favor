@@ -21,6 +21,7 @@ public class PotionHollowLeg extends ModPotion {
 
     public PotionHollowLeg() {
         super("hollow_leg", true, 0x7FB8A4);
+        setIsCurse(true);
     }
 
     @Override

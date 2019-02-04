@@ -3,13 +3,13 @@ package aurocosh.divinefavor.common.block.bath_heater;
 import aurocosh.divinefavor.common.area.IAreaWatcher;
 import aurocosh.divinefavor.common.area.WorldArea;
 import aurocosh.divinefavor.common.area.WorldAreaWatcher;
+import aurocosh.divinefavor.common.item.bathing_blend.base.ItemBathingBlend;
+import aurocosh.divinefavor.common.lib.TickCounter;
 import aurocosh.divinefavor.common.lib.math.Vector3i;
-import aurocosh.divinefavor.common.util.UtilCoordinates;
-import aurocosh.divinefavor.common.util.UtilRandom;
-import aurocosh.divinefavor.common.util.UtilSerialize;
-import aurocosh.divinefavor.common.util.UtilVector3i;
+import aurocosh.divinefavor.common.util.*;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
@@ -21,6 +21,7 @@ import net.minecraft.tileentity.TileEntityFurnace;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.ITickable;
+import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.common.capabilities.Capability;
@@ -33,10 +34,11 @@ import java.util.*;
 
 public class TileBathHeater extends TileEntity implements ITickable, IAreaWatcher {
     public static final int FUEL_SIZE = 1;
-    public static final int INGREDIENTS_SIZE = 4;
+    public static final int INGREDIENTS_SIZE = 1;
 
     private static final int MAX_PROGRESS = 100;
     private static final int RADIUS_OF_EFFECT = 3;
+    private static final int EFFECT_TICK_RATE = UtilTick.secondsToTicks(1);
 
     private static final String TAG_FUEL = "FUEL";
     private static final String TAG_MAX_BURN_TIME = "MaxBurnTime";
@@ -45,14 +47,23 @@ public class TileBathHeater extends TileEntity implements ITickable, IAreaWatche
     private static final String TAG_STATE_HEATER = "StateHeater";
     private static final String TAG_WATER_POSITIONS = "WaterPositions";
 
-    private int progress;
-    private int clientProgress;
+    private int progressBurning;
+    private int clientProgressBurning;
     private int maxBurnTime;
     private int currentBurnTime;
+
+    private int progressEffect;
+    private int clientProgressEffect;
+    private int maxEffectTime;
+    private int currentEffectTime;
+    private float currentPotency;
+    private ItemBathingBlend activeBlend;
+
     private boolean refresh;
     private boolean initialized;
 
     private final WorldArea area;
+    private final TickCounter tickCounter;
     private final Set<Vector3i> waterPositions;
     private BathHeaterState state = BathHeaterState.INACTIVE;
 
@@ -68,10 +79,10 @@ public class TileBathHeater extends TileEntity implements ITickable, IAreaWatche
         }
     };
 
-    private ItemStackHandler ingridientsStackHandler = new ItemStackHandler(4) {
+    private ItemStackHandler blendStackHandler = new ItemStackHandler(1) {
         @Override
         public boolean isItemValid(int slot, @Nonnull ItemStack stack) {
-            return true;
+            return stack.getItem() instanceof ItemBathingBlend;
         }
 
         @Override
@@ -82,10 +93,22 @@ public class TileBathHeater extends TileEntity implements ITickable, IAreaWatche
 
     public TileBathHeater() {
         super();
+
+        progressBurning = 0;
+        clientProgressBurning = 0;
+        maxBurnTime = 0;
+        currentBurnTime = 0;
+
+        maxEffectTime = 0;
+        currentEffectTime = 0;
+        currentPotency = 0;
+        activeBlend = null;
+
         initialized = false;
         refresh = true;
         area = new WorldArea();
         waterPositions = new HashSet<>();
+        tickCounter = new TickCounter(EFFECT_TICK_RATE);
     }
 
     public void initialize() {
@@ -118,7 +141,7 @@ public class TileBathHeater extends TileEntity implements ITickable, IAreaWatche
         world.notifyBlockUpdate(pos, blockState, blockState, 3);
     }
 
-    private boolean isWater(BlockPos pos){
+    private boolean isWater(BlockPos pos) {
         Block block = world.getBlockState(pos).getBlock();
         return block == Blocks.WATER || block == Blocks.FLOWING_WATER;
     }
@@ -128,14 +151,14 @@ public class TileBathHeater extends TileEntity implements ITickable, IAreaWatche
         super.readFromNBT(compound);
         maxBurnTime = compound.getInteger(TAG_MAX_BURN_TIME);
         currentBurnTime = compound.getInteger(TAG_CURRENT_BURN_TIME);
-        progress = maxBurnTime == 0 ? 0 : currentBurnTime / maxBurnTime;
+        progressBurning = maxBurnTime == 0 ? 0 : currentBurnTime / maxBurnTime;
         state = BathHeaterState.VALUES[compound.getInteger(TAG_STATE_HEATER)];
         waterPositions.clear();
         waterPositions.addAll(UtilSerialize.deserializeVector3i(compound.getIntArray(TAG_WATER_POSITIONS)));
         if (compound.hasKey(TAG_FUEL))
             fuelStackHandler.deserializeNBT((NBTTagCompound) compound.getTag(TAG_FUEL));
         if (compound.hasKey(TAG_INGREDIENTS))
-            ingridientsStackHandler.deserializeNBT((NBTTagCompound) compound.getTag(TAG_INGREDIENTS));
+            blendStackHandler.deserializeNBT((NBTTagCompound) compound.getTag(TAG_INGREDIENTS));
     }
 
     @Override
@@ -146,7 +169,7 @@ public class TileBathHeater extends TileEntity implements ITickable, IAreaWatche
         compound.setInteger(TAG_STATE_HEATER, state.ordinal());
         compound.setIntArray(TAG_WATER_POSITIONS, UtilSerialize.serializeVector3i(waterPositions));
         compound.setTag(TAG_FUEL, fuelStackHandler.serializeNBT());
-        compound.setTag(TAG_INGREDIENTS, ingridientsStackHandler.serializeNBT());
+        compound.setTag(TAG_INGREDIENTS, blendStackHandler.serializeNBT());
         return compound;
     }
 
@@ -166,7 +189,7 @@ public class TileBathHeater extends TileEntity implements ITickable, IAreaWatche
     public <T> T getCapability(Capability<T> capability, EnumFacing facing) {
         if (capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) {
             if (facing == EnumFacing.UP)
-                return CapabilityItemHandler.ITEM_HANDLER_CAPABILITY.cast(ingridientsStackHandler);
+                return CapabilityItemHandler.ITEM_HANDLER_CAPABILITY.cast(blendStackHandler);
             else if (facing == EnumFacing.DOWN)
                 return CapabilityItemHandler.ITEM_HANDLER_CAPABILITY.cast(fuelStackHandler);
         }
@@ -225,6 +248,7 @@ public class TileBathHeater extends TileEntity implements ITickable, IAreaWatche
         if (!world.isRemote) {
             refreshWaterBlocks();
             burn();
+            applyEffect();
         }
         else
             bubble();
@@ -242,43 +266,84 @@ public class TileBathHeater extends TileEntity implements ITickable, IAreaWatche
     private void burn() {
         if (currentBurnTime > 0) {
             currentBurnTime--;
-            progress = (int) ((currentBurnTime / (float) maxBurnTime) * 100);
+            progressBurning = (int) ((currentBurnTime / (float) maxBurnTime) * 100);
             setState(BathHeaterState.ACTIVE);
             markDirty();
             return;
         }
-        if (currentBurnTime == 0) {
+        else if (currentBurnTime == 0) {
             ItemStack stack = fuelStackHandler.getStackInSlot(0);
             if (!stack.isEmpty()) {
                 maxBurnTime = TileEntityFurnace.getItemBurnTime(stack);
                 currentBurnTime = maxBurnTime;
-                progress = MAX_PROGRESS;
+                progressBurning = MAX_PROGRESS;
                 stack.shrink(1);
                 setState(BathHeaterState.ACTIVE);
                 markDirty();
                 return;
             }
         }
-        progress = 0;
+        progressBurning = 0;
         setState(BathHeaterState.INACTIVE);
     }
 
+    private void applyEffect() {
+        if(!isBurning())
+            return;
+        if (!tickCounter.tick())
+            return;
+        if (currentEffectTime <= 0) {
+            ItemStack stack = blendStackHandler.getStackInSlot(0);
+            if (!stack.isEmpty()) {
+                activeBlend = (ItemBathingBlend) stack.getItem();
+                maxEffectTime = ItemBathingBlend.getDuration(stack);
+                currentEffectTime = maxEffectTime;
+                currentPotency = ItemBathingBlend.getPotency(stack);
+                progressEffect = 100;
+                stack.shrink(1);
+                markDirty();
+            }
+        }
+        else {
+            currentEffectTime--;
+            progressEffect = (int) ((currentEffectTime / (float) maxEffectTime) * 100);
+            markDirty();
 
-    public int getProgress() {
-        return progress;
+            if (UtilRandom.rollDice(currentPotency)) {
+                AxisAlignedBB axis = new AxisAlignedBB(pos.getX() - RADIUS_OF_EFFECT, pos.getY() + 1, pos.getZ() - RADIUS_OF_EFFECT, pos.getX() + RADIUS_OF_EFFECT, pos.getY(), pos.getZ() + RADIUS_OF_EFFECT);
+                List<EntityLivingBase> list = world.getEntitiesWithinAABB(EntityLivingBase.class, axis, (EntityLivingBase e) -> e != null && e.isInWater());
+
+                for (EntityLivingBase livingBase : list)
+                    activeBlend.applyEffect(livingBase);
+            }
+        }
     }
 
-    public void setProgress(int progress) {
-        this.progress = progress;
+    public int getProgressBurning() {
+        return progressBurning;
     }
 
-    public int getClientProgress() {
-        return clientProgress;
+    public int getClientProgressBurning() {
+        return clientProgressBurning;
     }
 
-    public void setClientProgress(int clientProgress) {
-        this.clientProgress = clientProgress;
+    public void setClientProgressBurning(int clientProgressBurning) {
+        this.clientProgressBurning = clientProgressBurning;
     }
+
+
+    public int getProgressEffect() {
+        return progressEffect;
+    }
+
+    public int getClientProgressEffect() {
+        return clientProgressEffect;
+    }
+
+    public void setClientProgressEffect(int clientProgressEffect) {
+        this.clientProgressEffect = clientProgressEffect;
+    }
+
 
     @Override
     public WorldArea getArea() {

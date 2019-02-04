@@ -21,6 +21,7 @@ public class PotionFieryMark extends ModPotion {
 
     public PotionFieryMark() {
         super("fiery_mark", true, 0x7FB8A4);
+        setIsCurse(true);
     }
 
     @SubscribeEvent(priority = EventPriority.LOWEST)

@@ -16,6 +16,7 @@ public class PotionRoots extends ModPotion {
 
     public PotionRoots() {
         super("roots", true, 0x7FB8A4);
+        setIsCurse(true);
         registerPotionAttributeModifier(SharedMonsterAttributes.MOVEMENT_SPEED, "817e7bc4-8ad5-4323-9131-aa71236a1b83", -SLOWNESS_FORCE, 2);
     }
 

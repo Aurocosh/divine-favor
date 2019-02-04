@@ -38,8 +38,8 @@ public class WorldAreaWatcher {
         if (controllerSet == null)
             return;
         Vector3i position = new Vector3i(event.getPos());
-        for (IAreaWatcher iAreaWatcher : controllerSet)
-            if (iAreaWatcher.getArea().isApartOfArea(position))
-                iAreaWatcher.blockChanged(event.getWorld(), event.getPos(), event.getState());
+        for (IAreaWatcher areaWatcher : controllerSet)
+            if (areaWatcher.getArea().isApartOfArea(position))
+                areaWatcher.blockChanged(event.getWorld(), event.getPos(), event.getState());
     }
 }

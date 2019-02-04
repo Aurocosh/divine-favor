@@ -33,7 +33,14 @@ public class GuiBathHeater extends GuiContainer {
 
         if (bathHeater.isBurning())
         {
-            int k = bathHeater.getClientProgress() * 13 / 100;
+            int k = bathHeater.getClientProgressBurning() * 13 / 100;
+            this.drawTexturedModalRect(guiLeft + 81, guiTop + 42 + 12 - k, 176, 12 - k, 14, k + 1);
+        }
+
+
+        if (bathHeater.isBurning())
+        {
+            int k = bathHeater.getClientProgressEffect() * 13 / 100;
             this.drawTexturedModalRect(guiLeft + 81, guiTop + 42 + 12 - k, 176, 12 - k, 14, k + 1);
         }
     }

@@ -1,0 +1,44 @@
+package aurocosh.divinefavor.common.item.bathing_blend.base;
+
+import aurocosh.divinefavor.common.core.creative_tabs.DivineFavorCreativeTab;
+import aurocosh.divinefavor.common.item.base.ModItem;
+import aurocosh.divinefavor.common.util.UtilNbt;
+import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.item.EnumRarity;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.NonNullList;
+
+public abstract class ItemBathingBlend extends ModItem {
+    protected final static String TAG_POTENCY = "potency";
+    protected final static String TAG_DURATION = "duration";
+
+    public ItemBathingBlend(String name) {
+        super("blend_" + name, "blends/" + name);
+        setCreativeTab(DivineFavorCreativeTab.INSTANCE);
+    }
+
+    public static int getDuration(ItemStack stack) {
+        return UtilNbt.getNbt(stack).getInteger(TAG_DURATION);
+    }
+
+    public static float getPotency(ItemStack stack) {
+        return UtilNbt.getNbt(stack).getInteger(TAG_POTENCY);
+    }
+
+    public abstract void applyEffect(EntityLivingBase livingBase);
+
+    @Override
+    public EnumRarity getRarity(ItemStack stack) {
+        return EnumRarity.RARE;
+    }
+
+    public abstract ItemStack makeStack(int count);
+
+    @Override
+    public void getSubItems(CreativeTabs tab, NonNullList<ItemStack> items) {
+        if (!isInCreativeTab(tab))
+            return;
+        items.add(makeStack(1));
+    }
+}

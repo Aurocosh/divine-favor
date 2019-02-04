@@ -13,7 +13,6 @@ import aurocosh.divinefavor.common.registry.mappers.ModMappers;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.util.text.TextComponentString;
-import net.minecraft.world.World;
 import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.registries.IForgeRegistryEntry;
 
@@ -52,8 +51,8 @@ public class ModSpirit extends IForgeRegistryEntry.Impl<ModSpirit> implements II
         return punishment;
     }
 
-    public boolean isActive(World world) {
-        int timeOfDay = (int) (world.getWorldTime() % 24000);
+    public boolean isActive() {
+        int timeOfDay = DayClock.getTime();
         for (TimePeriod period : activityPeriods)
             if (period.isDayTimeInRange(timeOfDay))
                 return true;
