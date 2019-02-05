@@ -1,8 +1,8 @@
-package aurocosh.divinefavor.client.render.entity;
+package aurocosh.divinefavor.client.render.entity.minion;
 
 import aurocosh.divinefavor.client.models.ModelMinionZombie;
 import aurocosh.divinefavor.common.constants.ConstResources;
-import aurocosh.divinefavor.common.entity.minions.MinionZombie;
+import aurocosh.divinefavor.common.entity.minions.MinionHusk;
 import net.minecraft.client.renderer.entity.RenderBiped;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.client.renderer.entity.layers.LayerBipedArmor;
@@ -11,10 +11,10 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
-public class RenderMinionZombie extends RenderBiped<MinionZombie> {
-    private static final ResourceLocation ZOMBIE_TEXTURES = new ResourceLocation(ConstResources.TEX_ZOMBIE);
+public class RenderMinionHusk extends RenderBiped<MinionHusk> {
+    private static final ResourceLocation HUSK_TEXTURES = new ResourceLocation(ConstResources.TEX_HUSK_ZOMBIE);
 
-    public RenderMinionZombie(RenderManager renderManagerIn) {
+    public RenderMinionHusk(RenderManager renderManagerIn) {
         super(renderManagerIn, new ModelMinionZombie(), 0.5F);
         LayerBipedArmor layerbipedarmor = new LayerBipedArmor(this) {
             protected void initArmor() {
@@ -26,7 +26,7 @@ public class RenderMinionZombie extends RenderBiped<MinionZombie> {
     }
 
     @Override
-    protected ResourceLocation getEntityTexture(MinionZombie entity) {
-        return ZOMBIE_TEXTURES;
+    protected ResourceLocation getEntityTexture(MinionHusk entity) {
+        return HUSK_TEXTURES;
     }
 }

@@ -9,6 +9,7 @@ public class ConstResources {
     public static final String PREFIX_MISC = PREFIX_MOD + "textures/misc/";
     public static final String PREFIX_PROJECTILES = PREFIX_MOD + "textures/entity/projectiles/";
     public static final String PREFIX_MINIONS = PREFIX_MOD + "textures/entity/minions/";
+    public static final String PREFIX_MOBS = PREFIX_MOD + "textures/entity/mobs/";
     public static final String PREFIX_FAVOR_ICONS = PREFIX_MOD + "textures/favor_icons/";
 
     public static final String GUI_BATH_HEATER = PREFIX_GUI + "bath_heater.png";
@@ -32,6 +33,8 @@ public class ConstResources {
     public static final String TEX_ZOMBIE = PREFIX_MINIONS + "minion_zombie/minion_zombie.png";
     public static final String TEX_HUSK_ZOMBIE = PREFIX_MINIONS + "minion_zombie/minion_husk.png";
     public static final String TEX_ZOMBIE_VILLAGER = PREFIX_MINIONS + "minion_zombie_villager/minion_zombie_villager.png";
+
+    public static final String TEX_DIREWOLF = PREFIX_MOBS + "direwolf.png";
 
     public static final String TEX_SKELETON = PREFIX_MINIONS + "skeletons/skeleton.png";
     public static final String TEX_STRAY = PREFIX_MINIONS + "skeletons/stray.png";

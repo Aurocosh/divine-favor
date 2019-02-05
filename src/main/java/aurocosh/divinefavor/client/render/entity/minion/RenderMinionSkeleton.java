@@ -1,4 +1,4 @@
-package aurocosh.divinefavor.client.render.entity;
+package aurocosh.divinefavor.client.render.entity.minion;
 
 import aurocosh.divinefavor.common.constants.ConstResources;
 import net.minecraft.client.model.ModelSkeleton;
