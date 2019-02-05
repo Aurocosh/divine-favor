@@ -7,6 +7,7 @@ import aurocosh.divinefavor.common.custom_data.player.data.crawling_mist.Crawlin
 import aurocosh.divinefavor.common.custom_data.player.data.escape_plan.EscapePlanDataSerializer;
 import aurocosh.divinefavor.common.custom_data.player.data.favor.FavorDataSerializer;
 import aurocosh.divinefavor.common.custom_data.player.data.focused_fury.FocusedFuryDataSerializer;
+import aurocosh.divinefavor.common.custom_data.player.data.frosty_aura.FrostyAuraDataSerializer;
 import aurocosh.divinefavor.common.custom_data.player.data.gills.GillsDataSerializer;
 import aurocosh.divinefavor.common.custom_data.player.data.grudge.GrudgeDataSerializer;
 import aurocosh.divinefavor.common.custom_data.player.data.interaction_handler.InteractionDataSerializer;
@@ -28,6 +29,7 @@ public class PlayerDataStorage implements Capability.IStorage<IPlayerDataHandler
     private static final EscapePlanDataSerializer ESCAPE_PLAN_DATA_SERIALIZER = new EscapePlanDataSerializer();
     private static final FavorDataSerializer FAVOR_DATA_SERIALIZER = new FavorDataSerializer();
     private static final FocusedFuryDataSerializer FOCUSED_FURY_DATA_SERIALIZER = new FocusedFuryDataSerializer();
+    private static final FrostyAuraDataSerializer FROSTY_AURA_DATA_SERIALIZER = new FrostyAuraDataSerializer();
     private static final GillsDataSerializer GILLS_DATA_SERIALIZER = new GillsDataSerializer();
     private static final GrudgeDataSerializer GRUDGE_DATA_SERIALIZER = new GrudgeDataSerializer();
     private static final InteractionDataSerializer INTERACTION_DATA_SERIALIZER = new InteractionDataSerializer();
@@ -46,6 +48,7 @@ public class PlayerDataStorage implements Capability.IStorage<IPlayerDataHandler
         ESCAPE_PLAN_DATA_SERIALIZER.serialize(tag, instance.getEscapePlanData());
         FAVOR_DATA_SERIALIZER.serialize(tag, instance.getFavorData());
         FOCUSED_FURY_DATA_SERIALIZER.serialize(tag, instance.getFocusedFuryData());
+        FROSTY_AURA_DATA_SERIALIZER.serialize(tag, instance.getFrostyAuraData());
         GILLS_DATA_SERIALIZER.serialize(tag, instance.getGillsData());
         GRUDGE_DATA_SERIALIZER.serialize(tag, instance.getGrudgeData());
         INTERACTION_DATA_SERIALIZER.serialize(tag, instance.getInteractionData());
@@ -66,6 +69,7 @@ public class PlayerDataStorage implements Capability.IStorage<IPlayerDataHandler
         ESCAPE_PLAN_DATA_SERIALIZER.deserialize(tag, instance.getEscapePlanData());
         FAVOR_DATA_SERIALIZER.deserialize(tag, instance.getFavorData());
         FOCUSED_FURY_DATA_SERIALIZER.deserialize(tag, instance.getFocusedFuryData());
+        FROSTY_AURA_DATA_SERIALIZER.deserialize(tag, instance.getFrostyAuraData());
         GILLS_DATA_SERIALIZER.deserialize(tag, instance.getGillsData());
         GRUDGE_DATA_SERIALIZER.deserialize(tag, instance.getGrudgeData());
         INTERACTION_DATA_SERIALIZER.deserialize(tag, instance.getInteractionData());

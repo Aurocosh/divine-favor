@@ -1,7 +1,6 @@
-package aurocosh.divinefavor.client.render.entity;
+package aurocosh.divinefavor.client.render.entity.minion;
 
 import aurocosh.divinefavor.common.constants.ConstResources;
-import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.client.renderer.entity.layers.LayerStrayClothing;
 import net.minecraft.entity.monster.AbstractSkeleton;

@@ -5,14 +5,14 @@ import aurocosh.divinefavor.common.item.bathing_blend.base.ItemBathingBlendModPo
 import aurocosh.divinefavor.common.potions.common.ModBlendEffects;
 import aurocosh.divinefavor.common.util.UtilTick;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public final class ModBathingBlends {
-    public static final List<ItemBathingBlend> BATHING_BLENDS = new ArrayList<>();
+    private static ItemBathingBlend charcoal;
+    private static ItemBathingBlend wood;
+    private static ItemBathingBlend chilled_bonemeal;
 
     public static void preInit() {
-        BATHING_BLENDS.add(new ItemBathingBlendModPotion("charcoal", UtilTick.secondsToTicks(20), 35, ModBlendEffects.charred_aura, UtilTick.secondsToTicks(20)));
-        BATHING_BLENDS.add(new ItemBathingBlendModPotion("wood", UtilTick.secondsToTicks(20), 35, ModBlendEffects.arboreal_aura, UtilTick.secondsToTicks(20)));
+        charcoal = new ItemBathingBlendModPotion("charcoal", UtilTick.secondsToTicks(20), 35, ModBlendEffects.charred_aura, UtilTick.secondsToTicks(20));
+        wood = new ItemBathingBlendModPotion("wood", UtilTick.secondsToTicks(20), 35, ModBlendEffects.arboreal_aura, UtilTick.secondsToTicks(20));
+        chilled_bonemeal = new ItemBathingBlendModPotion("chilled_bonemeal", UtilTick.secondsToTicks(20), 35, ModBlendEffects.frosty_aura, UtilTick.secondsToTicks(20));
     }
 }

@@ -1,11 +1,13 @@
 package aurocosh.divinefavor.client.render.common;
 
-import aurocosh.divinefavor.client.render.entity.RenderMinionHusk;
-import aurocosh.divinefavor.client.render.entity.RenderMinionSkeleton;
-import aurocosh.divinefavor.client.render.entity.RenderMinionStray;
-import aurocosh.divinefavor.client.render.entity.RenderMinionZombie;
+import aurocosh.divinefavor.client.render.entity.RenderDirewolf;
+import aurocosh.divinefavor.client.render.entity.minion.RenderMinionHusk;
+import aurocosh.divinefavor.client.render.entity.minion.RenderMinionSkeleton;
+import aurocosh.divinefavor.client.render.entity.minion.RenderMinionStray;
+import aurocosh.divinefavor.client.render.entity.minion.RenderMinionZombie;
 import aurocosh.divinefavor.client.render.projectile.RenderSpellArrow;
 import aurocosh.divinefavor.common.entity.minions.*;
+import aurocosh.divinefavor.common.entity.mob.EntityDirewolf;
 import aurocosh.divinefavor.common.entity.projectile.EntitySpellArrow;
 import aurocosh.divinefavor.common.entity.projectile.EntityStoneball;
 import aurocosh.divinefavor.common.item.common.ModItems;
@@ -31,5 +33,6 @@ public class ModRendering {
         manager.entityRenderMap.put(MinionSkeleton.class, new RenderMinionSkeleton(manager));
         manager.entityRenderMap.put(MinionStray.class, new RenderMinionStray(manager));
         manager.entityRenderMap.put(MinionCreeper.class, new RenderCreeper(manager));
+        manager.entityRenderMap.put(EntityDirewolf.class, new RenderDirewolf(manager));
     }
 }

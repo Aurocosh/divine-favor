@@ -9,6 +9,20 @@ public class UtilList {
         boolean select(T element);
     }
 
+    public static <T> boolean isAll(List<T> list, Predicate<T> predicate) {
+        for (T element : list)
+            if (!predicate.select(element))
+                return false;
+        return true;
+    }
+
+    public static <T> boolean isAny(List<T> list, Predicate<T> predicate) {
+        for (T element : list)
+            if (predicate.select(element))
+                return true;
+        return false;
+    }
+
     public static <T> List<T> filterList(List<T> list, Predicate<T> predicate) {
         List<T> filtered = new ArrayList<>();
         for (T element : list)

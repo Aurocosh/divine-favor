@@ -6,6 +6,7 @@ import aurocosh.divinefavor.common.custom_data.player.data.corrosion.ArmorCorros
 import aurocosh.divinefavor.common.custom_data.player.data.crawling_mist.CrawlingMistData;
 import aurocosh.divinefavor.common.custom_data.player.data.escape_plan.EscapePlanData;
 import aurocosh.divinefavor.common.custom_data.player.data.focused_fury.FocusedFuryData;
+import aurocosh.divinefavor.common.custom_data.player.data.frosty_aura.FrostyAuraData;
 import aurocosh.divinefavor.common.custom_data.player.data.gills.GillsData;
 import aurocosh.divinefavor.common.custom_data.player.data.grudge.GrudgeData;
 import aurocosh.divinefavor.common.custom_data.player.data.interaction_handler.InteractionData;
@@ -24,6 +25,7 @@ public class DefaultPlayerDataHandler implements IPlayerDataHandler {
     private final EscapePlanData escapePlanData;
     private final FavorData favorData;
     private final FocusedFuryData focusedFuryData;
+    private final FrostyAuraData frostyAuraData;
     private final GillsData gillsData;
     private final GrudgeData grudgeData;
     private final InteractionData interactionData;
@@ -41,6 +43,7 @@ public class DefaultPlayerDataHandler implements IPlayerDataHandler {
         escapePlanData = new EscapePlanData();
         favorData = new FavorData();
         focusedFuryData = new FocusedFuryData();
+        frostyAuraData = new FrostyAuraData();
         gillsData = new GillsData();
         grudgeData = new GrudgeData();
         interactionData = new InteractionData();
@@ -78,6 +81,11 @@ public class DefaultPlayerDataHandler implements IPlayerDataHandler {
     @Override
     public FocusedFuryData getFocusedFuryData() {
         return focusedFuryData;
+    }
+
+    @Override
+    public FrostyAuraData getFrostyAuraData() {
+        return frostyAuraData;
     }
 
     @Override
