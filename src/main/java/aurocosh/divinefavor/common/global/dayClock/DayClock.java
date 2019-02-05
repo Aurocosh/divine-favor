@@ -1,6 +1,6 @@
 package aurocosh.divinefavor.common.global.dayClock;
 
-import aurocosh.divinefavor.common.lib.TickCounter;
+import aurocosh.divinefavor.common.lib.LoopedCounter;
 import aurocosh.divinefavor.common.util.UtilDayTime;
 import aurocosh.divinefavor.common.util.UtilList;
 import net.minecraft.command.ICommand;
@@ -19,13 +19,13 @@ import java.util.List;
 public class DayClock {
     private static final int TRACKED_DIMENSION_ID = 0;
     private static final int AFTER_COMMAND_SYNC = UtilDayTime.TICKS_IN_DAY - 1;
-    private static final TickCounter SYNC_COUNTER = new TickCounter(UtilDayTime.TICKS_IN_DAY);
-    private static final TickCounter DAY_TIME_COUNTER = new TickCounter(UtilDayTime.TICKS_IN_DAY);
+    private static final LoopedCounter SYNC_COUNTER = new LoopedCounter(UtilDayTime.TICKS_IN_DAY);
+    private static final LoopedCounter DAY_TIME_COUNTER = new LoopedCounter(UtilDayTime.TICKS_IN_DAY);
     private static final LinkedList<DayTimeAlarm> alarms = new LinkedList<>();
     private static int nextId = 0;
 
     public static int getTime(){
-        return DAY_TIME_COUNTER.getCurrentTicks();
+        return DAY_TIME_COUNTER.getCount();
     }
 
     public static int addAlarm(int dayTimeInTicks, Runnable callback, boolean repeat) {
@@ -54,14 +54,14 @@ public class DayClock {
         if (SYNC_COUNTER.tick())
             syncTime();
 
-        int time = DAY_TIME_COUNTER.getCurrentTicks();
+        int time = DAY_TIME_COUNTER.getCount();
         processAlarms(time);
     }
 
     private static void syncTime() {
         WorldServer world = DimensionManager.getWorld(TRACKED_DIMENSION_ID);
         int time = UtilDayTime.getDayTime(world);
-        DAY_TIME_COUNTER.setCurrentTicks(time);
+        DAY_TIME_COUNTER.setCount(time);
 
         alarms.sort(new DayTimeAlarmComparator());
         List<DayTimeAlarm> alarmsToMove = new ArrayList<>();
@@ -95,6 +95,6 @@ public class DayClock {
         ICommand command = event.getCommand();
         String name = command.getName();
         if (name.equals("time"))
-            SYNC_COUNTER.setCurrentTicks(AFTER_COMMAND_SYNC);
+            SYNC_COUNTER.setCount(AFTER_COMMAND_SYNC);
     }
 }

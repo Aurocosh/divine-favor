@@ -1,6 +1,6 @@
 package aurocosh.divinefavor.common.potions.curses;
 
-import aurocosh.divinefavor.common.lib.TickCounter;
+import aurocosh.divinefavor.common.lib.LoopedCounter;
 import aurocosh.divinefavor.common.potions.base.potion.ModPotion;
 import aurocosh.divinefavor.common.potions.common.ModCurses;
 import aurocosh.divinefavor.common.util.UtilTick;
@@ -14,7 +14,7 @@ import net.minecraftforge.fml.common.gameevent.TickEvent;
 public class PotionFillLungs extends ModPotion {
     public static final float DAMAGE = 2f;
     public static final int DROWNING_RATE = UtilTick.secondsToTicks(3);
-    private static final TickCounter COUNTER = new TickCounter(DROWNING_RATE);
+    private static final LoopedCounter COUNTER = new LoopedCounter(DROWNING_RATE);
 
     public PotionFillLungs() {
         super("fill_lungs", true, 0x7FB8A4);

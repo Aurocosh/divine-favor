@@ -2,7 +2,7 @@ package aurocosh.divinefavor.common.potions.curses;
 
 import aurocosh.divinefavor.common.custom_data.living.LivingData;
 import aurocosh.divinefavor.common.custom_data.living.data.suffocating_fumes.SuffocatingFumesData;
-import aurocosh.divinefavor.common.lib.TickCounter;
+import aurocosh.divinefavor.common.lib.LoopedCounter;
 import aurocosh.divinefavor.common.potions.base.potion.ModPotion;
 import aurocosh.divinefavor.common.potions.common.ModCurses;
 import aurocosh.divinefavor.common.util.UtilTick;
@@ -19,8 +19,8 @@ public class PotionSuffocatingFumes extends ModPotion {
     public static final int DAMAGE_RATE = UtilTick.secondsToTicks(3);
     public static final int CURE_RATE = UtilTick.secondsToTicks(1);
 
-    private static final TickCounter DAMAGE_COUNTER = new TickCounter(DAMAGE_RATE);
-    private static final TickCounter CURE_COUNTER = new TickCounter(CURE_RATE);
+    private static final LoopedCounter DAMAGE_COUNTER = new LoopedCounter(DAMAGE_RATE);
+    private static final LoopedCounter CURE_COUNTER = new LoopedCounter(CURE_RATE);
 
     public PotionSuffocatingFumes() {
         super("suffocating_fumes", true, 0x7FB8A4);

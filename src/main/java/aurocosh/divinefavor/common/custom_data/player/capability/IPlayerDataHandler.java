@@ -1,6 +1,7 @@
 package aurocosh.divinefavor.common.custom_data.player.capability;
 
-import aurocosh.divinefavor.common.custom_data.player.data.burnt_smell.BurntSmellData;
+import aurocosh.divinefavor.common.custom_data.player.data.arboreal_aura.ArborealAuraData;
+import aurocosh.divinefavor.common.custom_data.player.data.charred_aura.CharredAuraData;
 import aurocosh.divinefavor.common.custom_data.player.data.corrosion.ArmorCorrosionData;
 import aurocosh.divinefavor.common.custom_data.player.data.crawling_mist.CrawlingMistData;
 import aurocosh.divinefavor.common.custom_data.player.data.escape_plan.EscapePlanData;
@@ -12,10 +13,12 @@ import aurocosh.divinefavor.common.custom_data.player.data.molten_skin.MoltenSki
 import aurocosh.divinefavor.common.custom_data.player.data.pearl_crumbs.PearlCrumbsData;
 import aurocosh.divinefavor.common.custom_data.player.data.favor.FavorData;
 import aurocosh.divinefavor.common.custom_data.player.data.scorching_presence.ScorchingPresenceData;
+import aurocosh.divinefavor.common.custom_data.player.data.towering_presence.ToweringPresenceData;
 
 public interface IPlayerDataHandler {
+    ArborealAuraData getArborealAuraData();
     ArmorCorrosionData getArmorCorrosionData();
-    BurntSmellData getBurntSmellData();
+    CharredAuraData getCharredAuraData();
     CrawlingMistData getCrawlingMistData();
     EscapePlanData getEscapePlanData();
     FavorData getFavorData();
@@ -26,4 +29,5 @@ public interface IPlayerDataHandler {
     MoltenSkinData getMoltenSkinData();
     PearlCrumbsData getPearlCrumbsData();
     ScorchingPresenceData getScorchingPresenceData();
+    ToweringPresenceData getToweringPresenceData();
 }

@@ -1,6 +1,6 @@
 package aurocosh.divinefavor.common.custom_data.player.data.corrosion;
 
-import aurocosh.divinefavor.common.lib.TickCounter;
+import aurocosh.divinefavor.common.lib.LoopedCounter;
 import aurocosh.divinefavor.common.util.UtilTick;
 
 import java.util.ArrayList;
@@ -11,11 +11,11 @@ import java.util.List;
 public class ArmorCorrosionData {
     private final int CORROSION_RATE = UtilTick.secondsToTicks(1);
     private final List<Integer> corrodedSlots;
-    private final TickCounter tickCounter;
+    private final LoopedCounter loopedCounter;
 
     public ArmorCorrosionData() {
         corrodedSlots = new ArrayList<>();
-        tickCounter = new TickCounter(CORROSION_RATE);
+        loopedCounter = new LoopedCounter(CORROSION_RATE);
     }
 
     public void removeAllCorrosion() {
@@ -48,6 +48,6 @@ public class ArmorCorrosionData {
     }
 
     public boolean isCorrosionNeeded() {
-        return tickCounter.tick();
+        return loopedCounter.tick();
     }
 }

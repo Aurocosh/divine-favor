@@ -2,7 +2,7 @@ package aurocosh.divinefavor.common.potions.curses;
 
 import aurocosh.divinefavor.common.custom_data.player.PlayerData;
 import aurocosh.divinefavor.common.custom_data.player.data.crawling_mist.CrawlingMistData;
-import aurocosh.divinefavor.common.lib.TickCounter;
+import aurocosh.divinefavor.common.lib.LoopedCounter;
 import aurocosh.divinefavor.common.lib.math.Vector3i;
 import aurocosh.divinefavor.common.potions.base.potion.ModPotion;
 import aurocosh.divinefavor.common.potions.common.ModCurses;
@@ -28,7 +28,7 @@ public class PotionCrawlingMist extends ModPotion {
     private static final float FOG_END = 30;
     private static final int CURE_DISTANCE = 20;
     private static final int CURE_DISTANCE_SQ = CURE_DISTANCE * CURE_DISTANCE;
-    private static final TickCounter CURE_COUNTER = new TickCounter(CURE_RATE);
+    private static final LoopedCounter CURE_COUNTER = new LoopedCounter(CURE_RATE);
     private static int intitFrames = FRAMES_TO_INIT_FOG;
 
     public PotionCrawlingMist() {

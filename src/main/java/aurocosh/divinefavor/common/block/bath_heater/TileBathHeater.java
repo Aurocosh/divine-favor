@@ -4,7 +4,7 @@ import aurocosh.divinefavor.common.area.IAreaWatcher;
 import aurocosh.divinefavor.common.area.WorldArea;
 import aurocosh.divinefavor.common.area.WorldAreaWatcher;
 import aurocosh.divinefavor.common.item.bathing_blend.base.ItemBathingBlend;
-import aurocosh.divinefavor.common.lib.TickCounter;
+import aurocosh.divinefavor.common.lib.LoopedCounter;
 import aurocosh.divinefavor.common.lib.math.Vector3i;
 import aurocosh.divinefavor.common.util.*;
 import net.minecraft.block.Block;
@@ -63,7 +63,7 @@ public class TileBathHeater extends TileEntity implements ITickable, IAreaWatche
     private boolean initialized;
 
     private final WorldArea area;
-    private final TickCounter tickCounter;
+    private final LoopedCounter loopedCounter;
     private final Set<Vector3i> waterPositions;
     private BathHeaterState state = BathHeaterState.INACTIVE;
 
@@ -108,7 +108,7 @@ public class TileBathHeater extends TileEntity implements ITickable, IAreaWatche
         refresh = true;
         area = new WorldArea();
         waterPositions = new HashSet<>();
-        tickCounter = new TickCounter(EFFECT_TICK_RATE);
+        loopedCounter = new LoopedCounter(EFFECT_TICK_RATE);
     }
 
     public void initialize() {
@@ -290,7 +290,7 @@ public class TileBathHeater extends TileEntity implements ITickable, IAreaWatche
     private void applyEffect() {
         if(!isBurning())
             return;
-        if (!tickCounter.tick())
+        if (!loopedCounter.tick())
             return;
         if (currentEffectTime <= 0) {
             ItemStack stack = blendStackHandler.getStackInSlot(0);
