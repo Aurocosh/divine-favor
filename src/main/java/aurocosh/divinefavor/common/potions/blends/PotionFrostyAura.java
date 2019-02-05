@@ -7,6 +7,7 @@ import aurocosh.divinefavor.common.potions.base.effect.ModEffect;
 import aurocosh.divinefavor.common.potions.base.potion.ModPotion;
 import aurocosh.divinefavor.common.potions.common.ModBlendEffects;
 import aurocosh.divinefavor.common.potions.common.ModBlessings;
+import aurocosh.divinefavor.common.spirit.ModSpirits;
 import aurocosh.divinefavor.common.util.UtilList;
 import aurocosh.divinefavor.common.util.UtilTick;
 import net.minecraft.entity.EntityLivingBase;
@@ -31,7 +32,7 @@ public class PotionFrostyAura extends ModPotion {
     @Override
     protected void onPotionAdded(EntityLivingBase livingBase) {
         super.onPotionAdded(livingBase);
-        if(!(livingBase instanceof EntityPlayer))
+        if (!(livingBase instanceof EntityPlayer))
             return;
         EntityPlayer player = (EntityPlayer) livingBase;
         FrostyAuraData auraData = PlayerData.get(player).getFrostyAuraData();
@@ -40,35 +41,36 @@ public class PotionFrostyAura extends ModPotion {
 
     @Override
     public void performEffect(EntityLivingBase livingBase, int amplifier) {
-        if(!(livingBase instanceof EntityPlayer))
-           return;
+        if (!(livingBase instanceof EntityPlayer))
+            return;
         EntityPlayer player = (EntityPlayer) livingBase;
         FrostyAuraData auraData = PlayerData.get(player).getFrostyAuraData();
-        if(auraData.count()){
+        if (auraData.count()) {
             player.removePotionEffect(ModBlendEffects.frosty_aura);
             player.addPotionEffect(new ModEffect(ModBlessings.chilling_presence, UtilTick.minutesToTicks(2)));
             return;
         }
-        checkConditions(livingBase, player, auraData);
+        if (!isConditionsMet(livingBase, player))
+            auraData.reset();
     }
 
-    private void checkConditions(EntityLivingBase livingBase, EntityPlayer player, FrostyAuraData auraData) {
+    private boolean isConditionsMet(EntityLivingBase livingBase, EntityPlayer player) {
         if (!COUNTER.tick())
-            return;
+            return true;
         List<ItemStack> stacks = new ArrayList<>();
         for (ItemStack stack : player.getArmorInventoryList())
             stacks.add(stack);
         for (ItemStack stack : player.getHeldEquipment())
             stacks.add(stack);
         boolean isAllEmpty = UtilList.isAll(stacks, ItemStack::isEmpty);
-        if(!isAllEmpty) {
-            auraData.reset();
-            return;
-        }
+        if (!isAllEmpty)
+            return false;
+
+        if (!ModSpirits.blizrabi.isActive())
+            return false;
 
         String biomeName = livingBase.world.getBiome(livingBase.getPosition()).getBiomeName();
-        if(!biomeName.equals("Plains"))
-            auraData.reset();
+        return biomeName.equals("Plains");
     }
 
     @Override
