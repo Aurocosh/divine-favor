@@ -1,6 +1,6 @@
 package aurocosh.divinefavor.common.potions.curses;
 
-import aurocosh.divinefavor.common.lib.TickCounter;
+import aurocosh.divinefavor.common.lib.LoopedCounter;
 import aurocosh.divinefavor.common.potions.base.potion.ModPotion;
 import aurocosh.divinefavor.common.potions.common.ModCurses;
 import aurocosh.divinefavor.common.util.UtilTick;
@@ -17,7 +17,7 @@ import net.minecraftforge.fml.common.gameevent.TickEvent;
 public class PotionHollowLeg extends ModPotion {
     public static final float EXAUSTION_VALUE = 2f;
     public static final int EXAUSTION_RATE = UtilTick.secondsToTicks(1);
-    private static final TickCounter COUNTER = new TickCounter(EXAUSTION_RATE);
+    private static final LoopedCounter COUNTER = new LoopedCounter(EXAUSTION_RATE);
 
     public PotionHollowLeg() {
         super("hollow_leg", true, 0x7FB8A4);

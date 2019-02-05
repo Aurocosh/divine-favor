@@ -1,6 +1,6 @@
 package aurocosh.divinefavor.common.potions.curses;
 
-import aurocosh.divinefavor.common.lib.TickCounter;
+import aurocosh.divinefavor.common.lib.LoopedCounter;
 import aurocosh.divinefavor.common.potions.base.potion.ModPotion;
 import aurocosh.divinefavor.common.potions.common.ModCurses;
 import aurocosh.divinefavor.common.util.UtilEntity;
@@ -19,7 +19,7 @@ public class PotionYummySmell extends ModPotion {
     private static final float RADIUS = 25;
 
     public static final int TICK_RATE = UtilTick.secondsToTicks(10);
-    private static final TickCounter TICK_COUNTER = new TickCounter(TICK_RATE);
+    private static final LoopedCounter TICK_COUNTER = new LoopedCounter(TICK_RATE);
 
     public PotionYummySmell() {
         super("yummy_smell", false, 0x7FB8A4);

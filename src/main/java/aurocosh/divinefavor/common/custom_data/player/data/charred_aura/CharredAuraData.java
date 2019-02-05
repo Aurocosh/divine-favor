@@ -1,12 +1,12 @@
-package aurocosh.divinefavor.common.custom_data.player.data.burnt_smell;
+package aurocosh.divinefavor.common.custom_data.player.data.charred_aura;
 
 import aurocosh.divinefavor.common.lib.SimpleCounter;
 
 // The default implementation of the capability. Holds all the logic.
-public class BurntSmellData extends SimpleCounter {
-    private static final int FIRES_TO_IGNITE = 100;
+public class CharredAuraData extends SimpleCounter {
+    private static final int FIRES_TO_IGNITE = 20;
 
-    public BurntSmellData() {
+    public CharredAuraData() {
         super(FIRES_TO_IGNITE);
     }
 

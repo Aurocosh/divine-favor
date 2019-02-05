@@ -2,16 +2,16 @@ package aurocosh.divinefavor.common.lib;
 
 import aurocosh.divinefavor.common.util.UtilMath;
 
-public class TickCounter {
+public class LoopedCounter {
     private int tickRate;
     private int currentTicks;
 
-    public TickCounter() {
+    public LoopedCounter() {
         tickRate = 1;
         currentTicks = 0;
     }
 
-    public TickCounter(int tickRate) {
+    public LoopedCounter(int tickRate) {
         this.tickRate = tickRate;
         currentTicks = 0;
     }
@@ -20,12 +20,16 @@ public class TickCounter {
         this.tickRate = Math.max(1, Math.abs(tickRate));
     }
 
-    public int getCurrentTicks() {
+    public int getCount() {
         return currentTicks;
     }
 
-    public void setCurrentTicks(int ticks) {
+    public void setCount(int ticks) {
         currentTicks = UtilMath.clamp(ticks, 0, tickRate);
+    }
+
+    public void reset() {
+        currentTicks = 0;
     }
 
     public boolean tick() {

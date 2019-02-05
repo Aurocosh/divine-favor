@@ -1,6 +1,6 @@
 package aurocosh.divinefavor.common.potions.potions;
 
-import aurocosh.divinefavor.common.lib.TickCounter;
+import aurocosh.divinefavor.common.lib.LoopedCounter;
 import aurocosh.divinefavor.common.potions.base.potion.ModPotionToggle;
 import aurocosh.divinefavor.common.util.UtilTick;
 import net.minecraft.entity.EntityLivingBase;
@@ -20,7 +20,7 @@ public class PotionNightEye extends ModPotionToggle {
     public static int NIGHT_VISION_DURATION = UtilTick.secondsToTicks(20);
 
     public static final int TICK_RATE = UtilTick.secondsToTicks(1);
-    private static final TickCounter TICK_COUNTER = new TickCounter(TICK_RATE);
+    private static final LoopedCounter TICK_COUNTER = new LoopedCounter(TICK_RATE);
 
     public PotionNightEye() {
         super("night_eye", true, 0x7FB8A4);
