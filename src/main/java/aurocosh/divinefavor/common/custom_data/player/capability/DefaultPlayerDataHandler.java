@@ -9,6 +9,7 @@ import aurocosh.divinefavor.common.custom_data.player.data.energetic_presence.En
 import aurocosh.divinefavor.common.custom_data.player.data.escape_plan.EscapePlanData;
 import aurocosh.divinefavor.common.custom_data.player.data.focused_fury.FocusedFuryData;
 import aurocosh.divinefavor.common.custom_data.player.data.frosty_aura.FrostyAuraData;
+import aurocosh.divinefavor.common.custom_data.player.data.furious_presence.FuriousPresenceData;
 import aurocosh.divinefavor.common.custom_data.player.data.gills.GillsData;
 import aurocosh.divinefavor.common.custom_data.player.data.grudge.GrudgeData;
 import aurocosh.divinefavor.common.custom_data.player.data.interaction_handler.InteractionData;
@@ -17,6 +18,7 @@ import aurocosh.divinefavor.common.custom_data.player.data.pearl_crumbs.PearlCru
 import aurocosh.divinefavor.common.custom_data.player.data.favor.FavorData;
 import aurocosh.divinefavor.common.custom_data.player.data.scorching_presence.ScorchingPresenceData;
 import aurocosh.divinefavor.common.custom_data.player.data.towering_presence.ToweringPresenceData;
+import aurocosh.divinefavor.common.custom_data.player.data.visceral_aura.VisceralAuraData;
 
 // The default implementation of the capability. Holds all the logic.
 public class DefaultPlayerDataHandler implements IPlayerDataHandler {
@@ -30,6 +32,7 @@ public class DefaultPlayerDataHandler implements IPlayerDataHandler {
     private final FavorData favorData;
     private final FocusedFuryData focusedFuryData;
     private final FrostyAuraData frostyAuraData;
+    private final FuriousPresenceData furiousPresenceData;
     private final GillsData gillsData;
     private final GrudgeData grudgeData;
     private final InteractionData interactionData;
@@ -37,6 +40,7 @@ public class DefaultPlayerDataHandler implements IPlayerDataHandler {
     private final PearlCrumbsData pearlCrumbsData;
     private final ScorchingPresenceData scorchingPresenceData;
     private final ToweringPresenceData toweringPresenceData;
+    private final VisceralAuraData visceralAuraData;
 
     public DefaultPlayerDataHandler() {
         arborealAuraData = new ArborealAuraData();
@@ -56,6 +60,8 @@ public class DefaultPlayerDataHandler implements IPlayerDataHandler {
         pearlCrumbsData = new PearlCrumbsData();
         scorchingPresenceData = new ScorchingPresenceData();
         toweringPresenceData = new ToweringPresenceData();
+        visceralAuraData = new VisceralAuraData();
+        furiousPresenceData = new FuriousPresenceData();
     }
 
     @Override
@@ -104,6 +110,11 @@ public class DefaultPlayerDataHandler implements IPlayerDataHandler {
     }
 
     @Override
+    public FuriousPresenceData getFuriousPresenceData() {
+        return furiousPresenceData;
+    }
+
+    @Override
     public GillsData getGillsData() {
         return gillsData;
     }
@@ -136,6 +147,11 @@ public class DefaultPlayerDataHandler implements IPlayerDataHandler {
     @Override
     public ToweringPresenceData getToweringPresenceData() {
         return toweringPresenceData;
+    }
+
+    @Override
+    public VisceralAuraData getVisceralAuraData() {
+        return visceralAuraData;
     }
 
     @Override
