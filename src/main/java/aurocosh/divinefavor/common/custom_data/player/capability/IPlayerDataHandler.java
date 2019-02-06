@@ -9,6 +9,7 @@ import aurocosh.divinefavor.common.custom_data.player.data.energetic_presence.En
 import aurocosh.divinefavor.common.custom_data.player.data.escape_plan.EscapePlanData;
 import aurocosh.divinefavor.common.custom_data.player.data.focused_fury.FocusedFuryData;
 import aurocosh.divinefavor.common.custom_data.player.data.frosty_aura.FrostyAuraData;
+import aurocosh.divinefavor.common.custom_data.player.data.furious_presence.FuriousPresenceData;
 import aurocosh.divinefavor.common.custom_data.player.data.gills.GillsData;
 import aurocosh.divinefavor.common.custom_data.player.data.grudge.GrudgeData;
 import aurocosh.divinefavor.common.custom_data.player.data.interaction_handler.InteractionData;
@@ -17,6 +18,7 @@ import aurocosh.divinefavor.common.custom_data.player.data.pearl_crumbs.PearlCru
 import aurocosh.divinefavor.common.custom_data.player.data.favor.FavorData;
 import aurocosh.divinefavor.common.custom_data.player.data.scorching_presence.ScorchingPresenceData;
 import aurocosh.divinefavor.common.custom_data.player.data.towering_presence.ToweringPresenceData;
+import aurocosh.divinefavor.common.custom_data.player.data.visceral_aura.VisceralAuraData;
 
 public interface IPlayerDataHandler {
     ArborealAuraData getArborealAuraData();
@@ -29,6 +31,7 @@ public interface IPlayerDataHandler {
     FavorData getFavorData();
     FocusedFuryData getFocusedFuryData();
     FrostyAuraData getFrostyAuraData();
+    FuriousPresenceData getFuriousPresenceData();
     GillsData getGillsData();
     GrudgeData getGrudgeData();
     InteractionData getInteractionData();
@@ -36,4 +39,5 @@ public interface IPlayerDataHandler {
     PearlCrumbsData getPearlCrumbsData();
     ScorchingPresenceData getScorchingPresenceData();
     ToweringPresenceData getToweringPresenceData();
+    VisceralAuraData getVisceralAuraData();
 }

@@ -10,6 +10,7 @@ import aurocosh.divinefavor.common.custom_data.player.data.escape_plan.EscapePla
 import aurocosh.divinefavor.common.custom_data.player.data.favor.FavorDataSerializer;
 import aurocosh.divinefavor.common.custom_data.player.data.focused_fury.FocusedFuryDataSerializer;
 import aurocosh.divinefavor.common.custom_data.player.data.frosty_aura.FrostyAuraDataSerializer;
+import aurocosh.divinefavor.common.custom_data.player.data.furious_presence.FuriousPresenceDataSerializer;
 import aurocosh.divinefavor.common.custom_data.player.data.gills.GillsDataSerializer;
 import aurocosh.divinefavor.common.custom_data.player.data.grudge.GrudgeDataSerializer;
 import aurocosh.divinefavor.common.custom_data.player.data.interaction_handler.InteractionDataSerializer;
@@ -17,6 +18,7 @@ import aurocosh.divinefavor.common.custom_data.player.data.molten_skin.MoltenSki
 import aurocosh.divinefavor.common.custom_data.player.data.pearl_crumbs.PearlCrumbsDataSerializer;
 import aurocosh.divinefavor.common.custom_data.player.data.scorching_presence.ScorchingPresenceDataSerializer;
 import aurocosh.divinefavor.common.custom_data.player.data.towering_presence.ToweringPresenceDataSerializer;
+import aurocosh.divinefavor.common.custom_data.player.data.visceral_aura.VisceralAuraDataSerializer;
 import net.minecraft.nbt.NBTBase;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumFacing;
@@ -34,6 +36,7 @@ public class PlayerDataStorage implements Capability.IStorage<IPlayerDataHandler
     private static final FavorDataSerializer FAVOR_DATA_SERIALIZER = new FavorDataSerializer();
     private static final FocusedFuryDataSerializer FOCUSED_FURY_DATA_SERIALIZER = new FocusedFuryDataSerializer();
     private static final FrostyAuraDataSerializer FROSTY_AURA_DATA_SERIALIZER = new FrostyAuraDataSerializer();
+    private static final FuriousPresenceDataSerializer FURIOUS_PRESENCE_DATA_SERIALIZER = new FuriousPresenceDataSerializer();
     private static final GillsDataSerializer GILLS_DATA_SERIALIZER = new GillsDataSerializer();
     private static final GrudgeDataSerializer GRUDGE_DATA_SERIALIZER = new GrudgeDataSerializer();
     private static final InteractionDataSerializer INTERACTION_DATA_SERIALIZER = new InteractionDataSerializer();
@@ -41,6 +44,7 @@ public class PlayerDataStorage implements Capability.IStorage<IPlayerDataHandler
     private static final PearlCrumbsDataSerializer PEARL_CRUMBS_DATA_SERIALIZER = new PearlCrumbsDataSerializer();
     private static final ScorchingPresenceDataSerializer SCORCHING_PRESENCE_DATA_SERIALIZER = new ScorchingPresenceDataSerializer();
     private static final ToweringPresenceDataSerializer TOWERING_PRESENCE_DATA_SERIALIZER = new ToweringPresenceDataSerializer();
+    private static final VisceralAuraDataSerializer VISCERAL_AURA_DATA_SERIALIZER = new VisceralAuraDataSerializer();
 
     @Override
     public NBTBase writeNBT(Capability<IPlayerDataHandler> capability, IPlayerDataHandler instance, EnumFacing side) {
@@ -55,6 +59,7 @@ public class PlayerDataStorage implements Capability.IStorage<IPlayerDataHandler
         FAVOR_DATA_SERIALIZER.serialize(tag, instance.getFavorData());
         FOCUSED_FURY_DATA_SERIALIZER.serialize(tag, instance.getFocusedFuryData());
         FROSTY_AURA_DATA_SERIALIZER.serialize(tag, instance.getFrostyAuraData());
+        FURIOUS_PRESENCE_DATA_SERIALIZER.serialize(tag, instance.getFuriousPresenceData());
         GILLS_DATA_SERIALIZER.serialize(tag, instance.getGillsData());
         GRUDGE_DATA_SERIALIZER.serialize(tag, instance.getGrudgeData());
         INTERACTION_DATA_SERIALIZER.serialize(tag, instance.getInteractionData());
@@ -62,6 +67,7 @@ public class PlayerDataStorage implements Capability.IStorage<IPlayerDataHandler
         PEARL_CRUMBS_DATA_SERIALIZER.serialize(tag, instance.getPearlCrumbsData());
         SCORCHING_PRESENCE_DATA_SERIALIZER.serialize(tag, instance.getScorchingPresenceData());
         TOWERING_PRESENCE_DATA_SERIALIZER.serialize(tag, instance.getToweringPresenceData());
+        VISCERAL_AURA_DATA_SERIALIZER.serialize(tag, instance.getVisceralAuraData());
         return tag;
     }
 
@@ -78,6 +84,7 @@ public class PlayerDataStorage implements Capability.IStorage<IPlayerDataHandler
         FAVOR_DATA_SERIALIZER.deserialize(tag, instance.getFavorData());
         FOCUSED_FURY_DATA_SERIALIZER.deserialize(tag, instance.getFocusedFuryData());
         FROSTY_AURA_DATA_SERIALIZER.deserialize(tag, instance.getFrostyAuraData());
+        FURIOUS_PRESENCE_DATA_SERIALIZER.deserialize(tag, instance.getFuriousPresenceData());
         GILLS_DATA_SERIALIZER.deserialize(tag, instance.getGillsData());
         GRUDGE_DATA_SERIALIZER.deserialize(tag, instance.getGrudgeData());
         INTERACTION_DATA_SERIALIZER.deserialize(tag, instance.getInteractionData());
@@ -85,5 +92,6 @@ public class PlayerDataStorage implements Capability.IStorage<IPlayerDataHandler
         PEARL_CRUMBS_DATA_SERIALIZER.deserialize(tag, instance.getPearlCrumbsData());
         SCORCHING_PRESENCE_DATA_SERIALIZER.deserialize(tag, instance.getScorchingPresenceData());
         TOWERING_PRESENCE_DATA_SERIALIZER.deserialize(tag, instance.getToweringPresenceData());
+        VISCERAL_AURA_DATA_SERIALIZER.deserialize(tag, instance.getVisceralAuraData());
     }
 }
