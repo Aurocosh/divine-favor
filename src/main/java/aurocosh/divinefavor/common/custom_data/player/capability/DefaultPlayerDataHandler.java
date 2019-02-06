@@ -4,6 +4,8 @@ import aurocosh.divinefavor.common.custom_data.player.data.arboreal_aura.Arborea
 import aurocosh.divinefavor.common.custom_data.player.data.charred_aura.CharredAuraData;
 import aurocosh.divinefavor.common.custom_data.player.data.corrosion.ArmorCorrosionData;
 import aurocosh.divinefavor.common.custom_data.player.data.crawling_mist.CrawlingMistData;
+import aurocosh.divinefavor.common.custom_data.player.data.energetic_aura.EnergeticAuraData;
+import aurocosh.divinefavor.common.custom_data.player.data.energetic_presence.EnergeticPresenceData;
 import aurocosh.divinefavor.common.custom_data.player.data.escape_plan.EscapePlanData;
 import aurocosh.divinefavor.common.custom_data.player.data.focused_fury.FocusedFuryData;
 import aurocosh.divinefavor.common.custom_data.player.data.frosty_aura.FrostyAuraData;
@@ -22,6 +24,8 @@ public class DefaultPlayerDataHandler implements IPlayerDataHandler {
     private final ArmorCorrosionData armorCorrosionData;
     private final CharredAuraData charredAuraData;
     private final CrawlingMistData crawlingMistData;
+    private final EnergeticAuraData energeticAuraData;
+    private final EnergeticPresenceData energeticPresenceData;
     private final EscapePlanData escapePlanData;
     private final FavorData favorData;
     private final FocusedFuryData focusedFuryData;
@@ -34,12 +38,13 @@ public class DefaultPlayerDataHandler implements IPlayerDataHandler {
     private final ScorchingPresenceData scorchingPresenceData;
     private final ToweringPresenceData toweringPresenceData;
 
-
     public DefaultPlayerDataHandler() {
         arborealAuraData = new ArborealAuraData();
         armorCorrosionData = new ArmorCorrosionData();
         charredAuraData = new CharredAuraData();
         crawlingMistData = new CrawlingMistData();
+        energeticAuraData = new EnergeticAuraData();
+        energeticPresenceData = new EnergeticPresenceData();
         escapePlanData = new EscapePlanData();
         favorData = new FavorData();
         focusedFuryData = new FocusedFuryData();
@@ -71,6 +76,16 @@ public class DefaultPlayerDataHandler implements IPlayerDataHandler {
     @Override
     public CrawlingMistData getCrawlingMistData() {
         return crawlingMistData;
+    }
+
+    @Override
+    public EnergeticAuraData getEnergeticAuraData() {
+        return energeticAuraData;
+    }
+
+    @Override
+    public EnergeticPresenceData getEnergeticPresenceData() {
+        return energeticPresenceData;
     }
 
     @Override

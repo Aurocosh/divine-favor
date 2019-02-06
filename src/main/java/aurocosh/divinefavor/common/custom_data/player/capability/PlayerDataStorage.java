@@ -4,6 +4,8 @@ import aurocosh.divinefavor.common.custom_data.player.data.arboreal_aura.Arborea
 import aurocosh.divinefavor.common.custom_data.player.data.charred_aura.CharredAuraDataSerializer;
 import aurocosh.divinefavor.common.custom_data.player.data.corrosion.ArmorCorrosionDataSerializer;
 import aurocosh.divinefavor.common.custom_data.player.data.crawling_mist.CrawlingMistDataSerializer;
+import aurocosh.divinefavor.common.custom_data.player.data.energetic_aura.EnergeticAuraDataSerializer;
+import aurocosh.divinefavor.common.custom_data.player.data.energetic_presence.EnergeticPresenceDataSerializer;
 import aurocosh.divinefavor.common.custom_data.player.data.escape_plan.EscapePlanDataSerializer;
 import aurocosh.divinefavor.common.custom_data.player.data.favor.FavorDataSerializer;
 import aurocosh.divinefavor.common.custom_data.player.data.focused_fury.FocusedFuryDataSerializer;
@@ -26,6 +28,8 @@ public class PlayerDataStorage implements Capability.IStorage<IPlayerDataHandler
     private static final ArmorCorrosionDataSerializer ARMOR_CORROSION_DATA_SERIALIZER = new ArmorCorrosionDataSerializer();
     private static final CharredAuraDataSerializer CHARRED_AURA_DATA_SERIALIZER = new CharredAuraDataSerializer();
     private static final CrawlingMistDataSerializer CRAWLING_MIST_DATA_SERIALIZER = new CrawlingMistDataSerializer();
+    private static final EnergeticAuraDataSerializer ENERGETIC_AURA_DATA_SERIALIZER = new EnergeticAuraDataSerializer();
+    private static final EnergeticPresenceDataSerializer ENERGETIC_PRESENCE_DATA_SERIALIZER = new EnergeticPresenceDataSerializer();
     private static final EscapePlanDataSerializer ESCAPE_PLAN_DATA_SERIALIZER = new EscapePlanDataSerializer();
     private static final FavorDataSerializer FAVOR_DATA_SERIALIZER = new FavorDataSerializer();
     private static final FocusedFuryDataSerializer FOCUSED_FURY_DATA_SERIALIZER = new FocusedFuryDataSerializer();
@@ -45,6 +49,8 @@ public class PlayerDataStorage implements Capability.IStorage<IPlayerDataHandler
         ARMOR_CORROSION_DATA_SERIALIZER.serialize(tag, instance.getArmorCorrosionData());
         CHARRED_AURA_DATA_SERIALIZER.serialize(tag, instance.getCharredAuraData());
         CRAWLING_MIST_DATA_SERIALIZER.serialize(tag, instance.getCrawlingMistData());
+        ENERGETIC_AURA_DATA_SERIALIZER.serialize(tag, instance.getEnergeticAuraData());
+        ENERGETIC_PRESENCE_DATA_SERIALIZER.serialize(tag, instance.getEnergeticPresenceData());
         ESCAPE_PLAN_DATA_SERIALIZER.serialize(tag, instance.getEscapePlanData());
         FAVOR_DATA_SERIALIZER.serialize(tag, instance.getFavorData());
         FOCUSED_FURY_DATA_SERIALIZER.serialize(tag, instance.getFocusedFuryData());
@@ -66,6 +72,8 @@ public class PlayerDataStorage implements Capability.IStorage<IPlayerDataHandler
         ARMOR_CORROSION_DATA_SERIALIZER.deserialize(tag, instance.getArmorCorrosionData());
         CHARRED_AURA_DATA_SERIALIZER.deserialize(tag, instance.getCharredAuraData());
         CRAWLING_MIST_DATA_SERIALIZER.deserialize(tag, instance.getCrawlingMistData());
+        ENERGETIC_AURA_DATA_SERIALIZER.deserialize(tag, instance.getEnergeticAuraData());
+        ENERGETIC_PRESENCE_DATA_SERIALIZER.deserialize(tag, instance.getEnergeticPresenceData());
         ESCAPE_PLAN_DATA_SERIALIZER.deserialize(tag, instance.getEscapePlanData());
         FAVOR_DATA_SERIALIZER.deserialize(tag, instance.getFavorData());
         FOCUSED_FURY_DATA_SERIALIZER.deserialize(tag, instance.getFocusedFuryData());
