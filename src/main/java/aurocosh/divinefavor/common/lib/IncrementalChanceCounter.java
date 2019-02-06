@@ -27,15 +27,15 @@ public class IncrementalChanceCounter {
     }
 
     public void setChance(float chance) {
-        this.chance = MathHelper.clamp(chance,0, 1);
+        this.chance = MathHelper.clamp(chance, 0, 1);
     }
 
     public void setChanceIncrease(float chanceIncrease) {
-        this.chanceIncrease = MathHelper.clamp(chanceIncrease,0, 1);
+        this.chanceIncrease = MathHelper.clamp(chanceIncrease, 0, 1);
     }
 
     public void setStartingChance(float startingChance) {
-        this.startingChance = MathHelper.clamp(startingChance,0, 1);
+        this.startingChance = MathHelper.clamp(startingChance, 0, 1);
     }
 
     public void reset() {
@@ -43,11 +43,21 @@ public class IncrementalChanceCounter {
     }
 
     public boolean tryLuck() {
-        if(UtilRandom.rollDiceFloat(chance))
+        System.out.println(toString());
+        if (UtilRandom.rollDiceFloat(chance))
             return true;
-        if(chance >= 1)
+        if (chance >= 1)
             return true;
         chance += chanceIncrease;
         return false;
+    }
+
+    @Override
+    public String toString() {
+        return "IncrementalChanceCounter{" +
+                "chance=" + chance +
+                ", chanceIncrease=" + chanceIncrease +
+                ", startingChance=" + startingChance +
+                '}';
     }
 }

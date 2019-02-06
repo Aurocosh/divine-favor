@@ -4,6 +4,8 @@ import aurocosh.divinefavor.common.custom_data.player.data.arboreal_aura.Arborea
 import aurocosh.divinefavor.common.custom_data.player.data.charred_aura.CharredAuraData;
 import aurocosh.divinefavor.common.custom_data.player.data.corrosion.ArmorCorrosionData;
 import aurocosh.divinefavor.common.custom_data.player.data.crawling_mist.CrawlingMistData;
+import aurocosh.divinefavor.common.custom_data.player.data.energetic_aura.EnergeticAuraData;
+import aurocosh.divinefavor.common.custom_data.player.data.energetic_presence.EnergeticPresenceData;
 import aurocosh.divinefavor.common.custom_data.player.data.escape_plan.EscapePlanData;
 import aurocosh.divinefavor.common.custom_data.player.data.focused_fury.FocusedFuryData;
 import aurocosh.divinefavor.common.custom_data.player.data.frosty_aura.FrostyAuraData;
@@ -21,6 +23,8 @@ public interface IPlayerDataHandler {
     ArmorCorrosionData getArmorCorrosionData();
     CharredAuraData getCharredAuraData();
     CrawlingMistData getCrawlingMistData();
+    EnergeticAuraData getEnergeticAuraData();
+    EnergeticPresenceData getEnergeticPresenceData();
     EscapePlanData getEscapePlanData();
     FavorData getFavorData();
     FocusedFuryData getFocusedFuryData();

@@ -44,7 +44,7 @@ public class PotionScorchingPresence extends ModPotion {
         if(!player.isPotionActive(ModBlessings.scorching_presence))
             return;
         ScorchingPresenceData presenceData = PlayerData.get(player).getScorchingPresenceData();
-        if(presenceData.tryLuck()){
+        if(presenceData.tryLuck() && player.world.isRemote){
             player.removePotionEffect(ModBlessings.scorching_presence);
             player.addItemStackToInventory(new ItemStack(ModCallingStones.calling_stone_allfire));
         }

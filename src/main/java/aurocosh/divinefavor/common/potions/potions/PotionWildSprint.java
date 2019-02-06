@@ -20,9 +20,8 @@ public class PotionWildSprint extends ModPotion {
 
     @Override
     public void performEffect(EntityLivingBase livingBase, int amplifier) {
-        if(livingBase.motionX * livingBase.motionX + livingBase.motionZ * livingBase.motionZ < WATER_RUNNING_SPEED * WATER_RUNNING_SPEED)
-            return;
-        tickLiquidWalk(livingBase, Blocks.WATER);
+        if (!(livingBase.motionX * livingBase.motionX + livingBase.motionZ * livingBase.motionZ < WATER_RUNNING_SPEED * WATER_RUNNING_SPEED))
+            tickLiquidWalk(livingBase, Blocks.WATER);
     }
 
     @Override
