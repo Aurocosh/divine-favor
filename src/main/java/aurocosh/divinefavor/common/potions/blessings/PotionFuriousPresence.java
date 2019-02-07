@@ -1,7 +1,7 @@
 package aurocosh.divinefavor.common.potions.blessings;
 
 import aurocosh.divinefavor.common.custom_data.player.PlayerData;
-import aurocosh.divinefavor.common.custom_data.player.data.furious_presence.FuriousPresenceData;
+import aurocosh.divinefavor.common.custom_data.player.data.presence.furious.FuriousPresenceData;
 import aurocosh.divinefavor.common.item.calling_stones.ModCallingStones;
 import aurocosh.divinefavor.common.potions.base.potion.ModPotion;
 import aurocosh.divinefavor.common.potions.common.ModBlessings;

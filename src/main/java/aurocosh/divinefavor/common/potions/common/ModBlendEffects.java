@@ -6,6 +6,7 @@ import aurocosh.divinefavor.common.potions.blends.*;
 public class ModBlendEffects {
     public static ModPotion arboreal_aura;
     public static ModPotion charred_aura;
+    public static ModPotion distorted_aura;
     public static ModPotion energetic_aura;
     public static ModPotion frosty_aura;
     public static ModPotion hunters_aura;
@@ -14,6 +15,7 @@ public class ModBlendEffects {
     public static void preInit() {
         arboreal_aura = new PotionArborealAura();
         charred_aura = new PotionCharredAura();
+        distorted_aura = new PotionDistortedAura();
         energetic_aura = new PotionEnergeticAura();
         frosty_aura = new PotionFrostyAura();
         hunters_aura = new PotionHuntersAura();

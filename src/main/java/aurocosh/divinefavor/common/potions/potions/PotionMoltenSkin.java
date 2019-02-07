@@ -1,7 +1,7 @@
 package aurocosh.divinefavor.common.potions.potions;
 
 import aurocosh.divinefavor.common.custom_data.player.PlayerData;
-import aurocosh.divinefavor.common.custom_data.player.data.molten_skin.MoltenSkinData;
+import aurocosh.divinefavor.common.custom_data.player.data.spell.molten_skin.MoltenSkinData;
 import aurocosh.divinefavor.common.damage_source.ModDamageSources;
 import aurocosh.divinefavor.common.potions.base.potion.ModPotionToggle;
 import aurocosh.divinefavor.common.potions.common.ModPotions;

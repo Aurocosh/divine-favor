@@ -1,7 +1,7 @@
 package aurocosh.divinefavor.common.potions.curses;
 
 import aurocosh.divinefavor.common.custom_data.player.PlayerData;
-import aurocosh.divinefavor.common.custom_data.player.data.corrosion.ArmorCorrosionData;
+import aurocosh.divinefavor.common.custom_data.player.data.curse.corrosion.ArmorCorrosionData;
 import aurocosh.divinefavor.common.potions.base.potion.ModPotion;
 import aurocosh.divinefavor.common.potions.common.ModCurses;
 import aurocosh.divinefavor.common.util.UtilRandom;

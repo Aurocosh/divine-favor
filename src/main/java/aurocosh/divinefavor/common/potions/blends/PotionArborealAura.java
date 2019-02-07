@@ -1,7 +1,7 @@
 package aurocosh.divinefavor.common.potions.blends;
 
 import aurocosh.divinefavor.common.custom_data.player.PlayerData;
-import aurocosh.divinefavor.common.custom_data.player.data.arboreal_aura.ArborealAuraData;
+import aurocosh.divinefavor.common.custom_data.player.data.aura.arboreal.ArborealAuraData;
 import aurocosh.divinefavor.common.potions.base.effect.ModEffect;
 import aurocosh.divinefavor.common.potions.base.potion.ModPotion;
 import aurocosh.divinefavor.common.potions.common.ModBlendEffects;

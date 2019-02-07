@@ -1,26 +1,28 @@
 package aurocosh.divinefavor.common.custom_data.player.capability;
 
-import aurocosh.divinefavor.common.custom_data.player.data.arboreal_aura.ArborealAuraData;
-import aurocosh.divinefavor.common.custom_data.player.data.charred_aura.CharredAuraData;
-import aurocosh.divinefavor.common.custom_data.player.data.corrosion.ArmorCorrosionData;
-import aurocosh.divinefavor.common.custom_data.player.data.crawling_mist.CrawlingMistData;
-import aurocosh.divinefavor.common.custom_data.player.data.energetic_aura.EnergeticAuraData;
-import aurocosh.divinefavor.common.custom_data.player.data.energetic_presence.EnergeticPresenceData;
-import aurocosh.divinefavor.common.custom_data.player.data.escape_plan.EscapePlanData;
-import aurocosh.divinefavor.common.custom_data.player.data.focused_fury.FocusedFuryData;
-import aurocosh.divinefavor.common.custom_data.player.data.frosty_aura.FrostyAuraData;
-import aurocosh.divinefavor.common.custom_data.player.data.furious_presence.FuriousPresenceData;
-import aurocosh.divinefavor.common.custom_data.player.data.gills.GillsData;
-import aurocosh.divinefavor.common.custom_data.player.data.grudge.GrudgeData;
-import aurocosh.divinefavor.common.custom_data.player.data.hunters_aura.HuntersAuraData;
+import aurocosh.divinefavor.common.custom_data.player.data.aura.arboreal.ArborealAuraData;
+import aurocosh.divinefavor.common.custom_data.player.data.aura.charred.CharredAuraData;
+import aurocosh.divinefavor.common.custom_data.player.data.curse.corrosion.ArmorCorrosionData;
+import aurocosh.divinefavor.common.custom_data.player.data.curse.crawling_mist.CrawlingMistData;
+import aurocosh.divinefavor.common.custom_data.player.data.aura.distorted.DistortedAuraData;
+import aurocosh.divinefavor.common.custom_data.player.data.aura.energetic.EnergeticAuraData;
+import aurocosh.divinefavor.common.custom_data.player.data.presence.energetic.EnergeticPresenceData;
+import aurocosh.divinefavor.common.custom_data.player.data.presence.warping.WarpingPresenceData;
+import aurocosh.divinefavor.common.custom_data.player.data.spell.escape_plan.EscapePlanData;
+import aurocosh.divinefavor.common.custom_data.player.data.spell.focused_fury.FocusedFuryData;
+import aurocosh.divinefavor.common.custom_data.player.data.aura.frosty.FrostyAuraData;
+import aurocosh.divinefavor.common.custom_data.player.data.presence.furious.FuriousPresenceData;
+import aurocosh.divinefavor.common.custom_data.player.data.spell.gills.GillsData;
+import aurocosh.divinefavor.common.custom_data.player.data.spell.grudge.GrudgeData;
+import aurocosh.divinefavor.common.custom_data.player.data.aura.hunters.HuntersAuraData;
 import aurocosh.divinefavor.common.custom_data.player.data.interaction_handler.InteractionData;
-import aurocosh.divinefavor.common.custom_data.player.data.molten_skin.MoltenSkinData;
-import aurocosh.divinefavor.common.custom_data.player.data.pearl_crumbs.PearlCrumbsData;
+import aurocosh.divinefavor.common.custom_data.player.data.spell.molten_skin.MoltenSkinData;
+import aurocosh.divinefavor.common.custom_data.player.data.spell.pearl_crumbs.PearlCrumbsData;
 import aurocosh.divinefavor.common.custom_data.player.data.favor.FavorData;
-import aurocosh.divinefavor.common.custom_data.player.data.predatory_presence.PredatoryPresenceData;
-import aurocosh.divinefavor.common.custom_data.player.data.scorching_presence.ScorchingPresenceData;
-import aurocosh.divinefavor.common.custom_data.player.data.towering_presence.ToweringPresenceData;
-import aurocosh.divinefavor.common.custom_data.player.data.visceral_aura.VisceralAuraData;
+import aurocosh.divinefavor.common.custom_data.player.data.presence.predatory.PredatoryPresenceData;
+import aurocosh.divinefavor.common.custom_data.player.data.presence.scorching.ScorchingPresenceData;
+import aurocosh.divinefavor.common.custom_data.player.data.presence.towering.ToweringPresenceData;
+import aurocosh.divinefavor.common.custom_data.player.data.aura.visceral.VisceralAuraData;
 
 // The default implementation of the capability. Holds all the logic.
 public class DefaultPlayerDataHandler implements IPlayerDataHandler {
@@ -37,6 +39,7 @@ public class DefaultPlayerDataHandler implements IPlayerDataHandler {
 
     private final ArborealAuraData arborealAuraData;
     private final CharredAuraData charredAuraData;
+    private final DistortedAuraData distortedAuraData;
     private final EnergeticAuraData energeticAuraData;
     private final FrostyAuraData frostyAuraData;
     private final HuntersAuraData huntersAuraData;
@@ -47,6 +50,7 @@ public class DefaultPlayerDataHandler implements IPlayerDataHandler {
     private final PredatoryPresenceData predatoryPresenceData;
     private final ScorchingPresenceData scorchingPresenceData;
     private final ToweringPresenceData toweringPresenceData;
+    private final WarpingPresenceData warpingPresenceData;
 
     public DefaultPlayerDataHandler() {
         armorCorrosionData = new ArmorCorrosionData();
@@ -62,6 +66,7 @@ public class DefaultPlayerDataHandler implements IPlayerDataHandler {
 
         arborealAuraData = new ArborealAuraData();
         charredAuraData = new CharredAuraData();
+        distortedAuraData = new DistortedAuraData();
         energeticAuraData = new EnergeticAuraData();
         frostyAuraData = new FrostyAuraData();
         huntersAuraData = new HuntersAuraData();
@@ -72,6 +77,7 @@ public class DefaultPlayerDataHandler implements IPlayerDataHandler {
         predatoryPresenceData = new PredatoryPresenceData();
         scorchingPresenceData = new ScorchingPresenceData();
         toweringPresenceData = new ToweringPresenceData();
+        warpingPresenceData = new WarpingPresenceData();
     }
 
     @Override
@@ -135,6 +141,11 @@ public class DefaultPlayerDataHandler implements IPlayerDataHandler {
     }
 
     @Override
+    public DistortedAuraData getDistortedAuraData() {
+        return distortedAuraData;
+    }
+
+    @Override
     public EnergeticAuraData getEnergeticAuraData() {
         return energeticAuraData;
     }
@@ -177,5 +188,10 @@ public class DefaultPlayerDataHandler implements IPlayerDataHandler {
     @Override
     public ToweringPresenceData getToweringPresenceData() {
         return toweringPresenceData;
+    }
+
+    @Override
+    public WarpingPresenceData getWarpingPresenceData() {
+        return warpingPresenceData;
     }
 }

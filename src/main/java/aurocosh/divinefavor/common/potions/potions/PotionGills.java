@@ -1,7 +1,7 @@
 package aurocosh.divinefavor.common.potions.potions;
 
 import aurocosh.divinefavor.common.custom_data.player.PlayerData;
-import aurocosh.divinefavor.common.custom_data.player.data.gills.GillsData;
+import aurocosh.divinefavor.common.custom_data.player.data.spell.gills.GillsData;
 import aurocosh.divinefavor.common.potions.base.potion.ModPotionToggle;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;

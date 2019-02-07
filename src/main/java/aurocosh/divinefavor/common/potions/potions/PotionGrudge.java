@@ -2,7 +2,7 @@ package aurocosh.divinefavor.common.potions.potions;
 
 import aurocosh.divinefavor.DivineFavor;
 import aurocosh.divinefavor.common.custom_data.player.PlayerData;
-import aurocosh.divinefavor.common.custom_data.player.data.grudge.GrudgeData;
+import aurocosh.divinefavor.common.custom_data.player.data.spell.grudge.GrudgeData;
 import aurocosh.divinefavor.common.network.message.client.MessageSyncGrudge;
 import aurocosh.divinefavor.common.potions.base.potion.ModPotionToggle;
 import aurocosh.divinefavor.common.potions.common.ModPotions;
