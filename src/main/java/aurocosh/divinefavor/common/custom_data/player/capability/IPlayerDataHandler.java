@@ -12,32 +12,38 @@ import aurocosh.divinefavor.common.custom_data.player.data.frosty_aura.FrostyAur
 import aurocosh.divinefavor.common.custom_data.player.data.furious_presence.FuriousPresenceData;
 import aurocosh.divinefavor.common.custom_data.player.data.gills.GillsData;
 import aurocosh.divinefavor.common.custom_data.player.data.grudge.GrudgeData;
+import aurocosh.divinefavor.common.custom_data.player.data.hunters_aura.HuntersAuraData;
 import aurocosh.divinefavor.common.custom_data.player.data.interaction_handler.InteractionData;
 import aurocosh.divinefavor.common.custom_data.player.data.molten_skin.MoltenSkinData;
 import aurocosh.divinefavor.common.custom_data.player.data.pearl_crumbs.PearlCrumbsData;
 import aurocosh.divinefavor.common.custom_data.player.data.favor.FavorData;
+import aurocosh.divinefavor.common.custom_data.player.data.predatory_presence.PredatoryPresenceData;
 import aurocosh.divinefavor.common.custom_data.player.data.scorching_presence.ScorchingPresenceData;
 import aurocosh.divinefavor.common.custom_data.player.data.towering_presence.ToweringPresenceData;
 import aurocosh.divinefavor.common.custom_data.player.data.visceral_aura.VisceralAuraData;
 
 public interface IPlayerDataHandler {
-    ArborealAuraData getArborealAuraData();
     ArmorCorrosionData getArmorCorrosionData();
-    CharredAuraData getCharredAuraData();
     CrawlingMistData getCrawlingMistData();
-    EnergeticAuraData getEnergeticAuraData();
-    EnergeticPresenceData getEnergeticPresenceData();
     EscapePlanData getEscapePlanData();
     FavorData getFavorData();
     FocusedFuryData getFocusedFuryData();
-    FrostyAuraData getFrostyAuraData();
-    FuriousPresenceData getFuriousPresenceData();
     GillsData getGillsData();
     GrudgeData getGrudgeData();
     InteractionData getInteractionData();
     MoltenSkinData getMoltenSkinData();
     PearlCrumbsData getPearlCrumbsData();
+
+    ArborealAuraData getArborealAuraData();
+    CharredAuraData getCharredAuraData();
+    EnergeticAuraData getEnergeticAuraData();
+    FrostyAuraData getFrostyAuraData();
+    HuntersAuraData getHuntersAuraData();
+    VisceralAuraData getVisceralAuraData();
+
+    EnergeticPresenceData getEnergeticPresenceData();
+    FuriousPresenceData getFuriousPresenceData();
+    PredatoryPresenceData getPredatoryPresenceData();
     ScorchingPresenceData getScorchingPresenceData();
     ToweringPresenceData getToweringPresenceData();
-    VisceralAuraData getVisceralAuraData();
 }
