@@ -2,6 +2,7 @@ package aurocosh.divinefavor.common.potions.blends;
 
 import aurocosh.divinefavor.common.custom_data.player.PlayerData;
 import aurocosh.divinefavor.common.custom_data.player.data.aura.distorted.DistortedAuraData;
+import aurocosh.divinefavor.common.item.ItemBlockEnderPumpkin;
 import aurocosh.divinefavor.common.lib.LoopedCounter;
 import aurocosh.divinefavor.common.potions.base.effect.ModEffect;
 import aurocosh.divinefavor.common.potions.base.potion.ModPotion;
@@ -12,8 +13,6 @@ import aurocosh.divinefavor.common.util.UtilTick;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.monster.EntityEnderman;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Blocks;
-import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.Vec3d;
@@ -53,10 +52,7 @@ public class PotionDistortedAura extends ModPotion {
             return;
         EntityPlayer player = (EntityPlayer) livingBase;
         ItemStack headStack = player.inventory.armorInventory.get(3);
-        if (!(headStack.getItem() instanceof ItemBlock))
-            return;
-        ItemBlock itemBlock = (ItemBlock) headStack.getItem();
-        if (!(itemBlock.getBlock() == Blocks.PUMPKIN))
+        if (!(headStack.getItem() instanceof ItemBlockEnderPumpkin))
             return;
 
         Vec3d pos = player.getPositionVector();
