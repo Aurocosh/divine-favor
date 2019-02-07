@@ -23,6 +23,7 @@ public class ConstResources {
     public static final String GUI_SOULBOUND_LECTERN_BOUND = PREFIX_GUI + "soulbound_lectern_bound.png";
     public static final String GUI_SOULBOUND_LECTERN_UNBOUND = PREFIX_GUI + "soulbound_lectern_unbound.png";
     public static final String GUI_TALISMAN = PREFIX_GUI + "talisman.png";
+    public static final String GUI_ENDER_PUMPKIN = PREFIX_GUI + "ender_pumpkin_blur.png";
 
     public static final String RES_ARROW = PREFIX_PROJECTILES + "arrow.png";
     public static final String RES_CURSED_ARROW = PREFIX_PROJECTILES + "cursed_arrow.png";
