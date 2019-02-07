@@ -1,7 +1,7 @@
 package aurocosh.divinefavor.common.item.talismans.spell;
 
 import aurocosh.divinefavor.common.custom_data.player.PlayerData;
-import aurocosh.divinefavor.common.custom_data.player.data.escape_plan.EscapePlanData;
+import aurocosh.divinefavor.common.custom_data.player.data.spell.escape_plan.EscapePlanData;
 import aurocosh.divinefavor.common.favor.ModFavor;
 import aurocosh.divinefavor.common.item.talismans.spell.base.ItemSpellTalisman;
 import aurocosh.divinefavor.common.item.talismans.spell.base.SpellOptions;

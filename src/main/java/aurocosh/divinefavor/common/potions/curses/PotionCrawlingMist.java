@@ -1,7 +1,7 @@
 package aurocosh.divinefavor.common.potions.curses;
 
 import aurocosh.divinefavor.common.custom_data.player.PlayerData;
-import aurocosh.divinefavor.common.custom_data.player.data.crawling_mist.CrawlingMistData;
+import aurocosh.divinefavor.common.custom_data.player.data.curse.crawling_mist.CrawlingMistData;
 import aurocosh.divinefavor.common.lib.LoopedCounter;
 import aurocosh.divinefavor.common.lib.math.Vector3i;
 import aurocosh.divinefavor.common.potions.base.potion.ModPotion;

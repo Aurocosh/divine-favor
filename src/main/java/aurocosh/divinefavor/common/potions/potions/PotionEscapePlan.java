@@ -1,7 +1,7 @@
 package aurocosh.divinefavor.common.potions.potions;
 
 import aurocosh.divinefavor.common.custom_data.player.PlayerData;
-import aurocosh.divinefavor.common.custom_data.player.data.escape_plan.EscapePlanData;
+import aurocosh.divinefavor.common.custom_data.player.data.spell.escape_plan.EscapePlanData;
 import aurocosh.divinefavor.common.potions.base.potion.ModPotion;
 import aurocosh.divinefavor.common.potions.common.ModPotions;
 import aurocosh.divinefavor.common.util.UtilEntity;

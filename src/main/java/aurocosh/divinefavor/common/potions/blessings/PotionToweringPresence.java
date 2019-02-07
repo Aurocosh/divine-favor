@@ -1,7 +1,7 @@
 package aurocosh.divinefavor.common.potions.blessings;
 
 import aurocosh.divinefavor.common.custom_data.player.PlayerData;
-import aurocosh.divinefavor.common.custom_data.player.data.towering_presence.ToweringPresenceData;
+import aurocosh.divinefavor.common.custom_data.player.data.presence.towering.ToweringPresenceData;
 import aurocosh.divinefavor.common.item.calling_stones.ModCallingStones;
 import aurocosh.divinefavor.common.lib.DistributedRandomList;
 import aurocosh.divinefavor.common.potions.base.effect.ModEffect;

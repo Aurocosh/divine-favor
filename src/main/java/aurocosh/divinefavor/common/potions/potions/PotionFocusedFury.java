@@ -2,7 +2,7 @@ package aurocosh.divinefavor.common.potions.potions;
 
 import aurocosh.divinefavor.DivineFavor;
 import aurocosh.divinefavor.common.custom_data.player.PlayerData;
-import aurocosh.divinefavor.common.custom_data.player.data.focused_fury.FocusedFuryData;
+import aurocosh.divinefavor.common.custom_data.player.data.spell.focused_fury.FocusedFuryData;
 import aurocosh.divinefavor.common.network.message.client.MessageSyncFury;
 import aurocosh.divinefavor.common.potions.base.potion.ModPotion;
 import aurocosh.divinefavor.common.potions.common.ModPotions;

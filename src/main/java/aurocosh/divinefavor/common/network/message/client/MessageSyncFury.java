@@ -2,7 +2,7 @@ package aurocosh.divinefavor.common.network.message.client;
 
 import aurocosh.divinefavor.DivineFavor;
 import aurocosh.divinefavor.common.custom_data.player.PlayerData;
-import aurocosh.divinefavor.common.custom_data.player.data.focused_fury.FocusedFuryData;
+import aurocosh.divinefavor.common.custom_data.player.data.spell.focused_fury.FocusedFuryData;
 import aurocosh.divinefavor.common.network.base.NetworkWrappedClientMessage;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraftforge.fml.relauncher.Side;

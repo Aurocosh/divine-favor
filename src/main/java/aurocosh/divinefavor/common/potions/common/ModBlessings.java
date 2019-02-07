@@ -10,6 +10,7 @@ public class ModBlessings {
     public static ModPotion predatory_presence;
     public static ModPotion scorching_presence;
     public static ModPotion towering_presence;
+    public static ModPotion warping_presence;
 
     public static void preInit() {
         chilling_presence = new PotionChillingPresence();
@@ -18,5 +19,6 @@ public class ModBlessings {
         predatory_presence = new PotionPredatoryPresence();
         scorching_presence = new PotionScorchingPresence();
         towering_presence = new PotionToweringPresence();
+        warping_presence = new PotionWarpingPresence();
     }
 }

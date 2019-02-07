@@ -1,26 +1,27 @@
 package aurocosh.divinefavor.common.custom_data.player.capability;
 
-import aurocosh.divinefavor.common.custom_data.player.data.arboreal_aura.ArborealAuraDataSerializer;
-import aurocosh.divinefavor.common.custom_data.player.data.charred_aura.CharredAuraDataSerializer;
-import aurocosh.divinefavor.common.custom_data.player.data.corrosion.ArmorCorrosionDataSerializer;
-import aurocosh.divinefavor.common.custom_data.player.data.crawling_mist.CrawlingMistDataSerializer;
-import aurocosh.divinefavor.common.custom_data.player.data.energetic_aura.EnergeticAuraDataSerializer;
-import aurocosh.divinefavor.common.custom_data.player.data.energetic_presence.EnergeticPresenceDataSerializer;
-import aurocosh.divinefavor.common.custom_data.player.data.escape_plan.EscapePlanDataSerializer;
+import aurocosh.divinefavor.common.custom_data.player.data.aura.arboreal.ArborealAuraDataSerializer;
+import aurocosh.divinefavor.common.custom_data.player.data.aura.charred.CharredAuraDataSerializer;
+import aurocosh.divinefavor.common.custom_data.player.data.aura.distorted.DistortedAuraDataSerializer;
+import aurocosh.divinefavor.common.custom_data.player.data.curse.corrosion.ArmorCorrosionDataSerializer;
+import aurocosh.divinefavor.common.custom_data.player.data.curse.crawling_mist.CrawlingMistDataSerializer;
+import aurocosh.divinefavor.common.custom_data.player.data.aura.energetic.EnergeticAuraDataSerializer;
+import aurocosh.divinefavor.common.custom_data.player.data.presence.energetic.EnergeticPresenceDataSerializer;
+import aurocosh.divinefavor.common.custom_data.player.data.spell.escape_plan.EscapePlanDataSerializer;
 import aurocosh.divinefavor.common.custom_data.player.data.favor.FavorDataSerializer;
-import aurocosh.divinefavor.common.custom_data.player.data.focused_fury.FocusedFuryDataSerializer;
-import aurocosh.divinefavor.common.custom_data.player.data.frosty_aura.FrostyAuraDataSerializer;
-import aurocosh.divinefavor.common.custom_data.player.data.furious_presence.FuriousPresenceDataSerializer;
-import aurocosh.divinefavor.common.custom_data.player.data.gills.GillsDataSerializer;
-import aurocosh.divinefavor.common.custom_data.player.data.grudge.GrudgeDataSerializer;
-import aurocosh.divinefavor.common.custom_data.player.data.hunters_aura.HuntersAuraDataSerializer;
+import aurocosh.divinefavor.common.custom_data.player.data.spell.focused_fury.FocusedFuryDataSerializer;
+import aurocosh.divinefavor.common.custom_data.player.data.aura.frosty.FrostyAuraDataSerializer;
+import aurocosh.divinefavor.common.custom_data.player.data.presence.furious.FuriousPresenceDataSerializer;
+import aurocosh.divinefavor.common.custom_data.player.data.spell.gills.GillsDataSerializer;
+import aurocosh.divinefavor.common.custom_data.player.data.spell.grudge.GrudgeDataSerializer;
+import aurocosh.divinefavor.common.custom_data.player.data.aura.hunters.HuntersAuraDataSerializer;
 import aurocosh.divinefavor.common.custom_data.player.data.interaction_handler.InteractionDataSerializer;
-import aurocosh.divinefavor.common.custom_data.player.data.molten_skin.MoltenSkinDataSerializer;
-import aurocosh.divinefavor.common.custom_data.player.data.pearl_crumbs.PearlCrumbsDataSerializer;
-import aurocosh.divinefavor.common.custom_data.player.data.predatory_presence.PredatoryPresenceDataSerializer;
-import aurocosh.divinefavor.common.custom_data.player.data.scorching_presence.ScorchingPresenceDataSerializer;
-import aurocosh.divinefavor.common.custom_data.player.data.towering_presence.ToweringPresenceDataSerializer;
-import aurocosh.divinefavor.common.custom_data.player.data.visceral_aura.VisceralAuraDataSerializer;
+import aurocosh.divinefavor.common.custom_data.player.data.spell.molten_skin.MoltenSkinDataSerializer;
+import aurocosh.divinefavor.common.custom_data.player.data.spell.pearl_crumbs.PearlCrumbsDataSerializer;
+import aurocosh.divinefavor.common.custom_data.player.data.presence.predatory.PredatoryPresenceDataSerializer;
+import aurocosh.divinefavor.common.custom_data.player.data.presence.scorching.ScorchingPresenceDataSerializer;
+import aurocosh.divinefavor.common.custom_data.player.data.presence.towering.ToweringPresenceDataSerializer;
+import aurocosh.divinefavor.common.custom_data.player.data.aura.visceral.VisceralAuraDataSerializer;
 import net.minecraft.nbt.NBTBase;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumFacing;
@@ -41,6 +42,7 @@ public class PlayerDataStorage implements Capability.IStorage<IPlayerDataHandler
 
     private static final ArborealAuraDataSerializer ARBOREAL_AURA_DATA_SERIALIZER = new ArborealAuraDataSerializer();
     private static final CharredAuraDataSerializer CHARRED_AURA_DATA_SERIALIZER = new CharredAuraDataSerializer();
+    private static final DistortedAuraDataSerializer DISTORTED_AURA_DATA_SERIALIZER = new DistortedAuraDataSerializer();
     private static final EnergeticAuraDataSerializer ENERGETIC_AURA_DATA_SERIALIZER = new EnergeticAuraDataSerializer();
     private static final FrostyAuraDataSerializer FROSTY_AURA_DATA_SERIALIZER = new FrostyAuraDataSerializer();
     private static final HuntersAuraDataSerializer HUNTERS_AURA_DATA_SERIALIZER = new HuntersAuraDataSerializer();
@@ -68,6 +70,7 @@ public class PlayerDataStorage implements Capability.IStorage<IPlayerDataHandler
 
         ARBOREAL_AURA_DATA_SERIALIZER.serialize(tag, instance.getArborealAuraData());
         CHARRED_AURA_DATA_SERIALIZER.serialize(tag, instance.getCharredAuraData());
+        DISTORTED_AURA_DATA_SERIALIZER.serialize(tag, instance.getDistortedAuraData());
         ENERGETIC_AURA_DATA_SERIALIZER.serialize(tag, instance.getEnergeticAuraData());
         FROSTY_AURA_DATA_SERIALIZER.serialize(tag, instance.getFrostyAuraData());
         HUNTERS_AURA_DATA_SERIALIZER.serialize(tag, instance.getHuntersAuraData());
@@ -97,6 +100,7 @@ public class PlayerDataStorage implements Capability.IStorage<IPlayerDataHandler
 
         ARBOREAL_AURA_DATA_SERIALIZER.deserialize(tag, instance.getArborealAuraData());
         CHARRED_AURA_DATA_SERIALIZER.deserialize(tag, instance.getCharredAuraData());
+        DISTORTED_AURA_DATA_SERIALIZER.deserialize(tag, instance.getDistortedAuraData());
         ENERGETIC_AURA_DATA_SERIALIZER.deserialize(tag, instance.getEnergeticAuraData());
         FROSTY_AURA_DATA_SERIALIZER.deserialize(tag, instance.getFrostyAuraData());
         HUNTERS_AURA_DATA_SERIALIZER.deserialize(tag, instance.getHuntersAuraData());
