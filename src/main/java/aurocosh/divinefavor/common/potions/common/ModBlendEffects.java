@@ -8,6 +8,7 @@ public class ModBlendEffects {
     public static ModPotion charred_aura;
     public static ModPotion energetic_aura;
     public static ModPotion frosty_aura;
+    public static ModPotion hunters_aura;
     public static ModPotion visceral_aura;
 
     public static void preInit() {
@@ -15,6 +16,7 @@ public class ModBlendEffects {
         charred_aura = new PotionCharredAura();
         energetic_aura = new PotionEnergeticAura();
         frosty_aura = new PotionFrostyAura();
+        hunters_aura = new PotionHuntersAura();
         visceral_aura = new PotionVisceralAura();
     }
 }

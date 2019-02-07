@@ -12,61 +12,66 @@ import aurocosh.divinefavor.common.custom_data.player.data.frosty_aura.FrostyAur
 import aurocosh.divinefavor.common.custom_data.player.data.furious_presence.FuriousPresenceData;
 import aurocosh.divinefavor.common.custom_data.player.data.gills.GillsData;
 import aurocosh.divinefavor.common.custom_data.player.data.grudge.GrudgeData;
+import aurocosh.divinefavor.common.custom_data.player.data.hunters_aura.HuntersAuraData;
 import aurocosh.divinefavor.common.custom_data.player.data.interaction_handler.InteractionData;
 import aurocosh.divinefavor.common.custom_data.player.data.molten_skin.MoltenSkinData;
 import aurocosh.divinefavor.common.custom_data.player.data.pearl_crumbs.PearlCrumbsData;
 import aurocosh.divinefavor.common.custom_data.player.data.favor.FavorData;
+import aurocosh.divinefavor.common.custom_data.player.data.predatory_presence.PredatoryPresenceData;
 import aurocosh.divinefavor.common.custom_data.player.data.scorching_presence.ScorchingPresenceData;
 import aurocosh.divinefavor.common.custom_data.player.data.towering_presence.ToweringPresenceData;
 import aurocosh.divinefavor.common.custom_data.player.data.visceral_aura.VisceralAuraData;
 
 // The default implementation of the capability. Holds all the logic.
 public class DefaultPlayerDataHandler implements IPlayerDataHandler {
-    private final ArborealAuraData arborealAuraData;
     private final ArmorCorrosionData armorCorrosionData;
-    private final CharredAuraData charredAuraData;
     private final CrawlingMistData crawlingMistData;
-    private final EnergeticAuraData energeticAuraData;
-    private final EnergeticPresenceData energeticPresenceData;
     private final EscapePlanData escapePlanData;
     private final FavorData favorData;
     private final FocusedFuryData focusedFuryData;
-    private final FrostyAuraData frostyAuraData;
-    private final FuriousPresenceData furiousPresenceData;
     private final GillsData gillsData;
     private final GrudgeData grudgeData;
     private final InteractionData interactionData;
     private final MoltenSkinData moltenSkinData;
     private final PearlCrumbsData pearlCrumbsData;
-    private final ScorchingPresenceData scorchingPresenceData;
-    private final ToweringPresenceData toweringPresenceData;
+
+    private final ArborealAuraData arborealAuraData;
+    private final CharredAuraData charredAuraData;
+    private final EnergeticAuraData energeticAuraData;
+    private final FrostyAuraData frostyAuraData;
+    private final HuntersAuraData huntersAuraData;
     private final VisceralAuraData visceralAuraData;
 
+    private final EnergeticPresenceData energeticPresenceData;
+    private final FuriousPresenceData furiousPresenceData;
+    private final PredatoryPresenceData predatoryPresenceData;
+    private final ScorchingPresenceData scorchingPresenceData;
+    private final ToweringPresenceData toweringPresenceData;
+
     public DefaultPlayerDataHandler() {
-        arborealAuraData = new ArborealAuraData();
         armorCorrosionData = new ArmorCorrosionData();
-        charredAuraData = new CharredAuraData();
         crawlingMistData = new CrawlingMistData();
-        energeticAuraData = new EnergeticAuraData();
-        energeticPresenceData = new EnergeticPresenceData();
         escapePlanData = new EscapePlanData();
         favorData = new FavorData();
         focusedFuryData = new FocusedFuryData();
-        frostyAuraData = new FrostyAuraData();
         gillsData = new GillsData();
         grudgeData = new GrudgeData();
         interactionData = new InteractionData();
         moltenSkinData = new MoltenSkinData();
         pearlCrumbsData = new PearlCrumbsData();
+
+        arborealAuraData = new ArborealAuraData();
+        charredAuraData = new CharredAuraData();
+        energeticAuraData = new EnergeticAuraData();
+        frostyAuraData = new FrostyAuraData();
+        huntersAuraData = new HuntersAuraData();
+        visceralAuraData = new VisceralAuraData();
+
+        energeticPresenceData = new EnergeticPresenceData();
+        furiousPresenceData = new FuriousPresenceData();
+        predatoryPresenceData = new PredatoryPresenceData();
         scorchingPresenceData = new ScorchingPresenceData();
         toweringPresenceData = new ToweringPresenceData();
-        visceralAuraData = new VisceralAuraData();
-        furiousPresenceData = new FuriousPresenceData();
-    }
-
-    @Override
-    public ArborealAuraData getArborealAuraData() {
-        return arborealAuraData;
     }
 
     @Override
@@ -75,23 +80,8 @@ public class DefaultPlayerDataHandler implements IPlayerDataHandler {
     }
 
     @Override
-    public CharredAuraData getCharredAuraData() {
-        return charredAuraData;
-    }
-
-    @Override
     public CrawlingMistData getCrawlingMistData() {
         return crawlingMistData;
-    }
-
-    @Override
-    public EnergeticAuraData getEnergeticAuraData() {
-        return energeticAuraData;
-    }
-
-    @Override
-    public EnergeticPresenceData getEnergeticPresenceData() {
-        return energeticPresenceData;
     }
 
     @Override
@@ -100,18 +90,13 @@ public class DefaultPlayerDataHandler implements IPlayerDataHandler {
     }
 
     @Override
+    public FavorData getFavorData() {
+        return favorData;
+    }
+
+    @Override
     public FocusedFuryData getFocusedFuryData() {
         return focusedFuryData;
-    }
-
-    @Override
-    public FrostyAuraData getFrostyAuraData() {
-        return frostyAuraData;
-    }
-
-    @Override
-    public FuriousPresenceData getFuriousPresenceData() {
-        return furiousPresenceData;
     }
 
     @Override
@@ -140,13 +125,28 @@ public class DefaultPlayerDataHandler implements IPlayerDataHandler {
     }
 
     @Override
-    public ScorchingPresenceData getScorchingPresenceData() {
-        return scorchingPresenceData;
+    public ArborealAuraData getArborealAuraData() {
+        return arborealAuraData;
     }
 
     @Override
-    public ToweringPresenceData getToweringPresenceData() {
-        return toweringPresenceData;
+    public CharredAuraData getCharredAuraData() {
+        return charredAuraData;
+    }
+
+    @Override
+    public EnergeticAuraData getEnergeticAuraData() {
+        return energeticAuraData;
+    }
+
+    @Override
+    public FrostyAuraData getFrostyAuraData() {
+        return frostyAuraData;
+    }
+
+    @Override
+    public HuntersAuraData getHuntersAuraData() {
+        return huntersAuraData;
     }
 
     @Override
@@ -155,7 +155,27 @@ public class DefaultPlayerDataHandler implements IPlayerDataHandler {
     }
 
     @Override
-    public FavorData getFavorData() {
-        return favorData;
+    public EnergeticPresenceData getEnergeticPresenceData() {
+        return energeticPresenceData;
+    }
+
+    @Override
+    public FuriousPresenceData getFuriousPresenceData() {
+        return furiousPresenceData;
+    }
+
+    @Override
+    public PredatoryPresenceData getPredatoryPresenceData() {
+        return predatoryPresenceData;
+    }
+
+    @Override
+    public ScorchingPresenceData getScorchingPresenceData() {
+        return scorchingPresenceData;
+    }
+
+    @Override
+    public ToweringPresenceData getToweringPresenceData() {
+        return toweringPresenceData;
     }
 }

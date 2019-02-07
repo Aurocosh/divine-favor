@@ -1,6 +1,6 @@
 {
     "parent": "item/generated",
     "textures": {
-        "layer0": "divinefavor:items/blends/redstone_blend"
+        "layer0": "divinefavor:items/blends/feathers"
     }
 }
