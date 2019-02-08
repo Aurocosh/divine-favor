@@ -38,6 +38,9 @@ public final class ModMultiBlocks {
     public static ModMultiBlock soulbound_lectern_wood;
     public static ModMultiBlock soulbound_lectern_stone;
 
+    public static ModMultiBlock snowman;
+    public static ModMultiBlock iron_golem;
+
     public static void preInit() {
         Gson gson = new GsonBuilder()
                 .registerTypeAdapter(StateValidator.class, new StateValidatorSerializer())
@@ -57,6 +60,9 @@ public final class ModMultiBlocks {
 
         soulbound_lectern_wood = createMultiBlock("soulbound_lectern_wood", gson);
         soulbound_lectern_stone = createMultiBlock("soulbound_lectern_stone", gson);
+
+        snowman = createMultiBlock("snowman", gson);
+        iron_golem = createMultiBlock("iron_golem", gson);
     }
 
     private static ModMultiBlock createMultiBlock(String name, Gson gson) {

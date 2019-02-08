@@ -1,6 +1,7 @@
 package aurocosh.divinefavor.common.custom_data.player.capability;
 
 import aurocosh.divinefavor.common.custom_data.player.data.aura.arboreal.ArborealAuraData;
+import aurocosh.divinefavor.common.custom_data.player.data.aura.calling.CallingAuraData;
 import aurocosh.divinefavor.common.custom_data.player.data.aura.charred.CharredAuraData;
 import aurocosh.divinefavor.common.custom_data.player.data.aura.mineral.MineralAuraData;
 import aurocosh.divinefavor.common.custom_data.player.data.curse.corrosion.ArmorCorrosionData;
@@ -9,6 +10,7 @@ import aurocosh.divinefavor.common.custom_data.player.data.aura.distorted.Distor
 import aurocosh.divinefavor.common.custom_data.player.data.aura.energetic.EnergeticAuraData;
 import aurocosh.divinefavor.common.custom_data.player.data.presence.energetic.EnergeticPresenceData;
 import aurocosh.divinefavor.common.custom_data.player.data.presence.industrious.IndustriousPresenceData;
+import aurocosh.divinefavor.common.custom_data.player.data.presence.manipulative.ManipulativePresenceData;
 import aurocosh.divinefavor.common.custom_data.player.data.presence.warping.WarpingPresenceData;
 import aurocosh.divinefavor.common.custom_data.player.data.spell.escape_plan.EscapePlanData;
 import aurocosh.divinefavor.common.custom_data.player.data.spell.focused_fury.FocusedFuryData;
@@ -39,6 +41,7 @@ public interface IPlayerDataHandler {
     PearlCrumbsData getPearlCrumbsData();
 
     ArborealAuraData getArborealAuraData();
+    CallingAuraData getCallingAuraData();
     CharredAuraData getCharredAuraData();
     DistortedAuraData getDistortedAuraData();
     EnergeticAuraData getEnergeticAuraData();
@@ -50,6 +53,7 @@ public interface IPlayerDataHandler {
     EnergeticPresenceData getEnergeticPresenceData();
     FuriousPresenceData getFuriousPresenceData();
     IndustriousPresenceData getIndustriousPresenceData();
+    ManipulativePresenceData getManipulativePresenceData();
     PredatoryPresenceData getPredatoryPresenceData();
     ScorchingPresenceData getScorchingPresenceData();
     ToweringPresenceData getToweringPresenceData();

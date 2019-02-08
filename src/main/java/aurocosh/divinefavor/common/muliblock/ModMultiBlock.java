@@ -19,7 +19,7 @@ public class ModMultiBlock extends IForgeRegistryEntry.Impl<ModMultiBlock> {
 
     public ModMultiBlock(String name, Vector3i controllerRelative, List<MultiBlockPart> parts, CubeCoordinates boundingBox) {
         List<MultiBlockConfiguration> configurations = new ArrayList<>();
-        MultiBlockConfiguration configuration = new MultiBlockConfiguration(controllerRelative,parts,boundingBox);
+        MultiBlockConfiguration configuration = new MultiBlockConfiguration(controllerRelative, parts, boundingBox);
         configurations.add(configuration);
         configuration = configuration.rotateClockwise();
         configurations.add(configuration);
@@ -29,7 +29,7 @@ public class ModMultiBlock extends IForgeRegistryEntry.Impl<ModMultiBlock> {
         configurations.add(configuration);
 
         this.configurations = Collections.unmodifiableList(configurations);
-        setRegistryName(ResourceNamer.getFullName("multi_block",name));
+        setRegistryName(ResourceNamer.getFullName("multi_block", name));
     }
 //
 //    public boolean isValid(World world, Vector3i controller){
@@ -40,17 +40,20 @@ public class ModMultiBlock extends IForgeRegistryEntry.Impl<ModMultiBlock> {
 //        return true;
 //    }
 
-    public MultiBlockInstance makeMultiBlock(World world, Vector3i controller){
+    public MultiBlockConfiguration match(World world, Vector3i controller) {
         for (MultiBlockConfiguration configuration : configurations)
             if (configuration.isValid(world, controller))
-                return new MultiBlockInstance(this, configuration, controller);
+                return configuration;
         return null;
     }
 
-    public MultiBlockInstanceAltar makeMultiBlock(ModSpirit spirit, World world, Vector3i controller){
-        for (MultiBlockConfiguration configuration : configurations)
-            if (configuration.isValid(world, controller))
-                return new MultiBlockInstanceAltar(this, configuration, controller, spirit);
-        return null;
+    public MultiBlockInstance makeMultiBlock(World world, Vector3i controller) {
+        MultiBlockConfiguration configuration = match(world, controller);
+        return configuration != null ? new MultiBlockInstance(this, configuration, controller) : null;
+    }
+
+    public MultiBlockInstanceAltar makeMultiBlock(ModSpirit spirit, World world, Vector3i controller) {
+        MultiBlockConfiguration configuration = match(world, controller);
+        return configuration != null ? new MultiBlockInstanceAltar(this, configuration, controller, spirit) : null;
     }
 }

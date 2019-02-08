@@ -1,6 +1,7 @@
 package aurocosh.divinefavor.common.custom_data.player.capability;
 
 import aurocosh.divinefavor.common.custom_data.player.data.aura.arboreal.ArborealAuraData;
+import aurocosh.divinefavor.common.custom_data.player.data.aura.calling.CallingAuraData;
 import aurocosh.divinefavor.common.custom_data.player.data.aura.charred.CharredAuraData;
 import aurocosh.divinefavor.common.custom_data.player.data.aura.mineral.MineralAuraData;
 import aurocosh.divinefavor.common.custom_data.player.data.curse.corrosion.ArmorCorrosionData;
@@ -9,6 +10,7 @@ import aurocosh.divinefavor.common.custom_data.player.data.aura.distorted.Distor
 import aurocosh.divinefavor.common.custom_data.player.data.aura.energetic.EnergeticAuraData;
 import aurocosh.divinefavor.common.custom_data.player.data.presence.energetic.EnergeticPresenceData;
 import aurocosh.divinefavor.common.custom_data.player.data.presence.industrious.IndustriousPresenceData;
+import aurocosh.divinefavor.common.custom_data.player.data.presence.manipulative.ManipulativePresenceData;
 import aurocosh.divinefavor.common.custom_data.player.data.presence.warping.WarpingPresenceData;
 import aurocosh.divinefavor.common.custom_data.player.data.spell.escape_plan.EscapePlanData;
 import aurocosh.divinefavor.common.custom_data.player.data.spell.focused_fury.FocusedFuryData;
@@ -40,6 +42,7 @@ public class DefaultPlayerDataHandler implements IPlayerDataHandler {
     private final PearlCrumbsData pearlCrumbsData;
 
     private final ArborealAuraData arborealAuraData;
+    private final CallingAuraData callingAuraData;
     private final CharredAuraData charredAuraData;
     private final DistortedAuraData distortedAuraData;
     private final EnergeticAuraData energeticAuraData;
@@ -51,6 +54,7 @@ public class DefaultPlayerDataHandler implements IPlayerDataHandler {
     private final EnergeticPresenceData energeticPresenceData;
     private final FuriousPresenceData furiousPresenceData;
     private final IndustriousPresenceData industriousPresenceData;
+    private final ManipulativePresenceData manipulativePresenceData;
     private final PredatoryPresenceData predatoryPresenceData;
     private final ScorchingPresenceData scorchingPresenceData;
     private final ToweringPresenceData toweringPresenceData;
@@ -70,6 +74,7 @@ public class DefaultPlayerDataHandler implements IPlayerDataHandler {
         pearlCrumbsData = new PearlCrumbsData();
 
         arborealAuraData = new ArborealAuraData();
+        callingAuraData = new CallingAuraData();
         charredAuraData = new CharredAuraData();
         distortedAuraData = new DistortedAuraData();
         energeticAuraData = new EnergeticAuraData();
@@ -81,6 +86,7 @@ public class DefaultPlayerDataHandler implements IPlayerDataHandler {
         energeticPresenceData = new EnergeticPresenceData();
         furiousPresenceData = new FuriousPresenceData();
         industriousPresenceData = new IndustriousPresenceData();
+        manipulativePresenceData = new ManipulativePresenceData();
         predatoryPresenceData = new PredatoryPresenceData();
         scorchingPresenceData = new ScorchingPresenceData();
         toweringPresenceData = new ToweringPresenceData();
@@ -143,6 +149,11 @@ public class DefaultPlayerDataHandler implements IPlayerDataHandler {
     }
 
     @Override
+    public CallingAuraData getCallingAuraData() {
+        return callingAuraData;
+    }
+
+    @Override
     public CharredAuraData getCharredAuraData() {
         return charredAuraData;
     }
@@ -190,6 +201,11 @@ public class DefaultPlayerDataHandler implements IPlayerDataHandler {
     @Override
     public IndustriousPresenceData getIndustriousPresenceData() {
         return industriousPresenceData;
+    }
+
+    @Override
+    public ManipulativePresenceData getManipulativePresenceData() {
+        return manipulativePresenceData;
     }
 
     @Override
