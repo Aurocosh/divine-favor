@@ -11,6 +11,7 @@ public final class ModBathingBlends {
     private static ItemBathingBlend ender_pearl;
     private static ItemBathingBlend feathers;
     private static ItemBathingBlend fleshy_blend;
+    private static ItemBathingBlend flint;
     private static ItemBathingBlend redstone_blend;
     private static ItemBathingBlend wood;
 
@@ -20,6 +21,7 @@ public final class ModBathingBlends {
         ender_pearl = new ItemBathingBlendModPotion("ender_pearl", UtilTick.secondsToTicks(20), 35, ModBlendEffects.distorted_aura, UtilTick.secondsToTicks(20));
         feathers = new ItemBathingBlendModPotion("feathers", UtilTick.secondsToTicks(20), 35, ModBlendEffects.hunters_aura, UtilTick.secondsToTicks(20));
         fleshy_blend = new ItemBathingBlendModPotion("fleshy", UtilTick.secondsToTicks(20), 35, ModBlendEffects.visceral_aura, UtilTick.secondsToTicks(20));
+        flint = new ItemBathingBlendModPotion("flint", UtilTick.secondsToTicks(20), 35, ModBlendEffects.mineral_aura, UtilTick.secondsToTicks(20));
         redstone_blend = new ItemBathingBlendModPotion("redstone", UtilTick.secondsToTicks(20), 35, ModBlendEffects.energetic_aura, UtilTick.secondsToTicks(20));
         wood = new ItemBathingBlendModPotion("wood", UtilTick.secondsToTicks(20), 35, ModBlendEffects.arboreal_aura, UtilTick.secondsToTicks(20));
     }

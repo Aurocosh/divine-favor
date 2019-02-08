@@ -1,6 +1,6 @@
 {
-  "name": "Altar of Nefir",
-  "icon": "divinefavor:calling_stone_nefir",
+  "name": "Altar of Neblaze",
+  "icon": "divinefavor:calling_stone_neblaze",
   "category": "altars",
   "pages": [
     {
@@ -9,7 +9,7 @@
     },
     {
       "type": "multiblock",
-      "multiblock_id": "divinefavor:multi_block.altar_nefir.patchouli",
+      "multiblock_id": "divinefavor:multi_block.altar_neblaze.patchouli",
       "text": "Bla bla"
     }
   ]

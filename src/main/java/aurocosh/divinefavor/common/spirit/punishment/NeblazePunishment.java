@@ -23,7 +23,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class NefirPunishment extends SpiritPunishment {
+public class NeblazePunishment extends SpiritPunishment {
     public static int IGNITION_TIME_SECONDS = 20;
 
     public static int MOBS_TO_SUMMON = 4;

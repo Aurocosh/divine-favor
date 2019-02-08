@@ -25,11 +25,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public final class ModMultiBlocks {
-    public static ModMultiBlock altar_allfire;
     public static ModMultiBlock altar_arbow;
     public static ModMultiBlock altar_blizrabi;
     public static ModMultiBlock altar_endererer;
-    public static ModMultiBlock altar_nefir;
+    public static ModMultiBlock altar_neblaze;
     public static ModMultiBlock altar_redwind;
     public static ModMultiBlock altar_romol;
     public static ModMultiBlock altar_squarefury;
@@ -45,11 +44,10 @@ public final class ModMultiBlocks {
                 .registerTypeAdapter(Vector3i.class, new Vector3iByteSerializer())
                 .create();
 
-        altar_allfire = createMultiBlock("altar_allfire", gson);
         altar_arbow = createMultiBlock("altar_arbow", gson);
         altar_blizrabi = createMultiBlock("altar_blizrabi", gson);
         altar_endererer = createMultiBlock("altar_endererer", gson);
-        altar_nefir = createMultiBlock("altar_nefir", gson);
+        altar_neblaze = createMultiBlock("altar_neblaze", gson);
         altar_redwind = createMultiBlock("altar_redwind", gson);
         altar_romol = createMultiBlock("altar_romol", gson);
         altar_squarefury = createMultiBlock("altar_squarefury", gson);

@@ -5,23 +5,16 @@ import aurocosh.divinefavor.common.spirit.base.ModSpirit;
 import aurocosh.divinefavor.common.spirit.punishment.*;
 
 public final class ModSpirits {
-    public static ModSpirit allfire;
     public static ModSpirit arbow;
     public static ModSpirit blizrabi;
     public static ModSpirit endererer;
-    public static ModSpirit nefir;
+    public static ModSpirit neblaze;
     public static ModSpirit redwind;
     public static ModSpirit romol;
     public static ModSpirit squarefury;
     public static ModSpirit timber;
 
     public static void preInit() {
-        allfire = new SpiritBuilder("allfire")
-                .addActivityPeriod(10, 14)
-                .setPunishment(new AllfirePunishment())
-                .addFavor(ModFavors.allfire)
-                .create();
-
         arbow = new SpiritBuilder("arbow")
                 .addActivityPeriod(10, 14)
                 .addFavor(ModFavors.arbow)
@@ -39,10 +32,10 @@ public final class ModSpirits {
                 .addFavor(ModFavors.endererer)
                 .create();
 
-        nefir = new SpiritBuilder("nefir")
+        neblaze = new SpiritBuilder("neblaze")
                 .addActivityPeriod(10, 14)
-                .setPunishment(new NefirPunishment())
-                .addFavor(ModFavors.nefir)
+                .setPunishment(new NeblazePunishment())
+                .addFavor(ModFavors.neblaze)
                 .create();
 
         redwind = new SpiritBuilder("redwind")

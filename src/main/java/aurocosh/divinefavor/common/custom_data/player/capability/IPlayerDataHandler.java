@@ -2,11 +2,13 @@ package aurocosh.divinefavor.common.custom_data.player.capability;
 
 import aurocosh.divinefavor.common.custom_data.player.data.aura.arboreal.ArborealAuraData;
 import aurocosh.divinefavor.common.custom_data.player.data.aura.charred.CharredAuraData;
+import aurocosh.divinefavor.common.custom_data.player.data.aura.mineral.MineralAuraData;
 import aurocosh.divinefavor.common.custom_data.player.data.curse.corrosion.ArmorCorrosionData;
 import aurocosh.divinefavor.common.custom_data.player.data.curse.crawling_mist.CrawlingMistData;
 import aurocosh.divinefavor.common.custom_data.player.data.aura.distorted.DistortedAuraData;
 import aurocosh.divinefavor.common.custom_data.player.data.aura.energetic.EnergeticAuraData;
 import aurocosh.divinefavor.common.custom_data.player.data.presence.energetic.EnergeticPresenceData;
+import aurocosh.divinefavor.common.custom_data.player.data.presence.industrious.IndustriousPresenceData;
 import aurocosh.divinefavor.common.custom_data.player.data.presence.warping.WarpingPresenceData;
 import aurocosh.divinefavor.common.custom_data.player.data.spell.escape_plan.EscapePlanData;
 import aurocosh.divinefavor.common.custom_data.player.data.spell.focused_fury.FocusedFuryData;
@@ -42,10 +44,12 @@ public interface IPlayerDataHandler {
     EnergeticAuraData getEnergeticAuraData();
     FrostyAuraData getFrostyAuraData();
     HuntersAuraData getHuntersAuraData();
+    MineralAuraData getMineralAuraData();
     VisceralAuraData getVisceralAuraData();
 
     EnergeticPresenceData getEnergeticPresenceData();
     FuriousPresenceData getFuriousPresenceData();
+    IndustriousPresenceData getIndustriousPresenceData();
     PredatoryPresenceData getPredatoryPresenceData();
     ScorchingPresenceData getScorchingPresenceData();
     ToweringPresenceData getToweringPresenceData();

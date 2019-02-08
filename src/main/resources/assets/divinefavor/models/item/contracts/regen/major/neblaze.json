@@ -2,6 +2,6 @@
     "parent": "item/generated",
     "textures": {
         "layer1": "divinefavor:items/contracts/regen/major",
-        "layer0": "divinefavor:items/contracts/base/allfire"
+        "layer0": "divinefavor:items/contracts/base/neblaze"
     }
 }
