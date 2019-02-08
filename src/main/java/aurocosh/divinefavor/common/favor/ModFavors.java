@@ -1,10 +1,11 @@
 package aurocosh.divinefavor.common.favor;
 
 public final class ModFavors {
-    public static ModFavor neblaze;
     public static ModFavor arbow;
     public static ModFavor blizrabi;
     public static ModFavor endererer;
+    public static ModFavor loon;
+    public static ModFavor neblaze;
     public static ModFavor redwind;
     public static ModFavor romol;
     public static ModFavor squarefury;
@@ -14,6 +15,7 @@ public final class ModFavors {
         arbow = new ModFavor("arbow");
         blizrabi = new ModFavor("blizrabi");
         endererer = new ModFavor("endererer");
+        loon = new ModFavor("loon");
         neblaze = new ModFavor("neblaze");
         redwind = new ModFavor("redwind");
         romol = new ModFavor("romol");

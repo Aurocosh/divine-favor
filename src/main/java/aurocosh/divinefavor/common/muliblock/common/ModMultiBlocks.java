@@ -28,6 +28,7 @@ public final class ModMultiBlocks {
     public static ModMultiBlock altar_arbow;
     public static ModMultiBlock altar_blizrabi;
     public static ModMultiBlock altar_endererer;
+    public static ModMultiBlock altar_loon;
     public static ModMultiBlock altar_neblaze;
     public static ModMultiBlock altar_redwind;
     public static ModMultiBlock altar_romol;
@@ -47,6 +48,7 @@ public final class ModMultiBlocks {
         altar_arbow = createMultiBlock("altar_arbow", gson);
         altar_blizrabi = createMultiBlock("altar_blizrabi", gson);
         altar_endererer = createMultiBlock("altar_endererer", gson);
+        altar_loon = createMultiBlock("altar_loon", gson);
         altar_neblaze = createMultiBlock("altar_neblaze", gson);
         altar_redwind = createMultiBlock("altar_redwind", gson);
         altar_romol = createMultiBlock("altar_romol", gson);

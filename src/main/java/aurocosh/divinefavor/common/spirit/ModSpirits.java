@@ -8,6 +8,7 @@ public final class ModSpirits {
     public static ModSpirit arbow;
     public static ModSpirit blizrabi;
     public static ModSpirit endererer;
+    public static ModSpirit loon;
     public static ModSpirit neblaze;
     public static ModSpirit redwind;
     public static ModSpirit romol;
@@ -30,6 +31,10 @@ public final class ModSpirits {
                 .addActivityPeriod(10, 14)
                 .setPunishment(new EnderererPunishment())
                 .addFavor(ModFavors.endererer)
+                .create();
+        loon = new SpiritBuilder("loon")
+                .addActivityPeriod(10, 14)
+                .addFavor(ModFavors.loon)
                 .create();
 
         neblaze = new SpiritBuilder("neblaze")
