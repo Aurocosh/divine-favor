@@ -2,6 +2,6 @@
     "parent": "item/generated",
     "textures": {
         "layer1": "divinefavor:items/contracts/capacity/minor",
-        "layer0": "divinefavor:items/contracts/base/nefir"
+        "layer0": "divinefavor:items/contracts/base/neblaze"
     }
 }

@@ -24,7 +24,7 @@ public class ModRecipes {
                 .addIngredient(Items.GOLD_INGOT)
                 .create()
         );
-        register(new RecipeBuilder(new ItemStack(ModSpellTalismans.ignition), ModCallingStones.calling_stone_allfire)
+        register(new RecipeBuilder(new ItemStack(ModSpellTalismans.ignition), ModCallingStones.calling_stone_neblaze)
                 .addIngredient(Items.COAL, 32)
                 .addIngredient(Items.GUNPOWDER, 2)
                 .create()

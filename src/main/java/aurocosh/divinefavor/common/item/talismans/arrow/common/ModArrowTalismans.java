@@ -40,7 +40,7 @@ public class ModArrowTalismans {
         crawling_mist = new ArrowTalismanCurse("crawling_mist", ModFavors.timber, 1, Color.red.getRGB(), ModCurses.crawling_mist, UtilTick.minutesToTicks(3));
         cripple = new ArrowTalismanCurse("cripple", ModFavors.timber, 1, Color.red.getRGB(), ModCurses.cripple, UtilTick.minutesToTicks(2));
         disarm = new ArrowTalismanDisarm("disarm", ModFavors.timber, 1, Color.orange.getRGB(), 0, ArrowOptions.REQUIRES_TARGET, ArrowType.SPELL_ARROW);
-        fiery_mark = new ArrowTalismanCurse("fiery_mark", ModFavors.nefir, 1, Color.red.getRGB(), ModCurses.fiery_mark, UtilTick.secondsToTicks(10));
+        fiery_mark = new ArrowTalismanCurse("fiery_mark", ModFavors.neblaze, 1, Color.red.getRGB(), ModCurses.fiery_mark, UtilTick.secondsToTicks(10));
         fill_lungs = new ArrowTalismanCurse("fill_lungs", ModFavors.blizrabi, 1, Color.red.getRGB(), ModCurses.fill_lungs, UtilTick.minutesToTicks(2));
         hand_swap = new ArrowTalismanHandSwap("hand_swap", ModFavors.timber, 1, Color.orange.getRGB(), 0, ArrowOptions.REQUIRES_TARGET, ArrowType.SPELL_ARROW);
         hollow_leg = new ArrowTalismanCurse("hollow_leg", ModFavors.timber, 1, Color.red.getRGB(), ModCurses.hollow_leg, UtilTick.minutesToTicks(2));

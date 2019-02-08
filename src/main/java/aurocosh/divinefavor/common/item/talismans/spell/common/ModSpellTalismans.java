@@ -83,13 +83,20 @@ public final class ModSpellTalismans {
     public static ItemSpellTalisman wooden_punch;
 
     public static void preInit() {
-        // allfire
-        blazing_palm = new SpellTalismanBlazingPalm("blazing_palm", ModFavors.allfire, 1, SpellOptions.ALL_CAST);
-        combustion = new SpellTalismanCombustion("combustion", ModFavors.allfire, 1, SpellOptions.USE_CAST);
-        distant_spark = new SpellTalismanIgnition("distant_spark", ModFavors.allfire, 2, SpellOptions.ALL_CAST_TRACE);
-        heat_wave = new SpellTalismanHeatWave("heat_wave", ModFavors.allfire, 1, SpellOptions.ALL_CAST);
-        ignition = new SpellTalismanIgnition("ignition", ModFavors.allfire, 1, SpellOptions.USE_CAST);
-        small_fireball_throw = new SpellTalismanSmallFireballThrow("small_fireball_throw", ModFavors.allfire, 1, SpellOptions.ALL_CAST);
+        // neblaze
+        blazing_palm = new SpellTalismanBlazingPalm("blazing_palm", ModFavors.neblaze, 1, SpellOptions.ALL_CAST);
+        combustion = new SpellTalismanCombustion("combustion", ModFavors.neblaze, 1, SpellOptions.USE_CAST);
+        distant_spark = new SpellTalismanIgnition("distant_spark", ModFavors.neblaze, 2, SpellOptions.ALL_CAST_TRACE);
+        evil_eye = new SpellTalismanEvilEye("evil_eye", ModFavors.neblaze,10, SpellOptions.ENTITY_CAST);
+        heat_wave = new SpellTalismanHeatWave("heat_wave", ModFavors.neblaze, 1, SpellOptions.ALL_CAST);
+        hellisphere = new SpellTalismanHellisphere("hellisphere", ModFavors.neblaze, 1, SpellOptions.USE_CAST);
+        ignition = new SpellTalismanIgnition("ignition", ModFavors.neblaze, 1, SpellOptions.USE_CAST);
+        infernal_touch = new SpellTalismanInfernalTouch("infernal_touch", ModFavors.neblaze, 1, SpellOptions.USE_CAST);
+        molten_skin = new SpellTalismanMoltenSkin("molten_skin", ModFavors.neblaze, 1, SpellOptions.ALL_CAST);
+        nether_surge = new SpellTalismanNetherSurge("nether_surge", ModFavors.neblaze, 1, SpellOptions.USE_CAST);
+        piercing_inferno = new SpellTalismanPiercingInferno("piercing_inferno", ModFavors.neblaze, 1, SpellOptions.USE_CAST);
+        searing_pulse = new SpellTalismanSearingPulse("searing_pulse", ModFavors.neblaze, 1, SpellOptions.USE_CAST);
+        small_fireball_throw = new SpellTalismanSmallFireballThrow("small_fireball_throw", ModFavors.neblaze, 1, SpellOptions.ALL_CAST);
 
         // arbow
         arrow_throw_talisman = new SpellTalismanArrowThrow("arrow_throw", ModFavors.arbow, 1, SpellOptions.ALL_CAST);
@@ -119,33 +126,24 @@ public final class ModSpellTalismans {
         warp_pebble = new SpellTalismanWarpMarker("warp_pebble", ModFavors.endererer, 5, SpellOptions.ALL_CAST, ModItems.warp_pebble);
 
         // greehay
-        blade_of_grass = new SpellTalismanBladeOfGrass("blade_of_grass", ModFavors.allfire, 1, SpellOptions.ALL_CAST);
-        blood_of_grass = new SpellTalismanBloodOfGrass("blood_of_grass", ModFavors.allfire, 1, SpellOptions.ALL_CAST);
-        bonemeal = new SpellTalismanBonemeal("bonemeal", ModFavors.allfire, 1, SpellOptions.USE_CAST);
-        clock = new SpellTalismanClock("clock", ModFavors.allfire, 1, SpellOptions.ALL_CAST);
-        green_cycle = new SpellTalismanGreenCycle("green_cycle", ModFavors.allfire, 1, SpellOptions.ALL_CAST);
-        harvest = new SpellTalismanHarvest("harvest", ModFavors.allfire, 1, SpellOptions.ALL_CAST);
-        starvation = new SpellTalismanModPotion("starvation", ModFavors.allfire, 3, ModPotions.starvation, UtilTick.minutesToTicks(2.5f));
+        blade_of_grass = new SpellTalismanBladeOfGrass("blade_of_grass", ModFavors.neblaze, 1, SpellOptions.ALL_CAST);
+        blood_of_grass = new SpellTalismanBloodOfGrass("blood_of_grass", ModFavors.neblaze, 1, SpellOptions.ALL_CAST);
+        bonemeal = new SpellTalismanBonemeal("bonemeal", ModFavors.neblaze, 1, SpellOptions.USE_CAST);
+        clock = new SpellTalismanClock("clock", ModFavors.neblaze, 1, SpellOptions.ALL_CAST);
+        green_cycle = new SpellTalismanGreenCycle("green_cycle", ModFavors.neblaze, 1, SpellOptions.ALL_CAST);
+        harvest = new SpellTalismanHarvest("harvest", ModFavors.neblaze, 1, SpellOptions.ALL_CAST);
+        starvation = new SpellTalismanModPotion("starvation", ModFavors.neblaze, 3, ModPotions.starvation, UtilTick.minutesToTicks(2.5f));
 
-        // moonoom
-        follow = new SpellTalismanFollow("follow", ModFavors.allfire,0, SpellOptions.RIGHT_CAST);
-        night_eye = new SpellTalismanModPotionToggle("night_eye", ModFavors.allfire, 4, ModPotions.night_eye);
-        spider_might = new SpellTalismanModPotion("spider_might", ModFavors.allfire, ConfigTalismans.spider_might.uses, ModPotions.spider_might, ConfigTalismans.spider_might.duration);
-        summon_creeper = new SpellTalismanSummonMinion<>("summon_creeper", ModFavors.allfire, 1, SpellOptions.USE_CAST, MinionCreeper.class);
-        summon_husk = new SpellTalismanSummonMinion<>("summon_husk", ModFavors.allfire, 1, SpellOptions.USE_CAST, MinionHusk.class);
-        summon_skeleton = new SpellTalismanSummonMinion<>("summon_skeleton", ModFavors.allfire, 1, SpellOptions.USE_CAST, MinionSkeleton.class);
-        summon_stray = new SpellTalismanSummonMinion<>("summon_stray", ModFavors.allfire, 1, SpellOptions.USE_CAST, MinionStray.class);
-        summon_zombie = new SpellTalismanSummonMinion<>("summon_zombie", ModFavors.allfire, 1, SpellOptions.USE_CAST, MinionZombie.class);
-        target = new SpellTalismanTarget("target", ModFavors.allfire,0, SpellOptions.ENTITY_CAST);
-
-        // nefir
-        evil_eye = new SpellTalismanEvilEye("evil_eye", ModFavors.nefir,10, SpellOptions.ENTITY_CAST);
-        hellisphere = new SpellTalismanHellisphere("hellisphere", ModFavors.nefir, 1, SpellOptions.USE_CAST);
-        infernal_touch = new SpellTalismanInfernalTouch("infernal_touch", ModFavors.nefir, 1, SpellOptions.USE_CAST);
-        molten_skin = new SpellTalismanMoltenSkin("molten_skin", ModFavors.nefir, 1, SpellOptions.ALL_CAST);
-        nether_surge = new SpellTalismanNetherSurge("nether_surge", ModFavors.nefir, 1, SpellOptions.USE_CAST);
-        piercing_inferno = new SpellTalismanPiercingInferno("piercing_inferno", ModFavors.nefir, 1, SpellOptions.USE_CAST);
-        searing_pulse = new SpellTalismanSearingPulse("searing_pulse", ModFavors.nefir, 1, SpellOptions.USE_CAST);
+        // loon
+        follow = new SpellTalismanFollow("follow", ModFavors.neblaze,0, SpellOptions.RIGHT_CAST);
+        night_eye = new SpellTalismanModPotionToggle("night_eye", ModFavors.neblaze, 4, ModPotions.night_eye);
+        spider_might = new SpellTalismanModPotion("spider_might", ModFavors.neblaze, ConfigTalismans.spider_might.uses, ModPotions.spider_might, ConfigTalismans.spider_might.duration);
+        summon_creeper = new SpellTalismanSummonMinion<>("summon_creeper", ModFavors.neblaze, 1, SpellOptions.USE_CAST, MinionCreeper.class);
+        summon_husk = new SpellTalismanSummonMinion<>("summon_husk", ModFavors.neblaze, 1, SpellOptions.USE_CAST, MinionHusk.class);
+        summon_skeleton = new SpellTalismanSummonMinion<>("summon_skeleton", ModFavors.neblaze, 1, SpellOptions.USE_CAST, MinionSkeleton.class);
+        summon_stray = new SpellTalismanSummonMinion<>("summon_stray", ModFavors.neblaze, 1, SpellOptions.USE_CAST, MinionStray.class);
+        summon_zombie = new SpellTalismanSummonMinion<>("summon_zombie", ModFavors.neblaze, 1, SpellOptions.USE_CAST, MinionZombie.class);
+        target = new SpellTalismanTarget("target", ModFavors.neblaze,0, SpellOptions.ENTITY_CAST);
 
         // redwind
         fall_negation = new SpellTalismanModPotionCharge("fall_negation", ModFavors.redwind, 1, ModPotions.fall_negation, 3);

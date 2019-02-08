@@ -2,11 +2,13 @@ package aurocosh.divinefavor.common.custom_data.player.capability;
 
 import aurocosh.divinefavor.common.custom_data.player.data.aura.arboreal.ArborealAuraData;
 import aurocosh.divinefavor.common.custom_data.player.data.aura.charred.CharredAuraData;
+import aurocosh.divinefavor.common.custom_data.player.data.aura.mineral.MineralAuraData;
 import aurocosh.divinefavor.common.custom_data.player.data.curse.corrosion.ArmorCorrosionData;
 import aurocosh.divinefavor.common.custom_data.player.data.curse.crawling_mist.CrawlingMistData;
 import aurocosh.divinefavor.common.custom_data.player.data.aura.distorted.DistortedAuraData;
 import aurocosh.divinefavor.common.custom_data.player.data.aura.energetic.EnergeticAuraData;
 import aurocosh.divinefavor.common.custom_data.player.data.presence.energetic.EnergeticPresenceData;
+import aurocosh.divinefavor.common.custom_data.player.data.presence.industrious.IndustriousPresenceData;
 import aurocosh.divinefavor.common.custom_data.player.data.presence.warping.WarpingPresenceData;
 import aurocosh.divinefavor.common.custom_data.player.data.spell.escape_plan.EscapePlanData;
 import aurocosh.divinefavor.common.custom_data.player.data.spell.focused_fury.FocusedFuryData;
@@ -43,14 +45,17 @@ public class DefaultPlayerDataHandler implements IPlayerDataHandler {
     private final EnergeticAuraData energeticAuraData;
     private final FrostyAuraData frostyAuraData;
     private final HuntersAuraData huntersAuraData;
+    private final MineralAuraData mineralAuraData;
     private final VisceralAuraData visceralAuraData;
 
     private final EnergeticPresenceData energeticPresenceData;
     private final FuriousPresenceData furiousPresenceData;
+    private final IndustriousPresenceData industriousPresenceData;
     private final PredatoryPresenceData predatoryPresenceData;
     private final ScorchingPresenceData scorchingPresenceData;
     private final ToweringPresenceData toweringPresenceData;
     private final WarpingPresenceData warpingPresenceData;
+
 
     public DefaultPlayerDataHandler() {
         armorCorrosionData = new ArmorCorrosionData();
@@ -70,10 +75,12 @@ public class DefaultPlayerDataHandler implements IPlayerDataHandler {
         energeticAuraData = new EnergeticAuraData();
         frostyAuraData = new FrostyAuraData();
         huntersAuraData = new HuntersAuraData();
+        mineralAuraData = new MineralAuraData();
         visceralAuraData = new VisceralAuraData();
 
         energeticPresenceData = new EnergeticPresenceData();
         furiousPresenceData = new FuriousPresenceData();
+        industriousPresenceData = new IndustriousPresenceData();
         predatoryPresenceData = new PredatoryPresenceData();
         scorchingPresenceData = new ScorchingPresenceData();
         toweringPresenceData = new ToweringPresenceData();
@@ -161,6 +168,11 @@ public class DefaultPlayerDataHandler implements IPlayerDataHandler {
     }
 
     @Override
+    public MineralAuraData getMineralAuraData() {
+        return mineralAuraData;
+    }
+
+    @Override
     public VisceralAuraData getVisceralAuraData() {
         return visceralAuraData;
     }
@@ -173,6 +185,11 @@ public class DefaultPlayerDataHandler implements IPlayerDataHandler {
     @Override
     public FuriousPresenceData getFuriousPresenceData() {
         return furiousPresenceData;
+    }
+
+    @Override
+    public IndustriousPresenceData getIndustriousPresenceData() {
+        return industriousPresenceData;
     }
 
     @Override
