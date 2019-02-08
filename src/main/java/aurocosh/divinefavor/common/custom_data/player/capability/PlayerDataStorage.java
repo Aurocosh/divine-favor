@@ -1,12 +1,14 @@
 package aurocosh.divinefavor.common.custom_data.player.capability;
 
 import aurocosh.divinefavor.common.custom_data.player.data.aura.arboreal.ArborealAuraDataSerializer;
+import aurocosh.divinefavor.common.custom_data.player.data.aura.calling.CallingAuraDataSerializer;
 import aurocosh.divinefavor.common.custom_data.player.data.aura.charred.CharredAuraDataSerializer;
 import aurocosh.divinefavor.common.custom_data.player.data.aura.distorted.DistortedAuraDataSerializer;
 import aurocosh.divinefavor.common.custom_data.player.data.curse.corrosion.ArmorCorrosionDataSerializer;
 import aurocosh.divinefavor.common.custom_data.player.data.curse.crawling_mist.CrawlingMistDataSerializer;
 import aurocosh.divinefavor.common.custom_data.player.data.aura.energetic.EnergeticAuraDataSerializer;
 import aurocosh.divinefavor.common.custom_data.player.data.presence.energetic.EnergeticPresenceDataSerializer;
+import aurocosh.divinefavor.common.custom_data.player.data.presence.manipulative.ManipulativePresenceDataSerializer;
 import aurocosh.divinefavor.common.custom_data.player.data.spell.escape_plan.EscapePlanDataSerializer;
 import aurocosh.divinefavor.common.custom_data.player.data.favor.FavorDataSerializer;
 import aurocosh.divinefavor.common.custom_data.player.data.spell.focused_fury.FocusedFuryDataSerializer;
@@ -41,6 +43,7 @@ public class PlayerDataStorage implements Capability.IStorage<IPlayerDataHandler
     private static final PearlCrumbsDataSerializer PEARL_CRUMBS_DATA_SERIALIZER = new PearlCrumbsDataSerializer();
 
     private static final ArborealAuraDataSerializer ARBOREAL_AURA_DATA_SERIALIZER = new ArborealAuraDataSerializer();
+    private static final CallingAuraDataSerializer CALLING_AURA_DATA_SERIALIZER = new CallingAuraDataSerializer();
     private static final CharredAuraDataSerializer CHARRED_AURA_DATA_SERIALIZER = new CharredAuraDataSerializer();
     private static final DistortedAuraDataSerializer DISTORTED_AURA_DATA_SERIALIZER = new DistortedAuraDataSerializer();
     private static final EnergeticAuraDataSerializer ENERGETIC_AURA_DATA_SERIALIZER = new EnergeticAuraDataSerializer();
@@ -50,6 +53,7 @@ public class PlayerDataStorage implements Capability.IStorage<IPlayerDataHandler
 
     private static final EnergeticPresenceDataSerializer ENERGETIC_PRESENCE_DATA_SERIALIZER = new EnergeticPresenceDataSerializer();
     private static final FuriousPresenceDataSerializer FURIOUS_PRESENCE_DATA_SERIALIZER = new FuriousPresenceDataSerializer();
+    private static final ManipulativePresenceDataSerializer MANIPULATIVE_PRESENCE_DATA_SERIALIZER = new ManipulativePresenceDataSerializer();
     private static final PredatoryPresenceDataSerializer PREDATORY_PRESENCE_DATA_SERIALIZER = new PredatoryPresenceDataSerializer();
     private static final ScorchingPresenceDataSerializer SCORCHING_PRESENCE_DATA_SERIALIZER = new ScorchingPresenceDataSerializer();
     private static final ToweringPresenceDataSerializer TOWERING_PRESENCE_DATA_SERIALIZER = new ToweringPresenceDataSerializer();
@@ -69,6 +73,7 @@ public class PlayerDataStorage implements Capability.IStorage<IPlayerDataHandler
         PEARL_CRUMBS_DATA_SERIALIZER.serialize(tag, instance.getPearlCrumbsData());
 
         ARBOREAL_AURA_DATA_SERIALIZER.serialize(tag, instance.getArborealAuraData());
+        CALLING_AURA_DATA_SERIALIZER.serialize(tag, instance.getCallingAuraData());
         CHARRED_AURA_DATA_SERIALIZER.serialize(tag, instance.getCharredAuraData());
         DISTORTED_AURA_DATA_SERIALIZER.serialize(tag, instance.getDistortedAuraData());
         ENERGETIC_AURA_DATA_SERIALIZER.serialize(tag, instance.getEnergeticAuraData());
@@ -78,6 +83,7 @@ public class PlayerDataStorage implements Capability.IStorage<IPlayerDataHandler
 
         ENERGETIC_PRESENCE_DATA_SERIALIZER.serialize(tag, instance.getEnergeticPresenceData());
         FURIOUS_PRESENCE_DATA_SERIALIZER.serialize(tag, instance.getFuriousPresenceData());
+        MANIPULATIVE_PRESENCE_DATA_SERIALIZER.serialize(tag, instance.getManipulativePresenceData());
         PREDATORY_PRESENCE_DATA_SERIALIZER.serialize(tag, instance.getPredatoryPresenceData());
         SCORCHING_PRESENCE_DATA_SERIALIZER.serialize(tag, instance.getScorchingPresenceData());
         TOWERING_PRESENCE_DATA_SERIALIZER.serialize(tag, instance.getToweringPresenceData());
@@ -99,6 +105,7 @@ public class PlayerDataStorage implements Capability.IStorage<IPlayerDataHandler
         PEARL_CRUMBS_DATA_SERIALIZER.deserialize(tag, instance.getPearlCrumbsData());
 
         ARBOREAL_AURA_DATA_SERIALIZER.deserialize(tag, instance.getArborealAuraData());
+        CALLING_AURA_DATA_SERIALIZER.deserialize(tag, instance.getCallingAuraData());
         CHARRED_AURA_DATA_SERIALIZER.deserialize(tag, instance.getCharredAuraData());
         DISTORTED_AURA_DATA_SERIALIZER.deserialize(tag, instance.getDistortedAuraData());
         ENERGETIC_AURA_DATA_SERIALIZER.deserialize(tag, instance.getEnergeticAuraData());
@@ -108,6 +115,7 @@ public class PlayerDataStorage implements Capability.IStorage<IPlayerDataHandler
 
         ENERGETIC_PRESENCE_DATA_SERIALIZER.deserialize(tag, instance.getEnergeticPresenceData());
         FURIOUS_PRESENCE_DATA_SERIALIZER.deserialize(tag, instance.getFuriousPresenceData());
+        MANIPULATIVE_PRESENCE_DATA_SERIALIZER.deserialize(tag, instance.getManipulativePresenceData());
         PREDATORY_PRESENCE_DATA_SERIALIZER.deserialize(tag, instance.getPredatoryPresenceData());
         SCORCHING_PRESENCE_DATA_SERIALIZER.deserialize(tag, instance.getScorchingPresenceData());
         TOWERING_PRESENCE_DATA_SERIALIZER.deserialize(tag, instance.getToweringPresenceData());

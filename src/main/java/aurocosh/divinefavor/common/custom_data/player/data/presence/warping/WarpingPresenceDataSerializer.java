@@ -5,7 +5,7 @@ import net.minecraft.nbt.NBTTagCompound;
 
 // Handles the actual read/write of the nbt.
 public class WarpingPresenceDataSerializer implements INbtSerializer<WarpingPresenceData> {
-    private static final String TAG_WARPING_CHANCE = "WarppingChance";
+    private static final String TAG_WARPING_CHANCE = "WarpingChance";
 
     @Override
     public void serialize(NBTTagCompound nbt, WarpingPresenceData instance) {
