@@ -1,0 +1,7 @@
+{
+    "parent": "item/generated",
+    "textures": {
+        "layer1": "divinefavor:items/contracts/regen/minor",
+        "layer0": "divinefavor:items/contracts/base/loon"
+    }
+}
