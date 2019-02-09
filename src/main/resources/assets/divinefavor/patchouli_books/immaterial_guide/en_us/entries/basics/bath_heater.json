@@ -10,8 +10,23 @@
     },
     {
       "type": "crafting",
-      "text": "$(item)Bath heater$() recipe",
+      "text": "$(item)Bath heater$() recipe. In order to use will need to build a bath see further pages for examples. But keep in mind that those are not required builds but just examples.",
       "recipe": "divinefavor:bath_heater"
+    },
+    {
+      "type": "multiblock",
+      "multiblock_id": "divinefavor:patchouli.bath_example_first",
+      "text": "Simple example bath"
+    },
+    {
+      "type": "multiblock",
+      "multiblock_id": "divinefavor:patchouli.bath_example_second",
+      "text": "Example bath"
+    },
+    {
+      "type": "multiblock",
+      "multiblock_id": "divinefavor:patchouli.bath_example_third",
+      "text": "Fancy example bath"
     }
   ]
 }

@@ -14,8 +14,8 @@ public class PatchouliMultiblockAdapter {
             if (!configuration.primary)
                 continue;
             PatchouliMultiBlockData multiBlockData = new PatchouliMultiBlockData(configuration);
-            System.out.print(multiBlockData.toString());
-            System.out.println();
+//            System.out.print(multiBlockData.toString());
+//            System.out.println();
 
             IMultiblock iMultiblock = PatchouliAPI.instance.makeMultiblock(multiBlockData.pattern, multiBlockData.matchingData);
             ResourceLocation location = ResourceNamer.getFullName("patchouli", configuration.name);
