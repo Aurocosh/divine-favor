@@ -5,7 +5,7 @@ import aurocosh.divinefavor.common.item.soul_shards.ItemSoulShardPlayer;
 import aurocosh.divinefavor.common.lib.math.Vector3i;
 import aurocosh.divinefavor.common.muliblock.IMultiblockController;
 import aurocosh.divinefavor.common.muliblock.ModMultiBlock;
-import aurocosh.divinefavor.common.muliblock.common.MultiBlockWatcher;
+import aurocosh.divinefavor.common.muliblock.common.MultiblockWatcher;
 import aurocosh.divinefavor.common.muliblock.instance.MultiBlockInstance;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
@@ -158,7 +158,7 @@ public abstract class TileSoulboundLectern extends TileEntity implements IMultib
 
     @Override
     public void multiblockDeconstructed() {
-        MultiBlockWatcher.unRegisterController(this);
+        MultiblockWatcher.unRegisterController(this);
         setState(SoulboundLecternState.BOUND);
         multiBlockInstance = null;
     }
@@ -185,7 +185,7 @@ public abstract class TileSoulboundLectern extends TileEntity implements IMultib
         Vector3i position = Vector3i.convert(pos);
         multiBlockInstance = multiBlock.makeMultiBlock(world, position);
         if (multiBlockInstance != null)
-            MultiBlockWatcher.registerController(this);
+            MultiblockWatcher.registerController(this);
     }
 
     private void updateState() {

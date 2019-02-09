@@ -14,7 +14,7 @@ import java.util.Map;
 import java.util.Set;
 
 @Mod.EventBusSubscriber
-public class MultiBlockWatcher {
+public class MultiblockWatcher {
     private static Map<World, Set<IMultiblockController>> controllers = new HashMap<>();
 
     public static void registerController(IMultiblockController controller) {

@@ -11,8 +11,8 @@ import aurocosh.divinefavor.common.lib.math.Vector3i;
 import aurocosh.divinefavor.common.misc.SlotStack;
 import aurocosh.divinefavor.common.muliblock.IMultiblockController;
 import aurocosh.divinefavor.common.muliblock.ModMultiBlock;
+import aurocosh.divinefavor.common.muliblock.common.MultiblockWatcher;
 import aurocosh.divinefavor.common.muliblock.instance.MultiBlockInstance;
-import aurocosh.divinefavor.common.muliblock.common.MultiBlockWatcher;
 import aurocosh.divinefavor.common.muliblock.instance.MultiBlockInstanceAltar;
 import aurocosh.divinefavor.common.receipes.ModRecipes;
 import aurocosh.divinefavor.common.spirit.base.ModSpirit;
@@ -264,7 +264,7 @@ public class TileMedium extends TickableTileEntity implements IMultiblockControl
 
     @Override
     public void multiblockDeconstructed() {
-        MultiBlockWatcher.unRegisterController(this);
+        MultiblockWatcher.unRegisterController(this);
         setState(MediumState.NO_MULTI_BLOCK);
         multiBlockInstance = null;
         AltarsData altarData = WorldData.get(world).getAltarData();
@@ -299,7 +299,7 @@ public class TileMedium extends TickableTileEntity implements IMultiblockControl
         Vector3i position = Vector3i.convert(pos);
         multiBlockInstance = multiBlock.makeMultiBlock(callingStone.spirit, world, position);
         if (multiBlockInstance != null) {
-            MultiBlockWatcher.registerController(this);
+            MultiblockWatcher.registerController(this);
             AltarsData altarData = WorldData.get(world).getAltarData();
             altarData.addAltarLocation(callingStone.spirit, pos);
         }
