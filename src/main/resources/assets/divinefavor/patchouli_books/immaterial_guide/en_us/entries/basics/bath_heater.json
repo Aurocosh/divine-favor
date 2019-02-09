@@ -14,6 +14,11 @@
       "recipe": "divinefavor:bath_heater"
     },
     {
+      "type": "spotlight",
+      "item": "divinefavor:blend_ender_pearl",
+      "text": "Blends are items that similar in effect with potions but unlike potions you are not suppose to ingest them, but instead apply externally. All methods of contacting a spirit require appropriate blend"
+    },
+    {
       "type": "multiblock",
       "multiblock_id": "divinefavor:patchouli.bath_example_first",
       "text": "Simple example bath"
