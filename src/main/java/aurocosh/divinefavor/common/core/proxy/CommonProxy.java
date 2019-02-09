@@ -13,6 +13,7 @@ import aurocosh.divinefavor.common.item.calling_stones.ModCallingStones;
 import aurocosh.divinefavor.common.item.common.ModItems;
 import aurocosh.divinefavor.common.item.contract.ModContracts;
 import aurocosh.divinefavor.common.item.grimoire.capability.GrimoireDataHandler;
+import aurocosh.divinefavor.common.item.soul_shards.ModSoulShards;
 import aurocosh.divinefavor.common.item.spell_bow.capability.SpellBowDataHandler;
 import aurocosh.divinefavor.common.item.talismans.arrow.common.ModArrowTalismans;
 import aurocosh.divinefavor.common.item.talismans.spell.common.ModSpellTalismans;
@@ -51,6 +52,7 @@ public class CommonProxy {
         ModBlessings.preInit();
         ModArrowTalismans.preInit();
         ModItems.preInit();
+        ModSoulShards.preInit();
         ModSpellTalismans.preInit();
         ModBathingBlends.preInit();
 

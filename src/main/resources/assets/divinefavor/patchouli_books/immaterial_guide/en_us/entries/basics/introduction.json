@@ -1,0 +1,20 @@
+{
+  "name": "Introduction",
+  "icon": "divinefavor:calling_stone_allfire",
+  "category": "basics",
+  "pages": [
+    {
+      "type": "text",
+      "text": "Welcome seekers of unnatural power. Let me introduce you to art of Spiritual Contract! Spiritual contract is a type of magic which depends on immaterial beings called spirits. With this kind of magic practitioners do not cast spells by themselves, but instead they rely on spirits to make miracles for them. Each spirit has its own type of currency called favor."
+
+    },
+    {
+      "type": "text",
+      "text": "To acquire favor players may make a contract with a spirit or trade something. Each miracle that spirit can do require certain amount of favor. Each spirit has unique set of powers which may benefit user."
+    },
+    {
+      "type": "text",
+      "text": "To harness their power you need to do following:$(li)Attract spirits attention$(li)Impress spirit$(li)Build altar to a spirit$(li)Acquire spells and contracts! "
+    }
+  ]
+}

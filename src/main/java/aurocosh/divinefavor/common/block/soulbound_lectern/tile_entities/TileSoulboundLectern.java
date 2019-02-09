@@ -1,7 +1,7 @@
 package aurocosh.divinefavor.common.block.soulbound_lectern.tile_entities;
 
 import aurocosh.divinefavor.common.block.soulbound_lectern.SoulboundLecternState;
-import aurocosh.divinefavor.common.item.ItemBloodCrystal;
+import aurocosh.divinefavor.common.item.soul_shards.ItemSoulShardPlayer;
 import aurocosh.divinefavor.common.lib.math.Vector3i;
 import aurocosh.divinefavor.common.muliblock.IMultiblockController;
 import aurocosh.divinefavor.common.muliblock.ModMultiBlock;
@@ -36,7 +36,7 @@ public abstract class TileSoulboundLectern extends TileEntity implements IMultib
     private ItemStackHandler crystalStackHandler = new ItemStackHandler(1) {
         @Override
         public boolean isItemValid(int slot, @Nonnull ItemStack stack) {
-            return stack.getItem() instanceof ItemBloodCrystal && ItemBloodCrystal.hasOwner(stack);
+            return stack.getItem() instanceof ItemSoulShardPlayer && ItemSoulShardPlayer.hasOwner(stack);
         }
 
         @Override

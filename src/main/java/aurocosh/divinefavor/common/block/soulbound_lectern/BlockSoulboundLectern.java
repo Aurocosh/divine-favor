@@ -6,7 +6,7 @@ import aurocosh.divinefavor.common.block.soulbound_lectern.tile_entities.TileSou
 import aurocosh.divinefavor.common.constants.ConstBlockNames;
 import aurocosh.divinefavor.common.constants.ConstGuiIDs;
 import aurocosh.divinefavor.common.core.creative_tabs.DivineFavorCreativeTab;
-import aurocosh.divinefavor.common.item.ItemBloodCrystal;
+import aurocosh.divinefavor.common.item.soul_shards.ItemSoulShardPlayer;
 import net.minecraft.block.BlockHorizontal;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.SoundType;
@@ -86,7 +86,7 @@ public class BlockSoulboundLectern extends ModBlock implements ITileEntityProvid
         ItemStack stack = crystalHandler.getStackInSlot(0);
         if (!stack.isEmpty()) {
             UUID playerUUID = player.getGameProfile().getId();
-            UUID stackUUID = ItemBloodCrystal.getPlayerId(stack);
+            UUID stackUUID = ItemSoulShardPlayer.getEntityId(stack);
             if (!playerUUID.equals(stackUUID))
                 return false;
             if (!soulboundLectern.isMultiblockValid())

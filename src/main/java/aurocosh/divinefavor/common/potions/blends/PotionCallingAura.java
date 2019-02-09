@@ -36,7 +36,7 @@ public class PotionCallingAura extends ModPotion {
     }
 
     @SubscribeEvent(priority = EventPriority.LOWEST)
-    public static void onEntityConstructing(BlockEvent.PlaceEvent event) {
+    public static void onPlaceEvent(BlockEvent.PlaceEvent event) {
         EntityPlayer player = event.getPlayer();
         if (!player.isPotionActive(ModBlendEffects.calling_aura))
             return;

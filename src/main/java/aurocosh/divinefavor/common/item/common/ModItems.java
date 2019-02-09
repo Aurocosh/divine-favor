@@ -2,6 +2,8 @@ package aurocosh.divinefavor.common.item.common;
 
 import aurocosh.divinefavor.common.item.*;
 import aurocosh.divinefavor.common.item.base.ModItem;
+import aurocosh.divinefavor.common.item.bone_dagger.ItemBoneDagger;
+import aurocosh.divinefavor.common.item.bone_dagger.ItemBoneDaggerAwakened;
 import aurocosh.divinefavor.common.item.contract_binder.ItemContractBinder;
 import aurocosh.divinefavor.common.item.grimoire.ItemGrimoire;
 import aurocosh.divinefavor.common.item.mystic_architect_stick.ItemMysticArchitectStick;
@@ -10,8 +12,8 @@ import aurocosh.divinefavor.common.item.spell_bow.ItemSpellBow;
 import aurocosh.divinefavor.common.item.storage_gem.ItemStorageGem;
 
 public final class ModItems {
-    public static ModItem blood_crystal;
     public static ModItem bone_dagger;
+    public static ModItem bone_dagger_awakened;
     public static ModItem bone_key;
     public static ModItem contract_binder;
     public static ModItem grimoire;
@@ -27,8 +29,8 @@ public final class ModItems {
     public static ModItem warp_pebble;
 
     public static void preInit() {
-        blood_crystal = new ItemBloodCrystal();
         bone_dagger = new ItemBoneDagger();
+        bone_dagger_awakened = new ItemBoneDaggerAwakened();
         bone_key = new ItemBoneKey();
         contract_binder = new ItemContractBinder();
         grimoire = new ItemGrimoire();

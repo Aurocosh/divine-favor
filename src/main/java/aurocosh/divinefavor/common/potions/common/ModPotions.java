@@ -35,6 +35,8 @@ public class ModPotions {
     public static ModPotionToggleLimited toadic_jump;
     public static ModPotionToggleLimited wooden_punch;
 
+    public static ModPotion soul_theft;
+
     public static void preInit() {
         armor_of_pacifist = new PotionArmorOfPacifist();
         butchering_strike = new PotionButcheringStrike();
@@ -62,5 +64,7 @@ public class ModPotions {
         wild_charge = new PotionWildCharge();
         wild_sprint = new PotionWildSprint();
         wooden_punch = new PotionWoodenPunch();
+
+        soul_theft = new PotionSoulTheft();
     }
 }
