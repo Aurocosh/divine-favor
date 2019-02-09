@@ -4,6 +4,7 @@ import aurocosh.divinefavor.common.custom_data.living.data.cripple.CrippleData;
 import aurocosh.divinefavor.common.custom_data.living.data.curse.CurseData;
 import aurocosh.divinefavor.common.custom_data.living.data.limp_leg.LimpLegData;
 import aurocosh.divinefavor.common.custom_data.living.data.petrification.PetrificationData;
+import aurocosh.divinefavor.common.custom_data.living.data.soul_theft.SoulTheftData;
 import aurocosh.divinefavor.common.custom_data.living.data.suffocating_fumes.SuffocatingFumesData;
 import aurocosh.divinefavor.common.custom_data.living.data.wind_leash.WindLeashData;
 
@@ -13,6 +14,7 @@ public class DefaultLivingDataHandler implements ILivingDataHandler {
     private final CurseData curse;
     private final LimpLegData limpLegData;
     private final PetrificationData petrificationData;
+    private final SoulTheftData soulTheftData;
     private final SuffocatingFumesData suffocatingFumesData;
     private final WindLeashData windLeashData;
 
@@ -21,6 +23,7 @@ public class DefaultLivingDataHandler implements ILivingDataHandler {
         curse = new CurseData();
         limpLegData = new LimpLegData();
         petrificationData = new PetrificationData();
+        soulTheftData = new SoulTheftData();
         suffocatingFumesData = new SuffocatingFumesData();
         windLeashData = new WindLeashData();
     }
@@ -43,6 +46,11 @@ public class DefaultLivingDataHandler implements ILivingDataHandler {
     @Override
     public PetrificationData getPetrificationData() {
         return petrificationData;
+    }
+
+    @Override
+    public SoulTheftData getSoulTheftData() {
+        return soulTheftData;
     }
 
     @Override
