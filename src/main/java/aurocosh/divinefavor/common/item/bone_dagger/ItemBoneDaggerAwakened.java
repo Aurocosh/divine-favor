@@ -15,9 +15,11 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.EnumCreatureType;
+import net.minecraft.entity.boss.EntityDragon;
 import net.minecraft.entity.boss.EntityWither;
 import net.minecraft.entity.monster.EntityEnderman;
 import net.minecraft.entity.monster.EntityEndermite;
+import net.minecraft.entity.monster.EntityShulker;
 import net.minecraft.entity.monster.EntityWitherSkeleton;
 import net.minecraft.entity.passive.EntityAnimal;
 import net.minecraft.entity.passive.EntityVillager;
@@ -87,7 +89,7 @@ public class ItemBoneDaggerAwakened extends ModItem {
             item = ModSoulShards.shard_soul;
         else if (victim instanceof EntityWitherSkeleton || victim instanceof EntityWither)
             item = ModSoulShards.shard_wither;
-        else if (victim instanceof EntityEnderman || victim instanceof EntityEndermite)
+        else if (victim instanceof EntityEnderman || victim instanceof EntityEndermite || victim instanceof EntityShulker || victim instanceof EntityDragon)
             item = ModSoulShards.shard_end;
         else if (victim instanceof EntityVillager)
             item = ModSoulShards.shard_mind;
