@@ -1,4 +1,6 @@
-{"controllerPosition":[0,2,0],"parts":[
+{
+  "symmetrical": false,
+  "controllerPosition":[0,2,0],"parts":[
   {"validator":{"type":"block","name":"minecraft:snow"},"positions":[[0,1,0]]},
   {"validator":{"type":"center","name":"minecraft:snow"},"positions":[[0,0,0]]}
 ]

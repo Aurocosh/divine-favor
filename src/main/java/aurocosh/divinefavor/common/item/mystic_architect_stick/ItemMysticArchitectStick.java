@@ -176,7 +176,7 @@ public class ItemMysticArchitectStick extends ModItem {
         }
         parts.add(new MultiBlockPart(new CenterStateValidator(baseBlock.getRegistryName()), Collections.singletonList(lowerCorner.getRealativePosition(base))));
 
-        MultiBlockData data = new MultiBlockData(lowerCorner.getRealativePosition(Vector3i.convert(mediumPosition)), parts);
+        MultiBlockData data = new MultiBlockData(false, lowerCorner.getRealativePosition(Vector3i.convert(mediumPosition)), parts);
 
         Gson gson = new GsonBuilder()
                 .registerTypeAdapter(StateValidator.class, new StateValidatorSerializer())

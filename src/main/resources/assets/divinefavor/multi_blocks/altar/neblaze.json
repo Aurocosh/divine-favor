@@ -1,4 +1,5 @@
 {
+  "symmetrical": true,
   "controllerPosition":[4,5,4],"parts":[
   {"validator":{"type":"block","name":"divinefavor:iron_medium"},"positions":[[4,5,4]]},
   {"validator":{"type":"block","name":"minecraft:glowstone"},"positions":[[3,3,3],[3,3,5],[3,4,3],[3,4,5],[5,3,3],[5,3,5],[5,4,3],[5,4,5]]},
