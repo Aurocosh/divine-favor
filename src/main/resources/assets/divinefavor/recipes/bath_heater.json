@@ -1,0 +1,26 @@
+{
+  "result": {
+    "item": "divinefavor:bath_heater"
+  },
+  "pattern": [
+    "sfs",
+    "bcb",
+    "sss"
+  ],
+  "type": "forge:ore_shaped",
+  "key": {
+    "f": {
+      "item": "minecraft:furnace"
+    },
+    "c": {
+      "item": "minecraft:chest"
+    },
+    "s": {
+      "item": "minecraft:stone",
+      "data": 0
+    },
+    "b": {
+      "item": "minecraft:cobblestone"
+    }
+  }
+}
