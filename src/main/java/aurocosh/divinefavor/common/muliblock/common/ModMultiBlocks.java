@@ -19,9 +19,9 @@ public final class ModMultiBlocks {
     public static ModMultiBlock snowman;
     public static ModMultiBlock iron_golem;
 
-    public static ModMultiBlock bath_example_one;
-    public static ModMultiBlock bath_example_two;
-    public static ModMultiBlock bath_example_three;
+    public static ModMultiBlock bath_example_first;
+    public static ModMultiBlock bath_example_second;
+    public static ModMultiBlock bath_example_third;
 
     public static void preInit() {
         altar_arbow = MultiblockLoader.load("altar", "arbow");
@@ -39,6 +39,10 @@ public final class ModMultiBlocks {
 
         snowman = MultiblockLoader.load("spawn_validation", "snowman");
         iron_golem = MultiblockLoader.load("spawn_validation", "iron_golem");
+
+        bath_example_first = MultiblockLoader.load("bath_example", "first");
+        bath_example_second = MultiblockLoader.load("bath_example", "second");
+        bath_example_third = MultiblockLoader.load("bath_example", "third");
     }
 
     public static void init() {
@@ -54,5 +58,9 @@ public final class ModMultiBlocks {
         PatchouliMultiblockAdapter.register(soulbound_lectern_wood);
         PatchouliMultiblockAdapter.register(soulbound_lectern_stone);
         PatchouliMultiblockAdapter.register(altar_timber);
+
+        PatchouliMultiblockAdapter.register(bath_example_first);
+        PatchouliMultiblockAdapter.register(bath_example_second);
+        PatchouliMultiblockAdapter.register(bath_example_third);
     }
 }
