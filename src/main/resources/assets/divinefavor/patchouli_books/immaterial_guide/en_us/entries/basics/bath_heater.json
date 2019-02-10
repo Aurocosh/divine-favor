@@ -2,6 +2,7 @@
   "name": "Bath heater",
   "icon": "divinefavor:bath_heater",
   "category": "basics",
+  "sortnum": 2,
   "pages": [
     {
       "type": "text",

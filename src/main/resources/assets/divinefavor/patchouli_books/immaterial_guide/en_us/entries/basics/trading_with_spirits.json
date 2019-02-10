@@ -2,6 +2,7 @@
   "name": "Trading with spirits",
   "icon": "divinefavor:iron_medium",
   "category": "basics",
+  "sortnum": 4,
   "pages": [
     {
       "type": "text",

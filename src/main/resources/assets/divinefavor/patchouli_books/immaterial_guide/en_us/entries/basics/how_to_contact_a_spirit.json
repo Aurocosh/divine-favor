@@ -1,0 +1,54 @@
+{
+  "name": "How to contact a spirit",
+  "icon": "divinefavor:calling_stone_neblaze",
+  "category": "basics",
+  "sortnum": 3,
+  "pages": [
+    {
+      "type": "text",
+      "text": "Process of contacting a spirit depend on spirit itself, but general algorithm of contacting a spirit is like this: $(li)Attract spirits attention$(li)Impress spirit$(li)Build altar to a spirit$(li)Trade with him for spells and contracts! $(br)This guide will tach you how to contact a spirit using spirit neblaze as example."
+
+    },
+    {
+      "type": "text",
+      "text": "Attracting spirits attention $(br) In order to attract spirits attention you will need to prepare a special bathing blend. Blends are a mix of soul shards with some regular ingredients. Similarly to potions they apply special status effects but unlike potions you cannot consume them directly you need special block called bath heater to use them. "
+    },
+    {
+      "type": "crafting",
+      "text": "Blends cannot be consumed directly because they are often made of inedible and other pretty questionable ingredients. Above you see recipe for a $(item)Nether charcoal blend$(). This blend is used to attract attention of spirit neblaze.",
+      "recipe": "divinefavor:blend_charcoal"
+    },
+    {
+      "type": "crafting",
+      "text": "$(item)Bath heater$() recipe. $(br)In order to use it you will have to make yourself a bath heater. Recipe for a bath heater shown on another page. You will also need to make a bath. Bath is a simple 1 block deep water blocks enclosed by some other blocks.",
+      "recipe": "divinefavor:bath_heater"
+    },
+    {
+      "type": "text",
+      "text": "After you built a bath with bath heater and crafted plenty of nether charcoal blend you will need to know when spirit becomes active. It is useless to try to contact a spirit when he is inactive. Neblaze is active in the morning from 6 o'clock to 10 o'clock. When time is right load fuel and blend into bath heater. When water starts bubbling get inside the bath."
+    },
+    {
+      "type": "text",
+      "text": "Soon you will notice effect similar to potion. Unlike potions which instantly set max time for blend effect time extends the more you sit in bath. Sit in bath until you think effect has enough active time. Effects of blends that intended to make you more noticeable by spirits are called auras. Nether coal blend gives you charred aura. When spirit is active and you have appropriate aura you will need to do something to attract spirit."
+    },
+    {
+      "type": "text",
+      "text": "Neblaze is a spirit of fire so in order to attract him you will have to make some fire. Just grab flint and steel and ignite some stuff. Sooner or later spirit will notice you. Whe he does aura effect will be replaced with effect called presence. If you have such effect it means that some spirit is actively watching you. In case of neblase when he watches you he will give you effect 'scorching presence'."
+    },
+    {
+      "type": "spotlight",
+      "item": "divinefavor:calling_stone_neblaze",
+      "text": "When you managed to attract a spirit it is time to impress him. In case of neblaze you will need to prove that you are not afraid of fire, by stepping into fire. If spirit is impressed by your actions he will give you a calling stone. Calling stone is an item that needed to finish spirit altar."
+    },
+    {
+      "type": "multiblock",
+      "multiblock_id": "divinefavor:patchouli.altar_neblaze",
+      "text": "Altar of neblaze. Put calling stone in medium to finish altar."
+    },
+    {
+      "type": "spotlight",
+      "item": "divinefavor:calling_stone_neblaze",
+      "text": "Spirit altars are used to trade with spirits for spells and other items. On other page you will see and instruction how to build neblaze altar. After altar is built place calling stone into central slot of medium. If altar assembled correctly then texture of medium will change. If it does then you are ready to trade with neblaze."
+    }
+  ]
+}
