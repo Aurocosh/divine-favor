@@ -1,5 +1,6 @@
 {
   "name": "Basics",
   "description": "Introduction to basic rules and mechanics of divine powers.",
-  "icon": "divinefavor:grimoire"
+  "icon": "divinefavor:grimoire",
+  "sortnum": 0
 }

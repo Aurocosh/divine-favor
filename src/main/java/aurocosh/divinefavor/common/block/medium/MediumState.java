@@ -3,7 +3,6 @@ package aurocosh.divinefavor.common.block.medium;
 import net.minecraft.util.IStringSerializable;
 
 public enum MediumState implements IStringSerializable {
-    NO_CALLING_STONE("no_calling_stone"),
     NO_MULTI_BLOCK("no_multi_block"),
     VALID("valid"),
     ACTIVE("active");

@@ -5,8 +5,6 @@ import aurocosh.divinefavor.common.custom_data.world.WorldData;
 import aurocosh.divinefavor.common.custom_data.world.data.altars.AltarsData;
 import aurocosh.divinefavor.common.item.calling_stones.ItemCallingStone;
 import aurocosh.divinefavor.common.item.common.ModItems;
-import aurocosh.divinefavor.common.item.contract.ItemContract;
-import aurocosh.divinefavor.common.item.contract_binder.ItemContractBinder;
 import aurocosh.divinefavor.common.lib.math.Vector3i;
 import aurocosh.divinefavor.common.misc.SlotStack;
 import aurocosh.divinefavor.common.muliblock.IMultiblockController;
@@ -33,17 +31,17 @@ import net.minecraftforge.items.ItemStackHandler;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class TileMedium extends TickableTileEntity implements IMultiblockController {
     public static final int SIZE = 27;
     private final String TAG_CALLING_STONE = "CallingStone";
-    private final String TAG_CONTRACT = "Contract";
     private final String TAG_ITEMS_LEFT = "ItemsLeft";
     private final String TAG_ITEMS_RIGHT = "ItemsRight";
     private final String TAG_STATE_MEDIUM = "StateMedium";
 
-    private MediumState state = MediumState.NO_CALLING_STONE;
+    private MediumState state = MediumState.NO_MULTI_BLOCK;
 
     // server side
     private MultiBlockInstanceAltar multiBlockInstance;
@@ -64,13 +62,6 @@ public class TileMedium extends TickableTileEntity implements IMultiblockControl
                     tryToFormMultiBlock();
             }
             markDirty();
-        }
-    };
-
-    private ItemStackHandler contractStackHandler = new ItemStackHandler(1) {
-        @Override
-        public boolean isItemValid(int slot, @Nonnull ItemStack stack) {
-            return stack.getItem() instanceof ItemContract || stack.getItem() instanceof ItemContractBinder;
         }
     };
 
@@ -103,8 +94,6 @@ public class TileMedium extends TickableTileEntity implements IMultiblockControl
         state = MediumState.VALUES[compound.getInteger(TAG_STATE_MEDIUM)];
         if (compound.hasKey(TAG_CALLING_STONE))
             stoneStackHandler.deserializeNBT((NBTTagCompound) compound.getTag(TAG_CALLING_STONE));
-        if (compound.hasKey(TAG_CONTRACT))
-            contractStackHandler.deserializeNBT((NBTTagCompound) compound.getTag(TAG_CONTRACT));
         if (compound.hasKey(TAG_ITEMS_LEFT))
             leftStackHandler.deserializeNBT((NBTTagCompound) compound.getTag(TAG_ITEMS_LEFT));
         if (compound.hasKey(TAG_ITEMS_RIGHT))
@@ -116,7 +105,6 @@ public class TileMedium extends TickableTileEntity implements IMultiblockControl
         super.writeToNBT(compound);
         compound.setInteger(TAG_STATE_MEDIUM, state.ordinal());
         compound.setTag(TAG_CALLING_STONE, stoneStackHandler.serializeNBT());
-        compound.setTag(TAG_CONTRACT, contractStackHandler.serializeNBT());
         compound.setTag(TAG_ITEMS_LEFT, leftStackHandler.serializeNBT());
         compound.setTag(TAG_ITEMS_RIGHT, rightStackHandler.serializeNBT());
         return compound;
@@ -139,8 +127,6 @@ public class TileMedium extends TickableTileEntity implements IMultiblockControl
         if (capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) {
             if (facing == EnumFacing.UP)
                 return CapabilityItemHandler.ITEM_HANDLER_CAPABILITY.cast(stoneStackHandler);
-            else if (facing == EnumFacing.DOWN)
-                return CapabilityItemHandler.ITEM_HANDLER_CAPABILITY.cast(contractStackHandler);
             else if (facing == EnumFacing.WEST)
                 return CapabilityItemHandler.ITEM_HANDLER_CAPABILITY.cast(leftStackHandler);
             else if (facing == EnumFacing.EAST)
@@ -188,25 +174,7 @@ public class TileMedium extends TickableTileEntity implements IMultiblockControl
 
     @Override
     protected void updateFiltered() {
-        ItemStack stack = stoneStackHandler.getStackInSlot(0);
-        if (stack.isEmpty()) {
-            setState(MediumState.NO_CALLING_STONE);
-            return;
-        }
-
-        if (multiBlockInstance == null) {
-            setState(MediumState.NO_MULTI_BLOCK);
-            return;
-        }
-
-        ItemCallingStone callingStone = (ItemCallingStone) stack.getItem();
-        ModSpirit spirit = callingStone.spirit;
-        if (!spirit.isActive()) {
-            setState(MediumState.VALID);
-            return;
-        }
-        setState(MediumState.ACTIVE);
-
+        updateState();
         processCraftingRecipes();
     }
 
@@ -307,11 +275,7 @@ public class TileMedium extends TickableTileEntity implements IMultiblockControl
 
     private void updateState() {
         ItemStack stack = stoneStackHandler.getStackInSlot(0);
-        if (stack.isEmpty()) {
-            setState(MediumState.NO_CALLING_STONE);
-            return;
-        }
-        if (multiBlockInstance == null) {
+        if (stack.isEmpty() || multiBlockInstance == null) {
             setState(MediumState.NO_MULTI_BLOCK);
             return;
         }
