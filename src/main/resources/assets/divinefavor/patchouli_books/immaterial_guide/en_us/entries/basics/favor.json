@@ -1,0 +1,16 @@
+{
+  "name": "Favor",
+  "icon": "divinefavor:wishing_stone_neblaze",
+  "category": "basics",
+  "pages": [
+    {
+      "type": "text",
+      "text": "In order to harness the power of spirits you need to understand what is spirits favor. You can think of it as a currency. Each spirit has its own favor, and keeps how much favor you have. If you want to use any spell you acquired from spirit, you will have to spend favor to use it. "
+
+    },
+    {
+      "type": "text",
+      "text": "Cost of spells varies greatly, and each spell is belongs to one spirit, and consumes his favor on use. You can replenish favor either by trading goods with spirit or by acquiring special contracts."
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "result": {
+    "item": "divinefavor:ritual_pouch"
+  },
+  "pattern": [
+    " s ",
+    " l ",
+    "   "
+  ],
+  "type": "forge:ore_shaped",
+  "key": {
+    "l": {
+      "item": "minecraft:leather"
+    },
+    "s": {
+      "item": "minecraft:string"
+    }
+  }
+}

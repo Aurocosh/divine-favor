@@ -1,0 +1,34 @@
+{
+  "name": "Trading with spirits",
+  "icon": "divinefavor:iron_medium",
+  "category": "basics",
+  "pages": [
+    {
+      "type": "text",
+      "text": "If you want to trade with spirit you will have to build his altar. Altar is multiblock, and shape depends on spirit. Schematics for all altars can be found in this book. After altar is built, you will need a calling stone. Calling stone should be inserted into central slot of medium. If multiblock is valid then texture of medium will change and you will be able to use medium to trade."
+
+    },
+    {
+      "type": "crafting",
+      "text": "$(item)Iron medium$() recipe. Central part of any this multiblock is a medium. You can use jei to see all available trading recipes for each spirit. Trading can be done in two ways, with a ritual pouch and without.",
+      "recipe": "divinefavor:iron_medium"
+    },
+    {
+      "type": "text",
+      "text": "Medium has two sets of slots on both sides. To trade something lookup price in jei and put ingredients in one of 2 slot sets and wait. When spirits becomes active his altar will also activate and medium will become animated. Spirit will check medium for any valid recipes and if he finds on he will exchange ingredients with appropriate item. You will not be able to interact with altar while spirit is active."
+    },
+    {
+      "type": "text",
+      "text": " You need to put ingredients in altar before spirit becomes active, and you will be able to get results only after spirit becomes inactive."
+    },
+    {
+      "type": "crafting",
+      "text": "$(item)Ritual pouch$() recipe. As you probably noticed you can only trade for 2 items at a time one recipe in each slot set. if this is too slow, then you can use ritual pouch to trade faster. Each ritual pouch has internal inventory, you can put ingredients for a trading recipe into ritual pouch and then put pouch into altar. If recipe in pouch is valid, then spirit will exchange ingredients in pouch for an item..",
+      "recipe": "divinefavor:ritual_pouch"
+    },
+    {
+      "type": "text",
+      "text": "That way you can trade for 18 recipes simultaneously. If you need to trade at even faster rate than that then you will need to build additional altars"
+    }
+  ]
+}
