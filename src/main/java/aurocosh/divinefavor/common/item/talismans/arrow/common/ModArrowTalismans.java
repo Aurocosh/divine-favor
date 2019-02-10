@@ -34,24 +34,41 @@ public class ModArrowTalismans {
     public static ItemArrowTalisman zero_g_arrow;
 
     public static void preInit() {
+
+        // arbow;
         anti_gravity_arrow = new ArrowTalismanAntiGravityArrow("anti_gravity_arrow", ModFavors.redwind, 1, Color.green.getRGB(), 2, ArrowOptions.NORMAL, ArrowType.WOODEN_ARROW);
-        armor_corrosion = new ArrowTalismanCurse("armor_corrosion", ModFavors.timber, 1, Color.red.getRGB(), ModCurses.armor_corrosion, UtilTick.minutesToTicks(3));
+        disarm = new ArrowTalismanDisarm("disarm", ModFavors.timber, 1, Color.orange.getRGB(), 0, ArrowOptions.REQUIRES_TARGET, ArrowType.SPELL_ARROW);
+        hand_swap = new ArrowTalismanHandSwap("hand_swap", ModFavors.timber, 1, Color.orange.getRGB(), 0, ArrowOptions.REQUIRES_TARGET, ArrowType.SPELL_ARROW);
+        zero_g_arrow = new ArrowTalismanZeroGArrow("zero_g_arrow", ModFavors.redwind,15, Color.green.getRGB(), 2, ArrowOptions.NORMAL, ArrowType.WOODEN_ARROW);
+
+        // blizrabi;
+
+        // endererer;
         blink_arrow = new ArrowTalismanBlinkArrow("blink_arrow", ModFavors.endererer, 2, Color.green.getRGB(), 0, ArrowOptions.ARROW_BREAKS, ArrowType.SPELL_ARROW);
+        nether_swap = new ArrowTalismanNetherSwap("nether_swap", ModFavors.endererer, 15, Color.green.getRGB(), 0, EnumSet.of(ArrowOptions.BreakOnHit, ArrowOptions.RequiresTarget), ArrowType.SPELL_ARROW);
+        // loon;
+
+        // neblaze;
+
+        // redwind;
+
+        // romol;
+
+        // squarefury;
+
+        // timber;
+        armor_corrosion = new ArrowTalismanCurse("armor_corrosion", ModFavors.timber, 1, Color.red.getRGB(), ModCurses.armor_corrosion, UtilTick.minutesToTicks(3));
         crawling_mist = new ArrowTalismanCurse("crawling_mist", ModFavors.timber, 1, Color.red.getRGB(), ModCurses.crawling_mist, UtilTick.minutesToTicks(3));
         cripple = new ArrowTalismanCurse("cripple", ModFavors.timber, 1, Color.red.getRGB(), ModCurses.cripple, UtilTick.minutesToTicks(2));
-        disarm = new ArrowTalismanDisarm("disarm", ModFavors.timber, 1, Color.orange.getRGB(), 0, ArrowOptions.REQUIRES_TARGET, ArrowType.SPELL_ARROW);
         fiery_mark = new ArrowTalismanCurse("fiery_mark", ModFavors.neblaze, 1, Color.red.getRGB(), ModCurses.fiery_mark, UtilTick.secondsToTicks(10));
         fill_lungs = new ArrowTalismanCurse("fill_lungs", ModFavors.blizrabi, 1, Color.red.getRGB(), ModCurses.fill_lungs, UtilTick.minutesToTicks(2));
-        hand_swap = new ArrowTalismanHandSwap("hand_swap", ModFavors.timber, 1, Color.orange.getRGB(), 0, ArrowOptions.REQUIRES_TARGET, ArrowType.SPELL_ARROW);
         hollow_leg = new ArrowTalismanCurse("hollow_leg", ModFavors.timber, 1, Color.red.getRGB(), ModCurses.hollow_leg, UtilTick.minutesToTicks(2));
         limp_leg = new ArrowTalismanCurse("limp_leg", ModFavors.timber, 1, Color.red.getRGB(), ModCurses.limp_leg, UtilTick.secondsToTicks(60));
-        nether_swap = new ArrowTalismanNetherSwap("nether_swap", ModFavors.endererer, 15, Color.green.getRGB(), 0, EnumSet.of(ArrowOptions.BreakOnHit, ArrowOptions.RequiresTarget), ArrowType.SPELL_ARROW);
         petrification = new ArrowTalismanCurse("petrification", ModFavors.romol, 1, Color.red.getRGB(), ModCurses.petrification, UtilTick.secondsToTicks(40));
         roots = new ArrowTalismanCurse("roots", ModFavors.timber, 1, Color.green.getRGB(), ModCurses.roots, UtilTick.secondsToTicks(15));
         skyfall = new ArrowTalismanCurse("skyfall", ModFavors.redwind, 1, Color.red.getRGB(), ModCurses.skyfall, UtilTick.secondsToTicks(8));
         suffocating_fumes = new ArrowTalismanCurse("suffocating_fumes", ModFavors.timber, 1, Color.red.getRGB(), ModCurses.suffocating_fumes, UtilTick.minutesToTicks(2));
         wind_leash = new ArrowTalismanCurse("wind_leash", ModFavors.redwind,1, Color.red.getRGB(), ModCurses.wind_leash, UtilTick.secondsToTicks(12));
         yummy_smell = new ArrowTalismanCurse("yummy_smell", ModFavors.timber,1, Color.red.getRGB(), ModCurses.yummy_smell, UtilTick.secondsToTicks(30));
-        zero_g_arrow = new ArrowTalismanZeroGArrow("zero_g_arrow", ModFavors.redwind,15, Color.green.getRGB(), 2, ArrowOptions.NORMAL, ArrowType.WOODEN_ARROW);
     }
 }

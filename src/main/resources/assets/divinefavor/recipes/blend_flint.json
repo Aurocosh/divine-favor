@@ -1,0 +1,19 @@
+{
+  "result": {
+    "item": "divinefavor:blend_flint"
+  },
+  "pattern": [
+    "sss",
+    "sfs",
+    "sss"
+  ],
+  "type": "forge:ore_shaped",
+  "key": {
+    "f": {
+      "item": "minecraft:flint"
+    },
+    "s": {
+      "item": "divinefavor:soul_shard_mind"
+    }
+  }
+}

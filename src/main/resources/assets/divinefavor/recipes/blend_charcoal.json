@@ -3,9 +3,9 @@
     "item": "divinefavor:blend_charcoal"
   },
   "pattern": [
-    "ccc",
     "sss",
-    "ccc"
+    "scs",
+    "sss"
   ],
   "type": "forge:ore_shaped",
   "key": {
