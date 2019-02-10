@@ -1,0 +1,16 @@
+{
+  "name": "Spirits",
+  "icon": "divinefavor:calling_stone_allfire",
+  "category": "basics",
+  "pages": [
+    {
+      "type": "text",
+      "text": "It is not really known what spirits are, but it is clear that whatever they are they are very powerful beings. They are able to produce numerous inexplicable phenomenon like conjuring fire out of nowhere, transforming materials, teleporting and much more. "
+
+    },
+    {
+      "type": "text",
+      "text": "Each one of them seems to specializes on some element or theme. Also activity of spirits varies throughout the day. Each spirit has its on activity cycle during the day and during that time of day spirit becomes much more active. During that activity time spirits actively watch over the world, so if you want to contact a spirit you need to know when exactly he is active."
+    }
+  ]
+}
