@@ -38,17 +38,17 @@
     {
       "type": "spotlight",
       "item": "divinefavor:calling_stone_neblaze",
-      "text": "When you managed to attract a spirit it is time to impress him. In case of neblaze you will need to prove that you are not afraid of fire, by stepping into fire. If spirit is impressed by your actions he will give you a calling stone. Calling stone is an item that needed to finish spirit altar."
+      "text": "When you managed to attract a spirit it is time to impress him. In case of neblaze you will need to prove that you are not afraid of fire, by stepping into fire. If spirit is impressed by your actions he will give you an invite. Spirits invite is an item that needed to finish spirit altar."
     },
     {
       "type": "multiblock",
       "multiblock_id": "divinefavor:patchouli.altar_neblaze",
-      "text": "Altar of neblaze. Put calling stone in medium to finish altar."
+      "text": "Altar of neblaze. Put invite in medium to finish altar."
     },
     {
       "type": "spotlight",
       "item": "divinefavor:calling_stone_neblaze",
-      "text": "Spirit altars are used to trade with spirits for spells and other items. On other page you will see and instruction how to build neblaze altar. After altar is built place calling stone into central slot of medium. If altar assembled correctly then texture of medium will change. If it does then you are ready to trade with neblaze."
+      "text": "Spirit altars are used to trade with spirits for spells and other items. On other page you will see and instruction how to build neblaze altar. After altar is built place invite into central slot of medium. If altar assembled correctly then texture of medium will change. If it does then you are ready to trade with neblaze."
     }
   ]
 }

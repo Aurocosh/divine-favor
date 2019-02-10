@@ -1,66 +1,199 @@
-# MISC
+# Creative tabs
 itemGroup.divinefavor=Divine Favor
 itemGroup.divinefavor_gems=Divine Favor Gems
 itemGroup.divinefavor_talismans=Divine Favor Talismans
+itemGroup.divinefavor_contracts=Divine Favor Contracts
+itemGroup.divinefavor_arrow_talismans=Divine Favor Arrow Talismans
 
 # BLOCK NAMES
+tile.divinefavor:bath_heater.name=Bath heater
+tile.divinefavor:diviner.name=Diviner
+tile.divinefavor:dyed_pumpkin.name=Dyed pumpkin
+tile.divinefavor:ender_pumpkin.name=Ender pumpkin
 tile.divinefavor:fast_furnace.name=Fast furnace
-tile.divinefavor:iron_medium.name=Iron medium
+tile.divinefavor:fast_furnace.name=Fast furnace
+tile.divinefavor:iron_medium.name=Iron_medium
+tile.divinefavor:lit_ender_pumpkin.name=Lit ender pumpkin
+tile.divinefavor:soulbound_lectern_stone.name=Soulbound lectern stone
+tile.divinefavor:soulbound_lectern_wood.name=Soulbound lectern wood
 
 # ITEM NAMES
+item.divinefavor:bone_dagger.name=Bone dagger
+item.divinefavor:bone_dagger_awakened.name=Awakened bone dagger
 item.divinefavor:bone_key.name=Bone key
+item.divinefavor:contract_binder.name=Contract binder
 item.divinefavor:grimoire.name=Grimoire
+item.divinefavor:invite_gem.name=Invite gem
+item.divinefavor:invite_pebble.name=Invite pebble
 item.divinefavor:mystic_architect_stick.name=Mystic architect stick
-item.divinefavor:mystic_pure_apple.name=Pure apple
+item.divinefavor:pure_apple.name=Pure apple
 item.divinefavor:ritual_pouch.name=Ritual pouch
-item.divinefavor:stone_ball.name=Stone ball
+item.divinefavor:spell_bow.name=Spell bow
+item.divinefavor:stone_ball.name=Stone
+item.divinefavor:storage_gem.name=Storage gem
+item.divinefavor:warp_gem.name=Warp gem
+item.divinefavor:warp_pebble.name=Warp pebble
 
 # TALISMAN NAMES
+## ARBOW TALISMANS
 item.divinefavor:talisman_arrow_throw.name=Arrow throw talisman
-item.divinefavor:talisman_bonemeal.name=Bone meal talisman
-item.divinefavor:talisman_butchering_strike.name=Butchering strike talisman
-item.divinefavor:talisman_combustion.name=Combustion talisman
-item.divinefavor:talisman_consuming_fury.name=Consuming fury talisman
-item.divinefavor:talisman_crushing_palm.name=Crushing palm talisman
+
+## BLIZZRABI TALISMANS
+item.divinefavor:talisman_armor_of_pacifist.name=Armor of pacifist talisman
 item.divinefavor:talisman_crystalline_road.name=Crystalline_road talisman
-item.divinefavor:talisman_distant_spark.name=Distant spark talisman
-item.divinefavor:talisman_empower_axe.name=Empower axe talisman
-item.divinefavor:talisman_empower_pickaxe.name=Empower pickaxe talisman
-item.divinefavor:talisman_fall_negation.name=Fall negation talisman
-item.divinefavor:talisman_fell_tree.name=Fell tree talisman
-item.divinefavor:talisman_focused_fury.name=Focused fury talisman
-item.divinefavor:talisman_grudge.name=Grudge talisman
-item.divinefavor:talisman_ignition.name=Ignition talisman
-item.divinefavor:talisman_miners_focus.name=Miners focus talisman
 item.divinefavor:talisman_obsidian_road.name=Obsidian road talisman
-item.divinefavor:talisman_searing_pulse.name=Searing pulse talisman
-item.divinefavor:talisman_small_fireball_throw.name=Small fireball talisman
 item.divinefavor:talisman_snowball_throw.name=Snowball talisman
-item.divinefavor:talisman_stone_fever.name=Stone fever talisman
-item.divinefavor:talisman_stoneball_throw.name=Pebble talisman
+item.divinefavor:talisman_winter_breath.name=Winter breath talisman
+item.divinefavor:talisman_fins.name=Fins talisman
+item.divinefavor:talisman_gills.name=Gills talisman
+item.divinefavor:talisman_vitalize.name=Vitalize talisman
+
+## ENDERERER TALISMANS
+item.divinefavor:talisman_blink.name=Blink talisman
+item.divinefavor:talisman_earthen_dive.name=Earthen dive talisman
+item.divinefavor:talisman_escape_plan.name=Escape plan talisman
+item.divinefavor:talisman_invite_gem.name=Invite gem talisman
+item.divinefavor:talisman_invite_pebble.name=Invite pebble talisman
+item.divinefavor:talisman_overblink.name=Overblink talisman
+item.divinefavor:talisman_overwarp.name=Overwarp talisman
+item.divinefavor:talisman_pearl_crumbs.name=Pearl crumbs talisman
+item.divinefavor:talisman_remote_chest.name=Remote chest talisman
+item.divinefavor:talisman_surface_blink.name=Surface blink talisman
+item.divinefavor:talisman_surface_shift.name=Surface shift talisman
+item.divinefavor:talisman_wall_slip.name=Wall slip talisman
+item.divinefavor:talisman_warp.name=Warp talisman
+item.divinefavor:talisman_warp_gem.name=Warp gem talisman
+item.divinefavor:talisman_warp_pebble.name=Warp pebble talisman
+
+## LOON TALISMANS
+item.divinefavor:talisman_follow.name=Follow talisman
+item.divinefavor:talisman_night_eye.name=Night eye talisman
+item.divinefavor:talisman_spider_might.name=Spider might talisman
+item.divinefavor:talisman_summon_creeper.name=Summon creeper talisman
+item.divinefavor:talisman_summon_husk.name=Summon husk talisman
+item.divinefavor:talisman_summon_skeleton.name=Summon skeleton talisman
+item.divinefavor:talisman_summon_stray.name=Summon stray talisman
+item.divinefavor:talisman_summon_zombie.name=Summon zombie talisman
+item.divinefavor:talisman_target.name=Target talisman
+
+## NEBLAZE TALISMANS
+item.divinefavor:talisman_combustion.name=Combustion talisman
+item.divinefavor:talisman_distant_spark.name=Distant spark talisman
+item.divinefavor:evil_eye.name=Evil eye talisman
+item.divinefavor:heat_wave.name=Heat wave talisman
+item.divinefavor:hellisphere.name=Hellisphere talisman
+item.divinefavor:talisman_ignition.name=Ignition
+item.divinefavor:infernal_touch.name=Infernal touch
+item.divinefavor:molten_skin.name=Molten skin
+item.divinefavor:nether_surge.name=Nether surge
+item.divinefavor:piercing_inferno.name=Piercing inferno
+item.divinefavor:searing_pulse.name=Searing pulse
+item.divinefavor:small_fireball_throw.name=Small fireball throw
+
+## REDWIND TALISMANS
+item.divinefavor:talisman_fall_negation.name=Fall negation talisman
+item.divinefavor:talisman_target.name=Target talisman
 item.divinefavor:talisman_toadic_jump.name=Toadic jump talisman
 item.divinefavor:talisman_wild_sprint.name=Wild sprint talisman
 item.divinefavor:talisman_wind_step.name=Wind step talisman
-item.divinefavor:talisman_winter_breath.name=Winter breath talisman
+
+## ROMOL TALISMANS
+item.divinefavor:talisman_crushing_palm.name=Crushing palm talisman
+item.divinefavor:talisman_empower_axe.name=Empower axe talisman
+item.divinefavor:talisman_empower_pickaxe.name=Empower pickaxe
+item.divinefavor:talisman_fell_tree.name=Fell tree talisman
+item.divinefavor:talisman_green_cycle.name=Green cycle talisman
+item.divinefavor:talisman_ground_flow.name=Ground flow talisman
+item.divinefavor:talisman_harvest.name=Harvest talisman
+item.divinefavor:talisman_miners_focus.name=Miners focus talisman
+item.divinefavor:talisman_stone_fever.name=Stone fever talisman
+item.divinefavor:talisman_stoneball_throw.name=Pebble talisman
 item.divinefavor:talisman_wooden_punch.name=Wooden punch talisman
 
-# WISHING STONES
-item.divinefavor:wishing_stone_allfire.name=Allfire wishing stone
-item.divinefavor:wishing_stone_arbow.name=Arbow wishing stone
-item.divinefavor:wishing_stone_blizrabi.name=Blizrabi wishing stone
-item.divinefavor:wishing_stone_redwind.name=Redwind wishing stone
-item.divinefavor:wishing_stone_romol.name=Romol wishing stone
-item.divinefavor:wishing_stone_squarefury.name=Squarefury wishing stone
-item.divinefavor:wishing_stone_timber.name=Timber wishing stone
+## SQUAREFURY TALISMANS
+item.divinefavor:talisman_butchering_strike.name=Butchering strike talisman
+item.divinefavor:talisman_consuming_fury.name=Consuming fury talisman
+item.divinefavor:talisman_focused_fury.name=Focused fury talisman
+item.divinefavor:talisman_grudge.name=Grudge talisman
+item.divinefavor:talisman_mist_blade.name=Mist blade talisman
+
+## TIMBER TALISMANS
+item.divinefavor:talisman_blade_of_grass.name=Blade of grass talisman
+item.divinefavor:talisman_blood_of_grass.name=Blood of grass talisman
+item.divinefavor:talisman_bonemeal.name=Bonemeal talisman
+item.divinefavor:talisman_clock.name=Clock talisman
+item.divinefavor:talisman_starvation.name=Starvation talisman
+
+# ARROW TALISMAN NAMES
+## ARBOW TALISMANS
+item.divinefavor:arrow_talisman_anti_gravity_arrow.name=Anti gravity arrow talisman
+item.divinefavor:arrow_talisman_disarm.name=Disarm talisman
+item.divinefavor:arrow_talisman_hand_swap.name=Hand swap talisman
+item.divinefavor:arrow_talisman_zero_g_arrow.name=Zero g arrow talisman
+
+## ENDERERER TALISMANS
+item.divinefavor:arrow_talisman_blink_arrow.name=Blink arrow talisman
+item.divinefavor:arrow_talisman_nether_swap.name=Nether swap talisman
+
+## TIMBER TALISMANS
+item.divinefavor:arrow_talisman_armor_corrosion.name=Armor corrosion talisman
+item.divinefavor:arrow_talisman_crawling_mist.name=Crawling mist talisman
+item.divinefavor:arrow_talisman_cripple.name=Cripple talisman
+item.divinefavor:arrow_talisman_fiery_mark.name=Fiery_mark talisman
+item.divinefavor:arrow_talisman_fill_lungs.name=Fill lungs talisman
+item.divinefavor:arrow_talisman_hollow_leg.name=Hollow leg talisman
+item.divinefavor:arrow_talisman_limp_leg.name=Limp leg talisman
+item.divinefavor:arrow_talisman_petrification.name=Petrification talisman
+item.divinefavor:arrow_talisman_roots.name=Roots talisman
+item.divinefavor:arrow_talisman_skyfall.name=Skyfall talisman
+item.divinefavor:arrow_talisman_suffocating_fumes.name=Suffocating fumes talisman
+item.divinefavor:arrow_talisman_wind_leash.name=Wind leash talisman
+item.divinefavor:arrow_talisman_yummy_smell.name=Yummy_smell talisman
 
 # CALLING STONES
-item.divinefavor:calling_stone_allfire.name=Allfire's invite
 item.divinefavor:calling_stone_arbow.name=Arbow's invite
 item.divinefavor:calling_stone_blizrabi.name=Blizrabi's invite
+item.divinefavor:calling_stone_endererer.name=Endererer's invite
+item.divinefavor:calling_stone_loon.name=Loon's invite
+item.divinefavor:calling_stone_neblaze.name=Neblaze's invite
 item.divinefavor:calling_stone_redwind.name=Redwind's invite
 item.divinefavor:calling_stone_romol.name=Romol's invite
 item.divinefavor:calling_stone_squarefury.name=Squarefury's invite
 item.divinefavor:calling_stone_timber.name=Timber's invite
+
+# WISHING STONES
+item.divinefavor:wishing_stone_minor_arbow.name=Arbow wishing stone
+item.divinefavor:wishing_stone_minor_blizrabi.name=Blizrabi wishing stone
+item.divinefavor:wishing_stone_minor_endererer.name=Endererer wishing stone
+item.divinefavor:wishing_stone_minor_loon.name=Loon wishing stone
+item.divinefavor:wishing_stone_minor_neblaze.name=Neblaze wishing stone
+item.divinefavor:wishing_stone_minor_redwind.name=Redwind wishing stone
+item.divinefavor:wishing_stone_minor_romol.name=Romol wishing stone
+item.divinefavor:wishing_stone_minor_squarefury.name=Squarefury wishing stone
+item.divinefavor:wishing_stone_minor_timber.name=Timber wishing stone
+
+# SOUL SHARDS
+item.divinefavor:soul_shard_end.name=Soul shard of end
+item.divinefavor:soul_shard_mind.name=Soul shard of mind
+item.divinefavor:soul_shard_nether.name=Soul shard of nether
+item.divinefavor:soul_shard_peace.name=Soul shard of peace
+item.divinefavor:soul_shard_soul.name=Soul shard of soul
+item.divinefavor:soul_shard_undeath.name=Soul shard of undeath
+item.divinefavor:soul_shard_water.name=Soul shard of water
+item.divinefavor:soul_shard_wild.name=Soul shard of wild
+item.divinefavor:soul_shard_wild.name=Soul shard of wild
+item.divinefavor:soul_shard_wither.name=Soul shard of wither
+
+# BATHING BLENDS
+item.divinefavor:blend_charcoal.name=Nether charcoal blend
+item.divinefavor:blend_ender_pearl.name=Distorted pearl blend
+item.divinefavor:blend_feathers.name=Calm feather blend
+item.divinefavor:blend_fleshy.name=Wild flesh blend
+item.divinefavor:blend_flint.name=Tool flint blend
+item.divinefavor:blend_lapis.name=Undead lapis blend
+item.divinefavor:blend_redstone.name=Mystic redstone blend
+item.divinefavor:blend_snow.name=Evercold snow blend
+item.divinefavor:blend_wood.name=Cursed wood blend
 
 # EFFECT NAMES
 potion.divinefavor:butchering_strike.name=Butchering strike
@@ -71,6 +204,7 @@ potion.divinefavor:empower_axe.name=Empower axe
 potion.divinefavor:empower_pickaxe.name=Empower pickaxe
 potion.divinefavor:fall_negation.name=Fall negation
 potion.divinefavor:focused_fury.name=Focused fury
+potion.divinefavor:ground_flow.name=Ground flow
 potion.divinefavor:grudge.name=Grudge
 potion.divinefavor:miners_focus.name=Miners focus
 potion.divinefavor:obsidian_road.name=Obsidian_road
@@ -79,7 +213,6 @@ potion.divinefavor:toadic_jump.name=Toadic jump
 potion.divinefavor:wild_charge.name=Wild sprint
 potion.divinefavor:wild_sprint.name=Wild sprint
 potion.divinefavor:wooden_punch.name=Wooden punch
-potion.divinefavor:ground_flow.name=Ground flow
 
 # JEI tab name
 container.divinefavor:immaterial_medium.name=Spiritual trade

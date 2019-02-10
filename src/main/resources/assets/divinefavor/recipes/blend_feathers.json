@@ -1,0 +1,19 @@
+{
+  "result": {
+    "item": "divinefavor:blend_feathers"
+  },
+  "pattern": [
+    "sss",
+    "sfs",
+    "sss"
+  ],
+  "type": "forge:ore_shaped",
+  "key": {
+    "f": {
+      "item": "minecraft:feather"
+    },
+    "s": {
+      "item": "divinefavor:soul_shard_peace"
+    }
+  }
+}

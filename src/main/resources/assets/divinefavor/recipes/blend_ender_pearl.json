@@ -1,0 +1,19 @@
+{
+  "result": {
+    "item": "divinefavor:blend_ender_pearl"
+  },
+  "pattern": [
+    "sss",
+    "sps",
+    "sss"
+  ],
+  "type": "forge:ore_shaped",
+  "key": {
+    "p": {
+      "item": "minecraft:ender_pearl"
+    },
+    "s": {
+      "item": "divinefavor:soul_shard_end"
+    }
+  }
+}

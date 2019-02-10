@@ -1,0 +1,20 @@
+{
+  "result": {
+    "item": "divinefavor:blend_wood"
+  },
+  "pattern": [
+    "sss",
+    "sws",
+    "sss"
+  ],
+  "type": "forge:ore_shaped",
+  "key": {
+    "w": {
+      "type": "forge:ore_dict",
+      "ore": "plankWood"
+    },
+    "s": {
+      "item": "divinefavor:soul_shard_wither"
+    }
+  }
+}

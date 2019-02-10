@@ -7,6 +7,7 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
+import net.minecraft.util.ResourceLocation;
 
 public class ModItem extends Item implements IModelHolder {
     private final int orderIndex;
@@ -19,8 +20,9 @@ public class ModItem extends Item implements IModelHolder {
     public ModItem(String name, String texturePath, int orderIndex) {
         this.texturePath = texturePath;
         this.orderIndex = orderIndex;
-        setTranslationKey(name);
-        setRegistryName(ResourceNamer.getFullName(name));
+        ResourceLocation fullName = ResourceNamer.getFullName(name);
+        setTranslationKey(fullName.toString());
+        setRegistryName(fullName);
         ModRegistries.items.register(this);
     }
 

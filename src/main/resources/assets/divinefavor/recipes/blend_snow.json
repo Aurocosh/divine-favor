@@ -1,0 +1,19 @@
+{
+  "result": {
+    "item": "divinefavor:blend_snow"
+  },
+  "pattern": [
+    "sss",
+    "sbs",
+    "sss"
+  ],
+  "type": "forge:ore_shaped",
+  "key": {
+    "b": {
+      "item": "minecraft:snowball"
+    },
+    "s": {
+      "item": "divinefavor:soul_shard_water"
+    }
+  }
+}

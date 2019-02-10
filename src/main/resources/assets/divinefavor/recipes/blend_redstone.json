@@ -1,0 +1,19 @@
+{
+  "result": {
+    "item": "divinefavor:blend_redstone"
+  },
+  "pattern": [
+    "sss",
+    "srs",
+    "sss"
+  ],
+  "type": "forge:ore_shaped",
+  "key": {
+    "r": {
+      "item": "minecraft:redstone"
+    },
+    "s": {
+      "item": "divinefavor:soul_shard_soul"
+    }
+  }
+}

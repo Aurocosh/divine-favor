@@ -1,0 +1,19 @@
+{
+  "result": {
+    "item": "divinefavor:blend_fleshy"
+  },
+  "pattern": [
+    "sss",
+    "sps",
+    "sss"
+  ],
+  "type": "forge:ore_shaped",
+  "key": {
+    "p": {
+      "item": "minecraft:porkchop"
+    },
+    "s": {
+      "item": "divinefavor:soul_shard_wild"
+    }
+  }
+}
