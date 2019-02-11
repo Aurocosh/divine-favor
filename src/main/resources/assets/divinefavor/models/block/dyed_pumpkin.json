@@ -1,8 +1,0 @@
-{
-    "parent": "block/cube_bottom_top",
-    "textures": {
-        "top": "divinefavor:blocks/ender_pumpkin/top",
-        "side": "divinefavor:blocks/ender_pumpkin/side",
-        "bottom": "divinefavor:blocks/ender_pumpkin/side"
-    }
-}

@@ -1,0 +1,27 @@
+{
+  "result": {
+    "item": "divinefavor:ender_pumpkin"
+  },
+  "pattern": [
+    "pdp",
+    "rkr",
+    "pdp"
+  ],
+  "type": "forge:ore_shaped",
+  "key": {
+    "d": {
+      "item": "minecraft:dye",
+      "data": 0
+    },
+    "k": {
+      "item": "minecraft:pumpkin"
+    },
+    "p": {
+      "item": "minecraft:paper"
+    },
+    "r": {
+      "item": "minecraft:dye",
+      "data": 5
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "name": "Endererer",
+  "icon": "divinefavor:calling_stone_endererer",
+  "category": "spirits",
+  "sortnum": 0,
+  "pages": [
+    {
+      "type": "text",
+      "text": "Warped spirit of space and end dimension. Call upon this spirit if you want to harness his spatial powers. $(br) This spirit is active in the morning from 6 o'clock to 10 o'clock."
+    },
+    {
+      "type": "crafting",
+      "text": "In order to contact endererer you will have to craft distorted pearl blend. You can see recipe for a $(item)Distorted pearl blend$() above.",
+      "recipe": "divinefavor:blend_ender_pearl"
+    },
+    {
+      "type": "text",
+      "text": "Distorted pearl blend will grant you distorted aura for a time. That will make you much more noticeable by endererer. When spirit is active and you have appropriate aura you will have to pretend to be an enderman to make him notice you. To do that first you will need a mask. You can craft yourself an enderman mask from a pumpkin. When you make it put it on your head and find wild enderman. "
+    },
+    {
+      "type": "crafting",
+      "text": "When you found enderman just try to stay close to him and endererer will notice you sooner or later. When he does you will feel his warping presence. In order to impress him you will need to make yourself even more like enderman by teleporting.",
+      "recipe": "divinefavor:ender_pumpkin"
+    },
+    {
+      "type": "spotlight",
+      "item": "divinefavor:calling_stone_endererer",
+      "text": "If you impress endererer he will give you an invite to use in your altar."
+    },
+    {
+      "type": "multiblock",
+      "multiblock_id": "divinefavor:patchouli.altar_endererer",
+      "text": "Altar of endererer. Put invite in medium to finish altar."
+    }
+  ]
+}

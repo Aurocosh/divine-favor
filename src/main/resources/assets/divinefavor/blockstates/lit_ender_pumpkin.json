@@ -1,8 +1,0 @@
-{
-    "variants": {
-        "facing=north": { "model": "divinefavor:lit_ender_pumpkin" },
-        "facing=south": { "model": "divinefavor:lit_ender_pumpkin", "y": 180 },
-        "facing=west":  { "model": "divinefavor:lit_ender_pumpkin", "y": 270 },
-        "facing=east":  { "model": "divinefavor:lit_ender_pumpkin", "y": 90 }
-    }
-}
