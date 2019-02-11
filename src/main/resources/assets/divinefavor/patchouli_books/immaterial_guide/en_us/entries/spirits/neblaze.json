@@ -1,0 +1,31 @@
+{
+  "name": "Neblaze",
+  "icon": "divinefavor:calling_stone_neblaze",
+  "category": "spirits",
+  "sortnum": 0,
+  "pages": [
+    {
+      "type": "text",
+      "text": "Hellish spirit of fire and nether. Call upon this spirit if you want to harness his fiery powers. $(br) This spirit is active in the morning from 6 o'clock to 10 o'clock."
+    },
+    {
+      "type": "crafting",
+      "text": "In order to contact neblaze you will need to craft nether charcoal blend. You can see recipe for a $(item)Nether charcoal blend$() above.",
+      "recipe": "divinefavor:blend_charcoal"
+    },
+    {
+      "type": "text",
+      "text": "Nether charcoal blend will grant you charred aura for a time. That will make you much more noticeable by neblaze. When spirit is active and you have appropriate aura take flint and steel and start spreading fire in the world. Sooner or later neblaze will notice you. When he does you will feel his scorching presence. In order to impress him and get his invite you need to prove that you are not afraid of fire."
+    },
+    {
+      "type": "spotlight",
+      "item": "divinefavor:calling_stone_neblaze",
+      "text": "To prove that you are not afraid of fire you will need to step into fire and survive. If he is not impressed first time just try again."
+    },
+    {
+      "type": "multiblock",
+      "multiblock_id": "divinefavor:patchouli.altar_neblaze",
+      "text": "Altar of neblaze. Put invite in medium to finish altar."
+    }
+  ]
+}
