@@ -1,9 +1,7 @@
 package aurocosh.divinefavor.common.block.common;
 
 import aurocosh.divinefavor.common.block.BlockDiviner;
-import aurocosh.divinefavor.common.block.BlockDyedPumpkin;
 import aurocosh.divinefavor.common.block.BlockEnderPumpkin;
-import aurocosh.divinefavor.common.block.BlockLitEnderPumpkin;
 import aurocosh.divinefavor.common.block.base.ModBlock;
 import aurocosh.divinefavor.common.block.bath_heater.BlockBathHeater;
 import aurocosh.divinefavor.common.block.bath_heater.TileBathHeater;
@@ -42,9 +40,7 @@ public class ModBlocks {
         soulboundLecternWood = new BlockSoulboundLectern("wood", Material.WOOD, TileSoulboundLecternWood.class);
         soulboundLecternStone = new BlockSoulboundLectern("stone", Material.ROCK, TileSoulboundLecternStone.class);
 
-        dyedPumpkin = new BlockDyedPumpkin();
         enderPumpkin = new BlockEnderPumpkin();
-        litEnderPumpkin = new BlockLitEnderPumpkin();
 
         initTileEntities();
     }

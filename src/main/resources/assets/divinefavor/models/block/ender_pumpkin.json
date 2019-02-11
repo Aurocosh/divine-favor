@@ -2,7 +2,7 @@
     "parent": "block/orientable",
     "textures": {
         "top": "divinefavor:blocks/ender_pumpkin/top",
-        "front": "divinefavor:blocks/ender_pumpkin/face_off",
+        "front": "divinefavor:blocks/ender_pumpkin/face",
         "side": "divinefavor:blocks/ender_pumpkin/side"
     }
 }
