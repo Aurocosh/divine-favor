@@ -1,0 +1,31 @@
+{
+  "name": "Romol",
+  "icon": "divinefavor:calling_stone_romol",
+  "category": "spirits",
+  "sortnum": 0,
+  "pages": [
+    {
+      "type": "text",
+      "text": "Industrious spirit of earth and minerals. Call upon this spirit if you want to harness his profitable powers. $(br) This spirit is active in the morning from 6 o'clock to 10 o'clock."
+    },
+    {
+      "type": "crafting",
+      "text": "In order to contact romol you will need to craft tool flint blend. You can see recipe for a $(item)Tool flint blend$() above.",
+      "recipe": "divinefavor:blend_flint"
+    },
+    {
+      "type": "text",
+      "text": "Tool flint blend will grant you mineral aura for a time. That will make you much more noticeable by romol. When spirit is active and you have appropriate aura to attract spirit just dig some stone. Sooner or later romol will notice you. When he does you will feel his industrious presence. In order to impress him you will need to prove your mining abilities."
+    },
+    {
+      "type": "spotlight",
+      "item": "divinefavor:calling_stone_romol",
+      "text": "To prove your worth to romol you will have to find some ore. But beware if you go outside of mine before you impressed him you will instantly fail."
+    },
+    {
+      "type": "multiblock",
+      "multiblock_id": "divinefavor:patchouli.altar_romol",
+      "text": "Altar of romol. Put invite in medium to finish altar."
+    }
+  ]
+}
