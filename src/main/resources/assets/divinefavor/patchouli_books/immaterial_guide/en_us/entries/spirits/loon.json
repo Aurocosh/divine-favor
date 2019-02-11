@@ -1,0 +1,31 @@
+{
+  "name": "Loon",
+  "icon": "divinefavor:calling_stone_loon",
+  "category": "spirits",
+  "sortnum": 0,
+  "pages": [
+    {
+      "type": "text",
+      "text": "Nocturnal spirit of moon and summoning. Call upon this spirit if you want to harness his powers of conjuration. $(br) This spirit is active in the morning from 6 o'clock to 10 o'clock."
+    },
+    {
+      "type": "crafting",
+      "text": "In order to contact loon you will need to craft undead lapis blend. You can see recipe for the $(item)Undead lapis blend$() above.",
+      "recipe": "divinefavor:blend_lapis"
+    },
+    {
+      "type": "text",
+      "text": "Undead lapis blend will grant you calling aura for a time. That will make you much more noticeable by loon. When spirit is active and you have appropriate aura you will have to demonstrate some summoning skills. Summon some snow golems to attract his attention. Sooner or later loon will notice you. When he does you will feel his manipulative presence."
+    },
+    {
+      "type": "spotlight",
+      "item": "divinefavor:calling_stone_loon",
+      "text": "In order to impress him you will still need to summon a golem, but you will have to kick it up a notch and summon iron golem instead of snow. You may need to summon more then one golem to impress him. If you impress him he will give you an invite to trade."
+    },
+    {
+      "type": "multiblock",
+      "multiblock_id": "divinefavor:patchouli.altar_loon",
+      "text": "Altar of loon. Put invite in medium to finish altar."
+    }
+  ]
+}
