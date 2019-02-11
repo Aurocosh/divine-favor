@@ -1,0 +1,31 @@
+{
+  "name": "Redwind",
+  "icon": "divinefavor:calling_stone_redwind",
+  "category": "spirits",
+  "sortnum": 0,
+  "pages": [
+    {
+      "type": "text",
+      "text": "Spirit of air and red energy. Call upon this spirit if you want to harness his windy powers. $(br) This spirit is active in the morning from 6 o'clock to 10 o'clock."
+    },
+    {
+      "type": "crafting",
+      "text": "In order to contact Redwind you will need to craft nether mystic redstone blend. You can see recipe for the $(item)Mystic redstone blend$() above.",
+      "recipe": "divinefavor:blend_redstone"
+    },
+    {
+      "type": "text",
+      "text": "Mystic redstone blend will grant you energetic aura for a time. That will make you much more noticeable by redwind. When spirit is active and you have appropriate aura to you will need to start running to make him notice you. It does not matter where just run. Sooner or later redwind will notice you. When he does you will feel his energetic presence and it will empower your speed considerably."
+    },
+    {
+      "type": "spotlight",
+      "item": "divinefavor:calling_stone_redwind",
+      "text": "In order to impress him you will have to run as fast as you can. You need to be able to run on water to impress him."
+    },
+    {
+      "type": "multiblock",
+      "multiblock_id": "divinefavor:patchouli.altar_redwind",
+      "text": "Altar of redwind. Put invite in medium to finish altar."
+    }
+  ]
+}
