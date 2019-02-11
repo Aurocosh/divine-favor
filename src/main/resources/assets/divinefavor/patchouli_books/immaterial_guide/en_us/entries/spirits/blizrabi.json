@@ -1,0 +1,31 @@
+{
+  "name": "Blizrabi",
+  "icon": "divinefavor:calling_stone_blizrabi",
+  "category": "spirits",
+  "sortnum": 0,
+  "pages": [
+    {
+      "type": "text",
+      "text": "Spirit of ice and water. Call upon this spirit if you want to harness his aquatic powers. $(br) This spirit is active in the morning from 6 o'clock to 10 o'clock."
+    },
+    {
+      "type": "crafting",
+      "text": "In order to contact blizrabi you will need to craft evercold snow blend. You can see recipe for a $(item)Evercold snow blend$() above.",
+      "recipe": "divinefavor:blend_snow"
+    },
+    {
+      "type": "text",
+      "text": "Evercold snow blend will grant you frosty aura for a time. In order to attract his attention you will have to find a tundra biome and survive there. You will have to take off all of your armor and you cant use any tools or weapons. After some time blizrabi will notice you and you will feel his chilling presence."
+    },
+    {
+      "type": "spotlight",
+      "item": "divinefavor:calling_stone_blizrabi",
+      "text": "In order to impress him you will have to do the same what you did to make him notice you - survive. But be prepared for some additional challenge that he will throw at you."
+    },
+    {
+      "type": "multiblock",
+      "multiblock_id": "divinefavor:patchouli.altar_blizrabi",
+      "text": "Altar of blizrabi. Put invite in medium to finish altar."
+    }
+  ]
+}
