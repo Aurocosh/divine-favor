@@ -1,0 +1,26 @@
+{
+  "name": "Talismans",
+  "icon": "divinefavor:talisman_wild_sprint",
+  "category": "basics",
+  "sortnum": 5,
+  "pages": [
+    {
+      "type": "text",
+      "text": "Ultimate goal of spiritual sorcerer. Talisman is used to cast spells. As were mentioned before spiritual mage does not cast spells by himself, but instead he relies on spirits. To cast spell mage needs two things: talisman and favor of a spirit. Favor is like a currency used by spirits. Each spirit has its own and keeps track of how much you have."
+    },
+    {
+      "type": "text",
+      "text": "Each talisman is bound to a spirit, usually it is spirit from which you bought talisman. To use talisman you need favor of corresponding spirit. When talisman is used favor will be consumed. As long as you have enough favor you can use you can use talisman freely. Different talismans cost different amount of favor. There are different types of talismans. Some can be used on its own and some need additional tools to use."
+    },
+    {
+      "type": "spotlight",
+      "item": "divinefavor:talisman_ignition",
+      "text": "Above you will see an example of a spell talisman. Spell talismans do not require any additional tools to use. Talisman can be used in two ways. $(li)Take talisman in your hand and right click it in air.$(li)Take talisman in your hand and right click block."
+    },
+    {
+      "type": "spotlight",
+      "item": "divinefavor:arrow_talisman_fill_lungs",
+      "text": "Above you will see an example of a arrow talisman. Arrow talismans require spell bow to use. When used with spell bow it will shoot special arrow that will shoot special arrow. Spell bow requires regular arrows to shoot in addition to talisman."
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "name": "Contracts",
+  "icon": "divinefavor:contract_binder",
+  "category": "basics",
+  "sortnum": 6,
+  "pages": [
+    {
+      "type": "text",
+      "text": "In order to gain favor you will need contracts. Contract is an item that is used to gain favor. You can trade with spirits for special items that grant you some favor, but it is not very sustainable, in the long run you will want to get yourself a contract. Contracts cannot be used by themselves. In order to use a contract you will need to make a soulbound lectern."
+    },
+    {
+      "type": "text",
+      "text": "Each talisman is bound to a spirit, usually it is spirit from which you bought talisman. To use talisman you need favor of corresponding spirit. When talisman is used favor will be consumed. As long as you have enough favor you can use you can use talisman freely. Different talismans cost different amount of favor. There are different types of talismans. Some can be used on its own and some need additional tools to use."
+    },
+    {
+      "type": "spotlight",
+      "item": "divinefavor:talisman_ignition",
+      "text": "Above you will see an example of a spell talisman. Spell talismans do not require any additional tools to use. Talisman can be used in two ways. $(li)Take talisman in your hand and right click it in air.$(li)Take talisman in your hand and right click block."
+    },
+    {
+      "type": "spotlight",
+      "item": "divinefavor:arrow_talisman_fill_lungs",
+      "text": "Above you will see an example of a arrow talisman. Arrow talismans require spell bow to use. When used with spell bow it will shoot special arrow that will shoot special arrow. Spell bow requires regular arrows to shoot in addition to talisman."
+    }
+  ]
+}
