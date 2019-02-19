@@ -1,0 +1,31 @@
+{
+  "name": "Squarefury",
+  "icon": "divinefavor:calling_stone_squarefury",
+  "category": "spirits",
+  "sortnum": 0,
+  "pages": [
+    {
+      "type": "text",
+      "text": "Furious spirit of fighting and swords. Call upon this spirit if you want to harness his destructive powers. $(br) This spirit is active in the morning from 6 o'clock to 10 o'clock."
+    },
+    {
+      "type": "crafting",
+      "text": "In order to contact squarefury you will need to craft wild flesh blend. You can see recipe for a $(item)Wild flesh blend$() above.",
+      "recipe": "divinefavor:blend_fleshy"
+    },
+    {
+      "type": "text",
+      "text": "Wild flesh blend will grant you visceral aura for a time. That aura will make you much more noticeable by squarefury. When spirit is active and you have appropriate aura to attract spirit you will need to kill some mobs. Sooner or later squarefury will notice you. When he does you will feel his furious presence. In order to impress him you will need to continue killing mobs."
+    },
+    {
+      "type": "spotlight",
+      "item": "divinefavor:calling_stone_squarefury",
+      "text": "Keep in mind that his presence will significantly amplify all incoming and outgoing damage. You will be able to kill mobs more easily but the will also be able to kill you very quickly."
+    },
+    {
+      "type": "multiblock",
+      "multiblock_id": "divinefavor:patchouli.altar_squarefury",
+      "text": "Altar of squarefury. Put invite in medium to finish altar."
+    }
+  ]
+}
