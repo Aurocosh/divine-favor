@@ -1,0 +1,31 @@
+{
+  "name": "Timber",
+  "icon": "divinefavor:calling_stone_timber",
+  "category": "spirits",
+  "sortnum": 0,
+  "pages": [
+    {
+      "type": "text",
+      "text": "Towering spirit of wood and curses. Call upon this spirit if you want to harness his vile powers. $(br) This spirit is active in the morning from 6 o'clock to 10 o'clock."
+    },
+    {
+      "type": "crafting",
+      "text": "In order to contact Timber you will need to craft cursed wood blend. You can see recipe for the $(item)Cursed wood blend$() above.",
+      "recipe": "divinefavor:blend_wood"
+    },
+    {
+      "type": "text",
+      "text": "Cursed wood blend will grant you arboreal aura for a time. That aura will make you much more noticeable by timber. When spirit is active and you have appropriate aura to attract spirit you will need to break some wood. Sooner or later timber will notice you. When he does you will feel his towering presence. He is a spirit of wood so choppig wood will not make him happy so prepare for consequences."
+    },
+    {
+      "type": "spotlight",
+      "item": "divinefavor:calling_stone_timber",
+      "text": "In order to impress him you will need to do one thing - survive. He is spirit of curses, so expect lots of them. Keep in mind that curses cannot be removed by drinking milk like potion effects."
+    },
+    {
+      "type": "multiblock",
+      "multiblock_id": "divinefavor:patchouli.altar_timber",
+      "text": "Altar of timber. Put invite in medium to finish altar."
+    }
+  ]
+}
