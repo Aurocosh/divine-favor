@@ -1,0 +1,20 @@
+{
+  "result": {
+    "item": "divinefavor:soulbound_lectern_stone"
+  },
+  "pattern": [
+    "sss",
+    "bsb",
+    "sss"
+  ],
+  "type": "forge:ore_shaped",
+  "key": {
+    "s": {
+      "item": "minecraft:stone",
+      "data": 0
+    },
+    "b": {
+      "item": "minecraft:book"
+    }
+  }
+}
