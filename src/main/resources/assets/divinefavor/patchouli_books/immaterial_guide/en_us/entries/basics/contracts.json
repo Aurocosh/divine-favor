@@ -2,25 +2,66 @@
   "name": "Contracts",
   "icon": "divinefavor:contract_binder",
   "category": "basics",
-  "sortnum": 6,
+  "sortnum": 7,
   "pages": [
     {
       "type": "text",
-      "text": "In order to gain favor you will need contracts. Contract is an item that is used to gain favor. You can trade with spirits for special items that grant you some favor, but it is not very sustainable, in the long run you will want to get yourself a contract. Contracts cannot be used by themselves. In order to use a contract you will need to make a soulbound lectern."
+      "text": "In order to gain favor you will need contracts. Contracts are items that provides some kind of passive benefit. Contracts are obtained same way as talismans, by trading with spirits at and altar. Contracts are useless on there own In order to use contract you will need to craft a special block called $(item)Soulbound lectern$(). Contracts are only active inside soulbound lecterns."
+    },
+    {
+      "type": "crafting",
+      "text": "$(item)Wooden soulbound lectern$() recipe. $(br)Soulbound lectern is a block in which player stores his active contracts. This block is similar to ender chest. All soulbound lecterns share storage.",
+      "recipe": "divinefavor:soulbound_lectern_wood"
     },
     {
       "type": "text",
-      "text": "Each talisman is bound to a spirit, usually it is spirit from which you bought talisman. To use talisman you need favor of corresponding spirit. When talisman is used favor will be consumed. As long as you have enough favor you can use you can use talisman freely. Different talismans cost different amount of favor. There are different types of talismans. Some can be used on its own and some need additional tools to use."
+      "text": "All soulbound lecterns share storage, it means that you will never lose your contracts, but it also means that amount of active contracts at once is limited. Soulbound lecterns require two additional things to work. First thing is a multiblock. Different lecterns need different multiblocks, but functionally they are identical. So just pick whichever you like more. "
+    },
+    {
+      "type": "multiblock",
+      "multiblock_id": "divinefavor:patchouli.soulbound_lectern_wood",
+      "text": "Wooden soulbound lectern with appropriate multiblock."
+    },
+    {
+      "type": "multiblock",
+      "multiblock_id": "divinefavor:patchouli.soulbound_lectern_stone",
+      "text": "Stone soulbound lectern with appropriate multiblock."
     },
     {
       "type": "spotlight",
-      "item": "divinefavor:talisman_ignition",
-      "text": "Above you will see an example of a spell talisman. Spell talismans do not require any additional tools to use. Talisman can be used in two ways. $(li)Take talisman in your hand and right click it in air.$(li)Take talisman in your hand and right click block."
+      "item": "divinefavor:soul_shard_soul",
+      "text": "Another thing that you will need in order to use $(item)Soulbound lectern$() is a $(item)Soul shard$(). When you open gui of lectern you will see a slot in the center. In order to activate lectern you will need to put your shard in central slot. Shards can be obtained with an $(item)Awakened bone dagger$(). To get your own soul shard take dagger in hand, sneak and right click."
+    },
+    {
+      "type": "text",
+      "text": "After you placed shard in lectern it will bind itself to you. If multiblock is correct then in gui items slots will appear. Bound lectern with shard will only be usable by player whose shard is inside. But other players still will be able to break your lectern. You can place your contracts inside and while inside contracts will be active. There are several different types of contracts and they perform different functions."
     },
     {
       "type": "spotlight",
-      "item": "divinefavor:arrow_talisman_fill_lungs",
-      "text": "Above you will see an example of a arrow talisman. Arrow talismans require spell bow to use. When used with spell bow it will shoot special arrow that will shoot special arrow. Spell bow requires regular arrows to shoot in addition to talisman."
+      "item": "divinefavor:contract_capacity_minor_blizrabi",
+      "text": "Above you see an example of capacity contract. Amount of favor that you can accumulate is limited. To extend this limit you will need a capacity contract. Each contract capacity contract is bound to spirit and extends only limit of thar spirit. Effect of several contracts stacks."
+    },
+    {
+      "type": "text",
+      "text": "Each spirit may have several variations of capacity contract and each variation will provide different increase in capacity. Maximum favor capacity is not limited, but amount of contracts you can put in soulbound lectern is limited. You will have to decide talismans of which spirit is more important to you. But you dint need to chose one over the other. You can mix contracts from different spirits."
+    },
+    {
+      "type": "spotlight",
+      "item": "divinefavor:contract_regen_minor_blizrabi",
+      "text": "Above you see an example of regeneration contract. Favor does not regenerate on its own. You can gain favor buy buying special items, but it will not replenish when spent. That is unless you have a regeneration contract."
+    },
+    {
+      "type": "text",
+      "text": "Each regen contract is bound to spirit. When spirit becomes active if you have his regen contract then some of your favor will be restored. Amount of favor restored depends on type of contract and contract count. Regen contracts also stack."
+    },
+    {
+      "type": "spotlight",
+      "item": "divinefavor:contract_binder",
+      "text": "As you already know space in soulbound lectern is very limited and precious. There is a way to extend it and to do so you will need a $(item)Contract binder$(). Contract binder is and item that can store several contracts inside. You cant make them yourself but you can buy them from spirits at their altars."
+    },
+    {
+      "type": "text",
+      "text": "Contract binders are valuable and expensive. What makes it valuable is that you can put contract binder in $(item)Soulbound lectern$() then all contracts inside binder will become active."
     }
   ]
 }
