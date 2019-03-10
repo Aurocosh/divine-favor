@@ -9,14 +9,14 @@ public final class ModSoulShards {
     public static ItemSoulShard shard_water;
     public static ItemSoulShard shard_wild;
     public static ItemSoulShard shard_wither;
-    public static ItemSoulShardPlayer shard_soul;
+    public static ItemSoulShardPlayer shard_will;
 
     public static void preInit() {
         shard_end = new ItemSoulShard("end");
         shard_mind = new ItemSoulShard("mind");
         shard_nether = new ItemSoulShard("nether");
         shard_peace = new ItemSoulShard("peace");
-        shard_soul = new ItemSoulShardPlayer("soul");
+        shard_will = new ItemSoulShardPlayer("will");
         shard_undeath = new ItemSoulShard("undeath");
         shard_water = new ItemSoulShard("water");
         shard_wild = new ItemSoulShard("wild");

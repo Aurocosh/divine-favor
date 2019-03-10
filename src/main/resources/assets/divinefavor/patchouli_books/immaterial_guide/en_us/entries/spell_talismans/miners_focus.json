@@ -1,0 +1,15 @@
+{
+  "name": "Miners focus",
+  "icon": "divinefavor:talisman_miners_focus",
+  "category": "spell_talismans",
+  "pages": [
+    {
+      "type": "text",
+      "text": "This talisman will temporarily increase mining speed, but it will inflict mining fatigue later."
+    },
+    {
+      "type": "spell_talisman_stats",
+      "talisman": "divinefavor:talisman_miners_focus"
+    }
+  ]
+}

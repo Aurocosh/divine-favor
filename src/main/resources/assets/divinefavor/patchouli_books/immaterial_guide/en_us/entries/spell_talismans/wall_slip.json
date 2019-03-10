@@ -1,0 +1,15 @@
+{
+  "name": "Wall slip",
+  "icon": "divinefavor:talisman_wall_slip",
+  "category": "spell_talismans",
+  "pages": [
+    {
+      "type": "text",
+      "text": "When used on wall it will teleport you on other side. Cannot teleport through floors and ceilings."
+    },
+    {
+      "type": "spell_talisman_stats",
+      "talisman": "divinefavor:talisman_wall_slip"
+    }
+  ]
+}

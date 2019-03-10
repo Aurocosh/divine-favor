@@ -1,0 +1,15 @@
+{
+  "name": "Consuming fury",
+  "icon": "divinefavor:talisman_consuming_fury",
+  "category": "spell_talismans",
+  "pages": [
+    {
+      "type": "text",
+      "text": "Will temporarily considerably increase casters damage. While effect is active player will have to kill certain amount of mobs. If player fails to kill enough mobs while effect is active, then when effect wears out he will suffer heavy damage, and potentially will instantly die."
+    },
+    {
+      "type": "spell_talisman_stats",
+      "talisman": "divinefavor:talisman_consuming_fury"
+    }
+  ]
+}

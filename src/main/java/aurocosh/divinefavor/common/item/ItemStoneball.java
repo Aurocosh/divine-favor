@@ -1,6 +1,6 @@
 package aurocosh.divinefavor.common.item;
 
-import aurocosh.divinefavor.common.core.creative_tabs.DivineFavorCreativeTab;
+import aurocosh.divinefavor.DivineFavor;
 import aurocosh.divinefavor.common.entity.projectile.EntityStoneball;
 import aurocosh.divinefavor.common.item.base.ModItem;
 import net.minecraft.entity.player.EntityPlayer;
@@ -17,7 +17,7 @@ public class ItemStoneball extends ModItem {
     public ItemStoneball() {
         super("stone_ball","stone_ball");
         this.maxStackSize = 16;
-        setCreativeTab(DivineFavorCreativeTab.INSTANCE);
+        setCreativeTab(DivineFavor.TAB_MAIN);
     }
 
     /**

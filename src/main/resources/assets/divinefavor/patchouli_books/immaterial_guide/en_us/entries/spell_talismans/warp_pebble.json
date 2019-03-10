@@ -1,0 +1,15 @@
+{
+  "name": "Warp pebble",
+  "icon": "divinefavor:talisman_warp_pebble",
+  "category": "spell_talismans",
+  "pages": [
+    {
+      "type": "text",
+      "text": "Will create warp pebble on use. Pebble is a usable item. When used it will teleport user to place where it was created. Will not work across dimensions."
+    },
+    {
+      "type": "spell_talisman_stats",
+      "talisman": "divinefavor:talisman_warp_pebble"
+    }
+  ]
+}

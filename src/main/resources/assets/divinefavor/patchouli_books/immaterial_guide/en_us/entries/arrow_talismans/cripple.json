@@ -1,0 +1,15 @@
+{
+  "name": "Cripple",
+  "icon": "divinefavor:arrow_talisman_cripple",
+  "category": "arrow_talismans",
+  "pages": [
+    {
+      "type": "text",
+      "text": "Arrow shot with this talisman will be cursed with leg crippling. When cursed player speed will decrease considerably. To remove this curse player will have to run for several seconds."
+    },
+    {
+      "type": "arrow_talisman_stats",
+      "talisman": "divinefavor:arrow_talisman_cripple"
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "name": "Escape plan",
+  "icon": "divinefavor:talisman_escape_plan",
+  "category": "spell_talismans",
+  "pages": [
+    {
+      "type": "text",
+      "text": "Memorizes player position upon use and grants player potion effect 'Escape plan'. When player health gets too low this effect will disappear and teleport player back to location where spell was casted."
+    },
+    {
+      "type": "spell_talisman_stats",
+      "talisman": "divinefavor:talisman_escape_plan"
+    }
+  ]
+}

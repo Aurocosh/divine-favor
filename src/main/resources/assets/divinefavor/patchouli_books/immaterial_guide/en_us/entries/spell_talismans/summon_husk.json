@@ -1,0 +1,15 @@
+{
+  "name": "Summon husk",
+  "icon": "divinefavor:talisman_summon_husk",
+  "category": "spell_talismans",
+  "pages": [
+    {
+      "type": "text",
+      "text": "Minion talisman. Allows you to summon husks. Minions will follow you and fight for you. You can command them directly with some special talismans. Husks are zombies but they will not be hurt by sunlight."
+    },
+    {
+      "type": "spell_talisman_stats",
+      "talisman": "divinefavor:talisman_summon_husk"
+    }
+  ]
+}

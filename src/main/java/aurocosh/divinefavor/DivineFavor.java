@@ -12,18 +12,18 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
 
-@Mod(modid = ConstMisc.MOD_ID, name = ConstMisc.MOD_NAME, version = ConstMisc.VERSION, dependencies = ConstMisc.DEPENDENCIES)
+@Mod(modid = ConstMisc.MOD_ID, name = ConstMisc.MOD_NAME, version = ConstMisc.VERSION, dependencies = "required-after:patchouli;")
 public class DivineFavor {
     @Mod.Instance(ConstMisc.MOD_ID)
     public static DivineFavor instance;
 
     public static ModLogger logger;
     public static ModContainer container;
-    public static DivineFavorCreativeTab tab;
-    public static DivineFavorCreativeTabGems tabGems;
-    public static DivineFavorCreativeTabContracts tabContracts;
-    public static DivineFavorCreativeTabArrowTalismans tabArrowTalismans;
-    public static DivineFavorCreativeTabSpellTalismans tabSpellTalismans;
+    public static DivineFavorCreativeTab TAB_MAIN = new DivineFavorCreativeTab();
+    public static DivineFavorCreativeTabGems tabGems = new DivineFavorCreativeTabGems();
+    public static DivineFavorCreativeTabContracts tabContracts = new DivineFavorCreativeTabContracts();
+    public static final DivineFavorCreativeTabArrowTalismans tabArrowTalismans = new DivineFavorCreativeTabArrowTalismans();
+    public static DivineFavorCreativeTabSpellTalismans tabSpellTalismans = new DivineFavorCreativeTabSpellTalismans();
 
     @SidedProxy(serverSide = ConstMisc.PROXY_COMMON, clientSide = ConstMisc.PROXY_CLIENT)
     public static CommonProxy proxy;
@@ -32,11 +32,6 @@ public class DivineFavor {
     public void preInit(FMLPreInitializationEvent event) {
         logger = new ModLogger(event.getModLog());
         container = Loader.instance().getModObjectList().inverse().get(instance);
-        tab = DivineFavorCreativeTab.INSTANCE;
-        tabGems = DivineFavorCreativeTabGems.INSTANCE;
-        tabContracts = DivineFavorCreativeTabContracts.INSTANCE;
-        tabArrowTalismans = DivineFavorCreativeTabArrowTalismans.INSTANCE;
-        tabSpellTalismans = DivineFavorCreativeTabSpellTalismans.INSTANCE;
         proxy.preInit(event);
     }
 

@@ -1,6 +1,6 @@
 package aurocosh.divinefavor.common.item;
 
-import aurocosh.divinefavor.common.core.creative_tabs.DivineFavorCreativeTab;
+import aurocosh.divinefavor.DivineFavor;
 import aurocosh.divinefavor.common.item.base.ModItem;
 import aurocosh.divinefavor.common.util.UtilEntity;
 import aurocosh.divinefavor.common.util.UtilNbt;
@@ -24,7 +24,7 @@ public class ItemWarpMarker extends ModItem {
         super(name, name);
         this.canTeleportToDimensions = canTeleportToDimensions;
         setMaxStackSize(1);
-        setCreativeTab(DivineFavorCreativeTab.INSTANCE);
+        setCreativeTab(DivineFavor.TAB_MAIN);
     }
 
     @Override

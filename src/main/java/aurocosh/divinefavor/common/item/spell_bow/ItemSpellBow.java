@@ -2,7 +2,6 @@ package aurocosh.divinefavor.common.item.spell_bow;
 
 import aurocosh.divinefavor.DivineFavor;
 import aurocosh.divinefavor.common.constants.ConstGuiIDs;
-import aurocosh.divinefavor.common.core.creative_tabs.DivineFavorCreativeTab;
 import aurocosh.divinefavor.common.item.base.ModItem;
 import aurocosh.divinefavor.common.item.common.ModItems;
 import aurocosh.divinefavor.common.item.spell_bow.capability.ISpellBowHandler;
@@ -45,7 +44,7 @@ public class ItemSpellBow extends ModItem {
     public ItemSpellBow() {
         super("spell_bow", "spell_bow/spell_bow");
         maxStackSize = 1;
-        setCreativeTab(DivineFavorCreativeTab.INSTANCE);
+        setCreativeTab(DivineFavor.TAB_MAIN);
         setMaxDamage(384);
 
         addPropertyOverride(new ResourceLocation("book_mode"), new IItemPropertyGetter() {

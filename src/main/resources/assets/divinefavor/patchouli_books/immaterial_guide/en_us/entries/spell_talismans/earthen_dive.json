@@ -1,0 +1,15 @@
+{
+  "name": "Earthen dive",
+  "icon": "divinefavor:talisman_earthen_dive",
+  "category": "spell_talismans",
+  "pages": [
+    {
+      "type": "text",
+      "text": "Use this talisman on any block and it will teleport you to first available space underneath it. Possible teleport distance finite. If no space found it will not teleport you. Useful for teleporting trough floors and to caves."
+    },
+    {
+      "type": "spell_talisman_stats",
+      "talisman": "divinefavor:talisman_earthen_dive"
+    }
+  ]
+}

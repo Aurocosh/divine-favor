@@ -1,0 +1,15 @@
+{
+  "name": "Snowball throw",
+  "icon": "divinefavor:talisman_snowball_throw",
+  "category": "spell_talismans",
+  "pages": [
+    {
+      "type": "text",
+      "text": "Throws snowballs. Does not require snowballs in inventory to work."
+    },
+    {
+      "type": "spell_talisman_stats",
+      "talisman": "divinefavor:talisman_snowball_throw"
+    }
+  ]
+}

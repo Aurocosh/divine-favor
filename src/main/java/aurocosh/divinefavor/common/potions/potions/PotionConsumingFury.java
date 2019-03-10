@@ -19,7 +19,7 @@ import java.util.Map;
 @Mod.EventBusSubscriber
 public class PotionConsumingFury extends ModPotion {
     private static final int MOBS_TO_KILL = 3;
-    private static final float DAMAGE_TO_DEAL = 2;
+    private static final float DAMAGE_TO_DEAL = 20;
     public static final float EXTRA_DAMAGE = 16;
 
     private final static Map<EntityPlayer,Integer> killCounts = new HashMap<>();

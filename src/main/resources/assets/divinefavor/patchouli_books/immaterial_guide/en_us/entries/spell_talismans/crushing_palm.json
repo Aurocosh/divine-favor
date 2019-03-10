@@ -1,0 +1,15 @@
+{
+  "name": "Crushing palm",
+  "icon": "divinefavor:talisman_crushing_palm",
+  "category": "spell_talismans",
+  "pages": [
+    {
+      "type": "text",
+      "text": "Will grant player 'Crushing palm' effect. While effect active player will be able to break stone instantly with his bare hands. Effect is permanent. To remove it just cast spell once more. Each broken stone costs some favor."
+    },
+    {
+      "type": "spell_talisman_stats",
+      "talisman": "divinefavor:talisman_crushing_palm"
+    }
+  ]
+}

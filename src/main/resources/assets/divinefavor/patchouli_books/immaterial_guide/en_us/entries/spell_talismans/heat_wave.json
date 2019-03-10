@@ -1,0 +1,15 @@
+{
+  "name": "Heat wave",
+  "icon": "divinefavor:talisman_heat_wave",
+  "category": "spell_talismans",
+  "pages": [
+    {
+      "type": "text",
+      "text": "Will damage and ignite mobs around player in small radius."
+    },
+    {
+      "type": "spell_talisman_stats",
+      "talisman": "divinefavor:talisman_heat_wave"
+    }
+  ]
+}

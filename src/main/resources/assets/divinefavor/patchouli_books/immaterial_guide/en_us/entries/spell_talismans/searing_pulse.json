@@ -1,0 +1,15 @@
+{
+  "name": "Searing pulse",
+  "icon": "divinefavor:talisman_searing_pulse",
+  "category": "spell_talismans",
+  "pages": [
+    {
+      "type": "text",
+      "text": "When used on smeltable blocks it will instantly smelt them. It will only smelt blocks that smelt into blocks. And also it is pretty unpredictable how many of blocks and which blocks will be smelted."
+    },
+    {
+      "type": "spell_talisman_stats",
+      "talisman": "divinefavor:talisman_searing_pulse"
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "name": "Fill lungs",
+  "icon": "divinefavor:arrow_talisman_fill_lungs",
+  "category": "arrow_talismans",
+  "pages": [
+    {
+      "type": "text",
+      "text": "Arrow shot with this talisman will be cursed with drowning curse. Cursed creature will drown on land. If creatures jumps in water then curse will be lifted."
+    },
+    {
+      "type": "arrow_talisman_stats",
+      "talisman": "divinefavor:arrow_talisman_fill_lungs"
+    }
+  ]
+}

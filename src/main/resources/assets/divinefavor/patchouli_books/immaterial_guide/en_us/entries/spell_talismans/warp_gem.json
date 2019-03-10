@@ -1,0 +1,15 @@
+{
+  "name": "Warp gem",
+  "icon": "divinefavor:talisman_warp_gem",
+  "category": "spell_talismans",
+  "pages": [
+    {
+      "type": "text",
+      "text": "Will create warp gem on use. Gem is a usable item. When used it will teleport user to place where it was created. Will work across dimensions."
+    },
+    {
+      "type": "spell_talisman_stats",
+      "talisman": "divinefavor:talisman_warp_gem"
+    }
+  ]
+}

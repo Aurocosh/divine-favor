@@ -1,6 +1,6 @@
 package aurocosh.divinefavor.common.item.talismans.spell.base;
 
-import aurocosh.divinefavor.common.core.creative_tabs.DivineFavorCreativeTabSpellTalismans;
+import aurocosh.divinefavor.DivineFavor;
 import aurocosh.divinefavor.common.custom_data.player.PlayerData;
 import aurocosh.divinefavor.common.custom_data.player.data.favor.FavorData;
 import aurocosh.divinefavor.common.favor.ModFavor;
@@ -23,7 +23,6 @@ import java.util.EnumSet;
 
 public class ItemSpellTalisman extends ItemTalisman {
     private static final double ENTITY_SEARCH_DISTANCE = 30;
-
     private final EnumSet<SpellOptions> options;
 
     // Talisman functions
@@ -32,7 +31,7 @@ public class ItemSpellTalisman extends ItemTalisman {
         this.options = options;
 
         setMaxStackSize(1);
-        setCreativeTab(DivineFavorCreativeTabSpellTalismans.INSTANCE);
+        setCreativeTab(DivineFavor.tabSpellTalismans);
     }
 
     public boolean cast(TalismanContext context) {
@@ -99,7 +98,7 @@ public class ItemSpellTalisman extends ItemTalisman {
         EntityLivingBase target = null;
         if (options.contains(SpellOptions.OnRightCastRayTraceBlock)) {
             RayTraceResult traceResult = UtilEntity.getBlockPlayerLookingAt(player);
-            if(traceResult == null)
+            if (traceResult == null)
                 return false;
             pos = traceResult.getBlockPos();
             facing = traceResult.sideHit;

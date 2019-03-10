@@ -1,6 +1,6 @@
 package aurocosh.divinefavor.common.item.bone_dagger;
 
-import aurocosh.divinefavor.common.core.creative_tabs.DivineFavorCreativeTab;
+import aurocosh.divinefavor.DivineFavor;
 import aurocosh.divinefavor.common.item.base.ModItem;
 import aurocosh.divinefavor.common.item.common.ModItems;
 import aurocosh.divinefavor.common.util.UtilNbt;
@@ -21,7 +21,7 @@ public class ItemBoneDagger extends ModItem {
     public ItemBoneDagger() {
         super("bone_dagger", "bone_dagger");
         setMaxStackSize(1);
-        setCreativeTab(DivineFavorCreativeTab.INSTANCE);
+        setCreativeTab(DivineFavor.TAB_MAIN);
     }
 
     @Override

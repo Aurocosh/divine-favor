@@ -1,0 +1,15 @@
+{
+  "name": "Focused_fury",
+  "icon": "divinefavor:talisman_focused_fury",
+  "category": "spell_talismans",
+  "pages": [
+    {
+      "type": "text",
+      "text": "Will temporarily considerably increase casters damage. Will memorize first attacked creature type. Player will only be able to attack creatures of that type. For example if player casts this spell and attacks skeleton he will only be able to attack skeletons, but will deal much more damage."
+    },
+    {
+      "type": "spell_talisman_stats",
+      "talisman": "divinefavor:talisman_focused_fury"
+    }
+  ]
+}

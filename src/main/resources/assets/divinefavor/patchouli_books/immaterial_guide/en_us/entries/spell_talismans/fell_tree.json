@@ -1,0 +1,15 @@
+{
+  "name": "Fell tree",
+  "icon": "divinefavor:talisman_fell_tree",
+  "category": "spell_talismans",
+  "pages": [
+    {
+      "type": "text",
+      "text": "Will instantly destroy tree."
+    },
+    {
+      "type": "spell_talisman_stats",
+      "talisman": "divinefavor:talisman_fell_tree"
+    }
+  ]
+}

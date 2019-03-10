@@ -2,7 +2,6 @@ package aurocosh.divinefavor.common.item.contract_binder;
 
 import aurocosh.divinefavor.DivineFavor;
 import aurocosh.divinefavor.common.constants.ConstGuiIDs;
-import aurocosh.divinefavor.common.core.creative_tabs.DivineFavorCreativeTab;
 import aurocosh.divinefavor.common.item.base.ModItem;
 import aurocosh.divinefavor.common.item.common.ModItems;
 import net.minecraft.entity.player.EntityPlayer;
@@ -25,7 +24,7 @@ public class ItemContractBinder extends ModItem {
     public ItemContractBinder() {
         super("contract_binder", "contract_binder");
         setMaxStackSize(1);
-        setCreativeTab(DivineFavorCreativeTab.INSTANCE);
+        setCreativeTab(DivineFavor.TAB_MAIN);
     }
 
     @Override

@@ -12,7 +12,6 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class DivineFavorCreativeTabContracts extends CreativeTabs {
-    public static final DivineFavorCreativeTabContracts INSTANCE = new DivineFavorCreativeTabContracts();
     private NonNullList list;
 
     public DivineFavorCreativeTabContracts() {

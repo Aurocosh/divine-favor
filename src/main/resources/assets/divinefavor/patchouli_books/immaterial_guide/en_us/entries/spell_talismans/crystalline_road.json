@@ -1,0 +1,15 @@
+{
+  "name": "Crystalline road",
+  "icon": "divinefavor:talisman_crystalline_road",
+  "category": "spell_talismans",
+  "pages": [
+    {
+      "type": "text",
+      "text": "Grants user ability to walk on water. Press shift to fall in water while walking on it."
+    },
+    {
+      "type": "spell_talisman_stats",
+      "talisman": "divinefavor:talisman_crystalline_road"
+    }
+  ]
+}

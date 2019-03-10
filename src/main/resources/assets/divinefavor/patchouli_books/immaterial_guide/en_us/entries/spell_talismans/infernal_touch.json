@@ -1,0 +1,15 @@
+{
+  "name": "Infernal touch",
+  "icon": "divinefavor:talisman_infernal_touch",
+  "category": "spell_talismans",
+  "pages": [
+    {
+      "type": "text",
+      "text": "This spell will transform certain blocks when used on them. It will turn any stone or netherrack in lava. Wood will be turned to charcoal block. It will also turn dirt to gravel, gravel to sand and sand to glass."
+    },
+    {
+      "type": "spell_talisman_stats",
+      "talisman": "divinefavor:talisman_infernal_touch"
+    }
+  ]
+}

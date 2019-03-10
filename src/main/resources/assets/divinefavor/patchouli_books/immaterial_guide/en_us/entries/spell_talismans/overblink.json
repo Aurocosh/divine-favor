@@ -1,0 +1,15 @@
+{
+  "name": "Overblink",
+  "icon": "divinefavor:talisman_overblink",
+  "category": "spell_talismans",
+  "pages": [
+    {
+      "type": "text",
+      "text": "Instant long distance teleportation spell. This spell will not teleport you in wall, but weaker then overwarp spell."
+    },
+    {
+      "type": "spell_talisman_stats",
+      "talisman": "divinefavor:talisman_overblink"
+    }
+  ]
+}

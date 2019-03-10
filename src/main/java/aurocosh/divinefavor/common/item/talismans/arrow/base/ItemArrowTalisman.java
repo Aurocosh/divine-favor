@@ -1,6 +1,6 @@
 package aurocosh.divinefavor.common.item.talismans.arrow.base;
 
-import aurocosh.divinefavor.common.core.creative_tabs.DivineFavorCreativeTabArrowTalismans;
+import aurocosh.divinefavor.DivineFavor;
 import aurocosh.divinefavor.common.custom_data.player.PlayerData;
 import aurocosh.divinefavor.common.custom_data.player.data.favor.FavorData;
 import aurocosh.divinefavor.common.entity.projectile.EntitySpellArrow;
@@ -22,7 +22,7 @@ public class ItemArrowTalisman extends ItemTalisman {
     private final EnumSet<ArrowOptions> options;
     protected GravityType gravityType;
 
-    public ItemArrowTalisman(String name, ModFavor favor, int favorCost, int color, double arrowDamage,  EnumSet<ArrowOptions> options, ArrowType arrowType) {
+    public ItemArrowTalisman(String name, ModFavor favor, int favorCost, int color, double arrowDamage, EnumSet<ArrowOptions> options, ArrowType arrowType) {
         super("arrow_talisman_" + name, "arrow_talismans/" + name, favor, favorCost);
         this.color = color;
         this.arrowDamage = arrowDamage;
@@ -31,11 +31,15 @@ public class ItemArrowTalisman extends ItemTalisman {
         gravityType = GravityType.NORMAL;
 
 //        setMaxStackSize(64);
-        setCreativeTab(DivineFavorCreativeTabArrowTalismans.INSTANCE);
+        setCreativeTab(DivineFavor.tabArrowTalismans);
     }
 
     public int getColor() {
         return color;
+    }
+
+    public double getArrowDamage() {
+        return arrowDamage;
     }
 
     public boolean isBreakOnHit() {
@@ -44,6 +48,10 @@ public class ItemArrowTalisman extends ItemTalisman {
 
     public ArrowType getArrowType() {
         return arrowType;
+    }
+
+    public EnumSet<ArrowOptions> getOptions() {
+        return options;
     }
 
     public GravityType getGravityType() {
@@ -76,13 +84,13 @@ public class ItemArrowTalisman extends ItemTalisman {
         return arrow;
     }
 
-    private EntitySpellArrow getArrowByType(@Nonnull World worldIn, EntityLivingBase shooter){
+    private EntitySpellArrow getArrowByType(@Nonnull World worldIn, EntityLivingBase shooter) {
         // TODO
         return new EntitySpellArrow(worldIn, shooter);
     }
 
     public void cast(EntityLivingBase target, EntityLivingBase shooter, EntityArrow arrow) {
-        if(options.contains(ArrowOptions.RequiresTarget) && target == null)
+        if (options.contains(ArrowOptions.RequiresTarget) && target == null)
             return;
         if (arrow.world.isRemote)
             performActionClient(target, shooter, arrow);

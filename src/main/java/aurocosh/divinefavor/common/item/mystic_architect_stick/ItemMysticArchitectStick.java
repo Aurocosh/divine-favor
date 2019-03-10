@@ -1,7 +1,6 @@
 package aurocosh.divinefavor.common.item.mystic_architect_stick;
 
 import aurocosh.divinefavor.DivineFavor;
-import aurocosh.divinefavor.common.core.creative_tabs.DivineFavorCreativeTab;
 import aurocosh.divinefavor.common.item.base.ModItem;
 import aurocosh.divinefavor.common.lib.math.CubeCoordinates;
 import aurocosh.divinefavor.common.lib.math.Vector3i;
@@ -40,7 +39,7 @@ public class ItemMysticArchitectStick extends ModItem {
     public ItemMysticArchitectStick() {
         super("mystic_architect_stick","mystic_architect_stick");
         setMaxStackSize(1);
-        setCreativeTab(DivineFavorCreativeTab.INSTANCE);
+        setCreativeTab(DivineFavor.TAB_MAIN);
     }
 
     @Override

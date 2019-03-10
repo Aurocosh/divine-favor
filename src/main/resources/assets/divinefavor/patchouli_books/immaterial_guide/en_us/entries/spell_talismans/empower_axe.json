@@ -1,0 +1,15 @@
+{
+  "name": "Empower axe",
+  "icon": "divinefavor:talisman_empower_axe",
+  "category": "spell_talismans",
+  "pages": [
+    {
+      "type": "text",
+      "text": "Will temporarily empower your axes. That will grant you chance to instantly break wood on mining. When wood breaks instantly extra durability will be consumed."
+    },
+    {
+      "type": "spell_talisman_stats",
+      "talisman": "divinefavor:talisman_empower_axe"
+    }
+  ]
+}

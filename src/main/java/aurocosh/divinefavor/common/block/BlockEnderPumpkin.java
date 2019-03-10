@@ -1,7 +1,7 @@
 package aurocosh.divinefavor.common.block;
 
+import aurocosh.divinefavor.DivineFavor;
 import aurocosh.divinefavor.common.block.base.ModBlockHorizontal;
-import aurocosh.divinefavor.common.core.creative_tabs.DivineFavorCreativeTab;
 import aurocosh.divinefavor.common.item.ItemBlockEnderPumpkin;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
@@ -13,7 +13,7 @@ public class BlockEnderPumpkin extends ModBlockHorizontal {
         setHardness(1.0F);
         setResistance(1.0F);
         setSoundType(SoundType.PLANT);
-        setCreativeTab(DivineFavorCreativeTab.INSTANCE);
+        setCreativeTab(DivineFavor.TAB_MAIN);
     }
 
     @Override

@@ -1,6 +1,6 @@
 package aurocosh.divinefavor.common.item;
 
-import aurocosh.divinefavor.common.core.creative_tabs.DivineFavorCreativeTab;
+import aurocosh.divinefavor.DivineFavor;
 import aurocosh.divinefavor.common.item.base.ModItem;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.entity.EntityLivingBase;
@@ -19,7 +19,7 @@ public class ItemPureApple extends ModItem {
     public ItemPureApple() {
         super("pure_apple", "pure_apple");
         setMaxStackSize(1);
-        setCreativeTab(DivineFavorCreativeTab.INSTANCE);
+        setCreativeTab(DivineFavor.TAB_MAIN);
     }
 
     public ItemStack onItemUseFinish(ItemStack stack, World worldIn, EntityLivingBase entityLiving) {
