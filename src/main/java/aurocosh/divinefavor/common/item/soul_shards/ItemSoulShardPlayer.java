@@ -1,6 +1,6 @@
 package aurocosh.divinefavor.common.item.soul_shards;
 
-import aurocosh.divinefavor.common.core.creative_tabs.DivineFavorCreativeTabGems;
+import aurocosh.divinefavor.DivineFavor;
 import aurocosh.divinefavor.common.util.UtilNbt;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
@@ -15,7 +15,7 @@ import java.util.List;
 public class ItemSoulShardPlayer extends ItemSoulShard {
     public ItemSoulShardPlayer(String name) {
         super(name);
-        setCreativeTab(DivineFavorCreativeTabGems.INSTANCE);
+        setCreativeTab(DivineFavor.tabGems);
     }
 
     @Override

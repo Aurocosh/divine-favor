@@ -83,6 +83,8 @@ public class CommonProxy {
 
         File test = e.getModConfigurationDirectory();
 
+//        TalismanPagesGenerator.generate();
+
 //        e.getSuggestedConfigurationFile().getParentFile().getParentFile();
     }
 

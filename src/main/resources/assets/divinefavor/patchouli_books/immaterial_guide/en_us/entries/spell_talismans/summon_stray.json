@@ -1,0 +1,15 @@
+{
+  "name": "Summon stray",
+  "icon": "divinefavor:talisman_summon_stray",
+  "category": "spell_talismans",
+  "pages": [
+    {
+      "type": "text",
+      "text": "Minion talisman. Allows you to summon strays. They will follow you and fight for you. Strays will be equipped with bows and will attack at long range. You can command them directly with some special talismans. They are undead and will be hurt by sunlight. They will shoot enchanted arrows that slow down enemies."
+    },
+    {
+      "type": "spell_talisman_stats",
+      "talisman": "divinefavor:talisman_summon_stray"
+    }
+  ]
+}

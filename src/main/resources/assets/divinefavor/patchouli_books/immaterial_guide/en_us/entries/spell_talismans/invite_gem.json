@@ -1,0 +1,15 @@
+{
+  "name": "Invite gem",
+  "icon": "divinefavor:talisman_invite_gem",
+  "category": "spell_talismans",
+  "pages": [
+    {
+      "type": "text",
+      "text": "Creates invite gem upon use. Gem is a usable item. When used it will teleport user to creator of gem. Will work across dimensions."
+    },
+    {
+      "type": "spell_talisman_stats",
+      "talisman": "divinefavor:talisman_invite_gem"
+    }
+  ]
+}

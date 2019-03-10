@@ -1,0 +1,15 @@
+{
+  "name": "Night eye",
+  "icon": "divinefavor:talisman_night_eye",
+  "category": "spell_talismans",
+  "pages": [
+    {
+      "type": "text",
+      "text": "Will grant caster permanent effect 'Night eyes'. When in darkness this effect will grant night vision, but in light it will blind caster."
+    },
+    {
+      "type": "spell_talisman_stats",
+      "talisman": "divinefavor:talisman_night_eye"
+    }
+  ]
+}

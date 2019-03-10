@@ -1,0 +1,15 @@
+{
+  "name": "Piercing inferno",
+  "icon": "divinefavor:talisman_piercing_inferno",
+  "category": "spell_talismans",
+  "pages": [
+    {
+      "type": "text",
+      "text": "Will destroy blocks in line when used on blocks. Destroyed line of blocks will have shape of wall on which talisman was used. Though spell has max surface limit."
+    },
+    {
+      "type": "spell_talisman_stats",
+      "talisman": "divinefavor:talisman_piercing_inferno"
+    }
+  ]
+}

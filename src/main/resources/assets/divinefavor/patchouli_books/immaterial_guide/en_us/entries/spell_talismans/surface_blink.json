@@ -1,0 +1,15 @@
+{
+  "name": "Surface blink",
+  "icon": "divinefavor:talisman_surface_blink",
+  "category": "spell_talismans",
+  "pages": [
+    {
+      "type": "text",
+      "text": "Will teleport player to block that he is looking at."
+    },
+    {
+      "type": "spell_talisman_stats",
+      "talisman": "divinefavor:talisman_surface_blink"
+    }
+  ]
+}

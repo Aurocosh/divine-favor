@@ -1,6 +1,6 @@
 package aurocosh.divinefavor.common.item.calling_stones;
 
-import aurocosh.divinefavor.common.core.creative_tabs.DivineFavorCreativeTabGems;
+import aurocosh.divinefavor.DivineFavor;
 import aurocosh.divinefavor.common.item.base.ModItem;
 import aurocosh.divinefavor.common.muliblock.ModMultiBlock;
 import aurocosh.divinefavor.common.spirit.base.ModSpirit;
@@ -17,7 +17,7 @@ public class ItemCallingStone extends ModItem {
         this.multiBlock = multiBlock;
 
         setMaxStackSize(1);
-        setCreativeTab(DivineFavorCreativeTabGems.INSTANCE);
+        setCreativeTab(DivineFavor.tabGems);
     }
 
     @Override

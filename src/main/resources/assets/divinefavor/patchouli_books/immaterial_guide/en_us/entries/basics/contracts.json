@@ -30,7 +30,7 @@
     {
       "type": "spotlight",
       "item": "divinefavor:soul_shard_soul",
-      "text": "Another thing that you will need in order to use $(item)Soulbound lectern$() is a $(item)Soul shard$(). When you open gui of lectern you will see a slot in the center. In order to activate lectern you will need to put your shard in central slot. Shards can be obtained with an $(item)Awakened bone dagger$(). To get your own soul shard take dagger in hand, sneak and right click."
+      "text": "You will also need $(item)Soul shard of will$() in order to use $(item)Soulbound lectern$(). When you open gui of lectern you will see a slot in the center. In order to activate lectern you will need to put your shard in central slot. Shards can be obtained with an $(item)Awakened bone dagger$(). To get your own soul shard take dagger in hand, sneak and right click."
     },
     {
       "type": "text",

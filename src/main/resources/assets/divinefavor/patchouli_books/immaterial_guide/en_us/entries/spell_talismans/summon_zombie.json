@@ -1,0 +1,15 @@
+{
+  "name": "Summon zombie",
+  "icon": "divinefavor:talisman_summon_zombie",
+  "category": "spell_talismans",
+  "pages": [
+    {
+      "type": "text",
+      "text": "Minion talisman. Allows you to summon zombies. Minions will follow you and fight for you. You can command them directly with some special talismans. Zombies are undead and they will be hurt by sunlight."
+    },
+    {
+      "type": "spell_talisman_stats",
+      "talisman": "divinefavor:talisman_summon_zombie"
+    }
+  ]
+}

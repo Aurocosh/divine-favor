@@ -1,6 +1,6 @@
 package aurocosh.divinefavor.common.item.bathing_blend.base;
 
-import aurocosh.divinefavor.common.core.creative_tabs.DivineFavorCreativeTab;
+import aurocosh.divinefavor.DivineFavor;
 import aurocosh.divinefavor.common.item.base.ModItem;
 import aurocosh.divinefavor.common.util.UtilNbt;
 import net.minecraft.creativetab.CreativeTabs;
@@ -15,7 +15,7 @@ public abstract class ItemBathingBlend extends ModItem {
 
     public ItemBathingBlend(String name) {
         super("blend_" + name, "blends/" + name);
-        setCreativeTab(DivineFavorCreativeTab.INSTANCE);
+        setCreativeTab(DivineFavor.TAB_MAIN);
     }
 
     public static int getDuration(ItemStack stack) {

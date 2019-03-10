@@ -1,0 +1,15 @@
+{
+  "name": "Petrification",
+  "icon": "divinefavor:arrow_talisman_petrification",
+  "category": "arrow_talismans",
+  "pages": [
+    {
+      "type": "text",
+      "text": "Arrow shot with this talisman will be cursed with petrification. Cursed creatures hunger will take damage while moving. To lift this curse you need to stand in place for several seconds."
+    },
+    {
+      "type": "arrow_talisman_stats",
+      "talisman": "divinefavor:arrow_talisman_petrification"
+    }
+  ]
+}

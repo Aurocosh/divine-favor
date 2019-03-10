@@ -1,0 +1,15 @@
+{
+  "name": "Blood of grass",
+  "icon": "divinefavor:talisman_blood_of_grass",
+  "category": "spell_talismans",
+  "pages": [
+    {
+      "type": "text",
+      "text": "Spell will consume grass in small radius around you and will heal you. The more grass is consumed the stronger will be healing effect."
+    },
+    {
+      "type": "spell_talisman_stats",
+      "talisman": "divinefavor:talisman_blood_of_grass"
+    }
+  ]
+}

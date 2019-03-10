@@ -1,6 +1,5 @@
 package aurocosh.divinefavor.common.core.creative_tabs;
 
-import aurocosh.divinefavor.common.constants.ConstMisc;
 import aurocosh.divinefavor.common.item.common.ModItems;
 import aurocosh.divinefavor.common.registry.ModRegistries;
 import net.minecraft.block.Block;
@@ -12,11 +11,10 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class DivineFavorCreativeTab extends CreativeTabs {
-    public static final DivineFavorCreativeTab INSTANCE = new DivineFavorCreativeTab();
     private NonNullList list;
 
     public DivineFavorCreativeTab() {
-        super(ConstMisc.MOD_ID);
+        super("divinefavor");
         //ConstMisc.MOD_ID
 
         //setNoTitle();

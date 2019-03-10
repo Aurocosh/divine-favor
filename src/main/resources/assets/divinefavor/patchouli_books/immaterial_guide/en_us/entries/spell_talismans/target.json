@@ -1,0 +1,15 @@
+{
+  "name": "Target",
+  "icon": "divinefavor:talisman_target",
+  "category": "spell_talismans",
+  "pages": [
+    {
+      "type": "text",
+      "text": "Will order all nearby minions to attack creature that caster is looking at."
+    },
+    {
+      "type": "spell_talisman_stats",
+      "talisman": "divinefavor:talisman_target"
+    }
+  ]
+}

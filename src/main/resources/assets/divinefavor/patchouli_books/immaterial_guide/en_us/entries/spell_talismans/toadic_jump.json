@@ -1,0 +1,15 @@
+{
+  "name": "Toadic jump",
+  "icon": "divinefavor:talisman_toadic_jump",
+  "category": "spell_talismans",
+  "pages": [
+    {
+      "type": "text",
+      "text": "Will grant player 'Toadic jump' effect. While effect active it will boost jump considerably. Effect is permanent. To remove it just cast spell once more. Each jump will cost favor of related spirit. Also keep in mind that it will not protect from fall damage."
+    },
+    {
+      "type": "spell_talisman_stats",
+      "talisman": "divinefavor:talisman_toadic_jump"
+    }
+  ]
+}

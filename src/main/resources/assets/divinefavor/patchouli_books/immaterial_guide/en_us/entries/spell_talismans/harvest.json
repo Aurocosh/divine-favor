@@ -1,0 +1,15 @@
+{
+  "name": "Harvest",
+  "icon": "divinefavor:talisman_harvest",
+  "category": "spell_talismans",
+  "pages": [
+    {
+      "type": "text",
+      "text": "When used this talisman will harvest all crops in small radius."
+    },
+    {
+      "type": "spell_talisman_stats",
+      "talisman": "divinefavor:talisman_harvest"
+    }
+  ]
+}

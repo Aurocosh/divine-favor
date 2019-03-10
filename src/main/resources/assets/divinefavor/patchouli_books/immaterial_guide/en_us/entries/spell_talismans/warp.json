@@ -1,0 +1,15 @@
+{
+  "name": "Warp",
+  "icon": "divinefavor:talisman_warp",
+  "category": "spell_talismans",
+  "pages": [
+    {
+      "type": "text",
+      "text": "Instant short distance teleportation spell. This spell will teleport you in wall, so be carefull. It is stonger but less safe version of blink spell."
+    },
+    {
+      "type": "spell_talisman_stats",
+      "talisman": "divinefavor:talisman_warp"
+    }
+  ]
+}

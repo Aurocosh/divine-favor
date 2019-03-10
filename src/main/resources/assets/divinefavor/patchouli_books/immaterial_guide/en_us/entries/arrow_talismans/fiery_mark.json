@@ -1,0 +1,15 @@
+{
+  "name": "Fiery mark",
+  "icon": "divinefavor:arrow_talisman_fiery_mark",
+  "category": "arrow_talismans",
+  "pages": [
+    {
+      "type": "text",
+      "text": "Arrow shot with this talisman will be cursed with fiery mark. Cursed creature will explode some time after being cursed. To lift this curse just jump into water."
+    },
+    {
+      "type": "arrow_talisman_stats",
+      "talisman": "divinefavor:arrow_talisman_fiery_mark"
+    }
+  ]
+}

@@ -5,7 +5,6 @@ import aurocosh.divinefavor.common.block.base.ModBlock;
 import aurocosh.divinefavor.common.block.soulbound_lectern.tile_entities.TileSoulboundLectern;
 import aurocosh.divinefavor.common.constants.ConstBlockNames;
 import aurocosh.divinefavor.common.constants.ConstGuiIDs;
-import aurocosh.divinefavor.common.core.creative_tabs.DivineFavorCreativeTab;
 import aurocosh.divinefavor.common.item.soul_shards.ItemSoulShardPlayer;
 import net.minecraft.block.BlockHorizontal;
 import net.minecraft.block.ITileEntityProvider;
@@ -42,7 +41,7 @@ public class BlockSoulboundLectern extends ModBlock implements ITileEntityProvid
         setHardness(2.0F);
         setResistance(10.0F);
         setSoundType(SoundType.METAL);
-        setCreativeTab(DivineFavorCreativeTab.INSTANCE);
+        setCreativeTab(DivineFavor.TAB_MAIN);
     }
 
     @Override

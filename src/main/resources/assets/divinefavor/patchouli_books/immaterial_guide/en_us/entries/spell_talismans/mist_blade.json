@@ -1,0 +1,15 @@
+{
+  "name": "Mist blade",
+  "icon": "divinefavor:talisman_mist_blade",
+  "category": "spell_talismans",
+  "pages": [
+    {
+      "type": "text",
+      "text": "Will considerably boost your attack but also will seriously limit your sight radius. Effect is permanent, to remove it you will need to cast spell one more time."
+    },
+    {
+      "type": "spell_talisman_stats",
+      "talisman": "divinefavor:talisman_mist_blade"
+    }
+  ]
+}

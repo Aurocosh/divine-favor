@@ -1,0 +1,15 @@
+{
+  "name": "Wooden punch",
+  "icon": "divinefavor:talisman_wooden_punch",
+  "category": "spell_talismans",
+  "pages": [
+    {
+      "type": "text",
+      "text": "Will grant player 'Wooden_punch' effect. While effect active player will be able to break wood instantly with his bare hands. Effect is permanent. To remove it just cast spell once more. Each broken stone costs some favor."
+    },
+    {
+      "type": "spell_talisman_stats",
+      "talisman": "divinefavor:talisman_wooden_punch"
+    }
+  ]
+}

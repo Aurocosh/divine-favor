@@ -1,0 +1,15 @@
+{
+  "name": "Blade of grass",
+  "icon": "divinefavor:talisman_blade_of_grass",
+  "category": "spell_talismans",
+  "pages": [
+    {
+      "type": "text",
+      "text": "Will damage and slow down all enemies standing on grass anound you. Grass will be destroyed."
+    },
+    {
+      "type": "spell_talisman_stats",
+      "talisman": "divinefavor:talisman_blade_of_grass"
+    }
+  ]
+}

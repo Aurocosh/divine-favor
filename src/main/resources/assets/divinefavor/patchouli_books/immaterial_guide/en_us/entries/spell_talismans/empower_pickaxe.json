@@ -1,0 +1,15 @@
+{
+  "name": "Empower pickaxe",
+  "icon": "divinefavor:talisman_empower_pickaxe",
+  "category": "spell_talismans",
+  "pages": [
+    {
+      "type": "text",
+      "text": "Will temporarily empower your pickaxes. That will grant you chance to instantly break stone on mining. When stone breaks instantly extra durability will be consumed."
+    },
+    {
+      "type": "spell_talisman_stats",
+      "talisman": "divinefavor:talisman_empower_pickaxe"
+    }
+  ]
+}

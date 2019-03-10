@@ -1,0 +1,15 @@
+{
+  "name": "Blink",
+  "icon": "divinefavor:talisman_blink",
+  "category": "spell_talismans",
+  "pages": [
+    {
+      "type": "text",
+      "text": "Instant short distance teleportation spell. This spell will not teleport you in wall, but weaker then warp spell."
+    },
+    {
+      "type": "spell_talisman_stats",
+      "talisman": "divinefavor:talisman_blink"
+    }
+  ]
+}

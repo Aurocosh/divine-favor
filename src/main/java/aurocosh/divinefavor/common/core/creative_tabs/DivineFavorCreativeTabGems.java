@@ -12,7 +12,6 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class DivineFavorCreativeTabGems extends CreativeTabs {
-    public static final DivineFavorCreativeTabGems INSTANCE = new DivineFavorCreativeTabGems();
     private NonNullList list;
 
     public DivineFavorCreativeTabGems() {

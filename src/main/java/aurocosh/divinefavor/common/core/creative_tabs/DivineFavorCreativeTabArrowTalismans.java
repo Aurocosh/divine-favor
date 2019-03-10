@@ -12,7 +12,6 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class DivineFavorCreativeTabArrowTalismans extends CreativeTabs {
-    public static final DivineFavorCreativeTabArrowTalismans INSTANCE = new DivineFavorCreativeTabArrowTalismans();
     private NonNullList list;
 
     public DivineFavorCreativeTabArrowTalismans() {

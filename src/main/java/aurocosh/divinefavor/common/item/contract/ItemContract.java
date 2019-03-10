@@ -1,6 +1,6 @@
 package aurocosh.divinefavor.common.item.contract;
 
-import aurocosh.divinefavor.common.core.creative_tabs.DivineFavorCreativeTabContracts;
+import aurocosh.divinefavor.DivineFavor;
 import aurocosh.divinefavor.common.favor.ModFavor;
 import aurocosh.divinefavor.common.item.base.ModItem;
 import net.minecraft.client.resources.I18n;
@@ -25,7 +25,7 @@ public class ItemContract extends ModItem {
         this.min = min;
         this.max = max;
         setMaxStackSize(1);
-        setCreativeTab(DivineFavorCreativeTabContracts.INSTANCE);
+        setCreativeTab(DivineFavor.tabContracts);
     }
 
     public ModFavor getFavor() {

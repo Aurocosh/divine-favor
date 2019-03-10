@@ -1,0 +1,52 @@
+{
+  "processor": "aurocosh.divinefavor.common.patchouli.processors.ArrowTalismanStatProcessor",
+  "components": [
+    {
+      "group": "header",
+      "type": "header",
+      "text": "Stats",
+      "x": -1
+    },
+    {
+      "group": "header",
+      "type": "separator",
+      "y": 12
+    },
+    {
+      "type": "image",
+      "image": "#favor_icon",
+      "x": 50,
+      "y": 15,
+      "texture_width": 16,
+      "texture_height": 16,
+      "width": 16,
+      "height": 16
+    },
+    {
+      "type": "text",
+      "text": "#favor",
+      "x": 0,
+      "y": 30
+    },
+    {
+      "type": "text",
+      "text": "#cost",
+      "x": 0,
+      "y": 40,
+      "line_height": 12,
+      "color": "007700"
+    },
+    {
+      "type": "text",
+      "text": "#damage",
+      "x": 0,
+      "y": 50
+    },
+    {
+      "type": "text",
+      "text": "#options",
+      "x": 0,
+      "y": 60
+    }
+  ]
+}

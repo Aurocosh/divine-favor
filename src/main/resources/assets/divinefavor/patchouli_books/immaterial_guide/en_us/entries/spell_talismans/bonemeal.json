@@ -1,0 +1,15 @@
+{
+  "name": "Bonemeal",
+  "icon": "divinefavor:talisman_bonemeal",
+  "category": "spell_talismans",
+  "pages": [
+    {
+      "type": "text",
+      "text": "Will boost plant growth like bonemeal."
+    },
+    {
+      "type": "spell_talisman_stats",
+      "talisman": "divinefavor:talisman_bonemeal"
+    }
+  ]
+}

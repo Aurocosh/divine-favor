@@ -18,8 +18,8 @@ import java.util.EnumSet;
 
 public class SpellTalismanCombustion extends ItemSpellTalisman {
     private static final int USES = 3;
-    private final int MAX_SMELT_COUNT = 10;
-    private final int SMELTING_CHANCE = 50;
+    private final int MAX_SMELT_COUNT = 20;
+    private final int SMELTING_CHANCE = 75;
     private final float EXPLOSION_POWER = 4;
     private final boolean CAUSE_FIRE = false;
     private final boolean DAMAGE_TERRAIN = true;

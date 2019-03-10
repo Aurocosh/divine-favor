@@ -1,6 +1,6 @@
 package aurocosh.divinefavor.common.item.storage_gem;
 
-import aurocosh.divinefavor.common.core.creative_tabs.DivineFavorCreativeTab;
+import aurocosh.divinefavor.DivineFavor;
 import aurocosh.divinefavor.common.item.base.ModItem;
 import aurocosh.divinefavor.common.util.UtilFacing;
 import aurocosh.divinefavor.common.util.UtilNbt;
@@ -31,7 +31,7 @@ public class ItemStorageGem extends ModItem {
     public ItemStorageGem() {
         super("storage_gem", "storage_gem");
         setMaxStackSize(16);
-        setCreativeTab(DivineFavorCreativeTab.INSTANCE);
+        setCreativeTab(DivineFavor.TAB_MAIN);
     }
 
     @Override

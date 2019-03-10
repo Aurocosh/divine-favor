@@ -1,6 +1,6 @@
 package aurocosh.divinefavor.common.item.bone_dagger;
 
-import aurocosh.divinefavor.common.core.creative_tabs.DivineFavorCreativeTab;
+import aurocosh.divinefavor.DivineFavor;
 import aurocosh.divinefavor.common.custom_data.living.LivingData;
 import aurocosh.divinefavor.common.custom_data.living.data.soul_theft.SoulTheftData;
 import aurocosh.divinefavor.common.damage_source.ModDamageSources;
@@ -57,7 +57,7 @@ public class ItemBoneDaggerAwakened extends ModItem {
     public ItemBoneDaggerAwakened() {
         super("bone_dagger_awakened", "bone_dagger_awakened");
         setMaxStackSize(1);
-        setCreativeTab(DivineFavorCreativeTab.INSTANCE);
+        setCreativeTab(DivineFavor.TAB_MAIN);
     }
 
     @Override
@@ -86,7 +86,7 @@ public class ItemBoneDaggerAwakened extends ModItem {
     private void makeSoulShard(EntityLivingBase victim, EntityPlayer user) {
         ItemSoulShard item;
         if (victim instanceof EntityPlayer)
-            item = ModSoulShards.shard_soul;
+            item = ModSoulShards.shard_will;
         else if (victim instanceof EntityWitherSkeleton || victim instanceof EntityWither)
             item = ModSoulShards.shard_wither;
         else if (victim instanceof EntityEnderman || victim instanceof EntityEndermite || victim instanceof EntityShulker || victim instanceof EntityDragon)

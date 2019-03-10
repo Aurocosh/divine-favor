@@ -19,13 +19,12 @@ public abstract class ItemTalisman extends ModItem {
         this.name = name;
         this.favor = favor;
         this.favorCost = favorCost;
-
         setMaxStackSize(1);
     }
+
     public String getName() {
         return name;
     }
-
     public int getFavorCost() {
         return favorCost;
     }

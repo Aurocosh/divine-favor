@@ -1,0 +1,15 @@
+{
+  "name": "Fins",
+  "icon": "divinefavor:talisman_fins",
+  "category": "spell_talismans",
+  "pages": [
+    {
+      "type": "text",
+      "text": "Will make player much faster then usual under water."
+    },
+    {
+      "type": "spell_talisman_stats",
+      "talisman": "divinefavor:talisman_fins"
+    }
+  ]
+}

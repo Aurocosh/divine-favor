@@ -1,0 +1,15 @@
+{
+  "name": "Green cycle",
+  "icon": "divinefavor:talisman_green_cycle",
+  "category": "spell_talismans",
+  "pages": [
+    {
+      "type": "text",
+      "text": "When used this talisman will harvest and replant all crops in small radius."
+    },
+    {
+      "type": "spell_talisman_stats",
+      "talisman": "divinefavor:talisman_green_cycle"
+    }
+  ]
+}
