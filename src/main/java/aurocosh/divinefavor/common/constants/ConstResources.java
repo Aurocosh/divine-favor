@@ -20,8 +20,9 @@ public class ConstResources {
     public static final String GUI_JEI_IMMATERIAL_MEDIUM_RECIPE = PREFIX_GUI + "jei/immaterialMedium.png";
     public static final String GUI_RITUAL_POUCH = PREFIX_GUI + "ritual_pouch.png";
     public static final String GUI_SELECT_COST_UNIT_BUTTON = PREFIX_GUI + "select_cost_unit_button.png";
-    public static final String GUI_SOULBOUND_LECTERN_BOUND = PREFIX_GUI + "soulbound_lectern_bound.png";
-    public static final String GUI_SOULBOUND_LECTERN_UNBOUND = PREFIX_GUI + "soulbound_lectern_unbound.png";
+    public static final String GUI_SOULBOUND_LECTERN_ACTIVE = PREFIX_GUI + "soulbound_lectern/active.png";
+    public static final String GUI_SOULBOUND_LECTERN_WITH_SHARD = PREFIX_GUI + "soulbound_lectern/with_shard.png";
+    public static final String GUI_SOULBOUND_LECTERN_EMPTY = PREFIX_GUI + "soulbound_lectern/empty.png";
     public static final String GUI_TALISMAN = PREFIX_GUI + "talisman.png";
     public static final String GUI_ENDER_PUMPKIN = PREFIX_GUI + "ender_pumpkin_blur.png";
 

@@ -2,10 +2,11 @@
   "forge_marker": 1,
   "defaults": {
     "model": "divinefavor:soulbound_lectern",
+	"uvlock": true,
     "textures":{
-      "particle": "divinefavor:blocks/soulbound_lectern/stone/side",
-      "side": "divinefavor:blocks/soulbound_lectern/stone/side",
-      "front": "divinefavor:blocks/soulbound_lectern/stone/front",
+      "particle": "divinefavor:blocks/soulbound_lectern/materials/stone",
+      "material": "divinefavor:blocks/soulbound_lectern/materials/stone",
+      "mask": "divinefavor:blocks/soulbound_lectern/mask",
 	  "gem": "divinefavor:blocks/soulbound_lectern/gems/no_gem",
 	  "books": "divinefavor:blocks/soulbound_lectern/books/no_books"
     }

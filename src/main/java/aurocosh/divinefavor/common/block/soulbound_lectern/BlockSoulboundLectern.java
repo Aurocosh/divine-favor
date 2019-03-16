@@ -14,7 +14,6 @@ import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.EnumFacing;
@@ -26,8 +25,6 @@ import net.minecraft.world.World;
 import net.minecraft.world.chunk.Chunk;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import net.minecraftforge.items.CapabilityItemHandler;
-import net.minecraftforge.items.IItemHandler;
 
 public class BlockSoulboundLectern extends ModBlock implements ITileEntityProvider {
     public static final PropertyDirection FACING = BlockHorizontal.FACING;
@@ -45,7 +42,7 @@ public class BlockSoulboundLectern extends ModBlock implements ITileEntityProvid
     @Override
     public IBlockState getActualState(IBlockState state, IBlockAccess world, BlockPos pos) {
         TileEntity te = world instanceof ChunkCache ? ((ChunkCache) world).getTileEntity(pos, Chunk.EnumCreateEntityType.CHECK) : world.getTileEntity(pos);
-        if (te instanceof TileSoulboundLectern){
+        if (te instanceof TileSoulboundLectern) {
             TileSoulboundLectern soulboundLectern = (TileSoulboundLectern) te;
             return state.withProperty(STATE, soulboundLectern.getState()).withProperty(GEM, soulboundLectern.getGem());
         }
@@ -81,13 +78,12 @@ public class BlockSoulboundLectern extends ModBlock implements ITileEntityProvid
         if (!soulboundLectern.isUsableByPlayer(player))
             return false;
 
-        IItemHandler crystalHandler = soulboundLectern.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null);
-        ItemStack stack = crystalHandler.getStackInSlot(0);
-        if (!stack.isEmpty()) {
-            player.openGui(DivineFavor.instance, ConstGuiIDs.SOULBOUND_LECTERN_BOUND, world, pos.getX(), pos.getY(), pos.getZ());
-            return true;
-        }
-        player.openGui(DivineFavor.instance, ConstGuiIDs.SOULBOUND_LECTERN_UNBOUND, world, pos.getX(), pos.getY(), pos.getZ());
+        if (soulboundLectern.isMultiblockValid())
+            player.openGui(DivineFavor.instance, ConstGuiIDs.SOULBOUND_LECTERN_ACTIVE, world, pos.getX(), pos.getY(), pos.getZ());
+        else if (!soulboundLectern.getShardStack().isEmpty())
+            player.openGui(DivineFavor.instance, ConstGuiIDs.SOULBOUND_LECTERN_WITH_SHARD, world, pos.getX(), pos.getY(), pos.getZ());
+        else
+            player.openGui(DivineFavor.instance, ConstGuiIDs.SOULBOUND_LECTERN_EMPTY, world, pos.getX(), pos.getY(), pos.getZ());
         return true;
     }
 
@@ -111,8 +107,7 @@ public class BlockSoulboundLectern extends ModBlock implements ITileEntityProvid
      * transparency (glass, reeds), TRANSLUCENT for fully blended transparency (stained glass)
      */
     @SideOnly(Side.CLIENT)
-    public BlockRenderLayer getRenderLayer()
-    {
+    public BlockRenderLayer getRenderLayer() {
         return BlockRenderLayer.CUTOUT;
     }
 }

@@ -8,11 +8,11 @@ import net.minecraftforge.items.ItemStackHandler;
 
 import javax.annotation.Nonnull;
 
-public class ContainerSoulboundLecternBound extends GenericContainer {
+public class ContainerSoulboundLecternActive extends GenericContainer {
     private final TileSoulboundLectern soulboundLectern;
     private final FavorData favorData;
 
-    public ContainerSoulboundLecternBound(EntityPlayer player, TileSoulboundLectern soulboundLectern) {
+    public ContainerSoulboundLecternActive(EntityPlayer player, TileSoulboundLectern soulboundLectern) {
         super(FavorData.CONTRACT_SLOT_COUNT);
         this.soulboundLectern = soulboundLectern;
 
