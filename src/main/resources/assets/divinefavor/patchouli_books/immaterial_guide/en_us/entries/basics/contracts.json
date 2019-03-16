@@ -19,12 +19,12 @@
     },
     {
       "type": "multiblock",
-      "multiblock_id": "divinefavor:patchouli.soulbound_lectern_wood",
+      "multiblock_id": "divinefavor:patchouli.soulbound_lectern_arbow",
       "text": "Wooden soulbound lectern with appropriate multiblock."
     },
     {
       "type": "multiblock",
-      "multiblock_id": "divinefavor:patchouli.soulbound_lectern_stone",
+      "multiblock_id": "divinefavor:patchouli.soulbound_lectern_romol",
       "text": "Stone soulbound lectern with appropriate multiblock."
     },
     {

@@ -13,7 +13,9 @@ import vazkii.patchouli.common.util.ItemStackUtil;
 
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
+import java.util.ArrayList;
 import java.util.EnumSet;
+import java.util.List;
 
 public class ArrowTalismanStatProcessor implements IComponentProcessor {
     ItemArrowTalisman arrowTalisman;
@@ -41,36 +43,33 @@ public class ArrowTalismanStatProcessor implements IComponentProcessor {
             ModFavor favor = arrowTalisman.getFavor();
             return favor.getIcon().toString();
         }
-        else if (key.equals("favor")) {
-            ModFavor favor = arrowTalisman.getFavor();
-            return "Favor: " + favor.getName();
-        }
-        else if (key.equals("cost")) {
+//
+        else if (key.equals("text")) {
+            List<String> lines = new ArrayList<>();
+            lines.add("Favor: " + arrowTalisman.getFavor().getName());
             int favorCost = arrowTalisman.getFavorCost();
             if (favorCost == 0)
-                return "No cost";
+                lines.add("No cost");
             else
-                return "Favor cost: " + favorCost;
-        }
-        else if (key.equals("damage")) {
+                lines.add("Favor cost: " + favorCost);
             double arrowDamage = arrowTalisman.getArrowDamage();
             if (arrowDamage == 0)
-                return "Arrow deals no damage";
+                lines.add("Arrow deals no damage");
             else {
                 NumberFormat formatter = new DecimalFormat("#0.00");
-                return "Arrow damage: " + formatter.format(arrowDamage);
+                lines.add("Arrow damage: " + formatter.format(arrowDamage));
             }
-        }
-        else if (key.equals("options")) {
             EnumSet<ArrowOptions> options = arrowTalisman.getOptions();
             if (options.equals(ArrowOptions.NORMAL))
-                return "No extra properties";
-            String result = "Extra properties: ";
-            if (options.contains(ArrowOptions.BreakOnHit))
-                result += "Will break on hit. ";
-            if (options.contains(ArrowOptions.RequiresTarget))
-                result += "Needs target.";
-            return result;
+                lines.add("No extra properties");
+            else {
+                lines.add("Extra properties: ");
+                if (options.contains(ArrowOptions.BreakOnHit))
+                    lines.add("  Will break on hit. ");
+                if (options.contains(ArrowOptions.RequiresTarget))
+                    lines.add("  Needs target.");
+            }
+            return String.join("$(br)", lines);
         }
         return null;
     }

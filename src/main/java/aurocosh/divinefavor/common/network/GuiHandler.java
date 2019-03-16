@@ -4,8 +4,8 @@ import aurocosh.divinefavor.client.gui.GuiTalismanContainer;
 import aurocosh.divinefavor.client.gui.blocks.GuiBathHeater;
 import aurocosh.divinefavor.client.gui.blocks.GuiFastFurnace;
 import aurocosh.divinefavor.client.gui.blocks.GuiIronMedium;
-import aurocosh.divinefavor.client.gui.blocks.soulbound_lectern.GuiSoulboundLecternBound;
-import aurocosh.divinefavor.client.gui.blocks.soulbound_lectern.GuiSoulboundLecternUnbound;
+import aurocosh.divinefavor.client.gui.blocks.soulbound_lectern.GuiSoulboundLecternWithShard;
+import aurocosh.divinefavor.client.gui.blocks.soulbound_lectern.GuiSoulboundLecternEmpty;
 import aurocosh.divinefavor.client.gui.items.GuiContractBinder;
 import aurocosh.divinefavor.client.gui.items.GuiGrimoire;
 import aurocosh.divinefavor.client.gui.items.GuiRitualPouch;
@@ -18,7 +18,7 @@ import aurocosh.divinefavor.common.block.medium.ContainerMedium;
 import aurocosh.divinefavor.common.block.medium.TileMedium;
 import aurocosh.divinefavor.common.block.soulbound_lectern.ContainerSoulboundLecternBound;
 import aurocosh.divinefavor.common.block.soulbound_lectern.ContainerSoulboundLecternUnbound;
-import aurocosh.divinefavor.common.block.soulbound_lectern.tile_entities.TileSoulboundLectern;
+import aurocosh.divinefavor.common.block.soulbound_lectern.TileSoulboundLectern;
 import aurocosh.divinefavor.common.constants.ConstGuiIDs;
 import aurocosh.divinefavor.common.item.contract_binder.ContractBinderContainer;
 import aurocosh.divinefavor.common.item.grimoire.GrimoireContainer;
@@ -112,9 +112,9 @@ public class GuiHandler implements IGuiHandler {
                 return new GuiSpellBow(player, stack, hand);
             }
             case ConstGuiIDs.SOULBOUND_LECTERN_BOUND:
-                return new GuiSoulboundLecternBound(player, (TileSoulboundLectern) world.getTileEntity(new BlockPos(x, y, z)));
+                return new GuiSoulboundLecternWithShard(player, (TileSoulboundLectern) world.getTileEntity(new BlockPos(x, y, z)));
             case ConstGuiIDs.SOULBOUND_LECTERN_UNBOUND:
-                return new GuiSoulboundLecternUnbound(player, (TileSoulboundLectern) world.getTileEntity(new BlockPos(x, y, z)));
+                return new GuiSoulboundLecternEmpty(player, (TileSoulboundLectern) world.getTileEntity(new BlockPos(x, y, z)));
             case ConstGuiIDs.BATH_HEATER:
                 return new GuiBathHeater(player, (TileBathHeater) world.getTileEntity(new BlockPos(x, y, z)));
         }

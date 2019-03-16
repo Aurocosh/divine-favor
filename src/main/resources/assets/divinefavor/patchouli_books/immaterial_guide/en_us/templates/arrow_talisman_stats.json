@@ -24,29 +24,9 @@
     },
     {
       "type": "text",
-      "text": "#favor",
+      "text": "#text",
       "x": 0,
-      "y": 30
-    },
-    {
-      "type": "text",
-      "text": "#cost",
-      "x": 0,
-      "y": 40,
-      "line_height": 12,
-      "color": "007700"
-    },
-    {
-      "type": "text",
-      "text": "#damage",
-      "x": 0,
-      "y": 50
-    },
-    {
-      "type": "text",
-      "text": "#options",
-      "x": 0,
-      "y": 60
+      "y": 31
     }
   ]
 }

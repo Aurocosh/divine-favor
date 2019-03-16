@@ -1,5 +1,7 @@
 package aurocosh.divinefavor.common.item.soul_shards;
 
+import aurocosh.divinefavor.common.favor.ModFavors;
+
 public final class ModSoulShards {
     public static ItemSoulShard shard_end;
     public static ItemSoulShard shard_mind;
@@ -12,14 +14,14 @@ public final class ModSoulShards {
     public static ItemSoulShardPlayer shard_will;
 
     public static void preInit() {
-        shard_end = new ItemSoulShard("end");
-        shard_mind = new ItemSoulShard("mind");
-        shard_nether = new ItemSoulShard("nether");
-        shard_peace = new ItemSoulShard("peace");
-        shard_will = new ItemSoulShardPlayer("will");
-        shard_undeath = new ItemSoulShard("undeath");
-        shard_water = new ItemSoulShard("water");
-        shard_wild = new ItemSoulShard("wild");
-        shard_wither = new ItemSoulShard("wither");
+        shard_end = new ItemSoulShard("end", ModFavors.endererer);
+        shard_mind = new ItemSoulShard("mind", ModFavors.romol);
+        shard_nether = new ItemSoulShard("nether", ModFavors.neblaze);
+        shard_peace = new ItemSoulShard("peace", ModFavors.arbow);
+        shard_will = new ItemSoulShardPlayer("will",ModFavors.redwind);
+        shard_undeath = new ItemSoulShard("undeath", ModFavors.loon);
+        shard_water = new ItemSoulShard("water", ModFavors.blizrabi);
+        shard_wild = new ItemSoulShard("wild", ModFavors.squarefury);
+        shard_wither = new ItemSoulShard("wither", ModFavors.timber);
     }
 }

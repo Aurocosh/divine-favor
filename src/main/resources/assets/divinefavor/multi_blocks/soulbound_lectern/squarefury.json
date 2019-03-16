@@ -1,0 +1,10 @@
+{
+  "symmetrical":false,
+  "controllerPosition":[8,0,1],
+  "parts":[
+    {"validator":{"type":"block","name":"minecraft:quartz_block"},"positions":[[0,0,1],[1,0,1],[2,0,1],[3,0,1],[4,0,1]]},
+    {"validator":{"type":"block","name":"minecraft:log"},"positions":[[6,0,1],[7,0,1]]},
+    {"validator":{"type":"block","name":"minecraft:stone"},"positions":[[5,0,0],[5,0,1],[5,0,2],[5,1,1]]},
+    {"validator":{"type":"center","name":"divinefavor:soulbound_lectern_stone"},"positions":[[8,0,1]]}
+  ]
+}

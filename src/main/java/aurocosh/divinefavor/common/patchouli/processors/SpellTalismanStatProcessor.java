@@ -10,6 +10,9 @@ import vazkii.patchouli.api.IComponentProcessor;
 import vazkii.patchouli.api.IVariableProvider;
 import vazkii.patchouli.common.util.ItemStackUtil;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class SpellTalismanStatProcessor implements IComponentProcessor {
     ItemSpellTalisman spellTalisman;
 
@@ -29,7 +32,7 @@ public class SpellTalismanStatProcessor implements IComponentProcessor {
     @Override
     public String process(String key) {
         if (key.startsWith("talisman")) {
-            ItemStack stack = new ItemStack(spellTalisman,1);
+            ItemStack stack = new ItemStack(spellTalisman, 1);
             return ItemStackUtil.serializeStack(stack);
         }
         else if (key.equals("favor_icon")) {
@@ -37,17 +40,16 @@ public class SpellTalismanStatProcessor implements IComponentProcessor {
             ModFavor favor = spellTalisman.getFavor();
             return favor.getIcon().toString();
         }
-        else if (key.equals("favor")) {
-
+        else if (key.equals("text")) {
+            List<String> lines = new ArrayList<>();
             ModFavor favor = spellTalisman.getFavor();
-            return "Favor: " + favor.getName();
-        }
-        else if (key.equals("cost")) {
+            lines.add("Favor: " + favor.getName());
             int favorCost = spellTalisman.getFavorCost();
-            if(favorCost == 0)
-                return "No cost";
+            if (favorCost == 0)
+                lines.add("No cost");
             else
-                return "Favor cost: " + favorCost;
+                lines.add("Favor cost: " + favorCost);
+            return String.join("$(br)", lines);
         }
         return null;
     }

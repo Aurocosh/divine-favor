@@ -10,8 +10,7 @@ import aurocosh.divinefavor.common.block.fast_furnace.TileFastFurnace;
 import aurocosh.divinefavor.common.block.medium.BlockMedium;
 import aurocosh.divinefavor.common.block.medium.TileMedium;
 import aurocosh.divinefavor.common.block.soulbound_lectern.BlockSoulboundLectern;
-import aurocosh.divinefavor.common.block.soulbound_lectern.tile_entities.TileSoulboundLecternStone;
-import aurocosh.divinefavor.common.block.soulbound_lectern.tile_entities.TileSoulboundLecternWood;
+import aurocosh.divinefavor.common.block.soulbound_lectern.TileSoulboundLectern;
 import aurocosh.divinefavor.common.constants.ConstBlockNames;
 import aurocosh.divinefavor.common.constants.ConstResources;
 import net.minecraft.block.material.Material;
@@ -27,9 +26,7 @@ public class ModBlocks {
     public static ModBlock soulboundLecternWood;
     public static ModBlock soulboundLecternStone;
 
-    public static ModBlock dyedPumpkin;
     public static ModBlock enderPumpkin;
-    public static ModBlock litEnderPumpkin;
 
     public static void preInit() {
         bathHeater = new BlockBathHeater();
@@ -37,8 +34,8 @@ public class ModBlocks {
         fastFurnace = new BlockFastFurnaceMod();
         immaterialMedium = new BlockMedium();
 
-        soulboundLecternWood = new BlockSoulboundLectern("wood", Material.WOOD, TileSoulboundLecternWood.class);
-        soulboundLecternStone = new BlockSoulboundLectern("stone", Material.ROCK, TileSoulboundLecternStone.class);
+        soulboundLecternWood = new BlockSoulboundLectern("wood", Material.WOOD);
+        soulboundLecternStone = new BlockSoulboundLectern("stone", Material.ROCK);
 
         enderPumpkin = new BlockEnderPumpkin();
 
@@ -53,8 +50,7 @@ public class ModBlocks {
         registerTile(TileBathHeater.class, ConstBlockNames.BATH_HEATER);
         registerTile(TileFastFurnace.class, ConstBlockNames.FAST_FURNACE);
         registerTile(TileMedium.class, ConstBlockNames.IRON_MEDIUM);
-        registerTile(TileSoulboundLecternStone.class, "soulbound_lectern_stone");
-        registerTile(TileSoulboundLecternWood.class, "soulbound_lectern_wood");
+        registerTile(TileSoulboundLectern.class, ConstBlockNames.SOULBOUND_LECTERN);
     }
 
     private static void registerTile(Class<? extends TileEntity> clazz, String key) {

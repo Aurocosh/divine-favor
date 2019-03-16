@@ -13,8 +13,15 @@ public final class ModMultiBlocks {
     public static ModMultiBlock altar_squarefury;
     public static ModMultiBlock altar_timber;
 
-    public static ModMultiBlock soulbound_lectern_wood;
-    public static ModMultiBlock soulbound_lectern_stone;
+    public static ModMultiBlock soulbound_lectern_arbow;
+    public static ModMultiBlock soulbound_lectern_blizrabi;
+    public static ModMultiBlock soulbound_lectern_endererer;
+    public static ModMultiBlock soulbound_lectern_loon;
+    public static ModMultiBlock soulbound_lectern_neblaze;
+    public static ModMultiBlock soulbound_lectern_redwind;
+    public static ModMultiBlock soulbound_lectern_romol;
+    public static ModMultiBlock soulbound_lectern_squarefury;
+    public static ModMultiBlock soulbound_lectern_timber;
 
     public static ModMultiBlock snowman;
     public static ModMultiBlock iron_golem;
@@ -34,8 +41,15 @@ public final class ModMultiBlocks {
         altar_squarefury = MultiblockLoader.load("altar", "squarefury");
         altar_timber = MultiblockLoader.load("altar", "timber");
 
-        soulbound_lectern_wood = MultiblockLoader.load("soulbound_lectern", "wood");
-        soulbound_lectern_stone = MultiblockLoader.load("soulbound_lectern", "stone");
+        soulbound_lectern_arbow = MultiblockLoader.load("soulbound_lectern", "arbow");
+        soulbound_lectern_blizrabi = MultiblockLoader.load("soulbound_lectern", "blizrabi");
+        soulbound_lectern_endererer = MultiblockLoader.load("soulbound_lectern", "endererer");
+        soulbound_lectern_loon = MultiblockLoader.load("soulbound_lectern", "loon");
+        soulbound_lectern_neblaze = MultiblockLoader.load("soulbound_lectern", "neblaze");
+        soulbound_lectern_redwind = MultiblockLoader.load("soulbound_lectern", "redwind");
+        soulbound_lectern_romol = MultiblockLoader.load("soulbound_lectern", "romol");
+        soulbound_lectern_squarefury = MultiblockLoader.load("soulbound_lectern", "squarefury");
+        soulbound_lectern_timber = MultiblockLoader.load("soulbound_lectern", "timber");
 
         snowman = MultiblockLoader.load("spawn_validation", "snowman");
         iron_golem = MultiblockLoader.load("spawn_validation", "iron_golem");
@@ -55,8 +69,8 @@ public final class ModMultiBlocks {
         PatchouliMultiblockAdapter.register(altar_romol);
         PatchouliMultiblockAdapter.register(altar_squarefury);
 
-        PatchouliMultiblockAdapter.register(soulbound_lectern_wood);
-        PatchouliMultiblockAdapter.register(soulbound_lectern_stone);
+        PatchouliMultiblockAdapter.register(soulbound_lectern_arbow);
+        PatchouliMultiblockAdapter.register(soulbound_lectern_romol);
         PatchouliMultiblockAdapter.register(altar_timber);
 
         PatchouliMultiblockAdapter.register(bath_example_first);
