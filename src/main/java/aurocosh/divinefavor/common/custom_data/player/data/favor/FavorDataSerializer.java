@@ -20,13 +20,13 @@ public class FavorDataSerializer implements INbtSerializer<FavorData> {
             ModFavor favor = favors.get(i);
             tag.setInteger(favor.getName(), favorValues[i]);
         }
-        tag.setTag(TAG_CONTRACTS, instance.serializeContract());
+        tag.setTag(TAG_CONTRACTS, instance.serializeContracts());
         return tag;
     }
 
     public static void setDataFromNBT(FavorData instance, NBTTagCompound nbt) {
         if (nbt.hasKey(TAG_CONTRACTS))
-            instance.deserializeContract(nbt.getCompoundTag(TAG_CONTRACTS));
+            instance.deserializeContracts(nbt.getCompoundTag(TAG_CONTRACTS));
 
         List<ModFavor> favors = ModMappers.favors.getValues();
         int[] favorValues = new int[favors.size()];

@@ -1,6 +1,7 @@
 package aurocosh.divinefavor.common.item.soul_shards;
 
 import aurocosh.divinefavor.DivineFavor;
+import aurocosh.divinefavor.common.favor.ModFavor;
 import aurocosh.divinefavor.common.item.base.ModItem;
 import aurocosh.divinefavor.common.util.UtilNbt;
 import net.minecraft.client.resources.I18n;
@@ -19,9 +20,16 @@ public class ItemSoulShard extends ModItem {
     protected static final String TAG_ENTITY_ID = "Id";
     protected static final String NBT_ENTITY_NAME = "EntityName";
 
-    public ItemSoulShard(String name) {
+    protected final ModFavor favor;
+
+    public ItemSoulShard(String name, ModFavor favor) {
         super("soul_shard_" + name, "soul_shards/" + name, 2);
+        this.favor = favor;
         setCreativeTab(DivineFavor.tabGems);
+    }
+
+    public ModFavor getFavor() {
+        return favor;
     }
 
     public static boolean hasOwner(ItemStack stack) {

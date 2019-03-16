@@ -3,8 +3,7 @@ package aurocosh.divinefavor.common.block.soulbound_lectern;
 import net.minecraft.util.IStringSerializable;
 
 public enum SoulboundLecternState implements IStringSerializable {
-    UNBOUND("unbound"),
-    BOUND("bound"),
+    INACTIVE("inactive"),
     ACTIVE("active");
 
     // Optimization

@@ -23,35 +23,40 @@ public class FavorData {
 
     private final int[] favorValues;
     private final FavorStatus[] favorStatuses;
-    private final ItemStackHandler contractsStackHandler;
+    private final ItemStackHandler[] contractsStackHandlers;
 
     public FavorData() {
         List<ModFavor> favors = ModMappers.favors.getValues();
         favorValues = new int[favors.size()];
 
         favorStatuses = new FavorStatus[favors.size()];
-        for (int i = 0; i < favors.size(); i++)
+        contractsStackHandlers = new ItemStackHandler[favors.size()];
+        for (int i = 0; i < favors.size(); i++) {
             favorStatuses[i] = new FavorStatus();
-
-        contractsStackHandler = new ItemStackHandler(CONTRACT_SLOT_COUNT) {
-            @Override
-            public boolean isItemValid(int slot, @Nonnull ItemStack stack) {
-                Item item = stack.getItem();
-                return item instanceof ItemContract || item instanceof ItemContractBinder;
-            }
-        };
+            contractsStackHandlers[i] = new ItemStackHandler(CONTRACT_SLOT_COUNT) {
+                @Override
+                public boolean isItemValid(int slot, @Nonnull ItemStack stack) {
+                    Item item = stack.getItem();
+                    return item instanceof ItemContract || item instanceof ItemContractBinder;
+                }
+            };
+        }
     }
 
-    public ItemStackHandler getContractHandler() {
-        return contractsStackHandler;
+    public ItemStackHandler getContractHandler(int favorId) {
+        return contractsStackHandlers[favorId];
     }
 
-    public NBTTagCompound serializeContract() {
-        return contractsStackHandler.serializeNBT();
+    public NBTTagCompound serializeContracts() {
+        NBTTagCompound contractsCompound = new NBTTagCompound();
+        for (int i = 0; i < contractsStackHandlers.length; i++)
+            contractsCompound.setTag(String.valueOf(i), contractsStackHandlers[i].serializeNBT());
+        return contractsCompound;
     }
 
-    public void deserializeContract(NBTTagCompound compound) {
-        contractsStackHandler.deserializeNBT(compound);
+    public void deserializeContracts(NBTTagCompound compound) {
+        for (int i = 0; i < contractsStackHandlers.length; i++)
+            contractsStackHandlers[i].deserializeNBT(compound.getCompoundTag(String.valueOf(i)));
         refreshContracts();
     }
 
@@ -97,7 +102,7 @@ public class FavorData {
         refreshValues();
     }
 
-    private List<ItemContract> getContracts() {
+    private List<ItemContract> getContracts(ItemStackHandler contractsStackHandler) {
         List<ItemStack> contractStacks = new ArrayList<>();
         for (int i = 0; i < contractsStackHandler.getSlots(); i++) {
             ItemStack stack = contractsStackHandler.getStackInSlot(i);
@@ -130,11 +135,13 @@ public class FavorData {
         for (FavorStatus favorStatus : favorStatuses)
             favorStatus.clear();
 
-        List<ItemContract> contracts = getContracts();
-        for (ItemContract contract : contracts) {
-            int favorId = contract.getFavor().getId();
-            FavorStatus status = favorStatuses[favorId];
-            status.addStats(contract);
+        for (int i = 0; i < contractsStackHandlers.length; i++) {
+            ItemStackHandler stackHandler = contractsStackHandlers[i];
+            List<ItemContract> contracts = getContracts(stackHandler);
+            for (ItemContract contract : contracts) {
+                FavorStatus status = favorStatuses[i];
+                status.addStats(contract);
+            }
         }
         refreshValues();
     }

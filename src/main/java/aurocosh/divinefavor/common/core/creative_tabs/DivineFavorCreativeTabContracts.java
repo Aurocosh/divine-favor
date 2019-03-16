@@ -24,7 +24,7 @@ public class DivineFavorCreativeTabContracts extends CreativeTabs {
 
     @Override
     public ItemStack createIcon() {
-        return new ItemStack(ModContracts.contracts.get(0));
+        return new ItemStack(ModContracts.capacity_minor);
     }
 
 //    @Override

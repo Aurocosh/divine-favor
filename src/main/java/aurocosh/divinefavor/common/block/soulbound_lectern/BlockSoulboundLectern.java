@@ -2,10 +2,8 @@ package aurocosh.divinefavor.common.block.soulbound_lectern;
 
 import aurocosh.divinefavor.DivineFavor;
 import aurocosh.divinefavor.common.block.base.ModBlock;
-import aurocosh.divinefavor.common.block.soulbound_lectern.tile_entities.TileSoulboundLectern;
 import aurocosh.divinefavor.common.constants.ConstBlockNames;
 import aurocosh.divinefavor.common.constants.ConstGuiIDs;
-import aurocosh.divinefavor.common.item.soul_shards.ItemSoulShardPlayer;
 import net.minecraft.block.BlockHorizontal;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.SoundType;
@@ -18,6 +16,7 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
@@ -25,19 +24,18 @@ import net.minecraft.world.ChunkCache;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraft.world.chunk.Chunk;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
-
-import java.util.UUID;
 
 public class BlockSoulboundLectern extends ModBlock implements ITileEntityProvider {
     public static final PropertyDirection FACING = BlockHorizontal.FACING;
     public static final PropertyEnum<SoulboundLecternState> STATE = PropertyEnum.create("state", SoulboundLecternState.class);
-    private final Class<? extends TileSoulboundLectern> entityClass;
+    public static final PropertyEnum<SoulboundLecternGem> GEM = PropertyEnum.create("gem", SoulboundLecternGem.class);
 
-    public BlockSoulboundLectern(String name, Material material, Class<? extends TileSoulboundLectern> entityClass) {
+    public BlockSoulboundLectern(String name, Material material) {
         super(ConstBlockNames.SOULBOUND_LECTERN + "_" + name, material);
-        this.entityClass = entityClass;
         setHardness(2.0F);
         setResistance(10.0F);
         setSoundType(SoundType.METAL);
@@ -47,8 +45,10 @@ public class BlockSoulboundLectern extends ModBlock implements ITileEntityProvid
     @Override
     public IBlockState getActualState(IBlockState state, IBlockAccess world, BlockPos pos) {
         TileEntity te = world instanceof ChunkCache ? ((ChunkCache) world).getTileEntity(pos, Chunk.EnumCreateEntityType.CHECK) : world.getTileEntity(pos);
-        if (te instanceof TileSoulboundLectern)
-            return state.withProperty(STATE, ((TileSoulboundLectern) te).getState());
+        if (te instanceof TileSoulboundLectern){
+            TileSoulboundLectern soulboundLectern = (TileSoulboundLectern) te;
+            return state.withProperty(STATE, soulboundLectern.getState()).withProperty(GEM, soulboundLectern.getGem());
+        }
         return super.getActualState(state, world, pos);
     }
 
@@ -59,7 +59,7 @@ public class BlockSoulboundLectern extends ModBlock implements ITileEntityProvid
 
     @Override
     protected BlockStateContainer createBlockState() {
-        return new BlockStateContainer(this, FACING, STATE);
+        return new BlockStateContainer(this, FACING, STATE, GEM);
     }
 
     public IBlockState getStateFromMeta(int meta) {
@@ -84,16 +84,8 @@ public class BlockSoulboundLectern extends ModBlock implements ITileEntityProvid
         IItemHandler crystalHandler = soulboundLectern.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null);
         ItemStack stack = crystalHandler.getStackInSlot(0);
         if (!stack.isEmpty()) {
-            UUID playerUUID = player.getGameProfile().getId();
-            UUID stackUUID = ItemSoulShardPlayer.getEntityId(stack);
-            if (!playerUUID.equals(stackUUID))
-                return false;
-            if (!soulboundLectern.isMultiblockValid())
-                return false;
-
             player.openGui(DivineFavor.instance, ConstGuiIDs.SOULBOUND_LECTERN_BOUND, world, pos.getX(), pos.getY(), pos.getZ());
             return true;
-
         }
         player.openGui(DivineFavor.instance, ConstGuiIDs.SOULBOUND_LECTERN_UNBOUND, world, pos.getX(), pos.getY(), pos.getZ());
         return true;
@@ -101,13 +93,7 @@ public class BlockSoulboundLectern extends ModBlock implements ITileEntityProvid
 
     @Override
     public TileEntity createNewTileEntity(World world, int meta) {
-        try {
-            return entityClass.newInstance();
-        }
-        catch (IllegalAccessException  | InstantiationException e) {
-            e.printStackTrace();
-            return null;
-        }
+        return new TileSoulboundLectern();
     }
 
     @Override
@@ -118,5 +104,15 @@ public class BlockSoulboundLectern extends ModBlock implements ITileEntityProvid
             return;
         TileSoulboundLectern medium = (TileSoulboundLectern) entity;
         // TODO
+    }
+
+    /**
+     * Gets the render layer this block will render on. SOLID for solid blocks, CUTOUT or CUTOUT_MIPPED for on-off
+     * transparency (glass, reeds), TRANSLUCENT for fully blended transparency (stained glass)
+     */
+    @SideOnly(Side.CLIENT)
+    public BlockRenderLayer getRenderLayer()
+    {
+        return BlockRenderLayer.CUTOUT;
     }
 }

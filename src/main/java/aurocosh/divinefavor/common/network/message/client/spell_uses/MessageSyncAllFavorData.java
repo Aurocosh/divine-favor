@@ -32,13 +32,13 @@ public class MessageSyncAllFavorData extends NetworkWrappedClientMessage {
 
     public static NBTTagCompound getNbtTagCompound(FavorData instance) {
         final NBTTagCompound tag = new NBTTagCompound();
-        tag.setTag(TAG_CONTRACTS, instance.serializeContract());
+        tag.setTag(TAG_CONTRACTS, instance.serializeContracts());
         tag.setIntArray(TAG_FAVOR_VALUES, instance.getFavorValues());
         return tag;
     }
 
     public static void setDataFromNBT(FavorData instance, NBTTagCompound nbt) {
-        instance.deserializeContract(nbt.getCompoundTag(TAG_CONTRACTS));
+        instance.deserializeContracts(nbt.getCompoundTag(TAG_CONTRACTS));
         instance.setFavorValues(nbt.getIntArray(TAG_FAVOR_VALUES));
     }
 }
