@@ -4,8 +4,8 @@
     "model": "divinefavor:soulbound_lectern",
 	"uvlock": true,
     "textures":{
-      "particle": "divinefavor:blocks/soulbound_lectern/materials/wood",
-      "material": "divinefavor:blocks/soulbound_lectern/materials/wood",
+      "particle": "divinefavor:blocks/soulbound_lectern/materials/iron_block",
+      "material": "divinefavor:blocks/soulbound_lectern/materials/iron_block",
       "mask": "divinefavor:blocks/soulbound_lectern/mask",
 	  "gem": "divinefavor:blocks/soulbound_lectern/gems/no_gem",
 	  "books": "divinefavor:blocks/soulbound_lectern/books/no_books"

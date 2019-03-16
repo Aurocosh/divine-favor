@@ -4,6 +4,7 @@ import aurocosh.divinefavor.client.gui.GuiTalismanContainer;
 import aurocosh.divinefavor.client.gui.blocks.GuiBathHeater;
 import aurocosh.divinefavor.client.gui.blocks.GuiFastFurnace;
 import aurocosh.divinefavor.client.gui.blocks.GuiIronMedium;
+import aurocosh.divinefavor.client.gui.blocks.soulbound_lectern.GuiSoulboundLecternActive;
 import aurocosh.divinefavor.client.gui.blocks.soulbound_lectern.GuiSoulboundLecternWithShard;
 import aurocosh.divinefavor.client.gui.blocks.soulbound_lectern.GuiSoulboundLecternEmpty;
 import aurocosh.divinefavor.client.gui.items.GuiContractBinder;
@@ -16,8 +17,9 @@ import aurocosh.divinefavor.common.block.fast_furnace.ContainerFastFurnace;
 import aurocosh.divinefavor.common.block.fast_furnace.TileFastFurnace;
 import aurocosh.divinefavor.common.block.medium.ContainerMedium;
 import aurocosh.divinefavor.common.block.medium.TileMedium;
-import aurocosh.divinefavor.common.block.soulbound_lectern.ContainerSoulboundLecternBound;
-import aurocosh.divinefavor.common.block.soulbound_lectern.ContainerSoulboundLecternUnbound;
+import aurocosh.divinefavor.common.block.soulbound_lectern.ContainerSoulboundLecternActive;
+import aurocosh.divinefavor.common.block.soulbound_lectern.ContainerSoulboundLecternWithShard;
+import aurocosh.divinefavor.common.block.soulbound_lectern.ContainerSoulboundLecternEmpty;
 import aurocosh.divinefavor.common.block.soulbound_lectern.TileSoulboundLectern;
 import aurocosh.divinefavor.common.constants.ConstGuiIDs;
 import aurocosh.divinefavor.common.item.contract_binder.ContractBinderContainer;
@@ -74,10 +76,12 @@ public class GuiHandler implements IGuiHandler {
                 ISpellBowHandler handler = stack.getCapability(SpellBowDataHandler.CAPABILITY_SPELL_BOW, null);
                 return new SpellBowContainer(player, handler, hand);
             }
-            case ConstGuiIDs.SOULBOUND_LECTERN_BOUND:
-                return new ContainerSoulboundLecternBound(player, (TileSoulboundLectern) world.getTileEntity(new BlockPos(x, y, z)));
-            case ConstGuiIDs.SOULBOUND_LECTERN_UNBOUND:
-                return new ContainerSoulboundLecternUnbound(player, (TileSoulboundLectern) world.getTileEntity(new BlockPos(x, y, z)));
+            case ConstGuiIDs.SOULBOUND_LECTERN_ACTIVE:
+                return new ContainerSoulboundLecternActive(player, (TileSoulboundLectern) world.getTileEntity(new BlockPos(x, y, z)));
+            case ConstGuiIDs.SOULBOUND_LECTERN_WITH_SHARD:
+                return new ContainerSoulboundLecternWithShard(player, (TileSoulboundLectern) world.getTileEntity(new BlockPos(x, y, z)));
+            case ConstGuiIDs.SOULBOUND_LECTERN_EMPTY:
+                return new ContainerSoulboundLecternEmpty(player, (TileSoulboundLectern) world.getTileEntity(new BlockPos(x, y, z)));
             case ConstGuiIDs.BATH_HEATER:
                 return new ContainerBathHeater(player, (TileBathHeater) world.getTileEntity(new BlockPos(x, y, z)));
         }
@@ -111,9 +115,11 @@ public class GuiHandler implements IGuiHandler {
                 ItemStack stack = player.getHeldItem(hand);
                 return new GuiSpellBow(player, stack, hand);
             }
-            case ConstGuiIDs.SOULBOUND_LECTERN_BOUND:
+            case ConstGuiIDs.SOULBOUND_LECTERN_ACTIVE:
+                return new GuiSoulboundLecternActive(player, (TileSoulboundLectern) world.getTileEntity(new BlockPos(x, y, z)));
+            case ConstGuiIDs.SOULBOUND_LECTERN_WITH_SHARD:
                 return new GuiSoulboundLecternWithShard(player, (TileSoulboundLectern) world.getTileEntity(new BlockPos(x, y, z)));
-            case ConstGuiIDs.SOULBOUND_LECTERN_UNBOUND:
+            case ConstGuiIDs.SOULBOUND_LECTERN_EMPTY:
                 return new GuiSoulboundLecternEmpty(player, (TileSoulboundLectern) world.getTileEntity(new BlockPos(x, y, z)));
             case ConstGuiIDs.BATH_HEATER:
                 return new GuiBathHeater(player, (TileBathHeater) world.getTileEntity(new BlockPos(x, y, z)));

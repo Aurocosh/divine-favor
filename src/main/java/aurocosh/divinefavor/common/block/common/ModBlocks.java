@@ -23,8 +23,14 @@ public class ModBlocks {
     public static ModBlock fastFurnace;
     public static ModBlock immaterialMedium;
 
-    public static ModBlock soulboundLecternWood;
+    public static ModBlock soulboundLecternCoal;
+    public static ModBlock soulboundLecternGold;
+    public static ModBlock soulboundLecternIron;
+    public static ModBlock soulboundLecternLog;
+    public static ModBlock soulboundLecternObsidian;
+    public static ModBlock soulboundLecternSnow;
     public static ModBlock soulboundLecternStone;
+    public static ModBlock soulboundLecternWood;
 
     public static ModBlock enderPumpkin;
 
@@ -34,8 +40,14 @@ public class ModBlocks {
         fastFurnace = new BlockFastFurnaceMod();
         immaterialMedium = new BlockMedium();
 
-        soulboundLecternWood = new BlockSoulboundLectern("wood", Material.WOOD);
+        soulboundLecternCoal = new BlockSoulboundLectern("coal", Material.ROCK);
+        soulboundLecternGold = new BlockSoulboundLectern("gold", Material.IRON);
+        soulboundLecternIron = new BlockSoulboundLectern("iron", Material.IRON);
+        soulboundLecternLog = new BlockSoulboundLectern("log", Material.WOOD);
+        soulboundLecternObsidian = new BlockSoulboundLectern("obsidian", Material.ROCK);
+        soulboundLecternSnow = new BlockSoulboundLectern("snow", Material.SNOW);
         soulboundLecternStone = new BlockSoulboundLectern("stone", Material.ROCK);
+        soulboundLecternWood = new BlockSoulboundLectern("wood", Material.WOOD);
 
         enderPumpkin = new BlockEnderPumpkin();
 

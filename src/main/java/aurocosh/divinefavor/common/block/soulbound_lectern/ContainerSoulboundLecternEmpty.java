@@ -8,9 +8,9 @@ import net.minecraftforge.items.SlotItemHandler;
 
 import javax.annotation.Nonnull;
 
-public class ContainerSoulboundLecternUnbound extends GenericContainer {
+public class ContainerSoulboundLecternEmpty extends GenericContainer {
     private final TileSoulboundLectern soulboundLectern;
-    public ContainerSoulboundLecternUnbound(EntityPlayer player, TileSoulboundLectern soulboundLectern) {
+    public ContainerSoulboundLecternEmpty(EntityPlayer player, TileSoulboundLectern soulboundLectern) {
         super(1);
         this.soulboundLectern = soulboundLectern;
 
