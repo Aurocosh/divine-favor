@@ -44,6 +44,7 @@ public class TileMedium extends TickableTileEntity implements IMultiblockControl
     private MediumState state = MediumState.NO_MULTI_BLOCK;
 
     // server side
+    private boolean isRejecting;
     private MultiBlockInstanceAltar multiBlockInstance;
 
     private ItemStackHandler stoneStackHandler = new ItemStackHandler(1) {
@@ -55,11 +56,14 @@ public class TileMedium extends TickableTileEntity implements IMultiblockControl
         @Override
         protected void onContentsChanged(int slot) {
             if (!world.isRemote) {
+                isRejecting = true;
                 ItemStack stack = getStackInSlot(slot);
                 if (stack.isEmpty() && multiBlockInstance != null)
                     multiblockDeconstructed();
                 else if (multiBlockInstance == null)
                     tryToFormMultiBlock();
+                IBlockState blockState = world.getBlockState(pos);
+                getWorld().notifyBlockUpdate(pos, blockState, blockState, 3);
             }
             markDirty();
         }
@@ -68,24 +72,41 @@ public class TileMedium extends TickableTileEntity implements IMultiblockControl
     private ItemStackHandler leftStackHandler = new ItemStackHandler(9) {
         @Override
         protected void onContentsChanged(int slot) {
-            TileMedium.this.markDirty();
+            markDirty();
         }
     };
 
     private ItemStackHandler rightStackHandler = new ItemStackHandler(9) {
         @Override
         protected void onContentsChanged(int slot) {
-            TileMedium.this.markDirty();
+            markDirty();
         }
     };
 
     public TileMedium() {
         super(false, true);
+        isRejecting = false;
     }
 
     @Override
     public void onLoad() {
         tryToFormMultiBlockInternal();
+    }
+
+    public ItemStackHandler getStoneStackHandler() {
+        return stoneStackHandler;
+    }
+
+    public ItemStackHandler getLeftStackHandler() {
+        return leftStackHandler;
+    }
+
+    public ItemStackHandler getRightStackHandler() {
+        return rightStackHandler;
+    }
+
+    public ItemStack getStoneStack(){
+        return stoneStackHandler.getStackInSlot(0);
     }
 
     @Override
@@ -112,22 +133,24 @@ public class TileMedium extends TickableTileEntity implements IMultiblockControl
 
     public boolean isUsableByPlayer(EntityPlayer playerIn) {
         // If we are too far away from this tile entity you cannot gainFavor it
+        if (isRejecting) {
+            isRejecting = false;
+            return false;
+        }
         return state != MediumState.ACTIVE && !isInvalid() && playerIn.getDistanceSq(pos.add(0.5D, 0.5D, 0.5D)) <= 64D;
     }
 
     @Override
     public boolean hasCapability(Capability<?> capability, EnumFacing facing) {
         if (capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY)
-            return facing == EnumFacing.UP || facing == EnumFacing.DOWN || facing == EnumFacing.WEST || facing == EnumFacing.EAST;
+            return facing == EnumFacing.WEST || facing == EnumFacing.EAST;
         return super.hasCapability(capability, facing);
     }
 
     @Override
     public <T> T getCapability(Capability<T> capability, EnumFacing facing) {
         if (capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) {
-            if (facing == EnumFacing.UP)
-                return CapabilityItemHandler.ITEM_HANDLER_CAPABILITY.cast(stoneStackHandler);
-            else if (facing == EnumFacing.WEST)
+            if (facing == EnumFacing.WEST)
                 return CapabilityItemHandler.ITEM_HANDLER_CAPABILITY.cast(leftStackHandler);
             else if (facing == EnumFacing.EAST)
                 return CapabilityItemHandler.ITEM_HANDLER_CAPABILITY.cast(rightStackHandler);
@@ -139,6 +162,7 @@ public class TileMedium extends TickableTileEntity implements IMultiblockControl
     public NBTTagCompound getUpdateTag() {
         NBTTagCompound nbtTag = super.getUpdateTag();
         nbtTag.setInteger(TAG_STATE_MEDIUM, state.ordinal());
+        nbtTag.setTag(TAG_CALLING_STONE,stoneStackHandler.serializeNBT());
         return nbtTag;
     }
 
@@ -150,12 +174,17 @@ public class TileMedium extends TickableTileEntity implements IMultiblockControl
 
     @Override
     public void onDataPacket(NetworkManager net, SPacketUpdateTileEntity packet) {
-        int stateIndex = packet.getNbtCompound().getInteger(TAG_STATE_MEDIUM);
+        if(world.isRemote)
+            return;
 
-        if (world.isRemote && stateIndex != state.ordinal()) {
+        NBTTagCompound compound = packet.getNbtCompound();
+        int stateIndex = compound.getInteger(TAG_STATE_MEDIUM);
+        if (stateIndex != state.ordinal()) {
             state = MediumState.VALUES[stateIndex];
             world.markBlockRangeForRenderUpdate(pos, pos);
         }
+        if(compound.hasKey(TAG_CALLING_STONE))
+            stoneStackHandler.deserializeNBT(compound.getCompoundTag(TAG_CALLING_STONE));
     }
 
     public MediumState getState() {
