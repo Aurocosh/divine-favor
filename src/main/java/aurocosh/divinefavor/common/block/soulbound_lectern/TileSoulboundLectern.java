@@ -51,6 +51,7 @@ public class TileSoulboundLectern extends TileEntity implements IMultiblockContr
 
     private SoulboundLecternState state = SoulboundLecternState.INACTIVE;
     private SoulboundLecternGem gem = SoulboundLecternGem.NONE;
+
     private ItemStackHandler shardStackHandler = new ItemStackHandler(1) {
         @Override
         public boolean isItemValid(int slot, @Nonnull ItemStack stack) {

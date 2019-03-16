@@ -3,7 +3,8 @@ package aurocosh.divinefavor.common.network;
 import aurocosh.divinefavor.client.gui.GuiTalismanContainer;
 import aurocosh.divinefavor.client.gui.blocks.GuiBathHeater;
 import aurocosh.divinefavor.client.gui.blocks.GuiFastFurnace;
-import aurocosh.divinefavor.client.gui.blocks.GuiIronMedium;
+import aurocosh.divinefavor.client.gui.blocks.medium.GuiIronMediumNoStone;
+import aurocosh.divinefavor.client.gui.blocks.medium.GuiIronMediumWithStone;
 import aurocosh.divinefavor.client.gui.blocks.soulbound_lectern.GuiSoulboundLecternActive;
 import aurocosh.divinefavor.client.gui.blocks.soulbound_lectern.GuiSoulboundLecternWithShard;
 import aurocosh.divinefavor.client.gui.blocks.soulbound_lectern.GuiSoulboundLecternEmpty;
@@ -15,7 +16,8 @@ import aurocosh.divinefavor.common.block.bath_heater.ContainerBathHeater;
 import aurocosh.divinefavor.common.block.bath_heater.TileBathHeater;
 import aurocosh.divinefavor.common.block.fast_furnace.ContainerFastFurnace;
 import aurocosh.divinefavor.common.block.fast_furnace.TileFastFurnace;
-import aurocosh.divinefavor.common.block.medium.ContainerMedium;
+import aurocosh.divinefavor.common.block.medium.ContainerMediumNoStone;
+import aurocosh.divinefavor.common.block.medium.ContainerMediumWithStone;
 import aurocosh.divinefavor.common.block.medium.TileMedium;
 import aurocosh.divinefavor.common.block.soulbound_lectern.ContainerSoulboundLecternActive;
 import aurocosh.divinefavor.common.block.soulbound_lectern.ContainerSoulboundLecternWithShard;
@@ -48,8 +50,10 @@ public class GuiHandler implements IGuiHandler {
     @Override
     public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
         switch (ID) {
-            case ConstGuiIDs.IRON_MEDIUM:
-                return new ContainerMedium(player, (TileMedium) world.getTileEntity(new BlockPos(x, y, z)));
+            case ConstGuiIDs.IRON_MEDIUM_NO_STONE:
+                return new ContainerMediumNoStone(player, (TileMedium) world.getTileEntity(new BlockPos(x, y, z)));
+            case ConstGuiIDs.IRON_MEDIUM_WITH_STONE:
+                return new ContainerMediumWithStone(player, (TileMedium) world.getTileEntity(new BlockPos(x, y, z)));
             case ConstGuiIDs.FAST_FURNACE:
                 return new ContainerFastFurnace(player, (TileFastFurnace) world.getTileEntity(new BlockPos(x, y, z)));
             case ConstGuiIDs.TALISMAN:
@@ -91,8 +95,10 @@ public class GuiHandler implements IGuiHandler {
     @Override
     public Object getClientGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
         switch (ID) {
-            case ConstGuiIDs.IRON_MEDIUM:
-                return new GuiIronMedium(player, (TileMedium) world.getTileEntity(new BlockPos(x, y, z)));
+            case ConstGuiIDs.IRON_MEDIUM_NO_STONE:
+                return new GuiIronMediumNoStone(player, (TileMedium) world.getTileEntity(new BlockPos(x, y, z)));
+            case ConstGuiIDs.IRON_MEDIUM_WITH_STONE:
+                return new GuiIronMediumWithStone(player, (TileMedium) world.getTileEntity(new BlockPos(x, y, z)));
             case ConstGuiIDs.FAST_FURNACE:
                 return new GuiFastFurnace(player, (TileFastFurnace) world.getTileEntity(new BlockPos(x, y, z)));
             case ConstGuiIDs.TALISMAN:

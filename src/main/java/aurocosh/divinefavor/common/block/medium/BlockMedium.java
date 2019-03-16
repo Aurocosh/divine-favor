@@ -70,7 +70,11 @@ public class BlockMedium extends ModBlock implements ITileEntityProvider {
         TileMedium tileMedium = (TileMedium) tileEntity;
         if (!tileMedium.isUsableByPlayer(player))
             return false;
-        player.openGui(DivineFavor.instance, ConstGuiIDs.IRON_MEDIUM, world, pos.getX(), pos.getY(), pos.getZ());
+
+        else if (!tileMedium.getStoneStack().isEmpty())
+            player.openGui(DivineFavor.instance, ConstGuiIDs.IRON_MEDIUM_WITH_STONE, world, pos.getX(), pos.getY(), pos.getZ());
+        else
+            player.openGui(DivineFavor.instance, ConstGuiIDs.IRON_MEDIUM_NO_STONE, world, pos.getX(), pos.getY(), pos.getZ());
         return true;
     }
 
