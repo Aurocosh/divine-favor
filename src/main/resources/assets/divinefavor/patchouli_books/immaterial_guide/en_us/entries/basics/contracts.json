@@ -15,44 +15,35 @@
     },
     {
       "type": "text",
-      "text": "All soulbound lecterns share storage, it means that you will never lose your contracts, but it also means that amount of active contracts at once is limited. Soulbound lecterns require two additional things to work. First thing is a multiblock. Different lecterns need different multiblocks, but functionally they are identical. So just pick whichever you like more. "
+      "text": "All soulbound lecterns share storage. It means that you will never lose your contracts, but it also means that amount of active contracts at once is limited.  While lecterns do share storage, there are in fact several shared storage spaces, one storage for each type of spirit favor. To access certain type of storage you will need to insert a certain type of soul shard in lectern and build a multiblock around it."
+    },
+    {
+      "type": "spotlight",
+      "item": "divinefavor:soul_shard_will",
+      "text": "You will also need soul shards in order to use $(item)Soulbound lectern$(). When you open gui of lectern you will see a slot in the center. In order to activate lectern you will need to put your shard in central slot. Shards can be obtained with an $(item)Awakened bone dagger$(). To get your own soul shard take dagger in hand, sneak and right click."
     },
     {
       "type": "multiblock",
       "multiblock_id": "divinefavor:patchouli.soulbound_lectern_arbow",
-      "text": "Wooden soulbound lectern with appropriate multiblock."
-    },
-    {
-      "type": "multiblock",
-      "multiblock_id": "divinefavor:patchouli.soulbound_lectern_romol",
-      "text": "Stone soulbound lectern with appropriate multiblock."
-    },
-    {
-      "type": "spotlight",
-      "item": "divinefavor:soul_shard_soul",
-      "text": "You will also need $(item)Soul shard of will$() in order to use $(item)Soulbound lectern$(). When you open gui of lectern you will see a slot in the center. In order to activate lectern you will need to put your shard in central slot. Shards can be obtained with an $(item)Awakened bone dagger$(). To get your own soul shard take dagger in hand, sneak and right click."
+      "text": "Example of soulbound lectern with proper multiblock."
     },
     {
       "type": "text",
-      "text": "After you placed shard in lectern it will bind itself to you. If multiblock is correct then in gui items slots will appear. Bound lectern with shard will only be usable by player whose shard is inside. But other players still will be able to break your lectern. You can place your contracts inside and while inside contracts will be active. There are several different types of contracts and they perform different functions."
+      "text": "All contracts are not bound to a spirit. Which favor it will affect will be determined by lectern in which it is inserted. For example if you insert capacity contract in soulbound lectern of Arbow then amount of favor of Arbow that you can accumulate will be increased. You can always remove contract from lectern to make some space for another contract or to move it to lectern of another spirit."
     },
     {
       "type": "spotlight",
-      "item": "divinefavor:contract_capacity_minor_blizrabi",
-      "text": "Above you see an example of capacity contract. Amount of favor that you can accumulate is limited. To extend this limit you will need a capacity contract. Each contract capacity contract is bound to spirit and extends only limit of thar spirit. Effect of several contracts stacks."
-    },
-    {
-      "type": "text",
-      "text": "Each spirit may have several variations of capacity contract and each variation will provide different increase in capacity. Maximum favor capacity is not limited, but amount of contracts you can put in soulbound lectern is limited. You will have to decide talismans of which spirit is more important to you. But you dint need to chose one over the other. You can mix contracts from different spirits."
+      "item": "divinefavor:contract_capacity_minor",
+      "text": "Above you see an example of capacity contract. Amount of favor that you can accumulate is limited. To extend this limit you will need a capacity contract. Different subtypes of capacity contracts will increase max favor by different amounts. Effect of several contracts stacks."
     },
     {
       "type": "spotlight",
-      "item": "divinefavor:contract_regen_minor_blizrabi",
-      "text": "Above you see an example of regeneration contract. Favor does not regenerate on its own. You can gain favor buy buying special items, but it will not replenish when spent. That is unless you have a regeneration contract."
+      "item": "divinefavor:contract_regen_minor",
+      "text": "Above you see an example of regeneration contract. Favor does not regenerate on its own. You can gain favor by buying special items, but they will disappear on use."
     },
     {
       "type": "text",
-      "text": "Each regen contract is bound to spirit. When spirit becomes active if you have his regen contract then some of your favor will be restored. Amount of favor restored depends on type of contract and contract count. Regen contracts also stack."
+      "text": "To replenish favor sustainably you will need to use regen contracts. Different subtypes of regeneration contracts will increase favor regen by different amounts. Effect of several contracts stacks. If you have some active regeneration contracts then your favor will be automatically replenished when related spirit becomes active. Amount of regenerated favor depends on your regen contracts."
     },
     {
       "type": "spotlight",

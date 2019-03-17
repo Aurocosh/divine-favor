@@ -1,0 +1,17 @@
+{
+  "name": "Blizrabi",
+  "icon": "divinefavor:soul_shard_water",
+  "category": "lecterns",
+  "sortnum": 1,
+  "pages": [
+    {
+      "type": "text",
+      "text": "This lectern will allow you to get favor of Blizrabi. You will have to insert $(item)Soul shard of water$() in lectern to activate it."
+    },
+    {
+      "type": "multiblock",
+      "multiblock_id": "divinefavor:patchouli.soulbound_lectern_blizrabi",
+      "text": "Soulbound lectern of Blizrabi."
+    }
+  ]
+}

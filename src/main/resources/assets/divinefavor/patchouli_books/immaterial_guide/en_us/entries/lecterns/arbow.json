@@ -1,0 +1,17 @@
+{
+  "name": "Arbow",
+  "icon": "divinefavor:soul_shard_peace",
+  "category": "lecterns",
+  "sortnum": 1,
+  "pages": [
+    {
+      "type": "text",
+      "text": "This lectern will allow you to get favor of Arbow. You will have to insert $(item)Soul shard of peace$() in lectern to activate it."
+    },
+    {
+      "type": "multiblock",
+      "multiblock_id": "divinefavor:patchouli.soulbound_lectern_arbow",
+      "text": "Soulbound lectern of Arbow."
+    }
+  ]
+}

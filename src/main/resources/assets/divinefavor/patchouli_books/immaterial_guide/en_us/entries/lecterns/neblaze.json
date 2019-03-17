@@ -1,0 +1,17 @@
+{
+  "name": "Neblaze",
+  "icon": "divinefavor:soul_shard_nether",
+  "category": "lecterns",
+  "sortnum": 1,
+  "pages": [
+    {
+      "type": "text",
+      "text": "This lectern will allow you to get favor of Neblaze. You will have to insert $(item)Soul shard of nether$() in lectern to activate it."
+    },
+    {
+      "type": "multiblock",
+      "multiblock_id": "divinefavor:patchouli.soulbound_lectern_neblaze",
+      "text": "Soulbound lectern of Neblaze."
+    }
+  ]
+}

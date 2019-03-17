@@ -1,0 +1,17 @@
+{
+  "name": "Loon",
+  "icon": "divinefavor:soul_shard_undeath",
+  "category": "lecterns",
+  "sortnum": 1,
+  "pages": [
+    {
+      "type": "text",
+      "text": "This lectern will allow you to get favor of Loon. You will have to insert $(item)Soul shard of undeath$() in lectern to activate it."
+    },
+    {
+      "type": "multiblock",
+      "multiblock_id": "divinefavor:patchouli.soulbound_lectern_loon",
+      "text": "Soulbound lectern of Loon."
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "name": "Timber",
+  "icon": "divinefavor:soul_shard_wither",
+  "category": "lecterns",
+  "sortnum": 1,
+  "pages": [
+    {
+      "type": "text",
+      "text": "This lectern will allow you to get favor of Timber. You will have to insert $(item)Soul shard of wither$() in lectern to activate it."
+    },
+    {
+      "type": "multiblock",
+      "multiblock_id": "divinefavor:patchouli.soulbound_lectern_timber",
+      "text": "Soulbound lectern of Timber."
+    }
+  ]
+}

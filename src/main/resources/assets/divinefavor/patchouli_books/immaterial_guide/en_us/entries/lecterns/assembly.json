@@ -1,0 +1,17 @@
+{
+  "name": "Assembly",
+  "icon": "divinefavor:soulbound_lectern_gold",
+  "category": "lecterns",
+  "sortnum": 0,
+  "pages": [
+    {
+      "type": "text",
+      "text": "By itself soulbound lecterns will not let you access their storage. To do so you will have to insert in lectern soul shard and assemble specific multiblock. Each type of favor is related to one type of souls shard. When shard is placed and appropriate multiblock is assembled you will see books appear on front face of soulbound lectern."
+    },
+    {
+      "type": "multiblock",
+      "multiblock_id": "divinefavor:patchouli.soulbound_lectern_arbow",
+      "text": "Example of soulbound lectern with appropriate multiblock."
+    }
+  ]
+}
