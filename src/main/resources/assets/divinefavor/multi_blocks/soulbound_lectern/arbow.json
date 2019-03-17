@@ -1,10 +1,12 @@
 {
   "symmetrical": false,
-  "controllerPosition":[0,1,2],"parts":[
-  {"validator":{"type":"block","name":"divinefavor:soulbound_lectern_wood"},"positions":[[0,1,2]]},
-  {"validator":{"type":"air"},"positions":[[0,0,1],[0,0,3]]},
-  {"validator":{"type":"block","name":"minecraft:planks"},"positions":[[0,0,0],[0,0,4],[0,1,1],[0,1,3]]},
-  {"validator":{"type":"block","name":"minecraft:oak_stairs"},"positions":[[0,1,0],[0,1,4]]},
-  {"validator":{"type":"center","name":"minecraft:fence"},"positions":[[0,0,2]]}
-]
+  "basePosition":[0,0,2],
+  "controllerPosition":[0,1,2],
+  "parts":[
+    {"validator":{"type":"block","name":"divinefavor:soulbound_lectern_wood"},"positions":[[0,1,2]]},
+    {"validator":{"type":"air"},"positions":[[0,0,1],[0,0,3]]},
+    {"validator":{"type":"block","name":"minecraft:planks"},"positions":[[0,0,0],[0,0,4],[0,1,1],[0,1,3]]},
+    {"validator":{"type":"block","name":"minecraft:oak_stairs"},"positions":[[0,1,0],[0,1,4]]},
+    {"validator":{"type":"block","name":"minecraft:fence"},"positions":[[0,0,2]]}
+  ]
 }

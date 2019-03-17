@@ -1,11 +1,11 @@
 {
   "symmetrical":false,
+  "basePosition":[2,0,2],
   "controllerPosition":[1,1,2],
   "parts":[
     {"validator":{"type":"block","name":"minecraft:redstone_block"},"positions":[[1,0,1],[1,0,3]]},
-    {"validator":{"type":"block","name":"minecraft:wool"},"positions":[[0,0,1],[0,0,2],[0,0,3],[1,0,0],[1,0,2],[1,0,4],[2,0,1],[2,0,3]]},
+    {"validator":{"type":"block","name":"minecraft:wool"},"positions":[[0,0,1],[0,0,2],[0,0,3],[1,0,0],[1,0,2],[1,0,4],[2,0,1],[2,0,3],[2,0,2]]},
     {"validator":{"type":"air"},"positions":[[0,0,0],[0,0,4],[2,0,0],[2,0,4]]},
-    {"validator":{"type":"block","name":"divinefavor:soulbound_lectern_iron"},"positions":[[1,1,2]]},
-    {"validator":{"type":"center","name":"minecraft:wool"},"positions":[[2,0,2]]}
+    {"validator":{"type":"block","name":"divinefavor:soulbound_lectern_iron"},"positions":[[1,1,2]]}
   ]
 }

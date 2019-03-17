@@ -2,7 +2,6 @@ package aurocosh.divinefavor.common.muliblock.patchouli;
 
 import aurocosh.divinefavor.common.lib.math.Vector3i;
 import aurocosh.divinefavor.common.muliblock.MultiBlockConfiguration;
-import aurocosh.divinefavor.common.muliblock.validators.AirStateValidator;
 import aurocosh.divinefavor.common.muliblock.MultiBlockPart;
 import aurocosh.divinefavor.common.muliblock.validators.StateValidator;
 import vazkii.patchouli.common.multiblock.StateMatcher;
@@ -26,10 +25,7 @@ public class PatchouliMultiBlockData {
             MultiBlockPart part = parts.get(i);
             char symbol;
             if (part.positions.size() != 1 || !part.positions.get(0).equals(configuration.baseRelPosition)) {
-                if (part.validator instanceof AirStateValidator)
-                    symbol = ' ';
-                else
-                    symbol = possibleBlockMarkers[nextSymbolId++];
+                symbol = possibleBlockMarkers[nextSymbolId++];
                 symbolMap.put(part.validator, symbol);
             }
         }
@@ -94,6 +90,7 @@ public class PatchouliMultiBlockData {
             for (int j = 0; j < layer.length; j++) {
                 String s = layer[j];
                 builder.append(s);
+                builder.append("|");
             }
             builder.append("\n");
         }

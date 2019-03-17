@@ -22,7 +22,8 @@ public class ModBlocks {
     public static ModBlock diviner;
     public static ModBlock fastFurnace;
 
-    public static ModBlock immaterialMedium;
+    public static ModBlock medium_gold;
+    public static ModBlock medium_iron;
 
     public static ModBlock soulboundLecternCoal;
     public static ModBlock soulboundLecternGold;
@@ -39,7 +40,9 @@ public class ModBlocks {
         bathHeater = new BlockBathHeater();
         diviner = new BlockDiviner();
         fastFurnace = new BlockFastFurnaceMod();
-        immaterialMedium = new BlockMedium("iron", Material.IRON);
+
+        medium_gold = new BlockMedium("gold", Material.IRON);
+        medium_iron = new BlockMedium("iron", Material.IRON);
 
         soulboundLecternCoal = new BlockSoulboundLectern("coal", Material.ROCK);
         soulboundLecternGold = new BlockSoulboundLectern("gold", Material.IRON);
