@@ -1,7 +1,7 @@
-package aurocosh.divinefavor.common.muliblock;
+package aurocosh.divinefavor.common.muliblock.serialization;
 
 import aurocosh.divinefavor.common.lib.math.Vector3i;
-import aurocosh.divinefavor.common.muliblock.parts.MultiBlockPart;
+import aurocosh.divinefavor.common.muliblock.MultiBlockPart;
 import com.google.gson.annotations.Expose;
 
 import java.util.ArrayList;

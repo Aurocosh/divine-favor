@@ -4,8 +4,8 @@ import aurocosh.divinefavor.common.lib.math.CubeCoordinates;
 import aurocosh.divinefavor.common.lib.math.Vector3i;
 import aurocosh.divinefavor.common.muliblock.ModMultiBlock;
 import aurocosh.divinefavor.common.muliblock.MultiBlockConfiguration;
-import aurocosh.divinefavor.common.muliblock.parts.AirStateValidator;
-import aurocosh.divinefavor.common.muliblock.parts.MultiBlockPart;
+import aurocosh.divinefavor.common.muliblock.validators.AirStateValidator;
+import aurocosh.divinefavor.common.muliblock.MultiBlockPart;
 
 import java.util.Collections;
 import java.util.HashSet;

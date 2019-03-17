@@ -1,4 +1,4 @@
-package aurocosh.divinefavor.common.muliblock.parts;
+package aurocosh.divinefavor.common.muliblock.validators;
 
 import com.google.gson.annotations.Expose;
 import net.minecraft.block.state.IBlockState;

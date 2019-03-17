@@ -1,4 +1,4 @@
-package aurocosh.divinefavor.common.muliblock.parts;
+package aurocosh.divinefavor.common.muliblock.validators;
 
 import aurocosh.divinefavor.common.muliblock.patchouli.MultiBlockMatcher;
 import net.minecraft.block.state.IBlockState;

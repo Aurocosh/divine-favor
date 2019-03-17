@@ -1,5 +1,6 @@
-package aurocosh.divinefavor.common.muliblock.parts;
+package aurocosh.divinefavor.common.muliblock;
 import aurocosh.divinefavor.common.lib.math.Vector3i;
+import aurocosh.divinefavor.common.muliblock.validators.StateValidator;
 import com.google.gson.annotations.Expose;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.world.World;

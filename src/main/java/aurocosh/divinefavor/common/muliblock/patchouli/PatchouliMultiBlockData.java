@@ -2,9 +2,9 @@ package aurocosh.divinefavor.common.muliblock.patchouli;
 
 import aurocosh.divinefavor.common.lib.math.Vector3i;
 import aurocosh.divinefavor.common.muliblock.MultiBlockConfiguration;
-import aurocosh.divinefavor.common.muliblock.parts.AirStateValidator;
-import aurocosh.divinefavor.common.muliblock.parts.MultiBlockPart;
-import aurocosh.divinefavor.common.muliblock.parts.StateValidator;
+import aurocosh.divinefavor.common.muliblock.validators.AirStateValidator;
+import aurocosh.divinefavor.common.muliblock.MultiBlockPart;
+import aurocosh.divinefavor.common.muliblock.validators.StateValidator;
 import vazkii.patchouli.common.multiblock.StateMatcher;
 
 import java.util.ArrayList;

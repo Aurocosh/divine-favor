@@ -2,7 +2,6 @@ package aurocosh.divinefavor.common.muliblock;
 
 import aurocosh.divinefavor.common.lib.math.CubeCoordinates;
 import aurocosh.divinefavor.common.lib.math.Vector3i;
-import aurocosh.divinefavor.common.muliblock.parts.MultiBlockPart;
 import net.minecraft.world.World;
 
 import java.util.ArrayList;
