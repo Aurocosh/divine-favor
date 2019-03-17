@@ -70,7 +70,14 @@ public final class ModMultiBlocks {
         PatchouliMultiblockAdapter.register(altar_squarefury);
 
         PatchouliMultiblockAdapter.register(soulbound_lectern_arbow);
+        PatchouliMultiblockAdapter.register(soulbound_lectern_blizrabi);
+        PatchouliMultiblockAdapter.register(soulbound_lectern_endererer);
+        PatchouliMultiblockAdapter.register(soulbound_lectern_loon);
+        PatchouliMultiblockAdapter.register(soulbound_lectern_neblaze);
+        PatchouliMultiblockAdapter.register(soulbound_lectern_redwind);
         PatchouliMultiblockAdapter.register(soulbound_lectern_romol);
+        PatchouliMultiblockAdapter.register(soulbound_lectern_squarefury);
+        PatchouliMultiblockAdapter.register(soulbound_lectern_timber);
         PatchouliMultiblockAdapter.register(altar_timber);
 
         PatchouliMultiblockAdapter.register(bath_example_first);

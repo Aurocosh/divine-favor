@@ -1,0 +1,17 @@
+{
+  "name": "Romol",
+  "icon": "divinefavor:soul_shard_mind",
+  "category": "lecterns",
+  "sortnum": 1,
+  "pages": [
+    {
+      "type": "text",
+      "text": "This lectern will allow you to get favor of Romol. You will have to insert $(item)Soul shard of mind$() in lectern to activate it."
+    },
+    {
+      "type": "multiblock",
+      "multiblock_id": "divinefavor:patchouli.soulbound_lectern_romol",
+      "text": "Soulbound lectern of Romol."
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "name": "Endererer",
+  "icon": "divinefavor:soul_shard_end",
+  "category": "lecterns",
+  "sortnum": 1,
+  "pages": [
+    {
+      "type": "text",
+      "text": "This lectern will allow you to get favor of Endererer. You will have to insert $(item)Soul shard of end$() in lectern to activate it."
+    },
+    {
+      "type": "multiblock",
+      "multiblock_id": "divinefavor:patchouli.soulbound_lectern_endererer",
+      "text": "Soulbound lectern of Endererer."
+    }
+  ]
+}

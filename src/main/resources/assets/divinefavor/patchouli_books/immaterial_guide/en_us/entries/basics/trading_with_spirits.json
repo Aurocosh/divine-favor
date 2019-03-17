@@ -1,6 +1,6 @@
 {
   "name": "Trading with spirits",
-  "icon": "divinefavor:iron_medium",
+  "icon": "divinefavor:medium_iron",
   "category": "basics",
   "sortnum": 4,
   "pages": [
@@ -12,7 +12,7 @@
     {
       "type": "crafting",
       "text": "$(item)Iron medium$() recipe. Central part of any this multiblock is a medium. You can use jei to see all available trading recipes for each spirit. Trading can be done in two ways, with a ritual pouch and without.",
-      "recipe": "divinefavor:iron_medium"
+      "recipe": "divinefavor:medium_iron"
     },
     {
       "type": "text",
