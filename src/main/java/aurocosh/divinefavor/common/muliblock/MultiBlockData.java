@@ -11,18 +11,22 @@ public class MultiBlockData {
     @Expose
     public boolean symmetrical;
     @Expose
+    public Vector3i basePosition;
+    @Expose
     public Vector3i controllerPosition;
     @Expose
     public List<MultiBlockPart> parts;
 
     public MultiBlockData() {
         symmetrical = true;
+        basePosition = Vector3i.ZERO;
         controllerPosition = Vector3i.ZERO;
         parts = new ArrayList<>();
     }
 
-    public MultiBlockData(boolean symmetrical, Vector3i controllerPosition, List<MultiBlockPart> parts) {
+    public MultiBlockData(boolean symmetrical, Vector3i basePosition, Vector3i controllerPosition, List<MultiBlockPart> parts) {
         this.symmetrical = symmetrical;
+        this.basePosition = basePosition;
         this.controllerPosition = controllerPosition;
         this.parts = parts;
     }

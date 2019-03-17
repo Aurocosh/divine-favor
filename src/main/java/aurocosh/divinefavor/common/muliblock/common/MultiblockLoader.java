@@ -60,7 +60,7 @@ public final class MultiblockLoader {
         CubeCoordinates boundingBox = CubeCoordinates.getBoundingBox(localBounds);
 
         List<MultiBlockConfiguration> configurations = new ArrayList<>();
-        MultiBlockConfiguration configuration = new MultiBlockConfiguration(name, true, data.controllerPosition, data.parts, boundingBox);
+        MultiBlockConfiguration configuration = new MultiBlockConfiguration(name, true, data.basePosition, data.controllerPosition, data.parts, boundingBox);
         configurations.add(configuration);
         if (!data.symmetrical) {
             configuration = configuration.rotateClockwise();

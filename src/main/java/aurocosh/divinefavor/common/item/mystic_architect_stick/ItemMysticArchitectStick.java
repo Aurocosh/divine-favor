@@ -140,27 +140,20 @@ public class ItemMysticArchitectStick extends ModItem {
         return new ActionResult<>(EnumActionResult.SUCCESS, stack);
     }
 
-    private String getTemplateData(World world, BlockPos firstCorner, BlockPos secondCorner, BlockPos mediumPosition, BlockPos basePosition, String airMarker) {
+    private String getTemplateData(World world, BlockPos firstCorner, BlockPos secondCorner, BlockPos controllerPosition, BlockPos basePosition, String airMarker) {
         CubeCoordinates coordinatesWorld = new CubeCoordinates(firstCorner, secondCorner);
         Vector3i[] positions = coordinatesWorld.getAllPositionsInside();
         Vector3i lowerCorner = coordinatesWorld.lowerCorner;
         ResourceLocation airMarkerName = new ResourceLocation(airMarker);
 
-        Block baseBlock = Blocks.AIR;
-        Vector3i base = Vector3i.convert(basePosition);
         Map<Block, List<Vector3i>> partMap = new HashMap<>();
         for (Vector3i pos : positions) {
             IBlockState state = world.getBlockState(pos.toBlockPos());
             Block block = state.getBlock();
             if(block == Blocks.AIR)
                 continue;
-
-            if (pos.equals(base))
-                baseBlock = block;
-            else {
-                List<Vector3i> partPositions = partMap.computeIfAbsent(block, k -> new ArrayList<>());
-                partPositions.add(lowerCorner.getRealativePosition(pos));
-            }
+            List<Vector3i> partPositions = partMap.computeIfAbsent(block, k -> new ArrayList<>());
+            partPositions.add(lowerCorner.getRealativePosition(pos));
         }
 
         List<MultiBlockPart> parts = new ArrayList<>(partMap.size());
@@ -173,9 +166,10 @@ public class ItemMysticArchitectStick extends ModItem {
                 validator = new BlockStateValidator(entry.getKey().getRegistryName());
             parts.add(new MultiBlockPart(validator, entry.getValue()));
         }
-        parts.add(new MultiBlockPart(new CenterStateValidator(baseBlock.getRegistryName()), Collections.singletonList(lowerCorner.getRealativePosition(base))));
 
-        MultiBlockData data = new MultiBlockData(false, lowerCorner.getRealativePosition(Vector3i.convert(mediumPosition)), parts);
+        Vector3i relativeBase = lowerCorner.getRealativePosition(Vector3i.convert(basePosition));
+        Vector3i relativeController = lowerCorner.getRealativePosition(Vector3i.convert(controllerPosition));
+        MultiBlockData data = new MultiBlockData(false, relativeBase, relativeController, parts);
 
         Gson gson = new GsonBuilder()
                 .registerTypeAdapter(StateValidator.class, new StateValidatorSerializer())

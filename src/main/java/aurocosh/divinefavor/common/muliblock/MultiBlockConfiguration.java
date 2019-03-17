@@ -12,13 +12,15 @@ import java.util.List;
 public class MultiBlockConfiguration {
     public final String name;
     public final boolean primary;
+    public final Vector3i baseRelPosition;
     public final Vector3i controllerRelPosition;
     public final CubeCoordinates boundingBox;
     public final List<MultiBlockPart> parts;
 
-    public MultiBlockConfiguration(String name, boolean primary, Vector3i controllerRelPosition, List<MultiBlockPart> parts, CubeCoordinates boundingBox) {
+    public MultiBlockConfiguration(String name, boolean primary, Vector3i baseRelPosition, Vector3i controllerRelPosition, List<MultiBlockPart> parts, CubeCoordinates boundingBox) {
         this.name = name;
         this.primary = primary;
+        this.baseRelPosition = baseRelPosition;
         this.controllerRelPosition = controllerRelPosition;
         this.parts = Collections.unmodifiableList(parts);
         this.boundingBox = boundingBox;
@@ -45,7 +47,7 @@ public class MultiBlockConfiguration {
         }
         Vector3i controllerRelPositionNew = new Vector3i(controllerRelPosition.z, controllerRelPosition.y, sizeVector.x - controllerRelPosition.x - 1);
         CubeCoordinates boundingBoxNew = getPartsBoundingBox(partsNew);
-        return new MultiBlockConfiguration(name, false, controllerRelPositionNew,partsNew,boundingBoxNew);
+        return new MultiBlockConfiguration(name, false, baseRelPosition, controllerRelPositionNew,partsNew,boundingBoxNew);
     }
 
     private CubeCoordinates getPartsBoundingBox(List<MultiBlockPart> parts) {
