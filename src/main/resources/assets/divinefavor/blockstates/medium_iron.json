@@ -2,6 +2,7 @@
   "forge_marker": 1,
   "defaults": {
     "model": "divinefavor:medium",
+	"uvlock": true,
     "textures":{
       "particle": "divinefavor:blocks/medium/materials/iron",
       "material": "divinefavor:blocks/medium/materials/iron",
