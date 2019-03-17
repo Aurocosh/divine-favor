@@ -7,8 +7,10 @@ import com.google.common.base.Predicates;
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.item.ItemStack;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.EntitySelectors;
 import net.minecraft.util.math.AxisAlignedBB;
@@ -17,12 +19,13 @@ import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
+import net.minecraftforge.items.IItemHandler;
 
 import javax.annotation.Nullable;
 import java.util.List;
 
 public class UtilEntity {
-    public static void addVelocity(Entity entity, Vec3d direction, float velocity){
+    public static void addVelocity(Entity entity, Vec3d direction, float velocity) {
         Vec3d motion = direction.normalize().scale(velocity);
         entity.motionX += motion.x;
         entity.motionY += motion.y;
@@ -37,7 +40,7 @@ public class UtilEntity {
             return;
         if (!world.isAirBlock(pos))
             return;
-        if(entityLiving.motionY >= 0)
+        if (entityLiving.motionY >= 0)
             return;
 
         if (entityLiving instanceof EntityPlayer) {
@@ -49,6 +52,16 @@ public class UtilEntity {
         entityLiving.motionY = 0;
         entityLiving.onGround = true;
         entityLiving.setAIMoveSpeed(0.1F);
+    }
+
+    public static void dropItemsOnGround(World world, IItemHandler handler, BlockPos pos) {
+        if (handler == null)
+            return;
+        for (int i = 0; i < handler.getSlots(); i++) {
+            ItemStack stack = handler.getStackInSlot(i);
+            if (!stack.isEmpty())
+                world.spawnEntity(new EntityItem(world, pos.getX(), pos.getY(), pos.getZ(), stack));
+        }
     }
 
     public static Vec3d toPlayerPosition(BlockPos pos) {
@@ -89,7 +102,7 @@ public class UtilEntity {
         EntityPlayerMP entityPlayerMP = (EntityPlayerMP) livingBase;
         MinecraftServer server = livingBase.getEntityWorld().getMinecraftServer();
         WorldServer worldServer = server.getWorld(dimension);
-        if(livingBase instanceof EntityPlayer) {
+        if (livingBase instanceof EntityPlayer) {
             EntityPlayer player = (EntityPlayer) livingBase;
             player.addExperienceLevel(0);
         }
@@ -102,7 +115,7 @@ public class UtilEntity {
     public static void addVelocity(EntityLivingBase entity, float factor) {
         if (entity.getRidingEntity() instanceof EntityLivingBase)
             entity = (EntityLivingBase) entity.getRidingEntity();
-        if(entity.moveForward  <= 0)
+        if (entity.moveForward <= 0)
             return;
         Vec3d extraVelocity = entity.getLookVec().scale(factor);
         entity.motionX += extraVelocity.x;
@@ -119,7 +132,7 @@ public class UtilEntity {
         return UtilWorld.raycast(player.world, posVec, lookVec, 20);
     }
 
-    public static <T extends Entity> List<T> getEntitiesInSquareRadius(Class<? extends T> clazz, World world, Vec3d origin, double radius, @Nullable Predicate<? super T> filter){
+    public static <T extends Entity> List<T> getEntitiesInSquareRadius(Class<? extends T> clazz, World world, Vec3d origin, double radius, @Nullable Predicate<? super T> filter) {
         AxisAlignedBB axis = new AxisAlignedBB(origin.x - radius, origin.y - radius, origin.z - radius, origin.x + radius, origin.y + radius, origin.z + radius);
         return world.getEntitiesWithinAABB(clazz, axis, filter);
     }
@@ -133,7 +146,7 @@ public class UtilEntity {
         return vec.dotProduct(playerLookVec) >= coneTolerance;
     }
 
-    public static <T extends Entity> T getEntityPlayerLookingAt(EntityPlayer player, Class<? extends T> clazz, double searchDistance, boolean ignoreMount){
+    public static <T extends Entity> T getEntityPlayerLookingAt(EntityPlayer player, Class<? extends T> clazz, double searchDistance, boolean ignoreMount) {
         Vec3d entityLook = player.getLook(1);
         Vec3d positionEyes = player.getPositionEyes(1);
         Vec3d rayEnd = positionEyes.add(entityLook.x * searchDistance, entityLook.y * searchDistance, entityLook.z * searchDistance);

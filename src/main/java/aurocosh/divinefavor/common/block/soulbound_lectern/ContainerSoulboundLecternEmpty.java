@@ -14,8 +14,8 @@ public class ContainerSoulboundLecternEmpty extends GenericContainer {
         super(1);
         this.soulboundLectern = soulboundLectern;
 
-        IItemHandler crystalHandler = this.soulboundLectern.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null);
-        this.addSlotToContainer(new SlotItemHandler(crystalHandler, 0, 80, 36));
+        IItemHandler shardHandler = this.soulboundLectern.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null);
+        this.addSlotToContainer(new SlotItemHandler(shardHandler, 0, 80, 36));
 
         generateInventorySlots(player.inventory, 8, 84);
         generateHotbarSlots(player.inventory, 8, 142);

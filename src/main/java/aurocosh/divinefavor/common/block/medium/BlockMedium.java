@@ -4,6 +4,7 @@ import aurocosh.divinefavor.DivineFavor;
 import aurocosh.divinefavor.common.block.base.ModBlock;
 import aurocosh.divinefavor.common.constants.ConstBlockNames;
 import aurocosh.divinefavor.common.constants.ConstGuiIDs;
+import aurocosh.divinefavor.common.util.UtilEntity;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
@@ -89,12 +90,16 @@ public class BlockMedium extends ModBlock implements ITileEntityProvider {
 
     @Override
     public void breakBlock(World world, BlockPos pos, IBlockState state) {
-        super.breakBlock(world, pos, state);
         TileEntity entity = world.getTileEntity(pos);
-        if (!(entity instanceof TileMedium))
-            return;
-        TileMedium medium = (TileMedium) entity;
-        medium.multiblockDeconstructed();
+        if (entity instanceof TileMedium) {
+            TileMedium medium = (TileMedium) entity;
+            medium.multiblockDeconstructed();
+
+            UtilEntity.dropItemsOnGround(world, medium.getStoneStackHandler(), pos);
+            UtilEntity.dropItemsOnGround(world, medium.getLeftStackHandler(), pos);
+            UtilEntity.dropItemsOnGround(world, medium.getRightStackHandler(), pos);
+        }
+        super.breakBlock(world, pos, state);
     }
 
     @SideOnly(Side.CLIENT)

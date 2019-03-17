@@ -55,7 +55,7 @@ public class TileSoulboundLectern extends TileEntity implements IMultiblockContr
     private ItemStackHandler shardStackHandler = new ItemStackHandler(1) {
         @Override
         public boolean isItemValid(int slot, @Nonnull ItemStack stack) {
-            return stack.getItem() instanceof ItemSoulShard;
+            return stack.getItem() instanceof ItemSoulShard && stack.getCount() == 1;
         }
 
         @Override
@@ -80,14 +80,14 @@ public class TileSoulboundLectern extends TileEntity implements IMultiblockContr
         super();
         isRejecting = false;
     }
-//
-//    public void setMultiBlock(ModMultiBlock multiBlock) {
-//        this.multiBlock = multiBlock;
-//    }
 
     @Override
     public void onLoad() {
         tryToFormMultiBlockInternal();
+    }
+
+    public ItemStackHandler getShardStackHandler() {
+        return shardStackHandler;
     }
 
     @Override

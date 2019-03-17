@@ -51,7 +51,7 @@ public class TileMedium extends TickableTileEntity implements IMultiblockControl
     private ItemStackHandler stoneStackHandler = new ItemStackHandler(1) {
         @Override
         public boolean isItemValid(int slot, @Nonnull ItemStack stack) {
-            return stack.getItem() instanceof ItemCallingStone;
+            return stack.getItem() instanceof ItemCallingStone && stack.getCount() == 1;
         }
 
         @Override
