@@ -108,6 +108,6 @@ public class BlockSoulboundLectern extends ModBlock implements ITileEntityProvid
      */
     @SideOnly(Side.CLIENT)
     public BlockRenderLayer getRenderLayer() {
-        return BlockRenderLayer.CUTOUT;
+        return BlockRenderLayer.TRANSLUCENT;
     }
 }

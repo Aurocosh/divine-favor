@@ -1,9 +1,8 @@
 package aurocosh.divinefavor.common.block.medium;
 
 import aurocosh.divinefavor.common.block.base.TickableTileEntity;
-import aurocosh.divinefavor.common.custom_data.world.WorldData;
-import aurocosh.divinefavor.common.custom_data.world.data.altars.AltarsData;
 import aurocosh.divinefavor.common.item.calling_stones.ItemCallingStone;
+import aurocosh.divinefavor.common.item.calling_stones.ModCallingStones;
 import aurocosh.divinefavor.common.item.common.ModItems;
 import aurocosh.divinefavor.common.lib.math.Vector3i;
 import aurocosh.divinefavor.common.misc.SlotStack;
@@ -40,8 +39,10 @@ public class TileMedium extends TickableTileEntity implements IMultiblockControl
     private final String TAG_ITEMS_LEFT = "ItemsLeft";
     private final String TAG_ITEMS_RIGHT = "ItemsRight";
     private final String TAG_STATE_MEDIUM = "StateMedium";
+    private final String TAG_STONE_MEDIUM = "StoneMedium";
 
-    private MediumState state = MediumState.NO_MULTI_BLOCK;
+    private MediumState state = MediumState.INVALID;
+    private MediumStone stone = MediumStone.NONE;
 
     // server side
     private boolean isRejecting;
@@ -57,11 +58,9 @@ public class TileMedium extends TickableTileEntity implements IMultiblockControl
         protected void onContentsChanged(int slot) {
             if (!world.isRemote) {
                 isRejecting = true;
-                ItemStack stack = getStackInSlot(slot);
-                if (stack.isEmpty() && multiBlockInstance != null)
-                    multiblockDeconstructed();
-                else if (multiBlockInstance == null)
-                    tryToFormMultiBlock();
+                if (multiBlockInstance == null)
+                    tryToFormMultiBlockInternal();
+                updateState();
                 IBlockState blockState = world.getBlockState(pos);
                 getWorld().notifyBlockUpdate(pos, blockState, blockState, 3);
             }
@@ -105,7 +104,7 @@ public class TileMedium extends TickableTileEntity implements IMultiblockControl
         return rightStackHandler;
     }
 
-    public ItemStack getStoneStack(){
+    public ItemStack getStoneStack() {
         return stoneStackHandler.getStackInSlot(0);
     }
 
@@ -113,6 +112,7 @@ public class TileMedium extends TickableTileEntity implements IMultiblockControl
     public void readFromNBT(NBTTagCompound compound) {
         super.readFromNBT(compound);
         state = MediumState.VALUES[compound.getInteger(TAG_STATE_MEDIUM)];
+        stone = MediumStone.VALUES[compound.getInteger(TAG_STONE_MEDIUM)];
         if (compound.hasKey(TAG_CALLING_STONE))
             stoneStackHandler.deserializeNBT((NBTTagCompound) compound.getTag(TAG_CALLING_STONE));
         if (compound.hasKey(TAG_ITEMS_LEFT))
@@ -125,6 +125,7 @@ public class TileMedium extends TickableTileEntity implements IMultiblockControl
     public NBTTagCompound writeToNBT(NBTTagCompound compound) {
         super.writeToNBT(compound);
         compound.setInteger(TAG_STATE_MEDIUM, state.ordinal());
+        compound.setInteger(TAG_STONE_MEDIUM, stone.ordinal());
         compound.setTag(TAG_CALLING_STONE, stoneStackHandler.serializeNBT());
         compound.setTag(TAG_ITEMS_LEFT, leftStackHandler.serializeNBT());
         compound.setTag(TAG_ITEMS_RIGHT, rightStackHandler.serializeNBT());
@@ -162,7 +163,8 @@ public class TileMedium extends TickableTileEntity implements IMultiblockControl
     public NBTTagCompound getUpdateTag() {
         NBTTagCompound nbtTag = super.getUpdateTag();
         nbtTag.setInteger(TAG_STATE_MEDIUM, state.ordinal());
-        nbtTag.setTag(TAG_CALLING_STONE,stoneStackHandler.serializeNBT());
+        nbtTag.setInteger(TAG_STONE_MEDIUM, stone.ordinal());
+        nbtTag.setTag(TAG_CALLING_STONE, stoneStackHandler.serializeNBT());
         return nbtTag;
     }
 
@@ -174,7 +176,7 @@ public class TileMedium extends TickableTileEntity implements IMultiblockControl
 
     @Override
     public void onDataPacket(NetworkManager net, SPacketUpdateTileEntity packet) {
-        if(world.isRemote)
+        if (!world.isRemote)
             return;
 
         NBTTagCompound compound = packet.getNbtCompound();
@@ -183,8 +185,28 @@ public class TileMedium extends TickableTileEntity implements IMultiblockControl
             state = MediumState.VALUES[stateIndex];
             world.markBlockRangeForRenderUpdate(pos, pos);
         }
-        if(compound.hasKey(TAG_CALLING_STONE))
+        int stoneIndex = compound.getInteger(TAG_STONE_MEDIUM);
+        if (stoneIndex != stone.ordinal()) {
+            stone = MediumStone.VALUES[stoneIndex];
+            world.markBlockRangeForRenderUpdate(pos, pos);
+        }
+
+        if (compound.hasKey(TAG_CALLING_STONE))
             stoneStackHandler.deserializeNBT(compound.getCompoundTag(TAG_CALLING_STONE));
+    }
+
+    public MediumStone getStone() {
+        return stone;
+    }
+
+    public void setStone(MediumStone stone) {
+        if (this.stone == stone)
+            return;
+
+        this.stone = stone;
+        markDirty();
+        IBlockState blockState = world.getBlockState(pos);
+        getWorld().notifyBlockUpdate(pos, blockState, blockState, 3);
     }
 
     public MediumState getState() {
@@ -262,10 +284,10 @@ public class TileMedium extends TickableTileEntity implements IMultiblockControl
     @Override
     public void multiblockDeconstructed() {
         MultiblockWatcher.unRegisterController(this);
-        setState(MediumState.NO_MULTI_BLOCK);
         multiBlockInstance = null;
-        AltarsData altarData = WorldData.get(world).getAltarData();
-        altarData.removeAltarLocation(pos);
+        updateState();
+//        AltarsData altarData = WorldData.get(world).getAltarData();
+//        altarData.removeAltarLocation(pos);
     }
 
     @Override
@@ -297,24 +319,47 @@ public class TileMedium extends TickableTileEntity implements IMultiblockControl
         multiBlockInstance = multiBlock.makeMultiBlock(callingStone.spirit, world, position);
         if (multiBlockInstance != null) {
             MultiblockWatcher.registerController(this);
-            AltarsData altarData = WorldData.get(world).getAltarData();
-            altarData.addAltarLocation(callingStone.spirit, pos);
+//            AltarsData altarData = WorldData.get(world).getAltarData();
+//            altarData.addAltarLocation(callingStone.spirit, pos);
         }
     }
 
     private void updateState() {
-        ItemStack stack = stoneStackHandler.getStackInSlot(0);
-        if (stack.isEmpty() || multiBlockInstance == null) {
-            setState(MediumState.NO_MULTI_BLOCK);
-            return;
-        }
+        ItemStack stack = getStoneStack();
+        if (!stack.isEmpty()) {
+            ItemCallingStone callingStone = (ItemCallingStone) stack.getItem();
+            if (callingStone == ModCallingStones.calling_stone_arbow)
+                setStone(MediumStone.ARBOW);
+            else if (callingStone == ModCallingStones.calling_stone_blizrabi)
+                setStone(MediumStone.BLIZRABI);
+            else if (callingStone == ModCallingStones.calling_stone_endererer)
+                setStone(MediumStone.ENDERERER);
+            else if (callingStone == ModCallingStones.calling_stone_loon)
+                setStone(MediumStone.LOON);
+            else if (callingStone == ModCallingStones.calling_stone_neblaze)
+                setStone(MediumStone.NEBLAZE);
+            else if (callingStone == ModCallingStones.calling_stone_redwind)
+                setStone(MediumStone.REDWIND);
+            else if (callingStone == ModCallingStones.calling_stone_romol)
+                setStone(MediumStone.ROMOL);
+            else if (callingStone == ModCallingStones.calling_stone_squarefury)
+                setStone(MediumStone.SQUAREFURY);
+            else if (callingStone == ModCallingStones.calling_stone_timber)
+                setStone(MediumStone.TIMBER);
 
-        ItemCallingStone callingStone = (ItemCallingStone) stack.getItem();
-        ModSpirit spirit = callingStone.spirit;
-        if (!spirit.isActive()) {
-            setState(MediumState.VALID);
-            return;
+            if (multiBlockInstance != null) {
+                ModSpirit spirit = callingStone.spirit;
+                if (spirit.isActive())
+                    setState(MediumState.ACTIVE);
+                else
+                    setState(MediumState.VALID);
+            }
+            else
+                setState(MediumState.INVALID);
         }
-        setState(MediumState.ACTIVE);
+        else {
+            setStone(MediumStone.NONE);
+            setState(MediumState.INVALID);
+        }
     }
 }

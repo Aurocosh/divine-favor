@@ -21,6 +21,7 @@ public class ModBlocks {
     public static ModBlock bathHeater;
     public static ModBlock diviner;
     public static ModBlock fastFurnace;
+
     public static ModBlock immaterialMedium;
 
     public static ModBlock soulboundLecternCoal;
@@ -38,7 +39,7 @@ public class ModBlocks {
         bathHeater = new BlockBathHeater();
         diviner = new BlockDiviner();
         fastFurnace = new BlockFastFurnaceMod();
-        immaterialMedium = new BlockMedium();
+        immaterialMedium = new BlockMedium("iron", Material.IRON);
 
         soulboundLecternCoal = new BlockSoulboundLectern("coal", Material.ROCK);
         soulboundLecternGold = new BlockSoulboundLectern("gold", Material.IRON);
@@ -61,7 +62,7 @@ public class ModBlocks {
     private static void initTileEntities() {
         registerTile(TileBathHeater.class, ConstBlockNames.BATH_HEATER);
         registerTile(TileFastFurnace.class, ConstBlockNames.FAST_FURNACE);
-        registerTile(TileMedium.class, ConstBlockNames.IRON_MEDIUM);
+        registerTile(TileMedium.class, ConstBlockNames.MEDIUM);
         registerTile(TileSoulboundLectern.class, ConstBlockNames.SOULBOUND_LECTERN);
     }
 

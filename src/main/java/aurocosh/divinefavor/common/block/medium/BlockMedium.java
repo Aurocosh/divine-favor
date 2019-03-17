@@ -14,6 +14,7 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
@@ -21,13 +22,16 @@ import net.minecraft.world.ChunkCache;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraft.world.chunk.Chunk;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class BlockMedium extends ModBlock implements ITileEntityProvider {
     public static final PropertyDirection FACING = PropertyDirection.create("facing");
     public static final PropertyEnum<MediumState> STATE = PropertyEnum.create("state", MediumState.class);
+    public static final PropertyEnum<MediumStone> STONE = PropertyEnum.create("stone", MediumStone.class);
 
-    public BlockMedium() {
-        super(ConstBlockNames.IRON_MEDIUM, Material.IRON);
+    public BlockMedium(String name, Material material) {
+        super(ConstBlockNames.MEDIUM + "_" + name, material);
         setHardness(2.0F);
         setResistance(10.0F);
         setSoundType(SoundType.METAL);
@@ -38,7 +42,7 @@ public class BlockMedium extends ModBlock implements ITileEntityProvider {
     public IBlockState getActualState(IBlockState state, IBlockAccess world, BlockPos pos) {
         TileEntity te = world instanceof ChunkCache ? ((ChunkCache) world).getTileEntity(pos, Chunk.EnumCreateEntityType.CHECK) : world.getTileEntity(pos);
         if (te instanceof TileMedium)
-            return state.withProperty(STATE, ((TileMedium) te).getState());
+            return state.withProperty(STATE, ((TileMedium) te).getState()).withProperty(STONE, ((TileMedium) te).getStone());
         return super.getActualState(state, world, pos);
     }
 
@@ -49,7 +53,7 @@ public class BlockMedium extends ModBlock implements ITileEntityProvider {
 
     @Override
     protected BlockStateContainer createBlockState() {
-        return new BlockStateContainer(this, FACING, STATE);
+        return new BlockStateContainer(this, FACING, STATE, STONE);
     }
 
     public IBlockState getStateFromMeta(int meta) {
@@ -91,5 +95,10 @@ public class BlockMedium extends ModBlock implements ITileEntityProvider {
             return;
         TileMedium medium = (TileMedium) entity;
         medium.multiblockDeconstructed();
+    }
+
+    @SideOnly(Side.CLIENT)
+    public BlockRenderLayer getRenderLayer() {
+        return BlockRenderLayer.TRANSLUCENT;
     }
 }
