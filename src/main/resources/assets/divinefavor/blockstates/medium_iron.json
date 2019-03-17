@@ -1,0 +1,42 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "divinefavor:medium",
+    "textures":{
+      "particle": "divinefavor:blocks/medium/materials/iron",
+      "material": "divinefavor:blocks/medium/materials/iron",
+      "frame": "divinefavor:blocks/medium/frames/gray",
+      "animation": "divinefavor:blocks/medium/animations/none",
+      "stone": "divinefavor:blocks/medium/stones/none"
+    }
+  },
+  "variants": {
+    "normal": [{}],
+    "inventory": [{}],
+    "facing": {
+      "north": {},
+      "south": {"y": 180},
+      "west": {"y": 270},
+      "east": {"y": 90},
+      "up": {"x": -90},
+      "down": {"x": 90}
+    },
+    "state": {
+      "invalid": {},
+      "valid": { "textures": { "animation": "divinefavor:blocks/medium/animations/blinking_red" } },
+      "active": { "textures": { "animation": "divinefavor:blocks/medium/animations/spinning_red" } }
+    },
+    "stone": {
+      "none": {},
+      "arbow": { "textures": { "stone": "divinefavor:blocks/medium/stones/arbow" } },
+      "blizrabi": { "textures": { "stone": "divinefavor:blocks/medium/stones/blizrabi" } },
+      "endererer": { "textures": { "stone": "divinefavor:blocks/medium/stones/endererer" } },
+      "loon": { "textures": { "stone": "divinefavor:blocks/medium/stones/loon" } },
+      "neblaze": { "textures": { "stone": "divinefavor:blocks/medium/stones/neblaze" } },
+      "redwind": { "textures": { "stone": "divinefavor:blocks/medium/stones/redwind" } },
+      "romol": { "textures": { "stone": "divinefavor:blocks/medium/stones/romol" } },
+      "squarefury": { "textures": { "stone": "divinefavor:blocks/medium/stones/squarefury" } },
+      "timber": { "textures": { "stone": "divinefavor:blocks/medium/stones/timber" } }
+    }
+  }
+}
