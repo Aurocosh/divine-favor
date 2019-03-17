@@ -1,7 +1,8 @@
 {
   "symmetrical": true,
-  "controllerPosition":[1,2,0],"parts":[
-  {"validator":{"type":"block","name":"minecraft:iron_block"},"positions":[[0,1,0],[1,1,0],[2,1,0]]},
-  {"validator":{"type":"center","name":"minecraft:iron_block"},"positions":[[1,0,0]]}
-]
+  "basePosition":[1,0,0],
+  "controllerPosition":[1,2,0],
+  "parts":[
+    {"validator":{"type":"block","name":"minecraft:iron_block"},"positions":[[0,1,0],[1,1,0],[2,1,0],[1,0,0]]}
+  ]
 }

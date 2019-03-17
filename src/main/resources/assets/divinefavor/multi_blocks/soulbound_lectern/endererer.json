@@ -1,10 +1,10 @@
 {
   "symmetrical":false,
+  "basePosition":[1,0,3],
   "controllerPosition":[1,2,3],
   "parts":[
-    {"validator":{"type":"block","name":"minecraft:coal_block"},"positions":[[0,0,1],[0,0,5],[1,0,0],[1,0,1],[1,0,2],[1,0,4],[1,0,5],[1,0,6],[1,1,1],[1,1,5],[1,2,1],[1,2,2],[1,2,4],[1,2,5],[2,0,1],[2,0,5]]},
+    {"validator":{"type":"block","name":"minecraft:coal_block"},"positions":[[0,0,1],[0,0,5],[1,0,0],[1,0,1],[1,0,2],[1,0,4],[1,0,5],[1,0,6],[1,1,1],[1,1,5],[1,2,1],[1,2,2],[1,2,4],[1,2,5],[2,0,1],[2,0,5],[1,0,3]]},
     {"validator":{"type":"air"},"positions":[[0,0,0],[0,0,2],[0,0,3],[0,0,4],[0,0,6],[1,1,2],[1,1,3],[1,1,4],[2,0,0],[2,0,2],[2,0,3],[2,0,4],[2,0,6]]},
-    {"validator":{"type":"block","name":"divinefavor:soulbound_lectern_coal"},"positions":[[1,2,3]]},
-    {"validator":{"type":"center","name":"minecraft:coal_block"},"positions":[[1,0,3]]}
+    {"validator":{"type":"block","name":"divinefavor:soulbound_lectern_coal"},"positions":[[1,2,3]]}
   ]
 }

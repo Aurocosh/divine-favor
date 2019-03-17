@@ -3,6 +3,7 @@ package aurocosh.divinefavor.common.muliblock.validators;
 import com.google.gson.annotations.Expose;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Blocks;
+import vazkii.patchouli.common.multiblock.StateMatcher;
 
 public class AirStateValidator extends StateValidator {
     @Expose
@@ -14,6 +15,6 @@ public class AirStateValidator extends StateValidator {
 
     @Override
     public Object getPatchouliMatcher() {
-        return null;
+        return StateMatcher.AIR;
     }
 }

@@ -1,8 +1,10 @@
-{"symmetrical":false,
-  "controllerPosition":[0,1,2],"parts":[
-  {"validator":{"type":"block","name":"minecraft:water"},"positions":[[1,1,1],[1,1,2],[1,1,3],[2,1,1],[2,1,2],[2,1,3]]},
-  {"validator":{"type":"block","name":"minecraft:stone"},"positions":[[0,1,0],[0,1,1],[0,1,3],[0,1,4],[1,0,1],[1,0,2],[1,0,3],[1,1,0],[1,1,4],[2,0,1],[2,0,2],[2,0,3],[2,1,0],[2,1,4],[3,1,0],[3,1,1],[3,1,3],[3,1,4]]},
-  {"validator":{"type":"block","name":"divinefavor:bath_heater"},"positions":[[0,1,2]]},
-  {"validator":{"type":"center","name":"minecraft:stone"},"positions":[[3,1,2]]}
-]
+{
+  "symmetrical":false,
+  "basePosition":[3,1,2],
+  "controllerPosition":[0,1,2],
+  "parts":[
+    {"validator":{"type":"block","name":"minecraft:water"},"positions":[[1,1,1],[1,1,2],[1,1,3],[2,1,1],[2,1,2],[2,1,3]]},
+    {"validator":{"type":"block","name":"minecraft:stone"},"positions":[[0,1,0],[0,1,1],[0,1,3],[0,1,4],[1,0,1],[1,0,2],[1,0,3],[1,1,0],[1,1,4],[2,0,1],[2,0,2],[2,0,3],[2,1,0],[2,1,4],[3,1,0],[3,1,1],[3,1,3],[3,1,4],[3,1,2]]},
+    {"validator":{"type":"block","name":"divinefavor:bath_heater"},"positions":[[0,1,2]]}
+  ]
 }
