@@ -4,6 +4,7 @@ import aurocosh.divinefavor.DivineFavor;
 import aurocosh.divinefavor.common.block.base.ModBlock;
 import aurocosh.divinefavor.common.constants.ConstBlockNames;
 import aurocosh.divinefavor.common.constants.ConstGuiIDs;
+import aurocosh.divinefavor.common.util.UtilEntity;
 import net.minecraft.block.BlockHorizontal;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.SoundType;
@@ -93,13 +94,14 @@ public class BlockSoulboundLectern extends ModBlock implements ITileEntityProvid
     }
 
     @Override
-    public void breakBlock(World worldIn, BlockPos pos, IBlockState state) {
-        super.breakBlock(worldIn, pos, state);
-        TileEntity entity = worldIn.getTileEntity(pos);
-        if (!(entity instanceof TileSoulboundLectern))
-            return;
-        TileSoulboundLectern medium = (TileSoulboundLectern) entity;
-        // TODO
+    public void breakBlock(World world, BlockPos pos, IBlockState state) {
+        TileEntity entity = world.getTileEntity(pos);
+        if (entity instanceof TileSoulboundLectern) {
+            TileSoulboundLectern lectern = (TileSoulboundLectern) entity;
+            UtilEntity.dropItemsOnGround(world, lectern.getShardStackHandler(), pos);
+        }
+
+        super.breakBlock(world, pos, state);
     }
 
     /**
