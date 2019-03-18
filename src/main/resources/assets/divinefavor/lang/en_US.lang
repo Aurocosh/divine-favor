@@ -6,33 +6,53 @@ itemGroup.divinefavor_contracts=Divine Favor Contracts
 itemGroup.divinefavor_arrow_talismans=Divine Favor Arrow Talismans
 
 # BLOCK NAMES
+## MEDIUMS
+tile.divinefavor:medium_gold.name=Gold medium
+tile.divinefavor:medium_iron.name=Iron medium
+tile.divinefavor:medium_lapis.name=Lapis medium
+tile.divinefavor:medium_log.name=Log medium
+tile.divinefavor:medium_obsidian.name=Obsidian medium
+tile.divinefavor:medium_redstone.name=Redstone medium
+## LECTERNS
+tile.divinefavor:soulbound_lectern_coal.name=Coal soulbound lectern
+tile.divinefavor:soulbound_lectern_gold.name=Gold soulbound lectern
+tile.divinefavor:soulbound_lectern_iron.name=Iron soulbound lectern
+tile.divinefavor:soulbound_lectern_log.name=Log soulbound lectern
+tile.divinefavor:soulbound_lectern_obsidian.name=Obsidian soulbound lectern
+tile.divinefavor:soulbound_lectern_snow.name=Snow soulbound lectern
+tile.divinefavor:soulbound_lectern_stone.name=Stone soulbound lectern
+tile.divinefavor:soulbound_lectern_wood.name=Wood soulbound lectern
+## OTHER
 tile.divinefavor:bath_heater.name=Bath heater
 tile.divinefavor:diviner.name=Diviner
-tile.divinefavor:dyed_pumpkin.name=Dyed pumpkin
 tile.divinefavor:ender_pumpkin.name=Ender pumpkin
 tile.divinefavor:fast_furnace.name=Fast furnace
-tile.divinefavor:fast_furnace.name=Fast furnace
-tile.divinefavor:iron_medium.name=Iron_medium
-tile.divinefavor:lit_ender_pumpkin.name=Lit ender pumpkin
-tile.divinefavor:soulbound_lectern_stone.name=Soulbound lectern stone
-tile.divinefavor:soulbound_lectern_wood.name=Soulbound lectern wood
 
 # ITEM NAMES
-item.divinefavor:bone_dagger.name=Bone dagger
-item.divinefavor:bone_dagger_awakened.name=Awakened bone dagger
-item.divinefavor:bone_key.name=Bone key
-item.divinefavor:contract_binder.name=Contract binder
-item.divinefavor:grimoire.name=Grimoire
+## GEMS
 item.divinefavor:invite_gem.name=Invite gem
 item.divinefavor:invite_pebble.name=Invite pebble
-item.divinefavor:mystic_architect_stick.name=Mystic architect stick
-item.divinefavor:pure_apple.name=Pure apple
-item.divinefavor:ritual_pouch.name=Ritual pouch
-item.divinefavor:spell_bow.name=Spell bow
-item.divinefavor:stone_ball.name=Stone
 item.divinefavor:storage_gem.name=Storage gem
 item.divinefavor:warp_gem.name=Warp gem
 item.divinefavor:warp_pebble.name=Warp pebble
+## TOOLS
+item.divinefavor:bone_dagger.name=Bone dagger
+item.divinefavor:bone_dagger_awakened.name=Awakened bone dagger
+item.divinefavor:bone_key.name=Bone key
+item.divinefavor:mystic_architect_stick.name=Mystic architect stick
+## CONTAINERS
+item.divinefavor:grimoire.name=Grimoire
+item.divinefavor:spell_bow.name=Spell bow
+item.divinefavor:ritual_pouch.name=Ritual pouch
+item.divinefavor:contract_binder.name=Contract binder
+## CONSUMABLES
+item.divinefavor:pure_apple.name=Pure apple
+item.divinefavor:stone_ball.name=Stone
+## CONTRACTS
+item.divinefavor:contract_capacity_minor.name=Capacity contract minor
+item.divinefavor:contract_capacity_major.name=Capacity contract major
+item.divinefavor:contract_regen_minor.name=Capacity regen minor
+item.divinefavor:contract_regen_major.name=Capacity regen major
 
 # TALISMAN NAMES
 ## ARBOW TALISMANS

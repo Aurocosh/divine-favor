@@ -17,7 +17,7 @@ public class ItemCallingStone extends ModItem {
         this.multiBlock = multiBlock;
 
         setMaxStackSize(1);
-        setCreativeTab(DivineFavor.tabGems);
+        setCreativeTab(DivineFavor.TAB_GEMS);
     }
 
     @Override

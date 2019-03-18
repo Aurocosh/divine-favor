@@ -31,7 +31,7 @@ public class ItemSpellTalisman extends ItemTalisman {
         this.options = options;
 
         setMaxStackSize(1);
-        setCreativeTab(DivineFavor.tabSpellTalismans);
+        setCreativeTab(DivineFavor.TAB_SPELL_TALISMANS);
     }
 
     public boolean cast(TalismanContext context) {

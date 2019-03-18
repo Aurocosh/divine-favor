@@ -31,7 +31,7 @@ public class ItemArrowTalisman extends ItemTalisman {
         gravityType = GravityType.NORMAL;
 
 //        setMaxStackSize(64);
-        setCreativeTab(DivineFavor.tabArrowTalismans);
+        setCreativeTab(DivineFavor.TAB_ARROW_TALISMANS);
     }
 
     public int getColor() {

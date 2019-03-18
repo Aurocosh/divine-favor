@@ -26,7 +26,7 @@ public class ItemWishingStone extends ModItem {
         this.favorCount = favorCount;
 
         setMaxStackSize(64);
-        setCreativeTab(DivineFavor.tabGems);
+        setCreativeTab(DivineFavor.TAB_GEMS);
     }
 
     @Override
