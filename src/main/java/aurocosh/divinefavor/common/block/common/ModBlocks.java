@@ -24,6 +24,10 @@ public class ModBlocks {
 
     public static ModBlock medium_gold;
     public static ModBlock medium_iron;
+    public static ModBlock medium_lapis;
+    public static ModBlock medium_log;
+    public static ModBlock medium_obsidian;
+    public static ModBlock medium_redstone;
 
     public static ModBlock soulboundLecternCoal;
     public static ModBlock soulboundLecternGold;
@@ -43,6 +47,10 @@ public class ModBlocks {
 
         medium_gold = new BlockMedium("gold", Material.IRON);
         medium_iron = new BlockMedium("iron", Material.IRON);
+        medium_lapis = new BlockMedium("lapis", Material.ROCK);
+        medium_log = new BlockMedium("log", Material.WOOD);
+        medium_obsidian = new BlockMedium("obsidian", Material.ROCK);
+        medium_redstone = new BlockMedium("redstone", Material.ROCK);
 
         soulboundLecternCoal = new BlockSoulboundLectern("coal", Material.ROCK);
         soulboundLecternGold = new BlockSoulboundLectern("gold", Material.IRON);
