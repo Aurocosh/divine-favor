@@ -6,7 +6,7 @@
     "textures":{
       "particle": "divinefavor:blocks/soulbound_lectern/materials/snow",
       "material": "divinefavor:blocks/soulbound_lectern/materials/snow",
-      "mask": "divinefavor:blocks/soulbound_lectern/mask",
+      "mask": "divinefavor:blocks/soulbound_lectern/masks/acacia",
 	  "gem": "divinefavor:blocks/soulbound_lectern/gems/no_gem",
 	  "books": "divinefavor:blocks/soulbound_lectern/books/no_books"
     }
