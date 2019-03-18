@@ -22,7 +22,7 @@ public class ItemContract extends ModItem {
         this.min = min;
         this.max = max;
         setMaxStackSize(1);
-        setCreativeTab(DivineFavor.tabContracts);
+        setCreativeTab(DivineFavor.TAB_MAIN);
     }
 
     public int getRegen() {

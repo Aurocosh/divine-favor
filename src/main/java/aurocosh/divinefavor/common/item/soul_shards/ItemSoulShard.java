@@ -25,7 +25,7 @@ public class ItemSoulShard extends ModItem {
     public ItemSoulShard(String name, ModFavor favor) {
         super("soul_shard_" + name, "soul_shards/" + name, 2);
         this.favor = favor;
-        setCreativeTab(DivineFavor.tabGems);
+        setCreativeTab(DivineFavor.TAB_GEMS);
     }
 
     public ModFavor getFavor() {

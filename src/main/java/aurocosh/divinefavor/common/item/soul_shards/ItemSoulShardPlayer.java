@@ -16,7 +16,7 @@ import java.util.List;
 public class ItemSoulShardPlayer extends ItemSoulShard {
     public ItemSoulShardPlayer(String name, ModFavor favor) {
         super(name, favor);
-        setCreativeTab(DivineFavor.tabGems);
+        setCreativeTab(DivineFavor.TAB_GEMS);
     }
 
     @Override

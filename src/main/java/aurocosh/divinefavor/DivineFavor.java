@@ -20,10 +20,9 @@ public class DivineFavor {
     public static ModLogger logger;
     public static ModContainer container;
     public static DivineFavorCreativeTab TAB_MAIN = new DivineFavorCreativeTab();
-    public static DivineFavorCreativeTabGems tabGems = new DivineFavorCreativeTabGems();
-    public static DivineFavorCreativeTabContracts tabContracts = new DivineFavorCreativeTabContracts();
-    public static final DivineFavorCreativeTabArrowTalismans tabArrowTalismans = new DivineFavorCreativeTabArrowTalismans();
-    public static DivineFavorCreativeTabSpellTalismans tabSpellTalismans = new DivineFavorCreativeTabSpellTalismans();
+    public static DivineFavorCreativeTabGems TAB_GEMS = new DivineFavorCreativeTabGems();
+    public static final DivineFavorCreativeTabArrowTalismans TAB_ARROW_TALISMANS = new DivineFavorCreativeTabArrowTalismans();
+    public static DivineFavorCreativeTabSpellTalismans TAB_SPELL_TALISMANS = new DivineFavorCreativeTabSpellTalismans();
 
     @SidedProxy(serverSide = ConstMisc.PROXY_COMMON, clientSide = ConstMisc.PROXY_CLIENT)
     public static CommonProxy proxy;
