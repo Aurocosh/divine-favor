@@ -3,15 +3,19 @@
     "item": "divinefavor:soulbound_lectern_wood"
   },
   "pattern": [
-    "ppp",
-    "bpb",
-    "ppp"
+    "obo",
+    "oao",
+    "obo"
   ],
   "type": "forge:ore_shaped",
   "key": {
-    "p": {
-      "type": "forge:ore_dict",
-      "ore": "plankWood"
+    "o": {
+      "item": "minecraft:planks",
+      "data": 0
+    },
+    "a": {
+      "item": "minecraft:planks",
+      "data": 4
     },
     "b": {
       "item": "minecraft:book"

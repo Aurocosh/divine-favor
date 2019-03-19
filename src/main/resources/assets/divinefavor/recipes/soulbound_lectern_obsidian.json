@@ -1,6 +1,6 @@
 {
   "result": {
-    "item": "divinefavor:soulbound_lectern_stone"
+    "item": "divinefavor:soulbound_lectern_obsidian"
   },
   "pattern": [
     "mbm",
@@ -14,8 +14,7 @@
       "data": 1
     },
     "m": {
-      "item": "minecraft:stone",
-      "data": 0
+      "item": "minecraft:obsidian"
     },
     "b": {
       "item": "minecraft:book"

@@ -1,6 +1,6 @@
 {
   "result": {
-    "item": "divinefavor:soulbound_lectern_stone"
+    "item": "divinefavor:soulbound_lectern_gold"
   },
   "pattern": [
     "mbm",
@@ -11,11 +11,10 @@
   "key": {
     "p": {
       "item": "minecraft:planks",
-      "data": 1
+      "data": 0
     },
     "m": {
-      "item": "minecraft:stone",
-      "data": 0
+      "item": "minecraft:gold_block"
     },
     "b": {
       "item": "minecraft:book"
