@@ -1,6 +1,6 @@
 {
   "result": {
-    "item": "divinefavor:medium_iron"
+    "item": "divinefavor:medium_gold"
   },
   "type": "forge:ore_shapeless",
   "ingredients": [
@@ -13,7 +13,7 @@
       "data": 0
     },
     {
-      "item": "minecraft:iron_block"
+      "item": "minecraft:gold_block"
     },
     {
       "item": "divinefavor:bone_dagger_awakened"

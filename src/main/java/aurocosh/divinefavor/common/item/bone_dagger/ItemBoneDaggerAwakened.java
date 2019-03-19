@@ -57,6 +57,7 @@ public class ItemBoneDaggerAwakened extends ModItem {
     public ItemBoneDaggerAwakened() {
         super("bone_dagger_awakened", "bone_dagger_awakened");
         setMaxStackSize(1);
+        setContainerItem(this);
         setCreativeTab(DivineFavor.TAB_MAIN);
     }
 
