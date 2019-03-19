@@ -51,8 +51,8 @@ item.divinefavor:stone_ball.name=Stone
 ## CONTRACTS
 item.divinefavor:contract_capacity_minor.name=Capacity contract minor
 item.divinefavor:contract_capacity_major.name=Capacity contract major
-item.divinefavor:contract_regen_minor.name=Capacity regen minor
-item.divinefavor:contract_regen_major.name=Capacity regen major
+item.divinefavor:contract_regen_minor.name=Regen contract minor
+item.divinefavor:contract_regen_major.name=Regen contract major
 
 # TALISMAN NAMES
 ## ARBOW TALISMANS

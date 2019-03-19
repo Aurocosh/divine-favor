@@ -1,6 +1,6 @@
 {
   "result": {
-    "item": "divinefavor:soulbound_lectern_stone"
+    "item": "divinefavor:soulbound_lectern_log"
   },
   "pattern": [
     "mbm",
@@ -11,10 +11,10 @@
   "key": {
     "p": {
       "item": "minecraft:planks",
-      "data": 1
+      "data": 2
     },
     "m": {
-      "item": "minecraft:stone",
+      "item": "minecraft:log",
       "data": 0
     },
     "b": {
