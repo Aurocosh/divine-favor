@@ -29,6 +29,7 @@ import aurocosh.divinefavor.common.potions.common.ModBlessings;
 import aurocosh.divinefavor.common.potions.common.ModCurses;
 import aurocosh.divinefavor.common.potions.common.ModPotions;
 import aurocosh.divinefavor.common.receipes.ModRecipes;
+import aurocosh.divinefavor.common.receipes.RecipeLoader;
 import aurocosh.divinefavor.common.spirit.ModSpirits;
 import com.google.common.util.concurrent.ListenableFuture;
 import net.minecraft.entity.player.EntityPlayer;
@@ -93,6 +94,7 @@ public class CommonProxy {
         ModItems.init();
         ModBlocks.init();
         ModRecipes.init();
+        RecipeLoader.init();
     }
 
     public void postInit(FMLPostInitializationEvent e) {

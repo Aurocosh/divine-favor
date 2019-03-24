@@ -9,6 +9,7 @@ import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.util.ArrayList;
+import java.util.List;
 
 public class UtilAssets {
     public static ArrayList<String> getAssetPaths(ModContainer mod, String assetFolderPath, String fileFormat) {
@@ -28,9 +29,12 @@ public class UtilAssets {
         return foundPaths;
     }
 
-    public static <T> ArrayList<T> loadObjectsFromJsonAssets(Class<T> clazz, ModContainer mod, ArrayList<String> assetPaths, Gson gson) {
+    public static <T> ArrayList<T> loadObjectsFromJsonAssets(Class<T> clazz, ModContainer mod, List<String> assetPaths, Gson gson) {
         ArrayList<T> objectList = new ArrayList<>();
-        Class modClass = mod.getMod().getClass();
+        Object modObject = mod.getMod();
+        if(modObject == null)
+            return objectList;
+        Class modClass = modObject.getClass();
         for (String path : assetPaths) {
             InputStream stream = modClass.getResourceAsStream(path);
             Reader reader = new BufferedReader(new InputStreamReader(stream, StandardCharsets.UTF_8));

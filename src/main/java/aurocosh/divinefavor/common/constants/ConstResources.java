@@ -16,7 +16,7 @@ public class ConstResources {
     public static final String GUI_CONTRACT_BINDER = PREFIX_GUI + "contract_binder.png";
     public static final String GUI_FAST_FURNACE = PREFIX_GUI + "fast_furnace.png";
     public static final String GUI_GRIMOIRE = PREFIX_GUI + "grimoire.png";
-    public static final String GUI_JEI_IMMATERIAL_MEDIUM_RECIPE = PREFIX_GUI + "jei/medium_iron.png";
+    public static final String GUI_JEI_IMMATERIAL_MEDIUM_RECIPE = PREFIX_GUI + "jei/immaterial_medium.png";
     public static final String GUI_RITUAL_POUCH = PREFIX_GUI + "ritual_pouch.png";
     public static final String GUI_SELECT_COST_UNIT_BUTTON = PREFIX_GUI + "select_cost_unit_button.png";
     public static final String GUI_TALISMAN = PREFIX_GUI + "talisman.png";
