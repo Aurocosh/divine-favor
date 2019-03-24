@@ -24,13 +24,13 @@ public class MediumRecipeData {
     public ImmaterialMediumRecipe toRecipe() {
         ItemStack resultStack = result.toItemStack();
         if (resultStack.isEmpty()) {
-            DivineFavor.logger.error("Recipe error. Result is invalid:" + result.item);
+            DivineFavor.logger.error("Recipe error: " + result.item + ". Result is invalid:" + result.item);
             return null;
         }
 
         Item stoneItem = Item.getByNameOrId(stone);
         if (!(stoneItem instanceof ItemCallingStone)) {
-            DivineFavor.logger.error("Recipe error. Item is not a calling stone:" + stone);
+            DivineFavor.logger.error("Recipe error: " + result.item + ". Item is not a calling stone:" + stone);
             return null;
         }
         ItemCallingStone callingStone = (ItemCallingStone) stoneItem;
@@ -39,7 +39,7 @@ public class MediumRecipeData {
         for (RecipeIngredient ingredient : ingredients) {
             ItemStack itemStack = ingredient.toItemStack();
             if (itemStack.isEmpty()) {
-                DivineFavor.logger.error("Recipe error. Ingredient is invalid:" + ingredient.item);
+                DivineFavor.logger.error("Recipe error: " + result.item + ". Ingredient is invalid:" + ingredient.item);
                 return null;
             }
             ingredientStacks.add(itemStack);

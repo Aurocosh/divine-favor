@@ -1,0 +1,25 @@
+{
+  "result": {
+    "item": "divinefavor:talisman_hellisphere"
+  },
+  "stone": "divinefavor:calling_stone_neblaze",
+  "ingredients": [
+    {
+      "item": "minecraft:paper"
+    },
+    {
+      "item": "minecraft:dye",
+      "data": 1
+    },
+    {
+      "item": "minecraft:magma",
+      "count": 16
+    },
+    {
+      "item": "minecraft:lava_bucket"
+    },
+    {
+      "item": "minecraft:lava_bucket"
+    }
+  ]
+}

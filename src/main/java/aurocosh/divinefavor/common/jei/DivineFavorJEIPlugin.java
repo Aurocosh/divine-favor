@@ -20,7 +20,7 @@ import net.minecraftforge.oredict.OreDictionary;
 
 @JEIPlugin
 public class DivineFavorJEIPlugin implements IModPlugin {
-    public static final String IMMATERIAL_MEDIUM_UID = ResourceNamer.getFullName("medium_iron").toString();
+    public static final String IMMATERIAL_MEDIUM_UID = ResourceNamer.getFullName("immaterial_medium").toString();
 
     @Override
     public void registerCategories(IRecipeCategoryRegistration registry) {
@@ -38,6 +38,11 @@ public class DivineFavorJEIPlugin implements IModPlugin {
         registry.handleRecipes(ImmaterialMediumRecipe.class, ImmaterialMediumWrapper::new, IMMATERIAL_MEDIUM_UID);
         registry.addRecipes(ModRecipes.recipes.values(), IMMATERIAL_MEDIUM_UID);
         registry.addRecipeCatalyst(new ItemStack(ModBlocks.medium_iron), IMMATERIAL_MEDIUM_UID);
+        registry.addRecipeCatalyst(new ItemStack(ModBlocks.medium_gold), IMMATERIAL_MEDIUM_UID);
+        registry.addRecipeCatalyst(new ItemStack(ModBlocks.medium_lapis), IMMATERIAL_MEDIUM_UID);
+        registry.addRecipeCatalyst(new ItemStack(ModBlocks.medium_log), IMMATERIAL_MEDIUM_UID);
+        registry.addRecipeCatalyst(new ItemStack(ModBlocks.medium_obsidian), IMMATERIAL_MEDIUM_UID);
+        registry.addRecipeCatalyst(new ItemStack(ModBlocks.medium_redstone), IMMATERIAL_MEDIUM_UID);
     }
 
     private void registerDescription(IModRegistry registry) {

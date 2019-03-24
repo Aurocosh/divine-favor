@@ -1,0 +1,23 @@
+{
+  "result": {
+    "item": "divinefavor:talisman_distant_spark"
+  },
+  "stone": "divinefavor:calling_stone_neblaze",
+  "ingredients": [
+    {
+      "item": "minecraft:paper"
+    },
+    {
+      "item": "minecraft:dye",
+      "data": 1
+    },
+    {
+      "item": "minecraft:flint_and_steel",
+      "count": 4
+    },
+    {
+      "item": "minecraft:blaze_rod",
+      "count": 1
+    }
+  ]
+}

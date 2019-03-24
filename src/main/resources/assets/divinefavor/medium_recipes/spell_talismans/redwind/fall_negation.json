@@ -1,0 +1,22 @@
+{
+  "result": {
+    "item": "divinefavor:talisman_fall_negation"
+  },
+  "stone": "divinefavor:calling_stone_redwind",
+  "ingredients": [
+    {
+      "item": "minecraft:paper"
+    },
+    {
+      "item": "minecraft:dye",
+      "data": 11
+    },
+    {
+      "item": "minecraft:feather",
+      "count": 16
+    },
+    {
+      "item": "minecraft:iron_boots"
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "result": {
+    "item": "divinefavor:talisman_wild_sprint"
+  },
+  "stone": "divinefavor:calling_stone_redwind",
+  "ingredients": [
+    {
+      "item": "minecraft:paper"
+    },
+    {
+      "item": "minecraft:dye",
+      "data": 14
+    },
+    {
+      "item": "minecraft:sugar",
+      "count": 64
+    },
+    {
+      "item": "minecraft:iron_boots"
+    }
+  ]
+}

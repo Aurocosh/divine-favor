@@ -1,0 +1,38 @@
+{
+  "result": {
+    "item": "divinefavor:talisman_stone_fever"
+  },
+  "stone": "divinefavor:calling_stone_romol",
+  "ingredients": [
+    {
+      "item": "minecraft:paper"
+    },
+    {
+      "item": "minecraft:dye",
+      "data": 3
+    },
+    {
+      "item": "minecraft:stone",
+      "data": 0,
+      "count": 64
+    },
+    {
+      "item": "minecraft:stone",
+      "data": 0,
+      "count": 64
+    },
+    {
+      "item": "minecraft:stone",
+      "data": 0,
+      "count": 64
+    },
+    {
+      "item": "minecraft:stone",
+      "data": 0,
+      "count": 64
+    },
+    {
+      "item": "minecraft:wooden_pickaxe"
+    }
+  ]
+}

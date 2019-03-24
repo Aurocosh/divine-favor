@@ -1,8 +1,8 @@
 {
   "result": {
-    "item": "divinefavor:talisman_ignition"
+    "item": "divinefavor:talisman_target"
   },
-  "stone": "divinefavor:calling_stone_neblaze",
+  "stone": "divinefavor:calling_stone_loon",
   "ingredients": [
     {
       "item": "minecraft:paper"
@@ -12,8 +12,7 @@
       "data": 1
     },
     {
-      "item": "minecraft:flint_and_steel",
-      "count": 5
+      "item": "minecraft:stone_sword"
     }
   ]
 }

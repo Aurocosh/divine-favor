@@ -1,0 +1,26 @@
+{
+  "result": {
+    "item": "divinefavor:talisman_toadic_jump"
+  },
+  "stone": "divinefavor:calling_stone_redwind",
+  "ingredients": [
+    {
+      "item": "minecraft:paper"
+    },
+    {
+      "item": "minecraft:dye",
+      "data": 2
+    },
+    {
+      "item": "minecraft:waterlily",
+      "count": 16
+    },
+    {
+      "item": "minecraft:sugar",
+      "count": 16
+    },
+    {
+      "item": "minecraft:wooden_boots"
+    }
+  ]
+}

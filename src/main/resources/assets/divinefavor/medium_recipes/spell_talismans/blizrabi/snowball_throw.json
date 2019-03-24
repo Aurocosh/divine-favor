@@ -1,0 +1,19 @@
+{
+  "result": {
+    "item": "divinefavor:talisman_snowball_throw"
+  },
+  "stone": "divinefavor:calling_stone_blizrabi",
+  "ingredients": [
+    {
+      "item": "minecraft:paper"
+    },
+    {
+      "item": "minecraft:dye",
+      "data": 15
+    },
+    {
+      "item": "minecraft:snowball",
+      "count": 64
+    }
+  ]
+}

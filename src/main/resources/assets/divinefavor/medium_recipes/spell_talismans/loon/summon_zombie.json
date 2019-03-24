@@ -1,0 +1,27 @@
+{
+  "result": {
+    "item": "divinefavor:talisman_summon_zombie"
+  },
+  "stone": "divinefavor:calling_stone_loon",
+  "ingredients": [
+    {
+      "item": "minecraft:paper"
+    },
+    {
+      "item": "minecraft:dye",
+      "data": 3
+    },
+    {
+      "item": "minecraft:rotten_flesh",
+      "count": 32
+    },
+    {
+      "item": "minecraft:carrot",
+      "count": 8
+    },
+    {
+      "item": "minecraft:leather",
+      "count": 2
+    }
+  ]
+}

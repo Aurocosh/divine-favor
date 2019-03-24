@@ -1,0 +1,18 @@
+{
+  "result": {
+    "item": "divinefavor:talisman_follow"
+  },
+  "stone": "divinefavor:calling_stone_loon",
+  "ingredients": [
+    {
+      "item": "minecraft:paper"
+    },
+    {
+      "item": "minecraft:dye",
+      "data": 10
+    },
+    {
+      "item": "minecraft:carrot_on_a_stick"
+    }
+  ]
+}

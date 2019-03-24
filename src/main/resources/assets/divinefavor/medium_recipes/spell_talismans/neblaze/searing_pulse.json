@@ -1,0 +1,24 @@
+{
+  "result": {
+    "item": "divinefavor:talisman_searing_pulse"
+  },
+  "stone": "divinefavor:calling_stone_neblaze",
+  "ingredients": [
+    {
+      "item": "minecraft:paper"
+    },
+    {
+      "item": "minecraft:dye",
+      "data": 14
+    },
+    {
+      "item": "minecraft:tnt",
+      "count": 2
+    },
+    {
+      "item": "minecraft:coal",
+      "data": 1,
+      "count": 16
+    }
+  ]
+}

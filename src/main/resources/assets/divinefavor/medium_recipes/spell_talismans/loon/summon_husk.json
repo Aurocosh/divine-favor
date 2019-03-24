@@ -1,0 +1,27 @@
+{
+  "result": {
+    "item": "divinefavor:talisman_summon_husk"
+  },
+  "stone": "divinefavor:calling_stone_loon",
+  "ingredients": [
+    {
+      "item": "minecraft:paper"
+    },
+    {
+      "item": "minecraft:dye",
+      "data": 11
+    },
+    {
+      "item": "minecraft:rotten_flesh",
+      "count": 32
+    },
+    {
+      "item": "minecraft:sand",
+      "count": 32
+    },
+    {
+      "item": "minecraft:leather",
+      "count": 8
+    }
+  ]
+}

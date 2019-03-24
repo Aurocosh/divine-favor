@@ -1,0 +1,23 @@
+{
+  "result": {
+    "item": "divinefavor:talisman_evil_eye"
+  },
+  "stone": "divinefavor:calling_stone_neblaze",
+  "ingredients": [
+    {
+      "item": "minecraft:paper"
+    },
+    {
+      "item": "minecraft:dye",
+      "data": 5
+    },
+    {
+      "item": "minecraft:diamond",
+      "count": 1
+    },
+    {
+      "item": "minecraft:spider_eye",
+      "count": 20
+    }
+  ]
+}

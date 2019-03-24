@@ -1,0 +1,28 @@
+{
+  "result": {
+    "item": "divinefavor:talisman_summon_creeper"
+  },
+  "stone": "divinefavor:calling_stone_loon",
+  "ingredients": [
+    {
+      "item": "minecraft:paper"
+    },
+    {
+      "item": "minecraft:dye",
+      "data": 2
+    },
+    {
+      "item": "minecraft:porkchop",
+      "count": 32
+    },
+    {
+      "item": "minecraft:gunpowder",
+      "count": 32
+    },
+    {
+      "item": "minecraft:tallgrass",
+      "data": 1,
+      "count": 32
+    }
+  ]
+}

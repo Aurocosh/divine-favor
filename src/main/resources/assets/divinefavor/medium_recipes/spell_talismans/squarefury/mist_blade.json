@@ -1,0 +1,18 @@
+{
+  "result": {
+    "item": "divinefavor:talisman_mist_blade"
+  },
+  "stone": "divinefavor:calling_stone_squarefury",
+  "ingredients": [
+    {
+      "item": "minecraft:paper"
+    },
+    {
+      "item": "minecraft:dye",
+      "data": 7
+    },
+    {
+      "item": "minecraft:wooden_sword"
+    }
+  ]
+}
