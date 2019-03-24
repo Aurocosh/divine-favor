@@ -1,0 +1,23 @@
+{
+  "result": {
+    "item": "divinefavor:arrow_talisman_skyfall"
+  },
+  "stone": "divinefavor:calling_stone_timber",
+  "ingredients": [
+    {
+      "item": "minecraft:paper"
+    },
+    {
+      "item": "minecraft:dye",
+      "data": 15
+    },
+    {
+      "item": "minecraft:feather",
+      "count": 16
+    },
+    {
+      "item": "minecraft:string",
+      "count": 16
+    }
+  ]
+}

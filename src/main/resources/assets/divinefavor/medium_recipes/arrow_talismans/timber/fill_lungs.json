@@ -1,0 +1,26 @@
+{
+  "result": {
+    "item": "divinefavor:arrow_talisman_fill_lungs"
+  },
+  "stone": "divinefavor:calling_stone_timber",
+  "ingredients": [
+    {
+      "item": "minecraft:paper"
+    },
+    {
+      "item": "minecraft:dye",
+      "data": 0
+    },
+    {
+      "item": "minecraft:reeds",
+      "count": 8
+    },
+    {
+      "item": "minecraft:string",
+      "count": 8
+    },
+    {
+      "item": "minecraft:water_bucket"
+    }
+  ]
+}

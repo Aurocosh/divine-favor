@@ -1,0 +1,19 @@
+{
+  "result": {
+    "item": "divinefavor:arrow_talisman_roots"
+  },
+  "stone": "divinefavor:calling_stone_timber",
+  "ingredients": [
+    {
+      "item": "minecraft:paper"
+    },
+    {
+      "item": "minecraft:dye",
+      "data": 3
+    },
+    {
+      "item": "minecraft:deadbush",
+      "count": 16
+    }
+  ]
+}

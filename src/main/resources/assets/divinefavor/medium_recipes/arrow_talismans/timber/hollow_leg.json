@@ -1,0 +1,22 @@
+{
+  "result": {
+    "item": "divinefavor:arrow_talisman_hollow_leg"
+  },
+  "stone": "divinefavor:calling_stone_timber",
+  "ingredients": [
+    {
+      "item": "minecraft:paper"
+    },
+    {
+      "item": "minecraft:dye",
+      "data": 0
+    },
+    {
+      "item": "minecraft:bread",
+      "count": 32
+    },
+    {
+      "item": "minecraft:bucket"
+    }
+  ]
+}

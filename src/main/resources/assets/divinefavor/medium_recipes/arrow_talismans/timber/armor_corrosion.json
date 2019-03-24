@@ -1,0 +1,22 @@
+{
+  "result": {
+    "item": "divinefavor:arrow_talisman_armor_corrosion"
+  },
+  "stone": "divinefavor:calling_stone_timber",
+  "ingredients": [
+    {
+      "item": "minecraft:paper"
+    },
+    {
+      "item": "minecraft:dye",
+      "data": 9
+    },
+    {
+      "item": "minecraft:slime_ball",
+      "count": 8
+    },
+    {
+      "item": "minecraft:golden_helmet"
+    }
+  ]
+}
