@@ -26,9 +26,10 @@ public class RecipeLoader {
         }
 
         for (MediumRecipeData recipe : recipes) {
-            ImmaterialMediumRecipe mediumRecipe = recipe.toRecipe();
-            if (mediumRecipe != null)
-                ModRecipes.register(mediumRecipe);
+            for (ImmaterialMediumRecipe mediumRecipe : recipe.toRecipes()) {
+                if (mediumRecipe != null)
+                    ModRecipes.register(mediumRecipe);
+            }
         }
     }
 }

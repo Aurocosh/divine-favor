@@ -3,13 +3,11 @@ package aurocosh.divinefavor.common.receipes;
 import aurocosh.divinefavor.common.lib.ItemStackIdComparator;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
-import net.minecraft.util.ResourceLocation;
 
 import java.util.*;
 
 public class ModRecipes {
-    public static final Map<ResourceLocation, ImmaterialMediumRecipe> recipes = new HashMap<>();
-    public static final Map<String, ImmaterialMediumRecipe> recipeLookup = new HashMap<>();
+    public static final Map<String, ImmaterialMediumRecipe> recipes = new HashMap<>();
 
     public static void init() {
 //        register(new RecipeBuilder(new ItemStack(ModSpellTalismans.arrow_throw_talisman), ModCallingStones.calling_stone_timber)
@@ -25,13 +23,11 @@ public class ModRecipes {
     }
 
     public static ImmaterialMediumRecipe register(ImmaterialMediumRecipe recipe) {
-        recipes.put(recipe.getName(), recipe);
-
         List<ItemStack> stacks = getIngridientStacks(recipe.ingredients);
         stacks.sort(new ItemStackIdComparator());
         ItemStack callingStone = recipe.callingStone.getMatchingStacks()[0];
         String ingredientString = getStackListString(callingStone, stacks);
-        recipeLookup.put(ingredientString, recipe);
+        recipes.put(ingredientString, recipe);
         return recipe;
     }
 
@@ -40,7 +36,7 @@ public class ModRecipes {
         itemStacks.sort(new ItemStackIdComparator());
 
         String ingredientString = getStackListString(callingStone, stacks);
-        ImmaterialMediumRecipe recipe = recipeLookup.get(ingredientString);
+        ImmaterialMediumRecipe recipe = recipes.get(ingredientString);
 
         if (recipe == null)
             return ItemStack.EMPTY;

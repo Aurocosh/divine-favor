@@ -18,9 +18,4 @@ public class ImmaterialMediumRecipe {
     public ResourceLocation getName() {
         return result.getItem().getRegistryName();
     }
-
-    public ImmaterialMediumRecipe register() {
-        ModRecipes.recipes.put(getName(), this);
-        return this;
-    }
 }
