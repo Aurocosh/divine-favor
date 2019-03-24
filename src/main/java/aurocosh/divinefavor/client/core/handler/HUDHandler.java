@@ -3,7 +3,7 @@ package aurocosh.divinefavor.client.core.handler;
 import aurocosh.divinefavor.DivineFavor;
 import aurocosh.divinefavor.client.core.handler.hud.UtilHUD;
 import aurocosh.divinefavor.common.item.mystic_architect_stick.ItemMysticArchitectStick;
-import aurocosh.divinefavor.common.item.talismans.spell.base.ItemSpellTalisman;
+import aurocosh.divinefavor.common.item.talismans.base.ItemTalisman;
 import aurocosh.divinefavor.common.util.UtilNbt;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScaledResolution;
@@ -52,7 +52,7 @@ public final class HUDHandler {
     private void renderSpellRequirements(ScaledResolution res, float partialTicks, EntityPlayer player) {
         Minecraft mc = Minecraft.getMinecraft();
         ItemStack stack = mc.player.getHeldItem(EnumHand.MAIN_HAND);
-        if (stack.getItem() instanceof ItemSpellTalisman)
+        if (stack.getItem() instanceof ItemTalisman)
             UtilHUD.drawTalismanDescription(mc, res, partialTicks, player, stack);
     }
 
