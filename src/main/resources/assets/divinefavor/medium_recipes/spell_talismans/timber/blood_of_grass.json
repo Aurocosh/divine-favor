@@ -1,0 +1,30 @@
+{
+  "result": {
+    "item": "divinefavor:talisman_blood_of_grass"
+  },
+  "stone": "divinefavor:calling_stone_timber",
+  "ingredients": [
+    {
+      "item": "minecraft:paper"
+    },
+    {
+      "item": "minecraft:dye",
+      "data": 2
+    },
+    {
+      "item": "minecraft:tallgrass",
+      "data": 1,
+      "count": 32
+    },
+    {
+      "item": "minecraft:red_flower",
+      "data": 0,
+      "count": 16
+    },
+    {
+      "item": "minecraft:red_flower",
+      "data": 4,
+      "count": 16
+    }
+  ]
+}

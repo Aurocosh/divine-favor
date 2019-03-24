@@ -1,0 +1,23 @@
+{
+  "result": {
+    "item": "divinefavor:talisman_blade_of_grass"
+  },
+  "stone": "divinefavor:calling_stone_timber",
+  "ingredients": [
+    {
+      "item": "minecraft:paper"
+    },
+    {
+      "item": "minecraft:dye",
+      "data": 2
+    },
+    {
+      "item": "minecraft:tallgrass",
+      "data": 1,
+      "count": 32
+    },
+    {
+      "item": "minecraft:iron_sword"
+    }
+  ]
+}

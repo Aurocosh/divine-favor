@@ -1,0 +1,23 @@
+{
+  "result": {
+    "item": "divinefavor:talisman_ground_flow"
+  },
+  "stone": "divinefavor:calling_stone_romol",
+  "ingredients": [
+    {
+      "item": "minecraft:paper"
+    },
+    {
+      "item": "minecraft:dye",
+      "data": 8
+    },
+    {
+      "item": "minecraft:emerald",
+      "count": 5
+    },
+    {
+      "item": "minecraft:feather",
+      "count": 16
+    }
+  ]
+}

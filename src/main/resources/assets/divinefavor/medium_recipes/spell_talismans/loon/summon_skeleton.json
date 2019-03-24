@@ -1,0 +1,26 @@
+{
+  "result": {
+    "item": "divinefavor:talisman_summon_skeleton"
+  },
+  "stone": "divinefavor:calling_stone_loon",
+  "ingredients": [
+    {
+      "item": "minecraft:paper"
+    },
+    {
+      "item": "minecraft:dye",
+      "data": 15
+    },
+    {
+      "item": "minecraft:bone",
+      "count": 32
+    },
+    {
+      "item": "minecraft:arrow",
+      "count": 32
+    },
+    {
+      "item": "minecraft:milk_bucket"
+    }
+  ]
+}

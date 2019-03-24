@@ -1,0 +1,22 @@
+{
+  "result": {
+    "item": "divinefavor:talisman_crystalline_road"
+  },
+  "stone": "divinefavor:calling_stone_blizrabi",
+  "ingredients": [
+    {
+      "item": "minecraft:paper"
+    },
+    {
+      "item": "minecraft:dye",
+      "data": 6
+    },
+    {
+      "item": "minecraft:ice",
+      "count": 16
+    },
+    {
+      "item": "minecraft:leather_boots"
+    }
+  ]
+}

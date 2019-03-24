@@ -1,0 +1,26 @@
+{
+  "result": {
+    "item": "divinefavor:talisman_winter_breath"
+  },
+  "stone": "divinefavor:calling_stone_blizrabi",
+  "ingredients": [
+    {
+      "item": "minecraft:paper"
+    },
+    {
+      "item": "minecraft:dye",
+      "data": 4
+    },
+    {
+      "item": "minecraft:ice",
+      "count": 16
+    },
+    {
+      "item": "minecraft:snow",
+      "count": 16
+    },
+    {
+      "item": "minecraft:diamond"
+    }
+  ]
+}

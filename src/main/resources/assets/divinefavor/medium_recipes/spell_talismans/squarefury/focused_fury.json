@@ -1,0 +1,21 @@
+{
+  "result": {
+    "item": "divinefavor:talisman_focused_fury"
+  },
+  "stone": "divinefavor:calling_stone_squarefury",
+  "ingredients": [
+    {
+      "item": "minecraft:paper"
+    },
+    {
+      "item": "minecraft:dye",
+      "data": 11
+    },
+    {
+      "item": "minecraft:shield"
+    },
+    {
+      "item": "minecraft:diamond_sword"
+    }
+  ]
+}

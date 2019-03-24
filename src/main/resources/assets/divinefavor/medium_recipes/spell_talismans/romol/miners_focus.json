@@ -1,0 +1,26 @@
+{
+  "result": {
+    "item": "divinefavor:talisman_miners_focus"
+  },
+  "stone": "divinefavor:calling_stone_romol",
+  "ingredients": [
+    {
+      "item": "minecraft:paper"
+    },
+    {
+      "item": "minecraft:dye",
+      "data": 3
+    },
+    {
+      "item": "minecraft:sugar",
+      "count": 16
+    },
+    {
+      "item": "minecraft:redstone",
+      "count": 16
+    },
+    {
+      "item": "minecraft:wooden_pickaxe"
+    }
+  ]
+}

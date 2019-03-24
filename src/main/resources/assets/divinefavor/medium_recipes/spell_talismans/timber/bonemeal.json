@@ -1,0 +1,24 @@
+{
+  "result": {
+    "item": "divinefavor:talisman_bonemeal"
+  },
+  "stone": "divinefavor:calling_stone_timber",
+  "ingredients": [
+    {
+      "item": "minecraft:paper"
+    },
+    {
+      "item": "minecraft:dye",
+      "data": 2
+    },
+    {
+      "item": "minecraft:dye",
+      "data": 15,
+      "count": 32
+    },
+    {
+      "item": "minecraft:bone",
+      "count": 4
+    }
+  ]
+}

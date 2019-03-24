@@ -1,0 +1,24 @@
+{
+  "result": {
+    "item": "divinefavor:talisman_green_cycle"
+  },
+  "stone": "divinefavor:calling_stone_romol",
+  "ingredients": [
+    {
+      "item": "minecraft:paper"
+    },
+    {
+      "item": "minecraft:dye",
+      "data": 10
+    },
+    {
+      "item": "minecraft:wheat",
+      "count": 32
+    },
+    {
+      "item": "minecraft:dye",
+      "data": 15,
+      "count": 16
+    }
+  ]
+}

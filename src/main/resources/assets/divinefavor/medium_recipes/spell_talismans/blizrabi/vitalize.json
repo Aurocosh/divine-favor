@@ -1,0 +1,23 @@
+{
+  "result": {
+    "item": "divinefavor:talisman_vitalize"
+  },
+  "stone": "divinefavor:calling_stone_blizrabi",
+  "ingredients": [
+    {
+      "item": "minecraft:paper"
+    },
+    {
+      "item": "minecraft:dye",
+      "data": 1
+    },
+    {
+      "item": "minecraft:speckled_melon",
+      "count": 8
+    },
+    {
+      "item": "minecraft:golden_carrot",
+      "count": 8
+    }
+  ]
+}

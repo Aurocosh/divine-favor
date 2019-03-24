@@ -1,0 +1,19 @@
+{
+  "result": {
+    "item": "divinefavor:talisman_harvest"
+  },
+  "stone": "divinefavor:calling_stone_romol",
+  "ingredients": [
+    {
+      "item": "minecraft:paper"
+    },
+    {
+      "item": "minecraft:dye",
+      "data": 11
+    },
+    {
+      "item": "minecraft:wheat",
+      "count": 32
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "result": {
+    "item": "divinefavor:talisman_wooden_punch"
+  },
+  "stone": "divinefavor:calling_stone_romol",
+  "ingredients": [
+    {
+      "item": "minecraft:paper"
+    },
+    {
+      "item": "minecraft:dye",
+      "data": 8
+    },
+    {
+      "item": "minecraft:log",
+      "data": 0,
+      "count": 64
+    },
+    {
+      "item": "minecraft:log",
+      "data": 0,
+      "count": 64
+    },
+    {
+      "item": "minecraft:log",
+      "data": 0,
+      "count": 64
+    },
+    {
+      "item": "minecraft:wooden_axe"
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "result": {
+    "item": "divinefavor:talisman_infernal_touch"
+  },
+  "stone": "divinefavor:calling_stone_neblaze",
+  "ingredients": [
+    {
+      "item": "minecraft:paper"
+    },
+    {
+      "item": "minecraft:dye",
+      "data": 1
+    },
+    {
+      "item": "minecraft:diamond"
+    },
+    {
+      "item": "minecraft:lava_bucket"
+    }
+  ]
+}

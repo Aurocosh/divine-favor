@@ -1,0 +1,19 @@
+{
+  "result": {
+    "item": "divinefavor:talisman_small_fireball_throw"
+  },
+  "stone": "divinefavor:calling_stone_neblaze",
+  "ingredients": [
+    {
+      "item": "minecraft:paper"
+    },
+    {
+      "item": "minecraft:dye",
+      "data": 1
+    },
+    {
+      "item": "minecraft:fire_charge",
+      "count": 8
+    }
+  ]
+}

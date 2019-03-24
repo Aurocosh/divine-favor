@@ -1,0 +1,19 @@
+{
+  "result": {
+    "item": "divinefavor:talisman_wind_step"
+  },
+  "stone": "divinefavor:calling_stone_redwind",
+  "ingredients": [
+    {
+      "item": "minecraft:paper"
+    },
+    {
+      "item": "minecraft:dye",
+      "data": 14
+    },
+    {
+      "item": "minecraft:string",
+      "count": 16
+    }
+  ]
+}

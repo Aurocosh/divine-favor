@@ -1,0 +1,19 @@
+{
+  "result": {
+    "item": "divinefavor:talisman_grudge"
+  },
+  "stone": "divinefavor:calling_stone_squarefury",
+  "ingredients": [
+    {
+      "item": "minecraft:paper"
+    },
+    {
+      "item": "minecraft:dye",
+      "data": 15
+    },
+    {
+      "item": "minecraft:bone",
+      "count": 32
+    }
+  ]
+}

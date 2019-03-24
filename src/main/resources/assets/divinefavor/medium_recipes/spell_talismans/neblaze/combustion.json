@@ -1,0 +1,22 @@
+{
+  "result": {
+    "item": "divinefavor:talisman_combustion"
+  },
+  "stone": "divinefavor:calling_stone_neblaze",
+  "ingredients": [
+    {
+      "item": "minecraft:paper"
+    },
+    {
+      "item": "minecraft:dye",
+      "data": 14
+    },
+    {
+      "item": "minecraft:tnt",
+      "count": 8
+    },
+    {
+      "item": "minecraft:chest"
+    }
+  ]
+}

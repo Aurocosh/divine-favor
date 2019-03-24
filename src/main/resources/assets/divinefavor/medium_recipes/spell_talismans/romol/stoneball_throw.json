@@ -1,0 +1,19 @@
+{
+  "result": {
+    "item": "divinefavor:talisman_stoneball_throw"
+  },
+  "stone": "divinefavor:calling_stone_romol",
+  "ingredients": [
+    {
+      "item": "minecraft:paper"
+    },
+    {
+      "item": "minecraft:dye",
+      "data": 0
+    },
+    {
+      "item": "minecraft:cobblestone",
+      "count": 64
+    }
+  ]
+}

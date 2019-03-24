@@ -1,0 +1,28 @@
+{
+  "result": {
+    "item": "divinefavor:talisman_starvation"
+  },
+  "stone": "divinefavor:calling_stone_timber",
+  "ingredients": [
+    {
+      "item": "minecraft:paper"
+    },
+    {
+      "item": "minecraft:dye",
+      "data": 9
+    },
+    {
+      "item": "minecraft:leaves",
+      "count": 64
+    },
+    {
+      "item": "minecraft:tallgrass",
+      "data": 1,
+      "count": 64
+    },
+    {
+      "item": "minecraft:cooked_beef",
+      "count": 16
+    }
+  ]
+}

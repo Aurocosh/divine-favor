@@ -1,0 +1,27 @@
+{
+  "result": {
+    "item": "divinefavor:talisman_spider_might"
+  },
+  "stone": "divinefavor:calling_stone_loon",
+  "ingredients": [
+    {
+      "item": "minecraft:paper"
+    },
+    {
+      "item": "minecraft:dye",
+      "data": 0
+    },
+    {
+      "item": "minecraft:stick",
+      "count":8
+    },
+    {
+      "item": "minecraft:spider_eye",
+      "count":8
+    },
+    {
+      "item": "minecraft:string",
+      "count":8
+    }
+  ]
+}

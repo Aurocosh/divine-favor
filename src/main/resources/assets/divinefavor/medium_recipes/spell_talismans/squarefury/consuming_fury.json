@@ -1,0 +1,23 @@
+{
+  "result": {
+    "item": "divinefavor:talisman_consuming_fury"
+  },
+  "stone": "divinefavor:calling_stone_squarefury",
+  "ingredients": [
+    {
+      "item": "minecraft:paper"
+    },
+    {
+      "item": "minecraft:dye",
+      "data": 1
+    },
+    {
+      "item": "minecraft:bone",
+      "count": 2
+    },
+    {
+      "item": "minecraft:iron_sword",
+      "count": 2
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "result": {
+    "item": "divinefavor:talisman_empower_axe"
+  },
+  "stone": "divinefavor:calling_stone_romol",
+  "ingredients": [
+    {
+      "item": "minecraft:paper"
+    },
+    {
+      "item": "minecraft:dye",
+      "data": 3
+    },
+    {
+      "item": "minecraft:log",
+      "count": 64
+    },
+    {
+      "item": "minecraft:wooden_axe"
+    }
+  ]
+}
