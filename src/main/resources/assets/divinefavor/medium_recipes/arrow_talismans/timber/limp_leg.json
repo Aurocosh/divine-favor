@@ -1,0 +1,26 @@
+{
+  "result": {
+    "item": "divinefavor:arrow_talisman_limp_leg"
+  },
+  "stone": "divinefavor:calling_stone_timber",
+  "ingredients": [
+    {
+      "item": "minecraft:paper"
+    },
+    {
+      "item": "minecraft:dye",
+      "data": 8
+    },
+    {
+      "item": "minecraft:bone",
+      "count": 2
+    },
+    {
+      "item": "minecraft:red_mushroom",
+      "count": 8
+    },
+    {
+      "item": "minecraft:iron_boots"
+    }
+  ]
+}

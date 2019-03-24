@@ -1,0 +1,23 @@
+{
+  "result": {
+    "item": "divinefavor:arrow_talisman_wind_leash"
+  },
+  "stone": "divinefavor:calling_stone_timber",
+  "ingredients": [
+    {
+      "item": "minecraft:paper"
+    },
+    {
+      "item": "minecraft:dye",
+      "data": 8
+    },
+    {
+      "item": "minecraft:redstone",
+      "count": 16
+    },
+    {
+      "item": "minecraft:lead",
+      "count": 4
+    }
+  ]
+}

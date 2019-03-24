@@ -1,0 +1,26 @@
+{
+  "result": {
+    "item": "divinefavor:arrow_talisman_fiery_mark"
+  },
+  "stone": "divinefavor:calling_stone_timber",
+  "ingredients": [
+    {
+      "item": "minecraft:paper"
+    },
+    {
+      "item": "minecraft:dye",
+      "data": 1
+    },
+    {
+      "item": "minecraft:fire_charge",
+      "count": 8
+    },
+    {
+      "item": "minecraft:gunpowder",
+      "count": 16
+    },
+    {
+      "item": "minecraft:flint_and_steel"
+    }
+  ]
+}

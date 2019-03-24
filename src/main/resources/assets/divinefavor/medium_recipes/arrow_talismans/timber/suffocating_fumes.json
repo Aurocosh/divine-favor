@@ -1,0 +1,23 @@
+{
+  "result": {
+    "item": "divinefavor:arrow_talisman_suffocating_fumes"
+  },
+  "stone": "divinefavor:calling_stone_timber",
+  "ingredients": [
+    {
+      "item": "minecraft:paper"
+    },
+    {
+      "item": "minecraft:dye",
+      "data": 8
+    },
+    {
+      "item": "minecraft:soul_sand",
+      "count": 32
+    },
+    {
+      "item": "minecraft:rotten_flesh",
+      "count": 8
+    }
+  ]
+}
