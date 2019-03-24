@@ -1,12 +1,8 @@
 package aurocosh.divinefavor.common.receipes;
 
-import aurocosh.divinefavor.common.item.calling_stones.ItemCallingStone;
 import aurocosh.divinefavor.common.item.calling_stones.ModCallingStones;
-import aurocosh.divinefavor.common.item.contract.ItemContract;
 import aurocosh.divinefavor.common.item.talismans.spell.common.ModSpellTalismans;
 import aurocosh.divinefavor.common.lib.ItemStackIdComparator;
-import aurocosh.divinefavor.common.registry.ModRegistries;
-import aurocosh.divinefavor.common.spirit.base.ModSpirit;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
@@ -29,16 +25,10 @@ public class ModRecipes {
                 .addIngredient(Items.GUNPOWDER, 2)
                 .create()
         );
-
-        List<ItemContract> contracts = ModRegistries.items.getValues(ItemContract.class);
-        List<ItemCallingStone> callingStones = ModRegistries.items.getValues(ItemCallingStone.class);
-        Map<ModSpirit,ItemCallingStone> callingStonesMap = new HashMap<>();
-        for (ItemCallingStone callingStone : callingStones)
-            callingStonesMap.put(callingStone.spirit, callingStone);
     }
 
     public static ImmaterialMediumRecipe register(ImmaterialMediumRecipe recipe) {
-        recipes.put(recipe.name, recipe);
+        recipes.put(recipe.getName(), recipe);
 
         List<ItemStack> stacks = getIngridientStacks(recipe.ingredients);
         stacks.sort(new ItemStackIdComparator());
