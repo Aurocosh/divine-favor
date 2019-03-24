@@ -53,6 +53,7 @@ item.divinefavor:contract_capacity_minor.name=Capacity contract minor
 item.divinefavor:contract_capacity_major.name=Capacity contract major
 item.divinefavor:contract_regen_minor.name=Regen contract minor
 item.divinefavor:contract_regen_major.name=Regen contract major
+item.divinefavor:contract_creative.name=Creative contract
 
 # TALISMAN NAMES
 ## ARBOW TALISMANS
