@@ -1,20 +1,18 @@
 package aurocosh.divinefavor.common.custom_data.player.data.spell.gills;
 
+import aurocosh.divinefavor.common.config.common.ConfigSpells;
 import aurocosh.divinefavor.common.lib.LimitedTimer;
-import aurocosh.divinefavor.common.util.UtilTick;
 
 // The default implementation of the capability. Holds all the logic.
 public class GillsData {
-    private static int MAX_TIME_NOT_IN_WATER = UtilTick.secondsToTicks(10f);
-    private static int DAMAGE_DELAY = UtilTick.secondsToTicks(2.0f);
     private LimitedTimer timer;
 
     public GillsData() {
-        timer = new LimitedTimer(MAX_TIME_NOT_IN_WATER);
+        timer = new LimitedTimer(ConfigSpells.gills.maxTimeNotInWater);
     }
 
     public void setMaxTime() {
-        setTime(MAX_TIME_NOT_IN_WATER);
+        setTime(ConfigSpells.gills.maxTimeNotInWater);
     }
 
     public void setTime(int ticks) {
@@ -30,7 +28,7 @@ public class GillsData {
     }
 
     public void delay() {
-        timer.setTicks(timer.getTicks() - DAMAGE_DELAY);
+        timer.setTicks(timer.getTicks() - ConfigSpells.gills.damageDelay);
     }
 
     public boolean tick() {

@@ -1,15 +1,16 @@
 package aurocosh.divinefavor.common.custom_data.player.data.spell.pearl_crumbs;
 
+import aurocosh.divinefavor.common.config.common.ConfigSpells;
 import aurocosh.divinefavor.common.lib.GlobalBlockPos;
 
 import java.util.*;
 
 // The default implementation of the capability. Holds all the logic.
 public class PearlCrumbsData {
-    private Stack<GlobalBlockPos> positions;
+    private Deque<GlobalBlockPos> positions;
 
     public PearlCrumbsData() {
-        positions = new Stack<>();
+        positions = new ArrayDeque<>();
     }
 
     public GlobalBlockPos popGlobalPosition() {
@@ -18,6 +19,8 @@ public class PearlCrumbsData {
 
     public void pushGlobalPosition(GlobalBlockPos pos) {
         positions.push(pos);
+        if(positions.size() > ConfigSpells.pearlCrumbs.maxPositionsSaved)
+            positions.removeLast();
     }
 
     public boolean hasPositions() {
