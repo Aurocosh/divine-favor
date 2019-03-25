@@ -1,4 +1,6 @@
 package aurocosh.divinefavor.common.item.talismans.spell;
+
+import aurocosh.divinefavor.common.config.common.ConfigSpells;
 import aurocosh.divinefavor.common.favor.ModFavor;
 import aurocosh.divinefavor.common.item.talismans.spell.base.ItemSpellTalisman;
 import aurocosh.divinefavor.common.item.talismans.spell.base.SpellOptions;
@@ -11,8 +13,6 @@ import net.minecraft.util.math.BlockPos;
 import java.util.EnumSet;
 
 public class SpellTalismanWallSlip extends ItemSpellTalisman {
-    private final int MAX_TELEPORTATION_DISTANCE = 64;
-
     public SpellTalismanWallSlip(String name, ModFavor favor, int favorCost, EnumSet<SpellOptions> options) {
         super(name, favor, favorCost, options);
     }
@@ -20,9 +20,9 @@ public class SpellTalismanWallSlip extends ItemSpellTalisman {
     @Override
     protected void performActionServer(TalismanContext context) {
         EnumFacing facing = context.facing;
-        if(facing == EnumFacing.DOWN || facing == EnumFacing.UP)
+        if (facing == EnumFacing.DOWN || facing == EnumFacing.UP)
             return;
-        BlockPos pos = UtilCoordinates.findPlaceToTeleport(context.pos.down(), context.world, facing.getOpposite(), MAX_TELEPORTATION_DISTANCE, false);
+        BlockPos pos = UtilCoordinates.findPlaceToTeleport(context.pos.down(), context.world, facing.getOpposite(), ConfigSpells.wallSlip.maxDistance, false);
         if (pos != null)
             UtilEntity.teleport(context.player, pos.down());
     }

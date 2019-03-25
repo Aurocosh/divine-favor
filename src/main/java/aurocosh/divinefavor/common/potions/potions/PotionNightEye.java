@@ -1,5 +1,6 @@
 package aurocosh.divinefavor.common.potions.potions;
 
+import aurocosh.divinefavor.common.config.common.ConfigSpells;
 import aurocosh.divinefavor.common.lib.LoopedCounter;
 import aurocosh.divinefavor.common.potions.base.potion.ModPotionToggle;
 import aurocosh.divinefavor.common.util.UtilTick;
@@ -15,10 +16,6 @@ import net.minecraftforge.fml.common.gameevent.TickEvent;
 
 @Mod.EventBusSubscriber
 public class PotionNightEye extends ModPotionToggle {
-    public static int TOLERABLE_LIGHT_LEVEL = 4;
-    public static int BLINDNESS_DURATION = UtilTick.secondsToTicks(12);
-    public static int NIGHT_VISION_DURATION = UtilTick.secondsToTicks(20);
-
     public static final int TICK_RATE = UtilTick.secondsToTicks(1);
     private static final LoopedCounter TICK_COUNTER = new LoopedCounter(TICK_RATE);
 
@@ -38,11 +35,10 @@ public class PotionNightEye extends ModPotionToggle {
         int skyLightSub = world.calculateSkylightSubtracted(1.0f);
         int lightBlock = world.getLightFor(EnumSkyBlock.BLOCK, pos);
         int lightSky = world.getLightFor(EnumSkyBlock.SKY, pos) - skyLightSub;
-        if (Math.max(lightBlock, lightSky) <= TOLERABLE_LIGHT_LEVEL)
-            livingBase.addPotionEffect(new PotionEffect(MobEffects.NIGHT_VISION, NIGHT_VISION_DURATION));
+        if (Math.max(lightBlock, lightSky) <= ConfigSpells.nightEye.tolerableLightLevel)
+            livingBase.addPotionEffect(new PotionEffect(MobEffects.NIGHT_VISION, ConfigSpells.nightEye.nightVisionDuration));
         else
-            livingBase.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, BLINDNESS_DURATION));
-
+            livingBase.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, ConfigSpells.nightEye.blindnessDuration));
     }
 
     @Override

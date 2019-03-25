@@ -1,6 +1,6 @@
 package aurocosh.divinefavor.common.item.talismans.spell.common;
 
-import aurocosh.divinefavor.common.config.common.ConfigTalismans;
+import aurocosh.divinefavor.common.config.common.ConfigSpells;
 import aurocosh.divinefavor.common.entity.minions.*;
 import aurocosh.divinefavor.common.favor.ModFavors;
 import aurocosh.divinefavor.common.item.common.ModItems;
@@ -84,51 +84,51 @@ public final class ModSpellTalismans {
 
     public static void preInit() {
         // arbow
-        arrow_throw_talisman = new SpellTalismanArrowThrow("arrow_throw", ModFavors.arbow, 1, SpellOptions.ALL_CAST);
+        arrow_throw_talisman = new SpellTalismanArrowThrow("arrow_throw", ModFavors.arbow, ConfigSpells.arrowThrow.favorCost, SpellOptions.ALL_CAST);
 
         // blizzrabi
-        armor_of_pacifist = new SpellTalismanModPotionToggle("armor_of_pacifist", ModFavors.blizrabi, 10, ModPotions.armor_of_pacifist);
-        crystalline_road = new SpellTalismanModPotion("crystalline_road", ModFavors.blizrabi, 10, ModPotions.crystalline_road, UtilTick.minutesToTicks(1));
-        fins = new SpellTalismanModPotion("fins", ModFavors.blizrabi, ConfigTalismans.fins.uses, ModPotions.fins, ConfigTalismans.fins.duration);
-        gills = new SpellTalismanModPotionToggle("gills", ModFavors.blizrabi, 5, ModPotions.gills);
-        obsidian_road = new SpellTalismanModPotion("obsidian_road", ModFavors.blizrabi, 5, ModPotions.obsidian_road, UtilTick.minutesToTicks(1));
-        snowball_throw = new SpellTalismanSnowballThrow("snowball_throw", ModFavors.blizrabi, 1, SpellOptions.ALL_CAST);
-        vitalize = new SpellTalismanVitalize("vitalize", ModFavors.blizrabi, 1, SpellOptions.ALL_CAST);
-        winter_breath = new SpellTalismanWinterBreath("winter_breath", ModFavors.blizrabi, 1, SpellOptions.ALL_CAST);
+        armor_of_pacifist = new SpellTalismanModPotionToggle("armor_of_pacifist", ModFavors.blizrabi, ConfigSpells.armorOfPacifist.favorCost, ModPotions.armor_of_pacifist);
+        crystalline_road = new SpellTalismanModPotion("crystalline_road", ModFavors.blizrabi, ConfigSpells.crystallineRoad.favorCost, ModPotions.crystalline_road, ConfigSpells.crystallineRoad.duration);
+        fins = new SpellTalismanModPotion("fins", ModFavors.blizrabi, ConfigSpells.fins.favorCost, ModPotions.fins, ConfigSpells.fins.duration);
+        gills = new SpellTalismanModPotionToggle("gills", ModFavors.blizrabi, ConfigSpells.gills.favorCost, ModPotions.gills);
+        obsidian_road = new SpellTalismanModPotion("obsidian_road", ModFavors.blizrabi, ConfigSpells.obsidianRoad.favorCost, ModPotions.obsidian_road, ConfigSpells.obsidianRoad.duration);
+        snowball_throw = new SpellTalismanSnowballThrow("snowball_throw", ModFavors.blizrabi, ConfigSpells.snowballThrow.favorCost, SpellOptions.ALL_CAST);
+        vitalize = new SpellTalismanVitalize("vitalize", ModFavors.blizrabi, ConfigSpells.vitalize.favorCost, SpellOptions.ALL_CAST);
+        winter_breath = new SpellTalismanWinterBreath("winter_breath", ModFavors.blizrabi, ConfigSpells.winterBreath.favorCost, SpellOptions.ALL_CAST);
 
         // endererer
-        blink = new SpellTalismanBlink("blink", ModFavors.endererer, 10, SpellOptions.ALL_CAST, true, 5);
-        earthen_dive = new SpellTalismanEarthenDive("earthen_dive", ModFavors.endererer, 1, SpellOptions.USE_CAST);
-        escape_plan = new SpellTalismanEscapePlan("escape_plan", ModFavors.endererer, 1, SpellOptions.ALL_CAST);
-        invite_gem = new SpellTalismanInviteMarker("invite_gem", ModFavors.endererer, 1, SpellOptions.ALL_CAST, ModItems.invite_gem);
-        invite_pebble = new SpellTalismanInviteMarker("invite_pebble", ModFavors.endererer, 5, SpellOptions.ALL_CAST, ModItems.invite_pebble);
-        overblink = new SpellTalismanBlink("overblink", ModFavors.endererer, 10, SpellOptions.ALL_CAST, true, 50);
-        overwarp = new SpellTalismanBlink("overwarp", ModFavors.endererer, 20, SpellOptions.ALL_CAST, false, 80);
-        pearl_crumbs = new SpellTalismanPearlCrumbs("pearl_crumbs", ModFavors.endererer, 1, SpellOptions.ALL_CAST);
-        remote_chest = new SpellTalismanRemoteChest("remote_chest", ModFavors.endererer, 10, SpellOptions.USE_CAST, ModItems.storage_gem);
-        surface_blink = new SpellTalismanSurfaceBlink("surface_blink", ModFavors.endererer, 1, SpellOptions.ALL_CAST_TRACE);
-        surface_shift = new SpellTalismanSurfaceShift("surface_shift", ModFavors.endererer, 1, SpellOptions.ALL_CAST);
-        wall_slip = new SpellTalismanWallSlip("wall_slip", ModFavors.endererer, 1, SpellOptions.USE_CAST);
-        warp = new SpellTalismanBlink("warp", ModFavors.endererer, 30, SpellOptions.ALL_CAST, false, 8);
-        warp_gem = new SpellTalismanWarpMarker("warp_gem", ModFavors.endererer, 1, SpellOptions.ALL_CAST, ModItems.warp_gem);
-        warp_pebble = new SpellTalismanWarpMarker("warp_pebble", ModFavors.endererer, 5, SpellOptions.ALL_CAST, ModItems.warp_pebble);
+        blink = new SpellTalismanBlink("blink", ModFavors.endererer, ConfigSpells.blink.favorCost, SpellOptions.ALL_CAST, true, ConfigSpells.blink.distance);
+        earthen_dive = new SpellTalismanEarthenDive("earthen_dive", ModFavors.endererer, ConfigSpells.earthenDive.favorCost, SpellOptions.USE_CAST);
+        escape_plan = new SpellTalismanEscapePlan("escape_plan", ModFavors.endererer, ConfigSpells.escapePlan.favorCost, SpellOptions.ALL_CAST);
+        invite_gem = new SpellTalismanInviteMarker("invite_gem", ModFavors.endererer, ConfigSpells.inviteGem.favorCost, SpellOptions.ALL_CAST, ModItems.invite_gem);
+        invite_pebble = new SpellTalismanInviteMarker("invite_pebble", ModFavors.endererer, ConfigSpells.invitePebble.favorCost, SpellOptions.ALL_CAST, ModItems.invite_pebble);
+        overblink = new SpellTalismanBlink("overblink", ModFavors.endererer, ConfigSpells.overblink.favorCost, SpellOptions.ALL_CAST, true, ConfigSpells.overblink.distance);
+        overwarp = new SpellTalismanBlink("overwarp", ModFavors.endererer, ConfigSpells.overwarp.favorCost, SpellOptions.ALL_CAST, false, ConfigSpells.overwarp.distance);
+        pearl_crumbs = new SpellTalismanPearlCrumbs("pearl_crumbs", ModFavors.endererer, ConfigSpells.pearlCrumbs.favorCost, SpellOptions.ALL_CAST);
+        remote_chest = new SpellTalismanRemoteChest("remote_chest", ModFavors.endererer, ConfigSpells.remoteChest.favorCost, SpellOptions.USE_CAST, ModItems.storage_gem);
+        surface_blink = new SpellTalismanSurfaceBlink("surface_blink", ModFavors.endererer, ConfigSpells.surfaceBlink.favorCost, SpellOptions.ALL_CAST_TRACE);
+        surface_shift = new SpellTalismanSurfaceShift("surface_shift", ModFavors.endererer, ConfigSpells.surfaceShift.favorCost, SpellOptions.ALL_CAST);
+        wall_slip = new SpellTalismanWallSlip("wall_slip", ModFavors.endererer, ConfigSpells.wallSlip.favorCost, SpellOptions.USE_CAST);
+        warp = new SpellTalismanBlink("warp", ModFavors.endererer, ConfigSpells.warp.favorCost, SpellOptions.ALL_CAST, false, ConfigSpells.warp.distance);
+        warp_gem = new SpellTalismanWarpMarker("warp_gem", ModFavors.endererer, ConfigSpells.warpGem.favorCost, SpellOptions.ALL_CAST, ModItems.warp_gem);
+        warp_pebble = new SpellTalismanWarpMarker("warp_pebble", ModFavors.endererer, ConfigSpells.warpPebble.favorCost, SpellOptions.ALL_CAST, ModItems.warp_pebble);
 
         // loon
-        follow = new SpellTalismanFollow("follow", ModFavors.loon,0, SpellOptions.RIGHT_CAST);
-        night_eye = new SpellTalismanModPotionToggle("night_eye", ModFavors.loon, 4, ModPotions.night_eye);
-        spider_might = new SpellTalismanModPotion("spider_might", ModFavors.loon, ConfigTalismans.spider_might.uses, ModPotions.spider_might, ConfigTalismans.spider_might.duration);
-        summon_creeper = new SpellTalismanSummonMinion<>("summon_creeper", ModFavors.loon, 1, SpellOptions.USE_CAST, MinionCreeper.class);
-        summon_husk = new SpellTalismanSummonMinion<>("summon_husk", ModFavors.loon, 1, SpellOptions.USE_CAST, MinionHusk.class);
-        summon_skeleton = new SpellTalismanSummonMinion<>("summon_skeleton", ModFavors.loon, 1, SpellOptions.USE_CAST, MinionSkeleton.class);
-        summon_stray = new SpellTalismanSummonMinion<>("summon_stray", ModFavors.loon, 1, SpellOptions.USE_CAST, MinionStray.class);
-        summon_zombie = new SpellTalismanSummonMinion<>("summon_zombie", ModFavors.loon, 1, SpellOptions.USE_CAST, MinionZombie.class);
-        target = new SpellTalismanTarget("target", ModFavors.loon,0, SpellOptions.ENTITY_CAST);
+        follow = new SpellTalismanFollow("follow", ModFavors.loon, ConfigSpells.follow.favorCost, SpellOptions.RIGHT_CAST);
+        night_eye = new SpellTalismanModPotionToggle("night_eye", ModFavors.loon, ConfigSpells.nightEye.favorCost, ModPotions.night_eye);
+        spider_might = new SpellTalismanModPotion("spider_might", ModFavors.loon, ConfigSpells.spider_might.favorCost, ModPotions.spider_might, ConfigSpells.spider_might.duration);
+        summon_creeper = new SpellTalismanSummonMinion<>("summon_creeper", ModFavors.loon, ConfigSpells.summonCreeper.favorCost, SpellOptions.USE_CAST, MinionCreeper.class);
+        summon_husk = new SpellTalismanSummonMinion<>("summon_husk", ModFavors.loon, ConfigSpells.summonHusk.favorCost, SpellOptions.USE_CAST, MinionHusk.class);
+        summon_skeleton = new SpellTalismanSummonMinion<>("summon_skeleton", ModFavors.loon, ConfigSpells.summonSkeleton.favorCost, SpellOptions.USE_CAST, MinionSkeleton.class);
+        summon_stray = new SpellTalismanSummonMinion<>("summon_stray", ModFavors.loon, ConfigSpells.summonStray.favorCost, SpellOptions.USE_CAST, MinionStray.class);
+        summon_zombie = new SpellTalismanSummonMinion<>("summon_zombie", ModFavors.loon, ConfigSpells.summonZombie.favorCost, SpellOptions.USE_CAST, MinionZombie.class);
+        target = new SpellTalismanTarget("target", ModFavors.loon, 0, SpellOptions.ENTITY_CAST);
 
         // neblaze
         blazing_palm = new SpellTalismanBlazingPalm("blazing_palm", ModFavors.neblaze, 1, SpellOptions.ALL_CAST);
         combustion = new SpellTalismanCombustion("combustion", ModFavors.neblaze, 1, SpellOptions.USE_CAST);
         distant_spark = new SpellTalismanIgnition("distant_spark", ModFavors.neblaze, 2, SpellOptions.ALL_CAST_TRACE);
-        evil_eye = new SpellTalismanEvilEye("evil_eye", ModFavors.neblaze,10, SpellOptions.ENTITY_CAST);
+        evil_eye = new SpellTalismanEvilEye("evil_eye", ModFavors.neblaze, 10, SpellOptions.ENTITY_CAST);
         heat_wave = new SpellTalismanHeatWave("heat_wave", ModFavors.neblaze, 1, SpellOptions.ALL_CAST);
         hellisphere = new SpellTalismanHellisphere("hellisphere", ModFavors.neblaze, 1, SpellOptions.USE_CAST);
         ignition = new SpellTalismanIgnition("ignition", ModFavors.neblaze, 1, SpellOptions.USE_CAST);

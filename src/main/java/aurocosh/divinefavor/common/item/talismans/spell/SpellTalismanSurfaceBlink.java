@@ -1,4 +1,6 @@
 package aurocosh.divinefavor.common.item.talismans.spell;
+
+import aurocosh.divinefavor.common.config.common.ConfigSpells;
 import aurocosh.divinefavor.common.favor.ModFavor;
 import aurocosh.divinefavor.common.item.talismans.spell.base.ItemSpellTalisman;
 import aurocosh.divinefavor.common.item.talismans.spell.base.SpellOptions;
@@ -10,8 +12,6 @@ import net.minecraft.util.math.BlockPos;
 import java.util.EnumSet;
 
 public class SpellTalismanSurfaceBlink extends ItemSpellTalisman {
-    private static final double blinkDistance = 20;
-
     public SpellTalismanSurfaceBlink(String name, ModFavor favor, int favorCost, EnumSet<SpellOptions> options) {
         super(name, favor, favorCost, options);
     }
@@ -30,25 +30,26 @@ public class SpellTalismanSurfaceBlink extends ItemSpellTalisman {
     }
 
     private BlockPos getBlinkTarget(TalismanContext context) {
-        if(context.pos == null)
+        if (context.pos == null)
             return null;
-        if(context.facing == null)
+        if (context.facing == null)
             return null;
         BlockPos target = context.pos.offset(context.facing);
-        if(context.facing == EnumFacing.DOWN)
+        if (context.facing == EnumFacing.DOWN)
             return target.down();
-        if(context.facing == EnumFacing.UP)
+        if (context.facing == EnumFacing.UP)
             return target;
         return target.down();
     }
 
-    private boolean canWarp(BlockPos target, TalismanContext context){
-        if(target == null)
+    private boolean canWarp(BlockPos target, TalismanContext context) {
+        if (target == null)
             return false;
-        if(!context.world.isAirBlock(target))
+        if (!context.world.isAirBlock(target))
             return false;
-        if(!context.world.isAirBlock(target.up()))
+        if (!context.world.isAirBlock(target.up()))
             return false;
+        int blinkDistance = ConfigSpells.surfaceBlink.distance;
         return context.player.getDistanceSq(target) < blinkDistance * blinkDistance;
     }
 }

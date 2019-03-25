@@ -1,5 +1,6 @@
 package aurocosh.divinefavor.common.item.talismans.spell;
 
+import aurocosh.divinefavor.common.config.common.ConfigSpells;
 import aurocosh.divinefavor.common.damage_source.ModDamageSources;
 import aurocosh.divinefavor.common.favor.ModFavor;
 import aurocosh.divinefavor.common.item.talismans.spell.base.ItemSpellTalisman;
@@ -14,11 +15,6 @@ import java.util.EnumSet;
 import java.util.List;
 
 public class SpellTalismanWinterBreath extends ItemSpellTalisman {
-    private final double RADIUS = 10;
-    private final float CONE_TOLERANCE = 0.8f;
-    private final float EXTRA_DAMAGE = 1;
-    private final float KNOCKBACK_FORCE = 2;
-
     public SpellTalismanWinterBreath(String name, ModFavor favor, int favorCost, EnumSet<SpellOptions> options) {
         super(name, favor, favorCost, options);
     }
@@ -27,11 +23,12 @@ public class SpellTalismanWinterBreath extends ItemSpellTalisman {
     protected void performActionServer(TalismanContext context) {
         Vec3d origin = context.player.getPositionVector();
         Vec3d lookVec = context.player.getLookVec();
-        double radiusSq = RADIUS * RADIUS;
-        List<EntityLivingBase> entities = UtilEntity.getEntitiesInSquareRadius(EntityLivingBase.class, context.world, origin, RADIUS, (EntityLivingBase livingBase) -> (livingBase != null) && (livingBase != context.player) && UtilEntity.isInRadius(origin, livingBase, radiusSq) && UtilEntity.isInCone(lookVec, origin, livingBase, CONE_TOLERANCE));
+        int radius = ConfigSpells.winterBreath.radius;
+        double radiusSq = radius * radius;
+        List<EntityLivingBase> entities = UtilEntity.getEntitiesInSquareRadius(EntityLivingBase.class, context.world, origin, radius, (EntityLivingBase livingBase) -> (livingBase != null) && (livingBase != context.player) && UtilEntity.isInRadius(origin, livingBase, radiusSq) && UtilEntity.isInCone(lookVec, origin, livingBase, ConfigSpells.winterBreath.coneTolerance));
         for (Entity entity : entities) {
-            entity.attackEntityFrom(ModDamageSources.frostDamage, EXTRA_DAMAGE);
-            UtilEntity.addVelocity(entity, lookVec, KNOCKBACK_FORCE);
+            entity.attackEntityFrom(ModDamageSources.frostDamage, ConfigSpells.winterBreath.damage);
+            UtilEntity.addVelocity(entity, lookVec, ConfigSpells.winterBreath.knockback);
         }
     }
 }
