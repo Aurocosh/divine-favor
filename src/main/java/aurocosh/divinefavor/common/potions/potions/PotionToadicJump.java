@@ -1,5 +1,6 @@
 package aurocosh.divinefavor.common.potions.potions;
 
+import aurocosh.divinefavor.common.config.common.ConfigSpells;
 import aurocosh.divinefavor.common.custom_data.player.PlayerData;
 import aurocosh.divinefavor.common.custom_data.player.data.favor.FavorData;
 import aurocosh.divinefavor.common.favor.ModFavor;
@@ -15,8 +16,6 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 @Mod.EventBusSubscriber
 public class PotionToadicJump extends ModPotionToggleLimited {
-    private static float JUMP_BOOST = 0.3f;
-
     public PotionToadicJump() {
         super("toadic_jump", true, 0x7FB8A4);
     }
@@ -30,7 +29,7 @@ public class PotionToadicJump extends ModPotionToggleLimited {
         if (!player.isPotionActive(ModPotions.toadic_jump))
             return;
 
-        entity.motionY += JUMP_BOOST;
+        entity.motionY += ConfigSpells.toadicJump.jumpBoost;
         if (entity.world.isRemote)
             return;
 

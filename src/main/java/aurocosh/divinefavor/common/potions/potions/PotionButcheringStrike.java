@@ -1,5 +1,6 @@
 package aurocosh.divinefavor.common.potions.potions;
 
+import aurocosh.divinefavor.common.config.common.ConfigSpells;
 import aurocosh.divinefavor.common.network.message.client.MessageSyncPotionCharge;
 import aurocosh.divinefavor.common.potions.base.effect.ModEffectCharge;
 import aurocosh.divinefavor.common.potions.base.potion.ModPotionCharge;
@@ -17,9 +18,6 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 @Mod.EventBusSubscriber
 public class PotionButcheringStrike extends ModPotionCharge {
-    private static float EXTRA_DAMAGE = 30;
-    private static int EXTRA_LOOTING = 5;
-
     public PotionButcheringStrike() {
         super("butchering_strike", true, 0x7FB8A4);
     }
@@ -44,9 +42,9 @@ public class PotionButcheringStrike extends ModPotionCharge {
         ModEffectCharge effectCharge = (ModEffectCharge) player.getActivePotionEffect(ModPotions.butchering_strike);
         assert effectCharge != null;
         int charges = effectCharge.consumeCharge();
-        new MessageSyncPotionCharge(ModPotions.butchering_strike,charges).sendTo(player);
+        new MessageSyncPotionCharge(ModPotions.butchering_strike, charges).sendTo(player);
 
-        event.setAmount(event.getAmount() + EXTRA_DAMAGE);
+        event.setAmount(event.getAmount() + ConfigSpells.butcheringStrike.extraDamage);
     }
 
     @SubscribeEvent
@@ -65,7 +63,7 @@ public class PotionButcheringStrike extends ModPotionCharge {
             return;
         if (animal instanceof IMob)
             return;
-        event.setLootingLevel(event.getLootingLevel() + EXTRA_LOOTING);
+        event.setLootingLevel(event.getLootingLevel() + ConfigSpells.butcheringStrike.extraLooting);
     }
 
     @Override

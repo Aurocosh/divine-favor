@@ -1,12 +1,12 @@
 package aurocosh.divinefavor.common.item.talismans.spell;
 
+import aurocosh.divinefavor.common.config.common.ConfigSpells;
 import aurocosh.divinefavor.common.favor.ModFavor;
 import aurocosh.divinefavor.common.item.talismans.spell.base.ItemSpellTalisman;
 import aurocosh.divinefavor.common.item.talismans.spell.base.SpellOptions;
-import aurocosh.divinefavor.common.lib.math.Vector3i;
 import aurocosh.divinefavor.common.item.talismans.spell.base.TalismanContext;
+import aurocosh.divinefavor.common.lib.math.Vector3i;
 import aurocosh.divinefavor.common.util.UtilBlock;
-import aurocosh.divinefavor.common.util.UtilTick;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
@@ -25,19 +25,16 @@ import java.util.EnumSet;
 import java.util.List;
 
 public class SpellTalismanBladeOfGrass extends ItemSpellTalisman {
-    private final double RADIUS = 10;
-    private final int SLOWNESS_TIME = UtilTick.secondsToTicks(15);
-    private final float DAMAGE = 2;
-
     public SpellTalismanBladeOfGrass(String name, ModFavor favor, int favorCost, EnumSet<SpellOptions> options) {
         super(name, favor, favorCost, options);
     }
 
     @Override
     protected void performActionServer(TalismanContext context) {
+        int radius = ConfigSpells.bladeOfGrass.radius;
         EntityPlayer player = context.player;
         Vector3i origin = Vector3i.convert(player.getPosition());
-        AxisAlignedBB axis = new AxisAlignedBB(origin.x - RADIUS, origin.y - RADIUS, origin.z - RADIUS, origin.x + RADIUS, origin.y + RADIUS, origin.z + RADIUS);
+        AxisAlignedBB axis = new AxisAlignedBB(origin.x - radius, origin.y - radius, origin.z - radius, origin.x + radius, origin.y + radius, origin.z + radius);
         List<Entity> list = context.world.getEntitiesWithinAABB(Entity.class, axis, (Entity e) -> isValid(e, player, origin));
 
         for (Entity entity : list) {
@@ -51,8 +48,8 @@ public class SpellTalismanBladeOfGrass extends ItemSpellTalisman {
 
             if (consumeGrass(positions, context.player, context.world)) {
                 EntityLivingBase base = (EntityLivingBase) entity;
-                base.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, SLOWNESS_TIME));
-                base.attackEntityFrom(DamageSource.causePlayerDamage(player), DAMAGE);
+                base.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, ConfigSpells.bladeOfGrass.slownessTime, ConfigSpells.bladeOfGrass.slownessLevel));
+                base.attackEntityFrom(DamageSource.causePlayerDamage(player), ConfigSpells.bladeOfGrass.damage);
             }
         }
     }
@@ -69,15 +66,15 @@ public class SpellTalismanBladeOfGrass extends ItemSpellTalisman {
 
     private boolean isInRadius(Vector3i origin, Entity entity) {
         Vector3i entityVec = Vector3i.convert(entity.getPosition());
-        return origin.isDistanceLessThen(entityVec, RADIUS);
+        return origin.isDistanceLessThen(entityVec, ConfigSpells.bladeOfGrass.radius);
     }
 
-    private boolean consumeGrass(List<BlockPos> positions, EntityPlayer player, World world){
+    private boolean consumeGrass(List<BlockPos> positions, EntityPlayer player, World world) {
         for (BlockPos pos : positions) {
             IBlockState state = world.getBlockState(pos);
-            if(state.getMaterial() != Material.GRASS)
+            if (state.getMaterial() != Material.GRASS)
                 return false;
-            if(!UtilBlock.canBreakBlock(player,world,pos,false))
+            if (!UtilBlock.canBreakBlock(player, world, pos, false))
                 return false;
         }
         for (BlockPos pos : positions)

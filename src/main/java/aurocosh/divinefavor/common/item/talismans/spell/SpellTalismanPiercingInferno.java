@@ -1,4 +1,6 @@
 package aurocosh.divinefavor.common.item.talismans.spell;
+
+import aurocosh.divinefavor.common.config.common.ConfigSpells;
 import aurocosh.divinefavor.common.favor.ModFavor;
 import aurocosh.divinefavor.common.item.talismans.spell.base.ItemSpellTalisman;
 import aurocosh.divinefavor.common.item.talismans.spell.base.SpellOptions;
@@ -13,21 +15,17 @@ import java.util.EnumSet;
 import java.util.List;
 
 public class SpellTalismanPiercingInferno extends ItemSpellTalisman {
-    public static int MAX_PIERCE_SHAPE_SIZE = 25;
-    public static int MAX_PIERCE_DEPTH = 10;
-    public static int CHANCE_TO_IGNITE = 20;
-
     public SpellTalismanPiercingInferno(String name, ModFavor favor, int favorCost, EnumSet<SpellOptions> options) {
         super(name, favor, favorCost, options);
     }
 
     @Override
     protected void performActionServer(TalismanContext context) {
-        List<BlockPos> piercingShape = UtilCoordinates.getNeighboursWithSameExposedFace(context.pos, context.world, context.facing, MAX_PIERCE_SHAPE_SIZE);
+        List<BlockPos> piercingShape = UtilCoordinates.getNeighboursWithSameExposedFace(context.pos, context.world, context.facing, ConfigSpells.piercingInferno.maxPierceShapeSize);
         BlockPos shift = new BlockPos(context.facing.getOpposite().getDirectionVec());
-        for (int i = 0; i < MAX_PIERCE_DEPTH; i++) {
+        for (int i = 0; i < ConfigSpells.piercingInferno.maxPierceDepth; i++) {
             for (BlockPos pos : piercingShape) {
-                Block block = UtilRandom.rollDice(CHANCE_TO_IGNITE) ? Blocks.FIRE : Blocks.AIR;
+                Block block = UtilRandom.rollDice(ConfigSpells.piercingInferno.chanceToIgnite) ? Blocks.FIRE : Blocks.AIR;
                 context.world.setBlockState(pos, block.getDefaultState());
             }
             piercingShape = UtilCoordinates.shiftCoordinates(piercingShape, shift);

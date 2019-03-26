@@ -1,4 +1,6 @@
 package aurocosh.divinefavor.common.item.talismans.spell;
+
+import aurocosh.divinefavor.common.config.common.ConfigSpells;
 import aurocosh.divinefavor.common.favor.ModFavor;
 import aurocosh.divinefavor.common.item.talismans.spell.base.ItemSpellTalisman;
 import aurocosh.divinefavor.common.item.talismans.spell.base.SpellOptions;
@@ -22,8 +24,6 @@ import java.util.EnumSet;
 import java.util.List;
 
 public class SpellTalismanHarvest extends ItemSpellTalisman {
-    public static int EFFECT_RADIUS = 12;
-
     public static final ImmutableSet<Material> ALLOWED_MATERIALS =
             ImmutableSet.of(net.minecraft.block.material.Material.WEB,
                     net.minecraft.block.material.Material.LEAVES,
@@ -41,7 +41,7 @@ public class SpellTalismanHarvest extends ItemSpellTalisman {
         EntityPlayer player = context.player;
         ItemStack stack = player.getHeldItem(context.hand);
 
-        List<BlockPos> posList = UtilCoordinates.getBlocksInSphere(player.getPosition(), EFFECT_RADIUS);
+        List<BlockPos> posList = UtilCoordinates.getBlocksInSphere(player.getPosition(), ConfigSpells.harvest.radius);
         List<BlockPos> plantList = UtilList.filterList(posList, element -> isValidCrop(element, world));
         for (BlockPos pos : plantList)
             UtilBlock.removeBlockWithDrops(player, world, stack, pos, false, false);
@@ -50,11 +50,11 @@ public class SpellTalismanHarvest extends ItemSpellTalisman {
     private boolean isValidCrop(BlockPos pos, World world) {
         IBlockState state = world.getBlockState(pos);
         Block block = state.getBlock();
-        if(block instanceof BlockReed && !(world.getBlockState(pos.down()).getBlock() instanceof BlockReed))
+        if (block instanceof BlockReed && !(world.getBlockState(pos.down()).getBlock() instanceof BlockReed))
             return true;
-        if(block instanceof BlockCrops && ((BlockCrops) block).isMaxAge(state))
+        if (block instanceof BlockCrops && ((BlockCrops) block).isMaxAge(state))
             return true;
-        if(block instanceof BlockNetherWart && state.getValue(BlockNetherWart.AGE) == 3)
+        if (block instanceof BlockNetherWart && state.getValue(BlockNetherWart.AGE) == 3)
             return true;
         return ALLOWED_MATERIALS.contains(state.getMaterial());
     }

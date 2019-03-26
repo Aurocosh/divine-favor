@@ -1,20 +1,18 @@
 package aurocosh.divinefavor.common.custom_data.player.data.spell.molten_skin;
 
+import aurocosh.divinefavor.common.config.common.ConfigSpells;
 import aurocosh.divinefavor.common.lib.LimitedTimer;
-import aurocosh.divinefavor.common.util.UtilTick;
 
 // The default implementation of the capability. Holds all the logic.
 public class MoltenSkinData {
-    private static int MAX_TIME_NOT_IN_LAVA = UtilTick.secondsToTicks(20f);
-    private static int DAMAGE_DELAY = UtilTick.secondsToTicks(2.5f);
     private LimitedTimer timer;
 
     public MoltenSkinData() {
-        timer = new LimitedTimer(MAX_TIME_NOT_IN_LAVA);
+        timer = new LimitedTimer(ConfigSpells.moltenSkin.maxTimeOutsideLava);
     }
 
     public void setMaxTime() {
-        setTime(MAX_TIME_NOT_IN_LAVA);
+        setTime(ConfigSpells.moltenSkin.maxTimeOutsideLava);
     }
 
     public void setTime(int ticks) {
@@ -30,7 +28,7 @@ public class MoltenSkinData {
     }
 
     public void delay() {
-        timer.setTicks(timer.getTicks() - DAMAGE_DELAY);
+        timer.setTicks(timer.getTicks() - ConfigSpells.moltenSkin.damageDelay);
     }
 
     public boolean tick() {

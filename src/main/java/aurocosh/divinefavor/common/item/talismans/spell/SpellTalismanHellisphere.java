@@ -1,4 +1,6 @@
 package aurocosh.divinefavor.common.item.talismans.spell;
+
+import aurocosh.divinefavor.common.config.common.ConfigSpells;
 import aurocosh.divinefavor.common.favor.ModFavor;
 import aurocosh.divinefavor.common.item.talismans.spell.base.ItemSpellTalisman;
 import aurocosh.divinefavor.common.item.talismans.spell.base.SpellOptions;
@@ -13,8 +15,6 @@ import java.util.EnumSet;
 import java.util.List;
 
 public class SpellTalismanHellisphere extends ItemSpellTalisman {
-    public static int EFFECT_RADIUS = 5;
-
     public SpellTalismanHellisphere(String name, ModFavor favor, int favorCost, EnumSet<SpellOptions> options) {
         super(name, favor, favorCost, options);
     }
@@ -23,7 +23,7 @@ public class SpellTalismanHellisphere extends ItemSpellTalisman {
     protected void performActionServer(TalismanContext context) {
         World world = context.world;
         IBlockState state = Blocks.LAVA.getDefaultState();
-        List<BlockPos> posList = UtilCoordinates.getBlocksInSphere(context.pos, EFFECT_RADIUS);
+        List<BlockPos> posList = UtilCoordinates.getBlocksInSphere(context.pos, ConfigSpells.hellisphere.radius);
         for (BlockPos pos : posList)
             if (!world.isAirBlock(pos))
                 world.setBlockState(pos, state);

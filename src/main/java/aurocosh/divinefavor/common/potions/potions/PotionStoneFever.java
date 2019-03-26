@@ -1,5 +1,6 @@
 package aurocosh.divinefavor.common.potions.potions;
 
+import aurocosh.divinefavor.common.config.common.ConfigSpells;
 import aurocosh.divinefavor.common.potions.base.effect.ModEffect;
 import aurocosh.divinefavor.common.potions.base.potion.ModPotion;
 import aurocosh.divinefavor.common.potions.common.ModPotions;
@@ -37,7 +38,7 @@ public class PotionStoneFever extends ModPotion {
         if (stack.isEmpty())
             return;
 
-        if (!stack.getItem().getToolClasses(stack).contains("pickaxe")){
+        if (!stack.getItem().getToolClasses(stack).contains("pickaxe")) {
             punishPlayer(player);
             return;
         }
@@ -45,7 +46,7 @@ public class PotionStoneFever extends ModPotion {
         BlockPos pos = event.getPos();
         IBlockState state = world.getBlockState(pos);
         Block block = state.getBlock();
-        if(block != Blocks.STONE && block != Blocks.COBBLESTONE){
+        if (block != Blocks.STONE && block != Blocks.COBBLESTONE) {
             punishPlayer(player);
             return;
         }
@@ -54,12 +55,12 @@ public class PotionStoneFever extends ModPotion {
         stack.damageItem(1, player);
     }
 
-    private static void punishPlayer(EntityPlayer player){
+    private static void punishPlayer(EntityPlayer player) {
         player.removePotionEffect(ModPotions.stone_fever);
 
-        player.addPotionEffect(new ModEffect(MobEffects.SLOWNESS, 1200).setIsCurse());
-        player.addPotionEffect(new ModEffect(MobEffects.BLINDNESS, 200).setIsCurse());
-        player.addPotionEffect(new ModEffect(MobEffects.MINING_FATIGUE, 3600, 5).setIsCurse());
+        player.addPotionEffect(new ModEffect(MobEffects.SLOWNESS, ConfigSpells.stoneFever.slownessDuration).setIsCurse());
+        player.addPotionEffect(new ModEffect(MobEffects.BLINDNESS, ConfigSpells.stoneFever.blindnessDuration).setIsCurse());
+        player.addPotionEffect(new ModEffect(MobEffects.MINING_FATIGUE, ConfigSpells.stoneFever.fatigueDuration, ConfigSpells.stoneFever.fatigueLevel).setIsCurse());
     }
 
     @Override

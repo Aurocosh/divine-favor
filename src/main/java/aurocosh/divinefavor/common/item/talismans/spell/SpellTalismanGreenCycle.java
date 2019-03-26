@@ -1,4 +1,5 @@
 package aurocosh.divinefavor.common.item.talismans.spell;
+import aurocosh.divinefavor.common.config.common.ConfigSpells;
 import aurocosh.divinefavor.common.favor.ModFavor;
 import aurocosh.divinefavor.common.item.talismans.spell.base.ItemSpellTalisman;
 import aurocosh.divinefavor.common.item.talismans.spell.base.SpellOptions;
@@ -20,8 +21,6 @@ import java.util.EnumSet;
 import java.util.List;
 
 public class SpellTalismanGreenCycle extends ItemSpellTalisman {
-    public static int EFFECT_RADIUS = 8;
-
     public SpellTalismanGreenCycle(String name, ModFavor favor, int favorCost, EnumSet<SpellOptions> options) {
         super(name, favor, favorCost, options);
     }
@@ -32,7 +31,7 @@ public class SpellTalismanGreenCycle extends ItemSpellTalisman {
         EntityPlayer player = context.player;
         ItemStack stack = player.getHeldItem(context.hand);
 
-        List<BlockPos> posList = UtilCoordinates.getBlocksInSphere(player.getPosition(), EFFECT_RADIUS);
+        List<BlockPos> posList = UtilCoordinates.getBlocksInSphere(player.getPosition(), ConfigSpells.greenCycle.radius);
         List<BlockPos> plantList = UtilList.filterList(posList, element -> isValidCrop(element, world));
         for (BlockPos pos : plantList)
             UtilBlock.removeBlockAndReplant(player, world, stack, pos, false, false);

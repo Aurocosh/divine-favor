@@ -72,13 +72,78 @@ public class ConfigSpells {
     public static SummonZombie summonZombie = new SummonZombie();
     @Config.Name("Target")
     public static Target target = new Target();
-
-
-
-
-
-
-
-
-
+    @Config.Name("Blazing palm")
+    public static BlazingPalm blazingPalm = new BlazingPalm();
+    @Config.Name("Combustion")
+    public static Combustion combustion = new Combustion();
+    @Config.Name("Distant spark")
+    public static DistantSpark distantSpark = new DistantSpark();
+    @Config.Name("Evil eye")
+    public static EvilEye evilEye = new EvilEye();
+    @Config.Name("Heat wave")
+    public static HeatWave heatWave = new HeatWave();
+    @Config.Name("Hellisphere")
+    public static Hellisphere hellisphere = new Hellisphere();
+    @Config.Name("Ignition")
+    public static Ignition ignition = new Ignition();
+    @Config.Name("Molten skin")
+    public static MoltenSkin moltenSkin = new MoltenSkin();
+    @Config.Name("Nether surge")
+    public static NetherSurge netherSurge = new NetherSurge();
+    @Config.Name("Piercing inferno")
+    public static PiercingInferno piercingInferno = new PiercingInferno();
+    @Config.Name("Searing pulse")
+    public static SearingPulse searingPulse = new SearingPulse();
+    @Config.Name("Small fireball throw")
+    public static SmallFireballThrow smallFireballThrow = new SmallFireballThrow();
+    @Config.Name("Fall negation")
+    public static FallNegation fallNegation = new FallNegation();
+    @Config.Name("Toadic jump")
+    public static ToadicJump toadicJump = new ToadicJump();
+    @Config.Name("Wild sprint")
+    public static WildSprint wildSprint = new WildSprint();
+    @Config.Name("Wind step")
+    public static WindStep windStep = new WindStep();
+    @Config.Name("Clock")
+    public static Clock clock = new Clock();
+    @Config.Name("Crushing palm")
+    public static CrushingPalm crushingPalm = new CrushingPalm();
+    @Config.Name("Empower axe")
+    public static EmpowerAxe empowerAxe = new EmpowerAxe();
+    @Config.Name("Empower pickaxe")
+    public static EmpowerPickaxe empowerPickaxe = new EmpowerPickaxe();
+    @Config.Name("Fell tree")
+    public static FellTree fellTree = new FellTree();
+    @Config.Name("Green cycle")
+    public static GreenCycle greenCycle = new GreenCycle();
+    @Config.Name("Ground flow")
+    public static GroundFlow groundFlow = new GroundFlow();
+    @Config.Name("harvest")
+    public static Harvest harvest = new Harvest();
+    @Config.Name("miners focus")
+    public static MinersFocus minersFocus = new MinersFocus();
+    @Config.Name("stone fever")
+    public static StoneFever stoneFever = new StoneFever();
+    @Config.Name("stoneball throw")
+    public static StoneballThrow stoneballThrow = new StoneballThrow();
+    @Config.Name("wooden punch")
+    public static WoodenPunch woodenPunch = new WoodenPunch();
+    @Config.Name("Butchering strike")
+    public static ButcheringStrike butcheringStrike = new ButcheringStrike();
+    @Config.Name("Consuming fury")
+    public static ConsumingFury consumingFury = new ConsumingFury();
+    @Config.Name("Focused fury")
+    public static FocusedFury focusedFury = new FocusedFury();
+    @Config.Name("Grudge")
+    public static Grudge grudge = new Grudge();
+    @Config.Name("Mist blade")
+    public static MistBlade mistBlade = new MistBlade();
+    @Config.Name("Blade of grass")
+    public static BladeOfGrass bladeOfGrass = new BladeOfGrass();
+    @Config.Name("Blood of grass")
+    public static BloodOfGrass bloodOfGrass = new BloodOfGrass();
+    @Config.Name("Bonemeal")
+    public static Bonemeal bonemeal = new Bonemeal();
+    @Config.Name("Starvation")
+    public static Starvation starvation = new Starvation();
 }

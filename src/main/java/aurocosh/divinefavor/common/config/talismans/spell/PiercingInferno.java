@@ -1,0 +1,14 @@
+package aurocosh.divinefavor.common.config.talismans.spell;
+
+import net.minecraftforge.common.config.Config;
+
+public class PiercingInferno {
+    @Config.Name("Favor cost")
+    public int favorCost = 5;
+    @Config.Name("Max pierce shape size")
+    public int maxPierceShapeSize = 25;
+    @Config.Name("Max pierce depth")
+    public int maxPierceDepth = 10;
+    @Config.Name("chanceToIgnite")
+    public int chanceToIgnite = 20;
+}

@@ -1,5 +1,6 @@
 package aurocosh.divinefavor.common.item.talismans.spell;
 
+import aurocosh.divinefavor.common.config.common.ConfigSpells;
 import aurocosh.divinefavor.common.favor.ModFavor;
 import aurocosh.divinefavor.common.item.talismans.spell.base.ItemSpellTalisman;
 import aurocosh.divinefavor.common.item.talismans.spell.base.SpellOptions;
@@ -17,10 +18,6 @@ import java.util.EnumSet;
 import java.util.List;
 
 public class SpellTalismanBloodOfGrass extends ItemSpellTalisman {
-    public static int USES = 6;
-    public static int EFFECT_RADIUS = 6;
-    public static float HEALTH_PER_GRASS = 0.1f;
-
     public SpellTalismanBloodOfGrass(String name, ModFavor favor, int favorCost, EnumSet<SpellOptions> options) {
         super(name, favor, favorCost, options);
     }
@@ -30,7 +27,7 @@ public class SpellTalismanBloodOfGrass extends ItemSpellTalisman {
         World world = context.world;
         EntityPlayer player = context.player;
 
-        List<BlockPos> posList = UtilCoordinates.getBlocksInSphere(player.getPosition(), EFFECT_RADIUS);
+        List<BlockPos> posList = UtilCoordinates.getBlocksInSphere(player.getPosition(), ConfigSpells.bloodOfGrass.radius);
         List<BlockPos> plantList = UtilList.filterList(posList, pos -> world.getBlockState(pos).getMaterial() == Material.GRASS);
         for (BlockPos pos : plantList)
             consumeGrass(pos, world, player);
@@ -40,6 +37,6 @@ public class SpellTalismanBloodOfGrass extends ItemSpellTalisman {
         if (!UtilBlock.canBreakBlock(player, world, pos, false))
             return;
         world.setBlockState(pos, Blocks.DIRT.getDefaultState());
-        player.heal(HEALTH_PER_GRASS);
+        player.heal(ConfigSpells.bloodOfGrass.healthPerGrass);
     }
 }
