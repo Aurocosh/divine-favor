@@ -1,10 +1,8 @@
 package aurocosh.divinefavor.common.potions.base.effect;
 
 import aurocosh.divinefavor.DivineFavor;
-import aurocosh.divinefavor.common.potions.base.potion.ModPotion;
 import aurocosh.divinefavor.common.potions.base.potion.ModPotionCharge;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.PotionEffect;
 import net.minecraftforge.fml.relauncher.ReflectionHelper;
 
@@ -26,7 +24,7 @@ public class ModEffectCharge extends ModEffect {
 //        int amplifier = other.getAmplifier();
 //        if (amplifier > this.getAmplifier())
 //            ReflectionHelper.setPrivateValue(PotionEffect.class, this, amplifier, 3);
-        int charges = other.getAmplifier() + this.getAmplifier();
+        int charges = Math.max(other.getAmplifier(), this.getAmplifier());
         ReflectionHelper.setPrivateValue(PotionEffect.class, this, charges, 3);
     }
 

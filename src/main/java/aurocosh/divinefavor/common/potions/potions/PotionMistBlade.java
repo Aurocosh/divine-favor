@@ -1,6 +1,6 @@
 package aurocosh.divinefavor.common.potions.potions;
 
-import aurocosh.divinefavor.common.potions.base.potion.ModPotion;
+import aurocosh.divinefavor.common.config.common.ConfigSpells;
 import aurocosh.divinefavor.common.potions.base.potion.ModPotionToggle;
 import aurocosh.divinefavor.common.potions.common.ModPotions;
 import aurocosh.divinefavor.common.util.UtilMob;
@@ -20,9 +20,6 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 @Mod.EventBusSubscriber
 public class PotionMistBlade extends ModPotionToggle {
     private static int FRAMES_TO_INIT_FOG = 5;
-    public static int EXTRA_DAMAGE = 8;
-    public static int EXTRA_RANGED_DAMAGE = 8;
-
     private static int intitFrames = FRAMES_TO_INIT_FOG;
 
     public PotionMistBlade() {
@@ -40,16 +37,16 @@ public class PotionMistBlade extends ModPotionToggle {
         EntityPlayer player = (EntityPlayer) entity;
         if (!player.isPotionActive(ModPotions.mist_blade))
             return;
-        event.setAmount(event.getAmount() + EXTRA_DAMAGE);
+        event.setAmount(event.getAmount() + ConfigSpells.mistBlade.extraDamage);
 
         if (!(UtilMob.isMobRanged(event.getEntity())))
             return;
-        event.setAmount(event.getAmount() + EXTRA_RANGED_DAMAGE);
+        event.setAmount(event.getAmount() + ConfigSpells.mistBlade.extraRangedDamage);
     }
 
     @SideOnly(Side.CLIENT)
     @SubscribeEvent(priority = EventPriority.NORMAL, receiveCanceled = true)
-    public static void onFogDensity(EntityViewRenderEvent.FogColors event) {
+    public static void onFogColors(EntityViewRenderEvent.FogColors event) {
         if (!isMistBladeActive(event))
             return;
         event.setRed(0.7F);
@@ -63,8 +60,8 @@ public class PotionMistBlade extends ModPotionToggle {
         if (isMistBladeActive(event)) {
             if (intitFrames-- <= 0) {
                 event.setDensity(0.85F);
-                GlStateManager.setFogStart(4);
-                GlStateManager.setFogEnd(5);
+                GlStateManager.setFogStart(ConfigSpells.mistBlade.fogStart);
+                GlStateManager.setFogEnd(ConfigSpells.mistBlade.fogEnd);
                 event.setCanceled(true);
             }
         }

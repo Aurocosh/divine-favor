@@ -7,7 +7,6 @@ import aurocosh.divinefavor.common.item.common.ModItems;
 import aurocosh.divinefavor.common.item.talismans.spell.*;
 import aurocosh.divinefavor.common.item.talismans.spell.base.*;
 import aurocosh.divinefavor.common.potions.common.ModPotions;
-import aurocosh.divinefavor.common.util.UtilTick;
 
 public final class ModSpellTalismans {
     public static ItemSpellTalisman armor_of_pacifist;
@@ -125,52 +124,52 @@ public final class ModSpellTalismans {
         target = new SpellTalismanTarget("target", ModFavors.loon, 0, SpellOptions.ENTITY_CAST);
 
         // neblaze
-        blazing_palm = new SpellTalismanBlazingPalm("blazing_palm", ModFavors.neblaze, 1, SpellOptions.ALL_CAST);
-        combustion = new SpellTalismanCombustion("combustion", ModFavors.neblaze, 1, SpellOptions.USE_CAST);
-        distant_spark = new SpellTalismanIgnition("distant_spark", ModFavors.neblaze, 2, SpellOptions.ALL_CAST_TRACE);
-        evil_eye = new SpellTalismanEvilEye("evil_eye", ModFavors.neblaze, 10, SpellOptions.ENTITY_CAST);
-        heat_wave = new SpellTalismanHeatWave("heat_wave", ModFavors.neblaze, 1, SpellOptions.ALL_CAST);
-        hellisphere = new SpellTalismanHellisphere("hellisphere", ModFavors.neblaze, 1, SpellOptions.USE_CAST);
-        ignition = new SpellTalismanIgnition("ignition", ModFavors.neblaze, 1, SpellOptions.USE_CAST);
+        blazing_palm = new SpellTalismanBlazingPalm("blazing_palm", ModFavors.neblaze, ConfigSpells.blazingPalm.favorCost, SpellOptions.ALL_CAST);
+        combustion = new SpellTalismanCombustion("combustion", ModFavors.neblaze, ConfigSpells.combustion.favorCost, SpellOptions.USE_CAST);
+        distant_spark = new SpellTalismanIgnition("distant_spark", ModFavors.neblaze, ConfigSpells.distantSpark.favorCost, SpellOptions.ALL_CAST_TRACE);
+        evil_eye = new SpellTalismanEvilEye("evil_eye", ModFavors.neblaze, ConfigSpells.evilEye.favorCost, SpellOptions.ENTITY_CAST);
+        heat_wave = new SpellTalismanHeatWave("heat_wave", ModFavors.neblaze, ConfigSpells.heatWave.favorCost, SpellOptions.ALL_CAST);
+        hellisphere = new SpellTalismanHellisphere("hellisphere", ModFavors.neblaze, ConfigSpells.hellisphere.favorCost, SpellOptions.USE_CAST);
+        ignition = new SpellTalismanIgnition("ignition", ModFavors.neblaze, ConfigSpells.ignition.favorCost, SpellOptions.USE_CAST);
         infernal_touch = new SpellTalismanInfernalTouch("infernal_touch", ModFavors.neblaze, 1, SpellOptions.USE_CAST);
-        molten_skin = new SpellTalismanMoltenSkin("molten_skin", ModFavors.neblaze, 1, SpellOptions.ALL_CAST);
-        nether_surge = new SpellTalismanNetherSurge("nether_surge", ModFavors.neblaze, 1, SpellOptions.USE_CAST);
-        piercing_inferno = new SpellTalismanPiercingInferno("piercing_inferno", ModFavors.neblaze, 1, SpellOptions.USE_CAST);
-        searing_pulse = new SpellTalismanSearingPulse("searing_pulse", ModFavors.neblaze, 1, SpellOptions.USE_CAST);
-        small_fireball_throw = new SpellTalismanSmallFireballThrow("small_fireball_throw", ModFavors.neblaze, 1, SpellOptions.ALL_CAST);
+        molten_skin = new SpellTalismanMoltenSkin("molten_skin", ModFavors.neblaze, ConfigSpells.moltenSkin.favorCost, SpellOptions.ALL_CAST);
+        nether_surge = new SpellTalismanNetherSurge("nether_surge", ModFavors.neblaze, ConfigSpells.netherSurge.favorCost, SpellOptions.USE_CAST);
+        piercing_inferno = new SpellTalismanPiercingInferno("piercing_inferno", ModFavors.neblaze, ConfigSpells.piercingInferno.favorCost, SpellOptions.USE_CAST);
+        searing_pulse = new SpellTalismanSearingPulse("searing_pulse", ModFavors.neblaze, ConfigSpells.searingPulse.favorCost, SpellOptions.USE_CAST);
+        small_fireball_throw = new SpellTalismanSmallFireballThrow("small_fireball_throw", ModFavors.neblaze, ConfigSpells.smallFireballThrow.favorCost, SpellOptions.ALL_CAST);
 
         // redwind
-        fall_negation = new SpellTalismanModPotionCharge("fall_negation", ModFavors.redwind, 1, ModPotions.fall_negation, 3);
-        toadic_jump = new SpellTalismanModPotionToggle("toadic_jump", ModFavors.redwind, 1, ModPotions.toadic_jump);
-        wild_sprint = new SpellTalismanModPotion("wild_sprint", ModFavors.redwind, 3, ModPotions.wild_charge, UtilTick.secondsToTicks(10));
-        wind_step = new SpellTalismanWindStep("wind_step", ModFavors.redwind, 1, SpellOptions.ALL_CAST);
-        clock = new SpellTalismanClock("clock", ModFavors.redwind, 1, SpellOptions.ALL_CAST);
+        fall_negation = new SpellTalismanModPotionCharge("fall_negation", ModFavors.redwind, ConfigSpells.fallNegation.favorCost, ModPotions.fall_negation, ConfigSpells.fallNegation.charges);
+        toadic_jump = new SpellTalismanModPotionToggle("toadic_jump", ModFavors.redwind, ConfigSpells.toadicJump.favorCost, ModPotions.toadic_jump);
+        wild_sprint = new SpellTalismanModPotion("wild_sprint", ModFavors.redwind, ConfigSpells.wildSprint.favorCost, ModPotions.wild_charge, ConfigSpells.wildSprint.activationDelay);
+        wind_step = new SpellTalismanWindStep("wind_step", ModFavors.redwind, ConfigSpells.windStep.favorCost, SpellOptions.ALL_CAST);
+        clock = new SpellTalismanClock("clock", ModFavors.redwind, ConfigSpells.clock.favorCost, SpellOptions.ALL_CAST);
 
         // romol
-        crushing_palm = new SpellTalismanModPotionToggle("crushing_palm", ModFavors.romol, 10, ModPotions.crushing_palm);
-        empower_axe = new SpellTalismanModPotion("empower_axe", ModFavors.romol, 3, ModPotions.empower_axe, UtilTick.minutesToTicks(1));
-        empower_pickaxe = new SpellTalismanModPotion("empower_pickaxe", ModFavors.romol, 10, ModPotions.empower_pickaxe, UtilTick.minutesToTicks(1));
-        fell_tree = new SpellTalismanFellTree("fell_tree", ModFavors.romol, 1, SpellOptions.USE_CAST);
-        green_cycle = new SpellTalismanGreenCycle("green_cycle", ModFavors.romol, 1, SpellOptions.ALL_CAST);
-        ground_flow = new SpellTalismanModPotionToggle("ground_flow", ModFavors.romol, 10, ModPotions.ground_flow);
-        harvest = new SpellTalismanHarvest("harvest", ModFavors.romol, 1, SpellOptions.ALL_CAST);
-        miners_focus = new SpellTalismanMinersFocus("miners_focus", ModFavors.romol, 1, SpellOptions.ALL_CAST);
-        stone_fever = new SpellTalismanModPotion("stone_fever", ModFavors.romol, 2, ModPotions.stone_fever, UtilTick.minutesToTicks(5));
-        stoneball_throw = new SpellTalismanStoneballThrow("stoneball_throw", ModFavors.romol, 1, SpellOptions.ALL_CAST);
-        wooden_punch = new SpellTalismanModPotionToggle("wooden_punch", ModFavors.romol, 2, ModPotions.wooden_punch);
+        crushing_palm = new SpellTalismanModPotionToggle("crushing_palm", ModFavors.romol, ConfigSpells.crushingPalm.favorCost, ModPotions.crushing_palm);
+        empower_axe = new SpellTalismanModPotion("empower_axe", ModFavors.romol, ConfigSpells.empowerAxe.favorCost, ModPotions.empower_axe, ConfigSpells.empowerAxe.duration);
+        empower_pickaxe = new SpellTalismanModPotion("empower_pickaxe", ModFavors.romol, ConfigSpells.empowerPickaxe.favorCost, ModPotions.empower_pickaxe, ConfigSpells.empowerPickaxe.duration);
+        fell_tree = new SpellTalismanFellTree("fell_tree", ModFavors.romol, ConfigSpells.fellTree.favorCost, SpellOptions.USE_CAST);
+        green_cycle = new SpellTalismanGreenCycle("green_cycle", ModFavors.romol, ConfigSpells.greenCycle.favorCost, SpellOptions.ALL_CAST);
+        ground_flow = new SpellTalismanModPotionToggle("ground_flow", ModFavors.romol, ConfigSpells.groundFlow.favorCost, ModPotions.ground_flow);
+        harvest = new SpellTalismanHarvest("harvest", ModFavors.romol, ConfigSpells.harvest.favorCost, SpellOptions.ALL_CAST);
+        miners_focus = new SpellTalismanMinersFocus("miners_focus", ModFavors.romol, ConfigSpells.minersFocus.favorCost, SpellOptions.ALL_CAST);
+        stone_fever = new SpellTalismanModPotion("stone_fever", ModFavors.romol, ConfigSpells.stoneFever.favorCost, ModPotions.stone_fever, ConfigSpells.stoneFever.duration);
+        stoneball_throw = new SpellTalismanStoneballThrow("stoneball_throw", ModFavors.romol, ConfigSpells.stoneballThrow.favorCost, SpellOptions.ALL_CAST);
+        wooden_punch = new SpellTalismanModPotionToggle("wooden_punch", ModFavors.romol, ConfigSpells.woodenPunch.favorCost, ModPotions.wooden_punch);
 
         // squarefury
-        butchering_strike = new SpellTalismanModPotionCharge("butchering_strike", ModFavors.squarefury, 10, ModPotions.butchering_strike, 6);
-        consuming_fury = new SpellTalismanModPotion("consuming_fury", ModFavors.squarefury, 10, ModPotions.consuming_fury, UtilTick.minutesToTicks(1));
-        focused_fury = new SpellTalismanModPotion("focused_fury", ModFavors.squarefury, 2, ModPotions.focused_fury, UtilTick.minutesToTicks(1));
-        grudge = new SpellTalismanGrudge("grudge", ModFavors.squarefury, 1, SpellOptions.ALL_CAST);
-        mist_blade = new SpellTalismanModPotionToggle("mist_blade", ModFavors.squarefury, 3, ModPotions.mist_blade);
+        butchering_strike = new SpellTalismanModPotionCharge("butchering_strike", ModFavors.squarefury, ConfigSpells.butcheringStrike.favorCost, ModPotions.butchering_strike, ConfigSpells.butcheringStrike.charges);
+        consuming_fury = new SpellTalismanModPotion("consuming_fury", ModFavors.squarefury, ConfigSpells.consumingFury.favorCost, ModPotions.consuming_fury, ConfigSpells.consumingFury.duration);
+        focused_fury = new SpellTalismanModPotion("focused_fury", ModFavors.squarefury, ConfigSpells.focusedFury.favorCost, ModPotions.focused_fury, ConfigSpells.focusedFury.duration);
+        grudge = new SpellTalismanGrudge("grudge", ModFavors.squarefury, ConfigSpells.grudge.favorCost, SpellOptions.ALL_CAST);
+        mist_blade = new SpellTalismanModPotionToggle("mist_blade", ModFavors.squarefury, ConfigSpells.mistBlade.favorCost, ModPotions.mist_blade);
 
         // timber
-        blade_of_grass = new SpellTalismanBladeOfGrass("blade_of_grass", ModFavors.timber, 1, SpellOptions.ALL_CAST);
-        blood_of_grass = new SpellTalismanBloodOfGrass("blood_of_grass", ModFavors.timber, 1, SpellOptions.ALL_CAST);
-        bonemeal = new SpellTalismanBonemeal("bonemeal", ModFavors.timber, 1, SpellOptions.USE_CAST);
-        starvation = new SpellTalismanModPotion("starvation", ModFavors.timber, 3, ModPotions.starvation, UtilTick.minutesToTicks(2.5f));
+        blade_of_grass = new SpellTalismanBladeOfGrass("blade_of_grass", ModFavors.timber, ConfigSpells.bladeOfGrass.favorCost, SpellOptions.ALL_CAST);
+        blood_of_grass = new SpellTalismanBloodOfGrass("blood_of_grass", ModFavors.timber, ConfigSpells.bloodOfGrass.favorCost, SpellOptions.ALL_CAST);
+        bonemeal = new SpellTalismanBonemeal("bonemeal", ModFavors.timber, ConfigSpells.bonemeal.favorCost, SpellOptions.USE_CAST);
+        starvation = new SpellTalismanModPotion("starvation", ModFavors.timber, ConfigSpells.starvation.favorCost, ModPotions.starvation, ConfigSpells.starvation.duration);
     }
 
     public static void init() {

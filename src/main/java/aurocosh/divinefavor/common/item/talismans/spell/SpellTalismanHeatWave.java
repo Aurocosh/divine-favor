@@ -1,5 +1,6 @@
 package aurocosh.divinefavor.common.item.talismans.spell;
 
+import aurocosh.divinefavor.common.config.common.ConfigSpells;
 import aurocosh.divinefavor.common.favor.ModFavor;
 import aurocosh.divinefavor.common.item.talismans.spell.base.ItemSpellTalisman;
 import aurocosh.divinefavor.common.item.talismans.spell.base.SpellOptions;
@@ -16,34 +17,29 @@ import java.util.EnumSet;
 import java.util.List;
 
 public class SpellTalismanHeatWave extends ItemSpellTalisman {
-    private static final double RADIUS = 10;
-    private static final float EXTRA_DAMAGE = 1;
-    private static final int ENEMY_BURN_TIME_SECONDS = 3;
-    private static final int CHANCE_TO_SET_ENEMY_ON_FIRE = 80;
-    private static final int CHANCE_TO_SET_GROUND_ON_FIRE = 20;
-
     public SpellTalismanHeatWave(String name, ModFavor favor, int favorCost, EnumSet<SpellOptions> options) {
         super(name, favor, favorCost, options);
     }
 
     @Override
     protected void performActionServer(TalismanContext context) {
+        double radius = ConfigSpells.heatWave.radius;
         Vector3i origin = Vector3i.convert(context.player.getPosition());
-        AxisAlignedBB axis = new AxisAlignedBB(origin.x - RADIUS, origin.y - RADIUS, origin.z - RADIUS, origin.x + RADIUS, origin.y + RADIUS, origin.z + RADIUS);
+        AxisAlignedBB axis = new AxisAlignedBB(origin.x - radius, origin.y - radius, origin.z - radius, origin.x + radius, origin.y + radius, origin.z + radius);
         List<Entity> list = context.world.getEntitiesWithinAABB(Entity.class, axis, (Entity e) -> (e instanceof EntityLivingBase) && e != context.player && isInRadius(origin, e));
 
         for (Entity entity : list) {
-            entity.attackEntityFrom(DamageSource.ON_FIRE, EXTRA_DAMAGE);
+            entity.attackEntityFrom(DamageSource.ON_FIRE, ConfigSpells.heatWave.damage);
 
-            if(UtilRandom.rollDice(CHANCE_TO_SET_ENEMY_ON_FIRE))
-                entity.setFire(ENEMY_BURN_TIME_SECONDS);
-            if(UtilRandom.rollDice(CHANCE_TO_SET_GROUND_ON_FIRE))
-                UtilBlock.ignite(context.world,entity.getPosition());
+            if (UtilRandom.rollDice(ConfigSpells.heatWave.chanceToSetEnemyOnFire))
+                entity.setFire(ConfigSpells.heatWave.enemyBurnTime);
+            if (UtilRandom.rollDice(ConfigSpells.heatWave.chanceToSetGroundOnFire))
+                UtilBlock.ignite(context.world, entity.getPosition());
         }
     }
 
     private boolean isInRadius(Vector3i origin, Entity entity) {
         Vector3i entityVec = Vector3i.convert(entity.getPosition());
-        return origin.isDistanceLessThen(entityVec, RADIUS);
+        return origin.isDistanceLessThen(entityVec, ConfigSpells.heatWave.radius);
     }
 }

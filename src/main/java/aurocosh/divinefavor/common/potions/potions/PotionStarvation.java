@@ -1,5 +1,6 @@
 package aurocosh.divinefavor.common.potions.potions;
 
+import aurocosh.divinefavor.common.config.common.ConfigSpells;
 import aurocosh.divinefavor.common.potions.base.potion.ModPotion;
 import aurocosh.divinefavor.common.potions.common.ModPotions;
 import aurocosh.divinefavor.common.util.UtilBlock;
@@ -31,9 +32,9 @@ public class PotionStarvation extends ModPotion {
         EntityPlayer player = event.getEntityPlayer();
         if (!player.isPotionActive(ModPotions.starvation))
             return;
-        if(!player.getHeldItemMainhand().isEmpty())
+        if (!player.getHeldItemMainhand().isEmpty())
             return;
-        if(!player.getHeldItemOffhand().isEmpty())
+        if (!player.getHeldItemOffhand().isEmpty())
             return;
 
         BlockPos pos = event.getPos();
@@ -41,16 +42,16 @@ public class PotionStarvation extends ModPotion {
         Material material = state.getMaterial();
         if (material != Material.GRASS && material != Material.LEAVES)
             return;
-        if(!UtilBlock.canBreakBlock(player,world,pos,false))
+        if (!UtilBlock.canBreakBlock(player, world, pos, false))
             return;
         IBlockState stateNew;
-        if(material == Material.GRASS)
+        if (material == Material.GRASS)
             stateNew = Blocks.DIRT.getDefaultState();
         else
             stateNew = Blocks.AIR.getDefaultState();
         world.setBlockState(pos, stateNew);
 
-        player.getFoodStats().addStats(1, 0.1F);
+        player.getFoodStats().addStats(ConfigSpells.starvation.foodPerGrass, ConfigSpells.starvation.saturationPerGrass);
         world.playSound(null, player.posX, player.posY, player.posZ, SoundEvents.ENTITY_PLAYER_BURP, SoundCategory.PLAYERS, 0.5F, world.rand.nextFloat() * 0.1F + 0.9F);
     }
 

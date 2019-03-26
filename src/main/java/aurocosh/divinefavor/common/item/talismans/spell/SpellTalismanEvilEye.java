@@ -1,5 +1,6 @@
 package aurocosh.divinefavor.common.item.talismans.spell;
 
+import aurocosh.divinefavor.common.config.common.ConfigSpells;
 import aurocosh.divinefavor.common.favor.ModFavor;
 import aurocosh.divinefavor.common.item.talismans.spell.base.ItemSpellTalisman;
 import aurocosh.divinefavor.common.item.talismans.spell.base.SpellOptions;
@@ -20,6 +21,6 @@ public class SpellTalismanEvilEye extends ItemSpellTalisman {
 
     @Override
     protected void performActionServer(TalismanContext context) {
-        context.target.attackEntityFrom(DamageSource.causePlayerDamage(context.player), 2);
+        context.target.attackEntityFrom(DamageSource.causePlayerDamage(context.player), ConfigSpells.evilEye.damage);
     }
 }

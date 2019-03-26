@@ -1,6 +1,7 @@
 package aurocosh.divinefavor.common.potions.potions;
 
 import aurocosh.divinefavor.DivineFavor;
+import aurocosh.divinefavor.common.config.common.ConfigSpells;
 import aurocosh.divinefavor.common.custom_data.player.PlayerData;
 import aurocosh.divinefavor.common.custom_data.player.data.spell.grudge.GrudgeData;
 import aurocosh.divinefavor.common.network.message.client.MessageSyncGrudge;
@@ -22,8 +23,6 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 @Mod.EventBusSubscriber
 public class PotionGrudge extends ModPotionToggle {
-    public static float EXTRA_DAMAGE = 6;
-
     public PotionGrudge() {
         super("grudge", true, 0x7FB8A4);
     }
@@ -46,7 +45,7 @@ public class PotionGrudge extends ModPotionToggle {
         GrudgeData grudgeData = PlayerData.get(player).getGrudgeData();
         if(!grudgeData.hasGrudge((IMob) entityMob))
             return;
-        event.setAmount(event.getAmount() + EXTRA_DAMAGE);
+        event.setAmount(event.getAmount() + ConfigSpells.grudge.extraDamage);
     }
 
     @SubscribeEvent(priority = EventPriority.LOWEST)

@@ -1,5 +1,7 @@
 package aurocosh.divinefavor.common.entity.projectile;
 
+import aurocosh.divinefavor.common.config.common.ConfigSpells;
+import aurocosh.divinefavor.common.util.UtilRandom;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.projectile.EntityThrowable;
@@ -40,11 +42,12 @@ public class EntityStoneball extends EntityThrowable
         EntityLivingBase entitylivingbase = getThrower();
 
         if (result.entityHit != null) {
-            int i = 1;
+            boolean isCritical = UtilRandom.rollDice(ConfigSpells.stoneballThrow.criticalChance);
+            float damage = isCritical ? ConfigSpells.stoneballThrow.criticalDamage : ConfigSpells.stoneballThrow.damage;
 
 //            if (result.entityHit instanceof EntityBlaze)
-//                i = 3;
-            result.entityHit.attackEntityFrom(DamageSource.causeThrownDamage(this, this.getThrower()), (float)i);
+//                damage = 3;
+            result.entityHit.attackEntityFrom(DamageSource.causeThrownDamage(this, this.getThrower()), damage);
         }
 
         if (result.typeOfHit == RayTraceResult.Type.BLOCK) {

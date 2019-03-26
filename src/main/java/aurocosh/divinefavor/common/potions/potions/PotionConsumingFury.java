@@ -1,5 +1,6 @@
 package aurocosh.divinefavor.common.potions.potions;
 
+import aurocosh.divinefavor.common.config.common.ConfigSpells;
 import aurocosh.divinefavor.common.potions.base.potion.ModPotion;
 import aurocosh.divinefavor.common.potions.common.ModPotions;
 import aurocosh.divinefavor.common.util.UtilChat;
@@ -18,11 +19,7 @@ import java.util.Map;
 
 @Mod.EventBusSubscriber
 public class PotionConsumingFury extends ModPotion {
-    private static final int MOBS_TO_KILL = 3;
-    private static final float DAMAGE_TO_DEAL = 20;
-    public static final float EXTRA_DAMAGE = 16;
-
-    private final static Map<EntityPlayer,Integer> killCounts = new HashMap<>();
+    private final static Map<EntityPlayer, Integer> killCounts = new HashMap<>();
 
     public PotionConsumingFury() {
         super("consuming_fury", true, 0x7FB8A4);
@@ -31,14 +28,14 @@ public class PotionConsumingFury extends ModPotion {
     @Override
     protected void onPotionRemoved(EntityLivingBase livingBase) {
         super.onPotionRemoved(livingBase);
-        if(!(livingBase instanceof EntityPlayer))
+        if (!(livingBase instanceof EntityPlayer))
             return;
 
         EntityPlayer player = (EntityPlayer) livingBase;
         int killCount = killCounts.computeIfAbsent(player, player1 -> 0);
         killCounts.remove(player);
-        if(killCount < MOBS_TO_KILL)
-            player.attackEntityFrom(DamageSource.MAGIC, DAMAGE_TO_DEAL);
+        if (killCount < ConfigSpells.consumingFury.mobsToKill)
+            player.attackEntityFrom(DamageSource.MAGIC, ConfigSpells.consumingFury.punishmentDamage);
     }
 
     @SubscribeEvent
@@ -50,9 +47,9 @@ public class PotionConsumingFury extends ModPotion {
         if (!(entity instanceof EntityPlayer))
             return;
         EntityPlayer player = (EntityPlayer) entity;
-        if(!player.isPotionActive(ModPotions.consuming_fury))
+        if (!player.isPotionActive(ModPotions.consuming_fury))
             return;
-        event.setAmount(event.getAmount() + EXTRA_DAMAGE);
+        event.setAmount(event.getAmount() + ConfigSpells.consumingFury.extraDamage);
     }
 
     @SubscribeEvent
@@ -64,14 +61,14 @@ public class PotionConsumingFury extends ModPotion {
         if (!(entity instanceof EntityPlayer))
             return;
         EntityPlayer player = (EntityPlayer) entity;
-        if(!player.isPotionActive(ModPotions.consuming_fury))
+        if (!player.isPotionActive(ModPotions.consuming_fury))
             return;
 
-        int killCount = killCounts.computeIfAbsent(player,k -> 0) + 1;
-        killCounts.put(player,killCount);
-        int killsLeft = MOBS_TO_KILL - killCount;
-        if(killsLeft > 0)
-            UtilChat.addChatMessage(player,"Kills left: " + killCount);
+        int killCount = killCounts.computeIfAbsent(player, k -> 0) + 1;
+        killCounts.put(player, killCount);
+        int killsLeft = ConfigSpells.consumingFury.mobsToKill - killCount;
+        if (killsLeft > 0)
+            UtilChat.addChatMessage(player, "Kills left: " + killCount);
     }
 
     @Override

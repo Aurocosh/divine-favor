@@ -1,6 +1,7 @@
 package aurocosh.divinefavor.common.potions.potions;
 
 import aurocosh.divinefavor.DivineFavor;
+import aurocosh.divinefavor.common.config.common.ConfigSpells;
 import aurocosh.divinefavor.common.custom_data.player.PlayerData;
 import aurocosh.divinefavor.common.custom_data.player.data.spell.focused_fury.FocusedFuryData;
 import aurocosh.divinefavor.common.network.message.client.MessageSyncFury;
@@ -24,8 +25,6 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 @Mod.EventBusSubscriber
 public class PotionFocusedFury extends ModPotion {
-    public static float EXTRA_DAMAGE = 10;
-
     public PotionFocusedFury() {
         super("focused_fury", true, 0x7FB8A4);
     }
@@ -49,7 +48,7 @@ public class PotionFocusedFury extends ModPotion {
         if(!furyData.hasFury())
             return;
         if (furyData.hasFury((IMob) entityMob))
-            event.setAmount(event.getAmount() + EXTRA_DAMAGE);
+            event.setAmount(event.getAmount() + ConfigSpells.focusedFury.extraDamage);
         else
             event.setCanceled(true);
     }

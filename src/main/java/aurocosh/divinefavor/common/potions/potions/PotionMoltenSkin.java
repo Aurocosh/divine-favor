@@ -1,5 +1,6 @@
 package aurocosh.divinefavor.common.potions.potions;
 
+import aurocosh.divinefavor.common.config.common.ConfigSpells;
 import aurocosh.divinefavor.common.custom_data.player.PlayerData;
 import aurocosh.divinefavor.common.custom_data.player.data.spell.molten_skin.MoltenSkinData;
 import aurocosh.divinefavor.common.damage_source.ModDamageSources;
@@ -21,9 +22,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 @Mod.EventBusSubscriber
 public class PotionMoltenSkin extends ModPotionToggle {
-    private static float SPEED_MODIFIER = 0.14f;
     private static int FRAMES_TO_INIT_FOG = 20;
-
     private static int intitFrames = FRAMES_TO_INIT_FOG;
 
     public PotionMoltenSkin() {
@@ -42,13 +41,13 @@ public class PotionMoltenSkin extends ModPotionToggle {
             skinData.resetTime();
             return;
         }
-        else if(livingBase.isInWater())
+        else if (livingBase.isInWater())
             skinData.setMaxTime();
 
         if (!skinData.tick())
             return;
 
-        player.attackEntityFrom(ModDamageSources.frostDamage, 4);
+        player.attackEntityFrom(ModDamageSources.frostDamage, ConfigSpells.moltenSkin.freezingDamage);
         skinData.delay();
     }
 
@@ -75,7 +74,7 @@ public class PotionMoltenSkin extends ModPotionToggle {
             return;
         if (!entity.isInsideOfMaterial(Material.LAVA))
             return;
-        UtilEntity.addVelocity(entity, SPEED_MODIFIER);
+        UtilEntity.addVelocity(entity, ConfigSpells.moltenSkin.speedModifier);
     }
 
     private static boolean isInLavaWithMoltenSkin(EntityViewRenderEvent event) {
