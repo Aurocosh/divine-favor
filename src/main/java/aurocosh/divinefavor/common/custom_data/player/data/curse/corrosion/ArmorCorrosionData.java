@@ -1,7 +1,7 @@
 package aurocosh.divinefavor.common.custom_data.player.data.curse.corrosion;
 
+import aurocosh.divinefavor.common.config.common.ConfigArrow;
 import aurocosh.divinefavor.common.lib.LoopedCounter;
-import aurocosh.divinefavor.common.util.UtilTick;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -9,13 +9,12 @@ import java.util.List;
 
 // The default implementation of the capability. Holds all the logic.
 public class ArmorCorrosionData {
-    private final int CORROSION_RATE = UtilTick.secondsToTicks(1);
     private final List<Integer> corrodedSlots;
     private final LoopedCounter loopedCounter;
 
     public ArmorCorrosionData() {
         corrodedSlots = new ArrayList<>();
-        loopedCounter = new LoopedCounter(CORROSION_RATE);
+        loopedCounter = new LoopedCounter(ConfigArrow.armorCorrosion.corrosionRate);
     }
 
     public void removeAllCorrosion() {

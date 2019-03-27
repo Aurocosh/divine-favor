@@ -1,12 +1,12 @@
 package aurocosh.divinefavor.common.potions.curses;
 
+import aurocosh.divinefavor.common.config.common.ConfigArrow;
 import aurocosh.divinefavor.common.custom_data.player.PlayerData;
 import aurocosh.divinefavor.common.custom_data.player.data.curse.crawling_mist.CrawlingMistData;
 import aurocosh.divinefavor.common.lib.LoopedCounter;
 import aurocosh.divinefavor.common.lib.math.Vector3i;
 import aurocosh.divinefavor.common.potions.base.potion.ModPotion;
 import aurocosh.divinefavor.common.potions.common.ModCurses;
-import aurocosh.divinefavor.common.util.UtilTick;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -22,14 +22,10 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 @Mod.EventBusSubscriber
 public class PotionCrawlingMist extends ModPotion {
-    public static final int CURE_RATE = UtilTick.secondsToTicks(10);
     private static final int FRAMES_TO_INIT_FOG = 5;
-    private static final float FOG_START = 20;
-    private static final float FOG_END = 30;
-    private static final int CURE_DISTANCE = 20;
-    private static final int CURE_DISTANCE_SQ = CURE_DISTANCE * CURE_DISTANCE;
-    private static final LoopedCounter CURE_COUNTER = new LoopedCounter(CURE_RATE);
-    private static int intitFrames = FRAMES_TO_INIT_FOG;
+    private static final int CURE_DISTANCE_SQ = ConfigArrow.crawlingMist.cureDistance * ConfigArrow.crawlingMist.cureDistance;
+    private static final LoopedCounter CURE_COUNTER = new LoopedCounter(ConfigArrow.crawlingMist.cureRate);
+    private static int initFrames = FRAMES_TO_INIT_FOG;
 
     public PotionCrawlingMist() {
         super("crawling_mist", true, 0x7FB8A4);
@@ -70,7 +66,7 @@ public class PotionCrawlingMist extends ModPotion {
 
     @SideOnly(Side.CLIENT)
     @SubscribeEvent(priority = EventPriority.NORMAL, receiveCanceled = true)
-    public static void onFogDensity(EntityViewRenderEvent.FogColors event) {
+    public static void onFogColor(EntityViewRenderEvent.FogColors event) {
         if (!isActive(event))
             return;
         event.setRed(0.7F);
@@ -82,15 +78,15 @@ public class PotionCrawlingMist extends ModPotion {
     @SubscribeEvent(priority = EventPriority.NORMAL, receiveCanceled = true)
     public static void onFogDensity(EntityViewRenderEvent.FogDensity event) {
         if (isActive(event)) {
-            if (intitFrames-- <= 0) {
+            if (initFrames-- <= 0) {
                 event.setDensity(0.85F);
-                GlStateManager.setFogStart(FOG_START);
-                GlStateManager.setFogEnd(FOG_END);
+                GlStateManager.setFogStart(ConfigArrow.crawlingMist.fogStart);
+                GlStateManager.setFogEnd(ConfigArrow.crawlingMist.fogEnd);
                 event.setCanceled(true);
             }
         }
         else
-            intitFrames = FRAMES_TO_INIT_FOG;
+            initFrames = FRAMES_TO_INIT_FOG;
     }
 
     private static boolean isActive(EntityViewRenderEvent event) {

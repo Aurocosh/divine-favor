@@ -1,19 +1,16 @@
 package aurocosh.divinefavor.common.custom_data.living.data.petrification;
 
-import aurocosh.divinefavor.common.lib.SimpleCounter;
+import aurocosh.divinefavor.common.config.common.ConfigArrow;
 import aurocosh.divinefavor.common.lib.LoopedCounter;
-import aurocosh.divinefavor.common.util.UtilTick;
+import aurocosh.divinefavor.common.lib.SimpleCounter;
 
 public class PetrificationData {
-    public static final int CURE_TIME = UtilTick.secondsToTicks(6);
-    public static final int DAMAGE_TIME = UtilTick.secondsToTicks(2);
-
     private final SimpleCounter cureCounter;
     private final LoopedCounter damageCounter;
 
     public PetrificationData() {
-        cureCounter = new SimpleCounter(CURE_TIME);
-        damageCounter = new LoopedCounter(DAMAGE_TIME);
+        cureCounter = new SimpleCounter(ConfigArrow.petrification.cureRate);
+        damageCounter = new LoopedCounter(ConfigArrow.petrification.damageRate);
     }
 
     public void resetCureTimer() {
