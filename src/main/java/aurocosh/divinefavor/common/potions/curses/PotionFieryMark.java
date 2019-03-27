@@ -1,5 +1,6 @@
 package aurocosh.divinefavor.common.potions.curses;
 
+import aurocosh.divinefavor.common.config.common.ConfigArrow;
 import aurocosh.divinefavor.common.potions.base.potion.ModPotion;
 import aurocosh.divinefavor.common.potions.common.ModCurses;
 import net.minecraft.entity.Entity;
@@ -13,12 +14,6 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 @Mod.EventBusSubscriber
 public class PotionFieryMark extends ModPotion {
-    private static final float EXPLOSION_POWER = 4;
-    private static final boolean CAUSE_FIRE = false;
-    private static final boolean DAMAGE_TERRAIN = true;
-    private static final int FIRE_SECONDS = 3;
-    public static float EXTRA_DAMAGE = 20;
-
     public PotionFieryMark() {
         super("fiery_mark", true, 0x7FB8A4);
         setIsCurse(true);
@@ -36,7 +31,7 @@ public class PotionFieryMark extends ModPotion {
 
     @Override
     public void performEffect(EntityLivingBase livingBase, int amplifier) {
-        if(livingBase.isInWater())
+        if (livingBase.isInWater())
             livingBase.removePotionEffect(ModCurses.fiery_mark);
     }
 
@@ -47,12 +42,12 @@ public class PotionFieryMark extends ModPotion {
     }
 
     private static void explode(EntityLivingBase livingBase) {
-        if(livingBase.isInWater())
+        if (livingBase.isInWater())
             return;
-        livingBase.setFire(FIRE_SECONDS);
-        livingBase.attackEntityFrom(DamageSource.ON_FIRE, EXTRA_DAMAGE);
+        livingBase.setFire(ConfigArrow.fieryMark.onFireSeconds);
+        livingBase.attackEntityFrom(DamageSource.ON_FIRE, ConfigArrow.fieryMark.extraDamage);
         BlockPos pos = livingBase.getPosition();
-        livingBase.world.newExplosion(livingBase, pos.getX(), pos.getY(), pos.getZ(), EXPLOSION_POWER, CAUSE_FIRE, DAMAGE_TERRAIN);
+        livingBase.world.newExplosion(livingBase, pos.getX(), pos.getY(), pos.getZ(), ConfigArrow.fieryMark.explosionPower, ConfigArrow.fieryMark.causeFire, ConfigArrow.fieryMark.damageTerrain);
     }
 
     @Override

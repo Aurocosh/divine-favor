@@ -1,10 +1,10 @@
 package aurocosh.divinefavor.common.potions.curses;
 
+import aurocosh.divinefavor.common.config.common.ConfigArrow;
 import aurocosh.divinefavor.common.lib.LoopedCounter;
 import aurocosh.divinefavor.common.potions.base.potion.ModPotion;
 import aurocosh.divinefavor.common.potions.common.ModCurses;
 import aurocosh.divinefavor.common.util.UtilEntity;
-import aurocosh.divinefavor.common.util.UtilTick;
 import net.minecraft.entity.EntityCreature;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraftforge.fml.common.Mod;
@@ -15,11 +15,7 @@ import java.util.List;
 
 @Mod.EventBusSubscriber
 public class PotionYummySmell extends ModPotion {
-    private static final float CURE_COUNT = 7;
-    private static final float RADIUS = 25;
-
-    public static final int TICK_RATE = UtilTick.secondsToTicks(10);
-    private static final LoopedCounter TICK_COUNTER = new LoopedCounter(TICK_RATE);
+    private static final LoopedCounter TICK_COUNTER = new LoopedCounter(ConfigArrow.yummySmell.effectRate);
 
     public PotionYummySmell() {
         super("yummy_smell", false, 0x7FB8A4);
@@ -28,14 +24,14 @@ public class PotionYummySmell extends ModPotion {
 
     @Override
     public void performEffect(EntityLivingBase livingBase, int amplifier) {
-        if(livingBase.world.isRemote)
+        if (livingBase.world.isRemote)
             return;
-        if(!TICK_COUNTER.isFinished())
+        if (!TICK_COUNTER.isFinished())
             return;
-        List<EntityCreature> creatures = UtilEntity.getEntitiesInSquareRadius(EntityCreature.class, livingBase.world, livingBase.getPositionVector(), RADIUS, input -> true);
+        List<EntityCreature> creatures = UtilEntity.getEntitiesInSquareRadius(EntityCreature.class, livingBase.world, livingBase.getPositionVector(), ConfigArrow.yummySmell.radius, input -> true);
         for (EntityCreature creature : creatures)
             creature.setAttackTarget(livingBase);
-        if(creatures.size() >= CURE_COUNT)
+        if (creatures.size() >= ConfigArrow.yummySmell.cureCount)
             livingBase.removePotionEffect(ModCurses.yummy_smell);
     }
 

@@ -1,5 +1,6 @@
 package aurocosh.divinefavor.common.potions.curses;
 
+import aurocosh.divinefavor.common.config.common.ConfigArrow;
 import aurocosh.divinefavor.common.custom_data.player.PlayerData;
 import aurocosh.divinefavor.common.custom_data.player.data.curse.corrosion.ArmorCorrosionData;
 import aurocosh.divinefavor.common.potions.base.potion.ModPotion;
@@ -15,11 +16,6 @@ import java.util.List;
 
 @Mod.EventBusSubscriber
 public class PotionArmorCorrosion extends ModPotion {
-    public final int DAMAGE_RATE = 1;
-
-    public final int MIN_SLOTS_TO_CORRODE = 1;
-    public final int MAX_SLOTS_TO_CORRODE = 3;
-
     public PotionArmorCorrosion() {
         super("armor_corrosion", true, 0x7FB8A4);
         setIsCurse(true);
@@ -28,7 +24,7 @@ public class PotionArmorCorrosion extends ModPotion {
     @Override
     protected void onPotionAdded(EntityLivingBase livingBase) {
         super.onPotionAdded(livingBase);
-        if(!(livingBase instanceof EntityPlayer)) {
+        if (!(livingBase instanceof EntityPlayer)) {
             livingBase.removePotionEffect(ModCurses.armor_corrosion);
             return;
         }
@@ -43,7 +39,7 @@ public class PotionArmorCorrosion extends ModPotion {
         ArmorCorrosionData corrosionData = PlayerData.get(player).getArmorCorrosionData();
         corrosionData.removeAllCorrosion();
 
-        int slotsToCorrode = UtilRandom.nextInt(MIN_SLOTS_TO_CORRODE, MAX_SLOTS_TO_CORRODE);
+        int slotsToCorrode = UtilRandom.nextInt(ConfigArrow.armorCorrosion.minSlotsToCorrode, ConfigArrow.armorCorrosion.maxSlotsToCorrode);
         for (int i = 0; i < slotsToCorrode; i++) {
             int index = UtilRandom.getRandomIndex(slots);
             corrosionData.addCorrosionToArmorSlot(slots.get(index));
@@ -54,7 +50,7 @@ public class PotionArmorCorrosion extends ModPotion {
     @Override
     protected void onPotionRemoved(EntityLivingBase livingBase) {
         super.onPotionRemoved(livingBase);
-        if(!(livingBase instanceof EntityPlayer))
+        if (!(livingBase instanceof EntityPlayer))
             return;
         EntityPlayer player = (EntityPlayer) livingBase;
         ArmorCorrosionData corrosionData = PlayerData.get(player).getArmorCorrosionData();
@@ -63,7 +59,7 @@ public class PotionArmorCorrosion extends ModPotion {
 
     @Override
     public void performEffect(EntityLivingBase livingBase, int amplifier) {
-        if(livingBase.world.isRemote)
+        if (livingBase.world.isRemote)
             return;
         if (!(livingBase instanceof EntityPlayer))
             return;
@@ -82,7 +78,7 @@ public class PotionArmorCorrosion extends ModPotion {
                 if (stack.isEmpty())
                     corrosionData.removeCorrosionFromArmorSlot(slot);
                 else
-                    stack.damageItem(DAMAGE_RATE, player);
+                    stack.damageItem(ConfigArrow.armorCorrosion.corrosionDamage, player);
             }
         }
     }

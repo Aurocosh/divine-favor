@@ -1,5 +1,6 @@
 package aurocosh.divinefavor.common.potions.curses;
 
+import aurocosh.divinefavor.common.config.common.ConfigArrow;
 import aurocosh.divinefavor.common.custom_data.living.LivingData;
 import aurocosh.divinefavor.common.custom_data.living.data.petrification.PetrificationData;
 import aurocosh.divinefavor.common.damage_source.ModDamageSources;
@@ -14,8 +15,6 @@ import net.minecraftforge.fml.common.Mod;
 
 @Mod.EventBusSubscriber
 public class PotionPetrification extends ModPotion {
-    public static final float DAMAGE = 4;
-
     public PotionPetrification() {
         super("petrification", true, 0x7FB8A4);
         setIsCurse(true);
@@ -50,7 +49,7 @@ public class PotionPetrification extends ModPotion {
                 notPlayer.removePotionEffect(ModCurses.petrification);
         }
         else if (petrification.damageTick())
-            notPlayer.attackEntityFrom(ModDamageSources.petrificationDamage, DAMAGE);
+            notPlayer.attackEntityFrom(ModDamageSources.petrificationDamage, ConfigArrow.petrification.damage);
     }
 
     private void performForPlayer(EntityPlayer player) {
