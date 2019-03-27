@@ -1,7 +1,7 @@
 package aurocosh.divinefavor.common.spirit;
 
+import aurocosh.divinefavor.common.config.TimePeriodConfig;
 import aurocosh.divinefavor.common.favor.ModFavor;
-import aurocosh.divinefavor.common.item.talismans.spell.base.ItemSpellTalisman;
 import aurocosh.divinefavor.common.lib.TimePeriod;
 import aurocosh.divinefavor.common.spirit.base.ModSpirit;
 import aurocosh.divinefavor.common.spirit.base.SpiritPunishment;
@@ -27,6 +27,10 @@ public class SpiritBuilder {
     public SpiritBuilder addFavor(ModFavor favor) {
         favors.add(favor);
         return this;
+    }
+
+    public SpiritBuilder addActivityPeriod(TimePeriodConfig timePeriod) {
+        return addActivityPeriod(timePeriod.start, timePeriod.stop);
     }
 
     public SpiritBuilder addActivityPeriod(int start, int stop) {
