@@ -14,27 +14,18 @@ import java.util.List;
 public class SpiritBuilder {
     private String name;
     private List<ModFavor> favors;
-    private List<TimePeriod> activityPeriods;
+    private TimePeriod activityPeriod;
     private SpiritPunishment punishment;
 
-    public SpiritBuilder(String name) {
+    public SpiritBuilder(String name, TimePeriodConfig timePeriod) {
         this.name = name;
         favors = new ArrayList<>();
-        activityPeriods = new ArrayList<>();
         punishment = new SpiritPunishment();
+        this.activityPeriod = UtilDayTime.fromHours(timePeriod.start, timePeriod.stop);
     }
 
     public SpiritBuilder addFavor(ModFavor favor) {
         favors.add(favor);
-        return this;
-    }
-
-    public SpiritBuilder addActivityPeriod(TimePeriodConfig timePeriod) {
-        return addActivityPeriod(timePeriod.start, timePeriod.stop);
-    }
-
-    public SpiritBuilder addActivityPeriod(int start, int stop) {
-        activityPeriods.add(UtilDayTime.fromHours(start, stop));
         return this;
     }
 
@@ -44,6 +35,6 @@ public class SpiritBuilder {
     }
 
     public ModSpirit create() {
-        return new ModSpirit(name, favors, activityPeriods, Collections.singletonList(0), punishment);
+        return new ModSpirit(name, favors, activityPeriod, Collections.singletonList(0), punishment);
     }
 }

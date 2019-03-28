@@ -2,6 +2,7 @@ package aurocosh.divinefavor.common.core.proxy;
 
 import aurocosh.divinefavor.DivineFavor;
 import aurocosh.divinefavor.common.block.common.ModBlocks;
+import aurocosh.divinefavor.common.constants.ConstMisc;
 import aurocosh.divinefavor.common.custom_data.living.capability.LivingDataDataHandler;
 import aurocosh.divinefavor.common.custom_data.player.capability.PlayerDataDataHandler;
 import aurocosh.divinefavor.common.custom_data.world.capability.WorldDataDataHandler;
@@ -33,10 +34,14 @@ import aurocosh.divinefavor.common.receipes.RecipeLoader;
 import aurocosh.divinefavor.common.spirit.ModSpirits;
 import com.google.common.util.concurrent.ListenableFuture;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraftforge.common.config.Config;
+import net.minecraftforge.common.config.ConfigManager;
+import net.minecraftforge.fml.client.event.ConfigChangedEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 
 import java.io.File;
@@ -97,12 +102,19 @@ public class CommonProxy {
         RecipeLoader.init();
     }
 
+    @SubscribeEvent
+    public static void onConfigChangedEvent(ConfigChangedEvent.OnConfigChangedEvent event) {
+        if (event.getModID().equals(ConstMisc.MOD_ID))
+            ConfigManager.sync(ConstMisc.MOD_ID, Config.Type.INSTANCE);
+    }
+
     public void postInit(FMLPostInitializationEvent e) {
     }
 
     public ListenableFuture<Object> addScheduledTaskClient(Runnable runnableToSchedule) {
         throw new IllegalStateException("This should only be called from client side");
     }
+
     public EntityPlayer getClientPlayer() {
         throw new IllegalStateException("This should only be called from client side");
     }

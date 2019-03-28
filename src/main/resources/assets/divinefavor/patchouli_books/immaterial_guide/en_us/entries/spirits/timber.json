@@ -5,8 +5,9 @@
   "sortnum": 0,
   "pages": [
     {
-      "type": "text",
-      "text": "Towering spirit of wood and curses. Call upon this spirit if you want to harness his vile powers. $(br) This spirit is active in the morning from 6 o'clock to 10 o'clock."
+      "type": "spirit_info",
+      "spirit": "divinefavor:spirit.timber",
+      "text": "Towering spirit of wood and curses. Call upon this spirit if you want to harness his vile powers."
     },
     {
       "type": "crafting",

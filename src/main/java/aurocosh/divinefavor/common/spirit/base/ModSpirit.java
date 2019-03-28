@@ -22,25 +22,29 @@ public class ModSpirit extends IForgeRegistryEntry.Impl<ModSpirit> implements II
     private final int id;
     private final String name;
     private final List<ModFavor> favors;
-    private final List<TimePeriod> activityPeriods;
+    private final TimePeriod activityPeriod;
     private final List<Integer> activeInDimensions;
     private final SpiritPunishment punishment;
 
-    public ModSpirit(String name, List<ModFavor> favors, List<TimePeriod> activityPeriods, List<Integer> activeInDimensions, SpiritPunishment punishment) {
+    public ModSpirit(String name, List<ModFavor> favors, TimePeriod activityPeriod, List<Integer> activeInDimensions, SpiritPunishment punishment) {
         this.name = name;
         this.favors = favors;
-        this.activityPeriods = Collections.unmodifiableList(new ArrayList<>(activityPeriods));
+        this.activityPeriod = activityPeriod;
         this.activeInDimensions = activeInDimensions;
         this.punishment = punishment;
         setRegistryName(ResourceNamer.getFullName("spirit", name));
         id = ModMappers.spirits.register(this);
 
-        registerActivityPeriods();
+        registerActivityPeriod();
         ModRegistries.spirits.register(this);
     }
 
     public String getName() {
         return name;
+    }
+
+    public TimePeriod getActivityPeriod() {
+        return activityPeriod;
     }
 
     public List<Integer> getActiveInDimensions() {
@@ -53,10 +57,7 @@ public class ModSpirit extends IForgeRegistryEntry.Impl<ModSpirit> implements II
 
     public boolean isActive() {
         int timeOfDay = DayClock.getTime();
-        for (TimePeriod period : activityPeriods)
-            if (period.isDayTimeInRange(timeOfDay))
-                return true;
-        return false;
+        return activityPeriod.isDayTimeInRange(timeOfDay);
     }
 
     private void becameActive() {
@@ -102,11 +103,9 @@ public class ModSpirit extends IForgeRegistryEntry.Impl<ModSpirit> implements II
             player.sendMessage(new TextComponentString(message));
     }
 
-    private void registerActivityPeriods() {
-        for (TimePeriod activityPeriod : activityPeriods) {
-            DayClock.addAlarm(activityPeriod.getStart(), this::becameActive, true);
-            DayClock.addAlarm(activityPeriod.getStop(), this::becameInactive, true);
-        }
+    private void registerActivityPeriod() {
+        DayClock.addAlarm(activityPeriod.getStart(), this::becameActive, true);
+        DayClock.addAlarm(activityPeriod.getStop(), this::becameInactive, true);
     }
 
     @Override

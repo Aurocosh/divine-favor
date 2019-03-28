@@ -5,8 +5,9 @@
   "sortnum": 0,
   "pages": [
     {
-      "type": "text",
-      "text": "Nocturnal spirit of moon and summoning. Call upon this spirit if you want to harness his powers of conjuration. $(br) This spirit is active in the morning from 6 o'clock to 10 o'clock."
+      "type": "spirit_info",
+      "spirit": "divinefavor:spirit.loon",
+      "text": "Nocturnal spirit of moon and summoning. Call upon this spirit if you want to harness his powers of conjuration."
     },
     {
       "type": "crafting",

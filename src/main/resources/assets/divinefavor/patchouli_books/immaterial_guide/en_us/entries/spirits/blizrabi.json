@@ -5,8 +5,9 @@
   "sortnum": 0,
   "pages": [
     {
-      "type": "text",
-      "text": "Spirit of ice and water. Call upon this spirit if you want to harness his aquatic powers. $(br) This spirit is active in the morning from 6 o'clock to 10 o'clock."
+      "type": "spirit_info",
+      "spirit": "divinefavor:spirit.blizrabi",
+      "text": "Spirit of ice and water. Call upon this spirit if you want to harness his aquatic powers."
     },
     {
       "type": "crafting",
