@@ -20,7 +20,7 @@ public class RegistryAssistant<T extends IForgeRegistryEntry> {
         return valueMap.values();
     }
 
-    public <K extends T> List<K> getValues(Class clazz) {
+    public <K extends T> List<K> getValues(Class<K> clazz) {
         List<K> values = new ArrayList<>();
         for (T value : valueMap.values())
             if (clazz.isInstance(value))

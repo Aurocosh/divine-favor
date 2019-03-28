@@ -5,8 +5,9 @@
   "sortnum": 0,
   "pages": [
     {
-      "type": "text",
-      "text": "Furious spirit of fighting and swords. Call upon this spirit if you want to harness his destructive powers. $(br) This spirit is active in the morning from 6 o'clock to 10 o'clock."
+      "type": "spirit_info",
+      "spirit": "divinefavor:spirit.squarefury",
+      "text": "Furious spirit of fighting and swords. Call upon this spirit if you want to harness his destructive powers."
     },
     {
       "type": "crafting",

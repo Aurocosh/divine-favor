@@ -5,8 +5,9 @@
   "sortnum": 0,
   "pages": [
     {
-      "type": "text",
-      "text": "Predatory spirit of hunt and bows. Call upon this spirit if you want to harness his hunting powers. $(br) This spirit is active in the morning from 6 o'clock to 10 o'clock."
+      "type": "spirit_info",
+      "spirit": "divinefavor:spirit.arbow",
+      "text": "Predatory spirit of hunt and bows. Call upon this spirit if you want to harness his hunting powers."
     },
     {
       "type": "crafting",

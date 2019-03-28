@@ -1,0 +1,22 @@
+{
+  "processor": "aurocosh.divinefavor.common.patchouli.processors.SpiritInfoProcessor",
+  "components": [
+    {
+      "group": "header",
+      "type": "header",
+      "text": "Stats",
+      "x": -1
+    },
+    {
+      "group": "header",
+      "type": "separator",
+      "y": 12
+    },
+    {
+      "type": "text",
+      "text": "#text",
+      "x": 0,
+      "y": 24
+    }
+  ]
+}
