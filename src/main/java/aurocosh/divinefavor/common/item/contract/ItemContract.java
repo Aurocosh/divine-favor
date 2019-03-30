@@ -1,6 +1,7 @@
 package aurocosh.divinefavor.common.item.contract;
 
 import aurocosh.divinefavor.DivineFavor;
+import aurocosh.divinefavor.common.config.items.Contract;
 import aurocosh.divinefavor.common.item.base.ModItem;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
@@ -15,6 +16,10 @@ public class ItemContract extends ModItem {
     private final int regen;
     private final int min;
     private final int max;
+
+    public ItemContract(String name, String texturePath, int orderIndex, Contract contract) {
+        this(name, texturePath, orderIndex, contract.regen, contract.minimum, contract.maximum);
+    }
 
     public ItemContract(String name, String texturePath, int orderIndex, int regen, int min, int max) {
         super("contract_" + name, "contracts/" + texturePath, orderIndex);

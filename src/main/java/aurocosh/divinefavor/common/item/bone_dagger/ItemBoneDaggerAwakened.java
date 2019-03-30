@@ -1,6 +1,7 @@
 package aurocosh.divinefavor.common.item.bone_dagger;
 
 import aurocosh.divinefavor.DivineFavor;
+import aurocosh.divinefavor.common.config.common.ConfigItem;
 import aurocosh.divinefavor.common.custom_data.living.LivingData;
 import aurocosh.divinefavor.common.custom_data.living.data.soul_theft.SoulTheftData;
 import aurocosh.divinefavor.common.damage_source.ModDamageSources;
@@ -10,7 +11,8 @@ import aurocosh.divinefavor.common.item.soul_shards.ItemSoulShardPlayer;
 import aurocosh.divinefavor.common.item.soul_shards.ModSoulShards;
 import aurocosh.divinefavor.common.potions.base.effect.ModEffect;
 import aurocosh.divinefavor.common.potions.common.ModPotions;
-import aurocosh.divinefavor.common.util.UtilTick;
+import aurocosh.divinefavor.common.util.UtilNbt;
+import aurocosh.divinefavor.common.util.UtilRandom;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
@@ -27,6 +29,7 @@ import net.minecraft.entity.passive.EntityWaterMob;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
@@ -40,7 +43,7 @@ import java.util.Set;
 
 @Mod.EventBusSubscriber
 public class ItemBoneDaggerAwakened extends ModItem {
-    private static int SOUL_THEFT_DURATION = UtilTick.minutesToTicks(5);
+    private static final String TAG_SOUL_STEAL_CHANCE = "SOUL_STEAL_CHANCE";
     private static final Set<Class<? extends EntityLiving>> witherClasses = new HashSet<>();
     private static final Set<Class<? extends EntityLiving>> hellClasses = new HashSet<>();
 
@@ -76,11 +79,20 @@ public class ItemBoneDaggerAwakened extends ModItem {
             return false;
         if (!(entity instanceof EntityLivingBase))
             return false;
-        EntityLivingBase livingBase = (EntityLivingBase) entity;
-        livingBase.addPotionEffect(new ModEffect(ModPotions.soul_theft, SOUL_THEFT_DURATION).setIsCurse());
-        SoulTheftData theftData = LivingData.get(livingBase).getSoulTheftData();
-        theftData.addThief(player);
-        makeSoulShard(livingBase, player);
+
+        NBTTagCompound nbt = UtilNbt.getNbt(stack);
+        float chance = nbt.getFloat(TAG_SOUL_STEAL_CHANCE);
+        if (UtilRandom.rollDiceFloat(chance)) {
+            EntityLivingBase livingBase = (EntityLivingBase) entity;
+            livingBase.addPotionEffect(new ModEffect(ModPotions.soul_theft, ConfigItem.awakenedBoneDagger.soulTheftDuration).setIsCurse());
+            SoulTheftData theftData = LivingData.get(livingBase).getSoulTheftData();
+            theftData.addThief(player);
+            makeSoulShard(livingBase, player);
+
+            nbt.setFloat(TAG_SOUL_STEAL_CHANCE, 0);
+        }
+        else
+            nbt.setFloat(TAG_SOUL_STEAL_CHANCE, chance + ConfigItem.awakenedBoneDagger.soulSteelingSpeed);
         return false;
     }
 

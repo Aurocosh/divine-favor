@@ -38,7 +38,6 @@ public class TileBathHeater extends TileEntity implements ITickable, IAreaWatche
 
     private static final int MAX_PROGRESS = 100;
     private static final int RADIUS_OF_EFFECT = 3;
-    private static final int EFFECT_TICK_RATE = UtilTick.secondsToTicks(1);
 
     private static final String TAG_FUEL = "FUEL";
     private static final String TAG_MAX_BURN_TIME = "MaxBurnTime";
@@ -46,6 +45,7 @@ public class TileBathHeater extends TileEntity implements ITickable, IAreaWatche
     private static final String TAG_INGREDIENTS = "Ingredients";
     private static final String TAG_STATE_HEATER = "StateHeater";
     private static final String TAG_WATER_POSITIONS = "WaterPositions";
+    private static final String TAG_EFFECT_TICK_RATE = "EffectTickRate";
 
     private int progressBurning;
     private int clientProgressBurning;
@@ -56,7 +56,6 @@ public class TileBathHeater extends TileEntity implements ITickable, IAreaWatche
     private int clientProgressEffect;
     private int maxEffectTime;
     private int currentEffectTime;
-    private float currentPotency;
     private ItemBathingBlend activeBlend;
 
     private boolean refresh;
@@ -101,14 +100,13 @@ public class TileBathHeater extends TileEntity implements ITickable, IAreaWatche
 
         maxEffectTime = 0;
         currentEffectTime = 0;
-        currentPotency = 0;
         activeBlend = null;
 
         initialized = false;
         refresh = true;
         area = new WorldArea();
         waterPositions = new HashSet<>();
-        loopedCounter = new LoopedCounter(EFFECT_TICK_RATE);
+        loopedCounter = new LoopedCounter();
     }
 
     public void initialize() {
@@ -155,6 +153,7 @@ public class TileBathHeater extends TileEntity implements ITickable, IAreaWatche
         state = BathHeaterState.VALUES[compound.getInteger(TAG_STATE_HEATER)];
         waterPositions.clear();
         waterPositions.addAll(UtilSerialize.deserializeVector3i(compound.getIntArray(TAG_WATER_POSITIONS)));
+        loopedCounter.setTickRate(compound.getInteger(TAG_EFFECT_TICK_RATE));
         if (compound.hasKey(TAG_FUEL))
             fuelStackHandler.deserializeNBT((NBTTagCompound) compound.getTag(TAG_FUEL));
         if (compound.hasKey(TAG_INGREDIENTS))
@@ -168,6 +167,7 @@ public class TileBathHeater extends TileEntity implements ITickable, IAreaWatche
         compound.setInteger(TAG_CURRENT_BURN_TIME, currentBurnTime);
         compound.setInteger(TAG_STATE_HEATER, state.ordinal());
         compound.setIntArray(TAG_WATER_POSITIONS, UtilSerialize.serializeVector3i(waterPositions));
+        compound.setInteger(TAG_EFFECT_TICK_RATE, loopedCounter.getTickRate());
         compound.setTag(TAG_FUEL, fuelStackHandler.serializeNBT());
         compound.setTag(TAG_INGREDIENTS, blendStackHandler.serializeNBT());
         return compound;
@@ -288,7 +288,7 @@ public class TileBathHeater extends TileEntity implements ITickable, IAreaWatche
     }
 
     private void applyEffect() {
-        if(!isBurning())
+        if (!isBurning())
             return;
         if (!loopedCounter.tick())
             return;
@@ -297,8 +297,8 @@ public class TileBathHeater extends TileEntity implements ITickable, IAreaWatche
             if (!stack.isEmpty()) {
                 activeBlend = (ItemBathingBlend) stack.getItem();
                 maxEffectTime = ItemBathingBlend.getDuration(stack);
+                loopedCounter.setTickRate(ItemBathingBlend.getRate(stack));
                 currentEffectTime = maxEffectTime;
-                currentPotency = ItemBathingBlend.getPotency(stack);
                 progressEffect = 100;
                 stack.shrink(1);
                 markDirty();
@@ -309,13 +309,11 @@ public class TileBathHeater extends TileEntity implements ITickable, IAreaWatche
             progressEffect = (int) ((currentEffectTime / (float) maxEffectTime) * 100);
             markDirty();
 
-            if (UtilRandom.rollDice(currentPotency)) {
-                AxisAlignedBB axis = new AxisAlignedBB(pos.getX() - RADIUS_OF_EFFECT, pos.getY() + 1, pos.getZ() - RADIUS_OF_EFFECT, pos.getX() + RADIUS_OF_EFFECT, pos.getY(), pos.getZ() + RADIUS_OF_EFFECT);
-                List<EntityLivingBase> list = world.getEntitiesWithinAABB(EntityLivingBase.class, axis, (EntityLivingBase e) -> e != null && e.isInWater());
+            AxisAlignedBB axis = new AxisAlignedBB(pos.getX() - RADIUS_OF_EFFECT, pos.getY() + 1, pos.getZ() - RADIUS_OF_EFFECT, pos.getX() + RADIUS_OF_EFFECT, pos.getY(), pos.getZ() + RADIUS_OF_EFFECT);
+            List<EntityLivingBase> list = world.getEntitiesWithinAABB(EntityLivingBase.class, axis, (EntityLivingBase e) -> e != null && e.isInWater());
 
-                for (EntityLivingBase livingBase : list)
-                    activeBlend.applyEffect(livingBase);
-            }
+            for (EntityLivingBase livingBase : list)
+                activeBlend.applyEffect(livingBase);
         }
     }
 

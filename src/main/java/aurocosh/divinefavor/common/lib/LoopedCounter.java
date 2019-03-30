@@ -16,6 +16,10 @@ public class LoopedCounter {
         currentTicks = 0;
     }
 
+    public int getTickRate() {
+        return tickRate;
+    }
+
     public void setTickRate(int tickRate) {
         this.tickRate = Math.max(1, Math.abs(tickRate));
     }
