@@ -7,13 +7,13 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 
 public abstract class ItemBathingBlendSimple extends ItemBathingBlend {
-    private final int baseDuration;
-    private final float basePotency;
+    private final int duration;
+    private final int rate;
 
-    public ItemBathingBlendSimple(String name, int baseDuration, float basePotency) {
+    public ItemBathingBlendSimple(String name, int duration, int rate) {
         super(name);
-        this.baseDuration = baseDuration;
-        this.basePotency = basePotency;
+        this.duration = duration;
+        this.rate = rate;
     }
 
     public abstract void applyEffect(EntityLivingBase livingBase);
@@ -27,8 +27,8 @@ public abstract class ItemBathingBlendSimple extends ItemBathingBlend {
     public ItemStack makeStack(int count) {
         ItemStack stack = new ItemStack(this, count);
         NBTTagCompound nbt = UtilNbt.getNbt(stack);
-        nbt.setFloat(TAG_POTENCY, basePotency);
-        nbt.setInteger(TAG_DURATION, baseDuration);
+        nbt.setInteger(TAG_RATE, rate);
+        nbt.setInteger(TAG_DURATION, duration);
         return stack;
     }
 }

@@ -10,7 +10,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
 
 public abstract class ItemBathingBlend extends ModItem {
-    protected final static String TAG_POTENCY = "potency";
+    protected final static String TAG_RATE = "rate";
     protected final static String TAG_DURATION = "duration";
 
     public ItemBathingBlend(String name) {
@@ -22,8 +22,8 @@ public abstract class ItemBathingBlend extends ModItem {
         return UtilNbt.getNbt(stack).getInteger(TAG_DURATION);
     }
 
-    public static float getPotency(ItemStack stack) {
-        return UtilNbt.getNbt(stack).getInteger(TAG_POTENCY);
+    public static int getRate(ItemStack stack) {
+        return UtilNbt.getNbt(stack).getInteger(TAG_RATE);
     }
 
     public abstract void applyEffect(EntityLivingBase livingBase);

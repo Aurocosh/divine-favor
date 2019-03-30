@@ -8,4 +8,5 @@ import net.minecraftforge.common.config.Config;
 public class ConfigGeneral {
     @Config.Name("Spirit activity periods")
     public static SpiritActivityPeriods spiritActivityPeriods = new SpiritActivityPeriods();
+
 }
