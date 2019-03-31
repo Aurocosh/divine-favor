@@ -1,16 +1,13 @@
 package aurocosh.divinefavor.common.custom_data.player.data.presence.warping;
 
+import aurocosh.divinefavor.common.config.common.ConfigPresence;
 import aurocosh.divinefavor.common.lib.IncrementalChanceCounter;
 
-// The default implementation of the capability. Holds all the logic.
 public class WarpingPresenceData {
-    private static final float STARTING_CHANCE = 0.15f;
-    private static final float CHANCE_INCREASE = 0.20f;
-
     private IncrementalChanceCounter chanceCounter;
 
     public WarpingPresenceData() {
-        chanceCounter = new IncrementalChanceCounter(STARTING_CHANCE, CHANCE_INCREASE);
+        chanceCounter = new IncrementalChanceCounter(ConfigPresence.warpingPresence.startingChance, ConfigPresence.warpingPresence.chanceIncrease);
     }
 
     public void reset() {

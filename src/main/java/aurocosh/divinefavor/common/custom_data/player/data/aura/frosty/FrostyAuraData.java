@@ -1,16 +1,14 @@
 package aurocosh.divinefavor.common.custom_data.player.data.aura.frosty;
 
+import aurocosh.divinefavor.common.config.common.ConfigAura;
 import aurocosh.divinefavor.common.lib.SimpleCounter;
-import aurocosh.divinefavor.common.util.UtilTick;
 
 // The default implementation of the capability. Holds all the logic.
 public class FrostyAuraData {
-    private static final int TIME_IN_SNOW_BIOME = UtilTick.minutesToTicks(0.6f);
-
     private final SimpleCounter counter;
 
     public FrostyAuraData() {
-        counter = new SimpleCounter(TIME_IN_SNOW_BIOME);
+        counter = new SimpleCounter(ConfigAura.frostyAura.timeInSnowBiome);
     }
 
     public boolean count() {

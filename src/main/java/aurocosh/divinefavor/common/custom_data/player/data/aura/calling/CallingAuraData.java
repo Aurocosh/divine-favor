@@ -1,16 +1,14 @@
 package aurocosh.divinefavor.common.custom_data.player.data.aura.calling;
 
+import aurocosh.divinefavor.common.config.common.ConfigAura;
 import aurocosh.divinefavor.common.lib.IncrementalChanceCounter;
 
 // The default implementation of the capability. Holds all the logic.
 public class CallingAuraData {
-    private static final float STARTING_CHANCE = 0.0f;
-    private static final float CHANCE_INCREASE = 0.15f;
-
     private final IncrementalChanceCounter chanceCounter;
 
     public CallingAuraData() {
-        chanceCounter = new IncrementalChanceCounter(STARTING_CHANCE, CHANCE_INCREASE);
+        chanceCounter = new IncrementalChanceCounter(ConfigAura.callingAura.startingChance, ConfigAura.callingAura.chanceIncrease);
     }
 
     public void reset() {

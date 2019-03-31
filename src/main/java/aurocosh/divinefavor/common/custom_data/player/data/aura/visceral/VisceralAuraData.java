@@ -1,16 +1,14 @@
 package aurocosh.divinefavor.common.custom_data.player.data.aura.visceral;
 
+import aurocosh.divinefavor.common.config.common.ConfigAura;
 import aurocosh.divinefavor.common.lib.IncrementalChanceCounter;
 
 // The default implementation of the capability. Holds all the logic.
 public class VisceralAuraData {
-    private static final float STARTING_CHANCE = 0.0f;
-    private static final float CHANCE_INCREASE = 0.05f;
-
     private final IncrementalChanceCounter chanceCounter;
 
     public VisceralAuraData() {
-        chanceCounter = new IncrementalChanceCounter(STARTING_CHANCE, CHANCE_INCREASE);
+        chanceCounter = new IncrementalChanceCounter(ConfigAura.visceralAura.startingChance, ConfigAura.visceralAura.chanceIncrease);
     }
 
     public void reset() {

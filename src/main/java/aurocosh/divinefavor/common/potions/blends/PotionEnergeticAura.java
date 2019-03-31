@@ -1,5 +1,6 @@
 package aurocosh.divinefavor.common.potions.blends;
 
+import aurocosh.divinefavor.common.config.common.ConfigPresence;
 import aurocosh.divinefavor.common.custom_data.player.PlayerData;
 import aurocosh.divinefavor.common.custom_data.player.data.aura.energetic.EnergeticAuraData;
 import aurocosh.divinefavor.common.lib.LoopedCounter;
@@ -49,7 +50,7 @@ public class PotionEnergeticAura extends ModPotion {
         if (!player.isSprinting() || !auraData.tryLuck())
             return;
         player.removePotionEffect(ModBlendEffects.energetic_aura);
-        player.addPotionEffect(new ModEffect(ModBlessings.energetic_presence, UtilTick.minutesToTicks(2)));
+        player.addPotionEffect(new ModEffect(ModBlessings.energetic_presence, ConfigPresence.energeticPresence.duration));
     }
 
     @Override

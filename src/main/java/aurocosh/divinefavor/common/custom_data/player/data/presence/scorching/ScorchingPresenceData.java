@@ -1,16 +1,13 @@
 package aurocosh.divinefavor.common.custom_data.player.data.presence.scorching;
 
+import aurocosh.divinefavor.common.config.common.ConfigPresence;
 import aurocosh.divinefavor.common.lib.IncrementalChanceCounter;
 
-// The default implementation of the capability. Holds all the logic.
 public class ScorchingPresenceData {
-    private static final float STARTING_CHANCE = 0.0f;
-    private static final float CHANCE_INCREASE = 0.1f;
-
     private IncrementalChanceCounter chanceCounter;
 
     public ScorchingPresenceData() {
-        chanceCounter = new IncrementalChanceCounter(STARTING_CHANCE, CHANCE_INCREASE);
+        chanceCounter = new IncrementalChanceCounter(ConfigPresence.scorchingPresence.startingChance, ConfigPresence.scorchingPresence.chanceIncrease);
     }
 
     public void reset() {

@@ -1,5 +1,6 @@
-package aurocosh.divinefavor.common.potions.blessings;
+package aurocosh.divinefavor.common.potions.presences;
 
+import aurocosh.divinefavor.common.config.common.ConfigPresence;
 import aurocosh.divinefavor.common.custom_data.player.PlayerData;
 import aurocosh.divinefavor.common.custom_data.player.data.presence.towering.ToweringPresenceData;
 import aurocosh.divinefavor.common.item.calling_stones.ModCallingStones;
@@ -8,7 +9,6 @@ import aurocosh.divinefavor.common.potions.base.effect.ModEffect;
 import aurocosh.divinefavor.common.potions.base.potion.ModPotion;
 import aurocosh.divinefavor.common.potions.common.ModCurses;
 import aurocosh.divinefavor.common.util.UtilRandom;
-import aurocosh.divinefavor.common.util.UtilTick;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -16,9 +16,6 @@ import net.minecraftforge.fml.common.Mod;
 
 @Mod.EventBusSubscriber
 public class PotionToweringPresence extends ModPotion {
-    private static final int MIN_CURSE_TIME = UtilTick.secondsToTicks(40);
-    private static final int MAX_CURSE_TIME = UtilTick.secondsToTicks(70);
-
     private static final DistributedRandomList<ModPotion> possibleCurses = new DistributedRandomList<>();
 
     static {
@@ -65,7 +62,7 @@ public class PotionToweringPresence extends ModPotion {
         if (!presenceData.tick())
             return;
 
-        int curseTime = UtilRandom.nextInt(MIN_CURSE_TIME, MAX_CURSE_TIME);
+        int curseTime = UtilRandom.nextInt(ConfigPresence.toweringPresence.minCurseTime, ConfigPresence.toweringPresence.maxCurseTime);
         ModPotion curse = possibleCurses.getRandom();
         livingBase.addPotionEffect(new ModEffect(curse, curseTime).setIsCurse());
     }

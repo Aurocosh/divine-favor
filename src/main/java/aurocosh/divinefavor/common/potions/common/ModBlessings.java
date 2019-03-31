@@ -1,7 +1,7 @@
 package aurocosh.divinefavor.common.potions.common;
 
 import aurocosh.divinefavor.common.potions.base.potion.ModPotion;
-import aurocosh.divinefavor.common.potions.blessings.*;
+import aurocosh.divinefavor.common.potions.presences.*;
 
 public class ModBlessings {
     public static ModPotion chilling_presence;

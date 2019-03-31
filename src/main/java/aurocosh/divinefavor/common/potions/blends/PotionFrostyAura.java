@@ -1,5 +1,6 @@
 package aurocosh.divinefavor.common.potions.blends;
 
+import aurocosh.divinefavor.common.config.common.ConfigPresence;
 import aurocosh.divinefavor.common.custom_data.player.PlayerData;
 import aurocosh.divinefavor.common.custom_data.player.data.aura.frosty.FrostyAuraData;
 import aurocosh.divinefavor.common.lib.LoopedCounter;
@@ -47,7 +48,7 @@ public class PotionFrostyAura extends ModPotion {
         FrostyAuraData auraData = PlayerData.get(player).getFrostyAuraData();
         if (auraData.count()) {
             player.removePotionEffect(ModBlendEffects.frosty_aura);
-            player.addPotionEffect(new ModEffect(ModBlessings.chilling_presence, UtilTick.minutesToTicks(2)));
+            player.addPotionEffect(new ModEffect(ModBlessings.chilling_presence, ConfigPresence.chillingPresence.duration));
             return;
         }
         if (!isConditionsMet(livingBase, player))

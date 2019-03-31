@@ -1,5 +1,6 @@
 package aurocosh.divinefavor.common.potions.blends;
 
+import aurocosh.divinefavor.common.config.common.ConfigPresence;
 import aurocosh.divinefavor.common.custom_data.player.PlayerData;
 import aurocosh.divinefavor.common.custom_data.player.data.aura.calling.CallingAuraData;
 import aurocosh.divinefavor.common.lib.math.Vector3i;
@@ -9,7 +10,6 @@ import aurocosh.divinefavor.common.potions.base.potion.ModPotion;
 import aurocosh.divinefavor.common.potions.common.ModBlendEffects;
 import aurocosh.divinefavor.common.potions.common.ModBlessings;
 import aurocosh.divinefavor.common.spirit.ModSpirits;
-import aurocosh.divinefavor.common.util.UtilTick;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
@@ -52,7 +52,7 @@ public class PotionCallingAura extends ModPotion {
         CallingAuraData auraData = PlayerData.get(player).getCallingAuraData();
         if (auraData.tryLuck()) {
             player.removePotionEffect(ModBlendEffects.calling_aura);
-            player.addPotionEffect(new ModEffect(ModBlessings.manipulative_presence, UtilTick.minutesToTicks(2)));
+            player.addPotionEffect(new ModEffect(ModBlessings.manipulative_presence, ConfigPresence.manipulativePresence.duration));
         }
     }
 }

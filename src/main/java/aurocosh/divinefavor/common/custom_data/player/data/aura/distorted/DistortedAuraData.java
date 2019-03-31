@@ -1,16 +1,14 @@
 package aurocosh.divinefavor.common.custom_data.player.data.aura.distorted;
 
+import aurocosh.divinefavor.common.config.common.ConfigAura;
 import aurocosh.divinefavor.common.lib.IncrementalChanceCounter;
 
 // The default implementation of the capability. Holds all the logic.
 public class DistortedAuraData {
-    private static final float STARTING_CHANCE = 0.0f;
-    private static final float CHANCE_INCREASE = 0.1f;
-
     private IncrementalChanceCounter chanceCounter;
 
     public DistortedAuraData() {
-        chanceCounter = new IncrementalChanceCounter(STARTING_CHANCE, CHANCE_INCREASE);
+        chanceCounter = new IncrementalChanceCounter(ConfigAura.distortedAura.startingChance, ConfigAura.distortedAura.chanceIncrease);
     }
 
     public void reset() {

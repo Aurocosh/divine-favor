@@ -1,14 +1,13 @@
 package aurocosh.divinefavor.common.potions.blends;
 
+import aurocosh.divinefavor.common.config.common.ConfigPresence;
 import aurocosh.divinefavor.common.custom_data.player.PlayerData;
 import aurocosh.divinefavor.common.custom_data.player.data.aura.hunters.HuntersAuraData;
-import aurocosh.divinefavor.common.custom_data.player.data.aura.visceral.VisceralAuraData;
 import aurocosh.divinefavor.common.potions.base.effect.ModEffect;
 import aurocosh.divinefavor.common.potions.base.potion.ModPotion;
 import aurocosh.divinefavor.common.potions.common.ModBlendEffects;
 import aurocosh.divinefavor.common.potions.common.ModBlessings;
 import aurocosh.divinefavor.common.spirit.ModSpirits;
-import aurocosh.divinefavor.common.util.UtilTick;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.monster.IMob;
@@ -55,10 +54,10 @@ public class PotionHuntersAura extends ModPotion {
         Entity mob = event.getEntity();
         if (!(mob instanceof IMob))
             return;
-        VisceralAuraData furyData = PlayerData.get(player).getVisceralAuraData();
-        if (furyData.tryLuck()) {
+        HuntersAuraData huntersAuraData = PlayerData.get(player).getHuntersAuraData();
+        if (huntersAuraData.tryLuck()) {
             player.removePotionEffect(ModBlendEffects.hunters_aura);
-            player.addPotionEffect(new ModEffect(ModBlessings.predatory_presence, UtilTick.minutesToTicks(2)));
+            player.addPotionEffect(new ModEffect(ModBlessings.predatory_presence, ConfigPresence.predatoryPresence.duration));
         }
     }
 

@@ -1,5 +1,6 @@
-package aurocosh.divinefavor.common.potions.blessings;
+package aurocosh.divinefavor.common.potions.presences;
 
+import aurocosh.divinefavor.common.config.common.ConfigPresence;
 import aurocosh.divinefavor.common.custom_data.player.PlayerData;
 import aurocosh.divinefavor.common.custom_data.player.data.presence.furious.FuriousPresenceData;
 import aurocosh.divinefavor.common.item.calling_stones.ModCallingStones;
@@ -20,8 +21,6 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 @Mod.EventBusSubscriber
 public class PotionFuriousPresence extends ModPotion {
-    private final static float MULTIPLIER = 2.5f;
-
     public PotionFuriousPresence() {
         super("furious_presence", true, 0x7FB8A4);
     }
@@ -39,7 +38,7 @@ public class PotionFuriousPresence extends ModPotion {
     @SubscribeEvent
     public static void onEntityDamaged(LivingDamageEvent event) {
         if (isVictimHasBlessing(event) || isAttackerHasBlessing(event))
-            event.setAmount(event.getAmount() * MULTIPLIER);
+            event.setAmount(event.getAmount() * ConfigPresence.furiousPresence.damageMultiplier);
     }
 
     private static boolean isVictimHasBlessing(LivingDamageEvent event) {

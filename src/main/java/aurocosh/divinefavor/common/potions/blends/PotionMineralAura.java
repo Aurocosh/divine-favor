@@ -1,5 +1,6 @@
 package aurocosh.divinefavor.common.potions.blends;
 
+import aurocosh.divinefavor.common.config.common.ConfigPresence;
 import aurocosh.divinefavor.common.custom_data.player.PlayerData;
 import aurocosh.divinefavor.common.custom_data.player.data.aura.mineral.MineralAuraData;
 import aurocosh.divinefavor.common.potions.base.effect.ModEffect;
@@ -7,7 +8,6 @@ import aurocosh.divinefavor.common.potions.base.potion.ModPotion;
 import aurocosh.divinefavor.common.potions.common.ModBlendEffects;
 import aurocosh.divinefavor.common.potions.common.ModBlessings;
 import aurocosh.divinefavor.common.spirit.ModSpirits;
-import aurocosh.divinefavor.common.util.UtilTick;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
@@ -46,7 +46,7 @@ public class PotionMineralAura extends ModPotion {
         MineralAuraData auraData = PlayerData.get(player).getMineralAuraData();
         if (auraData.count()) {
             player.removePotionEffect(ModBlendEffects.mineral_aura);
-            player.addPotionEffect(new ModEffect(ModBlessings.industrious_presence, UtilTick.minutesToTicks(2)));
+            player.addPotionEffect(new ModEffect(ModBlessings.industrious_presence, ConfigPresence.industriousPresence.duration));
         }
     }
 }
