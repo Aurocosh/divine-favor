@@ -43,4 +43,7 @@ public class ConfigItem {
     public static BathingBlendPotion blendSnow = new BathingBlendPotion(20, 4, 24);
     @Config.Name("Cursed wood blend")
     public static BathingBlendPotion blendWood = new BathingBlendPotion(20, 4, 24);
+
+    @Config.Name("Minor wishing stone favor value")
+    public static int minorWishingStoneFavorValue = 100;
 }
