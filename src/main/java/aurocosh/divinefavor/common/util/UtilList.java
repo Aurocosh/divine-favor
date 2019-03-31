@@ -9,6 +9,11 @@ public class UtilList {
         boolean select(T element);
     }
 
+    @FunctionalInterface
+    public interface Processor<T> {
+        void process(T element);
+    }
+
     public static <T> boolean isAll(List<T> list, Predicate<T> predicate) {
         for (T element : list)
             if (!predicate.select(element))
