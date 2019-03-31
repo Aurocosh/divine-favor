@@ -68,6 +68,8 @@ public class ConfigSpells {
     public static HeatWave heatWave = new HeatWave();
     @Config.Name("Hellisphere")
     public static Hellisphere hellisphere = new Hellisphere();
+    @Config.Name("Infernal touch")
+    public static InfernalTouch infernalTouch = new InfernalTouch();
     @Config.Name("Ignition")
     public static Ignition ignition = new Ignition();
     @Config.Name("Invite gem")
