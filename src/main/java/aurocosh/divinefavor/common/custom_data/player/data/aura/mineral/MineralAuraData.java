@@ -1,14 +1,13 @@
 package aurocosh.divinefavor.common.custom_data.player.data.aura.mineral;
 
+import aurocosh.divinefavor.common.config.common.ConfigAura;
 import aurocosh.divinefavor.common.lib.SimpleCounter;
 
-// The default implementation of the capability. Holds all the logic.
 public class MineralAuraData {
-    private static final int STONE_TO_BREAK = 30;
     private final SimpleCounter counter;
 
     public MineralAuraData() {
-        counter = new SimpleCounter(STONE_TO_BREAK);
+        counter = new SimpleCounter(ConfigAura.mineralAura.stoneToBreak);
     }
 
     public boolean count() {

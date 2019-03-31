@@ -1,16 +1,13 @@
 package aurocosh.divinefavor.common.custom_data.player.data.presence.manipulative;
 
+import aurocosh.divinefavor.common.config.common.ConfigPresence;
 import aurocosh.divinefavor.common.lib.IncrementalChanceCounter;
 
-// The default implementation of the capability. Holds all the logic.
 public class ManipulativePresenceData {
-    private static final float STARTING_CHANCE = 0.10f;
-    private static final float CHANCE_INCREASE = 0.50f;
-
     private IncrementalChanceCounter chanceCounter;
 
     public ManipulativePresenceData() {
-        chanceCounter = new IncrementalChanceCounter(STARTING_CHANCE, CHANCE_INCREASE);
+        chanceCounter = new IncrementalChanceCounter(ConfigPresence.manipulativePresence.startingChance, ConfigPresence.manipulativePresence.chanceIncrease);
     }
 
     public void reset() {

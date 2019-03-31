@@ -1,4 +1,4 @@
-package aurocosh.divinefavor.common.potions.blessings;
+package aurocosh.divinefavor.common.potions.presences;
 
 import aurocosh.divinefavor.common.custom_data.player.PlayerData;
 import aurocosh.divinefavor.common.custom_data.player.data.presence.warping.WarpingPresenceData;
@@ -16,7 +16,6 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 @Mod.EventBusSubscriber
 public class PotionWarpingPresence extends ModPotion {
-
     public PotionWarpingPresence() {
         super("warping_presence", true, 0x7FB8A4);
     }

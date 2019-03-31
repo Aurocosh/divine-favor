@@ -1,5 +1,7 @@
 package aurocosh.divinefavor.common.potions.blends;
 
+import aurocosh.divinefavor.common.config.common.ConfigAura;
+import aurocosh.divinefavor.common.config.common.ConfigPresence;
 import aurocosh.divinefavor.common.custom_data.player.PlayerData;
 import aurocosh.divinefavor.common.custom_data.player.data.aura.distorted.DistortedAuraData;
 import aurocosh.divinefavor.common.item.ItemBlockEnderPumpkin;
@@ -26,7 +28,6 @@ import java.util.List;
 public class PotionDistortedAura extends ModPotion {
     public static final int CHECK_RATE = UtilTick.secondsToTicks(1);
     private static final LoopedCounter COUNTER = new LoopedCounter(CHECK_RATE);
-    private static final int RADIUS = 1;
 
     public PotionDistortedAura() {
         super("distorted_aura", true, 0x7FB8A4);
@@ -56,7 +57,8 @@ public class PotionDistortedAura extends ModPotion {
             return;
 
         Vec3d pos = player.getPositionVector();
-        AxisAlignedBB axis = new AxisAlignedBB(pos.x - RADIUS, pos.y + 1, pos.z - RADIUS, pos.x + RADIUS, pos.y, pos.z + RADIUS);
+        int radius = ConfigAura.distortedAura.endermanRadius;
+        AxisAlignedBB axis = new AxisAlignedBB(pos.x - radius, pos.y + 1, pos.z - radius, pos.x + radius, pos.y, pos.z + radius);
         List<EntityLivingBase> endermanList = player.world.getEntitiesWithinAABB(EntityEnderman.class, axis, (EntityLivingBase e) -> e != null && e.getAttackingEntity() != livingBase);
         if (endermanList.isEmpty())
             return;
@@ -64,7 +66,7 @@ public class PotionDistortedAura extends ModPotion {
         DistortedAuraData auraData = PlayerData.get(player).getDistortedAuraData();
         if (auraData.tryLuck()) {
             player.removePotionEffect(ModBlendEffects.distorted_aura);
-            player.addPotionEffect(new ModEffect(ModBlessings.warping_presence, UtilTick.minutesToTicks(2)));
+            player.addPotionEffect(new ModEffect(ModBlessings.warping_presence, ConfigPresence.warpingPresence.duration));
         }
     }
 

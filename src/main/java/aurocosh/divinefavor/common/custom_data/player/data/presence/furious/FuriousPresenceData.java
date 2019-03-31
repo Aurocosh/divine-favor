@@ -1,16 +1,14 @@
 package aurocosh.divinefavor.common.custom_data.player.data.presence.furious;
 
+import aurocosh.divinefavor.common.config.common.ConfigPresence;
 import aurocosh.divinefavor.common.lib.SimpleCounter;
 import aurocosh.divinefavor.common.util.UtilRandom;
 
-// The default implementation of the capability. Holds all the logic.
 public class FuriousPresenceData {
-    private static final int MIN_MONSTERS_TO_KILL = 5;
-    private static final int MAX_MONSTERS_TO_KILL = 10;
     private final SimpleCounter counter;
 
     public FuriousPresenceData() {
-        counter = new SimpleCounter(MIN_MONSTERS_TO_KILL);
+        counter = new SimpleCounter(ConfigPresence.furiousPresence.minMonstersToKill);
     }
 
     public boolean count() {
@@ -18,7 +16,7 @@ public class FuriousPresenceData {
     }
 
     public void reset() {
-        counter.setRequired(UtilRandom.nextInt(MIN_MONSTERS_TO_KILL, MAX_MONSTERS_TO_KILL));
+        counter.setRequired(UtilRandom.nextInt(ConfigPresence.furiousPresence.minMonstersToKill, ConfigPresence.furiousPresence.maxMonstersToKill));
     }
 
     public int getCount() {

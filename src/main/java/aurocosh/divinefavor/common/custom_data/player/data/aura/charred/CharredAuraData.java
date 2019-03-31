@@ -1,13 +1,12 @@
 package aurocosh.divinefavor.common.custom_data.player.data.aura.charred;
 
+import aurocosh.divinefavor.common.config.common.ConfigAura;
 import aurocosh.divinefavor.common.lib.SimpleCounter;
 
 // The default implementation of the capability. Holds all the logic.
 public class CharredAuraData extends SimpleCounter {
-    private static final int FIRES_TO_IGNITE = 20;
-
     public CharredAuraData() {
-        super(FIRES_TO_IGNITE);
+        super(ConfigAura.charredAura.firesToIgnite);
     }
 
     @Override

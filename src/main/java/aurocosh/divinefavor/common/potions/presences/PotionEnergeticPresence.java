@@ -1,4 +1,4 @@
-package aurocosh.divinefavor.common.potions.blessings;
+package aurocosh.divinefavor.common.potions.presences;
 
 import aurocosh.divinefavor.common.custom_data.player.PlayerData;
 import aurocosh.divinefavor.common.custom_data.player.data.presence.energetic.EnergeticPresenceData;
