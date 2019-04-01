@@ -15,6 +15,7 @@ public interface IGrimoireHandler {
     ItemStack getSelectedStack();
     List<ItemStack> getPreviousStacks();
     List<ItemStack> getNextStacks();
+    List<ItemStack> getAllStacks();
 
     ItemStackHandler getStackHandler();
 
