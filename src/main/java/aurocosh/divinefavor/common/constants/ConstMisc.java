@@ -9,6 +9,8 @@ public final class ConstMisc {
     public static final String PREFIX_CONF = MOD_ID + ".";
     public static final boolean BETA_TESTING = false;
 
+    public static final String KEYBIND_CATEGORY = "key.categories." + ConstMisc.MOD_ID;
+
     // Proxy Constants
     public static final String PROXY_COMMON = "aurocosh.divinefavor.common.core.proxy.CommonProxy";
     public static final String PROXY_CLIENT = "aurocosh.divinefavor.client.core.proxy.ClientProxy";

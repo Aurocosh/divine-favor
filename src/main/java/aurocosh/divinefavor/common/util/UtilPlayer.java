@@ -1,6 +1,7 @@
 package aurocosh.divinefavor.common.util;
 
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumHand;
 
@@ -13,6 +14,26 @@ public class UtilPlayer {
         if (predicate.select(stack))
             return stack;
         return ItemStack.EMPTY;
+    }
+
+    public static ItemStack getItemInHand(EntityPlayer player, UtilList.Predicate<Item> predicate) {
+        ItemStack stack = player.getHeldItemMainhand();
+        if (!stack.isEmpty() && predicate.select(stack.getItem()))
+            return stack;
+        stack = player.getHeldItemOffhand();
+        if (!stack.isEmpty() && predicate.select(stack.getItem()))
+            return stack;
+        return ItemStack.EMPTY;
+    }
+
+    public static EnumHand getHandWithItem(EntityPlayer player, UtilList.Predicate<Item> predicate) {
+        ItemStack stack = player.getHeldItemMainhand();
+        if (!stack.isEmpty() && predicate.select(stack.getItem()))
+            return EnumHand.MAIN_HAND;
+        stack = player.getHeldItemOffhand();
+        if (!stack.isEmpty() && predicate.select(stack.getItem()))
+            return EnumHand.OFF_HAND;
+        return null;
     }
 
     public static EnumHand getHand(UtilList.Predicate<EnumHand> predicate) {
@@ -47,7 +68,7 @@ public class UtilPlayer {
         return new SlotData(-1, ItemStack.EMPTY);
     }
 
-    public static void swapStacks(EntityPlayer player, int firstSlot, int secondSlot){
+    public static void swapStacks(EntityPlayer player, int firstSlot, int secondSlot) {
         ItemStack firstStack = player.inventory.getStackInSlot(firstSlot);
         ItemStack secondStack = player.inventory.getStackInSlot(secondSlot);
         player.inventory.setInventorySlotContents(firstSlot, secondStack);
