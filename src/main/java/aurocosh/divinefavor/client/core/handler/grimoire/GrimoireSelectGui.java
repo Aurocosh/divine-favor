@@ -1,6 +1,7 @@
 package aurocosh.divinefavor.client.core.handler.grimoire;
 
 import aurocosh.divinefavor.DivineFavor;
+import aurocosh.divinefavor.client.core.handler.KeyBindings;
 import aurocosh.divinefavor.common.constants.ConstResources;
 import aurocosh.divinefavor.common.item.grimoire.ItemGrimoire;
 import aurocosh.divinefavor.common.item.grimoire.capability.IGrimoireHandler;
@@ -19,7 +20,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.Mod;
-import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.GL11;
 
 import java.io.IOException;
@@ -30,28 +30,27 @@ import static aurocosh.divinefavor.common.item.grimoire.capability.GrimoireDataH
 
 @Mod.EventBusSubscriber
 public class GrimoireSelectGui extends GuiScreen {
+    public static GrimoireSelectGui INSTANCE = new GrimoireSelectGui();
+
     private static final ResourceLocation marker = new ResourceLocation(ConstResources.GUI_GRIMOIRE_MARKER);
     private static final ResourceLocation selector = new ResourceLocation(ConstResources.GUI_GRIMOIRE_SELECTOR);
 
-    private IGrimoireHandler handler;
+    private EnumHand hand;
+    private int state;
     private int selectedIndex;
-    private int stateSelector;
-
-    EnumHand hand;
-    private ItemStack selectedStack;
+    private IGrimoireHandler handler;
 
     private List<ItemStack> allStacks;
     private List<Vector2i> slotPositions;
 
     public GrimoireSelectGui() {
         mc = Minecraft.getMinecraft();
+        hand = null;
+        state = 0;
+        selectedIndex = 0;
         handler = null;
         allStacks = null;
         slotPositions = null;
-        selectedIndex = 0;
-        stateSelector = 0;
-        hand = null;
-        selectedStack = null;
     }
 
     @Override
@@ -59,7 +58,7 @@ public class GrimoireSelectGui extends GuiScreen {
         super.drawScreen(mx, my, partialTicks);
 
         EntityPlayer player = DivineFavor.proxy.getClientPlayer();
-        hand = UtilPlayer.getHand(hand -> player.getHeldItem(hand).getItem() instanceof ItemGrimoire);
+        hand = UtilPlayer.getHandWithItem(player, item -> item instanceof ItemGrimoire);
         if (hand == null)
             return;
 
@@ -67,28 +66,15 @@ public class GrimoireSelectGui extends GuiScreen {
         IGrimoireHandler grimoireHandler = stack.getCapability(CAPABILITY_GRIMOIRE, null);
         assert grimoireHandler != null;
 
+        refreshStackData(grimoireHandler);
         renderSpellMassSelector(mx, my, grimoireHandler);
     }
 
     private void renderSpellMassSelector(int mx, int my, IGrimoireHandler grimoireHandler) {
-//        if (!Keyboard.isKeyDown(Keyboard.KEY_LCONTROL))
-//            return;
-//        if (!player.isSneaking())
-//            return;
-        if (handler != grimoireHandler || stateSelector != grimoireHandler.getState()) {
-            handler = grimoireHandler;
-            stateSelector = grimoireHandler.getState();
-
-            selectedStack = grimoireHandler.getSelectedStack();
-            allStacks = grimoireHandler.getAllStacks();
-        }
-//        if (selectedStack.isEmpty())
-//            return;
-
-
-        ImmutableSet<KeyBinding> set = ImmutableSet.of(mc.gameSettings.keyBindForward, mc.gameSettings.keyBindLeft, mc.gameSettings.keyBindBack, mc.gameSettings.keyBindRight, mc.gameSettings.keyBindSneak, mc.gameSettings.keyBindSprint, mc.gameSettings.keyBindJump);
-        for (KeyBinding k : set)
-            KeyBinding.setKeyBindState(k.getKeyCode(), GameSettings.isKeyDown(k));
+//
+//        ImmutableSet<KeyBinding> set = ImmutableSet.of(mc.gameSettings.keyBindForward, mc.gameSettings.keyBindLeft, mc.gameSettings.keyBindBack, mc.gameSettings.keyBindRight, mc.gameSettings.keyBindSneak, mc.gameSettings.keyBindSprint, mc.gameSettings.keyBindJump);
+//        for (KeyBinding k : set)
+//            KeyBinding.setKeyBindState(k.getKeyCode(), GameSettings.isKeyDown(k));
 
         int x = width / 2;
         int y = height / 2;
@@ -120,10 +106,10 @@ public class GrimoireSelectGui extends GuiScreen {
         Vector2i currentPoint = slotPositions.get(currentSlotIndex);
 
         mc.getTextureManager().bindTexture(marker);
-        drawModalRectWithCustomSizedTexture(currentPoint.x - 8, currentPoint.y - 8,0,0,16,16,16,16);
+        drawModalRectWithCustomSizedTexture(currentPoint.x - 8, currentPoint.y - 8, 0, 0, 16, 16, 16, 16);
 
         mc.getTextureManager().bindTexture(selector);
-        drawModalRectWithCustomSizedTexture(closestPoint.x - 8, closestPoint.y - 8,0,0,16,16,16,16);
+        drawModalRectWithCustomSizedTexture(closestPoint.x - 8, closestPoint.y - 8, 0, 0, 16, 16, 16, 16);
 
         for (int i = 0; i < slotPositions.size(); i++) {
             Vector2i spiralPoint = slotPositions.get(i);
@@ -135,6 +121,15 @@ public class GrimoireSelectGui extends GuiScreen {
         GlStateManager.disableBlend();
     }
 
+    private void refreshStackData(IGrimoireHandler grimoireHandler) {
+        if (handler != grimoireHandler || state != grimoireHandler.getState()) {
+            handler = grimoireHandler;
+            state = grimoireHandler.getState();
+
+            allStacks = grimoireHandler.getAllStacks();
+        }
+    }
+
     @Override
     protected void mouseClicked(int mouseX, int mouseY, int mouseButton) throws IOException {
         super.mouseClicked(mouseX, mouseY, mouseButton);
@@ -143,8 +138,8 @@ public class GrimoireSelectGui extends GuiScreen {
     @Override
     public void updateScreen() {
         super.updateScreen();
-        if (!Keyboard.isKeyDown(Keyboard.KEY_LCONTROL)) {
-//            if (!GameSettings.isKeyDown(KeyBindings.modeSwitch)) {
+        if (!GameSettings.isKeyDown(KeyBindings.talismanSelect)) {
+
             mc.displayGuiScreen(null);
             if (selectedIndex != -1 && hand != null) {
                 EntityPlayer player = DivineFavor.proxy.getClientPlayer();

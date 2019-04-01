@@ -1,8 +1,7 @@
 package aurocosh.divinefavor.client.core.proxy;
 
-import aurocosh.divinefavor.client.core.handler.ClientTickHandler;
+import aurocosh.divinefavor.client.core.handler.KeyBindings;
 import aurocosh.divinefavor.client.core.handler.HUDHandler;
-import aurocosh.divinefavor.client.core.handler.KeybindHandler;
 import aurocosh.divinefavor.client.render.common.ModRendering;
 import aurocosh.divinefavor.common.core.proxy.CommonProxy;
 import com.google.common.util.concurrent.ListenableFuture;
@@ -21,7 +20,6 @@ public class ClientProxy extends CommonProxy {
         ModRendering.preInit();
 
         MinecraftForge.EVENT_BUS.register(new HUDHandler());
-        MinecraftForge.EVENT_BUS.register(new ClientTickHandler());
 
         //ClientRegistry.bindTileEntitySpecialRenderer(TileProgrammer.class, new RenderTileProgrammer());
     }
@@ -30,7 +28,7 @@ public class ClientProxy extends CommonProxy {
     public void init(FMLInitializationEvent e) {
         super.init(e);
         ModRendering.init();
-        KeybindHandler.init();
+        KeyBindings.init();
     }
 
     @Override
