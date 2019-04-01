@@ -82,6 +82,14 @@ public class DefaultGrimoireHandler implements IGrimoireHandler {
         return getStacks(STACKS_DISPLAYED, this::nextIndex);
     }
 
+    @Override
+    public List<ItemStack> getAllStacks() {
+        List<ItemStack> stacks = new ArrayList<>();
+        for (int i = 0; i < inventory.getSlots(); i++)
+            stacks.add(inventory.getStackInSlot(i));
+        return stacks;
+    }
+
     public List<ItemStack> getStacks(int count, Indexer indexer) {
         List<ItemStack> stacks = new ArrayList<>(count);
         int index = selectedSlotIndex;

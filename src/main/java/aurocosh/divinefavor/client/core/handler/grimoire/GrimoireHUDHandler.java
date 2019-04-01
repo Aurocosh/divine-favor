@@ -4,9 +4,14 @@ import aurocosh.divinefavor.DivineFavor;
 import aurocosh.divinefavor.client.core.handler.hud.UtilHUD;
 import aurocosh.divinefavor.common.item.grimoire.ItemGrimoire;
 import aurocosh.divinefavor.common.item.grimoire.capability.IGrimoireHandler;
+import aurocosh.divinefavor.common.lib.math.Vector2i;
+import aurocosh.divinefavor.common.util.UtilGui;
+import com.google.common.collect.ImmutableSet;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.renderer.GlStateManager;
+import net.minecraft.client.settings.GameSettings;
+import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumHand;
@@ -26,11 +31,17 @@ import static aurocosh.divinefavor.common.item.grimoire.capability.GrimoireDataH
 @Mod.EventBusSubscriber
 public class GrimoireHUDHandler {
     private static IGrimoireHandler handler = null;
-    private static int state = 0;
+    private static int stateSelector = 0;
+    private static int stateMassSelector = 0;
 
     private static ItemStack selectedStack = ItemStack.EMPTY;
     private static List<ItemStack> nextStacks = null;
     private static List<ItemStack> previousStacks = null;
+
+    private static List<ItemStack> allStacks = null;
+
+
+
 
     @SubscribeEvent
     @SideOnly(Side.CLIENT)
@@ -51,9 +62,12 @@ public class GrimoireHUDHandler {
             EntityPlayer player = DivineFavor.proxy.getClientPlayer();
 
             renderSpellSelector(mc, resolution, partialTicks, player, grimoireHandler);
+//            renderSpellMassSelector(mc, resolution, partialTicks, player, grimoireHandler);
             renderSpellRequirements(mc, resolution, partialTicks, player, grimoireHandler);
         }
     }
+
+
 
     @SideOnly(Side.CLIENT)
     private static void renderSpellSelector(Minecraft mc, ScaledResolution res, float pticks, EntityPlayer player, IGrimoireHandler grimoireHandler) {
@@ -61,9 +75,9 @@ public class GrimoireHUDHandler {
             return;
         if (!player.isSneaking())
             return;
-        if (handler != grimoireHandler || state != grimoireHandler.getState()) {
+        if (handler != grimoireHandler || stateSelector != grimoireHandler.getState()) {
             handler = grimoireHandler;
-            state = grimoireHandler.getState();
+            stateSelector = grimoireHandler.getState();
 
             selectedStack = grimoireHandler.getSelectedStack();
             previousStacks = new ArrayList<>(grimoireHandler.getPreviousStacks());
@@ -91,6 +105,78 @@ public class GrimoireHUDHandler {
             mc.getRenderItem().renderItemIntoGUI(nextStacks.get(i), i * 18 + 21, -6);
         for (int i = 0; i < previousStacks.size(); i++)
             mc.getRenderItem().renderItemIntoGUI(previousStacks.get(i), -i * 18 - 21, -6);
+        GlStateManager.popMatrix();
+        GlStateManager.disableBlend();
+    }
+
+
+
+    @SideOnly(Side.CLIENT)
+    private static void renderSpellMassSelector(Minecraft mc, ScaledResolution res, float pticks, EntityPlayer player, IGrimoireHandler grimoireHandler) {
+        if (!Keyboard.isKeyDown(Keyboard.KEY_LCONTROL))
+            return;
+//        if (!player.isSneaking())
+//            return;
+        if (handler != grimoireHandler || stateMassSelector != grimoireHandler.getState()) {
+            handler = grimoireHandler;
+            stateMassSelector = grimoireHandler.getState();
+
+            selectedStack = grimoireHandler.getSelectedStack();
+            allStacks = grimoireHandler.getAllStacks();
+        }
+//        if (selectedStack.isEmpty())
+//            return;
+
+        mc.displayGuiScreen(null);
+
+        ImmutableSet<KeyBinding> set = ImmutableSet.of(mc.gameSettings.keyBindForward, mc.gameSettings.keyBindLeft, mc.gameSettings.keyBindBack, mc.gameSettings.keyBindRight, mc.gameSettings.keyBindSneak, mc.gameSettings.keyBindSprint, mc.gameSettings.keyBindJump);
+        for (KeyBinding k : set)
+            KeyBinding.setKeyBindState(k.getKeyCode(), GameSettings.isKeyDown(k));
+
+
+        int alpha = 255;
+        int x = res.getScaledWidth() / 2;
+        int y = res.getScaledHeight() / 2;
+
+        GlStateManager.enableBlend();
+        GlStateManager.blendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
+
+        GlStateManager.pushMatrix();
+        GlStateManager.translate(x, y, 0);
+        GlStateManager.scale(alpha / 255F, 1F, 1);
+        GlStateManager.color(1F, 1F, 1F);
+
+        int numSegments = allStacks.size();
+
+        int k = 3; //scalar
+        double a = 0.15f; //a-value
+        double aDec = 0.0008;
+
+        List<Vector2i> spiralPoints = new ArrayList<>();
+
+        for (int i = 0; i < numSegments; ++i) {
+
+            //find `ln(d*r)/a` for both points
+            double lni1 = Math.log(a * k * (i + 4)) / a;
+            //Calculate the points and convert to rectangular coordinates, zooming in with 7x magnification
+            double logSpiral = Math.exp(lni1 * a);
+            double pointX = 9 * logSpiral * Math.cos(lni1);
+            double pointY = 7 * logSpiral * Math.sin(lni1);
+
+            spiralPoints.add(new Vector2i((int)pointX, (int)pointY));
+
+            a -= aDec;
+
+        }
+
+        UtilGui.drawPolyline(spiralPoints, 0.3f, 0, 1, 0.3f);
+
+        for (int i = 0; i < spiralPoints.size(); i++) {
+            Vector2i spiralPoint = spiralPoints.get(i);
+            ItemStack stack = allStacks.get(i);
+            mc.getRenderItem().renderItemIntoGUI(stack, spiralPoint.x - 8, spiralPoint.y - 8);
+        }
+
         GlStateManager.popMatrix();
         GlStateManager.disableBlend();
     }
