@@ -5,8 +5,7 @@ import aurocosh.divinefavor.common.network.message.client.spell_uses.MessageSync
 import aurocosh.divinefavor.common.network.message.client.spell_uses.MessageSyncContracts;
 import aurocosh.divinefavor.common.network.message.client.spell_uses.MessageSyncFavor;
 import aurocosh.divinefavor.common.network.message.client.spell_uses.MessageSyncSelectedFavors;
-import aurocosh.divinefavor.common.network.message.sever.MessageSyncGrimoireSlot;
-import aurocosh.divinefavor.common.network.message.sever.MessageSyncSpellBowSlot;
+import aurocosh.divinefavor.common.network.message.sever.MessageSyncTalismanContainerSlot;
 import aurocosh.divinefavor.common.network.message.sever.petrification.MessagePetrificationCure;
 import aurocosh.divinefavor.common.network.message.sever.petrification.MessagePetrificationDamage;
 import aurocosh.divinefavor.common.network.message.sever.petrification.MessagePetrificationReset;
@@ -30,7 +29,6 @@ public class MessageRegister {
 
         NetworkHandler.register(MessagePetrificationCure.class, Side.SERVER);
         NetworkHandler.register(MessagePetrificationDamage.class, Side.SERVER);
-        NetworkHandler.register(MessageSyncGrimoireSlot.class, Side.SERVER);
-        NetworkHandler.register(MessageSyncSpellBowSlot.class, Side.SERVER);
+        NetworkHandler.register(MessageSyncTalismanContainerSlot.class, Side.SERVER);
     }
 }

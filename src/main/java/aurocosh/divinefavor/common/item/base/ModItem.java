@@ -3,11 +3,14 @@ package aurocosh.divinefavor.common.item.base;
 import aurocosh.divinefavor.common.core.ResourceNamer;
 import aurocosh.divinefavor.common.registry.ModRegistries;
 import net.minecraft.client.renderer.ItemMeshDefinition;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ModItem extends Item implements IModelHolder {
     private final int orderIndex;
@@ -45,5 +48,10 @@ public class ModItem extends Item implements IModelHolder {
     @Override
     public ItemMeshDefinition getCustomMeshDefinition() {
         return null;
+    }
+
+    @SideOnly(Side.CLIENT)
+    public String getTranslatedName() {
+        return I18n.format(getTranslationKey() + ".name");
     }
 }

@@ -1,15 +1,12 @@
 package aurocosh.divinefavor.client.core.handler;
 
+import aurocosh.divinefavor.DivineFavor;
 import aurocosh.divinefavor.common.constants.ConstMisc;
 import aurocosh.divinefavor.common.core.ResourceNamer;
-import aurocosh.divinefavor.common.item.grimoire.ItemGrimoire;
-import aurocosh.divinefavor.common.item.spell_bow.ItemSpellBow;
+import aurocosh.divinefavor.common.item.talisman_container.TalismanContainerAdapter;
 import aurocosh.divinefavor.common.util.UtilPlayer;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.client.settings.KeyBinding;
-import net.minecraft.item.Item;
-import net.minecraft.util.EnumHand;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraftforge.client.settings.IKeyConflictContext;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.relauncher.Side;
@@ -36,21 +33,18 @@ public class KeyBindings {
     public static class KeyConflictContext implements IKeyConflictContext {
         @Override
         public boolean isActive() {
-            EntityPlayerSP player = Minecraft.getMinecraft().player;
+            EntityPlayer player = DivineFavor.proxy.getClientPlayer();
             if (player == null)
                 return false;
 //            if (!net.minecraftforge.client.settings.KeyConflictContext.GUI.isActive())
 //                return false;
-            EnumHand hand = UtilPlayer.getHand(element -> {
-                Item item = player.getHeldItem(element).getItem();
-                return item instanceof ItemGrimoire || item instanceof ItemSpellBow;
-            });
-            return hand != null;
+            return UtilPlayer.getHandWithItem(player, TalismanContainerAdapter::isItemValid) != null;
         }
 
         @Override
         public boolean conflicts(IKeyConflictContext other) {
-            return other == this;
+            return false;
+//            return other == this;
 //            return other == this || other == net.minecraftforge.client.settings.KeyConflictContext.IN_GAME;
         }
     }

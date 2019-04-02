@@ -1,7 +1,7 @@
 package aurocosh.divinefavor.client.core.proxy;
 
 import aurocosh.divinefavor.client.core.handler.KeyBindings;
-import aurocosh.divinefavor.client.core.handler.HUDHandler;
+import aurocosh.divinefavor.client.core.handler.architect_stick.HUDHandler;
 import aurocosh.divinefavor.client.render.common.ModRendering;
 import aurocosh.divinefavor.common.core.proxy.CommonProxy;
 import com.google.common.util.concurrent.ListenableFuture;
