@@ -1,8 +1,8 @@
 package aurocosh.divinefavor.client.gui.items;
 
 import aurocosh.divinefavor.common.constants.ConstResources;
-import aurocosh.divinefavor.common.item.spell_bow.SpellBowContainer;
-import aurocosh.divinefavor.common.item.spell_bow.capability.SpellBowDataHandler;
+import aurocosh.divinefavor.common.item.talisman_container.spell_bow.SpellBowContainer;
+import aurocosh.divinefavor.common.item.talisman_container.spell_bow.capability.SpellBowDataHandler;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
