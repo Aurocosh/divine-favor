@@ -4,8 +4,8 @@
   "category": "spell_talismans",
   "pages": [
     {
-      "type": "text",
-      "text": "Throws small stone. Thrown stone is similar to snowball, but will deal some damage, also is capable of breaking glass."
+      "type": "talisman_description",
+      "talisman": "divinefavor:talisman_stoneball_throw"
     },
     {
       "type": "spell_talisman_stats",

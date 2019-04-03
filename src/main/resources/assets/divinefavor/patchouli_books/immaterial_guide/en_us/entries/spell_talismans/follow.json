@@ -4,8 +4,8 @@
   "category": "spell_talismans",
   "pages": [
     {
-      "type": "text",
-      "text": "Will order all nearby minions to follow caster."
+      "type": "talisman_description",
+      "talisman": "divinefavor:talisman_follow"
     },
     {
       "type": "spell_talisman_stats",

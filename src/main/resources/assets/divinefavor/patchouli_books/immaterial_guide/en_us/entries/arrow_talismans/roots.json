@@ -4,8 +4,8 @@
   "category": "arrow_talismans",
   "pages": [
     {
-      "type": "text",
-      "text": "Arrow shot with this talisman will be cursed with immobilizing curse. Cursed creatures will be unable to move. To lift this curse you need look at your legs."
+      "type": "talisman_description",
+      "talisman": "divinefavor:arrow_talisman_roots"
     },
     {
       "type": "arrow_talisman_stats",

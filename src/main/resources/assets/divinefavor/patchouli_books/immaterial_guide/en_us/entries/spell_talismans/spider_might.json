@@ -4,8 +4,8 @@
   "category": "spell_talismans",
   "pages": [
     {
-      "type": "text",
-      "text": "Will grant caster ability to climb walls."
+      "type": "talisman_description",
+      "talisman": "divinefavor:talisman_spider_might"
     },
     {
       "type": "spell_talisman_stats",

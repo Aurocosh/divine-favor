@@ -4,8 +4,8 @@
   "category": "spell_talismans",
   "pages": [
     {
-      "type": "text",
-      "text": "Will order all nearby minions to attack creature that caster is looking at."
+      "type": "talisman_description",
+      "talisman": "divinefavor:talisman_target"
     },
     {
       "type": "spell_talisman_stats",

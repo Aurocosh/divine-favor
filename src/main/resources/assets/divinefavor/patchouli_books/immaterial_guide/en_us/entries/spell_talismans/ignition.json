@@ -4,8 +4,8 @@
   "category": "spell_talismans",
   "pages": [
     {
-      "type": "text",
-      "text": "When used on blocks will ignite them."
+      "type": "talisman_description",
+      "talisman": "divinefavor:talisman_ignition"
     },
     {
       "type": "spell_talisman_stats",

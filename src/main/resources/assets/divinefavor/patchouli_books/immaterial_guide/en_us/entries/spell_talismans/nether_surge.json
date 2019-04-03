@@ -4,8 +4,8 @@
   "category": "spell_talismans",
   "pages": [
     {
-      "type": "text",
-      "text": "When used it will create some random blocks is small radius. It will mostly generate netherack and soul sand, but it has small chance to generate much more valuable blocks, like gold and diamond blocks. It will also summon some hellish mobs. it also has small chance to spawn wither."
+      "type": "talisman_description",
+      "talisman": "divinefavor:talisman_nether_surge"
     },
     {
       "type": "spell_talisman_stats",

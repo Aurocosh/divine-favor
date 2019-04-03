@@ -4,8 +4,8 @@
   "category": "spell_talismans",
   "pages": [
     {
-      "type": "text",
-      "text": "When used this talisman will harvest and replant all crops in small radius."
+      "type": "talisman_description",
+      "talisman": "divinefavor:talisman_green_cycle"
     },
     {
       "type": "spell_talisman_stats",

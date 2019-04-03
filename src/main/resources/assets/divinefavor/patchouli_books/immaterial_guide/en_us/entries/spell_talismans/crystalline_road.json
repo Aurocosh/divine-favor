@@ -4,8 +4,8 @@
   "category": "spell_talismans",
   "pages": [
     {
-      "type": "text",
-      "text": "Grants user ability to walk on water. Press shift to fall in water while walking on it."
+      "type": "talisman_description",
+      "talisman": "divinefavor:talisman_crystalline_road"
     },
     {
       "type": "spell_talisman_stats",

@@ -4,8 +4,8 @@
   "category": "spell_talismans",
   "pages": [
     {
-      "type": "text",
-      "text": "Will grant caster permanent effect 'Night eyes'. When in darkness this effect will grant night vision, but in light it will blind caster."
+      "type": "talisman_description",
+      "talisman": "divinefavor:talisman_night_eye"
     },
     {
       "type": "spell_talisman_stats",

@@ -4,8 +4,8 @@
   "category": "spell_talismans",
   "pages": [
     {
-      "type": "text",
-      "text": "Will grant creative flight deep underground. When player goes above certain threshold ability to fly will disappear."
+      "type": "talisman_description",
+      "talisman": "divinefavor:talisman_ground_flow"
     },
     {
       "type": "spell_talisman_stats",

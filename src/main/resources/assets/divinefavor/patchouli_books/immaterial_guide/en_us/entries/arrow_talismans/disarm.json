@@ -4,8 +4,8 @@
   "category": "arrow_talismans",
   "pages": [
     {
-      "type": "text",
-      "text": "Arrow shot with this talisman will disarm any player it hits. When hit all currently held items will be moved to player inventory."
+      "type": "talisman_description",
+      "talisman": "divinefavor:arrow_talisman_disarm"
     },
     {
       "type": "arrow_talisman_stats",

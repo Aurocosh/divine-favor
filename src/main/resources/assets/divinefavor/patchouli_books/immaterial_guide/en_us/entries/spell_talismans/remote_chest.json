@@ -4,8 +4,8 @@
   "category": "spell_talismans",
   "pages": [
     {
-      "type": "text",
-      "text": "When used on chest it will create storage gem. When used storage gem will let you access bound chest remotely."
+      "type": "talisman_description",
+      "talisman": "divinefavor:talisman_remote_chest"
     },
     {
       "type": "spell_talisman_stats",

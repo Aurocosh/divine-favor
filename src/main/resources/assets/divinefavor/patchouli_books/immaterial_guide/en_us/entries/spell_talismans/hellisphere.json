@@ -4,8 +4,8 @@
   "category": "spell_talismans",
   "pages": [
     {
-      "type": "text",
-      "text": "Lava generation spell. Will turn all blocks in small radius around player in lava."
+      "type": "talisman_description",
+      "talisman": "divinefavor:talisman_hellisphere"
     },
     {
       "type": "spell_talisman_stats",

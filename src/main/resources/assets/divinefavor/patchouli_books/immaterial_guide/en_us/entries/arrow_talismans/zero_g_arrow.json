@@ -4,8 +4,8 @@
   "category": "arrow_talismans",
   "pages": [
     {
-      "type": "text",
-      "text": "Arrow shot with this talisman will not be affected by gravity."
+      "type": "talisman_description",
+      "talisman": "divinefavor:arrow_talisman_zero_g_arrow"
     },
     {
       "type": "arrow_talisman_stats",

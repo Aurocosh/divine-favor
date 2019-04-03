@@ -3,7 +3,6 @@ package aurocosh.divinefavor.common.item.base;
 import aurocosh.divinefavor.common.core.ResourceNamer;
 import aurocosh.divinefavor.common.registry.ModRegistries;
 import net.minecraft.client.renderer.ItemMeshDefinition;
-import net.minecraft.client.resources.I18n;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -51,7 +50,12 @@ public class ModItem extends Item implements IModelHolder {
     }
 
     @SideOnly(Side.CLIENT)
-    public String getTranslatedName() {
-        return I18n.format(getTranslationKey() + ".name");
+    public String getNameKey() {
+        return getTranslationKey() + ".name";
+    }
+
+    @SideOnly(Side.CLIENT)
+    public String getDescriptionKey() {
+        return getTranslationKey() + ".description";
     }
 }

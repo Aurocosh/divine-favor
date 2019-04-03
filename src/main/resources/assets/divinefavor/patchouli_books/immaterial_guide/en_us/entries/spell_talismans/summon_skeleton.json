@@ -4,8 +4,8 @@
   "category": "spell_talismans",
   "pages": [
     {
-      "type": "text",
-      "text": "Minion talisman. Allows you to summon skeletons. They will follow you and fight for you. Skeletons will be equipped with bows and will attack at long range. You can command them directly with some special talismans. They are undead and will be hurt by sunlight."
+      "type": "talisman_description",
+      "talisman": "divinefavor:talisman_summon_skeleton"
     },
     {
       "type": "spell_talisman_stats",

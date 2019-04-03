@@ -4,8 +4,8 @@
   "category": "spell_talismans",
   "pages": [
     {
-      "type": "text",
-      "text": "Extreme smelting spell for those who don't want to wait for furnace to slowly smelt items. Load smeltable items in chest and use talisman on the chest. Chest will explode a little but all items inside will be instantly smelted. Though chance for smelting stack is not 100% it is very high."
+      "type": "talisman_description",
+      "talisman": "divinefavor:talisman_combustion"
     },
     {
       "type": "spell_talisman_stats",

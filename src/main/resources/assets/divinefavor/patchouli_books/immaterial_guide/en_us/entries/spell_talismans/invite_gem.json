@@ -4,8 +4,8 @@
   "category": "spell_talismans",
   "pages": [
     {
-      "type": "text",
-      "text": "Creates invite gem upon use. Gem is a usable item. When used it will teleport user to creator of gem. Will work across dimensions."
+      "type": "talisman_description",
+      "talisman": "divinefavor:talisman_invite_gem"
     },
     {
       "type": "spell_talisman_stats",

@@ -4,8 +4,8 @@
   "category": "spell_talismans",
   "pages": [
     {
-      "type": "text",
-      "text": "Damages enemies in front of you and pushes them back slightly."
+      "type": "talisman_description",
+      "talisman": "divinefavor:talisman_winter_breath"
     },
     {
       "type": "spell_talisman_stats",

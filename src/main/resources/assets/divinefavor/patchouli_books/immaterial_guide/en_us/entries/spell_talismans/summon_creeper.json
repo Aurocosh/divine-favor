@@ -4,8 +4,8 @@
   "category": "spell_talismans",
   "pages": [
     {
-      "type": "text",
-      "text": "Minion talisman. Allows you to summon creepers. Creeper will go to closest enemy and blow him up."
+      "type": "talisman_description",
+      "talisman": "divinefavor:talisman_summon_creeper"
     },
     {
       "type": "spell_talisman_stats",

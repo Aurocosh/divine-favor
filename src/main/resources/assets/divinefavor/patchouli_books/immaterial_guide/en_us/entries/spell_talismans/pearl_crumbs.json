@@ -4,8 +4,8 @@
   "category": "spell_talismans",
   "pages": [
     {
-      "type": "text",
-      "text": "When used on block it will memorize clicked location. When right clicked in air it will teleport to last memorized location and will forget last location. It can remember more then one location at once."
+      "type": "talisman_description",
+      "talisman": "divinefavor:talisman_pearl_crumbs"
     },
     {
       "type": "spell_talisman_stats",

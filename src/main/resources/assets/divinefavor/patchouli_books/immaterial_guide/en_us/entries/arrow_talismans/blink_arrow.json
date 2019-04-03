@@ -4,8 +4,8 @@
   "category": "arrow_talismans",
   "pages": [
     {
-      "type": "text",
-      "text": "Arrow shot with this talisman will be teleport shooter to its location when it hits the ground."
+      "type": "talisman_description",
+      "talisman": "divinefavor:arrow_talisman_blink_arrow"
     },
     {
       "type": "arrow_talisman_stats",

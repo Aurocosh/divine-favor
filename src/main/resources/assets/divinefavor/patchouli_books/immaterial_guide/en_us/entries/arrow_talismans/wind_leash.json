@@ -4,8 +4,8 @@
   "category": "arrow_talismans",
   "pages": [
     {
-      "type": "text",
-      "text": "Arrow shot with this talisman will be cursed with unnatural force. Cursed creatures will be dragged in random direction by invisible force. To lift this curse you need look at direction where you are being dragged."
+      "type": "talisman_description",
+      "talisman": "divinefavor:arrow_talisman_wind_leash"
     },
     {
       "type": "arrow_talisman_stats",

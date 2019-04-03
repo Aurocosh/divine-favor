@@ -4,8 +4,8 @@
   "category": "spell_talismans",
   "pages": [
     {
-      "type": "text",
-      "text": "Will give player short boost in direction where he is looking."
+      "type": "talisman_description",
+      "talisman": "divinefavor:talisman_wind_step"
     },
     {
       "type": "spell_talisman_stats",
