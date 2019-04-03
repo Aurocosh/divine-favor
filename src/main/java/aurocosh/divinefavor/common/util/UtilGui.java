@@ -11,6 +11,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import org.lwjgl.opengl.GL11;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 public class UtilGui {
@@ -60,7 +61,20 @@ public class UtilGui {
         GlStateManager.glLineWidth(1.0F);
     }
 
-    public static int findClosestPoint(Vector2i target, List<Vector2i> points, int defaultValue) {
+    public static Vector2i findClosestPoint(Vector2i target, Collection<Vector2i> points, Vector2i defaultValue) {
+        Vector2i result = defaultValue;
+        int maxDistanceSq = Integer.MAX_VALUE;
+        for (Vector2i point : points) {
+            int distanceSq = target.subtract(point).magnitudeSquare();
+            if (distanceSq < maxDistanceSq) {
+                maxDistanceSq = distanceSq;
+                result = point;
+            }
+        }
+        return result;
+    }
+
+    public static int findClosestPointIndex(Vector2i target, List<Vector2i> points, int defaultValue) {
         int result = defaultValue;
         int maxDistanceSq = Integer.MAX_VALUE;
         for (int i = 0; i < points.size(); i++) {

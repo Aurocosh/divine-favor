@@ -10,6 +10,7 @@ import javax.annotation.Nonnull;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.function.Predicate;
 
 // The default implementation of the capability. Holds all the logic.
 public class DefaultGrimoireHandler implements IGrimoireHandler {
@@ -59,6 +60,17 @@ public class DefaultGrimoireHandler implements IGrimoireHandler {
     }
 
     @Override
+    public List<Integer> getSlotIndexes(Predicate<ItemStack> predicate) {
+        List<Integer> indexes = new ArrayList<>();
+        for (int i = 0; i < inventory.getSlots(); i++) {
+            ItemStack stack = inventory.getStackInSlot(i);
+            if (!stack.isEmpty())
+                indexes.add(i);
+        }
+        return indexes;
+    }
+
+    @Override
     public void switchToNext() {
         setSelectedSlotIndex(getNonEmptyIndex(selectedSlotIndex, this::nextIndex));
     }
@@ -66,6 +78,11 @@ public class DefaultGrimoireHandler implements IGrimoireHandler {
     @Override
     public void switchToPrevious() {
         setSelectedSlotIndex(getNonEmptyIndex(selectedSlotIndex, this::previousIndex));
+    }
+
+    @Override
+    public int getSlotCount() {
+        return inventory.getSlots();
     }
 
     @Override

@@ -20,8 +20,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.Mod;
 import org.lwjgl.opengl.GL11;
 
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 @Mod.EventBusSubscriber
 public class TalismanSelectGui extends GuiScreen {
@@ -37,6 +36,7 @@ public class TalismanSelectGui extends GuiScreen {
 
     private List<ItemStack> allStacks;
     private List<Vector2i> slotPositions;
+    private Map<Vector2i, Integer> activePositionMap;
 
     public TalismanSelectGui() {
         mc = Minecraft.getMinecraft();
@@ -46,6 +46,7 @@ public class TalismanSelectGui extends GuiScreen {
         handler = null;
         allStacks = null;
         slotPositions = null;
+        activePositionMap = new HashMap<>();
     }
 
     @Override
@@ -77,18 +78,11 @@ public class TalismanSelectGui extends GuiScreen {
         GlStateManager.translate(x, y, 0);
 //        GlStateManager.color(1f, 1f, 1f);
 
-        int k = 3; //scalar
-        double a = 0.15f; //a-value
-        double aDec = -0.0008; // a-value change over time
-
-        if (slotPositions == null || handler != talismanContainer)
-            slotPositions = UtilGui.generateSpiral(allStacks.size(), 4, k, a, aDec, 9, 7);
-
         UtilGui.drawPolyline(slotPositions, 0.3f, 0, 1, 0.3f);
 
         Vector2i mousePosition = new Vector2i(mx - x, my - y);
-        selectedIndex = UtilGui.findClosestPoint(mousePosition, slotPositions, 0);
-        Vector2i closestPoint = slotPositions.get(selectedIndex);
+        Vector2i closestPoint = UtilGui.findClosestPoint(mousePosition, activePositionMap.keySet(), mousePosition);
+        selectedIndex = activePositionMap.get(closestPoint);
         List<Vector2i> mouseLine = Arrays.asList(mousePosition, closestPoint);
         UtilGui.drawPolyline(mouseLine, 0.3f, 0, 1, 0.3f);
 
@@ -102,9 +96,9 @@ public class TalismanSelectGui extends GuiScreen {
         mc.getTextureManager().bindTexture(selector);
         drawModalRectWithCustomSizedTexture(closestPoint.x - 8, closestPoint.y - 8, 0, 0, 16, 16, 16, 16);
 
-        for (int i = 0; i < slotPositions.size(); i++) {
-            Vector2i spiralPoint = slotPositions.get(i);
-            ItemStack stack = allStacks.get(i);
+        for (Integer index : activePositionMap.values()) {
+            Vector2i spiralPoint = slotPositions.get(index);
+            ItemStack stack = allStacks.get(index);
             mc.getRenderItem().renderItemIntoGUI(stack, spiralPoint.x - 8, spiralPoint.y - 8);
         }
 
@@ -113,12 +107,26 @@ public class TalismanSelectGui extends GuiScreen {
     }
 
     private void refreshStackData(ITalismanContainer talismanContainer) {
-        if (handler != talismanContainer || state != talismanContainer.getState()) {
-            handler = talismanContainer;
-            state = talismanContainer.getState();
+        int k = 3; //scalar
+        double a = 0.15f; //a-value
+        double aDec = -0.0008; // a-value change over time
 
-            allStacks = talismanContainer.getAllStacks();
-        }
+        if (slotPositions == null || handler != talismanContainer)
+            slotPositions = UtilGui.generateSpiral(talismanContainer.getSlotCount(), 4, k, a, aDec, 9, 7);
+
+        if (handler == talismanContainer && state == talismanContainer.getState())
+            return;
+
+        handler = talismanContainer;
+        state = talismanContainer.getState();
+
+        allStacks = talismanContainer.getAllStacks();
+
+        List<Integer> activeIndexes = talismanContainer.getSlotIndexes(stack -> !stack.isEmpty());
+
+        activePositionMap.clear();
+        for (Integer index : activeIndexes)
+            activePositionMap.put(slotPositions.get(index), index);
     }
 
     @Override
