@@ -327,3 +327,11 @@ item.divinefavor:arrow_talisman_suffocating_fumes.description=Arrow shot with th
 item.divinefavor:arrow_talisman_wind_leash.description=Arrow shot with this talisman will be cursed with unnatural force. Cursed creatures will be dragged in random direction by invisible force. To lift this curse you need look at direction where you are being dragged.
 item.divinefavor:arrow_talisman_yummy_smell.description=Arrow shot with this talisman will be cursed with alluring smell. Cursed creatures will attract unwanted attention. All monsters near cursed creature will attack it. To lift this curse you need attract a lot of creatures at once.
 item.divinefavor:arrow_talisman_zero_g_arrow.description=Arrow shot with this talisman will not be affected by gravity.
+
+#PATCHOULI
+## CONTRACTS
+item.divinefavor:contract.effects=Contract effects:
+item.divinefavor:contract.regen=Will regenerate %1$d favor when related spirit becomes active
+item.divinefavor:contract.min=Will add %1$d to your minimum favor value
+item.divinefavor:contract.max=Will increase your favor limit by %1$s
+item.divinefavor:contract.no_effects=This contract has no effects

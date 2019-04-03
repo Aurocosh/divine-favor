@@ -6,18 +6,18 @@
   "pages": [
     {
       "type": "text",
-      "text": "This block does 2 things: it heats up water around it and it dissipates any special blend in water. In practice it means that when it is active it will repeatedly apply effect of a blend to any creature in water around it. To function it requires any kind of burnable fuel and a bathing blend. This block has 2 slots in lower you need to load fuel and in top slot you need to load bathing blend."
+      "text": "This block does 2 things: it heats up water around it and it dissipates any special blend in water. In practice it means that when it is active it will repeatedly apply effect of a blend to any creature in water around it. To function it requires any kind of burnable fuel and a bathing blend. This block has two slots. In lower you need to load fuel and in top slot you need to load bathing blend."
 
-    },
-    {
-      "type": "crafting",
-      "text": "$(item)Bath heater$() recipe. In order to use will need to build a bath see further pages for examples. But keep in mind that those are not required builds but just examples.",
-      "recipe": "divinefavor:bath_heater"
     },
     {
       "type": "spotlight",
       "item": "divinefavor:blend_ender_pearl",
       "text": "Blends are items that similar in effect with potions but unlike potions you are not suppose to ingest them, but instead apply externally. All methods of contacting a spirit require appropriate blend"
+    },
+    {
+      "type": "crafting",
+      "text": "$(item)Bath heater$() recipe. In order to use it you will need to build a bath. See further pages for examples. Also keep in mind that those are not required builds but just examples.",
+      "recipe": "divinefavor:bath_heater"
     },
     {
       "type": "multiblock",

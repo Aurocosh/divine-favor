@@ -1,0 +1,16 @@
+{
+  "name": "Minor capacity contract",
+  "icon": "divinefavor:contract_capacity_minor",
+  "category": "contracts",
+  "pages": [
+    {
+      "type": "spotlight",
+      "item": "divinefavor:contract_capacity_minor",
+      "text": "Minor capacity contract. Will boost your maximum favor limit."
+    },
+    {
+      "type": "contract_stats",
+      "contract": "divinefavor:contract_capacity_minor"
+    }
+  ]
+}
