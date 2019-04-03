@@ -1,7 +1,6 @@
 package aurocosh.divinefavor.client.core.handler.architect_stick;
 
 import aurocosh.divinefavor.DivineFavor;
-import aurocosh.divinefavor.common.constants.ConstMisc;
 import aurocosh.divinefavor.common.item.mystic_architect_stick.ArchitectStickMode;
 import aurocosh.divinefavor.common.item.mystic_architect_stick.ItemMysticArchitectStick;
 import aurocosh.divinefavor.common.util.UtilNbt;
@@ -18,7 +17,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import org.lwjgl.input.Keyboard;
 
 @SideOnly(Side.CLIENT)
-@Mod.EventBusSubscriber(modid = ConstMisc.MOD_ID, value = Side.CLIENT)
+@Mod.EventBusSubscriber(Side.CLIENT)
 public class MouseHandler {
     @SubscribeEvent
     public static void onMouseEvent(MouseEvent event) {
