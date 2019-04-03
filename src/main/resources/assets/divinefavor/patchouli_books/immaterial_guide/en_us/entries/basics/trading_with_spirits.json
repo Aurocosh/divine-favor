@@ -20,16 +20,16 @@
     },
     {
       "type": "text",
-      "text": " You need to put ingredients in altar before spirit becomes active, and you will be able to get results only after spirit becomes inactive."
+      "text": "You need to put ingredients in altar before spirit becomes active, and you will be able to get results only after spirit becomes inactive."
     },
     {
       "type": "crafting",
-      "text": "$(item)Ritual pouch$() recipe. As you probably noticed you can only trade for 2 items at a time one recipe in each slot set. if this is too slow, then you can use ritual pouch to trade faster. Each ritual pouch has internal inventory, you can put ingredients for a trading recipe into ritual pouch and then put pouch into altar. If recipe in pouch is valid, then spirit will exchange ingredients in pouch for an item..",
+      "text": "$(item)Ritual pouch$() recipe. As you probably noticed you can only trade for 2 items at a time one recipe in each slot set. if this is too slow, then you can use ritual pouch to trade faster. Each ritual pouch has internal inventory, you can put ingredients for a trading",
       "recipe": "divinefavor:ritual_pouch"
     },
     {
       "type": "text",
-      "text": "That way you can trade for 18 recipes simultaneously. If you need to trade at even faster rate than that then you will need to build additional altars"
+      "text": "recipe into ritual pouch and then put pouch into altar. If recipe in pouch is valid, then spirit will exchange ingredients in pouch for an item. That way you can trade for 18 recipes simultaneously. If you need to trade at even faster rate than that then you will need to build additional altars"
     }
   ]
 }
