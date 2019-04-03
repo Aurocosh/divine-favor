@@ -4,8 +4,8 @@
   "category": "arrow_talismans",
   "pages": [
     {
-      "type": "text",
-      "text": "Arrow shot with this talisman will be cursed with alluring smell. Cursed creatures will attract unwanted attention. All monsters near cursed creature will attack it. To lift this curse you need attract a lot of creatures at once."
+      "type": "talisman_description",
+      "talisman": "divinefavor:arrow_talisman_yummy_smell"
     },
     {
       "type": "arrow_talisman_stats",

@@ -4,8 +4,8 @@
   "category": "spell_talismans",
   "pages": [
     {
-      "type": "text",
-      "text": "Will give you permament 'Grudge' effect. To remove it you will have to cast spell one more time. While effect is active it will boost your attack against enemy type that killed you last time. For example if you killed by zombie and activate grudge, then you will deal extra damage to all zombies."
+      "type": "talisman_description",
+      "talisman": "divinefavor:talisman_grudge"
     },
     {
       "type": "spell_talisman_stats",

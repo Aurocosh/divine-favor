@@ -4,8 +4,8 @@
   "category": "arrow_talismans",
   "pages": [
     {
-      "type": "text",
-      "text": "Arrow shot with this talisman confuse hit player. When hit it will swap items in players hand and offhand."
+      "type": "talisman_description",
+      "talisman": "divinefavor:arrow_talisman_hand_swap"
     },
     {
       "type": "arrow_talisman_stats",

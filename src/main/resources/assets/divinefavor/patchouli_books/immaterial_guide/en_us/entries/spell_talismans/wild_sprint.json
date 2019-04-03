@@ -4,8 +4,8 @@
   "category": "spell_talismans",
   "pages": [
     {
-      "type": "text",
-      "text": "Will briefly immobilize caster. Afterwards it will grant considerable speed boost. While speed boost active player will be able to run on water."
+      "type": "talisman_description",
+      "talisman": "divinefavor:talisman_wild_sprint"
     },
     {
       "type": "spell_talisman_stats",

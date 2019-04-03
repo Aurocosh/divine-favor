@@ -4,8 +4,8 @@
   "category": "spell_talismans",
   "pages": [
     {
-      "type": "text",
-      "text": "Will grant some charges to player. If player attacks animal while he has some charges then his attack will be considerably boosted, and if animal dies from attack, then item drops will be boosted. Only works on peaceful animals. On attack one charge will be consumed."
+      "type": "talisman_description",
+      "talisman": "divinefavor:talisman_butchering_strike"
     },
     {
       "type": "spell_talisman_stats",

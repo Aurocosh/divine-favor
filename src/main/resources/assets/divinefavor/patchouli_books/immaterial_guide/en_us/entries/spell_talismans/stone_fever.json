@@ -4,8 +4,8 @@
   "category": "spell_talismans",
   "pages": [
     {
-      "type": "text",
-      "text": "Will temporarily grant caster ability to break stone instantly, but if player breaks any block other then stone, then he will lose ability to instantly break stone and also will suffer heavy negative effects."
+      "type": "talisman_description",
+      "talisman": "divinefavor:talisman_stone_fever"
     },
     {
       "type": "spell_talisman_stats",

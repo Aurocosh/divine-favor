@@ -4,8 +4,8 @@
   "category": "spell_talismans",
   "pages": [
     {
-      "type": "text",
-      "text": "Allows user to ignite blocks that he is looking at remotely."
+      "type": "talisman_description",
+      "talisman": "divinefavor:talisman_distant_spark"
     },
     {
       "type": "spell_talisman_stats",

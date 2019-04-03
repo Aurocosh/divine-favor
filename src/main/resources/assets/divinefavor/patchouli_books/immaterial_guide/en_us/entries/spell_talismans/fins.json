@@ -4,8 +4,8 @@
   "category": "spell_talismans",
   "pages": [
     {
-      "type": "text",
-      "text": "Will make player much faster then usual under water."
+      "type": "talisman_description",
+      "talisman": "divinefavor:talisman_fins"
     },
     {
       "type": "spell_talisman_stats",

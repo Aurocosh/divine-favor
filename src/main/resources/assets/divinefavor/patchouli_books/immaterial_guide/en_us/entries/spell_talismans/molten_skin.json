@@ -4,8 +4,8 @@
   "category": "spell_talismans",
   "pages": [
     {
-      "type": "text",
-      "text": "Will grant caster ability to swim in lava. Caster will not be damaged by lava, and will be able to see much better in lava. Effect is permanent. To remove effect just cast spell one more time. When player is outside of lava he will take damage over time."
+      "type": "talisman_description",
+      "talisman": "divinefavor:talisman_molten_skin"
     },
     {
       "type": "spell_talisman_stats",

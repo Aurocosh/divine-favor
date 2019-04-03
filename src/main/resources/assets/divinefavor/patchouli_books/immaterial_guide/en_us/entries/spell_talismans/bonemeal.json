@@ -4,8 +4,8 @@
   "category": "spell_talismans",
   "pages": [
     {
-      "type": "text",
-      "text": "Will boost plant growth like bonemeal."
+      "type": "talisman_description",
+      "talisman": "divinefavor:talisman_bonemeal"
     },
     {
       "type": "spell_talisman_stats",

@@ -4,8 +4,8 @@
   "category": "arrow_talismans",
   "pages": [
     {
-      "type": "text",
-      "text": "Arrow shot with this talisman will be cursed with armor corrosion. This curse will only work on players. Armor of afflicted players will gradually decay over time. Not all armor will be affected at once. Random pieces of armor will be chosen on curse application. To remove curse player will have to remove affected armor pieces."
+      "type": "talisman_description",
+      "talisman": "divinefavor:arrow_talisman_armor_corrosion"
     },
     {
       "type": "arrow_talisman_stats",

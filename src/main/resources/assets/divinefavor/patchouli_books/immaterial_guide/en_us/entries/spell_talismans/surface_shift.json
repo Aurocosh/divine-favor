@@ -4,8 +4,8 @@
   "category": "spell_talismans",
   "pages": [
     {
-      "type": "text",
-      "text": "Use this talisman on any block and it will teleport you to first available space above it. Possible teleport distance finite. If no space found it will not teleport you. Useful for teleporting trough ceilings and out of caves."
+      "type": "talisman_description",
+      "talisman": "divinefavor:talisman_surface_shift"
     },
     {
       "type": "spell_talisman_stats",

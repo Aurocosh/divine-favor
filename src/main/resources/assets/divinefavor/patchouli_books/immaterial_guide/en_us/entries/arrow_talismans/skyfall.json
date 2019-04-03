@@ -4,8 +4,8 @@
   "category": "arrow_talismans",
   "pages": [
     {
-      "type": "text",
-      "text": "Arrow shot with this talisman will be cursed with unusual gravity. Cursed creatures will fall upwards. To lift this curse you need look at the sky."
+      "type": "talisman_description",
+      "talisman": "divinefavor:arrow_talisman_skyfall"
     },
     {
       "type": "arrow_talisman_stats",

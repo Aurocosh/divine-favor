@@ -4,8 +4,8 @@
   "category": "arrow_talismans",
   "pages": [
     {
-      "type": "text",
-      "text": "Arrow shot with this talisman will be cursed with crawling mist. This curse will only work on players. Cursed players sight will be severely reduced while curse is active. To remove this curse player will have to go as far as possible from place where he was cursed."
+      "type": "talisman_description",
+      "talisman": "divinefavor:arrow_talisman_crawling_mist"
     },
     {
       "type": "arrow_talisman_stats",

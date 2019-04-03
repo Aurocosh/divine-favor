@@ -4,8 +4,8 @@
   "category": "spell_talismans",
   "pages": [
     {
-      "type": "text",
-      "text": "Grants permanent water breathing, but when not in water player will suffocate. To remove gills just cast spell second time."
+      "type": "talisman_description",
+      "talisman": "divinefavor:talisman_gills"
     },
     {
       "type": "spell_talisman_stats",

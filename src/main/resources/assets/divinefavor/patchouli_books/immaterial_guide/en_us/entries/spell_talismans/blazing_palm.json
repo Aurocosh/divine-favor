@@ -4,8 +4,8 @@
   "category": "spell_talismans",
   "pages": [
     {
-      "type": "text",
-      "text": "Will instantly smelt any smeltable stack in players hands."
+      "type": "talisman_description",
+      "talisman": "divinefavor:talisman_blazing_palm"
     },
     {
       "type": "spell_talisman_stats",

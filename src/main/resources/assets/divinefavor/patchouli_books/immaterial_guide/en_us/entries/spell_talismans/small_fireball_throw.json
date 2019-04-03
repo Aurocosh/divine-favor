@@ -4,8 +4,8 @@
   "category": "spell_talismans",
   "pages": [
     {
-      "type": "text",
-      "text": "Throws small fireballs, that's it."
+      "type": "talisman_description",
+      "talisman": "divinefavor:talisman_small_fireball_throw"
     },
     {
       "type": "spell_talisman_stats",

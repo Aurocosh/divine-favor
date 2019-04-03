@@ -4,8 +4,8 @@
   "category": "spell_talismans",
   "pages": [
     {
-      "type": "text",
-      "text": "Grants user armor of pacifist. Player will be protected from most damage types, but in turn will not be able to attack anyone."
+      "type": "talisman_description",
+      "talisman": "divinefavor:talisman_armor_of_pacifist"
     },
     {
       "type": "spell_talisman_stats",

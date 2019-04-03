@@ -4,8 +4,8 @@
   "category": "spell_talismans",
   "pages": [
     {
-      "type": "text",
-      "text": "Will teleport player to block that he is looking at."
+      "type": "talisman_description",
+      "talisman": "divinefavor:talisman_surface_blink"
     },
     {
       "type": "spell_talisman_stats",

@@ -4,8 +4,8 @@
   "category": "spell_talismans",
   "pages": [
     {
-      "type": "text",
-      "text": "Will grant player ability to walk on lava. Does not grant protection from lava. You will not get hurt while walking on it, but if you fall in lava you will die most likely. Press shift to fall in lava while walking on it."
+      "type": "talisman_description",
+      "talisman": "divinefavor:talisman_obsidian_road"
     },
     {
       "type": "spell_talisman_stats",

@@ -4,8 +4,8 @@
   "category": "arrow_talismans",
   "pages": [
     {
-      "type": "text",
-      "text": "Arrow shot with this talisman will be cursed with suffocation. Cursed creature suffocate without any reason. To lift this curse you will have to climb as high as you can."
+      "type": "talisman_description",
+      "talisman": "divinefavor:arrow_talisman_suffocating_fumes"
     },
     {
       "type": "arrow_talisman_stats",

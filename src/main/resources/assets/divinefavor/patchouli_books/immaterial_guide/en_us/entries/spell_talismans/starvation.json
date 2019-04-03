@@ -4,8 +4,8 @@
   "category": "spell_talismans",
   "pages": [
     {
-      "type": "text",
-      "text": "This spell will temporally grant you ability to eat grass and leaves. To eat grass block or leaves just look at it and right click."
+      "type": "talisman_description",
+      "talisman": "divinefavor:talisman_starvation"
     },
     {
       "type": "spell_talisman_stats",

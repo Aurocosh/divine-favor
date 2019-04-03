@@ -4,8 +4,8 @@
   "category": "spell_talismans",
   "pages": [
     {
-      "type": "text",
-      "text": "Creates invite pebble upon use. Pebble is a usable item. When used it will teleport user to creator of pebble. Will not work across dimensions."
+      "type": "talisman_description",
+      "talisman": "divinefavor:talisman_invite_pebble"
     },
     {
       "type": "spell_talisman_stats",

@@ -4,8 +4,8 @@
   "category": "spell_talismans",
   "pages": [
     {
-      "type": "text",
-      "text": "Will grant player some fall negation charges. When player is falling from very high place he will not receive any damage but one charge will be consumes."
+      "type": "talisman_description",
+      "talisman": "divinefavor:talisman_fall_negation"
     },
     {
       "type": "spell_talisman_stats",

@@ -8,6 +8,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.GuiIngame;
 import net.minecraft.client.renderer.GlStateManager;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
@@ -52,8 +53,10 @@ public class TalismanHUD {
         GlStateManager.pushMatrix();
         GlStateManager.translate(x, y, 0);
 
-        if (drawName)
-            mc.fontRenderer.drawStringWithShadow(talisman.getTranslatedName(), 24, -10, color);
+        if (drawName) {
+            String translatedName = I18n.format(talisman.getNameKey());
+            mc.fontRenderer.drawStringWithShadow(translatedName, 24, -10, color);
+        }
 
         mc.fontRenderer.drawStringWithShadow(description, 24, 0, color);
 

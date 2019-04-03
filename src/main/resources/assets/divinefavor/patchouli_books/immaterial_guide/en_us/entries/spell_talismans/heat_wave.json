@@ -4,8 +4,8 @@
   "category": "spell_talismans",
   "pages": [
     {
-      "type": "text",
-      "text": "Will damage and ignite mobs around player in small radius."
+      "type": "talisman_description",
+      "talisman": "divinefavor:talisman_heat_wave"
     },
     {
       "type": "spell_talisman_stats",

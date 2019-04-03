@@ -4,8 +4,8 @@
   "category": "arrow_talismans",
   "pages": [
     {
-      "type": "text",
-      "text": "Arrow shot with this talisman will fall upwards instead on down. Not very practical but can be used for some trick shots."
+      "type": "talisman_description",
+      "talisman": "divinefavor:arrow_talisman_anti_gravity_arrow"
     },
     {
       "type": "arrow_talisman_stats",

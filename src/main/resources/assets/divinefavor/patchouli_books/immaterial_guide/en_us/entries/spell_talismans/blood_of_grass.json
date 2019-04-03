@@ -4,8 +4,8 @@
   "category": "spell_talismans",
   "pages": [
     {
-      "type": "text",
-      "text": "Spell will consume grass in small radius around you and will heal you. The more grass is consumed the stronger will be healing effect."
+      "type": "talisman_description",
+      "talisman": "divinefavor:talisman_blood_of_grass"
     },
     {
       "type": "spell_talisman_stats",

@@ -4,8 +4,8 @@
   "category": "arrow_talismans",
   "pages": [
     {
-      "type": "text",
-      "text": "Arrow shot with this talisman will be cursed with leg weakness. Cursed creatures hunger will be unable to jump. To lift this curse you will have to sneak for several seconds."
+      "type": "talisman_description",
+      "talisman": "divinefavor:arrow_talisman_limp_leg"
     },
     {
       "type": "arrow_talisman_stats",

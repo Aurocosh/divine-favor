@@ -4,8 +4,8 @@
   "category": "spell_talismans",
   "pages": [
     {
-      "type": "text",
-      "text": "Will temporarily considerably increase casters damage. While effect is active player will have to kill certain amount of mobs. If player fails to kill enough mobs while effect is active, then when effect wears out he will suffer heavy damage, and potentially will instantly die."
+      "type": "talisman_description",
+      "talisman": "divinefavor:talisman_consuming_fury"
     },
     {
       "type": "spell_talisman_stats",

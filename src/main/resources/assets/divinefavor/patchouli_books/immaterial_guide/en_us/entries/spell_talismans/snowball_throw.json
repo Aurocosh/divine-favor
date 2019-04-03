@@ -4,8 +4,8 @@
   "category": "spell_talismans",
   "pages": [
     {
-      "type": "text",
-      "text": "Throws snowballs. Does not require snowballs in inventory to work."
+      "type": "talisman_description",
+      "talisman": "divinefavor:talisman_snowball_throw"
     },
     {
       "type": "spell_talisman_stats",
