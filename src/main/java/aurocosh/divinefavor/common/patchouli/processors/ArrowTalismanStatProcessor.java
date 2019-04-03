@@ -24,11 +24,8 @@ public class ArrowTalismanStatProcessor implements IComponentProcessor {
     public void setup(IVariableProvider<String> variables) {
         String talismanName = variables.get("talisman");
         Item item = Item.REGISTRY.getObject(new ResourceLocation(talismanName));
-        if (item instanceof ItemArrowTalisman) {
+        if (item instanceof ItemArrowTalisman)
             arrowTalisman = (ItemArrowTalisman) item;
-
-
-        }
         else
             DivineFavor.logger.error("Arrow talisman not found:" + talismanName);
     }

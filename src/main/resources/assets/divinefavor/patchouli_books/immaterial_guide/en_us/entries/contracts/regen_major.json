@@ -1,0 +1,16 @@
+{
+  "name": "Major regeneration contract",
+  "icon": "divinefavor:contract_regen_major",
+  "category": "contracts",
+  "pages": [
+    {
+      "type": "spotlight",
+      "item": "divinefavor:contract_regen_major",
+      "text": "Major regeneration contract. Will provide considerable favor regeneration."
+    },
+    {
+      "type": "contract_stats",
+      "contract": "divinefavor:contract_regen_major"
+    }
+  ]
+}
