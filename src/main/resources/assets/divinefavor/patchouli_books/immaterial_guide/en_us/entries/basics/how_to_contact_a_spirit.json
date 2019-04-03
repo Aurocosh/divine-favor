@@ -11,7 +11,7 @@
     },
     {
       "type": "text",
-      "text": "Attracting spirits attention $(br) In order to attract spirits attention you will need to prepare a special bathing blend. Blends are a mix of soul shards with some regular ingredients. Similarly to potions they apply special status effects but unlike potions you cannot consume them directly you need special block called bath heater to use them. "
+      "text": "Attracting spirits attention. $(br) In order to attract spirits attention you will need to prepare a special bathing blend. Blends are a mix of soul shards with some regular ingredients. Similarly to potions they apply special status effects, but unlike potions you cannot consume them directly you need special block called bath heater to use them. "
     },
     {
       "type": "crafting",
@@ -20,12 +20,12 @@
     },
     {
       "type": "crafting",
-      "text": "$(item)Bath heater$() recipe. $(br)In order to use it you will have to make yourself a bath heater. Recipe for a bath heater shown on another page. You will also need to make a bath. Bath is a simple 1 block deep water blocks enclosed by some other blocks.",
+      "text": "$(item)Bath heater$() recipe. $(br)In order to use it you will have to make yourself a bath. In addition to bath heater you will also need to make a bath. Bath is a simple 1 block deep water blocks enclosed by some other blocks.",
       "recipe": "divinefavor:bath_heater"
     },
     {
       "type": "text",
-      "text": "After you built a bath with bath heater and crafted plenty of nether charcoal blend you will need to know when spirit becomes active. It is useless to try to contact a spirit when he is inactive. Neblaze is active in the morning from 6 o'clock to 10 o'clock. When time is right load fuel and blend into bath heater. When water starts bubbling get inside the bath."
+      "text": "After you built a bath with bath heater and crafted plenty of nether charcoal blend you will need to know when spirit becomes active. It is useless to try to contact a spirit when he is inactive. You can find out when spirit is active in section of this book called 'Spirits'. When time is right load fuel and blend into bath heater. When water starts bubbling get inside the bath."
     },
     {
       "type": "text",
@@ -46,8 +46,7 @@
       "text": "Altar of neblaze. Put invite in medium to finish altar."
     },
     {
-      "type": "spotlight",
-      "item": "divinefavor:calling_stone_neblaze",
+      "type": "text",
       "text": "Spirit altars are used to trade with spirits for spells and other items. On other page you will see and instruction how to build neblaze altar. After altar is built place invite into central slot of medium. If altar assembled correctly then texture of medium will change. If it does then you are ready to trade with neblaze."
     }
   ]

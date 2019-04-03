@@ -6,21 +6,21 @@
   "pages": [
     {
       "type": "text",
-      "text": "In order to gain favor you will need contracts. Contracts are items that provides some kind of passive benefit. Contracts are obtained same way as talismans, by trading with spirits at and altar. Contracts are useless on there own In order to use contract you will need to craft a special block called $(item)Soulbound lectern$(). Contracts are only active inside soulbound lecterns."
+      "text": "In order to gain favor you will need contracts. Contracts are items that provides some kind of passive benefit. Contracts are obtained same way as talismans, by trading with spirits at an altar. Contracts are useless on their own. In order to use contract you will need to craft a special block called $(item)Soulbound lectern$(). Contracts are only active inside soulbound lecterns."
     },
     {
       "type": "crafting",
-      "text": "$(item)Wooden soulbound lectern$() recipe. $(br)Soulbound lectern is a block in which player stores his active contracts. This block is similar to ender chest. All soulbound lecterns share storage.",
+      "text": "$(item)Wooden soulbound lectern$() recipe. $(br)Soulbound lectern is a block in which player stores his active contracts. This block is similar to ender chest. All soulbound lecterns share storage that bound to player.",
       "recipe": "divinefavor:soulbound_lectern_wood"
     },
     {
       "type": "text",
-      "text": "All soulbound lecterns share storage. It means that you will never lose your contracts, but it also means that amount of active contracts at once is limited.  While lecterns do share storage, there are in fact several shared storage spaces, one storage for each type of spirit favor. To access certain type of storage you will need to insert a certain type of soul shard in lectern and build a multiblock around it."
+      "text": "All soulbound lecterns share storage. It means that you will never lose your contracts, but it also means that amount of active contracts at once is limited. While lecterns do share storage, there are in fact several shared storage spaces, one storage for each type of spirit favor. To access certain type of storage you will need to insert a certain type of soul shard in lectern and build a multiblock around it."
     },
     {
       "type": "spotlight",
       "item": "divinefavor:soul_shard_will",
-      "text": "You will also need soul shards in order to use $(item)Soulbound lectern$(). When you open gui of lectern you will see a slot in the center. In order to activate lectern you will need to put your shard in central slot. Shards can be obtained with an $(item)Awakened bone dagger$(). To get your own soul shard take dagger in hand, sneak and right click."
+      "text": "You will also need soul shards in order to use $(item)Soulbound lectern$(). When you open gui of lectern you will see a slot in the center. In order to activate lectern you will need to put soul shard in central slot. Shards can be obtained with an $(item)Awakened bone dagger$(). To get your own soul shard take dagger in hand, sneak and right click."
     },
     {
       "type": "multiblock",
@@ -39,11 +39,11 @@
     {
       "type": "spotlight",
       "item": "divinefavor:contract_regen_minor",
-      "text": "Above you see an example of regeneration contract. Favor does not regenerate on its own. You can gain favor by buying special items, but they will disappear on use."
+      "text": "Above you see an example of regeneration contract. Favor does not regenerate on its own. You can gain favor by buying special items, but they will disappear on use. To replenish favor sustainably you will need to use regen contracts. Different subtypes of regeneration contracts will increase favor regen by different amounts. Effect of several contracts stacks."
     },
     {
       "type": "text",
-      "text": "To replenish favor sustainably you will need to use regen contracts. Different subtypes of regeneration contracts will increase favor regen by different amounts. Effect of several contracts stacks. If you have some active regeneration contracts then your favor will be automatically replenished when related spirit becomes active. Amount of regenerated favor depends on your regen contracts."
+      "text": "If you have some active regeneration contracts then your favor will be automatically replenished when related spirit becomes active. Amount of regenerated favor depends on amount of your regeneration contracts and their type."
     },
     {
       "type": "spotlight",
