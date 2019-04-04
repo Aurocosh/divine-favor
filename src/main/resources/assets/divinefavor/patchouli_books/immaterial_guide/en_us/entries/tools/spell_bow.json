@@ -1,0 +1,24 @@
+{
+  "name": "Spell bow",
+  "icon": "divinefavor:spell_bow",
+  "category": "tools",
+  "pages": [
+    {
+      "type": "text",
+      "text": "Spell bow is tool intended to store and use arrow talismans. Spell bow can store only one type of talisman - arrow talisman. What makes this tool essential is the fact that you cannot use arrow talismans without it. It also provides convenient storage for all of your arrow spells. Spell bow is a polymorphic tool if you sneak and right click it will alternate between it's two forms."
+    },
+    {
+      "type": "spotlight",
+      "item": "divinefavor:spell_bow",
+      "text": "When in book form you can right click it to open it's inventory. You can only put arrow talismans inside, any other item will be rejected. You can select talisman by using middle click. You can only cast selected talisman in bow form. Just shoot an arrow like normal and if you have enough favor arrow will be enchanted with talisman effect."
+    },
+    {
+      "type": "text",
+      "text": "You will need arrows to use this bow. Spell bow has two convenient hud that you can use to select talismans. Both are activated by separate key bindings that you can configure in settings. First hud when activated will display current active talisman as well as several talismans before and after it in bow at the top of the screen. When this hud is displayed you can change active talisman by scrolling your mouse wheel."
+    },
+    {
+      "type": "text",
+      "text": "When second hud is activated all talismans currently in spell bow will appear in spiral pattern on your screen. Also your cursor will appear on the screen and you will be able to select any talisman by moving your cursor over it and releasing hud key."
+    }
+  ]
+}

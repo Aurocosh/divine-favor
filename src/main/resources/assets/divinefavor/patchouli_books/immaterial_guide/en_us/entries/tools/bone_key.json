@@ -1,0 +1,16 @@
+{
+  "name": "Bone key",
+  "icon": "divinefavor:bone_key",
+  "category": "tools",
+  "pages": [
+    {
+      "type": "text",
+      "text": "Bone key is a simple but very useful tool. When you created multiblock and it got destroyed, you can restore it by first rebuilding missing blocks. After all blocks restored you will need to sneak right click bone key on multiblock controller to reactivate multiblock. Multiblock controllers are medium in altars, and soulbound lecterns in multiblock lecterns."
+    },
+    {
+      "type": "crafting",
+      "text": "$(item)Bone key$() recipe",
+      "recipe": "divinefavor:bone_key"
+    }
+  ]
+}
