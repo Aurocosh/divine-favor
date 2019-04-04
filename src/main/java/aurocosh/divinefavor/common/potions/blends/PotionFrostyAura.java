@@ -66,12 +66,7 @@ public class PotionFrostyAura extends ModPotion {
         boolean isAllEmpty = UtilList.isAll(stacks, ItemStack::isEmpty);
         if (!isAllEmpty)
             return false;
-
-        if (!ModSpirits.blizrabi.isActive())
-            return false;
-
-        String biomeName = livingBase.world.getBiome(livingBase.getPosition()).getBiomeName();
-        return biomeName.equals("Plains");
+        return ModSpirits.blizrabi.isActive();
     }
 
     @Override
