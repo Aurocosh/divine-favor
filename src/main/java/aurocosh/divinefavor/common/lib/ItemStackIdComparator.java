@@ -11,6 +11,9 @@ public class ItemStackIdComparator implements Comparator<ItemStack> {
         int id1 = Item.REGISTRY.getIDForObject(o1.getItem());
         int id2 = Item.REGISTRY.getIDForObject(o2.getItem());
 
-        return id1 - id2;
+        int idDifference = id1 - id2;
+        if (idDifference != 0)
+            return idDifference;
+        return o1.getItemDamage() - o2.getItemDamage();
     }
 }
