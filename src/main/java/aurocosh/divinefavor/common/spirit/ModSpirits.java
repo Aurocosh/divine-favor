@@ -1,6 +1,6 @@
 package aurocosh.divinefavor.common.spirit;
 
-import aurocosh.divinefavor.common.config.common.ConfigGeneral;
+import aurocosh.divinefavor.common.config.common.ConfigSpirits;
 import aurocosh.divinefavor.common.favor.ModFavors;
 import aurocosh.divinefavor.common.spirit.base.ModSpirit;
 import aurocosh.divinefavor.common.spirit.punishment.*;
@@ -17,42 +17,42 @@ public final class ModSpirits {
     public static ModSpirit timber;
 
     public static void preInit() {
-        arbow = new SpiritBuilder("arbow", ConfigGeneral.spiritActivityPeriods.arbow)
+        arbow = new SpiritBuilder("arbow", ConfigSpirits.arbow)
                 .addFavor(ModFavors.arbow)
                 .create();
 
-        blizrabi = new SpiritBuilder("blizrabi", ConfigGeneral.spiritActivityPeriods.blizrabi)
+        blizrabi = new SpiritBuilder("blizrabi", ConfigSpirits.blizrabi)
                 .setPunishment(new BlizrabiPunishment())
                 .addFavor(ModFavors.blizrabi)
                 .create();
 
-        endererer = new SpiritBuilder("endererer", ConfigGeneral.spiritActivityPeriods.endererer)
+        endererer = new SpiritBuilder("endererer", ConfigSpirits.endererer)
                 .setPunishment(new EnderererPunishment())
                 .addFavor(ModFavors.endererer)
                 .create();
-        loon = new SpiritBuilder("loon", ConfigGeneral.spiritActivityPeriods.loon)
+        loon = new SpiritBuilder("loon", ConfigSpirits.loon)
                 .addFavor(ModFavors.loon)
                 .create();
 
-        neblaze = new SpiritBuilder("neblaze", ConfigGeneral.spiritActivityPeriods.neblaze)
+        neblaze = new SpiritBuilder("neblaze", ConfigSpirits.neblaze)
                 .setPunishment(new NeblazePunishment())
                 .addFavor(ModFavors.neblaze)
                 .create();
 
-        redwind = new SpiritBuilder("redwind", ConfigGeneral.spiritActivityPeriods.redwind)
+        redwind = new SpiritBuilder("redwind", ConfigSpirits.redwind)
                 .addFavor(ModFavors.redwind)
                 .create();
 
-        romol = new SpiritBuilder("romol", ConfigGeneral.spiritActivityPeriods.romol)
+        romol = new SpiritBuilder("romol", ConfigSpirits.romol)
                 .addFavor(ModFavors.romol)
                 .create();
 
-        squarefury = new SpiritBuilder("squarefury", ConfigGeneral.spiritActivityPeriods.squarefury)
+        squarefury = new SpiritBuilder("squarefury", ConfigSpirits.squarefury)
                 .setPunishment(new SquareFuryPunishment())
                 .addFavor(ModFavors.squarefury)
                 .create();
 
-        timber = new SpiritBuilder("timber", ConfigGeneral.spiritActivityPeriods.timber)
+        timber = new SpiritBuilder("timber", ConfigSpirits.timber)
                 .setPunishment(new TimberPunishment())
                 .addFavor(ModFavors.timber)
                 .create();

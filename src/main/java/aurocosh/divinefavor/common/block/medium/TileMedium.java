@@ -14,9 +14,10 @@ import aurocosh.divinefavor.common.muliblock.instance.MultiBlockInstanceAltar;
 import aurocosh.divinefavor.common.receipes.ModRecipes;
 import aurocosh.divinefavor.common.spirit.base.ModSpirit;
 import aurocosh.divinefavor.common.util.UtilHandler;
+import aurocosh.divinefavor.common.util.UtilTick;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Items;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.NetworkManager;
@@ -37,12 +38,14 @@ import java.util.List;
 
 public class TileMedium extends TickableTileEntity implements IMultiblockController {
     public static final int SIZE = 27;
-    public static final int TICK_RATE = 40;
+    public static final int TICK_RATE = UtilTick.secondsToTicks(2);
+    public static final int OFFERING_ACTIVE_TIME = UtilTick.secondsToTicks(10);
     private final String TAG_CALLING_STONE = "CallingStone";
     private final String TAG_ITEMS_LEFT = "ItemsLeft";
     private final String TAG_ITEMS_RIGHT = "ItemsRight";
     private final String TAG_STATE_MEDIUM = "StateMedium";
     private final String TAG_STONE_MEDIUM = "StoneMedium";
+    private final String TAG_EXTRA_ACTIVE_TIME = "ExtraActiveTime";
 
     private MediumState state = MediumState.INVALID;
     private MediumStone stone = MediumStone.NONE;
@@ -119,6 +122,7 @@ public class TileMedium extends TickableTileEntity implements IMultiblockControl
     @Override
     public void readFromNBT(NBTTagCompound compound) {
         super.readFromNBT(compound);
+        extraActiveTime = compound.getInteger(TAG_EXTRA_ACTIVE_TIME);
         state = MediumState.VALUES[compound.getInteger(TAG_STATE_MEDIUM)];
         stone = MediumStone.VALUES[compound.getInteger(TAG_STONE_MEDIUM)];
         if (compound.hasKey(TAG_CALLING_STONE))
@@ -132,6 +136,7 @@ public class TileMedium extends TickableTileEntity implements IMultiblockControl
     @Override
     public NBTTagCompound writeToNBT(NBTTagCompound compound) {
         super.writeToNBT(compound);
+        compound.setInteger(TAG_EXTRA_ACTIVE_TIME, extraActiveTime);
         compound.setInteger(TAG_STATE_MEDIUM, state.ordinal());
         compound.setInteger(TAG_STONE_MEDIUM, stone.ordinal());
         compound.setTag(TAG_CALLING_STONE, stoneStackHandler.serializeNBT());
@@ -233,29 +238,35 @@ public class TileMedium extends TickableTileEntity implements IMultiblockControl
 
     @Override
     protected void updateFiltered() {
-        List<SlotStack> slotStacks = UtilHandler.getNotEmptyStacksWithSlotIndexes(combinedHandler);
-        checkForYummies(slotStacks);
-        processCraftingRecipes(slotStacks);
+        ItemStack stoneStack = getStoneStack();
+        if (!stoneStack.isEmpty()){
+            ItemCallingStone callingStone = (ItemCallingStone) stoneStack.getItem();
+            List<SlotStack> slotStacks = UtilHandler.getNotEmptyStacksWithSlotIndexes(combinedHandler);
+            checkForOfferings(callingStone, slotStacks);
+            processCraftingRecipes(callingStone, slotStacks);
+        }
+
         updateState();
 
         if (extraActiveTime > 0)
             extraActiveTime -= TICK_RATE;
     }
 
-    private void checkForYummies(List<SlotStack> slotStacks) {
+    private void checkForOfferings(ItemCallingStone callingStone, List<SlotStack> slotStacks) {
+        Item offering = callingStone.spirit.getOffering();
+        int offeringCount = callingStone.spirit.getOfferingCount();
+
         for (SlotStack slotStack : slotStacks) {
-            if (slotStack.getStack().getItem() == Items.GOLDEN_APPLE) {
-                extraActiveTime += TICK_RATE * slotStack.getStack().getCount();
+            ItemStack stack = slotStack.getStack();
+            if (stack.getItem() == offering) {
+                if(stack.getCount() >= offeringCount)
+                    extraActiveTime = OFFERING_ACTIVE_TIME;
                 combinedHandler.setStackInSlot(slotStack.getIndex(), ItemStack.EMPTY);
             }
         }
     }
 
-    private void processCraftingRecipes(List<SlotStack> slotStacks) {
-        ItemStack stoneStack = getStoneStack();
-        if (stoneStack.isEmpty())
-            return;
-        ItemCallingStone callingStone = (ItemCallingStone) stoneStack.getItem();
+    private void processCraftingRecipes(ItemCallingStone callingStone, List<SlotStack> slotStacks) {
         if (!callingStone.spirit.isActive() && extraActiveTime <= 0)
             return;
 
@@ -264,21 +275,21 @@ public class TileMedium extends TickableTileEntity implements IMultiblockControl
             if (stack.getItem() == ModItems.ritual_pouch) {
                 IItemHandler handler = stack.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null);
                 if (handler != null)
-                    exchangeRecipe(stoneStack, handler, 3);
+                    exchangeRecipe(callingStone, handler, 3);
             }
         }
 
-        exchangeRecipe(stoneStack, leftStackHandler, 4);
-        exchangeRecipe(stoneStack, rightStackHandler, 4);
+        exchangeRecipe(callingStone, leftStackHandler, 4);
+        exchangeRecipe(callingStone, rightStackHandler, 4);
     }
 
-    private void exchangeRecipe(ItemStack stoneStack, IItemHandler stackHandler, int resultIndex) {
+    private void exchangeRecipe(ItemCallingStone callingStone, IItemHandler stackHandler, int resultIndex) {
         List<SlotStack> slotStacks = UtilHandler.getNotEmptyStacksWithSlotIndexes(stackHandler);
         List<ItemStack> stacks = new ArrayList<>();
         for (SlotStack slotStack : slotStacks)
             stacks.add(slotStack.getStack());
 
-        ItemStack result = ModRecipes.getRecipeResult(stoneStack, stacks);
+        ItemStack result = ModRecipes.getRecipeResult(callingStone, stacks);
         if (result == ItemStack.EMPTY)
             return;
         for (SlotStack slotStack : slotStacks)

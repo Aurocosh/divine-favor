@@ -1,5 +1,6 @@
 package aurocosh.divinefavor.common.receipes;
 
+import aurocosh.divinefavor.common.item.calling_stones.ItemCallingStone;
 import aurocosh.divinefavor.common.lib.ItemStackIdComparator;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
@@ -25,13 +26,14 @@ public class ModRecipes {
     public static ImmaterialMediumRecipe register(ImmaterialMediumRecipe recipe) {
         List<ItemStack> stacks = getIngridientStacks(recipe.ingredients);
         stacks.sort(new ItemStackIdComparator());
-        ItemStack callingStone = recipe.callingStone.getMatchingStacks()[0];
+        ItemStack callingStoneStack = recipe.callingStone.getMatchingStacks()[0];
+        ItemCallingStone callingStone = (ItemCallingStone) callingStoneStack.getItem();
         String ingredientString = getStackListString(callingStone, stacks);
         recipes.put(ingredientString, recipe);
         return recipe;
     }
 
-    public static ItemStack getRecipeResult(ItemStack callingStone, List<ItemStack> stacks) {
+    public static ItemStack getRecipeResult(ItemCallingStone callingStone, List<ItemStack> stacks) {
         List<ItemStack> itemStacks = new ArrayList<>(stacks);
         itemStacks.sort(new ItemStackIdComparator());
 
@@ -50,13 +52,13 @@ public class ModRecipes {
         return stacks;
     }
 
-    private static String getStackListString(ItemStack callingStone, List<ItemStack> stacks) {
+    private static String getStackListString(ItemCallingStone callingStone, List<ItemStack> stacks) {
         StringJoiner joiner = new StringJoiner("_");
         for (ItemStack itemStack : stacks) {
 //            int id = Item.REGISTRY.getIDForObject(itemStack.getItem());
             String value = itemStack.getItem().getRegistryName() + ":" + itemStack.getItemDamage() + ":" + itemStack.getCount();
             joiner.add(value);
         }
-        return joiner.toString() + "|" + callingStone.getItem().getRegistryName();
+        return joiner.toString() + "|" + callingStone.getRegistryName();
     }
 }
