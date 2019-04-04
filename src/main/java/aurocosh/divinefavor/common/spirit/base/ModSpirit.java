@@ -12,22 +12,29 @@ import aurocosh.divinefavor.common.registry.ModRegistries;
 import aurocosh.divinefavor.common.registry.mappers.ModMappers;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.item.Item;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.registries.IForgeRegistryEntry;
 
-import java.util.*;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 public class ModSpirit extends IForgeRegistryEntry.Impl<ModSpirit> implements IIndexedEntry {
     private final int id;
     private final String name;
+    private final Item offering;
+    private final int offeringCount;
     private final List<ModFavor> favors;
     private final TimePeriod activityPeriod;
     private final List<Integer> activeInDimensions;
     private final SpiritPunishment punishment;
 
-    public ModSpirit(String name, List<ModFavor> favors, TimePeriod activityPeriod, List<Integer> activeInDimensions, SpiritPunishment punishment) {
+    public ModSpirit(String name, List<ModFavor> favors, TimePeriod activityPeriod, List<Integer> activeInDimensions, SpiritPunishment punishment, Item offering, int offeringCount) {
         this.name = name;
+        this.offering = offering;
+        this.offeringCount = offeringCount;
         this.favors = favors;
         this.activityPeriod = activityPeriod;
         this.activeInDimensions = activeInDimensions;
@@ -41,6 +48,14 @@ public class ModSpirit extends IForgeRegistryEntry.Impl<ModSpirit> implements II
 
     public String getName() {
         return name;
+    }
+
+    public Item getOffering() {
+        return offering;
+    }
+
+    public int getOfferingCount() {
+        return offeringCount;
     }
 
     public TimePeriod getActivityPeriod() {
