@@ -1,0 +1,24 @@
+{
+  "name": "Grimoire",
+  "icon": "divinefavor:grimoire",
+  "category": "tools",
+  "pages": [
+    {
+      "type": "text",
+      "text": "Grimoire is special tool intended to store talismans. Grimoire can store only one type of talisman - spell talisman. What makes this tool essential is the fact that you can use all talismans inside grimoire freely, thus providing convinient storage for all of your spells. To open grimoire you need to sneak and right click while holding this item."
+    },
+    {
+      "type": "spotlight",
+      "item": "divinefavor:grimoire",
+      "text": "When opened you will see grimoire inventory. You can only put spell talismans inside, any other item will be rejected. You can select talisman by using middle click. To cast selected talisman in grimoire just hold grimoire in hand and use it like you would any normal spell talisman."
+    },
+    {
+      "type": "text",
+      "text": "Grimoire also has convenient hud that you can use to select talismans. Well, actually two. Both are activated by separate key bindings that you can configure in settings. First hud when activated will display current active talisman as well as several talismans before and after it in grimoire at the top of the screen. When this hud is displayed you can change active talisman by scrolling your mouse wheel."
+    },
+    {
+      "type": "text",
+      "text": "When second hud is activated all talismans currently in grimoire will appear in spiral pattern on your screen. Also your cursor will appear on the screen and you will be able to select any talisman by moving your cursor over it and releasing hud key."
+    }
+  ]
+}
