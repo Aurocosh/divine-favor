@@ -35,7 +35,7 @@ public class ModRecipes {
         List<ItemStack> itemStacks = new ArrayList<>(stacks);
         itemStacks.sort(new ItemStackIdComparator());
 
-        String ingredientString = getStackListString(callingStone, stacks);
+        String ingredientString = getStackListString(callingStone, itemStacks);
         ImmaterialMediumRecipe recipe = recipes.get(ingredientString);
 
         if (recipe == null)
@@ -54,7 +54,7 @@ public class ModRecipes {
         StringJoiner joiner = new StringJoiner("_");
         for (ItemStack itemStack : stacks) {
 //            int id = Item.REGISTRY.getIDForObject(itemStack.getItem());
-            String value = itemStack.getItem().getRegistryName() + ":" + itemStack.getCount();
+            String value = itemStack.getItem().getRegistryName() + ":" + itemStack.getItemDamage() + ":" + itemStack.getCount();
             joiner.add(value);
         }
         return joiner.toString() + "|" + callingStone.getItem().getRegistryName();
