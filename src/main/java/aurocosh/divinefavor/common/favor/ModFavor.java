@@ -12,11 +12,13 @@ public class ModFavor extends IForgeRegistryEntry.Impl<ModFavor> implements IInd
     private final int id;
     private final String name;
     private final ResourceLocation icon;
+    private final ResourceLocation symbol;
     // Talisman functions
 
     public ModFavor(String name) {
         this.name = name;
-        this.icon = new ResourceLocation(ConstResources.PREFIX_FAVOR_ICONS + name + ".png");
+        icon = new ResourceLocation(ConstResources.PREFIX_FAVOR_ICONS + name + ".png");
+        symbol = new ResourceLocation(ConstResources.PREFIX_FAVOR_SYMBOLS + name + ".png");
 
         setRegistryName(ResourceNamer.getFullName("favor", name));
         id = ModMappers.favors.register(this);
@@ -29,6 +31,10 @@ public class ModFavor extends IForgeRegistryEntry.Impl<ModFavor> implements IInd
 
     public ResourceLocation getIcon() {
         return icon;
+    }
+
+    public ResourceLocation getSymbol() {
+        return symbol;
     }
 
     @Override

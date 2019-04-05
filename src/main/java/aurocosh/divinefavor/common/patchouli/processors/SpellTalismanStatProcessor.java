@@ -40,6 +40,10 @@ public class SpellTalismanStatProcessor implements IComponentProcessor {
             ModFavor favor = spellTalisman.getFavor();
             return favor.getIcon().toString();
         }
+        else if (key.equals("favor_symbol")) {
+            ModFavor favor = spellTalisman.getFavor();
+            return favor.getSymbol().toString();
+        }
         else if (key.equals("text")) {
             List<String> lines = new ArrayList<>();
             ModFavor favor = spellTalisman.getFavor();

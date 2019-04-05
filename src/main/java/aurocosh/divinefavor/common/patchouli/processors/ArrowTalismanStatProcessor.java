@@ -40,6 +40,10 @@ public class ArrowTalismanStatProcessor implements IComponentProcessor {
             ModFavor favor = arrowTalisman.getFavor();
             return favor.getIcon().toString();
         }
+        else if (key.equals("favor_symbol")) {
+            ModFavor favor = arrowTalisman.getFavor();
+            return favor.getSymbol().toString();
+        }
 //
         else if (key.equals("text")) {
             List<String> lines = new ArrayList<>();

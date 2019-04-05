@@ -1,6 +1,7 @@
 {
     "parent": "item/generated",
     "textures": {
+        "layer1": "divinefavor:items/symbols/romol",
         "layer0": "divinefavor:items/wishing_stones/minor/romol"
     }
 }

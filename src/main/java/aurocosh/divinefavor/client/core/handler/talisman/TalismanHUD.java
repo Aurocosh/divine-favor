@@ -11,7 +11,6 @@ import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.ReflectionHelper;
 import org.lwjgl.opengl.GL11;
 
@@ -26,8 +25,6 @@ public class TalismanHUD {
         String description = talisman.getUseInfo(player);
 
         ModFavor favor = talisman.getFavor();
-        ResourceLocation icon = favor.getIcon();
-
         FavorData favorData = PlayerData.get(player).getFavorData();
         int value = favorData.getFavor(favor.getId());
         int maxLimit = favorData.getMaxFavor(favor.getId());
@@ -69,7 +66,11 @@ public class TalismanHUD {
         mc.getRenderItem().renderItemIntoGUI(talismanStack, 5, -6);
 
         // favor icon
-        mc.renderEngine.bindTexture(icon);
+        mc.renderEngine.bindTexture(favor.getIcon());
+        Gui.drawModalRectWithCustomSizedTexture(-21, -6, 0, 0, 16, 16, 16, 16);
+
+        // favor symbol
+        mc.renderEngine.bindTexture(favor.getSymbol());
         Gui.drawModalRectWithCustomSizedTexture(-21, -6, 0, 0, 16, 16, 16, 16);
 
         GlStateManager.popMatrix();
