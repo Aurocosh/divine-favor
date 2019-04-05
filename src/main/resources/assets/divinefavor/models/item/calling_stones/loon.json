@@ -1,6 +1,7 @@
 {
     "parent": "item/generated",
     "textures": {
+        "layer1": "divinefavor:items/symbols/loon",
         "layer0": "divinefavor:items/calling_stones/loon"
     }
 }

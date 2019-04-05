@@ -14,6 +14,16 @@
     },
     {
       "type": "image",
+      "image": "#favor_symbol",
+      "x": 50,
+      "y": 15,
+      "texture_width": 16,
+      "texture_height": 16,
+      "width": 16,
+      "height": 16
+    },
+    {
+      "type": "image",
       "image": "#favor_icon",
       "x": 50,
       "y": 15,
