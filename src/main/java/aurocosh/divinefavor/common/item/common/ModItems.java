@@ -20,7 +20,7 @@ public final class ModItems {
     public static ModItem invite_gem;
     public static ModItem invite_pebble;
     public static ModItem mystic_architect_stick;
-    public static ModItem pure_apple;
+    public static ModItem milky_apple;
     public static ModItem ritual_pouch;
     public static ModItem spell_bow;
     public static ModItem stoneball;
@@ -37,7 +37,7 @@ public final class ModItems {
         invite_gem = new ItemInviteMarker("invite_gem", true);
         invite_pebble = new ItemInviteMarker("invite_pebble", false);
         mystic_architect_stick = new ItemMysticArchitectStick();
-        pure_apple = new ItemPureApple();
+        milky_apple = new ItemMilkyApple();
         ritual_pouch = new ItemRitualPouch();
         spell_bow = new ItemSpellBow();
         stoneball = new ItemStoneball();
