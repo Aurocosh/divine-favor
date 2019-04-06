@@ -32,7 +32,8 @@ public class FavorData {
         favorStatuses = new FavorStatus[favors.size()];
         contractsStackHandlers = new ItemStackHandler[favors.size()];
         for (int i = 0; i < favors.size(); i++) {
-            favorStatuses[i] = new FavorStatus();
+            ModFavor favor = favors.get(i);
+            favorStatuses[i] = new FavorStatus(favor);
             contractsStackHandlers[i] = new ItemStackHandler(CONTRACT_SLOT_COUNT) {
                 @Override
                 public boolean isItemValid(int slot, @Nonnull ItemStack stack) {
@@ -133,7 +134,7 @@ public class FavorData {
 
     public void refreshContracts() {
         for (FavorStatus favorStatus : favorStatuses)
-            favorStatus.clear();
+            favorStatus.reset();
 
         for (int i = 0; i < contractsStackHandlers.length; i++) {
             ItemStackHandler stackHandler = contractsStackHandlers[i];

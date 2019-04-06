@@ -1,5 +1,7 @@
 package aurocosh.divinefavor.common.favor;
 
+import aurocosh.divinefavor.common.config.common.ConfigFavors;
+
 public final class ModFavors {
     public static ModFavor arbow;
     public static ModFavor blizrabi;
@@ -12,14 +14,14 @@ public final class ModFavors {
     public static ModFavor timber;
 
     public static void preInit() {
-        arbow = new ModFavor("arbow");
-        blizrabi = new ModFavor("blizrabi");
-        endererer = new ModFavor("endererer");
-        loon = new ModFavor("loon");
-        neblaze = new ModFavor("neblaze");
-        redwind = new ModFavor("redwind");
-        romol = new ModFavor("romol");
-        squarefury = new ModFavor("squarefury");
-        timber = new ModFavor("timber");
+        arbow = new ModFavor("arbow", ConfigFavors.arbow);
+        blizrabi = new ModFavor("blizrabi", ConfigFavors.blizrabi);
+        endererer = new ModFavor("endererer", ConfigFavors.endererer);
+        loon = new ModFavor("loon", ConfigFavors.loon);
+        neblaze = new ModFavor("neblaze", ConfigFavors.neblaze);
+        redwind = new ModFavor("redwind", ConfigFavors.redwind);
+        romol = new ModFavor("romol", ConfigFavors.romol);
+        squarefury = new ModFavor("squarefury", ConfigFavors.squarefury);
+        timber = new ModFavor("timber", ConfigFavors.timber);
     }
 }
