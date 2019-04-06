@@ -15,9 +15,9 @@ import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
 import net.minecraft.world.World;
 
-public class ItemPureApple extends ModItem {
-    public ItemPureApple() {
-        super("pure_apple", "pure_apple");
+public class ItemMilkyApple extends ModItem {
+    public ItemMilkyApple() {
+        super("milky_apple", "milky_apple");
         setMaxStackSize(1);
         setCreativeTab(DivineFavor.TAB_MAIN);
     }

@@ -1,0 +1,49 @@
+{
+  "name": "Curses",
+  "icon": "divinefavor:milky_apple",
+  "category": "basics",
+  "sortnum": 8,
+  "pages": [
+    {
+      "type": "text",
+      "text": "Some talismans allow you to inflict very powerful negative effects called curses. They are very strong but unlike regular potion effects they have some additional mechanics that you need to understand to use or to defend from them effectively. First of all unlike potions curses cannot be removed by drinking milk. Luckily there are other methods to counter curses."
+    },
+    {
+      "type": "text",
+      "text": "All creatures have certain resistance to curses, some more resistant, and some less resistant. Curse resistance provides a chance to reflect incoming curse back at the caster. Also curses themselves in fact increase your resistance to curses. What it means that all creatures have a chance to reflect a curse, and if they cursed that chance greatly increases."
+    },
+    {
+      "type": "text",
+      "text": "Curse resistance from multiple curses stacks. Also when curse is reflected back at the caster casters curse resistance does not matter, curse will be inflicted regardless. So spamming curses is very bad idea. If you were'nt lucky enough and curse were not reflected there are two ways to remove curse. First is to simply wait it out. Curses usually have time limit."
+    },
+    {
+      "type": "text",
+      "text": "Sooner or later curse will disappear on its own, but there is a quite high probability that you will not be able to survive the curse for that long. Second approach is unique for each curse. Each curse has a condition that you can satisfy in order to remove the curse. When this condition is met curse will be removed instantly. You can usually find that condition in description of curse source."
+    },
+    {
+      "type": "spotlight",
+      "item": "divinefavor:arrow_talisman_armor_corrosion",
+      "text": "For example, $(item)Armor corrosion talisman$() inflicts armor corrosion curse. This curse will continuously damage randomly selected equipment that you are currently wearing. To remove that curse you will have to take off corroded equipment."
+    },
+    {
+      "type": "spotlight",
+      "item": "divinefavor:arrow_talisman_fiery_mark",
+      "text": "$(item)Fiey mark talisman$() inflicts fiery mark curse. This curse will do nothing while it is active, but when it times out naturally victim will explode. To remove that curse you will have to jump in water before it is too late."
+    },
+    {
+      "type": "spotlight",
+      "item": "divinefavor:arrow_talisman_roots",
+      "text": "$(item)Roots talisman$() inflicts curse that will completely immobilize victim. Counter to this curse is quite simple, just look at your legs to make sure there are no actual roots and you will be able to walk again."
+    },
+    {
+      "type": "spotlight",
+      "item": "divinefavor:milky_apple",
+      "text": "$(item)Milky apple$() can remove all curses instantly. You can trade buy it from any spirit at the respective altar. But this item is rare and very expensive, so it is recommended to know how counters to curses instead of relying on this item."
+    },
+    {
+      "type": "spotlight",
+      "item": "divinefavor:bone_dagger_awakened",
+      "text": "$(item)Awakened bone dagger$() on successful soul shard theft inflicts unique curse on victim. This cures is unique because it is indeed beneficial to the victim. While this curse is active victim's damage to the soul thief will be greatly boosted."
+    }
+  ]
+}

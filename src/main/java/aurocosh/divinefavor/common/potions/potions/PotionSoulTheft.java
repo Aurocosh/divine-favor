@@ -3,7 +3,7 @@ package aurocosh.divinefavor.common.potions.potions;
 import aurocosh.divinefavor.common.custom_data.living.LivingData;
 import aurocosh.divinefavor.common.custom_data.living.data.soul_theft.SoulTheftData;
 import aurocosh.divinefavor.common.potions.base.potion.ModPotionToggle;
-import aurocosh.divinefavor.common.potions.common.ModPotions;
+import aurocosh.divinefavor.common.potions.common.ModCurses;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -37,7 +37,7 @@ public class PotionSoulTheft extends ModPotionToggle {
         if (!(entityAttacker instanceof EntityLivingBase))
             return;
         EntityLivingBase attacker = (EntityLivingBase) entityAttacker;
-        if (!attacker.isPotionActive(ModPotions.soul_theft))
+        if (!attacker.isPotionActive(ModCurses.soul_theft))
             return;
         EntityLivingBase victim = event.getEntityLiving();
         if (!(victim instanceof EntityPlayer))

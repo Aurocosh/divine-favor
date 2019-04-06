@@ -10,7 +10,7 @@ import aurocosh.divinefavor.common.item.soul_shards.ItemSoulShard;
 import aurocosh.divinefavor.common.item.soul_shards.ItemSoulShardPlayer;
 import aurocosh.divinefavor.common.item.soul_shards.ModSoulShards;
 import aurocosh.divinefavor.common.potions.base.effect.ModEffect;
-import aurocosh.divinefavor.common.potions.common.ModPotions;
+import aurocosh.divinefavor.common.potions.common.ModCurses;
 import aurocosh.divinefavor.common.util.UtilNbt;
 import aurocosh.divinefavor.common.util.UtilRandom;
 import net.minecraft.entity.Entity;
@@ -84,7 +84,7 @@ public class ItemBoneDaggerAwakened extends ModItem {
         float chance = nbt.getFloat(TAG_SOUL_STEAL_CHANCE);
         if (UtilRandom.rollDiceFloat(chance)) {
             EntityLivingBase livingBase = (EntityLivingBase) entity;
-            livingBase.addPotionEffect(new ModEffect(ModPotions.soul_theft, ConfigItem.awakenedBoneDagger.soulTheftDuration).setIsCurse());
+            livingBase.addPotionEffect(new ModEffect(ModCurses.soul_theft, ConfigItem.awakenedBoneDagger.soulTheftDuration).setIsCurse());
             SoulTheftData theftData = LivingData.get(livingBase).getSoulTheftData();
             theftData.addThief(player);
             makeSoulShard(livingBase, player);

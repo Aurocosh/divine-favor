@@ -48,7 +48,7 @@ item.divinefavor:spell_bow.name=Spell bow
 item.divinefavor:ritual_pouch.name=Ritual pouch
 item.divinefavor:contract_binder.name=Contract binder
 ## CONSUMABLES
-item.divinefavor:pure_apple.name=Pure apple
+item.divinefavor:milky_apple.name=Milky apple
 item.divinefavor:stone_ball.name=Stone
 ## CONTRACTS
 item.divinefavor:contract_capacity_minor.name=Capacity contract minor

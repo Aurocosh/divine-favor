@@ -2,6 +2,7 @@ package aurocosh.divinefavor.common.potions.common;
 
 import aurocosh.divinefavor.common.potions.base.potion.ModPotion;
 import aurocosh.divinefavor.common.potions.curses.*;
+import aurocosh.divinefavor.common.potions.potions.PotionSoulTheft;
 
 public class ModCurses {
     public static ModPotion armor_corrosion;
@@ -14,6 +15,7 @@ public class ModCurses {
     public static ModPotion petrification;
     public static ModPotion roots;
     public static ModPotion skyfall;
+    public static ModPotion soul_theft;
     public static ModPotion suffocating_fumes;
     public static ModPotion wind_leash;
     public static ModPotion yummy_smell;
@@ -29,6 +31,7 @@ public class ModCurses {
         petrification = new PotionPetrification();
         roots = new PotionRoots();
         skyfall = new PotionSkyfall();
+        soul_theft = new PotionSoulTheft();
         suffocating_fumes = new PotionSuffocatingFumes();
         wind_leash = new PotionWindLeash();
         yummy_smell = new PotionYummySmell();

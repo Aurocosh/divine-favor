@@ -1,6 +1,6 @@
 {
   "result": {
-    "item": "divinefavor:pure_apple"
+    "item": "divinefavor:milky_apple"
   },
   "stones": [
     "divinefavor:calling_stone_arbow",
@@ -18,7 +18,13 @@
       "item": "minecraft:apple"
     },
     {
-      "item": "minecraft:nether_star"
+      "item": "minecraft:milk_bucket"
+    },
+    {
+      "item": "minecraft:milk_bucket"
+    },
+    {
+      "item": "minecraft:dragon_breath"
     }
   ]
 }
