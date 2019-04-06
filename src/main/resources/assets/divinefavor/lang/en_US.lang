@@ -27,6 +27,8 @@ tile.divinefavor:bath_heater.name=Bath heater
 tile.divinefavor:diviner.name=Diviner
 tile.divinefavor:ender_pumpkin.name=Ender pumpkin
 tile.divinefavor:fast_furnace.name=Fast furnace
+divinefavor:no_grudge_assigned=No grudge
+divinefavor:divinefavor:no_fury_assigned=No focus
 
 # ITEM NAMES
 ## GEMS

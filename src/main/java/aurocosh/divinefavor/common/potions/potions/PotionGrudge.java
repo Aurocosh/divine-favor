@@ -20,6 +20,8 @@ import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 @Mod.EventBusSubscriber
 public class PotionGrudge extends ModPotionToggle {
@@ -43,7 +45,7 @@ public class PotionGrudge extends ModPotionToggle {
             return;
 
         GrudgeData grudgeData = PlayerData.get(player).getGrudgeData();
-        if(!grudgeData.hasGrudge((IMob) entityMob))
+        if(!grudgeData.hasGrudge(entityMob))
             return;
         event.setAmount(event.getAmount() + ConfigSpells.grudge.extraDamage);
     }
@@ -59,12 +61,13 @@ public class PotionGrudge extends ModPotionToggle {
         DamageSource source = event.getSource();
         Entity attacker = source.getTrueSource();
         if (attacker instanceof IMob)
-            grudgeData.setGrudge((IMob) attacker);
+            grudgeData.setGrudge(attacker);
         else
-            grudgeData.setMobTypeId(-1);
+            grudgeData.reset();
         new MessageSyncGrudge(grudgeData.getMobTypeId()).sendTo(player);
     }
 
+    @SideOnly(Side.CLIENT)
     @Override
     public void renderCustomInvText(int x, int y, PotionEffect effect, Minecraft mc) {
         String potionName = I18n.format(getName());

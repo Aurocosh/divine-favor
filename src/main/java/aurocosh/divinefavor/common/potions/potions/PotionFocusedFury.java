@@ -22,6 +22,8 @@ import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 @Mod.EventBusSubscriber
 public class PotionFocusedFury extends ModPotion {
@@ -47,7 +49,7 @@ public class PotionFocusedFury extends ModPotion {
         FocusedFuryData furyData = PlayerData.get(player).getFocusedFuryData();
         if(!furyData.hasFury())
             return;
-        if (furyData.hasFury((IMob) entityMob))
+        if (furyData.hasFury(entityMob))
             event.setAmount(event.getAmount() + ConfigSpells.focusedFury.extraDamage);
         else
             event.setCanceled(true);
@@ -72,11 +74,12 @@ public class PotionFocusedFury extends ModPotion {
         FocusedFuryData furyData = PlayerData.get(player).getFocusedFuryData();
         if (furyData.hasFury())
             return;
-        furyData.setFury((IMob) mob);
+        furyData.setFury(mob);
         new MessageSyncFury(furyData.getMobTypeId()).sendTo(player);
     }
 
     @Override
+    @SideOnly(Side.CLIENT)
     public void renderCustomInvText(int x, int y, PotionEffect effect, Minecraft mc) {
         String potionName = I18n.format(getName());
         mc.fontRenderer.drawStringWithShadow(potionName, (float) (x + 10 + 18), (float) (y + 6), 16777215);
@@ -96,7 +99,7 @@ public class PotionFocusedFury extends ModPotion {
 
         EntityPlayer player = (EntityPlayer) livingBase;
         FocusedFuryData furyData = PlayerData.get(player).getFocusedFuryData();
-        furyData.setMobTypeId(-1);
+        furyData.reset();
         new MessageSyncFury(furyData.getMobTypeId()).sendTo(player);
     }
 

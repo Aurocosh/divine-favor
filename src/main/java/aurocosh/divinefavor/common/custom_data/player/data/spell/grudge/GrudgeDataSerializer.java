@@ -2,6 +2,7 @@ package aurocosh.divinefavor.common.custom_data.player.data.spell.grudge;
 
 import aurocosh.divinefavor.common.lib.interfaces.INbtSerializer;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.ResourceLocation;
 
 // Handles the actual read/write of the nbt.
 public class GrudgeDataSerializer implements INbtSerializer<GrudgeData> {
@@ -9,12 +10,12 @@ public class GrudgeDataSerializer implements INbtSerializer<GrudgeData> {
 
     @Override
     public void serialize(NBTTagCompound nbt, GrudgeData instance) {
-        int value = nbt.getInteger(TAG_GRUDGE);
-        instance.setMobTypeId(value);
+        nbt.setString(TAG_GRUDGE, instance.getMobTypeId().toString());
     }
 
     @Override
     public void deserialize(NBTTagCompound nbt, GrudgeData instance) {
-        nbt.setInteger(TAG_GRUDGE,instance.getMobTypeId());
+        String value = nbt.getString(TAG_GRUDGE);
+        instance.setMobTypeId(new ResourceLocation(value));
     }
 }

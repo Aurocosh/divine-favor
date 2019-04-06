@@ -7,7 +7,6 @@ import aurocosh.divinefavor.common.custom_data.living.capability.LivingDataDataH
 import aurocosh.divinefavor.common.custom_data.player.capability.PlayerDataDataHandler;
 import aurocosh.divinefavor.common.custom_data.world.capability.WorldDataDataHandler;
 import aurocosh.divinefavor.common.entity.ModEntities;
-import aurocosh.divinefavor.common.entity.common.ModGrudgeMobs;
 import aurocosh.divinefavor.common.favor.ModFavors;
 import aurocosh.divinefavor.common.item.bathing_blend.ModBathingBlends;
 import aurocosh.divinefavor.common.item.calling_stones.ModCallingStones;
@@ -69,8 +68,6 @@ public class CommonProxy {
 
         ModBlocks.preInit();
         ModEntities.preInit();
-
-        ModGrudgeMobs.preInit();
 
         MessageRegister.init();
         NetworkWrappedClientMessage.setNetworkWrapper(NetworkHandler.INSTANCE);
