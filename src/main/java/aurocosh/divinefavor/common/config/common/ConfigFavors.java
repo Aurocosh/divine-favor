@@ -4,7 +4,7 @@ import aurocosh.divinefavor.common.config.FavorConfig;
 import aurocosh.divinefavor.common.constants.ConstMisc;
 import net.minecraftforge.common.config.Config;
 
-@Config(modid = ConstMisc.MOD_ID, name = ConstMisc.MOD_ID + "/spirits")
+@Config(modid = ConstMisc.MOD_ID, name = ConstMisc.MOD_ID + "/favors")
 public class ConfigFavors {
     private final static int maxFavor = 50;
 
