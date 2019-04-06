@@ -61,6 +61,7 @@ public class PotionFocusedFury extends ModPotion {
         Entity attacker = source.getTrueSource();
         if (!(attacker instanceof EntityPlayer))
             return;
+
         EntityPlayer player = (EntityPlayer) attacker;
         if (!player.isPotionActive(ModPotions.focused_fury))
             return;
