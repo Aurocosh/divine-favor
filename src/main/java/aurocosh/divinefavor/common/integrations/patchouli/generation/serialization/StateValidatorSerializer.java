@@ -1,9 +1,9 @@
-package aurocosh.divinefavor.common.patchouli.generation.serialization;
+package aurocosh.divinefavor.common.integrations.patchouli.generation.serialization;
 
-import aurocosh.divinefavor.common.patchouli.generation.pages.PatchouliPage;
-import aurocosh.divinefavor.common.patchouli.generation.pages.SpellTalismanPatchouliPage;
-import aurocosh.divinefavor.common.patchouli.generation.pages.SpotlightPatchouliPage;
-import aurocosh.divinefavor.common.patchouli.generation.pages.TextPatchouliPage;
+import aurocosh.divinefavor.common.integrations.patchouli.generation.pages.PatchouliPage;
+import aurocosh.divinefavor.common.integrations.patchouli.generation.pages.SpellTalismanPatchouliPage;
+import aurocosh.divinefavor.common.integrations.patchouli.generation.pages.SpotlightPatchouliPage;
+import aurocosh.divinefavor.common.integrations.patchouli.generation.pages.TextPatchouliPage;
 import com.google.gson.*;
 
 import java.lang.reflect.Type;

@@ -1,4 +1,4 @@
-package aurocosh.divinefavor.common.jei;
+package aurocosh.divinefavor.common.integrations.jei;
 
 import aurocosh.divinefavor.common.constants.ConstMisc;
 import aurocosh.divinefavor.common.constants.ConstResources;

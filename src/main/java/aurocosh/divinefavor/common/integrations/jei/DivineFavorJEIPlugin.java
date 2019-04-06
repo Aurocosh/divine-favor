@@ -1,8 +1,7 @@
-package aurocosh.divinefavor.common.jei;
+package aurocosh.divinefavor.common.integrations.jei;
 
 import aurocosh.divinefavor.common.block.common.ModBlocks;
 import aurocosh.divinefavor.common.core.ResourceNamer;
-import aurocosh.divinefavor.common.item.base.IDescriptionProvider;
 import aurocosh.divinefavor.common.item.base.ModItem;
 import aurocosh.divinefavor.common.receipes.ImmaterialMediumRecipe;
 import aurocosh.divinefavor.common.receipes.ModRecipes;

@@ -1,5 +1,5 @@
 {
-  "processor": "aurocosh.divinefavor.common.patchouli.processors.ArrowTalismanStatProcessor",
+  "processor": "aurocosh.divinefavor.common.integrations.patchouli.processors.ArrowTalismanStatProcessor",
   "components": [
     {
       "group": "header",

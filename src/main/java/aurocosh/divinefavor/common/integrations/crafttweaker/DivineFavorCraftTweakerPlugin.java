@@ -9,7 +9,7 @@ import stanhebben.zenscript.annotations.ZenMethod;
 
 @ZenRegister
 @ZenClass("mods.DivineFavor")
-public class CraftTweakerDivineFavor {
+public class DivineFavorCraftTweakerPlugin {
     @ZenMethod
     public static void addMediumRecipe(IItemStack output, IIngredient[] callingStones, IIngredient[] inputs) {
         CraftTweakerAPI.apply(new ActionAddMediumRecipe(output, callingStones, inputs));
