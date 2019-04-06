@@ -1,5 +1,5 @@
 {
-  "processor": "aurocosh.divinefavor.common.patchouli.processors.ContractStatProcessor",
+  "processor": "aurocosh.divinefavor.common.integrations.patchouli.processors.ContractStatProcessor",
   "components": [
     {
       "group": "header",

@@ -1,4 +1,4 @@
-package aurocosh.divinefavor.common.patchouli.processors;
+package aurocosh.divinefavor.common.integrations.patchouli.processors;
 
 import aurocosh.divinefavor.DivineFavor;
 import aurocosh.divinefavor.common.item.contract.ItemContract;

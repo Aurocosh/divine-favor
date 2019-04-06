@@ -1,4 +1,4 @@
-package aurocosh.divinefavor.common.jei;
+package aurocosh.divinefavor.common.integrations.jei;
 
 import aurocosh.divinefavor.common.item.common.ModItems;
 import aurocosh.divinefavor.common.receipes.ImmaterialMediumRecipe;

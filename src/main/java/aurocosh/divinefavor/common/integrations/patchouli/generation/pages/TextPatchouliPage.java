@@ -1,4 +1,4 @@
-package aurocosh.divinefavor.common.patchouli.generation.pages;
+package aurocosh.divinefavor.common.integrations.patchouli.generation.pages;
 
 public class TextPatchouliPage extends PatchouliPage {
     public String text;

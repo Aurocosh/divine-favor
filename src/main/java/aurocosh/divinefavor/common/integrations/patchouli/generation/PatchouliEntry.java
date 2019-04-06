@@ -1,6 +1,6 @@
-package aurocosh.divinefavor.common.patchouli.generation;
+package aurocosh.divinefavor.common.integrations.patchouli.generation;
 
-import aurocosh.divinefavor.common.patchouli.generation.pages.PatchouliPage;
+import aurocosh.divinefavor.common.integrations.patchouli.generation.pages.PatchouliPage;
 
 import java.util.ArrayList;
 import java.util.List;
