@@ -74,10 +74,11 @@ dependencies {
     // compile against the JEI API but do not include it at runtime
     deobfProvided "mezz.jei:jei_${mc_sub_version}:${jei_version}:api"
     // at runtime, use the full JEI jar
-    runtime "mezz.jei:jei_${mc_sub_version}:${jei_version}:api"
+    runtime "mezz.jei:jei_${mc_sub_version}:${jei_version}"
 
-    deobfProvided "CraftTweaker2:CraftTweaker2-API:${ct_version}"
-    runtime "CraftTweaker2:CraftTweaker2-MC1120-Main:1.12-${ct_version}"
+    compile "com.blamejared:MTLib:3.0.4.8"
+    compile  "CraftTweaker2:CraftTweaker2-MC1120-Main:1.12-${ct_version}"
+
 
     deobfProvided "mcp.mobius.waila:Hwyla:${hwyla_version}_${mc_sub_version}:api"
     runtime "mcp.mobius.waila:Hwyla:${hwyla_version}_${mc_sub_version}"

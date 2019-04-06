@@ -1,5 +1,6 @@
 package aurocosh.divinefavor.common.receipes;
 
+import aurocosh.divinefavor.DivineFavor;
 import aurocosh.divinefavor.common.item.calling_stones.ItemCallingStone;
 import aurocosh.divinefavor.common.lib.ItemStackIdComparator;
 import net.minecraft.item.ItemStack;
@@ -8,6 +9,9 @@ import net.minecraft.item.crafting.Ingredient;
 import java.util.*;
 
 public class ModRecipes {
+    public static final List<ImmaterialMediumRecipe> recipesToAdd = new ArrayList<>();
+    public static final List<ImmaterialMediumRecipe> recipesToDelete = new ArrayList<>();
+
     public static final Map<String, ImmaterialMediumRecipe> recipes = new HashMap<>();
 
     public static void init() {
@@ -23,14 +27,17 @@ public class ModRecipes {
 //        );
     }
 
-    public static ImmaterialMediumRecipe register(ImmaterialMediumRecipe recipe) {
+    public static void register(ImmaterialMediumRecipe recipe) {
         List<ItemStack> stacks = getIngridientStacks(recipe.ingredients);
         stacks.sort(new ItemStackIdComparator());
         ItemStack callingStoneStack = recipe.callingStone.getMatchingStacks()[0];
         ItemCallingStone callingStone = (ItemCallingStone) callingStoneStack.getItem();
         String ingredientString = getStackListString(callingStone, stacks);
-        recipes.put(ingredientString, recipe);
-        return recipe;
+        if(recipes.containsKey(ingredientString)){
+            DivineFavor.logger.error("Recipe conflict ignoring last recipe: " + ingredientString + ". Recipe result: " + recipe.result.toString());
+        }
+        else
+            recipes.put(ingredientString, recipe);
     }
 
     public static ItemStack getRecipeResult(ItemCallingStone callingStone, List<ItemStack> stacks) {
