@@ -23,7 +23,7 @@ public final class ModItems {
     public static ModItem milky_apple;
     public static ModItem ritual_pouch;
     public static ModItem spell_bow;
-//    public static ModItem stoneball;
+    public static ModItem stoneball;
     public static ModItem storage_gem;
     public static ModItem warp_gem;
     public static ModItem warp_pebble;
@@ -40,7 +40,7 @@ public final class ModItems {
         milky_apple = new ItemMilkyApple();
         ritual_pouch = new ItemRitualPouch();
         spell_bow = new ItemSpellBow();
-//        stoneball = new ItemStoneball();
+        stoneball = new ItemStoneball();
         storage_gem = new ItemStorageGem();
         warp_gem = new ItemWarpMarker("warp_gem", true);
         warp_pebble = new ItemWarpMarker("warp_pebble", false);
