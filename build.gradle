@@ -16,14 +16,22 @@ buildscript {
 }
 
 apply plugin: 'net.minecraftforge.gradle.forge'
+apply plugin: "java"
 
 repositories {
     maven { // The repo from which to get waila
         name "Mobius Repo"
         url "http://tehnut.info/maven"
     }
-    maven { // JEI
-        url "http://dvs1.progwml6.com/files/maven"
+    maven {
+        // location of the maven that hosts JEI files
+        name = "Progwml6 maven"
+        url = "https://dvs1.progwml6.com/files/maven/"
+    }
+    maven {
+        // location of a maven mirror for JEI files, as a fallback
+        name = "ModMaven"
+        url = "https://modmaven.k-4u.nl"
     }
     maven { // IntWheel
         url "http://maven.k-4u.nl"
@@ -63,13 +71,22 @@ minecraft {
 }
 
 dependencies {
-    compile "mezz.jei:jei_1.12.2:4.14.0.231"
-    compile "mcp.mobius.waila:Hwyla:1.8.26-B41_1.12.2:api"
-    compile "mcjty.theoneprobe:TheOneProbe-1.12:1.12-1.4.14-7"
-    compile "com.github.mcjty:intwheel:1.12-1.2.7"
+    // compile against the JEI API but do not include it at runtime
+    deobfProvided "mezz.jei:jei_${mc_sub_version}:${jei_version}:api"
+    // at runtime, use the full JEI jar
+    runtime "mezz.jei:jei_${mc_sub_version}:${jei_version}:api"
+
+    deobfProvided "CraftTweaker2:CraftTweaker2-API:${ct_version}"
+    runtime "CraftTweaker2:CraftTweaker2-MC1120-Main:1.12-${ct_version}"
+
+    deobfProvided "mcp.mobius.waila:Hwyla:${hwyla_version}_${mc_sub_version}:api"
+    runtime "mcp.mobius.waila:Hwyla:${hwyla_version}_${mc_sub_version}"
+
+    deobfCompile "mcjty.theoneprobe:TheOneProbe-${mc_version}:${mc_version}-1.4.14-7"
+    deobfCompile "com.github.mcjty:intwheel:${mc_version}-1.2.7"
     //compile "cofh:RedstoneFlux:1.12-2.1.0.6:universal"
-    deobfCompile "net.darkhax.bookshelf:Bookshelf-1.12.2:2.3.568"
-    compile "vazkii.patchouli:Patchouli:1.0-18.92"
+    deobfCompile "vazkii.patchouli:Patchouli:${p_version}"
+    deobfCompile "net.darkhax.bookshelf:Bookshelf-${mc_sub_version}:2.3.568"
 }
 
 processResources
