@@ -18,7 +18,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 @Mod.EventBusSubscriber(Side.CLIENT)
 public final class HUDHandler {
     @SubscribeEvent
-    public void onDraw(RenderGameOverlayEvent.Post event) {
+    public static void onDraw(RenderGameOverlayEvent.Post event) {
         if (event.getType() != ElementType.ALL)
             return;
 
