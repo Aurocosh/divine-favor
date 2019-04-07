@@ -6,7 +6,7 @@ import aurocosh.divinefavor.common.custom_data.player.data.curse.evil_eye.EvilEy
 import aurocosh.divinefavor.common.item.talismans.spell.base.ItemSpellTalisman;
 import aurocosh.divinefavor.common.item.talismans.spell.base.SpellOptions;
 import aurocosh.divinefavor.common.item.talismans.spell.base.TalismanContext;
-import aurocosh.divinefavor.common.network.message.client.MessageSyncEvilEye;
+import aurocosh.divinefavor.common.network.message.client.syncing.MessageSyncEvilEye;
 import aurocosh.divinefavor.common.potions.base.effect.ModEffect;
 import aurocosh.divinefavor.common.potions.common.ModCurses;
 import aurocosh.divinefavor.common.spirit.base.ModSpirit;

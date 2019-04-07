@@ -4,9 +4,8 @@
   "category": "contracts",
   "pages": [
     {
-      "type": "spotlight",
-      "item": "divinefavor:contract_capacity_major",
-      "text": "Major capacity contract. Will considerably boost your maximum favor limit."
+      "type": "spotlight_description",
+      "item": "divinefavor:contract_capacity_major"
     },
     {
       "type": "contract_stats",

@@ -1,0 +1,15 @@
+{
+  "name": "Information contract",
+  "icon": "divinefavor:contract_inform",
+  "category": "contracts",
+  "pages": [
+    {
+      "type": "spotlight_description",
+      "item": "divinefavor:contract_inform"
+    },
+    {
+      "type": "contract_stats",
+      "contract": "divinefavor:contract_inform"
+    }
+  ]
+}

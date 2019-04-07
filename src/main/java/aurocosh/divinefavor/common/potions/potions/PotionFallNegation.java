@@ -1,6 +1,6 @@
 package aurocosh.divinefavor.common.potions.potions;
 
-import aurocosh.divinefavor.common.network.message.client.MessageSyncPotionCharge;
+import aurocosh.divinefavor.common.network.message.client.syncing.MessageSyncPotionCharge;
 import aurocosh.divinefavor.common.potions.base.effect.ModEffectCharge;
 import aurocosh.divinefavor.common.potions.base.potion.ModPotionCharge;
 import aurocosh.divinefavor.common.potions.common.ModPotions;

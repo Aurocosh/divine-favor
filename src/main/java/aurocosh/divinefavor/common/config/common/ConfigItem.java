@@ -15,15 +15,17 @@ public class ConfigItem {
     public static AwakenedBoneDagger awakenedBoneDagger = new AwakenedBoneDagger();
 
     @Config.Name("Contract capacity minor")
-    public static Contract contractCapacityMinor = new Contract(0, 0, 100);
+    public static Contract contractCapacityMinor = new Contract(0, 0, 100, false);
     @Config.Name("Contract capacity major")
-    public static Contract contractCapacityMajor = new Contract(0, 0, 500);
+    public static Contract contractCapacityMajor = new Contract(0, 0, 500,false);
     @Config.Name("Contract regen minor")
-    public static Contract contractRegenMinor = new Contract(0, 20, 0);
+    public static Contract contractRegenMinor = new Contract(0, 20, 0, false);
     @Config.Name("Contract regen major")
-    public static Contract contractRegenMajor = new Contract(0, 200, 0);
+    public static Contract contractRegenMajor = new Contract(0, 200, 0,false);
+    @Config.Name("Inform")
+    public static Contract contractInform = new Contract(0, 0, 0, true);
     @Config.Name("Creative")
-    public static Contract contractCreative = new Contract(3000, 2000, 6000);
+    public static Contract contractCreative = new Contract(3000, 2000, 6000, true);
 
     @Config.Name("Nether charcoal blend")
     public static BathingBlendPotion blendCharcoal = new BathingBlendPotion(20, 4, 24);

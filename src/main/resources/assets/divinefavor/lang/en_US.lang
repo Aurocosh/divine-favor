@@ -22,14 +22,29 @@ tile.divinefavor:soulbound_lectern_obsidian.name=Obsidian soulbound lectern
 tile.divinefavor:soulbound_lectern_snow.name=Snow soulbound lectern
 tile.divinefavor:soulbound_lectern_stone.name=Stone soulbound lectern
 tile.divinefavor:soulbound_lectern_wood.name=Wood soulbound lectern
-## OTHER
+## OTHER BLOCKS
 tile.divinefavor:bath_heater.name=Bath heater
 tile.divinefavor:diviner.name=Diviner
 tile.divinefavor:ender_pumpkin.name=Ender pumpkin
 tile.divinefavor:fast_furnace.name=Fast furnace
+
+# MISC
 divinefavor:no_grudge_assigned=No grudge
 divinefavor:no_fury_assigned=No focus
 divinefavor:spirit_offering=If you need to trade for something and cant or don't want to wait while spirit becomes active, you can make an offering at altar. Spirit will briefly visit altar to take offering and trade with you. To attract spirit you will have to offer at least %1$d items.
+divinefavor:spirit_became_active=Spirit %1$s became active
+divinefavor:spirit_became_inactive=Spirit %1$s became inactive
+
+# SPIRIT NAMES
+divinefavor:spirit.arbow.name=Arbow
+divinefavor:spirit.blizrabi.name=Blizrabi
+divinefavor:spirit.endererer.name=Endererer
+divinefavor:spirit.loon.name=Loon
+divinefavor:spirit.neblaze.name=Neblaze
+divinefavor:spirit.redwind.name=Redwind
+divinefavor:spirit.romol.name=Romol
+divinefavor:spirit.squarefury.name=Squarefury
+divinefavor:spirit.timber.name=Timber
 
 # ITEM NAMES
 ## GEMS
@@ -56,125 +71,9 @@ item.divinefavor:contract_capacity_minor.name=Capacity contract minor
 item.divinefavor:contract_capacity_major.name=Capacity contract major
 item.divinefavor:contract_regen_minor.name=Regen contract minor
 item.divinefavor:contract_regen_major.name=Regen contract major
+item.divinefavor:contract_inform.name=Information contract
 item.divinefavor:contract_creative.name=Creative contract
-
-# TALISMAN NAMES
-## ARBOW TALISMANS
-item.divinefavor:talisman_arrow_throw.name=Arrow throw talisman
-
-## BLIZZRABI TALISMANS
-item.divinefavor:talisman_armor_of_pacifist.name=Armor of pacifist talisman
-item.divinefavor:talisman_crystalline_road.name=Crystalline_road talisman
-item.divinefavor:talisman_obsidian_road.name=Obsidian road talisman
-item.divinefavor:talisman_snowball_throw.name=Snowball talisman
-item.divinefavor:talisman_winter_breath.name=Winter breath talisman
-item.divinefavor:talisman_fins.name=Fins talisman
-item.divinefavor:talisman_gills.name=Gills talisman
-item.divinefavor:talisman_vitalize.name=Vitalize talisman
-
-## ENDERERER TALISMANS
-item.divinefavor:talisman_blink.name=Blink talisman
-item.divinefavor:talisman_earthen_dive.name=Earthen dive talisman
-item.divinefavor:talisman_escape_plan.name=Escape plan talisman
-item.divinefavor:talisman_invite_gem.name=Invite gem talisman
-item.divinefavor:talisman_invite_pebble.name=Invite pebble talisman
-item.divinefavor:talisman_overblink.name=Overblink talisman
-item.divinefavor:talisman_overwarp.name=Overwarp talisman
-item.divinefavor:talisman_pearl_crumbs.name=Pearl crumbs talisman
-item.divinefavor:talisman_remote_chest.name=Remote chest talisman
-item.divinefavor:talisman_surface_blink.name=Surface blink talisman
-item.divinefavor:talisman_surface_shift.name=Surface shift talisman
-item.divinefavor:talisman_wall_slip.name=Wall slip talisman
-item.divinefavor:talisman_warp.name=Warp talisman
-item.divinefavor:talisman_warp_gem.name=Warp gem talisman
-item.divinefavor:talisman_warp_pebble.name=Warp pebble talisman
-
-## LOON TALISMANS
-item.divinefavor:talisman_follow.name=Follow talisman
-item.divinefavor:talisman_night_eye.name=Night eye talisman
-item.divinefavor:talisman_spider_might.name=Spider might talisman
-item.divinefavor:talisman_summon_creeper.name=Summon creeper talisman
-item.divinefavor:talisman_summon_husk.name=Summon husk talisman
-item.divinefavor:talisman_summon_skeleton.name=Summon skeleton talisman
-item.divinefavor:talisman_summon_stray.name=Summon stray talisman
-item.divinefavor:talisman_summon_zombie.name=Summon zombie talisman
-item.divinefavor:talisman_target.name=Target talisman
-
-## NEBLAZE TALISMANS
-item.divinefavor:talisman_combustion.name=Combustion talisman
-item.divinefavor:talisman_distant_spark.name=Distant spark talisman
-item.divinefavor:talisman_evil_eye.name=Evil eye talisman
-item.divinefavor:talisman_heat_wave.name=Heat wave talisman
-item.divinefavor:talisman_hellisphere.name=Hellisphere talisman
-item.divinefavor:talisman_ignition.name=Ignition
-item.divinefavor:talisman_infernal_touch.name=Infernal touch
-item.divinefavor:talisman_molten_skin.name=Molten skin
-item.divinefavor:talisman_nether_surge.name=Nether surge
-item.divinefavor:talisman_piercing_inferno.name=Piercing inferno
-item.divinefavor:talisman_searing_pulse.name=Searing pulse
-item.divinefavor:talisman_small_fireball_throw.name=Small fireball throw
-
-## REDWIND TALISMANS
-item.divinefavor:talisman_fall_negation.name=Fall negation talisman
-item.divinefavor:talisman_target.name=Target talisman
-item.divinefavor:talisman_toadic_jump.name=Toadic jump talisman
-item.divinefavor:talisman_wild_sprint.name=Wild sprint talisman
-item.divinefavor:talisman_wind_step.name=Wind step talisman
-
-## ROMOL TALISMANS
-item.divinefavor:talisman_crushing_palm.name=Crushing palm talisman
-item.divinefavor:talisman_empower_axe.name=Empower axe talisman
-item.divinefavor:talisman_empower_pickaxe.name=Empower pickaxe
-item.divinefavor:talisman_fell_tree.name=Fell tree talisman
-item.divinefavor:talisman_green_cycle.name=Green cycle talisman
-item.divinefavor:talisman_ground_flow.name=Ground flow talisman
-item.divinefavor:talisman_harvest.name=Harvest talisman
-item.divinefavor:talisman_miners_focus.name=Miners focus talisman
-item.divinefavor:talisman_stone_fever.name=Stone fever talisman
-item.divinefavor:talisman_stoneball_throw.name=Pebble talisman
-item.divinefavor:talisman_wooden_punch.name=Wooden punch talisman
-
-## SQUAREFURY TALISMANS
-item.divinefavor:talisman_butchering_strike.name=Butchering strike talisman
-item.divinefavor:talisman_consuming_fury.name=Consuming fury talisman
-item.divinefavor:talisman_focused_fury.name=Focused fury talisman
-item.divinefavor:talisman_grudge.name=Grudge talisman
-item.divinefavor:talisman_mist_blade.name=Mist blade talisman
-
-## TIMBER TALISMANS
-item.divinefavor:talisman_blade_of_grass.name=Blade of grass talisman
-item.divinefavor:talisman_blood_of_grass.name=Blood of grass talisman
-item.divinefavor:talisman_bonemeal.name=Bonemeal talisman
-item.divinefavor:talisman_clock.name=Clock talisman
-item.divinefavor:talisman_starvation.name=Starvation talisman
-
-# ARROW TALISMAN NAMES
-## ARBOW TALISMANS
-item.divinefavor:arrow_talisman_anti_gravity_arrow.name=Anti gravity arrow talisman
-item.divinefavor:arrow_talisman_disarm.name=Disarm talisman
-item.divinefavor:arrow_talisman_hand_swap.name=Hand swap talisman
-item.divinefavor:arrow_talisman_zero_g_arrow.name=Zero g arrow talisman
-
-## ENDERERER TALISMANS
-item.divinefavor:arrow_talisman_blink_arrow.name=Blink arrow talisman
-item.divinefavor:arrow_talisman_nether_swap.name=Nether swap talisman
-
-## TIMBER TALISMANS
-item.divinefavor:arrow_talisman_armor_corrosion.name=Armor corrosion talisman
-item.divinefavor:arrow_talisman_crawling_mist.name=Crawling mist talisman
-item.divinefavor:arrow_talisman_cripple.name=Cripple talisman
-item.divinefavor:arrow_talisman_fiery_mark.name=Fiery_mark talisman
-item.divinefavor:arrow_talisman_fill_lungs.name=Fill lungs talisman
-item.divinefavor:arrow_talisman_hollow_leg.name=Hollow leg talisman
-item.divinefavor:arrow_talisman_limp_leg.name=Limp leg talisman
-item.divinefavor:arrow_talisman_petrification.name=Petrification talisman
-item.divinefavor:arrow_talisman_roots.name=Roots talisman
-item.divinefavor:arrow_talisman_skyfall.name=Skyfall talisman
-item.divinefavor:arrow_talisman_suffocating_fumes.name=Suffocating fumes talisman
-item.divinefavor:arrow_talisman_wind_leash.name=Wind leash talisman
-item.divinefavor:arrow_talisman_yummy_smell.name=Yummy smell talisman
-
-# CALLING STONES
+## CALLING STONES
 item.divinefavor:calling_stone_arbow.name=Arbow's invite
 item.divinefavor:calling_stone_blizrabi.name=Blizrabi's invite
 item.divinefavor:calling_stone_endererer.name=Endererer's invite
@@ -184,8 +83,7 @@ item.divinefavor:calling_stone_redwind.name=Redwind's invite
 item.divinefavor:calling_stone_romol.name=Romol's invite
 item.divinefavor:calling_stone_squarefury.name=Squarefury's invite
 item.divinefavor:calling_stone_timber.name=Timber's invite
-
-# WISHING STONES
+## WISHING STONES
 item.divinefavor:wishing_stone_minor_arbow.name=Arbow wishing stone
 item.divinefavor:wishing_stone_minor_blizrabi.name=Blizrabi wishing stone
 item.divinefavor:wishing_stone_minor_endererer.name=Endererer wishing stone
@@ -195,8 +93,7 @@ item.divinefavor:wishing_stone_minor_redwind.name=Redwind wishing stone
 item.divinefavor:wishing_stone_minor_romol.name=Romol wishing stone
 item.divinefavor:wishing_stone_minor_squarefury.name=Squarefury wishing stone
 item.divinefavor:wishing_stone_minor_timber.name=Timber wishing stone
-
-# SOUL SHARDS
+## SOUL SHARDS
 item.divinefavor:soul_shard_end.name=Soul shard of end
 item.divinefavor:soul_shard_mind.name=Soul shard of mind
 item.divinefavor:soul_shard_nether.name=Soul shard of nether
@@ -206,7 +103,6 @@ item.divinefavor:soul_shard_undeath.name=Soul shard of undeath
 item.divinefavor:soul_shard_water.name=Soul shard of water
 item.divinefavor:soul_shard_wild.name=Soul shard of wild
 item.divinefavor:soul_shard_wither.name=Soul shard of wither
-
 # BATHING BLENDS
 item.divinefavor:blend_charcoal.name=Nether charcoal blend
 item.divinefavor:blend_ender_pearl.name=Distorted pearl blend
@@ -217,6 +113,101 @@ item.divinefavor:blend_lapis.name=Undead lapis blend
 item.divinefavor:blend_redstone.name=Mystic redstone blend
 item.divinefavor:blend_snow.name=Evercold snow blend
 item.divinefavor:blend_wood.name=Cursed wood blend
+
+# TALISMAN NAMES
+item.divinefavor:talisman_armor_of_pacifist.name=Armor of pacifist talisman
+item.divinefavor:talisman_arrow_throw.name=Arrow throw talisman
+item.divinefavor:talisman_blade_of_grass.name=Blade of grass talisman
+item.divinefavor:talisman_blink.name=Blink talisman
+item.divinefavor:talisman_blood_of_grass.name=Blood of grass talisman
+item.divinefavor:talisman_bonemeal.name=Bonemeal talisman
+item.divinefavor:talisman_butchering_strike.name=Butchering strike talisman
+item.divinefavor:talisman_clock.name=Clock talisman
+item.divinefavor:talisman_combustion.name=Combustion talisman
+item.divinefavor:talisman_consuming_fury.name=Consuming fury talisman
+item.divinefavor:talisman_crushing_palm.name=Crushing palm talisman
+item.divinefavor:talisman_crystalline_road.name=Crystalline_road talisman
+item.divinefavor:talisman_distant_spark.name=Distant spark talisman
+item.divinefavor:talisman_earthen_dive.name=Earthen dive talisman
+item.divinefavor:talisman_empower_axe.name=Empower axe talisman
+item.divinefavor:talisman_empower_pickaxe.name=Empower pickaxe
+item.divinefavor:talisman_escape_plan.name=Escape plan talisman
+item.divinefavor:talisman_evil_eye.name=Evil eye talisman
+item.divinefavor:talisman_fall_negation.name=Fall negation talisman
+item.divinefavor:talisman_fell_tree.name=Fell tree talisman
+item.divinefavor:talisman_fins.name=Fins talisman
+item.divinefavor:talisman_focused_fury.name=Focused fury talisman
+item.divinefavor:talisman_follow.name=Follow talisman
+item.divinefavor:talisman_gills.name=Gills talisman
+item.divinefavor:talisman_green_cycle.name=Green cycle talisman
+item.divinefavor:talisman_ground_flow.name=Ground flow talisman
+item.divinefavor:talisman_grudge.name=Grudge talisman
+item.divinefavor:talisman_harvest.name=Harvest talisman
+item.divinefavor:talisman_heat_wave.name=Heat wave talisman
+item.divinefavor:talisman_hellisphere.name=Hellisphere talisman
+item.divinefavor:talisman_ignition.name=Ignition
+item.divinefavor:talisman_infernal_touch.name=Infernal touch
+item.divinefavor:talisman_invite_gem.name=Invite gem talisman
+item.divinefavor:talisman_invite_pebble.name=Invite pebble talisman
+item.divinefavor:talisman_miners_focus.name=Miners focus talisman
+item.divinefavor:talisman_mist_blade.name=Mist blade talisman
+item.divinefavor:talisman_molten_skin.name=Molten skin
+item.divinefavor:talisman_nether_surge.name=Nether surge
+item.divinefavor:talisman_night_eye.name=Night eye talisman
+item.divinefavor:talisman_obsidian_road.name=Obsidian road talisman
+item.divinefavor:talisman_overblink.name=Overblink talisman
+item.divinefavor:talisman_overwarp.name=Overwarp talisman
+item.divinefavor:talisman_pearl_crumbs.name=Pearl crumbs talisman
+item.divinefavor:talisman_piercing_inferno.name=Piercing inferno
+item.divinefavor:talisman_remote_chest.name=Remote chest talisman
+item.divinefavor:talisman_searing_pulse.name=Searing pulse
+item.divinefavor:talisman_small_fireball_throw.name=Small fireball throw
+item.divinefavor:talisman_snowball_throw.name=Snowball talisman
+item.divinefavor:talisman_spider_might.name=Spider might talisman
+item.divinefavor:talisman_starvation.name=Starvation talisman
+item.divinefavor:talisman_stone_fever.name=Stone fever talisman
+item.divinefavor:talisman_stoneball_throw.name=Pebble talisman
+item.divinefavor:talisman_summon_creeper.name=Summon creeper talisman
+item.divinefavor:talisman_summon_husk.name=Summon husk talisman
+item.divinefavor:talisman_summon_skeleton.name=Summon skeleton talisman
+item.divinefavor:talisman_summon_stray.name=Summon stray talisman
+item.divinefavor:talisman_summon_zombie.name=Summon zombie talisman
+item.divinefavor:talisman_surface_blink.name=Surface blink talisman
+item.divinefavor:talisman_surface_shift.name=Surface shift talisman
+item.divinefavor:talisman_target.name=Target talisman
+item.divinefavor:talisman_target.name=Target talisman
+item.divinefavor:talisman_toadic_jump.name=Toadic jump talisman
+item.divinefavor:talisman_vitalize.name=Vitalize talisman
+item.divinefavor:talisman_wall_slip.name=Wall slip talisman
+item.divinefavor:talisman_warp.name=Warp talisman
+item.divinefavor:talisman_warp_gem.name=Warp gem talisman
+item.divinefavor:talisman_warp_pebble.name=Warp pebble talisman
+item.divinefavor:talisman_wild_sprint.name=Wild sprint talisman
+item.divinefavor:talisman_wind_step.name=Wind step talisman
+item.divinefavor:talisman_winter_breath.name=Winter breath talisman
+item.divinefavor:talisman_wooden_punch.name=Wooden punch talisman
+
+# ARROW TALISMAN NAMES
+item.divinefavor:arrow_talisman_anti_gravity_arrow.name=Anti gravity arrow talisman
+item.divinefavor:arrow_talisman_armor_corrosion.name=Armor corrosion talisman
+item.divinefavor:arrow_talisman_blink_arrow.name=Blink arrow talisman
+item.divinefavor:arrow_talisman_crawling_mist.name=Crawling mist talisman
+item.divinefavor:arrow_talisman_cripple.name=Cripple talisman
+item.divinefavor:arrow_talisman_disarm.name=Disarm talisman
+item.divinefavor:arrow_talisman_fiery_mark.name=Fiery_mark talisman
+item.divinefavor:arrow_talisman_fill_lungs.name=Fill lungs talisman
+item.divinefavor:arrow_talisman_hand_swap.name=Hand swap talisman
+item.divinefavor:arrow_talisman_hollow_leg.name=Hollow leg talisman
+item.divinefavor:arrow_talisman_limp_leg.name=Limp leg talisman
+item.divinefavor:arrow_talisman_nether_swap.name=Nether swap talisman
+item.divinefavor:arrow_talisman_petrification.name=Petrification talisman
+item.divinefavor:arrow_talisman_roots.name=Roots talisman
+item.divinefavor:arrow_talisman_skyfall.name=Skyfall talisman
+item.divinefavor:arrow_talisman_suffocating_fumes.name=Suffocating fumes talisman
+item.divinefavor:arrow_talisman_wind_leash.name=Wind leash talisman
+item.divinefavor:arrow_talisman_yummy_smell.name=Yummy smell talisman
+item.divinefavor:arrow_talisman_zero_g_arrow.name=Zero g arrow talisman
+
 
 # EFFECT NAMES
 potion.divinefavor:butchering_strike.name=Butchering strike
@@ -241,7 +232,97 @@ potion.divinefavor:wooden_punch.name=Wooden punch
 # JEI tab name
 container.divinefavor:immaterial_medium.name=Spiritual trade
 
-#TALISMAN DESCRIPTIONS FOR JEI AND PATCHOULI
+#BLOCK DESCRIPTIONS FOR JEI AND PATCHOULI
+## MEDIUMS
+tile.divinefavor:medium_gold.description=Spiritual medium. Integral part of spiritual altar. Build an altar dedicated to a spirit of your choice to be able to trade with him. Different altars require different types of mediums. Read guidebook for more details (Immaterial guide).
+tile.divinefavor:medium_iron.description=Spiritual medium. Integral part of spiritual altar. Build an altar dedicated to a spirit of your choice to be able to trade with him. Different altars require different types of mediums. Read guidebook for more details (Immaterial guide).
+tile.divinefavor:medium_lapis.description=Spiritual medium. Integral part of spiritual altar. Build an altar dedicated to a spirit of your choice to be able to trade with him. Different altars require different types of mediums. Read guidebook for more details (Immaterial guide).
+tile.divinefavor:medium_log.description=Spiritual medium. Integral part of spiritual altar. Build an altar dedicated to a spirit of your choice to be able to trade with him. Different altars require different types of mediums. Read guidebook for more details (Immaterial guide).
+tile.divinefavor:medium_obsidian.description=Spiritual medium. Integral part of spiritual altar. Build an altar dedicated to a spirit of your choice to be able to trade with him. Different altars require different types of mediums. Read guidebook for more details (Immaterial guide).
+tile.divinefavor:medium_redstone.description=Spiritual medium. Integral part of spiritual altar. Build an altar dedicated to a spirit of your choice to be able to trade with him. Different altars require different types of mediums. Read guidebook for more details (Immaterial guide).
+## LECTERNS
+tile.divinefavor:soulbound_lectern_coal.description=Special lectern that allows you to store and access your spiritual contracts. Requires special multiblock to work. Functions similar to ender chest. Read guidebook for more details (Immaterial guide).
+tile.divinefavor:soulbound_lectern_gold.description=Special lectern that allows you to store and access your spiritual contracts. Requires special multiblock to work. Functions similar to ender chest. Read guidebook for more details (Immaterial guide).
+tile.divinefavor:soulbound_lectern_iron.description=Special lectern that allows you to store and access your spiritual contracts. Requires special multiblock to work. Functions similar to ender chest. Read guidebook for more details (Immaterial guide).
+tile.divinefavor:soulbound_lectern_log.description=Special lectern that allows you to store and access your spiritual contracts. Requires special multiblock to work. Functions similar to ender chest. Read guidebook for more details (Immaterial guide).
+tile.divinefavor:soulbound_lectern_obsidian.description=Special lectern that allows you to store and access your spiritual contracts. Requires special multiblock to work. Functions similar to ender chest. Read guidebook for more details (Immaterial guide).
+tile.divinefavor:soulbound_lectern_snow.description=Special lectern that allows you to store and access your spiritual contracts. Requires special multiblock to work. Functions similar to ender chest. Read guidebook for more details (Immaterial guide).
+tile.divinefavor:soulbound_lectern_stone.description=Special lectern that allows you to store and access your spiritual contracts. Requires special multiblock to work. Functions similar to ender chest. Read guidebook for more details (Immaterial guide).
+tile.divinefavor:soulbound_lectern_wood.description=Special lectern that allows you to store and access your spiritual contracts. Requires special multiblock to work. Functions similar to ender chest. Read guidebook for more details (Immaterial guide).
+## OTHER
+tile.divinefavor:bath_heater.description=This block allows you to use special blends. Such blends grant special effects similar to potions. Read guidebook for more details (Immaterial guide).
+tile.divinefavor:diviner.description=Debug item. Creative only.
+tile.divinefavor:ender_pumpkin.description=Enderman mask crafted from pumpkin. Greatly hinders your vision, but still has some practical uses.
+tile.divinefavor:fast_furnace.description=Debug item.
+
+
+#ITEM DESCRIPTIONS FOR JEI AND PATCHOULI
+## GEMS
+item.divinefavor:invite_gem.description=Instantly teleports you to creator of the gem. Works across dimensions. Can be created with appropriate talisman.
+item.divinefavor:invite_pebble.description=Instantly teleports you to creator of the gem. Does not work across dimensions. Can be created with appropriate talisman.
+item.divinefavor:storage_gem.description=Allows you to remotely access chest. Can be created with appropriate talisman.
+item.divinefavor:warp_gem.description=Instantly teleports you to place where it was created. Works across dimensions. Can be created with appropriate talisman.
+item.divinefavor:warp_pebble.description=Instantly teleports you to place where it was created. Does not work across dimensions. Can be created with appropriate talisman.
+## TOOLS
+item.divinefavor:bone_dagger.description=Not a weapon. Well, not very good weapon. Bone dagger is an unfinished spiritual tool that can be transformed into awakened bone dagger. Read guidebook for more details (Immaterial guide).
+item.divinefavor:bone_dagger_awakened.description=Spiritual tool whose main purpose is to extract soul shards from things with souls.
+item.divinefavor:bone_key.description=Tool used for reactivation of damaged multiblocks.
+item.divinefavor:mystic_architect_stick.description=Debug item. Creative only.
+## CONTAINERS
+item.divinefavor:grimoire.description=Spell talisman container. Can be used to store and use large quantity of spell talismans.
+item.divinefavor:spell_bow.description=Arrow talisman container. Can be used to store and use large quantity of arrow talismans.
+item.divinefavor:ritual_pouch.description=Item used for spiritual trade at spirit altars. Right click to open and put inside stuff that you want to trade.
+item.divinefavor:contract_binder.description=Stores contracts inside. Can be placed into soulbound lecterns.
+## CONSUMABLES
+item.divinefavor:milky_apple.description=Removes all curses when consumed
+item.divinefavor:stone_ball.description=Just a small stone, you can throw it
+## CONTRACTS
+item.divinefavor:contract_capacity_minor.description=When this contract is placed in soulbound lectern your maximum favor limit will be slightly increased for a spirit that owns that lectern.
+item.divinefavor:contract_capacity_major.description=When this contract is placed in soulbound lectern your maximum favor limit will be considerably increased for a spirit that owns that lectern.
+item.divinefavor:contract_regen_minor.description=When this contract is placed in soulbound lectern you will be granted some free favor from spirit that owns that lectern.
+item.divinefavor:contract_regen_major.description=When this contract is placed in soulbound lectern you will be granted a lot of free favor from spirit that owns that lectern.
+item.divinefavor:contract_inform.description=When this contract is placed in soulbound lectern you will be notified when spirit that owns that lectern becomes active or inactive.
+item.divinefavor:contract_creative.description=Grants a lot of perks. Creative only item.
+## CALLING STONES
+item.divinefavor:calling_stone_arbow.description=Mystical stone gifted by spirit Arbow. Required to finish spiritual altar.
+item.divinefavor:calling_stone_blizrabi.description=Mystical stone gifted by spirit Blizrabi. Required to finish spiritual altar.
+item.divinefavor:calling_stone_endererer.description=Mystical stone gifted by spirit Endererer. Required to finish spiritual altar.
+item.divinefavor:calling_stone_loon.description=Mystical stone gifted by spirit Loon. Required to finish spiritual altar.
+item.divinefavor:calling_stone_neblaze.description=Mystical stone gifted by spirit Neblaze. Required to finish spiritual altar.
+item.divinefavor:calling_stone_redwind.description=Mystical stone gifted by spirit Redwind. Required to finish spiritual altar.
+item.divinefavor:calling_stone_romol.description=Mystical stone gifted by spirit Romol. Required to finish spiritual altar.
+item.divinefavor:calling_stone_squarefury.description=Mystical stone gifted by spirit Squarefury. Required to finish spiritual altar.
+item.divinefavor:calling_stone_timber.description=Mystical stone gifted by spirit Timber. Required to finish spiritual altar.
+## WISHING STONES
+item.divinefavor:wishing_stone_minor_arbow.description=Grants favor of Arbow when consumed.
+item.divinefavor:wishing_stone_minor_blizrabi.description=Grants favor of Blizrabi when consumed.
+item.divinefavor:wishing_stone_minor_endererer.description=Grants favor of Endererer when consumed.
+item.divinefavor:wishing_stone_minor_loon.description=Grants favor of Loon when consumed.
+item.divinefavor:wishing_stone_minor_neblaze.description=Grants favor of Neblaze when consumed.
+item.divinefavor:wishing_stone_minor_redwind.description=Grants favor of Redwind when consumed.
+item.divinefavor:wishing_stone_minor_romol.description=Grants favor of Romol when consumed.
+item.divinefavor:wishing_stone_minor_squarefury.description=Grants favor of Squarefury when consumed.
+item.divinefavor:wishing_stone_minor_timber.description=Grants favor of Timber wishing when consumed.
+## SOUL SHARDS
+item.divinefavor:soul_shard_end.description=Material used for crafting and creation of soulbound lecterns. Can be extracted from creatures of end with awakened bone dagger.
+item.divinefavor:soul_shard_mind.description=Material used for crafting and creation of soulbound lecterns. Can be extracted from villager with awakened bone dagger.
+item.divinefavor:soul_shard_nether.description=Material used for crafting and creation of soulbound lecterns. Can be extracted from creatures of nether with awakened bone dagger.
+item.divinefavor:soul_shard_peace.description=Material used for crafting and creation of soulbound lecterns. Can be extracted from neutral creatures with awakened bone dagger.
+item.divinefavor:soul_shard_will.description=Material used for crafting and creation of soulbound lecterns. Can be extracted from players with awakened bone dagger.
+item.divinefavor:soul_shard_undeath.description=Material used for crafting and creation of soulbound lecterns. Can be extracted from undead creatures with awakened bone dagger.
+item.divinefavor:soul_shard_water.description=Material used for crafting and creation of soulbound lecterns. Can be extracted from aquatic creatures with awakened bone dagger.
+item.divinefavor:soul_shard_wild.description=Material used for crafting and creation of soulbound lecterns. Can be extracted from regular hostile mobs with awakened bone dagger.
+item.divinefavor:soul_shard_wither.description=Material used for crafting and creation of soulbound lecterns. Can be extracted from withered mobs with awakened bone dagger.
+## BATHING BLENDS
+item.divinefavor:blend_charcoal.description=Blend used for contacting spirit Neblaze
+item.divinefavor:blend_ender_pearl.description=Blend used for contacting spirit Endererer
+item.divinefavor:blend_feathers.description=Blend used for contacting spirit Arbow
+item.divinefavor:blend_fleshy.description=Blend used for contacting spirit Squarefury
+item.divinefavor:blend_flint.description=Blend used for contacting spirit Romol
+item.divinefavor:blend_lapis.description=Blend used for contacting spirit Loon
+item.divinefavor:blend_redstone.description=Blend used for contacting spirit Redwind
+item.divinefavor:blend_snow.description=Blend used for contacting spirit Blizrabi
+item.divinefavor:blend_wood.description=Blend used for contacting spirit Timber
 ## SPELL TALISMANS
 item.divinefavor:talisman_armor_of_pacifist.description=Grants user armor of pacifist. Player will be protected from most damage types, but in turn will not be able to attack anyone.
 item.divinefavor:talisman_blade_of_grass.description=Will damage and slow down all enemies standing on grass anound you. Grass will be destroyed.
@@ -312,7 +393,6 @@ item.divinefavor:talisman_wild_sprint.description=Will briefly immobilize caster
 item.divinefavor:talisman_wind_step.description=Will give player short boost in direction where he is looking.
 item.divinefavor:talisman_winter_breath.description=Damages enemies in front of you and pushes them back slightly.
 item.divinefavor:talisman_wooden_punch.description=Will grant player 'Wooden_punch' effect. While effect active player will be able to break wood instantly with his bare hands. Effect is permanent. To remove it just cast spell once more. Each broken stone costs some favor.
-
 ## ARROW TALISMANS
 item.divinefavor:arrow_talisman_anti_gravity_arrow.description=Arrow shot with this talisman will fall upwards instead on down. Not very practical but can be used for some trick shots.
 item.divinefavor:arrow_talisman_armor_corrosion.description=Arrow shot with this talisman will be cursed with armor corrosion. This curse will only work on players. Armor of afflicted players will gradually decay over time. Not all armor will be affected at once. Random pieces of armor will be chosen on curse application. To remove curse player will have to remove affected armor pieces.
@@ -339,4 +419,5 @@ item.divinefavor:contract.effects=Contract effects:
 item.divinefavor:contract.regen=Will regenerate %1$d favor when related spirit becomes active
 item.divinefavor:contract.min=Will add %1$d to your minimum favor value
 item.divinefavor:contract.max=Will increase your favor limit by %1$s
+item.divinefavor:contract.informActivity=Will inform you when spirit becomes active
 item.divinefavor:contract.no_effects=This contract has no effects

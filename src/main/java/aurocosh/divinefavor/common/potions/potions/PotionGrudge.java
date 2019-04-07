@@ -4,7 +4,7 @@ import aurocosh.divinefavor.DivineFavor;
 import aurocosh.divinefavor.common.config.common.ConfigSpells;
 import aurocosh.divinefavor.common.custom_data.player.PlayerData;
 import aurocosh.divinefavor.common.custom_data.player.data.spell.grudge.GrudgeData;
-import aurocosh.divinefavor.common.network.message.client.MessageSyncGrudge;
+import aurocosh.divinefavor.common.network.message.client.syncing.MessageSyncGrudge;
 import aurocosh.divinefavor.common.potions.base.potion.ModPotionToggle;
 import aurocosh.divinefavor.common.potions.common.ModPotions;
 import net.minecraft.client.Minecraft;

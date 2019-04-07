@@ -1,4 +1,4 @@
-package aurocosh.divinefavor.common.network.message.client;
+package aurocosh.divinefavor.common.network.message.client.syncing;
 
 import aurocosh.divinefavor.DivineFavor;
 import aurocosh.divinefavor.common.custom_data.living.LivingData;

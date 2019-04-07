@@ -3,7 +3,7 @@ package aurocosh.divinefavor.common.item.talismans.spell;
 import aurocosh.divinefavor.common.item.talismans.spell.base.ItemSpellTalisman;
 import aurocosh.divinefavor.common.item.talismans.spell.base.SpellOptions;
 import aurocosh.divinefavor.common.item.talismans.spell.base.TalismanContext;
-import aurocosh.divinefavor.common.network.message.client.MessageSyncFireImmunity;
+import aurocosh.divinefavor.common.network.message.client.syncing.MessageSyncFireImmunity;
 import aurocosh.divinefavor.common.potions.base.effect.ModEffectToggle;
 import aurocosh.divinefavor.common.potions.common.ModPotions;
 import aurocosh.divinefavor.common.spirit.base.ModSpirit;

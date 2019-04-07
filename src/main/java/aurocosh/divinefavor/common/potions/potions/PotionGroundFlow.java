@@ -1,7 +1,7 @@
 package aurocosh.divinefavor.common.potions.potions;
 
 import aurocosh.divinefavor.common.config.common.ConfigSpells;
-import aurocosh.divinefavor.common.network.message.client.MessageSyncFlyingCapability;
+import aurocosh.divinefavor.common.network.message.client.syncing.MessageSyncFlyingCapability;
 import aurocosh.divinefavor.common.potions.base.potion.ModPotionToggle;
 import aurocosh.divinefavor.common.potions.common.ModPotions;
 import net.minecraft.entity.EntityLivingBase;

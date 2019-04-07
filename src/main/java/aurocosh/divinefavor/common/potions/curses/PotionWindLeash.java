@@ -3,7 +3,7 @@ package aurocosh.divinefavor.common.potions.curses;
 import aurocosh.divinefavor.common.config.common.ConfigArrow;
 import aurocosh.divinefavor.common.custom_data.living.LivingData;
 import aurocosh.divinefavor.common.custom_data.living.data.wind_leash.WindLeashData;
-import aurocosh.divinefavor.common.network.message.client.MessageSyncWindLeash;
+import aurocosh.divinefavor.common.network.message.client.syncing.MessageSyncWindLeash;
 import aurocosh.divinefavor.common.potions.base.potion.ModPotion;
 import aurocosh.divinefavor.common.potions.common.ModCurses;
 import aurocosh.divinefavor.common.util.UtilRandom;

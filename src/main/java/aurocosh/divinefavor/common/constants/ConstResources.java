@@ -10,7 +10,7 @@ public class ConstResources {
     public static final String PREFIX_PROJECTILES = PREFIX_MOD + "textures/entity/projectiles/";
     public static final String PREFIX_MINIONS = PREFIX_MOD + "textures/entity/minions/";
     public static final String PREFIX_MOBS = PREFIX_MOD + "textures/entity/mobs/";
-    
+
     public static final String PREFIX_SPIRIT_ICONS = PREFIX_MOD + "textures/items/calling_stones/";
     public static final String PREFIX_SPIRIT_SYMBOLS = PREFIX_MOD + "textures/items/symbols/";
 

@@ -4,9 +4,8 @@
   "category": "contracts",
   "pages": [
     {
-      "type": "spotlight",
-      "item": "divinefavor:contract_regen_minor",
-      "text": "Minor regeneration contract. Will provide some favor regeneration."
+      "type": "spotlight_description",
+      "item": "divinefavor:contract_regen_minor"
     },
     {
       "type": "contract_stats",

@@ -4,7 +4,7 @@ import aurocosh.divinefavor.DivineFavor;
 import aurocosh.divinefavor.common.custom_data.player.PlayerData;
 import aurocosh.divinefavor.common.custom_data.player.data.favor.SpiritData;
 import aurocosh.divinefavor.common.item.base.ModItem;
-import aurocosh.divinefavor.common.network.message.client.spell_uses.MessageSyncFavor;
+import aurocosh.divinefavor.common.network.message.client.spirit_data.MessageSyncFavor;
 import aurocosh.divinefavor.common.spirit.base.ModSpirit;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumRarity;

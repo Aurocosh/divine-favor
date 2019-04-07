@@ -1,21 +1,21 @@
-package aurocosh.divinefavor.common.network.message.client;
+package aurocosh.divinefavor.common.network.message.client.syncing;
 
 import aurocosh.divinefavor.DivineFavor;
 import aurocosh.divinefavor.common.custom_data.player.PlayerData;
-import aurocosh.divinefavor.common.custom_data.player.data.spell.grudge.GrudgeData;
+import aurocosh.divinefavor.common.custom_data.player.data.spell.focused_fury.FocusedFuryData;
 import aurocosh.divinefavor.common.network.base.NetworkWrappedClientMessage;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class MessageSyncGrudge extends NetworkWrappedClientMessage {
+public class MessageSyncFury extends NetworkWrappedClientMessage {
     public String mobTypeId;
 
-    public MessageSyncGrudge() {
+    public MessageSyncFury() {
     }
 
-    public MessageSyncGrudge(ResourceLocation mobTypeId) {
+    public MessageSyncFury(ResourceLocation mobTypeId) {
         this.mobTypeId = mobTypeId.toString();
     }
 
@@ -23,7 +23,7 @@ public class MessageSyncGrudge extends NetworkWrappedClientMessage {
     @SideOnly(Side.CLIENT)
     protected void handleSafe() {
         EntityPlayer player = DivineFavor.proxy.getClientPlayer();
-        GrudgeData grudgeData = PlayerData.get(player).getGrudgeData();
-        grudgeData.setMobTypeId(new ResourceLocation(mobTypeId));
+        FocusedFuryData furyData = PlayerData.get(player).getFocusedFuryData();
+        furyData.setMobTypeId(new ResourceLocation(mobTypeId));
     }
 }

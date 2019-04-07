@@ -3,6 +3,7 @@ package aurocosh.divinefavor.common.integrations.jei;
 import aurocosh.divinefavor.common.block.common.ModBlocks;
 import aurocosh.divinefavor.common.core.ResourceNamer;
 import aurocosh.divinefavor.common.item.base.ModItem;
+import aurocosh.divinefavor.common.item.base.ModItemBlock;
 import aurocosh.divinefavor.common.receipes.ImmaterialMediumRecipe;
 import aurocosh.divinefavor.common.receipes.ModRecipes;
 import aurocosh.divinefavor.common.registry.ModRegistries;
@@ -43,10 +44,9 @@ public class DivineFavorJEIPlugin implements IModPlugin {
     }
 
     private void registerDescription(IModRegistry registry) {
-        for (final ModItem item : ModRegistries.items.getValues()) {
-            String descriptionKey = item.getDescriptionKey();
-//            registry.addIngredientInfo(new ItemStack(item, 1, OreDictionary.WILDCARD_VALUE), ItemStack.class, descriptionKey);
-            registry.addIngredientInfo(new ItemStack(item, 1, OreDictionary.WILDCARD_VALUE), VanillaTypes.ITEM, descriptionKey);
-        }
+        for (final ModItem item : ModRegistries.items.getValues())
+            registry.addIngredientInfo(new ItemStack(item, 1, OreDictionary.WILDCARD_VALUE), VanillaTypes.ITEM, item.getDescriptionKey());
+        for (final ModItemBlock itemBlock : ModRegistries.itemBlocks.getValues())
+            registry.addIngredientInfo(new ItemStack(itemBlock, 1, OreDictionary.WILDCARD_VALUE), VanillaTypes.ITEM, itemBlock.getDescriptionKey());
     }
 }
