@@ -7,6 +7,7 @@ import aurocosh.divinefavor.common.custom_data.player.data.aura.distorted.Distor
 import aurocosh.divinefavor.common.custom_data.player.data.curse.corrosion.ArmorCorrosionDataSerializer;
 import aurocosh.divinefavor.common.custom_data.player.data.curse.crawling_mist.CrawlingMistDataSerializer;
 import aurocosh.divinefavor.common.custom_data.player.data.aura.energetic.EnergeticAuraDataSerializer;
+import aurocosh.divinefavor.common.custom_data.player.data.curse.evil_eye.EvilEyeDataSerializer;
 import aurocosh.divinefavor.common.custom_data.player.data.presence.energetic.EnergeticPresenceDataSerializer;
 import aurocosh.divinefavor.common.custom_data.player.data.presence.manipulative.ManipulativePresenceDataSerializer;
 import aurocosh.divinefavor.common.custom_data.player.data.spell.escape_plan.EscapePlanDataSerializer;
@@ -34,6 +35,7 @@ public class PlayerDataStorage implements Capability.IStorage<IPlayerDataHandler
     private static final ArmorCorrosionDataSerializer ARMOR_CORROSION_DATA_SERIALIZER = new ArmorCorrosionDataSerializer();
     private static final CrawlingMistDataSerializer CRAWLING_MIST_DATA_SERIALIZER = new CrawlingMistDataSerializer();
     private static final EscapePlanDataSerializer ESCAPE_PLAN_DATA_SERIALIZER = new EscapePlanDataSerializer();
+    private static final EvilEyeDataSerializer EVIL_EYE_DATA_SERIALIZER = new EvilEyeDataSerializer();
     private static final FavorDataSerializer FAVOR_DATA_SERIALIZER = new FavorDataSerializer();
     private static final FocusedFuryDataSerializer FOCUSED_FURY_DATA_SERIALIZER = new FocusedFuryDataSerializer();
     private static final GillsDataSerializer GILLS_DATA_SERIALIZER = new GillsDataSerializer();
@@ -64,6 +66,7 @@ public class PlayerDataStorage implements Capability.IStorage<IPlayerDataHandler
         ARMOR_CORROSION_DATA_SERIALIZER.serialize(tag, instance.getArmorCorrosionData());
         CRAWLING_MIST_DATA_SERIALIZER.serialize(tag, instance.getCrawlingMistData());
         ESCAPE_PLAN_DATA_SERIALIZER.serialize(tag, instance.getEscapePlanData());
+        EVIL_EYE_DATA_SERIALIZER.serialize(tag, instance.getEvilEyeData());
         FAVOR_DATA_SERIALIZER.serialize(tag, instance.getFavorData());
         FOCUSED_FURY_DATA_SERIALIZER.serialize(tag, instance.getFocusedFuryData());
         GILLS_DATA_SERIALIZER.serialize(tag, instance.getGillsData());
@@ -96,6 +99,7 @@ public class PlayerDataStorage implements Capability.IStorage<IPlayerDataHandler
         ARMOR_CORROSION_DATA_SERIALIZER.deserialize(tag, instance.getArmorCorrosionData());
         CRAWLING_MIST_DATA_SERIALIZER.deserialize(tag, instance.getCrawlingMistData());
         ESCAPE_PLAN_DATA_SERIALIZER.deserialize(tag, instance.getEscapePlanData());
+        EVIL_EYE_DATA_SERIALIZER.deserialize(tag, instance.getEvilEyeData());
         FAVOR_DATA_SERIALIZER.deserialize(tag, instance.getFavorData());
         FOCUSED_FURY_DATA_SERIALIZER.deserialize(tag, instance.getFocusedFuryData());
         GILLS_DATA_SERIALIZER.deserialize(tag, instance.getGillsData());

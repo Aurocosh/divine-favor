@@ -8,6 +8,7 @@ import aurocosh.divinefavor.common.custom_data.player.data.curse.corrosion.Armor
 import aurocosh.divinefavor.common.custom_data.player.data.curse.crawling_mist.CrawlingMistData;
 import aurocosh.divinefavor.common.custom_data.player.data.aura.distorted.DistortedAuraData;
 import aurocosh.divinefavor.common.custom_data.player.data.aura.energetic.EnergeticAuraData;
+import aurocosh.divinefavor.common.custom_data.player.data.curse.evil_eye.EvilEyeData;
 import aurocosh.divinefavor.common.custom_data.player.data.presence.energetic.EnergeticPresenceData;
 import aurocosh.divinefavor.common.custom_data.player.data.presence.industrious.IndustriousPresenceData;
 import aurocosh.divinefavor.common.custom_data.player.data.presence.manipulative.ManipulativePresenceData;
@@ -33,6 +34,7 @@ public class DefaultPlayerDataHandler implements IPlayerDataHandler {
     private final ArmorCorrosionData armorCorrosionData;
     private final CrawlingMistData crawlingMistData;
     private final EscapePlanData escapePlanData;
+    private final EvilEyeData evilEyeData;
     private final FavorData favorData;
     private final FocusedFuryData focusedFuryData;
     private final GillsData gillsData;
@@ -65,6 +67,7 @@ public class DefaultPlayerDataHandler implements IPlayerDataHandler {
         armorCorrosionData = new ArmorCorrosionData();
         crawlingMistData = new CrawlingMistData();
         escapePlanData = new EscapePlanData();
+        evilEyeData = new EvilEyeData();
         favorData = new FavorData();
         focusedFuryData = new FocusedFuryData();
         gillsData = new GillsData();
@@ -106,6 +109,11 @@ public class DefaultPlayerDataHandler implements IPlayerDataHandler {
     @Override
     public EscapePlanData getEscapePlanData() {
         return escapePlanData;
+    }
+
+    @Override
+    public EvilEyeData getEvilEyeData() {
+        return evilEyeData;
     }
 
     @Override

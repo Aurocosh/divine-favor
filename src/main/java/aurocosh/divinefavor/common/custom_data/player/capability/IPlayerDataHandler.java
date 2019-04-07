@@ -8,6 +8,7 @@ import aurocosh.divinefavor.common.custom_data.player.data.curse.corrosion.Armor
 import aurocosh.divinefavor.common.custom_data.player.data.curse.crawling_mist.CrawlingMistData;
 import aurocosh.divinefavor.common.custom_data.player.data.aura.distorted.DistortedAuraData;
 import aurocosh.divinefavor.common.custom_data.player.data.aura.energetic.EnergeticAuraData;
+import aurocosh.divinefavor.common.custom_data.player.data.curse.evil_eye.EvilEyeData;
 import aurocosh.divinefavor.common.custom_data.player.data.presence.energetic.EnergeticPresenceData;
 import aurocosh.divinefavor.common.custom_data.player.data.presence.industrious.IndustriousPresenceData;
 import aurocosh.divinefavor.common.custom_data.player.data.presence.manipulative.ManipulativePresenceData;
@@ -32,6 +33,7 @@ public interface IPlayerDataHandler {
     ArmorCorrosionData getArmorCorrosionData();
     CrawlingMistData getCrawlingMistData();
     EscapePlanData getEscapePlanData();
+    EvilEyeData getEvilEyeData();
     FavorData getFavorData();
     FocusedFuryData getFocusedFuryData();
     GillsData getGillsData();

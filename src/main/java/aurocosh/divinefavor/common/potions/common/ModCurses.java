@@ -8,6 +8,7 @@ public class ModCurses {
     public static ModPotion armor_corrosion;
     public static ModPotion crawling_mist;
     public static ModPotion cripple;
+    public static ModPotion evil_eye;
     public static ModPotion fiery_mark;
     public static ModPotion fill_lungs;
     public static ModPotion hollow_leg;
@@ -24,6 +25,7 @@ public class ModCurses {
         armor_corrosion = new PotionArmorCorrosion();
         crawling_mist = new PotionCrawlingMist();
         cripple = new PotionCripple();
+        evil_eye = new PotionEvilEye();
         fiery_mark = new PotionFieryMark();
         fill_lungs = new PotionFillLungs();
         hollow_leg = new PotionHollowLeg();

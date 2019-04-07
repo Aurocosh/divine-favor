@@ -19,6 +19,7 @@ public class MessageRegister {
         NetworkHandler.register(MessageSyncSelectedFavors.class, Side.CLIENT);
 
         NetworkHandler.register(MessagePetrificationReset.class, Side.CLIENT);
+        NetworkHandler.register(MessageSyncEvilEye.class, Side.CLIENT);
         NetworkHandler.register(MessageSyncFireImmunity.class, Side.CLIENT);
         NetworkHandler.register(MessageSyncFlyingCapability.class, Side.CLIENT);
         NetworkHandler.register(MessageSyncFury.class, Side.CLIENT);
