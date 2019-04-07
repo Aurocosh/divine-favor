@@ -28,7 +28,8 @@ tile.divinefavor:diviner.name=Diviner
 tile.divinefavor:ender_pumpkin.name=Ender pumpkin
 tile.divinefavor:fast_furnace.name=Fast furnace
 divinefavor:no_grudge_assigned=No grudge
-divinefavor:divinefavor:no_fury_assigned=No focus
+divinefavor:no_fury_assigned=No focus
+divinefavor:spirit_offering=If you need to trade for something and cant or don't want to wait while spirit becomes active, you can make an offering at altar. Spirit will briefly visit altar to take offering and trade with you. To attract spirit you will have to offer at least %1$d items.
 
 # ITEM NAMES
 ## GEMS

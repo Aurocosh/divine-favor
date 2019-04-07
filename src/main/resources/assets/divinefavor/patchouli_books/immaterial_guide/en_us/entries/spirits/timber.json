@@ -27,6 +27,10 @@
       "type": "multiblock",
       "multiblock_id": "divinefavor:patchouli.altar_timber",
       "text": "Altar of timber. Put invite in medium to finish altar."
+    },
+    {
+      "type": "spirit_offering",
+      "spirit": "divinefavor:spirit.timber"
     }
   ]
 }

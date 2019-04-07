@@ -27,6 +27,10 @@
       "type": "multiblock",
       "multiblock_id": "divinefavor:patchouli.altar_redwind",
       "text": "Altar of redwind. Put invite in medium to finish altar."
+    },
+    {
+      "type": "spirit_offering",
+      "spirit": "divinefavor:spirit.redwind"
     }
   ]
 }

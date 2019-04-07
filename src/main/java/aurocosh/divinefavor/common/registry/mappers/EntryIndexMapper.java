@@ -19,6 +19,10 @@ public class EntryIndexMapper<T extends IForgeRegistryEntry & IIndexedEntry> {
         return values.get(id);
     }
 
+    public T get(ResourceLocation id) {
+        return names.get(id);
+    }
+
     public List<T> getValues() {
         return Collections.unmodifiableList(values);
     }

@@ -32,6 +32,10 @@
       "type": "multiblock",
       "multiblock_id": "divinefavor:patchouli.altar_endererer",
       "text": "Altar of endererer. Put invite in medium to finish altar."
+    },
+    {
+      "type": "spirit_offering",
+      "spirit": "divinefavor:spirit.endererer"
     }
   ]
 }
