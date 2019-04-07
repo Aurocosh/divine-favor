@@ -103,16 +103,16 @@ item.divinefavor:talisman_target.name=Target talisman
 ## NEBLAZE TALISMANS
 item.divinefavor:talisman_combustion.name=Combustion talisman
 item.divinefavor:talisman_distant_spark.name=Distant spark talisman
-item.divinefavor:evil_eye.name=Evil eye talisman
-item.divinefavor:heat_wave.name=Heat wave talisman
-item.divinefavor:hellisphere.name=Hellisphere talisman
+item.divinefavor:talisman_evil_eye.name=Evil eye talisman
+item.divinefavor:talisman_heat_wave.name=Heat wave talisman
+item.divinefavor:talisman_hellisphere.name=Hellisphere talisman
 item.divinefavor:talisman_ignition.name=Ignition
-item.divinefavor:infernal_touch.name=Infernal touch
-item.divinefavor:molten_skin.name=Molten skin
-item.divinefavor:nether_surge.name=Nether surge
-item.divinefavor:piercing_inferno.name=Piercing inferno
-item.divinefavor:searing_pulse.name=Searing pulse
-item.divinefavor:small_fireball_throw.name=Small fireball throw
+item.divinefavor:talisman_infernal_touch.name=Infernal touch
+item.divinefavor:talisman_molten_skin.name=Molten skin
+item.divinefavor:talisman_nether_surge.name=Nether surge
+item.divinefavor:talisman_piercing_inferno.name=Piercing inferno
+item.divinefavor:talisman_searing_pulse.name=Searing pulse
+item.divinefavor:talisman_small_fireball_throw.name=Small fireball throw
 
 ## REDWIND TALISMANS
 item.divinefavor:talisman_fall_negation.name=Fall negation talisman
@@ -172,7 +172,7 @@ item.divinefavor:arrow_talisman_roots.name=Roots talisman
 item.divinefavor:arrow_talisman_skyfall.name=Skyfall talisman
 item.divinefavor:arrow_talisman_suffocating_fumes.name=Suffocating fumes talisman
 item.divinefavor:arrow_talisman_wind_leash.name=Wind leash talisman
-item.divinefavor:arrow_talisman_yummy_smell.name=Yummy_smell talisman
+item.divinefavor:arrow_talisman_yummy_smell.name=Yummy smell talisman
 
 # CALLING STONES
 item.divinefavor:calling_stone_arbow.name=Arbow's invite
