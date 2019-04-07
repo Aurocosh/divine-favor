@@ -61,6 +61,10 @@ public class SpiritData {
         refreshContracts();
     }
 
+    public boolean isInform(int spiritId) {
+        return spiritStatuses[spiritId].isInformActivity();
+    }
+
     public int getFavor(int spiritId) {
         return favorValues[spiritId];
     }

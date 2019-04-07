@@ -1,4 +1,4 @@
-package aurocosh.divinefavor.common.network.message.client.spell_uses;
+package aurocosh.divinefavor.common.network.message.client.spirit_data;
 
 import aurocosh.divinefavor.DivineFavor;
 import aurocosh.divinefavor.common.custom_data.player.PlayerData;

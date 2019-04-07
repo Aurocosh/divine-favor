@@ -9,7 +9,9 @@ import aurocosh.divinefavor.common.custom_data.player.data.favor.SpiritData;
 import aurocosh.divinefavor.common.global.dayClock.DayClock;
 import aurocosh.divinefavor.common.lib.TimePeriod;
 import aurocosh.divinefavor.common.lib.interfaces.IIndexedEntry;
-import aurocosh.divinefavor.common.network.message.client.spell_uses.MessageSyncFavor;
+import aurocosh.divinefavor.common.network.message.client.activity.MessageSpiritBecameActive;
+import aurocosh.divinefavor.common.network.message.client.activity.MessageSpiritBecameInactive;
+import aurocosh.divinefavor.common.network.message.client.spirit_data.MessageSyncFavor;
 import aurocosh.divinefavor.common.registry.ModRegistries;
 import aurocosh.divinefavor.common.registry.mappers.ModMappers;
 import aurocosh.divinefavor.common.util.UtilDayTime;
@@ -17,7 +19,6 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.Item;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.text.TextComponentString;
 import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.registries.IForgeRegistryEntry;
 
@@ -122,9 +123,11 @@ public class ModSpirit extends IForgeRegistryEntry.Impl<ModSpirit> implements II
     }
 
     private void informActivity(List<EntityPlayerMP> playerList) {
-        String message = "Spirit " + name + " became active";
-        for (EntityPlayer player : playerList)
-            player.sendMessage(new TextComponentString(message));
+        for (EntityPlayer player : playerList) {
+            SpiritData spiritData = PlayerData.get(player).getSpiritData();
+            if (spiritData.isInform(id))
+                new MessageSpiritBecameActive(id).sendTo(player);
+        }
     }
 
     private void becameInactive() {
@@ -137,14 +140,20 @@ public class ModSpirit extends IForgeRegistryEntry.Impl<ModSpirit> implements II
     }
 
     private void informInactivity(List<EntityPlayerMP> playerList) {
-        String message = "Spirit " + name + " became inactive";
-        for (EntityPlayer player : playerList)
-            player.sendMessage(new TextComponentString(message));
+        for (EntityPlayer player : playerList) {
+            SpiritData spiritData = PlayerData.get(player).getSpiritData();
+            if (spiritData.isInform(id))
+                new MessageSpiritBecameInactive(id).sendTo(player);
+        }
     }
 
     private void registerActivityPeriod() {
         DayClock.addAlarm(activityPeriod.getStart(), this::becameActive, true);
         DayClock.addAlarm(activityPeriod.getStop(), this::becameInactive, true);
+    }
+
+    public String getNameTranslationKey() {
+        return getRegistryName().toString() + ".name";
     }
 
     @Override

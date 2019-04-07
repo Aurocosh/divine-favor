@@ -9,10 +9,13 @@ public class Contract {
     public int minimum;
     @Config.Name("Favor maximum")
     public int maximum;
+    @Config.Name("Inform activity")
+    public boolean informActivity;
 
-    public Contract(int regen, int minimum, int maximum) {
+    public Contract(int regen, int minimum, int maximum, boolean informActivity) {
         this.regen = regen;
         this.minimum = minimum;
         this.maximum = maximum;
+        this.informActivity = informActivity;
     }
 }

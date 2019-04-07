@@ -1,9 +1,9 @@
 package aurocosh.divinefavor.common.custom_data.player;
 
 import aurocosh.divinefavor.common.custom_data.player.capability.IPlayerDataHandler;
-import aurocosh.divinefavor.common.network.message.client.MessageSyncFury;
-import aurocosh.divinefavor.common.network.message.client.MessageSyncGrudge;
-import aurocosh.divinefavor.common.network.message.client.spell_uses.MessageSyncAllSpiritData;
+import aurocosh.divinefavor.common.network.message.client.syncing.MessageSyncFury;
+import aurocosh.divinefavor.common.network.message.client.syncing.MessageSyncGrudge;
+import aurocosh.divinefavor.common.network.message.client.spirit_data.MessageSyncAllSpiritData;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;

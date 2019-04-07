@@ -1,11 +1,13 @@
 package aurocosh.divinefavor.common.network.common;
 
-import aurocosh.divinefavor.common.network.message.client.*;
+import aurocosh.divinefavor.common.network.message.client.activity.MessageSpiritBecameActive;
+import aurocosh.divinefavor.common.network.message.client.activity.MessageSpiritBecameInactive;
 import aurocosh.divinefavor.common.network.message.client.particles.MessageParticlesHeatWave;
 import aurocosh.divinefavor.common.network.message.client.particles.MessageParticlesWinterBreath;
-import aurocosh.divinefavor.common.network.message.client.spell_uses.MessageSyncAllSpiritData;
-import aurocosh.divinefavor.common.network.message.client.spell_uses.MessageSyncContracts;
-import aurocosh.divinefavor.common.network.message.client.spell_uses.MessageSyncFavor;
+import aurocosh.divinefavor.common.network.message.client.spirit_data.MessageSyncAllSpiritData;
+import aurocosh.divinefavor.common.network.message.client.spirit_data.MessageSyncContracts;
+import aurocosh.divinefavor.common.network.message.client.spirit_data.MessageSyncFavor;
+import aurocosh.divinefavor.common.network.message.client.syncing.*;
 import aurocosh.divinefavor.common.network.message.sever.MessageSyncTalismanContainerSlot;
 import aurocosh.divinefavor.common.network.message.sever.petrification.MessagePetrificationCure;
 import aurocosh.divinefavor.common.network.message.sever.petrification.MessagePetrificationDamage;
@@ -14,6 +16,7 @@ import net.minecraftforge.fml.relauncher.Side;
 
 public class MessageRegister {
 	public static void init() {
+	    // Client messages
         NetworkHandler.register(MessageParticlesHeatWave.class, Side.CLIENT);
         NetworkHandler.register(MessageParticlesWinterBreath.class, Side.CLIENT);
 
@@ -31,6 +34,10 @@ public class MessageRegister {
         NetworkHandler.register(MessageSyncPower.class, Side.CLIENT);
         NetworkHandler.register(MessageSyncWindLeash.class, Side.CLIENT);
 
+        NetworkHandler.register(MessageSpiritBecameActive.class, Side.CLIENT);
+        NetworkHandler.register(MessageSpiritBecameInactive.class, Side.CLIENT);
+
+        // Server messages
         NetworkHandler.register(MessagePetrificationCure.class, Side.SERVER);
         NetworkHandler.register(MessagePetrificationDamage.class, Side.SERVER);
         NetworkHandler.register(MessageSyncTalismanContainerSlot.class, Side.SERVER);

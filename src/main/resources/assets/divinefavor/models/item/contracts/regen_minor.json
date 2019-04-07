@@ -2,6 +2,6 @@
     "parent": "item/generated",
     "textures": {
         "layer1": "divinefavor:items/contracts/regen_minor",
-        "layer0": "divinefavor:items/contracts/base/green"
+        "layer0": "divinefavor:items/contracts/base/blue"
     }
 }
