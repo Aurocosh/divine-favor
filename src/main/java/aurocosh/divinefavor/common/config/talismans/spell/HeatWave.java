@@ -15,4 +15,6 @@ public class HeatWave {
     public int chanceToSetEnemyOnFire = 80;
     @Config.Name("Chance to set ground on fire")
     public int chanceToSetGroundOnFire = 20;
+    @Config.Name("Particle count")
+    public int particleCount = 150;
 }

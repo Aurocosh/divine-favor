@@ -25,6 +25,10 @@ public class UtilRandom {
         return min + (max - min) * random.nextDouble();
     }
 
+    public static float nextFloat(float min, float max) {
+        return min + (max - min) * random.nextFloat();
+    }
+
     public static int nextIntExclusive(int min, int max) {
         return random.nextInt(max - min) + min;
     }

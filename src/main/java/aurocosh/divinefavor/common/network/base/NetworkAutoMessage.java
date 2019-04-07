@@ -8,6 +8,7 @@ import net.minecraftforge.fml.common.network.ByteBufUtils;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
+import net.minecraft.util.math.Vec3d;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
@@ -32,6 +33,7 @@ public abstract class NetworkAutoMessage<REQ extends NetworkAutoMessage> impleme
         writers.put(NBTTagCompound.class, (BufWriter<NBTTagCompound>) ByteBufUtils::writeTag);
         writers.put(ItemStack.class, (BufWriter<ItemStack>) ByteBufUtils::writeItemStack);
         writers.put(BlockPos.class, (BufWriter<BlockPos>) (ByteBuf buf, BlockPos pos) -> buf.writeLong(pos.toLong()));
+        writers.put(Vec3d.class, (BufWriter<Vec3d>) NetworkAutoMessage::writeVec3d);
     }
 
     static {
@@ -47,6 +49,7 @@ public abstract class NetworkAutoMessage<REQ extends NetworkAutoMessage> impleme
         readers.put(NBTTagCompound.class, (BufReader<NBTTagCompound>) ByteBufUtils::readTag);
         readers.put(ItemStack.class, (BufReader<ItemStack>) ByteBufUtils::readItemStack);
         readers.put(BlockPos.class, (BufReader<BlockPos>) (ByteBuf buf) -> BlockPos.fromLong(buf.readLong()));
+        readers.put(Vec3d.class, (BufReader<Vec3d>) NetworkAutoMessage::readVec3d);
     }
 
     private static Field[] getClassFields(Class<?> clazz) {
@@ -116,5 +119,18 @@ public abstract class NetworkAutoMessage<REQ extends NetworkAutoMessage> impleme
     @FunctionalInterface
     public interface BufReader<T> {
         T read(ByteBuf buf);
+    }
+
+    private static void writeVec3d(ByteBuf buf, Vec3d value) {
+        buf.writeDouble(value.x);
+        buf.writeDouble(value.y);
+        buf.writeDouble(value.z);
+    }
+
+    private static Vec3d readVec3d(ByteBuf buf) {
+        double x = buf.readDouble();
+        double y = buf.readDouble();
+        double z = buf.readDouble();
+        return new Vec3d(x, y, z);
     }
 }
