@@ -4,6 +4,11 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.math.AxisAlignedBB;
+import net.minecraft.util.math.Vec3d;
+import net.minecraft.world.World;
+
+import java.util.List;
 
 public class UtilPlayer {
     public static ItemStack findHeldStackHands(EntityPlayer player, UtilList.Predicate<ItemStack> predicate) {

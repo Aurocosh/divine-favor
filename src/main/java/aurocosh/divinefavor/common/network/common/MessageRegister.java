@@ -1,6 +1,8 @@
 package aurocosh.divinefavor.common.network.common;
 
 import aurocosh.divinefavor.common.network.message.client.*;
+import aurocosh.divinefavor.common.network.message.client.particles.MessageParticlesHeatWave;
+import aurocosh.divinefavor.common.network.message.client.particles.MessageParticlesWinterBreath;
 import aurocosh.divinefavor.common.network.message.client.spell_uses.MessageSyncAllFavorData;
 import aurocosh.divinefavor.common.network.message.client.spell_uses.MessageSyncContracts;
 import aurocosh.divinefavor.common.network.message.client.spell_uses.MessageSyncFavor;
@@ -13,6 +15,9 @@ import net.minecraftforge.fml.relauncher.Side;
 
 public class MessageRegister {
 	public static void init() {
+        NetworkHandler.register(MessageParticlesHeatWave.class, Side.CLIENT);
+        NetworkHandler.register(MessageParticlesWinterBreath.class, Side.CLIENT);
+
         NetworkHandler.register(MessageSyncAllFavorData.class, Side.CLIENT);
         NetworkHandler.register(MessageSyncContracts.class, Side.CLIENT);
         NetworkHandler.register(MessageSyncFavor.class, Side.CLIENT);

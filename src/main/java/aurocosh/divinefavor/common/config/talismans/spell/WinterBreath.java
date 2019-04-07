@@ -13,4 +13,6 @@ public class WinterBreath {
     public int damage = 1;
     @Config.Name("Knockback")
     public int knockback = 2;
+    @Config.Name("Particle count")
+    public int particleCount = 150;
 }
