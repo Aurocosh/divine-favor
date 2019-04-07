@@ -21,6 +21,7 @@ public class ConstResources {
     public static final String GUI_SELECT_COST_UNIT_BUTTON = PREFIX_GUI + "select_cost_unit_button.png";
     public static final String GUI_TALISMAN = PREFIX_GUI + "talisman.png";
     public static final String GUI_ENDER_PUMPKIN = PREFIX_GUI + "ender_pumpkin_blur.png";
+    public static final String GUI_EVIL_EYE_BLUR = PREFIX_GUI + "evil_eye_blur.png";
 
     public static final String GUI_GRIMOIRE = PREFIX_GUI + "grimoire/grimoire.png";
     public static final String GUI_GRIMOIRE_SELECTOR = PREFIX_GUI + "grimoire/selector.png";
