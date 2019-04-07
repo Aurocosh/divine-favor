@@ -2,7 +2,6 @@ package aurocosh.divinefavor.common.network.message.client;
 
 import aurocosh.divinefavor.DivineFavor;
 import aurocosh.divinefavor.common.network.base.NetworkWrappedClientMessage;
-import aurocosh.divinefavor.common.tool.IEnergyContainer;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;

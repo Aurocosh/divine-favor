@@ -2,7 +2,7 @@ package aurocosh.divinefavor.common.network.message.client.spell_uses;
 
 import aurocosh.divinefavor.DivineFavor;
 import aurocosh.divinefavor.common.custom_data.player.PlayerData;
-import aurocosh.divinefavor.common.custom_data.player.data.favor.FavorData;
+import aurocosh.divinefavor.common.custom_data.player.data.favor.SpiritData;
 import aurocosh.divinefavor.common.network.base.NetworkWrappedClientMessage;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
@@ -17,7 +17,7 @@ public class MessageSyncContracts extends NetworkWrappedClientMessage {
     public MessageSyncContracts() {
     }
 
-    public MessageSyncContracts(FavorData data) {
+    public MessageSyncContracts(SpiritData data) {
         tag = getNbtTagCompound(data);
     }
 
@@ -25,17 +25,17 @@ public class MessageSyncContracts extends NetworkWrappedClientMessage {
     @SideOnly(Side.CLIENT)
     protected void handleSafe() {
         EntityPlayer player = DivineFavor.proxy.getClientPlayer();
-        FavorData data = PlayerData.get(player).getFavorData();
+        SpiritData data = PlayerData.get(player).getSpiritData();
         setDataFromNBT(data, tag);
     }
 
-    public static NBTTagCompound getNbtTagCompound(FavorData instance) {
+    public static NBTTagCompound getNbtTagCompound(SpiritData instance) {
         final NBTTagCompound tag = new NBTTagCompound();
         tag.setTag(TAG_CONTRACTS, instance.serializeContracts());
         return tag;
     }
 
-    public static void setDataFromNBT(FavorData instance, NBTTagCompound nbt) {
+    public static void setDataFromNBT(SpiritData instance, NBTTagCompound nbt) {
         instance.deserializeContracts(nbt.getCompoundTag(TAG_CONTRACTS));
     }
 }

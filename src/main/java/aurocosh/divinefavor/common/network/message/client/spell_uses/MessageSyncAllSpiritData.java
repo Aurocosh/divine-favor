@@ -2,23 +2,23 @@ package aurocosh.divinefavor.common.network.message.client.spell_uses;
 
 import aurocosh.divinefavor.DivineFavor;
 import aurocosh.divinefavor.common.custom_data.player.PlayerData;
-import aurocosh.divinefavor.common.custom_data.player.data.favor.FavorData;
+import aurocosh.divinefavor.common.custom_data.player.data.favor.SpiritData;
 import aurocosh.divinefavor.common.network.base.NetworkWrappedClientMessage;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class MessageSyncAllFavorData extends NetworkWrappedClientMessage {
+public class MessageSyncAllSpiritData extends NetworkWrappedClientMessage {
     private static String TAG_CONTRACTS = "Contracts";
     private static String TAG_FAVOR_VALUES = "FavorValues";
 
     public NBTTagCompound tag;
 
-    public MessageSyncAllFavorData() {
+    public MessageSyncAllSpiritData() {
     }
 
-    public MessageSyncAllFavorData(FavorData data) {
+    public MessageSyncAllSpiritData(SpiritData data) {
         tag = getNbtTagCompound(data);
     }
 
@@ -26,18 +26,18 @@ public class MessageSyncAllFavorData extends NetworkWrappedClientMessage {
     @SideOnly(Side.CLIENT)
     protected void handleSafe() {
         EntityPlayer player = DivineFavor.proxy.getClientPlayer();
-        FavorData data = PlayerData.get(player).getFavorData();
+        SpiritData data = PlayerData.get(player).getSpiritData();
         setDataFromNBT(data, tag);
     }
 
-    public static NBTTagCompound getNbtTagCompound(FavorData instance) {
+    public static NBTTagCompound getNbtTagCompound(SpiritData instance) {
         final NBTTagCompound tag = new NBTTagCompound();
         tag.setTag(TAG_CONTRACTS, instance.serializeContracts());
         tag.setIntArray(TAG_FAVOR_VALUES, instance.getFavorValues());
         return tag;
     }
 
-    public static void setDataFromNBT(FavorData instance, NBTTagCompound nbt) {
+    public static void setDataFromNBT(SpiritData instance, NBTTagCompound nbt) {
         instance.deserializeContracts(nbt.getCompoundTag(TAG_CONTRACTS));
         instance.setFavorValues(nbt.getIntArray(TAG_FAVOR_VALUES));
     }

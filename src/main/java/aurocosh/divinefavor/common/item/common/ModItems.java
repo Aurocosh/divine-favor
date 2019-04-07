@@ -5,11 +5,11 @@ import aurocosh.divinefavor.common.item.base.ModItem;
 import aurocosh.divinefavor.common.item.bone_dagger.ItemBoneDagger;
 import aurocosh.divinefavor.common.item.bone_dagger.ItemBoneDaggerAwakened;
 import aurocosh.divinefavor.common.item.contract_binder.ItemContractBinder;
-import aurocosh.divinefavor.common.item.talisman_container.grimoire.ItemGrimoire;
 import aurocosh.divinefavor.common.item.mystic_architect_stick.ItemMysticArchitectStick;
 import aurocosh.divinefavor.common.item.ritual_pouch.ItemRitualPouch;
-import aurocosh.divinefavor.common.item.talisman_container.spell_bow.ItemSpellBow;
 import aurocosh.divinefavor.common.item.storage_gem.ItemStorageGem;
+import aurocosh.divinefavor.common.item.talisman_container.grimoire.ItemGrimoire;
+import aurocosh.divinefavor.common.item.talisman_container.spell_bow.ItemSpellBow;
 
 public final class ModItems {
     public static ModItem bone_dagger;

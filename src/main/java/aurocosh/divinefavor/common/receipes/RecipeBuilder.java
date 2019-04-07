@@ -1,7 +1,6 @@
 package aurocosh.divinefavor.common.receipes;
 
 import aurocosh.divinefavor.common.item.calling_stones.ItemCallingStone;
-import aurocosh.divinefavor.common.receipes.serialization.RecipeIngredient;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;

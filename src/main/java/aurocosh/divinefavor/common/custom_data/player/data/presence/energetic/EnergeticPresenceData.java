@@ -2,7 +2,6 @@ package aurocosh.divinefavor.common.custom_data.player.data.presence.energetic;
 
 import aurocosh.divinefavor.common.config.common.ConfigPresence;
 import aurocosh.divinefavor.common.lib.SimpleCounter;
-import aurocosh.divinefavor.common.util.UtilTick;
 
 // The default implementation of the capability. Holds all the logic.
 public class EnergeticPresenceData {

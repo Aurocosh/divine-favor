@@ -9,7 +9,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumHand;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class MinionFeeding<T extends EntityLiving & IMinion> extends MinionInteraction<T> {

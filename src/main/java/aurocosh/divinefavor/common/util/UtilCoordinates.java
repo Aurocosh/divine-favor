@@ -1,7 +1,6 @@
 package aurocosh.divinefavor.common.util;
 
 import aurocosh.divinefavor.common.lib.math.Vector3i;
-import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.EnumFacing;

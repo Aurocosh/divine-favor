@@ -2,7 +2,6 @@ package aurocosh.divinefavor.common.custom_data.living.data.cripple;
 
 import aurocosh.divinefavor.common.config.common.ConfigArrow;
 import aurocosh.divinefavor.common.lib.SimpleCounter;
-import aurocosh.divinefavor.common.util.UtilTick;
 
 public class CrippleData {
     private SimpleCounter counter;

@@ -1,7 +1,7 @@
 package aurocosh.divinefavor.common.network.message.sever;
 
-import aurocosh.divinefavor.common.item.talisman_container.TalismanContainerAdapter;
 import aurocosh.divinefavor.common.item.talisman_container.ITalismanContainer;
+import aurocosh.divinefavor.common.item.talisman_container.TalismanContainerAdapter;
 import aurocosh.divinefavor.common.network.base.NetworkWrappedServerMessage;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.ItemStack;

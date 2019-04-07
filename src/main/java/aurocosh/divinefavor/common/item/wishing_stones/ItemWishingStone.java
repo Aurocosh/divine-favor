@@ -2,10 +2,10 @@ package aurocosh.divinefavor.common.item.wishing_stones;
 
 import aurocosh.divinefavor.DivineFavor;
 import aurocosh.divinefavor.common.custom_data.player.PlayerData;
-import aurocosh.divinefavor.common.custom_data.player.data.favor.FavorData;
-import aurocosh.divinefavor.common.favor.ModFavor;
+import aurocosh.divinefavor.common.custom_data.player.data.favor.SpiritData;
 import aurocosh.divinefavor.common.item.base.ModItem;
 import aurocosh.divinefavor.common.network.message.client.spell_uses.MessageSyncFavor;
+import aurocosh.divinefavor.common.spirit.base.ModSpirit;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
@@ -17,12 +17,12 @@ import net.minecraft.world.World;
 import javax.annotation.Nonnull;
 
 public class ItemWishingStone extends ModItem {
-    private final ModFavor favor;
+    private final ModSpirit spirit;
     private final int favorCount;
 
-    public ItemWishingStone(ModFavor favor, int favorCount, String typeName, int orderIndex) {
-        super("wishing_stone_" + typeName + "_" + favor.getName(), "wishing_stones/" + typeName + "/" + favor.getName(), orderIndex);
-        this.favor = favor;
+    public ItemWishingStone(ModSpirit spirit, int favorCount, String typeName, int orderIndex) {
+        super("wishing_stone_" + typeName + "_" + spirit.getName(), "wishing_stones/" + typeName + "/" + spirit.getName(), orderIndex);
+        this.spirit = spirit;
         this.favorCount = favorCount;
 
         setMaxStackSize(64);
@@ -41,9 +41,9 @@ public class ItemWishingStone extends ModItem {
             return false;
         if (!(stack.getItem() instanceof ItemWishingStone))
             return false;
-        FavorData favorData = PlayerData.get(player).getFavorData();
-        favorData.addFavor(favor.getId(), favorCount);
-        new MessageSyncFavor(favor, favorData).sendTo(player);
+        SpiritData spiritData = PlayerData.get(player).getSpiritData();
+        spiritData.addFavor(spirit.getId(), favorCount);
+        new MessageSyncFavor(spirit, spiritData).sendTo(player);
         stack.shrink(1);
         return false;
     }

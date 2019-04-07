@@ -10,8 +10,9 @@ public class ConstResources {
     public static final String PREFIX_PROJECTILES = PREFIX_MOD + "textures/entity/projectiles/";
     public static final String PREFIX_MINIONS = PREFIX_MOD + "textures/entity/minions/";
     public static final String PREFIX_MOBS = PREFIX_MOD + "textures/entity/mobs/";
-    public static final String PREFIX_FAVOR_ICONS = PREFIX_MOD + "textures/favor_icons/";
-    public static final String PREFIX_FAVOR_SYMBOLS = PREFIX_MOD + "textures/items/symbols/";
+    
+    public static final String PREFIX_SPIRIT_ICONS = PREFIX_MOD + "textures/items/calling_stones/";
+    public static final String PREFIX_SPIRIT_SYMBOLS = PREFIX_MOD + "textures/items/symbols/";
 
     public static final String GUI_BATH_HEATER = PREFIX_GUI + "bath_heater.png";
     public static final String GUI_CONTRACT_BINDER = PREFIX_GUI + "contract_binder.png";

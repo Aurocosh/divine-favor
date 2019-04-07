@@ -1,15 +1,15 @@
 package aurocosh.divinefavor.common.item.talismans.spell.base;
 
-import aurocosh.divinefavor.common.favor.ModFavor;
 import aurocosh.divinefavor.common.potions.base.effect.ModEffectToggle;
 import aurocosh.divinefavor.common.potions.base.potion.ModPotionToggle;
 import aurocosh.divinefavor.common.potions.base.potion.ModPotionToggleLimited;
+import aurocosh.divinefavor.common.spirit.base.ModSpirit;
 
 public class SpellTalismanModPotionToggle extends ItemSpellTalisman {
     private final ModPotionToggle potion;
 
-    public SpellTalismanModPotionToggle(String name, ModFavor favor, int favorCost, ModPotionToggle potion) {
-        super(name, favor, favorCost, SpellOptions.ALL_CAST);
+    public SpellTalismanModPotionToggle(String name, ModSpirit spirit, int favorCost, ModPotionToggle potion) {
+        super(name, spirit, favorCost, SpellOptions.ALL_CAST);
         this.potion = potion;
         if(potion instanceof ModPotionToggleLimited) {
             ModPotionToggleLimited limited = (ModPotionToggleLimited) potion;

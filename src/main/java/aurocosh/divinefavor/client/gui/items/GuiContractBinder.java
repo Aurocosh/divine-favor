@@ -2,7 +2,6 @@ package aurocosh.divinefavor.client.gui.items;
 
 import aurocosh.divinefavor.common.constants.ConstResources;
 import aurocosh.divinefavor.common.item.contract_binder.ContractBinderContainer;
-import aurocosh.divinefavor.common.item.ritual_pouch.RitualBagContainer;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;

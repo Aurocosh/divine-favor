@@ -20,7 +20,10 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.Mod;
 import org.lwjgl.opengl.GL11;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 @Mod.EventBusSubscriber
 public class TalismanSelectGui extends GuiScreen {

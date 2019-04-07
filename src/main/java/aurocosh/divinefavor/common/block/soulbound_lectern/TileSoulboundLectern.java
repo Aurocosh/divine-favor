@@ -1,7 +1,5 @@
 package aurocosh.divinefavor.common.block.soulbound_lectern;
 
-import aurocosh.divinefavor.common.favor.ModFavor;
-import aurocosh.divinefavor.common.favor.ModFavors;
 import aurocosh.divinefavor.common.item.soul_shards.ItemSoulShard;
 import aurocosh.divinefavor.common.lib.math.Vector3i;
 import aurocosh.divinefavor.common.muliblock.IMultiblockController;
@@ -9,6 +7,8 @@ import aurocosh.divinefavor.common.muliblock.ModMultiBlock;
 import aurocosh.divinefavor.common.muliblock.common.ModMultiBlocks;
 import aurocosh.divinefavor.common.muliblock.common.MultiblockWatcher;
 import aurocosh.divinefavor.common.muliblock.instance.MultiBlockInstance;
+import aurocosh.divinefavor.common.spirit.ModSpirits;
+import aurocosh.divinefavor.common.spirit.base.ModSpirit;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -35,15 +35,15 @@ public class TileSoulboundLectern extends TileEntity implements IMultiblockContr
     private final static Map<Integer, ModMultiBlock> multiblocks = new HashMap<>();
 
     static {
-        multiblocks.put(ModFavors.arbow.getId(), ModMultiBlocks.soulbound_lectern_arbow);
-        multiblocks.put(ModFavors.blizrabi.getId(), ModMultiBlocks.soulbound_lectern_blizrabi);
-        multiblocks.put(ModFavors.endererer.getId(), ModMultiBlocks.soulbound_lectern_endererer);
-        multiblocks.put(ModFavors.loon.getId(), ModMultiBlocks.soulbound_lectern_loon);
-        multiblocks.put(ModFavors.neblaze.getId(), ModMultiBlocks.soulbound_lectern_neblaze);
-        multiblocks.put(ModFavors.redwind.getId(), ModMultiBlocks.soulbound_lectern_redwind);
-        multiblocks.put(ModFavors.romol.getId(), ModMultiBlocks.soulbound_lectern_romol);
-        multiblocks.put(ModFavors.squarefury.getId(), ModMultiBlocks.soulbound_lectern_squarefury);
-        multiblocks.put(ModFavors.timber.getId(), ModMultiBlocks.soulbound_lectern_timber);
+        multiblocks.put(ModSpirits.arbow.getId(), ModMultiBlocks.soulbound_lectern_arbow);
+        multiblocks.put(ModSpirits.blizrabi.getId(), ModMultiBlocks.soulbound_lectern_blizrabi);
+        multiblocks.put(ModSpirits.endererer.getId(), ModMultiBlocks.soulbound_lectern_endererer);
+        multiblocks.put(ModSpirits.loon.getId(), ModMultiBlocks.soulbound_lectern_loon);
+        multiblocks.put(ModSpirits.neblaze.getId(), ModMultiBlocks.soulbound_lectern_neblaze);
+        multiblocks.put(ModSpirits.redwind.getId(), ModMultiBlocks.soulbound_lectern_redwind);
+        multiblocks.put(ModSpirits.romol.getId(), ModMultiBlocks.soulbound_lectern_romol);
+        multiblocks.put(ModSpirits.squarefury.getId(), ModMultiBlocks.soulbound_lectern_squarefury);
+        multiblocks.put(ModSpirits.timber.getId(), ModMultiBlocks.soulbound_lectern_timber);
     }
 
     private boolean isRejecting;
@@ -177,7 +177,7 @@ public class TileSoulboundLectern extends TileEntity implements IMultiblockContr
         if(stack.isEmpty())
             return -1;
         ItemSoulShard soulShard = (ItemSoulShard) stack.getItem();
-        return soulShard.getFavor().getId();
+        return soulShard.getSpirit().getId();
     }
 
     public SoulboundLecternState getState() {
@@ -239,7 +239,7 @@ public class TileSoulboundLectern extends TileEntity implements IMultiblockContr
             return;
         ItemSoulShard soulShard = (ItemSoulShard) stack.getItem();
         Vector3i position = Vector3i.convert(pos);
-        ModMultiBlock multiBlock = multiblocks.get(soulShard.getFavor().getId());
+        ModMultiBlock multiBlock = multiblocks.get(soulShard.getSpirit().getId());
         if (multiBlock != null) {
             multiBlockInstance = multiBlock.makeMultiBlock(world, position);
             if (multiBlockInstance != null)
@@ -252,24 +252,24 @@ public class TileSoulboundLectern extends TileEntity implements IMultiblockContr
         if (stack.isEmpty())
             return;
         ItemSoulShard soulShard = (ItemSoulShard) stack.getItem();
-        ModFavor favor = soulShard.getFavor();
-        if (favor == ModFavors.endererer)
+        ModSpirit spirit = soulShard.getSpirit();
+        if (spirit == ModSpirits.endererer)
             setGem(SoulboundLecternGem.END);
-        else if (favor == ModFavors.romol)
+        else if (spirit == ModSpirits.romol)
             setGem(SoulboundLecternGem.MIND);
-        else if (favor == ModFavors.neblaze)
+        else if (spirit == ModSpirits.neblaze)
             setGem(SoulboundLecternGem.NETHER);
-        else if (favor == ModFavors.arbow)
+        else if (spirit == ModSpirits.arbow)
             setGem(SoulboundLecternGem.PEACE);
-        else if (favor == ModFavors.redwind)
+        else if (spirit == ModSpirits.redwind)
             setGem(SoulboundLecternGem.WILL);
-        else if (favor == ModFavors.loon)
+        else if (spirit == ModSpirits.loon)
             setGem(SoulboundLecternGem.UNDEATH);
-        else if (favor == ModFavors.blizrabi)
+        else if (spirit == ModSpirits.blizrabi)
             setGem(SoulboundLecternGem.WATER);
-        else if (favor == ModFavors.squarefury)
+        else if (spirit == ModSpirits.squarefury)
             setGem(SoulboundLecternGem.WILD);
-        else if (favor == ModFavors.timber)
+        else if (spirit == ModSpirits.timber)
             setGem(SoulboundLecternGem.WITHER);
         else
             setGem(SoulboundLecternGem.NONE);

@@ -2,10 +2,10 @@ package aurocosh.divinefavor.common.item.talismans.spell.base;
 
 import aurocosh.divinefavor.DivineFavor;
 import aurocosh.divinefavor.common.custom_data.player.PlayerData;
-import aurocosh.divinefavor.common.custom_data.player.data.favor.FavorData;
-import aurocosh.divinefavor.common.favor.ModFavor;
+import aurocosh.divinefavor.common.custom_data.player.data.favor.SpiritData;
 import aurocosh.divinefavor.common.item.talismans.base.ItemTalisman;
 import aurocosh.divinefavor.common.network.message.client.spell_uses.MessageSyncFavor;
+import aurocosh.divinefavor.common.spirit.base.ModSpirit;
 import aurocosh.divinefavor.common.util.UtilEntity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -26,8 +26,8 @@ public class ItemSpellTalisman extends ItemTalisman {
     private final EnumSet<SpellOptions> options;
 
     // Talisman functions
-    public ItemSpellTalisman(String name, ModFavor favor, int favorCost, EnumSet<SpellOptions> options) {
-        super("talisman_" + name, "talismans/" + name, favor, favorCost);
+    public ItemSpellTalisman(String name, ModSpirit spirit, int favorCost, EnumSet<SpellOptions> options) {
+        super("talisman_" + name, "talismans/" + name, spirit, favorCost);
         this.options = options;
 
         setMaxStackSize(1);
@@ -51,13 +51,13 @@ public class ItemSpellTalisman extends ItemTalisman {
             return true;
         if (!isConsumeCharge(context))
             return true;
-        FavorData favorData = PlayerData.get(context.player).getFavorData();
-        if (!favorData.consumeFavor(favor.getId(), favorCost))
+        SpiritData spiritData = PlayerData.get(context.player).getSpiritData();
+        if (!spiritData.consumeFavor(spirit.getId(), favorCost))
             return false;
         if (context.world.isRemote)
             return true;
 
-        new MessageSyncFavor(favor, favorData).sendTo(context.player);
+        new MessageSyncFavor(spirit, spiritData).sendTo(context.player);
         return true;
     }
 // Talisman functions

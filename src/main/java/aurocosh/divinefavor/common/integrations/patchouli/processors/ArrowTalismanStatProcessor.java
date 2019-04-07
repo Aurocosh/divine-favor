@@ -1,9 +1,9 @@
 package aurocosh.divinefavor.common.integrations.patchouli.processors;
 
 import aurocosh.divinefavor.DivineFavor;
-import aurocosh.divinefavor.common.favor.ModFavor;
 import aurocosh.divinefavor.common.item.talismans.arrow.base.ArrowOptions;
 import aurocosh.divinefavor.common.item.talismans.arrow.base.ItemArrowTalisman;
+import aurocosh.divinefavor.common.spirit.base.ModSpirit;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
@@ -36,18 +36,18 @@ public class ArrowTalismanStatProcessor implements IComponentProcessor {
             ItemStack stack = new ItemStack(arrowTalisman, 1);
             return ItemStackUtil.serializeStack(stack);
         }
-        else if (key.equals("favor_icon")) {
-            ModFavor favor = arrowTalisman.getFavor();
-            return favor.getIcon().toString();
+        else if (key.equals("spirit_icon")) {
+            ModSpirit spirit = arrowTalisman.getSpirit();
+            return spirit.getIcon().toString();
         }
-        else if (key.equals("favor_symbol")) {
-            ModFavor favor = arrowTalisman.getFavor();
-            return favor.getSymbol().toString();
+        else if (key.equals("spirit_symbol")) {
+            ModSpirit spirit = arrowTalisman.getSpirit();
+            return spirit.getSymbol().toString();
         }
 //
         else if (key.equals("text")) {
             List<String> lines = new ArrayList<>();
-            lines.add("Favor: " + arrowTalisman.getFavor().getName());
+            lines.add("Favor: " + arrowTalisman.getSpirit().getName());
             int favorCost = arrowTalisman.getFavorCost();
             if (favorCost == 0)
                 lines.add("No cost");

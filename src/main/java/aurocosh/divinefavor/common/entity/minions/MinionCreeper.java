@@ -8,7 +8,6 @@ import aurocosh.divinefavor.common.entity.minions.minion_interaction.MinionFeedi
 import aurocosh.divinefavor.common.entity.minions.minion_interaction.MinionWaitSwitch;
 import aurocosh.divinefavor.common.entity.minions.minion_interaction.base.MinionInteractionHandler;
 import com.google.common.base.Optional;
-import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.monster.EntityCreeper;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;

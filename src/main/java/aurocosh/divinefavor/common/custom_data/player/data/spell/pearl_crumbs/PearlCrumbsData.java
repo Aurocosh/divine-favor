@@ -3,7 +3,10 @@ package aurocosh.divinefavor.common.custom_data.player.data.spell.pearl_crumbs;
 import aurocosh.divinefavor.common.config.common.ConfigSpells;
 import aurocosh.divinefavor.common.lib.GlobalBlockPos;
 
-import java.util.*;
+import java.util.ArrayDeque;
+import java.util.ArrayList;
+import java.util.Deque;
+import java.util.List;
 
 // The default implementation of the capability. Holds all the logic.
 public class PearlCrumbsData {

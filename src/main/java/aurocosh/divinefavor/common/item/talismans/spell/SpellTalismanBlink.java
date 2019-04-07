@@ -1,9 +1,9 @@
 package aurocosh.divinefavor.common.item.talismans.spell;
 
-import aurocosh.divinefavor.common.favor.ModFavor;
 import aurocosh.divinefavor.common.item.talismans.spell.base.ItemSpellTalisman;
 import aurocosh.divinefavor.common.item.talismans.spell.base.SpellOptions;
 import aurocosh.divinefavor.common.item.talismans.spell.base.TalismanContext;
+import aurocosh.divinefavor.common.spirit.base.ModSpirit;
 import aurocosh.divinefavor.common.util.UtilEntity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.math.BlockPos;
@@ -16,8 +16,8 @@ public class SpellTalismanBlink extends ItemSpellTalisman {
     private final boolean isSafe;
     private final double blinkDistance;
 
-    public SpellTalismanBlink(String name, ModFavor favor, int favorCost, EnumSet<SpellOptions> options, boolean isSafe, double blinkDistance) {
-        super(name, favor, favorCost, options);
+    public SpellTalismanBlink(String name, ModSpirit spirit, int favorCost, EnumSet<SpellOptions> options, boolean isSafe, double blinkDistance) {
+        super(name, spirit, favorCost, options);
         this.isSafe = isSafe;
         this.blinkDistance = blinkDistance;
     }

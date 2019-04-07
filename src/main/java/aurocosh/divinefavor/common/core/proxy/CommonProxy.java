@@ -7,13 +7,12 @@ import aurocosh.divinefavor.common.custom_data.living.capability.LivingDataDataH
 import aurocosh.divinefavor.common.custom_data.player.capability.PlayerDataDataHandler;
 import aurocosh.divinefavor.common.custom_data.world.capability.WorldDataDataHandler;
 import aurocosh.divinefavor.common.entity.ModEntities;
-import aurocosh.divinefavor.common.favor.ModFavors;
 import aurocosh.divinefavor.common.item.bathing_blend.ModBathingBlends;
 import aurocosh.divinefavor.common.item.calling_stones.ModCallingStones;
 import aurocosh.divinefavor.common.item.common.ModItems;
 import aurocosh.divinefavor.common.item.contract.ModContracts;
-import aurocosh.divinefavor.common.item.talisman_container.grimoire.capability.GrimoireDataHandler;
 import aurocosh.divinefavor.common.item.soul_shards.ModSoulShards;
+import aurocosh.divinefavor.common.item.talisman_container.grimoire.capability.GrimoireDataHandler;
 import aurocosh.divinefavor.common.item.talisman_container.spell_bow.capability.SpellBowDataHandler;
 import aurocosh.divinefavor.common.item.talismans.arrow.common.ModArrowTalismans;
 import aurocosh.divinefavor.common.item.talismans.spell.common.ModSpellTalismans;
@@ -48,7 +47,7 @@ import java.io.File;
 @Mod.EventBusSubscriber
 public class CommonProxy {
     public void preInit(FMLPreInitializationEvent e) {
-        ModFavors.preInit();
+        ModSpirits.preInit();
         ModMultiBlocks.preInit();
 
         ModPotions.preInit();
@@ -61,7 +60,6 @@ public class CommonProxy {
         ModSpellTalismans.preInit();
         ModBathingBlends.preInit();
 
-        ModSpirits.preInit();
         ModContracts.preInit();
         ModCallingStones.preInit();
         ModWishingStones.preInit();

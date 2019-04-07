@@ -2,12 +2,12 @@ package aurocosh.divinefavor.common.potions.potions;
 
 import aurocosh.divinefavor.common.config.common.ConfigSpells;
 import aurocosh.divinefavor.common.custom_data.player.PlayerData;
-import aurocosh.divinefavor.common.custom_data.player.data.favor.FavorData;
-import aurocosh.divinefavor.common.favor.ModFavor;
+import aurocosh.divinefavor.common.custom_data.player.data.favor.SpiritData;
 import aurocosh.divinefavor.common.item.talismans.spell.base.ItemSpellTalisman;
 import aurocosh.divinefavor.common.network.message.client.spell_uses.MessageSyncFavor;
 import aurocosh.divinefavor.common.potions.base.potion.ModPotionToggleLimited;
 import aurocosh.divinefavor.common.potions.common.ModPotions;
+import aurocosh.divinefavor.common.spirit.base.ModSpirit;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraftforge.event.entity.living.LivingEvent;
@@ -33,12 +33,12 @@ public class PotionToadicJump extends ModPotionToggleLimited {
         if (entity.world.isRemote)
             return;
 
-        FavorData favorData = PlayerData.get(player).getFavorData();
+        SpiritData spiritData = PlayerData.get(player).getSpiritData();
         ItemSpellTalisman talisman = ModPotions.toadic_jump.getTalisman();
-        ModFavor favor = talisman.getFavor();
-        if (!favorData.consumeFavor(favor.getId(), talisman.getFavorCost()))
+        ModSpirit spirit = talisman.getSpirit();
+        if (!spiritData.consumeFavor(spirit.getId(), talisman.getFavorCost()))
             return;
-        new MessageSyncFavor(favor, favorData).sendTo(player);
+        new MessageSyncFavor(spirit, spiritData).sendTo(player);
     }
 
     @Override

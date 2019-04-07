@@ -3,7 +3,6 @@ package aurocosh.divinefavor.common.custom_data.player.data.presence.towering;
 import aurocosh.divinefavor.common.config.common.ConfigPresence;
 import aurocosh.divinefavor.common.lib.LoopedCounter;
 import aurocosh.divinefavor.common.util.UtilRandom;
-import aurocosh.divinefavor.common.util.UtilTick;
 
 public class ToweringPresenceData {
     private final LoopedCounter curseCounter;

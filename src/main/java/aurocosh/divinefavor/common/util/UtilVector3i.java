@@ -3,7 +3,6 @@ package aurocosh.divinefavor.common.util;
 import aurocosh.divinefavor.common.lib.math.Vector3i;
 
 import java.util.*;
-import java.util.Collections;
 
 public class UtilVector3i {
     private static List<Vector3i> directNeighbours = Arrays.asList(
