@@ -6,6 +6,8 @@
     "textures":{
       "particle": "divinefavor:blocks/medium/materials/lapis",
       "material": "divinefavor:blocks/medium/materials/lapis",
+      "up": "divinefavor:blocks/medium/materials/lapis",
+      "down": "divinefavor:blocks/medium/materials/lapis",
       "frame": "divinefavor:blocks/medium/frames/gray",
       "animation": "divinefavor:blocks/medium/animations/none",
       "stone": "divinefavor:blocks/medium/stones/none"
@@ -24,8 +26,8 @@
     },
     "state": {
       "invalid": {},
-      "valid": { "textures": { "animation": "divinefavor:blocks/medium/animations/blinking_red" } },
-      "active": { "textures": { "animation": "divinefavor:blocks/medium/animations/spinning_red" } }
+      "valid": { "textures": { "animation": "divinefavor:blocks/medium/animations/blinking/purple" } },
+      "active": { "textures": { "animation": "divinefavor:blocks/medium/animations/spinning_line/purple" } }
     },
     "stone": {
       "none": {},

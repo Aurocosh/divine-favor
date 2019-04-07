@@ -6,6 +6,8 @@
     "textures":{
       "particle": "divinefavor:blocks/medium/materials/obsidian",
       "material": "divinefavor:blocks/medium/materials/obsidian",
+      "up": "divinefavor:blocks/medium/materials/obsidian",
+      "down": "divinefavor:blocks/medium/materials/obsidian",
       "frame": "divinefavor:blocks/medium/frames/gray",
       "animation": "divinefavor:blocks/medium/animations/none",
       "stone": "divinefavor:blocks/medium/stones/none"
@@ -24,8 +26,8 @@
     },
     "state": {
       "invalid": {},
-      "valid": { "textures": { "animation": "divinefavor:blocks/medium/animations/blinking_red" } },
-      "active": { "textures": { "animation": "divinefavor:blocks/medium/animations/spinning_red" } }
+      "valid": { "textures": { "animation": "divinefavor:blocks/medium/animations/blinking/red" } },
+      "active": { "textures": { "animation": "divinefavor:blocks/medium/animations/spinning_line/red" } }
     },
     "stone": {
       "none": {},
