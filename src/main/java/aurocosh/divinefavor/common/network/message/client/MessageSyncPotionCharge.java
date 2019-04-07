@@ -1,7 +1,6 @@
 package aurocosh.divinefavor.common.network.message.client;
 
 import aurocosh.divinefavor.DivineFavor;
-import aurocosh.divinefavor.common.network.base.NetworkClientMessage;
 import aurocosh.divinefavor.common.network.base.NetworkWrappedClientMessage;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.potion.Potion;

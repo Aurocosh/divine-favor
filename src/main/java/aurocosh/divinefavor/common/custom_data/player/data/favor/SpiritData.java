@@ -1,11 +1,11 @@
 package aurocosh.divinefavor.common.custom_data.player.data.favor;
 
 import aurocosh.divinefavor.common.custom_data.CapabilityHelper;
-import aurocosh.divinefavor.common.favor.ModFavor;
 import aurocosh.divinefavor.common.item.contract.ItemContract;
 import aurocosh.divinefavor.common.item.contract_binder.ItemContractBinder;
 import aurocosh.divinefavor.common.misc.SlotStack;
 import aurocosh.divinefavor.common.registry.mappers.ModMappers;
+import aurocosh.divinefavor.common.spirit.base.ModSpirit;
 import aurocosh.divinefavor.common.util.UtilHandler;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -18,22 +18,22 @@ import java.util.ArrayList;
 import java.util.List;
 
 // The default implementation of the capability. Holds all the logic.
-public class FavorData {
+public class SpiritData {
     public final static int CONTRACT_SLOT_COUNT = 22;
 
     private final int[] favorValues;
-    private final FavorStatus[] favorStatuses;
+    private final SpiritStatus[] spiritStatuses;
     private final ItemStackHandler[] contractsStackHandlers;
 
-    public FavorData() {
-        List<ModFavor> favors = ModMappers.favors.getValues();
-        favorValues = new int[favors.size()];
+    public SpiritData() {
+        List<ModSpirit> spirits = ModMappers.spirits.getValues();
+        favorValues = new int[spirits.size()];
 
-        favorStatuses = new FavorStatus[favors.size()];
-        contractsStackHandlers = new ItemStackHandler[favors.size()];
-        for (int i = 0; i < favors.size(); i++) {
-            ModFavor favor = favors.get(i);
-            favorStatuses[i] = new FavorStatus(favor);
+        spiritStatuses = new SpiritStatus[spirits.size()];
+        contractsStackHandlers = new ItemStackHandler[spirits.size()];
+        for (int i = 0; i < spirits.size(); i++) {
+            ModSpirit favor = spirits.get(i);
+            spiritStatuses[i] = new SpiritStatus(favor);
             contractsStackHandlers[i] = new ItemStackHandler(CONTRACT_SLOT_COUNT) {
                 @Override
                 public boolean isItemValid(int slot, @Nonnull ItemStack stack) {
@@ -44,8 +44,8 @@ public class FavorData {
         }
     }
 
-    public ItemStackHandler getContractHandler(int favorId) {
-        return contractsStackHandlers[favorId];
+    public ItemStackHandler getContractHandler(int spiritId) {
+        return contractsStackHandlers[spiritId];
     }
 
     public NBTTagCompound serializeContracts() {
@@ -61,36 +61,36 @@ public class FavorData {
         refreshContracts();
     }
 
-    public int getFavor(int favorId) {
-        return favorValues[favorId];
+    public int getFavor(int spiritId) {
+        return favorValues[spiritId];
     }
 
-    public void setFavor(int favorId, int value) {
-        favorValues[favorId] = favorStatuses[favorId].clamp(value);
+    public void setFavor(int spiritId, int value) {
+        favorValues[spiritId] = spiritStatuses[spiritId].clamp(value);
     }
 
-    public void addFavor(int favorId, int value) {
-        favorValues[favorId] = favorStatuses[favorId].clamp(favorValues[favorId] + value);
+    public void addFavor(int spiritId, int value) {
+        favorValues[spiritId] = spiritStatuses[spiritId].clamp(favorValues[spiritId] + value);
     }
 
-    public boolean consumeFavor(int favorId, int value) {
-        int favorValue = favorValues[favorId];
+    public boolean consumeFavor(int spiritId, int value) {
+        int favorValue = favorValues[spiritId];
         if (favorValue < value)
             return false;
-        favorValues[favorId] = favorStatuses[favorId].clamp(favorValues[favorId] - value);
+        favorValues[spiritId] = spiritStatuses[spiritId].clamp(favorValues[spiritId] - value);
         return true;
     }
 
-    public int getMaxFavor(int favorId) {
-        return favorStatuses[favorId].getMaxLimit();
+    public int getMaxFavor(int spiritId) {
+        return spiritStatuses[spiritId].getMaxLimit();
     }
 
-    public boolean regenerateFavor(int favorId) {
-        FavorStatus status = favorStatuses[favorId];
+    public boolean regenerateFavor(int spiritId) {
+        SpiritStatus status = spiritStatuses[spiritId];
         int regen = status.getRegen();
         if (regen == 0)
             return false;
-        favorValues[favorId] = status.clamp(favorValues[favorId] + regen);
+        favorValues[spiritId] = status.clamp(favorValues[spiritId] + regen);
         return true;
     }
 
@@ -98,8 +98,8 @@ public class FavorData {
         return favorValues;
     }
 
-    public void setFavorValues(int[] favorValues) {
-        System.arraycopy(favorValues, 0, favorValues, 0, favorValues.length);
+    public void setFavorValues(int[] values) {
+        System.arraycopy(values, 0, favorValues, 0, values.length);
         refreshValues();
     }
 
@@ -133,14 +133,14 @@ public class FavorData {
     }
 
     public void refreshContracts() {
-        for (FavorStatus favorStatus : favorStatuses)
-            favorStatus.reset();
+        for (SpiritStatus spiritStatus : spiritStatuses)
+            spiritStatus.reset();
 
         for (int i = 0; i < contractsStackHandlers.length; i++) {
             ItemStackHandler stackHandler = contractsStackHandlers[i];
             List<ItemContract> contracts = getContracts(stackHandler);
             for (ItemContract contract : contracts) {
-                FavorStatus status = favorStatuses[i];
+                SpiritStatus status = spiritStatuses[i];
                 status.addStats(contract);
             }
         }
@@ -149,7 +149,7 @@ public class FavorData {
 
     private void refreshValues() {
         for (int i = 0; i < favorValues.length; i++) {
-            FavorStatus status = favorStatuses[i];
+            SpiritStatus status = spiritStatuses[i];
             favorValues[i] = status.clamp(favorValues[i]);
         }
     }

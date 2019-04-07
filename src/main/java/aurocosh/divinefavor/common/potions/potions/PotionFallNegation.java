@@ -4,17 +4,9 @@ import aurocosh.divinefavor.common.network.message.client.MessageSyncPotionCharg
 import aurocosh.divinefavor.common.potions.base.effect.ModEffectCharge;
 import aurocosh.divinefavor.common.potions.base.potion.ModPotionCharge;
 import aurocosh.divinefavor.common.potions.common.ModPotions;
-import aurocosh.divinefavor.common.util.UtilBlock;
-import net.minecraft.block.Block;
-import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
-import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.living.LivingFallEvent;
-import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 

@@ -1,7 +1,7 @@
 package aurocosh.divinefavor.common.lib;
 
-import aurocosh.divinefavor.common.util.UtilMath;
 import aurocosh.divinefavor.common.util.UtilDayTime;
+import aurocosh.divinefavor.common.util.UtilMath;
 
 public class TimePeriod {
     private final int start;

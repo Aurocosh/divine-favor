@@ -25,11 +25,11 @@ import aurocosh.divinefavor.common.block.soulbound_lectern.ContainerSoulboundLec
 import aurocosh.divinefavor.common.block.soulbound_lectern.TileSoulboundLectern;
 import aurocosh.divinefavor.common.constants.ConstGuiIDs;
 import aurocosh.divinefavor.common.item.contract_binder.ContractBinderContainer;
+import aurocosh.divinefavor.common.item.ritual_pouch.RitualBagContainer;
 import aurocosh.divinefavor.common.item.talisman_container.grimoire.GrimoireContainer;
 import aurocosh.divinefavor.common.item.talisman_container.grimoire.ItemGrimoire;
 import aurocosh.divinefavor.common.item.talisman_container.grimoire.capability.GrimoireDataHandler;
 import aurocosh.divinefavor.common.item.talisman_container.grimoire.capability.IGrimoireHandler;
-import aurocosh.divinefavor.common.item.ritual_pouch.RitualBagContainer;
 import aurocosh.divinefavor.common.item.talisman_container.spell_bow.ItemSpellBow;
 import aurocosh.divinefavor.common.item.talisman_container.spell_bow.SpellBowContainer;
 import aurocosh.divinefavor.common.item.talisman_container.spell_bow.capability.ISpellBowHandler;

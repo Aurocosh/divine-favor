@@ -1,10 +1,10 @@
 package aurocosh.divinefavor.common.integrations.patchouli.generation;
 
-import aurocosh.divinefavor.common.lib.RuntimeTypeAdapterFactory;
 import aurocosh.divinefavor.common.integrations.patchouli.generation.pages.PatchouliPage;
 import aurocosh.divinefavor.common.integrations.patchouli.generation.pages.SpellTalismanPatchouliPage;
 import aurocosh.divinefavor.common.integrations.patchouli.generation.pages.SpotlightPatchouliPage;
 import aurocosh.divinefavor.common.integrations.patchouli.generation.pages.TextPatchouliPage;
+import aurocosh.divinefavor.common.lib.RuntimeTypeAdapterFactory;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 

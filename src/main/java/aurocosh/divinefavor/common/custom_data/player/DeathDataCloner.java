@@ -12,8 +12,8 @@ public class DeathDataCloner {
         IPlayerDataHandler originalData = PlayerData.get(event.getOriginal());
         IPlayerDataHandler cloneData = PlayerData.get(event.getEntityPlayer());
 
-        cloneData.getFavorData().deserializeContracts(originalData.getFavorData().serializeContracts());
-        cloneData.getFavorData().setFavorValues(originalData.getFavorData().getFavorValues());
+        cloneData.getSpiritData().deserializeContracts(originalData.getSpiritData().serializeContracts());
+        cloneData.getSpiritData().setFavorValues(originalData.getSpiritData().getFavorValues());
 
         cloneData.getGrudgeData().setMobTypeId(originalData.getGrudgeData().getMobTypeId());
         cloneData.getInteractionData().setLastClickedPositions(originalData.getInteractionData().getLastClickedPositions());

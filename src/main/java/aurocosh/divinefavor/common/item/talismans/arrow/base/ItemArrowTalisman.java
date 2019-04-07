@@ -2,11 +2,11 @@ package aurocosh.divinefavor.common.item.talismans.arrow.base;
 
 import aurocosh.divinefavor.DivineFavor;
 import aurocosh.divinefavor.common.custom_data.player.PlayerData;
-import aurocosh.divinefavor.common.custom_data.player.data.favor.FavorData;
+import aurocosh.divinefavor.common.custom_data.player.data.favor.SpiritData;
 import aurocosh.divinefavor.common.entity.projectile.EntitySpellArrow;
-import aurocosh.divinefavor.common.favor.ModFavor;
 import aurocosh.divinefavor.common.item.talismans.base.ItemTalisman;
 import aurocosh.divinefavor.common.network.message.client.spell_uses.MessageSyncFavor;
+import aurocosh.divinefavor.common.spirit.base.ModSpirit;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntityArrow;
@@ -22,8 +22,8 @@ public class ItemArrowTalisman extends ItemTalisman {
     private final EnumSet<ArrowOptions> options;
     protected GravityType gravityType;
 
-    public ItemArrowTalisman(String name, ModFavor favor, int favorCost, int color, double arrowDamage, EnumSet<ArrowOptions> options, ArrowType arrowType) {
-        super("arrow_talisman_" + name, "arrow_talismans/" + name, favor, favorCost);
+    public ItemArrowTalisman(String name, ModSpirit spirit, int favorCost, int color, double arrowDamage, EnumSet<ArrowOptions> options, ArrowType arrowType) {
+        super("arrow_talisman_" + name, "arrow_talismans/" + name, spirit, favorCost);
         this.color = color;
         this.arrowDamage = arrowDamage;
         this.options = options;
@@ -63,13 +63,13 @@ public class ItemArrowTalisman extends ItemTalisman {
             return false;
 
         EntityPlayer player = (EntityPlayer) shooter;
-        FavorData favorData = PlayerData.get(player).getFavorData();
-        if (!favorData.consumeFavor(favor.getId(), favorCost))
+        SpiritData spiritData = PlayerData.get(player).getSpiritData();
+        if (!spiritData.consumeFavor(spirit.getId(), favorCost))
             return false;
         if (world.isRemote)
             return true;
 
-        new MessageSyncFavor(favor, favorData).sendTo(player);
+        new MessageSyncFavor(spirit, spiritData).sendTo(player);
         return true;
     }
 // Talisman functions

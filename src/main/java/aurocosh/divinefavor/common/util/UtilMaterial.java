@@ -1,6 +1,6 @@
 package aurocosh.divinefavor.common.util;
 
-import net.minecraft.block.material.*;
+import net.minecraft.block.material.Material;
 
 import java.util.HashMap;
 

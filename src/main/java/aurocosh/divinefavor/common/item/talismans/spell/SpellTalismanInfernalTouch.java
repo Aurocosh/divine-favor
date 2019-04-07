@@ -2,10 +2,10 @@ package aurocosh.divinefavor.common.item.talismans.spell;
 
 import aurocosh.divinefavor.DivineFavor;
 import aurocosh.divinefavor.common.config.common.ConfigSpells;
-import aurocosh.divinefavor.common.favor.ModFavor;
 import aurocosh.divinefavor.common.item.talismans.spell.base.ItemSpellTalisman;
 import aurocosh.divinefavor.common.item.talismans.spell.base.SpellOptions;
 import aurocosh.divinefavor.common.item.talismans.spell.base.TalismanContext;
+import aurocosh.divinefavor.common.spirit.base.ModSpirit;
 import aurocosh.divinefavor.common.util.UtilMaterial;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -53,8 +53,8 @@ public class SpellTalismanInfernalTouch extends ItemSpellTalisman {
         }
     }
 
-    public SpellTalismanInfernalTouch(String name, ModFavor favor, int favorCost, EnumSet<SpellOptions> options) {
-        super(name, favor, favorCost, options);
+    public SpellTalismanInfernalTouch(String name, ModSpirit spirit, int favorCost, EnumSet<SpellOptions> options) {
+        super(name, spirit, favorCost, options);
     }
 
     @Override

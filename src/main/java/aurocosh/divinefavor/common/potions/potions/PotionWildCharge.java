@@ -4,7 +4,6 @@ import aurocosh.divinefavor.common.config.common.ConfigSpells;
 import aurocosh.divinefavor.common.potions.base.effect.ModEffect;
 import aurocosh.divinefavor.common.potions.base.potion.ModPotion;
 import aurocosh.divinefavor.common.potions.common.ModPotions;
-import aurocosh.divinefavor.common.util.UtilTick;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraftforge.fml.common.Mod;

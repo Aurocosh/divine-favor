@@ -4,7 +4,6 @@ import aurocosh.divinefavor.common.config.common.ConfigArrow;
 import aurocosh.divinefavor.common.lib.LoopedCounter;
 import aurocosh.divinefavor.common.potions.base.potion.ModPotion;
 import aurocosh.divinefavor.common.potions.common.ModCurses;
-import aurocosh.divinefavor.common.util.UtilTick;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.DamageSource;
 import net.minecraftforge.fml.common.Mod;

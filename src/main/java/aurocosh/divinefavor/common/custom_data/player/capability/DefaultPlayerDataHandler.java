@@ -3,31 +3,31 @@ package aurocosh.divinefavor.common.custom_data.player.capability;
 import aurocosh.divinefavor.common.custom_data.player.data.aura.arboreal.ArborealAuraData;
 import aurocosh.divinefavor.common.custom_data.player.data.aura.calling.CallingAuraData;
 import aurocosh.divinefavor.common.custom_data.player.data.aura.charred.CharredAuraData;
-import aurocosh.divinefavor.common.custom_data.player.data.aura.mineral.MineralAuraData;
-import aurocosh.divinefavor.common.custom_data.player.data.curse.corrosion.ArmorCorrosionData;
-import aurocosh.divinefavor.common.custom_data.player.data.curse.crawling_mist.CrawlingMistData;
 import aurocosh.divinefavor.common.custom_data.player.data.aura.distorted.DistortedAuraData;
 import aurocosh.divinefavor.common.custom_data.player.data.aura.energetic.EnergeticAuraData;
+import aurocosh.divinefavor.common.custom_data.player.data.aura.frosty.FrostyAuraData;
+import aurocosh.divinefavor.common.custom_data.player.data.aura.hunters.HuntersAuraData;
+import aurocosh.divinefavor.common.custom_data.player.data.aura.mineral.MineralAuraData;
+import aurocosh.divinefavor.common.custom_data.player.data.aura.visceral.VisceralAuraData;
+import aurocosh.divinefavor.common.custom_data.player.data.curse.corrosion.ArmorCorrosionData;
+import aurocosh.divinefavor.common.custom_data.player.data.curse.crawling_mist.CrawlingMistData;
 import aurocosh.divinefavor.common.custom_data.player.data.curse.evil_eye.EvilEyeData;
+import aurocosh.divinefavor.common.custom_data.player.data.favor.SpiritData;
+import aurocosh.divinefavor.common.custom_data.player.data.interaction_handler.InteractionData;
 import aurocosh.divinefavor.common.custom_data.player.data.presence.energetic.EnergeticPresenceData;
+import aurocosh.divinefavor.common.custom_data.player.data.presence.furious.FuriousPresenceData;
 import aurocosh.divinefavor.common.custom_data.player.data.presence.industrious.IndustriousPresenceData;
 import aurocosh.divinefavor.common.custom_data.player.data.presence.manipulative.ManipulativePresenceData;
-import aurocosh.divinefavor.common.custom_data.player.data.presence.warping.WarpingPresenceData;
-import aurocosh.divinefavor.common.custom_data.player.data.spell.escape_plan.EscapePlanData;
-import aurocosh.divinefavor.common.custom_data.player.data.spell.focused_fury.FocusedFuryData;
-import aurocosh.divinefavor.common.custom_data.player.data.aura.frosty.FrostyAuraData;
-import aurocosh.divinefavor.common.custom_data.player.data.presence.furious.FuriousPresenceData;
-import aurocosh.divinefavor.common.custom_data.player.data.spell.gills.GillsData;
-import aurocosh.divinefavor.common.custom_data.player.data.spell.grudge.GrudgeData;
-import aurocosh.divinefavor.common.custom_data.player.data.aura.hunters.HuntersAuraData;
-import aurocosh.divinefavor.common.custom_data.player.data.interaction_handler.InteractionData;
-import aurocosh.divinefavor.common.custom_data.player.data.spell.molten_skin.MoltenSkinData;
-import aurocosh.divinefavor.common.custom_data.player.data.spell.pearl_crumbs.PearlCrumbsData;
-import aurocosh.divinefavor.common.custom_data.player.data.favor.FavorData;
 import aurocosh.divinefavor.common.custom_data.player.data.presence.predatory.PredatoryPresenceData;
 import aurocosh.divinefavor.common.custom_data.player.data.presence.scorching.ScorchingPresenceData;
 import aurocosh.divinefavor.common.custom_data.player.data.presence.towering.ToweringPresenceData;
-import aurocosh.divinefavor.common.custom_data.player.data.aura.visceral.VisceralAuraData;
+import aurocosh.divinefavor.common.custom_data.player.data.presence.warping.WarpingPresenceData;
+import aurocosh.divinefavor.common.custom_data.player.data.spell.escape_plan.EscapePlanData;
+import aurocosh.divinefavor.common.custom_data.player.data.spell.focused_fury.FocusedFuryData;
+import aurocosh.divinefavor.common.custom_data.player.data.spell.gills.GillsData;
+import aurocosh.divinefavor.common.custom_data.player.data.spell.grudge.GrudgeData;
+import aurocosh.divinefavor.common.custom_data.player.data.spell.molten_skin.MoltenSkinData;
+import aurocosh.divinefavor.common.custom_data.player.data.spell.pearl_crumbs.PearlCrumbsData;
 
 // The default implementation of the capability. Holds all the logic.
 public class DefaultPlayerDataHandler implements IPlayerDataHandler {
@@ -35,7 +35,7 @@ public class DefaultPlayerDataHandler implements IPlayerDataHandler {
     private final CrawlingMistData crawlingMistData;
     private final EscapePlanData escapePlanData;
     private final EvilEyeData evilEyeData;
-    private final FavorData favorData;
+    private final SpiritData spiritData;
     private final FocusedFuryData focusedFuryData;
     private final GillsData gillsData;
     private final GrudgeData grudgeData;
@@ -68,7 +68,7 @@ public class DefaultPlayerDataHandler implements IPlayerDataHandler {
         crawlingMistData = new CrawlingMistData();
         escapePlanData = new EscapePlanData();
         evilEyeData = new EvilEyeData();
-        favorData = new FavorData();
+        spiritData = new SpiritData();
         focusedFuryData = new FocusedFuryData();
         gillsData = new GillsData();
         grudgeData = new GrudgeData();
@@ -117,8 +117,8 @@ public class DefaultPlayerDataHandler implements IPlayerDataHandler {
     }
 
     @Override
-    public FavorData getFavorData() {
-        return favorData;
+    public SpiritData getSpiritData() {
+        return spiritData;
     }
 
     @Override

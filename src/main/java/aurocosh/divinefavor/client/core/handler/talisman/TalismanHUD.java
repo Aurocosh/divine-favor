@@ -1,9 +1,9 @@
 package aurocosh.divinefavor.client.core.handler.talisman;
 
 import aurocosh.divinefavor.common.custom_data.player.PlayerData;
-import aurocosh.divinefavor.common.custom_data.player.data.favor.FavorData;
-import aurocosh.divinefavor.common.favor.ModFavor;
+import aurocosh.divinefavor.common.custom_data.player.data.favor.SpiritData;
 import aurocosh.divinefavor.common.item.talismans.base.ItemTalisman;
+import aurocosh.divinefavor.common.spirit.base.ModSpirit;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.GuiIngame;
@@ -24,10 +24,10 @@ public class TalismanHUD {
         ItemTalisman talisman = (ItemTalisman) talismanStack.getItem();
         String description = talisman.getUseInfo(player);
 
-        ModFavor favor = talisman.getFavor();
-        FavorData favorData = PlayerData.get(player).getFavorData();
-        int value = favorData.getFavor(favor.getId());
-        int maxLimit = favorData.getMaxFavor(favor.getId());
+        ModSpirit spirit = talisman.getSpirit();
+        SpiritData spiritData = PlayerData.get(player).getSpiritData();
+        int value = spiritData.getFavor(spirit.getId());
+        int maxLimit = spiritData.getMaxFavor(spirit.getId());
         String favorDescription = value + "/" + maxLimit;
 
         int alpha = 255;
@@ -65,12 +65,12 @@ public class TalismanHUD {
         GlStateManager.color(1f, 1f, 1f);
         mc.getRenderItem().renderItemIntoGUI(talismanStack, 5, -6);
 
-        // favor icon
-        mc.renderEngine.bindTexture(favor.getIcon());
+        // spirit icon
+        mc.renderEngine.bindTexture(spirit.getIcon());
         Gui.drawModalRectWithCustomSizedTexture(-21, -6, 0, 0, 16, 16, 16, 16);
 
-        // favor symbol
-        mc.renderEngine.bindTexture(favor.getSymbol());
+        // spirit symbol
+        mc.renderEngine.bindTexture(spirit.getSymbol());
         Gui.drawModalRectWithCustomSizedTexture(-21, -6, 0, 0, 16, 16, 16, 16);
 
         GlStateManager.popMatrix();

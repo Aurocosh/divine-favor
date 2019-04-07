@@ -1,6 +1,6 @@
 package aurocosh.divinefavor.common.item.talismans.spell.base;
 
-import aurocosh.divinefavor.common.favor.ModFavor;
+import aurocosh.divinefavor.common.spirit.base.ModSpirit;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.DifficultyInstance;
@@ -13,8 +13,8 @@ import java.util.EnumSet;
 public class SpellTalismanSummonEntity<T extends EntityLiving> extends ItemSpellTalisman {
     private final Class<? extends T> clazz;
 
-    public SpellTalismanSummonEntity(String name, ModFavor favor, int favorCost, EnumSet<SpellOptions> options, Class<? extends T> clazz) {
-        super(name, favor, favorCost, options);
+    public SpellTalismanSummonEntity(String name, ModSpirit spirit, int favorCost, EnumSet<SpellOptions> options, Class<? extends T> clazz) {
+        super(name, spirit, favorCost, options);
         this.clazz = clazz;
     }
 

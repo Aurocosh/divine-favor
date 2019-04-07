@@ -1,8 +1,8 @@
 package aurocosh.divinefavor.common.integrations.patchouli.processors;
 
 import aurocosh.divinefavor.DivineFavor;
-import aurocosh.divinefavor.common.favor.ModFavor;
 import aurocosh.divinefavor.common.item.talismans.spell.base.ItemSpellTalisman;
+import aurocosh.divinefavor.common.spirit.base.ModSpirit;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
@@ -35,19 +35,19 @@ public class SpellTalismanStatProcessor implements IComponentProcessor {
             ItemStack stack = new ItemStack(spellTalisman, 1);
             return ItemStackUtil.serializeStack(stack);
         }
-        else if (key.equals("favor_icon")) {
+        else if (key.equals("spirit_icon")) {
 
-            ModFavor favor = spellTalisman.getFavor();
-            return favor.getIcon().toString();
+            ModSpirit spirit = spellTalisman.getSpirit();
+            return spirit.getIcon().toString();
         }
-        else if (key.equals("favor_symbol")) {
-            ModFavor favor = spellTalisman.getFavor();
-            return favor.getSymbol().toString();
+        else if (key.equals("spirit_symbol")) {
+            ModSpirit spirit = spellTalisman.getSpirit();
+            return spirit.getSymbol().toString();
         }
         else if (key.equals("text")) {
             List<String> lines = new ArrayList<>();
-            ModFavor favor = spellTalisman.getFavor();
-            lines.add("Favor: " + favor.getName());
+            ModSpirit spirit = spellTalisman.getSpirit();
+            lines.add("Favor: " + spirit.getName());
             int favorCost = spellTalisman.getFavorCost();
             if (favorCost == 0)
                 lines.add("No cost");

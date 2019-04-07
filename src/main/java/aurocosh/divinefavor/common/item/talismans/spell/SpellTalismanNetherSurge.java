@@ -1,11 +1,11 @@
 package aurocosh.divinefavor.common.item.talismans.spell;
 
 import aurocosh.divinefavor.common.config.common.ConfigSpells;
-import aurocosh.divinefavor.common.favor.ModFavor;
 import aurocosh.divinefavor.common.item.talismans.spell.base.ItemSpellTalisman;
 import aurocosh.divinefavor.common.item.talismans.spell.base.SpellOptions;
 import aurocosh.divinefavor.common.item.talismans.spell.base.TalismanContext;
 import aurocosh.divinefavor.common.lib.DistributedRandomList;
+import aurocosh.divinefavor.common.spirit.base.ModSpirit;
 import aurocosh.divinefavor.common.util.UtilBlock;
 import aurocosh.divinefavor.common.util.UtilCoordinates;
 import aurocosh.divinefavor.common.util.UtilRandom;
@@ -31,8 +31,8 @@ public class SpellTalismanNetherSurge extends ItemSpellTalisman {
     private final DistributedRandomList<Block> possibleBlocks = new DistributedRandomList<>();
     private final DistributedRandomList<Class<? extends EntityLiving>> possibleEnemies = new DistributedRandomList<>();
 
-    public SpellTalismanNetherSurge(String name, ModFavor favor, int favorCost, EnumSet<SpellOptions> options) {
-        super(name, favor, favorCost, options);
+    public SpellTalismanNetherSurge(String name, ModSpirit spirit, int favorCost, EnumSet<SpellOptions> options) {
+        super(name, spirit, favorCost, options);
 
         for (Map.Entry<String, Double> entry : ConfigSpells.netherSurge.possibleBlocks.entrySet()) {
             Block block = Block.getBlockFromName(entry.getKey());
