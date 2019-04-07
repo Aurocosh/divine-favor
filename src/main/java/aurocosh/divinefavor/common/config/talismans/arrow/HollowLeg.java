@@ -5,7 +5,7 @@ import net.minecraftforge.common.config.Config;
 
 public class HollowLeg {
     @Config.Name("Favor cost")
-    public int favorCost = 5;
+    public int favorCost = 40;
     @Config.Name("Duration")
     public int duration = UtilTick.minutesToTicks(2);
     @Config.Name("Exaustion value")

@@ -8,7 +8,7 @@ import java.util.Map;
 
 public class NetherSurge {
     @Config.Name("Favor cost")
-    public int favorCost = 5;
+    public int favorCost = 200;
     @Config.Name("Min neighbours to add")
     public int minNeighboursToAdd = 1;
     @Config.Name("Max neighbours to add")

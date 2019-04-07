@@ -4,5 +4,5 @@ import net.minecraftforge.common.config.Config;
 
 public class Vitalize {
     @Config.Name("Favor cost")
-    public int favorCost = 5;
+    public int favorCost = 40;
 }

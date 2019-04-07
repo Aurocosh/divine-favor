@@ -4,7 +4,7 @@ import net.minecraftforge.common.config.Config;
 
 public class ButcheringStrike {
     @Config.Name("Favor cost")
-    public int favorCost = 5;
+    public int favorCost = 20;
     @Config.Name("Charges")
     public int charges = 5;
     @Config.Name("Extra damage")

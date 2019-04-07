@@ -6,5 +6,5 @@ public class Warp {
     @Config.Name("Favor cost")
     public int favorCost = 5;
     @Config.Name("Blink distance")
-    public int distance = 8;
+    public int distance = 10;
 }

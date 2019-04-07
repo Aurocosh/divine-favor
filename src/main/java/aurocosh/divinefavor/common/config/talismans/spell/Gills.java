@@ -5,7 +5,7 @@ import net.minecraftforge.common.config.Config;
 
 public class Gills {
     @Config.Name("Favor cost")
-    public int favorCost = 5;
+    public int favorCost = 20;
     @Config.Name("Max time not in water")
     public int maxTimeNotInWater = UtilTick.secondsToTicks(10f);
     @Config.Name("Damage delay")

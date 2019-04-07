@@ -4,7 +4,7 @@ import net.minecraftforge.common.config.Config;
 
 public class PiercingInferno {
     @Config.Name("Favor cost")
-    public int favorCost = 5;
+    public int favorCost = 80;
     @Config.Name("Blocks to break weak")
     public int blocksToBreakWeak = 30;
     @Config.Name("Blocks to break normal")

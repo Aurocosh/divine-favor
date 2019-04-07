@@ -5,7 +5,7 @@ import net.minecraftforge.common.config.Config;
 
 public class WildSprint {
     @Config.Name("Favor cost")
-    public int favorCost = 5;
+    public int favorCost = 20;
     @Config.Name("Activation delay")
     public int activationDelay = UtilTick.secondsToTicks(10);
     @Config.Name("Speed duration")

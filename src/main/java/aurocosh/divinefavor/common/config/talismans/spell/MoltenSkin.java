@@ -5,7 +5,7 @@ import net.minecraftforge.common.config.Config;
 
 public class MoltenSkin {
     @Config.Name("Favor cost")
-    public int favorCost = 5;
+    public int favorCost = 20;
     @Config.Name("Speed modifier")
     public float speedModifier = 0.14f;
     @Config.Name("Max time outside lava")

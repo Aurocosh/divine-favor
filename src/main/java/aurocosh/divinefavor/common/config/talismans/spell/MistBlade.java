@@ -4,7 +4,7 @@ import net.minecraftforge.common.config.Config;
 
 public class MistBlade {
     @Config.Name("Favor cost")
-    public int favorCost = 5;
+    public int favorCost = 20;
     @Config.Name("Extra damage")
     public float extraDamage = 8;
     @Config.Name("Extra ranged damage")

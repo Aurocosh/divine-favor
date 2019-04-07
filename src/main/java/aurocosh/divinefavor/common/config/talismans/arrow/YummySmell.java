@@ -5,7 +5,7 @@ import net.minecraftforge.common.config.Config;
 
 public class YummySmell {
     @Config.Name("Favor cost")
-    public int favorCost = 5;
+    public int favorCost = 140;
     @Config.Name("Duration")
     public int duration = UtilTick.secondsToTicks(30);
     @Config.Name("Effect rate")

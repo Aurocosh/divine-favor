@@ -4,7 +4,7 @@ import net.minecraftforge.common.config.Config;
 
 public class BloodOfGrass {
     @Config.Name("Favor cost")
-    public int favorCost = 5;
+    public int favorCost = 15;
     @Config.Name("Radius")
     public int radius = 6;
     @Config.Name("Health per grass")
