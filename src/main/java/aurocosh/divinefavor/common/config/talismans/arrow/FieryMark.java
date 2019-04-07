@@ -5,7 +5,7 @@ import net.minecraftforge.common.config.Config;
 
 public class FieryMark {
     @Config.Name("Favor cost")
-    public int favorCost = 5;
+    public int favorCost = 120;
     @Config.Name("Duration")
     public int duration = UtilTick.secondsToTicks(10);
     @Config.Name("Explosion power")

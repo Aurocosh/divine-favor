@@ -5,7 +5,7 @@ import net.minecraftforge.common.config.Config;
 
 public class WindLeash {
     @Config.Name("Favor cost")
-    public int favorCost = 5;
+    public int favorCost = 80;
     @Config.Name("Duration")
     public int duration = UtilTick.secondsToTicks(12);
     @Config.Name("Motion speed")

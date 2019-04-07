@@ -4,7 +4,7 @@ import net.minecraftforge.common.config.Config;
 
 public class WinterBreath {
     @Config.Name("Favor cost")
-    public int favorCost = 5;
+    public int favorCost = 60;
     @Config.Name("Radius")
     public int radius = 10;
     @Config.Name("Cone size")

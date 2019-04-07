@@ -5,7 +5,7 @@ import net.minecraftforge.common.config.Config;
 
 public class MinersFocus {
     @Config.Name("Favor cost")
-    public int favorCost = 5;
+    public int favorCost = 30;
     @Config.Name("Haste duration")
     public int hasteDuration = UtilTick.minutesToTicks(2);
     @Config.Name("Haste level")

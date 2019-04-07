@@ -5,7 +5,7 @@ import net.minecraftforge.common.config.Config;
 
 public class Petrification {
     @Config.Name("Favor cost")
-    public int favorCost = 5;
+    public int favorCost = 100;
     @Config.Name("Duration")
     public int duration = UtilTick.secondsToTicks(40);
     @Config.Name("Damage")

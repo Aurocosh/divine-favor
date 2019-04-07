@@ -5,7 +5,7 @@ import net.minecraftforge.common.config.Config;
 
 public class ConsumingFury {
     @Config.Name("Favor cost")
-    public int favorCost = 5;
+    public int favorCost = 10;
     @Config.Name("Duration")
     public int duration = UtilTick.minutesToTicks(5);
     @Config.Name("Mobs to kill")

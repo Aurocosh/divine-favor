@@ -5,7 +5,7 @@ import net.minecraftforge.common.config.Config;
 
 public class CrawlingMist {
     @Config.Name("Favor cost")
-    public int favorCost = 5;
+    public int favorCost = 80;
     @Config.Name("Duration")
     public int duration = UtilTick.minutesToTicks(3);
     @Config.Name("Fog start")
