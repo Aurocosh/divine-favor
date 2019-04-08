@@ -1,4 +1,4 @@
-package aurocosh.divinefavor.common.lib;
+package aurocosh.divinefavor.common.lib.distributed_random;
 
 import java.util.HashMap;
 import java.util.Map;

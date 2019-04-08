@@ -11,8 +11,8 @@ public class NeblazePunishmentConfig {
     public IntervalConfig blocksToMelt = new IntervalConfig(3, 7);
     @Config.Name("Blocks to ignite")
     public IntervalConfig blocksToIgnite = new IntervalConfig(20, 60);
-    @Config.Name("Mobs to summon")
-    public IntervalConfig mobsToSummon = new IntervalConfig(3, 5);
+    @Config.Name("Mobs to spawn")
+    public IntervalConfig mobsToSpawn = new IntervalConfig(3, 5);
     @Config.Name("Spawn radius")
     public int spawnRadius = 10;
     @Config.Name("Ignition time seconds")

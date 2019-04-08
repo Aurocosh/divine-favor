@@ -4,7 +4,7 @@ import aurocosh.divinefavor.common.config.common.ConfigPresence;
 import aurocosh.divinefavor.common.custom_data.player.PlayerData;
 import aurocosh.divinefavor.common.custom_data.player.data.presence.towering.ToweringPresenceData;
 import aurocosh.divinefavor.common.item.calling_stones.ModCallingStones;
-import aurocosh.divinefavor.common.lib.DistributedRandomList;
+import aurocosh.divinefavor.common.lib.distributed_random.DistributedRandomList;
 import aurocosh.divinefavor.common.potions.base.effect.ModEffect;
 import aurocosh.divinefavor.common.potions.base.potion.ModPotion;
 import aurocosh.divinefavor.common.potions.common.ModCurses;
