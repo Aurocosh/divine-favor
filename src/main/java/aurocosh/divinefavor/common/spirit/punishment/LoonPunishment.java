@@ -2,7 +2,8 @@ package aurocosh.divinefavor.common.spirit.punishment;
 
 import aurocosh.divinefavor.DivineFavor;
 import aurocosh.divinefavor.common.config.common.ConfigPunishments;
-import aurocosh.divinefavor.common.lib.DistributedRandomList;
+import aurocosh.divinefavor.common.lib.distributed_random.DistributedRandomEntityList;
+import aurocosh.divinefavor.common.lib.distributed_random.DistributedRandomList;
 import aurocosh.divinefavor.common.muliblock.instance.MultiBlockInstance;
 import aurocosh.divinefavor.common.spirit.base.SpiritPunishment;
 import aurocosh.divinefavor.common.util.UtilAlgoritm;
@@ -30,18 +31,7 @@ public class LoonPunishment extends SpiritPunishment {
     }
 
     public static class LoonPunishmentTask extends ServerSideTask {
-        private static final DistributedRandomList<Class<? extends Entity>> possibleEnemies = new DistributedRandomList<>();
-
-        static {
-            for (Map.Entry<String, Double> entry : ConfigPunishments.loon.summonedEnemies.entrySet()) {
-                String entityName = entry.getKey();
-                Class<? extends Entity> entityClass = EntityList.getClassFromName(entityName);
-                if (entityClass != null)
-                    possibleEnemies.add(entityClass, entry.getValue());
-                else
-                    DivineFavor.logger.error("Loon punishment config error. Entity type not found: " + entityName);
-            }
-        }
+        private static final DistributedRandomEntityList possibleEnemies = new DistributedRandomEntityList(ConfigPunishments.loon.summonedEnemies);
 
         private final EntityPlayer player;
 

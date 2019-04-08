@@ -1,15 +1,13 @@
 package aurocosh.divinefavor.common.spirit.punishment;
 
-import aurocosh.divinefavor.DivineFavor;
 import aurocosh.divinefavor.common.config.common.ConfigPunishments;
-import aurocosh.divinefavor.common.lib.DistributedRandomList;
+import aurocosh.divinefavor.common.lib.distributed_random.DistributedRandomEntityList;
 import aurocosh.divinefavor.common.lib.math.Vector3i;
 import aurocosh.divinefavor.common.muliblock.instance.MultiBlockInstance;
 import aurocosh.divinefavor.common.spirit.base.SpiritPunishment;
 import aurocosh.divinefavor.common.util.*;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityList;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.EnumFacing;
@@ -18,22 +16,10 @@ import net.minecraft.world.World;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 public class NeblazePunishment extends SpiritPunishment {
     public static final int BLOCK_SEARCH_LIMIT = 60;
-    private static final DistributedRandomList<Class<? extends Entity>> possibleEnemies = new DistributedRandomList<>();
-
-    static {
-        for (Map.Entry<String, Double> entry : ConfigPunishments.neblaze.summonedEnemies.entrySet()) {
-            String entityName = entry.getKey();
-            Class<? extends Entity> entityClass = EntityList.getClassFromName(entityName);
-            if (entityClass != null)
-                possibleEnemies.add(entityClass, entry.getValue());
-            else
-                DivineFavor.logger.error("Neblaze punishment config error. Entity type not found: " + entityName);
-        }
-    }
+    private static final DistributedRandomEntityList possibleEnemies = new DistributedRandomEntityList(ConfigPunishments.neblaze.summonedEnemies);
 
     @Override
     public void execute(EntityPlayer player, World world, BlockPos pos, IBlockState state, MultiBlockInstance instance) {
@@ -57,7 +43,7 @@ public class NeblazePunishment extends SpiritPunishment {
     }
 
     private void spawnEnemies(EntityPlayer player, World world) {
-        int mobsToSummon = ConfigPunishments.neblaze.mobsToSummon.getRandom();
+        int mobsToSummon = ConfigPunishments.neblaze.mobsToSpawn.getRandom();
         int spawnAttempts = mobsToSummon * 10;
         BlockPos playerPosition = player.getPosition();
         UtilAlgoritm.repeatUntilSuccessful(() -> spawnMob(world, playerPosition), mobsToSummon, spawnAttempts);
