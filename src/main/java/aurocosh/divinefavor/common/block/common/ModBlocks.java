@@ -1,12 +1,9 @@
 package aurocosh.divinefavor.common.block.common;
 
-import aurocosh.divinefavor.common.block.BlockDiviner;
 import aurocosh.divinefavor.common.block.BlockEnderPumpkin;
 import aurocosh.divinefavor.common.block.base.ModBlock;
 import aurocosh.divinefavor.common.block.bath_heater.BlockBathHeater;
 import aurocosh.divinefavor.common.block.bath_heater.TileBathHeater;
-import aurocosh.divinefavor.common.block.fast_furnace.BlockFastFurnaceMod;
-import aurocosh.divinefavor.common.block.fast_furnace.TileFastFurnace;
 import aurocosh.divinefavor.common.block.medium.BlockMedium;
 import aurocosh.divinefavor.common.block.medium.TileMedium;
 import aurocosh.divinefavor.common.block.soulbound_lectern.BlockSoulboundLectern;
@@ -19,7 +16,6 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class ModBlocks {
     public static ModBlock bathHeater;
-    public static ModBlock diviner;
     public static ModBlock fastFurnace;
 
     public static ModBlock medium_gold;
@@ -42,8 +38,6 @@ public class ModBlocks {
 
     public static void preInit() {
         bathHeater = new BlockBathHeater();
-        diviner = new BlockDiviner();
-        fastFurnace = new BlockFastFurnaceMod();
 
         medium_gold = new BlockMedium("gold", Material.IRON);
         medium_iron = new BlockMedium("iron", Material.IRON);
@@ -72,7 +66,6 @@ public class ModBlocks {
 
     private static void initTileEntities() {
         registerTile(TileBathHeater.class, ConstBlockNames.BATH_HEATER);
-        registerTile(TileFastFurnace.class, ConstBlockNames.FAST_FURNACE);
         registerTile(TileMedium.class, ConstBlockNames.MEDIUM);
         registerTile(TileSoulboundLectern.class, ConstBlockNames.SOULBOUND_LECTERN);
     }

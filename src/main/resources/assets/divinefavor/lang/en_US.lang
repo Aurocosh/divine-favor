@@ -24,9 +24,7 @@ tile.divinefavor:soulbound_lectern_stone.name=Stone soulbound lectern
 tile.divinefavor:soulbound_lectern_wood.name=Wood soulbound lectern
 ## OTHER BLOCKS
 tile.divinefavor:bath_heater.name=Bath heater
-tile.divinefavor:diviner.name=Diviner
 tile.divinefavor:ender_pumpkin.name=Ender pumpkin
-tile.divinefavor:fast_furnace.name=Fast furnace
 
 # MISC
 divinefavor:no_grudge_assigned=No grudge
@@ -251,9 +249,7 @@ tile.divinefavor:soulbound_lectern_stone.description=Special lectern that allows
 tile.divinefavor:soulbound_lectern_wood.description=Special lectern that allows you to store and access your spiritual contracts. Requires special multiblock to work. Functions similar to ender chest. Read guidebook for more details (Immaterial guide).
 ## OTHER
 tile.divinefavor:bath_heater.description=This block allows you to use special blends. Such blends grant special effects similar to potions. Read guidebook for more details (Immaterial guide).
-tile.divinefavor:diviner.description=Debug item. Creative only.
 tile.divinefavor:ender_pumpkin.description=Enderman mask crafted from pumpkin. Greatly hinders your vision, but still has some practical uses.
-tile.divinefavor:fast_furnace.description=Debug item.
 
 
 #ITEM DESCRIPTIONS FOR JEI AND PATCHOULI
