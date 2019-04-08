@@ -1,97 +1,97 @@
 package aurocosh.divinefavor.common.spirit.punishment;
 
+import aurocosh.divinefavor.DivineFavor;
+import aurocosh.divinefavor.common.config.common.ConfigPunishments;
 import aurocosh.divinefavor.common.lib.DistributedRandomList;
-import aurocosh.divinefavor.common.lib.SuccessCounter;
 import aurocosh.divinefavor.common.lib.math.Vector3i;
 import aurocosh.divinefavor.common.muliblock.instance.MultiBlockInstance;
 import aurocosh.divinefavor.common.spirit.base.SpiritPunishment;
-import aurocosh.divinefavor.common.util.UtilBlock;
-import aurocosh.divinefavor.common.util.UtilCoordinates;
-import aurocosh.divinefavor.common.util.UtilList;
-import aurocosh.divinefavor.common.util.UtilRandom;
+import aurocosh.divinefavor.common.util.*;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.entity.EntityLiving;
-import net.minecraft.entity.boss.EntityWither;
-import net.minecraft.entity.monster.EntityBlaze;
-import net.minecraft.entity.monster.EntityGhast;
-import net.minecraft.entity.monster.EntityPigZombie;
-import net.minecraft.entity.monster.EntityWitherSkeleton;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityList;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class NeblazePunishment extends SpiritPunishment {
-    public static int IGNITION_TIME_SECONDS = 20;
-
-    public static int MOBS_TO_SUMMON = 4;
-    public static int SPAWN_ATTEMPTS = MOBS_TO_SUMMON * 10;
-    private final int SPAWN_RADIUS = 10;
-
-    public static int MIN_BLOCKS_TO_MELT = 3;
-    public static int MAX_BLOCKS_TO_MELT = 7;
-
-    private static final DistributedRandomList<Class<? extends EntityLiving>> possibleEnemies = new DistributedRandomList<>();
+    public static final int BLOCK_SEARCH_LIMIT = 60;
+    private static final DistributedRandomList<Class<? extends Entity>> possibleEnemies = new DistributedRandomList<>();
 
     static {
-        possibleEnemies.add(EntityPigZombie.class, 0.15d);
-        possibleEnemies.add(EntityBlaze.class, 0.25d);
-        possibleEnemies.add(EntityWitherSkeleton.class, 0.35d);
-        possibleEnemies.add(EntityGhast.class, 0.25d);
-        possibleEnemies.add(EntityWither.class, 0.0001d);
+        for (Map.Entry<String, Double> entry : ConfigPunishments.neblaze.summonedEnemies.entrySet()) {
+            String entityName = entry.getKey();
+            Class<? extends Entity> entityClass = EntityList.getClassFromName(entityName);
+            if (entityClass != null)
+                possibleEnemies.add(entityClass, entry.getValue());
+            else
+                DivineFavor.logger.error("Neblaze punishment config error. Entity type not found: " + entityName);
+        }
     }
 
     @Override
     public void execute(EntityPlayer player, World world, BlockPos pos, IBlockState state, MultiBlockInstance instance) {
-        player.setFire(IGNITION_TIME_SECONDS);
+        player.setFire(ConfigPunishments.neblaze.ignitionTimeSeconds);
         smeltPartsOfAltar(player, world, instance);
         spawnEnemies(player, world);
+        igniteRandomBlocks(world, instance.multiBlockOrigin.toBlockPos());
     }
 
     private void smeltPartsOfAltar(EntityPlayer player, World world, MultiBlockInstance instance) {
-        int blocksToSmelt = UtilRandom.nextInt(MIN_BLOCKS_TO_MELT, MAX_BLOCKS_TO_MELT);
+        int blocksToSmelt = ConfigPunishments.neblaze.blocksToMelt.getRandom();
         List<BlockPos> solidsPositions = Vector3i.convert(new ArrayList<>(instance.positionsOfSolids));
         List<BlockPos> netherrackPositions = UtilList.filterList(solidsPositions, pos -> world.getBlockState(pos).getBlock() == Blocks.NETHERRACK);
         List<BlockPos> selectedPositions = UtilRandom.selectRandom(netherrackPositions, blocksToSmelt);
         for (BlockPos position : selectedPositions) {
             if (UtilBlock.canBreakBlock(player, world, position, false)) {
-//                IBlockState oldState = world.getBlockState(position);
                 IBlockState newState = Blocks.FLOWING_LAVA.getDefaultState();
                 world.setBlockState(position, newState, 11);
-//                world.notifyBlockUpdate(position, oldState, newState, 3);
             }
         }
     }
 
     private void spawnEnemies(EntityPlayer player, World world) {
+        int mobsToSummon = ConfigPunishments.neblaze.mobsToSummon.getRandom();
+        int spawnAttempts = mobsToSummon * 10;
         BlockPos playerPosition = player.getPosition();
-        SuccessCounter counter = new SuccessCounter(MOBS_TO_SUMMON, SPAWN_ATTEMPTS);
-        while (counter.attemptOnceMore())
-            if (spawnNetherMob(world, playerPosition))
-                counter.registerSuccess();
+        UtilAlgoritm.repeatUntilSuccessful(() -> spawnMob(world, playerPosition), mobsToSummon, spawnAttempts);
     }
 
-    private boolean spawnNetherMob(World world, BlockPos pos) {
-        BlockPos spawnPos = UtilCoordinates.getRandomNeighbour(pos, SPAWN_RADIUS, 0, SPAWN_RADIUS);
-        spawnPos = UtilCoordinates.findPlaceToSpawn(spawnPos, world, SPAWN_RADIUS);
-        if (spawnPos == null)
-            return false;
+    private boolean spawnMob(World world, BlockPos pos) {
+        int spawnRadius = ConfigPunishments.neblaze.spawnRadius;
+        BlockPos spawnPos = UtilCoordinates.getRandomNeighbour(pos, spawnRadius, 0, spawnRadius);
+        spawnPos = UtilCoordinates.findPlaceToSpawn(spawnPos, world, spawnRadius);
+        if (spawnPos != null && possibleEnemies.size() > 0) {
+            Class<? extends Entity> clazz = possibleEnemies.getRandom();
+            return UtilEntity.spawnEntity(world, spawnPos, clazz);
+        }
+        return false;
+    }
 
-        try {
-            Class<? extends EntityLiving> clazz = possibleEnemies.getRandom();
-            Constructor<? extends EntityLiving> constructor = clazz.getConstructor(World.class);
-            EntityLiving entityLiving = constructor.newInstance(world);
-            entityLiving.setLocationAndAngles(spawnPos.getX(), spawnPos.getY(), spawnPos.getZ(), 0, 0.0F);
-            world.spawnEntity(entityLiving);
+    private void igniteRandomBlocks(World world, BlockPos center) {
+        int blocksToIgnite = ConfigPunishments.neblaze.blocksToIgnite.getRandom();
+        for (int i = 0; i < blocksToIgnite; i++)
+            igniteBlock(world, center);
+    }
+
+    private void igniteBlock(World world, BlockPos center) {
+        int ignitionRadius = ConfigPunishments.neblaze.ignitionRadius;
+        BlockPos ignitionPos = UtilCoordinates.getRandomNeighbour(center, ignitionRadius, ignitionRadius, ignitionRadius);
+        if (world.isAirBlock(ignitionPos)) {
+            ignitionPos = UtilCoordinates.findBlock(ignitionPos, EnumFacing.DOWN, BLOCK_SEARCH_LIMIT, pos -> !world.isAirBlock(pos));
+            if (ignitionPos == null)
+                return;
         }
-        catch (InvocationTargetException | NoSuchMethodException | InstantiationException | IllegalAccessException e) {
-            e.printStackTrace();
-        }
-        return true;
+
+        List<BlockPos> candidates = Vector3i.convert(UtilVector3i.getNeighbours(new Vector3i(ignitionPos)));
+        for (BlockPos pos : candidates)
+            if (UtilBlock.ignite(world, pos))
+                return;
     }
 }
