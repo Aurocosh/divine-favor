@@ -1,5 +1,6 @@
 package aurocosh.divinefavor.common.spirit.punishment;
 
+import aurocosh.divinefavor.common.config.common.ConfigPunishments;
 import aurocosh.divinefavor.common.lib.math.Vector3i;
 import aurocosh.divinefavor.common.muliblock.instance.MultiBlockInstance;
 import aurocosh.divinefavor.common.spirit.base.SpiritPunishment;
@@ -14,25 +15,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class EnderererPunishment extends SpiritPunishment {
-    public static int PLAYER_TELEPORT_RADIUS = 30;
-    public static int BLOCK_TELEPORT_RADIUS = 15;
-
-    public static int MIN_BLOCKS_TO_MOVE = 20;
-    public static int MAX_BLOCKS_TO_MOVE = 40;
-
     @Override
     public void execute(EntityPlayer player, World world, BlockPos pos, IBlockState state, MultiBlockInstance instance) {
-        BlockPos destination = UtilCoordinates.getRandomNeighbourSafe(pos, PLAYER_TELEPORT_RADIUS, PLAYER_TELEPORT_RADIUS, PLAYER_TELEPORT_RADIUS);
-        UtilEntity.teleport(player,destination);
+        int radius = ConfigPunishments.endererer.playerTeleportRadius;
+        BlockPos destination = UtilCoordinates.getRandomNeighbourSafe(pos, radius, radius, radius);
+        UtilEntity.teleport(player, destination);
 
         teleportPartsOfAltar(player, world, instance);
     }
 
     private void teleportPartsOfAltar(EntityPlayer player, World world, MultiBlockInstance instance) {
-        int blocksToSmelt = UtilRandom.nextInt(MIN_BLOCKS_TO_MOVE, MAX_BLOCKS_TO_MOVE);
+        int blocksToMove = ConfigPunishments.endererer.blocksToMove.getRandom();
         List<BlockPos> solidsPositions = Vector3i.convert(new ArrayList<>(instance.positionsOfSolids));
         List<BlockPos> coalPositions = UtilList.filterList(solidsPositions, pos -> world.getBlockState(pos).getBlock() == Blocks.COAL_BLOCK);
-        List<BlockPos> selectedPositions = UtilRandom.selectRandom(coalPositions, blocksToSmelt);
+        List<BlockPos> selectedPositions = UtilRandom.selectRandom(coalPositions, blocksToMove);
         for (BlockPos position : selectedPositions)
             swapBlocks(player, world, position);
     }
@@ -40,7 +36,8 @@ public class EnderererPunishment extends SpiritPunishment {
     private void swapBlocks(EntityPlayer player, World world, BlockPos position) {
         if (!(world.isAirBlock(position) || UtilBlock.canBreakBlock(player, world, position, false)))
             return;
-        BlockPos destination = UtilCoordinates.getRandomNeighbourSafe(position, BLOCK_TELEPORT_RADIUS, BLOCK_TELEPORT_RADIUS, BLOCK_TELEPORT_RADIUS);
+        int blockTeleportRadius = ConfigPunishments.endererer.blockTeleportRadius;
+        BlockPos destination = UtilCoordinates.getRandomNeighbourSafe(position, blockTeleportRadius, blockTeleportRadius, blockTeleportRadius);
         if (!(world.isAirBlock(destination) || UtilBlock.canBreakBlock(player, world, destination, false)))
             return;
         IBlockState positionState = world.getBlockState(position);
