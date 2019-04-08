@@ -5,14 +5,13 @@ import aurocosh.divinefavor.common.item.talismans.spell.base.ItemSpellTalisman;
 import aurocosh.divinefavor.common.item.talismans.spell.base.SpellOptions;
 import aurocosh.divinefavor.common.item.talismans.spell.base.TalismanContext;
 import aurocosh.divinefavor.common.spirit.base.ModSpirit;
+import aurocosh.divinefavor.common.tasks.BlockProcessingTask;
 import aurocosh.divinefavor.common.util.UtilCoordinates;
 import aurocosh.divinefavor.common.util.UtilList;
 import aurocosh.divinefavor.common.util.UtilRandom;
-import aurocosh.divinefavor.common.util.tasks.BlockProcessingTask;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.math.BlockPos;
-import net.minecraftforge.common.MinecraftForge;
 
 import java.util.ArrayList;
 import java.util.EnumSet;
@@ -44,6 +43,6 @@ public class SpellTalismanPiercingInferno extends ItemSpellTalisman {
             Block block = UtilRandom.rollDice(ConfigSpells.piercingInferno.chanceToIgnite) ? Blocks.FIRE : Blocks.AIR;
             context.world.setBlockState(pos, block.getDefaultState());
         };
-        MinecraftForge.EVENT_BUS.register(new BlockProcessingTask(blocksToRemove, context.world, 1, processor));
+        new BlockProcessingTask(blocksToRemove, context.world, 1, processor).start();
     }
 }
