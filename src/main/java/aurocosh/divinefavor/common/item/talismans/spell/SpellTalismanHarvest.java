@@ -44,7 +44,7 @@ public class SpellTalismanHarvest extends ItemSpellTalisman {
         List<BlockPos> posList = UtilCoordinates.getBlocksInSphere(player.getPosition(), ConfigSpells.harvest.radius);
         List<BlockPos> plantList = UtilList.filterList(posList, element -> isValidCrop(element, world));
         for (BlockPos pos : plantList)
-            UtilBlock.removeBlockWithDrops(player, world, stack, pos, false, false);
+            UtilBlock.removeBlock(player, world, stack, pos, true, false, false);
     }
 
     private boolean isValidCrop(BlockPos pos, World world) {

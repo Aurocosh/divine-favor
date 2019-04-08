@@ -57,13 +57,14 @@ public class UtilEntity {
     }
 
     public static void dropItemsOnGround(World world, IItemHandler handler, BlockPos pos) {
-        if (handler == null)
-            return;
-        for (int i = 0; i < handler.getSlots(); i++) {
-            ItemStack stack = handler.getStackInSlot(i);
-            if (!stack.isEmpty())
-                world.spawnEntity(new EntityItem(world, pos.getX(), pos.getY(), pos.getZ(), stack));
-        }
+        if (handler != null)
+            for (int i = 0; i < handler.getSlots(); i++)
+                dropItemOnGround(world, handler.getStackInSlot(i), pos);
+    }
+
+    public static void dropItemOnGround(World world, ItemStack stack, BlockPos pos) {
+        if (!stack.isEmpty())
+            world.spawnEntity(new EntityItem(world, pos.getX(), pos.getY(), pos.getZ(), stack));
     }
 
     public static Vec3d toPlayerPosition(BlockPos pos) {

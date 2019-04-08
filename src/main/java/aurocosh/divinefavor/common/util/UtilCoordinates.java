@@ -87,6 +87,16 @@ public class UtilCoordinates {
         return center.add(xShift, yShift, zShift);
     }
 
+    public static BlockPos getRandomBlockInRange(World world, BlockPos center, int radius, int limit, UtilList.Predicate<BlockPos> predicate) {
+        BlockPos blockPos = getRandomNeighbour(center, radius, radius, radius);
+        if (predicate.select(blockPos))
+            return blockPos;
+        blockPos = findBlock(center, EnumFacing.DOWN, limit, predicate);
+        if (blockPos != null)
+            return blockPos;
+        return findBlock(center, EnumFacing.UP, limit, predicate);
+    }
+
     public static BlockPos findBlock(BlockPos start, EnumFacing facing, int limit, UtilList.Predicate<BlockPos> predicate) {
         BlockPos pos = start;
         while (limit-- > 0) {
@@ -208,7 +218,7 @@ public class UtilCoordinates {
             result.add(nextPos);
             for (Vector3i expansionDir : expansionDirs) {
                 Vector3i neighbour = nextPos.add(expansionDir);
-                if (!explored.contains(neighbour)){
+                if (!explored.contains(neighbour)) {
                     expansionFront.add(neighbour);
                     explored.add(neighbour);
                 }
