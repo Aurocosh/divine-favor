@@ -8,7 +8,7 @@ import aurocosh.divinefavor.common.spirit.base.SpiritPunishment;
 import aurocosh.divinefavor.common.util.UtilAlgoritm;
 import aurocosh.divinefavor.common.util.UtilCoordinates;
 import aurocosh.divinefavor.common.util.UtilEntity;
-import aurocosh.divinefavor.common.util.tasks.base.ServerSideTask;
+import aurocosh.divinefavor.common.tasks.base.ServerSideTask;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityList;

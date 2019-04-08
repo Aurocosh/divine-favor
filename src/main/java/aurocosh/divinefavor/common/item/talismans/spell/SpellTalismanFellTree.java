@@ -6,16 +6,15 @@ import aurocosh.divinefavor.common.item.talismans.spell.base.SpellOptions;
 import aurocosh.divinefavor.common.item.talismans.spell.base.TalismanContext;
 import aurocosh.divinefavor.common.lib.math.Vector3i;
 import aurocosh.divinefavor.common.spirit.base.ModSpirit;
+import aurocosh.divinefavor.common.tasks.BlockBreakingTask;
 import aurocosh.divinefavor.common.util.UtilCoordinates;
 import aurocosh.divinefavor.common.util.UtilList;
 import aurocosh.divinefavor.common.util.UtilVector3i;
-import aurocosh.divinefavor.common.util.tasks.BlockBreakingTask;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import net.minecraftforge.common.MinecraftForge;
 
 import java.util.Collections;
 import java.util.EnumSet;
@@ -31,7 +30,7 @@ public class SpellTalismanFellTree extends ItemSpellTalisman {
         List<BlockPos> logs = detectTree(context);
         if (!logs.isEmpty()) {
             ItemStack talisman = context.player.getHeldItem(context.hand);
-            MinecraftForge.EVENT_BUS.register(new BlockBreakingTask(logs, context.player, talisman, ConfigSpells.fellTree.breakingSpeed));
+            new BlockBreakingTask(logs, context.player, talisman, ConfigSpells.fellTree.breakingSpeed).start();
         }
     }
 

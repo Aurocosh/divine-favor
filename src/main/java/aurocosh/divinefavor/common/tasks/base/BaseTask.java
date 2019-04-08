@@ -1,4 +1,4 @@
-package aurocosh.divinefavor.common.util.tasks.base;
+package aurocosh.divinefavor.common.tasks.base;
 
 import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
