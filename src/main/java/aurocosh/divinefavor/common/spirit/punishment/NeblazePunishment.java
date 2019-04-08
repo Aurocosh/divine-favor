@@ -10,7 +10,6 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
-import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
@@ -68,12 +67,9 @@ public class NeblazePunishment extends SpiritPunishment {
 
     private void igniteBlock(World world, BlockPos center) {
         int ignitionRadius = ConfigPunishments.neblaze.ignitionRadius;
-        BlockPos ignitionPos = UtilCoordinates.getRandomNeighbour(center, ignitionRadius, ignitionRadius, ignitionRadius);
-        if (world.isAirBlock(ignitionPos)) {
-            ignitionPos = UtilCoordinates.findBlock(ignitionPos, EnumFacing.DOWN, BLOCK_SEARCH_LIMIT, pos -> !world.isAirBlock(pos));
-            if (ignitionPos == null)
-                return;
-        }
+        BlockPos ignitionPos = UtilCoordinates.getRandomBlockInRange(world, center, ignitionRadius, BLOCK_SEARCH_LIMIT, pos -> !world.isAirBlock(pos));
+        if(ignitionPos == null)
+            return;
 
         List<BlockPos> candidates = Vector3i.convert(UtilVector3i.getNeighbours(new Vector3i(ignitionPos)));
         for (BlockPos pos : candidates)

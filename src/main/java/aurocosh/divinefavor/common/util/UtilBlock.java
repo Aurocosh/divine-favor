@@ -40,7 +40,7 @@ public class UtilBlock {
         return !event.isCanceled();
     }
 
-    private static void removeBlock(EntityPlayer player, World world, BlockPos pos, IBlockState state) {
+    private static void destroyBlock(EntityPlayer player, World world, BlockPos pos, IBlockState state) {
         Block block = state.getBlock();
         if (player.capabilities.isCreativeMode)
             world.setBlockToAir(pos);
@@ -48,12 +48,12 @@ public class UtilBlock {
             block.onPlayerDestroy(world, pos, state);
     }
 
-    public static boolean removeBlockWithDrops(EntityPlayer player, World world, ItemStack tool, BlockPos pos, boolean isToolRequired, boolean particles) {
+    public static boolean removeBlock(EntityPlayer player, World world, ItemStack tool, BlockPos pos, boolean dropItem, boolean isToolRequired, boolean particles) {
         if(!canBreakBlock(player, world, pos, isToolRequired))
             return false;
         IBlockState state = world.getBlockState(pos);
-        removeBlock(player, world, pos, state);
-        if (!player.capabilities.isCreativeMode)
+        destroyBlock(player, world, pos, state);
+        if (!player.capabilities.isCreativeMode && dropItem)
             state.getBlock().harvestBlock(world, player, pos, state, world.getTileEntity(pos), tool);
         if (particles)
             world.playEvent(2001, pos, Block.getStateId(state));
@@ -64,7 +64,7 @@ public class UtilBlock {
         if(!canBreakBlock(player, world, pos, isToolRequired))
             return false;
         IBlockState state = world.getBlockState(pos);
-        removeBlock(player, world, pos, state);
+        destroyBlock(player, world, pos, state);
         harvestBlockAndReplant(world, player, pos, state, 0, tool);
         if (particles)
             world.playEvent(2001, pos, Block.getStateId(state));
@@ -94,8 +94,6 @@ public class UtilBlock {
             }
         }
 
-        // if we have a valid seed, try to plant the crop
-        boolean replanted = false;
         if(seed != null) {
             // make sure the plant is allowed here. should already be, mainly just covers the case of seeds from grass
             IBlockState down = world.getBlockState(pos.down());
@@ -111,7 +109,6 @@ public class UtilBlock {
                 for(ItemStack drop : drops)
                     if (world.rand.nextFloat() <= chance)
                         Block.spawnAsEntity(world, pos, drop);
-                replanted = true;
             }
         }
     }

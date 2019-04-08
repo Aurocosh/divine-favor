@@ -23,7 +23,7 @@ public final class ModSpirits {
         loon = new ModSpirit("loon", new LoonPunishment(), ConfigSpirits.loon);
         neblaze = new ModSpirit("neblaze", new NeblazePunishment(), ConfigSpirits.neblaze);
         redwind = new ModSpirit("redwind", new SpiritPunishment(), ConfigSpirits.redwind);
-        romol = new ModSpirit("romol", new SpiritPunishment(), ConfigSpirits.romol);
+        romol = new ModSpirit("romol", new RomolPunishment(), ConfigSpirits.romol);
         squarefury = new ModSpirit("squarefury", new SquareFuryPunishment(), ConfigSpirits.squarefury);
         timber = new ModSpirit("timber", new TimberPunishment(), ConfigSpirits.timber);
     }

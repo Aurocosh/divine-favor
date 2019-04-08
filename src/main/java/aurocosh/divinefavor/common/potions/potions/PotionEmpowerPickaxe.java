@@ -53,7 +53,7 @@ public class PotionEmpowerPickaxe extends ModPotion {
         if (!doSomething)
             return;
 
-        UtilBlock.removeBlockWithDrops(player, world, stack, pos, true, true);
+        UtilBlock.removeBlock(player, world, stack, pos, true, true, true);
         stack.damageItem(ConfigSpells.empowerPickaxe.toolDamage, player);
     }
 

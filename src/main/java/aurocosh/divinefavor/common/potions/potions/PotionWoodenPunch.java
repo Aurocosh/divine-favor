@@ -49,7 +49,7 @@ public class PotionWoodenPunch extends ModPotionToggleLimited {
         new MessageSyncFavor(spirit, spiritData).sendTo(player);
 
         ItemStack stack = player.getHeldItemMainhand();
-        UtilBlock.removeBlockWithDrops(player, world, stack, pos, false, true);
+        UtilBlock.removeBlock(player, world, stack, pos, true, false, true);
     }
 
     @Override

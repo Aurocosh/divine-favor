@@ -33,7 +33,7 @@ public class BlockBreakingTask extends ServerSideTask {
 
         int breakCount = Math.min(blocksPerTick, blocksToRemove.size());
         while (breakCount-- > 0)
-            UtilBlock.removeBlockWithDrops(player, world, tool, blocksToRemove.remove(), false, false);
+            UtilBlock.removeBlock(player, world, tool, blocksToRemove.remove(), true, false, false);
         if (blocksToRemove.isEmpty())
             finish();
     }
