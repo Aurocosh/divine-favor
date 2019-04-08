@@ -2,7 +2,6 @@ package aurocosh.divinefavor.common.network;
 
 import aurocosh.divinefavor.client.gui.GuiTalismanContainer;
 import aurocosh.divinefavor.client.gui.blocks.GuiBathHeater;
-import aurocosh.divinefavor.client.gui.blocks.GuiFastFurnace;
 import aurocosh.divinefavor.client.gui.blocks.medium.GuiIronMediumNoStone;
 import aurocosh.divinefavor.client.gui.blocks.medium.GuiIronMediumWithStone;
 import aurocosh.divinefavor.client.gui.blocks.soulbound_lectern.GuiSoulboundLecternActive;
@@ -14,8 +13,6 @@ import aurocosh.divinefavor.client.gui.items.GuiRitualPouch;
 import aurocosh.divinefavor.client.gui.items.GuiSpellBow;
 import aurocosh.divinefavor.common.block.bath_heater.ContainerBathHeater;
 import aurocosh.divinefavor.common.block.bath_heater.TileBathHeater;
-import aurocosh.divinefavor.common.block.fast_furnace.ContainerFastFurnace;
-import aurocosh.divinefavor.common.block.fast_furnace.TileFastFurnace;
 import aurocosh.divinefavor.common.block.medium.ContainerMediumNoStone;
 import aurocosh.divinefavor.common.block.medium.ContainerMediumWithStone;
 import aurocosh.divinefavor.common.block.medium.TileMedium;
@@ -54,8 +51,6 @@ public class GuiHandler implements IGuiHandler {
                 return new ContainerMediumNoStone(player, (TileMedium) world.getTileEntity(new BlockPos(x, y, z)));
             case ConstGuiIDs.IRON_MEDIUM_WITH_STONE:
                 return new ContainerMediumWithStone(player, (TileMedium) world.getTileEntity(new BlockPos(x, y, z)));
-            case ConstGuiIDs.FAST_FURNACE:
-                return new ContainerFastFurnace(player, (TileFastFurnace) world.getTileEntity(new BlockPos(x, y, z)));
             case ConstGuiIDs.TALISMAN:
                 return new ContainerTalisman(player, player.getHeldItem(EnumHand.MAIN_HAND));
             case ConstGuiIDs.RITUAL_POUCH: {
@@ -99,8 +94,6 @@ public class GuiHandler implements IGuiHandler {
                 return new GuiIronMediumNoStone(player, (TileMedium) world.getTileEntity(new BlockPos(x, y, z)));
             case ConstGuiIDs.IRON_MEDIUM_WITH_STONE:
                 return new GuiIronMediumWithStone(player, (TileMedium) world.getTileEntity(new BlockPos(x, y, z)));
-            case ConstGuiIDs.FAST_FURNACE:
-                return new GuiFastFurnace(player, (TileFastFurnace) world.getTileEntity(new BlockPos(x, y, z)));
             case ConstGuiIDs.TALISMAN:
                 return new GuiTalismanContainer(player, player.getHeldItem(EnumHand.MAIN_HAND));
             case ConstGuiIDs.RITUAL_POUCH: {
