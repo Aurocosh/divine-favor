@@ -31,7 +31,6 @@ public class MessageRegister {
         NetworkHandler.register(MessageSyncFury.class, Side.CLIENT);
         NetworkHandler.register(MessageSyncGrudge.class, Side.CLIENT);
         NetworkHandler.register(MessageSyncPotionCharge.class, Side.CLIENT);
-        NetworkHandler.register(MessageSyncPower.class, Side.CLIENT);
         NetworkHandler.register(MessageSyncWindLeash.class, Side.CLIENT);
 
         NetworkHandler.register(MessageSpiritBecameActive.class, Side.CLIENT);
