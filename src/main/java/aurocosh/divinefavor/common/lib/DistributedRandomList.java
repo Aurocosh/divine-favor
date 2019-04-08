@@ -24,6 +24,8 @@ public class DistributedRandomList<T> {
     }
 
     public T getRandom() {
+        if(values.isEmpty())
+            return null;
         int index = distributedRandom.getRandomNumber();
         return values.get(index);
     }

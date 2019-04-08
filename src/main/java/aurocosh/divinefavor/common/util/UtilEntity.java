@@ -22,6 +22,8 @@ import net.minecraft.world.WorldServer;
 import net.minecraftforge.items.IItemHandler;
 
 import javax.annotation.Nullable;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 
 public class UtilEntity {
@@ -176,5 +178,19 @@ public class UtilEntity {
             }
         }
         return pointedEntity;
+    }
+
+    public static boolean spawnEntity(World world, BlockPos spawnPos, Class<? extends Entity> clazz) {
+        try {
+            Constructor<? extends Entity> constructor = clazz.getConstructor(World.class);
+            Entity entity = constructor.newInstance(world);
+            entity.setLocationAndAngles(spawnPos.getX(), spawnPos.getY(), spawnPos.getZ(), 0, 0.0F);
+            world.spawnEntity(entity);
+            return true;
+        }
+        catch (InvocationTargetException | NoSuchMethodException | InstantiationException | IllegalAccessException e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 }
