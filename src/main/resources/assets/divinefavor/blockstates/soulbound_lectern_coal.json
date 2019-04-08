@@ -6,6 +6,8 @@
     "textures":{
       "particle": "divinefavor:blocks/soulbound_lectern/materials/coal_block",
       "material": "divinefavor:blocks/soulbound_lectern/materials/coal_block",
+      "up": "divinefavor:blocks/soulbound_lectern/materials/coal_block",
+      "down": "divinefavor:blocks/soulbound_lectern/materials/coal_block",
       "mask": "divinefavor:blocks/soulbound_lectern/masks/oak",
 	  "gem": "divinefavor:blocks/soulbound_lectern/gems/no_gem",
 	  "books": "divinefavor:blocks/soulbound_lectern/books/no_books"
