@@ -15,36 +15,43 @@ import java.util.EnumSet;
 public class ModArrowTalismans {
     public static ItemArrowTalisman anti_gravity_arrow;
     public static ItemArrowTalisman armor_corrosion;
+    public static ItemArrowTalisman blast_arrow;
     public static ItemArrowTalisman blink_arrow;
     public static ItemArrowTalisman crawling_mist;
     public static ItemArrowTalisman cripple;
     public static ItemArrowTalisman disarm;
+    public static ItemArrowTalisman explosive_arrow;
     public static ItemArrowTalisman fiery_mark;
     public static ItemArrowTalisman fill_lungs;
     public static ItemArrowTalisman hand_swap;
     public static ItemArrowTalisman hollow_leg;
     public static ItemArrowTalisman limp_leg;
     public static ItemArrowTalisman nether_swap;
+    public static ItemArrowTalisman nuke_arrow;
     public static ItemArrowTalisman petrification;
+    public static ItemArrowTalisman reinforced_arrow_1;
+    public static ItemArrowTalisman reinforced_arrow_2;
+    public static ItemArrowTalisman reinforced_arrow_3;
     public static ItemArrowTalisman roots;
     public static ItemArrowTalisman skyfall;
     public static ItemArrowTalisman suffocating_fumes;
     public static ItemArrowTalisman wind_leash;
     public static ItemArrowTalisman yummy_smell;
     public static ItemArrowTalisman zero_g_arrow;
-    public static ItemArrowTalisman reinforced_arrow_1;
-    public static ItemArrowTalisman reinforced_arrow_2;
-    public static ItemArrowTalisman reinforced_arrow_3;
 
     public static void preInit() {
         // arbow;
         anti_gravity_arrow = new ArrowTalismanAntiGravityArrow("anti_gravity_arrow", ModSpirits.arbow, ConfigArrow.antiGravityArrow.favorCost, Color.green.getRGB(), ConfigArrow.antiGravityArrow.damage, ArrowOptions.NORMAL, ArrowType.WOODEN_ARROW);
+        blast_arrow = new ArrowTalismanExplosive("blast_arrow", ModSpirits.arbow, Color.yellow.getRGB(), ArrowOptions.ARROW_BREAKS, ArrowType.SPELL_ARROW, ConfigArrow.blastArrow);
         disarm = new ArrowTalismanDisarm("disarm", ModSpirits.arbow, ConfigArrow.disarm.favorCost, Color.orange.getRGB(), ConfigArrow.disarm.damage, ArrowOptions.REQUIRES_TARGET, ArrowType.SPELL_ARROW);
+        explosive_arrow = new ArrowTalismanExplosive("explosive_arrow", ModSpirits.arbow, Color.blue.getRGB(), ArrowOptions.ARROW_BREAKS, ArrowType.SPELL_ARROW, ConfigArrow.explosiveArrow);
         hand_swap = new ArrowTalismanHandSwap("hand_swap", ModSpirits.arbow, ConfigArrow.handSwap.favorCost, Color.orange.getRGB(), ConfigArrow.handSwap.damage, ArrowOptions.REQUIRES_TARGET, ArrowType.SPELL_ARROW);
+        nuke_arrow = new ArrowTalismanExplosive("nuke_arrow", ModSpirits.arbow, Color.red.getRGB(), ArrowOptions.ARROW_BREAKS, ArrowType.SPELL_ARROW, ConfigArrow.nukeArrow);
+        reinforced_arrow_1 = new ItemArrowTalisman("reinforced_arrow_1", ModSpirits.arbow, ConfigArrow.reinforcedArrow1.favorCost, Color.yellow.getRGB(), ConfigArrow.reinforcedArrow1.damage, ArrowOptions.NORMAL, ArrowType.SPELL_ARROW);
+        reinforced_arrow_2 = new ItemArrowTalisman("reinforced_arrow_2", ModSpirits.arbow, ConfigArrow.reinforcedArrow2.favorCost, Color.blue.getRGB(), ConfigArrow.reinforcedArrow2.damage, ArrowOptions.NORMAL, ArrowType.SPELL_ARROW);
+        reinforced_arrow_3 = new ItemArrowTalisman("reinforced_arrow_3", ModSpirits.arbow, ConfigArrow.reinforcedArrow3.favorCost, Color.red.getRGB(), ConfigArrow.reinforcedArrow3.damage, ArrowOptions.NORMAL, ArrowType.SPELL_ARROW);
         zero_g_arrow = new ArrowTalismanZeroGArrow("zero_g_arrow", ModSpirits.arbow, 15, Color.green.getRGB(), 2, ArrowOptions.NORMAL, ArrowType.WOODEN_ARROW);
-        reinforced_arrow_1 = new ArrowTalismanHandSwap("reinforced_arrow_1", ModSpirits.arbow, ConfigArrow.reinforcedArrow1.favorCost, Color.red.getRGB(), ConfigArrow.reinforcedArrow1.damage, ArrowOptions.NORMAL, ArrowType.SPELL_ARROW);
-        reinforced_arrow_2 = new ArrowTalismanHandSwap("reinforced_arrow_2", ModSpirits.arbow, ConfigArrow.reinforcedArrow2.favorCost, Color.red.getRGB(), ConfigArrow.reinforcedArrow2.damage, ArrowOptions.NORMAL, ArrowType.SPELL_ARROW);
-        reinforced_arrow_3 = new ArrowTalismanHandSwap("reinforced_arrow_3", ModSpirits.arbow, ConfigArrow.reinforcedArrow3.favorCost, Color.red.getRGB(), ConfigArrow.reinforcedArrow3.damage, ArrowOptions.NORMAL, ArrowType.SPELL_ARROW);
+
 
         // blizrabi;
 

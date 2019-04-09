@@ -1,0 +1,7 @@
+{
+    "parent": "item/generated",
+    "textures": {
+        "layer1": "divinefavor:items/arrow_talismans/explosive_arrow",
+        "layer0": "divinefavor:items/arrow_talismans/base"
+    }
+}

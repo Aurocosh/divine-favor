@@ -188,16 +188,19 @@ item.divinefavor:talisman_wooden_punch.name=Wooden punch talisman
 # ARROW TALISMAN NAMES
 item.divinefavor:arrow_talisman_anti_gravity_arrow.name=Anti gravity arrow talisman
 item.divinefavor:arrow_talisman_armor_corrosion.name=Armor corrosion talisman
+item.divinefavor:arrow_talisman_blast_arrow.name=Blast arrow
 item.divinefavor:arrow_talisman_blink_arrow.name=Blink arrow talisman
 item.divinefavor:arrow_talisman_crawling_mist.name=Crawling mist talisman
 item.divinefavor:arrow_talisman_cripple.name=Cripple talisman
 item.divinefavor:arrow_talisman_disarm.name=Disarm talisman
+item.divinefavor:arrow_talisman_explosive_arrow.name=Explosive arrow
 item.divinefavor:arrow_talisman_fiery_mark.name=Fiery_mark talisman
 item.divinefavor:arrow_talisman_fill_lungs.name=Fill lungs talisman
 item.divinefavor:arrow_talisman_hand_swap.name=Hand swap talisman
 item.divinefavor:arrow_talisman_hollow_leg.name=Hollow leg talisman
 item.divinefavor:arrow_talisman_limp_leg.name=Limp leg talisman
 item.divinefavor:arrow_talisman_nether_swap.name=Nether swap talisman
+item.divinefavor:arrow_talisman_nuke_arrow.name=Nuke arrow
 item.divinefavor:arrow_talisman_petrification.name=Petrification talisman
 item.divinefavor:arrow_talisman_reinforced_arrow_1.name=Reinforced arrow I
 item.divinefavor:arrow_talisman_reinforced_arrow_2.name=Reinforced arrow II
@@ -395,15 +398,18 @@ item.divinefavor:talisman_wooden_punch.description=Will grant player 'Wooden_pun
 ## ARROW TALISMANS
 item.divinefavor:arrow_talisman_anti_gravity_arrow.description=Arrow shot with this talisman will fall upwards instead on down. Not very practical but can be used for some trick shots.
 item.divinefavor:arrow_talisman_armor_corrosion.description=Arrow shot with this talisman will be cursed with armor corrosion. This curse will only work on players. Armor of afflicted players will gradually decay over time. Not all armor will be affected at once. Random pieces of armor will be chosen on curse application. To remove curse player will have to remove affected armor pieces.
+item.divinefavor:arrow_talisman_blast_arrow.description=Weak explosive arrow. Explodes on contact. Be careful it can kill shooter.
 item.divinefavor:arrow_talisman_blink_arrow.description=Arrow shot with this talisman will be teleport shooter to its location when it hits the ground.
 item.divinefavor:arrow_talisman_crawling_mist.description=Arrow shot with this talisman will be cursed with crawling mist. This curse will only work on players. Cursed players sight will be severely reduced while curse is active. To remove this curse player will have to go as far as possible from place where he was cursed.
 item.divinefavor:arrow_talisman_cripple.description=Arrow shot with this talisman will be cursed with leg crippling. When cursed player speed will decrease considerably. To remove this curse player will have to run for several seconds.
 item.divinefavor:arrow_talisman_disarm.description=Arrow shot with this talisman will disarm any player it hits. When hit all currently held items will be moved to player inventory.
+item.divinefavor:arrow_talisman_explosive_arrow.description=Strong explosive arrow. Explodes on contact. Be careful it can kill shooter.
 item.divinefavor:arrow_talisman_fiery_mark.description=Arrow shot with this talisman will be cursed with fiery mark. Cursed creature will explode some time after being cursed. To lift this curse just jump into water.
 item.divinefavor:arrow_talisman_fill_lungs.description=Arrow shot with this talisman will be cursed with drowning curse. Cursed creature will drown on land. If creatures jumps in water then curse will be lifted.
 item.divinefavor:arrow_talisman_hand_swap.description=Arrow shot with this talisman confuse hit player. When hit it will swap items in players hand and offhand.
 item.divinefavor:arrow_talisman_hollow_leg.description=Arrow shot with this talisman will be cursed with insatiable hunger. Cursed creatures hunger will increase non stop dealing damage when it starts to starve. To lift this curse creature will have to eat something.
 item.divinefavor:arrow_talisman_limp_leg.description=Arrow shot with this talisman will be cursed with leg weakness. Cursed creatures hunger will be unable to jump. To lift this curse you will have to sneak for several seconds.
+item.divinefavor:arrow_talisman_nuke_arrow.description=Kickass explosive arrow. Explodes on contact. Be very careful with it if you don't want to explode yourself to afterlife.
 item.divinefavor:arrow_talisman_petrification.description=Arrow shot with this talisman will be cursed with petrification. Cursed creatures hunger will take damage while moving. To lift this curse you need to stand in place for several seconds.
 item.divinefavor:arrow_talisman_reinforced_arrow_1.description=Fires spell arrow. Arrow damage is increased, but otherwise it is normal.
 item.divinefavor:arrow_talisman_reinforced_arrow_2.description=Fires spell arrow. Arrow damage is considerably increased, but otherwise it is normal.
@@ -414,6 +420,7 @@ item.divinefavor:arrow_talisman_suffocating_fumes.description=Arrow shot with th
 item.divinefavor:arrow_talisman_wind_leash.description=Arrow shot with this talisman will be cursed with unnatural force. Cursed creatures will be dragged in random direction by invisible force. To lift this curse you need look at direction where you are being dragged.
 item.divinefavor:arrow_talisman_yummy_smell.description=Arrow shot with this talisman will be cursed with alluring smell. Cursed creatures will attract unwanted attention. All monsters near cursed creature will attack it. To lift this curse you need attract a lot of creatures at once.
 item.divinefavor:arrow_talisman_zero_g_arrow.description=Arrow shot with this talisman will not be affected by gravity.
+
 
 #PATCHOULI
 ## CONTRACTS
