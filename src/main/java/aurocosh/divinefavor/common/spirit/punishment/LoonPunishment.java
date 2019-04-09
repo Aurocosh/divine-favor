@@ -1,27 +1,21 @@
 package aurocosh.divinefavor.common.spirit.punishment;
 
-import aurocosh.divinefavor.DivineFavor;
 import aurocosh.divinefavor.common.config.common.ConfigPunishments;
 import aurocosh.divinefavor.common.lib.distributed_random.DistributedRandomEntityList;
-import aurocosh.divinefavor.common.lib.distributed_random.DistributedRandomList;
 import aurocosh.divinefavor.common.muliblock.instance.MultiBlockInstance;
 import aurocosh.divinefavor.common.spirit.base.SpiritPunishment;
+import aurocosh.divinefavor.common.tasks.base.ServerSideTask;
 import aurocosh.divinefavor.common.util.UtilAlgoritm;
 import aurocosh.divinefavor.common.util.UtilCoordinates;
 import aurocosh.divinefavor.common.util.UtilEntity;
-import aurocosh.divinefavor.common.tasks.base.ServerSideTask;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityList;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
-
-import java.util.Map;
 
 public class LoonPunishment extends SpiritPunishment {
     @Override
@@ -42,7 +36,7 @@ public class LoonPunishment extends SpiritPunishment {
             super(player.world);
 
             this.player = player;
-            waveCount = ConfigPunishments.loon.waveCount.getRandom();
+            waveCount = ConfigPunishments.loon.waveCount.random();
             waveDelay = 0;
         }
 
@@ -53,9 +47,9 @@ public class LoonPunishment extends SpiritPunishment {
 
             if (waveDelay-- > 0)
                 return;
-            waveDelay = ConfigPunishments.loon.waveDelay.getRandom();
+            waveDelay = ConfigPunishments.loon.waveDelay.random();
 
-            int mobsToSpawn = ConfigPunishments.loon.enemiesPerWave.getRandom();
+            int mobsToSpawn = ConfigPunishments.loon.enemiesPerWave.random();
             int spawnAttempts = mobsToSpawn * 10;
             BlockPos playerPosition = player.getPosition();
             UtilAlgoritm.repeatUntilSuccessful(() -> spawnMob(world, playerPosition), mobsToSpawn, spawnAttempts);
@@ -66,8 +60,6 @@ public class LoonPunishment extends SpiritPunishment {
 
         @SubscribeEvent
         public void onPlayerLogout(PlayerEvent.PlayerLoggedOutEvent event) {
-            if (!(event.player instanceof EntityPlayerMP))
-                return;
             if (event.player == player)
                 finish();
         }

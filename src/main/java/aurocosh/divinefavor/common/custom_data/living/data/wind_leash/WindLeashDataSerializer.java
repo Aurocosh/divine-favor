@@ -1,24 +1,19 @@
 package aurocosh.divinefavor.common.custom_data.living.data.wind_leash;
 
 import aurocosh.divinefavor.common.lib.interfaces.INbtSerializer;
+import aurocosh.divinefavor.common.util.UtilNbt;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.math.Vec3d;
 
 public class WindLeashDataSerializer implements INbtSerializer<WindLeashData> {
-    private static final String TAG_WIND_LEASH_X = "WindLeashX";
-    private static final String TAG_WIND_LEASH_Z = "WindLeashZ";
+    private static final String TAG_WIND_LEASH = "WindLeash";
 
     @Override
     public void serialize(NBTTagCompound nbt, WindLeashData instance) {
-        Vec3d vector = instance.getVector();
-        nbt.setDouble(TAG_WIND_LEASH_X, vector.x);
-        nbt.setDouble(TAG_WIND_LEASH_Z, vector.z);
+        UtilNbt.setVec3d(nbt, TAG_WIND_LEASH, instance.getVector());
     }
 
     @Override
     public void deserialize(NBTTagCompound nbt, WindLeashData instance) {
-        double x = nbt.getDouble(TAG_WIND_LEASH_X);
-        double z = nbt.getDouble(TAG_WIND_LEASH_Z);
-        instance.setVector(new Vec3d(x, 0, z));
+        instance.setVector(UtilNbt.getVec3d(nbt, TAG_WIND_LEASH));
     }
 }

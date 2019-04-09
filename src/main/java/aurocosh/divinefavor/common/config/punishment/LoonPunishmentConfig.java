@@ -1,6 +1,6 @@
 package aurocosh.divinefavor.common.config.punishment;
 
-import aurocosh.divinefavor.common.config.IntervalConfig;
+import aurocosh.divinefavor.common.config.data.IntInterval;
 import aurocosh.divinefavor.common.util.UtilTick;
 import net.minecraftforge.common.config.Config;
 
@@ -9,11 +9,11 @@ import java.util.Map;
 
 public class LoonPunishmentConfig {
     @Config.Name("Enemies per wave")
-    public IntervalConfig enemiesPerWave = new IntervalConfig(2, 5);
+    public IntInterval enemiesPerWave = new IntInterval(2, 5);
     @Config.Name("Wave count")
-    public IntervalConfig waveCount = new IntervalConfig(2, 5);
+    public IntInterval waveCount = new IntInterval(2, 5);
     @Config.Name("Wave delay")
-    public IntervalConfig waveDelay = new IntervalConfig(UtilTick.secondsToTicks(15), UtilTick.minutesToTicks(2));
+    public IntInterval waveDelay = new IntInterval(UtilTick.secondsToTicks(15), UtilTick.minutesToTicks(2));
 
     @Config.Name("Spawn radius")
     public int spawnRadius = 10;

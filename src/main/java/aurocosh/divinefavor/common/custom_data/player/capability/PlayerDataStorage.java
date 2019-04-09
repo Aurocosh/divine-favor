@@ -11,6 +11,7 @@ import aurocosh.divinefavor.common.custom_data.player.data.aura.visceral.Viscera
 import aurocosh.divinefavor.common.custom_data.player.data.curse.corrosion.ArmorCorrosionDataSerializer;
 import aurocosh.divinefavor.common.custom_data.player.data.curse.crawling_mist.CrawlingMistDataSerializer;
 import aurocosh.divinefavor.common.custom_data.player.data.curse.evil_eye.EvilEyeDataSerializer;
+import aurocosh.divinefavor.common.custom_data.player.data.curse.red_fury.RedFuryDataSerializer;
 import aurocosh.divinefavor.common.custom_data.player.data.favor.SpiritDataSerializer;
 import aurocosh.divinefavor.common.custom_data.player.data.interaction_handler.InteractionDataSerializer;
 import aurocosh.divinefavor.common.custom_data.player.data.presence.energetic.EnergeticPresenceDataSerializer;
@@ -32,11 +33,14 @@ import net.minecraftforge.common.capabilities.Capability;
 
 // Handles the actual read/write of the nbt.
 public class PlayerDataStorage implements Capability.IStorage<IPlayerDataHandler> {
+    private static final SpiritDataSerializer SPIRIT_DATA_SERIALIZER = new SpiritDataSerializer();
+
     private static final ArmorCorrosionDataSerializer ARMOR_CORROSION_DATA_SERIALIZER = new ArmorCorrosionDataSerializer();
     private static final CrawlingMistDataSerializer CRAWLING_MIST_DATA_SERIALIZER = new CrawlingMistDataSerializer();
-    private static final EscapePlanDataSerializer ESCAPE_PLAN_DATA_SERIALIZER = new EscapePlanDataSerializer();
     private static final EvilEyeDataSerializer EVIL_EYE_DATA_SERIALIZER = new EvilEyeDataSerializer();
-    private static final SpiritDataSerializer SPIRIT_DATA_SERIALIZER = new SpiritDataSerializer();
+    private static final RedFuryDataSerializer RED_FURY_DATA_SERIALIZER = new RedFuryDataSerializer();
+
+    private static final EscapePlanDataSerializer ESCAPE_PLAN_DATA_SERIALIZER = new EscapePlanDataSerializer();
     private static final FocusedFuryDataSerializer FOCUSED_FURY_DATA_SERIALIZER = new FocusedFuryDataSerializer();
     private static final GillsDataSerializer GILLS_DATA_SERIALIZER = new GillsDataSerializer();
     private static final GrudgeDataSerializer GRUDGE_DATA_SERIALIZER = new GrudgeDataSerializer();
@@ -63,11 +67,14 @@ public class PlayerDataStorage implements Capability.IStorage<IPlayerDataHandler
     @Override
     public NBTBase writeNBT(Capability<IPlayerDataHandler> capability, IPlayerDataHandler instance, EnumFacing side) {
         final NBTTagCompound tag = new NBTTagCompound();
+        SPIRIT_DATA_SERIALIZER.serialize(tag, instance.getSpiritData());
+
         ARMOR_CORROSION_DATA_SERIALIZER.serialize(tag, instance.getArmorCorrosionData());
         CRAWLING_MIST_DATA_SERIALIZER.serialize(tag, instance.getCrawlingMistData());
-        ESCAPE_PLAN_DATA_SERIALIZER.serialize(tag, instance.getEscapePlanData());
         EVIL_EYE_DATA_SERIALIZER.serialize(tag, instance.getEvilEyeData());
-        SPIRIT_DATA_SERIALIZER.serialize(tag, instance.getSpiritData());
+        RED_FURY_DATA_SERIALIZER.serialize(tag, instance.getRedFuryData());
+
+        ESCAPE_PLAN_DATA_SERIALIZER.serialize(tag, instance.getEscapePlanData());
         FOCUSED_FURY_DATA_SERIALIZER.serialize(tag, instance.getFocusedFuryData());
         GILLS_DATA_SERIALIZER.serialize(tag, instance.getGillsData());
         GRUDGE_DATA_SERIALIZER.serialize(tag, instance.getGrudgeData());
@@ -96,11 +103,14 @@ public class PlayerDataStorage implements Capability.IStorage<IPlayerDataHandler
     @Override
     public void readNBT(Capability<IPlayerDataHandler> capability, IPlayerDataHandler instance, EnumFacing side, NBTBase nbt) {
         final NBTTagCompound tag = (NBTTagCompound) nbt;
+        SPIRIT_DATA_SERIALIZER.deserialize(tag, instance.getSpiritData());
+
         ARMOR_CORROSION_DATA_SERIALIZER.deserialize(tag, instance.getArmorCorrosionData());
         CRAWLING_MIST_DATA_SERIALIZER.deserialize(tag, instance.getCrawlingMistData());
-        ESCAPE_PLAN_DATA_SERIALIZER.deserialize(tag, instance.getEscapePlanData());
         EVIL_EYE_DATA_SERIALIZER.deserialize(tag, instance.getEvilEyeData());
-        SPIRIT_DATA_SERIALIZER.deserialize(tag, instance.getSpiritData());
+        RED_FURY_DATA_SERIALIZER.deserialize(tag, instance.getRedFuryData());
+
+        ESCAPE_PLAN_DATA_SERIALIZER.deserialize(tag, instance.getEscapePlanData());
         FOCUSED_FURY_DATA_SERIALIZER.deserialize(tag, instance.getFocusedFuryData());
         GILLS_DATA_SERIALIZER.deserialize(tag, instance.getGillsData());
         GRUDGE_DATA_SERIALIZER.deserialize(tag, instance.getGrudgeData());

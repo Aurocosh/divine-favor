@@ -29,7 +29,7 @@ public class NeblazePunishment extends SpiritPunishment {
     }
 
     private void smeltPartsOfAltar(EntityPlayer player, World world, MultiBlockInstance instance) {
-        int blocksToSmelt = ConfigPunishments.neblaze.blocksToMelt.getRandom();
+        int blocksToSmelt = ConfigPunishments.neblaze.blocksToMelt.random();
         List<BlockPos> solidsPositions = Vector3i.convert(new ArrayList<>(instance.positionsOfSolids));
         List<BlockPos> netherrackPositions = UtilList.filterList(solidsPositions, pos -> world.getBlockState(pos).getBlock() == Blocks.NETHERRACK);
         List<BlockPos> selectedPositions = UtilRandom.selectRandom(netherrackPositions, blocksToSmelt);
@@ -42,7 +42,7 @@ public class NeblazePunishment extends SpiritPunishment {
     }
 
     private void spawnEnemies(EntityPlayer player, World world) {
-        int mobsToSummon = ConfigPunishments.neblaze.mobsToSpawn.getRandom();
+        int mobsToSummon = ConfigPunishments.neblaze.mobsToSpawn.random();
         int spawnAttempts = mobsToSummon * 10;
         BlockPos playerPosition = player.getPosition();
         UtilAlgoritm.repeatUntilSuccessful(() -> spawnMob(world, playerPosition), mobsToSummon, spawnAttempts);
@@ -60,7 +60,7 @@ public class NeblazePunishment extends SpiritPunishment {
     }
 
     private void igniteRandomBlocks(World world, BlockPos center) {
-        int blocksToIgnite = ConfigPunishments.neblaze.blocksToIgnite.getRandom();
+        int blocksToIgnite = ConfigPunishments.neblaze.blocksToIgnite.random();
         for (int i = 0; i < blocksToIgnite; i++)
             igniteBlock(world, center);
     }

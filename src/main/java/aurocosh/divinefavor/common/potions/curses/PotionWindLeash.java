@@ -1,6 +1,7 @@
 package aurocosh.divinefavor.common.potions.curses;
 
 import aurocosh.divinefavor.common.config.common.ConfigArrow;
+import aurocosh.divinefavor.common.config.data.DoubleInterval;
 import aurocosh.divinefavor.common.custom_data.living.LivingData;
 import aurocosh.divinefavor.common.custom_data.living.data.wind_leash.WindLeashData;
 import aurocosh.divinefavor.common.network.message.client.syncing.MessageSyncWindLeash;
@@ -12,6 +13,8 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.math.Vec3d;
 
 public class PotionWindLeash extends ModPotion {
+    private static final DoubleInterval directionInterval = new DoubleInterval(-1, 1);
+
     public PotionWindLeash() {
         super("wind_leash", false, 0x7FB8A4);
         setIsCurse(true);
@@ -21,8 +24,8 @@ public class PotionWindLeash extends ModPotion {
     protected void onPotionAdded(EntityLivingBase livingBase) {
         super.onPotionAdded(livingBase);
 
-        double x = UtilRandom.nextDouble(-1, 1);
-        double z = UtilRandom.nextDouble(-1, 1);
+        double x = directionInterval.random();
+        double z = directionInterval.random();
         Vec3d vec3d = new Vec3d(x, 0, z);
 
         Vec3d vector = vec3d.normalize().scale(ConfigArrow.windLeash.motionSpeed);

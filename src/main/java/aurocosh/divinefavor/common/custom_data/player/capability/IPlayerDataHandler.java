@@ -12,6 +12,7 @@ import aurocosh.divinefavor.common.custom_data.player.data.aura.visceral.Viscera
 import aurocosh.divinefavor.common.custom_data.player.data.curse.corrosion.ArmorCorrosionData;
 import aurocosh.divinefavor.common.custom_data.player.data.curse.crawling_mist.CrawlingMistData;
 import aurocosh.divinefavor.common.custom_data.player.data.curse.evil_eye.EvilEyeData;
+import aurocosh.divinefavor.common.custom_data.player.data.curse.red_fury.RedFuryData;
 import aurocosh.divinefavor.common.custom_data.player.data.favor.SpiritData;
 import aurocosh.divinefavor.common.custom_data.player.data.interaction_handler.InteractionData;
 import aurocosh.divinefavor.common.custom_data.player.data.presence.energetic.EnergeticPresenceData;
@@ -30,11 +31,14 @@ import aurocosh.divinefavor.common.custom_data.player.data.spell.molten_skin.Mol
 import aurocosh.divinefavor.common.custom_data.player.data.spell.pearl_crumbs.PearlCrumbsData;
 
 public interface IPlayerDataHandler {
+    SpiritData getSpiritData();
+
     ArmorCorrosionData getArmorCorrosionData();
     CrawlingMistData getCrawlingMistData();
-    EscapePlanData getEscapePlanData();
     EvilEyeData getEvilEyeData();
-    SpiritData getSpiritData();
+    RedFuryData getRedFuryData();
+
+    EscapePlanData getEscapePlanData();
     FocusedFuryData getFocusedFuryData();
     GillsData getGillsData();
     GrudgeData getGrudgeData();

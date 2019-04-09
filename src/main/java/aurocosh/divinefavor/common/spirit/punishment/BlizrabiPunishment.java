@@ -19,7 +19,7 @@ public class BlizrabiPunishment extends SpiritPunishment {
         player.addPotionEffect(new ModEffect(MobEffects.SLOWNESS, ConfigPunishments.blizrabi.slownessDuration, ConfigPunishments.blizrabi.slownessAmplifier).setIsCurse());
         player.addPotionEffect(new ModEffect(MobEffects.WEAKNESS, ConfigPunishments.blizrabi.weaknessDuration, ConfigPunishments.blizrabi.weaknessAmplifier).setIsCurse());
 
-        int wolfsToSpawn = ConfigPunishments.blizrabi.wolfsToSpawn.getRandom();
+        int wolfsToSpawn = ConfigPunishments.blizrabi.wolfsToSpawn.random();
         int spawnAttempts = wolfsToSpawn * 10;
         BlockPos playerPosition = player.getPosition();
         UtilAlgoritm.repeatUntilSuccessful(() -> spawnWolf(player, world, playerPosition), wolfsToSpawn, spawnAttempts);
