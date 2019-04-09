@@ -1,0 +1,15 @@
+{
+  "name": "Zero g arrow",
+  "icon": "divinefavor:arrow_talisman_reinforced_arrow_3",
+  "category": "arrow_talismans",
+  "pages": [
+    {
+      "type": "talisman_description",
+      "talisman": "divinefavor:arrow_talisman_reinforced_arrow_3"
+    },
+    {
+      "type": "arrow_talisman_stats",
+      "talisman": "divinefavor:arrow_talisman_reinforced_arrow_3"
+    }
+  ]
+}

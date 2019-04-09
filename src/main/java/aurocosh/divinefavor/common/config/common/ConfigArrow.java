@@ -32,6 +32,12 @@ public class ConfigArrow {
     public static NetherSwap netherSwap = new NetherSwap();
     @Config.Name("Petrification")
     public static Petrification petrification = new Petrification();
+    @Config.Name("Reinforced arrow I")
+    public static ReinforcedArrow reinforcedArrow1 = new ReinforcedArrow(10,4);
+    @Config.Name("Reinforced arrow II")
+    public static ReinforcedArrow reinforcedArrow2 = new ReinforcedArrow(100,8);
+    @Config.Name("Reinforced arrow III")
+    public static ReinforcedArrow reinforcedArrow3 = new ReinforcedArrow(400,16);
     @Config.Name("Roots")
     public static Roots roots = new Roots();
     @Config.Name("Skyfall")

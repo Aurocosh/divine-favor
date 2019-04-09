@@ -21,7 +21,7 @@ public class TimePeriod {
     }
 
     /**
-     * @param value value between 0 and 20000
+     * @param value value between 0 and UtilDayTime.TICKS_IN_DAY
      * @return if value is belongs to this time period
      */
     public boolean isDayTimeInRange(int value) {
