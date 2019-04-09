@@ -30,6 +30,8 @@ public class ConfigArrow {
     public static HandSwap handSwap = new HandSwap();
     @Config.Name("Hollow leg")
     public static HollowLeg hollowLeg = new HollowLeg();
+    @Config.Name("Knockback arrow")
+    public static KnockbackArrow knockbackArrow = new KnockbackArrow();
     @Config.Name("Limp leg")
     public static LimpLeg limpLeg = new LimpLeg();
     @Config.Name("Nether swap")
