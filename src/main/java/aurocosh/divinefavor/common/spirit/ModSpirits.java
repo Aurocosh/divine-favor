@@ -16,7 +16,7 @@ public final class ModSpirits {
     public static ModSpirit timber;
 
     public static void preInit() {
-        arbow = new ModSpirit("arbow", new SquareFuryPunishment(), ConfigSpirits.arbow);
+        arbow = new ModSpirit("arbow", new ArbowPunishment(), ConfigSpirits.arbow);
         blizrabi = new ModSpirit("blizrabi", new BlizrabiPunishment(), ConfigSpirits.blizrabi);
         endererer = new ModSpirit("endererer", new EnderererPunishment(), ConfigSpirits.endererer);
         loon = new ModSpirit("loon", new LoonPunishment(), ConfigSpirits.loon);
