@@ -25,7 +25,7 @@ public class EnderererPunishment extends SpiritPunishment {
     }
 
     private void teleportPartsOfAltar(EntityPlayer player, World world, MultiBlockInstance instance) {
-        int blocksToMove = ConfigPunishments.endererer.blocksToMove.getRandom();
+        int blocksToMove = ConfigPunishments.endererer.blocksToMove.random();
         List<BlockPos> solidsPositions = Vector3i.convert(new ArrayList<>(instance.positionsOfSolids));
         List<BlockPos> coalPositions = UtilList.filterList(solidsPositions, pos -> world.getBlockState(pos).getBlock() == Blocks.COAL_BLOCK);
         List<BlockPos> selectedPositions = UtilRandom.selectRandom(coalPositions, blocksToMove);

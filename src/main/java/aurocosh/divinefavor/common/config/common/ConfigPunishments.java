@@ -6,6 +6,8 @@ import net.minecraftforge.common.config.Config;
 
 @Config(modid = ConstMisc.MOD_ID, name = ConstMisc.MOD_ID + "/punishments")
 public class ConfigPunishments {
+    @Config.Name("Arbow")
+    public static ArbowPunishmentConfig arbow = new ArbowPunishmentConfig();
     @Config.Name("Blizrabi")
     public static BlizrabiPunishmentConfig blizrabi = new BlizrabiPunishmentConfig();
     @Config.Name("Endererer")
@@ -14,6 +16,8 @@ public class ConfigPunishments {
     public static LoonPunishmentConfig loon = new LoonPunishmentConfig();
     @Config.Name("Neblaze")
     public static NeblazePunishmentConfig neblaze = new NeblazePunishmentConfig();
+    @Config.Name("Redwind")
+    public static RedwindPunishmentConfig redwind = new RedwindPunishmentConfig();
     @Config.Name("Romol")
     public static RomolPunishmentConfig romol = new RomolPunishmentConfig();
     @Config.Name("Squarefury")

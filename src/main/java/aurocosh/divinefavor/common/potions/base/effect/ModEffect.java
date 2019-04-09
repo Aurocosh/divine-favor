@@ -5,6 +5,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 
+import java.util.ArrayList;
 import java.util.Collections;
 
 public class ModEffect extends PotionEffect {
@@ -25,8 +26,13 @@ public class ModEffect extends PotionEffect {
         modPotion = potion;
     }
 
-    public ModEffect setIsCurse(){
+    public ModEffect setIsCurse() {
         setCurativeItems(Collections.singletonList(new ItemStack(ModItems.milky_apple)));
+        return this;
+    }
+
+    public ModEffect setIsSuperCurse() {
+        setCurativeItems(new ArrayList<>());
         return this;
     }
 }

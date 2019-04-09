@@ -23,5 +23,4 @@ public class WindLeashData {
     public Vec3d getNormalizedVector() {
         return vectorNormalized;
     }
-
 }

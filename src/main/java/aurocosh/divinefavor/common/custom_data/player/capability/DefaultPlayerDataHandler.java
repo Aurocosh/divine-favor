@@ -12,6 +12,7 @@ import aurocosh.divinefavor.common.custom_data.player.data.aura.visceral.Viscera
 import aurocosh.divinefavor.common.custom_data.player.data.curse.corrosion.ArmorCorrosionData;
 import aurocosh.divinefavor.common.custom_data.player.data.curse.crawling_mist.CrawlingMistData;
 import aurocosh.divinefavor.common.custom_data.player.data.curse.evil_eye.EvilEyeData;
+import aurocosh.divinefavor.common.custom_data.player.data.curse.red_fury.RedFuryData;
 import aurocosh.divinefavor.common.custom_data.player.data.favor.SpiritData;
 import aurocosh.divinefavor.common.custom_data.player.data.interaction_handler.InteractionData;
 import aurocosh.divinefavor.common.custom_data.player.data.presence.energetic.EnergeticPresenceData;
@@ -31,16 +32,19 @@ import aurocosh.divinefavor.common.custom_data.player.data.spell.pearl_crumbs.Pe
 
 // The default implementation of the capability. Holds all the logic.
 public class DefaultPlayerDataHandler implements IPlayerDataHandler {
+    private final SpiritData spiritData;
+
     private final ArmorCorrosionData armorCorrosionData;
     private final CrawlingMistData crawlingMistData;
-    private final EscapePlanData escapePlanData;
     private final EvilEyeData evilEyeData;
-    private final SpiritData spiritData;
+    private final RedFuryData redFuryData;
+
+    private final GrudgeData grudgeData;
+    private final EscapePlanData escapePlanData;
     private final FocusedFuryData focusedFuryData;
     private final GillsData gillsData;
-    private final GrudgeData grudgeData;
-    private final InteractionData interactionData;
     private final MoltenSkinData moltenSkinData;
+    private final InteractionData interactionData;
     private final PearlCrumbsData pearlCrumbsData;
 
     private final ArborealAuraData arborealAuraData;
@@ -64,11 +68,14 @@ public class DefaultPlayerDataHandler implements IPlayerDataHandler {
 
 
     public DefaultPlayerDataHandler() {
+        spiritData = new SpiritData();
+
         armorCorrosionData = new ArmorCorrosionData();
         crawlingMistData = new CrawlingMistData();
-        escapePlanData = new EscapePlanData();
         evilEyeData = new EvilEyeData();
-        spiritData = new SpiritData();
+        redFuryData = new RedFuryData();
+
+        escapePlanData = new EscapePlanData();
         focusedFuryData = new FocusedFuryData();
         gillsData = new GillsData();
         grudgeData = new GrudgeData();
@@ -114,6 +121,11 @@ public class DefaultPlayerDataHandler implements IPlayerDataHandler {
     @Override
     public EvilEyeData getEvilEyeData() {
         return evilEyeData;
+    }
+
+    @Override
+    public RedFuryData getRedFuryData() {
+        return redFuryData;
     }
 
     @Override

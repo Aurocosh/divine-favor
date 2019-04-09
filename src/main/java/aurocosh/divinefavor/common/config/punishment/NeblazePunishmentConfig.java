@@ -1,6 +1,6 @@
 package aurocosh.divinefavor.common.config.punishment;
 
-import aurocosh.divinefavor.common.config.IntervalConfig;
+import aurocosh.divinefavor.common.config.data.IntInterval;
 import net.minecraftforge.common.config.Config;
 
 import java.util.HashMap;
@@ -8,11 +8,11 @@ import java.util.Map;
 
 public class NeblazePunishmentConfig {
     @Config.Name("Blocks to melt")
-    public IntervalConfig blocksToMelt = new IntervalConfig(3, 7);
+    public IntInterval blocksToMelt = new IntInterval(3, 7);
     @Config.Name("Blocks to ignite")
-    public IntervalConfig blocksToIgnite = new IntervalConfig(20, 60);
+    public IntInterval blocksToIgnite = new IntInterval(20, 60);
     @Config.Name("Mobs to spawn")
-    public IntervalConfig mobsToSpawn = new IntervalConfig(3, 5);
+    public IntInterval mobsToSpawn = new IntInterval(3, 5);
     @Config.Name("Spawn radius")
     public int spawnRadius = 10;
     @Config.Name("Ignition time seconds")

@@ -14,6 +14,7 @@ public class ModCurses {
     public static ModPotion hollow_leg;
     public static ModPotion limp_leg;
     public static ModPotion petrification;
+    public static ModPotion red_fury;
     public static ModPotion roots;
     public static ModPotion skyfall;
     public static ModPotion soul_theft;
@@ -31,6 +32,7 @@ public class ModCurses {
         hollow_leg = new PotionHollowLeg();
         limp_leg = new PotionLimpLeg();
         petrification = new PotionPetrification();
+        red_fury = new PotionRedFury();
         roots = new PotionRoots();
         skyfall = new PotionSkyfall();
         soul_theft = new PotionSoulTheft();

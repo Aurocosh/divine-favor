@@ -1,12 +1,12 @@
 package aurocosh.divinefavor.common.config.punishment;
 
-import aurocosh.divinefavor.common.config.IntervalConfig;
+import aurocosh.divinefavor.common.config.data.IntInterval;
 import aurocosh.divinefavor.common.util.UtilTick;
 import net.minecraftforge.common.config.Config;
 
 public class BlizrabiPunishmentConfig {
     @Config.Name("Wolfs to spawn")
-    public IntervalConfig wolfsToSpawn = new IntervalConfig(9, 12);
+    public IntInterval wolfsToSpawn = new IntInterval(9, 12);
     @Config.Name("Spawn radius")
     public int spawnRadius = 10;
 
