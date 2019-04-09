@@ -10,6 +10,8 @@ public class ConfigArrow {
     public static AntiGravityArrow antiGravityArrow = new AntiGravityArrow();
     @Config.Name("Armor corrosion")
     public static ArmorCorrosion armorCorrosion = new ArmorCorrosion();
+    @Config.Name("Blast arrow")
+    public static ExplosiveArrow blastArrow = new ExplosiveArrow(30,2, 2,false, false);
     @Config.Name("Blink arrow")
     public static BlinkArrow blinkArrow = new BlinkArrow();
     @Config.Name("Crawling mist")
@@ -18,6 +20,8 @@ public class ConfigArrow {
     public static Cripple cripple = new Cripple();
     @Config.Name("Disarm")
     public static Disarm disarm = new Disarm();
+    @Config.Name("Explosive arrow")
+    public static ExplosiveArrow explosiveArrow = new ExplosiveArrow(120,2, 5,true, false);
     @Config.Name("Fiery mark")
     public static FieryMark fieryMark = new FieryMark();
     @Config.Name("Fill lungs")
@@ -30,6 +34,8 @@ public class ConfigArrow {
     public static LimpLeg limpLeg = new LimpLeg();
     @Config.Name("Nether swap")
     public static NetherSwap netherSwap = new NetherSwap();
+    @Config.Name("Nuke arrow")
+    public static ExplosiveArrow nukeArrow = new ExplosiveArrow(400,2, 12,true, true);
     @Config.Name("Petrification")
     public static Petrification petrification = new Petrification();
     @Config.Name("Reinforced arrow I")
