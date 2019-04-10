@@ -33,16 +33,9 @@ repositories {
         name = "ModMaven"
         url = "https://modmaven.k-4u.nl"
     }
-    maven { // IntWheel
-        url "http://maven.k-4u.nl"
-    }
     maven { // TOP
         name 'tterrag maven'
         url "http://maven.tterrag.com/"
-    }
-    maven {
-        name = "CoFH Maven"
-        url = "http://maven.covers1624.net"
     }
     maven { // Bookshelf
         url = "https://maven.mcmoddev.com"
@@ -56,18 +49,21 @@ repositories {
     }
 }
 
-version = "0.1.0"
-group= "aurocosh.divinefavor"
-archivesBaseName = "divinefavor"
+version = "${mod_version}.${generateVersionCode()}"
+println version
+
+group = mod_group
+archivesBaseName = mod_archivesBaseName
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
 minecraft {
-    version = "1.12.2-14.23.5.2775"
+    version = "${mc_sub_version}-${forge_version}"
     runDir = "run"
-    mappings = "stable_39"
+    mappings = mc_mappings
     useDepAts = true
+    makeObfSourceJar = true
 }
 
 dependencies {
@@ -83,8 +79,8 @@ dependencies {
     deobfProvided "mcp.mobius.waila:Hwyla:${hwyla_version}_${mc_sub_version}:api"
     runtime "mcp.mobius.waila:Hwyla:${hwyla_version}_${mc_sub_version}"
 
-    deobfCompile "mcjty.theoneprobe:TheOneProbe-${mc_version}:${mc_version}-1.4.14-7"
-    deobfCompile "com.github.mcjty:intwheel:${mc_version}-1.2.7"
+//    deobfCompile "mcjty.theoneprobe:TheOneProbe-${mc_version}:${mc_version}-1.4.14-7"
+//    deobfCompile "com.github.mcjty:intwheel:${mc_version}-1.2.7"
     //compile "cofh:RedstoneFlux:1.12-2.1.0.6:universal"
     deobfCompile "vazkii.patchouli:Patchouli:${p_version}"
     deobfCompile "net.darkhax.bookshelf:Bookshelf-${mc_sub_version}:2.3.568"
@@ -108,4 +104,21 @@ processResources
     from(sourceSets.main.resources.srcDirs) {
         exclude 'mcmod.info'
     }
+}
+
+static def generateVersionCode() {
+    def result = "git rev-list HEAD --count".execute().text.trim() //unix
+    if(result.empty) result = "PowerShell -Command git rev-list HEAD --count".execute().text.trim() //windows
+    if(result.empty) throw new RuntimeException("Could not generate versioncode on this platform? Cmd output: ${result.text}")
+    return result.toInteger()
+}
+
+jar {
+
+}
+
+task deobfJar(type: Jar) {
+    from sourceSets.main.output
+    from sourceSets.main.java
+    classifier = 'dev'
 }
