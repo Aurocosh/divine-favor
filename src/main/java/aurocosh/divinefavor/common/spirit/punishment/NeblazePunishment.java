@@ -51,7 +51,7 @@ public class NeblazePunishment extends SpiritPunishment {
     private boolean spawnMob(World world, BlockPos pos) {
         int spawnRadius = ConfigPunishments.neblaze.spawnRadius;
         BlockPos spawnPos = UtilCoordinates.getRandomNeighbour(pos, spawnRadius, 0, spawnRadius);
-        spawnPos = UtilCoordinates.findPlaceToSpawn(spawnPos, world, spawnRadius);
+        spawnPos = UtilCoordinates.findPlaceToStand(spawnPos, world, spawnRadius);
         if (spawnPos != null && possibleEnemies.size() > 0) {
             Class<? extends Entity> clazz = possibleEnemies.getRandom();
             return UtilEntity.spawnEntity(world, spawnPos, clazz);

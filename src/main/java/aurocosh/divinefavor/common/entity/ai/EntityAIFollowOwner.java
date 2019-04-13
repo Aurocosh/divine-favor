@@ -131,7 +131,7 @@ public class EntityAIFollowOwner<T extends EntityLiving & IMinion> extends Entit
             BlockPos pos = UtilCoordinates.getRandomNeighbour(owner.getPosition(), TELEPORT_RADIUS, 0, TELEPORT_RADIUS);
             teleported = safeTeleport(pos);
             if (!teleported) {
-                pos = UtilCoordinates.findPlaceToSpawn(pos, minion.world, TELEPORT_RADIUS);
+                pos = UtilCoordinates.findPlaceToStand(pos, minion.world, TELEPORT_RADIUS);
                 teleported = safeTeleport(pos);
             }
         }

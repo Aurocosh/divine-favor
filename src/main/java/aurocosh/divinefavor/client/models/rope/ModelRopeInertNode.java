@@ -1,13 +1,13 @@
-package aurocosh.divinefavor.client.models;
+package aurocosh.divinefavor.client.models.rope;
 
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 
-public class ModelRopeNode extends ModelBase {
+public class ModelRopeInertNode extends ModelBase {
     public ModelRenderer cap6;
 
-    public ModelRopeNode() {
+    public ModelRopeInertNode() {
         this.textureWidth = 64;
         this.textureHeight = 64; //height is 64 here because block's texture must be 64x64
         this.cap6 = new ModelRenderer(this, 0, 5);

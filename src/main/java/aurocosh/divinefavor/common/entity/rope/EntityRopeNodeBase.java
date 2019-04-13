@@ -1,6 +1,7 @@
 package aurocosh.divinefavor.common.entity.rope;
 
 import aurocosh.divinefavor.common.block.common.ModBlocks;
+import aurocosh.divinefavor.common.util.UtilList;
 import aurocosh.divinefavor.common.util.UtilNbt;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.MoverType;
@@ -298,23 +299,13 @@ public abstract class EntityRopeNodeBase extends Entity {
 
             if (prevNode != null) {
                 if (nextNode == null) {
-                    EntityRopeNodeBase connectedRopeNode = null;
-                    for (Entity e : player.world.loadedEntityList) {
-                        if (entityClass.isInstance(e)) {
-                            EntityRopeNodeBase ropeNode = (EntityRopeNodeBase) e;
-                            if (ropeNode.getNextNodeByUUID() == player) {
-                                connectedRopeNode = ropeNode;
-                                break;
-                            }
-                        }
-                    }
+                    EntityRopeNodeBase connectedRopeNode = (EntityRopeNodeBase) UtilList.findFirst(player.world.loadedEntityList, obj -> entityClass.isInstance(obj) && ((EntityRopeNodeBase) obj).getNextNodeByUUID() == player);
                     if (connectedRopeNode != null) {
                         player.sendStatusMessage(new TextComponentTranslation("chat.rope.already_connected"), true);
                         return false;
                     }
 
                     setNextNode(player);
-
                     return true;
                 }
                 else if (!entityClass.isInstance(nextNode)) {
@@ -324,9 +315,7 @@ public abstract class EntityRopeNodeBase extends Entity {
             }
 
             if (entityClass.isInstance(nextNode)) {
-                EntityRopeNodeBase endNode = (EntityRopeNodeBase) nextNode;
-                while (entityClass.isInstance(endNode.getNextNodeByUUID()) && endNode.getNextNodeByUUID() != this)
-                    endNode = (EntityRopeNodeBase) endNode.getNextNodeByUUID();
+                EntityRopeNodeBase endNode = getLastConnectedNode((EntityRopeNodeBase) nextNode);
                 if (endNode.getNextNodeByUUID() == null && entityClass.isInstance(endNode.getPreviousNodeByUUID())) {
                     ((EntityRopeNodeBase) endNode.getPreviousNodeByUUID()).setNextNode(null);
                     endNode.setDead();
@@ -337,6 +326,13 @@ public abstract class EntityRopeNodeBase extends Entity {
             }
         }
         return false;
+    }
+
+    public EntityRopeNodeBase getLastConnectedNode(EntityRopeNodeBase endNode) {
+        Class<? extends EntityRopeNodeBase> clazz = getEntityClass();
+        while (clazz.isInstance(endNode.getNextNodeByUUID()) && endNode.getNextNodeByUUID() != this)
+            endNode = (EntityRopeNodeBase) endNode.getNextNodeByUUID();
+        return endNode;
     }
 
     @Override

@@ -3,6 +3,7 @@ package aurocosh.divinefavor.common.item.common;
 import aurocosh.divinefavor.common.entity.rope.EntityRopeExplosiveNode;
 import aurocosh.divinefavor.common.entity.rope.EntityRopeGlowingNode;
 import aurocosh.divinefavor.common.entity.rope.EntityRopeInertNode;
+import aurocosh.divinefavor.common.entity.rope.EntityRopeTeleportingNode;
 import aurocosh.divinefavor.common.item.*;
 import aurocosh.divinefavor.common.item.base.ModItem;
 import aurocosh.divinefavor.common.item.bone_dagger.ItemBoneDagger;
@@ -34,6 +35,7 @@ public final class ModItems {
 
     public static ModItem rope_explosive;
     public static ModItem rope_glowing;
+    public static ModItem rope_teleporting;
     public static ModItem rope_inert;
 
     public static void preInit() {
@@ -56,6 +58,7 @@ public final class ModItems {
         rope_explosive = new ItemRope<EntityRopeExplosiveNode>("rope_explosive","rope_explosive", EntityRopeExplosiveNode.class, EntityRopeExplosiveNode.ROPE_LENGTH) {};
         rope_glowing = new ItemRope<EntityRopeGlowingNode>("rope_glowing","rope_glowing", EntityRopeGlowingNode.class, EntityRopeGlowingNode.ROPE_LENGTH) {};
         rope_inert = new ItemRope<EntityRopeInertNode>("rope_inert","rope_inert", EntityRopeInertNode.class, EntityRopeInertNode.ROPE_LENGTH) {};
+        rope_teleporting = new ItemRope<EntityRopeTeleportingNode>("rope_teleporting","rope_teleporting", EntityRopeTeleportingNode.class, EntityRopeTeleportingNode.ROPE_LENGTH) {};
 
 //        ModContainer mod = Loader.instance().getModObjectList().inverse().getValue(DivineFavor.instance);
     }

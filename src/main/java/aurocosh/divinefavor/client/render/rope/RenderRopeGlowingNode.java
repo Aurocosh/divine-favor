@@ -1,6 +1,6 @@
 package aurocosh.divinefavor.client.render.rope;
 
-import aurocosh.divinefavor.client.models.ModelRopeGlowingNode;
+import aurocosh.divinefavor.client.models.rope.ModelRopeGlowingNode;
 import aurocosh.divinefavor.common.entity.rope.EntityRopeGlowingNode;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.util.ResourceLocation;

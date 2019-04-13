@@ -3,6 +3,7 @@ package aurocosh.divinefavor.common.entity.rope;
 import aurocosh.divinefavor.common.item.common.ModItems;
 import aurocosh.divinefavor.common.util.SlotData;
 import aurocosh.divinefavor.common.util.UtilPlayer;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
