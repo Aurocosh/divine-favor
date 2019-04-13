@@ -1,7 +1,7 @@
-package aurocosh.divinefavor.client.render.rope;
+package aurocosh.divinefavor.client.render.rope.base;
 
-import aurocosh.divinefavor.client.models.rope.ModelRopeNode;
-import aurocosh.divinefavor.common.entity.rope.EntityRopeNodeBase;
+import aurocosh.divinefavor.client.models.rope.base.ModelRopeNode;
+import aurocosh.divinefavor.common.entity.rope.base.EntityRopeNodeBase;
 import aurocosh.divinefavor.common.util.LightingUtil;
 import net.minecraft.client.renderer.BufferBuilder;
 import net.minecraft.client.renderer.GlStateManager;

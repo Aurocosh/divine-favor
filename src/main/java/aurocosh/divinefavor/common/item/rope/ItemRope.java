@@ -1,7 +1,7 @@
 package aurocosh.divinefavor.common.item.rope;
 
 import aurocosh.divinefavor.DivineFavor;
-import aurocosh.divinefavor.common.entity.rope.EntityRopeNodeBase;
+import aurocosh.divinefavor.common.entity.rope.base.EntityRopeNodeBase;
 import aurocosh.divinefavor.common.item.base.ModItem;
 import aurocosh.divinefavor.common.util.UtilList;
 import net.minecraft.entity.player.EntityPlayer;

@@ -27,11 +27,12 @@ public final class ModEntities {
 
         registerModEntity(EntityDirewolf.class, "direwolf", 80, 3, false);
 
-        registerModEntity(EntityRopeExplosiveNode.class, "rope_explosive", 64, 1, true);
-        registerModEntity(EntityRopeInertNode.class, "rope_inert", 64, 1, true);
-        registerModEntity(EntityRopeGlowingNode.class, "rope_glowing", 64, 1, true);
-        registerModEntity(EntityRopeTeleportingNode.class, "rope_teleporting", 64, 1, true);
         registerModEntity(EntityRopeBarrierNode.class, "rope_barrier", 64, 1, true);
+        registerModEntity(EntityRopeExplosiveNode.class, "rope_explosive", 64, 1, true);
+        registerModEntity(EntityRopeGlowingNode.class, "rope_glowing", 64, 1, true);
+        registerModEntity(EntityRopeGuideNode.class, "rope_guide", 64, 1, true);
+        registerModEntity(EntityRopeInertNode.class, "rope_inert", 64, 1, true);
+        registerModEntity(EntityRopeTeleportingNode.class, "rope_teleporting", 64, 1, true);
     }
 
     private static void registerModEntity(Class<? extends Entity> entityClass, String entityName, int trackingRange, int updateFrequency, boolean sendsVelocityUpdates) {

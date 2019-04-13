@@ -33,6 +33,7 @@ public final class ModItems {
     public static ModItem rope_barrier;
     public static ModItem rope_explosive;
     public static ModItem rope_glowing;
+    public static ModItem rope_guide;
     public static ModItem rope_inert;
     public static ModItem rope_teleporting;
 
@@ -53,11 +54,12 @@ public final class ModItems {
         warp_gem = new ItemWarpMarker("warp_gem", true);
         warp_pebble = new ItemWarpMarker("warp_pebble", false);
 
+        rope_barrier = new ItemRope<EntityRopeBarrierNode>("rope_barrier","rope_barrier", EntityRopeBarrierNode.class, EntityRopeBarrierNode.ROPE_LENGTH) {};
         rope_explosive = new ItemRope<EntityRopeExplosiveNode>("rope_explosive","rope_explosive", EntityRopeExplosiveNode.class, EntityRopeExplosiveNode.ROPE_LENGTH) {};
         rope_glowing = new ItemRope<EntityRopeGlowingNode>("rope_glowing","rope_glowing", EntityRopeGlowingNode.class, EntityRopeGlowingNode.ROPE_LENGTH) {};
+        rope_guide = new ItemRope<EntityRopeGuideNode>("rope_guide","rope_guide", EntityRopeGuideNode.class, EntityRopeGuideNode.ROPE_LENGTH) {};
         rope_inert = new ItemRope<EntityRopeInertNode>("rope_inert","rope_inert", EntityRopeInertNode.class, EntityRopeInertNode.ROPE_LENGTH) {};
         rope_teleporting = new ItemRope<EntityRopeTeleportingNode>("rope_teleporting","rope_teleporting", EntityRopeTeleportingNode.class, EntityRopeTeleportingNode.ROPE_LENGTH) {};
-        rope_barrier = new ItemRope<EntityRopeBarrierNode>("rope_barrier","rope_barrier", EntityRopeBarrierNode.class, EntityRopeBarrierNode.ROPE_LENGTH) {};
 
 //        ModContainer mod = Loader.instance().getModObjectList().inverse().getValue(DivineFavor.instance);
     }

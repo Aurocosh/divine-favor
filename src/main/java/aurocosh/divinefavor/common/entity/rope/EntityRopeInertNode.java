@@ -1,5 +1,6 @@
 package aurocosh.divinefavor.common.entity.rope;
 
+import aurocosh.divinefavor.common.entity.rope.base.EntityRopeNodeBase;
 import aurocosh.divinefavor.common.item.common.ModItems;
 import aurocosh.divinefavor.common.util.SlotData;
 import aurocosh.divinefavor.common.util.UtilPlayer;
@@ -35,5 +36,10 @@ public class EntityRopeInertNode extends EntityRopeNodeBase {
     @Override
     protected Class<? extends EntityRopeNodeBase> getEntityClass() {
         return EntityRopeInertNode.class;
+    }
+
+    @Override
+    protected boolean isMobile() {
+        return false;
     }
 }

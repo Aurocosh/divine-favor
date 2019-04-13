@@ -1,6 +1,7 @@
 package aurocosh.divinefavor.client.render.rope;
 
 import aurocosh.divinefavor.client.models.rope.ModelRopeExplosiveNode;
+import aurocosh.divinefavor.client.render.rope.base.RenderRopeNodeBase;
 import aurocosh.divinefavor.common.entity.rope.EntityRopeExplosiveNode;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.BlockRendererDispatcher;
@@ -78,5 +79,15 @@ public class RenderRopeExplosiveNode extends RenderRopeNodeBase<EntityRopeExplos
     @Override
     protected Color4f getLastColor() {
         return new Color4f(1, 0.25f, 0.25f, 1);
+    }
+
+    @Override
+    protected Color4f getConnectionColor() {
+        return new Color4f(0.7f, 0.3f, 0.3f, 0.7f);
+    }
+
+    @Override
+    protected Color4f getConnectionSubColor() {
+        return new Color4f(0.6f, 0.3f, 0.3f, 0.7f);
     }
 }

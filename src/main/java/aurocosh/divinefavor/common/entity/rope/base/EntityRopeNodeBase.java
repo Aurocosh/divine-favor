@@ -1,4 +1,4 @@
-package aurocosh.divinefavor.common.entity.rope;
+package aurocosh.divinefavor.common.entity.rope.base;
 
 import aurocosh.divinefavor.common.block.common.ModBlocks;
 import aurocosh.divinefavor.common.util.UtilList;
@@ -94,8 +94,9 @@ public abstract class EntityRopeNodeBase extends Entity {
         prevPosY = posY;
         prevPosZ = posZ;
 
+        boolean mobile = isMobile();
         boolean attached = isAttached();
-        if (!attached) {
+        if (mobile && !attached) {
             handleWaterMovement();
             move(MoverType.SELF, motionX, motionY, motionZ);
         }
@@ -104,7 +105,7 @@ public abstract class EntityRopeNodeBase extends Entity {
         attached = isAttached();
 
         if (attached && !prevAttached)
-            world.playSound(null, posX, posY, posZ, SoundEvents.BLOCK_METAL_STEP, SoundCategory.PLAYERS, 1, 1.5F);
+            world.playSound(null, posX, posY, posZ, SoundEvents.BLOCK_METAL_STEP, SoundCategory.PLAYERS, 1, 1.5f);
 
         Entity nextNode = getNextNode();
         if (!world.isRemote && nextNode instanceof EntityPlayer) {
@@ -119,12 +120,9 @@ public abstract class EntityRopeNodeBase extends Entity {
         if (isEmittingLight())
             handleLightBlocks(attached);
 
-        motionY *= 0.88D;
-        motionX *= 0.88D;
-        motionZ *= 0.88D;
-
         Entity prevNode = getPrevNode();
-        handleRopeMovement(attached, nextNode, prevNode);
+        if(mobile)
+            handleRopeMovement(attached, nextNode, prevNode);
         processDespawn(nextNode, prevNode);
     }
 
@@ -179,6 +177,10 @@ public abstract class EntityRopeNodeBase extends Entity {
             motionZ = 0.0D;
             return;
         }
+
+        motionY *= 0.88D;
+        motionX *= 0.88D;
+        motionZ *= 0.88D;
 
         boolean isFloating = false;
         if (nextNode != null && getDistance(nextNode) >= ROPE_LENGTH) {
@@ -270,9 +272,10 @@ public abstract class EntityRopeNodeBase extends Entity {
             if (canDropNewNode(player)) {
                 Vec3d connection = getConnectionToNext();
                 if (connection != null) {
-                    Vec3d newPos = player.getPositionVector().add(connection.scale(-0.5D)).add(0, 0.1D, 0);
-                    RayTraceResult result = world.rayTraceBlocks(player.getPositionVector(), newPos, false);
-                    if (result != null && result.typeOfHit == RayTraceResult.Type.BLOCK && result.hitVec.squareDistanceTo(player.getPositionVector()) < newPos.squareDistanceTo(player.getPositionVector()))
+                    Vec3d playerPosition = player.getPositionVector();
+                    Vec3d newPos = playerPosition.add(connection.scale(-0.5D)).add(0, 0.1D, 0);
+                    RayTraceResult result = world.rayTraceBlocks(playerPosition, newPos, false);
+                    if (result != null && result.typeOfHit == RayTraceResult.Type.BLOCK && result.hitVec.squareDistanceTo(playerPosition) < newPos.squareDistanceTo(playerPosition))
                         newPos = result.hitVec.add(result.hitVec.subtract(getPositionVector()).normalize().scale(0.1D));
                     extendRope(player, newPos.x, newPos.y, newPos.z);
                 }
@@ -377,6 +380,10 @@ public abstract class EntityRopeNodeBase extends Entity {
 
     protected boolean isEmittingLight() {
         return false;
+    }
+
+    protected boolean isMobile() {
+        return true;
     }
 
     public void extendRope(Entity entity, double x, double y, double z) {

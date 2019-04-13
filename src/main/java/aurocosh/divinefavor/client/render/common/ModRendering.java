@@ -37,10 +37,11 @@ public class ModRendering {
         manager.entityRenderMap.put(MinionCreeper.class, new RenderCreeper(manager));
         manager.entityRenderMap.put(EntityDirewolf.class, new RenderDirewolf(manager));
 
-        manager.entityRenderMap.put(EntityRopeExplosiveNode.class, new RenderRopeExplosiveNode(manager));
-        manager.entityRenderMap.put(EntityRopeInertNode.class, new RenderRopeInertNode(manager));
-        manager.entityRenderMap.put(EntityRopeGlowingNode.class, new RenderRopeGlowingNode(manager));
-        manager.entityRenderMap.put(EntityRopeTeleportingNode.class, new RenderRopeTeleportingNode(manager));
         manager.entityRenderMap.put(EntityRopeBarrierNode.class, new RenderRopeBarrierNode(manager));
+        manager.entityRenderMap.put(EntityRopeExplosiveNode.class, new RenderRopeExplosiveNode(manager));
+        manager.entityRenderMap.put(EntityRopeGlowingNode.class, new RenderRopeGlowingNode(manager));
+        manager.entityRenderMap.put(EntityRopeGuideNode.class, new RenderRopeGuideNode(manager));
+        manager.entityRenderMap.put(EntityRopeInertNode.class, new RenderRopeInertNode(manager));
+        manager.entityRenderMap.put(EntityRopeTeleportingNode.class, new RenderRopeTeleportingNode(manager));
     }
 }
