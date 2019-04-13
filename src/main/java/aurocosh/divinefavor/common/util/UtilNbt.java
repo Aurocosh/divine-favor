@@ -4,6 +4,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
+import net.minecraftforge.common.util.Constants;
 
 public class UtilNbt {
     public static NBTTagCompound getNbt(ItemStack stack) {
@@ -48,11 +49,15 @@ public class UtilNbt {
     }
 
     public static void setBlockPos(NBTTagCompound compound, String tag, BlockPos value) {
-        compound.setLong(tag, value.toLong());
+        if (value != null)
+            compound.setLong(tag, value.toLong());
     }
 
-    public static BlockPos getBlockPos(NBTTagCompound compound, String tag) {
-        return BlockPos.fromLong(compound.getLong(tag));
+    public static BlockPos getBlockPos(NBTTagCompound compound, String tag, BlockPos fallback) {
+        if (compound.hasKey(tag, Constants.NBT.TAG_LONG))
+            return BlockPos.fromLong(compound.getLong(tag));
+        else
+            return fallback;
     }
 
     public static void setVec3d(NBTTagCompound compound, String tagPrefix, Vec3d vector) {

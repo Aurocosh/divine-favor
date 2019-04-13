@@ -3,6 +3,7 @@ package aurocosh.divinefavor.common.custom_data.player.data.curse.crawling_mist;
 import aurocosh.divinefavor.common.lib.interfaces.INbtSerializer;
 import aurocosh.divinefavor.common.util.UtilNbt;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.math.BlockPos;
 
 // Handles the actual read/write of the nbt.
 public class CrawlingMistDataSerializer implements INbtSerializer<CrawlingMistData> {
@@ -15,6 +16,6 @@ public class CrawlingMistDataSerializer implements INbtSerializer<CrawlingMistDa
 
     @Override
     public void deserialize(NBTTagCompound nbt, CrawlingMistData instance) {
-        instance.setMistOrigin(UtilNbt.getBlockPos(nbt, TAG_MIST_ORIGIN));
+        instance.setMistOrigin(UtilNbt.getBlockPos(nbt, TAG_MIST_ORIGIN, BlockPos.ORIGIN));
     }
 }

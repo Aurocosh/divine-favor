@@ -1,5 +1,7 @@
 package aurocosh.divinefavor.common.entity.rope;
 
+import aurocosh.divinefavor.common.block.common.ModBlocks;
+import aurocosh.divinefavor.common.util.UtilNbt;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.MoverType;
 import net.minecraft.entity.player.EntityPlayer;
@@ -10,6 +12,7 @@ import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.SoundCategory;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.text.TextComponentTranslation;
@@ -32,6 +35,7 @@ public abstract class EntityRopeNodeBase extends Entity {
     private static final String TAG_PICK_UP = "pickUp";
     private static final String TAG_CAN_EXTEND = "canExtend";
     private static final String TAG_DESPAWN_TIMER = "despawnTimer";
+    private static final String TAG_LIGHT_BLOCK = "lightBlock";
 
     private boolean canExtend = true;
     private boolean pickUp = false;
@@ -45,6 +49,8 @@ public abstract class EntityRopeNodeBase extends Entity {
 
     private Entity cachedNextNodeEntity;
     private Entity cachedPrevNodeEntity;
+
+    private BlockPos lightBlock = null;
 
     public EntityRopeNodeBase(World world) {
         super(world);
@@ -66,6 +72,7 @@ public abstract class EntityRopeNodeBase extends Entity {
         pickUp = nbt.getBoolean(TAG_PICK_UP);
         canExtend = nbt.getBoolean(TAG_CAN_EXTEND);
         despawnTimer = nbt.getInteger(TAG_DESPAWN_TIMER);
+        lightBlock = UtilNbt.getBlockPos(nbt, TAG_LIGHT_BLOCK, null);
     }
 
     @Override
@@ -77,6 +84,7 @@ public abstract class EntityRopeNodeBase extends Entity {
         nbt.setBoolean(TAG_PICK_UP, pickUp);
         nbt.setBoolean(TAG_CAN_EXTEND, canExtend);
         nbt.setInteger(TAG_DESPAWN_TIMER, despawnTimer);
+        UtilNbt.setBlockPos(nbt, TAG_LIGHT_BLOCK, lightBlock);
     }
 
     @Override
@@ -86,7 +94,6 @@ public abstract class EntityRopeNodeBase extends Entity {
         prevPosZ = posZ;
 
         boolean attached = isAttached();
-
         if (!attached) {
             handleWaterMovement();
             move(MoverType.SELF, motionX, motionY, motionZ);
@@ -101,10 +108,15 @@ public abstract class EntityRopeNodeBase extends Entity {
         Entity nextNode = getNextNode();
         if (!world.isRemote && nextNode instanceof EntityPlayer) {
             final EntityPlayer player = (EntityPlayer) nextNode;
-            if (pickUpThisNode(player))
-                return;
+            pickUpThisNode(player);
             dropNewNode(player);
         }
+
+        if (!isEntityAlive())
+            return;
+
+        if (isEmittingLight())
+            handleLightBlocks(attached);
 
         motionY *= 0.88D;
         motionX *= 0.88D;
@@ -113,6 +125,27 @@ public abstract class EntityRopeNodeBase extends Entity {
         Entity prevNode = getPrevNode();
         handleRopeMovement(attached, nextNode, prevNode);
         processDespawn(nextNode, prevNode);
+    }
+
+    private void handleLightBlocks(boolean attached) {
+        if (attached) {
+            BlockPos pos = getPosition();
+            if (lightBlock != null && !lightBlock.equals(pos))
+                destroyLightSource();
+
+            if (lightBlock == null && world.isAirBlock(pos)) {
+                world.setBlockState(pos, ModBlocks.cavingRopeLight.getDefaultState());
+                lightBlock = pos;
+            }
+        }
+        else if (lightBlock != null)
+            destroyLightSource();
+    }
+
+    private void destroyLightSource() {
+        if (world.isBlockLoaded(lightBlock) && world.getBlockState(lightBlock).getBlock() == ModBlocks.cavingRopeLight)
+            world.setBlockToAir(lightBlock);
+        lightBlock = null;
     }
 
 
@@ -215,16 +248,14 @@ public abstract class EntityRopeNodeBase extends Entity {
         motionZ *= Math.min(speed, 0.05D) / 0.05D;
     }
 
-    private boolean pickUpThisNode(final EntityPlayer player) {
+    private void pickUpThisNode(final EntityPlayer player) {
         final float nodeDistance = player.getDistance(this);
         if (!pickUp)
             pickUp = nodeDistance > 1.5f;
         else if (player.getEntityBoundingBox().grow(0.4D, 0.4D, 0.4D).intersects(getEntityBoundingBox())) {
             removeNode(player);
             registerPickUp(player);
-            return true;
         }
-        return false;
     }
 
     protected void registerPickUp(EntityPlayer player) {
@@ -314,6 +345,13 @@ public abstract class EntityRopeNodeBase extends Entity {
     }
 
     @Override
+    public void setDead() {
+        super.setDead();
+        if (lightBlock != null)
+            destroyLightSource();
+    }
+
+    @Override
     @SideOnly(Side.CLIENT)
     public boolean isInRangeToRenderDist(double distance) {
         return distance < 1024.0D;
@@ -340,6 +378,10 @@ public abstract class EntityRopeNodeBase extends Entity {
     protected abstract EntityRopeNodeBase makeNewNode(World world);
 
     protected abstract Class<? extends EntityRopeNodeBase> getEntityClass();
+
+    protected boolean isEmittingLight() {
+        return false;
+    }
 
     public void extendRope(Entity entity, double x, double y, double z) {
         EntityRopeNodeBase ropeNode = makeNewNode(world);
