@@ -103,7 +103,7 @@ public abstract class EntityRopeNodeBase extends Entity {
 
         if (!world.isRemote && nextNode instanceof EntityPlayer) {
             final EntityPlayer player = (EntityPlayer) nextNode;
-            if(pickUpThisNode(player))
+            if (pickUpThisNode(player))
                 return;
             dropNewNode(player);
         }
@@ -263,12 +263,13 @@ public abstract class EntityRopeNodeBase extends Entity {
         else {
             Entity prevNode = getPreviousNodeByUUID();
             Entity nextNode = getNextNodeByUUID();
+            Class<? extends EntityRopeNodeBase> entityClass = getEntityClass();
 
             if (prevNode != null) {
                 if (nextNode == null) {
                     EntityRopeNodeBase connectedRopeNode = null;
                     for (Entity e : player.world.loadedEntityList) {
-                        if (e instanceof EntityRopeNodeBase) {
+                        if (entityClass.isInstance(e)) {
                             EntityRopeNodeBase ropeNode = (EntityRopeNodeBase) e;
                             if (ropeNode.getNextNodeByUUID() == player) {
                                 connectedRopeNode = ropeNode;
@@ -285,17 +286,17 @@ public abstract class EntityRopeNodeBase extends Entity {
 
                     return true;
                 }
-                else if (nextNode instanceof EntityRopeNodeBase == false) {
+                else if (!entityClass.isInstance(nextNode)) {
                     setNextNode(null);
                     return true;
                 }
             }
 
-            if (nextNode instanceof EntityRopeNodeBase) {
+            if (entityClass.isInstance(nextNode)) {
                 EntityRopeNodeBase endNode = (EntityRopeNodeBase) nextNode;
-                while (endNode.getNextNodeByUUID() instanceof EntityRopeNodeBase && endNode.getNextNodeByUUID() != this)
+                while (entityClass.isInstance(endNode.getNextNodeByUUID()) && endNode.getNextNodeByUUID() != this)
                     endNode = (EntityRopeNodeBase) endNode.getNextNodeByUUID();
-                if (endNode.getNextNodeByUUID() == null && endNode.getPreviousNodeByUUID() instanceof EntityRopeNodeBase) {
+                if (endNode.getNextNodeByUUID() == null && entityClass.isInstance(endNode.getPreviousNodeByUUID())) {
                     ((EntityRopeNodeBase) endNode.getPreviousNodeByUUID()).setNextNode(null);
                     endNode.setDead();
 
@@ -337,6 +338,8 @@ public abstract class EntityRopeNodeBase extends Entity {
     }
 
     protected abstract EntityRopeNodeBase makeNewNode(World world);
+
+    protected abstract Class<? extends EntityRopeNodeBase> getEntityClass();
 
     public void extendRope(Entity entity, double x, double y, double z) {
         EntityRopeNodeBase ropeNode = makeNewNode(world);
