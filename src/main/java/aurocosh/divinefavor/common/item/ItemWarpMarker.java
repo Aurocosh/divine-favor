@@ -54,7 +54,7 @@ public class ItemWarpMarker extends ModItem {
         if(!UtilNbt.checkForTags(nbt, TAG_POSITION, TAG_DIMENSION))
             return false;
 
-        BlockPos destination = UtilNbt.getBlockPos(nbt, TAG_POSITION);
+        BlockPos destination = UtilNbt.getBlockPos(nbt, TAG_POSITION, BlockPos.ORIGIN);
         int dimension = nbt.getInteger(TAG_DIMENSION);
         if(!canTeleportToDimensions && dimension != player.dimension)
             return false;

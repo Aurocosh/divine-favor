@@ -174,4 +174,9 @@ public class EntityRopeExplosiveNode extends EntityRopeNodeBase {
             triggerNode(this);
         return super.attackEntityFrom(source, amount);
     }
+
+    @Override
+    protected boolean isEmittingLight() {
+        return true;
+    }
 }

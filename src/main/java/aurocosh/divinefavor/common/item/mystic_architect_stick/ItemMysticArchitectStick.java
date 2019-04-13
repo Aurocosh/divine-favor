@@ -119,10 +119,10 @@ public class ItemMysticArchitectStick extends ModItem {
             return;
         }
 
-        BlockPos firstCorner = UtilNbt.getBlockPos(compound, TAG_POS_FIRST);
-        BlockPos secondCorner = UtilNbt.getBlockPos(compound, TAG_POS_SECOND);
-        BlockPos basePosition = UtilNbt.getBlockPos(compound, TAG_BASE_POSITION);
-        BlockPos mediumPosition = UtilNbt.getBlockPos(compound, TAG_MEDIUM_POSITION);
+        BlockPos firstCorner = UtilNbt.getBlockPos(compound, TAG_POS_FIRST, BlockPos.ORIGIN);
+        BlockPos secondCorner = UtilNbt.getBlockPos(compound, TAG_POS_SECOND, BlockPos.ORIGIN);
+        BlockPos basePosition = UtilNbt.getBlockPos(compound, TAG_BASE_POSITION, BlockPos.ORIGIN);
+        BlockPos mediumPosition = UtilNbt.getBlockPos(compound, TAG_MEDIUM_POSITION, BlockPos.ORIGIN);
         String airMarker = compound.getString(TAG_AIR_TYPE);
 
         String templateString = getTemplateData(worldIn, firstCorner, secondCorner, mediumPosition, basePosition, airMarker);

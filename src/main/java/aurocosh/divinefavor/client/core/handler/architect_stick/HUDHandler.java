@@ -36,8 +36,8 @@ public final class HUDHandler {
             return;
 
         NBTTagCompound compound = stack.getTagCompound();
-        BlockPos startPos = UtilNbt.getBlockPos(compound, ItemMysticArchitectStick.TAG_POS_FIRST);
-        BlockPos endPos = UtilNbt.getBlockPos(compound, ItemMysticArchitectStick.TAG_POS_SECOND);
+        BlockPos startPos = UtilNbt.getBlockPos(compound, ItemMysticArchitectStick.TAG_POS_FIRST, BlockPos.ORIGIN);
+        BlockPos endPos = UtilNbt.getBlockPos(compound, ItemMysticArchitectStick.TAG_POS_SECOND, BlockPos.ORIGIN);
 
         Minecraft mc = Minecraft.getMinecraft();
         mc.renderEngine.bindTexture(TextureMap.LOCATION_BLOCKS_TEXTURE);

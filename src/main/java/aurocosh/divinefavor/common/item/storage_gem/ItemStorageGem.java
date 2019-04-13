@@ -57,7 +57,7 @@ public class ItemStorageGem extends ModItem {
         NBTTagCompound tag = UtilNbt.getNbt(stack);
         if (!UtilNbt.checkForTags(tag, TAG_POSITION, TAG_DIMENSION))
             return false;
-        BlockPos pos = UtilNbt.getBlockPos(tag, TAG_POSITION);
+        BlockPos pos = UtilNbt.getBlockPos(tag, TAG_POSITION, BlockPos.ORIGIN);
         int dimension = tag.getInteger(TAG_DIMENSION);
         if (playerIn.dimension != dimension)
             return false;

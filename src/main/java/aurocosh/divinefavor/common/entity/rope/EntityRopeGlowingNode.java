@@ -41,4 +41,9 @@ public class EntityRopeGlowingNode extends EntityRopeNodeBase {
     public boolean isGlowing() {
         return true;
     }
+
+    @Override
+    protected boolean isEmittingLight() {
+        return true;
+    }
 }
