@@ -1,6 +1,6 @@
 package aurocosh.divinefavor.client.render.rope;
 
-import aurocosh.divinefavor.client.models.ModelRopeExplosiveNode;
+import aurocosh.divinefavor.client.models.rope.ModelRopeExplosiveNode;
 import aurocosh.divinefavor.common.entity.rope.EntityRopeExplosiveNode;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.BlockRendererDispatcher;

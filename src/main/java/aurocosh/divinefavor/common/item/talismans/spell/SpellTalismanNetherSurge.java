@@ -66,7 +66,7 @@ public class SpellTalismanNetherSurge extends ItemSpellTalisman {
     private void spawnNetherMob(TalismanContext context) {
         int spawnRadius = ConfigSpells.netherSurge.spawnRadius;
         BlockPos spawnPos = UtilCoordinates.getRandomNeighbour(context.pos, spawnRadius, 0, spawnRadius);
-        spawnPos = UtilCoordinates.findPlaceToSpawn(spawnPos, context.world, spawnRadius);
+        spawnPos = UtilCoordinates.findPlaceToStand(spawnPos, context.world, spawnRadius);
         if (spawnPos == null)
             return;
 

@@ -28,7 +28,7 @@ public class BlizrabiPunishment extends SpiritPunishment {
     private boolean spawnWolf(EntityPlayer player, World world, BlockPos pos) {
         int spawnRadius = ConfigPunishments.blizrabi.spawnRadius;
         BlockPos spawnPos = UtilCoordinates.getRandomNeighbour(pos, spawnRadius, 0, spawnRadius);
-        spawnPos = UtilCoordinates.findPlaceToSpawn(spawnPos, world, spawnRadius);
+        spawnPos = UtilCoordinates.findPlaceToStand(spawnPos, world, spawnRadius);
         if (spawnPos == null)
             return false;
 

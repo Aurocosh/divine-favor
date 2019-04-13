@@ -107,7 +107,7 @@ public class UtilCoordinates {
         return null;
     }
 
-    public static BlockPos findPlaceToSpawn(BlockPos start, World world, int limit) {
+    public static BlockPos findPlaceToStand(BlockPos start, World world, int limit) {
         BlockPos pos = findPlaceToStandBelow(start.up(), world, limit, true);
         if (pos != null)
             return pos;

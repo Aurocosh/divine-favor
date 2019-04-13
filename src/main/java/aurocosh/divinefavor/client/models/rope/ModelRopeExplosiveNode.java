@@ -1,4 +1,4 @@
-package aurocosh.divinefavor.client.models;
+package aurocosh.divinefavor.client.models.rope;
 
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
