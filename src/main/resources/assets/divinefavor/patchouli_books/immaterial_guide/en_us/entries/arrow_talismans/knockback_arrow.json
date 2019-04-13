@@ -1,15 +1,15 @@
 {
   "name": "Knockback arrow",
-  "icon": "divinefavor:arrow_talisman_knockback_arrow",
+  "icon": "divinefavor:arrow_talisman_force_arrow",
   "category": "arrow_talismans",
   "pages": [
     {
       "type": "talisman_description",
-      "talisman": "divinefavor:arrow_talisman_knockback_arrow"
+      "talisman": "divinefavor:arrow_talisman_force_arrow"
     },
     {
       "type": "arrow_talisman_stats",
-      "talisman": "divinefavor:arrow_talisman_knockback_arrow"
+      "talisman": "divinefavor:arrow_talisman_force_arrow"
     }
   ]
 }

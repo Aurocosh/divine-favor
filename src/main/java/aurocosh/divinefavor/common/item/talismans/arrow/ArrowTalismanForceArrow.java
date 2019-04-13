@@ -10,16 +10,16 @@ import net.minecraft.entity.projectile.EntityArrow;
 
 import java.util.EnumSet;
 
-public class ArrowTalismanKnockbackArrow extends ItemArrowTalisman {
-    private final float knockback;
+public class ArrowTalismanForceArrow extends ItemArrowTalisman {
+    private final float velocity;
 
-    public ArrowTalismanKnockbackArrow(String name, ModSpirit spirit, int favorCost, int color, double arrowDamage, ArrowType arrowType, float knockback) {
+    public ArrowTalismanForceArrow(String name, ModSpirit spirit, int favorCost, int color, double arrowDamage, ArrowType arrowType, float velocity) {
         super(name, spirit, favorCost, color, arrowDamage, EnumSet.of(ArrowOptions.BreakOnHit, ArrowOptions.RequiresTarget), arrowType);
-        this.knockback = knockback;
+        this.velocity = velocity;
     }
 
     @Override
     protected void performActionServer(EntityLivingBase target, EntityLivingBase shooter, EntityArrow arrow) {
-        UtilEntity.addVelocity(target, arrow.getLookVec(), knockback);
+        UtilEntity.addVelocity(target, shooter.getLookVec(), velocity);
     }
 }
