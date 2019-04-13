@@ -31,7 +31,9 @@ public class ConfigArrow {
     @Config.Name("Hollow leg")
     public static HollowLeg hollowLeg = new HollowLeg();
     @Config.Name("Force arrow")
-    public static ForceArrow forceArrow = new ForceArrow();
+    public static ForceArrow forceArrow = new ForceArrow(120,0.5f,6);
+    @Config.Name("Impulse arrow")
+    public static ForceArrow impulseArrow = new ForceArrow(30,0.5f,2);
     @Config.Name("Limp leg")
     public static LimpLeg limpLeg = new LimpLeg();
     @Config.Name("Nether swap")
