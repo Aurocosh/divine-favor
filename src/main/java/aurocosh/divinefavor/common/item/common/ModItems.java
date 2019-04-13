@@ -7,6 +7,8 @@ import aurocosh.divinefavor.common.item.bone_dagger.ItemBoneDaggerAwakened;
 import aurocosh.divinefavor.common.item.contract_binder.ItemContractBinder;
 import aurocosh.divinefavor.common.item.mystic_architect_stick.ItemMysticArchitectStick;
 import aurocosh.divinefavor.common.item.ritual_pouch.ItemRitualPouch;
+import aurocosh.divinefavor.common.item.rope.ItemRopeExplosive;
+import aurocosh.divinefavor.common.item.rope.ItemRopeInert;
 import aurocosh.divinefavor.common.item.storage_gem.ItemStorageGem;
 import aurocosh.divinefavor.common.item.talisman_container.grimoire.ItemGrimoire;
 import aurocosh.divinefavor.common.item.talisman_container.spell_bow.ItemSpellBow;
@@ -28,7 +30,8 @@ public final class ModItems {
     public static ModItem warp_gem;
     public static ModItem warp_pebble;
 
-    public static ModItem item_explosive_charge;
+    public static ModItem rope_inert;
+    public static ModItem rope_explosive;
 
     public static void preInit() {
         bone_dagger = new ItemBoneDagger();
@@ -47,7 +50,8 @@ public final class ModItems {
         warp_gem = new ItemWarpMarker("warp_gem", true);
         warp_pebble = new ItemWarpMarker("warp_pebble", false);
 
-        item_explosive_charge = new ItemExplosiveCharge("explosive_charge","explosive_charge");
+        rope_inert = new ItemRopeInert("rope_inert","rope_inert");
+        rope_explosive = new ItemRopeExplosive("rope_explosive","rope_explosive");
 
 //        ModContainer mod = Loader.instance().getModObjectList().inverse().getValue(DivineFavor.instance);
     }

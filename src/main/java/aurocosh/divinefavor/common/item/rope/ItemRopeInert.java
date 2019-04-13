@@ -1,7 +1,8 @@
-package aurocosh.divinefavor.common.item;
+package aurocosh.divinefavor.common.item.rope;
 
 import aurocosh.divinefavor.DivineFavor;
-import aurocosh.divinefavor.common.entity.rope.EntityExplosiveChargeNode;
+import aurocosh.divinefavor.common.entity.rope.EntityRopeExplosiveNode;
+import aurocosh.divinefavor.common.entity.rope.EntityRopeInertNode;
 import aurocosh.divinefavor.common.item.base.ModItem;
 import aurocosh.divinefavor.common.util.UtilList;
 import net.minecraft.entity.player.EntityPlayer;
@@ -17,8 +18,8 @@ import net.minecraft.world.World;
 
 import java.util.List;
 
-public class ItemExplosiveCharge extends ModItem {
-    public ItemExplosiveCharge(String name, String texturePath) {
+public class ItemRopeInert extends ModItem {
+    public ItemRopeInert(String name, String texturePath) {
         super(name, texturePath);
         this.setCreativeTab(DivineFavor.TAB_MAIN);
     }
@@ -29,11 +30,11 @@ public class ItemExplosiveCharge extends ModItem {
         if (world.isRemote)
             return EnumActionResult.SUCCESS;
 
-        List<EntityExplosiveChargeNode> chargeNodes = UtilList.filterListByClass(world.loadedEntityList, EntityExplosiveChargeNode.class);
-        EntityExplosiveChargeNode connectedRopeNode = UtilList.findFirst(chargeNodes, node -> node.getNextNodeByUUID() == player);
+        List<EntityRopeInertNode> chargeNodes = UtilList.filterListByClass(world.loadedEntityList, EntityRopeInertNode.class);
+        EntityRopeInertNode connectedRopeNode = UtilList.findFirst(chargeNodes, node -> node.getNextNodeByUUID() == player);
 
-        if (connectedRopeNode != null && connectedRopeNode.getDistanceSq(pos.getX() + hitX, pos.getY() + hitY, pos.getZ() + hitZ) > EntityExplosiveChargeNode.ROPE_LENGTH_SQ) {
-            player.sendStatusMessage(new TextComponentTranslation("chat.explosive_charge.too_far"), true);
+        if (connectedRopeNode != null && connectedRopeNode.getDistanceSq(pos.getX() + hitX, pos.getY() + hitY, pos.getZ() + hitZ) > EntityRopeExplosiveNode.ROPE_LENGTH_SQ) {
+            player.sendStatusMessage(new TextComponentTranslation("chat.rope_explosive.too_far"), true);
             return EnumActionResult.FAIL;
         }
 
@@ -45,8 +46,8 @@ public class ItemExplosiveCharge extends ModItem {
         return EnumActionResult.SUCCESS;
     }
 
-    private EntityExplosiveChargeNode spawnNewNode(EntityPlayer player, World world, BlockPos pos, float hitX, float hitY, float hitZ, ItemStack stack) {
-        EntityExplosiveChargeNode ropeNode = new EntityExplosiveChargeNode(world);
+    private EntityRopeInertNode spawnNewNode(EntityPlayer player, World world, BlockPos pos, float hitX, float hitY, float hitZ, ItemStack stack) {
+        EntityRopeInertNode ropeNode = new EntityRopeInertNode(world);
         ropeNode.setLocationAndAngles(pos.getX() + hitX, pos.getY() + hitY, pos.getZ() + hitZ, 0, 0);
         ropeNode.setNextNode(player);
         world.spawnEntity(ropeNode);

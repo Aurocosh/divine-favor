@@ -19,7 +19,7 @@ import org.lwjgl.opengl.GL11;
 public class RenderRopeNodeBase<T extends EntityRopeNodeBase> extends Render<T> {
     private Frustum frustum;
 
-    protected static final ResourceLocation TEXTURE = new ResourceLocation("divinefavor:textures/blocks/explosive_charge.png");
+    protected static final ResourceLocation TEXTURE = new ResourceLocation("divinefavor:textures/blocks/rope_explosive.png");
     protected static final ModelRopeNode nodeModel = new ModelRopeNode();
 
     public RenderRopeNodeBase(RenderManager renderManager) {

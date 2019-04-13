@@ -7,19 +7,19 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
-public class EntityExplosiveChargeNode extends EntityRopeNodeBase {
-    public EntityExplosiveChargeNode(World world) {
+public class EntityRopeInertNode extends EntityRopeNodeBase {
+    public EntityRopeInertNode(World world) {
         super(world);
     }
 
     @Override
     protected void registerPickUp(EntityPlayer player) {
-        UtilPlayer.addStackToInventoryOrDrop(player, new ItemStack(ModItems.item_explosive_charge, 1));
+        UtilPlayer.addStackToInventoryOrDrop(player, new ItemStack(ModItems.rope_inert, 1));
     }
 
     @Override
     protected boolean canDropNewNode(EntityPlayer player) {
-        SlotData slotData = UtilPlayer.findStackInInventory(player, element -> !element.isEmpty() && element.getItem() == ModItems.item_explosive_charge);
+        SlotData slotData = UtilPlayer.findStackInInventory(player, element -> !element.isEmpty() && element.getItem() == ModItems.rope_inert);
         if (slotData.slotIndex == -1)
             return false;
         slotData.stack.shrink(1);
@@ -29,6 +29,11 @@ public class EntityExplosiveChargeNode extends EntityRopeNodeBase {
 
     @Override
     protected EntityRopeNodeBase makeNewNode(World world) {
-        return new EntityExplosiveChargeNode(world);
+        return new EntityRopeInertNode(world);
+    }
+
+    @Override
+    protected Class<? extends EntityRopeNodeBase> getEntityClass() {
+        return EntityRopeInertNode.class;
     }
 }

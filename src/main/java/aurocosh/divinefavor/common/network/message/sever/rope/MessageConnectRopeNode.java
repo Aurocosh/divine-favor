@@ -1,6 +1,6 @@
 package aurocosh.divinefavor.common.network.message.sever.rope;
 
-import aurocosh.divinefavor.common.entity.rope.EntityExplosiveChargeNode;
+import aurocosh.divinefavor.common.entity.rope.EntityRopeExplosiveNode;
 import aurocosh.divinefavor.common.entity.rope.EntityRopeNodeBase;
 import aurocosh.divinefavor.common.network.base.NetworkWrappedServerMessage;
 import aurocosh.divinefavor.common.util.UtilEntity;
@@ -15,16 +15,16 @@ public class MessageConnectRopeNode extends NetworkWrappedServerMessage {
 
     @Override
     protected void handleSafe(EntityPlayerMP player) {
-        List<EntityExplosiveChargeNode> connectedNodes = UtilEntity.getNearbyEntities(EntityExplosiveChargeNode.class, player, 32, rope -> rope.getNextNodeByUUID() == player);
+        List<EntityRopeExplosiveNode> connectedNodes = UtilEntity.getNearbyEntities(EntityRopeExplosiveNode.class, player, 32, rope -> rope.getNextNodeByUUID() == player);
         if (!connectedNodes.isEmpty()) {
-            for (EntityExplosiveChargeNode rope : connectedNodes)
+            for (EntityRopeExplosiveNode rope : connectedNodes)
                 rope.setNextNode(null);
         }
         else {
-            List<EntityExplosiveChargeNode> unconnectedRopeNodes = UtilEntity.getNearbyEntities(EntityExplosiveChargeNode.class, player,
+            List<EntityRopeExplosiveNode> unconnectedRopeNodes = UtilEntity.getNearbyEntities(EntityRopeExplosiveNode.class, player,
                     EntityRopeNodeBase.ROPE_LENGTH, rope -> rope.getDistanceSq(player) <= EntityRopeNodeBase.ROPE_LENGTH_SQ && rope.getNextNodeByUUID() == null);
             if (!unconnectedRopeNodes.isEmpty()) {
-                EntityExplosiveChargeNode closest = UtilList.pickBest(unconnectedRopeNodes, (best, node) -> node.getDistanceSq(player) < best.getDistanceSq(player));
+                EntityRopeExplosiveNode closest = UtilList.pickBest(unconnectedRopeNodes, (best, node) -> node.getDistanceSq(player) < best.getDistanceSq(player));
                 closest.setNextNode(player);
             }
         }

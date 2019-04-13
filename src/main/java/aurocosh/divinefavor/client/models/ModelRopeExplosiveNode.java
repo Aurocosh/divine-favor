@@ -4,15 +4,15 @@ import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 
-public class ModelRopeNode extends ModelBase {
+public class ModelRopeExplosiveNode extends ModelBase {
     public ModelRenderer cap6;
 
-    public ModelRopeNode() {
+    public ModelRopeExplosiveNode() {
         this.textureWidth = 64;
         this.textureHeight = 64; //height is 64 here because block's texture must be 64x64
-        this.cap6 = new ModelRenderer(this, 0, 5);
+        this.cap6 = new ModelRenderer(this, 0, 21);
         this.cap6.setRotationPoint(0, 0, 0);
-        this.cap6.addBox(-1.0F, -1.0F, -1.0F, 2, 2, 2, 0.0F);
+        this.cap6.addBox(-1.0F, -1.0F, -1.0F, 4, 4, 4, 0.0F);
         this.setRotateAngle(cap6, 0, 0, 0);
     }
 
