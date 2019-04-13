@@ -9,4 +9,11 @@ public class ForceArrow {
     public float damage = 0.5f;
     @Config.Name("Velocity")
     public float velocity = 6;
+
+    public ForceArrow(int favorCost, float damage, float velocity) {
+        this.favorCost = favorCost;
+        this.damage = damage;
+        this.velocity = velocity;
+    }
 }
+
