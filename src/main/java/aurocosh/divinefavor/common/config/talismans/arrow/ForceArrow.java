@@ -2,11 +2,11 @@ package aurocosh.divinefavor.common.config.talismans.arrow;
 
 import net.minecraftforge.common.config.Config;
 
-public class KnockbackArrow {
+public class ForceArrow {
     @Config.Name("Favor cost")
-    public int favorCost = 20;
+    public int favorCost = 60;
     @Config.Name("Damage")
     public float damage = 0.5f;
-    @Config.Name("Damage")
-    public float knockback = 2;
+    @Config.Name("Velocity")
+    public float velocity = 6;
 }

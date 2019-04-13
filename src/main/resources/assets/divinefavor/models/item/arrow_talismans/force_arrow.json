@@ -1,7 +1,7 @@
 {
     "parent": "item/generated",
     "textures": {
-        "layer1": "divinefavor:items/arrow_talismans/knockback_arrow",
+        "layer1": "divinefavor:items/arrow_talismans/force_arrow",
         "layer0": "divinefavor:items/arrow_talismans/base"
     }
 }
