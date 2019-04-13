@@ -9,7 +9,7 @@ import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.MathHelper;
 
-import javax.vecmath.Vector4f;
+import javax.vecmath.Color4f;
 
 public class RenderRopeExplosiveNode extends RenderRopeNodeBase<EntityRopeExplosiveNode> {
     protected static final ResourceLocation TEXTURE = new ResourceLocation("divinefavor:textures/blocks/rope_nodes.png");
@@ -71,12 +71,12 @@ public class RenderRopeExplosiveNode extends RenderRopeNodeBase<EntityRopeExplos
     }
 
     @Override
-    protected Vector4f getNormalColor() {
-        return new Vector4f(1, 1, 1, 1);
+    protected Color4f getNormalColor() {
+        return new Color4f(1, 1, 1, 1);
     }
 
     @Override
-    protected Vector4f getLastColor() {
-        return new Vector4f(1, 0.25f, 0.25f, 1);
+    protected Color4f getLastColor() {
+        return new Color4f(1, 0.25f, 0.25f, 1);
     }
 }
