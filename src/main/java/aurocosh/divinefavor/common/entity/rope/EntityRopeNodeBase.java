@@ -98,9 +98,7 @@ public abstract class EntityRopeNodeBase extends Entity {
         if (attached && !prevAttached)
             world.playSound(null, posX, posY, posZ, SoundEvents.BLOCK_METAL_STEP, SoundCategory.PLAYERS, 1, 1.5F);
 
-        Entity nextNode = world.isRemote ? getNextNodeClient() : getNextNodeServer();
-        Entity prevNode = world.isRemote ? getPreviousNodeClient() : getPreviousNodeServer();
-
+        Entity nextNode = getNextNode();
         if (!world.isRemote && nextNode instanceof EntityPlayer) {
             final EntityPlayer player = (EntityPlayer) nextNode;
             if (pickUpThisNode(player))
@@ -112,9 +110,11 @@ public abstract class EntityRopeNodeBase extends Entity {
         motionX *= 0.88D;
         motionZ *= 0.88D;
 
+        Entity prevNode = getPrevNode();
         handleRopeMovement(attached, nextNode, prevNode);
         processDespawn(nextNode, prevNode);
     }
+
 
     private void processDespawn(Entity nextNode, Entity prevNode) {
         if (world.isRemote)
@@ -413,6 +413,14 @@ public abstract class EntityRopeNodeBase extends Entity {
             cachedPrevNodeEntity = entity;
             return entity;
         }
+    }
+
+    public Entity getPrevNode() {
+        return world.isRemote ? getPreviousNodeClient() : getPreviousNodeServer();
+    }
+
+    public Entity getNextNode() {
+        return world.isRemote ? getNextNodeClient() : getNextNodeServer();
     }
 
     @SideOnly(Side.CLIENT)

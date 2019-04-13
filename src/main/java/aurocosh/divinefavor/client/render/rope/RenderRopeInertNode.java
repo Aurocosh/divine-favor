@@ -2,7 +2,6 @@ package aurocosh.divinefavor.client.render.rope;
 
 import aurocosh.divinefavor.client.models.ModelRopeInertNode;
 import aurocosh.divinefavor.common.entity.rope.EntityRopeInertNode;
-import aurocosh.divinefavor.common.entity.rope.EntityRopeNodeBase;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.util.ResourceLocation;
 
@@ -15,7 +14,7 @@ public class RenderRopeInertNode extends RenderRopeNodeBase<EntityRopeInertNode>
     }
 
     @Override
-    protected void drawModel(EntityRopeNodeBase ropeNode) {
+    protected void drawModel(EntityRopeInertNode ropeNode, float partialTicks) {
         nodeModel.render(ropeNode, 0, 0, 0, 0, 0, 0.0625F);
     }
 

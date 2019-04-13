@@ -16,6 +16,8 @@ import net.minecraft.entity.Entity;
 import net.minecraft.util.ResourceLocation;
 import org.lwjgl.opengl.GL11;
 
+import javax.vecmath.Vector4f;
+
 public class RenderRopeNodeBase<T extends EntityRopeNodeBase> extends Render<T> {
     private Frustum frustum;
 
@@ -40,15 +42,19 @@ public class RenderRopeNodeBase<T extends EntityRopeNodeBase> extends Render<T> 
         GlStateManager.blendFunc(SourceFactor.SRC_ALPHA, DestFactor.ONE_MINUS_SRC_ALPHA);
         GlStateManager.enableTexture2D();
         GlStateManager.enableLighting();
-        GlStateManager.color(1.0F, 1.0F, 1.0F, 0.35F);
+
+        Vector4f normalColor = getNormalColor();
+        GlStateManager.color(normalColor.x, normalColor.y, normalColor.z, normalColor.w);
         LightingUtil.INSTANCE.setLighting(255);
 
-        if (ropeNode.getNextNodeClient() == null)
-            GlStateManager.color(0.25F, 1.0F, 0.25F, 0.35F);
+        if (ropeNode.getNextNodeClient() == null) {
+            Vector4f lastColor = getLastColor();
+            GlStateManager.color(lastColor.x, lastColor.y, lastColor.z, lastColor.w);
+        }
 
         GlStateManager.pushMatrix();
         GlStateManager.translate(x, y, z);
-        drawModel(ropeNode);
+        drawModel(ropeNode, partialTicks);
         GlStateManager.popMatrix();
 
         GlStateManager.color(1, 1, 1, 1);
@@ -85,7 +91,7 @@ public class RenderRopeNodeBase<T extends EntityRopeNodeBase> extends Render<T> 
         GlStateManager.popMatrix();
     }
 
-    protected void drawModel(EntityRopeNodeBase ropeNode) {
+    protected void drawModel(T ropeNode, float partialTicks) {
         nodeModel.render(ropeNode, 0, 0, 0, 0, 0, 0.0625F);
     }
 
@@ -176,5 +182,13 @@ public class RenderRopeNodeBase<T extends EntityRopeNodeBase> extends Render<T> 
     @Override
     protected ResourceLocation getEntityTexture(EntityRopeNodeBase entity) {
         return TEXTURE;
+    }
+
+    protected Vector4f getNormalColor() {
+        return new Vector4f(1, 1, 1, 0.35f);
+    }
+
+    protected Vector4f getLastColor() {
+        return new Vector4f(0.25f, 1, 0.25f, 0.35f);
     }
 }
