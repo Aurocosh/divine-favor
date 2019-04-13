@@ -1,6 +1,7 @@
 package aurocosh.divinefavor.client.render.rope;
 
 import aurocosh.divinefavor.client.models.rope.ModelRopeInertNode;
+import aurocosh.divinefavor.client.render.rope.base.RenderRopeNodeBase;
 import aurocosh.divinefavor.common.entity.rope.EntityRopeInertNode;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.util.ResourceLocation;

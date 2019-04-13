@@ -8,19 +8,19 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
-public class EntityRopeGlowingNode extends EntityRopeNodeBase {
-    public EntityRopeGlowingNode(World world) {
+public class EntityRopeGuideNode extends EntityRopeNodeBase {
+    public EntityRopeGuideNode(World world) {
         super(world);
     }
 
     @Override
     protected void registerPickUp(EntityPlayer player) {
-        UtilPlayer.addStackToInventoryOrDrop(player, new ItemStack(ModItems.rope_glowing, 1));
+        UtilPlayer.addStackToInventoryOrDrop(player, new ItemStack(ModItems.rope_guide, 1));
     }
 
     @Override
     protected boolean canDropNewNode(EntityPlayer player) {
-        SlotData slotData = UtilPlayer.findStackInInventory(player, element -> !element.isEmpty() && element.getItem() == ModItems.rope_glowing);
+        SlotData slotData = UtilPlayer.findStackInInventory(player, element -> !element.isEmpty() && element.getItem() == ModItems.rope_guide);
         if (slotData.slotIndex == -1)
             return false;
         slotData.stack.shrink(1);
@@ -30,21 +30,21 @@ public class EntityRopeGlowingNode extends EntityRopeNodeBase {
 
     @Override
     protected EntityRopeNodeBase makeNewNode(World world) {
-        return new EntityRopeGlowingNode(world);
+        return new EntityRopeGuideNode(world);
     }
 
     @Override
     protected Class<? extends EntityRopeNodeBase> getEntityClass() {
-        return EntityRopeGlowingNode.class;
-    }
-
-    @Override
-    public boolean isGlowing() {
-        return true;
+        return EntityRopeGuideNode.class;
     }
 
     @Override
     protected boolean isEmittingLight() {
         return true;
+    }
+
+    @Override
+    protected boolean isMobile() {
+        return false;
     }
 }

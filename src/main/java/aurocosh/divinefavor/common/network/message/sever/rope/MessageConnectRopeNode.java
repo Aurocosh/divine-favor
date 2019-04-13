@@ -1,7 +1,7 @@
 package aurocosh.divinefavor.common.network.message.sever.rope;
 
 import aurocosh.divinefavor.common.entity.rope.EntityRopeExplosiveNode;
-import aurocosh.divinefavor.common.entity.rope.EntityRopeNodeBase;
+import aurocosh.divinefavor.common.entity.rope.base.EntityRopeNodeBase;
 import aurocosh.divinefavor.common.network.base.NetworkWrappedServerMessage;
 import aurocosh.divinefavor.common.util.UtilEntity;
 import aurocosh.divinefavor.common.util.UtilList;
