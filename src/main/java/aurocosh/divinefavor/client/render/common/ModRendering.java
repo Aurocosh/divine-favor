@@ -6,10 +6,12 @@ import aurocosh.divinefavor.client.render.entity.minion.RenderMinionSkeleton;
 import aurocosh.divinefavor.client.render.entity.minion.RenderMinionStray;
 import aurocosh.divinefavor.client.render.entity.minion.RenderMinionZombie;
 import aurocosh.divinefavor.client.render.projectile.RenderSpellArrow;
+import aurocosh.divinefavor.client.render.rope.RenderExplosiveChargeNode;
 import aurocosh.divinefavor.common.entity.minions.*;
 import aurocosh.divinefavor.common.entity.mob.EntityDirewolf;
 import aurocosh.divinefavor.common.entity.projectile.EntitySpellArrow;
 import aurocosh.divinefavor.common.entity.projectile.EntityStoneball;
+import aurocosh.divinefavor.common.entity.rope.EntityExplosiveChargeNode;
 import aurocosh.divinefavor.common.item.common.ModItems;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.RenderItem;
@@ -34,5 +36,6 @@ public class ModRendering {
         manager.entityRenderMap.put(MinionStray.class, new RenderMinionStray(manager));
         manager.entityRenderMap.put(MinionCreeper.class, new RenderCreeper(manager));
         manager.entityRenderMap.put(EntityDirewolf.class, new RenderDirewolf(manager));
+        manager.entityRenderMap.put(EntityExplosiveChargeNode.class, new RenderExplosiveChargeNode(manager));
     }
 }

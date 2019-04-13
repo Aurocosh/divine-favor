@@ -135,9 +135,14 @@ public class UtilEntity {
         return UtilWorld.raycast(player.world, posVec, lookVec, 20);
     }
 
-    public static <T extends Entity> List<T> getEntitiesInSquareRadius(Class<? extends T> clazz, World world, Vec3d origin, double radius, @Nullable Predicate<? super T> filter) {
+    public static <T extends Entity> List<T> getNearbyEntities(Class<? extends T> clazz, World world, Vec3d origin, double radius, @Nullable Predicate<? super T> filter) {
         AxisAlignedBB axis = new AxisAlignedBB(origin.x - radius, origin.y - radius, origin.z - radius, origin.x + radius, origin.y + radius, origin.z + radius);
         return world.getEntitiesWithinAABB(clazz, axis, filter);
+    }
+
+    public static <T extends Entity> List<T> getNearbyEntities(Class<? extends T> clazz, Entity entity, double radius, @Nullable Predicate<? super T> filter) {
+        AxisAlignedBB axis = entity.getEntityBoundingBox().grow(radius);
+        return entity.world.getEntitiesWithinAABB(clazz, axis, filter);
     }
 
     public static boolean isInRadius(Vec3d origin, Entity entity, double radiusSq) {

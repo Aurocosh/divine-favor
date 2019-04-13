@@ -18,10 +18,12 @@ public class KeyBindings {
     private static final KeyConflictContext CONFLICT_CONTEXT = new KeyConflictContext();
     public static KeyBinding talismanScroll;
     public static KeyBinding talismanSelect;
+    public static KeyBinding ropeKey;
 
     public static void init() {
         talismanScroll = createBinding("talisman_scroll", Keyboard.KEY_R);
         talismanSelect = createBinding("talisman_select", Keyboard.KEY_V);
+        ropeKey = createBinding("rope_key", Keyboard.KEY_N);
     }
 
     private static KeyBinding createBinding(String name, int key) {

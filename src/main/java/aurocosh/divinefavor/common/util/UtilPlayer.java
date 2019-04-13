@@ -1,9 +1,12 @@
 package aurocosh.divinefavor.common.util;
 
+import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.SoundEvents;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.SoundCategory;
 
 public class UtilPlayer {
     public static ItemStack findHeldStackHands(EntityPlayer player, UtilList.Predicate<ItemStack> predicate) {
@@ -68,11 +71,27 @@ public class UtilPlayer {
         return new SlotData(-1, ItemStack.EMPTY);
     }
 
+    public static void shrinkAndSetStack(EntityPlayer player, SlotData slotData, int shrink){
+
+    }
+
     public static void swapStacks(EntityPlayer player, int firstSlot, int secondSlot) {
         ItemStack firstStack = player.inventory.getStackInSlot(firstSlot);
         ItemStack secondStack = player.inventory.getStackInSlot(secondSlot);
         player.inventory.setInventorySlotContents(firstSlot, secondStack);
         player.inventory.setInventorySlotContents(secondSlot, firstStack);
+    }
+
+    public static void addStackToInventoryOrDrop(EntityPlayer player, ItemStack stack) {
+        if (player.inventory.addItemStackToInventory(stack)) {
+            float pickupPitch = (UtilRandom.nextFloat(-1, 1) * 0.7f + 1.0f) * 2.0f;
+            player.world.playSound(null, player.posX, player.posY, player.posZ, SoundEvents.ENTITY_ITEM_PICKUP, SoundCategory.PLAYERS, 0.2F, pickupPitch);
+        }
+        else {
+            EntityItem itemEntity = new EntityItem(player.world, player.posX, player.posY, player.posZ, stack);
+            itemEntity.setPickupDelay(0);
+            player.world.spawnEntity(itemEntity);
+        }
     }
 
     public static void damageStack(EntityPlayer player, ItemStack stack) {

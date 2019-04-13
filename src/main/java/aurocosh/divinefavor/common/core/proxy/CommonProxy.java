@@ -32,6 +32,8 @@ import aurocosh.divinefavor.common.receipes.RecipeLoader;
 import aurocosh.divinefavor.common.spirit.ModSpirits;
 import com.google.common.util.concurrent.ListenableFuture;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.Item;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.config.Config;
 import net.minecraftforge.common.config.ConfigManager;
 import net.minecraftforge.fml.client.event.ConfigChangedEvent;
@@ -43,6 +45,8 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 
 import java.io.File;
+import java.util.Collections;
+import java.util.Map;
 
 @Mod.EventBusSubscriber
 public class CommonProxy {

@@ -28,7 +28,7 @@ public class PotionYummySmell extends ModPotion {
             return;
         if (!TICK_COUNTER.isFinished())
             return;
-        List<EntityCreature> creatures = UtilEntity.getEntitiesInSquareRadius(EntityCreature.class, livingBase.world, livingBase.getPositionVector(), ConfigArrow.yummySmell.radius, input -> true);
+        List<EntityCreature> creatures = UtilEntity.getNearbyEntities(EntityCreature.class, livingBase.world, livingBase.getPositionVector(), ConfigArrow.yummySmell.radius, input -> true);
         for (EntityCreature creature : creatures)
             creature.setAttackTarget(livingBase);
         if (creatures.size() >= ConfigArrow.yummySmell.cureCount)

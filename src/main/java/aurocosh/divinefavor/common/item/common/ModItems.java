@@ -28,6 +28,8 @@ public final class ModItems {
     public static ModItem warp_gem;
     public static ModItem warp_pebble;
 
+    public static ModItem item_explosive_charge;
+
     public static void preInit() {
         bone_dagger = new ItemBoneDagger();
         bone_dagger_awakened = new ItemBoneDaggerAwakened();
@@ -45,6 +47,7 @@ public final class ModItems {
         warp_gem = new ItemWarpMarker("warp_gem", true);
         warp_pebble = new ItemWarpMarker("warp_pebble", false);
 
+        item_explosive_charge = new ItemExplosiveCharge("explosive_charge","explosive_charge");
 
 //        ModContainer mod = Loader.instance().getModObjectList().inverse().getValue(DivineFavor.instance);
     }
