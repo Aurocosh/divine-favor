@@ -16,7 +16,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.util.ResourceLocation;
 import org.lwjgl.opengl.GL11;
 
-import javax.vecmath.Vector4f;
+import javax.vecmath.Color4f;
 
 public class RenderRopeNodeBase<T extends EntityRopeNodeBase> extends Render<T> {
     private Frustum frustum;
@@ -43,12 +43,12 @@ public class RenderRopeNodeBase<T extends EntityRopeNodeBase> extends Render<T> 
         GlStateManager.enableTexture2D();
         GlStateManager.enableLighting();
 
-        Vector4f normalColor = getNormalColor();
+        Color4f normalColor = getNormalColor();
         GlStateManager.color(normalColor.x, normalColor.y, normalColor.z, normalColor.w);
         LightingUtil.INSTANCE.setLighting(255);
 
         if (ropeNode.getNextNodeClient() == null) {
-            Vector4f lastColor = getLastColor();
+            Color4f lastColor = getLastColor();
             GlStateManager.color(lastColor.x, lastColor.y, lastColor.z, lastColor.w);
         }
 
@@ -105,73 +105,36 @@ public class RenderRopeNodeBase<T extends EntityRopeNodeBase> extends Render<T> 
             double camPosY = this.interpolate(node1.prevPosY - y, node1.posY - y, partialTicks);
             double camPosZ = this.interpolate(node1.prevPosZ - z, node1.posZ - z, partialTicks);
 
-            double startX = x;
-            double startY = y;
-            double startZ = z;
             double endX = this.interpolate(node2.prevPosX - camPosX, node2.posX - camPosX, partialTicks);
             double endY = this.interpolate(node2.prevPosY - camPosY, node2.posY - camPosY, partialTicks);
-            if (node2 instanceof EntityRopeNodeBase == false) {
+            if (!(node2 instanceof EntityRopeNodeBase))
                 endY += node2.getEyeHeight() / 2.0D;
-            }
             double endZ = this.interpolate(node2.prevPosZ - camPosZ, node2.posZ - camPosZ, partialTicks);
 
-            double diffX = (double) ((float) (endX - startX));
-            double diffY = (double) ((float) (endY - startY));
-            double diffZ = (double) ((float) (endZ - startZ));
+            double diffX = (double) ((float) (endX - x));
+            double diffY = (double) ((float) (endY - y));
+            double diffZ = (double) ((float) (endZ - z));
 
             GlStateManager.disableTexture2D();
             GlStateManager.disableLighting();
             GlStateManager.disableCull();
 
-            buffer.begin(GL11.GL_TRIANGLE_STRIP, DefaultVertexFormats.POSITION_COLOR);
-            for (int i = 0; i <= 24; ++i) {
-                float r;
-                float g;
-                float b;
+            Color4f connectionColor = getConnectionColor();
+            Color4f connectionSubColor = getConnectionSubColor();
+//            buffer.begin(GL11.GL_TRIANGLE_STRIP, DefaultVertexFormats.POSITION_COLOR);
+//            for (int i = 0; i <= 24; ++i) {
+//                Color4f currentColor = i % 2 == 0 ? connectionColor : connectionSubColor;
+//
+//                float percentage = (float) i / 24.0F;
+//                double yMult = endY < y ? percentage * Math.sqrt(percentage) : percentage * percentage;
+//
+//                buffer.pos(x + diffX * (double) percentage + 0.0D, y + diffY * (yMult + percentage) * 0.5D, z + diffZ * (double) percentage).color(currentColor.x, currentColor.y, currentColor.z, currentColor.w).endVertex();
+//                buffer.pos(x + diffX * (double) percentage + 0.025D, y + diffY * (yMult + percentage) * 0.5D + 0.025D, z + diffZ * (double) percentage).color(currentColor.x, currentColor.y, currentColor.z, currentColor.w).endVertex();
+//            }
+//            tessellator.draw();
 
-                if (i % 2 == 0) {
-                    r = 0.1F;
-                    g = 0.1F;
-                    b = 0.1F;
-                }
-                else {
-                    r = 0.3F;
-                    g = 0.3F;
-                    b = 0.3F;
-                }
-
-                float percentage = (float) i / 24.0F;
-                double yMult = endY < startY ? percentage * Math.sqrt(percentage) : percentage * percentage;
-
-                buffer.pos(x + diffX * (double) percentage + 0.0D, y + diffY * (double) (yMult + percentage) * 0.5D, z + diffZ * (double) percentage).color(r, g, b, 1).endVertex();
-                buffer.pos(x + diffX * (double) percentage + 0.025D, y + diffY * (double) (yMult + percentage) * 0.5D + 0.025D, z + diffZ * (double) percentage).color(r, g, b, 1).endVertex();
-            }
-            tessellator.draw();
-
-            buffer.begin(GL11.GL_TRIANGLE_STRIP, DefaultVertexFormats.POSITION_COLOR);
-            for (int i = 0; i <= 24; ++i) {
-                float r;
-                float g;
-                float b;
-
-                if (i % 2 == 0) {
-                    r = 0.1F;
-                    g = 0.1F;
-                    b = 0.1F;
-                }
-                else {
-                    r = 0.3F;
-                    g = 0.3F;
-                    b = 0.3F;
-                }
-
-                float percentage = (float) i / 24.0F;
-                double yMult = endY < startY ? percentage * Math.sqrt(percentage) : percentage * percentage;
-
-                buffer.pos(x + diffX * (double) percentage + 0.0D, y + diffY * (double) (yMult + percentage) * 0.5D + 0.025D, z + diffZ * (double) percentage).color(r, g, b, 1).endVertex();
-                buffer.pos(x + diffX * (double) percentage + 0.025D, y + diffY * (double) (yMult + percentage) * 0.5D, z + diffZ * (double) percentage + 0.025D).color(r, g, b, 1).endVertex();
-            }
-            tessellator.draw();
+            drawStrip(tessellator, buffer, x, y, z, endY, diffX, diffY, diffZ, connectionColor, connectionSubColor, 0.025d, 0);
+            drawStrip(tessellator, buffer, x, y, z, endY, diffX, diffY, diffZ, connectionColor, connectionSubColor, 0, 0.025d);
 
             GlStateManager.enableLighting();
             GlStateManager.enableTexture2D();
@@ -179,16 +142,37 @@ public class RenderRopeNodeBase<T extends EntityRopeNodeBase> extends Render<T> 
         }
     }
 
+    private void drawStrip(Tessellator tessellator, BufferBuilder buffer, double x, double y, double z, double endY, double diffX, double diffY, double diffZ, Color4f connectionColor, Color4f connectionSubColor, double firstShift, double secondShift) {
+        buffer.begin(GL11.GL_TRIANGLE_STRIP, DefaultVertexFormats.POSITION_COLOR);
+        for (int i = 0; i <= 24; ++i) {
+            Color4f currentColor = i % 2 == 0 ? connectionColor : connectionSubColor;
+            float percentage = (float) i / 24.0F;
+            double yMult = endY < y ? percentage * Math.sqrt(percentage) : percentage * percentage;
+
+            buffer.pos(x + diffX * (double) percentage + 0.0D, y + diffY * (yMult + percentage) * 0.5D + firstShift, z + diffZ * (double) percentage).color(currentColor.x, currentColor.y, currentColor.z, currentColor.w).endVertex();
+            buffer.pos(x + diffX * (double) percentage + 0.025D, y + diffY * (yMult + percentage) * 0.5D + secondShift, z + diffZ * (double) percentage + 0.025D).color(currentColor.x, currentColor.y, currentColor.z, currentColor.w).endVertex();
+        }
+        tessellator.draw();
+    }
+
     @Override
     protected ResourceLocation getEntityTexture(EntityRopeNodeBase entity) {
         return TEXTURE;
     }
 
-    protected Vector4f getNormalColor() {
-        return new Vector4f(1, 1, 1, 0.35f);
+    protected Color4f getNormalColor() {
+        return new Color4f(1, 1, 1, 0.35f);
     }
 
-    protected Vector4f getLastColor() {
-        return new Vector4f(0.25f, 1, 0.25f, 0.35f);
+    protected Color4f getLastColor() {
+        return new Color4f(0.25f, 1, 0.25f, 0.35f);
+    }
+
+    protected Color4f getConnectionColor() {
+        return new Color4f(0.1f, 0.1f, 0.1f, 0.8f);
+    }
+
+    protected Color4f getConnectionSubColor() {
+        return new Color4f(0.3f, 0.3f, 0.3f, 0.8f);
     }
 }

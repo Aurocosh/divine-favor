@@ -1,5 +1,8 @@
 package aurocosh.divinefavor.common.item.common;
 
+import aurocosh.divinefavor.common.entity.rope.EntityRopeExplosiveNode;
+import aurocosh.divinefavor.common.entity.rope.EntityRopeGlowingNode;
+import aurocosh.divinefavor.common.entity.rope.EntityRopeInertNode;
 import aurocosh.divinefavor.common.item.*;
 import aurocosh.divinefavor.common.item.base.ModItem;
 import aurocosh.divinefavor.common.item.bone_dagger.ItemBoneDagger;
@@ -7,8 +10,7 @@ import aurocosh.divinefavor.common.item.bone_dagger.ItemBoneDaggerAwakened;
 import aurocosh.divinefavor.common.item.contract_binder.ItemContractBinder;
 import aurocosh.divinefavor.common.item.mystic_architect_stick.ItemMysticArchitectStick;
 import aurocosh.divinefavor.common.item.ritual_pouch.ItemRitualPouch;
-import aurocosh.divinefavor.common.item.rope.ItemRopeExplosive;
-import aurocosh.divinefavor.common.item.rope.ItemRopeInert;
+import aurocosh.divinefavor.common.item.rope.ItemRope;
 import aurocosh.divinefavor.common.item.storage_gem.ItemStorageGem;
 import aurocosh.divinefavor.common.item.talisman_container.grimoire.ItemGrimoire;
 import aurocosh.divinefavor.common.item.talisman_container.spell_bow.ItemSpellBow;
@@ -30,8 +32,9 @@ public final class ModItems {
     public static ModItem warp_gem;
     public static ModItem warp_pebble;
 
-    public static ModItem rope_inert;
     public static ModItem rope_explosive;
+    public static ModItem rope_glowing;
+    public static ModItem rope_inert;
 
     public static void preInit() {
         bone_dagger = new ItemBoneDagger();
@@ -50,8 +53,9 @@ public final class ModItems {
         warp_gem = new ItemWarpMarker("warp_gem", true);
         warp_pebble = new ItemWarpMarker("warp_pebble", false);
 
-        rope_inert = new ItemRopeInert("rope_inert","rope_inert");
-        rope_explosive = new ItemRopeExplosive("rope_explosive","rope_explosive");
+        rope_explosive = new ItemRope<EntityRopeExplosiveNode>("rope_explosive","rope_explosive", EntityRopeExplosiveNode.class, EntityRopeExplosiveNode.ROPE_LENGTH) {};
+        rope_glowing = new ItemRope<EntityRopeGlowingNode>("rope_glowing","rope_glowing", EntityRopeGlowingNode.class, EntityRopeGlowingNode.ROPE_LENGTH) {};
+        rope_inert = new ItemRope<EntityRopeInertNode>("rope_inert","rope_inert", EntityRopeInertNode.class, EntityRopeInertNode.ROPE_LENGTH) {};
 
 //        ModContainer mod = Loader.instance().getModObjectList().inverse().getValue(DivineFavor.instance);
     }

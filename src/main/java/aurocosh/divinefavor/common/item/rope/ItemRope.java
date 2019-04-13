@@ -1,8 +1,7 @@
 package aurocosh.divinefavor.common.item.rope;
 
 import aurocosh.divinefavor.DivineFavor;
-import aurocosh.divinefavor.common.entity.rope.EntityRopeExplosiveNode;
-import aurocosh.divinefavor.common.entity.rope.EntityRopeInertNode;
+import aurocosh.divinefavor.common.entity.rope.EntityRopeNodeBase;
 import aurocosh.divinefavor.common.item.base.ModItem;
 import aurocosh.divinefavor.common.util.UtilList;
 import net.minecraft.entity.player.EntityPlayer;
@@ -16,11 +15,20 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.World;
 
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 
-public class ItemRopeInert extends ModItem {
-    public ItemRopeInert(String name, String texturePath) {
+public abstract class ItemRope<T extends EntityRopeNodeBase> extends ModItem {
+    private final Class<T> clazz;
+    private final double ropeDistance;
+    private final double ropeDistanceSq;
+
+    public ItemRope(String name, String texturePath, Class<T> clazz, double ropeDistance) {
         super(name, texturePath);
+        this.clazz = clazz;
+        this.ropeDistance = ropeDistance;
+        ropeDistanceSq = ropeDistance * ropeDistance;
         this.setCreativeTab(DivineFavor.TAB_MAIN);
     }
 
@@ -30,30 +38,36 @@ public class ItemRopeInert extends ModItem {
         if (world.isRemote)
             return EnumActionResult.SUCCESS;
 
-        List<EntityRopeInertNode> chargeNodes = UtilList.filterListByClass(world.loadedEntityList, EntityRopeInertNode.class);
-        EntityRopeInertNode connectedRopeNode = UtilList.findFirst(chargeNodes, node -> node.getNextNodeByUUID() == player);
+        List<T> chargeNodes = UtilList.filterListByClass(world.loadedEntityList, clazz);
+        T connectedRopeNode = UtilList.findFirst(chargeNodes, node -> node.getNextNodeByUUID() == player);
 
-        if (connectedRopeNode != null && connectedRopeNode.getDistanceSq(pos.getX() + hitX, pos.getY() + hitY, pos.getZ() + hitZ) > EntityRopeExplosiveNode.ROPE_LENGTH_SQ) {
+        if (connectedRopeNode != null && connectedRopeNode.getDistanceSq(pos.getX() + hitX, pos.getY() + hitY, pos.getZ() + hitZ) > ropeDistanceSq) {
             player.sendStatusMessage(new TextComponentTranslation("chat.rope_explosive.too_far"), true);
             return EnumActionResult.FAIL;
         }
 
         if (connectedRopeNode != null)
             connectedRopeNode.extendRope(player, pos.getX() + hitX, pos.getY() + hitY, pos.getZ() + hitZ);
-        else
-            spawnNewNode(player, world, pos, hitX, hitY, hitZ, stack);
+        else {
+            try {
+                spawnNewNode(player, world, pos, hitX, hitY, hitZ, stack);
+            }
+            catch (InstantiationException | IllegalAccessException | InvocationTargetException | NoSuchMethodException e) {
+                e.printStackTrace();
+            }
+        }
 
         return EnumActionResult.SUCCESS;
     }
 
-    private EntityRopeInertNode spawnNewNode(EntityPlayer player, World world, BlockPos pos, float hitX, float hitY, float hitZ, ItemStack stack) {
-        EntityRopeInertNode ropeNode = new EntityRopeInertNode(world);
+    private void spawnNewNode(EntityPlayer player, World world, BlockPos pos, float hitX, float hitY, float hitZ, ItemStack stack) throws IllegalAccessException, InvocationTargetException, InstantiationException, NoSuchMethodException {
+        Constructor<T> constructor = clazz.getConstructor(World.class);
+        T ropeNode = constructor.newInstance(world);
         ropeNode.setLocationAndAngles(pos.getX() + hitX, pos.getY() + hitY, pos.getZ() + hitZ, 0, 0);
         ropeNode.setNextNode(player);
         world.spawnEntity(ropeNode);
         world.playSound(null, ropeNode.posX, ropeNode.posY, ropeNode.posZ, SoundEvents.BLOCK_METAL_STEP, SoundCategory.PLAYERS, 1, 1.5F);
         stack.shrink(1);
-        return ropeNode;
     }
 
 //
