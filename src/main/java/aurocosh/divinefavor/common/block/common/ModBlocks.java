@@ -8,6 +8,7 @@ import aurocosh.divinefavor.common.block.medium.BlockMedium;
 import aurocosh.divinefavor.common.block.medium.TileMedium;
 import aurocosh.divinefavor.common.block.soulbound_lectern.BlockSoulboundLectern;
 import aurocosh.divinefavor.common.block.soulbound_lectern.TileSoulboundLectern;
+import aurocosh.divinefavor.common.block.tile.BlockCavingRopeLight;
 import aurocosh.divinefavor.common.constants.ConstBlockNames;
 import aurocosh.divinefavor.common.constants.ConstResources;
 import net.minecraft.block.material.Material;
@@ -16,7 +17,6 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class ModBlocks {
     public static ModBlock bathHeater;
-    public static ModBlock fastFurnace;
 
     public static ModBlock medium_gold;
     public static ModBlock medium_iron;
@@ -35,6 +35,7 @@ public class ModBlocks {
     public static ModBlock soulboundLecternWood;
 
     public static ModBlock enderPumpkin;
+    public static ModBlock cavingRopeLight;
 
     public static void preInit() {
         bathHeater = new BlockBathHeater();
@@ -56,6 +57,7 @@ public class ModBlocks {
         soulboundLecternWood = new BlockSoulboundLectern("wood", Material.WOOD);
 
         enderPumpkin = new BlockEnderPumpkin();
+        cavingRopeLight = new BlockCavingRopeLight("caving_rope");
 
         initTileEntities();
     }

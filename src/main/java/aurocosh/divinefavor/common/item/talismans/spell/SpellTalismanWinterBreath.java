@@ -29,7 +29,7 @@ public class SpellTalismanWinterBreath extends ItemSpellTalisman {
         Vec3d lookVec = player.getLookVec();
         int radius = ConfigSpells.winterBreath.radius;
         double radiusSq = radius * radius;
-        List<EntityLivingBase> entities = UtilEntity.getEntitiesInSquareRadius(EntityLivingBase.class, context.world, origin, radius, (EntityLivingBase livingBase) -> (livingBase != null) && (livingBase != player) && UtilEntity.isInRadius(origin, livingBase, radiusSq) && UtilEntity.isInCone(lookVec, origin, livingBase, ConfigSpells.winterBreath.coneTolerance));
+        List<EntityLivingBase> entities = UtilEntity.getNearbyEntities(EntityLivingBase.class, context.world, origin, radius, (EntityLivingBase livingBase) -> (livingBase != null) && (livingBase != player) && UtilEntity.isInRadius(origin, livingBase, radiusSq) && UtilEntity.isInCone(lookVec, origin, livingBase, ConfigSpells.winterBreath.coneTolerance));
         for (Entity entity : entities) {
             entity.attackEntityFrom(ModDamageSources.frostDamage, ConfigSpells.winterBreath.damage);
             UtilEntity.addVelocity(entity, lookVec, ConfigSpells.winterBreath.knockback);

@@ -31,7 +31,7 @@ public class SpellTalismanTarget extends ItemSpellTalisman {
     protected void performActionServer(TalismanContext context) {
         Vec3d origin = context.player.getPositionVector();
         double radiusSq = RADIUS * RADIUS;
-        List<EntityLivingBase> entities = UtilEntity.getEntitiesInSquareRadius(EntityLivingBase.class, context.world, origin, RADIUS, (EntityLivingBase livingBase) -> (livingBase instanceof IMinion)
+        List<EntityLivingBase> entities = UtilEntity.getNearbyEntities(EntityLivingBase.class, context.world, origin, RADIUS, (EntityLivingBase livingBase) -> (livingBase instanceof IMinion)
                 && (livingBase != context.player) && UtilEntity.isInRadius(origin, livingBase, radiusSq));
         for (Entity entity : entities) {
             IMinion minion = (IMinion) entity;

@@ -16,8 +16,10 @@ public class ModBlock extends Block {
         ModRegistries.blocks.register(this);
 
         ModItemBlock itemBlock = getItemBlock();
-        itemBlock.setRegistryName(fullName);
-        ModRegistries.itemBlocks.register(itemBlock);
+        if (itemBlock != null) {
+            itemBlock.setRegistryName(fullName);
+            ModRegistries.itemBlocks.register(itemBlock);
+        }
     }
 
     protected ModItemBlock getItemBlock() {

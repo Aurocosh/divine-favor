@@ -6,6 +6,7 @@ import aurocosh.divinefavor.common.entity.minions.*;
 import aurocosh.divinefavor.common.entity.mob.EntityDirewolf;
 import aurocosh.divinefavor.common.entity.projectile.EntitySpellArrow;
 import aurocosh.divinefavor.common.entity.projectile.EntityStoneball;
+import aurocosh.divinefavor.common.entity.rope.EntityExplosiveChargeNode;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
@@ -23,6 +24,7 @@ public final class ModEntities {
         registerModEntity(MinionCreeper.class, "minion_creeper", id++, DivineFavor.instance,80, 3, false);
 
         registerModEntity(EntityDirewolf.class, "direwolf", id++, DivineFavor.instance,80, 3, false);
+        registerModEntity(EntityExplosiveChargeNode.class, "explosive_charge", id++, DivineFavor.instance,64, 1, true);
     }
 
     private static void registerModEntity(Class<? extends Entity> entityClass, String entityName, int id, Object mod, int trackingRange, int updateFrequency, boolean sendsVelocityUpdates) {
