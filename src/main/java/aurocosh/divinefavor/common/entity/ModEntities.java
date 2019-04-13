@@ -6,10 +6,7 @@ import aurocosh.divinefavor.common.entity.minions.*;
 import aurocosh.divinefavor.common.entity.mob.EntityDirewolf;
 import aurocosh.divinefavor.common.entity.projectile.EntitySpellArrow;
 import aurocosh.divinefavor.common.entity.projectile.EntityStoneball;
-import aurocosh.divinefavor.common.entity.rope.EntityRopeExplosiveNode;
-import aurocosh.divinefavor.common.entity.rope.EntityRopeGlowingNode;
-import aurocosh.divinefavor.common.entity.rope.EntityRopeInertNode;
-import aurocosh.divinefavor.common.entity.rope.EntityRopeTeleportingNode;
+import aurocosh.divinefavor.common.entity.rope.*;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
@@ -34,6 +31,7 @@ public final class ModEntities {
         registerModEntity(EntityRopeInertNode.class, "rope_inert", 64, 1, true);
         registerModEntity(EntityRopeGlowingNode.class, "rope_glowing", 64, 1, true);
         registerModEntity(EntityRopeTeleportingNode.class, "rope_teleporting", 64, 1, true);
+        registerModEntity(EntityRopeBarrierNode.class, "rope_barrier", 64, 1, true);
     }
 
     private static void registerModEntity(Class<? extends Entity> entityClass, String entityName, int trackingRange, int updateFrequency, boolean sendsVelocityUpdates) {
