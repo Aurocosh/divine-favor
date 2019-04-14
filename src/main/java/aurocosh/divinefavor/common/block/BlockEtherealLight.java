@@ -2,12 +2,15 @@ package aurocosh.divinefavor.common.block;
 
 import aurocosh.divinefavor.DivineFavor;
 import aurocosh.divinefavor.common.block.base.ModBlockAir;
+import aurocosh.divinefavor.common.item.base.ModItemBlock;
 import aurocosh.divinefavor.common.particles.ParticleHandler;
 import aurocosh.divinefavor.common.particles.types.ModParticleTypes;
+import aurocosh.divinefavor.common.potions.common.ModPotions;
 import aurocosh.divinefavor.common.state_mappers.InvisibleStateMapper;
 import aurocosh.divinefavor.common.state_mappers.common.ICustomStateMappedBlock;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.renderer.block.statemap.IStateMapper;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
@@ -23,14 +26,11 @@ public class BlockEtherealLight extends ModBlockAir implements ICustomStateMappe
         setCreativeTab(DivineFavor.TAB_MAIN);
     }
 
-    /**
-     * Called periodically clientside on blocks near the player to show effects (like furnace fire particles). Note that
-     * this method is unrelated to {@link randomTick} and {@link #needsRandomTick}, and will always be called regardless
-     * of whether the block can receive random update ticks
-     */
     @SideOnly(Side.CLIENT)
     public void randomDisplayTick(IBlockState stateIn, World worldIn, BlockPos pos, Random rand) {
-        spawnParticles(worldIn, pos);
+        EntityPlayer player = DivineFavor.proxy.getClientPlayer();
+        if (player.isPotionActive(ModPotions.prismatic_eyes))
+            spawnParticles(worldIn, pos);
     }
 
     private void spawnParticles(World worldIn, BlockPos pos) {
@@ -61,6 +61,11 @@ public class BlockEtherealLight extends ModBlockAir implements ICustomStateMappe
             if (d1 < (double) pos.getX() || d1 > (double) (pos.getX() + 1) || d2 < 0.0D || d2 > (double) (pos.getY() + 1) || d3 < (double) pos.getZ() || d3 > (double) (pos.getZ() + 1))
                 ParticleHandler.createParticle(ModParticleTypes.etherealLight, worldIn, d1, d2, d3, 0.0D, 0.0D, 0.0D);
         }
+    }
+
+    @Override
+    protected ModItemBlock getItemBlock() {
+        return null;
     }
 
     @SideOnly(Side.CLIENT)

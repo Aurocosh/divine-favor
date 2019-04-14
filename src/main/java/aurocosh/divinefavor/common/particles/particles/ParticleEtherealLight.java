@@ -19,19 +19,18 @@ public class ParticleEtherealLight extends ModParticle {
         this(worldIn, xCoordIn, yCoordIn, zCoordIn, 1.0F, xSpeedIn);
     }
 
-    protected ParticleEtherealLight(World worldIn, double xCoordIn, double yCoordIn, double zCoordIn, float scale, float yellow) {
+    protected ParticleEtherealLight(World worldIn, double xCoordIn, double yCoordIn, double zCoordIn, float scale, float red) {
         super(worldIn, xCoordIn, yCoordIn, zCoordIn, 0.0D, 0.0D, 0.0D);
         motionX *= 0.10000000149011612D;
         motionY *= 0.10000000149011612D;
         motionZ *= 0.10000000149011612D;
 
-        if (yellow == 0.0F)
-            yellow = 8.0F;
+        if (red == 0.0F)
+            red = 8.0F;
 
         float f = (float) Math.random() * 0.4F + 0.6F;
-        float v = ((float) (Math.random() * 0.20000000298023224D) + 0.8F) * yellow * f;
-        particleRed = v;
-        particleGreen = v;
+        particleRed = ((float) (Math.random() * 0.20000000298023224D) + 0.8F) * red * f;
+        particleGreen = 0;
         particleBlue = 0;
         particleScale *= 0.75F;
         particleScale *= scale;

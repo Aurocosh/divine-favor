@@ -30,6 +30,7 @@ public class ModPotions {
     public static ModPotionToggle mist_blade;
     public static ModPotionToggle molten_skin;
     public static ModPotionToggle night_eye;
+    public static ModPotionToggle prismatic_eyes;
     public static ModPotionToggle spider_might;
     public static ModPotionToggleLimited crushing_palm;
     public static ModPotionToggleLimited toadic_jump;
@@ -55,6 +56,7 @@ public class ModPotions {
         molten_skin = new PotionMoltenSkin();
         night_eye = new PotionNightEye();
         obsidian_road = new PotionLiquidWalking("obsidian_road", Blocks.LAVA);
+        prismatic_eyes = new PotionPrismaticEyes();
         spider_might = new PotionSpiderMight();
         starvation = new PotionStarvation();
         stone_fever = new PotionStoneFever();
