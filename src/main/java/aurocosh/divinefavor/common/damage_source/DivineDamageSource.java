@@ -10,6 +10,8 @@ public class DivineDamageSource extends DamageSource {
         super("divine");
         setDamageBypassesArmor();
         setMagicDamage();
+        setDamageIsAbsolute();
+        setDamageBypassesArmor();
     }
 
     public ITextComponent getDeathMessage(EntityLivingBase entityLivingBaseIn) {
