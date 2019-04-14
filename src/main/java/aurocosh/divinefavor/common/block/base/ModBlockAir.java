@@ -13,8 +13,8 @@ import net.minecraft.world.World;
 import javax.annotation.Nullable;
 
 public class ModBlockAir extends ModBlock {
-    public ModBlockAir(String name) {
-        super(name, Material.AIR);
+    public ModBlockAir(String name, Material material) {
+        super(name, material);
     }
 
     public EnumBlockRenderType getRenderType(IBlockState state) {

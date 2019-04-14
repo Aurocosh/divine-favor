@@ -2,6 +2,7 @@ package aurocosh.divinefavor.common.config.common;
 
 import aurocosh.divinefavor.common.config.talismans.spell.*;
 import aurocosh.divinefavor.common.constants.ConstMisc;
+import aurocosh.divinefavor.common.util.UtilTick;
 import net.minecraftforge.common.config.Config;
 
 @Config(modid = ConstMisc.MOD_ID, name = ConstMisc.MOD_ID + "/spell_talismans")
@@ -44,6 +45,8 @@ public class ConfigSpells {
     public static EscapePlan escapePlan = new EscapePlan();
     @Config.Name("Ethereal light")
     public static EtherealLight etherealLight = new EtherealLight();
+    @Config.Name("Ethereal flash")
+    public static EtherealFlash etherealFlash = new EtherealFlash();
     @Config.Name("Evil eye")
     public static EvilEye evilEye = new EvilEye();
     @Config.Name("Fall negation")
@@ -100,6 +103,10 @@ public class ConfigSpells {
     public static PiercingInferno piercingInferno = new PiercingInferno();
     @Config.Name("Prismatic eyes")
     public static PrismaticEyes prismaticEyes = new PrismaticEyes();
+    @Config.Name("Red pulse")
+    public static RedPulse redPulse = new RedPulse(2, 4, 4, UtilTick.secondsToTicks(3));
+    @Config.Name("Red signal")
+    public static RedPulse redSignal = new RedPulse(20, 12, 15, UtilTick.secondsToTicks(30));
     @Config.Name("Remote chest")
     public static RemoteChest remoteChest = new RemoteChest();
     @Config.Name("Searing pulse")

@@ -1,0 +1,15 @@
+{
+  "name": "Red signal",
+  "icon": "divinefavor:talisman_red_signal",
+  "category": "spell_talismans",
+  "pages": [
+    {
+      "type": "talisman_description",
+      "talisman": "divinefavor:talisman_red_signal"
+    },
+    {
+      "type": "spell_talisman_stats",
+      "talisman": "divinefavor:talisman_red_signal"
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "name": "Red pulse",
+  "icon": "divinefavor:talisman_red_pulse",
+  "category": "spell_talismans",
+  "pages": [
+    {
+      "type": "talisman_description",
+      "talisman": "divinefavor:talisman_red_pulse"
+    },
+    {
+      "type": "spell_talisman_stats",
+      "talisman": "divinefavor:talisman_red_pulse"
+    }
+  ]
+}
