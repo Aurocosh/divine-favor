@@ -41,7 +41,7 @@ public class PotionPrismaticEyes extends ModPotionToggle {
         GlStateManager.enableBlend();
         GlStateManager.depthMask(false);
         GlStateManager.blendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
-        GlStateManager.color(1.0f, 1.0f, 1.0f, 0.1f);
+        GlStateManager.color(1.0f, 1.0f, 1.0f, 0.2f);
         mc.getTextureManager().bindTexture(EVIL_PRISMATIC_EYES_TEXTURE);
         Tessellator tessellator = Tessellator.getInstance();
 
