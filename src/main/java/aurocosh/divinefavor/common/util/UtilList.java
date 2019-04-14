@@ -1,6 +1,7 @@
 package aurocosh.divinefavor.common.util;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 public class UtilList {
@@ -26,6 +27,12 @@ public class UtilList {
         return true;
     }
 
+    public static <T> void filterList(List<T> list, Predicate<T> predicate) {
+        for (int i = list.size() - 1; i >= 0; i--)
+            if (predicate.select(list.get(i)))
+                list.remove(i);
+    }
+
     public static <T> boolean isAny(List<T> list, Predicate<T> predicate) {
         for (T element : list)
             if (predicate.select(element))
@@ -33,7 +40,7 @@ public class UtilList {
         return false;
     }
 
-    public static <T> List<T> filterList(List<T> list, Predicate<T> predicate) {
+    public static <T> List<T> select(List<T> list, Predicate<T> predicate) {
         List<T> filtered = new ArrayList<>();
         for (T element : list)
             if (predicate.select(element))
@@ -41,11 +48,11 @@ public class UtilList {
         return filtered;
     }
 
-    public static <T, K extends T> List<K> filterListByClass(List<T> list, Class<K> clazz) {
+    public static <T, K> List<K> select(Collection<T> list, Class<K> clazz) {
         List<K> filtered = new ArrayList<>();
         for (T element : list)
             if (clazz.isInstance(element))
-                filtered.add((K) element);
+                filtered.add(clazz.cast(element));
         return filtered;
     }
 

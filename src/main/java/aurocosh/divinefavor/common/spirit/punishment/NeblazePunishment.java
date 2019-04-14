@@ -31,7 +31,7 @@ public class NeblazePunishment extends SpiritPunishment {
     private void smeltPartsOfAltar(EntityPlayer player, World world, MultiBlockInstance instance) {
         int blocksToSmelt = ConfigPunishments.neblaze.blocksToMelt.random();
         List<BlockPos> solidsPositions = Vector3i.convert(new ArrayList<>(instance.positionsOfSolids));
-        List<BlockPos> netherrackPositions = UtilList.filterList(solidsPositions, pos -> world.getBlockState(pos).getBlock() == Blocks.NETHERRACK);
+        List<BlockPos> netherrackPositions = UtilList.select(solidsPositions, pos -> world.getBlockState(pos).getBlock() == Blocks.NETHERRACK);
         List<BlockPos> selectedPositions = UtilRandom.selectRandom(netherrackPositions, blocksToSmelt);
         for (BlockPos position : selectedPositions) {
             if (UtilBlock.canBreakBlock(player, world, position, false)) {

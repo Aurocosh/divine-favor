@@ -28,7 +28,7 @@ public class SpellTalismanBloodOfGrass extends ItemSpellTalisman {
         EntityPlayer player = context.player;
 
         List<BlockPos> posList = UtilCoordinates.getBlocksInSphere(player.getPosition(), ConfigSpells.bloodOfGrass.radius);
-        List<BlockPos> plantList = UtilList.filterList(posList, pos -> world.getBlockState(pos).getMaterial() == Material.GRASS);
+        List<BlockPos> plantList = UtilList.select(posList, pos -> world.getBlockState(pos).getMaterial() == Material.GRASS);
         for (BlockPos pos : plantList)
             consumeGrass(pos, world, player);
     }

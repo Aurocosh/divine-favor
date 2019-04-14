@@ -38,7 +38,7 @@ public abstract class ItemRope<T extends EntityRopeNodeBase> extends ModItem {
         if (world.isRemote)
             return EnumActionResult.SUCCESS;
 
-        List<T> chargeNodes = UtilList.filterListByClass(world.loadedEntityList, clazz);
+        List<T> chargeNodes = UtilList.select(world.loadedEntityList, clazz);
         T connectedRopeNode = UtilList.findFirst(chargeNodes, node -> node.getNextNodeByUUID() == player);
 
         if (connectedRopeNode != null && connectedRopeNode.getDistanceSq(pos.getX() + hitX, pos.getY() + hitY, pos.getZ() + hitZ) > ropeDistanceSq) {

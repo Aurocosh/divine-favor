@@ -37,7 +37,7 @@ public class EntityRopeBarrierNode extends EntityRopeNodeBase {
             return;
 
         List<EntityLivingBase> livingBases = world.getEntitiesWithinAABB(EntityLivingBase.class, new AxisAlignedBB(getPosition()).grow(RADIUS));
-        List<EntityLivingBase> affectedMobs = UtilList.filterList(livingBases, element -> !(element instanceof EntityPlayer) && element.getDistanceSq(this) <= RADIUS_SQ);
+        List<EntityLivingBase> affectedMobs = UtilList.select(livingBases, element -> !(element instanceof EntityPlayer) && element.getDistanceSq(this) <= RADIUS_SQ);
 
         for (EntityLivingBase affectedMob : affectedMobs) {
             Vec3d direction = affectedMob.getPositionVector().subtract(this.getPositionVector());
