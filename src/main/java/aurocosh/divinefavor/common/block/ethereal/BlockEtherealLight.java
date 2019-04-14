@@ -1,4 +1,4 @@
-package aurocosh.divinefavor.common.block;
+package aurocosh.divinefavor.common.block.ethereal;
 
 import aurocosh.divinefavor.DivineFavor;
 import aurocosh.divinefavor.common.block.base.ModBlockAir;
@@ -8,6 +8,7 @@ import aurocosh.divinefavor.common.particles.types.ModParticleTypes;
 import aurocosh.divinefavor.common.potions.common.ModPotions;
 import aurocosh.divinefavor.common.state_mappers.InvisibleStateMapper;
 import aurocosh.divinefavor.common.state_mappers.common.ICustomStateMappedBlock;
+import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.renderer.block.statemap.IStateMapper;
 import net.minecraft.entity.player.EntityPlayer;
@@ -19,10 +20,10 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import java.util.Random;
 
 public class BlockEtherealLight extends ModBlockAir implements ICustomStateMappedBlock {
-    public BlockEtherealLight(String name) {
-        super(name);
+    public BlockEtherealLight(String name, Material material, int lightLevel) {
+        super(name, material);
         setTickRandomly(true);
-        lightValue = 15;
+        this.lightValue = lightLevel;
         setCreativeTab(DivineFavor.TAB_MAIN);
     }
 

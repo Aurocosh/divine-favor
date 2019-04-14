@@ -1,5 +1,6 @@
 package aurocosh.divinefavor.common.item.talismans.spell.common;
 
+import aurocosh.divinefavor.common.block.common.ModBlocks;
 import aurocosh.divinefavor.common.config.common.ConfigSpells;
 import aurocosh.divinefavor.common.entity.minions.*;
 import aurocosh.divinefavor.common.item.common.ModItems;
@@ -27,6 +28,7 @@ public final class ModSpellTalismans {
     public static ItemSpellTalisman empower_axe;
     public static ItemSpellTalisman empower_pickaxe;
     public static ItemSpellTalisman escape_plan;
+    public static ItemSpellTalisman ethereal_flash;
     public static ItemSpellTalisman ethereal_light;
     public static ItemSpellTalisman evil_eye;
     public static ItemSpellTalisman fall_negation;
@@ -56,6 +58,8 @@ public final class ModSpellTalismans {
     public static ItemSpellTalisman pearl_crumbs;
     public static ItemSpellTalisman piercing_inferno;
     public static ItemSpellTalisman prismatic_eyes;
+    public static ItemSpellTalisman red_pulse;
+    public static ItemSpellTalisman red_signal;
     public static ItemSpellTalisman remote_chest;
     public static ItemSpellTalisman searing_pulse;
     public static ItemSpellTalisman small_fireball_throw;
@@ -142,9 +146,12 @@ public final class ModSpellTalismans {
 
         // redwind
         clock = new SpellTalismanClock("clock", ModSpirits.redwind, ConfigSpells.clock.favorCost, SpellOptions.ALL_CAST);
-        ethereal_light = new SpellTalismanEtherealLight("ethereal_light", ModSpirits.redwind, ConfigSpells.etherealLight.favorCost, SpellOptions.ALL_CAST);
+        ethereal_flash = new SpellTalismanAirReplace("ethereal_flash", ModSpirits.redwind, ConfigSpells.etherealFlash.favorCost, SpellOptions.ALL_CAST_TRACE, () -> ModBlocks.ethereal_flash);
+        ethereal_light = new SpellTalismanAirReplace("ethereal_light", ModSpirits.redwind, ConfigSpells.etherealLight.favorCost, SpellOptions.ALL_CAST_TRACE, () -> ModBlocks.ethereal_light);
         fall_negation = new SpellTalismanModPotionCharge("fall_negation", ModSpirits.redwind, ConfigSpells.fallNegation.favorCost, ModPotions.fall_negation, ConfigSpells.fallNegation.charges);
         prismatic_eyes = new SpellTalismanModPotionToggle("prismatic_eyes", ModSpirits.redwind, ConfigSpells.prismaticEyes.favorCost, ModPotions.prismatic_eyes);
+        red_pulse = new SpellTalismanAirReplace("red_pulse", ModSpirits.redwind, ConfigSpells.redPulse.favorCost, SpellOptions.ALL_CAST_TRACE, () -> ModBlocks.red_pulse);
+        red_signal = new SpellTalismanAirReplace("red_signal", ModSpirits.redwind, ConfigSpells.redSignal.favorCost, SpellOptions.ALL_CAST_TRACE, () -> ModBlocks.red_signal);
         toadic_jump = new SpellTalismanModPotionToggle("toadic_jump", ModSpirits.redwind, ConfigSpells.toadicJump.favorCost, ModPotions.toadic_jump);
         wild_sprint = new SpellTalismanModPotion("wild_sprint", ModSpirits.redwind, ConfigSpells.wildSprint.favorCost, ModPotions.wild_charge, ConfigSpells.wildSprint.activationDelay);
         wind_step = new SpellTalismanWindStep("wind_step", ModSpirits.redwind, ConfigSpells.windStep.favorCost, SpellOptions.ALL_CAST);
