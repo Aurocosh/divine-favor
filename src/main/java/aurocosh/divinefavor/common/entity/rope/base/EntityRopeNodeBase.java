@@ -1,6 +1,7 @@
 package aurocosh.divinefavor.common.entity.rope.base;
 
 import aurocosh.divinefavor.common.block.common.ModBlocks;
+import aurocosh.divinefavor.common.util.UtilEntity;
 import aurocosh.divinefavor.common.util.UtilList;
 import aurocosh.divinefavor.common.util.UtilNbt;
 import net.minecraft.entity.Entity;
@@ -13,6 +14,7 @@ import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.SoundCategory;
+import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.math.Vec3d;
@@ -121,7 +123,7 @@ public abstract class EntityRopeNodeBase extends Entity {
             handleLightBlocks(attached);
 
         Entity prevNode = getPrevNode();
-        if(mobile)
+        if (mobile)
             handleRopeMovement(attached, nextNode, prevNode);
         processDespawn(nextNode, prevNode);
     }
@@ -295,37 +297,36 @@ public abstract class EntityRopeNodeBase extends Entity {
     public boolean processInitialInteract(EntityPlayer player, EnumHand hand) {
         if (world.isRemote)
             return true;
-        else {
-            Entity prevNode = getPreviousNodeByUUID();
-            Entity nextNode = getNextNodeByUUID();
-            Class<? extends EntityRopeNodeBase> entityClass = getEntityClass();
 
-            if (prevNode != null) {
-                if (nextNode == null) {
-                    EntityRopeNodeBase connectedRopeNode = (EntityRopeNodeBase) UtilList.findFirst(player.world.loadedEntityList, obj -> entityClass.isInstance(obj) && ((EntityRopeNodeBase) obj).getNextNodeByUUID() == player);
-                    if (connectedRopeNode != null) {
-                        player.sendStatusMessage(new TextComponentTranslation("chat.rope.already_connected"), true);
-                        return false;
-                    }
+        Entity prevNode = getPreviousNodeByUUID();
+        Entity nextNode = getNextNodeByUUID();
+        Class<? extends EntityRopeNodeBase> entityClass = getEntityClass();
 
-                    setNextNode(player);
-                    return true;
+        if (prevNode != null) {
+            if (nextNode == null) {
+                EntityRopeNodeBase connectedRopeNode = (EntityRopeNodeBase) UtilList.findFirst(player.world.loadedEntityList, obj -> entityClass.isInstance(obj) && ((EntityRopeNodeBase) obj).getNextNodeByUUID() == player);
+                if (connectedRopeNode != null) {
+                    player.sendStatusMessage(new TextComponentTranslation("chat.rope.already_connected"), true);
+                    return false;
                 }
-                else if (!entityClass.isInstance(nextNode)) {
-                    setNextNode(null);
-                    return true;
-                }
+
+                setNextNode(player);
+                return true;
             }
+            else if (!entityClass.isInstance(nextNode)) {
+                setNextNode(null);
+                return true;
+            }
+        }
 
-            if (entityClass.isInstance(nextNode)) {
-                EntityRopeNodeBase endNode = getLastConnectedNode((EntityRopeNodeBase) nextNode);
-                if (endNode.getNextNodeByUUID() == null && entityClass.isInstance(endNode.getPreviousNodeByUUID())) {
-                    ((EntityRopeNodeBase) endNode.getPreviousNodeByUUID()).setNextNode(null);
-                    endNode.setDead();
+        if (entityClass.isInstance(nextNode)) {
+            EntityRopeNodeBase endNode = getLastConnectedNode((EntityRopeNodeBase) nextNode);
+            if (endNode.getNextNodeByUUID() == null && entityClass.isInstance(endNode.getPreviousNodeByUUID())) {
+                ((EntityRopeNodeBase) endNode.getPreviousNodeByUUID()).setNextNode(null);
+                endNode.setDead();
 
-                    registerPickUp(player);
-                    return true;
-                }
+                registerPickUp(player);
+                return true;
             }
         }
         return false;
@@ -516,9 +517,7 @@ public abstract class EntityRopeNodeBase extends Entity {
     }
 
     private Entity getEntityByUUID(UUID uuid) {
-        for (Entity entity : world.getEntitiesWithinAABB(Entity.class, getEntityBoundingBox().grow(24, 24, 24)))
-            if (uuid.equals(entity.getUniqueID()))
-                return entity;
-        return null;
+        AxisAlignedBB alignedBB = getEntityBoundingBox().grow(24, 24, 24);
+        return UtilEntity.getEntityByUUID(world,Entity.class,alignedBB,uuid);
     }
 }
