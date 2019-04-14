@@ -27,6 +27,7 @@ public final class ModSpellTalismans {
     public static ItemSpellTalisman empower_axe;
     public static ItemSpellTalisman empower_pickaxe;
     public static ItemSpellTalisman escape_plan;
+    public static ItemSpellTalisman ethereal_light;
     public static ItemSpellTalisman evil_eye;
     public static ItemSpellTalisman fall_negation;
     public static ItemSpellTalisman fell_tree;
@@ -54,6 +55,7 @@ public final class ModSpellTalismans {
     public static ItemSpellTalisman overwarp;
     public static ItemSpellTalisman pearl_crumbs;
     public static ItemSpellTalisman piercing_inferno;
+    public static ItemSpellTalisman prismatic_eyes;
     public static ItemSpellTalisman remote_chest;
     public static ItemSpellTalisman searing_pulse;
     public static ItemSpellTalisman small_fireball_throw;
@@ -139,11 +141,13 @@ public final class ModSpellTalismans {
         small_fireball_throw = new SpellTalismanSmallFireballThrow("small_fireball_throw", ModSpirits.neblaze, ConfigSpells.smallFireballThrow.favorCost, SpellOptions.ALL_CAST);
 
         // redwind
+        clock = new SpellTalismanClock("clock", ModSpirits.redwind, ConfigSpells.clock.favorCost, SpellOptions.ALL_CAST);
+        ethereal_light = new SpellTalismanEtherealLight("ethereal_light", ModSpirits.redwind, ConfigSpells.etherealLight.favorCost, SpellOptions.ALL_CAST);
         fall_negation = new SpellTalismanModPotionCharge("fall_negation", ModSpirits.redwind, ConfigSpells.fallNegation.favorCost, ModPotions.fall_negation, ConfigSpells.fallNegation.charges);
+        prismatic_eyes = new SpellTalismanModPotionToggle("prismatic_eyes", ModSpirits.redwind, ConfigSpells.prismaticEyes.favorCost, ModPotions.prismatic_eyes);
         toadic_jump = new SpellTalismanModPotionToggle("toadic_jump", ModSpirits.redwind, ConfigSpells.toadicJump.favorCost, ModPotions.toadic_jump);
         wild_sprint = new SpellTalismanModPotion("wild_sprint", ModSpirits.redwind, ConfigSpells.wildSprint.favorCost, ModPotions.wild_charge, ConfigSpells.wildSprint.activationDelay);
         wind_step = new SpellTalismanWindStep("wind_step", ModSpirits.redwind, ConfigSpells.windStep.favorCost, SpellOptions.ALL_CAST);
-        clock = new SpellTalismanClock("clock", ModSpirits.redwind, ConfigSpells.clock.favorCost, SpellOptions.ALL_CAST);
 
         // romol
         crushing_palm = new SpellTalismanModPotionToggle("crushing_palm", ModSpirits.romol, ConfigSpells.crushingPalm.favorCost, ModPotions.crushing_palm);

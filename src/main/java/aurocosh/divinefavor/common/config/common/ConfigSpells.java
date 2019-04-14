@@ -42,6 +42,8 @@ public class ConfigSpells {
     public static EmpowerPickaxe empowerPickaxe = new EmpowerPickaxe();
     @Config.Name("Escape plan")
     public static EscapePlan escapePlan = new EscapePlan();
+    @Config.Name("Ethereal light")
+    public static EtherealLight etherealLight = new EtherealLight();
     @Config.Name("Evil eye")
     public static EvilEye evilEye = new EvilEye();
     @Config.Name("Fall negation")
@@ -96,6 +98,8 @@ public class ConfigSpells {
     public static PearlCrumbs pearlCrumbs = new PearlCrumbs();
     @Config.Name("Piercing inferno")
     public static PiercingInferno piercingInferno = new PiercingInferno();
+    @Config.Name("Prismatic eyes")
+    public static PrismaticEyes prismaticEyes = new PrismaticEyes();
     @Config.Name("Remote chest")
     public static RemoteChest remoteChest = new RemoteChest();
     @Config.Name("Searing pulse")
@@ -105,7 +109,7 @@ public class ConfigSpells {
     @Config.Name("Snowball throw")
     public static SnowballThrow snowballThrow = new SnowballThrow();
     @Config.Name("Spider might")
-    public static SpiderMightTalisman spider_might = new SpiderMightTalisman();
+    public static SpiderMight spider_might = new SpiderMight();
     @Config.Name("Starvation")
     public static Starvation starvation = new Starvation();
     @Config.Name("stone fever")

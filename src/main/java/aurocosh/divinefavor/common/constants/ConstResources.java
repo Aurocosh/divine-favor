@@ -23,6 +23,7 @@ public class ConstResources {
     public static final String GUI_TALISMAN = PREFIX_GUI + "talisman.png";
     public static final String GUI_ENDER_PUMPKIN = PREFIX_GUI + "ender_pumpkin_blur.png";
     public static final String GUI_EVIL_EYE_BLUR = PREFIX_GUI + "evil_eye_blur.png";
+    public static final String GUI_PRISMATIC_EYES_BLUR = PREFIX_GUI + "prismatic_eyes_blur.png";
 
     public static final String GUI_GRIMOIRE = PREFIX_GUI + "grimoire/grimoire.png";
     public static final String GUI_GRIMOIRE_SELECTOR = PREFIX_GUI + "grimoire/selector.png";
