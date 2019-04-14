@@ -1,6 +1,7 @@
 package aurocosh.divinefavor.common.block.common;
 
 import aurocosh.divinefavor.common.block.BlockEnderPumpkin;
+import aurocosh.divinefavor.common.block.BlockEtherealLight;
 import aurocosh.divinefavor.common.block.base.ModBlock;
 import aurocosh.divinefavor.common.block.bath_heater.BlockBathHeater;
 import aurocosh.divinefavor.common.block.bath_heater.TileBathHeater;
@@ -8,7 +9,7 @@ import aurocosh.divinefavor.common.block.medium.BlockMedium;
 import aurocosh.divinefavor.common.block.medium.TileMedium;
 import aurocosh.divinefavor.common.block.soulbound_lectern.BlockSoulboundLectern;
 import aurocosh.divinefavor.common.block.soulbound_lectern.TileSoulboundLectern;
-import aurocosh.divinefavor.common.block.tile.BlockCavingRopeLight;
+import aurocosh.divinefavor.common.block.rope.BlockCavingRopeLight;
 import aurocosh.divinefavor.common.constants.ConstBlockNames;
 import aurocosh.divinefavor.common.constants.ConstResources;
 import net.minecraft.block.material.Material;
@@ -36,6 +37,7 @@ public class ModBlocks {
 
     public static ModBlock enderPumpkin;
     public static ModBlock cavingRopeLight;
+    public static ModBlock ethereal_light;
 
     public static void preInit() {
         bathHeater = new BlockBathHeater();
@@ -58,6 +60,7 @@ public class ModBlocks {
 
         enderPumpkin = new BlockEnderPumpkin();
         cavingRopeLight = new BlockCavingRopeLight("caving_rope");
+        ethereal_light = new BlockEtherealLight("ethereal_light");
 
         initTileEntities();
     }

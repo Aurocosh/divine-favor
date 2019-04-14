@@ -10,6 +10,7 @@ public class ConstResources {
     public static final String PREFIX_PROJECTILES = PREFIX_MOD + "textures/entity/projectiles/";
     public static final String PREFIX_MINIONS = PREFIX_MOD + "textures/entity/minions/";
     public static final String PREFIX_MOBS = PREFIX_MOD + "textures/entity/mobs/";
+    public static final String PREFIX_PARTICLES = PREFIX_MOD + "textures/particles/";
 
     public static final String PREFIX_SPIRIT_ICONS = PREFIX_MOD + "textures/items/calling_stones/";
     public static final String PREFIX_SPIRIT_SYMBOLS = PREFIX_MOD + "textures/items/symbols/";
@@ -40,6 +41,8 @@ public class ConstResources {
     public static final String RES_SPELL_ARROW = PREFIX_PROJECTILES + "spell_arrow.png";
 
     public static final String MULTIBLOCK_ASSETS = "/assets/" + ConstMisc.MOD_ID + "/multi_blocks/";
+
+    public static final String TEX_PARTICLES = PREFIX_PARTICLES + "particles.png";
 
     public static final String TEX_ZOMBIE = PREFIX_MINIONS + "minion_zombie/minion_zombie.png";
     public static final String TEX_HUSK_ZOMBIE = PREFIX_MINIONS + "minion_zombie/minion_husk.png";
