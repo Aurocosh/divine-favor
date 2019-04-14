@@ -33,6 +33,13 @@ divinefavor:spirit_offering=If you need to trade for something and cant or don't
 divinefavor:spirit_became_active=Spirit %1$s became active
 divinefavor:spirit_became_inactive=Spirit %1$s became inactive
 
+tooltip.divinefavor:talisman.infinite_use=Infinite use
+tooltip.divinefavor:talisman.unusable=Unusable
+tooltip.divinefavor:talisman.cost=Cost: %1$d Uses: %2$d
+tooltip.divinefavor:talisman.spirit=Spirit: %1$s
+
+tooltip.divinefavor:wishingStone.favor_count=Restores %1$d favor of %2$s
+
 # SPIRIT NAMES
 divinefavor:spirit.arbow.name=Arbow
 divinefavor:spirit.blizrabi.name=Blizrabi
@@ -446,3 +453,4 @@ item.divinefavor:contract.min=Will add %1$d to your minimum favor value
 item.divinefavor:contract.max=Will increase your favor limit by %1$s
 item.divinefavor:contract.informActivity=Will inform you when spirit becomes active
 item.divinefavor:contract.no_effects=This contract has no effects
+
