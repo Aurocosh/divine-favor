@@ -115,7 +115,7 @@ public final class ModSpellTalismans {
         // loon
         follow = new SpellTalismanFollow("follow", ModSpirits.loon, ConfigSpells.follow.favorCost, SpellOptions.RIGHT_CAST);
         night_eye = new SpellTalismanModPotionToggle("night_eye", ModSpirits.loon, ConfigSpells.nightEye.favorCost, ModPotions.night_eye);
-        spider_might = new SpellTalismanModPotion("spider_might", ModSpirits.loon, ConfigSpells.spider_might.favorCost, ModPotions.spider_might, ConfigSpells.spider_might.duration);
+        spider_might = new SpellTalismanModPotionToggle("spider_might", ModSpirits.loon, ConfigSpells.spider_might.favorCost, ModPotions.spider_might);
         summon_creeper = new SpellTalismanSummonMinion<>("summon_creeper", ModSpirits.loon, ConfigSpells.summonCreeper.favorCost, SpellOptions.USE_CAST, MinionCreeper.class);
         summon_husk = new SpellTalismanSummonMinion<>("summon_husk", ModSpirits.loon, ConfigSpells.summonHusk.favorCost, SpellOptions.USE_CAST, MinionHusk.class);
         summon_skeleton = new SpellTalismanSummonMinion<>("summon_skeleton", ModSpirits.loon, ConfigSpells.summonSkeleton.favorCost, SpellOptions.USE_CAST, MinionSkeleton.class);

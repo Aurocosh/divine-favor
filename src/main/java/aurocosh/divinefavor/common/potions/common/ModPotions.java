@@ -17,7 +17,6 @@ public class ModPotions {
     public static ModPotion focused_fury;
     public static ModPotion miners_focus;
     public static ModPotion obsidian_road;
-    public static ModPotion spider_might;
     public static ModPotion starvation;
     public static ModPotion stone_fever;
     public static ModPotion wild_charge;
@@ -31,6 +30,7 @@ public class ModPotions {
     public static ModPotionToggle mist_blade;
     public static ModPotionToggle molten_skin;
     public static ModPotionToggle night_eye;
+    public static ModPotionToggle spider_might;
     public static ModPotionToggleLimited crushing_palm;
     public static ModPotionToggleLimited toadic_jump;
     public static ModPotionToggleLimited wooden_punch;
