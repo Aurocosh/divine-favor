@@ -8,7 +8,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
-public class EntityRopeGuideNode extends EntityRopeNodeBase {
+public class EntityRopeGuideNode extends EntityRopeNodeBase implements IClimbableNode {
     public EntityRopeGuideNode(World world) {
         super(world);
     }
@@ -45,6 +45,6 @@ public class EntityRopeGuideNode extends EntityRopeNodeBase {
 
     @Override
     protected boolean isMobile() {
-        return false;
+        return true;
     }
 }

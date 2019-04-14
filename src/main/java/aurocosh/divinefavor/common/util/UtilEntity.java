@@ -25,8 +25,16 @@ import javax.annotation.Nullable;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;
+import java.util.UUID;
 
 public class UtilEntity {
+    public static void setVelocity(Entity entity, Vec3d direction, float velocity) {
+        Vec3d motion = direction.normalize().scale(velocity);
+        entity.motionX = motion.x;
+        entity.motionY = motion.y;
+        entity.motionZ = motion.z;
+    }
+
     public static void addVelocity(Entity entity, Vec3d direction, float velocity) {
         Vec3d motion = direction.normalize().scale(velocity);
         entity.motionX += motion.x;
@@ -198,5 +206,12 @@ public class UtilEntity {
             e.printStackTrace();
             return false;
         }
+    }
+
+    public static <T extends Entity> T getEntityByUUID(World world, Class<T> clazz, AxisAlignedBB alignedBB, UUID uuid) {
+        for (T entity : world.getEntitiesWithinAABB(clazz, alignedBB))
+            if (uuid.equals(entity.getUniqueID()))
+                return entity;
+        return null;
     }
 }
