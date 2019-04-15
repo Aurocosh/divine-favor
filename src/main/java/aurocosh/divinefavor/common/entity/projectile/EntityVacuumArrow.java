@@ -21,17 +21,22 @@ public class EntityVacuumArrow extends EntitySpellArrow {
 
     public EntityVacuumArrow(World worldIn) {
         super(worldIn);
+        init();
     }
 
     public EntityVacuumArrow(World worldIn, double x, double y, double z) {
         super(worldIn, x, y, z);
-
+        init();
     }
 
     public EntityVacuumArrow(World worldIn, EntityLivingBase shooter) {
         super(worldIn, shooter);
+        init();
     }
 
+    private void init() {
+        timeInGround = 1200 - ConfigArrow.vacuumArrow.despawnDelay;
+    }
 
     @Override
     public void onUpdate() {
