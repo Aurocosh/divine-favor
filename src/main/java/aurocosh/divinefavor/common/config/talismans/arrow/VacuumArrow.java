@@ -1,5 +1,6 @@
 package aurocosh.divinefavor.common.config.talismans.arrow;
 
+import aurocosh.divinefavor.common.util.UtilTick;
 import net.minecraftforge.common.config.Config;
 
 public class VacuumArrow {
@@ -11,4 +12,6 @@ public class VacuumArrow {
     public int radius = 6;
     @Config.Name("Attraction power")
     public float attractionPower = -0.05f;
+    @Config.Name("Despawn delay")
+    public int despawnDelay = UtilTick.secondsToTicks(60);
 }
