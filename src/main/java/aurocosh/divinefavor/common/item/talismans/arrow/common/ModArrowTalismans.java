@@ -16,6 +16,7 @@ public class ModArrowTalismans {
     public static ItemArrowTalisman armor_corrosion;
     public static ItemArrowTalisman blast_arrow;
     public static ItemArrowTalisman blink_arrow;
+    public static ItemArrowTalisman climbing_arrow;
     public static ItemArrowTalisman crawling_mist;
     public static ItemArrowTalisman cripple;
     public static ItemArrowTalisman disarm;
@@ -44,6 +45,7 @@ public class ModArrowTalismans {
         // arbow;
         anti_gravity_arrow = new ArrowTalismanAntiGravityArrow("anti_gravity_arrow", ModSpirits.arbow, ConfigArrow.antiGravityArrow.favorCost, Color.green.getRGB(), ConfigArrow.antiGravityArrow.damage, ArrowOptions.NORMAL, ArrowType.WOODEN_ARROW);
         blast_arrow = new ArrowTalismanExplosive("blast_arrow", ModSpirits.arbow, Color.yellow.getRGB(), ArrowOptions.ARROW_BREAKS, ArrowType.SPELL_ARROW, ConfigArrow.blastArrow);
+        climbing_arrow = new ArrowTalismanClimbableArrow("climbing_arrow", ModSpirits.arbow, 10, Color.green.getRGB(), 2, ArrowOptions.NORMAL, ArrowType.SPELL_ARROW);
         disarm = new ArrowTalismanDisarm("disarm", ModSpirits.arbow, ConfigArrow.disarm.favorCost, Color.orange.getRGB(), ConfigArrow.disarm.damage, ArrowOptions.REQUIRES_TARGET, ArrowType.SPELL_ARROW);
         explosive_arrow = new ArrowTalismanExplosive("explosive_arrow", ModSpirits.arbow, Color.blue.getRGB(), ArrowOptions.ARROW_BREAKS, ArrowType.SPELL_ARROW, ConfigArrow.explosiveArrow);
         force_arrow = new ArrowTalismanForceArrow("force_arrow", ModSpirits.arbow, ConfigArrow.forceArrow.favorCost, Color.red.getRGB(), ConfigArrow.forceArrow.damage, ArrowType.SPELL_ARROW, ConfigArrow.forceArrow.velocity);

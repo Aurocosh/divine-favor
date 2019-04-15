@@ -4,6 +4,7 @@ import aurocosh.divinefavor.DivineFavor;
 import aurocosh.divinefavor.common.core.ResourceNamer;
 import aurocosh.divinefavor.common.entity.minions.*;
 import aurocosh.divinefavor.common.entity.mob.EntityDirewolf;
+import aurocosh.divinefavor.common.entity.projectile.EntityClimbingArrow;
 import aurocosh.divinefavor.common.entity.projectile.EntitySpellArrow;
 import aurocosh.divinefavor.common.entity.projectile.EntityStoneball;
 import aurocosh.divinefavor.common.entity.rope.*;
@@ -15,9 +16,9 @@ public final class ModEntities {
     private static int nextId = 0;
 
     public static void preInit() {
-        int id = 0;
         registerModEntity(EntityStoneball.class, "stoneball", 256, 10, true);
         registerModEntity(EntitySpellArrow.class, "spell_arrow", 256, 1, true);
+        registerModEntity(EntityClimbingArrow.class, "climbing_arrow", 256, 1, true);
 
         registerModEntity(MinionZombie.class, "minion_zombie", 80, 3, false);
         registerModEntity(MinionHusk.class, "minion_husk", 80, 3, false);
