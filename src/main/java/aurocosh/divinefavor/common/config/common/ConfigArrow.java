@@ -18,6 +18,12 @@ public class ConfigArrow {
     public static CrawlingMist crawlingMist = new CrawlingMist();
     @Config.Name("Cripple")
     public static Cripple cripple = new Cripple();
+    @Config.Name("Destructive arrow I")
+    public static DestructiveArrow destructiveArrow1 = new DestructiveArrow(10,2, 1);
+    @Config.Name("Destructive arrow II")
+    public static DestructiveArrow destructiveArrow2 = new DestructiveArrow(100,2, 3);
+    @Config.Name("Destructive arrow III")
+    public static DestructiveArrow destructiveArrow3 = new DestructiveArrow(300,2, 50);
     @Config.Name("Disarm")
     public static Disarm disarm = new Disarm();
     @Config.Name("Explosive arrow")
@@ -54,6 +60,8 @@ public class ConfigArrow {
     public static Skyfall skyfall = new Skyfall();
     @Config.Name("Suffocating fumes")
     public static SuffocatingFumes suffocatingFumes = new SuffocatingFumes();
+    @Config.Name("Vacuum arrow")
+    public static VacuumArrow vacuumArrow = new VacuumArrow();
     @Config.Name("Wind leash")
     public static WindLeash windLeash = new WindLeash();
     @Config.Name("Yummy smell")

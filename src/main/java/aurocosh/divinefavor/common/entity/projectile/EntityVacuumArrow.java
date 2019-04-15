@@ -1,5 +1,6 @@
 package aurocosh.divinefavor.common.entity.projectile;
 
+import aurocosh.divinefavor.common.config.common.ConfigArrow;
 import aurocosh.divinefavor.common.particles.ParticleHandler;
 import aurocosh.divinefavor.common.particles.types.ModParticleTypes;
 import aurocosh.divinefavor.common.util.UtilEntity;
@@ -16,9 +17,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import java.util.List;
 
 public class EntityVacuumArrow extends EntitySpellArrow {
-    private static final int RADIUS = 6;
-    private static final int RADIUS_SQ = RADIUS * RADIUS;
-    private static final float REPULSION_POWER = -0.05f;
+    private static final int RADIUS_SQ = ConfigArrow.vacuumArrow.radius * ConfigArrow.vacuumArrow.radius;
 
     public EntityVacuumArrow(World worldIn) {
         super(worldIn);
@@ -41,12 +40,12 @@ public class EntityVacuumArrow extends EntitySpellArrow {
             spawnParticles();
         }
         else {
-            List<EntityLivingBase> livingBases = world.getEntitiesWithinAABB(EntityLivingBase.class, new AxisAlignedBB(getPosition()).grow(RADIUS));
+            List<EntityLivingBase> livingBases = world.getEntitiesWithinAABB(EntityLivingBase.class, new AxisAlignedBB(getPosition()).grow(ConfigArrow.vacuumArrow.radius));
             List<EntityLivingBase> affectedMobs = UtilList.select(livingBases, element -> !(element instanceof EntityPlayer) && element.getDistanceSq(this) <= RADIUS_SQ);
 
             for (EntityLivingBase affectedMob : affectedMobs) {
                 Vec3d direction = affectedMob.getPositionVector().subtract(this.getPositionVector());
-                UtilEntity.addVelocity(affectedMob, direction, REPULSION_POWER);
+                UtilEntity.addVelocity(affectedMob, direction, ConfigArrow.vacuumArrow.attractionPower);
             }
         }
     }

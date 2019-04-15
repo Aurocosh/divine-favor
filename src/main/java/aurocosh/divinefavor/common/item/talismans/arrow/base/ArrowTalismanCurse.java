@@ -6,6 +6,8 @@ import aurocosh.divinefavor.common.spirit.base.ModSpirit;
 import aurocosh.divinefavor.common.util.UtilCurses;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.projectile.EntityArrow;
+import net.minecraft.util.EnumFacing;
+import net.minecraft.util.math.BlockPos;
 
 public class ArrowTalismanCurse extends ItemArrowTalisman {
     private final ModPotion potion;
@@ -17,7 +19,7 @@ public class ArrowTalismanCurse extends ItemArrowTalisman {
         this.duration = duration;
     }
 
-    protected void performActionServer(EntityLivingBase target, EntityLivingBase shooter, EntityArrow arrow) {
+    protected void performActionServer(EntityLivingBase target, EntityLivingBase shooter, EntityArrow arrow, BlockPos blockPos, EnumFacing sideHit) {
         UtilCurses.applyCurse(target, shooter, new ModEffect(potion, duration));
     }
 }

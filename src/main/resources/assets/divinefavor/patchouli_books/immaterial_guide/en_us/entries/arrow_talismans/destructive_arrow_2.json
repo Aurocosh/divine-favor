@@ -1,0 +1,15 @@
+{
+  "name": "Destructive arrow II",
+  "icon": "divinefavor:arrow_talisman_destructive_arrow_2",
+  "category": "arrow_talismans",
+  "pages": [
+    {
+      "type": "talisman_description",
+      "talisman": "divinefavor:arrow_talisman_destructive_arrow_2"
+    },
+    {
+      "type": "arrow_talisman_stats",
+      "talisman": "divinefavor:arrow_talisman_destructive_arrow_2"
+    }
+  ]
+}

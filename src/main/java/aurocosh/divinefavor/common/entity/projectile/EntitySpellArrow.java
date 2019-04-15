@@ -105,7 +105,7 @@ public class EntitySpellArrow extends EntityArrow {
             return;
         Entity entity = raytraceResultIn.entityHit;
         EntityLivingBase living = entity instanceof EntityLivingBase ? (EntityLivingBase) entity : null;
-        talisman.cast(living, shooter, this);
+        talisman.cast(living, shooter, this, raytraceResultIn.getBlockPos(), raytraceResultIn.sideHit);
         if (talisman.isBreakOnHit())
             setDead();
     }
