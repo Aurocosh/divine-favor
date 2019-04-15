@@ -1,5 +1,7 @@
 package aurocosh.divinefavor.common.util;
 
+import net.minecraft.util.math.Vec3d;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -52,5 +54,12 @@ public class UtilRandom {
 
     public static <T> T getRandom(List<T> list) {
         return list.get(getRandomIndex(list));
+    }
+
+    public static Vec3d nextDirection() {
+        float x = nextFloat(-1,1);
+        float y = nextFloat(-1,1);
+        float z = nextFloat(-1,1);
+        return new Vec3d(x, y, z).normalize();
     }
 }

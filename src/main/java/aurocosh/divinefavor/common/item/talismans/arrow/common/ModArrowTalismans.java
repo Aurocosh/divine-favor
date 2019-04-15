@@ -37,6 +37,7 @@ public class ModArrowTalismans {
     public static ItemArrowTalisman roots;
     public static ItemArrowTalisman skyfall;
     public static ItemArrowTalisman suffocating_fumes;
+    public static ItemArrowTalisman vacuum_arrow;
     public static ItemArrowTalisman wind_leash;
     public static ItemArrowTalisman yummy_smell;
     public static ItemArrowTalisman zero_g_arrow;
@@ -55,6 +56,7 @@ public class ModArrowTalismans {
         reinforced_arrow_1 = new ItemArrowTalisman("reinforced_arrow_1", ModSpirits.arbow, ConfigArrow.reinforcedArrow1.favorCost, Color.yellow.getRGB(), ConfigArrow.reinforcedArrow1.damage, ArrowOptions.NORMAL, ArrowType.SPELL_ARROW);
         reinforced_arrow_2 = new ItemArrowTalisman("reinforced_arrow_2", ModSpirits.arbow, ConfigArrow.reinforcedArrow2.favorCost, Color.blue.getRGB(), ConfigArrow.reinforcedArrow2.damage, ArrowOptions.NORMAL, ArrowType.SPELL_ARROW);
         reinforced_arrow_3 = new ItemArrowTalisman("reinforced_arrow_3", ModSpirits.arbow, ConfigArrow.reinforcedArrow3.favorCost, Color.red.getRGB(), ConfigArrow.reinforcedArrow3.damage, ArrowOptions.NORMAL, ArrowType.SPELL_ARROW);
+        vacuum_arrow = new ArrowTalismanVacuumArrow("vacuum_arrow", ModSpirits.arbow, 80, Color.green.getRGB(), 2, ArrowOptions.NORMAL, ArrowType.SPELL_ARROW);
         zero_g_arrow = new ArrowTalismanZeroGArrow("zero_g_arrow", ModSpirits.arbow, 15, Color.green.getRGB(), 2, ArrowOptions.NORMAL, ArrowType.WOODEN_ARROW);
 
         // blizrabi;

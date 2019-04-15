@@ -7,6 +7,7 @@ import aurocosh.divinefavor.common.entity.mob.EntityDirewolf;
 import aurocosh.divinefavor.common.entity.projectile.EntityClimbingArrow;
 import aurocosh.divinefavor.common.entity.projectile.EntitySpellArrow;
 import aurocosh.divinefavor.common.entity.projectile.EntityStoneball;
+import aurocosh.divinefavor.common.entity.projectile.EntityVacuumArrow;
 import aurocosh.divinefavor.common.entity.rope.*;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.ResourceLocation;
@@ -19,6 +20,7 @@ public final class ModEntities {
         registerModEntity(EntityStoneball.class, "stoneball", 256, 10, true);
         registerModEntity(EntitySpellArrow.class, "spell_arrow", 256, 1, true);
         registerModEntity(EntityClimbingArrow.class, "climbing_arrow", 256, 1, true);
+        registerModEntity(EntityVacuumArrow.class, "vacuum_arrow", 256, 1, true);
 
         registerModEntity(MinionZombie.class, "minion_zombie", 80, 3, false);
         registerModEntity(MinionHusk.class, "minion_husk", 80, 3, false);
