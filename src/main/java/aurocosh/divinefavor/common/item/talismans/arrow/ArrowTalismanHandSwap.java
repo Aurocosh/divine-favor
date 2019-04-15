@@ -9,6 +9,8 @@ import aurocosh.divinefavor.common.util.UtilPlayer;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntityArrow;
+import net.minecraft.util.EnumFacing;
+import net.minecraft.util.math.BlockPos;
 
 import java.util.EnumSet;
 
@@ -18,7 +20,7 @@ public class ArrowTalismanHandSwap extends ItemArrowTalisman {
     }
 
     @Override
-    protected void performActionServer(EntityLivingBase target, EntityLivingBase shooter, EntityArrow arrow) {
+    protected void performActionServer(EntityLivingBase target, EntityLivingBase shooter, EntityArrow arrow, BlockPos blockPos, EnumFacing sideHit) {
         if (target instanceof EntityPlayer) {
             EntityPlayer player = (EntityPlayer) target;
             UtilPlayer.swapStacks(player, player.inventory.currentItem, InventoryIndexes.Offhand.getValue());

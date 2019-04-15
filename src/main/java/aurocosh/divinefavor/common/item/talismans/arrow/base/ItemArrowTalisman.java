@@ -10,6 +10,8 @@ import aurocosh.divinefavor.common.spirit.base.ModSpirit;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntityArrow;
+import net.minecraft.util.EnumFacing;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 import javax.annotation.Nonnull;
@@ -89,18 +91,18 @@ public class ItemArrowTalisman extends ItemTalisman {
         return new EntitySpellArrow(world, shooter);
     }
 
-    public void cast(EntityLivingBase target, EntityLivingBase shooter, EntityArrow arrow) {
+    public void cast(EntityLivingBase target, EntityLivingBase shooter, EntityArrow arrow, BlockPos blockPos, EnumFacing sideHit) {
         if (options.contains(ArrowOptions.RequiresTarget) && target == null)
             return;
         if (arrow.world.isRemote)
-            performActionClient(target, shooter, arrow);
+            performActionClient(target, shooter, arrow, blockPos, sideHit);
         else
-            performActionServer(target, shooter, arrow);
+            performActionServer(target, shooter, arrow, blockPos, sideHit);
     }
 
-    protected void performActionServer(EntityLivingBase target, EntityLivingBase shooter, EntityArrow arrow) {
+    protected void performActionServer(EntityLivingBase target, EntityLivingBase shooter, EntityArrow arrow, BlockPos blockPos, EnumFacing sideHit) {
     }
 
-    protected void performActionClient(EntityLivingBase target, EntityLivingBase shooter, EntityArrow arrow) {
+    protected void performActionClient(EntityLivingBase target, EntityLivingBase shooter, EntityArrow arrow, BlockPos blockPos, EnumFacing sideHit) {
     }
 }
