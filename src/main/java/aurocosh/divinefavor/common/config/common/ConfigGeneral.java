@@ -7,4 +7,6 @@ import net.minecraftforge.common.config.Config;
 public class ConfigGeneral {
     @Config.Name("Particle radius")
     public static int particleRadius = 30;
+    @Config.Name("Max climbing radius")
+    public static int maxClimbingRadius = 12;
 }

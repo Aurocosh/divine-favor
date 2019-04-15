@@ -13,6 +13,8 @@ import net.minecraft.entity.projectile.EntityArrow;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 import javax.annotation.Nonnull;
 import java.util.EnumSet;
@@ -104,5 +106,9 @@ public class ItemArrowTalisman extends ItemTalisman {
     }
 
     protected void performActionClient(EntityLivingBase target, EntityLivingBase shooter, EntityArrow arrow, BlockPos blockPos, EnumFacing sideHit) {
+    }
+
+    @SideOnly(Side.CLIENT)
+    public void spawnParticles(EntitySpellArrow arrow){
     }
 }

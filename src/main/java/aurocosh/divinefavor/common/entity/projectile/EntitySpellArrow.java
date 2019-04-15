@@ -6,6 +6,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.projectile.EntityArrow;
 import net.minecraft.init.Items;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
@@ -21,6 +22,7 @@ public class EntitySpellArrow extends EntityArrow {
 
     private static final DataParameter<Integer> COLOR = EntityDataManager.createKey(EntitySpellArrow.class, DataSerializers.VARINT);
     private static final DataParameter<Integer> TYPE = EntityDataManager.createKey(EntitySpellArrow.class, DataSerializers.VARINT);
+    private static final DataParameter<String> TALISMAN_ID = EntityDataManager.createKey(EntitySpellArrow.class, DataSerializers.STRING);
     private static final DataParameter<Boolean> HAS_ANTI_GRAVITY = EntityDataManager.createKey(EntitySpellArrow.class, DataSerializers.BOOLEAN);
 
     private ItemArrowTalisman talisman;
@@ -43,12 +45,14 @@ public class EntitySpellArrow extends EntityArrow {
         this.shooter = shooter;
         dataManager.set(COLOR, talisman.getColor());
         dataManager.set(TYPE, talisman.getArrowType().getValue());
+        dataManager.set(TALISMAN_ID, talisman.getRegistryName().toString());
     }
 
     protected void entityInit() {
         super.entityInit();
         dataManager.register(COLOR, -1);
         dataManager.register(TYPE, ArrowType.WOODEN_ARROW.getValue());
+        dataManager.register(TALISMAN_ID, "");
         dataManager.register(HAS_ANTI_GRAVITY, true);
     }
 
@@ -64,12 +68,8 @@ public class EntitySpellArrow extends EntityArrow {
                 spawnPotionParticles(2);
             else if (timeInGround % 5 == 0)
                 spawnPotionParticles(1);
-        }
-        else if (inGround && timeInGround != 0 && timeInGround >= 6000) {
-            world.setEntityState(this, (byte) 0);
-            talisman = null;
-            shooter = null;
-            dataManager.set(COLOR, -1);
+            if (talisman != null)
+                talisman.spawnParticles(this);
         }
     }
 
@@ -114,9 +114,6 @@ public class EntitySpellArrow extends EntityArrow {
         return new ItemStack(Items.ARROW);
     }
 
-    /**
-     * Handler for {@link World#setEntityState}
-     */
     @SideOnly(Side.CLIENT)
     public void handleStatusUpdate(byte id) {
         if (id == 0) {
@@ -136,11 +133,27 @@ public class EntitySpellArrow extends EntityArrow {
     }
 
 
+    public void notifyDataManagerChange(DataParameter<?> key) {
+        if (TALISMAN_ID.equals(key))
+            talisman = getTalisman();
+    }
+
+    private ItemArrowTalisman getTalisman(){
+        Item item = Item.getByNameOrId(dataManager.get(TALISMAN_ID));
+        if(item instanceof ItemArrowTalisman)
+            return (ItemArrowTalisman) item;
+        return null;
+    }
+
     public boolean hasAntiGravity() {
         return this.dataManager.get(HAS_ANTI_GRAVITY);
     }
 
     public void setHasAntiGravity(boolean hasAntiGravity) {
         this.dataManager.set(HAS_ANTI_GRAVITY, hasAntiGravity);
+    }
+
+    public void setDespawnDelay(int delay) {
+        timeInGround = 1200 - delay;
     }
 }

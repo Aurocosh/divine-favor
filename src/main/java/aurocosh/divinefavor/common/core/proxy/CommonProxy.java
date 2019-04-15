@@ -23,6 +23,7 @@ import aurocosh.divinefavor.common.network.base.NetworkWrappedClientMessage;
 import aurocosh.divinefavor.common.network.base.NetworkWrappedServerMessage;
 import aurocosh.divinefavor.common.network.common.MessageRegister;
 import aurocosh.divinefavor.common.network.common.NetworkHandler;
+import aurocosh.divinefavor.common.particles.types.ParticleType;
 import aurocosh.divinefavor.common.potions.common.ModBlendEffects;
 import aurocosh.divinefavor.common.potions.common.ModBlessings;
 import aurocosh.divinefavor.common.potions.common.ModCurses;
@@ -32,8 +33,7 @@ import aurocosh.divinefavor.common.receipes.RecipeLoader;
 import aurocosh.divinefavor.common.spirit.ModSpirits;
 import com.google.common.util.concurrent.ListenableFuture;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.Item;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.world.World;
 import net.minecraftforge.common.config.Config;
 import net.minecraftforge.common.config.ConfigManager;
 import net.minecraftforge.fml.client.event.ConfigChangedEvent;
@@ -45,8 +45,6 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 
 import java.io.File;
-import java.util.Collections;
-import java.util.Map;
 
 @Mod.EventBusSubscriber
 public class CommonProxy {
@@ -115,6 +113,10 @@ public class CommonProxy {
     }
 
     public EntityPlayer getClientPlayer() {
+        throw new IllegalStateException("This should only be called from client side");
+    }
+
+    public void createParticle(ParticleType particleType, World world, double xCoord, double yCoord, double zCoord, double xSpeed, double ySpeed, double zSpeed, int... vars) {
         throw new IllegalStateException("This should only be called from client side");
     }
 }

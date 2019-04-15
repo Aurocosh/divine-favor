@@ -29,6 +29,7 @@ public class ModArrowTalismans {
     public static ItemArrowTalisman force_arrow;
     public static ItemArrowTalisman hand_swap;
     public static ItemArrowTalisman hollow_leg;
+    public static ItemArrowTalisman hover_bubble_arrow;
     public static ItemArrowTalisman impulse_arrow;
     public static ItemArrowTalisman limp_leg;
     public static ItemArrowTalisman nether_swap;
@@ -49,7 +50,8 @@ public class ModArrowTalismans {
         // arbow;
         anti_gravity_arrow = new ArrowTalismanAntiGravityArrow("anti_gravity_arrow", ModSpirits.arbow, ConfigArrow.antiGravityArrow.favorCost, Color.green.getRGB(), ConfigArrow.antiGravityArrow.damage, ArrowOptions.NORMAL, ArrowType.WOODEN_ARROW);
         blast_arrow = new ArrowTalismanExplosive("blast_arrow", ModSpirits.arbow, Color.yellow.getRGB(), ArrowOptions.ARROW_BREAKS, ArrowType.SPELL_ARROW, ConfigArrow.blastArrow);
-        climbing_arrow = new ArrowTalismanClimbableArrow("climbing_arrow", ModSpirits.arbow, 10, Color.green.getRGB(), 2, ArrowOptions.NORMAL, ArrowType.SPELL_ARROW);
+        climbing_arrow = new ArrowTalismanClimbableArrow("climbing_arrow", ModSpirits.arbow, ConfigArrow.climbingArrow.favorCost, Color.green.getRGB(), ConfigArrow.climbingArrow.damage, ArrowOptions.NORMAL, ArrowType.SPELL_ARROW, ConfigArrow.climbingArrow.climbingSpeed, ConfigArrow.climbingArrow.climbingSpeed, ConfigArrow.climbingArrow.despawnDelay);
+        hover_bubble_arrow = new ArrowTalismanHoverBubbleArrow("hover_bubble_arrow", ModSpirits.arbow, ConfigArrow.hoverBubbleArrow.favorCost, Color.green.getRGB(), ConfigArrow.hoverBubbleArrow.damage, ArrowOptions.NORMAL, ArrowType.SPELL_ARROW, ConfigArrow.hoverBubbleArrow.climbingSpeed, ConfigArrow.hoverBubbleArrow.climbingDistance, ConfigArrow.hoverBubbleArrow.despawnDelay);
         destructive_arrow_1 = new ArrowTalismanDestructiveArrow("destructive_arrow_1", ModSpirits.arbow, ConfigArrow.destructiveArrow1.favorCost, Color.green.getRGB(), ConfigArrow.destructiveArrow1.damage, ArrowOptions.ARROW_BREAKS, ArrowType.WOODEN_ARROW, ConfigArrow.destructiveArrow1.maxHardness);
         destructive_arrow_2 = new ArrowTalismanDestructiveArrow("destructive_arrow_2", ModSpirits.arbow, ConfigArrow.destructiveArrow2.favorCost, Color.green.getRGB(), ConfigArrow.destructiveArrow2.damage, ArrowOptions.ARROW_BREAKS, ArrowType.WOODEN_ARROW, ConfigArrow.destructiveArrow2.maxHardness);
         destructive_arrow_3 = new ArrowTalismanDestructiveArrow("destructive_arrow_3", ModSpirits.arbow, ConfigArrow.destructiveArrow3.favorCost, Color.green.getRGB(), ConfigArrow.destructiveArrow3.damage, ArrowOptions.ARROW_BREAKS, ArrowType.WOODEN_ARROW, ConfigArrow.destructiveArrow3.maxHardness);
@@ -63,7 +65,7 @@ public class ModArrowTalismans {
         reinforced_arrow_2 = new ItemArrowTalisman("reinforced_arrow_2", ModSpirits.arbow, ConfigArrow.reinforcedArrow2.favorCost, Color.blue.getRGB(), ConfigArrow.reinforcedArrow2.damage, ArrowOptions.NORMAL, ArrowType.SPELL_ARROW);
         reinforced_arrow_3 = new ItemArrowTalisman("reinforced_arrow_3", ModSpirits.arbow, ConfigArrow.reinforcedArrow3.favorCost, Color.red.getRGB(), ConfigArrow.reinforcedArrow3.damage, ArrowOptions.NORMAL, ArrowType.SPELL_ARROW);
         vacuum_arrow = new ArrowTalismanVacuumArrow("vacuum_arrow", ModSpirits.arbow, ConfigArrow.vacuumArrow.favorCost, Color.green.getRGB(), ConfigArrow.vacuumArrow.damage, ArrowOptions.NORMAL, ArrowType.SPELL_ARROW);
-        zero_g_arrow = new ArrowTalismanZeroGArrow("zero_g_arrow", ModSpirits.arbow, 15, Color.green.getRGB(), 2, ArrowOptions.NORMAL, ArrowType.WOODEN_ARROW);
+        zero_g_arrow = new ArrowTalismanZeroGArrow("zero_g_arrow", ModSpirits.arbow, ConfigArrow.zeroGArrow.favorCost, Color.green.getRGB(), ConfigArrow.zeroGArrow.damage, ArrowOptions.NORMAL, ArrowType.WOODEN_ARROW);
 
         // blizrabi;
 

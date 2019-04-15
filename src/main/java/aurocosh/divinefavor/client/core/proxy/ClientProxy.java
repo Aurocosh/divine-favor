@@ -3,10 +3,13 @@ package aurocosh.divinefavor.client.core.proxy;
 import aurocosh.divinefavor.client.core.handler.KeyBindings;
 import aurocosh.divinefavor.client.render.common.ModRendering;
 import aurocosh.divinefavor.common.core.proxy.CommonProxy;
+import aurocosh.divinefavor.common.particles.ParticleHandler;
 import aurocosh.divinefavor.common.particles.types.ModParticleTypes;
+import aurocosh.divinefavor.common.particles.types.ParticleType;
 import com.google.common.util.concurrent.ListenableFuture;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.world.World;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
@@ -37,5 +40,9 @@ public class ClientProxy extends CommonProxy {
     @Override
     public EntityPlayer getClientPlayer() {
         return Minecraft.getMinecraft().player;
+    }
+
+    public void createParticle(ParticleType particleType, World world, double xCoord, double yCoord, double zCoord, double xSpeed, double ySpeed, double zSpeed, int... vars) {
+        ParticleHandler.createParticle(particleType, world, xCoord, yCoord, zCoord, xSpeed, ySpeed, zSpeed, vars);
     }
 }
