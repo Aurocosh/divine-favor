@@ -63,6 +63,17 @@ public class UtilList {
         return null;
     }
 
+    public static <T, K> K findFirst(List<T> list, Class<K> clazz, Predicate<K> predicate) {
+        for (T element : list) {
+            if (clazz.isInstance(element)) {
+                K value = clazz.cast(element);
+                if (predicate.select(value))
+                    return value;
+            }
+        }
+        return null;
+    }
+
     public static <T> T pickBest(List<T> list, ComparePredicate<T> predicate) {
         T best = null;
         for (T element : list)

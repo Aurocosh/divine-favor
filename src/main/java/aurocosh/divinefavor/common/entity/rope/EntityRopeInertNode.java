@@ -4,11 +4,16 @@ import aurocosh.divinefavor.common.entity.rope.base.EntityRopeNodeBase;
 import aurocosh.divinefavor.common.item.common.ModItems;
 import aurocosh.divinefavor.common.util.SlotData;
 import aurocosh.divinefavor.common.util.UtilPlayer;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
 public class EntityRopeInertNode extends EntityRopeNodeBase implements IClimbable {
+    private static final float climbingSpeed = 0.25f;
+    private static final float climbingDistance = 2.5f;
+    private static final float climbingDistanceSq = climbingDistance * climbingDistance;
+
     public EntityRopeInertNode(World world) {
         super(world);
     }
@@ -41,5 +46,15 @@ public class EntityRopeInertNode extends EntityRopeNodeBase implements IClimbabl
     @Override
     protected boolean isMobile() {
         return false;
+    }
+
+    @Override
+    public float getClimbingSpeed() {
+        return climbingSpeed;
+    }
+
+    @Override
+    public boolean canClimb(Entity entityIn) {
+        return entityIn.getDistanceSq(this) <= climbingDistanceSq;
     }
 }
