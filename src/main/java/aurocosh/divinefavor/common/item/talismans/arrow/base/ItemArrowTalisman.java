@@ -76,7 +76,7 @@ public class ItemArrowTalisman extends ItemTalisman {
 
 
     public EntityArrow createArrow(@Nonnull World world, @Nonnull ItemArrowTalisman talisman, EntityLivingBase shooter) {
-        EntitySpellArrow arrow = getArrowByType(world, shooter);
+        EntitySpellArrow arrow = getArrow(world, shooter);
         arrow.setSpell(talisman, shooter);
         arrow.setNoGravity(gravityType == GravityType.NO_GRAVITY || gravityType == GravityType.ANTIGRAVITY);
         arrow.setHasAntiGravity(gravityType == GravityType.ANTIGRAVITY);
@@ -84,9 +84,9 @@ public class ItemArrowTalisman extends ItemTalisman {
         return arrow;
     }
 
-    private EntitySpellArrow getArrowByType(@Nonnull World worldIn, EntityLivingBase shooter) {
+    protected EntitySpellArrow getArrow(@Nonnull World world, EntityLivingBase shooter) {
         // TODO
-        return new EntitySpellArrow(worldIn, shooter);
+        return new EntitySpellArrow(world, shooter);
     }
 
     public void cast(EntityLivingBase target, EntityLivingBase shooter, EntityArrow arrow) {
