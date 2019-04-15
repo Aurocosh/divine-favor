@@ -8,7 +8,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
-public class EntityRopeInertNode extends EntityRopeNodeBase implements IClimbableNode {
+public class EntityRopeInertNode extends EntityRopeNodeBase implements IClimbable {
     public EntityRopeInertNode(World world) {
         super(world);
     }
