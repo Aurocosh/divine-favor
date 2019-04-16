@@ -114,6 +114,10 @@ public class EntitySpellArrow extends EntityArrow {
         return new ItemStack(Items.ARROW);
     }
 
+    public boolean isInGround(){
+        return inGround;
+    }
+
     @SideOnly(Side.CLIENT)
     public void handleStatusUpdate(byte id) {
         if (id == 0) {

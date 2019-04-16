@@ -7,6 +7,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
+import net.minecraft.util.EnumHand;
 import net.minecraft.world.World;
 
 public class EntityClimbingArrow extends EntitySpellArrow implements IClimbable {
@@ -56,7 +57,7 @@ public class EntityClimbingArrow extends EntitySpellArrow implements IClimbable 
 
     @Override
     public void onCollideWithPlayer(EntityPlayer entityIn) {
-        // Players not supposed to pick up this arrow
+        // Players not supposed to pick up this arrow just by standing nearby
     }
 
     @Override
