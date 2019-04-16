@@ -108,6 +108,9 @@ public class ItemArrowTalisman extends ItemTalisman {
     protected void performActionClient(EntityLivingBase target, EntityLivingBase shooter, EntityArrow arrow, BlockPos blockPos, EnumFacing sideHit) {
     }
 
+    public void postProcessArrow(EntityArrow entityarrow) {
+    }
+
     @SideOnly(Side.CLIENT)
     public void spawnParticles(EntitySpellArrow arrow){
     }

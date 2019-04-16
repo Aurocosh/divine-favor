@@ -148,6 +148,12 @@ public class DefaultSpellBowHandler implements ISpellBowHandler {
         return index;
     }
 
+    @Override
+    public ItemArrowTalisman getSelectedTalisman() {
+        ItemStack talismanStack = getSelectedStack();
+        return !talismanStack.isEmpty() ? (ItemArrowTalisman) talismanStack.getItem() : null;
+    }
+
     @FunctionalInterface
     public interface Indexer {
         int next(int index);

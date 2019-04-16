@@ -104,28 +104,35 @@ public class ItemSpellBow extends ModItem {
 
         boolean stackIsInfinite = player.capabilities.isCreativeMode || (arrowStack.getItem() instanceof ItemArrow && ((ItemArrow) arrowStack.getItem()).isInfinite(arrowStack, bowStack, player));
         if (!world.isRemote) {
-            EntityArrow entityarrow = getArrowEntity(world, bowStack, arrowStack, player);
-            entityarrow.shoot(player, player.rotationPitch, player.rotationYaw, 0.0F, velocity * 3.0F, 1.0F);
+            ItemArrowTalisman talisman = SpellBowStorage.get(bowStack).getSelectedTalisman();
+            EntityArrow entityArrow;
+            if (talisman != null && talisman.claimCost(world, player))
+                entityArrow = talisman.createArrow(world, talisman, player);
+            else
+                entityArrow = getStandardArrow(world, arrowStack, player);
+            entityArrow.shoot(player, player.rotationPitch, player.rotationYaw, 0.0F, velocity * 3.0F, 1.0F);
 
             if (velocity == 1.0F)
-                entityarrow.setIsCritical(true);
+                entityArrow.setIsCritical(true);
 
             int powerLevel = EnchantmentHelper.getEnchantmentLevel(Enchantments.POWER, bowStack);
             if (powerLevel > 0)
-                entityarrow.setDamage(entityarrow.getDamage() + (double) powerLevel * 0.5D + 0.5D);
+                entityArrow.setDamage(entityArrow.getDamage() + (double) powerLevel * 0.5D + 0.5D);
 
             int punchLevel = EnchantmentHelper.getEnchantmentLevel(Enchantments.PUNCH, bowStack);
             if (punchLevel > 0)
-                entityarrow.setKnockbackStrength(punchLevel);
+                entityArrow.setKnockbackStrength(punchLevel);
 
             if (EnchantmentHelper.getEnchantmentLevel(Enchantments.FLAME, bowStack) > 0)
-                entityarrow.setFire(100);
+                entityArrow.setFire(100);
 
             bowStack.damageItem(1, player);
 
             if (stackIsInfinite || player.capabilities.isCreativeMode && (arrowStack.getItem() == Items.SPECTRAL_ARROW || arrowStack.getItem() == Items.TIPPED_ARROW))
-                entityarrow.pickupStatus = EntityArrow.PickupStatus.CREATIVE_ONLY;
-            world.spawnEntity(entityarrow);
+                entityArrow.pickupStatus = EntityArrow.PickupStatus.CREATIVE_ONLY;
+            world.spawnEntity(entityArrow);
+            if (talisman != null)
+                talisman.postProcessArrow(entityArrow);
         }
 
         world.playSound(null, player.posX, player.posY, player.posZ, SoundEvents.ENTITY_ARROW_SHOOT, SoundCategory.PLAYERS, 1.0F, 1.0F / (itemRand.nextFloat() * 0.4F + 1.2F) + velocity * 0.5F);
@@ -135,16 +142,7 @@ public class ItemSpellBow extends ModItem {
         player.addStat(StatList.getObjectUseStats(this));
     }
 
-    protected EntityArrow getArrowEntity(World world, ItemStack bowStack, ItemStack arrowStack, EntityLivingBase shooter){
-        ISpellBowHandler bowHandler = bowStack.getCapability(CAPABILITY_SPELL_BOW, null);
-        assert bowHandler != null;
-
-        ItemStack talismanStack = bowHandler.getSelectedStack();
-        if (!talismanStack.isEmpty()) {
-            ItemArrowTalisman talisman = (ItemArrowTalisman) talismanStack.getItem();
-            if (talisman.claimCost(world, shooter))
-                return talisman.createArrow(world, talisman, shooter);
-        }
+    private EntityArrow getStandardArrow(World world, ItemStack arrowStack, EntityLivingBase shooter) {
         EntityTippedArrow arrow = new EntityTippedArrow(world, shooter);
         arrow.setPotionEffect(arrowStack);
         return arrow;
