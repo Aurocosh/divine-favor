@@ -37,6 +37,10 @@ public class ConfigArrow {
     public static FillLungs fillLungs = new FillLungs();
     @Config.Name("Hand swap")
     public static HandSwap handSwap = new HandSwap();
+    @Config.Name("High speed arrow")
+    public static HighSpeedArrow highSpeedArrow = new HighSpeedArrow(40,2,2);
+    @Config.Name("Hyper speed arrow")
+    public static HighSpeedArrow hyperSpeedArrow = new HighSpeedArrow(400,2,6);
     @Config.Name("Hollow leg")
     public static HollowLeg hollowLeg = new HollowLeg();
     @Config.Name("Hover bubble arrow")
@@ -65,6 +69,8 @@ public class ConfigArrow {
     public static Skyfall skyfall = new Skyfall();
     @Config.Name("Suffocating fumes")
     public static SuffocatingFumes suffocatingFumes = new SuffocatingFumes();
+    @Config.Name("Tracer arrow")
+    public static TracerArrow tracerArrow = new TracerArrow();
     @Config.Name("Vacuum arrow")
     public static VacuumArrow vacuumArrow = new VacuumArrow();
     @Config.Name("Wind leash")

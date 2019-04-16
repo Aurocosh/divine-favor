@@ -28,8 +28,10 @@ public class ModArrowTalismans {
     public static ItemArrowTalisman fill_lungs;
     public static ItemArrowTalisman force_arrow;
     public static ItemArrowTalisman hand_swap;
+    public static ItemArrowTalisman high_speed_arrow;
     public static ItemArrowTalisman hollow_leg;
     public static ItemArrowTalisman hover_bubble_arrow;
+    public static ItemArrowTalisman hyper_speed_arrow;
     public static ItemArrowTalisman impulse_arrow;
     public static ItemArrowTalisman limp_leg;
     public static ItemArrowTalisman nether_swap;
@@ -59,13 +61,15 @@ public class ModArrowTalismans {
         explosive_arrow = new ArrowTalismanExplosive("explosive_arrow", ModSpirits.arbow, Color.blue.getRGB(), ArrowOptions.ARROW_BREAKS, ArrowType.SPELL_ARROW, ConfigArrow.explosiveArrow);
         force_arrow = new ArrowTalismanForceArrow("force_arrow", ModSpirits.arbow, ConfigArrow.forceArrow.favorCost, Color.red.getRGB(), ConfigArrow.forceArrow.damage, ArrowType.SPELL_ARROW, ConfigArrow.forceArrow.velocity);
         hand_swap = new ArrowTalismanHandSwap("hand_swap", ModSpirits.arbow, ConfigArrow.handSwap.favorCost, Color.orange.getRGB(), ConfigArrow.handSwap.damage, ArrowOptions.REQUIRES_TARGET, ArrowType.SPELL_ARROW);
+        high_speed_arrow = new ArrowTalismanHighSpeedArrow("high_speed_arrow", ModSpirits.arbow, ConfigArrow.highSpeedArrow.favorCost, Color.green.getRGB(), ConfigArrow.highSpeedArrow.damage, ArrowOptions.NORMAL, ArrowType.WOODEN_ARROW, ConfigArrow.highSpeedArrow.extraVelocity);
         hover_bubble_arrow = new ArrowTalismanHoverBubbleArrow("hover_bubble_arrow", ModSpirits.arbow, ConfigArrow.hoverBubbleArrow.favorCost, Color.green.getRGB(), ConfigArrow.hoverBubbleArrow.damage, ArrowOptions.NORMAL, ArrowType.SPELL_ARROW, ConfigArrow.hoverBubbleArrow.climbingSpeed, ConfigArrow.hoverBubbleArrow.climbingDistance, ConfigArrow.hoverBubbleArrow.despawnDelay);
+        hyper_speed_arrow = new ArrowTalismanHighSpeedArrow("hyper_speed_arrow", ModSpirits.arbow, ConfigArrow.hyperSpeedArrow.favorCost, Color.green.getRGB(), ConfigArrow.hyperSpeedArrow.damage, ArrowOptions.NORMAL, ArrowType.WOODEN_ARROW, ConfigArrow.hyperSpeedArrow.extraVelocity);
         impulse_arrow = new ArrowTalismanForceArrow("impulse_arrow", ModSpirits.arbow, ConfigArrow.impulseArrow.favorCost, Color.red.getRGB(), ConfigArrow.impulseArrow.damage, ArrowType.SPELL_ARROW, ConfigArrow.impulseArrow.velocity);
         nuke_arrow = new ArrowTalismanExplosive("nuke_arrow", ModSpirits.arbow, Color.red.getRGB(), ArrowOptions.ARROW_BREAKS, ArrowType.SPELL_ARROW, ConfigArrow.nukeArrow);
         reinforced_arrow_1 = new ItemArrowTalisman("reinforced_arrow_1", ModSpirits.arbow, ConfigArrow.reinforcedArrow1.favorCost, Color.yellow.getRGB(), ConfigArrow.reinforcedArrow1.damage, ArrowOptions.NORMAL, ArrowType.SPELL_ARROW);
         reinforced_arrow_2 = new ItemArrowTalisman("reinforced_arrow_2", ModSpirits.arbow, ConfigArrow.reinforcedArrow2.favorCost, Color.blue.getRGB(), ConfigArrow.reinforcedArrow2.damage, ArrowOptions.NORMAL, ArrowType.SPELL_ARROW);
         reinforced_arrow_3 = new ItemArrowTalisman("reinforced_arrow_3", ModSpirits.arbow, ConfigArrow.reinforcedArrow3.favorCost, Color.red.getRGB(), ConfigArrow.reinforcedArrow3.damage, ArrowOptions.NORMAL, ArrowType.SPELL_ARROW);
-        tracer_arrow = new ArrowTalismanTracerArrow("tracer_arrow", ModSpirits.arbow, ConfigArrow.zeroGArrow.favorCost, Color.green.getRGB(), ConfigArrow.zeroGArrow.damage, ArrowOptions.NORMAL, ArrowType.WOODEN_ARROW);
+        tracer_arrow = new ArrowTalismanTracerArrow("tracer_arrow", ModSpirits.arbow, ConfigArrow.tracerArrow.favorCost, Color.green.getRGB(), ConfigArrow.tracerArrow.damage, ArrowOptions.NORMAL, ArrowType.WOODEN_ARROW);
         vacuum_arrow = new ArrowTalismanVacuumArrow("vacuum_arrow", ModSpirits.arbow, ConfigArrow.vacuumArrow.favorCost, Color.green.getRGB(), ConfigArrow.vacuumArrow.damage, ArrowOptions.NORMAL, ArrowType.SPELL_ARROW);
         zero_g_arrow = new ArrowTalismanZeroGArrow("zero_g_arrow", ModSpirits.arbow, ConfigArrow.zeroGArrow.favorCost, Color.green.getRGB(), ConfigArrow.zeroGArrow.damage, ArrowOptions.NORMAL, ArrowType.WOODEN_ARROW);
 
