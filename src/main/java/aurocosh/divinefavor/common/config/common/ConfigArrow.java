@@ -67,6 +67,8 @@ public class ConfigArrow {
     public static Roots roots = new Roots();
     @Config.Name("Skyfall")
     public static Skyfall skyfall = new Skyfall();
+    @Config.Name("Sniper arrow")
+    public static SniperArrow sniperArrow = new SniperArrow();
     @Config.Name("Suffocating fumes")
     public static SuffocatingFumes suffocatingFumes = new SuffocatingFumes();
     @Config.Name("Tracer arrow")
