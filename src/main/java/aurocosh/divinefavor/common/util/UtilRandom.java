@@ -57,9 +57,9 @@ public class UtilRandom {
     }
 
     public static Vec3d nextDirection() {
-        float x = nextFloat(-1,1);
-        float y = nextFloat(-1,1);
-        float z = nextFloat(-1,1);
-        return new Vec3d(x, y, z).normalize();
+        float x = nextFloat(-1, 1);
+        float y = nextFloat(-1, 1);
+        float z = nextFloat(-1, 1);
+        return UtilVec3d.normalize(new Vec3d(x, y, z));
     }
 }

@@ -21,7 +21,7 @@ public class ArrowTalismanHoverBubbleArrow extends ArrowTalismanClimbableArrow {
     @Override
     @SideOnly(Side.CLIENT)
     public void spawnParticles(EntitySpellArrow arrow) {
-        for (int i = 0; i < 12; ++i) {
+        for (int i = 0; i < 50; ++i) {
             Vec3d pointOnSphereSurface = UtilRandom.nextDirection().scale(climbingDistance);
             Vec3d pointInWorld = pointOnSphereSurface.add(arrow.getPositionVector());
             DivineFavor.proxy.createParticle(ModParticleTypes.vacuumArrow, arrow.world, pointInWorld.x, pointInWorld.y, pointInWorld.z, 0, 0, 0);
