@@ -8,6 +8,7 @@ import net.minecraft.entity.projectile.EntityArrow;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
@@ -18,6 +19,9 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class EntitySpellArrow extends EntityArrow {
+    private static final String TAG_COLOR = "Color";
+    private static final String TAG_ARROW_TYPE = "ArrowType";
+    private static final String TAG_TALISMAN = "Talisman";
     private double gravityValue = 0.05000000074505806D;
 
     private static final DataParameter<Integer> COLOR = EntityDataManager.createKey(EntitySpellArrow.class, DataSerializers.VARINT);
@@ -43,9 +47,9 @@ public class EntitySpellArrow extends EntityArrow {
     public void setSpell(ItemArrowTalisman talisman, EntityLivingBase shooter) {
         this.talisman = talisman;
         this.shooter = shooter;
-        dataManager.set(COLOR, talisman.getColor());
-        dataManager.set(TYPE, talisman.getArrowType().getValue());
-        dataManager.set(TALISMAN_ID, talisman.getRegistryName().toString());
+        setColor(talisman.getColor());
+        setArrowType(talisman.getArrowType().getValue());
+        setTalismanId(talisman.getRegistryName().toString());
     }
 
     protected void entityInit() {
@@ -85,13 +89,6 @@ public class EntitySpellArrow extends EntityArrow {
         }
     }
 
-    public ArrowType getArrowType() {
-        return ArrowType.get(dataManager.get(TYPE));
-    }
-
-    public int getColor() {
-        return dataManager.get(COLOR);
-    }
 
 //    protected void arrowHit(EntityLivingBase living) {
 //        if (talisman != null && shooter != null)
@@ -100,21 +97,21 @@ public class EntitySpellArrow extends EntityArrow {
 
     @Override
     protected void onHit(RayTraceResult raytraceResultIn) {
+        if (talisman != null && shooter != null) {
+            Entity entity = raytraceResultIn.entityHit;
+            EntityLivingBase living = entity instanceof EntityLivingBase ? (EntityLivingBase) entity : null;
+            talisman.cast(living, shooter, this, raytraceResultIn.getBlockPos(), raytraceResultIn.sideHit);
+            if (talisman.isBreakOnHit())
+                setDead();
+        }
         super.onHit(raytraceResultIn);
-        if (talisman == null || shooter == null)
-            return;
-        Entity entity = raytraceResultIn.entityHit;
-        EntityLivingBase living = entity instanceof EntityLivingBase ? (EntityLivingBase) entity : null;
-        talisman.cast(living, shooter, this, raytraceResultIn.getBlockPos(), raytraceResultIn.sideHit);
-        if (talisman.isBreakOnHit())
-            setDead();
     }
 
     protected ItemStack getArrowStack() {
         return new ItemStack(Items.ARROW);
     }
 
-    public boolean isInGround(){
+    public boolean isInGround() {
         return inGround;
     }
 
@@ -142,9 +139,9 @@ public class EntitySpellArrow extends EntityArrow {
             talisman = getTalisman();
     }
 
-    private ItemArrowTalisman getTalisman(){
+    private ItemArrowTalisman getTalisman() {
         Item item = Item.getByNameOrId(dataManager.get(TALISMAN_ID));
-        if(item instanceof ItemArrowTalisman)
+        if (item instanceof ItemArrowTalisman)
             return (ItemArrowTalisman) item;
         return null;
     }
@@ -159,5 +156,52 @@ public class EntitySpellArrow extends EntityArrow {
 
     public void setDespawnDelay(int delay) {
         timeInGround = 1200 - delay;
+    }
+
+    @Override
+    public void writeEntityToNBT(NBTTagCompound compound) {
+        super.writeEntityToNBT(compound);
+
+        compound.setInteger(TAG_COLOR, getColor());
+        compound.setInteger(TAG_ARROW_TYPE, getArrowType().getValue());
+        compound.setString(TAG_TALISMAN, getTalismanId());
+    }
+
+    @Override
+    public void readEntityFromNBT(NBTTagCompound compound) {
+        super.readEntityFromNBT(compound);
+
+        setColor(compound.getInteger(TAG_COLOR));
+        setArrowType(compound.getInteger(TAG_ARROW_TYPE));
+        String talismanId = compound.getString(TAG_TALISMAN);
+        setTalismanId(talismanId);
+
+        Item item = Item.getByNameOrId(talismanId);
+        if (item instanceof ItemArrowTalisman)
+            talisman = (ItemArrowTalisman) item;
+    }
+
+    public String getTalismanId() {
+        return dataManager.get(TALISMAN_ID);
+    }
+
+    public ArrowType getArrowType() {
+        return ArrowType.get(dataManager.get(TYPE));
+    }
+
+    public int getColor() {
+        return dataManager.get(COLOR);
+    }
+
+    private void setTalismanId(String string) {
+        dataManager.set(TALISMAN_ID, string);
+    }
+
+    private void setArrowType(int value) {
+        dataManager.set(TYPE,  ArrowType.get(value).getValue());
+    }
+
+    private void setColor(int color) {
+        dataManager.set(COLOR, color);
     }
 }
