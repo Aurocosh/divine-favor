@@ -38,9 +38,9 @@ public class ConfigArrow {
     @Config.Name("Hand swap")
     public static HandSwap handSwap = new HandSwap();
     @Config.Name("High speed arrow")
-    public static HighSpeedArrow highSpeedArrow = new HighSpeedArrow(40,2,2);
+    public static HighSpeedArrow highSpeedArrow = new HighSpeedArrow(40, 2, 2);
     @Config.Name("Hyper speed arrow")
-    public static HighSpeedArrow hyperSpeedArrow = new HighSpeedArrow(400,2,6);
+    public static HighSpeedArrow hyperSpeedArrow = new HighSpeedArrow(400, 2, 6);
     @Config.Name("Hollow leg")
     public static HollowLeg hollowLeg = new HollowLeg();
     @Config.Name("Hover bubble arrow")
@@ -51,6 +51,8 @@ public class ConfigArrow {
     public static ForceArrow impulseArrow = new ForceArrow(30, 0.5f, 2);
     @Config.Name("Limp leg")
     public static LimpLeg limpLeg = new LimpLeg();
+    @Config.Name("Mine arrow")
+    public static MineArrow mineArrow = new MineArrow();
     @Config.Name("Nether swap")
     public static NetherSwap netherSwap = new NetherSwap();
     @Config.Name("Nuke arrow")

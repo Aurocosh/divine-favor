@@ -5,7 +5,6 @@ import aurocosh.divinefavor.common.util.UtilEntity;
 import aurocosh.divinefavor.common.util.UtilList;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.util.DamageSource;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
@@ -38,6 +37,8 @@ public class EntityVacuumArrow extends EntitySpellArrow {
     public void onUpdate() {
         super.onUpdate();
         if (world.isRemote)
+            return;
+        if(!inGround)
             return;
 
         List<EntityLivingBase> livingBases = world.getEntitiesWithinAABB(EntityLivingBase.class, new AxisAlignedBB(getPosition()).grow(ConfigArrow.vacuumArrow.radius));

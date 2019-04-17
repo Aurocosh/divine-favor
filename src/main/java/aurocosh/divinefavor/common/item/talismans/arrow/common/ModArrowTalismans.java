@@ -34,6 +34,7 @@ public class ModArrowTalismans {
     public static ItemArrowTalisman hyper_speed_arrow;
     public static ItemArrowTalisman impulse_arrow;
     public static ItemArrowTalisman limp_leg;
+    public static ItemArrowTalisman mine_arrow;
     public static ItemArrowTalisman nether_swap;
     public static ItemArrowTalisman nuke_arrow;
     public static ItemArrowTalisman petrification;
@@ -67,6 +68,7 @@ public class ModArrowTalismans {
         hover_bubble_arrow = new ArrowTalismanHoverBubbleArrow("hover_bubble_arrow", ModSpirits.arbow, ConfigArrow.hoverBubbleArrow.favorCost, Color.green.getRGB(), ConfigArrow.hoverBubbleArrow.damage, ArrowOptions.NORMAL, ArrowType.SPELL_ARROW, ConfigArrow.hoverBubbleArrow.climbingSpeed, ConfigArrow.hoverBubbleArrow.climbingDistance, ConfigArrow.hoverBubbleArrow.despawnDelay);
         hyper_speed_arrow = new ArrowTalismanHighSpeedArrow("hyper_speed_arrow", ModSpirits.arbow, ConfigArrow.hyperSpeedArrow.favorCost, Color.green.getRGB(), ConfigArrow.hyperSpeedArrow.damage, ArrowOptions.NORMAL, ArrowType.WOODEN_ARROW, ConfigArrow.hyperSpeedArrow.extraVelocity);
         impulse_arrow = new ArrowTalismanForceArrow("impulse_arrow", ModSpirits.arbow, ConfigArrow.impulseArrow.favorCost, Color.red.getRGB(), ConfigArrow.impulseArrow.damage, ArrowType.SPELL_ARROW, ConfigArrow.impulseArrow.velocity);
+        mine_arrow = new ArrowTalismanMineArrow("mine_arrow", ModSpirits.arbow, ConfigArrow.mineArrow.favorCost, Color.green.getRGB(), ConfigArrow.mineArrow.damage, ArrowOptions.NORMAL, ArrowType.WOODEN_ARROW);
         nuke_arrow = new ArrowTalismanExplosive("nuke_arrow", ModSpirits.arbow, Color.red.getRGB(), ArrowOptions.ARROW_BREAKS, ArrowType.SPELL_ARROW, ConfigArrow.nukeArrow);
         reinforced_arrow_1 = new ItemArrowTalisman("reinforced_arrow_1", ModSpirits.arbow, ConfigArrow.reinforcedArrow1.favorCost, Color.yellow.getRGB(), ConfigArrow.reinforcedArrow1.damage, ArrowOptions.NORMAL, ArrowType.SPELL_ARROW);
         reinforced_arrow_2 = new ItemArrowTalisman("reinforced_arrow_2", ModSpirits.arbow, ConfigArrow.reinforcedArrow2.favorCost, Color.blue.getRGB(), ConfigArrow.reinforcedArrow2.damage, ArrowOptions.NORMAL, ArrowType.SPELL_ARROW);
