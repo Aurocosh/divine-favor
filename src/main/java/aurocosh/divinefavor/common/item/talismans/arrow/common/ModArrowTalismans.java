@@ -33,6 +33,7 @@ public class ModArrowTalismans {
     public static ItemArrowTalisman hover_bubble_arrow;
     public static ItemArrowTalisman hyper_speed_arrow;
     public static ItemArrowTalisman impulse_arrow;
+    public static ItemArrowTalisman incendiary_arrow;
     public static ItemArrowTalisman limp_leg;
     public static ItemArrowTalisman mine_arrow;
     public static ItemArrowTalisman nether_swap;
@@ -69,6 +70,7 @@ public class ModArrowTalismans {
         hover_bubble_arrow = new ArrowTalismanHoverBubbleArrow("hover_bubble_arrow", ModSpirits.arbow, ConfigArrow.hoverBubbleArrow.favorCost, Color.green.getRGB(), ConfigArrow.hoverBubbleArrow.damage, ArrowOptions.NORMAL, ArrowType.SPELL_ARROW, ConfigArrow.hoverBubbleArrow.climbingSpeed, ConfigArrow.hoverBubbleArrow.climbingDistance, ConfigArrow.hoverBubbleArrow.despawnDelay);
         hyper_speed_arrow = new ArrowTalismanHighSpeedArrow("hyper_speed_arrow", ModSpirits.arbow, ConfigArrow.hyperSpeedArrow.favorCost, Color.green.getRGB(), ConfigArrow.hyperSpeedArrow.damage, ArrowOptions.NORMAL, ArrowType.WOODEN_ARROW, ConfigArrow.hyperSpeedArrow.extraVelocity);
         impulse_arrow = new ArrowTalismanForceArrow("impulse_arrow", ModSpirits.arbow, ConfigArrow.impulseArrow.favorCost, Color.red.getRGB(), ConfigArrow.impulseArrow.damage, ArrowType.SPELL_ARROW, ConfigArrow.impulseArrow.velocity);
+        incendiary_arrow = new ArrowTalismanIncendiaryArrow("incendiary_arrow", ModSpirits.arbow, ConfigArrow.incendiaryArrow.favorCost, Color.green.getRGB(), ConfigArrow.incendiaryArrow.damage, ArrowOptions.ARROW_BREAKS, ArrowType.WOODEN_ARROW);
         mine_arrow = new ArrowTalismanMineArrow("mine_arrow", ModSpirits.arbow, ConfigArrow.mineArrow.favorCost, Color.green.getRGB(), ConfigArrow.mineArrow.damage, ArrowOptions.NORMAL, ArrowType.WOODEN_ARROW);
         nuke_arrow = new ArrowTalismanExplosive("nuke_arrow", ModSpirits.arbow, Color.red.getRGB(), ArrowOptions.ARROW_BREAKS, ArrowType.SPELL_ARROW, ConfigArrow.nukeArrow);
         reinforced_arrow_1 = new ItemArrowTalisman("reinforced_arrow_1", ModSpirits.arbow, ConfigArrow.reinforcedArrow1.favorCost, Color.yellow.getRGB(), ConfigArrow.reinforcedArrow1.damage, ArrowOptions.NORMAL, ArrowType.SPELL_ARROW);
