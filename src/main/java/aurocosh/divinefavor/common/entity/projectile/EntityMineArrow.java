@@ -10,26 +10,16 @@ import net.minecraft.world.World;
 import java.util.List;
 
 public class EntityMineArrow extends EntitySpellArrow {
-    private static final boolean DAMAGE_TERRAIN = false;
-    private static final float EXPLOSION_POWER = 2;
-    private static final boolean CAUSE_FIRE = true;
-
     public EntityMineArrow(World worldIn) {
         super(worldIn);
-        init();
-    }
-
-    public EntityMineArrow(World worldIn, double x, double y, double z) {
-        super(worldIn, x, y, z);
-        init();
     }
 
     public EntityMineArrow(World worldIn, EntityLivingBase shooter) {
         super(worldIn, shooter);
-        init();
     }
 
-    private void init() {
+    protected void entityInit() {
+        super.entityInit();
         setDespawnDelay(ConfigArrow.mineArrow.despawnDelay);
     }
 
@@ -41,13 +31,13 @@ public class EntityMineArrow extends EntitySpellArrow {
     @Override
     public void onUpdate() {
         super.onUpdate();
-        if(world.isRemote)
+        if (world.isRemote)
             return;
-        if(!inGround)
+        if (!inGround)
             return;
 
         List<EntityLivingBase> livingBases = world.getEntitiesWithinAABB(EntityLivingBase.class, new AxisAlignedBB(getPosition()).grow(ConfigArrow.mineArrow.radius));
-        if(livingBases.isEmpty())
+        if (livingBases.isEmpty())
             return;
 
         boolean damageTerrain = ConfigArrow.mineArrow.damageTerrain && !isInWater();

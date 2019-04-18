@@ -44,6 +44,7 @@ public class ModArrowTalismans {
     public static ItemArrowTalisman roots;
     public static ItemArrowTalisman skyfall;
     public static ItemArrowTalisman sniper_arrow;
+    public static ItemArrowTalisman spooky_arrow;
     public static ItemArrowTalisman stasis_arrow;
     public static ItemArrowTalisman suffocating_fumes;
     public static ItemArrowTalisman tracer_arrow;
@@ -74,11 +75,11 @@ public class ModArrowTalismans {
         reinforced_arrow_2 = new ItemArrowTalisman("reinforced_arrow_2", ModSpirits.arbow, ConfigArrow.reinforcedArrow2.favorCost, Color.blue.getRGB(), ConfigArrow.reinforcedArrow2.damage, ArrowOptions.NORMAL, ArrowType.SPELL_ARROW);
         reinforced_arrow_3 = new ItemArrowTalisman("reinforced_arrow_3", ModSpirits.arbow, ConfigArrow.reinforcedArrow3.favorCost, Color.red.getRGB(), ConfigArrow.reinforcedArrow3.damage, ArrowOptions.NORMAL, ArrowType.SPELL_ARROW);
         sniper_arrow = new ArrowTalismanSniperArrow("sniper_arrow", ModSpirits.arbow, ConfigArrow.sniperArrow.favorCost, Color.green.getRGB(), ArrowOptions.NORMAL, ArrowType.WOODEN_ARROW);
+        spooky_arrow = new ArrowTalismanSpookyArrow("spooky_arrow", ModSpirits.arbow, ConfigArrow.spookyArrow.favorCost, Color.green.getRGB(), ConfigArrow.spookyArrow.damage, ArrowOptions.NORMAL, ArrowType.WOODEN_ARROW);
         stasis_arrow = new ArrowTalismanStasisArrow("stasis_arrow", ModSpirits.arbow, ConfigArrow.stasisArrow.favorCost, Color.green.getRGB(), ConfigArrow.stasisArrow.damage, ArrowOptions.NORMAL, ArrowType.SPELL_ARROW);
         tracer_arrow = new ArrowTalismanTracerArrow("tracer_arrow", ModSpirits.arbow, ConfigArrow.tracerArrow.favorCost, Color.green.getRGB(), ConfigArrow.tracerArrow.damage, ArrowOptions.NORMAL, ArrowType.WOODEN_ARROW);
         vacuum_arrow = new ArrowTalismanVacuumArrow("vacuum_arrow", ModSpirits.arbow, ConfigArrow.vacuumArrow.favorCost, Color.green.getRGB(), ConfigArrow.vacuumArrow.damage, ArrowOptions.NORMAL, ArrowType.SPELL_ARROW);
         zero_g_arrow = new ArrowTalismanZeroGArrow("zero_g_arrow", ModSpirits.arbow, ConfigArrow.zeroGArrow.favorCost, Color.green.getRGB(), ConfigArrow.zeroGArrow.damage, ArrowOptions.NORMAL, ArrowType.WOODEN_ARROW);
-
 
         // blizrabi;
 

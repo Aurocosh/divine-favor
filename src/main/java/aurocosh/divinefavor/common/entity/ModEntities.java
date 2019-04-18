@@ -20,6 +20,7 @@ public final class ModEntities {
         registerModEntity(EntityMineArrow.class, "mine_arrow", 256, 1, true);
         registerModEntity(EntitySniperArrow.class, "sniper_arrow", 256, 1, true);
         registerModEntity(EntitySpellArrow.class, "spell_arrow", 256, 1, true);
+        registerModEntity(EntitySpookyArrow.class, "spooky_arrow", 256, 1, true);
         registerModEntity(EntityStasisArrow.class, "stasis_arrow", 256, 1, true);
         registerModEntity(EntityVacuumArrow.class, "vacuum_arrow", 256, 1, true);
 
