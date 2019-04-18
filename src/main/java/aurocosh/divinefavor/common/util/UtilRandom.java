@@ -56,6 +56,14 @@ public class UtilRandom {
         return list.get(getRandomIndex(list));
     }
 
+    public static <T> int getRandomIndex(T[] list) {
+        return nextInt(0, list.length - 1);
+    }
+
+    public static <T> T getRandom(T[] list) {
+        return list.length == 0 ? null : list[getRandomIndex(list)];
+    }
+
     public static Vec3d nextDirection() {
         float x = nextFloat(-1, 1);
         float y = nextFloat(-1, 1);

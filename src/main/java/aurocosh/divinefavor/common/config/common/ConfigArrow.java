@@ -71,6 +71,8 @@ public class ConfigArrow {
     public static Skyfall skyfall = new Skyfall();
     @Config.Name("Sniper arrow")
     public static SniperArrow sniperArrow = new SniperArrow();
+    @Config.Name("Spooky arrow")
+    public static SpookyArrow spookyArrow = new SpookyArrow();
     @Config.Name("Stasis arrow")
     public static StasisArrow stasisArrow = new StasisArrow();
     @Config.Name("Suffocating fumes")

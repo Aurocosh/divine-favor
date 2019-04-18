@@ -7,7 +7,6 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
-import net.minecraft.util.EnumHand;
 import net.minecraft.world.World;
 
 public class EntityClimbingArrow extends EntitySpellArrow implements IClimbable {
@@ -19,17 +18,10 @@ public class EntityClimbingArrow extends EntitySpellArrow implements IClimbable 
 
     public EntityClimbingArrow(World worldIn) {
         super(worldIn);
-        pickupStatus = PickupStatus.DISALLOWED;
-    }
-
-    public EntityClimbingArrow(World worldIn, double x, double y, double z) {
-        super(worldIn, x, y, z);
-        pickupStatus = PickupStatus.DISALLOWED;
     }
 
     public EntityClimbingArrow(World worldIn, EntityLivingBase shooter) {
         super(worldIn, shooter);
-        pickupStatus = PickupStatus.DISALLOWED;
     }
 
     public void setClimbingStats(float climbingSpeed, float climbingDistanceSq, int despawnDelay) {
@@ -45,6 +37,8 @@ public class EntityClimbingArrow extends EntitySpellArrow implements IClimbable 
         super.entityInit();
         dataManager.register(CLIMBING_SPEED, 0f);
         dataManager.register(CLIMBING_DISTANCE_SQ, 0f);
+
+        pickupStatus = PickupStatus.DISALLOWED;
     }
 
     public void notifyDataManagerChange(DataParameter<?> key) {
