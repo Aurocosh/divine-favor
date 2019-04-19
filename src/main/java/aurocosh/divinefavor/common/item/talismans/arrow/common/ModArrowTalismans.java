@@ -45,6 +45,7 @@ public class ModArrowTalismans {
     public static ItemArrowTalisman reinforced_arrow_1;
     public static ItemArrowTalisman reinforced_arrow_2;
     public static ItemArrowTalisman reinforced_arrow_3;
+    public static ItemArrowTalisman ricochet_arrow;
     public static ItemArrowTalisman roots;
     public static ItemArrowTalisman skyfall;
     public static ItemArrowTalisman sniper_arrow;
@@ -82,6 +83,7 @@ public class ModArrowTalismans {
         reinforced_arrow_1 = new ItemArrowTalisman("reinforced_arrow_1", ModSpirits.arbow, ConfigArrow.reinforcedArrow1.favorCost, Color.yellow.getRGB(), ConfigArrow.reinforcedArrow1.damage, ArrowOptions.NORMAL, ArrowType.SPELL_ARROW);
         reinforced_arrow_2 = new ItemArrowTalisman("reinforced_arrow_2", ModSpirits.arbow, ConfigArrow.reinforcedArrow2.favorCost, Color.blue.getRGB(), ConfigArrow.reinforcedArrow2.damage, ArrowOptions.NORMAL, ArrowType.SPELL_ARROW);
         reinforced_arrow_3 = new ItemArrowTalisman("reinforced_arrow_3", ModSpirits.arbow, ConfigArrow.reinforcedArrow3.favorCost, Color.red.getRGB(), ConfigArrow.reinforcedArrow3.damage, ArrowOptions.NORMAL, ArrowType.SPELL_ARROW);
+        ricochet_arrow = new ArrowTalismanRicochetArrow("ricochet_arrow", ModSpirits.arbow, ConfigArrow.ricochetArrow.favorCost, Color.green.getRGB(), ConfigArrow.ricochetArrow.damage, ArrowOptions.NORMAL, ArrowType.WOODEN_ARROW);
         sniper_arrow = new ArrowTalismanSniperArrow("sniper_arrow", ModSpirits.arbow, ConfigArrow.sniperArrow.favorCost, Color.green.getRGB(), ArrowOptions.NORMAL, ArrowType.WOODEN_ARROW);
         spooky_arrow = new ArrowTalismanSpookyArrow("spooky_arrow", ModSpirits.arbow, ConfigArrow.spookyArrow.favorCost, Color.green.getRGB(), ConfigArrow.spookyArrow.damage, ArrowOptions.NORMAL, ArrowType.WOODEN_ARROW);
         stasis_arrow = new ArrowTalismanStasisArrow("stasis_arrow", ModSpirits.arbow, ConfigArrow.stasisArrow.favorCost, Color.green.getRGB(), ConfigArrow.stasisArrow.damage, ArrowOptions.NORMAL, ArrowType.SPELL_ARROW);
