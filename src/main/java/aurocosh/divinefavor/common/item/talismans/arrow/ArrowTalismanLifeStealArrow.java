@@ -17,9 +17,6 @@ import net.minecraft.util.math.BlockPos;
 import java.util.EnumSet;
 
 public class ArrowTalismanLifeStealArrow extends ItemArrowTalisman {
-    private static final float DAMAGE = 2;
-    private static final float HEAL = 2;
-
     private static final String TAG_STOLE_LIFE = "StoleLife";
     private static final int ENTITY_IGNORE_DELAY = UtilTick.minutesToTicks(1);
 

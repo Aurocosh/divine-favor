@@ -63,6 +63,8 @@ public class ConfigArrow {
     public static ExplosiveArrow nukeArrow = new ExplosiveArrow(400, 2, 12, true, true);
     @Config.Name("Petrification")
     public static Petrification petrification = new Petrification();
+    @Config.Name("Piercing arrow")
+    public static PiercingArrow piercingArrow = new PiercingArrow();
     @Config.Name("Reinforced arrow I")
     public static ReinforcedArrow reinforcedArrow1 = new ReinforcedArrow(10, 4);
     @Config.Name("Reinforced arrow II")
