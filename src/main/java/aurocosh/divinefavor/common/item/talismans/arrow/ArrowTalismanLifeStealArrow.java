@@ -35,6 +35,8 @@ public class ArrowTalismanLifeStealArrow extends ItemArrowTalisman {
 
     @Override
     protected boolean performActionClient(EntityLivingBase target, EntityLivingBase shooter, EntitySpellArrow spellArrow, BlockPos blockPos, EnumFacing sideHit) {
+        if (target == null)
+            return true;
         spellArrow.setEntityIgnoreDelay(ENTITY_IGNORE_DELAY);
         return false;
     }

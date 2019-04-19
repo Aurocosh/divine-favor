@@ -78,10 +78,10 @@ public class ItemArrowTalisman extends ItemTalisman {
     }
 // Talisman functions
 
-    public EntityArrow createArrow(@Nonnull World world, @Nonnull ItemArrowTalisman talisman, EntityLivingBase shooter) {
-        EntitySpellArrow spellArrow = getArrow(world, shooter);
-        spellArrow.setSpell(talisman, shooter);
-        init(spellArrow, shooter);
+    public EntityArrow createArrow(@Nonnull World world, @Nonnull ItemArrowTalisman talisman, EntityPlayer player) {
+        EntitySpellArrow spellArrow = getArrow(world, player);
+        spellArrow.setSpell(talisman, player);
+        init(spellArrow, player);
         spellArrow.setNoGravity(gravityType == GravityType.NO_GRAVITY || gravityType == GravityType.ANTIGRAVITY);
         spellArrow.setHasAntiGravity(gravityType == GravityType.ANTIGRAVITY);
         spellArrow.setDamage(arrowDamage);
