@@ -73,6 +73,8 @@ public class ConfigArrow {
     public static ReinforcedArrow reinforcedArrow2 = new ReinforcedArrow(100, 8);
     @Config.Name("Reinforced arrow III")
     public static ReinforcedArrow reinforcedArrow3 = new ReinforcedArrow(400, 16);
+    @Config.Name("Ricochet arrow")
+    public static RicochetArrow ricochetArrow = new RicochetArrow();
     @Config.Name("Roots")
     public static Roots roots = new Roots();
     @Config.Name("Skyfall")
