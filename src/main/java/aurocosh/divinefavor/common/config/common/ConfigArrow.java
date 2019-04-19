@@ -45,6 +45,8 @@ public class ConfigArrow {
     public static HollowLeg hollowLeg = new HollowLeg();
     @Config.Name("Incendiary arrow")
     public static IncendiaryArrow incendiaryArrow = new IncendiaryArrow();
+    @Config.Name("LifeSteal arrow")
+    public static LifeStealArrow lifeStealArrow = new LifeStealArrow();
     @Config.Name("Hover bubble arrow")
     public static ClimbingArrow hoverBubbleArrow = new ClimbingArrow(150, 2, 12, 0.3f, UtilTick.secondsToTicks(60));
     @Config.Name("Force arrow")

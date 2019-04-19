@@ -19,8 +19,8 @@ public class ArrowTalismanHighSpeedArrow extends ItemArrowTalisman {
     }
 
     @Override
-    public void postProcessArrow(EntityArrow entityarrow) {
-        Vec3d direction = UtilEntity.getMotionVector(entityarrow);
-        UtilEntity.addVelocity(entityarrow, direction, extraVelocity);
+    public void postInit(EntityArrow arrow) {
+        Vec3d direction = UtilEntity.getMotionVector(arrow);
+        UtilEntity.addVelocity(arrow, direction, extraVelocity);
     }
 }

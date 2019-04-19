@@ -17,12 +17,8 @@ public final class ModEntities {
         registerModEntity(EntityStoneball.class, "stoneball", 256, 10, true);
 
         registerModEntity(EntityClimbingArrow.class, "climbing_arrow", 256, 1, true);
-        registerModEntity(EntityMineArrow.class, "mine_arrow", 256, 1, true);
-        registerModEntity(EntitySniperArrow.class, "sniper_arrow", 256, 1, true);
         registerModEntity(EntitySpellArrow.class, "spell_arrow", 256, 1, true);
         registerModEntity(EntitySpookyArrow.class, "spooky_arrow", 256, 1, true);
-        registerModEntity(EntityStasisArrow.class, "stasis_arrow", 256, 1, true);
-        registerModEntity(EntityVacuumArrow.class, "vacuum_arrow", 256, 1, true);
 
         registerModEntity(MinionZombie.class, "minion_zombie", 80, 3, false);
         registerModEntity(MinionHusk.class, "minion_husk", 80, 3, false);

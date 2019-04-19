@@ -1,5 +1,6 @@
 package aurocosh.divinefavor.common.item.talismans.arrow;
 
+import aurocosh.divinefavor.common.entity.projectile.EntitySpellArrow;
 import aurocosh.divinefavor.common.item.talismans.arrow.base.ArrowOptions;
 import aurocosh.divinefavor.common.item.talismans.arrow.base.ArrowType;
 import aurocosh.divinefavor.common.item.talismans.arrow.base.ItemArrowTalisman;
@@ -9,7 +10,6 @@ import aurocosh.divinefavor.common.util.SlotData;
 import aurocosh.divinefavor.common.util.UtilPlayer;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.projectile.EntityArrow;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
@@ -22,12 +22,13 @@ public class ArrowTalismanDisarm extends ItemArrowTalisman {
     }
 
     @Override
-    protected void performActionServer(EntityLivingBase target, EntityLivingBase shooter, EntityArrow arrow, BlockPos blockPos, EnumFacing sideHit) {
+    protected boolean performActionServer(EntityLivingBase target, EntityLivingBase shooter, EntitySpellArrow spellArrow, BlockPos blockPos, EnumFacing sideHit) {
         if (target instanceof EntityPlayer) {
             EntityPlayer player = (EntityPlayer) target;
             moveStackToMainInventory(player, player.inventory.currentItem);
             moveStackToMainInventory(player, InventoryIndexes.Offhand.getValue());
         }
+        return true;
     }
 
     private void moveStackToMainInventory(EntityPlayer player, int slot) {
