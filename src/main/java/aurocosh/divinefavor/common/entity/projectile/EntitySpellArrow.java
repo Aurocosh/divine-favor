@@ -2,6 +2,8 @@ package aurocosh.divinefavor.common.entity.projectile;
 
 import aurocosh.divinefavor.common.item.talismans.arrow.base.ArrowType;
 import aurocosh.divinefavor.common.item.talismans.arrow.base.ItemArrowTalisman;
+import aurocosh.divinefavor.common.util.UtilSerialize;
+import com.google.common.base.Optional;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -21,10 +23,12 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 import javax.annotation.Nullable;
+import java.util.UUID;
 
 public class EntitySpellArrow extends EntityArrow {
     private static final DataParameter<Integer> DESPAWN_DELAY = EntityDataManager.createKey(EntitySpellArrow.class, DataSerializers.VARINT);
     private static final DataParameter<Integer> ENTITY_IGNORE_DELAY = EntityDataManager.createKey(EntitySpellArrow.class, DataSerializers.VARINT);
+    private static final DataParameter<Optional<UUID>> SHOOTER_UUID = EntityDataManager.createKey(EntitySpellArrow.class, DataSerializers.OPTIONAL_UNIQUE_ID);
     private static final DataParameter<NBTTagCompound> TALISMAN_DATA_COMMON = EntityDataManager.createKey(EntitySpellArrow.class, DataSerializers.COMPOUND_TAG);
 
     private static final String TAG_COLOR = "Color";
@@ -32,6 +36,7 @@ public class EntitySpellArrow extends EntityArrow {
     private static final String TAG_TALISMAN = "Talisman";
     private static final String TAG_IGNORE_DELAY = "IgnoreDelay";
     private static final String TAG_ANTI_GRAV = "AntiGrav";
+    private static final String TAG_SHOOTER = "Shooter";
     private static final String TAG_TALISMAN_DATA_COMMON = "TalismanDataCommon";
     private static final String TAG_TALISMAN_DATA_SERVER = "TalismanDataServer";
     private double gravityValue = 0.05000000074505806D;
@@ -42,7 +47,7 @@ public class EntitySpellArrow extends EntityArrow {
     private static final DataParameter<Boolean> HAS_ANTI_GRAVITY = EntityDataManager.createKey(EntitySpellArrow.class, DataSerializers.BOOLEAN);
 
     private ItemArrowTalisman talisman;
-    private EntityLivingBase shooter;
+    private EntityPlayer shooter;
     private boolean hasAntiGrav = false;
     private int entityIgnoreTicks = 0;
     private NBTTagCompound talismanDataServer = new NBTTagCompound();
@@ -60,9 +65,10 @@ public class EntitySpellArrow extends EntityArrow {
         super(worldIn, shooter);
     }
 
-    public void setSpell(ItemArrowTalisman talisman, EntityLivingBase shooter) {
+    public void setSpell(ItemArrowTalisman talisman, EntityPlayer shooter) {
         this.talisman = talisman;
         this.shooter = shooter;
+        setShooterId(shooter.getGameProfile().getId());
         setColor(talisman.getColor());
         setArrowType(talisman.getArrowType().getValue());
         setTalismanId(talisman.getRegistryName().toString());
@@ -77,6 +83,7 @@ public class EntitySpellArrow extends EntityArrow {
         dataManager.register(DESPAWN_DELAY, 1200);
         dataManager.register(ENTITY_IGNORE_DELAY, 0);
         dataManager.register(TALISMAN_DATA_COMMON, new NBTTagCompound());
+        dataManager.register(SHOOTER_UUID, Optional.absent());
     }
 
     /**
@@ -167,20 +174,6 @@ public class EntitySpellArrow extends EntityArrow {
             super.handleStatusUpdate(id);
     }
 
-    public void notifyDataManagerChange(DataParameter<?> key) {
-        super.notifyDataManagerChange(key);
-        if (TALISMAN_ID.equals(key))
-            talisman = getTalisman();
-        else if (DESPAWN_DELAY.equals(key))
-            setDespawnDelay(dataManager.get(DESPAWN_DELAY));
-        else if (ENTITY_IGNORE_DELAY.equals(key))
-            entityIgnoreTicks = dataManager.get(ENTITY_IGNORE_DELAY);
-        else if (HAS_ANTI_GRAVITY.equals(key))
-            hasAntiGrav = dataManager.get(HAS_ANTI_GRAVITY);
-        else if (TALISMAN_DATA_COMMON.equals(key))
-            talismanDataCommon = dataManager.get(TALISMAN_DATA_COMMON);
-    }
-
     private ItemArrowTalisman getTalisman() {
         Item item = Item.getByNameOrId(dataManager.get(TALISMAN_ID));
         if (item instanceof ItemArrowTalisman)
@@ -227,6 +220,25 @@ public class EntitySpellArrow extends EntityArrow {
             super.onCollideWithPlayer(player);
     }
 
+    public void notifyDataManagerChange(DataParameter<?> key) {
+        super.notifyDataManagerChange(key);
+        if (TALISMAN_ID.equals(key))
+            talisman = getTalisman();
+        else if (DESPAWN_DELAY.equals(key))
+            setDespawnDelay(dataManager.get(DESPAWN_DELAY));
+        else if (ENTITY_IGNORE_DELAY.equals(key))
+            entityIgnoreTicks = dataManager.get(ENTITY_IGNORE_DELAY);
+        else if (HAS_ANTI_GRAVITY.equals(key))
+            hasAntiGrav = dataManager.get(HAS_ANTI_GRAVITY);
+        else if (TALISMAN_DATA_COMMON.equals(key))
+            talismanDataCommon = dataManager.get(TALISMAN_DATA_COMMON);
+        else if (SHOOTER_UUID.equals(key)) {
+            UUID uuid = dataManager.get(SHOOTER_UUID).orNull();
+            shooter = uuid == null ? null : world.getPlayerEntityByUUID(uuid);
+            setShooterId(uuid);
+        }
+    }
+
     @Override
     public void writeEntityToNBT(NBTTagCompound compound) {
         super.writeEntityToNBT(compound);
@@ -238,6 +250,7 @@ public class EntitySpellArrow extends EntityArrow {
         compound.setInteger(TAG_IGNORE_DELAY, entityIgnoreTicks);
         compound.setTag(TAG_TALISMAN_DATA_COMMON, talismanDataCommon);
         compound.setTag(TAG_TALISMAN_DATA_SERVER, talismanDataServer);
+        compound.setString(TAG_SHOOTER,shooter == null ? "" : shooter.getGameProfile().getId().toString());
     }
 
     @Override
@@ -254,6 +267,10 @@ public class EntitySpellArrow extends EntityArrow {
         setTalismanDataCommon(compound.getCompoundTag(TAG_TALISMAN_DATA_COMMON));
         setTalismanDataServer(compound.getCompoundTag(TAG_TALISMAN_DATA_SERVER));
 
+        UUID uuid = UtilSerialize.stringToUUID(compound.getString(TAG_SHOOTER));
+        shooter = uuid == null ? null : world.getPlayerEntityByUUID(uuid);
+        setShooterId(uuid);
+
         Item item = Item.getByNameOrId(talismanId);
         if (item instanceof ItemArrowTalisman)
             talisman = (ItemArrowTalisman) item;
@@ -269,6 +286,10 @@ public class EntitySpellArrow extends EntityArrow {
 
     public int getColor() {
         return dataManager.get(COLOR);
+    }
+
+    private void setShooterId(UUID shooterId) {
+        dataManager.set(SHOOTER_UUID, Optional.fromNullable(shooterId));
     }
 
     private void setTalismanId(String string) {

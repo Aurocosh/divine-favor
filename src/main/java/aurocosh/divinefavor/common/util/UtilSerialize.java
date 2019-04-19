@@ -7,6 +7,7 @@ import net.minecraft.util.math.BlockPos;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.UUID;
 
 public class UtilSerialize {
     public static int[] serializeVector3i(Collection<Vector3i> vectors) {
@@ -68,5 +69,14 @@ public class UtilSerialize {
             posArrayList.add(new GlobalBlockPos(x, y, z, dimension));
         }
         return posArrayList;
+    }
+
+    public static UUID stringToUUID(String string) {
+        try {
+            return UUID.fromString(string);
+        }
+        catch (IllegalArgumentException var2) {
+            return null;
+        }
     }
 }
