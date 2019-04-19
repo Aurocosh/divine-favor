@@ -26,6 +26,7 @@ public class ModArrowTalismans {
     public static ItemArrowTalisman explosive_arrow;
     public static ItemArrowTalisman fiery_mark;
     public static ItemArrowTalisman fill_lungs;
+    public static ItemArrowTalisman flak_arrow;
     public static ItemArrowTalisman force_arrow;
     public static ItemArrowTalisman hand_swap;
     public static ItemArrowTalisman high_speed_arrow;
@@ -66,6 +67,7 @@ public class ModArrowTalismans {
         destructive_arrow_3 = new ArrowTalismanDestructiveArrow("destructive_arrow_3", ModSpirits.arbow, ConfigArrow.destructiveArrow3.favorCost, Color.green.getRGB(), ConfigArrow.destructiveArrow3.damage, ArrowOptions.ARROW_BREAKS, ArrowType.WOODEN_ARROW, ConfigArrow.destructiveArrow3.maxHardness);
         disarm = new ArrowTalismanDisarm("disarm", ModSpirits.arbow, ConfigArrow.disarm.favorCost, Color.orange.getRGB(), ConfigArrow.disarm.damage, ArrowOptions.REQUIRES_TARGET, ArrowType.SPELL_ARROW);
         explosive_arrow = new ArrowTalismanExplosive("explosive_arrow", ModSpirits.arbow, Color.blue.getRGB(), ArrowOptions.ARROW_BREAKS, ArrowType.SPELL_ARROW, ConfigArrow.explosiveArrow);
+        flak_arrow = new ArrowTalismanFlakArrow("flak_arrow", ModSpirits.arbow, ConfigArrow.flakArrow.favorCost, Color.green.getRGB(), ConfigArrow.flakArrow.damage, ArrowOptions.NORMAL, ArrowType.WOODEN_ARROW);
         force_arrow = new ArrowTalismanForceArrow("force_arrow", ModSpirits.arbow, ConfigArrow.forceArrow.favorCost, Color.red.getRGB(), ConfigArrow.forceArrow.damage, ArrowType.SPELL_ARROW, ConfigArrow.forceArrow.velocity);
         hand_swap = new ArrowTalismanHandSwap("hand_swap", ModSpirits.arbow, ConfigArrow.handSwap.favorCost, Color.orange.getRGB(), ConfigArrow.handSwap.damage, ArrowOptions.REQUIRES_TARGET, ArrowType.SPELL_ARROW);
         high_speed_arrow = new ArrowTalismanHighSpeedArrow("high_speed_arrow", ModSpirits.arbow, ConfigArrow.highSpeedArrow.favorCost, Color.green.getRGB(), ConfigArrow.highSpeedArrow.damage, ArrowOptions.NORMAL, ArrowType.WOODEN_ARROW, ConfigArrow.highSpeedArrow.extraVelocity);
