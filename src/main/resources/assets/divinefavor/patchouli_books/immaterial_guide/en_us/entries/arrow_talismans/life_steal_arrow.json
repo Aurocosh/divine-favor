@@ -1,0 +1,15 @@
+{
+  "name": "Life steal arrow",
+  "icon": "divinefavor:arrow_talisman_life_steal_arrow",
+  "category": "arrow_talismans",
+  "pages": [
+    {
+      "type": "talisman_description",
+      "talisman": "divinefavor:arrow_talisman_life_steal_arrow"
+    },
+    {
+      "type": "arrow_talisman_stats",
+      "talisman": "divinefavor:arrow_talisman_life_steal_arrow"
+    }
+  ]
+}

@@ -78,40 +78,51 @@ public class ItemArrowTalisman extends ItemTalisman {
     }
 // Talisman functions
 
-
     public EntityArrow createArrow(@Nonnull World world, @Nonnull ItemArrowTalisman talisman, EntityLivingBase shooter) {
-        EntitySpellArrow arrow = getArrow(world, shooter);
-        arrow.setSpell(talisman, shooter);
-        arrow.setNoGravity(gravityType == GravityType.NO_GRAVITY || gravityType == GravityType.ANTIGRAVITY);
-        arrow.setHasAntiGravity(gravityType == GravityType.ANTIGRAVITY);
-        arrow.setDamage(arrowDamage);
-        return arrow;
+        EntitySpellArrow spellArrow = getArrow(world, shooter);
+        spellArrow.setSpell(talisman, shooter);
+        init(spellArrow, shooter);
+        spellArrow.setNoGravity(gravityType == GravityType.NO_GRAVITY || gravityType == GravityType.ANTIGRAVITY);
+        spellArrow.setHasAntiGravity(gravityType == GravityType.ANTIGRAVITY);
+        spellArrow.setDamage(arrowDamage);
+        return spellArrow;
     }
 
     protected EntitySpellArrow getArrow(@Nonnull World world, EntityLivingBase shooter) {
-        // TODO
         return new EntitySpellArrow(world, shooter);
     }
 
-    public void cast(EntityLivingBase target, EntityLivingBase shooter, EntityArrow arrow, BlockPos blockPos, EnumFacing sideHit) {
+    protected void init(EntitySpellArrow spellArrow, EntityLivingBase shooter) {
+    }
+
+    public boolean cast(EntityLivingBase target, EntityLivingBase shooter, EntitySpellArrow spellArrow, BlockPos blockPos, EnumFacing sideHit) {
         if (options.contains(ArrowOptions.RequiresTarget) && target == null)
-            return;
-        if (arrow.world.isRemote)
-            performActionClient(target, shooter, arrow, blockPos, sideHit);
+            return true;
+        if (spellArrow.world.isRemote)
+            return performActionClient(target, shooter, spellArrow, blockPos, sideHit);
         else
-            performActionServer(target, shooter, arrow, blockPos, sideHit);
+            return performActionServer(target, shooter, spellArrow, blockPos, sideHit);
     }
 
-    protected void performActionServer(EntityLivingBase target, EntityLivingBase shooter, EntityArrow arrow, BlockPos blockPos, EnumFacing sideHit) {
+    protected boolean performActionServer(EntityLivingBase target, EntityLivingBase shooter, EntitySpellArrow spellArrow, BlockPos blockPos, EnumFacing sideHit) {
+        return true;
     }
 
-    protected void performActionClient(EntityLivingBase target, EntityLivingBase shooter, EntityArrow arrow, BlockPos blockPos, EnumFacing sideHit) {
+    protected boolean performActionClient(EntityLivingBase target, EntityLivingBase shooter, EntitySpellArrow spellArrow, BlockPos blockPos, EnumFacing sideHit) {
+        return true;
     }
 
-    public void postProcessArrow(EntityArrow entityarrow) {
+    public void onUpdate(EntitySpellArrow spellArrow) {
+    }
+
+    public boolean onCollideWithPlayer(EntitySpellArrow spellArrow, EntityPlayer player) {
+        return true;
+    }
+
+    public void postInit(EntityArrow spellArrow) {
     }
 
     @SideOnly(Side.CLIENT)
-    public void spawnParticles(EntitySpellArrow arrow){
+    public void spawnParticles(EntitySpellArrow arrow) {
     }
 }

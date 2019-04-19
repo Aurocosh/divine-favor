@@ -3,7 +3,7 @@ package aurocosh.divinefavor.common.entity.projectile;
 import aurocosh.divinefavor.common.entity.rope.IClimbable;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
@@ -12,6 +12,9 @@ import net.minecraft.world.World;
 public class EntityClimbingArrow extends EntitySpellArrow implements IClimbable {
     private static final DataParameter<Float> CLIMBING_SPEED = EntityDataManager.createKey(EntityClimbingArrow.class, DataSerializers.FLOAT);
     private static final DataParameter<Float> CLIMBING_DISTANCE_SQ = EntityDataManager.createKey(EntityClimbingArrow.class, DataSerializers.FLOAT);
+
+    private static final String TAG_CLIMBING_SPEED = "ClimbingSpeed";
+    private static final String TAG_CLIMBING_DISTANCE_SQ = "ClimbingDistanceSq";
 
     private float climbingSpeed;
     private float climbingDistanceSq;
@@ -49,11 +52,24 @@ public class EntityClimbingArrow extends EntitySpellArrow implements IClimbable 
             climbingDistanceSq = dataManager.get(CLIMBING_DISTANCE_SQ);
     }
 
+
+
     @Override
-    public void onCollideWithPlayer(EntityPlayer entityIn) {
-        // Players not supposed to pick up this arrow just by standing nearby
+    public void writeEntityToNBT(NBTTagCompound compound) {
+        super.writeEntityToNBT(compound);
+
+        compound.setFloat(TAG_CLIMBING_SPEED, climbingSpeed);
+        compound.setFloat(TAG_CLIMBING_DISTANCE_SQ, climbingDistanceSq);
     }
 
+    @Override
+    public void readEntityFromNBT(NBTTagCompound compound) {
+        super.readEntityFromNBT(compound);
+
+        climbingSpeed = compound.getFloat(TAG_CLIMBING_SPEED);
+        climbingDistanceSq = compound.getFloat(TAG_CLIMBING_DISTANCE_SQ);
+    }
+    
     @Override
     public float getClimbingSpeed() {
         return climbingSpeed;

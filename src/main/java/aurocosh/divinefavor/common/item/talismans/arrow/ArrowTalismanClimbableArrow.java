@@ -7,6 +7,7 @@ import aurocosh.divinefavor.common.item.talismans.arrow.base.ArrowType;
 import aurocosh.divinefavor.common.item.talismans.arrow.base.ItemArrowTalisman;
 import aurocosh.divinefavor.common.spirit.base.ModSpirit;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.world.World;
 
 import javax.annotation.Nonnull;
@@ -31,5 +32,9 @@ public class ArrowTalismanClimbableArrow extends ItemArrowTalisman {
         EntityClimbingArrow arrow = new EntityClimbingArrow(world, shooter);
         arrow.setClimbingStats(climbingSpeed, climbingDistanceSq, despawnDelay);
         return arrow;
+    }
+
+    public boolean onCollideWithPlayer(EntitySpellArrow spellArrow, EntityPlayer player) {
+        return false;
     }
 }
