@@ -40,6 +40,7 @@ public class ModArrowTalismans {
     public static ItemArrowTalisman nether_swap;
     public static ItemArrowTalisman nuke_arrow;
     public static ItemArrowTalisman petrification;
+    public static ItemArrowTalisman piercing_arrow;
     public static ItemArrowTalisman reinforced_arrow_1;
     public static ItemArrowTalisman reinforced_arrow_2;
     public static ItemArrowTalisman reinforced_arrow_3;
@@ -75,6 +76,7 @@ public class ModArrowTalismans {
         life_steal_arrow = new ArrowTalismanLifeStealArrow("life_steal_arrow", ModSpirits.arbow, ConfigArrow.lifeStealArrow.favorCost, Color.green.getRGB(), ArrowOptions.NORMAL, ArrowType.WOODEN_ARROW);
         mine_arrow = new ArrowTalismanMineArrow("mine_arrow", ModSpirits.arbow, ConfigArrow.mineArrow.favorCost, Color.green.getRGB(), ConfigArrow.mineArrow.damage, ArrowOptions.NORMAL, ArrowType.WOODEN_ARROW);
         nuke_arrow = new ArrowTalismanExplosive("nuke_arrow", ModSpirits.arbow, Color.red.getRGB(), ArrowOptions.ARROW_BREAKS, ArrowType.SPELL_ARROW, ConfigArrow.nukeArrow);
+        piercing_arrow = new ArrowTalismanPiercingArrow("piercing_arrow", ModSpirits.arbow, ConfigArrow.piercingArrow.favorCost, Color.green.getRGB(), ConfigArrow.piercingArrow.damage, ArrowOptions.NORMAL, ArrowType.WOODEN_ARROW);
         reinforced_arrow_1 = new ItemArrowTalisman("reinforced_arrow_1", ModSpirits.arbow, ConfigArrow.reinforcedArrow1.favorCost, Color.yellow.getRGB(), ConfigArrow.reinforcedArrow1.damage, ArrowOptions.NORMAL, ArrowType.SPELL_ARROW);
         reinforced_arrow_2 = new ItemArrowTalisman("reinforced_arrow_2", ModSpirits.arbow, ConfigArrow.reinforcedArrow2.favorCost, Color.blue.getRGB(), ConfigArrow.reinforcedArrow2.damage, ArrowOptions.NORMAL, ArrowType.SPELL_ARROW);
         reinforced_arrow_3 = new ItemArrowTalisman("reinforced_arrow_3", ModSpirits.arbow, ConfigArrow.reinforcedArrow3.favorCost, Color.red.getRGB(), ConfigArrow.reinforcedArrow3.damage, ArrowOptions.NORMAL, ArrowType.SPELL_ARROW);
