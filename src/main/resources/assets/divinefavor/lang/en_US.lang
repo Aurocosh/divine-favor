@@ -212,6 +212,7 @@ item.divinefavor:arrow_talisman_disarm.name=Disarm talisman
 item.divinefavor:arrow_talisman_explosive_arrow.name=Explosive arrow talisman
 item.divinefavor:arrow_talisman_fiery_mark.name=Fiery_mark talisman
 item.divinefavor:arrow_talisman_fill_lungs.name=Fill lungs talisman
+item.divinefavor:arrow_talisman_flak_arrow.name=Flak arrow talisman
 item.divinefavor:arrow_talisman_force_arrow.name=Force arrow talisman
 item.divinefavor:arrow_talisman_hand_swap.name=Hand swap talisman
 item.divinefavor:arrow_talisman_high_speed_arrow.name=High speed arrow talisman
@@ -445,6 +446,7 @@ item.divinefavor:arrow_talisman_disarm.description=Arrow shot with this talisman
 item.divinefavor:arrow_talisman_explosive_arrow.description=Strong explosive arrow. Explodes on contact. Be careful it can kill shooter.
 item.divinefavor:arrow_talisman_fiery_mark.description=Arrow shot with this talisman will be cursed with fiery mark. Cursed creature will explode some time after being cursed. To lift this curse just jump into water.
 item.divinefavor:arrow_talisman_fill_lungs.description=Arrow shot with this talisman will be cursed with drowning curse. Cursed creature will drown on land. If creatures jumps in water then curse will be lifted.
+item.divinefavor:arrow_talisman_flak_arrow.description=This is anti air arrow it will explode near flying enemies even if it did not hit them directly.
 item.divinefavor:arrow_talisman_force_arrow.description=This arrow deals low damage, but will launch victim in any direction that shooter is looking at. Very powerful and hilarius.
 item.divinefavor:arrow_talisman_hand_swap.description=Arrow shot with this talisman confuse hit player. When hit it will swap items in players hand and offhand.
 item.divinefavor:arrow_talisman_high_speed_arrow.description=Shoots very fast arrow.
@@ -472,7 +474,6 @@ item.divinefavor:arrow_talisman_vacuum_arrow.description=This arrow will attract
 item.divinefavor:arrow_talisman_wind_leash.description=Arrow shot with this talisman will be cursed with unnatural force. Cursed creatures will be dragged in random direction by invisible force. To lift this curse you need look at direction where you are being dragged.
 item.divinefavor:arrow_talisman_yummy_smell.description=Arrow shot with this talisman will be cursed with alluring smell. Cursed creatures will attract unwanted attention. All monsters near cursed creature will attack it. To lift this curse you need attract a lot of creatures at once.
 item.divinefavor:arrow_talisman_zero_g_arrow.description=Arrow shot with this talisman will not be affected by gravity.
-
 
 #PATCHOULI
 ## CONTRACTS

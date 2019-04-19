@@ -35,6 +35,8 @@ public class ConfigArrow {
     public static FieryMark fieryMark = new FieryMark();
     @Config.Name("Fill lungs")
     public static FillLungs fillLungs = new FillLungs();
+    @Config.Name("Flak arrow")
+    public static FlakArrow flakArrow = new FlakArrow();
     @Config.Name("Hand swap")
     public static HandSwap handSwap = new HandSwap();
     @Config.Name("High speed arrow")

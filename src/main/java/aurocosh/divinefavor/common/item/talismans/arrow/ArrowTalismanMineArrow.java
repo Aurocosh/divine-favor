@@ -10,9 +10,7 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
 
-import javax.annotation.Nonnull;
 import java.util.EnumSet;
 import java.util.List;
 
@@ -22,10 +20,8 @@ public class ArrowTalismanMineArrow extends ItemArrowTalisman {
     }
 
     @Override
-    protected EntitySpellArrow getArrow(@Nonnull World world, EntityLivingBase shooter) {
-        EntitySpellArrow spellArrow = getArrow(world, shooter);
+    protected void init(EntitySpellArrow spellArrow, EntityLivingBase shooter) {
         spellArrow.setDespawnDelay(ConfigArrow.mineArrow.despawnDelay);
-        return spellArrow;
     }
 
     @Override
