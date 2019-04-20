@@ -14,13 +14,14 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 
+import java.awt.*;
 import java.util.EnumSet;
 
 public class ArrowTalismanLifeStealArrow extends ItemArrowTalisman {
     private static final String TAG_STOLE_LIFE = "StoleLife";
     private static final int ENTITY_IGNORE_DELAY = UtilTick.minutesToTicks(1);
 
-    public ArrowTalismanLifeStealArrow(String name, ModSpirit spirit, int favorCost, int color, EnumSet<ArrowOptions> options, ArrowType arrowType) {
+    public ArrowTalismanLifeStealArrow(String name, ModSpirit spirit, int favorCost, Color color, EnumSet<ArrowOptions> options, ArrowType arrowType) {
         super(name, spirit, favorCost, color, 0, options, arrowType);
     }
 

@@ -6,10 +6,11 @@ import aurocosh.divinefavor.common.item.talismans.arrow.base.GravityType;
 import aurocosh.divinefavor.common.item.talismans.arrow.base.ItemArrowTalisman;
 import aurocosh.divinefavor.common.spirit.base.ModSpirit;
 
+import java.awt.*;
 import java.util.EnumSet;
 
 public class ArrowTalismanAntiGravityArrow extends ItemArrowTalisman {
-    public ArrowTalismanAntiGravityArrow(String name, ModSpirit spirit, int favorCost, int color, double arrowDamage, EnumSet<ArrowOptions> options, ArrowType arrowType) {
+    public ArrowTalismanAntiGravityArrow(String name, ModSpirit spirit, int favorCost, Color color, double arrowDamage, EnumSet<ArrowOptions> options, ArrowType arrowType) {
         super(name, spirit, favorCost, color, arrowDamage, options, arrowType);
         gravityType = GravityType.ANTIGRAVITY;
     }

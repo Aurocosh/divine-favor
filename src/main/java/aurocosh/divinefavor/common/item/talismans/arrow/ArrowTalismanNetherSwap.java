@@ -10,10 +10,11 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 
+import java.awt.*;
 import java.util.EnumSet;
 
 public class ArrowTalismanNetherSwap extends ItemArrowTalisman {
-    public ArrowTalismanNetherSwap(String name, ModSpirit spirit, int favorCost, int color, double arrowDamage, ArrowType arrowType) {
+    public ArrowTalismanNetherSwap(String name, ModSpirit spirit, int favorCost, Color color, double arrowDamage, ArrowType arrowType) {
         super(name, spirit, favorCost, color, arrowDamage, EnumSet.of(ArrowOptions.BreakOnHit, ArrowOptions.RequiresTarget), arrowType);
     }
 

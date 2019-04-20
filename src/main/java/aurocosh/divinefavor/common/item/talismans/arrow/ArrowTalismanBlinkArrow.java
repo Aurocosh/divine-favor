@@ -10,10 +10,11 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 
+import java.awt.*;
 import java.util.EnumSet;
 
 public class ArrowTalismanBlinkArrow extends ItemArrowTalisman {
-    public ArrowTalismanBlinkArrow(String name, ModSpirit spirit, int favorCost, int color, double arrowDamage, EnumSet<ArrowOptions> options, ArrowType arrowType) {
+    public ArrowTalismanBlinkArrow(String name, ModSpirit spirit, int favorCost, Color color, double arrowDamage, EnumSet<ArrowOptions> options, ArrowType arrowType) {
         super(name, spirit, favorCost, color, arrowDamage, options, arrowType);
     }
 

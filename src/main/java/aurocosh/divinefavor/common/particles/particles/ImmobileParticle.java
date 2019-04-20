@@ -1,41 +1,38 @@
 package aurocosh.divinefavor.common.particles.particles;
 
-import aurocosh.divinefavor.common.particles.base.IModParticleFactory;
 import aurocosh.divinefavor.common.particles.base.ModParticle;
 import aurocosh.divinefavor.common.util.UtilRandom;
 import net.minecraft.client.renderer.BufferBuilder;
 import net.minecraft.entity.Entity;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import javax.annotation.Nullable;
+import javax.vecmath.Color3f;
 
 @SideOnly(Side.CLIENT)
-public class ParticleStatic extends ModParticle {
-    private final float portalParticleScale;
-
-    protected ParticleStatic(World worldIn, double xCoordIn, double yCoordIn, double zCoordIn, double minLife, double maxLife, double zSpeedIn) {
-        super(worldIn, xCoordIn, minLife, zCoordIn, 0, 0, 0);
-        posX = xCoordIn;
-        posY = yCoordIn;
-        posZ = zCoordIn;
+public class ImmobileParticle extends ModParticle {
+    public void init(World worldIn, Vec3d position, Color3f color3f, int minLife, int maxLife) {
+        init(worldIn, position);
+        posX = position.x;
+        posY = position.y;
+        posZ = position.z;
 
         prevPosX = posX;
         prevPosY = posY;
         prevPosZ = posZ;
 
-        float f = rand.nextFloat() * 0.6F + 0.4F;
+        float intensity = rand.nextFloat() * 0.6F + 0.4F;
+        particleRed = color3f.x * intensity;
+        particleGreen = color3f.y * intensity;
+        particleBlue = color3f.z * intensity;
+
         particleScale = rand.nextFloat() * 0.2F + 0.5F;
-        portalParticleScale = particleScale;
-        particleRed = f * 0.9F;
-        particleGreen = f * 0.3F;
-        particleBlue = f;
         setParticleTextureIndex((int) (Math.random() * 8.0D));
 
-        particleMaxAge = UtilRandom.nextInt((int) minLife, (int) maxLife);
+        particleMaxAge = UtilRandom.nextInt(minLife, maxLife);
     }
-
 
     @Override
     public void onUpdate() {
@@ -64,14 +61,5 @@ public class ParticleStatic extends ModParticle {
         }
 
         return j | k << 16;
-    }
-
-    @SideOnly(Side.CLIENT)
-    public static class ParticleStaticactory implements IModParticleFactory<ParticleStatic> {
-        @Nullable
-        @Override
-        public ParticleStatic createParticle(World world, double xCoord, double yCoord, double zCoord, double xSpeed, double ySpeed, double zSpeed, int... vars) {
-            return new ParticleStatic(world, xCoord, yCoord, zCoord, (float) xSpeed, (float) ySpeed, (float) zSpeed);
-        }
     }
 }

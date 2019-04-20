@@ -12,13 +12,14 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 
+import java.awt.*;
 import java.util.EnumSet;
 import java.util.List;
 
 public class ArrowTalismanFlakArrow extends ItemArrowTalisman {
     private final static float radiusSq = ConfigArrow.flakArrow.radius * ConfigArrow.flakArrow.radius;
 
-    public ArrowTalismanFlakArrow(String name, ModSpirit spirit, int favorCost, int color, double arrowDamage, EnumSet<ArrowOptions> options, ArrowType arrowType) {
+    public ArrowTalismanFlakArrow(String name, ModSpirit spirit, int favorCost, Color color, double arrowDamage, EnumSet<ArrowOptions> options, ArrowType arrowType) {
         super(name, spirit, favorCost, color, arrowDamage, options, arrowType);
     }
 

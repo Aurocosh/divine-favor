@@ -10,6 +10,7 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 
+import java.awt.*;
 import java.util.EnumSet;
 
 public class ArrowTalismanExplosive extends ItemArrowTalisman {
@@ -17,7 +18,7 @@ public class ArrowTalismanExplosive extends ItemArrowTalisman {
     private final boolean damageTerrain;
     private final boolean causeFire;
 
-    public ArrowTalismanExplosive(String name, ModSpirit spirit, int color, EnumSet<ArrowOptions> options, ArrowType arrowType, ExplosiveArrow config) {
+    public ArrowTalismanExplosive(String name, ModSpirit spirit, Color color, EnumSet<ArrowOptions> options, ArrowType arrowType, ExplosiveArrow config) {
         super(name, spirit, config.favorCost, color, config.damage, options, arrowType);
         explosionPower = config.explosionPower;
         damageTerrain = config.damageTerrain;

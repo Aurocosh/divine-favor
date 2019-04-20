@@ -3,8 +3,7 @@ package aurocosh.divinefavor.common.block.ethereal;
 import aurocosh.divinefavor.DivineFavor;
 import aurocosh.divinefavor.common.block.base.ModBlockAir;
 import aurocosh.divinefavor.common.item.base.ModItemBlock;
-import aurocosh.divinefavor.common.particles.ParticleHandler;
-import aurocosh.divinefavor.common.particles.types.ModParticleTypes;
+import aurocosh.divinefavor.common.particles.ModParticles;
 import aurocosh.divinefavor.common.potions.common.ModPotions;
 import aurocosh.divinefavor.common.state_mappers.InvisibleStateMapper;
 import aurocosh.divinefavor.common.state_mappers.common.ICustomStateMappedBlock;
@@ -13,6 +12,7 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.renderer.block.statemap.IStateMapper;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -34,6 +34,7 @@ public class BlockEtherealLight extends ModBlockAir implements ICustomStateMappe
             spawnParticles(worldIn, pos);
     }
 
+    @SideOnly(Side.CLIENT)
     private void spawnParticles(World worldIn, BlockPos pos) {
         Random random = worldIn.rand;
         for (int i = 0; i < 6; ++i) {
@@ -60,7 +61,7 @@ public class BlockEtherealLight extends ModBlockAir implements ICustomStateMappe
                 d1 = (double) pos.getX() - 0.0625D;
 
             if (d1 < (double) pos.getX() || d1 > (double) (pos.getX() + 1) || d2 < 0.0D || d2 > (double) (pos.getY() + 1) || d3 < (double) pos.getZ() || d3 > (double) (pos.getZ() + 1))
-                ParticleHandler.createParticle(ModParticleTypes.etherealLight, worldIn, d1, d2, d3, 0.0D, 0.0D, 0.0D);
+                ModParticles.ethereal.createParticle(worldIn, new Vec3d(d1, d2, d3), 1f, 1f);
         }
     }
 

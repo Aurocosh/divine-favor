@@ -1,12 +1,11 @@
 package aurocosh.divinefavor.common.item.talismans.arrow;
 
-import aurocosh.divinefavor.DivineFavor;
 import aurocosh.divinefavor.common.config.common.ConfigArrow;
 import aurocosh.divinefavor.common.entity.projectile.EntitySpellArrow;
 import aurocosh.divinefavor.common.item.talismans.arrow.base.ArrowOptions;
 import aurocosh.divinefavor.common.item.talismans.arrow.base.ArrowType;
 import aurocosh.divinefavor.common.item.talismans.arrow.base.ItemArrowTalisman;
-import aurocosh.divinefavor.common.particles.types.ModParticleTypes;
+import aurocosh.divinefavor.common.particles.ModParticles;
 import aurocosh.divinefavor.common.spirit.base.ModSpirit;
 import aurocosh.divinefavor.common.util.UtilEntity;
 import aurocosh.divinefavor.common.util.UtilList;
@@ -18,13 +17,14 @@ import net.minecraft.util.math.Vec3d;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+import java.awt.*;
 import java.util.EnumSet;
 import java.util.List;
 
 public class ArrowTalismanVacuumArrow extends ItemArrowTalisman {
     private static final int RADIUS_SQ = ConfigArrow.vacuumArrow.radius * ConfigArrow.vacuumArrow.radius;
 
-    public ArrowTalismanVacuumArrow(String name, ModSpirit spirit, int favorCost, int color, double arrowDamage, EnumSet<ArrowOptions> options, ArrowType arrowType) {
+    public ArrowTalismanVacuumArrow(String name, ModSpirit spirit, int favorCost, Color color, double arrowDamage, EnumSet<ArrowOptions> options, ArrowType arrowType) {
         super(name, spirit, favorCost, color, arrowDamage, options, arrowType);
     }
 
@@ -42,7 +42,7 @@ public class ArrowTalismanVacuumArrow extends ItemArrowTalisman {
             Vec3d pointOnSphere = direction.scale(distance);
             Vec3d pointInWorld = pointOnSphere.add(arrow.getPositionVector());
             Vec3d speed = direction.scale(-0.3f);
-            DivineFavor.proxy.createParticle(ModParticleTypes.vacuumArrow, arrow.world, pointInWorld.x, pointInWorld.y, pointInWorld.z, speed.x, speed.y, speed.z);
+            ModParticles.mobile.createParticle(arrow.world, pointInWorld, speed, arrow.getColor());
         }
     }
 
@@ -50,7 +50,7 @@ public class ArrowTalismanVacuumArrow extends ItemArrowTalisman {
     public void onUpdate(EntitySpellArrow spellArrow) {
         if (spellArrow.world.isRemote)
             return;
-        if(!spellArrow.isInGround())
+        if (!spellArrow.isInGround())
             return;
 
         List<EntityLivingBase> livingBases = spellArrow.world.getEntitiesWithinAABB(EntityLivingBase.class, new AxisAlignedBB(spellArrow.getPosition()).grow(ConfigArrow.vacuumArrow.radius));

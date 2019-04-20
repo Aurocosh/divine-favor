@@ -15,12 +15,13 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.math.Vec3i;
 
+import java.awt.*;
 import java.util.EnumSet;
 
 public class ArrowTalismanRicochetArrow extends ItemArrowTalisman {
     private static final String TAG_BOUNCES_LEFT = "BouncesLeft";
 
-    public ArrowTalismanRicochetArrow(String name, ModSpirit spirit, int favorCost, int color, double arrowDamage, EnumSet<ArrowOptions> options, ArrowType arrowType) {
+    public ArrowTalismanRicochetArrow(String name, ModSpirit spirit, int favorCost, Color color, double arrowDamage, EnumSet<ArrowOptions> options, ArrowType arrowType) {
         super(name, spirit, favorCost, color, arrowDamage, options, arrowType);
     }
 

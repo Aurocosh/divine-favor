@@ -11,12 +11,13 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 
+import java.awt.*;
 import java.util.EnumSet;
 
 public class ArrowTalismanForceArrow extends ItemArrowTalisman {
     private final float velocity;
 
-    public ArrowTalismanForceArrow(String name, ModSpirit spirit, int favorCost, int color, double arrowDamage, ArrowType arrowType, float velocity) {
+    public ArrowTalismanForceArrow(String name, ModSpirit spirit, int favorCost, Color color, double arrowDamage, ArrowType arrowType, float velocity) {
         super(name, spirit, favorCost, color, arrowDamage, EnumSet.of(ArrowOptions.BreakOnHit, ArrowOptions.RequiresTarget), arrowType);
         this.velocity = velocity;
     }

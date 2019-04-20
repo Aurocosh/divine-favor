@@ -23,6 +23,8 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 import javax.annotation.Nullable;
+import javax.vecmath.Color3f;
+import java.awt.*;
 import java.util.UUID;
 
 public class EntitySpellArrow extends EntityArrow {
@@ -46,10 +48,11 @@ public class EntitySpellArrow extends EntityArrow {
     private static final DataParameter<String> TALISMAN_ID = EntityDataManager.createKey(EntitySpellArrow.class, DataSerializers.STRING);
     private static final DataParameter<Boolean> HAS_ANTI_GRAVITY = EntityDataManager.createKey(EntitySpellArrow.class, DataSerializers.BOOLEAN);
 
-    private ItemArrowTalisman talisman;
+    private Color3f color;
     private EntityPlayer shooter;
-    private boolean hasAntiGrav = false;
     private int entityIgnoreTicks = 0;
+    private ItemArrowTalisman talisman;
+    private boolean hasAntiGrav = false;
     private NBTTagCompound talismanDataServer = new NBTTagCompound();
     private NBTTagCompound talismanDataCommon = new NBTTagCompound();
 
@@ -66,10 +69,11 @@ public class EntitySpellArrow extends EntityArrow {
     }
 
     public void setSpell(ItemArrowTalisman talisman, EntityPlayer shooter) {
+        color = new Color3f(1, 1, 1);
         this.talisman = talisman;
         this.shooter = shooter;
         setShooterId(shooter.getGameProfile().getId());
-        setColor(talisman.getColor());
+        setColor(talisman.getColor().getRGB());
         setArrowType(talisman.getArrowType().getValue());
         setTalismanId(talisman.getRegistryName().toString());
     }
@@ -106,14 +110,9 @@ public class EntitySpellArrow extends EntityArrow {
     }
 
     private void spawnPotionParticles(int particleCount) {
-        int i = getColor();
-        if (i != -1 && particleCount > 0) {
-            double d0 = (double) (i >> 16 & 255) / 255.0D;
-            double d1 = (double) (i >> 8 & 255) / 255.0D;
-            double d2 = (double) (i >> 0 & 255) / 255.0D;
-
+        if (getColorInt() != -1 && particleCount > 0) {
             for (int j = 0; j < particleCount; ++j)
-                world.spawnParticle(EnumParticleTypes.SPELL_MOB, posX + (rand.nextDouble() - 0.5D) * (double) width, posY + rand.nextDouble() * (double) height, posZ + (rand.nextDouble() - 0.5D) * (double) width, d0, d1, d2);
+                world.spawnParticle(EnumParticleTypes.SPELL_MOB, posX + (rand.nextDouble() - 0.5D) * (double) width, posY + rand.nextDouble() * (double) height, posZ + (rand.nextDouble() - 0.5D) * (double) width, color.x, color.y, color.z);
         }
     }
 
@@ -159,15 +158,9 @@ public class EntitySpellArrow extends EntityArrow {
     @SideOnly(Side.CLIENT)
     public void handleStatusUpdate(byte id) {
         if (id == 0) {
-            int i = getColor();
-
-            if (i != -1) {
-                double d0 = (double) (i >> 16 & 255) / 255.0D;
-                double d1 = (double) (i >> 8 & 255) / 255.0D;
-                double d2 = (double) (i >> 0 & 255) / 255.0D;
-
+            if (getColorInt() != -1) {
                 for (int j = 0; j < 20; ++j)
-                    world.spawnParticle(EnumParticleTypes.DAMAGE_INDICATOR, posX + (rand.nextDouble() - 0.5D) * (double) width, posY + rand.nextDouble() * (double) height, posZ + (rand.nextDouble() - 0.5D) * (double) width, d0, d1, d2);
+                    world.spawnParticle(EnumParticleTypes.DAMAGE_INDICATOR, posX + (rand.nextDouble() - 0.5D) * (double) width, posY + rand.nextDouble() * (double) height, posZ + (rand.nextDouble() - 0.5D) * (double) width, color.x, color.y, color.z);
             }
         }
         else
@@ -237,20 +230,22 @@ public class EntitySpellArrow extends EntityArrow {
             shooter = uuid == null ? null : world.getPlayerEntityByUUID(uuid);
             setShooterId(uuid);
         }
+        else if (COLOR.equals(key))
+            setColor(getColorInt());
     }
 
     @Override
     public void writeEntityToNBT(NBTTagCompound compound) {
         super.writeEntityToNBT(compound);
 
-        compound.setInteger(TAG_COLOR, getColor());
+        compound.setInteger(TAG_COLOR, getColorInt());
         compound.setInteger(TAG_ARROW_TYPE, getArrowType().getValue());
         compound.setString(TAG_TALISMAN, getTalismanId());
         compound.setBoolean(TAG_ANTI_GRAV, hasAntiGrav);
         compound.setInteger(TAG_IGNORE_DELAY, entityIgnoreTicks);
         compound.setTag(TAG_TALISMAN_DATA_COMMON, talismanDataCommon);
         compound.setTag(TAG_TALISMAN_DATA_SERVER, talismanDataServer);
-        compound.setString(TAG_SHOOTER,shooter == null ? "" : shooter.getGameProfile().getId().toString());
+        compound.setString(TAG_SHOOTER, shooter == null ? "" : shooter.getGameProfile().getId().toString());
     }
 
     @Override
@@ -284,10 +279,6 @@ public class EntitySpellArrow extends EntityArrow {
         return ArrowType.get(dataManager.get(TYPE));
     }
 
-    public int getColor() {
-        return dataManager.get(COLOR);
-    }
-
     private void setShooterId(UUID shooterId) {
         dataManager.set(SHOOTER_UUID, Optional.fromNullable(shooterId));
     }
@@ -300,7 +291,17 @@ public class EntitySpellArrow extends EntityArrow {
         dataManager.set(TYPE, ArrowType.get(value).getValue());
     }
 
-    private void setColor(int color) {
-        dataManager.set(COLOR, color);
+    public Color3f getColor() {
+        return color;
+    }
+
+    public int getColorInt() {
+        return dataManager.get(COLOR);
+    }
+
+    private void setColor(int colorInt) {
+        if (colorInt != -1)
+            color = new Color3f(new Color(colorInt));
+        dataManager.set(COLOR, colorInt);
     }
 }

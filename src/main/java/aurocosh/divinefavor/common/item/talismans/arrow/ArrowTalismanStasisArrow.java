@@ -1,12 +1,11 @@
 package aurocosh.divinefavor.common.item.talismans.arrow;
 
-import aurocosh.divinefavor.DivineFavor;
 import aurocosh.divinefavor.common.config.common.ConfigArrow;
 import aurocosh.divinefavor.common.entity.projectile.EntitySpellArrow;
 import aurocosh.divinefavor.common.item.talismans.arrow.base.ArrowOptions;
 import aurocosh.divinefavor.common.item.talismans.arrow.base.ArrowType;
 import aurocosh.divinefavor.common.item.talismans.arrow.base.ItemArrowTalisman;
-import aurocosh.divinefavor.common.particles.types.ModParticleTypes;
+import aurocosh.divinefavor.common.particles.ModParticles;
 import aurocosh.divinefavor.common.spirit.base.ModSpirit;
 import aurocosh.divinefavor.common.util.UtilEntity;
 import aurocosh.divinefavor.common.util.UtilList;
@@ -20,13 +19,14 @@ import net.minecraft.util.math.Vec3d;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+import java.awt.*;
 import java.util.EnumSet;
 import java.util.List;
 
 public class ArrowTalismanStasisArrow extends ItemArrowTalisman {
     private static final int RADIUS_SQ = ConfigArrow.stasisArrow.radius * ConfigArrow.stasisArrow.radius;
 
-    public ArrowTalismanStasisArrow(String name, ModSpirit spirit, int favorCost, int color, double arrowDamage, EnumSet<ArrowOptions> options, ArrowType arrowType) {
+    public ArrowTalismanStasisArrow(String name, ModSpirit spirit, int favorCost, Color color, double arrowDamage, EnumSet<ArrowOptions> options, ArrowType arrowType) {
         super(name, spirit, favorCost, color, arrowDamage, options, arrowType);
     }
 
@@ -41,7 +41,7 @@ public class ArrowTalismanStasisArrow extends ItemArrowTalisman {
         for (int i = 0; i < 10; ++i) {
             Vec3d pointOnSphereSurface = UtilRandom.nextDirection().scale(ConfigArrow.stasisArrow.radius);
             Vec3d pointInWorld = pointOnSphereSurface.add(spellArrow.getPositionVector());
-            DivineFavor.proxy.createParticle(ModParticleTypes.particleStatic, spellArrow.world, pointInWorld.x, pointInWorld.y, pointInWorld.z, 40, 50, 0);
+            ModParticles.immobile.createParticle(spellArrow.world, pointInWorld, spellArrow.getColor(), 40, 50);
         }
     }
 

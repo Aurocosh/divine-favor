@@ -10,10 +10,11 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.world.World;
 
 import javax.annotation.Nonnull;
+import java.awt.*;
 import java.util.EnumSet;
 
 public class ArrowTalismanSpookyArrow extends ItemArrowTalisman {
-    public ArrowTalismanSpookyArrow(String name, ModSpirit spirit, int favorCost, int color, double arrowDamage, EnumSet<ArrowOptions> options, ArrowType arrowType) {
+    public ArrowTalismanSpookyArrow(String name, ModSpirit spirit, int favorCost, Color color, double arrowDamage, EnumSet<ArrowOptions> options, ArrowType arrowType) {
         super(name, spirit, favorCost, color, arrowDamage, options, arrowType);
     }
 
