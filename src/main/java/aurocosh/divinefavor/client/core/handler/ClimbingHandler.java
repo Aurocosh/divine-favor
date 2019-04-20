@@ -1,4 +1,4 @@
-package aurocosh.divinefavor.client.core;
+package aurocosh.divinefavor.client.core.handler;
 
 import aurocosh.divinefavor.common.config.common.ConfigGeneral;
 import aurocosh.divinefavor.common.entity.rope.IClimbable;
@@ -19,7 +19,7 @@ import java.util.List;
 
 @SideOnly(Side.CLIENT)
 @Mod.EventBusSubscriber(Side.CLIENT)
-public class RopeInteractionHandler {
+public class ClimbingHandler {
     @SideOnly(Side.CLIENT)
     @SubscribeEvent
     public static void onPlayerTickEvent(TickEvent.PlayerTickEvent event) {

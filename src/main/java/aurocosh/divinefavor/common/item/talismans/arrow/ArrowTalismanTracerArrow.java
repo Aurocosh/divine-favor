@@ -1,10 +1,12 @@
 package aurocosh.divinefavor.common.item.talismans.arrow;
 
+import aurocosh.divinefavor.common.config.common.ConfigArrow;
 import aurocosh.divinefavor.common.entity.projectile.EntitySpellArrow;
 import aurocosh.divinefavor.common.item.talismans.arrow.base.ArrowOptions;
 import aurocosh.divinefavor.common.item.talismans.arrow.base.ArrowType;
 import aurocosh.divinefavor.common.item.talismans.arrow.base.ItemArrowTalisman;
 import aurocosh.divinefavor.common.particles.ModParticles;
+import aurocosh.divinefavor.common.particles.particles.ImmobileParticle;
 import aurocosh.divinefavor.common.spirit.base.ModSpirit;
 import aurocosh.divinefavor.common.util.UtilRandom;
 import net.minecraft.util.math.Vec3d;
@@ -25,9 +27,9 @@ public class ArrowTalismanTracerArrow extends ItemArrowTalisman {
         if (spellArrow.isInGround())
             return;
 
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < ConfigArrow.tracerArrow.particleDensity; i++) {
             Vec3d position = spellArrow.getPositionEyes(UtilRandom.random.nextFloat());
-            ModParticles.immobile.createParticle(spellArrow.world, position, spellArrow.getColor(), 1200, 2400);
+            ModParticles.normal.createParticle(() -> new ImmobileParticle(spellArrow.world, position, spellArrow.getColor(), ConfigArrow.tracerArrow.despawnInterval.random()));
         }
     }
 }

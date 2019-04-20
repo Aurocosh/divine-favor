@@ -13,8 +13,8 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class EtherealParticle extends ModParticle {
     float reddustParticleScale;
 
-    public void init(World worldIn, Vec3d position, float scale, float red) {
-        init(worldIn, position);
+    public EtherealParticle(World worldIn, Vec3d position, float scale, float red) {
+        super(worldIn, position);
         motionX *= 0.10000000149011612D;
         motionY *= 0.10000000149011612D;
         motionZ *= 0.10000000149011612D;
