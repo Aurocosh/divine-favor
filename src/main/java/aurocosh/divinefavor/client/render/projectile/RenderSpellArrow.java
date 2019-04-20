@@ -103,7 +103,7 @@ public class RenderSpellArrow extends RenderArrow<EntitySpellArrow> {
             case WOODEN_ARROW:
                 return RES_ARROW;
             case SPELL_ARROW:
-                return RES_ARROW;
+                return RES_SPELL_ARROW;
             case CURSED_ARROW:
                 return RES_CURSED_ARROW;
             default:
