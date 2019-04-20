@@ -1,5 +1,6 @@
 package aurocosh.divinefavor.common.entity.rope;
 
+import aurocosh.divinefavor.common.config.common.ConfigRope;
 import aurocosh.divinefavor.common.entity.rope.base.EntityRopeNodeBase;
 import aurocosh.divinefavor.common.item.common.ModItems;
 import aurocosh.divinefavor.common.util.SlotData;
@@ -16,35 +17,30 @@ import net.minecraft.world.World;
 import java.util.List;
 
 public class EntityRopeBarrierNode extends EntityRopeNodeBase {
-
-    private static final int RADIUS = 3;
-    private static final int RADIUS_SQ = RADIUS * RADIUS;
-    private static final float REPULSION_POWER = 0.3f;
-    private static final int MAX_DURABILITY = 50;
-
+    private static final int RADIUS_SQ = ConfigRope.barrierRope.repulsionRadius * ConfigRope.barrierRope.repulsionRadius;
     private int durability;
 
     public EntityRopeBarrierNode(World world) {
         super(world);
-        durability = MAX_DURABILITY;
+        durability = ConfigRope.barrierRope.durability;
     }
 
     @Override
     public void onEntityUpdate() {
         super.onEntityUpdate();
 
-        if(world.isRemote)
+        if (world.isRemote)
             return;
 
-        List<EntityLivingBase> livingBases = world.getEntitiesWithinAABB(EntityLivingBase.class, new AxisAlignedBB(getPosition()).grow(RADIUS));
+        List<EntityLivingBase> livingBases = world.getEntitiesWithinAABB(EntityLivingBase.class, new AxisAlignedBB(getPosition()).grow(ConfigRope.barrierRope.repulsionRadius));
         List<EntityLivingBase> affectedMobs = UtilList.select(livingBases, element -> !(element instanceof EntityPlayer) && element.getDistanceSq(this) <= RADIUS_SQ);
 
         for (EntityLivingBase affectedMob : affectedMobs) {
             Vec3d direction = affectedMob.getPositionVector().subtract(this.getPositionVector());
-            UtilEntity.addVelocity(affectedMob, direction, REPULSION_POWER);
+            UtilEntity.addVelocity(affectedMob, direction, ConfigRope.barrierRope.repulsionForce);
             durability--;
         }
-        if(durability <= 0)
+        if (durability <= 0)
             setDead();
     }
 

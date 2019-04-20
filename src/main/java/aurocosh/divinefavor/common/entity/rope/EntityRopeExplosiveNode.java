@@ -1,5 +1,6 @@
 package aurocosh.divinefavor.common.entity.rope;
 
+import aurocosh.divinefavor.common.config.common.ConfigRope;
 import aurocosh.divinefavor.common.entity.rope.base.EntityRopeNodeBase;
 import aurocosh.divinefavor.common.item.common.ModItems;
 import aurocosh.divinefavor.common.util.SlotData;
@@ -33,7 +34,7 @@ public class EntityRopeExplosiveNode extends EntityRopeNodeBase {
         super(world);
         setSize(0.2f, 0.2f);
         triggered = false;
-        fuse = 80;
+        fuse = ConfigRope.explosiveRope.fuseDelay;
         preventEntitySpawning = true;
         isImmuneToFire = true;
     }
@@ -42,7 +43,7 @@ public class EntityRopeExplosiveNode extends EntityRopeNodeBase {
     protected void entityInit() {
         super.entityInit();
         dataManager.register(TRIGGERED, false);
-        dataManager.register(FUSE, 80);
+        dataManager.register(FUSE, ConfigRope.explosiveRope.fuseDelay);
     }
 
     @Override
@@ -60,7 +61,7 @@ public class EntityRopeExplosiveNode extends EntityRopeNodeBase {
                 triggerNeighbour(getNextNode());
                 triggerNeighbour(getPrevNode());
 
-                world.createExplosion(this, posX, posY + (double) (height / 16.0F), posZ, 2.0f, true);
+                world.createExplosion(this, posX, posY, posZ, ConfigRope.explosiveRope.explosionPower, true);
             }
         }
     }
