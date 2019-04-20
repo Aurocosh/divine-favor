@@ -1,5 +1,6 @@
 package aurocosh.divinefavor.common.entity.rope;
 
+import aurocosh.divinefavor.common.config.common.ConfigRope;
 import aurocosh.divinefavor.common.entity.rope.base.EntityRopeNodeBase;
 import aurocosh.divinefavor.common.item.common.ModItems;
 import aurocosh.divinefavor.common.util.SlotData;
@@ -10,9 +11,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
 public class EntityRopeGuideNode extends EntityRopeNodeBase implements IClimbable {
-    private static final float climbingSpeed = 0.25f;
-    private static final float climbingDistance = 2.5f;
-    private static final float climbingDistanceSq = climbingDistance * climbingDistance;
+    private static final float climbingDistanceSq = ConfigRope.guideRope.climbingDistance * ConfigRope.guideRope.climbingDistance;
 
     public EntityRopeGuideNode(World world) {
         super(world);
@@ -55,7 +54,7 @@ public class EntityRopeGuideNode extends EntityRopeNodeBase implements IClimbabl
 
     @Override
     public float getClimbingSpeed() {
-        return climbingSpeed;
+        return ConfigRope.guideRope.climbingSpeed;
     }
 
     @Override

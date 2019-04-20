@@ -9,7 +9,7 @@ import aurocosh.divinefavor.common.block.bath_heater.BlockBathHeater;
 import aurocosh.divinefavor.common.block.bath_heater.TileBathHeater;
 import aurocosh.divinefavor.common.block.medium.BlockMedium;
 import aurocosh.divinefavor.common.block.medium.TileMedium;
-import aurocosh.divinefavor.common.block.rope.BlockCavingRopeLight;
+import aurocosh.divinefavor.common.block.rope.BlockRopeLight;
 import aurocosh.divinefavor.common.block.soulbound_lectern.BlockSoulboundLectern;
 import aurocosh.divinefavor.common.block.soulbound_lectern.TileSoulboundLectern;
 import aurocosh.divinefavor.common.config.common.ConfigSpells;
@@ -65,7 +65,8 @@ public class ModBlocks {
         soulboundLecternWood = new BlockSoulboundLectern("wood", Material.WOOD);
 
         enderPumpkin = new BlockEnderPumpkin();
-        cavingRopeLight = new BlockCavingRopeLight("caving_rope");
+        cavingRopeLight = new BlockRopeLight("rope_light");
+
         ethereal_light = new BlockEtherealLight("ethereal_light", Material.AIR, ConfigSpells.etherealLight.lightLevel);
         ethereal_flash = new BlockEtherealFlash("ethereal_flash", ConfigSpells.etherealFlash.lightLevel, ConfigSpells.etherealFlash.despawnDelay);
         red_pulse = new BlockRedPulse("red_pulse", ConfigSpells.redPulse.redLevel, ConfigSpells.redPulse.lightLevel, ConfigSpells.redPulse.despawnDelay);

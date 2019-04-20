@@ -9,8 +9,8 @@ import net.minecraft.client.renderer.block.statemap.IStateMapper;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class BlockCavingRopeLight extends ModBlockAir implements ICustomStateMappedBlock {
-    public BlockCavingRopeLight(String name) {
+public class BlockRopeLight extends ModBlockAir implements ICustomStateMappedBlock {
+    public BlockRopeLight(String name) {
         super(name, Material.AIR);
         this.setTickRandomly(true);
         this.lightValue = 6;
