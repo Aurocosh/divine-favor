@@ -1,6 +1,7 @@
 package aurocosh.divinefavor.common.config.common;
 
 import aurocosh.divinefavor.common.config.talismans.arrow.*;
+import aurocosh.divinefavor.common.config.talismans.spell.ArrowDeflection;
 import aurocosh.divinefavor.common.constants.ConstMisc;
 import aurocosh.divinefavor.common.util.UtilTick;
 import net.minecraftforge.common.config.Config;
@@ -9,6 +10,8 @@ import net.minecraftforge.common.config.Config;
 public class ConfigArrow {
     @Config.Name("Anti gravity arrow")
     public static AntiGravityArrow antiGravityArrow = new AntiGravityArrow();
+    @Config.Name("Arrow deflection")
+    public static ArrowDeflection arrowDeflection = new ArrowDeflection();
     @Config.Name("Armor corrosion")
     public static ArmorCorrosion armorCorrosion = new ArmorCorrosion();
     @Config.Name("Blast arrow")

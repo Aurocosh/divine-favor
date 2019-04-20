@@ -21,6 +21,7 @@ public class ModPotions {
     public static ModPotion stone_fever;
     public static ModPotion wild_charge;
     public static ModPotion wild_sprint;
+    public static ModPotion arrow_deflection;
     public static ModPotionCharge butchering_strike;
     public static ModPotionCharge fall_negation;
     public static ModPotionToggle armor_of_pacifist;
@@ -38,6 +39,7 @@ public class ModPotions {
 
     public static void preInit() {
         armor_of_pacifist = new PotionArmorOfPacifist();
+        arrow_deflection = new PotionArrowDeflection();
         butchering_strike = new PotionButcheringStrike();
         consuming_fury = new PotionConsumingFury();
         crushing_palm = new PotionCrushingPalm();

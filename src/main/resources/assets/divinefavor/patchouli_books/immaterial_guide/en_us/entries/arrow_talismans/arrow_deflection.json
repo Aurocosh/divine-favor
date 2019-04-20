@@ -1,0 +1,15 @@
+{
+  "name": "Arrow deflection",
+  "icon": "divinefavor:arrow_talisman_arrow_deflection",
+  "category": "arrow_talismans",
+  "pages": [
+    {
+      "type": "talisman_description",
+      "talisman": "divinefavor:arrow_talisman_arrow_deflection"
+    },
+    {
+      "type": "arrow_talisman_stats",
+      "talisman": "divinefavor:arrow_talisman_arrow_deflection"
+    }
+  ]
+}

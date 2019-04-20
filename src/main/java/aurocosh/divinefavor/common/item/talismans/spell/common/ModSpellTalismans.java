@@ -11,6 +11,7 @@ import aurocosh.divinefavor.common.spirit.ModSpirits;
 
 public final class ModSpellTalismans {
     public static ItemSpellTalisman armor_of_pacifist;
+    public static ItemSpellTalisman arrow_deflection;
     public static ItemSpellTalisman arrow_throw_talisman;
     public static ItemSpellTalisman blade_of_grass;
     public static ItemSpellTalisman blazing_palm;
@@ -155,6 +156,7 @@ public final class ModSpellTalismans {
         toadic_jump = new SpellTalismanModPotionToggle("toadic_jump", ModSpirits.redwind, ConfigSpells.toadicJump.favorCost, ModPotions.toadic_jump);
         wild_sprint = new SpellTalismanModPotion("wild_sprint", ModSpirits.redwind, ConfigSpells.wildSprint.favorCost, ModPotions.wild_charge, ConfigSpells.wildSprint.activationDelay);
         wind_step = new SpellTalismanWindStep("wind_step", ModSpirits.redwind, ConfigSpells.windStep.favorCost, SpellOptions.ALL_CAST);
+        arrow_deflection = new SpellTalismanModPotion("arrow_deflection", ModSpirits.redwind, ConfigSpells.empowerAxe.favorCost, ModPotions.arrow_deflection, ConfigSpells.empowerAxe.duration);
 
         // romol
         crushing_palm = new SpellTalismanModPotionToggle("crushing_palm", ModSpirits.romol, ConfigSpells.crushingPalm.favorCost, ModPotions.crushing_palm);
