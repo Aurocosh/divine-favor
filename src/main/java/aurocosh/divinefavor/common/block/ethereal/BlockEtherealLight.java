@@ -4,6 +4,7 @@ import aurocosh.divinefavor.DivineFavor;
 import aurocosh.divinefavor.common.block.base.ModBlockAir;
 import aurocosh.divinefavor.common.item.base.ModItemBlock;
 import aurocosh.divinefavor.common.particles.ModParticles;
+import aurocosh.divinefavor.common.particles.particles.EtherealParticle;
 import aurocosh.divinefavor.common.potions.common.ModPotions;
 import aurocosh.divinefavor.common.state_mappers.InvisibleStateMapper;
 import aurocosh.divinefavor.common.state_mappers.common.ICustomStateMappedBlock;
@@ -38,30 +39,32 @@ public class BlockEtherealLight extends ModBlockAir implements ICustomStateMappe
     private void spawnParticles(World worldIn, BlockPos pos) {
         Random random = worldIn.rand;
         for (int i = 0; i < 6; ++i) {
-            double d1 = (double) ((float) pos.getX() + random.nextFloat());
-            double d2 = (double) ((float) pos.getY() + random.nextFloat());
-            double d3 = (double) ((float) pos.getZ() + random.nextFloat());
+            double x = (double) ((float) pos.getX() + random.nextFloat());
+            double y = (double) ((float) pos.getY() + random.nextFloat());
+            double z = (double) ((float) pos.getZ() + random.nextFloat());
 
             if (i == 0 && !worldIn.getBlockState(pos.up()).isOpaqueCube())
-                d2 = (double) pos.getY() + 0.0625D + 1.0D;
+                y = (double) pos.getY() + 0.0625D + 1.0D;
 
             if (i == 1 && !worldIn.getBlockState(pos.down()).isOpaqueCube())
-                d2 = (double) pos.getY() - 0.0625D;
+                y = (double) pos.getY() - 0.0625D;
 
             if (i == 2 && !worldIn.getBlockState(pos.south()).isOpaqueCube())
-                d3 = (double) pos.getZ() + 0.0625D + 1.0D;
+                z = (double) pos.getZ() + 0.0625D + 1.0D;
 
             if (i == 3 && !worldIn.getBlockState(pos.north()).isOpaqueCube())
-                d3 = (double) pos.getZ() - 0.0625D;
+                z = (double) pos.getZ() - 0.0625D;
 
             if (i == 4 && !worldIn.getBlockState(pos.east()).isOpaqueCube())
-                d1 = (double) pos.getX() + 0.0625D + 1.0D;
+                x = (double) pos.getX() + 0.0625D + 1.0D;
 
             if (i == 5 && !worldIn.getBlockState(pos.west()).isOpaqueCube())
-                d1 = (double) pos.getX() - 0.0625D;
+                x = (double) pos.getX() - 0.0625D;
 
-            if (d1 < (double) pos.getX() || d1 > (double) (pos.getX() + 1) || d2 < 0.0D || d2 > (double) (pos.getY() + 1) || d3 < (double) pos.getZ() || d3 > (double) (pos.getZ() + 1))
-                ModParticles.ethereal.createParticle(worldIn, new Vec3d(d1, d2, d3), 1f, 1f);
+            if (x < (double) pos.getX() || x > (double) (pos.getX() + 1) || y < 0.0D || y > (double) (pos.getY() + 1) || z < (double) pos.getZ() || z > (double) (pos.getZ() + 1)) {
+                Vec3d position = new Vec3d(x, y, z);
+                ModParticles.normal.createParticle(position, () -> new EtherealParticle(worldIn, position, 1f, 1f));
+            }
         }
     }
 

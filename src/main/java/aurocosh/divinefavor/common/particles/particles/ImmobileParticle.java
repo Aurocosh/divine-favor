@@ -1,7 +1,6 @@
 package aurocosh.divinefavor.common.particles.particles;
 
 import aurocosh.divinefavor.common.particles.base.ModParticle;
-import aurocosh.divinefavor.common.util.UtilRandom;
 import net.minecraft.client.renderer.BufferBuilder;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.math.Vec3d;
@@ -13,8 +12,8 @@ import javax.vecmath.Color3f;
 
 @SideOnly(Side.CLIENT)
 public class ImmobileParticle extends ModParticle {
-    public void init(World worldIn, Vec3d position, Color3f color3f, int minLife, int maxLife) {
-        init(worldIn, position);
+    public ImmobileParticle(World worldIn, Vec3d position, Color3f color3f, int maxAge) {
+        super(worldIn, position);
         posX = position.x;
         posY = position.y;
         posZ = position.z;
@@ -31,7 +30,7 @@ public class ImmobileParticle extends ModParticle {
         particleScale = rand.nextFloat() * 0.2F + 0.5F;
         setParticleTextureIndex((int) (Math.random() * 8.0D));
 
-        particleMaxAge = UtilRandom.nextInt(minLife, maxLife);
+        particleMaxAge = maxAge;
     }
 
     @Override

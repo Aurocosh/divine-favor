@@ -4,6 +4,7 @@ import aurocosh.divinefavor.common.entity.projectile.EntitySpellArrow;
 import aurocosh.divinefavor.common.item.talismans.arrow.base.ArrowOptions;
 import aurocosh.divinefavor.common.item.talismans.arrow.base.ArrowType;
 import aurocosh.divinefavor.common.particles.ModParticles;
+import aurocosh.divinefavor.common.particles.particles.ImmobileParticle;
 import aurocosh.divinefavor.common.spirit.base.ModSpirit;
 import aurocosh.divinefavor.common.util.UtilRandom;
 import net.minecraft.util.math.Vec3d;
@@ -24,7 +25,7 @@ public class ArrowTalismanHoverBubbleArrow extends ArrowTalismanClimbableArrow {
         for (int i = 0; i < 10; ++i) {
             Vec3d pointOnSphereSurface = UtilRandom.nextDirection().scale(climbingDistance);
             Vec3d pointInWorld = pointOnSphereSurface.add(spellArrow.getPositionVector());
-            ModParticles.immobile.createParticle(spellArrow.world, pointInWorld, spellArrow.getColor(), 40, 50);
+            ModParticles.normal.createParticle(pointInWorld, () -> new ImmobileParticle(spellArrow.world, pointInWorld, spellArrow.getColor(), UtilRandom.nextInt(40, 50)));
         }
     }
 }

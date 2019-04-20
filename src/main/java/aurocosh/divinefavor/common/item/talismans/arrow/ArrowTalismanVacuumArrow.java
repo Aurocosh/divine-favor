@@ -6,6 +6,7 @@ import aurocosh.divinefavor.common.item.talismans.arrow.base.ArrowOptions;
 import aurocosh.divinefavor.common.item.talismans.arrow.base.ArrowType;
 import aurocosh.divinefavor.common.item.talismans.arrow.base.ItemArrowTalisman;
 import aurocosh.divinefavor.common.particles.ModParticles;
+import aurocosh.divinefavor.common.particles.particles.MobileParticle;
 import aurocosh.divinefavor.common.spirit.base.ModSpirit;
 import aurocosh.divinefavor.common.util.UtilEntity;
 import aurocosh.divinefavor.common.util.UtilList;
@@ -35,14 +36,14 @@ public class ArrowTalismanVacuumArrow extends ItemArrowTalisman {
 
     @Override
     @SideOnly(Side.CLIENT)
-    public void spawnParticles(EntitySpellArrow arrow) {
+    public void spawnParticles(EntitySpellArrow spellArrow) {
         for (int i = 0; i < 3; ++i) {
             double distance = UtilRandom.nextFloat(4, 9);
             Vec3d direction = UtilRandom.nextDirection();
             Vec3d pointOnSphere = direction.scale(distance);
-            Vec3d pointInWorld = pointOnSphere.add(arrow.getPositionVector());
+            Vec3d pointInWorld = pointOnSphere.add(spellArrow.getPositionVector());
             Vec3d speed = direction.scale(-0.3f);
-            ModParticles.mobile.createParticle(arrow.world, pointInWorld, speed, arrow.getColor());
+            ModParticles.normal.createParticle(pointInWorld, () -> new MobileParticle(spellArrow.world, pointInWorld, speed, spellArrow.getColor()));
         }
     }
 

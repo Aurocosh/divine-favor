@@ -8,28 +8,26 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.function.Supplier;
 
 @SideOnly(Side.CLIENT)
 public class ParticleManager<T extends ModParticle> {
-
+    private final int limit;
     private final List<T> particles;
     private final IParticleRenderer<T> renderer;
-    private final Supplier<T> supplier;
 
-    public ParticleManager(IParticleRenderer<T> renderer, Supplier<T> supplier) {
+    public ParticleManager(int limit, IParticleRenderer<T> renderer) {
+        this.limit = limit;
         this.particles = new ArrayList<>();
         this.renderer = renderer;
-        this.supplier = supplier;
     }
 
     public void addParticle(T particle) {
-        if (particle != null)
+        if (!isFull() && particle != null)
             particles.add(particle);
     }
 
-    public T getParticle() {
-        return supplier.get();
+    public boolean isFull() {
+        return particles.size() >= limit;
     }
 
     public void updateParticles() {

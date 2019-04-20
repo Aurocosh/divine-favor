@@ -14,8 +14,8 @@ import javax.vecmath.Color3f;
 public class MobileParticle extends ModParticle {
     private float portalParticleScale;
 
-    public void init(World worldIn, Vec3d position, Vec3d motion, Color3f color3f) {
-        init(worldIn, position, motion);
+    public MobileParticle(World worldIn, Vec3d position, Vec3d motion, Color3f color3f) {
+        super(worldIn, position, motion);
         motionX = motion.x;
         motionY = motion.y;
         motionZ = motion.z;

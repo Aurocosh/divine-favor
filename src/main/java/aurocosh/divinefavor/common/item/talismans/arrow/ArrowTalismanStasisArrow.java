@@ -6,6 +6,7 @@ import aurocosh.divinefavor.common.item.talismans.arrow.base.ArrowOptions;
 import aurocosh.divinefavor.common.item.talismans.arrow.base.ArrowType;
 import aurocosh.divinefavor.common.item.talismans.arrow.base.ItemArrowTalisman;
 import aurocosh.divinefavor.common.particles.ModParticles;
+import aurocosh.divinefavor.common.particles.particles.ImmobileParticle;
 import aurocosh.divinefavor.common.spirit.base.ModSpirit;
 import aurocosh.divinefavor.common.util.UtilEntity;
 import aurocosh.divinefavor.common.util.UtilList;
@@ -41,7 +42,7 @@ public class ArrowTalismanStasisArrow extends ItemArrowTalisman {
         for (int i = 0; i < 10; ++i) {
             Vec3d pointOnSphereSurface = UtilRandom.nextDirection().scale(ConfigArrow.stasisArrow.radius);
             Vec3d pointInWorld = pointOnSphereSurface.add(spellArrow.getPositionVector());
-            ModParticles.immobile.createParticle(spellArrow.world, pointInWorld, spellArrow.getColor(), 40, 50);
+            ModParticles.normal.createParticle(pointInWorld, () -> new ImmobileParticle(spellArrow.world, pointInWorld, spellArrow.getColor(), UtilRandom.nextInt(40, 50)));
         }
     }
 
