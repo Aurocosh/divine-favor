@@ -14,10 +14,11 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 
+import java.awt.*;
 import java.util.EnumSet;
 
 public class ArrowTalismanDisarm extends ItemArrowTalisman {
-    public ArrowTalismanDisarm(String name, ModSpirit spirit, int favorCost, int color, double arrowDamage, EnumSet<ArrowOptions> options, ArrowType arrowType) {
+    public ArrowTalismanDisarm(String name, ModSpirit spirit, int favorCost, Color color, double arrowDamage, EnumSet<ArrowOptions> options, ArrowType arrowType) {
         super(name, spirit, favorCost, color, arrowDamage, options, arrowType);
     }
 

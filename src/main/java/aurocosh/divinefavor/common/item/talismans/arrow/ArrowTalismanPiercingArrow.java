@@ -13,13 +13,14 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 
+import java.awt.*;
 import java.util.EnumSet;
 
 public class ArrowTalismanPiercingArrow extends ItemArrowTalisman {
     private static final String TAG_HITS_LEFT = "HitsLeft";
     private static final String TAG_LAST_HIT_ENTITY = "LastHitEntity";
 
-    public ArrowTalismanPiercingArrow(String name, ModSpirit spirit, int favorCost, int color, double arrowDamage, EnumSet<ArrowOptions> options, ArrowType arrowType) {
+    public ArrowTalismanPiercingArrow(String name, ModSpirit spirit, int favorCost, Color color, double arrowDamage, EnumSet<ArrowOptions> options, ArrowType arrowType) {
         super(name, spirit, favorCost, color, arrowDamage, options, arrowType);
     }
 

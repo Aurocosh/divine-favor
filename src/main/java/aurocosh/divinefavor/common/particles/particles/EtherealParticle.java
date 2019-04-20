@@ -1,26 +1,20 @@
 package aurocosh.divinefavor.common.particles.particles;
 
-import aurocosh.divinefavor.common.particles.base.IModParticleFactory;
 import aurocosh.divinefavor.common.particles.base.ModParticle;
 import net.minecraft.client.renderer.BufferBuilder;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.math.MathHelper;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import javax.annotation.Nullable;
-
 @SideOnly(Side.CLIENT)
-public class ParticleEtherealLight extends ModParticle {
+public class EtherealParticle extends ModParticle {
     float reddustParticleScale;
 
-    protected ParticleEtherealLight(World worldIn, double xCoordIn, double yCoordIn, double zCoordIn, float xSpeedIn, float ySpeedIn, float zSpeedIn) {
-        this(worldIn, xCoordIn, yCoordIn, zCoordIn, 1.0F, xSpeedIn);
-    }
-
-    protected ParticleEtherealLight(World worldIn, double xCoordIn, double yCoordIn, double zCoordIn, float scale, float red) {
-        super(worldIn, xCoordIn, yCoordIn, zCoordIn, 0.0D, 0.0D, 0.0D);
+    public void init(World worldIn, Vec3d position, float scale, float red) {
+        init(worldIn, position);
         motionX *= 0.10000000149011612D;
         motionY *= 0.10000000149011612D;
         motionZ *= 0.10000000149011612D;
@@ -72,15 +66,6 @@ public class ParticleEtherealLight extends ModParticle {
         if (onGround) {
             motionX *= 0.699999988079071D;
             motionZ *= 0.699999988079071D;
-        }
-    }
-
-    @SideOnly(Side.CLIENT)
-    public static class EtherealLightParticleFactory implements IModParticleFactory<ModParticle> {
-        @Nullable
-        @Override
-        public ModParticle createParticle(World world, double xCoord, double yCoord, double zCoord, double xSpeed, double ySpeed, double zSpeed, int... vars) {
-            return new ParticleEtherealLight(world, xCoord, yCoord, zCoord, (float) xSpeed, (float) ySpeed, (float) zSpeed);
         }
     }
 }

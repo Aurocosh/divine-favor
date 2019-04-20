@@ -13,12 +13,13 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 
+import java.awt.*;
 import java.util.EnumSet;
 
 public class ArrowTalismanSniperArrow extends ItemArrowTalisman {
     private final static String TAG_STARTING_POS = "StartingPos";
 
-    public ArrowTalismanSniperArrow(String name, ModSpirit spirit, int favorCost, int color, EnumSet<ArrowOptions> options, ArrowType arrowType) {
+    public ArrowTalismanSniperArrow(String name, ModSpirit spirit, int favorCost, Color color, EnumSet<ArrowOptions> options, ArrowType arrowType) {
         super(name, spirit, favorCost, color, 0, options, arrowType);
     }
 

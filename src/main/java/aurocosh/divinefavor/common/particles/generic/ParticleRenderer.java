@@ -13,8 +13,6 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.ResourceLocation;
 import org.lwjgl.opengl.GL11;
 
-import java.util.List;
-
 public class ParticleRenderer<T extends ModParticle> implements IParticleRenderer<T> {
     private final ResourceLocation texture;
 
@@ -23,7 +21,7 @@ public class ParticleRenderer<T extends ModParticle> implements IParticleRendere
     }
 
     @Override
-    public void renderParticles(List<T> particles, float partialTicks) {
+    public void renderParticles(Iterable<T> particles, float partialTicks) {
         Minecraft mc = Minecraft.getMinecraft();
         EntityPlayer player = mc.player;
         if (player == null)

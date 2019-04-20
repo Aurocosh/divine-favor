@@ -11,6 +11,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.world.World;
 
 import javax.annotation.Nonnull;
+import java.awt.*;
 import java.util.EnumSet;
 
 public class ArrowTalismanClimbableArrow extends ItemArrowTalisman {
@@ -19,7 +20,7 @@ public class ArrowTalismanClimbableArrow extends ItemArrowTalisman {
     protected final float climbingDistance;
     protected final float climbingDistanceSq;
 
-    public ArrowTalismanClimbableArrow(String name, ModSpirit spirit, int favorCost, int color, double arrowDamage, EnumSet<ArrowOptions> options, ArrowType arrowType, float climbingSpeed, float climbingDistance, int despawnDelay) {
+    public ArrowTalismanClimbableArrow(String name, ModSpirit spirit, int favorCost, Color color, double arrowDamage, EnumSet<ArrowOptions> options, ArrowType arrowType, float climbingSpeed, float climbingDistance, int despawnDelay) {
         super(name, spirit, favorCost, color, arrowDamage, options, arrowType);
         this.despawnDelay = despawnDelay;
         this.climbingSpeed = climbingSpeed;

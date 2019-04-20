@@ -9,11 +9,13 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 
+import java.awt.*;
+
 public class ArrowTalismanCurse extends ItemArrowTalisman {
     private final ModPotion potion;
     private final int duration;
 
-    public ArrowTalismanCurse(String name, ModSpirit spirit, int favorCost, int color, ModPotion potion, int duration) {
+    public ArrowTalismanCurse(String name, ModSpirit spirit, int favorCost, Color color, ModPotion potion, int duration) {
         super(name, spirit, favorCost, color, 0, ArrowOptions.REQUIRES_TARGET, ArrowType.CURSED_ARROW);
         this.potion = potion;
         this.duration = duration;

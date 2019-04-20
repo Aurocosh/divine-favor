@@ -17,16 +17,17 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 import javax.annotation.Nonnull;
+import java.awt.*;
 import java.util.EnumSet;
 
 public class ItemArrowTalisman extends ItemTalisman {
-    private final int color;
+    private final Color color;
     private final double arrowDamage;
     private final ArrowType arrowType;
     private final EnumSet<ArrowOptions> options;
     protected GravityType gravityType;
 
-    public ItemArrowTalisman(String name, ModSpirit spirit, int favorCost, int color, double arrowDamage, EnumSet<ArrowOptions> options, ArrowType arrowType) {
+    public ItemArrowTalisman(String name, ModSpirit spirit, int favorCost, Color color, double arrowDamage, EnumSet<ArrowOptions> options, ArrowType arrowType) {
         super("arrow_talisman_" + name, "arrow_talismans/" + name, spirit, favorCost);
         this.color = color;
         this.arrowDamage = arrowDamage;
@@ -38,7 +39,7 @@ public class ItemArrowTalisman extends ItemTalisman {
         setCreativeTab(DivineFavor.TAB_ARROW_TALISMANS);
     }
 
-    public int getColor() {
+    public Color getColor() {
         return color;
     }
 
