@@ -121,6 +121,7 @@ item.divinefavor:blend_wood.name=Cursed wood blend
 
 # TALISMAN NAMES
 item.divinefavor:talisman_armor_of_pacifist.name=Armor of pacifist talisman
+item.divinefavor:talisman_arrow_deflection.name=Arrow deflection talisman
 item.divinefavor:talisman_arrow_throw.name=Arrow throw talisman
 item.divinefavor:talisman_blade_of_grass.name=Blade of grass talisman
 item.divinefavor:talisman_blink.name=Blink talisman
@@ -358,6 +359,7 @@ item.divinefavor:blend_wood.description=Blend used for contacting spirit Timber
 
 ## SPELL TALISMANS
 item.divinefavor:talisman_armor_of_pacifist.description=Grants user armor of pacifist. Player will be protected from most damage types, but in turn will not be able to attack anyone.
+item.divinefavor:talisman_arrow_deflection.description=This talisman will temporarily give player ability to deflect incoming arrows. Though defelection is not perfect. Also when player hit with something other then arrows duration of spell will decrease drastically.
 item.divinefavor:talisman_blade_of_grass.description=Will damage and slow down all enemies standing on grass anound you. Grass will be destroyed.
 item.divinefavor:talisman_blazing_palm.description=Will instantly smelt any smeltable stack in players hands.
 item.divinefavor:talisman_blink.description=Instant short distance teleportation spell. This spell will not teleport you in wall, but weaker then warp spell.
