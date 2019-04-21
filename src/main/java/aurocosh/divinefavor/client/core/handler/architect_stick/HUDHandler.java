@@ -2,7 +2,6 @@ package aurocosh.divinefavor.client.core.handler.architect_stick;
 
 import aurocosh.divinefavor.DivineFavor;
 import aurocosh.divinefavor.common.item.mystic_architect_stick.ItemMysticArchitectStick;
-import aurocosh.divinefavor.common.lib.math.Vector3i;
 import aurocosh.divinefavor.common.util.UtilGui;
 import aurocosh.divinefavor.common.util.UtilNbt;
 import net.minecraft.client.Minecraft;
@@ -68,7 +67,7 @@ public final class HUDHandler {
         GlStateManager.enableBlend();
         GlStateManager.tryBlendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO);
 
-        UtilGui.renderBox(tessellator, bufferbuilder, new Vector3i(x, y, z), new Vector3i(dx, dy, dz), 255, 223, 127);
+        UtilGui.renderBox(tessellator, bufferbuilder, new BlockPos(x, y, z), new BlockPos(dx, dy, dz), 255, 223, 127);
 
         GlStateManager.glLineWidth(1.0F);
         GlStateManager.enableLighting();

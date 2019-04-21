@@ -1,7 +1,6 @@
 package aurocosh.divinefavor.common.spirit.punishment;
 
 import aurocosh.divinefavor.common.config.common.ConfigPunishments;
-import aurocosh.divinefavor.common.lib.math.Vector3i;
 import aurocosh.divinefavor.common.muliblock.instance.MultiBlockInstance;
 import aurocosh.divinefavor.common.spirit.base.SpiritPunishment;
 import aurocosh.divinefavor.common.util.*;
@@ -26,7 +25,7 @@ public class EnderererPunishment extends SpiritPunishment {
 
     private void teleportPartsOfAltar(EntityPlayer player, World world, MultiBlockInstance instance) {
         int blocksToMove = ConfigPunishments.endererer.blocksToMove.random();
-        List<BlockPos> solidsPositions = Vector3i.convert(new ArrayList<>(instance.positionsOfSolids));
+        List<BlockPos> solidsPositions = new ArrayList<>(instance.positionsOfSolids);
         List<BlockPos> coalPositions = UtilList.select(solidsPositions, pos -> world.getBlockState(pos).getBlock() == Blocks.COAL_BLOCK);
         List<BlockPos> selectedPositions = UtilRandom.selectRandom(coalPositions, blocksToMove);
         for (BlockPos position : selectedPositions)

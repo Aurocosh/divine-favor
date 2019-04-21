@@ -4,7 +4,6 @@ import aurocosh.divinefavor.common.config.common.ConfigArrow;
 import aurocosh.divinefavor.common.custom_data.player.PlayerData;
 import aurocosh.divinefavor.common.custom_data.player.data.curse.crawling_mist.CrawlingMistData;
 import aurocosh.divinefavor.common.lib.LoopedCounter;
-import aurocosh.divinefavor.common.lib.math.Vector3i;
 import aurocosh.divinefavor.common.potions.base.potion.ModPotion;
 import aurocosh.divinefavor.common.potions.common.ModCurses;
 import net.minecraft.client.renderer.GlStateManager;
@@ -35,8 +34,8 @@ public class PotionCrawlingMist extends ModPotion {
     @Override
     protected void onPotionAdded(EntityLivingBase livingBase) {
         super.onPotionAdded(livingBase);
-        if(!(livingBase instanceof EntityPlayer))
-           livingBase.removePotionEffect(ModCurses.crawling_mist);
+        if (!(livingBase instanceof EntityPlayer))
+            livingBase.removePotionEffect(ModCurses.crawling_mist);
         else {
             EntityPlayer player = (EntityPlayer) livingBase;
             CrawlingMistData mistData = PlayerData.get(player).getCrawlingMistData();
@@ -46,16 +45,15 @@ public class PotionCrawlingMist extends ModPotion {
 
     @Override
     public void performEffect(EntityLivingBase livingBase, int amplifier) {
-        if(livingBase.world.isRemote)
+        if (livingBase.world.isRemote)
             return;
         if (!CURE_COUNTER.isFinished())
             return;
         EntityPlayer player = (EntityPlayer) livingBase;
         CrawlingMistData mistData = PlayerData.get(player).getCrawlingMistData();
-        BlockPos pos = mistData.getMistOrigin();
-        Vector3i distance = new Vector3i(pos.subtract(livingBase.getPosition()));
-        int distanceSq = distance.magnitudeSquare();
-        if(distanceSq > CURE_DISTANCE_SQ)
+        BlockPos mistOrigin = mistData.getMistOrigin();
+        double distanceSq = mistOrigin.distanceSq(livingBase.getPosition());
+        if (distanceSq > CURE_DISTANCE_SQ)
             livingBase.removePotionEffect(ModCurses.crawling_mist);
     }
 

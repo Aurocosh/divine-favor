@@ -14,5 +14,5 @@ public class SearingPulse {
     @Config.Name("Max blocks to smelt")
     public int maxBlocksToSmelt = 30;
     @Config.Name("Chance to create fire")
-    public int chanceToCreateFire = 40;
+    public float chanceToCreateFire = 0.4f;
 }

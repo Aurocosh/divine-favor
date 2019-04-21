@@ -3,7 +3,6 @@ package aurocosh.divinefavor.common.potions.blends;
 import aurocosh.divinefavor.common.config.common.ConfigPresence;
 import aurocosh.divinefavor.common.custom_data.player.PlayerData;
 import aurocosh.divinefavor.common.custom_data.player.data.aura.calling.CallingAuraData;
-import aurocosh.divinefavor.common.lib.math.Vector3i;
 import aurocosh.divinefavor.common.muliblock.common.ModMultiBlocks;
 import aurocosh.divinefavor.common.potions.base.effect.ModEffect;
 import aurocosh.divinefavor.common.potions.base.potion.ModPotion;
@@ -45,8 +44,7 @@ public class PotionCallingAura extends ModPotion {
         if (event.getPlacedBlock().getBlock() != Blocks.PUMPKIN)
             return;
         World world = event.getWorld();
-        Vector3i controller = new Vector3i(event.getPos());
-        if (ModMultiBlocks.snowman.match(world, controller) == null)
+        if (ModMultiBlocks.snowman.match(world, event.getPos()) == null)
             return;
 
         CallingAuraData auraData = PlayerData.get(player).getCallingAuraData();

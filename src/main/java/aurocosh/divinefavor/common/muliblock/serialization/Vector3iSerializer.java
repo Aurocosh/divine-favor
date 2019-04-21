@@ -1,18 +1,18 @@
 package aurocosh.divinefavor.common.muliblock.serialization;
-import aurocosh.divinefavor.common.lib.math.Vector3i;
 import com.google.gson.*;
+import net.minecraft.util.math.BlockPos;
 
 import java.lang.reflect.Type;
 
-public class Vector3iSerializer implements JsonDeserializer<Vector3i>, JsonSerializer<Vector3i> {
+public class Vector3iSerializer implements JsonDeserializer<BlockPos>, JsonSerializer<BlockPos> {
     @Override
-    public Vector3i deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
+    public BlockPos deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
         long value = json.getAsLong();
-        return Vector3i.fromLong(value);
+        return BlockPos.fromLong(value);
     }
 
     @Override
-    public JsonElement serialize(Vector3i src, Type typeOfSrc, JsonSerializationContext context) {
+    public JsonElement serialize(BlockPos src, Type typeOfSrc, JsonSerializationContext context) {
         return new JsonPrimitive(src.toLong());
     }
 }

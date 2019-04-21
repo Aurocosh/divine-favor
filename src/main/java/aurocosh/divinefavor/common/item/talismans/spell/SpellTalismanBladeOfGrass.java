@@ -4,7 +4,6 @@ import aurocosh.divinefavor.common.config.common.ConfigSpells;
 import aurocosh.divinefavor.common.item.talismans.spell.base.ItemSpellTalisman;
 import aurocosh.divinefavor.common.item.talismans.spell.base.SpellOptions;
 import aurocosh.divinefavor.common.item.talismans.spell.base.TalismanContext;
-import aurocosh.divinefavor.common.lib.math.Vector3i;
 import aurocosh.divinefavor.common.spirit.base.ModSpirit;
 import aurocosh.divinefavor.common.util.UtilBlock;
 import net.minecraft.block.material.Material;
@@ -25,6 +24,9 @@ import java.util.EnumSet;
 import java.util.List;
 
 public class SpellTalismanBladeOfGrass extends ItemSpellTalisman {
+
+    private static final int RADIUS_SQ = ConfigSpells.bladeOfGrass.radius * ConfigSpells.bladeOfGrass.radius;
+
     public SpellTalismanBladeOfGrass(String name, ModSpirit spirit, int favorCost, EnumSet<SpellOptions> options) {
         super(name, spirit, favorCost, options);
     }
@@ -33,8 +35,8 @@ public class SpellTalismanBladeOfGrass extends ItemSpellTalisman {
     protected void performActionServer(TalismanContext context) {
         int radius = ConfigSpells.bladeOfGrass.radius;
         EntityPlayer player = context.player;
-        Vector3i origin = Vector3i.convert(player.getPosition());
-        AxisAlignedBB axis = new AxisAlignedBB(origin.x - radius, origin.y - radius, origin.z - radius, origin.x + radius, origin.y + radius, origin.z + radius);
+        BlockPos origin = player.getPosition();
+        AxisAlignedBB axis = new AxisAlignedBB(origin.getX() - radius, origin.getY() - radius, origin.getZ() - radius, origin.getX() + radius, origin.getY() + radius, origin.getZ() + radius);
         List<Entity> list = context.world.getEntitiesWithinAABB(Entity.class, axis, (Entity e) -> isValid(e, player, origin));
 
         for (Entity entity : list) {
@@ -54,7 +56,7 @@ public class SpellTalismanBladeOfGrass extends ItemSpellTalisman {
         }
     }
 
-    private boolean isValid(Entity e, EntityPlayer player, Vector3i origin) {
+    private boolean isValid(Entity e, EntityPlayer player, BlockPos origin) {
         if (!(e instanceof EntityLivingBase))
             return false;
         if (e == player)
@@ -64,9 +66,9 @@ public class SpellTalismanBladeOfGrass extends ItemSpellTalisman {
         return !((EntityLivingBase) e).isPotionActive(MobEffects.SLOWNESS);
     }
 
-    private boolean isInRadius(Vector3i origin, Entity entity) {
-        Vector3i entityVec = Vector3i.convert(entity.getPosition());
-        return origin.isDistanceLessThen(entityVec, ConfigSpells.bladeOfGrass.radius);
+    private boolean isInRadius(BlockPos origin, Entity entity) {
+        BlockPos entityVec = entity.getPosition();
+        return origin.distanceSq(entityVec) < RADIUS_SQ;
     }
 
     private boolean consumeGrass(List<BlockPos> positions, EntityPlayer player, World world) {

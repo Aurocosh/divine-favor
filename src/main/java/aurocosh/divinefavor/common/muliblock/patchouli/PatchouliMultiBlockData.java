@@ -1,9 +1,9 @@
 package aurocosh.divinefavor.common.muliblock.patchouli;
 
-import aurocosh.divinefavor.common.lib.math.Vector3i;
 import aurocosh.divinefavor.common.muliblock.MultiBlockConfiguration;
 import aurocosh.divinefavor.common.muliblock.MultiBlockPart;
 import aurocosh.divinefavor.common.muliblock.validators.StateValidator;
+import net.minecraft.util.math.BlockPos;
 import vazkii.patchouli.common.multiblock.StateMatcher;
 
 import java.util.ArrayList;
@@ -30,19 +30,19 @@ public class PatchouliMultiBlockData {
             }
         }
 
-        Map<Vector3i, StateValidator> validatorMap = new HashMap<>();
+        Map<BlockPos, StateValidator> validatorMap = new HashMap<>();
         for (MultiBlockPart part : configuration.parts)
-            for (Vector3i position : part.positions)
+            for (BlockPos position : part.positions)
                 validatorMap.put(position, part.validator);
 
-        Vector3i size = configuration.boundingBox.getSizeVector();
-        String[][] layers = new String[size.y][];
-        for (int y = 0; y < size.y; y++) {
-            String[] layer = new String[size.z];
-            for (int z = 0; z < size.z; z++) {
-                StringBuilder builder = new StringBuilder(size.x);
-                for (int x = 0; x < size.x; x++) {
-                    Vector3i position = new Vector3i(x, size.y - 1 - y, z);
+        BlockPos size = configuration.boundingBox.getSizeVector();
+        String[][] layers = new String[size.getY()][];
+        for (int y = 0; y < size.getY(); y++) {
+            String[] layer = new String[size.getZ()];
+            for (int z = 0; z < size.getZ(); z++) {
+                StringBuilder builder = new StringBuilder(size.getX());
+                for (int x = 0; x < size.getX(); x++) {
+                    BlockPos position = new BlockPos(x, size.getY() - 1 - y, z);
 
                     Character symbol;
                     if (position.equals(configuration.baseRelPosition))

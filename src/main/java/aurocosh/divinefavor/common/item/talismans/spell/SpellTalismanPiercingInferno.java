@@ -7,6 +7,7 @@ import aurocosh.divinefavor.common.item.talismans.spell.base.TalismanContext;
 import aurocosh.divinefavor.common.spirit.base.ModSpirit;
 import aurocosh.divinefavor.common.tasks.BlockProcessingTask;
 import aurocosh.divinefavor.common.util.UtilCoordinates;
+import aurocosh.divinefavor.common.util.UtilList;
 import aurocosh.divinefavor.common.util.UtilRandom;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
@@ -36,7 +37,7 @@ public class SpellTalismanPiercingInferno extends ItemSpellTalisman {
                 BlockPos pos = piercingShape.get(i);
                 blocksToRemove.add(new BlockPos(pos));
             }
-            piercingShape = UtilCoordinates.shiftCoordinates(piercingShape, shift);
+            piercingShape = UtilList.process(piercingShape, pos -> pos.add(shift));
         }
 
         Consumer<BlockPos> processor = pos -> {

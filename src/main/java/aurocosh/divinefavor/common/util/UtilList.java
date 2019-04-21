@@ -3,6 +3,7 @@ package aurocosh.divinefavor.common.util;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.function.Function;
 import java.util.function.Predicate;
 
 public class UtilList {
@@ -74,6 +75,13 @@ public class UtilList {
         List<T> values = new ArrayList<>();
         for (K element : list)
             values.addAll(extractor.extract(element));
+        return values;
+    }
+
+    public static <T, K> List<T> process(List<K> list, Function<K, T> processor) {
+        List<T> values = new ArrayList<>();
+        for (K element : list)
+            values.add(processor.apply(element));
         return values;
     }
 

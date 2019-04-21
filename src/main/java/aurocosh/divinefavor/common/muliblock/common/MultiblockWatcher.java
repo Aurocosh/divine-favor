@@ -1,7 +1,7 @@
 package aurocosh.divinefavor.common.muliblock.common;
 
-import aurocosh.divinefavor.common.lib.math.Vector3i;
 import aurocosh.divinefavor.common.muliblock.IMultiblockController;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -38,7 +38,7 @@ public class MultiblockWatcher {
         IMultiblockController[] controllers = new IMultiblockController[controllerSet.size()];
         controllers = controllerSet.toArray(controllers);
 
-        Vector3i position = Vector3i.convert(event.getPos());
+        BlockPos position = event.getPos();
         for (IMultiblockController controller : controllers)
             if (controller.getMultiblockInstance().isSolidPart(position))
                 controller.multiblockDamaged(event.getPlayer(), event.getWorld(), event.getPos(), event.getState());
@@ -50,7 +50,7 @@ public class MultiblockWatcher {
         if (controllerSet == null)
             return;
 
-        Vector3i position = Vector3i.convert(event.getPos());
+        BlockPos position = event.getPos();
         for (IMultiblockController controller : controllerSet)
             if (controller.getMultiblockInstance().isSupposedToBeEmpty(position))
                 controller.multiblockDamaged(event.getPlayer(), event.getWorld(), event.getPos(), event.getState());

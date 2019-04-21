@@ -4,11 +4,10 @@ import aurocosh.divinefavor.DivineFavor;
 import aurocosh.divinefavor.common.constants.ConstMainTabOrder;
 import aurocosh.divinefavor.common.item.base.ModItem;
 import aurocosh.divinefavor.common.lib.math.CubeCoordinates;
-import aurocosh.divinefavor.common.lib.math.Vector3i;
 import aurocosh.divinefavor.common.muliblock.MultiBlockPart;
+import aurocosh.divinefavor.common.muliblock.serialization.BlockPosToByteSerializer;
 import aurocosh.divinefavor.common.muliblock.serialization.MultiBlockData;
 import aurocosh.divinefavor.common.muliblock.serialization.StateValidatorSerializer;
-import aurocosh.divinefavor.common.muliblock.serialization.Vector3iByteSerializer;
 import aurocosh.divinefavor.common.muliblock.validators.AirStateValidator;
 import aurocosh.divinefavor.common.muliblock.validators.BlockStateValidator;
 import aurocosh.divinefavor.common.muliblock.validators.StateValidator;
@@ -44,7 +43,7 @@ public class ItemMysticArchitectStick extends ModItem {
     public static final String TAG_CURRENT_MODE = "CurrentMode";
 
     public ItemMysticArchitectStick() {
-        super("mystic_architect_stick","mystic_architect_stick", ConstMainTabOrder.TOOLS);
+        super("mystic_architect_stick", "mystic_architect_stick", ConstMainTabOrder.TOOLS);
         setMaxStackSize(1);
         setCreativeTab(DivineFavor.TAB_MAIN);
     }
@@ -107,15 +106,15 @@ public class ItemMysticArchitectStick extends ModItem {
     }
 
     private void createTemplate(World worldIn, BlockPos pos, ItemStack stack, NBTTagCompound compound) {
-        if (!UtilNbt.checkForTags(stack, TAG_POS_FIRST, TAG_POS_SECOND)){
+        if (!UtilNbt.checkForTags(stack, TAG_POS_FIRST, TAG_POS_SECOND)) {
             DivineFavor.proxy.getClientPlayer().sendMessage(new TextComponentString("Corners not setValue"));
             return;
         }
-        if (!UtilNbt.checkForTags(stack, TAG_BASE_POSITION)){
+        if (!UtilNbt.checkForTags(stack, TAG_BASE_POSITION)) {
             DivineFavor.proxy.getClientPlayer().sendMessage(new TextComponentString("Base position not setValue"));
             return;
         }
-        if (!UtilNbt.checkForTags(stack, TAG_MEDIUM_POSITION)){
+        if (!UtilNbt.checkForTags(stack, TAG_MEDIUM_POSITION)) {
             DivineFavor.proxy.getClientPlayer().sendMessage(new TextComponentString("Medium position not setValue"));
             return;
         }
@@ -149,22 +148,22 @@ public class ItemMysticArchitectStick extends ModItem {
 
     private String getTemplateData(World world, BlockPos firstCorner, BlockPos secondCorner, BlockPos controllerPosition, BlockPos basePosition, String airMarker) {
         CubeCoordinates coordinatesWorld = new CubeCoordinates(firstCorner, secondCorner);
-        Vector3i[] positions = coordinatesWorld.getAllPositionsInside();
-        Vector3i lowerCorner = coordinatesWorld.lowerCorner;
+        BlockPos[] positions = coordinatesWorld.getAllPositionsInside();
+        BlockPos lowerCorner = coordinatesWorld.lowerCorner;
         ResourceLocation airMarkerName = new ResourceLocation(airMarker);
 
-        Map<Block, List<Vector3i>> partMap = new HashMap<>();
-        for (Vector3i pos : positions) {
-            IBlockState state = world.getBlockState(pos.toBlockPos());
+        Map<Block, List<BlockPos>> partMap = new HashMap<>();
+        for (BlockPos pos : positions) {
+            IBlockState state = world.getBlockState(pos);
             Block block = state.getBlock();
-            if(block == Blocks.AIR)
+            if (block == Blocks.AIR)
                 continue;
-            List<Vector3i> partPositions = partMap.computeIfAbsent(block, k -> new ArrayList<>());
-            partPositions.add(lowerCorner.getRealativePosition(pos));
+            List<BlockPos> partPositions = partMap.computeIfAbsent(block, k -> new ArrayList<>());
+            partPositions.add(pos.subtract(lowerCorner));
         }
 
         List<MultiBlockPart> parts = new ArrayList<>(partMap.size());
-        for (Map.Entry<Block, List<Vector3i>> entry : partMap.entrySet()) {
+        for (Map.Entry<Block, List<BlockPos>> entry : partMap.entrySet()) {
             Block block = entry.getKey();
             StateValidator validator;
             if (block.getRegistryName().equals(airMarkerName))
@@ -174,14 +173,14 @@ public class ItemMysticArchitectStick extends ModItem {
             parts.add(new MultiBlockPart(validator, entry.getValue()));
         }
 
-        Vector3i relativeBase = lowerCorner.getRealativePosition(Vector3i.convert(basePosition));
-        Vector3i relativeController = lowerCorner.getRealativePosition(Vector3i.convert(controllerPosition));
+        BlockPos relativeBase = basePosition.subtract(lowerCorner);
+        BlockPos relativeController = controllerPosition.subtract(lowerCorner);
         MultiBlockData data = new MultiBlockData(false, relativeBase, relativeController, parts);
 
         Gson gson = new GsonBuilder()
                 .registerTypeAdapter(StateValidator.class, new StateValidatorSerializer())
                 .excludeFieldsWithoutExposeAnnotation()
-                .registerTypeAdapter(Vector3i.class, new Vector3iByteSerializer())
+                .registerTypeAdapter(BlockPos.class, new BlockPosToByteSerializer())
                 .create();
 
         return gson.toJson(data, MultiBlockData.class);
