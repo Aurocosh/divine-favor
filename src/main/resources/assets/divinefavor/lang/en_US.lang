@@ -13,6 +13,7 @@ tile.divinefavor:medium_lapis.name=Lapis medium
 tile.divinefavor:medium_log.name=Log medium
 tile.divinefavor:medium_obsidian.name=Obsidian medium
 tile.divinefavor:medium_redstone.name=Redstone medium
+
 ## LECTERNS
 tile.divinefavor:soulbound_lectern_coal.name=Coal soulbound lectern
 tile.divinefavor:soulbound_lectern_gold.name=Gold soulbound lectern
@@ -22,6 +23,7 @@ tile.divinefavor:soulbound_lectern_obsidian.name=Obsidian soulbound lectern
 tile.divinefavor:soulbound_lectern_snow.name=Snow soulbound lectern
 tile.divinefavor:soulbound_lectern_stone.name=Stone soulbound lectern
 tile.divinefavor:soulbound_lectern_wood.name=Wood soulbound lectern
+
 ## OTHER BLOCKS
 tile.divinefavor:bath_heater.name=Bath heater
 tile.divinefavor:ender_pumpkin.name=Ender pumpkin
@@ -35,11 +37,11 @@ divinefavor:spirit_offering=If you need to trade for something and cant or don't
 divinefavor:spirit_became_active=Spirit %1$s became active
 divinefavor:spirit_became_inactive=Spirit %1$s became inactive
 
+# TOOLTIPS
 tooltip.divinefavor:talisman.infinite_use=Infinite use
 tooltip.divinefavor:talisman.unusable=Unusable
 tooltip.divinefavor:talisman.cost=Cost: %1$d Uses: %2$d
 tooltip.divinefavor:talisman.spirit=Spirit: %1$s
-
 tooltip.divinefavor:wishingStone.favor_count=Restores %1$d favor of %2$s
 
 # SPIRIT NAMES
@@ -60,20 +62,24 @@ item.divinefavor:invite_pebble.name=Invite pebble
 item.divinefavor:storage_gem.name=Storage gem
 item.divinefavor:warp_gem.name=Warp gem
 item.divinefavor:warp_pebble.name=Warp pebble
+
 ## TOOLS
 item.divinefavor:banishing_wand.name=Banishing wand
 item.divinefavor:bone_dagger.name=Bone dagger
 item.divinefavor:bone_dagger_awakened.name=Awakened bone dagger
 item.divinefavor:bone_key.name=Bone key
 item.divinefavor:mystic_architect_stick.name=Mystic architect stick
+
 ## CONTAINERS
 item.divinefavor:grimoire.name=Grimoire
 item.divinefavor:spell_bow.name=Spell bow
 item.divinefavor:ritual_pouch.name=Ritual pouch
 item.divinefavor:contract_binder.name=Contract binder
+
 ## CONSUMABLES
 item.divinefavor:milky_apple.name=Milky apple
 item.divinefavor:stone_ball.name=Stone
+
 ## CONTRACTS
 item.divinefavor:contract_capacity_minor.name=Capacity contract minor
 item.divinefavor:contract_capacity_major.name=Capacity contract major
@@ -81,6 +87,7 @@ item.divinefavor:contract_regen_minor.name=Regen contract minor
 item.divinefavor:contract_regen_major.name=Regen contract major
 item.divinefavor:contract_inform.name=Information contract
 item.divinefavor:contract_creative.name=Creative contract
+
 ## CALLING STONES
 item.divinefavor:calling_stone_arbow.name=Arbow's invite
 item.divinefavor:calling_stone_blizrabi.name=Blizrabi's invite
@@ -91,6 +98,7 @@ item.divinefavor:calling_stone_redwind.name=Redwind's invite
 item.divinefavor:calling_stone_romol.name=Romol's invite
 item.divinefavor:calling_stone_squarefury.name=Squarefury's invite
 item.divinefavor:calling_stone_timber.name=Timber's invite
+
 ## WISHING STONES
 item.divinefavor:wishing_stone_minor_arbow.name=Arbow wishing stone
 item.divinefavor:wishing_stone_minor_blizrabi.name=Blizrabi wishing stone
@@ -101,6 +109,7 @@ item.divinefavor:wishing_stone_minor_redwind.name=Redwind wishing stone
 item.divinefavor:wishing_stone_minor_romol.name=Romol wishing stone
 item.divinefavor:wishing_stone_minor_squarefury.name=Squarefury wishing stone
 item.divinefavor:wishing_stone_minor_timber.name=Timber wishing stone
+
 ## SOUL SHARDS
 item.divinefavor:soul_shard_end.name=Soul shard of end
 item.divinefavor:soul_shard_mind.name=Soul shard of mind
@@ -111,6 +120,7 @@ item.divinefavor:soul_shard_undeath.name=Soul shard of undeath
 item.divinefavor:soul_shard_water.name=Soul shard of water
 item.divinefavor:soul_shard_wild.name=Soul shard of wild
 item.divinefavor:soul_shard_wither.name=Soul shard of wither
+
 # BATHING BLENDS
 item.divinefavor:blend_charcoal.name=Nether charcoal blend
 item.divinefavor:blend_ender_pearl.name=Distorted pearl blend
@@ -286,6 +296,7 @@ tile.divinefavor:medium_lapis.description=Spiritual medium. Integral part of spi
 tile.divinefavor:medium_log.description=Spiritual medium. Integral part of spiritual altar. Build an altar dedicated to a spirit of your choice to be able to trade with him. Different altars require different types of mediums. Read guidebook for more details (Immaterial guide).
 tile.divinefavor:medium_obsidian.description=Spiritual medium. Integral part of spiritual altar. Build an altar dedicated to a spirit of your choice to be able to trade with him. Different altars require different types of mediums. Read guidebook for more details (Immaterial guide).
 tile.divinefavor:medium_redstone.description=Spiritual medium. Integral part of spiritual altar. Build an altar dedicated to a spirit of your choice to be able to trade with him. Different altars require different types of mediums. Read guidebook for more details (Immaterial guide).
+
 ## LECTERNS
 tile.divinefavor:soulbound_lectern_coal.description=Special lectern that allows you to store and access your spiritual contracts. Requires special multiblock to work. Functions similar to ender chest. Read guidebook for more details (Immaterial guide).
 tile.divinefavor:soulbound_lectern_gold.description=Special lectern that allows you to store and access your spiritual contracts. Requires special multiblock to work. Functions similar to ender chest. Read guidebook for more details (Immaterial guide).
@@ -295,6 +306,7 @@ tile.divinefavor:soulbound_lectern_obsidian.description=Special lectern that all
 tile.divinefavor:soulbound_lectern_snow.description=Special lectern that allows you to store and access your spiritual contracts. Requires special multiblock to work. Functions similar to ender chest. Read guidebook for more details (Immaterial guide).
 tile.divinefavor:soulbound_lectern_stone.description=Special lectern that allows you to store and access your spiritual contracts. Requires special multiblock to work. Functions similar to ender chest. Read guidebook for more details (Immaterial guide).
 tile.divinefavor:soulbound_lectern_wood.description=Special lectern that allows you to store and access your spiritual contracts. Requires special multiblock to work. Functions similar to ender chest. Read guidebook for more details (Immaterial guide).
+
 ## OTHER
 tile.divinefavor:bath_heater.description=This block allows you to use special blends. Such blends grant special effects similar to potions. Read guidebook for more details (Immaterial guide).
 tile.divinefavor:ender_pumpkin.description=Enderman mask crafted from pumpkin. Greatly hinders your vision, but still has some practical uses.
@@ -307,20 +319,24 @@ item.divinefavor:invite_pebble.description=Instantly teleports you to creator of
 item.divinefavor:storage_gem.description=Allows you to remotely access chest. Can be created with appropriate talisman.
 item.divinefavor:warp_gem.description=Instantly teleports you to place where it was created. Works across dimensions. Can be created with appropriate talisman.
 item.divinefavor:warp_pebble.description=Instantly teleports you to place where it was created. Does not work across dimensions. Can be created with appropriate talisman.
+
 ## TOOLS
 item.divinefavor:banishing_wand.description=Right click minion with this item to banish him.
 item.divinefavor:bone_dagger.description=Not a weapon. Well, not very good weapon. Bone dagger is an unfinished spiritual tool that can be transformed into awakened bone dagger. Read guidebook for more details (Immaterial guide).
 item.divinefavor:bone_dagger_awakened.description=Spiritual tool whose main purpose is to extract soul shards from things with souls.
 item.divinefavor:bone_key.description=Tool used for reactivation of damaged multiblocks.
 item.divinefavor:mystic_architect_stick.description=Debug item. Creative only.
+
 ## CONTAINERS
 item.divinefavor:grimoire.description=Spell talisman container. Can be used to store and use large quantity of spell talismans.
 item.divinefavor:spell_bow.description=Arrow talisman container. Can be used to store and use large quantity of arrow talismans.
 item.divinefavor:ritual_pouch.description=Item used for spiritual trade at spirit altars. Right click to open and put inside stuff that you want to trade.
 item.divinefavor:contract_binder.description=Stores contracts inside. Can be placed into soulbound lecterns.
+
 ## CONSUMABLES
 item.divinefavor:milky_apple.description=Removes all curses when consumed
 item.divinefavor:stone_ball.description=Just a small stone, you can throw it
+
 ## CONTRACTS
 item.divinefavor:contract_capacity_minor.description=When this contract is placed in soulbound lectern your maximum favor limit will be slightly increased for a spirit that owns that lectern.
 item.divinefavor:contract_capacity_major.description=When this contract is placed in soulbound lectern your maximum favor limit will be considerably increased for a spirit that owns that lectern.
@@ -328,6 +344,7 @@ item.divinefavor:contract_regen_minor.description=When this contract is placed i
 item.divinefavor:contract_regen_major.description=When this contract is placed in soulbound lectern you will be granted a lot of free favor from spirit that owns that lectern.
 item.divinefavor:contract_inform.description=When this contract is placed in soulbound lectern you will be notified when spirit that owns that lectern becomes active or inactive.
 item.divinefavor:contract_creative.description=Grants a lot of perks. Creative only item.
+
 ## CALLING STONES
 item.divinefavor:calling_stone_arbow.description=Mystical stone gifted by spirit Arbow. Required to finish spiritual altar.
 item.divinefavor:calling_stone_blizrabi.description=Mystical stone gifted by spirit Blizrabi. Required to finish spiritual altar.
@@ -338,6 +355,7 @@ item.divinefavor:calling_stone_redwind.description=Mystical stone gifted by spir
 item.divinefavor:calling_stone_romol.description=Mystical stone gifted by spirit Romol. Required to finish spiritual altar.
 item.divinefavor:calling_stone_squarefury.description=Mystical stone gifted by spirit Squarefury. Required to finish spiritual altar.
 item.divinefavor:calling_stone_timber.description=Mystical stone gifted by spirit Timber. Required to finish spiritual altar.
+
 ## WISHING STONES
 item.divinefavor:wishing_stone_minor_arbow.description=Grants favor of Arbow when consumed.
 item.divinefavor:wishing_stone_minor_blizrabi.description=Grants favor of Blizrabi when consumed.
@@ -348,6 +366,7 @@ item.divinefavor:wishing_stone_minor_redwind.description=Grants favor of Redwind
 item.divinefavor:wishing_stone_minor_romol.description=Grants favor of Romol when consumed.
 item.divinefavor:wishing_stone_minor_squarefury.description=Grants favor of Squarefury when consumed.
 item.divinefavor:wishing_stone_minor_timber.description=Grants favor of Timber wishing when consumed.
+
 ## SOUL SHARDS
 item.divinefavor:soul_shard_end.description=Material used for crafting and creation of soulbound lecterns. Can be extracted from creatures of end with awakened bone dagger.
 item.divinefavor:soul_shard_mind.description=Material used for crafting and creation of soulbound lecterns. Can be extracted from villager with awakened bone dagger.
@@ -358,6 +377,7 @@ item.divinefavor:soul_shard_undeath.description=Material used for crafting and c
 item.divinefavor:soul_shard_water.description=Material used for crafting and creation of soulbound lecterns. Can be extracted from aquatic creatures with awakened bone dagger.
 item.divinefavor:soul_shard_wild.description=Material used for crafting and creation of soulbound lecterns. Can be extracted from regular hostile mobs with awakened bone dagger.
 item.divinefavor:soul_shard_wither.description=Material used for crafting and creation of soulbound lecterns. Can be extracted from withered mobs with awakened bone dagger.
+
 ## BATHING BLENDS
 item.divinefavor:blend_charcoal.description=Blend used for contacting spirit Neblaze
 item.divinefavor:blend_ender_pearl.description=Blend used for contacting spirit Endererer
