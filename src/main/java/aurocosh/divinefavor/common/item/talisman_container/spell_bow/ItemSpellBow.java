@@ -2,6 +2,7 @@ package aurocosh.divinefavor.common.item.talisman_container.spell_bow;
 
 import aurocosh.divinefavor.DivineFavor;
 import aurocosh.divinefavor.common.constants.ConstGuiIDs;
+import aurocosh.divinefavor.common.constants.ConstMainTabOrder;
 import aurocosh.divinefavor.common.item.base.ModItem;
 import aurocosh.divinefavor.common.item.common.ModItems;
 import aurocosh.divinefavor.common.item.talisman_container.spell_bow.capability.ISpellBowHandler;
@@ -42,7 +43,7 @@ public class ItemSpellBow extends ModItem {
     private static String TAG_SHARE = "SpellBowShare";
 
     public ItemSpellBow() {
-        super("spell_bow", "spell_bow/spell_bow");
+        super("spell_bow", "spell_bow/spell_bow", ConstMainTabOrder.CONTAINERS);
         maxStackSize = 1;
         setCreativeTab(DivineFavor.TAB_MAIN);
         setMaxDamage(384);

@@ -1,0 +1,32 @@
+{
+  "name": "Minions",
+  "icon": "divinefavor:banishing_wand",
+  "category": "basics",
+  "sortnum": 10,
+  "pages": [
+    {
+      "type": "text",
+      "text": "Some talismans allow you to summon different creatures to your aid. Most of such talismans come from Loon, spirit of moon and summoning. To summon mob just use corresponding talisman on solid block. Minions will follow you and attack hostile mobs when they get close enough. You can right click minions to make them wait for you and to make them follow you."
+    },
+    {
+      "type": "spotlight",
+      "item": "divinefavor:talisman_target",
+      "text": "This item, $(item)Target talisman$() can be used to command your minions to attack specific target. To do so just look at enemy and use this talisman. Range of this talisman is limited."
+    },
+    {
+      "type": "spotlight",
+      "item": "divinefavor:talisman_follow",
+      "text": "This item, $(item)Follow talisman$() can be used to command your minions to follow you and ignore enemies. To do so just use this talisman. Range of this talisman is limited. To make our minions attack again use target talisman."
+    },
+    {
+      "type": "entity",
+      "entity": "divinefavor:entity.minion_creeper",
+      "text": "Minion example. Yep, you can summon creepers."
+    },
+    {
+      "type": "spotlight",
+      "item": "divinefavor:banishing_wand",
+      "text": "You can instantly banish minions with $(item)Banishing wand$(). Right click your minion with this item and minion will instantly disappear. You can only banish your own minions."
+    }
+  ]
+}

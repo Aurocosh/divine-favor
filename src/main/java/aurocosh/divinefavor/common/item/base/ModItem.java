@@ -1,6 +1,7 @@
 package aurocosh.divinefavor.common.item.base;
 
 import aurocosh.divinefavor.common.core.ResourceNamer;
+import aurocosh.divinefavor.common.lib.interfaces.IOrdered;
 import aurocosh.divinefavor.common.registry.ModRegistries;
 import net.minecraft.client.renderer.ItemMeshDefinition;
 import net.minecraft.creativetab.CreativeTabs;
@@ -11,7 +12,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class ModItem extends Item implements IModelHolder {
+public class ModItem extends Item implements IModelHolder, IOrdered {
     private final int orderIndex;
     private final String texturePath;
 
@@ -28,6 +29,7 @@ public class ModItem extends Item implements IModelHolder {
         ModRegistries.items.register(this);
     }
 
+    @Override
     public int getOrderIndex() {
         return orderIndex;
     }

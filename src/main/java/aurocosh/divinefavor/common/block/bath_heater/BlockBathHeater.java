@@ -4,6 +4,7 @@ import aurocosh.divinefavor.DivineFavor;
 import aurocosh.divinefavor.common.block.base.ModBlock;
 import aurocosh.divinefavor.common.constants.ConstBlockNames;
 import aurocosh.divinefavor.common.constants.ConstGuiIDs;
+import aurocosh.divinefavor.common.constants.ConstMainTabOrder;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
@@ -24,7 +25,7 @@ public class BlockBathHeater extends ModBlock implements ITileEntityProvider {
     public static final PropertyEnum<BathHeaterState> STATE = PropertyEnum.create("state", BathHeaterState.class);
 
     public BlockBathHeater() {
-        super(ConstBlockNames.BATH_HEATER, Material.ROCK);
+        super(ConstBlockNames.BATH_HEATER, Material.ROCK, ConstMainTabOrder.OTHER_BLOCKS);
         setHardness(2.0F);
         setResistance(10.0F);
         setSoundType(SoundType.STONE);

@@ -7,7 +7,6 @@ import aurocosh.divinefavor.common.item.talismans.spell.base.TalismanContext;
 import aurocosh.divinefavor.common.spirit.base.ModSpirit;
 import aurocosh.divinefavor.common.tasks.BlockProcessingTask;
 import aurocosh.divinefavor.common.util.UtilCoordinates;
-import aurocosh.divinefavor.common.util.UtilList;
 import aurocosh.divinefavor.common.util.UtilRandom;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
@@ -16,6 +15,7 @@ import net.minecraft.util.math.BlockPos;
 import java.util.ArrayList;
 import java.util.EnumSet;
 import java.util.List;
+import java.util.function.Consumer;
 
 public class SpellTalismanPiercingInferno extends ItemSpellTalisman {
     public SpellTalismanPiercingInferno(String name, ModSpirit spirit, int favorCost, EnumSet<SpellOptions> options) {
@@ -39,7 +39,7 @@ public class SpellTalismanPiercingInferno extends ItemSpellTalisman {
             piercingShape = UtilCoordinates.shiftCoordinates(piercingShape, shift);
         }
 
-        UtilList.Processor<BlockPos> processor = pos -> {
+        Consumer<BlockPos> processor = pos -> {
             Block block = UtilRandom.rollDice(ConfigSpells.piercingInferno.chanceToIgnite) ? Blocks.FIRE : Blocks.AIR;
             context.world.setBlockState(pos, block.getDefaultState());
         };

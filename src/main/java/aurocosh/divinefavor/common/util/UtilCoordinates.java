@@ -8,6 +8,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 import java.util.*;
+import java.util.function.Predicate;
 
 public class UtilCoordinates {
     @FunctionalInterface
@@ -87,9 +88,9 @@ public class UtilCoordinates {
         return center.add(xShift, yShift, zShift);
     }
 
-    public static BlockPos getRandomBlockInRange(World world, BlockPos center, int radius, int limit, UtilList.Predicate<BlockPos> predicate) {
+    public static BlockPos getRandomBlockInRange(World world, BlockPos center, int radius, int limit, Predicate<BlockPos> predicate) {
         BlockPos blockPos = getRandomNeighbour(center, radius, radius, radius);
-        if (predicate.select(blockPos))
+        if (predicate.test(blockPos))
             return blockPos;
         blockPos = findBlock(center, EnumFacing.DOWN, limit, predicate);
         if (blockPos != null)
@@ -97,11 +98,11 @@ public class UtilCoordinates {
         return findBlock(center, EnumFacing.UP, limit, predicate);
     }
 
-    public static BlockPos findBlock(BlockPos start, EnumFacing facing, int limit, UtilList.Predicate<BlockPos> predicate) {
+    public static BlockPos findBlock(BlockPos start, EnumFacing facing, int limit, Predicate<BlockPos> predicate) {
         BlockPos pos = start;
         while (limit-- > 0) {
             pos = pos.offset(facing);
-            if (predicate.select(pos))
+            if (predicate.test(pos))
                 return pos;
         }
         return null;
@@ -206,14 +207,14 @@ public class UtilCoordinates {
         return Vector3i.convert(result);
     }
 
-    public static List<BlockPos> floodFill(List<Vector3i> start, List<Vector3i> expansionDirs, UtilList.Predicate<BlockPos> predicate, int limit) {
+    public static List<BlockPos> floodFill(List<Vector3i> start, List<Vector3i> expansionDirs, Predicate<BlockPos> predicate, int limit) {
         Queue<Vector3i> expansionFront = new ArrayDeque<>(start);
         Set<Vector3i> explored = new HashSet<>(start);
         List<Vector3i> result = new ArrayList<>();
 
         while (expansionFront.size() > 0 && result.size() < limit) {
             Vector3i nextPos = expansionFront.remove();
-            if (!predicate.select(nextPos.toBlockPos()))
+            if (!predicate.test(nextPos.toBlockPos()))
                 continue;
             result.add(nextPos);
             for (Vector3i expansionDir : expansionDirs) {
@@ -227,12 +228,12 @@ public class UtilCoordinates {
         return Vector3i.convert(result);
     }
 
-    public static List<BlockPos> getNeighbours(BlockPos start, World world, UtilList.Predicate<IBlockState> predicate) {
+    public static List<BlockPos> getNeighbours(BlockPos start, World world, Predicate<IBlockState> predicate) {
         List<BlockPos> result = new ArrayList<>();
         for (Vector3i neighbour : UtilVector3i.getNeighbourAllHorizontal()) {
             BlockPos pos = start.add(neighbour.x, neighbour.y, neighbour.z);
             IBlockState state = world.getBlockState(pos);
-            if (predicate.select(state))
+            if (predicate.test(state))
                 result.add(pos);
         }
         return result;

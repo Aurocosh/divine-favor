@@ -4,6 +4,7 @@ import aurocosh.divinefavor.DivineFavor;
 import aurocosh.divinefavor.common.block.base.ModBlock;
 import aurocosh.divinefavor.common.constants.ConstBlockNames;
 import aurocosh.divinefavor.common.constants.ConstGuiIDs;
+import aurocosh.divinefavor.common.constants.ConstMainTabOrder;
 import aurocosh.divinefavor.common.util.UtilEntity;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.SoundType;
@@ -32,7 +33,7 @@ public class BlockMedium extends ModBlock implements ITileEntityProvider {
     public static final PropertyEnum<MediumStone> STONE = PropertyEnum.create("stone", MediumStone.class);
 
     public BlockMedium(String name, Material material) {
-        super(ConstBlockNames.MEDIUM + "_" + name, material);
+        super(ConstBlockNames.MEDIUM + "_" + name, material, ConstMainTabOrder.MEDIUMS);
         setHardness(2.0F);
         setResistance(10.0F);
         setSoundType(SoundType.METAL);

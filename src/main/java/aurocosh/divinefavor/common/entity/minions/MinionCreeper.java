@@ -4,6 +4,7 @@ import aurocosh.divinefavor.common.entity.minions.base.IMinion;
 import aurocosh.divinefavor.common.entity.minions.base.MinionData;
 import aurocosh.divinefavor.common.entity.minions.base.MinionMode;
 import aurocosh.divinefavor.common.entity.minions.behaviour.MinionBehaviourCreeper;
+import aurocosh.divinefavor.common.entity.minions.minion_interaction.MinionBanishing;
 import aurocosh.divinefavor.common.entity.minions.minion_interaction.MinionFeeding;
 import aurocosh.divinefavor.common.entity.minions.minion_interaction.MinionWaitSwitch;
 import aurocosh.divinefavor.common.entity.minions.minion_interaction.base.MinionInteractionHandler;
@@ -37,8 +38,9 @@ public class MinionCreeper extends EntityCreeper implements IMinion {
         behaviour.apply(this, tasks, targetTasks);
 
         interactionHandler = new MinionInteractionHandler<>();
-        interactionHandler.addInteraction(new MinionWaitSwitch<>());
-        interactionHandler.addInteraction(new MinionFeeding<>(1, Items.CHICKEN, Items.PORKCHOP, Items.BEEF));
+        interactionHandler.addOwnerInteraction(new MinionWaitSwitch<>());
+        interactionHandler.addOwnerInteraction(new MinionFeeding<>(1, Items.CHICKEN, Items.PORKCHOP, Items.BEEF));
+        interactionHandler.addOwnerInteraction(new MinionBanishing<>());
     }
 
     @Override

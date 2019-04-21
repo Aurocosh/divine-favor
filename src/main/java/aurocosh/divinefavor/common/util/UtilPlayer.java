@@ -8,70 +8,72 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.SoundCategory;
 
+import java.util.function.Predicate;
+
 public class UtilPlayer {
-    public static ItemStack findHeldStackHands(EntityPlayer player, UtilList.Predicate<ItemStack> predicate) {
+    public static ItemStack findHeldStackHands(EntityPlayer player, Predicate<ItemStack> predicate) {
         ItemStack stack = player.getHeldItemMainhand();
-        if (predicate.select(stack))
+        if (predicate.test(stack))
             return stack;
         stack = player.getHeldItemOffhand();
-        if (predicate.select(stack))
+        if (predicate.test(stack))
             return stack;
         return ItemStack.EMPTY;
     }
 
-    public static ItemStack getItemInHand(EntityPlayer player, UtilList.Predicate<Item> predicate) {
+    public static ItemStack getItemInHand(EntityPlayer player, Predicate<Item> predicate) {
         ItemStack stack = player.getHeldItemMainhand();
-        if (!stack.isEmpty() && predicate.select(stack.getItem()))
+        if (!stack.isEmpty() && predicate.test(stack.getItem()))
             return stack;
         stack = player.getHeldItemOffhand();
-        if (!stack.isEmpty() && predicate.select(stack.getItem()))
+        if (!stack.isEmpty() && predicate.test(stack.getItem()))
             return stack;
         return ItemStack.EMPTY;
     }
 
-    public static EnumHand getHandWithItem(EntityPlayer player, UtilList.Predicate<Item> predicate) {
+    public static EnumHand getHandWithItem(EntityPlayer player, Predicate<Item> predicate) {
         ItemStack stack = player.getHeldItemMainhand();
-        if (!stack.isEmpty() && predicate.select(stack.getItem()))
+        if (!stack.isEmpty() && predicate.test(stack.getItem()))
             return EnumHand.MAIN_HAND;
         stack = player.getHeldItemOffhand();
-        if (!stack.isEmpty() && predicate.select(stack.getItem()))
+        if (!stack.isEmpty() && predicate.test(stack.getItem()))
             return EnumHand.OFF_HAND;
         return null;
     }
 
-    public static EnumHand getHand(UtilList.Predicate<EnumHand> predicate) {
-        if (predicate.select(EnumHand.MAIN_HAND))
+    public static EnumHand getHand(Predicate<EnumHand> predicate) {
+        if (predicate.test(EnumHand.MAIN_HAND))
             return EnumHand.MAIN_HAND;
-        if (predicate.select(EnumHand.OFF_HAND))
+        if (predicate.test(EnumHand.OFF_HAND))
             return EnumHand.OFF_HAND;
         return null;
     }
 
-    public static SlotData findStackInMainInventory(EntityPlayer player, UtilList.Predicate<ItemStack> predicate) {
+    public static SlotData findStackInMainInventory(EntityPlayer player, Predicate<ItemStack> predicate) {
         for (int i = 9; i < player.inventory.getSizeInventory(); i++) {
             ItemStack stack = player.inventory.getStackInSlot(i);
-            if (predicate.select(stack))
+            if (predicate.test(stack))
                 return new SlotData(i, stack);
         }
         return new SlotData(-1, ItemStack.EMPTY);
     }
 
-    public static SlotData findStackInInventory(EntityPlayer player, UtilList.Predicate<ItemStack> predicate) {
+    public static SlotData findStackInInventory(EntityPlayer player, Predicate<ItemStack> predicate) {
         ItemStack stack = player.getHeldItemMainhand();
-        if (predicate.select(stack))
+        if (predicate.test(stack))
             return new SlotData(player.inventory.currentItem, stack);
         stack = player.getHeldItemOffhand();
-        if (predicate.select(stack))
+        if (predicate.test(stack))
             return new SlotData(InventoryIndexes.Offhand.getValue(), stack);
         for (int i = 0; i < player.inventory.getSizeInventory(); i++) {
             stack = player.inventory.getStackInSlot(i);
-            if (predicate.select(stack))
+            if (predicate.test(stack))
                 return new SlotData(i, stack);
         }
         return new SlotData(-1, ItemStack.EMPTY);
     }
 
-    public static void shrinkAndSetStack(EntityPlayer player, SlotData slotData, int shrink){
+    public static void shrinkAndSetStack(EntityPlayer player, SlotData slotData, int shrink) {
 
     }
 

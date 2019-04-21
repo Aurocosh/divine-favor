@@ -2,6 +2,7 @@ package aurocosh.divinefavor.common.item.bone_dagger;
 
 import aurocosh.divinefavor.DivineFavor;
 import aurocosh.divinefavor.common.config.common.ConfigItem;
+import aurocosh.divinefavor.common.constants.ConstMainTabOrder;
 import aurocosh.divinefavor.common.custom_data.living.LivingData;
 import aurocosh.divinefavor.common.custom_data.living.data.soul_theft.SoulTheftData;
 import aurocosh.divinefavor.common.damage_source.ModDamageSources;
@@ -58,7 +59,7 @@ public class ItemBoneDaggerAwakened extends ModItem {
     }
 
     public ItemBoneDaggerAwakened() {
-        super("bone_dagger_awakened", "bone_dagger_awakened");
+        super("bone_dagger_awakened", "bone_dagger_awakened", ConstMainTabOrder.DAGGERS);
         setMaxStackSize(1);
         setContainerItem(this);
         setCreativeTab(DivineFavor.TAB_MAIN);

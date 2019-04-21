@@ -2,6 +2,7 @@ package aurocosh.divinefavor.common.item.ritual_pouch;
 
 import aurocosh.divinefavor.DivineFavor;
 import aurocosh.divinefavor.common.constants.ConstGuiIDs;
+import aurocosh.divinefavor.common.constants.ConstMainTabOrder;
 import aurocosh.divinefavor.common.item.base.ModItem;
 import aurocosh.divinefavor.common.item.common.ModItems;
 import net.minecraft.entity.player.EntityPlayer;
@@ -22,7 +23,7 @@ public class ItemRitualPouch extends ModItem {
     private static String TAG_SHARE = "Ritual";
 
     public ItemRitualPouch() {
-        super("ritual_pouch","ritual_pouch");
+        super("ritual_pouch","ritual_pouch", ConstMainTabOrder.OTHER_ITEMS);
         setMaxStackSize(1);
         setCreativeTab(DivineFavor.TAB_MAIN);
     }

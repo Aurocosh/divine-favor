@@ -20,7 +20,7 @@ public class MediumRecipeData {
         ItemStack resultStack = result.toItemStack();
         if (resultStack.isEmpty()) {
             DivineFavor.logger.error("Recipe error: " + result.item + ". Result is invalid:" + result.item);
-            return null;
+            return new ArrayList<>();
         }
 
         List<ItemCallingStone> callingStones = new ArrayList<>();
@@ -39,7 +39,7 @@ public class MediumRecipeData {
 
         if (callingStones.isEmpty()) {
             DivineFavor.logger.error("Recipe error: " + result.item + ". No calling stones defined.");
-            return null;
+            return new ArrayList<>();
         }
 
         List<ItemStack> ingredientStacks = new ArrayList<>();
@@ -47,7 +47,7 @@ public class MediumRecipeData {
             ItemStack itemStack = ingredient.toItemStack();
             if (itemStack.isEmpty()) {
                 DivineFavor.logger.error("Recipe error: " + result.item + ". Ingredient is invalid:" + ingredient.item);
-                return null;
+                return new ArrayList<>();
             }
             ingredientStacks.add(itemStack);
         }

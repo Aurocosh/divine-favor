@@ -1,6 +1,6 @@
 package aurocosh.divinefavor.common.custom_data.player.data.favor;
 
-import aurocosh.divinefavor.common.item.contract.ItemContract;
+import aurocosh.divinefavor.common.item.contract.ItemFavorContract;
 import aurocosh.divinefavor.common.spirit.base.ModSpirit;
 import net.minecraft.util.math.MathHelper;
 
@@ -39,7 +39,7 @@ public class SpiritStatus {
         informActivity = false;
     }
 
-    public void addStats(ItemContract contract) {
+    public void addStats(ItemFavorContract contract) {
         regen += contract.getRegen();
         minLimit += contract.getMin();
         maxLimit += contract.getMax();

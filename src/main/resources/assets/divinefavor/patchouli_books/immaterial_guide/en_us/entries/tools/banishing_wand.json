@@ -1,0 +1,16 @@
+{
+  "name": "Banishing wand",
+  "icon": "divinefavor:banishing_wand",
+  "category": "tools",
+  "pages": [
+    {
+      "type": "text",
+      "text": "Banishing wand is a summoner tool. It is used to banish minions. To banish minion you need to right click him with this item. You can only banish your own minions."
+    },
+    {
+      "type": "crafting",
+      "text": "$(item)Banishing wand$() recipe",
+      "recipe": "divinefavor:banishing_wand"
+    }
+  ]
+}

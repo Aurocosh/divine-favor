@@ -25,6 +25,8 @@ tile.divinefavor:soulbound_lectern_wood.name=Wood soulbound lectern
 ## OTHER BLOCKS
 tile.divinefavor:bath_heater.name=Bath heater
 tile.divinefavor:ender_pumpkin.name=Ender pumpkin
+tile.divinefavor:red_pulse.name=Red pulse
+tile.divinefavor:red_signal.name=Red signal
 
 # MISC
 divinefavor:no_grudge_assigned=No grudge
@@ -59,6 +61,7 @@ item.divinefavor:storage_gem.name=Storage gem
 item.divinefavor:warp_gem.name=Warp gem
 item.divinefavor:warp_pebble.name=Warp pebble
 ## TOOLS
+item.divinefavor:banishing_wand.name=Banishing wand
 item.divinefavor:bone_dagger.name=Bone dagger
 item.divinefavor:bone_dagger_awakened.name=Awakened bone dagger
 item.divinefavor:bone_key.name=Bone key
@@ -305,6 +308,7 @@ item.divinefavor:storage_gem.description=Allows you to remotely access chest. Ca
 item.divinefavor:warp_gem.description=Instantly teleports you to place where it was created. Works across dimensions. Can be created with appropriate talisman.
 item.divinefavor:warp_pebble.description=Instantly teleports you to place where it was created. Does not work across dimensions. Can be created with appropriate talisman.
 ## TOOLS
+item.divinefavor:banishing_wand.description=Right click minion with this item to banish him.
 item.divinefavor:bone_dagger.description=Not a weapon. Well, not very good weapon. Bone dagger is an unfinished spiritual tool that can be transformed into awakened bone dagger. Read guidebook for more details (Immaterial guide).
 item.divinefavor:bone_dagger_awakened.description=Spiritual tool whose main purpose is to extract soul shards from things with souls.
 item.divinefavor:bone_key.description=Tool used for reactivation of damaged multiblocks.
@@ -504,3 +508,18 @@ item.divinefavor:contract.max=Will increase your favor limit by %1$s
 item.divinefavor:contract.informActivity=Will inform you when spirit becomes active
 item.divinefavor:contract.no_effects=This contract has no effects
 
+#ENTITIES
+##MINIONS
+entity.minion_creeper.name=Minion creeper
+entity.minion_husk.name=Minion husk
+entity.minion_skeleton.name=Minion skeleton
+entity.minion_stray.name=Minion stray
+entity.minion_zombie.name=Minion zombie
+
+##ROPES
+entity.rope_barrier.name=Barrier rope
+entity.rope_explosive.name=Explosive rope
+entity.rope_glowing.name=Glowing rope
+entity.rope_guide.name=Guide rope
+entity.rope_inert.name=Inert rope
+entity.rope_teleporting.name=Warping rope

@@ -11,8 +11,8 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 public class ModBlockHorizontal extends ModBlock {
-    public ModBlockHorizontal(String name, Material material) {
-        super(name, material);
+    public ModBlockHorizontal(String name, Material material, int orderIndex) {
+        super(name, material, orderIndex);
     }
     public static final PropertyDirection FACING = BlockHorizontal.FACING;
 

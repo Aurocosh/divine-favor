@@ -4,6 +4,7 @@ import aurocosh.divinefavor.DivineFavor;
 import aurocosh.divinefavor.common.block.base.ModBlock;
 import aurocosh.divinefavor.common.constants.ConstBlockNames;
 import aurocosh.divinefavor.common.constants.ConstGuiIDs;
+import aurocosh.divinefavor.common.constants.ConstMainTabOrder;
 import aurocosh.divinefavor.common.util.UtilEntity;
 import net.minecraft.block.BlockHorizontal;
 import net.minecraft.block.ITileEntityProvider;
@@ -33,7 +34,7 @@ public class BlockSoulboundLectern extends ModBlock implements ITileEntityProvid
     public static final PropertyEnum<SoulboundLecternGem> GEM = PropertyEnum.create("gem", SoulboundLecternGem.class);
 
     public BlockSoulboundLectern(String name, Material material) {
-        super(ConstBlockNames.SOULBOUND_LECTERN + "_" + name, material);
+        super(ConstBlockNames.SOULBOUND_LECTERN + "_" + name, material, ConstMainTabOrder.LECTERNS);
         setHardness(2.0F);
         setResistance(10.0F);
         setSoundType(SoundType.METAL);

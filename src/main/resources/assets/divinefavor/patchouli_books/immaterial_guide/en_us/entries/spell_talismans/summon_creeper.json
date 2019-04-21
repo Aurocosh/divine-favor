@@ -10,6 +10,11 @@
     {
       "type": "spell_talisman_stats",
       "talisman": "divinefavor:talisman_summon_creeper"
+    },
+    {
+      "type": "entity",
+      "entity": "divinefavor:entity.minion_creeper",
+      "text": "Explosive minion."
     }
   ]
 }
