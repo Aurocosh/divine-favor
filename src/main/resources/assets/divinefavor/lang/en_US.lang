@@ -367,11 +367,11 @@ item.divinefavor:blend_wood.description=Blend used for contacting spirit Timber
 
 ##ROPES
 item.divinefavor:rope_barrier.description=This rope will repel all creatures except players. Make a circle and stand in the middle or trap somebody by surrounding them with rope. Or cross out entrance to repel mobs. Durability of rope is limited and it will break eventually.
-item.divinefavor:rope_explosive.description=This rope is intended for mining. Toss this rope in the cave and ignite with a flint and steel, and watch it go boom.
-item.divinefavor:rope_glowing.description=Unusual rope that is visible through walls.
-item.divinefavor:rope_guide.description=You can climb on this rope very easily. Press sneaking and climb by going forward or backward.
-item.divinefavor:rope_inert.description=This rope will not bend or drop on floor. You can also climb on this rope very easily. Press sneaking and climb by going forward or backward.
-item.divinefavor:rope_teleporting.description=Unusual trapping device. It will teleport anything it touches to the end of the rope.
+item.divinefavor:rope_explosive.description=This rope is intended for mining. Toss this rope in the cave and ignite with a flint and steel, and watch it go boom. Due to its explosive nature it can also be used for extreme mob hunting.
+item.divinefavor:rope_glowing.description=Unusual rope that is visible through walls. You can use it to temporarily mark underground cave area to make it visible on surface, or you can write messages that are visible through walls.
+item.divinefavor:rope_guide.description=Basic rope intended for cave exploration. This rope will help you find your way back from the cave. Also you can climb on this rope very easily. Press sneaking and climb by going forward or backward.
+item.divinefavor:rope_inert.description=Rope similar in purpose to guide rope, but unlike it this rope will not bend or drop on floor. This rope will help you find your way back from the cave. Also you can climb on this rope very easily. Press sneaking and climb by going forward or backward.
+item.divinefavor:rope_teleporting.description=Unusual trapping device. It will teleport anything it touches to the end of the rope. You can use it to move peaceful mobs to otherwise hard to reach places or to teleport unsuspecting players in traps.
 
 ## SPELL TALISMANS
 item.divinefavor:talisman_armor_of_pacifist.description=Grants user armor of pacifist. Player will be protected from most damage types, but in turn will not be able to attack anyone.

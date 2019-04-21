@@ -1,0 +1,21 @@
+{
+  "name": "Ropes",
+  "icon": "divinefavor:rope_explosive",
+  "category": "basics",
+  "sortnum": 8,
+  "pages": [
+    {
+      "type": "text",
+      "text": "Mysterious ropes originated from far away swamp land. Some spirits took liking to it and made their own versions of the artifact. To use this rope just use it on any solid block and it will unroll itself as you walk. To pick it up you can just follow the rope back. As you approach latest node connected to you it will automatically be picked up. You can right click last node to connect or disconnect it."
+    },
+    {
+      "type": "text",
+      "text": "You can also repeatedly right click rope on the ground to manually place rope. If you right click on first or middle node then you will pick up last node of the rope. All types of the rope will gradually degrade and disappear if left in the world for long enough, so if you want to reuse be sure to pick it up before you go."
+    },
+    {
+      "type": "spotlight",
+      "item": "divinefavor:rope_barrier",
+      "text": "Above you will see an example of a barrier rope. Most of ropes have some kind of special effects. This rope is capable of repelling approaching mobs."
+    }
+  ]
+}

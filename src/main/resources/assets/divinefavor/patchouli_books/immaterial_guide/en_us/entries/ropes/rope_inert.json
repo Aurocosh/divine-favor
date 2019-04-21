@@ -1,0 +1,16 @@
+{
+  "name": "Inert rope",
+  "icon": "divinefavor:rope_inert",
+  "category": "ropes",
+  "pages": [
+    {
+      "type": "item_description",
+      "talisman": "divinefavor:rope_inert"
+    },
+    {
+      "type": "spotlight",
+      "item": "divinefavor:rope_inert",
+      "text": "$(item)Inert rope$() mysterious tool intended for exploration"
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "name": "Warping rope",
+  "icon": "divinefavor:rope_teleporting",
+  "category": "ropes",
+  "pages": [
+    {
+      "type": "item_description",
+      "talisman": "divinefavor:rope_teleporting"
+    },
+    {
+      "type": "spotlight",
+      "item": "divinefavor:rope_teleporting",
+      "text": "$(item)Warping rope$() mysterious tool intended for entrapment"
+    }
+  ]
+}

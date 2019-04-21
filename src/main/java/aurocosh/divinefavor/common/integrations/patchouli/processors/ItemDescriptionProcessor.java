@@ -1,26 +1,26 @@
 package aurocosh.divinefavor.common.integrations.patchouli.processors;
 
 import aurocosh.divinefavor.DivineFavor;
-import aurocosh.divinefavor.common.item.talismans.base.ItemTalisman;
+import aurocosh.divinefavor.common.item.base.ModItem;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.item.Item;
 import net.minecraft.util.ResourceLocation;
 import vazkii.patchouli.api.IComponentProcessor;
 import vazkii.patchouli.api.IVariableProvider;
 
-public class TalismanDescriptionProcessor implements IComponentProcessor {
+public class ItemDescriptionProcessor implements IComponentProcessor {
     String text;
 
     @Override
     public void setup(IVariableProvider<String> variables) {
-        String talismanName = variables.get("talisman");
-        Item item = Item.REGISTRY.getObject(new ResourceLocation(talismanName));
-        if (item instanceof ItemTalisman) {
-            ItemTalisman talisman = (ItemTalisman) item;
+        String itemName = variables.get("talisman");
+        Item item = Item.REGISTRY.getObject(new ResourceLocation(itemName));
+        if (item instanceof ModItem) {
+            ModItem talisman = (ModItem) item;
             text = I18n.format(talisman.getDescriptionKey());
         }
         else
-            DivineFavor.logger.error("Talisman not found:" + talismanName);
+            DivineFavor.logger.error("Item not found:" + itemName);
     }
 
     @Override
@@ -29,5 +29,4 @@ public class TalismanDescriptionProcessor implements IComponentProcessor {
             return text;
         return null;
     }
-
 }
