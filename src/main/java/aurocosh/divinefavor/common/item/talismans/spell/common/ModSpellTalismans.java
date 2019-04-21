@@ -58,6 +58,7 @@ public final class ModSpellTalismans {
     public static ItemSpellTalisman overwarp;
     public static ItemSpellTalisman pearl_crumbs;
     public static ItemSpellTalisman piercing_inferno;
+    public static ItemSpellTalisman place_block;
     public static ItemSpellTalisman prismatic_eyes;
     public static ItemSpellTalisman red_pulse;
     public static ItemSpellTalisman red_signal;
@@ -167,6 +168,7 @@ public final class ModSpellTalismans {
         ground_flow = new SpellTalismanModPotionToggle("ground_flow", ModSpirits.romol, ConfigSpells.groundFlow.favorCost, ModPotions.ground_flow);
         harvest = new SpellTalismanHarvest("harvest", ModSpirits.romol, ConfigSpells.harvest.favorCost, SpellOptions.ALL_CAST);
         miners_focus = new SpellTalismanMinersFocus("miners_focus", ModSpirits.romol, ConfigSpells.minersFocus.favorCost, SpellOptions.ALL_CAST);
+        place_block = new SpellTalismanPlaceBlock("place_block", ModSpirits.romol, ConfigSpells.woodenPunch.favorCost, SpellOptions.ALL_CAST_TRACE);
         stone_fever = new SpellTalismanModPotion("stone_fever", ModSpirits.romol, ConfigSpells.stoneFever.favorCost, ModPotions.stone_fever, ConfigSpells.stoneFever.duration);
         stoneball_throw = new SpellTalismanStoneballThrow("stoneball_throw", ModSpirits.romol, ConfigSpells.stoneballThrow.favorCost, SpellOptions.ALL_CAST);
         wooden_punch = new SpellTalismanModPotionToggle("wooden_punch", ModSpirits.romol, ConfigSpells.woodenPunch.favorCost, ModPotions.wooden_punch);
