@@ -9,6 +9,8 @@ import net.minecraftforge.common.config.Config;
 public class ConfigSpells {
     @Config.Name("Armor of pacifist")
     public static ArmorOfPacifist armorOfPacifist = new ArmorOfPacifist();
+    @Config.Name("Arrow deflection")
+    public static ArrowDeflection arrowDeflection = new ArrowDeflection();
     @Config.Name("Arrow throw")
     public static ArrowThrow arrowThrow = new ArrowThrow();
     @Config.Name("Blade of grass")
@@ -101,6 +103,8 @@ public class ConfigSpells {
     public static PearlCrumbs pearlCrumbs = new PearlCrumbs();
     @Config.Name("Piercing inferno")
     public static PiercingInferno piercingInferno = new PiercingInferno();
+    @Config.Name("Ping")
+    public static Ping ping = new Ping();
     @Config.Name("Prismatic eyes")
     public static PrismaticEyes prismaticEyes = new PrismaticEyes();
     @Config.Name("Red pulse")

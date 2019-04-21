@@ -13,4 +13,5 @@ public enum SpellOptions {
     public static final EnumSet<SpellOptions> RIGHT_CAST = EnumSet.of(SpellOptions.RightClickCast);
     public static final EnumSet<SpellOptions> ENTITY_CAST = EnumSet.of(SpellOptions.RightClickCast, OnRightCastFindTargetEntity);
     public static final EnumSet<SpellOptions> ALL_CAST_TRACE = EnumSet.of(SpellOptions.ItemUseCast, SpellOptions.RightClickCast, SpellOptions.OnRightCastRayTraceBlock);
+    public static final EnumSet<SpellOptions> TRACE_ONLY_CAST = EnumSet.of(SpellOptions.RightClickCast, SpellOptions.OnRightCastRayTraceBlock);
 }

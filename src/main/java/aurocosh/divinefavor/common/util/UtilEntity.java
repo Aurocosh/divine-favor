@@ -1,7 +1,6 @@
 package aurocosh.divinefavor.common.util;
 
 import aurocosh.divinefavor.common.lib.GlobalBlockPos;
-import aurocosh.divinefavor.common.lib.math.Vector3;
 import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 import net.minecraft.block.Block;
@@ -137,10 +136,8 @@ public class UtilEntity {
 //        entity.motionZ += MathHelper.cos(entity.rotationYaw * 0.017453292F) * factor;
     }
 
-    public static RayTraceResult getBlockPlayerLookingAt(EntityPlayer player) {
-        Vector3 posVec = new Vector3(player.posX, player.posY + player.getEyeHeight(), player.posZ);
-        Vector3 lookVec = new Vector3(player.getLookVec());
-        return UtilWorld.raycast(player.world, posVec, lookVec, 20);
+    public static RayTraceResult getBlockPlayerLookingAt(EntityPlayer player, double length) {
+        return UtilWorld.raycast(player.world, player.getPositionEyes(0), player.getLookVec(), length);
     }
 
     public static <T extends Entity> List<T> getNearbyEntities(Class<? extends T> clazz, World world, Vec3d origin, double radius, @Nullable Predicate<? super T> filter) {

@@ -32,8 +32,10 @@ public final class ModEntities {
         registerModEntity(EntityRopeExplosiveNode.class, "rope_explosive", 64, 1, true);
         registerModEntity(EntityRopeGlowingNode.class, "rope_glowing", 64, 1, true);
         registerModEntity(EntityRopeGuideNode.class, "rope_guide", 64, 1, true);
-        registerModEntity(EntityRopeInertNode.class, "rope_inert", 64, 1, true);
+        registerModEntity(EntityRopeInertNode.class, "rope_inert", 64, 1, false);
         registerModEntity(EntityRopeTeleportingNode.class, "rope_teleporting", 64, 1, true);
+
+        registerModEntity(EntityPing.class, "ping", 64, 1, false);
     }
 
     private static void registerModEntity(Class<? extends Entity> entityClass, String entityName, int trackingRange, int updateFrequency, boolean sendsVelocityUpdates) {

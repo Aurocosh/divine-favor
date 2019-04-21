@@ -1,6 +1,7 @@
 package aurocosh.divinefavor.common.item.talismans.spell.base;
 
 import aurocosh.divinefavor.DivineFavor;
+import aurocosh.divinefavor.common.config.common.ConfigGeneral;
 import aurocosh.divinefavor.common.custom_data.player.PlayerData;
 import aurocosh.divinefavor.common.custom_data.player.data.favor.SpiritData;
 import aurocosh.divinefavor.common.item.talismans.base.ItemTalisman;
@@ -16,6 +17,7 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 
 import javax.annotation.Nonnull;
@@ -67,8 +69,8 @@ public class ItemSpellTalisman extends ItemTalisman {
     public EnumActionResult onItemUse(EntityPlayer playerIn, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
         ItemStack stack = playerIn.getHeldItem(hand);
         if (stack.getItem() instanceof ItemSpellTalisman) {
-            castItemUse(playerIn, worldIn, pos, hand, facing, hitX, hitY, hitZ);
-            return EnumActionResult.SUCCESS;
+            boolean casted = castItemUse(playerIn, worldIn, pos, hand, facing, hitX, hitY, hitZ);
+            return casted ? EnumActionResult.SUCCESS : EnumActionResult.PASS;
         }
         return EnumActionResult.PASS;
     }
@@ -82,11 +84,12 @@ public class ItemSpellTalisman extends ItemTalisman {
         return new ActionResult<>(success ? EnumActionResult.SUCCESS : EnumActionResult.PASS, stack);
     }
 
-    public void castItemUse(EntityPlayer playerIn, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
+    public boolean castItemUse(EntityPlayer playerIn, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
         if (!options.contains(SpellOptions.ItemUseCast))
-            return;
-        TalismanContext context = new TalismanContext(playerIn, worldIn, pos, hand, facing, null, CastType.UseCast, options);
+            return false;
+        TalismanContext context = new TalismanContext(playerIn, worldIn, pos, new Vec3d(hitX, hitY, hitZ), hand, facing, null, CastType.UseCast, options);
         cast(context);
+        return true;
     }
 
     public boolean castRightClick(World world, EntityPlayer player, EnumHand hand) {
@@ -94,23 +97,26 @@ public class ItemSpellTalisman extends ItemTalisman {
             return false;
 
         BlockPos pos;
+        Vec3d posVec;
         EnumFacing facing;
         EntityLivingBase target = null;
         if (options.contains(SpellOptions.OnRightCastRayTraceBlock)) {
-            RayTraceResult traceResult = UtilEntity.getBlockPlayerLookingAt(player);
+            RayTraceResult traceResult = UtilEntity.getBlockPlayerLookingAt(player, ConfigGeneral.talismanCastDistance);
             if (traceResult == null)
                 return false;
             pos = traceResult.getBlockPos();
+            posVec = traceResult.hitVec;
             facing = traceResult.sideHit;
         }
         else {
             pos = player.getPosition();
+            posVec = new Vec3d(pos);
             facing = EnumFacing.UP;
         }
         if (options.contains(SpellOptions.OnRightCastFindTargetEntity))
             target = UtilEntity.getEntityPlayerLookingAt(player, EntityLivingBase.class, ENTITY_SEARCH_DISTANCE, true);
 
-        TalismanContext context = new TalismanContext(player, world, pos, hand, facing, target, CastType.RightCast, options);
+        TalismanContext context = new TalismanContext(player, world, pos, posVec, hand, facing, target, CastType.RightCast, options);
         return cast(context);
     }
 
