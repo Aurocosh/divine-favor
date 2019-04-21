@@ -44,6 +44,7 @@ public final class ModSpellTalismans {
     public static ItemSpellTalisman harvest;
     public static ItemSpellTalisman heat_wave;
     public static ItemSpellTalisman hellisphere;
+    public static ItemSpellTalisman hovering;
     public static ItemSpellTalisman ignition;
     public static ItemSpellTalisman infernal_touch;
     public static ItemSpellTalisman invite_gem;
@@ -160,6 +161,7 @@ public final class ModSpellTalismans {
         toadic_jump = new SpellTalismanModPotionToggle("toadic_jump", ModSpirits.redwind, ConfigSpells.toadicJump.favorCost, ModPotions.toadic_jump);
         wild_sprint = new SpellTalismanModPotion("wild_sprint", ModSpirits.redwind, ConfigSpells.wildSprint.favorCost, ModPotions.wild_charge, ConfigSpells.wildSprint.activationDelay);
         wind_step = new SpellTalismanWindStep("wind_step", ModSpirits.redwind, ConfigSpells.windStep.favorCost, SpellOptions.ALL_CAST);
+        hovering = new SpellTalismanModPotionToggle("hovering", ModSpirits.redwind, ConfigSpells.groundFlow.favorCost, ModPotions.hovering);
 
         // romol
         crushing_palm = new SpellTalismanModPotionToggle("crushing_palm", ModSpirits.romol, ConfigSpells.crushingPalm.favorCost, ModPotions.crushing_palm);
