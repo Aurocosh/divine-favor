@@ -41,7 +41,7 @@ public class EntitySpellArrow extends EntityArrow {
     private static final String TAG_SHOOTER = "Shooter";
     private static final String TAG_TALISMAN_DATA_COMMON = "TalismanDataCommon";
     private static final String TAG_TALISMAN_DATA_SERVER = "TalismanDataServer";
-    private double gravityValue = 0.05000000074505806D;
+    private double gravityValue = 0.05d;
 
     private static final DataParameter<Integer> COLOR = EntityDataManager.createKey(EntitySpellArrow.class, DataSerializers.VARINT);
     private static final DataParameter<Integer> TYPE = EntityDataManager.createKey(EntitySpellArrow.class, DataSerializers.VARINT);

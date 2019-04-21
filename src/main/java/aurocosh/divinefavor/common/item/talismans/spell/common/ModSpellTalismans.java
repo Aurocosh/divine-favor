@@ -58,6 +58,7 @@ public final class ModSpellTalismans {
     public static ItemSpellTalisman overwarp;
     public static ItemSpellTalisman pearl_crumbs;
     public static ItemSpellTalisman piercing_inferno;
+    public static ItemSpellTalisman ping;
     public static ItemSpellTalisman place_block;
     public static ItemSpellTalisman prismatic_eyes;
     public static ItemSpellTalisman red_pulse;
@@ -147,17 +148,18 @@ public final class ModSpellTalismans {
         small_fireball_throw = new SpellTalismanSmallFireballThrow("small_fireball_throw", ModSpirits.neblaze, ConfigSpells.smallFireballThrow.favorCost, SpellOptions.ALL_CAST);
 
         // redwind
+        arrow_deflection = new SpellTalismanModPotion("arrow_deflection", ModSpirits.redwind, ConfigSpells.arrowDeflection.favorCost, ModPotions.arrow_deflection, ConfigSpells.arrowDeflection.duration);
         clock = new SpellTalismanClock("clock", ModSpirits.redwind, ConfigSpells.clock.favorCost, SpellOptions.ALL_CAST);
         ethereal_flash = new SpellTalismanAirReplace("ethereal_flash", ModSpirits.redwind, ConfigSpells.etherealFlash.favorCost, SpellOptions.ALL_CAST_TRACE, () -> ModBlocks.ethereal_flash);
         ethereal_light = new SpellTalismanAirReplace("ethereal_light", ModSpirits.redwind, ConfigSpells.etherealLight.favorCost, SpellOptions.ALL_CAST_TRACE, () -> ModBlocks.ethereal_light);
         fall_negation = new SpellTalismanModPotionCharge("fall_negation", ModSpirits.redwind, ConfigSpells.fallNegation.favorCost, ModPotions.fall_negation, ConfigSpells.fallNegation.charges);
+        ping = new SpellTalismanPing("ping", ModSpirits.redwind, ConfigSpells.ping.favorCost, SpellOptions.TRACE_ONLY_CAST);
         prismatic_eyes = new SpellTalismanModPotionToggle("prismatic_eyes", ModSpirits.redwind, ConfigSpells.prismaticEyes.favorCost, ModPotions.prismatic_eyes);
         red_pulse = new SpellTalismanAirReplace("red_pulse", ModSpirits.redwind, ConfigSpells.redPulse.favorCost, SpellOptions.ALL_CAST_TRACE, () -> ModBlocks.red_pulse);
         red_signal = new SpellTalismanAirReplace("red_signal", ModSpirits.redwind, ConfigSpells.redSignal.favorCost, SpellOptions.ALL_CAST_TRACE, () -> ModBlocks.red_signal);
         toadic_jump = new SpellTalismanModPotionToggle("toadic_jump", ModSpirits.redwind, ConfigSpells.toadicJump.favorCost, ModPotions.toadic_jump);
         wild_sprint = new SpellTalismanModPotion("wild_sprint", ModSpirits.redwind, ConfigSpells.wildSprint.favorCost, ModPotions.wild_charge, ConfigSpells.wildSprint.activationDelay);
         wind_step = new SpellTalismanWindStep("wind_step", ModSpirits.redwind, ConfigSpells.windStep.favorCost, SpellOptions.ALL_CAST);
-        arrow_deflection = new SpellTalismanModPotion("arrow_deflection", ModSpirits.redwind, ConfigSpells.empowerAxe.favorCost, ModPotions.arrow_deflection, ConfigSpells.empowerAxe.duration);
 
         // romol
         crushing_palm = new SpellTalismanModPotionToggle("crushing_palm", ModSpirits.romol, ConfigSpells.crushingPalm.favorCost, ModPotions.crushing_palm);

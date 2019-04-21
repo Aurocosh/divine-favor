@@ -1,6 +1,6 @@
 package aurocosh.divinefavor.common.potions.potions;
 
-import aurocosh.divinefavor.common.config.common.ConfigArrow;
+import aurocosh.divinefavor.common.config.common.ConfigSpells;
 import aurocosh.divinefavor.common.lib.LimitedTimer;
 import aurocosh.divinefavor.common.lib.PrivateField;
 import aurocosh.divinefavor.common.potions.base.effect.ModEffect;
@@ -25,8 +25,8 @@ import java.util.List;
 
 @Mod.EventBusSubscriber
 public class PotionArrowDeflection extends ModPotion {
-    private static final LimitedTimer COOLDOWN_COUNTER = new LimitedTimer(ConfigArrow.arrowDeflection.deflectionCooldown);
-    private final static float RADIUS_SQ = ConfigArrow.arrowDeflection.radius * ConfigArrow.arrowDeflection.radius;
+    private static final LimitedTimer COOLDOWN_COUNTER = new LimitedTimer(ConfigSpells.arrowDeflection.deflectionCooldown);
+    private final static float RADIUS_SQ = ConfigSpells.arrowDeflection.radius * ConfigSpells.arrowDeflection.radius;
     private final static PrivateField<EntityArrow, Boolean> IN_GROUND = new PrivateField<>(EntityArrow.class, 7, false);
 
     public PotionArrowDeflection() {
@@ -38,14 +38,14 @@ public class PotionArrowDeflection extends ModPotion {
         if (!COOLDOWN_COUNTER.tick())
             return;
 
-        List<EntityArrow> entities = livingBase.world.getEntitiesWithinAABB(EntityArrow.class, new AxisAlignedBB(livingBase.getPosition()).grow(ConfigArrow.arrowDeflection.radius));
+        List<EntityArrow> entities = livingBase.world.getEntitiesWithinAABB(EntityArrow.class, new AxisAlignedBB(livingBase.getPosition()).grow(ConfigSpells.arrowDeflection.radius));
         List<EntityArrow> projectiles = UtilList.select(entities, element -> !IN_GROUND.get(element) && (element.getDistanceSq(livingBase) <= RADIUS_SQ));
         for (Entity projectile : projectiles) {
             Vec3d directionToTarget = livingBase.getPositionVector().subtract(projectile.getPositionVector()).normalize();
             Vec3d motionVector = UtilEntity.getMotionVector(projectile);
             Vec3d motionDirection = motionVector.normalize();
             double product = directionToTarget.dotProduct(motionDirection);
-            if (product > ConfigArrow.arrowDeflection.tolerance)
+            if (product > ConfigSpells.arrowDeflection.tolerance)
                 UtilEntity.setVelocity(projectile, (motionDirection.scale(-1)), (float) motionVector.length());
             COOLDOWN_COUNTER.reset();
         }
@@ -60,7 +60,7 @@ public class PotionArrowDeflection extends ModPotion {
         if (source instanceof EntityDamageSourceIndirect && ((EntityDamageSourceIndirect) source).damageType.equals("arrow"))
             return;
 
-        int duration = -ConfigArrow.arrowDeflection.durationDecrease;
+        int duration = -ConfigSpells.arrowDeflection.durationDecrease;
         PotionEffect potionEffect = livingBase.getActivePotionMap().get(ModPotions.arrow_deflection);
         if (potionEffect != null)
             duration += potionEffect.getDuration();

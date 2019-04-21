@@ -5,6 +5,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 
 import java.util.EnumSet;
@@ -14,6 +15,7 @@ public class TalismanContext {
     public final EntityLivingBase target;
     public final World world;
     public final BlockPos pos;
+    public final Vec3d posVec;
     public final EnumHand hand;
     public final EnumFacing facing;
     public final CastType castType;
@@ -23,6 +25,7 @@ public class TalismanContext {
         this.player = player;
         this.world = player.world;
         this.pos = null;
+        this.posVec = null;
         this.hand = EnumHand.MAIN_HAND;
         options = EnumSet.noneOf(SpellOptions.class);
         facing = EnumFacing.UP;
@@ -30,10 +33,11 @@ public class TalismanContext {
         target = null;
     }
 
-    public TalismanContext(EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing facing, EntityLivingBase target, CastType type, EnumSet<SpellOptions> options){
+    public TalismanContext(EntityPlayer player, World world, BlockPos pos, Vec3d posVec, EnumHand hand, EnumFacing facing, EntityLivingBase target, CastType type, EnumSet<SpellOptions> options) {
         this.player = player;
         this.world = world;
         this.pos = pos;
+        this.posVec = posVec;
         this.hand = hand;
         this.facing = facing;
         this.target = target;

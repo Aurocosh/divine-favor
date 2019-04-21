@@ -1,0 +1,20 @@
+{
+  "name": "Ping",
+  "icon": "divinefavor:talisman_ping",
+  "category": "spell_talismans",
+  "pages": [
+    {
+      "type": "item_description",
+      "talisman": "divinefavor:talisman_ping"
+    },
+    {
+      "type": "spell_talisman_stats",
+      "talisman": "divinefavor:talisman_ping"
+    },
+    {
+      "type": "entity",
+      "entity": "divinefavor:entity.ping",
+      "text": "Created mark."
+    }
+  ]
+}

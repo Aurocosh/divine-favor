@@ -9,6 +9,8 @@ public class ConfigGeneral {
     public static int particleLimit = 5000;
     @Config.Name("Particle radius")
     public static int particleRadius = 32;
+    @Config.Name("Talisman cast distance")
+    public static int talismanCastDistance = 48;
     @Config.Name("Max climbing radius")
     public static int maxClimbingRadius = 12;
 }
