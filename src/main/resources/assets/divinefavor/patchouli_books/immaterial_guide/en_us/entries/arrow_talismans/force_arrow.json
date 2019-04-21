@@ -4,7 +4,7 @@
   "category": "arrow_talismans",
   "pages": [
     {
-      "type": "talisman_description",
+      "type": "item_description",
       "talisman": "divinefavor:arrow_talisman_force_arrow"
     },
     {

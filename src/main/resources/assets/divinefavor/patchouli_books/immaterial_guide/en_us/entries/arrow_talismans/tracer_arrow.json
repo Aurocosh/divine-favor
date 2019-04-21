@@ -1,15 +1,15 @@
 {
   "name": "Tracer arrow",
-  "icon": "divinefavor:arrow_talisman_anti_tracer_arrow",
+  "icon": "divinefavor:arrow_talisman_tracer_arrow",
   "category": "arrow_talismans",
   "pages": [
     {
-      "type": "talisman_description",
-      "talisman": "divinefavor:arrow_talisman_anti_tracer_arrow"
+      "type": "item_description",
+      "talisman": "divinefavor:arrow_talisman_tracer_arrow"
     },
     {
       "type": "arrow_talisman_stats",
-      "talisman": "divinefavor:arrow_talisman_anti_tracer_arrow"
+      "talisman": "divinefavor:arrow_talisman_tracer_arrow"
     }
   ]
 }

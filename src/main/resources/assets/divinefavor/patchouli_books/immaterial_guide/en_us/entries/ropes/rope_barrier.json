@@ -1,0 +1,16 @@
+{
+  "name": "Barrier rope",
+  "icon": "divinefavor:rope_barrier",
+  "category": "ropes",
+  "pages": [
+    {
+      "type": "item_description",
+      "talisman": "divinefavor:rope_barrier"
+    },
+    {
+      "type": "spotlight",
+      "item": "divinefavor:rope_barrier",
+      "text": "$(item)Barrier rope$() mysterious tool intended for protection."
+    }
+  ]
+}

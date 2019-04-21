@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "divinefavor:items/rope_explosive"
+    "layer0": "divinefavor:items/ropes/teleporting"
   }
 }

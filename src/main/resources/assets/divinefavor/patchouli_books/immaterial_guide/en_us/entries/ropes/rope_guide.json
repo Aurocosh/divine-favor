@@ -1,0 +1,16 @@
+{
+  "name": "Guide rope",
+  "icon": "divinefavor:rope_guide",
+  "category": "ropes",
+  "pages": [
+    {
+      "type": "item_description",
+      "talisman": "divinefavor:rope_guide"
+    },
+    {
+      "type": "spotlight",
+      "item": "divinefavor:rope_guide",
+      "text": "$(item)Guide rope$() mysterious tool intended for exploration."
+    }
+  ]
+}

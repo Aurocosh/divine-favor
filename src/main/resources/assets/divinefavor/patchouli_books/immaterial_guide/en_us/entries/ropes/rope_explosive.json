@@ -1,0 +1,16 @@
+{
+  "name": "Explosive rope",
+  "icon": "divinefavor:rope_explosive",
+  "category": "ropes",
+  "pages": [
+    {
+      "type": "item_description",
+      "talisman": "divinefavor:rope_explosive"
+    },
+    {
+      "type": "spotlight",
+      "item": "divinefavor:rope_explosive",
+      "text": "$(item)Barrier rope$() mysterious tool intended for mining and extreme hunting."
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "name": "Glowing rope",
+  "icon": "divinefavor:rope_glowing",
+  "category": "ropes",
+  "pages": [
+    {
+      "type": "item_description",
+      "talisman": "divinefavor:rope_glowing"
+    },
+    {
+      "type": "spotlight",
+      "item": "divinefavor:rope_glowing",
+      "text": "$(item)Glowing rope$() mysterious tool intended for marking and communication."
+    }
+  ]
+}
