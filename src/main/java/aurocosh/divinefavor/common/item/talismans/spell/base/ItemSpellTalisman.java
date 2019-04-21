@@ -27,7 +27,7 @@ public class ItemSpellTalisman extends ItemTalisman {
 
     // Talisman functions
     public ItemSpellTalisman(String name, ModSpirit spirit, int favorCost, EnumSet<SpellOptions> options) {
-        super("talisman_" + name, "talismans/" + name, spirit, favorCost);
+        super("talisman_" + name, "spell_talismans/" + name, spirit, favorCost);
         this.options = options;
 
         setMaxStackSize(1);

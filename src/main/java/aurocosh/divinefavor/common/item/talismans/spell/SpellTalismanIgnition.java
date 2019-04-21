@@ -15,6 +15,6 @@ public class SpellTalismanIgnition extends ItemSpellTalisman {
 
     @Override
     protected void performActionServer(TalismanContext context) {
-        UtilBlock.ignite(context.world, context.pos, context.facing);
+        UtilBlock.ignite(context.player, context.world, context.pos, context.facing);
     }
 }

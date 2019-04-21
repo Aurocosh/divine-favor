@@ -41,7 +41,7 @@ public class SpellTalismanHeatWave extends ItemSpellTalisman {
             if (UtilRandom.rollDice(ConfigSpells.heatWave.chanceToSetEnemyOnFire))
                 entity.setFire(ConfigSpells.heatWave.enemyBurnTime);
             if (UtilRandom.rollDice(ConfigSpells.heatWave.chanceToSetGroundOnFire))
-                UtilBlock.ignite(world, entity.getPosition());
+                UtilBlock.ignite(player, world, entity.getPosition());
         }
 
         Vec3d positionEyes = player.getPositionEyes(0);

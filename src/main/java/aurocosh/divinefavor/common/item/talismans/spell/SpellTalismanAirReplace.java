@@ -4,6 +4,7 @@ import aurocosh.divinefavor.common.item.talismans.spell.base.ItemSpellTalisman;
 import aurocosh.divinefavor.common.item.talismans.spell.base.SpellOptions;
 import aurocosh.divinefavor.common.item.talismans.spell.base.TalismanContext;
 import aurocosh.divinefavor.common.spirit.base.ModSpirit;
+import aurocosh.divinefavor.common.util.UtilBlock;
 import net.minecraft.block.Block;
 import net.minecraft.util.math.BlockPos;
 
@@ -22,12 +23,12 @@ public class SpellTalismanAirReplace extends ItemSpellTalisman {
     @Override
     protected boolean validate(TalismanContext context) {
         BlockPos pos = context.pos.offset(context.facing);
-        return context.world.isAirBlock(pos);
+        return UtilBlock.isAirOrReplaceable(context.world, pos);
     }
 
     @Override
     protected void performActionServer(TalismanContext context) {
         BlockPos pos = context.pos.offset(context.facing);
-        context.world.setBlockState(pos, blockProvider.get().getDefaultState());
+        UtilBlock.replaceBlock(context.player, context.world, pos, blockProvider.get().getDefaultState());
     }
 }

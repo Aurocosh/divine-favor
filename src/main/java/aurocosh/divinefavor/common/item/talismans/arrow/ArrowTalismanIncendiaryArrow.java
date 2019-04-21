@@ -9,6 +9,7 @@ import aurocosh.divinefavor.common.spirit.base.ModSpirit;
 import aurocosh.divinefavor.common.util.UtilBlock;
 import aurocosh.divinefavor.common.util.UtilCoordinates;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 
@@ -24,7 +25,7 @@ public class ArrowTalismanIncendiaryArrow extends ItemArrowTalisman {
     @Override
     protected boolean performActionServer(EntityLivingBase target, EntityLivingBase shooter, EntitySpellArrow spellArrow, BlockPos blockPos, EnumFacing sideHit) {
         List<BlockPos> posList = UtilCoordinates.getBlocksInSphere(spellArrow.getPosition(), ConfigArrow.incendiaryArrow.radius);
-        posList.forEach(pos -> UtilBlock.ignite(spellArrow.world, pos));
+        posList.forEach(pos -> UtilBlock.ignite((EntityPlayer) shooter, spellArrow.world, pos));
         return true;
     }
 }

@@ -25,7 +25,7 @@ public class NeblazePunishment extends SpiritPunishment {
         player.setFire(ConfigPunishments.neblaze.ignitionTimeSeconds);
         smeltPartsOfAltar(player, world, instance);
         spawnEnemies(player, world);
-        igniteRandomBlocks(world, instance.multiBlockOrigin.toBlockPos());
+        igniteRandomBlocks(player, world, instance.multiBlockOrigin.toBlockPos());
     }
 
     private void smeltPartsOfAltar(EntityPlayer player, World world, MultiBlockInstance instance) {
@@ -59,21 +59,21 @@ public class NeblazePunishment extends SpiritPunishment {
         return false;
     }
 
-    private void igniteRandomBlocks(World world, BlockPos center) {
+    private void igniteRandomBlocks(EntityPlayer player, World world, BlockPos center) {
         int blocksToIgnite = ConfigPunishments.neblaze.blocksToIgnite.random();
         for (int i = 0; i < blocksToIgnite; i++)
-            igniteBlock(world, center);
+            igniteBlock(player, world, center);
     }
 
-    private void igniteBlock(World world, BlockPos center) {
+    private void igniteBlock(EntityPlayer player, World world, BlockPos center) {
         int ignitionRadius = ConfigPunishments.neblaze.ignitionRadius;
         BlockPos ignitionPos = UtilCoordinates.getRandomBlockInRange(world, center, ignitionRadius, BLOCK_SEARCH_LIMIT, pos -> !world.isAirBlock(pos));
-        if(ignitionPos == null)
+        if (ignitionPos == null)
             return;
 
         List<BlockPos> candidates = Vector3i.convert(UtilVector3i.getNeighbours(new Vector3i(ignitionPos)));
         for (BlockPos pos : candidates)
-            if (UtilBlock.ignite(world, pos))
+            if (UtilBlock.ignite(player, world, pos))
                 return;
     }
 }

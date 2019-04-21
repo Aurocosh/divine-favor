@@ -5,10 +5,13 @@ import net.minecraft.block.BlockLiquid;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraft.stats.StatList;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.EnumHand;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3i;
@@ -21,19 +24,25 @@ import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.fluids.IFluidBlock;
 
 public class UtilBlock {
-    public static boolean canBreakBlock(EntityPlayer player, World world, BlockPos pos, boolean isToolRequired) {
+    private static boolean canReplaceBlock(EntityPlayer player, World world, BlockPos pos) {
         if (world.isRemote)
-            return false;
+            return true;
         if (!world.isBlockLoaded(pos))
-            return false;
+            return true;
         if (!world.isBlockModifiable(player, pos))
+            return true;
+        return false;
+    }
+
+    public static boolean canBreakBlock(EntityPlayer player, World world, BlockPos pos, boolean isToolRequired) {
+        if (canReplaceBlock(player, world, pos))
             return false;
 
         IBlockState state = world.getBlockState(pos);
         Block block = state.getBlock();
         if (block.isAir(state, world, pos) || block instanceof BlockLiquid || block instanceof IFluidBlock || !(block.getPlayerRelativeBlockHardness(state, player, world, pos) > 0))
             return false;
-        if(isToolRequired && !ForgeHooks.canHarvestBlock(block, player, world, pos))
+        if (isToolRequired && !ForgeHooks.canHarvestBlock(block, player, world, pos))
             return false;
         BlockEvent.BreakEvent event = new BlockEvent.BreakEvent(world, pos, state, player);
         MinecraftForge.EVENT_BUS.post(event);
@@ -49,7 +58,7 @@ public class UtilBlock {
     }
 
     public static boolean removeBlock(EntityPlayer player, World world, ItemStack tool, BlockPos pos, boolean dropItem, boolean isToolRequired, boolean particles) {
-        if(!canBreakBlock(player, world, pos, isToolRequired))
+        if (!canBreakBlock(player, world, pos, isToolRequired))
             return false;
         IBlockState state = world.getBlockState(pos);
         destroyBlock(player, world, pos, state);
@@ -61,7 +70,7 @@ public class UtilBlock {
     }
 
     public static boolean removeBlockAndReplant(EntityPlayer player, World world, ItemStack tool, BlockPos pos, boolean isToolRequired, boolean particles) {
-        if(!canBreakBlock(player, world, pos, isToolRequired))
+        if (!canBreakBlock(player, world, pos, isToolRequired))
             return false;
         IBlockState state = world.getBlockState(pos);
         destroyBlock(player, world, pos, state);
@@ -71,8 +80,7 @@ public class UtilBlock {
         return true;
     }
 
-    private static void harvestBlockAndReplant(World world, EntityPlayer player, BlockPos pos, IBlockState state, int fortune, ItemStack stack)
-    {
+    private static void harvestBlockAndReplant(World world, EntityPlayer player, BlockPos pos, IBlockState state, int fortune, ItemStack stack) {
         Block block = state.getBlock();
         player.addStat(StatList.getBlockStats(block));
         player.addExhaustion(0.005F);
@@ -84,29 +92,29 @@ public class UtilBlock {
         chance = ForgeEventFactory.fireBlockHarvesting(drops, world, pos, state, fortune, chance, false, player);
 
         IPlantable seed = null;
-        for(ItemStack drop : drops) {
-            if(drop != null && drop.getItem() instanceof IPlantable) {
+        for (ItemStack drop : drops) {
+            if (drop != null && drop.getItem() instanceof IPlantable) {
                 seed = (IPlantable) drop.getItem();
                 drop.shrink(1);
-                if(drop.isEmpty())
+                if (drop.isEmpty())
                     drops.remove(drop);
                 break;
             }
         }
 
-        if(seed != null) {
+        if (seed != null) {
             // make sure the plant is allowed here. should already be, mainly just covers the case of seeds from grass
             IBlockState down = world.getBlockState(pos.down());
-            if(down.getBlock().canSustainPlant(down, world, pos.down(), EnumFacing.UP, seed)) {
+            if (down.getBlock().canSustainPlant(down, world, pos.down(), EnumFacing.UP, seed)) {
                 // success! place the plant and drop the rest of the items
                 IBlockState crop = seed.getPlant(world, pos);
 
                 // only place the block/damage the tool if its a different state
-                if(crop != state)
+                if (crop != state)
                     world.setBlockState(pos, seed.getPlant(world, pos));
 
                 // drop the remainder of the items
-                for(ItemStack drop : drops)
+                for (ItemStack drop : drops)
                     if (world.rand.nextFloat() <= chance)
                         Block.spawnAsEntity(world, pos, drop);
             }
@@ -114,9 +122,9 @@ public class UtilBlock {
     }
 
     public static boolean smeltBlock(EntityPlayer player, World world, BlockPos pos) {
-        if(world.isRemote)
+        if (world.isRemote)
             return false;
-        if(!world.isBlockModifiable(player, pos))
+        if (!world.isBlockModifiable(player, pos))
             return false;
 
         IBlockState state = world.getBlockState(pos);
@@ -138,31 +146,46 @@ public class UtilBlock {
     }
 
     public static boolean replaceBlock(EntityPlayer player, World world, BlockPos pos, Block block) {
-        if(world.isRemote)
+        return replaceBlock(player, world, pos, block.getDefaultState());
+    }
+
+    public static boolean replaceBlock(EntityPlayer player, World world, BlockPos pos, IBlockState newState) {
+        if (canReplaceBlock(player, world, pos))
             return false;
-        if(!world.isBlockModifiable(player, pos))
-            return false;
-        world.setBlockState(pos, block.getDefaultState());
+        world.setBlockState(pos, newState);
         return true;
     }
 
-    public static boolean isAirOrReplaceable(World world, BlockPos pos){
+    public static boolean replaceBlock(EntityPlayer player, World world, BlockPos pos, ItemStack stack, EnumHand hand) {
+        Item item = stack.getItem();
+        if (!(item instanceof ItemBlock))
+            return false;
+        if (canReplaceBlock(player, world, pos))
+            return false;
+
+        ItemBlock itemBlock = (ItemBlock) item;
+        Block blockToPlace = Block.getBlockFromItem(itemBlock);
+        IBlockState stateForPlacement = blockToPlace.getStateForPlacement(world, pos, EnumFacing.UP, 0, 0, 0, stack.getItemDamage(), player, hand);
+        itemBlock.placeBlockAt(stack, player, world, pos, EnumFacing.UP, 0, 0, 0, stateForPlacement);
+        return true;
+    }
+
+    public static boolean isAirOrReplaceable(World world, BlockPos pos) {
         return world.isAirBlock(pos) || world.getBlockState(pos).getBlock().isReplaceable(world, pos);
     }
 
-    public static boolean ignite(World world, BlockPos pos){
-        if (!isAirOrReplaceable(world, pos))
-            return false;
-        world.setBlockState(pos, Blocks.FIRE.getDefaultState());
-        return true;
+    public static boolean ignite(EntityPlayer player, World world, BlockPos pos) {
+        if (isAirOrReplaceable(world, pos))
+            return replaceBlock(player, world, pos, Blocks.FIRE.getDefaultState());
+        return false;
     }
 
-    public static boolean ignite(World world, BlockPos pos, EnumFacing facing){
-        if(ignite(world, pos))
+    public static boolean ignite(EntityPlayer player, World world, BlockPos pos, EnumFacing facing) {
+        if (ignite(player, world, pos))
             return true;
 
         Vec3i shift = facing.getDirectionVec();
-        if(ignite(world, pos.add(shift)))
+        if (ignite(player, world, pos.add(shift)))
             return true;
         return false;
     }
