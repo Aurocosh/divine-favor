@@ -335,7 +335,7 @@ item.divinefavor:contract_binder.description=Stores contracts inside. Can be pla
 
 ## CONSUMABLES
 item.divinefavor:milky_apple.description=Removes all curses when consumed
-item.divinefavor:stone_ball.description=Just a small stone, you can throw it
+item.divinefavor:stone_ball.description=Just a small stone, you can throw it. Deals extra damage to skeletons, and has a small chance to deal critical damage.
 
 ## CONTRACTS
 item.divinefavor:contract_capacity_minor.description=When this contract is placed in soulbound lectern your maximum favor limit will be slightly increased for a spirit that owns that lectern.
@@ -454,7 +454,7 @@ item.divinefavor:talisman_snowball_throw.description=Throws snowballs. Does not 
 item.divinefavor:talisman_spider_might.description=Will grant to user some powers and weaknesses of a spider. User will be able to climb walls, but will be much more susceptible to fire damage and will be affected by bane of arthropods enchantment.
 item.divinefavor:talisman_starvation.description=This spell will temporally grant you ability to eat grass and leaves. To eat grass block or leaves just look at it and right click.
 item.divinefavor:talisman_stone_fever.description=Will temporarily grant caster ability to break stone instantly, but if player breaks any block other then stone, then he will lose ability to instantly break stone and also will suffer heavy negative effects.
-item.divinefavor:talisman_stoneball_throw.description=Throws small stone. Thrown stone is similar to snowball, but will deal some damage, also is capable of breaking glass.
+item.divinefavor:talisman_stoneball_throw.description=Throws small stone. Thrown stone is similar to snowball, but will deal some damage, also is capable of breaking glass. It also deals extra damage to skeletons, and has a small chance to deal critical damage.
 item.divinefavor:talisman_summon_creeper.description=Minion talisman. Allows you to summon creepers. Creeper will go to closest enemy and blow him up.
 item.divinefavor:talisman_summon_husk.description=Minion talisman. Allows you to summon husks. Minions will follow you and fight for you. You can command them directly with some special talismans. Husks are zombies but they will not be hurt by sunlight.
 item.divinefavor:talisman_summon_skeleton.description=Minion talisman. Allows you to summon skeletons. They will follow you and fight for you. Skeletons will be equipped with bows and will attack at long range. You can command them directly with some special talismans. They are undead and will be hurt by sunlight.
