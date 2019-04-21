@@ -1,6 +1,6 @@
 package aurocosh.divinefavor.common.area;
 
-import aurocosh.divinefavor.common.lib.math.Vector3i;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -37,7 +37,7 @@ public class WorldAreaWatcher {
         Set<IAreaWatcher> controllerSet = watchers.get(event.getWorld());
         if (controllerSet == null)
             return;
-        Vector3i position = new Vector3i(event.getPos());
+        BlockPos position = event.getPos();
         for (IAreaWatcher areaWatcher : controllerSet)
             if (areaWatcher.getArea().isApartOfArea(position))
                 areaWatcher.blockChanged(event.getWorld(), event.getPos(), event.getState());

@@ -4,7 +4,6 @@ import aurocosh.divinefavor.common.block.base.TickableTileEntity;
 import aurocosh.divinefavor.common.item.calling_stones.ItemCallingStone;
 import aurocosh.divinefavor.common.item.calling_stones.ModCallingStones;
 import aurocosh.divinefavor.common.item.common.ModItems;
-import aurocosh.divinefavor.common.lib.math.Vector3i;
 import aurocosh.divinefavor.common.misc.SlotStack;
 import aurocosh.divinefavor.common.muliblock.IMultiblockController;
 import aurocosh.divinefavor.common.muliblock.ModMultiBlock;
@@ -336,8 +335,7 @@ public class TileMedium extends TickableTileEntity implements IMultiblockControl
 
         ItemCallingStone callingStone = (ItemCallingStone) stack.getItem();
         ModMultiBlock multiBlock = callingStone.multiBlock;
-        Vector3i position = Vector3i.convert(pos);
-        multiBlockInstance = multiBlock.makeMultiBlock(callingStone.spirit, world, position);
+        multiBlockInstance = multiBlock.makeMultiBlock(callingStone.spirit, world, pos);
         if (multiBlockInstance != null) {
             MultiblockWatcher.registerController(this);
 //            AltarsData altarData = WorldData.get(world).getAltarData();

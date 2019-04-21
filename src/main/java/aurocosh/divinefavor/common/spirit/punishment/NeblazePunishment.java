@@ -2,7 +2,6 @@ package aurocosh.divinefavor.common.spirit.punishment;
 
 import aurocosh.divinefavor.common.config.common.ConfigPunishments;
 import aurocosh.divinefavor.common.lib.distributed_random.DistributedRandomEntityList;
-import aurocosh.divinefavor.common.lib.math.Vector3i;
 import aurocosh.divinefavor.common.muliblock.instance.MultiBlockInstance;
 import aurocosh.divinefavor.common.spirit.base.SpiritPunishment;
 import aurocosh.divinefavor.common.util.*;
@@ -25,12 +24,12 @@ public class NeblazePunishment extends SpiritPunishment {
         player.setFire(ConfigPunishments.neblaze.ignitionTimeSeconds);
         smeltPartsOfAltar(player, world, instance);
         spawnEnemies(player, world);
-        igniteRandomBlocks(player, world, instance.multiBlockOrigin.toBlockPos());
+        igniteRandomBlocks(player, world, instance.multiBlockOrigin);
     }
 
     private void smeltPartsOfAltar(EntityPlayer player, World world, MultiBlockInstance instance) {
         int blocksToSmelt = ConfigPunishments.neblaze.blocksToMelt.random();
-        List<BlockPos> solidsPositions = Vector3i.convert(new ArrayList<>(instance.positionsOfSolids));
+        List<BlockPos> solidsPositions = new ArrayList<>(instance.positionsOfSolids);
         List<BlockPos> netherrackPositions = UtilList.select(solidsPositions, pos -> world.getBlockState(pos).getBlock() == Blocks.NETHERRACK);
         List<BlockPos> selectedPositions = UtilRandom.selectRandom(netherrackPositions, blocksToSmelt);
         for (BlockPos position : selectedPositions) {
@@ -67,11 +66,11 @@ public class NeblazePunishment extends SpiritPunishment {
 
     private void igniteBlock(EntityPlayer player, World world, BlockPos center) {
         int ignitionRadius = ConfigPunishments.neblaze.ignitionRadius;
-        BlockPos ignitionPos = UtilCoordinates.getRandomBlockInRange(world, center, ignitionRadius, BLOCK_SEARCH_LIMIT, pos -> !world.isAirBlock(pos));
+        BlockPos ignitionPos = UtilCoordinates.getRandomBlockInRange(center, ignitionRadius, BLOCK_SEARCH_LIMIT, pos -> !world.isAirBlock(pos));
         if (ignitionPos == null)
             return;
 
-        List<BlockPos> candidates = Vector3i.convert(UtilVector3i.getNeighbours(new Vector3i(ignitionPos)));
+        List<BlockPos> candidates = UtilBlockPos.getNeighbours(ignitionPos);
         for (BlockPos pos : candidates)
             if (UtilBlock.ignite(player, world, pos))
                 return;

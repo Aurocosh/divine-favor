@@ -53,7 +53,7 @@ public class SpellTalismanNetherSurge extends ItemSpellTalisman {
     @Override
     protected void performActionServer(TalismanContext context) {
         int blocksSelect = UtilRandom.nextInt(ConfigSpells.netherSurge.minBlocksToReplace, ConfigSpells.netherSurge.maxBlocksToReplace);
-        List<BlockPos> blocksToReplace = UtilCoordinates.getRandomNeighbours(context.pos, context.world, blocksSelect, ConfigSpells.netherSurge.minNeighboursToAdd, ConfigSpells.netherSurge.maxNeighboursToAdd, CYCLE_LIMIT, (world, pos) -> true);
+        List<BlockPos> blocksToReplace = UtilCoordinates.getRandomNeighbours(context.pos, blocksSelect, ConfigSpells.netherSurge.minNeighboursToAdd, ConfigSpells.netherSurge.maxNeighboursToAdd, CYCLE_LIMIT, pos -> true);
 
         for (BlockPos pos : blocksToReplace)
             UtilBlock.replaceBlock(context.player, context.world, pos, possibleBlocks.getRandom());

@@ -4,11 +4,10 @@ import aurocosh.divinefavor.common.config.common.ConfigSpells;
 import aurocosh.divinefavor.common.item.talismans.spell.base.ItemSpellTalisman;
 import aurocosh.divinefavor.common.item.talismans.spell.base.SpellOptions;
 import aurocosh.divinefavor.common.item.talismans.spell.base.TalismanContext;
-import aurocosh.divinefavor.common.lib.math.Vector3i;
 import aurocosh.divinefavor.common.spirit.base.ModSpirit;
 import aurocosh.divinefavor.common.tasks.BlockBreakingTask;
+import aurocosh.divinefavor.common.util.UtilBlockPos;
 import aurocosh.divinefavor.common.util.UtilCoordinates;
-import aurocosh.divinefavor.common.util.UtilVector3i;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.ItemStack;
@@ -36,18 +35,17 @@ public class SpellTalismanFellTree extends ItemSpellTalisman {
 
     private List<BlockPos> detectTree(TalismanContext context) {
         World world = context.world;
-        List<Vector3i> start = Collections.singletonList(new Vector3i(context.pos));
-        List<BlockPos> logs = UtilCoordinates.floodFill(start, UtilVector3i.getNeighbourDirections(), blockPos -> isWood(world, blockPos), ConfigSpells.fellTree.maxLogsBroken);
+        List<BlockPos> start = Collections.singletonList(context.pos);
+        List<BlockPos> logs = UtilCoordinates.floodFill(start, UtilBlockPos.DIRECT_NEIGHBOURS, blockPos -> isWood(world, blockPos), ConfigSpells.fellTree.maxLogsBroken);
         if (logs.isEmpty())
             return logs;
 
-        start = Vector3i.convertPos(logs);
         Predicate<BlockPos> predicate = blockPos -> {
             IBlockState blockState = world.getBlockState(blockPos);
             Block block = blockState.getBlock();
             return block.isWood(world, blockPos) || block.isLeaves(blockState, world, blockPos);
         };
-        List<BlockPos> leaves = UtilCoordinates.floodFill(start, UtilVector3i.getNeighbourDirections(), predicate, ConfigSpells.fellTree.minLeafCount);
+        List<BlockPos> leaves = UtilCoordinates.floodFill(logs, UtilBlockPos.DIRECT_NEIGHBOURS, predicate, ConfigSpells.fellTree.minLeafCount);
         if (leaves.size() < ConfigSpells.fellTree.minLeafCount)
             logs.clear();
         return logs;

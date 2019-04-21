@@ -9,6 +9,7 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
 
 public class PotionHovering extends ModPotionToggle {
     public PotionHovering() {
@@ -31,7 +32,8 @@ public class PotionHovering extends ModPotionToggle {
 
     @Override
     public void performEffect(EntityLivingBase livingBase, int amplifier) {
-        if (livingBase.world.isRemote)
+        World world = livingBase.world;
+        if (world.isRemote)
             return;
 
         BlockPos currentPosition = livingBase.getPosition();
@@ -39,7 +41,7 @@ public class PotionHovering extends ModPotionToggle {
 
         boolean allowFlying = currentPosition.equals(previousPosition);
         if (!allowFlying) {
-            BlockPos pos = UtilCoordinates.findPosition(livingBase.getPosition(), livingBase.world, 10, (world, blockPos) -> world.getBlockState(blockPos).isSideSolid(world, blockPos, EnumFacing.UP), BlockPos::down);
+            BlockPos pos = UtilCoordinates.findPosition(livingBase.getPosition(), 10, (blockPos) -> world.getBlockState(blockPos).isSideSolid(world, blockPos, EnumFacing.UP), BlockPos::down);
             allowFlying = pos != null;
         }
 

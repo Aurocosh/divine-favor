@@ -1,7 +1,6 @@
 package aurocosh.divinefavor.common.block.soulbound_lectern;
 
 import aurocosh.divinefavor.common.item.soul_shards.ItemSoulShard;
-import aurocosh.divinefavor.common.lib.math.Vector3i;
 import aurocosh.divinefavor.common.muliblock.IMultiblockController;
 import aurocosh.divinefavor.common.muliblock.ModMultiBlock;
 import aurocosh.divinefavor.common.muliblock.common.ModMultiBlocks;
@@ -62,8 +61,7 @@ public class TileSoulboundLectern extends TileEntity implements IMultiblockContr
         protected void onContentsChanged(int slot) {
             if (!world.isRemote) {
                 ItemStack stack = shardStackHandler.getStackInSlot(slot);
-                if (!stack.isEmpty())
-                {
+                if (!stack.isEmpty()) {
                     isRejecting = true;
 
                     IBlockState blockState = world.getBlockState(pos);
@@ -168,13 +166,13 @@ public class TileSoulboundLectern extends TileEntity implements IMultiblockContr
         }
     }
 
-    public ItemStack getShardStack(){
+    public ItemStack getShardStack() {
         return shardStackHandler.getStackInSlot(0);
     }
 
     public int getFavorId() {
         ItemStack stack = getShardStack();
-        if(stack.isEmpty())
+        if (stack.isEmpty())
             return -1;
         ItemSoulShard soulShard = (ItemSoulShard) stack.getItem();
         return soulShard.getSpirit().getId();
@@ -238,10 +236,9 @@ public class TileSoulboundLectern extends TileEntity implements IMultiblockContr
         if (stack.isEmpty())
             return;
         ItemSoulShard soulShard = (ItemSoulShard) stack.getItem();
-        Vector3i position = Vector3i.convert(pos);
         ModMultiBlock multiBlock = multiblocks.get(soulShard.getSpirit().getId());
         if (multiBlock != null) {
-            multiBlockInstance = multiBlock.makeMultiBlock(world, position);
+            multiBlockInstance = multiBlock.makeMultiBlock(world, pos);
             if (multiBlockInstance != null)
                 MultiblockWatcher.registerController(this);
         }

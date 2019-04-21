@@ -1,6 +1,6 @@
 package aurocosh.divinefavor.common.custom_data.player.data.interaction_handler;
 
-import aurocosh.divinefavor.common.lib.math.Vector3i;
+import net.minecraft.util.math.BlockPos;
 
 import java.util.Collections;
 import java.util.LinkedList;
@@ -8,29 +8,29 @@ import java.util.List;
 
 // The default implementation of the capability. Holds all the logic.
 public class InteractionData {
-    private static int MAX_BLOCKS_REMEBERED = 8;
-    private static LinkedList<Vector3i> clickedBlocks = new LinkedList<>();
+    private static final int MAX_BLOCKS_REMEMBERED = 8;
+    private static final LinkedList<BlockPos> CLICKED_BLOCKS = new LinkedList<>();
 
-    public void recordLastClickedPosition(Vector3i pos) {
-        if(clickedBlocks.contains(pos))
+    public void recordLastClickedPosition(BlockPos pos) {
+        if (CLICKED_BLOCKS.contains(pos))
             return;
-        clickedBlocks.add(pos);
-        if(clickedBlocks.size() > MAX_BLOCKS_REMEBERED)
-            clickedBlocks.remove();
+        CLICKED_BLOCKS.add(pos);
+        if (CLICKED_BLOCKS.size() > MAX_BLOCKS_REMEMBERED)
+            CLICKED_BLOCKS.remove();
     }
 
-    public boolean wasPositionClicked(Vector3i pos) {
-        return clickedBlocks.contains(pos);
+    public boolean wasPositionClicked(BlockPos pos) {
+        return CLICKED_BLOCKS.contains(pos);
     }
 
-    public List<Vector3i> getLastClickedPositions() {
-        return Collections.unmodifiableList(clickedBlocks);
+    public List<BlockPos> getLastClickedPositions() {
+        return Collections.unmodifiableList(CLICKED_BLOCKS);
     }
 
-    public void setLastClickedPositions(List<Vector3i> positions) {
-        clickedBlocks.clear();
-        int posToAdd = Math.min(positions.size(),MAX_BLOCKS_REMEBERED);
+    public void setLastClickedPositions(List<BlockPos> positions) {
+        CLICKED_BLOCKS.clear();
+        int posToAdd = Math.min(positions.size(), MAX_BLOCKS_REMEMBERED);
         for (int i = 0; i < posToAdd; i++)
-            clickedBlocks.add(positions.get(i));
+            CLICKED_BLOCKS.add(positions.get(i));
     }
 }
