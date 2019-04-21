@@ -1,15 +1,17 @@
 package aurocosh.divinefavor.common.entity.minions;
 
+import aurocosh.divinefavor.common.config.common.ConfigMinion;
 import aurocosh.divinefavor.common.entity.minions.base.IMinion;
 import aurocosh.divinefavor.common.entity.minions.base.MinionData;
 import aurocosh.divinefavor.common.entity.minions.base.MinionMode;
-import aurocosh.divinefavor.common.entity.minions.behaviour.MinionBehaviourCreeper;
+import aurocosh.divinefavor.common.entity.minions.behaviour.MinionBehaviourZombie;
 import aurocosh.divinefavor.common.entity.minions.minion_interaction.MinionBanishing;
 import aurocosh.divinefavor.common.entity.minions.minion_interaction.MinionFeeding;
 import aurocosh.divinefavor.common.entity.minions.minion_interaction.MinionWaitSwitch;
 import aurocosh.divinefavor.common.entity.minions.minion_interaction.base.MinionInteractionHandler;
 import com.google.common.base.Optional;
-import net.minecraft.entity.monster.EntityCreeper;
+import net.minecraft.entity.SharedMonsterAttributes;
+import net.minecraft.entity.monster.EntityZombie;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.nbt.NBTTagCompound;
@@ -21,20 +23,20 @@ import net.minecraft.world.World;
 
 import java.util.UUID;
 
-public class MinionCreeper extends EntityCreeper implements IMinion {
-    private static final DataParameter<Boolean> BEGGING = EntityDataManager.createKey(MinionCreeper.class, DataSerializers.BOOLEAN);
-    private static final DataParameter<Integer> MODE = EntityDataManager.createKey(MinionCreeper.class, DataSerializers.VARINT);
-    private static final DataParameter<Optional<UUID>> OWNER_UNIQUE_ID = EntityDataManager.createKey(MinionCreeper.class, DataSerializers.OPTIONAL_UNIQUE_ID);
+public class EntityMinionZombie extends EntityZombie implements IMinion {
+    private static final DataParameter<Boolean> BEGGING = EntityDataManager.createKey(EntityMinionZombie.class, DataSerializers.BOOLEAN);
+    private static final DataParameter<Integer> MODE = EntityDataManager.createKey(EntityMinionZombie.class, DataSerializers.VARINT);
+    private static final DataParameter<Optional<UUID>> OWNER_UNIQUE_ID = EntityDataManager.createKey(EntityMinionZombie.class, DataSerializers.OPTIONAL_UNIQUE_ID);
 
-    private final MinionData<MinionCreeper> minionData;
-    private final MinionInteractionHandler<MinionCreeper> interactionHandler;
+    private final MinionData<EntityMinionZombie> minionData;
+    private final MinionInteractionHandler<EntityMinionZombie> interactionHandler;
 
-    public MinionCreeper(World worldIn) {
-        super(worldIn);
+    public EntityMinionZombie(World world) {
+        super(world);
         minionData = new MinionData<>(this, dataManager, BEGGING, MODE, OWNER_UNIQUE_ID);
         minionData.setMode(MinionMode.Normal);
 
-        MinionBehaviourCreeper<MinionCreeper> behaviour = new MinionBehaviourCreeper<>();
+        MinionBehaviourZombie<EntityMinionZombie> behaviour = new MinionBehaviourZombie<>();
         behaviour.apply(this, tasks, targetTasks);
 
         interactionHandler = new MinionInteractionHandler<>();
@@ -46,6 +48,20 @@ public class MinionCreeper extends EntityCreeper implements IMinion {
     @Override
     protected void initEntityAI() {
         // unused because it is called before all data initialized by child classes
+    }
+
+    @Override
+    protected void applyEntityAttributes() {
+        super.applyEntityAttributes();
+
+        getEntityAttribute(SharedMonsterAttributes.ARMOR).setBaseValue(ConfigMinion.zombie.armor);
+        getEntityAttribute(SharedMonsterAttributes.ARMOR_TOUGHNESS).setBaseValue(ConfigMinion.zombie.armorToughness);
+        getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(ConfigMinion.zombie.attackDamage);
+        getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(ConfigMinion.zombie.followRange);
+        getEntityAttribute(SharedMonsterAttributes.KNOCKBACK_RESISTANCE).setBaseValue(ConfigMinion.zombie.knockbackResistance);
+        getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(ConfigMinion.zombie.maxHealth);
+        getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(ConfigMinion.zombie.movementSpeed);
+        getEntityAttribute(SWIM_SPEED).setBaseValue(ConfigMinion.zombie.swimSpeed);
     }
 
     @Override

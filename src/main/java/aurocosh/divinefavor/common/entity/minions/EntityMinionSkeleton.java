@@ -1,5 +1,6 @@
 package aurocosh.divinefavor.common.entity.minions;
 
+import aurocosh.divinefavor.common.config.common.ConfigMinion;
 import aurocosh.divinefavor.common.entity.minions.base.IMinion;
 import aurocosh.divinefavor.common.entity.minions.base.MinionData;
 import aurocosh.divinefavor.common.entity.minions.base.MinionMode;
@@ -10,7 +11,7 @@ import aurocosh.divinefavor.common.entity.minions.minion_interaction.MinionWaitS
 import aurocosh.divinefavor.common.entity.minions.minion_interaction.base.MinionInteractionHandler;
 import com.google.common.base.Optional;
 import net.minecraft.entity.SharedMonsterAttributes;
-import net.minecraft.entity.monster.EntityStray;
+import net.minecraft.entity.monster.EntitySkeleton;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.nbt.NBTTagCompound;
@@ -22,17 +23,17 @@ import net.minecraft.world.World;
 
 import java.util.UUID;
 
-public class MinionStray extends EntityStray implements IMinion {
-    private static final DataParameter<Boolean> BEGGING = EntityDataManager.createKey(MinionStray.class, DataSerializers.BOOLEAN);
-    private static final DataParameter<Integer> MODE = EntityDataManager.createKey(MinionStray.class, DataSerializers.VARINT);
-    private static final DataParameter<Optional<UUID>> OWNER_UNIQUE_ID = EntityDataManager.createKey(MinionStray.class, DataSerializers.OPTIONAL_UNIQUE_ID);
+public class EntityMinionSkeleton extends EntitySkeleton implements IMinion {
+    private static final DataParameter<Boolean> BEGGING = EntityDataManager.createKey(EntityMinionSkeleton.class, DataSerializers.BOOLEAN);
+    private static final DataParameter<Integer> MODE = EntityDataManager.createKey(EntityMinionSkeleton.class, DataSerializers.VARINT);
+    private static final DataParameter<Optional<UUID>> OWNER_UNIQUE_ID = EntityDataManager.createKey(EntityMinionSkeleton.class, DataSerializers.OPTIONAL_UNIQUE_ID);
 
-    private final MinionData<MinionStray> minionData;
-    private final MinionBehaviourSkeleton<MinionStray> behaviour;
-    private final MinionInteractionHandler<MinionStray> interactionHandler;
+    private final MinionData<EntityMinionSkeleton> minionData;
+    private final MinionBehaviourSkeleton<EntityMinionSkeleton> behaviour;
+    private final MinionInteractionHandler<EntityMinionSkeleton> interactionHandler;
 
-    public MinionStray(World worldIn) {
-        super(worldIn);
+    public EntityMinionSkeleton(World world) {
+        super(world);
         minionData = new MinionData<>(this, dataManager, BEGGING, MODE, OWNER_UNIQUE_ID);
         minionData.setMode(MinionMode.Normal);
 
@@ -62,11 +63,14 @@ public class MinionStray extends EntityStray implements IMinion {
     protected void applyEntityAttributes() {
         super.applyEntityAttributes();
 
-//        getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(3.0D);
-//        getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.23000000417232513D);
-//        getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(30.0D);
-
-        getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(64.0D);
+        getEntityAttribute(SharedMonsterAttributes.ARMOR).setBaseValue(ConfigMinion.skeleton.armor);
+        getEntityAttribute(SharedMonsterAttributes.ARMOR_TOUGHNESS).setBaseValue(ConfigMinion.skeleton.armorToughness);
+        getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(ConfigMinion.skeleton.attackDamage);
+        getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(ConfigMinion.skeleton.followRange);
+        getEntityAttribute(SharedMonsterAttributes.KNOCKBACK_RESISTANCE).setBaseValue(ConfigMinion.skeleton.knockbackResistance);
+        getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(ConfigMinion.skeleton.maxHealth);
+        getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(ConfigMinion.skeleton.movementSpeed);
+        getEntityAttribute(SWIM_SPEED).setBaseValue(ConfigMinion.skeleton.swimSpeed);
     }
 
     @Override

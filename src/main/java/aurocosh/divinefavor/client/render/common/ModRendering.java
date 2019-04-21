@@ -30,11 +30,11 @@ public class ModRendering {
         RenderItem itemRenderer = Minecraft.getMinecraft().getRenderItem();
         manager.entityRenderMap.put(EntityStoneball.class, new RenderSnowball<EntityStoneball>(manager, ModItems.stoneball, itemRenderer));
         manager.entityRenderMap.put(EntitySpellArrow.class, new RenderSpellArrow(manager));
-        manager.entityRenderMap.put(MinionZombie.class, new RenderMinionZombie(manager));
-        manager.entityRenderMap.put(MinionHusk.class, new RenderMinionHusk(manager));
-        manager.entityRenderMap.put(MinionSkeleton.class, new RenderMinionSkeleton(manager));
-        manager.entityRenderMap.put(MinionStray.class, new RenderMinionStray(manager));
-        manager.entityRenderMap.put(MinionCreeper.class, new RenderCreeper(manager));
+        manager.entityRenderMap.put(EntityMinionZombie.class, new RenderMinionZombie(manager));
+        manager.entityRenderMap.put(EntityMinionHusk.class, new RenderMinionHusk(manager));
+        manager.entityRenderMap.put(EntityMinionSkeleton.class, new RenderMinionSkeleton(manager));
+        manager.entityRenderMap.put(EntityMinionStray.class, new RenderMinionStray(manager));
+        manager.entityRenderMap.put(EntityMinionCreeper.class, new RenderCreeper(manager));
         manager.entityRenderMap.put(EntityDirewolf.class, new RenderDirewolf(manager));
 
         manager.entityRenderMap.put(EntityRopeBarrierNode.class, new RenderRopeBarrierNode(manager));
