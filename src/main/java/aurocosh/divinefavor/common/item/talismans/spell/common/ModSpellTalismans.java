@@ -123,11 +123,11 @@ public final class ModSpellTalismans {
         follow = new SpellTalismanFollow("follow", ModSpirits.loon, ConfigSpells.follow.favorCost, SpellOptions.RIGHT_CAST);
         night_eye = new SpellTalismanModPotionToggle("night_eye", ModSpirits.loon, ConfigSpells.nightEye.favorCost, ModPotions.night_eye);
         spider_might = new SpellTalismanModPotionToggle("spider_might", ModSpirits.loon, ConfigSpells.spider_might.favorCost, ModPotions.spider_might);
-        summon_creeper = new SpellTalismanSummonMinion<>("summon_creeper", ModSpirits.loon, ConfigSpells.summonCreeper.favorCost, SpellOptions.USE_CAST, MinionCreeper.class);
-        summon_husk = new SpellTalismanSummonMinion<>("summon_husk", ModSpirits.loon, ConfigSpells.summonHusk.favorCost, SpellOptions.USE_CAST, MinionHusk.class);
-        summon_skeleton = new SpellTalismanSummonMinion<>("summon_skeleton", ModSpirits.loon, ConfigSpells.summonSkeleton.favorCost, SpellOptions.USE_CAST, MinionSkeleton.class);
-        summon_stray = new SpellTalismanSummonMinion<>("summon_stray", ModSpirits.loon, ConfigSpells.summonStray.favorCost, SpellOptions.USE_CAST, MinionStray.class);
-        summon_zombie = new SpellTalismanSummonMinion<>("summon_zombie", ModSpirits.loon, ConfigSpells.summonZombie.favorCost, SpellOptions.USE_CAST, MinionZombie.class);
+        summon_creeper = new SpellTalismanSummonMinion<>("summon_creeper", ModSpirits.loon, ConfigSpells.summonCreeper.favorCost, SpellOptions.USE_CAST, EntityMinionCreeper.class);
+        summon_husk = new SpellTalismanSummonMinion<>("summon_husk", ModSpirits.loon, ConfigSpells.summonHusk.favorCost, SpellOptions.USE_CAST, EntityMinionHusk.class);
+        summon_skeleton = new SpellTalismanSummonMinion<>("summon_skeleton", ModSpirits.loon, ConfigSpells.summonSkeleton.favorCost, SpellOptions.USE_CAST, EntityMinionSkeleton.class);
+        summon_stray = new SpellTalismanSummonMinion<>("summon_stray", ModSpirits.loon, ConfigSpells.summonStray.favorCost, SpellOptions.USE_CAST, EntityMinionStray.class);
+        summon_zombie = new SpellTalismanSummonMinion<>("summon_zombie", ModSpirits.loon, ConfigSpells.summonZombie.favorCost, SpellOptions.USE_CAST, EntityMinionZombie.class);
         target = new SpellTalismanTarget("target", ModSpirits.loon, 0, SpellOptions.ENTITY_CAST);
 
         // neblaze

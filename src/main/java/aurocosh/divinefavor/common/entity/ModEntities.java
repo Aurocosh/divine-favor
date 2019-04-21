@@ -20,11 +20,11 @@ public final class ModEntities {
         registerModEntity(EntitySpellArrow.class, "spell_arrow", 256, 1, true);
         registerModEntity(EntitySpookyArrow.class, "spooky_arrow", 256, 1, true);
 
-        registerModEntity(MinionZombie.class, "minion_zombie", 80, 3, false);
-        registerModEntity(MinionHusk.class, "minion_husk", 80, 3, false);
-        registerModEntity(MinionSkeleton.class, "minion_skeleton", 80, 3, false);
-        registerModEntity(MinionStray.class, "minion_stray", 80, 3, false);
-        registerModEntity(MinionCreeper.class, "minion_creeper", 80, 3, false);
+        registerModEntity(EntityMinionZombie.class, "minion_zombie", 80, 3, false);
+        registerModEntity(EntityMinionHusk.class, "minion_husk", 80, 3, false);
+        registerModEntity(EntityMinionSkeleton.class, "minion_skeleton", 80, 3, false);
+        registerModEntity(EntityMinionStray.class, "minion_stray", 80, 3, false);
+        registerModEntity(EntityMinionCreeper.class, "minion_creeper", 80, 3, false);
 
         registerModEntity(EntityDirewolf.class, "direwolf", 80, 3, false);
 
