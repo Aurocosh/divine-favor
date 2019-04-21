@@ -1,6 +1,7 @@
 package aurocosh.divinefavor.common.item;
 
 import aurocosh.divinefavor.DivineFavor;
+import aurocosh.divinefavor.common.constants.ConstMainTabOrder;
 import aurocosh.divinefavor.common.entity.projectile.EntityStoneball;
 import aurocosh.divinefavor.common.item.base.ModItem;
 import net.minecraft.entity.player.EntityPlayer;
@@ -15,7 +16,7 @@ import net.minecraft.world.World;
 
 public class ItemStoneball extends ModItem {
     public ItemStoneball() {
-        super("stone_ball","stone_ball");
+        super("stone_ball", "stone_ball", ConstMainTabOrder.OTHER_ITEMS);
         this.maxStackSize = 16;
         setCreativeTab(DivineFavor.TAB_MAIN);
     }
@@ -23,8 +24,7 @@ public class ItemStoneball extends ModItem {
     /**
      * Called when the equipped item is right clicked.
      */
-    public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand handIn)
-    {
+    public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand handIn) {
         ItemStack itemstack = playerIn.getHeldItem(handIn);
 
         if (!playerIn.capabilities.isCreativeMode)
@@ -32,8 +32,7 @@ public class ItemStoneball extends ModItem {
 
         worldIn.playSound(null, playerIn.posX, playerIn.posY, playerIn.posZ, SoundEvents.ENTITY_SNOWBALL_THROW, SoundCategory.NEUTRAL, 0.5F, 0.4F / (itemRand.nextFloat() * 0.4F + 0.8F));
 
-        if (!worldIn.isRemote)
-        {
+        if (!worldIn.isRemote) {
             EntityStoneball entityStoneball = new EntityStoneball(worldIn, playerIn);
             entityStoneball.shoot(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, 0.0F, 1.0F, 1.0F);
             worldIn.spawnEntity(entityStoneball);

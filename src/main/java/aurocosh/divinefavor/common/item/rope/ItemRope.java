@@ -1,6 +1,7 @@
 package aurocosh.divinefavor.common.item.rope;
 
 import aurocosh.divinefavor.DivineFavor;
+import aurocosh.divinefavor.common.constants.ConstMainTabOrder;
 import aurocosh.divinefavor.common.entity.rope.base.EntityRopeNodeBase;
 import aurocosh.divinefavor.common.item.base.ModItem;
 import aurocosh.divinefavor.common.util.UtilList;
@@ -21,13 +22,11 @@ import java.util.List;
 
 public abstract class ItemRope<T extends EntityRopeNodeBase> extends ModItem {
     private final Class<T> clazz;
-    private final double ropeDistance;
     private final double ropeDistanceSq;
 
     public ItemRope(String name, String texturePath, Class<T> clazz, double ropeDistance) {
-        super(name, texturePath);
+        super(name, texturePath, ConstMainTabOrder.ROPES);
         this.clazz = clazz;
-        this.ropeDistance = ropeDistance;
         ropeDistanceSq = ropeDistance * ropeDistance;
         this.setCreativeTab(DivineFavor.TAB_MAIN);
     }
@@ -42,7 +41,8 @@ public abstract class ItemRope<T extends EntityRopeNodeBase> extends ModItem {
         T connectedRopeNode = UtilList.findFirst(chargeNodes, node -> node.getNextNodeByUUID() == player);
 
         if (connectedRopeNode != null && connectedRopeNode.getDistanceSq(pos.getX() + hitX, pos.getY() + hitY, pos.getZ() + hitZ) > ropeDistanceSq) {
-            player.sendStatusMessage(new TextComponentTranslation("chat.rope_explosive.too_far"), true);
+            String translationKey = "chat." + getTranslationKey() + ".too_far";
+            player.sendStatusMessage(new TextComponentTranslation(translationKey), true);
             return EnumActionResult.FAIL;
         }
 

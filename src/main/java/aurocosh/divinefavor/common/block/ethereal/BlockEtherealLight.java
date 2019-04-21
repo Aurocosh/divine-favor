@@ -2,6 +2,7 @@ package aurocosh.divinefavor.common.block.ethereal;
 
 import aurocosh.divinefavor.DivineFavor;
 import aurocosh.divinefavor.common.block.base.ModBlockAir;
+import aurocosh.divinefavor.common.constants.ConstMainTabOrder;
 import aurocosh.divinefavor.common.item.base.ModItemBlock;
 import aurocosh.divinefavor.common.particles.ModParticles;
 import aurocosh.divinefavor.common.particles.particles.EtherealParticle;
@@ -22,7 +23,7 @@ import java.util.Random;
 
 public class BlockEtherealLight extends ModBlockAir implements ICustomStateMappedBlock {
     public BlockEtherealLight(String name, Material material, int lightLevel) {
-        super(name, material);
+        super(name, material, ConstMainTabOrder.OTHER_BLOCKS);
         setTickRandomly(true);
         this.lightValue = lightLevel;
         setCreativeTab(DivineFavor.TAB_MAIN);

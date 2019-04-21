@@ -2,6 +2,7 @@ package aurocosh.divinefavor.common.item.bone_dagger;
 
 import aurocosh.divinefavor.DivineFavor;
 import aurocosh.divinefavor.common.config.common.ConfigItem;
+import aurocosh.divinefavor.common.constants.ConstMainTabOrder;
 import aurocosh.divinefavor.common.item.base.ModItem;
 import aurocosh.divinefavor.common.item.common.ModItems;
 import aurocosh.divinefavor.common.util.UtilNbt;
@@ -19,7 +20,7 @@ public class ItemBoneDagger extends ModItem {
     private static final String TAG_AWAKENING_CHANCE = "AWAKENING_CHANCE";
 
     public ItemBoneDagger() {
-        super("bone_dagger", "bone_dagger");
+        super("bone_dagger", "bone_dagger", ConstMainTabOrder.DAGGERS);
         setMaxStackSize(1);
         setCreativeTab(DivineFavor.TAB_MAIN);
     }

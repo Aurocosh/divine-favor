@@ -4,6 +4,7 @@ import aurocosh.divinefavor.common.receipes.serialization.MediumRecipeData;
 import aurocosh.divinefavor.common.receipes.serialization.RecipeIngredient;
 import aurocosh.divinefavor.common.receipes.serialization.RecipeIngredientInstanceCreator;
 import aurocosh.divinefavor.common.util.UtilAssets;
+import aurocosh.divinefavor.common.util.UtilList;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import net.minecraftforge.fml.common.Loader;
@@ -37,11 +38,6 @@ public class RecipeLoader {
             recipes.addAll(modRecipes);
         }
 
-        for (MediumRecipeData recipe : recipes) {
-            for (ImmaterialMediumRecipe mediumRecipe : recipe.toRecipes()) {
-                if (mediumRecipe != null)
-                    ModRecipes.register(mediumRecipe);
-            }
-        }
+        UtilList.aggregate(recipes, MediumRecipeData::toRecipes).forEach(ModRecipes::register);
     }
 }

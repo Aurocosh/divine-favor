@@ -1,6 +1,7 @@
 package aurocosh.divinefavor.common.item;
 
 import aurocosh.divinefavor.DivineFavor;
+import aurocosh.divinefavor.common.constants.ConstGemTabOrder;
 import aurocosh.divinefavor.common.item.base.ModItem;
 import aurocosh.divinefavor.common.util.UtilEntity;
 import aurocosh.divinefavor.common.util.UtilNbt;
@@ -29,16 +30,16 @@ public class ItemInviteMarker extends ModItem {
     private boolean canTeleportToDimensions;
 
     public ItemInviteMarker(String name, boolean canTeleportToDimensions) {
-        super(name, name);
+        super(name, name, ConstGemTabOrder.OTHER_GEMS);
         this.canTeleportToDimensions = canTeleportToDimensions;
         setMaxStackSize(1);
-        setCreativeTab(DivineFavor.TAB_MAIN);
+        setCreativeTab(DivineFavor.TAB_GEMS);
     }
 
     @Override
     public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
         ItemStack stack = player.getHeldItem(hand);
-        if(!teleportPlayer(stack, player, world))
+        if (!teleportPlayer(stack, player, world))
             return new ActionResult<>(EnumActionResult.PASS, stack);
         return new ActionResult<>(EnumActionResult.SUCCESS, ItemStack.EMPTY);
     }
@@ -46,19 +47,19 @@ public class ItemInviteMarker extends ModItem {
     @Override
     public EnumActionResult onItemUse(EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
         ItemStack stack = player.getHeldItem(hand);
-        if(!teleportPlayer(stack, player, world))
+        if (!teleportPlayer(stack, player, world))
             return EnumActionResult.PASS;
         return EnumActionResult.SUCCESS;
     }
 
-    private boolean teleportPlayer(ItemStack stack, EntityPlayer player, World world){
-        if(world.isRemote)
+    private boolean teleportPlayer(ItemStack stack, EntityPlayer player, World world) {
+        if (world.isRemote)
             return false;
-        if(stack.isEmpty())
+        if (stack.isEmpty())
             return false;
-        if(!(stack.getItem() instanceof ItemInviteMarker))
+        if (!(stack.getItem() instanceof ItemInviteMarker))
             return false;
-        if(!UtilNbt.checkForTag(stack, TAG_PLAYER_UUID))
+        if (!UtilNbt.checkForTag(stack, TAG_PLAYER_UUID))
             return false;
 
         NBTTagCompound nbt = UtilNbt.getNbt(stack);
@@ -68,7 +69,7 @@ public class ItemInviteMarker extends ModItem {
         if (player == null)
             return false;
 
-        if(!canTeleportToDimensions && targetPlayer.dimension != player.dimension)
+        if (!canTeleportToDimensions && targetPlayer.dimension != player.dimension)
             return false;
         UtilEntity.teleport(player, targetPlayer.dimension, targetPlayer.getPosition());
         UtilPlayer.damageStack(player, stack);

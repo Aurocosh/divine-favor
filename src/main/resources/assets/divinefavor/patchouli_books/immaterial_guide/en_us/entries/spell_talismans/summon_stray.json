@@ -10,6 +10,11 @@
     {
       "type": "spell_talisman_stats",
       "talisman": "divinefavor:talisman_summon_stray"
+    },
+    {
+      "type": "entity",
+      "entity": "divinefavor:entity.minion_stray",
+      "text": "Ragged minion."
     }
   ]
 }

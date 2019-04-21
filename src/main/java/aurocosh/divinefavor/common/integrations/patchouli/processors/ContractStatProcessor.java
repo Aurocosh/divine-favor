@@ -1,7 +1,7 @@
 package aurocosh.divinefavor.common.integrations.patchouli.processors;
 
 import aurocosh.divinefavor.DivineFavor;
-import aurocosh.divinefavor.common.item.contract.ItemContract;
+import aurocosh.divinefavor.common.item.contract.ItemFavorContract;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.item.Item;
 import net.minecraft.util.ResourceLocation;
@@ -15,8 +15,8 @@ public class ContractStatProcessor implements IComponentProcessor {
     public void setup(IVariableProvider<String> variables) {
         String contractName = variables.get("contract");
         Item item = Item.REGISTRY.getObject(new ResourceLocation(contractName));
-        if (item instanceof ItemContract) {
-            ItemContract contract = (ItemContract) item;
+        if (item instanceof ItemFavorContract) {
+            ItemFavorContract contract = (ItemFavorContract) item;
             text = I18n.format("item.divinefavor:contract.effects") + "$(br)";
 
             String effects = "";

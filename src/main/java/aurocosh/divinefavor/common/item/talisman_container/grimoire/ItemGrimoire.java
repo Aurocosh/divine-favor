@@ -2,6 +2,7 @@ package aurocosh.divinefavor.common.item.talisman_container.grimoire;
 
 import aurocosh.divinefavor.DivineFavor;
 import aurocosh.divinefavor.common.constants.ConstGuiIDs;
+import aurocosh.divinefavor.common.constants.ConstMainTabOrder;
 import aurocosh.divinefavor.common.item.base.ModItem;
 import aurocosh.divinefavor.common.item.common.ModItems;
 import aurocosh.divinefavor.common.item.talisman_container.grimoire.capability.GrimoireProvider;
@@ -28,7 +29,7 @@ public class ItemGrimoire extends ModItem {
     private static String TAG_SHARE = "Grimoire";
 
     public ItemGrimoire() {
-        super("grimoire", "grimoire");
+        super("grimoire", "grimoire", ConstMainTabOrder.CONTAINERS);
         setMaxStackSize(1);
         setCreativeTab(DivineFavor.TAB_MAIN);
     }

@@ -1,0 +1,18 @@
+{
+  "result": {
+    "item": "divinefavor:banishing_wand"
+  },
+  "type": "forge:ore_shapeless",
+  "ingredients": [
+    {
+      "item": "minecraft:dye",
+      "data": 1
+    },
+    {
+      "item": "minecraft:bone"
+    },
+    {
+      "item": "divinefavor:bone_dagger_awakened"
+    }
+  ]
+}

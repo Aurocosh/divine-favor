@@ -1,6 +1,7 @@
 package aurocosh.divinefavor.common.item;
 
 import aurocosh.divinefavor.DivineFavor;
+import aurocosh.divinefavor.common.constants.ConstMainTabOrder;
 import aurocosh.divinefavor.common.item.base.ModItem;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.entity.EntityLivingBase;
@@ -17,7 +18,7 @@ import net.minecraft.world.World;
 
 public class ItemMilkyApple extends ModItem {
     public ItemMilkyApple() {
-        super("milky_apple", "milky_apple");
+        super("milky_apple", "milky_apple", ConstMainTabOrder.OTHER_ITEMS);
         setMaxStackSize(1);
         setCreativeTab(DivineFavor.TAB_MAIN);
     }

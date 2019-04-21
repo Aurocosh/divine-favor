@@ -1,5 +1,7 @@
 package aurocosh.divinefavor.common.item.talismans.spell.base;
 
+import aurocosh.divinefavor.common.custom_data.player.PlayerData;
+import aurocosh.divinefavor.common.custom_data.player.data.favor.SpiritData;
 import aurocosh.divinefavor.common.entity.minions.base.IMinion;
 import aurocosh.divinefavor.common.spirit.base.ModSpirit;
 import net.minecraft.entity.EntityLiving;

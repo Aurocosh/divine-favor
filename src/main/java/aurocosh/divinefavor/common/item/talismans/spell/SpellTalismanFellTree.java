@@ -8,7 +8,6 @@ import aurocosh.divinefavor.common.lib.math.Vector3i;
 import aurocosh.divinefavor.common.spirit.base.ModSpirit;
 import aurocosh.divinefavor.common.tasks.BlockBreakingTask;
 import aurocosh.divinefavor.common.util.UtilCoordinates;
-import aurocosh.divinefavor.common.util.UtilList;
 import aurocosh.divinefavor.common.util.UtilVector3i;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
@@ -19,6 +18,7 @@ import net.minecraft.world.World;
 import java.util.Collections;
 import java.util.EnumSet;
 import java.util.List;
+import java.util.function.Predicate;
 
 public class SpellTalismanFellTree extends ItemSpellTalisman {
     public SpellTalismanFellTree(String name, ModSpirit spirit, int favorCost, EnumSet<SpellOptions> options) {
@@ -42,7 +42,7 @@ public class SpellTalismanFellTree extends ItemSpellTalisman {
             return logs;
 
         start = Vector3i.convertPos(logs);
-        UtilList.Predicate<BlockPos> predicate = blockPos -> {
+        Predicate<BlockPos> predicate = blockPos -> {
             IBlockState blockState = world.getBlockState(blockPos);
             Block block = blockState.getBlock();
             return block.isWood(world, blockPos) || block.isLeaves(blockState, world, blockPos);

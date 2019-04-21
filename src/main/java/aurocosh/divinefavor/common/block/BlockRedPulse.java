@@ -2,6 +2,7 @@ package aurocosh.divinefavor.common.block;
 
 import aurocosh.divinefavor.DivineFavor;
 import aurocosh.divinefavor.common.block.base.ModBlockAir;
+import aurocosh.divinefavor.common.constants.ConstMainTabOrder;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.BlockRenderLayer;
@@ -20,7 +21,7 @@ public class BlockRedPulse extends ModBlockAir {
     private final int despawnDelay;
 
     public BlockRedPulse(String name, int redLevel, int lightLevel, int despawnDelay) {
-        super(name, Material.ROCK);
+        super(name, Material.ROCK, ConstMainTabOrder.OTHER_BLOCKS);
         this.redLevel = redLevel;
         lightValue = lightLevel;
         this.despawnDelay = despawnDelay;

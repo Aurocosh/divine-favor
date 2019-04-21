@@ -14,18 +14,20 @@ import aurocosh.divinefavor.common.item.talisman_container.grimoire.ItemGrimoire
 import aurocosh.divinefavor.common.item.talisman_container.spell_bow.ItemSpellBow;
 
 public final class ModItems {
+    public static ModItem banishing_wand;
     public static ModItem bone_dagger;
     public static ModItem bone_dagger_awakened;
     public static ModItem bone_key;
     public static ModItem contract_binder;
     public static ModItem grimoire;
-    public static ModItem invite_gem;
-    public static ModItem invite_pebble;
-    public static ModItem mystic_architect_stick;
     public static ModItem milky_apple;
+    public static ModItem mystic_architect_stick;
     public static ModItem ritual_pouch;
     public static ModItem spell_bow;
     public static ModItem stoneball;
+
+    public static ModItem invite_gem;
+    public static ModItem invite_pebble;
     public static ModItem storage_gem;
     public static ModItem warp_gem;
     public static ModItem warp_pebble;
@@ -38,6 +40,7 @@ public final class ModItems {
     public static ModItem rope_teleporting;
 
     public static void preInit() {
+        banishing_wand = new ItemBanishingWand();
         bone_dagger = new ItemBoneDagger();
         bone_dagger_awakened = new ItemBoneDaggerAwakened();
         bone_key = new ItemBoneKey();
@@ -45,8 +48,8 @@ public final class ModItems {
         grimoire = new ItemGrimoire();
         invite_gem = new ItemInviteMarker("invite_gem", true);
         invite_pebble = new ItemInviteMarker("invite_pebble", false);
-        mystic_architect_stick = new ItemMysticArchitectStick();
         milky_apple = new ItemMilkyApple();
+        mystic_architect_stick = new ItemMysticArchitectStick();
         ritual_pouch = new ItemRitualPouch();
         spell_bow = new ItemSpellBow();
         stoneball = new ItemStoneball();
@@ -54,12 +57,18 @@ public final class ModItems {
         warp_gem = new ItemWarpMarker("warp_gem", true);
         warp_pebble = new ItemWarpMarker("warp_pebble", false);
 
-        rope_barrier = new ItemRope<EntityRopeBarrierNode>("rope_barrier","ropes/barrier", EntityRopeBarrierNode.class, EntityRopeBarrierNode.ROPE_LENGTH) {};
-        rope_explosive = new ItemRope<EntityRopeExplosiveNode>("rope_explosive","ropes/explosive", EntityRopeExplosiveNode.class, EntityRopeExplosiveNode.ROPE_LENGTH) {};
-        rope_glowing = new ItemRope<EntityRopeGlowingNode>("rope_glowing","ropes/glowing", EntityRopeGlowingNode.class, EntityRopeGlowingNode.ROPE_LENGTH) {};
-        rope_guide = new ItemRope<EntityRopeGuideNode>("rope_guide","ropes/guide", EntityRopeGuideNode.class, EntityRopeGuideNode.ROPE_LENGTH) {};
-        rope_inert = new ItemRope<EntityRopeInertNode>("rope_inert","ropes/inert", EntityRopeInertNode.class, EntityRopeInertNode.ROPE_LENGTH) {};
-        rope_teleporting = new ItemRope<EntityRopeTeleportingNode>("rope_teleporting","ropes/teleporting", EntityRopeTeleportingNode.class, EntityRopeTeleportingNode.ROPE_LENGTH) {};
+        rope_barrier = new ItemRope<EntityRopeBarrierNode>("rope_barrier", "ropes/barrier", EntityRopeBarrierNode.class, EntityRopeBarrierNode.ROPE_LENGTH) {
+        };
+        rope_explosive = new ItemRope<EntityRopeExplosiveNode>("rope_explosive", "ropes/explosive", EntityRopeExplosiveNode.class, EntityRopeExplosiveNode.ROPE_LENGTH) {
+        };
+        rope_glowing = new ItemRope<EntityRopeGlowingNode>("rope_glowing", "ropes/glowing", EntityRopeGlowingNode.class, EntityRopeGlowingNode.ROPE_LENGTH) {
+        };
+        rope_guide = new ItemRope<EntityRopeGuideNode>("rope_guide", "ropes/guide", EntityRopeGuideNode.class, EntityRopeGuideNode.ROPE_LENGTH) {
+        };
+        rope_inert = new ItemRope<EntityRopeInertNode>("rope_inert", "ropes/inert", EntityRopeInertNode.class, EntityRopeInertNode.ROPE_LENGTH) {
+        };
+        rope_teleporting = new ItemRope<EntityRopeTeleportingNode>("rope_teleporting", "ropes/teleporting", EntityRopeTeleportingNode.class, EntityRopeTeleportingNode.ROPE_LENGTH) {
+        };
 
 //        ModContainer mod = Loader.instance().getModObjectList().inverse().getValue(DivineFavor.instance);
     }

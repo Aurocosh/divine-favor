@@ -46,7 +46,7 @@ public class ItemSpellTalisman extends ItemTalisman {
         return true;
     }
 
-    private boolean claimCost(TalismanContext context) {
+    protected boolean claimCost(TalismanContext context) {
         if (favorCost == 0)
             return true;
         if (!isConsumeCharge(context))

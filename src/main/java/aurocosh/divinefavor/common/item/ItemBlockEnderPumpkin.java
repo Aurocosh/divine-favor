@@ -7,8 +7,8 @@ import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
 
 public class ItemBlockEnderPumpkin extends ModItemBlock {
-    public ItemBlockEnderPumpkin(BlockEnderPumpkin block) {
-        super(block);
+    public ItemBlockEnderPumpkin(BlockEnderPumpkin block, int orderIndex) {
+        super(block, orderIndex);
     }
 
     @Override

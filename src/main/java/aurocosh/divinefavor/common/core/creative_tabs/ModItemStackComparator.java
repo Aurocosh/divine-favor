@@ -1,6 +1,6 @@
 package aurocosh.divinefavor.common.core.creative_tabs;
 
-import aurocosh.divinefavor.common.item.base.ModItem;
+import aurocosh.divinefavor.common.lib.interfaces.IOrdered;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
@@ -12,21 +12,21 @@ public class ModItemStackComparator implements Comparator<ItemStack> {
         Item firstItem = first.getItem();
         Item secondItem = second.getItem();
 
-        boolean isFirstMod = firstItem instanceof ModItem;
-        boolean isSecondMod = secondItem instanceof ModItem;
+        boolean isFirstOrdered = firstItem instanceof IOrdered;
+        boolean isSecondOrdered = secondItem instanceof IOrdered;
 
-        if (isFirstMod && !isSecondMod)
+        if (isFirstOrdered && !isSecondOrdered)
             return -1;
-        if (!isFirstMod && isSecondMod)
+        if (!isFirstOrdered && isSecondOrdered)
             return 1;
-        if (isFirstMod && isSecondMod) {
-            int firstOrder = ((ModItem) firstItem).getOrderIndex();
-            int secondOrder = ((ModItem) secondItem).getOrderIndex();
+        if (isFirstOrdered && isSecondOrdered) {
+            int firstOrder = ((IOrdered) firstItem).getOrderIndex();
+            int secondOrder = ((IOrdered) secondItem).getOrderIndex();
 
             if (firstOrder == secondOrder)
-                return firstItem.getRegistryName().toString().compareTo(secondItem.getRegistryName().toString());
+                return firstItem.getRegistryName().compareTo(secondItem.getRegistryName());
             return firstOrder < secondOrder ? -1 : 1;
         }
-        return firstItem.getRegistryName().toString().compareTo(secondItem.getRegistryName().toString());
+        return firstItem.getRegistryName().compareTo(secondItem.getRegistryName());
     }
 }

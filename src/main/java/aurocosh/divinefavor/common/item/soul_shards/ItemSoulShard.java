@@ -1,6 +1,7 @@
 package aurocosh.divinefavor.common.item.soul_shards;
 
 import aurocosh.divinefavor.DivineFavor;
+import aurocosh.divinefavor.common.constants.ConstGemTabOrder;
 import aurocosh.divinefavor.common.item.base.ModItem;
 import aurocosh.divinefavor.common.spirit.base.ModSpirit;
 import aurocosh.divinefavor.common.util.UtilNbt;
@@ -23,7 +24,7 @@ public class ItemSoulShard extends ModItem {
     protected final ModSpirit spirit;
 
     public ItemSoulShard(String name, ModSpirit spirit) {
-        super("soul_shard_" + name, "soul_shards/" + name, 2);
+        super("soul_shard_" + name, "soul_shards/" + name, ConstGemTabOrder.SOUL_SHARD);
         this.spirit = spirit;
         setCreativeTab(DivineFavor.TAB_GEMS);
     }

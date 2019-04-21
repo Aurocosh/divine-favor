@@ -2,11 +2,13 @@ package aurocosh.divinefavor.common.custom_data.player.data.favor;
 
 import aurocosh.divinefavor.common.custom_data.CapabilityHelper;
 import aurocosh.divinefavor.common.item.contract.ItemContract;
+import aurocosh.divinefavor.common.item.contract.ItemFavorContract;
 import aurocosh.divinefavor.common.item.contract_binder.ItemContractBinder;
 import aurocosh.divinefavor.common.misc.SlotStack;
 import aurocosh.divinefavor.common.registry.mappers.ModMappers;
 import aurocosh.divinefavor.common.spirit.base.ModSpirit;
 import aurocosh.divinefavor.common.util.UtilHandler;
+import aurocosh.divinefavor.common.util.UtilList;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -112,20 +114,21 @@ public class SpiritData {
         for (int i = 0; i < contractsStackHandler.getSlots(); i++) {
             ItemStack stack = contractsStackHandler.getStackInSlot(i);
             if (!stack.isEmpty())
-                contractStacks.addAll(getContracsFromStack(stack));
+                contractStacks.addAll(getContractsFromStack(stack));
         }
 
         List<ItemContract> contracts = new ArrayList<>();
-        for (ItemStack stack : contractStacks)
-            contracts.add((ItemContract) stack.getItem());
+        for (ItemStack stack : contractStacks) {
+            Item item = stack.getItem();
+                contracts.add((ItemContract) item);
+        }
         return contracts;
     }
 
-    private List<ItemStack> getContracsFromStack(ItemStack stack) {
+    private List<ItemStack> getContractsFromStack(ItemStack stack) {
         List<ItemStack> contracts = new ArrayList<>();
-        if (stack.getItem() instanceof ItemContract) {
+        if (stack.getItem() instanceof ItemContract)
             contracts.add(stack);
-        }
         else if (stack.getItem() instanceof ItemContractBinder) {
             IItemHandler handler = CapabilityHelper.getItemHandler(stack);
             if (handler == null)
@@ -143,10 +146,10 @@ public class SpiritData {
         for (int i = 0; i < contractsStackHandlers.length; i++) {
             ItemStackHandler stackHandler = contractsStackHandlers[i];
             List<ItemContract> contracts = getContracts(stackHandler);
-            for (ItemContract contract : contracts) {
-                SpiritStatus status = spiritStatuses[i];
-                status.addStats(contract);
-            }
+
+            List<ItemFavorContract> favorContracts = UtilList.select(contracts, ItemFavorContract.class);
+            for (ItemFavorContract contract : favorContracts)
+                spiritStatuses[i].addStats(contract);
         }
         refreshValues();
     }

@@ -1,6 +1,7 @@
 package aurocosh.divinefavor.common.item;
 
 import aurocosh.divinefavor.DivineFavor;
+import aurocosh.divinefavor.common.constants.ConstMainTabOrder;
 import aurocosh.divinefavor.common.item.base.ModItem;
 import aurocosh.divinefavor.common.muliblock.IMultiblockController;
 import net.minecraft.entity.player.EntityPlayer;
@@ -13,20 +14,20 @@ import net.minecraft.world.World;
 
 public class ItemBoneKey extends ModItem {
     public ItemBoneKey() {
-        super("bone_key","bone_key");
+        super("bone_key", "bone_key", ConstMainTabOrder.TOOLS);
         setMaxStackSize(1);
         setCreativeTab(DivineFavor.TAB_MAIN);
     }
 
     @Override
     public EnumActionResult onItemUse(EntityPlayer playerIn, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
-        if(worldIn.isRemote)
+        if (worldIn.isRemote)
             return EnumActionResult.PASS;
-        if(hand == EnumHand.OFF_HAND)
+        if (hand == EnumHand.OFF_HAND)
             return EnumActionResult.PASS;
 
         TileEntity entity = worldIn.getTileEntity(pos);
-        if(!(entity instanceof IMultiblockController))
+        if (!(entity instanceof IMultiblockController))
             return EnumActionResult.PASS;
 
         IMultiblockController controller = (IMultiblockController) entity;

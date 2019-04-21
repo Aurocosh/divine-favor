@@ -11,7 +11,7 @@ import java.util.Random;
 public class BlockEtherealFlash extends BlockEtherealLight {
     private final int despawnDelay;
 
-    public BlockEtherealFlash(String name, int lightLevel, int despawnDelay) {
+    public BlockEtherealFlash(String name, int lightLevel,  int despawnDelay) {
         super(name, Material.ROCK, lightLevel);
         this.despawnDelay = despawnDelay;
         setCreativeTab(DivineFavor.TAB_MAIN);
