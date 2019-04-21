@@ -215,4 +215,8 @@ public class UtilEntity {
     public static Vec3d getMotionVector(Entity entity) {
         return new Vec3d(entity.motionX, entity.motionY, entity.motionZ);
     }
+
+    public static BlockPos getPreviousPosition(Entity entity) {
+        return new BlockPos(entity.prevPosX, entity.prevPosY, entity.prevPosZ);
+    }
 }

@@ -1,22 +1,25 @@
 package aurocosh.divinefavor.common.potions.potions;
 
-import aurocosh.divinefavor.common.config.common.ConfigSpells;
 import aurocosh.divinefavor.common.potions.base.potion.ModPotionToggle;
 import aurocosh.divinefavor.common.potions.common.ModPotions;
+import aurocosh.divinefavor.common.util.UtilCoordinates;
+import aurocosh.divinefavor.common.util.UtilEntity;
 import aurocosh.divinefavor.common.util.UtilPlayer;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.util.EnumFacing;
+import net.minecraft.util.math.BlockPos;
 
-public class PotionGroundFlow extends ModPotionToggle {
-    public PotionGroundFlow() {
-        super("ground_flow", true, 0x7FB8A4);
+public class PotionHovering extends ModPotionToggle {
+    public PotionHovering() {
+        super("hovering", true, 0x7FB8A4);
     }
 
     @Override
     protected void onPotionAdded(EntityLivingBase livingBase) {
         super.onPotionAdded(livingBase);
         if (!(livingBase instanceof EntityPlayer))
-            livingBase.removePotionEffect(ModPotions.ground_flow);
+            livingBase.removePotionEffect(ModPotions.hovering);
     }
 
     @Override
@@ -30,11 +33,19 @@ public class PotionGroundFlow extends ModPotionToggle {
     public void performEffect(EntityLivingBase livingBase, int amplifier) {
         if (livingBase.world.isRemote)
             return;
-        EntityPlayer player = (EntityPlayer) livingBase;
-        boolean allowFlying = player.getPosition().getY() <= ConfigSpells.groundFlow.yLimit;
-        UtilPlayer.setAllowFlying(player, allowFlying);
+
+        BlockPos currentPosition = livingBase.getPosition();
+        BlockPos previousPosition = UtilEntity.getPreviousPosition(livingBase);
+
+        boolean allowFlying = currentPosition.equals(previousPosition);
+        if (!allowFlying) {
+            BlockPos pos = UtilCoordinates.findPosition(livingBase.getPosition(), livingBase.world, 10, (world, blockPos) -> world.getBlockState(blockPos).isSideSolid(world, blockPos, EnumFacing.UP), BlockPos::down);
+            allowFlying = pos != null;
+        }
+
+        UtilPlayer.setAllowFlying((EntityPlayer) livingBase, allowFlying);
         if (!allowFlying)
-            livingBase.removePotionEffect(ModPotions.ground_flow);
+            livingBase.removePotionEffect(ModPotions.hovering);
     }
 
     @Override

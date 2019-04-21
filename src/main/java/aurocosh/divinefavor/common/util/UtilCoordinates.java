@@ -8,12 +8,18 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 import java.util.*;
+import java.util.function.Function;
 import java.util.function.Predicate;
 
 public class UtilCoordinates {
     @FunctionalInterface
     public interface PositionPredicate {
         boolean isValid(World world, Vector3i pos);
+    }
+
+    @FunctionalInterface
+    public interface StatePredicate {
+        boolean test(World world, BlockPos pos);
     }
 
     public static List<BlockPos> getRandomNeighbours(BlockPos start, World world, int neighbourCount, int minNextNode, int maxNextNode, int cycleLimit, PositionPredicate predicate) {
@@ -165,6 +171,16 @@ public class UtilCoordinates {
 
             previousSecondIsAir = previousOneIsAir;
             previousOneIsAir = world.isAirBlock(pos);
+        }
+        return null;
+    }
+
+    public static BlockPos findPosition(BlockPos start, World world, int limit, StatePredicate predicate, Function<BlockPos, BlockPos> nextPosFunction) {
+        BlockPos pos = start;
+        while (limit-- > 0) {
+            pos = nextPosFunction.apply(pos);
+            if (predicate.test(world, pos))
+                return pos;
         }
         return null;
     }

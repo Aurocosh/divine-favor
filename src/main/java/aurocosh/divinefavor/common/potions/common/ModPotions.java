@@ -27,6 +27,7 @@ public class ModPotions {
     public static ModPotionToggle armor_of_pacifist;
     public static ModPotionToggle gills;
     public static ModPotionToggle ground_flow;
+    public static ModPotionToggle hovering;
     public static ModPotionToggle grudge;
     public static ModPotionToggle mist_blade;
     public static ModPotionToggle molten_skin;
@@ -52,6 +53,7 @@ public class ModPotions {
         focused_fury = new PotionFocusedFury();
         gills = new PotionGills();
         ground_flow = new PotionGroundFlow();
+        hovering = new PotionHovering();
         grudge = new PotionGrudge();
         miners_focus = new PotionMinersFocus();
         mist_blade = new PotionMistBlade();

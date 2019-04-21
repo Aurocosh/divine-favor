@@ -1,5 +1,6 @@
 package aurocosh.divinefavor.common.util;
 
+import aurocosh.divinefavor.common.network.message.client.syncing.MessageSyncFlyingCapability;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
@@ -108,5 +109,16 @@ public class UtilPlayer {
 
     public static int getHandIndex(EntityPlayer player, EnumHand hand) {
         return hand == EnumHand.MAIN_HAND ? player.inventory.currentItem : InventoryIndexes.Offhand.getValue();
+    }
+
+    public static void setAllowFlying(EntityPlayer player, boolean allowFlying) {
+        if (player.capabilities.isCreativeMode)
+            return;
+        if (player.capabilities.allowFlying == allowFlying)
+            return;
+        player.capabilities.allowFlying = allowFlying;
+        player.capabilities.isFlying = player.capabilities.isFlying && allowFlying;
+        if (!player.world.isRemote)
+            new MessageSyncFlyingCapability(allowFlying).sendTo(player);
     }
 }
