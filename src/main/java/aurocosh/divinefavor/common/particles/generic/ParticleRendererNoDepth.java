@@ -3,7 +3,6 @@ package aurocosh.divinefavor.common.particles.generic;
 import aurocosh.divinefavor.common.particles.base.IParticleRenderer;
 import aurocosh.divinefavor.common.particles.base.ModParticle;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.particle.Particle;
 import net.minecraft.client.renderer.ActiveRenderInfo;
 import net.minecraft.client.renderer.BufferBuilder;
 import net.minecraft.client.renderer.GlStateManager;
@@ -13,10 +12,10 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.ResourceLocation;
 import org.lwjgl.opengl.GL11;
 
-public class ParticleRenderer<T extends ModParticle> implements IParticleRenderer<T> {
+public class ParticleRendererNoDepth<T extends ModParticle> implements IParticleRenderer<T> {
     private final ResourceLocation texture;
 
-    public ParticleRenderer(ResourceLocation texture) {
+    public ParticleRendererNoDepth(ResourceLocation texture) {
         this.texture = texture;
     }
 
@@ -33,10 +32,10 @@ public class ParticleRenderer<T extends ModParticle> implements IParticleRendere
         float xy = ActiveRenderInfo.getRotationXY();
         float xz = ActiveRenderInfo.getRotationXZ();
 
-        Particle.interpPosX = player.lastTickPosX + (player.posX - player.lastTickPosX) * partialTicks;
-        Particle.interpPosY = player.lastTickPosY + (player.posY - player.lastTickPosY) * partialTicks;
-        Particle.interpPosZ = player.lastTickPosZ + (player.posZ - player.lastTickPosZ) * partialTicks;
-        Particle.cameraViewDir = player.getLook(partialTicks);
+//        Particle.interpPosX = player.lastTickPosX + (player.posX - player.lastTickPosX) * partialTicks;
+//        Particle.interpPosY = player.lastTickPosY + (player.posY - player.lastTickPosY) * partialTicks;
+//        Particle.interpPosZ = player.lastTickPosZ + (player.posZ - player.lastTickPosZ) * partialTicks;
+//        Particle.cameraViewDir = player.getLook(partialTicks);
 
         GlStateManager.pushMatrix();
 
@@ -45,8 +44,8 @@ public class ParticleRenderer<T extends ModParticle> implements IParticleRendere
         GlStateManager.alphaFunc(516, 0.003921569F);
         GlStateManager.disableCull();
         GlStateManager.blendFunc(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE);
-
         GlStateManager.depthMask(false);
+        GlStateManager.disableDepth();
 
         mc.getTextureManager().bindTexture(texture);
         Tessellator tessellator = Tessellator.getInstance();
@@ -57,6 +56,7 @@ public class ParticleRenderer<T extends ModParticle> implements IParticleRendere
             particle.renderParticle(buffer, player, partialTicks, x, xz, z, yz, xy);
         tessellator.draw();
 
+        GlStateManager.enableDepth();
         GlStateManager.enableCull();
         GlStateManager.depthMask(true);
         GlStateManager.blendFunc(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA);
