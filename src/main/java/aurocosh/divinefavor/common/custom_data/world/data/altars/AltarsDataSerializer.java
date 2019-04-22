@@ -3,7 +3,7 @@ package aurocosh.divinefavor.common.custom_data.world.data.altars;
 import aurocosh.divinefavor.common.lib.interfaces.INbtSerializer;
 import aurocosh.divinefavor.common.registry.mappers.ModMappers;
 import aurocosh.divinefavor.common.spirit.base.ModSpirit;
-import aurocosh.divinefavor.common.util.UtilSerialize;
+import aurocosh.divinefavor.common.util.UtilBlockPos;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.math.BlockPos;
 
@@ -22,7 +22,7 @@ public class AltarsDataSerializer implements INbtSerializer<AltarsData> {
             int spiritId = entry.getKey();
             List<BlockPos> altarLocations = new ArrayList<>(entry.getValue());
             ModSpirit spirit = ModMappers.spirits.get(spiritId);
-            int[] posArray = UtilSerialize.serializeBlockPosArray(altarLocations);
+            int[] posArray = UtilBlockPos.serialize(altarLocations);
             String spiritName = spirit.getRegistryName().toString();
             altarNbt.setIntArray(spiritName, posArray);
         }
@@ -41,7 +41,7 @@ public class AltarsDataSerializer implements INbtSerializer<AltarsData> {
             if(!altarNbt.hasKey(spiritName))
                 return;
             int[] posArray = altarNbt.getIntArray(spiritName);
-            List<BlockPos> altarLocations = UtilSerialize.deserializeBlockPosArray(posArray);
+            List<BlockPos> altarLocations = UtilBlockPos.deserialize(posArray);
             positions.put(spirit.getId(), new HashSet<>(altarLocations));
         }
         instance.setAllPositions(positions);

@@ -1,0 +1,15 @@
+{
+  "name": "Sense ore vague",
+  "icon": "divinefavor:talisman_sense_ore_vague",
+  "category": "spell_talismans",
+  "pages": [
+    {
+      "type": "item_description",
+      "talisman": "divinefavor:talisman_sense_ore_vague"
+    },
+    {
+      "type": "spell_talisman_stats",
+      "talisman": "divinefavor:talisman_sense_ore_vague"
+    }
+  ]
+}

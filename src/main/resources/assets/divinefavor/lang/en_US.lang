@@ -196,6 +196,14 @@ item.divinefavor:talisman_red_pulse.name=Red pulse talisman
 item.divinefavor:talisman_red_signal.name=Red signal talisman
 item.divinefavor:talisman_remote_chest.name=Remote chest talisman
 item.divinefavor:talisman_searing_pulse.name=Searing pulse
+item.divinefavor:talisman_sense_block_approximate.name=Weak block sensing talisman
+item.divinefavor:talisman_sense_block_close.name=Close block sensing talisman
+item.divinefavor:talisman_sense_block_precise.name=Precise block sensing talisman
+item.divinefavor:talisman_sense_block_vague.name=Vague block sensing talisman
+item.divinefavor:talisman_sense_ore_approximate.name=Weak ore sensing talisman
+item.divinefavor:talisman_sense_ore_close.name=Close ore sensing talisman
+item.divinefavor:talisman_sense_ore_precise.name=Precise ore sensing talisman
+item.divinefavor:talisman_sense_ore_vague.name=Vague ore sensing talisman
 item.divinefavor:talisman_small_fireball_throw.name=Small fireball throw
 item.divinefavor:talisman_snowball_throw.name=Snowball talisman
 item.divinefavor:talisman_spider_might.name=Spider might talisman
@@ -455,6 +463,14 @@ item.divinefavor:talisman_red_pulse.description=On cast it will create untouchab
 item.divinefavor:talisman_red_signal.description=On cast it will create untouchable temporary block that emits strong redstone signal. This block will also emit light. It is stronger version of red pulse talisman.
 item.divinefavor:talisman_remote_chest.description=When used on chest it will create storage gem. When used storage gem will let you access bound chest remotely.
 item.divinefavor:talisman_searing_pulse.description=When used on smeltable blocks it will instantly smelt them. It will only smelt blocks that smelt into blocks. And also it is pretty unpredictable how many of blocks and which blocks will be smelted.
+item.divinefavor:talisman_sense_block_approximate.description=This talisman will highlight ore blocks around you, but it is not very precise and will show only approximate location of ore. It will highlight blocks of the same type as the block in your other hand.
+item.divinefavor:talisman_sense_block_close.description=This talisman will highlight blocks in very small radius around you. It will highlight blocks of the same type as the block in your other hand.
+item.divinefavor:talisman_sense_block_precise.description=This talisman will highlight blocks around you. It is precise but much more expensive then other similar talismans. It will highlight blocks of the same type as the block in your other hand.
+item.divinefavor:talisman_sense_block_vague.description=This talisman will highlight blocks around you, but it is not very precise and will show only approximate location of ore. It will highlight blocks of the same type as the block in your other hand. It will highlight blocks of the same type as the block in your other hand.
+item.divinefavor:talisman_sense_ore_approximate.description=This talisman will highlight ore blocks around you, but it is not very precise and will show only approximate location of ore.
+item.divinefavor:talisman_sense_ore_close.description=This talisman will highlight ore blocks in very small radius around you.
+item.divinefavor:talisman_sense_ore_precise.description=This talisman will highlight ore blocks around you. It is precise but much more expensive then other similar talismans.
+item.divinefavor:talisman_sense_ore_vague.description=This talisman will highlight ore blocks around you, but it has average precision and cost when compared to other talismans.
 item.divinefavor:talisman_small_fireball_throw.description=Throws small fireballs, that's it.
 item.divinefavor:talisman_snowball_throw.description=Throws snowballs. Does not require snowballs in inventory to work.
 item.divinefavor:talisman_spider_might.description=Will grant to user some powers and weaknesses of a spider. User will be able to climb walls, but will be much more susceptible to fire damage and will be affected by bane of arthropods enchantment.
@@ -479,6 +495,7 @@ item.divinefavor:talisman_wild_sprint.description=Will briefly immobilize caster
 item.divinefavor:talisman_wind_step.description=Will give player short boost in direction where he is looking.
 item.divinefavor:talisman_winter_breath.description=Damages enemies in front of you and pushes them back slightly.
 item.divinefavor:talisman_wooden_punch.description=Will grant player 'Wooden_punch' effect. While effect active player will be able to break wood instantly with his bare hands. Effect is permanent. To remove it just cast spell once more. Each broken stone costs some favor.item.divinefavor:talisman_wooden_punch.description=Will grant player 'Wooden_punch' effect. While effect active player will be able to break wood instantly with his bare hands. Effect is permanent. To remove it just cast spell once more. Each broken stone costs some favor.
+
 
 ## ARROW TALISMANS
 item.divinefavor:arrow_talisman_anti_gravity_arrow.description=Arrow shot with this talisman will fall upwards instead on down. Not very practical but can be used for some trick shots.

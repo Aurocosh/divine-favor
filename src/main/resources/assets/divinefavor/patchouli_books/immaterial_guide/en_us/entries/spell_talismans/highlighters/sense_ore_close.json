@@ -1,0 +1,15 @@
+{
+  "name": "Sense ore close",
+  "icon": "divinefavor:talisman_sense_ore_close",
+  "category": "spell_talismans",
+  "pages": [
+    {
+      "type": "item_description",
+      "talisman": "divinefavor:talisman_sense_ore_close"
+    },
+    {
+      "type": "spell_talisman_stats",
+      "talisman": "divinefavor:talisman_sense_ore_close"
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "name": "Sense block close",
+  "icon": "divinefavor:talisman_sense_block_close",
+  "category": "spell_talismans",
+  "pages": [
+    {
+      "type": "item_description",
+      "talisman": "divinefavor:talisman_sense_block_close"
+    },
+    {
+      "type": "spell_talisman_stats",
+      "talisman": "divinefavor:talisman_sense_block_close"
+    }
+  ]
+}

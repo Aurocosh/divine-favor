@@ -3,6 +3,8 @@ package aurocosh.divinefavor.common.network.common;
 import aurocosh.divinefavor.common.network.message.client.activity.MessageSpiritBecameActive;
 import aurocosh.divinefavor.common.network.message.client.activity.MessageSpiritBecameInactive;
 import aurocosh.divinefavor.common.network.message.client.particles.MessageParticlesHeatWave;
+import aurocosh.divinefavor.common.network.message.client.particles.MessageParticlesHighlightBlock;
+import aurocosh.divinefavor.common.network.message.client.particles.MessageParticlesHighlightOre;
 import aurocosh.divinefavor.common.network.message.client.particles.MessageParticlesWinterBreath;
 import aurocosh.divinefavor.common.network.message.client.spirit_data.MessageSyncAllSpiritData;
 import aurocosh.divinefavor.common.network.message.client.spirit_data.MessageSyncContracts;
@@ -15,9 +17,11 @@ import aurocosh.divinefavor.common.network.message.sever.petrification.MessagePe
 import net.minecraftforge.fml.relauncher.Side;
 
 public class MessageRegister {
-	public static void init() {
-	    // Client messages
+    public static void init() {
+        // Client messages
         NetworkHandler.register(MessageParticlesHeatWave.class, Side.CLIENT);
+        NetworkHandler.register(MessageParticlesHighlightBlock.class, Side.CLIENT);
+        NetworkHandler.register(MessageParticlesHighlightOre.class, Side.CLIENT);
         NetworkHandler.register(MessageParticlesWinterBreath.class, Side.CLIENT);
 
         NetworkHandler.register(MessageSyncAllSpiritData.class, Side.CLIENT);
