@@ -3,12 +3,12 @@ package aurocosh.divinefavor.common.network.message.sever.petrification;
 import aurocosh.divinefavor.DivineFavor;
 import aurocosh.divinefavor.common.custom_data.living.LivingData;
 import aurocosh.divinefavor.common.custom_data.living.data.petrification.PetrificationData;
-import aurocosh.divinefavor.common.network.base.NetworkWrappedClientMessage;
+import aurocosh.divinefavor.common.network.base.WrappedClientMessage;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class MessagePetrificationReset extends NetworkWrappedClientMessage {
+public class MessagePetrificationReset extends WrappedClientMessage {
     public MessagePetrificationReset() {
     }
 

@@ -2,11 +2,11 @@ package aurocosh.divinefavor.common.network.message.sever;
 
 import aurocosh.divinefavor.common.item.talisman_container.ITalismanContainer;
 import aurocosh.divinefavor.common.item.talisman_container.TalismanContainerAdapter;
-import aurocosh.divinefavor.common.network.base.NetworkWrappedServerMessage;
+import aurocosh.divinefavor.common.network.base.WrappedServerMessage;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.ItemStack;
 
-public class MessageSyncTalismanContainerSlot extends NetworkWrappedServerMessage {
+public class MessageSyncTalismanContainerSlot extends WrappedServerMessage {
     public int playerSlotIndex;
     public int selectedGrimoireIndex;
 

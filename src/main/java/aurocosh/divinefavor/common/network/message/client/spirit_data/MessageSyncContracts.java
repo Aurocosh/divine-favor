@@ -3,13 +3,13 @@ package aurocosh.divinefavor.common.network.message.client.spirit_data;
 import aurocosh.divinefavor.DivineFavor;
 import aurocosh.divinefavor.common.custom_data.player.PlayerData;
 import aurocosh.divinefavor.common.custom_data.player.data.favor.SpiritData;
-import aurocosh.divinefavor.common.network.base.NetworkWrappedClientMessage;
+import aurocosh.divinefavor.common.network.base.WrappedClientMessage;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class MessageSyncContracts extends NetworkWrappedClientMessage {
+public class MessageSyncContracts extends WrappedClientMessage {
     private static String TAG_CONTRACTS = "Contracts";
 
     public NBTTagCompound tag;

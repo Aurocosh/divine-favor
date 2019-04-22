@@ -1,14 +1,14 @@
 package aurocosh.divinefavor.common.network.message.client.syncing;
 
 import aurocosh.divinefavor.DivineFavor;
-import aurocosh.divinefavor.common.network.base.NetworkWrappedClientMessage;
+import aurocosh.divinefavor.common.network.base.WrappedClientMessage;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraftforge.fml.relauncher.ReflectionHelper;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class MessageSyncFireImmunity extends NetworkWrappedClientMessage {
+public class MessageSyncFireImmunity extends WrappedClientMessage {
     public boolean immuneToFire;
 
     public MessageSyncFireImmunity() {

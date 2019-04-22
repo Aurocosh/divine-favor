@@ -1,6 +1,6 @@
 package aurocosh.divinefavor.common.item.talismans.arrow;
 
-import aurocosh.divinefavor.common.config.talismans.arrow.ExplosiveArrow;
+import aurocosh.divinefavor.common.config.entries.talismans.arrow.ExplosiveArrow;
 import aurocosh.divinefavor.common.entity.projectile.EntitySpellArrow;
 import aurocosh.divinefavor.common.item.talismans.arrow.base.ArrowOptions;
 import aurocosh.divinefavor.common.item.talismans.arrow.base.ArrowType;

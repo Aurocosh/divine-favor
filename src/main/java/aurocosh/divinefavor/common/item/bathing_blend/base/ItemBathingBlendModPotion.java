@@ -1,6 +1,6 @@
 package aurocosh.divinefavor.common.item.bathing_blend.base;
 
-import aurocosh.divinefavor.common.config.items.BathingBlendPotion;
+import aurocosh.divinefavor.common.config.entries.items.BathingBlendPotion;
 import aurocosh.divinefavor.common.potions.base.effect.ModEffect;
 import aurocosh.divinefavor.common.potions.base.potion.ModPotion;
 import net.minecraft.entity.EntityLivingBase;

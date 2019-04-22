@@ -1,31 +1,18 @@
 package aurocosh.divinefavor.common.network.message.client.particles;
 
 import aurocosh.divinefavor.DivineFavor;
+import aurocosh.divinefavor.common.config.common.ConfigGeneral;
 import aurocosh.divinefavor.common.item.talismans.spell.highlighters.BlockHighlighter;
-import aurocosh.divinefavor.common.network.base.NetworkWrappedClientMessage;
-import net.minecraft.block.Block;
+import aurocosh.divinefavor.common.network.base.WrappedClientMessage;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Blocks;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 import javax.vecmath.Color3f;
-import java.util.HashSet;
-import java.util.Set;
 
-public class MessageParticlesHighlightOre extends NetworkWrappedClientMessage {
-    private static final Set<Block> ORE_BLOCKS = new HashSet<>();
-
-    static {
-        ORE_BLOCKS.add(Blocks.DIAMOND_ORE);
-        ORE_BLOCKS.add(Blocks.EMERALD_ORE);
-        ORE_BLOCKS.add(Blocks.GOLD_ORE);
-        ORE_BLOCKS.add(Blocks.GOLD_ORE);
-        ORE_BLOCKS.add(Blocks.IRON_ORE);
-    }
-
+public class MessageParticlesHighlightOre extends WrappedClientMessage {
     public int radius;
     public int particles;
     public int dimensionId;
@@ -54,6 +41,6 @@ public class MessageParticlesHighlightOre extends NetworkWrappedClientMessage {
         EntityPlayer player = DivineFavor.proxy.getClientPlayer();
         World world = player.world;
         if (dimensionId == world.provider.getDimension())
-            BlockHighlighter.highlightOre(world, position, radius, maxShift, minShift, particles, color3f, pos -> ORE_BLOCKS.contains(world.getBlockState(pos).getBlock()));
+            BlockHighlighter.highlightOre(world, position, radius, maxShift, minShift, particles, color3f, pos -> ConfigGeneral.ORE_BLOCKS.contains(world.getBlockState(pos).getBlock()));
     }
 }

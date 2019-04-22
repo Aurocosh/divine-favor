@@ -1,7 +1,7 @@
 package aurocosh.divinefavor.common.item.talismans.spell.highlighters;
 
 import aurocosh.divinefavor.common.config.common.ConfigGeneral;
-import aurocosh.divinefavor.common.config.talismans.spell.SenseBlock;
+import aurocosh.divinefavor.common.config.entries.talismans.spell.SenseBlock;
 import aurocosh.divinefavor.common.item.talismans.spell.base.ItemSpellTalisman;
 import aurocosh.divinefavor.common.item.talismans.spell.base.SpellOptions;
 import aurocosh.divinefavor.common.item.talismans.spell.base.TalismanContext;

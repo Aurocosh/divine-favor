@@ -2,7 +2,7 @@ package aurocosh.divinefavor.common.network.message.client.particles;
 
 import aurocosh.divinefavor.DivineFavor;
 import aurocosh.divinefavor.common.item.talismans.spell.highlighters.BlockHighlighter;
-import aurocosh.divinefavor.common.network.base.NetworkWrappedClientMessage;
+import aurocosh.divinefavor.common.network.base.WrappedClientMessage;
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.math.BlockPos;
@@ -12,7 +12,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import javax.vecmath.Color3f;
 
-public class MessageParticlesHighlightBlock extends NetworkWrappedClientMessage {
+public class MessageParticlesHighlightBlock extends WrappedClientMessage {
     public int radius;
     public int particles;
     public int dimensionId;
