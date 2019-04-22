@@ -1,7 +1,7 @@
 package aurocosh.divinefavor.common.network.message.client.activity;
 
 import aurocosh.divinefavor.DivineFavor;
-import aurocosh.divinefavor.common.network.base.NetworkWrappedClientMessage;
+import aurocosh.divinefavor.common.network.base.WrappedClientMessage;
 import aurocosh.divinefavor.common.registry.mappers.ModMappers;
 import aurocosh.divinefavor.common.spirit.base.ModSpirit;
 import net.minecraft.client.resources.I18n;
@@ -10,7 +10,7 @@ import net.minecraft.util.text.TextComponentString;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class MessageSpiritBecameActive extends NetworkWrappedClientMessage {
+public class MessageSpiritBecameActive extends WrappedClientMessage {
     public int spiritId;
 
     public MessageSpiritBecameActive() {

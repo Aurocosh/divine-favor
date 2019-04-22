@@ -19,8 +19,8 @@ import aurocosh.divinefavor.common.item.talismans.spell.common.ModSpellTalismans
 import aurocosh.divinefavor.common.item.wishing_stones.ModWishingStones;
 import aurocosh.divinefavor.common.muliblock.common.ModMultiBlocks;
 import aurocosh.divinefavor.common.network.GuiHandler;
-import aurocosh.divinefavor.common.network.base.NetworkWrappedClientMessage;
-import aurocosh.divinefavor.common.network.base.NetworkWrappedServerMessage;
+import aurocosh.divinefavor.common.network.base.WrappedClientMessage;
+import aurocosh.divinefavor.common.network.base.WrappedServerMessage;
 import aurocosh.divinefavor.common.network.common.MessageRegister;
 import aurocosh.divinefavor.common.network.common.NetworkHandler;
 import aurocosh.divinefavor.common.potions.common.ModBlendEffects;
@@ -68,8 +68,8 @@ public class CommonProxy {
         ModEntities.preInit();
 
         MessageRegister.init();
-        NetworkWrappedClientMessage.setNetworkWrapper(NetworkHandler.INSTANCE);
-        NetworkWrappedServerMessage.setNetworkWrapper(NetworkHandler.INSTANCE);
+        WrappedClientMessage.setNetworkWrapper(NetworkHandler.INSTANCE);
+        WrappedServerMessage.setNetworkWrapper(NetworkHandler.INSTANCE);
 
         LivingDataDataHandler.register();
         PlayerDataDataHandler.register();

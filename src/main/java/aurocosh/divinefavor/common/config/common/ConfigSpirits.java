@@ -1,7 +1,7 @@
 package aurocosh.divinefavor.common.config.common;
 
-import aurocosh.divinefavor.common.config.SpiritConfig;
-import aurocosh.divinefavor.common.config.TimePeriodConfig;
+import aurocosh.divinefavor.common.config.entries.SpiritConfig;
+import aurocosh.divinefavor.common.config.entries.TimePeriodConfig;
 import aurocosh.divinefavor.common.constants.ConstMisc;
 import net.minecraftforge.common.config.Config;
 

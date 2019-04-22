@@ -1,7 +1,7 @@
 package aurocosh.divinefavor.common.network.message.client.syncing;
 
 import aurocosh.divinefavor.DivineFavor;
-import aurocosh.divinefavor.common.network.base.NetworkWrappedClientMessage;
+import aurocosh.divinefavor.common.network.base.WrappedClientMessage;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
@@ -9,7 +9,7 @@ import net.minecraftforge.fml.relauncher.ReflectionHelper;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class MessageSyncPotionCharge extends NetworkWrappedClientMessage {
+public class MessageSyncPotionCharge extends WrappedClientMessage {
     public int potionId;
     public int charges;
 

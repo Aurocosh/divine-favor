@@ -1,6 +1,6 @@
 package aurocosh.divinefavor.common.config.common;
 
-import aurocosh.divinefavor.common.config.minions.*;
+import aurocosh.divinefavor.common.config.entries.minions.*;
 import aurocosh.divinefavor.common.constants.ConstMisc;
 import net.minecraftforge.common.config.Config;
 

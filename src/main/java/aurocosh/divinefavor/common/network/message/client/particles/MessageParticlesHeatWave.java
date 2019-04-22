@@ -2,7 +2,7 @@ package aurocosh.divinefavor.common.network.message.client.particles;
 
 import aurocosh.divinefavor.DivineFavor;
 import aurocosh.divinefavor.common.config.common.ConfigSpells;
-import aurocosh.divinefavor.common.network.base.NetworkWrappedClientMessage;
+import aurocosh.divinefavor.common.network.base.WrappedClientMessage;
 import aurocosh.divinefavor.common.util.UtilRandom;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.EnumParticleTypes;
@@ -10,7 +10,7 @@ import net.minecraft.util.math.Vec3d;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class MessageParticlesHeatWave extends NetworkWrappedClientMessage {
+public class MessageParticlesHeatWave extends WrappedClientMessage {
     public Vec3d position;
 
     public MessageParticlesHeatWave() {

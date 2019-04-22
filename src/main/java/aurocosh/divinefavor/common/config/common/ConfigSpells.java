@@ -1,6 +1,6 @@
 package aurocosh.divinefavor.common.config.common;
 
-import aurocosh.divinefavor.common.config.talismans.spell.*;
+import aurocosh.divinefavor.common.config.entries.talismans.spell.*;
 import aurocosh.divinefavor.common.constants.ConstMisc;
 import aurocosh.divinefavor.common.util.UtilTick;
 import net.minecraftforge.common.config.Config;

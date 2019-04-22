@@ -1,7 +1,7 @@
 package aurocosh.divinefavor.common.item.contract;
 
 import aurocosh.divinefavor.DivineFavor;
-import aurocosh.divinefavor.common.config.items.Contract;
+import aurocosh.divinefavor.common.config.entries.items.Contract;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.item.EnumRarity;

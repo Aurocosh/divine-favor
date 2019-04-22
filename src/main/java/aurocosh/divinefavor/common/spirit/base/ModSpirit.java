@@ -1,7 +1,7 @@
 package aurocosh.divinefavor.common.spirit.base;
 
 import aurocosh.divinefavor.DivineFavor;
-import aurocosh.divinefavor.common.config.SpiritConfig;
+import aurocosh.divinefavor.common.config.entries.SpiritConfig;
 import aurocosh.divinefavor.common.constants.ConstResources;
 import aurocosh.divinefavor.common.core.ResourceNamer;
 import aurocosh.divinefavor.common.custom_data.player.PlayerData;

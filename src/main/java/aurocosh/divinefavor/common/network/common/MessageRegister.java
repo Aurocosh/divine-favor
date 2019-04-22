@@ -2,6 +2,7 @@ package aurocosh.divinefavor.common.network.common;
 
 import aurocosh.divinefavor.common.network.message.client.activity.MessageSpiritBecameActive;
 import aurocosh.divinefavor.common.network.message.client.activity.MessageSpiritBecameInactive;
+import aurocosh.divinefavor.common.network.message.client.config.MessageConfigOreBlocks;
 import aurocosh.divinefavor.common.network.message.client.particles.MessageParticlesHeatWave;
 import aurocosh.divinefavor.common.network.message.client.particles.MessageParticlesHighlightBlock;
 import aurocosh.divinefavor.common.network.message.client.particles.MessageParticlesHighlightOre;
@@ -19,6 +20,8 @@ import net.minecraftforge.fml.relauncher.Side;
 public class MessageRegister {
     public static void init() {
         // Client messages
+        NetworkHandler.register(MessageConfigOreBlocks.class, Side.CLIENT);
+
         NetworkHandler.register(MessageParticlesHeatWave.class, Side.CLIENT);
         NetworkHandler.register(MessageParticlesHighlightBlock.class, Side.CLIENT);
         NetworkHandler.register(MessageParticlesHighlightOre.class, Side.CLIENT);

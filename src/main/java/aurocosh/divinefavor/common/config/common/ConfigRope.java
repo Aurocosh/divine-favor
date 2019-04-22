@@ -1,9 +1,9 @@
 package aurocosh.divinefavor.common.config.common;
 
-import aurocosh.divinefavor.common.config.ropes.BarrierRope;
-import aurocosh.divinefavor.common.config.ropes.ExplosiveRope;
-import aurocosh.divinefavor.common.config.ropes.GuideRope;
-import aurocosh.divinefavor.common.config.ropes.InertRope;
+import aurocosh.divinefavor.common.config.entries.ropes.BarrierRope;
+import aurocosh.divinefavor.common.config.entries.ropes.ExplosiveRope;
+import aurocosh.divinefavor.common.config.entries.ropes.GuideRope;
+import aurocosh.divinefavor.common.config.entries.ropes.InertRope;
 import aurocosh.divinefavor.common.constants.ConstMisc;
 import net.minecraftforge.common.config.Config;
 

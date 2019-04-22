@@ -3,13 +3,13 @@ package aurocosh.divinefavor.common.network.message.client.syncing;
 import aurocosh.divinefavor.DivineFavor;
 import aurocosh.divinefavor.common.custom_data.player.PlayerData;
 import aurocosh.divinefavor.common.custom_data.player.data.curse.red_fury.RedFuryData;
-import aurocosh.divinefavor.common.network.base.NetworkWrappedClientMessage;
+import aurocosh.divinefavor.common.network.base.WrappedClientMessage;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.math.Vec3d;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class MessageSyncRedFury extends NetworkWrappedClientMessage {
+public class MessageSyncRedFury extends WrappedClientMessage {
     public Vec3d vector;
 
     public MessageSyncRedFury() {
