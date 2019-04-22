@@ -115,6 +115,22 @@ public class ConfigSpells {
     public static RemoteChest remoteChest = new RemoteChest();
     @Config.Name("Searing pulse")
     public static SearingPulse searingPulse = new SearingPulse();
+    @Config.Name("Sense ore approximate")
+    public static SenseBlock senseOreApproximate = new SenseBlock(10, 25, 0.4f,4f);
+    @Config.Name("Sense ore vague")
+    public static SenseBlock senseOreVague = new SenseBlock(30, 25, 0.2f,2f);
+    @Config.Name("Sense ore precise")
+    public static SenseBlock senseOrePrecise = new SenseBlock(120, 25, 0.2f,0.45f);
+    @Config.Name("Sense ore close")
+    public static SenseBlock senseOreClose = new SenseBlock(2, 7, 0.2f,1f);
+    @Config.Name("Sense ore approximate")
+    public static SenseBlock senseBlockApproximate = new SenseBlock(40, 25, 0.4f,4f);
+    @Config.Name("Sense ore vague")
+    public static SenseBlock senseBlockVague = new SenseBlock(120, 25, 0.2f,2f);
+    @Config.Name("Sense ore precise")
+    public static SenseBlock senseBlockPrecise = new SenseBlock(420, 25, 0.2f,0.45f);
+    @Config.Name("Sense ore close")
+    public static SenseBlock senseBlockClose = new SenseBlock(10, 7, 0.2f,1f);
     @Config.Name("Small fireball throw")
     public static SmallFireballThrow smallFireballThrow = new SmallFireballThrow();
     @Config.Name("Snowball throw")

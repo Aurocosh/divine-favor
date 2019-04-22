@@ -1,0 +1,15 @@
+{
+  "name": "Sense block approximate",
+  "icon": "divinefavor:talisman_sense_block_approximate",
+  "category": "spell_talismans",
+  "pages": [
+    {
+      "type": "item_description",
+      "talisman": "divinefavor:talisman_sense_block_approximate"
+    },
+    {
+      "type": "spell_talisman_stats",
+      "talisman": "divinefavor:talisman_sense_block_approximate"
+    }
+  ]
+}

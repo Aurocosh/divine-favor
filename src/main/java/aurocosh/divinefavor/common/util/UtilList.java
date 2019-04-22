@@ -13,6 +13,11 @@ public class UtilList {
     }
 
     @FunctionalInterface
+    public interface DoublePredicate<T, K> {
+        boolean test(T first, K second);
+    }
+
+    @FunctionalInterface
     public interface ComparePredicate<T> {
         boolean isFirstBetter(T first, T second);
     }
@@ -42,6 +47,14 @@ public class UtilList {
         for (T element : list)
             if (predicate.test(element))
                 filtered.add(element);
+        return filtered;
+    }
+
+    public static <T> List<T> selectFirst(List<T> list, int count) {
+        List<T> filtered = new ArrayList<>();
+        count = Math.min(list.size(), count);
+        for (int i = 0; i < count; i++)
+            filtered.add(list.get(i));
         return filtered;
     }
 

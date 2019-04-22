@@ -9,30 +9,6 @@ import java.util.List;
 import java.util.UUID;
 
 public class UtilSerialize {
-    public static int[] serializeBlockPosArray(Collection<BlockPos> posArrayList) {
-        int[] array = new int[posArrayList.size() * 3];
-        int i = 0;
-        for (BlockPos pos : posArrayList) {
-            array[i++] = pos.getX();
-            array[i++] = pos.getY();
-            array[i++] = pos.getZ();
-        }
-
-        return array;
-    }
-
-    public static ArrayList<BlockPos> deserializeBlockPosArray(int[] array) {
-        int posCount = array.length / 3;
-        ArrayList<BlockPos> posArrayList = new ArrayList<>();
-
-        for (int i = 0, j = 0; i < posCount; i++) {
-            int x = array[j++];
-            int y = array[j++];
-            int z = array[j++];
-            posArrayList.add(new BlockPos(x, y, z));
-        }
-        return posArrayList;
-    }
 
     public static int[] serializeGlobalBlockPosArray(List<GlobalBlockPos> posArrayList) {
         int[] array = new int[posArrayList.size() * 4];

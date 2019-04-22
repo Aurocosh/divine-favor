@@ -1,6 +1,7 @@
 package aurocosh.divinefavor.common.util;
 
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Vec3d;
 
 import java.util.*;
 
@@ -40,6 +41,10 @@ public class UtilBlockPos {
             NORTH,
             SOUTH
     ));
+
+    public static Vec3d add(BlockPos blockPos, Vec3d vec3d) {
+        return vec3d.add(blockPos.getX() + 0.5f, blockPos.getY() + 0.5f, blockPos.getZ() + 0.5f);
+    }
 
     public static BlockPos inverse(BlockPos blockPos) {
         return new BlockPos(-blockPos.getX(), -blockPos.getY(), -blockPos.getZ());
@@ -81,5 +86,30 @@ public class UtilBlockPos {
         for (BlockPos direction : DIRECT_NEIGHBOURS)
             neighbours.add(position.add(direction));
         return neighbours;
+    }
+
+    public static int[] serialize(Collection<BlockPos> posCollection) {
+        int[] array = new int[posCollection.size() * 3];
+        int i = 0;
+        for (BlockPos pos : posCollection) {
+            array[i++] = pos.getX();
+            array[i++] = pos.getY();
+            array[i++] = pos.getZ();
+        }
+
+        return array;
+    }
+
+    public static ArrayList<BlockPos> deserialize(int[] array) {
+        int posCount = array.length / 3;
+        ArrayList<BlockPos> posArrayList = new ArrayList<>();
+
+        for (int i = 0, j = 0; i < posCount; i++) {
+            int x = array[j++];
+            int y = array[j++];
+            int z = array[j++];
+            posArrayList.add(new BlockPos(x, y, z));
+        }
+        return posArrayList;
     }
 }

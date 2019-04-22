@@ -6,8 +6,12 @@ import aurocosh.divinefavor.common.entity.minions.*;
 import aurocosh.divinefavor.common.item.common.ModItems;
 import aurocosh.divinefavor.common.item.talismans.spell.*;
 import aurocosh.divinefavor.common.item.talismans.spell.base.*;
+import aurocosh.divinefavor.common.item.talismans.spell.highlighters.SpellTalismanHighlightBlock;
+import aurocosh.divinefavor.common.item.talismans.spell.highlighters.SpellTalismanHighlightOre;
 import aurocosh.divinefavor.common.potions.common.ModPotions;
 import aurocosh.divinefavor.common.spirit.ModSpirits;
+
+import javax.vecmath.Color3f;
 
 public final class ModSpellTalismans {
     public static ItemSpellTalisman armor_of_pacifist;
@@ -66,6 +70,14 @@ public final class ModSpellTalismans {
     public static ItemSpellTalisman red_signal;
     public static ItemSpellTalisman remote_chest;
     public static ItemSpellTalisman searing_pulse;
+    public static ItemSpellTalisman sense_block_approximate;
+    public static ItemSpellTalisman sense_block_close;
+    public static ItemSpellTalisman sense_block_precise;
+    public static ItemSpellTalisman sense_block_vague;
+    public static ItemSpellTalisman sense_ore_approximate;
+    public static ItemSpellTalisman sense_ore_close;
+    public static ItemSpellTalisman sense_ore_precise;
+    public static ItemSpellTalisman sense_ore_vague;
     public static ItemSpellTalisman small_fireball_throw;
     public static ItemSpellTalisman snowball_throw;
     public static ItemSpellTalisman spider_might;
@@ -154,6 +166,8 @@ public final class ModSpellTalismans {
         ethereal_flash = new SpellTalismanAirReplace("ethereal_flash", ModSpirits.redwind, ConfigSpells.etherealFlash.favorCost, SpellOptions.ALL_CAST_TRACE, () -> ModBlocks.ethereal_flash);
         ethereal_light = new SpellTalismanAirReplace("ethereal_light", ModSpirits.redwind, ConfigSpells.etherealLight.favorCost, SpellOptions.ALL_CAST_TRACE, () -> ModBlocks.ethereal_light);
         fall_negation = new SpellTalismanModPotionCharge("fall_negation", ModSpirits.redwind, ConfigSpells.fallNegation.favorCost, ModPotions.fall_negation, ConfigSpells.fallNegation.charges);
+        ground_flow = new SpellTalismanModPotionToggle("ground_flow", ModSpirits.redwind, ConfigSpells.groundFlow.favorCost, ModPotions.ground_flow);
+        hovering = new SpellTalismanModPotionToggle("hovering", ModSpirits.redwind, ConfigSpells.groundFlow.favorCost, ModPotions.hovering);
         ping = new SpellTalismanPing("ping", ModSpirits.redwind, ConfigSpells.ping.favorCost, SpellOptions.TRACE_ONLY_CAST);
         prismatic_eyes = new SpellTalismanModPotionToggle("prismatic_eyes", ModSpirits.redwind, ConfigSpells.prismaticEyes.favorCost, ModPotions.prismatic_eyes);
         red_pulse = new SpellTalismanAirReplace("red_pulse", ModSpirits.redwind, ConfigSpells.redPulse.favorCost, SpellOptions.ALL_CAST_TRACE, () -> ModBlocks.red_pulse);
@@ -161,7 +175,6 @@ public final class ModSpellTalismans {
         toadic_jump = new SpellTalismanModPotionToggle("toadic_jump", ModSpirits.redwind, ConfigSpells.toadicJump.favorCost, ModPotions.toadic_jump);
         wild_sprint = new SpellTalismanModPotion("wild_sprint", ModSpirits.redwind, ConfigSpells.wildSprint.favorCost, ModPotions.wild_charge, ConfigSpells.wildSprint.activationDelay);
         wind_step = new SpellTalismanWindStep("wind_step", ModSpirits.redwind, ConfigSpells.windStep.favorCost, SpellOptions.ALL_CAST);
-        hovering = new SpellTalismanModPotionToggle("hovering", ModSpirits.redwind, ConfigSpells.groundFlow.favorCost, ModPotions.hovering);
 
         // romol
         crushing_palm = new SpellTalismanModPotionToggle("crushing_palm", ModSpirits.romol, ConfigSpells.crushingPalm.favorCost, ModPotions.crushing_palm);
@@ -169,10 +182,17 @@ public final class ModSpellTalismans {
         empower_pickaxe = new SpellTalismanModPotion("empower_pickaxe", ModSpirits.romol, ConfigSpells.empowerPickaxe.favorCost, ModPotions.empower_pickaxe, ConfigSpells.empowerPickaxe.duration);
         fell_tree = new SpellTalismanFellTree("fell_tree", ModSpirits.romol, ConfigSpells.fellTree.favorCost, SpellOptions.USE_CAST);
         green_cycle = new SpellTalismanGreenCycle("green_cycle", ModSpirits.romol, ConfigSpells.greenCycle.favorCost, SpellOptions.ALL_CAST);
-        ground_flow = new SpellTalismanModPotionToggle("ground_flow", ModSpirits.romol, ConfigSpells.groundFlow.favorCost, ModPotions.ground_flow);
         harvest = new SpellTalismanHarvest("harvest", ModSpirits.romol, ConfigSpells.harvest.favorCost, SpellOptions.ALL_CAST);
         miners_focus = new SpellTalismanMinersFocus("miners_focus", ModSpirits.romol, ConfigSpells.minersFocus.favorCost, SpellOptions.ALL_CAST);
         place_block = new SpellTalismanPlaceBlock("place_block", ModSpirits.romol, ConfigSpells.woodenPunch.favorCost, SpellOptions.ALL_CAST_TRACE);
+        sense_block_approximate = new SpellTalismanHighlightBlock("sense_block_approximate", ModSpirits.romol, SpellOptions.RIGHT_CAST, new Color3f(0.7f, 0.7f, 0), ConfigSpells.senseBlockApproximate);
+        sense_block_close = new SpellTalismanHighlightBlock("sense_block_close", ModSpirits.romol, SpellOptions.RIGHT_CAST, new Color3f(0, 0, 0.7f), ConfigSpells.senseBlockClose);
+        sense_block_precise = new SpellTalismanHighlightBlock("sense_block_precise", ModSpirits.romol, SpellOptions.RIGHT_CAST, new Color3f(0.7f, 0, 0), ConfigSpells.senseBlockPrecise);
+        sense_block_vague = new SpellTalismanHighlightBlock("sense_block_vague", ModSpirits.romol, SpellOptions.RIGHT_CAST, new Color3f(0, 0.7f, 0), ConfigSpells.senseBlockVague);
+        sense_ore_approximate = new SpellTalismanHighlightOre("sense_ore_approximate", ModSpirits.romol, SpellOptions.RIGHT_CAST, new Color3f(0.7f, 0.7f, 0), ConfigSpells.senseOreApproximate);
+        sense_ore_close = new SpellTalismanHighlightOre("sense_ore_close", ModSpirits.romol, SpellOptions.RIGHT_CAST, new Color3f(0, 0, 0.7f), ConfigSpells.senseOreClose);
+        sense_ore_precise = new SpellTalismanHighlightOre("sense_ore_precise", ModSpirits.romol, SpellOptions.RIGHT_CAST, new Color3f(0.7f, 0, 0), ConfigSpells.senseOrePrecise);
+        sense_ore_vague = new SpellTalismanHighlightOre("sense_ore_vague", ModSpirits.romol, SpellOptions.RIGHT_CAST, new Color3f(0, 0.7f, 0), ConfigSpells.senseOreVague);
         stone_fever = new SpellTalismanModPotion("stone_fever", ModSpirits.romol, ConfigSpells.stoneFever.favorCost, ModPotions.stone_fever, ConfigSpells.stoneFever.duration);
         stoneball_throw = new SpellTalismanStoneballThrow("stoneball_throw", ModSpirits.romol, ConfigSpells.stoneballThrow.favorCost, SpellOptions.ALL_CAST);
         wooden_punch = new SpellTalismanModPotionToggle("wooden_punch", ModSpirits.romol, ConfigSpells.woodenPunch.favorCost, ModPotions.wooden_punch);
