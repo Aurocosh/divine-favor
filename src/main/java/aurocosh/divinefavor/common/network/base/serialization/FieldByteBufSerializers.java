@@ -2,8 +2,8 @@ package aurocosh.divinefavor.common.network.base.serialization;
 
 import aurocosh.divinefavor.common.network.base.interfaces.BufReader;
 import aurocosh.divinefavor.common.network.base.interfaces.BufWriter;
-import aurocosh.divinefavor.common.network.base.serialization.generic.ArrayListReader;
-import aurocosh.divinefavor.common.network.base.serialization.generic.ArrayListWriter;
+import aurocosh.divinefavor.common.network.base.serialization.generic.array_list.ArrayListSerializerProvider;
+import aurocosh.divinefavor.common.network.base.serialization.generic.hash_set.HashMapSerializerProvider;
 import aurocosh.divinefavor.common.network.base.serialization.serializers.Color3fSerializer;
 import aurocosh.divinefavor.common.network.base.serialization.serializers.Vec3dSerializer;
 import io.netty.buffer.ByteBuf;
@@ -25,8 +25,7 @@ public class FieldByteBufSerializers {
     private static final Map<Class, BufWriter> writers = new HashMap<>();
     private static final Map<Class, BufReader> readers = new HashMap<>();
 
-    private static final Map<Class, BufWriter> listWriters = new HashMap<>();
-    private static final Map<Class, BufReader> listReaders = new HashMap<>();
+    private static final Map<Class, GenericSerializerProvider> providers = new HashMap<>();
 
     static {
         registerWriter(int.class, ByteBuf::writeInt);
@@ -34,6 +33,13 @@ public class FieldByteBufSerializers {
         registerWriter(float.class, ByteBuf::writeFloat);
         registerWriter(double.class, ByteBuf::writeDouble);
         registerWriter(boolean.class, ByteBuf::writeBoolean);
+
+        registerWriter(Integer.class, ByteBuf::writeInt);
+        registerWriter(Long.class, ByteBuf::writeLong);
+        registerWriter(Float.class, ByteBuf::writeFloat);
+        registerWriter(Double.class, ByteBuf::writeDouble);
+        registerWriter(Boolean.class, ByteBuf::writeBoolean);
+
         registerWriter(String.class, ByteBufUtils::writeUTF8String);
         registerWriter(NBTTagCompound.class, ByteBufUtils::writeTag);
         registerWriter(ItemStack.class, ByteBufUtils::writeItemStack);
@@ -41,15 +47,15 @@ public class FieldByteBufSerializers {
         registerWriter(char.class, (BufWriter<Character>) ByteBuf::writeChar);
         registerWriter(byte.class, (BufWriter<Byte>) ByteBuf::writeByte);
         registerWriter(short.class, (BufWriter<Short>) ByteBuf::writeByte);
+
+        registerWriter(Character.class, (BufWriter<Character>) ByteBuf::writeChar);
+        registerWriter(Byte.class, (BufWriter<Byte>) ByteBuf::writeByte);
+        registerWriter(Short.class, (BufWriter<Short>) ByteBuf::writeByte);
+
         registerWriter(BlockPos.class, (buf, pos) -> buf.writeLong(pos.toLong()));
 
         registerWriter(Vec3d.class, Vec3dSerializer::writeVec3d);
         registerWriter(Color3f.class, Color3fSerializer::writeColor3f);
-
-        for (Map.Entry<Class, BufWriter> entry : writers.entrySet()) {
-            ArrayListWriter arrayListWriter = new ArrayListWriter(entry.getValue());
-            listWriters.put(entry.getKey(), (BufWriter<ArrayList>) arrayListWriter::write);
-        }
     }
 
     static {
@@ -58,72 +64,79 @@ public class FieldByteBufSerializers {
         registerReader(float.class, ByteBuf::readFloat);
         registerReader(double.class, ByteBuf::readDouble);
         registerReader(boolean.class, ByteBuf::readBoolean);
+
+        registerReader(Integer.class, ByteBuf::readInt);
+        registerReader(Long.class, ByteBuf::readLong);
+        registerReader(Float.class, ByteBuf::readFloat);
+        registerReader(Double.class, ByteBuf::readDouble);
+        registerReader(Boolean.class, ByteBuf::readBoolean);
+
         registerReader(String.class, ByteBufUtils::readUTF8String);
         registerReader(NBTTagCompound.class, ByteBufUtils::readTag);
         registerReader(ItemStack.class, ByteBufUtils::readItemStack);
 
-        registerReader(char.class, (BufReader<Character>) ByteBuf::readChar);
-        registerReader(byte.class, (BufReader<Byte>) ByteBuf::readByte);
-        registerReader(short.class, (BufReader<Short>) ByteBuf::readShort);
-        registerReader(BlockPos.class, (ByteBuf buf) -> BlockPos.fromLong(buf.readLong()));
+        registerReader(char.class, ByteBuf::readChar);
+        registerReader(byte.class, ByteBuf::readByte);
+        registerReader(short.class, ByteBuf::readShort);
+
+        registerReader(Character.class, ByteBuf::readChar);
+        registerReader(Byte.class, ByteBuf::readByte);
+        registerReader(Short.class, ByteBuf::readShort);
+
+        registerReader(BlockPos.class, (buf) -> BlockPos.fromLong(buf.readLong()));
 
         registerReader(Vec3d.class, Vec3dSerializer::readVec3d);
         registerReader(Color3f.class, Color3fSerializer::readColor3f);
+    }
 
-        for (Map.Entry<Class, BufReader> entry : readers.entrySet()) {
-            ArrayListReader arrayListReader = new ArrayListReader(entry.getValue());
-            listReaders.put(entry.getKey(), (BufReader<ArrayList>) arrayListReader::read);
-        }
+    static {
+        registerSerializerProvider(ArrayList.class, new ArrayListSerializerProvider());
+        registerSerializerProvider(HashMap.class, new HashMapSerializerProvider());
     }
 
     public static <T> void registerWriter(Class<T> clazz, BufWriter<T> writer) {
         writers.put(clazz, writer);
     }
 
-    public static void registerReader(Class clazz, BufReader reader) {
+    public static <T> void registerReader(Class<T> clazz, BufReader<T> reader) {
         readers.put(clazz, reader);
     }
 
-    public static BufWriter getWriter(Field field) {
-        Class type = field.getType();
-        if (type != ArrayList.class)
-            return writers.get(type);
-        Type actualType = getActualType(field);
-        if (actualType != null)
-            return listWriters.get(actualType);
-        return null;
+    public static <T> void registerSerializerProvider(Class<T> clazz, GenericSerializerProvider<T> provider){
+        providers.put(clazz, provider);
     }
 
-    public static BufReader getReader(Field field) {
-        Class type = field.getType();
-        if (type != ArrayList.class)
-            return readers.get(type);
-        Type actualType = getActualType(field);
-        if (actualType != null)
-            return listReaders.get(actualType);
-        return null;
-    }
-
-    private static Type getActualType(Field field) {
-        Type genericType = field.getGenericType();
-        if (genericType instanceof ParameterizedType) {
-            ParameterizedType type = (ParameterizedType) genericType;
-            return type.getActualTypeArguments()[0];
+    public static BufReader getReader(Type type) {
+        if(type instanceof ParameterizedType) {
+            ParameterizedType parameterizedType = (ParameterizedType) type;
+            Class rawType = (Class) parameterizedType.getRawType();
+            return providers.get(rawType).getReader(parameterizedType);
         }
-        return null;
+        //noinspection SuspiciousMethodCalls
+        return readers.get(type);
+    }
+
+    public static BufWriter getWriter(Type type) {
+        if(type instanceof ParameterizedType) {
+            ParameterizedType parameterizedType = (ParameterizedType) type;
+            Class rawType = (Class) parameterizedType.getRawType();
+            return providers.get(rawType).getWriter(parameterizedType);
+        }
+        //noinspection SuspiciousMethodCalls
+        return writers.get(type);
     }
 
     public static BufReader[] getFieldReaders(Field[] fields) {
         BufReader[] readers = new BufReader[fields.length];
         for (int i = 0; i < fields.length; i++)
-            readers[i] = getReader(fields[i]);
+            readers[i] = getReader(fields[i].getGenericType());
         return readers;
     }
 
     public static BufWriter[] getFieldWriters(Field[] fields) {
         BufWriter[] writers = new BufWriter[fields.length];
         for (int i = 0; i < fields.length; i++)
-            writers[i] = getWriter(fields[i]);
+            writers[i] = getWriter(fields[i].getGenericType());
         return writers;
     }
 }
