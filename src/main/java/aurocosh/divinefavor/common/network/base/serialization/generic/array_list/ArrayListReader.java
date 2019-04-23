@@ -1,14 +1,14 @@
-package aurocosh.divinefavor.common.network.base.serialization.generic;
+package aurocosh.divinefavor.common.network.base.serialization.generic.array_list;
 
 import aurocosh.divinefavor.common.network.base.interfaces.BufReader;
 import io.netty.buffer.ByteBuf;
 
 import java.util.ArrayList;
 
-public class ArrayListReader {
-    private final BufReader<Object> reader;
+public class ArrayListReader implements BufReader<ArrayList> {
+    private final BufReader reader;
 
-    public ArrayListReader(BufReader<Object> reader) {
+    public ArrayListReader(BufReader reader) {
         this.reader = reader;
     }
 
