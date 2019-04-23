@@ -1,4 +1,4 @@
-package aurocosh.divinefavor.common.network.base.serialization.serializers;
+package aurocosh.divinefavor.common.network.base.serialization.class_serializers;
 
 import aurocosh.divinefavor.common.network.base.interfaces.BufReader;
 import aurocosh.divinefavor.common.network.base.interfaces.BufWriter;
@@ -7,7 +7,7 @@ import io.netty.buffer.ByteBuf;
 import java.lang.invoke.MethodHandle;
 import java.lang.reflect.Field;
 
-public class FieldSerializer {
+public class FieldBufSerializer {
     private final Field field;
 
     private final MethodHandle setter;
@@ -16,7 +16,7 @@ public class FieldSerializer {
     private final MethodHandle getter;
     private final BufWriter writer;
 
-    public FieldSerializer(Field field, MethodHandle setter, BufReader reader, MethodHandle getter, BufWriter writer) {
+    public FieldBufSerializer(Field field, MethodHandle setter, BufReader reader, MethodHandle getter, BufWriter writer) {
         this.field = field;
         this.setter = setter;
         this.reader = reader;
