@@ -1,7 +1,9 @@
 package aurocosh.divinefavor.common.util;
 
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockDynamicLiquid;
 import net.minecraft.block.BlockLiquid;
+import net.minecraft.block.BlockStaticLiquid;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
@@ -188,5 +190,17 @@ public class UtilBlock {
         if (ignite(player, world, pos.add(shift)))
             return true;
         return false;
+    }
+
+    public static boolean isWater(Block block) {
+        return block == Blocks.WATER || block == Blocks.FLOWING_WATER;
+    }
+
+    public static boolean isLava(Block block) {
+        return block == Blocks.LAVA || block == Blocks.FLOWING_LAVA;
+    }
+
+    public static boolean isLiquid(Block block) {
+        return block instanceof BlockStaticLiquid || block instanceof BlockDynamicLiquid;
     }
 }

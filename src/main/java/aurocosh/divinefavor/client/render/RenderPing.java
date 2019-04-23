@@ -2,7 +2,7 @@ package aurocosh.divinefavor.client.render;
 
 import aurocosh.divinefavor.client.models.ModelPing;
 import aurocosh.divinefavor.common.entity.EntityPing;
-import aurocosh.divinefavor.common.util.LightingUtil;
+import aurocosh.divinefavor.common.util.UtilLighting;
 import net.minecraft.client.renderer.BufferBuilder;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.GlStateManager.DestFactor;
@@ -35,14 +35,14 @@ public class RenderPing extends Render<EntityPing> {
         GlStateManager.enableLighting();
 
         GlStateManager.color(1, 1, 1, 1);
-        LightingUtil.INSTANCE.setLighting(255);
+        UtilLighting.INSTANCE.setLighting(255);
 
         GlStateManager.pushMatrix();
         GlStateManager.translate(x, y, z);
         drawModel(ping, partialTicks);
         GlStateManager.popMatrix();
 
-        LightingUtil.INSTANCE.revert();
+        UtilLighting.INSTANCE.revert();
         GlStateManager.enableTexture2D();
         GlStateManager.enableLighting();
 

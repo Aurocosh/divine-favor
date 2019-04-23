@@ -1,5 +1,8 @@
 package aurocosh.divinefavor.common.util;
 
+import aurocosh.divinefavor.common.lib.functional_interfaces.ComparePredicate;
+import aurocosh.divinefavor.common.lib.functional_interfaces.ListExtractor;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -7,21 +10,6 @@ import java.util.function.Function;
 import java.util.function.Predicate;
 
 public class UtilList {
-    @FunctionalInterface
-    public interface ListExtractor<T, K> {
-        List<T> extract(K value);
-    }
-
-    @FunctionalInterface
-    public interface DoublePredicate<T, K> {
-        boolean test(T first, K second);
-    }
-
-    @FunctionalInterface
-    public interface ComparePredicate<T> {
-        boolean isFirstBetter(T first, T second);
-    }
-
     public static <T> boolean isAll(List<T> list, Predicate<T> predicate) {
         for (T element : list)
             if (!predicate.test(element))

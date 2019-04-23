@@ -5,7 +5,7 @@ import net.minecraftforge.fml.relauncher.ReflectionHelper;
 
 import java.lang.reflect.Field;
 
-public class ReflectionUtils {
+public class UtilReflection {
     public static Field getPrivateField(Class classToAccess, int fieldIndex) {
         try {
             Field f = classToAccess.getDeclaredFields()[fieldIndex];

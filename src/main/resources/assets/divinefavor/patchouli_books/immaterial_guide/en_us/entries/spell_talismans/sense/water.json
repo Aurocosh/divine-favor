@@ -1,0 +1,15 @@
+{
+  "name": "Sense water",
+  "icon": "divinefavor:talisman_sense_water",
+  "category": "spell_talismans",
+  "pages": [
+    {
+      "type": "item_description",
+      "talisman": "divinefavor:talisman_sense_water"
+    },
+    {
+      "type": "spell_talisman_stats",
+      "talisman": "divinefavor:talisman_sense_water"
+    }
+  ]
+}

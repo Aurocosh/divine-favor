@@ -1,26 +1,22 @@
 package aurocosh.divinefavor.common.item.talismans.arrow.base;
 
-import aurocosh.divinefavor.common.util.UtilMath;
+import aurocosh.divinefavor.common.lib.EnumIndexer;
+import aurocosh.divinefavor.common.lib.interfaces.IndexedEnum;
 
-public enum GravityType {
+public enum GravityType implements IndexedEnum<GravityType> {
     NORMAL(0),
     NO_GRAVITY(1),
     ANTIGRAVITY(2);
 
-    // Optimization
-    public static final GravityType[] VALUES = GravityType.values();
+    public static final EnumIndexer<GravityType> INDEXER = new EnumIndexer<>(GravityType.values());
 
-    private final int value;
+    private final int index;
 
-    GravityType(int value) {
-        this.value = value;
+    GravityType(int index) {
+        this.index = index;
     }
 
-    public int getValue() {
-        return value;
-    }
-
-    public static GravityType get(int value){
-        return VALUES[UtilMath.clamp(value, 0, VALUES.length -1 )];
+    public int getIndex() {
+        return index;
     }
 }

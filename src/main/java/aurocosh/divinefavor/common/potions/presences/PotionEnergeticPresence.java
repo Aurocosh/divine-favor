@@ -5,6 +5,7 @@ import aurocosh.divinefavor.common.custom_data.player.data.presence.energetic.En
 import aurocosh.divinefavor.common.item.calling_stones.ModCallingStones;
 import aurocosh.divinefavor.common.potions.base.potion.ModPotion;
 import aurocosh.divinefavor.common.potions.common.ModBlessings;
+import aurocosh.divinefavor.common.util.UtilBlock;
 import net.minecraft.block.Block;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
@@ -43,8 +44,8 @@ public class PotionEnergeticPresence extends ModPotion {
 
         boolean isInWater = player.isInWater();
         Block block = player.world.getBlockState(player.getPosition().down()).getBlock();
-        boolean isOnWater = block == Blocks.WATER || block == Blocks.FLOWING_WATER;
 
+        boolean isOnWater = UtilBlock.isWater(block);
         if (isInWater || !isOnWater)
             presenceData.reset();
         else if (presenceData.count() && !player.world.isRemote) {
