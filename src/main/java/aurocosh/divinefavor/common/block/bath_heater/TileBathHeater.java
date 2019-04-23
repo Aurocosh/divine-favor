@@ -10,7 +10,6 @@ import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.NetworkManager;
@@ -138,7 +137,7 @@ public class TileBathHeater extends TileEntity implements ITickable, IAreaWatche
 
     private boolean isWater(BlockPos pos) {
         Block block = world.getBlockState(pos).getBlock();
-        return block == Blocks.WATER || block == Blocks.FLOWING_WATER;
+        return UtilBlock.isWater(block);
     }
 
     @Override

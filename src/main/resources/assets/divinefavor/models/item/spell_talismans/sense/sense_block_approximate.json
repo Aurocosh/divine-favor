@@ -1,7 +1,7 @@
 {
     "parent": "item/generated",
     "textures": {		
-        "layer1": "divinefavor:items/talismans/sense_ore_vague",
+        "layer1": "divinefavor:items/talismans/sense/block_approximate",
         "layer0": "divinefavor:items/talismans/base"
     }
 }

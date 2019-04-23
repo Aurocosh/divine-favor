@@ -2,14 +2,14 @@ package aurocosh.divinefavor.common.util;
 
 import net.minecraft.client.renderer.OpenGlHelper;
 
-public class LightingUtil {
-    public static final LightingUtil INSTANCE = new LightingUtil();
+public class UtilLighting {
+    public static final UtilLighting INSTANCE = new UtilLighting();
 
     private float lastX, lastY;
 
     /**
      * Sets the currently used lighting (0 - 255).
-     * Use {@link LightingUtil#revert()} after rendering to revert to previous lighting.
+     * Use {@link UtilLighting#revert()} after rendering to revert to previous lighting.
      *
      * @param lighting
      */

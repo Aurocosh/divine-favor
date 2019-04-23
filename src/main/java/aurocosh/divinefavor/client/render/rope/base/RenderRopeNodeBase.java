@@ -2,7 +2,7 @@ package aurocosh.divinefavor.client.render.rope.base;
 
 import aurocosh.divinefavor.client.models.rope.base.ModelRopeNode;
 import aurocosh.divinefavor.common.entity.rope.base.EntityRopeNodeBase;
-import aurocosh.divinefavor.common.util.LightingUtil;
+import aurocosh.divinefavor.common.util.UtilLighting;
 import net.minecraft.client.renderer.BufferBuilder;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.GlStateManager.DestFactor;
@@ -45,7 +45,7 @@ public class RenderRopeNodeBase<T extends EntityRopeNodeBase> extends Render<T> 
 
         Color4f normalColor = getNormalColor();
         GlStateManager.color(normalColor.x, normalColor.y, normalColor.z, normalColor.w);
-        LightingUtil.INSTANCE.setLighting(255);
+        UtilLighting.INSTANCE.setLighting(255);
 
         if (ropeNode.getNextNodeClient() == null) {
             Color4f lastColor = getLastColor();
@@ -59,7 +59,7 @@ public class RenderRopeNodeBase<T extends EntityRopeNodeBase> extends Render<T> 
 
         GlStateManager.color(1, 1, 1, 1);
 
-        LightingUtil.INSTANCE.revert();
+        UtilLighting.INSTANCE.revert();
         GlStateManager.enableTexture2D();
         GlStateManager.enableLighting();
 

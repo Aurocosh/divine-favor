@@ -28,12 +28,21 @@ public class ItemSpellTalisman extends ItemTalisman {
     private final EnumSet<SpellOptions> options;
 
     // Talisman functions
-    public ItemSpellTalisman(String name, ModSpirit spirit, int favorCost, EnumSet<SpellOptions> options) {
-        super("talisman_" + name, "spell_talismans/" + name, spirit, favorCost);
+    public ItemSpellTalisman(String name, String texturePath, ModSpirit spirit, int favorCost, EnumSet<SpellOptions> options) {
+        super("talisman_" + name, "spell_talismans/" + texturePath + name, spirit, favorCost);
         this.options = options;
 
         setMaxStackSize(1);
         setCreativeTab(DivineFavor.TAB_SPELL_TALISMANS);
+    }
+
+    private String getTexturePath(String[] path) {
+        return String.join("/", path);
+    }
+
+    // Talisman functions
+    public ItemSpellTalisman(String name, ModSpirit spirit, int favorCost, EnumSet<SpellOptions> options) {
+        this(name, "", spirit, favorCost, options);
     }
 
     public boolean cast(TalismanContext context) {
