@@ -1,4 +1,4 @@
-package aurocosh.divinefavor.common.network.base.serialization.serializers;
+package aurocosh.divinefavor.common.network.base.serialization.buf_serializers;
 
 import io.netty.buffer.ByteBuf;
 import net.minecraft.util.math.Vec3d;

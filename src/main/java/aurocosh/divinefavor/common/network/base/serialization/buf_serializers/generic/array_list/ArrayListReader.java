@@ -1,4 +1,4 @@
-package aurocosh.divinefavor.common.network.base.serialization.generic.array_list;
+package aurocosh.divinefavor.common.network.base.serialization.buf_serializers.generic.array_list;
 
 import aurocosh.divinefavor.common.network.base.interfaces.BufReader;
 import io.netty.buffer.ByteBuf;

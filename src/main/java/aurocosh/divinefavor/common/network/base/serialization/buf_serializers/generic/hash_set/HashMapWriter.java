@@ -1,4 +1,4 @@
-package aurocosh.divinefavor.common.network.base.serialization.generic.hash_set;
+package aurocosh.divinefavor.common.network.base.serialization.buf_serializers.generic.hash_set;
 
 import aurocosh.divinefavor.common.network.base.interfaces.BufWriter;
 import io.netty.buffer.ByteBuf;

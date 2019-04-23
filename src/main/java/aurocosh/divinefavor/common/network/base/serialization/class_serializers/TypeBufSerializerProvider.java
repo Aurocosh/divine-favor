@@ -1,11 +1,12 @@
-package aurocosh.divinefavor.common.network.base.serialization;
+package aurocosh.divinefavor.common.network.base.serialization.class_serializers;
 
 import aurocosh.divinefavor.common.network.base.interfaces.BufReader;
 import aurocosh.divinefavor.common.network.base.interfaces.BufWriter;
-import aurocosh.divinefavor.common.network.base.serialization.generic.array_list.ArrayListSerializerProvider;
-import aurocosh.divinefavor.common.network.base.serialization.generic.hash_set.HashMapSerializerProvider;
-import aurocosh.divinefavor.common.network.base.serialization.serializers.Color3fSerializer;
-import aurocosh.divinefavor.common.network.base.serialization.serializers.Vec3dSerializer;
+import aurocosh.divinefavor.common.network.base.interfaces.GenericSerializerProvider;
+import aurocosh.divinefavor.common.network.base.serialization.buf_serializers.Color3fSerializer;
+import aurocosh.divinefavor.common.network.base.serialization.buf_serializers.Vec3dSerializer;
+import aurocosh.divinefavor.common.network.base.serialization.buf_serializers.generic.array_list.ArrayListSerializerProvider;
+import aurocosh.divinefavor.common.network.base.serialization.buf_serializers.generic.hash_set.HashMapSerializerProvider;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -14,14 +15,13 @@ import net.minecraft.util.math.Vec3d;
 import net.minecraftforge.fml.common.network.ByteBufUtils;
 
 import javax.vecmath.Color3f;
-import java.lang.reflect.Field;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class FieldByteBufSerializers {
+public class TypeBufSerializerProvider {
     private static final Map<Class, BufWriter> writers = new HashMap<>();
     private static final Map<Class, BufReader> readers = new HashMap<>();
 
@@ -126,17 +126,17 @@ public class FieldByteBufSerializers {
         return writers.get(type);
     }
 
-    public static BufReader[] getFieldReaders(Field[] fields) {
+    public static BufReader[] getReaders(Type[] fields) {
         BufReader[] readers = new BufReader[fields.length];
         for (int i = 0; i < fields.length; i++)
-            readers[i] = getReader(fields[i].getGenericType());
+            readers[i] = getReader(fields[i]);
         return readers;
     }
 
-    public static BufWriter[] getFieldWriters(Field[] fields) {
+    public static BufWriter[] getWriters(Type[] fields) {
         BufWriter[] writers = new BufWriter[fields.length];
         for (int i = 0; i < fields.length; i++)
-            writers[i] = getWriter(fields[i].getGenericType());
+            writers[i] = getWriter(fields[i]);
         return writers;
     }
 }
