@@ -33,7 +33,6 @@ public class FieldBufSerializer {
     }
 
     public void serialize(Object object, ByteBuf buf) throws Throwable {
-        Object value = getter.invoke(object);
-        writer.write(buf, value);
+        writer.write(buf, getter.invoke(object));
     }
 }
