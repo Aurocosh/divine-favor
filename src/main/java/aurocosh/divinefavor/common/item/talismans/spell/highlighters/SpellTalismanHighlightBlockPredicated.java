@@ -19,9 +19,9 @@ public abstract class SpellTalismanHighlightBlockPredicated extends ItemSpellTal
     protected final float minShift;
     protected final float maxShift;
     protected final Color3f color3f;
-    protected final HighlightPredicate predicate;
+    protected final SenseBlockPredicate predicate;
 
-    public SpellTalismanHighlightBlockPredicated(String name, ModSpirit spirit, EnumSet<SpellOptions> options, Color3f color3f, SenseBlock senseBlock, HighlightPredicate predicate) {
+    public SpellTalismanHighlightBlockPredicated(String name, ModSpirit spirit, EnumSet<SpellOptions> options, Color3f color3f, SenseBlock senseBlock, SenseBlockPredicate predicate) {
         super(name, "sense/", spirit, senseBlock.favorCost, options);
         this.color3f = color3f;
         radius = senseBlock.radius;
@@ -37,9 +37,9 @@ public abstract class SpellTalismanHighlightBlockPredicated extends ItemSpellTal
         highlightBlocks(radius, player, playerPosition, minShift, maxShift, color3f, predicate, "");
     }
 
-    protected void highlightBlocks(int radius, EntityPlayer player, BlockPos position, float minShift, float maxShift, Color3f color3f, HighlightPredicate highlightPredicate, String blockName) {
+    protected void highlightBlocks(int radius, EntityPlayer player, BlockPos position, float minShift, float maxShift, Color3f color3f, SenseBlockPredicate senseBlockPredicate, String blockName) {
         World world = player.world;
-        new MessageParticlesHighlightBlock(radius, 5, world.provider.getDimension(), position, minShift, maxShift, color3f, predicate, blockName)
+        new MessageParticlesHighlightBlock(radius, 5, world.provider.getDimension(), position, minShift, maxShift, color3f, SenseAreaType.SPHERE, predicate, blockName)
                 .sendToAllAround(world, position, ConfigGeneral.particleRadius);
     }
 }

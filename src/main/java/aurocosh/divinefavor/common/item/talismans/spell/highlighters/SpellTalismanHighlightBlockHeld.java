@@ -19,7 +19,7 @@ import java.util.EnumSet;
 public class SpellTalismanHighlightBlockHeld extends SpellTalismanHighlightBlockPredicated {
 
     public SpellTalismanHighlightBlockHeld(String name, ModSpirit spirit, EnumSet<SpellOptions> options, Color3f color3f, SenseBlock senseBlock) {
-        super(name, spirit, options, color3f, senseBlock, HighlightPredicate.BLOCK);
+        super(name, spirit, options, color3f, senseBlock, SenseBlockPredicate.BLOCK);
     }
 
     @Override
@@ -43,6 +43,6 @@ public class SpellTalismanHighlightBlockHeld extends SpellTalismanHighlightBlock
         ItemBlock itemBlock = (ItemBlock) heldItem.getItem();
         String blockName = itemBlock.getBlock().getRegistryName().toString();
 
-        highlightBlocks(radius, player, playerPosition, minShift, maxShift, color3f, HighlightPredicate.BLOCK, blockName);
+        highlightBlocks(radius, player, playerPosition, minShift, maxShift, color3f, SenseBlockPredicate.BLOCK, blockName);
     }
 }
