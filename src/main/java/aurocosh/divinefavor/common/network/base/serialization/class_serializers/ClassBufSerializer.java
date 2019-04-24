@@ -3,6 +3,7 @@ package aurocosh.divinefavor.common.network.base.serialization.class_serializers
 import aurocosh.divinefavor.DivineFavor;
 import aurocosh.divinefavor.common.network.base.serialization.interfaces.BufReader;
 import aurocosh.divinefavor.common.network.base.serialization.interfaces.BufWriter;
+import aurocosh.divinefavor.common.network.base.serialization.serializer_provider.BufSerializerProvider;
 import aurocosh.divinefavor.common.util.UtilReflection;
 import io.netty.buffer.ByteBuf;
 
@@ -20,8 +21,8 @@ public class ClassBufSerializer {
         this.clazz = clazz;
         Field[] fields = UtilReflection.getMutableFields(clazz);
         Type[] fieldTypes = getFieldTypes(fields);
-        BufWriter[] writers = TypeBufSerializerProvider.getWriters(fieldTypes);
-        BufReader[] readers = TypeBufSerializerProvider.getReaders(fieldTypes);
+        BufWriter[] writers = BufSerializerProvider.getWriters(fieldTypes);
+        BufReader[] readers = BufSerializerProvider.getReaders(fieldTypes);
 
         List<FieldBufSerializer> fieldBufSerializerList = new ArrayList<>();
 

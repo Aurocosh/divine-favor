@@ -1,10 +1,10 @@
 package aurocosh.divinefavor.common.network.base.serialization.buf_serializers.generic.array_list;
 
-import aurocosh.divinefavor.common.network.base.serialization.class_serializers.TypeBufSerializerProvider;
 import aurocosh.divinefavor.common.network.base.serialization.interfaces.BufReader;
 import aurocosh.divinefavor.common.network.base.serialization.interfaces.BufWriter;
 import aurocosh.divinefavor.common.network.base.serialization.interfaces.ContainerGenerator;
 import aurocosh.divinefavor.common.network.base.serialization.interfaces.GenericSerializerProvider;
+import aurocosh.divinefavor.common.network.base.serialization.serializer_provider.BufSerializerProvider;
 
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
@@ -19,13 +19,13 @@ public class CollectionSerializerProvider<T extends Collection<Object>> implemen
 
     public BufReader<T> getReader(ParameterizedType type) {
         Type actualType = type.getActualTypeArguments()[0];
-        BufReader reader = TypeBufSerializerProvider.getReader(actualType);
+        BufReader reader = BufSerializerProvider.getReader(actualType);
         return new CollectionListReader<>(containerGenerator, reader);
     }
 
     public BufWriter<T> getWriter(ParameterizedType type) {
         Type actualType = type.getActualTypeArguments()[0];
-        BufWriter writer = TypeBufSerializerProvider.getWriter(actualType);
+        BufWriter writer = BufSerializerProvider.getWriter(actualType);
         return new CollectionListWriter<>(writer);
     }
 }
