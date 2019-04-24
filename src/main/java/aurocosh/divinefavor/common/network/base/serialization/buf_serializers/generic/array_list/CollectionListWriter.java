@@ -1,23 +1,22 @@
 package aurocosh.divinefavor.common.network.base.serialization.buf_serializers.generic.array_list;
 
-import aurocosh.divinefavor.common.network.base.interfaces.BufWriter;
+import aurocosh.divinefavor.common.network.base.serialization.interfaces.BufWriter;
 import io.netty.buffer.ByteBuf;
 
-import java.util.ArrayList;
+import java.util.Collection;
 
-public class ArrayListWriter implements BufWriter<ArrayList> {
+public class CollectionListWriter<T extends Collection<Object>> implements BufWriter<T> {
     private final BufWriter writer;
 
-    public ArrayListWriter(BufWriter writer) {
+    public CollectionListWriter(BufWriter writer) {
         this.writer = writer;
     }
 
-    public void write(ByteBuf buf, ArrayList values) {
+    public void write(ByteBuf buf, T values) {
         buf.writeInt(values.size());
         if(values.isEmpty())
             return;
         for (Object value : values)
-            //noinspection unchecked
             writer.write(buf, value);
     }
 }

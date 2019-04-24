@@ -1,5 +1,6 @@
 package aurocosh.divinefavor.common.network.base;
 
+import aurocosh.divinefavor.common.network.base.message.NetworkServerMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 
 public abstract class WrappedServerMessage extends NetworkServerMessage {

@@ -1,4 +1,4 @@
-package aurocosh.divinefavor.common.network.base;
+package aurocosh.divinefavor.common.network.base.message;
 
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;

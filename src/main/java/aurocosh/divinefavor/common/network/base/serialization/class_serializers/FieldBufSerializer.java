@@ -1,7 +1,7 @@
 package aurocosh.divinefavor.common.network.base.serialization.class_serializers;
 
-import aurocosh.divinefavor.common.network.base.interfaces.BufReader;
-import aurocosh.divinefavor.common.network.base.interfaces.BufWriter;
+import aurocosh.divinefavor.common.network.base.serialization.interfaces.BufReader;
+import aurocosh.divinefavor.common.network.base.serialization.interfaces.BufWriter;
 import io.netty.buffer.ByteBuf;
 
 import java.lang.invoke.MethodHandle;
