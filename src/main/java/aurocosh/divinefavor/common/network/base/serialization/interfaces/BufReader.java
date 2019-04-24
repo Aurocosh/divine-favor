@@ -1,4 +1,4 @@
-package aurocosh.divinefavor.common.network.base.interfaces;
+package aurocosh.divinefavor.common.network.base.serialization.interfaces;
 
 import io.netty.buffer.ByteBuf;
 

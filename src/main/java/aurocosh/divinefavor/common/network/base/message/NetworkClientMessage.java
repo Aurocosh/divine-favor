@@ -1,4 +1,4 @@
-package aurocosh.divinefavor.common.network.base;
+package aurocosh.divinefavor.common.network.base.message;
 
 import aurocosh.divinefavor.DivineFavor;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;

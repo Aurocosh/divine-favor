@@ -1,4 +1,4 @@
-package aurocosh.divinefavor.common.network.base;
+package aurocosh.divinefavor.common.network.base.message;
 
 import aurocosh.divinefavor.common.network.base.serialization.class_serializers.ClassBufSerializer;
 import io.netty.buffer.ByteBuf;

@@ -1,5 +1,6 @@
 package aurocosh.divinefavor.common.network.base;
 
+import aurocosh.divinefavor.common.network.base.message.NetworkClientMessage;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.util.math.BlockPos;

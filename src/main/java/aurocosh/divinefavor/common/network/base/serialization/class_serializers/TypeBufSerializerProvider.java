@@ -1,12 +1,12 @@
 package aurocosh.divinefavor.common.network.base.serialization.class_serializers;
 
-import aurocosh.divinefavor.common.network.base.interfaces.BufReader;
-import aurocosh.divinefavor.common.network.base.interfaces.BufWriter;
-import aurocosh.divinefavor.common.network.base.interfaces.GenericSerializerProvider;
+import aurocosh.divinefavor.common.network.base.serialization.interfaces.BufReader;
+import aurocosh.divinefavor.common.network.base.serialization.interfaces.BufWriter;
+import aurocosh.divinefavor.common.network.base.serialization.interfaces.GenericSerializerProvider;
 import aurocosh.divinefavor.common.network.base.serialization.buf_serializers.Color3fSerializer;
 import aurocosh.divinefavor.common.network.base.serialization.buf_serializers.Vec3dSerializer;
-import aurocosh.divinefavor.common.network.base.serialization.buf_serializers.generic.array_list.ArrayListSerializerProvider;
-import aurocosh.divinefavor.common.network.base.serialization.buf_serializers.generic.hash_set.HashMapSerializerProvider;
+import aurocosh.divinefavor.common.network.base.serialization.buf_serializers.generic.array_list.CollectionSerializerProvider;
+import aurocosh.divinefavor.common.network.base.serialization.buf_serializers.generic.hash_set.MapSerializerProvider;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -17,9 +17,7 @@ import net.minecraftforge.fml.common.network.ByteBufUtils;
 import javax.vecmath.Color3f;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class TypeBufSerializerProvider {
     private static final Map<Class, BufWriter> writers = new HashMap<>();
@@ -90,8 +88,17 @@ public class TypeBufSerializerProvider {
     }
 
     static {
-        registerSerializerProvider(ArrayList.class, new ArrayListSerializerProvider());
-        registerSerializerProvider(HashMap.class, new HashMapSerializerProvider());
+        registerSerializerProvider(List.class, new CollectionSerializerProvider<>(ArrayList::new));
+        registerSerializerProvider(ArrayList.class, new CollectionSerializerProvider<>(ArrayList::new));
+        registerSerializerProvider(Stack.class, new CollectionSerializerProvider<>(capacity -> new Stack()));
+        registerSerializerProvider(Vector.class, new CollectionSerializerProvider<>(capacity -> new Vector()));
+        registerSerializerProvider(LinkedList.class, new CollectionSerializerProvider<>(capacity -> new LinkedList()));
+
+        registerSerializerProvider(Set.class, new CollectionSerializerProvider<>(HashSet::new));
+        registerSerializerProvider(HashSet.class, new CollectionSerializerProvider<>(HashSet::new));
+
+        registerSerializerProvider(Map.class, new MapSerializerProvider<>(HashMap::new));
+        registerSerializerProvider(HashMap.class, new MapSerializerProvider<>(HashMap::new));
     }
 
     public static <T> void registerWriter(Class<T> clazz, BufWriter<T> writer) {
@@ -102,12 +109,12 @@ public class TypeBufSerializerProvider {
         readers.put(clazz, reader);
     }
 
-    public static <T> void registerSerializerProvider(Class<T> clazz, GenericSerializerProvider<T> provider){
+    public static <T> void registerSerializerProvider(Class<T> clazz, GenericSerializerProvider<T> provider) {
         providers.put(clazz, provider);
     }
 
     public static BufReader getReader(Type type) {
-        if(type instanceof ParameterizedType) {
+        if (type instanceof ParameterizedType) {
             ParameterizedType parameterizedType = (ParameterizedType) type;
             Class rawType = (Class) parameterizedType.getRawType();
             return providers.get(rawType).getReader(parameterizedType);
@@ -117,7 +124,7 @@ public class TypeBufSerializerProvider {
     }
 
     public static BufWriter getWriter(Type type) {
-        if(type instanceof ParameterizedType) {
+        if (type instanceof ParameterizedType) {
             ParameterizedType parameterizedType = (ParameterizedType) type;
             Class rawType = (Class) parameterizedType.getRawType();
             return providers.get(rawType).getWriter(parameterizedType);
