@@ -21,6 +21,7 @@ import aurocosh.divinefavor.common.muliblock.common.ModMultiBlocks;
 import aurocosh.divinefavor.common.network.GuiHandler;
 import aurocosh.divinefavor.common.network.base.WrappedClientMessage;
 import aurocosh.divinefavor.common.network.base.WrappedServerMessage;
+import aurocosh.divinefavor.common.network.base.serialization.serializer_provider.BufSerializerProvider;
 import aurocosh.divinefavor.common.network.common.MessageRegister;
 import aurocosh.divinefavor.common.network.common.NetworkHandler;
 import aurocosh.divinefavor.common.potions.common.ModBlendEffects;
@@ -47,6 +48,8 @@ import java.io.File;
 @Mod.EventBusSubscriber
 public class CommonProxy {
     public void preInit(FMLPreInitializationEvent e) {
+        BufSerializerProvider.preInit();
+
         ModSpirits.preInit();
         ModMultiBlocks.preInit();
 

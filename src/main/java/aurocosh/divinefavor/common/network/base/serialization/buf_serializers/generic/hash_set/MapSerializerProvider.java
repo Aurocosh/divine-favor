@@ -1,6 +1,6 @@
 package aurocosh.divinefavor.common.network.base.serialization.buf_serializers.generic.hash_set;
 
-import aurocosh.divinefavor.common.network.base.serialization.class_serializers.TypeBufSerializerProvider;
+import aurocosh.divinefavor.common.network.base.serialization.serializer_provider.BufSerializerProvider;
 import aurocosh.divinefavor.common.network.base.serialization.interfaces.BufReader;
 import aurocosh.divinefavor.common.network.base.serialization.interfaces.BufWriter;
 import aurocosh.divinefavor.common.network.base.serialization.interfaces.ContainerGenerator;
@@ -22,8 +22,8 @@ public class MapSerializerProvider<T extends Map<Object, Object>> implements Gen
         Type keyType = typeArguments[0];
         Type valueType = typeArguments[1];
 
-        BufReader keyReader = TypeBufSerializerProvider.getReader(keyType);
-        BufReader valueReader = TypeBufSerializerProvider.getReader(valueType);
+        BufReader keyReader = BufSerializerProvider.getReader(keyType);
+        BufReader valueReader = BufSerializerProvider.getReader(valueType);
         return new MapReader<>(containerGenerator, keyReader, valueReader);
     }
 
@@ -32,8 +32,8 @@ public class MapSerializerProvider<T extends Map<Object, Object>> implements Gen
         Type keyType = typeArguments[0];
         Type valueType = typeArguments[1];
 
-        BufWriter keyWriter = TypeBufSerializerProvider.getWriter(keyType);
-        BufWriter valueWriter = TypeBufSerializerProvider.getWriter(valueType);
+        BufWriter keyWriter = BufSerializerProvider.getWriter(keyType);
+        BufWriter valueWriter = BufSerializerProvider.getWriter(valueType);
         return new MapWriter<>(keyWriter, valueWriter);
     }
 }
