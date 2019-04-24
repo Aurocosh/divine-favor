@@ -1,12 +1,13 @@
 package aurocosh.divinefavor.common.network.base.serialization.class_serializers;
 
-import aurocosh.divinefavor.common.network.base.serialization.interfaces.BufReader;
-import aurocosh.divinefavor.common.network.base.serialization.interfaces.BufWriter;
-import aurocosh.divinefavor.common.network.base.serialization.interfaces.GenericSerializerProvider;
 import aurocosh.divinefavor.common.network.base.serialization.buf_serializers.Color3fSerializer;
+import aurocosh.divinefavor.common.network.base.serialization.buf_serializers.EnumSerializer;
 import aurocosh.divinefavor.common.network.base.serialization.buf_serializers.Vec3dSerializer;
 import aurocosh.divinefavor.common.network.base.serialization.buf_serializers.generic.array_list.CollectionSerializerProvider;
 import aurocosh.divinefavor.common.network.base.serialization.buf_serializers.generic.hash_set.MapSerializerProvider;
+import aurocosh.divinefavor.common.network.base.serialization.interfaces.BufReader;
+import aurocosh.divinefavor.common.network.base.serialization.interfaces.BufWriter;
+import aurocosh.divinefavor.common.network.base.serialization.interfaces.GenericSerializerProvider;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -23,6 +24,7 @@ public class TypeBufSerializerProvider {
     private static final Map<Class, BufWriter> writers = new HashMap<>();
     private static final Map<Class, BufReader> readers = new HashMap<>();
 
+    private static final Map<Class, EnumSerializer> enumSerializers = new HashMap<>();
     private static final Map<Class, GenericSerializerProvider> providers = new HashMap<>();
 
     static {
@@ -119,6 +121,11 @@ public class TypeBufSerializerProvider {
             Class rawType = (Class) parameterizedType.getRawType();
             return providers.get(rawType).getReader(parameterizedType);
         }
+        else if(type instanceof Class && ((Class<?>)type).isEnum()){
+            Class enumClazz = (Class) type;
+            EnumSerializer serializer = enumSerializers.computeIfAbsent(enumClazz, EnumSerializer::new);
+            return serializer;
+        }
         //noinspection SuspiciousMethodCalls
         return readers.get(type);
     }
@@ -128,6 +135,11 @@ public class TypeBufSerializerProvider {
             ParameterizedType parameterizedType = (ParameterizedType) type;
             Class rawType = (Class) parameterizedType.getRawType();
             return providers.get(rawType).getWriter(parameterizedType);
+        }
+        else if(type instanceof Class && ((Class<?>)type).isEnum()){
+            Class enumClazz = (Class) type;
+            EnumSerializer serializer = enumSerializers.computeIfAbsent(enumClazz, EnumSerializer::new);
+            return serializer;
         }
         //noinspection SuspiciousMethodCalls
         return writers.get(type);

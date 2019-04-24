@@ -3,7 +3,8 @@ package aurocosh.divinefavor.common.network.message.client.particles;
 import aurocosh.divinefavor.DivineFavor;
 import aurocosh.divinefavor.common.config.common.ConfigGeneral;
 import aurocosh.divinefavor.common.item.talismans.spell.highlighters.BlockHighlighter;
-import aurocosh.divinefavor.common.item.talismans.spell.highlighters.HighlightPredicate;
+import aurocosh.divinefavor.common.item.talismans.spell.highlighters.SenseAreaType;
+import aurocosh.divinefavor.common.item.talismans.spell.highlighters.SenseBlockPredicate;
 import aurocosh.divinefavor.common.network.base.WrappedClientMessage;
 import aurocosh.divinefavor.common.util.UtilBlock;
 import net.minecraft.block.Block;
@@ -25,13 +26,14 @@ public class MessageParticlesHighlightBlock extends WrappedClientMessage {
     public float maxShift;
     public Color3f color3f;
 
-    public int highlightPredicate;
+    public SenseAreaType areaType;
+    public SenseBlockPredicate senseBlockPredicate;
     public String blockName;
 
     public MessageParticlesHighlightBlock() {
     }
 
-    public MessageParticlesHighlightBlock(int radius, int particles, int dimensionId, BlockPos position, float minShift, float maxShift, Color3f color3f, HighlightPredicate highlightPredicate, String blockName) {
+    public MessageParticlesHighlightBlock(int radius, int particles, int dimensionId, BlockPos position, float minShift, float maxShift, Color3f color3f, SenseAreaType areaType, SenseBlockPredicate senseBlockPredicate, String blockName) {
         this.radius = radius;
         this.particles = particles;
         this.dimensionId = dimensionId;
@@ -39,7 +41,8 @@ public class MessageParticlesHighlightBlock extends WrappedClientMessage {
         this.minShift = minShift;
         this.maxShift = maxShift;
         this.color3f = color3f;
-        this.highlightPredicate = highlightPredicate.getIndex();
+        this.areaType = areaType;
+        this.senseBlockPredicate = senseBlockPredicate;
         this.blockName = blockName;
     }
 
@@ -55,8 +58,7 @@ public class MessageParticlesHighlightBlock extends WrappedClientMessage {
     }
 
     private Predicate<BlockPos> getPredicate(World world) {
-        HighlightPredicate highlightPredicate = HighlightPredicate.INDEXER.get(this.highlightPredicate);
-        switch (highlightPredicate) {
+        switch (senseBlockPredicate) {
             case BLOCK:
                 Block block = Block.getBlockFromName(blockName);
                 return block == null ? null : (pos -> world.getBlockState(pos).getBlock() == block);
