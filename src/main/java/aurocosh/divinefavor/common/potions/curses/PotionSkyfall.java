@@ -19,6 +19,7 @@ public class PotionSkyfall extends ModPotion {
     public void performEffect(EntityLivingBase livingBase, int amplifier) {
         livingBase.motionY = upwardMotion;
         livingBase.onGround = false;
+        livingBase.setAIMoveSpeed(0.1F);
         if(isLookingUp(livingBase))
             livingBase.removePotionEffect(ModCurses.skyfall);
     }

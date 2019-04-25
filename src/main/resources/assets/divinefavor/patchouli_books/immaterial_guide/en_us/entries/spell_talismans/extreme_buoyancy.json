@@ -1,0 +1,15 @@
+{
+  "name": "Extreme buoyancy",
+  "icon": "divinefavor:talisman_extreme_buoyancy",
+  "category": "spell_talismans",
+  "pages": [
+    {
+      "type": "item_description",
+      "talisman": "divinefavor:talisman_extreme_buoyancy"
+    },
+    {
+      "type": "spell_talisman_stats",
+      "talisman": "divinefavor:talisman_extreme_buoyancy"
+    }
+  ]
+}
