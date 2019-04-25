@@ -4,6 +4,7 @@ import aurocosh.divinefavor.common.potions.base.effect.ModEffectToggle;
 import aurocosh.divinefavor.common.potions.base.potion.ModPotionToggle;
 import aurocosh.divinefavor.common.potions.base.potion.ModPotionToggleLimited;
 import aurocosh.divinefavor.common.spirit.base.ModSpirit;
+import net.minecraft.entity.player.EntityPlayer;
 
 public class SpellTalismanModPotionToggle extends ItemSpellTalisman {
     private final ModPotionToggle potion;
@@ -19,7 +20,11 @@ public class SpellTalismanModPotionToggle extends ItemSpellTalisman {
 
     @Override
     protected void performActionServer(TalismanContext context) {
-        context.player.addPotionEffect(new ModEffectToggle(potion));
+        EntityPlayer player = context.player;
+        if(player.isPotionActive(potion))
+            player.removePotionEffect(potion);
+        else
+            player.addPotionEffect(new ModEffectToggle(potion));
     }
 
     @Override

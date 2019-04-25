@@ -54,6 +54,7 @@ public final class ModSpellTalismans {
     public static ItemSpellTalisman hovering;
     public static ItemSpellTalisman ignition;
     public static ItemSpellTalisman infernal_touch;
+    public static ItemSpellTalisman instant_dive;
     public static ItemSpellTalisman invite_gem;
     public static ItemSpellTalisman invite_pebble;
     public static ItemSpellTalisman miners_focus;
@@ -120,6 +121,7 @@ public final class ModSpellTalismans {
         extreme_buoyancy = new SpellTalismanModPotionToggle("extreme_buoyancy", ModSpirits.blizrabi, ConfigSpells.extremeBuoyancy.favorCost, ModPotions.extreme_buoyancy);
         fins = new SpellTalismanModPotion("fins", ModSpirits.blizrabi, ConfigSpells.fins.favorCost, ModPotions.fins, ConfigSpells.fins.duration);
         gills = new SpellTalismanModPotionToggle("gills", ModSpirits.blizrabi, ConfigSpells.gills.favorCost, ModPotions.gills);
+        instant_dive = new SpellTalismanModPotionToggle("instant_dive", ModSpirits.blizrabi, ConfigSpells.instandDive.favorCost, ModPotions.instant_dive);
         obsidian_road = new SpellTalismanModPotion("obsidian_road", ModSpirits.blizrabi, ConfigSpells.obsidianRoad.favorCost, ModPotions.obsidian_road, ConfigSpells.obsidianRoad.duration);
         snowball_throw = new SpellTalismanSnowballThrow("snowball_throw", ModSpirits.blizrabi, ConfigSpells.snowballThrow.favorCost, SpellOptions.ALL_CAST);
         vitalize = new SpellTalismanVitalize("vitalize", ModSpirits.blizrabi, ConfigSpells.vitalize.favorCost, SpellOptions.ALL_CAST);

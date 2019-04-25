@@ -1,0 +1,15 @@
+{
+  "name": "Instant dive",
+  "icon": "divinefavor:talisman_instant_dive",
+  "category": "spell_talismans",
+  "pages": [
+    {
+      "type": "item_description",
+      "talisman": "divinefavor:talisman_instant_dive"
+    },
+    {
+      "type": "spell_talisman_stats",
+      "talisman": "divinefavor:talisman_instant_dive"
+    }
+  ]
+}

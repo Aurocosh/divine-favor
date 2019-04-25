@@ -5,7 +5,6 @@ import aurocosh.divinefavor.common.potions.base.potion.ModPotionToggle;
 import aurocosh.divinefavor.common.util.UtilBlock;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
 
 public class PotionExtremeBuoyancy extends ModPotionToggle {
     public PotionExtremeBuoyancy() {
@@ -14,10 +13,9 @@ public class PotionExtremeBuoyancy extends ModPotionToggle {
 
     @Override
     public void performEffect(EntityLivingBase livingBase, int amplifier) {
-        World world = livingBase.getEntityWorld();
         BlockPos pos = livingBase.getPosition();
 
-        if (!UtilBlock.isLiquid(world.getBlockState(pos).getBlock()))
+        if (!UtilBlock.isLiquid(livingBase.world.getBlockState(pos).getBlock()))
             return;
         if (livingBase.isSneaking())
             return;

@@ -79,6 +79,8 @@ public class ConfigSpells {
     public static Hellisphere hellisphere = new Hellisphere();
     @Config.Name("Infernal touch")
     public static InfernalTouch infernalTouch = new InfernalTouch();
+    @Config.Name("Instand dive")
+    public static InstandDive instandDive = new InstandDive();
     @Config.Name("Ignition")
     public static Ignition ignition = new Ignition();
     @Config.Name("Invite gem")
