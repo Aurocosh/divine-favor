@@ -41,26 +41,22 @@ public class UtilEntity {
         entity.motionZ += motion.z;
     }
 
-    public static void tickLiquidWalk(EntityLivingBase entityLiving, Block liquid) {
-        World world = entityLiving.getEntityWorld();
-        BlockPos pos = entityLiving.getPosition();
+    public static void tickLiquidWalk(EntityLivingBase livingBase, Block liquid) {
+        World world = livingBase.getEntityWorld();
+        BlockPos pos = livingBase.getPosition();
 
+        if (livingBase.isSneaking())
+            return;
         if (world.getBlockState(pos.down()).getBlock() != liquid)
             return;
         if (!world.isAirBlock(pos))
             return;
-        if (entityLiving.motionY >= 0)
+        if (livingBase.motionY >= 0)
             return;
 
-        if (entityLiving instanceof EntityPlayer) {
-            EntityPlayer player = (EntityPlayer) entityLiving;
-            if (player.isSneaking())
-                return;
-        }
-
-        entityLiving.motionY = 0;
-        entityLiving.onGround = true;
-        entityLiving.setAIMoveSpeed(0.1F);
+        livingBase.motionY = 0;
+        livingBase.onGround = true;
+        livingBase.setAIMoveSpeed(0.1f);
     }
 
     public static void dropItemsOnGround(World world, IItemHandler handler, BlockPos pos) {

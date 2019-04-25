@@ -51,6 +51,8 @@ public class ConfigSpells {
     public static EtherealFlash etherealFlash = new EtherealFlash();
     @Config.Name("Evil eye")
     public static EvilEye evilEye = new EvilEye();
+    @Config.Name("Extreme buoyancy")
+    public static ExtremeBuoyancy extremeBuoyancy = new ExtremeBuoyancy();
     @Config.Name("Fall negation")
     public static FallNegation fallNegation = new FallNegation();
     @Config.Name("Fell tree")

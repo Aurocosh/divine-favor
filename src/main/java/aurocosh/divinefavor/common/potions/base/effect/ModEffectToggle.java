@@ -4,15 +4,17 @@ import aurocosh.divinefavor.common.potions.base.potion.ModPotionToggle;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.potion.PotionEffect;
 
+import javax.annotation.Nonnull;
+
 public class ModEffectToggle extends ModEffect {
     private boolean active;
     public ModEffectToggle(ModPotionToggle potion) {
-        super(potion, 1);
+        super(potion, Integer.MAX_VALUE);
         active = true;
     }
 
     @Override
-    public boolean onUpdate(EntityLivingBase entityIn) {
+    public boolean onUpdate(@Nonnull EntityLivingBase entityIn) {
         performEffect(entityIn);
         return active;
     }

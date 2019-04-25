@@ -38,6 +38,7 @@ public final class ModSpellTalismans {
     public static ItemSpellTalisman ethereal_flash;
     public static ItemSpellTalisman ethereal_light;
     public static ItemSpellTalisman evil_eye;
+    public static ItemSpellTalisman extreme_buoyancy;
     public static ItemSpellTalisman fall_negation;
     public static ItemSpellTalisman fell_tree;
     public static ItemSpellTalisman fins;
@@ -116,6 +117,7 @@ public final class ModSpellTalismans {
         // blizzrabi
         armor_of_pacifist = new SpellTalismanModPotionToggle("armor_of_pacifist", ModSpirits.blizrabi, ConfigSpells.armorOfPacifist.favorCost, ModPotions.armor_of_pacifist);
         crystalline_road = new SpellTalismanModPotion("crystalline_road", ModSpirits.blizrabi, ConfigSpells.crystallineRoad.favorCost, ModPotions.crystalline_road, ConfigSpells.crystallineRoad.duration);
+        extreme_buoyancy = new SpellTalismanModPotionToggle("extreme_buoyancy", ModSpirits.blizrabi, ConfigSpells.extremeBuoyancy.favorCost, ModPotions.extreme_buoyancy);
         fins = new SpellTalismanModPotion("fins", ModSpirits.blizrabi, ConfigSpells.fins.favorCost, ModPotions.fins, ConfigSpells.fins.duration);
         gills = new SpellTalismanModPotionToggle("gills", ModSpirits.blizrabi, ConfigSpells.gills.favorCost, ModPotions.gills);
         obsidian_road = new SpellTalismanModPotion("obsidian_road", ModSpirits.blizrabi, ConfigSpells.obsidianRoad.favorCost, ModPotions.obsidian_road, ConfigSpells.obsidianRoad.duration);

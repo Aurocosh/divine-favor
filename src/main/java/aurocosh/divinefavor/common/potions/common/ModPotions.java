@@ -8,6 +8,7 @@ import aurocosh.divinefavor.common.potions.potions.*;
 import net.minecraft.init.Blocks;
 
 public class ModPotions {
+    public static ModPotion arrow_deflection;
     public static ModPotion consuming_fury;
     public static ModPotion crystalline_road;
     public static ModPotion empower_axe;
@@ -21,14 +22,14 @@ public class ModPotions {
     public static ModPotion stone_fever;
     public static ModPotion wild_charge;
     public static ModPotion wild_sprint;
-    public static ModPotion arrow_deflection;
     public static ModPotionCharge butchering_strike;
     public static ModPotionCharge fall_negation;
     public static ModPotionToggle armor_of_pacifist;
+    public static ModPotionToggle extreme_buoyancy;
     public static ModPotionToggle gills;
     public static ModPotionToggle ground_flow;
-    public static ModPotionToggle hovering;
     public static ModPotionToggle grudge;
+    public static ModPotionToggle hovering;
     public static ModPotionToggle mist_blade;
     public static ModPotionToggle molten_skin;
     public static ModPotionToggle night_eye;
@@ -48,13 +49,14 @@ public class ModPotions {
         empower_axe = new PotionEmpowerAxe();
         empower_pickaxe = new PotionEmpowerPickaxe();
         escape_plan = new PotionEscapePlan();
+        extreme_buoyancy = new PotionExtremeBuoyancy();
         fall_negation = new PotionFallNegation();
         fins = new PotionFins();
         focused_fury = new PotionFocusedFury();
         gills = new PotionGills();
         ground_flow = new PotionGroundFlow();
-        hovering = new PotionHovering();
         grudge = new PotionGrudge();
+        hovering = new PotionHovering();
         miners_focus = new PotionMinersFocus();
         mist_blade = new PotionMistBlade();
         molten_skin = new PotionMoltenSkin();
