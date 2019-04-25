@@ -19,7 +19,7 @@ public class PotionExtremeBuoyancy extends ModPotionToggle {
         BlockPos pos = livingBase.getPosition();
 
         if (!UtilBlock.isLiquid(world.getBlockState(pos).getBlock())) {
-            if (livingBase.world.isRemote)
+            if (!livingBase.world.isRemote)
                 livingBase.removePotionEffect(ModPotions.extreme_buoyancy);
             return;
         }
