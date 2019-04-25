@@ -30,6 +30,7 @@ public class ModPotions {
     public static ModPotionToggle ground_flow;
     public static ModPotionToggle grudge;
     public static ModPotionToggle hovering;
+    public static ModPotionToggle instant_dive;
     public static ModPotionToggle mist_blade;
     public static ModPotionToggle molten_skin;
     public static ModPotionToggle night_eye;
@@ -57,6 +58,7 @@ public class ModPotions {
         ground_flow = new PotionGroundFlow();
         grudge = new PotionGrudge();
         hovering = new PotionHovering();
+        instant_dive = new PotionInstantDive();
         miners_focus = new PotionMinersFocus();
         mist_blade = new PotionMistBlade();
         molten_skin = new PotionMoltenSkin();
