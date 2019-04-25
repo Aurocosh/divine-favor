@@ -1,0 +1,15 @@
+{
+  "name": "Sense cave",
+  "icon": "divinefavor:talisman_sense_cave",
+  "category": "spell_talismans",
+  "pages": [
+    {
+      "type": "item_description",
+      "talisman": "divinefavor:talisman_sense_cave"
+    },
+    {
+      "type": "spell_talisman_stats",
+      "talisman": "divinefavor:talisman_sense_cave"
+    }
+  ]
+}

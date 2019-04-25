@@ -4,7 +4,8 @@ import aurocosh.divinefavor.common.network.message.client.activity.MessageSpirit
 import aurocosh.divinefavor.common.network.message.client.activity.MessageSpiritBecameInactive;
 import aurocosh.divinefavor.common.network.message.client.config.MessageConfigOreBlocks;
 import aurocosh.divinefavor.common.network.message.client.particles.MessageParticlesHeatWave;
-import aurocosh.divinefavor.common.network.message.client.particles.MessageParticlesHighlightBlock;
+import aurocosh.divinefavor.common.network.message.client.particles.MessageParticlesHighlightFloodFill;
+import aurocosh.divinefavor.common.network.message.client.particles.MessageParticlesHighlightInSphere;
 import aurocosh.divinefavor.common.network.message.client.particles.MessageParticlesWinterBreath;
 import aurocosh.divinefavor.common.network.message.client.spirit_data.MessageSyncAllSpiritData;
 import aurocosh.divinefavor.common.network.message.client.spirit_data.MessageSyncContracts;
@@ -22,7 +23,8 @@ public class MessageRegister {
         NetworkHandler.register(MessageConfigOreBlocks.class, Side.CLIENT);
 
         NetworkHandler.register(MessageParticlesHeatWave.class, Side.CLIENT);
-        NetworkHandler.register(MessageParticlesHighlightBlock.class, Side.CLIENT);
+        NetworkHandler.register(MessageParticlesHighlightFloodFill.class, Side.CLIENT);
+        NetworkHandler.register(MessageParticlesHighlightInSphere.class, Side.CLIENT);
         NetworkHandler.register(MessageParticlesWinterBreath.class, Side.CLIENT);
 
         NetworkHandler.register(MessageSyncAllSpiritData.class, Side.CLIENT);

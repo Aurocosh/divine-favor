@@ -2,22 +2,22 @@ package aurocosh.divinefavor.common.network.message.client.particles;
 
 import aurocosh.divinefavor.DivineFavor;
 import aurocosh.divinefavor.common.config.common.ConfigGeneral;
-import aurocosh.divinefavor.common.item.talismans.spell.highlighters.BlockHighlighter;
-import aurocosh.divinefavor.common.item.talismans.spell.highlighters.SenseAreaType;
-import aurocosh.divinefavor.common.item.talismans.spell.highlighters.SenseBlockPredicate;
+import aurocosh.divinefavor.common.item.talismans.spell.sense.BlockHighlighter;
+import aurocosh.divinefavor.common.item.talismans.spell.sense.SenseBlockPredicate;
 import aurocosh.divinefavor.common.network.base.WrappedClientMessage;
 import aurocosh.divinefavor.common.util.UtilBlock;
 import net.minecraft.block.Block;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 import javax.vecmath.Color3f;
+import java.util.List;
 import java.util.function.Predicate;
 
-public class MessageParticlesHighlightBlock extends WrappedClientMessage {
-    public int radius;
+public abstract class MessageParticlesHighlight extends WrappedClientMessage {
     public int particles;
     public int dimensionId;
     public BlockPos position;
@@ -26,22 +26,19 @@ public class MessageParticlesHighlightBlock extends WrappedClientMessage {
     public float maxShift;
     public Color3f color3f;
 
-    public SenseAreaType areaType;
     public SenseBlockPredicate senseBlockPredicate;
     public String blockName;
 
-    public MessageParticlesHighlightBlock() {
+    public MessageParticlesHighlight() {
     }
 
-    public MessageParticlesHighlightBlock(int radius, int particles, int dimensionId, BlockPos position, float minShift, float maxShift, Color3f color3f, SenseAreaType areaType, SenseBlockPredicate senseBlockPredicate, String blockName) {
-        this.radius = radius;
+    public MessageParticlesHighlight(int particles, int dimensionId, BlockPos position, float minShift, float maxShift, Color3f color3f, SenseBlockPredicate senseBlockPredicate, String blockName) {
         this.particles = particles;
         this.dimensionId = dimensionId;
         this.position = position;
         this.minShift = minShift;
         this.maxShift = maxShift;
         this.color3f = color3f;
-        this.areaType = areaType;
         this.senseBlockPredicate = senseBlockPredicate;
         this.blockName = blockName;
     }
@@ -49,14 +46,22 @@ public class MessageParticlesHighlightBlock extends WrappedClientMessage {
     @Override
     @SideOnly(Side.CLIENT)
     protected void handleSafe() {
-        World world = DivineFavor.proxy.getClientPlayer().world;
+        EntityPlayer player = DivineFavor.proxy.getClientPlayer();
+        World world = player.world;
         Predicate<BlockPos> predicate = getPredicate(world);
         if (predicate == null)
             return;
-        if (dimensionId == world.provider.getDimension())
-            BlockHighlighter.highlightOre(world, position, radius, maxShift, minShift, particles, color3f, predicate);
+        if (dimensionId != world.provider.getDimension())
+            return;
+
+        List<BlockPos> positions = getHighlighPositions(player, predicate);
+        BlockHighlighter.spawnParticles(color3f, maxShift, minShift, particles, world, positions);
     }
 
+    @SideOnly(Side.CLIENT)
+    protected abstract List<BlockPos> getHighlighPositions(EntityPlayer player, Predicate<BlockPos> predicate);
+
+    @SideOnly(Side.CLIENT)
     private Predicate<BlockPos> getPredicate(World world) {
         switch (senseBlockPredicate) {
             case BLOCK:
@@ -70,6 +75,8 @@ public class MessageParticlesHighlightBlock extends WrappedClientMessage {
                 return pos -> UtilBlock.isLiquid(world.getBlockState(pos).getBlock());
             case ORE:
                 return pos -> ConfigGeneral.ORE_BLOCKS.contains(world.getBlockState(pos).getBlock());
+            case AIR:
+                return world::isAirBlock;
         }
         return null;
     }

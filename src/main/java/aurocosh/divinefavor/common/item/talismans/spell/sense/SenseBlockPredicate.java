@@ -1,4 +1,4 @@
-package aurocosh.divinefavor.common.item.talismans.spell.highlighters;
+package aurocosh.divinefavor.common.item.talismans.spell.sense;
 
 import aurocosh.divinefavor.common.lib.EnumIndexer;
 import aurocosh.divinefavor.common.lib.interfaces.IndexedEnum;
@@ -8,7 +8,8 @@ public enum SenseBlockPredicate implements IndexedEnum<SenseBlockPredicate> {
     WATER(1),
     LAVA(2),
     LIQUID(3),
-    ORE(4);
+    ORE(4),
+    AIR(5);
 
     public static final EnumIndexer<SenseBlockPredicate> INDEXER = new EnumIndexer<>(SenseBlockPredicate.values());
 
