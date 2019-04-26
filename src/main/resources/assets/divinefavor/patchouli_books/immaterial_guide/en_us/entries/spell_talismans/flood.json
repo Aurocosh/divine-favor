@@ -1,0 +1,15 @@
+{
+  "name": "Flood",
+  "icon": "divinefavor:talisman_flood",
+  "category": "spell_talismans",
+  "pages": [
+    {
+      "type": "item_description",
+      "talisman": "divinefavor:talisman_flood"
+    },
+    {
+      "type": "spell_talisman_stats",
+      "talisman": "divinefavor:talisman_flood"
+    }
+  ]
+}

@@ -38,6 +38,6 @@ public class RecipeLoader {
             recipes.addAll(modRecipes);
         }
 
-        UtilList.aggregate(recipes, MediumRecipeData::toRecipes).forEach(ModRecipes::register);
+        UtilList.flatten(recipes, MediumRecipeData::toRecipes).forEach(ModRecipes::register);
     }
 }

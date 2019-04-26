@@ -5,6 +5,7 @@ import aurocosh.divinefavor.common.entity.projectile.EntitySpellArrow;
 import aurocosh.divinefavor.common.item.talismans.arrow.base.ArrowOptions;
 import aurocosh.divinefavor.common.item.talismans.arrow.base.ArrowType;
 import aurocosh.divinefavor.common.item.talismans.arrow.base.ItemArrowTalisman;
+import aurocosh.divinefavor.common.lib.wrapper.BlockPredicate;
 import aurocosh.divinefavor.common.spirit.base.ModSpirit;
 import aurocosh.divinefavor.common.util.UtilBlock;
 import aurocosh.divinefavor.common.util.UtilCoordinates;
@@ -19,7 +20,6 @@ import java.awt.*;
 import java.util.Collections;
 import java.util.EnumSet;
 import java.util.List;
-import java.util.function.Predicate;
 
 public class ArrowTalismanIceBreaker extends ItemArrowTalisman {
     private static final int limit = 600;
@@ -32,7 +32,7 @@ public class ArrowTalismanIceBreaker extends ItemArrowTalisman {
     protected boolean performActionServer(EntityLivingBase target, EntityLivingBase shooter, EntitySpellArrow spellArrow, BlockPos blockPos, EnumFacing sideHit) {
         World world = spellArrow.world;
 
-        Predicate<BlockPos> predicate = pos -> UtilBlock.isIce(world.getBlockState(pos).getBlock());
+        BlockPredicate predicate = new BlockPredicate(world, UtilBlock::isIce);
         List<BlockPos> posList = UtilCoordinates.floodFill(Collections.singletonList(blockPos), BlockPosConstants.DIRECT_AND_DIAGONAL, predicate, limit);
 
         for (BlockPos pos : posList)
