@@ -6,12 +6,16 @@ import aurocosh.divinefavor.common.entity.minions.*;
 import aurocosh.divinefavor.common.item.common.ModItems;
 import aurocosh.divinefavor.common.item.talismans.spell.*;
 import aurocosh.divinefavor.common.item.talismans.spell.base.*;
+import aurocosh.divinefavor.common.item.talismans.spell.SpellTalismanReplacmentBubble;
 import aurocosh.divinefavor.common.item.talismans.spell.sense.SenseBlockPredicate;
 import aurocosh.divinefavor.common.item.talismans.spell.sense.SpellTalismanSenseFloodFill;
 import aurocosh.divinefavor.common.item.talismans.spell.sense.SpellTalismanSenseInSphereHeld;
 import aurocosh.divinefavor.common.item.talismans.spell.sense.SpellTalismanSenseInSphereType;
 import aurocosh.divinefavor.common.potions.common.ModPotions;
 import aurocosh.divinefavor.common.spirit.ModSpirits;
+import aurocosh.divinefavor.common.util.UtilBlock;
+import aurocosh.divinefavor.common.util.UtilPredicate;
+import net.minecraft.init.Blocks;
 
 import javax.vecmath.Color3f;
 
@@ -52,6 +56,7 @@ public final class ModSpellTalismans {
     public static ItemSpellTalisman heat_wave;
     public static ItemSpellTalisman hellisphere;
     public static ItemSpellTalisman hovering;
+    public static ItemSpellTalisman ice_bubble;
     public static ItemSpellTalisman ignition;
     public static ItemSpellTalisman infernal_touch;
     public static ItemSpellTalisman instant_dive;
@@ -110,6 +115,8 @@ public final class ModSpellTalismans {
     public static ItemSpellTalisman wind_step;
     public static ItemSpellTalisman winter_breath;
     public static ItemSpellTalisman wooden_punch;
+    public static ItemSpellTalisman obsidian_bubble;
+    public static ItemSpellTalisman flood;
 
     public static void preInit() {
         // arbow
@@ -121,11 +128,13 @@ public final class ModSpellTalismans {
         extreme_buoyancy = new SpellTalismanModPotionToggle("extreme_buoyancy", ModSpirits.blizrabi, ConfigSpells.extremeBuoyancy.favorCost, ModPotions.extreme_buoyancy);
         fins = new SpellTalismanModPotion("fins", ModSpirits.blizrabi, ConfigSpells.fins.favorCost, ModPotions.fins, ConfigSpells.fins.duration);
         gills = new SpellTalismanModPotionToggle("gills", ModSpirits.blizrabi, ConfigSpells.gills.favorCost, ModPotions.gills);
+        ice_bubble = new SpellTalismanReplacmentBubble("ice_bubble", ModSpirits.blizrabi, ConfigSpells.iceBubble, Blocks.AIR, Blocks.ICE, UtilPredicate.or(UtilBlock::isWater, UtilBlock::isIce));
         instant_dive = new SpellTalismanModPotionToggle("instant_dive", ModSpirits.blizrabi, ConfigSpells.instandDive.favorCost, ModPotions.instant_dive);
         obsidian_road = new SpellTalismanModPotion("obsidian_road", ModSpirits.blizrabi, ConfigSpells.obsidianRoad.favorCost, ModPotions.obsidian_road, ConfigSpells.obsidianRoad.duration);
         snowball_throw = new SpellTalismanSnowballThrow("snowball_throw", ModSpirits.blizrabi, ConfigSpells.snowballThrow.favorCost, SpellOptions.ALL_CAST);
         vitalize = new SpellTalismanVitalize("vitalize", ModSpirits.blizrabi, ConfigSpells.vitalize.favorCost, SpellOptions.ALL_CAST);
         winter_breath = new SpellTalismanWinterBreath("winter_breath", ModSpirits.blizrabi, ConfigSpells.winterBreath.favorCost, SpellOptions.ALL_CAST);
+        flood = new SpellTalismanFlood("flood", ModSpirits.blizrabi, ConfigSpells.flood.favorCost, SpellOptions.ALL_CAST);
 
         // endererer
         blink = new SpellTalismanBlink("blink", ModSpirits.endererer, ConfigSpells.blink.favorCost, SpellOptions.ALL_CAST, true, ConfigSpells.blink.distance);
@@ -169,6 +178,7 @@ public final class ModSpellTalismans {
         piercing_inferno = new SpellTalismanPiercingInferno("piercing_inferno", ModSpirits.neblaze, ConfigSpells.piercingInferno.favorCost, SpellOptions.USE_CAST);
         searing_pulse = new SpellTalismanSearingPulse("searing_pulse", ModSpirits.neblaze, ConfigSpells.searingPulse.favorCost, SpellOptions.USE_CAST);
         small_fireball_throw = new SpellTalismanSmallFireballThrow("small_fireball_throw", ModSpirits.neblaze, ConfigSpells.smallFireballThrow.favorCost, SpellOptions.ALL_CAST);
+        obsidian_bubble = new SpellTalismanReplacmentBubble("obsidian_bubble", ModSpirits.blizrabi, ConfigSpells.obsidianBubble, Blocks.AIR, Blocks.OBSIDIAN, UtilPredicate.or(UtilBlock::isLava, block -> block == Blocks.OBSIDIAN));
 
         // redwind
         arrow_deflection = new SpellTalismanModPotion("arrow_deflection", ModSpirits.redwind, ConfigSpells.arrowDeflection.favorCost, ModPotions.arrow_deflection, ConfigSpells.arrowDeflection.duration);
@@ -199,7 +209,7 @@ public final class ModSpellTalismans {
         sense_block_close = new SpellTalismanSenseInSphereHeld("sense_block_close", ModSpirits.romol, SpellOptions.RIGHT_CAST, new Color3f(0, 0, 0.7f), ConfigSpells.senseBlockClose);
         sense_block_precise = new SpellTalismanSenseInSphereHeld("sense_block_precise", ModSpirits.romol, SpellOptions.RIGHT_CAST, new Color3f(0.7f, 0, 0), ConfigSpells.senseBlockPrecise);
         sense_block_vague = new SpellTalismanSenseInSphereHeld("sense_block_vague", ModSpirits.romol, SpellOptions.RIGHT_CAST, new Color3f(0, 0.7f, 0), ConfigSpells.senseBlockVague);
-        sense_cave = new SpellTalismanSenseFloodFill("sense_cave", ModSpirits.romol, SpellOptions.USE_CAST, new Color3f(0, 0.2f, 0.9f), ConfigSpells.senseWater, SenseBlockPredicate.AIR,500, 32);
+        sense_cave = new SpellTalismanSenseFloodFill("sense_cave", ModSpirits.romol, SpellOptions.USE_CAST, new Color3f(0, 0.2f, 0.9f), ConfigSpells.senseWater, SenseBlockPredicate.AIR, 500, 32);
         sense_lava = new SpellTalismanSenseInSphereType("sense_lava", ModSpirits.romol, SpellOptions.RIGHT_CAST, new Color3f(0.9f, 0.2f, 0f), ConfigSpells.senseLava, SenseBlockPredicate.LAVA);
         sense_liquid = new SpellTalismanSenseInSphereType("sense_liquid", ModSpirits.romol, SpellOptions.RIGHT_CAST, new Color3f(0.7f, 0.2f, 0.7f), ConfigSpells.senseLiquid, SenseBlockPredicate.LIQUID);
         sense_ore_approximate = new SpellTalismanSenseInSphereType("sense_ore_approximate", ModSpirits.romol, SpellOptions.RIGHT_CAST, new Color3f(0.7f, 0.7f, 0), ConfigSpells.senseOreApproximate, SenseBlockPredicate.ORE);

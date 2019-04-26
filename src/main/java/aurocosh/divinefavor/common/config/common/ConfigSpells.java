@@ -59,6 +59,8 @@ public class ConfigSpells {
     public static FellTree fellTree = new FellTree();
     @Config.Name("Fins")
     public static Fins fins = new Fins();
+    @Config.Name("Flood")
+    public static ReplaceSphere flood = new ReplaceSphere();
     @Config.Name("Focused fury")
     public static FocusedFury focusedFury = new FocusedFury();
     @Config.Name("Follow")
@@ -76,7 +78,9 @@ public class ConfigSpells {
     @Config.Name("Heat wave")
     public static HeatWave heatWave = new HeatWave();
     @Config.Name("Hellisphere")
-    public static Hellisphere hellisphere = new Hellisphere();
+    public static ReplaceSphere hellisphere = new ReplaceSphere();
+    @Config.Name("Ice bubble")
+    public static ReplacmentBubble iceBubble = new ReplacmentBubble();
     @Config.Name("Infernal touch")
     public static InfernalTouch infernalTouch = new InfernalTouch();
     @Config.Name("Instand dive")
@@ -97,6 +101,8 @@ public class ConfigSpells {
     public static NetherSurge netherSurge = new NetherSurge();
     @Config.Name("Night eye")
     public static NightEye nightEye = new NightEye();
+    @Config.Name("Obsidian bubble")
+    public static ReplacmentBubble obsidianBubble = new ReplacmentBubble();
     @Config.Name("Obsidian road")
     public static ObsidianRoad obsidianRoad = new ObsidianRoad();
     @Config.Name("Overblink")
