@@ -147,42 +147,6 @@ public class UtilCoordinates {
         return null;
     }
 
-    public static List<BlockPos> getNeighboursWithSameExposedFace(BlockPos start, World world, EnumFacing facing, int limit) {
-        BlockPos facingVec = new BlockPos(facing.getDirectionVec());
-
-        List<BlockPos> expansionDirs = new ArrayList<>(UtilBlockPos.DIRECT_NEIGHBOURS);
-        expansionDirs.remove(facingVec);
-        expansionDirs.remove(UtilBlockPos.inverse(facingVec));
-
-        List<BlockPos> result = new ArrayList<>();
-        Set<BlockPos> explored = new HashSet<>();
-        Queue<BlockPos> expansionFront = new ArrayDeque<>();
-
-        expansionFront.add(start);
-        explored.add(start);
-
-        while (expansionFront.size() > 0 && result.size() < limit) {
-            BlockPos nextPos = expansionFront.remove();
-            result.add(nextPos);
-
-            for (BlockPos expansionDir : expansionDirs) {
-                BlockPos neighbour = nextPos.add(expansionDir);
-                if (explored.contains(neighbour))
-                    continue;
-                explored.add(neighbour);
-
-                IBlockState state = world.getBlockState(neighbour);
-                if (!state.isSideSolid(world, neighbour, facing))
-                    continue;
-                BlockPos posCover = neighbour.offset(facing);
-                if (!world.isAirBlock(posCover))
-                    continue;
-                expansionFront.add(neighbour);
-            }
-        }
-        return result;
-    }
-
     public static List<BlockPos> floodFill(List<BlockPos> start, List<BlockPos> expansionDirs, Predicate<BlockPos> predicate, int limit) {
         Queue<BlockPos> expansionFront = new ArrayDeque<>(start);
         Set<BlockPos> explored = new HashSet<>(start);
