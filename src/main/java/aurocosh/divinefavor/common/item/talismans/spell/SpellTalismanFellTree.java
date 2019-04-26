@@ -1,12 +1,12 @@
 package aurocosh.divinefavor.common.item.talismans.spell;
 
 import aurocosh.divinefavor.common.config.common.ConfigSpells;
+import aurocosh.divinefavor.common.constants.BlockPosConstants;
 import aurocosh.divinefavor.common.item.talismans.spell.base.ItemSpellTalisman;
 import aurocosh.divinefavor.common.item.talismans.spell.base.SpellOptions;
 import aurocosh.divinefavor.common.item.talismans.spell.base.TalismanContext;
 import aurocosh.divinefavor.common.spirit.base.ModSpirit;
 import aurocosh.divinefavor.common.tasks.BlockBreakingTask;
-import aurocosh.divinefavor.common.util.UtilBlockPos;
 import aurocosh.divinefavor.common.util.UtilCoordinates;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
@@ -36,7 +36,7 @@ public class SpellTalismanFellTree extends ItemSpellTalisman {
     private List<BlockPos> detectTree(TalismanContext context) {
         World world = context.world;
         List<BlockPos> start = Collections.singletonList(context.pos);
-        List<BlockPos> logs = UtilCoordinates.floodFill(start, UtilBlockPos.DIRECT_NEIGHBOURS, blockPos -> isWood(world, blockPos), ConfigSpells.fellTree.maxLogsBroken);
+        List<BlockPos> logs = UtilCoordinates.floodFill(start, BlockPosConstants.DIRECT_NEIGHBOURS, blockPos -> isWood(world, blockPos), ConfigSpells.fellTree.maxLogsBroken);
         if (logs.isEmpty())
             return logs;
 
@@ -45,7 +45,7 @@ public class SpellTalismanFellTree extends ItemSpellTalisman {
             Block block = blockState.getBlock();
             return block.isWood(world, blockPos) || block.isLeaves(blockState, world, blockPos);
         };
-        List<BlockPos> leaves = UtilCoordinates.floodFill(logs, UtilBlockPos.DIRECT_NEIGHBOURS, predicate, ConfigSpells.fellTree.minLeafCount);
+        List<BlockPos> leaves = UtilCoordinates.floodFill(logs, BlockPosConstants.DIRECT_NEIGHBOURS, predicate, ConfigSpells.fellTree.minLeafCount);
         if (leaves.size() < ConfigSpells.fellTree.minLeafCount)
             logs.clear();
         return logs;

@@ -1,7 +1,7 @@
 package aurocosh.divinefavor.common.network.message.client.particles;
 
+import aurocosh.divinefavor.common.constants.BlockPosConstants;
 import aurocosh.divinefavor.common.item.talismans.spell.sense.SenseBlockPredicate;
-import aurocosh.divinefavor.common.util.UtilBlockPos;
 import aurocosh.divinefavor.common.util.UtilCoordinates;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.EnumFacing;
@@ -36,6 +36,6 @@ public class MessageParticlesHighlightFloodFill extends MessageParticlesHighligh
         BlockPos blockPos = UtilCoordinates.findPosition(this.position, floodLimit, pos -> player.world.isAirBlock(pos), pos -> pos.offset(facing));
         if(blockPos == null)
             return new ArrayList<>(0);
-        return UtilCoordinates.floodFill(Collections.singletonList(blockPos), UtilBlockPos.DIRECT_NEIGHBOURS, predicate, floodLimit);
+        return UtilCoordinates.floodFill(Collections.singletonList(blockPos), BlockPosConstants.DIRECT_NEIGHBOURS, predicate, floodLimit);
     }
 }

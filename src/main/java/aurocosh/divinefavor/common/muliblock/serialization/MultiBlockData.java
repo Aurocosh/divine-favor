@@ -1,7 +1,7 @@
 package aurocosh.divinefavor.common.muliblock.serialization;
 
+import aurocosh.divinefavor.common.constants.BlockPosConstants;
 import aurocosh.divinefavor.common.muliblock.MultiBlockPart;
-import aurocosh.divinefavor.common.util.UtilBlockPos;
 import com.google.gson.annotations.Expose;
 import net.minecraft.util.math.BlockPos;
 
@@ -20,8 +20,8 @@ public class MultiBlockData {
 
     public MultiBlockData() {
         symmetrical = true;
-        basePosition = UtilBlockPos.ZERO;
-        controllerPosition = UtilBlockPos.ZERO;
+        basePosition = BlockPosConstants.ZERO;
+        controllerPosition = BlockPosConstants.ZERO;
         parts = new ArrayList<>();
     }
 

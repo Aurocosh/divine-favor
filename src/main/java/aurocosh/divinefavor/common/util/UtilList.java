@@ -10,6 +10,18 @@ import java.util.function.Function;
 import java.util.function.Predicate;
 
 public class UtilList {
+    public static <T> List<T> unite(List<T>... lists) {
+        int size = 0;
+        for (List<T> list : lists)
+            size += list.size();
+
+        List<T> list = new ArrayList<>(size);
+        for (List<T> subList : lists)
+            list.addAll(subList);
+
+        return list;
+    }
+
     public static <T> boolean isAll(List<T> list, Predicate<T> predicate) {
         for (T element : list)
             if (!predicate.test(element))

@@ -31,7 +31,7 @@ public class UtilBlock {
             return false;
         if (!world.isBlockLoaded(pos))
             return false;
-        if(!world.isBlockModifiable(player, pos))
+        if (!world.isBlockModifiable(player, pos))
             return false;
         return world.getBlockState(pos).getBlock() != Blocks.BEDROCK;
     }
@@ -194,6 +194,10 @@ public class UtilBlock {
 
     public static boolean isWater(Block block) {
         return block == Blocks.WATER || block == Blocks.FLOWING_WATER;
+    }
+
+    public static boolean isIce(Block block) {
+        return block == Blocks.ICE || block == Blocks.PACKED_ICE || block == Blocks.FROSTED_ICE;
     }
 
     public static boolean isLava(Block block) {

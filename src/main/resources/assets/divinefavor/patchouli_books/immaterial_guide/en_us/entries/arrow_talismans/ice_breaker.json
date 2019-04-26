@@ -1,0 +1,15 @@
+{
+  "name": "Ice breaker",
+  "icon": "divinefavor:arrow_talisman_ice_breaker",
+  "category": "arrow_talismans",
+  "pages": [
+    {
+      "type": "item_description",
+      "talisman": "divinefavor:arrow_talisman_ice_breaker"
+    },
+    {
+      "type": "arrow_talisman_stats",
+      "talisman": "divinefavor:arrow_talisman_ice_breaker"
+    }
+  ]
+}
