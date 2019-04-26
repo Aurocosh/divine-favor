@@ -28,16 +28,16 @@ import net.minecraftforge.fluids.IFluidBlock;
 public class UtilBlock {
     private static boolean canReplaceBlock(EntityPlayer player, World world, BlockPos pos) {
         if (world.isRemote)
-            return true;
+            return false;
         if (!world.isBlockLoaded(pos))
-            return true;
-        if (!world.isBlockModifiable(player, pos))
-            return true;
-        return false;
+            return false;
+        if(!world.isBlockModifiable(player, pos))
+            return false;
+        return world.getBlockState(pos).getBlock() != Blocks.BEDROCK;
     }
 
     public static boolean canBreakBlock(EntityPlayer player, World world, BlockPos pos, boolean isToolRequired) {
-        if (canReplaceBlock(player, world, pos))
+        if (!canReplaceBlock(player, world, pos))
             return false;
 
         IBlockState state = world.getBlockState(pos);
@@ -152,7 +152,7 @@ public class UtilBlock {
     }
 
     public static boolean replaceBlock(EntityPlayer player, World world, BlockPos pos, IBlockState newState) {
-        if (canReplaceBlock(player, world, pos))
+        if (!canReplaceBlock(player, world, pos))
             return false;
         world.setBlockState(pos, newState);
         return true;
@@ -162,7 +162,7 @@ public class UtilBlock {
         Item item = stack.getItem();
         if (!(item instanceof ItemBlock))
             return false;
-        if (canReplaceBlock(player, world, pos))
+        if (!canReplaceBlock(player, world, pos))
             return false;
 
         ItemBlock itemBlock = (ItemBlock) item;
