@@ -40,6 +40,12 @@ public class UtilCoordinates {
         return selectedNodes;
     }
 
+    public static List<BlockPos> getSphereOutline(final BlockPos center, final int radiusInternal, final int radiusExternal) {
+        final List<BlockPos> cubeCoordinates = getBlocksInSphere(center, radiusExternal);
+        final int radiusSq = radiusInternal * radiusInternal;
+        return UtilList.select(cubeCoordinates, pos -> center.distanceSq(pos) >= radiusSq);
+    }
+
     public static List<BlockPos> getBlocksInSphere(final BlockPos center, final int radius) {
         final List<BlockPos> cubeCoordinates = getBlocksInRadius(center, radius, radius, radius);
         final int radiusSq = radius * radius;

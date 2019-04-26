@@ -3,6 +3,7 @@ package aurocosh.divinefavor.common.block.bath_heater;
 import aurocosh.divinefavor.common.area.IAreaWatcher;
 import aurocosh.divinefavor.common.area.WorldArea;
 import aurocosh.divinefavor.common.area.WorldAreaWatcher;
+import aurocosh.divinefavor.common.constants.BlockPosConstants;
 import aurocosh.divinefavor.common.item.bathing_blend.base.ItemBathingBlend;
 import aurocosh.divinefavor.common.lib.LoopedCounter;
 import aurocosh.divinefavor.common.util.*;
@@ -122,12 +123,12 @@ public class TileBathHeater extends TileEntity implements ITickable, IAreaWatche
         waterPositions.clear();
         BlockPos posVector = new BlockPos(pos);
         List<BlockPos> start = new ArrayList<>();
-        start.add(posVector.add(UtilBlockPos.EAST));
-        start.add(posVector.add(UtilBlockPos.WEST));
-        start.add(posVector.add(UtilBlockPos.NORTH));
-        start.add(posVector.add(UtilBlockPos.SOUTH));
+        start.add(posVector.add(BlockPosConstants.EAST));
+        start.add(posVector.add(BlockPosConstants.WEST));
+        start.add(posVector.add(BlockPosConstants.NORTH));
+        start.add(posVector.add(BlockPosConstants.SOUTH));
 
-        List<BlockPos> waterPosList = UtilCoordinates.floodFill(start, UtilBlockPos.HORIZONTAL_DIRECT, this::isWater, 50);
+        List<BlockPos> waterPosList = UtilCoordinates.floodFill(start, BlockPosConstants.HORIZONTAL_DIRECT, this::isWater, 50);
         UtilList.filterList(waterPosList, area::isApartOfArea);
         waterPositions.addAll(waterPosList);
 

@@ -1,6 +1,7 @@
 package aurocosh.divinefavor.common.item.talismans.spell;
 
 import aurocosh.divinefavor.common.config.common.ConfigSpells;
+import aurocosh.divinefavor.common.constants.BlockPosConstants;
 import aurocosh.divinefavor.common.item.talismans.spell.base.ItemSpellTalisman;
 import aurocosh.divinefavor.common.item.talismans.spell.base.SpellOptions;
 import aurocosh.divinefavor.common.item.talismans.spell.base.TalismanContext;
@@ -33,7 +34,7 @@ public class SpellTalismanPiercingInferno extends ItemSpellTalisman {
 
         int blocksToBreak = context.player.isSneaking() ? ConfigSpells.piercingInferno.blocksToBreakWeak : ConfigSpells.piercingInferno.blocksToBreakNormal;
 
-        List<BlockPos> expansionDirs = new ArrayList<>(UtilBlockPos.DIRECT_NEIGHBOURS);
+        List<BlockPos> expansionDirs = new ArrayList<>(BlockPosConstants.DIRECT_NEIGHBOURS);
         BlockPos shift = new BlockPos(facing.getOpposite().getDirectionVec());
         expansionDirs.remove(shift);
         expansionDirs.remove(UtilBlockPos.inverse(shift));

@@ -33,6 +33,8 @@ public class ModArrowTalismans {
     public static ItemArrowTalisman hollow_leg;
     public static ItemArrowTalisman hover_bubble_arrow;
     public static ItemArrowTalisman hyper_speed_arrow;
+    public static ItemArrowTalisman ice_ball_arrow;
+    public static ItemArrowTalisman ice_breaker;
     public static ItemArrowTalisman impulse_arrow;
     public static ItemArrowTalisman incendiary_arrow;
     public static ItemArrowTalisman life_steal_arrow;
@@ -98,6 +100,8 @@ public class ModArrowTalismans {
         zero_g_arrow = new ArrowTalismanZeroGArrow("zero_g_arrow", ModSpirits.arbow, ConfigArrow.zeroGArrow.favorCost,  new Color(0, 168, 122), ConfigArrow.zeroGArrow.damage, ArrowOptions.NORMAL, ArrowType.WOODEN_ARROW);
 
         // blizrabi;
+        ice_ball_arrow = new ArrowTalismanIceSphere("ice_sphere", ModSpirits.arbow, ConfigArrow.iceSphereArrow.favorCost, genericTier2, ConfigArrow.iceSphereArrow.damage, ArrowOptions.ARROW_BREAKS, ArrowType.WOODEN_ARROW);
+        ice_breaker = new ArrowTalismanIceBreaker("ice_breaker", ModSpirits.arbow, ConfigArrow.iceSphereArrow.favorCost, genericTier2, ConfigArrow.iceSphereArrow.damage, ArrowOptions.ARROW_BREAKS, ArrowType.WOODEN_ARROW);
 
         // endererer;
         blink_arrow = new ArrowTalismanBlinkArrow("blink_arrow", ModSpirits.endererer, ConfigArrow.blinkArrow.favorCost, enderererColor, ConfigArrow.blinkArrow.damage, ArrowOptions.ARROW_BREAKS, ArrowType.WOODEN_ARROW);

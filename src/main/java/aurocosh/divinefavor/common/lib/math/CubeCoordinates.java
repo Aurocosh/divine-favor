@@ -1,5 +1,6 @@
 package aurocosh.divinefavor.common.lib.math;
 
+import aurocosh.divinefavor.common.constants.BlockPosConstants;
 import aurocosh.divinefavor.common.lib.interfaces.IDeepCopy;
 import aurocosh.divinefavor.common.util.UtilBlockPos;
 import net.minecraft.util.math.BlockPos;
@@ -90,8 +91,8 @@ public class CubeCoordinates implements IDeepCopy<CubeCoordinates> {
     }
 
     public static CubeCoordinates getBoundingBox(Collection<BlockPos> positions) {
-        BlockPos min = UtilBlockPos.MAX;
-        BlockPos max = UtilBlockPos.MIN;
+        BlockPos min = BlockPosConstants.MAX;
+        BlockPos max = BlockPosConstants.MIN;
         return getBoundingBox(min, max, positions);
     }
 

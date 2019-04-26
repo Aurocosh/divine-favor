@@ -45,6 +45,8 @@ public class ConfigArrow {
     public static HighSpeedArrow hyperSpeedArrow = new HighSpeedArrow(400, 2, 6);
     @Config.Name("Hollow leg")
     public static HollowLeg hollowLeg = new HollowLeg();
+    @Config.Name("Ice ball arrow")
+    public static IceSphereArrow iceSphereArrow = new IceSphereArrow();
     @Config.Name("Incendiary arrow")
     public static IncendiaryArrow incendiaryArrow = new IncendiaryArrow();
     @Config.Name("LifeSteal arrow")
