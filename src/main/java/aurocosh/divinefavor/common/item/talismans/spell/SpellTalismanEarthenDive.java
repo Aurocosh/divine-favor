@@ -18,7 +18,7 @@ public class SpellTalismanEarthenDive extends ItemSpellTalisman {
 
     @Override
     protected void performActionServer(TalismanContext context) {
-        BlockPos targetPos = UtilCoordinates.findPlaceToStandBelow(context.pos, context.world, ConfigSpells.earthenDive.maxDistance, true);
+        BlockPos targetPos = UtilCoordinates.INSTANCE.findPlaceToStandBelow(context.pos, context.world, ConfigSpells.earthenDive.maxDistance, true);
         if (targetPos != null)
             UtilEntity.teleport(context.player, targetPos);
     }

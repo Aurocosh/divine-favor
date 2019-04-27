@@ -24,7 +24,7 @@ public class RomolPunishment extends SpiritPunishment {
         int radius = ConfigPunishments.romol.blockBreakingRadius;
         int blocksToDestroy = ConfigPunishments.romol.blocksToDestroy.random();
         for (int i = 0; i < blocksToDestroy; i++) {
-            BlockPos blockPos = UtilCoordinates.getRandomBlockInRange(center, radius, BLOCK_SEARCH_LIMIT, pos -> !world.isAirBlock(pos));
+            BlockPos blockPos = UtilCoordinates.INSTANCE.getRandomBlockInRange(center, radius, BLOCK_SEARCH_LIMIT, pos -> !world.isAirBlock(pos));
             if (blockPos != null)
                 UtilBlock.removeBlock(player, world, ItemStack.EMPTY, blockPos, false, false, false);
         }
@@ -34,7 +34,7 @@ public class RomolPunishment extends SpiritPunishment {
         int radius = ConfigPunishments.romol.blockBreakingRadius;
         int blocksToBreak = ConfigPunishments.romol.blocksToBreak.random();
         for (int i = 0; i < blocksToBreak; i++) {
-            BlockPos blockPos = UtilCoordinates.getRandomBlockInRange(center, radius, BLOCK_SEARCH_LIMIT, pos -> !world.isAirBlock(pos));
+            BlockPos blockPos = UtilCoordinates.INSTANCE.getRandomBlockInRange(center, radius, BLOCK_SEARCH_LIMIT, pos -> !world.isAirBlock(pos));
             if (blockPos != null)
                 UtilBlock.removeBlock(player, world, ItemStack.EMPTY, blockPos, true, false, false);
         }

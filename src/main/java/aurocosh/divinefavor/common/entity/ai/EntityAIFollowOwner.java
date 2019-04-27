@@ -128,10 +128,10 @@ public class EntityAIFollowOwner<T extends EntityLiving & IMinion> extends Entit
         boolean teleported = false;
         int attempts = TELEPORT_ATTEMPTS;
         while (!teleported && attempts-- > 0) {
-            BlockPos pos = UtilCoordinates.getRandomNeighbour(owner.getPosition(), TELEPORT_RADIUS, 0, TELEPORT_RADIUS);
+            BlockPos pos = UtilCoordinates.INSTANCE.getRandomNeighbour(owner.getPosition(), TELEPORT_RADIUS, 0, TELEPORT_RADIUS);
             teleported = safeTeleport(pos);
             if (!teleported) {
-                pos = UtilCoordinates.findPlaceToStand(pos, minion.world, TELEPORT_RADIUS);
+                pos = UtilCoordinates.INSTANCE.findPlaceToStand(pos, minion.world, TELEPORT_RADIUS);
                 teleported = safeTeleport(pos);
             }
         }

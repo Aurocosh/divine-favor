@@ -26,9 +26,9 @@ public class PotionChillingPresence extends ModPotion {
         int wolfsToSpawn = UtilRandom.nextInt(ConfigPresence.chillingPresence.minWolfsToSpawn, ConfigPresence.chillingPresence.maxWolfsToSpawn);
         for (int i = 0; i < wolfsToSpawn; i++) {
             BlockPos position = livingBase.getPosition();
-            BlockPos spawnPos = UtilCoordinates.getRandomNeighbour(position, spawnRadius, 0, spawnRadius);
+            BlockPos spawnPos = UtilCoordinates.INSTANCE.getRandomNeighbour(position, spawnRadius, 0, spawnRadius);
             World world = livingBase.world;
-            spawnPos = UtilCoordinates.findPlaceToStand(spawnPos, world, spawnRadius);
+            spawnPos = UtilCoordinates.INSTANCE.findPlaceToStand(spawnPos, world, spawnRadius);
             EntityDirewolf entityDirewolf = new EntityDirewolf(world);
             entityDirewolf.setLocationAndAngles(spawnPos.getX(), spawnPos.getY(), spawnPos.getZ(), 0, 0.0F);
             world.spawnEntity(entityDirewolf);

@@ -46,7 +46,7 @@ public class SpellTalismanPiercingInferno extends ItemSpellTalisman {
             return world.isAirBlock(pos.offset(facing));
         };
 
-        List<BlockPos> piercingShape = UtilCoordinates.floodFill(Collections.singletonList(context.pos), expansionDirs, predicate, blocksToBreak);
+        List<BlockPos> piercingShape = UtilCoordinates.INSTANCE.floodFill(Collections.singletonList(context.pos), expansionDirs, predicate::test, blocksToBreak);
         int shapeSize = piercingShape.size();
         blocksToBreak -= shapeSize;
 

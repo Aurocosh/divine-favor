@@ -32,7 +32,7 @@ public class SpellTalismanFrostWave extends ItemSpellTalisman {
         EntityPlayer player = context.player;
         Vec3d origin = player.getPositionVector();
 
-        AxisAlignedBB alignedBB = UtilCoordinates.getBoundingBox(origin, ConfigSpells.frostWave.radius);
+        AxisAlignedBB alignedBB = UtilCoordinates.INSTANCE.getBoundingBox(origin, ConfigSpells.frostWave.radius);
         List<EntityLivingBase> list = world.getEntitiesWithinAABB(EntityLivingBase.class, alignedBB, e -> e != player && e != null && origin.squareDistanceTo(e.getPositionVector()) <= RADIUS_SQ);
 
         for (EntityLivingBase entity : list) {

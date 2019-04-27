@@ -28,7 +28,7 @@ public class SpellTalismanFlood extends ItemSpellTalisman {
     @Override
     protected void performActionServer(TalismanContext context) {
         World world = context.world;
-        List<BlockPos> posList = UtilCoordinates.getBlocksInSphere(context.pos, ConfigSpells.flood.radius);
+        List<BlockPos> posList = UtilCoordinates.INSTANCE.getBlocksInSphere(context.pos, ConfigSpells.flood.radius);
         posList = UtilList.select(posList, new MaterialPredicate(world, Material.WATER));
         posList = UtilList.select(posList, new PredicateWrapper<>(world::getBlockState, state -> state.getValue(BlockLiquid.LEVEL) != 0));
 

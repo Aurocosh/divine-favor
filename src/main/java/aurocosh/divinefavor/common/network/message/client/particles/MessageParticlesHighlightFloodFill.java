@@ -33,9 +33,9 @@ public class MessageParticlesHighlightFloodFill extends MessageParticlesHighligh
     @Override
     @SideOnly(Side.CLIENT)
     protected List<BlockPos> getHighlightPositions(EntityPlayer player, Predicate<BlockPos> predicate) {
-        BlockPos blockPos = UtilCoordinates.findPosition(this.position, floodLimit, pos -> player.world.isAirBlock(pos), pos -> pos.offset(facing));
+        BlockPos blockPos = UtilCoordinates.INSTANCE.findPosition(this.position, floodLimit, pos -> player.world.isAirBlock(pos), pos -> pos.offset(facing));
         if(blockPos == null)
             return new ArrayList<>(0);
-        return UtilCoordinates.floodFill(Collections.singletonList(blockPos), BlockPosConstants.DIRECT_NEIGHBOURS, predicate, floodLimit);
+        return UtilCoordinates.INSTANCE.floodFill(Collections.singletonList(blockPos), BlockPosConstants.DIRECT_NEIGHBOURS, predicate::test, floodLimit);
     }
 }

@@ -31,7 +31,7 @@ public class ArrowTalismanExtinguishFire extends ItemArrowTalisman {
     protected boolean performActionServer(EntityLivingBase target, EntityLivingBase shooter, EntitySpellArrow spellArrow, BlockPos blockPos, EnumFacing sideHit) {
         World world = spellArrow.world;
 
-        List<BlockPos> posList = UtilCoordinates.getBlocksInSphere(blockPos, ConfigArrow.extinguishFire.radius);
+        List<BlockPos> posList = UtilCoordinates.INSTANCE.getBlocksInSphere(blockPos, ConfigArrow.extinguishFire.radius);
         posList = UtilList.select(posList, new BlockPredicate(world, Blocks.FIRE));
 
         IBlockState defaultState = Blocks.AIR.getDefaultState();

@@ -10,30 +10,26 @@ import aurocosh.divinefavor.common.lib.wrapper.BlockPredicate
 import aurocosh.divinefavor.common.spirit.base.ModSpirit
 import aurocosh.divinefavor.common.util.UtilBlock
 import aurocosh.divinefavor.common.util.UtilCoordinates
-import net.minecraft.block.Block
 import net.minecraft.init.Blocks
 import net.minecraft.util.math.BlockPos
-import net.minecraft.util.math.Vec3i
 import java.util.*
-import java.util.function.Predicate
 
 class SpellTalismanIceSurface(name: String, spirit: ModSpirit, favorCost: Int, options: EnumSet<SpellOptions>) : ItemSpellTalisman(name, spirit, favorCost, options) {
 
     override fun performActionServer(context: TalismanContext) {
         val world = context.world
 
-        val waterPredicate = BlockPredicate(world, Predicate<Block> { UtilBlock.isWater(it) })
-        val airPredicate = BlockAreaPredicate(world, Blocks.AIR, BlockPosConstants.DIRECT_NEIGHBOURS, 1)
-        val predicate = waterPredicate.and(airPredicate)::test
+        val waterPredicate = BlockPredicate(world) { UtilBlock.isWater(it) }::test
+        val airPredicate = BlockAreaPredicate(world, Blocks.AIR, BlockPosConstants.DIRECT_NEIGHBOURS, 1)::test
+        val predicate = {pos : BlockPos -> waterPredicate.invoke(pos) && airPredicate.invoke(pos)};
 
-        var posList = UtilCoordinates.getBlocksInSphere(context.pos, ConfigSpells.iceSurface.radius)
+        val spherePosList = UtilCoordinates.getBlocksInSphere(context.pos, ConfigSpells.iceSurface.radius)
 
-
-        posList = posList.filter(predicate)
-        posList = UtilCoordinates.floodFill(posList, BlockPosConstants.DIRECT_NEIGHBOURS, predicate, ConfigSpells.iceSurface.floodLimit)
+        var posToFrees = spherePosList.filter(predicate)
+        posToFrees = UtilCoordinates.floodFill(posToFrees, BlockPosConstants.DIRECT_NEIGHBOURS, predicate, ConfigSpells.iceSurface.floodLimit)
 
         val state = Blocks.ICE.defaultState
-        for (pos in posList)
+        for (pos in posToFrees)
             UtilBlock.replaceBlock(context.player, world, pos, state)
     }
 }
