@@ -5,12 +5,13 @@ import aurocosh.divinefavor.common.constants.BlockPosConstants
 import aurocosh.divinefavor.common.item.talismans.spell.base.ItemSpellTalisman
 import aurocosh.divinefavor.common.item.talismans.spell.base.SpellOptions
 import aurocosh.divinefavor.common.item.talismans.spell.base.TalismanContext
+import aurocosh.divinefavor.common.lib.extensions.getBlock
 import aurocosh.divinefavor.common.lib.wrapper.AreaPredicate
 import aurocosh.divinefavor.common.lib.wrapper.ConvertingPredicate
 import aurocosh.divinefavor.common.spirit.base.ModSpirit
 import aurocosh.divinefavor.common.util.UtilBlock
 import aurocosh.divinefavor.common.util.UtilCoordinates
-import aurocosh.divinefavor.common.util.UtilPredicateKot
+import aurocosh.divinefavor.common.util.UtilPredicate
 import net.minecraft.init.Blocks
 import java.util.*
 
@@ -21,7 +22,7 @@ class SpellTalismanIceSurface(name: String, spirit: ModSpirit, favorCost: Int, o
 
         val waterPredicate = ConvertingPredicate(world::getBlock, UtilBlock::isWater)
         val airPredicate = AreaPredicate(world::getBlock, Blocks.AIR::equals, BlockPosConstants.DIRECT_NEIGHBOURS, 1)
-        val predicate = UtilPredicateKot.and(waterPredicate::invoke, airPredicate::invoke)
+        val predicate = UtilPredicate.and(waterPredicate::invoke, airPredicate::invoke)
 
         val spherePoints = UtilCoordinates.getBlocksInSphere(context.pos, ConfigSpells.iceSurface.radius)
         val startingPoints = spherePoints.filter(predicate)
