@@ -5,14 +5,15 @@ import aurocosh.divinefavor.common.config.common.ConfigSpells;
 import aurocosh.divinefavor.common.item.talismans.spell.base.ItemSpellTalisman;
 import aurocosh.divinefavor.common.item.talismans.spell.base.SpellOptions;
 import aurocosh.divinefavor.common.item.talismans.spell.base.TalismanContext;
-import aurocosh.divinefavor.common.network.message.client.particles.MessageParticlesHeatWave;
+import aurocosh.divinefavor.common.network.message.client.particles.MessageParticlesWave;
 import aurocosh.divinefavor.common.spirit.base.ModSpirit;
 import aurocosh.divinefavor.common.util.UtilBlock;
+import aurocosh.divinefavor.common.util.UtilCoordinates;
 import aurocosh.divinefavor.common.util.UtilRandom;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.DamageSource;
+import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
@@ -30,14 +31,14 @@ public class SpellTalismanHeatWave extends ItemSpellTalisman {
 
     @Override
     protected void performActionServer(TalismanContext context) {
-        double radius = ConfigSpells.heatWave.radius;
         World world = context.world;
         EntityPlayer player = context.player;
         BlockPos origin = player.getPosition();
-        AxisAlignedBB axis = new AxisAlignedBB(origin.getX() - radius, origin.getY() - radius, origin.getZ() - radius, origin.getX() + radius, origin.getY() + radius, origin.getZ() + radius);
-        List<Entity> list = world.getEntitiesWithinAABB(EntityLivingBase.class, axis, e -> e != player && e != null && e.getDistanceSq(origin) <= RADIUS_SQ);
 
-        for (Entity entity : list) {
+        AxisAlignedBB alignedBB = UtilCoordinates.getBoundingBox(origin, ConfigSpells.heatWave.radius);
+        List<EntityLivingBase> list = world.getEntitiesWithinAABB(EntityLivingBase.class, alignedBB, e -> e != player && e != null && e.getDistanceSq(origin) <= RADIUS_SQ);
+
+        for (EntityLivingBase entity : list) {
             entity.attackEntityFrom(DamageSource.ON_FIRE, ConfigSpells.heatWave.damage);
 
             if (UtilRandom.rollDice(ConfigSpells.heatWave.chanceToSetEnemyOnFire))
@@ -47,6 +48,6 @@ public class SpellTalismanHeatWave extends ItemSpellTalisman {
         }
 
         Vec3d positionEyes = player.getPositionEyes(0);
-        new MessageParticlesHeatWave(positionEyes).sendToAllAround(world, player.getPosition(), ConfigGeneral.particleRadius);
+        new MessageParticlesWave(EnumParticleTypes.FLAME, positionEyes).sendToAllAround(world, player.getPosition(), ConfigGeneral.particleRadius);
     }
 }
