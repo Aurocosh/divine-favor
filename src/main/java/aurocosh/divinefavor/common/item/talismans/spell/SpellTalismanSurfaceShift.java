@@ -18,7 +18,7 @@ public class SpellTalismanSurfaceShift extends ItemSpellTalisman {
 
     @Override
     protected void performActionServer(TalismanContext context) {
-        BlockPos targetPos = UtilCoordinates.findPlaceToTeleportAbove(context.pos, context.world, ConfigSpells.surfaceShift.maxDistance);
+        BlockPos targetPos = UtilCoordinates.INSTANCE.findPlaceToTeleportAbove(context.pos, context.world, ConfigSpells.surfaceShift.maxDistance);
         if (targetPos != null)
             UtilEntity.teleport(context.player, targetPos);
     }

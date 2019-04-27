@@ -49,8 +49,8 @@ public class NeblazePunishment extends SpiritPunishment {
 
     private boolean spawnMob(World world, BlockPos pos) {
         int spawnRadius = ConfigPunishments.neblaze.spawnRadius;
-        BlockPos spawnPos = UtilCoordinates.getRandomNeighbour(pos, spawnRadius, 0, spawnRadius);
-        spawnPos = UtilCoordinates.findPlaceToStand(spawnPos, world, spawnRadius);
+        BlockPos spawnPos = UtilCoordinates.INSTANCE.getRandomNeighbour(pos, spawnRadius, 0, spawnRadius);
+        spawnPos = UtilCoordinates.INSTANCE.findPlaceToStand(spawnPos, world, spawnRadius);
         if (spawnPos != null && possibleEnemies.size() > 0) {
             Class<? extends Entity> clazz = possibleEnemies.getRandom();
             return UtilEntity.spawnEntity(world, spawnPos, clazz);
@@ -66,7 +66,7 @@ public class NeblazePunishment extends SpiritPunishment {
 
     private void igniteBlock(EntityPlayer player, World world, BlockPos center) {
         int ignitionRadius = ConfigPunishments.neblaze.ignitionRadius;
-        BlockPos ignitionPos = UtilCoordinates.getRandomBlockInRange(center, ignitionRadius, BLOCK_SEARCH_LIMIT, pos -> !world.isAirBlock(pos));
+        BlockPos ignitionPos = UtilCoordinates.INSTANCE.getRandomBlockInRange(center, ignitionRadius, BLOCK_SEARCH_LIMIT, pos -> !world.isAirBlock(pos));
         if (ignitionPos == null)
             return;
 

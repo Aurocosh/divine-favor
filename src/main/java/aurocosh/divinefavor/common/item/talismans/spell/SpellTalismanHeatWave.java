@@ -35,7 +35,7 @@ public class SpellTalismanHeatWave extends ItemSpellTalisman {
         EntityPlayer player = context.player;
         BlockPos origin = player.getPosition();
 
-        AxisAlignedBB alignedBB = UtilCoordinates.getBoundingBox(origin, ConfigSpells.heatWave.radius);
+        AxisAlignedBB alignedBB = UtilCoordinates.INSTANCE.getBoundingBox(origin, ConfigSpells.heatWave.radius);
         List<EntityLivingBase> list = world.getEntitiesWithinAABB(EntityLivingBase.class, alignedBB, e -> e != player && e != null && e.getDistanceSq(origin) <= RADIUS_SQ);
 
         for (EntityLivingBase entity : list) {

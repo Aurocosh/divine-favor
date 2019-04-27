@@ -33,7 +33,7 @@ public class ArrowTalismanIceBreaker extends ItemArrowTalisman {
         World world = spellArrow.world;
 
         BlockPredicate predicate = new BlockPredicate(world, UtilBlock::isIce);
-        List<BlockPos> posList = UtilCoordinates.floodFill(Collections.singletonList(blockPos), BlockPosConstants.DIRECT_AND_DIAGONAL, predicate, limit);
+        List<BlockPos> posList = UtilCoordinates.INSTANCE.floodFill(Collections.singletonList(blockPos), BlockPosConstants.DIRECT_AND_DIAGONAL, predicate::test, limit);
 
         for (BlockPos pos : posList)
             UtilBlock.removeBlock((EntityPlayer) shooter, world, ItemStack.EMPTY, pos, true, false, false);

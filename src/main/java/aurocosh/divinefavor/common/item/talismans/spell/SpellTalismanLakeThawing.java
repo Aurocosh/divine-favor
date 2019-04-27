@@ -34,9 +34,9 @@ public class SpellTalismanLakeThawing extends ItemSpellTalisman {
         Predicate<BlockPos> airPredicate = new BlockAreaPredicate(world, block -> block != Blocks.AIR, neighbours, neighbours.size());
         Predicate<BlockPos> predicate = icePredicate.and(airPredicate);
 
-        List<BlockPos> posList = UtilCoordinates.getBlocksInSphere(context.pos, ConfigSpells.lakeThawing.radius);
+        List<BlockPos> posList = UtilCoordinates.INSTANCE.getBlocksInSphere(context.pos, ConfigSpells.lakeThawing.radius);
         posList = UtilList.select(posList, predicate);
-        posList = UtilCoordinates.floodFill(posList, BlockPosConstants.DIRECT_NEIGHBOURS, predicate, ConfigSpells.lakeThawing.floodLimit);
+        posList = UtilCoordinates.INSTANCE.floodFill(posList, BlockPosConstants.DIRECT_NEIGHBOURS, predicate::test, ConfigSpells.lakeThawing.floodLimit);
 
         IBlockState state = Blocks.WATER.getDefaultState();
         for (BlockPos pos : posList)

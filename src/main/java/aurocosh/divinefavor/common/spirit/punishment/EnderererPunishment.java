@@ -17,7 +17,7 @@ public class EnderererPunishment extends SpiritPunishment {
     @Override
     public void execute(EntityPlayer player, World world, BlockPos pos, IBlockState state, MultiBlockInstance instance) {
         int radius = ConfigPunishments.endererer.playerTeleportRadius;
-        BlockPos destination = UtilCoordinates.getRandomNeighbourSafe(pos, radius, radius, radius);
+        BlockPos destination = UtilCoordinates.INSTANCE.getRandomNeighbourSafe(pos, radius, radius, radius);
         UtilEntity.teleport(player, destination);
 
         teleportPartsOfAltar(player, world, instance);
@@ -36,7 +36,7 @@ public class EnderererPunishment extends SpiritPunishment {
         if (!(world.isAirBlock(position) || UtilBlock.canBreakBlock(player, world, position, false)))
             return;
         int blockTeleportRadius = ConfigPunishments.endererer.blockTeleportRadius;
-        BlockPos destination = UtilCoordinates.getRandomNeighbourSafe(position, blockTeleportRadius, blockTeleportRadius, blockTeleportRadius);
+        BlockPos destination = UtilCoordinates.INSTANCE.getRandomNeighbourSafe(position, blockTeleportRadius, blockTeleportRadius, blockTeleportRadius);
         if (!(world.isAirBlock(destination) || UtilBlock.canBreakBlock(player, world, destination, false)))
             return;
         IBlockState positionState = world.getBlockState(position);

@@ -24,7 +24,7 @@ public class ArrowTalismanIncendiaryArrow extends ItemArrowTalisman {
 
     @Override
     protected boolean performActionServer(EntityLivingBase target, EntityLivingBase shooter, EntitySpellArrow spellArrow, BlockPos blockPos, EnumFacing sideHit) {
-        List<BlockPos> posList = UtilCoordinates.getBlocksInSphere(spellArrow.getPosition(), ConfigArrow.incendiaryArrow.radius);
+        List<BlockPos> posList = UtilCoordinates.INSTANCE.getBlocksInSphere(spellArrow.getPosition(), ConfigArrow.incendiaryArrow.radius);
         posList.forEach(pos -> UtilBlock.ignite((EntityPlayer) shooter, spellArrow.world, pos));
         return true;
     }

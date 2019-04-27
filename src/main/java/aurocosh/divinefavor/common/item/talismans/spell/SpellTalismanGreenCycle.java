@@ -32,7 +32,7 @@ public class SpellTalismanGreenCycle extends ItemSpellTalisman {
         EntityPlayer player = context.player;
         ItemStack stack = player.getHeldItem(context.hand);
 
-        List<BlockPos> posList = UtilCoordinates.getBlocksInSphere(player.getPosition(), ConfigSpells.greenCycle.radius);
+        List<BlockPos> posList = UtilCoordinates.INSTANCE.getBlocksInSphere(player.getPosition(), ConfigSpells.greenCycle.radius);
         List<BlockPos> plantList = UtilList.select(posList, element -> isValidCrop(element, world));
         for (BlockPos pos : plantList)
             UtilBlock.removeBlockAndReplant(player, world, stack, pos, false, false);

@@ -53,7 +53,7 @@ public class SpellTalismanNetherSurge extends ItemSpellTalisman {
     @Override
     protected void performActionServer(TalismanContext context) {
         int blocksSelect = UtilRandom.nextInt(ConfigSpells.netherSurge.minBlocksToReplace, ConfigSpells.netherSurge.maxBlocksToReplace);
-        List<BlockPos> blocksToReplace = UtilCoordinates.getRandomNeighbours(context.pos, blocksSelect, ConfigSpells.netherSurge.minNeighboursToAdd, ConfigSpells.netherSurge.maxNeighboursToAdd, CYCLE_LIMIT, pos -> true);
+        List<BlockPos> blocksToReplace = UtilCoordinates.INSTANCE.getRandomNeighbours(context.pos, blocksSelect, ConfigSpells.netherSurge.minNeighboursToAdd, ConfigSpells.netherSurge.maxNeighboursToAdd, CYCLE_LIMIT, pos -> true);
 
         for (BlockPos pos : blocksToReplace)
             UtilBlock.replaceBlock(context.player, context.world, pos, possibleBlocks.getRandom());
@@ -65,8 +65,8 @@ public class SpellTalismanNetherSurge extends ItemSpellTalisman {
 
     private void spawnNetherMob(TalismanContext context) {
         int spawnRadius = ConfigSpells.netherSurge.spawnRadius;
-        BlockPos spawnPos = UtilCoordinates.getRandomNeighbour(context.pos, spawnRadius, 0, spawnRadius);
-        spawnPos = UtilCoordinates.findPlaceToStand(spawnPos, context.world, spawnRadius);
+        BlockPos spawnPos = UtilCoordinates.INSTANCE.getRandomNeighbour(context.pos, spawnRadius, 0, spawnRadius);
+        spawnPos = UtilCoordinates.INSTANCE.findPlaceToStand(spawnPos, context.world, spawnRadius);
         if (spawnPos == null)
             return;
 

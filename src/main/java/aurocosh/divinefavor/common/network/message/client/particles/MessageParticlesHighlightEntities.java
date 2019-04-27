@@ -58,7 +58,7 @@ public class MessageParticlesHighlightEntities extends WrappedClientMessage {
         if (predicate == null)
             return;
 
-        AxisAlignedBB boundingBox = UtilCoordinates.getBoundingBox(player.getPositionVector(), radius);
+        AxisAlignedBB boundingBox = UtilCoordinates.INSTANCE.getBoundingBox(player.getPositionVector(), radius);
         List<EntityLivingBase> livingBaseList = world.getEntitiesWithinAABB(EntityLivingBase.class, boundingBox, predicate::test);
         List<Vec3d> vec3dList = UtilList.process(livingBaseList, livingBase -> livingBase.getPositionEyes(0));
 

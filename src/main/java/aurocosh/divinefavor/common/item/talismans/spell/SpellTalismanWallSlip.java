@@ -22,7 +22,7 @@ public class SpellTalismanWallSlip extends ItemSpellTalisman {
         EnumFacing facing = context.facing;
         if (facing == EnumFacing.DOWN || facing == EnumFacing.UP)
             return;
-        BlockPos pos = UtilCoordinates.findPlaceToTeleport(context.pos.down(), context.world, facing.getOpposite(), ConfigSpells.wallSlip.maxDistance, false);
+        BlockPos pos = UtilCoordinates.INSTANCE.findPlaceToTeleport(context.pos.down(), context.world, facing.getOpposite(), ConfigSpells.wallSlip.maxDistance, false);
         if (pos != null)
             UtilEntity.teleport(context.player, pos.down());
     }

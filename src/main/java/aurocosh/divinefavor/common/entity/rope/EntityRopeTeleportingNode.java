@@ -61,7 +61,7 @@ public class EntityRopeTeleportingNode extends EntityRopeNodeBase {
         EntityRopeNodeBase lastConnectedNode = getLastConnectedNode(this);
         if (lastConnectedNode == this)
             return;
-        BlockPos placeToStand = UtilCoordinates.findPlaceToStand(lastConnectedNode.getPosition(), world, 8);
+        BlockPos placeToStand = UtilCoordinates.INSTANCE.findPlaceToStand(lastConnectedNode.getPosition(), world, 8);
         UtilEntity.teleport(livingBase, placeToStand);
     }
 }

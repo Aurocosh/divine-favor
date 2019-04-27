@@ -41,7 +41,7 @@ public class PotionHovering extends ModPotionToggle {
 
         boolean allowFlying = currentPosition.equals(previousPosition);
         if (!allowFlying) {
-            BlockPos pos = UtilCoordinates.findPosition(livingBase.getPosition(), 10, (blockPos) -> world.getBlockState(blockPos).isSideSolid(world, blockPos, EnumFacing.UP), BlockPos::down);
+            BlockPos pos = UtilCoordinates.INSTANCE.findPosition(livingBase.getPosition(), 10, (blockPos) -> world.getBlockState(blockPos).isSideSolid(world, blockPos, EnumFacing.UP), BlockPos::down);
             allowFlying = pos != null;
         }
 

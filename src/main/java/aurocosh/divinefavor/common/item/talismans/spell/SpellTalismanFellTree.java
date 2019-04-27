@@ -36,7 +36,7 @@ public class SpellTalismanFellTree extends ItemSpellTalisman {
     private List<BlockPos> detectTree(TalismanContext context) {
         World world = context.world;
         List<BlockPos> start = Collections.singletonList(context.pos);
-        List<BlockPos> logs = UtilCoordinates.floodFill(start, BlockPosConstants.DIRECT_NEIGHBOURS, blockPos -> isWood(world, blockPos), ConfigSpells.fellTree.maxLogsBroken);
+        List<BlockPos> logs = UtilCoordinates.INSTANCE.floodFill(start, BlockPosConstants.DIRECT_NEIGHBOURS, blockPos -> isWood(world, blockPos), ConfigSpells.fellTree.maxLogsBroken);
         if (logs.isEmpty())
             return logs;
 
@@ -45,7 +45,7 @@ public class SpellTalismanFellTree extends ItemSpellTalisman {
             Block block = blockState.getBlock();
             return block.isWood(world, blockPos) || block.isLeaves(blockState, world, blockPos);
         };
-        List<BlockPos> leaves = UtilCoordinates.floodFill(logs, BlockPosConstants.DIRECT_NEIGHBOURS, predicate, ConfigSpells.fellTree.minLeafCount);
+        List<BlockPos> leaves = UtilCoordinates.INSTANCE.floodFill(logs, BlockPosConstants.DIRECT_NEIGHBOURS, predicate::test, ConfigSpells.fellTree.minLeafCount);
         if (leaves.size() < ConfigSpells.fellTree.minLeafCount)
             logs.clear();
         return logs;

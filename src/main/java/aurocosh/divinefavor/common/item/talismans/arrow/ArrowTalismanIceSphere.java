@@ -30,7 +30,7 @@ public class ArrowTalismanIceSphere extends ItemArrowTalisman {
     protected boolean performActionServer(EntityLivingBase target, EntityLivingBase shooter, EntitySpellArrow spellArrow, BlockPos blockPos, EnumFacing sideHit) {
         World world = spellArrow.world;
 
-        List<BlockPos> sphereOutline = UtilCoordinates.getSphereOutline(blockPos, ConfigArrow.iceSphereArrow.internalRadius, ConfigArrow.iceSphereArrow.externalRadius);
+        List<BlockPos> sphereOutline = UtilCoordinates.INSTANCE.getSphereOutline(blockPos, ConfigArrow.iceSphereArrow.internalRadius, ConfigArrow.iceSphereArrow.externalRadius);
         sphereOutline = UtilList.select(sphereOutline, pos -> UtilBlock.isAirOrReplaceable(world, pos));
 
         IBlockState defaultState = Blocks.ICE.getDefaultState();

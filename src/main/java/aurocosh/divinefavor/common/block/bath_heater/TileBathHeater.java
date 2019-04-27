@@ -112,7 +112,7 @@ public class TileBathHeater extends TileEntity implements ITickable, IAreaWatche
         if (initialized)
             return;
         initialized = true;
-        area.addPositions(UtilCoordinates.getBlocksInRadius(pos, RADIUS_OF_EFFECT, 0, RADIUS_OF_EFFECT));
+        area.addPositions(UtilCoordinates.INSTANCE.getBlocksInRadius(pos, RADIUS_OF_EFFECT, 0, RADIUS_OF_EFFECT));
         WorldAreaWatcher.registerWatcher(this);
     }
 
@@ -128,7 +128,7 @@ public class TileBathHeater extends TileEntity implements ITickable, IAreaWatche
         start.add(posVector.add(BlockPosConstants.NORTH));
         start.add(posVector.add(BlockPosConstants.SOUTH));
 
-        List<BlockPos> waterPosList = UtilCoordinates.floodFill(start, BlockPosConstants.HORIZONTAL_DIRECT, this::isWater, 50);
+        List<BlockPos> waterPosList = UtilCoordinates.INSTANCE.floodFill(start, BlockPosConstants.HORIZONTAL_DIRECT, this::isWater, 50);
         UtilList.filterList(waterPosList, area::isApartOfArea);
         waterPositions.addAll(waterPosList);
 
