@@ -3,7 +3,9 @@ package aurocosh.divinefavor.common.util;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 
 import java.util.*;
@@ -172,5 +174,13 @@ public class UtilCoordinates {
             }
         }
         return result;
+    }
+
+    public static AxisAlignedBB getBoundingBox(BlockPos origin, double radius) {
+        return new AxisAlignedBB(origin.getX() - radius, origin.getY() - radius, origin.getZ() - radius, origin.getX() + radius, origin.getY() + radius, origin.getZ() + radius);
+    }
+
+    public static AxisAlignedBB getBoundingBox(Vec3d origin, double radius) {
+        return new AxisAlignedBB(origin.x - radius, origin.y - radius, origin.z - radius, origin.x + radius, origin.y + radius, origin.z + radius);
     }
 }

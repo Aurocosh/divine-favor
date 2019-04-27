@@ -49,6 +49,7 @@ public final class ModSpellTalismans {
     public static ItemSpellTalisman flood;
     public static ItemSpellTalisman focused_fury;
     public static ItemSpellTalisman follow;
+    public static ItemSpellTalisman frost_wave;
     public static ItemSpellTalisman gills;
     public static ItemSpellTalisman green_cycle;
     public static ItemSpellTalisman ground_flow;
@@ -131,17 +132,18 @@ public final class ModSpellTalismans {
         crystalline_road = new SpellTalismanModPotion("crystalline_road", ModSpirits.blizrabi, ConfigSpells.crystallineRoad.favorCost, ModPotions.crystalline_road, ConfigSpells.crystallineRoad.duration);
         extreme_buoyancy = new SpellTalismanModPotionToggle("extreme_buoyancy", ModSpirits.blizrabi, ConfigSpells.extremeBuoyancy.favorCost, ModPotions.extreme_buoyancy);
         fins = new SpellTalismanModPotion("fins", ModSpirits.blizrabi, ConfigSpells.fins.favorCost, ModPotions.fins, ConfigSpells.fins.duration);
+        flood = new SpellTalismanFlood("flood", ModSpirits.blizrabi, ConfigSpells.flood.favorCost, SpellOptions.ALL_CAST);
+        frost_wave = new SpellTalismanFrostWave("frost_wave", ModSpirits.blizrabi, ConfigSpells.frostWave.favorCost, SpellOptions.ALL_CAST);
         gills = new SpellTalismanModPotionToggle("gills", ModSpirits.blizrabi, ConfigSpells.gills.favorCost, ModPotions.gills);
         ice_bubble = new SpellTalismanReplacmentBubble("ice_bubble", ModSpirits.blizrabi, ConfigSpells.iceBubble, Blocks.AIR, Blocks.ICE, UtilPredicate.or(UtilBlock::isWater, UtilBlock::isIce));
+        ice_carving = new SpellTalismanCarving("ice_carving", ModSpirits.blizrabi, ConfigSpells.iceCarving.favorCost, SpellOptions.USE_CAST, Blocks.ICE, UtilBlock::isWater);
+        ice_surface = new SpellTalismanIceSurface("ice_surface", ModSpirits.blizrabi, ConfigSpells.iceSurface.favorCost, SpellOptions.ALL_CAST);
         instant_dive = new SpellTalismanModPotionToggle("instant_dive", ModSpirits.blizrabi, ConfigSpells.instandDive.favorCost, ModPotions.instant_dive);
+        lake_thawing = new SpellTalismanLakeThawing("lake_thawing", ModSpirits.blizrabi, ConfigSpells.lakeThawing.favorCost, SpellOptions.ALL_CAST);
         obsidian_road = new SpellTalismanModPotion("obsidian_road", ModSpirits.blizrabi, ConfigSpells.obsidianRoad.favorCost, ModPotions.obsidian_road, ConfigSpells.obsidianRoad.duration);
         snowball_throw = new SpellTalismanSnowballThrow("snowball_throw", ModSpirits.blizrabi, ConfigSpells.snowballThrow.favorCost, SpellOptions.ALL_CAST);
         vitalize = new SpellTalismanVitalize("vitalize", ModSpirits.blizrabi, ConfigSpells.vitalize.favorCost, SpellOptions.ALL_CAST);
         winter_breath = new SpellTalismanWinterBreath("winter_breath", ModSpirits.blizrabi, ConfigSpells.winterBreath.favorCost, SpellOptions.ALL_CAST);
-        flood = new SpellTalismanFlood("flood", ModSpirits.blizrabi, ConfigSpells.flood.favorCost, SpellOptions.ALL_CAST);
-        ice_surface = new SpellTalismanIceSurface("ice_surface", ModSpirits.blizrabi, ConfigSpells.iceSurface.favorCost, SpellOptions.ALL_CAST);
-        ice_carving = new SpellTalismanCarving("ice_carving", ModSpirits.blizrabi, ConfigSpells.iceCarving.favorCost, SpellOptions.USE_CAST, Blocks.ICE, UtilBlock::isWater);
-        lake_thawing = new SpellTalismanLakeThawing("lake_thawing", ModSpirits.blizrabi, ConfigSpells.lakeThawing.favorCost, SpellOptions.ALL_CAST);
 
         // endererer
         blink = new SpellTalismanBlink("blink", ModSpirits.endererer, ConfigSpells.blink.favorCost, SpellOptions.ALL_CAST, true, ConfigSpells.blink.distance);

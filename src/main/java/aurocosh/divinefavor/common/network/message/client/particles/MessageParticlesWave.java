@@ -10,13 +10,15 @@ import net.minecraft.util.math.Vec3d;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class MessageParticlesHeatWave extends WrappedClientMessage {
+public class MessageParticlesWave extends WrappedClientMessage {
+    public EnumParticleTypes particleType;
     public Vec3d position;
 
-    public MessageParticlesHeatWave() {
+    public MessageParticlesWave() {
     }
 
-    public MessageParticlesHeatWave(Vec3d position) {
+    public MessageParticlesWave(EnumParticleTypes particleType, Vec3d position) {
+        this.particleType = particleType;
         this.position = position;
     }
 
@@ -31,7 +33,7 @@ public class MessageParticlesHeatWave extends WrappedClientMessage {
             double ySpeed = UtilRandom.nextDouble(-speedRange, speedRange);
             double zSpeed = UtilRandom.nextDouble(-speedRange, speedRange);
 
-            player.world.spawnParticle(EnumParticleTypes.FLAME, position.x, position.y, position.z, xSpeed, ySpeed, zSpeed);
+            player.world.spawnParticle(particleType, position.x, position.y, position.z, xSpeed, ySpeed, zSpeed);
         }
     }
 }

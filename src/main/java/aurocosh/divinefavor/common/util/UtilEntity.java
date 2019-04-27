@@ -161,8 +161,8 @@ public class UtilEntity {
         Vec3d rayEnd = positionEyes.add(entityLook.x * searchDistance, entityLook.y * searchDistance, entityLook.z * searchDistance);
 
         AxisAlignedBB searchBoundingBox = player.getEntityBoundingBox().expand(entityLook.x * searchDistance, entityLook.y * searchDistance, entityLook.z * searchDistance).grow(1.0D, 1.0D, 1.0D);
-        Predicate<T> predicate = Predicates.and(EntitySelectors.NOT_SPECTATING, e -> (e != null) && (e != player) && e.canBeCollidedWith() && (ignoreMount || (e.getLowestRidingEntity() == player.getLowestRidingEntity())));
-        List<T> entities = player.world.getEntitiesWithinAABB(clazz, searchBoundingBox, predicate);
+        Predicate<T> predicate = Predicates.and(EntitySelectors.NOT_SPECTATING::apply, e -> (e != null) && (e != player) && e.canBeCollidedWith() && (ignoreMount || (e.getLowestRidingEntity() == player.getLowestRidingEntity())));
+        List<T> entities = player.world.getEntitiesWithinAABB(clazz, searchBoundingBox, predicate::test);
 
         T pointedEntity = null;
         double hitDistance = searchDistance;

@@ -66,6 +66,8 @@ public class ConfigSpells {
     public static FocusedFury focusedFury = new FocusedFury();
     @Config.Name("Follow")
     public static Follow follow = new Follow();
+    @Config.Name("Frost wave")
+    public static FrostWave frostWave = new FrostWave();
     @Config.Name("Gills")
     public static Gills gills = new Gills();
     @Config.Name("Green cycle")
