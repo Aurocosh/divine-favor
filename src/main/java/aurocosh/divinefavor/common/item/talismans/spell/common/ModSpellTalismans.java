@@ -6,12 +6,11 @@ import aurocosh.divinefavor.common.entity.minions.*;
 import aurocosh.divinefavor.common.item.common.ModItems;
 import aurocosh.divinefavor.common.item.talismans.spell.*;
 import aurocosh.divinefavor.common.item.talismans.spell.base.*;
-import aurocosh.divinefavor.common.item.talismans.spell.SpellTalismanReplacmentBubble;
 import aurocosh.divinefavor.common.item.talismans.spell.sense.*;
 import aurocosh.divinefavor.common.potions.common.ModPotions;
 import aurocosh.divinefavor.common.spirit.ModSpirits;
 import aurocosh.divinefavor.common.util.UtilBlock;
-import aurocosh.divinefavor.common.util.UtilPredicate;
+import aurocosh.divinefavor.common.util.UtilPredicateKot;
 import net.minecraft.init.Blocks;
 
 import javax.vecmath.Color3f;
@@ -136,7 +135,7 @@ public final class ModSpellTalismans {
         flood = new SpellTalismanFlood("flood", ModSpirits.blizrabi, ConfigSpells.flood.favorCost, SpellOptions.ALL_CAST);
         frost_wave = new SpellTalismanFrostWave("frost_wave", ModSpirits.blizrabi, ConfigSpells.frostWave.favorCost, SpellOptions.ALL_CAST);
         gills = new SpellTalismanModPotionToggle("gills", ModSpirits.blizrabi, ConfigSpells.gills.favorCost, ModPotions.gills);
-        ice_bubble = new SpellTalismanReplacmentBubble("ice_bubble", ModSpirits.blizrabi, ConfigSpells.iceBubble, Blocks.AIR, Blocks.ICE, UtilPredicate.or(UtilBlock::isWater, UtilBlock::isIce));
+        ice_bubble = new SpellTalismanReplacmentBubble("ice_bubble", ModSpirits.blizrabi, ConfigSpells.iceBubble, Blocks.AIR, Blocks.ICE, UtilPredicateKot.Companion.or(UtilBlock::isWater, UtilBlock::isIce));
         ice_carving = new SpellTalismanCarving("ice_carving", ModSpirits.blizrabi, ConfigSpells.iceCarving.favorCost, SpellOptions.USE_CAST, Blocks.ICE, UtilBlock::isWater);
         ice_surface = new SpellTalismanIceSurface("ice_surface", ModSpirits.blizrabi, ConfigSpells.iceSurface.favorCost, SpellOptions.ALL_CAST);
         instant_dive = new SpellTalismanModPotionToggle("instant_dive", ModSpirits.blizrabi, ConfigSpells.instandDive.favorCost, ModPotions.instant_dive);
@@ -185,7 +184,7 @@ public final class ModSpellTalismans {
         infernal_touch = new SpellTalismanInfernalTouch("infernal_touch", ModSpirits.neblaze, 1, SpellOptions.USE_CAST);
         molten_skin = new SpellTalismanMoltenSkin("molten_skin", ModSpirits.neblaze, ConfigSpells.moltenSkin.favorCost, SpellOptions.ALL_CAST);
         nether_surge = new SpellTalismanNetherSurge("nether_surge", ModSpirits.neblaze, ConfigSpells.netherSurge.favorCost, SpellOptions.USE_CAST);
-        obsidian_bubble = new SpellTalismanReplacmentBubble("obsidian_bubble", ModSpirits.blizrabi, ConfigSpells.obsidianBubble, Blocks.AIR, Blocks.OBSIDIAN, UtilPredicate.or(UtilBlock::isLava, block -> block == Blocks.OBSIDIAN));
+        obsidian_bubble = new SpellTalismanReplacmentBubble("obsidian_bubble", ModSpirits.blizrabi, ConfigSpells.obsidianBubble, Blocks.AIR, Blocks.OBSIDIAN, UtilPredicateKot.Companion.or(UtilBlock::isLava, block -> block == Blocks.OBSIDIAN));
         obsidian_carving = new SpellTalismanCarving("obsidian_carving", ModSpirits.blizrabi, ConfigSpells.obsidianCarving.favorCost, SpellOptions.USE_CAST, Blocks.OBSIDIAN, UtilBlock::isLava);
         piercing_inferno = new SpellTalismanPiercingInferno("piercing_inferno", ModSpirits.neblaze, ConfigSpells.piercingInferno.favorCost, SpellOptions.USE_CAST);
         searing_pulse = new SpellTalismanSearingPulse("searing_pulse", ModSpirits.neblaze, ConfigSpells.searingPulse.favorCost, SpellOptions.USE_CAST);

@@ -22,8 +22,8 @@ class SpellTalismanCarving(name: String, spirit: ModSpirit, favorCost: Int, opti
             return
 
         val blocksToFreeze = BlockPosConstants.DIRECT_NEIGHBOURS
-                .map { context.pos.add(it) }
-                .filter { predicate.invoke(world.getBlock(it)) }
+                .map { pos -> context.pos.add(pos) }
+                .filter { pos -> predicate.invoke(world.getBlock(pos)) }
 
         val stateBlock = block.defaultState
         for (pos in blocksToFreeze)
