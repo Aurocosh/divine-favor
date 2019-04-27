@@ -32,7 +32,7 @@ public class MessageParticlesHighlightFloodFill extends MessageParticlesHighligh
 
     @Override
     @SideOnly(Side.CLIENT)
-    protected List<BlockPos> getHighlighPositions(EntityPlayer player, Predicate<BlockPos> predicate) {
+    protected List<BlockPos> getHighlightPositions(EntityPlayer player, Predicate<BlockPos> predicate) {
         BlockPos blockPos = UtilCoordinates.findPosition(this.position, floodLimit, pos -> player.world.isAirBlock(pos), pos -> pos.offset(facing));
         if(blockPos == null)
             return new ArrayList<>(0);

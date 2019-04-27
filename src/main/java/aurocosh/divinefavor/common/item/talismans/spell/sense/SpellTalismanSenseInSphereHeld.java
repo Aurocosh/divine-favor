@@ -1,6 +1,6 @@
 package aurocosh.divinefavor.common.item.talismans.spell.sense;
 
-import aurocosh.divinefavor.common.config.entries.talismans.spell.generic.SenseBlock;
+import aurocosh.divinefavor.common.config.entries.talismans.spell.generic.SenseConfig;
 import aurocosh.divinefavor.common.item.talismans.spell.base.SpellOptions;
 import aurocosh.divinefavor.common.item.talismans.spell.base.TalismanContext;
 import aurocosh.divinefavor.common.spirit.base.ModSpirit;
@@ -18,8 +18,8 @@ import java.util.EnumSet;
 
 public class SpellTalismanSenseInSphereHeld extends SpellTalismanSenseInSphere {
 
-    public SpellTalismanSenseInSphereHeld(String name, ModSpirit spirit, EnumSet<SpellOptions> options, Color3f color3f, SenseBlock senseBlock) {
-        super(name, spirit, options, color3f, senseBlock, SenseBlockPredicate.BLOCK);
+    public SpellTalismanSenseInSphereHeld(String name, ModSpirit spirit, EnumSet<SpellOptions> options, Color3f color3f, SenseConfig senseConfig) {
+        super(name, spirit, options, color3f, senseConfig, SenseBlockPredicate.BLOCK);
     }
 
     @Override

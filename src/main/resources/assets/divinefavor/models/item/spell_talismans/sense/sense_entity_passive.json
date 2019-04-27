@@ -1,0 +1,7 @@
+{
+    "parent": "item/generated",
+    "textures": {		
+        "layer1": "divinefavor:items/talismans/sense/entity_passive",
+        "layer0": "divinefavor:items/talismans/base"
+    }
+}

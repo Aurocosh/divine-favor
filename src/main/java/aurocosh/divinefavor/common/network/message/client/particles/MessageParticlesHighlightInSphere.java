@@ -25,7 +25,7 @@ public class MessageParticlesHighlightInSphere extends MessageParticlesHighlight
 
     @Override
     @SideOnly(Side.CLIENT)
-    protected List<BlockPos> getHighlighPositions(EntityPlayer player, Predicate<BlockPos> predicate) {
+    protected List<BlockPos> getHighlightPositions(EntityPlayer player, Predicate<BlockPos> predicate) {
         List<BlockPos> spherePosList = UtilCoordinates.getBlocksInSphere(position, radius);
         return UtilList.select(spherePosList, predicate);
     }

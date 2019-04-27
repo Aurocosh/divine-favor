@@ -6,9 +6,11 @@ import aurocosh.divinefavor.common.item.talismans.spell.sense.BlockHighlighter;
 import aurocosh.divinefavor.common.item.talismans.spell.sense.SenseBlockPredicate;
 import aurocosh.divinefavor.common.network.base.WrappedClientMessage;
 import aurocosh.divinefavor.common.util.UtilBlock;
+import aurocosh.divinefavor.common.util.UtilList;
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -54,12 +56,13 @@ public abstract class MessageParticlesHighlight extends WrappedClientMessage {
         if (dimensionId != world.provider.getDimension())
             return;
 
-        List<BlockPos> positions = getHighlighPositions(player, predicate);
-        BlockHighlighter.spawnParticles(color3f, maxShift, minShift, particles, world, positions);
+        List<BlockPos> positions = getHighlightPositions(player, predicate);
+        List<Vec3d> vec3dList = UtilList.process(positions, Vec3d::new);
+        BlockHighlighter.spawnParticles(color3f, maxShift, minShift, particles, world, vec3dList);
     }
 
     @SideOnly(Side.CLIENT)
-    protected abstract List<BlockPos> getHighlighPositions(EntityPlayer player, Predicate<BlockPos> predicate);
+    protected abstract List<BlockPos> getHighlightPositions(EntityPlayer player, Predicate<BlockPos> predicate);
 
     @SideOnly(Side.CLIENT)
     private Predicate<BlockPos> getPredicate(World world) {
