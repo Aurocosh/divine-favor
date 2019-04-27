@@ -1,5 +1,6 @@
 package aurocosh.divinefavor.common.item.talismans.spell;
 
+import aurocosh.divinefavor.common.config.common.ConfigSpells;
 import aurocosh.divinefavor.common.constants.BlockPosConstants;
 import aurocosh.divinefavor.common.item.talismans.spell.base.ItemSpellTalisman;
 import aurocosh.divinefavor.common.item.talismans.spell.base.SpellOptions;
@@ -32,9 +33,9 @@ public class SpellTalismanIceSurface extends ItemSpellTalisman {
         Predicate<BlockPos> airPredicate = new BlockAreaPredicate(world, Blocks.AIR, BlockPosConstants.DIRECT_NEIGHBOURS, 1);
         Predicate<BlockPos> predicate = waterPredicate.and(airPredicate);
 
-        List<BlockPos> posList = UtilCoordinates.getBlocksInSphere(context.pos, 3);
+        List<BlockPos> posList = UtilCoordinates.getBlocksInSphere(context.pos, ConfigSpells.iceSurface.radius);
         posList = UtilList.select(posList, predicate);
-        posList = UtilCoordinates.floodFill(posList, BlockPosConstants.DIRECT_NEIGHBOURS, predicate, 100);
+        posList = UtilCoordinates.floodFill(posList, BlockPosConstants.DIRECT_NEIGHBOURS, predicate, ConfigSpells.iceSurface.floodLimit);
 
         IBlockState state = Blocks.ICE.getDefaultState();
         for (BlockPos pos : posList)

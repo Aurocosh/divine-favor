@@ -58,6 +58,7 @@ public final class ModSpellTalismans {
     public static ItemSpellTalisman hellisphere;
     public static ItemSpellTalisman hovering;
     public static ItemSpellTalisman ice_bubble;
+    public static ItemSpellTalisman ice_carving;
     public static ItemSpellTalisman ice_surface;
     public static ItemSpellTalisman ignition;
     public static ItemSpellTalisman infernal_touch;
@@ -137,8 +138,9 @@ public final class ModSpellTalismans {
         vitalize = new SpellTalismanVitalize("vitalize", ModSpirits.blizrabi, ConfigSpells.vitalize.favorCost, SpellOptions.ALL_CAST);
         winter_breath = new SpellTalismanWinterBreath("winter_breath", ModSpirits.blizrabi, ConfigSpells.winterBreath.favorCost, SpellOptions.ALL_CAST);
         flood = new SpellTalismanFlood("flood", ModSpirits.blizrabi, ConfigSpells.flood.favorCost, SpellOptions.ALL_CAST);
-        ice_surface = new SpellTalismanIceSurface("ice_surface", ModSpirits.blizrabi, ConfigSpells.flood.favorCost, SpellOptions.ALL_CAST);
-        lake_thawing = new SpellTalismanLakeThawing("lake_thawing", ModSpirits.blizrabi, ConfigSpells.flood.favorCost, SpellOptions.ALL_CAST);
+        ice_surface = new SpellTalismanIceSurface("ice_surface", ModSpirits.blizrabi, ConfigSpells.iceSurface.favorCost, SpellOptions.ALL_CAST);
+        ice_carving = new SpellTalismanIceCarving("ice_carving", ModSpirits.blizrabi, ConfigSpells.iceCarving.favorCost, SpellOptions.USE_CAST);
+        lake_thawing = new SpellTalismanLakeThawing("lake_thawing", ModSpirits.blizrabi, ConfigSpells.lakeThawing.favorCost, SpellOptions.ALL_CAST);
 
         // endererer
         blink = new SpellTalismanBlink("blink", ModSpirits.endererer, ConfigSpells.blink.favorCost, SpellOptions.ALL_CAST, true, ConfigSpells.blink.distance);

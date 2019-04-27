@@ -1,6 +1,6 @@
 package aurocosh.divinefavor.common.item.talismans.spell.sense;
 
-import aurocosh.divinefavor.common.config.entries.talismans.spell.SenseBlock;
+import aurocosh.divinefavor.common.config.entries.talismans.spell.generic.SenseBlock;
 import aurocosh.divinefavor.common.item.talismans.spell.base.SpellOptions;
 import aurocosh.divinefavor.common.item.talismans.spell.base.TalismanContext;
 import aurocosh.divinefavor.common.spirit.base.ModSpirit;

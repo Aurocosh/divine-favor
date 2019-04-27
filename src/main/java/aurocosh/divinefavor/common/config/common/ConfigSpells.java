@@ -1,6 +1,7 @@
 package aurocosh.divinefavor.common.config.common;
 
 import aurocosh.divinefavor.common.config.entries.talismans.spell.*;
+import aurocosh.divinefavor.common.config.entries.talismans.spell.generic.*;
 import aurocosh.divinefavor.common.constants.ConstMisc;
 import aurocosh.divinefavor.common.util.UtilTick;
 import net.minecraftforge.common.config.Config;
@@ -81,6 +82,8 @@ public class ConfigSpells {
     public static ReplaceSphere hellisphere = new ReplaceSphere();
     @Config.Name("Ice bubble")
     public static ReplacmentBubble iceBubble = new ReplacmentBubble();
+    @Config.Name("Ice carving")
+    public static FavorOnly iceCarving = new FavorOnly(1);
     @Config.Name("Ice surface")
     public static SearchAndFlood iceSurface = new SearchAndFlood(20,3,150);
     @Config.Name("Infernal touch")

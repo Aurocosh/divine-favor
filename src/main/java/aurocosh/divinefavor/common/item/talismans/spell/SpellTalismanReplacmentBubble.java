@@ -1,6 +1,6 @@
 package aurocosh.divinefavor.common.item.talismans.spell;
 
-import aurocosh.divinefavor.common.config.entries.talismans.spell.ReplacmentBubble;
+import aurocosh.divinefavor.common.config.entries.talismans.spell.generic.ReplacmentBubble;
 import aurocosh.divinefavor.common.item.talismans.spell.base.ItemSpellTalisman;
 import aurocosh.divinefavor.common.item.talismans.spell.base.SpellOptions;
 import aurocosh.divinefavor.common.item.talismans.spell.base.TalismanContext;
