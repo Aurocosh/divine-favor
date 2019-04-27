@@ -62,7 +62,7 @@ public class MessageParticlesHighlightEntities extends WrappedClientMessage {
         List<EntityLivingBase> livingBaseList = world.getEntitiesWithinAABB(EntityLivingBase.class, boundingBox, predicate::test);
         List<Vec3d> vec3dList = UtilList.process(livingBaseList, livingBase -> livingBase.getPositionEyes(0));
 
-        BlockHighlighter.spawnParticles(color3f, maxShift, minShift, particles, world, vec3dList);
+        BlockHighlighter.INSTANCE.spawnParticles(color3f, maxShift, minShift, particles, world, vec3dList);
     }
 
     @SideOnly(Side.CLIENT)

@@ -22,3 +22,8 @@ fun World.isLeaves(pos: BlockPos): Boolean {
     val block = blockState.block
     return block.isLeaves(blockState, this, pos)
 }
+
+fun World.isAirOrReplacable(pos: BlockPos): Boolean {
+    return this.isAirBlock(pos) || this.getBlockState(pos).block.isReplaceable(this, pos)
+}
+

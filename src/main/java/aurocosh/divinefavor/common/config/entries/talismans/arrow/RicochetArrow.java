@@ -12,7 +12,7 @@ public class RicochetArrow {
     @Config.Name("Min bounce speed")
     public float minBounceSpeed = 0.3f;
     @Config.Name("Bounce randomness")
-    public float bounceRandomness = 0.3f;
+    public double bounceRandomness = 0.3f;
     @Config.Name("Bounce speed decrease")
     public float bounceSpeedDecrease = 0.75f;
 }

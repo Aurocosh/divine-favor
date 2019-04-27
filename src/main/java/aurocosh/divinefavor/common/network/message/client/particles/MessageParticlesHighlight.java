@@ -58,7 +58,7 @@ public abstract class MessageParticlesHighlight extends WrappedClientMessage {
 
         List<BlockPos> positions = getHighlightPositions(player, predicate);
         List<Vec3d> vec3dList = UtilList.process(positions, Vec3d::new);
-        BlockHighlighter.spawnParticles(color3f, maxShift, minShift, particles, world, vec3dList);
+        BlockHighlighter.INSTANCE.spawnParticles(color3f, maxShift, minShift, particles, world, vec3dList);
     }
 
     @SideOnly(Side.CLIENT)
