@@ -10,24 +10,28 @@ import aurocosh.divinefavor.common.lib.wrapper.ConvertingPredicate
 import aurocosh.divinefavor.common.spirit.base.ModSpirit
 import aurocosh.divinefavor.common.util.UtilBlock
 import aurocosh.divinefavor.common.util.UtilCoordinates
+import aurocosh.divinefavor.common.util.UtilList
 import aurocosh.divinefavor.common.util.UtilPredicateKot
 import net.minecraft.init.Blocks
 import java.util.*
 
-class SpellTalismanIceSurface(name: String, spirit: ModSpirit, favorCost: Int, options: EnumSet<SpellOptions>) : ItemSpellTalisman(name, spirit, favorCost, options) {
+class SpellTalismanLakeThawing(name: String, spirit: ModSpirit, favorCost: Int, options: EnumSet<SpellOptions>) : ItemSpellTalisman(name, spirit, favorCost, options) {
 
     override fun performActionServer(context: TalismanContext) {
         val world = context.world
 
-        val waterPredicate = ConvertingPredicate(world::getBlock, UtilBlock::isWater)
-        val airPredicate = AreaPredicate(world::getBlock, Blocks.AIR::equals, BlockPosConstants.DIRECT_NEIGHBOURS, 1)
-        val predicate = UtilPredicateKot.and(waterPredicate::invoke, airPredicate::invoke)
+        val icePredicate = ConvertingPredicate(world::getBlock, UtilBlock::isIce)
+        val neighbours = UtilList.unite(BlockPosConstants.HORIZONTAL_DIRECT, BlockPosConstants.DOWN)
+        val airPredicate = AreaPredicate(world::getBlock, { block -> block !== Blocks.AIR }, neighbours, neighbours.size)
 
-        val spherePoints = UtilCoordinates.getBlocksInSphere(context.pos, ConfigSpells.iceSurface.radius)
+        val predicate = UtilPredicateKot.and(icePredicate::invoke, airPredicate::invoke)
+
+        val spherePoints = UtilCoordinates.getBlocksInSphere(context.pos, ConfigSpells.lakeThawing.radius)
         val startingPoints = spherePoints.filter(predicate)
-        val pointsToFreeze = UtilCoordinates.floodFill(startingPoints, BlockPosConstants.DIRECT_NEIGHBOURS, predicate, ConfigSpells.iceSurface.floodLimit)
 
-        val state = Blocks.ICE.defaultState
+        val pointsToFreeze = UtilCoordinates.floodFill(startingPoints, BlockPosConstants.DIRECT_NEIGHBOURS, predicate, ConfigSpells.lakeThawing.floodLimit)
+
+        val state = Blocks.WATER.defaultState
         for (pos in pointsToFreeze)
             UtilBlock.replaceBlock(context.player, world, pos, state)
     }
