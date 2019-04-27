@@ -5,7 +5,7 @@ import aurocosh.divinefavor.common.entity.projectile.EntitySpellArrow
 import aurocosh.divinefavor.common.item.talismans.arrow.base.ArrowOptions
 import aurocosh.divinefavor.common.item.talismans.arrow.base.ArrowType
 import aurocosh.divinefavor.common.item.talismans.arrow.base.ItemArrowTalisman
-import aurocosh.divinefavor.common.item.talismans.spell.getBlock
+import aurocosh.divinefavor.common.lib.extensions.getBlock
 import aurocosh.divinefavor.common.lib.wrapper.ConvertingPredicate
 import aurocosh.divinefavor.common.spirit.base.ModSpirit
 import aurocosh.divinefavor.common.util.UtilBlock

@@ -12,9 +12,9 @@ public class HeatWave {
     @Config.Name("Enemy burn time")
     public int enemyBurnTime = 3;
     @Config.Name("Chance to set enemy on fire")
-    public int chanceToSetEnemyOnFire = 80;
+    public float chanceToSetEnemyOnFire = 0.8f;
     @Config.Name("Chance to set ground on fire")
-    public int chanceToSetGroundOnFire = 20;
+    public float chanceToSetGroundOnFire = 0.2f;
     @Config.Name("Particle count")
     public int particleCount = 150;
 }

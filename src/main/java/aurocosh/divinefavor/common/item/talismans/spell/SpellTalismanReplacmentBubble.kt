@@ -4,11 +4,12 @@ import aurocosh.divinefavor.common.config.entries.talismans.spell.generic.Replac
 import aurocosh.divinefavor.common.item.talismans.spell.base.ItemSpellTalisman
 import aurocosh.divinefavor.common.item.talismans.spell.base.SpellOptions
 import aurocosh.divinefavor.common.item.talismans.spell.base.TalismanContext
+import aurocosh.divinefavor.common.lib.extensions.getBlock
 import aurocosh.divinefavor.common.spirit.base.ModSpirit
 import aurocosh.divinefavor.common.util.UtilBlock
 import aurocosh.divinefavor.common.util.UtilCoordinates
-import aurocosh.divinefavor.common.util.filter
-import aurocosh.divinefavor.common.util.split
+import aurocosh.divinefavor.common.lib.extensions.filter
+import aurocosh.divinefavor.common.lib.extensions.split
 import net.minecraft.block.Block
 
 class SpellTalismanReplacmentBubble(name: String, spirit: ModSpirit, config: ReplacmentBubble, private val blockInternal: Block, private val blockExternal: Block, private val blockPredicate: (Block) -> Boolean) : ItemSpellTalisman(name, spirit, config.favorCost, SpellOptions.ALL_CAST) {
