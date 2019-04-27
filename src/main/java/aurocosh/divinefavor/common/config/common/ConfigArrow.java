@@ -1,6 +1,7 @@
 package aurocosh.divinefavor.common.config.common;
 
 import aurocosh.divinefavor.common.config.entries.talismans.arrow.*;
+import aurocosh.divinefavor.common.config.entries.talismans.spell.ReplaceSphere;
 import aurocosh.divinefavor.common.constants.ConstMisc;
 import aurocosh.divinefavor.common.util.UtilTick;
 import net.minecraftforge.common.config.Config;
@@ -31,6 +32,8 @@ public class ConfigArrow {
     public static Disarm disarm = new Disarm();
     @Config.Name("Explosive arrow")
     public static ExplosiveArrow explosiveArrow = new ExplosiveArrow(120, 2, 5, true, false);
+    @Config.Name("Extinguish fire")
+    public static ReplaceSphereArrow extinguishFire = new ReplaceSphereArrow(10, 2, 7);
     @Config.Name("Fiery mark")
     public static FieryMark fieryMark = new FieryMark();
     @Config.Name("Fill lungs")

@@ -1,0 +1,15 @@
+{
+  "name": "Extinguish fire",
+  "icon": "divinefavor:arrow_talisman_extinguish_fire",
+  "category": "arrow_talismans",
+  "pages": [
+    {
+      "type": "item_description",
+      "talisman": "divinefavor:arrow_talisman_extinguish_fire"
+    },
+    {
+      "type": "arrow_talisman_stats",
+      "talisman": "divinefavor:arrow_talisman_extinguish_fire"
+    }
+  ]
+}
