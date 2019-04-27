@@ -72,6 +72,7 @@ public final class ModSpellTalismans {
     public static ItemSpellTalisman nether_surge;
     public static ItemSpellTalisman night_eye;
     public static ItemSpellTalisman obsidian_bubble;
+    public static ItemSpellTalisman obsidian_carving;
     public static ItemSpellTalisman obsidian_road;
     public static ItemSpellTalisman overblink;
     public static ItemSpellTalisman overwarp;
@@ -139,7 +140,7 @@ public final class ModSpellTalismans {
         winter_breath = new SpellTalismanWinterBreath("winter_breath", ModSpirits.blizrabi, ConfigSpells.winterBreath.favorCost, SpellOptions.ALL_CAST);
         flood = new SpellTalismanFlood("flood", ModSpirits.blizrabi, ConfigSpells.flood.favorCost, SpellOptions.ALL_CAST);
         ice_surface = new SpellTalismanIceSurface("ice_surface", ModSpirits.blizrabi, ConfigSpells.iceSurface.favorCost, SpellOptions.ALL_CAST);
-        ice_carving = new SpellTalismanIceCarving("ice_carving", ModSpirits.blizrabi, ConfigSpells.iceCarving.favorCost, SpellOptions.USE_CAST);
+        ice_carving = new SpellTalismanCarving("ice_carving", ModSpirits.blizrabi, ConfigSpells.iceCarving.favorCost, SpellOptions.USE_CAST, Blocks.ICE, UtilBlock::isWater);
         lake_thawing = new SpellTalismanLakeThawing("lake_thawing", ModSpirits.blizrabi, ConfigSpells.lakeThawing.favorCost, SpellOptions.ALL_CAST);
 
         // endererer
@@ -181,10 +182,12 @@ public final class ModSpellTalismans {
         infernal_touch = new SpellTalismanInfernalTouch("infernal_touch", ModSpirits.neblaze, 1, SpellOptions.USE_CAST);
         molten_skin = new SpellTalismanMoltenSkin("molten_skin", ModSpirits.neblaze, ConfigSpells.moltenSkin.favorCost, SpellOptions.ALL_CAST);
         nether_surge = new SpellTalismanNetherSurge("nether_surge", ModSpirits.neblaze, ConfigSpells.netherSurge.favorCost, SpellOptions.USE_CAST);
+        obsidian_bubble = new SpellTalismanReplacmentBubble("obsidian_bubble", ModSpirits.blizrabi, ConfigSpells.obsidianBubble, Blocks.AIR, Blocks.OBSIDIAN, UtilPredicate.or(UtilBlock::isLava, block -> block == Blocks.OBSIDIAN));
+        obsidian_carving = new SpellTalismanCarving("obsidian_carving", ModSpirits.blizrabi, ConfigSpells.obsidianCarving.favorCost, SpellOptions.USE_CAST, Blocks.OBSIDIAN, UtilBlock::isLava);
         piercing_inferno = new SpellTalismanPiercingInferno("piercing_inferno", ModSpirits.neblaze, ConfigSpells.piercingInferno.favorCost, SpellOptions.USE_CAST);
         searing_pulse = new SpellTalismanSearingPulse("searing_pulse", ModSpirits.neblaze, ConfigSpells.searingPulse.favorCost, SpellOptions.USE_CAST);
         small_fireball_throw = new SpellTalismanSmallFireballThrow("small_fireball_throw", ModSpirits.neblaze, ConfigSpells.smallFireballThrow.favorCost, SpellOptions.ALL_CAST);
-        obsidian_bubble = new SpellTalismanReplacmentBubble("obsidian_bubble", ModSpirits.blizrabi, ConfigSpells.obsidianBubble, Blocks.AIR, Blocks.OBSIDIAN, UtilPredicate.or(UtilBlock::isLava, block -> block == Blocks.OBSIDIAN));
+
 
         // redwind
         arrow_deflection = new SpellTalismanModPotion("arrow_deflection", ModSpirits.redwind, ConfigSpells.arrowDeflection.favorCost, ModPotions.arrow_deflection, ConfigSpells.arrowDeflection.duration);

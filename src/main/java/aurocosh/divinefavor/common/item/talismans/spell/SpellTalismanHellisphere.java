@@ -26,7 +26,7 @@ public class SpellTalismanHellisphere extends ItemSpellTalisman {
         World world = context.world;
         IBlockState state = Blocks.LAVA.getDefaultState();
         List<BlockPos> posList = UtilCoordinates.getBlocksInSphere(context.pos, ConfigSpells.hellisphere.radius);
-        posList = UtilList.select(posList, world::isAirBlock);
+        posList = UtilList.select(posList, pos1 -> !world.isAirBlock(pos1));
         for (BlockPos pos : posList)
             UtilBlock.replaceBlock(context.player, world, pos, state);
     }
