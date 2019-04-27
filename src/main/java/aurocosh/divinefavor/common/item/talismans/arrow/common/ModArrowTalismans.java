@@ -24,6 +24,7 @@ public class ModArrowTalismans {
     public static ItemArrowTalisman destructive_arrow_3;
     public static ItemArrowTalisman disarm;
     public static ItemArrowTalisman explosive_arrow;
+    public static ItemArrowTalisman extinguish_fire;
     public static ItemArrowTalisman fiery_mark;
     public static ItemArrowTalisman fill_lungs;
     public static ItemArrowTalisman flak_arrow;
@@ -62,6 +63,7 @@ public class ModArrowTalismans {
 
     public static void preInit() {
         Color enderererColor = new Color(0, 124, 86);
+        Color blizrabiColor = new Color(231, 236, 255);
         Color genericTier1 = new Color(255, 232, 109);
         Color genericTier2 = new Color(51, 163, 255);
         Color genericTier3 = new Color(255, 110, 31);
@@ -100,8 +102,9 @@ public class ModArrowTalismans {
         zero_g_arrow = new ArrowTalismanZeroGArrow("zero_g_arrow", ModSpirits.arbow, ConfigArrow.zeroGArrow.favorCost,  new Color(0, 168, 122), ConfigArrow.zeroGArrow.damage, ArrowOptions.NORMAL, ArrowType.WOODEN_ARROW);
 
         // blizrabi;
-        ice_ball_arrow = new ArrowTalismanIceSphere("ice_sphere", ModSpirits.arbow, ConfigArrow.iceSphereArrow.favorCost, genericTier2, ConfigArrow.iceSphereArrow.damage, ArrowOptions.ARROW_BREAKS, ArrowType.WOODEN_ARROW);
-        ice_breaker = new ArrowTalismanIceBreaker("ice_breaker", ModSpirits.arbow, ConfigArrow.iceSphereArrow.favorCost, genericTier2, ConfigArrow.iceSphereArrow.damage, ArrowOptions.ARROW_BREAKS, ArrowType.WOODEN_ARROW);
+        ice_ball_arrow = new ArrowTalismanIceSphere("ice_sphere", ModSpirits.arbow, ConfigArrow.iceSphereArrow.favorCost, blizrabiColor, ConfigArrow.iceSphereArrow.damage, ArrowOptions.ARROW_BREAKS, ArrowType.WOODEN_ARROW);
+        ice_breaker = new ArrowTalismanIceBreaker("ice_breaker", ModSpirits.arbow, ConfigArrow.iceSphereArrow.favorCost, blizrabiColor, ConfigArrow.iceSphereArrow.damage, ArrowOptions.ARROW_BREAKS, ArrowType.WOODEN_ARROW);
+        extinguish_fire = new ArrowTalismanExtinguishFire("extinguish_fire", ModSpirits.arbow, ConfigArrow.extinguishFire.favorCost, new Color(125, 124, 128), ConfigArrow.extinguishFire.damage, ArrowOptions.ARROW_BREAKS, ArrowType.WOODEN_ARROW);
 
         // endererer;
         blink_arrow = new ArrowTalismanBlinkArrow("blink_arrow", ModSpirits.endererer, ConfigArrow.blinkArrow.favorCost, enderererColor, ConfigArrow.blinkArrow.damage, ArrowOptions.ARROW_BREAKS, ArrowType.WOODEN_ARROW);
