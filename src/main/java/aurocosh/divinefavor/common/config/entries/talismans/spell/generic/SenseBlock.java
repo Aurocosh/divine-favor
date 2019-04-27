@@ -1,4 +1,4 @@
-package aurocosh.divinefavor.common.config.entries.talismans.spell;
+package aurocosh.divinefavor.common.config.entries.talismans.spell.generic;
 
 import net.minecraftforge.common.config.Config;
 
