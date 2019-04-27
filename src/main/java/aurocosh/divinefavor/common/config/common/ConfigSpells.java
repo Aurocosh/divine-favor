@@ -110,6 +110,8 @@ public class ConfigSpells {
     public static NightEye nightEye = new NightEye();
     @Config.Name("Obsidian bubble")
     public static ReplacmentBubble obsidianBubble = new ReplacmentBubble();
+    @Config.Name("Obsidian carving")
+    public static FavorOnly obsidianCarving = new FavorOnly(60);
     @Config.Name("Obsidian road")
     public static ObsidianRoad obsidianRoad = new ObsidianRoad();
     @Config.Name("Overblink")
