@@ -1,0 +1,15 @@
+{
+  "name": "Ice surface",
+  "icon": "divinefavor:talisman_ice_surface",
+  "category": "spell_talismans",
+  "pages": [
+    {
+      "type": "item_description",
+      "talisman": "divinefavor:talisman_ice_surface"
+    },
+    {
+      "type": "spell_talisman_stats",
+      "talisman": "divinefavor:talisman_ice_surface"
+    }
+  ]
+}

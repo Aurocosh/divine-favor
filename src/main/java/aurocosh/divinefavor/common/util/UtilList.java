@@ -4,6 +4,7 @@ import aurocosh.divinefavor.common.lib.functional_interfaces.ComparePredicate;
 import aurocosh.divinefavor.common.lib.functional_interfaces.ListExtractor;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 import java.util.function.BiFunction;
@@ -11,6 +12,15 @@ import java.util.function.Function;
 import java.util.function.Predicate;
 
 public class UtilList {
+    @SafeVarargs
+    public static <T> List<T> unite(List<T> list, T... elements) {
+        int size = list.size() + elements.length;
+        List<T> result = new ArrayList<>(size);
+        result.addAll(list);
+        Collections.addAll(result, elements);
+        return result;
+    }
+
     @SafeVarargs
     public static <T> List<T> unite(List<T>... lists) {
         int size = 0;

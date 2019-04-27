@@ -1,0 +1,15 @@
+{
+  "name": "Lake thawing",
+  "icon": "divinefavor:talisman_lake_thawing",
+  "category": "spell_talismans",
+  "pages": [
+    {
+      "type": "item_description",
+      "talisman": "divinefavor:talisman_lake_thawing"
+    },
+    {
+      "type": "spell_talisman_stats",
+      "talisman": "divinefavor:talisman_lake_thawing"
+    }
+  ]
+}
