@@ -5,7 +5,7 @@ import aurocosh.divinefavor.common.config.entries.talismans.spell.generic.SenseC
 import aurocosh.divinefavor.common.item.talismans.spell.base.ItemSpellTalisman;
 import aurocosh.divinefavor.common.item.talismans.spell.base.SpellOptions;
 import aurocosh.divinefavor.common.item.talismans.spell.base.TalismanContext;
-import aurocosh.divinefavor.common.network.message.client.particles.MessageParticlesHighlightFloodFill;
+import aurocosh.divinefavor.common.network.message.client.particles.MessageParticlesHighlightEntities;
 import aurocosh.divinefavor.common.spirit.base.ModSpirit;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.math.BlockPos;
@@ -14,22 +14,20 @@ import net.minecraft.world.World;
 import javax.vecmath.Color3f;
 import java.util.EnumSet;
 
-public class SpellTalismanSenseFloodFill extends ItemSpellTalisman {
-    protected final int floodLimit;
-    protected final int searchLimit;
+public class SpellTalismanSenseEntities extends ItemSpellTalisman {
+    protected final int radius;
     protected final float minShift;
     protected final float maxShift;
     protected final Color3f color3f;
-    protected final SenseBlockPredicate predicate;
+    protected final SenseEntitiesPredicate predicate;
 
-    public SpellTalismanSenseFloodFill(String name, ModSpirit spirit, EnumSet<SpellOptions> options, Color3f color3f, SenseConfig senseConfig, SenseBlockPredicate predicate, int floodLimit, int searchLimit) {
+    public SpellTalismanSenseEntities(String name, ModSpirit spirit, EnumSet<SpellOptions> options, Color3f color3f, SenseConfig senseConfig, SenseEntitiesPredicate predicate) {
         super(name, "sense/", spirit, senseConfig.favorCost, options);
         this.color3f = color3f;
         this.predicate = predicate;
         minShift = senseConfig.minShift;
         maxShift = senseConfig.maxShift;
-        this.floodLimit = floodLimit;
-        this.searchLimit = searchLimit;
+        this.radius = senseConfig.radius;
     }
 
     @Override
@@ -38,6 +36,6 @@ public class SpellTalismanSenseFloodFill extends ItemSpellTalisman {
         BlockPos playerPosition = player.getPosition();
 
         World world = player.world;
-        new MessageParticlesHighlightFloodFill(5, world.provider.getDimension(), context.pos, minShift, maxShift, color3f, predicate, "", floodLimit, searchLimit, context.facing.getOpposite()).sendToAllAround(world, playerPosition, ConfigGeneral.particleRadius);
+        new MessageParticlesHighlightEntities(50, radius, world.provider.getDimension(), context.pos, minShift, maxShift, color3f, predicate).sendToAllAround(world, playerPosition, ConfigGeneral.particleRadius);
     }
 }

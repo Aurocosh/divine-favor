@@ -2,7 +2,7 @@ package aurocosh.divinefavor.common.config.entries.talismans.spell.generic;
 
 import net.minecraftforge.common.config.Config;
 
-public class SenseBlock {
+public class SenseConfig {
     @Config.Name("Favor cost")
     public int favorCost;
     @Config.Name("Radius")
@@ -12,7 +12,7 @@ public class SenseBlock {
     @Config.Name("Max shift")
     public float maxShift;
 
-    public SenseBlock(int favorCost, int radius, float minShift, float maxShift) {
+    public SenseConfig(int favorCost, int radius, float minShift, float maxShift) {
         this.favorCost = favorCost;
         this.radius = radius;
         this.minShift = minShift;

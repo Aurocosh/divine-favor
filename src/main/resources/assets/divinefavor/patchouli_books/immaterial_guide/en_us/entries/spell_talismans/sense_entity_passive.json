@@ -1,0 +1,15 @@
+{
+  "name": "Sense entity passive",
+  "icon": "divinefavor:talisman_sense_entity_passive",
+  "category": "spell_talismans",
+  "pages": [
+    {
+      "type": "item_description",
+      "talisman": "divinefavor:talisman_sense_entity_passive"
+    },
+    {
+      "type": "spell_talisman_stats",
+      "talisman": "divinefavor:talisman_sense_entity_passive"
+    }
+  ]
+}

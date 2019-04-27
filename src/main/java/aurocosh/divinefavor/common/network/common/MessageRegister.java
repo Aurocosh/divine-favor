@@ -3,10 +3,7 @@ package aurocosh.divinefavor.common.network.common;
 import aurocosh.divinefavor.common.network.message.client.activity.MessageSpiritBecameActive;
 import aurocosh.divinefavor.common.network.message.client.activity.MessageSpiritBecameInactive;
 import aurocosh.divinefavor.common.network.message.client.config.MessageConfigOreBlocks;
-import aurocosh.divinefavor.common.network.message.client.particles.MessageParticlesWave;
-import aurocosh.divinefavor.common.network.message.client.particles.MessageParticlesHighlightFloodFill;
-import aurocosh.divinefavor.common.network.message.client.particles.MessageParticlesHighlightInSphere;
-import aurocosh.divinefavor.common.network.message.client.particles.MessageParticlesWinterBreath;
+import aurocosh.divinefavor.common.network.message.client.particles.*;
 import aurocosh.divinefavor.common.network.message.client.spirit_data.MessageSyncAllSpiritData;
 import aurocosh.divinefavor.common.network.message.client.spirit_data.MessageSyncContracts;
 import aurocosh.divinefavor.common.network.message.client.spirit_data.MessageSyncFavor;
@@ -15,6 +12,7 @@ import aurocosh.divinefavor.common.network.message.sever.MessageSyncTalismanCont
 import aurocosh.divinefavor.common.network.message.sever.petrification.MessagePetrificationCure;
 import aurocosh.divinefavor.common.network.message.sever.petrification.MessagePetrificationDamage;
 import aurocosh.divinefavor.common.network.message.sever.petrification.MessagePetrificationReset;
+import com.google.common.collect.Lists;
 import net.minecraftforge.fml.relauncher.Side;
 
 public class MessageRegister {
@@ -22,9 +20,10 @@ public class MessageRegister {
         // Client messages
         NetworkHandler.register(MessageConfigOreBlocks.class, Side.CLIENT);
 
-        NetworkHandler.register(MessageParticlesWave.class, Side.CLIENT);
+        NetworkHandler.register(MessageParticlesHighlightEntities.class, Side.CLIENT);
         NetworkHandler.register(MessageParticlesHighlightFloodFill.class, Side.CLIENT);
         NetworkHandler.register(MessageParticlesHighlightInSphere.class, Side.CLIENT);
+        NetworkHandler.register(MessageParticlesWave.class, Side.CLIENT);
         NetworkHandler.register(MessageParticlesWinterBreath.class, Side.CLIENT);
 
         NetworkHandler.register(MessageSyncAllSpiritData.class, Side.CLIENT);

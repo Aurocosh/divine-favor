@@ -1,0 +1,15 @@
+{
+  "name": "Sense hostile mobs",
+  "icon": "divinefavor:talisman_sense_entity_hostile",
+  "category": "spell_talismans",
+  "pages": [
+    {
+      "type": "item_description",
+      "talisman": "divinefavor:talisman_sense_entity_hostile"
+    },
+    {
+      "type": "spell_talisman_stats",
+      "talisman": "divinefavor:talisman_sense_entity_hostile"
+    }
+  ]
+}

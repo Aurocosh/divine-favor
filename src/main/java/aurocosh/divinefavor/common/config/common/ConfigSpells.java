@@ -137,27 +137,35 @@ public class ConfigSpells {
     @Config.Name("Searing pulse")
     public static SearingPulse searingPulse = new SearingPulse();
     @Config.Name("Sense ore approximate")
-    public static SenseBlock senseOreApproximate = new SenseBlock(10, 25, 0.4f,4f);
+    public static SenseConfig senseOreApproximate = new SenseConfig(10, 25, 0.4f,4f);
     @Config.Name("Sense ore vague")
-    public static SenseBlock senseOreVague = new SenseBlock(30, 25, 0.2f,2f);
+    public static SenseConfig senseOreVague = new SenseConfig(30, 25, 0.2f,2f);
     @Config.Name("Sense ore precise")
-    public static SenseBlock senseOrePrecise = new SenseBlock(120, 25, 0.2f,0.45f);
+    public static SenseConfig senseOrePrecise = new SenseConfig(120, 25, 0.2f,0.45f);
     @Config.Name("Sense ore close")
-    public static SenseBlock senseOreClose = new SenseBlock(2, 7, 0.2f,1f);
+    public static SenseConfig senseOreClose = new SenseConfig(2, 7, 0.2f,1f);
     @Config.Name("Sense block approximate")
-    public static SenseBlock senseBlockApproximate = new SenseBlock(40, 25, 0.4f,4f);
+    public static SenseConfig senseBlockApproximate = new SenseConfig(40, 25, 0.4f,4f);
     @Config.Name("Sense block vague")
-    public static SenseBlock senseBlockVague = new SenseBlock(120, 25, 0.2f,2f);
+    public static SenseConfig senseBlockVague = new SenseConfig(120, 25, 0.2f,2f);
     @Config.Name("Sense block precise")
-    public static SenseBlock senseBlockPrecise = new SenseBlock(420, 25, 0.2f,0.45f);
+    public static SenseConfig senseBlockPrecise = new SenseConfig(420, 25, 0.2f,0.45f);
     @Config.Name("Sense block close")
-    public static SenseBlock senseBlockClose = new SenseBlock(10, 7, 0.2f,1f);
+    public static SenseConfig senseBlockClose = new SenseConfig(10, 7, 0.2f,1f);
     @Config.Name("Sense water")
-    public static SenseBlock senseWater = new SenseBlock(20, 25, 0.2f,2f);
+    public static SenseConfig senseWater = new SenseConfig(20, 25, 0.2f,2f);
+    @Config.Name("Sense passive entities")
+    public static SenseConfig senseEntityPassive = new SenseConfig(20, 25, 0.2f,2f);
+    @Config.Name("Sense hostile entities")
+    public static SenseConfig senseEntityHostile = new SenseConfig(20, 25, 0.2f,2f);
+    @Config.Name("Sense player entities")
+    public static SenseConfig senseEntityPlayer = new SenseConfig(20, 25, 0.2f,2f);
+    @Config.Name("Sense all entities")
+    public static SenseConfig senseEntityAll = new SenseConfig(20, 25, 0.2f,2f);
     @Config.Name("Sense lava")
-    public static SenseBlock senseLava = new SenseBlock(50, 25, 0.2f,2f);
+    public static SenseConfig senseLava = new SenseConfig(50, 25, 0.2f,2f);
     @Config.Name("Sense liquid")
-    public static SenseBlock senseLiquid = new SenseBlock(30, 25, 0.2f,2f);
+    public static SenseConfig senseLiquid = new SenseConfig(30, 25, 0.2f,2f);
     @Config.Name("Small fireball throw")
     public static SmallFireballThrow smallFireballThrow = new SmallFireballThrow();
     @Config.Name("Snowball throw")

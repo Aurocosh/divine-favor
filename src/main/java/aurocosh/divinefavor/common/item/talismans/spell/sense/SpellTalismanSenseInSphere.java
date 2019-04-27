@@ -1,7 +1,7 @@
 package aurocosh.divinefavor.common.item.talismans.spell.sense;
 
 import aurocosh.divinefavor.common.config.common.ConfigGeneral;
-import aurocosh.divinefavor.common.config.entries.talismans.spell.generic.SenseBlock;
+import aurocosh.divinefavor.common.config.entries.talismans.spell.generic.SenseConfig;
 import aurocosh.divinefavor.common.item.talismans.spell.base.ItemSpellTalisman;
 import aurocosh.divinefavor.common.item.talismans.spell.base.SpellOptions;
 import aurocosh.divinefavor.common.item.talismans.spell.base.TalismanContext;
@@ -21,12 +21,12 @@ public abstract class SpellTalismanSenseInSphere extends ItemSpellTalisman {
     protected final Color3f color3f;
     protected final SenseBlockPredicate predicate;
 
-    public SpellTalismanSenseInSphere(String name, ModSpirit spirit, EnumSet<SpellOptions> options, Color3f color3f, SenseBlock senseBlock, SenseBlockPredicate predicate) {
-        super(name, "sense/", spirit, senseBlock.favorCost, options);
+    public SpellTalismanSenseInSphere(String name, ModSpirit spirit, EnumSet<SpellOptions> options, Color3f color3f, SenseConfig senseConfig, SenseBlockPredicate predicate) {
+        super(name, "sense/", spirit, senseConfig.favorCost, options);
         this.color3f = color3f;
-        radius = senseBlock.radius;
-        minShift = senseBlock.minShift;
-        maxShift = senseBlock.maxShift;
+        radius = senseConfig.radius;
+        minShift = senseConfig.minShift;
+        maxShift = senseConfig.maxShift;
         this.predicate = predicate;
     }
 

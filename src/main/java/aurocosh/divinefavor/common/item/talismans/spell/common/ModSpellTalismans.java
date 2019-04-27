@@ -7,10 +7,7 @@ import aurocosh.divinefavor.common.item.common.ModItems;
 import aurocosh.divinefavor.common.item.talismans.spell.*;
 import aurocosh.divinefavor.common.item.talismans.spell.base.*;
 import aurocosh.divinefavor.common.item.talismans.spell.SpellTalismanReplacmentBubble;
-import aurocosh.divinefavor.common.item.talismans.spell.sense.SenseBlockPredicate;
-import aurocosh.divinefavor.common.item.talismans.spell.sense.SpellTalismanSenseFloodFill;
-import aurocosh.divinefavor.common.item.talismans.spell.sense.SpellTalismanSenseInSphereHeld;
-import aurocosh.divinefavor.common.item.talismans.spell.sense.SpellTalismanSenseInSphereType;
+import aurocosh.divinefavor.common.item.talismans.spell.sense.*;
 import aurocosh.divinefavor.common.potions.common.ModPotions;
 import aurocosh.divinefavor.common.spirit.ModSpirits;
 import aurocosh.divinefavor.common.util.UtilBlock;
@@ -91,6 +88,10 @@ public final class ModSpellTalismans {
     public static ItemSpellTalisman sense_block_precise;
     public static ItemSpellTalisman sense_block_vague;
     public static ItemSpellTalisman sense_cave;
+    public static ItemSpellTalisman sense_entity_all;
+    public static ItemSpellTalisman sense_entity_hostile;
+    public static ItemSpellTalisman sense_entity_passive;
+    public static ItemSpellTalisman sense_entity_player;
     public static ItemSpellTalisman sense_lava;
     public static ItemSpellTalisman sense_liquid;
     public static ItemSpellTalisman sense_ore_approximate;
@@ -239,6 +240,10 @@ public final class ModSpellTalismans {
         focused_fury = new SpellTalismanModPotion("focused_fury", ModSpirits.squarefury, ConfigSpells.focusedFury.favorCost, ModPotions.focused_fury, ConfigSpells.focusedFury.duration);
         grudge = new SpellTalismanGrudge("grudge", ModSpirits.squarefury, ConfigSpells.grudge.favorCost, SpellOptions.ALL_CAST);
         mist_blade = new SpellTalismanModPotionToggle("mist_blade", ModSpirits.squarefury, ConfigSpells.mistBlade.favorCost, ModPotions.mist_blade);
+        sense_entity_passive = new SpellTalismanSenseEntities("sense_entity_passive", ModSpirits.squarefury, SpellOptions.RIGHT_CAST, new Color3f(0, 0.2f, 0.9f), ConfigSpells.senseEntityPassive, SenseEntitiesPredicate.PASSIVE);
+        sense_entity_hostile = new SpellTalismanSenseEntities("sense_entity_hostile", ModSpirits.squarefury, SpellOptions.RIGHT_CAST, new Color3f(0.9f, 0, 0.2f), ConfigSpells.senseEntityHostile, SenseEntitiesPredicate.HOSTILE);
+        sense_entity_player = new SpellTalismanSenseEntities("sense_entity_player", ModSpirits.squarefury, SpellOptions.RIGHT_CAST, new Color3f(0, 0.9f, 0.2f), ConfigSpells.senseEntityPlayer, SenseEntitiesPredicate.PLAYERS);
+        sense_entity_all = new SpellTalismanSenseEntities("sense_entity_all", ModSpirits.squarefury, SpellOptions.RIGHT_CAST, new Color3f(0.7f, 0.7f, 0), ConfigSpells.senseEntityAll, SenseEntitiesPredicate.ALL);
 
         // timber
         blade_of_grass = new SpellTalismanBladeOfGrass("blade_of_grass", ModSpirits.timber, ConfigSpells.bladeOfGrass.favorCost, SpellOptions.ALL_CAST);

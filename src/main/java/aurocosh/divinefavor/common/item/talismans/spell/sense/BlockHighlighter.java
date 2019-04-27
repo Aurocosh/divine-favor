@@ -17,14 +17,14 @@ import java.util.List;
 public class BlockHighlighter {
     private static final int MAX_BLOCKS_HIGHLIGHTED = 500;
 
-    public static void spawnParticles(Color3f color3f, float maxShift, float minShift, int particles, World world, List<BlockPos> posList) {
+    public static void spawnParticles(Color3f color3f, float maxShift, float minShift, int particles, World world, List<Vec3d> posList) {
         if (posList.size() > MAX_BLOCKS_HIGHLIGHTED)
             posList = UtilRandom.selectRandom(posList, MAX_BLOCKS_HIGHLIGHTED);
-        for (BlockPos pos : posList) {
+        for (Vec3d pos : posList) {
             for (int i = 0; i < particles; i++) {
                 Vec3d directionShift = UtilRandom.nextDirection();
                 Vec3d shift = directionShift.scale(UtilRandom.nextFloat(minShift, maxShift));
-                Vec3d position = UtilBlockPos.add(pos, shift);
+                Vec3d position = pos.add(shift);
 
                 ModParticles.noDepth.createParticle(() -> new OreHighlightParticle(world, position, color3f));
             }
