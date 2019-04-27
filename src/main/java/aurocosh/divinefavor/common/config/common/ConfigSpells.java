@@ -81,6 +81,8 @@ public class ConfigSpells {
     public static ReplaceSphere hellisphere = new ReplaceSphere();
     @Config.Name("Ice bubble")
     public static ReplacmentBubble iceBubble = new ReplacmentBubble();
+    @Config.Name("Ice surface")
+    public static SearchAndFlood iceSurface = new SearchAndFlood(20,3,150);
     @Config.Name("Infernal touch")
     public static InfernalTouch infernalTouch = new InfernalTouch();
     @Config.Name("Instand dive")
@@ -91,6 +93,8 @@ public class ConfigSpells {
     public static InviteGem inviteGem = new InviteGem();
     @Config.Name("Invite pebble")
     public static InvitePebble invitePebble = new InvitePebble();
+    @Config.Name("Lake thawing")
+    public static SearchAndFlood lakeThawing = new SearchAndFlood(20,3,150);
     @Config.Name("miners focus")
     public static MinersFocus minersFocus = new MinersFocus();
     @Config.Name("Mist blade")

@@ -46,6 +46,7 @@ public final class ModSpellTalismans {
     public static ItemSpellTalisman fall_negation;
     public static ItemSpellTalisman fell_tree;
     public static ItemSpellTalisman fins;
+    public static ItemSpellTalisman flood;
     public static ItemSpellTalisman focused_fury;
     public static ItemSpellTalisman follow;
     public static ItemSpellTalisman gills;
@@ -57,16 +58,19 @@ public final class ModSpellTalismans {
     public static ItemSpellTalisman hellisphere;
     public static ItemSpellTalisman hovering;
     public static ItemSpellTalisman ice_bubble;
+    public static ItemSpellTalisman ice_surface;
     public static ItemSpellTalisman ignition;
     public static ItemSpellTalisman infernal_touch;
     public static ItemSpellTalisman instant_dive;
     public static ItemSpellTalisman invite_gem;
     public static ItemSpellTalisman invite_pebble;
+    public static ItemSpellTalisman lake_thawing;
     public static ItemSpellTalisman miners_focus;
     public static ItemSpellTalisman mist_blade;
     public static ItemSpellTalisman molten_skin;
     public static ItemSpellTalisman nether_surge;
     public static ItemSpellTalisman night_eye;
+    public static ItemSpellTalisman obsidian_bubble;
     public static ItemSpellTalisman obsidian_road;
     public static ItemSpellTalisman overblink;
     public static ItemSpellTalisman overwarp;
@@ -115,8 +119,6 @@ public final class ModSpellTalismans {
     public static ItemSpellTalisman wind_step;
     public static ItemSpellTalisman winter_breath;
     public static ItemSpellTalisman wooden_punch;
-    public static ItemSpellTalisman obsidian_bubble;
-    public static ItemSpellTalisman flood;
 
     public static void preInit() {
         // arbow
@@ -135,6 +137,8 @@ public final class ModSpellTalismans {
         vitalize = new SpellTalismanVitalize("vitalize", ModSpirits.blizrabi, ConfigSpells.vitalize.favorCost, SpellOptions.ALL_CAST);
         winter_breath = new SpellTalismanWinterBreath("winter_breath", ModSpirits.blizrabi, ConfigSpells.winterBreath.favorCost, SpellOptions.ALL_CAST);
         flood = new SpellTalismanFlood("flood", ModSpirits.blizrabi, ConfigSpells.flood.favorCost, SpellOptions.ALL_CAST);
+        ice_surface = new SpellTalismanIceSurface("ice_surface", ModSpirits.blizrabi, ConfigSpells.flood.favorCost, SpellOptions.ALL_CAST);
+        lake_thawing = new SpellTalismanLakeThawing("lake_thawing", ModSpirits.blizrabi, ConfigSpells.flood.favorCost, SpellOptions.ALL_CAST);
 
         // endererer
         blink = new SpellTalismanBlink("blink", ModSpirits.endererer, ConfigSpells.blink.favorCost, SpellOptions.ALL_CAST, true, ConfigSpells.blink.distance);
