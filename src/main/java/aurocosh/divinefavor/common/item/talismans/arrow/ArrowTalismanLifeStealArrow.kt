@@ -22,14 +22,14 @@ class ArrowTalismanLifeStealArrow(name: String, spirit: ModSpirit, favorCost: In
         compound.setBoolean(TAG_STOLE_LIFE, false)
     }
 
-    override fun performActionClient(target: EntityLivingBase?, shooter: EntityLivingBase, spellArrow: EntitySpellArrow, blockPos: BlockPos, sideHit: EnumFacing): Boolean {
+    override fun performActionClient(target: EntityLivingBase?, shooter: EntityLivingBase, spellArrow: EntitySpellArrow, blockPos: BlockPos?, sideHit: EnumFacing?): Boolean {
         if (target == null)
             return true
         spellArrow.setEntityIgnoreDelay(ENTITY_IGNORE_DELAY)
         return false
     }
 
-    override fun performActionServer(target: EntityLivingBase?, shooter: EntityLivingBase, spellArrow: EntitySpellArrow, blockPos: BlockPos, sideHit: EnumFacing): Boolean {
+    override fun performActionServer(target: EntityLivingBase?, shooter: EntityLivingBase, spellArrow: EntitySpellArrow, blockPos: BlockPos?, sideHit: EnumFacing?): Boolean {
         if (target == null)
             return true
         target.attackEntityFrom(DamageSource.causePlayerDamage(shooter as EntityPlayer), ConfigArrow.lifeStealArrow.damage)

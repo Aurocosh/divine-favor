@@ -13,6 +13,8 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.awt.*;
 import java.util.EnumSet;
@@ -23,7 +25,7 @@ public class ArrowTalismanDisarm extends ItemArrowTalisman {
     }
 
     @Override
-    protected boolean performActionServer(EntityLivingBase target, EntityLivingBase shooter, EntitySpellArrow spellArrow, BlockPos blockPos, EnumFacing sideHit) {
+    protected boolean performActionServer(@Nullable EntityLivingBase target, @NotNull EntityLivingBase shooter, @NotNull EntitySpellArrow spellArrow, @Nullable BlockPos blockPos, @Nullable EnumFacing sideHit) {
         if (target instanceof EntityPlayer) {
             EntityPlayer player = (EntityPlayer) target;
             moveStackToMainInventory(player, player.inventory.currentItem);

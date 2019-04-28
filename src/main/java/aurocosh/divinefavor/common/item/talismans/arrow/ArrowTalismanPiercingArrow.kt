@@ -23,7 +23,7 @@ class ArrowTalismanPiercingArrow(name: String, spirit: ModSpirit, favorCost: Int
         spellArrow.talismanDataCommon = compound
     }
 
-    override fun performActionClient(target: EntityLivingBase?, shooter: EntityLivingBase, spellArrow: EntitySpellArrow, blockPos: BlockPos, sideHit: EnumFacing): Boolean {
+    override fun performActionClient(target: EntityLivingBase?, shooter: EntityLivingBase, spellArrow: EntitySpellArrow, blockPos: BlockPos?, sideHit: EnumFacing?): Boolean {
         if (target == null)
             return true
         val compound = spellArrow.talismanDataCommon
@@ -32,7 +32,7 @@ class ArrowTalismanPiercingArrow(name: String, spirit: ModSpirit, favorCost: Int
         return if (compound.getInteger(TAG_HITS_LEFT) == 0) true else false
     }
 
-    override fun performActionServer(target: EntityLivingBase?, shooter: EntityLivingBase, spellArrow: EntitySpellArrow, blockPos: BlockPos, sideHit: EnumFacing): Boolean {
+    override fun performActionServer(target: EntityLivingBase?, shooter: EntityLivingBase, spellArrow: EntitySpellArrow, blockPos: BlockPos?, sideHit: EnumFacing?): Boolean {
         if (target == null)
             return true
         val compound = spellArrow.talismanDataCommon

@@ -17,7 +17,7 @@ class ArrowTalismanExplosive(name: String, spirit: ModSpirit, color: Color, opti
     private val damageTerrain: Boolean = config.damageTerrain
     private val causeFire: Boolean = config.causeFire
 
-    override fun performActionServer(target: EntityLivingBase, shooter: EntityLivingBase, spellArrow: EntitySpellArrow, blockPos: BlockPos, sideHit: EnumFacing): Boolean {
+    override fun performActionServer(target: EntityLivingBase?, shooter: EntityLivingBase, spellArrow: EntitySpellArrow, blockPos: BlockPos?, sideHit: EnumFacing?): Boolean {
         val damageTerrain = this.damageTerrain && !spellArrow.isInWater
         val arrowPosition = spellArrow.position
         spellArrow.world.newExplosion(spellArrow, arrowPosition.x.toDouble(), arrowPosition.y.toDouble(), arrowPosition.z.toDouble(), explosionPower.toFloat(), causeFire, damageTerrain)

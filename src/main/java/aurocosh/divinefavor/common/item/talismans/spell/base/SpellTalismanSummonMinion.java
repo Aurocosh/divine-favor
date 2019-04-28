@@ -1,7 +1,5 @@
 package aurocosh.divinefavor.common.item.talismans.spell.base;
 
-import aurocosh.divinefavor.common.custom_data.player.PlayerData;
-import aurocosh.divinefavor.common.custom_data.player.data.favor.SpiritData;
 import aurocosh.divinefavor.common.entity.minions.base.IMinion;
 import aurocosh.divinefavor.common.spirit.base.ModSpirit;
 import net.minecraft.entity.EntityLiving;
@@ -15,6 +13,6 @@ public class SpellTalismanSummonMinion<T extends EntityLiving & IMinion> extends
 
     @Override
     protected void postProcessEntity(T entityLiving, TalismanContext context) {
-        entityLiving.getMinionData().setOwner(context.player);
+        entityLiving.getMinionData().setOwner(context.getPlayer());
     }
 }

@@ -61,7 +61,7 @@ public class ArrowTalismanStatProcessor implements IComponentProcessor {
                 lines.add("Arrow damage: " + formatter.format(arrowDamage));
             }
             EnumSet<ArrowOptions> options = arrowTalisman.getOptions();
-            if (options.equals(ArrowOptions.NORMAL))
+            if (options.equals(ArrowOptions.Companion.getNORMAL()))
                 lines.add("No extra properties");
             else {
                 lines.add("Extra properties: ");
