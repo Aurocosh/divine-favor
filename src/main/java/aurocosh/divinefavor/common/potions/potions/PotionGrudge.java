@@ -2,6 +2,7 @@ package aurocosh.divinefavor.common.potions.potions;
 
 import aurocosh.divinefavor.DivineFavor;
 import aurocosh.divinefavor.common.config.common.ConfigSpells;
+import aurocosh.divinefavor.common.constants.ConstMisc;
 import aurocosh.divinefavor.common.custom_data.player.PlayerData;
 import aurocosh.divinefavor.common.custom_data.player.data.spell.grudge.GrudgeData;
 import aurocosh.divinefavor.common.network.message.client.syncing.MessageSyncGrudge;
@@ -23,7 +24,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-@Mod.EventBusSubscriber
+@Mod.EventBusSubscriber(modid = ConstMisc.MOD_ID)
 public class PotionGrudge extends ModPotionToggle {
     public PotionGrudge() {
         super("grudge", true, 0x7FB8A4);

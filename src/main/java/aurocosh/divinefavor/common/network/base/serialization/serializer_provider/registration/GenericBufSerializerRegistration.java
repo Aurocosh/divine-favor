@@ -1,5 +1,6 @@
 package aurocosh.divinefavor.common.network.base.serialization.serializer_provider.registration;
 
+import aurocosh.divinefavor.common.constants.ConstMisc;
 import aurocosh.divinefavor.common.network.base.serialization.buf_serializers.generic.array_list.CollectionSerializerProvider;
 import aurocosh.divinefavor.common.network.base.serialization.buf_serializers.generic.hash_set.MapSerializerProvider;
 import aurocosh.divinefavor.common.network.base.serialization.serializer_provider.BufSerializerProvider;
@@ -8,7 +9,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 import java.util.*;
 
-@Mod.EventBusSubscriber
+@Mod.EventBusSubscriber(modid = ConstMisc.MOD_ID)
 public class GenericBufSerializerRegistration {
     @SubscribeEvent
     public static void onRegisterSerializers(BufSerializerRegistryEvent event) {

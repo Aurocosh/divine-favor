@@ -1,5 +1,6 @@
 package aurocosh.divinefavor.common.network.base.serialization.serializer_provider.registration;
 
+import aurocosh.divinefavor.common.constants.ConstMisc;
 import aurocosh.divinefavor.common.network.base.serialization.buf_serializers.Color3fSerializer;
 import aurocosh.divinefavor.common.network.base.serialization.buf_serializers.Vec3dSerializer;
 import aurocosh.divinefavor.common.network.base.serialization.interfaces.BufWriter;
@@ -15,7 +16,7 @@ import net.minecraftforge.fml.common.network.ByteBufUtils;
 
 import javax.vecmath.Color3f;
 
-@Mod.EventBusSubscriber
+@Mod.EventBusSubscriber(modid = ConstMisc.MOD_ID)
 public class NormalBufSerializerRegistration {
     @SubscribeEvent
     public static void onRegisterSerializers(BufSerializerRegistryEvent event) {

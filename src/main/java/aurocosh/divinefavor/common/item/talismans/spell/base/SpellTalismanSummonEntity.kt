@@ -25,7 +25,7 @@ open class SpellTalismanSummonEntity<T : EntityLiving>(name: String, spirit: Mod
             preProcessEntity(entityLiving, context)
             world.spawnEntity(entityLiving)
             postProcessEntity(entityLiving, context)
-        } catch (e: InvocationTargetException) {
+        } catch (e: Throwable) {
             e.multicatch(InvocationTargetException::class, NoSuchMethodException::class, InstantiationException::class, IllegalAccessException::class) {
                 e.printStackTrace()
             }

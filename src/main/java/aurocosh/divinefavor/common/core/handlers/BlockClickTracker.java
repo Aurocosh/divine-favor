@@ -1,5 +1,6 @@
 package aurocosh.divinefavor.common.core.handlers;
 
+import aurocosh.divinefavor.common.constants.ConstMisc;
 import aurocosh.divinefavor.common.custom_data.player.PlayerData;
 import aurocosh.divinefavor.common.custom_data.player.data.interaction_handler.InteractionData;
 import net.minecraft.entity.player.EntityPlayer;
@@ -10,7 +11,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
-@Mod.EventBusSubscriber
+@Mod.EventBusSubscriber(modid = ConstMisc.MOD_ID)
 public class BlockClickTracker {
     @SubscribeEvent(priority = EventPriority.LOWEST)
     public static void onPlayerLeftClickBlock(PlayerInteractEvent.LeftClickBlock event) {

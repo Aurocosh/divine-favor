@@ -4,7 +4,10 @@ import aurocosh.divinefavor.DivineFavor;
 import aurocosh.divinefavor.common.core.ResourceNamer;
 import aurocosh.divinefavor.common.entity.minions.*;
 import aurocosh.divinefavor.common.entity.mob.EntityDirewolf;
-import aurocosh.divinefavor.common.entity.projectile.*;
+import aurocosh.divinefavor.common.entity.projectile.EntityClimbingArrow;
+import aurocosh.divinefavor.common.entity.projectile.EntitySpellArrow;
+import aurocosh.divinefavor.common.entity.projectile.EntitySpookyArrow;
+import aurocosh.divinefavor.common.entity.projectile.EntityStoneball;
 import aurocosh.divinefavor.common.entity.rope.*;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.ResourceLocation;
@@ -40,6 +43,6 @@ public final class ModEntities {
 
     private static void registerModEntity(Class<? extends Entity> entityClass, String entityName, int trackingRange, int updateFrequency, boolean sendsVelocityUpdates) {
         ResourceLocation name = ResourceNamer.getFullName("entity", entityName);
-        EntityRegistry.registerModEntity(name, entityClass, entityName, nextId++, DivineFavor.instance, trackingRange, updateFrequency, sendsVelocityUpdates);
+        EntityRegistry.registerModEntity(name, entityClass, entityName, nextId++, DivineFavor.INSTANCE, trackingRange, updateFrequency, sendsVelocityUpdates);
     }
 }

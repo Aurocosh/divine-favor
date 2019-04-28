@@ -1,6 +1,7 @@
 package aurocosh.divinefavor.common.potions.potions;
 
 import aurocosh.divinefavor.common.config.common.ConfigSpells;
+import aurocosh.divinefavor.common.constants.ConstMisc;
 import aurocosh.divinefavor.common.potions.base.potion.ModPotionToggle;
 import aurocosh.divinefavor.common.potions.common.ModPotions;
 import aurocosh.divinefavor.common.util.UtilMob;
@@ -17,7 +18,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-@Mod.EventBusSubscriber
+@Mod.EventBusSubscriber(modid = ConstMisc.MOD_ID)
 public class PotionMistBlade extends ModPotionToggle {
     private static int FRAMES_TO_INIT_FOG = 5;
     private static int intitFrames = FRAMES_TO_INIT_FOG;

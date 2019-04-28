@@ -3,6 +3,7 @@ package aurocosh.divinefavor.client.core.handler.talisman_container;
 import aurocosh.divinefavor.DivineFavor;
 import aurocosh.divinefavor.client.core.handler.KeyBindings;
 import aurocosh.divinefavor.client.core.handler.talisman.TalismanHUD;
+import aurocosh.divinefavor.common.constants.ConstMisc;
 import aurocosh.divinefavor.common.constants.ConstResources;
 import aurocosh.divinefavor.common.item.talisman_container.ITalismanContainer;
 import aurocosh.divinefavor.common.item.talisman_container.TalismanContainerAdapter;
@@ -25,7 +26,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@Mod.EventBusSubscriber
+@Mod.EventBusSubscriber(modid = ConstMisc.MOD_ID)
 public class TalismanSelectGui extends GuiScreen {
     public static final TalismanSelectGui INSTANCE = new TalismanSelectGui();
 

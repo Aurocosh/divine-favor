@@ -1,5 +1,6 @@
 package aurocosh.divinefavor.common.particles;
 
+import aurocosh.divinefavor.common.constants.ConstMisc;
 import aurocosh.divinefavor.common.core.ResourceNamer;
 import aurocosh.divinefavor.common.particles.base.ModParticle;
 import aurocosh.divinefavor.common.particles.generic.ParticleManager;
@@ -15,7 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @SideOnly(Side.CLIENT)
-@Mod.EventBusSubscriber(Side.CLIENT)
+@Mod.EventBusSubscriber(modid = ConstMisc.MOD_ID, value = Side.CLIENT)
 public final class ParticleHandler {
     private static final List<ParticleManager<? extends ModParticle>> particleManagers = new ArrayList<>();
 

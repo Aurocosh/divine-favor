@@ -7,7 +7,6 @@ import aurocosh.divinefavor.common.custom_data.living.data.wind_leash.WindLeashD
 import aurocosh.divinefavor.common.network.message.client.syncing.MessageSyncWindLeash;
 import aurocosh.divinefavor.common.potions.base.potion.ModPotion;
 import aurocosh.divinefavor.common.potions.common.ModCurses;
-import aurocosh.divinefavor.common.util.UtilRandom;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.math.Vec3d;

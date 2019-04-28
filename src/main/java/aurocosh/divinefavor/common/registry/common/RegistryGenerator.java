@@ -1,5 +1,6 @@
 package aurocosh.divinefavor.common.registry.common;
 
+import aurocosh.divinefavor.common.constants.ConstMisc;
 import aurocosh.divinefavor.common.core.ResourceNamer;
 import aurocosh.divinefavor.common.muliblock.ModMultiBlock;
 import aurocosh.divinefavor.common.spirit.base.ModSpirit;
@@ -8,7 +9,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.registries.RegistryBuilder;
 
-@Mod.EventBusSubscriber
+@Mod.EventBusSubscriber(modid = ConstMisc.MOD_ID)
 public final class RegistryGenerator {
     private final static String REGESTRY_PREFIX = "registry";
 

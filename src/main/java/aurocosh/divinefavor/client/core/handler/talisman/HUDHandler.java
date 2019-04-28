@@ -1,6 +1,7 @@
 package aurocosh.divinefavor.client.core.handler.talisman;
 
 import aurocosh.divinefavor.DivineFavor;
+import aurocosh.divinefavor.common.constants.ConstMisc;
 import aurocosh.divinefavor.common.item.talismans.base.ItemTalisman;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScaledResolution;
@@ -15,7 +16,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
-@Mod.EventBusSubscriber(Side.CLIENT)
+@Mod.EventBusSubscriber(modid = ConstMisc.MOD_ID, value = Side.CLIENT)
 public final class HUDHandler {
     @SubscribeEvent
     public static void onDraw(RenderGameOverlayEvent.Post event) {

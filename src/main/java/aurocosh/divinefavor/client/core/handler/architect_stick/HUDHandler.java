@@ -1,6 +1,7 @@
 package aurocosh.divinefavor.client.core.handler.architect_stick;
 
 import aurocosh.divinefavor.DivineFavor;
+import aurocosh.divinefavor.common.constants.ConstMisc;
 import aurocosh.divinefavor.common.item.mystic_architect_stick.ItemMysticArchitectStick;
 import aurocosh.divinefavor.common.util.UtilGui;
 import aurocosh.divinefavor.common.util.UtilNbt;
@@ -20,7 +21,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
-@Mod.EventBusSubscriber(Side.CLIENT)
+@Mod.EventBusSubscriber(modid = ConstMisc.MOD_ID, value = Side.CLIENT)
 public final class HUDHandler {
     @SubscribeEvent
     @SideOnly(Side.CLIENT)
@@ -30,13 +31,13 @@ public final class HUDHandler {
         if (!(stack.getItem() instanceof ItemMysticArchitectStick))
             return;
 
-        boolean positionsSet = UtilNbt.checkForTags(stack, ItemMysticArchitectStick.TAG_POS_FIRST, ItemMysticArchitectStick.TAG_POS_SECOND);
+        boolean positionsSet = UtilNbt.checkForTags(stack, ItemMysticArchitectStick.Companion.getTAG_POS_FIRST(), ItemMysticArchitectStick.Companion.getTAG_POS_SECOND());
         if (!positionsSet)
             return;
 
         NBTTagCompound compound = stack.getTagCompound();
-        BlockPos startPos = UtilNbt.getBlockPos(compound, ItemMysticArchitectStick.TAG_POS_FIRST, BlockPos.ORIGIN);
-        BlockPos endPos = UtilNbt.getBlockPos(compound, ItemMysticArchitectStick.TAG_POS_SECOND, BlockPos.ORIGIN);
+        BlockPos startPos = UtilNbt.getBlockPos(compound, ItemMysticArchitectStick.Companion.getTAG_POS_FIRST(), BlockPos.ORIGIN);
+        BlockPos endPos = UtilNbt.getBlockPos(compound, ItemMysticArchitectStick.Companion.getTAG_POS_SECOND(), BlockPos.ORIGIN);
 
         Minecraft mc = Minecraft.getMinecraft();
         mc.renderEngine.bindTexture(TextureMap.LOCATION_BLOCKS_TEXTURE);

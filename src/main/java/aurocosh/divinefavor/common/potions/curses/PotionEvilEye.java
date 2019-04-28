@@ -2,6 +2,7 @@ package aurocosh.divinefavor.common.potions.curses;
 
 import aurocosh.divinefavor.DivineFavor;
 import aurocosh.divinefavor.common.config.common.ConfigSpells;
+import aurocosh.divinefavor.common.constants.ConstMisc;
 import aurocosh.divinefavor.common.constants.ConstResources;
 import aurocosh.divinefavor.common.custom_data.player.PlayerData;
 import aurocosh.divinefavor.common.custom_data.player.data.curse.evil_eye.EvilEyeData;
@@ -23,7 +24,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import org.lwjgl.opengl.GL11;
 
-@Mod.EventBusSubscriber(Side.CLIENT)
+@Mod.EventBusSubscriber(modid = ConstMisc.MOD_ID, value = Side.CLIENT)
 public class PotionEvilEye extends ModPotion {
     private static ResourceLocation EVIL_EYE_BLUR_TEXTURE = new ResourceLocation(ConstResources.GUI_EVIL_EYE_BLUR);
 
@@ -52,7 +53,7 @@ public class PotionEvilEye extends ModPotion {
             return;
 
         EntityPlayer player = DivineFavor.proxy.getClientPlayer();
-        if(!player.isPotionActive(ModCurses.evil_eye))
+        if (!player.isPotionActive(ModCurses.evil_eye))
             return;
 
         EvilEyeData evilEyeData = PlayerData.get(player).getEvilEyeData();

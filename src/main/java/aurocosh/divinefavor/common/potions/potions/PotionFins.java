@@ -1,5 +1,6 @@
 package aurocosh.divinefavor.common.potions.potions;
 
+import aurocosh.divinefavor.common.constants.ConstMisc;
 import aurocosh.divinefavor.common.potions.base.potion.ModPotion;
 import aurocosh.divinefavor.common.potions.common.ModPotions;
 import aurocosh.divinefavor.common.util.UtilEntity;
@@ -8,7 +9,7 @@ import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
-@Mod.EventBusSubscriber
+@Mod.EventBusSubscriber(modid = ConstMisc.MOD_ID)
 public class PotionFins extends ModPotion {
     private static float SPEED_MODIFIER = 0.14f;
 

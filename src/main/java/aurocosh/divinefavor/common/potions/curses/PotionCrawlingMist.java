@@ -1,6 +1,7 @@
 package aurocosh.divinefavor.common.potions.curses;
 
 import aurocosh.divinefavor.common.config.common.ConfigArrow;
+import aurocosh.divinefavor.common.constants.ConstMisc;
 import aurocosh.divinefavor.common.custom_data.player.PlayerData;
 import aurocosh.divinefavor.common.custom_data.player.data.curse.crawling_mist.CrawlingMistData;
 import aurocosh.divinefavor.common.lib.LoopedCounter;
@@ -19,7 +20,7 @@ import net.minecraftforge.fml.common.gameevent.TickEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-@Mod.EventBusSubscriber
+@Mod.EventBusSubscriber(modid = ConstMisc.MOD_ID)
 public class PotionCrawlingMist extends ModPotion {
     private static final int FRAMES_TO_INIT_FOG = 5;
     private static final int CURE_DISTANCE_SQ = ConfigArrow.crawlingMist.cureDistance * ConfigArrow.crawlingMist.cureDistance;

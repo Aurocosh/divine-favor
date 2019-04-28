@@ -1,6 +1,7 @@
 package aurocosh.divinefavor.common.potions.curses;
 
 import aurocosh.divinefavor.common.config.common.ConfigArrow;
+import aurocosh.divinefavor.common.constants.ConstMisc;
 import aurocosh.divinefavor.common.potions.base.potion.ModPotion;
 import aurocosh.divinefavor.common.potions.common.ModCurses;
 import net.minecraft.entity.EntityLivingBase;
@@ -8,7 +9,7 @@ import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.util.math.Vec3d;
 import net.minecraftforge.fml.common.Mod;
 
-@Mod.EventBusSubscriber
+@Mod.EventBusSubscriber(modid = ConstMisc.MOD_ID)
 public class PotionRoots extends ModPotion {
     private static final float TOLERANCE = 0.97f;
     private static final Vec3d DOWN_VECTOR = new Vec3d(0, -1, 0);

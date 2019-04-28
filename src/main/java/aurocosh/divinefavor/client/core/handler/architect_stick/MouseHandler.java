@@ -1,6 +1,7 @@
 package aurocosh.divinefavor.client.core.handler.architect_stick;
 
 import aurocosh.divinefavor.DivineFavor;
+import aurocosh.divinefavor.common.constants.ConstMisc;
 import aurocosh.divinefavor.common.item.mystic_architect_stick.ArchitectStickMode;
 import aurocosh.divinefavor.common.item.mystic_architect_stick.ItemMysticArchitectStick;
 import aurocosh.divinefavor.common.util.UtilNbt;
@@ -17,7 +18,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import org.lwjgl.input.Keyboard;
 
 @SideOnly(Side.CLIENT)
-@Mod.EventBusSubscriber(Side.CLIENT)
+@Mod.EventBusSubscriber(modid = ConstMisc.MOD_ID, value = Side.CLIENT)
 public class MouseHandler {
     @SubscribeEvent
     public static void onMouseEvent(MouseEvent event) {
@@ -35,14 +36,14 @@ public class MouseHandler {
             return;
 
         NBTTagCompound compound = UtilNbt.getNbt(stack);
-        int mode = compound.getInteger(ItemMysticArchitectStick.TAG_CURRENT_MODE);
+        int mode = compound.getInteger(ItemMysticArchitectStick.Companion.getTAG_CURRENT_MODE());
         if (dWheel < 0)
             mode--;
         else
             mode++;
-        mode = ArchitectStickMode.clampModeIndex(mode);
-        compound.setInteger(ItemMysticArchitectStick.TAG_CURRENT_MODE, mode);
-        ArchitectStickMode stickMode = ArchitectStickMode.VALUES[mode];
+        mode = ArchitectStickMode.Companion.clampModeIndex(mode);
+        compound.setInteger(ItemMysticArchitectStick.Companion.getTAG_CURRENT_MODE(), mode);
+        ArchitectStickMode stickMode = ArchitectStickMode.Companion.getVALUES()[mode];
         player.sendMessage(new TextComponentString("Selected mode: " + stickMode.getDescription()));
         event.setCanceled(true);
     }

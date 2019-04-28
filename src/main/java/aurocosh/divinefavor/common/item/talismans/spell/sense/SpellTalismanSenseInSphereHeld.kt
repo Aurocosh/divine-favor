@@ -5,7 +5,6 @@ import aurocosh.divinefavor.common.item.talismans.spell.base.SpellOptions
 import aurocosh.divinefavor.common.item.talismans.spell.base.TalismanContext
 import aurocosh.divinefavor.common.lib.extensions.getOther
 import aurocosh.divinefavor.common.spirit.base.ModSpirit
-import aurocosh.divinefavor.common.util.UtilPlayer
 import net.minecraft.item.ItemBlock
 import java.util.*
 import javax.vecmath.Color3f

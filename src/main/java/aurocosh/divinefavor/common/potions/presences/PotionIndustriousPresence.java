@@ -1,5 +1,6 @@
 package aurocosh.divinefavor.common.potions.presences;
 
+import aurocosh.divinefavor.common.constants.ConstMisc;
 import aurocosh.divinefavor.common.custom_data.player.PlayerData;
 import aurocosh.divinefavor.common.custom_data.player.data.presence.industrious.IndustriousPresenceData;
 import aurocosh.divinefavor.common.item.calling_stones.ModCallingStones;
@@ -23,7 +24,7 @@ import net.minecraftforge.fml.common.gameevent.TickEvent;
 import java.util.ArrayList;
 import java.util.List;
 
-@Mod.EventBusSubscriber
+@Mod.EventBusSubscriber(modid = ConstMisc.MOD_ID)
 public class PotionIndustriousPresence extends ModPotion {
     public static final int TICK_RATE = UtilTick.secondsToTicks(1);
     private static final LoopedCounter TICK_COUNTER = new LoopedCounter(TICK_RATE);

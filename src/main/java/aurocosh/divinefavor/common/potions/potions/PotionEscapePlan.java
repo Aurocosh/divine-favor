@@ -1,5 +1,6 @@
 package aurocosh.divinefavor.common.potions.potions;
 
+import aurocosh.divinefavor.common.constants.ConstMisc;
 import aurocosh.divinefavor.common.custom_data.player.PlayerData;
 import aurocosh.divinefavor.common.custom_data.player.data.spell.escape_plan.EscapePlanData;
 import aurocosh.divinefavor.common.potions.base.potion.ModPotion;
@@ -11,7 +12,7 @@ import net.minecraftforge.event.entity.living.LivingDamageEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
-@Mod.EventBusSubscriber
+@Mod.EventBusSubscriber(modid = ConstMisc.MOD_ID)
 public class PotionEscapePlan extends ModPotion {
 
     public PotionEscapePlan() {

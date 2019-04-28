@@ -1,6 +1,7 @@
 package aurocosh.divinefavor.common.potions.potions;
 
 import aurocosh.divinefavor.common.config.common.ConfigSpells;
+import aurocosh.divinefavor.common.constants.ConstMisc;
 import aurocosh.divinefavor.common.custom_data.player.PlayerData;
 import aurocosh.divinefavor.common.custom_data.player.data.spell.molten_skin.MoltenSkinData;
 import aurocosh.divinefavor.common.damage_source.ModDamageSources;
@@ -20,7 +21,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 
-@Mod.EventBusSubscriber
+@Mod.EventBusSubscriber(modid = ConstMisc.MOD_ID)
 public class PotionMoltenSkin extends ModPotionToggle {
     private static int FRAMES_TO_INIT_FOG = 20;
     private static int intitFrames = FRAMES_TO_INIT_FOG;

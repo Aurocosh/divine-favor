@@ -45,7 +45,7 @@ import net.minecraftforge.fml.common.network.NetworkRegistry;
 
 import java.io.File;
 
-@Mod.EventBusSubscriber
+@Mod.EventBusSubscriber(modid = ConstMisc.MOD_ID)
 public class CommonProxy {
     public void preInit(FMLPreInitializationEvent e) {
         BufSerializerProvider.preInit();
@@ -59,11 +59,11 @@ public class CommonProxy {
         ModBlessings.preInit();
         ModArrowTalismans.preInit();
         ModItems.INSTANCE.preInit();
-        ModSoulShards.preInit();
+        ModSoulShards.INSTANCE.preInit();
         ModSpellTalismans.preInit();
         ModBathingBlends.INSTANCE.preInit();
 
-        ModContracts.preInit();
+        ModContracts.INSTANCE.preInit();
         ModCallingStones.INSTANCE.preInit();
         ModWishingStones.INSTANCE.preInit();
 
@@ -81,7 +81,7 @@ public class CommonProxy {
         GrimoireDataHandler.register();
         SpellBowDataHandler.register();
 
-        NetworkRegistry.INSTANCE.registerGuiHandler(DivineFavor.instance, new GuiHandler());
+        NetworkRegistry.INSTANCE.registerGuiHandler(DivineFavor.INSTANCE, new GuiHandler());
 
 //        MinecraftForge.EVENT_BUS.preInit(new PlayerDataHandler.LoginDataSyncer());
 

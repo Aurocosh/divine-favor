@@ -6,8 +6,6 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraftforge.common.util.Constants;
 
-import javax.swing.text.html.parser.Entity;
-
 public class UtilNbt {
     public static NBTTagCompound getNbt(ItemStack stack) {
         if (stack.hasTagCompound())

@@ -1,6 +1,7 @@
 package aurocosh.divinefavor.common.potions.curses;
 
 import aurocosh.divinefavor.common.config.common.ConfigArrow;
+import aurocosh.divinefavor.common.constants.ConstMisc;
 import aurocosh.divinefavor.common.potions.base.potion.ModPotion;
 import aurocosh.divinefavor.common.potions.common.ModCurses;
 import net.minecraft.entity.Entity;
@@ -12,7 +13,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
-@Mod.EventBusSubscriber
+@Mod.EventBusSubscriber(modid = ConstMisc.MOD_ID)
 public class PotionFieryMark extends ModPotion {
     public PotionFieryMark() {
         super("fiery_mark", true, 0x7FB8A4);

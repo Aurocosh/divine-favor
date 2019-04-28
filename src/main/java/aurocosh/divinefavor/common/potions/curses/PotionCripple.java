@@ -1,6 +1,7 @@
 package aurocosh.divinefavor.common.potions.curses;
 
 import aurocosh.divinefavor.common.config.common.ConfigArrow;
+import aurocosh.divinefavor.common.constants.ConstMisc;
 import aurocosh.divinefavor.common.custom_data.living.LivingData;
 import aurocosh.divinefavor.common.custom_data.living.data.cripple.CrippleData;
 import aurocosh.divinefavor.common.potions.base.potion.ModPotion;
@@ -9,7 +10,7 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraftforge.fml.common.Mod;
 
-@Mod.EventBusSubscriber
+@Mod.EventBusSubscriber(modid = ConstMisc.MOD_ID)
 public class PotionCripple extends ModPotion {
     public PotionCripple() {
         super("cripple", true, 0x7FB8A4);
