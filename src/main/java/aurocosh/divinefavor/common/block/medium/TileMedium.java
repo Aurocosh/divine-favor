@@ -252,8 +252,8 @@ public class TileMedium extends TickableTileEntity implements IMultiblockControl
     }
 
     private void checkForOfferings(ItemCallingStone callingStone, List<SlotStack> slotStacks) {
-        Item offering = callingStone.spirit.getOffering();
-        int offeringCount = callingStone.spirit.getOfferingCount();
+        Item offering = callingStone.getSpirit().getOffering();
+        int offeringCount = callingStone.getSpirit().getOfferingCount();
 
         for (SlotStack slotStack : slotStacks) {
             ItemStack stack = slotStack.getStack();
@@ -266,12 +266,12 @@ public class TileMedium extends TickableTileEntity implements IMultiblockControl
     }
 
     private void processCraftingRecipes(ItemCallingStone callingStone, List<SlotStack> slotStacks) {
-        if (!callingStone.spirit.isActive() && extraActiveTime <= 0)
+        if (!callingStone.getSpirit().isActive() && extraActiveTime <= 0)
             return;
 
         for (SlotStack slotStack : slotStacks) {
             ItemStack stack = slotStack.getStack();
-            if (stack.getItem() == ModItems.ritual_pouch) {
+            if (stack.getItem() == ModItems.INSTANCE.getRitual_pouch()) {
                 IItemHandler handler = stack.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null);
                 if (handler != null)
                     exchangeRecipe(callingStone, handler, 3);
@@ -334,8 +334,8 @@ public class TileMedium extends TickableTileEntity implements IMultiblockControl
             return;
 
         ItemCallingStone callingStone = (ItemCallingStone) stack.getItem();
-        ModMultiBlock multiBlock = callingStone.multiBlock;
-        multiBlockInstance = multiBlock.makeMultiBlock(callingStone.spirit, world, pos);
+        ModMultiBlock multiBlock = callingStone.getMultiBlock();
+        multiBlockInstance = multiBlock.makeMultiBlock(callingStone.getSpirit(), world, pos);
         if (multiBlockInstance != null) {
             MultiblockWatcher.registerController(this);
 //            AltarsData altarData = WorldData.get(world).getAltarData();
@@ -347,27 +347,27 @@ public class TileMedium extends TickableTileEntity implements IMultiblockControl
         ItemStack stack = getStoneStack();
         if (!stack.isEmpty()) {
             ItemCallingStone callingStone = (ItemCallingStone) stack.getItem();
-            if (callingStone == ModCallingStones.calling_stone_arbow)
+            if (callingStone == ModCallingStones.INSTANCE.getCalling_stone_arbow())
                 setStone(MediumStone.ARBOW);
-            else if (callingStone == ModCallingStones.calling_stone_blizrabi)
+            else if (callingStone == ModCallingStones.INSTANCE.getCalling_stone_blizrabi())
                 setStone(MediumStone.BLIZRABI);
-            else if (callingStone == ModCallingStones.calling_stone_endererer)
+            else if (callingStone == ModCallingStones.INSTANCE.getCalling_stone_endererer())
                 setStone(MediumStone.ENDERERER);
-            else if (callingStone == ModCallingStones.calling_stone_loon)
+            else if (callingStone == ModCallingStones.INSTANCE.getCalling_stone_loon())
                 setStone(MediumStone.LOON);
-            else if (callingStone == ModCallingStones.calling_stone_neblaze)
+            else if (callingStone == ModCallingStones.INSTANCE.getCalling_stone_neblaze())
                 setStone(MediumStone.NEBLAZE);
-            else if (callingStone == ModCallingStones.calling_stone_redwind)
+            else if (callingStone == ModCallingStones.INSTANCE.getCalling_stone_redwind())
                 setStone(MediumStone.REDWIND);
-            else if (callingStone == ModCallingStones.calling_stone_romol)
+            else if (callingStone == ModCallingStones.INSTANCE.getCalling_stone_romol())
                 setStone(MediumStone.ROMOL);
-            else if (callingStone == ModCallingStones.calling_stone_squarefury)
+            else if (callingStone == ModCallingStones.INSTANCE.getCalling_stone_squarefury())
                 setStone(MediumStone.SQUAREFURY);
-            else if (callingStone == ModCallingStones.calling_stone_timber)
+            else if (callingStone == ModCallingStones.INSTANCE.getCalling_stone_timber())
                 setStone(MediumStone.TIMBER);
 
             if (multiBlockInstance != null) {
-                ModSpirit spirit = callingStone.spirit;
+                ModSpirit spirit = callingStone.getSpirit();
                 if (spirit.isActive() || extraActiveTime > 0)
                     setState(MediumState.ACTIVE);
                 else

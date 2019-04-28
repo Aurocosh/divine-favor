@@ -149,18 +149,18 @@ public final class ModSpellTalismans {
         blink = new SpellTalismanBlink("blink", ModSpirits.endererer, ConfigSpells.blink.favorCost, SpellOptions.ALL_CAST, true, ConfigSpells.blink.distance);
         earthen_dive = new SpellTalismanEarthenDive("earthen_dive", ModSpirits.endererer, ConfigSpells.earthenDive.favorCost, SpellOptions.USE_CAST);
         escape_plan = new SpellTalismanEscapePlan("escape_plan", ModSpirits.endererer, ConfigSpells.escapePlan.favorCost, SpellOptions.ALL_CAST);
-        invite_gem = new SpellTalismanInviteMarker("invite_gem", ModSpirits.endererer, ConfigSpells.inviteGem.favorCost, SpellOptions.ALL_CAST, ModItems.invite_gem);
-        invite_pebble = new SpellTalismanInviteMarker("invite_pebble", ModSpirits.endererer, ConfigSpells.invitePebble.favorCost, SpellOptions.ALL_CAST, ModItems.invite_pebble);
+        invite_gem = new SpellTalismanInviteMarker("invite_gem", ModSpirits.endererer, ConfigSpells.inviteGem.favorCost, SpellOptions.ALL_CAST, ModItems.INSTANCE.getInvite_gem());
+        invite_pebble = new SpellTalismanInviteMarker("invite_pebble", ModSpirits.endererer, ConfigSpells.invitePebble.favorCost, SpellOptions.ALL_CAST, ModItems.INSTANCE.getInvite_pebble());
         overblink = new SpellTalismanBlink("overblink", ModSpirits.endererer, ConfigSpells.overblink.favorCost, SpellOptions.ALL_CAST, true, ConfigSpells.overblink.distance);
         overwarp = new SpellTalismanBlink("overwarp", ModSpirits.endererer, ConfigSpells.overwarp.favorCost, SpellOptions.ALL_CAST, false, ConfigSpells.overwarp.distance);
         pearl_crumbs = new SpellTalismanPearlCrumbs("pearl_crumbs", ModSpirits.endererer, ConfigSpells.pearlCrumbs.favorCost, SpellOptions.ALL_CAST);
-        remote_chest = new SpellTalismanRemoteChest("remote_chest", ModSpirits.endererer, ConfigSpells.remoteChest.favorCost, SpellOptions.USE_CAST, ModItems.storage_gem);
+        remote_chest = new SpellTalismanRemoteChest("remote_chest", ModSpirits.endererer, ConfigSpells.remoteChest.favorCost, SpellOptions.USE_CAST, ModItems.INSTANCE.getStorage_gem());
         surface_blink = new SpellTalismanSurfaceBlink("surface_blink", ModSpirits.endererer, ConfigSpells.surfaceBlink.favorCost, SpellOptions.ALL_CAST_TRACE);
         surface_shift = new SpellTalismanSurfaceShift("surface_shift", ModSpirits.endererer, ConfigSpells.surfaceShift.favorCost, SpellOptions.ALL_CAST);
         wall_slip = new SpellTalismanWallSlip("wall_slip", ModSpirits.endererer, ConfigSpells.wallSlip.favorCost, SpellOptions.USE_CAST);
         warp = new SpellTalismanBlink("warp", ModSpirits.endererer, ConfigSpells.warp.favorCost, SpellOptions.ALL_CAST, false, ConfigSpells.warp.distance);
-        warp_gem = new SpellTalismanWarpMarker("warp_gem", ModSpirits.endererer, ConfigSpells.warpGem.favorCost, SpellOptions.ALL_CAST, ModItems.warp_gem);
-        warp_pebble = new SpellTalismanWarpMarker("warp_pebble", ModSpirits.endererer, ConfigSpells.warpPebble.favorCost, SpellOptions.ALL_CAST, ModItems.warp_pebble);
+        warp_gem = new SpellTalismanWarpMarker("warp_gem", ModSpirits.endererer, ConfigSpells.warpGem.favorCost, SpellOptions.ALL_CAST, ModItems.INSTANCE.getWarp_gem());
+        warp_pebble = new SpellTalismanWarpMarker("warp_pebble", ModSpirits.endererer, ConfigSpells.warpPebble.favorCost, SpellOptions.ALL_CAST, ModItems.INSTANCE.getWarp_pebble());
 
         // loon
         follow = new SpellTalismanFollow("follow", ModSpirits.loon, ConfigSpells.follow.favorCost, SpellOptions.RIGHT_CAST);

@@ -39,7 +39,7 @@ public class ItemRitualPouch extends ModItem {
 
     @Override
     public ICapabilityProvider initCapabilities(ItemStack item, NBTTagCompound nbt ) {
-        if(item.getItem() == ModItems.ritual_pouch)
+        if(item.getItem() == ModItems.INSTANCE.getRitual_pouch())
             return new RitualPouchProvider();
         return null;
     }

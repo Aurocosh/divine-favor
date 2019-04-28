@@ -39,7 +39,7 @@ public class ItemContractBinder extends ModItem {
 
     @Override
     public ICapabilityProvider initCapabilities(ItemStack item, NBTTagCompound nbt) {
-        if (item.getItem() == ModItems.contract_binder)
+        if (item.getItem() == ModItems.INSTANCE.getContract_binder())
             return new CintractBinderProvider();
         return null;
     }

@@ -29,7 +29,7 @@ public class ModRendering {
     public static void init() {
         RenderManager manager = Minecraft.getMinecraft().getRenderManager();
         RenderItem itemRenderer = Minecraft.getMinecraft().getRenderItem();
-        manager.entityRenderMap.put(EntityStoneball.class, new RenderSnowball<EntityStoneball>(manager, ModItems.stoneball, itemRenderer));
+        manager.entityRenderMap.put(EntityStoneball.class, new RenderSnowball<EntityStoneball>(manager, ModItems.INSTANCE.getStoneball(), itemRenderer));
         manager.entityRenderMap.put(EntitySpellArrow.class, new RenderSpellArrow(manager));
 
         manager.entityRenderMap.put(EntityMinionZombie.class, new RenderMinionZombie(manager));

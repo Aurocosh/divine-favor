@@ -20,12 +20,12 @@ public class EntityRopeTeleportingNode extends EntityRopeNodeBase {
 
     @Override
     protected void registerPickUp(EntityPlayer player) {
-        UtilPlayer.addStackToInventoryOrDrop(player, new ItemStack(ModItems.rope_teleporting, 1));
+        UtilPlayer.addStackToInventoryOrDrop(player, new ItemStack(ModItems.INSTANCE.getRope_teleporting(), 1));
     }
 
     @Override
     protected boolean canDropNewNode(EntityPlayer player) {
-        SlotData slotData = UtilPlayer.findStackInInventory(player, element -> !element.isEmpty() && element.getItem() == ModItems.rope_teleporting);
+        SlotData slotData = UtilPlayer.findStackInInventory(player, element -> !element.isEmpty() && element.getItem() == ModItems.INSTANCE.getRope_teleporting());
         if (slotData.slotIndex == -1)
             return false;
         slotData.stack.shrink(1);

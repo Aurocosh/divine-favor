@@ -44,7 +44,7 @@ public class PotionManipulativePresence extends ModPotion {
         ManipulativePresenceData auraData = PlayerData.get(player).getManipulativePresenceData();
         if (auraData.tryLuck()) {
             player.removePotionEffect(ModBlessings.manipulative_presence);
-            player.addItemStackToInventory(new ItemStack(ModCallingStones.calling_stone_loon));
+            player.addItemStackToInventory(new ItemStack(ModCallingStones.INSTANCE.getCalling_stone_loon()));
         }
     }
 }

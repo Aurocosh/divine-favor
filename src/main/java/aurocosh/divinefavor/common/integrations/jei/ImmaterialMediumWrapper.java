@@ -22,7 +22,7 @@ public class ImmaterialMediumWrapper implements IRecipeWrapper {
         for (Ingredient ingredient : recipe.ingredients)
             builder.add(ingredient.getMatchingStacks());
         builder.add(recipe.callingStone.getMatchingStacks());
-        builder.add(Ingredient.fromItem(ModItems.ritual_pouch).getMatchingStacks());
+        builder.add(Ingredient.fromItem(ModItems.INSTANCE.getRitual_pouch()).getMatchingStacks());
 
         ingredients.setInputs(VanillaTypes.ITEM, builder.build());
         ingredients.setOutput(VanillaTypes.ITEM, recipe.result);

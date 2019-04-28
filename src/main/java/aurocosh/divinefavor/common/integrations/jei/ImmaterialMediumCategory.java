@@ -50,7 +50,7 @@ public class ImmaterialMediumCategory implements IRecipeCategory<ImmaterialMediu
         ImmaterialMediumRecipe recipe = recipeWrapper.recipe;
 
         group.init(0, true, 64, 34);
-        group.set(0, Arrays.asList(Ingredient.fromItem(ModItems.ritual_pouch).getMatchingStacks()));
+        group.set(0, Arrays.asList(Ingredient.fromItem(ModItems.INSTANCE.getRitual_pouch()).getMatchingStacks()));
 
         group.init(1, true, 91, 34);
         group.set(1, Arrays.asList(recipe.callingStone.getMatchingStacks()));

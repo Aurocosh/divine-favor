@@ -83,7 +83,7 @@ public class PotionIndustriousPresence extends ModPotion {
         IndustriousPresenceData auraData = PlayerData.get(player).getIndustriousPresenceData();
         if (auraData.count()) {
             player.removePotionEffect(ModBlessings.industrious_presence);
-            player.addItemStackToInventory(new ItemStack(ModCallingStones.calling_stone_romol));
+            player.addItemStackToInventory(new ItemStack(ModCallingStones.INSTANCE.getCalling_stone_romol()));
         }
     }
 
