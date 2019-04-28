@@ -64,7 +64,7 @@ public class BlockEtherealLight extends ModBlockAir implements ICustomStateMappe
 
             if (x < (double) pos.getX() || x > (double) (pos.getX() + 1) || y < 0.0D || y > (double) (pos.getY() + 1) || z < (double) pos.getZ() || z > (double) (pos.getZ() + 1)) {
                 Vec3d position = new Vec3d(x, y, z);
-                ModParticles.normal.createParticle(position, () -> new EtherealParticle(worldIn, position, 1f, 1f));
+                ModParticles.INSTANCE.getNormal().createParticle(position, () -> new EtherealParticle(worldIn, position, 1f, 1f));
             }
         }
     }

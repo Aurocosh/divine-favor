@@ -15,7 +15,7 @@ public class ClientProxy extends CommonProxy {
     public void preInit(FMLPreInitializationEvent event) {
         super.preInit(event);
 
-        ModParticles.preInit();
+        ModParticles.INSTANCE.preInit();
         ModRendering.preInit();
 
 //        MinecraftForge.EVENT_BUS.register(new HUDHandler());

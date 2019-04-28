@@ -47,7 +47,7 @@ public class EntityPing extends Entity {
             Vec3d pointOnSphere = direction.scale(distance);
             Vec3d pointInWorld = pointOnSphere.add(getPositionVector());
             Vec3d speed = direction.scale(-0.15f);
-            ModParticles.normal.createParticle(pointInWorld, () -> new MobileParticle(world, pointInWorld, speed, COLOR_3_F));
+            ModParticles.INSTANCE.getNormal().createParticle(pointInWorld, () -> new MobileParticle(world, pointInWorld, speed, COLOR_3_F));
         }
     }
 
