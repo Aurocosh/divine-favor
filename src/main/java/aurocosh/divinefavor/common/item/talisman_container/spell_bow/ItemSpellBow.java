@@ -61,7 +61,7 @@ public class ItemSpellBow extends ModItem {
                 if (entityLivingBase == null)
                     return 0.0F;
                 else
-                    return entityLivingBase.getActiveItemStack().getItem() != ModItems.spell_bow ? 0.0F : (float) (stack.getMaxItemUseDuration() - entityLivingBase.getItemInUseCount()) / 20.0F;
+                    return entityLivingBase.getActiveItemStack().getItem() != ModItems.INSTANCE.getSpell_bow() ? 0.0F : (float) (stack.getMaxItemUseDuration() - entityLivingBase.getItemInUseCount()) / 20.0F;
             }
         });
         addPropertyOverride(new ResourceLocation("pulling"), new IItemPropertyGetter() {
@@ -212,7 +212,7 @@ public class ItemSpellBow extends ModItem {
 
     @Override
     public ICapabilityProvider initCapabilities(ItemStack item, NBTTagCompound nbt) {
-        if (item.getItem() == ModItems.spell_bow)
+        if (item.getItem() == ModItems.INSTANCE.getSpell_bow())
             return new SpellBowProvider();
         return null;
     }

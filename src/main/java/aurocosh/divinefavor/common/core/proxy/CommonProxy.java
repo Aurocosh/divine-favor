@@ -58,13 +58,13 @@ public class CommonProxy {
         ModBlendEffects.preInit();
         ModBlessings.preInit();
         ModArrowTalismans.preInit();
-        ModItems.preInit();
+        ModItems.INSTANCE.preInit();
         ModSoulShards.preInit();
         ModSpellTalismans.preInit();
-        ModBathingBlends.preInit();
+        ModBathingBlends.INSTANCE.preInit();
 
         ModContracts.preInit();
-        ModCallingStones.preInit();
+        ModCallingStones.INSTANCE.preInit();
         ModWishingStones.INSTANCE.preInit();
 
         ModBlocks.preInit();
@@ -90,14 +90,18 @@ public class CommonProxy {
 //        TalismanPagesGenerator.generate();
 
 //        e.getSuggestedConfigurationFile().getParentFile().getParentFile();
+
+
     }
 
     public void init(FMLInitializationEvent e) {
         ModMultiBlocks.init();
-        ModItems.init();
+        ModItems.INSTANCE.init();
         ModBlocks.init();
         ModRecipes.init();
         RecipeLoader.init();
+
+//        MinecraftForge.EVENT_BUS.register(PotionButcheringStrike.Companion);
     }
 
     @SubscribeEvent

@@ -293,8 +293,8 @@ public class TileBathHeater extends TileEntity implements ITickable, IAreaWatche
             ItemStack stack = blendStackHandler.getStackInSlot(0);
             if (!stack.isEmpty()) {
                 activeBlend = (ItemBathingBlend) stack.getItem();
-                maxEffectTime = ItemBathingBlend.getDuration(stack);
-                loopedCounter.setTickRate(ItemBathingBlend.getRate(stack));
+                maxEffectTime = ItemBathingBlend.Companion.getDuration(stack);
+                loopedCounter.setTickRate(ItemBathingBlend.Companion.getRate(stack));
                 currentEffectTime = maxEffectTime;
                 progressEffect = 100;
                 stack.shrink(1);

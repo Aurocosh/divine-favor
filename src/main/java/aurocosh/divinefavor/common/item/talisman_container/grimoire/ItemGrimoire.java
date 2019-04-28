@@ -55,7 +55,7 @@ public class ItemGrimoire extends ModItem {
     @Override
     public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand hand) {
         ItemStack stack = playerIn.getHeldItem(hand);
-        if (stack.getItem() != ModItems.grimoire)
+        if (stack.getItem() != ModItems.INSTANCE.getGrimoire())
             return new ActionResult<>(EnumActionResult.PASS, stack);
 
         if (playerIn.isSneaking()) {
@@ -77,7 +77,7 @@ public class ItemGrimoire extends ModItem {
 
     @Override
     public ICapabilityProvider initCapabilities(ItemStack item, NBTTagCompound nbt) {
-        if (item.getItem() == ModItems.grimoire)
+        if (item.getItem() == ModItems.INSTANCE.getGrimoire())
             return new GrimoireProvider();
         return null;
     }

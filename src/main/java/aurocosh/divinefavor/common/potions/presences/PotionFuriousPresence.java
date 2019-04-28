@@ -78,7 +78,7 @@ public class PotionFuriousPresence extends ModPotion {
         FuriousPresenceData furyData = PlayerData.get(player).getFuriousPresenceData();
         if (furyData.count()) {
             player.removePotionEffect(ModBlessings.furious_presence);
-            player.addItemStackToInventory(new ItemStack(ModCallingStones.calling_stone_squarefury));
+            player.addItemStackToInventory(new ItemStack(ModCallingStones.INSTANCE.getCalling_stone_squarefury()));
         }
     }
 }

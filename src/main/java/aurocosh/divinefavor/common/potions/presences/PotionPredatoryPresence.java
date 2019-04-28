@@ -62,7 +62,7 @@ public class PotionPredatoryPresence extends ModPotion {
         PredatoryPresenceData presenceData = PlayerData.get(player).getPredatoryPresenceData();
         if (presenceData.count()) {
             player.removePotionEffect(ModBlessings.predatory_presence);
-            player.addItemStackToInventory(new ItemStack(ModCallingStones.calling_stone_arbow));
+            player.addItemStackToInventory(new ItemStack(ModCallingStones.INSTANCE.getCalling_stone_arbow()));
         }
     }
 }

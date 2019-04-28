@@ -23,7 +23,7 @@ public class DivineFavorCreativeTab extends CreativeTabs {
 
     @Override
     public ItemStack createIcon() {
-        return new ItemStack(ModItems.grimoire);
+        return new ItemStack(ModItems.INSTANCE.getGrimoire());
     }
 
 //    @Override

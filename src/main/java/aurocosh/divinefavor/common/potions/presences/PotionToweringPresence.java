@@ -52,7 +52,7 @@ public class PotionToweringPresence extends ModPotion {
     protected void onPotionRemoved(EntityLivingBase livingBase) {
         super.onPotionRemoved(livingBase);
         EntityPlayer player = (EntityPlayer) livingBase;
-        player.addItemStackToInventory(new ItemStack(ModCallingStones.calling_stone_timber));
+        player.addItemStackToInventory(new ItemStack(ModCallingStones.INSTANCE.getCalling_stone_timber()));
     }
 
     @Override

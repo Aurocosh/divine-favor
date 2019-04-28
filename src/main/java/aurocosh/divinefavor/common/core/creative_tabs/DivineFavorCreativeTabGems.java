@@ -24,7 +24,7 @@ public class DivineFavorCreativeTabGems extends CreativeTabs {
 
     @Override
     public ItemStack createIcon() {
-        return new ItemStack(ModCallingStones.calling_stone_neblaze);
+        return new ItemStack(ModCallingStones.INSTANCE.getCalling_stone_neblaze());
     }
 
 //    @Override

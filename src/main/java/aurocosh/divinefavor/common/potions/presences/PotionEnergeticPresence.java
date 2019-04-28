@@ -50,7 +50,7 @@ public class PotionEnergeticPresence extends ModPotion {
             presenceData.reset();
         else if (presenceData.count() && !player.world.isRemote) {
             player.removePotionEffect(ModBlessings.energetic_presence);
-            player.addItemStackToInventory(new ItemStack(ModCallingStones.calling_stone_redwind));
+            player.addItemStackToInventory(new ItemStack(ModCallingStones.INSTANCE.getCalling_stone_redwind()));
         }
     }
 

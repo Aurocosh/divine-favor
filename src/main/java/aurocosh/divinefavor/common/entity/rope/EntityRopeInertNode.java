@@ -19,12 +19,12 @@ public class EntityRopeInertNode extends EntityRopeNodeBase implements IClimbabl
 
     @Override
     protected void registerPickUp(EntityPlayer player) {
-        UtilPlayer.addStackToInventoryOrDrop(player, new ItemStack(ModItems.rope_inert, 1));
+        UtilPlayer.addStackToInventoryOrDrop(player, new ItemStack(ModItems.INSTANCE.getRope_inert(), 1));
     }
 
     @Override
     protected boolean canDropNewNode(EntityPlayer player) {
-        SlotData slotData = UtilPlayer.findStackInInventory(player, element -> !element.isEmpty() && element.getItem() == ModItems.rope_inert);
+        SlotData slotData = UtilPlayer.findStackInInventory(player, element -> !element.isEmpty() && element.getItem() == ModItems.INSTANCE.getRope_inert());
         if (slotData.slotIndex == -1)
             return false;
         slotData.stack.shrink(1);

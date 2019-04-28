@@ -27,7 +27,7 @@ public class ModEffect extends PotionEffect {
     }
 
     public ModEffect setIsCurse() {
-        setCurativeItems(Collections.singletonList(new ItemStack(ModItems.milky_apple)));
+        setCurativeItems(Collections.singletonList(new ItemStack(ModItems.INSTANCE.getMilky_apple())));
         return this;
     }
 

@@ -19,12 +19,12 @@ public class EntityRopeGuideNode extends EntityRopeNodeBase implements IClimbabl
 
     @Override
     protected void registerPickUp(EntityPlayer player) {
-        UtilPlayer.addStackToInventoryOrDrop(player, new ItemStack(ModItems.rope_guide, 1));
+        UtilPlayer.addStackToInventoryOrDrop(player, new ItemStack(ModItems.INSTANCE.getRope_guide(), 1));
     }
 
     @Override
     protected boolean canDropNewNode(EntityPlayer player) {
-        SlotData slotData = UtilPlayer.findStackInInventory(player, element -> !element.isEmpty() && element.getItem() == ModItems.rope_guide);
+        SlotData slotData = UtilPlayer.findStackInInventory(player, element -> !element.isEmpty() && element.getItem() == ModItems.INSTANCE.getRope_guide());
         if (slotData.slotIndex == -1)
             return false;
         slotData.stack.shrink(1);

@@ -41,7 +41,7 @@ public class PotionWarpingPresence extends ModPotion {
         WarpingPresenceData presenceData = PlayerData.get(player).getWarpingPresenceData();
         if(presenceData.tryLuck() && !player.world.isRemote){
             player.removePotionEffect(ModBlessings.warping_presence);
-            player.addItemStackToInventory(new ItemStack(ModCallingStones.calling_stone_endererer));
+            player.addItemStackToInventory(new ItemStack(ModCallingStones.INSTANCE.getCalling_stone_endererer()));
         }
     }
 }
