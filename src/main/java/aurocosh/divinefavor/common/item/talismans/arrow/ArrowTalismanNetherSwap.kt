@@ -14,8 +14,8 @@ import java.util.*
 
 class ArrowTalismanNetherSwap(name: String, spirit: ModSpirit, favorCost: Int, color: Color, arrowDamage: Double, arrowType: ArrowType) : ItemArrowTalisman(name, spirit, favorCost, color, arrowDamage, EnumSet.of(ArrowOptions.BreakOnHit, ArrowOptions.RequiresTarget), arrowType) {
 
-    override fun performActionServer(target: EntityLivingBase, shooter: EntityLivingBase, spellArrow: EntitySpellArrow, blockPos: BlockPos, sideHit: EnumFacing): Boolean {
-        val targetPos = target.position
+    override fun performActionServer(target: EntityLivingBase?, shooter: EntityLivingBase, spellArrow: EntitySpellArrow, blockPos: BlockPos?, sideHit: EnumFacing?): Boolean {
+        val targetPos = target!!.position
         val shooterPos = shooter.position
         UtilEntity.teleport(shooter, targetPos)
         UtilEntity.teleport(target, shooterPos)

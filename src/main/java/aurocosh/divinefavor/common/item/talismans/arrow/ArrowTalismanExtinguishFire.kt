@@ -20,10 +20,10 @@ import java.util.*
 
 class ArrowTalismanExtinguishFire(name: String, spirit: ModSpirit, favorCost: Int, color: Color, arrowDamage: Double, options: EnumSet<ArrowOptions>, arrowType: ArrowType) : ItemArrowTalisman(name, spirit, favorCost, color, arrowDamage, options, arrowType) {
 
-    override fun performActionServer(target: EntityLivingBase, shooter: EntityLivingBase, spellArrow: EntitySpellArrow, blockPos: BlockPos, sideHit: EnumFacing): Boolean {
+    override fun performActionServer(target: EntityLivingBase?, shooter: EntityLivingBase, spellArrow: EntitySpellArrow, blockPos: BlockPos?, sideHit: EnumFacing?): Boolean {
         val world = spellArrow.world
 
-        val spherePositions = UtilCoordinates.getBlocksInSphere(blockPos, ConfigArrow.extinguishFire.radius)
+        val spherePositions = UtilCoordinates.getBlocksInSphere(spellArrow.position, ConfigArrow.extinguishFire.radius)
         val firePositions = spherePositions.filter(ConvertingPredicate(world::getBlock, Blocks.FIRE::equals)::invoke)
         val airState = Blocks.AIR.defaultState
         for (pos in firePositions)

@@ -18,7 +18,7 @@ class ArrowTalismanMineArrow(name: String, spirit: ModSpirit, favorCost: Int, co
         spellArrow.setDespawnDelay(ConfigArrow.mineArrow.despawnDelay)
     }
 
-    override fun onCollideWithPlayer(spellArrow: EntitySpellArrow, entityIn: EntityPlayer): Boolean {
+    override fun onCollideWithPlayer(spellArrow: EntitySpellArrow, player: EntityPlayer): Boolean {
         return false
     }
 

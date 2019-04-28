@@ -11,5 +11,4 @@ public final class ConstGuiIDs {
     public static final int SOULBOUND_LECTERN_EMPTY = 7;
     public static final int SOULBOUND_LECTERN_WITH_SHARD = 8;
     public static final int SPELL_BOW = 9;
-    public static final int TALISMAN = 10;
 }

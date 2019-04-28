@@ -19,10 +19,10 @@ import java.util.*
 
 class ArrowTalismanIceSphere(name: String, spirit: ModSpirit, favorCost: Int, color: Color, arrowDamage: Double, options: EnumSet<ArrowOptions>, arrowType: ArrowType) : ItemArrowTalisman(name, spirit, favorCost, color, arrowDamage, options, arrowType) {
 
-    override fun performActionServer(target: EntityLivingBase, shooter: EntityLivingBase, spellArrow: EntitySpellArrow, blockPos: BlockPos, sideHit: EnumFacing): Boolean {
+    override fun performActionServer(target: EntityLivingBase?, shooter: EntityLivingBase, spellArrow: EntitySpellArrow, blockPos: BlockPos?, sideHit: EnumFacing?): Boolean {
         val world = spellArrow.world
 
-        val sphereOutline = UtilCoordinates.getSphereOutline(blockPos, ConfigArrow.iceSphereArrow.internalRadius, ConfigArrow.iceSphereArrow.externalRadius)
+        val sphereOutline = UtilCoordinates.getSphereOutline(spellArrow.position, ConfigArrow.iceSphereArrow.internalRadius, ConfigArrow.iceSphereArrow.externalRadius)
         val replaceablePositions = sphereOutline.filter(world::isAirOrReplacable)
 
         val defaultState = Blocks.ICE.defaultState

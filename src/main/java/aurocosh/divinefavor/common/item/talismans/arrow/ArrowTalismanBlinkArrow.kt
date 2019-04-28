@@ -14,8 +14,8 @@ import java.util.*
 
 class ArrowTalismanBlinkArrow(name: String, spirit: ModSpirit, favorCost: Int, color: Color, arrowDamage: Double, options: EnumSet<ArrowOptions>, arrowType: ArrowType) : ItemArrowTalisman(name, spirit, favorCost, color, arrowDamage, options, arrowType) {
 
-    override fun performActionServer(target: EntityLivingBase, shooter: EntityLivingBase, arrow: EntitySpellArrow, blockPos: BlockPos, sideHit: EnumFacing): Boolean {
-        UtilEntity.teleport(shooter, arrow.position)
+    override fun performActionServer(target: EntityLivingBase?, shooter: EntityLivingBase, spellArrow: EntitySpellArrow, blockPos: BlockPos?, sideHit: EnumFacing?): Boolean {
+        UtilEntity.teleport(shooter, spellArrow.position)
         return true
     }
 }

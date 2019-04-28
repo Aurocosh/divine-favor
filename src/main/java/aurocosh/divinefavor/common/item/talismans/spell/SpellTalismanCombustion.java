@@ -30,13 +30,13 @@ public class SpellTalismanCombustion extends ItemSpellTalisman {
 
     @Override
     protected void performActionServer(TalismanContext context) {
-        BlockPos pos = context.pos;
-        IBlockState state = context.world.getBlockState(pos);
+        BlockPos pos = context.getPos();
+        IBlockState state = context.getWorld().getBlockState(pos);
         if(state.getBlock() != Blocks.CHEST)
             return;
 
-        TileEntity entity = context.world.getTileEntity(pos);
-        IItemHandler stackHandler = entity.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, context.facing);
+        TileEntity entity = context.getWorld().getTileEntity(pos);
+        IItemHandler stackHandler = entity.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, context.getFacing());
 
         int stacksToSmelt = MAX_SMELT_COUNT;
         int slotCount = stackHandler.getSlots();
@@ -58,6 +58,6 @@ public class SpellTalismanCombustion extends ItemSpellTalisman {
         }
 
         boolean damageTerrain = DAMAGE_TERRAIN && !state.getMaterial().isLiquid();
-        context.world.newExplosion(context.player, pos.getX(), pos.getY(), pos.getZ(), EXPLOSION_POWER, CAUSE_FIRE, damageTerrain);
+        context.getWorld().newExplosion(context.getPlayer(), pos.getX(), pos.getY(), pos.getZ(), EXPLOSION_POWER, CAUSE_FIRE, damageTerrain);
     }
 }

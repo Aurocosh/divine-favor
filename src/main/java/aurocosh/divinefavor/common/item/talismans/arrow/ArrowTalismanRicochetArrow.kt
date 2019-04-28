@@ -22,9 +22,12 @@ class ArrowTalismanRicochetArrow(name: String, spirit: ModSpirit, favorCost: Int
         compound.setInteger(TAG_BOUNCES_LEFT, ConfigArrow.ricochetArrow.maxBounces)
     }
 
-    override fun performActionServer(target: EntityLivingBase?, shooter: EntityLivingBase, spellArrow: EntitySpellArrow, blockPos: BlockPos, sideHit: EnumFacing): Boolean {
+    override fun performActionServer(target: EntityLivingBase?, shooter: EntityLivingBase, spellArrow: EntitySpellArrow, blockPos: BlockPos?, sideHit: EnumFacing?): Boolean {
         if (target != null)
             return true
+        if(sideHit == null)
+            return true;
+
         val compound = spellArrow.talismanDataServer
         val bouncesLeft = compound.getInteger(TAG_BOUNCES_LEFT)
         if (bouncesLeft == 0)

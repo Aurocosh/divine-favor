@@ -65,7 +65,7 @@ public class CommonProxy {
 
         ModContracts.preInit();
         ModCallingStones.preInit();
-        ModWishingStones.preInit();
+        ModWishingStones.INSTANCE.preInit();
 
         ModBlocks.preInit();
         ModEntities.preInit();

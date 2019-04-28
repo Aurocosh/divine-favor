@@ -1,5 +1,6 @@
 package aurocosh.divinefavor.common.util
 
+import aurocosh.divinefavor.common.lib.extensions.selectRandom
 import net.minecraft.init.Blocks
 import net.minecraft.util.EnumFacing
 import net.minecraft.util.math.AxisAlignedBB
@@ -30,13 +31,11 @@ object UtilCoordinates {
 
             val neighboursToAdd = UtilRandom.nextInt(minNextNode, maxNextNode)
             val neighbours = UtilBlockPos.getNeighbours(nextNode)
-            var newNodes: MutableList<BlockPos> = ArrayList()
-            for (neighbour in neighbours)
-                if (!visitedNodes.contains(neighbour) && !plannedNodes.contains(neighbour))
-                    newNodes.add(neighbour)
-            newNodes = UtilRandom.selectRandom(newNodes, neighboursToAdd)
-            nodesToVisit.addAll(newNodes)
-            plannedNodes.addAll(newNodes)
+
+            val newNodes = neighbours.filter { node -> !visitedNodes.contains(node) && !plannedNodes.contains(node) }
+            val randomNewNodes = newNodes.selectRandom(neighboursToAdd)
+            nodesToVisit.addAll(randomNewNodes)
+            plannedNodes.addAll(randomNewNodes)
         }
         return selectedNodes
     }

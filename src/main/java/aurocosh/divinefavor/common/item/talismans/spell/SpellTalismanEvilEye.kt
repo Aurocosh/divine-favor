@@ -30,8 +30,9 @@ class SpellTalismanEvilEye(name: String, spirit: ModSpirit, favorCost: Int, opti
             evilEyeData.severity = ConfigSpells.evilEye.startingSeverity
 
         val severity = evilEyeData.severity
-        context.target.attackEntityFrom(DamageSource.causePlayerDamage(player), (ConfigSpells.evilEye.damagePerSeverity * severity).toFloat())
-        context.target.addPotionEffect(PotionEffect(MobEffects.SLOWNESS, ConfigSpells.evilEye.slownessTime, ConfigSpells.evilEye.slownessLevel))
+        val target = context.target!!
+        target.attackEntityFrom(DamageSource.causePlayerDamage(player), (ConfigSpells.evilEye.damagePerSeverity * severity).toFloat())
+        target.addPotionEffect(PotionEffect(MobEffects.SLOWNESS, ConfigSpells.evilEye.slownessTime, ConfigSpells.evilEye.slownessLevel))
         player.addPotionEffect(ModEffect(ModCurses.evil_eye, ConfigSpells.evilEye.evilEyeTime).setIsCurse())
 
         MessageSyncEvilEye(severity).sendTo(player)

@@ -17,7 +17,7 @@ import java.util.*
 
 class ArrowTalismanIncendiaryArrow(name: String, spirit: ModSpirit, favorCost: Int, color: Color, arrowDamage: Double, options: EnumSet<ArrowOptions>, arrowType: ArrowType) : ItemArrowTalisman(name, spirit, favorCost, color, arrowDamage, options, arrowType) {
 
-    override fun performActionServer(target: EntityLivingBase, shooter: EntityLivingBase, spellArrow: EntitySpellArrow, blockPos: BlockPos, sideHit: EnumFacing): Boolean {
+    override fun performActionServer(target: EntityLivingBase?, shooter: EntityLivingBase, spellArrow: EntitySpellArrow, blockPos: BlockPos?, sideHit: EnumFacing?): Boolean {
         val spherePositions = UtilCoordinates.getBlocksInSphere(spellArrow.position, ConfigArrow.incendiaryArrow.radius)
         spherePositions.forEach { pos -> UtilBlock.ignite(shooter as EntityPlayer, spellArrow.world, pos) }
         return true

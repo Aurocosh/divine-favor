@@ -36,7 +36,7 @@ class ArrowTalismanStasisArrow(name: String, spirit: ModSpirit, favorCost: Int, 
         }
     }
 
-    override fun onCollideWithPlayer(spellArrow: EntitySpellArrow, entityIn: EntityPlayer): Boolean {
+    override fun onCollideWithPlayer(spellArrow: EntitySpellArrow, player: EntityPlayer): Boolean {
         return false
     }
 

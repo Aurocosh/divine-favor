@@ -20,7 +20,7 @@ class ArrowTalismanSniperArrow(name: String, spirit: ModSpirit, favorCost: Int, 
         UtilNbt.setVec3d(compound, TAG_STARTING_POS, shooter.positionVector)
     }
 
-    override fun performActionServer(target: EntityLivingBase, shooter: EntityLivingBase, spellArrow: EntitySpellArrow, blockPos: BlockPos, sideHit: EnumFacing): Boolean {
+    override fun performActionServer(target: EntityLivingBase?, shooter: EntityLivingBase, spellArrow: EntitySpellArrow, blockPos: BlockPos?, sideHit: EnumFacing?): Boolean {
         val compound = spellArrow.talismanDataServer
         val startingPosition = UtilNbt.getVec3d(compound, TAG_STARTING_POS)
 

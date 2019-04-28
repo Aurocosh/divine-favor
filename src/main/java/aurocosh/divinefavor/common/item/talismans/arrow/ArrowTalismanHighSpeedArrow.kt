@@ -11,8 +11,8 @@ import java.util.*
 
 class ArrowTalismanHighSpeedArrow(name: String, spirit: ModSpirit, favorCost: Int, color: Color, arrowDamage: Double, options: EnumSet<ArrowOptions>, arrowType: ArrowType, private val extraVelocity: Float) : ItemArrowTalisman(name, spirit, favorCost, color, arrowDamage, options, arrowType) {
 
-    override fun postInit(arrow: EntityArrow) {
-        val direction = UtilEntity.getMotionVector(arrow)
-        UtilEntity.addVelocity(arrow, direction, extraVelocity)
+    override fun postInit(spellArrow: EntityArrow) {
+        val direction = UtilEntity.getMotionVector(spellArrow)
+        UtilEntity.addVelocity(spellArrow, direction, extraVelocity)
     }
 }

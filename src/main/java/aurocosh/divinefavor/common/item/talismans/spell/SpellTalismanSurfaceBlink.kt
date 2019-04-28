@@ -23,10 +23,6 @@ class SpellTalismanSurfaceBlink(name: String, spirit: ModSpirit, favorCost: Int,
     }
 
     private fun getBlinkTarget(context: TalismanContext): BlockPos? {
-        if (context.pos == null)
-            return null
-        if (context.facing == null)
-            return null
         val target = context.pos.offset(context.facing)
         if (context.facing == EnumFacing.DOWN)
             return target.down()

@@ -1,6 +1,5 @@
 package aurocosh.divinefavor.common.network;
 
-import aurocosh.divinefavor.client.gui.GuiTalismanContainer;
 import aurocosh.divinefavor.client.gui.blocks.GuiBathHeater;
 import aurocosh.divinefavor.client.gui.blocks.medium.GuiIronMediumNoStone;
 import aurocosh.divinefavor.client.gui.blocks.medium.GuiIronMediumWithStone;
@@ -31,7 +30,6 @@ import aurocosh.divinefavor.common.item.talisman_container.spell_bow.ItemSpellBo
 import aurocosh.divinefavor.common.item.talisman_container.spell_bow.SpellBowContainer;
 import aurocosh.divinefavor.common.item.talisman_container.spell_bow.capability.ISpellBowHandler;
 import aurocosh.divinefavor.common.item.talisman_container.spell_bow.capability.SpellBowDataHandler;
-import aurocosh.divinefavor.common.item.talismans.spell.base.ContainerTalisman;
 import aurocosh.divinefavor.common.util.UtilPlayer;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -51,8 +49,6 @@ public class GuiHandler implements IGuiHandler {
                 return new ContainerMediumNoStone(player, (TileMedium) world.getTileEntity(new BlockPos(x, y, z)));
             case ConstGuiIDs.IRON_MEDIUM_WITH_STONE:
                 return new ContainerMediumWithStone(player, (TileMedium) world.getTileEntity(new BlockPos(x, y, z)));
-            case ConstGuiIDs.TALISMAN:
-                return new ContainerTalisman(player, player.getHeldItem(EnumHand.MAIN_HAND));
             case ConstGuiIDs.RITUAL_POUCH: {
                 ItemStack pouch = player.getHeldItemMainhand();
                 IItemHandler handler = pouch.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null);
@@ -94,8 +90,6 @@ public class GuiHandler implements IGuiHandler {
                 return new GuiIronMediumNoStone(player, (TileMedium) world.getTileEntity(new BlockPos(x, y, z)));
             case ConstGuiIDs.IRON_MEDIUM_WITH_STONE:
                 return new GuiIronMediumWithStone(player, (TileMedium) world.getTileEntity(new BlockPos(x, y, z)));
-            case ConstGuiIDs.TALISMAN:
-                return new GuiTalismanContainer(player, player.getHeldItem(EnumHand.MAIN_HAND));
             case ConstGuiIDs.RITUAL_POUCH: {
                 ItemStack pouch = player.getHeldItemMainhand();
                 return new GuiRitualPouch(player, pouch);
