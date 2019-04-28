@@ -1,13 +1,17 @@
 package aurocosh.divinefavor.common.spirit.punishment
 
 import aurocosh.divinefavor.common.config.common.ConfigPunishments
+import aurocosh.divinefavor.common.constants.BlockPosConstants
 import aurocosh.divinefavor.common.lib.distributed_random.DistributedRandomEntityList
 import aurocosh.divinefavor.common.lib.extensions.filter
 import aurocosh.divinefavor.common.lib.extensions.getBlock
 import aurocosh.divinefavor.common.lib.extensions.selectRandom
 import aurocosh.divinefavor.common.muliblock.instance.MultiBlockInstance
 import aurocosh.divinefavor.common.spirit.base.SpiritPunishment
-import aurocosh.divinefavor.common.util.*
+import aurocosh.divinefavor.common.util.UtilAlgorithm
+import aurocosh.divinefavor.common.util.UtilBlock
+import aurocosh.divinefavor.common.util.UtilCoordinates
+import aurocosh.divinefavor.common.util.UtilEntity
 import net.minecraft.block.state.IBlockState
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.init.Blocks
@@ -43,7 +47,7 @@ class NeblazePunishment : SpiritPunishment() {
         val mobsToSummon = ConfigPunishments.neblaze.mobsToSpawn.random()
         val spawnAttempts = mobsToSummon * 10
         val playerPosition = player.position
-        UtilAlgoritm.repeatUntilSuccessful({ spawnMob(world, playerPosition) }, mobsToSummon, spawnAttempts)
+        UtilAlgorithm.repeatUntilSuccessful({ spawnMob(world, playerPosition) }, mobsToSummon, spawnAttempts)
     }
 
     private fun spawnMob(world: World, pos: BlockPos): Boolean {
@@ -65,13 +69,9 @@ class NeblazePunishment : SpiritPunishment() {
 
     private fun igniteBlock(player: EntityPlayer, world: World, center: BlockPos) {
         val ignitionRadius = ConfigPunishments.neblaze.ignitionRadius
-        val ignitionPos = UtilCoordinates.getRandomBlockInRange(center, ignitionRadius, BLOCK_SEARCH_LIMIT) { pos -> !world.isAirBlock(pos) }
-                ?: return
+        val ignitionPos = UtilCoordinates.getRandomBlockInRange(center, ignitionRadius, BLOCK_SEARCH_LIMIT) { pos -> !world.isAirBlock(pos) } ?: return
 
-        val candidates = UtilBlockPos.getNeighbours(ignitionPos)
-        for (pos in candidates)
-            if (UtilBlock.ignite(player, world, pos))
-                return
+        BlockPosConstants.DIRECT_NEIGHBOURS.map(ignitionPos::add).first { pos -> UtilBlock.ignite(player, world, pos) }
     }
 
     companion object {

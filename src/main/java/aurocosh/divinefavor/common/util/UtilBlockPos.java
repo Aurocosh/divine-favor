@@ -10,14 +10,6 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class UtilBlockPos {
-    public static Vec3d add(BlockPos blockPos, Vec3d vec3d) {
-        return vec3d.add(blockPos.getX() + 0.5f, blockPos.getY() + 0.5f, blockPos.getZ() + 0.5f);
-    }
-
-    public static BlockPos inverse(BlockPos blockPos) {
-        return new BlockPos(-blockPos.getX(), -blockPos.getY(), -blockPos.getZ());
-    }
-
     public static BlockPos getMinCoordinates(BlockPos first, BlockPos second) {
         int xMin = Math.min(first.getX(), second.getX());
         int yMin = Math.min(first.getY(), second.getY());

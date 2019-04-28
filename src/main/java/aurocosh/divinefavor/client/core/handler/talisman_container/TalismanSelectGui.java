@@ -95,15 +95,15 @@ public class TalismanSelectGui extends GuiScreen {
         Vector2i currentPoint = slotPositions.get(currentSlotIndex);
 
         mc.getTextureManager().bindTexture(marker);
-        drawModalRectWithCustomSizedTexture(currentPoint.x - 8, currentPoint.y - 8, 0, 0, 16, 16, 16, 16);
+        drawModalRectWithCustomSizedTexture(currentPoint.getX() - 8, currentPoint.getY() - 8, 0, 0, 16, 16, 16, 16);
 
         mc.getTextureManager().bindTexture(selector);
-        drawModalRectWithCustomSizedTexture(closestPoint.x - 8, closestPoint.y - 8, 0, 0, 16, 16, 16, 16);
+        drawModalRectWithCustomSizedTexture(closestPoint.getX() - 8, closestPoint.getY() - 8, 0, 0, 16, 16, 16, 16);
 
         for (Integer index : activePositionMap.values()) {
             Vector2i spiralPoint = slotPositions.get(index);
             ItemStack stack = allStacks.get(index);
-            mc.getRenderItem().renderItemIntoGUI(stack, spiralPoint.x - 8, spiralPoint.y - 8);
+            mc.getRenderItem().renderItemIntoGUI(stack, spiralPoint.getX() - 8, spiralPoint.getY() - 8);
         }
 
         GlStateManager.popMatrix();

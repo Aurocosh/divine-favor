@@ -22,8 +22,8 @@ public class PearlCrumbsDataSerializer implements INbtSerializer<PearlCrumbsData
 
         for (int i = 0; i < globalBlockPos.size(); i++) {
             GlobalBlockPos pos = globalBlockPos.get(i);
-            posList.add(pos.pos);
-            dimensions[i] = pos.dimensionId;
+            posList.add(pos.getPos());
+            dimensions[i] = pos.getDimensionId();
         }
 
         nbt.setIntArray(TAG_CRUMBS_POSITIONS, UtilBlockPos.serialize(posList));

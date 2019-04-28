@@ -99,7 +99,7 @@ public class BlockSoulboundLectern extends ModBlock implements ITileEntityProvid
         TileEntity entity = world.getTileEntity(pos);
         if (entity instanceof TileSoulboundLectern) {
             TileSoulboundLectern lectern = (TileSoulboundLectern) entity;
-            UtilEntity.dropItemsOnGround(world, lectern.getShardStackHandler(), pos);
+            UtilEntity.INSTANCE.dropItemsOnGround(world, lectern.getShardStackHandler(), pos);
         }
 
         super.breakBlock(world, pos, state);

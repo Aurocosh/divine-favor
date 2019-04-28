@@ -71,11 +71,11 @@ public abstract class MessageParticlesHighlight extends WrappedClientMessage {
                 Block block = Block.getBlockFromName(blockName);
                 return block == null ? null : (pos -> world.getBlockState(pos).getBlock() == block);
             case WATER:
-                return pos -> UtilBlock.isWater(world.getBlockState(pos).getBlock());
+                return pos -> UtilBlock.INSTANCE.isWater(world.getBlockState(pos).getBlock());
             case LAVA:
-                return pos -> UtilBlock.isLava(world.getBlockState(pos).getBlock());
+                return pos -> UtilBlock.INSTANCE.isLava(world.getBlockState(pos).getBlock());
             case LIQUID:
-                return pos -> UtilBlock.isLiquid(world.getBlockState(pos).getBlock());
+                return pos -> UtilBlock.INSTANCE.isLiquid(world.getBlockState(pos).getBlock());
             case ORE:
                 return pos -> ConfigGeneral.ORE_BLOCKS.contains(world.getBlockState(pos).getBlock());
             case AIR:

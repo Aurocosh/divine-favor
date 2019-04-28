@@ -15,13 +15,13 @@ public class MessageConnectRopeNode extends WrappedServerMessage {
 
     @Override
     protected void handleSafe(EntityPlayerMP player) {
-        List<EntityRopeExplosiveNode> connectedNodes = UtilEntity.getNearbyEntities(EntityRopeExplosiveNode.class, player, 32, rope -> rope.getNextNodeByUUID() == player);
+        List<EntityRopeExplosiveNode> connectedNodes = UtilEntity.INSTANCE.getNearbyEntities(EntityRopeExplosiveNode.class, player, 32, rope -> rope.getNextNodeByUUID() == player);
         if (!connectedNodes.isEmpty()) {
             for (EntityRopeExplosiveNode rope : connectedNodes)
                 rope.setNextNode(null);
         }
         else {
-            List<EntityRopeExplosiveNode> unconnectedRopeNodes = UtilEntity.getNearbyEntities(EntityRopeExplosiveNode.class, player,
+            List<EntityRopeExplosiveNode> unconnectedRopeNodes = UtilEntity.INSTANCE.getNearbyEntities(EntityRopeExplosiveNode.class, player,
                     EntityRopeNodeBase.ROPE_LENGTH, rope -> rope.getDistanceSq(player) <= EntityRopeNodeBase.ROPE_LENGTH_SQ && rope.getNextNodeByUUID() == null);
             if (!unconnectedRopeNodes.isEmpty()) {
                 EntityRopeExplosiveNode closest = UtilList.pickBest(unconnectedRopeNodes, (best, node) -> node.getDistanceSq(player) < best.getDistanceSq(player));

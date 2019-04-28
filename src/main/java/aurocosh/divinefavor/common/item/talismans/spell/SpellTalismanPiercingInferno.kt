@@ -5,10 +5,10 @@ import aurocosh.divinefavor.common.constants.BlockPosConstants
 import aurocosh.divinefavor.common.item.talismans.spell.base.ItemSpellTalisman
 import aurocosh.divinefavor.common.item.talismans.spell.base.SpellOptions
 import aurocosh.divinefavor.common.item.talismans.spell.base.TalismanContext
+import aurocosh.divinefavor.common.lib.extensions.inverse
 import aurocosh.divinefavor.common.spirit.base.ModSpirit
 import aurocosh.divinefavor.common.tasks.BlockProcessingTask
 import aurocosh.divinefavor.common.util.UtilBlock
-import aurocosh.divinefavor.common.util.UtilBlockPos
 import aurocosh.divinefavor.common.util.UtilCoordinates
 import aurocosh.divinefavor.common.util.UtilRandom
 import net.minecraft.init.Blocks
@@ -26,7 +26,7 @@ class SpellTalismanPiercingInferno(name: String, spirit: ModSpirit, favorCost: I
         val expansionDirs = ArrayList(BlockPosConstants.DIRECT_NEIGHBOURS)
         val shift = BlockPos(facing.opposite.directionVec)
         expansionDirs.remove(shift)
-        expansionDirs.remove(UtilBlockPos.inverse(shift))
+        expansionDirs.remove(shift.inverse())
 
         val predicate = { pos: BlockPos ->
             val state = world.getBlockState(pos)

@@ -27,7 +27,7 @@ public class UtilGui {
 
         for (int i = 0; i < points.size(); i++) {
             Vector2i point = points.get(i);
-            GlStateManager.glVertex3f((float) point.x, (float) point.y, 150);
+            GlStateManager.glVertex3f((float) point.getX(), (float) point.getY(), 150);
         }
 
         GL11.glEnd();

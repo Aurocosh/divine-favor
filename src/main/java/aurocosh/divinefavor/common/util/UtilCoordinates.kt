@@ -1,5 +1,6 @@
 package aurocosh.divinefavor.common.util
 
+import aurocosh.divinefavor.common.constants.BlockPosConstants
 import aurocosh.divinefavor.common.lib.extensions.selectRandom
 import net.minecraft.init.Blocks
 import net.minecraft.util.EnumFacing
@@ -8,7 +9,6 @@ import net.minecraft.util.math.BlockPos
 import net.minecraft.util.math.Vec3d
 import net.minecraft.world.World
 import java.util.*
-import java.util.function.Function
 
 object UtilCoordinates {
     fun getRandomNeighbours(start: BlockPos, neighbourCount: Int, minNextNode: Int, maxNextNode: Int, cycleLimit: Int, predicate: (BlockPos) -> Boolean): List<BlockPos> {
@@ -30,10 +30,10 @@ object UtilCoordinates {
                 continue
 
             val neighboursToAdd = UtilRandom.nextInt(minNextNode, maxNextNode)
-            val neighbours = UtilBlockPos.getNeighbours(nextNode)
-
-            val newNodes = neighbours.filter { node -> !visitedNodes.contains(node) && !plannedNodes.contains(node) }
-            val randomNewNodes = newNodes.selectRandom(neighboursToAdd)
+            val randomNewNodes = BlockPosConstants.DIRECT_NEIGHBOURS
+                    .map(nextNode::add)
+                    .filter { node -> !visitedNodes.contains(node) && !plannedNodes.contains(node) }
+                    .selectRandom(neighboursToAdd)
             nodesToVisit.addAll(randomNewNodes)
             plannedNodes.addAll(randomNewNodes)
         }
@@ -74,14 +74,11 @@ object UtilCoordinates {
     }
 
     fun getRandomBlockInRange(center: BlockPos, radius: Int, limit: Int, predicate: (BlockPos) -> Boolean): BlockPos? {
-        var blockPos: BlockPos? = getRandomNeighbour(center, radius, radius, radius)
-        if(blockPos == null)
-            return null;
+        val blockPos: BlockPos = getRandomNeighbour(center, radius, radius, radius)
         if (predicate.invoke(blockPos))
             return blockPos
 
-        blockPos = findPosition(center, limit, predicate, Function { it.down() })
-        return blockPos ?: findPosition(center, limit, predicate, Function { it.up() })
+        return findPosition(center, limit, predicate, { it.down() }) ?: findPosition(center, limit, predicate, { it.up() })
     }
 
     fun findPlaceToStand(start: BlockPos, world: World, limit: Int): BlockPos? {
@@ -146,13 +143,13 @@ object UtilCoordinates {
         return null
     }
 
-    fun findPosition(start: BlockPos, limit: Int, predicate: (BlockPos) -> Boolean, nextPosFunction: Function<BlockPos, BlockPos>): BlockPos? {
+    fun findPosition(start: BlockPos, limit: Int, predicate: (BlockPos) -> Boolean, nextPosFunction: (BlockPos) -> BlockPos): BlockPos? {
         var limitCounter = limit
         var pos = start
         while (limitCounter-- > 0) {
             if (predicate.invoke(pos))
                 return pos
-            pos = nextPosFunction.apply(pos)
+            pos = nextPosFunction.invoke(pos)
         }
         return null
     }

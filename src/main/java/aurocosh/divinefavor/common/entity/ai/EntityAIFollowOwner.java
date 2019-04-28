@@ -141,7 +141,7 @@ public class EntityAIFollowOwner<T extends EntityLiving & IMinion> extends Entit
     private boolean safeTeleport(BlockPos pos) {
         if (!isEmptyBlock(pos))
             return false;
-        UtilEntity.teleport(minion, pos);
+        UtilEntity.INSTANCE.teleport(minion, pos);
         return true;
     }
 }

@@ -32,7 +32,7 @@ public class BlockEtherealLight extends ModBlockAir implements ICustomStateMappe
     @SideOnly(Side.CLIENT)
     public void randomDisplayTick(IBlockState stateIn, World worldIn, BlockPos pos, Random rand) {
         EntityPlayer player = DivineFavor.proxy.getClientPlayer();
-        if (player.isPotionActive(ModPotions.prismatic_eyes))
+        if (player.isPotionActive(ModPotions.INSTANCE.getPrismatic_eyes()))
             spawnParticles(worldIn, pos);
     }
 

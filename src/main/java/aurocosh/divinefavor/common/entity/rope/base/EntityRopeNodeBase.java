@@ -518,6 +518,6 @@ public abstract class EntityRopeNodeBase extends Entity {
 
     private Entity getEntityByUUID(UUID uuid) {
         AxisAlignedBB alignedBB = getEntityBoundingBox().grow(24, 24, 24);
-        return UtilEntity.getEntityByUUID(world,Entity.class,alignedBB,uuid);
+        return UtilEntity.INSTANCE.getEntityByUUID(world,Entity.class,alignedBB,uuid);
     }
 }

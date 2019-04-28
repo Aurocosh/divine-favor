@@ -26,10 +26,10 @@ public class EntityRopeTeleportingNode extends EntityRopeNodeBase {
     @Override
     protected boolean canDropNewNode(EntityPlayer player) {
         SlotData slotData = UtilPlayer.findStackInInventory(player, element -> !element.isEmpty() && element.getItem() == ModItems.INSTANCE.getRope_teleporting());
-        if (slotData.slotIndex == -1)
+        if (slotData.getSlotIndex() == -1)
             return false;
-        slotData.stack.shrink(1);
-        player.inventory.setInventorySlotContents(slotData.slotIndex, slotData.stack.getCount() > 0 ? slotData.stack : ItemStack.EMPTY);
+        slotData.getStack().shrink(1);
+        player.inventory.setInventorySlotContents(slotData.getSlotIndex(), slotData.getStack().getCount() > 0 ? slotData.getStack() : ItemStack.EMPTY);
         return true;
     }
 
@@ -62,6 +62,6 @@ public class EntityRopeTeleportingNode extends EntityRopeNodeBase {
         if (lastConnectedNode == this)
             return;
         BlockPos placeToStand = UtilCoordinates.INSTANCE.findPlaceToStand(lastConnectedNode.getPosition(), world, 8);
-        UtilEntity.teleport(livingBase, placeToStand);
+        UtilEntity.INSTANCE.teleport(livingBase, placeToStand);
     }
 }

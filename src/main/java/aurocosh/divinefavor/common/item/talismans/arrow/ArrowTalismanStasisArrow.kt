@@ -5,6 +5,7 @@ import aurocosh.divinefavor.common.entity.projectile.EntitySpellArrow
 import aurocosh.divinefavor.common.item.talismans.arrow.base.ArrowOptions
 import aurocosh.divinefavor.common.item.talismans.arrow.base.ArrowType
 import aurocosh.divinefavor.common.item.talismans.arrow.base.ItemArrowTalisman
+import aurocosh.divinefavor.common.lib.extensions.getMotionVector
 import aurocosh.divinefavor.common.particles.ModParticles
 import aurocosh.divinefavor.common.particles.particles.ImmobileParticle
 import aurocosh.divinefavor.common.spirit.base.ModSpirit
@@ -46,7 +47,7 @@ class ArrowTalismanStasisArrow(name: String, spirit: ModSpirit, favorCost: Int, 
         val entities = spellArrow.world.getEntitiesWithinAABB(Entity::class.java, AxisAlignedBB(spellArrow.position).grow(ConfigArrow.stasisArrow.radius.toDouble()))
         val affectedMobs = UtilList.select(entities) { entity -> entity !== spellArrow && entity !is EntityPlayer && (entity is EntityLivingBase || entity is EntityArrow) && entity.getDistanceSq(spellArrow) <= RADIUS_SQ }
         for (affectedMob in affectedMobs)
-            UtilEntity.setVelocity(affectedMob, UtilEntity.getMotionVector(affectedMob), 0.01f)
+            UtilEntity.setVelocity(affectedMob, affectedMob.getMotionVector(), 0.01f)
     }
 
     companion object {

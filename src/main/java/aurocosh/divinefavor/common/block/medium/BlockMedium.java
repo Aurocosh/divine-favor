@@ -96,9 +96,9 @@ public class BlockMedium extends ModBlock implements ITileEntityProvider {
             TileMedium medium = (TileMedium) entity;
             medium.multiblockDeconstructed();
 
-            UtilEntity.dropItemsOnGround(world, medium.getStoneStackHandler(), pos);
-            UtilEntity.dropItemsOnGround(world, medium.getLeftStackHandler(), pos);
-            UtilEntity.dropItemsOnGround(world, medium.getRightStackHandler(), pos);
+            UtilEntity.INSTANCE.dropItemsOnGround(world, medium.getStoneStackHandler(), pos);
+            UtilEntity.INSTANCE.dropItemsOnGround(world, medium.getLeftStackHandler(), pos);
+            UtilEntity.INSTANCE.dropItemsOnGround(world, medium.getRightStackHandler(), pos);
         }
         super.breakBlock(world, pos, state);
     }
