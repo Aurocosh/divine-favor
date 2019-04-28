@@ -34,15 +34,15 @@ public class TileSoulboundLectern extends TileEntity implements IMultiblockContr
     private final static Map<Integer, ModMultiBlock> multiblocks = new HashMap<>();
 
     static {
-        multiblocks.put(ModSpirits.arbow.getId(), ModMultiBlocks.soulbound_lectern_arbow);
-        multiblocks.put(ModSpirits.blizrabi.getId(), ModMultiBlocks.soulbound_lectern_blizrabi);
-        multiblocks.put(ModSpirits.endererer.getId(), ModMultiBlocks.soulbound_lectern_endererer);
-        multiblocks.put(ModSpirits.loon.getId(), ModMultiBlocks.soulbound_lectern_loon);
-        multiblocks.put(ModSpirits.neblaze.getId(), ModMultiBlocks.soulbound_lectern_neblaze);
-        multiblocks.put(ModSpirits.redwind.getId(), ModMultiBlocks.soulbound_lectern_redwind);
-        multiblocks.put(ModSpirits.romol.getId(), ModMultiBlocks.soulbound_lectern_romol);
-        multiblocks.put(ModSpirits.squarefury.getId(), ModMultiBlocks.soulbound_lectern_squarefury);
-        multiblocks.put(ModSpirits.timber.getId(), ModMultiBlocks.soulbound_lectern_timber);
+        multiblocks.put(ModSpirits.arbow.getId(), ModMultiBlocks.INSTANCE.getSoulbound_lectern_arbow());
+        multiblocks.put(ModSpirits.blizrabi.getId(), ModMultiBlocks.INSTANCE.getSoulbound_lectern_blizrabi());
+        multiblocks.put(ModSpirits.endererer.getId(), ModMultiBlocks.INSTANCE.getSoulbound_lectern_endererer());
+        multiblocks.put(ModSpirits.loon.getId(), ModMultiBlocks.INSTANCE.getSoulbound_lectern_loon());
+        multiblocks.put(ModSpirits.neblaze.getId(), ModMultiBlocks.INSTANCE.getSoulbound_lectern_neblaze());
+        multiblocks.put(ModSpirits.redwind.getId(), ModMultiBlocks.INSTANCE.getSoulbound_lectern_redwind());
+        multiblocks.put(ModSpirits.romol.getId(), ModMultiBlocks.INSTANCE.getSoulbound_lectern_romol());
+        multiblocks.put(ModSpirits.squarefury.getId(), ModMultiBlocks.INSTANCE.getSoulbound_lectern_squarefury());
+        multiblocks.put(ModSpirits.timber.getId(), ModMultiBlocks.INSTANCE.getSoulbound_lectern_timber());
     }
 
     private boolean isRejecting;
@@ -211,7 +211,7 @@ public class TileSoulboundLectern extends TileEntity implements IMultiblockContr
 
     @Override
     public void multiblockDeconstructed() {
-        MultiblockWatcher.unRegisterController(this);
+        MultiblockWatcher.INSTANCE.unRegisterController(this);
         setState(SoulboundLecternState.INACTIVE);
         multiBlockInstance = null;
     }
@@ -240,7 +240,7 @@ public class TileSoulboundLectern extends TileEntity implements IMultiblockContr
         if (multiBlock != null) {
             multiBlockInstance = multiBlock.makeMultiBlock(world, pos);
             if (multiBlockInstance != null)
-                MultiblockWatcher.registerController(this);
+                MultiblockWatcher.INSTANCE.registerController(this);
         }
     }
 

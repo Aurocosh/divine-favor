@@ -20,22 +20,22 @@ public class PatchouliMultiBlockData {
     public PatchouliMultiBlockData(MultiBlockConfiguration configuration) {
         int nextSymbolId = 0;
         Map<StateValidator, Character> symbolMap = new HashMap<>();
-        List<MultiBlockPart> parts = configuration.parts;
+        List<MultiBlockPart> parts = configuration.getParts();
         for (int i = 0; i < parts.size(); i++) {
             MultiBlockPart part = parts.get(i);
             char symbol;
-            if (part.positions.size() != 1 || !part.positions.get(0).equals(configuration.baseRelPosition)) {
+            if (part.positions.size() != 1 || !part.positions.get(0).equals(configuration.getBaseRelPosition())) {
                 symbol = possibleBlockMarkers[nextSymbolId++];
                 symbolMap.put(part.validator, symbol);
             }
         }
 
         Map<BlockPos, StateValidator> validatorMap = new HashMap<>();
-        for (MultiBlockPart part : configuration.parts)
+        for (MultiBlockPart part : configuration.getParts())
             for (BlockPos position : part.positions)
                 validatorMap.put(position, part.validator);
 
-        BlockPos size = configuration.boundingBox.getSizeVector();
+        BlockPos size = configuration.getBoundingBox().getSizeVector();
         String[][] layers = new String[size.getY()][];
         for (int y = 0; y < size.getY(); y++) {
             String[] layer = new String[size.getZ()];
@@ -45,7 +45,7 @@ public class PatchouliMultiBlockData {
                     BlockPos position = new BlockPos(x, size.getY() - 1 - y, z);
 
                     Character symbol;
-                    if (position.equals(configuration.baseRelPosition))
+                    if (position.equals(configuration.getBaseRelPosition()))
                         symbol = '0';
                     else {
                         StateValidator validator = validatorMap.get(position);
@@ -75,7 +75,7 @@ public class PatchouliMultiBlockData {
         matchers.add(' ');
         matchers.add(StateMatcher.ANY);
 
-        StateValidator validator = validatorMap.get(configuration.baseRelPosition);
+        StateValidator validator = validatorMap.get(configuration.getBaseRelPosition());
         matchers.add('0');
         matchers.add(validator != null ? validator.getPatchouliMatcher() : StateMatcher.ANY);
 

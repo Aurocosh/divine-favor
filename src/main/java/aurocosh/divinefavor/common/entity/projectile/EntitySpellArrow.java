@@ -276,7 +276,7 @@ public class EntitySpellArrow extends EntityArrow {
     }
 
     public ArrowType getArrowType() {
-        return ArrowType.get(dataManager.get(TYPE));
+        return ArrowType.Companion.get(dataManager.get(TYPE));
     }
 
     private void setShooterId(UUID shooterId) {
@@ -288,7 +288,7 @@ public class EntitySpellArrow extends EntityArrow {
     }
 
     private void setArrowType(int value) {
-        dataManager.set(TYPE, ArrowType.get(value).getValue());
+        dataManager.set(TYPE, ArrowType.Companion.get(value).getValue());
     }
 
     public Color3f getColor() {

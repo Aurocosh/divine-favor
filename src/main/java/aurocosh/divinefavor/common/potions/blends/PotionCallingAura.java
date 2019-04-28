@@ -45,7 +45,7 @@ public class PotionCallingAura extends ModPotion {
         if (event.getPlacedBlock().getBlock() != Blocks.PUMPKIN)
             return;
         World world = event.getWorld();
-        if (ModMultiBlocks.snowman.match(world, event.getPos()) == null)
+        if (ModMultiBlocks.INSTANCE.getSnowman().match(world, event.getPos()) == null)
             return;
 
         CallingAuraData auraData = PlayerData.get(player).getCallingAuraData();

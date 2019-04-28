@@ -24,7 +24,7 @@ public class DivineFavorCreativeTabArrowTalismans extends CreativeTabs {
 
     @Override
     public ItemStack createIcon() {
-        return new ItemStack(ModArrowTalismans.fill_lungs);
+        return new ItemStack(ModArrowTalismans.INSTANCE.getFill_lungs());
     }
 
 //    @Override

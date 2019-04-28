@@ -303,7 +303,7 @@ public class TileMedium extends TickableTileEntity implements IMultiblockControl
 
     @Override
     public void multiblockDeconstructed() {
-        MultiblockWatcher.unRegisterController(this);
+        MultiblockWatcher.INSTANCE.unRegisterController(this);
         multiBlockInstance = null;
         updateState();
 //        AltarsData altarData = WorldData.get(world).getAltarData();
@@ -314,8 +314,8 @@ public class TileMedium extends TickableTileEntity implements IMultiblockControl
     public void multiblockDamaged(EntityPlayer player, World world, BlockPos pos, IBlockState state) {
         MultiBlockInstanceAltar instance = multiBlockInstance;
         multiblockDeconstructed();
-        if (player != null && instance.spirit.isActive())
-            instance.spirit.getPunishment().execute(player, world, pos, state, instance);
+        if (player != null && instance.getSpirit().isActive())
+            instance.getSpirit().getPunishment().execute(player, world, pos, state, instance);
     }
 
     @Override
@@ -337,7 +337,7 @@ public class TileMedium extends TickableTileEntity implements IMultiblockControl
         ModMultiBlock multiBlock = callingStone.getMultiBlock();
         multiBlockInstance = multiBlock.makeMultiBlock(callingStone.getSpirit(), world, pos);
         if (multiBlockInstance != null) {
-            MultiblockWatcher.registerController(this);
+            MultiblockWatcher.INSTANCE.registerController(this);
 //            AltarsData altarData = WorldData.get(world).getAltarData();
 //            altarData.addAltarLocation(callingStone.spirit, pos);
         }
