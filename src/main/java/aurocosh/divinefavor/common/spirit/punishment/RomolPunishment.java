@@ -16,8 +16,8 @@ public class RomolPunishment extends SpiritPunishment {
 
     @Override
     public void execute(EntityPlayer player, World world, BlockPos pos, IBlockState state, MultiBlockInstance instance) {
-        destroyRandomBlocks(player, world, instance.multiBlockOrigin);
-        breakRandomBlocks(player, world, instance.multiBlockOrigin);
+        destroyRandomBlocks(player, world, instance.getMultiBlockOrigin());
+        breakRandomBlocks(player, world, instance.getMultiBlockOrigin());
     }
 
     private void destroyRandomBlocks(EntityPlayer player, World world, BlockPos center) {

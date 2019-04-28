@@ -39,7 +39,7 @@ public abstract class ModPotionToggleLimited extends ModPotionToggle {
 
         EntityPlayer player = DivineFavor.proxy.getClientPlayer();
         SpiritData spiritData = PlayerData.get(player).getSpiritData();
-        String s = "Uses left: " + spiritData.getFavor(talisman.getFavorId());
+        String s = "Uses left: " + spiritData.getFavor(talisman.getSpiritId());
         mc.fontRenderer.drawStringWithShadow(s, (float) (x + 10 + 18), (float) (y + 6 + 10), 8355711);
     }
 }

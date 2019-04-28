@@ -24,7 +24,7 @@ public class DivineFavorCreativeTabSpellTalismans extends CreativeTabs {
 
     @Override
     public ItemStack createIcon() {
-        return new ItemStack(ModSpellTalismans.wild_sprint);
+        return new ItemStack(ModSpellTalismans.INSTANCE.getWild_sprint());
     }
 
 //    @Override

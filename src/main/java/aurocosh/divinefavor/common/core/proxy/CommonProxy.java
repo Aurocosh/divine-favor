@@ -51,16 +51,16 @@ public class CommonProxy {
         BufSerializerProvider.preInit();
 
         ModSpirits.preInit();
-        ModMultiBlocks.preInit();
+        ModMultiBlocks.INSTANCE.preInit();
 
         ModPotions.preInit();
         ModCurses.preInit();
         ModBlendEffects.preInit();
         ModBlessings.preInit();
-        ModArrowTalismans.preInit();
+        ModArrowTalismans.INSTANCE.preInit();
         ModItems.INSTANCE.preInit();
         ModSoulShards.INSTANCE.preInit();
-        ModSpellTalismans.preInit();
+        ModSpellTalismans.INSTANCE.preInit();
         ModBathingBlends.INSTANCE.preInit();
 
         ModContracts.INSTANCE.preInit();
@@ -95,7 +95,7 @@ public class CommonProxy {
     }
 
     public void init(FMLInitializationEvent e) {
-        ModMultiBlocks.init();
+        ModMultiBlocks.INSTANCE.init();
         ModItems.INSTANCE.init();
         ModBlocks.init();
         ModRecipes.init();

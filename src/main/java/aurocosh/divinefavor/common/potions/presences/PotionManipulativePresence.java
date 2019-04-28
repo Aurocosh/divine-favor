@@ -39,7 +39,7 @@ public class PotionManipulativePresence extends ModPotion {
             return;
         if (event.getPlacedBlock().getBlock() != Blocks.PUMPKIN)
             return;
-        if (ModMultiBlocks.iron_golem.match(event.getWorld(), event.getPos()) == null)
+        if (ModMultiBlocks.INSTANCE.getIron_golem().match(event.getWorld(), event.getPos()) == null)
             return;
 
         ManipulativePresenceData auraData = PlayerData.get(player).getManipulativePresenceData();

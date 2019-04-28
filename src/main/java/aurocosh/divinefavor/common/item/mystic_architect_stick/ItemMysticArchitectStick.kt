@@ -14,6 +14,7 @@ import aurocosh.divinefavor.common.muliblock.validators.StateValidator
 import aurocosh.divinefavor.common.util.UtilNbt
 import com.google.gson.GsonBuilder
 import net.minecraft.block.Block
+import net.minecraft.client.gui.GuiScreen.setClipboardString
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.init.Blocks
 import net.minecraft.item.EnumRarity
@@ -23,10 +24,10 @@ import net.minecraft.util.*
 import net.minecraft.util.math.BlockPos
 import net.minecraft.util.text.TextComponentString
 import net.minecraft.world.World
-
 import java.util.HashMap
-
-import net.minecraft.client.gui.GuiScreen.setClipboardString
+import kotlin.collections.ArrayList
+import kotlin.collections.component1
+import kotlin.collections.component2
 
 class ItemMysticArchitectStick : ModItem("mystic_architect_stick", "mystic_architect_stick", ConstMainTabOrder.TOOLS) {
     init {
@@ -144,7 +145,7 @@ class ItemMysticArchitectStick : ModItem("mystic_architect_stick", "mystic_archi
             if (block.registryName == airMarkerName)
                 validator = AirStateValidator()
             else
-                validator = BlockStateValidator(block.registryName)
+                validator = BlockStateValidator(block.registryName!!)
             parts.add(MultiBlockPart(validator, value))
         }
 
