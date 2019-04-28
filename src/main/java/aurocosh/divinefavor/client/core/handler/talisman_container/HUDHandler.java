@@ -32,11 +32,11 @@ public class HUDHandler {
         int height = resolution.getScaledHeight();
 
         EntityPlayer player = DivineFavor.proxy.getClientPlayer();
-        ItemStack stack = UtilPlayer.getItemInHand(player, TalismanContainerAdapter::isItemValid);
+        ItemStack stack = UtilPlayer.getItemInHand(player, TalismanContainerAdapter.INSTANCE::isItemValid);
         if (stack.isEmpty())
             return;
 
-        ITalismanContainer talismanContainer = TalismanContainerAdapter.getTalismanContainer(stack);
+        ITalismanContainer talismanContainer = TalismanContainerAdapter.INSTANCE.getTalismanContainer(stack);
         assert talismanContainer != null;
 
         Minecraft mc = Minecraft.getMinecraft();

@@ -17,7 +17,7 @@ public class GuiSpellBow extends GuiContainer {
     ItemStack spellBow;
 
     public GuiSpellBow(EntityPlayer player, ItemStack spellBow, EnumHand hand) {
-        super(new SpellBowContainer(player, spellBow.getCapability(SpellBowDataHandler.CAPABILITY_SPELL_BOW, null), hand));
+        super(new SpellBowContainer(player, spellBow.getCapability(SpellBowDataHandler.INSTANCE.getCAPABILITY_SPELL_BOW(), null), hand));
         this.spellBow = spellBow;
     }
 

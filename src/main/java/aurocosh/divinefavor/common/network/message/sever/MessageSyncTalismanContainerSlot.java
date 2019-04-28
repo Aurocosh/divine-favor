@@ -20,7 +20,7 @@ public class MessageSyncTalismanContainerSlot extends WrappedServerMessage {
     @Override
     protected void handleSafe(EntityPlayerMP serverPlayer) {
         ItemStack stack = serverPlayer.inventory.getStackInSlot(playerSlotIndex);
-        ITalismanContainer talismanContainer = TalismanContainerAdapter.getTalismanContainer(stack);
+        ITalismanContainer talismanContainer = TalismanContainerAdapter.INSTANCE.getTalismanContainer(stack);
         if (talismanContainer != null)
             talismanContainer.setSelectedSlotIndex(selectedGrimoireIndex);
     }

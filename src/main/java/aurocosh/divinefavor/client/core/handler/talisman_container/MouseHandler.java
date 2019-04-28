@@ -28,18 +28,18 @@ public class MouseHandler {
             return;
 
         EntityPlayer player = DivineFavor.proxy.getClientPlayer();
-        EnumHand hand = UtilPlayer.getHandWithItem(player, TalismanContainerAdapter::isItemValid);
+        EnumHand hand = UtilPlayer.getHandWithItem(player, TalismanContainerAdapter.INSTANCE::isItemValid);
         if (hand == null)
             return;
 
         ItemStack stack = player.getHeldItem(hand);
-        ITalismanContainer talismanContainer = TalismanContainerAdapter.getTalismanContainer(stack);
+        ITalismanContainer talismanContainer = TalismanContainerAdapter.INSTANCE.getTalismanContainer(stack);
         if (dWheel < 0)
             talismanContainer.switchToPrevious();
         else
             talismanContainer.switchToNext();
         int playerSlot = hand == EnumHand.OFF_HAND ? 40 : player.inventory.currentItem;
-        TalismanContainerAdapter.selectSlot(playerSlot, talismanContainer.getSelectedSlotIndex());
+        TalismanContainerAdapter.INSTANCE.selectSlot(playerSlot, talismanContainer.getSelectedSlotIndex());
         event.setCanceled(true);
     }
 }

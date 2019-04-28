@@ -40,7 +40,7 @@ public class KeyBindings {
                 return false;
 //            if (!net.minecraftforge.client.settings.KeyConflictContext.GUI.isActive())
 //                return false;
-            return UtilPlayer.getHandWithItem(player, TalismanContainerAdapter::isItemValid) != null;
+            return UtilPlayer.getHandWithItem(player, TalismanContainerAdapter.INSTANCE::isItemValid) != null;
         }
 
         @Override

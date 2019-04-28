@@ -20,7 +20,7 @@ public class EventInputHandler {
         Minecraft mc = Minecraft.getMinecraft();
 
         if (KeyBindings.talismanSelect.isKeyDown()) {
-            if (UtilPlayer.getHandWithItem(mc.player, TalismanContainerAdapter::isItemValid) != null)
+            if (UtilPlayer.getHandWithItem(mc.player, TalismanContainerAdapter.INSTANCE::isItemValid) != null)
                 mc.displayGuiScreen(TalismanSelectGui.INSTANCE);
         }
     }

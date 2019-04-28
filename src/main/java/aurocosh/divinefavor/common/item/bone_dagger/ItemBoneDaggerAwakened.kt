@@ -7,7 +7,6 @@ import aurocosh.divinefavor.common.custom_data.living.LivingData
 import aurocosh.divinefavor.common.damage_source.ModDamageSources
 import aurocosh.divinefavor.common.item.base.ModItem
 import aurocosh.divinefavor.common.item.soul_shards.ItemSoulShard
-import aurocosh.divinefavor.common.item.soul_shards.ItemSoulShardPlayer
 import aurocosh.divinefavor.common.item.soul_shards.ModSoulShards
 import aurocosh.divinefavor.common.potions.base.effect.ModEffect
 import aurocosh.divinefavor.common.potions.common.ModCurses
@@ -88,7 +87,7 @@ class ItemBoneDaggerAwakened : ModItem("bone_dagger_awakened", "bone_dagger_awak
         }
 
         val stack = ItemStack(item)
-        ItemSoulShardPlayer.setOwner(stack, victim)
+        ItemSoulShard.setOwner(stack, victim)
         user.attackEntityFrom(ModDamageSources.divineDamage, 0.5f)
         user.addItemStackToInventory(stack)
     }

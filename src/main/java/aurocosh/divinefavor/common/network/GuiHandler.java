@@ -62,13 +62,13 @@ public class GuiHandler implements IGuiHandler {
             case ConstGuiIDs.GRIMOIRE: {
                 EnumHand hand = UtilPlayer.getHand(h -> player.getHeldItem(h).getItem() instanceof ItemGrimoire);
                 ItemStack stack = player.getHeldItem(hand);
-                IGrimoireHandler handler = stack.getCapability(GrimoireDataHandler.CAPABILITY_GRIMOIRE, null);
+                IGrimoireHandler handler = stack.getCapability(GrimoireDataHandler.INSTANCE.getCAPABILITY_GRIMOIRE(), null);
                 return new GrimoireContainer(player, handler, hand);
             }
             case ConstGuiIDs.SPELL_BOW: {
                 EnumHand hand = UtilPlayer.getHand(h -> player.getHeldItem(h).getItem() instanceof ItemSpellBow);
                 ItemStack stack = player.getHeldItem(hand);
-                ISpellBowHandler handler = stack.getCapability(SpellBowDataHandler.CAPABILITY_SPELL_BOW, null);
+                ISpellBowHandler handler = stack.getCapability(SpellBowDataHandler.INSTANCE.getCAPABILITY_SPELL_BOW(), null);
                 return new SpellBowContainer(player, handler, hand);
             }
             case ConstGuiIDs.SOULBOUND_LECTERN_ACTIVE:
