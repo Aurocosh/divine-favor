@@ -24,16 +24,16 @@ public class PatchouliMultiBlockData {
         for (int i = 0; i < parts.size(); i++) {
             MultiBlockPart part = parts.get(i);
             char symbol;
-            if (part.positions.size() != 1 || !part.positions.get(0).equals(configuration.getBaseRelPosition())) {
+            if (part.getPositions().size() != 1 || !part.getPositions().get(0).equals(configuration.getBaseRelPosition())) {
                 symbol = possibleBlockMarkers[nextSymbolId++];
-                symbolMap.put(part.validator, symbol);
+                symbolMap.put(part.getValidator(), symbol);
             }
         }
 
         Map<BlockPos, StateValidator> validatorMap = new HashMap<>();
         for (MultiBlockPart part : configuration.getParts())
-            for (BlockPos position : part.positions)
-                validatorMap.put(position, part.validator);
+            for (BlockPos position : part.getPositions())
+                validatorMap.put(position, part.getValidator());
 
         BlockPos size = configuration.getBoundingBox().getSizeVector();
         String[][] layers = new String[size.getY()][];
