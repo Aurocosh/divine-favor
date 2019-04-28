@@ -1,6 +1,7 @@
 package aurocosh.divinefavor.common.potions.curses;
 
 import aurocosh.divinefavor.common.config.common.ConfigArrow;
+import aurocosh.divinefavor.common.constants.ConstMisc;
 import aurocosh.divinefavor.common.custom_data.living.LivingData;
 import aurocosh.divinefavor.common.custom_data.living.data.suffocating_fumes.SuffocatingFumesData;
 import aurocosh.divinefavor.common.lib.LoopedCounter;
@@ -12,7 +13,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 
-@Mod.EventBusSubscriber
+@Mod.EventBusSubscriber(modid = ConstMisc.MOD_ID)
 public class PotionSuffocatingFumes extends ModPotion {
     private static final LoopedCounter DAMAGE_COUNTER = new LoopedCounter(ConfigArrow.suffocatingFumes.damageRate);
     private static final LoopedCounter CURE_COUNTER = new LoopedCounter(ConfigArrow.suffocatingFumes.cureRate);

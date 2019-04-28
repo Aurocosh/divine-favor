@@ -59,7 +59,7 @@ public class ItemGrimoire extends ModItem {
             return new ActionResult<>(EnumActionResult.PASS, stack);
 
         if (playerIn.isSneaking()) {
-            playerIn.openGui(DivineFavor.instance, ConstGuiIDs.GRIMOIRE, worldIn, (int) playerIn.posX, (int) playerIn.posY, (int) playerIn.posZ);
+            playerIn.openGui(DivineFavor.INSTANCE, ConstGuiIDs.GRIMOIRE, worldIn, (int) playerIn.posX, (int) playerIn.posY, (int) playerIn.posZ);
             return new ActionResult<>(EnumActionResult.SUCCESS, stack);
         }
 

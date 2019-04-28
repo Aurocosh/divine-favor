@@ -1,5 +1,6 @@
 package aurocosh.divinefavor.common.muliblock.common;
 
+import aurocosh.divinefavor.common.constants.ConstMisc;
 import aurocosh.divinefavor.common.muliblock.IMultiblockController;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -13,7 +14,7 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-@Mod.EventBusSubscriber
+@Mod.EventBusSubscriber(modid = ConstMisc.MOD_ID)
 public class MultiblockWatcher {
     private static Map<World, Set<IMultiblockController>> controllers = new HashMap<>();
 

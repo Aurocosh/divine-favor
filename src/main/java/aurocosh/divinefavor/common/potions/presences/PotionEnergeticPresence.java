@@ -1,5 +1,6 @@
 package aurocosh.divinefavor.common.potions.presences;
 
+import aurocosh.divinefavor.common.constants.ConstMisc;
 import aurocosh.divinefavor.common.custom_data.player.PlayerData;
 import aurocosh.divinefavor.common.custom_data.player.data.presence.energetic.EnergeticPresenceData;
 import aurocosh.divinefavor.common.item.calling_stones.ModCallingStones;
@@ -16,7 +17,7 @@ import net.minecraftforge.fml.common.Mod;
 
 import static aurocosh.divinefavor.common.util.UtilEntity.tickLiquidWalk;
 
-@Mod.EventBusSubscriber
+@Mod.EventBusSubscriber(modid = ConstMisc.MOD_ID)
 public class PotionEnergeticPresence extends ModPotion {
     private final float SPEED_MODIFIER = 0.35f;
 

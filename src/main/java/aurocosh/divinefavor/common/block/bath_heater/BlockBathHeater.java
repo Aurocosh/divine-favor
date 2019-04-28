@@ -61,7 +61,7 @@ public class BlockBathHeater extends ModBlock implements ITileEntityProvider {
         TileBathHeater tileBathHeater = (TileBathHeater) tileEntity;
         if (!tileBathHeater.isUsableByPlayer(player))
             return false;
-        player.openGui(DivineFavor.instance, ConstGuiIDs.BATH_HEATER, world, pos.getX(), pos.getY(), pos.getZ());
+        player.openGui(DivineFavor.INSTANCE, ConstGuiIDs.BATH_HEATER, world, pos.getX(), pos.getY(), pos.getZ());
         return true;
     }
 

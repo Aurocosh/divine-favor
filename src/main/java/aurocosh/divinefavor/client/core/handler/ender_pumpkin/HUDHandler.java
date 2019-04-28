@@ -1,6 +1,7 @@
 package aurocosh.divinefavor.client.core.handler.ender_pumpkin;
 
 import aurocosh.divinefavor.DivineFavor;
+import aurocosh.divinefavor.common.constants.ConstMisc;
 import aurocosh.divinefavor.common.constants.ConstResources;
 import aurocosh.divinefavor.common.item.ItemBlockEnderPumpkin;
 import net.minecraft.client.Minecraft;
@@ -19,7 +20,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
-@Mod.EventBusSubscriber(Side.CLIENT)
+@Mod.EventBusSubscriber(modid = ConstMisc.MOD_ID, value = Side.CLIENT)
 public class HUDHandler {
     private static ResourceLocation ENDER_PUMPKIN_BLUR_TEX = new ResourceLocation(ConstResources.GUI_ENDER_PUMPKIN);
 

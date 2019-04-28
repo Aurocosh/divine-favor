@@ -1,5 +1,6 @@
 package aurocosh.divinefavor.common.global.dayClock;
 
+import aurocosh.divinefavor.common.constants.ConstMisc;
 import aurocosh.divinefavor.common.lib.LoopedCounter;
 import aurocosh.divinefavor.common.util.UtilDayTime;
 import aurocosh.divinefavor.common.util.UtilList;
@@ -15,7 +16,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
-@Mod.EventBusSubscriber
+@Mod.EventBusSubscriber(modid = ConstMisc.MOD_ID)
 public class DayClock {
     private static final int TRACKED_DIMENSION_ID = 0;
     private static final int AFTER_COMMAND_SYNC = UtilDayTime.TICKS_IN_DAY - 1;

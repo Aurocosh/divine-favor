@@ -1,6 +1,7 @@
 package aurocosh.divinefavor.common.potions.potions;
 
 import aurocosh.divinefavor.common.config.common.ConfigSpells;
+import aurocosh.divinefavor.common.constants.ConstMisc;
 import aurocosh.divinefavor.common.lib.LimitedTimer;
 import aurocosh.divinefavor.common.lib.PrivateField;
 import aurocosh.divinefavor.common.potions.base.effect.ModEffect;
@@ -23,7 +24,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 import java.util.List;
 
-@Mod.EventBusSubscriber
+@Mod.EventBusSubscriber(modid = ConstMisc.MOD_ID)
 public class PotionArrowDeflection extends ModPotion {
     private static final LimitedTimer COOLDOWN_COUNTER = new LimitedTimer(ConfigSpells.arrowDeflection.deflectionCooldown);
     private final static float RADIUS_SQ = ConfigSpells.arrowDeflection.radius * ConfigSpells.arrowDeflection.radius;

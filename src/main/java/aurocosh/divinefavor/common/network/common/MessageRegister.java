@@ -12,7 +12,6 @@ import aurocosh.divinefavor.common.network.message.sever.MessageSyncTalismanCont
 import aurocosh.divinefavor.common.network.message.sever.petrification.MessagePetrificationCure;
 import aurocosh.divinefavor.common.network.message.sever.petrification.MessagePetrificationDamage;
 import aurocosh.divinefavor.common.network.message.sever.petrification.MessagePetrificationReset;
-import com.google.common.collect.Lists;
 import net.minecraftforge.fml.relauncher.Side;
 
 public class MessageRegister {

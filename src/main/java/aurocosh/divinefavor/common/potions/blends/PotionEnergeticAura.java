@@ -1,6 +1,7 @@
 package aurocosh.divinefavor.common.potions.blends;
 
 import aurocosh.divinefavor.common.config.common.ConfigPresence;
+import aurocosh.divinefavor.common.constants.ConstMisc;
 import aurocosh.divinefavor.common.custom_data.player.PlayerData;
 import aurocosh.divinefavor.common.custom_data.player.data.aura.energetic.EnergeticAuraData;
 import aurocosh.divinefavor.common.lib.LoopedCounter;
@@ -16,7 +17,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 
-@Mod.EventBusSubscriber
+@Mod.EventBusSubscriber(modid = ConstMisc.MOD_ID)
 public class PotionEnergeticAura extends ModPotion {
     public static final int CHECK_RATE = UtilTick.secondsToTicks(1);
     private static final LoopedCounter COUNTER = new LoopedCounter(CHECK_RATE);

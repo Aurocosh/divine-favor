@@ -81,11 +81,11 @@ public class BlockSoulboundLectern extends ModBlock implements ITileEntityProvid
             return false;
 
         if (soulboundLectern.isMultiblockValid())
-            player.openGui(DivineFavor.instance, ConstGuiIDs.SOULBOUND_LECTERN_ACTIVE, world, pos.getX(), pos.getY(), pos.getZ());
+            player.openGui(DivineFavor.INSTANCE, ConstGuiIDs.SOULBOUND_LECTERN_ACTIVE, world, pos.getX(), pos.getY(), pos.getZ());
         else if (!soulboundLectern.getShardStack().isEmpty())
-            player.openGui(DivineFavor.instance, ConstGuiIDs.SOULBOUND_LECTERN_WITH_SHARD, world, pos.getX(), pos.getY(), pos.getZ());
+            player.openGui(DivineFavor.INSTANCE, ConstGuiIDs.SOULBOUND_LECTERN_WITH_SHARD, world, pos.getX(), pos.getY(), pos.getZ());
         else
-            player.openGui(DivineFavor.instance, ConstGuiIDs.SOULBOUND_LECTERN_EMPTY, world, pos.getX(), pos.getY(), pos.getZ());
+            player.openGui(DivineFavor.INSTANCE, ConstGuiIDs.SOULBOUND_LECTERN_EMPTY, world, pos.getX(), pos.getY(), pos.getZ());
         return true;
     }
 

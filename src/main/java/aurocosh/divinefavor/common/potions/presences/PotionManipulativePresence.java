@@ -1,5 +1,6 @@
 package aurocosh.divinefavor.common.potions.presences;
 
+import aurocosh.divinefavor.common.constants.ConstMisc;
 import aurocosh.divinefavor.common.custom_data.player.PlayerData;
 import aurocosh.divinefavor.common.custom_data.player.data.presence.manipulative.ManipulativePresenceData;
 import aurocosh.divinefavor.common.item.calling_stones.ModCallingStones;
@@ -15,7 +16,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
-@Mod.EventBusSubscriber
+@Mod.EventBusSubscriber(modid = ConstMisc.MOD_ID)
 public class PotionManipulativePresence extends ModPotion {
     public PotionManipulativePresence() {
         super("manipulative_presence", true, 0x7FB8A4);

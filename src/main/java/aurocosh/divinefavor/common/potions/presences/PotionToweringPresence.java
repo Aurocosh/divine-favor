@@ -1,6 +1,7 @@
 package aurocosh.divinefavor.common.potions.presences;
 
 import aurocosh.divinefavor.common.config.common.ConfigPresence;
+import aurocosh.divinefavor.common.constants.ConstMisc;
 import aurocosh.divinefavor.common.custom_data.player.PlayerData;
 import aurocosh.divinefavor.common.custom_data.player.data.presence.towering.ToweringPresenceData;
 import aurocosh.divinefavor.common.item.calling_stones.ModCallingStones;
@@ -14,7 +15,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.Mod;
 
-@Mod.EventBusSubscriber
+@Mod.EventBusSubscriber(modid = ConstMisc.MOD_ID)
 public class PotionToweringPresence extends ModPotion {
     private static final DistributedRandomList<ModPotion> possibleCurses = new DistributedRandomList<>();
 

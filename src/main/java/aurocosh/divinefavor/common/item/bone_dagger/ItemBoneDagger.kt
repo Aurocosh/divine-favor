@@ -12,7 +12,6 @@ import net.minecraft.entity.EntityLivingBase
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.item.EnumRarity
 import net.minecraft.item.ItemStack
-import net.minecraftforge.fml.common.Mod
 
 class ItemBoneDagger : ModItem("bone_dagger", "bone_dagger", ConstMainTabOrder.DAGGERS) {
     init {

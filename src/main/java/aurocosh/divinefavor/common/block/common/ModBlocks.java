@@ -1,12 +1,12 @@
 package aurocosh.divinefavor.common.block.common;
 
 import aurocosh.divinefavor.common.block.BlockEnderPumpkin;
-import aurocosh.divinefavor.common.block.ethereal.BlockEtherealFlash;
-import aurocosh.divinefavor.common.block.ethereal.BlockEtherealLight;
 import aurocosh.divinefavor.common.block.BlockRedPulse;
 import aurocosh.divinefavor.common.block.base.ModBlock;
 import aurocosh.divinefavor.common.block.bath_heater.BlockBathHeater;
 import aurocosh.divinefavor.common.block.bath_heater.TileBathHeater;
+import aurocosh.divinefavor.common.block.ethereal.BlockEtherealFlash;
+import aurocosh.divinefavor.common.block.ethereal.BlockEtherealLight;
 import aurocosh.divinefavor.common.block.medium.BlockMedium;
 import aurocosh.divinefavor.common.block.medium.TileMedium;
 import aurocosh.divinefavor.common.block.rope.BlockRopeLight;

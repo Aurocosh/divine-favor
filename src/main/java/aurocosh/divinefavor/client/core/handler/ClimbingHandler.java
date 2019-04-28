@@ -1,6 +1,7 @@
 package aurocosh.divinefavor.client.core.handler;
 
 import aurocosh.divinefavor.common.config.common.ConfigGeneral;
+import aurocosh.divinefavor.common.constants.ConstMisc;
 import aurocosh.divinefavor.common.entity.rope.IClimbable;
 import aurocosh.divinefavor.common.util.UtilEntity;
 import aurocosh.divinefavor.common.util.UtilList;
@@ -18,7 +19,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import java.util.List;
 
 @SideOnly(Side.CLIENT)
-@Mod.EventBusSubscriber(Side.CLIENT)
+@Mod.EventBusSubscriber(modid = ConstMisc.MOD_ID, value = Side.CLIENT)
 public class ClimbingHandler {
     @SideOnly(Side.CLIENT)
     @SubscribeEvent

@@ -184,7 +184,7 @@ public class ItemSpellBow extends ModItem {
     }
 
     private ActionResult<ItemStack> doBookAction(World world, EntityPlayer player, ItemStack stack) {
-        player.openGui(DivineFavor.instance, ConstGuiIDs.SPELL_BOW, world, (int) player.posX, (int) player.posY, (int) player.posZ);
+        player.openGui(DivineFavor.INSTANCE, ConstGuiIDs.SPELL_BOW, world, (int) player.posX, (int) player.posY, (int) player.posZ);
         return new ActionResult<>(EnumActionResult.SUCCESS, stack);
     }
 

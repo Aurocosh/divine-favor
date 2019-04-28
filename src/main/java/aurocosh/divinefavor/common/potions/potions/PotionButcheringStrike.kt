@@ -1,6 +1,7 @@
 package aurocosh.divinefavor.common.potions.potions
 
 import aurocosh.divinefavor.common.config.common.ConfigSpells
+import aurocosh.divinefavor.common.constants.ConstMisc
 import aurocosh.divinefavor.common.network.message.client.syncing.MessageSyncPotionCharge
 import aurocosh.divinefavor.common.potions.base.effect.ModEffectCharge
 import aurocosh.divinefavor.common.potions.base.potion.ModPotionCharge
@@ -14,17 +15,14 @@ import net.minecraftforge.event.entity.living.LootingLevelEvent
 import net.minecraftforge.fml.common.Mod
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent
 
-
+@Mod.EventBusSubscriber(modid = ConstMisc.MOD_ID)
 class PotionButcheringStrike : ModPotionCharge("butchering_strike", true, 0x7FB8A4) {
 
     override fun isReady(duration: Int, amplifier: Int): Boolean {
         return false
     }
 
-    @Mod.EventBusSubscriber
     companion object {
-
-
         @SubscribeEvent
         fun onEntityDamaged(event: LivingDamageEvent) {
             val source = event.source as? EntityDamageSource ?: return
@@ -58,4 +56,5 @@ class PotionButcheringStrike : ModPotionCharge("butchering_strike", true, 0x7FB8
             event.lootingLevel = event.lootingLevel + ConfigSpells.butcheringStrike.extraLooting
         }
     }
+
 }
