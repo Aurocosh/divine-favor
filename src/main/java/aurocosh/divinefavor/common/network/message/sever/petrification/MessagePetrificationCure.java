@@ -9,6 +9,6 @@ public class MessagePetrificationCure extends WrappedServerMessage {
 
     @Override
     protected void handleSafe(EntityPlayerMP serverPlayer) {
-        serverPlayer.removePotionEffect(ModCurses.petrification);
+        serverPlayer.removePotionEffect(ModCurses.INSTANCE.getPetrification());
     }
 }

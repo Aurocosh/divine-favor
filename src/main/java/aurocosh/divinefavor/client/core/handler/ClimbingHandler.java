@@ -38,6 +38,6 @@ public class ClimbingHandler {
             return;
 
         Vec3d direction = player.getLookVec().scale(player.movementInput.moveForward);
-        UtilEntity.setVelocity(player, direction, climbable.getClimbingSpeed());
+        UtilEntity.INSTANCE.setVelocity(player, direction, climbable.getClimbingSpeed());
     }
 }

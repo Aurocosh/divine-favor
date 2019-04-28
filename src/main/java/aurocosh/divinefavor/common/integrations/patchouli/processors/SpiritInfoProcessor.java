@@ -30,8 +30,8 @@ public class SpiritInfoProcessor implements IComponentProcessor {
             String result = text;
             if (spirit != null) {
                 TimePeriod activityPeriod = spirit.getActivityPeriod();
-                int start = activityPeriod.getStart() / UtilDayTime.TICKS_IN_HOUR;
-                int stop = activityPeriod.getStop() / UtilDayTime.TICKS_IN_HOUR;
+                int start = activityPeriod.getStart() / UtilDayTime.INSTANCE.getTICKS_IN_HOUR();
+                int stop = activityPeriod.getStop() / UtilDayTime.INSTANCE.getTICKS_IN_HOUR();
                 result += String.format("$(br)This spirit is active from %d o'clock to %d o'clock.", start, stop);
             }
             return result;

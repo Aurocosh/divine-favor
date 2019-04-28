@@ -6,6 +6,7 @@ import aurocosh.divinefavor.common.item.talismans.arrow.base.ArrowOptions
 import aurocosh.divinefavor.common.item.talismans.arrow.base.ArrowType
 import aurocosh.divinefavor.common.item.talismans.arrow.base.ItemArrowTalisman
 import aurocosh.divinefavor.common.lib.extensions.add
+import aurocosh.divinefavor.common.lib.extensions.getMotionVector
 import aurocosh.divinefavor.common.spirit.base.ModSpirit
 import aurocosh.divinefavor.common.util.UtilEntity
 import aurocosh.divinefavor.common.util.UtilRandom
@@ -34,7 +35,7 @@ class ArrowTalismanRicochetArrow(name: String, spirit: ModSpirit, favorCost: Int
             return true
         compound.setInteger(TAG_BOUNCES_LEFT, bouncesLeft - 1)
 
-        val motionVector = UtilEntity.getMotionVector(spellArrow)
+        val motionVector = spellArrow.getMotionVector()
         val speed = motionVector.length().toFloat()
         if (speed < ConfigArrow.ricochetArrow.minBounceSpeed)
             return true

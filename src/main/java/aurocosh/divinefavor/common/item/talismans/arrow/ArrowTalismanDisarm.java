@@ -40,6 +40,6 @@ public class ArrowTalismanDisarm extends ItemArrowTalisman {
             return;
         SlotData slotData = UtilPlayer.findStackInMainInventory(player, ItemStack::isEmpty);
         if (slotData.isValid())
-            UtilPlayer.swapStacks(player, slot, slotData.slotIndex);
+            UtilPlayer.swapStacks(player, slot, slotData.getSlotIndex());
     }
 }

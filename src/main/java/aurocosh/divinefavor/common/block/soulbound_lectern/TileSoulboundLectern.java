@@ -34,15 +34,15 @@ public class TileSoulboundLectern extends TileEntity implements IMultiblockContr
     private final static Map<Integer, ModMultiBlock> multiblocks = new HashMap<>();
 
     static {
-        multiblocks.put(ModSpirits.arbow.getId(), ModMultiBlocks.INSTANCE.getSoulbound_lectern_arbow());
-        multiblocks.put(ModSpirits.blizrabi.getId(), ModMultiBlocks.INSTANCE.getSoulbound_lectern_blizrabi());
-        multiblocks.put(ModSpirits.endererer.getId(), ModMultiBlocks.INSTANCE.getSoulbound_lectern_endererer());
-        multiblocks.put(ModSpirits.loon.getId(), ModMultiBlocks.INSTANCE.getSoulbound_lectern_loon());
-        multiblocks.put(ModSpirits.neblaze.getId(), ModMultiBlocks.INSTANCE.getSoulbound_lectern_neblaze());
-        multiblocks.put(ModSpirits.redwind.getId(), ModMultiBlocks.INSTANCE.getSoulbound_lectern_redwind());
-        multiblocks.put(ModSpirits.romol.getId(), ModMultiBlocks.INSTANCE.getSoulbound_lectern_romol());
-        multiblocks.put(ModSpirits.squarefury.getId(), ModMultiBlocks.INSTANCE.getSoulbound_lectern_squarefury());
-        multiblocks.put(ModSpirits.timber.getId(), ModMultiBlocks.INSTANCE.getSoulbound_lectern_timber());
+        multiblocks.put(ModSpirits.INSTANCE.getArbow().getId(), ModMultiBlocks.INSTANCE.getSoulbound_lectern_arbow());
+        multiblocks.put(ModSpirits.INSTANCE.getBlizrabi().getId(), ModMultiBlocks.INSTANCE.getSoulbound_lectern_blizrabi());
+        multiblocks.put(ModSpirits.INSTANCE.getEndererer().getId(), ModMultiBlocks.INSTANCE.getSoulbound_lectern_endererer());
+        multiblocks.put(ModSpirits.INSTANCE.getLoon().getId(), ModMultiBlocks.INSTANCE.getSoulbound_lectern_loon());
+        multiblocks.put(ModSpirits.INSTANCE.getNeblaze().getId(), ModMultiBlocks.INSTANCE.getSoulbound_lectern_neblaze());
+        multiblocks.put(ModSpirits.INSTANCE.getRedwind().getId(), ModMultiBlocks.INSTANCE.getSoulbound_lectern_redwind());
+        multiblocks.put(ModSpirits.INSTANCE.getRomol().getId(), ModMultiBlocks.INSTANCE.getSoulbound_lectern_romol());
+        multiblocks.put(ModSpirits.INSTANCE.getSquarefury().getId(), ModMultiBlocks.INSTANCE.getSoulbound_lectern_squarefury());
+        multiblocks.put(ModSpirits.INSTANCE.getTimber().getId(), ModMultiBlocks.INSTANCE.getSoulbound_lectern_timber());
     }
 
     private boolean isRejecting;
@@ -250,23 +250,23 @@ public class TileSoulboundLectern extends TileEntity implements IMultiblockContr
             return;
         ItemSoulShard soulShard = (ItemSoulShard) stack.getItem();
         ModSpirit spirit = soulShard.getSpirit();
-        if (spirit == ModSpirits.endererer)
+        if (spirit == ModSpirits.INSTANCE.getEndererer())
             setGem(SoulboundLecternGem.END);
-        else if (spirit == ModSpirits.romol)
+        else if (spirit == ModSpirits.INSTANCE.getRomol())
             setGem(SoulboundLecternGem.MIND);
-        else if (spirit == ModSpirits.neblaze)
+        else if (spirit == ModSpirits.INSTANCE.getNeblaze())
             setGem(SoulboundLecternGem.NETHER);
-        else if (spirit == ModSpirits.arbow)
+        else if (spirit == ModSpirits.INSTANCE.getArbow())
             setGem(SoulboundLecternGem.PEACE);
-        else if (spirit == ModSpirits.redwind)
+        else if (spirit == ModSpirits.INSTANCE.getRedwind())
             setGem(SoulboundLecternGem.WILL);
-        else if (spirit == ModSpirits.loon)
+        else if (spirit == ModSpirits.INSTANCE.getLoon())
             setGem(SoulboundLecternGem.UNDEATH);
-        else if (spirit == ModSpirits.blizrabi)
+        else if (spirit == ModSpirits.INSTANCE.getBlizrabi())
             setGem(SoulboundLecternGem.WATER);
-        else if (spirit == ModSpirits.squarefury)
+        else if (spirit == ModSpirits.INSTANCE.getSquarefury())
             setGem(SoulboundLecternGem.WILD);
-        else if (spirit == ModSpirits.timber)
+        else if (spirit == ModSpirits.INSTANCE.getTimber())
             setGem(SoulboundLecternGem.WITHER);
         else
             setGem(SoulboundLecternGem.NONE);

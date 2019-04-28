@@ -1,0 +1,29 @@
+package aurocosh.divinefavor.common.potions.base.potion
+
+import aurocosh.divinefavor.DivineFavor
+import aurocosh.divinefavor.common.custom_data.player.PlayerData
+import aurocosh.divinefavor.common.item.talismans.spell.base.ItemSpellTalisman
+import net.minecraft.client.Minecraft
+import net.minecraft.client.resources.I18n
+import net.minecraft.potion.PotionEffect
+import net.minecraftforge.fml.relauncher.Side
+import net.minecraftforge.fml.relauncher.SideOnly
+
+abstract class ModPotionToggleLimited(name: String, beneficial: Boolean, potionColor: Int) : ModPotionToggle(name, beneficial, potionColor) {
+    lateinit var talisman: ItemSpellTalisman
+
+    override fun shouldRenderInvText(effect: PotionEffect?): Boolean {
+        return false
+    }
+
+    @SideOnly(Side.CLIENT)
+    override fun renderCustomInvText(x: Int, y: Int, effect: PotionEffect, mc: Minecraft) {
+        val potionName = I18n.format(name)
+        mc.fontRenderer.drawStringWithShadow(potionName, (x + 10 + 18).toFloat(), (y + 6).toFloat(), 16777215)
+
+        val player = DivineFavor.proxy.clientPlayer
+        val spiritData = PlayerData.get(player).spiritData
+        val s = "Uses left: " + spiritData.getFavor(talisman.spiritId)
+        mc.fontRenderer.drawStringWithShadow(s, (x + 10 + 18).toFloat(), (y + 6 + 10).toFloat(), 8355711)
+    }
+}

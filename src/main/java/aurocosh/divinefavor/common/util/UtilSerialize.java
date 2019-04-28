@@ -12,10 +12,10 @@ public class UtilSerialize {
         int[] array = new int[posArrayList.size() * 4];
         int i = 0;
         for (GlobalBlockPos gpos : posArrayList) {
-            array[i++] = gpos.pos.getX();
-            array[i++] = gpos.pos.getY();
-            array[i++] = gpos.pos.getZ();
-            array[i++] = gpos.dimensionId;
+            array[i++] = gpos.getPos().getX();
+            array[i++] = gpos.getPos().getY();
+            array[i++] = gpos.getPos().getZ();
+            array[i++] = gpos.getDimensionId();
         }
 
         return array;

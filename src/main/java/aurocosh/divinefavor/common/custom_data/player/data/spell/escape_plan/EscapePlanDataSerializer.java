@@ -20,7 +20,7 @@ public class EscapePlanDataSerializer implements INbtSerializer<EscapePlanData> 
     @Override
     public void deserialize(NBTTagCompound nbt, EscapePlanData instance) {
         GlobalBlockPos pos = instance.getGlobalPosition();
-        nbt.setLong(TAG_ESCAPE_POSITION, pos.pos.toLong());
-        nbt.setInteger(TAG_ESCAPE_DIMENSION, pos.dimensionId);
+        nbt.setLong(TAG_ESCAPE_POSITION, pos.getPos().toLong());
+        nbt.setInteger(TAG_ESCAPE_DIMENSION, pos.getDimensionId());
     }
 }

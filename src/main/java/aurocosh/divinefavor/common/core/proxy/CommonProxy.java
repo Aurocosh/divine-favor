@@ -50,13 +50,13 @@ public class CommonProxy {
     public void preInit(FMLPreInitializationEvent e) {
         BufSerializerProvider.preInit();
 
-        ModSpirits.preInit();
+        ModSpirits.INSTANCE.preInit();
         ModMultiBlocks.INSTANCE.preInit();
 
-        ModPotions.preInit();
-        ModCurses.preInit();
-        ModBlendEffects.preInit();
-        ModBlessings.preInit();
+        ModPotions.INSTANCE.preInit();
+        ModCurses.INSTANCE.preInit();
+        ModBlendEffects.INSTANCE.preInit();
+        ModBlessings.INSTANCE.preInit();
         ModArrowTalismans.INSTANCE.preInit();
         ModItems.INSTANCE.preInit();
         ModSoulShards.INSTANCE.preInit();

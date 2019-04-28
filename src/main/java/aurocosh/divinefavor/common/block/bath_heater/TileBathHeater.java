@@ -138,7 +138,7 @@ public class TileBathHeater extends TileEntity implements ITickable, IAreaWatche
 
     private boolean isWater(BlockPos pos) {
         Block block = world.getBlockState(pos).getBlock();
-        return UtilBlock.isWater(block);
+        return UtilBlock.INSTANCE.isWater(block);
     }
 
     @Override

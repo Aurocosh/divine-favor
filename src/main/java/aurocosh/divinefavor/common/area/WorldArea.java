@@ -38,7 +38,7 @@ public class WorldArea {
     }
 
     private void refreshBoundingBox() {
-        boundingBox = CubeCoordinates.getBoundingBox(positions);
+        boundingBox = CubeCoordinates.Companion.getBoundingBox(positions);
     }
 
     public boolean isApartOfArea(BlockPos position) {

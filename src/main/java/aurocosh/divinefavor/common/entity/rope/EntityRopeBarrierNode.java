@@ -37,7 +37,7 @@ public class EntityRopeBarrierNode extends EntityRopeNodeBase {
 
         for (EntityLivingBase affectedMob : affectedMobs) {
             Vec3d direction = affectedMob.getPositionVector().subtract(this.getPositionVector());
-            UtilEntity.addVelocity(affectedMob, direction, ConfigRope.barrierRope.repulsionForce);
+            UtilEntity.INSTANCE.addVelocity(affectedMob, direction, ConfigRope.barrierRope.repulsionForce);
             durability--;
         }
         if (durability <= 0)
@@ -52,10 +52,10 @@ public class EntityRopeBarrierNode extends EntityRopeNodeBase {
     @Override
     protected boolean canDropNewNode(EntityPlayer player) {
         SlotData slotData = UtilPlayer.findStackInInventory(player, element -> !element.isEmpty() && element.getItem() == ModItems.INSTANCE.getRope_barrier());
-        if (slotData.slotIndex == -1)
+        if (slotData.getSlotIndex() == -1)
             return false;
-        slotData.stack.shrink(1);
-        player.inventory.setInventorySlotContents(slotData.slotIndex, slotData.stack.getCount() > 0 ? slotData.stack : ItemStack.EMPTY);
+        slotData.getStack().shrink(1);
+        player.inventory.setInventorySlotContents(slotData.getSlotIndex(), slotData.getStack().getCount() > 0 ? slotData.getStack() : ItemStack.EMPTY);
         return true;
     }
 
