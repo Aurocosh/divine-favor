@@ -7,11 +7,11 @@ import net.minecraftforge.common.capabilities.ICapabilitySerializable;
 import net.minecraftforge.items.CapabilityItemHandler;
 
 public class GrimoireProvider implements ICapabilitySerializable<NBTTagCompound> {
-    IGrimoireHandler instance = GrimoireDataHandler.CAPABILITY_GRIMOIRE.getDefaultInstance();
+    IGrimoireHandler instance = GrimoireDataHandler.INSTANCE.getCAPABILITY_GRIMOIRE().getDefaultInstance();
 
     @Override
     public boolean hasCapability(Capability<?> capability, EnumFacing facing) {
-        if(capability == GrimoireDataHandler.CAPABILITY_GRIMOIRE)
+        if(capability == GrimoireDataHandler.INSTANCE.getCAPABILITY_GRIMOIRE())
             return true;
         return capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY;
     }
@@ -20,18 +20,18 @@ public class GrimoireProvider implements ICapabilitySerializable<NBTTagCompound>
     public <T> T getCapability(Capability<T> capability, EnumFacing facing) {
         if(!hasCapability(capability,facing))
             return null;
-        if(capability == GrimoireDataHandler.CAPABILITY_GRIMOIRE)
-            return GrimoireDataHandler.CAPABILITY_GRIMOIRE.cast(instance);
+        if(capability == GrimoireDataHandler.INSTANCE.getCAPABILITY_GRIMOIRE())
+            return GrimoireDataHandler.INSTANCE.getCAPABILITY_GRIMOIRE().cast(instance);
         return CapabilityItemHandler.ITEM_HANDLER_CAPABILITY.cast(instance.getStackHandler());
     }
 
     @Override
     public NBTTagCompound serializeNBT() {
-        return (NBTTagCompound) GrimoireDataHandler.CAPABILITY_GRIMOIRE.getStorage().writeNBT(GrimoireDataHandler.CAPABILITY_GRIMOIRE, instance, null);
+        return (NBTTagCompound) GrimoireDataHandler.INSTANCE.getCAPABILITY_GRIMOIRE().getStorage().writeNBT(GrimoireDataHandler.INSTANCE.getCAPABILITY_GRIMOIRE(), instance, null);
     }
 
     @Override
     public void deserializeNBT(NBTTagCompound nbt) {
-        GrimoireDataHandler.CAPABILITY_GRIMOIRE.getStorage().readNBT(GrimoireDataHandler.CAPABILITY_GRIMOIRE, instance, null, nbt);
+        GrimoireDataHandler.INSTANCE.getCAPABILITY_GRIMOIRE().getStorage().readNBT(GrimoireDataHandler.INSTANCE.getCAPABILITY_GRIMOIRE(), instance, null, nbt);
     }
 }

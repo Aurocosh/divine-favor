@@ -58,11 +58,11 @@ public class TalismanSelectGui extends GuiScreen {
         super.drawScreen(mx, my, partialTicks);
 
         EntityPlayer player = DivineFavor.proxy.getClientPlayer();
-        hand = UtilPlayer.getHandWithItem(player, TalismanContainerAdapter::isItemValid);
+        hand = UtilPlayer.getHandWithItem(player, TalismanContainerAdapter.INSTANCE::isItemValid);
         if (hand == null)
             return;
 
-        ITalismanContainer talismanContainer = TalismanContainerAdapter.getTalismanContainer(player.getHeldItem(hand));
+        ITalismanContainer talismanContainer = TalismanContainerAdapter.INSTANCE.getTalismanContainer(player.getHeldItem(hand));
 
         refreshStackData(talismanContainer);
         renderSpellMassSelector(mx, my, talismanContainer);
@@ -142,7 +142,7 @@ public class TalismanSelectGui extends GuiScreen {
             if (selectedIndex != -1 && hand != null) {
                 EntityPlayer player = DivineFavor.proxy.getClientPlayer();
                 int playerSlot = hand == EnumHand.OFF_HAND ? 40 : player.inventory.currentItem;
-                TalismanContainerAdapter.selectSlot(playerSlot, selectedIndex);
+                TalismanContainerAdapter.INSTANCE.selectSlot(playerSlot, selectedIndex);
                 selectedIndex = -1;
             }
         }

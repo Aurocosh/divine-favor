@@ -17,7 +17,7 @@ public class GuiGrimoire extends GuiContainer {
     ItemStack grimoire;
 
     public GuiGrimoire(EntityPlayer player, ItemStack grimoire, EnumHand hand) {
-        super(new GrimoireContainer(player, grimoire.getCapability(GrimoireDataHandler.CAPABILITY_GRIMOIRE, null), hand));
+        super(new GrimoireContainer(player, grimoire.getCapability(GrimoireDataHandler.INSTANCE.getCAPABILITY_GRIMOIRE(), null), hand));
         this.grimoire = grimoire;
     }
 

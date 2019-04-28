@@ -1,0 +1,130 @@
+package aurocosh.divinefavor.common.item.talisman_container.grimoire.capability
+
+import aurocosh.divinefavor.common.item.talisman_container.grimoire.ItemGrimoire
+import aurocosh.divinefavor.common.item.talismans.spell.base.ItemSpellTalisman
+import aurocosh.divinefavor.common.util.UtilMath
+import net.minecraft.item.ItemStack
+import net.minecraftforge.items.ItemStackHandler
+import java.util.*
+import java.util.function.Predicate
+
+// The default implementation of the capability. Holds all the logic.
+class DefaultGrimoireHandler : IGrimoireHandler {
+    private val maxIndex = ItemGrimoire.SLOT_COUNT - 1
+    private val stacksDisplayed = 3
+
+    private var state: Int = 0
+    private val inventory: ItemStackHandler
+    override var selectedSlotIndex: Int = 0
+        set(value) {
+            field = UtilMath.clamp(value, 0, maxIndex)
+            state++
+        }
+
+    init {
+        state = 0
+        selectedSlotIndex = 0
+        inventory = object : ItemStackHandler(ItemGrimoire.SLOT_COUNT) {
+            override fun isItemValid(slot: Int, stack: ItemStack): Boolean {
+                return stack.item is ItemSpellTalisman
+            }
+
+            override fun onContentsChanged(slot: Int) {
+                super.onContentsChanged(slot)
+                state++
+            }
+        }
+    }
+
+    override fun getSelectedStack(): ItemStack {
+        return inventory.getStackInSlot(selectedSlotIndex)
+    }
+
+    override fun getStackInSlot(slot: Int): ItemStack {
+        return inventory.getStackInSlot(slot)
+    }
+
+    override fun getSlotIndexes(predicate: Predicate<ItemStack>): List<Int> {
+        val indexes = ArrayList<Int>()
+        for (i in 0 until inventory.slots) {
+            val stack = inventory.getStackInSlot(i)
+            if (!stack.isEmpty)
+                indexes.add(i)
+        }
+        return indexes
+    }
+
+    override fun switchToNext() {
+        selectedSlotIndex = getNonEmptyIndex(selectedSlotIndex, this::nextIndex)
+    }
+
+    override fun switchToPrevious() {
+        selectedSlotIndex = getNonEmptyIndex(selectedSlotIndex, this::previousIndex)
+    }
+
+    override fun getSlotCount(): Int {
+        return inventory.slots
+    }
+
+    override fun getStackHandler(): ItemStackHandler {
+        return inventory
+    }
+
+    override fun getState(): Int {
+        return state
+    }
+
+    override fun getPreviousStacks(): List<ItemStack> {
+        return getStacks(stacksDisplayed, this::previousIndex)
+    }
+
+    override fun getNextStacks(): List<ItemStack> {
+        return getStacks(stacksDisplayed, this::nextIndex)
+    }
+
+    override fun getAllStacks(): List<ItemStack> {
+        val stacks = ArrayList<ItemStack>()
+        for (i in 0 until inventory.slots)
+            stacks.add(inventory.getStackInSlot(i))
+        return stacks
+    }
+
+    fun getStacks(count: Int, indexer: (Int) -> Int): List<ItemStack> {
+        var counter = count
+        val stacks = ArrayList<ItemStack>(counter)
+        var index = selectedSlotIndex
+        do {
+            index = getNonEmptyIndex(index, indexer)
+            if (index != selectedSlotIndex)
+                stacks.add(inventory.getStackInSlot(index))
+        } while (counter-- > 0 && index != selectedSlotIndex)
+        return Collections.unmodifiableList(stacks)
+    }
+
+    private fun getNonEmptyIndex(index: Int, indexer: (Int) -> Int): Int {
+        var newIndex = index
+        do {
+            newIndex = indexer.invoke(newIndex)
+            val stack = inventory.getStackInSlot(newIndex)
+            if (!stack.isEmpty)
+                return newIndex
+        } while (newIndex != index)
+        return index
+    }
+
+    private fun nextIndex(index: Int): Int {
+        var indexCounter = index
+        indexCounter++
+        if (indexCounter > maxIndex)
+            indexCounter = 0
+        return indexCounter
+    }
+
+    private fun previousIndex(index: Int): Int {
+        var indexCounter = index
+        indexCounter--
+        if (indexCounter < 0)
+            indexCounter = maxIndex
+        return indexCounter
+    }
+}
