@@ -16,9 +16,9 @@ public class MessageSyncWindLeash extends WrappedClientMessage {
     public MessageSyncWindLeash() {
     }
 
-    public MessageSyncWindLeash(double x, double z) {
-        this.x = x;
-        this.z = z;
+    public MessageSyncWindLeash(Vec3d vec3d) {
+        this.x = vec3d.x;
+        this.z = vec3d.z;
     }
 
     @Override
