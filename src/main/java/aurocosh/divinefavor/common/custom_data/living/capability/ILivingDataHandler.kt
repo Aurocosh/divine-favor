@@ -8,13 +8,12 @@ import aurocosh.divinefavor.common.custom_data.living.data.soul_theft.SoulTheftD
 import aurocosh.divinefavor.common.custom_data.living.data.suffocating_fumes.SuffocatingFumesData
 import aurocosh.divinefavor.common.custom_data.living.data.wind_leash.WindLeashData
 
-// The default implementation of the capability. Holds all the logic.
-class DefaultLivingDataHandler : ILivingDataHandler {
-    override val crippleData: CrippleData = CrippleData()
-    override val curseData: CurseData = CurseData()
-    override val limpLegData: LimpLegData = LimpLegData()
-    override val petrificationData: PetrificationData = PetrificationData()
-    override val soulTheftData: SoulTheftData = SoulTheftData()
-    override val suffocatingFumesData: SuffocatingFumesData = SuffocatingFumesData()
-    override val windLeashData: WindLeashData = WindLeashData()
+interface ILivingDataHandler {
+    val crippleData: CrippleData
+    val curseData: CurseData
+    val limpLegData: LimpLegData
+    val petrificationData: PetrificationData
+    val soulTheftData: SoulTheftData
+    val suffocatingFumesData: SuffocatingFumesData
+    val windLeashData: WindLeashData
 }

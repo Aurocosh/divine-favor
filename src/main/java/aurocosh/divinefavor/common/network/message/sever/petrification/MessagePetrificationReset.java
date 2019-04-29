@@ -16,7 +16,7 @@ public class MessagePetrificationReset extends WrappedClientMessage {
     @SideOnly(Side.CLIENT)
     protected void handleSafe() {
         EntityPlayer player = DivineFavor.proxy.getClientPlayer();
-        PetrificationData petrification = LivingData.get(player).getPetrificationData();
+        PetrificationData petrification = LivingData.INSTANCE.get(player).getPetrificationData();
         petrification.resetCureTimer();
     }
 }

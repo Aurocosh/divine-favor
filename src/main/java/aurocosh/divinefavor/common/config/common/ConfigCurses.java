@@ -9,19 +9,19 @@ import java.util.Map;
 @Config(modid = ConstMisc.MOD_ID, name = ConstMisc.MOD_ID + "/curses")
 public class ConfigCurses {
     @Config.Name("Curse resistance per curse")
-    public static int curseResistancePerCurse = 50;
+    public static float curseResistancePerCurse = 50;
     @Config.Name("Base curse resistance")
-    public static int baseCurseResistance = 5;
+    public static float baseCurseResistance = 5;
     @Config.Name("Player curse resistance")
-    public static int playerCurseResistance = 5;
+    public static float playerCurseResistance = 5;
     @Config.Name("Mob resistances")
-    public static Map<String, Integer> mobResistances = new HashMap<String, Integer>() {
+    public static Map<String, Float> mobResistances = new HashMap<String, Float>() {
         {
-            put("minecraft:spider", 5);
-            put("minecraft:skeleton", 15);
-            put("minecraft:stray", 15);
-            put("minecraft:zombie", 15);
-            put("minecraft:husk", 15);
+            put("minecraft:spider", 5f);
+            put("minecraft:skeleton", 15f);
+            put("minecraft:stray", 15f);
+            put("minecraft:zombie", 15f);
+            put("minecraft:husk", 15f);
         }
     };
 }

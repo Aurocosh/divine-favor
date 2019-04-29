@@ -25,7 +25,7 @@ public class MessageSyncWindLeash extends WrappedClientMessage {
     @SideOnly(Side.CLIENT)
     protected void handleSafe() {
         EntityPlayer player = DivineFavor.proxy.getClientPlayer();
-        WindLeashData windLeash = LivingData.get(player).getWindLeashData();
+        WindLeashData windLeash = LivingData.INSTANCE.get(player).getWindLeashData();
         windLeash.setVector(new Vec3d(x, 0, z));
     }
 }
