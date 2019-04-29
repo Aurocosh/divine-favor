@@ -18,7 +18,7 @@ class SpellTalismanSurfaceBlink(name: String, spirit: ModSpirit, favorCost: Int,
     }
 
     override fun performActionServer(context: TalismanContext) {
-        val target = getBlinkTarget(context)
+        val target = getBlinkTarget(context) ?: return
         UtilEntity.teleport(context.player, target)
     }
 

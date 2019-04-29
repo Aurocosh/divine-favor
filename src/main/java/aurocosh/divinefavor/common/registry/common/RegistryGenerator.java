@@ -17,11 +17,11 @@ public final class RegistryGenerator {
     public static void onCreateRegistry(RegistryEvent.NewRegistry event) {
         new RegistryBuilder<ModMultiBlock>()
                 .setType(ModMultiBlock.class)
-                .setName(ResourceNamer.getFullName(REGESTRY_PREFIX,"multi_blocks"))
+                .setName(ResourceNamer.INSTANCE.getFullName(REGESTRY_PREFIX,"multi_blocks"))
                 .create();
         new RegistryBuilder<ModSpirit>()
                 .setType(ModSpirit.class)
-                .setName(ResourceNamer.getFullName(REGESTRY_PREFIX,"spirits"))
+                .setName(ResourceNamer.INSTANCE.getFullName(REGESTRY_PREFIX,"spirits"))
                 .create();
     }
 }

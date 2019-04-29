@@ -2,7 +2,6 @@ package aurocosh.divinefavor.common.item.talisman_container
 
 import net.minecraft.item.ItemStack
 import net.minecraftforge.items.ItemStackHandler
-import java.util.function.Predicate
 
 interface ITalismanContainer {
     var selectedSlotIndex: Int
@@ -21,5 +20,5 @@ interface ITalismanContainer {
     fun switchToNext()
     fun switchToPrevious()
     fun getStackInSlot(slot: Int): ItemStack
-    fun getSlotIndexes(predicate: Predicate<ItemStack>): List<Int>
+    fun getSlotIndexes(predicate: (ItemStack) -> Boolean): List<Int>
 }

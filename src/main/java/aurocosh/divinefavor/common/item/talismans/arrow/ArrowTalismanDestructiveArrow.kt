@@ -18,6 +18,8 @@ class ArrowTalismanDestructiveArrow(name: String, spirit: ModSpirit, favorCost: 
 
     override fun performActionServer(target: EntityLivingBase?, shooter: EntityLivingBase, spellArrow: EntitySpellArrow, blockPos: BlockPos?, sideHit: EnumFacing?): Boolean {
         val world = spellArrow.world
+        if (blockPos == null)
+            return true
         if (world.isAirBlock(blockPos))
             return true
 

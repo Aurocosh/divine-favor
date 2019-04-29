@@ -26,6 +26,6 @@ public class LivingDataDataHandler {
     @SubscribeEvent
     public void attachCapabilities(AttachCapabilitiesEvent<Entity> event) {
         if (event.getObject() instanceof EntityLivingBase)
-            event.addCapability(ResourceNamer.getFullName("capability_living_data"), new LivingDataProvider());
+            event.addCapability(ResourceNamer.INSTANCE.getFullName("capability_living_data"), new LivingDataProvider());
     }
 }

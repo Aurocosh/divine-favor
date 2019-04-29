@@ -39,7 +39,7 @@ class PotionToweringPresence : ModPotion("towering_presence", true, 0x7FB8A4) {
 
         val curseTime = UtilRandom.nextInt(ConfigPresence.toweringPresence.minCurseTime, ConfigPresence.toweringPresence.maxCurseTime)
         val curse = possibleCurses.random
-        livingBase.addPotionEffect(ModEffect(curse, curseTime).setIsCurse())
+        livingBase.addPotionEffect(ModEffect(curse!!, curseTime).setIsCurse())
     }
 
     override fun isReady(duration: Int, amplifier: Int): Boolean {

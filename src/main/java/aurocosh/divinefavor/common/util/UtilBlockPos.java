@@ -26,14 +26,14 @@ public class UtilBlockPos {
 
     public static BlockPos getRandomDirection() {
         int index = UtilRandom.nextInt(0, 5);
-        return BlockPosConstants.DIRECT_NEIGHBOURS.get(index);
+        return BlockPosConstants.INSTANCE.getDIRECT_NEIGHBOURS().get(index);
     }
 
     public static List<BlockPos> getRandomDirections(int count) {
         count = UtilMath.clamp(count, 1, 6);
         int dirsToRemove = 6 - count;
 
-        List<BlockPos> directions = new LinkedList<>(BlockPosConstants.DIRECT_NEIGHBOURS);
+        List<BlockPos> directions = new LinkedList<>(BlockPosConstants.INSTANCE.getDIRECT_NEIGHBOURS());
         for (int i = 0; i < dirsToRemove; i++) {
             int index = UtilRandom.nextIntExclusive(0, directions.size());
             directions.remove(index);
@@ -43,7 +43,7 @@ public class UtilBlockPos {
 
     public static List<BlockPos> getNeighbours(BlockPos position) {
         List<BlockPos> neighbours = new LinkedList<>();
-        for (BlockPos direction : BlockPosConstants.DIRECT_NEIGHBOURS)
+        for (BlockPos direction : BlockPosConstants.INSTANCE.getDIRECT_NEIGHBOURS())
             neighbours.add(position.add(direction));
         return neighbours;
     }

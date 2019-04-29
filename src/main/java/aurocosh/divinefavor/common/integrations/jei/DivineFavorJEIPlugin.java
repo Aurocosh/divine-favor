@@ -18,7 +18,7 @@ import net.minecraftforge.oredict.OreDictionary;
 
 @JEIPlugin
 public class DivineFavorJEIPlugin implements IModPlugin {
-    public static final String IMMATERIAL_MEDIUM_UID = ResourceNamer.getFullName("immaterial_medium").toString();
+    public static final String IMMATERIAL_MEDIUM_UID = ResourceNamer.INSTANCE.getFullName("immaterial_medium").toString();
 
     @Override
     public void registerCategories(IRecipeCategoryRegistration registry) {

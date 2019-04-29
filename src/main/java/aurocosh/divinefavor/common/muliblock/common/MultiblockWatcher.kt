@@ -29,9 +29,11 @@ object MultiblockWatcher {
         val controllers = controllerSet.toTypedArray()
 
         val position = event.pos
-        for (controller in controllers)
-            if (controller.getMultiblockInstance().isSolidPart(position))
+        for (controller in controllers) {
+            val multiblockInstance = controller.getMultiblockInstance()
+            if (multiblockInstance?.isSolidPart(position) == true)
                 controller.multiblockDamaged(event.player, event.world, event.pos, event.state)
+        }
     }
 
     @SubscribeEvent(priority = EventPriority.LOWEST)
@@ -39,9 +41,11 @@ object MultiblockWatcher {
         val controllerSet = controllers[event.world] ?: return
 
         val position = event.pos
-        for (controller in controllerSet)
-            if (controller.getMultiblockInstance().isSupposedToBeEmpty(position))
+        for (controller in controllerSet) {
+            val multiblockInstance = controller.getMultiblockInstance()
+            if (multiblockInstance?.isSupposedToBeEmpty(position) == true)
                 controller.multiblockDamaged(event.player, event.world, event.pos, event.state)
+        }
     }
 
     private fun getOrMakeControllerSet(world: World): MutableSet<IMultiblockController> {

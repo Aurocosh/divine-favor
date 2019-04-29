@@ -6,7 +6,6 @@ import aurocosh.divinefavor.common.util.UtilMath
 import net.minecraft.item.ItemStack
 import net.minecraftforge.items.ItemStackHandler
 import java.util.*
-import java.util.function.Predicate
 
 // The default implementation of the capability. Holds all the logic.
 class DefaultSpellBowHandler : ISpellBowHandler {
@@ -44,11 +43,11 @@ class DefaultSpellBowHandler : ISpellBowHandler {
         return inventory.getStackInSlot(slot)
     }
 
-    override fun getSlotIndexes(predicate: Predicate<ItemStack>): List<Int> {
+    override fun getSlotIndexes(predicate: (ItemStack) -> Boolean): List<Int> {
         val indexes = ArrayList<Int>()
         for (i in 0 until inventory.slots) {
             val stack = inventory.getStackInSlot(i)
-            if (predicate.test(stack))
+            if (predicate.invoke(stack))
                 indexes.add(i)
         }
         return indexes

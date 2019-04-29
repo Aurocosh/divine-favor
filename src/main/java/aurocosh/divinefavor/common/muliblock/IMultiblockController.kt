@@ -8,7 +8,7 @@ import net.minecraft.world.World
 
 interface IMultiblockController {
     fun getWorld(): World
-    fun getMultiblockInstance(): MultiBlockInstance
+    fun getMultiblockInstance(): MultiBlockInstance?
 
     fun multiblockDeconstructed()
     fun multiblockDamaged(player: EntityPlayer, world: World, pos: BlockPos, state: IBlockState)

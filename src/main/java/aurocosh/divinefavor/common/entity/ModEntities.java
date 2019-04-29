@@ -42,7 +42,7 @@ public final class ModEntities {
     }
 
     private static void registerModEntity(Class<? extends Entity> entityClass, String entityName, int trackingRange, int updateFrequency, boolean sendsVelocityUpdates) {
-        ResourceLocation name = ResourceNamer.getFullName("entity", entityName);
+        ResourceLocation name = ResourceNamer.INSTANCE.getFullName("entity", entityName);
         EntityRegistry.registerModEntity(name, entityClass, entityName, nextId++, DivineFavor.INSTANCE, trackingRange, updateFrequency, sendsVelocityUpdates);
     }
 }
