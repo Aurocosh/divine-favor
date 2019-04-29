@@ -1,6 +1,7 @@
 package aurocosh.divinefavor.common.network.base;
 
 import aurocosh.divinefavor.common.network.base.message.NetworkClientMessage;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.util.math.BlockPos;
@@ -19,6 +20,11 @@ public abstract class WrappedClientMessage extends NetworkClientMessage {
     }
 
     public void sendTo(EntityPlayer player) {
+        if (player instanceof EntityPlayerMP)
+            networkWrapper.sendTo(this, (EntityPlayerMP) player);
+    }
+
+    public void sendTo(EntityLivingBase player) {
         if (player instanceof EntityPlayerMP)
             networkWrapper.sendTo(this, (EntityPlayerMP) player);
     }

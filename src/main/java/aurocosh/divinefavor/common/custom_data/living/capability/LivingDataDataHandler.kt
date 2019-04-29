@@ -1,6 +1,13 @@
 package aurocosh.divinefavor.common.custom_data.living.capability
 
 import aurocosh.divinefavor.common.core.ResourceNamer
+import aurocosh.divinefavor.common.custom_data.CustomDataStorage
+import aurocosh.divinefavor.common.custom_data.living.data.curse.CurseDataSerializer
+import aurocosh.divinefavor.common.custom_data.living.data.limp_leg.LimpLegDataSerializer
+import aurocosh.divinefavor.common.custom_data.living.data.petrification.PetrificationDataSerializer
+import aurocosh.divinefavor.common.custom_data.living.data.soul_theft.SoulTheftDataSerializer
+import aurocosh.divinefavor.common.custom_data.living.data.suffocating_fumes.SuffocatingFumesDataSerializer
+import aurocosh.divinefavor.common.custom_data.living.data.wind_leash.WindLeashDataSerializer
 import net.minecraft.entity.Entity
 import net.minecraft.entity.EntityLivingBase
 import net.minecraftforge.common.MinecraftForge
@@ -26,8 +33,19 @@ class LivingDataDataHandler {
 
         // Handles all of the required registration for the capability.
         fun register() {
-            CapabilityManager.INSTANCE.register(ILivingDataHandler::class.java, LivingDataStorage(), DefaultLivingDataHandler::class.java)
+            CapabilityManager.INSTANCE.register(ILivingDataHandler::class.java, getStorage(), DefaultLivingDataHandler::class.java)
             MinecraftForge.EVENT_BUS.register(LivingDataDataHandler())
+        }
+
+        private fun getStorage() : Capability.IStorage<ILivingDataHandler> {
+            val storage = CustomDataStorage<ILivingDataHandler>()
+            storage.addSerializer(CurseDataSerializer(),ILivingDataHandler::curseData)
+            storage.addSerializer(LimpLegDataSerializer(),ILivingDataHandler::limpLegData)
+            storage.addSerializer(PetrificationDataSerializer(),ILivingDataHandler::petrificationData)
+            storage.addSerializer(SoulTheftDataSerializer(),ILivingDataHandler::soulTheftData)
+            storage.addSerializer(SuffocatingFumesDataSerializer(),ILivingDataHandler::suffocatingFumesData)
+            storage.addSerializer(WindLeashDataSerializer(),ILivingDataHandler::windLeashData)
+            return storage;
         }
     }
 }

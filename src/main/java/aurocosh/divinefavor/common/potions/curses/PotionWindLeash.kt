@@ -28,8 +28,7 @@ class PotionWindLeash : ModPotion("wind_leash", false, 0x7FB8A4) {
         val windLeash = LivingData.get(livingBase).windLeashData
         windLeash.vector = vector
 
-        if (livingBase is EntityPlayer)
-            MessageSyncWindLeash(vector.x, vector.z).sendTo(livingBase)
+        MessageSyncWindLeash(vector).sendTo(livingBase)
     }
 
     override fun performEffect(livingBase: EntityLivingBase, amplifier: Int) {
