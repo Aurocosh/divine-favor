@@ -33,7 +33,7 @@ public class BlockMedium extends ModBlock implements ITileEntityProvider {
     public static final PropertyEnum<MediumStone> STONE = PropertyEnum.create("stone", MediumStone.class);
 
     public BlockMedium(String name, Material material) {
-        super(ConstBlockNames.MEDIUM + "_" + name, material, ConstMainTabOrder.MEDIUMS);
+        super(ConstBlockNames.MEDIUM + "_" + name, material, ConstMainTabOrder.INSTANCE.getMEDIUMS());
         setHardness(2.0F);
         setResistance(10.0F);
         setSoundType(SoundType.METAL);
@@ -78,9 +78,9 @@ public class BlockMedium extends ModBlock implements ITileEntityProvider {
             return false;
 
         else if (!tileMedium.getStoneStack().isEmpty())
-            player.openGui(DivineFavor.INSTANCE, ConstGuiIDs.IRON_MEDIUM_WITH_STONE, world, pos.getX(), pos.getY(), pos.getZ());
+            player.openGui(DivineFavor.INSTANCE, ConstGuiIDs.INSTANCE.getIRON_MEDIUM_WITH_STONE(), world, pos.getX(), pos.getY(), pos.getZ());
         else
-            player.openGui(DivineFavor.INSTANCE, ConstGuiIDs.IRON_MEDIUM_NO_STONE, world, pos.getX(), pos.getY(), pos.getZ());
+            player.openGui(DivineFavor.INSTANCE, ConstGuiIDs.INSTANCE.getIRON_MEDIUM_NO_STONE(), world, pos.getX(), pos.getY(), pos.getZ());
         return true;
     }
 

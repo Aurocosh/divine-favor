@@ -113,7 +113,7 @@ public class TileBathHeater extends TileEntity implements ITickable, IAreaWatche
             return;
         initialized = true;
         area.addPositions(UtilCoordinates.INSTANCE.getBlocksInRadius(pos, RADIUS_OF_EFFECT, 0, RADIUS_OF_EFFECT));
-        WorldAreaWatcher.registerWatcher(this);
+        WorldAreaWatcher.INSTANCE.registerWatcher(this);
     }
 
     private void refreshWaterBlocks() {
@@ -123,12 +123,12 @@ public class TileBathHeater extends TileEntity implements ITickable, IAreaWatche
         waterPositions.clear();
         BlockPos posVector = new BlockPos(pos);
         List<BlockPos> start = new ArrayList<>();
-        start.add(posVector.add(BlockPosConstants.EAST));
-        start.add(posVector.add(BlockPosConstants.WEST));
-        start.add(posVector.add(BlockPosConstants.NORTH));
-        start.add(posVector.add(BlockPosConstants.SOUTH));
+        start.add(posVector.add(BlockPosConstants.INSTANCE.getEAST()));
+        start.add(posVector.add(BlockPosConstants.INSTANCE.getWEST()));
+        start.add(posVector.add(BlockPosConstants.INSTANCE.getNORTH()));
+        start.add(posVector.add(BlockPosConstants.INSTANCE.getSOUTH()));
 
-        List<BlockPos> waterPosList = UtilCoordinates.INSTANCE.floodFill(start, BlockPosConstants.HORIZONTAL_DIRECT, this::isWater, 50);
+        List<BlockPos> waterPosList = UtilCoordinates.INSTANCE.floodFill(start, BlockPosConstants.INSTANCE.getHORIZONTAL_DIRECT(), this::isWater, 50);
         UtilList.filterList(waterPosList, area::isApartOfArea);
         waterPositions.addAll(waterPosList);
 

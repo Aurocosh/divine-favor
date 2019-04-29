@@ -24,6 +24,6 @@ public class WorldDataDataHandler {
     // Allows the provider to be attached to a target entity.
     @SubscribeEvent
     public void attachCapabilities(AttachCapabilitiesEvent<World> event) {
-        event.addCapability(ResourceNamer.getFullName("capability_world_data_divine"), new WorldDataProvider());
+        event.addCapability(ResourceNamer.INSTANCE.getFullName("capability_world_data_divine"), new WorldDataProvider());
     }
 }

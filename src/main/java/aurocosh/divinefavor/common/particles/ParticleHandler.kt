@@ -14,7 +14,7 @@ import net.minecraftforge.fml.relauncher.SideOnly
 import java.util.*
 
 @SideOnly(Side.CLIENT)
-@Mod.EventBusSubscriber(modid = ConstMisc.MOD_ID, value = Side.CLIENT)
+@Mod.EventBusSubscriber(modid = ConstMisc.MOD_ID, value = [Side.CLIENT])
 object ParticleHandler {
     private val particleManagers = ArrayList<ParticleManager<out ModParticle>>()
 

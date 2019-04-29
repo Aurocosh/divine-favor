@@ -25,7 +25,7 @@ public class BlockBathHeater extends ModBlock implements ITileEntityProvider {
     public static final PropertyEnum<BathHeaterState> STATE = PropertyEnum.create("state", BathHeaterState.class);
 
     public BlockBathHeater() {
-        super(ConstBlockNames.BATH_HEATER, Material.ROCK, ConstMainTabOrder.OTHER_BLOCKS);
+        super(ConstBlockNames.BATH_HEATER, Material.ROCK, ConstMainTabOrder.INSTANCE.getOTHER_BLOCKS());
         setHardness(2.0F);
         setResistance(10.0F);
         setSoundType(SoundType.STONE);
@@ -61,7 +61,7 @@ public class BlockBathHeater extends ModBlock implements ITileEntityProvider {
         TileBathHeater tileBathHeater = (TileBathHeater) tileEntity;
         if (!tileBathHeater.isUsableByPlayer(player))
             return false;
-        player.openGui(DivineFavor.INSTANCE, ConstGuiIDs.BATH_HEATER, world, pos.getX(), pos.getY(), pos.getZ());
+        player.openGui(DivineFavor.INSTANCE, ConstGuiIDs.INSTANCE.getBATH_HEATER(), world, pos.getX(), pos.getY(), pos.getZ());
         return true;
     }
 

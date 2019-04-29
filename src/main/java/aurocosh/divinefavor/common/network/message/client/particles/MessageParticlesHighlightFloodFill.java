@@ -36,6 +36,6 @@ public class MessageParticlesHighlightFloodFill extends MessageParticlesHighligh
         BlockPos blockPos = UtilCoordinates.INSTANCE.findPosition(this.position, floodLimit, pos -> player.world.isAirBlock(pos), pos -> pos.offset(facing));
         if(blockPos == null)
             return new ArrayList<>(0);
-        return UtilCoordinates.INSTANCE.floodFill(Collections.singletonList(blockPos), BlockPosConstants.DIRECT_NEIGHBOURS, predicate::test, floodLimit);
+        return UtilCoordinates.INSTANCE.floodFill(Collections.singletonList(blockPos), BlockPosConstants.INSTANCE.getDIRECT_NEIGHBOURS(), predicate::test, floodLimit);
     }
 }

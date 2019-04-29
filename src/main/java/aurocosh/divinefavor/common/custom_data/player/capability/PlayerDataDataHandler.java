@@ -26,6 +26,6 @@ public class PlayerDataDataHandler {
     @SubscribeEvent
     public void attachCapabilities(AttachCapabilitiesEvent<Entity> event) {
         if (event.getObject() instanceof EntityLivingBase)
-            event.addCapability(ResourceNamer.getFullName("capability_player_data"), new PlayerDataProvider());
+            event.addCapability(ResourceNamer.INSTANCE.getFullName("capability_player_data"), new PlayerDataProvider());
     }
 }

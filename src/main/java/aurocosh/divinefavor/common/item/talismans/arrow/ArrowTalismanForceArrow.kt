@@ -17,7 +17,7 @@ class ArrowTalismanForceArrow(name: String, spirit: ModSpirit, favorCost: Int, c
 
     override fun performActionServer(target: EntityLivingBase?, shooter: EntityLivingBase, spellArrow: EntitySpellArrow, blockPos: BlockPos?, sideHit: EnumFacing?): Boolean {
         if (target !is EntityPlayer)
-            UtilEntity.addVelocity(target, shooter.lookVec, velocity)
+            UtilEntity.addVelocity(target!!, shooter.lookVec, velocity)
         return true
     }
 }
