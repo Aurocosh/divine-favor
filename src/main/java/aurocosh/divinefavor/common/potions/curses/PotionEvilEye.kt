@@ -4,7 +4,7 @@ import aurocosh.divinefavor.DivineFavor
 import aurocosh.divinefavor.common.config.common.ConfigSpells
 import aurocosh.divinefavor.common.constants.ConstMisc
 import aurocosh.divinefavor.common.constants.ConstResources
-import aurocosh.divinefavor.common.custom_data.player.PlayerData
+import aurocosh.divinefavor.common.lib.extensions.divineCustomData
 import aurocosh.divinefavor.common.potions.base.potion.ModPotion
 import aurocosh.divinefavor.common.potions.common.ModCurses
 import net.minecraft.client.Minecraft
@@ -50,8 +50,7 @@ class PotionEvilEye : ModPotion("evil_eye", true, 0x7FB8A4) {
             if (!player.isPotionActive(ModCurses.evil_eye))
                 return
 
-            val evilEyeData = PlayerData.get(player).evilEyeData
-            val severity = evilEyeData.severity
+            val severity = player.divineCustomData.evilEyeData.severity
 
             val mc = Minecraft.getMinecraft()
             val resolution = event.resolution
@@ -69,12 +68,12 @@ class PotionEvilEye : ModPotion("evil_eye", true, 0x7FB8A4) {
 
             val height = resolution.scaledHeight.toDouble()
             val width = resolution.scaledWidth.toDouble()
-            val bufferbuilder = tessellator.buffer
-            bufferbuilder.begin(7, DefaultVertexFormats.POSITION_TEX)
-            bufferbuilder.pos(0.0, height, -90.0).tex(0.0, 1.0).endVertex()
-            bufferbuilder.pos(width, height, -90.0).tex(1.0, 1.0).endVertex()
-            bufferbuilder.pos(width, 0.0, -90.0).tex(1.0, 0.0).endVertex()
-            bufferbuilder.pos(0.0, 0.0, -90.0).tex(0.0, 0.0).endVertex()
+            val bufferBuilder = tessellator.buffer
+            bufferBuilder.begin(7, DefaultVertexFormats.POSITION_TEX)
+            bufferBuilder.pos(0.0, height, -90.0).tex(0.0, 1.0).endVertex()
+            bufferBuilder.pos(width, height, -90.0).tex(1.0, 1.0).endVertex()
+            bufferBuilder.pos(width, 0.0, -90.0).tex(1.0, 0.0).endVertex()
+            bufferBuilder.pos(0.0, 0.0, -90.0).tex(0.0, 0.0).endVertex()
 
             tessellator.draw()
             GlStateManager.depthMask(true)

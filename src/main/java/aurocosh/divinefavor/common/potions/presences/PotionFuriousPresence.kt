@@ -2,8 +2,8 @@ package aurocosh.divinefavor.common.potions.presences
 
 import aurocosh.divinefavor.common.config.common.ConfigPresence
 import aurocosh.divinefavor.common.constants.ConstMisc
-import aurocosh.divinefavor.common.custom_data.player.PlayerData
 import aurocosh.divinefavor.common.item.calling_stones.ModCallingStones
+import aurocosh.divinefavor.common.lib.extensions.divineCustomData
 import aurocosh.divinefavor.common.potions.base.potion.ModPotion
 import aurocosh.divinefavor.common.potions.common.ModBlessings
 import net.minecraft.entity.EntityLivingBase
@@ -22,10 +22,8 @@ class PotionFuriousPresence : ModPotion("furious_presence", true, 0x7FB8A4) {
 
     override fun onPotionAdded(livingBase: EntityLivingBase) {
         super.onPotionAdded(livingBase)
-        if (livingBase !is EntityPlayer)
-            return
-        val presenceData = PlayerData.get(livingBase).furiousPresenceData
-        presenceData.reset()
+        if (livingBase is EntityPlayer)
+            livingBase.divineCustomData.furiousPresenceData.reset()
     }
 
     companion object {
@@ -56,8 +54,7 @@ class PotionFuriousPresence : ModPotion("furious_presence", true, 0x7FB8A4) {
             if (mob !is IMob)
                 return
 
-            val furyData = PlayerData.get(attacker).furiousPresenceData
-            if (furyData.count()) {
+            if (attacker.divineCustomData.furiousPresenceData.count()) {
                 attacker.removePotionEffect(ModBlessings.furious_presence)
                 attacker.addItemStackToInventory(ItemStack(ModCallingStones.calling_stone_squarefury))
             }

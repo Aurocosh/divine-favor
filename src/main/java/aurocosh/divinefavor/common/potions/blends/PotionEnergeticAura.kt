@@ -2,8 +2,8 @@ package aurocosh.divinefavor.common.potions.blends
 
 import aurocosh.divinefavor.common.config.common.ConfigPresence
 import aurocosh.divinefavor.common.constants.ConstMisc
-import aurocosh.divinefavor.common.custom_data.player.PlayerData
 import aurocosh.divinefavor.common.lib.LoopedCounter
+import aurocosh.divinefavor.common.lib.extensions.divineCustomData
 import aurocosh.divinefavor.common.potions.base.effect.ModEffect
 import aurocosh.divinefavor.common.potions.base.potion.ModPotion
 import aurocosh.divinefavor.common.potions.common.ModBlendEffects
@@ -21,10 +21,8 @@ class PotionEnergeticAura : ModPotion("energetic_aura", true, 0x7FB8A4) {
 
     override fun onPotionAdded(livingBase: EntityLivingBase) {
         super.onPotionAdded(livingBase)
-        if (livingBase !is EntityPlayer)
-            return
-        val auraData = PlayerData.get(livingBase).energeticAuraData
-        auraData.reset()
+        if (livingBase is EntityPlayer)
+            livingBase.divineCustomData.energeticAuraData.reset()
     }
 
     override fun performEffect(livingBase: EntityLivingBase, amplifier: Int) {
@@ -36,8 +34,7 @@ class PotionEnergeticAura : ModPotion("energetic_aura", true, 0x7FB8A4) {
             return
         if (livingBase !is EntityPlayer)
             return
-        val auraData = PlayerData.get(livingBase).energeticAuraData
-        if (!livingBase.isSprinting || !auraData.tryLuck())
+        if (!livingBase.isSprinting || !livingBase.divineCustomData.energeticAuraData.tryLuck())
             return
         livingBase.removePotionEffect(ModBlendEffects.energetic_aura)
         livingBase.addPotionEffect(ModEffect(ModBlessings.energetic_presence, ConfigPresence.energeticPresence.duration))

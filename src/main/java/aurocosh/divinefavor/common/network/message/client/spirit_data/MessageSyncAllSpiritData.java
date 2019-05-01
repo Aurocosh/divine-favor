@@ -26,7 +26,7 @@ public class MessageSyncAllSpiritData extends WrappedClientMessage {
     @SideOnly(Side.CLIENT)
     protected void handleSafe() {
         EntityPlayer player = DivineFavor.proxy.getClientPlayer();
-        SpiritData data = PlayerData.get(player).getSpiritData();
+        SpiritData data = PlayerData.INSTANCE.get(player).getSpiritData();
         setDataFromNBT(data, tag);
     }
 

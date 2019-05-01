@@ -3,6 +3,7 @@ package aurocosh.divinefavor.common.lib.extensions
 import aurocosh.divinefavor.common.util.UtilMath
 import aurocosh.divinefavor.common.util.UtilRandom
 import java.util.*
+import kotlin.collections.ArrayList as ArrayList1
 
 inline fun <T> Iterable<T>.split(predicate: (T) -> Boolean): Pair<List<T>, List<T>> {
     val selected = ArrayList<T>()
@@ -59,3 +60,20 @@ fun <T, C : MutableCollection<in T>> Iterable<T>.selectRandomTo(destination: C, 
     destination.addAll(list)
     return destination
 }
+
+inline fun <reified R> Sequence<*>.cast(): Sequence<R> {
+    return map{ it as R }
+}
+
+inline fun <reified R, C : MutableCollection<in R>> Sequence<*>.castTo(destination: C): C {
+    return mapTo(destination) { it as R }
+}
+
+inline fun <reified R> Iterable<*>.cast(): List<R> {
+    return map{ it as R }
+}
+
+inline fun <reified R, C : MutableCollection<in R>> Iterable<*>.castTo(destination: C): C {
+    return mapTo(destination) { it as R }
+}
+

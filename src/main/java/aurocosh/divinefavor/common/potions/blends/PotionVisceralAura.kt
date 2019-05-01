@@ -2,7 +2,7 @@ package aurocosh.divinefavor.common.potions.blends
 
 import aurocosh.divinefavor.common.config.common.ConfigPresence
 import aurocosh.divinefavor.common.constants.ConstMisc
-import aurocosh.divinefavor.common.custom_data.player.PlayerData
+import aurocosh.divinefavor.common.lib.extensions.divineCustomData
 import aurocosh.divinefavor.common.potions.base.effect.ModEffect
 import aurocosh.divinefavor.common.potions.base.potion.ModPotion
 import aurocosh.divinefavor.common.potions.common.ModBlendEffects
@@ -22,10 +22,8 @@ class PotionVisceralAura : ModPotion("visceral_aura", true, 0x7FB8A4) {
 
     override fun onPotionAdded(livingBase: EntityLivingBase) {
         super.onPotionAdded(livingBase)
-        if (livingBase !is EntityPlayer)
-            return
-        val auraData = PlayerData.get(livingBase).visceralAuraData
-        auraData.reset()
+        if (livingBase is EntityPlayer)
+            livingBase.divineCustomData.visceralAuraData.reset()
     }
 
     override fun isReady(duration: Int, amplifier: Int): Boolean {
@@ -46,8 +44,7 @@ class PotionVisceralAura : ModPotion("visceral_aura", true, 0x7FB8A4) {
             if (mob !is IMob)
                 return
 
-            val furyData = PlayerData.get(attacker).visceralAuraData
-            if (furyData.tryLuck()) {
+            if (attacker.divineCustomData.visceralAuraData.tryLuck()) {
                 attacker.removePotionEffect(ModBlendEffects.visceral_aura)
                 attacker.addPotionEffect(ModEffect(ModBlessings.furious_presence, ConfigPresence.furiousPresence.duration))
             }

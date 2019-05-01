@@ -25,7 +25,7 @@ public class MessageSyncFavor extends WrappedClientMessage {
     @SideOnly(Side.CLIENT)
     protected void handleSafe() {
         EntityPlayer player = DivineFavor.proxy.getClientPlayer();
-        SpiritData spiritData = PlayerData.get(player).getSpiritData();
+        SpiritData spiritData = PlayerData.INSTANCE.get(player).getSpiritData();
         spiritData.setFavor(spiritId, favor);
     }
 }

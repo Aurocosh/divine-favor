@@ -1,9 +1,9 @@
 package aurocosh.divinefavor.common.potions.presences
 
 import aurocosh.divinefavor.common.constants.ConstMisc
-import aurocosh.divinefavor.common.custom_data.player.PlayerData
 import aurocosh.divinefavor.common.item.calling_stones.ModCallingStones
 import aurocosh.divinefavor.common.lib.LoopedCounter
+import aurocosh.divinefavor.common.lib.extensions.divineCustomData
 import aurocosh.divinefavor.common.potions.base.potion.ModPotion
 import aurocosh.divinefavor.common.potions.common.ModBlessings
 import aurocosh.divinefavor.common.util.UtilTick
@@ -25,10 +25,8 @@ class PotionIndustriousPresence : ModPotion("industrious_presence", true, 0x7FB8
 
     override fun onPotionAdded(livingBase: EntityLivingBase) {
         super.onPotionAdded(livingBase)
-        if (livingBase !is EntityPlayer)
-            return
-        val auraData = PlayerData.get(livingBase).industriousPresenceData
-        auraData.reset()
+        if (livingBase is EntityPlayer)
+            livingBase.divineCustomData.industriousPresenceData.reset()
     }
 
     override fun performEffect(livingBase: EntityLivingBase, amplifier: Int) {
@@ -37,9 +35,8 @@ class PotionIndustriousPresence : ModPotion("industrious_presence", true, 0x7FB8
         if (!TICK_COUNTER.isFinished)
             return
         val position = livingBase.position
-        if (!livingBase.world.canSeeSky(BlockPos(position.x.toDouble(), position.y + livingBase.eyeHeight.toDouble(), position.z.toDouble())))
-            return
-        livingBase.removePotionEffect(ModBlessings.industrious_presence)
+        if (livingBase.world.canSeeSky(BlockPos(position.x.toDouble(), position.y + livingBase.eyeHeight.toDouble(), position.z.toDouble())))
+            livingBase.removePotionEffect(ModBlessings.industrious_presence)
     }
 
     override fun isReady(duration: Int, amplifier: Int): Boolean {
@@ -47,7 +44,7 @@ class PotionIndustriousPresence : ModPotion("industrious_presence", true, 0x7FB8
     }
 
     companion object {
-        val TICK_RATE = UtilTick.secondsToTicks(1f)
+        private val TICK_RATE = UtilTick.secondsToTicks(1f)
         private val TICK_COUNTER = LoopedCounter(TICK_RATE)
 
         private val acceptedBlocks = ArrayList<Block>()
@@ -71,8 +68,7 @@ class PotionIndustriousPresence : ModPotion("industrious_presence", true, 0x7FB8
             val state = event.state
             if (!acceptedBlocks.contains(state.block))
                 return
-            val auraData = PlayerData.get(player).industriousPresenceData
-            if (auraData.count()) {
+            if (player.divineCustomData.industriousPresenceData.count()) {
                 player.removePotionEffect(ModBlessings.industrious_presence)
                 player.addItemStackToInventory(ItemStack(ModCallingStones.calling_stone_romol))
             }

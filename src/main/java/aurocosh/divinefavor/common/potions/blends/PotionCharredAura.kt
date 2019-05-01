@@ -3,7 +3,7 @@ package aurocosh.divinefavor.common.potions.blends
 import aurocosh.divinefavor.common.config.common.ConfigAura
 import aurocosh.divinefavor.common.config.common.ConfigPresence
 import aurocosh.divinefavor.common.constants.ConstMisc
-import aurocosh.divinefavor.common.custom_data.player.PlayerData
+import aurocosh.divinefavor.common.lib.extensions.divineCustomData
 import aurocosh.divinefavor.common.potions.base.effect.ModEffect
 import aurocosh.divinefavor.common.potions.base.potion.ModPotion
 import aurocosh.divinefavor.common.potions.common.ModBlendEffects
@@ -22,10 +22,8 @@ class PotionCharredAura : ModPotion("charred_aura", true, 0x7FB8A4) {
 
     override fun onPotionAdded(livingBase: EntityLivingBase) {
         super.onPotionAdded(livingBase)
-        if (livingBase !is EntityPlayer)
-            return
-        val auraData = PlayerData.get(livingBase).charredAuraData
-        auraData.reset()
+        if (livingBase is EntityPlayer)
+            livingBase.divineCustomData.charredAuraData.reset()
     }
 
     companion object {
@@ -40,7 +38,7 @@ class PotionCharredAura : ModPotion("charred_aura", true, 0x7FB8A4) {
                 return
             if (!ModSpirits.neblaze.isActive)
                 return
-            val auraData = PlayerData.get(player).charredAuraData
+            val auraData = player.divineCustomData.charredAuraData
             if (auraData.count()) {
                 player.removePotionEffect(ModBlendEffects.charred_aura)
                 player.addPotionEffect(ModEffect(ModBlessings.scorching_presence, ConfigPresence.scorchingPresence.duration))

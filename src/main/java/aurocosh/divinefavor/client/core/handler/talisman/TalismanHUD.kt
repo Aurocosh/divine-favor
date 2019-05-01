@@ -2,6 +2,7 @@ package aurocosh.divinefavor.client.core.handler.talisman
 
 import aurocosh.divinefavor.common.custom_data.player.PlayerData
 import aurocosh.divinefavor.common.item.talismans.base.ItemTalisman
+import aurocosh.divinefavor.common.lib.extensions.divineCustomData
 import net.minecraft.client.Minecraft
 import net.minecraft.client.gui.Gui
 import net.minecraft.client.gui.GuiIngame
@@ -23,7 +24,7 @@ object TalismanHUD {
         val description = talisman.getUseInfo(player)
 
         val spirit = talisman.spirit
-        val spiritData = PlayerData.get(player).spiritData
+        val spiritData = player.divineCustomData.spiritData
         val value = spiritData.getFavor(spirit.id)
         val maxLimit = spiritData.getMaxFavor(spirit.id)
         val favorDescription = "$value/$maxLimit"

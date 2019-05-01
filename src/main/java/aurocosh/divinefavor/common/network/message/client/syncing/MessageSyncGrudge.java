@@ -23,7 +23,7 @@ public class MessageSyncGrudge extends WrappedClientMessage {
     @SideOnly(Side.CLIENT)
     protected void handleSafe() {
         EntityPlayer player = DivineFavor.proxy.getClientPlayer();
-        GrudgeData grudgeData = PlayerData.get(player).getGrudgeData();
+        GrudgeData grudgeData = PlayerData.INSTANCE.get(player).getGrudgeData();
         grudgeData.setMobTypeId(new ResourceLocation(mobTypeId));
     }
 }

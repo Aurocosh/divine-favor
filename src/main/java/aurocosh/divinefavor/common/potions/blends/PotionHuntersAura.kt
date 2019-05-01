@@ -2,7 +2,7 @@ package aurocosh.divinefavor.common.potions.blends
 
 import aurocosh.divinefavor.common.config.common.ConfigPresence
 import aurocosh.divinefavor.common.constants.ConstMisc
-import aurocosh.divinefavor.common.custom_data.player.PlayerData
+import aurocosh.divinefavor.common.lib.extensions.divineCustomData
 import aurocosh.divinefavor.common.potions.base.effect.ModEffect
 import aurocosh.divinefavor.common.potions.base.potion.ModPotion
 import aurocosh.divinefavor.common.potions.common.ModBlendEffects
@@ -22,10 +22,8 @@ class PotionHuntersAura : ModPotion("hunters_aura", true, 0x7FB8A4) {
 
     override fun onPotionAdded(livingBase: EntityLivingBase) {
         super.onPotionAdded(livingBase)
-        if (livingBase !is EntityPlayer)
-            return
-        val auraData = PlayerData.get(livingBase).huntersAuraData
-        auraData.reset()
+        if (livingBase is EntityPlayer)
+            livingBase.divineCustomData.huntersAuraData.reset()
     }
 
     override fun isReady(duration: Int, amplifier: Int): Boolean {
@@ -46,8 +44,7 @@ class PotionHuntersAura : ModPotion("hunters_aura", true, 0x7FB8A4) {
             val mob = event.entity
             if (mob !is IMob)
                 return
-            val huntersAuraData = PlayerData.get(attacker).huntersAuraData
-            if (huntersAuraData.tryLuck()) {
+            if (attacker.divineCustomData.huntersAuraData.tryLuck()) {
                 attacker.removePotionEffect(ModBlendEffects.hunters_aura)
                 attacker.addPotionEffect(ModEffect(ModBlessings.predatory_presence, ConfigPresence.predatoryPresence.duration))
             }

@@ -1,8 +1,8 @@
 package aurocosh.divinefavor.common.potions.presences
 
 import aurocosh.divinefavor.common.constants.ConstMisc
-import aurocosh.divinefavor.common.custom_data.player.PlayerData
 import aurocosh.divinefavor.common.item.calling_stones.ModCallingStones
+import aurocosh.divinefavor.common.lib.extensions.divineCustomData
 import aurocosh.divinefavor.common.potions.base.potion.ModPotion
 import aurocosh.divinefavor.common.potions.common.ModBlessings
 import net.minecraft.entity.EntityLivingBase
@@ -19,10 +19,8 @@ class PotionScorchingPresence : ModPotion("scorching_presence", true, 0x7FB8A4) 
 
     override fun onPotionAdded(livingBase: EntityLivingBase) {
         super.onPotionAdded(livingBase)
-        if (livingBase !is EntityPlayer)
-            return
-        val presenceData = PlayerData.get(livingBase).scorchingPresenceData
-        presenceData.reset()
+        if (livingBase is EntityPlayer)
+            livingBase.divineCustomData.scorchingPresenceData.reset()
     }
 
     companion object {
@@ -35,8 +33,7 @@ class PotionScorchingPresence : ModPotion("scorching_presence", true, 0x7FB8A4) 
             val entity = event.entity as? EntityPlayer ?: return
             if (!entity.isPotionActive(ModBlessings.scorching_presence))
                 return
-            val presenceData = PlayerData.get(entity).scorchingPresenceData
-            if (presenceData.tryLuck() && entity.world.isRemote) {
+            if (!entity.world.isRemote && entity.divineCustomData.scorchingPresenceData.tryLuck()) {
                 entity.removePotionEffect(ModBlessings.scorching_presence)
                 entity.addItemStackToInventory(ItemStack(ModCallingStones.calling_stone_neblaze))
             }

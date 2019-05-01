@@ -1,8 +1,8 @@
 package aurocosh.divinefavor.common.item.talismans.base
 
 import aurocosh.divinefavor.DivineFavor
-import aurocosh.divinefavor.common.custom_data.player.PlayerData
 import aurocosh.divinefavor.common.item.base.ModItem
+import aurocosh.divinefavor.common.lib.extensions.divineCustomData
 import aurocosh.divinefavor.common.spirit.base.ModSpirit
 import net.minecraft.client.resources.I18n
 import net.minecraft.client.util.ITooltipFlag
@@ -24,7 +24,7 @@ abstract class ItemTalisman(val name: String, texturePath: String, val spirit: M
 
     @SideOnly(Side.CLIENT)
     fun getUseInfo(player: EntityPlayer): String {
-        val spiritData = PlayerData.get(player).spiritData
+        val spiritData = player.divineCustomData.spiritData
         val favorValue = spiritData.getFavor(spirit.id)
 
         val useCount = if (favorCost == 0) -1 else favorValue / favorCost
