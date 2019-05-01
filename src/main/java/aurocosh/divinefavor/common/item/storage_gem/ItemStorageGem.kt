@@ -3,7 +3,7 @@ package aurocosh.divinefavor.common.item.storage_gem
 import aurocosh.divinefavor.DivineFavor
 import aurocosh.divinefavor.common.constants.ConstGemTabOrder
 import aurocosh.divinefavor.common.item.base.ModItem
-import aurocosh.divinefavor.common.util.UtilFacing
+import aurocosh.divinefavor.common.constants.FacingConstants
 import aurocosh.divinefavor.common.util.UtilNbt
 import net.minecraft.block.BlockChest
 import net.minecraft.entity.player.EntityPlayer
@@ -72,7 +72,7 @@ class ItemStorageGem : ModItem("storage_gem", "storage_gem", ConstGemTabOrder.OT
     }
 
     private fun findConnectedChest(worldIn: World, pos: BlockPos): EnumFacing? {
-        for (facing in UtilFacing.horizontal) {
+        for (facing in FacingConstants.horizontal) {
             val blockPos = pos.offset(facing)
             val block = worldIn.getBlockState(blockPos).block
             if (block === Blocks.CHEST)

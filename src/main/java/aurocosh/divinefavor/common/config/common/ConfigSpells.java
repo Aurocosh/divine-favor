@@ -129,9 +129,9 @@ public class ConfigSpells {
     @Config.Name("Prismatic eyes")
     public static PrismaticEyes prismaticEyes = new PrismaticEyes();
     @Config.Name("Red pulse")
-    public static RedPulse redPulse = new RedPulse(2, 4, 4, UtilTick.secondsToTicks(3));
+    public static RedPulse redPulse = new RedPulse(2, 4, 4, UtilTick.INSTANCE.secondsToTicks(3));
     @Config.Name("Red signal")
-    public static RedPulse redSignal = new RedPulse(20, 12, 15, UtilTick.secondsToTicks(30));
+    public static RedPulse redSignal = new RedPulse(20, 12, 15, UtilTick.INSTANCE.secondsToTicks(30));
     @Config.Name("Remote chest")
     public static RemoteChest remoteChest = new RemoteChest();
     @Config.Name("Searing pulse")

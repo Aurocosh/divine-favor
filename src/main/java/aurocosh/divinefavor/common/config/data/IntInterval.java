@@ -15,6 +15,6 @@ public class IntInterval {
     }
 
     public int random() {
-        return UtilRandom.nextInt(min, max);
+        return UtilRandom.INSTANCE.nextInt(min, max);
     }
 }

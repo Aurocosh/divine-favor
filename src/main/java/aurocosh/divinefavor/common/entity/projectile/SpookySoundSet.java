@@ -23,6 +23,6 @@ public class SpookySoundSet {
     }
 
     public SoundEvent getRandomSound() {
-        return UtilRandom.getRandom(sounds);
+        return UtilRandom.INSTANCE.getRandom(sounds);
     }
 }

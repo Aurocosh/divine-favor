@@ -1,6 +1,6 @@
 package aurocosh.divinefavor.common.lib
 
-import aurocosh.divinefavor.common.util.UtilMath
+import net.minecraft.util.math.MathHelper
 
 class LimitedTimer {
     private var limit: Int = 0
@@ -25,7 +25,7 @@ class LimitedTimer {
     }
 
     fun setTicks(ticks: Int) {
-        this.ticks = UtilMath.clamp(ticks, 0, limit)
+        this.ticks = MathHelper.clamp(ticks, 0, limit)
     }
 
     fun getTicks(): Int {

@@ -37,8 +37,8 @@ import java.util.List;
 
 public class TileMedium extends TickableTileEntity implements IMultiblockController {
     public static final int SIZE = 27;
-    public static final int TICK_RATE = UtilTick.secondsToTicks(2);
-    public static final int OFFERING_ACTIVE_TIME = UtilTick.secondsToTicks(10);
+    public static final int TICK_RATE = UtilTick.INSTANCE.secondsToTicks(2);
+    public static final int OFFERING_ACTIVE_TIME = UtilTick.INSTANCE.secondsToTicks(10);
     private final String TAG_CALLING_STONE = "CallingStone";
     private final String TAG_ITEMS_LEFT = "ItemsLeft";
     private final String TAG_ITEMS_RIGHT = "ItemsRight";
@@ -240,7 +240,7 @@ public class TileMedium extends TickableTileEntity implements IMultiblockControl
         ItemStack stoneStack = getStoneStack();
         if (!stoneStack.isEmpty()){
             ItemCallingStone callingStone = (ItemCallingStone) stoneStack.getItem();
-            List<SlotStack> slotStacks = UtilHandler.getNotEmptyStacksWithSlotIndexes(combinedHandler);
+            List<SlotStack> slotStacks = UtilHandler.INSTANCE.getNotEmptyStacksWithSlotIndexes(combinedHandler);
             checkForOfferings(callingStone, slotStacks);
             processCraftingRecipes(callingStone, slotStacks);
         }
@@ -283,7 +283,7 @@ public class TileMedium extends TickableTileEntity implements IMultiblockControl
     }
 
     private void exchangeRecipe(ItemCallingStone callingStone, IItemHandler stackHandler, int resultIndex) {
-        List<SlotStack> slotStacks = UtilHandler.getNotEmptyStacksWithSlotIndexes(stackHandler);
+        List<SlotStack> slotStacks = UtilHandler.INSTANCE.getNotEmptyStacksWithSlotIndexes(stackHandler);
         List<ItemStack> stacks = new ArrayList<>();
         for (SlotStack slotStack : slotStacks)
             stacks.add(slotStack.getStack());

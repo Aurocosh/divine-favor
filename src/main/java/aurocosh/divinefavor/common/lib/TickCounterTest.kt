@@ -1,6 +1,6 @@
 package aurocosh.divinefavor.common.lib
 
-import aurocosh.divinefavor.common.util.UtilMath
+import net.minecraft.util.math.MathHelper
 
 class TickCounterTest {
     private var tickRate: Int = 0
@@ -21,7 +21,7 @@ class TickCounterTest {
     }
 
     fun setCurrentTicks(ticks: Int) {
-        currentTicks = UtilMath.clamp(ticks, 0, tickRate)
+        currentTicks = MathHelper.clamp(ticks, 0, tickRate)
     }
 
     fun tick(): Boolean {

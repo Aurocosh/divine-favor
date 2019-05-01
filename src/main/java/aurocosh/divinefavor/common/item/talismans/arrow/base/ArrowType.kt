@@ -1,6 +1,6 @@
 package aurocosh.divinefavor.common.item.talismans.arrow.base
 
-import aurocosh.divinefavor.common.util.UtilMath
+import net.minecraft.util.math.MathHelper
 
 enum class ArrowType private constructor(val value: Int) {
     WOODEN_ARROW(0),
@@ -12,7 +12,7 @@ enum class ArrowType private constructor(val value: Int) {
         val VALUES = values()
 
         operator fun get(value: Int): ArrowType {
-            return VALUES[UtilMath.clamp(value, 0, VALUES.size - 1)]
+            return VALUES[MathHelper.clamp(value, 0, VALUES.size - 1)]
         }
     }
 }

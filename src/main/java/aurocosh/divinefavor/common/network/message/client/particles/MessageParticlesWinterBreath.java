@@ -29,9 +29,9 @@ public class MessageParticlesWinterBreath extends WrappedClientMessage {
 
         double spread = 1;
         for (int i = 0; i < ConfigSpells.winterBreath.particleCount; i++) {
-            double xSpeed = direction.x * 2 + UtilRandom.nextDouble(-spread, spread);
-            double ySpeed = direction.y * 2 + UtilRandom.nextDouble(-spread, spread);
-            double zSpeed = direction.z * 2 + UtilRandom.nextDouble(-spread, spread);
+            double xSpeed = direction.x * 2 + UtilRandom.INSTANCE.nextDouble(-spread, spread);
+            double ySpeed = direction.y * 2 + UtilRandom.INSTANCE.nextDouble(-spread, spread);
+            double zSpeed = direction.z * 2 + UtilRandom.INSTANCE.nextDouble(-spread, spread);
 
             player.world.spawnParticle(EnumParticleTypes.SNOW_SHOVEL, position.x, position.y, position.z, xSpeed, ySpeed, zSpeed);
         }

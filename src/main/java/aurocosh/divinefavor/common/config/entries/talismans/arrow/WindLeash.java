@@ -7,7 +7,7 @@ public class WindLeash {
     @Config.Name("Favor cost")
     public int favorCost = 80;
     @Config.Name("Duration")
-    public int duration = UtilTick.secondsToTicks(12);
+    public int duration = UtilTick.INSTANCE.secondsToTicks(12);
     @Config.Name("Motion speed")
     public float motionSpeed = 0.7f;
     @Config.Name("Player multiplier")

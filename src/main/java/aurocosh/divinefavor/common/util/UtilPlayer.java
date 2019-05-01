@@ -87,7 +87,7 @@ public class UtilPlayer {
 
     public static void addStackToInventoryOrDrop(EntityPlayer player, ItemStack stack) {
         if (player.inventory.addItemStackToInventory(stack)) {
-            float pickupPitch = (UtilRandom.nextFloat(-1, 1) * 0.7f + 1.0f) * 2.0f;
+            float pickupPitch = (UtilRandom.INSTANCE.nextFloat(-1, 1) * 0.7f + 1.0f) * 2.0f;
             player.world.playSound(null, player.posX, player.posY, player.posZ, SoundEvents.ENTITY_ITEM_PICKUP, SoundCategory.PLAYERS, 0.2F, pickupPitch);
         }
         else {

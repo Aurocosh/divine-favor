@@ -7,13 +7,13 @@ public class CrawlingMist {
     @Config.Name("Favor cost")
     public int favorCost = 80;
     @Config.Name("Duration")
-    public int duration = UtilTick.minutesToTicks(3);
+    public int duration = UtilTick.INSTANCE.minutesToTicks(3);
     @Config.Name("Fog start")
     public int fogStart = 20;
     @Config.Name("Fog end")
     public int fogEnd = 30;
     @Config.Name("Cure rate")
-    public int cureRate = UtilTick.secondsToTicks(10);
+    public int cureRate = UtilTick.INSTANCE.secondsToTicks(10);
     @Config.Name("Cure distance")
     public int cureDistance = 20;
 }

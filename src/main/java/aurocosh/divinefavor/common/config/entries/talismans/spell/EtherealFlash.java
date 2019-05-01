@@ -9,5 +9,5 @@ public class EtherealFlash {
     @Config.Name("Light level")
     public int lightLevel = 12;
     @Config.Name("Despawn delay")
-    public int despawnDelay = UtilTick.secondsToTicks(30);
+    public int despawnDelay = UtilTick.INSTANCE.secondsToTicks(30);
 }

@@ -5,7 +5,7 @@ import net.minecraftforge.common.config.Config;
 
 public class FuriousPresence {
     @Config.Name("Duration")
-    public int duration = UtilTick.minutesToTicks(2);
+    public int duration = UtilTick.INSTANCE.minutesToTicks(2);
     @Config.Name("Damage multiplier")
     public float damageMultiplier = 2.5f;
     @Config.Name("Min monsters to kill")

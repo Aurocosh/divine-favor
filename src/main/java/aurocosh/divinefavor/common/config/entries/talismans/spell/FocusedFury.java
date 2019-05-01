@@ -7,7 +7,7 @@ public class FocusedFury {
     @Config.Name("Favor cost")
     public int favorCost = 30;
     @Config.Name("Duration")
-    public int duration = UtilTick.minutesToTicks(5);
+    public int duration = UtilTick.INSTANCE.minutesToTicks(5);
     @Config.Name("Extra damage")
     public float extraDamage = 10;
 }

@@ -225,12 +225,12 @@ public class EntitySpookyArrow extends EntitySpellArrow {
             return;
 
         if (soundSetIndex == -1) {
-            soundSetIndex = UtilRandom.getRandomIndex(SPOOKY_SOUNDS);
+            soundSetIndex = UtilRandom.INSTANCE.getRandomIndex(SPOOKY_SOUNDS);
             dataManager.set(SOUND_SET_INDEX, soundSetIndex);
         }
 
         nextSoundDelay = ConfigArrow.spookyArrow.soundDelay.random();
-        SoundEvent soundEvent = UtilRandom.getRandom(SPOOKY_SOUNDS[soundSetIndex]);
+        SoundEvent soundEvent = UtilRandom.INSTANCE.getRandom(SPOOKY_SOUNDS[soundSetIndex]);
         if (soundEvent != null)
             world.playSound(null, posX, posY, posZ, soundEvent, SoundCategory.NEUTRAL, 0.5F, 0.4F / (rand.nextFloat() * 0.4F + 0.8F));
     }

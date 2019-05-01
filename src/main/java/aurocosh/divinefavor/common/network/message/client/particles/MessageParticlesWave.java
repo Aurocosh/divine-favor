@@ -29,9 +29,9 @@ public class MessageParticlesWave extends WrappedClientMessage {
 
         double speedRange = 3;
         for (int i = 0; i < ConfigSpells.heatWave.particleCount; i++) {
-            double xSpeed = UtilRandom.nextDouble(-speedRange, speedRange);
-            double ySpeed = UtilRandom.nextDouble(-speedRange, speedRange);
-            double zSpeed = UtilRandom.nextDouble(-speedRange, speedRange);
+            double xSpeed = UtilRandom.INSTANCE.nextDouble(-speedRange, speedRange);
+            double ySpeed = UtilRandom.INSTANCE.nextDouble(-speedRange, speedRange);
+            double zSpeed = UtilRandom.INSTANCE.nextDouble(-speedRange, speedRange);
 
             player.world.spawnParticle(particleType, position.x, position.y, position.z, xSpeed, ySpeed, zSpeed);
         }

@@ -1,11 +1,11 @@
 package aurocosh.divinefavor.common.lib
 
 import aurocosh.divinefavor.common.util.UtilDayTime
-import aurocosh.divinefavor.common.util.UtilMath
+import net.minecraft.util.math.MathHelper
 
 class TimePeriod(start: Int, stop: Int) {
-    val start: Int = UtilMath.clamp(start, 0, UtilDayTime.TICKS_IN_DAY)
-    val stop: Int = UtilMath.clamp(stop, 0, UtilDayTime.TICKS_IN_DAY)
+    val start: Int = MathHelper.clamp(start, 0, UtilDayTime.TICKS_IN_DAY)
+    val stop: Int = MathHelper.clamp(stop, 0, UtilDayTime.TICKS_IN_DAY)
 
     /**
      * @param value value between 0 and UtilDayTime.TICKS_IN_DAY

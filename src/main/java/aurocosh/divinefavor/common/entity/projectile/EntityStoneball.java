@@ -34,7 +34,7 @@ public class EntityStoneball extends EntityThrowable {
         EntityLivingBase thrower = getThrower();
 
         if (result.entityHit != null) {
-            boolean isCritical = UtilRandom.rollDiceFloat(ConfigSpells.stoneballThrow.criticalChance);
+            boolean isCritical = UtilRandom.INSTANCE.rollDiceFloat(ConfigSpells.stoneballThrow.criticalChance);
             float damage = isCritical ? ConfigSpells.stoneballThrow.criticalDamage : ConfigSpells.stoneballThrow.damage;
             if (result.entityHit instanceof AbstractSkeleton)
                 damage += ConfigSpells.stoneballThrow.extraSkeletonDamage;

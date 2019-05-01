@@ -76,7 +76,7 @@ public class EntityRopeExplosiveNode extends EntityRopeNodeBase {
     private void triggerNode(EntityRopeExplosiveNode explosiveNode) {
         if (!explosiveNode.getTriggered()) {
             explosiveNode.setTriggered(true);
-            explosiveNode.setFuse(UtilRandom.nextInt(1, 5));
+            explosiveNode.setFuse(UtilRandom.INSTANCE.nextInt(1, 5));
         }
     }
 

@@ -46,7 +46,7 @@ public class SpellTalismanCombustion extends ItemSpellTalisman {
 
             if(result.isEmpty())
                 continue;
-            if(!UtilRandom.rollDice(SMELTING_CHANCE))
+            if(!UtilRandom.INSTANCE.rollDice(SMELTING_CHANCE))
                 continue;
 
             ItemStack smelted = result.copy();

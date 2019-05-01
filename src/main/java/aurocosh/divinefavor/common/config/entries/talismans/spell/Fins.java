@@ -7,5 +7,5 @@ public class Fins {
     @Config.Name("Favor cost")
     public int favorCost = 20;
     @Config.Name("Duration")
-    public int duration = UtilTick.minutesToTicks(5);
+    public int duration = UtilTick.INSTANCE.minutesToTicks(5);
 }

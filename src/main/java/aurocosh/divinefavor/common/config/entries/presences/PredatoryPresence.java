@@ -5,7 +5,7 @@ import net.minecraftforge.common.config.Config;
 
 public class PredatoryPresence {
     @Config.Name("Duration")
-    public int duration = UtilTick.minutesToTicks(2);
+    public int duration = UtilTick.INSTANCE.minutesToTicks(2);
     @Config.Name("Min monsters to kill")
     public int minMonstersToKill = 5;
     @Config.Name("Max monsters to kill")

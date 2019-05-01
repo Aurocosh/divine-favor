@@ -17,5 +17,5 @@ public class MineArrow {
     @Config.Name("Explosion power")
     public float explosionPower = 2;
     @Config.Name("Despawn delay")
-    public int despawnDelay = UtilTick.secondsToTicks(240);
+    public int despawnDelay = UtilTick.INSTANCE.secondsToTicks(240);
 }
