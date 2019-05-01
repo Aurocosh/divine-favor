@@ -39,15 +39,18 @@ public class ClassBufSerializer {
                 continue;
             }
 
+            boolean accessible = field.isAccessible();
+            if(!accessible)
+                field.setAccessible(true);
+
             MethodHandle getter = UtilReflection.unreflectGetter(field);
-            if (getter == null)
-                continue;
-
             MethodHandle setter = UtilReflection.unreflectSetter(field);
-            if (setter == null)
-                continue;
 
-            fieldBufSerializerList.add(new FieldBufSerializer(field, setter, reader, getter, writer));
+            if(!accessible)
+                field.setAccessible(false);
+
+            if (getter != null && setter != null)
+                fieldBufSerializerList.add(new FieldBufSerializer(field, setter, reader, getter, writer));
         }
 
         fieldBufSerializers = fieldBufSerializerList.toArray(new FieldBufSerializer[0]);
