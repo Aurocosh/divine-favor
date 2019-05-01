@@ -10,8 +10,8 @@ import net.minecraftforge.fml.relauncher.Side
 import net.minecraftforge.fml.relauncher.SideOnly
 
 class MessageParticlesWave : WrappedClientMessage {
-    var particleType: EnumParticleTypes = EnumParticleTypes.FLAME
-    var position: Vec3d = Vec3d.ZERO
+    private var particleType: EnumParticleTypes = EnumParticleTypes.FLAME
+    private var position: Vec3d = Vec3d.ZERO
 
     constructor() {}
 
