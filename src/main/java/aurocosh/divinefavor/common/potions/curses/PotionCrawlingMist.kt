@@ -2,8 +2,8 @@ package aurocosh.divinefavor.common.potions.curses
 
 import aurocosh.divinefavor.common.config.common.ConfigArrow
 import aurocosh.divinefavor.common.constants.ConstMisc
-import aurocosh.divinefavor.common.custom_data.player.PlayerData
 import aurocosh.divinefavor.common.lib.LoopedCounter
+import aurocosh.divinefavor.common.lib.extensions.divineCustomData
 import aurocosh.divinefavor.common.potions.base.potion.ModPotion
 import aurocosh.divinefavor.common.potions.common.ModCurses
 import net.minecraft.client.renderer.GlStateManager
@@ -25,12 +25,10 @@ class PotionCrawlingMist : ModPotion("crawling_mist", true, 0x7FB8A4) {
 
     override fun onPotionAdded(livingBase: EntityLivingBase) {
         super.onPotionAdded(livingBase)
-        if (livingBase !is EntityPlayer)
+        if (livingBase is EntityPlayer)
+            livingBase.divineCustomData.crawlingMistData.mistOrigin = livingBase.getPosition()
+        else
             livingBase.removePotionEffect(ModCurses.crawling_mist)
-        else {
-            val mistData = PlayerData.get(livingBase).crawlingMistData
-            mistData.mistOrigin = livingBase.getPosition()
-        }
     }
 
     override fun performEffect(livingBase: EntityLivingBase, amplifier: Int) {
@@ -39,8 +37,7 @@ class PotionCrawlingMist : ModPotion("crawling_mist", true, 0x7FB8A4) {
         if (!CURE_COUNTER.isFinished)
             return
         val player = livingBase as EntityPlayer
-        val mistData = PlayerData.get(player).crawlingMistData
-        val mistOrigin = mistData.mistOrigin
+        val mistOrigin = player.divineCustomData.crawlingMistData.mistOrigin
         val distanceSq = mistOrigin.distanceSq(livingBase.getPosition())
         if (distanceSq > CURE_DISTANCE_SQ)
             livingBase.removePotionEffect(ModCurses.crawling_mist)

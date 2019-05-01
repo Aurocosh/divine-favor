@@ -23,7 +23,7 @@ public class MessageSyncFury extends WrappedClientMessage {
     @SideOnly(Side.CLIENT)
     protected void handleSafe() {
         EntityPlayer player = DivineFavor.proxy.getClientPlayer();
-        FocusedFuryData furyData = PlayerData.get(player).getFocusedFuryData();
+        FocusedFuryData furyData = PlayerData.INSTANCE.get(player).getFocusedFuryData();
         furyData.setMobTypeId(new ResourceLocation(mobTypeId));
     }
 }

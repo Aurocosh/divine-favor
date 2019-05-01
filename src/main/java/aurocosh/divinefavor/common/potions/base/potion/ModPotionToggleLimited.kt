@@ -1,8 +1,8 @@
 package aurocosh.divinefavor.common.potions.base.potion
 
 import aurocosh.divinefavor.DivineFavor
-import aurocosh.divinefavor.common.custom_data.player.PlayerData
 import aurocosh.divinefavor.common.item.talismans.spell.base.ItemSpellTalisman
+import aurocosh.divinefavor.common.lib.extensions.divineCustomData
 import net.minecraft.client.Minecraft
 import net.minecraft.client.resources.I18n
 import net.minecraft.potion.PotionEffect
@@ -22,7 +22,7 @@ abstract class ModPotionToggleLimited(name: String, beneficial: Boolean, potionC
         mc.fontRenderer.drawStringWithShadow(potionName, (x + 10 + 18).toFloat(), (y + 6).toFloat(), 16777215)
 
         val player = DivineFavor.proxy.clientPlayer
-        val spiritData = PlayerData.get(player).spiritData
+        val spiritData = player.divineCustomData.spiritData
         val s = "Uses left: " + spiritData.getFavor(talisman.spiritId)
         mc.fontRenderer.drawStringWithShadow(s, (x + 10 + 18).toFloat(), (y + 6 + 10).toFloat(), 8355711)
     }

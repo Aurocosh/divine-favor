@@ -1,8 +1,8 @@
 package aurocosh.divinefavor.common.potions.presences
 
 import aurocosh.divinefavor.common.constants.ConstMisc
-import aurocosh.divinefavor.common.custom_data.player.PlayerData
 import aurocosh.divinefavor.common.item.calling_stones.ModCallingStones
+import aurocosh.divinefavor.common.lib.extensions.divineCustomData
 import aurocosh.divinefavor.common.potions.base.potion.ModPotion
 import aurocosh.divinefavor.common.potions.common.ModBlessings
 import aurocosh.divinefavor.common.util.UtilBlock
@@ -24,17 +24,15 @@ class PotionEnergeticPresence : ModPotion("energetic_presence", true, 0x7FB8A4) 
 
     override fun onPotionAdded(livingBase: EntityLivingBase) {
         super.onPotionAdded(livingBase)
-        if (livingBase !is EntityPlayer)
-            return
-        val presenceData = PlayerData.get(livingBase).energeticPresenceData
-        presenceData.reset()
+        if (livingBase is EntityPlayer)
+            livingBase.divineCustomData.energeticPresenceData.reset()
     }
 
     override fun performEffect(livingBase: EntityLivingBase, amplifier: Int) {
         if (livingBase.isSprinting)
             tickLiquidWalk(livingBase, Blocks.WATER)
         val player = livingBase as EntityPlayer
-        val presenceData = PlayerData.get(player).energeticPresenceData
+        val presenceData = player.divineCustomData.energeticPresenceData
 
         val isInWater = player.isInWater
         val block = player.world.getBlockState(player.position.down()).block

@@ -1,8 +1,8 @@
 package aurocosh.divinefavor.common.item.wishing_stones
 
 import aurocosh.divinefavor.DivineFavor
-import aurocosh.divinefavor.common.custom_data.player.PlayerData
 import aurocosh.divinefavor.common.item.base.ModItem
+import aurocosh.divinefavor.common.lib.extensions.divineCustomData
 import aurocosh.divinefavor.common.network.message.client.spirit_data.MessageSyncFavor
 import aurocosh.divinefavor.common.spirit.base.ModSpirit
 import net.minecraft.client.resources.I18n
@@ -35,7 +35,7 @@ class ItemWishingStone(val spirit: ModSpirit, private val favorCount: Int, typeN
             return false
         if (stack.item !is ItemWishingStone)
             return false
-        val spiritData = PlayerData.get(player).spiritData
+        val spiritData = player.divineCustomData.spiritData
         spiritData.addFavor(spirit.id, favorCount)
         MessageSyncFavor(spirit, spiritData).sendTo(player)
         stack.shrink(1)

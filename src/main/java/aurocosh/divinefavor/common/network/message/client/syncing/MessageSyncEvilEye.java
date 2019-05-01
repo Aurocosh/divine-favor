@@ -22,7 +22,7 @@ public class MessageSyncEvilEye extends WrappedClientMessage {
     @SideOnly(Side.CLIENT)
     protected void handleSafe() {
         EntityPlayer player = DivineFavor.proxy.getClientPlayer();
-        EvilEyeData evilEyeData = PlayerData.get(player).getEvilEyeData();
+        EvilEyeData evilEyeData = PlayerData.INSTANCE.get(player).getEvilEyeData();
         evilEyeData.setSeverity(severity);
     }
 }

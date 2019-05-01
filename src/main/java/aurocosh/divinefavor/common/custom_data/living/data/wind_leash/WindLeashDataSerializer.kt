@@ -7,11 +7,11 @@ import net.minecraft.nbt.NBTTagCompound
 class WindLeashDataSerializer : INbtSerializer<WindLeashData> {
 
     override fun serialize(nbt: NBTTagCompound, instance: WindLeashData) {
-        UtilNbt.setVec3d(nbt, TAG_WIND_LEASH, instance.getVector())
+        UtilNbt.setVec3d(nbt, TAG_WIND_LEASH, instance.vector)
     }
 
     override fun deserialize(nbt: NBTTagCompound, instance: WindLeashData) {
-        instance.setVector(UtilNbt.getVec3d(nbt, TAG_WIND_LEASH))
+        instance.vector = UtilNbt.getVec3d(nbt, TAG_WIND_LEASH)
     }
 
     companion object {

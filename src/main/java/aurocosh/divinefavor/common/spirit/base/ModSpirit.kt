@@ -4,9 +4,9 @@ import aurocosh.divinefavor.DivineFavor
 import aurocosh.divinefavor.common.config.entries.SpiritConfig
 import aurocosh.divinefavor.common.constants.ConstResources
 import aurocosh.divinefavor.common.core.ResourceNamer
-import aurocosh.divinefavor.common.custom_data.player.PlayerData
 import aurocosh.divinefavor.common.global.dayClock.DayClock
 import aurocosh.divinefavor.common.lib.TimePeriod
+import aurocosh.divinefavor.common.lib.extensions.divineCustomData
 import aurocosh.divinefavor.common.lib.interfaces.IIndexedEntry
 import aurocosh.divinefavor.common.network.message.client.activity.MessageSpiritBecameActive
 import aurocosh.divinefavor.common.network.message.client.activity.MessageSpiritBecameInactive
@@ -14,8 +14,6 @@ import aurocosh.divinefavor.common.network.message.client.spirit_data.MessageSyn
 import aurocosh.divinefavor.common.registry.ModRegistries
 import aurocosh.divinefavor.common.registry.mappers.ModMappers
 import aurocosh.divinefavor.common.util.UtilDayTime
-import aurocosh.divinefavor.common.util.UtilPlayer
-import aurocosh.divinefavor.common.util.UtilWorld
 import net.minecraft.entity.player.EntityPlayerMP
 import net.minecraft.item.Item
 import net.minecraft.util.ResourceLocation
@@ -73,18 +71,15 @@ class ModSpirit(val name: String, val punishment: SpiritPunishment, config: Spir
 
     private fun regenerateFavor(playerList: List<EntityPlayerMP>) {
         for (player in playerList) {
-            val spiritData = PlayerData.get(player).spiritData
+            val spiritData = player.divineCustomData.spiritData
             if (spiritData.regenerateFavor(id))
                 MessageSyncFavor(this, spiritData).sendTo(player)
         }
     }
 
     private fun informActivity(playerList: List<EntityPlayerMP>) {
-        for (player in playerList) {
-            val spiritData = PlayerData.get(player).spiritData
-            if (spiritData.isInform(id))
-                MessageSpiritBecameActive(id).sendTo(player)
-        }
+        for (player in playerList) if (player.divineCustomData.spiritData.isInform(id))
+            MessageSpiritBecameActive(id).sendTo(player)
     }
 
     private fun becameInactive() {
@@ -97,11 +92,8 @@ class ModSpirit(val name: String, val punishment: SpiritPunishment, config: Spir
     }
 
     private fun informInactivity(playerList: List<EntityPlayerMP>) {
-        for (player in playerList) {
-            val spiritData = PlayerData.get(player).spiritData
-            if (spiritData.isInform(id))
-                MessageSpiritBecameInactive(id).sendTo(player)
-        }
+        for (player in playerList) if (player.divineCustomData.spiritData.isInform(id))
+            MessageSpiritBecameInactive(id).sendTo(player)
     }
 
     private fun registerActivityPeriod() {

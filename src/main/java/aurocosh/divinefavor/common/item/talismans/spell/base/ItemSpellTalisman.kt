@@ -2,8 +2,8 @@ package aurocosh.divinefavor.common.item.talismans.spell.base
 
 import aurocosh.divinefavor.DivineFavor
 import aurocosh.divinefavor.common.config.common.ConfigGeneral
-import aurocosh.divinefavor.common.custom_data.player.PlayerData
 import aurocosh.divinefavor.common.item.talismans.base.ItemTalisman
+import aurocosh.divinefavor.common.lib.extensions.divineCustomData
 import aurocosh.divinefavor.common.network.message.client.spirit_data.MessageSyncFavor
 import aurocosh.divinefavor.common.spirit.base.ModSpirit
 import aurocosh.divinefavor.common.util.UtilEntity
@@ -53,7 +53,7 @@ open class ItemSpellTalisman// Talisman functions
             return true
         if (!isConsumeCharge(context))
             return true
-        val spiritData = PlayerData.get(context.player).spiritData
+        val spiritData = context.player.divineCustomData.spiritData
         if (!spiritData.consumeFavor(spirit.id, favorCost))
             return false
         if (context.world.isRemote)

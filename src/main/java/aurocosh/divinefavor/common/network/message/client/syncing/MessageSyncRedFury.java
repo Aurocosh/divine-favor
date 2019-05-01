@@ -23,7 +23,7 @@ public class MessageSyncRedFury extends WrappedClientMessage {
     @SideOnly(Side.CLIENT)
     protected void handleSafe() {
         EntityPlayer player = DivineFavor.proxy.getClientPlayer();
-        RedFuryData redFuryData = PlayerData.get(player).getRedFuryData();
+        RedFuryData redFuryData = PlayerData.INSTANCE.get(player).getRedFuryData();
         redFuryData.setVector(vector);
     }
 }

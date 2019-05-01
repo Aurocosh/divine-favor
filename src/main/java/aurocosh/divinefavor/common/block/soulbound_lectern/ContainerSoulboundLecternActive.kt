@@ -1,12 +1,12 @@
 package aurocosh.divinefavor.common.block.soulbound_lectern
 
-import aurocosh.divinefavor.common.custom_data.player.PlayerData
 import aurocosh.divinefavor.common.custom_data.player.data.favor.SpiritData
 import aurocosh.divinefavor.common.item.base.GenericContainer
+import aurocosh.divinefavor.common.lib.extensions.divineCustomData
 import net.minecraft.entity.player.EntityPlayer
 
 class ContainerSoulboundLecternActive(player: EntityPlayer, private val soulboundLectern: TileSoulboundLectern) : GenericContainer(SpiritData.CONTRACT_SLOT_COUNT) {
-    private val spiritData: SpiritData = PlayerData.get(player).spiritData
+    private val spiritData: SpiritData = player.divineCustomData.spiritData
 
     init {
 

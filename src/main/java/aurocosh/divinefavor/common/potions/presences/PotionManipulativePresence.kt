@@ -1,8 +1,8 @@
 package aurocosh.divinefavor.common.potions.presences
 
 import aurocosh.divinefavor.common.constants.ConstMisc
-import aurocosh.divinefavor.common.custom_data.player.PlayerData
 import aurocosh.divinefavor.common.item.calling_stones.ModCallingStones
+import aurocosh.divinefavor.common.lib.extensions.divineCustomData
 import aurocosh.divinefavor.common.muliblock.common.ModMultiBlocks
 import aurocosh.divinefavor.common.potions.base.potion.ModPotion
 import aurocosh.divinefavor.common.potions.common.ModBlessings
@@ -20,10 +20,8 @@ class PotionManipulativePresence : ModPotion("manipulative_presence", true, 0x7F
 
     override fun onPotionAdded(livingBase: EntityLivingBase) {
         super.onPotionAdded(livingBase)
-        if (livingBase !is EntityPlayer)
-            return
-        val auraData = PlayerData.get(livingBase).manipulativePresenceData
-        auraData.reset()
+        if (livingBase is EntityPlayer)
+            livingBase.divineCustomData.manipulativePresenceData.reset()
     }
 
     companion object {
@@ -38,8 +36,7 @@ class PotionManipulativePresence : ModPotion("manipulative_presence", true, 0x7F
             if (ModMultiBlocks.iron_golem.match(event.world, event.pos) == null)
                 return
 
-            val auraData = PlayerData.get(player).manipulativePresenceData
-            if (auraData.tryLuck()) {
+            if (player.divineCustomData.manipulativePresenceData.tryLuck()) {
                 player.removePotionEffect(ModBlessings.manipulative_presence)
                 player.addItemStackToInventory(ItemStack(ModCallingStones.calling_stone_loon))
             }

@@ -25,8 +25,7 @@ class PotionWindLeash : ModPotion("wind_leash", false, 0x7FB8A4) {
         var vector = vec3d.normalize().scale(ConfigArrow.windLeash.motionSpeed.toDouble())
         if (livingBase is EntityPlayer)
             vector = vector.scale(ConfigArrow.windLeash.playerMultiplier.toDouble())
-        val windLeash = LivingData.get(livingBase).windLeashData
-        windLeash.vector = vector
+        LivingData.get(livingBase).windLeashData.vector = vector
 
         MessageSyncWindLeash(vector).sendTo(livingBase)
     }
