@@ -15,11 +15,11 @@ public class EvilEye {
     @Config.Name("Damage per severity")
     public int damagePerSeverity = 10;
     @Config.Name("Slowness time")
-    public int slownessTime = UtilTick.secondsToTicks(20);
+    public int slownessTime = UtilTick.INSTANCE.secondsToTicks(20);
     @Config.Name("Slowness level")
     public int slownessLevel = 2;
     @Config.Name("Evil eye time")
-    public int evilEyeTime = UtilTick.secondsToTicks(10);
+    public int evilEyeTime = UtilTick.INSTANCE.secondsToTicks(10);
     @Config.Name("Opacity per severity")
     public float opacityPerSeverity = 0.33f;
 }

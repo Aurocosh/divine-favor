@@ -262,7 +262,7 @@ public class EntitySpellArrow extends EntityArrow {
         setTalismanDataCommon(compound.getCompoundTag(TAG_TALISMAN_DATA_COMMON));
         setTalismanDataServer(compound.getCompoundTag(TAG_TALISMAN_DATA_SERVER));
 
-        UUID uuid = UtilSerialize.stringToUUID(compound.getString(TAG_SHOOTER));
+        UUID uuid = UtilSerialize.INSTANCE.stringToUUID(compound.getString(TAG_SHOOTER));
         shooter = uuid == null ? null : world.getPlayerEntityByUUID(uuid);
         setShooterId(uuid);
 

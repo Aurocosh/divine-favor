@@ -1,15 +1,15 @@
 package aurocosh.divinefavor.common.item.talismans.spell
 
 import aurocosh.divinefavor.common.config.common.ConfigSpells
+import aurocosh.divinefavor.common.constants.BlockPosConstants
 import aurocosh.divinefavor.common.item.talismans.spell.base.ItemSpellTalisman
 import aurocosh.divinefavor.common.item.talismans.spell.base.SpellOptions
 import aurocosh.divinefavor.common.item.talismans.spell.base.TalismanContext
+import aurocosh.divinefavor.common.lib.extensions.selectRandom
 import aurocosh.divinefavor.common.spirit.base.ModSpirit
 import aurocosh.divinefavor.common.util.UtilBlock
-import aurocosh.divinefavor.common.util.UtilBlockPos
 import aurocosh.divinefavor.common.util.UtilRandom
 import net.minecraft.util.math.BlockPos
-
 import java.util.*
 
 class SpellTalismanSearingPulse(name: String, spirit: ModSpirit, favorCost: Int, options: EnumSet<SpellOptions>) : ItemSpellTalisman(name, spirit, favorCost, options) {
@@ -33,7 +33,7 @@ class SpellTalismanSearingPulse(name: String, spirit: ModSpirit, favorCost: Int,
                 continue
 
             val neighboursToAdd = UtilRandom.nextInt(ConfigSpells.searingPulse.minNeighboursToAdd, ConfigSpells.searingPulse.maxNeighboursToAdd)
-            val dirs = UtilBlockPos.getRandomDirections(neighboursToAdd)
+            val dirs = BlockPosConstants.DIRECT_NEIGHBOURS.selectRandom(neighboursToAdd)
             for (dir in dirs) {
                 val node = nextNode.add(dir)
                 if (!visitedNodes.contains(node))

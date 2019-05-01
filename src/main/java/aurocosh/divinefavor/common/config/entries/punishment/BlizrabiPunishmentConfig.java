@@ -11,12 +11,12 @@ public class BlizrabiPunishmentConfig {
     public int spawnRadius = 10;
 
     @Config.Name("Slowness duration")
-    public int slownessDuration = UtilTick.minutesToTicks(3);
+    public int slownessDuration = UtilTick.INSTANCE.minutesToTicks(3);
     @Config.Name("Slowness amplifier")
     public int slownessAmplifier = 3;
 
     @Config.Name("Weakness duration")
-    public int weaknessDuration = UtilTick.minutesToTicks(3);
+    public int weaknessDuration = UtilTick.INSTANCE.minutesToTicks(3);
     @Config.Name("Weakness amplifier")
     public int weaknessAmplifier = 3;
 }

@@ -7,7 +7,7 @@ public class FieryMark {
     @Config.Name("Favor cost")
     public int favorCost = 120;
     @Config.Name("Duration")
-    public int duration = UtilTick.secondsToTicks(10);
+    public int duration = UtilTick.INSTANCE.secondsToTicks(10);
     @Config.Name("Explosion power")
     public int explosionPower = 4;
     @Config.Name("Cause fire")

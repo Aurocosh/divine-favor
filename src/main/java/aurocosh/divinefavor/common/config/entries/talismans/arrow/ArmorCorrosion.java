@@ -7,9 +7,9 @@ public class ArmorCorrosion {
     @Config.Name("Favor cost")
     public int favorCost = 100;
     @Config.Name("Duration")
-    public int duration = UtilTick.minutesToTicks(3);
+    public int duration = UtilTick.INSTANCE.minutesToTicks(3);
     @Config.Name("Corrosion rate")
-    public int corrosionRate = UtilTick.secondsToTicks(1);
+    public int corrosionRate = UtilTick.INSTANCE.secondsToTicks(1);
     @Config.Name("Corrosion damage")
     public int corrosionDamage = 1;
     @Config.Name("Min slots to corrode")

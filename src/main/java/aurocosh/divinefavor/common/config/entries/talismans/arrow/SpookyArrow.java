@@ -10,7 +10,7 @@ public class SpookyArrow {
     @Config.Name("Damage")
     public float damage = 2;
     @Config.Name("Despawn delay")
-    public int despawnDelay = UtilTick.minutesToTicks(3);
+    public int despawnDelay = UtilTick.INSTANCE.minutesToTicks(3);
     @Config.Name("Sound delay")
     public TimeIntervalSeconds soundDelay = new TimeIntervalSeconds(3,15);
 }

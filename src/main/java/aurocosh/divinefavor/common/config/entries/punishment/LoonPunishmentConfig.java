@@ -13,7 +13,7 @@ public class LoonPunishmentConfig {
     @Config.Name("Wave count")
     public IntInterval waveCount = new IntInterval(2, 5);
     @Config.Name("Wave delay")
-    public IntInterval waveDelay = new IntInterval(UtilTick.secondsToTicks(15), UtilTick.minutesToTicks(2));
+    public IntInterval waveDelay = new IntInterval(UtilTick.INSTANCE.secondsToTicks(15), UtilTick.INSTANCE.minutesToTicks(2));
 
     @Config.Name("Spawn radius")
     public int spawnRadius = 10;

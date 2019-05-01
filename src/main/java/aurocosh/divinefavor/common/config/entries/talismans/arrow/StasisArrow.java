@@ -11,5 +11,5 @@ public class StasisArrow {
     @Config.Name("Radius")
     public int radius = 6;
     @Config.Name("Despawn delay")
-    public int despawnDelay = UtilTick.secondsToTicks(60);
+    public int despawnDelay = UtilTick.INSTANCE.secondsToTicks(60);
 }

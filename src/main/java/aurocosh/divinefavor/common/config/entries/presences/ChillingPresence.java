@@ -5,7 +5,7 @@ import net.minecraftforge.common.config.Config;
 
 public class ChillingPresence {
     @Config.Name("Duration")
-    public int duration = UtilTick.minutesToTicks(2);
+    public int duration = UtilTick.INSTANCE.minutesToTicks(2);
     @Config.Name("Spawn radius")
     public int spawnRadius = 7;
     @Config.Name("Min wolfs to spawn")

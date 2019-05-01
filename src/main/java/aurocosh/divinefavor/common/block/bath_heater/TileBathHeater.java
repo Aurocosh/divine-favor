@@ -149,7 +149,7 @@ public class TileBathHeater extends TileEntity implements ITickable, IAreaWatche
         progressBurning = maxBurnTime == 0 ? 0 : currentBurnTime / maxBurnTime;
         state = BathHeaterState.VALUES[compound.getInteger(TAG_STATE_HEATER)];
         waterPositions.clear();
-        waterPositions.addAll(UtilBlockPos.deserialize(compound.getIntArray(TAG_WATER_POSITIONS)));
+        waterPositions.addAll(UtilBlockPos.INSTANCE.deserialize(compound.getIntArray(TAG_WATER_POSITIONS)));
         loopedCounter.setTickRate(compound.getInteger(TAG_EFFECT_TICK_RATE));
         if (compound.hasKey(TAG_FUEL))
             fuelStackHandler.deserializeNBT((NBTTagCompound) compound.getTag(TAG_FUEL));
@@ -163,7 +163,7 @@ public class TileBathHeater extends TileEntity implements ITickable, IAreaWatche
         compound.setInteger(TAG_MAX_BURN_TIME, maxBurnTime);
         compound.setInteger(TAG_CURRENT_BURN_TIME, currentBurnTime);
         compound.setInteger(TAG_STATE_HEATER, state.ordinal());
-        compound.setIntArray(TAG_WATER_POSITIONS, UtilBlockPos.serialize(waterPositions));
+        compound.setIntArray(TAG_WATER_POSITIONS, UtilBlockPos.INSTANCE.serialize(waterPositions));
         compound.setInteger(TAG_EFFECT_TICK_RATE, loopedCounter.getTickRate());
         compound.setTag(TAG_FUEL, fuelStackHandler.serializeNBT());
         compound.setTag(TAG_INGREDIENTS, blendStackHandler.serializeNBT());
@@ -197,7 +197,7 @@ public class TileBathHeater extends TileEntity implements ITickable, IAreaWatche
     public NBTTagCompound getUpdateTag() {
         NBTTagCompound nbtTag = super.getUpdateTag();
         nbtTag.setInteger(TAG_STATE_HEATER, state.ordinal());
-        nbtTag.setIntArray(TAG_WATER_POSITIONS, UtilBlockPos.serialize(waterPositions));
+        nbtTag.setIntArray(TAG_WATER_POSITIONS, UtilBlockPos.INSTANCE.serialize(waterPositions));
         return nbtTag;
     }
 
@@ -218,7 +218,7 @@ public class TileBathHeater extends TileEntity implements ITickable, IAreaWatche
             world.markBlockRangeForRenderUpdate(pos, pos);
         }
         waterPositions.clear();
-        waterPositions.addAll(UtilBlockPos.deserialize(packet.getNbtCompound().getIntArray(TAG_WATER_POSITIONS)));
+        waterPositions.addAll(UtilBlockPos.INSTANCE.deserialize(packet.getNbtCompound().getIntArray(TAG_WATER_POSITIONS)));
     }
 
     public boolean isBurning() {
@@ -255,7 +255,7 @@ public class TileBathHeater extends TileEntity implements ITickable, IAreaWatche
         if (state == BathHeaterState.INACTIVE)
             return;
         for (BlockPos waterPos : waterPositions) {
-            Random random = UtilRandom.random;
+            Random random = UtilRandom.INSTANCE.getRandom();
             world.spawnParticle(EnumParticleTypes.WATER_BUBBLE, waterPos.getX() + random.nextDouble(), waterPos.getY() + random.nextDouble(), waterPos.getZ() + random.nextDouble(), 0.0D, 0.0D, 0.0D);
         }
     }

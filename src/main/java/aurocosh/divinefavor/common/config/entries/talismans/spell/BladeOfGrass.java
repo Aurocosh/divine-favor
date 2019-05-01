@@ -11,7 +11,7 @@ public class BladeOfGrass {
     @Config.Name("Damage")
     public float damage = 2;
     @Config.Name("Slowness time")
-    public int slownessTime = UtilTick.secondsToTicks(15);
+    public int slownessTime = UtilTick.INSTANCE.secondsToTicks(15);
     @Config.Name("Slowness level")
     public int slownessLevel = 1;
 

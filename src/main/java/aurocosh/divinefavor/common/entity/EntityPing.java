@@ -42,8 +42,8 @@ public class EntityPing extends Entity {
     @SideOnly(Side.CLIENT)
     public void spawnParticles() {
         for (int i = 0; i < ConfigSpells.ping.particleIntensity; ++i) {
-            double distance = UtilRandom.nextFloat(1, 5);
-            Vec3d direction = UtilRandom.nextDirection();
+            double distance = UtilRandom.INSTANCE.nextFloat(1, 5);
+            Vec3d direction = UtilRandom.INSTANCE.nextDirection();
             Vec3d pointOnSphere = direction.scale(distance);
             Vec3d pointInWorld = pointOnSphere.add(getPositionVector());
             Vec3d speed = direction.scale(-0.15f);

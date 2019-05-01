@@ -16,7 +16,7 @@ public class ConfigArrow {
     @Config.Name("Blink arrow")
     public static BlinkArrow blinkArrow = new BlinkArrow();
     @Config.Name("Climbing arrow")
-    public static ClimbingArrow climbingArrow = new ClimbingArrow(10, 2, 2.5f, 0.3f, UtilTick.secondsToTicks(60));
+    public static ClimbingArrow climbingArrow = new ClimbingArrow(10, 2, 2.5f, 0.3f, UtilTick.INSTANCE.secondsToTicks(60));
     @Config.Name("Crawling mist")
     public static CrawlingMist crawlingMist = new CrawlingMist();
     @Config.Name("Cripple")
@@ -54,7 +54,7 @@ public class ConfigArrow {
     @Config.Name("LifeSteal arrow")
     public static LifeStealArrow lifeStealArrow = new LifeStealArrow();
     @Config.Name("Hover bubble arrow")
-    public static ClimbingArrow hoverBubbleArrow = new ClimbingArrow(150, 2, 12, 0.3f, UtilTick.secondsToTicks(60));
+    public static ClimbingArrow hoverBubbleArrow = new ClimbingArrow(150, 2, 12, 0.3f, UtilTick.INSTANCE.secondsToTicks(60));
     @Config.Name("Force arrow")
     public static ForceArrow forceArrow = new ForceArrow(120, 0.5f, 6);
     @Config.Name("Impulse arrow")

@@ -15,6 +15,6 @@ public class FloatInterval {
     }
 
     public float random() {
-        return UtilRandom.nextFloat(min, max);
+        return UtilRandom.INSTANCE.nextFloat(min, max);
     }
 }

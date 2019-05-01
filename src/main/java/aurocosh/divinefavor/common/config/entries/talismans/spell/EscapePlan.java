@@ -7,5 +7,5 @@ public class EscapePlan {
     @Config.Name("Favor cost")
     public int favorCost = 150;
     @Config.Name("Duration")
-    public int duration = UtilTick.minutesToTicks(1);
+    public int duration = UtilTick.INSTANCE.minutesToTicks(1);
 }

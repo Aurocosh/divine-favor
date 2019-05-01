@@ -9,7 +9,7 @@ public class NightEye {
     @Config.Name("Tolerable light level")
     public int tolerableLightLevel = 4;
     @Config.Name("Blindness duration")
-    public int blindnessDuration = UtilTick.secondsToTicks(12);
+    public int blindnessDuration = UtilTick.INSTANCE.secondsToTicks(12);
     @Config.Name("Night vision duration")
-    public int nightVisionDuration = UtilTick.secondsToTicks(20);
+    public int nightVisionDuration = UtilTick.INSTANCE.secondsToTicks(20);
 }

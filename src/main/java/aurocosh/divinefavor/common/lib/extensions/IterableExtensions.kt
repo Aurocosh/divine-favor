@@ -1,8 +1,15 @@
 package aurocosh.divinefavor.common.lib.extensions
 
-import aurocosh.divinefavor.common.util.UtilMath
 import aurocosh.divinefavor.common.util.UtilRandom
+import net.minecraft.util.math.MathHelper
 import java.util.*
+import kotlin.collections.Iterable
+import kotlin.collections.List
+import kotlin.collections.MutableCollection
+import kotlin.collections.addAll
+import kotlin.collections.all
+import kotlin.collections.map
+import kotlin.collections.mapTo
 import kotlin.collections.ArrayList as ArrayList1
 
 inline fun <T> Iterable<T>.split(predicate: (T) -> Boolean): Pair<List<T>, List<T>> {
@@ -50,7 +57,7 @@ fun <T, C : MutableCollection<in T>> Iterable<T>.selectRandomTo(destination: C, 
     val list = ArrayList<T>()
     list.addAll(this)
 
-    val realCount = UtilMath.clamp(count, 0, list.size)
+    val realCount = MathHelper.clamp(count, 0, list.size)
     val dirsToRemove = list.size - realCount
 
     for (i in 0 until dirsToRemove) {

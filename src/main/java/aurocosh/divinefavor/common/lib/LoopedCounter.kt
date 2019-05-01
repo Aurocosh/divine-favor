@@ -1,6 +1,6 @@
 package aurocosh.divinefavor.common.lib
 
-import aurocosh.divinefavor.common.util.UtilMath
+import net.minecraft.util.math.MathHelper
 
 class LoopedCounter {
     private var tickRate: Int = 0
@@ -9,7 +9,7 @@ class LoopedCounter {
     var count: Int
         get() = currentTicks
         set(ticks) {
-            currentTicks = UtilMath.clamp(ticks, 0, tickRate)
+            currentTicks = MathHelper.clamp(ticks, 0, tickRate)
         }
 
     val isFinished: Boolean

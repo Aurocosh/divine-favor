@@ -12,8 +12,8 @@ public class BathingBlendPotion {
     public int extraPotionDuration;
 
     public BathingBlendPotion(int duration, int rate, int extraPotionDuration) {
-        this.duration = UtilTick.secondsToTicks(duration);
-        this.rate = UtilTick.secondsToTicks(rate);
-        this.extraPotionDuration = UtilTick.secondsToTicks(extraPotionDuration);
+        this.duration = UtilTick.INSTANCE.secondsToTicks(duration);
+        this.rate = UtilTick.INSTANCE.secondsToTicks(rate);
+        this.extraPotionDuration = UtilTick.INSTANCE.secondsToTicks(extraPotionDuration);
     }
 }

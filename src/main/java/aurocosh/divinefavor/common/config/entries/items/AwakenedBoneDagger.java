@@ -7,5 +7,5 @@ public class AwakenedBoneDagger {
     @Config.Name("Awakened dagger soul stealing speed")
     public float soulSteelingSpeed = 0.5f;
     @Config.Name("Awakened dagger soul theft duration")
-    public int soulTheftDuration = UtilTick.minutesToTicks(5);
+    public int soulTheftDuration = UtilTick.INSTANCE.minutesToTicks(5);
 }

@@ -2,8 +2,8 @@ package aurocosh.divinefavor.common.item.talisman_container.spell_bow.capability
 
 import aurocosh.divinefavor.common.item.talisman_container.spell_bow.ItemSpellBow
 import aurocosh.divinefavor.common.item.talismans.arrow.base.ItemArrowTalisman
-import aurocosh.divinefavor.common.util.UtilMath
 import net.minecraft.item.ItemStack
+import net.minecraft.util.math.MathHelper
 import net.minecraftforge.items.ItemStackHandler
 import java.util.*
 
@@ -16,7 +16,7 @@ class DefaultSpellBowHandler : ISpellBowHandler {
     private val inventory: ItemStackHandler
     override var selectedSlotIndex: Int = 0
         set(value) {
-            field = UtilMath.clamp(value, 0, maxIndex)
+            field = MathHelper.clamp(value, 0, maxIndex)
             state++
         }
 

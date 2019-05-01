@@ -5,7 +5,7 @@ import net.minecraftforge.common.config.Config;
 
 public class WarpingPresence {
     @Config.Name("Duration")
-    public int duration = UtilTick.minutesToTicks(2);
+    public int duration = UtilTick.INSTANCE.minutesToTicks(2);
     @Config.Name("Starting chance")
     public float startingChance = 0.15f;
     @Config.Name("Chance increase")

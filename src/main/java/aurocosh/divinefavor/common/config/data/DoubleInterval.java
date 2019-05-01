@@ -15,6 +15,6 @@ public class DoubleInterval {
     }
 
     public double random() {
-        return UtilRandom.nextDouble(min, max);
+        return UtilRandom.INSTANCE.nextDouble(min, max);
     }
 }

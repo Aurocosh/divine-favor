@@ -7,7 +7,7 @@ public class EmpowerAxe {
     @Config.Name("Favor cost")
     public int favorCost = 20;
     @Config.Name("Duration")
-    public int duration = UtilTick.minutesToTicks(1);
+    public int duration = UtilTick.INSTANCE.minutesToTicks(1);
     @Config.Name("Instant break chance")
     public int instantBreakChance = 50;
     @Config.Name("Tool damage")

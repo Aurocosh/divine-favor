@@ -18,6 +18,6 @@ public class TimeIntervalSeconds {
     }
 
     public int random() {
-        return UtilTick.secondsToTicks(UtilRandom.nextInt(min, max));
+        return UtilTick.INSTANCE.secondsToTicks(UtilRandom.INSTANCE.nextInt(min, max));
     }
 }
