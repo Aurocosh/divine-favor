@@ -129,7 +129,7 @@ object UtilEntity {
         entity.motionZ += extraVelocity.z
     }
 
-    fun getBlockPlayerLookingAt(player: EntityPlayer, length: Double): RayTraceResult {
+    fun getBlockPlayerLookingAt(player: EntityPlayer, length: Double): RayTraceResult? {
         return UtilWorld.raycast(player.world, player.getPositionEyes(0f), player.lookVec, length)
     }
 
