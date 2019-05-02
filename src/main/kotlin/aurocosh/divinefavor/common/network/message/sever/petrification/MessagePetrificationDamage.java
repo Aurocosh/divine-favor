@@ -11,6 +11,6 @@ public class MessagePetrificationDamage extends WrappedServerMessage {
 
     @Override
     protected void handleSafe(EntityPlayerMP serverPlayer) {
-        serverPlayer.attackEntityFrom(ModDamageSources.petrificationDamage, ConfigArrow.petrification.damage);
+        serverPlayer.attackEntityFrom(ModDamageSources.INSTANCE.getPetrificationDamage(), ConfigArrow.petrification.damage);
     }
 }
