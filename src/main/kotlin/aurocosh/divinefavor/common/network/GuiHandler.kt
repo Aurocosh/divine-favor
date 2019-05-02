@@ -52,16 +52,16 @@ class GuiHandler : IGuiHandler {
                 return ContractBinderContainer(player, handler!!)
             }
             ConstGuiIDs.GRIMOIRE -> {
-                val hand = UtilPlayer.getHand { h -> player.getHeldItem(h).item is ItemGrimoire }
+                val hand = UtilPlayer.getHand { h -> player.getHeldItem(h).item is ItemGrimoire } ?: return null
                 val stack = player.getHeldItem(hand)
                 val handler = stack.getCapability(GrimoireDataHandler.CAPABILITY_GRIMOIRE!!, null)
-                return GrimoireContainer(player, handler!!, hand!!)
+                return GrimoireContainer(player, handler!!, hand)
             }
             ConstGuiIDs.SPELL_BOW -> {
-                val hand = UtilPlayer.getHand { h -> player.getHeldItem(h).item is ItemSpellBow }
+                val hand = UtilPlayer.getHand { h -> player.getHeldItem(h).item is ItemSpellBow } ?: return null
                 val stack = player.getHeldItem(hand)
                 val handler = stack.getCapability(SpellBowDataHandler.CAPABILITY_SPELL_BOW!!, null)
-                return SpellBowContainer(player, handler!!, hand!!)
+                return SpellBowContainer(player, handler!!, hand)
             }
             ConstGuiIDs.SOULBOUND_LECTERN_ACTIVE -> return ContainerSoulboundLecternActive(player, (world.getTileEntity(BlockPos(x, y, z)) as TileSoulboundLectern?)!!)
             ConstGuiIDs.SOULBOUND_LECTERN_WITH_SHARD -> return ContainerSoulboundLecternWithShard(player, (world.getTileEntity(BlockPos(x, y, z)) as TileSoulboundLectern?)!!)
@@ -84,14 +84,14 @@ class GuiHandler : IGuiHandler {
                 return GuiContractBinder(player, pouch)
             }
             ConstGuiIDs.GRIMOIRE -> {
-                val hand = UtilPlayer.getHand { h -> player.getHeldItem(h).item is ItemGrimoire }
+                val hand = UtilPlayer.getHand { h -> player.getHeldItem(h).item is ItemGrimoire } ?: return null
                 val stack = player.getHeldItem(hand)
-                return GuiGrimoire(player, stack, hand!!)
+                return GuiGrimoire(player, stack, hand)
             }
             ConstGuiIDs.SPELL_BOW -> {
-                val hand = UtilPlayer.getHand { h -> player.getHeldItem(h).item is ItemSpellBow }
+                val hand = UtilPlayer.getHand { h -> player.getHeldItem(h).item is ItemSpellBow } ?: return null
                 val stack = player.getHeldItem(hand)
-                return GuiSpellBow(player, stack, hand!!)
+                return GuiSpellBow(player, stack, hand)
             }
             ConstGuiIDs.SOULBOUND_LECTERN_ACTIVE -> return GuiSoulboundLecternActive(player, (world.getTileEntity(BlockPos(x, y, z)) as TileSoulboundLectern?)!!)
             ConstGuiIDs.SOULBOUND_LECTERN_WITH_SHARD -> return GuiSoulboundLecternWithShard(player, (world.getTileEntity(BlockPos(x, y, z)) as TileSoulboundLectern?)!!)

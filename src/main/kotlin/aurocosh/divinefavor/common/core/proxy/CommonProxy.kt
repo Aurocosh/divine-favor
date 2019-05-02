@@ -88,12 +88,6 @@ open class CommonProxy {
 
         NetworkRegistry.INSTANCE.registerGuiHandler(DivineFavor, GuiHandler())
 
-        //        MinecraftForge.EVENT_BUS.preInit(new PlayerDataHandler.LoginDataSyncer());
-
-        val test = e.modConfigurationDirectory
-
-        //        TalismanPagesGenerator.generate();
-
         //        e.getSuggestedConfigurationFile().getParentFile().getParentFile();
     }
 

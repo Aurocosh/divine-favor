@@ -19,12 +19,12 @@ public class ImmaterialMediumWrapper implements IRecipeWrapper {
     @Override
     public void getIngredients(IIngredients ingredients) {
         ImmutableList.Builder<ItemStack> builder = ImmutableList.builder();
-        for (Ingredient ingredient : recipe.ingredients)
+        for (Ingredient ingredient : recipe.getIngredients())
             builder.add(ingredient.getMatchingStacks());
-        builder.add(recipe.callingStone.getMatchingStacks());
+        builder.add(recipe.getCallingStone().getMatchingStacks());
         builder.add(Ingredient.fromItem(ModItems.INSTANCE.getRitual_pouch()).getMatchingStacks());
 
         ingredients.setInputs(VanillaTypes.ITEM, builder.build());
-        ingredients.setOutput(VanillaTypes.ITEM, recipe.result);
+        ingredients.setOutput(VanillaTypes.ITEM, recipe.getResult());
     }
 }

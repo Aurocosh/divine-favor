@@ -288,7 +288,7 @@ public class TileMedium extends TickableTileEntity implements IMultiblockControl
         for (SlotStack slotStack : slotStacks)
             stacks.add(slotStack.getStack());
 
-        ItemStack result = ModRecipes.getRecipeResult(callingStone, stacks);
+        ItemStack result = ModRecipes.INSTANCE.getRecipeResult(callingStone, stacks);
         if (result == ItemStack.EMPTY)
             return;
         for (SlotStack slotStack : slotStacks)

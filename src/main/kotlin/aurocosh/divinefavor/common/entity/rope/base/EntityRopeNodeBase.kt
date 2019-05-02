@@ -382,7 +382,7 @@ abstract class EntityRopeNodeBase(world: World) : Entity(world) {
         return true
     }
 
-    override fun processInitialInteract(player: EntityPlayer, hand: EnumHand?): Boolean {
+    override fun processInitialInteract(player: EntityPlayer, hand: EnumHand): Boolean {
         if (world.isRemote)
             return true
 

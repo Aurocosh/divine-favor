@@ -39,13 +39,13 @@ class ItemSpellBow : ModItem("spell_bow", "spell_bow/spell_bow", ConstMainTabOrd
         addPropertyOverride(ResourceLocation("book_mode")) { stack, _, _ ->
             (if (stack.compound.getBoolean(TAG_IS_IN_BOOK_MODE)) 1 else 0).toFloat()
         }
-        addPropertyOverride(ResourceLocation("pull")) { stack, world, entityLivingBase ->
+        addPropertyOverride(ResourceLocation("pull")) { stack, _, entityLivingBase ->
             if (entityLivingBase == null)
                 0.0f
             else
                 if (entityLivingBase.activeItemStack.item !== ModItems.spell_bow) 0.0f else (stack.maxItemUseDuration - entityLivingBase.itemInUseCount).toFloat() / 20.0f
         }
-        addPropertyOverride(ResourceLocation("pulling")) { stack, world, entity -> if (entity != null && entity.isHandActive && entity.activeItemStack == stack) 1.0f else 0.0f }
+        addPropertyOverride(ResourceLocation("pulling")) { stack, _, entity -> if (entity != null && entity.isHandActive && entity.activeItemStack == stack) 1.0f else 0.0f }
     }
 
     private fun findAmmo(player: EntityPlayer): ItemStack {
