@@ -77,7 +77,7 @@ class EntityRopeExplosiveNode(world: World) : EntityRopeNodeBase(world) {
     private fun triggerNode(explosiveNode: EntityRopeExplosiveNode) {
         if (!explosiveNode.getTriggered()) {
             explosiveNode.setTriggered(true)
-            fuse = UtilRandom.nextInt(1, 5)
+            explosiveNode.fuse = UtilRandom.nextInt(1, 5)
         }
     }
 
@@ -127,16 +127,16 @@ class EntityRopeExplosiveNode(world: World) : EntityRopeNodeBase(world) {
         return EntityRopeExplosiveNode(world)
     }
 
-    override fun processInitialInteract(player: EntityPlayer, hand: EnumHand?): Boolean {
+    override fun processInitialInteract(player: EntityPlayer, hand: EnumHand): Boolean {
         if (world.isRemote)
             return true
 
         val item = player.getHeldItem(hand).item
         if (item === Items.FLINT_AND_STEEL) {
             setTriggered(true)
-            var nextNode = nextNode
+            val nextNode = nextNode
             if (nextNode is EntityPlayer)
-                nextNode = null
+                this.nextNode = null
             return true
         } else
             return super.processInitialInteract(player, hand)

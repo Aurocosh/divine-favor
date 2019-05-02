@@ -33,7 +33,7 @@ object KeyBindings {
 
     class KeyConflictContext : IKeyConflictContext {
         override fun isActive(): Boolean {
-            val player = DivineFavor.proxy.clientPlayer ?: return false
+            val player = DivineFavor.proxy.clientPlayer
 //            if (!net.minecraftforge.client.settings.KeyConflictContext.GUI.isActive())
             //                return false;
             return UtilPlayer.getHandWithItem(player) { TalismanContainerAdapter.isItemValid(it) } != null

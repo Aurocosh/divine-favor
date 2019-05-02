@@ -30,14 +30,14 @@ public class ActionAddMediumRecipe implements IAction {
     @Override
     public void apply() {
         for (ImmaterialMediumRecipe recipe : recipes)
-            ModRecipes.register(recipe);
+            ModRecipes.INSTANCE.register(recipe);
     }
 
     @Override
     public String describe() {
         if(recipes.length == 0)
             return "";
-        String name = recipes[0].result.getItem().getRegistryName().toString();
+        String name = recipes[0].getResult().getItem().getRegistryName().toString();
         return String.format("Added medium recipe for %s", name);
     }
 }

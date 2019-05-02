@@ -11,8 +11,6 @@ import net.minecraft.item.ItemStack
 import net.minecraft.util.EnumHand
 import net.minecraft.util.SoundCategory
 
-import java.util.function.Predicate
-
 object UtilPlayer {
     fun getItemInHand(player: EntityPlayer, predicate: (Item) -> Boolean): ItemStack {
         var stack = player.heldItemMainhand
@@ -30,10 +28,10 @@ object UtilPlayer {
         return if (!stack.isEmpty && predicate.invoke(stack.item)) EnumHand.OFF_HAND else null
     }
 
-    fun getHand(predicate: Predicate<EnumHand>): EnumHand? {
-        if (predicate.test(EnumHand.MAIN_HAND))
+    fun getHand(predicate: (EnumHand) -> Boolean): EnumHand? {
+        if (predicate.invoke(EnumHand.MAIN_HAND))
             return EnumHand.MAIN_HAND
-        return if (predicate.test(EnumHand.OFF_HAND)) EnumHand.OFF_HAND else null
+        return if (predicate.invoke(EnumHand.OFF_HAND)) EnumHand.OFF_HAND else null
     }
 
     fun findStackInMainInventory(player: EntityPlayer, predicate: (ItemStack) -> Boolean): SlotData {
@@ -45,16 +43,16 @@ object UtilPlayer {
         return SlotData(-1, ItemStack.EMPTY)
     }
 
-    fun findStackInInventory(player: EntityPlayer, predicate: Predicate<ItemStack>): SlotData {
+    fun findStackInInventory(player: EntityPlayer, predicate: (ItemStack) -> Boolean): SlotData {
         var stack = player.heldItemMainhand
-        if (predicate.test(stack))
+        if (predicate.invoke(stack))
             return SlotData(player.inventory.currentItem, stack)
         stack = player.heldItemOffhand
-        if (predicate.test(stack))
+        if (predicate.invoke(stack))
             return SlotData(InventoryIndexes.Offhand.value, stack)
         for (i in 0 until player.inventory.sizeInventory) {
             stack = player.inventory.getStackInSlot(i)
-            if (predicate.test(stack))
+            if (predicate.invoke(stack))
                 return SlotData(i, stack)
         }
         return SlotData(-1, ItemStack.EMPTY)

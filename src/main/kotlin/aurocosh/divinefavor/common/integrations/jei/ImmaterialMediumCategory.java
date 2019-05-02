@@ -53,10 +53,10 @@ public class ImmaterialMediumCategory implements IRecipeCategory<ImmaterialMediu
         group.set(0, Arrays.asList(Ingredient.fromItem(ModItems.INSTANCE.getRitual_pouch()).getMatchingStacks()));
 
         group.init(1, true, 91, 34);
-        group.set(1, Arrays.asList(recipe.callingStone.getMatchingStacks()));
+        group.set(1, Arrays.asList(recipe.getCallingStone().getMatchingStacks()));
 
         group.init(2, true, 124, 34);
-        group.set(2, recipe.result);
+        group.set(2, recipe.getResult());
 
         int[][] positions = new int[][]{
                 {7, 17}, //Top left
@@ -67,9 +67,9 @@ public class ImmaterialMediumCategory implements IRecipeCategory<ImmaterialMediu
                 {25, 53}, //Bottom center
                 {43, 53}, //Bottom right
         };
-        for (int i = 0; i < recipe.ingredients.length; i++) {
+        for (int i = 0; i < recipe.getIngredients().length; i++) {
             group.init(i + 3, true, positions[i][0] - 1, positions[i][1] - 1);
-            group.set(i + 3, Arrays.asList(recipe.ingredients[i].getMatchingStacks()));
+            group.set(i + 3, Arrays.asList(recipe.getIngredients()[i].getMatchingStacks()));
         }
     }
 }
