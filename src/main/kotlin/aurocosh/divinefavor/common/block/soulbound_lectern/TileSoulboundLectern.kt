@@ -27,25 +27,29 @@ class TileSoulboundLectern : TileEntity(), IMultiblockController {
     private var isRejecting: Boolean = false
     private var multiBlockInstance: MultiBlockInstance? = null
 
-    var state = SoulboundLecternState.INACTIVE
+    private var _state = SoulboundLecternState.INACTIVE
+    var state: SoulboundLecternState
         set(value) {
-            if (field === value)
+            if (_state === value)
                 return
-            field = value
+            _state = value
             markDirty()
             val blockState = world.getBlockState(pos)
             getWorld().notifyBlockUpdate(pos, blockState, blockState, 3)
         }
+        get() = _state
 
-    var gem = SoulboundLecternGem.NONE
+    private var _gem = SoulboundLecternGem.NONE
+    var gem: SoulboundLecternGem
         set(value) {
-            if (field === value)
+            if (_gem === value)
                 return
-            field = value
+            _gem = value
             markDirty()
             val blockState = world.getBlockState(pos)
             getWorld().notifyBlockUpdate(pos, blockState, blockState, 3)
         }
+        get() = _gem
 
     val shardStackHandler: ItemStackHandler = object : ItemStackHandler(1) {
         override fun isItemValid(slot: Int, stack: ItemStack): Boolean {
@@ -93,8 +97,8 @@ class TileSoulboundLectern : TileEntity(), IMultiblockController {
 
     override fun readFromNBT(compound: NBTTagCompound) {
         super.readFromNBT(compound)
-        state = SoulboundLecternState.VALUES[compound.getInteger(TAG_STATE_LECTERN)]
-        gem = SoulboundLecternGem.INDEXER[compound.getInteger(TAG_GEM_LECTERN)]
+        _state = SoulboundLecternState.VALUES[compound.getInteger(TAG_STATE_LECTERN)]
+        _gem = SoulboundLecternGem.INDEXER[compound.getInteger(TAG_GEM_LECTERN)]
         if (compound.hasKey(TAG_SHARD))
             shardStackHandler.deserializeNBT(compound.getTag(TAG_SHARD) as NBTTagCompound)
     }

@@ -29,7 +29,7 @@ class ArrowTalismanPiercingArrow(name: String, spirit: ModSpirit, favorCost: Int
         val compound = spellArrow.talismanDataCommon
         if (compound.getInteger(TAG_LAST_HIT_ENTITY) == target.entityId)
             return false
-        return if (compound.getInteger(TAG_HITS_LEFT) == 0) true else false
+        return compound.getInteger(TAG_HITS_LEFT) == 0
     }
 
     override fun performActionServer(target: EntityLivingBase?, shooter: EntityLivingBase, spellArrow: EntitySpellArrow, blockPos: BlockPos?, sideHit: EnumFacing?): Boolean {
