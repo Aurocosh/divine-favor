@@ -1,7 +1,9 @@
 package aurocosh.divinefavor.common.custom_data.player.data.curse.crawling_mist
 
+import aurocosh.divinefavor.common.lib.extensions.fallback
+import aurocosh.divinefavor.common.lib.extensions.getBlockPos
+import aurocosh.divinefavor.common.lib.extensions.setBlockPos
 import aurocosh.divinefavor.common.lib.interfaces.INbtSerializer
-import aurocosh.divinefavor.common.util.UtilNbt
 import net.minecraft.nbt.NBTTagCompound
 import net.minecraft.util.math.BlockPos
 
@@ -9,11 +11,11 @@ import net.minecraft.util.math.BlockPos
 class CrawlingMistDataSerializer : INbtSerializer<CrawlingMistData> {
 
     override fun serialize(nbt: NBTTagCompound, instance: CrawlingMistData) {
-        UtilNbt.setBlockPos(nbt, TAG_MIST_ORIGIN, instance.mistOrigin)
+        nbt.setBlockPos(TAG_MIST_ORIGIN, instance.mistOrigin)
     }
 
     override fun deserialize(nbt: NBTTagCompound, instance: CrawlingMistData) {
-        instance.mistOrigin = UtilNbt.getBlockPos(nbt, TAG_MIST_ORIGIN, BlockPos.ORIGIN)
+        instance.mistOrigin = nbt.fallback(TAG_MIST_ORIGIN, NBTTagCompound::getBlockPos, BlockPos.ORIGIN)
     }
 
     companion object {

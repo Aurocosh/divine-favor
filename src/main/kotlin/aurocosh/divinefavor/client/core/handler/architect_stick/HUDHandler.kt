@@ -3,8 +3,10 @@ package aurocosh.divinefavor.client.core.handler.architect_stick
 import aurocosh.divinefavor.DivineFavor
 import aurocosh.divinefavor.common.constants.ConstMisc
 import aurocosh.divinefavor.common.item.mystic_architect_stick.ItemMysticArchitectStick
+import aurocosh.divinefavor.common.lib.extensions.hasKey
+import aurocosh.divinefavor.common.lib.extensions.compound
+import aurocosh.divinefavor.common.lib.extensions.getBlockPos
 import aurocosh.divinefavor.common.util.UtilGui
-import aurocosh.divinefavor.common.util.UtilNbt
 import net.minecraft.client.Minecraft
 import net.minecraft.client.renderer.GlStateManager
 import net.minecraft.client.renderer.Tessellator
@@ -27,12 +29,12 @@ object HUDHandler {
         if (stack.item !is ItemMysticArchitectStick)
             return
 
-        if (!UtilNbt.checkForTags(stack, ItemMysticArchitectStick.TAG_POS_FIRST, ItemMysticArchitectStick.TAG_POS_SECOND))
+        if (!stack.hasKey(ItemMysticArchitectStick.TAG_POS_FIRST, ItemMysticArchitectStick.TAG_POS_SECOND))
             return
 
-        val compound = stack.tagCompound
-        val startPos = UtilNbt.getBlockPos(compound!!, ItemMysticArchitectStick.TAG_POS_FIRST, BlockPos.ORIGIN)
-        val endPos = UtilNbt.getBlockPos(compound, ItemMysticArchitectStick.TAG_POS_SECOND, BlockPos.ORIGIN)
+        val compound = stack.compound
+        val startPos = compound.getBlockPos(ItemMysticArchitectStick.TAG_POS_FIRST)
+        val endPos = compound.getBlockPos(ItemMysticArchitectStick.TAG_POS_SECOND)
 
         val mc = Minecraft.getMinecraft()
         mc.renderEngine.bindTexture(TextureMap.LOCATION_BLOCKS_TEXTURE)

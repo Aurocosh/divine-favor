@@ -2,9 +2,11 @@ package aurocosh.divinefavor.common.item.storage_gem
 
 import aurocosh.divinefavor.DivineFavor
 import aurocosh.divinefavor.common.constants.ConstGemTabOrder
-import aurocosh.divinefavor.common.item.base.ModItem
 import aurocosh.divinefavor.common.constants.FacingConstants
-import aurocosh.divinefavor.common.util.UtilNbt
+import aurocosh.divinefavor.common.item.base.ModItem
+import aurocosh.divinefavor.common.lib.extensions.hasKey
+import aurocosh.divinefavor.common.lib.extensions.compound
+import aurocosh.divinefavor.common.lib.extensions.getBlockPos
 import net.minecraft.block.BlockChest
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.init.Blocks
@@ -37,20 +39,19 @@ class ItemStorageGem : ModItem("storage_gem", "storage_gem", ConstGemTabOrder.OT
     }
 
     fun openChest(stack: ItemStack, world: World, playerIn: EntityPlayer): Boolean {
-        if (world.isRemote) {
+        if (world.isRemote)
             return true
-        }
-        val tag = UtilNbt.getNbt(stack)
-        if (!UtilNbt.checkForTags(tag, TAG_POSITION, TAG_DIMENSION))
+        val compound = stack.compound
+        if (!compound.hasKey(TAG_POSITION, TAG_DIMENSION))
             return false
-        val pos = UtilNbt.getBlockPos(tag, TAG_POSITION, BlockPos.ORIGIN)
-        val dimension = tag.getInteger(TAG_DIMENSION)
+        val pos = compound.getBlockPos(TAG_POSITION)
+        val dimension = compound.getInteger(TAG_DIMENSION)
         if (playerIn.dimension != dimension)
             return false
 
-        val ilockablecontainer = getContainer(world, pos) ?: return false
+        val iLockableContainer = getContainer(world, pos) ?: return false
 
-        playerIn.displayGUIChest(StorageGemInventoryWrapper(ilockablecontainer))
+        playerIn.displayGUIChest(StorageGemInventoryWrapper(iLockableContainer))
         playerIn.addStat(StatList.CHEST_OPENED)
         stack.shrink(1)
         return true

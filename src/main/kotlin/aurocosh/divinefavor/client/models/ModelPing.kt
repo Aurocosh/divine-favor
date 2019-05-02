@@ -21,7 +21,7 @@ class ModelPing : ModelBase() {
     }
 
     /**
-     * This is a helper function from Tabula to set the rotation of model parts
+     * This is a helper function from Tabula to setNullable the rotation of model parts
      */
     fun setRotateAngle(modelRenderer: ModelRenderer, x: Float, y: Float, z: Float) {
         modelRenderer.rotateAngleX = x

@@ -5,7 +5,7 @@ import aurocosh.divinefavor.common.config.common.ConfigItem
 import aurocosh.divinefavor.common.constants.ConstMainTabOrder
 import aurocosh.divinefavor.common.item.base.ModItem
 import aurocosh.divinefavor.common.item.common.ModItems
-import aurocosh.divinefavor.common.util.UtilNbt
+import aurocosh.divinefavor.common.lib.extensions.compound
 import aurocosh.divinefavor.common.util.UtilRandom
 import net.minecraft.entity.Entity
 import net.minecraft.entity.EntityLivingBase
@@ -19,18 +19,18 @@ class ItemBoneDagger : ModItem("bone_dagger", "bone_dagger", ConstMainTabOrder.D
         creativeTab = DivineFavor.TAB_MAIN
     }
 
-    override fun onLeftClickEntity(stack: ItemStack?, player: EntityPlayer, entity: Entity?): Boolean {
+    override fun onLeftClickEntity(stack: ItemStack, player: EntityPlayer, entity: Entity?): Boolean {
         if (player.world.isRemote)
             return false
         if (entity !is EntityLivingBase)
             return false
-        val nbt = UtilNbt.getNbt(stack!!)
-        val chance = nbt.getFloat(TAG_AWAKENING_CHANCE)
+        val compound = stack.compound
+        val chance = compound.getFloat(TAG_AWAKENING_CHANCE)
         if (UtilRandom.rollDiceFloat(chance)) {
             stack.shrink(1)
             player.addItemStackToInventory(ItemStack(ModItems.bone_dagger_awakened, 1))
         }
-        nbt.setFloat(TAG_AWAKENING_CHANCE, chance + ConfigItem.boneDagger.awakeningSpeed)
+        compound.setFloat(TAG_AWAKENING_CHANCE, chance + ConfigItem.boneDagger.awakeningSpeed)
         return false
     }
 

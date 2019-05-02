@@ -137,8 +137,8 @@ class TalismanSelectGui : GuiScreen() {
             }
         }
 
-        //        ImmutableSet<KeyBinding> set = ImmutableSet.of(mc.gameSettings.keyBindForward, mc.gameSettings.keyBindLeft, mc.gameSettings.keyBindBack, mc.gameSettings.keyBindRight, mc.gameSettings.keyBindSneak, mc.gameSettings.keyBindSprint, mc.gameSettings.keyBindJump);
-        //        for (KeyBinding k : set)
+        //        ImmutableSet<KeyBinding> setNullable = ImmutableSet.of(mc.gameSettings.keyBindForward, mc.gameSettings.keyBindLeft, mc.gameSettings.keyBindBack, mc.gameSettings.keyBindRight, mc.gameSettings.keyBindSneak, mc.gameSettings.keyBindSprint, mc.gameSettings.keyBindJump);
+        //        for (KeyBinding k : setNullable)
         //            KeyBinding.setKeyBindState(k.getKeyCode(), GameSettings.isKeyDown(k));
     }
 

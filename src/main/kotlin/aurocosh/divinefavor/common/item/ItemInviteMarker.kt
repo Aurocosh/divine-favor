@@ -3,8 +3,9 @@ package aurocosh.divinefavor.common.item
 import aurocosh.divinefavor.DivineFavor
 import aurocosh.divinefavor.common.constants.ConstGemTabOrder
 import aurocosh.divinefavor.common.item.base.ModItem
+import aurocosh.divinefavor.common.lib.extensions.checkForTag
+import aurocosh.divinefavor.common.lib.extensions.compound
 import aurocosh.divinefavor.common.util.UtilEntity
-import aurocosh.divinefavor.common.util.UtilNbt
 import aurocosh.divinefavor.common.util.UtilPlayer
 import net.minecraft.client.resources.I18n
 import net.minecraft.client.util.ITooltipFlag
@@ -44,11 +45,10 @@ class ItemInviteMarker(name: String, private val canTeleportToDimensions: Boolea
             return false
         if (stack.item !is ItemInviteMarker)
             return false
-        if (!UtilNbt.checkForTag(stack, TAG_PLAYER_UUID))
+        if (!stack.checkForTag(TAG_PLAYER_UUID))
             return false
 
-        val nbt = UtilNbt.getNbt(stack)
-        val uuid = UUID.fromString(nbt.getString(TAG_PLAYER_UUID))
+        val uuid = UUID.fromString(stack.compound.getString(TAG_PLAYER_UUID))
         val playerList = world.minecraftServer!!.playerList
         val targetPlayer = playerList.getPlayerByUUID(uuid)
         if (player == null)
@@ -64,9 +64,8 @@ class ItemInviteMarker(name: String, private val canTeleportToDimensions: Boolea
 
     override fun addInformation(stack: ItemStack?, world: World?, tooltip: MutableList<String>?, flag: ITooltipFlag?) {
         super.addInformation(stack!!, world, tooltip!!, flag!!)
-        val compound = UtilNbt.getNbt(stack)
-        if (compound.hasKey(TAG_PLAYER_UUID))
-            tooltip.add(I18n.format("item.divinefavor:contract.player", compound.getString(TAG_PLAYER_UUID)))
+        if (stack.checkForTag(TAG_PLAYER_UUID))
+            tooltip.add(I18n.format("item.divinefavor:contract.player", stack.compound.getString(TAG_PLAYER_UUID)))
     }
 
     companion object {

@@ -5,8 +5,9 @@ import aurocosh.divinefavor.common.entity.projectile.EntitySpellArrow
 import aurocosh.divinefavor.common.item.talismans.arrow.base.ArrowOptions
 import aurocosh.divinefavor.common.item.talismans.arrow.base.ArrowType
 import aurocosh.divinefavor.common.item.talismans.arrow.base.ItemArrowTalisman
+import aurocosh.divinefavor.common.lib.extensions.getVec3d
+import aurocosh.divinefavor.common.lib.extensions.setVec3d
 import aurocosh.divinefavor.common.spirit.base.ModSpirit
-import aurocosh.divinefavor.common.util.UtilNbt
 import net.minecraft.entity.EntityLivingBase
 import net.minecraft.util.EnumFacing
 import net.minecraft.util.math.BlockPos
@@ -16,13 +17,11 @@ import java.util.*
 class ArrowTalismanSniperArrow(name: String, spirit: ModSpirit, favorCost: Int, color: Color, options: EnumSet<ArrowOptions>, arrowType: ArrowType) : ItemArrowTalisman(name, spirit, favorCost, color, 0.0, options, arrowType) {
 
     override fun init(spellArrow: EntitySpellArrow, shooter: EntityLivingBase) {
-        val compound = spellArrow.talismanDataServer
-        UtilNbt.setVec3d(compound, TAG_STARTING_POS, shooter.positionVector)
+        spellArrow.talismanDataServer.setVec3d(TAG_STARTING_POS, shooter.positionVector)
     }
 
     override fun performActionServer(target: EntityLivingBase?, shooter: EntityLivingBase, spellArrow: EntitySpellArrow, blockPos: BlockPos?, sideHit: EnumFacing?): Boolean {
-        val compound = spellArrow.talismanDataServer
-        val startingPosition = UtilNbt.getVec3d(compound, TAG_STARTING_POS)
+        val startingPosition = spellArrow.talismanDataServer.getVec3d(TAG_STARTING_POS)
 
         val distance = startingPosition.distanceTo(spellArrow.positionVector)
         spellArrow.damage = if (distance < ConfigArrow.sniperArrow.minDistance) 0.0 else ConfigArrow.sniperArrow.damagePerMeter * distance

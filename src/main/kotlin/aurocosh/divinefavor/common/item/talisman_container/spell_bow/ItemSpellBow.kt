@@ -8,8 +8,8 @@ import aurocosh.divinefavor.common.item.common.ModItems
 import aurocosh.divinefavor.common.item.talisman_container.spell_bow.capability.SpellBowDataHandler
 import aurocosh.divinefavor.common.item.talisman_container.spell_bow.capability.SpellBowProvider
 import aurocosh.divinefavor.common.item.talisman_container.spell_bow.capability.SpellBowStorage
+import aurocosh.divinefavor.common.lib.extensions.compound
 import aurocosh.divinefavor.common.util.UtilBow
-import aurocosh.divinefavor.common.util.UtilNbt
 import aurocosh.divinefavor.common.util.UtilPlayer
 import net.minecraft.enchantment.EnchantmentHelper
 import net.minecraft.entity.EntityLivingBase
@@ -36,9 +36,8 @@ class ItemSpellBow : ModItem("spell_bow", "spell_bow/spell_bow", ConstMainTabOrd
         creativeTab = DivineFavor.TAB_MAIN
         maxDamage = 384
 
-        addPropertyOverride(ResourceLocation("book_mode")) { stack, world, entityLivingBase ->
-            val nbt = UtilNbt.getNbt(stack)
-            (if (nbt.getBoolean(TAG_IS_IN_BOOK_MODE)) 1 else 0).toFloat()
+        addPropertyOverride(ResourceLocation("book_mode")) { stack, _, _ ->
+            (if (stack.compound.getBoolean(TAG_IS_IN_BOOK_MODE)) 1 else 0).toFloat()
         }
         addPropertyOverride(ResourceLocation("pull")) { stack, world, entityLivingBase ->
             if (entityLivingBase == null)
@@ -56,18 +55,17 @@ class ItemSpellBow : ModItem("spell_bow", "spell_bow/spell_bow", ConstMainTabOrd
     /**
      * Called when the player stops using an Item (stops holding the right mouse button).
      */
-    override fun onPlayerStoppedUsing(bowStack: ItemStack?, world: World?, entityLiving: EntityLivingBase?, timeLeft: Int) {
-        if (UtilNbt.getNbt(bowStack!!).getBoolean(TAG_IS_IN_BOOK_MODE))
+    override fun onPlayerStoppedUsing(bowStack: ItemStack, world: World, entityLiving: EntityLivingBase, timeLeft: Int) {
+        if (bowStack.compound.getBoolean(TAG_IS_IN_BOOK_MODE))
             return
         if (entityLiving !is EntityPlayer)
             return
 
-        val player = entityLiving as EntityPlayer?
-        val unlimitedArrows = player!!.capabilities.isCreativeMode || EnchantmentHelper.getEnchantmentLevel(Enchantments.INFINITY, bowStack) > 0
-        var arrowStack = findAmmo(player)
+        val unlimitedArrows = entityLiving.capabilities.isCreativeMode || EnchantmentHelper.getEnchantmentLevel(Enchantments.INFINITY, bowStack) > 0
+        var arrowStack = findAmmo(entityLiving)
 
         var charge = getMaxItemUseDuration(bowStack) - timeLeft
-        charge = ForgeEventFactory.onArrowLoose(bowStack, world, player, charge, !arrowStack.isEmpty || unlimitedArrows)
+        charge = ForgeEventFactory.onArrowLoose(bowStack, world, entityLiving, charge, !arrowStack.isEmpty || unlimitedArrows)
         if (charge < 0)
             return
         if (arrowStack.isEmpty && !unlimitedArrows)
@@ -80,15 +78,15 @@ class ItemSpellBow : ModItem("spell_bow", "spell_bow/spell_bow", ConstMainTabOrd
         if (velocity.toDouble() < 0.1)
             return
 
-        val stackIsInfinite = player.capabilities.isCreativeMode || arrowStack.item is ItemArrow && (arrowStack.item as ItemArrow).isInfinite(arrowStack, bowStack, player)
-        if (!world!!.isRemote) {
+        val stackIsInfinite = entityLiving.capabilities.isCreativeMode || arrowStack.item is ItemArrow && (arrowStack.item as ItemArrow).isInfinite(arrowStack, bowStack, entityLiving)
+        if (!world.isRemote) {
             val talisman = SpellBowDataHandler.get(bowStack)!!.getSelectedTalisman()
-            val entityArrow: EntityArrow
-            if (talisman != null && talisman.claimCost(world, player))
-                entityArrow = talisman.createArrow(world, talisman, player)
-            else
-                entityArrow = getStandardArrow(world, arrowStack, player)
-            entityArrow.shoot(player, player.rotationPitch, player.rotationYaw, 0.0f, velocity * 3.0f, 1.0f)
+            val entityArrow =
+                    if (talisman != null && talisman.claimCost(world, entityLiving))
+                        talisman.createArrow(world, talisman, entityLiving)
+                    else
+                        getStandardArrow(world, arrowStack, entityLiving)
+            entityArrow.shoot(entityLiving, entityLiving.rotationPitch, entityLiving.rotationYaw, 0.0f, velocity * 3.0f, 1.0f)
 
             if (velocity == 1.0f)
                 entityArrow.isCritical = true
@@ -104,19 +102,19 @@ class ItemSpellBow : ModItem("spell_bow", "spell_bow/spell_bow", ConstMainTabOrd
             if (EnchantmentHelper.getEnchantmentLevel(Enchantments.FLAME, bowStack) > 0)
                 entityArrow.setFire(100)
 
-            bowStack.damageItem(1, player)
+            bowStack.damageItem(1, entityLiving)
 
-            if (stackIsInfinite || player.capabilities.isCreativeMode && (arrowStack.item === Items.SPECTRAL_ARROW || arrowStack.item === Items.TIPPED_ARROW))
+            if (stackIsInfinite || entityLiving.capabilities.isCreativeMode && (arrowStack.item === Items.SPECTRAL_ARROW || arrowStack.item === Items.TIPPED_ARROW))
                 entityArrow.pickupStatus = EntityArrow.PickupStatus.CREATIVE_ONLY
             world.spawnEntity(entityArrow)
             talisman?.postInit(entityArrow)
         }
 
-        world.playSound(null, player.posX, player.posY, player.posZ, SoundEvents.ENTITY_ARROW_SHOOT, SoundCategory.PLAYERS, 1.0f, 1.0f / (Item.itemRand.nextFloat() * 0.4f + 1.2f) + velocity * 0.5f)
+        world.playSound(null, entityLiving.posX, entityLiving.posY, entityLiving.posZ, SoundEvents.ENTITY_ARROW_SHOOT, SoundCategory.PLAYERS, 1.0f, 1.0f / (Item.itemRand.nextFloat() * 0.4f + 1.2f) + velocity * 0.5f)
 
-        if (!stackIsInfinite && !player.capabilities.isCreativeMode)
-            UtilPlayer.damageStack(player, arrowStack)
-        player.addStat(StatList.getObjectUseStats(this)!!)
+        if (!stackIsInfinite && !entityLiving.capabilities.isCreativeMode)
+            UtilPlayer.damageStack(entityLiving, arrowStack)
+        entityLiving.addStat(StatList.getObjectUseStats(this)!!)
     }
 
     private fun getStandardArrow(world: World, arrowStack: ItemStack, shooter: EntityLivingBase): EntityArrow {
@@ -143,20 +141,20 @@ class ItemSpellBow : ModItem("spell_bow", "spell_bow/spell_bow", ConstMainTabOrd
      * Called when the equipped item is right clicked.
      */
     override fun onItemRightClick(worldIn: World?, playerIn: EntityPlayer, handIn: EnumHand): ActionResult<ItemStack> {
-        val itemstack = playerIn.getHeldItem(handIn)
-        if (itemstack.item !is ItemSpellBow)
-            return ActionResult(EnumActionResult.PASS, itemstack)
+        val itemStack = playerIn.getHeldItem(handIn)
+        if (itemStack.item !is ItemSpellBow)
+            return ActionResult(EnumActionResult.PASS, itemStack)
 
-        val nbt = UtilNbt.getNbt(itemstack)
-        val isBook = nbt.getBoolean(TAG_IS_IN_BOOK_MODE)
+        val compound = itemStack.compound
+        val isBook = compound.getBoolean(TAG_IS_IN_BOOK_MODE)
         if (playerIn.isSneaking) {
-            nbt.setBoolean(TAG_IS_IN_BOOK_MODE, !isBook)
-            return ActionResult(EnumActionResult.SUCCESS, itemstack)
+            compound.setBoolean(TAG_IS_IN_BOOK_MODE, !isBook)
+            return ActionResult(EnumActionResult.SUCCESS, itemStack)
         }
         return if (isBook)
-            doBookAction(worldIn, playerIn, itemstack)
+            doBookAction(worldIn, playerIn, itemStack)
         else
-            doBowAction(worldIn, playerIn, handIn, itemstack)
+            doBowAction(worldIn, playerIn, handIn, itemStack)
     }
 
     private fun doBookAction(world: World?, player: EntityPlayer, stack: ItemStack): ActionResult<ItemStack> {
@@ -215,8 +213,8 @@ class ItemSpellBow : ModItem("spell_bow", "spell_bow/spell_bow", ConstMainTabOrd
     }
 
     companion object {
-        val SIZE = 27
-        val TAG_IS_IN_BOOK_MODE = "IsInBookMode"
-        private val TAG_SHARE = "SpellBowShare"
+        const val SIZE = 27
+        const val TAG_IS_IN_BOOK_MODE = "IsInBookMode"
+        private const val TAG_SHARE = "SpellBowShare"
     }
 }

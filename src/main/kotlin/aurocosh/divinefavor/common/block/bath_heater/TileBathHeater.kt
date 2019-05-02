@@ -5,8 +5,11 @@ import aurocosh.divinefavor.common.area.WorldArea
 import aurocosh.divinefavor.common.area.WorldAreaWatcher
 import aurocosh.divinefavor.common.constants.BlockPosConstants
 import aurocosh.divinefavor.common.item.bathing_blend.base.ItemBathingBlend
+import aurocosh.divinefavor.common.item.bathing_blend.base.ItemBathingBlend.Companion.TAG_DURATION
+import aurocosh.divinefavor.common.item.bathing_blend.base.ItemBathingBlend.Companion.TAG_RATE
 import aurocosh.divinefavor.common.lib.LoopedCounter
 import aurocosh.divinefavor.common.lib.extensions.S
+import aurocosh.divinefavor.common.lib.extensions.compound
 import aurocosh.divinefavor.common.lib.extensions.getBlock
 import aurocosh.divinefavor.common.lib.wrapper.ConvertingPredicate
 import aurocosh.divinefavor.common.util.UtilBlock
@@ -253,8 +256,8 @@ class TileBathHeater : TileEntity(), ITickable, IAreaWatcher {
             val stack = blendStackHandler.getStackInSlot(0)
             if (!stack.isEmpty) {
                 activeBlend = stack.item as ItemBathingBlend
-                maxEffectTime = ItemBathingBlend.getDuration(stack)
-                loopedCounter.setTickRate(ItemBathingBlend.getRate(stack))
+                maxEffectTime = stack.compound.getInteger(TAG_DURATION)
+                loopedCounter.setTickRate(stack.compound.getInteger(TAG_RATE))
                 currentEffectTime = maxEffectTime
                 progressEffect = 100
                 stack.shrink(1)

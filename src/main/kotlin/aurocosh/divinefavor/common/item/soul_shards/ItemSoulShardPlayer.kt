@@ -1,8 +1,9 @@
 package aurocosh.divinefavor.common.item.soul_shards
 
 import aurocosh.divinefavor.DivineFavor
+import aurocosh.divinefavor.common.lib.extensions.compound
+import aurocosh.divinefavor.common.lib.extensions.hasKey
 import aurocosh.divinefavor.common.spirit.base.ModSpirit
-import aurocosh.divinefavor.common.util.UtilNbt
 import net.minecraft.client.resources.I18n
 import net.minecraft.client.util.ITooltipFlag
 import net.minecraft.item.EnumRarity
@@ -18,10 +19,9 @@ class ItemSoulShardPlayer(name: String, spirit: ModSpirit) : ItemSoulShard(name,
         return EnumRarity.RARE
     }
 
-    override fun addInformation(stack: ItemStack?, world: World?, tooltip: MutableList<String>?, flag: ITooltipFlag?) {
+    override fun addInformation(stack: ItemStack, world: World?, tooltip: MutableList<String>, flag: ITooltipFlag) {
         super.addInformation(stack, world, tooltip, flag)
-        val compound = UtilNbt.getNbt(stack!!)
-        if (compound.hasKey(NBT_ENTITY_NAME))
-            tooltip!!.add(I18n.format("item.divinefavor:soul_shard.player", compound.getString(NBT_ENTITY_NAME)))
+        if (stack.hasKey(NBT_ENTITY_NAME))
+            tooltip.add(I18n.format("item.divinefavor:soul_shard.player", stack.compound.getString(NBT_ENTITY_NAME)))
     }
 }

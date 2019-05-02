@@ -1,9 +1,8 @@
 package aurocosh.divinefavor.common.entity.rope.base
 
 import aurocosh.divinefavor.common.block.common.ModBlocks
-import aurocosh.divinefavor.common.lib.extensions.S
+import aurocosh.divinefavor.common.lib.extensions.*
 import aurocosh.divinefavor.common.util.UtilEntity
-import aurocosh.divinefavor.common.util.UtilNbt
 import net.minecraft.entity.Entity
 import net.minecraft.entity.MoverType
 import net.minecraft.entity.player.EntityPlayer
@@ -170,7 +169,7 @@ abstract class EntityRopeNodeBase(world: World) : Entity(world) {
         pickUp = nbt.getBoolean(TAG_PICK_UP)
         canExtend = nbt.getBoolean(TAG_CAN_EXTEND)
         despawnTimer = nbt.getInteger(TAG_DESPAWN_TIMER)
-        lightBlock = UtilNbt.getBlockPos(nbt, TAG_LIGHT_BLOCK, null)
+        lightBlock = nbt.fallbackNull(TAG_LIGHT_BLOCK, NBTTagCompound::getBlockPos)
     }
 
     override fun writeEntityToNBT(nbt: NBTTagCompound) {
@@ -181,7 +180,7 @@ abstract class EntityRopeNodeBase(world: World) : Entity(world) {
         nbt.setBoolean(TAG_PICK_UP, pickUp)
         nbt.setBoolean(TAG_CAN_EXTEND, canExtend)
         nbt.setInteger(TAG_DESPAWN_TIMER, despawnTimer)
-        UtilNbt.setBlockPos(nbt, TAG_LIGHT_BLOCK, lightBlock)
+        nbt.setNullable(TAG_LIGHT_BLOCK, NBTTagCompound::setBlockPos, lightBlock)
     }
 
     override fun onEntityUpdate() {
