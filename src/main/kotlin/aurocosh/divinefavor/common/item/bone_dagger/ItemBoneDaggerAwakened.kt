@@ -8,9 +8,9 @@ import aurocosh.divinefavor.common.damage_source.ModDamageSources
 import aurocosh.divinefavor.common.item.base.ModItem
 import aurocosh.divinefavor.common.item.soul_shards.ItemSoulShard
 import aurocosh.divinefavor.common.item.soul_shards.ModSoulShards
+import aurocosh.divinefavor.common.lib.extensions.compound
 import aurocosh.divinefavor.common.potions.base.effect.ModEffect
 import aurocosh.divinefavor.common.potions.common.ModCurses
-import aurocosh.divinefavor.common.util.UtilNbt
 import aurocosh.divinefavor.common.util.UtilRandom
 import net.minecraft.entity.Entity
 import net.minecraft.entity.EntityLiving
@@ -51,14 +51,14 @@ class ItemBoneDaggerAwakened : ModItem("bone_dagger_awakened", "bone_dagger_awak
         return ActionResult.newResult(EnumActionResult.SUCCESS, stack)
     }
 
-    override fun onLeftClickEntity(stack: ItemStack?, player: EntityPlayer, entity: Entity?): Boolean {
+    override fun onLeftClickEntity(stack: ItemStack, player: EntityPlayer, entity: Entity?): Boolean {
         if (player.world.isRemote)
             return false
         if (entity !is EntityLivingBase)
             return false
 
-        val nbt = UtilNbt.getNbt(stack!!)
-        val chance = nbt.getFloat(TAG_SOUL_STEAL_CHANCE)
+        val compound = stack.compound
+        val chance = compound.getFloat(TAG_SOUL_STEAL_CHANCE)
         if (UtilRandom.rollDiceFloat(chance)) {
             val livingBase = entity as EntityLivingBase?
             livingBase!!.addPotionEffect(ModEffect(ModCurses.soul_theft, ConfigItem.awakenedBoneDagger.soulTheftDuration).setIsCurse())
@@ -66,9 +66,9 @@ class ItemBoneDaggerAwakened : ModItem("bone_dagger_awakened", "bone_dagger_awak
             theftData.addThief(player)
             makeSoulShard(livingBase, player)
 
-            nbt.setFloat(TAG_SOUL_STEAL_CHANCE, 0f)
+            compound.setFloat(TAG_SOUL_STEAL_CHANCE, 0f)
         } else
-            nbt.setFloat(TAG_SOUL_STEAL_CHANCE, chance + ConfigItem.awakenedBoneDagger.soulSteelingSpeed)
+            compound.setFloat(TAG_SOUL_STEAL_CHANCE, chance + ConfigItem.awakenedBoneDagger.soulSteelingSpeed)
         return false
     }
 

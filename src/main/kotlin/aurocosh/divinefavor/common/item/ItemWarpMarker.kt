@@ -3,8 +3,10 @@ package aurocosh.divinefavor.common.item
 import aurocosh.divinefavor.DivineFavor
 import aurocosh.divinefavor.common.constants.ConstGemTabOrder
 import aurocosh.divinefavor.common.item.base.ModItem
+import aurocosh.divinefavor.common.lib.extensions.hasKey
+import aurocosh.divinefavor.common.lib.extensions.getBlockPos
+import aurocosh.divinefavor.common.lib.extensions.compound
 import aurocosh.divinefavor.common.util.UtilEntity
-import aurocosh.divinefavor.common.util.UtilNbt
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.item.ItemStack
 import net.minecraft.util.ActionResult
@@ -38,12 +40,12 @@ class ItemWarpMarker(name: String, private val canTeleportToDimensions: Boolean)
             return false
         if (stack.item !is ItemWarpMarker)
             return false
-        val nbt = UtilNbt.getNbt(stack)
-        if (!UtilNbt.checkForTags(nbt, TAG_POSITION, TAG_DIMENSION))
+        val tag = stack.compound
+        if (!tag.hasKey(TAG_POSITION, TAG_DIMENSION))
             return false
 
-        val destination = UtilNbt.getBlockPos(nbt, TAG_POSITION, BlockPos.ORIGIN)
-        val dimension = nbt.getInteger(TAG_DIMENSION)
+        val destination = tag.getBlockPos(TAG_POSITION)
+        val dimension = tag.getInteger(TAG_DIMENSION)
         if (!canTeleportToDimensions && dimension != player.dimension)
             return false
 

@@ -4,7 +4,7 @@ import aurocosh.divinefavor.DivineFavor
 import aurocosh.divinefavor.common.constants.ConstMisc
 import aurocosh.divinefavor.common.item.mystic_architect_stick.ArchitectStickMode
 import aurocosh.divinefavor.common.item.mystic_architect_stick.ItemMysticArchitectStick
-import aurocosh.divinefavor.common.util.UtilNbt
+import aurocosh.divinefavor.common.lib.extensions.compound
 import aurocosh.divinefavor.common.util.UtilPlayer
 import net.minecraft.util.text.TextComponentString
 import net.minecraftforge.client.event.MouseEvent
@@ -32,7 +32,7 @@ object MouseHandler {
         if (stack.isEmpty)
             return
 
-        val compound = UtilNbt.getNbt(stack)
+        val compound = stack.compound
         var mode = compound.getInteger(ItemMysticArchitectStick.TAG_CURRENT_MODE)
         if (dWheel < 0)
             mode--
