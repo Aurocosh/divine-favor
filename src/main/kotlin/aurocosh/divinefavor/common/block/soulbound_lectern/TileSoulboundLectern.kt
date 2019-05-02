@@ -97,8 +97,8 @@ class TileSoulboundLectern : TileEntity(), IMultiblockController {
 
     override fun readFromNBT(compound: NBTTagCompound) {
         super.readFromNBT(compound)
-        _state = SoulboundLecternState.VALUES[compound.getInteger(TAG_STATE_LECTERN)]
-        _gem = SoulboundLecternGem.INDEXER[compound.getInteger(TAG_GEM_LECTERN)]
+        _state = SoulboundLecternState[compound.getInteger(TAG_STATE_LECTERN)]
+        _gem = SoulboundLecternGem[compound.getInteger(TAG_GEM_LECTERN)]
         if (compound.hasKey(TAG_SHARD))
             shardStackHandler.deserializeNBT(compound.getTag(TAG_SHARD) as NBTTagCompound)
     }
@@ -153,8 +153,8 @@ class TileSoulboundLectern : TileEntity(), IMultiblockController {
         val stateIndex = compound.getInteger(TAG_STATE_LECTERN)
         val gemIndex = compound.getInteger(TAG_GEM_LECTERN)
         if (stateIndex != state.ordinal || gemIndex != gem.ordinal) {
-            gem = SoulboundLecternGem.INDEXER[gemIndex]
-            state = SoulboundLecternState.VALUES[stateIndex]
+            gem = SoulboundLecternGem[gemIndex]
+            state = SoulboundLecternState[stateIndex]
             world.markBlockRangeForRenderUpdate(pos, pos)
         }
     }

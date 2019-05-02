@@ -1,6 +1,7 @@
 package aurocosh.divinefavor.common.lib.enums
 
 import aurocosh.divinefavor.common.lib.EnumIndexer
+import aurocosh.divinefavor.common.lib.IIndexedEnum
 
 enum class InventoryIndexes(val value: Int) {
     HotBarStart(0),
@@ -11,7 +12,7 @@ enum class InventoryIndexes(val value: Int) {
     CraftSlotsEnd(39),
     Offhand(40);
 
-    companion object {
-        val indexer = EnumIndexer(values())
+    companion object : IIndexedEnum<InventoryIndexes> {
+        override val indexer: EnumIndexer<InventoryIndexes> = EnumIndexer(values())
     }
 }

@@ -43,7 +43,7 @@ class MinionData<T>(private val minion: T, private val dataManager: EntityDataMa
 
     var mode: MinionMode = MinionMode.Normal
         get() {
-            return MinionMode.INDEXER[dataManager.get(modeParameter)]
+            return MinionMode[dataManager.get(modeParameter)]
         }
         set(value) {
             field = value
@@ -70,7 +70,7 @@ class MinionData<T>(private val minion: T, private val dataManager: EntityDataMa
 
     fun readEntityFromNBT(compound: NBTTagCompound) {
         setOwnerByUUID(compound.getString(TAG_OWNER_UUID))
-        mode = MinionMode.INDEXER[compound.getInteger(TAG_MODE)]
+        mode = MinionMode[compound.getInteger(TAG_MODE)]
     }
 
     fun shouldAttack(entity: EntityLiving?): Boolean {

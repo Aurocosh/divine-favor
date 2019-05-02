@@ -35,12 +35,12 @@ public class DivineFavorJEIPlugin implements IModPlugin {
     private void registerRecipes(IModRegistry registry) {
         registry.handleRecipes(ImmaterialMediumRecipe.class, ImmaterialMediumWrapper::new, IMMATERIAL_MEDIUM_UID);
         registry.addRecipes(ModRecipes.INSTANCE.getRecipes().values(), IMMATERIAL_MEDIUM_UID);
-        registry.addRecipeCatalyst(new ItemStack(ModBlocks.medium_iron), IMMATERIAL_MEDIUM_UID);
-        registry.addRecipeCatalyst(new ItemStack(ModBlocks.medium_gold), IMMATERIAL_MEDIUM_UID);
-        registry.addRecipeCatalyst(new ItemStack(ModBlocks.medium_lapis), IMMATERIAL_MEDIUM_UID);
-        registry.addRecipeCatalyst(new ItemStack(ModBlocks.medium_log), IMMATERIAL_MEDIUM_UID);
-        registry.addRecipeCatalyst(new ItemStack(ModBlocks.medium_obsidian), IMMATERIAL_MEDIUM_UID);
-        registry.addRecipeCatalyst(new ItemStack(ModBlocks.medium_redstone), IMMATERIAL_MEDIUM_UID);
+        registry.addRecipeCatalyst(new ItemStack(ModBlocks.INSTANCE.getMedium_iron()), IMMATERIAL_MEDIUM_UID);
+        registry.addRecipeCatalyst(new ItemStack(ModBlocks.INSTANCE.getMedium_gold()), IMMATERIAL_MEDIUM_UID);
+        registry.addRecipeCatalyst(new ItemStack(ModBlocks.INSTANCE.getMedium_lapis()), IMMATERIAL_MEDIUM_UID);
+        registry.addRecipeCatalyst(new ItemStack(ModBlocks.INSTANCE.getMedium_log()), IMMATERIAL_MEDIUM_UID);
+        registry.addRecipeCatalyst(new ItemStack(ModBlocks.INSTANCE.getMedium_obsidian()), IMMATERIAL_MEDIUM_UID);
+        registry.addRecipeCatalyst(new ItemStack(ModBlocks.INSTANCE.getMedium_redstone()), IMMATERIAL_MEDIUM_UID);
     }
 
     private void registerDescription(IModRegistry registry) {

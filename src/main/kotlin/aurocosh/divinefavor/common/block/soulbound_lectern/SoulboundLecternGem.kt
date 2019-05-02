@@ -1,6 +1,7 @@
 package aurocosh.divinefavor.common.block.soulbound_lectern
 
 import aurocosh.divinefavor.common.lib.EnumIndexer
+import aurocosh.divinefavor.common.lib.IIndexedEnum
 import net.minecraft.util.IStringSerializable
 
 enum class SoulboundLecternGem private constructor(private val value: String) : IStringSerializable {
@@ -19,7 +20,7 @@ enum class SoulboundLecternGem private constructor(private val value: String) : 
         return value
     }
 
-    companion object {
-        val INDEXER = EnumIndexer(values())
+    companion object : IIndexedEnum<SoulboundLecternGem> {
+        override val indexer: EnumIndexer<SoulboundLecternGem> = EnumIndexer(values())
     }
 }

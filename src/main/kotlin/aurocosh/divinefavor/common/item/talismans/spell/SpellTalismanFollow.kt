@@ -24,7 +24,7 @@ class SpellTalismanFollow(name: String, spirit: ModSpirit, favorCost: Int, optio
             val minion = livingBase as IMinion
             val minionData = minion.minionData
             minionData.attackTarget = null
-            minionData.setMode(MinionMode.Follow)
+            minionData.mode = MinionMode.Follow
         }
     }
 
