@@ -18,7 +18,7 @@ public class SpiritOfferingProcessor implements IComponentProcessor {
     @Override
     public void setup(IVariableProvider<String> variables) {
         String spiritName = variables.get("spirit");
-        ModSpirit spirit = ModMappers.spirits.get(new ResourceLocation(spiritName));
+        ModSpirit spirit = ModMappers.INSTANCE.getSpirits().get(new ResourceLocation(spiritName));
         if(spirit == null){
             DivineFavor.logger.error("Spirit not found:" + spiritName);
             return;

@@ -21,7 +21,7 @@ public class AltarsDataSerializer implements INbtSerializer<AltarsData> {
         for (Map.Entry<Integer, Set<BlockPos>> entry : positions.entrySet()) {
             int spiritId = entry.getKey();
             List<BlockPos> altarLocations = new ArrayList<>(entry.getValue());
-            ModSpirit spirit = ModMappers.spirits.get(spiritId);
+            ModSpirit spirit = ModMappers.INSTANCE.getSpirits().get(spiritId);
             int[] posArray = UtilBlockPos.INSTANCE.serialize(altarLocations);
             String spiritName = spirit.getRegistryName().toString();
             altarNbt.setIntArray(spiritName, posArray);
@@ -34,7 +34,7 @@ public class AltarsDataSerializer implements INbtSerializer<AltarsData> {
         if(!nbt.hasKey(TAG_ALTAR_POSITIONS))
             return;
         NBTTagCompound altarNbt = nbt.getCompoundTag(TAG_ALTAR_POSITIONS);
-        List<ModSpirit> spirits = ModMappers.spirits.getValues();
+        List<ModSpirit> spirits = ModMappers.INSTANCE.getSpirits().getValues();
         Map<Integer, Set<BlockPos>> positions = new HashMap<>();
         for (ModSpirit spirit : spirits) {
             String spiritName = spirit.getRegistryName().toString();

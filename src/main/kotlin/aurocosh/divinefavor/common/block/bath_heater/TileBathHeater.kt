@@ -141,7 +141,7 @@ class TileBathHeater : TileEntity(), ITickable, IAreaWatcher {
         maxBurnTime = compound.getInteger(TAG_MAX_BURN_TIME)
         currentBurnTime = compound.getInteger(TAG_CURRENT_BURN_TIME)
         progressBurning = if (maxBurnTime == 0) 0 else currentBurnTime / maxBurnTime
-        state = BathHeaterState.VALUES[compound.getInteger(TAG_STATE_HEATER)]
+        state = BathHeaterState[compound.getInteger(TAG_STATE_HEATER)]
         waterPositions.clear()
         waterPositions.addAll(UtilBlockPos.deserialize(compound.getIntArray(TAG_WATER_POSITIONS)))
         loopedCounter.setTickRate(compound.getInteger(TAG_EFFECT_TICK_RATE))
@@ -199,7 +199,7 @@ class TileBathHeater : TileEntity(), ITickable, IAreaWatcher {
         if (!world.isRemote)
             return
         if (stateIndex != state.ordinal) {
-            state = BathHeaterState.VALUES[stateIndex]
+            state = BathHeaterState[stateIndex]
             world.markBlockRangeForRenderUpdate(pos, pos)
         }
         waterPositions.clear()

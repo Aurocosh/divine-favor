@@ -44,9 +44,9 @@ public class DivineFavorJEIPlugin implements IModPlugin {
     }
 
     private void registerDescription(IModRegistry registry) {
-        for (final ModItem item : ModRegistries.items.getValues())
+        for (final ModItem item : ModRegistries.INSTANCE.getItems().getValues())
             registry.addIngredientInfo(new ItemStack(item, 1, OreDictionary.WILDCARD_VALUE), VanillaTypes.ITEM, item.getDescriptionKey());
-        for (final ModItemBlock itemBlock : ModRegistries.itemBlocks.getValues())
+        for (final ModItemBlock itemBlock : ModRegistries.INSTANCE.getItemBlocks().getValues())
             registry.addIngredientInfo(new ItemStack(itemBlock, 1, OreDictionary.WILDCARD_VALUE), VanillaTypes.ITEM, itemBlock.getDescriptionKey());
     }
 }
