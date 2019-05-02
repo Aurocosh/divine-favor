@@ -7,6 +7,9 @@ import aurocosh.divinefavor.common.item.common.ModItems
 import aurocosh.divinefavor.common.item.talismans.spell.*
 import aurocosh.divinefavor.common.item.talismans.spell.base.*
 import aurocosh.divinefavor.common.item.talismans.spell.sense.*
+import aurocosh.divinefavor.common.lib.extensions.isIce
+import aurocosh.divinefavor.common.lib.extensions.isLava
+import aurocosh.divinefavor.common.lib.extensions.isWater
 import aurocosh.divinefavor.common.potions.common.ModPotions
 import aurocosh.divinefavor.common.spirit.ModSpirits
 import aurocosh.divinefavor.common.util.UtilBlock
@@ -136,8 +139,8 @@ object ModSpellTalismans {
         flood = SpellTalismanFlood("flood", ModSpirits.blizrabi, ConfigSpells.flood.favorCost, SpellOptions.ALL_CAST)
         frost_wave = SpellTalismanFrostWave("frost_wave", ModSpirits.blizrabi, ConfigSpells.frostWave.favorCost, SpellOptions.ALL_CAST)
         gills = SpellTalismanModPotionToggle("gills", ModSpirits.blizrabi, ConfigSpells.gills.favorCost, ModPotions.gills)
-        ice_bubble = SpellTalismanReplacmentBubble("ice_bubble", ModSpirits.blizrabi, ConfigSpells.iceBubble, Blocks.AIR, Blocks.ICE, UtilPredicate.or<Block>({ block: Block -> UtilBlock.isWater(block) }, { block: Block -> UtilBlock.isIce(block) }))
-        ice_carving = SpellTalismanCarving("ice_carving", ModSpirits.blizrabi, ConfigSpells.iceCarving.favorCost, SpellOptions.USE_CAST, Blocks.ICE) { block: Block -> UtilBlock.isWater(block) }
+        ice_bubble = SpellTalismanReplacmentBubble("ice_bubble", ModSpirits.blizrabi, ConfigSpells.iceBubble, Blocks.AIR, Blocks.ICE, UtilPredicate.or(Block::isWater, Block::isIce))
+        ice_carving = SpellTalismanCarving("ice_carving", ModSpirits.blizrabi, ConfigSpells.iceCarving.favorCost, SpellOptions.USE_CAST, Blocks.ICE, Block::isWater)
         ice_surface = SpellTalismanIceSurface("ice_surface", ModSpirits.blizrabi, ConfigSpells.iceSurface.favorCost, SpellOptions.ALL_CAST)
         instant_dive = SpellTalismanModPotionToggle("instant_dive", ModSpirits.blizrabi, ConfigSpells.instandDive.favorCost, ModPotions.instant_dive)
         lake_thawing = SpellTalismanLakeThawing("lake_thawing", ModSpirits.blizrabi, ConfigSpells.lakeThawing.favorCost, SpellOptions.ALL_CAST)
@@ -185,8 +188,8 @@ object ModSpellTalismans {
         infernal_touch = SpellTalismanInfernalTouch("infernal_touch", ModSpirits.neblaze, 1, SpellOptions.USE_CAST)
         molten_skin = SpellTalismanMoltenSkin("molten_skin", ModSpirits.neblaze, ConfigSpells.moltenSkin.favorCost, SpellOptions.ALL_CAST)
         nether_surge = SpellTalismanNetherSurge("nether_surge", ModSpirits.neblaze, ConfigSpells.netherSurge.favorCost, SpellOptions.USE_CAST)
-        obsidian_bubble = SpellTalismanReplacmentBubble("obsidian_bubble", ModSpirits.blizrabi, ConfigSpells.obsidianBubble, Blocks.AIR, Blocks.OBSIDIAN, UtilPredicate.or<Block>({ block: Block -> UtilBlock.isLava(block) }, { block -> block === Blocks.OBSIDIAN }))
-        obsidian_carving = SpellTalismanCarving("obsidian_carving", ModSpirits.blizrabi, ConfigSpells.obsidianCarving.favorCost, SpellOptions.USE_CAST, Blocks.OBSIDIAN) { block: Block -> UtilBlock.isLava(block) }
+        obsidian_bubble = SpellTalismanReplacmentBubble("obsidian_bubble", ModSpirits.blizrabi, ConfigSpells.obsidianBubble, Blocks.AIR, Blocks.OBSIDIAN, UtilPredicate.or(Block::isLava, Blocks.OBSIDIAN::equals))
+        obsidian_carving = SpellTalismanCarving("obsidian_carving", ModSpirits.blizrabi, ConfigSpells.obsidianCarving.favorCost, SpellOptions.USE_CAST, Blocks.OBSIDIAN, Block::isLava)
         piercing_inferno = SpellTalismanPiercingInferno("piercing_inferno", ModSpirits.neblaze, ConfigSpells.piercingInferno.favorCost, SpellOptions.USE_CAST)
         searing_pulse = SpellTalismanSearingPulse("searing_pulse", ModSpirits.neblaze, ConfigSpells.searingPulse.favorCost, SpellOptions.USE_CAST)
         small_fireball_throw = SpellTalismanSmallFireballThrow("small_fireball_throw", ModSpirits.neblaze, ConfigSpells.smallFireballThrow.favorCost, SpellOptions.ALL_CAST)

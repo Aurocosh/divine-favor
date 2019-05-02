@@ -180,20 +180,4 @@ object UtilBlock {
         val shift = facing.directionVec
         return ignite(player, world, pos.add(shift))
     }
-
-    fun isWater(block: Block): Boolean {
-        return block === Blocks.WATER || block === Blocks.FLOWING_WATER
-    }
-
-    fun isIce(block: Block): Boolean {
-        return block === Blocks.ICE || block === Blocks.PACKED_ICE || block === Blocks.FROSTED_ICE
-    }
-
-    fun isLava(block: Block): Boolean {
-        return block === Blocks.LAVA || block === Blocks.FLOWING_LAVA
-    }
-
-    fun isLiquid(block: Block): Boolean {
-        return block is BlockStaticLiquid || block is BlockDynamicLiquid
-    }
 }

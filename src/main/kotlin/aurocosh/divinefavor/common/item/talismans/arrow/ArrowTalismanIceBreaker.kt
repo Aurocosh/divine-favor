@@ -6,10 +6,12 @@ import aurocosh.divinefavor.common.item.talismans.arrow.base.ArrowOptions
 import aurocosh.divinefavor.common.item.talismans.arrow.base.ArrowType
 import aurocosh.divinefavor.common.item.talismans.arrow.base.ItemArrowTalisman
 import aurocosh.divinefavor.common.lib.extensions.getBlock
+import aurocosh.divinefavor.common.lib.extensions.isIce
 import aurocosh.divinefavor.common.lib.wrapper.ConvertingPredicate
 import aurocosh.divinefavor.common.spirit.base.ModSpirit
 import aurocosh.divinefavor.common.util.UtilBlock
 import aurocosh.divinefavor.common.util.UtilCoordinates
+import net.minecraft.block.Block
 import net.minecraft.entity.EntityLivingBase
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.item.ItemStack
@@ -25,7 +27,7 @@ class ArrowTalismanIceBreaker(name: String, spirit: ModSpirit, favorCost: Int, c
             return true;
 
         val world = spellArrow.world
-        val predicate = ConvertingPredicate(world::getBlock, UtilBlock::isIce)
+        val predicate = ConvertingPredicate(world::getBlock, Block::isIce)
         val posList = UtilCoordinates.floodFill(listOf(blockPos), BlockPosConstants.DIRECT_AND_DIAGONAL, predicate::invoke, limit)
 
         for (pos in posList)

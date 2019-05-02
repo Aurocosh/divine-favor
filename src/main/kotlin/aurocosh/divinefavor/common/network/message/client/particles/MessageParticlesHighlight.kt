@@ -5,6 +5,10 @@ import aurocosh.divinefavor.common.config.common.ConfigGeneral
 import aurocosh.divinefavor.common.item.talismans.spell.sense.BlockHighlighter
 import aurocosh.divinefavor.common.item.talismans.spell.sense.SenseBlockPredicate
 import aurocosh.divinefavor.common.lib.extensions.getBlock
+import aurocosh.divinefavor.common.lib.extensions.isLava
+import aurocosh.divinefavor.common.lib.extensions.isLiquid
+import aurocosh.divinefavor.common.lib.extensions.isWater
+import aurocosh.divinefavor.common.lib.wrapper.ConvertingPredicate
 import aurocosh.divinefavor.common.network.base.WrappedClientMessage
 import aurocosh.divinefavor.common.util.UtilBlock
 import net.minecraft.block.Block
@@ -64,10 +68,10 @@ abstract class MessageParticlesHighlight : WrappedClientMessage {
                 val block = Block.getBlockFromName(blockName)
                 return if (block == null) { _ -> false } else { pos -> world.getBlock(pos) === block }
             }
-            SenseBlockPredicate.WATER -> return { pos -> UtilBlock.isWater(world.getBlockState(pos).block) }
-            SenseBlockPredicate.LAVA -> return { pos -> UtilBlock.isLava(world.getBlockState(pos).block) }
-            SenseBlockPredicate.LIQUID -> return { pos -> UtilBlock.isLiquid(world.getBlockState(pos).block) }
-            SenseBlockPredicate.ORE -> return { pos -> ConfigGeneral.ORE_BLOCKS.contains(world.getBlockState(pos).block) }
+            SenseBlockPredicate.WATER -> return ConvertingPredicate(world::getBlock, Block::isWater)::invoke
+            SenseBlockPredicate.LAVA -> return ConvertingPredicate(world::getBlock, Block::isLava)::invoke
+            SenseBlockPredicate.LIQUID -> return ConvertingPredicate(world::getBlock, Block::isLiquid)::invoke
+            SenseBlockPredicate.ORE -> return ConvertingPredicate(world::getBlock, ConfigGeneral.ORE_BLOCKS::contains)::invoke
             SenseBlockPredicate.AIR -> return world::isAirBlock
         }
     }
