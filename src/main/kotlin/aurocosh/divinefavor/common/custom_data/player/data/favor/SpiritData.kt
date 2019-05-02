@@ -108,8 +108,7 @@ class SpiritData {
     }
 
     fun refreshContracts() {
-        for (spiritStatus in spiritStatuses)
-            spiritStatus.reset()
+        spiritStatuses.forEach(SpiritStatus::reset)
 
         for (i in contractsStackHandlers.indices) {
             val status = spiritStatuses[i]
@@ -118,6 +117,7 @@ class SpiritData {
                     .filter(ItemStack::isNotEmpty)
                     .map(this::getContractsFromStack)
                     .flatten()
+                    .map(ItemStack::getItem)
                     .filterIsInstance<ItemFavorContract>()
                     .forEach(status::addStats)
         }

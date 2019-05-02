@@ -41,8 +41,8 @@ class EntityRopeGuideNode(world: World) : EntityRopeNodeBase(world), IClimbable 
         return ConfigRope.guideRope.climbingSpeed
     }
 
-    override fun canClimb(entityIn: Entity): Boolean {
-        return entityIn.getDistanceSq(this) <= climbingDistanceSq
+    override fun canClimb(entity: Entity): Boolean {
+        return entity.getDistanceSq(this) <= climbingDistanceSq
     }
 
     companion object {

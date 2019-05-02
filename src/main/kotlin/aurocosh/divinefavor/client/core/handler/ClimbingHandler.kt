@@ -32,6 +32,6 @@ object ClimbingHandler {
         val climbable = entities.filterIsInstance<IClimbable>().firstOrNull { it.canClimb(player) } ?: return
 
         val direction = player.lookVec.scale(player.movementInput.moveForward.toDouble())
-        UtilEntity.setVelocity(player, direction, climbable.climbingSpeed)
+        UtilEntity.setVelocity(player, direction, climbable.getClimbingSpeed())
     }
 }
