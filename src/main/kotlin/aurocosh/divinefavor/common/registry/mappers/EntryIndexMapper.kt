@@ -7,8 +7,11 @@ import net.minecraftforge.registries.IForgeRegistryEntry
 import java.util.*
 
 class EntryIndexMapper<T> where T : IForgeRegistryEntry<*>, T : IIndexedEntry {
-    private val values: ArrayList<T> = ArrayList()
-    private val names: MutableMap<ResourceLocation, T> = HashMap()
+    val values: ArrayList<T> = ArrayList()
+
+    private val _names: MutableMap<ResourceLocation, T> = HashMap()
+    val names: Map<ResourceLocation, T>
+        get() = _names
 
     val nameMap: Map<ResourceLocation, T>
         get() = Collections.unmodifiableMap(names)
@@ -28,7 +31,7 @@ class EntryIndexMapper<T> where T : IForgeRegistryEntry<*>, T : IIndexedEntry {
     fun register(value: T): Int {
         val id = values.size
         values.add(value)
-        names[value.registryName!!] = value
+        _names[value.registryName!!] = value
         return id
     }
 }
