@@ -1,16 +1,16 @@
 package aurocosh.divinefavor.common.potions.potions
 
 import aurocosh.divinefavor.common.config.common.ConfigSpells
+import aurocosh.divinefavor.common.lib.extensions.getBlock
+import aurocosh.divinefavor.common.lib.extensions.isLiquid
 import aurocosh.divinefavor.common.potions.base.potion.ModPotionToggle
-import aurocosh.divinefavor.common.util.UtilBlock
 import net.minecraft.entity.EntityLivingBase
 
 class PotionExtremeBuoyancy : ModPotionToggle("extreme_buoyancy", true, 0x7FB8A4) {
 
     override fun performEffect(livingBase: EntityLivingBase, amplifier: Int) {
         val pos = livingBase.position
-
-        if (!UtilBlock.isLiquid(livingBase.world.getBlockState(pos).block))
+        if (!livingBase.world.getBlock(pos).isLiquid())
             return
         if (livingBase.isSneaking)
             return

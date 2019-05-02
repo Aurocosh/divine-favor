@@ -6,12 +6,14 @@ import aurocosh.divinefavor.common.item.talismans.spell.base.ItemSpellTalisman
 import aurocosh.divinefavor.common.item.talismans.spell.base.SpellOptions
 import aurocosh.divinefavor.common.item.talismans.spell.base.TalismanContext
 import aurocosh.divinefavor.common.lib.extensions.getBlock
+import aurocosh.divinefavor.common.lib.extensions.isIce
 import aurocosh.divinefavor.common.lib.wrapper.AreaPredicate
 import aurocosh.divinefavor.common.lib.wrapper.ConvertingPredicate
 import aurocosh.divinefavor.common.spirit.base.ModSpirit
 import aurocosh.divinefavor.common.util.UtilBlock
 import aurocosh.divinefavor.common.util.UtilCoordinates
 import aurocosh.divinefavor.common.util.UtilPredicate
+import net.minecraft.block.Block
 import net.minecraft.init.Blocks
 import java.util.*
 
@@ -20,7 +22,7 @@ class SpellTalismanLakeThawing(name: String, spirit: ModSpirit, favorCost: Int, 
     override fun performActionServer(context: TalismanContext) {
         val world = context.world
 
-        val icePredicate = ConvertingPredicate(world::getBlock, UtilBlock::isIce)
+        val icePredicate = ConvertingPredicate(world::getBlock, Block::isIce)
         val neighbours = BlockPosConstants.HORIZONTAL_DIRECT.asSequence().plus(BlockPosConstants.DOWN).toList()
         val airPredicate = AreaPredicate(world::getBlock, { block -> block !== Blocks.AIR }, neighbours, neighbours.size)
 

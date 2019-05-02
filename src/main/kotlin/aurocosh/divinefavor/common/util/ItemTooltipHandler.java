@@ -39,7 +39,7 @@ public class ItemTooltipHandler {
      */
     public static List<String> splitTooltip(String tooltip, int indent) {
         String indentStr = new String(new char[indent]).replace('\0', ' ');
-        List<String> lines = new ArrayList<String>();
+        List<String> lines = new ArrayList<>();
         String[] splits = tooltip.split("\\\\n");
         for (int i = 0; i < splits.length; i++) {
             splits[i] = indentStr + splits[i];
