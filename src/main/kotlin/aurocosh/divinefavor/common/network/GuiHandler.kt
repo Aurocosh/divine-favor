@@ -66,7 +66,7 @@ class GuiHandler : IGuiHandler {
             ConstGuiIDs.SOULBOUND_LECTERN_ACTIVE -> return ContainerSoulboundLecternActive(player, (world.getTileEntity(BlockPos(x, y, z)) as TileSoulboundLectern?)!!)
             ConstGuiIDs.SOULBOUND_LECTERN_WITH_SHARD -> return ContainerSoulboundLecternWithShard(player, (world.getTileEntity(BlockPos(x, y, z)) as TileSoulboundLectern?)!!)
             ConstGuiIDs.SOULBOUND_LECTERN_EMPTY -> return ContainerSoulboundLecternEmpty(player, (world.getTileEntity(BlockPos(x, y, z)) as TileSoulboundLectern?)!!)
-            ConstGuiIDs.BATH_HEATER -> return ContainerBathHeater(player, world.getTileEntity(BlockPos(x, y, z)) as TileBathHeater?)
+            ConstGuiIDs.BATH_HEATER -> return ContainerBathHeater(player, world.getTileEntity(BlockPos(x, y, z)) as TileBathHeater)
         }
         return null
     }

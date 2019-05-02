@@ -7,7 +7,6 @@ import aurocosh.divinefavor.common.util.UtilCoordinates
 import net.minecraft.entity.player.EntityPlayerMP
 
 class MessageConnectRopeNode : WrappedServerMessage() {
-
     override fun handleSafe(player: EntityPlayerMP) {
         val boundingBox = UtilCoordinates.getBoundingBox(player.position, 32.0)
         val connectedNodes = player.world.getEntitiesWithinAABB(EntityRopeExplosiveNode::class.java, boundingBox) { rope -> rope != null && rope.nextNodeByUUID === player }

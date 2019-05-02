@@ -16,7 +16,7 @@ public class SpotlightIntegrationProcessor implements IComponentProcessor {
     @Override
     public void setup(IVariableProvider<String> variables) {
         String itemName = variables.get("item");
-        item = ModRegistries.items.getValue(new ResourceLocation(itemName));
+        item = ModRegistries.INSTANCE.getItems().getValue(new ResourceLocation(itemName));
         if (item == null) {
             DivineFavor.logger.error("Item not found:" + itemName);
             return;

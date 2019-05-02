@@ -28,7 +28,7 @@ public class AltarsData {
         if(!positionsInverse.containsKey(pos))
             return;
         int spiritId = positionsInverse.get(pos);
-        ModSpirit spirit = ModMappers.spirits.get(spiritId);
+        ModSpirit spirit = ModMappers.INSTANCE.getSpirits().get(spiritId);
         removeAltarLocation(spirit, pos);
     }
 

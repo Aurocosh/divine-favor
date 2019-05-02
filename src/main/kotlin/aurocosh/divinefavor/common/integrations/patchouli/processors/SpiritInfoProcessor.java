@@ -17,7 +17,7 @@ public class SpiritInfoProcessor implements IComponentProcessor {
     public void setup(IVariableProvider<String> variables) {
         String name = variables.get("spirit");
         ResourceLocation spiritId = new ResourceLocation(name);
-        this.spirit = ModRegistries.spirits.getValue(spiritId);
+        this.spirit = ModRegistries.INSTANCE.getSpirits().getValue(spiritId);
         if (this.spirit == null)
             DivineFavor.logger.error("Spirit not found:" + name);
 
