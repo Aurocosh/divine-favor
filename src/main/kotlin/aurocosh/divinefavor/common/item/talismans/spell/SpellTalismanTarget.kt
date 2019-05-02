@@ -29,7 +29,7 @@ class SpellTalismanTarget(name: String, spirit: ModSpirit, favorCost: Int, optio
             val minion = entity as IMinion
             val minionData = minion.minionData
             minionData.attackTarget = context.target
-            minionData.setMode(MinionMode.Normal)
+            minionData.mode = MinionMode.Normal
         }
     }
 

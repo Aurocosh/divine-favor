@@ -3,11 +3,10 @@ package aurocosh.divinefavor.common.entity.ai
 import aurocosh.divinefavor.common.entity.minions.base.IMinion
 import net.minecraft.entity.EntityLiving
 import net.minecraft.entity.ai.EntityAIBase
-import java.util.function.BooleanSupplier
 
 class EntityAIMinionWait<T>
 /** If the EntityTameable is sitting.  */
-(private val minion: T, private val shouldWait: BooleanSupplier) : EntityAIBase() where T : EntityLiving, T : IMinion {
+(private val minion: T, private val shouldWait: () -> Boolean) : EntityAIBase() where T : EntityLiving, T : IMinion {
 
     init {
         mutexBits = 5
@@ -23,7 +22,7 @@ class EntityAIMinionWait<T>
             return false
         else if (!minion.onGround)
             return false
-        return shouldWait.asBoolean
+        return shouldWait.invoke()
     }
 
     /**
@@ -34,6 +33,6 @@ class EntityAIMinionWait<T>
     }
 
     override fun shouldContinueExecuting(): Boolean {
-        return shouldWait.asBoolean
+        return shouldWait.invoke()
     }
 }

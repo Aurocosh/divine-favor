@@ -1,6 +1,7 @@
 package aurocosh.divinefavor.common.item.talismans.spell.sense
 
 import aurocosh.divinefavor.common.lib.EnumIndexer
+import aurocosh.divinefavor.common.lib.IIndexedEnum
 import aurocosh.divinefavor.common.lib.interfaces.IndexedEnum
 
 enum class SenseBlockPredicate(private val index: Int) : IndexedEnum<SenseBlockPredicate> {
@@ -15,7 +16,7 @@ enum class SenseBlockPredicate(private val index: Int) : IndexedEnum<SenseBlockP
         return index
     }
 
-    companion object {
-        val INDEXER = EnumIndexer(values())
+    companion object : IIndexedEnum<SenseBlockPredicate> {
+        override val indexer: EnumIndexer<SenseBlockPredicate> = EnumIndexer(values())
     }
 }

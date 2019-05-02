@@ -13,19 +13,16 @@ import net.minecraft.pathfinding.PathNavigateGround
 import net.minecraft.pathfinding.PathNodeType
 import net.minecraft.util.math.BlockPos
 import net.minecraft.world.World
-import java.util.function.BooleanSupplier
 
-class EntityAIFollowOwner<T>(private val minion: T, private val followSpeed: Double, private val minDist: Float, private val maxDist: Float, private val teleportIfTooFar: Boolean, private val shouldFollow: BooleanSupplier) : EntityAIBase() where T : IMinion, T : EntityLiving {
-    private val petPathfinder: PathNavigate
+class EntityAIFollowOwner<T>(private val minion: T, private val followSpeed: Double, private val minDist: Float, private val maxDist: Float, private val teleportIfTooFar: Boolean, private val shouldFollow: () -> Boolean) : EntityAIBase() where T : IMinion, T : EntityLiving {
+    private val petPathfinder: PathNavigate = minion.navigator
 
     private var owner: EntityLivingBase? = null
-    private val world: World
+    private val world: World = minion.world
     private var oldWaterCost: Float = 0.toFloat()
     private var timeToRecalcPath: Int = 0
 
     init {
-        world = minion.world
-        petPathfinder = minion.navigator
         mutexBits = 3
 
         if (minion.navigator !is PathNavigateGround)
@@ -43,7 +40,7 @@ class EntityAIFollowOwner<T>(private val minion: T, private val followSpeed: Dou
             return false
         else if (minion.getDistanceSq(livingBase) < minDist * minDist)
             return false
-        else if (!shouldFollow.asBoolean)
+        else if (!shouldFollow.invoke())
             return false
         owner = livingBase
         return true
@@ -53,7 +50,7 @@ class EntityAIFollowOwner<T>(private val minion: T, private val followSpeed: Dou
      * Returns whether an in-progress EntityAIBase should continue executing
      */
     override fun shouldContinueExecuting(): Boolean {
-        return !petPathfinder.noPath() && minion.getDistanceSq(owner!!) > maxDist * maxDist && shouldFollow.asBoolean
+        return !petPathfinder.noPath() && minion.getDistanceSq(owner!!) > maxDist * maxDist && shouldFollow.invoke()
     }
 
     /**

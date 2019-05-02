@@ -1,6 +1,7 @@
 package aurocosh.divinefavor.common.item.talismans.arrow.base
 
 import aurocosh.divinefavor.common.lib.EnumIndexer
+import aurocosh.divinefavor.common.lib.IIndexedEnum
 import aurocosh.divinefavor.common.lib.interfaces.IndexedEnum
 
 enum class GravityType private constructor(private val index: Int) : IndexedEnum<GravityType> {
@@ -12,7 +13,7 @@ enum class GravityType private constructor(private val index: Int) : IndexedEnum
         return index
     }
 
-    companion object {
-        val INDEXER = EnumIndexer(values())
+    companion object : IIndexedEnum<GravityType> {
+        override val indexer: EnumIndexer<GravityType> = EnumIndexer(values())
     }
 }
