@@ -8,6 +8,7 @@ import aurocosh.divinefavor.common.network.message.client.particles.*;
 import aurocosh.divinefavor.common.network.message.client.spirit_data.MessageSyncAllSpiritData;
 import aurocosh.divinefavor.common.network.message.client.spirit_data.MessageSyncContracts;
 import aurocosh.divinefavor.common.network.message.client.spirit_data.MessageSyncFavor;
+import aurocosh.divinefavor.common.network.message.client.spirit_data.MessageSyncFavorInfinite;
 import aurocosh.divinefavor.common.network.message.client.syncing.*;
 import aurocosh.divinefavor.common.network.message.sever.MessageSyncTalismanContainerSlot;
 import aurocosh.divinefavor.common.network.message.sever.petrification.MessagePetrificationCure;
@@ -27,6 +28,7 @@ public class MessageRegister {
         NetworkHandler.register(MessageParticlesWinterBreath.class, Side.CLIENT);
 
         NetworkHandler.register(MessageSyncAllSpiritData.class, Side.CLIENT);
+        NetworkHandler.register(MessageSyncFavorInfinite.class, Side.CLIENT);
         NetworkHandler.register(MessageSyncContracts.class, Side.CLIENT);
         NetworkHandler.register(MessageSyncFavor.class, Side.CLIENT);
 

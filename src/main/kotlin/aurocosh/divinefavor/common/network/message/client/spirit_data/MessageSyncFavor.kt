@@ -1,8 +1,8 @@
 package aurocosh.divinefavor.common.network.message.client.spirit_data
 
 import aurocosh.divinefavor.DivineFavor
-import aurocosh.divinefavor.common.custom_data.player.PlayerData
 import aurocosh.divinefavor.common.custom_data.player.data.favor.SpiritData
+import aurocosh.divinefavor.common.lib.extensions.divinePlayerData
 import aurocosh.divinefavor.common.network.base.WrappedClientMessage
 import aurocosh.divinefavor.common.spirit.base.ModSpirit
 import net.minecraftforge.fml.relauncher.Side
@@ -22,7 +22,6 @@ class MessageSyncFavor : WrappedClientMessage {
     @SideOnly(Side.CLIENT)
     override fun handleSafe() {
         val player = DivineFavor.proxy.clientPlayer
-        val spiritData = PlayerData[player]!!.spiritData
-        spiritData.setFavor(spiritId, favor)
+        player.divinePlayerData.spiritData.setFavor(spiritId, favor)
     }
 }

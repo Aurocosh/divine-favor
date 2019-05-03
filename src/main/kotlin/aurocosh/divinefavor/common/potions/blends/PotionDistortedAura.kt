@@ -5,7 +5,7 @@ import aurocosh.divinefavor.common.config.common.ConfigPresence
 import aurocosh.divinefavor.common.constants.ConstMisc
 import aurocosh.divinefavor.common.item.ItemBlockEnderPumpkin
 import aurocosh.divinefavor.common.lib.LoopedCounter
-import aurocosh.divinefavor.common.lib.extensions.divineCustomData
+import aurocosh.divinefavor.common.lib.extensions.divinePlayerData
 import aurocosh.divinefavor.common.potions.base.effect.ModEffect
 import aurocosh.divinefavor.common.potions.base.potion.ModPotion
 import aurocosh.divinefavor.common.potions.common.ModBlendEffects
@@ -26,7 +26,7 @@ class PotionDistortedAura : ModPotion("distorted_aura", true, 0x7FB8A4) {
     override fun onPotionAdded(livingBase: EntityLivingBase) {
         super.onPotionAdded(livingBase)
         if (livingBase is EntityPlayer)
-            livingBase.divineCustomData.distortedAuraData.reset()
+            livingBase.divinePlayerData.distortedAuraData.reset()
     }
 
     override fun performEffect(livingBase: EntityLivingBase, amplifier: Int) {
@@ -48,7 +48,7 @@ class PotionDistortedAura : ModPotion("distorted_aura", true, 0x7FB8A4) {
         if (endermanList.isEmpty())
             return
 
-        if (livingBase.divineCustomData.distortedAuraData.tryLuck()) {
+        if (livingBase.divinePlayerData.distortedAuraData.tryLuck()) {
             livingBase.removePotionEffect(ModBlendEffects.distorted_aura)
             livingBase.addPotionEffect(ModEffect(ModBlessings.warping_presence, ConfigPresence.warpingPresence.duration))
         }

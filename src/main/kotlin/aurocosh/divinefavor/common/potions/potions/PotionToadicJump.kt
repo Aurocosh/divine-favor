@@ -2,7 +2,7 @@ package aurocosh.divinefavor.common.potions.potions
 
 import aurocosh.divinefavor.common.config.common.ConfigSpells
 import aurocosh.divinefavor.common.constants.ConstMisc
-import aurocosh.divinefavor.common.lib.extensions.divineCustomData
+import aurocosh.divinefavor.common.lib.extensions.divinePlayerData
 import aurocosh.divinefavor.common.network.message.client.spirit_data.MessageSyncFavor
 import aurocosh.divinefavor.common.potions.base.potion.ModPotionToggleLimited
 import aurocosh.divinefavor.common.potions.common.ModPotions
@@ -29,7 +29,7 @@ class PotionToadicJump : ModPotionToggleLimited("toadic_jump", true, 0x7FB8A4) {
             if (entity.world.isRemote)
                 return
 
-            val spiritData = entity.divineCustomData.spiritData
+            val spiritData = entity.divinePlayerData.spiritData
             val talisman = ModPotions.toadic_jump.talisman
             val spirit = talisman.spirit
             if (spiritData.consumeFavor(spirit.id, talisman.favorCost))

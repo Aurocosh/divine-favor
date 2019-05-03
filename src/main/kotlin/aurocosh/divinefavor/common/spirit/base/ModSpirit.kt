@@ -6,7 +6,7 @@ import aurocosh.divinefavor.common.constants.ConstResources
 import aurocosh.divinefavor.common.core.ResourceNamer
 import aurocosh.divinefavor.common.global.dayClock.DayClock
 import aurocosh.divinefavor.common.lib.TimePeriod
-import aurocosh.divinefavor.common.lib.extensions.divineCustomData
+import aurocosh.divinefavor.common.lib.extensions.divinePlayerData
 import aurocosh.divinefavor.common.lib.interfaces.IIndexedEntry
 import aurocosh.divinefavor.common.network.message.client.activity.MessageSpiritBecameActive
 import aurocosh.divinefavor.common.network.message.client.activity.MessageSpiritBecameInactive
@@ -71,14 +71,14 @@ class ModSpirit(val name: String, val punishment: SpiritPunishment, config: Spir
 
     private fun regenerateFavor(playerList: List<EntityPlayerMP>) {
         for (player in playerList) {
-            val spiritData = player.divineCustomData.spiritData
+            val spiritData = player.divinePlayerData.spiritData
             if (spiritData.regenerateFavor(id))
                 MessageSyncFavor(this, spiritData).sendTo(player)
         }
     }
 
     private fun informActivity(playerList: List<EntityPlayerMP>) {
-        for (player in playerList) if (player.divineCustomData.spiritData.isInform(id))
+        for (player in playerList) if (player.divinePlayerData.spiritData.isInform(id))
             MessageSpiritBecameActive(id).sendTo(player)
     }
 
@@ -92,7 +92,7 @@ class ModSpirit(val name: String, val punishment: SpiritPunishment, config: Spir
     }
 
     private fun informInactivity(playerList: List<EntityPlayerMP>) {
-        for (player in playerList) if (player.divineCustomData.spiritData.isInform(id))
+        for (player in playerList) if (player.divinePlayerData.spiritData.isInform(id))
             MessageSpiritBecameInactive(id).sendTo(player)
     }
 

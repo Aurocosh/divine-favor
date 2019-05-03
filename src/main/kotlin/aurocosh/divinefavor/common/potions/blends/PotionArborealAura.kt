@@ -2,7 +2,7 @@ package aurocosh.divinefavor.common.potions.blends
 
 import aurocosh.divinefavor.common.config.common.ConfigPresence
 import aurocosh.divinefavor.common.constants.ConstMisc
-import aurocosh.divinefavor.common.lib.extensions.divineCustomData
+import aurocosh.divinefavor.common.lib.extensions.divinePlayerData
 import aurocosh.divinefavor.common.potions.base.effect.ModEffect
 import aurocosh.divinefavor.common.potions.base.potion.ModPotion
 import aurocosh.divinefavor.common.potions.common.ModBlendEffects
@@ -22,7 +22,7 @@ class PotionArborealAura : ModPotion("arboreal_aura", true, 0x7FB8A4) {
     override fun onPotionAdded(livingBase: EntityLivingBase) {
         super.onPotionAdded(livingBase)
         if (livingBase is EntityPlayer)
-            livingBase.divineCustomData.arborealAuraData.reset()
+            livingBase.divinePlayerData.arborealAuraData.reset()
     }
 
     companion object {
@@ -37,7 +37,7 @@ class PotionArborealAura : ModPotion("arboreal_aura", true, 0x7FB8A4) {
                 return
             if (!ModSpirits.timber.isActive)
                 return
-            val auraData = player.divineCustomData.arborealAuraData
+            val auraData = player.divinePlayerData.arborealAuraData
             if (auraData.count()) {
                 player.removePotionEffect(ModBlendEffects.arboreal_aura)
                 player.addPotionEffect(ModEffect(ModBlessings.towering_presence, ConfigPresence.toweringPresence.duration))

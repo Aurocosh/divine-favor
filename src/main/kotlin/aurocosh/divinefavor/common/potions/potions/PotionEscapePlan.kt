@@ -1,7 +1,7 @@
 package aurocosh.divinefavor.common.potions.potions
 
 import aurocosh.divinefavor.common.constants.ConstMisc
-import aurocosh.divinefavor.common.lib.extensions.divineCustomData
+import aurocosh.divinefavor.common.lib.extensions.divinePlayerData
 import aurocosh.divinefavor.common.potions.base.potion.ModPotion
 import aurocosh.divinefavor.common.potions.common.ModPotions
 import aurocosh.divinefavor.common.util.UtilEntity
@@ -27,7 +27,7 @@ class PotionEscapePlan : ModPotion("escape_plan", true, 0x7FB8A4) {
             if (!entity.isPotionActive(ModPotions.escape_plan))
                 return
 
-            val pos = entity.divineCustomData.escapePlanData.globalPosition ?: return
+            val pos = entity.divinePlayerData.escapePlanData.globalPosition ?: return
             UtilEntity.teleport(entity, pos)
             entity.removePotionEffect(ModPotions.escape_plan)
         }

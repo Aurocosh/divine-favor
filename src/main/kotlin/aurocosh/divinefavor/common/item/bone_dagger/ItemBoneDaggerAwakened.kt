@@ -3,12 +3,12 @@ package aurocosh.divinefavor.common.item.bone_dagger
 import aurocosh.divinefavor.DivineFavor
 import aurocosh.divinefavor.common.config.common.ConfigItem
 import aurocosh.divinefavor.common.constants.ConstMainTabOrder
-import aurocosh.divinefavor.common.custom_data.living.LivingData
 import aurocosh.divinefavor.common.damage_source.ModDamageSources
 import aurocosh.divinefavor.common.item.base.ModItem
 import aurocosh.divinefavor.common.item.soul_shards.ItemSoulShard
 import aurocosh.divinefavor.common.item.soul_shards.ModSoulShards
 import aurocosh.divinefavor.common.lib.extensions.compound
+import aurocosh.divinefavor.common.lib.extensions.divineLivingData
 import aurocosh.divinefavor.common.potions.base.effect.ModEffect
 import aurocosh.divinefavor.common.potions.common.ModCurses
 import aurocosh.divinefavor.common.util.UtilRandom
@@ -62,7 +62,7 @@ class ItemBoneDaggerAwakened : ModItem("bone_dagger_awakened", "bone_dagger_awak
         if (UtilRandom.rollDiceFloat(chance)) {
             val livingBase = entity as EntityLivingBase?
             livingBase!!.addPotionEffect(ModEffect(ModCurses.soul_theft, ConfigItem.awakenedBoneDagger.soulTheftDuration).setIsCurse())
-            val theftData = LivingData.get(livingBase).soulTheftData
+            val theftData = livingBase.divineLivingData.soulTheftData
             theftData.addThief(player)
             makeSoulShard(livingBase, player)
 

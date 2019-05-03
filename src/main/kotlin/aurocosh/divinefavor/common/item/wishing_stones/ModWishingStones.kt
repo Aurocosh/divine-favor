@@ -9,8 +9,7 @@ object ModWishingStones {
     val wishingStones: MutableList<ItemWishingStone> = ArrayList()
 
     fun preInit() {
-        val spirits = ModMappers.spirits.values
-        for (spirit in spirits)
-            wishingStones.add(ItemWishingStone(spirit, ConfigItem.minorWishingStoneFavorValue, "minor", ConstGemTabOrder.CALLING_STONE))
+        for (spirit in ModMappers.spirits.values)
+            wishingStones.add(ItemWishingStone(spirit, ConfigItem.minorWishingStoneFavorValue, "minor", ConstGemTabOrder.WISHING_STONE))
     }
 }

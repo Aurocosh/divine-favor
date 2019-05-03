@@ -2,8 +2,8 @@ package aurocosh.divinefavor.common.potions.curses
 
 import aurocosh.divinefavor.common.config.common.ConfigArrow
 import aurocosh.divinefavor.common.constants.ConstMisc
-import aurocosh.divinefavor.common.custom_data.living.LivingData
 import aurocosh.divinefavor.common.damage_source.ModDamageSources
+import aurocosh.divinefavor.common.lib.extensions.divineLivingData
 import aurocosh.divinefavor.common.network.message.sever.petrification.MessagePetrificationCure
 import aurocosh.divinefavor.common.network.message.sever.petrification.MessagePetrificationDamage
 import aurocosh.divinefavor.common.network.message.sever.petrification.MessagePetrificationReset
@@ -21,12 +21,10 @@ class PotionPetrification : ModPotion("petrification", true, 0x7FB8A4) {
 
     override fun onPotionAdded(livingBase: EntityLivingBase) {
         super.onPotionAdded(livingBase)
-        if (livingBase is EntityPlayer) {
+        if (livingBase is EntityPlayer)
             MessagePetrificationReset().sendTo(livingBase)
-        } else {
-            val petrification = LivingData.get(livingBase).petrificationData
-            petrification.resetCureTimer()
-        }
+        else
+            livingBase.divineLivingData.petrificationData.resetCureTimer()
     }
 
     override fun performEffect(livingBase: EntityLivingBase, amplifier: Int) {
@@ -39,7 +37,7 @@ class PotionPetrification : ModPotion("petrification", true, 0x7FB8A4) {
     private fun performForMob(notPlayer: EntityLivingBase) {
         if (notPlayer.world.isRemote)
             return
-        val petrification = LivingData.get(notPlayer).petrificationData
+        val petrification = notPlayer.divineLivingData.petrificationData
         if (notPlayer.motionX == 0.0 && notPlayer.motionZ == 0.0) {
             if (petrification.cureTick())
                 notPlayer.removePotionEffect(ModCurses.petrification)
@@ -50,7 +48,7 @@ class PotionPetrification : ModPotion("petrification", true, 0x7FB8A4) {
     private fun performForPlayer(player: EntityPlayer) {
         if (!player.world.isRemote)
             return
-        val petrification = LivingData.get(player).petrificationData
+        val petrification = player.divineLivingData.petrificationData
         if (player.motionX == 0.0 && player.motionZ == 0.0) {
             if (petrification.cureTick()) {
                 player.removePotionEffect(ModCurses.petrification)

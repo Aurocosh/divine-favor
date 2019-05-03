@@ -2,7 +2,7 @@ package aurocosh.divinefavor.common.potions.presences
 
 import aurocosh.divinefavor.common.constants.ConstMisc
 import aurocosh.divinefavor.common.item.calling_stones.ModCallingStones
-import aurocosh.divinefavor.common.lib.extensions.divineCustomData
+import aurocosh.divinefavor.common.lib.extensions.divinePlayerData
 import aurocosh.divinefavor.common.potions.base.potion.ModPotion
 import aurocosh.divinefavor.common.potions.common.ModBlessings
 import net.minecraft.entity.EntityLivingBase
@@ -22,7 +22,7 @@ class PotionPredatoryPresence : ModPotion("predatory_presence", true, 0x7FB8A4) 
     override fun onPotionAdded(livingBase: EntityLivingBase) {
         super.onPotionAdded(livingBase)
         if (livingBase is EntityPlayer)
-            livingBase.divineCustomData.predatoryPresenceData.reset()
+            livingBase.divinePlayerData.predatoryPresenceData.reset()
     }
 
     companion object {
@@ -43,7 +43,7 @@ class PotionPredatoryPresence : ModPotion("predatory_presence", true, 0x7FB8A4) 
             if (event.entity !is IMob)
                 return
 
-            if (attacker.divineCustomData.predatoryPresenceData.count()) {
+            if (attacker.divinePlayerData.predatoryPresenceData.count()) {
                 attacker.removePotionEffect(ModBlessings.predatory_presence)
                 attacker.addItemStackToInventory(ItemStack(ModCallingStones.calling_stone_arbow))
             }

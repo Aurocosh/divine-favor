@@ -2,7 +2,7 @@ package aurocosh.divinefavor.common.potions.curses
 
 import aurocosh.divinefavor.common.config.common.ConfigArrow
 import aurocosh.divinefavor.common.constants.ConstMisc
-import aurocosh.divinefavor.common.lib.extensions.divineCustomData
+import aurocosh.divinefavor.common.lib.extensions.divinePlayerData
 import aurocosh.divinefavor.common.potions.base.potion.ModPotion
 import aurocosh.divinefavor.common.potions.common.ModCurses
 import aurocosh.divinefavor.common.util.UtilRandom
@@ -25,7 +25,7 @@ class PotionArmorCorrosion : ModPotion("armor_corrosion", true, 0x7FB8A4) {
             return
         }
 
-        val corrosionData = livingBase.divineCustomData.armorCorrosionData
+        val corrosionData = livingBase.divinePlayerData.armorCorrosionData
         corrosionData.removeAllCorrosion()
 
         val slots = asList(0,1,2,3)
@@ -40,7 +40,7 @@ class PotionArmorCorrosion : ModPotion("armor_corrosion", true, 0x7FB8A4) {
     override fun onPotionRemoved(livingBase: EntityLivingBase) {
         super.onPotionRemoved(livingBase)
         if (livingBase is EntityPlayer)
-            livingBase.divineCustomData.armorCorrosionData.removeAllCorrosion()
+            livingBase.divinePlayerData.armorCorrosionData.removeAllCorrosion()
     }
 
     override fun performEffect(livingBase: EntityLivingBase, amplifier: Int) {
@@ -49,17 +49,17 @@ class PotionArmorCorrosion : ModPotion("armor_corrosion", true, 0x7FB8A4) {
         if (livingBase !is EntityPlayer)
             return
 
-        if (livingBase.divineCustomData.armorCorrosionData.nothingToCorrode()) {
+        if (livingBase.divinePlayerData.armorCorrosionData.nothingToCorrode()) {
             livingBase.removePotionEffect(ModCurses.armor_corrosion)
             return
         }
 
-        if (livingBase.divineCustomData.armorCorrosionData.isCorrosionNeeded) {
-            val slots = ArrayList(livingBase.divineCustomData.armorCorrosionData.corrodedArmorSlots)
+        if (livingBase.divinePlayerData.armorCorrosionData.isCorrosionNeeded) {
+            val slots = ArrayList(livingBase.divinePlayerData.armorCorrosionData.corrodedArmorSlots)
             for (slot in slots) {
                 val stack = livingBase.inventory.armorItemInSlot(slot!!)
                 if (stack.isEmpty)
-                    livingBase.divineCustomData.armorCorrosionData.removeCorrosionFromArmorSlot(slot)
+                    livingBase.divinePlayerData.armorCorrosionData.removeCorrosionFromArmorSlot(slot)
                 else
                     stack.damageItem(ConfigArrow.armorCorrosion.corrosionDamage, livingBase)
             }

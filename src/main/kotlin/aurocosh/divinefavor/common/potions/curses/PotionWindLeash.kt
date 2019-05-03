@@ -2,7 +2,7 @@ package aurocosh.divinefavor.common.potions.curses
 
 import aurocosh.divinefavor.common.config.common.ConfigArrow
 import aurocosh.divinefavor.common.config.data.DoubleInterval
-import aurocosh.divinefavor.common.custom_data.living.LivingData
+import aurocosh.divinefavor.common.lib.extensions.divineLivingData
 import aurocosh.divinefavor.common.network.message.client.syncing.MessageSyncWindLeash
 import aurocosh.divinefavor.common.potions.base.potion.ModPotion
 import aurocosh.divinefavor.common.potions.common.ModCurses
@@ -25,13 +25,13 @@ class PotionWindLeash : ModPotion("wind_leash", false, 0x7FB8A4) {
         var vector = vec3d.normalize().scale(ConfigArrow.windLeash.motionSpeed.toDouble())
         if (livingBase is EntityPlayer)
             vector = vector.scale(ConfigArrow.windLeash.playerMultiplier.toDouble())
-        LivingData.get(livingBase).windLeashData.vector = vector
+        livingBase.divineLivingData.windLeashData.vector = vector
 
         MessageSyncWindLeash(vector).sendTo(livingBase)
     }
 
     override fun performEffect(livingBase: EntityLivingBase, amplifier: Int) {
-        val windLeash = LivingData.get(livingBase).windLeashData
+        val windLeash = livingBase.divineLivingData.windLeashData
         val vector = windLeash.vector
 
         livingBase.motionX = vector.x

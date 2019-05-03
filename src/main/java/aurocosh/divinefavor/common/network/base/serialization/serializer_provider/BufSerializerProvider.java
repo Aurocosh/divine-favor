@@ -1,6 +1,8 @@
 package aurocosh.divinefavor.common.network.base.serialization.serializer_provider;
 
 import aurocosh.divinefavor.common.network.base.serialization.buf_serializers.EnumSerializer;
+import aurocosh.divinefavor.common.network.base.serialization.buf_serializers.array.ArrayReader;
+import aurocosh.divinefavor.common.network.base.serialization.buf_serializers.array.ArrayWriter;
 import aurocosh.divinefavor.common.network.base.serialization.interfaces.BufReader;
 import aurocosh.divinefavor.common.network.base.serialization.interfaces.BufWriter;
 import aurocosh.divinefavor.common.network.base.serialization.interfaces.GenericSerializerProvider;
@@ -46,6 +48,11 @@ public class BufSerializerProvider {
             Class clazz = (Class) type;
             if (clazz.isEnum())
                 return ENUM_SERIALIZERS.computeIfAbsent(clazz, EnumSerializer::new);
+            if (clazz.isArray()) {
+                Class componentType = clazz.getComponentType();
+                BufReader reader = getReader(componentType);
+                return new ArrayReader(componentType, reader);
+            }
             return READERS.get(clazz);
         }
         return null;
@@ -61,6 +68,11 @@ public class BufSerializerProvider {
             Class clazz = (Class) type;
             if (clazz.isEnum())
                 return ENUM_SERIALIZERS.computeIfAbsent(clazz, EnumSerializer::new);
+            if (clazz.isArray()) {
+                Class componentType = clazz.getComponentType();
+                BufWriter writer = getWriter(componentType);
+                return new ArrayWriter(writer);
+            }
             return WRITERS.get(clazz);
         }
         return null;

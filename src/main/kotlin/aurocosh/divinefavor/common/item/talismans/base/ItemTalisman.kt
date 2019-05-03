@@ -2,7 +2,7 @@ package aurocosh.divinefavor.common.item.talismans.base
 
 import aurocosh.divinefavor.DivineFavor
 import aurocosh.divinefavor.common.item.base.ModItem
-import aurocosh.divinefavor.common.lib.extensions.divineCustomData
+import aurocosh.divinefavor.common.lib.extensions.divinePlayerData
 import aurocosh.divinefavor.common.spirit.base.ModSpirit
 import net.minecraft.client.resources.I18n
 import net.minecraft.client.util.ITooltipFlag
@@ -24,10 +24,11 @@ abstract class ItemTalisman(val name: String, texturePath: String, val spirit: M
 
     @SideOnly(Side.CLIENT)
     fun getUseInfo(player: EntityPlayer): String {
-        val spiritData = player.divineCustomData.spiritData
+        val spiritData = player.divinePlayerData.spiritData
         val favorValue = spiritData.getFavor(spirit.id)
+        val infinite = spiritData.isFavorInfinite(spirit.id) || favorCost == 0
 
-        val useCount = if (favorCost == 0) -1 else favorValue / favorCost
+        val useCount = if (infinite) -1 else favorValue / favorCost
         val description: String
         if (useCount < 0)
             description = I18n.format("tooltip.divinefavor:talisman.infinite_use")
@@ -45,7 +46,7 @@ abstract class ItemTalisman(val name: String, texturePath: String, val spirit: M
     @SideOnly(Side.CLIENT)
     override fun addInformation(stack: ItemStack?, world: World?, tooltip: MutableList<String>?, flag: ITooltipFlag?) {
         super.addInformation(stack, world, tooltip, flag)
-        if(!DivineFavor.proxy.hasClientPlayer)
+        if (!DivineFavor.proxy.hasClientPlayer)
             return
 
         val player = DivineFavor.proxy.clientPlayer

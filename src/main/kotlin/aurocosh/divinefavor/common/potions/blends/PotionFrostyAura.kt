@@ -3,7 +3,7 @@ package aurocosh.divinefavor.common.potions.blends
 import aurocosh.divinefavor.common.config.common.ConfigPresence
 import aurocosh.divinefavor.common.constants.ConstMisc
 import aurocosh.divinefavor.common.lib.LoopedCounter
-import aurocosh.divinefavor.common.lib.extensions.divineCustomData
+import aurocosh.divinefavor.common.lib.extensions.divinePlayerData
 import aurocosh.divinefavor.common.potions.base.effect.ModEffect
 import aurocosh.divinefavor.common.potions.base.potion.ModPotion
 import aurocosh.divinefavor.common.potions.common.ModBlendEffects
@@ -22,13 +22,13 @@ class PotionFrostyAura : ModPotion("frosty_aura", true, 0x7FB8A4) {
     override fun onPotionAdded(livingBase: EntityLivingBase) {
         super.onPotionAdded(livingBase)
         if (livingBase is EntityPlayer)
-            livingBase.divineCustomData.frostyAuraData.reset()
+            livingBase.divinePlayerData.frostyAuraData.reset()
     }
 
     override fun performEffect(livingBase: EntityLivingBase, amplifier: Int) {
         if (livingBase !is EntityPlayer)
             return
-        val auraData = livingBase.divineCustomData.frostyAuraData
+        val auraData = livingBase.divinePlayerData.frostyAuraData
         if (auraData.count()) {
             livingBase.removePotionEffect(ModBlendEffects.frosty_aura)
             livingBase.addPotionEffect(ModEffect(ModBlessings.chilling_presence, ConfigPresence.chillingPresence.duration))

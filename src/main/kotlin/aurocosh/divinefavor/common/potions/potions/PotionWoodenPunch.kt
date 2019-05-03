@@ -1,7 +1,7 @@
 package aurocosh.divinefavor.common.potions.potions
 
 import aurocosh.divinefavor.common.constants.ConstMisc
-import aurocosh.divinefavor.common.lib.extensions.divineCustomData
+import aurocosh.divinefavor.common.lib.extensions.divinePlayerData
 import aurocosh.divinefavor.common.network.message.client.spirit_data.MessageSyncFavor
 import aurocosh.divinefavor.common.potions.base.potion.ModPotionToggleLimited
 import aurocosh.divinefavor.common.potions.common.ModPotions
@@ -35,7 +35,7 @@ class PotionWoodenPunch : ModPotionToggleLimited("wooden_punch", true, 0x7FB8A4)
             if (!block.isToolEffective("axe", state))
                 return
 
-            val spiritData = player.divineCustomData.spiritData
+            val spiritData = player.divinePlayerData.spiritData
             val talisman = ModPotions.wooden_punch.talisman
             val spirit = talisman.spirit
             if (!spiritData.consumeFavor(spirit.id, talisman.favorCost))

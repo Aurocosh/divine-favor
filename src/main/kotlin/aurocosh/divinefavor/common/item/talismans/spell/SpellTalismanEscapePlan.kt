@@ -5,7 +5,7 @@ import aurocosh.divinefavor.common.item.talismans.spell.base.ItemSpellTalisman
 import aurocosh.divinefavor.common.item.talismans.spell.base.SpellOptions
 import aurocosh.divinefavor.common.item.talismans.spell.base.TalismanContext
 import aurocosh.divinefavor.common.lib.GlobalBlockPos
-import aurocosh.divinefavor.common.lib.extensions.divineCustomData
+import aurocosh.divinefavor.common.lib.extensions.divinePlayerData
 import aurocosh.divinefavor.common.potions.common.ModPotions
 import aurocosh.divinefavor.common.spirit.base.ModSpirit
 import net.minecraft.potion.PotionEffect
@@ -15,7 +15,7 @@ class SpellTalismanEscapePlan(name: String, spirit: ModSpirit, favorCost: Int, o
 
     override fun performActionServer(context: TalismanContext) {
         val player = context.player
-        player.divineCustomData.escapePlanData.globalPosition = GlobalBlockPos(context.player)
+        player.divinePlayerData.escapePlanData.globalPosition = GlobalBlockPos(context.player)
         player.addPotionEffect(PotionEffect(ModPotions.escape_plan, ConfigSpells.escapePlan.duration))
     }
 }

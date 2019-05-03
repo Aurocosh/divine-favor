@@ -1,7 +1,7 @@
 package aurocosh.divinefavor.common.custom_data.player
 
 import aurocosh.divinefavor.common.constants.ConstMisc
-import aurocosh.divinefavor.common.lib.extensions.divineCustomData
+import aurocosh.divinefavor.common.lib.extensions.divinePlayerData
 import net.minecraftforge.event.entity.player.PlayerEvent
 import net.minecraftforge.fml.common.Mod
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent
@@ -10,8 +10,8 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent
 object DeathDataCloner {
     @SubscribeEvent
     fun clonePlayer(event: PlayerEvent.Clone) {
-        val originalData = event.original.divineCustomData
-        val cloneData = event.entityPlayer.divineCustomData
+        val originalData = event.original.divinePlayerData
+        val cloneData = event.entityPlayer.divinePlayerData
 
         cloneData.spiritData.deserializeContracts(originalData.spiritData.serializeContracts())
         cloneData.spiritData.setFavorValues(originalData.spiritData.getFavorValues())

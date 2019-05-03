@@ -4,7 +4,7 @@ import aurocosh.divinefavor.DivineFavor
 import aurocosh.divinefavor.common.config.common.ConfigSpells
 import aurocosh.divinefavor.common.constants.ConstMisc
 import aurocosh.divinefavor.common.constants.ConstResources
-import aurocosh.divinefavor.common.lib.extensions.divineCustomData
+import aurocosh.divinefavor.common.lib.extensions.divinePlayerData
 import aurocosh.divinefavor.common.potions.base.potion.ModPotion
 import aurocosh.divinefavor.common.potions.common.ModCurses
 import net.minecraft.client.Minecraft
@@ -50,7 +50,7 @@ class PotionEvilEye : ModPotion("evil_eye", true, 0x7FB8A4) {
             if (!player.isPotionActive(ModCurses.evil_eye))
                 return
 
-            val severity = player.divineCustomData.evilEyeData.severity
+            val severity = player.divinePlayerData.evilEyeData.severity
 
             val mc = Minecraft.getMinecraft()
             val resolution = event.resolution
