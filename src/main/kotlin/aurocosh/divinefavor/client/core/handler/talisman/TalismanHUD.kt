@@ -27,7 +27,7 @@ object TalismanHUD {
 
         val favorDescription =
                 if (spiritData.isFavorInfinite(spirit.id))
-                    I18n.format("favor_infinite")
+                    I18n.format("divinefavor:favor_infinite")
                 else {
                     val value = spiritData.getFavor(spirit.id)
                     val maxLimit = spiritData.getMaxFavor(spirit.id)
