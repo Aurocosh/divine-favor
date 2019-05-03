@@ -1,0 +1,23 @@
+{
+  "result": {
+    "item": "divinefavor:arrow_talisman_sniper"
+  },
+  "stone": "divinefavor:calling_stone_arbow",
+  "ingredients": [
+    {
+      "item": "minecraft:paper"
+    },
+    {
+      "item": "minecraft:dye",
+      "data": 14
+    },
+    {
+      "item": "minecraft:arrow",
+      "count": 1
+    },
+    {
+      "item": "minecraft:ender_eye",
+      "count": 16
+    }
+  ]
+}

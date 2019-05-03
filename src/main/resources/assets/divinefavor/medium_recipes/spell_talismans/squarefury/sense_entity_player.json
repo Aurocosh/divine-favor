@@ -1,0 +1,22 @@
+{
+  "result": {
+    "item": "divinefavor:talisman_sense_entity_player"
+  },
+  "stone": "divinefavor:calling_stone_squarefury",
+  "ingredients": [
+    {
+      "item": "minecraft:paper"
+    },
+    {
+      "item": "minecraft:dye",
+      "data": 10
+    },
+    {
+      "item": "minecraft:glowstone_dust",
+      "count": 1
+    },
+    {
+      "item": "minecraft:skull"
+    }
+  ]
+}

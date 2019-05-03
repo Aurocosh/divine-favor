@@ -1,0 +1,20 @@
+{
+  "result": {
+    "item": "divinefavor:talisman_instant_dive"
+  },
+  "stone": "divinefavor:calling_stone_blizrabi",
+  "ingredients": [
+    {
+      "item": "minecraft:paper"
+    },
+    {
+      "item": "minecraft:dye",
+      "data": 6
+    },
+    {
+      "item": "minecraft:stone",
+      "data": 0,
+      "count": 64
+    }
+  ]
+}

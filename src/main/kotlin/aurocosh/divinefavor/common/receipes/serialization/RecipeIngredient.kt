@@ -25,7 +25,8 @@ class RecipeIngredient {
     }
 
     fun toItemStack(): ItemStack {
-        val ingredientStack = ItemStack(getItem()!!, count)
+        val itemValue = getItem() ?: return ItemStack.EMPTY
+        val ingredientStack = ItemStack(itemValue, count)
         if (data != -1)
             ingredientStack.itemDamage = data
         return ingredientStack

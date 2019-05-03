@@ -1,0 +1,24 @@
+{
+  "result": {
+    "item": "divinefavor:arrow_talisman_life_steal"
+  },
+  "stone": "divinefavor:calling_stone_arbow",
+  "ingredients": [
+    {
+      "item": "minecraft:paper"
+    },
+    {
+      "item": "minecraft:dye",
+      "data": 9
+    },
+    {
+      "item": "minecraft:arrow",
+      "count": 1
+    },
+    {
+      "item": "minecraft:golden_apple",
+      "data": 0,
+      "count": 1
+    }
+  ]
+}

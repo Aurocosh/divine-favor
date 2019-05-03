@@ -11,54 +11,54 @@ import aurocosh.divinefavor.common.spirit.ModSpirits
 import java.awt.Color
 
 object ModArrowTalismans {
-    lateinit var anti_gravity_arrow: ItemArrowTalisman
+    lateinit var anti_gravity: ItemArrowTalisman
     lateinit var armor_corrosion: ItemArrowTalisman
-    lateinit var blast_arrow: ItemArrowTalisman
-    lateinit var blink_arrow: ItemArrowTalisman
-    lateinit var climbing_arrow: ItemArrowTalisman
+    lateinit var blast: ItemArrowTalisman
+    lateinit var blink: ItemArrowTalisman
+    lateinit var climbing: ItemArrowTalisman
     lateinit var crawling_mist: ItemArrowTalisman
     lateinit var cripple: ItemArrowTalisman
-    lateinit var destructive_arrow_1: ItemArrowTalisman
-    lateinit var destructive_arrow_2: ItemArrowTalisman
-    lateinit var destructive_arrow_3: ItemArrowTalisman
+    lateinit var destructive_1: ItemArrowTalisman
+    lateinit var destructive_2: ItemArrowTalisman
+    lateinit var destructive_3: ItemArrowTalisman
     lateinit var disarm: ItemArrowTalisman
-    lateinit var explosive_arrow: ItemArrowTalisman
+    lateinit var explosive: ItemArrowTalisman
     lateinit var extinguish_fire: ItemArrowTalisman
     lateinit var fiery_mark: ItemArrowTalisman
     lateinit var fill_lungs: ItemArrowTalisman
-    lateinit var flak_arrow: ItemArrowTalisman
-    lateinit var force_arrow: ItemArrowTalisman
+    lateinit var flak: ItemArrowTalisman
+    lateinit var force: ItemArrowTalisman
     lateinit var hand_swap: ItemArrowTalisman
-    lateinit var high_speed_arrow: ItemArrowTalisman
+    lateinit var high_speed: ItemArrowTalisman
     lateinit var hollow_leg: ItemArrowTalisman
-    lateinit var hover_bubble_arrow: ItemArrowTalisman
-    lateinit var hyper_speed_arrow: ItemArrowTalisman
-    lateinit var ice_ball_arrow: ItemArrowTalisman
+    lateinit var hover_bubble: ItemArrowTalisman
+    lateinit var hyper_speed: ItemArrowTalisman
+    lateinit var ice_sphere: ItemArrowTalisman
     lateinit var ice_breaker: ItemArrowTalisman
-    lateinit var impulse_arrow: ItemArrowTalisman
-    lateinit var incendiary_arrow: ItemArrowTalisman
-    lateinit var life_steal_arrow: ItemArrowTalisman
+    lateinit var impulse: ItemArrowTalisman
+    lateinit var incendiary: ItemArrowTalisman
+    lateinit var life_steal: ItemArrowTalisman
     lateinit var limp_leg: ItemArrowTalisman
-    lateinit var mine_arrow: ItemArrowTalisman
+    lateinit var mine: ItemArrowTalisman
     lateinit var nether_swap: ItemArrowTalisman
-    lateinit var nuke_arrow: ItemArrowTalisman
+    lateinit var nuke: ItemArrowTalisman
     lateinit var petrification: ItemArrowTalisman
-    lateinit var piercing_arrow: ItemArrowTalisman
-    lateinit var reinforced_arrow_1: ItemArrowTalisman
-    lateinit var reinforced_arrow_2: ItemArrowTalisman
-    lateinit var reinforced_arrow_3: ItemArrowTalisman
-    lateinit var ricochet_arrow: ItemArrowTalisman
+    lateinit var piercing: ItemArrowTalisman
+    lateinit var reinforced_1: ItemArrowTalisman
+    lateinit var reinforced_2: ItemArrowTalisman
+    lateinit var reinforced_3: ItemArrowTalisman
+    lateinit var ricochet: ItemArrowTalisman
     lateinit var roots: ItemArrowTalisman
     lateinit var skyfall: ItemArrowTalisman
-    lateinit var sniper_arrow: ItemArrowTalisman
-    lateinit var spooky_arrow: ItemArrowTalisman
-    lateinit var stasis_arrow: ItemArrowTalisman
+    lateinit var sniper: ItemArrowTalisman
+    lateinit var spooky: ItemArrowTalisman
+    lateinit var stasis: ItemArrowTalisman
     lateinit var suffocating_fumes: ItemArrowTalisman
-    lateinit var tracer_arrow: ItemArrowTalisman
-    lateinit var vacuum_arrow: ItemArrowTalisman
+    lateinit var tracer: ItemArrowTalisman
+    lateinit var vacuum: ItemArrowTalisman
     lateinit var wind_leash: ItemArrowTalisman
     lateinit var yummy_smell: ItemArrowTalisman
-    lateinit var zero_g_arrow: ItemArrowTalisman
+    lateinit var zero_g: ItemArrowTalisman
 
     fun preInit() {
         val enderererColor = Color(0, 124, 86)
@@ -69,44 +69,44 @@ object ModArrowTalismans {
         val climbingColor = Color(124, 78, 47)
 
         // arbow;
-        anti_gravity_arrow = ArrowTalismanAntiGravityArrow("anti_gravity_arrow", ModSpirits.arbow, ConfigArrow.antiGravityArrow.favorCost, Color.green, ConfigArrow.antiGravityArrow.damage.toDouble(), ArrowOptions.NORMAL, ArrowType.WOODEN_ARROW)
-        blast_arrow = ArrowTalismanExplosive("blast_arrow", ModSpirits.arbow, genericTier1, ArrowOptions.ARROW_BREAKS, ArrowType.WOODEN_ARROW, ConfigArrow.blastArrow)
-        climbing_arrow = ArrowTalismanClimbableArrow("climbing_arrow", ModSpirits.arbow, ConfigArrow.climbingArrow.favorCost, climbingColor, ConfigArrow.climbingArrow.damage.toDouble(), ArrowOptions.NORMAL, ArrowType.WOODEN_ARROW, ConfigArrow.climbingArrow.climbingSpeed, ConfigArrow.climbingArrow.climbingDistance, ConfigArrow.climbingArrow.despawnDelay)
-        destructive_arrow_1 = ArrowTalismanDestructiveArrow("destructive_arrow_1", ModSpirits.arbow, ConfigArrow.destructiveArrow1.favorCost, genericTier1, ConfigArrow.destructiveArrow1.damage.toDouble(), ArrowOptions.ARROW_BREAKS, ArrowType.WOODEN_ARROW, ConfigArrow.destructiveArrow1.maxHardness.toFloat())
-        destructive_arrow_2 = ArrowTalismanDestructiveArrow("destructive_arrow_2", ModSpirits.arbow, ConfigArrow.destructiveArrow2.favorCost, genericTier2, ConfigArrow.destructiveArrow2.damage.toDouble(), ArrowOptions.ARROW_BREAKS, ArrowType.WOODEN_ARROW, ConfigArrow.destructiveArrow2.maxHardness.toFloat())
-        destructive_arrow_3 = ArrowTalismanDestructiveArrow("destructive_arrow_3", ModSpirits.arbow, ConfigArrow.destructiveArrow3.favorCost, genericTier3, ConfigArrow.destructiveArrow3.damage.toDouble(), ArrowOptions.ARROW_BREAKS, ArrowType.WOODEN_ARROW, ConfigArrow.destructiveArrow3.maxHardness.toFloat())
+        anti_gravity = ArrowTalismanAntiGravityArrow("anti_gravity", ModSpirits.arbow, ConfigArrow.antiGravityArrow.favorCost, Color.green, ConfigArrow.antiGravityArrow.damage.toDouble(), ArrowOptions.NORMAL, ArrowType.WOODEN_ARROW)
+        blast = ArrowTalismanExplosive("blast", ModSpirits.arbow, genericTier1, ArrowOptions.ARROW_BREAKS, ArrowType.WOODEN_ARROW, ConfigArrow.blastArrow)
+        climbing = ArrowTalismanClimbableArrow("climbing", ModSpirits.arbow, ConfigArrow.climbingArrow.favorCost, climbingColor, ConfigArrow.climbingArrow.damage.toDouble(), ArrowOptions.NORMAL, ArrowType.WOODEN_ARROW, ConfigArrow.climbingArrow.climbingSpeed, ConfigArrow.climbingArrow.climbingDistance, ConfigArrow.climbingArrow.despawnDelay)
+        destructive_1 = ArrowTalismanDestructiveArrow("destructive_1", ModSpirits.arbow, ConfigArrow.destructiveArrow1.favorCost, genericTier1, ConfigArrow.destructiveArrow1.damage.toDouble(), ArrowOptions.ARROW_BREAKS, ArrowType.WOODEN_ARROW, ConfigArrow.destructiveArrow1.maxHardness.toFloat())
+        destructive_2 = ArrowTalismanDestructiveArrow("destructive_2", ModSpirits.arbow, ConfigArrow.destructiveArrow2.favorCost, genericTier2, ConfigArrow.destructiveArrow2.damage.toDouble(), ArrowOptions.ARROW_BREAKS, ArrowType.WOODEN_ARROW, ConfigArrow.destructiveArrow2.maxHardness.toFloat())
+        destructive_3 = ArrowTalismanDestructiveArrow("destructive_3", ModSpirits.arbow, ConfigArrow.destructiveArrow3.favorCost, genericTier3, ConfigArrow.destructiveArrow3.damage.toDouble(), ArrowOptions.ARROW_BREAKS, ArrowType.WOODEN_ARROW, ConfigArrow.destructiveArrow3.maxHardness.toFloat())
         disarm = ArrowTalismanDisarm("disarm", ModSpirits.arbow, ConfigArrow.disarm.favorCost, Color.orange, ConfigArrow.disarm.damage.toDouble(), ArrowOptions.REQUIRES_TARGET, ArrowType.WOODEN_ARROW)
-        explosive_arrow = ArrowTalismanExplosive("explosive_arrow", ModSpirits.arbow, genericTier2, ArrowOptions.ARROW_BREAKS, ArrowType.WOODEN_ARROW, ConfigArrow.explosiveArrow)
-        flak_arrow = ArrowTalismanFlakArrow("flak_arrow", ModSpirits.arbow, ConfigArrow.flakArrow.favorCost, Color(185, 100, 110), ConfigArrow.flakArrow.damage.toDouble(), ArrowOptions.NORMAL, ArrowType.WOODEN_ARROW)
-        force_arrow = ArrowTalismanForceArrow("force_arrow", ModSpirits.arbow, ConfigArrow.forceArrow.favorCost, Color(65, 64, 69), ConfigArrow.forceArrow.damage.toDouble(), ArrowType.WOODEN_ARROW, ConfigArrow.forceArrow.velocity)
+        explosive = ArrowTalismanExplosive("explosive", ModSpirits.arbow, genericTier2, ArrowOptions.ARROW_BREAKS, ArrowType.WOODEN_ARROW, ConfigArrow.explosiveArrow)
+        flak = ArrowTalismanFlakArrow("flak", ModSpirits.arbow, ConfigArrow.flakArrow.favorCost, Color(185, 100, 110), ConfigArrow.flakArrow.damage.toDouble(), ArrowOptions.NORMAL, ArrowType.WOODEN_ARROW)
+        force = ArrowTalismanForceArrow("force", ModSpirits.arbow, ConfigArrow.forceArrow.favorCost, Color(65, 64, 69), ConfigArrow.forceArrow.damage.toDouble(), ArrowType.WOODEN_ARROW, ConfigArrow.forceArrow.velocity)
         hand_swap = ArrowTalismanHandSwap("hand_swap", ModSpirits.arbow, ConfigArrow.handSwap.favorCost, Color.orange, ConfigArrow.handSwap.damage.toDouble(), ArrowOptions.REQUIRES_TARGET, ArrowType.WOODEN_ARROW)
-        high_speed_arrow = ArrowTalismanHighSpeedArrow("high_speed_arrow", ModSpirits.arbow, ConfigArrow.highSpeedArrow.favorCost, genericTier2, ConfigArrow.highSpeedArrow.damage.toDouble(), ArrowOptions.NORMAL, ArrowType.WOODEN_ARROW, ConfigArrow.highSpeedArrow.extraVelocity)
-        hover_bubble_arrow = ArrowTalismanHoverBubbleArrow("hover_bubble_arrow", ModSpirits.arbow, ConfigArrow.hoverBubbleArrow.favorCost, climbingColor, ConfigArrow.hoverBubbleArrow.damage.toDouble(), ArrowOptions.NORMAL, ArrowType.WOODEN_ARROW, ConfigArrow.hoverBubbleArrow.climbingSpeed, ConfigArrow.hoverBubbleArrow.climbingDistance, ConfigArrow.hoverBubbleArrow.despawnDelay)
-        hyper_speed_arrow = ArrowTalismanHighSpeedArrow("hyper_speed_arrow", ModSpirits.arbow, ConfigArrow.hyperSpeedArrow.favorCost, genericTier3, ConfigArrow.hyperSpeedArrow.damage.toDouble(), ArrowOptions.NORMAL, ArrowType.WOODEN_ARROW, ConfigArrow.hyperSpeedArrow.extraVelocity)
-        impulse_arrow = ArrowTalismanForceArrow("impulse_arrow", ModSpirits.arbow, ConfigArrow.impulseArrow.favorCost, Color(114, 113, 118), ConfigArrow.impulseArrow.damage.toDouble(), ArrowType.WOODEN_ARROW, ConfigArrow.impulseArrow.velocity)
-        incendiary_arrow = ArrowTalismanIncendiaryArrow("incendiary_arrow", ModSpirits.arbow, ConfigArrow.incendiaryArrow.favorCost, Color(180, 80, 0), ConfigArrow.incendiaryArrow.damage.toDouble(), ArrowOptions.ARROW_BREAKS, ArrowType.WOODEN_ARROW)
-        life_steal_arrow = ArrowTalismanLifeStealArrow("life_steal_arrow", ModSpirits.arbow, ConfigArrow.lifeStealArrow.favorCost, Color(16, 211, 0), ArrowOptions.NORMAL, ArrowType.WOODEN_ARROW)
-        mine_arrow = ArrowTalismanMineArrow("mine_arrow", ModSpirits.arbow, ConfigArrow.mineArrow.favorCost, Color(164, 163, 168), ConfigArrow.mineArrow.damage.toDouble(), ArrowOptions.NORMAL, ArrowType.WOODEN_ARROW)
-        nuke_arrow = ArrowTalismanExplosive("nuke_arrow", ModSpirits.arbow, genericTier3, ArrowOptions.ARROW_BREAKS, ArrowType.WOODEN_ARROW, ConfigArrow.nukeArrow)
-        piercing_arrow = ArrowTalismanPiercingArrow("piercing_arrow", ModSpirits.arbow, ConfigArrow.piercingArrow.favorCost, Color(100, 104, 168), ConfigArrow.piercingArrow.damage, ArrowOptions.NORMAL, ArrowType.WOODEN_ARROW)
-        reinforced_arrow_1 = ItemArrowTalisman("reinforced_arrow_1", ModSpirits.arbow, ConfigArrow.reinforcedArrow1.favorCost, genericTier1, ConfigArrow.reinforcedArrow1.damage.toDouble(), ArrowOptions.NORMAL, ArrowType.WOODEN_ARROW)
-        reinforced_arrow_2 = ItemArrowTalisman("reinforced_arrow_2", ModSpirits.arbow, ConfigArrow.reinforcedArrow2.favorCost, genericTier2, ConfigArrow.reinforcedArrow2.damage.toDouble(), ArrowOptions.NORMAL, ArrowType.WOODEN_ARROW)
-        reinforced_arrow_3 = ItemArrowTalisman("reinforced_arrow_3", ModSpirits.arbow, ConfigArrow.reinforcedArrow3.favorCost, genericTier3, ConfigArrow.reinforcedArrow3.damage.toDouble(), ArrowOptions.NORMAL, ArrowType.WOODEN_ARROW)
-        ricochet_arrow = ArrowTalismanRicochetArrow("ricochet_arrow", ModSpirits.arbow, ConfigArrow.ricochetArrow.favorCost, Color(168, 24, 105), ConfigArrow.ricochetArrow.damage.toDouble(), ArrowOptions.NORMAL, ArrowType.WOODEN_ARROW)
-        sniper_arrow = ArrowTalismanSniperArrow("sniper_arrow", ModSpirits.arbow, ConfigArrow.sniperArrow.favorCost, Color(206, 206, 0), ArrowOptions.NORMAL, ArrowType.WOODEN_ARROW)
-        spooky_arrow = ArrowTalismanSpookyArrow("spooky_arrow", ModSpirits.arbow, ConfigArrow.spookyArrow.favorCost, Color.green, ConfigArrow.spookyArrow.damage.toDouble(), ArrowOptions.NORMAL, ArrowType.WOODEN_ARROW)
-        stasis_arrow = ArrowTalismanStasisArrow("stasis_arrow", ModSpirits.arbow, ConfigArrow.stasisArrow.favorCost, Color(164, 163, 168), ConfigArrow.stasisArrow.damage.toDouble(), ArrowOptions.NORMAL, ArrowType.WOODEN_ARROW)
-        tracer_arrow = ArrowTalismanTracerArrow("tracer_arrow", ModSpirits.arbow, ConfigArrow.tracerArrow.favorCost, Color(203, 3, 0), ConfigArrow.tracerArrow.damage.toDouble(), ArrowOptions.NORMAL, ArrowType.WOODEN_ARROW)
-        vacuum_arrow = ArrowTalismanVacuumArrow("vacuum_arrow", ModSpirits.arbow, ConfigArrow.vacuumArrow.favorCost, Color(83, 4, 124), ConfigArrow.vacuumArrow.damage.toDouble(), ArrowOptions.NORMAL, ArrowType.WOODEN_ARROW)
-        zero_g_arrow = ArrowTalismanZeroGArrow("zero_g_arrow", ModSpirits.arbow, ConfigArrow.zeroGArrow.favorCost, Color(0, 168, 122), ConfigArrow.zeroGArrow.damage.toDouble(), ArrowOptions.NORMAL, ArrowType.WOODEN_ARROW)
+        high_speed = ArrowTalismanHighSpeedArrow("high_speed", ModSpirits.arbow, ConfigArrow.highSpeedArrow.favorCost, genericTier2, ConfigArrow.highSpeedArrow.damage.toDouble(), ArrowOptions.NORMAL, ArrowType.WOODEN_ARROW, ConfigArrow.highSpeedArrow.extraVelocity)
+        hover_bubble = ArrowTalismanHoverBubbleArrow("hover_bubble", ModSpirits.arbow, ConfigArrow.hoverBubbleArrow.favorCost, climbingColor, ConfigArrow.hoverBubbleArrow.damage.toDouble(), ArrowOptions.NORMAL, ArrowType.WOODEN_ARROW, ConfigArrow.hoverBubbleArrow.climbingSpeed, ConfigArrow.hoverBubbleArrow.climbingDistance, ConfigArrow.hoverBubbleArrow.despawnDelay)
+        hyper_speed = ArrowTalismanHighSpeedArrow("hyper_speed", ModSpirits.arbow, ConfigArrow.hyperSpeedArrow.favorCost, genericTier3, ConfigArrow.hyperSpeedArrow.damage.toDouble(), ArrowOptions.NORMAL, ArrowType.WOODEN_ARROW, ConfigArrow.hyperSpeedArrow.extraVelocity)
+        impulse = ArrowTalismanForceArrow("impulse", ModSpirits.arbow, ConfigArrow.impulseArrow.favorCost, Color(114, 113, 118), ConfigArrow.impulseArrow.damage.toDouble(), ArrowType.WOODEN_ARROW, ConfigArrow.impulseArrow.velocity)
+        incendiary = ArrowTalismanIncendiaryArrow("incendiary", ModSpirits.arbow, ConfigArrow.incendiaryArrow.favorCost, Color(180, 80, 0), ConfigArrow.incendiaryArrow.damage.toDouble(), ArrowOptions.ARROW_BREAKS, ArrowType.WOODEN_ARROW)
+        life_steal = ArrowTalismanLifeStealArrow("life_steal", ModSpirits.arbow, ConfigArrow.lifeStealArrow.favorCost, Color(16, 211, 0), ArrowOptions.NORMAL, ArrowType.WOODEN_ARROW)
+        mine = ArrowTalismanMineArrow("mine", ModSpirits.arbow, ConfigArrow.mineArrow.favorCost, Color(164, 163, 168), ConfigArrow.mineArrow.damage.toDouble(), ArrowOptions.NORMAL, ArrowType.WOODEN_ARROW)
+        nuke = ArrowTalismanExplosive("nuke", ModSpirits.arbow, genericTier3, ArrowOptions.ARROW_BREAKS, ArrowType.WOODEN_ARROW, ConfigArrow.nukeArrow)
+        piercing = ArrowTalismanPiercingArrow("piercing", ModSpirits.arbow, ConfigArrow.piercingArrow.favorCost, Color(100, 104, 168), ConfigArrow.piercingArrow.damage, ArrowOptions.NORMAL, ArrowType.WOODEN_ARROW)
+        reinforced_1 = ItemArrowTalisman("reinforced_1", ModSpirits.arbow, ConfigArrow.reinforcedArrow1.favorCost, genericTier1, ConfigArrow.reinforcedArrow1.damage.toDouble(), ArrowOptions.NORMAL, ArrowType.WOODEN_ARROW)
+        reinforced_2 = ItemArrowTalisman("reinforced_2", ModSpirits.arbow, ConfigArrow.reinforcedArrow2.favorCost, genericTier2, ConfigArrow.reinforcedArrow2.damage.toDouble(), ArrowOptions.NORMAL, ArrowType.WOODEN_ARROW)
+        reinforced_3 = ItemArrowTalisman("reinforced_3", ModSpirits.arbow, ConfigArrow.reinforcedArrow3.favorCost, genericTier3, ConfigArrow.reinforcedArrow3.damage.toDouble(), ArrowOptions.NORMAL, ArrowType.WOODEN_ARROW)
+        ricochet = ArrowTalismanRicochetArrow("ricochet", ModSpirits.arbow, ConfigArrow.ricochetArrow.favorCost, Color(168, 24, 105), ConfigArrow.ricochetArrow.damage.toDouble(), ArrowOptions.NORMAL, ArrowType.WOODEN_ARROW)
+        sniper = ArrowTalismanSniperArrow("sniper", ModSpirits.arbow, ConfigArrow.sniperArrow.favorCost, Color(206, 206, 0), ArrowOptions.NORMAL, ArrowType.WOODEN_ARROW)
+        spooky = ArrowTalismanSpookyArrow("spooky", ModSpirits.arbow, ConfigArrow.spookyArrow.favorCost, Color.green, ConfigArrow.spookyArrow.damage.toDouble(), ArrowOptions.NORMAL, ArrowType.WOODEN_ARROW)
+        stasis = ArrowTalismanStasisArrow("stasis", ModSpirits.arbow, ConfigArrow.stasisArrow.favorCost, Color(164, 163, 168), ConfigArrow.stasisArrow.damage.toDouble(), ArrowOptions.NORMAL, ArrowType.WOODEN_ARROW)
+        tracer = ArrowTalismanTracerArrow("tracer", ModSpirits.arbow, ConfigArrow.tracerArrow.favorCost, Color(203, 3, 0), ConfigArrow.tracerArrow.damage.toDouble(), ArrowOptions.NORMAL, ArrowType.WOODEN_ARROW)
+        vacuum = ArrowTalismanVacuumArrow("vacuum", ModSpirits.arbow, ConfigArrow.vacuumArrow.favorCost, Color(83, 4, 124), ConfigArrow.vacuumArrow.damage.toDouble(), ArrowOptions.NORMAL, ArrowType.WOODEN_ARROW)
+        zero_g = ArrowTalismanZeroGArrow("zero_g", ModSpirits.arbow, ConfigArrow.zeroGArrow.favorCost, Color(0, 168, 122), ConfigArrow.zeroGArrow.damage.toDouble(), ArrowOptions.NORMAL, ArrowType.WOODEN_ARROW)
 
         // blizrabi;
-        ice_ball_arrow = ArrowTalismanIceSphere("ice_sphere", ModSpirits.arbow, ConfigArrow.iceSphereArrow.favorCost, blizrabiColor, ConfigArrow.iceSphereArrow.damage.toDouble(), ArrowOptions.ARROW_BREAKS, ArrowType.WOODEN_ARROW)
+        ice_sphere = ArrowTalismanIceSphere("ice_sphere", ModSpirits.arbow, ConfigArrow.iceSphereArrow.favorCost, blizrabiColor, ConfigArrow.iceSphereArrow.damage.toDouble(), ArrowOptions.ARROW_BREAKS, ArrowType.WOODEN_ARROW)
         ice_breaker = ArrowTalismanIceBreaker("ice_breaker", ModSpirits.arbow, ConfigArrow.iceSphereArrow.favorCost, blizrabiColor, ConfigArrow.iceSphereArrow.damage.toDouble(), ArrowOptions.ARROW_BREAKS, ArrowType.WOODEN_ARROW)
         extinguish_fire = ArrowTalismanExtinguishFire("extinguish_fire", ModSpirits.arbow, ConfigArrow.extinguishFire.favorCost, Color(125, 124, 128), ConfigArrow.extinguishFire.damage.toDouble(), ArrowOptions.ARROW_BREAKS, ArrowType.WOODEN_ARROW)
 
         // endererer;
-        blink_arrow = ArrowTalismanBlinkArrow("blink_arrow", ModSpirits.endererer, ConfigArrow.blinkArrow.favorCost, enderererColor, ConfigArrow.blinkArrow.damage.toDouble(), ArrowOptions.ARROW_BREAKS, ArrowType.WOODEN_ARROW)
+        blink = ArrowTalismanBlinkArrow("blink", ModSpirits.endererer, ConfigArrow.blinkArrow.favorCost, enderererColor, ConfigArrow.blinkArrow.damage.toDouble(), ArrowOptions.ARROW_BREAKS, ArrowType.WOODEN_ARROW)
         nether_swap = ArrowTalismanNetherSwap("nether_swap", ModSpirits.endererer, ConfigArrow.netherSwap.favorCost, enderererColor, ConfigArrow.netherSwap.damage.toDouble(), ArrowType.WOODEN_ARROW)
         // loon;
 

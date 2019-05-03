@@ -1,0 +1,22 @@
+{
+  "result": {
+    "item": "divinefavor:talisman_sense_ore_close"
+  },
+  "stone": "divinefavor:calling_stone_romol",
+  "ingredients": [
+    {
+      "item": "minecraft:paper"
+    },
+    {
+      "item": "minecraft:dye",
+      "data": 4
+    },
+    {
+      "item": "minecraft:glowstone_dust",
+      "count": 3
+    },
+    {
+      "item": "minecraft:coal"
+    }
+  ]
+}

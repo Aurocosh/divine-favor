@@ -1,7 +1,0 @@
-{
-  "name": "bonemeal_talisman",
-  "spellType": "BONEMEAL",
-  "requirement": {},
-  "castOnUse": true,
-  "castOnRightClick": false
-}

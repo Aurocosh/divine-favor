@@ -1,0 +1,23 @@
+{
+  "result": {
+    "item": "divinefavor:talisman_hovering"
+  },
+  "stone": "divinefavor:calling_stone_redwind",
+  "ingredients": [
+    {
+      "item": "minecraft:paper"
+    },
+    {
+      "item": "minecraft:dye",
+      "data": 8
+    },
+    {
+      "item": "minecraft:emerald",
+      "count": 1
+    },
+    {
+      "item": "minecraft:feather",
+      "count": 4
+    }
+  ]
+}

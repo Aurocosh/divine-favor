@@ -1,0 +1,25 @@
+{
+  "result": {
+    "item": "divinefavor:talisman_ice_surface"
+  },
+  "stone": "divinefavor:calling_stone_blizrabi",
+  "ingredients": [
+    {
+      "item": "minecraft:paper"
+    },
+    {
+      "item": "minecraft:dye",
+      "data": 4
+    },
+    {
+      "item": "minecraft:water_bucket"
+    },
+    {
+      "item": "minecraft:feather"
+    },
+    {
+      "item": "minecraft:ice",
+      "count": 16
+    }
+  ]
+}

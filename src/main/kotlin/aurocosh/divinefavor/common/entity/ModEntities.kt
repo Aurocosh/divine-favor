@@ -18,9 +18,9 @@ object ModEntities {
     fun preInit() {
         registerModEntity(EntityStoneball::class.java, "stoneball", 256, 10, true)
 
-        registerModEntity(EntityClimbingArrow::class.java, "climbing_arrow", 256, 1, true)
+        registerModEntity(EntityClimbingArrow::class.java, "climbing", 256, 1, true)
         registerModEntity(EntitySpellArrow::class.java, "spell_arrow", 256, 1, true)
-        registerModEntity(EntitySpookyArrow::class.java, "spooky_arrow", 256, 1, true)
+        registerModEntity(EntitySpookyArrow::class.java, "spooky", 256, 1, true)
 
         registerModEntity(EntityMinionZombie::class.java, "minion_zombie", 80, 3, false)
         registerModEntity(EntityMinionHusk::class.java, "minion_husk", 80, 3, false)

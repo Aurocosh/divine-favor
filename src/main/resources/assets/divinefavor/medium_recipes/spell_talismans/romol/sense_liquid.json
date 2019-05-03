@@ -1,0 +1,25 @@
+{
+  "result": {
+    "item": "divinefavor:talisman_sense_liquid"
+  },
+  "stone": "divinefavor:calling_stone_romol",
+  "ingredients": [
+    {
+      "item": "minecraft:paper"
+    },
+    {
+      "item": "minecraft:dye",
+      "data": 5
+    },
+    {
+      "item": "minecraft:glowstone_dust",
+      "count": 1
+    },
+    {
+      "item": "minecraft:lava_bucket"
+    },
+    {
+      "item": "minecraft:water_bucket"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "result": {
+    "item": "divinefavor:arrow_talisman_blast"
+  },
+  "stone": "divinefavor:calling_stone_arbow",
+  "ingredients": [
+    {
+      "item": "minecraft:paper"
+    },
+    {
+      "item": "minecraft:dye",
+      "data": 11
+    },
+    {
+      "item": "minecraft:arrow",
+      "count": 1
+    },
+    {
+      "item": "minecraft:tnt",
+      "count": 1
+    }
+  ]
+}

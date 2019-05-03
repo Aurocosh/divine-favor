@@ -1,0 +1,19 @@
+{
+  "result": {
+    "item": "divinefavor:talisman_extreme_buoyancy"
+  },
+  "stone": "divinefavor:calling_stone_blizrabi",
+  "ingredients": [
+    {
+      "item": "minecraft:paper"
+    },
+    {
+      "item": "minecraft:dye",
+      "data": 6
+    },
+    {
+      "item": "minecraft:log",
+      "count": 64
+    }
+  ]
+}

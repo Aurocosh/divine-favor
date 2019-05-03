@@ -1,7 +1,0 @@
-{
-  "name": "ignition_talisman",
-  "spellType": "IGNITION",
-  "requirement": {},
-  "castOnUse": true,
-  "castOnRightClick": false
-}
