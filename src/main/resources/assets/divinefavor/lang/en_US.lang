@@ -36,6 +36,7 @@ divinefavor:no_fury_assigned=No focus
 divinefavor:spirit_offering=If you need to trade for something and cant or don't want to wait while spirit becomes active, you can make an offering at altar. Spirit will briefly visit altar to take offering and trade with you. To attract spirit you will have to offer at least %1$d items.
 divinefavor:spirit_became_active=Spirit %1$s became active
 divinefavor:spirit_became_inactive=Spirit %1$s became inactive
+divinefavor:favor_infinite=Infinite
 
 # TOOLTIPS
 tooltip.divinefavor:talisman.infinite_use=Infinite use
@@ -109,6 +110,17 @@ item.divinefavor:wishing_stone_minor_redwind.name=Redwind wishing stone
 item.divinefavor:wishing_stone_minor_romol.name=Romol wishing stone
 item.divinefavor:wishing_stone_minor_squarefury.name=Squarefury wishing stone
 item.divinefavor:wishing_stone_minor_timber.name=Timber wishing stone
+
+## FAVOR MARKS
+item.divinefavor:favor_mark_arbow.name=Mark of Arbow's favor
+item.divinefavor:favor_mark_blizrabi.name=Mark of Blizrabi's favor
+item.divinefavor:favor_mark_endererer.name=Mark of Endererer's favor
+item.divinefavor:favor_mark_loon.name=Mark of Loon's favor
+item.divinefavor:favor_mark_neblaze.name=Mark of Neblaze's favor
+item.divinefavor:favor_mark_redwind.name=Mark of Redwind's favor
+item.divinefavor:favor_mark_romol.name=Mark of Romol's favor
+item.divinefavor:favor_mark_squarefury.name=Mark of Squarefury's favor
+item.divinefavor:favor_mark_timber.name=Mark of Timber's favor
 
 ## SOUL SHARDS
 item.divinefavor:soul_shard_end.name=Soul shard of end
@@ -398,7 +410,18 @@ item.divinefavor:wishing_stone_minor_neblaze.description=Grants favor of Neblaze
 item.divinefavor:wishing_stone_minor_redwind.description=Grants favor of Redwind when consumed.
 item.divinefavor:wishing_stone_minor_romol.description=Grants favor of Romol when consumed.
 item.divinefavor:wishing_stone_minor_squarefury.description=Grants favor of Squarefury when consumed.
-item.divinefavor:wishing_stone_minor_timber.description=Grants favor of Timber wishing when consumed.
+item.divinefavor:wishing_stone_minor_timber.description=Grants favor of Timber when consumed.
+
+## FAVOR_MARKS
+item.divinefavor:favor_mark_arbow.description=When consumed it will grant infinite favor of Arbow, but effect will be lost upon death.
+item.divinefavor:favor_mark_blizrabi.description=When consumed it will grant infinite favor of Blizrabi, but effect will be lost upon death.
+item.divinefavor:favor_mark_endererer.description=When consumed it will grant infinite favor of Endererer, but effect will be lost upon death.
+item.divinefavor:favor_mark_loon.description=When consumed it will grant infinite favor of Loon, but effect will be lost upon death.
+item.divinefavor:favor_mark_neblaze.description=When consumed it will grant infinite favor of Neblaze, but effect will be lost upon death.
+item.divinefavor:favor_mark_redwind.description=When consumed it will grant infinite favor of Redwind, but effect will be lost upon death.
+item.divinefavor:favor_mark_romol.description=When consumed it will grant infinite favor of Romol, but effect will be lost upon death.
+item.divinefavor:favor_mark_squarefury.description=When consumed it will grant infinite favor of Squarefury, but effect will be lost upon death.
+item.divinefavor:favor_mark_timber.description=When consumed it will grant infinite favor of Timber, but effect will be lost upon death.
 
 ## SOUL SHARDS
 item.divinefavor:soul_shard_end.description=Material used for crafting and creation of soulbound lecterns. Can be extracted from creatures of end with awakened bone dagger.
@@ -467,7 +490,7 @@ item.divinefavor:talisman_harvest.description=When used this talisman will harve
 item.divinefavor:talisman_heat_wave.description=Will damage and ignite mobs around player in small radius.
 item.divinefavor:talisman_hellisphere.description=Lava generation spell. Will turn all blocks in small radius around player in lava.
 item.divinefavor:talisman_hovering.description=Grants flight but only if caster stays close to the ground. If player flies too high, then he will lose ability to fly.
-item.divinefavor:talisman_ice_bubble=This talisman will create ice bubble around player in ice and water.
+item.divinefavor:talisman_ice_bubble.description=This talisman will create ice bubble around player in ice and water.
 item.divinefavor:talisman_ice_carving.description=When used on ice block it will destroy that block and freeze any water that touches that ice block.
 item.divinefavor:talisman_ice_surface.description=When casted this talisman will freeze nearby water surfaces.
 item.divinefavor:talisman_ignition.description=When used on blocks will ignite them.

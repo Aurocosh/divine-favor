@@ -1,7 +1,7 @@
 package aurocosh.divinefavor.common.potions.potions
 
 import aurocosh.divinefavor.common.constants.ConstMisc
-import aurocosh.divinefavor.common.custom_data.living.LivingData
+import aurocosh.divinefavor.common.lib.extensions.divineLivingData
 import aurocosh.divinefavor.common.potions.base.potion.ModPotionToggle
 import aurocosh.divinefavor.common.potions.common.ModCurses
 import net.minecraft.entity.EntityLivingBase
@@ -16,8 +16,7 @@ class PotionSoulTheft : ModPotionToggle("soul_theft", true, 0x7FB8A4) {
 
     override fun onPotionRemoved(livingBase: EntityLivingBase) {
         super.onPotionRemoved(livingBase)
-        val theftData = LivingData.get(livingBase).soulTheftData
-        theftData.reset()
+        livingBase.divineLivingData.soulTheftData.reset()
     }
 
     companion object {
@@ -30,8 +29,7 @@ class PotionSoulTheft : ModPotionToggle("soul_theft", true, 0x7FB8A4) {
             if (!entityAttacker.isPotionActive(ModCurses.soul_theft))
                 return
             val victim = event.entityLiving as? EntityPlayer ?: return
-            val theftData = LivingData.get(entityAttacker).soulTheftData
-            if (theftData.isThief(victim))
+            if (entityAttacker.divineLivingData.soulTheftData.isThief(victim))
                 event.amount = event.amount + EXTRA_DAMAGE
         }
     }

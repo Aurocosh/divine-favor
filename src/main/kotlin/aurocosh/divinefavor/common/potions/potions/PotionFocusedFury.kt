@@ -3,7 +3,7 @@ package aurocosh.divinefavor.common.potions.potions
 import aurocosh.divinefavor.DivineFavor
 import aurocosh.divinefavor.common.config.common.ConfigSpells
 import aurocosh.divinefavor.common.constants.ConstMisc
-import aurocosh.divinefavor.common.lib.extensions.divineCustomData
+import aurocosh.divinefavor.common.lib.extensions.divinePlayerData
 import aurocosh.divinefavor.common.network.message.client.syncing.MessageSyncFury
 import aurocosh.divinefavor.common.potions.base.potion.ModPotion
 import aurocosh.divinefavor.common.potions.common.ModPotions
@@ -32,7 +32,7 @@ class PotionFocusedFury : ModPotion("focused_fury", true, 0x7FB8A4) {
         mc.fontRenderer.drawStringWithShadow(potionName, (x + 10 + 18).toFloat(), (y + 6).toFloat(), 16777215)
 
         val player = DivineFavor.proxy.clientPlayer
-        val furyData = player.divineCustomData.focusedFuryData
+        val furyData = player.divinePlayerData.focusedFuryData
         val duration = Potion.getPotionDurationString(effect, 1.0f)
         val mobName = I18n.format(furyData.mobName)
         mc.fontRenderer.drawStringWithShadow("$duration $mobName", (x + 10 + 18).toFloat(), (y + 6 + 10).toFloat(), 8355711)
@@ -43,7 +43,7 @@ class PotionFocusedFury : ModPotion("focused_fury", true, 0x7FB8A4) {
         if (livingBase !is EntityPlayer)
             return
 
-        val furyData = livingBase.divineCustomData.focusedFuryData
+        val furyData = livingBase.divinePlayerData.focusedFuryData
         furyData.reset()
         MessageSyncFury(furyData.mobTypeId).sendTo(livingBase)
     }
@@ -64,7 +64,7 @@ class PotionFocusedFury : ModPotion("focused_fury", true, 0x7FB8A4) {
             if (!entity.isPotionActive(ModPotions.focused_fury))
                 return
 
-            val furyData = entity.divineCustomData.focusedFuryData
+            val furyData = entity.divinePlayerData.focusedFuryData
             if (!furyData.hasFury())
                 return
             if (furyData.hasFury(entityMob))
@@ -84,7 +84,7 @@ class PotionFocusedFury : ModPotion("focused_fury", true, 0x7FB8A4) {
             if (mob !is IMob)
                 return
 
-            val furyData = attacker.divineCustomData.focusedFuryData
+            val furyData = attacker.divinePlayerData.focusedFuryData
             if (furyData.hasFury())
                 return
             furyData.setFury(mob)

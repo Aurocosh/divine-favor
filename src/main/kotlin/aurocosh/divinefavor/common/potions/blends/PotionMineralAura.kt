@@ -2,7 +2,7 @@ package aurocosh.divinefavor.common.potions.blends
 
 import aurocosh.divinefavor.common.config.common.ConfigPresence
 import aurocosh.divinefavor.common.constants.ConstMisc
-import aurocosh.divinefavor.common.lib.extensions.divineCustomData
+import aurocosh.divinefavor.common.lib.extensions.divinePlayerData
 import aurocosh.divinefavor.common.potions.base.effect.ModEffect
 import aurocosh.divinefavor.common.potions.base.potion.ModPotion
 import aurocosh.divinefavor.common.potions.common.ModBlendEffects
@@ -22,7 +22,7 @@ class PotionMineralAura : ModPotion("mineral_aura", true, 0x7FB8A4) {
     override fun onPotionAdded(livingBase: EntityLivingBase) {
         super.onPotionAdded(livingBase)
         if (livingBase is EntityPlayer)
-            livingBase.divineCustomData.mineralAuraData.reset()
+            livingBase.divinePlayerData.mineralAuraData.reset()
     }
 
     companion object {
@@ -37,7 +37,7 @@ class PotionMineralAura : ModPotion("mineral_aura", true, 0x7FB8A4) {
                 return
             if (!ModSpirits.romol.isActive)
                 return
-            if (player.divineCustomData.mineralAuraData.count()) {
+            if (player.divinePlayerData.mineralAuraData.count()) {
                 player.removePotionEffect(ModBlendEffects.mineral_aura)
                 player.addPotionEffect(ModEffect(ModBlessings.industrious_presence, ConfigPresence.industriousPresence.duration))
             }

@@ -3,7 +3,7 @@ package aurocosh.divinefavor.common.potions.potions
 import aurocosh.divinefavor.DivineFavor
 import aurocosh.divinefavor.common.config.common.ConfigSpells
 import aurocosh.divinefavor.common.constants.ConstMisc
-import aurocosh.divinefavor.common.lib.extensions.divineCustomData
+import aurocosh.divinefavor.common.lib.extensions.divinePlayerData
 import aurocosh.divinefavor.common.network.message.client.syncing.MessageSyncGrudge
 import aurocosh.divinefavor.common.potions.base.potion.ModPotionToggle
 import aurocosh.divinefavor.common.potions.common.ModPotions
@@ -30,7 +30,7 @@ class PotionGrudge : ModPotionToggle("grudge", true, 0x7FB8A4) {
         mc.fontRenderer.drawStringWithShadow(potionName, (x + 10 + 18).toFloat(), (y + 6).toFloat(), 16777215)
 
         val player = DivineFavor.proxy.clientPlayer
-        val mobName = I18n.format(player.divineCustomData.grudgeData.mobName)
+        val mobName = I18n.format(player.divinePlayerData.grudgeData.mobName)
         mc.fontRenderer.drawStringWithShadow(mobName, (x + 10 + 18).toFloat(), (y + 6 + 10).toFloat(), 8355711)
     }
 
@@ -46,7 +46,7 @@ class PotionGrudge : ModPotionToggle("grudge", true, 0x7FB8A4) {
             if (!entity.isPotionActive(ModPotions.grudge))
                 return
 
-            if (!entity.divineCustomData.grudgeData.hasGrudge(entityMob))
+            if (!entity.divinePlayerData.grudgeData.hasGrudge(entityMob))
                 return
             event.amount = event.amount + ConfigSpells.grudge.extraDamage
         }
@@ -55,7 +55,7 @@ class PotionGrudge : ModPotionToggle("grudge", true, 0x7FB8A4) {
         fun onPlayerDeath(event: LivingDeathEvent) {
             val entity = event.entity as? EntityPlayer ?: return
 
-            val grudgeData = entity.divineCustomData.grudgeData
+            val grudgeData = entity.divinePlayerData.grudgeData
             val attacker = event.source.trueSource
             if (attacker is IMob)
                 grudgeData.setGrudge(attacker)

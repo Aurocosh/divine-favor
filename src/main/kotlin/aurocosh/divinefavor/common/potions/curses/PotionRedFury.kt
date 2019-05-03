@@ -2,7 +2,7 @@ package aurocosh.divinefavor.common.potions.curses
 
 import aurocosh.divinefavor.common.config.common.ConfigPunishments
 import aurocosh.divinefavor.common.config.data.DoubleInterval
-import aurocosh.divinefavor.common.lib.extensions.divineCustomData
+import aurocosh.divinefavor.common.lib.extensions.divinePlayerData
 import aurocosh.divinefavor.common.network.message.client.syncing.MessageSyncRedFury
 import aurocosh.divinefavor.common.potions.base.potion.ModPotion
 import aurocosh.divinefavor.common.potions.common.ModCurses
@@ -28,14 +28,14 @@ class PotionRedFury : ModPotion("red_fury", false, 0x7FB8A4) {
         val z = directionInterval.random()
         val vector = Vec3d(x, y, z).scale(ConfigPunishments.redwind.dragSpeed.toDouble())
 
-        livingBase.divineCustomData.redFuryData.vector = vector
+        livingBase.divinePlayerData.redFuryData.vector = vector
         MessageSyncRedFury(vector).sendTo(livingBase)
         return
     }
 
     override fun performEffect(livingBase: EntityLivingBase, amplifier: Int) {
         val player = livingBase as EntityPlayer
-        val furyData = player.divineCustomData.redFuryData
+        val furyData = player.divinePlayerData.redFuryData
         val vector = furyData.vector
         player.motionX = vector.x
         player.motionY = vector.y

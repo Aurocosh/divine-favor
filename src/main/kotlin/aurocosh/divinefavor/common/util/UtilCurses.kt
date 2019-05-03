@@ -1,7 +1,7 @@
 package aurocosh.divinefavor.common.util
 
 import aurocosh.divinefavor.common.config.common.ConfigCurses
-import aurocosh.divinefavor.common.custom_data.living.LivingData
+import aurocosh.divinefavor.common.lib.extensions.divineLivingData
 import aurocosh.divinefavor.common.potions.base.effect.ModEffect
 import net.minecraft.entity.EntityList
 import net.minecraft.entity.EntityLivingBase
@@ -23,9 +23,7 @@ object UtilCurses {
         val entityString = EntityList.getKey(victim)?.toString() ?: ""
         curseResistance += ConfigCurses.mobResistances[entityString] ?: 0.0.toFloat()
 
-        val curse = LivingData.get(victim).curseData
-
-        curseResistance += curse.curseCount * ConfigCurses.curseResistancePerCurse
+        curseResistance += victim.divineLivingData.curseData.curseCount * ConfigCurses.curseResistancePerCurse
         if (victim is EntityPlayer)
             curseResistance += ConfigCurses.playerCurseResistance
         return curseResistance

@@ -3,7 +3,7 @@ package aurocosh.divinefavor.common.potions.potions
 import aurocosh.divinefavor.common.config.common.ConfigSpells
 import aurocosh.divinefavor.common.constants.ConstMisc
 import aurocosh.divinefavor.common.damage_source.ModDamageSources
-import aurocosh.divinefavor.common.lib.extensions.divineCustomData
+import aurocosh.divinefavor.common.lib.extensions.divinePlayerData
 import aurocosh.divinefavor.common.potions.base.potion.ModPotionToggle
 import aurocosh.divinefavor.common.potions.common.ModPotions
 import aurocosh.divinefavor.common.util.UtilEntity
@@ -26,7 +26,7 @@ class PotionMoltenSkin : ModPotionToggle("molten_skin", true, 0x7FB8A4) {
         if (livingBase !is EntityPlayer)
             return
 
-        val skinData = livingBase.divineCustomData.moltenSkinData
+        val skinData = livingBase.divinePlayerData.moltenSkinData
         if (livingBase.isInLava()) {
             skinData.resetTime()
             return

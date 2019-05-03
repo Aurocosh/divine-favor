@@ -2,7 +2,7 @@ package aurocosh.divinefavor.common.potions.presences
 
 import aurocosh.divinefavor.common.constants.ConstMisc
 import aurocosh.divinefavor.common.item.calling_stones.ModCallingStones
-import aurocosh.divinefavor.common.lib.extensions.divineCustomData
+import aurocosh.divinefavor.common.lib.extensions.divinePlayerData
 import aurocosh.divinefavor.common.potions.base.potion.ModPotion
 import aurocosh.divinefavor.common.potions.common.ModBlessings
 import net.minecraft.entity.EntityLivingBase
@@ -19,7 +19,7 @@ class PotionWarpingPresence : ModPotion("warping_presence", true, 0x7FB8A4) {
     override fun onPotionAdded(livingBase: EntityLivingBase) {
         super.onPotionAdded(livingBase)
         if (livingBase is EntityPlayer)
-            livingBase.divineCustomData.warpingPresenceData.reset()
+            livingBase.divinePlayerData.warpingPresenceData.reset()
     }
 
     companion object {
@@ -29,7 +29,7 @@ class PotionWarpingPresence : ModPotion("warping_presence", true, 0x7FB8A4) {
             val entity = event.entity as? EntityPlayer ?: return
             if (!entity.isPotionActive(ModBlessings.warping_presence))
                 return
-            if (!entity.world.isRemote && entity.divineCustomData.warpingPresenceData.tryLuck()) {
+            if (!entity.world.isRemote && entity.divinePlayerData.warpingPresenceData.tryLuck()) {
                 entity.removePotionEffect(ModBlessings.warping_presence)
                 entity.addItemStackToInventory(ItemStack(ModCallingStones.calling_stone_endererer))
             }

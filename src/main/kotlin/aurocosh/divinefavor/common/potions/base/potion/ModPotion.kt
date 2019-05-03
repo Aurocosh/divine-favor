@@ -2,11 +2,10 @@ package aurocosh.divinefavor.common.potions.base.potion
 
 import aurocosh.divinefavor.common.constants.ConstMisc
 import aurocosh.divinefavor.common.core.ResourceNamer
-import aurocosh.divinefavor.common.custom_data.living.LivingData
+import aurocosh.divinefavor.common.lib.extensions.divineLivingData
 import aurocosh.divinefavor.common.registry.ModRegistries
 import aurocosh.divinefavor.common.util.UtilGui
 import net.minecraft.client.Minecraft
-import net.minecraft.client.gui.Gui
 import net.minecraft.entity.Entity
 import net.minecraft.entity.EntityLivingBase
 import net.minecraft.entity.ai.attributes.AbstractAttributeMap
@@ -17,7 +16,6 @@ import net.minecraft.potion.PotionEffect
 import net.minecraft.util.ResourceLocation
 import net.minecraftforge.fml.relauncher.Side
 import net.minecraftforge.fml.relauncher.SideOnly
-import org.lwjgl.opengl.GL11
 
 abstract class ModPotion(name: String, protected var beneficial: Boolean, potionColor: Int) : Potion(false, potionColor) {
     var icon: ResourceLocation
@@ -85,14 +83,14 @@ abstract class ModPotion(name: String, protected var beneficial: Boolean, potion
 
     protected open fun onPotionAdded(livingBase: EntityLivingBase) {
         if (isCurse) {
-            val curse = LivingData.get(livingBase).curseData
+            val curse = livingBase.divineLivingData.curseData
             curse.addCurse()
         }
     }
 
     protected open fun onPotionRemoved(livingBase: EntityLivingBase) {
         if (isCurse) {
-            val curse = LivingData.get(livingBase).curseData
+            val curse = livingBase.divineLivingData.curseData
             curse.removeCurse()
         }
     }

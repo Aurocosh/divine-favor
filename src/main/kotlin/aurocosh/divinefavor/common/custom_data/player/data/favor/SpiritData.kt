@@ -16,12 +16,14 @@ import java.util.Arrays.asList
 class SpiritData {
 
     private val favorValues: IntArray
+    private val favorInfinite: BooleanArray
     private val spiritStatuses: Array<SpiritStatus>
     private val contractsStackHandlers: Array<ItemStackHandler>
 
     init {
         val spirits = ModMappers.spirits.values
-        favorValues = IntArray(spirits.size)
+        favorValues = IntArray(spirits.size) { 0 }
+        favorInfinite = BooleanArray(spirits.size) { false }
 
         spiritStatuses = Array(spirits.size) { i -> SpiritStatus(spirits[i]) }
         contractsStackHandlers = Array(spirits.size) {
@@ -55,6 +57,18 @@ class SpiritData {
         return spiritStatuses[spiritId].isInformActivity
     }
 
+    fun isFavorInfinite(spiritId: Int): Boolean {
+        return favorInfinite[spiritId];
+    }
+
+    fun setFavorInfinite(spiritId: Int, value: Boolean) {
+        favorInfinite[spiritId] = value
+    }
+
+    fun toggleFavorInfinite(spiritId: Int) {
+        favorInfinite[spiritId] = !favorInfinite[spiritId]
+    }
+
     fun getFavor(spiritId: Int): Int {
         return favorValues[spiritId]
     }
@@ -68,6 +82,8 @@ class SpiritData {
     }
 
     fun consumeFavor(spiritId: Int, value: Int): Boolean {
+        if (favorInfinite[spiritId])
+            return true;
         val favorValue = favorValues[spiritId]
         if (favorValue < value)
             return false
@@ -95,6 +111,14 @@ class SpiritData {
     fun setFavorValues(values: IntArray) {
         System.arraycopy(values, 0, favorValues, 0, values.size)
         refreshValues()
+    }
+
+    fun getFavorInfinite(): BooleanArray {
+        return favorInfinite
+    }
+
+    fun setFavorInfinite(values: BooleanArray) {
+        System.arraycopy(values, 0, favorInfinite, 0, values.size)
     }
 
     private fun getContractsFromStack(stack: ItemStack): List<ItemStack> {

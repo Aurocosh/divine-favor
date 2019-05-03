@@ -1,6 +1,6 @@
 package aurocosh.divinefavor.common.potions.potions
 
-import aurocosh.divinefavor.common.lib.extensions.divineCustomData
+import aurocosh.divinefavor.common.lib.extensions.divinePlayerData
 import aurocosh.divinefavor.common.potions.base.potion.ModPotionToggle
 import net.minecraft.entity.EntityLivingBase
 import net.minecraft.entity.player.EntityPlayer
@@ -12,7 +12,7 @@ class PotionGills : ModPotionToggle("potion_gills", true, 0x7FB8A4) {
         if (livingBase !is EntityPlayer)
             return
 
-        val gillsData = livingBase.divineCustomData.gillsData
+        val gillsData = livingBase.divinePlayerData.gillsData
         if (livingBase.isInWater()) {
             gillsData.resetTime()
             livingBase.setAir(300)

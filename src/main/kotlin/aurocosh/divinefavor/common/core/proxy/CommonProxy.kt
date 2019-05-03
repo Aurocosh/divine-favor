@@ -11,6 +11,7 @@ import aurocosh.divinefavor.common.item.bathing_blend.ModBathingBlends
 import aurocosh.divinefavor.common.item.calling_stones.ModCallingStones
 import aurocosh.divinefavor.common.item.common.ModItems
 import aurocosh.divinefavor.common.item.contract.ModContracts
+import aurocosh.divinefavor.common.item.favor_marks.ModFavorMarks
 import aurocosh.divinefavor.common.item.soul_shards.ModSoulShards
 import aurocosh.divinefavor.common.item.talisman_container.grimoire.capability.GrimoireDataHandler
 import aurocosh.divinefavor.common.item.talisman_container.spell_bow.capability.SpellBowDataHandler
@@ -19,11 +20,11 @@ import aurocosh.divinefavor.common.item.talismans.spell.common.ModSpellTalismans
 import aurocosh.divinefavor.common.item.wishing_stones.ModWishingStones
 import aurocosh.divinefavor.common.muliblock.common.ModMultiBlocks
 import aurocosh.divinefavor.common.network.GuiHandler
+import aurocosh.divinefavor.common.network.NetworkHandler
 import aurocosh.divinefavor.common.network.base.WrappedClientMessage
 import aurocosh.divinefavor.common.network.base.WrappedServerMessage
 import aurocosh.divinefavor.common.network.base.serialization.serializer_provider.BufSerializerProvider
 import aurocosh.divinefavor.common.network.common.MessageRegister
-import aurocosh.divinefavor.common.network.NetworkHandler
 import aurocosh.divinefavor.common.potions.common.ModBlendEffects
 import aurocosh.divinefavor.common.potions.common.ModBlessings
 import aurocosh.divinefavor.common.potions.common.ModCurses
@@ -71,6 +72,7 @@ open class CommonProxy {
         ModContracts.preInit()
         ModCallingStones.preInit()
         ModWishingStones.preInit()
+        ModFavorMarks.preInit()
 
         ModBlocks.preInit()
         ModEntities.preInit()

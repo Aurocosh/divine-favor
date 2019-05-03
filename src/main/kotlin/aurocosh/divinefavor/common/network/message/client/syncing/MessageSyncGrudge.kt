@@ -1,7 +1,7 @@
 package aurocosh.divinefavor.common.network.message.client.syncing
 
 import aurocosh.divinefavor.DivineFavor
-import aurocosh.divinefavor.common.custom_data.player.PlayerData
+import aurocosh.divinefavor.common.lib.extensions.divinePlayerData
 import aurocosh.divinefavor.common.network.base.WrappedClientMessage
 import net.minecraft.util.ResourceLocation
 import net.minecraftforge.fml.relauncher.Side
@@ -19,7 +19,6 @@ class MessageSyncGrudge : WrappedClientMessage {
     @SideOnly(Side.CLIENT)
     override fun handleSafe() {
         val player = DivineFavor.proxy.clientPlayer
-        val grudgeData = PlayerData[player]!!.grudgeData
-        grudgeData.mobTypeId = ResourceLocation(mobTypeId)
+        player.divinePlayerData.grudgeData.mobTypeId = ResourceLocation(mobTypeId)
     }
 }

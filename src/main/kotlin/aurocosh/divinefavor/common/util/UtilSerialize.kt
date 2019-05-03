@@ -1,10 +1,12 @@
 package aurocosh.divinefavor.common.util
 
 import aurocosh.divinefavor.common.lib.GlobalBlockPos
+import java.nio.ByteBuffer
 import java.util.*
+import kotlin.experimental.and
+import kotlin.experimental.or
 
 object UtilSerialize {
-
     fun serializeGlobalBlockPosArray(posArrayList: List<GlobalBlockPos>): IntArray {
         val array = IntArray(posArrayList.size * 4)
         var i = 0

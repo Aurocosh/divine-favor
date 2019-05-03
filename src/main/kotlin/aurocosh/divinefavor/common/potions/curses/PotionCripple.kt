@@ -2,7 +2,7 @@ package aurocosh.divinefavor.common.potions.curses
 
 import aurocosh.divinefavor.common.config.common.ConfigArrow
 import aurocosh.divinefavor.common.constants.ConstMisc
-import aurocosh.divinefavor.common.custom_data.living.LivingData
+import aurocosh.divinefavor.common.lib.extensions.divineLivingData
 import aurocosh.divinefavor.common.potions.base.potion.ModPotion
 import aurocosh.divinefavor.common.potions.common.ModCurses
 import net.minecraft.entity.EntityLivingBase
@@ -18,16 +18,14 @@ class PotionCripple : ModPotion("cripple", true, 0x7FB8A4) {
 
     override fun onPotionAdded(livingBase: EntityLivingBase) {
         super.onPotionAdded(livingBase)
-        val crippleData = LivingData.get(livingBase).crippleData
-        crippleData.resetCureTimer()
+        livingBase.divineLivingData.crippleData.resetCureTimer()
     }
 
     override fun performEffect(livingBase: EntityLivingBase, amplifier: Int) {
         if (livingBase.world.isRemote)
             return
         if (livingBase.isSprinting) {
-            val crippleData = LivingData.get(livingBase).crippleData
-            if (crippleData.cureTick())
+            if (livingBase.divineLivingData.crippleData.cureTick())
                 livingBase.removePotionEffect(ModCurses.cripple)
         }
     }

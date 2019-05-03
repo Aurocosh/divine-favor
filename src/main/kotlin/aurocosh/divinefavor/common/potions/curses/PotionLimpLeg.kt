@@ -1,7 +1,7 @@
 package aurocosh.divinefavor.common.potions.curses
 
 import aurocosh.divinefavor.common.constants.ConstMisc
-import aurocosh.divinefavor.common.custom_data.living.LivingData
+import aurocosh.divinefavor.common.lib.extensions.divineLivingData
 import aurocosh.divinefavor.common.potions.base.potion.ModPotion
 import aurocosh.divinefavor.common.potions.common.ModCurses
 import net.minecraft.entity.EntityLivingBase
@@ -18,16 +18,14 @@ class PotionLimpLeg : ModPotion("limp_leg", true, 0x7FB8A4) {
 
     override fun onPotionAdded(livingBase: EntityLivingBase) {
         super.onPotionAdded(livingBase)
-        val limpLegData = LivingData.get(livingBase).limpLegData
-        limpLegData.resetCureTimer()
+        livingBase.divineLivingData.limpLegData.resetCureTimer()
     }
 
     override fun performEffect(livingBase: EntityLivingBase, amplifier: Int) {
         if (livingBase.world.isRemote)
             return
         if (livingBase.isSneaking) {
-            val limpLegData = LivingData.get(livingBase).limpLegData
-            if (limpLegData.cureTick())
+            if (livingBase.divineLivingData.limpLegData.cureTick())
                 livingBase.removePotionEffect(ModCurses.limp_leg)
         }
     }
