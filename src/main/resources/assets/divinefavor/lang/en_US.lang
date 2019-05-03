@@ -355,7 +355,8 @@ tile.divinefavor:soulbound_lectern_wood.description=Special lectern that allows 
 ## OTHER
 tile.divinefavor:bath_heater.description=This block allows you to use special blends. Such blends grant special effects similar to potions. Read guidebook for more details (Immaterial guide).
 tile.divinefavor:ender_pumpkin.description=Enderman mask crafted from pumpkin. Greatly hinders your vision, but still has some practical uses.
-
+tile.divinefavor:red_pulse.description=Ghostly block that emits redstone signal and disappears very shortly
+tile.divinefavor:red_signal.description=Ghostly block that emits strong redstone signal and disappears shortly
 
 #ITEM DESCRIPTIONS FOR JEI AND PATCHOULI
 ## GEMS
