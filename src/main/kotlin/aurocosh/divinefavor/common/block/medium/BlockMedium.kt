@@ -36,8 +36,8 @@ class BlockMedium(name: String, material: Material) : ModBlock(ConstBlockNames.M
         creativeTab = DivineFavor.TAB_MAIN
     }
 
-    override fun getActualState(state: IBlockState, world: IBlockAccess, pos: BlockPos): IBlockState {
-        val te = if (world is ChunkCache) world.getTileEntity(pos, Chunk.EnumCreateEntityType.CHECK) else world.getTileEntity(pos)
+    override fun getActualState(state: IBlockState, world: IBlockAccess?, pos: BlockPos): IBlockState {
+        val te = if (world is ChunkCache) world.getTileEntity(pos, Chunk.EnumCreateEntityType.CHECK) else world!!.getTileEntity(pos)
         return if (te is TileMedium) state.withProperty(STATE, te.getState()).withProperty(STONE, te.getStone()) else super.getActualState(state, world, pos)
     }
 
@@ -70,7 +70,7 @@ class BlockMedium(name: String, material: Material) : ModBlock(ConstBlockNames.M
         return true
     }
 
-    override fun createNewTileEntity(world: World, meta: Int): TileEntity? {
+    override fun createNewTileEntity(world: World?, meta: Int): TileEntity? {
         return TileMedium()
     }
 

@@ -13,20 +13,18 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent
 import net.minecraftforge.fml.common.gameevent.PlayerEvent
 
 @Mod.EventBusSubscriber(modid = ConstMisc.MOD_ID)
-class LoginDataSyncer {
-    companion object {
-        @SubscribeEvent
-        fun onPlayerLogin(event: PlayerEvent.PlayerLoggedInEvent) {
-            if (event.player !is EntityPlayerMP)
-                return
+object LoginDataSyncer {
+    @SubscribeEvent
+    fun onPlayerLogin(event: PlayerEvent.PlayerLoggedInEvent) {
+        if (event.player !is EntityPlayerMP)
+            return
 
-            val handler = event.player.divinePlayerData
-            MessageSyncAllSpiritData(handler.spiritData).sendTo(event.player)
-            MessageSyncFury(handler.focusedFuryData.mobTypeId).sendTo(event.player)
-            MessageSyncGrudge(handler.grudgeData.mobTypeId).sendTo(event.player)
+        val handler = event.player.divinePlayerData
+        MessageSyncAllSpiritData(handler.spiritData).sendTo(event.player)
+        MessageSyncFury(handler.focusedFuryData.mobTypeId).sendTo(event.player)
+        MessageSyncGrudge(handler.grudgeData.mobTypeId).sendTo(event.player)
 
-            val livingDataHandler = event.player.divineLivingData
-            MessageSyncWindLeash(livingDataHandler.windLeashData.vector).sendTo(event.player)
-        }
+        val livingDataHandler = event.player.divineLivingData
+        MessageSyncWindLeash(livingDataHandler.windLeashData.vector).sendTo(event.player)
     }
 }
