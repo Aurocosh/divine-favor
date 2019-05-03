@@ -20,7 +20,7 @@ import net.minecraftforge.fml.relauncher.SideOnly
 class ItemFavorMark(val spirit: ModSpirit, orderIndex: Int) : ModItem("favor_mark_" + spirit.name, "favor_marks/" + spirit.name, orderIndex) {
 
     init {
-        setMaxStackSize(64)
+        setMaxStackSize(1)
         creativeTab = DivineFavor.TAB_GEMS
     }
 
