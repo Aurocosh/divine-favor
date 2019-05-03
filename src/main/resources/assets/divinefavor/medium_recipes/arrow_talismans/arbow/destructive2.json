@@ -1,0 +1,22 @@
+{
+  "result": {
+    "item": "divinefavor:arrow_talisman_destructive_2"
+  },
+  "stone": "divinefavor:calling_stone_arbow",
+  "ingredients": [
+    {
+      "item": "minecraft:paper"
+    },
+    {
+      "item": "minecraft:dye",
+      "data": 12
+    },
+    {
+      "item": "minecraft:arrow",
+      "count": 1
+    },
+    {
+      "item": "minecraft:iron_pickaxe"
+    }
+  ]
+}

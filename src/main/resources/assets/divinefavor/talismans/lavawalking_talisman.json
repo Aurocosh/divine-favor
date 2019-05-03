@@ -1,7 +1,0 @@
-{
-  "name": "lavawalking_talisman",
-  "spellType": "LAVAWALKING",
-  "requirement": {},
-  "castOnUse": true,
-  "castOnRightClick": true
-}

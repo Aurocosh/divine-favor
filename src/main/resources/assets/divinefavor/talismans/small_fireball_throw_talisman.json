@@ -1,7 +1,0 @@
-{
-  "name": "small_fireball_throw_talisman",
-  "spellType": "SMALL_FIREBALL_THROW",
-  "requirement": {},
-  "castOnUse": true,
-  "castOnRightClick": true
-}

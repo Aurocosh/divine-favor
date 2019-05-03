@@ -1,0 +1,36 @@
+{
+  "result": {
+    "item": "divinefavor:rope_guide",
+    "count": 16
+  },
+  "stones": [
+    "divinefavor:calling_stone_arbow",
+    "divinefavor:calling_stone_blizrabi",
+    "divinefavor:calling_stone_endererer",
+    "divinefavor:calling_stone_loon",
+    "divinefavor:calling_stone_neblaze",
+    "divinefavor:calling_stone_redwind",
+    "divinefavor:calling_stone_romol",
+    "divinefavor:calling_stone_squarefury",
+    "divinefavor:calling_stone_timber"
+  ],
+  "ingredients": [
+    {
+      "item": "minecraft:string",
+      "count": 16
+    },
+    {
+      "item": "minecraft:dye",
+      "data": 11
+    },
+    {
+      "item": "minecraft:tallgrass",
+      "data": 1,
+      "count": 16
+    },
+    {
+      "item": "minecraft:yellow_flower",
+      "count": 4
+    }
+  ]
+}

@@ -1,7 +1,0 @@
-{
-  "name": "waterwalking_talisman",
-  "spellType": "WATERWALKING",
-  "requirement": {},
-  "castOnUse": true,
-  "castOnRightClick": true
-}

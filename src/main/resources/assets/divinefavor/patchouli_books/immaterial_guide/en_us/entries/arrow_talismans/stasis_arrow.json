@@ -1,15 +1,15 @@
 {
   "name": "Stasis arrow",
-  "icon": "divinefavor:arrow_talisman_stasis_arrow",
+  "icon": "divinefavor:arrow_talisman_stasis",
   "category": "arrow_talismans",
   "pages": [
     {
       "type": "item_description",
-      "talisman": "divinefavor:arrow_talisman_stasis_arrow"
+      "talisman": "divinefavor:arrow_talisman_stasis"
     },
     {
       "type": "arrow_talisman_stats",
-      "talisman": "divinefavor:arrow_talisman_stasis_arrow"
+      "talisman": "divinefavor:arrow_talisman_stasis"
     }
   ]
 }

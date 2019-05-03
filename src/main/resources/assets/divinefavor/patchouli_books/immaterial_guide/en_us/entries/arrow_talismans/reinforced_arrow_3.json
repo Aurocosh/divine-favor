@@ -1,15 +1,15 @@
 {
   "name": "Reinforced arrow I",
-  "icon": "divinefavor:arrow_talisman_reinforced_arrow_3",
+  "icon": "divinefavor:arrow_talisman_reinforced_3",
   "category": "arrow_talismans",
   "pages": [
     {
       "type": "item_description",
-      "talisman": "divinefavor:arrow_talisman_reinforced_arrow_3"
+      "talisman": "divinefavor:arrow_talisman_reinforced_3"
     },
     {
       "type": "arrow_talisman_stats",
-      "talisman": "divinefavor:arrow_talisman_reinforced_arrow_3"
+      "talisman": "divinefavor:arrow_talisman_reinforced_3"
     }
   ]
 }

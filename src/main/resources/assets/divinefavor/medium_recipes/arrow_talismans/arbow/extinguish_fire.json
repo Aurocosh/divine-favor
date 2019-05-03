@@ -1,0 +1,22 @@
+{
+  "result": {
+    "item": "divinefavor:arrow_talisman_extinguish_fire"
+  },
+  "stone": "divinefavor:calling_stone_arbow",
+  "ingredients": [
+    {
+      "item": "minecraft:paper"
+    },
+    {
+      "item": "minecraft:dye",
+      "data": 0
+    },
+    {
+      "item": "minecraft:arrow",
+      "count": 1
+    },
+    {
+      "item": "minecraft:water_bucket"
+    }
+  ]
+}

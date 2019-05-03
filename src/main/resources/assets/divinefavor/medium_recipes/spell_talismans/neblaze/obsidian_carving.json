@@ -1,0 +1,22 @@
+{
+  "result": {
+    "item": "divinefavor:talisman_obsidian_carving"
+  },
+  "stone": "divinefavor:calling_stone_neblaze",
+  "ingredients": [
+    {
+      "item": "minecraft:paper"
+    },
+    {
+      "item": "minecraft:dye",
+      "data": 9
+    },
+    {
+      "item": "minecraft:lava_bucket"
+    },
+    {
+      "item": "minecraft:obsidian",
+      "count": 1
+    }
+  ]
+}

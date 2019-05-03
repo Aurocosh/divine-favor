@@ -1,0 +1,19 @@
+{
+  "result": {
+    "item": "divinefavor:talisman_place_block"
+  },
+  "stone": "divinefavor:calling_stone_romol",
+  "ingredients": [
+    {
+      "item": "minecraft:paper"
+    },
+    {
+      "item": "minecraft:dye",
+      "data": 8
+    },
+    {
+      "item": "minecraft:stick",
+      "count": 16
+    }
+  ]
+}

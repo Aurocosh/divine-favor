@@ -1,7 +1,0 @@
-{
-    "parent": "item/generated",
-    "textures": {
-        "layer1": "divinefavor:items/arrow_talismans/reinforced_arrow_1",
-        "layer0": "divinefavor:items/arrow_talismans/base"
-    }
-}

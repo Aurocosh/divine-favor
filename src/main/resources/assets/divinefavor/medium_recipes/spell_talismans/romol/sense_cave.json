@@ -1,0 +1,24 @@
+{
+  "result": {
+    "item": "divinefavor:talisman_sense_cave"
+  },
+  "stone": "divinefavor:calling_stone_romol",
+  "ingredients": [
+    {
+      "item": "minecraft:paper"
+    },
+    {
+      "item": "minecraft:dye",
+      "data": 4
+    },
+    {
+      "item": "minecraft:glowstone_dust",
+      "count": 1
+    },
+    {
+      "item": "minecraft:stone",
+      "data": 0,
+      "count": 64
+    }
+  ]
+}

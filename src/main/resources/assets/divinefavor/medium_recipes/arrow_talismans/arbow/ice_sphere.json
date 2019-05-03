@@ -1,0 +1,27 @@
+{
+  "result": {
+    "item": "divinefavor:arrow_talisman_ice_sphere"
+  },
+  "stone": "divinefavor:calling_stone_arbow",
+  "ingredients": [
+    {
+      "item": "minecraft:paper"
+    },
+    {
+      "item": "minecraft:dye",
+      "data": 6
+    },
+    {
+      "item": "minecraft:arrow",
+      "count": 1
+    },
+    {
+      "item": "minecraft:ice",
+      "count": 16
+    },
+    {
+      "item": "minecraft:snowball",
+      "count": 16
+    }
+  ]
+}

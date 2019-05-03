@@ -1,0 +1,22 @@
+{
+  "result": {
+    "item": "divinefavor:talisman_ping"
+  },
+  "stone": "divinefavor:calling_stone_redwind",
+  "ingredients": [
+    {
+      "item": "minecraft:paper"
+    },
+    {
+      "item": "minecraft:dye",
+      "data": 11
+    },
+    {
+      "item": "minecraft:iron_nugget"
+    },
+    {
+      "item": "minecraft:glowstone_dust",
+      "count": 4
+    }
+  ]
+}
