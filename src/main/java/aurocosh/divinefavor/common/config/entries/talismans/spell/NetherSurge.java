@@ -19,7 +19,7 @@ public class NetherSurge {
     public int maxBlocksToReplace = 300;
     @Config.Name("Min enemies to spawn")
     public int minEnemiesToSpawn = 3;
-    @Config.Name("Max blocks to replace")
+    @Config.Name("Max enemies to spawn")
     public int maxEnemiesToSpawn = 10;
     @Config.Name("Enemy spawn radius")
     public int spawnRadius = 10;

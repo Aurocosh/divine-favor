@@ -31,7 +31,8 @@ class SpellTalismanFellTree(name: String, spirit: ModSpirit, favorCost: Int, opt
         if (logs.isEmpty())
             return logs
 
-        val leaves = UtilCoordinates.floodFill(logs, BlockPosConstants.DIRECT_NEIGHBOURS, world::isLeaves, ConfigSpells.fellTree.minLeafCount)
+        val possibleLeaves = logs.map { logPos -> BlockPosConstants.DIRECT_NEIGHBOURS.map(logPos::add) }.flatten().toSet()
+        val leaves = UtilCoordinates.floodFill(possibleLeaves, BlockPosConstants.DIRECT_NEIGHBOURS, world::isLeaves, ConfigSpells.fellTree.minLeafCount)
         if (leaves.size < ConfigSpells.fellTree.minLeafCount)
             return ArrayList()
         return logs

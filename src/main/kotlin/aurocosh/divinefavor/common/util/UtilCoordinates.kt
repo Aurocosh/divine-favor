@@ -156,7 +156,7 @@ object UtilCoordinates {
         return null
     }
 
-    fun floodFill(start: List<BlockPos>, expansionDirs: List<BlockPos>, predicate: (BlockPos) -> Boolean, limit: Int): List<BlockPos> {
+    fun floodFill(start: Collection<BlockPos>, expansionDirs: Collection<BlockPos>, predicate: (BlockPos) -> Boolean, limit: Int): List<BlockPos> {
         val expansionFront = ArrayDeque(start)
         val explored = HashSet(start)
         val result = ArrayList<BlockPos>()

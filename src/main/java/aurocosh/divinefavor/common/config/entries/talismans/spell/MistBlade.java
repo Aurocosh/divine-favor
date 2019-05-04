@@ -10,8 +10,8 @@ public class MistBlade {
     @Config.Name("Extra ranged damage")
     public float extraRangedDamage = 8;
     @Config.Name("Fog start")
-    public int fogStart = 4;
+    public int fogStart = 7;
     @Config.Name("Fog end")
-    public int fogEnd = 5;
+    public int fogEnd = 12;
 
 }

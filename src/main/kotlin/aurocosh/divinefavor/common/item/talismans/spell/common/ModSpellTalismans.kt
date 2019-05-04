@@ -238,7 +238,7 @@ object ModSpellTalismans {
 
 
         // squarefury
-        butchering_strike = SpellTalismanModPotionCharge("butchering_strike", ModSpirits.squarefury, ConfigSpells.butcheringStrike.favorCost, ModPotions.butchering_strike, ConfigSpells.butcheringStrike.charges)
+        butchering_strike = SpellTalismanModPotionToggle("butchering_strike", ModSpirits.squarefury, ConfigSpells.butcheringStrike.favorCost, ModPotions.butchering_strike)
         consuming_fury = SpellTalismanModPotion("consuming_fury", ModSpirits.squarefury, ConfigSpells.consumingFury.favorCost, ModPotions.consuming_fury, ConfigSpells.consumingFury.duration)
         focused_fury = SpellTalismanModPotion("focused_fury", ModSpirits.squarefury, ConfigSpells.focusedFury.favorCost, ModPotions.focused_fury, ConfigSpells.focusedFury.duration)
         grudge = SpellTalismanGrudge("grudge", ModSpirits.squarefury, ConfigSpells.grudge.favorCost, SpellOptions.ALL_CAST)
