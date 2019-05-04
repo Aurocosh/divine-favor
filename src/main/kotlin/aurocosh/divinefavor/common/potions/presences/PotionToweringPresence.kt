@@ -30,6 +30,8 @@ class PotionToweringPresence : ModPotion("towering_presence", true, 0x7FB8A4) {
     }
 
     override fun performEffect(livingBase: EntityLivingBase, amplifier: Int) {
+        if (livingBase.world.isRemote)
+            return
         val player = livingBase as EntityPlayer
         if (!player.divinePlayerData.toweringPresenceData.tick())
             return
