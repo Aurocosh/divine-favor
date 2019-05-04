@@ -50,7 +50,7 @@ abstract class ModPotion(name: String, protected var beneficial: Boolean, potion
 
     @SideOnly(Side.CLIENT)
     override fun renderInventoryEffect(x: Int, y: Int, effect: PotionEffect, mc: Minecraft) {
-        UtilGui.drawTexture(mc, icon, x + 6, x + 6, 16, 16)
+        UtilGui.drawTexture(mc, icon, x + 6, y + 6, 16, 16)
         renderCustomInvText(x, y, effect, mc)
     }
 
@@ -60,7 +60,7 @@ abstract class ModPotion(name: String, protected var beneficial: Boolean, potion
 
     @SideOnly(Side.CLIENT)
     override fun renderHUDEffect(x: Int, y: Int, effect: PotionEffect, mc: Minecraft, alpha: Float) {
-        UtilGui.drawTexture(mc, icon, x + 4, x + 4, 16, 16)
+        UtilGui.drawTexture(mc, icon, x + 4, y + 4, 16, 16)
     }
 
     override fun performEffect(livingBase: EntityLivingBase, amplifier: Int) {}
