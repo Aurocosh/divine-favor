@@ -10,11 +10,13 @@ import aurocosh.divinefavor.common.lib.extensions.isIce
 import aurocosh.divinefavor.common.lib.wrapper.AreaPredicate
 import aurocosh.divinefavor.common.lib.wrapper.ConvertingPredicate
 import aurocosh.divinefavor.common.spirit.base.ModSpirit
+import aurocosh.divinefavor.common.tasks.BlockProcessingTask
 import aurocosh.divinefavor.common.util.UtilBlock
 import aurocosh.divinefavor.common.util.UtilCoordinates
 import aurocosh.divinefavor.common.util.UtilPredicate
 import net.minecraft.block.Block
 import net.minecraft.init.Blocks
+import net.minecraft.util.math.BlockPos
 import java.util.*
 
 class SpellTalismanLakeThawing(name: String, spirit: ModSpirit, favorCost: Int, options: EnumSet<SpellOptions>) : ItemSpellTalisman(name, spirit, favorCost, options) {
@@ -31,10 +33,12 @@ class SpellTalismanLakeThawing(name: String, spirit: ModSpirit, favorCost: Int, 
         val spherePoints = UtilCoordinates.getBlocksInSphere(context.pos, ConfigSpells.lakeThawing.radius)
         val startingPoints = spherePoints.filter(predicate).toList()
 
-        val pointsToFreeze = UtilCoordinates.floodFill(startingPoints, BlockPosConstants.DIRECT_NEIGHBOURS, predicate, ConfigSpells.lakeThawing.floodLimit)
+        val pointsToUnfreeze = UtilCoordinates.floodFill(startingPoints, BlockPosConstants.DIRECT_NEIGHBOURS, predicate, ConfigSpells.lakeThawing.floodLimit)
 
         val state = Blocks.WATER.defaultState
-        for (pos in pointsToFreeze)
+        val task = BlockProcessingTask(pointsToUnfreeze, world, 1) { pos: BlockPos ->
             UtilBlock.replaceBlock(context.player, world, pos, state)
+        }
+        task.start()
     }
 }
