@@ -60,10 +60,14 @@ repositories {
     mavenCentral()
 }
 
-logging.level = LogLevel.DEBUG
+//logging.level = LogLevel.DEBUG
+mod_version = "${mod_version}.${generateVersionCode()}"
+version = mod_version
+//println version
 
-version = "${mod_version}.${generateVersionCode()}"
-println version
+if (hasProperty('buildnumber')) {
+    version = "${version}-${this.properties['buildnumber']}"
+}
 
 group = mod_group
 archivesBaseName = mod_archivesBaseName
@@ -77,6 +81,9 @@ minecraft {
     mappings = mc_mappings
     useDepAts = true
     makeObfSourceJar = true
+
+    replace 'GRADLE:BUILD', '1'
+    replace 'GRADLE:VERSION', mod_version
 }
 
 dependencies {
@@ -88,13 +95,6 @@ dependencies {
     compile "com.blamejared:MTLib:3.0.4.8"
     compile  "CraftTweaker2:CraftTweaker2-MC1120-Main:1.12-${ct_version}"
 
-
-    deobfProvided "mcp.mobius.waila:Hwyla:${hwyla_version}_${mc_sub_version}:api"
-    runtime "mcp.mobius.waila:Hwyla:${hwyla_version}_${mc_sub_version}"
-
-//    deobfCompile "mcjty.theoneprobe:TheOneProbe-${mc_version}:${mc_version}-1.4.14-7"
-//    deobfCompile "com.github.mcjty:intwheel:${mc_version}-1.2.7"
-    //compile "cofh:RedstoneFlux:1.12-2.1.0.6:universal"
     deobfCompile "vazkii.patchouli:Patchouli:${p_version}"
     deobfCompile "net.darkhax.bookshelf:Bookshelf-${mc_sub_version}:2.3.568"
 
@@ -112,6 +112,8 @@ processResources
     from(sourceSets.main.resources.srcDirs) {
         include 'mcmod.info'
 
+println project.version
+println project.minecraft.version
         // replace version and mcversion
         expand 'version':project.version, 'mcversion':project.minecraft.version
     }
