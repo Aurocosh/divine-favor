@@ -7,7 +7,7 @@ import net.minecraft.util.math.MathHelper
 class EvilEyeData {
     var severity: Int = 1
         set(value) {
-            MathHelper.clamp(value, ConfigSpells.evilEye.startingSeverity, ConfigSpells.evilEye.maxSeverity)
+            field = MathHelper.clamp(value, ConfigSpells.evilEye.startingSeverity, ConfigSpells.evilEye.maxSeverity)
         }
 
     fun increaseSeverity(increase: Int) {

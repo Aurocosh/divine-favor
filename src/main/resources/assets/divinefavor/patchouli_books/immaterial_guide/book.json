@@ -2,5 +2,6 @@
   "name": "Immaterial guide",
   "landing_text": "Face immaterial beings, form contracts and gain power",
   "version": 1,
+  "model": "divinefavor:immaterial_guide",
   "creative_tab": "divinefavor"
 }

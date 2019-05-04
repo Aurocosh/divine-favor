@@ -3,9 +3,9 @@ package aurocosh.divinefavor.common.item
 import aurocosh.divinefavor.DivineFavor
 import aurocosh.divinefavor.common.constants.ConstGemTabOrder
 import aurocosh.divinefavor.common.item.base.ModItem
-import aurocosh.divinefavor.common.lib.extensions.hasKey
-import aurocosh.divinefavor.common.lib.extensions.getBlockPos
 import aurocosh.divinefavor.common.lib.extensions.compound
+import aurocosh.divinefavor.common.lib.extensions.getBlockPos
+import aurocosh.divinefavor.common.lib.extensions.hasKey
 import aurocosh.divinefavor.common.util.UtilEntity
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.item.ItemStack
@@ -19,7 +19,7 @@ import net.minecraft.world.World
 class ItemWarpMarker(name: String, private val canTeleportToDimensions: Boolean) : ModItem(name, name, ConstGemTabOrder.OTHER_GEMS) {
 
     init {
-        setMaxStackSize(1)
+        setMaxStackSize(64)
         creativeTab = DivineFavor.TAB_GEMS
     }
 

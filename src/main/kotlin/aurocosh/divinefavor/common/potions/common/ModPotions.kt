@@ -8,36 +8,36 @@ import aurocosh.divinefavor.common.potions.potions.*
 import net.minecraft.init.Blocks
 
 object ModPotions {
+    lateinit var armor_of_pacifist: ModPotionToggle
     lateinit var arrow_deflection: ModPotion
+    lateinit var butchering_strike: ModPotionToggleLimited
     lateinit var consuming_fury: ModPotion
+    lateinit var crushing_palm: ModPotionToggleLimited
     lateinit var crystalline_road: ModPotion
     lateinit var empower_axe: ModPotion
     lateinit var empower_pickaxe: ModPotion
     lateinit var escape_plan: ModPotion
+    lateinit var extreme_buoyancy: ModPotionToggle
+    lateinit var fall_negation: ModPotionCharge
     lateinit var fins: ModPotion
     lateinit var focused_fury: ModPotion
-    lateinit var miners_focus: ModPotion
-    lateinit var obsidian_road: ModPotion
-    lateinit var starvation: ModPotion
-    lateinit var stone_fever: ModPotion
-    lateinit var wild_charge: ModPotion
-    lateinit var wild_sprint: ModPotion
-    lateinit var butchering_strike: ModPotionCharge
-    lateinit var fall_negation: ModPotionCharge
-    lateinit var armor_of_pacifist: ModPotionToggle
-    lateinit var extreme_buoyancy: ModPotionToggle
     lateinit var gills: ModPotionToggle
     lateinit var ground_flow: ModPotionToggle
     lateinit var grudge: ModPotionToggle
     lateinit var hovering: ModPotionToggle
     lateinit var instant_dive: ModPotionToggle
+    lateinit var miners_focus: ModPotion
     lateinit var mist_blade: ModPotionToggle
     lateinit var molten_skin: ModPotionToggle
     lateinit var night_eye: ModPotionToggle
+    lateinit var obsidian_road: ModPotion
     lateinit var prismatic_eyes: ModPotionToggle
     lateinit var spider_might: ModPotionToggle
-    lateinit var crushing_palm: ModPotionToggleLimited
+    lateinit var starvation: ModPotion
+    lateinit var stone_fever: ModPotion
     lateinit var toadic_jump: ModPotionToggleLimited
+    lateinit var wild_charge: ModPotion
+    lateinit var wild_sprint: ModPotion
     lateinit var wooden_punch: ModPotionToggleLimited
 
     fun preInit() {

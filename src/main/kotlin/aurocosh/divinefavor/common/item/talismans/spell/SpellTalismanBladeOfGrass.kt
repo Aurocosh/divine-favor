@@ -50,7 +50,7 @@ class SpellTalismanBladeOfGrass(name: String, spirit: ModSpirit, favorCost: Int,
             return false
         if (e === player)
             return false
-        return if (!isInRadius(origin, e)) false else !e.isPotionActive(MobEffects.SLOWNESS)
+        return isInRadius(origin, e)
     }
 
     private fun isInRadius(origin: BlockPos, entity: Entity): Boolean {

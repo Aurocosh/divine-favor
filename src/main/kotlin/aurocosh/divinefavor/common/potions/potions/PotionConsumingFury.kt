@@ -56,7 +56,7 @@ class PotionConsumingFury : ModPotion("consuming_fury", true, 0x7FB8A4) {
             killCounts[player] = killCount
             val killsLeft = ConfigSpells.consumingFury.mobsToKill - killCount
             if (killsLeft > 0)
-                player.sendMessage(TextComponentTranslation("Kills left: %s",killCount))
+                player.sendMessage(TextComponentTranslation("Kills left: %s", killsLeft))
         }
     }
 }

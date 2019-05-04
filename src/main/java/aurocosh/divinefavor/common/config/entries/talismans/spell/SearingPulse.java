@@ -10,9 +10,7 @@ public class SearingPulse {
     @Config.Name("Max neighbours to add")
     public int maxNeighboursToAdd = 4;
     @Config.Name("Min blocks to smelt")
-    public int minBlocksToSmelt = 20;
+    public int minBlocksToSmelt = 50;
     @Config.Name("Max blocks to smelt")
-    public int maxBlocksToSmelt = 30;
-    @Config.Name("Chance to create fire")
-    public float chanceToCreateFire = 0.4f;
+    public int maxBlocksToSmelt = 100;
 }
