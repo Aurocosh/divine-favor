@@ -9,6 +9,7 @@ import aurocosh.divinefavor.common.lib.extensions.getBlock
 import aurocosh.divinefavor.common.lib.extensions.isIce
 import aurocosh.divinefavor.common.lib.wrapper.ConvertingPredicate
 import aurocosh.divinefavor.common.spirit.base.ModSpirit
+import aurocosh.divinefavor.common.tasks.BlockProcessingTask
 import aurocosh.divinefavor.common.util.UtilBlock
 import aurocosh.divinefavor.common.util.UtilCoordinates
 import net.minecraft.block.Block
@@ -30,8 +31,11 @@ class ArrowTalismanIceBreaker(name: String, spirit: ModSpirit, favorCost: Int, c
         val predicate = ConvertingPredicate(world::getBlock, Block::isIce)
         val posList = UtilCoordinates.floodFill(listOf(blockPos), BlockPosConstants.DIRECT_AND_DIAGONAL, predicate::invoke, limit)
 
-        for (pos in posList)
+        val task = BlockProcessingTask(posList, world, 10) { pos: BlockPos ->
             UtilBlock.removeBlock(shooter as EntityPlayer, world, ItemStack.EMPTY, pos, true, false, false)
+        }
+        task.start()
+
         return true
     }
 
