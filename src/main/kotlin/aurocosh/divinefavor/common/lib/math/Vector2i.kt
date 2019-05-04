@@ -1,8 +1,5 @@
 package aurocosh.divinefavor.common.lib.math
 
-import aurocosh.divinefavor.common.lib.interfaces.IDeepCopy
-import java.util.*
-
 data class Vector2i(val x: Int, val y: Int) {
 
     constructor(n: Int) : this(n, n) {
