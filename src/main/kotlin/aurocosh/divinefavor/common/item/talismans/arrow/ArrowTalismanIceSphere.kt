@@ -7,6 +7,7 @@ import aurocosh.divinefavor.common.item.talismans.arrow.base.ArrowType
 import aurocosh.divinefavor.common.item.talismans.arrow.base.ItemArrowTalisman
 import aurocosh.divinefavor.common.lib.extensions.isAirOrReplacable
 import aurocosh.divinefavor.common.spirit.base.ModSpirit
+import aurocosh.divinefavor.common.tasks.BlockProcessingTask
 import aurocosh.divinefavor.common.util.UtilBlock
 import aurocosh.divinefavor.common.util.UtilCoordinates
 import net.minecraft.entity.EntityLivingBase
@@ -23,11 +24,14 @@ class ArrowTalismanIceSphere(name: String, spirit: ModSpirit, favorCost: Int, co
         val world = spellArrow.world
 
         val sphereOutline = UtilCoordinates.getSphereOutline(spellArrow.position, ConfigArrow.iceSphereArrow.internalRadius, ConfigArrow.iceSphereArrow.externalRadius)
-        val replaceablePositions = sphereOutline.filter(world::isAirOrReplacable)
+        val replaceablePositions = sphereOutline.filter(world::isAirOrReplacable).sortedBy(BlockPos::getY).toList()
 
         val defaultState = Blocks.ICE.defaultState
-        for (pos in replaceablePositions)
+
+        val task = BlockProcessingTask(replaceablePositions, world, 20) { pos: BlockPos ->
             UtilBlock.replaceBlock(shooter as EntityPlayer, world, pos, defaultState)
+        }
+        task.start()
         return true
     }
 }
