@@ -58,15 +58,17 @@ class TileBathHeater : TileEntity(), ITickable, IAreaWatcher {
     private val loopedCounter: LoopedCounter
     private val waterPositions: MutableSet<BlockPos>
 
-    public var state = BathHeaterState.INACTIVE
+    private var _state = BathHeaterState.INACTIVE
+    public var state: BathHeaterState
         set(value) {
-            if (field == value)
+            if (_state == value)
                 return
-            field = value
+            _state = value
             markDirty()
             val blockState = world.getBlockState(pos)
             getWorld().notifyBlockUpdate(pos, blockState, blockState, 3)
         }
+        get() = _state
 
     private val fuelStackHandler = object : ItemStackHandler(1) {
         override fun isItemValid(slot: Int, stack: ItemStack): Boolean {
@@ -141,7 +143,7 @@ class TileBathHeater : TileEntity(), ITickable, IAreaWatcher {
         maxBurnTime = compound.getInteger(TAG_MAX_BURN_TIME)
         currentBurnTime = compound.getInteger(TAG_CURRENT_BURN_TIME)
         progressBurning = if (maxBurnTime == 0) 0 else currentBurnTime / maxBurnTime
-        state = BathHeaterState[compound.getInteger(TAG_STATE_HEATER)]
+        _state = BathHeaterState[compound.getInteger(TAG_STATE_HEATER)]
         waterPositions.clear()
         waterPositions.addAll(UtilBlockPos.deserialize(compound.getIntArray(TAG_WATER_POSITIONS)))
         loopedCounter.setTickRate(compound.getInteger(TAG_EFFECT_TICK_RATE))
@@ -255,7 +257,7 @@ class TileBathHeater : TileEntity(), ITickable, IAreaWatcher {
             return
         if (currentEffectTime <= 0) {
             val stack = blendStackHandler.getStackInSlot(0)
-            if (!stack.isEmpty) {
+            if (!stack.isEmpty && stack.item is ItemBathingBlend) {
                 activeBlend = stack.item as ItemBathingBlend
                 maxEffectTime = stack.compound.getInteger(TAG_DURATION)
                 loopedCounter.setTickRate(stack.compound.getInteger(TAG_RATE))

@@ -24,10 +24,9 @@ class GuiBathHeater(player: EntityPlayer, private var bathHeater: TileBathHeater
             this.drawTexturedModalRect(guiLeft + 81, guiTop + 42 + 12 - k, 176, 12 - k, 14, k + 1)
         }
 
-
         if (bathHeater.isBurning) {
             val k = bathHeater.clientProgressEffect * 30 / 100
-            this.drawTexturedModalRect(guiLeft + 47 + 29 - k, guiTop + 25, 176 + 29 - k, 28, k + 1, 12)
+            this.drawTexturedModalRect(guiLeft + 47 + 30 - k, guiTop + 25, 176 + 30 - k, 28, k + 1, 12)
             this.drawTexturedModalRect(guiLeft + 100, guiTop + 25, 176, 15, k + 1, 12)
         }
     }

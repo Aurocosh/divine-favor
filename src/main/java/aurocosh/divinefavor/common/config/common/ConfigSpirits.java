@@ -14,7 +14,7 @@ public class ConfigSpirits {
     @Config.Name("blizrabi")
     public static SpiritConfig blizrabi = new SpiritConfig("minecraft:fish", 6, new TimePeriodConfig(14, 18), 0, maxFavor, 0);
     @Config.Name("endererer")
-    public static SpiritConfig endererer = new SpiritConfig("minecraft:ender_pearl", 2, new TimePeriodConfig(3, 6), 0, maxFavor, 0);
+    public static SpiritConfig endererer = new SpiritConfig("minecraft:ender_pearl", 2, new TimePeriodConfig(19, 23), 0, maxFavor, 0);
     @Config.Name("loon")
     public static SpiritConfig loon = new SpiritConfig("minecraft:quartz", 16, new TimePeriodConfig(1, 4), 0, maxFavor, 0);
     @Config.Name("neblaze")

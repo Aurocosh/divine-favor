@@ -330,6 +330,28 @@ potion.divinefavor:wild_charge.name=Wild sprint
 potion.divinefavor:wild_sprint.name=Wild sprint
 potion.divinefavor:wooden_punch.name=Wooden punch
 
+# BLEND EFFECT NAMES
+potion.divinefavor:arboreal_aura.name=Arboreal aura
+potion.divinefavor:calling_aura.name=Calling aura
+potion.divinefavor:charred_aura.name=Charred aura
+potion.divinefavor:distorted_aura.name=Distorted aura
+potion.divinefavor:energetic_aura.name=Energetic aura
+potion.divinefavor:frosty_aura.name=Frosty aura
+potion.divinefavor:hunters_aura.name=Hunters aura
+potion.divinefavor:mineral_aura.name=Mineral aura
+potion.divinefavor:visceral_aura.name=Visceral aura
+
+# PRESENCE EFFECT NAMES
+potion.divinefavor:chilling_presence.name=Chilling presence
+potion.divinefavor:energetic_presence.name=Energetic presence
+potion.divinefavor:furious_presence.name=Furious presence
+potion.divinefavor:industrious_presence.name=Industrious presence
+potion.divinefavor:manipulative_presence.name=Manipulative presence
+potion.divinefavor:predatory_presence.name=Predatory presence
+potion.divinefavor:scorching_presence.name=Scorching presence
+potion.divinefavor:towering_presence.name=Towering presence
+potion.divinefavor:warping_presence.name=Warping presence
+
 # JEI tab name
 container.divinefavor:immaterial_medium.name=Spiritual trade
 
