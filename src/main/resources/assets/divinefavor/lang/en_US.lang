@@ -358,6 +358,11 @@ potion.divinefavor:warping_presence.name=Warping presence
 # JEI tab name
 container.divinefavor:immaterial_medium.name=Spiritual trade
 
+#KEYBINDS
+key.categories.divinefavor=Divine favor
+key.divinefavor:talisman_scroll=Grimoire scroll hud
+key.divinefavor:talisman_select=Grimoire select hud
+
 #BLOCK DESCRIPTIONS FOR JEI AND PATCHOULI
 ## MEDIUMS
 tile.divinefavor:medium_gold.description=Spiritual medium. Integral part of spiritual altar. Build an altar dedicated to a spirit of your choice to be able to trade with him. Different altars require different types of mediums. Read guidebook for more details (Immaterial guide).

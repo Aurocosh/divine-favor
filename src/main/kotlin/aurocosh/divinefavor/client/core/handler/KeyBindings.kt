@@ -17,12 +17,12 @@ object KeyBindings {
     private val CONFLICT_CONTEXT = KeyConflictContext()
     lateinit var talismanScroll: KeyBinding
     lateinit var talismanSelect: KeyBinding
-    lateinit var ropeKey: KeyBinding
+//    lateinit var ropeKey: KeyBinding
 
     fun init() {
         talismanScroll = createBinding("talisman_scroll", Keyboard.KEY_R)
         talismanSelect = createBinding("talisman_select", Keyboard.KEY_V)
-        ropeKey = createBinding("rope_key", Keyboard.KEY_N)
+//        ropeKey = createBinding("rope_key", Keyboard.KEY_N)
     }
 
     private fun createBinding(name: String, key: Int): KeyBinding {
