@@ -1,4 +1,4 @@
-package aurocosh.divinefavor.common.item.common
+package aurocosh.divinefavor.common.models
 
 import aurocosh.divinefavor.common.constants.ConstMisc
 import aurocosh.divinefavor.common.item.base.ICustomMeshHolder
@@ -15,7 +15,7 @@ import net.minecraftforge.fml.relauncher.Side
 import net.minecraftforge.fml.relauncher.SideOnly
 
 @SideOnly(Side.CLIENT)
-@Mod.EventBusSubscriber(modid = ConstMisc.MOD_ID)
+@Mod.EventBusSubscriber(modid = ConstMisc.MOD_ID, value = [Side.CLIENT])
 object ModelHandler {
     @SubscribeEvent
     fun onRegister(event: ModelRegistryEvent) {

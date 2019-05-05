@@ -3,6 +3,8 @@ package aurocosh.divinefavor.common.potions.base.potion
 import net.minecraft.client.Minecraft
 import net.minecraft.client.resources.I18n
 import net.minecraft.potion.PotionEffect
+import net.minecraftforge.fml.relauncher.Side
+import net.minecraftforge.fml.relauncher.SideOnly
 
 abstract class ModPotionCharge(name: String, beneficial: Boolean, potionColor: Int) : ModPotion(name, beneficial, potionColor) {
 
@@ -10,6 +12,7 @@ abstract class ModPotionCharge(name: String, beneficial: Boolean, potionColor: I
         return false
     }
 
+    @SideOnly(Side.CLIENT)
     override fun renderCustomInvText(x: Int, y: Int, effect: PotionEffect, mc: Minecraft) {
         val s1 = I18n.format(name)
 
