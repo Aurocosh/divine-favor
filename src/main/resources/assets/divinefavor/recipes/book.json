@@ -1,0 +1,23 @@
+{
+    "type": "forge:ore_shapeless",
+    "ingredients": [
+        {
+            "item": "minecraft:paper"
+        },
+        {
+            "item": "minecraft:paper"
+        },
+        {
+            "item": "minecraft:leather"
+        },
+        {
+            "item": "minecraft:bone"
+        }
+    ],
+    "result": {
+        "item": "patchouli:guide_book",
+        "nbt": {
+            "patchouli:book": "divinefavor:immaterial_guide"
+        }
+    }
+}

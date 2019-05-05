@@ -36,8 +36,8 @@ class BlockSoulboundLectern(name: String, material: Material) : ModBlock(ConstBl
         creativeTab = DivineFavor.TAB_MAIN
     }
 
-    override fun getActualState(state: IBlockState, world: IBlockAccess, pos: BlockPos): IBlockState {
-        val te = if (world is ChunkCache) world.getTileEntity(pos, Chunk.EnumCreateEntityType.CHECK) else world.getTileEntity(pos)
+    override fun getActualState(state: IBlockState, world: IBlockAccess?, pos: BlockPos): IBlockState {
+        val te = if (world is ChunkCache) world.getTileEntity(pos, Chunk.EnumCreateEntityType.CHECK) else world?.getTileEntity(pos)
         if (te is TileSoulboundLectern) {
             val soulboundLectern = te as TileSoulboundLectern?
             return state.withProperty(STATE, soulboundLectern!!.state).withProperty(GEM, soulboundLectern.gem)
@@ -77,7 +77,7 @@ class BlockSoulboundLectern(name: String, material: Material) : ModBlock(ConstBl
         return true
     }
 
-    override fun createNewTileEntity(world: World, meta: Int): TileEntity? {
+    override fun createNewTileEntity(world: World?, meta: Int): TileEntity? {
         return TileSoulboundLectern()
     }
 

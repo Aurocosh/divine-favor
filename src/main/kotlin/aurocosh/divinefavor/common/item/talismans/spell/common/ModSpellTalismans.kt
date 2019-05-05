@@ -12,11 +12,9 @@ import aurocosh.divinefavor.common.lib.extensions.isLava
 import aurocosh.divinefavor.common.lib.extensions.isWater
 import aurocosh.divinefavor.common.potions.common.ModPotions
 import aurocosh.divinefavor.common.spirit.ModSpirits
-import aurocosh.divinefavor.common.util.UtilBlock
 import aurocosh.divinefavor.common.util.UtilPredicate
 import net.minecraft.block.Block
 import net.minecraft.init.Blocks
-
 import javax.vecmath.Color3f
 
 object ModSpellTalismans {
@@ -167,8 +165,10 @@ object ModSpellTalismans {
         warp_pebble = SpellTalismanWarpMarker("warp_pebble", ModSpirits.endererer, ConfigSpells.warpPebble.favorCost, SpellOptions.ALL_CAST, ModItems.warp_pebble)
 
         // loon
+        evil_eye = SpellTalismanEvilEye("evil_eye", ModSpirits.loon, ConfigSpells.evilEye.favorCost, SpellOptions.ENTITY_CAST)
         follow = SpellTalismanFollow("follow", ModSpirits.loon, ConfigSpells.follow.favorCost, SpellOptions.RIGHT_CAST)
         night_eye = SpellTalismanModPotionToggle("night_eye", ModSpirits.loon, ConfigSpells.nightEye.favorCost, ModPotions.night_eye)
+        prismatic_eyes = SpellTalismanModPotionToggle("prismatic_eyes", ModSpirits.loon, ConfigSpells.prismaticEyes.favorCost, ModPotions.prismatic_eyes)
         spider_might = SpellTalismanModPotionToggle("spider_might", ModSpirits.loon, ConfigSpells.spider_might.favorCost, ModPotions.spider_might)
         summon_creeper = SpellTalismanSummonMinion("summon_creeper", ModSpirits.loon, ConfigSpells.summonCreeper.favorCost, SpellOptions.USE_CAST, EntityMinionCreeper::class.java)
         summon_husk = SpellTalismanSummonMinion("summon_husk", ModSpirits.loon, ConfigSpells.summonHusk.favorCost, SpellOptions.USE_CAST, EntityMinionHusk::class.java)
@@ -181,7 +181,6 @@ object ModSpellTalismans {
         blazing_palm = SpellTalismanBlazingPalm("blazing_palm", ModSpirits.neblaze, ConfigSpells.blazingPalm.favorCost, SpellOptions.ALL_CAST)
         combustion = SpellTalismanCombustion("combustion", ModSpirits.neblaze, ConfigSpells.combustion.favorCost, SpellOptions.USE_CAST)
         distant_spark = SpellTalismanIgnition("distant_spark", ModSpirits.neblaze, ConfigSpells.distantSpark.favorCost, SpellOptions.ALL_CAST_TRACE)
-        evil_eye = SpellTalismanEvilEye("evil_eye", ModSpirits.neblaze, ConfigSpells.evilEye.favorCost, SpellOptions.ENTITY_CAST)
         heat_wave = SpellTalismanHeatWave("heat_wave", ModSpirits.neblaze, ConfigSpells.heatWave.favorCost, SpellOptions.ALL_CAST)
         hellisphere = SpellTalismanHellisphere("hellisphere", ModSpirits.neblaze, ConfigSpells.hellisphere.favorCost, SpellOptions.USE_CAST)
         ignition = SpellTalismanIgnition("ignition", ModSpirits.neblaze, ConfigSpells.ignition.favorCost, SpellOptions.USE_CAST)
@@ -204,7 +203,6 @@ object ModSpellTalismans {
         ground_flow = SpellTalismanModPotionToggle("ground_flow", ModSpirits.redwind, ConfigSpells.groundFlow.favorCost, ModPotions.ground_flow)
         hovering = SpellTalismanModPotionToggle("hovering", ModSpirits.redwind, ConfigSpells.groundFlow.favorCost, ModPotions.hovering)
         ping = SpellTalismanPing("ping", ModSpirits.redwind, ConfigSpells.ping.favorCost, SpellOptions.TRACE_ONLY_CAST)
-        prismatic_eyes = SpellTalismanModPotionToggle("prismatic_eyes", ModSpirits.redwind, ConfigSpells.prismaticEyes.favorCost, ModPotions.prismatic_eyes)
         red_pulse = SpellTalismanAirReplace("red_pulse", ModSpirits.redwind, ConfigSpells.redPulse.favorCost, SpellOptions.ALL_CAST_TRACE) { ModBlocks.red_pulse }
         red_signal = SpellTalismanAirReplace("red_signal", ModSpirits.redwind, ConfigSpells.redSignal.favorCost, SpellOptions.ALL_CAST_TRACE) { ModBlocks.red_signal }
         toadic_jump = SpellTalismanModPotionToggle("toadic_jump", ModSpirits.redwind, ConfigSpells.toadicJump.favorCost, ModPotions.toadic_jump)
