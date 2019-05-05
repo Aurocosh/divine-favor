@@ -87,7 +87,7 @@ class ItemBoneDaggerAwakened : ModItem("bone_dagger_awakened", "bone_dagger_awak
         }
 
         val stack = ItemStack(item)
-        ItemSoulShard.setOwner(stack, victim)
+//        ItemSoulShard.setOwner(stack, victim)
         user.attackEntityFrom(ModDamageSources.divineDamage, 0.5f)
         user.addItemStackToInventory(stack)
     }
