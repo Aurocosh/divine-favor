@@ -166,7 +166,7 @@ item.divinefavor:talisman_clock.name=Clock talisman
 item.divinefavor:talisman_combustion.name=Combustion talisman
 item.divinefavor:talisman_consuming_fury.name=Consuming fury talisman
 item.divinefavor:talisman_crushing_palm.name=Crushing palm talisman
-item.divinefavor:talisman_crystalline_road.name=Crystalline_road talisman
+item.divinefavor:talisman_crystalline_road.name=Crystalline road talisman
 item.divinefavor:talisman_distant_spark.name=Distant spark talisman
 item.divinefavor:talisman_earthen_dive.name=Earthen dive talisman
 item.divinefavor:talisman_empower_axe.name=Empower axe talisman
@@ -312,6 +312,7 @@ item.divinefavor:arrow_talisman_yummy_smell.name=Yummy smell talisman
 item.divinefavor:arrow_talisman_zero_g.name=Zero g arrow talisman
 
 # EFFECT NAMES
+potion.divinefavor:armor_of_pacifist.name=Armor of pacifist
 potion.divinefavor:butchering_strike.name=Butchering strike
 potion.divinefavor:consuming_fury.name=Consuming fury
 potion.divinefavor:crushing_palm.name=Crushing palm
