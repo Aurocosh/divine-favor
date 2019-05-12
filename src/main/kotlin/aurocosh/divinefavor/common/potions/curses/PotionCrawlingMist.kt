@@ -18,7 +18,7 @@ import net.minecraftforge.fml.relauncher.Side
 import net.minecraftforge.fml.relauncher.SideOnly
 
 @Mod.EventBusSubscriber(modid = ConstMisc.MOD_ID)
-class PotionCrawlingMist : ModPotion("crawling_mist", true, 0x7FB8A4) {
+class PotionCrawlingMist : ModPotion("crawling_mist", 0x7FB8A4) {
     init {
         setIsCurse(true)
     }

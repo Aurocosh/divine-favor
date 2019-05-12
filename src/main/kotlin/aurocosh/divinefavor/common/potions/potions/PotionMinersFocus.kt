@@ -8,7 +8,7 @@ import net.minecraft.init.MobEffects
 import net.minecraftforge.fml.common.Mod
 
 @Mod.EventBusSubscriber(modid = ConstMisc.MOD_ID)
-class PotionMinersFocus : ModPotion("miners_focus", true, 0x7FB8A4) {
+class PotionMinersFocus : ModPotion("miners_focus", 0x7FB8A4) {
     private val FATIGUE_DURATION = (60.0 * 20.0 * 0.2).toInt()
     private val FATIGUE_LEVEL = 3
 

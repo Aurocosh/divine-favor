@@ -16,7 +16,7 @@ import net.minecraft.item.ItemStack
 import net.minecraftforge.fml.common.Mod
 
 @Mod.EventBusSubscriber(modid = ConstMisc.MOD_ID)
-class PotionEnergeticPresence : ModPotion("energetic_presence", true, 0x7FB8A4) {
+class PotionEnergeticPresence : ModPotion("energetic_presence", 0x7FB8A4) {
     private val SPEED_MODIFIER = 0.35f
 
     init {

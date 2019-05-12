@@ -11,7 +11,7 @@ import net.minecraftforge.fml.common.Mod
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent
 
 @Mod.EventBusSubscriber(modid = ConstMisc.MOD_ID)
-class PotionEscapePlan : ModPotion("escape_plan", true, 0x7FB8A4) {
+class PotionEscapePlan : ModPotion("escape_plan", 0x7FB8A4) {
 
     override fun isReady(duration: Int, amplifier: Int): Boolean {
         return false

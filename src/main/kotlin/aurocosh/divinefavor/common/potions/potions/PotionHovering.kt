@@ -9,7 +9,7 @@ import net.minecraft.entity.EntityLivingBase
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.util.EnumFacing
 
-class PotionHovering : ModPotionToggle("hovering", true, 0x7FB8A4) {
+class PotionHovering : ModPotionToggle("hovering", 0x7FB8A4) {
 
     override fun onPotionAdded(livingBase: EntityLivingBase) {
         super.onPotionAdded(livingBase)

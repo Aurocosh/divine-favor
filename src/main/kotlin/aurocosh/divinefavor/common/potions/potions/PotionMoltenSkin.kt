@@ -20,7 +20,7 @@ import net.minecraftforge.fml.relauncher.SideOnly
 
 
 @Mod.EventBusSubscriber(modid = ConstMisc.MOD_ID)
-class PotionMoltenSkin : ModPotionToggle("molten_skin", true, 0x7FB8A4) {
+class PotionMoltenSkin : ModPotionToggle("molten_skin", 0x7FB8A4) {
 
     override fun performEffect(livingBase: EntityLivingBase, amplifier: Int) {
         if (livingBase !is EntityPlayer)

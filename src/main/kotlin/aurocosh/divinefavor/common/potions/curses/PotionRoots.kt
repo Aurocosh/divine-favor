@@ -10,7 +10,7 @@ import net.minecraft.util.math.Vec3d
 import net.minecraftforge.fml.common.Mod
 
 @Mod.EventBusSubscriber(modid = ConstMisc.MOD_ID)
-class PotionRoots : ModPotion("roots", true, 0x7FB8A4) {
+class PotionRoots : ModPotion("roots", 0x7FB8A4) {
     init {
         setIsCurse(true)
         registerPotionAttributeModifier(SharedMonsterAttributes.MOVEMENT_SPEED, "817e7bc4-8ad5-4323-9131-aa71236a1b83", (-ConfigArrow.roots.slownessForce).toDouble(), 2)

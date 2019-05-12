@@ -13,7 +13,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent
 import net.minecraftforge.fml.common.gameevent.TickEvent
 
 @Mod.EventBusSubscriber(modid = ConstMisc.MOD_ID)
-class PotionSuffocatingFumes : ModPotion("suffocating_fumes", true, 0x7FB8A4) {
+class PotionSuffocatingFumes : ModPotion("suffocating_fumes", 0x7FB8A4) {
     init {
         setIsCurse(true)
     }

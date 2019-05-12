@@ -18,7 +18,7 @@ import net.minecraftforge.fml.common.eventhandler.EventPriority
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent
 
 @Mod.EventBusSubscriber(modid = ConstMisc.MOD_ID)
-class PotionCharredAura : ModPotion("charred_aura", true, 0x7FB8A4) {
+class PotionCharredAura : ModPotion("charred_aura", 0x7FB8A4) {
 
     override fun onPotionAdded(livingBase: EntityLivingBase) {
         super.onPotionAdded(livingBase)

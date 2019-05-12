@@ -17,7 +17,7 @@ import net.minecraftforge.fml.relauncher.Side
 import net.minecraftforge.fml.relauncher.SideOnly
 
 @Mod.EventBusSubscriber(modid = ConstMisc.MOD_ID)
-class PotionMistBlade : ModPotionToggle("mist_blade", true, 0x7FB8A4) {
+class PotionMistBlade : ModPotionToggle("mist_blade", 0x7FB8A4) {
     companion object {
         private val FRAMES_TO_INIT_FOG = 5
         private var intitFrames = FRAMES_TO_INIT_FOG

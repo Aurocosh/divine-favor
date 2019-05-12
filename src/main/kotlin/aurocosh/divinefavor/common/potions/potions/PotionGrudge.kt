@@ -22,7 +22,7 @@ import net.minecraftforge.fml.relauncher.Side
 import net.minecraftforge.fml.relauncher.SideOnly
 
 @Mod.EventBusSubscriber(modid = ConstMisc.MOD_ID)
-class PotionGrudge : ModPotionToggle("grudge", true, 0x7FB8A4) {
+class PotionGrudge : ModPotionToggle("grudge", 0x7FB8A4) {
 
     @SideOnly(Side.CLIENT)
     override fun renderCustomInvText(x: Int, y: Int, effect: PotionEffect, mc: Minecraft) {

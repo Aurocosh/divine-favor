@@ -15,7 +15,7 @@ import net.minecraft.item.ItemStack
 import net.minecraftforge.fml.common.Mod
 
 @Mod.EventBusSubscriber(modid = ConstMisc.MOD_ID)
-class PotionToweringPresence : ModPotion("towering_presence", true, 0x7FB8A4) {
+class PotionToweringPresence : ModPotion("towering_presence", 0x7FB8A4) {
 
     override fun onPotionAdded(livingBase: EntityLivingBase) {
         super.onPotionAdded(livingBase)

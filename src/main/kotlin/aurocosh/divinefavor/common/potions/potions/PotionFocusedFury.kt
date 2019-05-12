@@ -24,7 +24,7 @@ import net.minecraftforge.fml.relauncher.Side
 import net.minecraftforge.fml.relauncher.SideOnly
 
 @Mod.EventBusSubscriber(modid = ConstMisc.MOD_ID)
-class PotionFocusedFury : ModPotion("focused_fury", true, 0x7FB8A4) {
+class PotionFocusedFury : ModPotion("focused_fury", 0x7FB8A4) {
 
     @SideOnly(Side.CLIENT)
     override fun renderCustomInvText(x: Int, y: Int, effect: PotionEffect, mc: Minecraft) {

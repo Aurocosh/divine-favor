@@ -10,7 +10,7 @@ import net.minecraft.entity.SharedMonsterAttributes
 import net.minecraftforge.fml.common.Mod
 
 @Mod.EventBusSubscriber(modid = ConstMisc.MOD_ID)
-class PotionCripple : ModPotion("cripple", true, 0x7FB8A4) {
+class PotionCripple : ModPotion("cripple", 0x7FB8A4) {
     init {
         setIsCurse(true)
         registerPotionAttributeModifier(SharedMonsterAttributes.MOVEMENT_SPEED, "b171212d-7cd8-4a62-8665-b2258adf68b8", (-ConfigArrow.cripple.slownessForce).toDouble(), 2)

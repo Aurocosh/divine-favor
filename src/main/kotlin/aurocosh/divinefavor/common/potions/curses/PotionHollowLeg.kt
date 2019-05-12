@@ -14,7 +14,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent
 import net.minecraftforge.fml.common.gameevent.TickEvent
 
 @Mod.EventBusSubscriber(modid = ConstMisc.MOD_ID)
-class PotionHollowLeg : ModPotion("hollow_leg", true, 0x7FB8A4) {
+class PotionHollowLeg : ModPotion("hollow_leg", 0x7FB8A4) {
     init {
         setIsCurse(true)
     }

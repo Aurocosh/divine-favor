@@ -17,7 +17,7 @@ import net.minecraftforge.fml.common.eventhandler.EventPriority
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent
 
 @Mod.EventBusSubscriber(modid = ConstMisc.MOD_ID)
-class PotionPredatoryPresence : ModPotion("predatory_presence", true, 0x7FB8A4) {
+class PotionPredatoryPresence : ModPotion("predatory_presence", 0x7FB8A4) {
 
     override fun onPotionAdded(livingBase: EntityLivingBase) {
         super.onPotionAdded(livingBase)

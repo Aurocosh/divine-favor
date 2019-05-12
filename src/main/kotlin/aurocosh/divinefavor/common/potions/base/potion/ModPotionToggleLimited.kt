@@ -8,7 +8,7 @@ import net.minecraft.potion.PotionEffect
 import net.minecraftforge.fml.relauncher.Side
 import net.minecraftforge.fml.relauncher.SideOnly
 
-abstract class ModPotionToggleLimited(name: String, beneficial: Boolean, potionColor: Int) : ModPotionToggle(name, beneficial, potionColor) {
+abstract class ModPotionToggleLimited(name: String, potionColor: Int) : ModPotionToggle(name, potionColor) {
     lateinit var talisman: ItemSpellTalisman
 
     override fun shouldRenderInvText(effect: PotionEffect?): Boolean {

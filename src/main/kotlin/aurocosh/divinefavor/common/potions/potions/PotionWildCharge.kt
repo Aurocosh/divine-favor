@@ -10,7 +10,7 @@ import net.minecraft.entity.SharedMonsterAttributes
 import net.minecraftforge.fml.common.Mod
 
 @Mod.EventBusSubscriber(modid = ConstMisc.MOD_ID)
-class PotionWildCharge : ModPotion("wild_charge", true, 0x7FB8A4) {
+class PotionWildCharge : ModPotion("wild_charge", 0x7FB8A4) {
     init {
         registerPotionAttributeModifier(SharedMonsterAttributes.MOVEMENT_SPEED, "817e7bc4-8ad5-4323-9131-aa71236a1b83", (-ConfigSpells.wildSprint.slownessForce).toDouble(), 2)
     }

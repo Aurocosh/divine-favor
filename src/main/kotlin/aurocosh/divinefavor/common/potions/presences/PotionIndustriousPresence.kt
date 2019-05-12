@@ -21,7 +21,7 @@ import net.minecraftforge.fml.common.gameevent.TickEvent
 import java.util.*
 
 @Mod.EventBusSubscriber(modid = ConstMisc.MOD_ID)
-class PotionIndustriousPresence : ModPotion("industrious_presence", true, 0x7FB8A4) {
+class PotionIndustriousPresence : ModPotion("industrious_presence", 0x7FB8A4) {
 
     override fun onPotionAdded(livingBase: EntityLivingBase) {
         super.onPotionAdded(livingBase)

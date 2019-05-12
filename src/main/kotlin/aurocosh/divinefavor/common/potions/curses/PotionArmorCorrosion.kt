@@ -13,7 +13,7 @@ import java.util.*
 import java.util.Arrays.asList
 
 @Mod.EventBusSubscriber(modid = ConstMisc.MOD_ID)
-class PotionArmorCorrosion : ModPotion("armor_corrosion", true, 0x7FB8A4) {
+class PotionArmorCorrosion : ModPotion("armor_corrosion", 0x7FB8A4) {
     init {
         setIsCurse(true)
     }

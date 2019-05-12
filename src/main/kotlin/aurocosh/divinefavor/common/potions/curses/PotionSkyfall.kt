@@ -5,7 +5,7 @@ import aurocosh.divinefavor.common.potions.common.ModCurses
 import net.minecraft.entity.EntityLivingBase
 import net.minecraft.util.math.Vec3d
 
-class PotionSkyfall : ModPotion("skyfall", false, 0x7FB8A4) {
+class PotionSkyfall : ModPotion("skyfall", 0x7FB8A4) {
     init {
         setIsCurse(true)
     }

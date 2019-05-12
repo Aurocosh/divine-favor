@@ -9,7 +9,7 @@ import net.minecraft.init.Blocks
 import net.minecraftforge.fml.common.Mod
 
 @Mod.EventBusSubscriber(modid = ConstMisc.MOD_ID)
-class PotionWildSprint : ModPotion("wild_sprint", true, 0x7FB8A4) {
+class PotionWildSprint : ModPotion("wild_sprint", 0x7FB8A4) {
     private val SPEED_MODIFIER = 0.2f
     private val WATER_RUNNING_SPEED = 0.25f
     private val WATER_RUNNING_SPEED_SQ = WATER_RUNNING_SPEED * WATER_RUNNING_SPEED

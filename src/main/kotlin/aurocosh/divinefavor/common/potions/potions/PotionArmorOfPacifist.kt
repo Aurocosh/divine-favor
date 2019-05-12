@@ -15,7 +15,7 @@ import net.minecraftforge.fml.common.Mod
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent
 
 @Mod.EventBusSubscriber(modid = ConstMisc.MOD_ID)
-class PotionArmorOfPacifist : ModPotionToggle("armor_of_pacifist", true, 0x7FB8A4) {
+class PotionArmorOfPacifist : ModPotionToggle("armor_of_pacifist", 0x7FB8A4) {
     companion object {
 
         @SubscribeEvent

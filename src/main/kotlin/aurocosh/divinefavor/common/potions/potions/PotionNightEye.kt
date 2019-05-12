@@ -14,7 +14,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent
 import net.minecraftforge.fml.common.gameevent.TickEvent
 
 @Mod.EventBusSubscriber(modid = ConstMisc.MOD_ID)
-class PotionNightEye : ModPotionToggle("night_eye", true, 0x7FB8A4) {
+class PotionNightEye : ModPotionToggle("night_eye", 0x7FB8A4) {
 
     override fun performEffect(livingBase: EntityLivingBase, amplifier: Int) {
         val world = livingBase.world

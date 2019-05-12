@@ -10,7 +10,7 @@ import net.minecraft.entity.EntityLivingBase
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.util.math.Vec3d
 
-class PotionRedFury : ModPotion("red_fury", false, 0x7FB8A4) {
+class PotionRedFury : ModPotion("red_fury", 0x7FB8A4) {
     init {
         setIsCurse(true)
     }
