@@ -12,7 +12,7 @@ import net.minecraftforge.fml.common.Mod
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent
 
 @Mod.EventBusSubscriber(modid = ConstMisc.MOD_ID)
-class PotionEmpowerAxe : ModPotion("empower_axe", true, 0x7FB8A4) {
+class PotionEmpowerAxe : ModPotion("empower_axe", 0x7FB8A4) {
 
     override fun isReady(duration: Int, amplifier: Int): Boolean {
         return false

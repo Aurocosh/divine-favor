@@ -5,7 +5,7 @@ import aurocosh.divinefavor.common.util.UtilEntity.tickLiquidWalk
 import net.minecraft.block.Block
 import net.minecraft.entity.EntityLivingBase
 
-class PotionLiquidWalking(name: String, private val block: Block) : ModPotion(name, true, 0x7FB8A4) {
+class PotionLiquidWalking(name: String, private val block: Block) : ModPotion(name, 0x7FB8A4) {
 
     override fun performEffect(livingBase: EntityLivingBase, amplifier: Int) {
         tickLiquidWalk(livingBase, block)

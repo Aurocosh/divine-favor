@@ -12,7 +12,7 @@ import net.minecraftforge.fml.common.eventhandler.EventPriority
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent
 
 @Mod.EventBusSubscriber(modid = ConstMisc.MOD_ID)
-class PotionFieryMark : ModPotion("fiery_mark", true, 0x7FB8A4) {
+class PotionFieryMark : ModPotion("fiery_mark", 0x7FB8A4) {
     init {
         setIsCurse(true)
     }

@@ -17,7 +17,7 @@ import net.minecraft.util.ResourceLocation
 import net.minecraftforge.fml.relauncher.Side
 import net.minecraftforge.fml.relauncher.SideOnly
 
-abstract class ModPotion(name: String, protected var beneficial: Boolean, potionColor: Int) : Potion(false, potionColor) {
+abstract class ModPotion(name: String, potionColor: Int) : Potion(false, potionColor) {
     var icon: ResourceLocation
 
     protected var isCurse: Boolean = false
@@ -35,17 +35,12 @@ abstract class ModPotion(name: String, protected var beneficial: Boolean, potion
     }
 
     fun setIsCurse(curse: Boolean) {
-        beneficial = false
         isCurse = curse
+        beneficial = false
     }
 
     override fun affectEntity(source: Entity?, indirectSource: Entity?, entityLivingBaseIn: EntityLivingBase, amplifier: Int, health: Double) {
         super.affectEntity(source, indirectSource, entityLivingBaseIn, amplifier, health)
-    }
-
-    @SideOnly(Side.CLIENT)
-    override fun isBeneficial(): Boolean {
-        return this.beneficial
     }
 
     @SideOnly(Side.CLIENT)

@@ -12,7 +12,7 @@ import net.minecraftforge.fml.common.Mod
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent
 
 @Mod.EventBusSubscriber(modid = ConstMisc.MOD_ID)
-class PotionSoulTheft : ModPotionToggle("soul_theft", true, 0x7FB8A4) {
+class PotionSoulTheft : ModPotionToggle("soul_theft", 0x7FB8A4) {
 
     override fun onPotionRemoved(livingBase: EntityLivingBase) {
         super.onPotionRemoved(livingBase)

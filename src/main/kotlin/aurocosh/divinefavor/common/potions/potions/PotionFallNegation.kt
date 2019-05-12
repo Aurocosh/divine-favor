@@ -11,7 +11,7 @@ import net.minecraftforge.fml.common.Mod
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent
 
 @Mod.EventBusSubscriber(modid = ConstMisc.MOD_ID)
-class PotionFallNegation : ModPotionCharge("fall_negation", true, 0x7FB8A4) {
+class PotionFallNegation : ModPotionCharge("fall_negation", 0x7FB8A4) {
 
     override fun isReady(duration: Int, amplifier: Int): Boolean {
         return false

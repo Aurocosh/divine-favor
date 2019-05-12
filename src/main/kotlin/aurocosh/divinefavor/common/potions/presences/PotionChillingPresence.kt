@@ -14,7 +14,7 @@ import net.minecraft.util.math.BlockPos
 import net.minecraftforge.fml.common.Mod
 
 @Mod.EventBusSubscriber(modid = ConstMisc.MOD_ID)
-class PotionChillingPresence : ModPotion("chilling_presence", true, 0x7FB8A4) {
+class PotionChillingPresence : ModPotion("chilling_presence", 0x7FB8A4) {
 
     override fun onPotionAdded(livingBase: EntityLivingBase) {
         super.onPotionAdded(livingBase)

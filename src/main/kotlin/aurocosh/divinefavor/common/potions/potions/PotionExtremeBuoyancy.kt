@@ -6,7 +6,7 @@ import aurocosh.divinefavor.common.lib.extensions.isLiquid
 import aurocosh.divinefavor.common.potions.base.potion.ModPotionToggle
 import net.minecraft.entity.EntityLivingBase
 
-class PotionExtremeBuoyancy : ModPotionToggle("extreme_buoyancy", true, 0x7FB8A4) {
+class PotionExtremeBuoyancy : ModPotionToggle("extreme_buoyancy", 0x7FB8A4) {
 
     override fun performEffect(livingBase: EntityLivingBase, amplifier: Int) {
         val pos = livingBase.position

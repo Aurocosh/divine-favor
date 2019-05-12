@@ -9,7 +9,7 @@ import net.minecraftforge.fml.common.Mod
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent
 
 @Mod.EventBusSubscriber(modid = ConstMisc.MOD_ID)
-class PotionFins : ModPotion("fins", true, 0x7FB8A4) {
+class PotionFins : ModPotion("fins", 0x7FB8A4) {
     companion object {
         private val SPEED_MODIFIER = 0.14f
 

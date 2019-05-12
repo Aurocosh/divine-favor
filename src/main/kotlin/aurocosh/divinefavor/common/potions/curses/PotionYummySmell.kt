@@ -13,7 +13,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent
 import net.minecraftforge.fml.common.gameevent.TickEvent
 
 @Mod.EventBusSubscriber(modid = ConstMisc.MOD_ID)
-class PotionYummySmell : ModPotion("yummy_smell", false, 0x7FB8A4) {
+class PotionYummySmell : ModPotion("yummy_smell", 0x7FB8A4) {
     init {
         setIsCurse(true)
     }

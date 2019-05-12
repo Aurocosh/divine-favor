@@ -7,7 +7,7 @@ import aurocosh.divinefavor.common.potions.base.potion.ModPotionToggle
 import aurocosh.divinefavor.common.util.UtilBlock
 import net.minecraft.entity.EntityLivingBase
 
-class PotionInstantDive : ModPotionToggle("instant_dive", true, 0x7FB8A4) {
+class PotionInstantDive : ModPotionToggle("instant_dive", 0x7FB8A4) {
 
     override fun performEffect(livingBase: EntityLivingBase, amplifier: Int) {
         val pos = livingBase.position

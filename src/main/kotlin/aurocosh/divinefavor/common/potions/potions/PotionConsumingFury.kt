@@ -16,7 +16,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent
 import java.util.*
 
 @Mod.EventBusSubscriber(modid = ConstMisc.MOD_ID)
-class PotionConsumingFury : ModPotion("consuming_fury", true, 0x7FB8A4) {
+class PotionConsumingFury : ModPotion("consuming_fury", 0x7FB8A4) {
 
     override fun onPotionRemoved(livingBase: EntityLivingBase) {
         super.onPotionRemoved(livingBase)

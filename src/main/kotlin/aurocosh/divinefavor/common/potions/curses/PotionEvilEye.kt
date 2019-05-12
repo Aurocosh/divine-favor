@@ -21,8 +21,8 @@ import net.minecraftforge.fml.relauncher.Side
 import net.minecraftforge.fml.relauncher.SideOnly
 import org.lwjgl.opengl.GL11
 
-@Mod.EventBusSubscriber(modid = ConstMisc.MOD_ID, value = Side.CLIENT)
-class PotionEvilEye : ModPotion("evil_eye", true, 0x7FB8A4) {
+@Mod.EventBusSubscriber(modid = ConstMisc.MOD_ID, value = [Side.CLIENT])
+class PotionEvilEye : ModPotion("evil_eye", 0x7FB8A4) {
     init {
         setIsCurse(true)
     }

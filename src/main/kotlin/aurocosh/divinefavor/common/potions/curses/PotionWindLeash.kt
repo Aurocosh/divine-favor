@@ -10,7 +10,7 @@ import net.minecraft.entity.EntityLivingBase
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.util.math.Vec3d
 
-class PotionWindLeash : ModPotion("wind_leash", false, 0x7FB8A4) {
+class PotionWindLeash : ModPotion("wind_leash", 0x7FB8A4) {
     init {
         setIsCurse(true)
     }

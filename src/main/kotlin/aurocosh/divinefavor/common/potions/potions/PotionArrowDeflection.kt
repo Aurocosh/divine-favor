@@ -20,7 +20,7 @@ import net.minecraftforge.fml.common.eventhandler.EventPriority
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent
 
 @Mod.EventBusSubscriber(modid = ConstMisc.MOD_ID)
-class PotionArrowDeflection : ModPotion("arrow_deflection", true, 0x7FB8A4) {
+class PotionArrowDeflection : ModPotion("arrow_deflection", 0x7FB8A4) {
 
     override fun performEffect(livingBase: EntityLivingBase, amplifier: Int) {
         if (!COOLDOWN_COUNTER.tick())

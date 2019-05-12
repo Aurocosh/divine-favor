@@ -6,7 +6,7 @@ import net.minecraft.potion.PotionEffect
 import net.minecraftforge.fml.relauncher.Side
 import net.minecraftforge.fml.relauncher.SideOnly
 
-abstract class ModPotionCharge(name: String, beneficial: Boolean, potionColor: Int) : ModPotion(name, beneficial, potionColor) {
+abstract class ModPotionCharge(name: String, potionColor: Int) : ModPotion(name, potionColor) {
 
     override fun shouldRenderInvText(effect: PotionEffect?): Boolean {
         return false

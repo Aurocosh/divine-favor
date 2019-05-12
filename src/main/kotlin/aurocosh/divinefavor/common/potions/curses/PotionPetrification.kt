@@ -14,7 +14,7 @@ import net.minecraft.entity.player.EntityPlayer
 import net.minecraftforge.fml.common.Mod
 
 @Mod.EventBusSubscriber(modid = ConstMisc.MOD_ID)
-class PotionPetrification : ModPotion("petrification", true, 0x7FB8A4) {
+class PotionPetrification : ModPotion("petrification", 0x7FB8A4) {
     init {
         setIsCurse(true)
     }

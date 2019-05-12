@@ -13,7 +13,7 @@ import net.minecraftforge.fml.common.Mod
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent
 
 @Mod.EventBusSubscriber(modid = ConstMisc.MOD_ID)
-class PotionSpiderMight : ModPotionToggle("spider_might", true, 0x7FB8A4) {
+class PotionSpiderMight : ModPotionToggle("spider_might", 0x7FB8A4) {
     companion object {
         val CLIMB_SPEED = 0.288
 

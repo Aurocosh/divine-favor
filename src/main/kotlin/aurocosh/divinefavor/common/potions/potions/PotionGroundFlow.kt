@@ -7,7 +7,7 @@ import aurocosh.divinefavor.common.util.UtilPlayer
 import net.minecraft.entity.EntityLivingBase
 import net.minecraft.entity.player.EntityPlayer
 
-class PotionGroundFlow : ModPotionToggle("ground_flow", true, 0x7FB8A4) {
+class PotionGroundFlow : ModPotionToggle("ground_flow", 0x7FB8A4) {
 
     override fun onPotionAdded(livingBase: EntityLivingBase) {
         super.onPotionAdded(livingBase)
