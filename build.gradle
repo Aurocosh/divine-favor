@@ -80,7 +80,7 @@ minecraft {
     runDir = "run"
     mappings = mc_mappings
     useDepAts = true
-    makeObfSourceJar = true
+    makeObfSourceJar = false
 
     replace 'GRADLE:BUILD', '1'
     replace 'GRADLE:VERSION', mod_version
