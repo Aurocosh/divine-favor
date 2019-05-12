@@ -36,7 +36,6 @@ abstract class ModPotion(name: String, potionColor: Int) : Potion(false, potionC
 
     fun setIsCurse(curse: Boolean) {
         isCurse = curse
-        beneficial = false
     }
 
     override fun affectEntity(source: Entity?, indirectSource: Entity?, entityLivingBaseIn: EntityLivingBase, amplifier: Int, health: Double) {

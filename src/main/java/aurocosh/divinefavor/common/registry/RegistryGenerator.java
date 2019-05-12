@@ -19,9 +19,9 @@ public final class RegistryGenerator {
                 .setType(ModMultiBlock.class)
                 .setName(ResourceNamer.INSTANCE.getFullName(REGESTRY_PREFIX,"multi_blocks"))
                 .create();
-        new RegistryBuilder<ModSpirit>()
-                .setType(ModSpirit.class)
-                .setName(ResourceNamer.INSTANCE.getFullName(REGESTRY_PREFIX,"spirits"))
-                .create();
+//        new RegistryBuilder<ModSpirit>()
+//                .setType(ModSpirit.class)
+//                .setName(ResourceNamer.INSTANCE.getFullName(REGESTRY_PREFIX,"spirits"))
+//                .create();
     }
 }

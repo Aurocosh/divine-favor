@@ -21,7 +21,7 @@ import net.minecraftforge.fml.common.FMLCommonHandler
 import net.minecraftforge.registries.IForgeRegistryEntry
 
 class ModSpirit(val name: String, val punishment: SpiritPunishment, config: SpiritConfig) : IForgeRegistryEntry.Impl<ModSpirit>(), IIndexedEntry {
-    private val id: Int
+    override val id: Int
     val offering: Item? = Item.getByNameOrId(config.offering)
     val offeringCount: Int
     val activityPeriod: TimePeriod
@@ -99,9 +99,5 @@ class ModSpirit(val name: String, val punishment: SpiritPunishment, config: Spir
     private fun registerActivityPeriod() {
         DayClock.addAlarm(activityPeriod.start, { this.becameActive() }, true)
         DayClock.addAlarm(activityPeriod.stop, { this.becameInactive() }, true)
-    }
-
-    override fun getId(): Int {
-        return id
     }
 }
