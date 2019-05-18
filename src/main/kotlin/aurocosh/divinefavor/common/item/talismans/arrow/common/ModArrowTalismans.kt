@@ -71,10 +71,6 @@ object ModArrowTalismans {
         val climbingColor = Color(124, 78, 47)
 
         // arbow;
-        val item = ModItem("test2","test2");
-        val itemTal = ItemTalisman("test1","test1",ModSpirits.arbow,1);
-        var talisman = ItemArrowTalisman("test",ModSpirits.arbow,1,Color.green,2.0,ArrowOptions.NORMAL,ArrowType.WOODEN_ARROW)
-
         anti_gravity = ArrowTalismanAntiGravityArrow("anti_gravity", ModSpirits.arbow, ConfigArrow.antiGravityArrow.favorCost, Color.green, ConfigArrow.antiGravityArrow.damage.toDouble(), ArrowOptions.NORMAL, ArrowType.WOODEN_ARROW)
         climbing = ArrowTalismanClimbableArrow("climbing", ModSpirits.arbow, ConfigArrow.climbingArrow.favorCost, climbingColor, ConfigArrow.climbingArrow.damage.toDouble(), ArrowOptions.NORMAL, ArrowType.WOODEN_ARROW, ConfigArrow.climbingArrow.climbingSpeed, ConfigArrow.climbingArrow.climbingDistance, ConfigArrow.climbingArrow.despawnDelay)
         destructive_1 = ArrowTalismanDestructiveArrow("destructive_1", ModSpirits.arbow, ConfigArrow.destructiveArrow1.favorCost, genericTier1, ConfigArrow.destructiveArrow1.damage.toDouble(), ArrowOptions.ARROW_BREAKS, ArrowType.WOODEN_ARROW, ConfigArrow.destructiveArrow1.maxHardness.toFloat())

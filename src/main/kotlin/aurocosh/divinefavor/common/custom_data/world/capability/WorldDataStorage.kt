@@ -9,13 +9,13 @@ import net.minecraftforge.common.capabilities.Capability
 // Handles the actual read/write of the nbt.
 class WorldDataStorage : Capability.IStorage<IWorldDataHandler> {
 
-    override fun writeNBT(capability: Capability<IWorldDataHandler>, instance: IWorldDataHandler, side: EnumFacing): NBTBase? {
+    override fun writeNBT(capability: Capability<IWorldDataHandler>, instance: IWorldDataHandler, side: EnumFacing?): NBTBase? {
         val tag = NBTTagCompound()
         ALTARS_DATA_SERIALIZER.serialize(tag, instance.altarsData)
         return tag
     }
 
-    override fun readNBT(capability: Capability<IWorldDataHandler>, instance: IWorldDataHandler, side: EnumFacing, nbt: NBTBase) {
+    override fun readNBT(capability: Capability<IWorldDataHandler>, instance: IWorldDataHandler, side: EnumFacing?, nbt: NBTBase) {
         val tag = nbt as NBTTagCompound
         ALTARS_DATA_SERIALIZER.deserialize(tag, instance.altarsData)
     }
