@@ -95,11 +95,9 @@ open class EntitySpellArrow : EntityArrow {
                 spawnPotionParticles(2)
             else if (timeInGround % 5 == 0)
                 spawnPotionParticles(1)
-//            if (talisman != null)
-//                talisman!!.spawnParticles(this)
+            talisman?.spawnParticles(this)
         }
-        if (talisman != null)
-            talisman!!.onUpdate(this)
+        talisman?.onUpdate(this)
     }
 
     private fun spawnPotionParticles(particleCount: Int) {

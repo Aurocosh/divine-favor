@@ -68,7 +68,7 @@ object ModArrowTalismans {
         val genericTier1 = Color(255, 232, 109)
         val genericTier2 = Color(51, 163, 255)
         val genericTier3 = Color(255, 110, 31)
-        val climbingColor = Color(124, 78, 47)
+        val climbingColor = Color(255, 133, 53)
 
         // arbow;
         anti_gravity = ArrowTalismanAntiGravityArrow("anti_gravity", ModSpirits.arbow, ConfigArrow.antiGravityArrow.favorCost, Color.green, ConfigArrow.antiGravityArrow.damage.toDouble(), ArrowOptions.NORMAL, ArrowType.WOODEN_ARROW)
