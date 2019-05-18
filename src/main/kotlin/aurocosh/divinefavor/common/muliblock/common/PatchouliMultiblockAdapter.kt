@@ -12,12 +12,12 @@ object PatchouliMultiblockAdapter {
                 continue
             val multiBlockData = PatchouliMultiBlockData(configuration)
 
-            print(multiBlockData.toString())
-            println()
+//            print(multiBlockData.toString())
+//            println()
 
-            val iMultiblock = PatchouliAPI.instance.makeMultiblock(multiBlockData.pattern, *multiBlockData.matchingData)
+            val multiblock = PatchouliAPI.instance.makeMultiblock(multiBlockData.pattern, *multiBlockData.matchingData)
             val location = ResourceNamer.getFullName("patchouli", configuration.name)
-            PatchouliAPI.instance.registerMultiblock(location, iMultiblock)
+            PatchouliAPI.instance.registerMultiblock(location, multiblock)
         }
     }
 }
