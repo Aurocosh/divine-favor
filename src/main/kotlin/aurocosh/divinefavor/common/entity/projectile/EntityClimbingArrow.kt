@@ -35,7 +35,7 @@ class EntityClimbingArrow : EntitySpellArrow, IClimbable {
         pickupStatus = PickupStatus.DISALLOWED
     }
 
-    override fun notifyDataManagerChange(key: DataParameter<*>?) {
+    override fun notifyDataManagerChange(key: DataParameter<*>) {
         super.notifyDataManagerChange(key)
         if (CLIMBING_SPEED == key)
             climbingSpeed = dataManager.get(CLIMBING_SPEED)

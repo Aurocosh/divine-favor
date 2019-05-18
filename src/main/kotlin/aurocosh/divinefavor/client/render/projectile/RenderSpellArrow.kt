@@ -93,7 +93,6 @@ class RenderSpellArrow(manager: RenderManager) : RenderArrow<EntitySpellArrow>(m
             ArrowType.WOODEN_ARROW -> RES_ARROW
             ArrowType.SPELL_ARROW -> RES_SPELL_ARROW
             ArrowType.CURSED_ARROW -> RES_CURSED_ARROW
-            else -> RES_ARROW
         }
     }
 

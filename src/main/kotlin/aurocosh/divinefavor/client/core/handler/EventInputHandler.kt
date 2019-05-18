@@ -16,7 +16,7 @@ import net.minecraftforge.fml.relauncher.SideOnly
 object EventInputHandler {
     @SideOnly(Side.CLIENT)
     @SubscribeEvent
-    fun onKeyInput(event: InputEvent.KeyInputEvent) {
+    fun onKeyInput(@Suppress("UNUSED_PARAMETER") event: InputEvent.KeyInputEvent) {
         val mc = Minecraft.getMinecraft()
 
         if (KeyBindings.talismanSelect.isKeyDown) {

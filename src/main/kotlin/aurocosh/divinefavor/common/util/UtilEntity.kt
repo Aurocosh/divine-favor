@@ -116,8 +116,8 @@ object UtilEntity {
     }
 
     // client side only
-    fun addVelocity(entity: EntityLivingBase, factor: Float) {
-        var entity = entity
+    fun addVelocity(livingBase: EntityLivingBase, factor: Float) {
+        var entity = livingBase
         if (entity.ridingEntity is EntityLivingBase)
             entity = entity.ridingEntity as EntityLivingBase
         if (entity.moveForward <= 0)

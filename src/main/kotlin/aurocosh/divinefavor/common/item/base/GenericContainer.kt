@@ -60,8 +60,8 @@ open class GenericContainer(private val inventorySize: Int) : Container() {
         }
     }
 
-    protected fun generateCustomSlotsGrid(itemHandler: IItemHandler, xStart: Int, yStart: Int, rows: Int, columns: Int, nextSlotIndex: Int): Int {
-        var nextSlotIndex = nextSlotIndex
+    protected fun generateCustomSlotsGrid(itemHandler: IItemHandler, xStart: Int, yStart: Int, rows: Int, columns: Int, startingIndex: Int): Int {
+        var nextSlotIndex = startingIndex
         for (row in 0 until rows) {
             for (col in 0 until columns) {
                 val x = xStart + col * 18

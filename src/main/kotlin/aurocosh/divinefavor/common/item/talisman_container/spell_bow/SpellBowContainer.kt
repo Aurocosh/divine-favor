@@ -25,7 +25,7 @@ class SpellBowContainer(private val player: EntityPlayer, private val spellBowHa
         blocked = inventorySlots.size - 1 - (8 - player.inventory.currentItem)
     }
 
-    override fun slotClick(slot: Int, button: Int, flag: ClickType?, player: EntityPlayer): ItemStack {
+    override fun slotClick(slot: Int, button: Int, flag: ClickType, player: EntityPlayer): ItemStack {
         assert(player.world.isRemote)
 
         if (slot == blocked)

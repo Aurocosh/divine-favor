@@ -1,9 +1,7 @@
 package aurocosh.divinefavor.common.util
 
 import net.minecraft.block.Block
-import net.minecraft.block.BlockDynamicLiquid
 import net.minecraft.block.BlockLiquid
-import net.minecraft.block.BlockStaticLiquid
 import net.minecraft.block.state.IBlockState
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.init.Blocks
@@ -67,18 +65,18 @@ object UtilBlock {
         return true
     }
 
-    fun removeBlockAndReplant(player: EntityPlayer, world: World, tool: ItemStack, pos: BlockPos, isToolRequired: Boolean, particles: Boolean): Boolean {
+    fun removeBlockAndReplant(player: EntityPlayer, world: World, pos: BlockPos, isToolRequired: Boolean, particles: Boolean): Boolean {
         if (!canBreakBlock(player, world, pos, isToolRequired))
             return false
         val state = world.getBlockState(pos)
         destroyBlock(player, world, pos, state)
-        harvestBlockAndReplant(world, player, pos, state, 0, tool)
+        harvestBlockAndReplant(world, player, pos, state, 0)
         if (particles)
             world.playEvent(2001, pos, Block.getStateId(state))
         return true
     }
 
-    private fun harvestBlockAndReplant(world: World, player: EntityPlayer, pos: BlockPos, state: IBlockState, fortune: Int, stack: ItemStack) {
+    private fun harvestBlockAndReplant(world: World, player: EntityPlayer, pos: BlockPos, state: IBlockState, fortune: Int) {
         val block = state.block
         player.addStat(StatList.getBlockStats(block)!!)
         player.addExhaustion(0.005f)

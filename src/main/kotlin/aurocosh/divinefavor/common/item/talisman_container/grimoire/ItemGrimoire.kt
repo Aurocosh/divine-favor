@@ -26,7 +26,7 @@ class ItemGrimoire : ModItem("grimoire", "grimoire", ConstMainTabOrder.CONTAINER
         creativeTab = DivineFavor.TAB_MAIN
     }
 
-    override fun onItemUse(playerIn: EntityPlayer, worldIn: World?, pos: BlockPos?, hand: EnumHand?, facing: EnumFacing?, hitX: Float, hitY: Float, hitZ: Float): EnumActionResult {
+    override fun onItemUse(playerIn: EntityPlayer, worldIn: World, pos: BlockPos, hand: EnumHand, facing: EnumFacing, hitX: Float, hitY: Float, hitZ: Float): EnumActionResult {
         val stack = playerIn.getHeldItem(hand)
         if (stack.item !is ItemGrimoire)
             return EnumActionResult.PASS
@@ -37,7 +37,7 @@ class ItemGrimoire : ModItem("grimoire", "grimoire", ConstMainTabOrder.CONTAINER
             return EnumActionResult.PASS
 
         val talisman = talismanStack.item as ItemSpellTalisman
-        talisman.castItemUse(playerIn, worldIn!!, pos!!, hand!!, facing!!, hitX, hitY, hitZ)
+        talisman.castItemUse(playerIn, worldIn, pos, hand, facing, hitX, hitY, hitZ)
         return EnumActionResult.SUCCESS
     }
 

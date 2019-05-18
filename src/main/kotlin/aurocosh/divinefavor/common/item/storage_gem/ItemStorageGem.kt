@@ -33,9 +33,9 @@ class ItemStorageGem : ModItem("storage_gem", "storage_gem", ConstGemTabOrder.OT
         return if (!openChest(stack, world!!, player)) ActionResult(EnumActionResult.PASS, stack) else ActionResult(EnumActionResult.SUCCESS, stack)
     }
 
-    override fun onItemUse(player: EntityPlayer, world: World?, pos: BlockPos?, hand: EnumHand?, facing: EnumFacing?, hitX: Float, hitY: Float, hitZ: Float): EnumActionResult {
+    override fun onItemUse(player: EntityPlayer, world: World, pos: BlockPos, hand: EnumHand, facing: EnumFacing, hitX: Float, hitY: Float, hitZ: Float): EnumActionResult {
         val stack = player.getHeldItem(hand)
-        return if (!openChest(stack, world!!, player)) EnumActionResult.PASS else EnumActionResult.SUCCESS
+        return if (!openChest(stack, world, player)) EnumActionResult.PASS else EnumActionResult.SUCCESS
     }
 
     fun openChest(stack: ItemStack, world: World, playerIn: EntityPlayer): Boolean {
@@ -67,9 +67,9 @@ class ItemStorageGem : ModItem("storage_gem", "storage_gem", ConstGemTabOrder.OT
         val tileMergedChest = worldIn.getTileEntity(connectedPos)
 
         return if (connectedFacing != EnumFacing.WEST && connectedFacing != EnumFacing.NORTH)
-            InventoryLargeChest("container.chestDouble", tileEntity, (tileMergedChest as TileEntityChest?)!!)
+            InventoryLargeChest("container.chestDouble", tileEntity, tileMergedChest as TileEntityChest)
         else
-            InventoryLargeChest("container.chestDouble", tileMergedChest as TileEntityChest?, tileEntity)
+            InventoryLargeChest("container.chestDouble", tileMergedChest as TileEntityChest, tileEntity)
     }
 
     private fun findConnectedChest(worldIn: World, pos: BlockPos): EnumFacing? {

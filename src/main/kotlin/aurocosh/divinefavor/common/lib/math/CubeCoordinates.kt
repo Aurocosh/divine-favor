@@ -85,9 +85,9 @@ class CubeCoordinates {
             return getBoundingBox(min, max, positions)
         }
 
-        fun getBoundingBox(min: BlockPos, max: BlockPos, positions: Collection<BlockPos>): CubeCoordinates {
-            var min = min
-            var max = max
+        fun getBoundingBox(currentMin: BlockPos, currentMax: BlockPos, positions: Collection<BlockPos>): CubeCoordinates {
+            var min = currentMin
+            var max = currentMax
             if (positions.isEmpty())
                 return CubeCoordinates()
             for (pos in positions) {

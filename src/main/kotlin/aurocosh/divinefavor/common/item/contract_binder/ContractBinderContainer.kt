@@ -17,7 +17,7 @@ class ContractBinderContainer(player: EntityPlayer, itemHandler: IItemHandler) :
         blocked = inventorySlots.size - 1 - (8 - player.inventory.currentItem)
     }
 
-    override fun slotClick(slot: Int, button: Int, flag: ClickType?, player: EntityPlayer): ItemStack {
+    override fun slotClick(slot: Int, button: Int, flag: ClickType, player: EntityPlayer): ItemStack {
         return if (slot == blocked) ItemStack.EMPTY else super.slotClick(slot, button, flag, player)
     }
 }

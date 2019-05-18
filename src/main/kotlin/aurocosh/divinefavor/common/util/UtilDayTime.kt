@@ -9,9 +9,8 @@ object UtilDayTime {
     val TICKS_IN_DAY = TICKS_IN_HOUR * 24
 
     fun hoursToTicks(hour: Int): Int {
-        var hour = hour
-        hour = MathHelper.clamp(hour, 0, 24)
-        return hour * TICKS_IN_HOUR
+        val hours = MathHelper.clamp(hour, 0, 24)
+        return hours * TICKS_IN_HOUR
     }
 
     fun fromHours(start: Int, stop: Int): TimePeriod {

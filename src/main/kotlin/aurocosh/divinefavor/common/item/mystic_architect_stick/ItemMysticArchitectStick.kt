@@ -70,7 +70,7 @@ class ItemMysticArchitectStick : ModItem("mystic_architect_stick", "mystic_archi
                     DivineFavor.proxy.clientPlayer.sendMessage(TextComponentString("Set medium position: $pos"))
                 }
                 ArchitectStickMode.SELECT_AIR_BLOCK -> selectAirBlock(world, pos, compound)
-                ArchitectStickMode.CREATE_TEMPLATE -> createTemplate(world, pos, stack, compound)
+                ArchitectStickMode.CREATE_TEMPLATE -> createTemplate(world, stack, compound)
             }
         }
         return EnumActionResult.SUCCESS
@@ -88,7 +88,7 @@ class ItemMysticArchitectStick : ModItem("mystic_architect_stick", "mystic_archi
         }
     }
 
-    private fun createTemplate(worldIn: World, pos: BlockPos?, stack: ItemStack, compound: NBTTagCompound) {
+    private fun createTemplate(worldIn: World, stack: ItemStack, compound: NBTTagCompound) {
         if (!stack.hasKey(TAG_POS_FIRST, TAG_POS_SECOND)) {
             DivineFavor.proxy.clientPlayer.sendMessage(TextComponentString("Corners not setValue"))
             return

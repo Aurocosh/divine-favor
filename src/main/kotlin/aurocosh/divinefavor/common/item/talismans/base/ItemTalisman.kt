@@ -44,16 +44,16 @@ abstract class ItemTalisman(val name: String, texturePath: String, val spirit: M
     }
 
     @SideOnly(Side.CLIENT)
-    override fun addInformation(stack: ItemStack?, world: World?, tooltip: MutableList<String>?, flag: ITooltipFlag?) {
+    override fun addInformation(stack: ItemStack, world: World?, tooltip: MutableList<String>, flag: ITooltipFlag) {
         super.addInformation(stack, world, tooltip, flag)
         if (!DivineFavor.proxy.hasClientPlayer)
             return
 
         val player = DivineFavor.proxy.clientPlayer
 
-        val talisman = stack!!.item as ItemTalisman
+        val talisman = stack.item as ItemTalisman
         val favorCost = talisman.getUseInfo(player)
-        tooltip!!.add(favorCost)
+        tooltip.add(favorCost)
 
         val spirit = talisman.spirit
         val name = I18n.format(spirit.nameTranslationKey)

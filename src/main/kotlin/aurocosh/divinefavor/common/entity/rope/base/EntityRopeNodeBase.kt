@@ -250,7 +250,7 @@ abstract class EntityRopeNodeBase(world: World) : Entity(world) {
             else {
                 despawnTimer++
                 if (despawnTimer >= 1200 * 20) {
-                    if (prevNode != null && prevNode is EntityRopeNodeBase) {
+                    if (prevNode is EntityRopeNodeBase) {
                         val prevRopeNode = prevNode as EntityRopeNodeBase?
                         prevRopeNode!!.nextNode = null
                         prevRopeNode.despawn()
@@ -420,11 +420,11 @@ abstract class EntityRopeNodeBase(world: World) : Entity(world) {
     }
 
     fun getLastConnectedNode(endNode: EntityRopeNodeBase): EntityRopeNodeBase {
-        var endNode = endNode
+        var node = endNode
         val clazz = entityClass
-        while (clazz.isInstance(endNode.nextNodeByUUID) && endNode.nextNodeByUUID !== this)
-            endNode = endNode.nextNodeByUUID as EntityRopeNodeBase
-        return endNode
+        while (clazz.isInstance(node.nextNodeByUUID) && node.nextNodeByUUID !== this)
+            node = node.nextNodeByUUID as EntityRopeNodeBase
+        return node
     }
 
     override fun canBeCollidedWith(): Boolean {
