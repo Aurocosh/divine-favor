@@ -7,7 +7,7 @@ import aurocosh.divinefavor.common.registry.ModRegistries
 import net.minecraft.block.Block
 import net.minecraft.block.material.Material
 
-open class ModBlock(name: String, material: Material, private val orderIndex: Int) : Block(material), IOrdered {
+open class ModBlock(name: String, material: Material, override val orderIndex: Int) : Block(material), IOrdered {
 
     protected open fun getItemBlock(): ModItemBlock? = ModItemBlock(this, orderIndex)
 
@@ -22,9 +22,5 @@ open class ModBlock(name: String, material: Material, private val orderIndex: In
             itemBlock.registryName = fullName
             ModRegistries.itemBlocks.register(itemBlock)
         }
-    }
-
-    override fun getOrderIndex(): Int {
-        return orderIndex
     }
 }

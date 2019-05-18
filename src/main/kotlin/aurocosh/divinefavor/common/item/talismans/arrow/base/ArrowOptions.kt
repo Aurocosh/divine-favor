@@ -7,7 +7,6 @@ enum class ArrowOptions {
     RequiresTarget;
 
     companion object {
-
         val NORMAL = EnumSet.noneOf(ArrowOptions::class.java)
         val ARROW_BREAKS = EnumSet.of(BreakOnHit)
         val REQUIRES_TARGET = EnumSet.of(RequiresTarget)

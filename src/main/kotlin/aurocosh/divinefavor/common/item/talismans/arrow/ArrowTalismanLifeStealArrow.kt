@@ -17,7 +17,7 @@ import java.util.*
 
 class ArrowTalismanLifeStealArrow(name: String, spirit: ModSpirit, favorCost: Int, color: Color, options: EnumSet<ArrowOptions>, arrowType: ArrowType) : ItemArrowTalisman(name, spirit, favorCost, color, 0.0, options, arrowType) {
 
-    override fun init(spellArrow: EntitySpellArrow, shooter: EntityLivingBase) {
+    override fun preInit(spellArrow: EntitySpellArrow, shooter: EntityLivingBase) {
         val compound = spellArrow.talismanDataServer
         compound.setBoolean(TAG_STOLE_LIFE, false)
     }

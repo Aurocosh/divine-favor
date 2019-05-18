@@ -10,7 +10,7 @@ import net.minecraft.util.NonNullList
 import net.minecraftforge.fml.relauncher.Side
 import net.minecraftforge.fml.relauncher.SideOnly
 
-open class ModItem @JvmOverloads constructor(name: String, override val texturePath: String, private val orderIndex: Int = 0) : Item(), IModelHolder, IDescriptionProvider, IOrdered {
+open class ModItem @JvmOverloads constructor(name: String, override val texturePath: String, override val orderIndex: Int = 0) : Item(), IModelHolder, IDescriptionProvider, IOrdered {
 
     override val nameKey: String
         @SideOnly(Side.CLIENT)
@@ -25,10 +25,6 @@ open class ModItem @JvmOverloads constructor(name: String, override val textureP
         translationKey = fullName.toString()
         registryName = fullName
         ModRegistries.items.register(this)
-    }
-
-    override fun getOrderIndex(): Int {
-        return orderIndex
     }
 
     override fun getSubItems(tab: CreativeTabs, items: NonNullList<ItemStack>) {
