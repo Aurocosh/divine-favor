@@ -16,7 +16,7 @@ import java.util.*
 
 class ArrowTalismanPiercingArrow(name: String, spirit: ModSpirit, favorCost: Int, color: Color, arrowDamage: Double, options: EnumSet<ArrowOptions>, arrowType: ArrowType) : ItemArrowTalisman(name, spirit, favorCost, color, arrowDamage, options, arrowType) {
 
-    override fun init(spellArrow: EntitySpellArrow, shooter: EntityLivingBase) {
+    override fun preInit(spellArrow: EntitySpellArrow, shooter: EntityLivingBase) {
         val compound = spellArrow.talismanDataCommon
         compound.setInteger(TAG_HITS_LEFT, ConfigArrow.piercingArrow.maxHits)
         compound.setInteger(TAG_LAST_HIT_ENTITY, 0)

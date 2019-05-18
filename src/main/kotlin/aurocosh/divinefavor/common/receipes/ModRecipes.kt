@@ -27,7 +27,7 @@ object ModRecipes {
     fun register(recipe: ImmaterialMediumRecipe) {
         val stacks = getIngridientStacks(recipe.ingredients)
         stacks.sortWith(ItemStackIdComparator())
-        val callingStoneStack = recipe.callingStone.matchingStacks[0]
+        val callingStoneStack = recipe.callingStone.getMatchingStacks()[0]
         val callingStone = callingStoneStack.item as ItemCallingStone
         val ingredientString = getStackListString(callingStone, stacks)
         if (recipes.containsKey(ingredientString)) {
@@ -49,7 +49,7 @@ object ModRecipes {
     private fun getIngridientStacks(ingredients: Array<Ingredient>): ArrayList<ItemStack> {
         val stacks = ArrayList<ItemStack>()
         for (ingredient in ingredients)
-            Collections.addAll(stacks, *ingredient.matchingStacks)
+            Collections.addAll(stacks, *ingredient.getMatchingStacks())
         return stacks
     }
 
