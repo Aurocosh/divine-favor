@@ -6,7 +6,7 @@ class IntInterval(val start: Int, stop: Int) {
     val stop: Int = Math.max(start, stop)
 
     fun isInsideInclusive(value: Int): Boolean {
-        return value >= start && value <= stop
+        return value in start..stop
     }
 
     companion object {
