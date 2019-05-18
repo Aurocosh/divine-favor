@@ -24,7 +24,7 @@ import java.util.*
 
 class ArrowTalismanStasisArrow(name: String, spirit: ModSpirit, favorCost: Int, color: Color, arrowDamage: Double, options: EnumSet<ArrowOptions>, arrowType: ArrowType) : ItemArrowTalisman(name, spirit, favorCost, color, arrowDamage, options, arrowType) {
 
-    override fun init(spellArrow: EntitySpellArrow, shooter: EntityLivingBase) {
+    override fun preInit(spellArrow: EntitySpellArrow, shooter: EntityLivingBase) {
         spellArrow.setDespawnDelay(ConfigArrow.stasisArrow.despawnDelay)
     }
 

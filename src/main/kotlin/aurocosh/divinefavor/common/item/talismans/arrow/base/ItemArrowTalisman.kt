@@ -49,7 +49,7 @@ open class ItemArrowTalisman(name: String, spirit: ModSpirit, favorCost: Int, va
     fun createArrow(world: World, talisman: ItemArrowTalisman, player: EntityPlayer): EntityArrow {
         val spellArrow = getArrow(world, player)
         spellArrow.setSpell(talisman, player)
-        init(spellArrow, player)
+        preInit(spellArrow, player)
         spellArrow.setNoGravity(gravityType == GravityType.NO_GRAVITY || gravityType == GravityType.ANTIGRAVITY)
         spellArrow.setHasAntiGravity(gravityType == GravityType.ANTIGRAVITY)
         spellArrow.damage = arrowDamage
@@ -59,8 +59,6 @@ open class ItemArrowTalisman(name: String, spirit: ModSpirit, favorCost: Int, va
     protected open fun getArrow(world: World, shooter: EntityLivingBase): EntitySpellArrow {
         return EntitySpellArrow(world, shooter)
     }
-
-    protected open fun init(spellArrow: EntitySpellArrow, shooter: EntityLivingBase) {}
 
     fun cast(target: EntityLivingBase?, shooter: EntityLivingBase, spellArrow: EntitySpellArrow, blockPos: BlockPos?, sideHit: EnumFacing?): Boolean {
         if (options.contains(ArrowOptions.RequiresTarget) && target == null)
@@ -84,6 +82,8 @@ open class ItemArrowTalisman(name: String, spirit: ModSpirit, favorCost: Int, va
     open fun onCollideWithPlayer(spellArrow: EntitySpellArrow, player: EntityPlayer): Boolean {
         return true
     }
+
+    protected open fun preInit(spellArrow: EntitySpellArrow, shooter: EntityLivingBase) {}
 
     open fun postInit(spellArrow: EntityArrow) {}
 
