@@ -23,13 +23,8 @@ plugins {
 
 apply plugin: 'net.minecraftforge.gradle.forge'
 apply plugin: 'kotlin'
-apply plugin: "java"
 
 repositories {
-    maven { // The repo from which to get waila
-        name "Mobius Repo"
-        url "http://tehnut.info/maven"
-    }
     maven {
         // location of the maven that hosts JEI files
         name = "Progwml6 maven"
@@ -43,9 +38,6 @@ repositories {
     maven { // TOP
         name 'tterrag maven'
         url "http://maven.tterrag.com/"
-    }
-    maven { // Bookshelf
-        url = "https://maven.mcmoddev.com"
     }
     maven { // Patchouli
         url 'https://maven.blamejared.com'
@@ -80,7 +72,7 @@ minecraft {
     runDir = "run"
     mappings = mc_mappings
     useDepAts = true
-    makeObfSourceJar = false
+//    makeObfSourceJar = false
 
     replace 'GRADLE:BUILD', '1'
     replace 'GRADLE:VERSION', mod_version
@@ -96,7 +88,6 @@ dependencies {
     compile  "CraftTweaker2:CraftTweaker2-MC1120-Main:1.12-${ct_version}"
 
     deobfCompile "vazkii.patchouli:Patchouli:${p_version}"
-    deobfCompile "net.darkhax.bookshelf:Bookshelf-${mc_sub_version}:2.3.568"
 
     compile group: "net.shadowfacts", name: "Forgelin", version: "${forgelin_version}"
     compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${kotlin_version}"
@@ -134,12 +125,12 @@ static def generateVersionCode() {
 jar {
 
 }
-
-task deobfJar(type: Jar) {
-    from sourceSets.main.output
-    from sourceSets.main.java
-    classifier = 'dev'
-}
+//
+//task deobfJar(type: Jar) {
+//    from sourceSets.main.output
+//    from sourceSets.main.java
+//    classifier = 'dev'
+//}
 compileKotlin {
     kotlinOptions {
         jvmTarget = "1.8"

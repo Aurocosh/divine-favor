@@ -16,7 +16,7 @@ import java.util.*
 
 class ArrowTalismanSniperArrow(name: String, spirit: ModSpirit, favorCost: Int, color: Color, options: EnumSet<ArrowOptions>, arrowType: ArrowType) : ItemArrowTalisman(name, spirit, favorCost, color, 0.0, options, arrowType) {
 
-    override fun init(spellArrow: EntitySpellArrow, shooter: EntityLivingBase) {
+    override fun preInit(spellArrow: EntitySpellArrow, shooter: EntityLivingBase) {
         spellArrow.talismanDataServer.setVec3d(TAG_STARTING_POS, shooter.positionVector)
     }
 
