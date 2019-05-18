@@ -19,7 +19,7 @@ class EntityAIOwnerOrderedToAttack<T>(minion: T, private val minionData: MinionD
     override fun shouldExecute(): Boolean {
         val owner = minionData.owner ?: return false
         val attackTarget = minionData.attackTarget ?: return false
-        return if (attackTarget === taskOwner) false else isSuitableTarget(attackTarget, false)
+        return if (attackTarget === owner) false else isSuitableTarget(attackTarget, false)
     }
 
     /**

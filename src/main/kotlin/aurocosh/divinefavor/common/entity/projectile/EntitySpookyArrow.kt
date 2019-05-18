@@ -49,7 +49,7 @@ class EntitySpookyArrow : EntitySpellArrow {
             world.playSound(null, posX, posY, posZ, soundEvent, SoundCategory.NEUTRAL, 0.5f, 0.4f / (rand.nextFloat() * 0.4f + 0.8f))
     }
 
-    override fun notifyDataManagerChange(key: DataParameter<*>?) {
+    override fun notifyDataManagerChange(key: DataParameter<*>) {
         super.notifyDataManagerChange(key)
         if (SOUND_SET_INDEX == key)
             soundSetIndex = dataManager.get(SOUND_SET_INDEX)

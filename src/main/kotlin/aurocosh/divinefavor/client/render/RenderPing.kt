@@ -37,7 +37,7 @@ class RenderPing(renderManager: RenderManager) : Render<EntityPing>(renderManage
         GlStateManager.popMatrix()
     }
 
-    private fun drawModel(entityPing: EntityPing, partialTicks: Float) {
+    private fun drawModel(entityPing: EntityPing, @Suppress("UNUSED_PARAMETER") partialTicks: Float) {
         MODEL_PING.render(entityPing, 0f, 0f, 0f, 0f, 0f, 0.0625f)
     }
 

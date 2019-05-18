@@ -10,11 +10,11 @@ import net.minecraftforge.fml.relauncher.Side
 import net.minecraftforge.fml.relauncher.SideOnly
 
 @SideOnly(Side.CLIENT)
-@Mod.EventBusSubscriber(modid = ConstMisc.MOD_ID, value = Side.CLIENT)
+@Mod.EventBusSubscriber(modid = ConstMisc.MOD_ID, value = [Side.CLIENT])
 object CustomStateMapperHandler {
     @SideOnly(Side.CLIENT)
     @SubscribeEvent
-    fun registerMappers(event: ModelRegistryEvent) {
+    fun registerMappers(@Suppress("UNUSED_PARAMETER") event: ModelRegistryEvent) {
         for (block in ModRegistries.blocks.values)
             if (block is ICustomStateMappedBlock)
                 ModelLoader.setCustomStateMapper(block, block.getCustomStateMapper())

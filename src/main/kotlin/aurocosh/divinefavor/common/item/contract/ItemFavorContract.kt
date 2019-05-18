@@ -24,15 +24,15 @@ class ItemFavorContract(name: String, texturePath: String, val regen: Int, val m
     }
 
     @SideOnly(Side.CLIENT)
-    override fun addInformation(stack: ItemStack?, world: World?, tooltip: MutableList<String>?, flag: ITooltipFlag?) {
+    override fun addInformation(stack: ItemStack, world: World?, tooltip: MutableList<String>, flag: ITooltipFlag) {
         super.addInformation(stack, world, tooltip, flag)
         if (regen != 0)
-            tooltip!!.add(I18n.format("item.divinefavor:contract.regen", regen))
+            tooltip.add(I18n.format("item.divinefavor:contract.regen", regen))
         if (min != 0)
-            tooltip!!.add(I18n.format("item.divinefavor:contract.min", min))
+            tooltip.add(I18n.format("item.divinefavor:contract.min", min))
         if (max != 0)
-            tooltip!!.add(I18n.format("item.divinefavor:contract.max", max))
+            tooltip.add(I18n.format("item.divinefavor:contract.max", max))
         if (isInformActivity)
-            tooltip!!.add(I18n.format("item.divinefavor:contract.informActivity"))
+            tooltip.add(I18n.format("item.divinefavor:contract.informActivity"))
     }
 }

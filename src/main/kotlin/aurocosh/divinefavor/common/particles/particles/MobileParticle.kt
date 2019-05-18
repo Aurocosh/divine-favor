@@ -37,7 +37,7 @@ class MobileParticle(worldIn: World, position: Vec3d, motion: Vec3d, color3f: Co
     /**
      * Renders the particle
      */
-    override fun renderParticle(buffer: BufferBuilder, entityIn: Entity?, partialTicks: Float, rotationX: Float, rotationZ: Float, rotationYZ: Float, rotationXY: Float, rotationXZ: Float) {
+    override fun renderParticle(buffer: BufferBuilder, entityIn: Entity, partialTicks: Float, rotationX: Float, rotationZ: Float, rotationYZ: Float, rotationXY: Float, rotationXZ: Float) {
         var f = (particleAge.toFloat() + partialTicks) / particleMaxAge.toFloat()
         f = 1.0f - f
         f *= f

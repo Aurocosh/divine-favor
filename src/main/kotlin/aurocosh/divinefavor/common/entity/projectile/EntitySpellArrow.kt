@@ -178,7 +178,7 @@ open class EntitySpellArrow : EntityArrow {
             super.onCollideWithPlayer(player)
     }
 
-    override fun notifyDataManagerChange(key: DataParameter<*>?) {
+    override fun notifyDataManagerChange(key: DataParameter<*>) {
         super.notifyDataManagerChange(key)
         if (TALISMAN_ID == key)
             talisman = getTalisman()
@@ -207,7 +207,7 @@ open class EntitySpellArrow : EntityArrow {
         compound.setBoolean(TAG_ANTI_GRAV, hasAntiGrav)
         compound.setInteger(TAG_IGNORE_DELAY, entityIgnoreTicks)
         compound.setTag(TAG_TALISMAN_DATA_COMMON, talismanDataCommon)
-        compound.setTag(TAG_TALISMAN_DATA_SERVER, this.talismanDataServer!!)
+        compound.setTag(TAG_TALISMAN_DATA_SERVER, this.talismanDataServer)
         compound.setString(TAG_SHOOTER, if (shooter == null) "" else shooter!!.gameProfile.id.toString())
     }
 
@@ -218,7 +218,6 @@ open class EntitySpellArrow : EntityArrow {
         setArrowType(compound.getInteger(TAG_ARROW_TYPE))
         var talismanId = compound.getString(TAG_TALISMAN)
         setHasAntiGravity(compound.getBoolean(TAG_ANTI_GRAV))
-        talismanId = talismanId
         setDespawnDelay(timeInGround + 1200)
         setEntityIgnoreDelay(compound.getInteger(TAG_IGNORE_DELAY))
         talismanDataCommon = compound.getCompoundTag(TAG_TALISMAN_DATA_COMMON)

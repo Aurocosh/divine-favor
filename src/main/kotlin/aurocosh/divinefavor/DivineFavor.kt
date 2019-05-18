@@ -49,7 +49,7 @@ object DivineFavor {
     }
 
     @Mod.EventHandler
-    fun serverStartingEvent(event: FMLServerStartingEvent) {
+    fun serverStartingEvent(@Suppress("UNUSED_PARAMETER") event: FMLServerStartingEvent) {
 
     }
 }

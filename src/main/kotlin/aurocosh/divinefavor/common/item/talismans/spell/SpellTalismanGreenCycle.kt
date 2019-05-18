@@ -23,7 +23,7 @@ class SpellTalismanGreenCycle(name: String, spirit: ModSpirit, favorCost: Int, o
         val spherePoints = UtilCoordinates.getBlocksInSphere(player.position, ConfigSpells.greenCycle.radius)
         val plantPositions = spherePoints.filter { pos -> isValidCrop(pos, context.world) }
         for (pos in plantPositions)
-            UtilBlock.removeBlockAndReplant(player, context.world, stack, pos, false, false)
+            UtilBlock.removeBlockAndReplant(player, context.world, pos, false, false)
     }
 
     private fun isValidCrop(pos: BlockPos, world: World): Boolean {

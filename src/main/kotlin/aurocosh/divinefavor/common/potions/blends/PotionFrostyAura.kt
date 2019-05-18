@@ -34,11 +34,11 @@ class PotionFrostyAura : ModPotion("frosty_aura", 0x7FB8A4) {
             livingBase.addPotionEffect(ModEffect(ModBlessings.chilling_presence, ConfigPresence.chillingPresence.duration))
             return
         }
-        if (!isConditionsMet(livingBase, livingBase))
+        if (!isConditionsMet(livingBase))
             auraData.reset()
     }
 
-    private fun isConditionsMet(livingBase: EntityLivingBase, player: EntityPlayer): Boolean {
+    private fun isConditionsMet(player: EntityPlayer): Boolean {
         if (!ModSpirits.blizrabi.isActive)
             return false;
         if (!COUNTER.isFinished)

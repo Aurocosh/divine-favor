@@ -14,16 +14,16 @@ class EtherealParticle(worldIn: World, position: Vec3d, scale: Float, red: Float
     internal var reddustParticleScale: Float = 0.toFloat()
 
     init {
-        var red = red
+        var redColor = red
         motionX *= 0.10000000149011612
         motionY *= 0.10000000149011612
         motionZ *= 0.10000000149011612
 
-        if (red == 0.0f)
-            red = 8.0f
+        if (redColor == 0.0f)
+            redColor = 8.0f
 
         val f = Math.random().toFloat() * 0.4f + 0.6f
-        particleRed = ((Math.random() * 0.20000000298023224).toFloat() + 0.8f) * red * f
+        particleRed = ((Math.random() * 0.20000000298023224).toFloat() + 0.8f) * redColor * f
         particleGreen = 0f
         particleBlue = 0f
         particleScale *= 0.75f
@@ -36,7 +36,7 @@ class EtherealParticle(worldIn: World, position: Vec3d, scale: Float, red: Float
     /**
      * Renders the particle
      */
-    override fun renderParticle(buffer: BufferBuilder, entityIn: Entity?, partialTicks: Float, rotationX: Float, rotationZ: Float, rotationYZ: Float, rotationXY: Float, rotationXZ: Float) {
+    override fun renderParticle(buffer: BufferBuilder, entityIn: Entity, partialTicks: Float, rotationX: Float, rotationZ: Float, rotationYZ: Float, rotationXY: Float, rotationXZ: Float) {
         var f = (particleAge.toFloat() + partialTicks) / particleMaxAge.toFloat() * 32.0f
         f = MathHelper.clamp(f, 0.0f, 1.0f)
         particleScale = reddustParticleScale * f

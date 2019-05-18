@@ -53,7 +53,7 @@ open class CommonProxy {
     open val hasClientPlayer: Boolean
         get() = throw IllegalStateException("This should only be called from client side")
 
-    open fun preInit(e: FMLPreInitializationEvent) {
+    open fun preInit(event: FMLPreInitializationEvent) {
         BufSerializerProvider.preInit()
 
         ModSpirits.preInit()
@@ -90,7 +90,7 @@ open class CommonProxy {
 
         NetworkRegistry.INSTANCE.registerGuiHandler(DivineFavor, GuiHandler())
 
-        //        e.getSuggestedConfigurationFile().getParentFile().getParentFile();
+        //        event.getSuggestedConfigurationFile().getParentFile().getParentFile();
     }
 
     open fun init(e: FMLInitializationEvent) {
@@ -103,7 +103,7 @@ open class CommonProxy {
         //        MinecraftForge.EVENT_BUS.register(PotionButcheringStrike.Companion);
     }
 
-    fun postInit(e: FMLPostInitializationEvent) {}
+    fun postInit(@Suppress("UNUSED_PARAMETER") event: FMLPostInitializationEvent) {}
 
     open fun addScheduledTaskClient(runnableToSchedule: Runnable): ListenableFuture<Any> {
         throw IllegalStateException("This should only be called from client side")

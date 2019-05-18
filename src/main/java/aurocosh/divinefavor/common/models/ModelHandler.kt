@@ -18,7 +18,7 @@ import net.minecraftforge.fml.relauncher.SideOnly
 @Mod.EventBusSubscriber(modid = ConstMisc.MOD_ID, value = [Side.CLIENT])
 object ModelHandler {
     @SubscribeEvent
-    fun onRegister(event: ModelRegistryEvent) {
+    fun onRegister(@Suppress("UNUSED_PARAMETER") event: ModelRegistryEvent) {
         for (item in ModRegistries.items.values)
             registerItemModel(item)
 

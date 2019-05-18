@@ -31,7 +31,7 @@ class BlockBathHeater : ModBlock(ConstBlockNames.BATH_HEATER, Material.ROCK, Con
 
     override fun getActualState(state: IBlockState, world: IBlockAccess?, pos: BlockPos?): IBlockState {
         val te = if (world is ChunkCache) world.getTileEntity(pos!!, Chunk.EnumCreateEntityType.CHECK) else world?.getTileEntity(pos!!)
-        return if (te is TileBathHeater) state.withProperty(STATE, te.state) else super.getActualState(state, world, pos)
+        return if (te is TileBathHeater) state.withProperty(STATE, te.state) else super.getActualState(state, world!!, pos!!)
     }
 
     override fun createBlockState(): BlockStateContainer {
