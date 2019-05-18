@@ -255,8 +255,8 @@ class TileMedium : TickableTileEntity(false, true), IMultiblockController {
         MultiblockWatcher.unRegisterController(this)
         multiBlockInstance = null
         updateState()
-        //        AltarsData altarData = WorldData.get(world).getAltarData();
-        //        altarData.removeAltarLocation(pos);
+        //        AltarsData altarsData = WorldData.get(world).getAltarsData();
+        //        altarsData.removeAltarLocation(pos);
     }
 
     override fun multiblockDamaged(player: EntityPlayer, world: World, pos: BlockPos, state: IBlockState) {
@@ -285,8 +285,8 @@ class TileMedium : TickableTileEntity(false, true), IMultiblockController {
         multiBlockInstance = multiBlock.makeMultiBlock(callingStone.spirit, world, pos)
         if (multiBlockInstance != null) {
             MultiblockWatcher.registerController(this)
-            //            AltarsData altarData = WorldData.get(world).getAltarData();
-            //            altarData.addAltarLocation(callingStone.spirit, pos);
+            //            AltarsData altarsData = WorldData.get(world).getAltarsData();
+            //            altarsData.addAltarLocation(callingStone.spirit, pos);
         }
     }
 
