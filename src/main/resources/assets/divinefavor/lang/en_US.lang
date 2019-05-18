@@ -262,7 +262,7 @@ item.divinefavor:talisman_winter_breath.name=Winter breath talisman
 item.divinefavor:talisman_wooden_punch.name=Wooden punch talisman
 
 # ARROW TALISMAN NAMES
-item.divinefavor:arrow_talisman_anti_gravity_arrow.name=Anti gravity arrow talisman
+item.divinefavor:arrow_talisman_anti_gravity.name=Anti gravity arrow talisman
 item.divinefavor:arrow_talisman_armor_corrosion.name=Armor corrosion talisman
 item.divinefavor:arrow_talisman_blast.name=Blast arrow talisman
 item.divinefavor:arrow_talisman_blink.name=Blink arrow talisman
@@ -319,6 +319,7 @@ potion.divinefavor:crushing_palm.name=Crushing palm
 potion.divinefavor:crystalline_road.name=Crystalline_road
 potion.divinefavor:empower_axe.name=Empower axe
 potion.divinefavor:empower_pickaxe.name=Empower pickaxe
+potion.divinefavor:escape_plan.name=Escape plan
 potion.divinefavor:evil_eye.name=Evil eye
 potion.divinefavor:extreme_buoyancy.name=Extreme buoyancy
 potion.divinefavor:fall_negation.name=Fall negation
@@ -594,7 +595,7 @@ item.divinefavor:talisman_wooden_punch.description=Will grant player 'Wooden_pun
 
 
 ## ARROW TALISMANS
-item.divinefavor:arrow_talisman_anti_gravity_arrow.description=Arrow shot with this talisman will fall upwards instead on down. Not very practical but can be used for some trick shots.
+item.divinefavor:arrow_talisman_anti_gravity.description=Arrow shot with this talisman will fall upwards instead on down. Not very practical but can be used for some trick shots.
 item.divinefavor:arrow_talisman_armor_corrosion.description=Arrow shot with this talisman will be cursed with armor corrosion. This curse will only work on players. Armor of afflicted players will gradually decay over time. Not all armor will be affected at once. Random pieces of armor will be chosen on curse application. To remove curse player will have to remove affected armor pieces.
 item.divinefavor:arrow_talisman_blast.description=Weak explosive arrow. Explodes on contact. Be careful it can kill shooter.
 item.divinefavor:arrow_talisman_blink.description=Arrow shot with this talisman will be teleport shooter to its location when it hits the ground.
