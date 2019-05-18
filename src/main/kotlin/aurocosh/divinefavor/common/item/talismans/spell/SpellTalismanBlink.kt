@@ -23,7 +23,7 @@ class SpellTalismanBlink(name: String, spirit: ModSpirit, favorCost: Int, option
     }
 
     private fun getBlinkTarget(player: EntityPlayer): BlockPos {
-        val pos = player.positionVector
+        val pos = player.getPositionEyes(0f)
         val look = player.lookVec
         return BlockPos(pos.add(look.scale(blinkDistance)))
     }
