@@ -14,7 +14,7 @@
     },
     {
       "type": "image",
-      "image": "#spirit_symbol",
+      "image": "#spirit_icon",
       "x": 50,
       "y": 15,
       "texture_width": 16,
@@ -24,7 +24,7 @@
     },
     {
       "type": "image",
-      "image": "#spirit_icon",
+      "image": "#spirit_symbol",
       "x": 50,
       "y": 15,
       "texture_width": 16,
