@@ -29,7 +29,7 @@ object MultiblockLoader {
 
         val configurations = ArrayList<MultiBlockConfiguration>(confPaths.size)
         for (configurationName in confPaths) {
-            val jsonString = UtilAssets.loadTextFile(DivineFavor.container, ConstResources.MULTIBLOCK_ASSETS + "/" + type + "/" + configurationName + ".json")
+            val jsonString = UtilAssets.loadTextFile(DivineFavor.container, ConstResources.MULTIBLOCK_ASSETS + type + "/" + configurationName + ".json")
 
             var data: MultiBlockData? = null
             try {
