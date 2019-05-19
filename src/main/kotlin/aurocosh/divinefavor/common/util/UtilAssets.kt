@@ -55,36 +55,4 @@ object UtilAssets {
 
         return ""
     }
-
-    fun Test2() {
-        //        ArrayList<Cost> costs = new ArrayList<>();
-        //        costs.addValue(new CostFavor(0,1,1));
-        //        costs.addValue(new CostFavor(0,2,1));
-        //        CostMultipleOptions costMultipleOptions = new CostMultipleOptions(0,costs);
-        //
-        //        SpellRequirement spellRequirementNotFree = new SpellRequirement("reqtest",costMultipleOptions);
-        //
-        //        TalismanData talismanData = new TalismanData("ignition", SpellType.IGNITION,spellRequirementNotFree,true,false);
-        //
-        //        RuntimeTypeAdapterFactory<Cost> costFactory = RuntimeTypeAdapterFactory
-        //                .of(Cost.class, "type")
-        //                .registerSubtype(CostFavor.class)
-        //                .registerSubtype(CostMultipleOptions.class);
-        //
-        //        final Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().setPrettyPrinting().registerTypeAdapterFactory(costFactory).create();
-        //
-        //        String result = gson.toJson(talismanData,TalismanData.class);
-        //        try {
-        //            File file = new File("D:/BufWriter/test.txt");
-        //            FileWriter fileWriter = new FileWriter(file);
-        //            fileWriter.write(result);
-        //            fileWriter.flush();
-        //            fileWriter.close();
-        //        }
-        //        catch (IOException e) {
-        //            e.printStackTrace();
-        //        }
-        //
-        //        TalismanData deserial = gson.fromJson(result,TalismanData.class);
-    }
 }
