@@ -106,3 +106,6 @@ inline fun <reified R, C : MutableCollection<in R>> Iterable<*>.castTo(destinati
 
 val <T> Iterable<T>.S: Sequence<T>
     get() = this.asSequence()
+
+val <T> Array<out T>.S: Sequence<T>
+    get() = this.asSequence()

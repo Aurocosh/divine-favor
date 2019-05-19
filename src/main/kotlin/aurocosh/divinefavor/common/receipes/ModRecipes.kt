@@ -46,7 +46,7 @@ object ModRecipes {
         return recipe.result.copy()
     }
 
-    private fun getIngridientStacks(ingredients: Array<Ingredient>): ArrayList<ItemStack> {
+    private fun getIngridientStacks(ingredients: List<Ingredient>): ArrayList<ItemStack> {
         val stacks = ArrayList<ItemStack>()
         for (ingredient in ingredients)
             Collections.addAll(stacks, *ingredient.getMatchingStacks())

@@ -5,7 +5,7 @@ import net.minecraft.item.ItemStack
 import net.minecraft.item.crafting.Ingredient
 import net.minecraft.util.ResourceLocation
 
-class ImmaterialMediumRecipe(val result: ItemStack, val callingStone: Ingredient, val ingredients: Array<Ingredient>) {
+class ImmaterialMediumRecipe(val result: ItemStack, val callingStone: Ingredient, val ingredients: List<Ingredient>) {
     val name: ResourceLocation
         get() = result.item.registryName ?: emptyLocation()
 }

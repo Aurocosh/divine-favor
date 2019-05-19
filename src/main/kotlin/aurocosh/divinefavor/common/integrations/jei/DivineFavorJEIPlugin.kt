@@ -18,7 +18,6 @@ import net.minecraftforge.oredict.OreDictionary
 
 @JEIPlugin
 class DivineFavorJEIPlugin : IModPlugin {
-
     override fun registerCategories(registry: IRecipeCategoryRegistration) {
         val helper = registry.jeiHelpers.guiHelper
         registry.addRecipeCategories(ImmaterialMediumCategory(helper))
