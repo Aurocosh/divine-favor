@@ -6,14 +6,15 @@ import aurocosh.divinefavor.common.receipes.serialization.RecipeIngredient
 import aurocosh.divinefavor.common.receipes.serialization.RecipeIngredientInstanceCreator
 import aurocosh.divinefavor.common.util.UtilAssets
 import com.google.gson.GsonBuilder
+import net.minecraft.util.ResourceLocation
 import net.minecraftforge.fml.common.Loader
 import java.util.*
 
 object RecipeLoader {
-    private val ignoredRecipes = HashSet<String>()
+    private val removedRecipes = HashSet<String>()
 
-    fun removeRecipe(location: String) {
-        ignoredRecipes.add(location)
+    fun removeRecipe(result: String) {
+        removedRecipes.add(result)
     }
 
     fun init() {
@@ -22,13 +23,10 @@ object RecipeLoader {
 
         val recipes = ArrayList<MediumRecipeData>()
         for (container in mods) {
-            var recipePaths: List<String> = UtilAssets.getAssetPaths(container, "medium_recipes", "json")
-            val recipeSet = HashSet(recipePaths)
-            recipeSet.removeAll(ignoredRecipes)
-            recipePaths = ArrayList(recipeSet)
-
-            val modRecipes = UtilAssets.loadObjectsFromJsonAssets(MediumRecipeData::class.java, container, recipePaths, gson)
-            recipes.addAll(modRecipes)
+            val recipePaths: List<String> = UtilAssets.getAssetPaths(container, "medium_recipes", "json")
+            val allRecipes = UtilAssets.loadObjectsFromJsonAssets(MediumRecipeData::class.java, container, recipePaths, gson)
+            val availableRecipes = allRecipes.S.filter { !removedRecipes.contains(it.result?.item) }
+            recipes.addAll(availableRecipes)
         }
         recipes.S.map(MediumRecipeData::toRecipes).flatten().forEach(ModRecipes::register)
     }

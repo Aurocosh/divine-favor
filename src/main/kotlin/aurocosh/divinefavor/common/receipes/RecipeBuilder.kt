@@ -26,6 +26,6 @@ class RecipeBuilder(var result: ItemStack, callingStone: ItemCallingStone) {
     }
 
     fun create(): ImmaterialMediumRecipe {
-        return ImmaterialMediumRecipe(result, callingStone, ingredients.toTypedArray())
+        return ImmaterialMediumRecipe(result, callingStone, ingredients)
     }
 }

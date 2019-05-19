@@ -10,7 +10,6 @@ import net.minecraft.item.ItemStack
 import net.minecraft.item.crafting.Ingredient
 
 class ImmaterialMediumWrapper(val recipe: ImmaterialMediumRecipe) : IRecipeWrapper {
-
     override fun getIngredients(ingredients: IIngredients) {
         val builder = ImmutableList.builder<ItemStack>()
         for (ingredient in recipe.ingredients)
