@@ -49,7 +49,7 @@ class TileMedium : TickableTileEntity(false, true), IMultiblockController {
                     tryToFormMultiBlockInternal()
                 updateState()
                 val blockState = world.getBlockState(pos)
-                getWorld().notifyBlockUpdate(pos, blockState, blockState, 3)
+                world.notifyBlockUpdate(pos, blockState, blockState, 3)
             }
             markDirty()
         }
@@ -172,7 +172,7 @@ class TileMedium : TickableTileEntity(false, true), IMultiblockController {
         this.stone = stone
         markDirty()
         val blockState = world.getBlockState(pos)
-        getWorld().notifyBlockUpdate(pos, blockState, blockState, 3)
+        world.notifyBlockUpdate(pos, blockState, blockState, 3)
     }
 
     fun getState(): MediumState {
@@ -186,7 +186,7 @@ class TileMedium : TickableTileEntity(false, true), IMultiblockController {
         this.state = state
         markDirty()
         val blockState = world.getBlockState(pos)
-        getWorld().notifyBlockUpdate(pos, blockState, blockState, 3)
+        world.notifyBlockUpdate(pos, blockState, blockState, 3)
     }
 
     override fun updateFiltered() {
@@ -249,6 +249,10 @@ class TileMedium : TickableTileEntity(false, true), IMultiblockController {
 
     override fun getMultiblockInstance(): MultiBlockInstance? {
         return multiBlockInstance
+    }
+
+    override fun getControllerWorld(): World {
+        return world
     }
 
     override fun multiblockDeconstructed() {

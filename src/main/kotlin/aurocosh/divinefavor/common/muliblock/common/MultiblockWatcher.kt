@@ -14,12 +14,12 @@ object MultiblockWatcher {
     private val controllers = HashMap<World, MutableSet<IMultiblockController>>()
 
     fun registerController(controller: IMultiblockController) {
-        val controllerSet = getOrMakeControllerSet(controller.getWorld())
+        val controllerSet = getOrMakeControllerSet(controller.getControllerWorld())
         controllerSet.add(controller)
     }
 
     fun unRegisterController(controller: IMultiblockController) {
-        val controllerSet = controllers[controller.getWorld()] ?: return
+        val controllerSet = controllers[controller.getControllerWorld()] ?: return
         controllerSet.remove(controller)
     }
 

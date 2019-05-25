@@ -35,7 +35,7 @@ class TileSoulboundLectern : TileEntity(), IMultiblockController {
             _state = value
             markDirty()
             val blockState = world.getBlockState(pos)
-            getWorld().notifyBlockUpdate(pos, blockState, blockState, 3)
+            world.notifyBlockUpdate(pos, blockState, blockState, 3)
         }
         get() = _state
 
@@ -47,7 +47,7 @@ class TileSoulboundLectern : TileEntity(), IMultiblockController {
             _gem = value
             markDirty()
             val blockState = world.getBlockState(pos)
-            getWorld().notifyBlockUpdate(pos, blockState, blockState, 3)
+            world.notifyBlockUpdate(pos, blockState, blockState, 3)
         }
         get() = _gem
 
@@ -63,7 +63,7 @@ class TileSoulboundLectern : TileEntity(), IMultiblockController {
                     isRejecting = true
 
                     val blockState = world.getBlockState(pos)
-                    getWorld().notifyBlockUpdate(pos, blockState, blockState, 3)
+                    world.notifyBlockUpdate(pos, blockState, blockState, 3)
 
                     tryToFormMultiBlock()
                 }
@@ -193,6 +193,10 @@ class TileSoulboundLectern : TileEntity(), IMultiblockController {
             if (multiBlockInstance != null)
                 MultiblockWatcher.registerController(this)
         }
+    }
+
+    override fun getControllerWorld(): World {
+        return world
     }
 
     private fun updateState() {
