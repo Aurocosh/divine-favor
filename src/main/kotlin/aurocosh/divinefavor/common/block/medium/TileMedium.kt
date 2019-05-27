@@ -235,9 +235,7 @@ class TileMedium : TickableTileEntity(false, true), IMultiblockController {
 
     private fun exchangeRecipe(callingStone: ItemCallingStone, stackHandler: IItemHandler, resultIndex: Int) {
         val slotStacks = UtilHandler.getNotEmptyStacksWithSlotIndexes(stackHandler)
-        val stacks = ArrayList<ItemStack>()
-        for ((_, stack) in slotStacks)
-            stacks.add(stack)
+        val stacks = slotStacks.map { (_, stack) -> stack }
 
         val result = ModRecipes.getRecipeResult(callingStone, stacks)
         if (result == ItemStack.EMPTY)
