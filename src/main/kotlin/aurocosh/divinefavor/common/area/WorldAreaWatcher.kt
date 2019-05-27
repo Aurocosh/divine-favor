@@ -14,12 +14,12 @@ object WorldAreaWatcher {
     private val watchers = HashMap<World, MutableSet<IAreaWatcher>>()
 
     fun registerWatcher(watcher: IAreaWatcher) {
-        val controllerSet = watchers.computeIfAbsent(watcher.getWorld()) { HashSet() }
+        val controllerSet = watchers.computeIfAbsent(watcher.getAreaWorld()) { HashSet() }
         controllerSet.add(watcher)
     }
 
     fun unRegisterController(watcher: IAreaWatcher) {
-        watchersToDelete.add(WatcherToDelete(watcher.getWorld(), watcher))
+        watchersToDelete.add(WatcherToDelete(watcher.getAreaWorld(), watcher))
     }
 
     private fun cleanup() {

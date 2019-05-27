@@ -23,7 +23,8 @@ public class UtilReflection {
         }
         catch (ReflectionHelper.UnableToAccessFieldException e) {
             FMLLog.log.error("There was a problem getting field index {} from {}", fieldIndex, classToAccess.getName(), e);
-            throw e;
+            e.printStackTrace();
+            return null;
         }
     }
 

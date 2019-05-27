@@ -313,6 +313,7 @@ item.divinefavor:arrow_talisman_zero_g.name=Zero g arrow talisman
 
 # EFFECT NAMES
 potion.divinefavor:armor_of_pacifist.name=Armor of pacifist
+potion.divinefavor:arrow_deflection.name=Arrow deflection
 potion.divinefavor:butchering_strike.name=Butchering strike
 potion.divinefavor:consuming_fury.name=Consuming fury
 potion.divinefavor:crushing_palm.name=Crushing palm

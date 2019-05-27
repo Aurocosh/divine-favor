@@ -5,7 +5,7 @@ import net.minecraft.util.math.BlockPos
 import net.minecraft.world.World
 
 interface IAreaWatcher {
-    fun getWorld(): World
+    fun getAreaWorld(): World
     fun getArea(): WorldArea
 
     fun blockChanged(world: World, pos: BlockPos, state: IBlockState)

@@ -27,7 +27,7 @@ class PotionArrowDeflection : ModPotion("arrow_deflection", 0x7FB8A4) {
             return
 
         val entities = livingBase.world.getEntitiesWithinAABB(EntityArrow::class.java, AxisAlignedBB(livingBase.position).grow(ConfigSpells.arrowDeflection.radius.toDouble()))
-        val projectiles = entities.S.filter { arrow -> !IN_GROUND.get(arrow) && arrow.getDistanceSq(livingBase) <= RADIUS_SQ }
+        val projectiles = entities.S.filter { arrow -> arrow.getDistanceSq(livingBase) <= RADIUS_SQ }
         for (projectile in projectiles) {
             val directionToTarget = livingBase.positionVector.subtract(projectile.positionVector).normalize()
             val motionVector = projectile.getMotionVector()
@@ -46,7 +46,6 @@ class PotionArrowDeflection : ModPotion("arrow_deflection", 0x7FB8A4) {
     companion object {
         private val COOLDOWN_COUNTER = LimitedTimer(ConfigSpells.arrowDeflection.deflectionCooldown)
         private val RADIUS_SQ = ConfigSpells.arrowDeflection.radius * ConfigSpells.arrowDeflection.radius
-        private val IN_GROUND = PrivateField(EntityArrow::class.java, 7, false)
 
         @SubscribeEvent(priority = EventPriority.LOWEST)
         fun onEntityDamaged(event: LivingDamageEvent) {

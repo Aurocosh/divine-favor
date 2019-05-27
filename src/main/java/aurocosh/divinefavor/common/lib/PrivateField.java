@@ -14,11 +14,13 @@ public class PrivateField<T, K> {
         this.classToAccess = classToAccess;
         this.fallbackValue = fallbackValue;
         this.field = UtilReflection.getPrivateField(classToAccess, fieldIndex);
-        if (!field.getType().equals(fallbackValue.getClass()))
+        if (field != null && !field.getType().equals(fallbackValue.getClass()))
             DivineFavor.logger.error("Reflected private field {} on class {} value type {} is not equal to expected value type {}", field.getName(), classToAccess.getName(), field.getType().getName(), fallbackValue.getClass().getName());
     }
 
     public K get(T instance) {
+        if (field == null)
+            return fallbackValue;
         try {
             return (K) field.get(instance);
         }

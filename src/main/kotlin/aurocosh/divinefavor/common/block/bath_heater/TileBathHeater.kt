@@ -93,7 +93,7 @@ class TileBathHeater : TileEntity(), ITickable, IAreaWatcher {
     val isBurning: Boolean
         get() = state == BathHeaterState.ACTIVE
 
-    override fun getWorld(): World {
+    override fun getAreaWorld(): World {
         return world
     }
 
