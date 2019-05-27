@@ -66,7 +66,7 @@ class TileBathHeater : TileEntity(), ITickable, IAreaWatcher {
             _state = value
             markDirty()
             val blockState = world.getBlockState(pos)
-            getWorld().notifyBlockUpdate(pos, blockState, blockState, 3)
+            world.notifyBlockUpdate(pos, blockState, blockState, 3)
         }
         get() = _state
 
@@ -92,6 +92,10 @@ class TileBathHeater : TileEntity(), ITickable, IAreaWatcher {
 
     val isBurning: Boolean
         get() = state == BathHeaterState.ACTIVE
+
+    override fun getWorld(): World {
+        return world
+    }
 
     init {
         progressBurning = 0
