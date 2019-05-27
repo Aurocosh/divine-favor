@@ -89,8 +89,6 @@ open class CommonProxy {
         SpellBowDataHandler.register()
 
         NetworkRegistry.INSTANCE.registerGuiHandler(DivineFavor, GuiHandler())
-
-        //        event.getSuggestedConfigurationFile().getParentFile().getParentFile();
     }
 
     open fun init(e: FMLInitializationEvent) {
@@ -99,8 +97,7 @@ open class CommonProxy {
         ModBlocks.init()
         ModRecipes.init()
         RecipeLoader.init()
-
-        //        MinecraftForge.EVENT_BUS.register(PotionButcheringStrike.Companion);
+        ModBlessings.init()
     }
 
     fun postInit(@Suppress("UNUSED_PARAMETER") event: FMLPostInitializationEvent) {}

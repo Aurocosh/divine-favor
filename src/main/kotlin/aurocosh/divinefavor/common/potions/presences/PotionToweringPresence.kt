@@ -14,7 +14,6 @@ import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.item.ItemStack
 import net.minecraftforge.fml.common.Mod
 
-@Mod.EventBusSubscriber(modid = ConstMisc.MOD_ID)
 class PotionToweringPresence : ModPotion("towering_presence", 0x7FB8A4) {
 
     override fun onPotionAdded(livingBase: EntityLivingBase) {
@@ -48,7 +47,7 @@ class PotionToweringPresence : ModPotion("towering_presence", 0x7FB8A4) {
     companion object {
         private val possibleCurses = DistributedRandomList<ModPotion>()
 
-        init {
+        fun init() {
             possibleCurses.add(ModCurses.armor_corrosion, 0.1)
             possibleCurses.add(ModCurses.crawling_mist, 0.1)
             possibleCurses.add(ModCurses.cripple, 0.1)
