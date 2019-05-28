@@ -4,10 +4,8 @@ import aurocosh.divinefavor.DivineFavor
 import aurocosh.divinefavor.common.constants.ConstMainTabOrder
 import aurocosh.divinefavor.common.entity.rope.base.EntityRopeNodeBase
 import aurocosh.divinefavor.common.item.base.ModItem
-import aurocosh.divinefavor.common.item.common.ModItems
 import aurocosh.divinefavor.common.lib.extensions.S
 import aurocosh.divinefavor.common.lib.extensions.multicatch
-import aurocosh.divinefavor.common.util.UtilPlayer
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.init.SoundEvents
 import net.minecraft.item.ItemStack
