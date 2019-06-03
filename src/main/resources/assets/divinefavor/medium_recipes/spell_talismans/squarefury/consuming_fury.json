@@ -16,8 +16,10 @@
       "count": 2
     },
     {
-      "item": "minecraft:iron_sword",
-      "count": 2
+      "item": "minecraft:iron_sword"
+    },
+    {
+      "item": "minecraft:iron_sword"
     }
   ]
 }
