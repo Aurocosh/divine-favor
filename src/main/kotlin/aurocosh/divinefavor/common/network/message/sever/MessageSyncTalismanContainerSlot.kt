@@ -1,7 +1,7 @@
 package aurocosh.divinefavor.common.network.message.sever
 
 import aurocosh.divinefavor.common.item.talisman_container.TalismanContainerAdapter
-import aurocosh.divinefavor.common.network.base.WrappedServerMessage
+import aurocosh.autonetworklib.network.base.WrappedServerMessage
 import net.minecraft.entity.player.EntityPlayerMP
 
 class MessageSyncTalismanContainerSlot : WrappedServerMessage {

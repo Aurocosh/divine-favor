@@ -4,7 +4,7 @@ import aurocosh.divinefavor.DivineFavor
 import aurocosh.divinefavor.common.item.talismans.spell.sense.BlockHighlighter
 import aurocosh.divinefavor.common.item.talismans.spell.sense.SenseEntitiesPredicate
 import aurocosh.divinefavor.common.lib.extensions.S
-import aurocosh.divinefavor.common.network.base.WrappedClientMessage
+import aurocosh.autonetworklib.network.base.WrappedClientMessage
 import aurocosh.divinefavor.common.util.UtilCoordinates
 import net.minecraft.entity.EntityLivingBase
 import net.minecraft.entity.monster.IMob

@@ -36,7 +36,6 @@ import net.minecraftforge.fml.common.network.IGuiHandler
 import net.minecraftforge.items.CapabilityItemHandler
 
 class GuiHandler : IGuiHandler {
-
     override fun getServerGuiElement(ID: Int, player: EntityPlayer, world: World, x: Int, y: Int, z: Int): Any? {
         when (ID) {
             ConstGuiIDs.IRON_MEDIUM_NO_STONE -> return ContainerMediumNoStone(player, (world.getTileEntity(BlockPos(x, y, z)) as TileMedium?)!!)

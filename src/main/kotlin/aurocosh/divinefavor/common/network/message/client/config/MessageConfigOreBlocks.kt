@@ -1,7 +1,7 @@
 package aurocosh.divinefavor.common.network.message.client.config
 
 import aurocosh.divinefavor.common.config.common.ConfigGeneral
-import aurocosh.divinefavor.common.network.base.ConfigSyncClientMessage
+import aurocosh.autonetworklib.network.base.ConfigSyncClientMessage
 import net.minecraft.block.Block
 import net.minecraftforge.fml.relauncher.Side
 import net.minecraftforge.fml.relauncher.SideOnly

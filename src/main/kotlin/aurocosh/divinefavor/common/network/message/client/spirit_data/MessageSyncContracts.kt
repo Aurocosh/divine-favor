@@ -3,7 +3,7 @@ package aurocosh.divinefavor.common.network.message.client.spirit_data
 import aurocosh.divinefavor.DivineFavor
 import aurocosh.divinefavor.common.custom_data.player.data.favor.SpiritData
 import aurocosh.divinefavor.common.lib.extensions.divinePlayerData
-import aurocosh.divinefavor.common.network.base.WrappedClientMessage
+import aurocosh.autonetworklib.network.base.WrappedClientMessage
 import net.minecraft.nbt.NBTTagCompound
 import net.minecraftforge.fml.relauncher.Side
 import net.minecraftforge.fml.relauncher.SideOnly

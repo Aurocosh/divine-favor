@@ -2,7 +2,7 @@ package aurocosh.divinefavor.common.network.message.sever.rope
 
 import aurocosh.divinefavor.common.entity.rope.EntityRopeExplosiveNode
 import aurocosh.divinefavor.common.entity.rope.base.EntityRopeNodeBase
-import aurocosh.divinefavor.common.network.base.WrappedServerMessage
+import aurocosh.autonetworklib.network.base.WrappedServerMessage
 import aurocosh.divinefavor.common.util.UtilCoordinates
 import net.minecraft.entity.player.EntityPlayerMP
 

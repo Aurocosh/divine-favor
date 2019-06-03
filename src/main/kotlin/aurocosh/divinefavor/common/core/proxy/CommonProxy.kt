@@ -1,5 +1,7 @@
 package aurocosh.divinefavor.common.core.proxy
 
+import aurocosh.autonetworklib.network.base.WrappedClientMessage
+import aurocosh.autonetworklib.network.base.WrappedServerMessage
 import aurocosh.divinefavor.DivineFavor
 import aurocosh.divinefavor.common.block.common.ModBlocks
 import aurocosh.divinefavor.common.constants.ConstMisc
@@ -21,10 +23,6 @@ import aurocosh.divinefavor.common.item.wishing_stones.ModWishingStones
 import aurocosh.divinefavor.common.muliblock.common.ModMultiBlocks
 import aurocosh.divinefavor.common.network.GuiHandler
 import aurocosh.divinefavor.common.network.NetworkHandler
-import aurocosh.divinefavor.common.network.base.WrappedClientMessage
-import aurocosh.divinefavor.common.network.base.WrappedServerMessage
-import aurocosh.divinefavor.common.network.base.serialization.serializer_provider.BufSerializerProvider
-import aurocosh.divinefavor.common.network.common.MessageRegister
 import aurocosh.divinefavor.common.potions.common.ModBlendEffects
 import aurocosh.divinefavor.common.potions.common.ModBlessings
 import aurocosh.divinefavor.common.potions.common.ModCurses
@@ -54,8 +52,6 @@ open class CommonProxy {
         get() = throw IllegalStateException("This should only be called from client side")
 
     open fun preInit(event: FMLPreInitializationEvent) {
-        BufSerializerProvider.preInit()
-
         ModSpirits.preInit()
         ModMultiBlocks.preInit()
 
@@ -77,9 +73,9 @@ open class CommonProxy {
         ModBlocks.preInit()
         ModEntities.preInit()
 
-        MessageRegister.init()
-        WrappedClientMessage.setNetworkWrapper(NetworkHandler.INSTANCE)
-        WrappedServerMessage.setNetworkWrapper(NetworkHandler.INSTANCE)
+        NetworkHandler.init()
+        WrappedClientMessage.setNetworkWrapper(NetworkHandler.wrapper.wrapper)
+        WrappedServerMessage.setNetworkWrapper(NetworkHandler.wrapper.wrapper)
 
         LivingDataDataHandler.register()
         PlayerDataDataHandler.register()

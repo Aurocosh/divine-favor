@@ -1,8 +1,8 @@
 package aurocosh.divinefavor.common.network.message.client.syncing
 
+import aurocosh.autonetworklib.network.base.WrappedClientMessage
 import aurocosh.divinefavor.DivineFavor
 import aurocosh.divinefavor.common.lib.extensions.divinePlayerData
-import aurocosh.divinefavor.common.network.base.WrappedClientMessage
 import net.minecraft.util.ResourceLocation
 import net.minecraftforge.fml.relauncher.Side
 import net.minecraftforge.fml.relauncher.SideOnly

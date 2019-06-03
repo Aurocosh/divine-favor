@@ -2,7 +2,7 @@ package aurocosh.divinefavor.common.network.message.client.particles
 
 import aurocosh.divinefavor.DivineFavor
 import aurocosh.divinefavor.common.config.common.ConfigSpells
-import aurocosh.divinefavor.common.network.base.WrappedClientMessage
+import aurocosh.autonetworklib.network.base.WrappedClientMessage
 import aurocosh.divinefavor.common.util.UtilRandom
 import net.minecraft.util.EnumParticleTypes
 import net.minecraft.util.math.Vec3d

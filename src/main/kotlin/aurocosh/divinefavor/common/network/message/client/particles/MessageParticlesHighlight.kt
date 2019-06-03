@@ -9,7 +9,7 @@ import aurocosh.divinefavor.common.lib.extensions.isLava
 import aurocosh.divinefavor.common.lib.extensions.isLiquid
 import aurocosh.divinefavor.common.lib.extensions.isWater
 import aurocosh.divinefavor.common.lib.wrapper.ConvertingPredicate
-import aurocosh.divinefavor.common.network.base.WrappedClientMessage
+import aurocosh.autonetworklib.network.base.WrappedClientMessage
 import aurocosh.divinefavor.common.util.UtilBlock
 import net.minecraft.block.Block
 import net.minecraft.entity.player.EntityPlayer

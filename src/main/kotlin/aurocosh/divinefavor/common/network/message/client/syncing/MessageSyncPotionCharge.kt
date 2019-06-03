@@ -1,7 +1,7 @@
 package aurocosh.divinefavor.common.network.message.client.syncing
 
 import aurocosh.divinefavor.DivineFavor
-import aurocosh.divinefavor.common.network.base.WrappedClientMessage
+import aurocosh.autonetworklib.network.base.WrappedClientMessage
 import net.minecraft.potion.Potion
 import net.minecraft.potion.PotionEffect
 import net.minecraftforge.fml.relauncher.ReflectionHelper
