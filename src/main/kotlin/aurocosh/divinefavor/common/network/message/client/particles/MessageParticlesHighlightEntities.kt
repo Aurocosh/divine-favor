@@ -4,7 +4,7 @@ import aurocosh.divinefavor.DivineFavor
 import aurocosh.divinefavor.common.item.talismans.spell.sense.BlockHighlighter
 import aurocosh.divinefavor.common.item.talismans.spell.sense.SenseEntitiesPredicate
 import aurocosh.divinefavor.common.lib.extensions.S
-import aurocosh.autonetworklib.network.base.WrappedClientMessage
+import aurocosh.divinefavor.common.network.message.base.DivineClientMessage
 import aurocosh.divinefavor.common.util.UtilCoordinates
 import net.minecraft.entity.EntityLivingBase
 import net.minecraft.entity.monster.IMob
@@ -15,7 +15,7 @@ import net.minecraftforge.fml.relauncher.Side
 import net.minecraftforge.fml.relauncher.SideOnly
 import javax.vecmath.Color3f
 
-class MessageParticlesHighlightEntities : WrappedClientMessage {
+class MessageParticlesHighlightEntities : DivineClientMessage {
     var radius: Int = 0
     var particles: Int = 0
     var dimensionId: Int = 0

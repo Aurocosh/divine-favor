@@ -2,12 +2,12 @@ package aurocosh.divinefavor.common.network.message.client.syncing
 
 import aurocosh.divinefavor.DivineFavor
 import aurocosh.divinefavor.common.lib.extensions.divineLivingData
-import aurocosh.autonetworklib.network.base.WrappedClientMessage
+import aurocosh.divinefavor.common.network.message.base.DivineClientMessage
 import net.minecraft.util.math.Vec3d
 import net.minecraftforge.fml.relauncher.Side
 import net.minecraftforge.fml.relauncher.SideOnly
 
-class MessageSyncWindLeash : WrappedClientMessage {
+class MessageSyncWindLeash : DivineClientMessage {
     var x: Double = 0.0
     var z: Double = 0.0
 

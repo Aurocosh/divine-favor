@@ -1,10 +1,10 @@
 package aurocosh.divinefavor.common.network.message.sever
 
 import aurocosh.divinefavor.common.item.talisman_container.TalismanContainerAdapter
-import aurocosh.autonetworklib.network.base.WrappedServerMessage
+import aurocosh.divinefavor.common.network.message.base.DivineServerMessage
 import net.minecraft.entity.player.EntityPlayerMP
 
-class MessageSyncTalismanContainerSlot : WrappedServerMessage {
+class MessageSyncTalismanContainerSlot : DivineServerMessage {
     var playerSlotIndex: Int = 0
     var selectedGrimoireIndex: Int = 0
 

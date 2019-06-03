@@ -15,42 +15,46 @@ import aurocosh.divinefavor.common.network.message.sever.MessageSyncTalismanCont
 import aurocosh.divinefavor.common.network.message.sever.petrification.MessagePetrificationCure
 import aurocosh.divinefavor.common.network.message.sever.petrification.MessagePetrificationDamage
 import aurocosh.divinefavor.common.network.message.sever.petrification.MessagePetrificationReset
+import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper
 import net.minecraftforge.fml.relauncher.Side
 
 object NetworkHandler {
-    val wrapper = AutoNetworkWrapper(ConstMisc.MOD_ID)
+    val autoWrapper = AutoNetworkWrapper(ConstMisc.MOD_ID)
+
+    val wrapper: SimpleNetworkWrapper
+        get() = autoWrapper.wrapper
 
     fun init() {
         // Client messages
-        wrapper.register(MessageConfigOreBlocks::class.java, Side.CLIENT)
+        autoWrapper.register(MessageConfigOreBlocks::class.java, Side.CLIENT)
 
-        wrapper.register(MessageParticlesHighlightEntities::class.java, Side.CLIENT)
-        wrapper.register(MessageParticlesHighlightFloodFill::class.java, Side.CLIENT)
-        wrapper.register(MessageParticlesHighlightInSphere::class.java, Side.CLIENT)
-        wrapper.register(MessageParticlesWave::class.java, Side.CLIENT)
-        wrapper.register(MessageParticlesWinterBreath::class.java, Side.CLIENT)
+        autoWrapper.register(MessageParticlesHighlightEntities::class.java, Side.CLIENT)
+        autoWrapper.register(MessageParticlesHighlightFloodFill::class.java, Side.CLIENT)
+        autoWrapper.register(MessageParticlesHighlightInSphere::class.java, Side.CLIENT)
+        autoWrapper.register(MessageParticlesWave::class.java, Side.CLIENT)
+        autoWrapper.register(MessageParticlesWinterBreath::class.java, Side.CLIENT)
 
-        wrapper.register(MessageSyncAllSpiritData::class.java, Side.CLIENT)
-        wrapper.register(MessageSyncFavorInfinite::class.java, Side.CLIENT)
-        wrapper.register(MessageSyncContracts::class.java, Side.CLIENT)
-        wrapper.register(MessageSyncFavor::class.java, Side.CLIENT)
+        autoWrapper.register(MessageSyncAllSpiritData::class.java, Side.CLIENT)
+        autoWrapper.register(MessageSyncFavorInfinite::class.java, Side.CLIENT)
+        autoWrapper.register(MessageSyncContracts::class.java, Side.CLIENT)
+        autoWrapper.register(MessageSyncFavor::class.java, Side.CLIENT)
 
-        wrapper.register(MessagePetrificationReset::class.java, Side.CLIENT)
-        wrapper.register(MessageSyncEvilEye::class.java, Side.CLIENT)
-        wrapper.register(MessageSyncFireImmunity::class.java, Side.CLIENT)
-        wrapper.register(MessageSyncFlyingCapability::class.java, Side.CLIENT)
-        wrapper.register(MessageSyncFury::class.java, Side.CLIENT)
-        wrapper.register(MessageSyncGrudge::class.java, Side.CLIENT)
-        wrapper.register(MessageSyncPotionCharge::class.java, Side.CLIENT)
-        wrapper.register(MessageSyncRedFury::class.java, Side.CLIENT)
-        wrapper.register(MessageSyncWindLeash::class.java, Side.CLIENT)
+        autoWrapper.register(MessagePetrificationReset::class.java, Side.CLIENT)
+        autoWrapper.register(MessageSyncEvilEye::class.java, Side.CLIENT)
+        autoWrapper.register(MessageSyncFireImmunity::class.java, Side.CLIENT)
+        autoWrapper.register(MessageSyncFlyingCapability::class.java, Side.CLIENT)
+        autoWrapper.register(MessageSyncFury::class.java, Side.CLIENT)
+        autoWrapper.register(MessageSyncGrudge::class.java, Side.CLIENT)
+        autoWrapper.register(MessageSyncPotionCharge::class.java, Side.CLIENT)
+        autoWrapper.register(MessageSyncRedFury::class.java, Side.CLIENT)
+        autoWrapper.register(MessageSyncWindLeash::class.java, Side.CLIENT)
 
-        wrapper.register(MessageSpiritBecameActive::class.java, Side.CLIENT)
-        wrapper.register(MessageSpiritBecameInactive::class.java, Side.CLIENT)
+        autoWrapper.register(MessageSpiritBecameActive::class.java, Side.CLIENT)
+        autoWrapper.register(MessageSpiritBecameInactive::class.java, Side.CLIENT)
 
         // Server messages
-        wrapper.register(MessagePetrificationCure::class.java, Side.SERVER)
-        wrapper.register(MessagePetrificationDamage::class.java, Side.SERVER)
-        wrapper.register(MessageSyncTalismanContainerSlot::class.java, Side.SERVER)
+        autoWrapper.register(MessagePetrificationCure::class.java, Side.SERVER)
+        autoWrapper.register(MessagePetrificationDamage::class.java, Side.SERVER)
+        autoWrapper.register(MessageSyncTalismanContainerSlot::class.java, Side.SERVER)
     }
 }

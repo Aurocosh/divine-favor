@@ -3,12 +3,12 @@ package aurocosh.divinefavor.common.network.message.client.spirit_data
 import aurocosh.divinefavor.DivineFavor
 import aurocosh.divinefavor.common.custom_data.player.data.favor.SpiritData
 import aurocosh.divinefavor.common.lib.extensions.divinePlayerData
-import aurocosh.autonetworklib.network.base.WrappedClientMessage
+import aurocosh.divinefavor.common.network.message.base.DivineClientMessage
 import aurocosh.divinefavor.common.spirit.base.ModSpirit
 import net.minecraftforge.fml.relauncher.Side
 import net.minecraftforge.fml.relauncher.SideOnly
 
-class MessageSyncFavorInfinite : WrappedClientMessage {
+class MessageSyncFavorInfinite : DivineClientMessage {
     var spiritId: Int = 0
     var infinite: Boolean = false
 

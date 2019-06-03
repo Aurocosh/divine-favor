@@ -1,14 +1,14 @@
 package aurocosh.divinefavor.common.network.message.client.activity
 
 import aurocosh.divinefavor.DivineFavor
-import aurocosh.autonetworklib.network.base.WrappedClientMessage
+import aurocosh.divinefavor.common.network.message.base.DivineClientMessage
 import aurocosh.divinefavor.common.registry.mappers.ModMappers
 import net.minecraft.client.resources.I18n
 import net.minecraft.util.text.TextComponentString
 import net.minecraftforge.fml.relauncher.Side
 import net.minecraftforge.fml.relauncher.SideOnly
 
-class MessageSpiritBecameActive : WrappedClientMessage {
+class MessageSpiritBecameActive : DivineClientMessage {
     var spiritId: Int = 0
 
     constructor() {}

@@ -9,8 +9,7 @@ import aurocosh.divinefavor.common.lib.extensions.isLava
 import aurocosh.divinefavor.common.lib.extensions.isLiquid
 import aurocosh.divinefavor.common.lib.extensions.isWater
 import aurocosh.divinefavor.common.lib.wrapper.ConvertingPredicate
-import aurocosh.autonetworklib.network.base.WrappedClientMessage
-import aurocosh.divinefavor.common.util.UtilBlock
+import aurocosh.divinefavor.common.network.message.base.DivineClientMessage
 import net.minecraft.block.Block
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.util.math.BlockPos
@@ -21,7 +20,7 @@ import net.minecraftforge.fml.relauncher.SideOnly
 
 import javax.vecmath.Color3f
 
-abstract class MessageParticlesHighlight : WrappedClientMessage {
+abstract class MessageParticlesHighlight : DivineClientMessage {
     var particles: Int = 0
     var dimensionId: Int = 0
     var position: BlockPos = BlockPos.ORIGIN

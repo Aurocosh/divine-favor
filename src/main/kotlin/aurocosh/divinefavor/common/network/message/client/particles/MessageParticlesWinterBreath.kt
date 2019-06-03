@@ -2,14 +2,14 @@ package aurocosh.divinefavor.common.network.message.client.particles
 
 import aurocosh.divinefavor.DivineFavor
 import aurocosh.divinefavor.common.config.common.ConfigSpells
-import aurocosh.autonetworklib.network.base.WrappedClientMessage
+import aurocosh.divinefavor.common.network.message.base.DivineClientMessage
 import aurocosh.divinefavor.common.util.UtilRandom
 import net.minecraft.util.EnumParticleTypes
 import net.minecraft.util.math.Vec3d
 import net.minecraftforge.fml.relauncher.Side
 import net.minecraftforge.fml.relauncher.SideOnly
 
-class MessageParticlesWinterBreath : WrappedClientMessage {
+class MessageParticlesWinterBreath : DivineClientMessage {
     var position: Vec3d = Vec3d.ZERO
     var direction: Vec3d = Vec3d.ZERO
 

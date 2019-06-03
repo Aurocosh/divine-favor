@@ -1,7 +1,4 @@
 package aurocosh.divinefavor.common.core.proxy
-
-import aurocosh.autonetworklib.network.base.WrappedClientMessage
-import aurocosh.autonetworklib.network.base.WrappedServerMessage
 import aurocosh.divinefavor.DivineFavor
 import aurocosh.divinefavor.common.block.common.ModBlocks
 import aurocosh.divinefavor.common.constants.ConstMisc
@@ -74,8 +71,6 @@ open class CommonProxy {
         ModEntities.preInit()
 
         NetworkHandler.init()
-        WrappedClientMessage.setNetworkWrapper(NetworkHandler.wrapper.wrapper)
-        WrappedServerMessage.setNetworkWrapper(NetworkHandler.wrapper.wrapper)
 
         LivingDataDataHandler.register()
         PlayerDataDataHandler.register()

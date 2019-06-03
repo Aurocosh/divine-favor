@@ -2,11 +2,11 @@ package aurocosh.divinefavor.common.network.message.sever.rope
 
 import aurocosh.divinefavor.common.entity.rope.EntityRopeExplosiveNode
 import aurocosh.divinefavor.common.entity.rope.base.EntityRopeNodeBase
-import aurocosh.autonetworklib.network.base.WrappedServerMessage
+import aurocosh.divinefavor.common.network.message.base.DivineServerMessage
 import aurocosh.divinefavor.common.util.UtilCoordinates
 import net.minecraft.entity.player.EntityPlayerMP
 
-class MessageConnectRopeNode : WrappedServerMessage() {
+class MessageConnectRopeNode : DivineServerMessage() {
     override fun handleSafe(player: EntityPlayerMP) {
         val boundingBox = UtilCoordinates.getBoundingBox(player.position, 32.0)
         val connectedNodes = player.world.getEntitiesWithinAABB(EntityRopeExplosiveNode::class.java, boundingBox) { rope -> rope != null && rope.nextNodeByUUID === player }

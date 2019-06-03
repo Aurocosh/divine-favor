@@ -1,14 +1,14 @@
 package aurocosh.divinefavor.common.network.message.client.config
 
 import aurocosh.divinefavor.common.config.common.ConfigGeneral
-import aurocosh.autonetworklib.network.base.ConfigSyncClientMessage
+import aurocosh.divinefavor.common.network.message.base.DivineConfigSyncMessage
 import net.minecraft.block.Block
 import net.minecraftforge.fml.relauncher.Side
 import net.minecraftforge.fml.relauncher.SideOnly
 
 import java.util.*
 
-class MessageConfigOreBlocks : ConfigSyncClientMessage() {
+class MessageConfigOreBlocks : DivineConfigSyncMessage() {
     lateinit var oreBlocks: ArrayList<String>
 
 //    lateinit var testMap: HashMap<Int, String>
