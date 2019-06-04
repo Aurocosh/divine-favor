@@ -19,9 +19,9 @@ cache:
 script:
   - ./gradlew build
 
-#deploy:
-#  provider: script
-#  script: ./gradlew curseforge
-#  skip_cleanup: true # to upload artifacts created during the build
-#  on:
-#    branch: master
+deploy:
+  provider: script
+  script: ./gradlew curseforge
+  skip_cleanup: true # to upload artifacts created during the build
+  on:
+    branch: mastergi
