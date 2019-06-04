@@ -1,7 +1,6 @@
 package aurocosh.divinefavor.common.config.sync;
 
 import aurocosh.divinefavor.DivineFavor;
-import aurocosh.divinefavor.common.constants.ConstMisc;
 import aurocosh.divinefavor.common.network.message.client.config.MessageConfigOreBlocks;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraftforge.fml.common.Mod;

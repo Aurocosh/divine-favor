@@ -1,7 +1,6 @@
 package aurocosh.divinefavor.common.registry;
 
 import aurocosh.divinefavor.DivineFavor;
-import aurocosh.divinefavor.common.constants.ConstMisc;
 import com.google.common.collect.Multimap;
 import com.google.common.collect.MultimapBuilder;
 import net.minecraftforge.event.RegistryEvent;

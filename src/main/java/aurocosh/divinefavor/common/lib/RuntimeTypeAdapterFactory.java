@@ -165,7 +165,7 @@ public final class RuntimeTypeAdapterFactory<T> implements TypeAdapterFactory {
    */
   public RuntimeTypeAdapterFactory<T> registerSubtype(Class<? extends T> type, String label) {
     if (type == null || label == null) {
-      throw new NullPointerException();
+      throw new IllegalArgumentException("type or label is null");
     }
     if (subtypeToLabel.containsKey(type) || labelToSubtype.containsKey(label)) {
       throw new IllegalArgumentException("types and labels must be unique");

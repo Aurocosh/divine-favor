@@ -1,7 +1,6 @@
 package aurocosh.divinefavor.common.config.common;
 
 import aurocosh.divinefavor.DivineFavor;
-import aurocosh.divinefavor.common.constants.ConstMisc;
 import net.minecraft.block.Block;
 import net.minecraftforge.common.config.Config;
 

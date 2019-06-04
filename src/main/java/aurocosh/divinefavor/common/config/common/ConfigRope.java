@@ -5,7 +5,6 @@ import aurocosh.divinefavor.common.config.entries.ropes.BarrierRope;
 import aurocosh.divinefavor.common.config.entries.ropes.ExplosiveRope;
 import aurocosh.divinefavor.common.config.entries.ropes.GuideRope;
 import aurocosh.divinefavor.common.config.entries.ropes.InertRope;
-import aurocosh.divinefavor.common.constants.ConstMisc;
 import net.minecraftforge.common.config.Config;
 
 @Config(modid = DivineFavor.MOD_ID, name = DivineFavor.MOD_ID + "/ropes")

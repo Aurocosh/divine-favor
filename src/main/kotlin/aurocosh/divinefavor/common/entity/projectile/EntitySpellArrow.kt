@@ -55,11 +55,11 @@ open class EntitySpellArrow : EntityArrow {
     val colorInt: Int
         get() = dataManager.get(COLOR)
 
-    constructor(worldIn: World) : super(worldIn) {}
+    constructor(worldIn: World) : super(worldIn)
 
-    constructor(worldIn: World, x: Double, y: Double, z: Double) : super(worldIn, x, y, z) {}
+    constructor(worldIn: World, x: Double, y: Double, z: Double) : super(worldIn, x, y, z)
 
-    constructor(worldIn: World, shooter: EntityLivingBase) : super(worldIn, shooter) {}
+    constructor(worldIn: World, shooter: EntityLivingBase) : super(worldIn, shooter)
 
     fun setSpell(talisman: ItemArrowTalisman, shooter: EntityPlayer) {
         color = Color3f(1f, 1f, 1f)
@@ -68,7 +68,7 @@ open class EntitySpellArrow : EntityArrow {
         setShooterId(shooter.gameProfile.id)
         setColor(talisman.color.rgb)
         setArrowType(talisman.arrowType.value)
-        talismanId = talisman.registryName!!.toString()
+        talismanId = talisman.registryName.toString()
     }
 
     override fun entityInit() {
@@ -115,11 +115,13 @@ open class EntitySpellArrow : EntityArrow {
 
     override fun onHit(raytraceResultIn: RayTraceResult) {
         var hit = true
+        val talisman = talisman
+        val shooter = shooter
         if (talisman != null && shooter != null) {
             val entity = raytraceResultIn.entityHit
             val living = if (entity is EntityLivingBase) entity else null
-            hit = talisman!!.cast(living, shooter!!, this, raytraceResultIn.blockPos, raytraceResultIn.sideHit)
-            if (hit && talisman!!.isBreakOnHit)
+            hit = talisman.cast(living, shooter, this, raytraceResultIn.blockPos, raytraceResultIn.sideHit)
+            if (hit && talisman.isBreakOnHit)
                 setDead()
         }
         if (hit)
@@ -127,11 +129,11 @@ open class EntitySpellArrow : EntityArrow {
     }
 
     override fun findEntityOnPath(start: Vec3d, end: Vec3d): Entity? {
-        if (entityIgnoreTicks > 0) {
+        return if (entityIgnoreTicks > 0) {
             entityIgnoreTicks--
-            return null
+            null
         } else
-            return super.findEntityOnPath(start, end)
+            super.findEntityOnPath(start, end)
     }
 
     override fun getArrowStack(): ItemStack {
@@ -171,29 +173,24 @@ open class EntitySpellArrow : EntityArrow {
 
 
     override fun onCollideWithPlayer(player: EntityPlayer) {
-        val collide = talisman == null || talisman!!.onCollideWithPlayer(this, player)
-        if (collide)
-            super.onCollideWithPlayer(player)
+        talisman?.onCollideWithPlayer(this, player) ?: super.onCollideWithPlayer(player)
     }
 
     override fun notifyDataManagerChange(key: DataParameter<*>) {
         super.notifyDataManagerChange(key)
-        if (TALISMAN_ID == key)
-            talisman = getTalisman()
-        else if (DESPAWN_DELAY == key)
-            setDespawnDelay(dataManager.get(DESPAWN_DELAY))
-        else if (ENTITY_IGNORE_DELAY == key)
-            entityIgnoreTicks = dataManager.get(ENTITY_IGNORE_DELAY)
-        else if (HAS_ANTI_GRAVITY == key)
-            hasAntiGrav = dataManager.get(HAS_ANTI_GRAVITY)
-        else if (TALISMAN_DATA_COMMON == key)
-            talismanDataCommon = dataManager.get(TALISMAN_DATA_COMMON)
-        else if (SHOOTER_UUID == key) {
-            val uuid = dataManager.get(SHOOTER_UUID).orNull()
-            shooter = if (uuid == null) null else world.getPlayerEntityByUUID(uuid)
-            setShooterId(uuid)
-        } else if (COLOR == key)
-            setColor(colorInt)
+        when {
+            TALISMAN_ID == key -> talisman = getTalisman()
+            DESPAWN_DELAY == key -> setDespawnDelay(dataManager.get(DESPAWN_DELAY))
+            ENTITY_IGNORE_DELAY == key -> entityIgnoreTicks = dataManager.get(ENTITY_IGNORE_DELAY)
+            HAS_ANTI_GRAVITY == key -> hasAntiGrav = dataManager.get(HAS_ANTI_GRAVITY)
+            TALISMAN_DATA_COMMON == key -> talismanDataCommon = dataManager.get(TALISMAN_DATA_COMMON)
+            SHOOTER_UUID == key -> {
+                val uuid = dataManager.get(SHOOTER_UUID).orNull()
+                shooter = if (uuid == null) null else world.getPlayerEntityByUUID(uuid)
+                setShooterId(uuid)
+            }
+            COLOR == key -> setColor(colorInt)
+        }
     }
 
     override fun writeEntityToNBT(compound: NBTTagCompound) {
@@ -214,7 +211,7 @@ open class EntitySpellArrow : EntityArrow {
 
         setColor(compound.getInteger(TAG_COLOR))
         setArrowType(compound.getInteger(TAG_ARROW_TYPE))
-        var talismanId = compound.getString(TAG_TALISMAN)
+        val talismanId = compound.getString(TAG_TALISMAN)
         setHasAntiGravity(compound.getBoolean(TAG_ANTI_GRAV))
         setDespawnDelay(timeInGround + 1200)
         setEntityIgnoreDelay(compound.getInteger(TAG_IGNORE_DELAY))
@@ -250,14 +247,14 @@ open class EntitySpellArrow : EntityArrow {
         private val SHOOTER_UUID = EntityDataManager.createKey(EntitySpellArrow::class.java, DataSerializers.OPTIONAL_UNIQUE_ID)
         private val TALISMAN_DATA_COMMON = EntityDataManager.createKey(EntitySpellArrow::class.java, DataSerializers.COMPOUND_TAG)
 
-        private val TAG_COLOR = "Color"
-        private val TAG_ARROW_TYPE = "ArrowType"
-        private val TAG_TALISMAN = "Talisman"
-        private val TAG_IGNORE_DELAY = "IgnoreDelay"
-        private val TAG_ANTI_GRAV = "AntiGrav"
-        private val TAG_SHOOTER = "Shooter"
-        private val TAG_TALISMAN_DATA_COMMON = "TalismanDataCommon"
-        private val TAG_TALISMAN_DATA_SERVER = "TalismanDataServer"
+        private const val TAG_COLOR = "Color"
+        private const val TAG_ARROW_TYPE = "ArrowType"
+        private const val TAG_TALISMAN = "Talisman"
+        private const val TAG_IGNORE_DELAY = "IgnoreDelay"
+        private const val TAG_ANTI_GRAV = "AntiGrav"
+        private const val TAG_SHOOTER = "Shooter"
+        private const val TAG_TALISMAN_DATA_COMMON = "TalismanDataCommon"
+        private const val TAG_TALISMAN_DATA_SERVER = "TalismanDataServer"
 
         private val COLOR = EntityDataManager.createKey(EntitySpellArrow::class.java, DataSerializers.VARINT)
         private val TYPE = EntityDataManager.createKey(EntitySpellArrow::class.java, DataSerializers.VARINT)

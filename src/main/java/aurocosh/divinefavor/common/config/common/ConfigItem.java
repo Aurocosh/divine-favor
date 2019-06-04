@@ -5,7 +5,6 @@ import aurocosh.divinefavor.common.config.entries.items.AwakenedBoneDagger;
 import aurocosh.divinefavor.common.config.entries.items.BathingBlendPotion;
 import aurocosh.divinefavor.common.config.entries.items.BoneDagger;
 import aurocosh.divinefavor.common.config.entries.items.Contract;
-import aurocosh.divinefavor.common.constants.ConstMisc;
 import net.minecraftforge.common.config.Config;
 
 @Config(modid = DivineFavor.MOD_ID, name = DivineFavor.MOD_ID + "/item")

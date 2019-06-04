@@ -2,7 +2,6 @@ package aurocosh.divinefavor.common.config.common;
 
 import aurocosh.divinefavor.DivineFavor;
 import aurocosh.divinefavor.common.config.entries.talismans.arrow.*;
-import aurocosh.divinefavor.common.constants.ConstMisc;
 import aurocosh.divinefavor.common.util.UtilTick;
 import net.minecraftforge.common.config.Config;
 

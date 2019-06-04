@@ -29,8 +29,7 @@ class PotionSpiderMight : ModPotionToggle("spider_might", 0x7FB8A4) {
 
             val entity = source.trueSource
             if (entity is EntityPlayer) {
-                val player = entity as EntityPlayer?
-                val stack = player!!.heldItemMainhand
+                val stack = entity.heldItemMainhand
                 if (!stack.isEmpty) {
                     val baneLevel = EnchantmentHelper.getEnchantmentLevel(Enchantments.BANE_OF_ARTHROPODS, stack)
                     event.amount = event.amount + baneLevel * ConfigSpells.spider_might.baneDamage
