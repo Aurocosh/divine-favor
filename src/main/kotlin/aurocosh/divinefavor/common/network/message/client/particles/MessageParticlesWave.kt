@@ -13,7 +13,7 @@ class MessageParticlesWave : DivineClientMessage {
     private var particleType: EnumParticleTypes = EnumParticleTypes.FLAME
     private var position: Vec3d = Vec3d.ZERO
 
-    constructor() {}
+    constructor()
 
     constructor(particleType: EnumParticleTypes, position: Vec3d) {
         this.particleType = particleType

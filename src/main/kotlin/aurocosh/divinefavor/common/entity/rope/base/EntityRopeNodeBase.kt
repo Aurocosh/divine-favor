@@ -460,7 +460,7 @@ abstract class EntityRopeNodeBase(world: World) : Entity(world) {
 
     fun extendRope(player: EntityPlayer, x: Double, y: Double, z: Double) {
         if (!canDropNewNode(player))
-            return;
+            return
         val ropeNode = makeNewNode(world)
         ropeNode.setLocationAndAngles(x, y, z, 0f, 0f)
         ropeNode.setPreviousNode(this)

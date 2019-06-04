@@ -11,7 +11,7 @@ import net.minecraftforge.fml.relauncher.SideOnly
 class MessageSpiritBecameInactive : DivineClientMessage {
     var spiritId: Int = 0
 
-    constructor() {}
+    constructor()
 
     constructor(spiritId: Int) {
         this.spiritId = spiritId

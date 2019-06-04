@@ -13,11 +13,11 @@ class MessageSyncAllSpiritData : DivineClientMessage {
     lateinit var favorValues: IntArray
     lateinit var favorInfinite: BooleanArray
 
-    constructor() {}
+    constructor()
 
     constructor(data: SpiritData) {
         contracts = data.serializeContracts()
-        favorValues = data.getFavorValues();
+        favorValues = data.getFavorValues()
         favorInfinite = data.getFavorInfinite()
     }
 

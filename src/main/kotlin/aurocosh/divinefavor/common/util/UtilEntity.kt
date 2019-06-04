@@ -158,7 +158,7 @@ object UtilEntity {
         var hitDistance = searchDistance
         for (entity in entities) {
             if (entity == null)
-                continue;
+                continue
             val boundingBox = entity.entityBoundingBox.grow(entity.collisionBorderSize.toDouble())
             val rayTraceResult = boundingBox.calculateIntercept(positionEyes, rayEnd)
 

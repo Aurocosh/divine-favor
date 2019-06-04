@@ -6,7 +6,7 @@ object UtilList {
     @SafeVarargs
     fun <T> unite(vararg lists: List<T>): List<T> {
         if(lists.isEmpty())
-            return emptyList();
+            return emptyList()
 
         var size = 0
         for (list in lists)

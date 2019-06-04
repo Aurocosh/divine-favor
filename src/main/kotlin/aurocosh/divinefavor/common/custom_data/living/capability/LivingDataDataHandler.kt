@@ -45,7 +45,7 @@ class LivingDataDataHandler {
             storage.addSerializer(SoulTheftDataSerializer(),ILivingDataHandler::soulTheftData)
             storage.addSerializer(SuffocatingFumesDataSerializer(),ILivingDataHandler::suffocatingFumesData)
             storage.addSerializer(WindLeashDataSerializer(),ILivingDataHandler::windLeashData)
-            return storage;
+            return storage
         }
     }
 }

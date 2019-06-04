@@ -4,7 +4,7 @@ import aurocosh.divinefavor.common.lib.EnumIndexer
 import aurocosh.divinefavor.common.lib.IIndexedEnum
 import net.minecraft.util.IStringSerializable
 
-enum class SoulboundLecternGem private constructor(private val value: String) : IStringSerializable {
+enum class SoulboundLecternGem(private val value: String) : IStringSerializable {
     NONE("none"),
     END("end"),
     MIND("mind"),

@@ -8,7 +8,7 @@ open class ModParticle : Particle {
     val isDead: Boolean
         get() = isExpired
 
-    protected constructor(world: World, position: Vec3d) : super(world, position.x, position.y, position.z) {}
+    protected constructor(world: World, position: Vec3d) : super(world, position.x, position.y, position.z)
 
-    protected constructor(worldIn: World, position: Vec3d, motion: Vec3d) : super(worldIn, position.x, position.y, position.z, motion.x, motion.y, motion.z) {}
+    protected constructor(worldIn: World, position: Vec3d, motion: Vec3d) : super(worldIn, position.x, position.y, position.z, motion.x, motion.y, motion.z)
 }

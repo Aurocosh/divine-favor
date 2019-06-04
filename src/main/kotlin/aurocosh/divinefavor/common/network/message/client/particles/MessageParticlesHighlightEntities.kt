@@ -27,7 +27,7 @@ class MessageParticlesHighlightEntities : DivineClientMessage {
 
     var entitiesPredicate: SenseEntitiesPredicate = SenseEntitiesPredicate.ALL
 
-    constructor() {}
+    constructor()
 
     constructor(particles: Int, radius: Int, dimensionId: Int, position: BlockPos, minShift: Float, maxShift: Float, color3f: Color3f, entitiesPredicate: SenseEntitiesPredicate) {
         this.particles = particles

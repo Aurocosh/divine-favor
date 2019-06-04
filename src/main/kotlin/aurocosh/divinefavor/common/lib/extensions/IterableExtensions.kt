@@ -35,7 +35,7 @@ inline fun <T> Sequence<T>.split(predicate: (T) -> Boolean): Pair<List<T>, List<
     return Pair(selected, rejected)
 }
 
-public inline fun <T, K> Iterable<T>.filter(converter: (T) -> K, predicate: (K) -> Boolean): List<T> {
+inline fun <T, K> Iterable<T>.filter(converter: (T) -> K, predicate: (K) -> Boolean): List<T> {
     return filterTo(ArrayList(), converter, predicate)
 }
 

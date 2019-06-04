@@ -59,7 +59,7 @@ class TileBathHeater : TileEntity(), ITickable, IAreaWatcher {
     private val waterPositions: MutableSet<BlockPos>
 
     private var _state = BathHeaterState.INACTIVE
-    public var state: BathHeaterState
+    var state: BathHeaterState
         set(value) {
             if (_state == value)
                 return

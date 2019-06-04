@@ -26,9 +26,9 @@ class SpellTalismanArrowThrow(name: String, spirit: ModSpirit, favorCost: Int, o
     }
 
     private fun findAmmo(player: EntityPlayer): ItemStack {
-        val stack = UtilPlayer.getItemInHand(player) { it is ItemArrow };
+        val stack = UtilPlayer.getItemInHand(player) { it is ItemArrow }
         if (!stack.isEmpty)
-            return stack;
+            return stack
 
         for (i in 0 until player.inventory.sizeInventory) {
             val itemStack = player.inventory.getStackInSlot(i)
@@ -39,9 +39,6 @@ class SpellTalismanArrowThrow(name: String, spirit: ModSpirit, favorCost: Int, o
         return ItemStack.EMPTY
     }
 
-    /**
-     * Called when the player stops using an Item (stops holding the right mouse button).
-     */
     private fun shootArrow(stack: ItemStack, worldIn: World, entityLiving: EntityLivingBase, charge: Int) {
         var chargeCounter = charge
         if (entityLiving !is EntityPlayer)
@@ -91,10 +88,6 @@ class SpellTalismanArrowThrow(name: String, spirit: ModSpirit, favorCost: Int, o
     }
 
     companion object {
-
-        /**
-         * Gets the velocity of the arrow entity from the bow's favorCost
-         */
         fun getArrowVelocity(charge: Int): Float {
             var f = charge.toFloat() / 20.0f
             f = (f * f + f * 2.0f) / 3.0f

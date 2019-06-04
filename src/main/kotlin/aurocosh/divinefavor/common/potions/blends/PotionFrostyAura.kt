@@ -40,7 +40,7 @@ class PotionFrostyAura : ModPotion("frosty_aura", 0x7FB8A4) {
 
     private fun isConditionsMet(player: EntityPlayer): Boolean {
         if (!ModSpirits.blizrabi.isActive)
-            return false;
+            return false
         if (!COUNTER.isFinished)
             return true
         val itemSequence = player.armorInventoryList.asSequence() + player.heldEquipment.asSequence()

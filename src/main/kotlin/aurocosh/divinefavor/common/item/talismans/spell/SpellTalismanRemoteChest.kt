@@ -25,6 +25,6 @@ class SpellTalismanRemoteChest(name: String, spirit: ModSpirit, favorCost: Int, 
     }
 
     override fun validate(context: TalismanContext): Boolean {
-        return context.world.getBlock(context.pos) === Blocks.CHEST;
+        return context.world.getBlock(context.pos) === Blocks.CHEST
     }
 }

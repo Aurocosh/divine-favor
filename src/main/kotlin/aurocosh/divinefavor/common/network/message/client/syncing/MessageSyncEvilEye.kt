@@ -9,7 +9,7 @@ import net.minecraftforge.fml.relauncher.SideOnly
 class MessageSyncEvilEye : DivineClientMessage {
     var severity: Int = 0
 
-    constructor() {}
+    constructor()
 
     constructor(severity: Int) {
         this.severity = severity

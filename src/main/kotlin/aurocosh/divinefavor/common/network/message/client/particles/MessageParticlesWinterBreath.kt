@@ -13,7 +13,7 @@ class MessageParticlesWinterBreath : DivineClientMessage {
     var position: Vec3d = Vec3d.ZERO
     var direction: Vec3d = Vec3d.ZERO
 
-    constructor() {}
+    constructor()
 
     constructor(position: Vec3d, direction: Vec3d) {
         this.position = position

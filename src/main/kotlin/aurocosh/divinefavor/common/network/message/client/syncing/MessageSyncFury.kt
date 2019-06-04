@@ -9,7 +9,7 @@ import net.minecraftforge.fml.relauncher.SideOnly
 class MessageSyncFury : DivineClientMessage {
     lateinit var mobTypeId: String
 
-    constructor() {}
+    constructor()
 
     constructor(mobTypeId: ResourceLocation) {
         this.mobTypeId = mobTypeId.toString()

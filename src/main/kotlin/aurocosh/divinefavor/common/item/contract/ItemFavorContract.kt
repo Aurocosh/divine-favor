@@ -12,7 +12,7 @@ import net.minecraftforge.fml.relauncher.SideOnly
 
 class ItemFavorContract(name: String, texturePath: String, val regen: Int, val min: Int, val max: Int, val isInformActivity: Boolean) : ItemContract(name, texturePath) {
 
-    constructor(name: String, texturePath: String, contract: Contract) : this(name, texturePath, contract.regen, contract.minimum, contract.maximum, contract.informActivity) {}
+    constructor(name: String, texturePath: String, contract: Contract) : this(name, texturePath, contract.regen, contract.minimum, contract.maximum, contract.informActivity)
 
     init {
         setMaxStackSize(1)

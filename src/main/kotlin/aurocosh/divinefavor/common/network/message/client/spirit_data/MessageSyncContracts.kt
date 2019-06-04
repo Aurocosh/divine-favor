@@ -11,7 +11,7 @@ import net.minecraftforge.fml.relauncher.SideOnly
 class MessageSyncContracts : DivineClientMessage {
     var tag: NBTTagCompound = NBTTagCompound()
 
-    constructor() {}
+    constructor()
 
     constructor(data: SpiritData) {
         tag.setTag(TAG_CONTRACTS, data.serializeContracts())

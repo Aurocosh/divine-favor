@@ -20,7 +20,7 @@ class SpellTalismanTarget(name: String, spirit: ModSpirit, favorCost: Int, optio
     override fun performActionServer(context: TalismanContext) {
         val origin = context.player.positionVector
         val radiusSq = RADIUS * RADIUS
-        val boundingBox = UtilCoordinates.getBoundingBox(origin, RADIUS);
+        val boundingBox = UtilCoordinates.getBoundingBox(origin, RADIUS)
         val entities = context.world.getEntitiesWithinAABB(EntityLivingBase::class.java, boundingBox) { livingBase ->
             (livingBase is IMinion && livingBase.getDistanceSq(origin) < radiusSq)
         }

@@ -4,7 +4,7 @@ import aurocosh.divinefavor.common.lib.EnumIndexer
 import aurocosh.divinefavor.common.lib.IIndexedEnum
 import net.minecraft.util.IStringSerializable
 
-enum class BathHeaterState private constructor(private val value: String) : IStringSerializable {
+enum class BathHeaterState(private val value: String) : IStringSerializable {
     INACTIVE("inactive"),
     ACTIVE("active");
 

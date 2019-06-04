@@ -1,6 +1,6 @@
 package aurocosh.divinefavor.common.item.mystic_architect_stick
 
-enum class ArchitectStickMode private constructor(val value: Int, val description: String) {
+enum class ArchitectStickMode(val value: Int, val description: String) {
     SELECT_MULTIBLOCK_BASE(0, "Select multiblock base"),
     SELECT_CONTROLLER(1, "Select controller"),
     SELECT_AIR_BLOCK(2, "Select air block"),

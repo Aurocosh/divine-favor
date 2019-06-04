@@ -34,12 +34,13 @@ class PotionRedFury : ModPotion("red_fury", 0x7FB8A4) {
     }
 
     override fun performEffect(livingBase: EntityLivingBase, amplifier: Int) {
-        val player = livingBase as EntityPlayer
-        val furyData = player.divinePlayerData.redFuryData
+        if (livingBase !is EntityPlayer)
+            return
+        val furyData = livingBase.divinePlayerData.redFuryData
         val vector = furyData.vector
-        player.motionX = vector.x
-        player.motionY = vector.y
-        player.motionZ = vector.z
+        livingBase.motionX = vector.x
+        livingBase.motionY = vector.y
+        livingBase.motionZ = vector.z
     }
 
     override fun isReady(duration: Int, amplifier: Int): Boolean {

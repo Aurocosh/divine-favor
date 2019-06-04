@@ -91,7 +91,7 @@ class PlayerDataDataHandler {
             storage.addSerializer(ScorchingPresenceDataSerializer(), IPlayerDataHandler::scorchingPresenceData)
             storage.addSerializer(ToweringPresenceDataSerializer(), IPlayerDataHandler::toweringPresenceData)
             
-            return storage;
+            return storage
         }
     }
 }

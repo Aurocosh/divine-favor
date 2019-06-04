@@ -15,7 +15,7 @@ class EntitySpookyArrow : EntitySpellArrow {
     private var soundSetIndex: Int = 0
     private var nextSoundDelay: Int = 0
 
-    constructor(worldIn: World) : super(worldIn) {}
+    constructor(worldIn: World) : super(worldIn)
 
     constructor(worldIn: World, shooter: EntityLivingBase) : super(worldIn, shooter) {
         soundSetIndex = -1

@@ -9,7 +9,7 @@ import net.minecraft.item.ItemStack
 
 class ItemBathingBlendModPotion(name: String, duration: Int, rate: Int, private val potion: ModPotion, private val extraPotionDuration: Int) : ItemBathingBlendSimple(name, duration, rate) {
 
-    constructor(name: String, potion: ModPotion, settings: BathingBlendPotion) : this(name, settings.duration, settings.rate, potion, settings.extraPotionDuration) {}
+    constructor(name: String, potion: ModPotion, settings: BathingBlendPotion) : this(name, settings.duration, settings.rate, potion, settings.extraPotionDuration)
 
     override fun applyEffect(livingBase: EntityLivingBase) {
         var duration = extraPotionDuration

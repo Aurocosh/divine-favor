@@ -10,7 +10,7 @@ import net.minecraftforge.fml.relauncher.SideOnly
 class MessageSyncFireImmunity : DivineClientMessage {
     var immuneToFire: Boolean = false
 
-    constructor() {}
+    constructor()
 
     constructor(immuneToFire: Boolean) {
         this.immuneToFire = immuneToFire

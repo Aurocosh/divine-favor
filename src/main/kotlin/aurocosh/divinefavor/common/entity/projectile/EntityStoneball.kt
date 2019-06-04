@@ -14,13 +14,12 @@ import net.minecraftforge.fml.relauncher.SideOnly
 
 
 class EntityStoneball : EntityThrowable {
-    constructor(worldIn: World) : super(worldIn) {}
+    constructor(worldIn: World) : super(worldIn)
 
-    constructor(worldIn: World, thrower: EntityLivingBase) : super(worldIn, thrower) {}
+    constructor(worldIn: World, thrower: EntityLivingBase) : super(worldIn, thrower)
 
     @SideOnly(Side.CLIENT)
-    constructor(worldIn: World, x: Double, y: Double, z: Double) : super(worldIn, x, y, z) {
-    }
+    constructor(worldIn: World, x: Double, y: Double, z: Double) : super(worldIn, x, y, z)
 
     override fun onImpact(result: RayTraceResult) {
         val thrower = getThrower()

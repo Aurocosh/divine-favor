@@ -32,7 +32,7 @@ open class ItemSpellTalisman// Talisman functions
     }
 
     // Talisman functions
-    constructor(name: String, spirit: ModSpirit, favorCost: Int, options: EnumSet<SpellOptions>) : this(name, "", spirit, favorCost, options) {}
+    constructor(name: String, spirit: ModSpirit, favorCost: Int, options: EnumSet<SpellOptions>) : this(name, "", spirit, favorCost, options)
 
     fun cast(context: TalismanContext): Boolean {
         if (!validate(context))

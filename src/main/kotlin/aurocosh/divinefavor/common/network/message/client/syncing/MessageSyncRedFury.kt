@@ -10,7 +10,7 @@ import net.minecraftforge.fml.relauncher.SideOnly
 class MessageSyncRedFury : DivineClientMessage {
     var vector: Vec3d = Vec3d.ZERO
 
-    constructor() {}
+    constructor()
 
     constructor(vector: Vec3d) {
         this.vector = vector

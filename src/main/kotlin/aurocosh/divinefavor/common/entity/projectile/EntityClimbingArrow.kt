@@ -14,9 +14,9 @@ class EntityClimbingArrow : EntitySpellArrow, IClimbable {
     private var climbingSpeed: Float = 0f
     private var climbingDistanceSq: Float = 0f
 
-    constructor(worldIn: World) : super(worldIn) {}
+    constructor(worldIn: World) : super(worldIn)
 
-    constructor(worldIn: World, shooter: EntityLivingBase) : super(worldIn, shooter) {}
+    constructor(worldIn: World, shooter: EntityLivingBase) : super(worldIn, shooter)
 
     fun setClimbingStats(climbingSpeed: Float, climbingDistanceSq: Float, despawnDelay: Int) {
         this.climbingSpeed = climbingSpeed

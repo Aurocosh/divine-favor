@@ -11,7 +11,6 @@ import aurocosh.divinefavor.common.util.UtilRandom
 import net.minecraft.entity.EntityLivingBase
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.item.ItemStack
-import net.minecraftforge.fml.common.Mod
 
 class PotionToweringPresence : ModPotion("towering_presence", 0x7FB8A4) {
 
@@ -23,15 +22,16 @@ class PotionToweringPresence : ModPotion("towering_presence", 0x7FB8A4) {
 
     override fun onPotionRemoved(livingBase: EntityLivingBase) {
         super.onPotionRemoved(livingBase)
-        val player = livingBase as EntityPlayer
-        player.addItemStackToInventory(ItemStack(ModCallingStones.calling_stone_timber))
+        if (livingBase is EntityPlayer)
+            livingBase.addItemStackToInventory(ItemStack(ModCallingStones.calling_stone_timber))
     }
 
     override fun performEffect(livingBase: EntityLivingBase, amplifier: Int) {
         if (livingBase.world.isRemote)
             return
-        val player = livingBase as EntityPlayer
-        if (!player.divinePlayerData.toweringPresenceData.tick())
+        if (livingBase !is EntityPlayer)
+            return
+        if (!livingBase.divinePlayerData.toweringPresenceData.tick())
             return
 
         val curseTime = UtilRandom.nextInt(ConfigPresence.toweringPresence.minCurseTime, ConfigPresence.toweringPresence.maxCurseTime)

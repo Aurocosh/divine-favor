@@ -33,7 +33,7 @@ class PotionChillingPresence : ModPotion("chilling_presence", 0x7FB8A4) {
 
     override fun onPotionRemoved(livingBase: EntityLivingBase) {
         super.onPotionRemoved(livingBase)
-        val player = livingBase as EntityPlayer
-        player.addItemStackToInventory(ItemStack(ModCallingStones.calling_stone_blizrabi))
+        if (livingBase is EntityPlayer)
+            livingBase.addItemStackToInventory(ItemStack(ModCallingStones.calling_stone_blizrabi))
     }
 }

@@ -61,7 +61,7 @@ class PatchouliMultiBlockData(configuration: MultiBlockConfiguration) {
         val matchers = ArrayList<Any>()
 
         for ((key, value) in symbolMap) {
-            val matcher = key.getPatchouliMatcher() ?: continue
+            val matcher = key.getPatchouliMatcher()
 
             matchers.add(value)
             matchers.add(matcher)

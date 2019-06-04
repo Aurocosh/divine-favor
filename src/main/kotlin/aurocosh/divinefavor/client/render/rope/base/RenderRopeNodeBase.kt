@@ -158,7 +158,7 @@ open class RenderRopeNodeBase<T : EntityRopeNodeBase>(renderManager: RenderManag
         tessellator.draw()
     }
 
-    protected override fun getEntityTexture(p0: T): ResourceLocation? {
+    override fun getEntityTexture(p0: T): ResourceLocation? {
         return TEXTURE
     }
 

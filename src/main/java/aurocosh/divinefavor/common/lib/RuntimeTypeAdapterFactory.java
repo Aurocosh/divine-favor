@@ -124,7 +124,7 @@ public final class RuntimeTypeAdapterFactory<T> implements TypeAdapterFactory {
 
   private RuntimeTypeAdapterFactory(Class<?> baseType, String typeFieldName, boolean maintainType) {
     if (typeFieldName == null || baseType == null) {
-      throw new NullPointerException();
+        throw new IllegalArgumentException("type or label is null");
     }
     this.baseType = baseType;
     this.typeFieldName = typeFieldName;

@@ -2,7 +2,7 @@ package aurocosh.divinefavor.common.item.talismans.arrow.base
 
 import net.minecraft.util.math.MathHelper
 
-enum class ArrowType private constructor(val value: Int) {
+enum class ArrowType(val value: Int) {
     WOODEN_ARROW(0),
     SPELL_ARROW(1),
     CURSED_ARROW(2);

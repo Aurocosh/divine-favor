@@ -28,6 +28,6 @@ object ModBlessings {
     }
 
     fun init() {
-        PotionToweringPresence.init();
+        PotionToweringPresence.init()
     }
 }

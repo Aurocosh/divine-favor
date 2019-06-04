@@ -11,7 +11,7 @@ import javax.vecmath.Color3f
 class MessageParticlesHighlightInSphere : MessageParticlesHighlight {
     var radius: Int = 0
 
-    constructor() {}
+    constructor()
 
     constructor(particles: Int, dimensionId: Int, position: BlockPos, minShift: Float, maxShift: Float, color3f: Color3f, senseBlockPredicate: SenseBlockPredicate, blockName: String, radius: Int) : super(particles, dimensionId, position, minShift, maxShift, color3f, senseBlockPredicate, blockName) {
         this.radius = radius

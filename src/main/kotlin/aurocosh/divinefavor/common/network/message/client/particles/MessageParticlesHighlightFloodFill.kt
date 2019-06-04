@@ -16,7 +16,7 @@ class MessageParticlesHighlightFloodFill : MessageParticlesHighlight {
     var searchLimit: Int = 0
     var facing: EnumFacing = EnumFacing.UP
 
-    constructor() {}
+    constructor()
 
     constructor(particles: Int, dimensionId: Int, position: BlockPos, minShift: Float, maxShift: Float, color3f: Color3f, senseBlockPredicate: SenseBlockPredicate, blockName: String, floodLimit: Int, searchLimit: Int, facing: EnumFacing) : super(particles, dimensionId, position, minShift, maxShift, color3f, senseBlockPredicate, blockName) {
         this.floodLimit = floodLimit

@@ -25,7 +25,7 @@ class ArrowTalismanIceBreaker(name: String, spirit: ModSpirit, favorCost: Int, c
 
     override fun performActionServer(target: EntityLivingBase?, shooter: EntityLivingBase, spellArrow: EntitySpellArrow, blockPos: BlockPos?, sideHit: EnumFacing?): Boolean {
         if (blockPos == null)
-            return true;
+            return true
 
         val world = spellArrow.world
         val predicate = ConvertingPredicate(world::getBlock, Block::isIce)

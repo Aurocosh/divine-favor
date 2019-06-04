@@ -10,7 +10,7 @@ import net.minecraftforge.common.capabilities.Capability
 class CustomDataStorage<T> : Capability.IStorage<T> {
     private val serializers: MutableList<INbtSerializer<T>> = ArrayList()
 
-    public fun <K> addSerializer(serializer: INbtSerializer<K>, converter: (T) -> K) {
+    fun <K> addSerializer(serializer: INbtSerializer<K>, converter: (T) -> K) {
         serializers.add(CompositeSerializer(serializer, converter))
     }
 

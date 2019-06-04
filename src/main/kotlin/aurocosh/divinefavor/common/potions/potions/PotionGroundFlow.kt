@@ -24,9 +24,10 @@ class PotionGroundFlow : ModPotionToggle("ground_flow", 0x7FB8A4) {
     override fun performEffect(livingBase: EntityLivingBase, amplifier: Int) {
         if (livingBase.world.isRemote)
             return
-        val player = livingBase as EntityPlayer
-        val allowFlying = player.position.y <= ConfigSpells.groundFlow.yLimit
-        UtilPlayer.setAllowFlying(player, allowFlying)
+        if (livingBase !is EntityPlayer)
+            return
+        val allowFlying = livingBase.position.y <= ConfigSpells.groundFlow.yLimit
+        UtilPlayer.setAllowFlying(livingBase, allowFlying)
         if (!allowFlying)
             livingBase.removePotionEffect(ModPotions.ground_flow)
     }

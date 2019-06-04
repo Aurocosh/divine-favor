@@ -32,14 +32,15 @@ class PotionEnergeticPresence : ModPotion("energetic_presence", 0x7FB8A4) {
     override fun performEffect(livingBase: EntityLivingBase, amplifier: Int) {
         if (livingBase.isSprinting)
             tickLiquidWalk(livingBase, Blocks.WATER)
-        val player = livingBase as EntityPlayer
-        val presenceData = player.divinePlayerData.energeticPresenceData
+        if (livingBase !is EntityPlayer)
+            return
 
-        if (player.isInWater || !player.world.getBlock(player.position.down()).isWater())
+        val presenceData = livingBase.divinePlayerData.energeticPresenceData
+        if (livingBase.isInWater || !livingBase.world.getBlock(livingBase.position.down()).isWater())
             presenceData.reset()
-        else if (presenceData.count() && !player.world.isRemote) {
-            player.removePotionEffect(ModBlessings.energetic_presence)
-            player.addItemStackToInventory(ItemStack(ModCallingStones.calling_stone_redwind))
+        else if (presenceData.count() && !livingBase.world.isRemote) {
+            livingBase.removePotionEffect(ModBlessings.energetic_presence)
+            livingBase.addItemStackToInventory(ItemStack(ModCallingStones.calling_stone_redwind))
         }
     }
 

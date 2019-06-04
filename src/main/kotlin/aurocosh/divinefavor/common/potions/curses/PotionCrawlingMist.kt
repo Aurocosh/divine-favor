@@ -34,10 +34,11 @@ class PotionCrawlingMist : ModPotion("crawling_mist", 0x7FB8A4) {
     override fun performEffect(livingBase: EntityLivingBase, amplifier: Int) {
         if (livingBase.world.isRemote)
             return
+        if (livingBase !is EntityPlayer)
+            return
         if (!CURE_COUNTER.isFinished)
             return
-        val player = livingBase as EntityPlayer
-        val mistOrigin = player.divinePlayerData.crawlingMistData.mistOrigin
+        val mistOrigin = livingBase.divinePlayerData.crawlingMistData.mistOrigin
         val distanceSq = mistOrigin.distanceSq(livingBase.getPosition())
         if (distanceSq > CURE_DISTANCE_SQ)
             livingBase.removePotionEffect(ModCurses.crawling_mist)

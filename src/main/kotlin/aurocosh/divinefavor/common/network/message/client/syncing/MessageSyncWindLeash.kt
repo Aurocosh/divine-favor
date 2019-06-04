@@ -11,7 +11,7 @@ class MessageSyncWindLeash : DivineClientMessage {
     var x: Double = 0.0
     var z: Double = 0.0
 
-    constructor() {}
+    constructor()
 
     constructor(vec3d: Vec3d) {
         this.x = vec3d.x

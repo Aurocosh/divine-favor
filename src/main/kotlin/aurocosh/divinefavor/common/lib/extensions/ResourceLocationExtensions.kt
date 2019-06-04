@@ -4,6 +4,6 @@ import aurocosh.divinefavor.common.lib.EmptyConst.emptyLocation
 import net.minecraft.util.ResourceLocation
 
 fun ResourceLocation.isEmpty(): Boolean {
-    return this == emptyLocation() || this.path.isEmpty();
+    return this == emptyLocation() || this.path.isEmpty()
 }
 

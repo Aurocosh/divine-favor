@@ -27,7 +27,7 @@ class ArrowTalismanRicochetArrow(name: String, spirit: ModSpirit, favorCost: Int
         if (target != null)
             return true
         if(sideHit == null)
-            return true;
+            return true
 
         val compound = spellArrow.talismanDataServer
         val bouncesLeft = compound.getInteger(TAG_BOUNCES_LEFT)

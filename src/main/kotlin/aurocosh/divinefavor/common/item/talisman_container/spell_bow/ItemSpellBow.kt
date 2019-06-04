@@ -197,7 +197,7 @@ class ItemSpellBow : ModItem("spell_bow", "spell_bow/spell_bow", ConstMainTabOrd
         if (tag == null)
             tag = NBTTagCompound()
 
-        val bowHandler = SpellBowDataHandler.get(stack);
+        val bowHandler = SpellBowDataHandler.get(stack)
         val tagShare = SpellBowStorage.getNbtBase(bowHandler!!)
         tag.setTag(TAG_SHARE, tagShare)
         return tag
@@ -207,7 +207,7 @@ class ItemSpellBow : ModItem("spell_bow", "spell_bow/spell_bow", ConstMainTabOrd
         super.readNBTShareTag(stack, nbt)
         if (nbt == null)
             return
-        val bowHandler = SpellBowDataHandler.get(stack);
+        val bowHandler = SpellBowDataHandler.get(stack)
         val tagShare = nbt.getCompoundTag(TAG_SHARE)
         SpellBowStorage.readNbtBase(bowHandler!!, tagShare)
     }

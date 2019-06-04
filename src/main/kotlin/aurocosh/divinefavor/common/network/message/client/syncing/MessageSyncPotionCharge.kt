@@ -12,7 +12,7 @@ class MessageSyncPotionCharge : DivineClientMessage {
     var potionId: Int = 0
     var charges: Int = 0
 
-    constructor() {}
+    constructor()
 
     constructor(potion: Potion, charges: Int) {
         this.potionId = Potion.getIdFromPotion(potion)

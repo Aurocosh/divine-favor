@@ -38,10 +38,6 @@ abstract class ModPotion(name: String, potionColor: Int) : Potion(false, potionC
         isCurse = curse
     }
 
-    override fun affectEntity(source: Entity?, indirectSource: Entity?, entityLivingBaseIn: EntityLivingBase, amplifier: Int, health: Double) {
-        super.affectEntity(source, indirectSource, entityLivingBaseIn, amplifier, health)
-    }
-
     @SideOnly(Side.CLIENT)
     override fun renderInventoryEffect(x: Int, y: Int, effect: PotionEffect, mc: Minecraft) {
         UtilGui.drawTexture(mc, icon, x + 6, y + 6, 16, 16)

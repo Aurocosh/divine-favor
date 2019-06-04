@@ -2,8 +2,7 @@ package aurocosh.divinefavor.common.lib.math
 
 data class Vector2i(val x: Int, val y: Int) {
 
-    constructor(n: Int) : this(n, n) {
-    }
+    constructor(n: Int) : this(n, n)
 
     val isZero: Boolean
         get() = x == 0 && y == 0

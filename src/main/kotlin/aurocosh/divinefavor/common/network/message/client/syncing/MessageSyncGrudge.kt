@@ -10,7 +10,7 @@ import net.minecraftforge.fml.relauncher.SideOnly
 class MessageSyncGrudge : DivineClientMessage {
     lateinit var mobTypeId: String
 
-    constructor() {}
+    constructor()
 
     constructor(mobTypeId: ResourceLocation) {
         this.mobTypeId = mobTypeId.toString()

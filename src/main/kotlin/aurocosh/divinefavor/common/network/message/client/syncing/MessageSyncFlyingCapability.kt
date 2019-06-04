@@ -8,7 +8,7 @@ import net.minecraftforge.fml.relauncher.SideOnly
 class MessageSyncFlyingCapability : DivineClientMessage {
     var canFly: Boolean = false
 
-    constructor() {}
+    constructor()
 
     constructor(canFly: Boolean) {
         this.canFly = canFly

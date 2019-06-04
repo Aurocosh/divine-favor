@@ -59,7 +59,7 @@ class SpellTalismanNetherSurge(name: String, spirit: ModSpirit, favorCost: Int, 
         val spawnRadius = ConfigSpells.netherSurge.spawnRadius
         var spawnPos: BlockPos? = UtilCoordinates.getRandomNeighbour(context.pos, spawnRadius, 0, spawnRadius)
         if (spawnPos == null)
-            return;
+            return
         spawnPos = UtilCoordinates.findPlaceToStand(spawnPos, context.world, spawnRadius)
         if (spawnPos == null)
             return

@@ -58,7 +58,7 @@ class SpiritData {
     }
 
     fun isFavorInfinite(spiritId: Int): Boolean {
-        return favorInfinite[spiritId];
+        return favorInfinite[spiritId]
     }
 
     fun setFavorInfinite(spiritId: Int, value: Boolean) {
@@ -83,7 +83,7 @@ class SpiritData {
 
     fun consumeFavor(spiritId: Int, value: Int): Boolean {
         if (favorInfinite[spiritId])
-            return true;
+            return true
         val favorValue = favorValues[spiritId]
         if (favorValue < value)
             return false
@@ -128,7 +128,7 @@ class SpiritData {
             val handler = CapabilityHelper.getItemHandler(stack) ?: return emptyList()
             return handler.asSequence().filter(ItemStack::isNotEmpty).toList()
         }
-        return emptyList();
+        return emptyList()
     }
 
     fun refreshContracts() {

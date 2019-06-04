@@ -12,7 +12,7 @@ class MessageSyncFavor : DivineClientMessage {
     var spiritId: Int = 0
     var favor: Int = 0
 
-    constructor() {}
+    constructor()
 
     constructor(spirit: ModSpirit, spiritData: SpiritData) {
         spiritId = spirit.id

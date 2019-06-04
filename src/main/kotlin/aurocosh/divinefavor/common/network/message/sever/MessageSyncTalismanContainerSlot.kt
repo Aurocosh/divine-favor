@@ -8,7 +8,7 @@ class MessageSyncTalismanContainerSlot : DivineServerMessage {
     var playerSlotIndex: Int = 0
     var selectedGrimoireIndex: Int = 0
 
-    constructor() {}
+    constructor()
 
     constructor(playerSlotIndex: Int, selectedGrimoireIndex: Int) {
         this.playerSlotIndex = playerSlotIndex

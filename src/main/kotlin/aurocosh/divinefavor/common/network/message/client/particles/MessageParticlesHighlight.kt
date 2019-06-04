@@ -32,7 +32,7 @@ abstract class MessageParticlesHighlight : DivineClientMessage {
     var senseBlockPredicate: SenseBlockPredicate = SenseBlockPredicate.BLOCK
     var blockName: String = ""
 
-    constructor() {}
+    constructor()
 
     constructor(particles: Int, dimensionId: Int, position: BlockPos, minShift: Float, maxShift: Float, color3f: Color3f, senseBlockPredicate: SenseBlockPredicate, blockName: String) {
         this.particles = particles
