@@ -17,6 +17,10 @@ buildscript {
     }
 }
 
+plugins {
+    id 'com.matthewprenger.cursegradle' version '1.2.0'
+}
+
 apply plugin: 'net.minecraftforge.gradle.forge'
 apply plugin: 'kotlin'
 apply plugin: 'java'
@@ -110,6 +114,12 @@ static def generateVersionCode() {
     return result.toInteger()
 }
 
+static def getLastCommitMessage() {
+    def result = "git log --format=%B -n 1 HEAD".execute().text.trim() //unix
+    if(result.empty) throw new RuntimeException("Could not get last commit message? Cmd output: ${result.text}")
+    return result
+}
+
 jar {
 
 }
@@ -122,5 +132,14 @@ compileKotlin {
 compileTestKotlin {
     kotlinOptions {
         jvmTarget = "1.8"
+    }
+}
+
+curseforge {
+    apiKey = System.getenv('CURSEFORGE_API_KEY') ? System.getenv('CURSEFORGE_API_KEY') : ''
+    project {
+        id = curse_project_id
+        changelog = getLastCommitMessage()
+        releaseType = curse_release_type
     }
 }
