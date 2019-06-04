@@ -105,8 +105,7 @@ processResources
 }
 
 static def generateVersionCode() {
-    def result = "git rev-list HEAD --count".execute().text.trim() //unix
-    if(result.empty) result = "PowerShell -Command git rev-list HEAD --count".execute().text.trim() //windows
+    def result = "git rev-list HEAD --count".execute().text.trim()
     if(result.empty) throw new RuntimeException("Could not generate versioncode on this platform? Cmd output: ${result.text}")
     return result.toInteger()
 }
@@ -114,12 +113,7 @@ static def generateVersionCode() {
 jar {
 
 }
-//
-//task deobfJar(type: Jar) {
-//    from sourceSets.main.output
-//    from sourceSets.main.java
-//    classifier = 'dev'
-//}
+
 compileKotlin {
     kotlinOptions {
         jvmTarget = "1.8"
