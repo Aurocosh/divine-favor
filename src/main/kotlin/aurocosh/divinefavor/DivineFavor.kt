@@ -15,11 +15,12 @@ import net.minecraftforge.fml.common.event.FMLServerStartingEvent
 import org.apache.logging.log4j.LogManager
 import org.apache.logging.log4j.Logger
 
-@Mod(modid = DivineFavor.MOD_ID, name = DivineFavor.MOD_NAME, dependencies = "required-after:patchouli;required:forgelin", modLanguageAdapter = "net.shadowfacts.forgelin.KotlinAdapter")
+@Mod(modid = DivineFavor.MOD_ID, name = DivineFavor.MOD_NAME, dependencies = DivineFavor.MOD_DEPS, modLanguageAdapter = "net.shadowfacts.forgelin.KotlinAdapter")
 object DivineFavor {
     // Mod Constants
     const val MOD_ID = "divinefavor"
     const val MOD_NAME = "Divine Favor"
+    const val MOD_DEPS = "required-after:patchouli;required:forgelin;required:autonetworklib@[1.0.30,)"
 
     const val KEYBIND_CATEGORY = "key.categories." + MOD_ID
 
@@ -27,10 +28,10 @@ object DivineFavor {
     const val PROXY_COMMON = "aurocosh.divinefavor.common.core.proxy.CommonProxy"
     const val PROXY_CLIENT = "aurocosh.divinefavor.client.core.proxy.ClientProxy"
 
-    @Mod.Instance(DivineFavor.MOD_ID)
+    @Mod.Instance(MOD_ID)
     var instance: DivineFavor? = null
 
-    @SidedProxy(serverSide = DivineFavor.PROXY_COMMON, clientSide = DivineFavor.PROXY_CLIENT)
+    @SidedProxy(serverSide = PROXY_COMMON, clientSide = PROXY_CLIENT)
     lateinit var proxy: CommonProxy
 
     lateinit var logger: Logger
