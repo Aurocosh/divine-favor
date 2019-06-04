@@ -43,6 +43,6 @@ class DivineFavorCreativeTab : CreativeTabs("divinefavor") {
         addItem(Item.getItemFromBlock(block))
     }
 }
-//ConstMisc.MOD_ID
+//DivineFavor.MOD_ID
 //setNoTitle();
 //setBackgroundImageName(ConstResources.GUI_CREATIVE);

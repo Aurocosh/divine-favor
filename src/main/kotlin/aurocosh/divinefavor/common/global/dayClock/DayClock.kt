@@ -1,6 +1,6 @@
 package aurocosh.divinefavor.common.global.dayClock
 
-import aurocosh.divinefavor.common.constants.ConstMisc
+import aurocosh.divinefavor.DivineFavor
 import aurocosh.divinefavor.common.lib.LoopedCounter
 import aurocosh.divinefavor.common.lib.extensions.firstIndex
 import aurocosh.divinefavor.common.util.UtilDayTime
@@ -11,7 +11,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent
 import net.minecraftforge.fml.common.gameevent.TickEvent
 import java.util.*
 
-@Mod.EventBusSubscriber(modid = ConstMisc.MOD_ID)
+@Mod.EventBusSubscriber(modid = DivineFavor.MOD_ID)
 object DayClock {
     private val TRACKED_DIMENSION_ID = 0
     private val AFTER_COMMAND_SYNC = UtilDayTime.TICKS_IN_DAY - 1

@@ -1,5 +1,7 @@
 package aurocosh.divinefavor.common.constants
 
+import aurocosh.divinefavor.DivineFavor
+
 object ConstResources {
 
     const val PREFIX_MOD = "divinefavor:"
@@ -41,7 +43,7 @@ object ConstResources {
     const val RES_CURSED_ARROW = PREFIX_PROJECTILES + "cursed_arrow.png"
     const val RES_SPELL_ARROW = PREFIX_PROJECTILES + "spell_arrow.png"
 
-    const val MULTIBLOCK_ASSETS = "/assets/" + ConstMisc.MOD_ID + "/multi_blocks/"
+    const val MULTIBLOCK_ASSETS = "/assets/" + DivineFavor.MOD_ID + "/multi_blocks/"
 
     val TEX_PARTICLES = PREFIX_PARTICLES + "particles.png"
 

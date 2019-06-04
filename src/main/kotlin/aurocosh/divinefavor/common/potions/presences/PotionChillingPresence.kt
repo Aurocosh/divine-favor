@@ -1,7 +1,7 @@
 package aurocosh.divinefavor.common.potions.presences
 
+import aurocosh.divinefavor.DivineFavor
 import aurocosh.divinefavor.common.config.common.ConfigPresence
-import aurocosh.divinefavor.common.constants.ConstMisc
 import aurocosh.divinefavor.common.entity.mob.EntityDirewolf
 import aurocosh.divinefavor.common.item.calling_stones.ModCallingStones
 import aurocosh.divinefavor.common.potions.base.potion.ModPotion
@@ -13,7 +13,7 @@ import net.minecraft.item.ItemStack
 import net.minecraft.util.math.BlockPos
 import net.minecraftforge.fml.common.Mod
 
-@Mod.EventBusSubscriber(modid = ConstMisc.MOD_ID)
+@Mod.EventBusSubscriber(modid = DivineFavor.MOD_ID)
 class PotionChillingPresence : ModPotion("chilling_presence", 0x7FB8A4) {
 
     override fun onPotionAdded(livingBase: EntityLivingBase) {

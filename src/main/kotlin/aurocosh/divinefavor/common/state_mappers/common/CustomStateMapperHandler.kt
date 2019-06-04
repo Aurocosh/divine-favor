@@ -1,6 +1,6 @@
 package aurocosh.divinefavor.common.state_mappers.common
 
-import aurocosh.divinefavor.common.constants.ConstMisc
+import aurocosh.divinefavor.DivineFavor
 import aurocosh.divinefavor.common.registry.ModRegistries
 import net.minecraftforge.client.event.ModelRegistryEvent
 import net.minecraftforge.client.model.ModelLoader
@@ -10,7 +10,7 @@ import net.minecraftforge.fml.relauncher.Side
 import net.minecraftforge.fml.relauncher.SideOnly
 
 @SideOnly(Side.CLIENT)
-@Mod.EventBusSubscriber(modid = ConstMisc.MOD_ID, value = [Side.CLIENT])
+@Mod.EventBusSubscriber(modid = DivineFavor.MOD_ID, value = [Side.CLIENT])
 object CustomStateMapperHandler {
     @SideOnly(Side.CLIENT)
     @SubscribeEvent

@@ -1,5 +1,6 @@
 package aurocosh.divinefavor.common.config.common;
 
+import aurocosh.divinefavor.DivineFavor;
 import aurocosh.divinefavor.common.constants.ConstMisc;
 import net.minecraft.block.Block;
 import net.minecraftforge.common.config.Config;
@@ -7,7 +8,7 @@ import net.minecraftforge.common.config.Config;
 import java.util.HashSet;
 import java.util.Set;
 
-@Config(modid = ConstMisc.MOD_ID, name = ConstMisc.MOD_ID + "/general")
+@Config(modid = DivineFavor.MOD_ID, name = DivineFavor.MOD_ID + "/general")
 public class ConfigGeneral {
     @Config.Name("Particle limit by type")
     public static int particleLimit = 5000;

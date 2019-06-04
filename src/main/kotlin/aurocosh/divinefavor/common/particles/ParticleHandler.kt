@@ -1,6 +1,6 @@
 package aurocosh.divinefavor.common.particles
 
-import aurocosh.divinefavor.common.constants.ConstMisc
+import aurocosh.divinefavor.DivineFavor
 import aurocosh.divinefavor.common.core.ResourceNamer
 import aurocosh.divinefavor.common.particles.base.ModParticle
 import aurocosh.divinefavor.common.particles.generic.ParticleManager
@@ -14,7 +14,7 @@ import net.minecraftforge.fml.relauncher.SideOnly
 import java.util.*
 
 @SideOnly(Side.CLIENT)
-@Mod.EventBusSubscriber(modid = ConstMisc.MOD_ID, value = [Side.CLIENT])
+@Mod.EventBusSubscriber(modid = DivineFavor.MOD_ID, value = [Side.CLIENT])
 object ParticleHandler {
     private val particleManagers = ArrayList<ParticleManager<out ModParticle>>()
 

@@ -1,6 +1,6 @@
 package aurocosh.divinefavor.common.potions.potions
 
-import aurocosh.divinefavor.common.constants.ConstMisc
+import aurocosh.divinefavor.DivineFavor
 import aurocosh.divinefavor.common.lib.extensions.divineLivingData
 import aurocosh.divinefavor.common.potions.base.potion.ModPotionToggle
 import aurocosh.divinefavor.common.potions.common.ModCurses
@@ -11,7 +11,7 @@ import net.minecraftforge.event.entity.living.LivingDamageEvent
 import net.minecraftforge.fml.common.Mod
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent
 
-@Mod.EventBusSubscriber(modid = ConstMisc.MOD_ID)
+@Mod.EventBusSubscriber(modid = DivineFavor.MOD_ID)
 class PotionSoulTheft : ModPotionToggle("soul_theft", 0x7FB8A4) {
 
     override fun onPotionRemoved(livingBase: EntityLivingBase) {

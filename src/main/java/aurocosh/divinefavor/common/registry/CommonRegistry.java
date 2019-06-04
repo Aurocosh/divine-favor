@@ -1,5 +1,6 @@
 package aurocosh.divinefavor.common.registry;
 
+import aurocosh.divinefavor.DivineFavor;
 import aurocosh.divinefavor.common.constants.ConstMisc;
 import com.google.common.collect.Multimap;
 import com.google.common.collect.MultimapBuilder;
@@ -11,7 +12,7 @@ import net.minecraftforge.registries.IForgeRegistryEntry;
 
 import java.util.Collection;
 
-@Mod.EventBusSubscriber(modid = ConstMisc.MOD_ID)
+@Mod.EventBusSubscriber(modid = DivineFavor.MOD_ID)
 public class CommonRegistry {
     private static final Multimap<Class, IForgeRegistryEntry> entryMap = MultimapBuilder.hashKeys().arrayListValues().build();
 

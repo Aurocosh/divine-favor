@@ -1,8 +1,8 @@
 package aurocosh.divinefavor.common.potions.blends
 
+import aurocosh.divinefavor.DivineFavor
 import aurocosh.divinefavor.common.config.common.ConfigAura
 import aurocosh.divinefavor.common.config.common.ConfigPresence
-import aurocosh.divinefavor.common.constants.ConstMisc
 import aurocosh.divinefavor.common.item.ItemBlockEnderPumpkin
 import aurocosh.divinefavor.common.lib.LoopedCounter
 import aurocosh.divinefavor.common.lib.extensions.divinePlayerData
@@ -20,7 +20,7 @@ import net.minecraftforge.fml.common.Mod
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent
 import net.minecraftforge.fml.common.gameevent.TickEvent
 
-@Mod.EventBusSubscriber(modid = ConstMisc.MOD_ID)
+@Mod.EventBusSubscriber(modid = DivineFavor.MOD_ID)
 class PotionDistortedAura : ModPotion("distorted_aura", 0x7FB8A4) {
 
     override fun onPotionAdded(livingBase: EntityLivingBase) {

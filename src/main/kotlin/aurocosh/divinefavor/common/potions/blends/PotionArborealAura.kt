@@ -1,7 +1,7 @@
 package aurocosh.divinefavor.common.potions.blends
 
+import aurocosh.divinefavor.DivineFavor
 import aurocosh.divinefavor.common.config.common.ConfigPresence
-import aurocosh.divinefavor.common.constants.ConstMisc
 import aurocosh.divinefavor.common.lib.extensions.divinePlayerData
 import aurocosh.divinefavor.common.potions.base.effect.ModEffect
 import aurocosh.divinefavor.common.potions.base.potion.ModPotion
@@ -16,7 +16,7 @@ import net.minecraftforge.fml.common.Mod
 import net.minecraftforge.fml.common.eventhandler.EventPriority
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent
 
-@Mod.EventBusSubscriber(modid = ConstMisc.MOD_ID)
+@Mod.EventBusSubscriber(modid = DivineFavor.MOD_ID)
 class PotionArborealAura : ModPotion("arboreal_aura", 0x7FB8A4) {
 
     override fun onPotionAdded(livingBase: EntityLivingBase) {

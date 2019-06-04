@@ -1,6 +1,6 @@
 package aurocosh.divinefavor.common.potions.presences
 
-import aurocosh.divinefavor.common.constants.ConstMisc
+import aurocosh.divinefavor.DivineFavor
 import aurocosh.divinefavor.common.item.calling_stones.ModCallingStones
 import aurocosh.divinefavor.common.lib.LoopedCounter
 import aurocosh.divinefavor.common.lib.extensions.divinePlayerData
@@ -20,7 +20,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent
 import net.minecraftforge.fml.common.gameevent.TickEvent
 import java.util.*
 
-@Mod.EventBusSubscriber(modid = ConstMisc.MOD_ID)
+@Mod.EventBusSubscriber(modid = DivineFavor.MOD_ID)
 class PotionIndustriousPresence : ModPotion("industrious_presence", 0x7FB8A4) {
 
     override fun onPotionAdded(livingBase: EntityLivingBase) {

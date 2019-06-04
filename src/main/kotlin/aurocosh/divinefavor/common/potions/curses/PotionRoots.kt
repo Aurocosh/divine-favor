@@ -1,7 +1,7 @@
 package aurocosh.divinefavor.common.potions.curses
 
+import aurocosh.divinefavor.DivineFavor
 import aurocosh.divinefavor.common.config.common.ConfigArrow
-import aurocosh.divinefavor.common.constants.ConstMisc
 import aurocosh.divinefavor.common.potions.base.potion.ModPotion
 import aurocosh.divinefavor.common.potions.common.ModCurses
 import net.minecraft.entity.EntityLivingBase
@@ -9,7 +9,7 @@ import net.minecraft.entity.SharedMonsterAttributes
 import net.minecraft.util.math.Vec3d
 import net.minecraftforge.fml.common.Mod
 
-@Mod.EventBusSubscriber(modid = ConstMisc.MOD_ID)
+@Mod.EventBusSubscriber(modid = DivineFavor.MOD_ID)
 class PotionRoots : ModPotion("roots", 0x7FB8A4) {
     init {
         setIsCurse(true)

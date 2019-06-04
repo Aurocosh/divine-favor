@@ -1,6 +1,6 @@
 package aurocosh.divinefavor.common.potions.potions
 
-import aurocosh.divinefavor.common.constants.ConstMisc
+import aurocosh.divinefavor.DivineFavor
 import aurocosh.divinefavor.common.potions.base.potion.ModPotion
 import aurocosh.divinefavor.common.util.UtilEntity.tickLiquidWalk
 import net.minecraft.entity.EntityLivingBase
@@ -8,7 +8,7 @@ import net.minecraft.entity.SharedMonsterAttributes
 import net.minecraft.init.Blocks
 import net.minecraftforge.fml.common.Mod
 
-@Mod.EventBusSubscriber(modid = ConstMisc.MOD_ID)
+@Mod.EventBusSubscriber(modid = DivineFavor.MOD_ID)
 class PotionWildSprint : ModPotion("wild_sprint", 0x7FB8A4) {
     private val SPEED_MODIFIER = 0.2f
     private val WATER_RUNNING_SPEED = 0.25f

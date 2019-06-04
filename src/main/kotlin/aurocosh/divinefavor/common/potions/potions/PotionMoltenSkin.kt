@@ -1,7 +1,7 @@
 package aurocosh.divinefavor.common.potions.potions
 
+import aurocosh.divinefavor.DivineFavor
 import aurocosh.divinefavor.common.config.common.ConfigSpells
-import aurocosh.divinefavor.common.constants.ConstMisc
 import aurocosh.divinefavor.common.damage_source.ModDamageSources
 import aurocosh.divinefavor.common.lib.extensions.divinePlayerData
 import aurocosh.divinefavor.common.potions.base.potion.ModPotionToggle
@@ -19,7 +19,7 @@ import net.minecraftforge.fml.relauncher.Side
 import net.minecraftforge.fml.relauncher.SideOnly
 
 
-@Mod.EventBusSubscriber(modid = ConstMisc.MOD_ID)
+@Mod.EventBusSubscriber(modid = DivineFavor.MOD_ID)
 class PotionMoltenSkin : ModPotionToggle("molten_skin", 0x7FB8A4) {
 
     override fun performEffect(livingBase: EntityLivingBase, amplifier: Int) {

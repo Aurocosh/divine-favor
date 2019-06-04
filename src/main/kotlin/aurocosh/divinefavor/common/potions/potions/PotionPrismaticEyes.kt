@@ -1,6 +1,6 @@
 package aurocosh.divinefavor.common.potions.potions
 
-import aurocosh.divinefavor.common.constants.ConstMisc
+import aurocosh.divinefavor.DivineFavor
 import aurocosh.divinefavor.common.constants.ConstResources
 import aurocosh.divinefavor.common.potions.base.potion.ModPotionToggle
 import aurocosh.divinefavor.common.potions.common.ModPotions
@@ -16,7 +16,7 @@ import net.minecraftforge.fml.relauncher.Side
 import net.minecraftforge.fml.relauncher.SideOnly
 import org.lwjgl.opengl.GL11
 
-@Mod.EventBusSubscriber(modid = ConstMisc.MOD_ID)
+@Mod.EventBusSubscriber(modid = DivineFavor.MOD_ID)
 class PotionPrismaticEyes : ModPotionToggle("prismatic_eyes", 0x7FB8A4) {
     companion object {
         private val EVIL_PRISMATIC_EYES_TEXTURE = ResourceLocation(ConstResources.GUI_PRISMATIC_EYES_BLUR)

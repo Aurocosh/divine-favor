@@ -73,8 +73,8 @@ minecraft {
     useDepAts = true
 //    makeObfSourceJar = false
 
-    replace 'GRADLE:BUILD', '1'
-    replace 'GRADLE:VERSION', mod_version
+    replaceIn "DivineFavor.kt"
+    replace 'GRADLE:VERSION', project.version
 }
 
 dependencies {

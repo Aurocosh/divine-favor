@@ -1,10 +1,11 @@
 package aurocosh.divinefavor.common.config.common;
 
+import aurocosh.divinefavor.DivineFavor;
 import aurocosh.divinefavor.common.config.entries.minions.*;
 import aurocosh.divinefavor.common.constants.ConstMisc;
 import net.minecraftforge.common.config.Config;
 
-@Config(modid = ConstMisc.MOD_ID, name = ConstMisc.MOD_ID + "/minions")
+@Config(modid = DivineFavor.MOD_ID, name = DivineFavor.MOD_ID + "/minions")
 public class ConfigMinion {
     @Config.Name("Creeper minion")
     public static MinionCreeper creeper = new MinionCreeper();

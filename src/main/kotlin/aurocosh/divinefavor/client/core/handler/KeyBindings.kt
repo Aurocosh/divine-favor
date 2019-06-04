@@ -1,7 +1,6 @@
 package aurocosh.divinefavor.client.core.handler
 
 import aurocosh.divinefavor.DivineFavor
-import aurocosh.divinefavor.common.constants.ConstMisc
 import aurocosh.divinefavor.common.core.ResourceNamer
 import aurocosh.divinefavor.common.item.talisman_container.TalismanContainerAdapter
 import aurocosh.divinefavor.common.util.UtilPlayer
@@ -26,7 +25,7 @@ object KeyBindings {
     }
 
     private fun createBinding(name: String, key: Int): KeyBinding {
-        val keyBinding = KeyBinding("key." + ResourceNamer.getFullName(name), CONFLICT_CONTEXT, key, ConstMisc.KEYBIND_CATEGORY)
+        val keyBinding = KeyBinding("key." + ResourceNamer.getFullName(name), CONFLICT_CONTEXT, key, DivineFavor.KEYBIND_CATEGORY)
         ClientRegistry.registerKeyBinding(keyBinding)
         return keyBinding
     }

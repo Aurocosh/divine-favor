@@ -1,5 +1,6 @@
 package aurocosh.divinefavor.common.util;
 
+import aurocosh.divinefavor.DivineFavor;
 import aurocosh.divinefavor.common.constants.ConstMisc;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.relauncher.Side;
@@ -12,7 +13,7 @@ import java.util.Arrays;
 import java.util.List;
 
 @SideOnly(Side.CLIENT)
-@Mod.EventBusSubscriber(modid = ConstMisc.MOD_ID, value = Side.CLIENT)
+@Mod.EventBusSubscriber(modid = DivineFavor.MOD_ID, value = Side.CLIENT)
 public class ItemTooltipHandler {
     public static final DecimalFormat COMPOST_AMOUNT_FORMAT = new DecimalFormat("#.##");
 

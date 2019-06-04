@@ -1,7 +1,7 @@
 package aurocosh.divinefavor.common.network
 
 import aurocosh.autonetworklib.network.AutoNetworkWrapper
-import aurocosh.divinefavor.common.constants.ConstMisc
+import aurocosh.divinefavor.DivineFavor
 import aurocosh.divinefavor.common.network.message.client.activity.MessageSpiritBecameActive
 import aurocosh.divinefavor.common.network.message.client.activity.MessageSpiritBecameInactive
 import aurocosh.divinefavor.common.network.message.client.config.MessageConfigOreBlocks
@@ -19,7 +19,7 @@ import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper
 import net.minecraftforge.fml.relauncher.Side
 
 object NetworkHandler {
-    val autoWrapper = AutoNetworkWrapper(ConstMisc.MOD_ID)
+    val autoWrapper = AutoNetworkWrapper(DivineFavor.MOD_ID)
 
     val wrapper: SimpleNetworkWrapper
         get() = autoWrapper.wrapper

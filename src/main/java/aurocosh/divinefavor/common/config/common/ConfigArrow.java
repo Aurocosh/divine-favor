@@ -1,11 +1,12 @@
 package aurocosh.divinefavor.common.config.common;
 
+import aurocosh.divinefavor.DivineFavor;
 import aurocosh.divinefavor.common.config.entries.talismans.arrow.*;
 import aurocosh.divinefavor.common.constants.ConstMisc;
 import aurocosh.divinefavor.common.util.UtilTick;
 import net.minecraftforge.common.config.Config;
 
-@Config(modid = ConstMisc.MOD_ID, name = ConstMisc.MOD_ID + "/arrow_talismans")
+@Config(modid = DivineFavor.MOD_ID, name = DivineFavor.MOD_ID + "/arrow_talismans")
 public class ConfigArrow {
     @Config.Name("Anti gravity arrow")
     public static AntiGravityArrow antiGravityArrow = new AntiGravityArrow();

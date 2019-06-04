@@ -1,7 +1,7 @@
 package aurocosh.divinefavor.common.potions.curses
 
+import aurocosh.divinefavor.DivineFavor
 import aurocosh.divinefavor.common.config.common.ConfigArrow
-import aurocosh.divinefavor.common.constants.ConstMisc
 import aurocosh.divinefavor.common.damage_source.ModDamageSources
 import aurocosh.divinefavor.common.lib.extensions.divineLivingData
 import aurocosh.divinefavor.common.network.message.sever.petrification.MessagePetrificationCure
@@ -13,7 +13,7 @@ import net.minecraft.entity.EntityLivingBase
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraftforge.fml.common.Mod
 
-@Mod.EventBusSubscriber(modid = ConstMisc.MOD_ID)
+@Mod.EventBusSubscriber(modid = DivineFavor.MOD_ID)
 class PotionPetrification : ModPotion("petrification", 0x7FB8A4) {
     init {
         setIsCurse(true)

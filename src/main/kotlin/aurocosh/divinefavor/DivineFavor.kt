@@ -1,6 +1,5 @@
 package aurocosh.divinefavor
 
-import aurocosh.divinefavor.common.constants.ConstMisc
 import aurocosh.divinefavor.common.core.creative_tabs.DivineFavorCreativeTab
 import aurocosh.divinefavor.common.core.creative_tabs.DivineFavorCreativeTabArrowTalismans
 import aurocosh.divinefavor.common.core.creative_tabs.DivineFavorCreativeTabGems
@@ -16,12 +15,23 @@ import net.minecraftforge.fml.common.event.FMLServerStartingEvent
 import org.apache.logging.log4j.LogManager
 import org.apache.logging.log4j.Logger
 
-@Mod(modid = ConstMisc.MOD_ID, name = ConstMisc.MOD_NAME, version = ConstMisc.VERSION, dependencies = "required-after:patchouli;required:forgelin", modLanguageAdapter = "net.shadowfacts.forgelin.KotlinAdapter")
+@Mod(modid = DivineFavor.MOD_ID, name = DivineFavor.MOD_NAME, version = DivineFavor.VERSION, dependencies = "required-after:patchouli;required:forgelin", modLanguageAdapter = "net.shadowfacts.forgelin.KotlinAdapter")
 object DivineFavor {
-    @Mod.Instance(ConstMisc.MOD_ID)
+    // Mod Constants
+    const val MOD_ID = "divinefavor"
+    const val MOD_NAME = "Divine Favor"
+    const val VERSION = "GRADLE:VERSION"
+
+    const val KEYBIND_CATEGORY = "key.categories." + MOD_ID
+
+    // Proxy Constants
+    const val PROXY_COMMON = "aurocosh.divinefavor.common.core.proxy.CommonProxy"
+    const val PROXY_CLIENT = "aurocosh.divinefavor.client.core.proxy.ClientProxy"
+
+    @Mod.Instance(DivineFavor.MOD_ID)
     var instance: DivineFavor? = null
 
-    @SidedProxy(serverSide = ConstMisc.PROXY_COMMON, clientSide = ConstMisc.PROXY_CLIENT)
+    @SidedProxy(serverSide = DivineFavor.PROXY_COMMON, clientSide = DivineFavor.PROXY_CLIENT)
     lateinit var proxy: CommonProxy
 
     lateinit var logger: Logger

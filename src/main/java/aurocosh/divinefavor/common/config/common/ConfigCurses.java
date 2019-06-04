@@ -1,12 +1,13 @@
 package aurocosh.divinefavor.common.config.common;
 
+import aurocosh.divinefavor.DivineFavor;
 import aurocosh.divinefavor.common.constants.ConstMisc;
 import net.minecraftforge.common.config.Config;
 
 import java.util.HashMap;
 import java.util.Map;
 
-@Config(modid = ConstMisc.MOD_ID, name = ConstMisc.MOD_ID + "/curses")
+@Config(modid = DivineFavor.MOD_ID, name = DivineFavor.MOD_ID + "/curses")
 public class ConfigCurses {
     @Config.Name("Curse resistance per curse")
     public static float curseResistancePerCurse = 50;

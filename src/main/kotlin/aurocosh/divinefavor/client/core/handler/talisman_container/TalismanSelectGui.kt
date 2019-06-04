@@ -3,7 +3,6 @@ package aurocosh.divinefavor.client.core.handler.talisman_container
 import aurocosh.divinefavor.DivineFavor
 import aurocosh.divinefavor.client.core.handler.KeyBindings
 import aurocosh.divinefavor.client.core.handler.talisman.TalismanHUD
-import aurocosh.divinefavor.common.constants.ConstMisc
 import aurocosh.divinefavor.common.constants.ConstResources
 import aurocosh.divinefavor.common.item.talisman_container.ITalismanContainer
 import aurocosh.divinefavor.common.item.talisman_container.TalismanContainerAdapter
@@ -24,7 +23,7 @@ import net.minecraftforge.fml.relauncher.SideOnly
 import org.lwjgl.opengl.GL11
 import java.util.*
 
-@Mod.EventBusSubscriber(modid = ConstMisc.MOD_ID, value = [Side.CLIENT])
+@Mod.EventBusSubscriber(modid = DivineFavor.MOD_ID, value = [Side.CLIENT])
 @SideOnly(Side.CLIENT)
 class TalismanSelectGui : GuiScreen() {
 

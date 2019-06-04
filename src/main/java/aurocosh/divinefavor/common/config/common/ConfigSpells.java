@@ -1,12 +1,13 @@
 package aurocosh.divinefavor.common.config.common;
 
+import aurocosh.divinefavor.DivineFavor;
 import aurocosh.divinefavor.common.config.entries.talismans.spell.*;
 import aurocosh.divinefavor.common.config.entries.talismans.spell.generic.*;
 import aurocosh.divinefavor.common.constants.ConstMisc;
 import aurocosh.divinefavor.common.util.UtilTick;
 import net.minecraftforge.common.config.Config;
 
-@Config(modid = ConstMisc.MOD_ID, name = ConstMisc.MOD_ID + "/spell_talismans")
+@Config(modid = DivineFavor.MOD_ID, name = DivineFavor.MOD_ID + "/spell_talismans")
 public class ConfigSpells {
     @Config.Name("Armor of pacifist")
     public static ArmorOfPacifist armorOfPacifist = new ArmorOfPacifist();

@@ -1,6 +1,6 @@
 package aurocosh.divinefavor.common.area
 
-import aurocosh.divinefavor.common.constants.ConstMisc
+import aurocosh.divinefavor.DivineFavor
 import net.minecraft.world.World
 import net.minecraftforge.event.world.BlockEvent
 import net.minecraftforge.fml.common.Mod
@@ -8,7 +8,7 @@ import net.minecraftforge.fml.common.eventhandler.EventPriority
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent
 import java.util.*
 
-@Mod.EventBusSubscriber(modid = ConstMisc.MOD_ID)
+@Mod.EventBusSubscriber(modid = DivineFavor.MOD_ID)
 object WorldAreaWatcher {
     private val watchersToDelete = ArrayList<WatcherToDelete>()
     private val watchers = HashMap<World, MutableSet<IAreaWatcher>>()

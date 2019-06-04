@@ -1,6 +1,6 @@
 package aurocosh.divinefavor.common.muliblock.common
 
-import aurocosh.divinefavor.common.constants.ConstMisc
+import aurocosh.divinefavor.DivineFavor
 import aurocosh.divinefavor.common.muliblock.IMultiblockController
 import net.minecraft.world.World
 import net.minecraftforge.event.world.BlockEvent
@@ -9,7 +9,7 @@ import net.minecraftforge.fml.common.eventhandler.EventPriority
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent
 import java.util.*
 
-@Mod.EventBusSubscriber(modid = ConstMisc.MOD_ID)
+@Mod.EventBusSubscriber(modid = DivineFavor.MOD_ID)
 object MultiblockWatcher {
     private val controllers = HashMap<World, MutableSet<IMultiblockController>>()
 

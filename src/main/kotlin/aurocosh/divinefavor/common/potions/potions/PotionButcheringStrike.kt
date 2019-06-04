@@ -1,7 +1,7 @@
 package aurocosh.divinefavor.common.potions.potions
 
+import aurocosh.divinefavor.DivineFavor
 import aurocosh.divinefavor.common.config.common.ConfigSpells
-import aurocosh.divinefavor.common.constants.ConstMisc
 import aurocosh.divinefavor.common.lib.extensions.divinePlayerData
 import aurocosh.divinefavor.common.network.message.client.spirit_data.MessageSyncFavor
 import aurocosh.divinefavor.common.potions.base.potion.ModPotionToggleLimited
@@ -21,7 +21,7 @@ class PotionButcheringStrike : ModPotionToggleLimited("butchering_strike", 0x7FB
     }
 }
 
-@Mod.EventBusSubscriber(modid = ConstMisc.MOD_ID)
+@Mod.EventBusSubscriber(modid = DivineFavor.MOD_ID)
 object ButcheringStrike {
     @SubscribeEvent
     fun onEntityDamaged(event: LivingDamageEvent) {

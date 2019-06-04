@@ -1,7 +1,6 @@
 package aurocosh.divinefavor.common.core.proxy
 import aurocosh.divinefavor.DivineFavor
 import aurocosh.divinefavor.common.block.common.ModBlocks
-import aurocosh.divinefavor.common.constants.ConstMisc
 import aurocosh.divinefavor.common.custom_data.living.capability.LivingDataDataHandler
 import aurocosh.divinefavor.common.custom_data.player.capability.PlayerDataDataHandler
 import aurocosh.divinefavor.common.custom_data.world.capability.WorldDataDataHandler
@@ -39,7 +38,7 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent
 import net.minecraftforge.fml.common.network.NetworkRegistry
 
-@Mod.EventBusSubscriber(modid = ConstMisc.MOD_ID)
+@Mod.EventBusSubscriber(modid = DivineFavor.MOD_ID)
 open class CommonProxy {
 
     open val clientPlayer: EntityPlayer
@@ -101,8 +100,8 @@ open class CommonProxy {
 
         @SubscribeEvent
         fun onConfigChangedEvent(event: ConfigChangedEvent.OnConfigChangedEvent) {
-            if (event.modID == ConstMisc.MOD_ID)
-                ConfigManager.sync(ConstMisc.MOD_ID, Config.Type.INSTANCE)
+            if (event.modID == DivineFavor.MOD_ID)
+                ConfigManager.sync(DivineFavor.MOD_ID, Config.Type.INSTANCE)
         }
     }
 }

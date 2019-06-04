@@ -1,7 +1,7 @@
 package aurocosh.divinefavor.common.potions.curses
 
+import aurocosh.divinefavor.DivineFavor
 import aurocosh.divinefavor.common.config.common.ConfigArrow
-import aurocosh.divinefavor.common.constants.ConstMisc
 import aurocosh.divinefavor.common.lib.LoopedCounter
 import aurocosh.divinefavor.common.lib.extensions.divinePlayerData
 import aurocosh.divinefavor.common.potions.base.potion.ModPotion
@@ -17,7 +17,7 @@ import net.minecraftforge.fml.common.gameevent.TickEvent
 import net.minecraftforge.fml.relauncher.Side
 import net.minecraftforge.fml.relauncher.SideOnly
 
-@Mod.EventBusSubscriber(modid = ConstMisc.MOD_ID)
+@Mod.EventBusSubscriber(modid = DivineFavor.MOD_ID)
 class PotionCrawlingMist : ModPotion("crawling_mist", 0x7FB8A4) {
     init {
         setIsCurse(true)

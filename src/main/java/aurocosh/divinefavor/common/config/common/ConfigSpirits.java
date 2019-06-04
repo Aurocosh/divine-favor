@@ -1,11 +1,12 @@
 package aurocosh.divinefavor.common.config.common;
 
+import aurocosh.divinefavor.DivineFavor;
 import aurocosh.divinefavor.common.config.entries.SpiritConfig;
 import aurocosh.divinefavor.common.config.entries.TimePeriodConfig;
 import aurocosh.divinefavor.common.constants.ConstMisc;
 import net.minecraftforge.common.config.Config;
 
-@Config(modid = ConstMisc.MOD_ID, name = ConstMisc.MOD_ID + "/spirits")
+@Config(modid = DivineFavor.MOD_ID, name = DivineFavor.MOD_ID + "/spirits")
 public class ConfigSpirits {
     private final static int maxFavor = 50;
 

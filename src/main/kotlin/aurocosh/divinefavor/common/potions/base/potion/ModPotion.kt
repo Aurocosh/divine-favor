@@ -1,6 +1,6 @@
 package aurocosh.divinefavor.common.potions.base.potion
 
-import aurocosh.divinefavor.common.constants.ConstMisc
+import aurocosh.divinefavor.DivineFavor
 import aurocosh.divinefavor.common.core.ResourceNamer
 import aurocosh.divinefavor.common.lib.extensions.divineLivingData
 import aurocosh.divinefavor.common.registry.ModRegistries
@@ -24,7 +24,7 @@ abstract class ModPotion(name: String, potionColor: Int) : Potion(false, potionC
 
     init {
         isCurse = false
-        this.icon = ResourceLocation(ConstMisc.MOD_ID, "textures/potions/$name.png")
+        this.icon = ResourceLocation(DivineFavor.MOD_ID, "textures/potions/$name.png")
 
         //potion.setIcon(potion.getIcon());
 

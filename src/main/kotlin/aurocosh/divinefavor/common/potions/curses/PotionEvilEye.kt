@@ -2,7 +2,6 @@ package aurocosh.divinefavor.common.potions.curses
 
 import aurocosh.divinefavor.DivineFavor
 import aurocosh.divinefavor.common.config.common.ConfigSpells
-import aurocosh.divinefavor.common.constants.ConstMisc
 import aurocosh.divinefavor.common.constants.ConstResources
 import aurocosh.divinefavor.common.lib.extensions.divinePlayerData
 import aurocosh.divinefavor.common.potions.base.potion.ModPotion
@@ -21,7 +20,7 @@ import net.minecraftforge.fml.relauncher.Side
 import net.minecraftforge.fml.relauncher.SideOnly
 import org.lwjgl.opengl.GL11
 
-@Mod.EventBusSubscriber(modid = ConstMisc.MOD_ID, value = [Side.CLIENT])
+@Mod.EventBusSubscriber(modid = DivineFavor.MOD_ID, value = [Side.CLIENT])
 class PotionEvilEye : ModPotion("evil_eye", 0x7FB8A4) {
     init {
         setIsCurse(true)

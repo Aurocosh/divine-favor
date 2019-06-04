@@ -1,5 +1,6 @@
 package aurocosh.divinefavor.common.config.common;
 
+import aurocosh.divinefavor.DivineFavor;
 import aurocosh.divinefavor.common.config.entries.ropes.BarrierRope;
 import aurocosh.divinefavor.common.config.entries.ropes.ExplosiveRope;
 import aurocosh.divinefavor.common.config.entries.ropes.GuideRope;
@@ -7,7 +8,7 @@ import aurocosh.divinefavor.common.config.entries.ropes.InertRope;
 import aurocosh.divinefavor.common.constants.ConstMisc;
 import net.minecraftforge.common.config.Config;
 
-@Config(modid = ConstMisc.MOD_ID, name = ConstMisc.MOD_ID + "/ropes")
+@Config(modid = DivineFavor.MOD_ID, name = DivineFavor.MOD_ID + "/ropes")
 public class ConfigRope {
     @Config.Name("Barrier rope")
     public static BarrierRope barrierRope = new BarrierRope();

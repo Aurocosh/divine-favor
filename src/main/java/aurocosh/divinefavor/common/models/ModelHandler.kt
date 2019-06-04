@@ -1,6 +1,6 @@
 package aurocosh.divinefavor.common.models
 
-import aurocosh.divinefavor.common.constants.ConstMisc
+import aurocosh.divinefavor.DivineFavor
 import aurocosh.divinefavor.common.item.base.ICustomMeshHolder
 import aurocosh.divinefavor.common.item.base.IModelHolder
 import aurocosh.divinefavor.common.registry.ModRegistries
@@ -15,7 +15,7 @@ import net.minecraftforge.fml.relauncher.Side
 import net.minecraftforge.fml.relauncher.SideOnly
 
 @SideOnly(Side.CLIENT)
-@Mod.EventBusSubscriber(modid = ConstMisc.MOD_ID, value = [Side.CLIENT])
+@Mod.EventBusSubscriber(modid = DivineFavor.MOD_ID, value = [Side.CLIENT])
 object ModelHandler {
     @SubscribeEvent
     fun onRegister(@Suppress("UNUSED_PARAMETER") event: ModelRegistryEvent) {

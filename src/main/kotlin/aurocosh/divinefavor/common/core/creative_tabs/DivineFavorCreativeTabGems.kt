@@ -1,6 +1,6 @@
 package aurocosh.divinefavor.common.core.creative_tabs
 
-import aurocosh.divinefavor.common.constants.ConstMisc
+import aurocosh.divinefavor.DivineFavor
 import aurocosh.divinefavor.common.item.calling_stones.ModCallingStones
 import aurocosh.divinefavor.common.registry.ModRegistries
 import net.minecraft.block.Block
@@ -11,7 +11,7 @@ import net.minecraft.util.NonNullList
 import net.minecraftforge.fml.relauncher.Side
 import net.minecraftforge.fml.relauncher.SideOnly
 
-class DivineFavorCreativeTabGems : CreativeTabs(ConstMisc.MOD_ID + "_gems") {
+class DivineFavorCreativeTabGems : CreativeTabs(DivineFavor.MOD_ID + "_gems") {
     private lateinit var list: NonNullList<ItemStack>
 
     override fun createIcon(): ItemStack {
@@ -38,6 +38,6 @@ class DivineFavorCreativeTabGems : CreativeTabs(ConstMisc.MOD_ID + "_gems") {
     private fun addBlock(block: Block) {
         addItem(Item.getItemFromBlock(block))
     }
-}//ConstMisc.MOD_ID
+}//DivineFavor.MOD_ID
 //setNoTitle();
 //setBackgroundImageName(ConstResources.GUI_CREATIVE);

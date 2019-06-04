@@ -1,6 +1,6 @@
 package aurocosh.divinefavor.common.integrations.jei
 
-import aurocosh.divinefavor.common.constants.ConstMisc
+import aurocosh.divinefavor.DivineFavor
 import aurocosh.divinefavor.common.constants.ConstResources
 import aurocosh.divinefavor.common.item.common.ModItems
 import aurocosh.divinefavor.common.receipes.ImmaterialMediumRecipe
@@ -32,7 +32,7 @@ class ImmaterialMediumCategory(helper: IGuiHelper) : IRecipeCategory<ImmaterialM
     }
 
     override fun getModName(): String {
-        return ConstMisc.MOD_NAME
+        return DivineFavor.MOD_NAME
     }
 
     override fun getBackground(): IDrawable {

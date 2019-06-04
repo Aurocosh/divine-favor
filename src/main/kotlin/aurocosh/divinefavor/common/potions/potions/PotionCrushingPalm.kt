@@ -1,6 +1,6 @@
 package aurocosh.divinefavor.common.potions.potions
 
-import aurocosh.divinefavor.common.constants.ConstMisc
+import aurocosh.divinefavor.DivineFavor
 import aurocosh.divinefavor.common.lib.extensions.divinePlayerData
 import aurocosh.divinefavor.common.network.message.client.spirit_data.MessageSyncFavor
 import aurocosh.divinefavor.common.potions.base.potion.ModPotionToggleLimited
@@ -16,7 +16,7 @@ class PotionCrushingPalm : ModPotionToggleLimited("crushing_palm", 0x7FB8A4) {
     }
 }
 
-@Mod.EventBusSubscriber(modid = ConstMisc.MOD_ID)
+@Mod.EventBusSubscriber(modid = DivineFavor.MOD_ID)
 object CrushingPalm {
     @SubscribeEvent
     fun onPlayerLeftClickBlock(event: PlayerInteractEvent.LeftClickBlock) {

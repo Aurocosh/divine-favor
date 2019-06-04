@@ -1,7 +1,6 @@
 package aurocosh.divinefavor.client.core.handler.architect_stick
 
 import aurocosh.divinefavor.DivineFavor
-import aurocosh.divinefavor.common.constants.ConstMisc
 import aurocosh.divinefavor.common.item.mystic_architect_stick.ItemMysticArchitectStick
 import aurocosh.divinefavor.common.lib.extensions.hasKey
 import aurocosh.divinefavor.common.lib.extensions.compound
@@ -19,7 +18,7 @@ import net.minecraftforge.fml.relauncher.Side
 import net.minecraftforge.fml.relauncher.SideOnly
 
 @SideOnly(Side.CLIENT)
-@Mod.EventBusSubscriber(modid = ConstMisc.MOD_ID, value = [Side.CLIENT])
+@Mod.EventBusSubscriber(modid = DivineFavor.MOD_ID, value = [Side.CLIENT])
 object HUDHandler {
     @SubscribeEvent
     @SideOnly(Side.CLIENT)

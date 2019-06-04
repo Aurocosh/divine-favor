@@ -1,6 +1,6 @@
 package aurocosh.divinefavor.common.potions.potions
 
-import aurocosh.divinefavor.common.constants.ConstMisc
+import aurocosh.divinefavor.DivineFavor
 import aurocosh.divinefavor.common.network.message.client.syncing.MessageSyncPotionCharge
 import aurocosh.divinefavor.common.potions.base.effect.ModEffectCharge
 import aurocosh.divinefavor.common.potions.base.potion.ModPotionCharge
@@ -10,7 +10,7 @@ import net.minecraftforge.event.entity.living.LivingFallEvent
 import net.minecraftforge.fml.common.Mod
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent
 
-@Mod.EventBusSubscriber(modid = ConstMisc.MOD_ID)
+@Mod.EventBusSubscriber(modid = DivineFavor.MOD_ID)
 class PotionFallNegation : ModPotionCharge("fall_negation", 0x7FB8A4) {
 
     override fun isReady(duration: Int, amplifier: Int): Boolean {

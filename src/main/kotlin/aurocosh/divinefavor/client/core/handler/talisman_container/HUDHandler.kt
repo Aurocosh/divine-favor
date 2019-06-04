@@ -3,7 +3,6 @@ package aurocosh.divinefavor.client.core.handler.talisman_container
 import aurocosh.divinefavor.DivineFavor
 import aurocosh.divinefavor.client.core.handler.KeyBindings
 import aurocosh.divinefavor.client.core.handler.talisman.TalismanHUD
-import aurocosh.divinefavor.common.constants.ConstMisc
 import aurocosh.divinefavor.common.item.talisman_container.TalismanContainerAdapter
 import aurocosh.divinefavor.common.util.UtilPlayer
 import net.minecraft.client.Minecraft
@@ -14,7 +13,7 @@ import net.minecraftforge.fml.relauncher.Side
 import net.minecraftforge.fml.relauncher.SideOnly
 
 @SideOnly(Side.CLIENT)
-@Mod.EventBusSubscriber(modid = ConstMisc.MOD_ID, value = [Side.CLIENT])
+@Mod.EventBusSubscriber(modid = DivineFavor.MOD_ID, value = [Side.CLIENT])
 object HUDHandler {
     private val scrollHUD = TalismanScrollHUD()
 
