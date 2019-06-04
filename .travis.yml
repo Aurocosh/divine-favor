@@ -2,6 +2,9 @@ language: java
 jdk: oraclejdk8
 sudo: false
 
+git:
+  depth: false
+
 before_install: chmod +x gradlew
 install: ./gradlew setupDecompWorkspace
 
@@ -14,7 +17,7 @@ cache:
     - $HOME/.gradle/wrapper/
 
 script:
-  - ./gradlew build
+  - ./gradlew build --info
 
 #deploy:
 #  provider: script
