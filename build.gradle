@@ -122,7 +122,7 @@ static def getLastCommitMessage() {
 }
 
 static def releaseType() {
-    def tags = "git tag -l --points-at HEAD".execute().text.trim()
+    def tags = "git notes show".execute().text.trim()
     def isRelease = tags.contains('release')
     (isRelease) ? "release" : "beta"
 }
