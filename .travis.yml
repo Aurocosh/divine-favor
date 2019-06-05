@@ -19,9 +19,12 @@ cache:
 script:
   - ./gradlew build
 
+before_deploy: git fetch origin refs/notes/*:refs/notes/*
+
 deploy:
   provider: script
-  script: ./gradlew curseforge
+  script:
+    ./gradlew curseforge
   skip_cleanup: true # to upload artifacts created during the build
   on:
     branch: master

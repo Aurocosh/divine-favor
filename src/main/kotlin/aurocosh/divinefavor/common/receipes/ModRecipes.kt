@@ -5,6 +5,7 @@ import aurocosh.divinefavor.common.item.calling_stones.ItemCallingStone
 import aurocosh.divinefavor.common.lib.ItemStackIdComparator
 import net.minecraft.item.ItemStack
 import net.minecraft.item.crafting.Ingredient
+import net.minecraftforge.oredict.OreIngredient
 
 import java.util.*
 
@@ -12,6 +13,8 @@ object ModRecipes {
     val recipes: MutableMap<String, ImmaterialMediumRecipe> = HashMap()
 
     fun init() {
+
+
         //        register(new RecipeBuilder(new ItemStack(ModSpellTalismans.arrow_throw_talisman), ModCallingStones.calling_stone_timber)
         //                .addIngredient(Items.ARROW, 8)
         //                .addIngredient(Items.GOLD_INGOT)
