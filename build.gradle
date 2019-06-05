@@ -88,7 +88,7 @@ dependencies {
 
     compile group: "net.shadowfacts", name: "Forgelin", version: "${forgelin_version}"
     compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${kotlin_version}"
-    compile 'aurocosh.autonetworklib:autonetworklib-1.12.2:1.0.30'
+    compile "aurocosh.autonetworklib:autonetworklib-${mc_sub_version}:${auto_network_version}"
 }
 
 processResources
@@ -117,9 +117,17 @@ static def generateVersionCode() {
 }
 
 static def getLastCommitMessage() {
-    def result = "git log --format=%B -n 1 HEAD".execute().text.trim() //unix
+    def result = 'git log --format=%B -n 1 HEAD'.execute().text.trim()
     if(result.empty) throw new RuntimeException("Could not get last commit message? Cmd output: ${result.text}")
     return result
+}
+
+static def getReleaseType() {
+    def isRelease = 'git tag -l --points-at HEAD'.execute().text.trim().contains('release')
+    if(isRelease)
+        return 'release'
+    else
+    return curse_release_type
 }
 
 jar {
@@ -142,6 +150,6 @@ curseforge {
     project {
         id = curse_project_id
         changelog = getLastCommitMessage()
-        releaseType = curse_release_type
+        releaseType = getReleaseType()
     }
 }

@@ -3,7 +3,6 @@ package aurocosh.divinefavor.common.config.entries.talismans.spell;
 import aurocosh.divinefavor.common.lib.builders.map.Maps;
 import net.minecraftforge.common.config.Config;
 
-import java.util.HashMap;
 import java.util.Map;
 
 public class InfernalTouch {
