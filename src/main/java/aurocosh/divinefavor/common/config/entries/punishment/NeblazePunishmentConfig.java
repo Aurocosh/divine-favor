@@ -1,6 +1,7 @@
 package aurocosh.divinefavor.common.config.entries.punishment;
 
 import aurocosh.divinefavor.common.config.data.IntInterval;
+import aurocosh.divinefavor.common.lib.builders.map.Maps;
 import net.minecraftforge.common.config.Config;
 
 import java.util.HashMap;
@@ -21,13 +22,11 @@ public class NeblazePunishmentConfig {
     public int ignitionRadius = 40;
 
     @Config.Name("Summoned enemies")
-    public Map<String, Double> summonedEnemies = new HashMap<String, Double>() {
-        {
-            put("minecraft:zombie_pigman", 0.15d);
-            put("minecraft:blaze", 0.25d);
-            put("minecraft:wither_skeleton", 0.35d);
-            put("minecraft:ghast", 0.25d);
-            put("minecraft:wither", 0.0001d);
-        }
-    };
+    public Map<String, Double> summonedEnemies = Maps.<String, Double>builder()
+            .put("minecraft:zombie_pigman", 0.15d)
+            .put("minecraft:blaze", 0.25d)
+            .put("minecraft:wither_skeleton", 0.35d)
+            .put("minecraft:ghast", 0.25d)
+            .put("minecraft:wither", 0.0001d)
+            .build();
 }

@@ -1,6 +1,7 @@
 package aurocosh.divinefavor.common.config.entries.punishment;
 
 import aurocosh.divinefavor.common.config.data.IntInterval;
+import aurocosh.divinefavor.common.lib.builders.map.Maps;
 import aurocosh.divinefavor.common.util.UtilTick;
 import net.minecraftforge.common.config.Config;
 
@@ -19,15 +20,13 @@ public class LoonPunishmentConfig {
     public int spawnRadius = 10;
 
     @Config.Name("Summoned enemies")
-    public Map<String, Double> summonedEnemies = new HashMap<String, Double>() {
-        {
-            put("minecraft:skeleton", 0.2d);
-            put("minecraft:zombie", 0.3d);
-            put("minecraft:husk", 0.1d);
-            put("minecraft:stray", 0.05d);
-            put("minecraft:spider", 0.2d);
-            put("minecraft:creeper", 0.1d);
-            put("minecraft:cave_spider", 0.05d);
-        }
-    };
+    public Map<String, Double> summonedEnemies = Maps.<String, Double>builder()
+            .put("minecraft:skeleton", 0.2d)
+            .put("minecraft:zombie", 0.3d)
+            .put("minecraft:husk", 0.1d)
+            .put("minecraft:stray", 0.05d)
+            .put("minecraft:spider", 0.2d)
+            .put("minecraft:creeper", 0.1d)
+            .put("minecraft:cave_spider", 0.05d)
+            .build();
 }

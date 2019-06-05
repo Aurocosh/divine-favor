@@ -24,8 +24,16 @@ open class EntityAIBeg<T>(protected val minion: T, private val minPlayerDistance
      * Returns whether the EntityAIBase should begin execution.
      */
     override fun shouldExecute(): Boolean {
-        player = world.getClosestPlayerToEntity(minion, minPlayerDistance.toDouble())
-        return player != null && wantSomethingFromPlayer(player as EntityPlayer)
+        val entity = world.getClosestPlayerToEntity(minion, minPlayerDistance.toDouble())
+        return if(entity is EntityPlayer && wantSomethingFromPlayer(entity))
+        {
+            player = entity
+            true
+        }
+        else{
+            player = null
+            false
+        }
     }
 
     /**
@@ -35,7 +43,7 @@ open class EntityAIBeg<T>(protected val minion: T, private val minPlayerDistance
         val player = player ?: return false
         if (!player.isEntityAlive)
             return false
-        return if (minPlayerDistanceSq < minion.getDistanceSq(player)) false else timeoutCounter > 0 && wantSomethingFromPlayer(player as EntityPlayer)
+        return if (minPlayerDistanceSq < minion.getDistanceSq(player)) false else timeoutCounter > 0 && wantSomethingFromPlayer(player)
     }
 
     /**
