@@ -32,9 +32,10 @@ open class EntityAIBeg<T>(protected val minion: T, private val minPlayerDistance
      * Returns whether an in-progress EntityAIBase should continue executing
      */
     override fun shouldContinueExecuting(): Boolean {
-        if (!player!!.isEntityAlive)
+        val player = player ?: return false
+        if (!player.isEntityAlive)
             return false
-        return if (minPlayerDistanceSq < minion.getDistanceSq(player!!)) false else timeoutCounter > 0 && wantSomethingFromPlayer(player as EntityPlayer)
+        return if (minPlayerDistanceSq < minion.getDistanceSq(player)) false else timeoutCounter > 0 && wantSomethingFromPlayer(player as EntityPlayer)
     }
 
     /**

@@ -32,7 +32,7 @@ class ArrowTalismanFlakArrow(name: String, spirit: ModSpirit, favorCost: Int, co
         val livingBases = spellArrow.world.getEntitiesWithinAABB(EntityLivingBase::class.java, AxisAlignedBB(spellArrow.position).grow(ConfigArrow.flakArrow.radius.toDouble()))
         if (livingBases.isEmpty())
             return
-        livingBases.first { element -> !element.onGround && element.getDistanceSq(spellArrow) <= radiusSq }
+        livingBases.firstOrNull { element -> !element.onGround && element.getDistanceSq(spellArrow) <= radiusSq }
                 ?: return
 
         val arrowPosition = spellArrow.position

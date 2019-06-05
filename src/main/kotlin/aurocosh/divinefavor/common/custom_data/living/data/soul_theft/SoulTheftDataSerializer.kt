@@ -17,12 +17,12 @@ class SoulTheftDataSerializer : INbtSerializer<SoulTheftData> {
     }
 
     override fun deserialize(nbt: NBTTagCompound, instance: SoulTheftData) {
-        val uuidsSerialized = nbt.getString(TAG_SOUL_THIEF_UUIDS)
-        val uuidStrings = Arrays.asList(*uuidsSerialized.split(DELIMITER.toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray())
-        val uuidList = ArrayList<UUID>(uuidStrings.size)
-        for (uuidString in uuidStrings)
-            if (uuidString.isNotEmpty())
-                uuidList.add(UUID.fromString(uuidString))
+        val uuidList = nbt.getString(TAG_SOUL_THIEF_UUIDS)
+                .split(DELIMITER)
+                .asSequence()
+                .filterNot(String::isEmpty)
+                .map(UUID::fromString)
+                .toList()
         instance.settUUIDS(uuidList)
     }
 
