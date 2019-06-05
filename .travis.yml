@@ -24,5 +24,4 @@ deploy:
   script: ./gradlew curseforge
   skip_cleanup: true # to upload artifacts created during the build
   on:
-    tags: true
     branch: master
