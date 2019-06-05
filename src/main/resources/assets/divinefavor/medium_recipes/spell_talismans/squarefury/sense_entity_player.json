@@ -2,7 +2,9 @@
   "result": {
     "item": "divinefavor:talisman_sense_entity_player"
   },
-  "stone": "divinefavor:calling_stone_squarefury",
+  "stones": [
+    "divinefavor:calling_stone_squarefury"
+  ],
   "ingredients": [
     {
       "item": "minecraft:paper"

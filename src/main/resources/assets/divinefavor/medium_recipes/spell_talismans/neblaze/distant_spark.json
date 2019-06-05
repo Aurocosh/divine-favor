@@ -2,7 +2,9 @@
   "result": {
     "item": "divinefavor:talisman_distant_spark"
   },
-  "stone": "divinefavor:calling_stone_neblaze",
+  "stones": [
+    "divinefavor:calling_stone_neblaze"
+  ],
   "ingredients": [
     {
       "item": "minecraft:paper"

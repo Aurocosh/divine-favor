@@ -2,7 +2,9 @@
   "result": {
     "item": "divinefavor:talisman_gills"
   },
-  "stone": "divinefavor:calling_stone_blizrabi",
+  "stones": [
+    "divinefavor:calling_stone_blizrabi"
+  ],
   "ingredients": [
     {
       "item": "minecraft:paper"

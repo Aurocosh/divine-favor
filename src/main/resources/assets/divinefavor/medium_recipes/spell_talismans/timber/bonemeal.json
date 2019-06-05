@@ -2,7 +2,9 @@
   "result": {
     "item": "divinefavor:talisman_bonemeal"
   },
-  "stone": "divinefavor:calling_stone_timber",
+  "stones": [
+    "divinefavor:calling_stone_timber"
+  ],
   "ingredients": [
     {
       "item": "minecraft:paper"

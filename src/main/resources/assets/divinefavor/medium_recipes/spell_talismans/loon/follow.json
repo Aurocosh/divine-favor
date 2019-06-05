@@ -2,7 +2,9 @@
   "result": {
     "item": "divinefavor:talisman_follow"
   },
-  "stone": "divinefavor:calling_stone_loon",
+  "stones": [
+    "divinefavor:calling_stone_loon"
+  ],
   "ingredients": [
     {
       "item": "minecraft:paper"

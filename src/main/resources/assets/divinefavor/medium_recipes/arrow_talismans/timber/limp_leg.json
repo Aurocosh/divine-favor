@@ -2,7 +2,9 @@
   "result": {
     "item": "divinefavor:arrow_talisman_limp_leg"
   },
-  "stone": "divinefavor:calling_stone_timber",
+  "stones": [
+    "divinefavor:calling_stone_timber"
+  ],
   "ingredients": [
     {
       "item": "minecraft:paper"

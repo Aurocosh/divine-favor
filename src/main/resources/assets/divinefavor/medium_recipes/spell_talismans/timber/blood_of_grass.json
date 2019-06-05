@@ -2,7 +2,9 @@
   "result": {
     "item": "divinefavor:talisman_blood_of_grass"
   },
-  "stone": "divinefavor:calling_stone_timber",
+  "stones": [
+    "divinefavor:calling_stone_timber"
+  ],
   "ingredients": [
     {
       "item": "minecraft:paper"

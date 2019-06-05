@@ -1,9 +1,7 @@
 package aurocosh.divinefavor.common.receipes
 
 import aurocosh.divinefavor.common.lib.extensions.S
-import aurocosh.divinefavor.common.receipes.serialization.MediumRecipeData
-import aurocosh.divinefavor.common.receipes.serialization.RecipeIngredient
-import aurocosh.divinefavor.common.receipes.serialization.RecipeIngredientInstanceCreator
+import aurocosh.divinefavor.common.receipes.serialization.*
 import aurocosh.divinefavor.common.util.UtilAssets
 import com.google.gson.GsonBuilder
 import net.minecraft.util.ResourceLocation
@@ -19,7 +17,10 @@ object RecipeLoader {
 
     fun init() {
         val mods = Loader.instance().activeModList
-        val gson = GsonBuilder().registerTypeAdapter(RecipeIngredient::class.java, RecipeIngredientInstanceCreator()).create()
+        val gson = GsonBuilder()
+                .registerTypeAdapter(RecipeIngredient::class.java, RecipeIngredientInstanceCreator())
+                .registerTypeAdapter(RecipeResult::class.java, RecipeResultInstanceProvider())
+                .create()
 
         val recipes = ArrayList<MediumRecipeData>()
         for (container in mods) {

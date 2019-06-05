@@ -2,7 +2,9 @@
   "result": {
     "item": "divinefavor:talisman_sense_lava"
   },
-  "stone": "divinefavor:calling_stone_romol",
+  "stones": [
+    "divinefavor:calling_stone_romol"
+  ],
   "ingredients": [
     {
       "item": "minecraft:paper"

@@ -2,7 +2,9 @@
   "result": {
     "item": "divinefavor:arrow_talisman_anti_gravity"
   },
-  "stone": "divinefavor:calling_stone_arbow",
+  "stones": [
+    "divinefavor:calling_stone_arbow"
+  ],
   "ingredients": [
     {
       "item": "minecraft:paper"

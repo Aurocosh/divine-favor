@@ -2,7 +2,9 @@
   "result": {
     "item": "divinefavor:talisman_fall_negation"
   },
-  "stone": "divinefavor:calling_stone_redwind",
+  "stones": [
+    "divinefavor:calling_stone_redwind"
+  ],
   "ingredients": [
     {
       "item": "minecraft:paper"

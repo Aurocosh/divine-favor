@@ -2,7 +2,9 @@
   "result": {
     "item": "divinefavor:talisman_heat_wave"
   },
-  "stone": "divinefavor:calling_stone_neblaze",
+  "stones": [
+    "divinefavor:calling_stone_neblaze"
+  ],
   "ingredients": [
     {
       "item": "minecraft:paper"

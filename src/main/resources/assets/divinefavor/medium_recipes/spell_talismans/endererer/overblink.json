@@ -2,7 +2,9 @@
   "result": {
     "item": "divinefavor:talisman_overblink"
   },
-  "stone": "divinefavor:calling_stone_endererer",
+  "stones": [
+    "divinefavor:calling_stone_endererer"
+  ],
   "ingredients": [
     {
       "item": "minecraft:paper"

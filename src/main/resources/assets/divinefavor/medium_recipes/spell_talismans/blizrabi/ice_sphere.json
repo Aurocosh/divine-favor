@@ -2,7 +2,9 @@
   "result": {
     "item": "divinefavor:arrow_talisman_ice_sphere"
   },
-  "stone": "divinefavor:calling_stone_blizrabi",
+  "stones": [
+    "divinefavor:calling_stone_blizrabi"
+  ],
   "ingredients": [
     {
       "item": "minecraft:paper"

@@ -2,7 +2,9 @@
   "result": {
     "item": "divinefavor:talisman_remote_chest"
   },
-  "stone": "divinefavor:calling_stone_endererer",
+  "stones": [
+    "divinefavor:calling_stone_endererer"
+  ],
   "ingredients": [
     {
       "item": "minecraft:paper"

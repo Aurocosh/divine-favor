@@ -5,30 +5,19 @@ import net.minecraft.item.Item
 import net.minecraft.item.ItemStack
 
 class RecipeIngredient {
-    var item: String
-    var data: Int = 0
-    var count: Int = 0
+    val item: String = "minecraft:stick"
+    val data: Int = 0
+    val count: Int = 1
 
-    init {
-        this.item = "minecraft:stick"
-        this.data = -1
-        this.count = 1
-    }
-
-    fun getItem(): Item? {
+    fun toItemStack(): ItemStack {
         val stackItem = Item.getByNameOrId(item)
         if (stackItem == null) {
             DivineFavor.logger.error("Recipe ingredient not found:$item")
-            return null
+            return ItemStack.EMPTY
         }
-        return stackItem
-    }
 
-    fun toItemStack(): ItemStack {
-        val itemValue = getItem() ?: return ItemStack.EMPTY
-        val ingredientStack = ItemStack(itemValue, count)
-        if (data != -1)
-            ingredientStack.itemDamage = data
+        val ingredientStack = ItemStack(stackItem, count)
+        ingredientStack.itemDamage = data
         return ingredientStack
     }
 }

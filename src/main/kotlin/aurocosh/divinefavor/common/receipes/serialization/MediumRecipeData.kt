@@ -9,29 +9,22 @@ import net.minecraft.item.ItemStack
 import java.util.*
 
 class MediumRecipeData {
-    var stone: String? = null
     var stones: List<String>? = null
-    var result: RecipeIngredient? = null
+    var result: RecipeResult? = null
     var ingredients: List<RecipeIngredient>? = null
 
     fun toRecipes(): List<ImmaterialMediumRecipe> {
         val resultStack = result!!.toItemStack()
         if (resultStack.isEmpty) {
-            DivineFavor.logger.error("Recipe error: " + result!!.getItem() + ". Result is invalid:" + result!!.getItem())
+            DivineFavor.logger.error("Recipe error: " + result!!.item + ". Result is invalid:" + result!!.getItem())
             return ArrayList()
         }
 
         val callingStones = ArrayList<ItemCallingStone>()
-        if (stone != null) {
-            val stoneItem = getCallingStone(stone!!)
+        for (stoneName in stones!!) {
+            val stoneItem = getCallingStone(stoneName)
             if (stoneItem != null)
                 callingStones.add(stoneItem)
-        } else if (stones != null) {
-            for (stoneName in stones!!) {
-                val stoneItem = getCallingStone(stoneName)
-                if (stoneItem != null)
-                    callingStones.add(stoneItem)
-            }
         }
 
         if (callingStones.isEmpty()) {
@@ -43,7 +36,7 @@ class MediumRecipeData {
         for (ingredient in ingredients!!) {
             val itemStack = ingredient.toItemStack()
             if (itemStack.isEmpty) {
-                DivineFavor.logger.error("Recipe error: " + result!!.getItem() + ". Ingredient is invalid:" + ingredient.getItem())
+                DivineFavor.logger.error("Recipe error: " + result!!.getItem() + ". Ingredient is invalid:" + ingredient.item)
                 return ArrayList()
             }
             ingredientStacks.add(itemStack)
