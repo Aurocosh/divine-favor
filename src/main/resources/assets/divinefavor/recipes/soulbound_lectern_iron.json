@@ -14,7 +14,8 @@
       "data": 3
     },
     "m": {
-      "item": "minecraft:iron_block"
+      "type": "forge:ore_dict",
+      "ore": "blockIron"
     },
     "b": {
       "item": "minecraft:book"

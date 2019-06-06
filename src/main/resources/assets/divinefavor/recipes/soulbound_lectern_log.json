@@ -14,8 +14,8 @@
       "data": 2
     },
     "m": {
-      "item": "minecraft:log",
-      "data": 0
+      "type": "forge:ore_dict",
+      "ore": "logWood"
     },
     "b": {
       "item": "minecraft:book"

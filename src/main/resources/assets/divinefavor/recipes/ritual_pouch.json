@@ -10,10 +10,12 @@
   "type": "forge:ore_shaped",
   "key": {
     "l": {
-      "item": "minecraft:leather"
+      "type": "forge:ore_dict",
+      "ore": "leather"
     },
     "s": {
-      "item": "minecraft:string"
+      "type": "forge:ore_dict",
+      "ore": "string"
     }
   }
 }

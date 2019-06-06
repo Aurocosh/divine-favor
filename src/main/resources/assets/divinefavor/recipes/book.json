@@ -2,16 +2,20 @@
     "type": "forge:ore_shapeless",
     "ingredients": [
         {
-            "item": "minecraft:paper"
+            "type": "forge:ore_dict",
+            "ore": "paper"
         },
         {
-            "item": "minecraft:paper"
+            "type": "forge:ore_dict",
+            "ore": "paper"
         },
         {
-            "item": "minecraft:leather"
+            "type": "forge:ore_dict",
+            "ore": "leather"
         },
         {
-            "item": "minecraft:bone"
+            "type": "forge:ore_dict",
+            "ore": "bone"
         }
     ],
     "result": {

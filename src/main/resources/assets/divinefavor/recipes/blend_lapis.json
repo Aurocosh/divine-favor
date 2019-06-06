@@ -10,8 +10,8 @@
   "type": "forge:ore_shaped",
   "key": {
     "l": {
-      "item": "minecraft:dye",
-      "data": 4
+      "type": "forge:ore_dict",
+      "ore": "dyeBlue"
     },
     "s": {
       "item": "divinefavor:soul_shard_undeath"

@@ -10,7 +10,8 @@
   "type": "forge:ore_shaped",
   "key": {
     "p": {
-      "item": "minecraft:ender_pearl"
+      "type": "forge:ore_dict",
+      "ore": "enderpearl"
     },
     "s": {
       "item": "divinefavor:soul_shard_end"

@@ -10,7 +10,8 @@
   "type": "forge:ore_shaped",
   "key": {
     "r": {
-      "item": "minecraft:redstone"
+      "type": "forge:ore_dict",
+      "ore": "dustRedstone"
     },
     "s": {
       "item": "divinefavor:soul_shard_will"

@@ -5,11 +5,12 @@
   "type": "forge:ore_shapeless",
   "ingredients": [
     {
-      "item": "minecraft:dye",
-      "data": 1
+      "type": "forge:ore_dict",
+      "ore": "dyeRed"
     },
     {
-      "item": "minecraft:bone"
+      "type": "forge:ore_dict",
+      "ore": "bone"
     },
     {
       "item": "divinefavor:bone_dagger_awakened"

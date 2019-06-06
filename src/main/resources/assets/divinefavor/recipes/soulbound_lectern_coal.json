@@ -14,7 +14,8 @@
       "data": 0
     },
     "m": {
-      "item": "minecraft:coal_block"
+      "type": "forge:ore_dict",
+      "ore": "blockCoal"
     },
     "b": {
       "item": "minecraft:book"
