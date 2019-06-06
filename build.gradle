@@ -148,5 +148,12 @@ curseforge {
         id = curse_project_id
         changelog = getLastCommitMessage()
         releaseType = releaseType()
+        relations {
+            requiredDependency 'Shadowfacts\' Forgelin'
+            requiredDependency 'Patchouli'
+            requiredDependency 'Auto Network Lib'
+            optionalDependency 'Just Enough Items (JEI)'
+            optionalDependency 'CraftTweaker'
+        }
     }
 }

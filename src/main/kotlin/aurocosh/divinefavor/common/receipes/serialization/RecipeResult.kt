@@ -10,20 +10,13 @@ class RecipeResult {
     var data: Int = -1
     var count: Int = 1
 
-    fun getItem(): Item? {
+    fun toItemStack(): ItemStack {
         val stackItem = Item.getByNameOrId(item)
         if (stackItem == null) {
             DivineFavor.logger.error("Recipe ingredient not found:$item")
-            return null
+            return ItemStack.EMPTY
         }
-        return stackItem
-    }
 
-    fun toItemStack(): ItemStack {
-        val itemValue = getItem() ?: return ItemStack.EMPTY
-        val ingredientStack = ItemStack(itemValue, count)
-        if (data != -1)
-            ingredientStack.itemDamage = data
-        return ingredientStack
+        return ItemStack(stackItem, count, data)
     }
 }

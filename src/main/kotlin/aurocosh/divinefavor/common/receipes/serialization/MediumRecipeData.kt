@@ -9,34 +9,33 @@ import net.minecraft.item.ItemStack
 import java.util.*
 
 class MediumRecipeData {
-    var stones: List<String>? = null
-    var result: RecipeResult? = null
-    var ingredients: List<RecipeIngredient>? = null
+    var result: RecipeResult = RecipeResult()
+    var stones: List<String> = emptyList()
+    var ingredients: List<RecipeIngredient> = emptyList()
 
     fun toRecipes(): List<ImmaterialMediumRecipe> {
-        val resultStack = result!!.toItemStack()
+        val resultStack = result.toItemStack()
         if (resultStack.isEmpty) {
-            DivineFavor.logger.error("Recipe error: " + result!!.item + ". Result is invalid:" + result!!.getItem())
-            return ArrayList()
+            DivineFavor.logger.error("Recipe error: ${result.item}. Result is invalid: ${result.item}")
+            return emptyList()
         }
-
         val callingStones = ArrayList<ItemCallingStone>()
-        for (stoneName in stones!!) {
+        for (stoneName in stones) {
             val stoneItem = getCallingStone(stoneName)
             if (stoneItem != null)
                 callingStones.add(stoneItem)
         }
 
         if (callingStones.isEmpty()) {
-            DivineFavor.logger.error("Recipe error: " + result!!.getItem() + ". No calling stones defined.")
-            return ArrayList()
+            DivineFavor.logger.error("Recipe error: " + result.item + ". No calling stones defined.")
+            return emptyList()
         }
 
         val ingredientStacks = ArrayList<ItemStack>()
-        for (ingredient in ingredients!!) {
+        for (ingredient in ingredients) {
             val itemStack = ingredient.toItemStack()
             if (itemStack.isEmpty) {
-                DivineFavor.logger.error("Recipe error: " + result!!.getItem() + ". Ingredient is invalid:" + ingredient.item)
+                DivineFavor.logger.error("Recipe error: " + result.item + ". Ingredient is invalid:" + ingredient.item)
                 return ArrayList()
             }
             ingredientStacks.add(itemStack)
@@ -51,7 +50,7 @@ class MediumRecipeData {
     private fun getCallingStone(stone: String): ItemCallingStone? {
         val stoneItem = Item.getByNameOrId(stone)
         if (stoneItem !is ItemCallingStone) {
-            DivineFavor.logger.error("Recipe error: " + result!!.getItem() + ". Item is not a calling stone:" + stone)
+            DivineFavor.logger.error("Recipe error: " + result.item + ". Item is not a calling stone:" + stone)
             return null
         }
         return stoneItem

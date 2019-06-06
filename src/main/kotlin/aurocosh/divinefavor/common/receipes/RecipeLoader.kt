@@ -4,7 +4,6 @@ import aurocosh.divinefavor.common.lib.extensions.S
 import aurocosh.divinefavor.common.receipes.serialization.*
 import aurocosh.divinefavor.common.util.UtilAssets
 import com.google.gson.GsonBuilder
-import net.minecraft.util.ResourceLocation
 import net.minecraftforge.fml.common.Loader
 import java.util.*
 
