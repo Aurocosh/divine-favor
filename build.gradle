@@ -149,11 +149,11 @@ curseforge {
         changelog = getLastCommitMessage()
         releaseType = releaseType()
         relations {
-            requiredDependency 'Shadowfacts\' Forgelin'
-            requiredDependency 'Patchouli'
-            requiredDependency 'Auto Network Lib'
-            optionalDependency 'Just Enough Items (JEI)'
-            optionalDependency 'CraftTweaker'
+            requiredDependency 'shadowfacts-forgelin'
+            requiredDependency 'patchouli'
+            requiredDependency 'auto-network-lib'
+            optionalDependency 'jei'
+            optionalDependency 'crafttweaker'
         }
     }
 }
