@@ -7,21 +7,23 @@
   ],
   "ingredients": [
     {
-      "item": "minecraft:paper"
+      "type": "ore",
+      "ore": "paper"
     },
     {
-      "item": "minecraft:dye",
-      "data": 6
+      "type": "ore",
+      "ore": "dyeCyan"
     },
     {
-      "item": "minecraft:arrow",
-      "count": 1
+      "type": "stack",
+      "item": "minecraft:arrow"
     },
     {
-      "item": "minecraft:ice",
-      "count": 16
+      "type": "stack",
+      "item": "minecraft:ice"
     },
     {
+      "type": "stack",
       "item": "minecraft:golden_pickaxe"
     }
   ]

@@ -15,22 +15,24 @@
   ],
   "ingredients": [
     {
+      "type": "stack",
       "item": "minecraft:book"
     },
     {
+      "type": "stack",
       "item": "minecraft:bow"
     },
     {
-      "item": "minecraft:dye",
-      "data": 15
+      "type": "ore",
+      "ore": "dyeWhite"
     },
     {
-      "item": "minecraft:dye",
-      "data": 12
+      "type": "ore",
+      "ore": "dyeLightBlue"
     },
     {
-      "item": "minecraft:gold_ingot",
-      "count": 1
+      "type": "ore",
+      "ore": "ingotGold"
     }
   ]
 }

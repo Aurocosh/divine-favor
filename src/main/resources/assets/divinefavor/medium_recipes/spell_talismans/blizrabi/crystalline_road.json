@@ -7,17 +7,19 @@
   ],
   "ingredients": [
     {
-      "item": "minecraft:paper"
+      "type": "ore",
+      "ore": "paper"
     },
     {
-      "item": "minecraft:dye",
-      "data": 6
+      "type": "ore",
+      "ore": "dyeCyan"
     },
     {
-      "item": "minecraft:ice",
-      "count": 16
+      "type": "stack",
+      "item": "minecraft:ice"
     },
     {
+      "type": "stack",
       "item": "minecraft:leather_boots"
     }
   ]

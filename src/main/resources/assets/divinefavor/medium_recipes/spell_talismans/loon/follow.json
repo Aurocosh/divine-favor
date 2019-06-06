@@ -7,13 +7,15 @@
   ],
   "ingredients": [
     {
-      "item": "minecraft:paper"
+      "type": "ore",
+      "ore": "paper"
     },
     {
-      "item": "minecraft:dye",
-      "data": 10
+      "type": "ore",
+      "ore": "dyeLime"
     },
     {
+      "type": "stack",
       "item": "minecraft:carrot_on_a_stick"
     }
   ]

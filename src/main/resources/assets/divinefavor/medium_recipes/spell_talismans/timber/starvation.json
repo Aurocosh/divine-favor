@@ -7,24 +7,24 @@
   ],
   "ingredients": [
     {
-      "item": "minecraft:paper"
+      "type": "ore",
+      "ore": "paper"
     },
     {
-      "item": "minecraft:dye",
-      "data": 9
+      "type": "ore",
+      "ore": "dyePink"
     },
     {
-      "item": "minecraft:leaves",
-      "count": 64
+      "type": "ore",
+      "ore": "treeLeaves"
     },
     {
-      "item": "minecraft:tallgrass",
-      "data": 1,
-      "count": 64
+      "type": "ore",
+      "ore": "grass"
     },
     {
-      "item": "minecraft:cooked_beef",
-      "count": 16
+      "type": "stack",
+      "item": "minecraft:cooked_beef"
     }
   ]
 }

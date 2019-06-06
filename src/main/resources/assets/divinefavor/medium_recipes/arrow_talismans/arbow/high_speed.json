@@ -7,23 +7,24 @@
   ],
   "ingredients": [
     {
-      "item": "minecraft:paper"
+      "type": "ore",
+      "ore": "paper"
     },
     {
-      "item": "minecraft:dye",
-      "data": 12
+      "type": "ore",
+      "ore": "dyeLightBlue"
     },
     {
-      "item": "minecraft:arrow",
-      "count": 1
+      "type": "stack",
+      "item": "minecraft:arrow"
     },
     {
-      "item": "minecraft:tnt",
-      "count": 4
+      "type": "stack",
+      "item": "minecraft:tnt"
     },
     {
-      "item": "minecraft:redstone",
-      "count": 4
+      "type": "ore",
+      "ore": "dustRedstone"
     }
   ]
 }

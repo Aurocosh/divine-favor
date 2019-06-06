@@ -7,24 +7,24 @@
   ],
   "ingredients": [
     {
-      "item": "minecraft:paper"
+      "type": "ore",
+      "ore": "paper"
     },
     {
-      "item": "minecraft:dye",
-      "data": 2
+      "type": "ore",
+      "ore": "dyeGreen"
     },
     {
-      "item": "minecraft:porkchop",
-      "count": 32
+      "type": "stack",
+      "item": "minecraft:porkchop"
     },
     {
-      "item": "minecraft:gunpowder",
-      "count": 32
+      "type": "ore",
+      "ore": "gunpowder"
     },
     {
-      "item": "minecraft:tallgrass",
-      "data": 1,
-      "count": 32
+      "type": "ore",
+      "ore": "grass"
     }
   ]
 }

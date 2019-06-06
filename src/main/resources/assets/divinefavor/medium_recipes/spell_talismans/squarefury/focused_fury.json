@@ -7,16 +7,19 @@
   ],
   "ingredients": [
     {
-      "item": "minecraft:paper"
+      "type": "ore",
+      "ore": "paper"
     },
     {
-      "item": "minecraft:dye",
-      "data": 11
+      "type": "ore",
+      "ore": "dyeYellow"
     },
     {
+      "type": "stack",
       "item": "minecraft:shield"
     },
     {
+      "type": "stack",
       "item": "minecraft:diamond_sword"
     }
   ]

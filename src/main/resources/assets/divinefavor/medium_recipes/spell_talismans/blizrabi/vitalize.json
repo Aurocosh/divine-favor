@@ -7,19 +7,20 @@
   ],
   "ingredients": [
     {
-      "item": "minecraft:paper"
+      "type": "ore",
+      "ore": "paper"
     },
     {
-      "item": "minecraft:dye",
-      "data": 1
+      "type": "ore",
+      "ore": "dyeRed"
     },
     {
-      "item": "minecraft:speckled_melon",
-      "count": 8
+      "type": "stack",
+      "item": "minecraft:speckled_melon"
     },
     {
-      "item": "minecraft:golden_carrot",
-      "count": 8
+      "type": "stack",
+      "item": "minecraft:golden_carrot"
     }
   ]
 }

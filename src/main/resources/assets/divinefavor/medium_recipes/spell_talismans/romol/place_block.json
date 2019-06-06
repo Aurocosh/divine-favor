@@ -7,15 +7,16 @@
   ],
   "ingredients": [
     {
-      "item": "minecraft:paper"
+      "type": "ore",
+      "ore": "paper"
     },
     {
-      "item": "minecraft:dye",
-      "data": 8
+      "type": "ore",
+      "ore": "dyeGray"
     },
     {
-      "item": "minecraft:stick",
-      "count": 16
+      "type": "ore",
+      "ore": "stickWood"
     }
   ]
 }

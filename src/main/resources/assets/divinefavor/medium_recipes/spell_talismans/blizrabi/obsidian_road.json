@@ -7,17 +7,19 @@
   ],
   "ingredients": [
     {
-      "item": "minecraft:paper"
+      "type": "ore",
+      "ore": "paper"
     },
     {
-      "item": "minecraft:dye",
-      "data": 1
+      "type": "ore",
+      "ore": "dyeRed"
     },
     {
-      "item": "minecraft:obsidian",
-      "count": 16
+      "type": "stack",
+      "item": "minecraft:obsidian"
     },
     {
+      "type": "stack",
       "item": "minecraft:golden_boots"
     }
   ]

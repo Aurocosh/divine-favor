@@ -7,19 +7,20 @@
   ],
   "ingredients": [
     {
-      "item": "minecraft:paper"
+      "type": "ore",
+      "ore": "paper"
     },
     {
-      "item": "minecraft:dye",
-      "data": 6
+      "type": "ore",
+      "ore": "dyeCyan"
     },
     {
-      "item": "minecraft:fire_charge",
-      "count": 2
+      "type": "stack",
+      "item": "minecraft:fire_charge"
     },
     {
-      "item": "minecraft:ice",
-      "count": 16
+      "type": "stack",
+      "item": "minecraft:ice"
     }
   ]
 }

@@ -7,19 +7,20 @@
   ],
   "ingredients": [
     {
-      "item": "minecraft:paper"
+      "type": "ore",
+      "ore": "paper"
     },
     {
-      "item": "minecraft:dye",
-      "data": 3
+      "type": "ore",
+      "ore": "dyeBrown"
     },
     {
-      "item": "minecraft:arrow",
-      "count": 1
+      "type": "stack",
+      "item": "minecraft:arrow"
     },
     {
-      "item": "minecraft:iron_ingot",
-      "count": 2
+      "type": "ore",
+      "ore": "ingotIron"
     }
   ]
 }

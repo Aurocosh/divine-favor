@@ -15,12 +15,15 @@
   ],
   "ingredients": [
     {
+      "type": "stack",
       "item": "minecraft:apple"
     },
     {
+      "type": "stack",
       "item": "minecraft:milk_bucket"
     },
     {
+      "type": "stack",
       "item": "minecraft:dragon_breath"
     }
   ]

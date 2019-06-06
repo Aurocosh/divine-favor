@@ -3,9 +3,9 @@ package aurocosh.divinefavor.common.receipes
 import aurocosh.divinefavor.DivineFavor
 import aurocosh.divinefavor.common.item.calling_stones.ItemCallingStone
 import aurocosh.divinefavor.common.lib.ItemStackIdComparator
+import aurocosh.divinefavor.common.lib.extensions.S
 import net.minecraft.item.ItemStack
 import net.minecraft.item.crafting.Ingredient
-import net.minecraftforge.oredict.OreIngredient
 
 import java.util.*
 
@@ -28,15 +28,22 @@ object ModRecipes {
     }
 
     fun register(recipe: ImmaterialMediumRecipe) {
-        val stacks = getIngridientStacks(recipe.ingredients)
-        stacks.sortWith(ItemStackIdComparator())
+        val matchingStacks = recipe.getMatchingStacks()
+
+        val comparator = ItemStackIdComparator()
+        matchingStacks.forEach { it.sortWith(comparator) }
+
         val callingStoneStack = recipe.callingStone.getMatchingStacks()[0]
         val callingStone = callingStoneStack.item as ItemCallingStone
-        val ingredientString = getStackListString(callingStone, stacks)
-        if (recipes.containsKey(ingredientString)) {
-            DivineFavor.logger.error("Recipe conflict ignoring last recipe: " + ingredientString + ". Recipe result: " + recipe.result.toString())
-        } else
-            recipes[ingredientString] = recipe
+
+        val ingredientStrings = matchingStacks.S.map { getStackListString(callingStone, it) }
+
+        for (ingredientString in ingredientStrings) {
+            if (recipes.containsKey(ingredientString)) {
+                DivineFavor.logger.error("Recipe conflict ignoring last recipe: $ingredientString. Recipe result: ${recipe.result}")
+            } else
+                recipes[ingredientString] = recipe
+        }
     }
 
     fun getRecipeResult(callingStone: ItemCallingStone, stacks: List<ItemStack>): ItemStack {
@@ -49,7 +56,7 @@ object ModRecipes {
         return recipe.result.copy()
     }
 
-    private fun getIngridientStacks(ingredients: List<Ingredient>): ArrayList<ItemStack> {
+    private fun getIngredientStacks(ingredients: List<Ingredient>): ArrayList<ItemStack> {
         val stacks = ArrayList<ItemStack>()
         for (ingredient in ingredients)
             Collections.addAll(stacks, *ingredient.getMatchingStacks())

@@ -7,26 +7,28 @@
   ],
   "ingredients": [
     {
-      "item": "minecraft:paper"
+      "type": "ore",
+      "ore": "paper"
     },
     {
-      "item": "minecraft:dye",
-      "data": 15
+      "type": "ore",
+      "ore": "dyeWhite"
     },
     {
-      "item": "minecraft:bone",
-      "count": 32
+      "type": "ore",
+      "ore": "bone"
     },
     {
-      "item": "minecraft:arrow",
-      "count": 32
+      "type": "stack",
+      "item": "minecraft:arrow"
     },
     {
+      "type": "stack",
       "item": "minecraft:milk_bucket"
     },
     {
-      "item": "minecraft:fermented_spider_eye",
-      "count": 16
+      "type": "stack",
+      "item": "minecraft:fermented_spider_eye"
     }
   ]
 }

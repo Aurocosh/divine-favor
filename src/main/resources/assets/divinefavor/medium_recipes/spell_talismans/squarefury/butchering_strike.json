@@ -7,17 +7,19 @@
   ],
   "ingredients": [
     {
-      "item": "minecraft:paper"
+      "type": "ore",
+      "ore": "paper"
     },
     {
-      "item": "minecraft:dye",
-      "data": 1
+      "type": "ore",
+      "ore": "dyeRed"
     },
     {
-      "item": "minecraft:porkchop",
-      "count": 16
+      "type": "stack",
+      "item": "minecraft:porkchop"
     },
     {
+      "type": "stack",
       "item": "minecraft:iron_axe"
     }
   ]

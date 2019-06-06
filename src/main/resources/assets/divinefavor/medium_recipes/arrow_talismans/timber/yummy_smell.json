@@ -7,27 +7,28 @@
   ],
   "ingredients": [
     {
-      "item": "minecraft:paper"
+      "type": "ore",
+      "ore": "paper"
     },
     {
-      "item": "minecraft:dye",
-      "data": 3
+      "type": "ore",
+      "ore": "dyeBrown"
     },
     {
-      "item": "minecraft:porkchop",
-      "count": 8
+      "type": "stack",
+      "item": "minecraft:porkchop"
     },
     {
-      "item": "minecraft:beef",
-      "count": 8
+      "type": "stack",
+      "item": "minecraft:beef"
     },
     {
-      "item": "minecraft:chicken",
-      "count": 8
+      "type": "stack",
+      "item": "minecraft:chicken"
     },
     {
-      "item": "minecraft:fish",
-      "count": 8
+      "type": "stack",
+      "item": "minecraft:fish"
     }
   ]
 }

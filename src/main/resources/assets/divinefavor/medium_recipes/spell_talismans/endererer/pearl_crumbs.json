@@ -7,17 +7,19 @@
   ],
   "ingredients": [
     {
-      "item": "minecraft:paper"
+      "type": "ore",
+      "ore": "paper"
     },
     {
-      "item": "minecraft:dye",
-      "data": 2
+      "type": "ore",
+      "ore": "dyeGreen"
     },
     {
-      "item": "minecraft:ender_pearl",
-      "count": 1
+      "type": "ore",
+      "ore": "enderpearl"
     },
     {
+      "type": "stack",
       "item": "minecraft:map"
     }
   ]

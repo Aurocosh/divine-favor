@@ -7,19 +7,20 @@
   ],
   "ingredients": [
     {
-      "item": "minecraft:paper"
+      "type": "ore",
+      "ore": "paper"
     },
     {
-      "item": "minecraft:dye",
-      "data": 5
+      "type": "ore",
+      "ore": "dyePurple"
     },
     {
-      "item": "minecraft:diamond",
-      "count": 1
+      "type": "ore",
+      "ore": "gemDiamond"
     },
     {
-      "item": "minecraft:spider_eye",
-      "count": 20
+      "type": "stack",
+      "item": "minecraft:spider_eye"
     }
   ]
 }

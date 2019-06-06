@@ -7,15 +7,16 @@
   ],
   "ingredients": [
     {
-      "item": "minecraft:paper"
+      "type": "ore",
+      "ore": "paper"
     },
     {
-      "item": "minecraft:dye",
-      "data": 15
+      "type": "ore",
+      "ore": "dyeWhite"
     },
     {
-      "item": "minecraft:snowball",
-      "count": 64
+      "type": "stack",
+      "item": "minecraft:snowball"
     }
   ]
 }

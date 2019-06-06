@@ -7,21 +7,23 @@
   ],
   "ingredients": [
     {
-      "item": "minecraft:paper"
+      "type": "ore",
+      "ore": "paper"
     },
     {
-      "item": "minecraft:dye",
-      "data": 1
+      "type": "ore",
+      "ore": "dyeRed"
     },
     {
-      "item": "minecraft:fire_charge",
-      "count": 8
+      "type": "stack",
+      "item": "minecraft:fire_charge"
     },
     {
-      "item": "minecraft:gunpowder",
-      "count": 16
+      "type": "ore",
+      "ore": "gunpowder"
     },
     {
+      "type": "stack",
       "item": "minecraft:flint_and_steel"
     }
   ]

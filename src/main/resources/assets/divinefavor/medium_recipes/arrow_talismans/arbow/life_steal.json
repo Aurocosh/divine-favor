@@ -7,20 +7,21 @@
   ],
   "ingredients": [
     {
-      "item": "minecraft:paper"
+      "type": "ore",
+      "ore": "paper"
     },
     {
-      "item": "minecraft:dye",
-      "data": 9
+      "type": "ore",
+      "ore": "dyePink"
     },
     {
-      "item": "minecraft:arrow",
-      "count": 1
+      "type": "stack",
+      "item": "minecraft:arrow"
     },
     {
+      "type": "stack",
       "item": "minecraft:golden_apple",
-      "data": 0,
-      "count": 1
+      "data": 0
     }
   ]
 }

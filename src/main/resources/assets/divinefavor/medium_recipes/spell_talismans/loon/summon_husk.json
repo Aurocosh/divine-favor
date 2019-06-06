@@ -7,23 +7,24 @@
   ],
   "ingredients": [
     {
-      "item": "minecraft:paper"
+      "type": "ore",
+      "ore": "paper"
     },
     {
-      "item": "minecraft:dye",
-      "data": 11
+      "type": "ore",
+      "ore": "dyeYellow"
     },
     {
-      "item": "minecraft:rotten_flesh",
-      "count": 32
+      "type": "stack",
+      "item": "minecraft:rotten_flesh"
     },
     {
-      "item": "minecraft:sand",
-      "count": 32
+      "type": "stack",
+      "item": "minecraft:sand"
     },
     {
-      "item": "minecraft:leather",
-      "count": 8
+      "type": "ore",
+      "ore": "leather"
     }
   ]
 }

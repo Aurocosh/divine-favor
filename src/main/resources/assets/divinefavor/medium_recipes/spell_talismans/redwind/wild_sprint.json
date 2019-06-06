@@ -7,17 +7,19 @@
   ],
   "ingredients": [
     {
-      "item": "minecraft:paper"
+      "type": "ore",
+      "ore": "paper"
     },
     {
-      "item": "minecraft:dye",
-      "data": 14
+      "type": "ore",
+      "ore": "dyeOrange"
     },
     {
-      "item": "minecraft:sugar",
-      "count": 64
+      "type": "stack",
+      "item": "minecraft:sugar"
     },
     {
+      "type": "stack",
       "item": "minecraft:iron_boots"
     }
   ]

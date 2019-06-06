@@ -7,21 +7,23 @@
   ],
   "ingredients": [
     {
-      "item": "minecraft:paper"
+      "type": "ore",
+      "ore": "paper"
     },
     {
-      "item": "minecraft:dye",
-      "data": 8
+      "type": "ore",
+      "ore": "dyeGray"
     },
     {
-      "item": "minecraft:bone",
-      "count": 2
+      "type": "ore",
+      "ore": "bone"
     },
     {
-      "item": "minecraft:red_mushroom",
-      "count": 8
+      "type": "stack",
+      "item": "minecraft:red_mushroom"
     },
     {
+      "type": "stack",
       "item": "minecraft:iron_boots"
     }
   ]

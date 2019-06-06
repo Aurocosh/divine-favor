@@ -7,19 +7,20 @@
   ],
   "ingredients": [
     {
-      "item": "minecraft:paper"
+      "type": "ore",
+      "ore": "paper"
     },
     {
-      "item": "minecraft:dye",
-      "data": 15
+      "type": "ore",
+      "ore": "dyeWhite"
     },
     {
-      "item": "minecraft:feather",
-      "count": 16
+      "type": "ore",
+      "ore": "feather"
     },
     {
-      "item": "minecraft:string",
-      "count": 16
+      "type": "ore",
+      "ore": "string"
     }
   ]
 }

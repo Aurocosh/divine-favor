@@ -7,28 +7,30 @@
   ],
   "ingredients": [
     {
-      "item": "minecraft:paper"
+      "type": "ore",
+      "ore": "paper"
     },
     {
-      "item": "minecraft:dye",
-      "data": 8
+      "type": "ore",
+      "ore": "dyeGray"
     },
     {
+      "type": "stack",
       "item": "minecraft:stone",
-      "data": 0,
-      "count": 64
+      "data": 0
     },
     {
+      "type": "stack",
       "item": "minecraft:stone",
-      "data": 0,
-      "count": 64
+      "data": 0
     },
     {
+      "type": "stack",
       "item": "minecraft:stone",
-      "data": 0,
-      "count": 64
+      "data": 0
     },
     {
+      "type": "stack",
       "item": "minecraft:wooden_pickaxe"
     }
   ]

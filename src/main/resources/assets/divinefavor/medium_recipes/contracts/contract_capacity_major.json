@@ -15,26 +15,28 @@
   ],
   "ingredients": [
     {
-      "item": "minecraft:paper"
+      "type": "ore",
+      "ore": "paper"
     },
     {
-      "item": "minecraft:dye",
-      "data": 6
+      "type": "ore",
+      "ore": "dyeCyan"
     },
     {
-      "item": "minecraft:dye",
-      "data": 15
+      "type": "ore",
+      "ore": "dyeWhite"
     },
     {
-      "item": "minecraft:dye",
-      "data": 0
+      "type": "ore",
+      "item": "dyeBlack"
     },
     {
+      "type": "stack",
       "item": "minecraft:bucket"
     },
     {
-      "item": "minecraft:diamond_block",
-      "count": 5
+      "type": "ore",
+      "ore": "blockDiamond"
     }
   ]
 }

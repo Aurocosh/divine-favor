@@ -16,20 +16,20 @@
   ],
   "ingredients": [
     {
-      "item": "minecraft:string",
-      "count": 16
+      "type": "ore",
+      "ore": "string"
     },
     {
-      "item": "minecraft:dye",
-      "data": 14
+      "type": "ore",
+      "ore": "dyeOrange"
     },
     {
-      "item": "minecraft:sand",
-      "count": 16
+      "type": "stack",
+      "item": "minecraft:sand"
     },
     {
-      "item": "minecraft:gunpowder",
-      "count": 4
+      "type": "ore",
+      "ore": "gunpowder"
     }
   ]
 }

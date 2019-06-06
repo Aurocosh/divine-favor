@@ -7,15 +7,20 @@
   ],
   "ingredients": [
     {
-      "item": "minecraft:paper"
+      "type": "ore",
+      "ore": "paper"
     },
     {
-      "item": "minecraft:dye",
-      "data": 4
+      "type": "ore",
+      "ore": "dyeBlue"
     },
     {
-      "item": "minecraft:fermented_spider_eye",
-      "count": 2
+      "type": "stack",
+      "item": "minecraft:fermented_spider_eye"
+    },
+    {
+      "type": "stack",
+      "item": "minecraft:fermented_spider_eye"
     }
   ]
 }

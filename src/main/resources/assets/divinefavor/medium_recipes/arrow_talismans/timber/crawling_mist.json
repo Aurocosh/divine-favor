@@ -7,20 +7,21 @@
   ],
   "ingredients": [
     {
-      "item": "minecraft:paper"
+      "type": "ore",
+      "ore": "paper"
     },
     {
-      "item": "minecraft:dye",
-      "data": 7
+      "type": "ore",
+      "ore": "dyeLightGray"
     },
     {
+      "type": "stack",
       "item": "minecraft:wool",
-      "data": 0,
-      "count": 8
+      "data": 0
     },
     {
-      "item": "minecraft:red_mushroom",
-      "count": 8
+      "type": "stack",
+      "item": "minecraft:red_mushroom"
     }
   ]
 }

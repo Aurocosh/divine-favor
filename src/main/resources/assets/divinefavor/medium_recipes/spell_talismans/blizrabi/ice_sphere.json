@@ -7,21 +7,24 @@
   ],
   "ingredients": [
     {
-      "item": "minecraft:paper"
+      "type": "ore",
+      "ore": "paper"
     },
     {
-      "item": "minecraft:dye",
-      "data": 4
+      "type": "ore",
+      "ore": "dyeBlue"
     },
     {
+      "type": "stack",
       "item": "minecraft:water_bucket"
     },
     {
+      "type": "stack",
       "item": "minecraft:water_bucket"
     },
     {
-      "item": "minecraft:ice",
-      "count": 16
+      "type": "stack",
+      "item": "minecraft:ice"
     }
   ]
 }

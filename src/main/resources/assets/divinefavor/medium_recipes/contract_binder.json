@@ -15,19 +15,20 @@
   ],
   "ingredients": [
     {
+      "type": "stack",
       "item": "minecraft:book"
     },
     {
-      "item": "minecraft:dye",
-      "data": 8
+      "type": "ore",
+      "ore": "dyeGray"
     },
     {
-      "item": "minecraft:dye",
-      "data": 11
+      "type": "ore",
+      "ore": "dyeYellow"
     },
     {
-      "item": "minecraft:diamond_block",
-      "count": 10
+      "type": "ore",
+      "ore": "blockDiamond"
     }
   ]
 }

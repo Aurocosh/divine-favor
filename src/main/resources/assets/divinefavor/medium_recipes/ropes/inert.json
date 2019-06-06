@@ -16,21 +16,20 @@
   ],
   "ingredients": [
     {
-      "item": "minecraft:string",
-      "count": 16
+      "type": "ore",
+      "ore": "string"
     },
     {
-      "item": "minecraft:dye",
-      "data": 11
+      "type": "ore",
+      "ore": "dyeYellow"
     },
     {
-      "item": "minecraft:tallgrass",
-      "data": 1,
-      "count": 16
+      "type": "ore",
+      "ore": "grass"
     },
     {
-      "item": "minecraft:feather",
-      "count": 4
+      "type": "ore",
+      "ore": "feather"
     }
   ]
 }

@@ -7,21 +7,23 @@
   ],
   "ingredients": [
     {
-      "item": "minecraft:paper"
+      "type": "ore",
+      "ore": "paper"
     },
     {
-      "item": "minecraft:dye",
-      "data": 2
+      "type": "ore",
+      "ore": "dyeGreen"
     },
     {
-      "item": "minecraft:waterlily",
-      "count": 16
+      "type": "stack",
+      "item": "minecraft:waterlily"
     },
     {
-      "item": "minecraft:sugar",
-      "count": 16
+      "type": "stack",
+      "item": "minecraft:sugar"
     },
     {
+      "type": "stack",
       "item": "minecraft:leather_boots"
     }
   ]

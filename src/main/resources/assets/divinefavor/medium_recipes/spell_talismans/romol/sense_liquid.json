@@ -7,20 +7,23 @@
   ],
   "ingredients": [
     {
-      "item": "minecraft:paper"
+      "type": "ore",
+      "ore": "paper"
     },
     {
-      "item": "minecraft:dye",
-      "data": 5
+      "type": "ore",
+      "ore": "dyePurple"
     },
     {
-      "item": "minecraft:glowstone_dust",
-      "count": 1
+      "type": "ore",
+      "ore": "dustGlowstone"
     },
     {
+      "type": "stack",
       "item": "minecraft:lava_bucket"
     },
     {
+      "type": "stack",
       "item": "minecraft:water_bucket"
     }
   ]

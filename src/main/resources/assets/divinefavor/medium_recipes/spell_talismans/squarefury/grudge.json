@@ -7,15 +7,16 @@
   ],
   "ingredients": [
     {
-      "item": "minecraft:paper"
+      "type": "ore",
+      "ore": "paper"
     },
     {
-      "item": "minecraft:dye",
-      "data": 15
+      "type": "ore",
+      "ore": "dyeWhite"
     },
     {
-      "item": "minecraft:bone",
-      "count": 32
+      "type": "ore",
+      "ore": "bone"
     }
   ]
 }

@@ -7,16 +7,17 @@
   ],
   "ingredients": [
     {
-      "item": "minecraft:paper"
+      "type": "ore",
+      "ore": "paper"
     },
     {
-      "item": "minecraft:dye",
-      "data": 6
+      "type": "ore",
+      "ore": "dyeCyan"
     },
     {
+      "type": "stack",
       "item": "minecraft:stone",
-      "data": 0,
-      "count": 64
+      "data": 0
     }
   ]
 }

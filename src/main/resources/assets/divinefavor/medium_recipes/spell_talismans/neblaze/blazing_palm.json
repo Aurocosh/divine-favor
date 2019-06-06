@@ -7,17 +7,19 @@
   ],
   "ingredients": [
     {
-      "item": "minecraft:paper"
+      "type": "ore",
+      "ore": "paper"
     },
     {
-      "item": "minecraft:dye",
-      "data": 1
+      "type": "ore",
+      "ore": "dyeRed"
     },
     {
-      "item": "minecraft:iron_ingot",
-      "count": 16
+      "type": "ore",
+      "ore": "ingotIron"
     },
     {
+      "type": "stack",
       "item": "minecraft:lava_bucket"
     }
   ]

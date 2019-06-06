@@ -7,17 +7,19 @@
   ],
   "ingredients": [
     {
-      "item": "minecraft:paper"
+      "type": "ore",
+      "ore": "paper"
     },
     {
-      "item": "minecraft:dye",
-      "data": 13
+      "type": "ore",
+      "ore": "dyeMagenta"
     },
     {
-      "item": "minecraft:arrow",
-      "count": 64
+      "type": "stack",
+      "item": "minecraft:arrow"
     },
     {
+      "type": "stack",
       "item": "minecraft:shield"
     }
   ]

@@ -7,18 +7,20 @@
   ],
   "ingredients": [
     {
-      "item": "minecraft:paper"
+      "type": "ore",
+      "ore": "paper"
     },
     {
-      "item": "minecraft:dye",
-      "data": 9
+      "type": "ore",
+      "ore": "dyePink"
     },
     {
+      "type": "stack",
       "item": "minecraft:lava_bucket"
     },
     {
-      "item": "minecraft:obsidian",
-      "count": 1
+      "type": "stack",
+      "item": "minecraft:obsidian"
     }
   ]
 }

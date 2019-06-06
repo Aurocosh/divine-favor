@@ -7,25 +7,28 @@
   ],
   "ingredients": [
     {
-      "item": "minecraft:paper"
+      "type": "ore",
+      "ore": "paper"
     },
     {
-      "item": "minecraft:dye",
-      "data": 14
+      "type": "ore",
+      "ore": "dyeOrange"
     },
     {
-      "item": "minecraft:gold_block"
+      "type": "ore",
+      "ore": "blockGold"
     },
     {
+      "type": "stack",
       "item": "minecraft:lava_bucket"
     },
     {
-      "item": "minecraft:netherrack",
-      "count": 64
+      "type": "stack",
+      "item": "minecraft:netherrack"
     },
     {
-      "item": "minecraft:soul_sand",
-      "count": 16
+      "type": "stack",
+      "item": "minecraft:soul_sand"
     }
   ]
 }
