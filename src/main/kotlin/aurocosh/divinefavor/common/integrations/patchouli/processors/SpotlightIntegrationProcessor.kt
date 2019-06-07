@@ -23,13 +23,16 @@ class SpotlightIntegrationProcessor : IComponentProcessor {
     }
 
     override fun process(key: String): String? {
-        if (key.startsWith("item") && item != null) {
-            val stack = ItemStack(item!!)
-            return ItemStackUtil.serializeStack(stack)
-        } else if (key == "name")
-            return I18n.format(item!!.nameKey)
-        else if (key == "text")
-            return I18n.format(item!!.descriptionKey)
-        return null
+        val item = item ?: return null
+
+        return when {
+            key.startsWith("item") -> {
+                val stack = ItemStack(item)
+                ItemStackUtil.serializeStack(stack)
+            }
+            key == "name" -> I18n.format(item.nameKey)
+            key == "text" -> I18n.format(item.descriptionKey)
+            else -> null
+        }
     }
 }

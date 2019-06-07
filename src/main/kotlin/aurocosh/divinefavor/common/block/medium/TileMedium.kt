@@ -4,7 +4,6 @@ import aurocosh.divinefavor.common.block.base.TickableTileEntity
 import aurocosh.divinefavor.common.item.calling_stones.ItemCallingStone
 import aurocosh.divinefavor.common.item.calling_stones.ModCallingStones
 import aurocosh.divinefavor.common.item.common.ModItems
-import aurocosh.divinefavor.common.lib.extensions.S
 import aurocosh.divinefavor.common.misc.SlotStack
 import aurocosh.divinefavor.common.muliblock.IMultiblockController
 import aurocosh.divinefavor.common.muliblock.common.MultiblockWatcher
@@ -24,10 +23,8 @@ import net.minecraft.util.math.BlockPos
 import net.minecraft.world.World
 import net.minecraftforge.common.capabilities.Capability
 import net.minecraftforge.items.CapabilityItemHandler
-import net.minecraftforge.items.IItemHandler
 import net.minecraftforge.items.ItemStackHandler
 import net.minecraftforge.items.wrapper.CombinedInvWrapper
-import java.util.*
 import java.util.Arrays.asList
 
 class TileMedium : TickableTileEntity(false, true), IMultiblockController {

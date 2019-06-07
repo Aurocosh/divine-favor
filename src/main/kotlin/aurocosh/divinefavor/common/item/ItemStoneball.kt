@@ -8,6 +8,7 @@ import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.init.SoundEvents
 import net.minecraft.item.Item
 import net.minecraft.item.ItemStack
+import net.minecraft.stats.StatBase
 import net.minecraft.stats.StatList
 import net.minecraft.util.ActionResult
 import net.minecraft.util.EnumActionResult
@@ -24,13 +25,13 @@ class ItemStoneball : ModItem("stone_ball", "stone_ball", ConstMainTabOrder.OTHE
     /**
      * Called when the equipped item is right clicked.
      */
-    override fun onItemRightClick(worldIn: World?, playerIn: EntityPlayer, handIn: EnumHand): ActionResult<ItemStack> {
+    override fun onItemRightClick(worldIn: World, playerIn: EntityPlayer, handIn: EnumHand): ActionResult<ItemStack> {
         val itemStack = playerIn.getHeldItem(handIn)
 
         if (!playerIn.capabilities.isCreativeMode)
             itemStack.shrink(1)
 
-        worldIn!!.playSound(null, playerIn.posX, playerIn.posY, playerIn.posZ, SoundEvents.ENTITY_SNOWBALL_THROW, SoundCategory.NEUTRAL, 0.5f, 0.4f / (Item.itemRand.nextFloat() * 0.4f + 0.8f))
+        worldIn.playSound(null, playerIn.posX, playerIn.posY, playerIn.posZ, SoundEvents.ENTITY_SNOWBALL_THROW, SoundCategory.NEUTRAL, 0.5f, 0.4f / (Item.itemRand.nextFloat() * 0.4f + 0.8f))
 
         if (!worldIn.isRemote) {
             val stoneball = EntityStoneball(worldIn, playerIn)
@@ -38,7 +39,8 @@ class ItemStoneball : ModItem("stone_ball", "stone_ball", ConstMainTabOrder.OTHE
             worldIn.spawnEntity(stoneball)
         }
 
-        playerIn.addStat(StatList.getObjectUseStats(this)!!)
+        val statBase = StatList.getObjectUseStats(this) as StatBase
+        playerIn.addStat(statBase)
         return ActionResult(EnumActionResult.SUCCESS, itemStack)
     }
 }

@@ -16,8 +16,10 @@ import java.util.*
 class ArrowTalismanForceArrow(name: String, spirit: ModSpirit, favorCost: Int, color: Color, arrowDamage: Double, arrowType: ArrowType, private val velocity: Float) : ItemArrowTalisman(name, spirit, favorCost, color, arrowDamage, EnumSet.of(ArrowOptions.BreakOnHit, ArrowOptions.RequiresTarget), arrowType) {
 
     override fun performActionServer(target: EntityLivingBase?, shooter: EntityLivingBase, spellArrow: EntitySpellArrow, blockPos: BlockPos?, sideHit: EnumFacing?): Boolean {
+        if (target == null)
+            return false
         if (target !is EntityPlayer)
-            UtilEntity.addVelocity(target!!, shooter.lookVec, velocity)
+            UtilEntity.addVelocity(target, shooter.lookVec, velocity)
         return true
     }
 }

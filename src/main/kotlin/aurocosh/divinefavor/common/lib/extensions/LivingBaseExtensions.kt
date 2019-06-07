@@ -5,5 +5,5 @@ import aurocosh.divinefavor.common.custom_data.living.capability.LivingDataDataH
 import net.minecraft.entity.EntityLivingBase
 
 val EntityLivingBase.divineLivingData: ILivingDataHandler
-    get() = this.getCapability(LivingDataDataHandler.CAPABILITY_LIVING_DATA!!, null)!!
+    get() = this.getCapability(LivingDataDataHandler.CAPABILITY_LIVING_DATA, null) as ILivingDataHandler
 

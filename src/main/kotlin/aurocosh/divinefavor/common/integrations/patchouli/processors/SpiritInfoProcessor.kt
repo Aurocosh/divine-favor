@@ -1,7 +1,6 @@
 package aurocosh.divinefavor.common.integrations.patchouli.processors
 
 import aurocosh.divinefavor.DivineFavor
-import aurocosh.divinefavor.common.lib.TimePeriod
 import aurocosh.divinefavor.common.registry.ModRegistries
 import aurocosh.divinefavor.common.spirit.base.ModSpirit
 import aurocosh.divinefavor.common.util.UtilDayTime
@@ -24,10 +23,11 @@ class SpiritInfoProcessor : IComponentProcessor {
     }
 
     override fun process(key: String): String? {
+        val spirit = spirit
         if (key == "text") {
             var result = text
             if (spirit != null) {
-                val activityPeriod = spirit!!.activityPeriod
+                val activityPeriod = spirit.activityPeriod
                 val start = activityPeriod.start / UtilDayTime.TICKS_IN_HOUR
                 val stop = activityPeriod.stop / UtilDayTime.TICKS_IN_HOUR
                 result += String.format("$(br)This spirit is active from %d o'clock to %d o'clock.", start, stop)

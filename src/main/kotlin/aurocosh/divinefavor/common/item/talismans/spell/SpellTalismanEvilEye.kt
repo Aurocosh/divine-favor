@@ -9,6 +9,7 @@ import aurocosh.divinefavor.common.network.message.client.syncing.MessageSyncEvi
 import aurocosh.divinefavor.common.potions.base.effect.ModEffect
 import aurocosh.divinefavor.common.potions.common.ModCurses
 import aurocosh.divinefavor.common.spirit.base.ModSpirit
+import net.minecraft.entity.EntityLivingBase
 import net.minecraft.init.MobEffects
 import net.minecraft.potion.PotionEffect
 import net.minecraft.util.DamageSource
@@ -30,7 +31,7 @@ class SpellTalismanEvilEye(name: String, spirit: ModSpirit, favorCost: Int, opti
             evilEyeData.severity = ConfigSpells.evilEye.startingSeverity
 
         val severity = evilEyeData.severity
-        val target = context.target!!
+        val target = context.target as EntityLivingBase
         target.attackEntityFrom(DamageSource.causePlayerDamage(player), (ConfigSpells.evilEye.damagePerSeverity * severity).toFloat())
         target.addPotionEffect(PotionEffect(MobEffects.SLOWNESS, ConfigSpells.evilEye.slownessTime, ConfigSpells.evilEye.slownessLevel))
         player.addPotionEffect(ModEffect(ModCurses.evil_eye, ConfigSpells.evilEye.evilEyeTime).setIsCurse())

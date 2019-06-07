@@ -63,20 +63,20 @@ open class ItemSpellTalisman// Talisman functions
     // Talisman functions
 
 
-    override fun onItemUse(playerIn: EntityPlayer, worldIn: World?, pos: BlockPos?, hand: EnumHand?, facing: EnumFacing?, hitX: Float, hitY: Float, hitZ: Float): EnumActionResult {
-        val stack = playerIn.getHeldItem(hand!!)
+    override fun onItemUse(playerIn: EntityPlayer, worldIn: World, pos: BlockPos, hand: EnumHand, facing: EnumFacing, hitX: Float, hitY: Float, hitZ: Float): EnumActionResult {
+        val stack = playerIn.getHeldItem(hand)
         if (stack.item is ItemSpellTalisman) {
-            val casted = castItemUse(playerIn, worldIn!!, pos!!, hand, facing!!, hitX, hitY, hitZ)
+            val casted = castItemUse(playerIn, worldIn, pos, hand, facing, hitX, hitY, hitZ)
             return if (casted) EnumActionResult.SUCCESS else EnumActionResult.PASS
         }
         return EnumActionResult.PASS
     }
 
-    override fun onItemRightClick(worldIn: World?, playerIn: EntityPlayer, hand: EnumHand): ActionResult<ItemStack> {
+    override fun onItemRightClick(worldIn: World, playerIn: EntityPlayer, hand: EnumHand): ActionResult<ItemStack> {
         val stack = playerIn.getHeldItem(hand)
         if (stack.item !is ItemSpellTalisman)
             return ActionResult(EnumActionResult.PASS, stack)
-        val success = castRightClick(worldIn!!, playerIn, hand)
+        val success = castRightClick(worldIn, playerIn, hand)
         return ActionResult(if (success) EnumActionResult.SUCCESS else EnumActionResult.PASS, stack)
     }
 

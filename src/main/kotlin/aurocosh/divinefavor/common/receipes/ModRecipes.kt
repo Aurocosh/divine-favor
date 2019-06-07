@@ -8,9 +8,7 @@ import aurocosh.divinefavor.common.lib.extensions.process
 import aurocosh.divinefavor.common.util.UtilHandler
 import net.minecraft.item.ItemStack
 import net.minecraftforge.items.IItemHandler
-
 import java.util.*
-import kotlin.collections.ArrayList
 
 object ModRecipes {
     //    val recipes: ListMultimap<String, ImmaterialMediumRecipe> = MultimapBuilder.hashKeys().arrayListValues().build<String, ImmaterialMediumRecipe>()

@@ -15,8 +15,8 @@ class EscapePlanDataSerializer : INbtSerializer<EscapePlanData> {
     }
 
     override fun deserialize(nbt: NBTTagCompound, instance: EscapePlanData) {
-        val pos = instance.globalPosition
-        nbt.setLong(TAG_ESCAPE_POSITION, pos!!.pos.toLong())
+        val pos = instance.globalPosition ?: return
+        nbt.setLong(TAG_ESCAPE_POSITION, pos.pos.toLong())
         nbt.setInteger(TAG_ESCAPE_DIMENSION, pos.dimensionId)
     }
 

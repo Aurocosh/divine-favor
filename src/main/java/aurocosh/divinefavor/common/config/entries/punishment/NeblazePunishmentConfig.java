@@ -4,7 +4,6 @@ import aurocosh.divinefavor.common.config.data.IntInterval;
 import aurocosh.divinefavor.common.lib.builders.map.Maps;
 import net.minecraftforge.common.config.Config;
 
-import java.util.HashMap;
 import java.util.Map;
 
 public class NeblazePunishmentConfig {

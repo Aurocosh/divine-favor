@@ -32,9 +32,7 @@ class AltarsData {
     }
 
     fun removeAltarLocation(pos: BlockPos) {
-        if (!positionsInverse.containsKey(pos))
-            return
-        val spiritId = positionsInverse[pos]!!
+        val spiritId = positionsInverse[pos] ?: return
         val spirit = ModMappers.spirits[spiritId]
         removeAltarLocation(spirit, pos)
     }

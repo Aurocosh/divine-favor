@@ -57,7 +57,7 @@ class PotionArmorCorrosion : ModPotion("armor_corrosion", 0x7FB8A4) {
         if (livingBase.divinePlayerData.armorCorrosionData.isCorrosionNeeded) {
             val slots = ArrayList(livingBase.divinePlayerData.armorCorrosionData.corrodedArmorSlots)
             for (slot in slots) {
-                val stack = livingBase.inventory.armorItemInSlot(slot!!)
+                val stack = livingBase.inventory.armorItemInSlot(slot)
                 if (stack.isEmpty)
                     livingBase.divinePlayerData.armorCorrosionData.removeCorrosionFromArmorSlot(slot)
                 else

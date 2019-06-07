@@ -1,5 +1,6 @@
 package aurocosh.divinefavor.common.registry
 
+import aurocosh.divinefavor.common.lib.extensions.regName
 import net.minecraft.util.ResourceLocation
 import net.minecraftforge.registries.IForgeRegistryEntry
 import java.util.*
@@ -23,7 +24,7 @@ class RegistryAssistant<T : IForgeRegistryEntry<*>> {
     }
 
     fun <K : T> register(value: K): K {
-        valueMap[value.registryName!!] = value
+        valueMap[value.regName] = value
         CommonRegistry.register(value)
         return value
     }

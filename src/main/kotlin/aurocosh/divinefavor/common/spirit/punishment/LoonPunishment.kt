@@ -57,11 +57,11 @@ class LoonPunishment : SpiritPunishment() {
 
         private fun spawnMob(world: World, pos: BlockPos): Boolean {
             val spawnRadius = ConfigPunishments.loon.spawnRadius
-            var spawnPos: BlockPos? = UtilCoordinates.getRandomNeighbour(pos, spawnRadius, 0, spawnRadius)
-            spawnPos = UtilCoordinates.findPlaceToStand(spawnPos!!, world, spawnRadius)
+            val randomPos = UtilCoordinates.getRandomNeighbour(pos, spawnRadius, 0, spawnRadius)
+            val spawnPos = UtilCoordinates.findPlaceToStand(randomPos, world, spawnRadius)
             if (spawnPos != null && possibleEnemies.size() > 0) {
-                val clazz = possibleEnemies.random
-                return UtilEntity.spawnEntity(world, spawnPos, clazz!!)
+                val clazz = possibleEnemies.random ?: return false
+                return UtilEntity.spawnEntity(world, spawnPos, clazz)
             }
             return false
         }

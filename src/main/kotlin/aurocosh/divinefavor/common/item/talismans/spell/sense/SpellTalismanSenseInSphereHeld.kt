@@ -4,6 +4,7 @@ import aurocosh.divinefavor.common.config.entries.talismans.spell.generic.SenseC
 import aurocosh.divinefavor.common.item.talismans.spell.base.SpellOptions
 import aurocosh.divinefavor.common.item.talismans.spell.base.TalismanContext
 import aurocosh.divinefavor.common.lib.extensions.getOther
+import aurocosh.divinefavor.common.lib.extensions.name
 import aurocosh.divinefavor.common.spirit.base.ModSpirit
 import net.minecraft.item.ItemBlock
 import java.util.*
@@ -24,8 +25,7 @@ class SpellTalismanSenseInSphereHeld(name: String, spirit: ModSpirit, options: E
 
         val heldItem = player.getHeldItem(context.hand.getOther())
         val itemBlock = heldItem.item as ItemBlock
-        val blockName = itemBlock.block.registryName!!.toString()
 
-        highlightBlocks(radius, player, player.position, minShift, maxShift, color3f, blockName)
+        highlightBlocks(radius, player, player.position, minShift, maxShift, color3f, itemBlock.block.name)
     }
 }

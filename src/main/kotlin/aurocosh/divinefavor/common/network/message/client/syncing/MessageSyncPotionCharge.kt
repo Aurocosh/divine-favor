@@ -21,10 +21,10 @@ class MessageSyncPotionCharge : DivineClientMessage {
 
     @SideOnly(Side.CLIENT)
     override fun handleSafe() {
-        val potion = Potion.getPotionById(potionId)
+        val potion = Potion.getPotionById(potionId) ?: return
         val player = DivineFavor.proxy.clientPlayer
-        val effect = player.getActivePotionEffect(potion!!)
-        if (effect != null)
-            ReflectionHelper.setPrivateValue(PotionEffect::class.java, effect, charges, 3)
+        val effect = player.getActivePotionEffect(potion) ?: return
+
+        ReflectionHelper.setPrivateValue(PotionEffect::class.java, effect, charges, 3)
     }
 }

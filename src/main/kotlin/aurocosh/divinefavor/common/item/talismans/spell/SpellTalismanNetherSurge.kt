@@ -65,8 +65,8 @@ class SpellTalismanNetherSurge(name: String, spirit: ModSpirit, favorCost: Int, 
             return
 
         try {
-            val clazz = possibleEnemies.random
-            val constructor = clazz!!.getConstructor(World::class.java)
+            val clazz = possibleEnemies.random ?: return
+            val constructor = clazz.getConstructor(World::class.java)
             val entityLiving = constructor.newInstance(context.world)
             entityLiving.setLocationAndAngles(spawnPos.x.toDouble(), spawnPos.y.toDouble(), spawnPos.z.toDouble(), 0f, 0.0f)
             context.world.spawnEntity(entityLiving)

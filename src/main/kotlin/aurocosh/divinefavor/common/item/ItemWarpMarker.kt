@@ -23,14 +23,14 @@ class ItemWarpMarker(name: String, private val canTeleportToDimensions: Boolean)
         creativeTab = DivineFavor.TAB_GEMS
     }
 
-    override fun onItemRightClick(world: World?, player: EntityPlayer, hand: EnumHand): ActionResult<ItemStack> {
+    override fun onItemRightClick(world: World, player: EntityPlayer, hand: EnumHand): ActionResult<ItemStack> {
         val stack = player.getHeldItem(hand)
-        return if (!teleportPlayer(stack, player, world!!)) ActionResult(EnumActionResult.PASS, stack) else ActionResult(EnumActionResult.SUCCESS, stack)
+        return if (!teleportPlayer(stack, player, world)) ActionResult(EnumActionResult.PASS, stack) else ActionResult(EnumActionResult.SUCCESS, stack)
     }
 
-    override fun onItemUse(player: EntityPlayer, world: World?, pos: BlockPos?, hand: EnumHand?, facing: EnumFacing?, hitX: Float, hitY: Float, hitZ: Float): EnumActionResult {
-        val stack = player.getHeldItem(hand!!)
-        return if (!teleportPlayer(stack, player, world!!)) EnumActionResult.PASS else EnumActionResult.SUCCESS
+    override fun onItemUse(player: EntityPlayer, world: World, pos: BlockPos, hand: EnumHand, facing: EnumFacing, hitX: Float, hitY: Float, hitZ: Float): EnumActionResult {
+        val stack = player.getHeldItem(hand)
+        return if (!teleportPlayer(stack, player, world)) EnumActionResult.PASS else EnumActionResult.SUCCESS
     }
 
     private fun teleportPlayer(stack: ItemStack, player: EntityPlayer, world: World): Boolean {
@@ -55,7 +55,7 @@ class ItemWarpMarker(name: String, private val canTeleportToDimensions: Boolean)
     }
 
     companion object {
-        var TAG_POSITION = "Position"
-        var TAG_DIMENSION = "Dimension"
+        const val TAG_POSITION = "Position"
+        const val TAG_DIMENSION = "Dimension"
     }
 }

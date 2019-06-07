@@ -4,7 +4,6 @@ import aurocosh.divinefavor.common.config.common.ConfigSpells
 import aurocosh.divinefavor.common.lib.extensions.getBlock
 import aurocosh.divinefavor.common.lib.extensions.isLiquid
 import aurocosh.divinefavor.common.potions.base.potion.ModPotionToggle
-import aurocosh.divinefavor.common.util.UtilBlock
 import net.minecraft.entity.EntityLivingBase
 
 class PotionInstantDive : ModPotionToggle("instant_dive", 0x7FB8A4) {

@@ -2,7 +2,6 @@ package aurocosh.divinefavor.common.custom_data.world.data.altars
 
 import aurocosh.divinefavor.common.lib.interfaces.INbtSerializer
 import aurocosh.divinefavor.common.registry.mappers.ModMappers
-import aurocosh.divinefavor.common.spirit.base.ModSpirit
 import aurocosh.divinefavor.common.util.UtilBlockPos
 import net.minecraft.nbt.NBTTagCompound
 import net.minecraft.util.math.BlockPos
@@ -20,8 +19,7 @@ class AltarsDataSerializer : INbtSerializer<AltarsData> {
             val altarLocations = ArrayList(value)
             val spirit = ModMappers.spirits[spiritId]
             val posArray = UtilBlockPos.serialize(altarLocations)
-            val spiritName = spirit.registryName!!.toString()
-            altarNbt.setIntArray(spiritName, posArray)
+            altarNbt.setIntArray(spirit.name, posArray)
         }
         nbt.setTag(TAG_ALTAR_POSITIONS, altarNbt)
     }
@@ -33,7 +31,7 @@ class AltarsDataSerializer : INbtSerializer<AltarsData> {
         val spirits = ModMappers.spirits.getValues()
         val positions = HashMap<Int, MutableSet<BlockPos>>()
         for (spirit in spirits) {
-            val spiritName = spirit.registryName!!.toString()
+            val spiritName = spirit.name
             if (!altarNbt.hasKey(spiritName))
                 return
             val posArray = altarNbt.getIntArray(spiritName)

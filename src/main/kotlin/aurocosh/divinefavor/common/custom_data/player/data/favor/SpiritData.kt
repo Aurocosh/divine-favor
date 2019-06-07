@@ -1,14 +1,15 @@
 package aurocosh.divinefavor.common.custom_data.player.data.favor
 
-import aurocosh.divinefavor.common.custom_data.CapabilityHelper
 import aurocosh.divinefavor.common.item.contract.ItemContract
 import aurocosh.divinefavor.common.item.contract.ItemFavorContract
 import aurocosh.divinefavor.common.item.contract_binder.ItemContractBinder
 import aurocosh.divinefavor.common.lib.extensions.asSequence
+import aurocosh.divinefavor.common.lib.extensions.cap
 import aurocosh.divinefavor.common.lib.extensions.isNotEmpty
 import aurocosh.divinefavor.common.registry.mappers.ModMappers
 import net.minecraft.item.ItemStack
 import net.minecraft.nbt.NBTTagCompound
+import net.minecraftforge.items.CapabilityItemHandler.ITEM_HANDLER_CAPABILITY
 import net.minecraftforge.items.ItemStackHandler
 import java.util.Arrays.asList
 
@@ -125,7 +126,7 @@ class SpiritData {
         if (stack.item is ItemContract)
             return asList(stack)
         if (stack.item is ItemContractBinder) {
-            val handler = CapabilityHelper.getItemHandler(stack) ?: return emptyList()
+            val handler = stack.cap(ITEM_HANDLER_CAPABILITY)
             return handler.asSequence().filter(ItemStack::isNotEmpty).toList()
         }
         return emptyList()

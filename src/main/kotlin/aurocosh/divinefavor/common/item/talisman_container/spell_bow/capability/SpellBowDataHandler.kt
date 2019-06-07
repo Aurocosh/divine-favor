@@ -10,7 +10,10 @@ object SpellBowDataHandler {
     // The Capability field. Used for checks and references.
     // Initialized when forge registers the capability.
     @CapabilityInject(ISpellBowHandler::class)
-    val CAPABILITY_SPELL_BOW: Capability<ISpellBowHandler>? = null
+    val capability: Capability<ISpellBowHandler>? = null
+
+    val CAPABILITY_SPELL_BOW: Capability<ISpellBowHandler>
+        get() = capability as Capability<ISpellBowHandler>
 
     // Handles all of the required registration for the capability.
     fun register() {
@@ -19,7 +22,7 @@ object SpellBowDataHandler {
     }
 
     fun get(stack: ItemStack): ISpellBowHandler? {
-        return stack.getCapability(CAPABILITY_SPELL_BOW!!, null)
+        return stack.getCapability(CAPABILITY_SPELL_BOW, null)
     }
 
     //    // Allows the provider to be attached to a target entity.

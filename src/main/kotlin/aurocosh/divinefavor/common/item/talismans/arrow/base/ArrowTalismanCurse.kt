@@ -13,7 +13,8 @@ import java.awt.Color
 class ArrowTalismanCurse(name: String, spirit: ModSpirit, favorCost: Int, color: Color, private val potion: ModPotion, private val duration: Int) : ItemArrowTalisman(name, spirit, favorCost, color, 0.0, ArrowOptions.REQUIRES_TARGET, ArrowType.CURSED_ARROW) {
 
     override fun performActionServer(target: EntityLivingBase?, shooter: EntityLivingBase, spellArrow: EntitySpellArrow, blockPos: BlockPos?, sideHit: EnumFacing?): Boolean {
-        UtilCurses.applyCurse(target!!, shooter, ModEffect(potion, duration))
+        if (target != null)
+            UtilCurses.applyCurse(target, shooter, ModEffect(potion, duration))
         return true
     }
 }

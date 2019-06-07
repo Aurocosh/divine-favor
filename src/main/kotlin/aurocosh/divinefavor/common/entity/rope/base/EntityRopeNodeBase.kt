@@ -203,9 +203,8 @@ abstract class EntityRopeNodeBase(world: World) : Entity(world) {
 
         val nextNode = nextNode
         if (!world.isRemote && nextNode is EntityPlayer) {
-            val player = nextNode as EntityPlayer?
-            pickUpThisNode(player!!)
-            dropNewNode(player)
+            pickUpThisNode(nextNode)
+            dropNewNode(nextNode)
         }
 
         if (!isEntityAlive)

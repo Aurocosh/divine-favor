@@ -1,13 +1,10 @@
 package aurocosh.divinefavor.common.muliblock.patchouli
 
 import aurocosh.divinefavor.common.muliblock.MultiBlockConfiguration
-import aurocosh.divinefavor.common.muliblock.MultiBlockPart
 import aurocosh.divinefavor.common.muliblock.validators.StateValidator
 import net.minecraft.util.math.BlockPos
 import vazkii.patchouli.common.multiblock.StateMatcher
-
-import java.util.ArrayList
-import java.util.HashMap
+import java.util.*
 
 class PatchouliMultiBlockData(configuration: MultiBlockConfiguration) {
 
@@ -80,8 +77,8 @@ class PatchouliMultiBlockData(configuration: MultiBlockConfiguration) {
     override fun toString(): String {
         val builder = StringBuilder()
         for (i in pattern.indices) {
-            val layer = pattern[i]
-            for (j in layer!!.indices) {
+            val layer = pattern[i] ?: emptyArray()
+            for (j in layer.indices) {
                 val s = layer[j]
                 builder.append(s)
                 builder.append("|")

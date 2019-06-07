@@ -17,16 +17,15 @@ class ItemBoneKey : ModItem("bone_key", "bone_key", ConstMainTabOrder.TOOLS) {
         creativeTab = DivineFavor.TAB_MAIN
     }
 
-    override fun onItemUse(playerIn: EntityPlayer?, worldIn: World, pos: BlockPos?, hand: EnumHand?, facing: EnumFacing?, hitX: Float, hitY: Float, hitZ: Float): EnumActionResult {
+    override fun onItemUse(playerIn: EntityPlayer, worldIn: World, pos: BlockPos, hand: EnumHand?, facing: EnumFacing, hitX: Float, hitY: Float, hitZ: Float): EnumActionResult {
         if (worldIn.isRemote)
             return EnumActionResult.PASS
 
-        val entity = worldIn.getTileEntity(pos!!)
+        val entity = worldIn.getTileEntity(pos)
         if (entity !is IMultiblockController)
             return EnumActionResult.PASS
 
-        val controller = entity as IMultiblockController?
-        controller!!.tryToFormMultiBlock()
+        entity.tryToFormMultiBlock()
         return EnumActionResult.SUCCESS
     }
 }

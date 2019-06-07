@@ -1,13 +1,11 @@
 package aurocosh.divinefavor.common.item.talismans.arrow.common
 
 import aurocosh.divinefavor.common.config.common.ConfigArrow
-import aurocosh.divinefavor.common.item.base.ModItem
 import aurocosh.divinefavor.common.item.talismans.arrow.*
 import aurocosh.divinefavor.common.item.talismans.arrow.base.ArrowOptions
 import aurocosh.divinefavor.common.item.talismans.arrow.base.ArrowTalismanCurse
 import aurocosh.divinefavor.common.item.talismans.arrow.base.ArrowType
 import aurocosh.divinefavor.common.item.talismans.arrow.base.ItemArrowTalisman
-import aurocosh.divinefavor.common.item.talismans.base.ItemTalisman
 import aurocosh.divinefavor.common.potions.common.ModCurses
 import aurocosh.divinefavor.common.spirit.ModSpirits
 import java.awt.Color

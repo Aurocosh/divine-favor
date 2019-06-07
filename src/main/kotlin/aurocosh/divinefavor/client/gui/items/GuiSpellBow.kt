@@ -3,13 +3,15 @@ package aurocosh.divinefavor.client.gui.items
 import aurocosh.divinefavor.common.constants.ConstResources
 import aurocosh.divinefavor.common.item.talisman_container.spell_bow.SpellBowContainer
 import aurocosh.divinefavor.common.item.talisman_container.spell_bow.capability.SpellBowDataHandler
+import aurocosh.divinefavor.common.item.talisman_container.spell_bow.capability.SpellBowDataHandler.CAPABILITY_SPELL_BOW
+import aurocosh.divinefavor.common.lib.extensions.cap
 import net.minecraft.client.gui.inventory.GuiContainer
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.item.ItemStack
 import net.minecraft.util.EnumHand
 import net.minecraft.util.ResourceLocation
 
-class GuiSpellBow(player: EntityPlayer, spellBow: ItemStack, hand: EnumHand) : GuiContainer(SpellBowContainer(player, SpellBowDataHandler.get(spellBow)!!, hand)) {
+class GuiSpellBow(player: EntityPlayer, spellBow: ItemStack, hand: EnumHand) : GuiContainer(SpellBowContainer(player, spellBow.cap(CAPABILITY_SPELL_BOW), hand)) {
 
     override fun initGui() {
         xSize = WIDTH

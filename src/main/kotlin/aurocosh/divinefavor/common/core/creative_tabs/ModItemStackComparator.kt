@@ -1,5 +1,6 @@
 package aurocosh.divinefavor.common.core.creative_tabs
 
+import aurocosh.divinefavor.common.lib.extensions.regName
 import aurocosh.divinefavor.common.lib.interfaces.IOrdered
 import net.minecraft.item.ItemStack
 import java.util.*
@@ -21,9 +22,9 @@ class ModItemStackComparator : Comparator<ItemStack> {
             val secondOrder = (secondItem as IOrdered).orderIndex
 
             if (firstOrder == secondOrder)
-                return firstItem.registryName!!.compareTo(secondItem.registryName!!)
+                return firstItem.regName.compareTo(secondItem.regName)
             return if (firstOrder < secondOrder) -1 else 1
         }
-        return firstItem.registryName!!.compareTo(secondItem.registryName!!)
+        return firstItem.regName.compareTo(secondItem.regName)
     }
 }

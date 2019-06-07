@@ -3,7 +3,6 @@ package aurocosh.divinefavor.common.potions.potions
 import aurocosh.divinefavor.DivineFavor
 import aurocosh.divinefavor.common.config.common.ConfigSpells
 import aurocosh.divinefavor.common.lib.LimitedTimer
-import aurocosh.divinefavor.common.lib.PrivateField
 import aurocosh.divinefavor.common.lib.extensions.S
 import aurocosh.divinefavor.common.lib.extensions.getMotionVector
 import aurocosh.divinefavor.common.potions.base.effect.ModEffect

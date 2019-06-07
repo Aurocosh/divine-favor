@@ -34,10 +34,10 @@ open class BlockEtherealLight(name: String, material: Material, lightLevel: Int)
     }
 
     @SideOnly(Side.CLIENT)
-    private fun spawnParticles(worldIn: World, pos: BlockPos?) {
+    private fun spawnParticles(worldIn: World, pos: BlockPos) {
         val random = worldIn.rand
         for (i in 0..5) {
-            var x = (pos!!.x.toFloat() + random.nextFloat()).toDouble()
+            var x = (pos.x.toFloat() + random.nextFloat()).toDouble()
             var y = (pos.y.toFloat() + random.nextFloat()).toDouble()
             var z = (pos.z.toFloat() + random.nextFloat()).toDouble()
 

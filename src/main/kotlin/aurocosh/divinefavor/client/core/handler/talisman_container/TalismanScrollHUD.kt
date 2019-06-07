@@ -22,6 +22,8 @@ class TalismanScrollHUD {
         refreshItemStacks(talismanContainer)
         if (selectedStack.isEmpty)
             return
+        val nextStacks = nextStacks ?: return
+        val previousStacks = previousStacks ?: return
 
         val alpha = 255
         val x = width / 2
@@ -35,10 +37,10 @@ class TalismanScrollHUD {
         GlStateManager.scale(alpha / 255f, 1f, 1f)
         GlStateManager.color(1f, 1f, 1f)
         mc.renderItem.renderItemIntoGUI(selectedStack, 0, 0)
-        for (i in nextStacks!!.indices)
-            mc.renderItem.renderItemIntoGUI(nextStacks!![i], i * 18 + 21, -6)
-        for (i in previousStacks!!.indices)
-            mc.renderItem.renderItemIntoGUI(previousStacks!![i], -i * 18 - 21, -6)
+        for (i in nextStacks.indices)
+            mc.renderItem.renderItemIntoGUI(nextStacks[i], i * 18 + 21, -6)
+        for (i in previousStacks.indices)
+            mc.renderItem.renderItemIntoGUI(previousStacks[i], -i * 18 - 21, -6)
         GlStateManager.popMatrix()
         GlStateManager.disableBlend()
     }
@@ -50,11 +52,13 @@ class TalismanScrollHUD {
         handler = talismanContainer
         state = talismanContainer.getState()
 
-        selectedStack = talismanContainer.getSelectedStack()
-        previousStacks = ArrayList(talismanContainer.getPreviousStacks())
-        nextStacks = talismanContainer.getNextStacks()
+        val next = talismanContainer.getNextStacks()
+        val previous = ArrayList(talismanContainer.getPreviousStacks())
+        for (stack in next)
+            previous.remove(stack)
 
-        for (stack in nextStacks!!)
-            previousStacks!!.remove(stack)
+        selectedStack = talismanContainer.getSelectedStack()
+        previousStacks = previous
+        nextStacks = next
     }
 }

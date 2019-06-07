@@ -11,6 +11,7 @@ import com.google.common.collect.ImmutableSet
 import net.minecraft.block.BlockCrops
 import net.minecraft.block.BlockNetherWart
 import net.minecraft.block.BlockReed
+import net.minecraft.block.material.Material
 import net.minecraft.util.math.BlockPos
 import net.minecraft.world.World
 import java.util.*
@@ -38,10 +39,11 @@ class SpellTalismanHarvest(name: String, spirit: ModSpirit, favorCost: Int, opti
     }
 
     companion object {
-        val ALLOWED_MATERIALS = ImmutableSet.of(net.minecraft.block.material.Material.WEB,
-                net.minecraft.block.material.Material.LEAVES,
-                net.minecraft.block.material.Material.VINE,
-                net.minecraft.block.material.Material.GOURD,
-                net.minecraft.block.material.Material.CACTUS)!!
+        val ALLOWED_MATERIALS: ImmutableSet<Material> = ImmutableSet.of(
+                Material.WEB,
+                Material.LEAVES,
+                Material.VINE,
+                Material.GOURD,
+                Material.CACTUS)
     }
 }

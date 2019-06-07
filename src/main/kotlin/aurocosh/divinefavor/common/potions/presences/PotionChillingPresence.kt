@@ -22,11 +22,11 @@ class PotionChillingPresence : ModPotion("chilling_presence", 0x7FB8A4) {
         val wolfsToSpawn = UtilRandom.nextInt(ConfigPresence.chillingPresence.minWolfsToSpawn, ConfigPresence.chillingPresence.maxWolfsToSpawn)
         for (i in 0 until wolfsToSpawn) {
             val position = livingBase.position
-            var spawnPos: BlockPos? = UtilCoordinates.getRandomNeighbour(position, spawnRadius, 0, spawnRadius)
+            val randomPos = UtilCoordinates.getRandomNeighbour(position, spawnRadius, 0, spawnRadius)
             val world = livingBase.world
-            spawnPos = UtilCoordinates.findPlaceToStand(spawnPos!!, world, spawnRadius)
+            val spawnPos = UtilCoordinates.findPlaceToStand(randomPos, world, spawnRadius) ?: return
             val entityDirewolf = EntityDirewolf(world)
-            entityDirewolf.setLocationAndAngles(spawnPos!!.x.toDouble(), spawnPos.y.toDouble(), spawnPos.z.toDouble(), 0f, 0.0f)
+            entityDirewolf.setLocationAndAngles(spawnPos.x.toDouble(), spawnPos.y.toDouble(), spawnPos.z.toDouble(), 0f, 0.0f)
             world.spawnEntity(entityDirewolf)
         }
     }

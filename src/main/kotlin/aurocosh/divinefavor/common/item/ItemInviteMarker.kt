@@ -26,15 +26,15 @@ class ItemInviteMarker(name: String, private val canTeleportToDimensions: Boolea
         creativeTab = DivineFavor.TAB_GEMS
     }
 
-    override fun onItemRightClick(world: World?, player: EntityPlayer, hand: EnumHand): ActionResult<ItemStack> {
+    override fun onItemRightClick(world: World, player: EntityPlayer, hand: EnumHand): ActionResult<ItemStack> {
         val stack = player.getHeldItem(hand)
-        val teleported = !teleportPlayer(stack, player, world!!)
+        val teleported = !teleportPlayer(stack, player, world)
         return if (teleported) ActionResult(EnumActionResult.PASS, stack) else ActionResult(EnumActionResult.SUCCESS, ItemStack.EMPTY)
     }
 
-    override fun onItemUse(player: EntityPlayer, world: World?, pos: BlockPos?, hand: EnumHand?, facing: EnumFacing?, hitX: Float, hitY: Float, hitZ: Float): EnumActionResult {
-        val stack = player.getHeldItem(hand!!)
-        val teleported = !teleportPlayer(stack, player, world!!)
+    override fun onItemUse(player: EntityPlayer, world: World, pos: BlockPos, hand: EnumHand, facing: EnumFacing, hitX: Float, hitY: Float, hitZ: Float): EnumActionResult {
+        val stack = player.getHeldItem(hand)
+        val teleported = !teleportPlayer(stack, player, world)
         return if (teleported) EnumActionResult.PASS else EnumActionResult.SUCCESS
     }
 
@@ -49,7 +49,8 @@ class ItemInviteMarker(name: String, private val canTeleportToDimensions: Boolea
             return false
 
         val uuid = UUID.fromString(stack.compound.getString(TAG_PLAYER_UUID))
-        val playerList = world.minecraftServer!!.playerList
+        val server = world.minecraftServer ?: return false
+        val playerList = server.playerList
         val targetPlayer = playerList.getPlayerByUUID(uuid)
         if (player == null)
             return false
@@ -62,8 +63,8 @@ class ItemInviteMarker(name: String, private val canTeleportToDimensions: Boolea
         return true
     }
 
-    override fun addInformation(stack: ItemStack?, world: World?, tooltip: MutableList<String>?, flag: ITooltipFlag?) {
-        super.addInformation(stack!!, world, tooltip!!, flag!!)
+    override fun addInformation(stack: ItemStack, world: World?, tooltip: MutableList<String>, flag: ITooltipFlag) {
+        super.addInformation(stack, world, tooltip, flag)
         if (stack.checkForTag(TAG_PLAYER_UUID))
             tooltip.add(I18n.format("item.divinefavor:contract.player", stack.compound.getString(TAG_PLAYER_UUID)))
     }

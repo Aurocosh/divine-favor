@@ -60,11 +60,10 @@ class ItemBoneDaggerAwakened : ModItem("bone_dagger_awakened", "bone_dagger_awak
         val compound = stack.compound
         val chance = compound.getFloat(TAG_SOUL_STEAL_CHANCE)
         if (UtilRandom.rollDiceFloat(chance)) {
-            val livingBase = entity as EntityLivingBase?
-            livingBase!!.addPotionEffect(ModEffect(ModCurses.soul_theft, ConfigItem.awakenedBoneDagger.soulTheftDuration).setIsCurse())
-            val theftData = livingBase.divineLivingData.soulTheftData
+            entity.addPotionEffect(ModEffect(ModCurses.soul_theft, ConfigItem.awakenedBoneDagger.soulTheftDuration).setIsCurse())
+            val theftData = entity.divineLivingData.soulTheftData
             theftData.addThief(player)
-            makeSoulShard(livingBase, player)
+            makeSoulShard(entity, player)
 
             compound.setFloat(TAG_SOUL_STEAL_CHANCE, 0f)
         } else

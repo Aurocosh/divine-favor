@@ -1,5 +1,6 @@
 package aurocosh.divinefavor.common.registry.mappers
 
+import aurocosh.divinefavor.common.lib.extensions.regName
 import aurocosh.divinefavor.common.lib.interfaces.IIndexedEntry
 import net.minecraft.util.ResourceLocation
 import net.minecraftforge.registries.IForgeRegistryEntry
@@ -31,7 +32,7 @@ class EntryIndexMapper<T> where T : IForgeRegistryEntry<*>, T : IIndexedEntry {
     fun register(value: T): Int {
         val id = values.size
         values.add(value)
-        _names[value.registryName!!] = value
+        _names[value.regName] = value
         return id
     }
 }

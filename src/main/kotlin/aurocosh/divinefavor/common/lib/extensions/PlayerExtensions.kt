@@ -5,5 +5,5 @@ import aurocosh.divinefavor.common.custom_data.player.capability.PlayerDataDataH
 import net.minecraft.entity.player.EntityPlayer
 
 val EntityPlayer.divinePlayerData: IPlayerDataHandler
-    get() = this.getCapability(PlayerDataDataHandler.CAPABILITY_PLAYER_DATA!!, null)!!
+    get() = this.getCapability(PlayerDataDataHandler.CAPABILITY_PLAYER_DATA, null) as IPlayerDataHandler
 

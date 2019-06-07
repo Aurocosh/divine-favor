@@ -8,6 +8,7 @@ import net.minecraft.init.Blocks
 import net.minecraft.item.ItemBlock
 import net.minecraft.item.ItemStack
 import net.minecraft.item.crafting.FurnaceRecipes
+import net.minecraft.stats.StatBase
 import net.minecraft.stats.StatList
 import net.minecraft.util.EnumFacing
 import net.minecraft.util.EnumHand
@@ -78,7 +79,7 @@ object UtilBlock {
 
     private fun harvestBlockAndReplant(world: World, player: EntityPlayer, pos: BlockPos, state: IBlockState, fortune: Int) {
         val block = state.block
-        player.addStat(StatList.getBlockStats(block)!!)
+        player.addStat(StatList.getBlockStats(block) as StatBase)
         player.addExhaustion(0.005f)
 
         // first, try getting a seed from the drops, if we don't have one we don't replant

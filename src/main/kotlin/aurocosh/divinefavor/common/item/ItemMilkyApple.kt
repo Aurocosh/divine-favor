@@ -22,19 +22,19 @@ class ItemMilkyApple : ModItem("milky_apple", "milky_apple", ConstMainTabOrder.O
         creativeTab = DivineFavor.TAB_MAIN
     }
 
-    override fun onItemUseFinish(stack: ItemStack, worldIn: World, entityLiving: EntityLivingBase?): ItemStack {
+    override fun onItemUseFinish(stack: ItemStack, worldIn: World, entityLiving: EntityLivingBase): ItemStack {
         if (!worldIn.isRemote)
-            entityLiving!!.curePotionEffects(stack) // FORGE - move up so stack.shrink does not turn stack into air
+            entityLiving.curePotionEffects(stack) // FORGE - move up so stack.shrink does not turn stack into air
         if (entityLiving is EntityPlayerMP) {
-            val playerMP = entityLiving as EntityPlayerMP?
-            CriteriaTriggers.CONSUME_ITEM.trigger(playerMP!!, stack)
-            playerMP.addStat(StatList.getObjectUseStats(this)!!)
+            val statBase = StatList.getObjectUseStats(this) ?: return stack
+            entityLiving.addStat(statBase)
+            CriteriaTriggers.CONSUME_ITEM.trigger(entityLiving, stack)
         }
 
         if (entityLiving is EntityPlayer && !entityLiving.capabilities.isCreativeMode)
             stack.shrink(1)
 
-        return if (stack.isEmpty) ItemStack(Items.BUCKET) else stack
+        return stack
     }
 
     override fun getMaxItemUseDuration(stack: ItemStack?): Int {
@@ -45,7 +45,7 @@ class ItemMilkyApple : ModItem("milky_apple", "milky_apple", ConstMainTabOrder.O
         return EnumAction.EAT
     }
 
-    override fun onItemRightClick(worldIn: World?, playerIn: EntityPlayer, handIn: EnumHand): ActionResult<ItemStack> {
+    override fun onItemRightClick(worldIn: World, playerIn: EntityPlayer, handIn: EnumHand): ActionResult<ItemStack> {
         playerIn.activeHand = handIn
         return ActionResult(EnumActionResult.SUCCESS, playerIn.getHeldItem(handIn))
     }

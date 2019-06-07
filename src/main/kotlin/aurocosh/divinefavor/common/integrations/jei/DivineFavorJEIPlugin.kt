@@ -2,12 +2,9 @@ package aurocosh.divinefavor.common.integrations.jei
 
 import aurocosh.divinefavor.common.block.common.ModBlocks
 import aurocosh.divinefavor.common.core.ResourceNamer
-import aurocosh.divinefavor.common.item.base.ModItem
-import aurocosh.divinefavor.common.item.base.ModItemBlock
 import aurocosh.divinefavor.common.receipes.ImmaterialMediumRecipe
 import aurocosh.divinefavor.common.receipes.ModRecipes
 import aurocosh.divinefavor.common.registry.ModRegistries
-import mezz.jei.api.IGuiHelper
 import mezz.jei.api.IModPlugin
 import mezz.jei.api.IModRegistry
 import mezz.jei.api.JEIPlugin

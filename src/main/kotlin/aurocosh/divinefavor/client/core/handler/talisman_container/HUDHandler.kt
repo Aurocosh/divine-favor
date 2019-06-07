@@ -31,7 +31,7 @@ object HUDHandler {
         if (stack.isEmpty)
             return
 
-        val talismanContainer = TalismanContainerAdapter.getTalismanContainer(stack)!!
+        val talismanContainer = TalismanContainerAdapter.getTalismanContainer(stack) ?: return
 
         val mc = Minecraft.getMinecraft()
 

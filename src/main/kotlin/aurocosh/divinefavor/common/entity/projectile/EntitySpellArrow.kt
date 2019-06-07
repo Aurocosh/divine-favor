@@ -195,6 +195,7 @@ open class EntitySpellArrow : EntityArrow {
 
     override fun writeEntityToNBT(compound: NBTTagCompound) {
         super.writeEntityToNBT(compound)
+        val shooter = shooter
 
         compound.setInteger(TAG_COLOR, colorInt)
         compound.setInteger(TAG_ARROW_TYPE, arrowType.value)
@@ -203,7 +204,7 @@ open class EntitySpellArrow : EntityArrow {
         compound.setInteger(TAG_IGNORE_DELAY, entityIgnoreTicks)
         compound.setTag(TAG_TALISMAN_DATA_COMMON, talismanDataCommon)
         compound.setTag(TAG_TALISMAN_DATA_SERVER, this.talismanDataServer)
-        compound.setString(TAG_SHOOTER, if (shooter == null) "" else shooter!!.gameProfile.id.toString())
+        compound.setString(TAG_SHOOTER, if (shooter == null) "" else shooter.gameProfile.id.toString())
     }
 
     override fun readEntityFromNBT(compound: NBTTagCompound) {

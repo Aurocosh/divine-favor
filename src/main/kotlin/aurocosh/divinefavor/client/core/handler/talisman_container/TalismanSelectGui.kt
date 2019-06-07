@@ -53,7 +53,7 @@ class TalismanSelectGui : GuiScreen() {
         val player = DivineFavor.proxy.clientPlayer
         hand = UtilPlayer.getHandWithItem(player) { TalismanContainerAdapter.isItemValid(it) } ?: return
 
-        val talismanContainer = TalismanContainerAdapter.getTalismanContainer(player.getHeldItem(hand))!!
+        val talismanContainer = TalismanContainerAdapter.getTalismanContainer(player.getHeldItem(hand)) ?: return
 
         refreshStackData(talismanContainer)
         renderSpellMassSelector(mx, my, talismanContainer)
@@ -65,6 +65,9 @@ class TalismanSelectGui : GuiScreen() {
     }
 
     private fun renderSpellMassSelector(mx: Int, my: Int, talismanContainer: ITalismanContainer) {
+        val slotPositions = slotPositions ?: return
+        val allStacks = allStacks ?: return
+
         val x = width / 2
         val y = height / 2
 
@@ -75,7 +78,7 @@ class TalismanSelectGui : GuiScreen() {
         GlStateManager.translate(x.toFloat(), y.toFloat(), 0f)
         //        GlStateManager.color(1f, 1f, 1f);
 
-        UtilGui.drawPolyline(slotPositions!!, 0.3f, 0f, 1f, 0.3f)
+        UtilGui.drawPolyline(slotPositions, 0.3f, 0f, 1f, 0.3f)
 
         val mousePosition = Vector2i(mx - x, my - y)
         val closestPoint = UtilGui.findClosestPoint(mousePosition, activePositionMap.keys, mousePosition)
@@ -85,7 +88,7 @@ class TalismanSelectGui : GuiScreen() {
 
         GL11.glColor4f(1f, 1f, 1f, 1f)
         val currentSlotIndex = talismanContainer.selectedSlotIndex
-        val (x1, y1) = slotPositions!![currentSlotIndex]
+        val (x1, y1) = slotPositions[currentSlotIndex]
 
         mc.textureManager.bindTexture(marker)
         Gui.drawModalRectWithCustomSizedTexture(x1 - 8, y1 - 8, 0f, 0f, 16, 16, 16f, 16f)
@@ -94,8 +97,8 @@ class TalismanSelectGui : GuiScreen() {
         Gui.drawModalRectWithCustomSizedTexture(closestPoint.x - 8, closestPoint.y - 8, 0f, 0f, 16, 16, 16f, 16f)
 
         for (index in activePositionMap.values) {
-            val (x2, y2) = slotPositions!![index]
-            val stack = allStacks!![index]
+            val (x2, y2) = slotPositions[index]
+            val stack = allStacks[index]
             mc.renderItem.renderItemIntoGUI(stack, x2 - 8, y2 - 8)
         }
 
@@ -103,19 +106,19 @@ class TalismanSelectGui : GuiScreen() {
         GlStateManager.disableBlend()
     }
 
-    private fun refreshStackData(talismanContainer: ITalismanContainer?) {
+    private fun refreshStackData(talismanContainer: ITalismanContainer) {
         val k = 3 //scalar
         val a = 0.15 //a-value
         val aDec = -0.0008 // a-value change over time
 
         if (slotPositions == null || handler !== talismanContainer)
-            slotPositions = UtilGui.generateSpiral(talismanContainer!!.getSlotCount(), 4, k, a, aDec, 9.0, 7.0)
+            slotPositions = UtilGui.generateSpiral(talismanContainer.getSlotCount(), 4, k, a, aDec, 9.0, 7.0)
 
-        if (handler === talismanContainer && state == talismanContainer!!.getState())
+        if (handler === talismanContainer && state == talismanContainer.getState())
             return
 
         handler = talismanContainer
-        state = talismanContainer!!.getState()
+        state = talismanContainer.getState()
 
         allStacks = talismanContainer.getAllStacks()
 

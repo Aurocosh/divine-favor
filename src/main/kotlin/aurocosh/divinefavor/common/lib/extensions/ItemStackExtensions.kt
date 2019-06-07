@@ -13,7 +13,7 @@ var ItemStack.compound: NBTTagCompound
     }
     get() {
         if (this.hasTagCompound())
-            return this.tagCompound!!
+            return this.tagCompound as NBTTagCompound
 
         val nbt = NBTTagCompound()
         this.tagCompound = nbt
@@ -21,13 +21,15 @@ var ItemStack.compound: NBTTagCompound
     }
 
 fun ItemStack.checkForTag(tag: String): Boolean {
-    if (!this.hasTagCompound())
+    if(!this.hasTagCompound())
         return false
-    return this.tagCompound!!.hasKey(tag)
+    val compound = this.tagCompound as NBTTagCompound
+    return compound.hasKey(tag)
 }
 
 fun ItemStack.hasKey(vararg tags: String): Boolean {
-    if (!this.hasTagCompound())
+    if(!this.hasTagCompound())
         return false
-    return this.tagCompound!!.hasKey(*tags)
+    val compound = this.tagCompound as NBTTagCompound
+    return compound.hasKey(*tags)
 }

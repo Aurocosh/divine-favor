@@ -2,7 +2,6 @@ package aurocosh.divinefavor.common.integrations.patchouli.processors
 
 import aurocosh.divinefavor.DivineFavor
 import aurocosh.divinefavor.common.registry.mappers.ModMappers
-import aurocosh.divinefavor.common.spirit.base.ModSpirit
 import net.minecraft.client.resources.I18n
 import net.minecraft.item.Item
 import net.minecraft.item.ItemStack
@@ -28,8 +27,10 @@ class SpiritOfferingProcessor : IComponentProcessor {
     }
 
     override fun process(key: String): String? {
-        if (key.startsWith("offering") && offering != null) {
-            val stack = ItemStack(offering!!, count)
+        val offering = offering ?: return null
+
+        if (key.startsWith("offering")) {
+            val stack = ItemStack(offering, count)
             return ItemStackUtil.serializeStack(stack)
         } else if (key == "text") {
             return I18n.format("divinefavor:spirit_offering", count)

@@ -4,12 +4,15 @@ import aurocosh.divinefavor.common.config.common.ConfigSpells
 import aurocosh.divinefavor.common.item.talismans.spell.base.ItemSpellTalisman
 import aurocosh.divinefavor.common.item.talismans.spell.base.SpellOptions
 import aurocosh.divinefavor.common.item.talismans.spell.base.TalismanContext
+import aurocosh.divinefavor.common.lib.extensions.cap
+import aurocosh.divinefavor.common.lib.extensions.capNull
 import aurocosh.divinefavor.common.lib.extensions.getBlock
 import aurocosh.divinefavor.common.spirit.base.ModSpirit
 import aurocosh.divinefavor.common.util.UtilRandom
 import net.minecraft.init.Blocks
 import net.minecraft.item.crafting.FurnaceRecipes
 import net.minecraftforge.items.CapabilityItemHandler
+import net.minecraftforge.items.CapabilityItemHandler.ITEM_HANDLER_CAPABILITY
 import java.util.*
 
 class SpellTalismanCombustion(name: String, spirit: ModSpirit, favorCost: Int, options: EnumSet<SpellOptions>) : ItemSpellTalisman(name, spirit, favorCost, options) {
@@ -18,11 +21,11 @@ class SpellTalismanCombustion(name: String, spirit: ModSpirit, favorCost: Int, o
         if (context.world.getBlock(pos) !== Blocks.CHEST)
             return
 
-        val entity = context.world.getTileEntity(pos)
-        val stackHandler = entity!!.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, context.facing)
+        val entity = context.world.getTileEntity(pos) ?: return
+        val stackHandler = entity.capNull(ITEM_HANDLER_CAPABILITY, context.facing) ?: return
 
         var stacksToSmelt = ConfigSpells.combustion.maxStacksToSmelt
-        val slotCount = stackHandler!!.slots
+        val slotCount = stackHandler.slots
         var i = 0
         while (i < slotCount && stacksToSmelt > 0) {
             val stack = stackHandler.getStackInSlot(i)

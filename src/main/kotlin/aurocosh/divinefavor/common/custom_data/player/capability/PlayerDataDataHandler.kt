@@ -2,6 +2,8 @@ package aurocosh.divinefavor.common.custom_data.player.capability
 
 import aurocosh.divinefavor.common.core.ResourceNamer
 import aurocosh.divinefavor.common.custom_data.CustomDataStorage
+import aurocosh.divinefavor.common.custom_data.living.capability.ILivingDataHandler
+import aurocosh.divinefavor.common.custom_data.living.capability.LivingDataDataHandler
 import aurocosh.divinefavor.common.custom_data.player.data.aura.arboreal.ArborealAuraDataSerializer
 import aurocosh.divinefavor.common.custom_data.player.data.aura.calling.CallingAuraDataSerializer
 import aurocosh.divinefavor.common.custom_data.player.data.aura.charred.CharredAuraDataSerializer
@@ -50,7 +52,10 @@ class PlayerDataDataHandler {
         // The Capability field. Used for checks and references.
         // Initialized when forge registers the capability.
         @CapabilityInject(IPlayerDataHandler::class)
-        val CAPABILITY_PLAYER_DATA: Capability<IPlayerDataHandler>? = null
+        val capability: Capability<IPlayerDataHandler>? = null
+
+        val CAPABILITY_PLAYER_DATA: Capability<IPlayerDataHandler>
+            get() = capability as Capability<IPlayerDataHandler>
 
         // Handles all of the required registration for the capability.
         fun register() {
@@ -58,7 +63,7 @@ class PlayerDataDataHandler {
             MinecraftForge.EVENT_BUS.register(PlayerDataDataHandler())
         }
 
-        private fun getStorage() : Capability.IStorage<IPlayerDataHandler> {
+        private fun getStorage(): Capability.IStorage<IPlayerDataHandler> {
             val storage = CustomDataStorage<IPlayerDataHandler>()
             storage.addSerializer(SpiritDataSerializer(), IPlayerDataHandler::spiritData)
 
@@ -90,7 +95,7 @@ class PlayerDataDataHandler {
             storage.addSerializer(PredatoryPresenceDataSerializer(), IPlayerDataHandler::predatoryPresenceData)
             storage.addSerializer(ScorchingPresenceDataSerializer(), IPlayerDataHandler::scorchingPresenceData)
             storage.addSerializer(ToweringPresenceDataSerializer(), IPlayerDataHandler::toweringPresenceData)
-            
+
             return storage
         }
     }

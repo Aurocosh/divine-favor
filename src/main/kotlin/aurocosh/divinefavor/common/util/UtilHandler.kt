@@ -1,6 +1,5 @@
 package aurocosh.divinefavor.common.util
 
-import aurocosh.divinefavor.common.lib.extensions.asSequence
 import aurocosh.divinefavor.common.misc.SlotStack
 import net.minecraft.item.ItemStack
 import net.minecraftforge.items.IItemHandler

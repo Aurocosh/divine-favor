@@ -8,6 +8,8 @@ import aurocosh.divinefavor.common.custom_data.living.data.petrification.Petrifi
 import aurocosh.divinefavor.common.custom_data.living.data.soul_theft.SoulTheftDataSerializer
 import aurocosh.divinefavor.common.custom_data.living.data.suffocating_fumes.SuffocatingFumesDataSerializer
 import aurocosh.divinefavor.common.custom_data.living.data.wind_leash.WindLeashDataSerializer
+import aurocosh.divinefavor.common.custom_data.world.capability.IWorldDataHandler
+import aurocosh.divinefavor.common.custom_data.world.capability.WorldDataDataHandler
 import net.minecraft.entity.Entity
 import net.minecraft.entity.EntityLivingBase
 import net.minecraftforge.common.MinecraftForge
@@ -29,7 +31,10 @@ class LivingDataDataHandler {
         // The Capability field. Used for checks and references.
         // Initialized when forge registers the capability.
         @CapabilityInject(ILivingDataHandler::class)
-        val CAPABILITY_LIVING_DATA: Capability<ILivingDataHandler>? = null
+        val capability: Capability<ILivingDataHandler>? = null
+
+        val CAPABILITY_LIVING_DATA: Capability<ILivingDataHandler>
+            get() = capability as Capability<ILivingDataHandler>
 
         // Handles all of the required registration for the capability.
         fun register() {
@@ -37,14 +42,14 @@ class LivingDataDataHandler {
             MinecraftForge.EVENT_BUS.register(LivingDataDataHandler())
         }
 
-        private fun getStorage() : Capability.IStorage<ILivingDataHandler> {
+        private fun getStorage(): Capability.IStorage<ILivingDataHandler> {
             val storage = CustomDataStorage<ILivingDataHandler>()
-            storage.addSerializer(CurseDataSerializer(),ILivingDataHandler::curseData)
-            storage.addSerializer(LimpLegDataSerializer(),ILivingDataHandler::limpLegData)
-            storage.addSerializer(PetrificationDataSerializer(),ILivingDataHandler::petrificationData)
-            storage.addSerializer(SoulTheftDataSerializer(),ILivingDataHandler::soulTheftData)
-            storage.addSerializer(SuffocatingFumesDataSerializer(),ILivingDataHandler::suffocatingFumesData)
-            storage.addSerializer(WindLeashDataSerializer(),ILivingDataHandler::windLeashData)
+            storage.addSerializer(CurseDataSerializer(), ILivingDataHandler::curseData)
+            storage.addSerializer(LimpLegDataSerializer(), ILivingDataHandler::limpLegData)
+            storage.addSerializer(PetrificationDataSerializer(), ILivingDataHandler::petrificationData)
+            storage.addSerializer(SoulTheftDataSerializer(), ILivingDataHandler::soulTheftData)
+            storage.addSerializer(SuffocatingFumesDataSerializer(), ILivingDataHandler::suffocatingFumesData)
+            storage.addSerializer(WindLeashDataSerializer(), ILivingDataHandler::windLeashData)
             return storage
         }
     }

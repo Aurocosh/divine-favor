@@ -5,10 +5,11 @@ import aurocosh.divinefavor.common.constants.ConstGuiIDs
 import aurocosh.divinefavor.common.constants.ConstMainTabOrder
 import aurocosh.divinefavor.common.item.base.ModItem
 import aurocosh.divinefavor.common.item.common.ModItems
-import aurocosh.divinefavor.common.item.talisman_container.grimoire.capability.GrimoireDataHandler
+import aurocosh.divinefavor.common.item.talisman_container.grimoire.capability.GrimoireDataHandler.CAPABILITY_GRIMOIRE
 import aurocosh.divinefavor.common.item.talisman_container.grimoire.capability.GrimoireProvider
 import aurocosh.divinefavor.common.item.talisman_container.grimoire.capability.GrimoireStorage
 import aurocosh.divinefavor.common.item.talismans.spell.base.ItemSpellTalisman
+import aurocosh.divinefavor.common.lib.extensions.cap
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.item.ItemStack
 import net.minecraft.nbt.NBTTagCompound
@@ -31,8 +32,8 @@ class ItemGrimoire : ModItem("grimoire", "grimoire", ConstMainTabOrder.CONTAINER
         if (stack.item !is ItemGrimoire)
             return EnumActionResult.PASS
 
-        val grimoireHandler = GrimoireDataHandler.get(stack)
-        val talismanStack = grimoireHandler!!.getSelectedStack()
+        val grimoireHandler = stack.cap(CAPABILITY_GRIMOIRE)
+        val talismanStack = grimoireHandler.getSelectedStack()
         if (talismanStack.isEmpty)
             return EnumActionResult.PASS
 
@@ -51,8 +52,8 @@ class ItemGrimoire : ModItem("grimoire", "grimoire", ConstMainTabOrder.CONTAINER
             return ActionResult(EnumActionResult.SUCCESS, stack)
         }
 
-        val grimoireHandler = GrimoireDataHandler.get(stack)
-        val talismanStack = grimoireHandler!!.getSelectedStack()
+        val grimoireHandler = stack.cap(CAPABILITY_GRIMOIRE)
+        val talismanStack = grimoireHandler.getSelectedStack()
         if (talismanStack.isEmpty)
             return ActionResult(EnumActionResult.PASS, stack)
 
@@ -74,8 +75,8 @@ class ItemGrimoire : ModItem("grimoire", "grimoire", ConstMainTabOrder.CONTAINER
         if (tag == null)
             tag = NBTTagCompound()
 
-        val grimoireHandler = GrimoireDataHandler.get(stack)
-        val tagShare = GrimoireStorage.getNbtBase(grimoireHandler!!)
+        val grimoireHandler = stack.cap(CAPABILITY_GRIMOIRE)
+        val tagShare = GrimoireStorage.getNbtBase(grimoireHandler)
         tag.setTag(TAG_SHARE, tagShare)
         return tag
     }
@@ -85,14 +86,14 @@ class ItemGrimoire : ModItem("grimoire", "grimoire", ConstMainTabOrder.CONTAINER
         if (nbt == null)
             return
 
-        val grimoireHandler = GrimoireDataHandler.get(stack)
+        val grimoireHandler = stack.cap(CAPABILITY_GRIMOIRE)
         val tagShare = nbt.getCompoundTag(TAG_SHARE)
-        GrimoireStorage.readNbtBase(grimoireHandler!!, tagShare)
+        GrimoireStorage.readNbtBase(grimoireHandler, tagShare)
     }
 
     companion object {
-        val SLOT_COUNT = 27
-        private val TAG_SHARE = "Grimoire"
+        const val SLOT_COUNT = 27
+        private const val TAG_SHARE = "Grimoire"
     }
 }
 

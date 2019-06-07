@@ -6,8 +6,10 @@ import aurocosh.divinefavor.common.constants.ConstMainTabOrder
 import aurocosh.divinefavor.common.item.base.ModItem
 import aurocosh.divinefavor.common.item.common.ModItems
 import aurocosh.divinefavor.common.item.talisman_container.spell_bow.capability.SpellBowDataHandler
+import aurocosh.divinefavor.common.item.talisman_container.spell_bow.capability.SpellBowDataHandler.CAPABILITY_SPELL_BOW
 import aurocosh.divinefavor.common.item.talisman_container.spell_bow.capability.SpellBowProvider
 import aurocosh.divinefavor.common.item.talisman_container.spell_bow.capability.SpellBowStorage
+import aurocosh.divinefavor.common.lib.extensions.cap
 import aurocosh.divinefavor.common.lib.extensions.compound
 import aurocosh.divinefavor.common.util.UtilBow
 import aurocosh.divinefavor.common.util.UtilPlayer
@@ -80,7 +82,7 @@ class ItemSpellBow : ModItem("spell_bow", "spell_bow/spell_bow", ConstMainTabOrd
 
         val stackIsInfinite = entityLiving.capabilities.isCreativeMode || arrowStack.item is ItemArrow && (arrowStack.item as ItemArrow).isInfinite(arrowStack, bowStack, entityLiving)
         if (!world.isRemote) {
-            val talisman = SpellBowDataHandler.get(bowStack)!!.getSelectedTalisman()
+            val talisman = bowStack.cap(CAPABILITY_SPELL_BOW).getSelectedTalisman()
             val entityArrow =
                     if (talisman != null && talisman.claimCost(world, entityLiving))
                         talisman.createArrow(world, talisman, entityLiving)
@@ -197,8 +199,8 @@ class ItemSpellBow : ModItem("spell_bow", "spell_bow/spell_bow", ConstMainTabOrd
         if (tag == null)
             tag = NBTTagCompound()
 
-        val bowHandler = SpellBowDataHandler.get(stack)
-        val tagShare = SpellBowStorage.getNbtBase(bowHandler!!)
+        val bowHandler = stack.cap(CAPABILITY_SPELL_BOW)
+        val tagShare = SpellBowStorage.getNbtBase(bowHandler)
         tag.setTag(TAG_SHARE, tagShare)
         return tag
     }
@@ -207,9 +209,9 @@ class ItemSpellBow : ModItem("spell_bow", "spell_bow/spell_bow", ConstMainTabOrd
         super.readNBTShareTag(stack, nbt)
         if (nbt == null)
             return
-        val bowHandler = SpellBowDataHandler.get(stack)
+        val bowHandler = stack.cap(CAPABILITY_SPELL_BOW)
         val tagShare = nbt.getCompoundTag(TAG_SHARE)
-        SpellBowStorage.readNbtBase(bowHandler!!, tagShare)
+        SpellBowStorage.readNbtBase(bowHandler, tagShare)
     }
 
     companion object {

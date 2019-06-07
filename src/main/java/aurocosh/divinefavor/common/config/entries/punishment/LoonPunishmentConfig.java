@@ -5,7 +5,6 @@ import aurocosh.divinefavor.common.lib.builders.map.Maps;
 import aurocosh.divinefavor.common.util.UtilTick;
 import net.minecraftforge.common.config.Config;
 
-import java.util.HashMap;
 import java.util.Map;
 
 public class LoonPunishmentConfig {

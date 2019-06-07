@@ -111,11 +111,11 @@ val <T> Iterable<T>.S: Sequence<T>
 val <T> Array<out T>.S: Sequence<T>
     get() = this.asSequence()
 
-public inline fun <T> Iterable<T>.process(processor: (T) -> Any): List<T> {
+inline fun <T> Iterable<T>.process(processor: (T) -> Any): List<T> {
     return this.map { processor.invoke(it); it }
 }
 
-public fun <T> Sequence<T>.process(processor: (T) -> Any): Sequence<T> {
+fun <T> Sequence<T>.process(processor: (T) -> Any): Sequence<T> {
     return this.map { processor.invoke(it); it }
 }
 

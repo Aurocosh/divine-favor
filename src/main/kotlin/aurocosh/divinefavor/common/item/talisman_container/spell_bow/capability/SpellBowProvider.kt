@@ -7,7 +7,7 @@ import net.minecraftforge.common.capabilities.ICapabilitySerializable
 import net.minecraftforge.items.CapabilityItemHandler
 
 class SpellBowProvider : ICapabilitySerializable<NBTTagCompound> {
-    internal var instance = SpellBowDataHandler.CAPABILITY_SPELL_BOW!!.defaultInstance
+    internal var instance = SpellBowDataHandler.CAPABILITY_SPELL_BOW.defaultInstance
 
     override fun hasCapability(capability: Capability<*>, facing: EnumFacing?): Boolean {
         return if (capability === SpellBowDataHandler.CAPABILITY_SPELL_BOW) true else capability === CapabilityItemHandler.ITEM_HANDLER_CAPABILITY
@@ -20,12 +20,12 @@ class SpellBowProvider : ICapabilitySerializable<NBTTagCompound> {
     }
 
     override fun serializeNBT(): NBTTagCompound {
-        val storage = SpellBowDataHandler.CAPABILITY_SPELL_BOW!!.storage
+        val storage = SpellBowDataHandler.CAPABILITY_SPELL_BOW.storage
         return storage.writeNBT(SpellBowDataHandler.CAPABILITY_SPELL_BOW, instance, null) as NBTTagCompound
     }
 
     override fun deserializeNBT(nbt: NBTTagCompound) {
-        val storage = SpellBowDataHandler.CAPABILITY_SPELL_BOW!!.storage
+        val storage = SpellBowDataHandler.CAPABILITY_SPELL_BOW.storage
         storage.readNBT(SpellBowDataHandler.CAPABILITY_SPELL_BOW, instance, null, nbt)
     }
 }

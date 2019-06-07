@@ -18,7 +18,6 @@ class PotionFallNegation : ModPotionCharge("fall_negation", 0x7FB8A4) {
     }
 
     companion object {
-
         @SubscribeEvent
         fun onPlayerLand(event: LivingFallEvent) {
             val entity = event.entityLiving as? EntityPlayer ?: return
@@ -33,7 +32,7 @@ class PotionFallNegation : ModPotionCharge("fall_negation", 0x7FB8A4) {
             entity.fallDistance = 0f
             //event.setCanceled(true);
 
-            val effectCharge = (entity.getActivePotionEffect(ModPotions.fall_negation) as ModEffectCharge?)!!
+            val effectCharge = (entity.getActivePotionEffect(ModPotions.fall_negation) as ModEffectCharge?) ?: return
             val charges = effectCharge.consumeCharge()
             MessageSyncPotionCharge(ModPotions.fall_negation, charges).sendTo(entity)
         }

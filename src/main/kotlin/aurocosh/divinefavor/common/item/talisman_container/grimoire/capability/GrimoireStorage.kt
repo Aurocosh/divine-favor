@@ -17,8 +17,8 @@ class GrimoireStorage : Capability.IStorage<IGrimoireHandler> {
     }
 
     companion object {
-        private val TAG_SELECTED_SLOT = "SelectedSlot"
-        private val TAG_INVENTORY = "Inventory"
+        private const val TAG_SELECTED_SLOT = "SelectedSlot"
+        private const val TAG_INVENTORY = "Inventory"
 
         fun getNbtBase(instance: IGrimoireHandler): NBTTagCompound {
             val tag = NBTTagCompound()

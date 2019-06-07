@@ -6,7 +6,6 @@ import aurocosh.divinefavor.common.lib.extensions.divineLivingData
 import aurocosh.divinefavor.common.registry.ModRegistries
 import aurocosh.divinefavor.common.util.UtilGui
 import net.minecraft.client.Minecraft
-import net.minecraft.entity.Entity
 import net.minecraft.entity.EntityLivingBase
 import net.minecraft.entity.ai.attributes.AbstractAttributeMap
 import net.minecraft.init.Items

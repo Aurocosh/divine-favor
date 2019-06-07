@@ -44,7 +44,7 @@ object DivineFavor {
     @Mod.EventHandler
     fun preInit(event: FMLPreInitializationEvent) {
         logger = LogManager.getLogger()
-        container = Loader.instance().modObjectList.inverse()[instance]!!
+        container = Loader.instance().modObjectList.inverse()[instance] as ModContainer
 
         TAB_MAIN = DivineFavorCreativeTab()
         TAB_GEMS = DivineFavorCreativeTabGems()

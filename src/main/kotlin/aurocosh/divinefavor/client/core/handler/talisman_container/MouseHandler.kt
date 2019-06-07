@@ -24,15 +24,15 @@ object MouseHandler {
             return
 
         val player = DivineFavor.proxy.clientPlayer
-        val hand = UtilPlayer.getHandWithItem(player) { TalismanContainerAdapter.isItemValid(it) }
-                ?: return
+        val hand = UtilPlayer.getHandWithItem(player) { TalismanContainerAdapter.isItemValid(it) } ?: return
 
         val stack = player.getHeldItem(hand)
-        val talismanContainer = TalismanContainerAdapter.getTalismanContainer(stack)
+        val talismanContainer = TalismanContainerAdapter.getTalismanContainer(stack) ?: return
+
         if (dWheel < 0)
-            talismanContainer!!.switchToPrevious()
+            talismanContainer.switchToPrevious()
         else
-            talismanContainer!!.switchToNext()
+            talismanContainer.switchToNext()
         val playerSlot = if (hand == EnumHand.OFF_HAND) 40 else player.inventory.currentItem
         TalismanContainerAdapter.selectSlot(playerSlot, talismanContainer.selectedSlotIndex)
         event.isCanceled = true

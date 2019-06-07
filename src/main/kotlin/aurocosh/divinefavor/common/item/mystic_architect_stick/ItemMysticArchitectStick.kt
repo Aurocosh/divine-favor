@@ -3,10 +3,7 @@ package aurocosh.divinefavor.common.item.mystic_architect_stick
 import aurocosh.divinefavor.DivineFavor
 import aurocosh.divinefavor.common.constants.ConstMainTabOrder
 import aurocosh.divinefavor.common.item.base.ModItem
-import aurocosh.divinefavor.common.lib.extensions.hasKey
-import aurocosh.divinefavor.common.lib.extensions.compound
-import aurocosh.divinefavor.common.lib.extensions.getBlockPos
-import aurocosh.divinefavor.common.lib.extensions.setBlockPos
+import aurocosh.divinefavor.common.lib.extensions.*
 import aurocosh.divinefavor.common.lib.math.CubeCoordinates
 import aurocosh.divinefavor.common.muliblock.MultiBlockPart
 import aurocosh.divinefavor.common.muliblock.serialization.BlockPosToByteSerializer
@@ -81,10 +78,9 @@ class ItemMysticArchitectStick : ModItem("mystic_architect_stick", "mystic_archi
             compound.removeTag(TAG_AIR_TYPE)
             DivineFavor.proxy.clientPlayer.sendMessage(TextComponentString("Air block marker cleared"))
         } else {
-            val block = worldIn.getBlockState(pos!!).block
-            val name = block.registryName!!.toString()
-            compound.setString(TAG_AIR_TYPE, name)
-            DivineFavor.proxy.clientPlayer.sendMessage(TextComponentString("Air block marker setValue to: $name"))
+            val block: Block = worldIn.getBlockState(pos!!).block
+            compound.setString(TAG_AIR_TYPE, block.name)
+            DivineFavor.proxy.clientPlayer.sendMessage(TextComponentString("Air block marker setValue to: ${block.name}"))
         }
     }
 
