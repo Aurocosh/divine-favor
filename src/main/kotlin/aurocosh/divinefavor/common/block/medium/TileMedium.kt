@@ -4,6 +4,7 @@ import aurocosh.divinefavor.common.block.base.TickableTileEntity
 import aurocosh.divinefavor.common.item.calling_stones.ItemCallingStone
 import aurocosh.divinefavor.common.item.calling_stones.ModCallingStones
 import aurocosh.divinefavor.common.item.common.ModItems
+import aurocosh.divinefavor.common.lib.extensions.S
 import aurocosh.divinefavor.common.misc.SlotStack
 import aurocosh.divinefavor.common.muliblock.IMultiblockController
 import aurocosh.divinefavor.common.muliblock.common.MultiblockWatcher
@@ -27,6 +28,7 @@ import net.minecraftforge.items.IItemHandler
 import net.minecraftforge.items.ItemStackHandler
 import net.minecraftforge.items.wrapper.CombinedInvWrapper
 import java.util.*
+import java.util.Arrays.asList
 
 class TileMedium : TickableTileEntity(false, true), IMultiblockController {
     private var state = MediumState.INVALID
@@ -191,7 +193,7 @@ class TileMedium : TickableTileEntity(false, true), IMultiblockController {
 
     override fun updateFiltered() {
         val stoneStack = stoneStack
-        if (!stoneStack.isEmpty) {
+        if (!stoneStack.isEmpty && multiBlockInstance != null) {
             val callingStone = stoneStack.item as ItemCallingStone
             val slotStacks = UtilHandler.getNotEmptyStacksWithSlotIndexes(combinedHandler)
             checkForOfferings(callingStone, slotStacks)
@@ -225,24 +227,12 @@ class TileMedium : TickableTileEntity(false, true), IMultiblockController {
             if (stack.item === ModItems.ritual_pouch) {
                 val handler = stack.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null)
                 if (handler != null)
-                    exchangeRecipe(callingStone, handler, 3)
+                    ModRecipes.exchangeRecipe(callingStone, handler, slotIndexesPouch)
             }
         }
 
-        exchangeRecipe(callingStone, leftStackHandler, 4)
-        exchangeRecipe(callingStone, rightStackHandler, 4)
-    }
-
-    private fun exchangeRecipe(callingStone: ItemCallingStone, stackHandler: IItemHandler, resultIndex: Int) {
-        val slotStacks = UtilHandler.getNotEmptyStacksWithSlotIndexes(stackHandler)
-        val stacks = slotStacks.map { (_, stack) -> stack }
-
-        val result = ModRecipes.getRecipeResult(callingStone, stacks)
-        if (result == ItemStack.EMPTY)
-            return
-        for ((index, stack) in slotStacks)
-            stackHandler.extractItem(index, stack.count, false)
-        stackHandler.insertItem(resultIndex, result, false)
+        ModRecipes.exchangeRecipe(callingStone, leftStackHandler, slotIndexesAltar)
+        ModRecipes.exchangeRecipe(callingStone, rightStackHandler, slotIndexesAltar)
     }
 
     override fun getMultiblockInstance(): MultiBlockInstance? {
@@ -339,5 +329,9 @@ class TileMedium : TickableTileEntity(false, true), IMultiblockController {
         private const val TAG_STATE_MEDIUM = "StateMedium"
         private const val TAG_STONE_MEDIUM = "StoneMedium"
         private const val TAG_EXTRA_ACTIVE_TIME = "ExtraActiveTime"
+
+        private val slotIndexesPouch = asList(3, 1, 5, 0, 2, 4, 6)
+        private val slotIndexesAltar = asList(4, 1, 3, 5, 7, 0, 2, 6, 8)
+
     }
 }

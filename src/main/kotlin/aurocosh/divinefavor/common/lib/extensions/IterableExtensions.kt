@@ -13,6 +13,7 @@ import kotlin.collections.map
 import kotlin.collections.mapTo
 import kotlin.collections.ArrayList as ArrayList1
 
+
 inline fun <T> Iterable<T>.split(predicate: (T) -> Boolean): Pair<List<T>, List<T>> {
     val selected = ArrayList<T>()
     val rejected = ArrayList<T>()
@@ -109,3 +110,14 @@ val <T> Iterable<T>.S: Sequence<T>
 
 val <T> Array<out T>.S: Sequence<T>
     get() = this.asSequence()
+
+public inline fun <T> Iterable<T>.process(processor: (T) -> Any): List<T> {
+    return this.map { processor.invoke(it); it }
+}
+
+public fun <T> Sequence<T>.process(processor: (T) -> Any): Sequence<T> {
+    return this.map { processor.invoke(it); it }
+}
+
+
+
