@@ -1,4 +1,5 @@
 package aurocosh.divinefavor.common.core.proxy
+
 import aurocosh.divinefavor.DivineFavor
 import aurocosh.divinefavor.common.block.common.ModBlocks
 import aurocosh.divinefavor.common.custom_data.living.capability.LivingDataDataHandler
@@ -12,6 +13,7 @@ import aurocosh.divinefavor.common.item.contract.ModContracts
 import aurocosh.divinefavor.common.item.favor_marks.ModFavorMarks
 import aurocosh.divinefavor.common.item.soul_shards.ModSoulShards
 import aurocosh.divinefavor.common.item.talisman_container.grimoire.capability.GrimoireDataHandler
+import aurocosh.divinefavor.common.item.talisman_container.spell_blade.capability.SpellBladeDataHandler
 import aurocosh.divinefavor.common.item.talisman_container.spell_bow.capability.SpellBowDataHandler
 import aurocosh.divinefavor.common.item.talismans.arrow.common.ModArrowTalismans
 import aurocosh.divinefavor.common.item.talismans.spell.common.ModSpellTalismans
@@ -75,8 +77,9 @@ open class CommonProxy {
         PlayerDataDataHandler.register()
         WorldDataDataHandler.register()
 
-        GrimoireDataHandler.register()
+        SpellBladeDataHandler.register()
         SpellBowDataHandler.register()
+        GrimoireDataHandler.register()
 
         NetworkRegistry.INSTANCE.registerGuiHandler(DivineFavor, GuiHandler())
     }

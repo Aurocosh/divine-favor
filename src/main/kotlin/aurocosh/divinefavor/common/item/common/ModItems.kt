@@ -1,5 +1,6 @@
 package aurocosh.divinefavor.common.item.common
 
+import aurocosh.divinefavor.common.constants.ConstMainTabOrder
 import aurocosh.divinefavor.common.entity.rope.*
 import aurocosh.divinefavor.common.entity.rope.base.EntityRopeNodeBase
 import aurocosh.divinefavor.common.item.*
@@ -12,6 +13,7 @@ import aurocosh.divinefavor.common.item.ritual_pouch.ItemRitualPouch
 import aurocosh.divinefavor.common.item.rope.ItemRope
 import aurocosh.divinefavor.common.item.storage_gem.ItemStorageGem
 import aurocosh.divinefavor.common.item.talisman_container.grimoire.ItemGrimoire
+import aurocosh.divinefavor.common.item.talisman_container.spell_blade.ItemSpellBlade
 import aurocosh.divinefavor.common.item.talisman_container.spell_bow.ItemSpellBow
 
 object ModItems {
@@ -40,6 +42,9 @@ object ModItems {
     lateinit var rope_inert: ModItem
     lateinit var rope_teleporting: ModItem
 
+    lateinit var spell_blade_green : ModItem
+    lateinit var spell_blade_red : ModItem
+
     fun preInit() {
         banishing_wand = ItemBanishingWand()
         bone_dagger = ItemBoneDagger()
@@ -63,8 +68,10 @@ object ModItems {
         rope_glowing = object : ItemRope<EntityRopeGlowingNode>("rope_glowing", "ropes/glowing", EntityRopeGlowingNode::class.java, EntityRopeNodeBase.ROPE_LENGTH) {}
         rope_guide = object : ItemRope<EntityRopeGuideNode>("rope_guide", "ropes/guide", EntityRopeGuideNode::class.java, EntityRopeNodeBase.ROPE_LENGTH) {}
         rope_inert = object : ItemRope<EntityRopeInertNode>("rope_inert", "ropes/inert", EntityRopeInertNode::class.java, EntityRopeNodeBase.ROPE_LENGTH) {}
-        rope_teleporting = object : ItemRope<EntityRopeTeleportingNode>("rope_teleporting", "ropes/teleporting", EntityRopeTeleportingNode::class.java, EntityRopeNodeBase.ROPE_LENGTH) {
-        }
+        rope_teleporting = object : ItemRope<EntityRopeTeleportingNode>("rope_teleporting", "ropes/teleporting", EntityRopeTeleportingNode::class.java, EntityRopeNodeBase.ROPE_LENGTH) {}
+
+        spell_blade_green = ItemSpellBlade("spell_blade_green", "spell_blade_green/model", ConstMainTabOrder.DAGGERS)
+        spell_blade_red = ItemSpellBlade("spell_blade_red", "spell_blade_red/model", ConstMainTabOrder.DAGGERS)
     }
 
     fun init() {

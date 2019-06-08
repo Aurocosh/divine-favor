@@ -1,8 +1,6 @@
 package aurocosh.divinefavor.common.custom_data.world.capability
 
 import aurocosh.divinefavor.common.core.ResourceNamer
-import aurocosh.divinefavor.common.item.talisman_container.grimoire.capability.GrimoireDataHandler
-import aurocosh.divinefavor.common.item.talisman_container.grimoire.capability.IGrimoireHandler
 import net.minecraft.world.World
 import net.minecraftforge.common.MinecraftForge
 import net.minecraftforge.common.capabilities.Capability

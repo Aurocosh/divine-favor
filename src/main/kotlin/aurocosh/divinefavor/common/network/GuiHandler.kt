@@ -6,10 +6,7 @@ import aurocosh.divinefavor.client.gui.blocks.medium.GuiIronMediumWithStone
 import aurocosh.divinefavor.client.gui.blocks.soulbound_lectern.GuiSoulboundLecternActive
 import aurocosh.divinefavor.client.gui.blocks.soulbound_lectern.GuiSoulboundLecternEmpty
 import aurocosh.divinefavor.client.gui.blocks.soulbound_lectern.GuiSoulboundLecternWithShard
-import aurocosh.divinefavor.client.gui.items.GuiContractBinder
-import aurocosh.divinefavor.client.gui.items.GuiGrimoire
-import aurocosh.divinefavor.client.gui.items.GuiRitualPouch
-import aurocosh.divinefavor.client.gui.items.GuiSpellBow
+import aurocosh.divinefavor.client.gui.items.*
 import aurocosh.divinefavor.common.block.bath_heater.ContainerBathHeater
 import aurocosh.divinefavor.common.block.bath_heater.TileBathHeater
 import aurocosh.divinefavor.common.block.medium.ContainerMediumNoStone
@@ -23,8 +20,11 @@ import aurocosh.divinefavor.common.constants.ConstGuiIDs
 import aurocosh.divinefavor.common.item.contract_binder.ContractBinderContainer
 import aurocosh.divinefavor.common.item.ritual_pouch.RitualBagContainer
 import aurocosh.divinefavor.common.item.talisman_container.grimoire.GrimoireContainer
+import aurocosh.divinefavor.common.item.talisman_container.spell_blade.SpellBladeContainer
 import aurocosh.divinefavor.common.item.talisman_container.grimoire.ItemGrimoire
 import aurocosh.divinefavor.common.item.talisman_container.grimoire.capability.GrimoireDataHandler.CAPABILITY_GRIMOIRE
+import aurocosh.divinefavor.common.item.talisman_container.spell_blade.capability.SpellBladeDataHandler.CAPABILITY_SPELL_BLADE
+import aurocosh.divinefavor.common.item.talisman_container.spell_blade.ItemSpellBlade
 import aurocosh.divinefavor.common.item.talisman_container.spell_bow.ItemSpellBow
 import aurocosh.divinefavor.common.item.talisman_container.spell_bow.SpellBowContainer
 import aurocosh.divinefavor.common.item.talisman_container.spell_bow.capability.SpellBowDataHandler.CAPABILITY_SPELL_BOW
@@ -57,6 +57,12 @@ class GuiHandler : IGuiHandler {
                 val handler = stack.cap(CAPABILITY_GRIMOIRE)
                 return GrimoireContainer(player, handler, hand)
             }
+            ConstGuiIDs.SPELL_BLADE -> {
+                val hand = UtilPlayer.getHand { h -> player.getHeldItem(h).item is ItemSpellBlade } ?: return null
+                val stack = player.getHeldItem(hand)
+                val handler = stack.cap(CAPABILITY_SPELL_BLADE)
+                return SpellBladeContainer(player, handler, hand)
+            }
             ConstGuiIDs.SPELL_BOW -> {
                 val hand = UtilPlayer.getHand { h -> player.getHeldItem(h).item is ItemSpellBow } ?: return null
                 val stack = player.getHeldItem(hand)
@@ -87,6 +93,11 @@ class GuiHandler : IGuiHandler {
                 val hand = UtilPlayer.getHand { h -> player.getHeldItem(h).item is ItemGrimoire } ?: return null
                 val stack = player.getHeldItem(hand)
                 return GuiGrimoire(player, stack, hand)
+            }
+            ConstGuiIDs.SPELL_BLADE -> {
+                val hand = UtilPlayer.getHand { h -> player.getHeldItem(h).item is ItemSpellBlade } ?: return null
+                val stack = player.getHeldItem(hand)
+                return GuiSpellBlade(player, stack, hand)
             }
             ConstGuiIDs.SPELL_BOW -> {
                 val hand = UtilPlayer.getHand { h -> player.getHeldItem(h).item is ItemSpellBow } ?: return null

@@ -1,0 +1,14 @@
+{
+    "parent": "item/handheld",
+    "textures": {
+        "layer0": "divinefavor:items/spell_blade/blade_green"
+    },
+    "overrides": [
+		{
+            "predicate": {
+                "book_mode": 1
+            },
+            "model": "divinefavor:item/spell_blade_green/book"
+        }
+    ]
+}

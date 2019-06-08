@@ -72,10 +72,12 @@ item.divinefavor:bone_key.name=Bone key
 item.divinefavor:mystic_architect_stick.name=Mystic architect stick
 
 ## CONTAINERS
-item.divinefavor:grimoire.name=Grimoire
-item.divinefavor:spell_bow.name=Spell bow
-item.divinefavor:ritual_pouch.name=Ritual pouch
 item.divinefavor:contract_binder.name=Contract binder
+item.divinefavor:grimoire.name=Grimoire
+item.divinefavor:ritual_pouch.name=Ritual pouch
+item.divinefavor:spell_blade_green.name=Spell blade
+item.divinefavor:spell_blade_red.name=Spell blade
+item.divinefavor:spell_bow.name=Spell bow
 
 ## CONSUMABLES
 item.divinefavor:milky_apple.name=Milky apple
@@ -410,10 +412,12 @@ item.divinefavor:bone_key.description=Tool used for reactivation of damaged mult
 item.divinefavor:mystic_architect_stick.description=Debug item. Creative only.
 
 ## CONTAINERS
-item.divinefavor:grimoire.description=Spell talisman container. Can be used to store and use large quantity of spell talismans.
-item.divinefavor:spell_bow.description=Arrow talisman container. Can be used to store and use large quantity of arrow talismans.
-item.divinefavor:ritual_pouch.description=Item used for spiritual trade at spirit altars. Right click to open and put inside stuff that you want to trade.
 item.divinefavor:contract_binder.description=Stores contracts inside. Can be placed into soulbound lecterns.
+item.divinefavor:grimoire.description=Spell talisman container. Can be used to store and use large quantity of spell talismans.
+item.divinefavor:ritual_pouch.description=Item used for spiritual trade at spirit altars. Right click to open and put inside stuff that you want to trade.
+item.divinefavor:spell_blade_green.description=Spell talisman container. Can be used to store and use large quantity of spell talismans.
+item.divinefavor:spell_blade_red.description=Spell talisman container. Can be used to store and use large quantity of spell talismans.
+item.divinefavor:spell_bow.description=Arrow talisman container. Can be used to store and use large quantity of arrow talismans.
 
 ## CONSUMABLES
 item.divinefavor:milky_apple.description=Removes all curses when consumed

@@ -27,9 +27,10 @@ object ConstResources {
     const val GUI_EVIL_EYE_BLUR = PREFIX_GUI + "evil_eye_blur.png"
     const val GUI_PRISMATIC_EYES_BLUR = PREFIX_GUI + "prismatic_eyes_blur.png"
 
-    const val GUI_GRIMOIRE = PREFIX_GUI + "grimoire/grimoire.png"
-    const val GUI_GRIMOIRE_SELECTOR = PREFIX_GUI + "grimoire/selector.png"
-    const val GUI_GRIMOIRE_MARKER = PREFIX_GUI + "grimoire/marker.png"
+    const val GUI_SPELL_BLADE = PREFIX_GUI + "talisman_tools/spell_blade.png"
+    const val GUI_GRIMOIRE = PREFIX_GUI + "talisman_tools/grimoire.png"
+    const val GUI_GRIMOIRE_SELECTOR = PREFIX_GUI + "talisman_tools/selector.png"
+    const val GUI_GRIMOIRE_MARKER = PREFIX_GUI + "talisman_tools/marker.png"
 
     const val GUI_IMMATERIAL_MEDIUM_NO_STONE = PREFIX_GUI + "immaterial_medium/no_stone.png"
     const val GUI_IMMATERIAL_MEDIUM_WITH_STONE = PREFIX_GUI + "immaterial_medium/with_stone.png"

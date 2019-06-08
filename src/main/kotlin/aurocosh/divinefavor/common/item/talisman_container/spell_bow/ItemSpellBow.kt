@@ -5,7 +5,6 @@ import aurocosh.divinefavor.common.constants.ConstGuiIDs
 import aurocosh.divinefavor.common.constants.ConstMainTabOrder
 import aurocosh.divinefavor.common.item.base.ModItem
 import aurocosh.divinefavor.common.item.common.ModItems
-import aurocosh.divinefavor.common.item.talisman_container.spell_bow.capability.SpellBowDataHandler
 import aurocosh.divinefavor.common.item.talisman_container.spell_bow.capability.SpellBowDataHandler.CAPABILITY_SPELL_BOW
 import aurocosh.divinefavor.common.item.talisman_container.spell_bow.capability.SpellBowProvider
 import aurocosh.divinefavor.common.item.talisman_container.spell_bow.capability.SpellBowStorage
@@ -142,21 +141,21 @@ class ItemSpellBow : ModItem("spell_bow", "spell_bow/spell_bow", ConstMainTabOrd
     /**
      * Called when the equipped item is right clicked.
      */
-    override fun onItemRightClick(worldIn: World?, playerIn: EntityPlayer, handIn: EnumHand): ActionResult<ItemStack> {
-        val itemStack = playerIn.getHeldItem(handIn)
+    override fun onItemRightClick(world: World, player: EntityPlayer, hand: EnumHand): ActionResult<ItemStack> {
+        val itemStack = player.getHeldItem(hand)
         if (itemStack.item !is ItemSpellBow)
             return ActionResult(EnumActionResult.PASS, itemStack)
 
         val compound = itemStack.compound
         val isBook = compound.getBoolean(TAG_IS_IN_BOOK_MODE)
-        if (playerIn.isSneaking) {
+        if (player.isSneaking) {
             compound.setBoolean(TAG_IS_IN_BOOK_MODE, !isBook)
             return ActionResult(EnumActionResult.SUCCESS, itemStack)
         }
         return if (isBook)
-            doBookAction(worldIn, playerIn, itemStack)
+            doBookAction(world, player, itemStack)
         else
-            doBowAction(worldIn, playerIn, handIn, itemStack)
+            doBowAction(world, player, hand, itemStack)
     }
 
     private fun doBookAction(world: World?, player: EntityPlayer, stack: ItemStack): ActionResult<ItemStack> {
@@ -215,7 +214,7 @@ class ItemSpellBow : ModItem("spell_bow", "spell_bow/spell_bow", ConstMainTabOrd
     }
 
     companion object {
-        const val SIZE = 27
+        const val SLOT_COUNT = 27
         const val TAG_IS_IN_BOOK_MODE = "IsInBookMode"
         private const val TAG_SHARE = "SpellBowShare"
     }
