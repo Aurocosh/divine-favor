@@ -1,10 +1,7 @@
 package aurocosh.divinefavor.common.config.common;
 
 import aurocosh.divinefavor.DivineFavor;
-import aurocosh.divinefavor.common.config.entries.items.AwakenedBoneDagger;
-import aurocosh.divinefavor.common.config.entries.items.BathingBlendPotion;
-import aurocosh.divinefavor.common.config.entries.items.BoneDagger;
-import aurocosh.divinefavor.common.config.entries.items.Contract;
+import aurocosh.divinefavor.common.config.entries.items.*;
 import net.minecraftforge.common.config.Config;
 
 @Config(modid = DivineFavor.MOD_ID, name = DivineFavor.MOD_ID + "/item")
@@ -48,4 +45,9 @@ public class ConfigItem {
 
     @Config.Name("Minor wishing stone favor value")
     public static int minorWishingStoneFavorValue = 100;
+
+    @Config.Name("Spell blade red")
+    public static SpellBlade spellBladeRed = new SpellBlade();
+    @Config.Name("Spell blade green")
+    public static SpellBlade spellBladeGreen = new SpellBlade();
 }

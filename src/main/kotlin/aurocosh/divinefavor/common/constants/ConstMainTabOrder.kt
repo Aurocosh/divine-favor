@@ -5,6 +5,7 @@ object ConstMainTabOrder {
 
     val BLENDS = orderIndex++
     val DAGGERS = orderIndex++
+    val SWORDS = orderIndex++
     val TOOLS = orderIndex++
     val CONTAINERS = orderIndex++
     val CONTRACTS = orderIndex++

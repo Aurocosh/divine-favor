@@ -1,5 +1,6 @@
 package aurocosh.divinefavor.common.item.common
 
+import aurocosh.divinefavor.common.config.common.ConfigItem
 import aurocosh.divinefavor.common.constants.ConstMainTabOrder
 import aurocosh.divinefavor.common.entity.rope.*
 import aurocosh.divinefavor.common.entity.rope.base.EntityRopeNodeBase
@@ -19,6 +20,7 @@ import aurocosh.divinefavor.common.item.talisman_tools.spell_blade.ItemSpellBlad
 import aurocosh.divinefavor.common.item.talisman_tools.spell_bow.ItemSpellBow
 import aurocosh.divinefavor.common.item.tools.ItemBanishingWand
 import aurocosh.divinefavor.common.item.tools.ItemBoneKey
+import net.minecraft.item.Item
 
 object ModItems {
     lateinit var banishing_wand: ModItem
@@ -46,8 +48,8 @@ object ModItems {
     lateinit var rope_inert: ModItem
     lateinit var rope_teleporting: ModItem
 
-    lateinit var spell_blade_green : ModItem
-    lateinit var spell_blade_red : ModItem
+    lateinit var spell_blade_green: ModItem
+    lateinit var spell_blade_red: ModItem
 
     fun preInit() {
         banishing_wand = ItemBanishingWand()
@@ -74,8 +76,8 @@ object ModItems {
         rope_inert = object : ItemRope<EntityRopeInertNode>("rope_inert", "ropes/inert", EntityRopeInertNode::class.java, EntityRopeNodeBase.ROPE_LENGTH) {}
         rope_teleporting = object : ItemRope<EntityRopeTeleportingNode>("rope_teleporting", "ropes/teleporting", EntityRopeTeleportingNode::class.java, EntityRopeNodeBase.ROPE_LENGTH) {}
 
-        spell_blade_green = ItemSpellBlade("spell_blade_green", "spell_blade_green/model", ConstMainTabOrder.DAGGERS)
-        spell_blade_red = ItemSpellBlade("spell_blade_red", "spell_blade_red/model", ConstMainTabOrder.DAGGERS)
+        spell_blade_green = ItemSpellBlade("spell_blade_green", "spell_blade_green/model", ConstMainTabOrder.SWORDS, ConfigItem.spellBladeGreen, Item.ToolMaterial.IRON)
+        spell_blade_red = ItemSpellBlade("spell_blade_red", "spell_blade_red/model", ConstMainTabOrder.SWORDS, ConfigItem.spellBladeRed, Item.ToolMaterial.IRON)
     }
 
     fun init() {
