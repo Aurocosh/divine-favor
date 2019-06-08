@@ -171,9 +171,9 @@ open class EntitySpellArrow : EntityArrow {
         dataManager.set(ENTITY_IGNORE_DELAY, delay)
     }
 
-
     override fun onCollideWithPlayer(player: EntityPlayer) {
-        talisman?.onCollideWithPlayer(this, player) ?: super.onCollideWithPlayer(player)
+        if(talisman?.onCollideWithPlayer(this, player) != false)
+            super.onCollideWithPlayer(player)
     }
 
     override fun notifyDataManagerChange(key: DataParameter<*>) {

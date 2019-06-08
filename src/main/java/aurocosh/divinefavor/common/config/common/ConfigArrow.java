@@ -39,6 +39,8 @@ public class ConfigArrow {
     public static FillLungs fillLungs = new FillLungs();
     @Config.Name("Flak arrow")
     public static FlakArrow flakArrow = new FlakArrow();
+    @Config.Name("Gamble arrow")
+    public static GambleArrow gambleArrow = new GambleArrow();
     @Config.Name("Hand swap")
     public static HandSwap handSwap = new HandSwap();
     @Config.Name("High speed arrow")

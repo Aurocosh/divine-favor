@@ -1,0 +1,15 @@
+{
+  "name": "Gamble",
+  "icon": "divinefavor:arrow_talisman_gamble",
+  "category": "arrow_talismans",
+  "pages": [
+    {
+      "type": "item_description",
+      "talisman": "divinefavor:arrow_talisman_gamble"
+    },
+    {
+      "type": "arrow_talisman_stats",
+      "talisman": "divinefavor:arrow_talisman_gamble"
+    }
+  ]
+}

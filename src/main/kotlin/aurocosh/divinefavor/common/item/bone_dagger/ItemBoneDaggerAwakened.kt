@@ -96,7 +96,8 @@ class ItemBoneDaggerAwakened : ModItem("bone_dagger_awakened", "bone_dagger_awak
     }
 
     companion object {
-        private val TAG_SOUL_STEAL_CHANCE = "SOUL_STEAL_CHANCE"
+        private const val TAG_SOUL_STEAL_CHANCE = "SOUL_STEAL_CHANCE"
+
         private val witherClasses = HashSet<Class<out EntityLiving>>()
         private val hellClasses = HashSet<Class<out EntityLiving>>()
 

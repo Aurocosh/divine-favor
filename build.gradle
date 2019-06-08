@@ -71,7 +71,7 @@ minecraft {
     version = "${mc_sub_version}-${forge_version}"
     runDir = "run"
     mappings = mc_mappings
-//    makeObfSourceJar = false
+    makeObfSourceJar = false
 }
 
 dependencies {

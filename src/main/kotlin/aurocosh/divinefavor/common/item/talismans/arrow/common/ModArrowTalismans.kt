@@ -28,13 +28,14 @@ object ModArrowTalismans {
     lateinit var fill_lungs: ItemArrowTalisman
     lateinit var flak: ItemArrowTalisman
     lateinit var force: ItemArrowTalisman
+    lateinit var gamble: ItemArrowTalisman
     lateinit var hand_swap: ItemArrowTalisman
     lateinit var high_speed: ItemArrowTalisman
     lateinit var hollow_leg: ItemArrowTalisman
     lateinit var hover_bubble: ItemArrowTalisman
     lateinit var hyper_speed: ItemArrowTalisman
-    lateinit var ice_sphere: ItemArrowTalisman
     lateinit var ice_breaker: ItemArrowTalisman
+    lateinit var ice_sphere: ItemArrowTalisman
     lateinit var impulse: ItemArrowTalisman
     lateinit var incendiary: ItemArrowTalisman
     lateinit var life_steal: ItemArrowTalisman
@@ -77,6 +78,7 @@ object ModArrowTalismans {
         disarm = ArrowTalismanDisarm("disarm", ModSpirits.arbow, ConfigArrow.disarm.favorCost, Color.orange, ConfigArrow.disarm.damage.toDouble(), ArrowOptions.REQUIRES_TARGET, ArrowType.WOODEN_ARROW)
         flak = ArrowTalismanFlakArrow("flak", ModSpirits.arbow, ConfigArrow.flakArrow.favorCost, Color(185, 100, 110), ConfigArrow.flakArrow.damage.toDouble(), ArrowOptions.NORMAL, ArrowType.WOODEN_ARROW)
         force = ArrowTalismanForceArrow("force", ModSpirits.arbow, ConfigArrow.forceArrow.favorCost, Color(65, 64, 69), ConfigArrow.forceArrow.damage.toDouble(), ArrowType.WOODEN_ARROW, ConfigArrow.forceArrow.velocity)
+        gamble = ArrowTalismanGamble("gamble", ModSpirits.arbow, Color(250, 20, 20), ArrowOptions.REQUIRES_TARGET, ArrowType.WOODEN_ARROW, ConfigArrow.gambleArrow)
         hand_swap = ArrowTalismanHandSwap("hand_swap", ModSpirits.arbow, ConfigArrow.handSwap.favorCost, Color.orange, ConfigArrow.handSwap.damage.toDouble(), ArrowOptions.REQUIRES_TARGET, ArrowType.WOODEN_ARROW)
         high_speed = ArrowTalismanHighSpeedArrow("high_speed", ModSpirits.arbow, ConfigArrow.highSpeedArrow.favorCost, genericTier2, ConfigArrow.highSpeedArrow.damage.toDouble(), ArrowOptions.NORMAL, ArrowType.WOODEN_ARROW, ConfigArrow.highSpeedArrow.extraVelocity)
         hover_bubble = ArrowTalismanHoverBubbleArrow("hover_bubble", ModSpirits.arbow, ConfigArrow.hoverBubbleArrow.favorCost, climbingColor, ConfigArrow.hoverBubbleArrow.damage.toDouble(), ArrowOptions.NORMAL, ArrowType.WOODEN_ARROW, ConfigArrow.hoverBubbleArrow.climbingSpeed, ConfigArrow.hoverBubbleArrow.climbingDistance, ConfigArrow.hoverBubbleArrow.despawnDelay)
