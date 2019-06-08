@@ -1,7 +1,7 @@
 package aurocosh.divinefavor.client.core.handler.architect_stick
 
 import aurocosh.divinefavor.DivineFavor
-import aurocosh.divinefavor.common.item.mystic_architect_stick.ItemMysticArchitectStick
+import aurocosh.divinefavor.common.item.tools.mystic_architect_stick.ItemMysticArchitectStick
 import aurocosh.divinefavor.common.lib.extensions.hasKey
 import aurocosh.divinefavor.common.lib.extensions.compound
 import aurocosh.divinefavor.common.lib.extensions.getBlockPos

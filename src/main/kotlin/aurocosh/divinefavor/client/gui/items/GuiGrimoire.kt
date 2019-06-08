@@ -1,8 +1,8 @@
 package aurocosh.divinefavor.client.gui.items
 
 import aurocosh.divinefavor.common.constants.ConstResources
-import aurocosh.divinefavor.common.item.talisman_container.grimoire.GrimoireContainer
-import aurocosh.divinefavor.common.item.talisman_container.grimoire.capability.GrimoireDataHandler.CAPABILITY_GRIMOIRE
+import aurocosh.divinefavor.common.item.talisman_tools.grimoire.GrimoireContainer
+import aurocosh.divinefavor.common.item.talisman_tools.grimoire.capability.GrimoireDataHandler.CAPABILITY_GRIMOIRE
 import aurocosh.divinefavor.common.lib.extensions.cap
 import net.minecraft.client.gui.inventory.GuiContainer
 import net.minecraft.entity.player.EntityPlayer

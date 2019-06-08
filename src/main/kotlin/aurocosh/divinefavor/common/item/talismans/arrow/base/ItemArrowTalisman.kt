@@ -26,26 +26,10 @@ open class ItemArrowTalisman(name: String, spirit: ModSpirit, favorCost: Int, va
 
     init {
         gravityType = GravityType.NORMAL
-
-        //        setMaxStackSize(64);
         creativeTab = DivineFavor.TAB_ARROW_TALISMANS
     }
 
-    fun claimCost(world: World, shooter: EntityLivingBase): Boolean {
-        if (shooter !is EntityPlayer)
-            return false
-
-        val spiritData = shooter.divinePlayerData.spiritData
-        if (!spiritData.consumeFavor(spirit.id, favorCost))
-            return false
-        if (world.isRemote)
-            return true
-
-        MessageSyncFavor(spirit, spiritData).sendTo(shooter)
-        return true
-    }
     // Talisman functions
-
     fun createArrow(world: World, talisman: ItemArrowTalisman, player: EntityPlayer): EntityArrow {
         val spellArrow = getArrow(world, player)
         spellArrow.setSpell(talisman, player)

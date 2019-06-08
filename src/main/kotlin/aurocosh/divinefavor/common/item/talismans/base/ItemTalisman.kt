@@ -2,10 +2,14 @@ package aurocosh.divinefavor.common.item.talismans.base
 
 import aurocosh.divinefavor.DivineFavor
 import aurocosh.divinefavor.common.item.base.ModItem
+import aurocosh.divinefavor.common.item.talismans.spell.base.TalismanContext
 import aurocosh.divinefavor.common.lib.extensions.divinePlayerData
+import aurocosh.divinefavor.common.network.message.client.spirit_data.MessageSyncFavor
 import aurocosh.divinefavor.common.spirit.base.ModSpirit
 import net.minecraft.client.resources.I18n
 import net.minecraft.client.util.ITooltipFlag
+import net.minecraft.entity.Entity
+import net.minecraft.entity.EntityLivingBase
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.item.EnumRarity
 import net.minecraft.item.ItemStack
@@ -13,13 +17,29 @@ import net.minecraft.world.World
 import net.minecraftforge.fml.relauncher.Side
 import net.minecraftforge.fml.relauncher.SideOnly
 
-open class ItemTalisman(val name: String, texturePath: String, val spirit: ModSpirit, val favorCost: Int) : ModItem(name, texturePath) {
+abstract class ItemTalisman(val name: String, texturePath: String, val spirit: ModSpirit, val favorCost: Int) : ModItem(name, texturePath) {
 
     val spiritId: Int
         get() = spirit.id
 
     init {
         setMaxStackSize(1)
+    }
+
+    fun claimCost(player: EntityLivingBase): Boolean {
+        if (favorCost == 0)
+            return true
+        if(player !is EntityPlayer)
+            return false
+
+        val spiritData = player.divinePlayerData.spiritData
+        if (!spiritData.consumeFavor(spirit.id, favorCost))
+            return false
+        if (player.world.isRemote)
+            return true
+
+        MessageSyncFavor(spirit, spiritData).sendTo(player)
+        return true
     }
 
     @SideOnly(Side.CLIENT)

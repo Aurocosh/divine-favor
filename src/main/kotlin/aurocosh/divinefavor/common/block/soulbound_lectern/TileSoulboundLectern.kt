@@ -1,6 +1,6 @@
 package aurocosh.divinefavor.common.block.soulbound_lectern
 
-import aurocosh.divinefavor.common.item.soul_shards.ItemSoulShard
+import aurocosh.divinefavor.common.item.gems.soul_shards.ItemSoulShard
 import aurocosh.divinefavor.common.muliblock.IMultiblockController
 import aurocosh.divinefavor.common.muliblock.ModMultiBlock
 import aurocosh.divinefavor.common.muliblock.common.ModMultiBlocks

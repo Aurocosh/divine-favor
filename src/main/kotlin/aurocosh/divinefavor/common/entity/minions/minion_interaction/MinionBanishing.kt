@@ -1,7 +1,7 @@
 package aurocosh.divinefavor.common.entity.minions.minion_interaction
 
 import aurocosh.divinefavor.common.entity.minions.base.IMinion
-import aurocosh.divinefavor.common.item.ItemBanishingWand
+import aurocosh.divinefavor.common.item.tools.ItemBanishingWand
 import net.minecraft.entity.EntityLiving
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.util.EnumHand

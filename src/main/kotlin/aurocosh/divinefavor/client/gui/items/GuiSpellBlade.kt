@@ -1,8 +1,8 @@
 package aurocosh.divinefavor.client.gui.items
 
 import aurocosh.divinefavor.common.constants.ConstResources
-import aurocosh.divinefavor.common.item.talisman_container.spell_blade.capability.SpellBladeDataHandler.CAPABILITY_SPELL_BLADE
-import aurocosh.divinefavor.common.item.talisman_container.spell_blade.SpellBladeContainer
+import aurocosh.divinefavor.common.item.talisman_tools.spell_blade.capability.SpellBladeDataHandler.CAPABILITY_SPELL_BLADE
+import aurocosh.divinefavor.common.item.talisman_tools.spell_blade.SpellBladeContainer
 import aurocosh.divinefavor.common.lib.extensions.cap
 import net.minecraft.client.gui.inventory.GuiContainer
 import net.minecraft.entity.player.EntityPlayer

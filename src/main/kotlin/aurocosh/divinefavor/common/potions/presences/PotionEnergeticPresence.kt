@@ -1,7 +1,7 @@
 package aurocosh.divinefavor.common.potions.presences
 
 import aurocosh.divinefavor.DivineFavor
-import aurocosh.divinefavor.common.item.calling_stones.ModCallingStones
+import aurocosh.divinefavor.common.item.gems.calling_stones.ModCallingStones
 import aurocosh.divinefavor.common.lib.extensions.divinePlayerData
 import aurocosh.divinefavor.common.lib.extensions.getBlock
 import aurocosh.divinefavor.common.lib.extensions.isWater

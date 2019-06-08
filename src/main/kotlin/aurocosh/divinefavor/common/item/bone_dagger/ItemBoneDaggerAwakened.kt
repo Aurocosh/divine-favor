@@ -5,8 +5,8 @@ import aurocosh.divinefavor.common.config.common.ConfigItem
 import aurocosh.divinefavor.common.constants.ConstMainTabOrder
 import aurocosh.divinefavor.common.damage_source.ModDamageSources
 import aurocosh.divinefavor.common.item.base.ModItem
-import aurocosh.divinefavor.common.item.soul_shards.ItemSoulShard
-import aurocosh.divinefavor.common.item.soul_shards.ModSoulShards
+import aurocosh.divinefavor.common.item.gems.soul_shards.ItemSoulShard
+import aurocosh.divinefavor.common.item.gems.soul_shards.ModSoulShards
 import aurocosh.divinefavor.common.lib.extensions.compound
 import aurocosh.divinefavor.common.lib.extensions.divineLivingData
 import aurocosh.divinefavor.common.potions.base.effect.ModEffect

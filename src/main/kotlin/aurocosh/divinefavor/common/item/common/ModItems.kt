@@ -8,13 +8,17 @@ import aurocosh.divinefavor.common.item.base.ModItem
 import aurocosh.divinefavor.common.item.bone_dagger.ItemBoneDagger
 import aurocosh.divinefavor.common.item.bone_dagger.ItemBoneDaggerAwakened
 import aurocosh.divinefavor.common.item.contract_binder.ItemContractBinder
-import aurocosh.divinefavor.common.item.mystic_architect_stick.ItemMysticArchitectStick
+import aurocosh.divinefavor.common.item.gems.ItemInviteMarker
+import aurocosh.divinefavor.common.item.gems.ItemWarpMarker
+import aurocosh.divinefavor.common.item.tools.mystic_architect_stick.ItemMysticArchitectStick
 import aurocosh.divinefavor.common.item.ritual_pouch.ItemRitualPouch
 import aurocosh.divinefavor.common.item.rope.ItemRope
-import aurocosh.divinefavor.common.item.storage_gem.ItemStorageGem
-import aurocosh.divinefavor.common.item.talisman_container.grimoire.ItemGrimoire
-import aurocosh.divinefavor.common.item.talisman_container.spell_blade.ItemSpellBlade
-import aurocosh.divinefavor.common.item.talisman_container.spell_bow.ItemSpellBow
+import aurocosh.divinefavor.common.item.gems.storage_gem.ItemStorageGem
+import aurocosh.divinefavor.common.item.talisman_tools.grimoire.ItemGrimoire
+import aurocosh.divinefavor.common.item.talisman_tools.spell_blade.ItemSpellBlade
+import aurocosh.divinefavor.common.item.talisman_tools.spell_bow.ItemSpellBow
+import aurocosh.divinefavor.common.item.tools.ItemBanishingWand
+import aurocosh.divinefavor.common.item.tools.ItemBoneKey
 
 object ModItems {
     lateinit var banishing_wand: ModItem

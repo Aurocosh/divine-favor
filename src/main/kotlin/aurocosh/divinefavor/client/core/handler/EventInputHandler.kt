@@ -2,7 +2,7 @@ package aurocosh.divinefavor.client.core.handler
 
 import aurocosh.divinefavor.DivineFavor
 import aurocosh.divinefavor.client.core.handler.talisman_container.TalismanSelectGui
-import aurocosh.divinefavor.common.item.talisman_container.TalismanContainerAdapter
+import aurocosh.divinefavor.common.item.talisman_tools.TalismanContainerAdapter
 import aurocosh.divinefavor.common.util.UtilPlayer
 import net.minecraft.client.Minecraft
 import net.minecraftforge.fml.common.Mod

@@ -7,6 +7,7 @@ import aurocosh.divinefavor.common.lib.extensions.divinePlayerData
 import aurocosh.divinefavor.common.network.message.client.spirit_data.MessageSyncFavor
 import aurocosh.divinefavor.common.spirit.base.ModSpirit
 import aurocosh.divinefavor.common.util.UtilEntity
+import net.minecraft.entity.Entity
 import net.minecraft.entity.EntityLivingBase
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.item.ItemStack
@@ -37,7 +38,7 @@ open class ItemSpellTalisman// Talisman functions
     fun cast(context: TalismanContext): Boolean {
         if (!validate(context))
             return false
-        if (!claimCost(context))
+        if (isConsumeCharge(context) && !claimCost(context.player))
             return false
         if (context.world.isRemote)
             performActionClient(context)
@@ -46,23 +47,7 @@ open class ItemSpellTalisman// Talisman functions
         return true
     }
 
-    protected fun claimCost(context: TalismanContext): Boolean {
-        if (favorCost == 0)
-            return true
-        if (!isConsumeCharge(context))
-            return true
-        val spiritData = context.player.divinePlayerData.spiritData
-        if (!spiritData.consumeFavor(spirit.id, favorCost))
-            return false
-        if (context.world.isRemote)
-            return true
-
-        MessageSyncFavor(spirit, spiritData).sendTo(context.player)
-        return true
-    }
     // Talisman functions
-
-
     override fun onItemUse(playerIn: EntityPlayer, worldIn: World, pos: BlockPos, hand: EnumHand, facing: EnumFacing, hitX: Float, hitY: Float, hitZ: Float): EnumActionResult {
         val stack = playerIn.getHeldItem(hand)
         if (stack.item is ItemSpellTalisman) {

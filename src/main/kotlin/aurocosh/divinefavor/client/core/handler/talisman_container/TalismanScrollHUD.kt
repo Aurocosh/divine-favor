@@ -1,6 +1,6 @@
 package aurocosh.divinefavor.client.core.handler.talisman_container
 
-import aurocosh.divinefavor.common.item.talisman_container.ITalismanContainer
+import aurocosh.divinefavor.common.item.talisman_tools.ITalismanContainer
 import net.minecraft.client.Minecraft
 import net.minecraft.client.renderer.GlStateManager
 import net.minecraft.item.ItemStack

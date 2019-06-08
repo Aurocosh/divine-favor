@@ -4,8 +4,8 @@ import aurocosh.divinefavor.DivineFavor
 import aurocosh.divinefavor.client.core.handler.KeyBindings
 import aurocosh.divinefavor.client.core.handler.talisman.TalismanHUD
 import aurocosh.divinefavor.common.constants.ConstResources
-import aurocosh.divinefavor.common.item.talisman_container.ITalismanContainer
-import aurocosh.divinefavor.common.item.talisman_container.TalismanContainerAdapter
+import aurocosh.divinefavor.common.item.talisman_tools.ITalismanContainer
+import aurocosh.divinefavor.common.item.talisman_tools.TalismanContainerAdapter
 import aurocosh.divinefavor.common.lib.math.Vector2i
 import aurocosh.divinefavor.common.util.UtilGui
 import aurocosh.divinefavor.common.util.UtilPlayer
