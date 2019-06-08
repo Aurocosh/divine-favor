@@ -1,0 +1,38 @@
+{
+  "result": {
+    "item": "divinefavor:arrow_talisman_gamble"
+  },
+  "stones": [
+    "divinefavor:calling_stone_arbow"
+  ],
+  "ingredients": [
+    {
+      "type": "ore",
+      "ore": "paper"
+    },
+    {
+      "type": "ore",
+      "ore": "dyeGreen"
+    },
+    {
+      "type": "stack",
+      "item": "minecraft:arrow"
+    },
+    {
+      "type": "ore",
+      "ore": "stickWood"
+    },
+    {
+      "type": "ore",
+      "ore": "stickWood"
+    },
+    {
+      "type": "ore",
+      "ore": "stickWood"
+    },
+    {
+      "type": "ore",
+      "ore": "gemDiamond"
+    }
+  ]
+}
