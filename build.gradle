@@ -57,12 +57,15 @@ repositories {
 }
 
 //logging.level = LogLevel.DEBUG
+def currentReleaseType = getReleaseType()
 version = "${mod_version}.${generateVersionCode()}"
-println 'Mod version: ' + version
-println 'Release type: ' + releaseType()
+
+println "Mod version: $version"
+println "Release type: $currentReleaseType"
+//println generateChangeLog(currentReleaseType)
 
 group = mod_group
-archivesBaseName = mod_archivesBaseName
+archivesBaseName = mod_archives_base_name
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
@@ -110,21 +113,34 @@ processResources
 }
 
 static def generateVersionCode() {
-    def result = "git rev-list HEAD --count".execute().text.trim()
-    if(result.empty) throw new RuntimeException("Could not generate versioncode on this platform? Cmd output: ${result.text}")
-    return result.toInteger()
+    return shExec("git rev-list HEAD --count").toInteger()
 }
 
-static def getLastCommitMessage() {
-    def result = "git log --format=%B -n 1 HEAD".execute().text.trim()
-    if(result.empty) throw new RuntimeException("Could not get last commit message? Cmd output: ${result.text}")
-    return result
-}
-
-static def releaseType() {
-    def tags = "git notes show".execute().text.trim()
+static def getReleaseType() {
+    def tags = shExec("git notes show", true)
     def isRelease = tags.contains('release')
     (isRelease) ? "release" : "beta"
+}
+
+static def generateChangeLog(releaseType) {
+    def currentChange = shExec("git log --format=%B -n 1 HEAD")
+    if(releaseType == 'beta')
+        return currentChange
+
+    def logWithNotes = shExec('git log --format="%H %N"')
+    def matches = logWithNotes =~ '\\b([0-9a-f]{5,40})\\b\\s.*\\brelease\\b'
+    def lastReleaseHash = matches[0][1]
+
+    def logFromPreviousBetas = shExec("git log --format=\"%s\" $lastReleaseHash..HEAD~1")
+
+    return "Last change:\n$currentChange\n\nChangelog from previous beta versions:\n$logFromPreviousBetas"
+}
+
+static def shExec(command, ignoreEmpty = false) {
+    def result = command.execute().text.trim()
+    if(result.empty && !ignoreEmpty)
+        throw new RuntimeException("Could not execute command $command. Cmd output: $result")
+    return result
 }
 
 jar {
@@ -146,8 +162,8 @@ curseforge {
     apiKey = System.getenv('CURSEFORGE_API_KEY') ? System.getenv('CURSEFORGE_API_KEY') : ''
     project {
         id = curse_project_id
-        changelog = getLastCommitMessage()
-        releaseType = releaseType()
+        changelog = generateChangeLog(currentReleaseType)
+        releaseType = currentReleaseType
         relations {
             requiredDependency 'shadowfacts-forgelin'
             requiredDependency 'patchouli'
