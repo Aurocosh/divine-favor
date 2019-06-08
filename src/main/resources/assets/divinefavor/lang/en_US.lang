@@ -4,6 +4,7 @@ itemGroup.divinefavor_gems=Divine Favor Gems
 itemGroup.divinefavor_talismans=Divine Favor Talismans
 itemGroup.divinefavor_contracts=Divine Favor Contracts
 itemGroup.divinefavor_arrow_talismans=Divine Favor Arrow Talismans
+itemGroup.divinefavor_blade_talismans=Divine Favor Blade Talismans
 
 # BLOCK NAMES
 ## MEDIUMS
@@ -313,6 +314,9 @@ item.divinefavor:arrow_talisman_vacuum.name=Vacuum arrow talisman
 item.divinefavor:arrow_talisman_wind_leash.name=Wind leash talisman
 item.divinefavor:arrow_talisman_yummy_smell.name=Yummy smell talisman
 item.divinefavor:arrow_talisman_zero_g.name=Zero g arrow talisman
+
+## BLADE TALISMANS NAMES
+item.divinefavor:blade_talisman_rain_sword.name=Rain sword
 
 # EFFECT NAMES
 potion.divinefavor:armor_of_pacifist.name=Armor of pacifist
@@ -650,6 +654,9 @@ item.divinefavor:arrow_talisman_vacuum.description=This arrow will attract all l
 item.divinefavor:arrow_talisman_wind_leash.description=Arrow shot with this talisman will be cursed with unnatural force. Cursed creatures will be dragged in random direction by invisible force. To lift this curse you need look at direction where you are being dragged.
 item.divinefavor:arrow_talisman_yummy_smell.description=Arrow shot with this talisman will be cursed with alluring smell. Cursed creatures will attract unwanted attention. All monsters near cursed creature will attack it. To lift this curse you need attract a lot of creatures at once.
 item.divinefavor:arrow_talisman_zero_g.description=Arrow shot with this talisman will not be affected by gravity.
+
+## BLADE TALISMANS
+item.divinefavor:blade_talisman_rain_sword.description=Deals additional damage to endermans and to all other mobs when it is raining.
 
 #PATCHOULI
 ## CONTRACTS

@@ -7,10 +7,13 @@ import aurocosh.divinefavor.common.item.talisman_tools.spell_blade.capability.Sp
 import aurocosh.divinefavor.common.item.talisman_tools.spell_blade.capability.SpellBladeProvider
 import aurocosh.divinefavor.common.item.talisman_tools.grimoire.capability.SpellBladeStorage
 import aurocosh.divinefavor.common.item.talisman_tools.spell_bow.ItemSpellBow
+import aurocosh.divinefavor.common.item.talismans.base.ItemTalisman
+import aurocosh.divinefavor.common.item.talismans.blade.base.ItemBladeTalisman
 import aurocosh.divinefavor.common.item.talismans.spell.base.ItemSpellTalisman
 import aurocosh.divinefavor.common.lib.extensions.cap
 import aurocosh.divinefavor.common.lib.extensions.compound
-import net.minecraft.entity.Entity
+import aurocosh.divinefavor.common.util.UtilItem.actionResult
+import net.minecraft.entity.EntityLivingBase
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.item.ItemStack
 import net.minecraft.nbt.NBTTagCompound
@@ -29,69 +32,66 @@ open class ItemSpellBlade constructor(name: String, override val texturePath: St
         }
     }
 
-    override fun onLeftClickEntity(stack: ItemStack, player: EntityPlayer, entity: Entity?): Boolean {
-//        if (player.world.isRemote)
-//            return false
-//        if (entity !is EntityLivingBase)
-//            return false
-//        val compound = stack.compound
-//        val chance = compound.getFloat(TAG_AWAKENING_CHANCE)
-//        if (UtilRandom.rollDiceFloat(chance)) {
-//            stack.shrink(1)
-//            player.addItemStackToInventory(ItemStack(ModItems.bone_dagger_awakened, 1))
-//        }
-//        compound.setFloat(TAG_AWAKENING_CHANCE, chance + ConfigItem.boneDagger.awakeningSpeed)
-        return false
+    override fun hitEntity(stack: ItemStack, target: EntityLivingBase, attacker: EntityLivingBase): Boolean {
+        if (attacker !is EntityPlayer)
+            return true
+        if (getMode(stack, attacker) != SpellBladeMode.BLADE)
+            return true
+
+        getTalisman<ItemBladeTalisman>(stack)?.cast(stack, target, attacker)
+        return true
     }
 
-
-    override fun onItemUse(playerIn: EntityPlayer, worldIn: World, pos: BlockPos, hand: EnumHand, facing: EnumFacing, hitX: Float, hitY: Float, hitZ: Float): EnumActionResult {
-        val stack = playerIn.getHeldItem(hand)
-        if (stack.item !is ItemSpellBlade)
+    override fun onItemUse(player: EntityPlayer, world: World, pos: BlockPos, hand: EnumHand, facing: EnumFacing, hitX: Float, hitY: Float, hitZ: Float): EnumActionResult {
+        val stack = player.getHeldItem(hand)
+        if (getMode(stack, player) != SpellBladeMode.BLADE)
             return EnumActionResult.PASS
 
-        val bladeHandler = stack.cap(CAPABILITY_SPELL_BLADE)
-        val talismanStack = bladeHandler.getSelectedStack()
-        if (talismanStack.isEmpty)
-            return EnumActionResult.PASS
-
-        val talisman = talismanStack.item as ItemSpellTalisman
-        talisman.castItemUse(playerIn, worldIn, pos, hand, facing, hitX, hitY, hitZ)
+        val talisman = getTalisman<ItemSpellTalisman>(stack) ?: return EnumActionResult.PASS
+        talisman.castItemUse(player, world, pos, hand, facing, hitX, hitY, hitZ)
         return EnumActionResult.SUCCESS
     }
 
-    override fun onItemRightClick(worldIn: World, playerIn: EntityPlayer, hand: EnumHand): ActionResult<ItemStack> {
-        val stack = playerIn.getHeldItem(hand)
+    override fun onItemRightClick(worldIn: World, player: EntityPlayer, hand: EnumHand): ActionResult<ItemStack> {
+        val stack = player.getHeldItem(hand)
+        val bladeMode = getMode(stack, player)
+        val success = performRightClickAction(worldIn, player, hand, stack, bladeMode)
+        return actionResult(stack, success)
+    }
+
+    private fun performRightClickAction(world: World, player: EntityPlayer, hand: EnumHand, stack: ItemStack, mode: SpellBladeMode): Boolean {
+        if (mode == SpellBladeMode.INVALID)
+            return false
+        if (mode == SpellBladeMode.BOOK)
+            player.openGui(DivineFavor, ConstGuiIDs.SPELL_BLADE, world, player.posX.toInt(), player.posY.toInt(), player.posZ.toInt())
+        else if (mode == SpellBladeMode.BLADE)
+            getTalisman<ItemSpellTalisman>(stack)?.castRightClick(world, player, hand)
+        return true
+    }
+
+    private fun getMode(stack: ItemStack, player: EntityPlayer): SpellBladeMode {
         if (stack.item !is ItemSpellBlade)
-            return ActionResult(EnumActionResult.PASS, stack)
+            return SpellBladeMode.INVALID
 
         val compound = stack.compound
         val isBook = compound.getBoolean(ItemSpellBow.TAG_IS_IN_BOOK_MODE)
-        if (playerIn.isSneaking) {
+        if (player.isSneaking) {
             compound.setBoolean(ItemSpellBow.TAG_IS_IN_BOOK_MODE, !isBook)
-            return ActionResult(EnumActionResult.SUCCESS, stack)
+            return SpellBladeMode.INVALID
         }
-        return if (isBook)
-            doBookAction(worldIn, playerIn, stack)
-        else
-            doBladeAction(worldIn, playerIn, hand, stack)
+        return if (isBook) SpellBladeMode.BOOK else SpellBladeMode.BLADE
     }
 
-    private fun doBookAction(world: World, player: EntityPlayer, stack: ItemStack): ActionResult<ItemStack> {
-        player.openGui(DivineFavor, ConstGuiIDs.SPELL_BLADE, world, player.posX.toInt(), player.posY.toInt(), player.posZ.toInt())
-        return ActionResult(EnumActionResult.SUCCESS, stack)
-    }
-
-    private fun doBladeAction(worldIn: World, playerIn: EntityPlayer, hand: EnumHand, stack: ItemStack): ActionResult<ItemStack> {
+    inline fun <reified T : ItemTalisman> getTalisman(stack: ItemStack): T? {
+        if (stack.item !is ItemSpellBlade)
+            return null
 
         val bladeHandler = stack.cap(CAPABILITY_SPELL_BLADE)
         val talismanStack = bladeHandler.getSelectedStack()
         if (talismanStack.isEmpty)
-            return ActionResult(EnumActionResult.PASS, stack)
+            return null
 
-        val talisman = talismanStack.item as ItemSpellTalisman
-        talisman.castRightClick(worldIn, playerIn, hand)
-        return ActionResult(EnumActionResult.SUCCESS, stack)
+        return talismanStack.item as? T ?: return null
     }
 
     override fun initCapabilities(item: ItemStack, nbt: NBTTagCompound?): ICapabilityProvider? {

@@ -18,6 +18,7 @@ import aurocosh.divinefavor.common.item.talisman_tools.spell_bow.capability.Spel
 import aurocosh.divinefavor.common.item.talismans.arrow.common.ModArrowTalismans
 import aurocosh.divinefavor.common.item.talismans.spell.common.ModSpellTalismans
 import aurocosh.divinefavor.common.item.gems.wishing_stones.ModWishingStones
+import aurocosh.divinefavor.common.item.talismans.blade.common.ModBladeTalismans
 import aurocosh.divinefavor.common.muliblock.common.ModMultiBlocks
 import aurocosh.divinefavor.common.network.GuiHandler
 import aurocosh.divinefavor.common.network.NetworkHandler
@@ -58,6 +59,7 @@ open class CommonProxy {
         ModBlendEffects.preInit()
         ModBlessings.preInit()
         ModArrowTalismans.preInit()
+        ModBladeTalismans.preInit()
         ModItems.preInit()
         ModSoulShards.preInit()
         ModSpellTalismans.preInit()

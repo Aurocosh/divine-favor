@@ -24,25 +24,26 @@ class SpellTalismanStatProcessor : IComponentProcessor {
     }
 
     override fun process(key: String): String? {
-        if (key.startsWith("talisman")) {
-            val stack = ItemStack(spellTalisman, 1)
-            return ItemStackUtil.serializeStack(stack)
-        } else if (key == "spirit_icon") {
-            return spellTalisman.spirit.icon.toString()
-        } else if (key == "spirit_symbol") {
-            return spellTalisman.spirit.symbol.toString()
-        } else if (key == "text") {
-            val lines = ArrayList<String>()
-            val spirit = spellTalisman.spirit
-            lines.add("Favor: " + spirit.name)
-            val favorCost = spellTalisman.favorCost
-            if (favorCost == 0)
-                lines.add("No cost")
-            else
-                lines.add("Favor cost: $favorCost")
-            return lines.joinToString("$(br)")
+        when {
+            key.startsWith("talisman") -> {
+                val stack = ItemStack(spellTalisman, 1)
+                return ItemStackUtil.serializeStack(stack)
+            }
+            key == "spirit_icon" -> return spellTalisman.spirit.icon.toString()
+            key == "spirit_symbol" -> return spellTalisman.spirit.symbol.toString()
+            key == "text" -> {
+                val lines = ArrayList<String>()
+                val spirit = spellTalisman.spirit
+                lines.add("Favor: " + spirit.name)
+                val favorCost = spellTalisman.favorCost
+                if (favorCost == 0)
+                    lines.add("No cost")
+                else
+                    lines.add("Favor cost: $favorCost")
+                return lines.joinToString("$(br)")
+            }
+            else -> return null
         }
-        return null
     }
 
 }
