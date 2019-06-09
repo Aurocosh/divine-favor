@@ -8,6 +8,8 @@ import net.minecraftforge.common.config.Config;
 public class ConfigBlade {
     @Config.Name("Blade of snow")
     public static BladeOfSnow bladeOfSnow = new BladeOfSnow();
+    @Config.Name("Butchering strike")
+    public static ButcheringStrike butcheringStrike = new ButcheringStrike();
     @Config.Name("Confusion")
     public static Confusion confusion = new Confusion();
     @Config.Name("Corrosion")

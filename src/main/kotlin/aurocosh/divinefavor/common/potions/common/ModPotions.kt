@@ -10,7 +10,6 @@ import net.minecraft.init.Blocks
 object ModPotions {
     lateinit var armor_of_pacifist: ModPotionToggle
     lateinit var arrow_deflection: ModPotion
-    lateinit var butchering_strike: ModPotionToggleLimited
     lateinit var consuming_fury: ModPotion
     lateinit var crushing_palm: ModPotionToggleLimited
     lateinit var crystalline_road: ModPotion
@@ -43,7 +42,6 @@ object ModPotions {
     fun preInit() {
         armor_of_pacifist = PotionArmorOfPacifist()
         arrow_deflection = PotionArrowDeflection()
-        butchering_strike = PotionButcheringStrike()
         consuming_fury = PotionConsumingFury()
         crushing_palm = PotionCrushingPalm()
         crystalline_road = PotionLiquidWalking("crystalline_road", Blocks.WATER)

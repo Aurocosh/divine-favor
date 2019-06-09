@@ -1,6 +1,7 @@
 package aurocosh.divinefavor.common.config.common;
 
 import aurocosh.divinefavor.DivineFavor;
+import aurocosh.divinefavor.common.config.entries.talismans.blade.ButcheringStrike;
 import aurocosh.divinefavor.common.config.entries.talismans.spell.*;
 import aurocosh.divinefavor.common.config.entries.talismans.spell.generic.*;
 import aurocosh.divinefavor.common.util.UtilTick;
@@ -24,8 +25,6 @@ public class ConfigSpells {
     public static BloodOfGrass bloodOfGrass = new BloodOfGrass();
     @Config.Name("Bonemeal")
     public static Bonemeal bonemeal = new Bonemeal();
-    @Config.Name("Butchering strike")
-    public static ButcheringStrike butcheringStrike = new ButcheringStrike();
     @Config.Name("Clock")
     public static Clock clock = new Clock();
     @Config.Name("Combustion")

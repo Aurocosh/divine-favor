@@ -16,7 +16,7 @@ import aurocosh.divinefavor.common.item.talisman_tools.grimoire.capability.Grimo
 import aurocosh.divinefavor.common.item.talisman_tools.spell_blade.capability.SpellBladeDataHandler
 import aurocosh.divinefavor.common.item.talisman_tools.spell_bow.capability.SpellBowDataHandler
 import aurocosh.divinefavor.common.item.talismans.common.ModArrowTalismans
-import aurocosh.divinefavor.common.item.talismans.spell.common.ModSpellTalismans
+import aurocosh.divinefavor.common.item.talismans.common.ModSpellTalismans
 import aurocosh.divinefavor.common.item.gems.wishing_stones.ModWishingStones
 import aurocosh.divinefavor.common.item.talismans.common.ModBladeTalismans
 import aurocosh.divinefavor.common.muliblock.common.ModMultiBlocks

@@ -1,6 +1,6 @@
 {
   "result": {
-    "item": "divinefavor:talisman_butchering_strike"
+    "item": "divinefavor:blade_talisman_butchering_strike"
   },
   "stones": [
     "divinefavor:calling_stone_squarefury"
@@ -16,11 +16,11 @@
     },
     {
       "type": "stack",
-      "item": "minecraft:porkchop"
+      "item": "minecraft:iron_axe"
     },
     {
       "type": "stack",
-      "item": "minecraft:iron_axe"
+      "item": "minecraft:porkchop"
     }
   ]
 }

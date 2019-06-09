@@ -1,4 +1,4 @@
-package aurocosh.divinefavor.common.item.talismans.spell.common
+package aurocosh.divinefavor.common.item.talismans.common
 
 import aurocosh.divinefavor.common.block.common.ModBlocks
 import aurocosh.divinefavor.common.config.common.ConfigSpells
@@ -26,7 +26,6 @@ object ModSpellTalismans {
     lateinit var blink: ItemSpellTalisman
     lateinit var blood_of_grass: ItemSpellTalisman
     lateinit var bonemeal: ItemSpellTalisman
-    lateinit var butchering_strike: ItemSpellTalisman
     lateinit var clock: ItemSpellTalisman
     lateinit var combustion: ItemSpellTalisman
     lateinit var consuming_fury: ItemSpellTalisman
@@ -236,7 +235,6 @@ object ModSpellTalismans {
 
 
         // squarefury
-        butchering_strike = SpellTalismanModPotionToggle("butchering_strike", ModSpirits.squarefury, ConfigSpells.butcheringStrike.favorCost, ModPotions.butchering_strike)
         consuming_fury = SpellTalismanModPotion("consuming_fury", ModSpirits.squarefury, ConfigSpells.consumingFury.favorCost, ModPotions.consuming_fury, ConfigSpells.consumingFury.duration)
         focused_fury = SpellTalismanModPotion("focused_fury", ModSpirits.squarefury, ConfigSpells.focusedFury.favorCost, ModPotions.focused_fury, ConfigSpells.focusedFury.duration)
         grudge = SpellTalismanGrudge("grudge", ModSpirits.squarefury, ConfigSpells.grudge.favorCost, SpellOptions.ALL_CAST)

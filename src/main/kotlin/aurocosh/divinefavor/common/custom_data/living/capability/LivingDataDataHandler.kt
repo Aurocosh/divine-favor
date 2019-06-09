@@ -3,6 +3,7 @@ package aurocosh.divinefavor.common.custom_data.living.capability
 import aurocosh.divinefavor.common.core.ResourceNamer
 import aurocosh.divinefavor.common.custom_data.CustomDataStorage
 import aurocosh.divinefavor.common.custom_data.living.data.curse.CurseDataSerializer
+import aurocosh.divinefavor.common.custom_data.living.data.extra_looting.ExtraLootingDataSerializer
 import aurocosh.divinefavor.common.custom_data.living.data.limp_leg.LimpLegDataSerializer
 import aurocosh.divinefavor.common.custom_data.living.data.petrification.PetrificationDataSerializer
 import aurocosh.divinefavor.common.custom_data.living.data.soul_theft.SoulTheftDataSerializer
@@ -43,6 +44,7 @@ class LivingDataDataHandler {
         private fun getStorage(): Capability.IStorage<ILivingDataHandler> {
             val storage = CustomDataStorage<ILivingDataHandler>()
             storage.addSerializer(CurseDataSerializer(), ILivingDataHandler::curseData)
+            storage.addSerializer(ExtraLootingDataSerializer(), ILivingDataHandler::extraLootingData)
             storage.addSerializer(LimpLegDataSerializer(), ILivingDataHandler::limpLegData)
             storage.addSerializer(PetrificationDataSerializer(), ILivingDataHandler::petrificationData)
             storage.addSerializer(SoulTheftDataSerializer(), ILivingDataHandler::soulTheftData)

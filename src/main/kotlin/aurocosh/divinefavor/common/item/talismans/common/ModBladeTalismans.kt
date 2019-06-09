@@ -4,9 +4,11 @@ import aurocosh.divinefavor.common.config.common.ConfigBlade
 import aurocosh.divinefavor.common.item.talismans.blade.*
 import aurocosh.divinefavor.common.item.talismans.blade.base.ItemBladeTalisman
 import aurocosh.divinefavor.common.spirit.ModSpirits
+import aurocosh.divinefavor.common.spirit.base.ModSpirit
 
 object ModBladeTalismans {
     lateinit var blade_of_snow: ItemBladeTalisman
+    lateinit var butchering_strike: ItemBladeTalisman
     lateinit var confusion: ItemBladeTalisman
     lateinit var corrosion: ItemBladeTalisman
     lateinit var gamble: ItemBladeTalisman
@@ -39,6 +41,7 @@ object ModBladeTalismans {
         // romol;
 
         // squarefury;
+        butchering_strike = BladeTalismanButcheringStrike("butchering_strike", ModSpirits.squarefury, ConfigBlade.butcheringStrike.favorCost)
         confusion = BladeTalismanConfusion("confusion", ModSpirits.squarefury, ConfigBlade.confusion.favorCost)
         corrosion = BladeTalismanCorrosion("corrosion", ModSpirits.squarefury, ConfigBlade.corrosion.favorCost)
         gamble = BladeTalismanGamble("gamble", ModSpirits.squarefury, ConfigBlade.gamble.favorCost)
@@ -52,6 +55,5 @@ object ModBladeTalismans {
 
         // timber;
         wither_coating = BladeTalismanWitherCoating("wither_coating", ModSpirits.timber, ConfigBlade.witherCoating.favorCost)
-
     }
 }

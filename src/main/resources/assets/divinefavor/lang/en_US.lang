@@ -164,7 +164,6 @@ item.divinefavor:talisman_blazing_palm.name=Blazing palm talisman
 item.divinefavor:talisman_blink.name=Blink talisman
 item.divinefavor:talisman_blood_of_grass.name=Blood of grass talisman
 item.divinefavor:talisman_bonemeal.name=Bonemeal talisman
-item.divinefavor:talisman_butchering_strike.name=Butchering strike talisman
 item.divinefavor:talisman_clock.name=Clock talisman
 item.divinefavor:talisman_combustion.name=Combustion talisman
 item.divinefavor:talisman_consuming_fury.name=Consuming fury talisman
@@ -316,24 +315,24 @@ item.divinefavor:arrow_talisman_yummy_smell.name=Yummy smell talisman
 item.divinefavor:arrow_talisman_zero_g.name=Zero g arrow talisman
 
 ## BLADE TALISMANS NAMES
-item.divinefavor:blade_talisman_blade_of_snow.name=Blade of snow
-item.divinefavor:blade_talisman_confusion.name=Confusion
-item.divinefavor:blade_talisman_corrosion.name=Corrosion
-item.divinefavor:blade_talisman_gamble.name=Gamble
-item.divinefavor:blade_talisman_hand_swap.name=Hand swap
-item.divinefavor:blade_talisman_heavy_blade.name=Heavy blade
-item.divinefavor:blade_talisman_holy_blade.name=Holy blade
-item.divinefavor:blade_talisman_hungry_blade.name=Hungry blade
-item.divinefavor:blade_talisman_inflame.name=Inflame
-item.divinefavor:blade_talisman_poison_coating.name=Poison coating
-item.divinefavor:blade_talisman_rain_sword.name=Rain sword
-item.divinefavor:blade_talisman_vengeful_blade.name=Vengeful blade
-item.divinefavor:blade_talisman_wither_coating.name=Wither coating
+item.divinefavor:blade_talisman_blade_of_snow.name=Blade of snow talisman
+item.divinefavor:blade_talisman_butchering_strike.name=Butchering strike talisman
+item.divinefavor:blade_talisman_confusion.name=Confusion talisman
+item.divinefavor:blade_talisman_corrosion.name=Corrosion talisman
+item.divinefavor:blade_talisman_gamble.name=Gamble talisman
+item.divinefavor:blade_talisman_hand_swap.name=Hand swap talisman
+item.divinefavor:blade_talisman_heavy_blade.name=Heavy blade talisman
+item.divinefavor:blade_talisman_holy_blade.name=Holy blade talisman
+item.divinefavor:blade_talisman_hungry_blade.name=Hungry blade talisman
+item.divinefavor:blade_talisman_inflame.name=Inflame talisman
+item.divinefavor:blade_talisman_poison_coating.name=Poison coating talisman
+item.divinefavor:blade_talisman_rain_sword.name=Rain sword talisman
+item.divinefavor:blade_talisman_vengeful_blade.name=Vengeful blade talisman
+item.divinefavor:blade_talisman_wither_coating.name=Wither coating talisman
 
 # EFFECT NAMES
 potion.divinefavor:armor_of_pacifist.name=Armor of pacifist
 potion.divinefavor:arrow_deflection.name=Arrow deflection
-potion.divinefavor:butchering_strike.name=Butchering strike
 potion.divinefavor:consuming_fury.name=Consuming fury
 potion.divinefavor:crushing_palm.name=Crushing palm
 potion.divinefavor:crystalline_road.name=Crystalline_road
