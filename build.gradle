@@ -129,7 +129,7 @@ static def generateChangeLog(releaseType) {
     if(releaseType == 'beta')
         return currentChange
 
-    def logWithNotes = shExec('git log --format="%H %N"')
+    def logWithNotes = shExec("git log --format='%H %N'")
     def matches = logWithNotes =~ '\\b([0-9a-f]{5,40})\\b\\s.*\\brelease\\b'
     def lastReleaseHash = matches[1][1]
 
