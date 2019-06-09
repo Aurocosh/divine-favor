@@ -139,7 +139,7 @@ static def generateChangeLog(releaseType) {
 
 static def shExec(command, ignoreEmpty = false) {
     if(OperatingSystem.current().isLinux())
-        command = command.replaceAll('"','\\"')
+        command = command.replaceAll('"','\\\\"')
 
     def resultBuilder = ''<<''
     def errorsBuilder = ''<<''
