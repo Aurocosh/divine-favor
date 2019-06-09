@@ -136,9 +136,16 @@ static def generateChangeLog(releaseType) {
 }
 
 static def shExec(command, ignoreEmpty = false) {
-    def result = command.execute().text.trim()
-    if(result.empty && !ignoreEmpty)
-        throw new RuntimeException("Could not execute command $command. Cmd output: $result")
+    def resultBuilder = ''<<''
+    def errorsBuilder = ''<<''
+    def task = command.execute()
+    task.waitForProcessOutput(resultBuilder, errorsBuilder)
+
+    def result = resultBuilder.toString().trim()
+    if(result.empty && !ignoreEmpty){
+        def errors = errorsBuilder.toString().trim()
+        throw new RuntimeException("Could not execute command $command. Cmd output: $result. Errors: $errors")
+    }
     return result
 }
 
