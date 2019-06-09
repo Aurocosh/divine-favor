@@ -25,23 +25,23 @@ public class ConfigItem {
     public static Contract contractCreative = new Contract(3000, 2000, 6000, true);
 
     @Config.Name("Nether charcoal blend")
-    public static BathingBlendPotion blendCharcoal = new BathingBlendPotion(20, 4, 24);
+    public static BathingBlendPotion blendCharcoal = new BathingBlendPotion(60, 4, 24);
     @Config.Name("Distorted pearl blend")
-    public static BathingBlendPotion blendEnderPearl = new BathingBlendPotion(20, 4, 24);
+    public static BathingBlendPotion blendEnderPearl = new BathingBlendPotion(60, 4, 24);
     @Config.Name("Calm feather blend")
-    public static BathingBlendPotion blendFeathers = new BathingBlendPotion(20, 4, 24);
+    public static BathingBlendPotion blendFeathers = new BathingBlendPotion(60, 4, 24);
     @Config.Name("WIld flesh blend")
-    public static BathingBlendPotion blendFleshy = new BathingBlendPotion(20, 4, 24);
+    public static BathingBlendPotion blendFleshy = new BathingBlendPotion(60, 4, 24);
     @Config.Name("Tool flint blend")
-    public static BathingBlendPotion blendFlint = new BathingBlendPotion(20, 4, 24);
+    public static BathingBlendPotion blendFlint = new BathingBlendPotion(60, 4, 24);
     @Config.Name("Undead lapis blend")
-    public static BathingBlendPotion blendLapis = new BathingBlendPotion(20, 4, 24);
+    public static BathingBlendPotion blendLapis = new BathingBlendPotion(60, 4, 24);
     @Config.Name("Mystic redstone blend")
-    public static BathingBlendPotion blendRedstone = new BathingBlendPotion(20, 4, 24);
+    public static BathingBlendPotion blendRedstone = new BathingBlendPotion(60, 4, 24);
     @Config.Name("Evercold snow blend")
-    public static BathingBlendPotion blendSnow = new BathingBlendPotion(20, 4, 24);
+    public static BathingBlendPotion blendSnow = new BathingBlendPotion(60, 4, 24);
     @Config.Name("Cursed wood blend")
-    public static BathingBlendPotion blendWood = new BathingBlendPotion(20, 4, 24);
+    public static BathingBlendPotion blendWood = new BathingBlendPotion(60, 4, 24);
 
     @Config.Name("Minor wishing stone favor value")
     public static int minorWishingStoneFavorValue = 100;

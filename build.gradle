@@ -133,7 +133,7 @@ static def generateChangeLog(releaseType) {
     def matches = logWithNotes =~ '([0-9a-f]{5,40})_.*release'
     def lastReleaseHash = matches[1][1]
 
-    def logFromPreviousBetas = shExec("git log --format=\"%s\" $lastReleaseHash..HEAD~1")
+    def logFromPreviousBetas = shExec("git log --format=%s $lastReleaseHash..HEAD~1", true)
     return "Last change:\n$currentChange\n\nChangelog from previous beta versions:\n$logFromPreviousBetas"
 }
 
@@ -147,10 +147,9 @@ static def shExec(command, ignoreEmpty = false) {
     task.waitForProcessOutput(resultBuilder, errorsBuilder)
 
     def result = resultBuilder.toString().trim()
-    if(result.empty && !ignoreEmpty){
-        def errors = errorsBuilder.toString().trim()
+    def errors = errorsBuilder.toString().trim()
+    if((result.empty && !ignoreEmpty) || !errors.empty)
         throw new RuntimeException("Could not execute command $command. Cmd output: $result. Errors: $errors")
-    }
     return result
 }
 

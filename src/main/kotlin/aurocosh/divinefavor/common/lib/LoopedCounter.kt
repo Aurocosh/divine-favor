@@ -3,46 +3,40 @@ package aurocosh.divinefavor.common.lib
 import net.minecraft.util.math.MathHelper
 
 class LoopedCounter {
-    private var tickRate: Int = 0
-    private var currentTicks: Int = 0
+    var tickRate: Int = 0
+        set(value) {
+            field = Math.max(1, Math.abs(value))
+        }
 
-    var count: Int
-        get() = currentTicks
-        set(ticks) {
-            currentTicks = MathHelper.clamp(ticks, 0, tickRate)
+    var count: Int = 0
+        set(value) {
+            field = MathHelper.clamp(value, 0, tickRate)
         }
 
     val isFinished: Boolean
-        get() = currentTicks >= tickRate
+        get() = count >= tickRate
 
     constructor() {
         tickRate = 1
-        currentTicks = 0
+        count = 0
     }
 
     constructor(tickRate: Int) {
         this.tickRate = tickRate
-        currentTicks = 0
+        count = 0
     }
 
-    fun getTickRate(): Int {
-        return tickRate
-    }
-
-    fun setTickRate(tickRate: Int) {
-        this.tickRate = Math.max(1, Math.abs(tickRate))
-    }
 
     fun reset() {
-        currentTicks = 0
+        count = 0
     }
 
     fun tick(): Boolean {
-        if (currentTicks < tickRate) {
-            currentTicks++
+        if (count < tickRate) {
+            count++
             return false
         } else {
-            currentTicks = 0
+            count = 0
             return true
         }
     }

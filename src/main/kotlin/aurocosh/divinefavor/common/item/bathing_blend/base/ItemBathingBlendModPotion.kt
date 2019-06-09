@@ -7,7 +7,7 @@ import net.minecraft.entity.EntityLivingBase
 import net.minecraft.item.EnumRarity
 import net.minecraft.item.ItemStack
 
-class ItemBathingBlendModPotion(name: String, duration: Int, rate: Int, private val potion: ModPotion, private val extraPotionDuration: Int) : ItemBathingBlendSimple(name, duration, rate) {
+class ItemBathingBlendModPotion(name: String, duration: Int, rate: Int, private val potion: ModPotion, private val extraPotionDuration: Int) : ItemBathingBlend(name, duration, rate) {
 
     constructor(name: String, potion: ModPotion, settings: BathingBlendPotion) : this(name, settings.duration, settings.rate, potion, settings.extraPotionDuration)
 

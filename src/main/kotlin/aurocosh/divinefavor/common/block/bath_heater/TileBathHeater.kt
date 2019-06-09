@@ -5,11 +5,8 @@ import aurocosh.divinefavor.common.area.WorldArea
 import aurocosh.divinefavor.common.area.WorldAreaWatcher
 import aurocosh.divinefavor.common.constants.BlockPosConstants
 import aurocosh.divinefavor.common.item.bathing_blend.base.ItemBathingBlend
-import aurocosh.divinefavor.common.item.bathing_blend.base.ItemBathingBlend.Companion.TAG_DURATION
-import aurocosh.divinefavor.common.item.bathing_blend.base.ItemBathingBlend.Companion.TAG_RATE
 import aurocosh.divinefavor.common.lib.LoopedCounter
 import aurocosh.divinefavor.common.lib.extensions.S
-import aurocosh.divinefavor.common.lib.extensions.compound
 import aurocosh.divinefavor.common.lib.extensions.getBlock
 import aurocosh.divinefavor.common.lib.extensions.isWater
 import aurocosh.divinefavor.common.lib.wrapper.ConvertingPredicate
@@ -150,7 +147,7 @@ class TileBathHeater : TileEntity(), ITickable, IAreaWatcher {
         _state = BathHeaterState[compound.getInteger(TAG_STATE_HEATER)]
         waterPositions.clear()
         waterPositions.addAll(UtilBlockPos.deserialize(compound.getIntArray(TAG_WATER_POSITIONS)))
-        loopedCounter.setTickRate(compound.getInteger(TAG_EFFECT_TICK_RATE))
+        loopedCounter.tickRate = compound.getInteger(TAG_EFFECT_TICK_RATE)
         if (compound.hasKey(TAG_FUEL))
             fuelStackHandler.deserializeNBT(compound.getTag(TAG_FUEL) as NBTTagCompound)
         if (compound.hasKey(TAG_INGREDIENTS))
@@ -163,7 +160,7 @@ class TileBathHeater : TileEntity(), ITickable, IAreaWatcher {
         compound.setInteger(TAG_CURRENT_BURN_TIME, currentBurnTime)
         compound.setInteger(TAG_STATE_HEATER, state.ordinal)
         compound.setIntArray(TAG_WATER_POSITIONS, UtilBlockPos.serialize(waterPositions))
-        compound.setInteger(TAG_EFFECT_TICK_RATE, loopedCounter.getTickRate())
+        compound.setInteger(TAG_EFFECT_TICK_RATE, loopedCounter.tickRate)
         compound.setTag(TAG_FUEL, fuelStackHandler.serializeNBT())
         compound.setTag(TAG_INGREDIENTS, blendStackHandler.serializeNBT())
         return compound
@@ -261,17 +258,20 @@ class TileBathHeater : TileEntity(), ITickable, IAreaWatcher {
             return
         if (currentEffectTime <= 0) {
             val stack = blendStackHandler.getStackInSlot(0)
-            if (!stack.isEmpty && stack.item is ItemBathingBlend) {
-                activeBlend = stack.item as ItemBathingBlend
-                maxEffectTime = stack.compound.getInteger(TAG_DURATION)
-                loopedCounter.setTickRate(stack.compound.getInteger(TAG_RATE))
-                currentEffectTime = maxEffectTime
-                progressEffect = 100
-                stack.shrink(1)
-                markDirty()
+            if (!stack.isEmpty) {
+                val item = stack.item
+                if (item is ItemBathingBlend) {
+                    activeBlend = item
+                    maxEffectTime = item.duration
+                    currentEffectTime = maxEffectTime
+                    loopedCounter.tickRate = item.rate
+                    progressEffect = 100
+                    stack.shrink(1)
+                    markDirty()
+                }
             }
         } else {
-            currentEffectTime--
+            currentEffectTime -= loopedCounter.tickRate
             progressEffect = (currentEffectTime / maxEffectTime.toFloat() * 100).toInt()
             markDirty()
 

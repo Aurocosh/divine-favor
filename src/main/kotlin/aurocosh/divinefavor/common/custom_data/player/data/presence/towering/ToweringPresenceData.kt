@@ -14,7 +14,7 @@ class ToweringPresenceData {
         }
 
     fun reset() {
-        curseCounter.setTickRate(ConfigPresence.toweringPresence.minCurseDelay)
+        curseCounter.tickRate = ConfigPresence.toweringPresence.minCurseDelay
         curseCounter.reset()
     }
 
@@ -22,7 +22,7 @@ class ToweringPresenceData {
         if (!curseCounter.tick())
             return false
         val nextDelay = UtilRandom.nextInt(ConfigPresence.toweringPresence.minCurseDelay, ConfigPresence.toweringPresence.maxCurseDelay)
-        curseCounter.setTickRate(nextDelay)
+        curseCounter.tickRate = nextDelay
         return true
     }
 }

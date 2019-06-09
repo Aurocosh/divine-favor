@@ -9,7 +9,7 @@ import net.minecraft.item.EnumRarity
 import net.minecraft.item.ItemStack
 import net.minecraft.util.NonNullList
 
-abstract class ItemBathingBlend(name: String) : ModItem("blend_$name", "blends/$name", ConstMainTabOrder.BLENDS) {
+abstract class ItemBathingBlend(name: String, val duration: Int, val rate: Int) : ModItem("blend_$name", "blends/$name", ConstMainTabOrder.BLENDS) {
 
     init {
         creativeTab = DivineFavor.TAB_MAIN
@@ -17,20 +17,7 @@ abstract class ItemBathingBlend(name: String) : ModItem("blend_$name", "blends/$
 
     abstract fun applyEffect(livingBase: EntityLivingBase)
 
-    abstract fun makeStack(count: Int): ItemStack
-
     override fun getRarity(stack: ItemStack): EnumRarity {
         return EnumRarity.RARE
-    }
-
-    override fun getSubItems(tab: CreativeTabs, items: NonNullList<ItemStack>) {
-        if (!isInCreativeTab(tab))
-            return
-        items.add(makeStack(1))
-    }
-
-    companion object {
-        const val TAG_RATE = "rate"
-        const val TAG_DURATION = "duration"
     }
 }
