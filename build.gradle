@@ -1,3 +1,5 @@
+import org.gradle.internal.os.OperatingSystem;
+
 buildscript {
     ext.kotlin_version = kotlin_version
     repositories {
@@ -136,6 +138,9 @@ static def generateChangeLog(releaseType) {
 }
 
 static def shExec(command, ignoreEmpty = false) {
+    if(OperatingSystem.current().isLinux())
+        command = command.replaceAll('"','\\"')
+
     def resultBuilder = ''<<''
     def errorsBuilder = ''<<''
     def task = command.execute()
