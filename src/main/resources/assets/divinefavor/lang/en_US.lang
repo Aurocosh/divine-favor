@@ -155,7 +155,7 @@ item.divinefavor:rope_guide.name=Guide rope
 item.divinefavor:rope_inert.name=Inert rope
 item.divinefavor:rope_teleporting.name=Warping rope
 
-# TALISMAN NAMES
+## SPELL TALISMAN NAMES
 item.divinefavor:talisman_armor_of_pacifist.name=Armor of pacifist talisman
 item.divinefavor:talisman_arrow_deflection.name=Arrow deflection talisman
 item.divinefavor:talisman_arrow_throw.name=Arrow throw talisman
@@ -263,7 +263,7 @@ item.divinefavor:talisman_wind_step.name=Wind step talisman
 item.divinefavor:talisman_winter_breath.name=Winter breath talisman
 item.divinefavor:talisman_wooden_punch.name=Wooden punch talisman
 
-# ARROW TALISMAN NAMES
+## ARROW TALISMAN NAMES
 item.divinefavor:arrow_talisman_anti_gravity.name=Anti gravity arrow talisman
 item.divinefavor:arrow_talisman_armor_corrosion.name=Armor corrosion talisman
 item.divinefavor:arrow_talisman_blast.name=Blast arrow talisman
@@ -314,7 +314,7 @@ item.divinefavor:arrow_talisman_wind_leash.name=Wind leash talisman
 item.divinefavor:arrow_talisman_yummy_smell.name=Yummy smell talisman
 item.divinefavor:arrow_talisman_zero_g.name=Zero g arrow talisman
 
-## BLADE TALISMANS NAMES
+## BLADE TALISMAN NAMES
 item.divinefavor:blade_talisman_blade_of_snow.name=Blade of snow talisman
 item.divinefavor:blade_talisman_butchering_strike.name=Butchering strike talisman
 item.divinefavor:blade_talisman_confusion.name=Confusion talisman
@@ -509,7 +509,7 @@ item.divinefavor:rope_guide.description=Basic rope intended for cave exploration
 item.divinefavor:rope_inert.description=Rope similar in purpose to guide rope, but unlike it this rope will not bend or drop on floor. This rope will help you find your way back from the cave. Also you can climb on this rope very easily. Press sneaking and climb by going forward or backward.
 item.divinefavor:rope_teleporting.description=Unusual trapping device. It will teleport anything it touches to the end of the rope. You can use it to move peaceful mobs to otherwise hard to reach places or to teleport unsuspecting players in traps.
 
-## SPELL TALISMANS
+## SPELL TALISMAN DESCRIPTIONS
 item.divinefavor:talisman_armor_of_pacifist.description=Grants user armor of pacifist. Player will be protected from most damage types, but in turn will not be able to attack anyone.
 item.divinefavor:talisman_arrow_deflection.description=This talisman will temporarily give player ability to deflect incoming arrows. Though deflection is not perfect. Also when player hit with something other then arrows duration of spell will decrease drastically.
 item.divinefavor:talisman_blade_of_grass.description=Will damage and slow down all enemies standing on grass around you. Grass will be destroyed.
@@ -615,8 +615,7 @@ item.divinefavor:talisman_wind_step.description=Will give player short boost in 
 item.divinefavor:talisman_winter_breath.description=Damages enemies in front of you and pushes them back slightly.
 item.divinefavor:talisman_wooden_punch.description=Will grant player 'Wooden_punch' effect. While effect active player will be able to break wood instantly with his bare hands. Effect is permanent. To remove it just cast spell once more. Each broken stone costs some favor.item.divinefavor:talisman_wooden_punch.description=Will grant player 'Wooden_punch' effect. While effect active player will be able to break wood instantly with his bare hands. Effect is permanent. To remove it just cast spell once more. Each broken stone costs some favor.
 
-
-## ARROW TALISMANS
+## ARROW TALISMAN DESCRIPTIONS
 item.divinefavor:arrow_talisman_anti_gravity.description=Arrow shot with this talisman will fall upwards instead on down. Not very practical but can be used for some trick shots.
 item.divinefavor:arrow_talisman_armor_corrosion.description=Arrow shot with this talisman will be cursed with armor corrosion. This curse will only work on players. Armor of afflicted players will gradually decay over time. Not all armor will be affected at once. Random pieces of armor will be chosen on curse application. To remove curse player will have to remove affected armor pieces.
 item.divinefavor:arrow_talisman_blast.description=Weak explosive arrow. Explodes on contact. Be careful it can kill shooter.
@@ -666,7 +665,7 @@ item.divinefavor:arrow_talisman_wind_leash.description=Arrow shot with this tali
 item.divinefavor:arrow_talisman_yummy_smell.description=Arrow shot with this talisman will be cursed with alluring smell. Cursed creatures will attract unwanted attention. All monsters near cursed creature will attack it. To lift this curse you need attract a lot of creatures at once.
 item.divinefavor:arrow_talisman_zero_g.description=Arrow shot with this talisman will not be affected by gravity.
 
-## BLADE TALISMANS
+## BLADE TALISMANS DESCRIPTIONS
 item.divinefavor:blade_talisman_blade_of_snow.description=Deals additional damage to hellish mobs and to all other mobs when player is in snowy biome.
 item.divinefavor:blade_talisman_confusion.description=On hit has a chance to confuse mobs into attacking other mobs
 item.divinefavor:blade_talisman_corrosion.description=On hit rapidly corrodes enemy armor
