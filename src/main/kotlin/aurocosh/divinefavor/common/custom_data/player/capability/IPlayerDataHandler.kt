@@ -29,6 +29,7 @@ import aurocosh.divinefavor.common.custom_data.player.data.spell.gills.GillsData
 import aurocosh.divinefavor.common.custom_data.player.data.spell.grudge.GrudgeData
 import aurocosh.divinefavor.common.custom_data.player.data.spell.molten_skin.MoltenSkinData
 import aurocosh.divinefavor.common.custom_data.player.data.spell.pearl_crumbs.PearlCrumbsData
+import aurocosh.divinefavor.common.custom_data.player.data.spell.vengeful_blade.VengefulBladeData
 
 interface IPlayerDataHandler {
     val spiritData: SpiritData
@@ -45,6 +46,7 @@ interface IPlayerDataHandler {
     val interactionData: InteractionData
     val moltenSkinData: MoltenSkinData
     val pearlCrumbsData: PearlCrumbsData
+    val vengefulBladeData: VengefulBladeData
 
     val arborealAuraData: ArborealAuraData
     val callingAuraData: CallingAuraData

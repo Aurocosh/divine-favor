@@ -1,0 +1,15 @@
+{
+  "name": "Blade of snow",
+  "icon": "divinefavor:blade_talisman_blade_of_snow",
+  "category": "blade_talismans",
+  "pages": [
+    {
+      "type": "item_description",
+      "talisman": "divinefavor:blade_talisman_blade_of_snow"
+    },
+    {
+      "type": "blade_talisman_stats",
+      "talisman": "divinefavor:blade_talisman_blade_of_snow"
+    }
+  ]
+}

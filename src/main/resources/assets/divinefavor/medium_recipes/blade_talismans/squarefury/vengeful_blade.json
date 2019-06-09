@@ -1,0 +1,27 @@
+{
+  "result": {
+    "item": "divinefavor:blade_talisman_vengeful_blade"
+  },
+  "stones": [
+    "divinefavor:calling_stone_squarefury"
+  ],
+  "ingredients": [
+    {
+      "type": "ore",
+      "ore": "paper"
+    },
+    {
+      "type": "ore",
+      "ore": "dyeRed"
+    },
+    {
+      "type": "stack",
+      "item": "minecraft:iron_sword"
+    },
+    {
+      "type": "stack",
+      "item": "minecraft:skull",
+      "data": 0
+    }
+  ]
+}

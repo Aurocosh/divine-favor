@@ -29,6 +29,7 @@ import aurocosh.divinefavor.common.custom_data.player.data.spell.gills.GillsData
 import aurocosh.divinefavor.common.custom_data.player.data.spell.grudge.GrudgeData
 import aurocosh.divinefavor.common.custom_data.player.data.spell.molten_skin.MoltenSkinData
 import aurocosh.divinefavor.common.custom_data.player.data.spell.pearl_crumbs.PearlCrumbsData
+import aurocosh.divinefavor.common.custom_data.player.data.spell.vengeful_blade.VengefulBladeData
 
 // The default implementation of the capability. Holds all the logic.
 class DefaultPlayerDataHandler : IPlayerDataHandler {
@@ -46,6 +47,7 @@ class DefaultPlayerDataHandler : IPlayerDataHandler {
     override val interactionData: InteractionData = InteractionData()
     override val moltenSkinData: MoltenSkinData = MoltenSkinData()
     override val pearlCrumbsData: PearlCrumbsData = PearlCrumbsData()
+    override val vengefulBladeData: VengefulBladeData = VengefulBladeData()
 
     override val arborealAuraData: ArborealAuraData = ArborealAuraData()
     override val callingAuraData: CallingAuraData = CallingAuraData()

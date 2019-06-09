@@ -316,7 +316,19 @@ item.divinefavor:arrow_talisman_yummy_smell.name=Yummy smell talisman
 item.divinefavor:arrow_talisman_zero_g.name=Zero g arrow talisman
 
 ## BLADE TALISMANS NAMES
+item.divinefavor:blade_talisman_blade_of_snow.name=Blade of snow
+item.divinefavor:blade_talisman_confusion.name=Confusion
+item.divinefavor:blade_talisman_corrosion.name=Corrosion
+item.divinefavor:blade_talisman_gamble.name=Gamble
+item.divinefavor:blade_talisman_hand_swap.name=Hand swap
+item.divinefavor:blade_talisman_heavy_blade.name=Heavy blade
+item.divinefavor:blade_talisman_holy_blade.name=Holy blade
+item.divinefavor:blade_talisman_hungry_blade.name=Hungry blade
+item.divinefavor:blade_talisman_inflame.name=Inflame
+item.divinefavor:blade_talisman_poison_coating.name=Poison coating
 item.divinefavor:blade_talisman_rain_sword.name=Rain sword
+item.divinefavor:blade_talisman_vengeful_blade.name=Vengeful blade
+item.divinefavor:blade_talisman_wither_coating.name=Wither coating
 
 # EFFECT NAMES
 potion.divinefavor:armor_of_pacifist.name=Armor of pacifist
@@ -656,7 +668,19 @@ item.divinefavor:arrow_talisman_yummy_smell.description=Arrow shot with this tal
 item.divinefavor:arrow_talisman_zero_g.description=Arrow shot with this talisman will not be affected by gravity.
 
 ## BLADE TALISMANS
+item.divinefavor:blade_talisman_blade_of_snow.description=Deals additional damage to hellish mobs and to all other mobs when player is in snowy biome.
+item.divinefavor:blade_talisman_confusion.description=On hit has a chance to confuse mobs into attacking other mobs
+item.divinefavor:blade_talisman_corrosion.description=On hit rapidly corrodes enemy armor
+item.divinefavor:blade_talisman_gamble.description=Deals additional damage. This is cheap and very powerful spell but it has a small chance of dealing massive damage to caster potentially instantly killing the caster.                                                   item
+item.divinefavor:blade_talisman_hand_swap.description=On hit has a chance to swap items in players hand and offhand
+item.divinefavor:blade_talisman_heavy_blade.description=Knocks back enemies on hit
+item.divinefavor:blade_talisman_holy_blade.description=Deals extra damage to undead, ignites them and slows them down.
+item.divinefavor:blade_talisman_hungry_blade.description=When player is hit with this spell it will steal they're satiety and transfer it to caster
+item.divinefavor:blade_talisman_inflame.description=Ignites enemies on hit
+item.divinefavor:blade_talisman_poison_coating.description=Poisons enemies on hit
 item.divinefavor:blade_talisman_rain_sword.description=Deals additional damage to endermans and to all other mobs when it is raining.
+item.divinefavor:blade_talisman_vengeful_blade.description=Deals additional damage equal to last damage inflicted upon you
+item.divinefavor:blade_talisman_wither_coating.description=Inflicts withering on hit
 
 #PATCHOULI
 ## CONTRACTS

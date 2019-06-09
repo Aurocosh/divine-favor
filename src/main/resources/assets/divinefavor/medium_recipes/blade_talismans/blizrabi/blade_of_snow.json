@@ -1,0 +1,26 @@
+{
+  "result": {
+    "item": "divinefavor:blade_talisman_blade_of_snow"
+  },
+  "stones": [
+    "divinefavor:calling_stone_blizrabi"
+  ],
+  "ingredients": [
+    {
+      "type": "ore",
+      "ore": "paper"
+    },
+    {
+      "type": "ore",
+      "ore": "dyeWhite"
+    },
+    {
+      "type": "stack",
+      "item": "minecraft:wooden_sword"
+    },
+    {
+      "type": "stack",
+      "item": "minecraft:snowball"
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "result": {
+    "item": "divinefavor:blade_talisman_gamble"
+  },
+  "stones": [
+    "divinefavor:calling_stone_squarefury"
+  ],
+  "ingredients": [
+    {
+      "type": "ore",
+      "ore": "paper"
+    },
+    {
+      "type": "ore",
+      "ore": "dyeGreen"
+    },
+    {
+      "type": "stack",
+      "item": "minecraft:iron_sword"
+    },
+    {
+      "type": "ore",
+      "ore": "stickWood"
+    },
+    {
+      "type": "ore",
+      "ore": "stickWood"
+    },
+    {
+      "type": "ore",
+      "ore": "stickWood"
+    },
+    {
+      "type": "ore",
+      "ore": "gemDiamond"
+    }
+  ]
+}

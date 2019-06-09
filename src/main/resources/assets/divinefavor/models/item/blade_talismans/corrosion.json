@@ -1,0 +1,7 @@
+{
+    "parent": "item/generated",
+    "textures": {
+        "layer1": "divinefavor:items/blade_talismans/corrosion",
+        "layer0": "divinefavor:items/blade_talismans/base"
+    }
+}

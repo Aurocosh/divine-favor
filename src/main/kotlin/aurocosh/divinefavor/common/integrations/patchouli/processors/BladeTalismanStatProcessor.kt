@@ -1,8 +1,6 @@
 package aurocosh.divinefavor.common.integrations.patchouli.processors
 
 import aurocosh.divinefavor.DivineFavor
-import aurocosh.divinefavor.common.item.talismans.arrow.base.ArrowOptions
-import aurocosh.divinefavor.common.item.talismans.arrow.base.ItemArrowTalisman
 import aurocosh.divinefavor.common.item.talismans.blade.base.ItemBladeTalisman
 import net.minecraft.item.Item
 import net.minecraft.item.ItemStack
@@ -10,7 +8,6 @@ import net.minecraft.util.ResourceLocation
 import vazkii.patchouli.api.IComponentProcessor
 import vazkii.patchouli.api.IVariableProvider
 import vazkii.patchouli.common.util.ItemStackUtil
-import java.text.DecimalFormat
 import java.util.*
 
 class BladeTalismanStatProcessor : IComponentProcessor {

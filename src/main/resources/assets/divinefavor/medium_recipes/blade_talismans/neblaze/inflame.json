@@ -1,0 +1,26 @@
+{
+  "result": {
+    "item": "divinefavor:blade_talisman_inflame"
+  },
+  "stones": [
+    "divinefavor:calling_stone_neblaze"
+  ],
+  "ingredients": [
+    {
+      "type": "ore",
+      "ore": "paper"
+    },
+    {
+      "type": "ore",
+      "ore": "dyeOrange"
+    },
+    {
+      "type": "stack",
+      "item": "minecraft:iron_sword"
+    },
+    {
+      "type": "stack",
+      "item": "minecraft:lava_bucket"
+    }
+  ]
+}

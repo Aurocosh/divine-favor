@@ -4,9 +4,9 @@ import aurocosh.divinefavor.DivineFavor
 import aurocosh.divinefavor.common.config.entries.items.SpellBlade
 import aurocosh.divinefavor.common.constants.ConstGuiIDs
 import aurocosh.divinefavor.common.item.base.ModItem
+import aurocosh.divinefavor.common.item.talisman_tools.grimoire.capability.SpellBladeStorage
 import aurocosh.divinefavor.common.item.talisman_tools.spell_blade.capability.SpellBladeDataHandler.CAPABILITY_SPELL_BLADE
 import aurocosh.divinefavor.common.item.talisman_tools.spell_blade.capability.SpellBladeProvider
-import aurocosh.divinefavor.common.item.talisman_tools.grimoire.capability.SpellBladeStorage
 import aurocosh.divinefavor.common.item.talisman_tools.spell_bow.ItemSpellBow
 import aurocosh.divinefavor.common.item.talismans.base.ItemTalisman
 import aurocosh.divinefavor.common.item.talismans.blade.base.ItemBladeTalisman
@@ -17,7 +17,6 @@ import aurocosh.divinefavor.common.util.UtilItem.actionResult
 import com.google.common.collect.Multimap
 import net.minecraft.block.state.IBlockState
 import net.minecraft.entity.EntityLivingBase
-import net.minecraft.entity.SharedMonsterAttributes
 import net.minecraft.entity.SharedMonsterAttributes.ATTACK_DAMAGE
 import net.minecraft.entity.SharedMonsterAttributes.ATTACK_SPEED
 import net.minecraft.entity.ai.attributes.AttributeModifier

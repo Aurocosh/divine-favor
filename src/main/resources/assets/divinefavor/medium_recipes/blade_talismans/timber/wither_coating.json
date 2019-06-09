@@ -1,0 +1,27 @@
+{
+  "result": {
+    "item": "divinefavor:blade_talisman_wither_coating"
+  },
+  "stones": [
+    "divinefavor:calling_stone_timber"
+  ],
+  "ingredients": [
+    {
+      "type": "ore",
+      "ore": "paper"
+    },
+    {
+      "type": "ore",
+      "ore": "dyeBlack"
+    },
+    {
+      "type": "stack",
+      "item": "minecraft:iron_sword"
+    },
+    {
+      "type": "stack",
+      "item": "minecraft:skull",
+      "data": 1
+    }
+  ]
+}

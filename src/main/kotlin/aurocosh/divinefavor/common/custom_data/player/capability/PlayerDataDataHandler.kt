@@ -2,8 +2,6 @@ package aurocosh.divinefavor.common.custom_data.player.capability
 
 import aurocosh.divinefavor.common.core.ResourceNamer
 import aurocosh.divinefavor.common.custom_data.CustomDataStorage
-import aurocosh.divinefavor.common.custom_data.living.capability.ILivingDataHandler
-import aurocosh.divinefavor.common.custom_data.living.capability.LivingDataDataHandler
 import aurocosh.divinefavor.common.custom_data.player.data.aura.arboreal.ArborealAuraDataSerializer
 import aurocosh.divinefavor.common.custom_data.player.data.aura.calling.CallingAuraDataSerializer
 import aurocosh.divinefavor.common.custom_data.player.data.aura.charred.CharredAuraDataSerializer
@@ -25,6 +23,7 @@ import aurocosh.divinefavor.common.custom_data.player.data.presence.predatory.Pr
 import aurocosh.divinefavor.common.custom_data.player.data.presence.scorching.ScorchingPresenceDataSerializer
 import aurocosh.divinefavor.common.custom_data.player.data.presence.towering.ToweringPresenceDataSerializer
 import aurocosh.divinefavor.common.custom_data.player.data.spell.escape_plan.EscapePlanDataSerializer
+import aurocosh.divinefavor.common.custom_data.player.data.spell.vengeful_blade.VengfulBladeDataSerializer
 import aurocosh.divinefavor.common.custom_data.player.data.spell.focused_fury.FocusedFuryDataSerializer
 import aurocosh.divinefavor.common.custom_data.player.data.spell.gills.GillsDataSerializer
 import aurocosh.divinefavor.common.custom_data.player.data.spell.grudge.GrudgeDataSerializer
@@ -79,6 +78,7 @@ class PlayerDataDataHandler {
             storage.addSerializer(InteractionDataSerializer(), IPlayerDataHandler::interactionData)
             storage.addSerializer(MoltenSkinDataSerializer(), IPlayerDataHandler::moltenSkinData)
             storage.addSerializer(PearlCrumbsDataSerializer(), IPlayerDataHandler::pearlCrumbsData)
+            storage.addSerializer(VengfulBladeDataSerializer(), IPlayerDataHandler::vengefulBladeData)
 
             storage.addSerializer(ArborealAuraDataSerializer(), IPlayerDataHandler::arborealAuraData)
             storage.addSerializer(CallingAuraDataSerializer(), IPlayerDataHandler::callingAuraData)

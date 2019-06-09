@@ -1,0 +1,30 @@
+{
+  "result": {
+    "item": "divinefavor:blade_talisman_holy_blade"
+  },
+  "stones": [
+    "divinefavor:calling_stone_squarefury"
+  ],
+  "ingredients": [
+    {
+      "type": "ore",
+      "ore": "paper"
+    },
+    {
+      "type": "ore",
+      "ore": "dyeYellow"
+    },
+    {
+      "type": "stack",
+      "item": "minecraft:diamond_sword"
+    },
+    {
+      "type": "ore",
+      "ore": "gemDiamond"
+    },
+    {
+      "type": "ore",
+      "ore": "gemEmerald"
+    }
+  ]
+}

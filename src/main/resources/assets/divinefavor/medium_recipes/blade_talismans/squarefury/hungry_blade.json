@@ -1,0 +1,30 @@
+{
+  "result": {
+    "item": "divinefavor:blade_talisman_hungry_blade"
+  },
+  "stones": [
+    "divinefavor:calling_stone_squarefury"
+  ],
+  "ingredients": [
+    {
+      "type": "ore",
+      "ore": "paper"
+    },
+    {
+      "type": "ore",
+      "ore": "dyeBrown"
+    },
+    {
+      "type": "stack",
+      "item": "minecraft:iron_sword"
+    },
+    {
+      "type": "stack",
+      "item": "minecraft:rotten_flesh"
+    },
+    {
+      "type": "stack",
+      "item": "minecraft:cooked_beef"
+    }
+  ]
+}

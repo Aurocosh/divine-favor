@@ -4,14 +4,12 @@ import aurocosh.divinefavor.common.config.common.ConfigSpells
 import aurocosh.divinefavor.common.item.talismans.spell.base.ItemSpellTalisman
 import aurocosh.divinefavor.common.item.talismans.spell.base.SpellOptions
 import aurocosh.divinefavor.common.item.talismans.spell.base.TalismanContext
-import aurocosh.divinefavor.common.lib.extensions.cap
 import aurocosh.divinefavor.common.lib.extensions.capNull
 import aurocosh.divinefavor.common.lib.extensions.getBlock
 import aurocosh.divinefavor.common.spirit.base.ModSpirit
 import aurocosh.divinefavor.common.util.UtilRandom
 import net.minecraft.init.Blocks
 import net.minecraft.item.crafting.FurnaceRecipes
-import net.minecraftforge.items.CapabilityItemHandler
 import net.minecraftforge.items.CapabilityItemHandler.ITEM_HANDLER_CAPABILITY
 import java.util.*
 

@@ -8,8 +8,6 @@ import aurocosh.divinefavor.common.custom_data.living.data.petrification.Petrifi
 import aurocosh.divinefavor.common.custom_data.living.data.soul_theft.SoulTheftDataSerializer
 import aurocosh.divinefavor.common.custom_data.living.data.suffocating_fumes.SuffocatingFumesDataSerializer
 import aurocosh.divinefavor.common.custom_data.living.data.wind_leash.WindLeashDataSerializer
-import aurocosh.divinefavor.common.custom_data.world.capability.IWorldDataHandler
-import aurocosh.divinefavor.common.custom_data.world.capability.WorldDataDataHandler
 import net.minecraft.entity.Entity
 import net.minecraft.entity.EntityLivingBase
 import net.minecraftforge.common.MinecraftForge

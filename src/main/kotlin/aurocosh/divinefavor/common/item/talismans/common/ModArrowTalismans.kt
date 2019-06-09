@@ -1,4 +1,4 @@
-package aurocosh.divinefavor.common.item.talismans.arrow.common
+package aurocosh.divinefavor.common.item.talismans.common
 
 import aurocosh.divinefavor.common.config.common.ConfigArrow
 import aurocosh.divinefavor.common.item.talismans.arrow.*
@@ -108,15 +108,15 @@ object ModArrowTalismans {
         vacuum = ArrowTalismanVacuumArrow("vacuum", ModSpirits.loon, ConfigArrow.vacuumArrow.favorCost, Color(83, 4, 124), ConfigArrow.vacuumArrow.damage.toDouble(), ArrowOptions.NORMAL, ArrowType.WOODEN_ARROW)
 
         // neblaze;
+        blast = ArrowTalismanExplosive("blast", ModSpirits.neblaze, genericTier1, ArrowOptions.ARROW_BREAKS, ArrowType.WOODEN_ARROW, ConfigArrow.blastArrow)
+        explosive = ArrowTalismanExplosive("explosive", ModSpirits.neblaze, genericTier2, ArrowOptions.ARROW_BREAKS, ArrowType.WOODEN_ARROW, ConfigArrow.explosiveArrow)
+        nuke = ArrowTalismanExplosive("nuke", ModSpirits.neblaze, genericTier3, ArrowOptions.ARROW_BREAKS, ArrowType.WOODEN_ARROW, ConfigArrow.nukeArrow)
 
         // redwind;
 
         // romol;
 
         // squarefury;
-        blast = ArrowTalismanExplosive("blast", ModSpirits.squarefury, genericTier1, ArrowOptions.ARROW_BREAKS, ArrowType.WOODEN_ARROW, ConfigArrow.blastArrow)
-        explosive = ArrowTalismanExplosive("explosive", ModSpirits.squarefury, genericTier2, ArrowOptions.ARROW_BREAKS, ArrowType.WOODEN_ARROW, ConfigArrow.explosiveArrow)
-        nuke = ArrowTalismanExplosive("nuke", ModSpirits.squarefury, genericTier3, ArrowOptions.ARROW_BREAKS, ArrowType.WOODEN_ARROW, ConfigArrow.nukeArrow)
         reinforced_1 = ItemArrowTalisman("reinforced_1", ModSpirits.squarefury, ConfigArrow.reinforcedArrow1.favorCost, genericTier1, ConfigArrow.reinforcedArrow1.damage.toDouble(), ArrowOptions.NORMAL, ArrowType.WOODEN_ARROW)
         reinforced_2 = ItemArrowTalisman("reinforced_2", ModSpirits.squarefury, ConfigArrow.reinforcedArrow2.favorCost, genericTier2, ConfigArrow.reinforcedArrow2.damage.toDouble(), ArrowOptions.NORMAL, ArrowType.WOODEN_ARROW)
         reinforced_3 = ItemArrowTalisman("reinforced_3", ModSpirits.squarefury, ConfigArrow.reinforcedArrow3.favorCost, genericTier3, ConfigArrow.reinforcedArrow3.damage.toDouble(), ArrowOptions.NORMAL, ArrowType.WOODEN_ARROW)

@@ -3,8 +3,6 @@ package aurocosh.divinefavor.common.item.talismans.arrow.base
 import aurocosh.divinefavor.DivineFavor
 import aurocosh.divinefavor.common.entity.projectile.EntitySpellArrow
 import aurocosh.divinefavor.common.item.talismans.base.ItemTalisman
-import aurocosh.divinefavor.common.lib.extensions.divinePlayerData
-import aurocosh.divinefavor.common.network.message.client.spirit_data.MessageSyncFavor
 import aurocosh.divinefavor.common.spirit.base.ModSpirit
 import net.minecraft.entity.EntityLivingBase
 import net.minecraft.entity.player.EntityPlayer

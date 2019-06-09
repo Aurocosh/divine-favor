@@ -7,9 +7,7 @@ import net.minecraft.client.gui.inventory.GuiContainer
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.item.ItemStack
 import net.minecraft.util.ResourceLocation
-import net.minecraftforge.items.CapabilityItemHandler
 import net.minecraftforge.items.CapabilityItemHandler.ITEM_HANDLER_CAPABILITY
-import net.minecraftforge.items.IItemHandler
 
 class GuiContractBinder(player: EntityPlayer, binder: ItemStack) : GuiContainer(ContractBinderContainer(player, binder.cap(ITEM_HANDLER_CAPABILITY))) {
 

@@ -1,7 +1,7 @@
 package aurocosh.divinefavor.common.core.creative_tabs
 
 import aurocosh.divinefavor.DivineFavor
-import aurocosh.divinefavor.common.item.talismans.arrow.common.ModArrowTalismans
+import aurocosh.divinefavor.common.item.talismans.common.ModArrowTalismans
 import aurocosh.divinefavor.common.registry.ModRegistries
 import net.minecraft.block.Block
 import net.minecraft.creativetab.CreativeTabs

@@ -11,17 +11,14 @@ import aurocosh.divinefavor.common.lib.extensions.compound
 import aurocosh.divinefavor.common.lib.extensions.divineLivingData
 import aurocosh.divinefavor.common.potions.base.effect.ModEffect
 import aurocosh.divinefavor.common.potions.common.ModCurses
+import aurocosh.divinefavor.common.util.UtilMob
 import aurocosh.divinefavor.common.util.UtilRandom
 import net.minecraft.entity.Entity
-import net.minecraft.entity.EntityLiving
 import net.minecraft.entity.EntityLivingBase
-import net.minecraft.entity.EnumCreatureType
 import net.minecraft.entity.boss.EntityDragon
-import net.minecraft.entity.boss.EntityWither
 import net.minecraft.entity.monster.EntityEnderman
 import net.minecraft.entity.monster.EntityEndermite
 import net.minecraft.entity.monster.EntityShulker
-import net.minecraft.entity.monster.EntityWitherSkeleton
 import net.minecraft.entity.passive.EntityAnimal
 import net.minecraft.entity.passive.EntityVillager
 import net.minecraft.entity.passive.EntityWaterMob
@@ -31,10 +28,7 @@ import net.minecraft.item.ItemStack
 import net.minecraft.util.ActionResult
 import net.minecraft.util.EnumActionResult
 import net.minecraft.util.EnumHand
-import net.minecraft.util.ResourceLocation
 import net.minecraft.world.World
-import net.minecraft.world.biome.Biome
-import java.util.*
 
 class ItemBoneDaggerAwakened : ModItem("bone_dagger_awakened", "bone_dagger_awakened", ConstMainTabOrder.DAGGERS) {
     init {
@@ -75,11 +69,11 @@ class ItemBoneDaggerAwakened : ModItem("bone_dagger_awakened", "bone_dagger_awak
         val item: ItemSoulShard
         when {
             victim is EntityPlayer -> item = ModSoulShards.shard_will
-            victim is EntityWitherSkeleton || victim is EntityWither -> item = ModSoulShards.shard_wither
+            UtilMob.isMobWithering(victim) -> item = ModSoulShards.shard_wither
             victim is EntityEnderman || victim is EntityEndermite || victim is EntityShulker || victim is EntityDragon -> item = ModSoulShards.shard_end
             victim is EntityVillager -> item = ModSoulShards.shard_mind
             victim.isEntityUndead -> item = ModSoulShards.shard_undeath
-            hellClasses.contains(victim::class.java) -> item = ModSoulShards.shard_nether
+            UtilMob.isMobHellish(victim) -> item = ModSoulShards.shard_nether
             victim is EntityWaterMob -> item = ModSoulShards.shard_water
             victim is EntityAnimal -> item = ModSoulShards.shard_peace
             else -> item = ModSoulShards.shard_wild
@@ -97,18 +91,5 @@ class ItemBoneDaggerAwakened : ModItem("bone_dagger_awakened", "bone_dagger_awak
 
     companion object {
         private const val TAG_SOUL_STEAL_CHANCE = "SOUL_STEAL_CHANCE"
-
-        private val witherClasses = HashSet<Class<out EntityLiving>>()
-        private val hellClasses = HashSet<Class<out EntityLiving>>()
-
-        init {
-            witherClasses.add(EntityWither::class.java)
-            witherClasses.add(EntityWitherSkeleton::class.java)
-
-            val hell = ResourceLocation("hell")
-            for (creatureType in EnumCreatureType.values())
-                for (spawnListEntry in Biome.REGISTRY.getObject(hell)!!.getSpawnableList(creatureType))
-                    hellClasses.add(spawnListEntry.entityClass)
-        }
     }
 }
