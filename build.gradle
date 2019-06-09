@@ -64,7 +64,7 @@ version = "${mod_version}.${generateVersionCode()}"
 
 println "Mod version: $version"
 println "Release type: $currentReleaseType"
-//println generateChangeLog(currentReleaseType)
+println generateChangeLog('release')
 
 group = mod_group
 archivesBaseName = mod_archives_base_name
@@ -129,8 +129,8 @@ static def generateChangeLog(releaseType) {
     if(releaseType == 'beta')
         return currentChange
 
-    def logWithNotes = shExec("git log origin/master --format='%H %N'")
-    def matches = logWithNotes =~ '\\b([0-9a-f]{5,40})\\b\\s.*\\brelease\\b'
+    def logWithNotes = shExec("git log origin/master --format=%H_%N")
+    def matches = logWithNotes =~ '([0-9a-f]{5,40})_.*release'
     def lastReleaseHash = matches[1][1]
 
     def logFromPreviousBetas = shExec("git log --format=\"%s\" $lastReleaseHash..HEAD~1")
