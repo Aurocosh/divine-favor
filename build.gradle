@@ -64,7 +64,7 @@ version = "${mod_version}.${generateVersionCode()}"
 
 println "Mod version: $version"
 println "Release type: $currentReleaseType"
-println generateChangeLog('release')
+//println generateChangeLog('release')
 
 group = mod_group
 archivesBaseName = mod_archives_base_name
