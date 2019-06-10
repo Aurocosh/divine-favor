@@ -1,6 +1,7 @@
 package aurocosh.divinefavor.common.item.common
 
 import aurocosh.divinefavor.common.config.common.ConfigItem
+import aurocosh.divinefavor.common.constants.ConstGemTabOrder
 import aurocosh.divinefavor.common.constants.ConstMainTabOrder
 import aurocosh.divinefavor.common.entity.rope.*
 import aurocosh.divinefavor.common.entity.rope.base.EntityRopeNodeBase
@@ -10,6 +11,7 @@ import aurocosh.divinefavor.common.item.bone_dagger.ItemBoneDagger
 import aurocosh.divinefavor.common.item.bone_dagger.ItemBoneDaggerAwakened
 import aurocosh.divinefavor.common.item.contract_binder.ItemContractBinder
 import aurocosh.divinefavor.common.item.gems.ItemInviteMarker
+import aurocosh.divinefavor.common.item.gems.ItemMarkedGlass
 import aurocosh.divinefavor.common.item.gems.ItemWarpMarker
 import aurocosh.divinefavor.common.item.tools.mystic_architect_stick.ItemMysticArchitectStick
 import aurocosh.divinefavor.common.item.ritual_pouch.ItemRitualPouch
@@ -20,7 +22,9 @@ import aurocosh.divinefavor.common.item.talisman_tools.spell_blade.ItemSpellBlad
 import aurocosh.divinefavor.common.item.talisman_tools.spell_bow.ItemSpellBow
 import aurocosh.divinefavor.common.item.tools.ItemBanishingWand
 import aurocosh.divinefavor.common.item.tools.ItemBoneKey
+import aurocosh.divinefavor.common.registry.mappers.ModMappers
 import net.minecraft.item.Item
+import java.util.ArrayList
 
 object ModItems {
     lateinit var banishing_wand: ModItem
@@ -51,6 +55,8 @@ object ModItems {
     lateinit var spell_blade_green: ModItem
     lateinit var spell_blade_red: ModItem
 
+    val markedGlasses: MutableList<ItemMarkedGlass> = ArrayList()
+
     fun preInit() {
         banishing_wand = ItemBanishingWand()
         bone_dagger = ItemBoneDagger()
@@ -78,6 +84,9 @@ object ModItems {
 
         spell_blade_green = ItemSpellBlade("spell_blade_green", "spell_blade_green/model", ConstMainTabOrder.SWORDS, ConfigItem.spellBladeGreen, Item.ToolMaterial.IRON)
         spell_blade_red = ItemSpellBlade("spell_blade_red", "spell_blade_red/model", ConstMainTabOrder.SWORDS, ConfigItem.spellBladeRed, Item.ToolMaterial.IRON)
+
+        for (spirit in ModMappers.spirits.values)
+            markedGlasses.add(ItemMarkedGlass(spirit, ConstGemTabOrder.MARKED_GLASS))
     }
 
     fun init() {

@@ -1,7 +1,8 @@
-package aurocosh.divinefavor.common.item.gems.wishing_stones
+package aurocosh.divinefavor.common.item.common
 
 import aurocosh.divinefavor.common.config.common.ConfigItem
 import aurocosh.divinefavor.common.constants.ConstGemTabOrder
+import aurocosh.divinefavor.common.item.gems.ItemWishingStone
 import aurocosh.divinefavor.common.registry.mappers.ModMappers
 import java.util.*
 

@@ -1,13 +1,15 @@
 package aurocosh.divinefavor.common.potions.presences
 
 import aurocosh.divinefavor.DivineFavor
-import aurocosh.divinefavor.common.item.gems.calling_stones.ModCallingStones
+import aurocosh.divinefavor.common.item.common.ModCallingStones
 import aurocosh.divinefavor.common.lib.extensions.divinePlayerData
 import aurocosh.divinefavor.common.lib.extensions.getBlock
 import aurocosh.divinefavor.common.lib.extensions.isWater
 import aurocosh.divinefavor.common.potions.base.potion.ModPotion
 import aurocosh.divinefavor.common.potions.common.ModBlessings
+import aurocosh.divinefavor.common.spirit.ModSpirits
 import aurocosh.divinefavor.common.util.UtilEntity.tickLiquidWalk
+import aurocosh.divinefavor.common.util.UtilSpirit
 import net.minecraft.entity.EntityLivingBase
 import net.minecraft.entity.SharedMonsterAttributes
 import net.minecraft.entity.player.EntityPlayer
@@ -40,7 +42,7 @@ class PotionEnergeticPresence : ModPotion("energetic_presence", 0x7FB8A4) {
             presenceData.reset()
         else if (presenceData.count() && !livingBase.world.isRemote) {
             livingBase.removePotionEffect(ModBlessings.energetic_presence)
-            livingBase.addItemStackToInventory(ItemStack(ModCallingStones.calling_stone_redwind))
+            UtilSpirit.convertMarksToInvites(livingBase, ModSpirits.redwind, ModCallingStones.calling_stone_redwind)
         }
     }
 

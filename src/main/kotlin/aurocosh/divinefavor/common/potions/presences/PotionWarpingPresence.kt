@@ -1,10 +1,12 @@
 package aurocosh.divinefavor.common.potions.presences
 
 import aurocosh.divinefavor.DivineFavor
-import aurocosh.divinefavor.common.item.gems.calling_stones.ModCallingStones
+import aurocosh.divinefavor.common.item.common.ModCallingStones
 import aurocosh.divinefavor.common.lib.extensions.divinePlayerData
 import aurocosh.divinefavor.common.potions.base.potion.ModPotion
 import aurocosh.divinefavor.common.potions.common.ModBlessings
+import aurocosh.divinefavor.common.spirit.ModSpirits
+import aurocosh.divinefavor.common.util.UtilSpirit
 import net.minecraft.entity.EntityLivingBase
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.item.ItemStack
@@ -31,7 +33,7 @@ class PotionWarpingPresence : ModPotion("warping_presence", 0x7FB8A4) {
                 return
             if (!entity.world.isRemote && entity.divinePlayerData.warpingPresenceData.tryLuck()) {
                 entity.removePotionEffect(ModBlessings.warping_presence)
-                entity.addItemStackToInventory(ItemStack(ModCallingStones.calling_stone_endererer))
+                UtilSpirit.convertMarksToInvites(entity, ModSpirits.endererer, ModCallingStones.calling_stone_endererer)
             }
         }
     }

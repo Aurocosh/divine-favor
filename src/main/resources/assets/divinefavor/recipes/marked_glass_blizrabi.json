@@ -1,0 +1,21 @@
+{
+  "result": {
+    "item": "divinefavor:marked_glass_blizrabi"
+  },
+  "type": "forge:ore_shapeless",
+  "ingredients": [
+    {
+      "item": "minecraft:glass_pane"
+    },
+    {
+      "type": "forge:ore_dict",
+      "ore": "dyeBlack"
+    },
+    {
+      "item": "divinefavor:soul_shard_water"
+    },
+    {
+      "item": "divinefavor:bone_dagger_awakened"
+    }
+  ]
+}

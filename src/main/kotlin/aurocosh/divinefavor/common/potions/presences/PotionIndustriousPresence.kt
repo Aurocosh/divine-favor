@@ -1,11 +1,13 @@
 package aurocosh.divinefavor.common.potions.presences
 
 import aurocosh.divinefavor.DivineFavor
-import aurocosh.divinefavor.common.item.gems.calling_stones.ModCallingStones
+import aurocosh.divinefavor.common.item.common.ModCallingStones
 import aurocosh.divinefavor.common.lib.LoopedCounter
 import aurocosh.divinefavor.common.lib.extensions.divinePlayerData
 import aurocosh.divinefavor.common.potions.base.potion.ModPotion
 import aurocosh.divinefavor.common.potions.common.ModBlessings
+import aurocosh.divinefavor.common.spirit.ModSpirits
+import aurocosh.divinefavor.common.util.UtilSpirit
 import aurocosh.divinefavor.common.util.UtilTick
 import net.minecraft.block.Block
 import net.minecraft.entity.EntityLivingBase
@@ -70,7 +72,7 @@ class PotionIndustriousPresence : ModPotion("industrious_presence", 0x7FB8A4) {
                 return
             if (player.divinePlayerData.industriousPresenceData.count()) {
                 player.removePotionEffect(ModBlessings.industrious_presence)
-                player.addItemStackToInventory(ItemStack(ModCallingStones.calling_stone_romol))
+                UtilSpirit.convertMarksToInvites(player, ModSpirits.romol, ModCallingStones.calling_stone_romol)
             }
         }
 

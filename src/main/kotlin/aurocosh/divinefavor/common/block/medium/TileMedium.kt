@@ -1,8 +1,8 @@
 package aurocosh.divinefavor.common.block.medium
 
 import aurocosh.divinefavor.common.block.base.TickableTileEntity
-import aurocosh.divinefavor.common.item.gems.calling_stones.ItemCallingStone
-import aurocosh.divinefavor.common.item.gems.calling_stones.ModCallingStones
+import aurocosh.divinefavor.common.item.gems.ItemCallingStone
+import aurocosh.divinefavor.common.item.common.ModCallingStones
 import aurocosh.divinefavor.common.item.common.ModItems
 import aurocosh.divinefavor.common.misc.SlotStack
 import aurocosh.divinefavor.common.muliblock.IMultiblockController

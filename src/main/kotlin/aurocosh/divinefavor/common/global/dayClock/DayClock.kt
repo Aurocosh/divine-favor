@@ -20,8 +20,11 @@ object DayClock {
     private val alarms = LinkedList<DayTimeAlarm>()
     private var nextId = 0
 
-    val time: Int
+    val timeTicks: Int
         get() = DAY_TIME_COUNTER.count
+
+    val timeHours: Int
+        get() = DAY_TIME_COUNTER.count / UtilDayTime.TICKS_IN_DAY
 
     fun addAlarm(dayTimeInTicks: Int, callback: () -> Unit, repeat: Boolean): Int {
         val alarm = DayTimeAlarmNormal(nextId++, dayTimeInTicks, repeat, callback)

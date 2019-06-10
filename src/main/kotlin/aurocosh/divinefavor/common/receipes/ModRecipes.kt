@@ -1,7 +1,7 @@
 package aurocosh.divinefavor.common.receipes
 
 import aurocosh.divinefavor.DivineFavor
-import aurocosh.divinefavor.common.item.gems.calling_stones.ItemCallingStone
+import aurocosh.divinefavor.common.item.gems.ItemCallingStone
 import aurocosh.divinefavor.common.lib.ItemStackIdComparator
 import aurocosh.divinefavor.common.lib.extensions.S
 import aurocosh.divinefavor.common.lib.extensions.process

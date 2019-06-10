@@ -1,6 +1,6 @@
 package aurocosh.divinefavor.common.receipes
 
-import aurocosh.divinefavor.common.item.gems.calling_stones.ItemCallingStone
+import aurocosh.divinefavor.common.item.gems.ItemCallingStone
 import net.minecraft.item.Item
 import net.minecraft.item.ItemStack
 import net.minecraft.item.crafting.Ingredient

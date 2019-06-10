@@ -1,4 +1,4 @@
-package aurocosh.divinefavor.common.item.gems.calling_stones
+package aurocosh.divinefavor.common.item.gems
 
 import aurocosh.divinefavor.DivineFavor
 import aurocosh.divinefavor.common.constants.ConstGemTabOrder

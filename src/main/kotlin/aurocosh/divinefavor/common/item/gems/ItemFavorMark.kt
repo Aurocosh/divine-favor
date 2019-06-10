@@ -1,9 +1,9 @@
-package aurocosh.divinefavor.common.item.gems.wishing_stones
+package aurocosh.divinefavor.common.item.gems
 
 import aurocosh.divinefavor.DivineFavor
 import aurocosh.divinefavor.common.item.base.ModItem
 import aurocosh.divinefavor.common.lib.extensions.divinePlayerData
-import aurocosh.divinefavor.common.network.message.client.spirit_data.MessageSyncFavor
+import aurocosh.divinefavor.common.network.message.client.spirit_data.MessageSyncFavorInfinite
 import aurocosh.divinefavor.common.spirit.base.ModSpirit
 import net.minecraft.client.resources.I18n
 import net.minecraft.client.util.ITooltipFlag
@@ -17,10 +17,10 @@ import net.minecraft.world.World
 import net.minecraftforge.fml.relauncher.Side
 import net.minecraftforge.fml.relauncher.SideOnly
 
-class ItemWishingStone(val spirit: ModSpirit, private val favorCount: Int, typeName: String, orderIndex: Int) : ModItem("wishing_stone_" + typeName + "_" + spirit.name, "wishing_stones/" + typeName + "/" + spirit.name, orderIndex) {
+class ItemFavorMark(val spirit: ModSpirit, orderIndex: Int) : ModItem("favor_mark_" + spirit.name, "favor_marks/" + spirit.name, orderIndex) {
 
     init {
-        setMaxStackSize(64)
+        setMaxStackSize(1)
         creativeTab = DivineFavor.TAB_GEMS
     }
 
@@ -33,11 +33,11 @@ class ItemWishingStone(val spirit: ModSpirit, private val favorCount: Int, typeN
     private fun addFavor(player: EntityPlayer, stack: ItemStack): Boolean {
         if (player.world.isRemote)
             return false
-        if (stack.item !is ItemWishingStone)
+        if (stack.item !is ItemFavorMark)
             return false
         val spiritData = player.divinePlayerData.spiritData
-        spiritData.addFavor(spirit.id, favorCount)
-        MessageSyncFavor(spirit, spiritData).sendTo(player)
+        spiritData.toggleFavorInfinite(spirit.id)
+        MessageSyncFavorInfinite(spirit, spiritData).sendTo(player)
         stack.shrink(1)
         return false
     }
@@ -49,12 +49,10 @@ class ItemWishingStone(val spirit: ModSpirit, private val favorCount: Int, typeN
     @SideOnly(Side.CLIENT)
     override fun addInformation(stack: ItemStack?, world: World?, tooltip: MutableList<String>?, flag: ITooltipFlag?) {
         super.addInformation(stack!!, world, tooltip!!, flag!!)
-        val wishingStone = stack.item as ItemWishingStone
-        val favorCount = wishingStone.favorCount
-        val spirit = wishingStone.spirit
-        val name = I18n.format(spirit.nameTranslationKey)
+        val favorMark = stack.item as ItemFavorMark
+        val name = I18n.format(favorMark.spirit.nameTranslationKey)
 
-        val message = I18n.format("tooltip.divinefavor:wishingStone.favor_count", favorCount, name)
+        val message = I18n.format("tooltip.divinefavor:favor_mark.spirit", name)
         tooltip.add(message)
     }
 }

@@ -35,7 +35,7 @@ class ModSpirit(val name: String, val punishment: SpiritPunishment, config: Spir
 
     val isActive: Boolean
         get() {
-            val timeOfDay = DayClock.time
+            val timeOfDay = DayClock.timeTicks
             return activityPeriod.isDayTimeInRange(timeOfDay)
         }
 

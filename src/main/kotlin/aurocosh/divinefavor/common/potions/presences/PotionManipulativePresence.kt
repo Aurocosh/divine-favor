@@ -1,11 +1,13 @@
 package aurocosh.divinefavor.common.potions.presences
 
 import aurocosh.divinefavor.DivineFavor
-import aurocosh.divinefavor.common.item.gems.calling_stones.ModCallingStones
+import aurocosh.divinefavor.common.item.common.ModCallingStones
 import aurocosh.divinefavor.common.lib.extensions.divinePlayerData
 import aurocosh.divinefavor.common.muliblock.common.ModMultiBlocks
 import aurocosh.divinefavor.common.potions.base.potion.ModPotion
 import aurocosh.divinefavor.common.potions.common.ModBlessings
+import aurocosh.divinefavor.common.spirit.ModSpirits
+import aurocosh.divinefavor.common.util.UtilSpirit
 import net.minecraft.entity.EntityLivingBase
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.init.Blocks
@@ -38,7 +40,7 @@ class PotionManipulativePresence : ModPotion("manipulative_presence", 0x7FB8A4) 
 
             if (player.divinePlayerData.manipulativePresenceData.tryLuck()) {
                 player.removePotionEffect(ModBlessings.manipulative_presence)
-                player.addItemStackToInventory(ItemStack(ModCallingStones.calling_stone_loon))
+                UtilSpirit.convertMarksToInvites(player, ModSpirits.loon, ModCallingStones.calling_stone_loon)
             }
         }
     }

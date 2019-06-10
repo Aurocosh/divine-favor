@@ -1,5 +1,6 @@
-package aurocosh.divinefavor.common.item.gems.calling_stones
+package aurocosh.divinefavor.common.item.common
 
+import aurocosh.divinefavor.common.item.gems.ItemCallingStone
 import aurocosh.divinefavor.common.muliblock.common.ModMultiBlocks
 import aurocosh.divinefavor.common.spirit.ModSpirits
 

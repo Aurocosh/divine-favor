@@ -3,10 +3,16 @@ package aurocosh.divinefavor.common.potions.presences
 import aurocosh.divinefavor.DivineFavor
 import aurocosh.divinefavor.common.config.common.ConfigPresence
 import aurocosh.divinefavor.common.entity.mob.EntityDirewolf
-import aurocosh.divinefavor.common.item.gems.calling_stones.ModCallingStones
+import aurocosh.divinefavor.common.item.common.ModCallingStones
+import aurocosh.divinefavor.common.item.gems.ItemCallingStone
+import aurocosh.divinefavor.common.item.gems.ItemMarkedGlass
+import aurocosh.divinefavor.common.lib.enums.InventoryIndexes
 import aurocosh.divinefavor.common.potions.base.potion.ModPotion
+import aurocosh.divinefavor.common.spirit.ModSpirits
+import aurocosh.divinefavor.common.spirit.base.ModSpirit
 import aurocosh.divinefavor.common.util.UtilCoordinates
 import aurocosh.divinefavor.common.util.UtilRandom
+import aurocosh.divinefavor.common.util.UtilSpirit
 import net.minecraft.entity.EntityLivingBase
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.item.ItemStack
@@ -32,7 +38,7 @@ class PotionChillingPresence : ModPotion("chilling_presence", 0x7FB8A4) {
 
     override fun onPotionRemoved(livingBase: EntityLivingBase) {
         super.onPotionRemoved(livingBase)
-        if (livingBase is EntityPlayer)
-            livingBase.addItemStackToInventory(ItemStack(ModCallingStones.calling_stone_blizrabi))
+        UtilSpirit.convertMarksToInvites(livingBase, ModSpirits.blizrabi, ModCallingStones.calling_stone_blizrabi)
     }
+
 }

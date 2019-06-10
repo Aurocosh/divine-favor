@@ -10,7 +10,10 @@ enum class InventoryIndexes(val value: Int) {
     MainEnd(35),
     CraftSlotsStart(36),
     CraftSlotsEnd(39),
-    Offhand(40);
+    Offhand(40),
+
+    MinSlotIndex(0),
+    MaxSlotIndex(40);
 
     companion object : IIndexedEnum<InventoryIndexes> {
         override val indexer: EnumIndexer<InventoryIndexes> = EnumIndexer(values())

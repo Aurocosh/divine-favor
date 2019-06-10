@@ -39,12 +39,18 @@ divinefavor:spirit_became_active=Spirit %1$s became active
 divinefavor:spirit_became_inactive=Spirit %1$s became inactive
 divinefavor:favor_infinite=Infinite
 
+# MESSAGES
+message.divinefavor:marked_glass.spirit_is_active=Spirit is active right now!
+message.divinefavor:marked_glass.spirit_is_inactive=Spirit will become active after %1$d hours and %2$d minutes
+
 # TOOLTIPS
 tooltip.divinefavor:talisman.infinite_use=Infinite use
 tooltip.divinefavor:talisman.unusable=Unusable
 tooltip.divinefavor:talisman.cost=Cost: %1$d Uses: %2$d
 tooltip.divinefavor:talisman.spirit=Spirit: %1$s
 tooltip.divinefavor:wishingStone.favor_count=Restores %1$d favor of %2$s
+tooltip.divinefavor:marked_glass.spirit_is_active=Spirit is active
+tooltip.divinefavor:marked_glass.spirit_is_inactive=Spirit is inactive
 
 # SPIRIT NAMES
 divinefavor:spirit.arbow.name=Arbow
@@ -135,6 +141,17 @@ item.divinefavor:soul_shard_undeath.name=Soul shard of undeath
 item.divinefavor:soul_shard_water.name=Soul shard of water
 item.divinefavor:soul_shard_wild.name=Soul shard of wild
 item.divinefavor:soul_shard_wither.name=Soul shard of wither
+
+## MARKED GLASSES
+item.divinefavor:marked_glass_arbow.name=Glass symbol of Arbow
+item.divinefavor:marked_glass_blizrabi.name=Glass symbol of Blizrabi
+item.divinefavor:marked_glass_endererer.name=Glass symbol of Endererer
+item.divinefavor:marked_glass_loon.name=Glass symbol of Loon
+item.divinefavor:marked_glass_neblaze.name=Glass symbol of Neblaze
+item.divinefavor:marked_glass_redwind.name=Glass symbol of Redwind
+item.divinefavor:marked_glass_romol.name=Glass symbol of Romol
+item.divinefavor:marked_glass_squarefury.name=Glass symbol of Squarefury
+item.divinefavor:marked_glass_timber.name=Glass symbol of Timber
 
 # BATHING BLENDS
 item.divinefavor:blend_charcoal.name=Nether charcoal blend
@@ -489,6 +506,17 @@ item.divinefavor:soul_shard_undeath.description=Material used for crafting and c
 item.divinefavor:soul_shard_water.description=Material used for crafting and creation of soulbound lecterns. Can be extracted from aquatic creatures with awakened bone dagger.
 item.divinefavor:soul_shard_wild.description=Material used for crafting and creation of soulbound lecterns. Can be extracted from regular hostile mobs with awakened bone dagger.
 item.divinefavor:soul_shard_wither.description=Material used for crafting and creation of soulbound lecterns. Can be extracted from withered mobs with awakened bone dagger.
+
+## MARKED GLASSES
+item.divinefavor:marked_glass_arbow.description=Piece of glass marked with divine symbol of Arbow. Having this item in possesion makes you sensitive to spirit activity. Use this item to find out if spirit is currently active or not. This item is needed to get Arbow's invite. Perform Arbow contact ritual while keeping this item in your inventory to convert it to Arbow's invite.
+item.divinefavor:marked_glass_blizrabi.description=Piece of glass marked with divine symbol of Blizrabi. Having this item in possesion makes you sensitive to spirit activity. Use this item to find out if spirit is currently active or not. This item is needed to get Blizrabi's invite. Perform Blizrabi contact ritual while keeping this item in your inventory to convert it to Blizrabi's invite.
+item.divinefavor:marked_glass_endererer.description=Piece of glass marked with divine symbol of Endererer. Having this item in possesion makes you sensitive to spirit activity. Use this item to find out if spirit is currently active or not. This item is needed to get Endererer's invite. Perform Endererer contact ritual while keeping this item in your inventory to convert it to Endererer's invite.
+item.divinefavor:marked_glass_loon.description=Piece of glass marked with divine symbol of Loon. Having this item in possesion makes you sensitive to spirit activity. Use this item to find out if spirit is currently active or not. This item is needed to get Loon's invite. Perform Loon contact ritual while keeping this item in your inventory to convert it to Loon's invite.
+item.divinefavor:marked_glass_neblaze.description=Piece of glass marked with divine symbol of Neblaze. Having this item in possesion makes you sensitive to spirit activity. Use this item to find out if spirit is currently active or not. This item is needed to get Neblaze's invite. Perform Neblaze contact ritual while keeping this item in your inventory to convert it to Neblaze's invite.
+item.divinefavor:marked_glass_redwind.description=Piece of glass marked with divine symbol of Redwind. Having this item in possesion makes you sensitive to spirit activity. Use this item to find out if spirit is currently active or not. This item is needed to get Redwind's invite. Perform Redwind contact ritual while keeping this item in your inventory to convert it to Redwind's invite.
+item.divinefavor:marked_glass_romol.description=Piece of glass marked with divine symbol of Romol. Having this item in possesion makes you sensitive to spirit activity. Use this item to find out if spirit is currently active or not. This item is needed to get Romol's invite. Perform Romol contact ritual while keeping this item in your inventory to convert it to Romol's invite.
+item.divinefavor:marked_glass_squarefury.description=Piece of glass marked with divine symbol of Squarefury. Having this item in possesion makes you sensitive to spirit activity. Use this item to find out if spirit is currently active or not. This item is needed to get Squarefury's invite. Perform Squarefury contact ritual while keeping this item in your inventory to convert it to Squarefury's invite.
+item.divinefavor:marked_glass_timber.description=Piece of glass marked with divine symbol of Timber. Having this item in possesion makes you sensitive to spirit activity. Use this item to find out if spirit is currently active or not. This item is needed to get Timber's invite. Perform Timber contact ritual while keeping this item in your inventory to convert it to Timber's invite.
 
 ## BATHING BLENDS
 item.divinefavor:blend_charcoal.description=Blend used for contacting spirit Neblaze

@@ -1,6 +1,7 @@
-package aurocosh.divinefavor.common.item.gems.favor_marks
+package aurocosh.divinefavor.common.item.common
 
 import aurocosh.divinefavor.common.constants.ConstGemTabOrder
+import aurocosh.divinefavor.common.item.gems.ItemFavorMark
 import aurocosh.divinefavor.common.registry.mappers.ModMappers
 import java.util.*
 

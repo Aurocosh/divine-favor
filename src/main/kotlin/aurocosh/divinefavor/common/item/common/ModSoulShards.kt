@@ -1,5 +1,7 @@
-package aurocosh.divinefavor.common.item.gems.soul_shards
+package aurocosh.divinefavor.common.item.common
 
+import aurocosh.divinefavor.common.item.gems.soul_shards.ItemSoulShard
+import aurocosh.divinefavor.common.item.gems.soul_shards.ItemSoulShardPlayer
 import aurocosh.divinefavor.common.spirit.ModSpirits
 
 object ModSoulShards {

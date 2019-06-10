@@ -1,10 +1,12 @@
 package aurocosh.divinefavor.common.potions.presences
 
 import aurocosh.divinefavor.DivineFavor
-import aurocosh.divinefavor.common.item.gems.calling_stones.ModCallingStones
+import aurocosh.divinefavor.common.item.common.ModCallingStones
 import aurocosh.divinefavor.common.lib.extensions.divinePlayerData
 import aurocosh.divinefavor.common.potions.base.potion.ModPotion
 import aurocosh.divinefavor.common.potions.common.ModBlessings
+import aurocosh.divinefavor.common.spirit.ModSpirits
+import aurocosh.divinefavor.common.util.UtilSpirit
 import net.minecraft.entity.EntityLivingBase
 import net.minecraft.entity.monster.IMob
 import net.minecraft.entity.player.EntityPlayer
@@ -45,7 +47,7 @@ class PotionPredatoryPresence : ModPotion("predatory_presence", 0x7FB8A4) {
 
             if (attacker.divinePlayerData.predatoryPresenceData.count()) {
                 attacker.removePotionEffect(ModBlessings.predatory_presence)
-                attacker.addItemStackToInventory(ItemStack(ModCallingStones.calling_stone_arbow))
+                UtilSpirit.convertMarksToInvites(attacker, ModSpirits.arbow, ModCallingStones.calling_stone_arbow)
             }
         }
     }

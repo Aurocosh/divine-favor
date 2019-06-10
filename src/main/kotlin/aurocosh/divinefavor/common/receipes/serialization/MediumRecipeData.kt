@@ -1,7 +1,7 @@
 package aurocosh.divinefavor.common.receipes.serialization
 
 import aurocosh.divinefavor.DivineFavor
-import aurocosh.divinefavor.common.item.gems.calling_stones.ItemCallingStone
+import aurocosh.divinefavor.common.item.gems.ItemCallingStone
 import aurocosh.divinefavor.common.receipes.ImmaterialMediumRecipe
 import aurocosh.divinefavor.common.receipes.serialization.ingredients.RecipeIngredient
 import net.minecraft.item.Item
