@@ -34,4 +34,6 @@ public class ConfigBlade {
     public static VengefulBlade vengefulBlade = new VengefulBlade();
     @Config.Name("Wither coating")
     public static WitherCoating witherCoating = new WitherCoating();
+
+    // New configs
 }

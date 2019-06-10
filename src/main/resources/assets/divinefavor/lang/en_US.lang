@@ -665,7 +665,7 @@ item.divinefavor:arrow_talisman_wind_leash.description=Arrow shot with this tali
 item.divinefavor:arrow_talisman_yummy_smell.description=Arrow shot with this talisman will be cursed with alluring smell. Cursed creatures will attract unwanted attention. All monsters near cursed creature will attack it. To lift this curse you need attract a lot of creatures at once.
 item.divinefavor:arrow_talisman_zero_g.description=Arrow shot with this talisman will not be affected by gravity.
 
-## BLADE TALISMANS DESCRIPTIONS
+## BLADE TALISMAN DESCRIPTIONS
 item.divinefavor:blade_talisman_blade_of_snow.description=Deals additional damage to hellish mobs and to all other mobs when player is in snowy biome.
 item.divinefavor:blade_talisman_confusion.description=On hit has a chance to confuse mobs into attacking other mobs
 item.divinefavor:blade_talisman_corrosion.description=On hit rapidly corrodes enemy armor

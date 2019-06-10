@@ -22,6 +22,8 @@ object ModBladeTalismans {
     lateinit var vengeful_blade: ItemBladeTalisman
     lateinit var wither_coating: ItemBladeTalisman
 
+    // New talisman vars
+
     fun preInit() {
         // arbow;
 
@@ -52,8 +54,9 @@ object ModBladeTalismans {
         poison_coating = BladeTalismanPoisonCoating("poison_coating", ModSpirits.squarefury, ConfigBlade.poisonCoating.favorCost)
         vengeful_blade = BladeTalismanVengeful("vengeful_blade", ModSpirits.squarefury, ConfigBlade.vengefulBlade.favorCost)
 
-
         // timber;
         wither_coating = BladeTalismanWitherCoating("wither_coating", ModSpirits.timber, ConfigBlade.witherCoating.favorCost)
+
+        // New talismans
     }
 }

@@ -22,7 +22,7 @@
     },
     "r": {
       "type": "forge:ore_dict",
-      "ore": "minecraft:dyePurple"
+      "ore": "dyePurple"
     }
   }
 }
