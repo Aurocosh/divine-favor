@@ -1,6 +1,6 @@
 {
   "result": {
-    "item": "divinefavor:arrow_talisman_crawling_mist"
+    "item": "divinefavor:blade_talisman_crawling_mist"
   },
   "stones": [
     "divinefavor:calling_stone_timber"
@@ -16,7 +16,7 @@
     },
     {
       "type": "stack",
-      "item": "minecraft:arrow"
+      "item": "minecraft:iron_sword"
     },
     {
       "type": "stack",

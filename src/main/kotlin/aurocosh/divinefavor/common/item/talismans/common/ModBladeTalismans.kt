@@ -2,7 +2,9 @@ package aurocosh.divinefavor.common.item.talismans.common
 
 import aurocosh.divinefavor.common.config.common.ConfigBlade
 import aurocosh.divinefavor.common.item.talismans.blade.*
+import aurocosh.divinefavor.common.item.talismans.blade.base.BladeTalismanModPotion
 import aurocosh.divinefavor.common.item.talismans.blade.base.ItemBladeTalisman
+import aurocosh.divinefavor.common.potions.common.ModCurses
 import aurocosh.divinefavor.common.spirit.ModSpirits
 import aurocosh.divinefavor.common.spirit.base.ModSpirit
 
@@ -23,6 +25,9 @@ object ModBladeTalismans {
     lateinit var wither_coating: ItemBladeTalisman
 
     // New talisman vars
+    lateinit var fill_lungs: ItemBladeTalisman
+    lateinit var fiery_mark: ItemBladeTalisman
+    lateinit var crawling_mist: ItemBladeTalisman
     lateinit var lucky_strike: ItemBladeTalisman
     lateinit var memory_blade: ItemBladeTalisman
 
@@ -60,6 +65,9 @@ object ModBladeTalismans {
         wither_coating = BladeTalismanWitherCoating("wither_coating", ModSpirits.timber, ConfigBlade.witherCoating.favorCost)
 
         // New talismans
+        fill_lungs = BladeTalismanModPotion("fill_lungs", ModSpirits.timber, ConfigBlade.fillLungs.favorCost, ModCurses.fill_lungs, ConfigBlade.fillLungs.duration)
+        fiery_mark = BladeTalismanModPotion("fiery_mark", ModSpirits.neblaze, ConfigBlade.fieryMark.favorCost, ModCurses.fiery_mark, ConfigBlade.fieryMark.duration)
+        crawling_mist = BladeTalismanModPotion("crawling_mist", ModSpirits.timber, ConfigBlade.crawlingMist.favorCost, ModCurses.crawling_mist, ConfigBlade.crawlingMist.duration)
         lucky_strike = BladeTalismanLuckyStrike("lucky_strike", ModSpirits.squarefury, ConfigBlade.luckyStrike.favorCost)
         memory_blade = BladeTalismanMemoryBlade("memory_blade", ModSpirits.squarefury, ConfigBlade.memoryBlade.favorCost)
     }

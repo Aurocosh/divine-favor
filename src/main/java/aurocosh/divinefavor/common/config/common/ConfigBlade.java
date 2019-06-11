@@ -36,6 +36,12 @@ public class ConfigBlade {
     public static WitherCoating witherCoating = new WitherCoating();
 
     // New configs
+    @Config.Name("Fill lungs")
+    public static FillLungs fillLungs = new FillLungs();
+    @Config.Name("Fiery mark")
+    public static FieryMark fieryMark = new FieryMark();
+    @Config.Name("Crawling mist")
+    public static CrawlingMist crawlingMist = new CrawlingMist();
     @Config.Name("Lucky strike")
     public static LuckyStrike luckyStrike = new LuckyStrike();
     @Config.Name("Memory blade")

@@ -335,6 +335,9 @@ item.divinefavor:arrow_talisman_yummy_smell.name=Yummy smell talisman
 item.divinefavor:arrow_talisman_zero_g.name=Zero g arrow talisman
 
 ## BLADE TALISMAN NAMES
+item.divinefavor:blade_talisman_fill_lungs.name=Fill lungs
+item.divinefavor:blade_talisman_fiery_mark.name=Fiery mark
+item.divinefavor:blade_talisman_crawling_mist.name=Crawling mist
 item.divinefavor:blade_talisman_lucky_strike.name=Lucky strike
 item.divinefavor:blade_talisman_memory_blade.name=Memory blade
 item.divinefavor:blade_talisman_blade_of_snow.name=Blade of snow talisman
@@ -703,12 +706,15 @@ item.divinefavor:arrow_talisman_yummy_smell.description=Arrow shot with this tal
 item.divinefavor:arrow_talisman_zero_g.description=Arrow shot with this talisman will not be affected by gravity.
 
 ## BLADE TALISMAN DESCRIPTIONS
-item.divinefavor:blade_talisman_lucky_strike.description=Each hit with this talisman improves loot dropped by a mob on his death
-item.divinefavor:blade_talisman_memory_blade.description=Each hit with this talisman to the same enemy deals more damage then the previous hit
+item.divinefavor:blade_talisman_fill_lungs.description=Enemies hit with this talisman will be cursed with drowning curse. Cursed creature will drown on land. If creatures jumps in water then curse will be lifted.
+item.divinefavor:blade_talisman_fiery_mark.description=Enemies hit with this talisman will be cursed with fiery mark. Cursed creature will explode some time after being cursed. To lift this curse just jump into water.
+item.divinefavor:blade_talisman_crawling_mist.description=Enemies hit with this talisman will be cursed with crawling mist. This curse will only work on players. Cursed players sight will be severely reduced while curse is active. To remove this curse player will have to go as far as possible from place where he was cursed.
+item.divinefavor:blade_talisman_lucky_strike.description=Each hit with this talisman improves loot dropped by a mob on his death.
+item.divinefavor:blade_talisman_memory_blade.description=Each hit with this talisman to the same enemy deals more damage then the previous hit.
 item.divinefavor:blade_talisman_blade_of_snow.description=Deals additional damage to hellish mobs and to all other mobs when player is in snowy biome.
-item.divinefavor:blade_talisman_confusion.description=On hit has a chance to confuse mobs into attacking other mobs
-item.divinefavor:blade_talisman_corrosion.description=On hit rapidly corrodes enemy armor
-item.divinefavor:blade_talisman_gamble.description=Deals additional damage. This is cheap and very powerful spell but it has a small chance of dealing massive damage to caster potentially instantly killing the caster.                                                   item
+item.divinefavor:blade_talisman_confusion.description=On hit has a chance to confuse mobs into attacking other mobs.
+item.divinefavor:blade_talisman_corrosion.description=On hit rapidly corrodes enemy armor.
+item.divinefavor:blade_talisman_gamble.description=Deals additional damage. This is cheap and very powerful spell but it has a small chance of dealing massive damage to caster potentially instantly killing the caster.
 item.divinefavor:blade_talisman_hand_swap.description=On hit has a chance to swap items in players hand and offhand
 item.divinefavor:blade_talisman_heavy_blade.description=Knocks back enemies on hit
 item.divinefavor:blade_talisman_holy_blade.description=Deals extra damage to undead, ignites them and slows them down.

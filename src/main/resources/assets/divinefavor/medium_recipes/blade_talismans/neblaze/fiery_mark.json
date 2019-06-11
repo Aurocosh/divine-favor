@@ -1,6 +1,6 @@
 {
   "result": {
-    "item": "divinefavor:arrow_talisman_fiery_mark"
+    "item": "divinefavor:blade_talisman_fiery_mark"
   },
   "stones": [
     "divinefavor:calling_stone_neblaze"
@@ -16,7 +16,7 @@
     },
     {
       "type": "stack",
-      "item": "minecraft:arrow"
+      "item": "minecraft:iron_sword"
     },
     {
       "type": "stack",

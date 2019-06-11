@@ -1,6 +1,6 @@
 {
   "result": {
-    "item": "divinefavor:arrow_talisman_crawling_mist"
+    "item": "divinefavor:blade_talisman_fill_lungs"
   },
   "stones": [
     "divinefavor:calling_stone_timber"
@@ -12,20 +12,15 @@
     },
     {
       "type": "ore",
-      "ore": "dyeLightGray"
+      "ore": "dyeBlack"
     },
     {
       "type": "stack",
-      "item": "minecraft:arrow"
+      "item": "minecraft:iron_sword"
     },
     {
       "type": "stack",
-      "item": "minecraft:wool",
-      "data": 0
-    },
-    {
-      "type": "stack",
-      "item": "minecraft:red_mushroom"
+      "item": "minecraft:TODO" 
     }
   ]
 }
