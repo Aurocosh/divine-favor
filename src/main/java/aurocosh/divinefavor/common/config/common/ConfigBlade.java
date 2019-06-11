@@ -36,4 +36,6 @@ public class ConfigBlade {
     public static WitherCoating witherCoating = new WitherCoating();
 
     // New configs
+    @Config.Name("Memory blade")
+    public static MemoryBlade memoryBlade = new MemoryBlade();
 }

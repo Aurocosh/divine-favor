@@ -45,7 +45,6 @@ object HUDHandler {
         val currentPosZ = player.lastTickPosZ + (player.posZ - player.lastTickPosZ) * partialTicks
 
         //We want to draw from the starting position to the (ending position)+1
-        // TODO
         val x = if (startPos.x <= endPos.x) startPos.x else endPos.x
         val y = if (startPos.y <= endPos.y) startPos.y else endPos.y
         val z = if (startPos.z <= endPos.z) startPos.z else endPos.z

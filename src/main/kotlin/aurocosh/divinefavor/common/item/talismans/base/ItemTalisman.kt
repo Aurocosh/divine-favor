@@ -2,6 +2,9 @@ package aurocosh.divinefavor.common.item.talismans.base
 
 import aurocosh.divinefavor.DivineFavor
 import aurocosh.divinefavor.common.item.base.ModItem
+import aurocosh.divinefavor.common.item.talismans.spell.base.CastType
+import aurocosh.divinefavor.common.item.talismans.spell.base.SpellOptions
+import aurocosh.divinefavor.common.item.talismans.spell.base.TalismanContext
 import aurocosh.divinefavor.common.lib.extensions.divinePlayerData
 import aurocosh.divinefavor.common.network.message.client.spirit_data.MessageSyncFavor
 import aurocosh.divinefavor.common.spirit.base.ModSpirit
@@ -24,10 +27,28 @@ abstract class ItemTalisman(val name: String, texturePath: String, val spirit: M
         setMaxStackSize(1)
     }
 
+    abstract fun validateCastType(context: TalismanContext): Boolean
+
+    fun cast(context: TalismanContext): Boolean {
+        if (!context.valid)
+            return false
+        if (!validateCastType(context))
+            return false
+        if (!validate(context))
+            return false
+        if (isConsumeCharge(context) && !claimCost(context.player))
+            return false
+        if (context.world.isRemote)
+            performActionClient(context)
+        else
+            performActionServer(context)
+        return true
+    }
+
     fun claimCost(player: EntityLivingBase): Boolean {
         if (favorCost == 0)
             return true
-        if(player !is EntityPlayer)
+        if (player !is EntityPlayer)
             return false
 
         val spiritData = player.divinePlayerData.spiritData
@@ -78,4 +99,24 @@ abstract class ItemTalisman(val name: String, texturePath: String, val spirit: M
         val message = I18n.format("tooltip.divinefavor:talisman.spirit", name)
         tooltip.add(message)
     }
+
+    protected open fun validate(context: TalismanContext): Boolean {
+        return true
+    }
+
+    protected open fun isConsumeCharge(context: TalismanContext): Boolean {
+        return true
+    }
+
+    open fun raycastBlock(): Boolean {
+        return false
+    }
+
+    open fun raycastTarget(): Boolean {
+        return false
+    }
+
+    protected open fun performActionServer(context: TalismanContext) {}
+
+    protected open fun performActionClient(context: TalismanContext) {}
 }

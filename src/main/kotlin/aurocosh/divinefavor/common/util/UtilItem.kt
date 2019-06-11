@@ -5,12 +5,15 @@ import net.minecraft.util.ActionResult
 import net.minecraft.util.EnumActionResult
 
 object UtilItem {
-    fun actionResult(stack: ItemStack, success: Boolean) : ActionResult<ItemStack>
-    {
+    fun actionResult(success: Boolean, stack: ItemStack): ActionResult<ItemStack> {
         val result = when {
             success -> EnumActionResult.SUCCESS
             else -> EnumActionResult.PASS
         }
         return ActionResult(result, stack)
+    }
+
+    fun actionResultPass(success: Boolean): EnumActionResult {
+        return if (success) EnumActionResult.SUCCESS else EnumActionResult.PASS
     }
 }

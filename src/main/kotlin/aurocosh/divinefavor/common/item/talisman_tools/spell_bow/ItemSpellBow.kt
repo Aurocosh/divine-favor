@@ -5,9 +5,11 @@ import aurocosh.divinefavor.common.constants.ConstGuiIDs
 import aurocosh.divinefavor.common.constants.ConstMainTabOrder
 import aurocosh.divinefavor.common.item.base.ModItem
 import aurocosh.divinefavor.common.item.common.ModItems
+import aurocosh.divinefavor.common.item.talisman_tools.ItemTalismanContainer
 import aurocosh.divinefavor.common.item.talisman_tools.spell_bow.capability.SpellBowDataHandler.CAPABILITY_SPELL_BOW
 import aurocosh.divinefavor.common.item.talisman_tools.spell_bow.capability.SpellBowProvider
 import aurocosh.divinefavor.common.item.talisman_tools.spell_bow.capability.SpellBowStorage
+import aurocosh.divinefavor.common.item.talismans.arrow.base.ItemArrowTalisman
 import aurocosh.divinefavor.common.lib.extensions.cap
 import aurocosh.divinefavor.common.lib.extensions.compound
 import aurocosh.divinefavor.common.util.UtilBow
@@ -31,7 +33,7 @@ import net.minecraft.world.World
 import net.minecraftforge.common.capabilities.ICapabilityProvider
 import net.minecraftforge.event.ForgeEventFactory
 
-class ItemSpellBow : ModItem("spell_bow", "spell_bow/spell_bow", ConstMainTabOrder.CONTAINERS) {
+class ItemSpellBow : ItemTalismanContainer("spell_bow", "spell_bow/spell_bow", ConstMainTabOrder.CONTAINERS) {
     init {
         maxStackSize = 1
         creativeTab = DivineFavor.TAB_MAIN
@@ -81,10 +83,10 @@ class ItemSpellBow : ModItem("spell_bow", "spell_bow/spell_bow", ConstMainTabOrd
 
         val stackIsInfinite = entityLiving.capabilities.isCreativeMode || arrowStack.item is ItemArrow && (arrowStack.item as ItemArrow).isInfinite(arrowStack, bowStack, entityLiving)
         if (!world.isRemote) {
-            val talisman = bowStack.cap(CAPABILITY_SPELL_BOW).getSelectedTalisman()
+            val stackWrapper = getTalisman<ItemArrowTalisman>(bowStack)
             val entityArrow =
-                    if (talisman != null && talisman.claimCost(entityLiving))
-                        talisman.createArrow(world, talisman, entityLiving)
+                    if (stackWrapper != null && stackWrapper.talisman.claimCost(entityLiving))
+                        stackWrapper.talisman.createArrow(world, stackWrapper.talisman, entityLiving)
                     else
                         getStandardArrow(world, arrowStack, entityLiving)
             entityArrow.shoot(entityLiving, entityLiving.rotationPitch, entityLiving.rotationYaw, 0.0f, velocity * 3.0f, 1.0f)
@@ -108,7 +110,7 @@ class ItemSpellBow : ModItem("spell_bow", "spell_bow/spell_bow", ConstMainTabOrd
             if (stackIsInfinite || entityLiving.capabilities.isCreativeMode && (arrowStack.item === Items.SPECTRAL_ARROW || arrowStack.item === Items.TIPPED_ARROW))
                 entityArrow.pickupStatus = EntityArrow.PickupStatus.CREATIVE_ONLY
             world.spawnEntity(entityArrow)
-            talisman?.postInit(entityArrow)
+            stackWrapper?.talisman?.postInit(entityArrow)
         }
 
         world.playSound(null, entityLiving.posX, entityLiving.posY, entityLiving.posZ, SoundEvents.ENTITY_ARROW_SHOOT, SoundCategory.PLAYERS, 1.0f, 1.0f / (Item.itemRand.nextFloat() * 0.4f + 1.2f) + velocity * 0.5f)

@@ -3,13 +3,16 @@ package aurocosh.divinefavor.common.item.talisman_tools.grimoire
 import aurocosh.divinefavor.DivineFavor
 import aurocosh.divinefavor.common.constants.ConstGuiIDs
 import aurocosh.divinefavor.common.constants.ConstMainTabOrder
-import aurocosh.divinefavor.common.item.base.ModItem
 import aurocosh.divinefavor.common.item.common.ModItems
+import aurocosh.divinefavor.common.item.talisman_tools.ItemTalismanContainer
+import aurocosh.divinefavor.common.item.talisman_tools.TalismanContainerMode
 import aurocosh.divinefavor.common.item.talisman_tools.grimoire.capability.GrimoireDataHandler.CAPABILITY_GRIMOIRE
 import aurocosh.divinefavor.common.item.talisman_tools.grimoire.capability.GrimoireProvider
 import aurocosh.divinefavor.common.item.talisman_tools.grimoire.capability.GrimoireStorage
 import aurocosh.divinefavor.common.item.talismans.spell.base.ItemSpellTalisman
+import aurocosh.divinefavor.common.item.talismans.spell.base.TalismanContext
 import aurocosh.divinefavor.common.lib.extensions.cap
+import aurocosh.divinefavor.common.util.UtilItem
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.item.ItemStack
 import net.minecraft.nbt.NBTTagCompound
@@ -21,7 +24,7 @@ import net.minecraft.util.math.BlockPos
 import net.minecraft.world.World
 import net.minecraftforge.common.capabilities.ICapabilityProvider
 
-class ItemGrimoire : ModItem("grimoire", "grimoire", ConstMainTabOrder.CONTAINERS) {
+class ItemGrimoire : ItemTalismanContainer("grimoire", "grimoire", ConstMainTabOrder.CONTAINERS) {
     init {
         setMaxStackSize(1)
         creativeTab = DivineFavor.TAB_MAIN
@@ -29,37 +32,33 @@ class ItemGrimoire : ModItem("grimoire", "grimoire", ConstMainTabOrder.CONTAINER
 
     override fun onItemUse(player: EntityPlayer, world: World, pos: BlockPos, hand: EnumHand, facing: EnumFacing, hitX: Float, hitY: Float, hitZ: Float): EnumActionResult {
         val stack = player.getHeldItem(hand)
-        if (stack.item !is ItemGrimoire)
+        if (getModeOrTransform(stack, player) != TalismanContainerMode.NORMAL)
             return EnumActionResult.PASS
 
-        val grimoireHandler = stack.cap(CAPABILITY_GRIMOIRE)
-        val talismanStack = grimoireHandler.getSelectedStack()
-        if (talismanStack.isEmpty)
-            return EnumActionResult.PASS
-
-        val talisman = talismanStack.item as ItemSpellTalisman
-        talisman.castItemUse(player, world, pos, hand, facing, hitX, hitY, hitZ)
-        return EnumActionResult.SUCCESS
+        val (talismanStack, talisman) = getTalisman<ItemSpellTalisman>(stack) ?: return EnumActionResult.PASS
+        val context = TalismanContext.useCast(player, world, pos, hand, facing, talismanStack)
+        val success = talisman.cast(context)
+        return UtilItem.actionResultPass(success)
     }
 
     override fun onItemRightClick(world: World, player: EntityPlayer, hand: EnumHand): ActionResult<ItemStack> {
         val stack = player.getHeldItem(hand)
-        if (stack.item !== ModItems.grimoire)
-            return ActionResult(EnumActionResult.PASS, stack)
+        val success = performRightClickAction(world, player, hand, stack)
+        return UtilItem.actionResult(success, stack)
+    }
 
-        if (player.isSneaking) {
-            player.openGui(DivineFavor, ConstGuiIDs.GRIMOIRE, world, player.posX.toInt(), player.posY.toInt(), player.posZ.toInt())
-            return ActionResult(EnumActionResult.SUCCESS, stack)
+    private fun performRightClickAction(world: World, player: EntityPlayer, hand: EnumHand, stack: ItemStack): Boolean {
+        val mode = getModeOrTransform(stack, player)
+        if (mode == TalismanContainerMode.INVALID)
+            return false
+        if (mode == TalismanContainerMode.BOOK)
+            player.openGui(DivineFavor, ConstGuiIDs.SPELL_BLADE, world, player.posX.toInt(), player.posY.toInt(), player.posZ.toInt())
+        else if (mode == TalismanContainerMode.NORMAL) {
+            val (talismanStack, talisman) = getTalisman<ItemSpellTalisman>(stack) ?: return true
+            val context = TalismanContext.rightClick(world, player, hand, talismanStack)
+            talisman.cast(context)
         }
-
-        val grimoireHandler = stack.cap(CAPABILITY_GRIMOIRE)
-        val talismanStack = grimoireHandler.getSelectedStack()
-        if (talismanStack.isEmpty)
-            return ActionResult(EnumActionResult.PASS, stack)
-
-        val talisman = talismanStack.item as ItemSpellTalisman
-        talisman.castRightClick(world, player, hand)
-        return ActionResult(EnumActionResult.SUCCESS, stack)
+        return true
     }
 
     override fun initCapabilities(item: ItemStack, nbt: NBTTagCompound?): ICapabilityProvider? {

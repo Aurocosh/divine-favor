@@ -2,6 +2,7 @@ package aurocosh.divinefavor.common.item.talismans.blade
 
 import aurocosh.divinefavor.DivineFavor
 import aurocosh.divinefavor.common.item.talismans.blade.base.ItemBladeTalisman
+import aurocosh.divinefavor.common.item.talismans.spell.base.TalismanContext
 import aurocosh.divinefavor.common.lib.extensions.divinePlayerData
 import aurocosh.divinefavor.common.spirit.base.ModSpirit
 import net.minecraft.entity.EntityLivingBase
@@ -14,9 +15,9 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent
 
 @Mod.EventBusSubscriber(modid = DivineFavor.MOD_ID)
 class BladeTalismanVengeful(name: String, spirit: ModSpirit, favorCost: Int) : ItemBladeTalisman(name, spirit, favorCost) {
-    override fun performActionServer(context: ItemStack, player: EntityPlayer, target: EntityLivingBase) {
-        val damage = player.divinePlayerData.vengefulBladeData.lastDamage
-        target.attackEntityFrom(DamageSource.causePlayerDamage(player), damage)
+    override fun performActionServer(context: TalismanContext) {
+        val damage = context.player.divinePlayerData.vengefulBladeData.lastDamage
+        context.target?.attackEntityFrom(DamageSource.causePlayerDamage(context.player), damage)
     }
 
     companion object {

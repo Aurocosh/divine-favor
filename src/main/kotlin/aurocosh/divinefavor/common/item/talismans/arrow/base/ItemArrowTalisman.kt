@@ -3,6 +3,8 @@ package aurocosh.divinefavor.common.item.talismans.arrow.base
 import aurocosh.divinefavor.DivineFavor
 import aurocosh.divinefavor.common.entity.projectile.EntitySpellArrow
 import aurocosh.divinefavor.common.item.talismans.base.ItemTalisman
+import aurocosh.divinefavor.common.item.talismans.spell.base.CastType
+import aurocosh.divinefavor.common.item.talismans.spell.base.TalismanContext
 import aurocosh.divinefavor.common.spirit.base.ModSpirit
 import net.minecraft.entity.EntityLivingBase
 import net.minecraft.entity.player.EntityPlayer
@@ -16,6 +18,11 @@ import java.awt.Color
 import java.util.*
 
 open class ItemArrowTalisman(name: String, spirit: ModSpirit, favorCost: Int, val color: Color, val arrowDamage: Double, val options: EnumSet<ArrowOptions>, val arrowType: ArrowType) : ItemTalisman("arrow_talisman_$name", "arrow_talismans/$name", spirit, favorCost) {
+
+    override fun validateCastType(context: TalismanContext): Boolean {
+        return context.castType == CastType.BowCast
+    }
+
     var gravityType: GravityType
         protected set
 
@@ -71,5 +78,9 @@ open class ItemArrowTalisman(name: String, spirit: ModSpirit, favorCost: Int, va
 
     @SideOnly(Side.CLIENT)
     open fun spawnParticles(spellArrow: EntitySpellArrow) {
+    }
+
+    override fun isConsumeCharge(context: TalismanContext): Boolean {
+        return false
     }
 }

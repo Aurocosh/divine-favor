@@ -23,6 +23,7 @@ object ModBladeTalismans {
     lateinit var wither_coating: ItemBladeTalisman
 
     // New talisman vars
+    lateinit var memory_blade: ItemBladeTalisman
 
     fun preInit() {
         // arbow;
@@ -58,5 +59,6 @@ object ModBladeTalismans {
         wither_coating = BladeTalismanWitherCoating("wither_coating", ModSpirits.timber, ConfigBlade.witherCoating.favorCost)
 
         // New talismans
+        memory_blade = BladeTalismanMemoryBlade("memory_blade", ModSpirits.squarefury, ConfigBlade.memoryBlade.favorCost)
     }
 }

@@ -1,5 +1,6 @@
 package aurocosh.divinefavor.common.item.talismans.blade.base
 
+import aurocosh.divinefavor.common.item.talismans.spell.base.TalismanContext
 import aurocosh.divinefavor.common.potions.base.effect.ModEffect
 import aurocosh.divinefavor.common.potions.base.potion.ModPotion
 import aurocosh.divinefavor.common.spirit.base.ModSpirit
@@ -24,7 +25,7 @@ class BladeTalismanModPotion : ItemBladeTalisman {
         this.potion = potion
     }
 
-    override fun performActionServer(context: ItemStack, player: EntityPlayer, target: EntityLivingBase) {
-        target.addPotionEffect(ModEffect(potion, duration, amplifier))
+    override fun performActionServer(context: TalismanContext) {
+        context.target?.addPotionEffect(ModEffect(potion, duration, amplifier))
     }
 }

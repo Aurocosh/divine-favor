@@ -5,6 +5,8 @@ import aurocosh.divinefavor.common.config.common.ConfigGeneral
 import aurocosh.divinefavor.common.item.talismans.base.ItemTalisman
 import aurocosh.divinefavor.common.spirit.base.ModSpirit
 import aurocosh.divinefavor.common.util.UtilEntity
+import aurocosh.divinefavor.common.util.UtilItem.actionResult
+import aurocosh.divinefavor.common.util.UtilItem.actionResultPass
 import net.minecraft.entity.EntityLivingBase
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.item.ItemStack
@@ -19,96 +21,44 @@ import java.util.*
 
 open class ItemSpellTalisman// Talisman functions
 (name: String, texturePath: String, spirit: ModSpirit, favorCost: Int, private val options: EnumSet<SpellOptions>) : ItemTalisman("talisman_$name", "spell_talismans/$texturePath$name", spirit, favorCost) {
-
     init {
         setMaxStackSize(1)
         creativeTab = DivineFavor.TAB_SPELL_TALISMANS
     }
 
+    constructor(name: String, spirit: ModSpirit, favorCost: Int, options: EnumSet<SpellOptions>) : this(name, "", spirit, favorCost, options)
+
     private fun getTexturePath(path: Array<String>): String {
         return path.joinToString("/")
     }
 
-    // Talisman functions
-    constructor(name: String, spirit: ModSpirit, favorCost: Int, options: EnumSet<SpellOptions>) : this(name, "", spirit, favorCost, options)
+    override fun raycastBlock(): Boolean {
+        return options.contains(SpellOptions.OnRightCastRayTraceBlock)
+    }
 
-    fun cast(context: TalismanContext): Boolean {
-        if (!validate(context))
+    override fun raycastTarget(): Boolean {
+        return options.contains(SpellOptions.OnRightCastFindTargetEntity)
+    }
+
+    override fun validateCastType(context: TalismanContext): Boolean {
+        if (context.castType == CastType.UseCast && !options.contains(SpellOptions.ItemUseCast))
             return false
-        if (isConsumeCharge(context) && !claimCost(context.player))
+        if (context.castType == CastType.RightCast && !options.contains(SpellOptions.RightClickCast))
             return false
-        if (context.world.isRemote)
-            performActionClient(context)
-        else
-            performActionServer(context)
         return true
     }
 
-    // Talisman functions
-    override fun onItemUse(playerIn: EntityPlayer, worldIn: World, pos: BlockPos, hand: EnumHand, facing: EnumFacing, hitX: Float, hitY: Float, hitZ: Float): EnumActionResult {
-        val stack = playerIn.getHeldItem(hand)
-        if (stack.item is ItemSpellTalisman) {
-            val casted = castItemUse(playerIn, worldIn, pos, hand, facing, hitX, hitY, hitZ)
-            return if (casted) EnumActionResult.SUCCESS else EnumActionResult.PASS
-        }
-        return EnumActionResult.PASS
+    override fun onItemUse(player: EntityPlayer, world: World, pos: BlockPos, hand: EnumHand, facing: EnumFacing, hitX: Float, hitY: Float, hitZ: Float): EnumActionResult {
+        val stack = player.getHeldItem(hand)
+        val context = TalismanContext.useCast(player, world, pos, hand, facing, stack)
+        val success = cast(context)
+        return actionResultPass(success)
     }
 
-    override fun onItemRightClick(worldIn: World, playerIn: EntityPlayer, hand: EnumHand): ActionResult<ItemStack> {
-        val stack = playerIn.getHeldItem(hand)
-        if (stack.item !is ItemSpellTalisman)
-            return ActionResult(EnumActionResult.PASS, stack)
-        val success = castRightClick(worldIn, playerIn, hand)
-        return ActionResult(if (success) EnumActionResult.SUCCESS else EnumActionResult.PASS, stack)
-    }
-
-    fun castItemUse(playerIn: EntityPlayer, world: World, pos: BlockPos, hand: EnumHand, facing: EnumFacing, hitX: Float, hitY: Float, hitZ: Float): Boolean {
-        if (!options.contains(SpellOptions.ItemUseCast))
-            return false
-        val context = TalismanContext(playerIn, world, pos, Vec3d(hitX.toDouble(), hitY.toDouble(), hitZ.toDouble()), hand, facing, null, CastType.UseCast, options)
-        cast(context)
-        return true
-    }
-
-    fun castRightClick(world: World, player: EntityPlayer, hand: EnumHand): Boolean {
-        if (!options.contains(SpellOptions.RightClickCast))
-            return false
-
-        val pos: BlockPos
-        val posVec: Vec3d
-        val facing: EnumFacing
-        var target: EntityLivingBase? = null
-        if (options.contains(SpellOptions.OnRightCastRayTraceBlock)) {
-            val traceResult = UtilEntity.getBlockPlayerLookingAt(player, ConfigGeneral.talismanCastDistance.toDouble())
-                    ?: return false
-            pos = traceResult.blockPos
-            posVec = traceResult.hitVec
-            facing = traceResult.sideHit
-        } else {
-            pos = player.position
-            posVec = Vec3d(pos)
-            facing = EnumFacing.UP
-        }
-        if (options.contains(SpellOptions.OnRightCastFindTargetEntity))
-            target = UtilEntity.getEntityPlayerLookingAt(player, EntityLivingBase::class.java, ENTITY_SEARCH_DISTANCE, true)
-
-        val context = TalismanContext(player, world, pos, posVec, hand, facing, target, CastType.RightCast, options)
-        return cast(context)
-    }
-
-    protected open fun validate(context: TalismanContext): Boolean {
-        return true
-    }
-
-    protected open fun isConsumeCharge(context: TalismanContext): Boolean {
-        return true
-    }
-
-    protected open fun performActionServer(context: TalismanContext) {}
-
-    protected open fun performActionClient(context: TalismanContext) {}
-
-    companion object {
-        private val ENTITY_SEARCH_DISTANCE = 30.0
+    override fun onItemRightClick(world: World, player: EntityPlayer, hand: EnumHand): ActionResult<ItemStack> {
+        val stack = player.getHeldItem(hand)
+        val context = TalismanContext.rightClick(world, player, hand, stack)
+        val success = cast(context)
+        return actionResult(success, stack)
     }
 }

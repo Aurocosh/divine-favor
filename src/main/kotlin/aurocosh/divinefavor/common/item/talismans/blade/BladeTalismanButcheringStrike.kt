@@ -3,6 +3,7 @@ package aurocosh.divinefavor.common.item.talismans.blade
 import aurocosh.divinefavor.common.config.common.ConfigBlade
 import aurocosh.divinefavor.common.config.common.ConfigSpells
 import aurocosh.divinefavor.common.item.talismans.blade.base.ItemBladeTalisman
+import aurocosh.divinefavor.common.item.talismans.spell.base.TalismanContext
 import aurocosh.divinefavor.common.lib.extensions.divineLivingData
 import aurocosh.divinefavor.common.lib.extensions.divinePlayerData
 import aurocosh.divinefavor.common.network.message.client.spirit_data.MessageSyncFavor
@@ -19,7 +20,8 @@ import net.minecraft.util.DamageSource
 import net.minecraft.util.EntityDamageSource
 
 class BladeTalismanButcheringStrike(name: String, spirit: ModSpirit, favorCost: Int) : ItemBladeTalisman(name, spirit, favorCost) {
-    override fun validate(context: ItemStack, player: EntityPlayer, target: EntityLivingBase): Boolean {
+    override fun validate(context: TalismanContext): Boolean {
+        val target = context.target ?: return false
         if (target !is IAnimals)
             return false
         if (target is IMob)
@@ -27,8 +29,9 @@ class BladeTalismanButcheringStrike(name: String, spirit: ModSpirit, favorCost: 
         return true
     }
 
-    override fun performActionServer(context: ItemStack, player: EntityPlayer, target: EntityLivingBase) {
+    override fun performActionServer(context: TalismanContext) {
+        val target = context.target ?: return
         target.divineLivingData.extraLootingData.extraLooting += ConfigBlade.butcheringStrike.extraLooting
-        target.attackEntityFrom(DamageSource.causePlayerDamage(player), ConfigBlade.butcheringStrike.extraDamage)
+        target.attackEntityFrom(DamageSource.causePlayerDamage(context.player), ConfigBlade.butcheringStrike.extraDamage)
     }
 }

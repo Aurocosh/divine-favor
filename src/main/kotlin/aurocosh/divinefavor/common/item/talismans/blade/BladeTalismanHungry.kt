@@ -2,17 +2,19 @@ package aurocosh.divinefavor.common.item.talismans.blade
 
 import aurocosh.divinefavor.common.config.common.ConfigBlade
 import aurocosh.divinefavor.common.item.talismans.blade.base.ItemBladeTalisman
+import aurocosh.divinefavor.common.item.talismans.spell.base.TalismanContext
 import aurocosh.divinefavor.common.spirit.base.ModSpirit
 import net.minecraft.entity.EntityLivingBase
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.init.SoundEvents
 import net.minecraft.item.ItemStack
 import net.minecraft.util.SoundCategory
+import sun.audio.AudioPlayer.player
 
 class BladeTalismanHungry(name: String, spirit: ModSpirit, favorCost: Int) : ItemBladeTalisman(name, spirit, favorCost) {
-    override fun performActionServer(context: ItemStack, player: EntityPlayer, target: EntityLivingBase) {
-        if (target !is EntityPlayer)
-            return
+    override fun performActionServer(context: TalismanContext) {
+        val target = context.target as? EntityPlayer ?: return
+        val player = context.player
 
         val foodToSteal = Math.min(target.foodStats.foodLevel, ConfigBlade.hungryBlade.foodStolen)
         val saturationToSteal = Math.min(target.foodStats.saturationLevel, ConfigBlade.hungryBlade.saturationStolen)
