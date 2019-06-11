@@ -3,7 +3,7 @@ package aurocosh.divinefavor.common.integrations.crafttweaker
 import aurocosh.divinefavor.common.lib.extensions.S
 import aurocosh.divinefavor.common.lib.extensions.name
 import aurocosh.divinefavor.common.receipes.ImmaterialMediumRecipe
-import aurocosh.divinefavor.common.receipes.ModRecipes
+import aurocosh.divinefavor.common.receipes.common.ModMediumRecipes
 import com.blamejared.mtlib.helpers.InputHelper
 import crafttweaker.IAction
 import crafttweaker.api.item.IIngredient
@@ -22,7 +22,7 @@ class ActionAddMediumRecipe(output: IItemStack, callingStones: Array<IIngredient
 
     override fun apply() {
         for (recipe in recipes)
-            ModRecipes.register(recipe)
+            ModMediumRecipes.register(recipe)
     }
 
     override fun describe(): String {

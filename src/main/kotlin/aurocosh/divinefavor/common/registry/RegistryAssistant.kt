@@ -19,7 +19,7 @@ class RegistryAssistant<T : IForgeRegistryEntry<*>> {
         val values = ArrayList<K>()
         for (value in valueMap.values)
             if (clazz.isInstance(value))
-                values.add(value as K)
+                values.add(clazz.cast(value))
         return values
     }
 

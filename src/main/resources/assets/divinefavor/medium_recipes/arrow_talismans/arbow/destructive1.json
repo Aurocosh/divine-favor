@@ -12,7 +12,7 @@
     },
     {
       "type": "ore",
-      "item": "dyeBlack"
+      "ore": "dyeBlack"
     },
     {
       "type": "stack",

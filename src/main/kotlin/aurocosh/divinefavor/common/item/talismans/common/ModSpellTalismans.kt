@@ -124,6 +124,8 @@ object ModSpellTalismans {
     lateinit var winter_breath: ItemSpellTalisman
     lateinit var wooden_punch: ItemSpellTalisman
 
+    // New talisman vars
+
     fun preInit() {
         // arbow
         arrow_throw_talisman = SpellTalismanArrowThrow("arrow_throw", ModSpirits.arbow, ConfigSpells.arrowThrow.favorCost, SpellOptions.ALL_CAST)
@@ -249,6 +251,8 @@ object ModSpellTalismans {
         blood_of_grass = SpellTalismanBloodOfGrass("blood_of_grass", ModSpirits.timber, ConfigSpells.bloodOfGrass.favorCost, SpellOptions.ALL_CAST)
         bonemeal = SpellTalismanBonemeal("bonemeal", ModSpirits.timber, ConfigSpells.bonemeal.favorCost, SpellOptions.USE_CAST)
         starvation = SpellTalismanModPotion("starvation", ModSpirits.timber, ConfigSpells.starvation.favorCost, ModPotions.starvation, ConfigSpells.starvation.duration)
+
+        // New talismans
     }
 
     fun init() {}

@@ -2,6 +2,7 @@ package aurocosh.divinefavor.common.receipes
 
 import aurocosh.divinefavor.common.lib.RuntimeTypeAdapterFactory
 import aurocosh.divinefavor.common.lib.extensions.S
+import aurocosh.divinefavor.common.receipes.common.ModMediumRecipes
 import aurocosh.divinefavor.common.receipes.serialization.*
 import aurocosh.divinefavor.common.receipes.serialization.ingredients.RecipeIngredient
 import aurocosh.divinefavor.common.receipes.serialization.ingredients.RecipeIngredientOre
@@ -42,6 +43,6 @@ object RecipeLoader {
             val availableRecipes = allRecipes.S.filter { !removedRecipes.contains(it.result.item) }
             recipes.addAll(availableRecipes)
         }
-        recipes.S.map(MediumRecipeData::toRecipes).flatten().forEach(ModRecipes::register)
+        recipes.S.map(MediumRecipeData::toRecipes).flatten().forEach(ModMediumRecipes::register)
     }
 }

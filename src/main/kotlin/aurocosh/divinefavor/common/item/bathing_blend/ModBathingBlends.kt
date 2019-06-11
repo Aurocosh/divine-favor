@@ -6,15 +6,15 @@ import aurocosh.divinefavor.common.item.bathing_blend.base.ItemBathingBlendModPo
 import aurocosh.divinefavor.common.potions.common.ModBlendEffects
 
 object ModBathingBlends {
-    private var charcoal: ItemBathingBlend? = null
-    private var ender_pearl: ItemBathingBlend? = null
-    private var feathers: ItemBathingBlend? = null
-    private var fleshy: ItemBathingBlend? = null
-    private var flint: ItemBathingBlend? = null
-    private var lapis: ItemBathingBlend? = null
-    private var redstone: ItemBathingBlend? = null
-    private var snow: ItemBathingBlend? = null
-    private var wood: ItemBathingBlend? = null
+    lateinit var charcoal: ItemBathingBlend
+    lateinit var ender_pearl: ItemBathingBlend
+    lateinit var feathers: ItemBathingBlend
+    lateinit var fleshy: ItemBathingBlend
+    lateinit var flint: ItemBathingBlend
+    lateinit var lapis: ItemBathingBlend
+    lateinit var redstone: ItemBathingBlend
+    lateinit var snow: ItemBathingBlend
+    lateinit var wood: ItemBathingBlend
 
     fun preInit() {
         charcoal = ItemBathingBlendModPotion("charcoal", ModBlendEffects.charred_aura, ConfigItem.blendCharcoal)

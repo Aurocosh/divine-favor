@@ -1,32 +1,22 @@
-package aurocosh.divinefavor.common.receipes
+package aurocosh.divinefavor.common.receipes.common
 
 import aurocosh.divinefavor.DivineFavor
 import aurocosh.divinefavor.common.item.gems.ItemCallingStone
 import aurocosh.divinefavor.common.lib.ItemStackIdComparator
 import aurocosh.divinefavor.common.lib.extensions.S
 import aurocosh.divinefavor.common.lib.extensions.process
+import aurocosh.divinefavor.common.receipes.ImmaterialMediumRecipe
+import aurocosh.divinefavor.common.receipes.RecipeExchangeInstance
 import aurocosh.divinefavor.common.util.UtilHandler
 import net.minecraft.item.ItemStack
 import net.minecraftforge.items.IItemHandler
 import java.util.*
 
-object ModRecipes {
+object ModMediumRecipes {
     //    val recipes: ListMultimap<String, ImmaterialMediumRecipe> = MultimapBuilder.hashKeys().arrayListValues().build<String, ImmaterialMediumRecipe>()
     val recipes: MutableMap<String, ImmaterialMediumRecipe> = HashMap()
 
     fun init() {
-
-
-        //        register(new RecipeBuilder(new ItemStack(ModSpellTalismans.arrow_throw_talisman), ModCallingStones.calling_stone_timber)
-        //                .addIngredient(Items.ARROW, 8)
-        //                .addIngredient(Items.GOLD_INGOT)
-        //                .create()
-        //        );
-        //        register(new RecipeBuilder(new ItemStack(ModSpellTalismans.ignition), ModCallingStones.calling_stone_neblaze)
-        //                .addIngredient(Items.COAL, 32)
-        //                .addIngredient(Items.GUNPOWDER, 2)
-        //                .create()
-        //        );
     }
 
     fun register(recipe: ImmaterialMediumRecipe) {
@@ -85,7 +75,8 @@ object ModRecipes {
         val slotStacks = UtilHandler.getNotEmptyStacksWithSlotIndexes(stackHandler)
         val stacks = slotStacks.map { (_, stack) -> stack }
 
-        val result = getRecipeResult(callingStone, stacks) ?: return
+        val result = getRecipeResult(callingStone, stacks)
+                ?: return
         val ingredients = slotIndexes.S
                 .map { stackHandler.extractItem(it, Int.MAX_VALUE, false) }
                 .process { it.shrink(result.cost) }

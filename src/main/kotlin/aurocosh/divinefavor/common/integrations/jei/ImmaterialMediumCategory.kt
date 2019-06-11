@@ -39,13 +39,13 @@ class ImmaterialMediumCategory(helper: IGuiHelper) : IRecipeCategory<ImmaterialM
         val group = recipeLayout.itemStacks
         val recipe = recipeWrapper.recipe
 
-        group.init(0, true, 64, 34)
+        group.init(0, false, 64, 34)
         group.set(0, Ingredient.fromItem(ModItems.ritual_pouch).getMatchingStacks().asList())
 
-        group.init(1, true, 91, 34)
+        group.init(1, false, 91, 34)
         group.set(1, recipe.callingStone.getMatchingStacks().asList())
 
-        group.init(2, true, 124, 34)
+        group.init(2, false, 124, 34)
         group.set(2, recipe.result)
 
         val positions = arrayOf(intArrayOf(7, 17), //Top left

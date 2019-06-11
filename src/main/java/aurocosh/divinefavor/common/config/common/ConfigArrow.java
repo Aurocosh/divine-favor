@@ -103,4 +103,6 @@ public class ConfigArrow {
     public static YummySmell yummySmell = new YummySmell();
     @Config.Name("Zero g arrow")
     public static ZeroGArrow zeroGArrow = new ZeroGArrow();
+
+    // New configs
 }

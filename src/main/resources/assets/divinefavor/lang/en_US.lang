@@ -172,6 +172,8 @@ item.divinefavor:rope_guide.name=Guide rope
 item.divinefavor:rope_inert.name=Inert rope
 item.divinefavor:rope_teleporting.name=Warping rope
 
+## NEW ITEM NAMES
+
 ## SPELL TALISMAN NAMES
 item.divinefavor:talisman_armor_of_pacifist.name=Armor of pacifist talisman
 item.divinefavor:talisman_arrow_deflection.name=Arrow deflection talisman
@@ -397,6 +399,7 @@ potion.divinefavor:warping_presence.name=Warping presence
 
 # JEI tab name
 container.divinefavor:immaterial_medium.name=Spiritual trade
+container.divinefavor:contact_ritual.name=Spirit contact
 
 #KEYBINDS
 key.categories.divinefavor=Divine favor
@@ -536,6 +539,8 @@ item.divinefavor:rope_glowing.description=Unusual rope that is visible through w
 item.divinefavor:rope_guide.description=Basic rope intended for cave exploration. This rope will help you find your way back from the cave. Also you can climb on this rope very easily. Press sneaking and climb by going forward or backward.
 item.divinefavor:rope_inert.description=Rope similar in purpose to guide rope, but unlike it this rope will not bend or drop on floor. This rope will help you find your way back from the cave. Also you can climb on this rope very easily. Press sneaking and climb by going forward or backward.
 item.divinefavor:rope_teleporting.description=Unusual trapping device. It will teleport anything it touches to the end of the rope. You can use it to move peaceful mobs to otherwise hard to reach places or to teleport unsuspecting players in traps.
+
+## NEW ITEM DESCRIPTIONS
 
 ## SPELL TALISMAN DESCRIPTIONS
 item.divinefavor:talisman_armor_of_pacifist.description=Grants user armor of pacifist. Player will be protected from most damage types, but in turn will not be able to attack anyone.

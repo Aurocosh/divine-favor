@@ -9,7 +9,7 @@ import aurocosh.divinefavor.common.muliblock.IMultiblockController
 import aurocosh.divinefavor.common.muliblock.common.MultiblockWatcher
 import aurocosh.divinefavor.common.muliblock.instance.MultiBlockInstance
 import aurocosh.divinefavor.common.muliblock.instance.MultiBlockInstanceAltar
-import aurocosh.divinefavor.common.receipes.ModRecipes
+import aurocosh.divinefavor.common.receipes.common.ModMediumRecipes
 import aurocosh.divinefavor.common.util.UtilHandler
 import aurocosh.divinefavor.common.util.UtilTick
 import net.minecraft.block.state.IBlockState
@@ -224,12 +224,12 @@ class TileMedium : TickableTileEntity(false, true), IMultiblockController {
             if (stack.item === ModItems.ritual_pouch) {
                 val handler = stack.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null)
                 if (handler != null)
-                    ModRecipes.exchangeRecipe(callingStone, handler, slotIndexesPouch)
+                    ModMediumRecipes.exchangeRecipe(callingStone, handler, slotIndexesPouch)
             }
         }
 
-        ModRecipes.exchangeRecipe(callingStone, leftStackHandler, slotIndexesAltar)
-        ModRecipes.exchangeRecipe(callingStone, rightStackHandler, slotIndexesAltar)
+        ModMediumRecipes.exchangeRecipe(callingStone, leftStackHandler, slotIndexesAltar)
+        ModMediumRecipes.exchangeRecipe(callingStone, rightStackHandler, slotIndexesAltar)
     }
 
     override fun getMultiblockInstance(): MultiBlockInstance? {

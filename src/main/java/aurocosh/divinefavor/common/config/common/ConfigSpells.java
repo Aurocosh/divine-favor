@@ -213,4 +213,6 @@ public class ConfigSpells {
     public static WinterBreath winterBreath = new WinterBreath();
     @Config.Name("wooden punch")
     public static WoodenPunch woodenPunch = new WoodenPunch();
+
+    // New configs
 }
