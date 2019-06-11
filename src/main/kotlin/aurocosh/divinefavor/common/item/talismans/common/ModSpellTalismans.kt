@@ -78,6 +78,7 @@ object ModSpellTalismans {
     lateinit var piercing_inferno: ItemSpellTalisman
     lateinit var ping: ItemSpellTalisman
     lateinit var place_block: ItemSpellTalisman
+    lateinit var place_torch: ItemSpellTalisman
     lateinit var prismatic_eyes: ItemSpellTalisman
     lateinit var red_pulse: ItemSpellTalisman
     lateinit var red_signal: ItemSpellTalisman
@@ -209,6 +210,7 @@ object ModSpellTalismans {
         toadic_jump = SpellTalismanModPotionToggle("toadic_jump", ModSpirits.redwind, ConfigSpells.toadicJump.favorCost, ModPotions.toadic_jump)
         wild_sprint = SpellTalismanModPotion("wild_sprint", ModSpirits.redwind, ConfigSpells.wildSprint.favorCost, ModPotions.wild_charge, ConfigSpells.wildSprint.activationDelay)
         wind_step = SpellTalismanWindStep("wind_step", ModSpirits.redwind, ConfigSpells.windStep.favorCost, SpellOptions.ALL_CAST)
+        place_torch = SpellTalismanPlaceTorch("place_torch", ModSpirits.redwind, ConfigSpells.placeTorch.favorCost, SpellOptions.TRACE_ONLY_CAST)
 
         // romol
         crushing_palm = SpellTalismanModPotionToggle("crushing_palm", ModSpirits.romol, ConfigSpells.crushingPalm.favorCost, ModPotions.crushing_palm)

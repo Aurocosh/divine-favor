@@ -125,6 +125,8 @@ public class ConfigSpells {
     public static PiercingInferno piercingInferno = new PiercingInferno();
     @Config.Name("Ping")
     public static Ping ping = new Ping();
+    @Config.Name("Place torch")
+    public static PlaceTorch placeTorch = new PlaceTorch();
     @Config.Name("Prismatic eyes")
     public static PrismaticEyes prismaticEyes = new PrismaticEyes();
     @Config.Name("Red pulse")

@@ -1,5 +1,6 @@
 package aurocosh.divinefavor.common.item.talismans.spell
 
+import aurocosh.divinefavor.DivineFavor
 import aurocosh.divinefavor.common.config.common.ConfigSpells
 import aurocosh.divinefavor.common.item.talismans.spell.base.ItemSpellTalisman
 import aurocosh.divinefavor.common.item.talismans.spell.base.SpellOptions
@@ -27,12 +28,11 @@ class SpellTalismanNetherSurge(name: String, spirit: ModSpirit, favorCost: Int, 
     private val possibleEnemies = DistributedRandomList<Class<out EntityLiving>>()
 
     init {
-
         for ((key, value) in ConfigSpells.netherSurge.possibleBlocks) {
             val block = Block.getBlockFromName(key)
-            if (block == null) {
-                //TODO warn
-            } else
+            if (block == null)
+                DivineFavor.logger.error("Nether surge. Block not found:$key")
+            else
                 possibleBlocks.add(block, value)
         }
 

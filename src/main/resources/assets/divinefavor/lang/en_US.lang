@@ -175,6 +175,7 @@ item.divinefavor:rope_teleporting.name=Warping rope
 ## NEW ITEM NAMES
 
 ## SPELL TALISMAN NAMES
+item.divinefavor:talisman_place_torch.name=Place torch
 item.divinefavor:talisman_armor_of_pacifist.name=Armor of pacifist talisman
 item.divinefavor:talisman_arrow_deflection.name=Arrow deflection talisman
 item.divinefavor:talisman_arrow_throw.name=Arrow throw talisman
@@ -543,6 +544,7 @@ item.divinefavor:rope_teleporting.description=Unusual trapping device. It will t
 ## NEW ITEM DESCRIPTIONS
 
 ## SPELL TALISMAN DESCRIPTIONS
+item.divinefavor:talisman_place_torch.description=This talisman takes a torch from players inventory and places it where player is looking
 item.divinefavor:talisman_armor_of_pacifist.description=Grants user armor of pacifist. Player will be protected from most damage types, but in turn will not be able to attack anyone.
 item.divinefavor:talisman_arrow_deflection.description=This talisman will temporarily give player ability to deflect incoming arrows. Though deflection is not perfect. Also when player hit with something other then arrows duration of spell will decrease drastically.
 item.divinefavor:talisman_blade_of_grass.description=Will damage and slow down all enemies standing on grass around you. Grass will be destroyed.

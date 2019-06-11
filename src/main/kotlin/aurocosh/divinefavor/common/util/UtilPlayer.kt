@@ -100,4 +100,10 @@ object UtilPlayer {
         if (!player.world.isRemote)
             MessageSyncFlyingCapability(allowFlying).sendTo(player)
     }
+
+    fun getSlotRange(): IntRange {
+        val minSlot = InventoryIndexes.MinSlotIndex.value
+        val maxSlot = InventoryIndexes.MaxSlotIndex.value
+        return minSlot..maxSlot
+    }
 }
