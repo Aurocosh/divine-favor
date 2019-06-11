@@ -61,7 +61,7 @@ object ModArrowTalismans {
     lateinit var yummy_smell: ItemArrowTalisman
     lateinit var zero_g: ItemArrowTalisman
 
-    // New talisman vars
+    // New fields
 
     fun preInit() {
         val enderererColor = Color(0, 124, 86)
@@ -141,6 +141,6 @@ object ModArrowTalismans {
         wind_leash = ArrowTalismanCurse("wind_leash", ModSpirits.timber, ConfigArrow.windLeash.favorCost, curseColor1, ModCurses.wind_leash, ConfigArrow.windLeash.duration)
         yummy_smell = ArrowTalismanCurse("yummy_smell", ModSpirits.timber, ConfigArrow.yummySmell.favorCost, curseColor2, ModCurses.yummy_smell, ConfigArrow.yummySmell.duration)
 
-        // New talismans
+        // New instances
     }
 }

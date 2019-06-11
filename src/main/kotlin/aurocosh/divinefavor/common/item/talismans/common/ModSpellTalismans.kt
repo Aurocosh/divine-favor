@@ -125,7 +125,7 @@ object ModSpellTalismans {
     lateinit var winter_breath: ItemSpellTalisman
     lateinit var wooden_punch: ItemSpellTalisman
 
-    // New talisman vars
+    // New fields
 
     fun preInit() {
         // arbow
@@ -254,7 +254,7 @@ object ModSpellTalismans {
         bonemeal = SpellTalismanBonemeal("bonemeal", ModSpirits.timber, ConfigSpells.bonemeal.favorCost, SpellOptions.USE_CAST)
         starvation = SpellTalismanModPotion("starvation", ModSpirits.timber, ConfigSpells.starvation.favorCost, ModPotions.starvation, ConfigSpells.starvation.duration)
 
-        // New talismans
+        // New instances
     }
 
     fun init() {}
