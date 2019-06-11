@@ -15,6 +15,10 @@
       "ore": "dyeGray"
     },
     {
+      "type": "stack",
+      "item": "minecraft:arrow"
+    },
+    {
       "type": "ore",
       "ore": "dustRedstone"
     },

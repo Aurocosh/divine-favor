@@ -1,0 +1,15 @@
+{
+  "name": "Yummy smell",
+  "icon": "divinefavor:blade_talisman_yummy_smell",
+  "category": "blade_talismans",
+  "pages": [
+    {
+      "type": "item_description",
+      "talisman": "divinefavor:blade_talisman_yummy_smell"
+    },
+    {
+      "type": "blade_talisman_stats",
+      "talisman": "divinefavor:blade_talisman_yummy_smell"
+    }
+  ]
+}

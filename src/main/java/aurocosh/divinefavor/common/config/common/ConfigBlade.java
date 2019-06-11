@@ -36,6 +36,14 @@ public class ConfigBlade {
     public static WitherCoating witherCoating = new WitherCoating();
 
     // New configs
+    @Config.Name("Yummy smell")
+    public static YummySmell yummySmell = new YummySmell();
+    @Config.Name("Wind leash")
+    public static WindLeash windLeash = new WindLeash();
+    @Config.Name("Suffocating fumes")
+    public static SuffocatingFumes suffocatingFumes = new SuffocatingFumes();
+    @Config.Name("Skyfall")
+    public static Skyfall skyfall = new Skyfall();
     @Config.Name("Fill lungs")
     public static FillLungs fillLungs = new FillLungs();
     @Config.Name("Fiery mark")

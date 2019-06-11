@@ -1,6 +1,6 @@
 {
   "result": {
-    "item": "divinefavor:blade_talisman_fill_lungs"
+    "item": "divinefavor:blade_talisman_wind_leash"
   },
   "stones": [
     "divinefavor:calling_stone_timber"
@@ -12,23 +12,19 @@
     },
     {
       "type": "ore",
-      "ore": "dyeBlack"
+      "ore": "dyeGray"
     },
     {
       "type": "stack",
       "item": "minecraft:iron_sword"
     },
     {
-      "type": "stack",
-      "item": "minecraft:reeds"
-    },
-    {
       "type": "ore",
-      "ore": "string"
+      "ore": "dustRedstone"
     },
     {
       "type": "stack",
-      "item": "minecraft:water_bucket"
+      "item": "minecraft:lead"
     }
   ]
 }

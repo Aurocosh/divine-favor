@@ -335,6 +335,10 @@ item.divinefavor:arrow_talisman_yummy_smell.name=Yummy smell talisman
 item.divinefavor:arrow_talisman_zero_g.name=Zero g arrow talisman
 
 ## BLADE TALISMAN NAMES
+item.divinefavor:blade_talisman_yummy_smell.name=Yummy smell
+item.divinefavor:blade_talisman_wind_leash.name=Wind leash
+item.divinefavor:blade_talisman_suffocating_fumes.name=Suffocating fumes
+item.divinefavor:blade_talisman_skyfall.name=Skyfall
 item.divinefavor:blade_talisman_fill_lungs.name=Fill lungs
 item.divinefavor:blade_talisman_fiery_mark.name=Fiery mark
 item.divinefavor:blade_talisman_crawling_mist.name=Crawling mist
@@ -706,6 +710,10 @@ item.divinefavor:arrow_talisman_yummy_smell.description=Arrow shot with this tal
 item.divinefavor:arrow_talisman_zero_g.description=Arrow shot with this talisman will not be affected by gravity.
 
 ## BLADE TALISMAN DESCRIPTIONS
+item.divinefavor:blade_talisman_yummy_smell.description=Enemies hit with this talisman will be cursed with alluring smell. Cursed creatures will attract unwanted attention. All monsters near cursed creature will attack it. To lift this curse you need attract a lot of creatures at once.
+item.divinefavor:blade_talisman_wind_leash.description=Enemies hit with this talisman will be cursed with unnatural force. Cursed creatures will be dragged in random direction by invisible force. To lift this curse you need look at direction where you are being dragged.
+item.divinefavor:blade_talisman_suffocating_fumes.description=Enemies hit with this talisman will be cursed with suffocation. Cursed creature suffocate without any reason. To lift this curse you will have to climb as high as you can.
+item.divinefavor:blade_talisman_skyfall.description=Enemies hit with this talisman will be cursed with unusual gravity. Cursed creatures will fall upwards. To lift this curse you need look at the sky.
 item.divinefavor:blade_talisman_fill_lungs.description=Enemies hit with this talisman will be cursed with drowning curse. Cursed creature will drown on land. If creatures jumps in water then curse will be lifted.
 item.divinefavor:blade_talisman_fiery_mark.description=Enemies hit with this talisman will be cursed with fiery mark. Cursed creature will explode some time after being cursed. To lift this curse just jump into water.
 item.divinefavor:blade_talisman_crawling_mist.description=Enemies hit with this talisman will be cursed with crawling mist. This curse will only work on players. Cursed players sight will be severely reduced while curse is active. To remove this curse player will have to go as far as possible from place where he was cursed.

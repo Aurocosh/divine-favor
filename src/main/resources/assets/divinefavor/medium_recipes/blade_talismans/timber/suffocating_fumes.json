@@ -1,6 +1,6 @@
 {
   "result": {
-    "item": "divinefavor:blade_talisman_fill_lungs"
+    "item": "divinefavor:blade_talisman_suffocating_fumes"
   },
   "stones": [
     "divinefavor:calling_stone_timber"
@@ -12,7 +12,7 @@
     },
     {
       "type": "ore",
-      "ore": "dyeBlack"
+      "ore": "dyeGray"
     },
     {
       "type": "stack",
@@ -20,15 +20,11 @@
     },
     {
       "type": "stack",
-      "item": "minecraft:reeds"
-    },
-    {
-      "type": "ore",
-      "ore": "string"
+      "item": "minecraft:soul_sand"
     },
     {
       "type": "stack",
-      "item": "minecraft:water_bucket"
+      "item": "minecraft:rotten_flesh"
     }
   ]
 }

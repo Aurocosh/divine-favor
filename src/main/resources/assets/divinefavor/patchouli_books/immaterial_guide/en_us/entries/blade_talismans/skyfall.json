@@ -1,0 +1,15 @@
+{
+  "name": "Skyfall",
+  "icon": "divinefavor:blade_talisman_skyfall",
+  "category": "blade_talismans",
+  "pages": [
+    {
+      "type": "item_description",
+      "talisman": "divinefavor:blade_talisman_skyfall"
+    },
+    {
+      "type": "blade_talisman_stats",
+      "talisman": "divinefavor:blade_talisman_skyfall"
+    }
+  ]
+}

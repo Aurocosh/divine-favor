@@ -16,6 +16,10 @@
     },
     {
       "type": "stack",
+      "item": "minecraft:arrow"
+    },
+    {
+      "type": "stack",
       "item": "minecraft:soul_sand"
     },
     {

@@ -1,0 +1,7 @@
+{
+    "parent": "item/generated",
+    "textures": {
+        "layer1": "divinefavor:items/blade_talismans/skyfall",
+        "layer0": "divinefavor:items/blade_talismans/base"
+    }
+}

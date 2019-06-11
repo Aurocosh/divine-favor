@@ -1,6 +1,6 @@
 {
   "result": {
-    "item": "divinefavor:blade_talisman_fill_lungs"
+    "item": "divinefavor:blade_talisman_yummy_smell"
   },
   "stones": [
     "divinefavor:calling_stone_timber"
@@ -12,7 +12,7 @@
     },
     {
       "type": "ore",
-      "ore": "dyeBlack"
+      "ore": "dyeBrown"
     },
     {
       "type": "stack",
@@ -20,15 +20,19 @@
     },
     {
       "type": "stack",
-      "item": "minecraft:reeds"
-    },
-    {
-      "type": "ore",
-      "ore": "string"
+      "item": "minecraft:porkchop"
     },
     {
       "type": "stack",
-      "item": "minecraft:water_bucket"
+      "item": "minecraft:beef"
+    },
+    {
+      "type": "stack",
+      "item": "minecraft:chicken"
+    },
+    {
+      "type": "stack",
+      "item": "minecraft:fish"
     }
   ]
 }
