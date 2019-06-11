@@ -24,7 +24,7 @@ object ModBladeTalismans {
     lateinit var vengeful_blade: ItemBladeTalisman
     lateinit var wither_coating: ItemBladeTalisman
 
-    // New talisman vars
+    // New fields
     lateinit var yummy_smell: ItemBladeTalisman
     lateinit var wind_leash: ItemBladeTalisman
     lateinit var suffocating_fumes: ItemBladeTalisman
@@ -68,7 +68,7 @@ object ModBladeTalismans {
         // timber;
         wither_coating = BladeTalismanWitherCoating("wither_coating", ModSpirits.timber, ConfigBlade.witherCoating.favorCost)
 
-        // New talismans
+        // New instances
         yummy_smell = BladeTalismanModPotion("yummy_smell", ModSpirits.timber, ConfigBlade.yummySmell.favorCost, ModCurses.yummy_smell, ConfigBlade.yummySmell.duration)
         wind_leash = BladeTalismanModPotion("wind_leash", ModSpirits.timber, ConfigBlade.windLeash.favorCost, ModCurses.wind_leash, ConfigBlade.windLeash.duration)
         suffocating_fumes = BladeTalismanModPotion("suffocating_fumes", ModSpirits.timber, ConfigBlade.suffocatingFumes.favorCost, ModCurses.suffocating_fumes, ConfigBlade.suffocatingFumes.duration)
