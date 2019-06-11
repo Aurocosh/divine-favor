@@ -36,6 +36,8 @@ public class ConfigBlade {
     public static WitherCoating witherCoating = new WitherCoating();
 
     // New configs
+    @Config.Name("Lucky strike")
+    public static LuckyStrike luckyStrike = new LuckyStrike();
     @Config.Name("Memory blade")
     public static MemoryBlade memoryBlade = new MemoryBlade();
 }

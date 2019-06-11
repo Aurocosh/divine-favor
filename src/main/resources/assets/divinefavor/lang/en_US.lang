@@ -335,6 +335,7 @@ item.divinefavor:arrow_talisman_yummy_smell.name=Yummy smell talisman
 item.divinefavor:arrow_talisman_zero_g.name=Zero g arrow talisman
 
 ## BLADE TALISMAN NAMES
+item.divinefavor:blade_talisman_lucky_strike.name=Lucky strike
 item.divinefavor:blade_talisman_memory_blade.name=Memory blade
 item.divinefavor:blade_talisman_blade_of_snow.name=Blade of snow talisman
 item.divinefavor:blade_talisman_butchering_strike.name=Butchering strike talisman
@@ -702,6 +703,7 @@ item.divinefavor:arrow_talisman_yummy_smell.description=Arrow shot with this tal
 item.divinefavor:arrow_talisman_zero_g.description=Arrow shot with this talisman will not be affected by gravity.
 
 ## BLADE TALISMAN DESCRIPTIONS
+item.divinefavor:blade_talisman_lucky_strike.description=Each hit with this talisman improves loot dropped by a mob on his death
 item.divinefavor:blade_talisman_memory_blade.description=Each hit with this talisman to the same enemy deals more damage then the previous hit
 item.divinefavor:blade_talisman_blade_of_snow.description=Deals additional damage to hellish mobs and to all other mobs when player is in snowy biome.
 item.divinefavor:blade_talisman_confusion.description=On hit has a chance to confuse mobs into attacking other mobs

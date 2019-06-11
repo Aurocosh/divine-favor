@@ -23,6 +23,7 @@ object ModBladeTalismans {
     lateinit var wither_coating: ItemBladeTalisman
 
     // New talisman vars
+    lateinit var lucky_strike: ItemBladeTalisman
     lateinit var memory_blade: ItemBladeTalisman
 
     fun preInit() {
@@ -59,6 +60,7 @@ object ModBladeTalismans {
         wither_coating = BladeTalismanWitherCoating("wither_coating", ModSpirits.timber, ConfigBlade.witherCoating.favorCost)
 
         // New talismans
+        lucky_strike = BladeTalismanLuckyStrike("lucky_strike", ModSpirits.squarefury, ConfigBlade.luckyStrike.favorCost)
         memory_blade = BladeTalismanMemoryBlade("memory_blade", ModSpirits.squarefury, ConfigBlade.memoryBlade.favorCost)
     }
 }
