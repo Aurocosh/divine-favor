@@ -1,6 +1,7 @@
 package aurocosh.divinefavor.common.config.common;
 
 import aurocosh.divinefavor.DivineFavor;
+import aurocosh.divinefavor.common.config.entries.IceArrow;
 import aurocosh.divinefavor.common.config.entries.items.*;
 import net.minecraftforge.common.config.Config;
 
@@ -50,4 +51,8 @@ public class ConfigItem {
     public static SpellBlade spellBladeRed = new SpellBlade();
     @Config.Name("Spell blade green")
     public static SpellBlade spellBladeGreen = new SpellBlade();
+
+    // New configs
+    @Config.Name("Ice")
+    public static IceArrow iceArrow = new IceArrow();
 }

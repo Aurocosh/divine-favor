@@ -1,12 +1,11 @@
 package aurocosh.divinefavor.common.util
 
+import aurocosh.divinefavor.DivineFavor
 import net.minecraft.entity.Entity
 import net.minecraft.entity.EntityLiving
 import net.minecraft.entity.EnumCreatureType
 import net.minecraft.entity.boss.EntityWither
-import net.minecraft.entity.monster.EntityBlaze
-import net.minecraft.entity.monster.EntitySkeleton
-import net.minecraft.entity.monster.EntityWitherSkeleton
+import net.minecraft.entity.monster.*
 import net.minecraft.util.ResourceLocation
 import net.minecraft.world.biome.Biome
 import java.util.HashSet
@@ -19,10 +18,15 @@ object UtilMob {
         witherClasses.add(EntityWither::class.java)
         witherClasses.add(EntityWitherSkeleton::class.java)
 
+        hellClasses.add(EntityBlaze::class.java)
+        hellClasses.add(EntityWitherSkeleton::class.java)
+
         val hell = ResourceLocation("hell")
-        for (creatureType in EnumCreatureType.values())
-            for (spawnListEntry in Biome.REGISTRY.getObject(hell)!!.getSpawnableList(creatureType))
-                hellClasses.add(spawnListEntry.entityClass)
+        val biome = Biome.REGISTRY.getObject(hell)
+        if (biome != null)
+            EnumCreatureType.values().flatMap { biome.getSpawnableList(it) }.forEach { hellClasses.add(it.entityClass) }
+        else
+            DivineFavor.logger.error("Unable to access hell biom data to get list of hellish mob classes")
     }
 
     fun isMobRanged(entity: Entity): Boolean {

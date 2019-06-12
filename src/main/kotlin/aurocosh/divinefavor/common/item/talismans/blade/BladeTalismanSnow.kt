@@ -3,6 +3,7 @@ package aurocosh.divinefavor.common.item.talismans.blade
 import aurocosh.divinefavor.common.config.common.ConfigBlade
 import aurocosh.divinefavor.common.item.talismans.blade.base.ItemBladeTalisman
 import aurocosh.divinefavor.common.item.talismans.spell.base.TalismanContext
+import aurocosh.divinefavor.common.lib.extensions.attackEntityNoTimer
 import aurocosh.divinefavor.common.spirit.base.ModSpirit
 import aurocosh.divinefavor.common.util.UtilMob
 import net.minecraft.entity.EntityLivingBase
@@ -20,6 +21,6 @@ class BladeTalismanSnow(name: String, spirit: ModSpirit, favorCost: Int) : ItemB
     }
 
     override fun performActionServer(context: TalismanContext) {
-        context.target?.attackEntityFrom(DamageSource.causePlayerDamage(context.player), ConfigBlade.bladeOfSnow.damage)
+        context.target?.attackEntityNoTimer(DamageSource.causePlayerDamage(context.player), ConfigBlade.bladeOfSnow.damage)
     }
 }

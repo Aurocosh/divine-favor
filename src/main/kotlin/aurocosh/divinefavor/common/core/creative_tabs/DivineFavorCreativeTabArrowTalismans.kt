@@ -11,33 +11,6 @@ import net.minecraft.util.NonNullList
 import net.minecraftforge.fml.relauncher.Side
 import net.minecraftforge.fml.relauncher.SideOnly
 
-class DivineFavorCreativeTabArrowTalismans : CreativeTabs(DivineFavor.MOD_ID + "_arrow_talismans") {
+class DivineFavorCreativeTabArrowTalismans : DivineFavorCreativeTab("arrow_talismans", { ModArrowTalismans.fill_lungs }) {
     private lateinit var list: NonNullList<ItemStack>
-
-    override fun createIcon(): ItemStack {
-        return ItemStack(ModArrowTalismans.fill_lungs)
-    }
-
-    override fun hasSearchBar(): Boolean {
-        return false
-    }
-
-    @SideOnly(Side.CLIENT)
-    override fun displayAllRelevantItems(stacks: NonNullList<ItemStack>) {
-        list = stacks
-
-        ModRegistries.blocks.values.forEach { this.addBlock(it) }
-        ModRegistries.items.values.forEach { this.addItem(it) }
-        stacks.sortWith(ModItemStackComparator())
-    }
-
-    private fun addItem(item: Item) {
-        item.getSubItems(this, list)
-    }
-
-    private fun addBlock(block: Block) {
-        addItem(Item.getItemFromBlock(block))
-    }
-}//DivineFavor.MOD_ID
-//setNoTitle();
-//setBackgroundImageName(ConstResources.GUI_CREATIVE);
+}

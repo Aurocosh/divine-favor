@@ -42,6 +42,7 @@ object ConstResources {
 
 
     const val RES_ARROW = PREFIX_PROJECTILES + "arrow.png"
+    const val RES_ICE_ARROW = PREFIX_PROJECTILES + "ice_arrow.png"
     const val RES_CURSED_ARROW = PREFIX_PROJECTILES + "cursed_arrow.png"
     const val RES_SPELL_ARROW = PREFIX_PROJECTILES + "spell_arrow.png"
 

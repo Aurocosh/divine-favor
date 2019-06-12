@@ -6,11 +6,13 @@ import aurocosh.divinefavor.client.render.entity.minion.RenderMinionHusk
 import aurocosh.divinefavor.client.render.entity.minion.RenderMinionSkeleton
 import aurocosh.divinefavor.client.render.entity.minion.RenderMinionStray
 import aurocosh.divinefavor.client.render.entity.minion.RenderMinionZombie
+import aurocosh.divinefavor.client.render.projectile.RenderIceArrow
 import aurocosh.divinefavor.client.render.projectile.RenderSpellArrow
 import aurocosh.divinefavor.client.render.rope.*
 import aurocosh.divinefavor.common.entity.EntityPing
 import aurocosh.divinefavor.common.entity.minions.*
 import aurocosh.divinefavor.common.entity.mob.EntityDirewolf
+import aurocosh.divinefavor.common.entity.projectile.EntityIceArrow
 import aurocosh.divinefavor.common.entity.projectile.EntitySpellArrow
 import aurocosh.divinefavor.common.entity.projectile.EntityStoneball
 import aurocosh.divinefavor.common.entity.rope.*
@@ -25,9 +27,9 @@ object ModRendering {
 
     fun init() {
         val manager = Minecraft.getMinecraft().renderManager
-        val itemRenderer = Minecraft.getMinecraft().renderItem
-        manager.entityRenderMap[EntityStoneball::class.java] = RenderSnowball<EntityStoneball>(manager, ModItems.stoneball, itemRenderer)
+
         manager.entityRenderMap[EntitySpellArrow::class.java] = RenderSpellArrow(manager)
+        manager.entityRenderMap[EntityIceArrow::class.java] = RenderIceArrow(manager)
 
         manager.entityRenderMap[EntityMinionZombie::class.java] = RenderMinionZombie(manager)
         manager.entityRenderMap[EntityMinionHusk::class.java] = RenderMinionHusk(manager)
@@ -45,5 +47,8 @@ object ModRendering {
         manager.entityRenderMap[EntityRopeTeleportingNode::class.java] = RenderRopeTeleportingNode(manager)
 
         manager.entityRenderMap[EntityPing::class.java] = RenderPing(manager)
+
+        val itemRenderer = Minecraft.getMinecraft().renderItem
+        manager.entityRenderMap[EntityStoneball::class.java] = RenderSnowball<EntityStoneball>(manager, ModItems.stoneball, itemRenderer)
     }
 }

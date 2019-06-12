@@ -1,0 +1,11 @@
+{
+  "name": "Ice arrow",
+  "icon": "divinefavor:ice_arrow",
+  "category": "items",
+  "pages": [
+    {
+      "type": "item_description",
+      "talisman": "divinefavor:ice_arrow"
+    }
+  ]
+}

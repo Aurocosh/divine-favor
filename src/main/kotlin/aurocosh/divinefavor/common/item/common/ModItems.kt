@@ -7,6 +7,7 @@ import aurocosh.divinefavor.common.entity.rope.*
 import aurocosh.divinefavor.common.entity.rope.base.EntityRopeNodeBase
 import aurocosh.divinefavor.common.item.*
 import aurocosh.divinefavor.common.item.base.ModItem
+import aurocosh.divinefavor.common.item.base.ModItemArrow
 import aurocosh.divinefavor.common.item.bone_dagger.ItemBoneDagger
 import aurocosh.divinefavor.common.item.bone_dagger.ItemBoneDaggerAwakened
 import aurocosh.divinefavor.common.item.contract_binder.ItemContractBinder
@@ -57,6 +58,9 @@ object ModItems {
 
     val markedGlasses: MutableList<ItemMarkedGlass> = ArrayList()
 
+    // New fields
+    lateinit var ice_arrow: ModItemArrow
+
     fun preInit() {
         banishing_wand = ItemBanishingWand()
         bone_dagger = ItemBoneDagger()
@@ -87,6 +91,9 @@ object ModItems {
 
         for (spirit in ModMappers.spirits.values)
             markedGlasses.add(ItemMarkedGlass(spirit, ConstGemTabOrder.MARKED_GLASS))
+
+        // New instances
+        ice_arrow = ItemIceArrow()
     }
 
     fun init() {

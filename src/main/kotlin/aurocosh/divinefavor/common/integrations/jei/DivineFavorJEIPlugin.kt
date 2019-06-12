@@ -46,6 +46,8 @@ class DivineFavorJEIPlugin : IModPlugin {
     private fun registerDescription(registry: IModRegistry) {
         for (item in ModRegistries.items.values)
             registry.addIngredientInfo(ItemStack(item, 1, OreDictionary.WILDCARD_VALUE), VanillaTypes.ITEM, item.descriptionKey)
+        for (item in ModRegistries.arrows.values)
+            registry.addIngredientInfo(ItemStack(item, 1, OreDictionary.WILDCARD_VALUE), VanillaTypes.ITEM, item.descriptionKey)
         for (itemBlock in ModRegistries.itemBlocks.values)
             registry.addIngredientInfo(ItemStack(itemBlock, 1, OreDictionary.WILDCARD_VALUE), VanillaTypes.ITEM, itemBlock.descriptionKey)
     }

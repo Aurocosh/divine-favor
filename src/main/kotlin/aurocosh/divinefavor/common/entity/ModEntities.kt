@@ -4,10 +4,7 @@ import aurocosh.divinefavor.DivineFavor
 import aurocosh.divinefavor.common.core.ResourceNamer
 import aurocosh.divinefavor.common.entity.minions.*
 import aurocosh.divinefavor.common.entity.mob.EntityDirewolf
-import aurocosh.divinefavor.common.entity.projectile.EntityClimbingArrow
-import aurocosh.divinefavor.common.entity.projectile.EntitySpellArrow
-import aurocosh.divinefavor.common.entity.projectile.EntitySpookyArrow
-import aurocosh.divinefavor.common.entity.projectile.EntityStoneball
+import aurocosh.divinefavor.common.entity.projectile.*
 import aurocosh.divinefavor.common.entity.rope.*
 import net.minecraft.entity.Entity
 import net.minecraftforge.fml.common.registry.EntityRegistry
@@ -21,6 +18,7 @@ object ModEntities {
         registerModEntity(EntityClimbingArrow::class.java, "climbing", 256, 1, true)
         registerModEntity(EntitySpellArrow::class.java, "spell_arrow", 256, 1, true)
         registerModEntity(EntitySpookyArrow::class.java, "spooky", 256, 1, true)
+        registerModEntity(EntityIceArrow::class.java, "ice_arrow", 256, 1, true)
 
         registerModEntity(EntityMinionZombie::class.java, "minion_zombie", 80, 3, false)
         registerModEntity(EntityMinionHusk::class.java, "minion_husk", 80, 3, false)

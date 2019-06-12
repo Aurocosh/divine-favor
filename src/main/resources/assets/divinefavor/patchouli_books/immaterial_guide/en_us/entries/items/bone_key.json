@@ -1,7 +1,7 @@
 {
   "name": "Bone key",
   "icon": "divinefavor:bone_key",
-  "category": "tools",
+  "category": "items",
   "pages": [
     {
       "type": "text",

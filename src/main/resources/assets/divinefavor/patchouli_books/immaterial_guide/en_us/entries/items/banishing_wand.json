@@ -1,7 +1,7 @@
 {
   "name": "Banishing wand",
   "icon": "divinefavor:banishing_wand",
-  "category": "tools",
+  "category": "items",
   "pages": [
     {
       "type": "text",

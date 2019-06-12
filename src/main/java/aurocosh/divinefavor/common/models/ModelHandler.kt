@@ -3,6 +3,7 @@ package aurocosh.divinefavor.common.models
 import aurocosh.divinefavor.DivineFavor
 import aurocosh.divinefavor.common.item.base.ICustomMeshHolder
 import aurocosh.divinefavor.common.item.base.IModelHolder
+import aurocosh.divinefavor.common.lib.extensions.S
 import aurocosh.divinefavor.common.registry.ModRegistries
 import net.minecraft.client.renderer.block.model.ModelResourceLocation
 import net.minecraft.item.Item
@@ -19,11 +20,9 @@ import net.minecraftforge.fml.relauncher.SideOnly
 object ModelHandler {
     @SubscribeEvent
     fun onRegister(@Suppress("UNUSED_PARAMETER") event: ModelRegistryEvent) {
-        for (item in ModRegistries.items.values)
-            registerItemModel(item)
-
-        for (itemBlock in ModRegistries.itemBlocks.values)
-            registerBlockItemModel(itemBlock)
+        ModRegistries.items.values.forEach(this::registerItemModel)
+        ModRegistries.arrows.values.forEach(this::registerItemModel)
+        ModRegistries.itemBlocks.values.forEach(this::registerBlockItemModel)
     }
 
     private fun <T> registerItemModel(item: T) where T : Item, T : IModelHolder {

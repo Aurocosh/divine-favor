@@ -173,6 +173,7 @@ item.divinefavor:rope_inert.name=Inert rope
 item.divinefavor:rope_teleporting.name=Warping rope
 
 ## NEW ITEM NAMES
+item.divinefavor:ice_arrow.name=Ice arrow
 
 ## SPELL TALISMAN NAMES
 item.divinefavor:talisman_place_torch.name=Place torch
@@ -551,6 +552,7 @@ item.divinefavor:rope_inert.description=Rope similar in purpose to guide rope, b
 item.divinefavor:rope_teleporting.description=Unusual trapping device. It will teleport anything it touches to the end of the rope. You can use it to move peaceful mobs to otherwise hard to reach places or to teleport unsuspecting players in traps.
 
 ## NEW ITEM DESCRIPTIONS
+item.divinefavor:ice_arrow.description=Delicate arrows made of ice. They are frail and because of this they deal less damage then regular arrows and break easily, but in a pinch they can be very useful. This type of arrow also cannot be tipped in potion, but on the other hand it deals extra damage to hellish mobs.
 
 ## SPELL TALISMAN DESCRIPTIONS
 item.divinefavor:talisman_place_torch.description=This talisman takes a torch from players inventory and places it where player is looking
