@@ -1,6 +1,6 @@
 package aurocosh.divinefavor.common.custom_data.player.data.spell.pearl_crumbs
 
-import aurocosh.divinefavor.common.config.common.ConfigSpells
+import aurocosh.divinefavor.common.config.common.ConfigSpell
 import aurocosh.divinefavor.common.lib.GlobalBlockPos
 import java.util.*
 
@@ -25,7 +25,7 @@ class PearlCrumbsData {
 
     fun pushGlobalPosition(pos: GlobalBlockPos) {
         positions.push(pos)
-        if (positions.size > ConfigSpells.pearlCrumbs.maxPositionsSaved)
+        if (positions.size > ConfigSpell.pearlCrumbs.maxPositionsSaved)
             positions.removeLast()
     }
 

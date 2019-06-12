@@ -1,17 +1,17 @@
 package aurocosh.divinefavor.common.custom_data.player.data.spell.gills
 
-import aurocosh.divinefavor.common.config.common.ConfigSpells
+import aurocosh.divinefavor.common.config.common.ConfigSpell
 import aurocosh.divinefavor.common.lib.LimitedTimer
 
 // The default implementation of the capability. Holds all the logic.
 class GillsData {
-    private val timer: LimitedTimer = LimitedTimer(ConfigSpells.gills.maxTimeNotInWater)
+    private val timer: LimitedTimer = LimitedTimer(ConfigSpell.gills.maxTimeNotInWater)
 
     val ticks: Int
         get() = timer.getTicks()
 
     fun setMaxTime() {
-        setTime(ConfigSpells.gills.maxTimeNotInWater)
+        setTime(ConfigSpell.gills.maxTimeNotInWater)
     }
 
     fun setTime(ticks: Int) {
@@ -23,7 +23,7 @@ class GillsData {
     }
 
     fun delay() {
-        timer.setTicks(timer.getTicks() - ConfigSpells.gills.damageDelay)
+        timer.setTicks(timer.getTicks() - ConfigSpell.gills.damageDelay)
     }
 
     fun tick(): Boolean {

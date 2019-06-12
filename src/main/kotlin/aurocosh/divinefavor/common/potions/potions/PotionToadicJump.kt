@@ -1,7 +1,7 @@
 package aurocosh.divinefavor.common.potions.potions
 
 import aurocosh.divinefavor.DivineFavor
-import aurocosh.divinefavor.common.config.common.ConfigSpells
+import aurocosh.divinefavor.common.config.common.ConfigSpell
 import aurocosh.divinefavor.common.lib.extensions.divinePlayerData
 import aurocosh.divinefavor.common.network.message.client.spirit_data.MessageSyncFavor
 import aurocosh.divinefavor.common.potions.base.potion.ModPotionToggleLimited
@@ -25,7 +25,7 @@ object ToadicJump {
         if (!entity.isPotionActive(ModPotions.toadic_jump))
             return
 
-        entity.motionY += ConfigSpells.toadicJump.jumpBoost.toDouble()
+        entity.motionY += ConfigSpell.toadicJump.jumpBoost.toDouble()
         if (entity.world.isRemote)
             return
 

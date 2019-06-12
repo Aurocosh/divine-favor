@@ -8,7 +8,7 @@ import aurocosh.divinefavor.common.util.UtilTick;
 import net.minecraftforge.common.config.Config;
 
 @Config(modid = DivineFavor.MOD_ID, name = DivineFavor.MOD_ID + "/spell_talismans")
-public class ConfigSpells {
+public class ConfigSpell {
     @Config.Name("Armor of pacifist")
     public static ArmorOfPacifist armorOfPacifist = new ArmorOfPacifist();
     @Config.Name("Arrow deflection")

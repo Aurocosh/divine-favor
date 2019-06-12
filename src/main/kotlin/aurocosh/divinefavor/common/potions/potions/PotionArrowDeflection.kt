@@ -1,7 +1,7 @@
 package aurocosh.divinefavor.common.potions.potions
 
 import aurocosh.divinefavor.DivineFavor
-import aurocosh.divinefavor.common.config.common.ConfigSpells
+import aurocosh.divinefavor.common.config.common.ConfigSpell
 import aurocosh.divinefavor.common.lib.LimitedTimer
 import aurocosh.divinefavor.common.lib.extensions.S
 import aurocosh.divinefavor.common.lib.extensions.getMotionVector
@@ -25,14 +25,14 @@ class PotionArrowDeflection : ModPotion("arrow_deflection", 0x7FB8A4) {
         if (!COOLDOWN_COUNTER.tick())
             return
 
-        val entities = livingBase.world.getEntitiesWithinAABB(EntityArrow::class.java, AxisAlignedBB(livingBase.position).grow(ConfigSpells.arrowDeflection.radius.toDouble()))
+        val entities = livingBase.world.getEntitiesWithinAABB(EntityArrow::class.java, AxisAlignedBB(livingBase.position).grow(ConfigSpell.arrowDeflection.radius.toDouble()))
         val projectiles = entities.S.filter { arrow -> arrow.getDistanceSq(livingBase) <= RADIUS_SQ }
         for (projectile in projectiles) {
             val directionToTarget = livingBase.positionVector.subtract(projectile.positionVector).normalize()
             val motionVector = projectile.getMotionVector()
             val motionDirection = motionVector.normalize()
             val product = directionToTarget.dotProduct(motionDirection)
-            if (product > ConfigSpells.arrowDeflection.tolerance)
+            if (product > ConfigSpell.arrowDeflection.tolerance)
                 UtilEntity.setVelocity(projectile, motionDirection.scale(-1.0), motionVector.length().toFloat())
             COOLDOWN_COUNTER.reset()
         }
@@ -43,8 +43,8 @@ class PotionArrowDeflection : ModPotion("arrow_deflection", 0x7FB8A4) {
     }
 
     companion object {
-        private val COOLDOWN_COUNTER = LimitedTimer(ConfigSpells.arrowDeflection.deflectionCooldown)
-        private val RADIUS_SQ = ConfigSpells.arrowDeflection.radius * ConfigSpells.arrowDeflection.radius
+        private val COOLDOWN_COUNTER = LimitedTimer(ConfigSpell.arrowDeflection.deflectionCooldown)
+        private val RADIUS_SQ = ConfigSpell.arrowDeflection.radius * ConfigSpell.arrowDeflection.radius
 
         @SubscribeEvent(priority = EventPriority.LOWEST)
         fun onEntityDamaged(event: LivingDamageEvent) {
@@ -55,7 +55,7 @@ class PotionArrowDeflection : ModPotion("arrow_deflection", 0x7FB8A4) {
             if (source is EntityDamageSourceIndirect && source.damageType == "arrow")
                 return
 
-            var duration = -ConfigSpells.arrowDeflection.durationDecrease
+            var duration = -ConfigSpell.arrowDeflection.durationDecrease
             val potionEffect = livingBase.activePotionMap[ModPotions.arrow_deflection]
             if (potionEffect != null)
                 duration += potionEffect.duration

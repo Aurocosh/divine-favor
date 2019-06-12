@@ -1,6 +1,6 @@
 package aurocosh.divinefavor.common.item.talismans.spell
 
-import aurocosh.divinefavor.common.config.common.ConfigSpells
+import aurocosh.divinefavor.common.config.common.ConfigSpell
 import aurocosh.divinefavor.common.item.talismans.spell.base.ItemSpellTalisman
 import aurocosh.divinefavor.common.item.talismans.spell.base.SpellOptions
 import aurocosh.divinefavor.common.item.talismans.spell.base.TalismanContext
@@ -16,7 +16,7 @@ class SpellTalismanWallSlip(name: String, spirit: ModSpirit, favorCost: Int, opt
         val facing = context.facing
         if (facing == EnumFacing.DOWN || facing == EnumFacing.UP)
             return
-        val pos = UtilCoordinates.findPlaceToTeleport(context.pos.down(), context.world, facing.opposite, ConfigSpells.wallSlip.maxDistance, false)
+        val pos = UtilCoordinates.findPlaceToTeleport(context.pos.down(), context.world, facing.opposite, ConfigSpell.wallSlip.maxDistance, false)
         if (pos != null)
             UtilEntity.teleport(context.player, pos.down())
     }

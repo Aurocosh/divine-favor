@@ -1,6 +1,6 @@
 package aurocosh.divinefavor.common.item.talismans.spell
 
-import aurocosh.divinefavor.common.config.common.ConfigSpells
+import aurocosh.divinefavor.common.config.common.ConfigSpell
 import aurocosh.divinefavor.common.item.talismans.spell.base.ItemSpellTalisman
 import aurocosh.divinefavor.common.item.talismans.spell.base.SpellOptions
 import aurocosh.divinefavor.common.item.talismans.spell.base.TalismanContext
@@ -21,7 +21,7 @@ class SpellTalismanPlaceTorch(name: String, spirit: ModSpirit, favorCost: Int, o
         val player = context.player
         if (player.capabilities.isCreativeMode)
             return true
-        if (!ConfigSpells.placeTorch.requiresTorches)
+        if (!ConfigSpell.placeTorch.requiresTorches)
             return true
         return player.inventory.allInvSequence().any(torchPredicate)
     }
@@ -40,7 +40,7 @@ class SpellTalismanPlaceTorch(name: String, spirit: ModSpirit, favorCost: Int, o
     }
 
     private fun consumeTorch(player: EntityPlayer) {
-        if (!ConfigSpells.placeTorch.requiresTorches)
+        if (!ConfigSpell.placeTorch.requiresTorches)
             return
         if (player.capabilities.isCreativeMode)
             return

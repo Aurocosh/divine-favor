@@ -1,7 +1,7 @@
 package aurocosh.divinefavor.common.potions.potions
 
 import aurocosh.divinefavor.DivineFavor
-import aurocosh.divinefavor.common.config.common.ConfigSpells
+import aurocosh.divinefavor.common.config.common.ConfigSpell
 import aurocosh.divinefavor.common.potions.base.potion.ModPotion
 import aurocosh.divinefavor.common.potions.common.ModPotions
 import aurocosh.divinefavor.common.util.UtilBlock
@@ -49,7 +49,7 @@ class PotionStarvation : ModPotion("starvation", 0x7FB8A4) {
                     Blocks.AIR.defaultState
             world.setBlockState(pos, stateNew)
 
-            player.foodStats.addStats(ConfigSpells.starvation.foodPerGrass, ConfigSpells.starvation.saturationPerGrass)
+            player.foodStats.addStats(ConfigSpell.starvation.foodPerGrass, ConfigSpell.starvation.saturationPerGrass)
             world.playSound(null, player.posX, player.posY, player.posZ, SoundEvents.ENTITY_PLAYER_BURP, SoundCategory.PLAYERS, 0.5f, world.rand.nextFloat() * 0.1f + 0.9f)
         }
     }

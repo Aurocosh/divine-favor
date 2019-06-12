@@ -1,7 +1,7 @@
 package aurocosh.divinefavor.common.item.talismans.spell
 
 import aurocosh.divinefavor.DivineFavor
-import aurocosh.divinefavor.common.config.common.ConfigSpells
+import aurocosh.divinefavor.common.config.common.ConfigSpell
 import aurocosh.divinefavor.common.item.talismans.spell.base.ItemSpellTalisman
 import aurocosh.divinefavor.common.item.talismans.spell.base.SpellOptions
 import aurocosh.divinefavor.common.item.talismans.spell.base.TalismanContext
@@ -28,7 +28,7 @@ class SpellTalismanNetherSurge(name: String, spirit: ModSpirit, favorCost: Int, 
     private val possibleEnemies = DistributedRandomList<Class<out EntityLiving>>()
 
     init {
-        for ((key, value) in ConfigSpells.netherSurge.possibleBlocks) {
+        for ((key, value) in ConfigSpell.netherSurge.possibleBlocks) {
             val block = Block.getBlockFromName(key)
             if (block == null)
                 DivineFavor.logger.error("Nether surge. Block not found:$key")
@@ -44,19 +44,19 @@ class SpellTalismanNetherSurge(name: String, spirit: ModSpirit, favorCost: Int, 
     }
 
     override fun performActionServer(context: TalismanContext) {
-        val blocksSelect = UtilRandom.nextInt(ConfigSpells.netherSurge.minBlocksToReplace, ConfigSpells.netherSurge.maxBlocksToReplace)
-        val blocksToReplace = UtilCoordinates.getRandomNeighbours(context.pos, blocksSelect, ConfigSpells.netherSurge.minNeighboursToAdd, ConfigSpells.netherSurge.maxNeighboursToAdd, CYCLE_LIMIT) { true }
+        val blocksSelect = UtilRandom.nextInt(ConfigSpell.netherSurge.minBlocksToReplace, ConfigSpell.netherSurge.maxBlocksToReplace)
+        val blocksToReplace = UtilCoordinates.getRandomNeighbours(context.pos, blocksSelect, ConfigSpell.netherSurge.minNeighboursToAdd, ConfigSpell.netherSurge.maxNeighboursToAdd, CYCLE_LIMIT) { true }
 
         for (pos in blocksToReplace)
             UtilBlock.replaceBlock(context.player, context.world, pos, possibleBlocks.random!!)
 
-        val mobsToSpawn = UtilRandom.nextInt(ConfigSpells.netherSurge.minEnemiesToSpawn, ConfigSpells.netherSurge.maxEnemiesToSpawn)
+        val mobsToSpawn = UtilRandom.nextInt(ConfigSpell.netherSurge.minEnemiesToSpawn, ConfigSpell.netherSurge.maxEnemiesToSpawn)
         for (i in 0 until mobsToSpawn)
             spawnNetherMob(context)
     }
 
     private fun spawnNetherMob(context: TalismanContext) {
-        val spawnRadius = ConfigSpells.netherSurge.spawnRadius
+        val spawnRadius = ConfigSpell.netherSurge.spawnRadius
         var spawnPos: BlockPos? = UtilCoordinates.getRandomNeighbour(context.pos, spawnRadius, 0, spawnRadius)
         if (spawnPos == null)
             return

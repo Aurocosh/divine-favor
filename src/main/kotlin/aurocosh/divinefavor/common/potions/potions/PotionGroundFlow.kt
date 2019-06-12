@@ -1,6 +1,6 @@
 package aurocosh.divinefavor.common.potions.potions
 
-import aurocosh.divinefavor.common.config.common.ConfigSpells
+import aurocosh.divinefavor.common.config.common.ConfigSpell
 import aurocosh.divinefavor.common.potions.base.potion.ModPotionToggle
 import aurocosh.divinefavor.common.potions.common.ModPotions
 import aurocosh.divinefavor.common.util.UtilPlayer
@@ -26,7 +26,7 @@ class PotionGroundFlow : ModPotionToggle("ground_flow", 0x7FB8A4) {
             return
         if (livingBase !is EntityPlayer)
             return
-        val allowFlying = livingBase.position.y <= ConfigSpells.groundFlow.yLimit
+        val allowFlying = livingBase.position.y <= ConfigSpell.groundFlow.yLimit
         UtilPlayer.setAllowFlying(livingBase, allowFlying)
         if (!allowFlying)
             livingBase.removePotionEffect(ModPotions.ground_flow)

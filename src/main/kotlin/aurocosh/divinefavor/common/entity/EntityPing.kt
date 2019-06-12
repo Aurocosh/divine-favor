@@ -1,6 +1,6 @@
 package aurocosh.divinefavor.common.entity
 
-import aurocosh.divinefavor.common.config.common.ConfigSpells
+import aurocosh.divinefavor.common.config.common.ConfigSpell
 import aurocosh.divinefavor.common.lib.SimpleCounter
 import aurocosh.divinefavor.common.particles.ModParticles
 import aurocosh.divinefavor.common.particles.particles.MobileParticle
@@ -16,7 +16,7 @@ import javax.vecmath.Color3f
 
 class EntityPing(world: World) : Entity(world) {
 
-    private val despawnTimer = SimpleCounter(ConfigSpells.ping.duration)
+    private val despawnTimer = SimpleCounter(ConfigSpell.ping.duration)
 
     init {
         setSize(0.1f, 0.1f)
@@ -33,7 +33,7 @@ class EntityPing(world: World) : Entity(world) {
 
     @SideOnly(Side.CLIENT)
     fun spawnParticles() {
-        for (i in 0 until ConfigSpells.ping.particleIntensity) {
+        for (i in 0 until ConfigSpell.ping.particleIntensity) {
             val distance = UtilRandom.nextFloat(1f, 5f).toDouble()
             val direction = UtilRandom.nextDirection()
             val pointOnSphere = direction.scale(distance)
@@ -71,7 +71,7 @@ class EntityPing(world: World) : Entity(world) {
     }
 
     companion object {
-        private val RENDER_DISTANCE_SQ = ConfigSpells.ping.renderDistance * ConfigSpells.ping.renderDistance
+        private val RENDER_DISTANCE_SQ = ConfigSpell.ping.renderDistance * ConfigSpell.ping.renderDistance
         private val COLOR_3_F = Color3f(0.7f, 0.7f, 0f)
     }
 }

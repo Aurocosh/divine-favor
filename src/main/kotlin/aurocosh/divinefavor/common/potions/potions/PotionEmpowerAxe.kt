@@ -1,7 +1,7 @@
 package aurocosh.divinefavor.common.potions.potions
 
 import aurocosh.divinefavor.DivineFavor
-import aurocosh.divinefavor.common.config.common.ConfigSpells
+import aurocosh.divinefavor.common.config.common.ConfigSpell
 import aurocosh.divinefavor.common.core.handlers.BlockClickTracker
 import aurocosh.divinefavor.common.potions.base.potion.ModPotion
 import aurocosh.divinefavor.common.potions.common.ModPotions
@@ -46,12 +46,12 @@ class PotionEmpowerAxe : ModPotion("empower_axe", 0x7FB8A4) {
             if (BlockClickTracker.wasBlockLeftClicked(player, pos))
                 return
 
-            val doSomething = UtilRandom.rollDice(ConfigSpells.empowerAxe.instantBreakChance.toFloat())
+            val doSomething = UtilRandom.rollDice(ConfigSpell.empowerAxe.instantBreakChance.toFloat())
             if (!doSomething)
                 return
 
             UtilBlock.removeBlock(player, world, stack, pos, true, true, true)
-            stack.damageItem(ConfigSpells.empowerAxe.toolDamage, player)
+            stack.damageItem(ConfigSpell.empowerAxe.toolDamage, player)
         }
     }
 }

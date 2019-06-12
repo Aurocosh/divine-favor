@@ -1,7 +1,7 @@
 package aurocosh.divinefavor.common.potions.potions
 
 import aurocosh.divinefavor.DivineFavor
-import aurocosh.divinefavor.common.config.common.ConfigSpells
+import aurocosh.divinefavor.common.config.common.ConfigSpell
 import aurocosh.divinefavor.common.potions.base.potion.ModPotion
 import aurocosh.divinefavor.common.potions.common.ModPotions
 import net.minecraft.entity.EntityLivingBase
@@ -25,8 +25,8 @@ class PotionConsumingFury : ModPotion("consuming_fury", 0x7FB8A4) {
 
         val killCount = killCounts.computeIfAbsent(livingBase) { 0 }
         killCounts.remove(livingBase)
-        if (killCount < ConfigSpells.consumingFury.mobsToKill)
-            livingBase.attackEntityFrom(DamageSource.MAGIC, ConfigSpells.consumingFury.punishmentDamage)
+        if (killCount < ConfigSpell.consumingFury.mobsToKill)
+            livingBase.attackEntityFrom(DamageSource.MAGIC, ConfigSpell.consumingFury.punishmentDamage)
     }
 
     override fun isReady(duration: Int, amplifier: Int): Boolean {
@@ -42,7 +42,7 @@ class PotionConsumingFury : ModPotion("consuming_fury", 0x7FB8A4) {
             val entity = source.trueSource as? EntityPlayer ?: return
             if (!entity.isPotionActive(ModPotions.consuming_fury))
                 return
-            event.amount = event.amount + ConfigSpells.consumingFury.extraDamage
+            event.amount = event.amount + ConfigSpell.consumingFury.extraDamage
         }
 
         @SubscribeEvent
@@ -54,7 +54,7 @@ class PotionConsumingFury : ModPotion("consuming_fury", 0x7FB8A4) {
 
             val killCount = killCounts.computeIfAbsent(player) { 0 } + 1
             killCounts[player] = killCount
-            val killsLeft = ConfigSpells.consumingFury.mobsToKill - killCount
+            val killsLeft = ConfigSpell.consumingFury.mobsToKill - killCount
             if (killsLeft > 0)
                 player.sendMessage(TextComponentTranslation("Kills left: %s", killsLeft))
         }

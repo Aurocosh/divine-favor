@@ -1,7 +1,7 @@
 package aurocosh.divinefavor.common.potions.potions
 
 import aurocosh.divinefavor.DivineFavor
-import aurocosh.divinefavor.common.config.common.ConfigSpells
+import aurocosh.divinefavor.common.config.common.ConfigSpell
 import aurocosh.divinefavor.common.lib.LoopedCounter
 import aurocosh.divinefavor.common.potions.base.potion.ModPotionToggle
 import aurocosh.divinefavor.common.util.UtilTick
@@ -27,10 +27,10 @@ class PotionNightEye : ModPotionToggle("night_eye", 0x7FB8A4) {
         val skyLightSub = world.calculateSkylightSubtracted(1.0f)
         val lightBlock = world.getLightFor(EnumSkyBlock.BLOCK, pos)
         val lightSky = world.getLightFor(EnumSkyBlock.SKY, pos) - skyLightSub
-        if (Math.max(lightBlock, lightSky) <= ConfigSpells.nightEye.tolerableLightLevel)
-            livingBase.addPotionEffect(PotionEffect(MobEffects.NIGHT_VISION, ConfigSpells.nightEye.nightVisionDuration))
+        if (Math.max(lightBlock, lightSky) <= ConfigSpell.nightEye.tolerableLightLevel)
+            livingBase.addPotionEffect(PotionEffect(MobEffects.NIGHT_VISION, ConfigSpell.nightEye.nightVisionDuration))
         else
-            livingBase.addPotionEffect(PotionEffect(MobEffects.BLINDNESS, ConfigSpells.nightEye.blindnessDuration))
+            livingBase.addPotionEffect(PotionEffect(MobEffects.BLINDNESS, ConfigSpell.nightEye.blindnessDuration))
     }
 
     override fun isReady(duration: Int, amplifier: Int): Boolean {

@@ -1,7 +1,7 @@
 package aurocosh.divinefavor.common.potions.potions
 
 import aurocosh.divinefavor.DivineFavor
-import aurocosh.divinefavor.common.config.common.ConfigSpells
+import aurocosh.divinefavor.common.config.common.ConfigSpell
 import aurocosh.divinefavor.common.potions.base.potion.ModPotionToggle
 import aurocosh.divinefavor.common.potions.common.ModPotions
 import aurocosh.divinefavor.common.util.UtilMob
@@ -28,11 +28,11 @@ class PotionMistBlade : ModPotionToggle("mist_blade", 0x7FB8A4) {
             val entity = source.trueSource as? EntityPlayer ?: return
             if (!entity.isPotionActive(ModPotions.mist_blade))
                 return
-            event.amount = event.amount + ConfigSpells.mistBlade.extraDamage
+            event.amount = event.amount + ConfigSpell.mistBlade.extraDamage
 
             if (!UtilMob.isMobRanged(event.entity))
                 return
-            event.amount = event.amount + ConfigSpells.mistBlade.extraRangedDamage
+            event.amount = event.amount + ConfigSpell.mistBlade.extraRangedDamage
         }
 
         @SideOnly(Side.CLIENT)
@@ -51,8 +51,8 @@ class PotionMistBlade : ModPotionToggle("mist_blade", 0x7FB8A4) {
             if (isMistBladeActive(event)) {
                 if (intitFrames-- <= 0) {
                     event.density = 0.85f
-                    GlStateManager.setFogStart(ConfigSpells.mistBlade.fogStart.toFloat())
-                    GlStateManager.setFogEnd(ConfigSpells.mistBlade.fogEnd.toFloat())
+                    GlStateManager.setFogStart(ConfigSpell.mistBlade.fogStart.toFloat())
+                    GlStateManager.setFogEnd(ConfigSpell.mistBlade.fogEnd.toFloat())
                     event.isCanceled = true
                 }
             } else

@@ -1,7 +1,7 @@
 package aurocosh.divinefavor.common.potions.potions
 
 import aurocosh.divinefavor.DivineFavor
-import aurocosh.divinefavor.common.config.common.ConfigSpells
+import aurocosh.divinefavor.common.config.common.ConfigSpell
 import aurocosh.divinefavor.common.potions.base.potion.ModPotionToggle
 import aurocosh.divinefavor.common.potions.common.ModPotions
 import net.minecraft.enchantment.EnchantmentHelper
@@ -25,14 +25,14 @@ class PotionSpiderMight : ModPotionToggle("spider_might", 0x7FB8A4) {
 
             val source = event.source
             if (source.isFireDamage)
-                event.amount = event.amount + ConfigSpells.spider_might.fireDamage
+                event.amount = event.amount + ConfigSpell.spider_might.fireDamage
 
             val entity = source.trueSource
             if (entity is EntityPlayer) {
                 val stack = entity.heldItemMainhand
                 if (!stack.isEmpty) {
                     val baneLevel = EnchantmentHelper.getEnchantmentLevel(Enchantments.BANE_OF_ARTHROPODS, stack)
-                    event.amount = event.amount + baneLevel * ConfigSpells.spider_might.baneDamage
+                    event.amount = event.amount + baneLevel * ConfigSpell.spider_might.baneDamage
                 }
             }
         }

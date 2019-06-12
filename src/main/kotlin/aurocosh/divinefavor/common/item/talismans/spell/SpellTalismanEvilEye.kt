@@ -1,6 +1,6 @@
 package aurocosh.divinefavor.common.item.talismans.spell
 
-import aurocosh.divinefavor.common.config.common.ConfigSpells
+import aurocosh.divinefavor.common.config.common.ConfigSpell
 import aurocosh.divinefavor.common.item.talismans.spell.base.ItemSpellTalisman
 import aurocosh.divinefavor.common.item.talismans.spell.base.SpellOptions
 import aurocosh.divinefavor.common.item.talismans.spell.base.TalismanContext
@@ -26,15 +26,15 @@ class SpellTalismanEvilEye(name: String, spirit: ModSpirit, favorCost: Int, opti
 
         val evilEyeData = player.divinePlayerData.evilEyeData
         if (player.isPotionActive(ModCurses.evil_eye))
-            evilEyeData.increaseSeverity(ConfigSpells.evilEye.severityIncrease)
+            evilEyeData.increaseSeverity(ConfigSpell.evilEye.severityIncrease)
         else
-            evilEyeData.severity = ConfigSpells.evilEye.startingSeverity
+            evilEyeData.severity = ConfigSpell.evilEye.startingSeverity
 
         val severity = evilEyeData.severity
         val target = context.target as EntityLivingBase
-        target.attackEntityFrom(DamageSource.causePlayerDamage(player), (ConfigSpells.evilEye.damagePerSeverity * severity).toFloat())
-        target.addPotionEffect(PotionEffect(MobEffects.SLOWNESS, ConfigSpells.evilEye.slownessTime, ConfigSpells.evilEye.slownessLevel))
-        player.addPotionEffect(ModEffect(ModCurses.evil_eye, ConfigSpells.evilEye.evilEyeTime).setIsCurse())
+        target.attackEntityFrom(DamageSource.causePlayerDamage(player), (ConfigSpell.evilEye.damagePerSeverity * severity).toFloat())
+        target.addPotionEffect(PotionEffect(MobEffects.SLOWNESS, ConfigSpell.evilEye.slownessTime, ConfigSpell.evilEye.slownessLevel))
+        player.addPotionEffect(ModEffect(ModCurses.evil_eye, ConfigSpell.evilEye.evilEyeTime).setIsCurse())
 
         MessageSyncEvilEye(severity).sendTo(player)
     }

@@ -1,7 +1,7 @@
 package aurocosh.divinefavor.common.item.talismans.spell
 
 import aurocosh.divinefavor.common.config.common.ConfigGeneral
-import aurocosh.divinefavor.common.config.common.ConfigSpells
+import aurocosh.divinefavor.common.config.common.ConfigSpell
 import aurocosh.divinefavor.common.damage_source.ModDamageSources
 import aurocosh.divinefavor.common.item.talismans.spell.base.ItemSpellTalisman
 import aurocosh.divinefavor.common.item.talismans.spell.base.SpellOptions
@@ -20,16 +20,16 @@ class SpellTalismanWinterBreath(name: String, spirit: ModSpirit, favorCost: Int,
         val player = context.player
         val origin = player.positionVector
         val lookVec = player.lookVec
-        val radius = ConfigSpells.winterBreath.radius
+        val radius = ConfigSpell.winterBreath.radius
         val radiusSq = (radius * radius).toDouble()
 
-        val function = { livingBase: EntityLivingBase? -> livingBase != null && livingBase !== player && livingBase.getDistanceSq(origin) < radiusSq && UtilEntity.isInCone(lookVec, origin, livingBase, ConfigSpells.winterBreath.coneTolerance) }
+        val function = { livingBase: EntityLivingBase? -> livingBase != null && livingBase !== player && livingBase.getDistanceSq(origin) < radiusSq && UtilEntity.isInCone(lookVec, origin, livingBase, ConfigSpell.winterBreath.coneTolerance) }
 
         val boundingBox = UtilCoordinates.getBoundingBox(origin, radius.toDouble())
         val entities = context.world.getEntitiesWithinAABB(EntityLivingBase::class.java, boundingBox, function)
         for (entity in entities) {
-            entity.attackEntityFrom(ModDamageSources.frostDamage, ConfigSpells.winterBreath.damage.toFloat())
-            UtilEntity.addVelocity(entity, lookVec, ConfigSpells.winterBreath.knockback.toFloat())
+            entity.attackEntityFrom(ModDamageSources.frostDamage, ConfigSpell.winterBreath.damage.toFloat())
+            UtilEntity.addVelocity(entity, lookVec, ConfigSpell.winterBreath.knockback.toFloat())
         }
 
         val positionEyes = player.getPositionEyes(0f)

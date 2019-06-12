@@ -1,6 +1,6 @@
 package aurocosh.divinefavor.common.item.talismans.spell
 
-import aurocosh.divinefavor.common.config.common.ConfigSpells
+import aurocosh.divinefavor.common.config.common.ConfigSpell
 import aurocosh.divinefavor.common.item.talismans.spell.base.ItemSpellTalisman
 import aurocosh.divinefavor.common.item.talismans.spell.base.SpellOptions
 import aurocosh.divinefavor.common.item.talismans.spell.base.TalismanContext
@@ -22,7 +22,7 @@ import java.util.*
 class SpellTalismanBladeOfGrass(name: String, spirit: ModSpirit, favorCost: Int, options: EnumSet<SpellOptions>) : ItemSpellTalisman(name, spirit, favorCost, options) {
 
     override fun performActionServer(context: TalismanContext) {
-        val radius = ConfigSpells.bladeOfGrass.radius
+        val radius = ConfigSpell.bladeOfGrass.radius
         val player = context.player
         val origin = player.position
         val axis = AxisAlignedBB((origin.x - radius).toDouble(), (origin.y - radius).toDouble(), (origin.z - radius).toDouble(), (origin.x + radius).toDouble(), (origin.y + radius).toDouble(), (origin.z + radius).toDouble())
@@ -39,8 +39,8 @@ class SpellTalismanBladeOfGrass(name: String, spirit: ModSpirit, favorCost: Int,
 
             if (consumeGrass(positions, context.player, context.world)) {
                 val base = entity as EntityLivingBase
-                base.addPotionEffect(PotionEffect(MobEffects.SLOWNESS, ConfigSpells.bladeOfGrass.slownessTime, ConfigSpells.bladeOfGrass.slownessLevel))
-                base.attackEntityFrom(DamageSource.causePlayerDamage(player), ConfigSpells.bladeOfGrass.damage)
+                base.addPotionEffect(PotionEffect(MobEffects.SLOWNESS, ConfigSpell.bladeOfGrass.slownessTime, ConfigSpell.bladeOfGrass.slownessLevel))
+                base.attackEntityFrom(DamageSource.causePlayerDamage(player), ConfigSpell.bladeOfGrass.damage)
             }
         }
     }
@@ -73,6 +73,6 @@ class SpellTalismanBladeOfGrass(name: String, spirit: ModSpirit, favorCost: Int,
 
     companion object {
 
-        private val RADIUS_SQ = ConfigSpells.bladeOfGrass.radius * ConfigSpells.bladeOfGrass.radius
+        private val RADIUS_SQ = ConfigSpell.bladeOfGrass.radius * ConfigSpell.bladeOfGrass.radius
     }
 }

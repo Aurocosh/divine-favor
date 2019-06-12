@@ -12,7 +12,7 @@ import aurocosh.divinefavor.common.block.medium.TileMedium
 import aurocosh.divinefavor.common.block.rope.BlockRopeLight
 import aurocosh.divinefavor.common.block.soulbound_lectern.BlockSoulboundLectern
 import aurocosh.divinefavor.common.block.soulbound_lectern.TileSoulboundLectern
-import aurocosh.divinefavor.common.config.common.ConfigSpells
+import aurocosh.divinefavor.common.config.common.ConfigSpell
 import aurocosh.divinefavor.common.constants.ConstBlockNames
 import aurocosh.divinefavor.common.constants.ConstResources
 import net.minecraft.block.material.Material
@@ -67,10 +67,10 @@ object ModBlocks {
         enderPumpkin = BlockEnderPumpkin()
         cavingRopeLight = BlockRopeLight("rope_light")
 
-        ethereal_light = BlockEtherealLight("ethereal_light", Material.AIR, ConfigSpells.etherealLight.lightLevel)
-        ethereal_flash = BlockEtherealFlash("ethereal_flash", ConfigSpells.etherealFlash.lightLevel, ConfigSpells.etherealFlash.despawnDelay)
-        red_pulse = BlockRedPulse("red_pulse", ConfigSpells.redPulse.redLevel, ConfigSpells.redPulse.lightLevel, ConfigSpells.redPulse.despawnDelay)
-        red_signal = BlockRedPulse("red_signal", ConfigSpells.redSignal.redLevel, ConfigSpells.redSignal.lightLevel, ConfigSpells.redSignal.despawnDelay)
+        ethereal_light = BlockEtherealLight("ethereal_light", Material.AIR, ConfigSpell.etherealLight.lightLevel)
+        ethereal_flash = BlockEtherealFlash("ethereal_flash", ConfigSpell.etherealFlash.lightLevel, ConfigSpell.etherealFlash.despawnDelay)
+        red_pulse = BlockRedPulse("red_pulse", ConfigSpell.redPulse.redLevel, ConfigSpell.redPulse.lightLevel, ConfigSpell.redPulse.despawnDelay)
+        red_signal = BlockRedPulse("red_signal", ConfigSpell.redSignal.redLevel, ConfigSpell.redSignal.lightLevel, ConfigSpell.redSignal.despawnDelay)
 
         initTileEntities()
     }

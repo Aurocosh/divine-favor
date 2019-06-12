@@ -1,17 +1,17 @@
 package aurocosh.divinefavor.common.custom_data.player.data.spell.molten_skin
 
-import aurocosh.divinefavor.common.config.common.ConfigSpells
+import aurocosh.divinefavor.common.config.common.ConfigSpell
 import aurocosh.divinefavor.common.lib.LimitedTimer
 
 // The default implementation of the capability. Holds all the logic.
 class MoltenSkinData {
-    private val timer: LimitedTimer = LimitedTimer(ConfigSpells.moltenSkin.maxTimeOutsideLava)
+    private val timer: LimitedTimer = LimitedTimer(ConfigSpell.moltenSkin.maxTimeOutsideLava)
 
     val ticks: Int
         get() = timer.getTicks()
 
     fun setMaxTime() {
-        setTime(ConfigSpells.moltenSkin.maxTimeOutsideLava)
+        setTime(ConfigSpell.moltenSkin.maxTimeOutsideLava)
     }
 
     fun setTime(ticks: Int) {
@@ -23,7 +23,7 @@ class MoltenSkinData {
     }
 
     fun delay() {
-        timer.setTicks(timer.getTicks() - ConfigSpells.moltenSkin.damageDelay)
+        timer.setTicks(timer.getTicks() - ConfigSpell.moltenSkin.damageDelay)
     }
 
     fun tick(): Boolean {

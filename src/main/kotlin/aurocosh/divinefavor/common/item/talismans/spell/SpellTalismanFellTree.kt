@@ -1,6 +1,6 @@
 package aurocosh.divinefavor.common.item.talismans.spell
 
-import aurocosh.divinefavor.common.config.common.ConfigSpells
+import aurocosh.divinefavor.common.config.common.ConfigSpell
 import aurocosh.divinefavor.common.constants.BlockPosConstants
 import aurocosh.divinefavor.common.item.talismans.spell.base.ItemSpellTalisman
 import aurocosh.divinefavor.common.item.talismans.spell.base.SpellOptions
@@ -20,20 +20,20 @@ class SpellTalismanFellTree(name: String, spirit: ModSpirit, favorCost: Int, opt
         val logs = detectTree(context)
         if (logs.isNotEmpty()) {
             val talisman = context.player.getHeldItem(context.hand)
-            BlockBreakingTask(logs, context.player, talisman, ConfigSpells.fellTree.breakingSpeed).start()
+            BlockBreakingTask(logs, context.player, talisman, ConfigSpell.fellTree.breakingSpeed).start()
         }
     }
 
     private fun detectTree(context: TalismanContext): List<BlockPos> {
         val world = context.world
         val start = listOf(context.pos)
-        val logs = UtilCoordinates.floodFill(start, BlockPosConstants.DIRECT_NEIGHBOURS, world::isWood, ConfigSpells.fellTree.maxLogsBroken)
+        val logs = UtilCoordinates.floodFill(start, BlockPosConstants.DIRECT_NEIGHBOURS, world::isWood, ConfigSpell.fellTree.maxLogsBroken)
         if (logs.isEmpty())
             return logs
 
         val possibleLeaves = logs.map { logPos -> BlockPosConstants.DIRECT_NEIGHBOURS.map(logPos::add) }.flatten().toSet()
-        val leaves = UtilCoordinates.floodFill(possibleLeaves, BlockPosConstants.DIRECT_NEIGHBOURS, world::isLeaves, ConfigSpells.fellTree.minLeafCount)
-        if (leaves.size < ConfigSpells.fellTree.minLeafCount)
+        val leaves = UtilCoordinates.floodFill(possibleLeaves, BlockPosConstants.DIRECT_NEIGHBOURS, world::isLeaves, ConfigSpell.fellTree.minLeafCount)
+        if (leaves.size < ConfigSpell.fellTree.minLeafCount)
             return ArrayList()
         return logs
     }

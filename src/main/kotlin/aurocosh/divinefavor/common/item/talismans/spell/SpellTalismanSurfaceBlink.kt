@@ -1,6 +1,6 @@
 package aurocosh.divinefavor.common.item.talismans.spell
 
-import aurocosh.divinefavor.common.config.common.ConfigSpells
+import aurocosh.divinefavor.common.config.common.ConfigSpell
 import aurocosh.divinefavor.common.item.talismans.spell.base.ItemSpellTalisman
 import aurocosh.divinefavor.common.item.talismans.spell.base.SpellOptions
 import aurocosh.divinefavor.common.item.talismans.spell.base.TalismanContext
@@ -36,7 +36,7 @@ class SpellTalismanSurfaceBlink(name: String, spirit: ModSpirit, favorCost: Int,
             return false
         if (!context.world.isAirBlock(target.up()))
             return false
-        val blinkDistance = ConfigSpells.surfaceBlink.distance
+        val blinkDistance = ConfigSpell.surfaceBlink.distance
         return context.player.getDistanceSq(target) < blinkDistance * blinkDistance
     }
 }

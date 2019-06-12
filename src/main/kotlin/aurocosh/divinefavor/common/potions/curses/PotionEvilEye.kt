@@ -1,7 +1,7 @@
 package aurocosh.divinefavor.common.potions.curses
 
 import aurocosh.divinefavor.DivineFavor
-import aurocosh.divinefavor.common.config.common.ConfigSpells
+import aurocosh.divinefavor.common.config.common.ConfigSpell
 import aurocosh.divinefavor.common.constants.ConstResources
 import aurocosh.divinefavor.common.lib.extensions.divinePlayerData
 import aurocosh.divinefavor.common.potions.base.potion.ModPotion
@@ -59,7 +59,7 @@ class PotionEvilEye : ModPotion("evil_eye", 0x7FB8A4) {
             GlStateManager.depthMask(false)
             //        GlStateManager.tryBlendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO);
             GlStateManager.blendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA)
-            val colorAlpha = severity * ConfigSpells.evilEye.opacityPerSeverity
+            val colorAlpha = severity * ConfigSpell.evilEye.opacityPerSeverity
             GlStateManager.color(1.0f, 1.0f, 1.0f, colorAlpha)
             //        GlStateManager.disableAlpha();
             mc.textureManager.bindTexture(EVIL_EYE_BLUR_TEXTURE)

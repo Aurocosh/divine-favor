@@ -1,6 +1,6 @@
 package aurocosh.divinefavor.common.entity.projectile
 
-import aurocosh.divinefavor.common.config.common.ConfigSpells
+import aurocosh.divinefavor.common.config.common.ConfigSpell
 import aurocosh.divinefavor.common.util.UtilRandom
 import net.minecraft.entity.EntityLivingBase
 import net.minecraft.entity.monster.AbstractSkeleton
@@ -25,10 +25,10 @@ class EntityStoneball : EntityThrowable {
         val thrower = getThrower()
 
         if (result.entityHit != null) {
-            val isCritical = UtilRandom.rollDiceFloat(ConfigSpells.stoneballThrow.criticalChance)
-            var damage = if (isCritical) ConfigSpells.stoneballThrow.criticalDamage else ConfigSpells.stoneballThrow.damage
+            val isCritical = UtilRandom.rollDiceFloat(ConfigSpell.stoneballThrow.criticalChance)
+            var damage = if (isCritical) ConfigSpell.stoneballThrow.criticalDamage else ConfigSpell.stoneballThrow.damage
             if (result.entityHit is AbstractSkeleton)
-                damage += ConfigSpells.stoneballThrow.extraSkeletonDamage
+                damage += ConfigSpell.stoneballThrow.extraSkeletonDamage
             result.entityHit.attackEntityFrom(DamageSource.causeThrownDamage(this, thrower), damage)
         }
 

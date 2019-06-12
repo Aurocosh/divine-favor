@@ -1,6 +1,6 @@
 package aurocosh.divinefavor.common.item.talismans.spell
 
-import aurocosh.divinefavor.common.config.common.ConfigSpells
+import aurocosh.divinefavor.common.config.common.ConfigSpell
 import aurocosh.divinefavor.common.item.talismans.spell.base.ItemSpellTalisman
 import aurocosh.divinefavor.common.item.talismans.spell.base.SpellOptions
 import aurocosh.divinefavor.common.item.talismans.spell.base.TalismanContext
@@ -20,8 +20,8 @@ class SpellTalismanWindStep(name: String, spirit: ModSpirit, favorCost: Int, opt
 
     private fun addVelocity(player: EntityPlayer) {
         val lookVec = player.lookVec
-        player.motionX += lookVec.x * ConfigSpells.windStep.addedVelocityXZ
-        player.motionY += lookVec.y * ConfigSpells.windStep.addedVelocityY
-        player.motionZ += lookVec.z * ConfigSpells.windStep.addedVelocityXZ
+        player.motionX += lookVec.x * ConfigSpell.windStep.addedVelocityXZ
+        player.motionY += lookVec.y * ConfigSpell.windStep.addedVelocityY
+        player.motionZ += lookVec.z * ConfigSpell.windStep.addedVelocityXZ
     }
 }

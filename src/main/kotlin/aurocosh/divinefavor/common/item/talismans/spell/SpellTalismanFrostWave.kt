@@ -1,7 +1,7 @@
 package aurocosh.divinefavor.common.item.talismans.spell
 
 import aurocosh.divinefavor.common.config.common.ConfigGeneral
-import aurocosh.divinefavor.common.config.common.ConfigSpells
+import aurocosh.divinefavor.common.config.common.ConfigSpell
 import aurocosh.divinefavor.common.damage_source.ModDamageSources
 import aurocosh.divinefavor.common.item.talismans.spell.base.ItemSpellTalisman
 import aurocosh.divinefavor.common.item.talismans.spell.base.SpellOptions
@@ -19,13 +19,13 @@ class SpellTalismanFrostWave(name: String, spirit: ModSpirit, favorCost: Int, op
         val player = context.player
         val origin = player.positionVector
 
-        val alignedBB = UtilCoordinates.getBoundingBox(origin, ConfigSpells.frostWave.radius)
+        val alignedBB = UtilCoordinates.getBoundingBox(origin, ConfigSpell.frostWave.radius)
         val list = context.world.getEntitiesWithinAABB(EntityLivingBase::class.java, alignedBB) { e -> e !== player && e != null && origin.squareDistanceTo(e.positionVector) <= RADIUS_SQ }
 
         for (entity in list) {
-            entity.attackEntityFrom(ModDamageSources.frostDamage, ConfigSpells.frostWave.damage)
+            entity.attackEntityFrom(ModDamageSources.frostDamage, ConfigSpell.frostWave.damage)
             val direction = origin.subtract(entity.positionVector).normalize()
-            entity.knockBack(context.player, ConfigSpells.frostWave.knockbackPower, direction.x, direction.z)
+            entity.knockBack(context.player, ConfigSpell.frostWave.knockbackPower, direction.x, direction.z)
         }
 
         val positionEyes = player.getPositionEyes(0f)
@@ -33,6 +33,6 @@ class SpellTalismanFrostWave(name: String, spirit: ModSpirit, favorCost: Int, op
     }
 
     companion object {
-        private val RADIUS_SQ = ConfigSpells.frostWave.radius * ConfigSpells.frostWave.radius
+        private val RADIUS_SQ = ConfigSpell.frostWave.radius * ConfigSpell.frostWave.radius
     }
 }

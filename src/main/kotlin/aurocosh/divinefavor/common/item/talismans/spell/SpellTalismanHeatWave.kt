@@ -1,7 +1,7 @@
 package aurocosh.divinefavor.common.item.talismans.spell
 
 import aurocosh.divinefavor.common.config.common.ConfigGeneral
-import aurocosh.divinefavor.common.config.common.ConfigSpells
+import aurocosh.divinefavor.common.config.common.ConfigSpell
 import aurocosh.divinefavor.common.item.talismans.spell.base.ItemSpellTalisman
 import aurocosh.divinefavor.common.item.talismans.spell.base.SpellOptions
 import aurocosh.divinefavor.common.item.talismans.spell.base.TalismanContext
@@ -22,15 +22,15 @@ class SpellTalismanHeatWave(name: String, spirit: ModSpirit, favorCost: Int, opt
         val player = context.player
         val origin = player.position
 
-        val boundingBox = UtilCoordinates.getBoundingBox(origin, ConfigSpells.heatWave.radius)
+        val boundingBox = UtilCoordinates.getBoundingBox(origin, ConfigSpell.heatWave.radius)
         val list = world.getEntitiesWithinAABB(EntityLivingBase::class.java, boundingBox) { e -> e !== player && e != null && e.getDistanceSq(origin) <= RADIUS_SQ }
 
         for (entity in list) {
-            entity.attackEntityFrom(DamageSource.ON_FIRE, ConfigSpells.heatWave.damage)
+            entity.attackEntityFrom(DamageSource.ON_FIRE, ConfigSpell.heatWave.damage)
 
-            if (UtilRandom.rollDice(ConfigSpells.heatWave.chanceToSetEnemyOnFire))
-                entity.setFire(ConfigSpells.heatWave.enemyBurnTime)
-            if (UtilRandom.rollDice(ConfigSpells.heatWave.chanceToSetGroundOnFire))
+            if (UtilRandom.rollDice(ConfigSpell.heatWave.chanceToSetEnemyOnFire))
+                entity.setFire(ConfigSpell.heatWave.enemyBurnTime)
+            if (UtilRandom.rollDice(ConfigSpell.heatWave.chanceToSetGroundOnFire))
                 UtilBlock.ignite(player, world, entity.position)
         }
 
@@ -39,6 +39,6 @@ class SpellTalismanHeatWave(name: String, spirit: ModSpirit, favorCost: Int, opt
     }
 
     companion object {
-        private val RADIUS_SQ = ConfigSpells.heatWave.radius * ConfigSpells.heatWave.radius
+        private val RADIUS_SQ = ConfigSpell.heatWave.radius * ConfigSpell.heatWave.radius
     }
 }

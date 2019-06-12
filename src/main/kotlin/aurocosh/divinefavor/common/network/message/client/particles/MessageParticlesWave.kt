@@ -1,7 +1,7 @@
 package aurocosh.divinefavor.common.network.message.client.particles
 
 import aurocosh.divinefavor.DivineFavor
-import aurocosh.divinefavor.common.config.common.ConfigSpells
+import aurocosh.divinefavor.common.config.common.ConfigSpell
 import aurocosh.divinefavor.common.network.message.base.DivineClientMessage
 import aurocosh.divinefavor.common.util.UtilRandom
 import net.minecraft.util.EnumParticleTypes
@@ -25,7 +25,7 @@ class MessageParticlesWave : DivineClientMessage {
         val player = DivineFavor.proxy.clientPlayer
 
         val speedRange = 3.0
-        for (i in 0 until ConfigSpells.heatWave.particleCount) {
+        for (i in 0 until ConfigSpell.heatWave.particleCount) {
             val xSpeed = UtilRandom.nextDouble(-speedRange, speedRange)
             val ySpeed = UtilRandom.nextDouble(-speedRange, speedRange)
             val zSpeed = UtilRandom.nextDouble(-speedRange, speedRange)

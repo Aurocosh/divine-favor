@@ -1,7 +1,7 @@
 package aurocosh.divinefavor.common.potions.potions
 
 import aurocosh.divinefavor.DivineFavor
-import aurocosh.divinefavor.common.config.common.ConfigSpells
+import aurocosh.divinefavor.common.config.common.ConfigSpell
 import aurocosh.divinefavor.common.damage_source.ModDamageSources
 import aurocosh.divinefavor.common.lib.extensions.divinePlayerData
 import aurocosh.divinefavor.common.potions.base.potion.ModPotionToggle
@@ -36,7 +36,7 @@ class PotionMoltenSkin : ModPotionToggle("molten_skin", 0x7FB8A4) {
         if (!skinData.tick())
             return
 
-        livingBase.attackEntityFrom(ModDamageSources.frostDamage, ConfigSpells.moltenSkin.freezingDamage)
+        livingBase.attackEntityFrom(ModDamageSources.frostDamage, ConfigSpell.moltenSkin.freezingDamage)
         skinData.delay()
     }
 
@@ -68,7 +68,7 @@ class PotionMoltenSkin : ModPotionToggle("molten_skin", 0x7FB8A4) {
                 return
             if (!entity.isInsideOfMaterial(Material.LAVA))
                 return
-            UtilEntity.addVelocity(entity, ConfigSpells.moltenSkin.speedModifier)
+            UtilEntity.addVelocity(entity, ConfigSpell.moltenSkin.speedModifier)
         }
 
         private fun isInLavaWithMoltenSkin(event: EntityViewRenderEvent): Boolean {

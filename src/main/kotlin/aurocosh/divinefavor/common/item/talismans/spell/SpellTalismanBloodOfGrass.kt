@@ -1,6 +1,6 @@
 package aurocosh.divinefavor.common.item.talismans.spell
 
-import aurocosh.divinefavor.common.config.common.ConfigSpells
+import aurocosh.divinefavor.common.config.common.ConfigSpell
 import aurocosh.divinefavor.common.item.talismans.spell.base.ItemSpellTalisman
 import aurocosh.divinefavor.common.item.talismans.spell.base.SpellOptions
 import aurocosh.divinefavor.common.item.talismans.spell.base.TalismanContext
@@ -17,9 +17,9 @@ class SpellTalismanBloodOfGrass(name: String, spirit: ModSpirit, favorCost: Int,
         val world = context.world
         val player = context.player
 
-        val posList = UtilCoordinates.getBlocksInSphere(player.position, ConfigSpells.bloodOfGrass.radius)
+        val posList = UtilCoordinates.getBlocksInSphere(player.position, ConfigSpell.bloodOfGrass.radius)
         val plantList = posList.filter { pos -> world.getBlockState(pos).material === Material.GRASS }
         for (pos in plantList) if (UtilBlock.replaceBlock(player, world, pos, Blocks.DIRT.defaultState))
-            player.heal(ConfigSpells.bloodOfGrass.healthPerGrass)
+            player.heal(ConfigSpell.bloodOfGrass.healthPerGrass)
     }
 }

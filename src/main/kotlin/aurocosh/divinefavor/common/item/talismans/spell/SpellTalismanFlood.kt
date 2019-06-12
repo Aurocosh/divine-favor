@@ -1,6 +1,6 @@
 package aurocosh.divinefavor.common.item.talismans.spell
 
-import aurocosh.divinefavor.common.config.common.ConfigSpells
+import aurocosh.divinefavor.common.config.common.ConfigSpell
 import aurocosh.divinefavor.common.item.talismans.spell.base.ItemSpellTalisman
 import aurocosh.divinefavor.common.item.talismans.spell.base.SpellOptions
 import aurocosh.divinefavor.common.item.talismans.spell.base.TalismanContext
@@ -18,7 +18,7 @@ class SpellTalismanFlood(name: String, spirit: ModSpirit, favorCost: Int, option
 
     override fun performActionServer(context: TalismanContext) {
         val world = context.world
-        val posList = UtilCoordinates.getBlocksInSphere(context.pos, ConfigSpells.flood.radius)
+        val posList = UtilCoordinates.getBlocksInSphere(context.pos, ConfigSpell.flood.radius)
         val flowingWaterBlocks = posList
                 .filter(world::getMaterial, Material.WATER::equals)
                 .filter(world::getBlockState) { state -> state.getValue(BlockLiquid.LEVEL) != 0 }

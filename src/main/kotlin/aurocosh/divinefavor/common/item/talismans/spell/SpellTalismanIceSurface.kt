@@ -1,6 +1,6 @@
 package aurocosh.divinefavor.common.item.talismans.spell
 
-import aurocosh.divinefavor.common.config.common.ConfigSpells
+import aurocosh.divinefavor.common.config.common.ConfigSpell
 import aurocosh.divinefavor.common.constants.BlockPosConstants
 import aurocosh.divinefavor.common.item.talismans.spell.base.ItemSpellTalisman
 import aurocosh.divinefavor.common.item.talismans.spell.base.SpellOptions
@@ -28,9 +28,9 @@ class SpellTalismanIceSurface(name: String, spirit: ModSpirit, favorCost: Int, o
         val airPredicate = AreaPredicate(world::getBlock, Blocks.AIR::equals, BlockPosConstants.DIRECT_NEIGHBOURS, 1)
         val predicate = UtilPredicate.and(waterPredicate::invoke, airPredicate::invoke)
 
-        val spherePoints = UtilCoordinates.getBlocksInSphere(context.pos, ConfigSpells.iceSurface.radius)
+        val spherePoints = UtilCoordinates.getBlocksInSphere(context.pos, ConfigSpell.iceSurface.radius)
         val startingPoints = spherePoints.filter(predicate).toList()
-        val pointsToFreeze = UtilCoordinates.floodFill(startingPoints, BlockPosConstants.DIRECT_NEIGHBOURS, predicate, ConfigSpells.iceSurface.floodLimit)
+        val pointsToFreeze = UtilCoordinates.floodFill(startingPoints, BlockPosConstants.DIRECT_NEIGHBOURS, predicate, ConfigSpell.iceSurface.floodLimit)
 
         val state = Blocks.ICE.defaultState
         val task = BlockProcessingTask(pointsToFreeze, world, 1) { pos: BlockPos ->

@@ -1,6 +1,6 @@
 package aurocosh.divinefavor.common.item.talismans.spell
 
-import aurocosh.divinefavor.common.config.common.ConfigSpells
+import aurocosh.divinefavor.common.config.common.ConfigSpell
 import aurocosh.divinefavor.common.constants.BlockPosConstants
 import aurocosh.divinefavor.common.item.talismans.spell.base.ItemSpellTalisman
 import aurocosh.divinefavor.common.item.talismans.spell.base.SpellOptions
@@ -30,10 +30,10 @@ class SpellTalismanLakeThawing(name: String, spirit: ModSpirit, favorCost: Int, 
 
         val predicate = UtilPredicate.and(icePredicate::invoke, airPredicate::invoke)
 
-        val spherePoints = UtilCoordinates.getBlocksInSphere(context.pos, ConfigSpells.lakeThawing.radius)
+        val spherePoints = UtilCoordinates.getBlocksInSphere(context.pos, ConfigSpell.lakeThawing.radius)
         val startingPoints = spherePoints.filter(predicate).toList()
 
-        val pointsToUnfreeze = UtilCoordinates.floodFill(startingPoints, BlockPosConstants.DIRECT_NEIGHBOURS, predicate, ConfigSpells.lakeThawing.floodLimit)
+        val pointsToUnfreeze = UtilCoordinates.floodFill(startingPoints, BlockPosConstants.DIRECT_NEIGHBOURS, predicate, ConfigSpell.lakeThawing.floodLimit)
 
         val state = Blocks.WATER.defaultState
         val task = BlockProcessingTask(pointsToUnfreeze, world, 1) { pos: BlockPos ->

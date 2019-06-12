@@ -1,6 +1,6 @@
 package aurocosh.divinefavor.common.item.talismans.spell
 
-import aurocosh.divinefavor.common.config.common.ConfigSpells
+import aurocosh.divinefavor.common.config.common.ConfigSpell
 import aurocosh.divinefavor.common.item.talismans.spell.base.ItemSpellTalisman
 import aurocosh.divinefavor.common.item.talismans.spell.base.SpellOptions
 import aurocosh.divinefavor.common.item.talismans.spell.base.TalismanContext
@@ -20,7 +20,7 @@ class SpellTalismanGreenCycle(name: String, spirit: ModSpirit, favorCost: Int, o
         val player = context.player
         val stack = player.getHeldItem(context.hand)
 
-        val spherePoints = UtilCoordinates.getBlocksInSphere(player.position, ConfigSpells.greenCycle.radius)
+        val spherePoints = UtilCoordinates.getBlocksInSphere(player.position, ConfigSpell.greenCycle.radius)
         val plantPositions = spherePoints.filter { pos -> isValidCrop(pos, context.world) }
         for (pos in plantPositions)
             UtilBlock.removeBlockAndReplant(player, context.world, pos, false, false)

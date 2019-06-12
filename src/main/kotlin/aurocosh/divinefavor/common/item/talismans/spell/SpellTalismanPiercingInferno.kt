@@ -1,6 +1,6 @@
 package aurocosh.divinefavor.common.item.talismans.spell
 
-import aurocosh.divinefavor.common.config.common.ConfigSpells
+import aurocosh.divinefavor.common.config.common.ConfigSpell
 import aurocosh.divinefavor.common.constants.BlockPosConstants
 import aurocosh.divinefavor.common.item.talismans.spell.base.ItemSpellTalisman
 import aurocosh.divinefavor.common.item.talismans.spell.base.SpellOptions
@@ -21,7 +21,7 @@ class SpellTalismanPiercingInferno(name: String, spirit: ModSpirit, favorCost: I
         val world = context.world
         val facing = context.facing
 
-        var blocksToBreak = if (context.player.isSneaking) ConfigSpells.piercingInferno.blocksToBreakWeak else ConfigSpells.piercingInferno.blocksToBreakNormal
+        var blocksToBreak = if (context.player.isSneaking) ConfigSpell.piercingInferno.blocksToBreakWeak else ConfigSpell.piercingInferno.blocksToBreakNormal
 
         val expansionDirs = ArrayList(BlockPosConstants.DIRECT_NEIGHBOURS)
         val shift = BlockPos(facing.opposite.directionVec)
@@ -48,7 +48,7 @@ class SpellTalismanPiercingInferno(name: String, spirit: ModSpirit, favorCost: I
         }
 
         val processor: (BlockPos) -> Unit = { pos: BlockPos ->
-            val ignite = UtilRandom.rollDice(ConfigSpells.piercingInferno.chanceToIgnite.toFloat())
+            val ignite = UtilRandom.rollDice(ConfigSpell.piercingInferno.chanceToIgnite.toFloat())
             val block = if (ignite) Blocks.FIRE else Blocks.AIR
             UtilBlock.replaceBlock(context.player, context.world, pos, block.defaultState)
         }

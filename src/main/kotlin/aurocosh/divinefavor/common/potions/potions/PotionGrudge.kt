@@ -1,7 +1,7 @@
 package aurocosh.divinefavor.common.potions.potions
 
 import aurocosh.divinefavor.DivineFavor
-import aurocosh.divinefavor.common.config.common.ConfigSpells
+import aurocosh.divinefavor.common.config.common.ConfigSpell
 import aurocosh.divinefavor.common.lib.extensions.divinePlayerData
 import aurocosh.divinefavor.common.network.message.client.syncing.MessageSyncGrudge
 import aurocosh.divinefavor.common.potions.base.potion.ModPotionToggle
@@ -47,7 +47,7 @@ class PotionGrudge : ModPotionToggle("grudge", 0x7FB8A4) {
 
             if (!entity.divinePlayerData.grudgeData.hasGrudge(entityMob))
                 return
-            event.amount = event.amount + ConfigSpells.grudge.extraDamage
+            event.amount = event.amount + ConfigSpell.grudge.extraDamage
         }
 
         @SubscribeEvent(priority = EventPriority.LOWEST)

@@ -1,6 +1,6 @@
 package aurocosh.divinefavor.common.item.talismans.spell
 
-import aurocosh.divinefavor.common.config.common.ConfigSpells
+import aurocosh.divinefavor.common.config.common.ConfigSpell
 import aurocosh.divinefavor.common.item.talismans.spell.base.ItemSpellTalisman
 import aurocosh.divinefavor.common.item.talismans.spell.base.SpellOptions
 import aurocosh.divinefavor.common.item.talismans.spell.base.TalismanContext
@@ -22,7 +22,7 @@ class SpellTalismanCombustion(name: String, spirit: ModSpirit, favorCost: Int, o
         val entity = context.world.getTileEntity(pos) ?: return
         val stackHandler = entity.capNull(ITEM_HANDLER_CAPABILITY, context.facing) ?: return
 
-        var stacksToSmelt = ConfigSpells.combustion.maxStacksToSmelt
+        var stacksToSmelt = ConfigSpell.combustion.maxStacksToSmelt
         val slotCount = stackHandler.slots
         var i = 0
         while (i < slotCount && stacksToSmelt > 0) {
@@ -33,7 +33,7 @@ class SpellTalismanCombustion(name: String, spirit: ModSpirit, favorCost: Int, o
                 i++
                 continue
             }
-            if (!UtilRandom.rollDiceFloat(ConfigSpells.combustion.smeltingChance)) {
+            if (!UtilRandom.rollDiceFloat(ConfigSpell.combustion.smeltingChance)) {
                 i++
                 continue
             }
@@ -47,6 +47,6 @@ class SpellTalismanCombustion(name: String, spirit: ModSpirit, favorCost: Int, o
             i++
         }
 
-        context.world.newExplosion(context.player, pos.x.toDouble(), pos.y.toDouble(), pos.z.toDouble(), ConfigSpells.combustion.explosionPower, ConfigSpells.combustion.causeFire, ConfigSpells.combustion.damageTerraing)
+        context.world.newExplosion(context.player, pos.x.toDouble(), pos.y.toDouble(), pos.z.toDouble(), ConfigSpell.combustion.explosionPower, ConfigSpell.combustion.causeFire, ConfigSpell.combustion.damageTerraing)
     }
 }

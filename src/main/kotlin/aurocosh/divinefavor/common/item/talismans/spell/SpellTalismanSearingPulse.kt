@@ -1,6 +1,6 @@
 package aurocosh.divinefavor.common.item.talismans.spell
 
-import aurocosh.divinefavor.common.config.common.ConfigSpells
+import aurocosh.divinefavor.common.config.common.ConfigSpell
 import aurocosh.divinefavor.common.constants.BlockPosConstants
 import aurocosh.divinefavor.common.item.talismans.spell.base.ItemSpellTalisman
 import aurocosh.divinefavor.common.item.talismans.spell.base.SpellOptions
@@ -20,7 +20,7 @@ class SpellTalismanSearingPulse(name: String, spirit: ModSpirit, favorCost: Int,
     override fun performActionServer(context: TalismanContext) {
         val world = context.world
 
-        val blocksToSmelt = UtilRandom.nextInt(ConfigSpells.searingPulse.minBlocksToSmelt, ConfigSpells.searingPulse.maxBlocksToSmelt)
+        val blocksToSmelt = UtilRandom.nextInt(ConfigSpell.searingPulse.minBlocksToSmelt, ConfigSpell.searingPulse.maxBlocksToSmelt)
 
         val block = world.getBlock(context.pos)
         if(!UtilBlock.smeltBlock(context.player, world, context.pos))

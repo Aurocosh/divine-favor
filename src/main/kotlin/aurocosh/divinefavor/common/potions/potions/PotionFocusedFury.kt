@@ -1,7 +1,7 @@
 package aurocosh.divinefavor.common.potions.potions
 
 import aurocosh.divinefavor.DivineFavor
-import aurocosh.divinefavor.common.config.common.ConfigSpells
+import aurocosh.divinefavor.common.config.common.ConfigSpell
 import aurocosh.divinefavor.common.lib.extensions.divinePlayerData
 import aurocosh.divinefavor.common.network.message.client.syncing.MessageSyncFury
 import aurocosh.divinefavor.common.potions.base.potion.ModPotion
@@ -67,7 +67,7 @@ class PotionFocusedFury : ModPotion("focused_fury", 0x7FB8A4) {
             if (!furyData.hasFury())
                 return
             if (furyData.hasFury(entityMob))
-                event.amount = event.amount + ConfigSpells.focusedFury.extraDamage
+                event.amount = event.amount + ConfigSpell.focusedFury.extraDamage
             else
                 event.isCanceled = true
         }

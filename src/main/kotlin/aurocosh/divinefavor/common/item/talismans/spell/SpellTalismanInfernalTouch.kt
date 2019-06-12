@@ -1,7 +1,7 @@
 package aurocosh.divinefavor.common.item.talismans.spell
 
 import aurocosh.divinefavor.DivineFavor
-import aurocosh.divinefavor.common.config.common.ConfigSpells
+import aurocosh.divinefavor.common.config.common.ConfigSpell
 import aurocosh.divinefavor.common.item.talismans.spell.base.ItemSpellTalisman
 import aurocosh.divinefavor.common.item.talismans.spell.base.SpellOptions
 import aurocosh.divinefavor.common.item.talismans.spell.base.TalismanContext
@@ -30,7 +30,7 @@ class SpellTalismanInfernalTouch(name: String, spirit: ModSpirit, favorCost: Int
         private val materials = HashMap<Material, Block>()
 
         init {
-            for ((blockName, resultName) in ConfigSpells.infernalTouch.blockConversions) {
+            for ((blockName, resultName) in ConfigSpell.infernalTouch.blockConversions) {
                 val block = Block.getBlockFromName(blockName)
                 if (block == null) {
                     DivineFavor.logger.error("Block does not exist: $blockName")
@@ -44,7 +44,7 @@ class SpellTalismanInfernalTouch(name: String, spirit: ModSpirit, favorCost: Int
                 blocks[block] = result
             }
 
-            for ((materialName, resultName) in ConfigSpells.infernalTouch.materialConversions) {
+            for ((materialName, resultName) in ConfigSpell.infernalTouch.materialConversions) {
                 val material = UtilMaterial.getMaterial(materialName)
                 if (material == null) {
                     DivineFavor.logger.error("Material does not exist: $materialName")

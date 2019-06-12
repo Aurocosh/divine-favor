@@ -1,6 +1,6 @@
 package aurocosh.divinefavor.common.item.talismans.spell
 
-import aurocosh.divinefavor.common.config.common.ConfigSpells
+import aurocosh.divinefavor.common.config.common.ConfigSpell
 import aurocosh.divinefavor.common.item.talismans.spell.base.ItemSpellTalisman
 import aurocosh.divinefavor.common.item.talismans.spell.base.SpellOptions
 import aurocosh.divinefavor.common.item.talismans.spell.base.TalismanContext
@@ -22,7 +22,7 @@ class SpellTalismanHarvest(name: String, spirit: ModSpirit, favorCost: Int, opti
         val player = context.player
         val stack = player.getHeldItem(context.hand)
 
-        val spherePoints = UtilCoordinates.getBlocksInSphere(player.position, ConfigSpells.harvest.radius)
+        val spherePoints = UtilCoordinates.getBlocksInSphere(player.position, ConfigSpell.harvest.radius)
         val plantPositions = spherePoints.filter { pos -> isValidCrop(pos, context.world) }
         for (pos in plantPositions)
             UtilBlock.removeBlock(player, context.world, stack, pos, true, false, false)

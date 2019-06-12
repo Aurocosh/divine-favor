@@ -1,6 +1,6 @@
 package aurocosh.divinefavor.common.potions.potions
 
-import aurocosh.divinefavor.common.config.common.ConfigSpells
+import aurocosh.divinefavor.common.config.common.ConfigSpell
 import aurocosh.divinefavor.common.lib.extensions.getBlock
 import aurocosh.divinefavor.common.lib.extensions.isLiquid
 import aurocosh.divinefavor.common.potions.base.potion.ModPotionToggle
@@ -15,7 +15,7 @@ class PotionExtremeBuoyancy : ModPotionToggle("extreme_buoyancy", 0x7FB8A4) {
         if (livingBase.isSneaking)
             return
 
-        livingBase.motionY = ConfigSpells.extremeBuoyancy.buoyancyForce.toDouble()
+        livingBase.motionY = ConfigSpell.extremeBuoyancy.buoyancyForce.toDouble()
         livingBase.aiMoveSpeed = 0.1f
     }
 
