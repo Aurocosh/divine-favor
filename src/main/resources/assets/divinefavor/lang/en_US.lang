@@ -287,6 +287,7 @@ item.divinefavor:spell_talisman_winter_breath.name=Winter breath talisman
 item.divinefavor:spell_talisman_wooden_punch.name=Wooden punch talisman
 
 ## ARROW TALISMAN NAMES
+item.divinefavor:arrow_talisman_lucky_arrow.name=Lucky arrow
 item.divinefavor:arrow_talisman_anti_gravity.name=Anti gravity arrow talisman
 item.divinefavor:arrow_talisman_armor_corrosion.name=Armor corrosion talisman
 item.divinefavor:arrow_talisman_blast.name=Blast arrow talisman
@@ -667,6 +668,7 @@ item.divinefavor:spell_talisman_winter_breath.description=Damages enemies in fro
 item.divinefavor:spell_talisman_wooden_punch.description=Will grant player 'Wooden_punch' effect. While effect active player will be able to break wood instantly with his bare hands. Effect is permanent. To remove it just cast spell once more. Each broken stone costs some favor.item.divinefavor:spell_talisman_wooden_punch.description=Will grant player 'Wooden_punch' effect. While effect active player will be able to break wood instantly with his bare hands. Effect is permanent. To remove it just cast spell once more. Each broken stone costs some favor.
 
 ## ARROW TALISMAN DESCRIPTIONS
+item.divinefavor:arrow_talisman_lucky_arrow.description=Each hit with this arrow improves loot dropped by a mob on his death.
 item.divinefavor:arrow_talisman_anti_gravity.description=Arrow shot with this talisman will fall upwards instead on down. Not very practical but can be used for some trick shots.
 item.divinefavor:arrow_talisman_armor_corrosion.description=Arrow shot with this talisman will be cursed with armor corrosion. This curse will only work on players. Armor of afflicted players will gradually decay over time. Not all armor will be affected at once. Random pieces of armor will be chosen on curse application. To remove curse player will have to remove affected armor pieces.
 item.divinefavor:arrow_talisman_blast.description=Weak explosive arrow. Explodes on contact. Be careful it can kill shooter.

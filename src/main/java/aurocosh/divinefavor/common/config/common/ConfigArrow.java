@@ -105,4 +105,6 @@ public class ConfigArrow {
     public static ZeroGArrow zeroGArrow = new ZeroGArrow();
 
     // New configs
+    @Config.Name("Lucky arrow")
+    public static LuckyArrow luckyArrow = new LuckyArrow();
 }

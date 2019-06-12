@@ -62,6 +62,7 @@ object ModArrowTalismans {
     lateinit var zero_g: ItemArrowTalisman
 
     // New fields
+    lateinit var lucky_arrow: ItemArrowTalisman
 
     fun preInit() {
         val enderererColor = Color(0, 124, 86)
@@ -142,5 +143,6 @@ object ModArrowTalismans {
         yummy_smell = ArrowTalismanCurse("yummy_smell", ModSpirits.timber, ConfigArrow.yummySmell.favorCost, curseColor2, ModCurses.yummy_smell, ConfigArrow.yummySmell.duration)
 
         // New instances
+        lucky_arrow = ArrowTalismanLuckyArrow("lucky_arrow", ModSpirits.arbow, ConfigArrow.luckyArrow.favorCost, Color.gray,ConfigArrow.luckyArrow.damage.toDouble(), ArrowOptions.NORMAL, ArrowType.WOODEN_ARROW)
     }
 }

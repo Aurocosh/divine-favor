@@ -1,9 +1,9 @@
 {
   "result": {
-    "item": "divinefavor:blade_talisman_lucky_strike"
+    "item": "divinefavor:arrow_talisman_lucky_arrow"
   },
   "stones": [
-    "divinefavor:calling_stone_squarefury"
+    "divinefavor:calling_stone_arbow"
   ],
   "ingredients": [
     {
@@ -16,7 +16,7 @@
     },
     {
       "type": "stack",
-      "item": "minecraft:iron_sword"
+      "item": "minecraft:arrow"
     },
     {
       "type": "ore",
