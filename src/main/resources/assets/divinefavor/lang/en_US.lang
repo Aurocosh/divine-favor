@@ -40,8 +40,8 @@ divinefavor:spirit_became_inactive=Spirit %1$s became inactive
 divinefavor:favor_infinite=Infinite
 
 # MESSAGES
-message.divinefavor:marked_glass.spirit_is_active=Spirit is active right now!
-message.divinefavor:marked_glass.spirit_is_inactive=Spirit will become active after %1$d hours and %2$d minutes
+message.divinefavor:marked_glass.spirit_is_active=Spirit is active right now! Spirit will be active for %1$d hours and %2$d minutes
+message.divinefavor:marked_glass.spirit_is_inactive=Spirit is inactive. Spirit will become active after %1$d hours and %2$d minutes
 
 # TOOLTIPS
 tooltip.divinefavor:talisman.infinite_use=Infinite use

@@ -36,7 +36,15 @@ class ItemMarkedGlass(val spirit: ModSpirit, orderIndex: Int) : ModItem("marked_
             return false
 
         if (spirit.isActive) {
-            player.sendStatusMessage(TextComponentTranslation("message.divinefavor:marked_glass.spirit_is_active"), true)
+            val fromTime = DayClock.timeTicks
+            val toTime = spirit.activityPeriod.stop
+
+            val ticksToActivity = UtilDayTime.ticksBetween(fromTime, toTime)
+            val hours = ticksToActivity / UtilDayTime.TICKS_IN_HOUR
+            val vartemp = ticksToActivity % UtilDayTime.TICKS_IN_HOUR
+            val minutes = vartemp / UtilDayTime.TICKS_IN_MINUTE
+            
+            player.sendStatusMessage(TextComponentTranslation("message.divinefavor:marked_glass.spirit_is_active", hours, minutes), true)
 
         } else {
             val fromTime = DayClock.timeTicks
