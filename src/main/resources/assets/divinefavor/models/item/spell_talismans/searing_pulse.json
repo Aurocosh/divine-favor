@@ -1,6 +1,6 @@
 {
     "parent": "item/generated",
     "textures": {
-        "layer0": "divinefavor:items/talismans/searing_pulse"
+        "layer0": "divinefavor:items/spell_talismans/searing_pulse"
     }
 }

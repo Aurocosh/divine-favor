@@ -1,7 +1,7 @@
 package aurocosh.divinefavor.common.config.common;
 
 import aurocosh.divinefavor.DivineFavor;
-import aurocosh.divinefavor.common.config.entries.IceArrow;
+import aurocosh.divinefavor.common.config.entries.items.IceArrow;
 import aurocosh.divinefavor.common.config.entries.items.*;
 import net.minecraftforge.common.config.Config;
 

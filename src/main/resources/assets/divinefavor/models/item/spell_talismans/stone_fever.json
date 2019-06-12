@@ -1,6 +1,6 @@
 {
     "parent": "item/generated",
     "textures": {
-        "layer0": "divinefavor:items/talismans/stone_fever"
+        "layer0": "divinefavor:items/spell_talismans/stone_fever"
     }
 }

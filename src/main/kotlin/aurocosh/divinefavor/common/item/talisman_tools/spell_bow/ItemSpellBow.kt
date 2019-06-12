@@ -3,13 +3,12 @@ package aurocosh.divinefavor.common.item.talisman_tools.spell_bow
 import aurocosh.divinefavor.DivineFavor
 import aurocosh.divinefavor.common.constants.ConstGuiIDs
 import aurocosh.divinefavor.common.constants.ConstMainTabOrder
-import aurocosh.divinefavor.common.item.base.ModItem
 import aurocosh.divinefavor.common.item.common.ModItems
 import aurocosh.divinefavor.common.item.talisman_tools.ItemTalismanContainer
 import aurocosh.divinefavor.common.item.talisman_tools.spell_bow.capability.SpellBowDataHandler.CAPABILITY_SPELL_BOW
 import aurocosh.divinefavor.common.item.talisman_tools.spell_bow.capability.SpellBowProvider
 import aurocosh.divinefavor.common.item.talisman_tools.spell_bow.capability.SpellBowStorage
-import aurocosh.divinefavor.common.item.talismans.arrow.base.ItemArrowTalisman
+import aurocosh.divinefavor.common.item.arrow_talismans.base.ItemArrowTalisman
 import aurocosh.divinefavor.common.lib.extensions.cap
 import aurocosh.divinefavor.common.lib.extensions.compound
 import aurocosh.divinefavor.common.util.UtilBow

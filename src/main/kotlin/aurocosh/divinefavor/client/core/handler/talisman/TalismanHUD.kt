@@ -1,6 +1,6 @@
 package aurocosh.divinefavor.client.core.handler.talisman
 
-import aurocosh.divinefavor.common.item.talismans.base.ItemTalisman
+import aurocosh.divinefavor.common.item.base.ItemTalisman
 import aurocosh.divinefavor.common.lib.extensions.divinePlayerData
 import net.minecraft.client.Minecraft
 import net.minecraft.client.gui.Gui

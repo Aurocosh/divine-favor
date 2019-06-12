@@ -1,6 +1,6 @@
 {
     "parent": "item/generated",
     "textures": {
-        "layer0": "divinefavor:items/talismans/surface_shift"
+        "layer0": "divinefavor:items/spell_talismans/surface_shift"
     }
 }

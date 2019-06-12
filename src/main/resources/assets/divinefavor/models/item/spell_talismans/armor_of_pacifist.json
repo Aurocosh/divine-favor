@@ -1,6 +1,6 @@
 {
     "parent": "item/generated",
     "textures": {
-        "layer0": "divinefavor:items/talismans/armor_of_pacifist"
+        "layer0": "divinefavor:items/spell_talismans/armor_of_pacifist"
     }
 }

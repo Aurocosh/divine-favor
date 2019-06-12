@@ -15,10 +15,10 @@ import aurocosh.divinefavor.common.item.common.ModSoulShards
 import aurocosh.divinefavor.common.item.talisman_tools.grimoire.capability.GrimoireDataHandler
 import aurocosh.divinefavor.common.item.talisman_tools.spell_blade.capability.SpellBladeDataHandler
 import aurocosh.divinefavor.common.item.talisman_tools.spell_bow.capability.SpellBowDataHandler
-import aurocosh.divinefavor.common.item.talismans.common.ModArrowTalismans
-import aurocosh.divinefavor.common.item.talismans.common.ModSpellTalismans
+import aurocosh.divinefavor.common.item.common.ModArrowTalismans
+import aurocosh.divinefavor.common.item.common.ModSpellTalismans
 import aurocosh.divinefavor.common.item.common.ModWishingStones
-import aurocosh.divinefavor.common.item.talismans.common.ModBladeTalismans
+import aurocosh.divinefavor.common.item.common.ModBladeTalismans
 import aurocosh.divinefavor.common.muliblock.common.ModMultiBlocks
 import aurocosh.divinefavor.common.network.GuiHandler
 import aurocosh.divinefavor.common.network.NetworkHandler

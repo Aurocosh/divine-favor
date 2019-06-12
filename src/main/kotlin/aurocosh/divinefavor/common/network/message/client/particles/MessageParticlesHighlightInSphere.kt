@@ -1,6 +1,6 @@
 package aurocosh.divinefavor.common.network.message.client.particles
 
-import aurocosh.divinefavor.common.item.talismans.spell.sense.SenseBlockPredicate
+import aurocosh.divinefavor.common.item.spell_talismans.sense.SenseBlockPredicate
 import aurocosh.divinefavor.common.util.UtilCoordinates
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.util.math.BlockPos

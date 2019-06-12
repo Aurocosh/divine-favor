@@ -1,6 +1,6 @@
 {
     "parent": "item/generated",
     "textures": {
-        "layer0": "divinefavor:items/talismans/wind_step"
+        "layer0": "divinefavor:items/spell_talismans/wind_step"
     }
 }

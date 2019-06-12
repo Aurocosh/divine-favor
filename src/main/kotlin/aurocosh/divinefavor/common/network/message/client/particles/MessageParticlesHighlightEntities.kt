@@ -1,8 +1,8 @@
 package aurocosh.divinefavor.common.network.message.client.particles
 
 import aurocosh.divinefavor.DivineFavor
-import aurocosh.divinefavor.common.item.talismans.spell.sense.BlockHighlighter
-import aurocosh.divinefavor.common.item.talismans.spell.sense.SenseEntitiesPredicate
+import aurocosh.divinefavor.common.item.spell_talismans.sense.BlockHighlighter
+import aurocosh.divinefavor.common.item.spell_talismans.sense.SenseEntitiesPredicate
 import aurocosh.divinefavor.common.lib.extensions.S
 import aurocosh.divinefavor.common.network.message.base.DivineClientMessage
 import aurocosh.divinefavor.common.util.UtilCoordinates

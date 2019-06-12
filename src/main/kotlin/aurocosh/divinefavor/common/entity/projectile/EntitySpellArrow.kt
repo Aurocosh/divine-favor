@@ -1,7 +1,7 @@
 package aurocosh.divinefavor.common.entity.projectile
 
-import aurocosh.divinefavor.common.item.talismans.arrow.base.ArrowType
-import aurocosh.divinefavor.common.item.talismans.arrow.base.ItemArrowTalisman
+import aurocosh.divinefavor.common.item.arrow_talismans.base.ArrowType
+import aurocosh.divinefavor.common.item.arrow_talismans.base.ItemArrowTalisman
 import aurocosh.divinefavor.common.util.UtilSerialize
 import com.google.common.base.Optional
 import net.minecraft.entity.Entity

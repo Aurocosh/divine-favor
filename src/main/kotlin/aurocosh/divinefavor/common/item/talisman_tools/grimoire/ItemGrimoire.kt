@@ -9,8 +9,8 @@ import aurocosh.divinefavor.common.item.talisman_tools.TalismanContainerMode
 import aurocosh.divinefavor.common.item.talisman_tools.grimoire.capability.GrimoireDataHandler.CAPABILITY_GRIMOIRE
 import aurocosh.divinefavor.common.item.talisman_tools.grimoire.capability.GrimoireProvider
 import aurocosh.divinefavor.common.item.talisman_tools.grimoire.capability.GrimoireStorage
-import aurocosh.divinefavor.common.item.talismans.spell.base.ItemSpellTalisman
-import aurocosh.divinefavor.common.item.talismans.spell.base.TalismanContext
+import aurocosh.divinefavor.common.item.spell_talismans.base.ItemSpellTalisman
+import aurocosh.divinefavor.common.item.spell_talismans.base.TalismanContext
 import aurocosh.divinefavor.common.lib.extensions.cap
 import aurocosh.divinefavor.common.util.UtilItem
 import net.minecraft.entity.player.EntityPlayer

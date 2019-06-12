@@ -1,6 +1,6 @@
 {
     "parent": "item/generated",
     "textures": {
-        "layer0": "divinefavor:items/talismans/infernal_touch"
+        "layer0": "divinefavor:items/spell_talismans/infernal_touch"
     }
 }

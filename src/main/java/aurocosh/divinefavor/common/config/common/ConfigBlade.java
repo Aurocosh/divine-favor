@@ -1,7 +1,7 @@
 package aurocosh.divinefavor.common.config.common;
 
 import aurocosh.divinefavor.DivineFavor;
-import aurocosh.divinefavor.common.config.entries.talismans.blade.*;
+import aurocosh.divinefavor.common.config.entries.blade_talismans.*;
 import net.minecraftforge.common.config.Config;
 
 @Config(modid = DivineFavor.MOD_ID, name = DivineFavor.MOD_ID + "/blade_talismans")

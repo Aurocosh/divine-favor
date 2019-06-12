@@ -1,6 +1,6 @@
 {
     "parent": "item/generated",
     "textures": {
-        "layer0": "divinefavor:items/talismans/small_fireball_throw"
+        "layer0": "divinefavor:items/spell_talismans/small_fireball_throw"
     }
 }

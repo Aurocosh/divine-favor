@@ -1,8 +1,8 @@
 package aurocosh.divinefavor.common.integrations.patchouli.processors
 
 import aurocosh.divinefavor.DivineFavor
-import aurocosh.divinefavor.common.item.talismans.arrow.base.ArrowOptions
-import aurocosh.divinefavor.common.item.talismans.arrow.base.ItemArrowTalisman
+import aurocosh.divinefavor.common.item.arrow_talismans.base.ArrowOptions
+import aurocosh.divinefavor.common.item.arrow_talismans.base.ItemArrowTalisman
 import net.minecraft.item.Item
 import net.minecraft.item.ItemStack
 import net.minecraft.util.ResourceLocation

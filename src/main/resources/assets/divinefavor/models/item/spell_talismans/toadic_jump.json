@@ -1,6 +1,6 @@
 {
     "parent": "item/generated",
     "textures": {
-        "layer0": "divinefavor:items/talismans/toadic_jump"
+        "layer0": "divinefavor:items/spell_talismans/toadic_jump"
     }
 }

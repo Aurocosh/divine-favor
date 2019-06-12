@@ -1,7 +1,7 @@
 {
     "parent": "item/generated",
     "textures": {		
-        "layer1": "divinefavor:items/talismans/ping",
-        "layer0": "divinefavor:items/talismans/base"
+        "layer1": "divinefavor:items/spell_talismans/ping",
+        "layer0": "divinefavor:items/spell_talismans/base"
     }
 }

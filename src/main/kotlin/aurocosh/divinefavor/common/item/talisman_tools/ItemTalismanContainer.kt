@@ -1,12 +1,10 @@
 package aurocosh.divinefavor.common.item.talisman_tools
 
 import aurocosh.divinefavor.common.item.base.ModItem
-import aurocosh.divinefavor.common.item.talismans.base.ItemTalisman
-import aurocosh.divinefavor.common.lib.extensions.cap
+import aurocosh.divinefavor.common.item.base.ItemTalisman
 import aurocosh.divinefavor.common.lib.extensions.compound
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.item.ItemStack
-import net.minecraftforge.common.capabilities.Capability
 
 data class TalismanStackWrapper<T : ItemTalisman>(val stack: ItemStack, val talisman: T)
 

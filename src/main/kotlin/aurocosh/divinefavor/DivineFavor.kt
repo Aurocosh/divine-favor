@@ -4,9 +4,9 @@ import aurocosh.divinefavor.common.core.creative_tabs.*
 import aurocosh.divinefavor.common.core.proxy.CommonProxy
 import aurocosh.divinefavor.common.item.common.ModCallingStones
 import aurocosh.divinefavor.common.item.common.ModItems
-import aurocosh.divinefavor.common.item.talismans.common.ModArrowTalismans
-import aurocosh.divinefavor.common.item.talismans.common.ModBladeTalismans
-import aurocosh.divinefavor.common.item.talismans.common.ModSpellTalismans
+import aurocosh.divinefavor.common.item.common.ModArrowTalismans
+import aurocosh.divinefavor.common.item.common.ModBladeTalismans
+import aurocosh.divinefavor.common.item.common.ModSpellTalismans
 import net.minecraftforge.fml.common.Loader
 import net.minecraftforge.fml.common.Mod
 import net.minecraftforge.fml.common.ModContainer

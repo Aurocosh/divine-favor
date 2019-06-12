@@ -1,7 +1,7 @@
 package aurocosh.divinefavor.client.core.handler.talisman
 
 import aurocosh.divinefavor.DivineFavor
-import aurocosh.divinefavor.common.item.talismans.base.ItemTalisman
+import aurocosh.divinefavor.common.item.base.ItemTalisman
 import net.minecraft.client.Minecraft
 import net.minecraft.util.EnumHand
 import net.minecraftforge.client.event.RenderGameOverlayEvent

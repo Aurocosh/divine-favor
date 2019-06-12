@@ -2,7 +2,7 @@ package aurocosh.divinefavor.client.render.projectile
 
 import aurocosh.divinefavor.common.constants.ConstResources
 import aurocosh.divinefavor.common.entity.projectile.EntitySpellArrow
-import aurocosh.divinefavor.common.item.talismans.arrow.base.ArrowType
+import aurocosh.divinefavor.common.item.arrow_talismans.base.ArrowType
 import net.minecraft.client.renderer.GlStateManager
 import net.minecraft.client.renderer.Tessellator
 import net.minecraft.client.renderer.entity.RenderArrow

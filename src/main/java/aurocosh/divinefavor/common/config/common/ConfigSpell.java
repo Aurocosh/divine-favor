@@ -1,9 +1,8 @@
 package aurocosh.divinefavor.common.config.common;
 
 import aurocosh.divinefavor.DivineFavor;
-import aurocosh.divinefavor.common.config.entries.talismans.blade.ButcheringStrike;
-import aurocosh.divinefavor.common.config.entries.talismans.spell.*;
-import aurocosh.divinefavor.common.config.entries.talismans.spell.generic.*;
+import aurocosh.divinefavor.common.config.entries.spell_talismans.*;
+import aurocosh.divinefavor.common.config.entries.spell_talismans.generic.*;
 import aurocosh.divinefavor.common.util.UtilTick;
 import net.minecraftforge.common.config.Config;
 

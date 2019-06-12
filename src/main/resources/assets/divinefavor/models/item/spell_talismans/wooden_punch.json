@@ -1,6 +1,6 @@
 {
     "parent": "item/generated",
     "textures": {
-        "layer0": "divinefavor:items/talismans/wooden_punch"
+        "layer0": "divinefavor:items/spell_talismans/wooden_punch"
     }
 }

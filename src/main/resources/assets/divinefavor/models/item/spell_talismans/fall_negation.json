@@ -1,6 +1,6 @@
 {
     "parent": "item/generated",
     "textures": {
-        "layer0": "divinefavor:items/talismans/fall_negation"
+        "layer0": "divinefavor:items/spell_talismans/fall_negation"
     }
 }

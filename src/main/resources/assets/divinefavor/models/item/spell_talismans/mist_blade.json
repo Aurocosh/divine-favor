@@ -1,6 +1,6 @@
 {
     "parent": "item/generated",
     "textures": {
-        "layer0": "divinefavor:items/talismans/mist_blade"
+        "layer0": "divinefavor:items/spell_talismans/mist_blade"
     }
 }

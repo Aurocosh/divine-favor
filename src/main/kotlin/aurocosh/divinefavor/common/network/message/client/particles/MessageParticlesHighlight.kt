@@ -2,8 +2,8 @@ package aurocosh.divinefavor.common.network.message.client.particles
 
 import aurocosh.divinefavor.DivineFavor
 import aurocosh.divinefavor.common.config.common.ConfigGeneral
-import aurocosh.divinefavor.common.item.talismans.spell.sense.BlockHighlighter
-import aurocosh.divinefavor.common.item.talismans.spell.sense.SenseBlockPredicate
+import aurocosh.divinefavor.common.item.spell_talismans.sense.BlockHighlighter
+import aurocosh.divinefavor.common.item.spell_talismans.sense.SenseBlockPredicate
 import aurocosh.divinefavor.common.lib.extensions.getBlock
 import aurocosh.divinefavor.common.lib.extensions.isLava
 import aurocosh.divinefavor.common.lib.extensions.isLiquid

@@ -1,6 +1,6 @@
 {
     "parent": "item/generated",
     "textures": {
-        "layer0": "divinefavor:items/talismans/blood_of_grass"
+        "layer0": "divinefavor:items/spell_talismans/blood_of_grass"
     }
 }

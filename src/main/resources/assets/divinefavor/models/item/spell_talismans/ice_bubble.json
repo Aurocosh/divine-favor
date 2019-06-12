@@ -1,7 +1,7 @@
 {
     "parent": "item/generated",
     "textures": {		
-        "layer1": "divinefavor:items/talismans/ice_bubble",
-        "layer0": "divinefavor:items/talismans/base"
+        "layer1": "divinefavor:items/spell_talismans/ice_bubble",
+        "layer0": "divinefavor:items/spell_talismans/base"
     }
 }

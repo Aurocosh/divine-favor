@@ -1,6 +1,6 @@
 {
     "parent": "item/generated",
     "textures": {
-        "layer0": "divinefavor:items/talismans/escape_plan"
+        "layer0": "divinefavor:items/spell_talismans/escape_plan"
     }
 }
