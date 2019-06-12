@@ -1,15 +1,15 @@
 {
   "name": "Winter breath",
-  "icon": "divinefavor:talisman_winter_breath",
+  "icon": "divinefavor:spell_talisman_winter_breath",
   "category": "spell_talismans",
   "pages": [
     {
       "type": "item_description",
-      "talisman": "divinefavor:talisman_winter_breath"
+      "talisman": "divinefavor:spell_talisman_winter_breath"
     },
     {
       "type": "spell_talisman_stats",
-      "talisman": "divinefavor:talisman_winter_breath"
+      "talisman": "divinefavor:spell_talisman_winter_breath"
     }
   ]
 }

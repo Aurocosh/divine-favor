@@ -1,15 +1,15 @@
 {
   "name": "Night eye",
-  "icon": "divinefavor:talisman_night_eye",
+  "icon": "divinefavor:spell_talisman_night_eye",
   "category": "spell_talismans",
   "pages": [
     {
       "type": "item_description",
-      "talisman": "divinefavor:talisman_night_eye"
+      "talisman": "divinefavor:spell_talisman_night_eye"
     },
     {
       "type": "spell_talisman_stats",
-      "talisman": "divinefavor:talisman_night_eye"
+      "talisman": "divinefavor:spell_talisman_night_eye"
     }
   ]
 }

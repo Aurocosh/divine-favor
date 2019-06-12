@@ -12,6 +12,10 @@ object ResourceNamer {
         return ResourceLocation(DivineFavor.MOD_ID, "$prefix.$name")
     }
 
+    fun getItemName(type: String, name: String): ResourceLocation {
+        return ResourceLocation(DivineFavor.MOD_ID, "${type}_$name")
+    }
+
     fun debugSection(name: String): () -> String {
         return { DivineFavor.MOD_ID + ":debug.$name" }
     }

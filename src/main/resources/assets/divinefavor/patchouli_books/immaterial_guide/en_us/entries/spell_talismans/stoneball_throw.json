@@ -1,15 +1,15 @@
 {
   "name": "Throw stone",
-  "icon": "divinefavor:talisman_stoneball_throw",
+  "icon": "divinefavor:spell_talisman_stoneball_throw",
   "category": "spell_talismans",
   "pages": [
     {
       "type": "item_description",
-      "talisman": "divinefavor:talisman_stoneball_throw"
+      "talisman": "divinefavor:spell_talisman_stoneball_throw"
     },
     {
       "type": "spell_talisman_stats",
-      "talisman": "divinefavor:talisman_stoneball_throw"
+      "talisman": "divinefavor:spell_talisman_stoneball_throw"
     }
   ]
 }

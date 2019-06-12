@@ -1,15 +1,15 @@
 {
   "name": "Underground flow",
-  "icon": "divinefavor:talisman_ground_flow",
+  "icon": "divinefavor:spell_talisman_ground_flow",
   "category": "spell_talismans",
   "pages": [
     {
       "type": "item_description",
-      "talisman": "divinefavor:talisman_ground_flow"
+      "talisman": "divinefavor:spell_talisman_ground_flow"
     },
     {
       "type": "spell_talisman_stats",
-      "talisman": "divinefavor:talisman_ground_flow"
+      "talisman": "divinefavor:spell_talisman_ground_flow"
     }
   ]
 }

@@ -1,15 +1,15 @@
 {
   "name": "Summon zombie",
-  "icon": "divinefavor:talisman_summon_zombie",
+  "icon": "divinefavor:spell_talisman_summon_zombie",
   "category": "spell_talismans",
   "pages": [
     {
       "type": "item_description",
-      "talisman": "divinefavor:talisman_summon_zombie"
+      "talisman": "divinefavor:spell_talisman_summon_zombie"
     },
     {
       "type": "spell_talisman_stats",
-      "talisman": "divinefavor:talisman_summon_zombie"
+      "talisman": "divinefavor:spell_talisman_summon_zombie"
     },
     {
       "type": "entity",

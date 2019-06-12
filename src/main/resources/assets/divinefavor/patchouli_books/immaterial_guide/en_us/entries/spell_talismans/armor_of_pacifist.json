@@ -1,15 +1,15 @@
 {
   "name": "Armor of pacifist",
-  "icon": "divinefavor:talisman_armor_of_pacifist",
+  "icon": "divinefavor:spell_talisman_armor_of_pacifist",
   "category": "spell_talismans",
   "pages": [
     {
       "type": "item_description",
-      "talisman": "divinefavor:talisman_armor_of_pacifist"
+      "talisman": "divinefavor:spell_talisman_armor_of_pacifist"
     },
     {
       "type": "spell_talisman_stats",
-      "talisman": "divinefavor:talisman_armor_of_pacifist"
+      "talisman": "divinefavor:spell_talisman_armor_of_pacifist"
     }
   ]
 }

@@ -1,15 +1,15 @@
 {
   "name": "Distant spark",
-  "icon": "divinefavor:talisman_distant_spark",
+  "icon": "divinefavor:spell_talisman_distant_spark",
   "category": "spell_talismans",
   "pages": [
     {
       "type": "item_description",
-      "talisman": "divinefavor:talisman_distant_spark"
+      "talisman": "divinefavor:spell_talisman_distant_spark"
     },
     {
       "type": "spell_talisman_stats",
-      "talisman": "divinefavor:talisman_distant_spark"
+      "talisman": "divinefavor:spell_talisman_distant_spark"
     }
   ]
 }

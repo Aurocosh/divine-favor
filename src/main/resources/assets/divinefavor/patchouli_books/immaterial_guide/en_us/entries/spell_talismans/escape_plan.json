@@ -1,15 +1,15 @@
 {
   "name": "Escape plan",
-  "icon": "divinefavor:talisman_escape_plan",
+  "icon": "divinefavor:spell_talisman_escape_plan",
   "category": "spell_talismans",
   "pages": [
     {
       "type": "item_description",
-      "talisman": "divinefavor:talisman_escape_plan"
+      "talisman": "divinefavor:spell_talisman_escape_plan"
     },
     {
       "type": "spell_talisman_stats",
-      "talisman": "divinefavor:talisman_escape_plan"
+      "talisman": "divinefavor:spell_talisman_escape_plan"
     }
   ]
 }

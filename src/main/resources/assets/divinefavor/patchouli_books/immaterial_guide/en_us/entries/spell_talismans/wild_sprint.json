@@ -1,15 +1,15 @@
 {
   "name": "Wild sprint",
-  "icon": "divinefavor:talisman_wild_sprint",
+  "icon": "divinefavor:spell_talisman_wild_sprint",
   "category": "spell_talismans",
   "pages": [
     {
       "type": "item_description",
-      "talisman": "divinefavor:talisman_wild_sprint"
+      "talisman": "divinefavor:spell_talisman_wild_sprint"
     },
     {
       "type": "spell_talisman_stats",
-      "talisman": "divinefavor:talisman_wild_sprint"
+      "talisman": "divinefavor:spell_talisman_wild_sprint"
     }
   ]
 }

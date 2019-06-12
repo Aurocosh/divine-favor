@@ -1,15 +1,15 @@
 {
   "name": "Piercing inferno",
-  "icon": "divinefavor:talisman_piercing_inferno",
+  "icon": "divinefavor:spell_talisman_piercing_inferno",
   "category": "spell_talismans",
   "pages": [
     {
       "type": "item_description",
-      "talisman": "divinefavor:talisman_piercing_inferno"
+      "talisman": "divinefavor:spell_talisman_piercing_inferno"
     },
     {
       "type": "spell_talisman_stats",
-      "talisman": "divinefavor:talisman_piercing_inferno"
+      "talisman": "divinefavor:spell_talisman_piercing_inferno"
     }
   ]
 }

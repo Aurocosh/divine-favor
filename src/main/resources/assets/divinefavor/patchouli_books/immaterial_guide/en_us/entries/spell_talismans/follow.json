@@ -1,15 +1,15 @@
 {
   "name": "Follow",
-  "icon": "divinefavor:talisman_follow",
+  "icon": "divinefavor:spell_talisman_follow",
   "category": "spell_talismans",
   "pages": [
     {
       "type": "item_description",
-      "talisman": "divinefavor:talisman_follow"
+      "talisman": "divinefavor:spell_talisman_follow"
     },
     {
       "type": "spell_talisman_stats",
-      "talisman": "divinefavor:talisman_follow"
+      "talisman": "divinefavor:spell_talisman_follow"
     }
   ]
 }

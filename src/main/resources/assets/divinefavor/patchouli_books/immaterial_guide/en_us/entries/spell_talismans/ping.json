@@ -1,15 +1,15 @@
 {
   "name": "Ping",
-  "icon": "divinefavor:talisman_ping",
+  "icon": "divinefavor:spell_talisman_ping",
   "category": "spell_talismans",
   "pages": [
     {
       "type": "item_description",
-      "talisman": "divinefavor:talisman_ping"
+      "talisman": "divinefavor:spell_talisman_ping"
     },
     {
       "type": "spell_talisman_stats",
-      "talisman": "divinefavor:talisman_ping"
+      "talisman": "divinefavor:spell_talisman_ping"
     },
     {
       "type": "entity",

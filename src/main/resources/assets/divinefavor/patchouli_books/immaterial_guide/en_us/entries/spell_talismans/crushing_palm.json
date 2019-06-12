@@ -1,15 +1,15 @@
 {
   "name": "Crushing palm",
-  "icon": "divinefavor:talisman_crushing_palm",
+  "icon": "divinefavor:spell_talisman_crushing_palm",
   "category": "spell_talismans",
   "pages": [
     {
       "type": "item_description",
-      "talisman": "divinefavor:talisman_crushing_palm"
+      "talisman": "divinefavor:spell_talisman_crushing_palm"
     },
     {
       "type": "spell_talisman_stats",
-      "talisman": "divinefavor:talisman_crushing_palm"
+      "talisman": "divinefavor:spell_talisman_crushing_palm"
     }
   ]
 }

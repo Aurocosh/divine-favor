@@ -1,6 +1,6 @@
 {
   "name": "Spell talismans",
   "description": "Talisman - scrap of paper with a divine promise.",
-  "icon": "divinefavor:talisman_wild_sprint",
+  "icon": "divinefavor:spell_talisman_wild_sprint",
   "sortnum": 4
 }

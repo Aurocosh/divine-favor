@@ -1,15 +1,15 @@
 {
   "name": "Earthen dive",
-  "icon": "divinefavor:talisman_earthen_dive",
+  "icon": "divinefavor:spell_talisman_earthen_dive",
   "category": "spell_talismans",
   "pages": [
     {
       "type": "item_description",
-      "talisman": "divinefavor:talisman_earthen_dive"
+      "talisman": "divinefavor:spell_talisman_earthen_dive"
     },
     {
       "type": "spell_talisman_stats",
-      "talisman": "divinefavor:talisman_earthen_dive"
+      "talisman": "divinefavor:spell_talisman_earthen_dive"
     }
   ]
 }

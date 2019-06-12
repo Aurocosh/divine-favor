@@ -1,15 +1,15 @@
 {
   "name": "Sense ore precise",
-  "icon": "divinefavor:talisman_sense_ore_precise",
+  "icon": "divinefavor:spell_talisman_sense_ore_precise",
   "category": "spell_talismans",
   "pages": [
     {
       "type": "item_description",
-      "talisman": "divinefavor:talisman_sense_ore_precise"
+      "talisman": "divinefavor:spell_talisman_sense_ore_precise"
     },
     {
       "type": "spell_talisman_stats",
-      "talisman": "divinefavor:talisman_sense_ore_precise"
+      "talisman": "divinefavor:spell_talisman_sense_ore_precise"
     }
   ]
 }

@@ -1,15 +1,15 @@
 {
   "name": "Searing pulse",
-  "icon": "divinefavor:talisman_searing_pulse",
+  "icon": "divinefavor:spell_talisman_searing_pulse",
   "category": "spell_talismans",
   "pages": [
     {
       "type": "item_description",
-      "talisman": "divinefavor:talisman_searing_pulse"
+      "talisman": "divinefavor:spell_talisman_searing_pulse"
     },
     {
       "type": "spell_talisman_stats",
-      "talisman": "divinefavor:talisman_searing_pulse"
+      "talisman": "divinefavor:spell_talisman_searing_pulse"
     }
   ]
 }

@@ -1,15 +1,15 @@
 {
   "name": "Invite gem",
-  "icon": "divinefavor:talisman_invite_gem",
+  "icon": "divinefavor:spell_talisman_invite_gem",
   "category": "spell_talismans",
   "pages": [
     {
       "type": "item_description",
-      "talisman": "divinefavor:talisman_invite_gem"
+      "talisman": "divinefavor:spell_talisman_invite_gem"
     },
     {
       "type": "spell_talisman_stats",
-      "talisman": "divinefavor:talisman_invite_gem"
+      "talisman": "divinefavor:spell_talisman_invite_gem"
     }
   ]
 }

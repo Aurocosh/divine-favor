@@ -1,15 +1,15 @@
 {
   "name": "Prismatic eyes",
-  "icon": "divinefavor:talisman_prismatic_eyes",
+  "icon": "divinefavor:spell_talisman_prismatic_eyes",
   "category": "spell_talismans",
   "pages": [
     {
       "type": "item_description",
-      "talisman": "divinefavor:talisman_prismatic_eyes"
+      "talisman": "divinefavor:spell_talisman_prismatic_eyes"
     },
     {
       "type": "spell_talisman_stats",
-      "talisman": "divinefavor:talisman_prismatic_eyes"
+      "talisman": "divinefavor:spell_talisman_prismatic_eyes"
     }
   ]
 }

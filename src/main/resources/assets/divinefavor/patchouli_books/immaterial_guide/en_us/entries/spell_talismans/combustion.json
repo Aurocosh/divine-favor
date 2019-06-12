@@ -1,15 +1,15 @@
 {
   "name": "Combustion",
-  "icon": "divinefavor:talisman_combustion",
+  "icon": "divinefavor:spell_talisman_combustion",
   "category": "spell_talismans",
   "pages": [
     {
       "type": "item_description",
-      "talisman": "divinefavor:talisman_combustion"
+      "talisman": "divinefavor:spell_talisman_combustion"
     },
     {
       "type": "spell_talisman_stats",
-      "talisman": "divinefavor:talisman_combustion"
+      "talisman": "divinefavor:spell_talisman_combustion"
     }
   ]
 }

@@ -1,15 +1,15 @@
 {
   "name": "Stone_fever",
-  "icon": "divinefavor:talisman_stone_fever",
+  "icon": "divinefavor:spell_talisman_stone_fever",
   "category": "spell_talismans",
   "pages": [
     {
       "type": "item_description",
-      "talisman": "divinefavor:talisman_stone_fever"
+      "talisman": "divinefavor:spell_talisman_stone_fever"
     },
     {
       "type": "spell_talisman_stats",
-      "talisman": "divinefavor:talisman_stone_fever"
+      "talisman": "divinefavor:spell_talisman_stone_fever"
     }
   ]
 }

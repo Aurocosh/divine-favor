@@ -1,15 +1,15 @@
 {
   "name": "Fall_negation",
-  "icon": "divinefavor:talisman_fall_negation",
+  "icon": "divinefavor:spell_talisman_fall_negation",
   "category": "spell_talismans",
   "pages": [
     {
       "type": "item_description",
-      "talisman": "divinefavor:talisman_fall_negation"
+      "talisman": "divinefavor:spell_talisman_fall_negation"
     },
     {
       "type": "spell_talisman_stats",
-      "talisman": "divinefavor:talisman_fall_negation"
+      "talisman": "divinefavor:spell_talisman_fall_negation"
     }
   ]
 }

@@ -1,15 +1,15 @@
 {
   "name": "Ignition",
-  "icon": "divinefavor:talisman_ignition",
+  "icon": "divinefavor:spell_talisman_ignition",
   "category": "spell_talismans",
   "pages": [
     {
       "type": "item_description",
-      "talisman": "divinefavor:talisman_ignition"
+      "talisman": "divinefavor:spell_talisman_ignition"
     },
     {
       "type": "spell_talisman_stats",
-      "talisman": "divinefavor:talisman_ignition"
+      "talisman": "divinefavor:spell_talisman_ignition"
     }
   ]
 }

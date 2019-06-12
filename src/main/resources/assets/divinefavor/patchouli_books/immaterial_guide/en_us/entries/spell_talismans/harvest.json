@@ -1,15 +1,15 @@
 {
   "name": "Harvest",
-  "icon": "divinefavor:talisman_harvest",
+  "icon": "divinefavor:spell_talisman_harvest",
   "category": "spell_talismans",
   "pages": [
     {
       "type": "item_description",
-      "talisman": "divinefavor:talisman_harvest"
+      "talisman": "divinefavor:spell_talisman_harvest"
     },
     {
       "type": "spell_talisman_stats",
-      "talisman": "divinefavor:talisman_harvest"
+      "talisman": "divinefavor:spell_talisman_harvest"
     }
   ]
 }

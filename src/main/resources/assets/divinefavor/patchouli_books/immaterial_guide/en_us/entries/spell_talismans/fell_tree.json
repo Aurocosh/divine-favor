@@ -1,15 +1,15 @@
 {
   "name": "Fell tree",
-  "icon": "divinefavor:talisman_fell_tree",
+  "icon": "divinefavor:spell_talisman_fell_tree",
   "category": "spell_talismans",
   "pages": [
     {
       "type": "item_description",
-      "talisman": "divinefavor:talisman_fell_tree"
+      "talisman": "divinefavor:spell_talisman_fell_tree"
     },
     {
       "type": "spell_talisman_stats",
-      "talisman": "divinefavor:talisman_fell_tree"
+      "talisman": "divinefavor:spell_talisman_fell_tree"
     }
   ]
 }

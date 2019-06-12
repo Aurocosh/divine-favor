@@ -1,15 +1,15 @@
 {
   "name": "Focused_fury",
-  "icon": "divinefavor:talisman_focused_fury",
+  "icon": "divinefavor:spell_talisman_focused_fury",
   "category": "spell_talismans",
   "pages": [
     {
       "type": "item_description",
-      "talisman": "divinefavor:talisman_focused_fury"
+      "talisman": "divinefavor:spell_talisman_focused_fury"
     },
     {
       "type": "spell_talisman_stats",
-      "talisman": "divinefavor:talisman_focused_fury"
+      "talisman": "divinefavor:spell_talisman_focused_fury"
     }
   ]
 }

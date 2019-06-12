@@ -10,12 +10,12 @@
     },
     {
       "type": "spotlight",
-      "item": "divinefavor:talisman_target",
+      "item": "divinefavor:spell_talisman_target",
       "text": "This item, $(item)Target talisman$() can be used to command your minions to attack specific target. To do so just look at enemy and use this talisman. Range of this talisman is limited."
     },
     {
       "type": "spotlight",
-      "item": "divinefavor:talisman_follow",
+      "item": "divinefavor:spell_talisman_follow",
       "text": "This item, $(item)Follow talisman$() can be used to command your minions to follow you and ignore enemies. To do so just use this talisman. Range of this talisman is limited. To make our minions attack again use target talisman."
     },
     {

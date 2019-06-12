@@ -1,15 +1,15 @@
 {
   "name": "Remote chest",
-  "icon": "divinefavor:talisman_remote_chest",
+  "icon": "divinefavor:spell_talisman_remote_chest",
   "category": "spell_talismans",
   "pages": [
     {
       "type": "item_description",
-      "talisman": "divinefavor:talisman_remote_chest"
+      "talisman": "divinefavor:spell_talisman_remote_chest"
     },
     {
       "type": "spell_talisman_stats",
-      "talisman": "divinefavor:talisman_remote_chest"
+      "talisman": "divinefavor:spell_talisman_remote_chest"
     }
   ]
 }

@@ -1,15 +1,15 @@
 {
   "name": "Infernal touch",
-  "icon": "divinefavor:talisman_infernal_touch",
+  "icon": "divinefavor:spell_talisman_infernal_touch",
   "category": "spell_talismans",
   "pages": [
     {
       "type": "item_description",
-      "talisman": "divinefavor:talisman_infernal_touch"
+      "talisman": "divinefavor:spell_talisman_infernal_touch"
     },
     {
       "type": "spell_talisman_stats",
-      "talisman": "divinefavor:talisman_infernal_touch"
+      "talisman": "divinefavor:spell_talisman_infernal_touch"
     }
   ]
 }

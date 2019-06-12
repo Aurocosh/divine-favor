@@ -1,15 +1,15 @@
 {
   "name": "Crystalline road",
-  "icon": "divinefavor:talisman_crystalline_road",
+  "icon": "divinefavor:spell_talisman_crystalline_road",
   "category": "spell_talismans",
   "pages": [
     {
       "type": "item_description",
-      "talisman": "divinefavor:talisman_crystalline_road"
+      "talisman": "divinefavor:spell_talisman_crystalline_road"
     },
     {
       "type": "spell_talisman_stats",
-      "talisman": "divinefavor:talisman_crystalline_road"
+      "talisman": "divinefavor:spell_talisman_crystalline_road"
     }
   ]
 }

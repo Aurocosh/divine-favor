@@ -1,15 +1,15 @@
 {
   "name": "Blink",
-  "icon": "divinefavor:talisman_blink",
+  "icon": "divinefavor:spell_talisman_blink",
   "category": "spell_talismans",
   "pages": [
     {
       "type": "item_description",
-      "talisman": "divinefavor:talisman_blink"
+      "talisman": "divinefavor:spell_talisman_blink"
     },
     {
       "type": "spell_talisman_stats",
-      "talisman": "divinefavor:talisman_blink"
+      "talisman": "divinefavor:spell_talisman_blink"
     }
   ]
 }

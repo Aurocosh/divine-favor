@@ -1,15 +1,15 @@
 {
   "name": "Miners focus",
-  "icon": "divinefavor:talisman_miners_focus",
+  "icon": "divinefavor:spell_talisman_miners_focus",
   "category": "spell_talismans",
   "pages": [
     {
       "type": "item_description",
-      "talisman": "divinefavor:talisman_miners_focus"
+      "talisman": "divinefavor:spell_talisman_miners_focus"
     },
     {
       "type": "spell_talisman_stats",
-      "talisman": "divinefavor:talisman_miners_focus"
+      "talisman": "divinefavor:spell_talisman_miners_focus"
     }
   ]
 }

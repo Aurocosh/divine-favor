@@ -1,15 +1,15 @@
 {
   "name": "Hellisphere",
-  "icon": "divinefavor:talisman_hellisphere",
+  "icon": "divinefavor:spell_talisman_hellisphere",
   "category": "spell_talismans",
   "pages": [
     {
       "type": "item_description",
-      "talisman": "divinefavor:talisman_hellisphere"
+      "talisman": "divinefavor:spell_talisman_hellisphere"
     },
     {
       "type": "spell_talisman_stats",
-      "talisman": "divinefavor:talisman_hellisphere"
+      "talisman": "divinefavor:spell_talisman_hellisphere"
     }
   ]
 }

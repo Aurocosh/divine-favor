@@ -1,15 +1,15 @@
 {
   "name": "Consuming fury",
-  "icon": "divinefavor:talisman_consuming_fury",
+  "icon": "divinefavor:spell_talisman_consuming_fury",
   "category": "spell_talismans",
   "pages": [
     {
       "type": "item_description",
-      "talisman": "divinefavor:talisman_consuming_fury"
+      "talisman": "divinefavor:spell_talisman_consuming_fury"
     },
     {
       "type": "spell_talisman_stats",
-      "talisman": "divinefavor:talisman_consuming_fury"
+      "talisman": "divinefavor:spell_talisman_consuming_fury"
     }
   ]
 }

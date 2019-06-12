@@ -1,15 +1,15 @@
 {
   "name": "Pearl crumbs",
-  "icon": "divinefavor:talisman_pearl_crumbs",
+  "icon": "divinefavor:spell_talisman_pearl_crumbs",
   "category": "spell_talismans",
   "pages": [
     {
       "type": "item_description",
-      "talisman": "divinefavor:talisman_pearl_crumbs"
+      "talisman": "divinefavor:spell_talisman_pearl_crumbs"
     },
     {
       "type": "spell_talisman_stats",
-      "talisman": "divinefavor:talisman_pearl_crumbs"
+      "talisman": "divinefavor:spell_talisman_pearl_crumbs"
     }
   ]
 }

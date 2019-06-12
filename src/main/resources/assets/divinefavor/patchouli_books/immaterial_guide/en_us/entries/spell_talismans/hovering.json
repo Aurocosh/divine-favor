@@ -1,15 +1,15 @@
 {
   "name": "Hovering",
-  "icon": "divinefavor:talisman_hovering",
+  "icon": "divinefavor:spell_talisman_hovering",
   "category": "spell_talismans",
   "pages": [
     {
       "type": "item_description",
-      "talisman": "divinefavor:talisman_hovering"
+      "talisman": "divinefavor:spell_talisman_hovering"
     },
     {
       "type": "spell_talisman_stats",
-      "talisman": "divinefavor:talisman_hovering"
+      "talisman": "divinefavor:spell_talisman_hovering"
     }
   ]
 }

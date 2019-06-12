@@ -1,15 +1,15 @@
 {
   "name": "Overblink",
-  "icon": "divinefavor:talisman_overblink",
+  "icon": "divinefavor:spell_talisman_overblink",
   "category": "spell_talismans",
   "pages": [
     {
       "type": "item_description",
-      "talisman": "divinefavor:talisman_overblink"
+      "talisman": "divinefavor:spell_talisman_overblink"
     },
     {
       "type": "spell_talisman_stats",
-      "talisman": "divinefavor:talisman_overblink"
+      "talisman": "divinefavor:spell_talisman_overblink"
     }
   ]
 }

@@ -1,15 +1,15 @@
 {
   "name": "Heat wave",
-  "icon": "divinefavor:talisman_heat_wave",
+  "icon": "divinefavor:spell_talisman_heat_wave",
   "category": "spell_talismans",
   "pages": [
     {
       "type": "item_description",
-      "talisman": "divinefavor:talisman_heat_wave"
+      "talisman": "divinefavor:spell_talisman_heat_wave"
     },
     {
       "type": "spell_talisman_stats",
-      "talisman": "divinefavor:talisman_heat_wave"
+      "talisman": "divinefavor:spell_talisman_heat_wave"
     }
   ]
 }

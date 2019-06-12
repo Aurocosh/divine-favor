@@ -1,15 +1,15 @@
 {
   "name": "Invite pebble",
-  "icon": "divinefavor:talisman_invite_pebble",
+  "icon": "divinefavor:spell_talisman_invite_pebble",
   "category": "spell_talismans",
   "pages": [
     {
       "type": "item_description",
-      "talisman": "divinefavor:talisman_invite_pebble"
+      "talisman": "divinefavor:spell_talisman_invite_pebble"
     },
     {
       "type": "spell_talisman_stats",
-      "talisman": "divinefavor:talisman_invite_pebble"
+      "talisman": "divinefavor:spell_talisman_invite_pebble"
     }
   ]
 }

@@ -1,15 +1,15 @@
 {
   "name": "Green cycle",
-  "icon": "divinefavor:talisman_green_cycle",
+  "icon": "divinefavor:spell_talisman_green_cycle",
   "category": "spell_talismans",
   "pages": [
     {
       "type": "item_description",
-      "talisman": "divinefavor:talisman_green_cycle"
+      "talisman": "divinefavor:spell_talisman_green_cycle"
     },
     {
       "type": "spell_talisman_stats",
-      "talisman": "divinefavor:talisman_green_cycle"
+      "talisman": "divinefavor:spell_talisman_green_cycle"
     }
   ]
 }

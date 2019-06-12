@@ -1,15 +1,15 @@
 {
   "name": "Grudge",
-  "icon": "divinefavor:talisman_grudge",
+  "icon": "divinefavor:spell_talisman_grudge",
   "category": "spell_talismans",
   "pages": [
     {
       "type": "item_description",
-      "talisman": "divinefavor:talisman_grudge"
+      "talisman": "divinefavor:spell_talisman_grudge"
     },
     {
       "type": "spell_talisman_stats",
-      "talisman": "divinefavor:talisman_grudge"
+      "talisman": "divinefavor:spell_talisman_grudge"
     }
   ]
 }

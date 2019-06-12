@@ -1,15 +1,15 @@
 {
   "name": "sense liquid",
-  "icon": "divinefavor:talisman_sense_liquid",
+  "icon": "divinefavor:spell_talisman_sense_liquid",
   "category": "spell_talismans",
   "pages": [
     {
       "type": "item_description",
-      "talisman": "divinefavor:talisman_sense_liquid"
+      "talisman": "divinefavor:spell_talisman_sense_liquid"
     },
     {
       "type": "spell_talisman_stats",
-      "talisman": "divinefavor:talisman_sense_liquid"
+      "talisman": "divinefavor:spell_talisman_sense_liquid"
     }
   ]
 }

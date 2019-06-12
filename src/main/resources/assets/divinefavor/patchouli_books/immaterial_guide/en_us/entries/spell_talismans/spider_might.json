@@ -1,15 +1,15 @@
 {
   "name": "Spider might",
-  "icon": "divinefavor:talisman_spider_might",
+  "icon": "divinefavor:spell_talisman_spider_might",
   "category": "spell_talismans",
   "pages": [
     {
       "type": "item_description",
-      "talisman": "divinefavor:talisman_spider_might"
+      "talisman": "divinefavor:spell_talisman_spider_might"
     },
     {
       "type": "spell_talisman_stats",
-      "talisman": "divinefavor:talisman_spider_might"
+      "talisman": "divinefavor:spell_talisman_spider_might"
     }
   ]
 }

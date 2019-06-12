@@ -1,15 +1,15 @@
 {
   "name": "Obsidian bubble",
-  "icon": "divinefavor:talisman_obsidian_bubble",
+  "icon": "divinefavor:spell_talisman_obsidian_bubble",
   "category": "spell_talismans",
   "pages": [
     {
       "type": "item_description",
-      "talisman": "divinefavor:talisman_obsidian_bubble"
+      "talisman": "divinefavor:spell_talisman_obsidian_bubble"
     },
     {
       "type": "spell_talisman_stats",
-      "talisman": "divinefavor:talisman_obsidian_bubble"
+      "talisman": "divinefavor:spell_talisman_obsidian_bubble"
     }
   ]
 }

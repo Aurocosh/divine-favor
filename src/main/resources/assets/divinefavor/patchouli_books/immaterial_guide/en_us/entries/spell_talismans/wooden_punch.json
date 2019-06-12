@@ -1,15 +1,15 @@
 {
   "name": "Wooden punch",
-  "icon": "divinefavor:talisman_wooden_punch",
+  "icon": "divinefavor:spell_talisman_wooden_punch",
   "category": "spell_talismans",
   "pages": [
     {
       "type": "item_description",
-      "talisman": "divinefavor:talisman_wooden_punch"
+      "talisman": "divinefavor:spell_talisman_wooden_punch"
     },
     {
       "type": "spell_talisman_stats",
-      "talisman": "divinefavor:talisman_wooden_punch"
+      "talisman": "divinefavor:spell_talisman_wooden_punch"
     }
   ]
 }

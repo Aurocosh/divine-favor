@@ -1,15 +1,15 @@
 {
   "name": "Summon skeleton",
-  "icon": "divinefavor:talisman_summon_skeleton",
+  "icon": "divinefavor:spell_talisman_summon_skeleton",
   "category": "spell_talismans",
   "pages": [
     {
       "type": "item_description",
-      "talisman": "divinefavor:talisman_summon_skeleton"
+      "talisman": "divinefavor:spell_talisman_summon_skeleton"
     },
     {
       "type": "spell_talisman_stats",
-      "talisman": "divinefavor:talisman_summon_skeleton"
+      "talisman": "divinefavor:spell_talisman_summon_skeleton"
     },
     {
       "type": "entity",

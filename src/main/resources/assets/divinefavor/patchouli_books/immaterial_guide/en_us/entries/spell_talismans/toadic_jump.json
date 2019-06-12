@@ -1,15 +1,15 @@
 {
   "name": "Toadic jump",
-  "icon": "divinefavor:talisman_toadic_jump",
+  "icon": "divinefavor:spell_talisman_toadic_jump",
   "category": "spell_talismans",
   "pages": [
     {
       "type": "item_description",
-      "talisman": "divinefavor:talisman_toadic_jump"
+      "talisman": "divinefavor:spell_talisman_toadic_jump"
     },
     {
       "type": "spell_talisman_stats",
-      "talisman": "divinefavor:talisman_toadic_jump"
+      "talisman": "divinefavor:spell_talisman_toadic_jump"
     }
   ]
 }

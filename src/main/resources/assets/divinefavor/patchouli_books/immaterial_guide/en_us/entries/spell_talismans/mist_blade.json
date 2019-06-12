@@ -1,15 +1,15 @@
 {
   "name": "Mist blade",
-  "icon": "divinefavor:talisman_mist_blade",
+  "icon": "divinefavor:spell_talisman_mist_blade",
   "category": "spell_talismans",
   "pages": [
     {
       "type": "item_description",
-      "talisman": "divinefavor:talisman_mist_blade"
+      "talisman": "divinefavor:spell_talisman_mist_blade"
     },
     {
       "type": "spell_talisman_stats",
-      "talisman": "divinefavor:talisman_mist_blade"
+      "talisman": "divinefavor:spell_talisman_mist_blade"
     }
   ]
 }

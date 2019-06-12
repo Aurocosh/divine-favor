@@ -1,15 +1,15 @@
 {
   "name": "Obsidian road",
-  "icon": "divinefavor:talisman_obsidian_road",
+  "icon": "divinefavor:spell_talisman_obsidian_road",
   "category": "spell_talismans",
   "pages": [
     {
       "type": "item_description",
-      "talisman": "divinefavor:talisman_obsidian_road"
+      "talisman": "divinefavor:spell_talisman_obsidian_road"
     },
     {
       "type": "spell_talisman_stats",
-      "talisman": "divinefavor:talisman_obsidian_road"
+      "talisman": "divinefavor:spell_talisman_obsidian_road"
     }
   ]
 }

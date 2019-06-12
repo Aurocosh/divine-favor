@@ -1,15 +1,15 @@
 {
   "name": "Summon husk",
-  "icon": "divinefavor:talisman_summon_husk",
+  "icon": "divinefavor:spell_talisman_summon_husk",
   "category": "spell_talismans",
   "pages": [
     {
       "type": "item_description",
-      "talisman": "divinefavor:talisman_summon_husk"
+      "talisman": "divinefavor:spell_talisman_summon_husk"
     },
     {
       "type": "spell_talisman_stats",
-      "talisman": "divinefavor:talisman_summon_husk"
+      "talisman": "divinefavor:spell_talisman_summon_husk"
     },
     {
       "type": "entity",

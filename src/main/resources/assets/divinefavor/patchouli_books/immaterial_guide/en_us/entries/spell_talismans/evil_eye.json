@@ -1,15 +1,15 @@
 {
   "name": "Evil eye",
-  "icon": "divinefavor:talisman_evil_eye",
+  "icon": "divinefavor:spell_talisman_evil_eye",
   "category": "spell_talismans",
   "pages": [
     {
       "type": "item_description",
-      "talisman": "divinefavor:talisman_evil_eye"
+      "talisman": "divinefavor:spell_talisman_evil_eye"
     },
     {
       "type": "spell_talisman_stats",
-      "talisman": "divinefavor:talisman_evil_eye"
+      "talisman": "divinefavor:spell_talisman_evil_eye"
     }
   ]
 }

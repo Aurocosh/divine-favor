@@ -1,15 +1,15 @@
 {
   "name": "Surface shift",
-  "icon": "divinefavor:talisman_surface_shift",
+  "icon": "divinefavor:spell_talisman_surface_shift",
   "category": "spell_talismans",
   "pages": [
     {
       "type": "item_description",
-      "talisman": "divinefavor:talisman_surface_shift"
+      "talisman": "divinefavor:spell_talisman_surface_shift"
     },
     {
       "type": "spell_talisman_stats",
-      "talisman": "divinefavor:talisman_surface_shift"
+      "talisman": "divinefavor:spell_talisman_surface_shift"
     }
   ]
 }

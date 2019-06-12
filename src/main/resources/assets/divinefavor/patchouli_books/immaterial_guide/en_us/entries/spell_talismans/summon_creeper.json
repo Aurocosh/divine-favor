@@ -1,15 +1,15 @@
 {
   "name": "Summon creeper",
-  "icon": "divinefavor:talisman_summon_creeper",
+  "icon": "divinefavor:spell_talisman_summon_creeper",
   "category": "spell_talismans",
   "pages": [
     {
       "type": "item_description",
-      "talisman": "divinefavor:talisman_summon_creeper"
+      "talisman": "divinefavor:spell_talisman_summon_creeper"
     },
     {
       "type": "spell_talisman_stats",
-      "talisman": "divinefavor:talisman_summon_creeper"
+      "talisman": "divinefavor:spell_talisman_summon_creeper"
     },
     {
       "type": "entity",

@@ -1,15 +1,15 @@
 {
   "name": "Sense all entities",
-  "icon": "divinefavor:talisman_sense_entity_all",
+  "icon": "divinefavor:spell_talisman_sense_entity_all",
   "category": "spell_talismans",
   "pages": [
     {
       "type": "item_description",
-      "talisman": "divinefavor:talisman_sense_entity_all"
+      "talisman": "divinefavor:spell_talisman_sense_entity_all"
     },
     {
       "type": "spell_talisman_stats",
-      "talisman": "divinefavor:talisman_sense_entity_all"
+      "talisman": "divinefavor:spell_talisman_sense_entity_all"
     }
   ]
 }

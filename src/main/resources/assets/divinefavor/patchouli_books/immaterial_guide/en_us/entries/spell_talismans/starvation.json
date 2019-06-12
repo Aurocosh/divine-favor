@@ -1,15 +1,15 @@
 {
   "name": "Starvation",
-  "icon": "divinefavor:talisman_starvation",
+  "icon": "divinefavor:spell_talisman_starvation",
   "category": "spell_talismans",
   "pages": [
     {
       "type": "item_description",
-      "talisman": "divinefavor:talisman_starvation"
+      "talisman": "divinefavor:spell_talisman_starvation"
     },
     {
       "type": "spell_talisman_stats",
-      "talisman": "divinefavor:talisman_starvation"
+      "talisman": "divinefavor:spell_talisman_starvation"
     }
   ]
 }

@@ -1,15 +1,15 @@
 {
   "name": "Warp pebble",
-  "icon": "divinefavor:talisman_warp_pebble",
+  "icon": "divinefavor:spell_talisman_warp_pebble",
   "category": "spell_talismans",
   "pages": [
     {
       "type": "item_description",
-      "talisman": "divinefavor:talisman_warp_pebble"
+      "talisman": "divinefavor:spell_talisman_warp_pebble"
     },
     {
       "type": "spell_talisman_stats",
-      "talisman": "divinefavor:talisman_warp_pebble"
+      "talisman": "divinefavor:spell_talisman_warp_pebble"
     }
   ]
 }

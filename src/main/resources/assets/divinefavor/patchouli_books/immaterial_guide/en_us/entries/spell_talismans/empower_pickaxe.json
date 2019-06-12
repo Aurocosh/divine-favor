@@ -1,15 +1,15 @@
 {
   "name": "Empower pickaxe",
-  "icon": "divinefavor:talisman_empower_pickaxe",
+  "icon": "divinefavor:spell_talisman_empower_pickaxe",
   "category": "spell_talismans",
   "pages": [
     {
       "type": "item_description",
-      "talisman": "divinefavor:talisman_empower_pickaxe"
+      "talisman": "divinefavor:spell_talisman_empower_pickaxe"
     },
     {
       "type": "spell_talisman_stats",
-      "talisman": "divinefavor:talisman_empower_pickaxe"
+      "talisman": "divinefavor:spell_talisman_empower_pickaxe"
     }
   ]
 }

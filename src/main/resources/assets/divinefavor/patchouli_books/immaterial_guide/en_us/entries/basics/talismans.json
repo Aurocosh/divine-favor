@@ -1,6 +1,6 @@
 {
   "name": "Talismans",
-  "icon": "divinefavor:talisman_wild_sprint",
+  "icon": "divinefavor:spell_talisman_wild_sprint",
   "category": "basics",
   "sortnum": 5,
   "pages": [
@@ -14,7 +14,7 @@
     },
     {
       "type": "spotlight",
-      "item": "divinefavor:talisman_ignition",
+      "item": "divinefavor:spell_talisman_ignition",
       "text": "Above you will see an example of a spell talisman. Spell talismans do not require any additional tools to use. Talisman can be used in two ways. $(li)Take talisman in your hand and right click it in air.$(li)Take talisman in your hand and right click block."
     },
     {

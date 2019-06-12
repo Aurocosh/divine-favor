@@ -1,15 +1,15 @@
 {
   "name": "Nether surge",
-  "icon": "divinefavor:talisman_nether_surge",
+  "icon": "divinefavor:spell_talisman_nether_surge",
   "category": "spell_talismans",
   "pages": [
     {
       "type": "item_description",
-      "talisman": "divinefavor:talisman_nether_surge"
+      "talisman": "divinefavor:spell_talisman_nether_surge"
     },
     {
       "type": "spell_talisman_stats",
-      "talisman": "divinefavor:talisman_nether_surge"
+      "talisman": "divinefavor:spell_talisman_nether_surge"
     }
   ]
 }

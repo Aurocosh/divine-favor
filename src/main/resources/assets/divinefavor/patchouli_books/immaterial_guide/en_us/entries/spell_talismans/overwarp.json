@@ -1,15 +1,15 @@
 {
   "name": "Overwarp",
-  "icon": "divinefavor:talisman_overwarp",
+  "icon": "divinefavor:spell_talisman_overwarp",
   "category": "spell_talismans",
   "pages": [
     {
       "type": "item_description",
-      "talisman": "divinefavor:talisman_overwarp"
+      "talisman": "divinefavor:spell_talisman_overwarp"
     },
     {
       "type": "spell_talisman_stats",
-      "talisman": "divinefavor:talisman_overwarp"
+      "talisman": "divinefavor:spell_talisman_overwarp"
     }
   ]
 }

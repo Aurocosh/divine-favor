@@ -1,15 +1,15 @@
 {
   "name": "Blood of grass",
-  "icon": "divinefavor:talisman_blood_of_grass",
+  "icon": "divinefavor:spell_talisman_blood_of_grass",
   "category": "spell_talismans",
   "pages": [
     {
       "type": "item_description",
-      "talisman": "divinefavor:talisman_blood_of_grass"
+      "talisman": "divinefavor:spell_talisman_blood_of_grass"
     },
     {
       "type": "spell_talisman_stats",
-      "talisman": "divinefavor:talisman_blood_of_grass"
+      "talisman": "divinefavor:spell_talisman_blood_of_grass"
     }
   ]
 }
