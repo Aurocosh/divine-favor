@@ -46,13 +46,6 @@ object ModItems {
     lateinit var warp_gem: ModItem
     lateinit var warp_pebble: ModItem
 
-    lateinit var rope_barrier: ModItem
-    lateinit var rope_explosive: ModItem
-    lateinit var rope_glowing: ModItem
-    lateinit var rope_guide: ModItem
-    lateinit var rope_inert: ModItem
-    lateinit var rope_teleporting: ModItem
-
     lateinit var spell_blade_green: ModItem
     lateinit var spell_blade_red: ModItem
 
@@ -78,13 +71,6 @@ object ModItems {
         storage_gem = ItemStorageGem()
         warp_gem = ItemWarpMarker("warp_gem", true)
         warp_pebble = ItemWarpMarker("warp_pebble", false)
-
-        rope_barrier = object : ItemRope<EntityRopeBarrierNode>("rope_barrier", "ropes/barrier", EntityRopeBarrierNode::class.java, EntityRopeNodeBase.ROPE_LENGTH) {}
-        rope_explosive = object : ItemRope<EntityRopeExplosiveNode>("rope_explosive", "ropes/explosive", EntityRopeExplosiveNode::class.java, EntityRopeNodeBase.ROPE_LENGTH) {}
-        rope_glowing = object : ItemRope<EntityRopeGlowingNode>("rope_glowing", "ropes/glowing", EntityRopeGlowingNode::class.java, EntityRopeNodeBase.ROPE_LENGTH) {}
-        rope_guide = object : ItemRope<EntityRopeGuideNode>("rope_guide", "ropes/guide", EntityRopeGuideNode::class.java, EntityRopeNodeBase.ROPE_LENGTH) {}
-        rope_inert = object : ItemRope<EntityRopeInertNode>("rope_inert", "ropes/inert", EntityRopeInertNode::class.java, EntityRopeNodeBase.ROPE_LENGTH) {}
-        rope_teleporting = object : ItemRope<EntityRopeTeleportingNode>("rope_teleporting", "ropes/teleporting", EntityRopeTeleportingNode::class.java, EntityRopeNodeBase.ROPE_LENGTH) {}
 
         spell_blade_green = ItemSpellBlade("spell_blade_green", "spell_blade_green/model", ConstMainTabOrder.SWORDS, ConfigItem.spellBladeGreen, Item.ToolMaterial.IRON)
         spell_blade_red = ItemSpellBlade("spell_blade_red", "spell_blade_red/model", ConstMainTabOrder.SWORDS, ConfigItem.spellBladeRed, Item.ToolMaterial.IRON)

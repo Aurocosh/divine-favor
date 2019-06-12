@@ -18,7 +18,7 @@ import net.minecraft.util.text.TextComponentTranslation
 import net.minecraft.world.World
 import java.lang.reflect.InvocationTargetException
 
-abstract class ItemRope<T : EntityRopeNodeBase>(name: String, texturePath: String, private val clazz: Class<T>, ropeDistance: Double) : ModItem(name, texturePath, ConstMainTabOrder.ROPES) {
+abstract class ItemRope<T : EntityRopeNodeBase>(name: String, texturePath: String, private val clazz: Class<T>, ropeDistance: Double = EntityRopeNodeBase.ROPE_LENGTH) : ModItem(name, texturePath, ConstMainTabOrder.ROPES) {
     private val ropeDistanceSq: Double = ropeDistance * ropeDistance
 
     init {

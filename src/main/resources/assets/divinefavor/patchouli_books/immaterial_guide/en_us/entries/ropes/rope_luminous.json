@@ -1,0 +1,16 @@
+{
+  "name": "Luminous rope",
+  "icon": "divinefavor:rope_luminous",
+  "category": "ropes",
+  "pages": [
+    {
+      "type": "item_description",
+      "talisman": "divinefavor:rope_luminous"
+    },
+    {
+      "type": "spotlight",
+      "item": "divinefavor:rope_luminous",
+      "text": "$(item)Luminous rope$() fancy way to light up large area"
+    }
+  ]
+}

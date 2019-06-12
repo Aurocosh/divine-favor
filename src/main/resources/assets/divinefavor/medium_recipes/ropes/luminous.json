@@ -1,6 +1,6 @@
 {
   "result": {
-    "item": "divinefavor:rope_glowing",
+    "item": "divinefavor:rope_luminous",
     "count": 4
   },
   "stones": [
@@ -21,7 +21,7 @@
     },
     {
       "type": "ore",
-      "ore": "dyeLightGray"
+      "ore": "dyeYellow"
     },
     {
       "type": "stack",
@@ -29,7 +29,7 @@
     },
     {
       "type": "ore",
-      "ore": "dustGlowstone"
+      "ore": "glowstone"
     }
   ]
 }

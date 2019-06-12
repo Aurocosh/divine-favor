@@ -3,6 +3,7 @@ package aurocosh.divinefavor.common.entity.rope
 import aurocosh.divinefavor.common.config.common.ConfigRope
 import aurocosh.divinefavor.common.entity.rope.base.EntityRopeNodeBase
 import aurocosh.divinefavor.common.item.common.ModItems
+import aurocosh.divinefavor.common.item.common.ModRopes
 import aurocosh.divinefavor.common.util.UtilPlayer
 import net.minecraft.entity.Entity
 import net.minecraft.entity.player.EntityPlayer
@@ -21,11 +22,11 @@ class EntityRopeGuideNode(world: World) : EntityRopeNodeBase(world), IClimbable 
         get() = true
 
     override fun registerPickUp(player: EntityPlayer) {
-        UtilPlayer.addStackToInventoryOrDrop(player, ItemStack(ModItems.rope_guide, 1))
+        UtilPlayer.addStackToInventoryOrDrop(player, ItemStack(ModRopes.rope_guide, 1))
     }
 
     override fun canDropNewNode(player: EntityPlayer): Boolean {
-        val (slotIndex, stack) = UtilPlayer.findStackInInventory(player) { element -> !element.isEmpty && element.item === ModItems.rope_guide }
+        val (slotIndex, stack) = UtilPlayer.findStackInInventory(player) { element -> !element.isEmpty && element.item === ModRopes.rope_guide }
         if (slotIndex == -1)
             return false
         stack.shrink(1)

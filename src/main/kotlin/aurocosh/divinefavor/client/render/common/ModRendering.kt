@@ -44,6 +44,7 @@ object ModRendering {
         manager.entityRenderMap[EntityRopeGlowingNode::class.java] = RenderRopeGlowingNode(manager)
         manager.entityRenderMap[EntityRopeGuideNode::class.java] = RenderRopeGuideNode(manager)
         manager.entityRenderMap[EntityRopeInertNode::class.java] = RenderRopeInertNode(manager)
+        manager.entityRenderMap[EntityRopeLuminousNode::class.java] = RenderRopeLuminousNode(manager)
         manager.entityRenderMap[EntityRopeTeleportingNode::class.java] = RenderRopeTeleportingNode(manager)
 
         manager.entityRenderMap[EntityPing::class.java] = RenderPing(manager)

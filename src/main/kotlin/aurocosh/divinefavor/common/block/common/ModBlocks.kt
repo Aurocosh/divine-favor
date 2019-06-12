@@ -9,6 +9,8 @@ import aurocosh.divinefavor.common.block.ethereal.BlockEtherealFlash
 import aurocosh.divinefavor.common.block.ethereal.BlockEtherealLight
 import aurocosh.divinefavor.common.block.medium.BlockMedium
 import aurocosh.divinefavor.common.block.medium.TileMedium
+import aurocosh.divinefavor.common.block.rope.BlockLuminousRopeLight
+import aurocosh.divinefavor.common.block.rope.BlockLuminousRopeSource
 import aurocosh.divinefavor.common.block.rope.BlockRopeLight
 import aurocosh.divinefavor.common.block.soulbound_lectern.BlockSoulboundLectern
 import aurocosh.divinefavor.common.block.soulbound_lectern.TileSoulboundLectern
@@ -38,8 +40,12 @@ object ModBlocks {
     lateinit var soulboundLecternStone: ModBlock
     lateinit var soulboundLecternWood: ModBlock
 
+    lateinit var standardRopeLight: ModBlock
+    lateinit var luminousRopeLight: ModBlock
+    lateinit var luminousRopeSource: ModBlock
+
     lateinit var enderPumpkin: ModBlock
-    lateinit var cavingRopeLight: ModBlock
+
     lateinit var ethereal_light: ModBlock
     lateinit var ethereal_flash: ModBlock
     lateinit var red_pulse: ModBlock
@@ -64,8 +70,11 @@ object ModBlocks {
         soulboundLecternStone = BlockSoulboundLectern("stone", Material.ROCK)
         soulboundLecternWood = BlockSoulboundLectern("wood", Material.WOOD)
 
+        standardRopeLight = BlockRopeLight("rope_light")
+        luminousRopeLight = BlockLuminousRopeLight("luminous_rope_light")
+        luminousRopeSource = BlockLuminousRopeSource("luminous_rope_source")
+
         enderPumpkin = BlockEnderPumpkin()
-        cavingRopeLight = BlockRopeLight("rope_light")
 
         ethereal_light = BlockEtherealLight("ethereal_light", Material.AIR, ConfigSpell.etherealLight.lightLevel)
         ethereal_flash = BlockEtherealFlash("ethereal_flash", ConfigSpell.etherealFlash.lightLevel, ConfigSpell.etherealFlash.despawnDelay)

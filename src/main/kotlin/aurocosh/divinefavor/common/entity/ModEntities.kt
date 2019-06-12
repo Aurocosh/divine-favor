@@ -33,6 +33,7 @@ object ModEntities {
         registerModEntity(EntityRopeGlowingNode::class.java, "rope_glowing", 64, 1, true)
         registerModEntity(EntityRopeGuideNode::class.java, "rope_guide", 64, 1, true)
         registerModEntity(EntityRopeInertNode::class.java, "rope_inert", 64, 1, false)
+        registerModEntity(EntityRopeLuminousNode::class.java, "rope_luminous", 64, 1, true)
         registerModEntity(EntityRopeTeleportingNode::class.java, "rope_teleporting", 64, 1, true)
 
         registerModEntity(EntityPing::class.java, "ping", 64, 1, false)

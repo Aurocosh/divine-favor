@@ -3,6 +3,7 @@ package aurocosh.divinefavor.common.entity.rope.base
 import aurocosh.divinefavor.common.block.common.ModBlocks
 import aurocosh.divinefavor.common.lib.extensions.*
 import aurocosh.divinefavor.common.util.UtilEntity
+import net.minecraft.block.Block
 import net.minecraft.entity.Entity
 import net.minecraft.entity.MoverType
 import net.minecraft.entity.player.EntityPlayer
@@ -22,7 +23,6 @@ import net.minecraftforge.fml.relauncher.SideOnly
 import java.util.*
 
 abstract class EntityRopeNodeBase(world: World) : Entity(world) {
-
     private var canExtend = true
     private var pickUp = false
     private var despawnTimer = 0
@@ -226,7 +226,7 @@ abstract class EntityRopeNodeBase(world: World) : Entity(world) {
                 destroyLightSource()
 
             if (lightBlock == null && world.isAirBlock(pos)) {
-                world.setBlockState(pos, ModBlocks.cavingRopeLight.defaultState)
+                world.setBlockState(pos, getLightBlock().defaultState)
                 lightBlock = pos
             }
         } else if (lightBlock != null)
@@ -234,11 +234,11 @@ abstract class EntityRopeNodeBase(world: World) : Entity(world) {
     }
 
     private fun destroyLightSource() {
-        if (world.isBlockLoaded(lightBlock!!) && world.getBlockState(lightBlock!!).block === ModBlocks.cavingRopeLight)
-            world.setBlockToAir(lightBlock!!)
+        val block = lightBlock ?: return
+        if (world.isBlockLoaded(block) && world.getBlockState(block).block === getLightBlock())
+            world.setBlockToAir(block)
         lightBlock = null
     }
-
 
     private fun processDespawn(nextNode: Entity?, prevNode: Entity?) {
         if (world.isRemote)
@@ -428,6 +428,10 @@ abstract class EntityRopeNodeBase(world: World) : Entity(world) {
 
     override fun canBeCollidedWith(): Boolean {
         return true
+    }
+
+    protected open fun getLightBlock(): Block {
+        return ModBlocks.standardRopeLight
     }
 
     override fun setDead() {

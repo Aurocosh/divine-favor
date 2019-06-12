@@ -7,18 +7,11 @@ import aurocosh.divinefavor.common.custom_data.player.capability.PlayerDataDataH
 import aurocosh.divinefavor.common.custom_data.world.capability.WorldDataDataHandler
 import aurocosh.divinefavor.common.entity.ModEntities
 import aurocosh.divinefavor.common.item.bathing_blend.ModBathingBlends
-import aurocosh.divinefavor.common.item.common.ModCallingStones
-import aurocosh.divinefavor.common.item.common.ModItems
+import aurocosh.divinefavor.common.item.common.*
 import aurocosh.divinefavor.common.item.contract.ModContracts
-import aurocosh.divinefavor.common.item.common.ModFavorMarks
-import aurocosh.divinefavor.common.item.common.ModSoulShards
 import aurocosh.divinefavor.common.item.talisman_tools.grimoire.capability.GrimoireDataHandler
 import aurocosh.divinefavor.common.item.talisman_tools.spell_blade.capability.SpellBladeDataHandler
 import aurocosh.divinefavor.common.item.talisman_tools.spell_bow.capability.SpellBowDataHandler
-import aurocosh.divinefavor.common.item.common.ModArrowTalismans
-import aurocosh.divinefavor.common.item.common.ModSpellTalismans
-import aurocosh.divinefavor.common.item.common.ModWishingStones
-import aurocosh.divinefavor.common.item.common.ModBladeTalismans
 import aurocosh.divinefavor.common.muliblock.common.ModMultiBlocks
 import aurocosh.divinefavor.common.network.GuiHandler
 import aurocosh.divinefavor.common.network.NetworkHandler
@@ -62,6 +55,7 @@ open class CommonProxy {
         ModArrowTalismans.preInit()
         ModBladeTalismans.preInit()
         ModItems.preInit()
+        ModRopes.preInit()
         ModSoulShards.preInit()
         ModSpellTalismans.preInit()
         ModBathingBlends.preInit()

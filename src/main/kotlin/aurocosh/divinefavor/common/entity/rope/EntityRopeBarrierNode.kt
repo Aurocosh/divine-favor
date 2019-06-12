@@ -3,6 +3,7 @@ package aurocosh.divinefavor.common.entity.rope
 import aurocosh.divinefavor.common.config.common.ConfigRope
 import aurocosh.divinefavor.common.entity.rope.base.EntityRopeNodeBase
 import aurocosh.divinefavor.common.item.common.ModItems
+import aurocosh.divinefavor.common.item.common.ModRopes
 import aurocosh.divinefavor.common.lib.extensions.S
 import aurocosh.divinefavor.common.util.UtilEntity
 import aurocosh.divinefavor.common.util.UtilPlayer
@@ -40,11 +41,11 @@ class EntityRopeBarrierNode(world: World) : EntityRopeNodeBase(world) {
     }
 
     override fun registerPickUp(player: EntityPlayer) {
-        UtilPlayer.addStackToInventoryOrDrop(player, ItemStack(ModItems.rope_barrier, 1))
+        UtilPlayer.addStackToInventoryOrDrop(player, ItemStack(ModRopes.rope_barrier, 1))
     }
 
     override fun canDropNewNode(player: EntityPlayer): Boolean {
-        val (slotIndex, stack) = UtilPlayer.findStackInInventory(player) { element -> !element.isEmpty && element.item === ModItems.rope_barrier }
+        val (slotIndex, stack) = UtilPlayer.findStackInInventory(player) { element -> !element.isEmpty && element.item === ModRopes.rope_barrier }
         if (slotIndex == -1)
             return false
         stack.shrink(1)
