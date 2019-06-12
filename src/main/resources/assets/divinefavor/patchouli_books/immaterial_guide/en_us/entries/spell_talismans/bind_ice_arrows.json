@@ -1,0 +1,15 @@
+{
+  "name": "Bind",
+  "icon": "divinefavor:spell_talisman_bind_ice_arrows",
+  "category": "spell_talismans",
+  "pages": [
+    {
+      "type": "item_description",
+      "talisman": "divinefavor:spell_talisman_bind_ice_arrows"
+    },
+    {
+      "type": "spell_talisman_stats",
+      "talisman": "divinefavor:spell_talisman_bind_ice_arrows"
+    }
+  ]
+}

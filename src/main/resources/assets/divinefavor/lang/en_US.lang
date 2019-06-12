@@ -176,6 +176,7 @@ item.divinefavor:rope_teleporting.name=Warping rope
 item.divinefavor:ice_arrow.name=Ice arrow
 
 ## SPELL TALISMAN NAMES
+item.divinefavor:spell_talisman_bind_ice_arrows.name=Bind ice arrows
 item.divinefavor:spell_talisman_place_torch.name=Place torch
 item.divinefavor:spell_talisman_armor_of_pacifist.name=Armor of pacifist talisman
 item.divinefavor:spell_talisman_arrow_deflection.name=Arrow deflection talisman
@@ -555,6 +556,7 @@ item.divinefavor:rope_teleporting.description=Unusual trapping device. It will t
 item.divinefavor:ice_arrow.description=Delicate arrows made of ice. They are frail and because of this they deal less damage then regular arrows and break easily, but in a pinch they can be very useful. This type of arrow also cannot be tipped in potion, but on the other hand it deals extra damage to hellish mobs.
 
 ## SPELL TALISMAN DESCRIPTIONS
+item.divinefavor:spell_talisman_bind_ice_arrows.description=This talisman creates frail ice arrows. Those arrows are weaker then regular arrows, but this talisman may help you if you run out of arrows in the field. Also ice arrows are very effective against spawns of nether.
 item.divinefavor:spell_talisman_place_torch.description=This talisman takes a torch from players inventory and places it where player is looking
 item.divinefavor:spell_talisman_armor_of_pacifist.description=Grants user armor of pacifist. Player will be protected from most damage types, but in turn will not be able to attack anyone.
 item.divinefavor:spell_talisman_arrow_deflection.description=This talisman will temporarily give player ability to deflect incoming arrows. Though deflection is not perfect. Also when player hit with something other then arrows duration of spell will decrease drastically.

@@ -1,0 +1,30 @@
+{
+  "result": {
+    "item": "divinefavor:spell_talisman_bind_ice_arrows"
+  },
+  "stones": [
+    "divinefavor:calling_stone_blizrabi"
+  ],
+  "ingredients": [
+    {
+      "type": "ore",
+      "ore": "paper"
+    },
+    {
+      "type": "ore",
+      "ore": "dyeBlue"
+    },
+    {
+      "type": "stack",
+      "item": "minecraft:arrow"
+    },
+    {
+      "type": "stack",
+      "item": "minecraft:arrow"
+    },
+    {
+      "type": "stack",
+      "item": "minecraft:ice"
+    }
+  ]
+}
