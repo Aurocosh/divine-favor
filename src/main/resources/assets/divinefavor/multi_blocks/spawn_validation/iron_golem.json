@@ -1,8 +1,10 @@
 {
-  "symmetrical": true,
-  "basePosition":[1,0,0],
-  "controllerPosition":[1,2,0],
+  "symmetrical":false,
+  "basePosition":[0,2,1],
+  "controllerPosition":[0,2,1],
   "parts":[
-    {"validator":{"type":"block","name":"minecraft:iron_block"},"positions":[[0,1,0],[1,1,0],[2,1,0],[1,0,0]]}
+    {"validator":{"type":"block","name":"minecraft:iron_block"},"positions":[[0,0,1],[0,1,0],[0,1,1],[0,1,2]]},
+    {"validator":{"type":"block","name":"minecraft:pumpkin"},"positions":[[0,2,1]]},
+    {"validator":{"type":"air"},"positions":[[0,0,0],[0,0,2],[0,2,0],[0,2,2]]}
   ]
 }
