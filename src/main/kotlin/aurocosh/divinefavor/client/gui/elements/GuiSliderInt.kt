@@ -16,18 +16,18 @@ import java.awt.Color
 import java.awt.Rectangle
 
 class GuiSliderInt(
-        x: Int, y: Int, width: Int, height: Int, prefix: String, suffix: String,
+        val xGlob: Int, val yGlob: Int, width: Int, height: Int, prefix: String, suffix: String,
         override val tooltipKey: String, val minVal: Int, val maxVal: Int,
         value: Int, showDec: Boolean, drawStr: Boolean, color: Color,
         par: ISlider,
         increment: (GuiSliderInt) -> Int = { it.value++ }, decrement: (GuiSliderInt) -> Int = { it.value-- })
-    : GuiSlider(0, x, y, width - 2 * height, height, prefix, suffix, minVal.toDouble(), maxVal.toDouble(), value.toDouble(), showDec, drawStr, par), IButtonContainer, ITooltipProvider {
+    : GuiSlider(0, xGlob + height, yGlob, width - 2 * height, height, prefix, suffix, minVal.toDouble(), maxVal.toDouble(), value.toDouble(), showDec, drawStr, par), IButtonContainer, ITooltipProvider {
 
     private val colorBackground: Int = color.rgb
     private val colorSliderBackground: Int = color.darker().rgb
     private val colorSlider: Int = color.brighter().brighter().rgb
 
-    override val rect = Rectangle(this.x, this.y, width, height)
+    override val rect: Rectangle = Rectangle(xGlob, yGlob, width, height)
 
     private val decButton = GuiButtonSliderControl(this, this.x - height, this.y, height, height, "-", decrement)
     private val incButton = GuiButtonSliderControl(this, this.x + this.width, this.y, height, height, "+", increment)
@@ -102,7 +102,7 @@ class GuiSliderInt(
     }
 
     override fun getTooltipData(): TooltipData {
-        return TooltipData(tooltipKey, false, x, y)
+        return TooltipData(tooltipKey, false, xGlob, yGlob)
     }
 
     private class GuiButtonSliderControl(private val parent: GuiSliderInt, x: Int, y: Int, width: Int, height: Int, buttonText: String, private val action: (GuiSliderInt) -> Int) : GuiButton(0, x, y, width, height, buttonText) {

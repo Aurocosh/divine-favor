@@ -12,6 +12,7 @@ import aurocosh.divinefavor.common.item.talisman.properties.TalismanProperty
 import aurocosh.divinefavor.common.item.talisman.properties.TalismanPropertyBool
 import aurocosh.divinefavor.common.item.talisman.properties.TalismanPropertyInt
 import aurocosh.divinefavor.common.lib.TooltipCache
+import aurocosh.divinefavor.common.network.message.sever.MessageSyncTalismanPropertyIndex
 import net.minecraft.client.Minecraft
 import net.minecraft.client.gui.Gui
 import net.minecraft.client.gui.GuiScreen
@@ -23,15 +24,17 @@ import java.awt.Color
 import java.io.IOException
 
 class GuiTalismanProperties(private val stack: ItemStack, private val playerSlot: Int) : GuiScreen() {
-    private var selectedPropertyIndex = -1
+    private val item = stack.item as ItemTalisman
+
+    private var selectedPropertyIndex: Int
     private val properties: List<TalismanProperty<out Any>>
     private var propertyGuiElements: MutableList<IButtonContainer> = ArrayList()
 
     private val yMargin = 20
     private val xMargin = 20
-    private val markerMargin = 0
+    private val markerMargin = 5
 
-    private val tooltipWidth = 100
+    private val tooltipWidth = 140
     private val tooltipHeight = 500
 
     private val elementWidth = 140
@@ -47,9 +50,8 @@ class GuiTalismanProperties(private val stack: ItemStack, private val playerSlot
 
     init {
         mc = Minecraft.getMinecraft()
-        val item = stack.item as ItemTalisman
-        properties = item.properties
         selectedPropertyIndex = item.getSelectedPropertyIndex(stack)
+        properties = item.properties
     }
 
     override fun initGui() {
@@ -59,8 +61,12 @@ class GuiTalismanProperties(private val stack: ItemStack, private val playerSlot
     }
 
     private fun addPropertyToGui(property: TalismanProperty<out Any>) {
-        val size = propertyGuiElements.size
-        val selector = { selectedPropertyIndex = size }
+        val index = propertyGuiElements.size
+        val selector = {
+            selectedPropertyIndex = index
+            item.setSelectedPropertyIndex(stack, index)
+            MessageSyncTalismanPropertyIndex(playerSlot, index).send()
+        }
 
         when (property) {
             is TalismanPropertyInt -> {

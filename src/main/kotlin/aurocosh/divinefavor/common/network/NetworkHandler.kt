@@ -13,6 +13,7 @@ import aurocosh.divinefavor.common.network.message.client.spirit_data.MessageSyn
 import aurocosh.divinefavor.common.network.message.client.syncing.*
 import aurocosh.divinefavor.common.network.message.sever.MessageSyncTalismanContainerSlot
 import aurocosh.divinefavor.common.network.message.sever.MessageSyncTalismanPropertyBool
+import aurocosh.divinefavor.common.network.message.sever.MessageSyncTalismanPropertyIndex
 import aurocosh.divinefavor.common.network.message.sever.MessageSyncTalismanPropertyInt
 import aurocosh.divinefavor.common.network.message.sever.petrification.MessagePetrificationCure
 import aurocosh.divinefavor.common.network.message.sever.petrification.MessagePetrificationDamage
@@ -59,6 +60,7 @@ object NetworkHandler {
         autoWrapper.register(MessagePetrificationDamage::class.java, Side.SERVER)
         autoWrapper.register(MessageSyncTalismanContainerSlot::class.java, Side.SERVER)
         autoWrapper.register(MessageSyncTalismanPropertyBool::class.java, Side.SERVER)
+        autoWrapper.register(MessageSyncTalismanPropertyIndex::class.java, Side.SERVER)
         autoWrapper.register(MessageSyncTalismanPropertyInt::class.java, Side.SERVER)
     }
 }
