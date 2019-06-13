@@ -5,27 +5,19 @@ import aurocosh.divinefavor.common.network.message.sever.MessageSyncTalismanProp
 import net.minecraft.item.ItemStack
 
 class TalismanPropertyBool(name: String, prefix: String, tooltip: String, defaultValue: Boolean) : TalismanProperty<Boolean>(name, prefix, tooltip, defaultValue) {
-
-    override fun getValue(stack: ItemStack): Boolean {
-        if (!stack.hasTagCompound())
-            return defaultValue
+    override fun getValueImpl(stack: ItemStack): Boolean {
         return stack.compound.getBoolean(tag)
     }
 
-    override fun setValue(stack: ItemStack, value: Boolean) {
+    override fun setValueImpl(stack: ItemStack, value: Boolean) {
         stack.compound.setBoolean(tag, value)
     }
 
-    override fun setValueAndSync(stack: ItemStack, value: Boolean, playerSlot: Int) {
-        val current = getValue(stack)
-        if (current == value)
-            return
-
-        setValue(stack, value)
-        syncToServer(playerSlot, value)
+    override fun next(stack: ItemStack): Boolean {
+        return !getValue(stack)
     }
 
-    override fun syncToServer(playerSlot: Int, value: Boolean) {
-        MessageSyncTalismanPropertyBool(playerSlot, name, value).send()
+    override fun previous(stack: ItemStack): Boolean {
+        return !getValue(stack)
     }
 }

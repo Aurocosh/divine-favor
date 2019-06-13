@@ -24,7 +24,7 @@ object EventInputHandler {
             if (UtilPlayer.getHandWithItem(mc.player) { TalismanContainerAdapter.isItemValid(it) } != null)
                 mc.displayGuiScreen(TalismanSelectGui.INSTANCE)
         } else if (KeyBindings.talismanValueHud.isKeyDown) {
-            mc.player.openGui(DivineFavor, ConstGuiIDs.TALISMAN_HUD_TEST, mc.world, 0, 0, 0)
+            mc.player.openGui(DivineFavor, ConstGuiIDs.TALISMAN_HUD, mc.world, 0, 0, 0)
         }
     }
     //

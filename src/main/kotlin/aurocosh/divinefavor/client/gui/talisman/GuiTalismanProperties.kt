@@ -11,6 +11,7 @@ import aurocosh.divinefavor.common.lib.extensions.S
 import aurocosh.divinefavor.common.item.talisman.properties.TalismanProperty
 import aurocosh.divinefavor.common.item.talisman.properties.TalismanPropertyBool
 import aurocosh.divinefavor.common.item.talisman.properties.TalismanPropertyInt
+import aurocosh.divinefavor.common.item.talisman_tools.TalismanContainerAdapter
 import aurocosh.divinefavor.common.lib.TooltipCache
 import aurocosh.divinefavor.common.network.message.sever.MessageSyncTalismanPropertyIndex
 import net.minecraft.client.Minecraft
@@ -23,8 +24,9 @@ import java.awt.Color
 
 import java.io.IOException
 
-class GuiTalismanProperties(private val stack: ItemStack, private val playerSlot: Int) : GuiScreen() {
-    private val item = stack.item as ItemTalisman
+class GuiTalismanProperties(stack: ItemStack, private val playerSlot: Int) : GuiScreen() {
+    private val item: ItemTalisman
+    private val itemStack: ItemStack
 
     private var selectedPropertyIndex: Int
     private val properties: List<TalismanProperty<out Any>>
@@ -50,13 +52,17 @@ class GuiTalismanProperties(private val stack: ItemStack, private val playerSlot
 
     init {
         mc = Minecraft.getMinecraft()
+
+        this.itemStack = TalismanContainerAdapter.getTalismanStack(stack)
+        item = this.itemStack.item as ItemTalisman
+
         selectedPropertyIndex = item.getSelectedPropertyIndex(stack)
         properties = item.properties
     }
 
     override fun initGui() {
         properties.forEach(this::addPropertyToGui)
-        val buttonStack = GuiButtonStack(width / 2, 20, 16, 16, stack, Color.LIGHT_GRAY) {}
+        val buttonStack = GuiButtonStack(width / 2, 20, 16, 16, itemStack, Color.LIGHT_GRAY) {}
         buttonStack.components.forEach { this.addButton(it) }
     }
 
@@ -64,17 +70,17 @@ class GuiTalismanProperties(private val stack: ItemStack, private val playerSlot
         val index = propertyGuiElements.size
         val selector = {
             selectedPropertyIndex = index
-            item.setSelectedPropertyIndex(stack, index)
+            item.setSelectedPropertyIndex(itemStack, index)
             MessageSyncTalismanPropertyIndex(playerSlot, index).send()
         }
 
         when (property) {
             is TalismanPropertyInt -> {
-                val slider = PropertyGuiHelper.addNewSlider(property, stack, playerSlot, nextElementX, nextElementY, elementWidth, elementHeight, selector)
+                val slider = PropertyGuiHelper.addNewSlider(property, itemStack, playerSlot, nextElementX, nextElementY, elementWidth, elementHeight, selector)
                 addGuiElement(slider)
             }
             is TalismanPropertyBool -> {
-                val slider = PropertyGuiHelper.getToggle(property, stack, playerSlot, nextElementX, nextElementY, elementWidth, elementHeight, selector)
+                val slider = PropertyGuiHelper.getToggle(property, itemStack, playerSlot, nextElementX, nextElementY, elementWidth, elementHeight, selector)
                 addGuiElement(slider)
             }
             else -> DivineFavor.logger.error("Attempted to add unknown type of property")

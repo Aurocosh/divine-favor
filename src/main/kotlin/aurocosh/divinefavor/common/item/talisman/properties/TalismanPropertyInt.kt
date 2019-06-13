@@ -7,26 +7,19 @@ import net.minecraft.util.math.MathHelper
 
 class TalismanPropertyInt(name: String, prefix: String, suffix: String, defaultValue: Int, val minValue: Int, val maxValue: Int) : TalismanProperty<Int>(name, prefix, suffix, defaultValue) {
 
-    override fun getValue(stack: ItemStack): Int {
-        if (!stack.hasTagCompound())
-            return defaultValue
+    override fun getValueImpl(stack: ItemStack): Int {
         return stack.compound.getInteger(tag)
     }
 
-    override fun setValue(stack: ItemStack, value: Int) {
+    override fun setValueImpl(stack: ItemStack, value: Int) {
         stack.compound.setInteger(tag, MathHelper.clamp(value, minValue, maxValue))
     }
 
-    override fun setValueAndSync(stack: ItemStack, value: Int, playerSlot: Int) {
-        val current = getValue(stack)
-        if (current == value)
-            return
-
-        setValue(stack, value)
-        syncToServer(playerSlot, value)
+    override fun next(stack: ItemStack): Int {
+        return getValue(stack) + 1
     }
 
-    override fun syncToServer(playerSlot: Int, value: Int) {
-        MessageSyncTalismanPropertyInt(playerSlot, name, value).send()
+    override fun previous(stack: ItemStack): Int {
+        return getValue(stack) - 1
     }
 }

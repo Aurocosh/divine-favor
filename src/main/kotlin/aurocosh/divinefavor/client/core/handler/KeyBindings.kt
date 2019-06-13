@@ -3,6 +3,7 @@ package aurocosh.divinefavor.client.core.handler
 import aurocosh.divinefavor.DivineFavor
 import aurocosh.divinefavor.common.core.ResourceNamer
 import aurocosh.divinefavor.common.item.talisman.ItemTalisman
+import aurocosh.divinefavor.common.item.talisman_tools.ItemTalismanContainer
 import aurocosh.divinefavor.common.item.talisman_tools.TalismanContainerAdapter
 import aurocosh.divinefavor.common.util.UtilPlayer
 import net.minecraft.client.settings.KeyBinding
@@ -54,7 +55,7 @@ object KeyBindings {
             val player = DivineFavor.proxy.clientPlayer
 //            if (!net.minecraftforge.client.settings.KeyConflictContext.GUI.isActive())
             //                return false;
-            return UtilPlayer.getHandWithItem(player) { it is ItemTalisman } != null
+            return UtilPlayer.getHandWithItem(player) { it is ItemTalisman || TalismanContainerAdapter.isItemValid(it) } != null
         }
 
         override fun conflicts(other: IKeyConflictContext): Boolean {
