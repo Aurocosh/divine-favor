@@ -48,12 +48,9 @@ class ItemGrimoire : ItemTalismanContainer("grimoire", "grimoire", ConstMainTabO
     }
 
     private fun performRightClickAction(world: World, player: EntityPlayer, hand: EnumHand, stack: ItemStack): Boolean {
-        val mode = getModeOrTransform(stack, player)
-        if (mode == TalismanContainerMode.INVALID)
-            return false
-        if (mode == TalismanContainerMode.BOOK)
-            player.openGui(DivineFavor, ConstGuiIDs.SPELL_BLADE, world, player.posX.toInt(), player.posY.toInt(), player.posZ.toInt())
-        else if (mode == TalismanContainerMode.NORMAL) {
+        if (player.isSneaking) {
+            player.openGui(DivineFavor, ConstGuiIDs.GRIMOIRE, world, player.posX.toInt(), player.posY.toInt(), player.posZ.toInt())
+        } else {
             val (talismanStack, talisman) = getTalisman<ItemSpellTalisman>(stack) ?: return true
             val context = TalismanContext.rightClick(world, player, hand, talismanStack)
             talisman.cast(context)
