@@ -59,8 +59,10 @@ class GuiButtonCustomToggle(val xGlob: Int, val yGlob: Int, width: Int, height: 
     }
 
     override fun mousePressed(mc: Minecraft, mouseX: Int, mouseY: Int): Boolean {
-        toggleState = !toggleState
-        toggleAction.invoke(toggleState)
+        if(isMouseOver){
+            toggleState = !toggleState
+            toggleAction.invoke(toggleState)
+        }
         return super.mousePressed(mc, mouseX, mouseY)
     }
 }

@@ -2,6 +2,7 @@ package aurocosh.divinefavor.client.gui.talisman
 
 import aurocosh.divinefavor.DivineFavor
 import aurocosh.divinefavor.client.core.handler.KeyBindings
+import aurocosh.divinefavor.client.gui.elements.GuiButtonStack
 import aurocosh.divinefavor.client.gui.interfaces.IButtonContainer
 import aurocosh.divinefavor.client.gui.interfaces.ITooltipProvider
 import aurocosh.divinefavor.common.item.talisman.ItemTalisman
@@ -37,7 +38,7 @@ class GuiTalismanProperties(private val stack: ItemStack, private val playerSlot
     private var nextElementY = yMargin
 
     private var elementStepY = 20
-    private val tooltipStepY = 20
+    private val tooltipStepY = 10
 
     private val tooltipCache = TooltipCache()
 
@@ -49,6 +50,8 @@ class GuiTalismanProperties(private val stack: ItemStack, private val playerSlot
 
     override fun initGui() {
         properties.forEach(this::addPropertyToGui)
+        val buttonStack = GuiButtonStack(width / 2, 20, 16, 16, stack, Color.LIGHT_GRAY) {}
+        buttonStack.components.forEach { this.addButton(it) }
     }
 
     private fun addPropertyToGui(property: TalismanProperty<out Any>) {
