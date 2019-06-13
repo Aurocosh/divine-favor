@@ -11,11 +11,13 @@ import net.minecraft.client.gui.Gui
 import net.minecraft.client.gui.GuiButton
 import net.minecraft.item.ItemStack
 import java.awt.Color
+import java.awt.Rectangle
 
 class GuiButtonStack(x: Int, y: Int, width: Int, height: Int, val stack: ItemStack, color: Color, private val action: () -> Unit) : GuiButton(0, x, y, width, height, ""), IButtonContainer, ITooltipProvider {
 
-    override val tooltipKey = getTooltipFromStack(stack)
     private val colorBackground: Int = color.rgb
+    override val tooltipKey = getTooltipFromStack(stack)
+    override val rect = Rectangle(x, y, width, height)
 
     override val components = listOf(this)
 

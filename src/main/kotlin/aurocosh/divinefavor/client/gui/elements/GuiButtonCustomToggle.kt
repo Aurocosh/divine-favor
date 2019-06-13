@@ -7,14 +7,17 @@ import net.minecraft.client.Minecraft
 import net.minecraft.client.gui.Gui
 import net.minecraft.client.gui.GuiButton
 import java.awt.Color
+import java.awt.Rectangle
 
-class GuiButtonCustomToggle(val xGlob: Int, val yGlob: Int, width: Int, height: Int, value: Boolean, buttonText: String, override val tooltipKey: String, color: Color, private val toggleAction: (Boolean) -> Unit) : GuiButton(0, xGlob - height, yGlob, width, height, buttonText), IButtonContainer, ITooltipProvider {
+class GuiButtonCustomToggle(x: Int, y: Int, width: Int, height: Int, value: Boolean, buttonText: String, override val tooltipKey: String, color: Color, private val toggleAction: (Boolean) -> Unit) : GuiButton(0, x - height, y, width, height, buttonText), IButtonContainer, ITooltipProvider {
 
+    private val margin: Int = 1
     private val colorBackground: Int = color.rgb
     private val colorToggle: Int = color.darker().rgb
     private val colorToggleOn: Int = Color.GREEN.darker().rgb
     private val colorToggleOff: Int = color.brighter().brighter().rgb
-    private val margin: Int = 1
+
+    override val rect = Rectangle(x, y, width, height)
 
     var toggleState: Boolean = value
 
@@ -47,15 +50,8 @@ class GuiButtonCustomToggle(val xGlob: Int, val yGlob: Int, width: Int, height: 
         drawCenteredString(mc.fontRenderer, buttonText, component.x + component.width / 2, component.y + (component.height - 8) / 2, color)
     }
 
-    //    }
-//        return true
-//        action.invoke(parent)
-//            return false
-//        if (!super.mousePressed(mc, mouseX, mouseY))
-//    override fun mousePressed(mc: Minecraft, mouseX: Int, mouseY: Int): Boolean {
-//
     override fun getTooltipData(): TooltipData {
-        return TooltipData(tooltipKey, false, xGlob, yGlob)
+        return TooltipData(tooltipKey, false, x, y)
     }
 
     override fun mousePressed(mc: Minecraft, mouseX: Int, mouseY: Int): Boolean {

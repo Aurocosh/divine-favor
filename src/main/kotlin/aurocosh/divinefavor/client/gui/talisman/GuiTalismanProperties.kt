@@ -5,6 +5,7 @@ import aurocosh.divinefavor.client.core.handler.KeyBindings
 import aurocosh.divinefavor.client.gui.elements.GuiButtonStack
 import aurocosh.divinefavor.client.gui.interfaces.IButtonContainer
 import aurocosh.divinefavor.client.gui.interfaces.ITooltipProvider
+import aurocosh.divinefavor.common.constants.ConstResources
 import aurocosh.divinefavor.common.item.talisman.ItemTalisman
 import aurocosh.divinefavor.common.lib.extensions.S
 import aurocosh.divinefavor.common.item.talisman.properties.TalismanProperty
@@ -12,10 +13,11 @@ import aurocosh.divinefavor.common.item.talisman.properties.TalismanPropertyBool
 import aurocosh.divinefavor.common.item.talisman.properties.TalismanPropertyInt
 import aurocosh.divinefavor.common.lib.TooltipCache
 import net.minecraft.client.Minecraft
-import net.minecraft.client.gui.GuiLabel
+import net.minecraft.client.gui.Gui
 import net.minecraft.client.gui.GuiScreen
 import net.minecraft.client.settings.GameSettings
 import net.minecraft.item.ItemStack
+import net.minecraft.util.ResourceLocation
 import java.awt.Color
 
 import java.io.IOException
@@ -27,6 +29,7 @@ class GuiTalismanProperties(private val stack: ItemStack, private val playerSlot
 
     private val yMargin = 20
     private val xMargin = 20
+    private val markerMargin = 0
 
     private val tooltipWidth = 100
     private val tooltipHeight = 500
@@ -46,6 +49,7 @@ class GuiTalismanProperties(private val stack: ItemStack, private val playerSlot
         mc = Minecraft.getMinecraft()
         val item = stack.item as ItemTalisman
         properties = item.properties
+        selectedPropertyIndex = item.getSelectedPropertyIndex(stack)
     }
 
     override fun initGui() {
@@ -55,18 +59,20 @@ class GuiTalismanProperties(private val stack: ItemStack, private val playerSlot
     }
 
     private fun addPropertyToGui(property: TalismanProperty<out Any>) {
-        if (property is TalismanPropertyInt) {
-            val nextIndex = propertyGuiElements.size
-            val selector = { selectedPropertyIndex = nextIndex }
-            val slider = PropertyGuiHelper.addNewSlider(property, stack, playerSlot, nextElementX, nextElementY, elementWidth, elementHeight, selector)
-            addGuiElement(slider)
-        } else if (property is TalismanPropertyBool) {
-            val nextIndex = propertyGuiElements.size
-            val selector = { selectedPropertyIndex = nextIndex }
-            val slider = PropertyGuiHelper.getToggle(property, stack, playerSlot, nextElementX, nextElementY, elementWidth, elementHeight, selector)
-            addGuiElement(slider)
-        } else
-            DivineFavor.logger.error("Attempted to add unknown type of property")
+        val size = propertyGuiElements.size
+        val selector = { selectedPropertyIndex = size }
+
+        when (property) {
+            is TalismanPropertyInt -> {
+                val slider = PropertyGuiHelper.addNewSlider(property, stack, playerSlot, nextElementX, nextElementY, elementWidth, elementHeight, selector)
+                addGuiElement(slider)
+            }
+            is TalismanPropertyBool -> {
+                val slider = PropertyGuiHelper.getToggle(property, stack, playerSlot, nextElementX, nextElementY, elementWidth, elementHeight, selector)
+                addGuiElement(slider)
+            }
+            else -> DivineFavor.logger.error("Attempted to add unknown type of property")
+        }
     }
 
     private fun addGuiElement(element: IButtonContainer) {
@@ -77,7 +83,19 @@ class GuiTalismanProperties(private val stack: ItemStack, private val playerSlot
 
     override fun drawScreen(mx: Int, my: Int, partialTicks: Float) {
         super.drawScreen(mx, my, partialTicks)
+        drawMarker()
         renderTooltips();
+    }
+
+    fun drawMarker() {
+        if (selectedPropertyIndex == -1)
+            return
+
+        val container = propertyGuiElements[selectedPropertyIndex]
+        val rect = container.rect
+
+        mc.textureManager.bindTexture(marker)
+        Gui.drawModalRectWithCustomSizedTexture(rect.x + rect.width + markerMargin, rect.y, 0f, 0f, 16, 16, 16f, 16f)
     }
 
     private fun renderTooltips() {
@@ -113,5 +131,9 @@ class GuiTalismanProperties(private val stack: ItemStack, private val playerSlot
 
     override fun doesGuiPauseGame(): Boolean {
         return false
+    }
+
+    companion object {
+        private val marker = ResourceLocation(ConstResources.GUI_TALISMAN_MARKER)
     }
 }

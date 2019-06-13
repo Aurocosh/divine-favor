@@ -13,21 +13,24 @@ import net.minecraft.util.math.MathHelper
 import net.minecraftforge.fml.client.config.GuiSlider
 
 import java.awt.Color
+import java.awt.Rectangle
 
 class GuiSliderInt(
-        xPos: Int, yPos: Int, width: Int, height: Int, prefix: String, suffix: String,
+        x: Int, y: Int, width: Int, height: Int, prefix: String, suffix: String,
         override val tooltipKey: String, val minVal: Int, val maxVal: Int,
         value: Int, showDec: Boolean, drawStr: Boolean, color: Color,
         par: ISlider,
         increment: (GuiSliderInt) -> Int = { it.value++ }, decrement: (GuiSliderInt) -> Int = { it.value-- })
-    : GuiSlider(0, xPos, yPos, width - 2 * height, height, prefix, suffix, minVal.toDouble(), maxVal.toDouble(), value.toDouble(), showDec, drawStr, par), IButtonContainer, ITooltipProvider {
+    : GuiSlider(0, x, y, width - 2 * height, height, prefix, suffix, minVal.toDouble(), maxVal.toDouble(), value.toDouble(), showDec, drawStr, par), IButtonContainer, ITooltipProvider {
 
     private val colorBackground: Int = color.rgb
     private val colorSliderBackground: Int = color.darker().rgb
     private val colorSlider: Int = color.brighter().brighter().rgb
 
-    private val decButton = GuiButtonSliderControl(this, x - height, y, height, height, "-", decrement)
-    private val incButton = GuiButtonSliderControl(this, x + this.width, y, height, height, "+", increment)
+    override val rect = Rectangle(this.x, this.y, width, height)
+
+    private val decButton = GuiButtonSliderControl(this, this.x - height, this.y, height, height, "-", decrement)
+    private val incButton = GuiButtonSliderControl(this, this.x + this.width, this.y, height, height, "+", increment)
 
     override val components: List<GuiButton> = listOf(this, decButton, incButton)
 

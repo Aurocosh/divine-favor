@@ -9,6 +9,7 @@ import aurocosh.divinefavor.common.spirit.base.ModSpirit
 import aurocosh.divinefavor.common.item.talisman.properties.TalismanProperty
 import aurocosh.divinefavor.common.item.talisman.properties.TalismanPropertyBool
 import aurocosh.divinefavor.common.item.talisman.properties.TalismanPropertyInt
+import aurocosh.divinefavor.common.lib.extensions.compound
 import net.minecraft.client.resources.I18n
 import net.minecraft.client.util.ITooltipFlag
 import net.minecraft.entity.EntityLivingBase
@@ -34,6 +35,8 @@ abstract class ItemTalisman(val name: String, texturePath: String, val spirit: M
     val properties: List<TalismanProperty<out Any>>
         get() = propertyList
 
+    fun getProperty(index: Int) = propertyList[index]
+
     fun getProperty(name: String) = propertyMap[name]
 
     private fun addProperty(property: TalismanProperty<out Any>) {
@@ -43,6 +46,20 @@ abstract class ItemTalisman(val name: String, texturePath: String, val spirit: M
             propertyList.add(property)
             propertyMap[property.name] = property
         }
+    }
+
+    fun getSelectedPropertyIndex(stack: ItemStack): Int {
+        if (propertyList.isEmpty())
+            return -1;
+        if (!stack.hasTagCompound())
+            return 0
+        return stack.compound.getInteger(TAG_PROPERTY_INDEX)
+    }
+
+    fun setSelectedPropertyIndex(stack: ItemStack, index: Int) {
+        if (propertyList.isEmpty())
+            return
+        stack.compound.setInteger(TAG_PROPERTY_INDEX, index)
     }
 
     protected fun registerIntProperty(name: String, prefix: String, suffix: String, defaultValue: Int, minValue: Int, maxValue: Int): TalismanPropertyInt {
@@ -149,4 +166,8 @@ abstract class ItemTalisman(val name: String, texturePath: String, val spirit: M
     protected open fun performActionServer(context: TalismanContext) {}
 
     protected open fun performActionClient(context: TalismanContext) {}
+
+    companion object {
+        private const val TAG_PROPERTY_INDEX = "PropertyIndex"
+    }
 }

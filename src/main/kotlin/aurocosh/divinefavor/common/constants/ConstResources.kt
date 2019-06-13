@@ -33,6 +33,8 @@ object ConstResources {
     const val GUI_GRIMOIRE_SELECTOR = PREFIX_GUI + "talisman_tools/selector.png"
     const val GUI_GRIMOIRE_MARKER = PREFIX_GUI + "talisman_tools/marker.png"
 
+    const val GUI_TALISMAN_MARKER = PREFIX_GUI + "talisman_gui/marker.png"
+
     const val GUI_IMMATERIAL_MEDIUM_NO_STONE = PREFIX_GUI + "immaterial_medium/no_stone.png"
     const val GUI_IMMATERIAL_MEDIUM_WITH_STONE = PREFIX_GUI + "immaterial_medium/with_stone.png"
 
