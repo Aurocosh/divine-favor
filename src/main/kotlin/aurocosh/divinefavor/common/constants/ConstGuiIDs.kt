@@ -14,4 +14,5 @@ object ConstGuiIDs {
     val SOULBOUND_LECTERN_EMPTY = nextId++
     val SOULBOUND_LECTERN_WITH_SHARD = nextId++
     val SPELL_BOW = nextId++
+    val TALISMAN_HUD_TEST = nextId++
 }

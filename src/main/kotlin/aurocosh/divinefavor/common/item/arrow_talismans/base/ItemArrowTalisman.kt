@@ -2,7 +2,7 @@ package aurocosh.divinefavor.common.item.arrow_talismans.base
 
 import aurocosh.divinefavor.DivineFavor
 import aurocosh.divinefavor.common.entity.projectile.EntitySpellArrow
-import aurocosh.divinefavor.common.item.base.ItemTalisman
+import aurocosh.divinefavor.common.item.talisman.ItemTalisman
 import aurocosh.divinefavor.common.item.spell_talismans.base.CastType
 import aurocosh.divinefavor.common.item.spell_talismans.base.TalismanContext
 import aurocosh.divinefavor.common.spirit.base.ModSpirit

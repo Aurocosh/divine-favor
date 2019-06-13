@@ -12,6 +12,10 @@ object ResourceNamer {
         return ResourceLocation(DivineFavor.MOD_ID, "$prefix.$name")
     }
 
+    fun getNameString(prefix: String, name: String): String {
+        return "${DivineFavor.MOD_ID}:$prefix.$name"
+    }
+
     fun getItemName(type: String, name: String): ResourceLocation {
         return ResourceLocation(DivineFavor.MOD_ID, "${type}_$name")
     }

@@ -1,7 +1,7 @@
 package aurocosh.divinefavor.common.item.talisman_tools
 
 import aurocosh.divinefavor.common.item.base.ModItem
-import aurocosh.divinefavor.common.item.base.ItemTalisman
+import aurocosh.divinefavor.common.item.talisman.ItemTalisman
 import aurocosh.divinefavor.common.lib.extensions.compound
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.item.ItemStack

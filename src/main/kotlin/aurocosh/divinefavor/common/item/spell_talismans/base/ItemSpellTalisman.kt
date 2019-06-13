@@ -1,7 +1,7 @@
 package aurocosh.divinefavor.common.item.spell_talismans.base
 
 import aurocosh.divinefavor.DivineFavor
-import aurocosh.divinefavor.common.item.base.ItemTalisman
+import aurocosh.divinefavor.common.item.talisman.ItemTalisman
 import aurocosh.divinefavor.common.spirit.base.ModSpirit
 import aurocosh.divinefavor.common.util.UtilItem.actionResult
 import aurocosh.divinefavor.common.util.UtilItem.actionResultPass
