@@ -9,10 +9,11 @@ import aurocosh.divinefavor.common.lib.extensions.isOdd
 import net.minecraft.client.Minecraft
 import net.minecraft.client.gui.Gui
 import net.minecraft.client.gui.GuiButton
+import net.minecraft.client.resources.I18n
 import java.awt.Color
 import java.awt.Rectangle
 
-class GuiButtonCustomToggle(x: Int, y: Int, width: Int, height: Int, value: Boolean, buttonText: String, override val tooltipKey: String, color: Color, private val toggleAction: (Boolean) -> Unit) : GuiButton(0, x, y, width, height, buttonText), IButtonContainer, ITooltipProvider, IScrollable {
+class GuiButtonCustomToggle(x: Int, y: Int, width: Int, height: Int, value: Boolean, displayKey: String, override val tooltipKey: String, color: Color, private val toggleAction: (Boolean) -> Unit) : GuiButton(0, x, y, width, height, I18n.format(displayKey, value)), IButtonContainer, ITooltipProvider, IScrollable {
 
     private val margin: Int = 1
     private val colorBackground: Int = color.rgb

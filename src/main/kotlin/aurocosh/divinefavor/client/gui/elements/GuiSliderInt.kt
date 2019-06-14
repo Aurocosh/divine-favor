@@ -9,6 +9,7 @@ import net.minecraft.client.Minecraft
 import net.minecraft.client.audio.SoundHandler
 import net.minecraft.client.gui.Gui
 import net.minecraft.client.gui.GuiButton
+import net.minecraft.client.resources.I18n
 import net.minecraft.init.SoundEvents
 import net.minecraft.util.math.MathHelper
 import net.minecraftforge.fml.client.config.GuiSlider
@@ -17,12 +18,12 @@ import java.awt.Color
 import java.awt.Rectangle
 
 class GuiSliderInt(
-        val xGlob: Int, val yGlob: Int, width: Int, height: Int, prefix: String, suffix: String,
+        val xGlob: Int, val yGlob: Int, width: Int, height: Int, val displayKey: String,
         override val tooltipKey: String, val minVal: Int, val maxVal: Int,
         value: Int, showDec: Boolean, drawStr: Boolean, color: Color,
         par: ISlider,
         increment: (GuiSliderInt) -> Unit = { it.value++ }, decrement: (GuiSliderInt) -> Unit = { it.value-- })
-    : GuiSlider(0, xGlob + height, yGlob, width - 2 * height, height, prefix, suffix, minVal.toDouble(), maxVal.toDouble(), value.toDouble(), showDec, drawStr, par), IButtonContainer, ITooltipProvider, IScrollable {
+    : GuiSlider(0, xGlob + height, yGlob, width - 2 * height, height, "", "", minVal.toDouble(), maxVal.toDouble(), value.toDouble(), showDec, drawStr, par), IButtonContainer, ITooltipProvider, IScrollable {
 
     private val colorBackground: Int = color.rgb
     private val colorSliderBackground: Int = color.darker().rgb
@@ -75,7 +76,8 @@ class GuiSliderInt(
 
     private fun renderText(mc: Minecraft, component: GuiButton) {
         val color = if (!enabled) 10526880 else if (hovered) 16777120 else -1
-        var buttonText = component.displayString
+
+        var buttonText = I18n.format(displayKey, value)
         val strWidth = mc.fontRenderer.getStringWidth(buttonText)
         val ellipsisWidth = mc.fontRenderer.getStringWidth("...")
         if (strWidth > component.width - 6 && strWidth > ellipsisWidth)

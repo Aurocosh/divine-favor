@@ -29,9 +29,9 @@ class SpellTalismanIceSurface(name: String, spirit: ModSpirit, favorCost: Int, o
 
     init {
         val limit = ConfigSpell.iceSurface.floodLimit
-        floodLimit = registerIntProperty("BlockCount", "Blocks to freeze", "", limit, 1, limit)
-        test = registerIntProperty("Test", "Test", "", 10, 5, 20)
-        testB = registerBoolProperty("TestB", "TestB", false)
+        floodLimit = registerIntProperty("freeze_limit", limit, 1, limit)
+        test = registerIntProperty("test", 10, 5, 20)
+        testB = registerBoolProperty("safety_lock", false)
     }
 
     override fun performActionServer(context: TalismanContext) {

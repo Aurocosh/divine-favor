@@ -1,11 +1,10 @@
 package aurocosh.divinefavor.common.item.talisman.properties
 
 import aurocosh.divinefavor.common.lib.extensions.compound
-import aurocosh.divinefavor.common.network.message.sever.MessageSyncTalismanPropertyInt
 import net.minecraft.item.ItemStack
 import net.minecraft.util.math.MathHelper
 
-class TalismanPropertyInt(name: String, prefix: String, suffix: String, defaultValue: Int, val minValue: Int, val maxValue: Int) : TalismanProperty<Int>(name, prefix, suffix, defaultValue) {
+class TalismanPropertyInt(name: String, defaultValue: Int, val minValue: Int, val maxValue: Int) : TalismanProperty<Int>(name, defaultValue) {
 
     override fun getValueImpl(stack: ItemStack): Int {
         return stack.compound.getInteger(tag)

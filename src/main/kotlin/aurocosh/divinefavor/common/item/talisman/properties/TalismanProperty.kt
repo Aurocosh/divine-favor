@@ -1,13 +1,12 @@
 package aurocosh.divinefavor.common.item.talisman.properties
 
 import aurocosh.divinefavor.common.core.ResourceNamer
-import aurocosh.divinefavor.common.lib.extensions.compound
 import net.minecraft.item.ItemStack
-import net.minecraft.util.math.MathHelper
 
-abstract class TalismanProperty<T>(val name: String, val prefix: String, val suffix: String, val defaultValue: T) {
+abstract class TalismanProperty<T>(val name: String, val defaultValue: T) {
     val tag = "Property$name"
-    val tooltipKey = ResourceNamer.getNameString("tooltip", name)
+    val tooltipKey = "tooltip.${ResourceNamer.getNameString("property", name)}"
+    val displayKey = "name.${ResourceNamer.getNameString("property", name)}"
 
     fun getValue(stack: ItemStack): T {
         if (!stack.hasTagCompound())
@@ -26,6 +25,6 @@ abstract class TalismanProperty<T>(val name: String, val prefix: String, val suf
     abstract fun getValueImpl(stack: ItemStack): T
     abstract fun setValueImpl(stack: ItemStack, value: T)
 
-    abstract fun next(stack: ItemStack) : T
-    abstract fun previous(stack: ItemStack) : T
+    abstract fun next(stack: ItemStack): T
+    abstract fun previous(stack: ItemStack): T
 }

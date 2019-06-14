@@ -1,10 +1,9 @@
 package aurocosh.divinefavor.common.item.talisman.properties
 
 import aurocosh.divinefavor.common.lib.extensions.compound
-import aurocosh.divinefavor.common.network.message.sever.MessageSyncTalismanPropertyBool
 import net.minecraft.item.ItemStack
 
-class TalismanPropertyBool(name: String, prefix: String, tooltip: String, defaultValue: Boolean) : TalismanProperty<Boolean>(name, prefix, tooltip, defaultValue) {
+class TalismanPropertyBool(name: String, defaultValue: Boolean) : TalismanProperty<Boolean>(name, defaultValue) {
     override fun getValueImpl(stack: ItemStack): Boolean {
         return stack.compound.getBoolean(tag)
     }

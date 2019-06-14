@@ -62,14 +62,14 @@ abstract class ItemTalisman(val name: String, texturePath: String, val spirit: M
         stack.compound.setInteger(TAG_PROPERTY_INDEX, index)
     }
 
-    protected fun registerIntProperty(name: String, prefix: String, suffix: String, defaultValue: Int, minValue: Int, maxValue: Int): TalismanPropertyInt {
-        val property = TalismanPropertyInt(name, prefix, suffix, defaultValue, minValue, maxValue)
+    protected fun registerIntProperty(name: String, defaultValue: Int, minValue: Int, maxValue: Int): TalismanPropertyInt {
+        val property = TalismanPropertyInt(name, defaultValue, minValue, maxValue)
         addProperty(property)
         return property
     }
 
-    protected fun registerBoolProperty(name: String, prefix: String, defaultValue: Boolean): TalismanPropertyBool {
-        val property = TalismanPropertyBool(name, prefix, "tooltip.$name", defaultValue)
+    protected fun registerBoolProperty(name: String, defaultValue: Boolean): TalismanPropertyBool {
+        val property = TalismanPropertyBool(name, defaultValue)
         addProperty(property)
         return property
     }
