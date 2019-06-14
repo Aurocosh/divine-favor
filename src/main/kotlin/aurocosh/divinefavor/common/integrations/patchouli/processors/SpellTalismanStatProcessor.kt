@@ -13,29 +13,31 @@ import java.util.ArrayList
 
 class SpellTalismanStatProcessor : IComponentProcessor {
     lateinit var spellTalisman: ItemSpellTalisman
+    lateinit var itemStack: ItemStack
 
     override fun setup(variables: IVariableProvider<String>) {
         val talismanName = variables.get("talisman")
         val item = Item.REGISTRY.getObject(ResourceLocation(talismanName))
-        if (item is ItemSpellTalisman)
+        if (item is ItemSpellTalisman) {
             spellTalisman = item
-        else
+            itemStack = ItemStack(item)
+        } else
             DivineFavor.logger.error("Spell talisman not found:$talismanName")
     }
 
     override fun process(key: String): String? {
+        if(itemStack.isEmpty)
+            return null
+
         when {
-            key.startsWith("talisman") -> {
-                val stack = ItemStack(spellTalisman, 1)
-                return ItemStackUtil.serializeStack(stack)
-            }
+            key.startsWith("talisman") -> return ItemStackUtil.serializeStack(itemStack)
             key == "spirit_icon" -> return spellTalisman.spirit.icon.toString()
             key == "spirit_symbol" -> return spellTalisman.spirit.symbol.toString()
             key == "text" -> {
                 val lines = ArrayList<String>()
                 val spirit = spellTalisman.spirit
                 lines.add("Favor: " + spirit.name)
-                val favorCost = spellTalisman.favorCost
+                val favorCost = spellTalisman.getFavorCost(itemStack)
                 if (favorCost == 0)
                     lines.add("No cost")
                 else
@@ -45,5 +47,4 @@ class SpellTalismanStatProcessor : IComponentProcessor {
             else -> return null
         }
     }
-
 }

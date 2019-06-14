@@ -2,6 +2,7 @@ package aurocosh.divinefavor.common.potions.base.potion
 
 import aurocosh.divinefavor.DivineFavor
 import aurocosh.divinefavor.common.item.talisman.ItemTalisman
+import aurocosh.divinefavor.common.util.UtilPlayer
 import net.minecraft.client.Minecraft
 import net.minecraft.client.resources.I18n
 import net.minecraft.potion.PotionEffect
@@ -21,7 +22,11 @@ abstract class ModPotionToggleLimited(name: String, potionColor: Int) : ModPotio
         mc.fontRenderer.drawStringWithShadow(potionName, (x + 10 + 18).toFloat(), (y + 6).toFloat(), 16777215)
 
         val player = DivineFavor.proxy.clientPlayer
-        val description = talisman.getUseInfo(player)
+        val stack = UtilPlayer.getItemInHand(player) { it === talisman }
+        if (stack.isEmpty)
+            return
+
+        val description = talisman.getUseInfo(player, stack)
         mc.fontRenderer.drawStringWithShadow(description, (x + 10 + 18).toFloat(), (y + 6 + 10).toFloat(), 8355711)
     }
 }

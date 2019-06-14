@@ -20,7 +20,7 @@ import net.minecraft.world.World
 import net.minecraftforge.fml.relauncher.Side
 import net.minecraftforge.fml.relauncher.SideOnly
 
-abstract class ItemTalisman(val name: String, texturePath: String, val spirit: ModSpirit, val favorCost: Int) : ModItem(name, texturePath) {
+abstract class ItemTalisman(val name: String, texturePath: String, val spirit: ModSpirit, private val favorCost: Int) : ModItem(name, texturePath) {
 
     private val propertyList = ArrayList<TalismanProperty<out Any>>()
     private val propertyMap = HashMap<String, TalismanProperty<out Any>>()
@@ -74,6 +74,10 @@ abstract class ItemTalisman(val name: String, texturePath: String, val spirit: M
         return property
     }
 
+    fun getFavorCost(itemStack: ItemStack): Int {
+        return favorCost
+    }
+
     abstract fun validateCastType(context: TalismanContext): Boolean
 
     fun cast(context: TalismanContext): Boolean {
@@ -83,7 +87,7 @@ abstract class ItemTalisman(val name: String, texturePath: String, val spirit: M
             return false
         if (!validate(context))
             return false
-        if (isConsumeCharge(context) && !claimCost(context.player))
+        if (isConsumeCharge(context) && !claimCost(context.player, context.stack))
             return false
         if (context.world.isRemote)
             performActionClient(context)
@@ -92,14 +96,15 @@ abstract class ItemTalisman(val name: String, texturePath: String, val spirit: M
         return true
     }
 
-    fun claimCost(player: EntityLivingBase): Boolean {
-        if (favorCost == 0)
+    fun claimCost(player: EntityLivingBase, stack: ItemStack): Boolean {
+        val trueCost = getFavorCost(stack)
+        if (trueCost == 0)
             return true
         if (player !is EntityPlayer)
             return false
 
         val spiritData = player.divinePlayerData.spiritData
-        if (!spiritData.consumeFavor(spirit.id, favorCost))
+        if (!spiritData.consumeFavor(spirit.id, trueCost))
             return false
         if (player.world.isRemote)
             return true
@@ -109,19 +114,20 @@ abstract class ItemTalisman(val name: String, texturePath: String, val spirit: M
     }
 
     @SideOnly(Side.CLIENT)
-    fun getUseInfo(player: EntityPlayer): String {
+    fun getUseInfo(player: EntityPlayer, stack: ItemStack): String {
         val spiritData = player.divinePlayerData.spiritData
         val favorValue = spiritData.getFavor(spirit.id)
-        val infinite = spiritData.isFavorInfinite(spirit.id) || favorCost == 0
+        val trueFavorCost = getFavorCost(stack)
+        val infinite = spiritData.isFavorInfinite(spirit.id) || trueFavorCost == 0
 
-        val useCount = if (infinite) -1 else favorValue / favorCost
+        val useCount = if (infinite) -1 else favorValue / trueFavorCost
         val description: String
         if (useCount < 0)
             description = I18n.format("tooltip.divinefavor:talisman.infinite_use")
         else if (useCount == 0)
             description = I18n.format("tooltip.divinefavor:talisman.unusable")
         else
-            description = I18n.format("tooltip.divinefavor:talisman.cost", favorCost, useCount)
+            description = I18n.format("tooltip.divinefavor:talisman.cost", trueFavorCost, useCount)
         return description
     }
 
@@ -138,7 +144,7 @@ abstract class ItemTalisman(val name: String, texturePath: String, val spirit: M
         val player = DivineFavor.proxy.clientPlayer
 
         val talisman = stack.item as ItemTalisman
-        val favorCost = talisman.getUseInfo(player)
+        val favorCost = talisman.getUseInfo(player, stack)
         tooltip.add(favorCost)
 
         val spirit = talisman.spirit

@@ -6,6 +6,7 @@ import aurocosh.divinefavor.common.lib.extensions.divinePlayerData
 import aurocosh.divinefavor.common.network.message.client.spirit_data.MessageSyncFavor
 import aurocosh.divinefavor.common.potions.base.potion.ModPotionToggleLimited
 import aurocosh.divinefavor.common.potions.common.ModPotions
+import aurocosh.divinefavor.common.util.UtilPlayer
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraftforge.event.entity.living.LivingEvent
 import net.minecraftforge.fml.common.Mod
@@ -25,14 +26,9 @@ object ToadicJump {
         if (!entity.isPotionActive(ModPotions.toadic_jump))
             return
 
-        entity.motionY += ConfigSpell.toadicJump.jumpBoost.toDouble()
-        if (entity.world.isRemote)
-            return
-
-        val spiritData = entity.divinePlayerData.spiritData
-        val talisman = ModPotions.toadic_jump.talisman
-        val spirit = talisman.spirit
-        if (spiritData.consumeFavor(spirit.id, talisman.favorCost))
-            MessageSyncFavor(spirit, spiritData).sendTo(entity)
+        val talisman = ModPotions.crushing_palm.talisman
+        val stack = UtilPlayer.getItemInHand(entity) { it === talisman }
+        if (talisman.claimCost(entity, stack))
+            entity.motionY += ConfigSpell.toadicJump.jumpBoost.toDouble()
     }
 }

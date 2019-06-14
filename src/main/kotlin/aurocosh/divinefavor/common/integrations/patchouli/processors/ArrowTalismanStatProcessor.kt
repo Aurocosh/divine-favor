@@ -14,22 +14,24 @@ import java.util.*
 
 class ArrowTalismanStatProcessor : IComponentProcessor {
     lateinit var arrowTalisman: ItemArrowTalisman
+    lateinit var itemStack: ItemStack
 
     override fun setup(variables: IVariableProvider<String>) {
         val talismanName = variables.get("talisman")
         val item = Item.REGISTRY.getObject(ResourceLocation(talismanName))
-        if (item is ItemArrowTalisman)
+        if (item is ItemArrowTalisman) {
             arrowTalisman = item
-        else
+            itemStack = ItemStack(item)
+        } else
             DivineFavor.logger.error("Arrow talisman not found:$talismanName")
     }
 
     override fun process(key: String): String? {
+        if (!itemStack.isEmpty)
+            return null
+
         when {
-            key.startsWith("talisman") -> {
-                val stack = ItemStack(arrowTalisman, 1)
-                return ItemStackUtil.serializeStack(stack)
-            }
+            key.startsWith("talisman") -> return ItemStackUtil.serializeStack(itemStack)
             key == "spirit_icon" -> {
                 val spirit = arrowTalisman.spirit
                 return spirit.icon.toString()
@@ -41,7 +43,7 @@ class ArrowTalismanStatProcessor : IComponentProcessor {
             key == "text" -> {
                 val lines = ArrayList<String>()
                 lines.add("Favor: " + arrowTalisman.spirit.name)
-                val favorCost = arrowTalisman.favorCost
+                val favorCost = arrowTalisman.getFavorCost(itemStack)
                 if (favorCost == 0)
                     lines.add("No cost")
                 else
@@ -68,5 +70,4 @@ class ArrowTalismanStatProcessor : IComponentProcessor {
             else -> return null
         }
     }
-
 }

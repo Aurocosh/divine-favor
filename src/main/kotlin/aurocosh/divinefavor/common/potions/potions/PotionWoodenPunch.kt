@@ -6,6 +6,7 @@ import aurocosh.divinefavor.common.network.message.client.spirit_data.MessageSyn
 import aurocosh.divinefavor.common.potions.base.potion.ModPotionToggleLimited
 import aurocosh.divinefavor.common.potions.common.ModPotions
 import aurocosh.divinefavor.common.util.UtilBlock
+import aurocosh.divinefavor.common.util.UtilPlayer
 import net.minecraftforge.event.entity.player.PlayerInteractEvent
 import net.minecraftforge.fml.common.Mod
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent
@@ -28,20 +29,24 @@ object WoodenPunch {
         if (!player.isPotionActive(ModPotions.wooden_punch))
             return
 
+        val talisman = ModPotions.wooden_punch.talisman
+        val stack = UtilPlayer.getItemInHand(player) { it === talisman }
+        if (stack.isEmpty)
+            return
+
         val pos = event.pos
         val state = world.getBlockState(pos)
         val block = state.block
         if (!block.isToolEffective("axe", state))
             return
 
+        val cost = talisman.getFavorCost(stack)
         val spiritData = player.divinePlayerData.spiritData
-        val talisman = ModPotions.wooden_punch.talisman
         val spirit = talisman.spirit
-        if (!spiritData.consumeFavor(spirit.id, talisman.favorCost))
+        if (!spiritData.consumeFavor(spirit.id, cost))
             return
-        MessageSyncFavor(spirit, spiritData).sendTo(player)
 
-        val stack = player.heldItemMainhand
+        MessageSyncFavor(spirit, spiritData).sendTo(player)
         UtilBlock.removeBlock(player, world, stack, pos, true, false, true)
     }
 }

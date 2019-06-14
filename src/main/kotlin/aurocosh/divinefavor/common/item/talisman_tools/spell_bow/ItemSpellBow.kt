@@ -9,6 +9,7 @@ import aurocosh.divinefavor.common.item.talisman_tools.spell_bow.capability.Spel
 import aurocosh.divinefavor.common.item.talisman_tools.spell_bow.capability.SpellBowProvider
 import aurocosh.divinefavor.common.item.talisman_tools.spell_bow.capability.SpellBowStorage
 import aurocosh.divinefavor.common.item.arrow_talismans.base.ItemArrowTalisman
+import aurocosh.divinefavor.common.item.talisman_tools.TalismanStackWrapper
 import aurocosh.divinefavor.common.lib.extensions.cap
 import aurocosh.divinefavor.common.lib.extensions.compound
 import aurocosh.divinefavor.common.util.UtilBow
@@ -82,12 +83,7 @@ class ItemSpellBow : ItemTalismanContainer("spell_bow", "spell_bow/spell_bow", C
 
         val stackIsInfinite = entityLiving.capabilities.isCreativeMode || arrowStack.item is ItemArrow && (arrowStack.item as ItemArrow).isInfinite(arrowStack, bowStack, entityLiving)
         if (!world.isRemote) {
-            val stackWrapper = getTalisman<ItemArrowTalisman>(bowStack)
-            val entityArrow =
-                    if (stackWrapper != null && stackWrapper.talisman.claimCost(entityLiving))
-                        stackWrapper.talisman.createArrow(world, stackWrapper.talisman, entityLiving)
-                    else
-                        getStandardArrow(world, arrowStack, entityLiving)
+            val (stackWrapper, entityArrow) = getArrow(bowStack, entityLiving, world, arrowStack)
             entityArrow.shoot(entityLiving, entityLiving.rotationPitch, entityLiving.rotationYaw, 0.0f, velocity * 3.0f, 1.0f)
 
             if (velocity == 1.0f)
@@ -117,6 +113,14 @@ class ItemSpellBow : ItemTalismanContainer("spell_bow", "spell_bow/spell_bow", C
         if (!stackIsInfinite && !entityLiving.capabilities.isCreativeMode)
             UtilPlayer.damageStack(entityLiving, arrowStack)
         entityLiving.addStat(StatList.getObjectUseStats(this)!!)
+    }
+
+    private fun getArrow(bowStack: ItemStack, entityLiving: EntityPlayer, world: World, arrowStack: ItemStack): Pair<TalismanStackWrapper<ItemArrowTalisman>?, EntityArrow> {
+        val stackWrapper = getTalisman<ItemArrowTalisman>(bowStack)
+        if (stackWrapper == null || !stackWrapper.talisman.claimCost(entityLiving, stackWrapper.stack))
+            return Pair(null, getStandardArrow(world, arrowStack, entityLiving))
+        val arrow = stackWrapper.talisman.createArrow(world, stackWrapper.talisman, entityLiving)
+        return Pair(stackWrapper, arrow)
     }
 
     private fun getStandardArrow(world: World, arrowStack: ItemStack, shooter: EntityLivingBase): EntityArrow {

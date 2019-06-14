@@ -20,7 +20,7 @@ object TalismanHUD {
             return
 
         val talisman = talismanStack.item as ItemTalisman
-        val description = talisman.getUseInfo(player)
+        val description = talisman.getUseInfo(player, talismanStack)
 
         val spirit = talisman.spirit
         val spiritData = player.divinePlayerData.spiritData
