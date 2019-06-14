@@ -780,6 +780,7 @@ name.divinefavor:property.test=Test: %1$d
 name.divinefavor:property.safety_lock=Safety lock: %1$s
 name.divinefavor:property.piercing_inferno_depth=Depth: %1$s
 name.divinefavor:property.piercing_inferno_surface=Surface: %1$s
+name.divinefavor:property.blink_distance=Distance: %1$s
 
 ## TALISMAN PROPERTY TOOLTIPS
 tooltip.divinefavor:property.freeze_limit=Controls how much water blocks can be frozen per cast
@@ -787,3 +788,4 @@ tooltip.divinefavor:property.test=This is a test property
 tooltip.divinefavor:property.safety_lock=Prevents accidental cast. Talisman will not work while safety enabled
 tooltip.divinefavor:property.piercing_inferno_depth=Determines depth of tunnel created by the spell
 tooltip.divinefavor:property.piercing_inferno_surface=Determines max surface of tunnel created by the spell. Cost of spell based of this property even if actual surface of tunnel is less then that.
+tooltip.divinefavor:property.blink_distance=Teleportation distance

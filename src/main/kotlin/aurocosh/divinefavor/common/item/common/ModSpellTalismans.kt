@@ -71,8 +71,6 @@ object ModSpellTalismans {
     lateinit var obsidian_bubble: ItemSpellTalisman
     lateinit var obsidian_carving: ItemSpellTalisman
     lateinit var obsidian_road: ItemSpellTalisman
-    lateinit var overblink: ItemSpellTalisman
-    lateinit var overwarp: ItemSpellTalisman
     lateinit var pearl_crumbs: ItemSpellTalisman
     lateinit var piercing_inferno: ItemSpellTalisman
     lateinit var ping: ItemSpellTalisman
@@ -150,19 +148,17 @@ object ModSpellTalismans {
         winter_breath = SpellTalismanWinterBreath("winter_breath", ModSpirits.blizrabi, ConfigSpell.winterBreath.favorCost, SpellOptions.ALL_CAST)
 
         // endererer
-        blink = SpellTalismanBlink("blink", ModSpirits.endererer, ConfigSpell.blink.favorCost, SpellOptions.ALL_CAST, true, ConfigSpell.blink.distance.toDouble())
+        blink = SpellTalismanBlink("blink", ModSpirits.endererer, ConfigSpell.blink.favorCost, SpellOptions.ALL_CAST)
         earthen_dive = SpellTalismanEarthenDive("earthen_dive", ModSpirits.endererer, ConfigSpell.earthenDive.favorCost, SpellOptions.USE_CAST)
         escape_plan = SpellTalismanEscapePlan("escape_plan", ModSpirits.endererer, ConfigSpell.escapePlan.favorCost, SpellOptions.ALL_CAST)
         invite_gem = SpellTalismanInviteMarker("invite_gem", ModSpirits.endererer, ConfigSpell.inviteGem.favorCost, SpellOptions.ALL_CAST, ModItems.invite_gem)
         invite_pebble = SpellTalismanInviteMarker("invite_pebble", ModSpirits.endererer, ConfigSpell.invitePebble.favorCost, SpellOptions.ALL_CAST, ModItems.invite_pebble)
-        overblink = SpellTalismanBlink("overblink", ModSpirits.endererer, ConfigSpell.overblink.favorCost, SpellOptions.ALL_CAST, true, ConfigSpell.overblink.distance.toDouble())
-        overwarp = SpellTalismanBlink("overwarp", ModSpirits.endererer, ConfigSpell.overwarp.favorCost, SpellOptions.ALL_CAST, false, ConfigSpell.overwarp.distance.toDouble())
         pearl_crumbs = SpellTalismanPearlCrumbs("pearl_crumbs", ModSpirits.endererer, ConfigSpell.pearlCrumbs.favorCost, SpellOptions.ALL_CAST)
         remote_chest = SpellTalismanRemoteChest("remote_chest", ModSpirits.endererer, ConfigSpell.remoteChest.favorCost, SpellOptions.USE_CAST, ModItems.storage_gem)
         surface_blink = SpellTalismanSurfaceBlink("surface_blink", ModSpirits.endererer, ConfigSpell.surfaceBlink.favorCost, SpellOptions.ALL_CAST_TRACE)
         surface_shift = SpellTalismanSurfaceShift("surface_shift", ModSpirits.endererer, ConfigSpell.surfaceShift.favorCost, SpellOptions.ALL_CAST)
         wall_slip = SpellTalismanWallSlip("wall_slip", ModSpirits.endererer, ConfigSpell.wallSlip.favorCost, SpellOptions.USE_CAST)
-        warp = SpellTalismanBlink("warp", ModSpirits.endererer, ConfigSpell.warp.favorCost, SpellOptions.ALL_CAST, false, ConfigSpell.warp.distance.toDouble())
+        warp = SpellTalismanWarp("warp", ModSpirits.endererer, ConfigSpell.warp.favorCost, SpellOptions.ALL_CAST)
         warp_gem = SpellTalismanWarpMarker("warp_gem", ModSpirits.endererer, ConfigSpell.warpGem.favorCost, SpellOptions.ALL_CAST, ModItems.warp_gem)
         warp_pebble = SpellTalismanWarpMarker("warp_pebble", ModSpirits.endererer, ConfigSpell.warpPebble.favorCost, SpellOptions.ALL_CAST, ModItems.warp_pebble)
 

@@ -114,10 +114,6 @@ public class ConfigSpell {
     public static FavorOnly obsidianCarving = new FavorOnly(60);
     @Config.Name("Obsidian road")
     public static ObsidianRoad obsidianRoad = new ObsidianRoad();
-    @Config.Name("Overblink")
-    public static Overblink overblink = new Overblink();
-    @Config.Name("Overwarp")
-    public static Overwarp overwarp = new Overwarp();
     @Config.Name("Pearl crumbs")
     public static PearlCrumbs pearlCrumbs = new PearlCrumbs();
     @Config.Name("Piercing inferno")

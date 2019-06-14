@@ -132,19 +132,17 @@ class GuiTalismanProperties(stack: ItemStack, private val playerSlot: Int) : Gui
 
     override fun mouseClicked(mouseX: Int, mouseY: Int, mouseButton: Int) {
         super.mouseClicked(mouseX, mouseY, mouseButton)
-
     }
 
     override fun handleMouseInput() {
         super.handleMouseInput()
-        val value = UtilMouse.getScrollCount(7)
         val scrollable = propertyGuiElements.S.filter(IButtonContainer::isHovered).filterIsInstance<IScrollable>().firstOrNull()
         if (scrollable != null) {
-            scrollable.scroll(value)
+            scrollable.scroll(UtilMouse.getScrollCount(scrollable.fastScrollValue))
         } else if (selectedPropertyIndex != -1) {
             val container = propertyGuiElements[selectedPropertyIndex]
             if (container is IScrollable)
-                container.scroll(value)
+                container.scroll(UtilMouse.getScrollCount(container.fastScrollValue))
         }
     }
 

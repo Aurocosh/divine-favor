@@ -22,6 +22,7 @@ class GuiButtonCustomToggle(x: Int, y: Int, width: Int, height: Int, value: Bool
     private val colorToggleOn: Int = Color.GREEN.darker().rgb
     private val colorToggleOff: Int = color.brighter().brighter().rgb
 
+    override val fastScrollValue = 1
     override val rect = Rectangle(x, y, width, height)
 
     var toggleState: Boolean = value
