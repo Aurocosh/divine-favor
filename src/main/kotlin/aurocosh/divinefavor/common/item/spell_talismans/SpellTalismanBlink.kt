@@ -15,8 +15,7 @@ class SpellTalismanBlink(name: String, spirit: ModSpirit, favorCost: Int, option
     private val blinkDistance: TalismanPropertyInt = registerIntProperty("blink_distance", ConfigSpell.blink.maxDistance)
 
     override fun getFavorCost(itemStack: ItemStack): Int {
-        val distance = blinkDistance.getValue(itemStack)
-        return ConfigSpell.blink.favorCost * distance;
+        return favorCost * blinkDistance.getValue(itemStack);
     }
 
     public override fun validate(context: TalismanContext): Boolean {

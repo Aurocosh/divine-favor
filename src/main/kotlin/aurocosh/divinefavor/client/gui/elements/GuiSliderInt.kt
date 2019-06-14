@@ -22,7 +22,7 @@ class GuiSliderInt(
         override val tooltipKey: String, val minVal: Int, val maxVal: Int,
         value: Int, showDec: Boolean, drawStr: Boolean, color: Color,
         par: ISlider,
-        increment: (GuiSliderInt) -> Unit = { it.value++ }, decrement: (GuiSliderInt) -> Unit = { it.value-- }, fastScrollValue: Int)
+        increment: (GuiSliderInt) -> Unit = { it.value++ }, decrement: (GuiSliderInt) -> Unit = { it.value-- })
     : GuiSlider(0, xGlob + height, yGlob, width - 2 * height, height, "", "", minVal.toDouble(), maxVal.toDouble(), value.toDouble(), showDec, drawStr, par), IButtonContainer, ITooltipProvider, IScrollable {
 
     private val colorBackground: Int = color.rgb

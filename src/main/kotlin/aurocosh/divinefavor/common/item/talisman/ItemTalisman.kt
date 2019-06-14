@@ -20,7 +20,7 @@ import net.minecraft.world.World
 import net.minecraftforge.fml.relauncher.Side
 import net.minecraftforge.fml.relauncher.SideOnly
 
-abstract class ItemTalisman(val name: String, texturePath: String, val spirit: ModSpirit, private val favorCost: Int) : ModItem(name, texturePath) {
+abstract class ItemTalisman(val name: String, texturePath: String, val spirit: ModSpirit, protected val favorCost: Int) : ModItem(name, texturePath) {
 
     private val propertyList = ArrayList<TalismanProperty<out Any>>()
     private val propertyMap = HashMap<String, TalismanProperty<out Any>>()

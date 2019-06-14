@@ -24,7 +24,7 @@ class SpellTalismanPiercingInferno(name: String, spirit: ModSpirit, favorCost: I
     override fun getFavorCost(itemStack: ItemStack): Int {
         val depth = pierceDepth.getValue(itemStack)
         val surface = pierceSurface.getValue(itemStack)
-        return ConfigSpell.piercingInferno.favorCost * depth * surface;
+        return favorCost * depth * surface;
     }
 
     override fun performActionServer(context: TalismanContext) {

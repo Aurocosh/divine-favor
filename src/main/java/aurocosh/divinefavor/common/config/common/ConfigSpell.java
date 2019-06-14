@@ -89,7 +89,7 @@ public class ConfigSpell {
     @Config.Name("Infernal touch")
     public static InfernalTouch infernalTouch = new InfernalTouch();
     @Config.Name("Instand dive")
-    public static InstandDive instandDive = new InstandDive();
+    public static InstantDive instantDive = new InstantDive();
     @Config.Name("Ignition")
     public static Ignition ignition = new Ignition();
     @Config.Name("Invite gem")

@@ -15,8 +15,7 @@ class SpellTalismanWarp(name: String, spirit: ModSpirit, favorCost: Int, options
     private val blinkDistance: TalismanPropertyInt = registerIntProperty("blink_distance", ConfigSpell.warp.maxDistance)
 
     override fun getFavorCost(itemStack: ItemStack): Int {
-        val distance = blinkDistance.getValue(itemStack)
-        return ConfigSpell.warp.favorCost * distance;
+        return favorCost * blinkDistance.getValue(itemStack);
     }
 
     override fun performActionServer(context: TalismanContext) {

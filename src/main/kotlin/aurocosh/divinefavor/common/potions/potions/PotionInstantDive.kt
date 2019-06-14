@@ -16,7 +16,7 @@ class PotionInstantDive : ModPotionToggle("instant_dive", 0x7FB8A4) {
         if (livingBase.isSneaking)
             return
 
-        livingBase.motionY = (-ConfigSpell.instandDive.force).toDouble()
+        livingBase.motionY = (-ConfigSpell.instantDive.force).toDouble()
         livingBase.aiMoveSpeed = 0.1f
     }
 

@@ -3,14 +3,8 @@ package aurocosh.divinefavor.common.config.entries.spell_talismans;
 import net.minecraftforge.common.config.Config;
 
 public class SearingPulse {
-    @Config.Name("Favor cost")
-    public int favorCost = 40;
-    @Config.Name("Min neighbours to add")
-    public int minNeighboursToAdd = 3;
-    @Config.Name("Max neighbours to add")
-    public int maxNeighboursToAdd = 4;
-    @Config.Name("Min blocks to smelt")
-    public int minBlocksToSmelt = 50;
-    @Config.Name("Max blocks to smelt")
-    public int maxBlocksToSmelt = 100;
+    @Config.Name("Favor cost per block")
+    public int favorCost = 1;
+    @Config.Name("Max blocks smelted")
+    public int maxBlocksSmelted = 100;
 }

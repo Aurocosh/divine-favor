@@ -140,7 +140,7 @@ object ModSpellTalismans {
         ice_bubble = SpellTalismanReplacmentBubble("ice_bubble", ModSpirits.blizrabi, ConfigSpell.iceBubble, Blocks.AIR, Blocks.ICE, UtilPredicate.or(Block::isWater, Block::isIce))
         ice_carving = SpellTalismanCarving("ice_carving", ModSpirits.blizrabi, ConfigSpell.iceCarving.favorCost, SpellOptions.USE_CAST, Blocks.ICE, Block::isWater)
         ice_surface = SpellTalismanIceSurface("ice_surface", ModSpirits.blizrabi, ConfigSpell.iceSurface.favorCost, SpellOptions.ALL_CAST)
-        instant_dive = SpellTalismanModPotionToggle("instant_dive", ModSpirits.blizrabi, ConfigSpell.instandDive.favorCost, ModPotions.instant_dive)
+        instant_dive = SpellTalismanModPotionToggle("instant_dive", ModSpirits.blizrabi, ConfigSpell.instantDive.favorCost, ModPotions.instant_dive)
         lake_thawing = SpellTalismanLakeThawing("lake_thawing", ModSpirits.blizrabi, ConfigSpell.lakeThawing.favorCost, SpellOptions.ALL_CAST)
         obsidian_road = SpellTalismanModPotion("obsidian_road", ModSpirits.blizrabi, ConfigSpell.obsidianRoad.favorCost, ModPotions.obsidian_road, ConfigSpell.obsidianRoad.duration)
         snowball_throw = SpellTalismanSnowballThrow("snowball_throw", ModSpirits.blizrabi, ConfigSpell.snowballThrow.favorCost, SpellOptions.ALL_CAST)

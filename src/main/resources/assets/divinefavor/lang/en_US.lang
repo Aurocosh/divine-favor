@@ -1,10 +1,10 @@
 # Creative tabs
-itemGroup.divinefavor=Divine Favor
-itemGroup.divinefavor_gems=Divine Favor Gems
-itemGroup.divinefavor_talismans=Divine Favor Talismans
-itemGroup.divinefavor_contracts=Divine Favor Contracts
-itemGroup.divinefavor_arrow_talismans=Divine Favor Arrow Talismans
-itemGroup.divinefavor_blade_talismans=Divine Favor Blade Talismans
+itemGroup.divinefavor:tab.main=Divine Favor
+itemGroup.divinefavor:tab.gems=Divine Favor Gems
+itemGroup.divinefavor:tab.talismans=Divine Favor Talismans
+itemGroup.divinefavor:tab.contracts=Divine Favor Contracts
+itemGroup.divinefavor:tab.arrow_talismans=Divine Favor Arrow Talismans
+itemGroup.divinefavor:tab.blade_talismans=Divine Favor Blade Talismans
 
 # BLOCK NAMES
 ## MEDIUMS
@@ -630,7 +630,7 @@ item.divinefavor:spell_talisman_prismatic_eyes.description=When active this spel
 item.divinefavor:spell_talisman_red_pulse.description=On cast it will create untouchable temporary block that emits redstone signal. This block will also emit small amount of light.
 item.divinefavor:spell_talisman_red_signal.description=On cast it will create untouchable temporary block that emits strong redstone signal. This block will also emit light. It is stronger version of red pulse talisman.
 item.divinefavor:spell_talisman_remote_chest.description=When used on chest it will create storage gem. When used storage gem will let you access bound chest remotely.
-item.divinefavor:spell_talisman_searing_pulse.description=When used on smeltable blocks it will instantly smelt them. It will only smelt blocks that smelt into blocks. And also it is pretty unpredictable how many of blocks and which blocks will be smelted.
+item.divinefavor:spell_talisman_searing_pulse.description=When used on smeltable blocks it will instantly smelt them. It will only smelt blocks that smelt into blocks.
 item.divinefavor:spell_talisman_sense_block_approximate.description=This talisman will highlight ore blocks around you, but it is not very precise and will show only approximate location of ore. It will highlight blocks of the same type as the block in your other hand.
 item.divinefavor:spell_talisman_sense_block_close.description=This talisman will highlight blocks in very small radius around you. It will highlight blocks of the same type as the block in your other hand.
 item.divinefavor:spell_talisman_sense_block_precise.description=This talisman will highlight blocks around you. It is precise but much more expensive then other similar talismans. It will highlight blocks of the same type as the block in your other hand.
@@ -781,6 +781,7 @@ name.divinefavor:property.safety_lock=Safety lock: %1$s
 name.divinefavor:property.piercing_inferno_depth=Depth: %1$s
 name.divinefavor:property.piercing_inferno_surface=Surface: %1$s
 name.divinefavor:property.blink_distance=Distance: %1$s
+name.divinefavor:property.block_limit=Blocks: %1$s
 
 ## TALISMAN PROPERTY TOOLTIPS
 tooltip.divinefavor:property.freeze_limit=Controls how much water blocks can be frozen per cast
@@ -789,3 +790,4 @@ tooltip.divinefavor:property.safety_lock=Prevents accidental cast. Talisman will
 tooltip.divinefavor:property.piercing_inferno_depth=Determines depth of tunnel created by the spell
 tooltip.divinefavor:property.piercing_inferno_surface=Determines max surface of tunnel created by the spell. Cost of spell based of this property even if actual surface of tunnel is less then that.
 tooltip.divinefavor:property.blink_distance=Teleportation distance
+tooltip.divinefavor:property.block_limit=Maximum amount of blocks affected by spell
