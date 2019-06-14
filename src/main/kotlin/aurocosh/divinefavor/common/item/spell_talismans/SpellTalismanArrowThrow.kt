@@ -22,7 +22,7 @@ class SpellTalismanArrowThrow(name: String, spirit: ModSpirit, favorCost: Int, o
 
     override fun performActionServer(context: TalismanContext) {
         val stack = context.player.getHeldItem(context.hand)
-        shootArrow(stack, context.world, context.player, 20000)
+        shootArrow(stack, context.world, context.player, 15)
     }
 
     private fun findAmmo(player: EntityPlayer): ItemStack {

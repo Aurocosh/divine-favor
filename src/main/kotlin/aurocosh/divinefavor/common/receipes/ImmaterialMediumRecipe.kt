@@ -8,7 +8,7 @@ import net.minecraft.util.ResourceLocation
 import java.util.*
 import kotlin.collections.ArrayList
 
-class ImmaterialMediumRecipe(val result: ItemStack, val callingStone: Ingredient, val ingredients: List<Ingredient>) {
+class ImmaterialMediumRecipe(val result: ItemStack, val callingStones: List<Ingredient>, val ingredients: List<Ingredient>) {
     val name: ResourceLocation
         get() = result.item.registryName ?: emptyLocation()
 

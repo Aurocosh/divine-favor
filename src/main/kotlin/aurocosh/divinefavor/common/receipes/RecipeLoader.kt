@@ -43,6 +43,6 @@ object RecipeLoader {
             val availableRecipes = allRecipes.S.filter { !removedRecipes.contains(it.result.item) }
             recipes.addAll(availableRecipes)
         }
-        recipes.S.map(MediumRecipeData::toRecipes).flatten().forEach(ModMediumRecipes::register)
+        recipes.S.map(MediumRecipeData::toRecipes).filterNotNull().forEach(ModMediumRecipes::register)
     }
 }

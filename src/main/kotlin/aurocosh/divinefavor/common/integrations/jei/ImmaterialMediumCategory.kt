@@ -43,7 +43,7 @@ class ImmaterialMediumCategory(helper: IGuiHelper) : IRecipeCategory<ImmaterialM
         group.set(0, Ingredient.fromItem(ModItems.ritual_pouch).getMatchingStacks().asList())
 
         group.init(1, false, 91, 34)
-        group.set(1, recipe.callingStone.getMatchingStacks().asList())
+        group.set(1, recipe.callingStones.flatMap { it.getMatchingStacks().asList() })
 
         group.init(2, false, 124, 34)
         group.set(2, recipe.result)

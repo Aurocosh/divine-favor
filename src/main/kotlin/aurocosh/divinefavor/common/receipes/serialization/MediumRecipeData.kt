@@ -14,7 +14,7 @@ class MediumRecipeData {
     var stones: List<String> = emptyList()
     var ingredients: List<RecipeIngredient> = emptyList()
 
-    fun toRecipes(): List<ImmaterialMediumRecipe> {
+    fun toRecipes(): ImmaterialMediumRecipe? {
         DivineFavor.logger.info("Processing recipe for: ${result.item}.")
 
         val resultStack = result.toItemStack()
@@ -22,12 +22,9 @@ class MediumRecipeData {
         val ingredients = ingredients.mapNotNull(RecipeIngredient::toIngredient)
 
         if (!validate(resultStack, stoneIngredients, ingredients))
-            return emptyList()
+            return null
 
-        val recipeList = ArrayList<ImmaterialMediumRecipe>()
-        for (callingStone in stoneIngredients)
-            recipeList.add(ImmaterialMediumRecipe(resultStack, callingStone, ingredients))
-        return recipeList
+        return ImmaterialMediumRecipe(resultStack, stoneIngredients, ingredients)
     }
 
     private fun getCallingStone(stone: String): ItemCallingStone? {

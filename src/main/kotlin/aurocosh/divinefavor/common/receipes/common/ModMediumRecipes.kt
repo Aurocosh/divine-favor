@@ -25,15 +25,17 @@ object ModMediumRecipes {
         val comparator = ItemStackIdComparator()
         matchingStacks.forEach { it.sortWith(comparator) }
 
-        val callingStoneStack = recipe.callingStone.getMatchingStacks()[0]
-        val callingStone = callingStoneStack.item as ItemCallingStone
+        for (stoneIngredient in recipe.callingStones) {
+            val callingStoneStack = stoneIngredient.getMatchingStacks().first()
+            val callingStone = callingStoneStack.item as ItemCallingStone
 
-        val ingredientStrings = matchingStacks.S.map { getStackListString(callingStone, it) }.toSet()
-        for (ingredientString in ingredientStrings) {
-            if (recipes.containsKey(ingredientString)) {
-                DivineFavor.logger.error("Recipe conflict ignoring last recipe: $ingredientString. Recipe result: ${recipe.result}")
-            } else
-                recipes[ingredientString] = recipe
+            val ingredientStrings = matchingStacks.S.map { getStackListString(callingStone, it) }.toSet()
+            for (ingredientString in ingredientStrings) {
+                if (recipes.containsKey(ingredientString)) {
+                    DivineFavor.logger.error("Recipe conflict ignoring last recipe: $ingredientString. Recipe result: ${recipe.result}")
+                } else
+                    recipes[ingredientString] = recipe
+            }
         }
     }
 
