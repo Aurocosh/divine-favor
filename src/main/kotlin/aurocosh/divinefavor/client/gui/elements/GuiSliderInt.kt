@@ -2,6 +2,7 @@ package aurocosh.divinefavor.client.gui.elements
 
 import aurocosh.divinefavor.DivineFavor
 import aurocosh.divinefavor.client.gui.interfaces.IButtonContainer
+import aurocosh.divinefavor.client.gui.interfaces.IScrollable
 import aurocosh.divinefavor.client.gui.interfaces.ITooltipProvider
 import aurocosh.divinefavor.common.lib.TooltipData
 import net.minecraft.client.Minecraft
@@ -20,8 +21,8 @@ class GuiSliderInt(
         override val tooltipKey: String, val minVal: Int, val maxVal: Int,
         value: Int, showDec: Boolean, drawStr: Boolean, color: Color,
         par: ISlider,
-        increment: (GuiSliderInt) -> Int = { it.value++ }, decrement: (GuiSliderInt) -> Int = { it.value-- })
-    : GuiSlider(0, xGlob + height, yGlob, width - 2 * height, height, prefix, suffix, minVal.toDouble(), maxVal.toDouble(), value.toDouble(), showDec, drawStr, par), IButtonContainer, ITooltipProvider {
+        increment: (GuiSliderInt) -> Unit = { it.value++ }, decrement: (GuiSliderInt) -> Unit = { it.value-- })
+    : GuiSlider(0, xGlob + height, yGlob, width - 2 * height, height, prefix, suffix, minVal.toDouble(), maxVal.toDouble(), value.toDouble(), showDec, drawStr, par), IButtonContainer, ITooltipProvider, IScrollable {
 
     private val colorBackground: Int = color.rgb
     private val colorSliderBackground: Int = color.darker().rgb
@@ -38,7 +39,7 @@ class GuiSliderInt(
         precision = 1
     }
 
-    var value: Int = 0
+    var value: Int = value
         set(value) {
             val valueNew = MathHelper.clamp(value, minVal, maxVal)
             if (valueNew == field)
@@ -105,7 +106,7 @@ class GuiSliderInt(
         return TooltipData(tooltipKey, false, xGlob, yGlob)
     }
 
-    private class GuiButtonSliderControl(private val parent: GuiSliderInt, x: Int, y: Int, width: Int, height: Int, buttonText: String, private val action: (GuiSliderInt) -> Int) : GuiButton(0, x, y, width, height, buttonText) {
+    private class GuiButtonSliderControl(private val parent: GuiSliderInt, x: Int, y: Int, width: Int, height: Int, buttonText: String, private val action: (GuiSliderInt) -> Unit) : GuiButton(0, x, y, width, height, buttonText) {
 
         override fun drawButton(mc: Minecraft, mouseX: Int, mouseY: Int, partial: Float) {
             if (!visible)
@@ -123,5 +124,9 @@ class GuiSliderInt(
             action.invoke(parent)
             return true
         }
+    }
+
+    override fun scroll(value: Int) {
+        this.value += value
     }
 }

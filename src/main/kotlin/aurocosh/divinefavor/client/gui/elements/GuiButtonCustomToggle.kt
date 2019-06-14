@@ -1,15 +1,18 @@
 package aurocosh.divinefavor.client.gui.elements
 
 import aurocosh.divinefavor.client.gui.interfaces.IButtonContainer
+import aurocosh.divinefavor.client.gui.interfaces.IScrollable
 import aurocosh.divinefavor.client.gui.interfaces.ITooltipProvider
 import aurocosh.divinefavor.common.lib.TooltipData
+import aurocosh.divinefavor.common.lib.extensions.isEven
+import aurocosh.divinefavor.common.lib.extensions.isOdd
 import net.minecraft.client.Minecraft
 import net.minecraft.client.gui.Gui
 import net.minecraft.client.gui.GuiButton
 import java.awt.Color
 import java.awt.Rectangle
 
-class GuiButtonCustomToggle(x: Int, y: Int, width: Int, height: Int, value: Boolean, buttonText: String, override val tooltipKey: String, color: Color, private val toggleAction: (Boolean) -> Unit) : GuiButton(0, x, y, width, height, buttonText), IButtonContainer, ITooltipProvider {
+class GuiButtonCustomToggle(x: Int, y: Int, width: Int, height: Int, value: Boolean, buttonText: String, override val tooltipKey: String, color: Color, private val toggleAction: (Boolean) -> Unit) : GuiButton(0, x, y, width, height, buttonText), IButtonContainer, ITooltipProvider, IScrollable {
 
     private val margin: Int = 1
     private val colorBackground: Int = color.rgb
@@ -20,6 +23,12 @@ class GuiButtonCustomToggle(x: Int, y: Int, width: Int, height: Int, value: Bool
     override val rect = Rectangle(x, y, width, height)
 
     var toggleState: Boolean = value
+        set(value) {
+            if (field == value)
+                return
+            field = value
+            toggleAction.invoke(value)
+        }
 
     override val components = listOf(this)
 
@@ -55,10 +64,14 @@ class GuiButtonCustomToggle(x: Int, y: Int, width: Int, height: Int, value: Bool
     }
 
     override fun mousePressed(mc: Minecraft, mouseX: Int, mouseY: Int): Boolean {
-        if(isMouseOver){
+        if (isMouseOver)
             toggleState = !toggleState
-            toggleAction.invoke(toggleState)
-        }
         return super.mousePressed(mc, mouseX, mouseY)
+    }
+
+    override fun scroll(value: Int) {
+        if (value.isEven())
+            return
+        toggleState = !toggleState
     }
 }

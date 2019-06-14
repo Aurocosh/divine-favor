@@ -6,4 +6,6 @@ import java.awt.Rectangle
 interface IButtonContainer {
     val rect: Rectangle
     val components: List<GuiButton>
+
+    fun isHovered(): Boolean = components.any(GuiButton::isMouseOver)
 }

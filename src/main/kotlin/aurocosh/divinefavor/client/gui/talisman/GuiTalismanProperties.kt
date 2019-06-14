@@ -4,6 +4,7 @@ import aurocosh.divinefavor.DivineFavor
 import aurocosh.divinefavor.client.core.handler.KeyBindings
 import aurocosh.divinefavor.client.gui.elements.GuiButtonStack
 import aurocosh.divinefavor.client.gui.interfaces.IButtonContainer
+import aurocosh.divinefavor.client.gui.interfaces.IScrollable
 import aurocosh.divinefavor.client.gui.interfaces.ITooltipProvider
 import aurocosh.divinefavor.common.constants.ConstResources
 import aurocosh.divinefavor.common.item.talisman.ItemTalisman
@@ -14,6 +15,7 @@ import aurocosh.divinefavor.common.item.talisman.properties.TalismanPropertyInt
 import aurocosh.divinefavor.common.item.talisman_tools.TalismanContainerAdapter
 import aurocosh.divinefavor.common.lib.TooltipCache
 import aurocosh.divinefavor.common.network.message.sever.MessageSyncTalismanPropertyIndex
+import aurocosh.divinefavor.common.util.UtilMouse
 import net.minecraft.client.Minecraft
 import net.minecraft.client.gui.Gui
 import net.minecraft.client.gui.GuiScreen
@@ -21,8 +23,6 @@ import net.minecraft.client.settings.GameSettings
 import net.minecraft.item.ItemStack
 import net.minecraft.util.ResourceLocation
 import java.awt.Color
-
-import java.io.IOException
 
 class GuiTalismanProperties(stack: ItemStack, private val playerSlot: Int) : GuiScreen() {
     private val item: ItemTalisman
@@ -34,7 +34,7 @@ class GuiTalismanProperties(stack: ItemStack, private val playerSlot: Int) : Gui
 
     private val yMargin = 20
     private val xMargin = 20
-    private val markerMargin = 5
+    private val markerMargin = 0
 
     private val tooltipWidth = 140
     private val tooltipHeight = 500
@@ -130,10 +130,22 @@ class GuiTalismanProperties(stack: ItemStack, private val playerSlot: Int) : Gui
         }
     }
 
-    @Throws(IOException::class)
     override fun mouseClicked(mouseX: Int, mouseY: Int, mouseButton: Int) {
         super.mouseClicked(mouseX, mouseY, mouseButton)
 
+    }
+
+    override fun handleMouseInput() {
+        super.handleMouseInput()
+        val value = UtilMouse.getScrollCount(7)
+        val scrollable = propertyGuiElements.S.filter(IButtonContainer::isHovered).filterIsInstance<IScrollable>().firstOrNull()
+        if (scrollable != null) {
+            scrollable.scroll(value)
+        } else if (selectedPropertyIndex != -1) {
+            val container = propertyGuiElements[selectedPropertyIndex]
+            if (container is IScrollable)
+                container.scroll(value)
+        }
     }
 
     override fun updateScreen() {
