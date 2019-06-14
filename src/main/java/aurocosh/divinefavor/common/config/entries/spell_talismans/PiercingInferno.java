@@ -3,14 +3,12 @@ package aurocosh.divinefavor.common.config.entries.spell_talismans;
 import net.minecraftforge.common.config.Config;
 
 public class PiercingInferno {
-    @Config.Name("Favor cost")
-    public int favorCost = 80;
-    @Config.Name("Blocks to break weak")
-    public int blocksToBreakWeak = 30;
-    @Config.Name("Blocks to break normal")
-    public int blocksToBreakNormal = 150;
+    @Config.Name("Favor per block")
+    public int favorCost = 1;
     @Config.Name("Max breaking speed")
-    public int maxPierceDepth = 2;
+    public int maxPierceDepth = 32;
+    @Config.Name("Max tunnel surface")
+    public int maxTunnelSurface = 24;
     @Config.Name("chanceToIgnite")
     public int chanceToIgnite = 20;
 }

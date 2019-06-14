@@ -71,13 +71,15 @@ class GuiSliderInt(
         hovered = mouseX >= x && mouseY >= y && mouseX < x + width && mouseY < y + height
         Gui.drawRect(x, y, x + width, y + height, colorBackground)
         mouseDragged(mc, mouseX, mouseY)
-        renderText(mc, this)
+
+        val buttonText = I18n.format(displayKey, value)
+        renderText(mc, this, buttonText)
     }
 
-    private fun renderText(mc: Minecraft, component: GuiButton) {
+    private fun renderText(mc: Minecraft, component: GuiButton, text: String) {
         val color = if (!enabled) 10526880 else if (hovered) 16777120 else -1
 
-        var buttonText = I18n.format(displayKey, value)
+        var buttonText = text
         val strWidth = mc.fontRenderer.getStringWidth(buttonText)
         val ellipsisWidth = mc.fontRenderer.getStringWidth("...")
         if (strWidth > component.width - 6 && strWidth > ellipsisWidth)
@@ -117,7 +119,7 @@ class GuiSliderInt(
             hovered = mouseX >= x && mouseY >= y && mouseX < x + width && mouseY < y + height
             Gui.drawRect(x, y, x + width, y + height, parent.colorBackground)
             parent.drawBorderedRect(x, y, width, height)
-            parent.renderText(mc, this)
+            parent.renderText(mc, this, displayString)
         }
 
         override fun mousePressed(mc: Minecraft, mouseX: Int, mouseY: Int): Boolean {

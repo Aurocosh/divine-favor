@@ -5,6 +5,7 @@ import aurocosh.divinefavor.common.constants.BlockPosConstants
 import aurocosh.divinefavor.common.item.spell_talismans.base.ItemSpellTalisman
 import aurocosh.divinefavor.common.item.spell_talismans.base.SpellOptions
 import aurocosh.divinefavor.common.item.spell_talismans.base.TalismanContext
+import aurocosh.divinefavor.common.item.talisman.properties.TalismanPropertyInt
 import aurocosh.divinefavor.common.lib.extensions.inverse
 import aurocosh.divinefavor.common.spirit.base.ModSpirit
 import aurocosh.divinefavor.common.tasks.BlockProcessingTask
@@ -12,16 +13,27 @@ import aurocosh.divinefavor.common.util.UtilBlock
 import aurocosh.divinefavor.common.util.UtilCoordinates
 import aurocosh.divinefavor.common.util.UtilRandom
 import net.minecraft.init.Blocks
+import net.minecraft.item.ItemStack
 import net.minecraft.util.math.BlockPos
 import java.util.*
 
 class SpellTalismanPiercingInferno(name: String, spirit: ModSpirit, favorCost: Int, options: EnumSet<SpellOptions>) : ItemSpellTalisman(name, spirit, favorCost, options) {
+    private val pierceDepth: TalismanPropertyInt = registerIntProperty("piercing_inferno_depth", ConfigSpell.piercingInferno.maxPierceDepth)
+    private val pierceSurface: TalismanPropertyInt = registerIntProperty("piercing_inferno_surface", ConfigSpell.piercingInferno.maxTunnelSurface)
+
+    override fun getFavorCost(itemStack: ItemStack): Int {
+        val depth = pierceDepth.getValue(itemStack)
+        val surface = pierceSurface.getValue(itemStack)
+        return ConfigSpell.piercingInferno.favorCost * depth * surface;
+    }
 
     override fun performActionServer(context: TalismanContext) {
         val world = context.world
         val facing = context.facing
+        val itemStack = context.stack
+        val depth = pierceDepth.getValue(itemStack)
+        val surface = pierceSurface.getValue(itemStack)
 
-        var blocksToBreak = if (context.player.isSneaking) ConfigSpell.piercingInferno.blocksToBreakWeak else ConfigSpell.piercingInferno.blocksToBreakNormal
 
         val expansionDirs = ArrayList(BlockPosConstants.DIRECT_NEIGHBOURS)
         val shift = BlockPos(facing.opposite.directionVec)
@@ -33,10 +45,10 @@ class SpellTalismanPiercingInferno(name: String, spirit: ModSpirit, favorCost: I
             state.isSideSolid(world, pos, facing) && world.isAirBlock(pos.offset(facing))
         }
 
-        var piercingShape = UtilCoordinates.floodFill(listOf(context.pos), expansionDirs, predicate, blocksToBreak)
+        var piercingShape = UtilCoordinates.floodFill(listOf(context.pos), expansionDirs, predicate, surface)
         val shapeSize = piercingShape.size
-        blocksToBreak -= shapeSize
 
+        var blocksToBreak = depth * surface
         val blocksToRemove = ArrayList<BlockPos>()
         while (blocksToBreak > 0) {
             var i = 0

@@ -62,7 +62,7 @@ abstract class ItemTalisman(val name: String, texturePath: String, val spirit: M
         stack.compound.setInteger(TAG_PROPERTY_INDEX, index)
     }
 
-    protected fun registerIntProperty(name: String, defaultValue: Int, minValue: Int, maxValue: Int): TalismanPropertyInt {
+    protected fun registerIntProperty(name: String, defaultValue: Int, minValue: Int = 1, maxValue: Int = defaultValue): TalismanPropertyInt {
         val property = TalismanPropertyInt(name, defaultValue, minValue, maxValue)
         addProperty(property)
         return property
@@ -74,7 +74,7 @@ abstract class ItemTalisman(val name: String, texturePath: String, val spirit: M
         return property
     }
 
-    fun getFavorCost(itemStack: ItemStack): Int {
+    open fun getFavorCost(itemStack: ItemStack): Int {
         return favorCost
     }
 
