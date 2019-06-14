@@ -1,10 +1,15 @@
-package aurocosh.divinefavor.common.item.base
+package aurocosh.divinefavor.common.item.talisman
 
 import aurocosh.divinefavor.DivineFavor
+import aurocosh.divinefavor.common.item.base.ModItem
 import aurocosh.divinefavor.common.item.spell_talismans.base.TalismanContext
 import aurocosh.divinefavor.common.lib.extensions.divinePlayerData
 import aurocosh.divinefavor.common.network.message.client.spirit_data.MessageSyncFavor
 import aurocosh.divinefavor.common.spirit.base.ModSpirit
+import aurocosh.divinefavor.common.item.talisman.properties.TalismanProperty
+import aurocosh.divinefavor.common.item.talisman.properties.TalismanPropertyBool
+import aurocosh.divinefavor.common.item.talisman.properties.TalismanPropertyInt
+import aurocosh.divinefavor.common.lib.extensions.compound
 import net.minecraft.client.resources.I18n
 import net.minecraft.client.util.ITooltipFlag
 import net.minecraft.entity.EntityLivingBase
@@ -17,11 +22,56 @@ import net.minecraftforge.fml.relauncher.SideOnly
 
 abstract class ItemTalisman(val name: String, texturePath: String, val spirit: ModSpirit, val favorCost: Int) : ModItem(name, texturePath) {
 
+    private val propertyList = ArrayList<TalismanProperty<out Any>>()
+    private val propertyMap = HashMap<String, TalismanProperty<out Any>>()
+
     val spiritId: Int
         get() = spirit.id
 
     init {
         setMaxStackSize(1)
+    }
+
+    val properties: List<TalismanProperty<out Any>>
+        get() = propertyList
+
+    fun getProperty(index: Int) = propertyList[index]
+
+    fun getProperty(name: String) = propertyMap[name]
+
+    private fun addProperty(property: TalismanProperty<out Any>) {
+        if (propertyMap.containsKey(property.name)) {
+            DivineFavor.logger.error("Talisman property conflict in talisman $name. Conflicting property name ${property.name}")
+        } else {
+            propertyList.add(property)
+            propertyMap[property.name] = property
+        }
+    }
+
+    fun getSelectedPropertyIndex(stack: ItemStack): Int {
+        if (propertyList.isEmpty())
+            return -1;
+        if (!stack.hasTagCompound())
+            return 0
+        return stack.compound.getInteger(TAG_PROPERTY_INDEX)
+    }
+
+    fun setSelectedPropertyIndex(stack: ItemStack, index: Int) {
+        if (propertyList.isEmpty())
+            return
+        stack.compound.setInteger(TAG_PROPERTY_INDEX, index)
+    }
+
+    protected fun registerIntProperty(name: String, defaultValue: Int, minValue: Int, maxValue: Int): TalismanPropertyInt {
+        val property = TalismanPropertyInt(name, defaultValue, minValue, maxValue)
+        addProperty(property)
+        return property
+    }
+
+    protected fun registerBoolProperty(name: String, defaultValue: Boolean): TalismanPropertyBool {
+        val property = TalismanPropertyBool(name, defaultValue)
+        addProperty(property)
+        return property
     }
 
     abstract fun validateCastType(context: TalismanContext): Boolean
@@ -95,6 +145,12 @@ abstract class ItemTalisman(val name: String, texturePath: String, val spirit: M
         val name = I18n.format(spirit.nameTranslationKey)
         val message = I18n.format("tooltip.divinefavor:talisman.spirit", name)
         tooltip.add(message)
+
+        if (propertyList.isNotEmpty()) {
+            tooltip.add("")
+            tooltip.add(I18n.format("tooltip.divinefavor:property_list"))
+            propertyList.map { it.toLocalString(stack) }.forEach { tooltip.add(it) }
+        }
     }
 
     protected open fun validate(context: TalismanContext): Boolean {
@@ -116,4 +172,8 @@ abstract class ItemTalisman(val name: String, texturePath: String, val spirit: M
     protected open fun performActionServer(context: TalismanContext) {}
 
     protected open fun performActionClient(context: TalismanContext) {}
+
+    companion object {
+        private const val TAG_PROPERTY_INDEX = "PropertyIndex"
+    }
 }

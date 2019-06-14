@@ -12,6 +12,22 @@ object ResourceNamer {
         return ResourceLocation(DivineFavor.MOD_ID, "$prefix.$name")
     }
 
+    fun getTypedNameString(type: String, prefix: String, name: String): String {
+        return "$type.${DivineFavor.MOD_ID}:$prefix.$name"
+    }
+
+    fun getTypedNameString(type: String, name: String): String {
+        return "$type.${DivineFavor.MOD_ID}:$name"
+    }
+
+    fun getNameString(prefix: String, name: String): String {
+        return "${DivineFavor.MOD_ID}:$prefix.$name"
+    }
+
+    fun getNameString(name: String): String {
+        return "${DivineFavor.MOD_ID}:$name"
+    }
+
     fun getItemName(type: String, name: String): ResourceLocation {
         return ResourceLocation(DivineFavor.MOD_ID, "${type}_$name")
     }

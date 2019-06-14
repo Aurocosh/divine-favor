@@ -1,7 +1,7 @@
 package aurocosh.divinefavor.common.potions.base.potion
 
 import aurocosh.divinefavor.DivineFavor
-import aurocosh.divinefavor.common.item.base.ItemTalisman
+import aurocosh.divinefavor.common.item.talisman.ItemTalisman
 import net.minecraft.client.Minecraft
 import net.minecraft.client.resources.I18n
 import net.minecraft.potion.PotionEffect

@@ -22,6 +22,11 @@ object TalismanContainerAdapter {
                 ?: stack.capNull(CAPABILITY_SPELL_BLADE)
     }
 
+    fun getTalismanStack(stack: ItemStack) : ItemStack{
+        val container = getTalismanContainer(stack) ?: return stack
+        return container.getSelectedStack()
+    }
+
     fun selectSlot(playerSlot: Int, talismanSlot: Int) {
         MessageSyncTalismanContainerSlot(playerSlot, talismanSlot).send()
     }

@@ -1,7 +1,7 @@
 package aurocosh.divinefavor.common.item.spell_talismans.base
 
 import aurocosh.divinefavor.common.config.common.ConfigGeneral
-import aurocosh.divinefavor.common.item.base.ItemTalisman
+import aurocosh.divinefavor.common.item.talisman.ItemTalisman
 import aurocosh.divinefavor.common.lib.extensions.toVec3d
 import aurocosh.divinefavor.common.util.UtilEntity
 import net.minecraft.entity.EntityLivingBase
