@@ -1,7 +1,12 @@
 package aurocosh.divinefavor.common.item.talisman.properties
 
+import aurocosh.divinefavor.common.constants.ConstLang
+import aurocosh.divinefavor.common.core.ResourceNamer
 import aurocosh.divinefavor.common.lib.extensions.compound
+import net.minecraft.client.resources.I18n
 import net.minecraft.item.ItemStack
+import net.minecraftforge.fml.relauncher.Side
+import net.minecraftforge.fml.relauncher.SideOnly
 
 class TalismanPropertyBool(name: String, defaultValue: Boolean) : TalismanProperty<Boolean>(name, defaultValue) {
     override fun getValueImpl(stack: ItemStack): Boolean {
@@ -18,5 +23,13 @@ class TalismanPropertyBool(name: String, defaultValue: Boolean) : TalismanProper
 
     override fun previous(stack: ItemStack): Boolean {
         return !getValue(stack)
+    }
+
+    @SideOnly(Side.CLIENT)
+    override fun toLocalString(stack: ItemStack): String {
+        val value = getValue(stack)
+        val valueKey = if (value) ConstLang.yesKey else ConstLang.noKey
+        val valueString = I18n.format(valueKey)
+        return I18n.format(displayKey, valueString)
     }
 }

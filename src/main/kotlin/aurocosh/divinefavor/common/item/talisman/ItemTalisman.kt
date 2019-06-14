@@ -145,6 +145,12 @@ abstract class ItemTalisman(val name: String, texturePath: String, val spirit: M
         val name = I18n.format(spirit.nameTranslationKey)
         val message = I18n.format("tooltip.divinefavor:talisman.spirit", name)
         tooltip.add(message)
+
+        if (propertyList.isNotEmpty()) {
+            tooltip.add("")
+            tooltip.add(I18n.format("tooltip.divinefavor:property_list"))
+            propertyList.map { it.toLocalString(stack) }.forEach { tooltip.add(it) }
+        }
     }
 
     protected open fun validate(context: TalismanContext): Boolean {

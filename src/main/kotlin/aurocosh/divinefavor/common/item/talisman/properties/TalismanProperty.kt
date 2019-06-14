@@ -2,11 +2,13 @@ package aurocosh.divinefavor.common.item.talisman.properties
 
 import aurocosh.divinefavor.common.core.ResourceNamer
 import net.minecraft.item.ItemStack
+import net.minecraftforge.fml.relauncher.Side
+import net.minecraftforge.fml.relauncher.SideOnly
 
 abstract class TalismanProperty<T>(val name: String, val defaultValue: T) {
     val tag = "Property$name"
-    val tooltipKey = "tooltip.${ResourceNamer.getNameString("property", name)}"
-    val displayKey = "name.${ResourceNamer.getNameString("property", name)}"
+    val tooltipKey = ResourceNamer.getTypedNameString("tooltip", "property", name)
+    val displayKey = ResourceNamer.getTypedNameString("name", "property", name)
 
     fun getValue(stack: ItemStack): T {
         if (!stack.hasTagCompound())
@@ -27,4 +29,7 @@ abstract class TalismanProperty<T>(val name: String, val defaultValue: T) {
 
     abstract fun next(stack: ItemStack): T
     abstract fun previous(stack: ItemStack): T
+
+    @SideOnly(Side.CLIENT)
+    abstract fun toLocalString(stack: ItemStack): String
 }

@@ -3,6 +3,7 @@ package aurocosh.divinefavor.client.gui.elements
 import aurocosh.divinefavor.client.gui.interfaces.IButtonContainer
 import aurocosh.divinefavor.client.gui.interfaces.IScrollable
 import aurocosh.divinefavor.client.gui.interfaces.ITooltipProvider
+import aurocosh.divinefavor.common.constants.ConstLang
 import aurocosh.divinefavor.common.lib.TooltipData
 import aurocosh.divinefavor.common.lib.extensions.isEven
 import aurocosh.divinefavor.common.lib.extensions.isOdd
@@ -13,7 +14,7 @@ import net.minecraft.client.resources.I18n
 import java.awt.Color
 import java.awt.Rectangle
 
-class GuiButtonCustomToggle(x: Int, y: Int, width: Int, height: Int, value: Boolean, displayKey: String, override val tooltipKey: String, color: Color, private val toggleAction: (Boolean) -> Unit) : GuiButton(0, x, y, width, height, I18n.format(displayKey, value)), IButtonContainer, ITooltipProvider, IScrollable {
+class GuiButtonCustomToggle(x: Int, y: Int, width: Int, height: Int, value: Boolean, val displayKey: String, override val tooltipKey: String, color: Color, private val toggleAction: (Boolean) -> Unit) : GuiButton(0, x, y, width, height, ""), IButtonContainer, ITooltipProvider, IScrollable {
 
     private val margin: Int = 1
     private val colorBackground: Int = color.rgb
@@ -51,7 +52,11 @@ class GuiButtonCustomToggle(x: Int, y: Int, width: Int, height: Int, value: Bool
 
     private fun renderText(mc: Minecraft, component: GuiButton) {
         val color = if (!enabled) 10526880 else if (hovered) 16777120 else -1
-        var buttonText = component.displayString
+
+        val valueKey = if (toggleState) ConstLang.yesKey else ConstLang.noKey
+        var valueText = I18n.format(valueKey)
+        var buttonText = I18n.format(displayKey, valueText)
+
         val strWidth = mc.fontRenderer.getStringWidth(buttonText)
         val ellipsisWidth = mc.fontRenderer.getStringWidth("...")
         if (strWidth > component.width - 6 && strWidth > ellipsisWidth)

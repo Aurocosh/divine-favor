@@ -51,6 +51,11 @@ tooltip.divinefavor:talisman.spirit=Spirit: %1$s
 tooltip.divinefavor:wishingStone.favor_count=Restores %1$d favor of %2$s
 tooltip.divinefavor:marked_glass.spirit_is_active=Spirit is active
 tooltip.divinefavor:marked_glass.spirit_is_inactive=Spirit is inactive
+tooltip.divinefavor:property_list=Talisman properties:
+
+# WORDS
+word.divinefavor:on=On
+word.divinefavor:off=Off
 
 # SPIRIT NAMES
 divinefavor:spirit.arbow.name=Arbow
@@ -772,7 +777,7 @@ entity.ping.name=Ping
 ## TALISMAN PROPERTIES
 name.divinefavor:property.freeze_limit=Freeze limit: %1$d
 name.divinefavor:property.test=Test: %1$d
-name.divinefavor:property.safety_lock=Safety lock
+name.divinefavor:property.safety_lock=Safety lock: %1$s
 
 ## TALISMAN PROPERTY TOOLTIPS
 tooltip.divinefavor:property.freeze_limit=Controls how much water blocks can be frozen per cast
