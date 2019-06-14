@@ -62,7 +62,7 @@ class GuiTalismanProperties(stack: ItemStack, private val playerSlot: Int) : Gui
 
     override fun initGui() {
         properties.forEach(this::addPropertyToGui)
-        val buttonStack = GuiButtonStack(width / 2, 20, 16, 16, itemStack, Color.LIGHT_GRAY) {}
+        val buttonStack = GuiButtonStack(width / 2 - 8, 20, 16, 16, itemStack, Color.LIGHT_GRAY) {}
         buttonStack.components.forEach { this.addButton(it) }
     }
 
