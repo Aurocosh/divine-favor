@@ -781,10 +781,13 @@ name.divinefavor:property.blink_distance=Distance: %1$s
 name.divinefavor:property.block_count=Blocks: %1$s
 name.divinefavor:property.block_limit=Blocks: %1$s
 name.divinefavor:property.freeze_limit=Freeze limit: %1$d
+name.divinefavor:property.lock_position=Position lock: %1$s
 name.divinefavor:property.piercing_inferno_depth=Depth: %1$s
 name.divinefavor:property.piercing_inferno_surface=Surface: %1$s
-name.divinefavor:property.safety_lock position=Position lock: %1$s
 name.divinefavor:property.safety_lock=Safety lock: %1$s
+name.divinefavor:property.shift_x=Shift x: %1$s
+name.divinefavor:property.shift_y=Shift y: %1$s
+name.divinefavor:property.shift_z=Shift z: %1$s
 name.divinefavor:property.test=Test: %1$d
 
 ## TALISMAN PROPERTY TOOLTIPS
@@ -792,8 +795,11 @@ tooltip.divinefavor:property.blink_distance=Teleportation distance
 tooltip.divinefavor:property.block_count=Amount of blocks affected by spell
 tooltip.divinefavor:property.block_limit=Maximum amount of blocks affected by spell
 tooltip.divinefavor:property.freeze_limit=Controls how much water blocks can be frozen per cast
+tooltip.divinefavor:property.lock_position=Locks base position to the block that you are looking at
 tooltip.divinefavor:property.piercing_inferno_depth=Determines depth of tunnel created by the spell
 tooltip.divinefavor:property.piercing_inferno_surface=Determines max surface of tunnel created by the spell. Cost of spell based of this property even if actual surface of tunnel is less then that.
-tooltip.divinefavor:property.safety_lock position=Locks base position to the block that you are looking at
 tooltip.divinefavor:property.safety_lock=Prevents accidental cast. Talisman will not work while safety enabled
+tooltip.divinefavor:property.shift_x=Shifts origin on x axis
+tooltip.divinefavor:property.shift_y=Shifts origin on y axis
+tooltip.divinefavor:property.shift_z=Shifts origin on z axis
 tooltip.divinefavor:property.test=This is a test property

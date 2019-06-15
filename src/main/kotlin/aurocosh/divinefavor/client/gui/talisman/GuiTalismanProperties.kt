@@ -3,6 +3,7 @@ package aurocosh.divinefavor.client.gui.talisman
 import aurocosh.divinefavor.client.core.handler.KeyBindings
 import aurocosh.divinefavor.client.gui.elements.GuiButtonStack
 import aurocosh.divinefavor.client.gui.interfaces.IButtonContainer
+import aurocosh.divinefavor.client.gui.interfaces.IResettable
 import aurocosh.divinefavor.client.gui.interfaces.IScrollable
 import aurocosh.divinefavor.client.gui.interfaces.ITooltipProvider
 import aurocosh.divinefavor.common.constants.ConstResources
@@ -11,9 +12,9 @@ import aurocosh.divinefavor.common.item.talisman_tools.TalismanAdapter
 import aurocosh.divinefavor.common.lib.TooltipCache
 import aurocosh.divinefavor.common.lib.extensions.S
 import aurocosh.divinefavor.common.network.message.sever.MessageSyncTalismanPropertyIndex
-import aurocosh.divinefavor.common.talisman_properties.TalismanProperty
-import aurocosh.divinefavor.common.talisman_properties.TalismanPropertyBool
-import aurocosh.divinefavor.common.talisman_properties.TalismanPropertyInt
+import aurocosh.divinefavor.common.stack_properties.StackProperty
+import aurocosh.divinefavor.common.stack_properties.StackPropertyBool
+import aurocosh.divinefavor.common.stack_properties.StackPropertyInt
 import aurocosh.divinefavor.common.util.UtilMouse
 import net.minecraft.client.Minecraft
 import net.minecraft.client.gui.Gui
@@ -28,7 +29,7 @@ class GuiTalismanProperties(stack: ItemStack, private val playerSlot: Int) : Gui
     private val itemStack: ItemStack
 
     private var selectedPropertyIndex: Int
-    private val properties: List<TalismanProperty<out Any>>
+    private val properties: List<StackProperty<out Any>>
     private var propertyGuiElements: MutableList<IButtonContainer> = ArrayList()
 
     private val yMargin = 20
@@ -65,7 +66,7 @@ class GuiTalismanProperties(stack: ItemStack, private val playerSlot: Int) : Gui
         buttonStack.components.forEach { this.addButton(it) }
     }
 
-    private fun addPropertyToGui(property: TalismanProperty<out Any>) {
+    private fun addPropertyToGui(property: StackProperty<out Any>) {
         val index = propertyGuiElements.size
         val selector = {
             selectedPropertyIndex = index
@@ -74,11 +75,11 @@ class GuiTalismanProperties(stack: ItemStack, private val playerSlot: Int) : Gui
         }
 
         when (property) {
-            is TalismanPropertyInt -> {
+            is StackPropertyInt -> {
                 val slider = PropertyGuiHelper.addNewSlider(property, itemStack, nextElementX, nextElementY, elementWidth, elementHeight, selector)
                 addGuiElement(slider)
             }
-            is TalismanPropertyBool -> {
+            is StackPropertyBool -> {
                 val slider = PropertyGuiHelper.getToggle(property, itemStack, nextElementX, nextElementY, elementWidth, elementHeight, selector)
                 addGuiElement(slider)
             }
@@ -129,19 +130,33 @@ class GuiTalismanProperties(stack: ItemStack, private val playerSlot: Int) : Gui
     }
 
     override fun mouseClicked(mouseX: Int, mouseY: Int, mouseButton: Int) {
-        super.mouseClicked(mouseX, mouseY, mouseButton)
+        if (mouseButton == 2) {
+            getSelectedElement<IResettable>()?.reset()
+        } else if (mouseButton == 1) {
+            if (propertyGuiElements.isEmpty())
+                return
+            selectedPropertyIndex = propertyGuiElements.S.mapIndexed { i, element -> Pair(i, element) }.filter { it.second.isHovered() }.map { it.first }.firstOrNull()
+                    ?: 0
+        } else
+            super.mouseClicked(mouseX, mouseY, mouseButton)
     }
 
     override fun handleMouseInput() {
         super.handleMouseInput()
-        val scrollable = propertyGuiElements.S.filter(IButtonContainer::isHovered).filterIsInstance<IScrollable>().firstOrNull()
-        if (scrollable != null) {
-            scrollable.scroll(UtilMouse.getScrollCount(scrollable.fastScrollValue))
-        } else if (0 <= selectedPropertyIndex && selectedPropertyIndex < propertyGuiElements.size) {
+        val scrollable = getSelectedElement<IScrollable>()
+        scrollable?.scroll(UtilMouse.getScrollCount(scrollable.fastScrollValue))
+    }
+
+    private inline fun <reified T> getSelectedElement(): T? {
+        val hoveredElement = propertyGuiElements.S.filter(IButtonContainer::isHovered).filterIsInstance<T>().firstOrNull()
+        if (hoveredElement != null)
+            return hoveredElement
+        if (0 <= selectedPropertyIndex && selectedPropertyIndex < propertyGuiElements.size) {
             val container = propertyGuiElements[selectedPropertyIndex]
-            if (container is IScrollable)
-                container.scroll(UtilMouse.getScrollCount(container.fastScrollValue))
+            if (container is T)
+                return container
         }
+        return null
     }
 
     override fun updateScreen() {

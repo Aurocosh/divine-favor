@@ -2,6 +2,7 @@ package aurocosh.divinefavor.client.gui.elements
 
 import aurocosh.divinefavor.DivineFavor
 import aurocosh.divinefavor.client.gui.interfaces.IButtonContainer
+import aurocosh.divinefavor.client.gui.interfaces.IResettable
 import aurocosh.divinefavor.client.gui.interfaces.IScrollable
 import aurocosh.divinefavor.client.gui.interfaces.ITooltipProvider
 import aurocosh.divinefavor.common.lib.TooltipData
@@ -19,11 +20,11 @@ import java.awt.Rectangle
 
 class GuiSliderInt(
         val xGlob: Int, val yGlob: Int, width: Int, height: Int, private val displayKey: String,
-        override val tooltipKey: String, val minVal: Int, val maxVal: Int,
-        value: Int, showDec: Boolean, drawStr: Boolean, color: Color,
+        override val tooltipKey: String, currentValue: Int, val defaultValue: Int,
+        val minVal: Int, val maxVal: Int, showDec: Boolean, drawStr: Boolean, color: Color,
         par: ISlider,
         increment: (GuiSliderInt) -> Unit = { it.value++ }, decrement: (GuiSliderInt) -> Unit = { it.value-- })
-    : GuiSlider(0, xGlob + height, yGlob, width - 2 * height, height, "", "", minVal.toDouble(), maxVal.toDouble(), value.toDouble(), showDec, drawStr, par), IButtonContainer, ITooltipProvider, IScrollable {
+    : GuiSlider(0, xGlob + height, yGlob, width - 2 * height, height, "", "", minVal.toDouble(), maxVal.toDouble(), currentValue.toDouble(), showDec, drawStr, par), IButtonContainer, ITooltipProvider, IScrollable, IResettable {
 
     private val colorBackground: Int = color.rgb
     private val colorSliderBackground: Int = color.darker().rgb
@@ -41,7 +42,7 @@ class GuiSliderInt(
         precision = 1
     }
 
-    var value: Int = value
+    var value: Int = currentValue
         set(value) {
             val valueNew = MathHelper.clamp(value, minVal, maxVal)
             if (valueNew == field)
@@ -133,5 +134,9 @@ class GuiSliderInt(
 
     override fun scroll(value: Int) {
         this.value += value
+    }
+
+    override fun reset() {
+        this.value = defaultValue
     }
 }

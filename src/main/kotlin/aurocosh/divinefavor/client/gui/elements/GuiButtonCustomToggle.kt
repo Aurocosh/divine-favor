@@ -1,6 +1,7 @@
 package aurocosh.divinefavor.client.gui.elements
 
 import aurocosh.divinefavor.client.gui.interfaces.IButtonContainer
+import aurocosh.divinefavor.client.gui.interfaces.IResettable
 import aurocosh.divinefavor.client.gui.interfaces.IScrollable
 import aurocosh.divinefavor.client.gui.interfaces.ITooltipProvider
 import aurocosh.divinefavor.common.constants.ConstLang
@@ -13,7 +14,7 @@ import net.minecraft.client.resources.I18n
 import java.awt.Color
 import java.awt.Rectangle
 
-class GuiButtonCustomToggle(x: Int, y: Int, width: Int, height: Int, value: Boolean, val displayKey: String, override val tooltipKey: String, color: Color, private val toggleAction: (Boolean) -> Unit) : GuiButton(0, x, y, width, height, ""), IButtonContainer, ITooltipProvider, IScrollable {
+class GuiButtonCustomToggle(x: Int, y: Int, width: Int, height: Int, currentValue: Boolean, val defaultValue: Boolean, val displayKey: String, override val tooltipKey: String, color: Color, private val toggleAction: (Boolean) -> Unit) : GuiButton(0, x, y, width, height, ""), IButtonContainer, ITooltipProvider, IScrollable, IResettable {
 
     private val margin: Int = 1
     private val colorBackground: Int = color.rgb
@@ -24,7 +25,7 @@ class GuiButtonCustomToggle(x: Int, y: Int, width: Int, height: Int, value: Bool
     override val fastScrollValue = 1
     override val rect = Rectangle(x, y, width, height)
 
-    var toggleState: Boolean = value
+    var toggleState: Boolean = currentValue
         set(value) {
             if (field == value)
                 return
@@ -54,7 +55,7 @@ class GuiButtonCustomToggle(x: Int, y: Int, width: Int, height: Int, value: Bool
         val color = if (!enabled) 10526880 else if (hovered) 16777120 else -1
 
         val valueKey = if (toggleState) ConstLang.yesKey else ConstLang.noKey
-        var valueText = I18n.format(valueKey)
+        val valueText = I18n.format(valueKey)
         var buttonText = I18n.format(displayKey, valueText)
 
         val strWidth = mc.fontRenderer.getStringWidth(buttonText)
@@ -79,5 +80,9 @@ class GuiButtonCustomToggle(x: Int, y: Int, width: Int, height: Int, value: Bool
         if (value.isEven())
             return
         toggleState = !toggleState
+    }
+
+    override fun reset() {
+        toggleState = defaultValue
     }
 }
