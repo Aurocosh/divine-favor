@@ -2,8 +2,6 @@ package aurocosh.divinefavor.common.potions.potions
 
 import aurocosh.divinefavor.DivineFavor
 import aurocosh.divinefavor.common.config.common.ConfigSpell
-import aurocosh.divinefavor.common.lib.extensions.divinePlayerData
-import aurocosh.divinefavor.common.network.message.client.spirit_data.MessageSyncFavor
 import aurocosh.divinefavor.common.potions.base.potion.ModPotionToggleLimited
 import aurocosh.divinefavor.common.potions.common.ModPotions
 import aurocosh.divinefavor.common.util.UtilPlayer

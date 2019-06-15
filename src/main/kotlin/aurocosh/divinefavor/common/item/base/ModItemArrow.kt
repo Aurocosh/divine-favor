@@ -3,12 +3,9 @@ package aurocosh.divinefavor.common.item.base
 import aurocosh.divinefavor.common.core.ResourceNamer
 import aurocosh.divinefavor.common.lib.interfaces.IOrdered
 import aurocosh.divinefavor.common.registry.ModRegistries
-import net.minecraft.block.Block
 import net.minecraft.creativetab.CreativeTabs
 import net.minecraft.item.ItemArrow
-import net.minecraft.item.ItemBlock
 import net.minecraft.item.ItemStack
-import net.minecraft.item.ItemTippedArrow
 import net.minecraft.util.NonNullList
 import net.minecraftforge.fml.relauncher.Side
 import net.minecraftforge.fml.relauncher.SideOnly

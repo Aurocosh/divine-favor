@@ -12,7 +12,6 @@ import aurocosh.divinefavor.common.util.UtilRandom
 import aurocosh.divinefavor.common.util.UtilSpirit
 import net.minecraft.entity.EntityLivingBase
 import net.minecraft.entity.player.EntityPlayer
-import net.minecraft.item.ItemStack
 
 class PotionToweringPresence : ModPotion("towering_presence", 0x7FB8A4) {
 

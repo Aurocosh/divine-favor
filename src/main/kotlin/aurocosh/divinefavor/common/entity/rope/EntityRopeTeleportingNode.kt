@@ -1,7 +1,6 @@
 package aurocosh.divinefavor.common.entity.rope
 
 import aurocosh.divinefavor.common.entity.rope.base.EntityRopeNodeBase
-import aurocosh.divinefavor.common.item.common.ModItems
 import aurocosh.divinefavor.common.item.common.ModRopes
 import aurocosh.divinefavor.common.util.UtilCoordinates
 import aurocosh.divinefavor.common.util.UtilEntity

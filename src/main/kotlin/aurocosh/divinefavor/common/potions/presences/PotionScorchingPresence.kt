@@ -9,7 +9,6 @@ import aurocosh.divinefavor.common.spirit.ModSpirits
 import aurocosh.divinefavor.common.util.UtilSpirit
 import net.minecraft.entity.EntityLivingBase
 import net.minecraft.entity.player.EntityPlayer
-import net.minecraft.item.ItemStack
 import net.minecraft.util.DamageSource
 import net.minecraftforge.event.entity.living.LivingDamageEvent
 import net.minecraftforge.fml.common.Mod

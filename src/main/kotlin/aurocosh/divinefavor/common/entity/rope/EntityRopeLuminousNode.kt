@@ -8,7 +8,6 @@ import aurocosh.divinefavor.common.item.common.ModRopes
 import aurocosh.divinefavor.common.lib.LoopedCounter
 import aurocosh.divinefavor.common.lib.extensions.S
 import aurocosh.divinefavor.common.lib.extensions.isAirOrReplacable
-import aurocosh.divinefavor.common.spirit.punishment.NeblazePunishment
 import aurocosh.divinefavor.common.util.UtilCoordinates
 import aurocosh.divinefavor.common.util.UtilPlayer
 import net.minecraft.block.Block

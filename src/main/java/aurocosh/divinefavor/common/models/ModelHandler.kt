@@ -3,7 +3,6 @@ package aurocosh.divinefavor.common.models
 import aurocosh.divinefavor.DivineFavor
 import aurocosh.divinefavor.common.item.base.ICustomMeshHolder
 import aurocosh.divinefavor.common.item.base.IModelHolder
-import aurocosh.divinefavor.common.lib.extensions.S
 import aurocosh.divinefavor.common.registry.ModRegistries
 import net.minecraft.client.renderer.block.model.ModelResourceLocation
 import net.minecraft.item.Item

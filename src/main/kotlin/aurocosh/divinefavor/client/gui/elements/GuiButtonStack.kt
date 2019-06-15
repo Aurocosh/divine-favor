@@ -4,10 +4,8 @@ import aurocosh.divinefavor.client.gui.interfaces.IButtonContainer
 import aurocosh.divinefavor.client.gui.interfaces.ITooltipProvider
 import aurocosh.divinefavor.common.core.ResourceNamer
 import aurocosh.divinefavor.common.item.base.ModItem
-import aurocosh.divinefavor.common.lib.ItemStackIdComparator
 import aurocosh.divinefavor.common.lib.TooltipData
 import net.minecraft.client.Minecraft
-import net.minecraft.client.gui.Gui
 import net.minecraft.client.gui.GuiButton
 import net.minecraft.item.ItemStack
 import java.awt.Color

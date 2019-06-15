@@ -10,7 +10,6 @@ import aurocosh.divinefavor.common.util.UtilSpirit
 import net.minecraft.entity.EntityLivingBase
 import net.minecraft.entity.monster.IMob
 import net.minecraft.entity.player.EntityPlayer
-import net.minecraft.item.ItemStack
 import net.minecraft.util.EntityDamageSource
 import net.minecraftforge.event.entity.living.LivingDamageEvent
 import net.minecraftforge.event.entity.living.LivingDeathEvent

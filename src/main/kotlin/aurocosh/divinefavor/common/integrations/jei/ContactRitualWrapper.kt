@@ -5,9 +5,6 @@ import aurocosh.divinefavor.common.receipes.ContactRitualRecipe
 import mezz.jei.api.ingredients.IIngredients
 import mezz.jei.api.ingredients.VanillaTypes
 import mezz.jei.api.recipe.IRecipeWrapper
-import net.minecraft.client.Minecraft
-import net.minecraft.client.resources.I18n
-import java.awt.Color
 
 
 class ContactRitualWrapper(val recipe: ContactRitualRecipe) : IRecipeWrapper {

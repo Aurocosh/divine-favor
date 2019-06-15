@@ -7,7 +7,6 @@ import aurocosh.divinefavor.common.receipes.serialization.ingredients.RecipeIngr
 import net.minecraft.item.Item
 import net.minecraft.item.ItemStack
 import net.minecraft.item.crafting.Ingredient
-import java.util.*
 
 class MediumRecipeData {
     var result: RecipeResult = RecipeResult()

@@ -4,18 +4,12 @@ import aurocosh.divinefavor.DivineFavor
 import aurocosh.divinefavor.common.config.common.ConfigPresence
 import aurocosh.divinefavor.common.entity.mob.EntityDirewolf
 import aurocosh.divinefavor.common.item.common.ModCallingStones
-import aurocosh.divinefavor.common.item.gems.ItemCallingStone
-import aurocosh.divinefavor.common.item.gems.ItemMarkedGlass
-import aurocosh.divinefavor.common.lib.enums.InventoryIndexes
 import aurocosh.divinefavor.common.potions.base.potion.ModPotion
 import aurocosh.divinefavor.common.spirit.ModSpirits
-import aurocosh.divinefavor.common.spirit.base.ModSpirit
 import aurocosh.divinefavor.common.util.UtilCoordinates
 import aurocosh.divinefavor.common.util.UtilRandom
 import aurocosh.divinefavor.common.util.UtilSpirit
 import net.minecraft.entity.EntityLivingBase
-import net.minecraft.entity.player.EntityPlayer
-import net.minecraft.item.ItemStack
 import net.minecraftforge.fml.common.Mod
 
 @Mod.EventBusSubscriber(modid = DivineFavor.MOD_ID)

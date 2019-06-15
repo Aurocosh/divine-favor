@@ -9,7 +9,6 @@ import aurocosh.divinefavor.common.spirit.ModSpirits
 import aurocosh.divinefavor.common.util.UtilSpirit
 import net.minecraft.entity.EntityLivingBase
 import net.minecraft.entity.player.EntityPlayer
-import net.minecraft.item.ItemStack
 import net.minecraftforge.event.entity.living.EnderTeleportEvent
 import net.minecraftforge.fml.common.Mod
 import net.minecraftforge.fml.common.eventhandler.EventPriority

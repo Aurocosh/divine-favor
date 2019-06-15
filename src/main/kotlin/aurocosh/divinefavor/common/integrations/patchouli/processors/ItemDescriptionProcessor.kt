@@ -2,7 +2,6 @@ package aurocosh.divinefavor.common.integrations.patchouli.processors
 
 import aurocosh.divinefavor.DivineFavor
 import aurocosh.divinefavor.common.item.base.IDescriptionProvider
-import aurocosh.divinefavor.common.item.base.ModItem
 import net.minecraft.client.resources.I18n
 import net.minecraft.item.Item
 import net.minecraft.util.ResourceLocation

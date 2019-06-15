@@ -6,7 +6,6 @@ import aurocosh.divinefavor.client.gui.interfaces.ITooltipProvider
 import aurocosh.divinefavor.common.constants.ConstLang
 import aurocosh.divinefavor.common.lib.TooltipData
 import aurocosh.divinefavor.common.lib.extensions.isEven
-import aurocosh.divinefavor.common.lib.extensions.isOdd
 import net.minecraft.client.Minecraft
 import net.minecraft.client.gui.Gui
 import net.minecraft.client.gui.GuiButton

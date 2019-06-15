@@ -14,7 +14,6 @@ import net.minecraft.entity.EntityLivingBase
 import net.minecraft.entity.SharedMonsterAttributes
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.init.Blocks
-import net.minecraft.item.ItemStack
 import net.minecraftforge.fml.common.Mod
 
 @Mod.EventBusSubscriber(modid = DivineFavor.MOD_ID)

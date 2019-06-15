@@ -1,7 +1,6 @@
 package aurocosh.divinefavor.common.lib.extensions
 
 import net.minecraft.entity.Entity
-import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.util.DamageSource
 import net.minecraft.util.math.BlockPos
 import net.minecraft.util.math.Vec3d

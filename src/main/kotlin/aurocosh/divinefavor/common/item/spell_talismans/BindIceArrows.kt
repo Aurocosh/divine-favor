@@ -1,7 +1,6 @@
 package aurocosh.divinefavor.common.item.spell_talismans
 
 import aurocosh.divinefavor.common.config.common.ConfigSpell
-import aurocosh.divinefavor.common.item.base.ModItem
 import aurocosh.divinefavor.common.item.common.ModItems
 import aurocosh.divinefavor.common.item.spell_talismans.base.ItemSpellTalisman
 import aurocosh.divinefavor.common.item.spell_talismans.base.SpellOptions

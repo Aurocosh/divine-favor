@@ -9,8 +9,9 @@ import net.minecraft.item.ItemStack
 
 data class PropertyData(val stack: ItemStack, val property: TalismanProperty<out Any>);
 
-abstract class MessageSyncTalismanProperty : DivineServerMessage {
+abstract class MessageSyncTalismanProperty<T> : DivineServerMessage {
     var name: String = ""
+    abstract var value: T
 
     constructor()
 
@@ -18,10 +19,11 @@ abstract class MessageSyncTalismanProperty : DivineServerMessage {
         this.name = name
     }
 
-    protected fun getProperty(playerMP: EntityPlayerMP): PropertyData? {
-        val stack = UtilPlayer.getItemInHand(playerMP) { it is ItemTalisman && it.properties.exist(name) }
+    override fun handleSafe(serverPlayer: EntityPlayerMP) {
+        val stack = UtilPlayer.getItemInHand(serverPlayer) { it is ItemTalisman && it.properties.exist(name) }
         val talisman = stack.item as ItemTalisman
-        val property = talisman.properties.get(name) ?: return null
-        return PropertyData(stack, property)
+        val property = talisman.properties.get(name) as? TalismanProperty<T> ?: return
+
+        property.setValue(stack, value)
     }
 }

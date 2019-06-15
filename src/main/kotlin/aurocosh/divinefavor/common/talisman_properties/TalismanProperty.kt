@@ -10,6 +10,8 @@ abstract class TalismanProperty<T>(val name: String, val defaultValue: T, privat
     val tooltipKey = ResourceNamer.getTypedNameString("tooltip", "property", name)
     val displayKey = ResourceNamer.getTypedNameString("name", "property", name)
 
+    val changeListeners: MutableList<(ItemStack, T) -> Unit> = ArrayList()
+
     fun getValue(stack: ItemStack): T {
         if (!stack.hasTagCompound())
             return defaultValue
