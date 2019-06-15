@@ -11,8 +11,11 @@ import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.init.SoundEvents
 import net.minecraft.item.Item
 import net.minecraft.item.ItemStack
+import net.minecraft.util.EnumFacing
 import net.minecraft.util.EnumHand
 import net.minecraft.util.SoundCategory
+import net.minecraft.util.math.BlockPos
+import net.minecraft.util.math.MathHelper
 import net.minecraftforge.items.IItemHandler
 
 data class HeldStack(val hand: EnumHand, val slot: Int, val stack: ItemStack)
@@ -148,5 +151,12 @@ object UtilPlayer {
             handler.extractItem(index, removed, false)
         }
         return toRemove == 0
+    }
+
+    fun getShift(player: EntityPlayer, forwardShift: Int, upShift: Int, rightShift: Int): BlockPos {
+        val facing = player.horizontalFacing
+        if (facing == EnumFacing.NORTH || facing == EnumFacing.SOUTH)
+            return BlockPos(-rightShift, upShift, forwardShift)
+        return BlockPos(-forwardShift, upShift, -rightShift)
     }
 }
