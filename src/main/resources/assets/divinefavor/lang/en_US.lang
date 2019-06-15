@@ -566,7 +566,7 @@ item.divinefavor:rope_teleporting.description=Unusual trapping device. It will t
 item.divinefavor:ice_arrow.description=Delicate arrows made of ice. They are frail and because of this they deal less damage then regular arrows and break easily, but in a pinch they can be very useful. This type of arrow also cannot be tipped in potion, but on the other hand it deals extra damage to hellish mobs.
 
 ## SPELL TALISMAN DESCRIPTIONS
-item.divinefavor:spell_talisman_build_column.description=TODO
+item.divinefavor:spell_talisman_build_column.description=This talisman allows you to instantly build columns of variable height from any blocks
 item.divinefavor:spell_talisman_bind_ice_arrows.description=This talisman creates frail ice arrows. Those arrows are weaker then regular arrows, but this talisman may help you if you run out of arrows in the field. Also ice arrows are very effective against spawns of nether.
 item.divinefavor:spell_talisman_place_torch.description=This talisman takes a torch from players inventory and places it where player is looking
 item.divinefavor:spell_talisman_armor_of_pacifist.description=Grants user armor of pacifist. Player will be protected from most damage types, but in turn will not be able to attack anyone.

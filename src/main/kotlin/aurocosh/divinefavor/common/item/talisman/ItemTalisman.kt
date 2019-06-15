@@ -37,7 +37,7 @@ abstract class ItemTalisman(val name: String, texturePath: String, val spirit: M
     abstract fun validateCastType(context: TalismanContext): Boolean
 
     fun cast(context: TalismanContext): Boolean {
-        if (!context.valid)
+        if(!preprocess(context))
             return false
         if (!validateCastType(context))
             return false
@@ -111,31 +111,19 @@ abstract class ItemTalisman(val name: String, texturePath: String, val spirit: M
         properties.getPropertyTooltip(stack).forEach { tooltip.add(it) }
     }
 
-    protected open fun validate(context: TalismanContext): Boolean {
-        return true
-    }
+    protected open fun preprocess(context: TalismanContext): Boolean = context.valid
+    protected open fun validate(context: TalismanContext): Boolean = true
+    protected open fun isConsumeCharge(context: TalismanContext): Boolean = true
 
-    protected open fun isConsumeCharge(context: TalismanContext): Boolean {
-        return true
-    }
-
-    open fun raycastBlock(): Boolean {
-        return false
-    }
-
-    open fun raycastTarget(): Boolean {
-        return false
-    }
+    open fun raycastBlock(): Boolean = false
+    open fun raycastTarget(): Boolean = false
 
     protected open fun performActionServer(context: TalismanContext) {}
-
     protected open fun performActionClient(context: TalismanContext) {}
 
     @SideOnly(Side.CLIENT)
     open fun handleRendering(context: TalismanContext, lastEvent: RenderWorldLastEvent) {
     }
 
-    override fun canCatch(): Boolean {
-        return false
-    }
+    override fun canCatch(): Boolean  = false
 }

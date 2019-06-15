@@ -2,16 +2,19 @@ package aurocosh.divinefavor.common.item.spell_talismans
 
 import aurocosh.divinefavor.DivineFavor
 import aurocosh.divinefavor.client.block_ovelay.BlockConstructionRendering
+import aurocosh.divinefavor.common.config.common.ConfigGeneral
 import aurocosh.divinefavor.common.coordinate_generators.ColumnCoordinateGenerator
 import aurocosh.divinefavor.common.item.spell_talismans.base.ItemSpellTalisman
 import aurocosh.divinefavor.common.item.spell_talismans.base.SpellOptions
 import aurocosh.divinefavor.common.item.spell_talismans.base.TalismanContext
+import aurocosh.divinefavor.common.lib.extensions.S
 import aurocosh.divinefavor.common.lib.extensions.get
 import aurocosh.divinefavor.common.spirit.base.ModSpirit
 import aurocosh.divinefavor.common.stack_properties.StackPropertyBlockPos
 import aurocosh.divinefavor.common.stack_properties.StackPropertyBool
 import aurocosh.divinefavor.common.stack_properties.StackPropertyIBlockState
 import aurocosh.divinefavor.common.stack_properties.StackPropertyInt
+import aurocosh.divinefavor.common.tasks.BlockPlacingTask
 import aurocosh.divinefavor.common.util.UtilBlock
 import aurocosh.divinefavor.common.util.UtilEntity
 import aurocosh.divinefavor.common.util.UtilPlayer
@@ -31,7 +34,6 @@ class SpellTalismanBuildColumn(name: String, spirit: ModSpirit, favorCost: Int, 
     private val isPosLocked: StackPropertyBool = propertyHandler.registerBoolProperty("lock_position", false)
     private val selectedBlock: StackPropertyIBlockState = propertyHandler.registerBlockStateProperty("selected_block", Blocks.AIR.defaultState)
     private val lockedPosition: StackPropertyBlockPos = propertyHandler.registerBlockPosProperty("locked_position", BlockPos.ORIGIN)
-//    private val lockPosition: StackPropertyBool = propertyHandler.registerBoolProperty("lock_position", false)
 
     init {
         isPosLocked.addChangeListener(this::onPositionLock)
@@ -41,13 +43,16 @@ class SpellTalismanBuildColumn(name: String, spirit: ModSpirit, favorCost: Int, 
         return favorCost * blockCount.getValue(itemStack);
     }
 
-    override fun validate(context: TalismanContext): Boolean {
+    override fun preprocess(context: TalismanContext): Boolean {
+        val stack = context.stack
         if (context.player.isSneaking) {
             val state = context.world.getBlockState(context.pos)
-            selectedBlock.setValue(context.stack, state, true)
+            selectedBlock.setValue(stack, state, true)
             return false
         }
-        return true
+        if (stack.get(isPosLocked))
+            return true
+        return context.valid
     }
 
     override fun performActionServer(context: TalismanContext) {
@@ -62,9 +67,9 @@ class SpellTalismanBuildColumn(name: String, spirit: ModSpirit, favorCost: Int, 
         UtilPlayer.consumeItems(itemStack, context.player, count)
 
         val blockPos = getOrigin(locked, context.pos, stack)
-        val coordinates = coordinateGenerator.getCoordinates(blockPos, count).take(itemCount)
-        for (pos in coordinates)
-            UtilBlock.replaceBlock(context.player, context.world, blockPos, state)
+        val coordinates = coordinateGenerator.getCoordinates(blockPos, count).take(itemCount).shuffled()
+
+        BlockPlacingTask(coordinates, state, context.player, 1).start()
     }
 
     override fun performActionClient(context: TalismanContext) {
@@ -84,7 +89,7 @@ class SpellTalismanBuildColumn(name: String, spirit: ModSpirit, favorCost: Int, 
         BlockConstructionRendering.render(lastEvent, context.player, state, coordinates)
     }
 
-    fun onPositionLock(stack: ItemStack, value: Boolean) {
+    private fun onPositionLock(stack: ItemStack, value: Boolean) {
         val player = DivineFavor.proxy.clientPlayer
         val traceResult = UtilEntity.getBlockPlayerLookingAt(player) ?: return
 

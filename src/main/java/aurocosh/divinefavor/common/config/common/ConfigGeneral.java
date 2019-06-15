@@ -19,8 +19,8 @@ public class ConfigGeneral {
     public static int maxClimbingRadius = 12;
     @Config.Name("Ray trace range")
     public static double rayTraceRange = 64;
-
-    public static PatternList blockBlacklist;
+    @Config.Name("Block placing speed")
+    public static int blockPlacingSpeed = 3;
 
     @Config.Name("Ore blocks")
     public static String[] oreBlocks = new String[]{
