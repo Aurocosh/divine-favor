@@ -123,6 +123,7 @@ object ModSpellTalismans {
     lateinit var wooden_punch: ItemSpellTalisman
 
     // New fields
+    lateinit var build_column: ItemSpellTalisman
     lateinit var bind_ice_arrows: ItemSpellTalisman
 
     fun preInit() {
@@ -251,6 +252,7 @@ object ModSpellTalismans {
         starvation = SpellTalismanModPotion("starvation", ModSpirits.timber, ConfigSpell.starvation.favorCost, ModPotions.starvation, ConfigSpell.starvation.duration)
 
         // New instances
+        build_column = SpellTalismanBuildColumn("build_column", ModSpirits.romol, ConfigSpell.buildColumn.favorCost, SpellOptions.TRACE_ONLY_CAST)
         bind_ice_arrows = SpellTalismanBindIceArrows("bind_ice_arrows", ModSpirits.blizrabi, ConfigSpell.bindIceArrows.favorCost, SpellOptions.ALL_CAST)
     }
 

@@ -5,20 +5,19 @@ import aurocosh.divinefavor.common.constants.BlockPosConstants
 import aurocosh.divinefavor.common.item.spell_talismans.base.ItemSpellTalisman
 import aurocosh.divinefavor.common.item.spell_talismans.base.SpellOptions
 import aurocosh.divinefavor.common.item.spell_talismans.base.TalismanContext
-import aurocosh.divinefavor.common.item.talisman.properties.TalismanPropertyInt
+import aurocosh.divinefavor.common.item.talisman.properties.StackPropertyInt
 import aurocosh.divinefavor.common.lib.extensions.getBlock
 import aurocosh.divinefavor.common.lib.wrapper.ConvertingPredicate
 import aurocosh.divinefavor.common.spirit.base.ModSpirit
 import aurocosh.divinefavor.common.tasks.BlockProcessingTask
 import aurocosh.divinefavor.common.util.UtilBlock
 import aurocosh.divinefavor.common.util.UtilCoordinates
-import aurocosh.divinefavor.common.util.UtilRandom
 import net.minecraft.item.ItemStack
 import net.minecraft.util.math.BlockPos
 import java.util.*
 
 class SpellTalismanSearingPulse(name: String, spirit: ModSpirit, favorCost: Int, options: EnumSet<SpellOptions>) : ItemSpellTalisman(name, spirit, favorCost, options) {
-    private val blockLimit: TalismanPropertyInt = registerIntProperty("block_limit", ConfigSpell.searingPulse.maxBlocksSmelted)
+    private val blockLimit: StackPropertyInt = propertyHandler.registerIntProperty("block_limit", ConfigSpell.searingPulse.maxBlocksSmelted)
 
     override fun getFavorCost(itemStack: ItemStack): Int {
         return favorCost * blockLimit.getValue(itemStack)

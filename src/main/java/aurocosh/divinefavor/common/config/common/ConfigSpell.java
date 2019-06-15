@@ -212,6 +212,8 @@ public class ConfigSpell {
     public static WoodenPunch woodenPunch = new WoodenPunch();
 
     // New configs
+    @Config.Name("Build column")
+    public static BuildColumn buildColumn = new BuildColumn();
     @Config.Name("Bind")
     public static BindIceArrows bindIceArrows = new BindIceArrows();
 }

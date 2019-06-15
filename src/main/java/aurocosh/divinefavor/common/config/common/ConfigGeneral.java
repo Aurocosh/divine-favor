@@ -17,6 +17,10 @@ public class ConfigGeneral {
     public static int talismanCastDistance = 48;
     @Config.Name("Max climbing radius")
     public static int maxClimbingRadius = 12;
+    @Config.Name("Ray trace range")
+    public static double rayTraceRange = 64;
+
+    public static PatternList blockBlacklist;
 
     @Config.Name("Ore blocks")
     public static String[] oreBlocks = new String[]{

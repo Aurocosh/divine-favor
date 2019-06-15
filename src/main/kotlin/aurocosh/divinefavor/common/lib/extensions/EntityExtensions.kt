@@ -1,6 +1,7 @@
 package aurocosh.divinefavor.common.lib.extensions
 
 import net.minecraft.entity.Entity
+import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.util.DamageSource
 import net.minecraft.util.math.BlockPos
 import net.minecraft.util.math.Vec3d
@@ -20,4 +21,12 @@ fun Entity.getPreviousPosition(): BlockPos {
 fun Entity.attackEntityNoTimer(source: DamageSource, amount: Float): Boolean {
     this.hurtResistantTime = 0
     return this.attackEntityFrom(source, amount)
+}
+
+fun Entity.getPartialPosition(partialTick: Float): Vec3d {
+    return Vec3d(
+            this.lastTickPosX + (this.posX - this.lastTickPosX) * partialTick,
+            this.lastTickPosY + (this.posY - this.lastTickPosY) * partialTick,
+            this.lastTickPosZ + (this.posZ - this.lastTickPosZ) * partialTick
+    )
 }

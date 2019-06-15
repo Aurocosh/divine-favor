@@ -5,7 +5,7 @@ import net.minecraft.item.ItemStack
 import net.minecraftforge.fml.relauncher.Side
 import net.minecraftforge.fml.relauncher.SideOnly
 
-abstract class TalismanProperty<T>(val name: String, val defaultValue: T) {
+abstract class StackProperty<T>(val name: String, val defaultValue: T) {
     val tag = "Property$name"
     val tooltipKey = ResourceNamer.getTypedNameString("tooltip", "property", name)
     val displayKey = ResourceNamer.getTypedNameString("name", "property", name)

@@ -2,7 +2,6 @@ package aurocosh.divinefavor.common.network.message.sever
 
 import aurocosh.divinefavor.common.item.talisman.ItemTalisman
 import aurocosh.divinefavor.common.network.message.base.DivineServerMessage
-import aurocosh.divinefavor.common.item.talisman.properties.TalismanPropertyInt
 import aurocosh.divinefavor.common.item.talisman_tools.TalismanContainerAdapter
 import net.minecraft.entity.player.EntityPlayerMP
 
@@ -21,6 +20,6 @@ class MessageSyncTalismanPropertyIndex : DivineServerMessage {
         val stack = serverPlayer.inventory.getStackInSlot(playerSlotIndex)
         val talismanStack = TalismanContainerAdapter.getTalismanStack(stack) ?: return
         val item = talismanStack.item as? ItemTalisman ?: return
-        item.setSelectedPropertyIndex(stack, index)
+        item.properties.setSelectedIndex(stack, index)
     }
 }

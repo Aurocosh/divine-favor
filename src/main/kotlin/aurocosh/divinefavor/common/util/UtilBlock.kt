@@ -5,6 +5,7 @@ import net.minecraft.block.BlockLiquid
 import net.minecraft.block.state.IBlockState
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.init.Blocks
+import net.minecraft.item.Item
 import net.minecraft.item.ItemBlock
 import net.minecraft.item.ItemStack
 import net.minecraft.item.crafting.FurnaceRecipes
@@ -178,5 +179,17 @@ object UtilBlock {
 
         val shift = facing.directionVec
         return ignite(player, world, pos.add(shift))
+    }
+
+    fun getSilkDropIfPresent(world: World, state: IBlockState, player: EntityPlayer): ItemStack {
+        if (state.block.canSilkHarvest(world, BlockPos.ORIGIN, state, player))
+            return getSilkTouchDrop(state)
+        return state.block.getPickBlock(state, null, world, BlockPos.ORIGIN, player)
+    }
+
+    fun getSilkTouchDrop(state: IBlockState): ItemStack {
+        val item = Item.getItemFromBlock(state.block)
+        val meta = if (item.hasSubtypes) state.block.damageDropped(state) else 0
+        return ItemStack(item, 1, meta)
     }
 }

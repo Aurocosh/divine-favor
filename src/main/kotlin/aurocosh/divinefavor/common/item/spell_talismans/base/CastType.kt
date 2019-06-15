@@ -5,5 +5,6 @@ enum class CastType {
     UseCast,
     RightCast,
     BladeCast,
-    BowCast
+    BowCast,
+    Rendering
 }

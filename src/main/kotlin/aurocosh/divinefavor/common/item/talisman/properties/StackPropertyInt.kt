@@ -7,7 +7,7 @@ import net.minecraft.util.math.MathHelper
 import net.minecraftforge.fml.relauncher.Side
 import net.minecraftforge.fml.relauncher.SideOnly
 
-class TalismanPropertyInt(name: String, defaultValue: Int, val minValue: Int, val maxValue: Int) : TalismanProperty<Int>(name, defaultValue) {
+class StackPropertyInt(name: String, defaultValue: Int, val minValue: Int, val maxValue: Int) : StackProperty<Int>(name, defaultValue) {
 
     override fun getValueImpl(stack: ItemStack): Int {
         return stack.compound.getInteger(tag)

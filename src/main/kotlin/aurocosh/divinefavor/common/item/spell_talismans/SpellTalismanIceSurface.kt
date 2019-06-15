@@ -11,8 +11,8 @@ import aurocosh.divinefavor.common.lib.wrapper.AreaPredicate
 import aurocosh.divinefavor.common.lib.wrapper.ConvertingPredicate
 import aurocosh.divinefavor.common.spirit.base.ModSpirit
 import aurocosh.divinefavor.common.tasks.BlockProcessingTask
-import aurocosh.divinefavor.common.item.talisman.properties.TalismanPropertyBool
-import aurocosh.divinefavor.common.item.talisman.properties.TalismanPropertyInt
+import aurocosh.divinefavor.common.item.talisman.properties.StackPropertyBool
+import aurocosh.divinefavor.common.item.talisman.properties.StackPropertyInt
 import aurocosh.divinefavor.common.util.UtilBlock
 import aurocosh.divinefavor.common.util.UtilCoordinates
 import aurocosh.divinefavor.common.util.UtilPredicate
@@ -23,15 +23,15 @@ import net.minecraft.util.text.TextComponentTranslation
 import java.util.*
 
 class SpellTalismanIceSurface(name: String, spirit: ModSpirit, favorCost: Int, options: EnumSet<SpellOptions>) : ItemSpellTalisman(name, spirit, favorCost, options) {
-    private val floodLimit: TalismanPropertyInt;
-    private val test: TalismanPropertyInt;
-    private val testB: TalismanPropertyBool;
+    private val floodLimit: StackPropertyInt;
+    private val test: StackPropertyInt;
+    private val testB: StackPropertyBool;
 
     init {
         val limit = ConfigSpell.iceSurface.floodLimit
-        floodLimit = registerIntProperty("freeze_limit", limit, 1, limit)
-        test = registerIntProperty("test", 10, 5, 20)
-        testB = registerBoolProperty("safety_lock", false)
+        floodLimit = propertyHandler.registerIntProperty("freeze_limit", limit, 1, limit)
+        test = propertyHandler.registerIntProperty("test", 10, 5, 20)
+        testB = propertyHandler.registerBoolProperty("safety_lock", false)
     }
 
     override fun performActionServer(context: TalismanContext) {

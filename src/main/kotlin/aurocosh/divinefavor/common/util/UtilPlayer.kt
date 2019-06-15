@@ -2,6 +2,9 @@ package aurocosh.divinefavor.common.util
 
 import aurocosh.divinefavor.common.lib.SlotData
 import aurocosh.divinefavor.common.lib.enums.InventoryIndexes
+import aurocosh.divinefavor.common.lib.extensions.asSequence
+import aurocosh.divinefavor.common.lib.extensions.asSlotSequence
+import aurocosh.divinefavor.common.lib.extensions.getAllInventoryCapabilities
 import aurocosh.divinefavor.common.network.message.client.syncing.MessageSyncFlyingCapability
 import net.minecraft.entity.item.EntityItem
 import net.minecraft.entity.player.EntityPlayer
@@ -10,6 +13,7 @@ import net.minecraft.item.Item
 import net.minecraft.item.ItemStack
 import net.minecraft.util.EnumHand
 import net.minecraft.util.SoundCategory
+import net.minecraftforge.items.IItemHandler
 
 object UtilPlayer {
     fun getItemInHand(player: EntityPlayer, predicate: (Item) -> Boolean): ItemStack {
@@ -105,5 +109,23 @@ object UtilPlayer {
         val minSlot = InventoryIndexes.MinSlotIndex.value
         val maxSlot = InventoryIndexes.MaxSlotIndex.value
         return minSlot..maxSlot
+    }
+
+    fun countItems(itemStack: ItemStack, player: EntityPlayer): Int {
+        if (player.capabilities.isCreativeMode)
+            return Integer.MAX_VALUE
+
+        return player.getAllInventoryCapabilities()
+                .flatMap(IItemHandler::asSequence)
+                .filter { it.item === itemStack.item && it.metadata == itemStack.metadata }
+                .sumBy { it.count }
+    }
+
+    fun consumeItems(itemStack: ItemStack, player: EntityPlayer, count: Int): Boolean {
+        if (player.capabilities.isCreativeMode)
+            return true
+        return player.getAllInventoryCapabilities()
+                .flatMap(IItemHandler::asSlotSequence)
+                .any { (_, _, stack) -> stack.item === itemStack.item && stack.metadata == itemStack.metadata && stack.count >= count }
     }
 }
