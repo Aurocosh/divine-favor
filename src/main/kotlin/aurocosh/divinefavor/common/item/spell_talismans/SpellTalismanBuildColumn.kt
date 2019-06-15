@@ -2,8 +2,6 @@ package aurocosh.divinefavor.common.item.spell_talismans
 
 import aurocosh.divinefavor.DivineFavor
 import aurocosh.divinefavor.client.block_ovelay.BlockConstructionRendering
-import aurocosh.divinefavor.client.block_ovelay.Test
-import aurocosh.divinefavor.client.block_ovelay.ToolRenders
 import aurocosh.divinefavor.common.coordinate_generators.ColumnCoordinateGenerator
 import aurocosh.divinefavor.common.item.spell_talismans.base.ItemSpellTalisman
 import aurocosh.divinefavor.common.item.spell_talismans.base.SpellOptions
@@ -48,14 +46,23 @@ class SpellTalismanBuildColumn(name: String, spirit: ModSpirit, favorCost: Int, 
     override fun performActionServer(context: TalismanContext) {
         val count = blockCount.getValue(context.stack)
         val state = selectedBlock.getValue(context.stack)
+        val locked = lockPosition.getValue(context.stack)
+        val lockedPos = lockedPosition.getValue(context.stack)
+
         val itemStack = UtilBlock.getSilkDropIfPresent(context.world, state, context.player)
         val itemCount = UtilPlayer.countItems(itemStack, context.player)
         UtilPlayer.consumeItems(itemStack, context.player, count)
 
-        val coordinates = coordinateGenerator.getCoordinates(context.pos, count).take(itemCount)
+        if(!locked && !context.valid)
+            return
+        val blockPos = if (locked) lockedPos else context.pos
+
+        val coordinates = coordinateGenerator.getCoordinates(blockPos, count).take(itemCount)
         for (blockPos in coordinates) {
             UtilBlock.replaceBlock(context.player, context.world, blockPos, state)
         }
+
+        lockPosition.setValueAndSync(context.stack, false)
     }
 
     @SideOnly(Side.CLIENT)

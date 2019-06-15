@@ -137,7 +137,7 @@ class GuiTalismanProperties(stack: ItemStack, private val playerSlot: Int) : Gui
         val scrollable = propertyGuiElements.S.filter(IButtonContainer::isHovered).filterIsInstance<IScrollable>().firstOrNull()
         if (scrollable != null) {
             scrollable.scroll(UtilMouse.getScrollCount(scrollable.fastScrollValue))
-        } else if (0 < selectedPropertyIndex && selectedPropertyIndex < propertyGuiElements.size) {
+        } else if (0 <= selectedPropertyIndex && selectedPropertyIndex < propertyGuiElements.size) {
             val container = propertyGuiElements[selectedPropertyIndex]
             if (container is IScrollable)
                 container.scroll(UtilMouse.getScrollCount(container.fastScrollValue))
