@@ -2,6 +2,7 @@ package aurocosh.divinefavor.common.item.spell_talismans
 
 import aurocosh.divinefavor.DivineFavor
 import aurocosh.divinefavor.client.block_ovelay.BlockConstructionRendering
+import aurocosh.divinefavor.client.block_ovelay.Test
 import aurocosh.divinefavor.client.block_ovelay.ToolRenders
 import aurocosh.divinefavor.common.coordinate_generators.ColumnCoordinateGenerator
 import aurocosh.divinefavor.common.item.spell_talismans.base.ItemSpellTalisman
@@ -58,12 +59,14 @@ class SpellTalismanBuildColumn(name: String, spirit: ModSpirit, favorCost: Int, 
     }
 
     @SideOnly(Side.CLIENT)
-    override fun handleCustomRendering(context: TalismanContext, lastEvent: RenderWorldLastEvent) {
+    override fun handleRendering(context: TalismanContext, lastEvent: RenderWorldLastEvent) {
         val count = blockCount.getValue(context.stack)
         val state = selectedBlock.getValue(context.stack)
         val locked = lockPosition.getValue(context.stack)
         val lockedPos = lockedPosition.getValue(context.stack)
 
+        if(!locked && !context.valid)
+            return
         val blockPos = if (locked) lockedPos else context.pos
 
         val coordinates = coordinateGenerator.getCoordinates(blockPos, count)

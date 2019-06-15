@@ -1,6 +1,5 @@
 package aurocosh.divinefavor.client.gui.talisman
 
-import aurocosh.divinefavor.DivineFavor
 import aurocosh.divinefavor.client.core.handler.KeyBindings
 import aurocosh.divinefavor.client.gui.elements.GuiButtonStack
 import aurocosh.divinefavor.client.gui.interfaces.IButtonContainer
@@ -8,13 +7,13 @@ import aurocosh.divinefavor.client.gui.interfaces.IScrollable
 import aurocosh.divinefavor.client.gui.interfaces.ITooltipProvider
 import aurocosh.divinefavor.common.constants.ConstResources
 import aurocosh.divinefavor.common.item.talisman.ItemTalisman
+import aurocosh.divinefavor.common.item.talisman_tools.TalismanAdapter
+import aurocosh.divinefavor.common.lib.TooltipCache
 import aurocosh.divinefavor.common.lib.extensions.S
+import aurocosh.divinefavor.common.network.message.sever.MessageSyncTalismanPropertyIndex
 import aurocosh.divinefavor.common.talisman_properties.TalismanProperty
 import aurocosh.divinefavor.common.talisman_properties.TalismanPropertyBool
 import aurocosh.divinefavor.common.talisman_properties.TalismanPropertyInt
-import aurocosh.divinefavor.common.item.talisman_tools.TalismanAdapter
-import aurocosh.divinefavor.common.lib.TooltipCache
-import aurocosh.divinefavor.common.network.message.sever.MessageSyncTalismanPropertyIndex
 import aurocosh.divinefavor.common.util.UtilMouse
 import net.minecraft.client.Minecraft
 import net.minecraft.client.gui.Gui
@@ -83,7 +82,6 @@ class GuiTalismanProperties(stack: ItemStack, private val playerSlot: Int) : Gui
                 val slider = PropertyGuiHelper.getToggle(property, itemStack, nextElementX, nextElementY, elementWidth, elementHeight, selector)
                 addGuiElement(slider)
             }
-            else -> DivineFavor.logger.error("Attempted to add unknown type of property")
         }
     }
 
@@ -100,7 +98,7 @@ class GuiTalismanProperties(stack: ItemStack, private val playerSlot: Int) : Gui
     }
 
     fun drawMarker() {
-        if (selectedPropertyIndex == -1)
+        if (selectedPropertyIndex < 0 || selectedPropertyIndex > propertyGuiElements.size)
             return
 
         val container = propertyGuiElements[selectedPropertyIndex]
@@ -139,7 +137,7 @@ class GuiTalismanProperties(stack: ItemStack, private val playerSlot: Int) : Gui
         val scrollable = propertyGuiElements.S.filter(IButtonContainer::isHovered).filterIsInstance<IScrollable>().firstOrNull()
         if (scrollable != null) {
             scrollable.scroll(UtilMouse.getScrollCount(scrollable.fastScrollValue))
-        } else if (selectedPropertyIndex != -1) {
+        } else if (0 < selectedPropertyIndex && selectedPropertyIndex < propertyGuiElements.size) {
             val container = propertyGuiElements[selectedPropertyIndex]
             if (container is IScrollable)
                 container.scroll(UtilMouse.getScrollCount(container.fastScrollValue))

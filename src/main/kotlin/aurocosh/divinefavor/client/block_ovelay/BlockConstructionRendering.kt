@@ -7,6 +7,7 @@ import net.minecraft.block.BlockStainedGlass.COLOR
 import net.minecraft.block.state.IBlockState
 import net.minecraft.client.Minecraft
 import net.minecraft.client.renderer.GlStateManager
+import net.minecraft.client.renderer.texture.TextureMap
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.init.Blocks
 import net.minecraft.item.EnumDyeColor
@@ -52,6 +53,9 @@ object BlockConstructionRendering {
 
         // Calculate the players current position, which is needed later
         val playerPos = player.getPartialPosition(lastEvent.partialTicks)
+
+        mc.textureManager.bindTexture(TextureMap.LOCATION_BLOCKS_TEXTURE)
+
         for (coordinate in sortedCoordinates) {
             GlStateManager.pushMatrix()
             Utils.stateManagerPrepare(playerPos, coordinate, null)

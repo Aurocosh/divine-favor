@@ -132,13 +132,7 @@ abstract class ItemTalisman(val name: String, texturePath: String, val spirit: M
     protected open fun performActionClient(context: TalismanContext) {}
 
     @SideOnly(Side.CLIENT)
-    fun handleRendering(context: TalismanContext, lastEvent: RenderWorldLastEvent) {
-        if (context.valid)
-            handleCustomRendering(context, lastEvent)
-    }
-
-    @SideOnly(Side.CLIENT)
-    protected open fun handleCustomRendering(context: TalismanContext, lastEvent: RenderWorldLastEvent) {
+    open fun handleRendering(context: TalismanContext, lastEvent: RenderWorldLastEvent) {
     }
 
     override fun canCatch(): Boolean {

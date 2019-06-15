@@ -60,5 +60,6 @@ object NetworkHandler {
         autoWrapper.register(MessageSyncTalismanPropertyIndex::class.java, Side.SERVER)
         autoWrapper.register(MessageSyncTalismanPropertyInt::class.java, Side.SERVER)
         autoWrapper.register(MessageSyncTalismanPropertyIBlockState::class.java, Side.SERVER)
+        autoWrapper.register(MessageSyncTalismanPropertyBlockPos::class.java, Side.SERVER)
     }
 }
