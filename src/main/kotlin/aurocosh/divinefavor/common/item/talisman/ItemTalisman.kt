@@ -4,6 +4,7 @@ import aurocosh.divinefavor.DivineFavor
 import aurocosh.divinefavor.common.lib.interfaces.IBlockCatcher
 import aurocosh.divinefavor.common.item.base.ModItem
 import aurocosh.divinefavor.common.item.spell_talismans.base.TalismanContext
+import aurocosh.divinefavor.common.talisman_properties.IPropertyAccessor
 import aurocosh.divinefavor.common.lib.extensions.divinePlayerData
 import aurocosh.divinefavor.common.network.message.client.spirit_data.MessageSyncFavor
 import aurocosh.divinefavor.common.spirit.base.ModSpirit

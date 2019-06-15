@@ -24,7 +24,7 @@ open class ItemTalismanContainer(name: String, texturePath: String, orderIndex: 
     }
 
     protected inline fun <reified T : ItemTalisman> getTalisman(stack: ItemStack): TalismanStackWrapper<T>? {
-        val talismanContainer = TalismanContainerAdapter.getTalismanContainer(stack) ?: return null
+        val talismanContainer = TalismanAdapter.getTalismanContainer(stack) ?: return null
         val talismanStack = talismanContainer.getSelectedStack()
         if (talismanStack.isEmpty)
             return null

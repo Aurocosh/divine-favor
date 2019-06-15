@@ -1,29 +1,20 @@
 package aurocosh.divinefavor.common.network.message.sever
 
-import aurocosh.divinefavor.common.item.talisman.ItemTalisman
-import aurocosh.divinefavor.common.network.message.base.DivineServerMessage
-import aurocosh.divinefavor.common.item.talisman.properties.StackPropertyBool
-import aurocosh.divinefavor.common.item.talisman_tools.TalismanContainerAdapter
+import aurocosh.divinefavor.common.talisman_properties.TalismanPropertyBool
 import net.minecraft.entity.player.EntityPlayerMP
 
-class MessageSyncTalismanPropertyBool : DivineServerMessage {
-    var playerSlotIndex: Int = 0
-    var name: String = ""
+class MessageSyncTalismanPropertyBool : MessageSyncTalismanProperty {
     var value: Boolean = false
 
     constructor()
 
-    constructor(playerSlotIndex: Int, tag: String, value: Boolean) : super() {
-        this.playerSlotIndex = playerSlotIndex
-        this.name = tag
+    constructor(name: String, value: Boolean) : super(name) {
         this.value = value
     }
 
     override fun handleSafe(serverPlayer: EntityPlayerMP) {
-        val stack = serverPlayer.inventory.getStackInSlot(playerSlotIndex)
-        val talismanStack = TalismanContainerAdapter.getTalismanStack(stack) ?: return
-        val item = talismanStack.item as? ItemTalisman ?: return
-        val property = item.properties.get(name) as? StackPropertyBool ?: return
+        val (talismanStack, stackProperty) = getProperty(serverPlayer) ?: return
+        val property = stackProperty as TalismanPropertyBool
         property.setValue(talismanStack, value)
     }
 }

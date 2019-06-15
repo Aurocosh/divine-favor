@@ -5,7 +5,7 @@ import aurocosh.divinefavor.client.core.handler.KeyBindings
 import aurocosh.divinefavor.client.core.handler.talisman.TalismanHUD
 import aurocosh.divinefavor.common.constants.ConstResources
 import aurocosh.divinefavor.common.item.talisman_tools.ITalismanContainer
-import aurocosh.divinefavor.common.item.talisman_tools.TalismanContainerAdapter
+import aurocosh.divinefavor.common.item.talisman_tools.TalismanAdapter
 import aurocosh.divinefavor.common.lib.math.Vector2i
 import aurocosh.divinefavor.common.util.UtilGui
 import aurocosh.divinefavor.common.util.UtilPlayer
@@ -51,9 +51,9 @@ class TalismanSelectGui : GuiScreen() {
         super.drawScreen(mx, my, partialTicks)
 
         val player = DivineFavor.proxy.clientPlayer
-        hand = UtilPlayer.getHandWithItem(player) { TalismanContainerAdapter.isItemValid(it) } ?: return
+        hand = UtilPlayer.getHandWithItem(player) { TalismanAdapter.isItemValid(it) } ?: return
 
-        val talismanContainer = TalismanContainerAdapter.getTalismanContainer(player.getHeldItem(hand)) ?: return
+        val talismanContainer = TalismanAdapter.getTalismanContainer(player.getHeldItem(hand)) ?: return
 
         refreshStackData(talismanContainer)
         renderSpellMassSelector(mx, my, talismanContainer)
@@ -137,7 +137,7 @@ class TalismanSelectGui : GuiScreen() {
             if (selectedIndex != -1) {
                 val player = DivineFavor.proxy.clientPlayer
                 val playerSlot = if (hand == EnumHand.OFF_HAND) 40 else player.inventory.currentItem
-                TalismanContainerAdapter.selectSlot(playerSlot, selectedIndex)
+                TalismanAdapter.selectSlot(playerSlot, selectedIndex)
                 selectedIndex = -1
             }
         }

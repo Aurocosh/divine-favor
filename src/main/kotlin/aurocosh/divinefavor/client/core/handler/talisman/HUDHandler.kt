@@ -39,7 +39,7 @@ object HUDHandler {
         val stack = player.getHeldItem(hand)
         val talisman = stack.item as ItemTalisman
 
-        val context = TalismanContext.rendering(player, hand, stack)
+        val context = TalismanContext.generic(player, hand, stack)
         talisman.handleRendering(context, lastEvent)
     }
 }

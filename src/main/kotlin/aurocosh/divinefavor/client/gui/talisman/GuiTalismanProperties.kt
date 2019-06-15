@@ -9,10 +9,10 @@ import aurocosh.divinefavor.client.gui.interfaces.ITooltipProvider
 import aurocosh.divinefavor.common.constants.ConstResources
 import aurocosh.divinefavor.common.item.talisman.ItemTalisman
 import aurocosh.divinefavor.common.lib.extensions.S
-import aurocosh.divinefavor.common.item.talisman.properties.StackProperty
-import aurocosh.divinefavor.common.item.talisman.properties.StackPropertyBool
-import aurocosh.divinefavor.common.item.talisman.properties.StackPropertyInt
-import aurocosh.divinefavor.common.item.talisman_tools.TalismanContainerAdapter
+import aurocosh.divinefavor.common.talisman_properties.TalismanProperty
+import aurocosh.divinefavor.common.talisman_properties.TalismanPropertyBool
+import aurocosh.divinefavor.common.talisman_properties.TalismanPropertyInt
+import aurocosh.divinefavor.common.item.talisman_tools.TalismanAdapter
 import aurocosh.divinefavor.common.lib.TooltipCache
 import aurocosh.divinefavor.common.network.message.sever.MessageSyncTalismanPropertyIndex
 import aurocosh.divinefavor.common.util.UtilMouse
@@ -29,7 +29,7 @@ class GuiTalismanProperties(stack: ItemStack, private val playerSlot: Int) : Gui
     private val itemStack: ItemStack
 
     private var selectedPropertyIndex: Int
-    private val properties: List<StackProperty<out Any>>
+    private val properties: List<TalismanProperty<out Any>>
     private var propertyGuiElements: MutableList<IButtonContainer> = ArrayList()
 
     private val yMargin = 20
@@ -53,7 +53,7 @@ class GuiTalismanProperties(stack: ItemStack, private val playerSlot: Int) : Gui
     init {
         mc = Minecraft.getMinecraft()
 
-        this.itemStack = TalismanContainerAdapter.getTalismanStack(stack)
+        this.itemStack = TalismanAdapter.getTalismanStack(stack)
         item = this.itemStack.item as ItemTalisman
 
         selectedPropertyIndex = item.properties.getSelectedIndex(stack)
@@ -66,7 +66,7 @@ class GuiTalismanProperties(stack: ItemStack, private val playerSlot: Int) : Gui
         buttonStack.components.forEach { this.addButton(it) }
     }
 
-    private fun addPropertyToGui(property: StackProperty<out Any>) {
+    private fun addPropertyToGui(property: TalismanProperty<out Any>) {
         val index = propertyGuiElements.size
         val selector = {
             selectedPropertyIndex = index
@@ -75,12 +75,12 @@ class GuiTalismanProperties(stack: ItemStack, private val playerSlot: Int) : Gui
         }
 
         when (property) {
-            is StackPropertyInt -> {
-                val slider = PropertyGuiHelper.addNewSlider(property, itemStack, playerSlot, nextElementX, nextElementY, elementWidth, elementHeight, selector)
+            is TalismanPropertyInt -> {
+                val slider = PropertyGuiHelper.addNewSlider(property, itemStack, nextElementX, nextElementY, elementWidth, elementHeight, selector)
                 addGuiElement(slider)
             }
-            is StackPropertyBool -> {
-                val slider = PropertyGuiHelper.getToggle(property, itemStack, playerSlot, nextElementX, nextElementY, elementWidth, elementHeight, selector)
+            is TalismanPropertyBool -> {
+                val slider = PropertyGuiHelper.getToggle(property, itemStack, nextElementX, nextElementY, elementWidth, elementHeight, selector)
                 addGuiElement(slider)
             }
             else -> DivineFavor.logger.error("Attempted to add unknown type of property")

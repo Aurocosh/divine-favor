@@ -1,6 +1,9 @@
 package aurocosh.divinefavor.common.lib.extensions
 
+import net.minecraft.block.state.IBlockState
+import net.minecraft.init.Blocks
 import net.minecraft.nbt.NBTTagCompound
+import net.minecraft.nbt.NBTUtil
 import net.minecraft.util.math.BlockPos
 import net.minecraft.util.math.Vec3d
 
@@ -25,6 +28,18 @@ fun NBTTagCompound.getVec3d(tagPrefix: String): Vec3d {
     return Vec3d(x, y, z)
 }
 
+fun NBTTagCompound.setBlockState(tag: String, state: IBlockState) {
+    val stateTag = NBTTagCompound()
+    NBTUtil.writeBlockState(stateTag, state)
+    this.setTag(tag, stateTag)
+}
+
+fun NBTTagCompound.getBlockState(tag: String): IBlockState {
+    if(!this.hasKey(tag))
+        return Blocks.AIR.defaultState
+    return NBTUtil.readBlockState(this.getCompoundTag(tag))
+}
+
 fun <T> NBTTagCompound.fallback(tag: String, getter: (NBTTagCompound, String) -> T, fallback: T): T {
     return if (this.hasKey(tag))
         getter.invoke(this, tag)
@@ -41,7 +56,7 @@ fun <T> NBTTagCompound.fallbackNull(tag: String, getter: (NBTTagCompound, String
 
 fun <T> NBTTagCompound.setNullable(tag: String, setter: (NBTTagCompound, String, T) -> Unit, value: T?) {
     if (value != null)
-        setter.invoke(this,tag,value)
+        setter.invoke(this, tag, value)
 }
 
 fun NBTTagCompound.hasKey(vararg tags: String): Boolean {

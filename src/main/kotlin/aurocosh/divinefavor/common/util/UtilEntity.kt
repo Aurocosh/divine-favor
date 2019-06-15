@@ -1,5 +1,6 @@
 package aurocosh.divinefavor.common.util
 
+import aurocosh.divinefavor.common.config.common.ConfigGeneral
 import aurocosh.divinefavor.common.lib.GlobalBlockPos
 import aurocosh.divinefavor.common.lib.extensions.getBlock
 import aurocosh.divinefavor.common.lib.extensions.multicatch
@@ -129,7 +130,7 @@ object UtilEntity {
         entity.motionZ += extraVelocity.z
     }
 
-    fun getBlockPlayerLookingAt(player: EntityPlayer, length: Double): RayTraceResult? {
+    fun getBlockPlayerLookingAt(player: EntityPlayer, length: Double = ConfigGeneral.talismanCastDistance.toDouble()): RayTraceResult? {
         return UtilWorld.raycast(player.world, player.getPositionEyes(0f), player.lookVec, length)
     }
 

@@ -5,7 +5,7 @@ import aurocosh.divinefavor.common.constants.BlockPosConstants
 import aurocosh.divinefavor.common.item.spell_talismans.base.ItemSpellTalisman
 import aurocosh.divinefavor.common.item.spell_talismans.base.SpellOptions
 import aurocosh.divinefavor.common.item.spell_talismans.base.TalismanContext
-import aurocosh.divinefavor.common.item.talisman.properties.StackPropertyInt
+import aurocosh.divinefavor.common.talisman_properties.TalismanPropertyInt
 import aurocosh.divinefavor.common.lib.extensions.inverse
 import aurocosh.divinefavor.common.spirit.base.ModSpirit
 import aurocosh.divinefavor.common.tasks.BlockProcessingTask
@@ -18,8 +18,8 @@ import net.minecraft.util.math.BlockPos
 import java.util.*
 
 class SpellTalismanPiercingInferno(name: String, spirit: ModSpirit, favorCost: Int, options: EnumSet<SpellOptions>) : ItemSpellTalisman(name, spirit, favorCost, options) {
-    private val pierceDepth: StackPropertyInt = propertyHandler.registerIntProperty("piercing_inferno_depth", ConfigSpell.piercingInferno.maxPierceDepth)
-    private val pierceSurface: StackPropertyInt = propertyHandler.registerIntProperty("piercing_inferno_surface", ConfigSpell.piercingInferno.maxTunnelSurface)
+    private val pierceDepth: TalismanPropertyInt = propertyHandler.registerIntProperty("piercing_inferno_depth", ConfigSpell.piercingInferno.maxPierceDepth)
+    private val pierceSurface: TalismanPropertyInt = propertyHandler.registerIntProperty("piercing_inferno_surface", ConfigSpell.piercingInferno.maxTunnelSurface)
 
     override fun getFavorCost(itemStack: ItemStack): Int {
         val depth = pierceDepth.getValue(itemStack)

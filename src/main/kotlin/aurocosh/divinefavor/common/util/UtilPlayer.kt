@@ -15,7 +15,10 @@ import net.minecraft.util.EnumHand
 import net.minecraft.util.SoundCategory
 import net.minecraftforge.items.IItemHandler
 
+data class HeldStack(val hand: EnumHand, val slot: Int, val stack: ItemStack)
+
 object UtilPlayer {
+
     fun getItemInHand(player: EntityPlayer, predicate: (Item) -> Boolean): ItemStack {
         var stack = player.heldItemMainhand
         if (!stack.isEmpty && predicate.invoke(stack.item))
@@ -30,6 +33,13 @@ object UtilPlayer {
             return EnumHand.MAIN_HAND
         stack = player.heldItemOffhand
         return if (!stack.isEmpty && predicate.invoke(stack.item)) EnumHand.OFF_HAND else null
+    }
+
+    fun getHeldStacks(player: EntityPlayer): List<HeldStack> {
+        return listOf(
+                HeldStack(EnumHand.MAIN_HAND, player.inventory.currentItem, player.heldItemMainhand),
+                HeldStack(EnumHand.OFF_HAND, InventoryIndexes.Offhand.value, player.heldItemOffhand)
+        )
     }
 
     fun getHand(predicate: (EnumHand) -> Boolean): EnumHand? {
@@ -121,11 +131,22 @@ object UtilPlayer {
                 .sumBy { it.count }
     }
 
-    fun consumeItems(itemStack: ItemStack, player: EntityPlayer, count: Int): Boolean {
+    fun consumeItems(itemStack: ItemStack, player: EntityPlayer, count: Int, makeSureThereIsEnough: Boolean = true): Boolean {
         if (player.capabilities.isCreativeMode)
             return true
-        return player.getAllInventoryCapabilities()
+        if (makeSureThereIsEnough && countItems(itemStack, player) < count)
+            return false
+
+        val sequence = player.getAllInventoryCapabilities()
                 .flatMap(IItemHandler::asSlotSequence)
-                .any { (_, _, stack) -> stack.item === itemStack.item && stack.metadata == itemStack.metadata && stack.count >= count }
+                .filter { (_, _, stack) -> stack.item === itemStack.item && stack.metadata == itemStack.metadata }
+        var toRemove = count
+
+        for ((handler, index, stack) in sequence) {
+            val removed = Math.min(toRemove, stack.count)
+            toRemove -= removed
+            handler.extractItem(index, removed, false)
+        }
+        return toRemove == 0
     }
 }

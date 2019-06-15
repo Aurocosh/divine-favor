@@ -1,6 +1,6 @@
 package aurocosh.divinefavor.common.network.message.sever
 
-import aurocosh.divinefavor.common.item.talisman_tools.TalismanContainerAdapter
+import aurocosh.divinefavor.common.item.talisman_tools.TalismanAdapter
 import aurocosh.divinefavor.common.network.message.base.DivineServerMessage
 import net.minecraft.entity.player.EntityPlayerMP
 
@@ -17,7 +17,7 @@ class MessageSyncTalismanContainerSlot : DivineServerMessage {
 
     override fun handleSafe(serverPlayer: EntityPlayerMP) {
         val stack = serverPlayer.inventory.getStackInSlot(playerSlotIndex)
-        val talismanContainer = TalismanContainerAdapter.getTalismanContainer(stack)
+        val talismanContainer = TalismanAdapter.getTalismanContainer(stack)
         if (talismanContainer != null)
             talismanContainer.selectedSlotIndex = selectedGrimoireIndex
     }

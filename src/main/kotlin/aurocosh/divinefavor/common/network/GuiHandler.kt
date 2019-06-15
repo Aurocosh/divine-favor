@@ -21,7 +21,7 @@ import aurocosh.divinefavor.common.constants.ConstGuiIDs
 import aurocosh.divinefavor.common.item.talisman.ItemTalisman
 import aurocosh.divinefavor.common.item.contract_binder.ContractBinderContainer
 import aurocosh.divinefavor.common.item.ritual_pouch.RitualBagContainer
-import aurocosh.divinefavor.common.item.talisman_tools.TalismanContainerAdapter
+import aurocosh.divinefavor.common.item.talisman_tools.TalismanAdapter
 import aurocosh.divinefavor.common.item.talisman_tools.grimoire.GrimoireContainer
 import aurocosh.divinefavor.common.item.talisman_tools.spell_blade.SpellBladeContainer
 import aurocosh.divinefavor.common.item.talisman_tools.grimoire.ItemGrimoire
@@ -113,7 +113,7 @@ class GuiHandler : IGuiHandler {
             ConstGuiIDs.BATH_HEATER -> return GuiBathHeater(player, (world.getTileEntity(BlockPos(x, y, z)) as TileBathHeater))
 
             ConstGuiIDs.TALISMAN_HUD -> {
-                val hand = UtilPlayer.getHandWithItem(player) { it is ItemTalisman || TalismanContainerAdapter.isItemValid(it) }
+                val hand = UtilPlayer.getHandWithItem(player) { it is ItemTalisman || TalismanAdapter.isItemValid(it) }
                         ?: return null
                 val index = UtilPlayer.getHandIndex(player, hand)
                 val stack = player.getHeldItem(hand)

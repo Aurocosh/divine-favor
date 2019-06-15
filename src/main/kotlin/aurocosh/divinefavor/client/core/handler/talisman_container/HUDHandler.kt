@@ -3,7 +3,7 @@ package aurocosh.divinefavor.client.core.handler.talisman_container
 import aurocosh.divinefavor.DivineFavor
 import aurocosh.divinefavor.client.core.handler.KeyBindings
 import aurocosh.divinefavor.client.core.handler.talisman.TalismanHUD
-import aurocosh.divinefavor.common.item.talisman_tools.TalismanContainerAdapter
+import aurocosh.divinefavor.common.item.talisman_tools.TalismanAdapter
 import aurocosh.divinefavor.common.util.UtilPlayer
 import net.minecraft.client.Minecraft
 import net.minecraftforge.client.event.RenderGameOverlayEvent
@@ -27,11 +27,11 @@ object HUDHandler {
         val height = resolution.scaledHeight
 
         val player = DivineFavor.proxy.clientPlayer
-        val stack = UtilPlayer.getItemInHand(player) { TalismanContainerAdapter.isItemValid(it) }
+        val stack = UtilPlayer.getItemInHand(player) { TalismanAdapter.isItemValid(it) }
         if (stack.isEmpty)
             return
 
-        val talismanContainer = TalismanContainerAdapter.getTalismanContainer(stack) ?: return
+        val talismanContainer = TalismanAdapter.getTalismanContainer(stack) ?: return
 
         val mc = Minecraft.getMinecraft()
 

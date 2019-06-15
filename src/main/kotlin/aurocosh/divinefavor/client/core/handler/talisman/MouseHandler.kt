@@ -3,9 +3,7 @@ package aurocosh.divinefavor.client.core.handler.talisman
 import aurocosh.divinefavor.DivineFavor
 import aurocosh.divinefavor.client.core.handler.KeyBindings
 import aurocosh.divinefavor.common.item.talisman.ItemTalisman
-import aurocosh.divinefavor.common.item.talisman_tools.TalismanContainerAdapter
 import aurocosh.divinefavor.common.util.UtilPlayer
-import net.minecraft.util.EnumHand
 import net.minecraftforge.client.event.MouseEvent
 import net.minecraftforge.fml.common.Mod
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent

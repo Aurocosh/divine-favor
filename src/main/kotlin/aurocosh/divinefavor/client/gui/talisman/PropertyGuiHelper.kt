@@ -2,20 +2,17 @@ package aurocosh.divinefavor.client.gui.talisman
 
 import aurocosh.divinefavor.client.gui.elements.GuiButtonCustomToggle
 import aurocosh.divinefavor.client.gui.elements.GuiSliderInt
-import aurocosh.divinefavor.common.item.talisman.properties.StackPropertyBool
-import aurocosh.divinefavor.common.item.talisman.properties.StackPropertyInt
-import aurocosh.divinefavor.common.network.message.sever.MessageSyncTalismanPropertyBool
-import aurocosh.divinefavor.common.network.message.sever.MessageSyncTalismanPropertyInt
+import aurocosh.divinefavor.common.talisman_properties.TalismanPropertyBool
+import aurocosh.divinefavor.common.talisman_properties.TalismanPropertyInt
 import net.minecraft.item.ItemStack
 import net.minecraftforge.fml.client.config.GuiSlider
 import java.awt.Color
 
 object PropertyGuiHelper {
-    fun addNewSlider(property: StackPropertyInt, stack: ItemStack, playerSlot: Int, x: Int, y: Int, width: Int, height: Int, selector: () -> Unit): GuiSliderInt {
+    fun addNewSlider(property: TalismanPropertyInt, stack: ItemStack, x: Int, y: Int, width: Int, height: Int, selector: () -> Unit): GuiSliderInt {
         val valueChangedAction = GuiSlider.ISlider {
             val value = it.valueInt
-            if (property.setValue(stack, value))
-                MessageSyncTalismanPropertyInt(playerSlot, property.name, value).send()
+            property.setValueAndSync(stack, value)
             selector.invoke()
         }
 
@@ -27,11 +24,10 @@ object PropertyGuiHelper {
                 valueChangedAction)
     }
 
-    fun getToggle(property: StackPropertyBool, stack: ItemStack, playerSlot: Int, x: Int, y: Int, width: Int, height: Int, selector: () -> Unit): GuiButtonCustomToggle {
+    fun getToggle(property: TalismanPropertyBool, stack: ItemStack, x: Int, y: Int, width: Int, height: Int, selector: () -> Unit): GuiButtonCustomToggle {
         val value = property.getValue(stack)
         val toggleAction: (Boolean) -> Unit = {
-            if (property.setValue(stack, it))
-                MessageSyncTalismanPropertyBool(playerSlot, property.name, it).send()
+            property.setValueAndSync(stack, it)
             selector.invoke();
         }
 

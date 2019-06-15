@@ -52,8 +52,8 @@ class TalismanContext(val player: EntityPlayer, target: EntityLivingBase?, val w
             return TalismanContext(player, null, world, pos, pos.toVec3d(), hand, facing, CastType.UseCast, stack)
         }
 
-        fun rendering(player: EntityPlayer, hand: EnumHand, stack: ItemStack): TalismanContext {
-            return TalismanContext(player, null, player.world, player.position, player.positionVector, hand, EnumFacing.UP, CastType.Rendering, stack)
+        fun generic(player: EntityPlayer, hand: EnumHand, stack: ItemStack): TalismanContext {
+            return TalismanContext(player, null, player.world, player.position, player.positionVector, hand, EnumFacing.UP, CastType.None, stack)
         }
 
         fun rightClick(world: World, player: EntityPlayer, hand: EnumHand, stack: ItemStack): TalismanContext {
