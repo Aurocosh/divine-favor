@@ -123,6 +123,7 @@ object ModSpellTalismans {
     lateinit var wooden_punch: ItemSpellTalisman
 
     // New fields
+    lateinit var build_square_wall: ItemSpellTalisman
     lateinit var build_square_floor: ItemSpellTalisman
     lateinit var build_floor: ItemSpellTalisman
     lateinit var build_wall: ItemSpellTalisman
@@ -238,7 +239,6 @@ object ModSpellTalismans {
         stoneball_throw = SpellTalismanStoneballThrow("stoneball_throw", ModSpirits.romol, ConfigSpell.stoneballThrow.favorCost, SpellOptions.ALL_CAST)
         wooden_punch = SpellTalismanModPotionToggle("wooden_punch", ModSpirits.romol, ConfigSpell.woodenPunch.favorCost, ModPotions.wooden_punch)
 
-
         // squarefury
         consuming_fury = SpellTalismanModPotion("consuming_fury", ModSpirits.squarefury, ConfigSpell.consumingFury.favorCost, ModPotions.consuming_fury, ConfigSpell.consumingFury.duration)
         focused_fury = SpellTalismanModPotion("focused_fury", ModSpirits.squarefury, ConfigSpell.focusedFury.favorCost, ModPotions.focused_fury, ConfigSpell.focusedFury.duration)
@@ -256,6 +256,7 @@ object ModSpellTalismans {
         starvation = SpellTalismanModPotion("starvation", ModSpirits.timber, ConfigSpell.starvation.favorCost, ModPotions.starvation, ConfigSpell.starvation.duration)
 
         // New instances
+        build_square_wall = SpellTalismanBuildSquareWall("build_square_wall", ModSpirits.romol, ConfigSpell.buildSquareWall.favorCost, SpellOptions.TRACE_ONLY_CAST)
         build_square_floor = SpellTalismanBuildSquareFloor("build_square_floor", ModSpirits.romol, ConfigSpell.buildSquareFloor.favorCost, SpellOptions.TRACE_ONLY_CAST)
         build_floor = SpellTalismanBuildFloor("build_floor", ModSpirits.romol, ConfigSpell.buildFloor.favorCost, SpellOptions.TRACE_ONLY_CAST)
         build_wall = SpellTalismanBuildWall("build_wall", ModSpirits.romol, ConfigSpell.buildWall.favorCost, SpellOptions.TRACE_ONLY_CAST)

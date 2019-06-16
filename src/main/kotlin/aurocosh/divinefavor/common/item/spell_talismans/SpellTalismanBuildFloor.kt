@@ -5,15 +5,12 @@ import aurocosh.divinefavor.common.coordinate_generators.FloorCoordinateGenerato
 import aurocosh.divinefavor.common.item.spell_talismans.base.ItemSpellTalisman
 import aurocosh.divinefavor.common.item.spell_talismans.base.SpellOptions
 import aurocosh.divinefavor.common.item.spell_talismans.base.TalismanContext
-import aurocosh.divinefavor.common.item.spell_talismans.common_build_properties.BlockSelectPropertyHandler
-import aurocosh.divinefavor.common.item.spell_talismans.common_build_properties.LockPositionPropertyHandler
-import aurocosh.divinefavor.common.item.spell_talismans.common_build_properties.LockRotationPropertyHandler
+import aurocosh.divinefavor.common.item.spell_talismans.common_build_properties.BlockSelectPropertyWrapper
+import aurocosh.divinefavor.common.item.spell_talismans.common_build_properties.LockPositionPropertyWrapper
+import aurocosh.divinefavor.common.item.spell_talismans.common_build_properties.LockRotationPropertyWrapper
 import aurocosh.divinefavor.common.lib.extensions.get
 import aurocosh.divinefavor.common.lib.extensions.isAirOrReplacable
 import aurocosh.divinefavor.common.spirit.base.ModSpirit
-import aurocosh.divinefavor.common.stack_properties.StackPropertyBlockPos
-import aurocosh.divinefavor.common.stack_properties.StackPropertyBool
-import aurocosh.divinefavor.common.stack_properties.StackPropertyEnumFacing
 import aurocosh.divinefavor.common.stack_properties.StackPropertyInt
 import aurocosh.divinefavor.common.tasks.BlockPlacingTask
 import aurocosh.divinefavor.common.util.UtilPlayer
@@ -31,10 +28,10 @@ class SpellTalismanBuildFloor(name: String, spirit: ModSpirit, favorCost: Int, o
     private val back: StackPropertyInt = propertyHandler.registerIntProperty("back", 0, 0, 10)
     private val shiftUp: StackPropertyInt = propertyHandler.registerIntProperty("shift_up", 1, -8, 8)
 
-    private val lockPositionPropertyHandler = LockPositionPropertyHandler(propertyHandler)
-    private val rotationPropertyHandler = LockRotationPropertyHandler(propertyHandler)
+    private val lockPositionPropertyHandler = LockPositionPropertyWrapper(propertyHandler)
+    private val rotationPropertyHandler = LockRotationPropertyWrapper(propertyHandler)
 
-    private val selectPropertyHandler = BlockSelectPropertyHandler(propertyHandler)
+    private val selectPropertyHandler = BlockSelectPropertyWrapper(propertyHandler)
     private val selectedBlock = selectPropertyHandler.selectedBlock
 
     override fun getFavorCost(itemStack: ItemStack): Int {
@@ -85,8 +82,7 @@ class SpellTalismanBuildFloor(name: String, spirit: ModSpirit, favorCost: Int, o
 
     private fun getOrigin(pos: BlockPos, stack: ItemStack): BlockPos {
         val blockPos = lockPositionPropertyHandler.getPosition(stack, pos)
-        val shiftY = stack.get(shiftUp)
-        return blockPos.add(0, shiftY, 0)
+        return blockPos.add(0, stack.get(shiftUp), 0)
     }
 
     private fun getBlockCount(left: Int, right: Int, front: Int, back: Int): Int {

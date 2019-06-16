@@ -11,7 +11,7 @@ import aurocosh.divinefavor.common.util.UtilEntity
 import net.minecraft.item.ItemStack
 import net.minecraft.util.math.BlockPos
 
-class LockPositionPropertyHandler(propertyHandler: TalismanPropertyHandler) {
+class LockPositionPropertyWrapper(propertyHandler: TalismanPropertyHandler) {
     val isLockPosition: StackPropertyBool = propertyHandler.registerBoolProperty("lock_position", false)
     val lockedPosition: StackPropertyBlockPos = propertyHandler.registerBlockPosProperty("locked_position", BlockPos.ORIGIN)
 
