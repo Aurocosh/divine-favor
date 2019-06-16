@@ -113,7 +113,7 @@ class GuiTalismanProperties(stack: ItemStack, private val playerSlot: Int) : Gui
         val xTool = width - tooltipWidth - xMargin
         val yTool = yMargin
 
-        val tooltipProviders = buttonList.S.filterIsInstance<ITooltipProvider>().filter(ITooltipProvider::isMouseOver)
+        val tooltipProviders = buttonList.S.filterIsInstance<ITooltipProvider>().filter(ITooltipProvider::isSelected)
 
         for (provider in tooltipProviders) {
             val tooltipData = provider.getTooltipData()

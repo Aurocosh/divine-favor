@@ -36,7 +36,7 @@ class GuiButtonStack(x: Int, y: Int, width: Int, height: Int, val stack: ItemSta
     }
 
     override fun mousePressed(mc: Minecraft, mouseX: Int, mouseY: Int): Boolean {
-        if (isMouseOver)
+        if (isSelected())
             action.invoke()
         return super.mousePressed(mc, mouseX, mouseY)
     }
@@ -48,4 +48,6 @@ class GuiButtonStack(x: Int, y: Int, width: Int, height: Int, val stack: ItemSta
         else
             return ResourceNamer.getNameString("tooltip", "description_not_found")
     }
+
+    override fun isSelected(): Boolean = isHovered()
 }

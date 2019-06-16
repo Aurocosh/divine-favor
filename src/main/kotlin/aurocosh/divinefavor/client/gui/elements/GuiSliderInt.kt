@@ -139,4 +139,6 @@ class GuiSliderInt(
     override fun reset() {
         this.value = defaultValue
     }
+
+    override fun isSelected(): Boolean = isHovered()
 }

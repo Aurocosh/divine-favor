@@ -71,7 +71,7 @@ class GuiButtonCustomToggle(x: Int, y: Int, width: Int, height: Int, currentValu
     }
 
     override fun mousePressed(mc: Minecraft, mouseX: Int, mouseY: Int): Boolean {
-        if (isMouseOver)
+        if (isSelected())
             toggleState = !toggleState
         return super.mousePressed(mc, mouseX, mouseY)
     }
@@ -85,4 +85,6 @@ class GuiButtonCustomToggle(x: Int, y: Int, width: Int, height: Int, currentValu
     override fun reset() {
         toggleState = defaultValue
     }
+
+    override fun isSelected(): Boolean = isHovered()
 }
