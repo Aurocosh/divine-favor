@@ -2,26 +2,11 @@ package aurocosh.divinefavor.common.coordinate_generators
 
 import net.minecraft.util.math.BlockPos
 
-
-class ColumnCoordinateGenerator {
-    private var lastRenderState = RenderState(BlockPos.ORIGIN, -1)
-    private val cachedCoordinates: MutableList<BlockPos> = ArrayList()
-
+class ColumnCoordinateGenerator : CachedCoordinateGenerator() {
     fun getCoordinates(blockPos: BlockPos, count: Int): List<BlockPos> {
-        val renderState = RenderState(blockPos, count)
-        if (renderState == lastRenderState)
+        if (isCached(blockPos, count))
             return cachedCoordinates
-        lastRenderState = renderState
-
-        cachedCoordinates.clear()
-        var pos = blockPos
-        for (i in 0 until count) {
-            pos = pos.up()
-            cachedCoordinates.add(pos)
-        }
+        cachedCoordinates = generateSequence(blockPos) { it.up() }.take(count).toList()
         return cachedCoordinates
-
     }
-
-    private data class RenderState(val pos: BlockPos, val count: Int)
 }
