@@ -1,0 +1,15 @@
+{
+  "name": "Build square wall relative",
+  "icon": "divinefavor:spell_talisman_build_square_wall_relative",
+  "category": "spell_talismans",
+  "pages": [
+    {
+      "type": "item_description",
+      "talisman": "divinefavor:spell_talisman_build_square_wall_relative"
+    },
+    {
+      "type": "spell_talisman_stats",
+      "talisman": "divinefavor:spell_talisman_build_square_wall_relative"
+    }
+  ]
+}

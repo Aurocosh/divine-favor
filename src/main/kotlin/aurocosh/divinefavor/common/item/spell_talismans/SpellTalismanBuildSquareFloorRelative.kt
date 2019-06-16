@@ -5,10 +5,7 @@ import aurocosh.divinefavor.common.coordinate_generators.FloorCoordinateGenerato
 import aurocosh.divinefavor.common.item.spell_talismans.base.ItemSpellTalisman
 import aurocosh.divinefavor.common.item.spell_talismans.base.SpellOptions
 import aurocosh.divinefavor.common.item.spell_talismans.base.TalismanContext
-import aurocosh.divinefavor.common.item.spell_talismans.common_build_properties.BlockSelectPropertyWrapper
-import aurocosh.divinefavor.common.item.spell_talismans.common_build_properties.PositionPropertyWrapper
-import aurocosh.divinefavor.common.item.spell_talismans.common_build_properties.RotationPropertyWrapper
-import aurocosh.divinefavor.common.item.spell_talismans.common_build_properties.ShiftedPositionPropertyWrapper
+import aurocosh.divinefavor.common.item.spell_talismans.common_build_properties.*
 import aurocosh.divinefavor.common.lib.extensions.get
 import aurocosh.divinefavor.common.lib.extensions.isAirOrReplacable
 import aurocosh.divinefavor.common.spirit.base.ModSpirit
@@ -24,10 +21,9 @@ import net.minecraftforge.fml.relauncher.SideOnly
 import java.util.*
 
 class SpellTalismanBuildSquareFloorRelative(name: String, spirit: ModSpirit, favorCost: Int, options: EnumSet<SpellOptions>) : ItemSpellTalisman(name, spirit, favorCost, options) {
-    private val length: StackPropertyInt = propertyHandler.registerIntProperty("distance", 6, 1, 16)
     private val radius: StackPropertyInt = propertyHandler.registerIntProperty("radius", 2, 1, 10)
 
-    private val positionPropertyWrapper = PositionPropertyWrapper(propertyHandler)
+    private val positionPropertyWrapper = RelativePositionPropertyWrapper(propertyHandler)
     private val rotationPropertyWrapper = RotationPropertyWrapper(propertyHandler)
 
     private val selectPropertyWrapper = BlockSelectPropertyWrapper(propertyHandler)
@@ -37,9 +33,6 @@ class SpellTalismanBuildSquareFloorRelative(name: String, spirit: ModSpirit, fav
         val radius = itemStack.get(radius) - 1
         return favorCost * getBlockCount(radius)
     }
-
-    override fun validateCastType(context: TalismanContext): Boolean = this.positionPropertyWrapper.validateCastType(context)
-    override fun preprocess(context: TalismanContext): Boolean = selectPropertyWrapper.preprocess(context) && this.positionPropertyWrapper.preprocess(context)
 
     override fun performActionServer(context: TalismanContext) {
         val (player, stack, world) = context.getCommon()
@@ -58,8 +51,6 @@ class SpellTalismanBuildSquareFloorRelative(name: String, spirit: ModSpirit, fav
 
     @SideOnly(Side.CLIENT)
     override fun handleRendering(context: TalismanContext, lastEvent: RenderWorldLastEvent) {
-        if (!this.positionPropertyWrapper.shouldRender(context))
-            return
         val (player, stack) = context.getCommon()
         val state = stack.get(selectedBlock)
         val coordinates = getCoordinates(context)
@@ -70,8 +61,7 @@ class SpellTalismanBuildSquareFloorRelative(name: String, spirit: ModSpirit, fav
         val (player, stack, world) = context.getCommon()
         val radius = stack.get(radius) - 1
 
-        val length = context.stack.get(length)
-        val blockPos = positionPropertyWrapper.getPositionRelative(context, length)
+        val blockPos = positionPropertyWrapper.getPosition(context)
         val blockCount = getBlockCount(radius)
         val count = Math.min(limit, blockCount)
         val facing = rotationPropertyWrapper.getRotation(stack, player.horizontalFacing)
