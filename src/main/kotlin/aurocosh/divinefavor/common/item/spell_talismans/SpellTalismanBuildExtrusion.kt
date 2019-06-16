@@ -12,6 +12,7 @@ import aurocosh.divinefavor.common.lib.extensions.isAirOrReplacable
 import aurocosh.divinefavor.common.spirit.base.ModSpirit
 import aurocosh.divinefavor.common.stack_properties.StackPropertyInt
 import aurocosh.divinefavor.common.tasks.BlockPlacingTask
+import aurocosh.divinefavor.common.util.UtilBlock
 import aurocosh.divinefavor.common.util.UtilPlayer
 import net.minecraft.item.ItemStack
 import net.minecraft.util.math.BlockPos
@@ -37,11 +38,8 @@ class SpellTalismanBuildExtrusion(name: String, spirit: ModSpirit, favorCost: In
         val (player, stack, world) = context.getCommon()
         val state = stack.get(selectedBlock)
 
-        val coordinates = getCoordinates(context)
-        val blocksToPlace = UtilPlayer.countBlocks(player, world, state, coordinates.count())
-
-        val finalCoordinates = coordinates.shuffled().take(blocksToPlace)
-        UtilPlayer.consumeBlocks(player, world, state, blocksToPlace)
+        val coordinates = getCoordinates(context).shuffled()
+        val finalCoordinates = UtilBlock.getBlocksForPlacement(player, world, state, coordinates)
         BlockPlacingTask(finalCoordinates, state, player, 1).start()
     }
 

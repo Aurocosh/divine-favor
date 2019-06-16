@@ -13,6 +13,7 @@ import aurocosh.divinefavor.common.lib.extensions.isAirOrReplacable
 import aurocosh.divinefavor.common.spirit.base.ModSpirit
 import aurocosh.divinefavor.common.stack_properties.StackPropertyInt
 import aurocosh.divinefavor.common.tasks.BlockPlacingTask
+import aurocosh.divinefavor.common.util.UtilBlock
 import aurocosh.divinefavor.common.util.UtilPlayer
 import net.minecraft.item.ItemStack
 import net.minecraft.util.math.BlockPos
@@ -45,11 +46,9 @@ class SpellTalismanBuildHorizontalLine(name: String, spirit: ModSpirit, favorCos
 
         val state = stack.get(selectedBlock)
         val blockCount = getBlockCount(left, right)
-        val blocksToPlace = UtilPlayer.countBlocks(player, world, state, blockCount)
-        val coordinates = getCoordinates(context, blocksToPlace).shuffled()
-
-        UtilPlayer.consumeBlocks(player, world, state, coordinates.count())
-        BlockPlacingTask(coordinates, state, player, 1).start()
+        val coordinates = getCoordinates(context, blockCount).shuffled()
+        val finalCoordinates = UtilBlock.getBlocksForPlacement(player, world, state, coordinates)
+        BlockPlacingTask(finalCoordinates, state, player, 1).start()
     }
 
     override fun performActionClient(context: TalismanContext) {

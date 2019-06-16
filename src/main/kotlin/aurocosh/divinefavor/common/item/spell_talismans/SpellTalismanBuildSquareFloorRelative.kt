@@ -49,7 +49,6 @@ class SpellTalismanBuildSquareFloorRelative(name: String, spirit: ModSpirit, fav
         val blockCount = getBlockCount(radius)
         val coordinates = getCoordinates(context, blockCount).shuffled()
         val finalCoordinates = UtilBlock.getBlocksForPlacement(player, world, state, coordinates)
-
         BlockPlacingTask(finalCoordinates, state, player, 1).start()
     }
 
