@@ -2,7 +2,6 @@ package aurocosh.divinefavor.common.coordinate_generators
 
 import net.minecraft.util.math.BlockPos
 
-private data class RenderState(val pos: BlockPos, val count: Int)
 
 class ColumnCoordinateGenerator {
     private var lastRenderState = RenderState(BlockPos.ORIGIN, -1)
@@ -21,5 +20,8 @@ class ColumnCoordinateGenerator {
             cachedCoordinates.add(pos)
         }
         return cachedCoordinates
+
     }
+
+    private data class RenderState(val pos: BlockPos, val count: Int)
 }

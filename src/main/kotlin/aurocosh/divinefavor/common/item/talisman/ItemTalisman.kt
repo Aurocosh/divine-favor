@@ -37,9 +37,9 @@ abstract class ItemTalisman(val name: String, texturePath: String, val spirit: M
     abstract fun validateCastType(context: TalismanContext): Boolean
 
     fun cast(context: TalismanContext): Boolean {
-        if(!preprocess(context))
-            return false
         if (!validateCastType(context))
+            return false
+        if(!preprocess(context))
             return false
         if (!validate(context))
             return false

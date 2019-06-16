@@ -16,7 +16,7 @@ import net.minecraft.world.World
 import java.util.*
 
 open class ItemSpellTalisman// Talisman functions
-(name: String, texturePath: String, spirit: ModSpirit, favorCost: Int, private val options: EnumSet<SpellOptions>) : ItemTalisman("spell_talisman_$name", "spell_talismans/$texturePath$name", spirit, favorCost) {
+(name: String, texturePath: String, spirit: ModSpirit, favorCost: Int, protected val options: EnumSet<SpellOptions>) : ItemTalisman("spell_talisman_$name", "spell_talismans/$texturePath$name", spirit, favorCost) {
     init {
         setMaxStackSize(1)
         creativeTab = DivineFavor.TAB_SPELL_TALISMANS

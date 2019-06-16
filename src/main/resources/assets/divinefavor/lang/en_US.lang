@@ -182,6 +182,7 @@ item.divinefavor:rope_teleporting.name=Warping rope
 item.divinefavor:ice_arrow.name=Ice arrow
 
 ## SPELL TALISMAN NAMES
+item.divinefavor:spell_talisman_replace_surface.name=Replace surface
 item.divinefavor:spell_talisman_build_column.name=Build column
 item.divinefavor:spell_talisman_bind_ice_arrows.name=Bind ice arrows
 item.divinefavor:spell_talisman_place_torch.name=Place torch
@@ -566,6 +567,7 @@ item.divinefavor:rope_teleporting.description=Unusual trapping device. It will t
 item.divinefavor:ice_arrow.description=Delicate arrows made of ice. They are frail and because of this they deal less damage then regular arrows and break easily, but in a pinch they can be very useful. This type of arrow also cannot be tipped in potion, but on the other hand it deals extra damage to hellish mobs.
 
 ## SPELL TALISMAN DESCRIPTIONS
+item.divinefavor:spell_talisman_replace_surface.description=This talisman allows you to instantly replace any surface with another type of block
 item.divinefavor:spell_talisman_build_column.description=This talisman allows you to instantly build columns of variable height from any blocks
 item.divinefavor:spell_talisman_bind_ice_arrows.description=This talisman creates frail ice arrows. Those arrows are weaker then regular arrows, but this talisman may help you if you run out of arrows in the field. Also ice arrows are very effective against spawns of nether.
 item.divinefavor:spell_talisman_place_torch.description=This talisman takes a torch from players inventory and places it where player is looking
@@ -781,13 +783,14 @@ name.divinefavor:property.blink_distance=Distance: %1$s
 name.divinefavor:property.block_count=Blocks: %1$s
 name.divinefavor:property.block_limit=Blocks: %1$s
 name.divinefavor:property.freeze_limit=Freeze limit: %1$d
+name.divinefavor:property.fuzzy=Fuzzy: %1$s
 name.divinefavor:property.lock_position=Position lock: %1$s
 name.divinefavor:property.piercing_inferno_depth=Depth: %1$s
 name.divinefavor:property.piercing_inferno_surface=Surface: %1$s
 name.divinefavor:property.safety_lock=Safety lock: %1$s
 name.divinefavor:property.shift_forward=Shift forward: %1$s
-name.divinefavor:property.shift_up=Shift up: %1$s
 name.divinefavor:property.shift_right=Shift right: %1$s
+name.divinefavor:property.shift_up=Shift up: %1$s
 name.divinefavor:property.test=Test: %1$d
 
 ## TALISMAN PROPERTY TOOLTIPS
@@ -795,11 +798,12 @@ tooltip.divinefavor:property.blink_distance=Teleportation distance
 tooltip.divinefavor:property.block_count=Amount of blocks affected by spell
 tooltip.divinefavor:property.block_limit=Maximum amount of blocks affected by spell
 tooltip.divinefavor:property.freeze_limit=Controls how much water blocks can be frozen per cast
+tooltip.divinefavor:property.fuzzy=Controls whether all blocks are acceptable or only filtered
 tooltip.divinefavor:property.lock_position=Locks origin of current build to the current position
 tooltip.divinefavor:property.piercing_inferno_depth=Determines depth of tunnel created by the spell
 tooltip.divinefavor:property.piercing_inferno_surface=Determines max surface of tunnel created by the spell. Cost of spell based of this property even if actual surface of tunnel is less then that.
 tooltip.divinefavor:property.safety_lock=Prevents accidental cast. Talisman will not work while safety enabled
 tooltip.divinefavor:property.shift_forward=Shifts origin of build forward and backward
-tooltip.divinefavor:property.shift_up=Shifts origin of build up and down
 tooltip.divinefavor:property.shift_right=Shifts origin of build to right and left
+tooltip.divinefavor:property.shift_up=Shifts origin of build up and down
 tooltip.divinefavor:property.test=This is a test property

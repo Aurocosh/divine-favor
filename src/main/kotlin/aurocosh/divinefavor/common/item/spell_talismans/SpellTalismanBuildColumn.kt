@@ -85,7 +85,7 @@ class SpellTalismanBuildColumn(name: String, spirit: ModSpirit, favorCost: Int, 
             return
 
         val blockPos = getOrigin(player, locked, context.pos, stack)
-        val (count, state) = stack.get(blockCount, selectedBlock, lockedPosition)
+        val (count, state) = stack.get(blockCount, selectedBlock)
         val coordinates = coordinateGenerator.getCoordinates(blockPos, count)
         BlockConstructionRendering.render(lastEvent, player, state, coordinates)
     }

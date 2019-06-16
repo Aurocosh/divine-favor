@@ -16,6 +16,8 @@ import net.minecraft.world.World
 private data class StackData(val raycastBlock: Boolean, val raycastTarget: Boolean, val valid: Boolean)
 private data class BlockCastData(val pos: BlockPos, val posVec: Vec3d, val facing: EnumFacing, val valid: Boolean)
 
+data class CommonContextValues(val player: EntityPlayer, val world: World, val stack: ItemStack)
+
 class TalismanContext(val player: EntityPlayer, target: EntityLivingBase?, val world: World, pos: BlockPos, posVec: Vec3d, val hand: EnumHand, facing: EnumFacing, val castType: CastType, val stack: ItemStack) {
     val target: EntityLivingBase?
     val pos: BlockPos
@@ -42,6 +44,8 @@ class TalismanContext(val player: EntityPlayer, target: EntityLivingBase?, val w
             return StackData(false, false, false)
         return StackData(item.raycastBlock(), item.raycastTarget(), true)
     }
+
+    fun getCommon() = CommonContextValues(player, world, stack)
 
     companion object {
         fun blade(stack: ItemStack, target: EntityLivingBase?, player: EntityPlayer): TalismanContext {

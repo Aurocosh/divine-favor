@@ -4,15 +4,13 @@ import com.google.common.cache.Cache;
 import com.google.common.cache.CacheBuilder;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.BufferBuilder;
-import net.minecraft.client.renderer.GLAllocation;
-import net.minecraft.client.renderer.GlStateManager;
-import net.minecraft.client.renderer.Tessellator;
+import net.minecraft.client.renderer.*;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.EnumDyeColor;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.WorldType;
 import net.minecraftforge.client.ForgeHooksClient;
@@ -47,141 +45,6 @@ public class ToolRenders {
     private static final IBlockState stainedGlassWhite  = Blocks.STAINED_GLASS.getDefaultState().withProperty(COLOR, EnumDyeColor.WHITE);
 
 
-    public static void renderBuilderOverlay(RenderWorldLastEvent evt, EntityPlayer player, IBlockState state, List<BlockPos> coordinates) {
-        // Calculate the players current position, which is needed later
-
-        if (state == Blocks.AIR.getDefaultState())
-            return;
-        if (coordinates.size() == 0)
-            return;
-//            coordinates = BuildingModes.collectPlacementPos(player.world, player, lookingAt.getBlockPos(), lookingAt.sideHit, heldItem, lookingAt.getBlockPos());
-
-        // Figure out how many of the block we're rendering are in the player inventory.
-//        ItemStack itemStack = ToolRenders.Utils.getSilkDropIfPresent(player.world, state, player);
-
-        // Check if we have the blocks required
-//        long hasBlocks = InventoryManipulation.INSTANCE.countItem(itemStack, player);
-        long hasBlocks = Integer.MAX_VALUE;
-
-        // Prepare the fake world -- using a fake world lets us render things properly, like fences connecting.
-        Set<BlockPos> coords =  new HashSet<>(coordinates);
-        fakeWorld.setWorldAndState(player.world, state, coords);
-
-        GlStateManager.pushMatrix();
-        ToolRenders.Utils.stateManagerPrepareBlend();
-
-        List<BlockPos> sortedCoordinates = Sorter.Blocks.byDistance(coordinates, player); //Sort the coords by distance to player.
-
-        Vec3d playerPos = ToolRenders.Utils.getPlayerTranslate(player, evt.getPartialTicks());
-        for (BlockPos coordinate : sortedCoordinates) {
-            GlStateManager.pushMatrix();
-            ToolRenders.Utils.stateManagerPrepare(playerPos, coordinate, null);
-            GL14.glBlendColor(1F, 1F, 1F, 0.55f); //Set the alpha of the blocks we are rendering
-
-            if (fakeWorld.getWorldType() != WorldType.DEBUG_ALL_BLOCK_STATES)
-                state = state.getActualState(fakeWorld, coordinate);
-
-            mc.getBlockRendererDispatcher().renderBlockBrightness(state, 1f);//Render the defined block
-            GlStateManager.popMatrix();
-
-            GlStateManager.pushMatrix();
-            ToolRenders.Utils.stateManagerPrepare(playerPos, coordinate, 0.01f);
-            GlStateManager.scale(1.006f, 1.006f, 1.006f);
-            GL14.glBlendColor(1F, 1F, 1F, 0.35f);
-
-            hasBlocks--;
-
-            if (hasBlocks < 0)
-                mc.getBlockRendererDispatcher().renderBlockBrightness(stainedGlassRed, 1f);
-
-            // Move the render position back to where it was
-            GlStateManager.popMatrix();
-        }
-
-        //Set blending back to the default mode
-        GlStateManager.blendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
-        ForgeHooksClient.setRenderLayer(MinecraftForgeClient.getRenderLayer());
-        //Disable blend
-        GlStateManager.disableBlend();
-        //Pop from the original push in this method
-        GlStateManager.popMatrix();
-    }
-//
-//    public static void renderExchangerOverlay(RenderWorldLastEvent evt, EntityPlayer player, ItemStack heldItem) {
-//        // Calculate the players current position, which is needed later
-//        Vec3d playerPos = ToolRenders.Utils.getPlayerTranslate(player, evt.getPartialTicks());
-//
-//        BlockRendererDispatcher dispatcher = mc.getBlockRendererDispatcher();
-//
-//        RayTraceResult lookingAt = VectorTools.getLookingAt(player, heldItem);
-//        IBlockState state = Blocks.AIR.getDefaultState();
-//        List<BlockPos> coordinates = getAnchor(heldItem);
-//
-//        if (lookingAt == null && coordinates.size() == 0)
-//            return;
-//
-//        IBlockState renderBlockState = getToolBlock(heldItem);
-//        Minecraft mc = Minecraft.getMinecraft();
-//        mc.renderEngine.bindTexture(TextureMap.LOCATION_BLOCKS_TEXTURE);
-//        if (renderBlockState == Blocks.AIR.getDefaultState()) {//Don't render anything if there is no block selected (Air)
-//            return;
-//        }
-//        if (coordinates.size() == 0 && lookingAt != null) { //Build a list of coordinates based on the tool mode and range
-//            coordinates = ExchangingModes.collectPlacementPos(player.world, player, lookingAt.getBlockPos(), lookingAt.sideHit, heldItem, lookingAt.getBlockPos());
-//        }
-//
-//        // Figure out how many of the block we're rendering we have in the inventory of the player.
-//        ItemStack itemStack = ToolRenders.Utils.getSilkDropIfPresent(player.world, renderBlockState, player);
-//
-//        long hasBlocks = InventoryManipulation.countItem(itemStack, player, cacheInventory);
-//        hasBlocks = hasBlocks + InventoryManipulation.countPaste(player);
-//
-//        // Prepare the fake world -- using a fake world lets us render things properly, like fences connecting.
-//        Set<BlockPos> coords =  new HashSet<>(coordinates);
-//        fakeWorld.setWorldAndState(player.world, renderBlockState, coords);
-//
-//        GlStateManager.pushMatrix();
-//        ToolRenders.Utils.stateManagerPrepareBlend();
-//
-//        for (BlockPos coordinate : coordinates) {
-//            GlStateManager.pushMatrix();
-//            ToolRenders.Utils.stateManagerPrepare(playerPos, coordinate, 0.001f);
-//            GL14.glBlendColor(1F, 1F, 1F, 0.55f); //Set the alpha of the blocks we are rendering
-//
-//            // Get the block state in the fake world
-//            if (fakeWorld.getWorldType() != WorldType.DEBUG_ALL_BLOCK_STATES)
-//                state = renderBlockState.getActualState(fakeWorld, coordinate);
-//
-//            if (renderBlockState.getRenderType() != EnumBlockRenderType.INVISIBLE) {
-//                dispatcher.renderBlockBrightness(state, 1f);//Render the defined block
-//                GlStateManager.rotate(-90.0F, 0.0F, 1.0F, 0.0F); //Rotate it because i'm not sure why but we need to
-//            }
-//
-//            GL14.glBlendColor(1F, 1F, 1F, 0.1f); //Set the alpha of the blocks we are rendering
-//            dispatcher.renderBlockBrightness(stainedGlassWhite, 1f);//Render the defined block - White glass to show non-full block renders (Example: Torch)
-//            GlStateManager.popMatrix();
-//
-//            GlStateManager.pushMatrix();
-//            ToolRenders.Utils.stateManagerPrepare(playerPos, coordinate, 0.002f);
-//
-//            GlStateManager.scale(1.02f, 1.02f, 1.02f); //Slightly Larger block to avoid z-fighting.
-//            GL14.glBlendColor(1F, 1F, 1F, 0.55f); //Set the alpha of the blocks we are rendering
-//            hasBlocks--;
-//
-//            if (hasBlocks < 0)
-//                dispatcher.renderBlockBrightness(stainedGlassRed, 1f);
-//
-//            // Move the render position back to where it was
-//            GlStateManager.popMatrix();
-//        }
-//
-//        GlStateManager.blendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
-//        ForgeHooksClient.setRenderLayer(MinecraftForgeClient.getRenderLayer());
-//
-//        GlStateManager.disableBlend();
-//        GlStateManager.popMatrix();
-//    }
-//
 //    public static void renderDestructionOverlay(RenderWorldLastEvent evt, EntityPlayer player, ItemStack stack) {
 //        RayTraceResult lookingAt = VectorTools.getLookingAt(player, stack);
 //        if (lookingAt == null && GadgetDestruction.getAnchor(stack) == null) return;
