@@ -1,11 +1,12 @@
 package aurocosh.divinefavor.common.item.spell_talismans
 
-import aurocosh.divinefavor.DivineFavor
 import aurocosh.divinefavor.client.block_ovelay.BlockConstructionRendering
 import aurocosh.divinefavor.common.coordinate_generators.ColumnCoordinateGenerator
 import aurocosh.divinefavor.common.item.spell_talismans.base.ItemSpellTalisman
 import aurocosh.divinefavor.common.item.spell_talismans.base.SpellOptions
 import aurocosh.divinefavor.common.item.spell_talismans.base.TalismanContext
+import aurocosh.divinefavor.common.item.spell_talismans.common_build_properties.BlockSelectPropertyHandler
+import aurocosh.divinefavor.common.item.spell_talismans.common_build_properties.LockPropertyHandler
 import aurocosh.divinefavor.common.lib.extensions.get
 import aurocosh.divinefavor.common.spirit.base.ModSpirit
 import aurocosh.divinefavor.common.stack_properties.StackPropertyBlockPos
@@ -13,8 +14,6 @@ import aurocosh.divinefavor.common.stack_properties.StackPropertyBool
 import aurocosh.divinefavor.common.stack_properties.StackPropertyIBlockState
 import aurocosh.divinefavor.common.stack_properties.StackPropertyInt
 import aurocosh.divinefavor.common.tasks.BlockPlacingTask
-import aurocosh.divinefavor.common.util.UtilBlock
-import aurocosh.divinefavor.common.util.UtilEntity
 import aurocosh.divinefavor.common.util.UtilPlayer
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.init.Blocks
@@ -30,44 +29,24 @@ class SpellTalismanBuildColumn(name: String, spirit: ModSpirit, favorCost: Int, 
     private val shiftForward: StackPropertyInt = propertyHandler.registerIntProperty("shift_forward", 0, -8, 8)
     private val shiftUp: StackPropertyInt = propertyHandler.registerIntProperty("shift_up", 0, -8, 8)
     private val shiftRight: StackPropertyInt = propertyHandler.registerIntProperty("shift_right", 0, -8, 8)
-    private val isPosLocked: StackPropertyBool = propertyHandler.registerBoolProperty("lock_position", false)
-    private val selectedBlock: StackPropertyIBlockState = propertyHandler.registerBlockStateProperty("selected_block", Blocks.AIR.defaultState)
-    private val lockedPosition: StackPropertyBlockPos = propertyHandler.registerBlockPosProperty("locked_position", BlockPos.ORIGIN)
 
-    init {
-        isPosLocked.addChangeListener(this::onPositionLock)
-    }
+    private val lockPropertyHandler = LockPropertyHandler(propertyHandler)
+    private val isPosLocked: StackPropertyBool = lockPropertyHandler.isPosLocked
+    private val lockedPosition: StackPropertyBlockPos = lockPropertyHandler.lockedPosition
 
-    override fun getFavorCost(itemStack: ItemStack): Int {
-        return favorCost * blockCount.getValue(itemStack);
-    }
+    private val selectPropertyHandler = BlockSelectPropertyHandler(propertyHandler)
+    private val selectedBlock = selectPropertyHandler.selectedBlock
 
-    override fun preprocess(context: TalismanContext): Boolean {
-        val stack = context.stack
-        if (context.player.isSneaking) {
-            val state = context.world.getBlockState(context.pos)
-            selectedBlock.setValue(stack, state, true)
-            return false
-        }
-        if (stack.get(isPosLocked))
-            return true
-        return context.valid
-    }
+    override fun getFavorCost(itemStack: ItemStack): Int = favorCost * blockCount.getValue(itemStack)
+    override fun validateCastType(context: TalismanContext): Boolean = lockPropertyHandler.validateCastType(context)
+    override fun preprocess(context: TalismanContext): Boolean = selectPropertyHandler.preprocess(context) && lockPropertyHandler.preprocess(context)
 
     override fun performActionServer(context: TalismanContext) {
-        val stack = context.stack
-        val player = context.player
-        val locked = stack.get(isPosLocked)
-        if (!locked && !context.valid)
-            return
+        val (player, stack, world) = context.getCommon()
+        val (blockCount, state) = stack.get(blockCount, selectedBlock)
 
-        val (count, state) = stack.get(blockCount, selectedBlock)
-        val itemStack = UtilBlock.getSilkDropIfPresent(context.world, state, player)
-        val itemCount = UtilPlayer.countItems(itemStack, player)
-        UtilPlayer.consumeItems(itemStack, player, count)
-
-        val blockPos = getOrigin(player, locked, context.pos, stack)
-        val coordinates = coordinateGenerator.getCoordinates(blockPos, count).take(itemCount).shuffled()
+        val count = UtilPlayer.consumeBlocks(player, world, state, blockCount)
+        val coordinates = getCoordinates(context, count)
 
         BlockPlacingTask(coordinates, state, player, 1).start()
     }
@@ -78,28 +57,23 @@ class SpellTalismanBuildColumn(name: String, spirit: ModSpirit, favorCost: Int, 
 
     @SideOnly(Side.CLIENT)
     override fun handleRendering(context: TalismanContext, lastEvent: RenderWorldLastEvent) {
-        val stack = context.stack
-        val player = context.player
-        val locked = stack.get(isPosLocked)
-        if (!locked && !context.valid)
+        if(!lockPropertyHandler.shouldRender(context))
             return
-
-        val blockPos = getOrigin(player, locked, context.pos, stack)
-        val (count, state) = stack.get(blockCount, selectedBlock)
-        val coordinates = coordinateGenerator.getCoordinates(blockPos, count)
+        val (player, stack) = context.getCommon()
+        val state = stack.get(selectedBlock)
+        val coordinates = getCoordinates(context)
         BlockConstructionRendering.render(lastEvent, player, state, coordinates)
     }
 
-    private fun onPositionLock(stack: ItemStack, value: Boolean) {
-        val player = DivineFavor.proxy.clientPlayer
-        val traceResult = UtilEntity.getBlockPlayerLookingAt(player) ?: return
-
-        val pos = traceResult.blockPos
-        lockedPosition.setValue(stack, pos, true)
+    private fun getCoordinates(context: TalismanContext, limit: Int = Int.MAX_VALUE): List<BlockPos> {
+        val (player, stack) = context.getCommon()
+        val blockPos = getOrigin(player, context.pos, stack)
+        val count = Math.min(limit, stack.get(blockCount))
+        return coordinateGenerator.getCoordinates(blockPos, count)
     }
 
-    private fun getOrigin(player: EntityPlayer, locked: Boolean, pos: BlockPos, stack: ItemStack): BlockPos {
-        val (shiftForward, shiftUp, shiftRight) = stack.get(shiftForward, shiftUp, shiftRight)
+    private fun getOrigin(player: EntityPlayer, pos: BlockPos, stack: ItemStack): BlockPos {
+        val (shiftForward, shiftUp, shiftRight, locked) = stack.get(shiftForward, shiftUp, shiftRight, isPosLocked)
         val blockPos = if (!locked) pos else stack.get(lockedPosition)
         val shift = UtilPlayer.getShift(player, shiftForward, shiftUp, shiftRight)
         return blockPos.add(shift)

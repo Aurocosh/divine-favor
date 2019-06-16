@@ -6,6 +6,7 @@ import aurocosh.divinefavor.common.lib.extensions.asSequence
 import aurocosh.divinefavor.common.lib.extensions.asSlotSequence
 import aurocosh.divinefavor.common.lib.extensions.getAllInventoryCapabilities
 import aurocosh.divinefavor.common.network.message.client.syncing.MessageSyncFlyingCapability
+import net.minecraft.block.state.IBlockState
 import net.minecraft.entity.item.EntityItem
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.init.SoundEvents
@@ -16,6 +17,7 @@ import net.minecraft.util.EnumHand
 import net.minecraft.util.SoundCategory
 import net.minecraft.util.math.BlockPos
 import net.minecraft.util.math.MathHelper
+import net.minecraft.world.World
 import net.minecraftforge.items.IItemHandler
 
 data class HeldStack(val hand: EnumHand, val slot: Int, val stack: ItemStack)
@@ -158,5 +160,13 @@ object UtilPlayer {
         if (facing == EnumFacing.NORTH || facing == EnumFacing.SOUTH)
             return BlockPos(-rightShift, upShift, forwardShift)
         return BlockPos(-forwardShift, upShift, -rightShift)
+    }
+
+    fun consumeBlocks(player: EntityPlayer, world: World, state: IBlockState, count: Int): Int {
+        val itemStack = UtilBlock.getSilkDropIfPresent(world, state, player)
+        val itemCount = countItems(itemStack, player)
+        val toConsume = Math.min(count, itemCount)
+        consumeItems(itemStack, player, count)
+        return toConsume
     }
 }
