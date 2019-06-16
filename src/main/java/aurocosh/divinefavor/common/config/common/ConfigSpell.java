@@ -212,6 +212,8 @@ public class ConfigSpell {
     public static WoodenPunch woodenPunch = new WoodenPunch();
 
     // New configs
+    @Config.Name("Build extrusion")
+    public static BuildExtrusion buildExtrusion = new BuildExtrusion();
     @Config.Name("Build horizontal line")
     public static BuildHorizontalLine buildHorizontalLine = new BuildHorizontalLine();
     @Config.Name("Build from surface")
