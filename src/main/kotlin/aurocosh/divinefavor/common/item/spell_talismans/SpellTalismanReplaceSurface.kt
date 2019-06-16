@@ -6,7 +6,7 @@ import aurocosh.divinefavor.common.item.spell_talismans.base.ItemSpellTalisman
 import aurocosh.divinefavor.common.item.spell_talismans.base.SpellOptions
 import aurocosh.divinefavor.common.item.spell_talismans.base.TalismanContext
 import aurocosh.divinefavor.common.item.spell_talismans.common_build_properties.BlockSelectPropertyWrapper
-import aurocosh.divinefavor.common.item.spell_talismans.common_build_properties.LockPositionPropertyWrapper
+import aurocosh.divinefavor.common.item.spell_talismans.common_build_properties.PositionPropertyWrapper
 import aurocosh.divinefavor.common.lib.extensions.get
 import aurocosh.divinefavor.common.lib.extensions.isAirOrReplacable
 import aurocosh.divinefavor.common.spirit.base.ModSpirit
@@ -26,7 +26,7 @@ class SpellTalismanReplaceSurface(name: String, spirit: ModSpirit, favorCost: In
     private val blockCount: StackPropertyInt = propertyHandler.registerIntProperty("block_count", 6, 1, 64)
     private val isFuzzy: StackPropertyBool = propertyHandler.registerBoolProperty("fuzzy", false)
 
-    private val lockPropertyHandler = LockPositionPropertyWrapper(propertyHandler)
+    private val lockPropertyHandler = PositionPropertyWrapper(propertyHandler)
     private val isPosLocked: StackPropertyBool = lockPropertyHandler.isLockPosition
     private val lockedPosition: StackPropertyBlockPos = lockPropertyHandler.lockedPosition
 

@@ -9,7 +9,7 @@ import aurocosh.divinefavor.common.util.UtilEntity
 import net.minecraft.item.ItemStack
 import net.minecraft.util.EnumFacing
 
-class LockFacingPropertyWrapper(propertyHandler: TalismanPropertyHandler) {
+class FacingPropertyWrapper(propertyHandler: TalismanPropertyHandler) {
     val isLockFacing: StackPropertyBool = propertyHandler.registerBoolProperty("lock_facing", false)
     val lockedFacing: StackPropertyEnumFacing = propertyHandler.registerEnumFacingProperty("locked_facing", EnumFacing.UP)
 

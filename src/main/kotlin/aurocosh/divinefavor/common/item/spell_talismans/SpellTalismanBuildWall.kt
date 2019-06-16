@@ -6,8 +6,9 @@ import aurocosh.divinefavor.common.item.spell_talismans.base.ItemSpellTalisman
 import aurocosh.divinefavor.common.item.spell_talismans.base.SpellOptions
 import aurocosh.divinefavor.common.item.spell_talismans.base.TalismanContext
 import aurocosh.divinefavor.common.item.spell_talismans.common_build_properties.BlockSelectPropertyWrapper
-import aurocosh.divinefavor.common.item.spell_talismans.common_build_properties.LockPositionPropertyWrapper
-import aurocosh.divinefavor.common.item.spell_talismans.common_build_properties.LockRotationPropertyWrapper
+import aurocosh.divinefavor.common.item.spell_talismans.common_build_properties.PositionPropertyWrapper
+import aurocosh.divinefavor.common.item.spell_talismans.common_build_properties.RotationPropertyWrapper
+import aurocosh.divinefavor.common.item.spell_talismans.common_build_properties.ShiftedPositionPropertyWrapper
 import aurocosh.divinefavor.common.lib.extensions.get
 import aurocosh.divinefavor.common.lib.extensions.isAirOrReplacable
 import aurocosh.divinefavor.common.spirit.base.ModSpirit
@@ -25,10 +26,9 @@ class SpellTalismanBuildWall(name: String, spirit: ModSpirit, favorCost: Int, op
     private val left: StackPropertyInt = propertyHandler.registerIntProperty("left", 2, 0, 10)
     private val right: StackPropertyInt = propertyHandler.registerIntProperty("right", 2, 0, 10)
     private val height: StackPropertyInt = propertyHandler.registerIntProperty("height", 3, 1, 20)
-    private val shiftUp: StackPropertyInt = propertyHandler.registerIntProperty("shift_up", 1, -8, 8)
 
-    private val positionPropertyWrapper = LockPositionPropertyWrapper(propertyHandler)
-    private val rotationPropertyWrapper = LockRotationPropertyWrapper(propertyHandler)
+    private val positionPropertyWrapper = ShiftedPositionPropertyWrapper(propertyHandler)
+    private val rotationPropertyWrapper = RotationPropertyWrapper(propertyHandler)
 
     private val selectPropertyWrapper = BlockSelectPropertyWrapper(propertyHandler)
     private val selectedBlock = selectPropertyWrapper.selectedBlock
@@ -72,17 +72,12 @@ class SpellTalismanBuildWall(name: String, spirit: ModSpirit, favorCost: Int, op
         val (player, stack, world) = context.getCommon()
         val (left, right, height) = context.stack.get(left, right, height)
 
-        val blockPos = getOrigin(context.pos, stack)
+        val blockPos = positionPropertyWrapper.getPosition(context, context.pos)
         val blockCount = getBlockCount(left, right, height)
         val count = Math.min(limit, blockCount)
         val facing = rotationPropertyWrapper.getRotation(stack, player.horizontalFacing)
 
         return coordinateGenerator.getCoordinates(facing, blockPos, height, left, right, count).filter(world::isAirOrReplacable)
-    }
-
-    private fun getOrigin(pos: BlockPos, stack: ItemStack): BlockPos {
-        val blockPos = positionPropertyWrapper.getPosition(stack, pos)
-        return blockPos.add(0, stack.get(shiftUp), 0)
     }
 
     private fun getBlockCount(left: Int, right: Int, height: Int): Int {

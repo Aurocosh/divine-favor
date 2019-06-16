@@ -10,7 +10,7 @@ import aurocosh.divinefavor.common.util.UtilEntity
 import net.minecraft.item.ItemStack
 import net.minecraft.util.EnumFacing
 
-class LockRotationPropertyWrapper(propertyHandler: TalismanPropertyHandler) {
+class RotationPropertyWrapper(propertyHandler: TalismanPropertyHandler) {
     val isLockRotation: StackPropertyBool = propertyHandler.registerBoolProperty("lock_rotation", false)
     val lockedRotation: StackPropertyEnumFacing = propertyHandler.registerEnumFacingProperty("locked_rotation", EnumFacing.UP)
 

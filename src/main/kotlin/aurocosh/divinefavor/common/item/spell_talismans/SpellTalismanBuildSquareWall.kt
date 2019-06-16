@@ -6,8 +6,9 @@ import aurocosh.divinefavor.common.item.spell_talismans.base.ItemSpellTalisman
 import aurocosh.divinefavor.common.item.spell_talismans.base.SpellOptions
 import aurocosh.divinefavor.common.item.spell_talismans.base.TalismanContext
 import aurocosh.divinefavor.common.item.spell_talismans.common_build_properties.BlockSelectPropertyWrapper
-import aurocosh.divinefavor.common.item.spell_talismans.common_build_properties.LockPositionPropertyWrapper
-import aurocosh.divinefavor.common.item.spell_talismans.common_build_properties.LockRotationPropertyWrapper
+import aurocosh.divinefavor.common.item.spell_talismans.common_build_properties.PositionPropertyWrapper
+import aurocosh.divinefavor.common.item.spell_talismans.common_build_properties.RotationPropertyWrapper
+import aurocosh.divinefavor.common.item.spell_talismans.common_build_properties.ShiftedPositionPropertyWrapper
 import aurocosh.divinefavor.common.lib.extensions.get
 import aurocosh.divinefavor.common.lib.extensions.isAirOrReplacable
 import aurocosh.divinefavor.common.spirit.base.ModSpirit
@@ -23,10 +24,9 @@ import java.util.*
 
 class SpellTalismanBuildSquareWall(name: String, spirit: ModSpirit, favorCost: Int, options: EnumSet<SpellOptions>) : ItemSpellTalisman(name, spirit, favorCost, options) {
     private val radius: StackPropertyInt = propertyHandler.registerIntProperty("radius", 2, 1, 10)
-    private val shiftUp: StackPropertyInt = propertyHandler.registerIntProperty("shift_up", 1, -8, 8)
 
-    private val positionPropertyWrapper = LockPositionPropertyWrapper(propertyHandler)
-    private val rotationPropertyWrapper = LockRotationPropertyWrapper(propertyHandler)
+    private val positionPropertyWrapper = ShiftedPositionPropertyWrapper(propertyHandler)
+    private val rotationPropertyWrapper = RotationPropertyWrapper(propertyHandler)
 
     private val selectPropertyWrapper = BlockSelectPropertyWrapper(propertyHandler)
     private val selectedBlock = selectPropertyWrapper.selectedBlock
@@ -70,17 +70,12 @@ class SpellTalismanBuildSquareWall(name: String, spirit: ModSpirit, favorCost: I
         val (player, stack, world) = context.getCommon()
         val radius = context.stack.get(radius) - 1
 
-        val blockPos = getOrigin(context.pos, stack)
+        val blockPos = positionPropertyWrapper.getPosition(context, context.pos)
         val blockCount = getBlockCount(radius)
         val count = Math.min(limit, blockCount)
         val facing = rotationPropertyWrapper.getRotation(stack, player.horizontalFacing)
 
         return coordinateGenerator.getCoordinates(facing, blockPos, 2 * radius + 1, radius, radius, count).filter(world::isAirOrReplacable)
-    }
-
-    private fun getOrigin(pos: BlockPos, stack: ItemStack): BlockPos {
-        val blockPos = positionPropertyWrapper.getPosition(stack, pos)
-        return blockPos.add(0, stack.get(shiftUp), 0)
     }
 
     private fun getBlockCount(radius: Int): Int {

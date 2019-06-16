@@ -6,8 +6,8 @@ import aurocosh.divinefavor.common.item.spell_talismans.base.ItemSpellTalisman
 import aurocosh.divinefavor.common.item.spell_talismans.base.SpellOptions
 import aurocosh.divinefavor.common.item.spell_talismans.base.TalismanContext
 import aurocosh.divinefavor.common.item.spell_talismans.common_build_properties.BlockSelectPropertyWrapper
-import aurocosh.divinefavor.common.item.spell_talismans.common_build_properties.LockPositionPropertyWrapper
-import aurocosh.divinefavor.common.item.spell_talismans.common_build_properties.LockRotationPropertyWrapper
+import aurocosh.divinefavor.common.item.spell_talismans.common_build_properties.RotationPropertyWrapper
+import aurocosh.divinefavor.common.item.spell_talismans.common_build_properties.ShiftedPositionPropertyWrapper
 import aurocosh.divinefavor.common.lib.extensions.get
 import aurocosh.divinefavor.common.lib.extensions.isAirOrReplacable
 import aurocosh.divinefavor.common.spirit.base.ModSpirit
@@ -23,10 +23,9 @@ import java.util.*
 
 class SpellTalismanBuildSquareFloor(name: String, spirit: ModSpirit, favorCost: Int, options: EnumSet<SpellOptions>) : ItemSpellTalisman(name, spirit, favorCost, options) {
     private val radius: StackPropertyInt = propertyHandler.registerIntProperty("radius", 2, 1, 10)
-    private val shiftUp: StackPropertyInt = propertyHandler.registerIntProperty("shift_up", 1, -8, 8)
 
-    private val lockPositionPropertyWrapper = LockPositionPropertyWrapper(propertyHandler)
-    private val rotationPropertyWrapper = LockRotationPropertyWrapper(propertyHandler)
+    private val positionPropertyWrapper = ShiftedPositionPropertyWrapper(propertyHandler)
+    private val rotationPropertyWrapper = RotationPropertyWrapper(propertyHandler)
 
     private val selectPropertyWrapper = BlockSelectPropertyWrapper(propertyHandler)
     private val selectedBlock = selectPropertyWrapper.selectedBlock
@@ -36,8 +35,8 @@ class SpellTalismanBuildSquareFloor(name: String, spirit: ModSpirit, favorCost: 
         return favorCost * getBlockCount(radius)
     }
 
-    override fun validateCastType(context: TalismanContext): Boolean = this.lockPositionPropertyWrapper.validateCastType(context)
-    override fun preprocess(context: TalismanContext): Boolean = selectPropertyWrapper.preprocess(context) && this.lockPositionPropertyWrapper.preprocess(context)
+    override fun validateCastType(context: TalismanContext): Boolean = this.positionPropertyWrapper.validateCastType(context)
+    override fun preprocess(context: TalismanContext): Boolean = selectPropertyWrapper.preprocess(context) && this.positionPropertyWrapper.preprocess(context)
 
     override fun performActionServer(context: TalismanContext) {
         val (player, stack, world) = context.getCommon()
@@ -53,12 +52,12 @@ class SpellTalismanBuildSquareFloor(name: String, spirit: ModSpirit, favorCost: 
     }
 
     override fun performActionClient(context: TalismanContext) {
-        lockPositionPropertyWrapper.isLockPosition.setValue(context.stack, false, true)
+        positionPropertyWrapper.isLockPosition.setValue(context.stack, false, true)
     }
 
     @SideOnly(Side.CLIENT)
     override fun handleRendering(context: TalismanContext, lastEvent: RenderWorldLastEvent) {
-        if (!this.lockPositionPropertyWrapper.shouldRender(context))
+        if (!this.positionPropertyWrapper.shouldRender(context))
             return
         val (player, stack) = context.getCommon()
         val state = stack.get(selectedBlock)
@@ -70,18 +69,12 @@ class SpellTalismanBuildSquareFloor(name: String, spirit: ModSpirit, favorCost: 
         val (player, stack, world) = context.getCommon()
         val radius = stack.get(radius) - 1
 
-        val blockPos = getOrigin(context.pos, stack)
+        val blockPos = positionPropertyWrapper.getPosition(context, context.pos)
         val blockCount = getBlockCount(radius)
         val count = Math.min(limit, blockCount)
         val facing = rotationPropertyWrapper.getRotation(stack, player.horizontalFacing)
 
         return coordinateGenerator.getCoordinates(facing, blockPos, radius, radius, radius, radius, count).filter(world::isAirOrReplacable)
-    }
-
-    private fun getOrigin(pos: BlockPos, stack: ItemStack): BlockPos {
-        val blockPos = lockPositionPropertyWrapper.getPosition(stack, pos)
-        val shiftY = stack.get(shiftUp)
-        return blockPos.add(0, shiftY, 0)
     }
 
     private fun getBlockCount(radius: Int): Int {

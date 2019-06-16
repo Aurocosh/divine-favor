@@ -6,8 +6,8 @@ import aurocosh.divinefavor.common.item.spell_talismans.base.ItemSpellTalisman
 import aurocosh.divinefavor.common.item.spell_talismans.base.SpellOptions
 import aurocosh.divinefavor.common.item.spell_talismans.base.TalismanContext
 import aurocosh.divinefavor.common.item.spell_talismans.common_build_properties.BlockSelectPropertyWrapper
-import aurocosh.divinefavor.common.item.spell_talismans.common_build_properties.LockPositionPropertyWrapper
-import aurocosh.divinefavor.common.item.spell_talismans.common_build_properties.LockRotationPropertyWrapper
+import aurocosh.divinefavor.common.item.spell_talismans.common_build_properties.RotationPropertyWrapper
+import aurocosh.divinefavor.common.item.spell_talismans.common_build_properties.ShiftedPositionPropertyWrapper
 import aurocosh.divinefavor.common.lib.extensions.get
 import aurocosh.divinefavor.common.lib.extensions.isAirOrReplacable
 import aurocosh.divinefavor.common.spirit.base.ModSpirit
@@ -26,10 +26,9 @@ class SpellTalismanBuildFloor(name: String, spirit: ModSpirit, favorCost: Int, o
     private val right: StackPropertyInt = propertyHandler.registerIntProperty("right", 2, 0, 10)
     private val front: StackPropertyInt = propertyHandler.registerIntProperty("front", 3, 0, 10)
     private val back: StackPropertyInt = propertyHandler.registerIntProperty("back", 0, 0, 10)
-    private val shiftUp: StackPropertyInt = propertyHandler.registerIntProperty("shift_up", 1, -8, 8)
 
-    private val lockPositionPropertyWrapper = LockPositionPropertyWrapper(propertyHandler)
-    private val lockRotationPropertyWrapper = LockRotationPropertyWrapper(propertyHandler)
+    private val positionPropertyWrapper = ShiftedPositionPropertyWrapper(propertyHandler)
+    private val lockRotationPropertyWrapper = RotationPropertyWrapper(propertyHandler)
 
     private val selectPropertyWrapper = BlockSelectPropertyWrapper(propertyHandler)
     private val selectedBlock = selectPropertyWrapper.selectedBlock
@@ -39,8 +38,8 @@ class SpellTalismanBuildFloor(name: String, spirit: ModSpirit, favorCost: Int, o
         return favorCost * getBlockCount(left, right, front, back)
     }
 
-    override fun validateCastType(context: TalismanContext): Boolean = lockPositionPropertyWrapper.validateCastType(context)
-    override fun preprocess(context: TalismanContext): Boolean = selectPropertyWrapper.preprocess(context) && lockPositionPropertyWrapper.preprocess(context)
+    override fun validateCastType(context: TalismanContext): Boolean = positionPropertyWrapper.validateCastType(context)
+    override fun preprocess(context: TalismanContext): Boolean = selectPropertyWrapper.preprocess(context) && positionPropertyWrapper.preprocess(context)
 
     override fun performActionServer(context: TalismanContext) {
         val (player, stack, world) = context.getCommon()
@@ -55,12 +54,12 @@ class SpellTalismanBuildFloor(name: String, spirit: ModSpirit, favorCost: Int, o
     }
 
     override fun performActionClient(context: TalismanContext) {
-        lockPositionPropertyWrapper.isLockPosition.setValue(context.stack, false, true)
+        positionPropertyWrapper.isLockPosition.setValue(context.stack, false, true)
     }
 
     @SideOnly(Side.CLIENT)
     override fun handleRendering(context: TalismanContext, lastEvent: RenderWorldLastEvent) {
-        if (!lockPositionPropertyWrapper.shouldRender(context))
+        if (!positionPropertyWrapper.shouldRender(context))
             return
         val (player, stack) = context.getCommon()
         val state = stack.get(selectedBlock)
@@ -72,17 +71,12 @@ class SpellTalismanBuildFloor(name: String, spirit: ModSpirit, favorCost: Int, o
         val (player, stack, world) = context.getCommon()
         val (left, right, up, down) = context.stack.get(left, right, front, back)
 
-        val blockPos = getOrigin(context.pos, stack)
+        val blockPos = positionPropertyWrapper.getPosition(context, context.pos)
         val blockCount = getBlockCount(left, right, up, down)
         val count = Math.min(limit, blockCount)
         val facing = lockRotationPropertyWrapper.getRotation(stack, player.horizontalFacing)
 
         return coordinateGenerator.getCoordinates(facing, blockPos, up, down, left, right, count).filter(world::isAirOrReplacable)
-    }
-
-    private fun getOrigin(pos: BlockPos, stack: ItemStack): BlockPos {
-        val blockPos = lockPositionPropertyWrapper.getPosition(stack, pos)
-        return blockPos.add(0, stack.get(shiftUp), 0)
     }
 
     private fun getBlockCount(left: Int, right: Int, front: Int, back: Int): Int {
