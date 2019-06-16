@@ -15,12 +15,12 @@
       "ore": "dyeBlack"
     },
     {
-      "type": "stack",
-      "item": "minecraft:TODO"
+      "type": "ore",
+      "ore": "dyePurple"
     },
     {
       "type": "stack",
-      "item": "minecraft:TODO"
+      "item": "minecraft:iron_pickaxe"
     }
   ]
 }
