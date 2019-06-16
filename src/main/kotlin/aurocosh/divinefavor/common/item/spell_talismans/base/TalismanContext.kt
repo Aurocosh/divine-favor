@@ -23,7 +23,7 @@ class TalismanContext(val player: EntityPlayer, target: EntityLivingBase?, val w
     val pos: BlockPos
     val posVec: Vec3d
     val facing: EnumFacing
-    val valid: Boolean
+    val valid: Boolean // TODO split validity
 
     init {
         val (raycastBlock, raycastTarget, stackValid) = getStackData(stack)
@@ -61,8 +61,7 @@ class TalismanContext(val player: EntityPlayer, target: EntityLivingBase?, val w
         }
 
         fun rightClick(world: World, player: EntityPlayer, hand: EnumHand, stack: ItemStack): TalismanContext {
-            val position = player.position
-            return TalismanContext(player, null, world, position, position.toVec3d(), hand, EnumFacing.UP, CastType.RightCast, stack)
+            return TalismanContext(player, null, world, player.position, player.positionVector, hand, EnumFacing.UP, CastType.RightCast, stack)
         }
 
         fun arrowShot(world: World, player: EntityPlayer, hand: EnumHand, stack: ItemStack): TalismanContext {

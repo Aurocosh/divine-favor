@@ -182,6 +182,8 @@ item.divinefavor:rope_teleporting.name=Warping rope
 item.divinefavor:ice_arrow.name=Ice arrow
 
 ## SPELL TALISMAN NAMES
+item.divinefavor:spell_talisman_build_square_floor_relative.name=Build square floor relative
+item.divinefavor:spell_talisman_build_block_relative.name=Build block relative
 item.divinefavor:spell_talisman_build_extrusion.name=Build extrusion
 item.divinefavor:spell_talisman_build_horizontal_line.name=Build horizontal line
 item.divinefavor:spell_talisman_build_from_surface.name=Build from surface
@@ -576,6 +578,8 @@ item.divinefavor:rope_teleporting.description=Unusual trapping device. It will t
 item.divinefavor:ice_arrow.description=Delicate arrows made of ice. They are frail and because of this they deal less damage then regular arrows and break easily, but in a pinch they can be very useful. This type of arrow also cannot be tipped in potion, but on the other hand it deals extra damage to hellish mobs.
 
 ## SPELL TALISMAN DESCRIPTIONS
+item.divinefavor:spell_talisman_build_square_floor_relative.description=TODO
+item.divinefavor:spell_talisman_build_block_relative.description=TODO
 item.divinefavor:spell_talisman_build_extrusion.description=This talisman allows you to instantly build extrusions in shape of any surface.
 item.divinefavor:spell_talisman_build_horizontal_line.description=This talisman allows you to instantly build horizontal lines of arbitrary size.
 item.divinefavor:spell_talisman_build_from_surface.description=This talisman allows you to instantly build block lines from any surface.
@@ -827,6 +831,7 @@ name.divinefavor:property.front=Front: %1$d
 name.divinefavor:property.back=Back: %1$d
 name.divinefavor:property.on_top=On top: %1$s
 
+name.divinefavor:property.distance=Distance: %1$s
 name.divinefavor:property.length=Length: %1$s
 name.divinefavor:property.radius=Radius: %1$s
 name.divinefavor:property.height=Height: %1$s
@@ -863,6 +868,7 @@ tooltip.divinefavor:property.front=Determines how much to extend build in fronta
 tooltip.divinefavor:property.back=Determines how much to extend build backwards
 tooltip.divinefavor:property.on_top=If enabled origin is raised by one block
 
+tooltip.divinefavor:property.distance=Determines distance of the build from you
 tooltip.divinefavor:property.length=Determines length of the build
 tooltip.divinefavor:property.radius=Determines radius of the build
 tooltip.divinefavor:property.height=Determines height of the build

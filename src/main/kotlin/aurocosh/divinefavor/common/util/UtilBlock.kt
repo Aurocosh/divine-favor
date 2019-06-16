@@ -1,5 +1,7 @@
 package aurocosh.divinefavor.common.util
 
+import aurocosh.divinefavor.common.lib.math.CubeCoordinates
+import aurocosh.divinefavor.common.tasks.BlockPlacingTask
 import net.minecraft.block.Block
 import net.minecraft.block.BlockLiquid
 import net.minecraft.block.state.IBlockState
@@ -191,5 +193,11 @@ object UtilBlock {
         val item = Item.getItemFromBlock(state.block)
         val meta = if (item.hasSubtypes) state.block.damageDropped(state) else 0
         return ItemStack(item, 1, meta)
+    }
+
+    fun getBlocksForPlacement(player: EntityPlayer, world: World, state: IBlockState, coordinates: List<BlockPos>): List<BlockPos> {
+        val blocksToPlace = UtilPlayer.countBlocks(player, world, state, coordinates.count())
+        UtilPlayer.consumeBlocks(player, world, state, blocksToPlace)
+        return coordinates.take(blocksToPlace).toList()
     }
 }

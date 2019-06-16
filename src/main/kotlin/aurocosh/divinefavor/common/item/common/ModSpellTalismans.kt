@@ -123,6 +123,8 @@ object ModSpellTalismans {
     lateinit var wooden_punch: ItemSpellTalisman
 
     // New fields
+    lateinit var build_square_floor_relative: ItemSpellTalisman
+    lateinit var build_block_relative: ItemSpellTalisman
     lateinit var build_extrusion: ItemSpellTalisman
     lateinit var build_horizontal_line: ItemSpellTalisman
     lateinit var build_from_surface: ItemSpellTalisman
@@ -261,6 +263,8 @@ object ModSpellTalismans {
         starvation = SpellTalismanModPotion("starvation", ModSpirits.timber, ConfigSpell.starvation.favorCost, ModPotions.starvation, ConfigSpell.starvation.duration)
 
         // New instances
+        build_square_floor_relative = SpellTalismanBuildSquareFloorRelative("build_square_floor_relative", ModSpirits.romol, ConfigSpell.buildSquareFloorRelative.favorCost, SpellOptions.RIGHT_CAST)
+        build_block_relative = SpellTalismanBuildBlockRelative("build_block_relative", ModSpirits.romol, ConfigSpell.buildBlockRelative.favorCost, SpellOptions.RIGHT_CAST)
         build_extrusion = SpellTalismanBuildExtrusion("build_extrusion", ModSpirits.romol, ConfigSpell.buildExtrusion.favorCost, SpellOptions.TRACE_ONLY_CAST)
         build_horizontal_line = SpellTalismanBuildHorizontalLine("build_horizontal_line", ModSpirits.romol, ConfigSpell.buildHorizontalLine.favorCost, SpellOptions.TRACE_ONLY_CAST)
         build_from_surface = SpellTalismanBuildFromSurface("build_from_surface", ModSpirits.romol, ConfigSpell.buildFromSurface.favorCost, SpellOptions.TRACE_ONLY_CAST)
