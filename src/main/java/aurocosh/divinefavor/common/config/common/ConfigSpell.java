@@ -212,6 +212,8 @@ public class ConfigSpell {
     public static WoodenPunch woodenPunch = new WoodenPunch();
 
     // New configs
+    @Config.Name("Build column relative")
+    public static BuildColumnRelative buildColumnRelative = new BuildColumnRelative();
     @Config.Name("Build square wall relative")
     public static BuildSquareWallRelative buildSquareWallRelative = new BuildSquareWallRelative();
     @Config.Name("Build square floor relative")
