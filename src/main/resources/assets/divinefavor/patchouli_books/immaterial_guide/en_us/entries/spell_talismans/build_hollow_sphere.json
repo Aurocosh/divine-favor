@@ -1,0 +1,15 @@
+{
+  "name": "Build hollow sphere",
+  "icon": "divinefavor:spell_talisman_build_hollow_sphere",
+  "category": "spell_talismans",
+  "pages": [
+    {
+      "type": "item_description",
+      "talisman": "divinefavor:spell_talisman_build_hollow_sphere"
+    },
+    {
+      "type": "spell_talisman_stats",
+      "talisman": "divinefavor:spell_talisman_build_hollow_sphere"
+    }
+  ]
+}

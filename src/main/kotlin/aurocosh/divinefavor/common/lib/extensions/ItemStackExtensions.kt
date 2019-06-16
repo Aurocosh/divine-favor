@@ -37,6 +37,10 @@ fun ItemStack.hasKey(vararg tags: String): Boolean {
     return compound.hasKey(*tags)
 }
 
+fun <T> ItemStack.set(property: StackProperty<T>, value: T, sync: Boolean = false): Boolean {
+    return property.setValue(this, value, sync)
+}
+
 fun <T> ItemStack.get(one: StackProperty<T>): T {
     return one.getValue(this)
 }

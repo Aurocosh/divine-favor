@@ -182,6 +182,7 @@ item.divinefavor:rope_teleporting.name=Warping rope
 item.divinefavor:ice_arrow.name=Ice arrow
 
 ## SPELL TALISMAN NAMES
+item.divinefavor:spell_talisman_build_hollow_sphere.name=Build hollow sphere
 item.divinefavor:spell_talisman_build_square_wall.name=Build square wall
 item.divinefavor:spell_talisman_build_square_floor.name=Build square floor
 item.divinefavor:spell_talisman_build_floor.name=Build floor
@@ -571,6 +572,7 @@ item.divinefavor:rope_teleporting.description=Unusual trapping device. It will t
 item.divinefavor:ice_arrow.description=Delicate arrows made of ice. They are frail and because of this they deal less damage then regular arrows and break easily, but in a pinch they can be very useful. This type of arrow also cannot be tipped in potion, but on the other hand it deals extra damage to hellish mobs.
 
 ## SPELL TALISMAN DESCRIPTIONS
+item.divinefavor:spell_talisman_build_hollow_sphere.description=This talisman allows you to instantly build hollow spheres.
 item.divinefavor:spell_talisman_build_square_wall.description=This talisman allows you to instantly build square walls.
 item.divinefavor:spell_talisman_build_square_floor.description=This talisman allows you to instantly build square floors
 item.divinefavor:spell_talisman_build_floor.description=This talisman allows you to instantly build floors with arbitrary size.
@@ -803,6 +805,9 @@ name.divinefavor:property.test=Test: %1$d
 name.divinefavor:property.lock_position=Position lock: %1$s
 name.divinefavor:property.lock_rotation=Rotation lock: %1$s
 
+name.divinefavor:property.radius_internal=Internal lock: %1$s
+name.divinefavor:property.radius_external=External lock: %1$s
+
 name.divinefavor:property.left=Left: %1$d
 name.divinefavor:property.right=Right: %1$d
 name.divinefavor:property.up=Up: %1$d
@@ -830,6 +835,9 @@ tooltip.divinefavor:property.test=This is a test property
 
 tooltip.divinefavor:property.lock_position=Locks origin of current build to the current position
 tooltip.divinefavor:property.lock_rotation=Locks rotation of current build to the current rotation
+
+tooltip.divinefavor:property.radius_internal=Determines internal radius of the sphere
+tooltip.divinefavor:property.radius_external=Determines external radius of the sphere
 
 tooltip.divinefavor:property.left=Determines how much to extend build up
 tooltip.divinefavor:property.right=Determines how much to extend build right
