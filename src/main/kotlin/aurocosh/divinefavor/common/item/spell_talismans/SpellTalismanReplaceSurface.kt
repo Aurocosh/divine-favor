@@ -6,8 +6,9 @@ import aurocosh.divinefavor.common.item.spell_talismans.base.ItemSpellTalisman
 import aurocosh.divinefavor.common.item.spell_talismans.base.SpellOptions
 import aurocosh.divinefavor.common.item.spell_talismans.base.TalismanContext
 import aurocosh.divinefavor.common.item.spell_talismans.common_build_properties.BlockSelectPropertyHandler
-import aurocosh.divinefavor.common.item.spell_talismans.common_build_properties.LockPropertyHandler
+import aurocosh.divinefavor.common.item.spell_talismans.common_build_properties.LockPositionPropertyHandler
 import aurocosh.divinefavor.common.lib.extensions.get
+import aurocosh.divinefavor.common.lib.extensions.isAirOrReplacable
 import aurocosh.divinefavor.common.spirit.base.ModSpirit
 import aurocosh.divinefavor.common.stack_properties.StackPropertyBlockPos
 import aurocosh.divinefavor.common.stack_properties.StackPropertyBool
@@ -25,8 +26,8 @@ class SpellTalismanReplaceSurface(name: String, spirit: ModSpirit, favorCost: In
     private val blockCount: StackPropertyInt = propertyHandler.registerIntProperty("block_count", 6, 1, 64)
     private val isFuzzy: StackPropertyBool = propertyHandler.registerBoolProperty("fuzzy", false)
 
-    private val lockPropertyHandler = LockPropertyHandler(propertyHandler)
-    private val isPosLocked: StackPropertyBool = lockPropertyHandler.isPosLocked
+    private val lockPropertyHandler = LockPositionPropertyHandler(propertyHandler)
+    private val isPosLocked: StackPropertyBool = lockPropertyHandler.isLockPosition
     private val lockedPosition: StackPropertyBlockPos = lockPropertyHandler.lockedPosition
 
     private val selectPropertyHandler = BlockSelectPropertyHandler(propertyHandler)
@@ -40,8 +41,10 @@ class SpellTalismanReplaceSurface(name: String, spirit: ModSpirit, favorCost: In
         val (player, stack, world) = context.getCommon()
         val (blockCount, state) = stack.get(blockCount, selectedBlock)
 
-        val count = UtilPlayer.consumeBlocks(player, world, state, blockCount)
-        val coordinates = getCoordinates(context, count).shuffled()
+        val count = UtilPlayer.countBlocks(player, world, state, blockCount)
+        val coordinates = getCoordinates(context, count).filterNot(world::isAirOrReplacable).shuffled()
+
+        UtilPlayer.consumeBlocks(player, world, state, coordinates.size)
         BlockPlacingTask(coordinates, state, player, 1).start()
     }
 
@@ -51,7 +54,7 @@ class SpellTalismanReplaceSurface(name: String, spirit: ModSpirit, favorCost: In
 
     @SideOnly(Side.CLIENT)
     override fun handleRendering(context: TalismanContext, lastEvent: RenderWorldLastEvent) {
-        if(!lockPropertyHandler.shouldRender(context))
+        if (!lockPropertyHandler.shouldRender(context))
             return
         val state = context.stack.get(selectedBlock)
         val coordinates = getCoordinates(context)

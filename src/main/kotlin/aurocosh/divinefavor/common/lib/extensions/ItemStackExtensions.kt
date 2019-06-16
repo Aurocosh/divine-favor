@@ -1,6 +1,7 @@
 package aurocosh.divinefavor.common.lib.extensions
 
 import aurocosh.divinefavor.common.lib.Quadruple
+import aurocosh.divinefavor.common.lib.Quintuple
 import aurocosh.divinefavor.common.stack_properties.StackProperty
 import net.minecraft.item.ItemStack
 import net.minecraft.nbt.NBTTagCompound
@@ -50,4 +51,8 @@ fun <A, B, C> ItemStack.get(one: StackProperty<A>, two: StackProperty<B>, three:
 
 fun <A, B, C, D> ItemStack.get(one: StackProperty<A>, two: StackProperty<B>, three: StackProperty<C>, four: StackProperty<D>): Quadruple<A, B, C, D> {
     return Quadruple(one.getValue(this), two.getValue(this), three.getValue(this), four.getValue(this))
+}
+
+fun <A, B, C, D, E> ItemStack.get(one: StackProperty<A>, two: StackProperty<B>, three: StackProperty<C>, four: StackProperty<D>, five: StackProperty<E>): Quintuple<A, B, C, D, E> {
+    return Quintuple(one.getValue(this), two.getValue(this), three.getValue(this), four.getValue(this), five.getValue(this))
 }

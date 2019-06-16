@@ -15,6 +15,7 @@ import aurocosh.divinefavor.common.network.message.sever.*
 import aurocosh.divinefavor.common.network.message.sever.petrification.MessagePetrificationCure
 import aurocosh.divinefavor.common.network.message.sever.petrification.MessagePetrificationDamage
 import aurocosh.divinefavor.common.network.message.sever.petrification.MessagePetrificationReset
+import aurocosh.divinefavor.common.network.message.sever.talisman_properties.*
 import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper
 import net.minecraftforge.fml.relauncher.Side
 
@@ -55,11 +56,15 @@ object NetworkHandler {
         // Server messages
         autoWrapper.register(MessagePetrificationCure::class.java, Side.SERVER)
         autoWrapper.register(MessagePetrificationDamage::class.java, Side.SERVER)
-        autoWrapper.register(MessageSyncTalismanContainerSlot::class.java, Side.SERVER)
-        autoWrapper.register(MessageSyncTalismanPropertyBool::class.java, Side.SERVER)
+
         autoWrapper.register(MessageSyncTalismanPropertyIndex::class.java, Side.SERVER)
+        autoWrapper.register(MessageSyncTalismanContainerSlot::class.java, Side.SERVER)
+
+        autoWrapper.register(MessageSyncTalismanPropertyBool::class.java, Side.SERVER)
         autoWrapper.register(MessageSyncTalismanPropertyInt::class.java, Side.SERVER)
         autoWrapper.register(MessageSyncTalismanPropertyIBlockState::class.java, Side.SERVER)
         autoWrapper.register(MessageSyncTalismanPropertyBlockPos::class.java, Side.SERVER)
+        autoWrapper.register(MessageSyncTalismanPropertyBlockPos::class.java, Side.SERVER)
+        autoWrapper.register(MessageSyncTalismanPropertyEnumFacing::class.java, Side.SERVER)
     }
 }

@@ -7,11 +7,10 @@ import net.minecraft.util.EnumFacing
 import net.minecraft.util.math.BlockPos
 
 class FloorCoordinateGenerator : CachedCoordinateGenerator() {
-    fun getCoordinates(player: EntityPlayer, blockPos: BlockPos, front: Int, back: Int, left: Int, rigth: Int, count: Int): List<BlockPos> {
-        if (isCached(blockPos, front, back, left, rigth))
+    fun getCoordinates(playerFacing: EnumFacing, blockPos: BlockPos, front: Int, back: Int, left: Int, rigth: Int, count: Int): List<BlockPos> {
+        if (isCached(playerFacing, blockPos, front, back, left, rigth))
             return cachedCoordinates
 
-        val playerFacing = player.horizontalFacing
         val frontVec = playerFacing.directionVec.toBlockPos()
         val backVec = playerFacing.opposite.directionVec.toBlockPos()
 

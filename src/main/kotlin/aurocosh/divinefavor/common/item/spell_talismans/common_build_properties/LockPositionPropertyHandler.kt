@@ -11,28 +11,30 @@ import aurocosh.divinefavor.common.util.UtilEntity
 import net.minecraft.item.ItemStack
 import net.minecraft.util.math.BlockPos
 
-class LockPropertyHandler(propertyHandler: TalismanPropertyHandler) {
-    val isPosLocked: StackPropertyBool = propertyHandler.registerBoolProperty("lock_position", false)
+class LockPositionPropertyHandler(propertyHandler: TalismanPropertyHandler) {
+    val isLockPosition: StackPropertyBool = propertyHandler.registerBoolProperty("lock_position", false)
     val lockedPosition: StackPropertyBlockPos = propertyHandler.registerBlockPosProperty("locked_position", BlockPos.ORIGIN)
 
     init {
-        isPosLocked.addChangeListener(this::onPositionLock)
+        isLockPosition.addChangeListener(this::onPositionLock)
     }
+
+    fun getPosition(stack: ItemStack, current: BlockPos) = if (stack.get(isLockPosition)) stack.get(lockedPosition) else current
 
     fun validateCastType(context: TalismanContext): Boolean {
         if (context.castType == CastType.UseCast)
             return true
         if (context.castType == CastType.RightCast)
-            return context.stack.get(isPosLocked) || context.valid
+            return context.stack.get(isLockPosition) || context.valid
         return false
     }
 
     fun shouldRender(context: TalismanContext): Boolean {
-        return context.stack.get(isPosLocked) || context.valid
+        return context.stack.get(isLockPosition) || context.valid
     }
 
     fun preprocess(context: TalismanContext): Boolean {
-        if (context.stack.get(isPosLocked))
+        if (context.stack.get(isLockPosition))
             return true
         return context.valid
     }

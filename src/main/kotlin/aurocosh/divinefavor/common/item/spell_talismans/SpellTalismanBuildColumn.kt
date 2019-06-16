@@ -6,8 +6,9 @@ import aurocosh.divinefavor.common.item.spell_talismans.base.ItemSpellTalisman
 import aurocosh.divinefavor.common.item.spell_talismans.base.SpellOptions
 import aurocosh.divinefavor.common.item.spell_talismans.base.TalismanContext
 import aurocosh.divinefavor.common.item.spell_talismans.common_build_properties.BlockSelectPropertyHandler
-import aurocosh.divinefavor.common.item.spell_talismans.common_build_properties.LockPropertyHandler
+import aurocosh.divinefavor.common.item.spell_talismans.common_build_properties.LockPositionPropertyHandler
 import aurocosh.divinefavor.common.lib.extensions.get
+import aurocosh.divinefavor.common.lib.extensions.isAirOrReplacable
 import aurocosh.divinefavor.common.spirit.base.ModSpirit
 import aurocosh.divinefavor.common.stack_properties.StackPropertyBlockPos
 import aurocosh.divinefavor.common.stack_properties.StackPropertyBool
@@ -25,8 +26,8 @@ class SpellTalismanBuildColumn(name: String, spirit: ModSpirit, favorCost: Int, 
     private val length: StackPropertyInt = propertyHandler.registerIntProperty("length", 6, 1, 24)
     private val shiftUp: StackPropertyInt = propertyHandler.registerIntProperty("shift_up", 1, -8, 8)
 
-    private val lockPropertyHandler = LockPropertyHandler(propertyHandler)
-    private val isPosLocked: StackPropertyBool = lockPropertyHandler.isPosLocked
+    private val lockPropertyHandler = LockPositionPropertyHandler(propertyHandler)
+    private val isPosLocked: StackPropertyBool = lockPropertyHandler.isLockPosition
     private val lockedPosition: StackPropertyBlockPos = lockPropertyHandler.lockedPosition
 
     private val selectPropertyHandler = BlockSelectPropertyHandler(propertyHandler)
@@ -40,9 +41,10 @@ class SpellTalismanBuildColumn(name: String, spirit: ModSpirit, favorCost: Int, 
         val (player, stack, world) = context.getCommon()
         val (blockCount, state) = stack.get(length, selectedBlock)
 
-        val count = UtilPlayer.consumeBlocks(player, world, state, blockCount)
-        val coordinates = getCoordinates(context, count)
+        val blocksToPlace = UtilPlayer.countBlocks(player, world, state, blockCount)
+        val coordinates = getCoordinates(context, blocksToPlace).shuffled()
 
+        UtilPlayer.consumeBlocks(player, world, state, coordinates.count())
         BlockPlacingTask(coordinates, state, player, 1).start()
     }
 
@@ -61,10 +63,10 @@ class SpellTalismanBuildColumn(name: String, spirit: ModSpirit, favorCost: Int, 
     }
 
     private fun getCoordinates(context: TalismanContext, limit: Int = Int.MAX_VALUE): List<BlockPos> {
-        val (player, stack) = context.getCommon()
+        val (_, stack, world) = context.getCommon()
         val blockPos = getOrigin(context.pos, stack)
         val count = Math.min(limit, stack.get(length))
-        return coordinateGenerator.getCoordinates(blockPos, count)
+        return coordinateGenerator.getCoordinates(blockPos, count).filter(world::isAirOrReplacable)
     }
 
     private fun getOrigin(pos: BlockPos, stack: ItemStack): BlockPos {

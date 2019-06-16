@@ -790,7 +790,6 @@ name.divinefavor:property.block_count=Blocks: %1$s
 name.divinefavor:property.block_limit=Blocks: %1$s
 name.divinefavor:property.freeze_limit=Freeze limit: %1$d
 name.divinefavor:property.fuzzy=Fuzzy: %1$s
-name.divinefavor:property.lock_position=Position lock: %1$s
 name.divinefavor:property.piercing_inferno_depth=Depth: %1$s
 name.divinefavor:property.piercing_inferno_surface=Surface: %1$s
 name.divinefavor:property.safety_lock=Safety lock: %1$s
@@ -798,6 +797,9 @@ name.divinefavor:property.shift_forward=Shift forward: %1$s
 name.divinefavor:property.shift_right=Shift right: %1$s
 name.divinefavor:property.shift_up=Shift up: %1$s
 name.divinefavor:property.test=Test: %1$d
+
+name.divinefavor:property.lock_position=Position lock: %1$s
+name.divinefavor:property.lock_rotation=Rotation lock: %1$s
 
 name.divinefavor:property.left=Left: %1$d
 name.divinefavor:property.right=Right: %1$d
@@ -815,7 +817,6 @@ tooltip.divinefavor:property.block_count=Amount of blocks affected by spell
 tooltip.divinefavor:property.block_limit=Maximum amount of blocks affected by spell
 tooltip.divinefavor:property.freeze_limit=Controls how much water blocks can be frozen per cast
 tooltip.divinefavor:property.fuzzy=Controls whether all blocks are acceptable or only filtered
-tooltip.divinefavor:property.lock_position=Locks origin of current build to the current position
 tooltip.divinefavor:property.piercing_inferno_depth=Determines depth of tunnel created by the spell
 tooltip.divinefavor:property.piercing_inferno_surface=Determines max surface of tunnel created by the spell. Cost of spell based of this property even if actual surface of tunnel is less then that.
 tooltip.divinefavor:property.safety_lock=Prevents accidental cast. Talisman will not work while safety enabled
@@ -823,6 +824,9 @@ tooltip.divinefavor:property.shift_forward=Shifts origin of build forward and ba
 tooltip.divinefavor:property.shift_right=Shifts origin of build to right and left
 tooltip.divinefavor:property.shift_up=Shifts origin of build up and down
 tooltip.divinefavor:property.test=This is a test property
+
+tooltip.divinefavor:property.lock_position=Locks origin of current build to the current position
+tooltip.divinefavor:property.lock_rotation=Locks rotation of current build to the current rotation
 
 tooltip.divinefavor:property.left=Determines how much to extend build up
 tooltip.divinefavor:property.right=Determines how much to extend build right

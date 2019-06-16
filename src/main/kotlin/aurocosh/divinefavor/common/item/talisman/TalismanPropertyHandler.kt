@@ -7,6 +7,7 @@ import aurocosh.divinefavor.common.stack_properties.*
 import net.minecraft.block.state.IBlockState
 import net.minecraft.client.resources.I18n
 import net.minecraft.item.ItemStack
+import net.minecraft.util.EnumFacing
 import net.minecraft.util.math.BlockPos
 import net.minecraftforge.fml.relauncher.Side
 import net.minecraftforge.fml.relauncher.SideOnly
@@ -68,6 +69,12 @@ class TalismanPropertyHandler(private val parentName: String) : IPropertyAccesso
 
     fun registerBlockPosProperty(name: String, defaultValue: BlockPos, showInTooltip: Boolean = false): StackPropertyBlockPos {
         val property = StackPropertyBlockPos(name, defaultValue, showInTooltip, TalismanPropertySynchronizer::syncBlockPos)
+        registerProperty(property)
+        return property
+    }
+
+    fun registerEnumFacingProperty(name: String, defaultValue: EnumFacing, showInTooltip: Boolean = false): StackPropertyEnumFacing {
+        val property = StackPropertyEnumFacing(name, defaultValue, showInTooltip, TalismanPropertySynchronizer::syncEnumFacing)
         registerProperty(property)
         return property
     }

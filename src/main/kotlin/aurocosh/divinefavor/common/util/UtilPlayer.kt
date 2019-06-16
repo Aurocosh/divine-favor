@@ -162,11 +162,14 @@ object UtilPlayer {
         return BlockPos(-forwardShift, upShift, -rightShift)
     }
 
-    fun consumeBlocks(player: EntityPlayer, world: World, state: IBlockState, count: Int): Int {
+    fun countBlocks(player: EntityPlayer, world: World, state: IBlockState, required: Int = Int.MAX_VALUE): Int {
         val itemStack = UtilBlock.getSilkDropIfPresent(world, state, player)
         val itemCount = countItems(itemStack, player)
-        val toConsume = Math.min(count, itemCount)
-        consumeItems(itemStack, player, count)
-        return toConsume
+        return Math.min(itemCount, required)
+    }
+
+    fun consumeBlocks(player: EntityPlayer, world: World, state: IBlockState, count: Int): Boolean {
+        val itemStack = UtilBlock.getSilkDropIfPresent(world, state, player)
+        return consumeItems(itemStack, player, count)
     }
 }
