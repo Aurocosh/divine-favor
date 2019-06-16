@@ -123,6 +123,7 @@ object ModSpellTalismans {
     lateinit var wooden_punch: ItemSpellTalisman
 
     // New fields
+    lateinit var build_from_surface: ItemSpellTalisman
     lateinit var build_sphere: ItemSpellTalisman
     lateinit var build_hollow_sphere: ItemSpellTalisman
     lateinit var build_square_wall: ItemSpellTalisman
@@ -258,6 +259,7 @@ object ModSpellTalismans {
         starvation = SpellTalismanModPotion("starvation", ModSpirits.timber, ConfigSpell.starvation.favorCost, ModPotions.starvation, ConfigSpell.starvation.duration)
 
         // New instances
+        build_from_surface = SpellTalismanBuildFromSurface("build_from_surface", ModSpirits.romol, ConfigSpell.buildFromSurface.favorCost, SpellOptions.TRACE_ONLY_CAST)
         build_sphere = SpellTalismanBuildSphere("build_sphere", ModSpirits.romol, ConfigSpell.buildSphere.favorCost, SpellOptions.TRACE_ONLY_CAST)
         build_hollow_sphere = SpellTalismanBuildHollowSphere("build_hollow_sphere", ModSpirits.romol, ConfigSpell.buildHollowSphere.favorCost, SpellOptions.TRACE_ONLY_CAST)
         build_square_wall = SpellTalismanBuildSquareWall("build_square_wall", ModSpirits.romol, ConfigSpell.buildSquareWall.favorCost, SpellOptions.TRACE_ONLY_CAST)

@@ -24,10 +24,10 @@ class SpellTalismanBuildSphere(name: String, spirit: ModSpirit, favorCost: Int, 
     private val radius: StackPropertyInt = propertyHandler.registerIntProperty("radius", 2, 1, 10)
     private val shiftUp: StackPropertyInt = propertyHandler.registerIntProperty("shift_up", 1, -8, 8)
 
-    private val lockPositionPropertyHandler = LockPositionPropertyWrapper(propertyHandler)
+    private val positionPropertyWrapper = LockPositionPropertyWrapper(propertyHandler)
 
-    private val selectPropertyHandler = BlockSelectPropertyWrapper(propertyHandler)
-    private val selectedBlock = selectPropertyHandler.selectedBlock
+    private val selectPropertyWrapper = BlockSelectPropertyWrapper(propertyHandler)
+    private val selectedBlock = selectPropertyWrapper.selectedBlock
 
     override fun getFavorCost(itemStack: ItemStack): Int {
         val radius = itemStack.get(radius)
@@ -35,8 +35,8 @@ class SpellTalismanBuildSphere(name: String, spirit: ModSpirit, favorCost: Int, 
         return favorCost * volume.toInt()
     }
 
-    override fun validateCastType(context: TalismanContext): Boolean = lockPositionPropertyHandler.validateCastType(context)
-    override fun preprocess(context: TalismanContext): Boolean = selectPropertyHandler.preprocess(context) && lockPositionPropertyHandler.preprocess(context)
+    override fun validateCastType(context: TalismanContext): Boolean = positionPropertyWrapper.validateCastType(context)
+    override fun preprocess(context: TalismanContext): Boolean = selectPropertyWrapper.preprocess(context) && positionPropertyWrapper.preprocess(context)
 
     override fun performActionServer(context: TalismanContext) {
         val (player, stack, world) = context.getCommon()
@@ -51,12 +51,12 @@ class SpellTalismanBuildSphere(name: String, spirit: ModSpirit, favorCost: Int, 
     }
 
     override fun performActionClient(context: TalismanContext) {
-        lockPositionPropertyHandler.isLockPosition.setValue(context.stack, false, true)
+        positionPropertyWrapper.isLockPosition.setValue(context.stack, false, true)
     }
 
     @SideOnly(Side.CLIENT)
     override fun handleRendering(context: TalismanContext, lastEvent: RenderWorldLastEvent) {
-        if (!lockPositionPropertyHandler.shouldRender(context))
+        if (!positionPropertyWrapper.shouldRender(context))
             return
         val (player, stack) = context.getCommon()
         val state = stack.get(selectedBlock)
@@ -72,7 +72,7 @@ class SpellTalismanBuildSphere(name: String, spirit: ModSpirit, favorCost: Int, 
     }
 
     private fun getOrigin(pos: BlockPos, stack: ItemStack): BlockPos {
-        val blockPos = lockPositionPropertyHandler.getPosition(stack, pos)
+        val blockPos = positionPropertyWrapper.getPosition(stack, pos)
         return blockPos.add(0, stack.get(shiftUp), 0)
     }
 

@@ -6,33 +6,33 @@ import aurocosh.divinefavor.common.item.spell_talismans.base.ItemSpellTalisman
 import aurocosh.divinefavor.common.item.spell_talismans.base.SpellOptions
 import aurocosh.divinefavor.common.item.spell_talismans.base.TalismanContext
 import aurocosh.divinefavor.common.item.spell_talismans.common_build_properties.BlockSelectPropertyWrapper
+import aurocosh.divinefavor.common.item.spell_talismans.common_build_properties.LockFacingPropertyWrapper
 import aurocosh.divinefavor.common.item.spell_talismans.common_build_properties.LockPositionPropertyWrapper
-import aurocosh.divinefavor.common.lib.extensions.get
-import aurocosh.divinefavor.common.lib.extensions.isAirOrReplacable
+import aurocosh.divinefavor.common.lib.extensions.*
 import aurocosh.divinefavor.common.spirit.base.ModSpirit
 import aurocosh.divinefavor.common.stack_properties.StackPropertyInt
 import aurocosh.divinefavor.common.tasks.BlockPlacingTask
 import aurocosh.divinefavor.common.util.UtilPlayer
 import net.minecraft.item.ItemStack
-import net.minecraft.util.EnumFacing
 import net.minecraft.util.math.BlockPos
 import net.minecraftforge.client.event.RenderWorldLastEvent
 import net.minecraftforge.fml.relauncher.Side
 import net.minecraftforge.fml.relauncher.SideOnly
 import java.util.*
 
-class SpellTalismanBuildColumn(name: String, spirit: ModSpirit, favorCost: Int, options: EnumSet<SpellOptions>) : ItemSpellTalisman(name, spirit, favorCost, options) {
+class SpellTalismanBuildFromSurface(name: String, spirit: ModSpirit, favorCost: Int, options: EnumSet<SpellOptions>) : ItemSpellTalisman(name, spirit, favorCost, options) {
     private val length: StackPropertyInt = propertyHandler.registerIntProperty("length", 6, 1, 24)
-    private val shiftUp: StackPropertyInt = propertyHandler.registerIntProperty("shift_up", 1, -8, 8)
+    private val shift: StackPropertyInt = propertyHandler.registerIntProperty("shift", 1, -8, 8)
 
-    private val lockPositionPropertyWrapper = LockPositionPropertyWrapper(propertyHandler)
+    private val positionPropertyWrapper = LockPositionPropertyWrapper(propertyHandler)
+    private val facingPropertyWrapper = LockFacingPropertyWrapper(propertyHandler)
 
     private val selectPropertyWrapper = BlockSelectPropertyWrapper(propertyHandler)
     private val selectedBlock = selectPropertyWrapper.selectedBlock
 
-    override fun getFavorCost(itemStack: ItemStack): Int = favorCost * length.getValue(itemStack)
-    override fun validateCastType(context: TalismanContext): Boolean = lockPositionPropertyWrapper.validateCastType(context)
-    override fun preprocess(context: TalismanContext): Boolean = selectPropertyWrapper.preprocess(context) && lockPositionPropertyWrapper.preprocess(context)
+    override fun getFavorCost(itemStack: ItemStack): Int = favorCost * itemStack.get(length)
+    override fun validateCastType(context: TalismanContext): Boolean = positionPropertyWrapper.validateCastType(context)
+    override fun preprocess(context: TalismanContext): Boolean = selectPropertyWrapper.preprocess(context) && positionPropertyWrapper.preprocess(context)
 
     override fun performActionServer(context: TalismanContext) {
         val (player, stack, world) = context.getCommon()
@@ -46,12 +46,12 @@ class SpellTalismanBuildColumn(name: String, spirit: ModSpirit, favorCost: Int, 
     }
 
     override fun performActionClient(context: TalismanContext) {
-        lockPositionPropertyWrapper.isLockPosition.setValue(context.stack, false, true)
+        positionPropertyWrapper.isLockPosition.setValue(context.stack, false, true)
     }
 
     @SideOnly(Side.CLIENT)
     override fun handleRendering(context: TalismanContext, lastEvent: RenderWorldLastEvent) {
-        if (!lockPositionPropertyWrapper.shouldRender(context))
+        if (!positionPropertyWrapper.shouldRender(context))
             return
         val (player, stack) = context.getCommon()
         val state = stack.get(selectedBlock)
@@ -61,14 +61,22 @@ class SpellTalismanBuildColumn(name: String, spirit: ModSpirit, favorCost: Int, 
 
     private fun getCoordinates(context: TalismanContext, limit: Int = Int.MAX_VALUE): List<BlockPos> {
         val (_, stack, world) = context.getCommon()
-        val blockPos = getOrigin(context.pos, stack)
         val count = Math.min(limit, stack.get(length))
-        return coordinateGenerator.getCoordinates(blockPos, EnumFacing.UP, count).filter(world::isAirOrReplacable)
+
+        val blockPos = getOrigin(context)
+        val facing = facingPropertyWrapper.getFacing(stack, context.facing)
+        return coordinateGenerator.getCoordinates(blockPos, facing, count).filter(world::isAirOrReplacable)
     }
 
-    private fun getOrigin(pos: BlockPos, stack: ItemStack): BlockPos {
-        val blockPos = lockPositionPropertyWrapper.getPosition(stack, pos)
-        return blockPos.add(0, stack.get(this.shiftUp), 0)
+    private fun getOrigin(context: TalismanContext): BlockPos {
+        val stack = context.stack
+
+
+        val blockPos = positionPropertyWrapper.getPosition(stack, context.pos)
+        val facing = facingPropertyWrapper.getFacing(stack, context.facing)
+        val shiftValue = stack.get(shift)
+        val shiftVec = facing.directionVec.toBlockPos().scale(shiftValue)
+        return blockPos.add(shiftVec)
     }
 
     companion object {

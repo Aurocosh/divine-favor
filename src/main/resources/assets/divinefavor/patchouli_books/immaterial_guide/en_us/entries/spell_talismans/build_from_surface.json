@@ -1,0 +1,15 @@
+{
+  "name": "Build from surface",
+  "icon": "divinefavor:spell_talisman_build_from_surface",
+  "category": "spell_talismans",
+  "pages": [
+    {
+      "type": "item_description",
+      "talisman": "divinefavor:spell_talisman_build_from_surface"
+    },
+    {
+      "type": "spell_talisman_stats",
+      "talisman": "divinefavor:spell_talisman_build_from_surface"
+    }
+  ]
+}

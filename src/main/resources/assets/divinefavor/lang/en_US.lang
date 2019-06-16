@@ -182,6 +182,7 @@ item.divinefavor:rope_teleporting.name=Warping rope
 item.divinefavor:ice_arrow.name=Ice arrow
 
 ## SPELL TALISMAN NAMES
+item.divinefavor:spell_talisman_build_from_surface.name=Build from surface
 item.divinefavor:spell_talisman_build_sphere.name=Build sphere
 item.divinefavor:spell_talisman_build_hollow_sphere.name=Build hollow sphere
 item.divinefavor:spell_talisman_build_square_wall.name=Build square wall
@@ -573,6 +574,7 @@ item.divinefavor:rope_teleporting.description=Unusual trapping device. It will t
 item.divinefavor:ice_arrow.description=Delicate arrows made of ice. They are frail and because of this they deal less damage then regular arrows and break easily, but in a pinch they can be very useful. This type of arrow also cannot be tipped in potion, but on the other hand it deals extra damage to hellish mobs.
 
 ## SPELL TALISMAN DESCRIPTIONS
+item.divinefavor:spell_talisman_build_from_surface.description=This talisman allows you to instantly build block lines from any surface.
 item.divinefavor:spell_talisman_build_sphere.description=This talisman allows you to instantly build spheres.
 item.divinefavor:spell_talisman_build_hollow_sphere.description=This talisman allows you to instantly build hollow spheres.
 item.divinefavor:spell_talisman_build_square_wall.description=This talisman allows you to instantly build square walls.
@@ -799,13 +801,16 @@ name.divinefavor:property.fuzzy=Fuzzy: %1$s
 name.divinefavor:property.piercing_inferno_depth=Depth: %1$s
 name.divinefavor:property.piercing_inferno_surface=Surface: %1$s
 name.divinefavor:property.safety_lock=Safety lock: %1$s
+name.divinefavor:property.test=Test: %1$d
+
 name.divinefavor:property.shift_forward=Shift forward: %1$s
 name.divinefavor:property.shift_right=Shift right: %1$s
 name.divinefavor:property.shift_up=Shift up: %1$s
-name.divinefavor:property.test=Test: %1$d
+name.divinefavor:property.shift=Shift: %1$s
 
 name.divinefavor:property.lock_position=Position lock: %1$s
 name.divinefavor:property.lock_rotation=Rotation lock: %1$s
+name.divinefavor:property.lock_facing=Block face lock: %1$s
 
 name.divinefavor:property.radius_internal=Internal radius: %1$s
 name.divinefavor:property.radius_external=External radius: %1$s
@@ -830,13 +835,16 @@ tooltip.divinefavor:property.fuzzy=Controls whether all blocks are acceptable or
 tooltip.divinefavor:property.piercing_inferno_depth=Determines depth of tunnel created by the spell
 tooltip.divinefavor:property.piercing_inferno_surface=Determines max surface of tunnel created by the spell. Cost of spell based of this property even if actual surface of tunnel is less then that.
 tooltip.divinefavor:property.safety_lock=Prevents accidental cast. Talisman will not work while safety enabled
+tooltip.divinefavor:property.test=This is a test property
+
 tooltip.divinefavor:property.shift_forward=Shifts origin of build forward and backward
 tooltip.divinefavor:property.shift_right=Shifts origin of build to right and left
 tooltip.divinefavor:property.shift_up=Shifts origin of build up and down
-tooltip.divinefavor:property.test=This is a test property
+tooltip.divinefavor:property.shift=Shifts origin of build by this value
 
 tooltip.divinefavor:property.lock_position=Locks origin of current build to the current position
 tooltip.divinefavor:property.lock_rotation=Locks rotation of current build to the current rotation
+tooltip.divinefavor:property.lock_facing=Locks facing of current build to the current face of block
 
 tooltip.divinefavor:property.radius_internal=Determines internal radius of the sphere
 tooltip.divinefavor:property.radius_external=Determines external radius of the sphere
