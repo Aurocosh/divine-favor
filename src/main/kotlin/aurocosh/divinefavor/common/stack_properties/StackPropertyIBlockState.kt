@@ -9,7 +9,7 @@ import net.minecraft.nbt.NBTTagCompound
 import net.minecraftforge.fml.relauncher.Side
 import net.minecraftforge.fml.relauncher.SideOnly
 
-class StackPropertyIBlockState(name: String, defaultValue: IBlockState, serverSync: (StackProperty<IBlockState>, IBlockState) -> Unit) : StackProperty<IBlockState>(name, defaultValue, serverSync) {
+class StackPropertyIBlockState(name: String, defaultValue: IBlockState, showInTooltip: Boolean, serverSync: (StackProperty<IBlockState>, IBlockState) -> Unit) : StackProperty<IBlockState>(name, defaultValue, showInTooltip, serverSync) {
     override fun getValueFromTag(compound: NBTTagCompound): IBlockState {
         return compound.getBlockState(tag)
     }

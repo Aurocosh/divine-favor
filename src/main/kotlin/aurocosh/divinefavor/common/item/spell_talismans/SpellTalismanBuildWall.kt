@@ -2,6 +2,7 @@ package aurocosh.divinefavor.common.item.spell_talismans
 
 import aurocosh.divinefavor.client.block_ovelay.BlockConstructionRendering
 import aurocosh.divinefavor.common.coordinate_generators.ColumnCoordinateGenerator
+import aurocosh.divinefavor.common.coordinate_generators.WallCoordinateGenerator
 import aurocosh.divinefavor.common.item.spell_talismans.base.ItemSpellTalisman
 import aurocosh.divinefavor.common.item.spell_talismans.base.SpellOptions
 import aurocosh.divinefavor.common.item.spell_talismans.base.TalismanContext
@@ -21,9 +22,12 @@ import net.minecraftforge.fml.relauncher.Side
 import net.minecraftforge.fml.relauncher.SideOnly
 import java.util.*
 
-class SpellTalismanBuildColumn(name: String, spirit: ModSpirit, favorCost: Int, options: EnumSet<SpellOptions>) : ItemSpellTalisman(name, spirit, favorCost, options) {
-    private val length: StackPropertyInt = propertyHandler.registerIntProperty("length", 6, 1, 24)
-    private val shiftUp: StackPropertyInt = propertyHandler.registerIntProperty("shift_up", 1, -8, 8)
+class SpellTalismanBuildWall(name: String, spirit: ModSpirit, favorCost: Int, options: EnumSet<SpellOptions>) : ItemSpellTalisman(name, spirit, favorCost, options) {
+    private val left: StackPropertyInt = propertyHandler.registerIntProperty("left", 2, 0, 10)
+    private val right: StackPropertyInt = propertyHandler.registerIntProperty("right", 2, 0, 10)
+    private val up: StackPropertyInt = propertyHandler.registerIntProperty("up", 3, 0, 10)
+    private val down: StackPropertyInt = propertyHandler.registerIntProperty("down", 0, 0, 10)
+    private val onTop: StackPropertyBool = propertyHandler.registerBoolProperty("on_top", true)
 
     private val lockPropertyHandler = LockPropertyHandler(propertyHandler)
     private val isPosLocked: StackPropertyBool = lockPropertyHandler.isPosLocked
@@ -32,17 +36,22 @@ class SpellTalismanBuildColumn(name: String, spirit: ModSpirit, favorCost: Int, 
     private val selectPropertyHandler = BlockSelectPropertyHandler(propertyHandler)
     private val selectedBlock = selectPropertyHandler.selectedBlock
 
-    override fun getFavorCost(itemStack: ItemStack): Int = favorCost * length.getValue(itemStack)
+    override fun getFavorCost(itemStack: ItemStack): Int {
+        val (left, right, up, down) = itemStack.get(left, right, up, down)
+        return favorCost * getBlockCount(left, right, up, down)
+    }
+
     override fun validateCastType(context: TalismanContext): Boolean = lockPropertyHandler.validateCastType(context)
     override fun preprocess(context: TalismanContext): Boolean = selectPropertyHandler.preprocess(context) && lockPropertyHandler.preprocess(context)
 
     override fun performActionServer(context: TalismanContext) {
         val (player, stack, world) = context.getCommon()
-        val (blockCount, state) = stack.get(length, selectedBlock)
+        val (left, right, up, down) = context.stack.get(left, right, up, down)
+        val blockCount = getBlockCount(left, right, up, down)
+        val state = stack.get(selectedBlock)
 
         val count = UtilPlayer.consumeBlocks(player, world, state, blockCount)
-        val coordinates = getCoordinates(context, count)
-
+        val coordinates = getCoordinates(context, count).shuffled()
         BlockPlacingTask(coordinates, state, player, 1).start()
     }
 
@@ -62,18 +71,26 @@ class SpellTalismanBuildColumn(name: String, spirit: ModSpirit, favorCost: Int, 
 
     private fun getCoordinates(context: TalismanContext, limit: Int = Int.MAX_VALUE): List<BlockPos> {
         val (player, stack) = context.getCommon()
+        val (left, right, up, down) = context.stack.get(left, right, up, down)
+
         val blockPos = getOrigin(context.pos, stack)
-        val count = Math.min(limit, stack.get(length))
-        return coordinateGenerator.getCoordinates(blockPos, count)
+        val blockCount = getBlockCount(left, right, up, down)
+        val count = Math.min(limit, blockCount)
+        return coordinateGenerator.getCoordinates(player, blockPos, up, down, left, right, count)
     }
 
     private fun getOrigin(pos: BlockPos, stack: ItemStack): BlockPos {
-        val (shiftUp, locked) = stack.get(shiftUp, isPosLocked)
-        val blockPos = if (!locked) pos else stack.get(lockedPosition)
-        return blockPos.add(0, shiftUp, 0)
+        val blockPos = if (!stack.get(isPosLocked)) pos else stack.get(lockedPosition)
+        return if (stack.get(onTop)) blockPos.up() else blockPos
+    }
+
+    private fun getBlockCount(left: Int, right: Int, up: Int, down: Int): Int {
+        val width = left + 1 + right
+        val height = up + 1 + down
+        return width * height
     }
 
     companion object {
-        private val coordinateGenerator: ColumnCoordinateGenerator = ColumnCoordinateGenerator()
+        private val coordinateGenerator: WallCoordinateGenerator = WallCoordinateGenerator()
     }
 }

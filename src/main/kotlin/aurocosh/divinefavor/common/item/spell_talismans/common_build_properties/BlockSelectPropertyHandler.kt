@@ -6,7 +6,7 @@ import aurocosh.divinefavor.common.stack_properties.StackPropertyIBlockState
 import net.minecraft.init.Blocks
 
 class BlockSelectPropertyHandler(propertyHandler: TalismanPropertyHandler) {
-    val selectedBlock: StackPropertyIBlockState = propertyHandler.registerBlockStateProperty("selected_block", Blocks.AIR.defaultState)
+    val selectedBlock: StackPropertyIBlockState = propertyHandler.registerBlockStateProperty("selected_block", Blocks.STONE.defaultState)
 
     fun preprocess(context: TalismanContext): Boolean {
         if (!context.player.isSneaking)

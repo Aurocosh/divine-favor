@@ -182,6 +182,7 @@ item.divinefavor:rope_teleporting.name=Warping rope
 item.divinefavor:ice_arrow.name=Ice arrow
 
 ## SPELL TALISMAN NAMES
+item.divinefavor:spell_talisman_build_wall.name=Build wall
 item.divinefavor:spell_talisman_replace_surface.name=Replace surface
 item.divinefavor:spell_talisman_build_column.name=Build column
 item.divinefavor:spell_talisman_bind_ice_arrows.name=Bind ice arrows
@@ -567,6 +568,7 @@ item.divinefavor:rope_teleporting.description=Unusual trapping device. It will t
 item.divinefavor:ice_arrow.description=Delicate arrows made of ice. They are frail and because of this they deal less damage then regular arrows and break easily, but in a pinch they can be very useful. This type of arrow also cannot be tipped in potion, but on the other hand it deals extra damage to hellish mobs.
 
 ## SPELL TALISMAN DESCRIPTIONS
+item.divinefavor:spell_talisman_build_wall.description=This talisman allows you to instantly build walls. You can freely adjust walls built with it in all directions.
 item.divinefavor:spell_talisman_replace_surface.description=This talisman allows you to instantly replace any surface with another type of block
 item.divinefavor:spell_talisman_build_column.description=This talisman allows you to instantly build columns of variable height from any blocks
 item.divinefavor:spell_talisman_bind_ice_arrows.description=This talisman creates frail ice arrows. Those arrows are weaker then regular arrows, but this talisman may help you if you run out of arrows in the field. Also ice arrows are very effective against spawns of nether.
@@ -793,6 +795,13 @@ name.divinefavor:property.shift_right=Shift right: %1$s
 name.divinefavor:property.shift_up=Shift up: %1$s
 name.divinefavor:property.test=Test: %1$d
 
+name.divinefavor:property.left=Left: %1$d
+name.divinefavor:property.right=Right: %1$d
+name.divinefavor:property.up=Up: %1$d
+name.divinefavor:property.down=Down: %1$d
+name.divinefavor:property.on_top=On top: %1$s
+name.divinefavor:property.length=Length: %1$s
+
 ## TALISMAN PROPERTY TOOLTIPS
 tooltip.divinefavor:property.blink_distance=Teleportation distance
 tooltip.divinefavor:property.block_count=Amount of blocks affected by spell
@@ -807,3 +816,10 @@ tooltip.divinefavor:property.shift_forward=Shifts origin of build forward and ba
 tooltip.divinefavor:property.shift_right=Shifts origin of build to right and left
 tooltip.divinefavor:property.shift_up=Shifts origin of build up and down
 tooltip.divinefavor:property.test=This is a test property
+
+tooltip.divinefavor:property.left=Determines how much to extend build up
+tooltip.divinefavor:property.right=Determines how much to extend build right
+tooltip.divinefavor:property.up=Determines how much to extend build up
+tooltip.divinefavor:property.down=Determines how much to extend build down
+tooltip.divinefavor:property.on_top=If enabled origin is raised by one block
+tooltip.divinefavor:property.length=Determines length of the build

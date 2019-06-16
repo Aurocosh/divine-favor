@@ -1,6 +1,7 @@
 package aurocosh.divinefavor.common.item.talisman
 
 import aurocosh.divinefavor.DivineFavor
+import aurocosh.divinefavor.common.lib.extensions.S
 import aurocosh.divinefavor.common.lib.extensions.compound
 import aurocosh.divinefavor.common.stack_properties.*
 import net.minecraft.block.state.IBlockState
@@ -47,26 +48,26 @@ class TalismanPropertyHandler(private val parentName: String) : IPropertyAccesso
         return property
     }
 
-    fun registerIntProperty(name: String, defaultValue: Int, minValue: Int = 1, maxValue: Int = defaultValue): StackPropertyInt {
-        val property = StackPropertyInt(name, defaultValue, minValue, maxValue, TalismanPropertySynchronizer::syncInt)
+    fun registerIntProperty(name: String, defaultValue: Int, minValue: Int = 1, maxValue: Int = defaultValue, showInTooltip: Boolean = true): StackPropertyInt {
+        val property = StackPropertyInt(name, defaultValue, minValue, maxValue, showInTooltip, TalismanPropertySynchronizer::syncInt)
         registerProperty(property)
         return property
     }
 
-    fun registerBoolProperty(name: String, defaultValue: Boolean): StackPropertyBool {
-        val property = StackPropertyBool(name, defaultValue, TalismanPropertySynchronizer::syncBool)
+    fun registerBoolProperty(name: String, defaultValue: Boolean, showInTooltip: Boolean = true): StackPropertyBool {
+        val property = StackPropertyBool(name, defaultValue, showInTooltip, TalismanPropertySynchronizer::syncBool)
         registerProperty(property)
         return property
     }
 
-    fun registerBlockStateProperty(name: String, defaultValue: IBlockState): StackPropertyIBlockState {
-        val property = StackPropertyIBlockState(name, defaultValue, TalismanPropertySynchronizer::syncIBlockState)
+    fun registerBlockStateProperty(name: String, defaultValue: IBlockState, showInTooltip: Boolean = false): StackPropertyIBlockState {
+        val property = StackPropertyIBlockState(name, defaultValue, showInTooltip, TalismanPropertySynchronizer::syncIBlockState)
         registerProperty(property)
         return property
     }
 
-    fun registerBlockPosProperty(name: String, defaultValue: BlockPos): StackPropertyBlockPos {
-        val property = StackPropertyBlockPos(name, defaultValue, TalismanPropertySynchronizer::syncBlockPos)
+    fun registerBlockPosProperty(name: String, defaultValue: BlockPos, showInTooltip: Boolean = false): StackPropertyBlockPos {
+        val property = StackPropertyBlockPos(name, defaultValue, showInTooltip, TalismanPropertySynchronizer::syncBlockPos)
         registerProperty(property)
         return property
     }
@@ -79,7 +80,7 @@ class TalismanPropertyHandler(private val parentName: String) : IPropertyAccesso
         val tooltip = ArrayList<String>()
         tooltip.add("")
         tooltip.add(I18n.format("tooltip.divinefavor:property_list"))
-        propertyList.map { it.toLocalString(stack) }.forEach { tooltip.add(it) }
+        propertyList.S.filter { it.showInTooltip }.map { it.toLocalString(stack) }.forEach { tooltip.add(it) }
         return tooltip
     }
 
