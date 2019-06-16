@@ -182,6 +182,7 @@ item.divinefavor:rope_teleporting.name=Warping rope
 item.divinefavor:ice_arrow.name=Ice arrow
 
 ## SPELL TALISMAN NAMES
+item.divinefavor:spell_talisman_build_wall_relative.name=Build wall relative
 item.divinefavor:spell_talisman_build_horizontal_line_relative.name=Build horizontal line relative
 item.divinefavor:spell_talisman_build_hollow_sphere_relative.name=Build hollow sphere relative
 item.divinefavor:spell_talisman_build_floor_relative.name=Build floor relative
@@ -583,6 +584,7 @@ item.divinefavor:rope_teleporting.description=Unusual trapping device. It will t
 item.divinefavor:ice_arrow.description=Delicate arrows made of ice. They are frail and because of this they deal less damage then regular arrows and break easily, but in a pinch they can be very useful. This type of arrow also cannot be tipped in potion, but on the other hand it deals extra damage to hellish mobs.
 
 ## SPELL TALISMAN DESCRIPTIONS
+item.divinefavor:spell_talisman_build_wall_relative.description=TODO
 item.divinefavor:spell_talisman_build_horizontal_line_relative.description=TODO
 item.divinefavor:spell_talisman_build_hollow_sphere_relative.description=TODO
 item.divinefavor:spell_talisman_build_floor_relative.description=TODO

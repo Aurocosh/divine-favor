@@ -123,6 +123,7 @@ object ModSpellTalismans {
     lateinit var wooden_punch: ItemSpellTalisman
 
     // New fields
+    lateinit var build_wall_relative: ItemSpellTalisman
     lateinit var build_horizontal_line_relative: ItemSpellTalisman
     lateinit var build_hollow_sphere_relative: ItemSpellTalisman
     lateinit var build_floor_relative: ItemSpellTalisman
@@ -268,11 +269,12 @@ object ModSpellTalismans {
         starvation = SpellTalismanModPotion("starvation", ModSpirits.timber, ConfigSpell.starvation.favorCost, ModPotions.starvation, ConfigSpell.starvation.duration)
 
         // New instances
-        build_horizontal_line_relative = SpellTalismanBuildHorizontalLineRelative("build_horizontal_line_relative", ModSpirits.romol, ConfigSpell.buildHorizontalLineRelative.favorCost, SpellOptions.ALL_CAST)
-        build_hollow_sphere_relative = SpellTalismanBuildHollowSphereRelative("build_hollow_sphere_relative", ModSpirits.romol, ConfigSpell.buildHollowSphereRelative.favorCost, SpellOptions.ALL_CAST)
-        build_floor_relative = SpellTalismanBuildFloorRelative("build_floor_relative", ModSpirits.romol, ConfigSpell.buildFloorRelative.favorCost, SpellOptions.ALL_CAST)
-        build_column_relative = SpellTalismanBuildColumnRelative("build_column_relative", ModSpirits.romol, ConfigSpell.buildColumnRelative.favorCost, SpellOptions.ALL_CAST)
-        build_square_wall_relative = SpellTalismanBuildSquareWallRelative("build_square_wall_relative", ModSpirits.romol, ConfigSpell.buildSquareWallRelative.favorCost, SpellOptions.ALL_CAST)
+        build_wall_relative = SpellTalismanBuildWallRelative("build_wall_relative", ModSpirits.romol, ConfigSpell.buildWallRelative.favorCost, SpellOptions.RIGHT_CAST)
+        build_horizontal_line_relative = SpellTalismanBuildHorizontalLineRelative("build_horizontal_line_relative", ModSpirits.romol, ConfigSpell.buildHorizontalLineRelative.favorCost, SpellOptions.RIGHT_CAST)
+        build_hollow_sphere_relative = SpellTalismanBuildHollowSphereRelative("build_hollow_sphere_relative", ModSpirits.romol, ConfigSpell.buildHollowSphereRelative.favorCost, SpellOptions.RIGHT_CAST)
+        build_floor_relative = SpellTalismanBuildFloorRelative("build_floor_relative", ModSpirits.romol, ConfigSpell.buildFloorRelative.favorCost, SpellOptions.RIGHT_CAST)
+        build_column_relative = SpellTalismanBuildColumnRelative("build_column_relative", ModSpirits.romol, ConfigSpell.buildColumnRelative.favorCost, SpellOptions.RIGHT_CAST)
+        build_square_wall_relative = SpellTalismanBuildSquareWallRelative("build_square_wall_relative", ModSpirits.romol, ConfigSpell.buildSquareWallRelative.favorCost, SpellOptions.RIGHT_CAST)
         build_square_floor_relative = SpellTalismanBuildSquareFloorRelative("build_square_floor_relative", ModSpirits.romol, ConfigSpell.buildSquareFloorRelative.favorCost, SpellOptions.RIGHT_CAST)
         build_block_relative = SpellTalismanBuildBlockRelative("build_block_relative", ModSpirits.romol, ConfigSpell.buildBlockRelative.favorCost, SpellOptions.RIGHT_CAST)
         build_extrusion = SpellTalismanBuildExtrusion("build_extrusion", ModSpirits.romol, ConfigSpell.buildExtrusion.favorCost, SpellOptions.TRACE_ONLY_CAST)
