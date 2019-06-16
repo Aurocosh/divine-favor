@@ -212,6 +212,8 @@ public class ConfigSpell {
     public static WoodenPunch woodenPunch = new WoodenPunch();
 
     // New configs
+    @Config.Name("Build sphere")
+    public static BuildSphere buildSphere = new BuildSphere();
     @Config.Name("Build hollow sphere")
     public static BuildHollowSphere buildHollowSphere = new BuildHollowSphere();
     @Config.Name("Build square wall")
