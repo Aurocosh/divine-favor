@@ -2,7 +2,6 @@ package aurocosh.divinefavor.common.item.spell_talismans
 
 import aurocosh.divinefavor.client.block_ovelay.BlockConstructionRendering
 import aurocosh.divinefavor.common.coordinate_generators.FloorCoordinateGenerator
-import aurocosh.divinefavor.common.coordinate_generators.WallCoordinateGenerator
 import aurocosh.divinefavor.common.item.spell_talismans.base.ItemSpellTalisman
 import aurocosh.divinefavor.common.item.spell_talismans.base.SpellOptions
 import aurocosh.divinefavor.common.item.spell_talismans.base.TalismanContext
@@ -22,11 +21,8 @@ import net.minecraftforge.fml.relauncher.Side
 import net.minecraftforge.fml.relauncher.SideOnly
 import java.util.*
 
-class SpellTalismanBuildFloor(name: String, spirit: ModSpirit, favorCost: Int, options: EnumSet<SpellOptions>) : ItemSpellTalisman(name, spirit, favorCost, options) {
-    private val left: StackPropertyInt = propertyHandler.registerIntProperty("left", 2, 0, 10)
-    private val right: StackPropertyInt = propertyHandler.registerIntProperty("right", 2, 0, 10)
-    private val front: StackPropertyInt = propertyHandler.registerIntProperty("front", 3, 0, 10)
-    private val back: StackPropertyInt = propertyHandler.registerIntProperty("back", 0, 0, 10)
+class SpellTalismanBuildSquareFloor(name: String, spirit: ModSpirit, favorCost: Int, options: EnumSet<SpellOptions>) : ItemSpellTalisman(name, spirit, favorCost, options) {
+    private val radius: StackPropertyInt = propertyHandler.registerIntProperty("radius", 2, 1, 10)
     private val shiftUp: StackPropertyInt = propertyHandler.registerIntProperty("shift_up", 1, -8, 8)
 
     private val lockPropertyHandler = LockPropertyHandler(propertyHandler)
@@ -37,8 +33,8 @@ class SpellTalismanBuildFloor(name: String, spirit: ModSpirit, favorCost: Int, o
     private val selectedBlock = selectPropertyHandler.selectedBlock
 
     override fun getFavorCost(itemStack: ItemStack): Int {
-        val (left, right, front, back) = itemStack.get(left, right, front, back)
-        return favorCost * getBlockCount(left, right, front, back)
+        val radius = itemStack.get(radius) - 1
+        return favorCost * getBlockCount(radius)
     }
 
     override fun validateCastType(context: TalismanContext): Boolean = lockPropertyHandler.validateCastType(context)
@@ -46,8 +42,8 @@ class SpellTalismanBuildFloor(name: String, spirit: ModSpirit, favorCost: Int, o
 
     override fun performActionServer(context: TalismanContext) {
         val (player, stack, world) = context.getCommon()
-        val (left, right, front, back) = context.stack.get(left, right, front, back)
-        val blockCount = getBlockCount(left, right, front, back)
+        val radius = stack.get(radius) - 1
+        val blockCount = getBlockCount(radius)
         val state = stack.get(selectedBlock)
 
         val count = UtilPlayer.consumeBlocks(player, world, state, blockCount)
@@ -71,12 +67,12 @@ class SpellTalismanBuildFloor(name: String, spirit: ModSpirit, favorCost: Int, o
 
     private fun getCoordinates(context: TalismanContext, limit: Int = Int.MAX_VALUE): List<BlockPos> {
         val (player, stack) = context.getCommon()
-        val (left, right, up, down) = context.stack.get(left, right, front, back)
+        val radius = stack.get(radius) - 1
 
         val blockPos = getOrigin(context.pos, stack)
-        val blockCount = getBlockCount(left, right, up, down)
+        val blockCount = getBlockCount(radius)
         val count = Math.min(limit, blockCount)
-        return coordinateGenerator.getCoordinates(player, blockPos, up, down, left, right, count)
+        return coordinateGenerator.getCoordinates(player, blockPos, radius, radius, radius, radius, count)
     }
 
     private fun getOrigin(pos: BlockPos, stack: ItemStack): BlockPos {
@@ -85,10 +81,9 @@ class SpellTalismanBuildFloor(name: String, spirit: ModSpirit, favorCost: Int, o
         return blockPos.add(0, shiftY, 0)
     }
 
-    private fun getBlockCount(left: Int, right: Int, front: Int, back: Int): Int {
-        val width = left + 1 + right
-        val thickness = front + 1 + back
-        return width * thickness
+    private fun getBlockCount(radius: Int): Int {
+        val width = radius + 1 + radius
+        return width * width
     }
 
     companion object {

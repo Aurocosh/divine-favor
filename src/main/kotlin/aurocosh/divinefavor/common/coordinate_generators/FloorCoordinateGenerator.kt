@@ -19,8 +19,8 @@ class FloorCoordinateGenerator : CachedCoordinateGenerator() {
         val firstSideVec = sideFacing.directionVec.toBlockPos()
         val secondSideVec = sideFacing.opposite.directionVec.toBlockPos()
 
-        val frontPart = generateSequence(blockPos, frontVec::add).take(front)
-        val backPart = generateSequence(blockPos, backVec::add).take(back)
+        val frontPart = generateSequence(blockPos.add(frontVec), frontVec::add).take(front)
+        val backPart = generateSequence(blockPos.add(backVec), backVec::add).take(back)
 
         val centerRow = (frontPart + blockPos + backPart).toList()
         val firstSide = generateSequence(centerRow.map(firstSideVec::add)) { it.map(firstSideVec::add) }.take(rigth).flatten()

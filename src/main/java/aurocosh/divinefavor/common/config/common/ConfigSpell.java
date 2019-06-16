@@ -212,6 +212,8 @@ public class ConfigSpell {
     public static WoodenPunch woodenPunch = new WoodenPunch();
 
     // New configs
+    @Config.Name("Build square floor")
+    public static BuildSquareFloor buildSquareFloor = new BuildSquareFloor();
     @Config.Name("Build floor")
     public static BuildFloor buildFloor = new BuildFloor();
     @Config.Name("Build wall")
