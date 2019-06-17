@@ -7,6 +7,7 @@ import aurocosh.divinefavor.common.item.spell_talismans.*
 import aurocosh.divinefavor.common.item.spell_talismans.base.*
 import aurocosh.divinefavor.common.item.spell_talismans.build.*
 import aurocosh.divinefavor.common.item.spell_talismans.build.base.SpellTalismanBuildBlockRelative
+import aurocosh.divinefavor.common.item.spell_talismans.destroy.SpellTalismanDestroyCuboid
 import aurocosh.divinefavor.common.item.spell_talismans.replace.SpellTalismanReplaceBlocks
 import aurocosh.divinefavor.common.item.spell_talismans.replace.SpellTalismanReplaceSide
 import aurocosh.divinefavor.common.item.spell_talismans.replace.SpellTalismanReplaceSurface
