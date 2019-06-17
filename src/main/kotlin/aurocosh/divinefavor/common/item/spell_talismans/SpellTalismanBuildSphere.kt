@@ -28,7 +28,7 @@ class SpellTalismanBuildSphere(name: String, spirit: ModSpirit, favorCost: Int, 
     private val selectPropertyWrapper = BlockSelectPropertyWrapper(propertyHandler)
     private val selectedBlock = selectPropertyWrapper.selectedBlock
 
-    override fun getFavorCost(itemStack: ItemStack): Int {
+    override fun getApproximateFavorCost(itemStack: ItemStack): Int {
         val radius = itemStack.get(radius)
         val volume = ((4 * Math.PI) / 3) * (radius * radius * radius)
         return favorCost * volume.toInt()

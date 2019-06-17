@@ -29,7 +29,7 @@ class SpellTalismanBuildExtrusion(name: String, spirit: ModSpirit, favorCost: In
     private val selectPropertyWrapper = BlockSelectPropertyWrapper(propertyHandler)
     private val selectedBlock = selectPropertyWrapper.selectedBlock
 
-    override fun getFavorCost(itemStack: ItemStack): Int = favorCost * itemStack.get(length) * itemStack.get(surface)
+    override fun getApproximateFavorCost(itemStack: ItemStack): Int = favorCost * itemStack.get(length) * itemStack.get(surface)
     override fun raycastBlock(stack: ItemStack) = positionPropertyWrapper.shouldRaycastBlock(stack)
     override fun preProcess(context: TalismanContext): Boolean = selectPropertyWrapper.preprocess(context)
 

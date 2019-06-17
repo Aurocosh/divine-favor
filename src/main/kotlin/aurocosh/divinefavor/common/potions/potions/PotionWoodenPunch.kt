@@ -40,7 +40,7 @@ object WoodenPunch {
         if (!block.isToolEffective("axe", state))
             return
 
-        val cost = talisman.getFavorCost(stack)
+        val cost = talisman.getApproximateFavorCost(stack)
         val spiritData = player.divinePlayerData.spiritData
         val spirit = talisman.spirit
         if (!spiritData.consumeFavor(spirit.id, cost))

@@ -43,7 +43,7 @@ class ArrowTalismanStatProcessor : IComponentProcessor {
             key == "text" -> {
                 val lines = ArrayList<String>()
                 lines.add("Favor: " + arrowTalisman.spirit.name)
-                val favorCost = arrowTalisman.getFavorCost(itemStack)
+                val favorCost = arrowTalisman.getApproximateFavorCost(itemStack)
                 if (favorCost == 0)
                     lines.add("No cost")
                 else

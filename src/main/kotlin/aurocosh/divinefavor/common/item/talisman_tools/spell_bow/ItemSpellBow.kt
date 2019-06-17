@@ -9,6 +9,9 @@ import aurocosh.divinefavor.common.item.talisman_tools.spell_bow.capability.Spel
 import aurocosh.divinefavor.common.item.talisman_tools.spell_bow.capability.SpellBowProvider
 import aurocosh.divinefavor.common.item.talisman_tools.spell_bow.capability.SpellBowStorage
 import aurocosh.divinefavor.common.item.arrow_talismans.base.ItemArrowTalisman
+import aurocosh.divinefavor.common.item.spell_talismans.context.TalismanContext
+import aurocosh.divinefavor.common.item.spell_talismans.context.TalismanContextGenerator
+import aurocosh.divinefavor.common.item.talisman_tools.TalismanAdapter
 import aurocosh.divinefavor.common.item.talisman_tools.TalismanStackWrapper
 import aurocosh.divinefavor.common.lib.extensions.cap
 import aurocosh.divinefavor.common.lib.extensions.compound
@@ -83,7 +86,11 @@ class ItemSpellBow : ItemTalismanContainer("spell_bow", "spell_bow/spell_bow", C
 
         val stackIsInfinite = entityLiving.capabilities.isCreativeMode || arrowStack.item is ItemArrow && (arrowStack.item as ItemArrow).isInfinite(arrowStack, bowStack, entityLiving)
         if (!world.isRemote) {
-            val (stackWrapper, entityArrow) = getArrow(bowStack, entityLiving, world, arrowStack)
+
+            val talismanStack = TalismanAdapter.getTalismanStack(bowStack)
+            val context = TalismanContextGenerator.arrowShot(world, entityLiving, talismanStack)
+
+            val (arrowTalisman, entityArrow) = getArrow(context, arrowStack)
             entityArrow.shoot(entityLiving, entityLiving.rotationPitch, entityLiving.rotationYaw, 0.0f, velocity * 3.0f, 1.0f)
 
             if (velocity == 1.0f)
@@ -105,7 +112,7 @@ class ItemSpellBow : ItemTalismanContainer("spell_bow", "spell_bow/spell_bow", C
             if (stackIsInfinite || entityLiving.capabilities.isCreativeMode && (arrowStack.item === Items.SPECTRAL_ARROW || arrowStack.item === Items.TIPPED_ARROW))
                 entityArrow.pickupStatus = EntityArrow.PickupStatus.CREATIVE_ONLY
             world.spawnEntity(entityArrow)
-            stackWrapper?.talisman?.postInit(entityArrow)
+            arrowTalisman?.postInit(entityArrow)
         }
 
         world.playSound(null, entityLiving.posX, entityLiving.posY, entityLiving.posZ, SoundEvents.ENTITY_ARROW_SHOOT, SoundCategory.PLAYERS, 1.0f, 1.0f / (Item.itemRand.nextFloat() * 0.4f + 1.2f) + velocity * 0.5f)
@@ -115,12 +122,12 @@ class ItemSpellBow : ItemTalismanContainer("spell_bow", "spell_bow/spell_bow", C
         entityLiving.addStat(StatList.getObjectUseStats(this)!!)
     }
 
-    private fun getArrow(bowStack: ItemStack, entityLiving: EntityPlayer, world: World, arrowStack: ItemStack): Pair<TalismanStackWrapper<ItemArrowTalisman>?, EntityArrow> {
-        val stackWrapper = getTalisman<ItemArrowTalisman>(bowStack)
-        if (stackWrapper == null || !stackWrapper.talisman.claimCost(entityLiving, stackWrapper.stack))
-            return Pair(null, getStandardArrow(world, arrowStack, entityLiving))
-        val arrow = stackWrapper.talisman.createArrow(world, stackWrapper.talisman, entityLiving)
-        return Pair(stackWrapper, arrow)
+    private fun getArrow(context: TalismanContext, arrowStack: ItemStack): Pair<ItemArrowTalisman?, EntityArrow> {
+        val talisman = context.stack.item
+        if (talisman !is ItemArrowTalisman || !talisman.claimCost(context))
+            return Pair(null, getStandardArrow(context.world, arrowStack, context.player))
+        val arrow = talisman.createArrow(context)
+        return Pair(talisman, arrow)
     }
 
     private fun getStandardArrow(world: World, arrowStack: ItemStack, shooter: EntityLivingBase): EntityArrow {

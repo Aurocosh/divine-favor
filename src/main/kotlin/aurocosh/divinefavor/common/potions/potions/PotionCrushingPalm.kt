@@ -1,10 +1,12 @@
 package aurocosh.divinefavor.common.potions.potions
 
 import aurocosh.divinefavor.DivineFavor
+import aurocosh.divinefavor.common.item.spell_talismans.context.TalismanContextGenerator
 import aurocosh.divinefavor.common.potions.base.potion.ModPotionToggleLimited
 import aurocosh.divinefavor.common.potions.common.ModPotions
 import aurocosh.divinefavor.common.util.UtilBlock
 import aurocosh.divinefavor.common.util.UtilPlayer
+import net.minecraft.util.EnumHand
 import net.minecraftforge.event.entity.player.PlayerInteractEvent
 import net.minecraftforge.fml.common.Mod
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent
@@ -29,7 +31,10 @@ object CrushingPalm {
 
         val talisman = ModPotions.crushing_palm.talisman
         val stack = UtilPlayer.getItemInHand(player) { it === talisman }
-        if (!talisman.claimCost(player, stack))
+
+
+        val context = TalismanContextGenerator.rightClick(world, player, EnumHand.MAIN_HAND, stack)
+        if (!talisman.claimCost(context))
             return
 
         val pos = event.pos

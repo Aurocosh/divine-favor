@@ -32,7 +32,7 @@ class SpellTalismanBuildHorizontalLineRelative(name: String, spirit: ModSpirit, 
     private val selectPropertyWrapper = BlockSelectPropertyWrapper(propertyHandler)
     private val selectedBlock = selectPropertyWrapper.selectedBlock
 
-    override fun getFavorCost(itemStack: ItemStack): Int {
+    override fun getApproximateFavorCost(itemStack: ItemStack): Int {
         val (left, right) = itemStack.get(left, right)
         return favorCost * getBlockCount(left, right)
     }

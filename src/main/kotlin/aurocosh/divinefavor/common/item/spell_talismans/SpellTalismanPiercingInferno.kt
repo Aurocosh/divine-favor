@@ -21,7 +21,7 @@ class SpellTalismanPiercingInferno(name: String, spirit: ModSpirit, favorCost: I
     private val pierceDepth: StackPropertyInt = propertyHandler.registerIntProperty("piercing_inferno_depth", ConfigSpell.piercingInferno.maxPierceDepth)
     private val pierceSurface: StackPropertyInt = propertyHandler.registerIntProperty("piercing_inferno_surface", ConfigSpell.piercingInferno.maxTunnelSurface)
 
-    override fun getFavorCost(itemStack: ItemStack): Int {
+    override fun getApproximateFavorCost(itemStack: ItemStack): Int {
         val depth = pierceDepth.getValue(itemStack)
         val surface = pierceSurface.getValue(itemStack)
         return favorCost * depth * surface;

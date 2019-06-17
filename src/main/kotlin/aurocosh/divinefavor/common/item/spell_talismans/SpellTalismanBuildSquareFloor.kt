@@ -30,7 +30,7 @@ class SpellTalismanBuildSquareFloor(name: String, spirit: ModSpirit, favorCost: 
     private val selectPropertyWrapper = BlockSelectPropertyWrapper(propertyHandler)
     private val selectedBlock = selectPropertyWrapper.selectedBlock
 
-    override fun getFavorCost(itemStack: ItemStack): Int {
+    override fun getApproximateFavorCost(itemStack: ItemStack): Int {
         val radius = itemStack.get(radius) - 1
         return favorCost * getBlockCount(radius)
     }

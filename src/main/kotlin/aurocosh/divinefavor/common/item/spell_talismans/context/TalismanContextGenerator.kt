@@ -59,9 +59,9 @@ object TalismanContextGenerator {
         return generate(player, null, world, player.position, player.positionVector, hand, EnumFacing.UP, CastType.RightCast, stack)
     }
 
-    fun arrowShot(world: World, player: EntityPlayer, hand: EnumHand, stack: ItemStack): TalismanContext {
+    fun arrowShot(world: World, player: EntityPlayer, stack: ItemStack): TalismanContext {
         val position = player.position
-        return generate(player, null, world, position, position.toVec3d(), hand, EnumFacing.UP, CastType.RightCast, stack)
+        return generate(player, null, world, position, position.toVec3d(), EnumHand.MAIN_HAND, EnumFacing.UP, CastType.BowCast, stack)
     }
 
     private const val ENTITY_SEARCH_DISTANCE = 30.0

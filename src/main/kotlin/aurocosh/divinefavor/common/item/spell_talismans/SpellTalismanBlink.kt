@@ -14,7 +14,7 @@ import java.util.*
 class SpellTalismanBlink(name: String, spirit: ModSpirit, favorCost: Int, options: EnumSet<SpellOptions>) : ItemSpellTalisman(name, spirit, favorCost, options) {
     private val blinkDistance: StackPropertyInt = propertyHandler.registerIntProperty("blink_distance", ConfigSpell.blink.maxDistance)
 
-    override fun getFavorCost(itemStack: ItemStack): Int {
+    override fun getApproximateFavorCost(itemStack: ItemStack): Int {
         return favorCost * blinkDistance.getValue(itemStack);
     }
 

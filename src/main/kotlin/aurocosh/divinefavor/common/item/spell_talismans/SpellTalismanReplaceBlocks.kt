@@ -30,7 +30,7 @@ class SpellTalismanReplaceBlocks(name: String, spirit: ModSpirit, favorCost: Int
     private val selectPropertyWrapper = BlockSelectPropertyWrapper(propertyHandler)
     private val selectedBlock = selectPropertyWrapper.selectedBlock
 
-    override fun getFavorCost(itemStack: ItemStack): Int = favorCost * blockCount.getValue(itemStack)
+    override fun getApproximateFavorCost(itemStack: ItemStack): Int = favorCost * blockCount.getValue(itemStack)
     @SideOnly(Side.CLIENT)
     override fun shouldRender(context: TalismanContext): Boolean = positionPropertyWrapper.shouldRender(context)
     override fun raycastBlock(stack: ItemStack) = positionPropertyWrapper.shouldRaycastBlock(stack)

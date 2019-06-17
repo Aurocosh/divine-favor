@@ -37,7 +37,7 @@ class SpellTalismanStatProcessor : IComponentProcessor {
                 val lines = ArrayList<String>()
                 val spirit = spellTalisman.spirit
                 lines.add("Favor: " + spirit.name)
-                val favorCost = spellTalisman.getFavorCost(itemStack)
+                val favorCost = spellTalisman.getApproximateFavorCost(itemStack)
                 if (favorCost == 0)
                     lines.add("No cost")
                 else

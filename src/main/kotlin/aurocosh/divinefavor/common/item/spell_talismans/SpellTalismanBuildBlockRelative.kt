@@ -25,7 +25,7 @@ class SpellTalismanBuildBlockRelative(name: String, spirit: ModSpirit, favorCost
     private val selectPropertyWrapper = BlockSelectPropertyWrapper(propertyHandler)
     private val selectedBlock = selectPropertyWrapper.selectedBlock
 
-    override fun getFavorCost(itemStack: ItemStack): Int = favorCost
+    override fun getApproximateFavorCost(itemStack: ItemStack): Int = favorCost
 
     override fun performActionServer(context: TalismanContext) {
         val (player, stack, world) = context.getCommon()

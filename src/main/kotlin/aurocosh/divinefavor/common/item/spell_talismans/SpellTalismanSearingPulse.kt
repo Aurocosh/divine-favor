@@ -19,7 +19,7 @@ import java.util.*
 class SpellTalismanSearingPulse(name: String, spirit: ModSpirit, favorCost: Int, options: EnumSet<SpellOptions>) : ItemSpellTalisman(name, spirit, favorCost, options) {
     private val blockLimit: StackPropertyInt = propertyHandler.registerIntProperty("block_limit", ConfigSpell.searingPulse.maxBlocksSmelted)
 
-    override fun getFavorCost(itemStack: ItemStack): Int {
+    override fun getApproximateFavorCost(itemStack: ItemStack): Int {
         return favorCost * blockLimit.getValue(itemStack)
     }
 

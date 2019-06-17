@@ -31,9 +31,8 @@ abstract class ItemTalisman(val name: String, texturePath: String, val spirit: M
         setMaxStackSize(1)
     }
 
-    open fun getFavorCost(itemStack: ItemStack): Int {
-        return favorCost
-    }
+    open fun getApproximateFavorCost(itemStack: ItemStack): Int = favorCost
+    open fun getFinalFavorCost(context: TalismanContext): Int = favorCost
 
     fun cast(context: TalismanContext): Boolean {
         if (!context.stackValid)
@@ -44,7 +43,7 @@ abstract class ItemTalisman(val name: String, texturePath: String, val spirit: M
             return false
         if (!validate(context))
             return false
-        if (isConsumeCharge(context) && !claimCost(context.player, context.stack))
+        if (isConsumeCharge(context) && !claimCost(context))
             return false
         if (context.world.isRemote)
             performActionClient(context)
@@ -53,13 +52,11 @@ abstract class ItemTalisman(val name: String, texturePath: String, val spirit: M
         return true
     }
 
-    fun claimCost(player: EntityLivingBase, stack: ItemStack): Boolean {
-        val trueCost = getFavorCost(stack)
+    fun claimCost(context: TalismanContext): Boolean {
+        val player = context.player
+        val trueCost = getFinalFavorCost(context)
         if (trueCost == 0)
             return true
-        if (player !is EntityPlayer)
-            return false
-
         val spiritData = player.divinePlayerData.spiritData
         if (!spiritData.consumeFavor(spirit.id, trueCost))
             return false
@@ -74,7 +71,7 @@ abstract class ItemTalisman(val name: String, texturePath: String, val spirit: M
     fun getUseInfo(player: EntityPlayer, stack: ItemStack): String {
         val spiritData = player.divinePlayerData.spiritData
         val favorValue = spiritData.getFavor(spirit.id)
-        val trueFavorCost = getFavorCost(stack)
+        val trueFavorCost = getApproximateFavorCost(stack)
         val infinite = spiritData.isFavorInfinite(spirit.id) || trueFavorCost == 0
 
         val useCount = if (infinite) -1 else favorValue / trueFavorCost
@@ -129,5 +126,6 @@ abstract class ItemTalisman(val name: String, texturePath: String, val spirit: M
     open fun shouldRender(context: TalismanContext) = true
 
     @SideOnly(Side.CLIENT)
-    open fun handleRendering(context: TalismanContext, lastEvent: RenderWorldLastEvent) {}
+    open fun handleRendering(context: TalismanContext, lastEvent: RenderWorldLastEvent) {
+    }
 }

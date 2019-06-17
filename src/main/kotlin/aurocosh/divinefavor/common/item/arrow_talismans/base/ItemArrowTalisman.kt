@@ -35,9 +35,10 @@ open class ItemArrowTalisman(name: String, spirit: ModSpirit, favorCost: Int, va
     }
 
     // Talisman functions
-    fun createArrow(world: World, talisman: ItemArrowTalisman, player: EntityPlayer): EntityArrow {
-        val spellArrow = getArrow(world, player)
-        spellArrow.setSpell(talisman, player)
+    fun createArrow(context: TalismanContext): EntityArrow {
+        val player = context.player
+        val spellArrow = getArrow(context.world, player)
+        spellArrow.setSpell(this, player)
         preInit(spellArrow, player)
         spellArrow.setNoGravity(gravityType == GravityType.NO_GRAVITY || gravityType == GravityType.ANTIGRAVITY)
         spellArrow.setHasAntiGravity(gravityType == GravityType.ANTIGRAVITY)

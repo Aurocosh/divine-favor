@@ -30,7 +30,7 @@ class SpellTalismanBuildColumnRelative(name: String, spirit: ModSpirit, favorCos
     private val selectPropertyWrapper = BlockSelectPropertyWrapper(propertyHandler)
     private val selectedBlock = selectPropertyWrapper.selectedBlock
 
-    override fun getFavorCost(itemStack: ItemStack): Int = favorCost * length.getValue(itemStack)
+    override fun getApproximateFavorCost(itemStack: ItemStack): Int = favorCost * length.getValue(itemStack)
 
     override fun performActionServer(context: TalismanContext) {
         val (player, stack, world) = context.getCommon()

@@ -43,7 +43,7 @@ class BladeTalismanStatProcessor : IComponentProcessor {
             key == "text" -> {
                 val lines = ArrayList<String>()
                 lines.add("Favor: " + bladeTalisman.spirit.name)
-                val favorCost = bladeTalisman.getFavorCost(itemStack)
+                val favorCost = bladeTalisman.getApproximateFavorCost(itemStack)
                 if (favorCost == 0)
                     lines.add("No cost")
                 else

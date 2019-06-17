@@ -54,7 +54,7 @@ class SpellTalismanBuildHollowSphereRelative(name: String, spirit: ModSpirit, fa
         return Pair(radius_internal, radius_external)
     }
 
-    override fun getFavorCost(itemStack: ItemStack): Int {
+    override fun getApproximateFavorCost(itemStack: ItemStack): Int {
         val (internal, external) = getRadiuses(itemStack)
         val volume = ((4 * Math.PI) / 3) * ((internal * internal * internal) - (external * external * external))
         return favorCost * volume.toInt()

@@ -29,7 +29,7 @@ class SpellTalismanBuildFromSurface(name: String, spirit: ModSpirit, favorCost: 
     private val selectPropertyWrapper = BlockSelectPropertyWrapper(propertyHandler)
     private val selectedBlock = selectPropertyWrapper.selectedBlock
 
-    override fun getFavorCost(itemStack: ItemStack): Int = favorCost * itemStack.get(length)
+    override fun getApproximateFavorCost(itemStack: ItemStack): Int = favorCost * itemStack.get(length)
 
     @SideOnly(Side.CLIENT)
     override fun shouldRender(context: TalismanContext): Boolean = positionPropertyWrapper.shouldRender(context)
