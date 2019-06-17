@@ -9,7 +9,7 @@ import net.minecraft.util.math.BlockPos
 import net.minecraftforge.fml.relauncher.Side
 import net.minecraftforge.fml.relauncher.SideOnly
 
-class StackPropertyBlockPos(name: String, defaultValue: BlockPos, showInTooltip: Boolean, serverSync: (StackProperty<BlockPos>, BlockPos) -> Unit) : StackProperty<BlockPos>(name, defaultValue, showInTooltip, serverSync) {
+class StackPropertyBlockPos(name: String, defaultValue: BlockPos, showInTooltip: Boolean, orderIndex: Int, serverSync: (StackProperty<BlockPos>, BlockPos) -> Unit) : StackProperty<BlockPos>(name, defaultValue, showInTooltip, orderIndex, serverSync) {
     override fun getValueFromTag(compound: NBTTagCompound): BlockPos {
         return compound.getBlockPos(tag)
     }

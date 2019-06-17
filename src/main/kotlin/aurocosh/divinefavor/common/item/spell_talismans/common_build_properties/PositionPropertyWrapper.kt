@@ -1,9 +1,8 @@
 package aurocosh.divinefavor.common.item.spell_talismans.common_build_properties
 
 import aurocosh.divinefavor.DivineFavor
-import aurocosh.divinefavor.common.item.spell_talismans.base.CastType
 import aurocosh.divinefavor.common.item.spell_talismans.context.TalismanContext
-import aurocosh.divinefavor.common.item.talisman.TalismanPropertyHandler
+import aurocosh.divinefavor.common.stack_properties.StackPropertyHandler
 import aurocosh.divinefavor.common.lib.extensions.get
 import aurocosh.divinefavor.common.stack_properties.StackPropertyBlockPos
 import aurocosh.divinefavor.common.stack_properties.StackPropertyBool
@@ -11,7 +10,7 @@ import aurocosh.divinefavor.common.util.UtilEntity
 import net.minecraft.item.ItemStack
 import net.minecraft.util.math.BlockPos
 
-class PositionPropertyWrapper(propertyHandler: TalismanPropertyHandler) {
+class PositionPropertyWrapper(propertyHandler: StackPropertyHandler) {
     val isLockPosition: StackPropertyBool = propertyHandler.registerBoolProperty("lock_position", false)
     val lockedPosition: StackPropertyBlockPos = propertyHandler.registerBlockPosProperty("locked_position", BlockPos.ORIGIN)
 

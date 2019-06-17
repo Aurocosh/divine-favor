@@ -8,6 +8,7 @@ import aurocosh.divinefavor.common.stack_properties.IPropertyAccessor
 import aurocosh.divinefavor.common.lib.extensions.divinePlayerData
 import aurocosh.divinefavor.common.network.message.client.spirit_data.MessageSyncFavor
 import aurocosh.divinefavor.common.spirit.base.ModSpirit
+import aurocosh.divinefavor.common.stack_properties.StackPropertyHandler
 import net.minecraft.client.resources.I18n
 import net.minecraft.client.util.ITooltipFlag
 import net.minecraft.entity.EntityLivingBase
@@ -20,7 +21,7 @@ import net.minecraftforge.fml.relauncher.Side
 import net.minecraftforge.fml.relauncher.SideOnly
 
 abstract class ItemTalisman(val name: String, texturePath: String, val spirit: ModSpirit, protected val favorCost: Int) : ModItem(name, texturePath), IBlockCatcher {
-    protected val propertyHandler: TalismanPropertyHandler = TalismanPropertyHandler("talisman $name properties")
+    protected val propertyHandler: StackPropertyHandler = TalismanPropertyHandler("talisman $name properties")
     val properties: IPropertyAccessor = propertyHandler
 
     val spiritId: Int
@@ -33,7 +34,6 @@ abstract class ItemTalisman(val name: String, texturePath: String, val spirit: M
     open fun getFavorCost(itemStack: ItemStack): Int {
         return favorCost
     }
-
 
     fun cast(context: TalismanContext): Boolean {
         if (!context.stackValid)

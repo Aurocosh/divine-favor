@@ -8,7 +8,7 @@ import net.minecraft.nbt.NBTTagCompound
 import net.minecraftforge.fml.relauncher.Side
 import net.minecraftforge.fml.relauncher.SideOnly
 
-abstract class StackProperty<T>(val name: String, val defaultValue: T, val showInTooltip: Boolean, private val serverSync: (StackProperty<T>, T) -> Unit) {
+abstract class StackProperty<T>(val name: String, val defaultValue: T, val showInTooltip: Boolean, val orderIndex: Int, private val serverSync: (StackProperty<T>, T) -> Unit) {
     val tag = "tag_$name"
     val tooltipKey = ResourceNamer.getTypedNameString("tooltip", "property", name)
     val displayKey = ResourceNamer.getTypedNameString("name", "property", name)
