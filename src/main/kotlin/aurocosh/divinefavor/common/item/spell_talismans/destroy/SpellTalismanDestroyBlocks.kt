@@ -1,6 +1,6 @@
 package aurocosh.divinefavor.common.item.spell_talismans.destroy
 
-import aurocosh.divinefavor.common.coordinate_generators.SurfaceCoordinateGenerator
+import aurocosh.divinefavor.common.coordinate_generators.FloodFillCoordinateGenerator
 import aurocosh.divinefavor.common.item.spell_talismans.base.SpellOptions
 import aurocosh.divinefavor.common.item.spell_talismans.context.TalismanContext
 import aurocosh.divinefavor.common.lib.extensions.get
@@ -10,7 +10,7 @@ import net.minecraft.item.ItemStack
 import net.minecraft.util.math.BlockPos
 import java.util.*
 
-class SpellTalismanDestroySurface(name: String, spirit: ModSpirit, favorCost: Int, options: EnumSet<SpellOptions>) : SpellTalismanDestroy(name, spirit, favorCost, options) {
+class SpellTalismanDestroyBlocks(name: String, spirit: ModSpirit, favorCost: Int, options: EnumSet<SpellOptions>) : SpellTalismanDestroy(name, spirit, favorCost, options) {
     val blockCount: StackPropertyInt = propertyHandler.registerIntProperty("block_count", 6, 1, 64)
 
     override fun getBlockCount(stack: ItemStack): Int = favorCost * blockCount.getValue(stack)
@@ -28,6 +28,6 @@ class SpellTalismanDestroySurface(name: String, spirit: ModSpirit, favorCost: In
     }
 
     companion object {
-        private val coordinateGenerator: SurfaceCoordinateGenerator = SurfaceCoordinateGenerator()
+        private val coordinateGenerator: FloodFillCoordinateGenerator = FloodFillCoordinateGenerator()
     }
 }

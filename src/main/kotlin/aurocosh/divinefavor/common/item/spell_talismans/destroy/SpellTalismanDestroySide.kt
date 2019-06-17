@@ -5,11 +5,14 @@ import aurocosh.divinefavor.common.item.spell_talismans.base.SpellOptions
 import aurocosh.divinefavor.common.item.spell_talismans.context.TalismanContext
 import aurocosh.divinefavor.common.lib.extensions.get
 import aurocosh.divinefavor.common.spirit.base.ModSpirit
+import aurocosh.divinefavor.common.stack_properties.StackPropertyInt
 import net.minecraft.item.ItemStack
 import net.minecraft.util.math.BlockPos
 import java.util.*
 
 class SpellTalismanDestroySide(name: String, spirit: ModSpirit, favorCost: Int, options: EnumSet<SpellOptions>) : SpellTalismanDestroy(name, spirit, favorCost, options) {
+    val blockCount: StackPropertyInt = propertyHandler.registerIntProperty("block_count", 6, 1, 64)
+
     override fun getBlockCount(stack: ItemStack): Int = favorCost * blockCount.getValue(stack)
 
     override fun getCoordinates(context: TalismanContext): List<BlockPos> {

@@ -16,7 +16,6 @@ import net.minecraftforge.fml.relauncher.SideOnly
 import java.util.*
 
 abstract class SpellTalismanDestroy(name: String, spirit: ModSpirit, favorCost: Int, options: EnumSet<SpellOptions>) : SpellTalismanBuild(name, spirit, favorCost, options) {
-    protected val blockCount: StackPropertyInt = propertyHandler.registerIntProperty("block_count", 6, 1, 64)
     protected val isFuzzy: StackPropertyBool = propertyHandler.registerBoolProperty("fuzzy", false)
     override val positionPropertyWrapper: PositionPropertyWrapper = PositionPropertyWrapper(propertyHandler)
 
