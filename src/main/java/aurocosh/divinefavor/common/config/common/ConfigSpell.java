@@ -212,6 +212,8 @@ public class ConfigSpell {
     public static WoodenPunch woodenPunch = new WoodenPunch();
 
     // New configs
+    @Config.Name("Replace cuboid")
+    public static ReplaceCuboid replaceCuboid = new ReplaceCuboid();
     @Config.Name("Destroy blocks")
     public static DestroyBlocks destroyBlocks = new DestroyBlocks();
     @Config.Name("Destroy surface")

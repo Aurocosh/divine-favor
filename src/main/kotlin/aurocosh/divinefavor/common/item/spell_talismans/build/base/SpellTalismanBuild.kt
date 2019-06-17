@@ -39,14 +39,14 @@ abstract class SpellTalismanBuild(name: String, spirit: ModSpirit, favorCost: In
         val (player, stack, world) = context.getCommon()
         val state = stack.get(selectPropertyWrapper.selectedBlock)
 
-        val coordinates = getFinalCoordinated(context)
+        val coordinates = getFinalCoordinates(context)
         val validCoordinates = UtilBlock.getBlocksForPlacement(player, world, state, coordinates)
         context.set(finalCoordinates, validCoordinates)
         return coordinates.isNotEmpty()
     }
 
     protected open fun getRenderCoordinates(context: TalismanContext) = getCoordinates(context).filter{context.world.isAirOrReplacable(it)}
-    protected open fun getFinalCoordinated(context: TalismanContext) = getCoordinates(context).filter{context.world.isAirOrReplacable(it)}.shuffled()
+    protected open fun getFinalCoordinates(context: TalismanContext) = getCoordinates(context).filter{context.world.isAirOrReplacable(it)}.shuffled()
 
     override fun performActionServer(context: TalismanContext) {
         val coordinates = context.get(finalCoordinates)

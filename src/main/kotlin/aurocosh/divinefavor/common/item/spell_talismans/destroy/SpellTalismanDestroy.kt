@@ -20,7 +20,7 @@ abstract class SpellTalismanDestroy(name: String, spirit: ModSpirit, favorCost: 
     override val positionPropertyWrapper: PositionPropertyWrapper = PositionPropertyWrapper(propertyHandler)
 
     override fun getRenderCoordinates(context: TalismanContext) = getCoordinates(context).filterNot{context.world.isAirBlock(it)}
-    override fun getFinalCoordinated(context: TalismanContext) = getCoordinates(context).filterNot{context.world.isAirBlock(it)}.shuffled()
+    override fun getFinalCoordinates(context: TalismanContext) = getCoordinates(context).filterNot{context.world.isAirBlock(it)}.shuffled()
 
     override fun performActionServer(context: TalismanContext) {
         val coordinates = context.get(finalCoordinates)

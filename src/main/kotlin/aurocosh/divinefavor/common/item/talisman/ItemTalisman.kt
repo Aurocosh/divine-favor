@@ -19,7 +19,7 @@ import net.minecraftforge.client.event.RenderWorldLastEvent
 import net.minecraftforge.fml.relauncher.Side
 import net.minecraftforge.fml.relauncher.SideOnly
 
-abstract class ItemTalisman(val name: String, texturePath: String, val spirit: ModSpirit, protected val favorCost: Int) : ModItem(name, texturePath), IBlockCatcher {
+abstract class ItemTalisman(val name: String, texturePath: String, val spirit: ModSpirit, protected val favorCost: Int) : ModItem(name, texturePath) {
     protected val propertyHandler: StackPropertyHandler = TalismanPropertyHandler("talisman $name properties")
     val properties: IPropertyAccessor = propertyHandler
 
@@ -118,8 +118,6 @@ abstract class ItemTalisman(val name: String, texturePath: String, val spirit: M
 
     protected open fun performActionServer(context: TalismanContext) {}
     protected open fun performActionClient(context: TalismanContext) {}
-
-    override fun canCatch(): Boolean = false
 
     @SideOnly(Side.CLIENT)
     open fun shouldRender(context: TalismanContext) = true
