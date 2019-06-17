@@ -14,6 +14,7 @@ import aurocosh.divinefavor.common.tasks.BlockPlacingTask
 import aurocosh.divinefavor.common.util.UtilBlock
 import net.minecraft.item.ItemStack
 import net.minecraft.util.math.BlockPos
+import net.minecraft.world.World
 import net.minecraftforge.client.event.RenderWorldLastEvent
 import net.minecraftforge.fml.relauncher.Side
 import net.minecraftforge.fml.relauncher.SideOnly
@@ -39,11 +40,14 @@ abstract class SpellTalismanBuild(name: String, spirit: ModSpirit, favorCost: In
         val (player, stack, world) = context.getCommon()
         val state = stack.get(selectPropertyWrapper.selectedBlock)
 
-        val coordinates = getCoordinates(context).filter(world::isAirOrReplacable).shuffled()
+        val coordinates = getFinalCoordinated(context)
         val validCoordinates = UtilBlock.getBlocksForPlacement(player, world, state, coordinates)
         context.set(finalCoordinates, validCoordinates)
         return coordinates.isNotEmpty()
     }
+
+    protected open fun getRenderCoordinates(context: TalismanContext) = getCoordinates(context).filter{context.world.isAirOrReplacable(it)}
+    protected open fun getFinalCoordinated(context: TalismanContext) = getCoordinates(context).filter{context.world.isAirOrReplacable(it)}.shuffled()
 
     override fun performActionServer(context: TalismanContext) {
         val coordinates = context.get(finalCoordinates)
@@ -57,8 +61,8 @@ abstract class SpellTalismanBuild(name: String, spirit: ModSpirit, favorCost: In
 
     @SideOnly(Side.CLIENT)
     override fun handleRendering(context: TalismanContext, lastEvent: RenderWorldLastEvent) {
-        val (player, stack, world) = context.getCommon()
-        val coordinates = getCoordinates(context).filter(world::isAirOrReplacable)
+        val (player, stack) = context.getCommon()
+        val coordinates = getRenderCoordinates(context)
         val state = stack.get(selectPropertyWrapper.selectedBlock)
         BlockConstructionRendering.render(lastEvent, player, state, coordinates)
     }

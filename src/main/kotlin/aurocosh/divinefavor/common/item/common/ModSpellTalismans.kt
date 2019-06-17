@@ -7,6 +7,9 @@ import aurocosh.divinefavor.common.item.spell_talismans.*
 import aurocosh.divinefavor.common.item.spell_talismans.base.*
 import aurocosh.divinefavor.common.item.spell_talismans.build.*
 import aurocosh.divinefavor.common.item.spell_talismans.build.base.SpellTalismanBuildBlockRelative
+import aurocosh.divinefavor.common.item.spell_talismans.replace.SpellTalismanReplaceBlocks
+import aurocosh.divinefavor.common.item.spell_talismans.replace.SpellTalismanReplaceSide
+import aurocosh.divinefavor.common.item.spell_talismans.replace.SpellTalismanReplaceSurface
 import aurocosh.divinefavor.common.item.spell_talismans.sense.*
 import aurocosh.divinefavor.common.lib.extensions.isIce
 import aurocosh.divinefavor.common.lib.extensions.isLava
@@ -274,9 +277,9 @@ object ModSpellTalismans {
         starvation = SpellTalismanModPotion("starvation", ModSpirits.timber, ConfigSpell.starvation.favorCost, ModPotions.starvation, ConfigSpell.starvation.duration)
 
         // New instances
-        destroy_cuboid = SpellTalismanDestroyCuboid("destroy_cuboid", ModSpirits.romol, ConfigSpell.destroyCuboid.favorCost, SpellOptions.TRACE_ONLY_CAST)
-        replace_side = SpellTalismanReplaceSide("replace_side", ModSpirits.romol, ConfigSpell.replaceSide.favorCost, SpellOptions.TRACE_ONLY_CAST)
-        replace_blocks = SpellTalismanReplaceBlocks("replace_blocks", ModSpirits.romol, ConfigSpell.replaceBlocks.favorCost, SpellOptions.TRACE_ONLY_CAST)
+        destroy_cuboid = SpellTalismanDestroyCuboid("destroy_cuboid", ModSpirits.romol, ConfigSpell.destroyCuboid.favorCost, SpellOptions.ALL_CAST_TRACE)
+        replace_side = SpellTalismanReplaceSide("replace_side", ModSpirits.romol, ConfigSpell.replaceSide.favorCost, SpellOptions.ALL_CAST_TRACE)
+        replace_blocks = SpellTalismanReplaceBlocks("replace_blocks", ModSpirits.romol, ConfigSpell.replaceBlocks.favorCost, SpellOptions.ALL_CAST_TRACE)
         build_wall_relative = SpellTalismanBuildWallRelative("build_wall_relative", ModSpirits.romol, ConfigSpell.buildWallRelative.favorCost, SpellOptions.RIGHT_CAST)
         build_horizontal_line_relative = SpellTalismanBuildHorizontalLineRelative("build_horizontal_line_relative", ModSpirits.romol, ConfigSpell.buildHorizontalLineRelative.favorCost, SpellOptions.RIGHT_CAST)
         build_hollow_sphere_relative = SpellTalismanBuildHollowSphereRelative("build_hollow_sphere_relative", ModSpirits.romol, ConfigSpell.buildHollowSphereRelative.favorCost, SpellOptions.RIGHT_CAST)
