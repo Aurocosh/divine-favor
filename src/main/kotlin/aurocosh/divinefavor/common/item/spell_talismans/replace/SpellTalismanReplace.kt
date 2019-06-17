@@ -11,6 +11,7 @@ import aurocosh.divinefavor.common.spirit.base.ModSpirit
 import aurocosh.divinefavor.common.stack_properties.StackPropertyBool
 import aurocosh.divinefavor.common.stack_properties.StackPropertyInt
 import aurocosh.divinefavor.common.tasks.BlockPlacingTask
+import aurocosh.divinefavor.common.tasks.BlockReplacingTask
 import net.minecraftforge.client.event.RenderWorldLastEvent
 import net.minecraftforge.fml.relauncher.Side
 import net.minecraftforge.fml.relauncher.SideOnly
@@ -28,7 +29,7 @@ abstract class SpellTalismanReplace(name: String, spirit: ModSpirit, favorCost: 
         val (player, stack) = context.getCommon()
         val state = stack.get(selectPropertyWrapper.selectedBlock)
         val coordinates = getFinalCoordinates(context)
-        BlockPlacingTask(coordinates, state, player, 1).start()
+        BlockReplacingTask(coordinates, state, player, 1).start()
     }
 
     @SideOnly(Side.CLIENT)
