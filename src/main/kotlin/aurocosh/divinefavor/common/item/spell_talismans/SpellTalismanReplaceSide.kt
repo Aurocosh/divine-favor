@@ -1,7 +1,7 @@
 package aurocosh.divinefavor.common.item.spell_talismans
 
 import aurocosh.divinefavor.client.block_ovelay.BlockExchangeRendering
-import aurocosh.divinefavor.common.coordinate_generators.SurfaceCoordinateGenerator
+import aurocosh.divinefavor.common.coordinate_generators.FloodFillSideCoordinateGenerator
 import aurocosh.divinefavor.common.item.spell_talismans.base.ItemSpellTalisman
 import aurocosh.divinefavor.common.item.spell_talismans.base.SpellOptions
 import aurocosh.divinefavor.common.item.spell_talismans.base.TalismanContext
@@ -21,7 +21,7 @@ import net.minecraftforge.fml.relauncher.Side
 import net.minecraftforge.fml.relauncher.SideOnly
 import java.util.*
 
-class SpellTalismanReplaceSurface(name: String, spirit: ModSpirit, favorCost: Int, options: EnumSet<SpellOptions>) : ItemSpellTalisman(name, spirit, favorCost, options) {
+class SpellTalismanReplaceSide(name: String, spirit: ModSpirit, favorCost: Int, options: EnumSet<SpellOptions>) : ItemSpellTalisman(name, spirit, favorCost, options) {
     private val blockCount: StackPropertyInt = propertyHandler.registerIntProperty("block_count", 6, 1, 64)
     private val isFuzzy: StackPropertyBool = propertyHandler.registerBoolProperty("fuzzy", false)
 
@@ -65,10 +65,10 @@ class SpellTalismanReplaceSurface(name: String, spirit: ModSpirit, favorCost: In
 
         val (count, fuzzy) = context.stack.get(blockCount, isFuzzy)
         val blockPos = positionPropertyWrapper.getPosition(context)
-        return coordinateGenerator.getCoordinates(blockPos, Math.min(count, limit), context.world, fuzzy)
+        return coordinateGenerator.getCoordinates(blockPos, Math.min(count, limit), context.world, fuzzy, context.facing)
     }
 
     companion object {
-        private val coordinateGenerator: SurfaceCoordinateGenerator = SurfaceCoordinateGenerator()
+        private val coordinateGenerator: FloodFillSideCoordinateGenerator = FloodFillSideCoordinateGenerator()
     }
 }

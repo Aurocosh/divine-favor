@@ -5,7 +5,6 @@ import aurocosh.divinefavor.common.item.spell_talismans.base.CastType
 import aurocosh.divinefavor.common.item.spell_talismans.base.TalismanContext
 import aurocosh.divinefavor.common.item.talisman.TalismanPropertyHandler
 import aurocosh.divinefavor.common.lib.extensions.get
-import aurocosh.divinefavor.common.lib.extensions.toBlockPos
 import aurocosh.divinefavor.common.stack_properties.StackPropertyBlockPos
 import aurocosh.divinefavor.common.stack_properties.StackPropertyBool
 import aurocosh.divinefavor.common.util.UtilEntity
@@ -20,15 +19,7 @@ class PositionPropertyWrapper(propertyHandler: TalismanPropertyHandler) {
         isLockPosition.addChangeListener(this::onPositionLock)
     }
 
-    fun getPosition(stack: ItemStack, current: BlockPos) = if (stack.get(isLockPosition)) stack.get(lockedPosition) else current
-
-    fun getPositionRelative(context: TalismanContext, length: Int): BlockPos {
-        val playerPos = context.player.positionVector
-        val truncated = BlockPos(playerPos.x.toInt(),playerPos.y.toInt(),playerPos.z.toInt())
-        val position = getPosition(context.stack, truncated)
-        val distanceVec = context.player.lookVec.scale(length.toDouble()).toBlockPos()
-        return position.add(distanceVec).add(0,2,0)
-    }
+    fun getPosition(context: TalismanContext) = if (context.stack.get(isLockPosition)) context.stack.get(lockedPosition) else context.pos
 
     fun validateCastType(context: TalismanContext): Boolean {
         if (context.castType == CastType.UseCast)

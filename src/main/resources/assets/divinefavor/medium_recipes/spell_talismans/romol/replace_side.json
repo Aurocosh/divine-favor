@@ -1,6 +1,6 @@
 {
   "result": {
-    "item": "divinefavor:spell_talisman_replace_surface"
+    "item": "divinefavor:spell_talisman_replace_side"
   },
   "stones": [
     "divinefavor:calling_stone_romol"
@@ -20,7 +20,7 @@
     },
     {
       "type": "stack",
-      "item": "minecraft:iron_axe"
+      "item": "minecraft:TODO"
     }
   ]
 }
