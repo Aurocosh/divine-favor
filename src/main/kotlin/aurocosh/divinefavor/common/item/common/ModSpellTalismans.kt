@@ -8,6 +8,7 @@ import aurocosh.divinefavor.common.item.spell_talismans.base.*
 import aurocosh.divinefavor.common.item.spell_talismans.build.*
 import aurocosh.divinefavor.common.item.spell_talismans.build.base.SpellTalismanBuildBlockRelative
 import aurocosh.divinefavor.common.item.spell_talismans.destroy.SpellTalismanDestroyCuboid
+import aurocosh.divinefavor.common.item.spell_talismans.destroy.SpellTalismanDestroySide
 import aurocosh.divinefavor.common.item.spell_talismans.replace.SpellTalismanReplaceBlocks
 import aurocosh.divinefavor.common.item.spell_talismans.replace.SpellTalismanReplaceSide
 import aurocosh.divinefavor.common.item.spell_talismans.replace.SpellTalismanReplaceSurface
@@ -129,6 +130,7 @@ object ModSpellTalismans {
     lateinit var wooden_punch: ItemSpellTalisman
 
     // New fields
+    lateinit var destroy_side: ItemSpellTalisman
     lateinit var destroy_cuboid: ItemSpellTalisman
     lateinit var replace_side: ItemSpellTalisman
     lateinit var replace_blocks: ItemSpellTalisman
@@ -278,6 +280,7 @@ object ModSpellTalismans {
         starvation = SpellTalismanModPotion("starvation", ModSpirits.timber, ConfigSpell.starvation.favorCost, ModPotions.starvation, ConfigSpell.starvation.duration)
 
         // New instances
+        destroy_side = SpellTalismanDestroySide("destroy_side", ModSpirits.romol, ConfigSpell.destroySide.favorCost, SpellOptions.ALL_CAST)
         destroy_cuboid = SpellTalismanDestroyCuboid("destroy_cuboid", ModSpirits.romol, ConfigSpell.destroyCuboid.favorCost, SpellOptions.ALL_CAST_TRACE)
         replace_side = SpellTalismanReplaceSide("replace_side", ModSpirits.romol, ConfigSpell.replaceSide.favorCost, SpellOptions.ALL_CAST_TRACE)
         replace_blocks = SpellTalismanReplaceBlocks("replace_blocks", ModSpirits.romol, ConfigSpell.replaceBlocks.favorCost, SpellOptions.ALL_CAST_TRACE)

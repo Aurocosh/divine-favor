@@ -2,7 +2,6 @@ package aurocosh.divinefavor.common.coordinate_generators
 
 import aurocosh.divinefavor.common.constants.BlockPosConstants
 import aurocosh.divinefavor.common.lib.coordinates.FloodFiller
-import aurocosh.divinefavor.common.lib.coordinates.SurfaceFloodFiller
 import aurocosh.divinefavor.common.lib.extensions.inverse
 import aurocosh.divinefavor.common.lib.extensions.toBlockPos
 import net.minecraft.init.Blocks

@@ -1,7 +1,5 @@
 package aurocosh.divinefavor.common.util
 
-import aurocosh.divinefavor.common.lib.math.CubeCoordinates
-import aurocosh.divinefavor.common.tasks.BlockPlacingTask
 import net.minecraft.block.Block
 import net.minecraft.block.BlockLiquid
 import net.minecraft.block.state.IBlockState

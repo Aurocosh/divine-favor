@@ -2,12 +2,10 @@ package aurocosh.divinefavor.common.item.spell_talismans.common_build_properties
 
 import aurocosh.divinefavor.DivineFavor
 import aurocosh.divinefavor.common.item.spell_talismans.context.TalismanContext
-import aurocosh.divinefavor.common.stack_properties.StackPropertyHandler
 import aurocosh.divinefavor.common.lib.extensions.get
 import aurocosh.divinefavor.common.lib.extensions.scale
 import aurocosh.divinefavor.common.lib.extensions.toBlockPos
-import aurocosh.divinefavor.common.stack_properties.StackPropertyBlockPos
-import aurocosh.divinefavor.common.stack_properties.StackPropertyBool
+import aurocosh.divinefavor.common.stack_properties.StackPropertyHandler
 import aurocosh.divinefavor.common.stack_properties.StackPropertyInt
 import aurocosh.divinefavor.common.util.UtilEntity
 import net.minecraft.item.ItemStack

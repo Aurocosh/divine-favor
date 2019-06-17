@@ -1,31 +1,26 @@
 package aurocosh.divinefavor.client.block_ovelay
 
+
 import aurocosh.divinefavor.DivineFavor
 import aurocosh.divinefavor.common.lib.extensions.getPartialPosition
-import net.minecraft.block.BlockStainedGlass.COLOR
+import com.google.common.cache.CacheBuilder
+import com.google.common.cache.RemovalNotification
 import net.minecraft.client.Minecraft
+import net.minecraft.client.renderer.BufferBuilder
 import net.minecraft.client.renderer.GLAllocation
 import net.minecraft.client.renderer.GlStateManager
 import net.minecraft.client.renderer.Tessellator
 import net.minecraft.client.renderer.texture.TextureMap
+import net.minecraft.client.renderer.vertex.DefaultVertexFormats
 import net.minecraft.entity.player.EntityPlayer
-import net.minecraft.init.Blocks
-import net.minecraft.item.EnumDyeColor
 import net.minecraft.util.EnumFacing
 import net.minecraft.util.math.BlockPos
-import net.minecraft.util.math.Vec3d
 import net.minecraftforge.client.ForgeHooksClient
 import net.minecraftforge.client.MinecraftForgeClient
 import net.minecraftforge.client.event.RenderWorldLastEvent
 import org.lwjgl.opengl.GL11
-import java.util.concurrent.ExecutionException
-
-
-import com.google.common.cache.CacheBuilder
-import com.google.common.cache.RemovalNotification
-import net.minecraft.client.renderer.BufferBuilder
-import net.minecraft.client.renderer.vertex.DefaultVertexFormats
 import java.util.*
+import java.util.concurrent.ExecutionException
 import java.util.concurrent.TimeUnit
 
 /**

@@ -7,7 +7,6 @@ import aurocosh.divinefavor.common.util.UtilCoordinates
 import net.minecraft.util.EnumFacing
 import net.minecraft.util.math.BlockPos
 import net.minecraft.world.World
-import java.util.ArrayList
 
 class ExtrusionCoordinateGenerator : CachedCoordinateGenerator() {
     fun getCoordinates(shapeBase: BlockPos, origin: BlockPos, world: World, facing: EnumFacing, surface: Int, length: Int): List<BlockPos> {

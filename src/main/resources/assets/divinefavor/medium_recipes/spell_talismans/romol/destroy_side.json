@@ -1,6 +1,6 @@
 {
   "result": {
-    "item": "divinefavor:spell_talisman_replace_side"
+    "item": "divinefavor:spell_talisman_destroy_side"
   },
   "stones": [
     "divinefavor:calling_stone_romol"
@@ -16,7 +16,7 @@
     },
     {
       "type": "ore",
-      "ore": "dyePurple"
+      "ore": "dyeRed"
     },
     {
       "type": "stack",
