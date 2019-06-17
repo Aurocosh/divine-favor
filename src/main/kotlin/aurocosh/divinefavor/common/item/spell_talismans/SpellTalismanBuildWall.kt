@@ -75,8 +75,9 @@ class SpellTalismanBuildWall(name: String, spirit: ModSpirit, favorCost: Int, op
         val blockCount = getBlockCount(left, right, height)
         val count = Math.min(limit, blockCount)
         val facing = rotationPropertyWrapper.getRotation(stack, player.horizontalFacing)
+        val directions = UtilPlayer.getRelativeDirections(player, facing)
 
-        return coordinateGenerator.getCoordinates(facing, blockPos, height, left, right, count).filter(world::isAirOrReplacable)
+        return coordinateGenerator.getCoordinates(directions, blockPos, height - 1, 0, left, right, count).filter(world::isAirOrReplacable)
     }
 
     private fun getBlockCount(left: Int, right: Int, height: Int): Int {

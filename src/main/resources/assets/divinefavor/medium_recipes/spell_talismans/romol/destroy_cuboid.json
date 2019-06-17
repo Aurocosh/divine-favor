@@ -1,0 +1,26 @@
+{
+  "result": {
+    "item": "divinefavor:spell_talisman_destroy_cuboid"
+  },
+  "stones": [
+    "divinefavor:calling_stone_romol"
+  ],
+  "ingredients": [
+    {
+      "type": "ore",
+      "ore": "paper"
+    },
+    {
+      "type": "ore",
+      "ore": "dyeBlack"
+    },
+    {
+      "type": "ore",
+      "ore": "dyeRed"
+    },
+    {
+      "type": "stack",
+      "item": "minecraft:diamond_pickaxe"
+    }
+  ]
+}

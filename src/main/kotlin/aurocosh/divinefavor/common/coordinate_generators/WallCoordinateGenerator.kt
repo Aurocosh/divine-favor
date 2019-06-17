@@ -2,24 +2,28 @@ package aurocosh.divinefavor.common.coordinate_generators
 
 import aurocosh.divinefavor.common.lib.extensions.S
 import aurocosh.divinefavor.common.lib.extensions.toBlockPos
-import net.minecraft.util.EnumFacing
+import aurocosh.divinefavor.common.util.UtilPlayer
 import net.minecraft.util.math.BlockPos
 
 class WallCoordinateGenerator : CachedCoordinateGenerator() {
-    fun getCoordinates(playerFacing: EnumFacing, blockPos: BlockPos, height: Int, left: Int, rigth: Int, count: Int): List<BlockPos> {
-        if (isCached(playerFacing, blockPos, height, left, rigth))
+    fun getCoordinates(directions: UtilPlayer.RelativeDirections, blockPos: BlockPos, up: Int, down: Int, left: Int, right: Int, count: Int): List<BlockPos> {
+        if (isCached(directions, blockPos, up, down, left, right))
             return cachedCoordinates
 
-        val sideFacing = playerFacing.rotateAround(EnumFacing.Axis.Y)
-        val firstSideVec = sideFacing.directionVec.toBlockPos()
-        val secondSideVec = sideFacing.opposite.directionVec.toBlockPos()
+        val upVec = directions.up.directionVec.toBlockPos()
+        val downVec = directions.down.directionVec.toBlockPos()
+        val leftVec = directions.left.directionVec.toBlockPos()
+        val rightVec = directions.right.directionVec.toBlockPos()
 
-        val centerColumn = generateSequence(blockPos, BlockPos::up).take(height).toList()
+        val upPart = generateSequence(blockPos.add(upVec), upVec::add).take(up)
+        val downPart = generateSequence(blockPos.add(downVec), downVec::add).take(down)
 
-        val firstSide = generateSequence(centerColumn.map(firstSideVec::add)) { it.map(firstSideVec::add) }.take(rigth).flatten()
-        val secondSide = generateSequence(centerColumn.map(secondSideVec::add)) { it.map(secondSideVec::add) }.take(left).flatten()
+        val center = (upPart + downPart + sequenceOf(blockPos)).toList()
 
-        cachedCoordinates = (centerColumn.S + firstSide + secondSide).take(count).toList()
+        val leftSide = generateSequence(center.map(leftVec::add)) { it.map(leftVec::add) }.take(right).flatten()
+        val rightSide = generateSequence(center.map(rightVec::add)) { it.map(rightVec::add) }.take(left).flatten()
+
+        cachedCoordinates = (center.S + leftSide + rightSide).take(count).toList()
         return cachedCoordinates
     }
 }

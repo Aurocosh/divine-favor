@@ -123,6 +123,7 @@ object ModSpellTalismans {
     lateinit var wooden_punch: ItemSpellTalisman
 
     // New fields
+    lateinit var destroy_cuboid: ItemSpellTalisman
     lateinit var replace_side: ItemSpellTalisman
     lateinit var replace_blocks: ItemSpellTalisman
     lateinit var build_wall_relative: ItemSpellTalisman
@@ -271,6 +272,7 @@ object ModSpellTalismans {
         starvation = SpellTalismanModPotion("starvation", ModSpirits.timber, ConfigSpell.starvation.favorCost, ModPotions.starvation, ConfigSpell.starvation.duration)
 
         // New instances
+        destroy_cuboid = SpellTalismanDestroyCuboid("destroy_cuboid", ModSpirits.romol, ConfigSpell.destroyCuboid.favorCost, SpellOptions.TRACE_ONLY_CAST)
         replace_side = SpellTalismanReplaceSide("replace_side", ModSpirits.romol, ConfigSpell.replaceSide.favorCost, SpellOptions.TRACE_ONLY_CAST)
         replace_blocks = SpellTalismanReplaceBlocks("replace_blocks", ModSpirits.romol, ConfigSpell.replaceBlocks.favorCost, SpellOptions.TRACE_ONLY_CAST)
         build_wall_relative = SpellTalismanBuildWallRelative("build_wall_relative", ModSpirits.romol, ConfigSpell.buildWallRelative.favorCost, SpellOptions.RIGHT_CAST)

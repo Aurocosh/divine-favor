@@ -16,7 +16,6 @@ import net.minecraft.util.EnumFacing
 import net.minecraft.util.EnumHand
 import net.minecraft.util.SoundCategory
 import net.minecraft.util.math.BlockPos
-import net.minecraft.util.math.MathHelper
 import net.minecraft.world.World
 import net.minecraftforge.items.IItemHandler
 
@@ -171,5 +170,20 @@ object UtilPlayer {
     fun consumeBlocks(player: EntityPlayer, world: World, state: IBlockState, count: Int): Boolean {
         val itemStack = UtilBlock.getSilkDropIfPresent(world, state, player)
         return consumeItems(itemStack, player, count)
+    }
+
+    data class RelativeDirections(val forward: EnumFacing, val back: EnumFacing, val up: EnumFacing, val down: EnumFacing, val right: EnumFacing, val left: EnumFacing)
+
+    fun getRelativeDirections(player: EntityPlayer, forward: EnumFacing): RelativeDirections {
+        val back = forward.opposite
+        val vertical = forward.axis == EnumFacing.Axis.Y
+        var up = if (vertical) player.horizontalFacing else EnumFacing.UP
+        val left = if (vertical) up.rotateY() else forward.rotateYCCW()
+        val right = left.opposite
+        if (forward == EnumFacing.DOWN)
+            up = up.opposite
+        val down = up.opposite
+
+        return RelativeDirections(forward, back, up, down, right, left)
     }
 }

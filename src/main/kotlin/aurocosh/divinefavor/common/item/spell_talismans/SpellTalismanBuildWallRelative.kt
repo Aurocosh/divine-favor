@@ -15,6 +15,7 @@ import aurocosh.divinefavor.common.spirit.base.ModSpirit
 import aurocosh.divinefavor.common.stack_properties.StackPropertyInt
 import aurocosh.divinefavor.common.tasks.BlockPlacingTask
 import aurocosh.divinefavor.common.util.UtilBlock
+import aurocosh.divinefavor.common.util.UtilPlayer
 import net.minecraft.item.ItemStack
 import net.minecraft.util.math.BlockPos
 import net.minecraftforge.client.event.RenderWorldLastEvent
@@ -69,8 +70,9 @@ class SpellTalismanBuildWallRelative(name: String, spirit: ModSpirit, favorCost:
         val blockCount = getBlockCount(left, right, height)
         val count = Math.min(limit, blockCount)
         val facing = rotationPropertyWrapper.getRotation(stack, player.horizontalFacing)
+        val directions = UtilPlayer.getRelativeDirections(player, facing)
 
-        return coordinateGenerator.getCoordinates(facing, blockPos, height, left, right, count).filter(world::isAirOrReplacable)
+        return coordinateGenerator.getCoordinates(directions, blockPos, height - 1, 0, left, right, count).filter(world::isAirOrReplacable)
     }
 
     private fun getBlockCount(left: Int, right: Int, height: Int): Int {

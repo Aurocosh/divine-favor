@@ -1,0 +1,7 @@
+{
+    "parent": "item/generated",
+    "textures": {
+        "layer1": "divinefavor:items/spell_talismans/destroy_cuboid",
+        "layer0": "divinefavor:items/spell_talismans/base"
+    }
+}
