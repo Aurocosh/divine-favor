@@ -1,5 +1,6 @@
 package aurocosh.divinefavor.common.item.spell_talismans.base
 
+import aurocosh.divinefavor.common.item.spell_talismans.context.TalismanContext
 import aurocosh.divinefavor.common.potions.base.effect.ModEffectToggle
 import aurocosh.divinefavor.common.potions.base.potion.ModPotionToggle
 import aurocosh.divinefavor.common.potions.base.potion.ModPotionToggleLimited

@@ -1,6 +1,7 @@
 package aurocosh.divinefavor.common.item.spell_talismans.base
 
 import aurocosh.divinefavor.common.entity.minions.base.IMinion
+import aurocosh.divinefavor.common.item.spell_talismans.context.TalismanContext
 import aurocosh.divinefavor.common.spirit.base.ModSpirit
 import net.minecraft.entity.EntityLiving
 import java.util.*

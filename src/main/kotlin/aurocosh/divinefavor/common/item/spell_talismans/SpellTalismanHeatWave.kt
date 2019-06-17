@@ -4,7 +4,7 @@ import aurocosh.divinefavor.common.config.common.ConfigGeneral
 import aurocosh.divinefavor.common.config.common.ConfigSpell
 import aurocosh.divinefavor.common.item.spell_talismans.base.ItemSpellTalisman
 import aurocosh.divinefavor.common.item.spell_talismans.base.SpellOptions
-import aurocosh.divinefavor.common.item.spell_talismans.base.TalismanContext
+import aurocosh.divinefavor.common.item.spell_talismans.context.TalismanContext
 import aurocosh.divinefavor.common.network.message.client.particles.MessageParticlesWave
 import aurocosh.divinefavor.common.spirit.base.ModSpirit
 import aurocosh.divinefavor.common.util.UtilBlock

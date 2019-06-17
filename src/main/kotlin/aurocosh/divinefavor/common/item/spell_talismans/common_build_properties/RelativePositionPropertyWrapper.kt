@@ -1,7 +1,7 @@
 package aurocosh.divinefavor.common.item.spell_talismans.common_build_properties
 
 import aurocosh.divinefavor.DivineFavor
-import aurocosh.divinefavor.common.item.spell_talismans.base.TalismanContext
+import aurocosh.divinefavor.common.item.spell_talismans.context.TalismanContext
 import aurocosh.divinefavor.common.item.talisman.TalismanPropertyHandler
 import aurocosh.divinefavor.common.lib.extensions.get
 import aurocosh.divinefavor.common.lib.extensions.toBlockPos

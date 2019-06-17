@@ -4,7 +4,7 @@ import aurocosh.divinefavor.client.block_ovelay.BlockConstructionRendering
 import aurocosh.divinefavor.common.coordinate_generators.WallCoordinateGenerator
 import aurocosh.divinefavor.common.item.spell_talismans.base.ItemSpellTalisman
 import aurocosh.divinefavor.common.item.spell_talismans.base.SpellOptions
-import aurocosh.divinefavor.common.item.spell_talismans.base.TalismanContext
+import aurocosh.divinefavor.common.item.spell_talismans.context.TalismanContext
 import aurocosh.divinefavor.common.item.spell_talismans.common_build_properties.BlockSelectPropertyWrapper
 import aurocosh.divinefavor.common.item.spell_talismans.common_build_properties.RelativePositionPropertyWrapper
 import aurocosh.divinefavor.common.item.spell_talismans.common_build_properties.RotationPropertyWrapper

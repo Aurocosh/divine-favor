@@ -1,5 +1,6 @@
 package aurocosh.divinefavor.common.item.spell_talismans.base
 
+import aurocosh.divinefavor.common.item.spell_talismans.context.TalismanContext
 import aurocosh.divinefavor.common.lib.extensions.multicatch
 import aurocosh.divinefavor.common.spirit.base.ModSpirit
 import net.minecraft.entity.EntityLiving

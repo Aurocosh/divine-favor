@@ -4,7 +4,7 @@ import aurocosh.divinefavor.client.block_ovelay.BlockConstructionRendering
 import aurocosh.divinefavor.common.coordinate_generators.ExtrusionCoordinateGenerator
 import aurocosh.divinefavor.common.item.spell_talismans.base.ItemSpellTalisman
 import aurocosh.divinefavor.common.item.spell_talismans.base.SpellOptions
-import aurocosh.divinefavor.common.item.spell_talismans.base.TalismanContext
+import aurocosh.divinefavor.common.item.spell_talismans.context.TalismanContext
 import aurocosh.divinefavor.common.item.spell_talismans.common_build_properties.BlockSelectPropertyWrapper
 import aurocosh.divinefavor.common.item.spell_talismans.common_build_properties.ShiftedPositionPropertyWrapper
 import aurocosh.divinefavor.common.lib.extensions.get
@@ -13,7 +13,6 @@ import aurocosh.divinefavor.common.spirit.base.ModSpirit
 import aurocosh.divinefavor.common.stack_properties.StackPropertyInt
 import aurocosh.divinefavor.common.tasks.BlockPlacingTask
 import aurocosh.divinefavor.common.util.UtilBlock
-import aurocosh.divinefavor.common.util.UtilPlayer
 import net.minecraft.item.ItemStack
 import net.minecraft.util.math.BlockPos
 import net.minecraftforge.client.event.RenderWorldLastEvent
@@ -31,8 +30,8 @@ class SpellTalismanBuildExtrusion(name: String, spirit: ModSpirit, favorCost: In
     private val selectedBlock = selectPropertyWrapper.selectedBlock
 
     override fun getFavorCost(itemStack: ItemStack): Int = favorCost * itemStack.get(length) * itemStack.get(surface)
-    override fun validateCastType(context: TalismanContext): Boolean = positionPropertyWrapper.validateCastType(context)
-    override fun preprocess(context: TalismanContext): Boolean = selectPropertyWrapper.preprocess(context) && positionPropertyWrapper.preprocess(context)
+    override fun raycastBlock(stack: ItemStack) = positionPropertyWrapper.shouldRaycastBlock(stack)
+    override fun preProcess(context: TalismanContext): Boolean = selectPropertyWrapper.preprocess(context)
 
     override fun performActionServer(context: TalismanContext) {
         val (player, stack, world) = context.getCommon()
@@ -49,8 +48,6 @@ class SpellTalismanBuildExtrusion(name: String, spirit: ModSpirit, favorCost: In
 
     @SideOnly(Side.CLIENT)
     override fun handleRendering(context: TalismanContext, lastEvent: RenderWorldLastEvent) {
-        if (!positionPropertyWrapper.shouldRender(context))
-            return
         val (player, stack) = context.getCommon()
         val state = stack.get(selectedBlock)
         val coordinates = getCoordinates(context)

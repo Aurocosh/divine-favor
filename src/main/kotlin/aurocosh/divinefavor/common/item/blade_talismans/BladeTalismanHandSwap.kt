@@ -1,7 +1,7 @@
 package aurocosh.divinefavor.common.item.blade_talismans
 
 import aurocosh.divinefavor.common.item.blade_talismans.base.ItemBladeTalisman
-import aurocosh.divinefavor.common.item.spell_talismans.base.TalismanContext
+import aurocosh.divinefavor.common.item.spell_talismans.context.TalismanContext
 import aurocosh.divinefavor.common.lib.enums.InventoryIndexes
 import aurocosh.divinefavor.common.spirit.base.ModSpirit
 import aurocosh.divinefavor.common.util.UtilPlayer

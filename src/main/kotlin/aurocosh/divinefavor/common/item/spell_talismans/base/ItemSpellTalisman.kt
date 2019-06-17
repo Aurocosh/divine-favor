@@ -1,6 +1,8 @@
 package aurocosh.divinefavor.common.item.spell_talismans.base
 
 import aurocosh.divinefavor.DivineFavor
+import aurocosh.divinefavor.common.item.spell_talismans.context.TalismanContext
+import aurocosh.divinefavor.common.item.spell_talismans.context.TalismanContextGenerator
 import aurocosh.divinefavor.common.item.talisman.ItemTalisman
 import aurocosh.divinefavor.common.spirit.base.ModSpirit
 import aurocosh.divinefavor.common.util.UtilItem.actionResult
@@ -28,32 +30,32 @@ open class ItemSpellTalisman// Talisman functions
         return path.joinToString("/")
     }
 
-    override fun raycastBlock(): Boolean {
+    override fun raycastBlock(stack: ItemStack): Boolean {
         return options.contains(SpellOptions.OnRightCastRayTraceBlock)
     }
 
-    override fun raycastTarget(): Boolean {
+    override fun raycastTarget(stack: ItemStack): Boolean {
         return options.contains(SpellOptions.OnRightCastFindTargetEntity)
     }
 
-    override fun validateCastType(context: TalismanContext): Boolean {
+    override fun preValidate(context: TalismanContext): Boolean {
         if (context.castType == CastType.UseCast && !options.contains(SpellOptions.ItemUseCast))
             return false
         if (context.castType == CastType.RightCast && !options.contains(SpellOptions.RightClickCast))
             return false
-        return true
+        return super.preValidate(context)
     }
 
     override fun onItemUse(player: EntityPlayer, world: World, pos: BlockPos, hand: EnumHand, facing: EnumFacing, hitX: Float, hitY: Float, hitZ: Float): EnumActionResult {
         val stack = player.getHeldItem(hand)
-        val context = TalismanContext.useCast(player, world, pos, hand, facing, stack)
+        val context = TalismanContextGenerator.useCast(player, world, pos, hand, facing, stack)
         val success = cast(context)
         return actionResultPass(success)
     }
 
     override fun onItemRightClick(world: World, player: EntityPlayer, hand: EnumHand): ActionResult<ItemStack> {
         val stack = player.getHeldItem(hand)
-        val context = TalismanContext.rightClick(world, player, hand, stack)
+        val context = TalismanContextGenerator.rightClick(world, player, hand, stack)
         val success = cast(context)
         return actionResult(success, stack)
     }

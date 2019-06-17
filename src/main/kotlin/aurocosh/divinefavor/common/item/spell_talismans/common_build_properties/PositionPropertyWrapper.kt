@@ -2,7 +2,7 @@ package aurocosh.divinefavor.common.item.spell_talismans.common_build_properties
 
 import aurocosh.divinefavor.DivineFavor
 import aurocosh.divinefavor.common.item.spell_talismans.base.CastType
-import aurocosh.divinefavor.common.item.spell_talismans.base.TalismanContext
+import aurocosh.divinefavor.common.item.spell_talismans.context.TalismanContext
 import aurocosh.divinefavor.common.item.talisman.TalismanPropertyHandler
 import aurocosh.divinefavor.common.lib.extensions.get
 import aurocosh.divinefavor.common.stack_properties.StackPropertyBlockPos
@@ -19,25 +19,9 @@ class PositionPropertyWrapper(propertyHandler: TalismanPropertyHandler) {
         isLockPosition.addChangeListener(this::onPositionLock)
     }
 
+    fun shouldRaycastBlock(stack: ItemStack): Boolean = !stack.get(isLockPosition)
+    fun shouldRender(context: TalismanContext): Boolean = context.raycastValid || context.stack.get(isLockPosition)
     fun getPosition(context: TalismanContext) = if (context.stack.get(isLockPosition)) context.stack.get(lockedPosition) else context.pos
-
-    fun validateCastType(context: TalismanContext): Boolean {
-        if (context.castType == CastType.UseCast)
-            return true
-        if (context.castType == CastType.RightCast)
-            return context.stack.get(isLockPosition) || context.valid
-        return false
-    }
-
-    fun shouldRender(context: TalismanContext): Boolean {
-        return context.stack.get(isLockPosition) || context.valid
-    }
-
-    fun preprocess(context: TalismanContext): Boolean {
-        if (context.stack.get(isLockPosition))
-            return true
-        return context.valid
-    }
 
     private fun onPositionLock(stack: ItemStack, value: Boolean) {
         val player = DivineFavor.proxy.clientPlayer

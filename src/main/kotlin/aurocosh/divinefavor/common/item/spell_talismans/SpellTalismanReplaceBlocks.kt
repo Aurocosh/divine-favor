@@ -4,7 +4,7 @@ import aurocosh.divinefavor.client.block_ovelay.BlockExchangeRendering
 import aurocosh.divinefavor.common.coordinate_generators.FloodFillCoordinateGenerator
 import aurocosh.divinefavor.common.item.spell_talismans.base.ItemSpellTalisman
 import aurocosh.divinefavor.common.item.spell_talismans.base.SpellOptions
-import aurocosh.divinefavor.common.item.spell_talismans.base.TalismanContext
+import aurocosh.divinefavor.common.item.spell_talismans.context.TalismanContext
 import aurocosh.divinefavor.common.item.spell_talismans.common_build_properties.BlockSelectPropertyWrapper
 import aurocosh.divinefavor.common.item.spell_talismans.common_build_properties.PositionPropertyWrapper
 import aurocosh.divinefavor.common.lib.extensions.get
@@ -27,12 +27,14 @@ class SpellTalismanReplaceBlocks(name: String, spirit: ModSpirit, favorCost: Int
 
     private val positionPropertyWrapper = PositionPropertyWrapper(propertyHandler)
 
-    private val selectPropertyHandler = BlockSelectPropertyWrapper(propertyHandler)
-    private val selectedBlock = selectPropertyHandler.selectedBlock
+    private val selectPropertyWrapper = BlockSelectPropertyWrapper(propertyHandler)
+    private val selectedBlock = selectPropertyWrapper.selectedBlock
 
     override fun getFavorCost(itemStack: ItemStack): Int = favorCost * blockCount.getValue(itemStack)
-    override fun validateCastType(context: TalismanContext): Boolean = positionPropertyWrapper.validateCastType(context)
-    override fun preprocess(context: TalismanContext): Boolean = selectPropertyHandler.preprocess(context) && positionPropertyWrapper.preprocess(context)
+    @SideOnly(Side.CLIENT)
+    override fun shouldRender(context: TalismanContext): Boolean = positionPropertyWrapper.shouldRender(context)
+    override fun raycastBlock(stack: ItemStack) = positionPropertyWrapper.shouldRaycastBlock(stack)
+    override fun preProcess(context: TalismanContext): Boolean = selectPropertyWrapper.preprocess(context)
 
     override fun performActionServer(context: TalismanContext) {
         val (player, stack, world) = context.getCommon()
@@ -51,8 +53,6 @@ class SpellTalismanReplaceBlocks(name: String, spirit: ModSpirit, favorCost: Int
 
     @SideOnly(Side.CLIENT)
     override fun handleRendering(context: TalismanContext, lastEvent: RenderWorldLastEvent) {
-        if (!positionPropertyWrapper.shouldRender(context))
-            return
         val state = context.stack.get(selectedBlock)
         val coordinates = getCoordinates(context)
         BlockExchangeRendering.render(lastEvent, context.player, state, coordinates)

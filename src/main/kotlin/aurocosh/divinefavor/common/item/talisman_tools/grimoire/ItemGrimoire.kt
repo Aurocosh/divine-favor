@@ -10,7 +10,8 @@ import aurocosh.divinefavor.common.item.talisman_tools.grimoire.capability.Grimo
 import aurocosh.divinefavor.common.item.talisman_tools.grimoire.capability.GrimoireProvider
 import aurocosh.divinefavor.common.item.talisman_tools.grimoire.capability.GrimoireStorage
 import aurocosh.divinefavor.common.item.spell_talismans.base.ItemSpellTalisman
-import aurocosh.divinefavor.common.item.spell_talismans.base.TalismanContext
+import aurocosh.divinefavor.common.item.spell_talismans.context.TalismanContext
+import aurocosh.divinefavor.common.item.spell_talismans.context.TalismanContextGenerator
 import aurocosh.divinefavor.common.lib.extensions.cap
 import aurocosh.divinefavor.common.util.UtilItem
 import net.minecraft.entity.player.EntityPlayer
@@ -36,7 +37,7 @@ class ItemGrimoire : ItemTalismanContainer("grimoire", "grimoire", ConstMainTabO
             return EnumActionResult.PASS
 
         val (talismanStack, talisman) = getTalisman<ItemSpellTalisman>(stack) ?: return EnumActionResult.PASS
-        val context = TalismanContext.useCast(player, world, pos, hand, facing, talismanStack)
+        val context = TalismanContextGenerator.useCast(player, world, pos, hand, facing, talismanStack)
         val success = talisman.cast(context)
         return UtilItem.actionResultPass(success)
     }
@@ -52,7 +53,7 @@ class ItemGrimoire : ItemTalismanContainer("grimoire", "grimoire", ConstMainTabO
             player.openGui(DivineFavor, ConstGuiIDs.GRIMOIRE, world, player.posX.toInt(), player.posY.toInt(), player.posZ.toInt())
         } else {
             val (talismanStack, talisman) = getTalisman<ItemSpellTalisman>(stack) ?: return true
-            val context = TalismanContext.rightClick(world, player, hand, talismanStack)
+            val context = TalismanContextGenerator.rightClick(world, player, hand, talismanStack)
             talisman.cast(context)
         }
         return true

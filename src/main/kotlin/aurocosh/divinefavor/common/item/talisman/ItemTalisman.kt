@@ -3,7 +3,7 @@ package aurocosh.divinefavor.common.item.talisman
 import aurocosh.divinefavor.DivineFavor
 import aurocosh.divinefavor.common.lib.interfaces.IBlockCatcher
 import aurocosh.divinefavor.common.item.base.ModItem
-import aurocosh.divinefavor.common.item.spell_talismans.base.TalismanContext
+import aurocosh.divinefavor.common.item.spell_talismans.context.TalismanContext
 import aurocosh.divinefavor.common.stack_properties.IPropertyAccessor
 import aurocosh.divinefavor.common.lib.extensions.divinePlayerData
 import aurocosh.divinefavor.common.network.message.client.spirit_data.MessageSyncFavor
@@ -34,12 +34,13 @@ abstract class ItemTalisman(val name: String, texturePath: String, val spirit: M
         return favorCost
     }
 
-    abstract fun validateCastType(context: TalismanContext): Boolean
 
     fun cast(context: TalismanContext): Boolean {
-        if (!validateCastType(context))
+        if (!context.stackValid)
             return false
-        if(!preprocess(context))
+        if (!preValidate(context))
+            return false
+        if (!preProcess(context))
             return false
         if (!validate(context))
             return false
@@ -111,19 +112,22 @@ abstract class ItemTalisman(val name: String, texturePath: String, val spirit: M
         properties.getPropertyTooltip(stack).forEach { tooltip.add(it) }
     }
 
-    protected open fun preprocess(context: TalismanContext): Boolean = context.valid
+    protected open fun preValidate(context: TalismanContext): Boolean = !raycastBlock(context.stack) || context.raycastValid
+    protected open fun preProcess(context: TalismanContext): Boolean = true
     protected open fun validate(context: TalismanContext): Boolean = true
     protected open fun isConsumeCharge(context: TalismanContext): Boolean = true
 
-    open fun raycastBlock(): Boolean = false
-    open fun raycastTarget(): Boolean = false
+    open fun raycastBlock(stack: ItemStack): Boolean = false
+    open fun raycastTarget(stack: ItemStack): Boolean = false
 
     protected open fun performActionServer(context: TalismanContext) {}
     protected open fun performActionClient(context: TalismanContext) {}
 
-    @SideOnly(Side.CLIENT)
-    open fun handleRendering(context: TalismanContext, lastEvent: RenderWorldLastEvent) {
-    }
+    override fun canCatch(): Boolean = false
 
-    override fun canCatch(): Boolean  = false
+    @SideOnly(Side.CLIENT)
+    open fun shouldRender(context: TalismanContext) = true
+
+    @SideOnly(Side.CLIENT)
+    open fun handleRendering(context: TalismanContext, lastEvent: RenderWorldLastEvent) {}
 }

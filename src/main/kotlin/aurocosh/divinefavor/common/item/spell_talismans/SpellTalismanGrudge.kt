@@ -2,7 +2,7 @@ package aurocosh.divinefavor.common.item.spell_talismans
 
 import aurocosh.divinefavor.common.item.spell_talismans.base.ItemSpellTalisman
 import aurocosh.divinefavor.common.item.spell_talismans.base.SpellOptions
-import aurocosh.divinefavor.common.item.spell_talismans.base.TalismanContext
+import aurocosh.divinefavor.common.item.spell_talismans.context.TalismanContext
 import aurocosh.divinefavor.common.lib.extensions.divinePlayerData
 import aurocosh.divinefavor.common.network.message.client.syncing.MessageSyncGrudge
 import aurocosh.divinefavor.common.potions.base.effect.ModEffectToggle

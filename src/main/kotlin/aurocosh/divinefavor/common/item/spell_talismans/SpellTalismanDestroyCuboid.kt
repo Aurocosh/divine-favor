@@ -4,7 +4,7 @@ import aurocosh.divinefavor.client.block_ovelay.BlockDestructionRendering
 import aurocosh.divinefavor.common.coordinate_generators.CuboidCoordinateGenerator
 import aurocosh.divinefavor.common.item.spell_talismans.base.ItemSpellTalisman
 import aurocosh.divinefavor.common.item.spell_talismans.base.SpellOptions
-import aurocosh.divinefavor.common.item.spell_talismans.base.TalismanContext
+import aurocosh.divinefavor.common.item.spell_talismans.context.TalismanContext
 import aurocosh.divinefavor.common.item.spell_talismans.common_build_properties.BlockSelectPropertyWrapper
 import aurocosh.divinefavor.common.item.spell_talismans.common_build_properties.PositionPropertyWrapper
 import aurocosh.divinefavor.common.lib.extensions.S
@@ -24,7 +24,6 @@ import net.minecraftforge.client.event.RenderWorldLastEvent
 import net.minecraftforge.fml.relauncher.Side
 import net.minecraftforge.fml.relauncher.SideOnly
 import java.util.*
-import kotlin.collections.HashSet
 
 class SpellTalismanDestroyCuboid(name: String, spirit: ModSpirit, favorCost: Int, options: EnumSet<SpellOptions>) : ItemSpellTalisman(name, spirit, favorCost, options) {
     private val up: StackPropertyInt = propertyHandler.registerIntProperty("up", 1, 0, 10)
@@ -44,8 +43,10 @@ class SpellTalismanDestroyCuboid(name: String, spirit: ModSpirit, favorCost: Int
         return favorCost * getBlockCount(left, right, up, down, depth)
     }
 
-    override fun validateCastType(context: TalismanContext): Boolean = positionPropertyWrapper.validateCastType(context)
-    override fun preprocess(context: TalismanContext): Boolean = selectPropertyWrapper.preprocess(context) && positionPropertyWrapper.preprocess(context)
+    @SideOnly(Side.CLIENT)
+    override fun shouldRender(context: TalismanContext): Boolean = positionPropertyWrapper.shouldRender(context)
+    override fun raycastBlock(stack: ItemStack) = positionPropertyWrapper.shouldRaycastBlock(stack)
+    override fun preProcess(context: TalismanContext): Boolean = selectPropertyWrapper.preprocess(context)
 
     override fun performActionServer(context: TalismanContext) {
         val (player, _, world) = context.getCommon()
@@ -64,10 +65,7 @@ class SpellTalismanDestroyCuboid(name: String, spirit: ModSpirit, favorCost: Int
 
     @SideOnly(Side.CLIENT)
     override fun handleRendering(context: TalismanContext, lastEvent: RenderWorldLastEvent) {
-        if (!positionPropertyWrapper.shouldRender(context))
-            return
         val (player, stack) = context.getCommon()
-        val state = stack.get(selectedBlock)
         val coordinates = getCoordinates(context)
         BlockDestructionRendering.render(lastEvent, player, coordinates)
     }

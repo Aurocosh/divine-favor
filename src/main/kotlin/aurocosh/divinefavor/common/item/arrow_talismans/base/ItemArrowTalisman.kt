@@ -4,7 +4,7 @@ import aurocosh.divinefavor.DivineFavor
 import aurocosh.divinefavor.common.entity.projectile.EntitySpellArrow
 import aurocosh.divinefavor.common.item.talisman.ItemTalisman
 import aurocosh.divinefavor.common.item.spell_talismans.base.CastType
-import aurocosh.divinefavor.common.item.spell_talismans.base.TalismanContext
+import aurocosh.divinefavor.common.item.spell_talismans.context.TalismanContext
 import aurocosh.divinefavor.common.spirit.base.ModSpirit
 import net.minecraft.entity.EntityLivingBase
 import net.minecraft.entity.player.EntityPlayer
@@ -19,8 +19,8 @@ import java.util.*
 
 open class ItemArrowTalisman(name: String, spirit: ModSpirit, favorCost: Int, val color: Color, val arrowDamage: Double, val options: EnumSet<ArrowOptions>, val arrowType: ArrowType) : ItemTalisman("arrow_talisman_$name", "arrow_talismans/$name", spirit, favorCost) {
 
-    override fun validateCastType(context: TalismanContext): Boolean {
-        return context.castType == CastType.BowCast
+    override fun preValidate(context: TalismanContext): Boolean {
+        return context.castType == CastType.BowCast && super.preValidate(context)
     }
 
     var gravityType: GravityType

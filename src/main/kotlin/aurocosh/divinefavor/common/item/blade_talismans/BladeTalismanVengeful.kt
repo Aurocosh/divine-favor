@@ -2,7 +2,7 @@ package aurocosh.divinefavor.common.item.blade_talismans
 
 import aurocosh.divinefavor.DivineFavor
 import aurocosh.divinefavor.common.item.blade_talismans.base.ItemBladeTalisman
-import aurocosh.divinefavor.common.item.spell_talismans.base.TalismanContext
+import aurocosh.divinefavor.common.item.spell_talismans.context.TalismanContext
 import aurocosh.divinefavor.common.lib.extensions.divinePlayerData
 import aurocosh.divinefavor.common.spirit.base.ModSpirit
 import net.minecraft.entity.player.EntityPlayer

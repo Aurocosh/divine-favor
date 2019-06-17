@@ -1,7 +1,8 @@
 package aurocosh.divinefavor.client.core.handler.talisman
 
 import aurocosh.divinefavor.DivineFavor
-import aurocosh.divinefavor.common.item.spell_talismans.base.TalismanContext
+import aurocosh.divinefavor.common.item.spell_talismans.context.TalismanContext
+import aurocosh.divinefavor.common.item.spell_talismans.context.TalismanContextGenerator
 import aurocosh.divinefavor.common.item.talisman.ItemTalisman
 import aurocosh.divinefavor.common.util.UtilPlayer
 import net.minecraft.client.Minecraft
@@ -40,7 +41,8 @@ object HUDHandler {
         val stack = player.getHeldItem(hand)
         val talisman = stack.item as ItemTalisman
 
-        val context = TalismanContext.generic(player, hand, stack)
-        talisman.handleRendering(context, lastEvent)
+        val context = TalismanContextGenerator.generic(player, hand, stack)
+        if (talisman.shouldRender(context))
+            talisman.handleRendering(context, lastEvent)
     }
 }

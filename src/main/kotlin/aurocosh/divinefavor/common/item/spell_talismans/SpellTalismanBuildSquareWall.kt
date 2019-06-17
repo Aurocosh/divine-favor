@@ -4,9 +4,8 @@ import aurocosh.divinefavor.client.block_ovelay.BlockConstructionRendering
 import aurocosh.divinefavor.common.coordinate_generators.WallCoordinateGenerator
 import aurocosh.divinefavor.common.item.spell_talismans.base.ItemSpellTalisman
 import aurocosh.divinefavor.common.item.spell_talismans.base.SpellOptions
-import aurocosh.divinefavor.common.item.spell_talismans.base.TalismanContext
+import aurocosh.divinefavor.common.item.spell_talismans.context.TalismanContext
 import aurocosh.divinefavor.common.item.spell_talismans.common_build_properties.BlockSelectPropertyWrapper
-import aurocosh.divinefavor.common.item.spell_talismans.common_build_properties.PositionPropertyWrapper
 import aurocosh.divinefavor.common.item.spell_talismans.common_build_properties.RotationPropertyWrapper
 import aurocosh.divinefavor.common.item.spell_talismans.common_build_properties.ShiftedPositionPropertyWrapper
 import aurocosh.divinefavor.common.lib.extensions.get
@@ -37,8 +36,8 @@ class SpellTalismanBuildSquareWall(name: String, spirit: ModSpirit, favorCost: I
         return favorCost * getBlockCount(radius)
     }
 
-    override fun validateCastType(context: TalismanContext): Boolean = positionPropertyWrapper.validateCastType(context)
-    override fun preprocess(context: TalismanContext): Boolean = selectPropertyWrapper.preprocess(context) && positionPropertyWrapper.preprocess(context)
+    override fun raycastBlock(stack: ItemStack) = positionPropertyWrapper.shouldRaycastBlock(stack)
+    override fun preProcess(context: TalismanContext): Boolean = selectPropertyWrapper.preprocess(context)
 
     override fun performActionServer(context: TalismanContext) {
         val (player, stack, world) = context.getCommon()
@@ -57,8 +56,6 @@ class SpellTalismanBuildSquareWall(name: String, spirit: ModSpirit, favorCost: I
 
     @SideOnly(Side.CLIENT)
     override fun handleRendering(context: TalismanContext, lastEvent: RenderWorldLastEvent) {
-        if (!positionPropertyWrapper.shouldRender(context))
-            return
         val (player, stack) = context.getCommon()
         val state = stack.get(selectedBlock)
         val coordinates = getCoordinates(context)
