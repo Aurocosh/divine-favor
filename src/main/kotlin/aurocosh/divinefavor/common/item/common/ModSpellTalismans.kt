@@ -123,6 +123,7 @@ object ModSpellTalismans {
     lateinit var wooden_punch: ItemSpellTalisman
 
     // New fields
+    lateinit var replace_blocks: ItemSpellTalisman
     lateinit var build_wall_relative: ItemSpellTalisman
     lateinit var build_horizontal_line_relative: ItemSpellTalisman
     lateinit var build_hollow_sphere_relative: ItemSpellTalisman
@@ -269,6 +270,7 @@ object ModSpellTalismans {
         starvation = SpellTalismanModPotion("starvation", ModSpirits.timber, ConfigSpell.starvation.favorCost, ModPotions.starvation, ConfigSpell.starvation.duration)
 
         // New instances
+        replace_blocks = SpellTalismanReplaceBlocks("replace_blocks", ModSpirits.romol, ConfigSpell.replaceBlocks.favorCost, SpellOptions.TRACE_ONLY_CAST)
         build_wall_relative = SpellTalismanBuildWallRelative("build_wall_relative", ModSpirits.romol, ConfigSpell.buildWallRelative.favorCost, SpellOptions.RIGHT_CAST)
         build_horizontal_line_relative = SpellTalismanBuildHorizontalLineRelative("build_horizontal_line_relative", ModSpirits.romol, ConfigSpell.buildHorizontalLineRelative.favorCost, SpellOptions.RIGHT_CAST)
         build_hollow_sphere_relative = SpellTalismanBuildHollowSphereRelative("build_hollow_sphere_relative", ModSpirits.romol, ConfigSpell.buildHollowSphereRelative.favorCost, SpellOptions.RIGHT_CAST)
