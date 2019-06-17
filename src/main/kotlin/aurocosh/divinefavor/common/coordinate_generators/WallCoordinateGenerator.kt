@@ -6,7 +6,7 @@ import aurocosh.divinefavor.common.util.UtilPlayer
 import net.minecraft.util.math.BlockPos
 
 class WallCoordinateGenerator : CachedCoordinateGenerator() {
-    fun getCoordinates(directions: UtilPlayer.RelativeDirections, blockPos: BlockPos, up: Int, down: Int, left: Int, right: Int, count: Int): List<BlockPos> {
+    fun getCoordinates(directions: UtilPlayer.RelativeDirections, blockPos: BlockPos, up: Int, down: Int, left: Int, right: Int): List<BlockPos> {
         if (isCached(directions, blockPos, up, down, left, right))
             return cachedCoordinates
 
@@ -23,7 +23,7 @@ class WallCoordinateGenerator : CachedCoordinateGenerator() {
         val leftSide = generateSequence(center.map(leftVec::add)) { it.map(leftVec::add) }.take(right).flatten()
         val rightSide = generateSequence(center.map(rightVec::add)) { it.map(rightVec::add) }.take(left).flatten()
 
-        cachedCoordinates = (center.S + leftSide + rightSide).take(count).toList()
+        cachedCoordinates = (center.S + leftSide + rightSide).toList()
         return cachedCoordinates
     }
 }

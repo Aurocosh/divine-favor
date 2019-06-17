@@ -10,19 +10,22 @@ import aurocosh.divinefavor.common.util.UtilEntity
 import net.minecraft.item.ItemStack
 import net.minecraft.util.math.BlockPos
 
-class PositionPropertyWrapper(propertyHandler: StackPropertyHandler) {
+open class PositionPropertyWrapper(propertyHandler: StackPropertyHandler) {
     val isLockPosition: StackPropertyBool = propertyHandler.registerBoolProperty("lock_position", false)
     val lockedPosition: StackPropertyBlockPos = propertyHandler.registerBlockPosProperty("locked_position", BlockPos.ORIGIN)
 
     init {
-        isLockPosition.addChangeListener(this::onPositionLock)
+        isLockPosition.addChangeListener { stack, value -> this.onPositionLock(stack, value) }
     }
 
-    fun shouldRaycastBlock(stack: ItemStack): Boolean = !stack.get(isLockPosition)
-    fun shouldRender(context: TalismanContext): Boolean = context.raycastValid || context.stack.get(isLockPosition)
-    fun getPosition(context: TalismanContext) = if (context.stack.get(isLockPosition)) context.stack.get(lockedPosition) else context.pos
+    open fun shouldRaycastBlock(stack: ItemStack): Boolean = !stack.get(isLockPosition)
+    open fun shouldRender(context: TalismanContext): Boolean = context.raycastValid || context.stack.get(isLockPosition)
 
-    private fun onPositionLock(stack: ItemStack, value: Boolean) {
+    open fun getPosition(context: TalismanContext): BlockPos {
+        return if (context.stack.get(isLockPosition)) context.stack.get(lockedPosition) else context.pos
+    }
+
+    open fun onPositionLock(stack: ItemStack, value: Boolean) {
         val player = DivineFavor.proxy.clientPlayer
         val traceResult = UtilEntity.getBlockPlayerLookingAt(player) ?: return
         lockedPosition.setValue(stack, traceResult.blockPos, true)

@@ -13,17 +13,8 @@ import aurocosh.divinefavor.common.util.UtilEntity
 import net.minecraft.item.ItemStack
 import net.minecraft.util.math.BlockPos
 
-class ShiftedPositionPropertyWrapper(propertyHandler: StackPropertyHandler) {
-    val isLockPosition: StackPropertyBool = propertyHandler.registerBoolProperty("lock_position", false)
-    val lockedPosition: StackPropertyBlockPos = propertyHandler.registerBlockPosProperty("locked_position", BlockPos.ORIGIN)
+class ShiftedPositionPropertyWrapper(propertyHandler: StackPropertyHandler) : PositionPropertyWrapper(propertyHandler) {
     val shift: StackPropertyInt = propertyHandler.registerIntProperty("shift", 1, -8, 8)
-
-    init {
-        isLockPosition.addChangeListener(this::onPositionLock)
-    }
-
-    fun shouldRaycastBlock(stack: ItemStack): Boolean = !stack.get(isLockPosition)
-    fun shouldRender(context: TalismanContext): Boolean = context.raycastValid || context.stack.get(isLockPosition)
 
     fun getPosition(context: TalismanContext, current: BlockPos): BlockPos {
         val blockPos = if (context.stack.get(isLockPosition)) context.stack.get(lockedPosition) else current
@@ -32,7 +23,7 @@ class ShiftedPositionPropertyWrapper(propertyHandler: StackPropertyHandler) {
         return blockPos.add(shiftVec)
     }
 
-    private fun onPositionLock(stack: ItemStack, value: Boolean) {
+    override fun onPositionLock(stack: ItemStack, value: Boolean) {
         val player = DivineFavor.proxy.clientPlayer
         val traceResult = UtilEntity.getBlockPlayerLookingAt(player) ?: return
         lockedPosition.setValue(stack, traceResult.blockPos, true)

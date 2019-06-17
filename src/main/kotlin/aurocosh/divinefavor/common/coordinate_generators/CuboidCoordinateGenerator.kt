@@ -11,7 +11,7 @@ class CuboidCoordinateGenerator : CachedCoordinateGenerator() {
         if (isCached(directions, blockPos, up, down, left, rigth, depth, count))
             return cachedCoordinates
 
-        val surface = wallCoordinateGenerator.getCoordinates(directions, blockPos, up, down, left, rigth, count)
+        val surface = wallCoordinateGenerator.getCoordinates(directions, blockPos, up, down, left, rigth)
         val forwardVec = directions.forward.opposite.directionVec.toBlockPos()
         cachedCoordinates = generateSequence(surface) { it.map(forwardVec::add) }.take(depth).flatten().toList()
         return cachedCoordinates

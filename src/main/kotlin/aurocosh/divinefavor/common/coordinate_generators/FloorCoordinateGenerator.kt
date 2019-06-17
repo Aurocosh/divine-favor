@@ -2,12 +2,11 @@ package aurocosh.divinefavor.common.coordinate_generators
 
 import aurocosh.divinefavor.common.lib.extensions.S
 import aurocosh.divinefavor.common.lib.extensions.toBlockPos
-import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.util.EnumFacing
 import net.minecraft.util.math.BlockPos
 
 class FloorCoordinateGenerator : CachedCoordinateGenerator() {
-    fun getCoordinates(playerFacing: EnumFacing, blockPos: BlockPos, front: Int, back: Int, left: Int, rigth: Int, count: Int): List<BlockPos> {
+    fun getCoordinates(playerFacing: EnumFacing, blockPos: BlockPos, front: Int, back: Int, left: Int, rigth: Int): List<BlockPos> {
         if (isCached(playerFacing, blockPos, front, back, left, rigth))
             return cachedCoordinates
 
@@ -25,7 +24,7 @@ class FloorCoordinateGenerator : CachedCoordinateGenerator() {
         val firstSide = generateSequence(centerRow.map(firstSideVec::add)) { it.map(firstSideVec::add) }.take(rigth).flatten()
         val secondSide = generateSequence(centerRow.map(secondSideVec::add)) { it.map(secondSideVec::add) }.take(left).flatten()
 
-        cachedCoordinates = (centerRow.S + firstSide + secondSide).take(count).toList()
+        cachedCoordinates = (centerRow.S + firstSide + secondSide).toList()
         return cachedCoordinates
     }
 }
