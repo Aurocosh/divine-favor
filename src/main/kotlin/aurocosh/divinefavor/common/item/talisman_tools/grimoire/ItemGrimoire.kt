@@ -32,9 +32,6 @@ class ItemGrimoire : ItemTalismanContainer("grimoire", "grimoire", ConstMainTabO
 
     override fun onItemUse(player: EntityPlayer, world: World, pos: BlockPos, hand: EnumHand, facing: EnumFacing, hitX: Float, hitY: Float, hitZ: Float): EnumActionResult {
         val stack = player.getHeldItem(hand)
-        if (getModeOrTransform(stack, player) != TalismanContainerMode.NORMAL)
-            return EnumActionResult.PASS
-
         val (talismanStack, talisman) = getTalisman<ItemSpellTalisman>(stack) ?: return EnumActionResult.PASS
         val context = TalismanContextGenerator.useCast(player, world, pos, hand, facing, talismanStack)
         val success = talisman.cast(context)
@@ -43,6 +40,8 @@ class ItemGrimoire : ItemTalismanContainer("grimoire", "grimoire", ConstMainTabO
 
     override fun onItemRightClick(world: World, player: EntityPlayer, hand: EnumHand): ActionResult<ItemStack> {
         val stack = player.getHeldItem(hand)
+        if (getModeOrTransform(stack, player) != TalismanContainerMode.NORMAL)
+            return UtilItem.actionResult(false, stack)
         val success = performRightClickAction(world, player, hand, stack)
         return UtilItem.actionResult(success, stack)
     }
