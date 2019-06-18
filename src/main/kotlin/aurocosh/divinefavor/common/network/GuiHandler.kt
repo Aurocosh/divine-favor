@@ -23,14 +23,17 @@ import aurocosh.divinefavor.common.item.contract_binder.ContractBinderContainer
 import aurocosh.divinefavor.common.item.ritual_pouch.RitualBagContainer
 import aurocosh.divinefavor.common.item.talisman_tools.TalismanAdapter
 import aurocosh.divinefavor.common.item.talisman_tools.grimoire.GrimoireContainer
-import aurocosh.divinefavor.common.item.talisman_tools.spell_blade.SpellBladeContainer
 import aurocosh.divinefavor.common.item.talisman_tools.grimoire.ItemGrimoire
 import aurocosh.divinefavor.common.item.talisman_tools.grimoire.capability.GrimoireDataHandler.CAPABILITY_GRIMOIRE
-import aurocosh.divinefavor.common.item.talisman_tools.spell_blade.capability.SpellBladeDataHandler.CAPABILITY_SPELL_BLADE
 import aurocosh.divinefavor.common.item.talisman_tools.spell_blade.ItemSpellBlade
+import aurocosh.divinefavor.common.item.talisman_tools.spell_blade.SpellBladeContainer
+import aurocosh.divinefavor.common.item.talisman_tools.spell_blade.capability.SpellBladeDataHandler.CAPABILITY_SPELL_BLADE
 import aurocosh.divinefavor.common.item.talisman_tools.spell_bow.ItemSpellBow
 import aurocosh.divinefavor.common.item.talisman_tools.spell_bow.SpellBowContainer
 import aurocosh.divinefavor.common.item.talisman_tools.spell_bow.capability.SpellBowDataHandler.CAPABILITY_SPELL_BOW
+import aurocosh.divinefavor.common.item.talisman_tools.spell_pick.ItemSpellPick
+import aurocosh.divinefavor.common.item.talisman_tools.spell_pick.SpellPickContainer
+import aurocosh.divinefavor.common.item.talisman_tools.spell_pick.capability.SpellPickDataHandler.CAPABILITY_SPELL_PICK
 import aurocosh.divinefavor.common.lib.extensions.cap
 import aurocosh.divinefavor.common.util.UtilPlayer
 import net.minecraft.entity.player.EntityPlayer
@@ -65,6 +68,12 @@ class GuiHandler : IGuiHandler {
                 val stack = player.getHeldItem(hand)
                 val handler = stack.cap(CAPABILITY_SPELL_BLADE)
                 return SpellBladeContainer(player, handler, hand)
+            }
+            ConstGuiIDs.SPELL_PICK -> {
+                val hand = UtilPlayer.getHand { h -> player.getHeldItem(h).item is ItemSpellPick } ?: return null
+                val stack = player.getHeldItem(hand)
+                val handler = stack.cap(CAPABILITY_SPELL_PICK)
+                return SpellPickContainer(player, handler, hand)
             }
             ConstGuiIDs.SPELL_BOW -> {
                 val hand = UtilPlayer.getHand { h -> player.getHeldItem(h).item is ItemSpellBow } ?: return null
@@ -101,6 +110,11 @@ class GuiHandler : IGuiHandler {
                 val hand = UtilPlayer.getHand { h -> player.getHeldItem(h).item is ItemSpellBlade } ?: return null
                 val stack = player.getHeldItem(hand)
                 return GuiSpellBlade(player, stack, hand)
+            }
+            ConstGuiIDs.SPELL_PICK -> {
+                val hand = UtilPlayer.getHand { h -> player.getHeldItem(h).item is ItemSpellPick } ?: return null
+                val stack = player.getHeldItem(hand)
+                return GuiSpellPick(player, stack, hand)
             }
             ConstGuiIDs.SPELL_BOW -> {
                 val hand = UtilPlayer.getHand { h -> player.getHeldItem(h).item is ItemSpellBow } ?: return null

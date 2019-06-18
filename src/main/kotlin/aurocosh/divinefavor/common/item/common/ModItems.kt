@@ -48,6 +48,9 @@ object ModItems {
     lateinit var spell_blade_green: ModItem
     lateinit var spell_blade_red: ModItem
 
+    lateinit var spell_pick_blue: ModItem
+    lateinit var spell_pick_orange: ModItem
+
     val markedGlasses: MutableList<ItemMarkedGlass> = ArrayList()
 
     // New fields
@@ -73,6 +76,9 @@ object ModItems {
 
         spell_blade_green = ItemSpellBlade("spell_blade_green", "spell_blade_green/model", ConstMainTabOrder.SWORDS, ConfigItem.spellBladeGreen, Item.ToolMaterial.IRON)
         spell_blade_red = ItemSpellBlade("spell_blade_red", "spell_blade_red/model", ConstMainTabOrder.SWORDS, ConfigItem.spellBladeRed, Item.ToolMaterial.IRON)
+
+        spell_pick_blue = ItemSpellBlade("spell_pick_blue", "spell_pick_blue/model", ConstMainTabOrder.PICKS, ConfigItem.spellBladeGreen, Item.ToolMaterial.IRON)
+        spell_pick_orange = ItemSpellBlade("spell_pick_orange", "spell_pick_orange/model", ConstMainTabOrder.PICKS, ConfigItem.spellBladeRed, Item.ToolMaterial.IRON)
 
         for (spirit in ModMappers.spirits.values)
             markedGlasses.add(ItemMarkedGlass(spirit, ConstGemTabOrder.MARKED_GLASS))

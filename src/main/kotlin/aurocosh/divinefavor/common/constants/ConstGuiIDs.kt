@@ -7,6 +7,7 @@ object ConstGuiIDs {
     val CONTRACT_BINDER = nextId++
     val GRIMOIRE = nextId++
     val SPELL_BLADE = nextId++
+    val SPELL_PICK = nextId++
     val IRON_MEDIUM_NO_STONE = nextId++
     val IRON_MEDIUM_WITH_STONE = nextId++
     val RITUAL_POUCH = nextId++

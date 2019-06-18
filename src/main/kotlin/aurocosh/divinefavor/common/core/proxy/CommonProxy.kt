@@ -12,6 +12,7 @@ import aurocosh.divinefavor.common.item.contract.ModContracts
 import aurocosh.divinefavor.common.item.talisman_tools.grimoire.capability.GrimoireDataHandler
 import aurocosh.divinefavor.common.item.talisman_tools.spell_blade.capability.SpellBladeDataHandler
 import aurocosh.divinefavor.common.item.talisman_tools.spell_bow.capability.SpellBowDataHandler
+import aurocosh.divinefavor.common.item.talisman_tools.spell_pick.capability.SpellPickDataHandler
 import aurocosh.divinefavor.common.muliblock.common.ModMultiBlocks
 import aurocosh.divinefavor.common.network.GuiHandler
 import aurocosh.divinefavor.common.network.NetworkHandler
@@ -75,6 +76,7 @@ open class CommonProxy {
         WorldDataDataHandler.register()
 
         SpellBladeDataHandler.register()
+        SpellPickDataHandler.register()
         SpellBowDataHandler.register()
         GrimoireDataHandler.register()
 

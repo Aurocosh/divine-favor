@@ -1,13 +1,12 @@
 package aurocosh.divinefavor.common.item.talisman_tools
 
-import aurocosh.divinefavor.common.item.talisman_tools.spell_blade.capability.ISpellBladeHandler
 import net.minecraft.item.ItemStack
 import net.minecraft.util.math.MathHelper
 import net.minecraftforge.items.ItemStackHandler
 import java.util.*
 
 // The default implementation of the capability. Holds all the logic.
-abstract class DefaultTalismanHandler(slotCount: Int) : ISpellBladeHandler {
+abstract class DefaultTalismanHandler(slotCount: Int) : ITalismanTool {
     private val maxIndex = slotCount - 1
     private val stacksDisplayed = 3
 

@@ -47,6 +47,11 @@ object TalismanContextGenerator {
         return generate(player, target, player.world, player.position, player.positionVector, EnumHand.MAIN_HAND, EnumFacing.UP, CastType.BladeCast, stack)
     }
 
+    fun pick(stack: ItemStack, player: EntityPlayer, pos: BlockPos): TalismanContext {
+        val facing = EnumFacing.getDirectionFromEntityLiving(pos, player)
+        return generate(player, null, player.world, pos, pos.toVec3d(), EnumHand.MAIN_HAND, facing, CastType.PickCast, stack)
+    }
+
     fun useCast(player: EntityPlayer, world: World, pos: BlockPos, hand: EnumHand, facing: EnumFacing, stack: ItemStack): TalismanContext {
         return generate(player, null, world, pos, pos.toVec3d(), hand, facing, CastType.UseCast, stack)
     }

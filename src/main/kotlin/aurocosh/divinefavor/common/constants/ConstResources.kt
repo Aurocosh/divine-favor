@@ -29,6 +29,7 @@ object ConstResources {
     const val GUI_PRISMATIC_EYES_BLUR = PREFIX_GUI + "prismatic_eyes_blur.png"
 
     const val GUI_SPELL_BLADE = PREFIX_GUI + "talisman_tools/spell_blade.png"
+    const val GUI_SPELL_PICK = PREFIX_GUI + "talisman_tools/spell_pick.png"
     const val GUI_GRIMOIRE = PREFIX_GUI + "talisman_tools/grimoire.png"
     const val GUI_GRIMOIRE_SELECTOR = PREFIX_GUI + "talisman_tools/selector.png"
     const val GUI_GRIMOIRE_MARKER = PREFIX_GUI + "talisman_tools/marker.png"

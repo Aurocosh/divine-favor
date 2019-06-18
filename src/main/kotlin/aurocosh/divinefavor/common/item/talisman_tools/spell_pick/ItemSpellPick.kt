@@ -1,4 +1,4 @@
-package aurocosh.divinefavor.common.item.talisman_tools.spell_blade
+package aurocosh.divinefavor.common.item.talisman_tools.spell_pick
 
 import aurocosh.divinefavor.DivineFavor
 import aurocosh.divinefavor.common.config.entries.items.SpellBlade
@@ -8,9 +8,10 @@ import aurocosh.divinefavor.common.item.spell_talismans.base.ItemSpellTalisman
 import aurocosh.divinefavor.common.item.spell_talismans.context.TalismanContextGenerator
 import aurocosh.divinefavor.common.item.talisman_tools.ItemTalismanContainer
 import aurocosh.divinefavor.common.item.talisman_tools.TalismanContainerMode
-import aurocosh.divinefavor.common.item.talisman_tools.spell_blade.capability.SpellBladeStorage
-import aurocosh.divinefavor.common.item.talisman_tools.spell_blade.capability.SpellBladeDataHandler.CAPABILITY_SPELL_BLADE
-import aurocosh.divinefavor.common.item.talisman_tools.spell_blade.capability.SpellBladeProvider
+import aurocosh.divinefavor.common.item.talisman_tools.spell_blade.ItemSpellBlade
+import aurocosh.divinefavor.common.item.talisman_tools.spell_pick.capability.SpellPickDataHandler.CAPABILITY_SPELL_PICK
+import aurocosh.divinefavor.common.item.talisman_tools.spell_pick.capability.SpellPickProvider
+import aurocosh.divinefavor.common.item.talisman_tools.spell_pick.capability.SpellPickStorage
 import aurocosh.divinefavor.common.lib.extensions.cap
 import aurocosh.divinefavor.common.lib.extensions.compound
 import aurocosh.divinefavor.common.util.UtilItem.actionResult
@@ -34,7 +35,7 @@ import net.minecraftforge.fml.relauncher.Side
 import net.minecraftforge.fml.relauncher.SideOnly
 import net.minecraftforge.oredict.OreDictionary
 
-open class ItemSpellBlade(name: String, texturePath: String, orderIndex: Int = 0, val config: SpellBlade, val material: ToolMaterial) : ItemTalismanContainer(name, texturePath, orderIndex) {
+open class ItemSpellPick(name: String, texturePath: String, orderIndex: Int = 0, val config: SpellBlade, val material: ToolMaterial) : ItemTalismanContainer(name, texturePath, orderIndex) {
 
     init {
         creativeTab = DivineFavor.TAB_MAIN
@@ -43,6 +44,19 @@ open class ItemSpellBlade(name: String, texturePath: String, orderIndex: Int = 0
         addPropertyOverride(ResourceLocation("book_mode")) { stack, _, _ ->
             (if (stack.compound.getBoolean(TAG_IS_IN_BOOK_MODE)) 1 else 0).toFloat()
         }
+    }
+
+    override fun onBlockStartBreak(itemstack: ItemStack, pos: BlockPos, player: EntityPlayer): Boolean {
+        val success = performBreakCast(itemstack, pos, player);
+        if (success)
+            return super.onBlockStartBreak(itemstack, pos, player)
+        return false
+    }
+
+    private fun performBreakCast(stack: ItemStack, pos: BlockPos, player: EntityPlayer): Boolean {
+        val (talismanStack, talisman) = getTalisman<ItemBladeTalisman>(stack) ?: return true
+        val context = TalismanContextGenerator.pick(talismanStack, player, pos)
+        return talisman.cast(context)
     }
 
     override fun hitEntity(stack: ItemStack, target: EntityLivingBase, attacker: EntityLivingBase): Boolean {
@@ -134,7 +148,7 @@ open class ItemSpellBlade(name: String, texturePath: String, orderIndex: Int = 0
     }
 
     override fun initCapabilities(item: ItemStack, nbt: NBTTagCompound?): ICapabilityProvider? {
-        return if (item.item is ItemSpellBlade) SpellBladeProvider() else null
+        return if (item.item is ItemSpellBlade) SpellPickProvider() else null
     }
 
     override fun getShareTag(): Boolean {
@@ -146,8 +160,8 @@ open class ItemSpellBlade(name: String, texturePath: String, orderIndex: Int = 0
         if (tag == null)
             tag = NBTTagCompound()
 
-        val grimoireHandler = stack.cap(CAPABILITY_SPELL_BLADE)
-        val tagShare = SpellBladeStorage.getNbtBase(grimoireHandler)
+        val grimoireHandler = stack.cap(CAPABILITY_SPELL_PICK)
+        val tagShare = SpellPickStorage.getNbtBase(grimoireHandler)
         tag.setTag(TAG_SHARE, tagShare)
         return tag
     }
@@ -157,9 +171,9 @@ open class ItemSpellBlade(name: String, texturePath: String, orderIndex: Int = 0
         if (nbt == null)
             return
 
-        val grimoireHandler = stack.cap(CAPABILITY_SPELL_BLADE)
+        val grimoireHandler = stack.cap(CAPABILITY_SPELL_PICK)
         val tagShare = nbt.getCompoundTag(TAG_SHARE)
-        SpellBladeStorage.readNbtBase(grimoireHandler, tagShare)
+        SpellPickStorage.readNbtBase(grimoireHandler, tagShare)
     }
 
     companion object {
