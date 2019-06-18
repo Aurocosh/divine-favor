@@ -22,7 +22,7 @@ abstract class MessageSyncTalismanProperty<T> : DivineServerMessage {
     }
 
     override fun handleSafe(serverPlayer: EntityPlayerMP) {
-        val stack = UtilPlayer.getItemInHand(serverPlayer) { it is ItemTalismanContainer }
+        val stack = UtilPlayer.getItemInHand(serverPlayer) { it is ITalismanContainer }
         if(stack.isEmpty)
             return
 
