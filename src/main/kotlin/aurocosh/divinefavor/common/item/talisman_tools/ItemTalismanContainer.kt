@@ -1,6 +1,7 @@
 package aurocosh.divinefavor.common.item.talisman_tools
 
 import aurocosh.divinefavor.common.item.base.ModItem
+import aurocosh.divinefavor.common.item.talisman.ITalismanContainer
 import aurocosh.divinefavor.common.item.talisman.ItemTalisman
 import aurocosh.divinefavor.common.lib.extensions.compound
 import net.minecraft.entity.player.EntityPlayer
@@ -8,7 +9,7 @@ import net.minecraft.item.ItemStack
 
 data class TalismanStackWrapper<T : ItemTalisman>(val stack: ItemStack, val talisman: T)
 
-open class ItemTalismanContainer(name: String, texturePath: String, orderIndex: Int = 0) : ModItem(name, texturePath, orderIndex) {
+open class ItemTalismanContainer(name: String, texturePath: String, orderIndex: Int = 0) : ModItem(name, texturePath, orderIndex), ITalismanContainer {
     init {
         setMaxStackSize(1)
     }
@@ -35,6 +36,10 @@ open class ItemTalismanContainer(name: String, texturePath: String, orderIndex: 
 
     override fun getShareTag(): Boolean {
         return true
+    }
+
+    override fun getTalismanStack(stack: ItemStack): ItemStack {
+        return TalismanAdapter.getTalismanContainer(stack)?.getSelectedStack() ?: ItemStack.EMPTY
     }
 
     companion object {

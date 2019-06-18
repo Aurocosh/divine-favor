@@ -1,6 +1,6 @@
 package aurocosh.divinefavor.client.core.handler.talisman_container
 
-import aurocosh.divinefavor.common.item.talisman_tools.ITalismanContainer
+import aurocosh.divinefavor.common.item.talisman_tools.ITalismanTool
 import net.minecraft.client.Minecraft
 import net.minecraft.client.renderer.GlStateManager
 import net.minecraft.item.ItemStack
@@ -11,15 +11,15 @@ import java.util.*
 
 class TalismanScrollHUD {
     private var state = 0
-    private var handler: ITalismanContainer? = null
+    private var handler: ITalismanTool? = null
 
     private var selectedStack = ItemStack.EMPTY
     private var nextStacks: List<ItemStack>? = null
     private var previousStacks: MutableList<ItemStack>? = null
 
     @SideOnly(Side.CLIENT)
-    fun draw(mc: Minecraft, width: Int, height: Int, talismanContainer: ITalismanContainer) {
-        refreshItemStacks(talismanContainer)
+    fun draw(mc: Minecraft, width: Int, height: Int, talismanTool: ITalismanTool) {
+        refreshItemStacks(talismanTool)
         if (selectedStack.isEmpty)
             return
         val nextStacks = nextStacks ?: return
@@ -45,19 +45,19 @@ class TalismanScrollHUD {
         GlStateManager.disableBlend()
     }
 
-    private fun refreshItemStacks(talismanContainer: ITalismanContainer) {
-        if (handler === talismanContainer && state == talismanContainer.getState())
+    private fun refreshItemStacks(talismanTool: ITalismanTool) {
+        if (handler === talismanTool && state == talismanTool.getState())
             return
 
-        handler = talismanContainer
-        state = talismanContainer.getState()
+        handler = talismanTool
+        state = talismanTool.getState()
 
-        val next = talismanContainer.getNextStacks()
-        val previous = ArrayList(talismanContainer.getPreviousStacks())
+        val next = talismanTool.getNextStacks()
+        val previous = ArrayList(talismanTool.getPreviousStacks())
         for (stack in next)
             previous.remove(stack)
 
-        selectedStack = talismanContainer.getSelectedStack()
+        selectedStack = talismanTool.getSelectedStack()
         previousStacks = previous
         nextStacks = next
     }

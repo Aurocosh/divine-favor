@@ -19,7 +19,7 @@ import net.minecraftforge.client.event.RenderWorldLastEvent
 import net.minecraftforge.fml.relauncher.Side
 import net.minecraftforge.fml.relauncher.SideOnly
 
-abstract class ItemTalisman(val name: String, texturePath: String, val spirit: ModSpirit, protected val favorCost: Int) : ModItem(name, texturePath) {
+abstract class ItemTalisman(val name: String, texturePath: String, val spirit: ModSpirit, protected val favorCost: Int) : ModItem(name, texturePath), ITalismanContainer {
     protected val propertyHandler: StackPropertyHandler = TalismanPropertyHandler("talisman $name properties")
     val properties: IPropertyAccessor = propertyHandler
 
@@ -124,5 +124,9 @@ abstract class ItemTalisman(val name: String, texturePath: String, val spirit: M
 
     @SideOnly(Side.CLIENT)
     open fun handleRendering(context: TalismanContext, lastEvent: RenderWorldLastEvent) {
+    }
+
+    override fun getTalismanStack(stack: ItemStack): ItemStack {
+        return if (stack.item is ItemTalisman) stack else ItemStack.EMPTY
     }
 }

@@ -20,7 +20,7 @@ object TalismanAdapter {
         return item is ItemGrimoire || item is ItemSpellBow || item is ItemSpellBlade
     }
 
-    fun getTalismanContainer(stack: ItemStack): ITalismanContainer? {
+    fun getTalismanContainer(stack: ItemStack): ITalismanTool? {
         return stack.capNull(CAPABILITY_GRIMOIRE)
                 ?: stack.capNull(CAPABILITY_SPELL_BOW)
                 ?: stack.capNull(CAPABILITY_SPELL_BLADE)

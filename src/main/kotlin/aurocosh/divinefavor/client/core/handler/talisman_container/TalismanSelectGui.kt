@@ -4,7 +4,7 @@ import aurocosh.divinefavor.DivineFavor
 import aurocosh.divinefavor.client.core.handler.KeyBindings
 import aurocosh.divinefavor.client.core.handler.talisman.TalismanHUD
 import aurocosh.divinefavor.common.constants.ConstResources
-import aurocosh.divinefavor.common.item.talisman_tools.ITalismanContainer
+import aurocosh.divinefavor.common.item.talisman_tools.ITalismanTool
 import aurocosh.divinefavor.common.item.talisman_tools.TalismanAdapter
 import aurocosh.divinefavor.common.lib.math.Vector2i
 import aurocosh.divinefavor.common.util.UtilGui
@@ -30,7 +30,7 @@ class TalismanSelectGui : GuiScreen() {
     private var hand: EnumHand = EnumHand.MAIN_HAND
     private var state: Int = 0
     private var selectedIndex: Int = -1
-    private var handler: ITalismanContainer? = null
+    private var handler: ITalismanTool? = null
 
     private var allStacks: List<ItemStack>? = null
     private var slotPositions: List<Vector2i>? = null
@@ -64,7 +64,7 @@ class TalismanSelectGui : GuiScreen() {
         }
     }
 
-    private fun renderSpellMassSelector(mx: Int, my: Int, talismanContainer: ITalismanContainer) {
+    private fun renderSpellMassSelector(mx: Int, my: Int, talismanTool: ITalismanTool) {
         val slotPositions = slotPositions ?: return
         val allStacks = allStacks ?: return
 
@@ -87,7 +87,7 @@ class TalismanSelectGui : GuiScreen() {
         UtilGui.drawPolyline(mouseLine, 0.3f, 0f, 1f, 0.3f)
 
         GL11.glColor4f(1f, 1f, 1f, 1f)
-        val currentSlotIndex = talismanContainer.selectedSlotIndex
+        val currentSlotIndex = talismanTool.selectedSlotIndex
         val (x1, y1) = slotPositions[currentSlotIndex]
 
         mc.textureManager.bindTexture(marker)
@@ -106,23 +106,23 @@ class TalismanSelectGui : GuiScreen() {
         GlStateManager.disableBlend()
     }
 
-    private fun refreshStackData(talismanContainer: ITalismanContainer) {
+    private fun refreshStackData(talismanTool: ITalismanTool) {
         val k = 3 //scalar
         val a = 0.15 //a-value
         val aDec = -0.0008 // a-value change over time
 
-        if (slotPositions == null || handler !== talismanContainer)
-            slotPositions = UtilGui.generateSpiral(talismanContainer.getSlotCount(), 4, k, a, aDec, 9.0, 7.0)
+        if (slotPositions == null || handler !== talismanTool)
+            slotPositions = UtilGui.generateSpiral(talismanTool.getSlotCount(), 4, k, a, aDec, 9.0, 7.0)
 
-        if (handler === talismanContainer && state == talismanContainer.getState())
+        if (handler === talismanTool && state == talismanTool.getState())
             return
 
-        handler = talismanContainer
-        state = talismanContainer.getState()
+        handler = talismanTool
+        state = talismanTool.getState()
 
-        allStacks = talismanContainer.getAllStacks()
+        allStacks = talismanTool.getAllStacks()
 
-        val activeIndexes = talismanContainer.getSlotIndexes { !it.isEmpty }
+        val activeIndexes = talismanTool.getSlotIndexes { !it.isEmpty }
 
         activePositionMap.clear()
         for (index in activeIndexes)
