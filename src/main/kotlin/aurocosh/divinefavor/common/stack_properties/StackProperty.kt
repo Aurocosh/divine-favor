@@ -3,12 +3,13 @@ package aurocosh.divinefavor.common.stack_properties
 import aurocosh.divinefavor.common.core.ResourceNamer
 import aurocosh.divinefavor.common.lib.extensions.checkForTag
 import aurocosh.divinefavor.common.lib.extensions.compound
+import net.minecraft.item.Item
 import net.minecraft.item.ItemStack
 import net.minecraft.nbt.NBTTagCompound
 import net.minecraftforge.fml.relauncher.Side
 import net.minecraftforge.fml.relauncher.SideOnly
 
-abstract class StackProperty<T>(val name: String, val defaultValue: T, val showInTooltip: Boolean, val orderIndex: Int, private val serverSync: (StackProperty<T>, T) -> Unit) {
+abstract class StackProperty<T>(val name: String, val defaultValue: T, val showInTooltip: Boolean, val orderIndex: Int, private val serverSync: (Int, StackProperty<T>, T) -> Unit) {
     val tag = "tag_$name"
     val tooltipKey = ResourceNamer.getTypedNameString("tooltip", "property", name)
     val displayKey = ResourceNamer.getTypedNameString("name", "property", name)
@@ -31,8 +32,10 @@ abstract class StackProperty<T>(val name: String, val defaultValue: T, val showI
             return false
         setValueToTag(stack.compound, value)
         changeListeners.forEach { it.invoke(stack, value) }
-        if (sync)
-            serverSync.invoke(this, value)
+        if (sync) {
+            val itemId = Item.getIdFromItem(stack.item)
+            serverSync.invoke(itemId, this, value)
+        }
         return true
     }
 

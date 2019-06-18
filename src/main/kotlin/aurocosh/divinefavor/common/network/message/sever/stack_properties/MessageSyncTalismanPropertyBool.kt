@@ -1,6 +1,6 @@
-package aurocosh.divinefavor.common.network.message.sever.talisman_properties
+package aurocosh.divinefavor.common.network.message.sever.stack_properties
 
-class MessageSyncTalismanPropertyBool : MessageSyncTalismanProperty<Boolean> {
+class MessageSyncPropertyBool : MessageSyncProperty<Boolean> {
     override var value: Boolean = false
 
     constructor()

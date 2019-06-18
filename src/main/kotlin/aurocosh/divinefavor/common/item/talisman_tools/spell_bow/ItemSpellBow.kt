@@ -4,16 +4,22 @@ import aurocosh.divinefavor.DivineFavor
 import aurocosh.divinefavor.common.constants.ConstGuiIDs
 import aurocosh.divinefavor.common.constants.ConstMainTabOrder
 import aurocosh.divinefavor.common.item.arrow_talismans.base.ItemArrowTalisman
+import aurocosh.divinefavor.common.item.base.ModItem
 import aurocosh.divinefavor.common.item.common.ModItems
 import aurocosh.divinefavor.common.item.spell_talismans.context.TalismanContext
 import aurocosh.divinefavor.common.item.spell_talismans.context.TalismanContextGenerator
-import aurocosh.divinefavor.common.item.talisman_tools.ItemTalismanContainer
+import aurocosh.divinefavor.common.item.talisman.ITalismanContainer
+import aurocosh.divinefavor.common.item.talisman.TalismanPropertyHandler
+import aurocosh.divinefavor.common.item.talisman_tools.BookPropertyWrapper
 import aurocosh.divinefavor.common.item.talisman_tools.TalismanAdapter
 import aurocosh.divinefavor.common.item.talisman_tools.spell_bow.capability.SpellBowDataHandler.CAPABILITY_SPELL_BOW
 import aurocosh.divinefavor.common.item.talisman_tools.spell_bow.capability.SpellBowProvider
 import aurocosh.divinefavor.common.item.talisman_tools.spell_bow.capability.SpellBowStorage
 import aurocosh.divinefavor.common.lib.extensions.cap
 import aurocosh.divinefavor.common.lib.extensions.compound
+import aurocosh.divinefavor.common.stack_properties.IPropertyAccessor
+import aurocosh.divinefavor.common.stack_properties.IPropertyContainer
+import aurocosh.divinefavor.common.stack_properties.StackPropertyHandler
 import aurocosh.divinefavor.common.util.UtilBow
 import aurocosh.divinefavor.common.util.UtilPlayer
 import net.minecraft.enchantment.EnchantmentHelper
@@ -35,22 +41,25 @@ import net.minecraft.world.World
 import net.minecraftforge.common.capabilities.ICapabilityProvider
 import net.minecraftforge.event.ForgeEventFactory
 
-class ItemSpellBow : ItemTalismanContainer("spell_bow", "spell_bow/spell_bow", ConstMainTabOrder.CONTAINERS) {
+class ItemSpellBow : ModItem("spell_bow", "spell_bow/spell_bow", ConstMainTabOrder.CONTAINERS), ITalismanContainer, IPropertyContainer {
+    protected val propertyHandler: StackPropertyHandler = TalismanPropertyHandler("spell_bow")
+    override val properties: IPropertyAccessor = propertyHandler
+    private val bookPropertyWrapper = BookPropertyWrapper(propertyHandler)
+
     init {
         maxStackSize = 1
         creativeTab = DivineFavor.TAB_MAIN
         maxDamage = 384
 
-        addPropertyOverride(ResourceLocation("book_mode")) { stack, _, _ ->
-            (if (stack.compound.getBoolean(TAG_IS_IN_BOOK_MODE)) 1 else 0).toFloat()
-        }
-        addPropertyOverride(ResourceLocation("pull")) { stack, _, entityLivingBase ->
-            if (entityLivingBase == null)
-                0.0f
-            else
-                if (entityLivingBase.activeItemStack.item !== ModItems.spell_bow) 0.0f else (stack.maxItemUseDuration - entityLivingBase.itemInUseCount).toFloat() / 20.0f
-        }
+        addPropertyOverride(ResourceLocation("book_mode")) { stack, _, _ -> bookPropertyWrapper.getValueForModel(stack) }
         addPropertyOverride(ResourceLocation("pulling")) { stack, _, entity -> if (entity != null && entity.isHandActive && entity.activeItemStack == stack) 1.0f else 0.0f }
+        addPropertyOverride(ResourceLocation("pull")) { stack, _, entityLivingBase ->
+            when {
+                entityLivingBase == null -> 0.0f
+                entityLivingBase.activeItemStack.item !== ModItems.spell_bow -> 0.0f
+                else -> (stack.maxItemUseDuration - entityLivingBase.itemInUseCount).toFloat() / 20.0f
+            }
+        }
     }
 
     private fun findAmmo(player: EntityPlayer): ItemStack {
@@ -198,6 +207,12 @@ class ItemSpellBow : ItemTalismanContainer("spell_bow", "spell_bow/spell_bow", C
 
     override fun initCapabilities(item: ItemStack, nbt: NBTTagCompound?): ICapabilityProvider? {
         return if (item.item === ModItems.spell_bow) SpellBowProvider() else null
+    }
+
+    override fun getTalismanStack(stack: ItemStack): ItemStack {
+        if (stack.item !== this)
+            return ItemStack.EMPTY
+        return stack.cap(CAPABILITY_SPELL_BOW).getSelectedStack()
     }
 
     override fun getShareTag(): Boolean {

@@ -1,9 +1,9 @@
-package aurocosh.divinefavor.common.network.message.sever.talisman_properties
+package aurocosh.divinefavor.common.network.message.sever.stack_properties
 
 import net.minecraft.block.state.IBlockState
 import net.minecraft.init.Blocks
 
-class MessageSyncTalismanPropertyIBlockState : MessageSyncTalismanProperty<IBlockState> {
+class MessageSyncPropertyIBlockState : MessageSyncProperty<IBlockState> {
     override var value: IBlockState = Blocks.AIR.defaultState
 
     constructor()

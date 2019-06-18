@@ -1,8 +1,8 @@
-package aurocosh.divinefavor.common.network.message.sever.talisman_properties
+package aurocosh.divinefavor.common.network.message.sever.stack_properties
 
 import net.minecraft.util.math.BlockPos
 
-class MessageSyncTalismanPropertyBlockPos : MessageSyncTalismanProperty<BlockPos> {
+class MessageSyncPropertyBlockPos : MessageSyncProperty<BlockPos> {
     override var value: BlockPos = BlockPos.ORIGIN
 
     constructor()

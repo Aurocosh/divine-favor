@@ -3,11 +3,12 @@ package aurocosh.divinefavor.common.item.talisman_tools.grimoire
 import aurocosh.divinefavor.DivineFavor
 import aurocosh.divinefavor.common.constants.ConstGuiIDs
 import aurocosh.divinefavor.common.constants.ConstMainTabOrder
+import aurocosh.divinefavor.common.item.base.ModItem
 import aurocosh.divinefavor.common.item.common.ModItems
 import aurocosh.divinefavor.common.item.spell_talismans.base.ItemSpellTalisman
 import aurocosh.divinefavor.common.item.spell_talismans.context.TalismanContextGenerator
-import aurocosh.divinefavor.common.item.talisman_tools.ItemTalismanContainer
-import aurocosh.divinefavor.common.item.talisman_tools.TalismanContainerMode
+import aurocosh.divinefavor.common.item.talisman.ITalismanContainer
+import aurocosh.divinefavor.common.item.talisman_tools.TalismanAdapter
 import aurocosh.divinefavor.common.item.talisman_tools.grimoire.capability.GrimoireDataHandler.CAPABILITY_GRIMOIRE
 import aurocosh.divinefavor.common.item.talisman_tools.grimoire.capability.GrimoireProvider
 import aurocosh.divinefavor.common.item.talisman_tools.grimoire.capability.GrimoireStorage
@@ -24,7 +25,7 @@ import net.minecraft.util.math.BlockPos
 import net.minecraft.world.World
 import net.minecraftforge.common.capabilities.ICapabilityProvider
 
-class ItemGrimoire : ItemTalismanContainer("grimoire", "grimoire", ConstMainTabOrder.CONTAINERS) {
+class ItemGrimoire : ModItem("grimoire", "grimoire", ConstMainTabOrder.CONTAINERS), ITalismanContainer {
     init {
         setMaxStackSize(1)
         creativeTab = DivineFavor.TAB_MAIN
@@ -32,7 +33,7 @@ class ItemGrimoire : ItemTalismanContainer("grimoire", "grimoire", ConstMainTabO
 
     override fun onItemUse(player: EntityPlayer, world: World, pos: BlockPos, hand: EnumHand, facing: EnumFacing, hitX: Float, hitY: Float, hitZ: Float): EnumActionResult {
         val stack = player.getHeldItem(hand)
-        val (talismanStack, talisman) = getTalisman<ItemSpellTalisman>(stack) ?: return EnumActionResult.PASS
+        val (talismanStack, talisman) = TalismanAdapter.getTalisman<ItemSpellTalisman>(stack) ?: return EnumActionResult.PASS
         val context = TalismanContextGenerator.useCast(player, world, pos, hand, facing, talismanStack)
         val success = talisman.cast(context)
         return UtilItem.actionResultPass(success || player.isSneaking)
@@ -48,7 +49,7 @@ class ItemGrimoire : ItemTalismanContainer("grimoire", "grimoire", ConstMainTabO
         if (player.isSneaking) {
             player.openGui(DivineFavor, ConstGuiIDs.GRIMOIRE, world, player.posX.toInt(), player.posY.toInt(), player.posZ.toInt())
         } else {
-            val (talismanStack, talisman) = getTalisman<ItemSpellTalisman>(stack) ?: return true
+            val (talismanStack, talisman) = TalismanAdapter.getTalisman<ItemSpellTalisman>(stack) ?: return true
             val context = TalismanContextGenerator.rightClick(world, player, hand, talismanStack)
             talisman.cast(context)
         }
@@ -57,6 +58,12 @@ class ItemGrimoire : ItemTalismanContainer("grimoire", "grimoire", ConstMainTabO
 
     override fun initCapabilities(item: ItemStack, nbt: NBTTagCompound?): ICapabilityProvider? {
         return if (item.item === ModItems.grimoire) GrimoireProvider() else null
+    }
+
+    override fun getTalismanStack(stack: ItemStack): ItemStack {
+        if (stack.item !== this)
+            return ItemStack.EMPTY
+        return stack.cap(CAPABILITY_GRIMOIRE).getSelectedStack()
     }
 
     override fun getShareTag(): Boolean {

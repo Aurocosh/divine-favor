@@ -3,6 +3,8 @@ package aurocosh.divinefavor.common.stack_properties
 import aurocosh.divinefavor.DivineFavor
 import aurocosh.divinefavor.common.lib.extensions.S
 import aurocosh.divinefavor.common.lib.extensions.compound
+import aurocosh.divinefavor.common.network.message.sever.stack_properties.*
+import aurocosh.divinefavor.common.network.message.sever.talisman_properties.*
 import net.minecraft.block.state.IBlockState
 import net.minecraft.client.resources.I18n
 import net.minecraft.item.ItemStack
@@ -91,11 +93,25 @@ abstract class StackPropertyHandler(private val parentName: String) : IPropertyA
         return tooltip
     }
 
-    abstract fun getSynchronizerInt(): (StackProperty<Int>, Int) -> Unit
-    abstract fun getSynchronizerBool(): (StackProperty<Boolean>, Boolean) -> Unit
-    abstract fun getSynchronizerEnumFacing(): (StackProperty<EnumFacing>, EnumFacing) -> Unit
-    abstract fun getSynchronizerBlockPos(): (StackProperty<BlockPos>, BlockPos) -> Unit
-    abstract fun getSynchronizerIBlockState(): (StackProperty<IBlockState>, IBlockState) -> Unit
+    open fun getSynchronizerInt() = { itemId: Int, property: StackProperty<Int>, value: Int ->
+        MessageSyncPropertyInt(itemId, property.name, value).send()
+    }
+
+    open fun getSynchronizerBool() = { itemId: Int, property: StackProperty<Boolean>, value: Boolean ->
+        MessageSyncPropertyBool(itemId, property.name, value).send()
+    }
+
+    open fun getSynchronizerEnumFacing() = { itemId: Int, property: StackProperty<EnumFacing>, value: EnumFacing ->
+        MessageSyncPropertyEnumFacing(itemId, property.name, value).send()
+    }
+
+    open fun getSynchronizerBlockPos() = { itemId: Int, property: StackProperty<BlockPos>, value: BlockPos ->
+        MessageSyncPropertyBlockPos(itemId, property.name, value).send()
+    }
+
+    open fun getSynchronizerIBlockState() = { itemId: Int, property: StackProperty<IBlockState>, value: IBlockState ->
+        MessageSyncPropertyIBlockState(itemId, property.name, value).send()
+    }
 
     companion object {
         private const val TAG_PROPERTY_INDEX = "PropertyIndex"

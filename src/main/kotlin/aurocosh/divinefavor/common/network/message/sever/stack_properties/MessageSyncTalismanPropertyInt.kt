@@ -1,6 +1,6 @@
-package aurocosh.divinefavor.common.network.message.sever.talisman_properties
+package aurocosh.divinefavor.common.network.message.sever.stack_properties
 
-class MessageSyncTalismanPropertyInt : MessageSyncTalismanProperty<Int> {
+class MessageSyncPropertyInt : MessageSyncProperty<Int> {
     override var value: Int = 0
 
     constructor()

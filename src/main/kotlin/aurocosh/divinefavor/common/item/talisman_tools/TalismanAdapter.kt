@@ -1,5 +1,6 @@
 package aurocosh.divinefavor.common.item.talisman_tools
 
+import aurocosh.divinefavor.common.item.talisman.ITalismanContainer
 import aurocosh.divinefavor.common.item.talisman.ItemTalisman
 import aurocosh.divinefavor.common.item.talisman_tools.grimoire.ItemGrimoire
 import aurocosh.divinefavor.common.item.talisman_tools.grimoire.capability.GrimoireDataHandler.CAPABILITY_GRIMOIRE
@@ -14,6 +15,8 @@ import aurocosh.divinefavor.common.util.UtilPlayer
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.item.Item
 import net.minecraft.item.ItemStack
+
+data class TalismanStackWrapper<T : ItemTalisman>(val stack: ItemStack, val talisman: T)
 
 object TalismanAdapter {
     fun isItemValid(item: Item): Boolean {
@@ -31,11 +34,18 @@ object TalismanAdapter {
         return container.getSelectedStack()
     }
 
-    fun getHeldTalisman(player: EntityPlayer, talisman: ItemTalisman): HeldStack? {
-        return UtilPlayer.getHeldStacks(player).firstOrNull { TalismanAdapter.getTalismanStack(it.stack).item == talisman }
-    }
-
     fun selectSlot(playerSlot: Int, talismanSlot: Int) {
         MessageSyncTalismanContainerSlot(playerSlot, talismanSlot).send()
+    }
+
+    inline fun <reified T : ItemTalisman> getTalisman(stack: ItemStack): TalismanStackWrapper<T>? {
+        val item = stack.item
+        if(item !is ITalismanContainer)
+            return null
+        val talismanStack = item.getTalismanStack(stack)
+        if(talismanStack.isEmpty)
+            return null
+        val talisman = talismanStack.item as? T ?: return null
+        return TalismanStackWrapper(talismanStack, talisman)
     }
 }

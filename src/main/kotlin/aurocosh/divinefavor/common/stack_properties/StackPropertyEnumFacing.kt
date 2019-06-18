@@ -7,7 +7,7 @@ import net.minecraft.util.EnumFacing
 import net.minecraftforge.fml.relauncher.Side
 import net.minecraftforge.fml.relauncher.SideOnly
 
-class StackPropertyEnumFacing(name: String, defaultValue: EnumFacing, showInTooltip: Boolean, orderIndex: Int, serverSync: (StackProperty<EnumFacing>, EnumFacing) -> Unit) : StackProperty<EnumFacing>(name, defaultValue, showInTooltip, orderIndex, serverSync) {
+class StackPropertyEnumFacing(name: String, defaultValue: EnumFacing, showInTooltip: Boolean, orderIndex: Int, serverSync: (Int, StackProperty<EnumFacing>, EnumFacing) -> Unit) : StackProperty<EnumFacing>(name, defaultValue, showInTooltip, orderIndex, serverSync) {
     override fun getValueFromTag(compound: NBTTagCompound): EnumFacing {
         return EnumFacing.byIndex(compound.getInteger(tag))
     }

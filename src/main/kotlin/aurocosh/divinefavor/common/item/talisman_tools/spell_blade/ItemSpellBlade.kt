@@ -3,16 +3,22 @@ package aurocosh.divinefavor.common.item.talisman_tools.spell_blade
 import aurocosh.divinefavor.DivineFavor
 import aurocosh.divinefavor.common.config.entries.items.SpellBlade
 import aurocosh.divinefavor.common.constants.ConstGuiIDs
+import aurocosh.divinefavor.common.item.base.ModItem
 import aurocosh.divinefavor.common.item.blade_talismans.base.ItemBladeTalisman
 import aurocosh.divinefavor.common.item.spell_talismans.base.ItemSpellTalisman
 import aurocosh.divinefavor.common.item.spell_talismans.context.TalismanContextGenerator
-import aurocosh.divinefavor.common.item.talisman_tools.ItemTalismanContainer
+import aurocosh.divinefavor.common.item.talisman.ITalismanContainer
+import aurocosh.divinefavor.common.item.talisman.TalismanPropertyHandler
+import aurocosh.divinefavor.common.item.talisman_tools.BookPropertyWrapper
+import aurocosh.divinefavor.common.item.talisman_tools.TalismanAdapter
 import aurocosh.divinefavor.common.item.talisman_tools.TalismanContainerMode
 import aurocosh.divinefavor.common.item.talisman_tools.spell_blade.capability.SpellBladeStorage
 import aurocosh.divinefavor.common.item.talisman_tools.spell_blade.capability.SpellBladeDataHandler.CAPABILITY_SPELL_BLADE
 import aurocosh.divinefavor.common.item.talisman_tools.spell_blade.capability.SpellBladeProvider
 import aurocosh.divinefavor.common.lib.extensions.cap
-import aurocosh.divinefavor.common.lib.extensions.compound
+import aurocosh.divinefavor.common.stack_properties.IPropertyAccessor
+import aurocosh.divinefavor.common.stack_properties.IPropertyContainer
+import aurocosh.divinefavor.common.stack_properties.StackPropertyHandler
 import aurocosh.divinefavor.common.util.UtilItem.actionResult
 import aurocosh.divinefavor.common.util.UtilItem.actionResultPass
 import com.google.common.collect.Multimap
@@ -34,25 +40,26 @@ import net.minecraftforge.fml.relauncher.Side
 import net.minecraftforge.fml.relauncher.SideOnly
 import net.minecraftforge.oredict.OreDictionary
 
-open class ItemSpellBlade(name: String, texturePath: String, orderIndex: Int = 0, val config: SpellBlade, val material: ToolMaterial) : ItemTalismanContainer(name, texturePath, orderIndex) {
+open class ItemSpellBlade(name: String, texturePath: String, orderIndex: Int = 0, val config: SpellBlade, val material: ToolMaterial) : ModItem(name, texturePath, orderIndex), ITalismanContainer, IPropertyContainer {
+    protected val propertyHandler: StackPropertyHandler = TalismanPropertyHandler(name)
+    override val properties: IPropertyAccessor = propertyHandler
+    private val bookPropertyWrapper = BookPropertyWrapper(propertyHandler)
 
     init {
         creativeTab = DivineFavor.TAB_MAIN
         this.maxDamage = config.maxUses
 
-        addPropertyOverride(ResourceLocation("book_mode")) { stack, _, _ ->
-            (if (stack.compound.getBoolean(TAG_IS_IN_BOOK_MODE)) 1 else 0).toFloat()
-        }
+        addPropertyOverride(ResourceLocation("book_mode")) { stack, _, _ -> bookPropertyWrapper.getValueForModel(stack) }
     }
 
     override fun hitEntity(stack: ItemStack, target: EntityLivingBase, attacker: EntityLivingBase): Boolean {
         stack.damageItem(1, attacker)
         if (attacker !is EntityPlayer)
             return true
-        if (getModeOrTransform(stack, attacker) != TalismanContainerMode.NORMAL)
+        if (bookPropertyWrapper.getModeOrTransform(stack, attacker) != TalismanContainerMode.NORMAL)
             return true
 
-        val (talismanStack, talisman) = getTalisman<ItemBladeTalisman>(stack) ?: return true
+        val (talismanStack, talisman) = TalismanAdapter.getTalisman<ItemBladeTalisman>(stack) ?: return true
         val context = TalismanContextGenerator.blade(talismanStack, target, attacker)
         talisman.cast(context)
         return true
@@ -60,10 +67,10 @@ open class ItemSpellBlade(name: String, texturePath: String, orderIndex: Int = 0
 
     override fun onItemUse(player: EntityPlayer, world: World, pos: BlockPos, hand: EnumHand, facing: EnumFacing, hitX: Float, hitY: Float, hitZ: Float): EnumActionResult {
         val stack = player.getHeldItem(hand)
-        if (getModeOrTransform(stack, player) != TalismanContainerMode.NORMAL)
+        if (bookPropertyWrapper.getModeOrTransform(stack, player) != TalismanContainerMode.NORMAL)
             return EnumActionResult.PASS
 
-        val (talismanStack, talisman) = getTalisman<ItemSpellTalisman>(stack) ?: return EnumActionResult.PASS
+        val (talismanStack, talisman) = TalismanAdapter.getTalisman<ItemSpellTalisman>(stack) ?: return EnumActionResult.PASS
         val context = TalismanContextGenerator.useCast(player, world, pos, hand, facing, talismanStack)
         val success = talisman.cast(context)
         return actionResultPass(success)
@@ -76,13 +83,13 @@ open class ItemSpellBlade(name: String, texturePath: String, orderIndex: Int = 0
     }
 
     private fun performRightClickAction(world: World, player: EntityPlayer, hand: EnumHand, stack: ItemStack): Boolean {
-        val mode = getModeOrTransform(stack, player)
+        val mode = bookPropertyWrapper.getModeOrTransform(stack, player)
         if (mode == TalismanContainerMode.INVALID)
             return false
         if (mode == TalismanContainerMode.BOOK)
             player.openGui(DivineFavor, ConstGuiIDs.SPELL_BLADE, world, player.posX.toInt(), player.posY.toInt(), player.posZ.toInt())
         else if (mode == TalismanContainerMode.NORMAL) {
-            val (talismanStack, talisman) = getTalisman<ItemSpellTalisman>(stack) ?: return true
+            val (talismanStack, talisman) = TalismanAdapter.getTalisman<ItemSpellTalisman>(stack) ?: return true
             val context = TalismanContextGenerator.rightClick(world, player, hand, talismanStack)
             talisman.cast(context)
         }
@@ -135,6 +142,12 @@ open class ItemSpellBlade(name: String, texturePath: String, orderIndex: Int = 0
 
     override fun initCapabilities(item: ItemStack, nbt: NBTTagCompound?): ICapabilityProvider? {
         return if (item.item is ItemSpellBlade) SpellBladeProvider() else null
+    }
+
+    override fun getTalismanStack(stack: ItemStack): ItemStack {
+        if (stack.item !== this)
+            return ItemStack.EMPTY
+        return stack.cap(CAPABILITY_SPELL_BLADE).getSelectedStack()
     }
 
     override fun getShareTag(): Boolean {

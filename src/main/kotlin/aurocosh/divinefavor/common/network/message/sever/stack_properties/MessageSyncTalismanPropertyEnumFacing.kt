@@ -1,8 +1,8 @@
-package aurocosh.divinefavor.common.network.message.sever.talisman_properties
+package aurocosh.divinefavor.common.network.message.sever.stack_properties
 
 import net.minecraft.util.EnumFacing
 
-class MessageSyncTalismanPropertyEnumFacing : MessageSyncTalismanProperty<EnumFacing> {
+class MessageSyncPropertyEnumFacing : MessageSyncProperty<EnumFacing> {
     override var value: EnumFacing = EnumFacing.UP
 
     constructor()

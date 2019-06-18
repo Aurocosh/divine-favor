@@ -4,10 +4,10 @@ import aurocosh.divinefavor.DivineFavor
 import aurocosh.divinefavor.common.item.base.ModItem
 import aurocosh.divinefavor.common.item.spell_talismans.context.TalismanContext
 import aurocosh.divinefavor.common.lib.extensions.divinePlayerData
-import aurocosh.divinefavor.common.lib.interfaces.IBlockCatcher
 import aurocosh.divinefavor.common.network.message.client.spirit_data.MessageSyncFavor
 import aurocosh.divinefavor.common.spirit.base.ModSpirit
 import aurocosh.divinefavor.common.stack_properties.IPropertyAccessor
+import aurocosh.divinefavor.common.stack_properties.IPropertyContainer
 import aurocosh.divinefavor.common.stack_properties.StackPropertyHandler
 import net.minecraft.client.resources.I18n
 import net.minecraft.client.util.ITooltipFlag
@@ -19,9 +19,9 @@ import net.minecraftforge.client.event.RenderWorldLastEvent
 import net.minecraftforge.fml.relauncher.Side
 import net.minecraftforge.fml.relauncher.SideOnly
 
-abstract class ItemTalisman(val name: String, texturePath: String, val spirit: ModSpirit, protected val favorCost: Int) : ModItem(name, texturePath), ITalismanContainer {
+abstract class ItemTalisman(val name: String, texturePath: String, val spirit: ModSpirit, protected val favorCost: Int) : ModItem(name, texturePath), ITalismanContainer, IPropertyContainer {
     protected val propertyHandler: StackPropertyHandler = TalismanPropertyHandler("talisman $name properties")
-    val properties: IPropertyAccessor = propertyHandler
+    override val properties: IPropertyAccessor = propertyHandler
 
     val spiritId: Int
         get() = spirit.id
