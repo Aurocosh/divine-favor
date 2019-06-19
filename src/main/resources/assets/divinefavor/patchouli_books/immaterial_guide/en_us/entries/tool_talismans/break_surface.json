@@ -1,0 +1,15 @@
+{
+  "name": "Break surface",
+  "icon": "divinefavor:tool_talisman_break_surface",
+  "category": "tool_talismans",
+  "pages": [
+    {
+      "type": "item_description",
+      "talisman": "divinefavor:tool_talisman_break_surface"
+    },
+    {
+      "type": "tool_talisman_stats",
+      "talisman": "divinefavor:tool_talisman_break_surface"
+    }
+  ]
+}

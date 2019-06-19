@@ -8,5 +8,7 @@ import net.minecraftforge.common.config.Config;
 public class ConfigTool {
     @Config.Name("Break radius")
     public static BreakRadius breakRadius = new BreakRadius();
-
+    // New configs
+    @Config.Name("Break surface")
+    public static BreakSurface breakSurface = new BreakSurface();
 }

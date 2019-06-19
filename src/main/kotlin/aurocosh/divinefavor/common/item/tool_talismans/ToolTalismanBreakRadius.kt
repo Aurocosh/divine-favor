@@ -25,6 +25,6 @@ class ToolTalismanBreakRadius(name: String, spirit: ModSpirit, favorCost: Int) :
     }
 
     companion object {
-        val coordinateGenerator = WallCoordinateGenerator()
+        private val coordinateGenerator = WallCoordinateGenerator()
     }
 }

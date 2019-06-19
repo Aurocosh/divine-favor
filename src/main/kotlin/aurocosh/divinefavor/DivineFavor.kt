@@ -2,11 +2,7 @@ package aurocosh.divinefavor
 
 import aurocosh.divinefavor.common.core.creative_tabs.*
 import aurocosh.divinefavor.common.core.proxy.CommonProxy
-import aurocosh.divinefavor.common.item.common.ModCallingStones
-import aurocosh.divinefavor.common.item.common.ModItems
-import aurocosh.divinefavor.common.item.common.ModArrowTalismans
-import aurocosh.divinefavor.common.item.common.ModBladeTalismans
-import aurocosh.divinefavor.common.item.common.ModSpellTalismans
+import aurocosh.divinefavor.common.item.common.*
 import net.minecraftforge.fml.common.Loader
 import net.minecraftforge.fml.common.Mod
 import net.minecraftforge.fml.common.ModContainer
@@ -54,7 +50,7 @@ object DivineFavor {
         TAB_GEMS = DivineFavorCreativeTab("gems") { ModCallingStones.calling_stone_neblaze }
         TAB_ARROW_TALISMANS = DivineFavorCreativeTab("arrow_talismans") { ModArrowTalismans.fill_lungs }
         TAB_BLADE_TALISMANS = DivineFavorCreativeTab("blade_talismans") { ModBladeTalismans.rain_sword }
-        TAB_TOOL_TALISMANS = DivineFavorCreativeTab("tool_talismans") { ModBladeTalismans.rain_sword }
+        TAB_TOOL_TALISMANS = DivineFavorCreativeTab("tool_talismans") { ModToolTalismans.break_radius }
         TAB_SPELL_TALISMANS = DivineFavorCreativeTab("spell_talismans") { ModSpellTalismans.wild_sprint }
 
         proxy.preInit(event)
