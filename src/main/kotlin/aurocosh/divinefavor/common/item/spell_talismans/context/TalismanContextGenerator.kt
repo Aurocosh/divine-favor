@@ -19,18 +19,18 @@ object TalismanContextGenerator {
     private data class BlockCastData(val pos: BlockPos, val posVec: Vec3d, val facing: EnumFacing, val valid: Boolean)
 
     fun generate(player: EntityPlayer, target: EntityLivingBase?, world: World, pos: BlockPos, posVec: Vec3d, hand: EnumHand, facing: EnumFacing, castType: CastType, stack: ItemStack): TalismanContext {
-        val (raycastBlock, raycastTarget, stackValid) = getStackData(stack)
+        val (raycastBlock, raycastTarget, stackValid) = getStackData(stack, castType)
         val (posFinal, posVecFinal, facingFinal, raycastValid) = getBlockCastData(player, pos, posVec, facing, raycastBlock)
         val targetFinal = if (raycastTarget) UtilEntity.getEntityPlayerLookingAt(player, EntityLivingBase::class.java, ENTITY_SEARCH_DISTANCE, true) else target
 
         return TalismanContext(player, targetFinal, world, posFinal, posVecFinal, hand, facingFinal, castType, stack, raycastValid, stackValid)
     }
 
-    private fun getStackData(stack: ItemStack): StackData {
+    private fun getStackData(stack: ItemStack, castType: CastType): StackData {
         val item = stack.item
         if (stack.isEmpty || item !is ItemTalisman)
             return StackData(false, false, false)
-        return StackData(item.raycastBlock(stack), item.raycastTarget(stack), true)
+        return StackData(item.raycastBlock(stack, castType), item.raycastTarget(stack, castType), true)
     }
 
     private fun getBlockCastData(player: EntityPlayer, pos: BlockPos, posVec: Vec3d, facing: EnumFacing, raycastBlock: Boolean): BlockCastData {

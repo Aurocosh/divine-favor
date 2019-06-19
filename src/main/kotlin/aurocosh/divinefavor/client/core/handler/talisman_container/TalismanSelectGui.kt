@@ -4,6 +4,7 @@ import aurocosh.divinefavor.DivineFavor
 import aurocosh.divinefavor.client.core.handler.KeyBindings
 import aurocosh.divinefavor.client.core.handler.talisman.TalismanHUD
 import aurocosh.divinefavor.common.constants.ConstResources
+import aurocosh.divinefavor.common.item.talisman.ITalismanToolContainer
 import aurocosh.divinefavor.common.item.talisman_tools.ITalismanTool
 import aurocosh.divinefavor.common.item.talisman_tools.TalismanAdapter
 import aurocosh.divinefavor.common.lib.math.Vector2i
@@ -51,15 +52,17 @@ class TalismanSelectGui : GuiScreen() {
         super.drawScreen(mx, my, partialTicks)
 
         val player = DivineFavor.proxy.clientPlayer
-        hand = UtilPlayer.getHandWithItem(player) { TalismanAdapter.isItemValid(it) } ?: return
+        hand = UtilPlayer.getHandWithItem(player) { it is ITalismanToolContainer} ?: return
 
-        val talismanContainer = TalismanAdapter.getTalismanContainer(player.getHeldItem(hand)) ?: return
+        val stack = player.getHeldItem(hand)
+        val toolContainer = stack.item as ITalismanToolContainer
+        val talismanTool = toolContainer.getTalismanTool(stack)
 
-        refreshStackData(talismanContainer)
-        renderSpellMassSelector(mx, my, talismanContainer)
+        refreshStackData(talismanTool)
+        renderSpellMassSelector(mx, my, talismanTool)
 
         if (selectedIndex > 0) {
-            val talismanStack = talismanContainer.getStackInSlot(selectedIndex)
+            val talismanStack = talismanTool.getStackInSlot(selectedIndex)
             TalismanHUD.drawTalismanDescription(mc, width, height, player, talismanStack, true)
         }
     }

@@ -2,6 +2,7 @@ package aurocosh.divinefavor.common.item.talisman
 
 import aurocosh.divinefavor.DivineFavor
 import aurocosh.divinefavor.common.item.base.ModItem
+import aurocosh.divinefavor.common.item.spell_talismans.base.CastType
 import aurocosh.divinefavor.common.item.spell_talismans.context.TalismanContext
 import aurocosh.divinefavor.common.lib.extensions.divinePlayerData
 import aurocosh.divinefavor.common.network.message.client.spirit_data.MessageSyncFavor
@@ -19,7 +20,7 @@ import net.minecraftforge.client.event.RenderWorldLastEvent
 import net.minecraftforge.fml.relauncher.Side
 import net.minecraftforge.fml.relauncher.SideOnly
 
-abstract class ItemTalisman(val name: String, texturePath: String, val spirit: ModSpirit, protected val favorCost: Int) : ModItem(name, texturePath), ITalismanContainer, IPropertyContainer {
+abstract class ItemTalisman(val name: String, texturePath: String, val spirit: ModSpirit, protected val favorCost: Int) : ModItem(name, texturePath), ITalismanStackContainer, IPropertyContainer {
     protected val propertyHandler: StackPropertyHandler = TalismanPropertyHandler("talisman $name properties")
     override val properties: IPropertyAccessor = propertyHandler
 
@@ -108,13 +109,13 @@ abstract class ItemTalisman(val name: String, texturePath: String, val spirit: M
         properties.getPropertyTooltip(stack).forEach { tooltip.add(it) }
     }
 
-    protected open fun preValidate(context: TalismanContext): Boolean = !raycastBlock(context.stack) || context.raycastValid
+    protected open fun preValidate(context: TalismanContext): Boolean = !raycastBlock(context.stack, context.castType) || context.raycastValid
     protected open fun preProcess(context: TalismanContext): Boolean = true
     protected open fun validate(context: TalismanContext): Boolean = true
     protected open fun isConsumeCharge(context: TalismanContext): Boolean = true
 
-    open fun raycastBlock(stack: ItemStack): Boolean = false
-    open fun raycastTarget(stack: ItemStack): Boolean = false
+    open fun raycastBlock(stack: ItemStack, castType: CastType): Boolean = false
+    open fun raycastTarget(stack: ItemStack, castType: CastType): Boolean = false
 
     protected open fun performActionServer(context: TalismanContext) {}
     protected open fun performActionClient(context: TalismanContext) {}

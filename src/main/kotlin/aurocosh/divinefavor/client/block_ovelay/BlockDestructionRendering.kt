@@ -22,6 +22,7 @@ import org.lwjgl.opengl.GL11
 import java.util.*
 import java.util.concurrent.ExecutionException
 import java.util.concurrent.TimeUnit
+import javax.vecmath.Color3f
 
 /**
  * Parts of this class were adapted from code written by Direwolf20 for the BuildingGadgets mod: https://github.com/Direwolf20-MC/BuildingGadgets
@@ -34,11 +35,13 @@ object BlockDestructionRendering {
             .newBuilder()
             .maximumSize(1)
             .expireAfterWrite(1, TimeUnit.SECONDS)
-            .removalListener { removal: RemovalNotification<List<Any>, Int> -> GLAllocation.deleteDisplayLists(removal.value)
-            }.build< List<Any>, Int>();
+            .removalListener { removal: RemovalNotification<Pair<List<Any>,Color3f>, Int> ->
+                GLAllocation.deleteDisplayLists(removal.value)
+            }.build<Pair<List<Any>,Color3f>, Int>();
 
-    fun render(lastEvent: RenderWorldLastEvent, player: EntityPlayer, coordinates: List<BlockPos>) {
-        val key = Collections.unmodifiableList(coordinates)
+    fun render(lastEvent: RenderWorldLastEvent, player: EntityPlayer, coordinates: List<BlockPos>, color: Color3f = Color3f(1f, 0f, 0f)) {
+        val unmodifiableList = Collections.unmodifiableList(coordinates)
+        val key = Pair(unmodifiableList, color)
 
         val playerPos = player.getPartialPosition(lastEvent.partialTicks)
         GlStateManager.pushMatrix()
@@ -47,7 +50,7 @@ object BlockDestructionRendering {
             GlStateManager.callList(cacheDestructionOverlay.get(key) {
                 val displayList = GLAllocation.generateDisplayLists(1)
                 GlStateManager.glNewList(displayList, GL11.GL_COMPILE)
-                render(player, coordinates)
+                render(player, coordinates, color)
                 GlStateManager.glEndList()
                 displayList
             })
@@ -59,7 +62,7 @@ object BlockDestructionRendering {
         GlStateManager.popMatrix()
     }
 
-    private fun render(player: EntityPlayer, coordinates: List<BlockPos>) {
+    private fun render(player: EntityPlayer, coordinates: List<BlockPos>, color: Color3f) {
         mc.renderEngine.bindTexture(TextureMap.LOCATION_BLOCKS_TEXTURE)
 
         GlStateManager.pushMatrix()
@@ -93,7 +96,7 @@ object BlockDestructionRendering {
             GlStateManager.disableLighting()
             GlStateManager.disableTexture2D()
 
-            renderBoxSolid(t, bufferBuilder, 0.0, 0.0, -1.0, 1.0, 1.0, 0.0, 1f, 0f, 0f, 0.5f)
+            renderBoxSolid(t, bufferBuilder, 0.0, 0.0, -1.0, 1.0, 1.0, 0.0, color.x, color.y, color.z, 0.5f)
 
             GlStateManager.enableTexture2D()
             GlStateManager.enableLighting()
@@ -106,7 +109,6 @@ object BlockDestructionRendering {
         GlStateManager.disableBlend()
         GlStateManager.popMatrix()
     }
-
 
     private fun renderBoxSolid(tessellator: Tessellator, bufferBuilder: BufferBuilder, startX: Double, startY: Double, startZ: Double, endX: Double, endY: Double, endZ: Double, red: Float, green: Float, blue: Float, alpha: Float) {
         bufferBuilder.begin(7, DefaultVertexFormats.POSITION_COLOR)

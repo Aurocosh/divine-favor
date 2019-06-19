@@ -2,6 +2,6 @@ package aurocosh.divinefavor.common.item.talisman
 
 import net.minecraft.item.ItemStack
 
-interface ITalismanContainer {
+interface ITalismanStackContainer {
     fun getTalismanStack(stack: ItemStack): ItemStack
 }

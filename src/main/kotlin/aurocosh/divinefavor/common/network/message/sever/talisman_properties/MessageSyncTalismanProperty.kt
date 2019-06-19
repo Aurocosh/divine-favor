@@ -1,6 +1,7 @@
 package aurocosh.divinefavor.common.network.message.sever.talisman_properties
 
-import aurocosh.divinefavor.common.item.talisman.ITalismanContainer
+import aurocosh.divinefavor.common.item.talisman.ITalismanStackContainer
+import aurocosh.divinefavor.common.lib.extensions.set
 import aurocosh.divinefavor.common.network.message.sever.stack_properties.MessageSyncProperty
 import aurocosh.divinefavor.common.stack_properties.IPropertyContainer
 import aurocosh.divinefavor.common.stack_properties.StackProperty
@@ -19,13 +20,16 @@ abstract class MessageSyncTalismanProperty<T> : MessageSyncProperty<T> {
 
         val (_, stack) = UtilPlayer.findStackInInventory(serverPlayer) {
             val item = it.item
-            item is ITalismanContainer && item.getTalismanStack(it).item == talisman
+            item is ITalismanStackContainer && item.getTalismanStack(it).item === talisman
         }
+
+        val container = stack.item as ITalismanStackContainer
+        val talismanStack = container.getTalismanStack(stack)
 
         if (!talisman.properties.exist(name))
             return
 
         val property = talisman.properties.get(name) as? StackProperty<T> ?: return
-        property.setValue(stack, value)
+        talismanStack.set(property, value)
     }
 }

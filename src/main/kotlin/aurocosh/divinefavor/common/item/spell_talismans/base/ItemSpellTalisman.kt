@@ -30,11 +30,11 @@ open class ItemSpellTalisman// Talisman functions
         return path.joinToString("/")
     }
 
-    override fun raycastBlock(stack: ItemStack): Boolean {
+    override fun raycastBlock(stack: ItemStack, castType: CastType): Boolean {
         return options.contains(SpellOptions.OnRightCastRayTraceBlock)
     }
 
-    override fun raycastTarget(stack: ItemStack): Boolean {
+    override fun raycastTarget(stack: ItemStack, castType: CastType): Boolean {
         return options.contains(SpellOptions.OnRightCastFindTargetEntity)
     }
 

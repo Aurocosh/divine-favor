@@ -3,6 +3,7 @@ package aurocosh.divinefavor.client.core.handler.talisman_container
 import aurocosh.divinefavor.DivineFavor
 import aurocosh.divinefavor.client.core.handler.KeyBindings
 import aurocosh.divinefavor.client.core.handler.talisman.TalismanHUD
+import aurocosh.divinefavor.common.item.talisman.ITalismanToolContainer
 import aurocosh.divinefavor.common.item.talisman_tools.TalismanAdapter
 import aurocosh.divinefavor.common.util.UtilPlayer
 import net.minecraft.client.Minecraft
@@ -15,6 +16,7 @@ import net.minecraftforge.fml.relauncher.SideOnly
 @SideOnly(Side.CLIENT)
 @Mod.EventBusSubscriber(modid = DivineFavor.MOD_ID, value = [Side.CLIENT])
 object HUDHandler {
+    private val mc = Minecraft.getMinecraft()
     private val scrollHUD = TalismanScrollHUD()
 
     @SubscribeEvent
@@ -27,18 +29,17 @@ object HUDHandler {
         val height = resolution.scaledHeight
 
         val player = DivineFavor.proxy.clientPlayer
-        val stack = UtilPlayer.getItemInHand(player) { TalismanAdapter.isItemValid(it) }
+        val stack = UtilPlayer.getItemInHand(player) { it is ITalismanToolContainer }
         if (stack.isEmpty)
             return
 
-        val talismanContainer = TalismanAdapter.getTalismanContainer(stack) ?: return
-
-        val mc = Minecraft.getMinecraft()
+        val toolContainer = stack.item as ITalismanToolContainer
+        val talismanTool = toolContainer.getTalismanTool(stack)
 
         if (KeyBindings.talismanScroll.isKeyDown)
-            scrollHUD.draw(mc, width, height, talismanContainer)
+            scrollHUD.draw(mc, width, height, talismanTool)
 
         if (mc.currentScreen !== TalismanSelectGui.INSTANCE)
-            TalismanHUD.drawTalismanDescription(mc, width, height, player, talismanContainer.getSelectedStack(), true)
+            TalismanHUD.drawTalismanDescription(mc, width, height, player, talismanTool.getSelectedStack(), true)
     }
 }

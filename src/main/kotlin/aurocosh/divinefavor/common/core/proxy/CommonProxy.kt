@@ -55,6 +55,7 @@ open class CommonProxy {
         ModBlessings.preInit()
         ModArrowTalismans.preInit()
         ModBladeTalismans.preInit()
+        ModToolTalismans.preInit()
         ModItems.preInit()
         ModRopes.preInit()
         ModSoulShards.preInit()

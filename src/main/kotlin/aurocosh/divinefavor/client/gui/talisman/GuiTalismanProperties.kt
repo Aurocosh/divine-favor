@@ -7,6 +7,7 @@ import aurocosh.divinefavor.client.gui.interfaces.IResettable
 import aurocosh.divinefavor.client.gui.interfaces.IScrollable
 import aurocosh.divinefavor.client.gui.interfaces.ITooltipProvider
 import aurocosh.divinefavor.common.constants.ConstResources
+import aurocosh.divinefavor.common.item.talisman.ITalismanStackContainer
 import aurocosh.divinefavor.common.item.talisman.ItemTalisman
 import aurocosh.divinefavor.common.item.talisman_tools.TalismanAdapter
 import aurocosh.divinefavor.common.lib.TooltipCache
@@ -53,7 +54,8 @@ class GuiTalismanProperties(stack: ItemStack, private val playerSlot: Int) : Gui
     init {
         mc = Minecraft.getMinecraft()
 
-        this.itemStack = TalismanAdapter.getTalismanStack(stack)
+        val container = stack.item as ITalismanStackContainer
+        this.itemStack = container.getTalismanStack(stack)
         item = this.itemStack.item as ItemTalisman
 
         selectedPropertyIndex = item.properties.getSelectedIndex(stack)

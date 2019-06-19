@@ -42,6 +42,7 @@ object DivineFavor {
     lateinit var TAB_GEMS: DivineFavorCreativeTab
     lateinit var TAB_ARROW_TALISMANS: DivineFavorCreativeTab
     lateinit var TAB_BLADE_TALISMANS: DivineFavorCreativeTab
+    lateinit var TAB_TOOL_TALISMANS: DivineFavorCreativeTab
     lateinit var TAB_SPELL_TALISMANS: DivineFavorCreativeTab
 
     @Mod.EventHandler
@@ -53,6 +54,7 @@ object DivineFavor {
         TAB_GEMS = DivineFavorCreativeTab("gems") { ModCallingStones.calling_stone_neblaze }
         TAB_ARROW_TALISMANS = DivineFavorCreativeTab("arrow_talismans") { ModArrowTalismans.fill_lungs }
         TAB_BLADE_TALISMANS = DivineFavorCreativeTab("blade_talismans") { ModBladeTalismans.rain_sword }
+        TAB_TOOL_TALISMANS = DivineFavorCreativeTab("tool_talismans") { ModBladeTalismans.rain_sword }
         TAB_SPELL_TALISMANS = DivineFavorCreativeTab("spell_talismans") { ModSpellTalismans.wild_sprint }
 
         proxy.preInit(event)

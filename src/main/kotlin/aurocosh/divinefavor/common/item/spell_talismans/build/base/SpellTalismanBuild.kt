@@ -1,6 +1,7 @@
 package aurocosh.divinefavor.common.item.spell_talismans.build.base
 
 import aurocosh.divinefavor.client.block_ovelay.BlockConstructionRendering
+import aurocosh.divinefavor.common.item.spell_talismans.base.CastType
 import aurocosh.divinefavor.common.item.spell_talismans.base.ItemSpellTalisman
 import aurocosh.divinefavor.common.item.spell_talismans.base.SpellOptions
 import aurocosh.divinefavor.common.item.spell_talismans.common_build_properties.BlockSelectPropertyWrapper
@@ -30,7 +31,7 @@ abstract class SpellTalismanBuild(name: String, spirit: ModSpirit, favorCost: In
 
     @SideOnly(Side.CLIENT)
     override fun shouldRender(context: TalismanContext): Boolean = positionPropertyWrapper.shouldRender(context)
-    override fun raycastBlock(stack: ItemStack) = positionPropertyWrapper.shouldRaycastBlock(stack)
+    override fun raycastBlock(stack: ItemStack, castType: CastType) = positionPropertyWrapper.shouldRaycastBlock(stack)
 
     override fun preProcess(context: TalismanContext): Boolean {
         if(!selectPropertyWrapper.preprocess(context))

@@ -7,14 +7,17 @@ import aurocosh.divinefavor.common.item.base.ModItemPickaxe
 import aurocosh.divinefavor.common.item.blade_talismans.base.ItemBladeTalisman
 import aurocosh.divinefavor.common.item.spell_talismans.base.ItemSpellTalisman
 import aurocosh.divinefavor.common.item.spell_talismans.context.TalismanContextGenerator
-import aurocosh.divinefavor.common.item.talisman.ITalismanContainer
+import aurocosh.divinefavor.common.item.talisman.ITalismanStackContainer
+import aurocosh.divinefavor.common.item.talisman.ITalismanToolContainer
 import aurocosh.divinefavor.common.item.talisman.TalismanPropertyHandler
 import aurocosh.divinefavor.common.item.talisman_tools.BookPropertyWrapper
+import aurocosh.divinefavor.common.item.talisman_tools.ITalismanTool
 import aurocosh.divinefavor.common.item.talisman_tools.TalismanAdapter
 import aurocosh.divinefavor.common.item.talisman_tools.TalismanContainerMode
 import aurocosh.divinefavor.common.item.talisman_tools.spell_pick.capability.SpellPickDataHandler.CAPABILITY_SPELL_PICK
 import aurocosh.divinefavor.common.item.talisman_tools.spell_pick.capability.SpellPickProvider
 import aurocosh.divinefavor.common.item.talisman_tools.spell_pick.capability.SpellPickStorage
+import aurocosh.divinefavor.common.item.tool_talismans.base.ItemToolTalisman
 import aurocosh.divinefavor.common.lib.extensions.cap
 import aurocosh.divinefavor.common.stack_properties.IPropertyAccessor
 import aurocosh.divinefavor.common.stack_properties.IPropertyContainer
@@ -40,7 +43,7 @@ import net.minecraftforge.fml.relauncher.Side
 import net.minecraftforge.fml.relauncher.SideOnly
 import net.minecraftforge.oredict.OreDictionary
 
-open class ItemSpellPick(name: String, texturePath: String, orderIndex: Int = 0, val config: SpellPick, val material: ToolMaterial) : ModItemPickaxe(name, texturePath, orderIndex, material), ITalismanContainer, IPropertyContainer {
+open class ItemSpellPick(name: String, texturePath: String, orderIndex: Int = 0, val config: SpellPick, val material: ToolMaterial) : ModItemPickaxe(name, texturePath, orderIndex, material), ITalismanStackContainer, ITalismanToolContainer, IPropertyContainer {
     protected val propertyHandler: StackPropertyHandler = TalismanPropertyHandler(name)
     override val properties: IPropertyAccessor = propertyHandler
     private val bookPropertyWrapper = BookPropertyWrapper(propertyHandler)
@@ -60,7 +63,7 @@ open class ItemSpellPick(name: String, texturePath: String, orderIndex: Int = 0,
     }
 
     private fun performBreakCast(stack: ItemStack, pos: BlockPos, player: EntityPlayer): Boolean {
-        val (talismanStack, talisman) = TalismanAdapter.getTalisman<ItemBladeTalisman>(stack) ?: return true
+        val (talismanStack, talisman) = TalismanAdapter.getTalisman<ItemToolTalisman>(stack) ?: return true
         val context = TalismanContextGenerator.pick(talismanStack, player, pos)
         return talisman.cast(context)
     }
@@ -81,9 +84,6 @@ open class ItemSpellPick(name: String, texturePath: String, orderIndex: Int = 0,
 
     override fun onItemUse(player: EntityPlayer, world: World, pos: BlockPos, hand: EnumHand, facing: EnumFacing, hitX: Float, hitY: Float, hitZ: Float): EnumActionResult {
         val stack = player.getHeldItem(hand)
-        if (bookPropertyWrapper.getModeOrTransform(stack, player) != TalismanContainerMode.NORMAL)
-            return EnumActionResult.PASS
-
         val (talismanStack, talisman) = TalismanAdapter.getTalisman<ItemSpellTalisman>(stack)
                 ?: return EnumActionResult.PASS
         val context = TalismanContextGenerator.useCast(player, world, pos, hand, facing, talismanStack)
@@ -102,7 +102,7 @@ open class ItemSpellPick(name: String, texturePath: String, orderIndex: Int = 0,
         if (mode == TalismanContainerMode.INVALID)
             return false
         if (mode == TalismanContainerMode.BOOK)
-            player.openGui(DivineFavor, ConstGuiIDs.SPELL_BLADE, world, player.posX.toInt(), player.posY.toInt(), player.posZ.toInt())
+            player.openGui(DivineFavor, ConstGuiIDs.SPELL_PICK, world, player.posX.toInt(), player.posY.toInt(), player.posZ.toInt())
         else if (mode == TalismanContainerMode.NORMAL) {
             val (talismanStack, talisman) = TalismanAdapter.getTalisman<ItemSpellTalisman>(stack) ?: return true
             val context = TalismanContextGenerator.rightClick(world, player, hand, talismanStack)
@@ -150,6 +150,8 @@ open class ItemSpellPick(name: String, texturePath: String, orderIndex: Int = 0,
     override fun initCapabilities(item: ItemStack, nbt: NBTTagCompound?): ICapabilityProvider? {
         return if (item.item is ItemSpellPick) SpellPickProvider() else null
     }
+
+    override fun getTalismanTool(stack: ItemStack): ITalismanTool = stack.cap(CAPABILITY_SPELL_PICK)
 
     override fun getTalismanStack(stack: ItemStack): ItemStack {
         if (stack.item !== this)

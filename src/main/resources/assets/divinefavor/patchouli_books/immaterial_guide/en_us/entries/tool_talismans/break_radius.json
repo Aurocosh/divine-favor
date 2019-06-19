@@ -1,0 +1,15 @@
+{
+  "name": "Break radius",
+  "icon": "divinefavor:tool_talisman_break_radius",
+  "category": "tool_talismans",
+  "pages": [
+    {
+      "type": "item_description",
+      "talisman": "divinefavor:tool_talisman_break_radius"
+    },
+    {
+      "type": "tool_talisman_stats",
+      "talisman": "divinefavor:tool_talisman_break_radius"
+    }
+  ]
+}

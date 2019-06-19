@@ -2,7 +2,7 @@ package aurocosh.divinefavor.client.core.handler.talisman
 
 import aurocosh.divinefavor.DivineFavor
 import aurocosh.divinefavor.common.item.spell_talismans.context.TalismanContextGenerator
-import aurocosh.divinefavor.common.item.talisman.ITalismanContainer
+import aurocosh.divinefavor.common.item.talisman.ITalismanStackContainer
 import aurocosh.divinefavor.common.item.talisman.ItemTalisman
 import aurocosh.divinefavor.common.util.UtilPlayer
 import net.minecraft.client.Minecraft
@@ -37,9 +37,9 @@ object HUDHandler {
     @SubscribeEvent(priority = EventPriority.LOWEST)
     fun renderWorldLastEvent(lastEvent: RenderWorldLastEvent) {
         val player = DivineFavor.proxy.clientPlayer
-        val hand = UtilPlayer.getHandWithItem(player) { it is ITalismanContainer } ?: return
+        val hand = UtilPlayer.getHandWithItem(player) { it is ITalismanStackContainer } ?: return
         val stack = player.getHeldItem(hand)
-        val container = stack.item as ITalismanContainer
+        val container = stack.item as ITalismanStackContainer
 
         val talismanStack = container.getTalismanStack(stack)
         if(talismanStack.isEmpty)
