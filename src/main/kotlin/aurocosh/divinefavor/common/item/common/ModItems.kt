@@ -8,6 +8,7 @@ import aurocosh.divinefavor.common.item.ItemMilkyApple
 import aurocosh.divinefavor.common.item.ItemStoneball
 import aurocosh.divinefavor.common.item.base.ModItem
 import aurocosh.divinefavor.common.item.base.ModItemArrow
+import aurocosh.divinefavor.common.item.base.ModItemPickaxe
 import aurocosh.divinefavor.common.item.bone_dagger.ItemBoneDagger
 import aurocosh.divinefavor.common.item.bone_dagger.ItemBoneDaggerAwakened
 import aurocosh.divinefavor.common.item.contract_binder.ItemContractBinder
@@ -19,6 +20,7 @@ import aurocosh.divinefavor.common.item.ritual_pouch.ItemRitualPouch
 import aurocosh.divinefavor.common.item.talisman_tools.grimoire.ItemGrimoire
 import aurocosh.divinefavor.common.item.talisman_tools.spell_blade.ItemSpellBlade
 import aurocosh.divinefavor.common.item.talisman_tools.spell_bow.ItemSpellBow
+import aurocosh.divinefavor.common.item.talisman_tools.spell_pick.ItemSpellPick
 import aurocosh.divinefavor.common.item.tools.ItemBanishingWand
 import aurocosh.divinefavor.common.item.tools.ItemBoneKey
 import aurocosh.divinefavor.common.item.tools.mystic_architect_stick.ItemMysticArchitectStick
@@ -48,8 +50,8 @@ object ModItems {
     lateinit var spell_blade_green: ModItem
     lateinit var spell_blade_red: ModItem
 
-    lateinit var spell_pick_blue: ModItem
-    lateinit var spell_pick_orange: ModItem
+    lateinit var spell_pick_blue: ModItemPickaxe
+    lateinit var spell_pick_orange: ModItemPickaxe
 
     val markedGlasses: MutableList<ItemMarkedGlass> = ArrayList()
 
@@ -77,8 +79,8 @@ object ModItems {
         spell_blade_green = ItemSpellBlade("spell_blade_green", "spell_blade_green/model", ConstMainTabOrder.SWORDS, ConfigItem.spellBladeGreen, Item.ToolMaterial.IRON)
         spell_blade_red = ItemSpellBlade("spell_blade_red", "spell_blade_red/model", ConstMainTabOrder.SWORDS, ConfigItem.spellBladeRed, Item.ToolMaterial.IRON)
 
-        spell_pick_blue = ItemSpellBlade("spell_pick_blue", "spell_pick_blue/model", ConstMainTabOrder.PICKS, ConfigItem.spellBladeGreen, Item.ToolMaterial.IRON)
-        spell_pick_orange = ItemSpellBlade("spell_pick_orange", "spell_pick_orange/model", ConstMainTabOrder.PICKS, ConfigItem.spellBladeRed, Item.ToolMaterial.IRON)
+        spell_pick_blue = ItemSpellPick("spell_pick_blue", "spell_pick_blue/model", ConstMainTabOrder.PICKS, ConfigItem.spellPickBlue, Item.ToolMaterial.IRON)
+        spell_pick_orange = ItemSpellPick("spell_pick_orange", "spell_pick_orange/model", ConstMainTabOrder.PICKS, ConfigItem.spellPickOrange, Item.ToolMaterial.IRON)
 
         for (spirit in ModMappers.spirits.values)
             markedGlasses.add(ItemMarkedGlass(spirit, ConstGemTabOrder.MARKED_GLASS))

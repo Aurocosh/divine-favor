@@ -1,9 +1,9 @@
 package aurocosh.divinefavor.common.item.talisman_tools.spell_pick
 
 import aurocosh.divinefavor.DivineFavor
-import aurocosh.divinefavor.common.config.entries.items.SpellBlade
+import aurocosh.divinefavor.common.config.entries.items.SpellPick
 import aurocosh.divinefavor.common.constants.ConstGuiIDs
-import aurocosh.divinefavor.common.item.base.ModItemTool
+import aurocosh.divinefavor.common.item.base.ModItemPickaxe
 import aurocosh.divinefavor.common.item.blade_talismans.base.ItemBladeTalisman
 import aurocosh.divinefavor.common.item.spell_talismans.base.ItemSpellTalisman
 import aurocosh.divinefavor.common.item.spell_talismans.context.TalismanContextGenerator
@@ -12,7 +12,6 @@ import aurocosh.divinefavor.common.item.talisman.TalismanPropertyHandler
 import aurocosh.divinefavor.common.item.talisman_tools.BookPropertyWrapper
 import aurocosh.divinefavor.common.item.talisman_tools.TalismanAdapter
 import aurocosh.divinefavor.common.item.talisman_tools.TalismanContainerMode
-import aurocosh.divinefavor.common.item.talisman_tools.spell_blade.ItemSpellBlade
 import aurocosh.divinefavor.common.item.talisman_tools.spell_pick.capability.SpellPickDataHandler.CAPABILITY_SPELL_PICK
 import aurocosh.divinefavor.common.item.talisman_tools.spell_pick.capability.SpellPickProvider
 import aurocosh.divinefavor.common.item.talisman_tools.spell_pick.capability.SpellPickStorage
@@ -41,7 +40,7 @@ import net.minecraftforge.fml.relauncher.Side
 import net.minecraftforge.fml.relauncher.SideOnly
 import net.minecraftforge.oredict.OreDictionary
 
-open class ItemSpellPick(name: String, texturePath: String, orderIndex: Int = 0, val config: SpellBlade, val material: ToolMaterial) : ModItemTool(name, texturePath, orderIndex, ToolMaterial.IRON, emptySet()), ITalismanContainer, IPropertyContainer {
+open class ItemSpellPick(name: String, texturePath: String, orderIndex: Int = 0, val config: SpellPick, val material: ToolMaterial) : ModItemPickaxe(name, texturePath, orderIndex, material), ITalismanContainer, IPropertyContainer {
     protected val propertyHandler: StackPropertyHandler = TalismanPropertyHandler(name)
     override val properties: IPropertyAccessor = propertyHandler
     private val bookPropertyWrapper = BookPropertyWrapper(propertyHandler)
@@ -113,19 +112,11 @@ open class ItemSpellPick(name: String, texturePath: String, orderIndex: Int = 0,
     }
 
     override fun getDestroySpeed(stack: ItemStack, state: IBlockState): Float {
-        return when {
-            state.block === Blocks.WEB -> 15.0f
-            else -> 1.5f
-        }
-    }
-
-    override fun onBlockDestroyed(stack: ItemStack, worldIn: World, state: IBlockState, pos: BlockPos, entityLiving: EntityLivingBase): Boolean {
-        if (state.getBlockHardness(worldIn, pos).toDouble() != 0.0) stack.damageItem(2, entityLiving)
-        return true
+        return super.getDestroySpeed(stack, state)
     }
 
     override fun canHarvestBlock(blockIn: IBlockState): Boolean {
-        return blockIn.block === Blocks.WEB
+        return super.canHarvestBlock(blockIn)
     }
 
     @SideOnly(Side.CLIENT)
@@ -157,7 +148,7 @@ open class ItemSpellPick(name: String, texturePath: String, orderIndex: Int = 0,
     }
 
     override fun initCapabilities(item: ItemStack, nbt: NBTTagCompound?): ICapabilityProvider? {
-        return if (item.item is ItemSpellBlade) SpellPickProvider() else null
+        return if (item.item is ItemSpellPick) SpellPickProvider() else null
     }
 
     override fun getTalismanStack(stack: ItemStack): ItemStack {
@@ -195,6 +186,8 @@ open class ItemSpellPick(name: String, texturePath: String, orderIndex: Int = 0,
         const val SLOT_COUNT = 18
         const val ATTRIBUTE_NAME = "Weapon modifier"
         private const val TAG_SHARE = "SpellBlade"
+
+        private val EffectiveOn = setOf(Blocks.ACTIVATOR_RAIL, Blocks.COAL_ORE, Blocks.COBBLESTONE, Blocks.DETECTOR_RAIL, Blocks.DIAMOND_BLOCK, Blocks.DIAMOND_ORE, Blocks.DOUBLE_STONE_SLAB, Blocks.GOLDEN_RAIL, Blocks.GOLD_BLOCK, Blocks.GOLD_ORE, Blocks.ICE, Blocks.IRON_BLOCK, Blocks.IRON_ORE, Blocks.LAPIS_BLOCK, Blocks.LAPIS_ORE, Blocks.LIT_REDSTONE_ORE, Blocks.MOSSY_COBBLESTONE, Blocks.NETHERRACK, Blocks.PACKED_ICE, Blocks.RAIL, Blocks.REDSTONE_ORE, Blocks.SANDSTONE, Blocks.RED_SANDSTONE, Blocks.STONE, Blocks.STONE_SLAB, Blocks.STONE_BUTTON, Blocks.STONE_PRESSURE_PLATE)
     }
 }
 

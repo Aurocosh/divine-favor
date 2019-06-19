@@ -27,9 +27,10 @@ open class DivineFavorCreativeTab(name: String, val itemGetter: () -> ModItem) :
     override fun displayAllRelevantItems(stacks: NonNullList<ItemStack>) {
         list = stacks
 
+        ModRegistries.arrows.values.forEach(this::addItem)
         ModRegistries.blocks.values.forEach(this::addBlock)
         ModRegistries.items.values.forEach(this::addItem)
-        ModRegistries.arrows.values.forEach(this::addItem)
+        ModRegistries.pickaxes.values.forEach(this::addItem)
         stacks.sortWith(ModItemStackComparator())
     }
 

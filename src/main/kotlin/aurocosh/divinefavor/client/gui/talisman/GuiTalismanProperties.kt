@@ -99,7 +99,7 @@ class GuiTalismanProperties(stack: ItemStack, private val playerSlot: Int) : Gui
     }
 
     fun drawMarker() {
-        if (selectedPropertyIndex < 0 || selectedPropertyIndex > propertyGuiElements.size)
+        if (selectedPropertyIndex < 0 || selectedPropertyIndex >= propertyGuiElements.size)
             return
 
         val container = propertyGuiElements[selectedPropertyIndex]

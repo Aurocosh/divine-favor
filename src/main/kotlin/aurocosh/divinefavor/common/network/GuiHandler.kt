@@ -18,10 +18,9 @@ import aurocosh.divinefavor.common.block.soulbound_lectern.ContainerSoulboundLec
 import aurocosh.divinefavor.common.block.soulbound_lectern.ContainerSoulboundLecternWithShard
 import aurocosh.divinefavor.common.block.soulbound_lectern.TileSoulboundLectern
 import aurocosh.divinefavor.common.constants.ConstGuiIDs
-import aurocosh.divinefavor.common.item.talisman.ItemTalisman
 import aurocosh.divinefavor.common.item.contract_binder.ContractBinderContainer
 import aurocosh.divinefavor.common.item.ritual_pouch.RitualBagContainer
-import aurocosh.divinefavor.common.item.talisman_tools.TalismanAdapter
+import aurocosh.divinefavor.common.item.talisman.ITalismanContainer
 import aurocosh.divinefavor.common.item.talisman_tools.grimoire.GrimoireContainer
 import aurocosh.divinefavor.common.item.talisman_tools.grimoire.ItemGrimoire
 import aurocosh.divinefavor.common.item.talisman_tools.grimoire.capability.GrimoireDataHandler.CAPABILITY_GRIMOIRE
@@ -127,11 +126,14 @@ class GuiHandler : IGuiHandler {
             ConstGuiIDs.BATH_HEATER -> return GuiBathHeater(player, (world.getTileEntity(BlockPos(x, y, z)) as TileBathHeater))
 
             ConstGuiIDs.TALISMAN_HUD -> {
-                val hand = UtilPlayer.getHandWithItem(player) { it is ItemTalisman || TalismanAdapter.isItemValid(it) }
-                        ?: return null
-                val index = UtilPlayer.getHandIndex(player, hand)
-                val stack = player.getHeldItem(hand)
-                return GuiTalismanProperties(stack, index)
+                val (slotIndex, stack) = UtilPlayer.findStackInInventory(player) { it.item is ITalismanContainer }
+                if (stack.isEmpty)
+                    return null
+                val container = stack.item as ITalismanContainer
+                val talismanStack = container.getTalismanStack(stack)
+                if (talismanStack.isEmpty)
+                    return null
+                return GuiTalismanProperties(talismanStack, slotIndex)
             }
         }
         return null

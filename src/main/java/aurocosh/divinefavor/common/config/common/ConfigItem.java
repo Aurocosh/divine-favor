@@ -52,6 +52,11 @@ public class ConfigItem {
     @Config.Name("Spell blade green")
     public static SpellBlade spellBladeGreen = new SpellBlade();
 
+    @Config.Name("Spell pick blue")
+    public static SpellPick spellPickBlue = new SpellPick();
+    @Config.Name("Spell pick green")
+    public static SpellPick spellPickOrange = new SpellPick();
+
     // New configs
     @Config.Name("Ice")
     public static IceArrow iceArrow = new IceArrow();
