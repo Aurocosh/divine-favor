@@ -19,8 +19,8 @@
       "item": "minecraft:brown_mushroom"
     },
     {
-      "type": "stack",
-      "item": "minecraft:chest"
+      "type": "ore",
+      "ore": "chestWood"
     }
   ]
 }

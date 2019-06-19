@@ -19,8 +19,8 @@
       "item": "minecraft:arrow"
     },
     {
-      "type": "stack",
-      "item": "minecraft:quartz"
+      "type": "ore",
+      "ore": "gemQuartz"
     }
   ]
 }

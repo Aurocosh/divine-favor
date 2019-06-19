@@ -35,8 +35,8 @@
       "item": "minecraft:clock"
     },
     {
-      "type": "stack",
-      "item": "minecraft:nether_star"
+      "type": "ore",
+      "ore": "netherStar"
     }
   ]
 }

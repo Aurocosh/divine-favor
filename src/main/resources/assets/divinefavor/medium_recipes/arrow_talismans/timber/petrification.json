@@ -15,9 +15,8 @@
       "ore": "dyeMagenta"
     },
     {
-      "type": "stack",
-      "item": "minecraft:stone",
-      "data": 0
+      "type": "ore",
+      "ore": "stone"
     },
     {
       "type": "stack",

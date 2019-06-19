@@ -15,8 +15,8 @@
       "ore": "dyeRed"
     },
     {
-      "type": "stack",
-      "item": "minecraft:obsidian"
+      "type": "ore",
+      "ore": "obsidian"
     },
     {
       "type": "stack",

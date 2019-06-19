@@ -35,8 +35,8 @@
       "item": "minecraft:bucket"
     },
     {
-      "type": "stack",
-      "item": "minecraft:nether_star"
+      "type": "ore",
+      "ore": "netherStar"
     }
   ]
 }

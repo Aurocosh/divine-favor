@@ -19,8 +19,8 @@
       "ore": "dyeGray"
     },
     {
-      "type": "stack",
-      "item": "minecraft:potato"
+      "type": "ore",
+      "ore": "cropPotato"
     }
   ]
 }

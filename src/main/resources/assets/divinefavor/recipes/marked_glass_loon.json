@@ -5,7 +5,8 @@
   "type": "forge:ore_shapeless",
   "ingredients": [
     {
-      "item": "minecraft:glass_pane"
+      "type": "forge:ore_dict",
+      "ore": "paneGlass"
     },
     {
       "type": "forge:ore_dict",

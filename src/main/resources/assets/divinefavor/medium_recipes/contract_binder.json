@@ -35,8 +35,8 @@
       "ore": "blockDiamond"
     },
     {
-      "type": "stack",
-      "item": "minecraft:nether_star"
+      "type": "ore",
+      "ore": "netherStar"
     }
   ]
 }

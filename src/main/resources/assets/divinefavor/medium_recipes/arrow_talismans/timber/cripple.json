@@ -15,8 +15,8 @@
       "ore": "dyeLightBlue"
     },
     {
-      "type": "stack",
-      "item": "minecraft:nether_wart"
+      "type": "ore",
+      "ore": "cropNetherWart"
     },
     {
       "type": "stack",

@@ -19,8 +19,8 @@
       "item": "minecraft:lava_bucket"
     },
     {
-      "type": "stack",
-      "item": "minecraft:obsidian"
+      "type": "ore",
+      "ore": "obsidian"
     }
   ]
 }

@@ -15,8 +15,8 @@
       "ore": "dyePink"
     },
     {
-      "type": "stack",
-      "item": "minecraft:slime_ball"
+      "type": "ore",
+      "ore": "slimeball"
     },
     {
       "type": "stack",

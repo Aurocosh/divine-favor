@@ -24,8 +24,8 @@
       "ore": "dyeLime"
     },
     {
-      "type": "stack",
-      "item": "minecraft:end_stone"
+      "type": "ore",
+      "ore": "endstone"
     },
     {
       "type": "ore",

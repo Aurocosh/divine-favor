@@ -24,8 +24,8 @@
       "ore": "dyeOrange"
     },
     {
-      "type": "stack",
-      "item": "minecraft:sand"
+      "type": "ore",
+      "ore": "sand"
     },
     {
       "type": "ore",

@@ -19,8 +19,8 @@
       "item": "minecraft:tnt"
     },
     {
-      "type": "stack",
-      "item": "minecraft:chest"
+      "type": "ore",
+      "ore": "chestWood"
     }
   ]
 }

@@ -19,9 +19,8 @@
       "ore": "dustGlowstone"
     },
     {
-      "type": "stack",
-      "item": "minecraft:stone",
-      "data": 0
+      "type": "ore",
+      "ore": "stone"
     }
   ]
 }

@@ -15,19 +15,16 @@
       "ore": "dyeGray"
     },
     {
-      "type": "stack",
-      "item": "minecraft:log",
-      "data": 0
+      "type": "ore",
+      "ore": "logWood"
     },
     {
-      "type": "stack",
-      "item": "minecraft:log",
-      "data": 0
+      "type": "ore",
+      "ore": "logWood"
     },
     {
-      "type": "stack",
-      "item": "minecraft:log",
-      "data": 0
+      "type": "ore",
+      "ore": "logWood"
     },
     {
       "type": "stack",
