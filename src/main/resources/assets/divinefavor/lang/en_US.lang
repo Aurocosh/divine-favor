@@ -398,6 +398,7 @@ item.divinefavor:blade_talisman_vengeful_blade.name=Vengeful blade talisman
 item.divinefavor:blade_talisman_wither_coating.name=Wither coating talisman
 
 ## TOOL TALISMAN NAMES
+item.divinefavor:tool_talisman_break_side.name=Break side
 item.divinefavor:tool_talisman_break_surface.name=Break surface
 item.divinefavor:tool_talisman_break_radius.name=Break radius talisman
 
@@ -809,6 +810,7 @@ item.divinefavor:blade_talisman_vengeful_blade.description=Deals additional dama
 item.divinefavor:blade_talisman_wither_coating.description=Inflicts withering on hit
 
 ## TOOL TALISMAN DESCRIPTIONS
+item.divinefavor:tool_talisman_break_side.description=When spell pick with this talisman breaks a block it will also break some blocks on the same continuous surface.
 item.divinefavor:tool_talisman_break_surface.description=When spell pick with this talisman breaks a block it will also break some blocks on the same surface.
 item.divinefavor:tool_talisman_break_radius.description=When spell pick with this talisman breaks a block it will also break blocks in certain radius around original block.
 
