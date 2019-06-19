@@ -2,7 +2,7 @@
   "name": "Curses",
   "icon": "divinefavor:milky_apple",
   "category": "basics",
-  "sortnum": 9,
+  "sortnum": 10,
   "pages": [
     {
       "type": "text",

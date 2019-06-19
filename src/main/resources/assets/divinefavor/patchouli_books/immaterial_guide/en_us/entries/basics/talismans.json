@@ -26,6 +26,11 @@
       "type": "spotlight",
       "item": "divinefavor:blade_talisman_lucky_strike",
       "text": "Above you will see an example of a blade talisman. Blade talismans require spell blade to use. This type of talisman activates when you hit somebody with a spell blade. This type of talisman cannot be used on its own."
+    },
+    {
+      "type": "spotlight",
+      "item": "divinefavor:tool_talisman_break_radius",
+      "text": "Above you will see an example of a tool talisman. Tool talismans require spell pick to use. This type of talisman activates when you break block with a spell blade. This type of talisman cannot be used on its own."
     }
   ]
 }

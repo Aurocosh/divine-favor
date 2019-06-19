@@ -2,7 +2,7 @@
   "name": "Contracts",
   "icon": "divinefavor:contract_binder",
   "category": "basics",
-  "sortnum": 7,
+  "sortnum": 8,
   "pages": [
     {
       "type": "text",

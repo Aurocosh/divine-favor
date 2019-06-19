@@ -1,0 +1,42 @@
+{
+  "processor": "aurocosh.divinefavor.common.integrations.patchouli.processors.ToolTalismanStatProcessor",
+  "components": [
+    {
+      "group": "header",
+      "type": "header",
+      "text": "Stats",
+      "x": -1
+    },
+    {
+      "group": "header",
+      "type": "separator",
+      "y": 12
+    },
+    {
+      "type": "image",
+      "image": "#spirit_icon",
+      "x": 50,
+      "y": 15,
+      "texture_width": 16,
+      "texture_height": 16,
+      "width": 16,
+      "height": 16
+    },
+    {
+      "type": "image",
+      "image": "#spirit_symbol",
+      "x": 50,
+      "y": 15,
+      "texture_width": 16,
+      "texture_height": 16,
+      "width": 16,
+      "height": 16
+    },
+    {
+      "type": "text",
+      "text": "#text",
+      "x": 0,
+      "y": 31
+    }
+  ]
+}
