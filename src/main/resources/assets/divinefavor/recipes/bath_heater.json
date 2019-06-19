@@ -17,11 +17,12 @@
       "ore": "chestWood"
     },
     "s": {
-      "item": "minecraft:stone",
-      "data": 0
+      "type": "forge:ore_dict",
+      "ore": "stone"
     },
     "b": {
-      "item": "minecraft:cobblestone"
+      "type": "forge:ore_dict",
+      "ore": "cobblestone"
     }
   }
 }

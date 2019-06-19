@@ -19,8 +19,8 @@
       "ore": "dyeGreen"
     },
     {
-      "type": "stack",
-      "item": "minecraft:stone"
+      "type": "ore",
+      "ore": "stone"
     }
   ]
 }

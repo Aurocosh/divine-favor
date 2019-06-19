@@ -19,8 +19,8 @@
       "ore": "dyeOrange"
     },
     {
-      "type": "stack",
-      "item": "minecraft:fence"
+      "type": "ore",
+      "ore": "fenceWood"
     }
   ]
 }

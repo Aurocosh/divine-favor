@@ -13,7 +13,8 @@
       "ore": "dyeBlack"
     },
     {
-      "item": "minecraft:obsidian"
+      "type": "forge:ore_dict",
+      "ore": "obsidian"
     },
     {
       "item": "divinefavor:bone_dagger_awakened"

@@ -19,8 +19,8 @@
       "ore": "enderpearl"
     },
     {
-      "type": "stack",
-      "item": "minecraft:wooden_door"
+      "type": "ore",
+      "ore": "doorWood"
     }
   ]
 }

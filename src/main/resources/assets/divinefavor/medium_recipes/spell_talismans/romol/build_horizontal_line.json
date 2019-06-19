@@ -19,8 +19,8 @@
       "ore": "dyeOrange"
     },
     {
-      "type": "stack",
-      "item": "minecraft:stick"
+      "type": "ore",
+      "ore": "stickWood"
     }
   ]
 }

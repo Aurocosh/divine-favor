@@ -24,8 +24,8 @@
       "ore": "dyeLightGray"
     },
     {
-      "type": "stack",
-      "item": "minecraft:glass"
+      "type": "ore",
+      "ore": "blockGlass"
     },
     {
       "type": "ore",

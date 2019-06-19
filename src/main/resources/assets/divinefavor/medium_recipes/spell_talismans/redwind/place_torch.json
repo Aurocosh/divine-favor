@@ -19,8 +19,8 @@
       "ore": "dyeBrown"
     },
     {
-      "type": "stack",
-      "item": "minecraft:torch"
+      "type": "ore",
+      "ore": "torch"
     }
   ]
 }
