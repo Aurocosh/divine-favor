@@ -19,8 +19,8 @@
       "ore": "enderpearl"
     },
     {
-      "type": "stack",
-      "item": "minecraft:chest"
+      "type": "ore",
+      "ore": "chestWood"
     }
   ]
 }

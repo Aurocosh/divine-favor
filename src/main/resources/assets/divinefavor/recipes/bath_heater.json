@@ -13,7 +13,8 @@
       "item": "minecraft:furnace"
     },
     "c": {
-      "item": "minecraft:chest"
+      "type": "forge:ore_dict",
+      "ore": "chestWood"
     },
     "s": {
       "item": "minecraft:stone",
