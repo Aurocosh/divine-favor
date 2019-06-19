@@ -4,5 +4,5 @@ import net.minecraftforge.common.config.Config;
 
 public class BreakRadius {
     @Config.Name("Favor cost")
-    public int favorCost = 10; // TODO change favor value
+    public int favorCost = 3;
 }

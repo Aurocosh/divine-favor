@@ -6,6 +6,8 @@ import aurocosh.divinefavor.common.item.spell_talismans.common_build_properties.
 import aurocosh.divinefavor.common.item.spell_talismans.context.ContextProperty
 import aurocosh.divinefavor.common.item.spell_talismans.context.TalismanContext
 import aurocosh.divinefavor.common.item.tool_talismans.base.ItemToolTalisman
+import aurocosh.divinefavor.common.lib.extensions.S
+import aurocosh.divinefavor.common.lib.extensions.get
 import aurocosh.divinefavor.common.spirit.base.ModSpirit
 import aurocosh.divinefavor.common.tasks.BlockBreakingTask
 import net.minecraft.item.ItemStack
@@ -18,6 +20,7 @@ import javax.vecmath.Color3f
 abstract class ToolTalismanBreak(name: String, spirit: ModSpirit, favorCost: Int) : ItemToolTalisman(name, spirit, favorCost) {
     protected val finalCoordinates = ContextProperty<List<BlockPos>>("coordinates", emptyList())
 
+    val doNotBreakBelow = propertyHandler.registerBoolProperty("do_not_break_below", false)
     protected val selectPropertyWrapper = BlockSelectPropertyWrapper(propertyHandler)
 
     override fun getApproximateFavorCost(itemStack: ItemStack) = favorCost * getBlockCount(itemStack)
@@ -43,8 +46,17 @@ abstract class ToolTalismanBreak(name: String, spirit: ModSpirit, favorCost: Int
         return coordinates.isNotEmpty()
     }
 
-    protected open fun getRenderCoordinates(context: TalismanContext) = getCoordinates(context).filterNot { context.world.isAirBlock(it) }
-    protected open fun getFinalCoordinates(context: TalismanContext) = getCoordinates(context).filterNot { context.world.isAirBlock(it) }.shuffled()
+    protected open fun getCommonCoordinates(context: TalismanContext): List<BlockPos> {
+        val coordinates = getCoordinates(context)
+        val y = context.player.position.y
+        val preFiltered = if (context.stack.get(doNotBreakBelow)) coordinates.S.filter { it.y >= y } else coordinates.S
+
+        val toList = preFiltered.toList()
+        return preFiltered.filterNot { context.world.isAirBlock(it) }.toList()
+    }
+
+    protected open fun getRenderCoordinates(context: TalismanContext): List<BlockPos> = getCommonCoordinates(context)
+    protected open fun getFinalCoordinates(context: TalismanContext): List<BlockPos> = getCommonCoordinates(context).shuffled()
 
     override fun performActionServer(context: TalismanContext) {
         val coordinates = context.get(finalCoordinates)
@@ -61,7 +73,7 @@ abstract class ToolTalismanBreak(name: String, spirit: ModSpirit, favorCost: Int
     protected abstract fun getBlockCount(stack: ItemStack): Int
 
     companion object {
-        val hudDistance = 6
-        val hudDistanceSq = hudDistance * hudDistance
+        const val hudDistance = 6
+        const val hudDistanceSq = hudDistance * hudDistance
     }
 }

@@ -12,6 +12,10 @@
     },
     {
       "type": "ore",
+      "ore": "dyeGray"
+    },
+    {
+      "type": "ore",
       "ore": "dyeGreen"
     },
     {
@@ -19,8 +23,8 @@
       "item": "minecraft:iron_pickaxe"
     },
     {
-      "type": "stack",
-      "item": "minecraft:TODO" 
+      "type": "ore",
+      "ore": "blockGold"
     }
   ]
 }

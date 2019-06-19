@@ -394,6 +394,9 @@ item.divinefavor:blade_talisman_rain_sword.name=Rain sword talisman
 item.divinefavor:blade_talisman_vengeful_blade.name=Vengeful blade talisman
 item.divinefavor:blade_talisman_wither_coating.name=Wither coating talisman
 
+## TOOL TALISMAN NAMES
+item.divinefavor:tool_talisman_break_radius.name=Break radius talisman
+
 # EFFECT NAMES
 potion.divinefavor:armor_of_pacifist.name=Armor of pacifist
 potion.divinefavor:arrow_deflection.name=Arrow deflection
@@ -799,6 +802,9 @@ item.divinefavor:blade_talisman_rain_sword.description=Deals additional damage t
 item.divinefavor:blade_talisman_vengeful_blade.description=Deals additional damage equal to last damage inflicted upon you
 item.divinefavor:blade_talisman_wither_coating.description=Inflicts withering on hit
 
+## TOOL TALISMAN DESCRIPTIONS
+item.divinefavor:tool_talisman_break_radius.description=When spell pick with this talisman breaks a block it will also break blocks in certain radius around original block.
+
 #PATCHOULI
 ## CONTRACTS
 item.divinefavor:contract.effects=Contract effects:
@@ -864,6 +870,8 @@ name.divinefavor:property.height=Height: %1$s
 name.divinefavor:property.surface=Surface: %1$s
 name.divinefavor:property.depth=Depth: %1$s
 
+name.divinefavor:property.do_not_break_below=Don't break below
+
 ## TALISMAN PROPERTY TOOLTIPS
 tooltip.divinefavor:property.blink_distance=Teleportation distance
 tooltip.divinefavor:property.block_count=Amount of blocks affected by spell
@@ -901,3 +909,5 @@ tooltip.divinefavor:property.radius=Determines radius of the build
 tooltip.divinefavor:property.height=Determines height of the build
 tooltip.divinefavor:property.surface=Determines max surface area of the build
 tooltip.divinefavor:property.depth=Determines depth of the build
+
+tooltip.divinefavor:property.do_not_break_below=If this option is enabled then no blocks below your feet will be broken
