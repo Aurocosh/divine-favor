@@ -9,6 +9,8 @@ public class ConfigTool {
     @Config.Name("Break radius")
     public static BreakRadius breakRadius = new BreakRadius();
     // New configs
+    @Config.Name("Ground pick")
+    public static GroundPick groundPick = new GroundPick();
     @Config.Name("Wood peck")
     public static WoodPeck woodPeck = new WoodPeck();
     @Config.Name("Break side")

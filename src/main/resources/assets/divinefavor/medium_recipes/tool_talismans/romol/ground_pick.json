@@ -1,6 +1,6 @@
 {
   "result": {
-    "item": "divinefavor:tool_talisman_wood_peck"
+    "item": "divinefavor:tool_talisman_ground_pick"
   },
   "stones": [
     "divinefavor:calling_stone_romol"
@@ -24,7 +24,7 @@
     },
     {
       "type": "stack",
-      "item": "minecraft:iron_axe"
+      "item": "minecraft:iron_shovel"
     }
   ]
 }

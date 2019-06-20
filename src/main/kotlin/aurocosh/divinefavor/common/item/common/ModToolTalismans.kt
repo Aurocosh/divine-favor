@@ -7,6 +7,7 @@ import aurocosh.divinefavor.common.spirit.ModSpirits
 
 object ModToolTalismans {
     // New fields
+    lateinit var ground_pick: ItemToolTalisman
     lateinit var wood_peck: ItemToolTalisman
     lateinit var break_side: ItemToolTalisman
     lateinit var break_surface: ItemToolTalisman
@@ -30,6 +31,7 @@ object ModToolTalismans {
         // squarefury;
 
         // New instances
+        ground_pick = ToolTalismanGroundPick("ground_pick", ModSpirits.romol, ConfigTool.groundPick.favorCost)
         wood_peck = ToolTalismanWoodPeck("wood_peck", ModSpirits.romol, ConfigTool.woodPeck.favorCost)
         break_side = ToolTalismanBreakSide("break_side", ModSpirits.romol, ConfigTool.breakSide.favorCost)
         break_surface = ToolTalismanBreakSurface("break_surface", ModSpirits.romol, ConfigTool.breakSurface.favorCost)

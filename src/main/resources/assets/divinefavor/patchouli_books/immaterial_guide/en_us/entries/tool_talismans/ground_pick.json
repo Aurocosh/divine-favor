@@ -1,0 +1,15 @@
+{
+  "name": "Ground pick",
+  "icon": "divinefavor:tool_talisman_ground_pick",
+  "category": "tool_talismans",
+  "pages": [
+    {
+      "type": "item_description",
+      "talisman": "divinefavor:tool_talisman_ground_pick"
+    },
+    {
+      "type": "tool_talisman_stats",
+      "talisman": "divinefavor:tool_talisman_ground_pick"
+    }
+  ]
+}
