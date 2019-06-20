@@ -14,6 +14,7 @@ import aurocosh.divinefavor.common.item.talisman.TalismanPropertyHandler
 import aurocosh.divinefavor.common.item.talisman_tools.BookPropertyWrapper
 import aurocosh.divinefavor.common.item.talisman_tools.ITalismanTool
 import aurocosh.divinefavor.common.item.talisman_tools.TalismanAdapter
+import aurocosh.divinefavor.common.item.talisman_tools.TalismanContainerMode
 import aurocosh.divinefavor.common.item.talisman_tools.spell_bow.capability.SpellBowDataHandler.CAPABILITY_SPELL_BOW
 import aurocosh.divinefavor.common.item.talisman_tools.spell_bow.capability.SpellBowProvider
 import aurocosh.divinefavor.common.item.talisman_tools.spell_bow.capability.SpellBowStorage
@@ -24,6 +25,7 @@ import aurocosh.divinefavor.common.stack_properties.IPropertyAccessor
 import aurocosh.divinefavor.common.stack_properties.IPropertyContainer
 import aurocosh.divinefavor.common.stack_properties.StackPropertyHandler
 import aurocosh.divinefavor.common.util.UtilBow
+import aurocosh.divinefavor.common.util.UtilItem.actionResult
 import aurocosh.divinefavor.common.util.UtilPlayer
 import net.minecraft.enchantment.EnchantmentHelper
 import net.minecraft.entity.EntityLivingBase
@@ -73,9 +75,10 @@ class ItemSpellBow : ModItem("spell_bow", "spell_bow/spell_bow", ConstMainTabOrd
      * Called when the player stops using an Item (stops holding the right mouse button).
      */
     override fun onPlayerStoppedUsing(bowStack: ItemStack, world: World, entityLiving: EntityLivingBase, timeLeft: Int) {
-        if (bowStack.compound.getBoolean(TAG_IS_IN_BOOK_MODE))
-            return
         if (entityLiving !is EntityPlayer)
+            return
+        val mode = bookPropertyWrapper.getModeOrTransform(bowStack, entityLiving)
+        if (mode != TalismanContainerMode.NORMAL)
             return
 
         val unlimitedArrows = entityLiving.capabilities.isCreativeMode || EnchantmentHelper.getEnchantmentLevel(Enchantments.INFINITY, bowStack) > 0
@@ -170,17 +173,11 @@ class ItemSpellBow : ModItem("spell_bow", "spell_bow/spell_bow", ConstMainTabOrd
         val itemStack = player.getHeldItem(hand)
         if (itemStack.item !is ItemSpellBow)
             return ActionResult(EnumActionResult.PASS, itemStack)
-
-        val compound = itemStack.compound
-        val isBook = compound.getBoolean(TAG_IS_IN_BOOK_MODE)
-        if (player.isSneaking) {
-            compound.setBoolean(TAG_IS_IN_BOOK_MODE, !isBook)
-            return ActionResult(EnumActionResult.SUCCESS, itemStack)
+        return when (bookPropertyWrapper.getModeOrTransform(itemStack, player)) {
+            TalismanContainerMode.BOOK -> doBookAction(world, player, itemStack)
+            TalismanContainerMode.NORMAL -> doBowAction(world, player, hand, itemStack)
+            else -> return actionResult(false, itemStack)
         }
-        return if (isBook)
-            doBookAction(world, player, itemStack)
-        else
-            doBowAction(world, player, hand, itemStack)
     }
 
     private fun doBookAction(world: World?, player: EntityPlayer, stack: ItemStack): ActionResult<ItemStack> {
