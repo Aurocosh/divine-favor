@@ -8,6 +8,7 @@ import net.minecraftforge.fml.common.Mod
 import net.minecraftforge.fml.common.ModContainer
 import net.minecraftforge.fml.common.SidedProxy
 import net.minecraftforge.fml.common.event.FMLInitializationEvent
+import net.minecraftforge.fml.common.event.FMLPostInitializationEvent
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent
 import net.minecraftforge.fml.common.event.FMLServerStartingEvent
 import org.apache.logging.log4j.LogManager
@@ -20,7 +21,7 @@ object DivineFavor {
     const val MOD_NAME = "Divine Favor"
     const val MOD_DEPS = "required-after:patchouli;required:forgelin;required:autonetworklib@[1.0.30,)"
 
-    const val KEYBIND_CATEGORY = "key.categories." + MOD_ID
+    const val KEYBIND_CATEGORY = "key.categories.$MOD_ID"
 
     // Proxy Constants
     const val PROXY_COMMON = "aurocosh.divinefavor.common.core.proxy.CommonProxy"
@@ -61,8 +62,13 @@ object DivineFavor {
         proxy.init(event)
     }
 
+
+    @Mod.EventHandler
+    fun init(event: FMLPostInitializationEvent) {
+        proxy.postInit(event)
+    }
+
     @Mod.EventHandler
     fun serverStartingEvent(@Suppress("UNUSED_PARAMETER") event: FMLServerStartingEvent) {
-
     }
 }

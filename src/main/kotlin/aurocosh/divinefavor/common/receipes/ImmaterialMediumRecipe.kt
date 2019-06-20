@@ -1,7 +1,9 @@
 package aurocosh.divinefavor.common.receipes
 
+import aurocosh.divinefavor.common.item.gems.ItemCallingStone
 import aurocosh.divinefavor.common.lib.EmptyConst.emptyLocation
 import aurocosh.divinefavor.common.lib.extensions.S
+import net.minecraft.item.Item
 import net.minecraft.item.ItemStack
 import net.minecraft.item.crafting.Ingredient
 import net.minecraft.util.ResourceLocation
@@ -12,27 +14,31 @@ class ImmaterialMediumRecipe(val result: ItemStack, val callingStones: List<Ingr
     val name: ResourceLocation
         get() = result.item.registryName ?: emptyLocation()
 
-    fun getMatchingStacks(): List<MutableList<ItemStack>> {
-        var prevLists = ArrayList<MutableList<ItemStack>>()
-        var nextLists = ArrayList<MutableList<ItemStack>>()
+    private val acceptableStones = callingStones.map { it.getMatchingStacks().first().item }.toSet()
+    private val possibleItemIds = ingredients.flatMap{ it.getMatchingStacks().asIterable() }.map { Item.getIdFromItem(it.item) }.toSet()
 
-        for (ingredient in ingredients) {
-            val stacks = ingredient.getMatchingStacks();
+    fun isMatching(callingStone: ItemCallingStone, stacks: List<ItemStack>): Boolean {
+        if(stacks.size != ingredients.size)
+            return false
+        if(!acceptableStones.contains(callingStone))
+            return false
+        val itemIdSet = stacks.map { Item.getIdFromItem(it.item) }.toSet()
+        if(!possibleItemIds.containsAll(itemIdSet))
+            return false
 
-            if (prevLists.isEmpty()) {
-                nextLists.addAll(stacks.S.map(Collections::singletonList))
-            } else {
-                for (stack in stacks) {
-                    val listCopies = prevLists.map { it.toMutableList() }
-                    listCopies.forEach { it.add(stack) }
-                    nextLists.addAll(listCopies)
-                }
-            }
-
-            prevLists = nextLists
-            nextLists = ArrayList()
+        val requiredIngredients = ingredients.toMutableList()
+        for (stack in stacks) {
+            val match = requiredIngredients.firstOrNull { it.apply(stack) }
+            if(match != null)
+                requiredIngredients.remove(match)
         }
+        return requiredIngredients.isEmpty()
+    }
 
-        return prevLists;
+    fun getStringId(): String {
+        return ingredients.S
+                .map { it.getMatchingStacks() }
+                .map { it.joinToString("_") { stack -> Item.getIdFromItem(stack.item).toString() } }
+                .joinToString { "-" }
     }
 }

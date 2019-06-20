@@ -94,7 +94,9 @@ open class CommonProxy {
         ModBlessings.init()
     }
 
-    fun postInit(@Suppress("UNUSED_PARAMETER") event: FMLPostInitializationEvent) {}
+    fun postInit(@Suppress("UNUSED_PARAMETER") event: FMLPostInitializationEvent) {
+        ModMediumRecipes.postInit()
+    }
 
     open fun addScheduledTaskClient(runnableToSchedule: Runnable): ListenableFuture<Any> {
         throw IllegalStateException("This should only be called from client side")

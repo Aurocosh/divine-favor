@@ -36,6 +36,9 @@ class TileMedium : TickableTileEntity(false, true), IMultiblockController {
     private var isRejecting: Boolean = false
     private var multiBlockInstance: MultiBlockInstanceAltar? = null
 
+    private var stateId = 0 // increases by one every time something in inventory is changed
+    private var lastCheckedStateId = -1
+
     val stoneStackHandler: ItemStackHandler = object : ItemStackHandler(1) {
         override fun isItemValid(slot: Int, stack: ItemStack): Boolean {
             return stack.item is ItemCallingStone && stack.count == 1
@@ -50,18 +53,21 @@ class TileMedium : TickableTileEntity(false, true), IMultiblockController {
                 val blockState = world.getBlockState(pos)
                 world.notifyBlockUpdate(pos, blockState, blockState, 3)
             }
+            stateId++
             markDirty()
         }
     }
 
     val leftStackHandler: ItemStackHandler = object : ItemStackHandler(9) {
         override fun onContentsChanged(slot: Int) {
+            stateId++
             markDirty()
         }
     }
 
     val rightStackHandler: ItemStackHandler = object : ItemStackHandler(9) {
         override fun onContentsChanged(slot: Int) {
+            stateId++
             markDirty()
         }
     }
@@ -219,6 +225,8 @@ class TileMedium : TickableTileEntity(false, true), IMultiblockController {
     private fun processCraftingRecipes(callingStone: ItemCallingStone, slotStacks: List<SlotStack>) {
         if (!callingStone.spirit.isActive && extraActiveTime <= 0)
             return
+        if(stateId == lastCheckedStateId)
+            return
 
         for ((_, stack) in slotStacks) {
             if (stack.item === ModItems.ritual_pouch) {
@@ -230,6 +238,8 @@ class TileMedium : TickableTileEntity(false, true), IMultiblockController {
 
         ModMediumRecipes.exchangeRecipe(callingStone, leftStackHandler, slotIndexesAltar)
         ModMediumRecipes.exchangeRecipe(callingStone, rightStackHandler, slotIndexesAltar)
+
+        lastCheckedStateId = stateId
     }
 
     override fun getMultiblockInstance(): MultiBlockInstance? {

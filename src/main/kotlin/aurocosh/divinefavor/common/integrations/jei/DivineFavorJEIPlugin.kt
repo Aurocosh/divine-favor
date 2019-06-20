@@ -30,7 +30,7 @@ class DivineFavorJEIPlugin : IModPlugin {
 
     private fun registerRecipes(registry: IModRegistry) {
         registry.handleRecipes(ImmaterialMediumRecipe::class.java, { ImmaterialMediumWrapper(it) }, IMMATERIAL_MEDIUM_UID)
-        registry.addRecipes(ModMediumRecipes.recipes.values, IMMATERIAL_MEDIUM_UID)
+        registry.addRecipes(ModMediumRecipes.recipes, IMMATERIAL_MEDIUM_UID)
         registry.addRecipeCatalyst(ItemStack(ModBlocks.medium_iron), IMMATERIAL_MEDIUM_UID)
         registry.addRecipeCatalyst(ItemStack(ModBlocks.medium_gold), IMMATERIAL_MEDIUM_UID)
         registry.addRecipeCatalyst(ItemStack(ModBlocks.medium_lapis), IMMATERIAL_MEDIUM_UID)

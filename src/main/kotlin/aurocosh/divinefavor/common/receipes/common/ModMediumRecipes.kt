@@ -13,39 +13,35 @@ import net.minecraftforge.items.IItemHandler
 import java.util.*
 
 object ModMediumRecipes {
-    //    val recipes: ListMultimap<String, ImmaterialMediumRecipe> = MultimapBuilder.hashKeys().arrayListValues().build<String, ImmaterialMediumRecipe>()
-    val recipes: MutableMap<String, ImmaterialMediumRecipe> = HashMap()
+    val recipes = ArrayList<ImmaterialMediumRecipe>()
 
     fun init() {
     }
 
-    fun register(recipe: ImmaterialMediumRecipe) {
-        val matchingStacks = recipe.getMatchingStacks()
+    fun postInit() {
+        checkForRecipeConflicts()
+    }
 
-        val comparator = ItemStackIdComparator()
-        matchingStacks.forEach { it.sortWith(comparator) }
-
-        for (stoneIngredient in recipe.callingStones) {
-            val callingStoneStack = stoneIngredient.getMatchingStacks().first()
-            val callingStone = callingStoneStack.item as ItemCallingStone
-
-            val ingredientStrings = matchingStacks.S.map { getStackListString(callingStone, it) }.toSet()
-            for (ingredientString in ingredientStrings) {
-                if (recipes.containsKey(ingredientString)) {
-                    DivineFavor.logger.error("Recipe conflict ignoring last recipe: $ingredientString. Recipe result: ${recipe.result}")
-                } else
-                    recipes[ingredientString] = recipe
-            }
+    private fun checkForRecipeConflicts() {
+        val conflictMap = HashMap<String, String>()
+        for (recipe in recipes) {
+            val result = recipe.result.toString()
+            val stringId = recipe.getStringId()
+            if (conflictMap.containsKey(stringId))
+                DivineFavor.logger.error("Recipe conflict for item: $result. Same recipe already used for: ${conflictMap[stringId]}.")
+            else
+                conflictMap[stringId] = result
         }
     }
 
-    fun getRecipeResult(callingStone: ItemCallingStone, stacks: List<ItemStack>): RecipeExchangeInstance? {
-        val itemStacks = stacks.sortedWith(ItemStackIdComparator())
+    fun register(recipe: ImmaterialMediumRecipe) {
+        recipes.add(recipe)
+    }
 
-        val ingredientString = getStackListString(callingStone, itemStacks)
-        val recipe = recipes[ingredientString] ?: return null
+    private fun getRecipeResult(callingStone: ItemCallingStone, stacks: List<ItemStack>): RecipeExchangeInstance? {
+        val recipe = recipes.firstOrNull { it.isMatching(callingStone, stacks) } ?: return null
 
-        val minIngredientCount = itemStacks.S.map(ItemStack::getCount).min() ?: 1
+        val minIngredientCount = stacks.S.map(ItemStack::getCount).min() ?: 1
         val result = recipe.result
         val resultCount = minIngredientCount * result.count;
         val stackCount = resultCount / result.maxStackSize;
@@ -61,16 +57,6 @@ object ModMediumRecipes {
         }
 
         return RecipeExchangeInstance(minIngredientCount, resultStacks)
-    }
-
-    private fun getStackListString(callingStone: ItemCallingStone, stacks: List<ItemStack>): String {
-        val joiner = StringJoiner("_")
-        for (itemStack in stacks) {
-            //            int id = Item.REGISTRY.getIDForObject(itemStack.getItem());
-            val value = "${itemStack.item.registryName}:${itemStack.itemDamage}"
-            joiner.add(value)
-        }
-        return joiner.toString() + "|" + callingStone.registryName
     }
 
     fun exchangeRecipe(callingStone: ItemCallingStone, stackHandler: IItemHandler, slotIndexes: List<Int>) {
