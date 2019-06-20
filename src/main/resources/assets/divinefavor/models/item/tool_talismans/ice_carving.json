@@ -1,0 +1,7 @@
+{
+    "parent": "item/generated",
+    "textures": {
+        "layer1": "divinefavor:items/tool_talismans/ice_carving",
+        "layer0": "divinefavor:items/tool_talismans/base"
+    }
+}

@@ -25,7 +25,7 @@ class SpellTalismanBuildHorizontalLine(name: String, spirit: ModSpirit, favorCos
         val blockPos = positionPropertyWrapper.getPosition(context, context.pos)
         val facing = rotationPropertyWrapper.getRotation(stack, player.horizontalFacing)
         val directions = UtilPlayer.getRelativeDirections(player, facing)
-        return coordinateGenerator.getCoordinates(directions, blockPos, 1, 0, left, right)
+        return coordinateGenerator.getCoordinates(directions, blockPos, 0, 0, left, right)
     }
 
     override fun getBlockCount(stack: ItemStack): Int {

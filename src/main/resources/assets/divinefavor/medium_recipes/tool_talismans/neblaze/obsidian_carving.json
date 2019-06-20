@@ -1,6 +1,6 @@
 {
   "result": {
-    "item": "divinefavor:spell_talisman_obsidian_carving"
+    "item": "divinefavor:tool_talisman_obsidian_carving"
   },
   "stones": [
     "divinefavor:calling_stone_neblaze"
@@ -12,11 +12,15 @@
     },
     {
       "type": "ore",
-      "ore": "dyePink"
+      "ore": "dyeRed"
+    },
+    {
+      "type": "ore",
+      "ore": "dyeOrange"
     },
     {
       "type": "stack",
-      "item": "minecraft:lava_bucket"
+      "item": "minecraft:iron_pickaxe"
     },
     {
       "type": "ore",

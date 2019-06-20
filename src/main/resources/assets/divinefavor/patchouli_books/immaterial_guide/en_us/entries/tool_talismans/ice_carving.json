@@ -1,0 +1,15 @@
+{
+  "name": "Ice carving",
+  "icon": "divinefavor:tool_talisman_ice_carving",
+  "category": "tool_talismans",
+  "pages": [
+    {
+      "type": "item_description",
+      "talisman": "divinefavor:tool_talisman_ice_carving"
+    },
+    {
+      "type": "tool_talisman_stats",
+      "talisman": "divinefavor:tool_talisman_ice_carving"
+    }
+  ]
+}

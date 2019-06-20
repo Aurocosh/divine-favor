@@ -1,6 +1,6 @@
 {
   "result": {
-    "item": "divinefavor:spell_talisman_ice_carving"
+    "item": "divinefavor:tool_talisman_ice_carving"
   },
   "stones": [
     "divinefavor:calling_stone_blizrabi"
@@ -15,8 +15,12 @@
       "ore": "dyeBlue"
     },
     {
+      "type": "ore",
+      "ore": "dyeLightBlue"
+    },
+    {
       "type": "stack",
-      "item": "minecraft:water_bucket"
+      "item": "minecraft:iron_pickaxe"
     },
     {
       "type": "stack",

@@ -1,18 +1,15 @@
-package aurocosh.divinefavor.common.item.spell_talismans
+package aurocosh.divinefavor.common.item.tool_talismans
 
 import aurocosh.divinefavor.common.constants.BlockPosConstants
-import aurocosh.divinefavor.common.item.spell_talismans.base.ItemSpellTalisman
-import aurocosh.divinefavor.common.item.spell_talismans.base.SpellOptions
 import aurocosh.divinefavor.common.item.spell_talismans.context.TalismanContext
+import aurocosh.divinefavor.common.item.tool_talismans.base.ItemToolTalisman
 import aurocosh.divinefavor.common.lib.extensions.getBlock
 import aurocosh.divinefavor.common.spirit.base.ModSpirit
 import aurocosh.divinefavor.common.util.UtilBlock
 import net.minecraft.block.Block
 import net.minecraft.init.Blocks
-import java.util.*
 
-class SpellTalismanCarving(name: String, spirit: ModSpirit, favorCost: Int, options: EnumSet<SpellOptions>, private val block: Block, private val predicate: (Block) -> Boolean) : ItemSpellTalisman(name, spirit, favorCost, options) {
-
+open class ToolTalismanCarving(name: String, spirit: ModSpirit, favorCost: Int, private val block: Block, private val predicate: (Block) -> Boolean) : ItemToolTalisman(name, spirit, favorCost) {
     override fun performActionServer(context: TalismanContext) {
         val world = context.world
         if (world.getBlockState(context.pos).block !== block)

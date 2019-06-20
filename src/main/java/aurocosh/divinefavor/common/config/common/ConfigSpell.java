@@ -82,8 +82,6 @@ public class ConfigSpell {
     public static ReplaceSphere hellisphere = new ReplaceSphere();
     @Config.Name("Ice bubble")
     public static ReplacmentBubble iceBubble = new ReplacmentBubble();
-    @Config.Name("Ice carving")
-    public static FavorOnly iceCarving = new FavorOnly(1);
     @Config.Name("Ice surface")
     public static SearchAndFlood iceSurface = new SearchAndFlood(20,3,150);
     @Config.Name("Infernal touch")
@@ -110,8 +108,6 @@ public class ConfigSpell {
     public static NightEye nightEye = new NightEye();
     @Config.Name("Obsidian bubble")
     public static ReplacmentBubble obsidianBubble = new ReplacmentBubble();
-    @Config.Name("Obsidian carving")
-    public static FavorOnly obsidianCarving = new FavorOnly(60);
     @Config.Name("Obsidian road")
     public static ObsidianRoad obsidianRoad = new ObsidianRoad();
     @Config.Name("Pearl crumbs")
