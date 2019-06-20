@@ -1,0 +1,15 @@
+{
+  "name": "Fell tree",
+  "icon": "divinefavor:tool_talisman_fell_tree",
+  "category": "tool_talismans",
+  "pages": [
+    {
+      "type": "item_description",
+      "talisman": "divinefavor:tool_talisman_fell_tree"
+    },
+    {
+      "type": "tool_talisman_stats",
+      "talisman": "divinefavor:tool_talisman_fell_tree"
+    }
+  ]
+}

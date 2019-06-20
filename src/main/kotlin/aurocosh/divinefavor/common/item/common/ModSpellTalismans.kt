@@ -50,7 +50,6 @@ object ModSpellTalismans {
     lateinit var evil_eye: ItemSpellTalisman
     lateinit var extreme_buoyancy: ItemSpellTalisman
     lateinit var fall_negation: ItemSpellTalisman
-    lateinit var fell_tree: ItemSpellTalisman
     lateinit var fins: ItemSpellTalisman
     lateinit var flood: ItemSpellTalisman
     lateinit var focused_fury: ItemSpellTalisman
@@ -246,7 +245,6 @@ object ModSpellTalismans {
         crushing_palm = SpellTalismanModPotionToggle("crushing_palm", ModSpirits.romol, ConfigSpell.crushingPalm.favorCost, ModPotions.crushing_palm)
         empower_axe = SpellTalismanModPotion("empower_axe", ModSpirits.romol, ConfigSpell.empowerAxe.favorCost, ModPotions.empower_axe, ConfigSpell.empowerAxe.duration)
         empower_pickaxe = SpellTalismanModPotion("empower_pickaxe", ModSpirits.romol, ConfigSpell.empowerPickaxe.favorCost, ModPotions.empower_pickaxe, ConfigSpell.empowerPickaxe.duration)
-        fell_tree = SpellTalismanFellTree("fell_tree", ModSpirits.romol, ConfigSpell.fellTree.favorCost, SpellOptions.USE_CAST)
         green_cycle = SpellTalismanGreenCycle("green_cycle", ModSpirits.romol, ConfigSpell.greenCycle.favorCost, SpellOptions.ALL_CAST)
         harvest = SpellTalismanHarvest("harvest", ModSpirits.romol, ConfigSpell.harvest.favorCost, SpellOptions.ALL_CAST)
         miners_focus = SpellTalismanMinersFocus("miners_focus", ModSpirits.romol, ConfigSpell.minersFocus.favorCost, SpellOptions.ALL_CAST)

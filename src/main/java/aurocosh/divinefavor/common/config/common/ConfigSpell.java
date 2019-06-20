@@ -54,8 +54,6 @@ public class ConfigSpell {
     public static ExtremeBuoyancy extremeBuoyancy = new ExtremeBuoyancy();
     @Config.Name("Fall negation")
     public static FallNegation fallNegation = new FallNegation();
-    @Config.Name("Fell tree")
-    public static FellTree fellTree = new FellTree();
     @Config.Name("Fins")
     public static Fins fins = new Fins();
     @Config.Name("Flood")

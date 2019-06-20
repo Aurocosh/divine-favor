@@ -1,0 +1,7 @@
+{
+    "parent": "item/generated",
+    "textures": {
+        "layer1": "divinefavor:items/tool_talismans/fell_tree",
+        "layer0": "divinefavor:items/tool_talismans/base"
+    }
+}

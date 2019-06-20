@@ -130,7 +130,7 @@ open class ItemSpellPick(name: String, texturePath: String, orderIndex: Int = 0,
     override fun canHarvestBlock(state: IBlockState, stack: ItemStack): Boolean {
         val (talismanStack, talisman) = TalismanAdapter.getTalisman<ItemToolTalisman>(stack)
                 ?: return super.canHarvestBlock(state)
-        if (talisman.isDestroySpeedCustom(talismanStack, state))
+        if (talisman.isHarvestCustom(talismanStack, state))
             return talisman.getCustomHarvest(talismanStack, state)
         return super.canHarvestBlock(state)
     }

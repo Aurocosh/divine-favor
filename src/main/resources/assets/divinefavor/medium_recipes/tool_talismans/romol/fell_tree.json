@@ -1,6 +1,6 @@
 {
   "result": {
-    "item": "divinefavor:spell_talisman_fell_tree"
+    "item": "divinefavor:tool_talisman_fell_tree"
   },
   "stones": [
     "divinefavor:calling_stone_romol"
@@ -16,6 +16,14 @@
     },
     {
       "type": "ore",
+      "ore": "dyeGreen"
+    },
+    {
+      "type": "stack",
+      "item": "minecraft:iron_axe"
+    },
+    {
+      "type": "ore",
       "ore": "logWood"
     },
     {
@@ -23,8 +31,8 @@
       "ore": "logWood"
     },
     {
-      "type": "stack",
-      "item": "minecraft:iron_axe"
+      "type": "ore",
+      "ore": "logWood"
     }
   ]
 }

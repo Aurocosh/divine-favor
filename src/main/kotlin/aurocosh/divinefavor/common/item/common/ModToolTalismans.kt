@@ -13,6 +13,7 @@ import net.minecraft.init.Blocks
 
 object ModToolTalismans {
     // New fields
+    lateinit var fell_tree: ItemToolTalisman
     lateinit var obsidian_carving: ItemToolTalisman
     lateinit var ice_carving: ItemToolTalisman
     lateinit var volcanic_glass_cutter: ItemToolTalisman
@@ -40,6 +41,7 @@ object ModToolTalismans {
         // squarefury;
 
         // New instances
+        fell_tree = ToolTalismanFellTree("fell_tree", ModSpirits.romol, ConfigTool.fellTree.favorCost)
         obsidian_carving = ToolTalismanObsidianCarving("obsidian_carving", ModSpirits.neblaze, ConfigTool.obsidianCarving.favorCost,Blocks.OBSIDIAN, Block::isLava)
         ice_carving = ToolTalismanCarving("ice_carving", ModSpirits.blizrabi, ConfigTool.iceCarving.favorCost, Blocks.ICE, UtilPredicate.or(Block::isWater, Block::isIce))
         volcanic_glass_cutter = ToolTalismanVolcanicGlassCutter("volcanic_glass_cutter", ModSpirits.romol, ConfigTool.volcanicGlassCutter.favorCost)

@@ -10,7 +10,6 @@ import aurocosh.divinefavor.common.item.tool_talismans.base.ItemToolTalisman
 import aurocosh.divinefavor.common.lib.extensions.S
 import aurocosh.divinefavor.common.lib.extensions.filter
 import aurocosh.divinefavor.common.lib.extensions.get
-import aurocosh.divinefavor.common.lib.extensions.getBlock
 import aurocosh.divinefavor.common.spirit.base.ModSpirit
 import aurocosh.divinefavor.common.tasks.BlockBreakingTask
 import net.minecraft.item.ItemStack
@@ -55,7 +54,7 @@ abstract class ToolTalismanBreak(name: String, spirit: ModSpirit, favorCost: Int
         val coordinates = getCoordinates(context)
         val y = context.player.position.y
         val preFiltered = if (context.stack.get(doNotBreakBelow)) coordinates.S.filter { it.y >= y } else coordinates.S
-        return preFiltered.filterNot(world::isAirBlock).filter(world::getBlockState, spellPick::canHarvestBlock).toList()
+        return preFiltered.filterNot(world::isAirBlock).filter(world::getBlockState) { spellPick.canHarvestBlock(it, context.containerStack) }.toList()
     }
 
     protected open fun getRenderCoordinates(context: TalismanContext): List<BlockPos> = getCommonCoordinates(context)
@@ -76,7 +75,7 @@ abstract class ToolTalismanBreak(name: String, spirit: ModSpirit, favorCost: Int
     protected abstract fun getBlockCount(stack: ItemStack): Int
 
     companion object {
-        const val hudDistance = 6
+        private const val hudDistance = 6
         const val hudDistanceSq = hudDistance * hudDistance
     }
 }

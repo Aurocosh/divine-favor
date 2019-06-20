@@ -236,7 +236,6 @@ item.divinefavor:spell_talisman_ethereal_light.name=Ethereal light talisman
 item.divinefavor:spell_talisman_evil_eye.name=Evil eye talisman
 item.divinefavor:spell_talisman_extreme_buoyancy.name=Extreme buoyancy talisman
 item.divinefavor:spell_talisman_fall_negation.name=Fall negation talisman
-item.divinefavor:spell_talisman_fell_tree.name=Fell tree talisman
 item.divinefavor:spell_talisman_fins.name=Fins talisman
 item.divinefavor:spell_talisman_flood.name=Flood talisman
 item.divinefavor:spell_talisman_focused_fury.name=Focused fury talisman
@@ -396,6 +395,7 @@ item.divinefavor:blade_talisman_vengeful_blade.name=Vengeful blade talisman
 item.divinefavor:blade_talisman_wither_coating.name=Wither coating talisman
 
 ## TOOL TALISMAN NAMES
+item.divinefavor:tool_talisman_fell_tree.name=Fell tree
 item.divinefavor:tool_talisman_obsidian_carving.name=Obsidian carving
 item.divinefavor:tool_talisman_ice_carving.name=Ice carving
 item.divinefavor:tool_talisman_volcanic_glass_cutter.name=Volcanic glass cutter
@@ -654,7 +654,6 @@ item.divinefavor:spell_talisman_ethereal_light.description=On cast it will creat
 item.divinefavor:spell_talisman_evil_eye.description=Will instantly damage target that you are looking at and also will apply slowness to target. When casted it will temporarily blur vision of caster. When casted repeatedly damage will increase with each cast, but blur will also increase. Casting range is finite.
 item.divinefavor:spell_talisman_extreme_buoyancy.description=When activated in water it will propel caster towards liquid surface at great speed.
 item.divinefavor:spell_talisman_fall_negation.description=Will grant player some fall negation charges. When player is falling from very high place he will not receive any damage but one charge will be consumes.
-item.divinefavor:spell_talisman_fell_tree.description=Will instantly destroy tree.
 item.divinefavor:spell_talisman_fins.description=Will make player much faster then usual under water.
 item.divinefavor:spell_talisman_flood.description=This talisman will replace all flowing water blocks into water sources.
 item.divinefavor:spell_talisman_focused_fury.description=Will temporarily considerably increase casters damage. Will memorize first attacked creature type. Player will only be able to attack creatures of that type. For example if player casts this spell and attacks skeleton he will only be able to attack skeletons, but will deal much more damage.
@@ -811,6 +810,7 @@ item.divinefavor:blade_talisman_vengeful_blade.description=Deals additional dama
 item.divinefavor:blade_talisman_wither_coating.description=Inflicts withering on hit
 
 ## TOOL TALISMAN DESCRIPTIONS
+item.divinefavor:tool_talisman_fell_tree.description=Will instantly destroy tree.
 item.divinefavor:tool_talisman_ice_carving.description=When used on ice block it will destroy that block and freeze any water that touches that ice block.
 item.divinefavor:tool_talisman_obsidian_carving.description=When used on obsidian block it will destroy that block and freeze any lava that touches that obsidian block.
 item.divinefavor:tool_talisman_volcanic_glass_cutter.description=This talisman allows spell pick to break obsidian very fast.

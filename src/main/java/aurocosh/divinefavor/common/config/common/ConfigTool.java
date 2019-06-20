@@ -9,6 +9,8 @@ public class ConfigTool {
     @Config.Name("Break radius")
     public static BreakRadius breakRadius = new BreakRadius();
     // New configs
+    @Config.Name("Fell tree")
+    public static FellTree fellTree = new FellTree();
     @Config.Name("Obsidian carving")
     public static ObsidianCarving obsidianCarving = new ObsidianCarving();
     @Config.Name("Ice carving")
