@@ -1,0 +1,30 @@
+{
+  "result": {
+    "item": "divinefavor:tool_talisman_volcanic_glass_cutter"
+  },
+  "stones": [
+    "divinefavor:calling_stone_romol"
+  ],
+  "ingredients": [
+    {
+      "type": "ore",
+      "ore": "paper"
+    },
+    {
+      "type": "ore",
+      "ore": "dyeGray"
+    },
+    {
+      "type": "ore",
+      "ore": "dyeBlack"
+    },
+    {
+      "type": "stack",
+      "item": "minecraft:iron_pickaxe"
+    },
+    {
+      "type": "ore",
+      "ore": "blockObsidian"
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+{
+    "parent": "item/generated",
+    "textures": {
+        "layer1": "divinefavor:items/tool_talismans/volcanic_glass_cutter",
+        "layer0": "divinefavor:items/tool_talismans/base"
+    }
+}

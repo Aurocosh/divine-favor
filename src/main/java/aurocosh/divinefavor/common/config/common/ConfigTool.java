@@ -9,6 +9,8 @@ public class ConfigTool {
     @Config.Name("Break radius")
     public static BreakRadius breakRadius = new BreakRadius();
     // New configs
+    @Config.Name("Volcanic glass cutter")
+    public static VolcanicGlassCutter volcanicGlassCutter = new VolcanicGlassCutter();
     @Config.Name("Ground pick")
     public static GroundPick groundPick = new GroundPick();
     @Config.Name("Wood peck")

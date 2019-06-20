@@ -17,7 +17,6 @@ import aurocosh.divinefavor.common.item.talisman_tools.TalismanContainerMode
 import aurocosh.divinefavor.common.item.talisman_tools.spell_blade.capability.SpellBladeStorage
 import aurocosh.divinefavor.common.item.talisman_tools.spell_blade.capability.SpellBladeDataHandler.CAPABILITY_SPELL_BLADE
 import aurocosh.divinefavor.common.item.talisman_tools.spell_blade.capability.SpellBladeProvider
-import aurocosh.divinefavor.common.item.talisman_tools.spell_pick.capability.SpellPickDataHandler
 import aurocosh.divinefavor.common.lib.extensions.cap
 import aurocosh.divinefavor.common.stack_properties.IPropertyAccessor
 import aurocosh.divinefavor.common.stack_properties.IPropertyContainer
@@ -63,18 +62,18 @@ open class ItemSpellBlade(name: String, texturePath: String, orderIndex: Int = 0
             return true
 
         val (talismanStack, talisman) = TalismanAdapter.getTalisman<ItemBladeTalisman>(stack) ?: return true
-        val context = TalismanContextGenerator.blade(talismanStack, target, attacker)
+        val context = TalismanContextGenerator.blade(talismanStack, target, attacker, stack)
         talisman.cast(context)
         return true
     }
 
     override fun onItemUse(player: EntityPlayer, world: World, pos: BlockPos, hand: EnumHand, facing: EnumFacing, hitX: Float, hitY: Float, hitZ: Float): EnumActionResult {
-        val stack = player.getHeldItem(hand)
-        if (bookPropertyWrapper.getModeOrTransform(stack, player) != TalismanContainerMode.NORMAL)
+        val containerStack = player.getHeldItem(hand)
+        if (bookPropertyWrapper.getModeOrTransform(containerStack, player) != TalismanContainerMode.NORMAL)
             return EnumActionResult.PASS
 
-        val (talismanStack, talisman) = TalismanAdapter.getTalisman<ItemSpellTalisman>(stack) ?: return EnumActionResult.PASS
-        val context = TalismanContextGenerator.useCast(player, world, pos, hand, facing, talismanStack)
+        val (talismanStack, talisman) = TalismanAdapter.getTalisman<ItemSpellTalisman>(containerStack) ?: return EnumActionResult.PASS
+        val context = TalismanContextGenerator.useCast(player, world, pos, hand, facing, talismanStack, containerStack)
         val success = talisman.cast(context)
         return actionResultPass(success)
     }
@@ -93,7 +92,7 @@ open class ItemSpellBlade(name: String, texturePath: String, orderIndex: Int = 0
             player.openGui(DivineFavor, ConstGuiIDs.SPELL_BLADE, world, player.posX.toInt(), player.posY.toInt(), player.posZ.toInt())
         else if (mode == TalismanContainerMode.NORMAL) {
             val (talismanStack, talisman) = TalismanAdapter.getTalisman<ItemSpellTalisman>(stack) ?: return true
-            val context = TalismanContextGenerator.rightClick(world, player, hand, talismanStack)
+            val context = TalismanContextGenerator.rightClick(world, player, hand, talismanStack, stack)
             talisman.cast(context)
         }
         return true

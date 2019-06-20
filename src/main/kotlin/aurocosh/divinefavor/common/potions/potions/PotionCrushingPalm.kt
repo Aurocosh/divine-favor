@@ -6,6 +6,7 @@ import aurocosh.divinefavor.common.potions.base.potion.ModPotionToggleLimited
 import aurocosh.divinefavor.common.potions.common.ModPotions
 import aurocosh.divinefavor.common.util.UtilBlock
 import aurocosh.divinefavor.common.util.UtilPlayer
+import net.minecraft.item.ItemStack
 import net.minecraft.util.EnumHand
 import net.minecraftforge.event.entity.player.PlayerInteractEvent
 import net.minecraftforge.fml.common.Mod
@@ -30,10 +31,7 @@ object CrushingPalm {
             return
 
         val talisman = ModPotions.crushing_palm.talisman
-        val stack = UtilPlayer.getItemInHand(player) { it === talisman }
-
-
-        val context = TalismanContextGenerator.rightClick(world, player, EnumHand.MAIN_HAND, stack)
+        val context = TalismanContextGenerator.player(player)
         if (!talisman.claimCost(context))
             return
 
@@ -41,6 +39,6 @@ object CrushingPalm {
         val state = world.getBlockState(pos)
         val block = state.block
         if (block.isToolEffective("pickaxe", state))
-            UtilBlock.removeBlock(player, world, stack, pos, true, false, true)
+            UtilBlock.removeBlock(player, world, ItemStack.EMPTY, pos, true, false, true)
     }
 }

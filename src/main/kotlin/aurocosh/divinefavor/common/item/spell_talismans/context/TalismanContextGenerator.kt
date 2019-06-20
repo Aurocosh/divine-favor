@@ -18,12 +18,12 @@ object TalismanContextGenerator {
     private data class StackData(val raycastBlock: Boolean, val raycastTarget: Boolean, val valid: Boolean)
     private data class BlockCastData(val pos: BlockPos, val posVec: Vec3d, val facing: EnumFacing, val valid: Boolean)
 
-    fun generate(player: EntityPlayer, target: EntityLivingBase?, world: World, pos: BlockPos, posVec: Vec3d, hand: EnumHand, facing: EnumFacing, castType: CastType, stack: ItemStack): TalismanContext {
-        val (raycastBlock, raycastTarget, stackValid) = getStackData(stack, castType)
+    fun generate(player: EntityPlayer, target: EntityLivingBase?, world: World, pos: BlockPos, posVec: Vec3d, hand: EnumHand, facing: EnumFacing, castType: CastType, talismanStack: ItemStack, containerStack: ItemStack): TalismanContext {
+        val (raycastBlock, raycastTarget, stackValid) = getStackData(talismanStack, castType)
         val (posFinal, posVecFinal, facingFinal, raycastValid) = getBlockCastData(player, pos, posVec, facing, raycastBlock)
         val targetFinal = if (raycastTarget) UtilEntity.getEntityPlayerLookingAt(player, EntityLivingBase::class.java, ENTITY_SEARCH_DISTANCE, true) else target
 
-        return TalismanContext(player, targetFinal, world, posFinal, posVecFinal, hand, facingFinal, castType, stack, raycastValid, stackValid)
+        return TalismanContext(player, targetFinal, world, posFinal, posVecFinal, hand, facingFinal, castType, talismanStack, raycastValid, stackValid, containerStack)
     }
 
     private fun getStackData(stack: ItemStack, castType: CastType): StackData {
@@ -43,34 +43,34 @@ object TalismanContextGenerator {
     }
 
 
-    fun blade(stack: ItemStack, target: EntityLivingBase?, player: EntityPlayer): TalismanContext {
-        return generate(player, target, player.world, player.position, player.positionVector, EnumHand.MAIN_HAND, EnumFacing.UP, CastType.BladeCast, stack)
+    fun blade(stack: ItemStack, target: EntityLivingBase?, player: EntityPlayer, containerStack: ItemStack): TalismanContext {
+        return generate(player, target, player.world, player.position, player.positionVector, EnumHand.MAIN_HAND, EnumFacing.UP, CastType.BladeCast, stack, containerStack)
     }
 
-    fun pick(stack: ItemStack, player: EntityPlayer, pos: BlockPos): TalismanContext {
+    fun pick(stack: ItemStack, player: EntityPlayer, pos: BlockPos, containerStack: ItemStack): TalismanContext {
         val facing = EnumFacing.getDirectionFromEntityLiving(pos, player)
-        return generate(player, null, player.world, pos, pos.toVec3d(), EnumHand.MAIN_HAND, facing, CastType.PickCast, stack)
+        return generate(player, null, player.world, pos, pos.toVec3d(), EnumHand.MAIN_HAND, facing, CastType.PickCast, stack, containerStack)
     }
 
-    fun useCast(player: EntityPlayer, world: World, pos: BlockPos, hand: EnumHand, facing: EnumFacing, stack: ItemStack): TalismanContext {
-        return generate(player, null, world, pos, pos.toVec3d(), hand, facing, CastType.UseCast, stack)
+    fun useCast(player: EntityPlayer, world: World, pos: BlockPos, hand: EnumHand, facing: EnumFacing, stack: ItemStack, containerStack: ItemStack): TalismanContext {
+        return generate(player, null, world, pos, pos.toVec3d(), hand, facing, CastType.UseCast, stack, containerStack)
     }
 
-    fun generic(player: EntityPlayer, hand: EnumHand, stack: ItemStack): TalismanContext {
-        return generate(player, null, player.world, player.position, player.positionVector, hand, EnumFacing.UP, CastType.None, stack)
+    fun generic(player: EntityPlayer, hand: EnumHand, stack: ItemStack, containerStack: ItemStack): TalismanContext {
+        return generate(player, null, player.world, player.position, player.positionVector, hand, EnumFacing.UP, CastType.None, stack, containerStack)
     }
 
     fun player(player: EntityPlayer): TalismanContext {
-        return generate(player, null, player.world, player.position, player.positionVector, EnumHand.MAIN_HAND, EnumFacing.UP, CastType.None, ItemStack.EMPTY)
+        return generate(player, null, player.world, player.position, player.positionVector, EnumHand.MAIN_HAND, EnumFacing.UP, CastType.None, ItemStack.EMPTY, ItemStack.EMPTY)
     }
 
-    fun rightClick(world: World, player: EntityPlayer, hand: EnumHand, stack: ItemStack): TalismanContext {
-        return generate(player, null, world, player.position, player.positionVector, hand, EnumFacing.UP, CastType.RightCast, stack)
+    fun rightClick(world: World, player: EntityPlayer, hand: EnumHand, stack: ItemStack, containerStack: ItemStack): TalismanContext {
+        return generate(player, null, world, player.position, player.positionVector, hand, EnumFacing.UP, CastType.RightCast, stack, containerStack)
     }
 
-    fun arrowShot(world: World, player: EntityPlayer, stack: ItemStack): TalismanContext {
+    fun arrowShot(world: World, player: EntityPlayer, stack: ItemStack, containerStack: ItemStack): TalismanContext {
         val position = player.position
-        return generate(player, null, world, position, position.toVec3d(), EnumHand.MAIN_HAND, EnumFacing.UP, CastType.BowCast, stack)
+        return generate(player, null, world, position, position.toVec3d(), EnumHand.MAIN_HAND, EnumFacing.UP, CastType.BowCast, stack, containerStack)
     }
 
     private const val ENTITY_SEARCH_DISTANCE = 30.0

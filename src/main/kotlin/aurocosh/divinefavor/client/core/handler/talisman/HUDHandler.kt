@@ -38,15 +38,15 @@ object HUDHandler {
     fun renderWorldLastEvent(lastEvent: RenderWorldLastEvent) {
         val player = DivineFavor.proxy.clientPlayer
         val hand = UtilPlayer.getHandWithItem(player) { it is ITalismanStackContainer } ?: return
-        val stack = player.getHeldItem(hand)
-        val container = stack.item as ITalismanStackContainer
+        val containerStack = player.getHeldItem(hand)
+        val container = containerStack.item as ITalismanStackContainer
 
-        val talismanStack = container.getTalismanStack(stack)
+        val talismanStack = container.getTalismanStack(containerStack)
         if(talismanStack.isEmpty)
             return
 
         val talisman = talismanStack.item as ItemTalisman
-        val context = TalismanContextGenerator.generic(player, hand, talismanStack)
+        val context = TalismanContextGenerator.generic(player, hand, talismanStack, containerStack)
         if (talisman.shouldRender(context))
             talisman.handleRendering(context, lastEvent)
     }

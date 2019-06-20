@@ -64,7 +64,7 @@ open class ItemSpellPick(name: String, texturePath: String, orderIndex: Int = 0,
 
     private fun performBreakCast(stack: ItemStack, pos: BlockPos, player: EntityPlayer): Boolean {
         val (talismanStack, talisman) = TalismanAdapter.getTalisman<ItemToolTalisman>(stack) ?: return true
-        val context = TalismanContextGenerator.pick(talismanStack, player, pos)
+        val context = TalismanContextGenerator.pick(talismanStack, player, pos, stack)
         return talisman.cast(context)
     }
 
@@ -77,16 +77,16 @@ open class ItemSpellPick(name: String, texturePath: String, orderIndex: Int = 0,
             return true
 
         val (talismanStack, talisman) = TalismanAdapter.getTalisman<ItemBladeTalisman>(stack) ?: return true
-        val context = TalismanContextGenerator.blade(talismanStack, target, attacker)
+        val context = TalismanContextGenerator.blade(talismanStack, target, attacker, stack)
         talisman.cast(context)
         return true
     }
 
     override fun onItemUse(player: EntityPlayer, world: World, pos: BlockPos, hand: EnumHand, facing: EnumFacing, hitX: Float, hitY: Float, hitZ: Float): EnumActionResult {
-        val stack = player.getHeldItem(hand)
-        val (talismanStack, talisman) = TalismanAdapter.getTalisman<ItemSpellTalisman>(stack)
+        val containerStack = player.getHeldItem(hand)
+        val (talismanStack, talisman) = TalismanAdapter.getTalisman<ItemSpellTalisman>(containerStack)
                 ?: return EnumActionResult.PASS
-        val context = TalismanContextGenerator.useCast(player, world, pos, hand, facing, talismanStack)
+        val context = TalismanContextGenerator.useCast(player, world, pos, hand, facing, talismanStack, containerStack)
         val success = talisman.cast(context)
         return actionResultPass(success)
     }
@@ -105,7 +105,7 @@ open class ItemSpellPick(name: String, texturePath: String, orderIndex: Int = 0,
             player.openGui(DivineFavor, ConstGuiIDs.SPELL_PICK, world, player.posX.toInt(), player.posY.toInt(), player.posZ.toInt())
         else if (mode == TalismanContainerMode.NORMAL) {
             val (talismanStack, talisman) = TalismanAdapter.getTalisman<ItemSpellTalisman>(stack) ?: return true
-            val context = TalismanContextGenerator.rightClick(world, player, hand, talismanStack)
+            val context = TalismanContextGenerator.rightClick(world, player, hand, talismanStack, stack)
             talisman.cast(context)
         }
         return true

@@ -48,14 +48,14 @@ open class ItemSpellTalisman// Talisman functions
 
     override fun onItemUse(player: EntityPlayer, world: World, pos: BlockPos, hand: EnumHand, facing: EnumFacing, hitX: Float, hitY: Float, hitZ: Float): EnumActionResult {
         val stack = player.getHeldItem(hand)
-        val context = TalismanContextGenerator.useCast(player, world, pos, hand, facing, stack)
+        val context = TalismanContextGenerator.useCast(player, world, pos, hand, facing, stack, stack)
         val success = cast(context)
         return actionResultPass(success)
     }
 
     override fun onItemRightClick(world: World, player: EntityPlayer, hand: EnumHand): ActionResult<ItemStack> {
         val stack = player.getHeldItem(hand)
-        val context = TalismanContextGenerator.rightClick(world, player, hand, stack)
+        val context = TalismanContextGenerator.rightClick(world, player, hand, stack, stack)
         val success = cast(context)
         return actionResult(success, stack)
     }

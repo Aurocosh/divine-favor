@@ -104,7 +104,7 @@ class ItemSpellBow : ModItem("spell_bow", "spell_bow/spell_bow", ConstMainTabOrd
             val container = bowStack.item as ITalismanStackContainer
             val talismanStack = container.getTalismanStack(bowStack)
 
-            val context = TalismanContextGenerator.arrowShot(world, entityLiving, talismanStack)
+            val context = TalismanContextGenerator.arrowShot(world, entityLiving, talismanStack, bowStack)
 
             val (arrowTalisman, entityArrow) = getArrow(context, arrowStack)
             entityArrow.shoot(entityLiving, entityLiving.rotationPitch, entityLiving.rotationYaw, 0.0f, velocity * 3.0f, 1.0f)

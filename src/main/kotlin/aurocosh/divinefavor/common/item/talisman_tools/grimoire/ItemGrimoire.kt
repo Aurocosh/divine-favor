@@ -14,7 +14,6 @@ import aurocosh.divinefavor.common.item.talisman_tools.TalismanAdapter
 import aurocosh.divinefavor.common.item.talisman_tools.grimoire.capability.GrimoireDataHandler.CAPABILITY_GRIMOIRE
 import aurocosh.divinefavor.common.item.talisman_tools.grimoire.capability.GrimoireProvider
 import aurocosh.divinefavor.common.item.talisman_tools.grimoire.capability.GrimoireStorage
-import aurocosh.divinefavor.common.item.talisman_tools.spell_blade.capability.SpellBladeDataHandler
 import aurocosh.divinefavor.common.lib.extensions.cap
 import aurocosh.divinefavor.common.util.UtilItem
 import net.minecraft.entity.player.EntityPlayer
@@ -35,9 +34,9 @@ class ItemGrimoire : ModItem("grimoire", "grimoire", ConstMainTabOrder.CONTAINER
     }
 
     override fun onItemUse(player: EntityPlayer, world: World, pos: BlockPos, hand: EnumHand, facing: EnumFacing, hitX: Float, hitY: Float, hitZ: Float): EnumActionResult {
-        val stack = player.getHeldItem(hand)
-        val (talismanStack, talisman) = TalismanAdapter.getTalisman<ItemSpellTalisman>(stack) ?: return EnumActionResult.PASS
-        val context = TalismanContextGenerator.useCast(player, world, pos, hand, facing, talismanStack)
+        val containerStack = player.getHeldItem(hand)
+        val (talismanStack, talisman) = TalismanAdapter.getTalisman<ItemSpellTalisman>(containerStack) ?: return EnumActionResult.PASS
+        val context = TalismanContextGenerator.useCast(player, world, pos, hand, facing, talismanStack, containerStack)
         val success = talisman.cast(context)
         return UtilItem.actionResultPass(success || player.isSneaking)
     }
@@ -53,7 +52,7 @@ class ItemGrimoire : ModItem("grimoire", "grimoire", ConstMainTabOrder.CONTAINER
             player.openGui(DivineFavor, ConstGuiIDs.GRIMOIRE, world, player.posX.toInt(), player.posY.toInt(), player.posZ.toInt())
         } else {
             val (talismanStack, talisman) = TalismanAdapter.getTalisman<ItemSpellTalisman>(stack) ?: return true
-            val context = TalismanContextGenerator.rightClick(world, player, hand, talismanStack)
+            val context = TalismanContextGenerator.rightClick(world, player, hand, talismanStack, stack)
             talisman.cast(context)
         }
         return true

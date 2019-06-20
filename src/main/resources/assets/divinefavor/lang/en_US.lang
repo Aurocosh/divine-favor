@@ -398,6 +398,7 @@ item.divinefavor:blade_talisman_vengeful_blade.name=Vengeful blade talisman
 item.divinefavor:blade_talisman_wither_coating.name=Wither coating talisman
 
 ## TOOL TALISMAN NAMES
+item.divinefavor:tool_talisman_volcanic_glass_cutter.name=Volcanic glass cutter
 item.divinefavor:tool_talisman_ground_pick.name=Ground pick
 item.divinefavor:tool_talisman_wood_peck.name=Wood pick
 item.divinefavor:tool_talisman_break_side.name=Break side
@@ -812,6 +813,7 @@ item.divinefavor:blade_talisman_vengeful_blade.description=Deals additional dama
 item.divinefavor:blade_talisman_wither_coating.description=Inflicts withering on hit
 
 ## TOOL TALISMAN DESCRIPTIONS
+item.divinefavor:tool_talisman_volcanic_glass_cutter.description=This talisman allows spell pick to break obsidian very fast.
 item.divinefavor:tool_talisman_ground_pick.description=This talisman allows spell pick to be effective against dirt like shovels.
 item.divinefavor:tool_talisman_wood_peck.description=This talisman allows spell pick to be effective against wood like axes.
 item.divinefavor:tool_talisman_break_side.description=When spell pick with this talisman breaks a block it will also break some blocks on the same continuous surface.

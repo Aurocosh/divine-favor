@@ -17,7 +17,7 @@ class TalismanContext(
         val player: EntityPlayer, val target: EntityLivingBase?, val world: World,
         val pos: BlockPos, val posVec: Vec3d, val hand: EnumHand, val facing: EnumFacing,
         val castType: CastType, val stack: ItemStack,
-        val raycastValid: Boolean, val stackValid: Boolean) {
+        val raycastValid: Boolean, val stackValid: Boolean, val containerStack: ItemStack) {
 
     private val properties = HashMap<String, Any>()
 
