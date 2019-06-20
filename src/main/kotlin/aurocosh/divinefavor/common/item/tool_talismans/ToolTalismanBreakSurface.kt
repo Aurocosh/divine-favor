@@ -25,7 +25,6 @@ class ToolTalismanBreakSurface(name: String, spirit: ModSpirit, favorCost: Int) 
         return coordinateGenerator.getCoordinates(context.pos, count, context.world, fuzzy)
     }
 
-
     companion object {
         private val coordinateGenerator: SurfaceCoordinateGenerator = SurfaceCoordinateGenerator()
     }

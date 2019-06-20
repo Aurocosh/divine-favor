@@ -12,7 +12,7 @@ class BlockSelectPropertyWrapper(propertyHandler: StackPropertyHandler) {
     fun preprocess(context: TalismanContext): Boolean {
         if (!context.player.isSneaking)
             return true
-        if(context.castType != CastType.RightCast || context.castType != CastType.UseCast)
+        if(context.castType != CastType.RightCast && context.castType != CastType.UseCast)
             return true
         val state = context.world.getBlockState(context.pos)
         selectedBlock.setValue(context.stack, state, context.world.isRemote)

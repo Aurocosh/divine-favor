@@ -111,12 +111,28 @@ open class ItemSpellPick(name: String, texturePath: String, orderIndex: Int = 0,
         return true
     }
 
+    override fun getToolClasses(stack: ItemStack): Set<String> {
+        val (talismanStack, talisman) = TalismanAdapter.getTalisman<ItemToolTalisman>(stack)
+                ?: return super.getToolClasses(stack)
+        if (talisman.isCustomToolClasses(talismanStack))
+            return talisman.getCustomToolClasses(talismanStack)
+        return super.getToolClasses(stack)
+    }
+
     override fun getDestroySpeed(stack: ItemStack, state: IBlockState): Float {
+        val (talismanStack, talisman) = TalismanAdapter.getTalisman<ItemToolTalisman>(stack)
+                ?: return super.getDestroySpeed(stack, state)
+        if (talisman.isDestroySpeedCustom(talismanStack, state))
+            return talisman.getCustomDestroySpeed(talismanStack, state)
         return super.getDestroySpeed(stack, state)
     }
 
-    override fun canHarvestBlock(blockIn: IBlockState): Boolean {
-        return super.canHarvestBlock(blockIn)
+    override fun canHarvestBlock(state: IBlockState, stack: ItemStack): Boolean {
+        val (talismanStack, talisman) = TalismanAdapter.getTalisman<ItemToolTalisman>(stack)
+                ?: return super.canHarvestBlock(state)
+        if (talisman.isDestroySpeedCustom(talismanStack, state))
+            return talisman.getCustomHarvest(talismanStack, state)
+        return super.canHarvestBlock(state)
     }
 
     @SideOnly(Side.CLIENT)

@@ -1,0 +1,30 @@
+{
+  "result": {
+    "item": "divinefavor:tool_talisman_wood_peck"
+  },
+  "stones": [
+    "divinefavor:calling_stone_romol"
+  ],
+  "ingredients": [
+    {
+      "type": "ore",
+      "ore": "paper"
+    },
+    {
+      "type": "ore",
+      "ore": "dyeGray"
+    },
+    {
+      "type": "ore",
+      "ore": "dyeGreen"
+    },
+    {
+      "type": "stack",
+      "item": "minecraft:iron_pickaxe"
+    },
+    {
+      "type": "stack",
+      "item": "minecraft:TODO" 
+    }
+  ]
+}
