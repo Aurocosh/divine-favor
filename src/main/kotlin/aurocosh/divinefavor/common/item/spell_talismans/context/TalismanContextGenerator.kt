@@ -60,6 +60,10 @@ object TalismanContextGenerator {
         return generate(player, null, player.world, player.position, player.positionVector, hand, EnumFacing.UP, CastType.None, stack)
     }
 
+    fun player(player: EntityPlayer): TalismanContext {
+        return generate(player, null, player.world, player.position, player.positionVector, EnumHand.MAIN_HAND, EnumFacing.UP, CastType.None, ItemStack.EMPTY)
+    }
+
     fun rightClick(world: World, player: EntityPlayer, hand: EnumHand, stack: ItemStack): TalismanContext {
         return generate(player, null, world, player.position, player.positionVector, hand, EnumFacing.UP, CastType.RightCast, stack)
     }

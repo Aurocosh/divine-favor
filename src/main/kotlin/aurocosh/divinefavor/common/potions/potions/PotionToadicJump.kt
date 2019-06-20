@@ -7,6 +7,7 @@ import aurocosh.divinefavor.common.potions.base.potion.ModPotionToggleLimited
 import aurocosh.divinefavor.common.potions.common.ModPotions
 import aurocosh.divinefavor.common.util.UtilPlayer
 import net.minecraft.entity.player.EntityPlayer
+import net.minecraft.item.ItemStack
 import net.minecraft.util.EnumHand
 import net.minecraftforge.event.entity.living.LivingEvent
 import net.minecraftforge.fml.common.Mod
@@ -26,10 +27,8 @@ object ToadicJump {
         if (!entity.isPotionActive(ModPotions.toadic_jump))
             return
 
-        val talisman = ModPotions.crushing_palm.talisman
-        val stack = UtilPlayer.getItemInHand(entity) { it === talisman }
-
-        val context = TalismanContextGenerator.rightClick(entity.world, entity, EnumHand.MAIN_HAND, stack)
+        val talisman = ModPotions.toadic_jump.talisman
+        val context = TalismanContextGenerator.player(entity)
         if (talisman.claimCost(context))
             entity.motionY += ConfigSpell.toadicJump.jumpBoost.toDouble()
     }

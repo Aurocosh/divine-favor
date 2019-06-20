@@ -239,7 +239,7 @@ object ModSpellTalismans {
         ping = SpellTalismanPing("ping", ModSpirits.redwind, ConfigSpell.ping.favorCost, SpellOptions.TRACE_ONLY_CAST)
         red_pulse = SpellTalismanAirReplace("red_pulse", ModSpirits.redwind, ConfigSpell.redPulse.favorCost, SpellOptions.ALL_CAST_TRACE) { ModBlocks.red_pulse }
         red_signal = SpellTalismanAirReplace("red_signal", ModSpirits.redwind, ConfigSpell.redSignal.favorCost, SpellOptions.ALL_CAST_TRACE) { ModBlocks.red_signal }
-        toadic_jump = SpellTalismanModPotionToggle("toadic_jump", ModSpirits.redwind, ConfigSpell.toadicJump.favorCost, ModPotions.toadic_jump)
+        toadic_jump = SpellTalismanModPotionToggle("toadic_jump", ModSpirits.redwind, ConfigSpell.toadicJump.favorCost, ModPotions.toadic_jump, true)
         wild_sprint = SpellTalismanModPotion("wild_sprint", ModSpirits.redwind, ConfigSpell.wildSprint.favorCost, ModPotions.wild_charge, ConfigSpell.wildSprint.activationDelay)
         wind_step = SpellTalismanWindStep("wind_step", ModSpirits.redwind, ConfigSpell.windStep.favorCost, SpellOptions.ALL_CAST)
         place_torch = SpellTalismanPlaceTorch("place_torch", ModSpirits.redwind, ConfigSpell.placeTorch.favorCost, SpellOptions.TRACE_ONLY_CAST)
