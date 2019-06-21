@@ -17,7 +17,6 @@ class FloodFillSideCoordinateGenerator : CachedCoordinateGenerator() {
         val airState = Blocks.AIR.defaultState
         val filter = if (fuzzy) Blocks.AIR.defaultState else world.getBlockState(pos)
 
-        val start = listOf(pos)
         val expansionDirs = BlockPosConstants.DIRECT_NEIGHBOURS.toMutableList()
         val shift = facing.opposite.directionVec.toBlockPos()
         expansionDirs.remove(shift)
@@ -33,7 +32,7 @@ class FloodFillSideCoordinateGenerator : CachedCoordinateGenerator() {
         }
 
         val floodFiller = FloodFiller()
-        cachedCoordinates = floodFiller.floodFill(start, expansionDirs, predicate, count)
+        cachedCoordinates = floodFiller.floodFill(listOf(pos), expansionDirs, predicate, count)
         return cachedCoordinates
     }
 }

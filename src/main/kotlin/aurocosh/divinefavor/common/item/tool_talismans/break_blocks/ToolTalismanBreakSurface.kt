@@ -2,6 +2,7 @@ package aurocosh.divinefavor.common.item.tool_talismans.break_blocks
 
 import aurocosh.divinefavor.common.coordinate_generators.SurfaceCoordinateGenerator
 import aurocosh.divinefavor.common.item.spell_talismans.context.TalismanContext
+import aurocosh.divinefavor.common.lib.extensions.S
 import aurocosh.divinefavor.common.lib.extensions.get
 import aurocosh.divinefavor.common.spirit.base.ModSpirit
 import aurocosh.divinefavor.common.stack_properties.StackPropertyBool
@@ -10,7 +11,6 @@ import net.minecraft.item.ItemStack
 import net.minecraft.util.math.BlockPos
 
 class ToolTalismanBreakSurface(name: String, spirit: ModSpirit, favorCost: Int) : ToolTalismanBreak(name, spirit, favorCost) {
-    val isFuzzy: StackPropertyBool = propertyHandler.registerBoolProperty("fuzzy", false)
     val blockCount: StackPropertyInt = propertyHandler.registerIntProperty("block_count", 6, 1, 64)
 
     override fun getBlockCount(stack: ItemStack): Int = favorCost * blockCount.getValue(stack)

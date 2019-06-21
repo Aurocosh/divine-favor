@@ -11,6 +11,7 @@ import aurocosh.divinefavor.common.lib.extensions.S
 import aurocosh.divinefavor.common.lib.extensions.filter
 import aurocosh.divinefavor.common.lib.extensions.get
 import aurocosh.divinefavor.common.spirit.base.ModSpirit
+import aurocosh.divinefavor.common.stack_properties.StackPropertyBool
 import aurocosh.divinefavor.common.tasks.BlockBreakingTask
 import net.minecraft.item.ItemStack
 import net.minecraft.util.math.BlockPos
@@ -22,12 +23,14 @@ import javax.vecmath.Color3f
 abstract class ToolTalismanBreak(name: String, spirit: ModSpirit, favorCost: Int) : ItemToolTalisman(name, spirit, favorCost) {
     protected val finalCoordinates = ContextProperty<List<BlockPos>>("coordinates", emptyList())
 
+    val isFuzzy: StackPropertyBool = propertyHandler.registerBoolProperty("fuzzy", true)
     val doNotBreakBelow = propertyHandler.registerBoolProperty("do_not_break_below", false)
     protected val selectPropertyWrapper = BlockSelectPropertyWrapper(propertyHandler)
 
     override fun raycastBlock(stack: ItemStack, castType: CastType) = true
     override fun getApproximateFavorCost(itemStack: ItemStack) = favorCost * getBlockCount(itemStack)
     override fun getFinalFavorCost(context: TalismanContext) = favorCost * context.get(finalCoordinates).size
+    override fun preValidate(context: TalismanContext) = context.player.isSneaking || super.preValidate(context)
 
     @SideOnly(Side.CLIENT)
     override fun shouldRender(context: TalismanContext): Boolean {
@@ -52,7 +55,7 @@ abstract class ToolTalismanBreak(name: String, spirit: ModSpirit, favorCost: Int
         val world = context.world
         val coordinates = getCoordinates(context)
         val y = context.player.position.y
-        val preFiltered = if (context.stack.get(doNotBreakBelow)) coordinates.S.filter { it.y >= y } else coordinates.S
+        val preFiltered = if (context.stack.get(doNotBreakBelow)) coordinates.filter { it.y >= y } else coordinates
         return preFiltered.filterNot(world::isAirBlock).filter(world::getBlockState) { spellPick.canHarvestBlock(it, context.containerStack) }.toList()
     }
 

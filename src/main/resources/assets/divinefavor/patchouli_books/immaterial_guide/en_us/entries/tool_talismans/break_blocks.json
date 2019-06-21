@@ -1,0 +1,15 @@
+{
+  "name": "Break blocks",
+  "icon": "divinefavor:tool_talisman_break_blocks",
+  "category": "tool_talismans",
+  "pages": [
+    {
+      "type": "item_description",
+      "talisman": "divinefavor:tool_talisman_break_blocks"
+    },
+    {
+      "type": "tool_talisman_stats",
+      "talisman": "divinefavor:tool_talisman_break_blocks"
+    }
+  ]
+}

@@ -1,6 +1,7 @@
 package aurocosh.divinefavor.common.item.spell_talismans.context
 
 import aurocosh.divinefavor.common.item.spell_talismans.base.CastType
+import aurocosh.divinefavor.common.lib.extensions.get
 import net.minecraft.entity.EntityLivingBase
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.item.ItemStack
@@ -33,3 +34,5 @@ class TalismanContext(
 
     fun getCommon() = CommonContextValues(player, stack, world)
 }
+
+

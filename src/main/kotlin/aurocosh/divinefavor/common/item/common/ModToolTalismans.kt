@@ -1,13 +1,9 @@
 package aurocosh.divinefavor.common.item.common
 
-import aurocosh.divinefavor.common.config.common.ConfigSpell
 import aurocosh.divinefavor.common.config.common.ConfigTool
-import aurocosh.divinefavor.common.item.spell_talismans.base.SpellOptions
 import aurocosh.divinefavor.common.item.tool_talismans.*
 import aurocosh.divinefavor.common.item.tool_talismans.base.ItemToolTalisman
-import aurocosh.divinefavor.common.item.tool_talismans.break_blocks.ToolTalismanBreakRadius
-import aurocosh.divinefavor.common.item.tool_talismans.break_blocks.ToolTalismanBreakSide
-import aurocosh.divinefavor.common.item.tool_talismans.break_blocks.ToolTalismanBreakSurface
+import aurocosh.divinefavor.common.item.tool_talismans.break_blocks.*
 import aurocosh.divinefavor.common.item.tool_talismans.destroy.ToolTalismanDestroyBlocks
 import aurocosh.divinefavor.common.item.tool_talismans.destroy.ToolTalismanDestroyCuboid
 import aurocosh.divinefavor.common.item.tool_talismans.destroy.ToolTalismanDestroySide
@@ -22,6 +18,7 @@ import net.minecraft.init.Blocks
 
 object ModToolTalismans {
     // New fields
+    lateinit var break_blocks: ItemToolTalisman
     lateinit var memory_tool: ItemToolTalisman
     lateinit var fell_tree: ItemToolTalisman
     lateinit var obsidian_carving: ItemToolTalisman
@@ -55,6 +52,7 @@ object ModToolTalismans {
         // squarefury;
 
         // New instances
+        break_blocks = ToolTalismanBreakBlocks("break_blocks", ModSpirits.romol, ConfigTool.breakBlocks.favorCost)
         memory_tool = ToolTalismanMemoryTool("memory_tool", ModSpirits.romol, ConfigTool.memoryTool.favorCost)
         fell_tree = ToolTalismanFellTree("fell_tree", ModSpirits.romol, ConfigTool.fellTree.favorCost)
         obsidian_carving = ToolTalismanObsidianCarving("obsidian_carving", ModSpirits.neblaze, ConfigTool.obsidianCarving.favorCost,Blocks.OBSIDIAN, Block::isLava)

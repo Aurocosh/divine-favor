@@ -13,6 +13,8 @@ public class ConfigTool {
     @Config.Name("Break radius")
     public static BreakRadius breakRadius = new BreakRadius();
     // New configs
+    @Config.Name("Break blocks")
+    public static BreakBlocks breakBlocks = new BreakBlocks();
     @Config.Name("Memory tool")
     public static MemoryTool memoryTool = new MemoryTool();
     @Config.Name("Fell tree")
