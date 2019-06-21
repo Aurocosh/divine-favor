@@ -18,6 +18,7 @@ import aurocosh.divinefavor.common.item.talisman_tools.spell_pick.capability.Spe
 import aurocosh.divinefavor.common.item.talisman_tools.spell_pick.capability.SpellPickProvider
 import aurocosh.divinefavor.common.item.talisman_tools.spell_pick.capability.SpellPickStorage
 import aurocosh.divinefavor.common.item.tool_talismans.base.ItemToolTalisman
+import aurocosh.divinefavor.common.item.tool_talismans.base.PickDestroySpeedType
 import aurocosh.divinefavor.common.lib.extensions.cap
 import aurocosh.divinefavor.common.stack_properties.IPropertyAccessor
 import aurocosh.divinefavor.common.stack_properties.IPropertyContainer
@@ -122,9 +123,12 @@ open class ItemSpellPick(name: String, texturePath: String, orderIndex: Int = 0,
     override fun getDestroySpeed(stack: ItemStack, state: IBlockState): Float {
         val (talismanStack, talisman) = TalismanAdapter.getTalisman<ItemToolTalisman>(stack)
                 ?: return super.getDestroySpeed(stack, state)
-        if (talisman.isDestroySpeedCustom(talismanStack, state))
-            return talisman.getCustomDestroySpeed(talismanStack, state)
-        return super.getDestroySpeed(stack, state)
+
+        return when (talisman.getDestroySpeedType(talismanStack, state)) {
+            PickDestroySpeedType.GET_FROM_TALISMAN -> talisman.getCustomDestroySpeed(talismanStack, state)
+            PickDestroySpeedType.ADD_FROM_TALISMAN -> talisman.getCustomDestroySpeed(talismanStack, state) + super.getDestroySpeed(stack, state)
+            else -> super.getDestroySpeed(stack, state)
+        }
     }
 
     override fun canHarvestBlock(state: IBlockState, stack: ItemStack): Boolean {

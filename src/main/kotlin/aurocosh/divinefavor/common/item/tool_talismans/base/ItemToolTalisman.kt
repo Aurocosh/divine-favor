@@ -26,8 +26,8 @@ open class ItemToolTalisman
         return context.castType == CastType.PickCast && super.preValidate(context)
     }
 
-    open fun isDestroySpeedCustom(stack: ItemStack, state: IBlockState) = false
-    open fun getCustomDestroySpeed(stack: ItemStack, state: IBlockState) = 0f
+    open fun getDestroySpeedType(stack: ItemStack, state: IBlockState) = PickDestroySpeedType.STANDARD
+    open fun getCustomDestroySpeed(talismanStack: ItemStack, state: IBlockState) = 0f
 
     open fun isHarvestCustom(stack: ItemStack, state: IBlockState) = false
     open fun getCustomHarvest(stack: ItemStack, state: IBlockState) = false

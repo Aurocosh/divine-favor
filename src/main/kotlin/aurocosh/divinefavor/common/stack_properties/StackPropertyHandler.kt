@@ -57,6 +57,12 @@ abstract class StackPropertyHandler(private val parentName: String) : IPropertyA
         return property
     }
 
+    fun registerFloatProperty(name: String, defaultValue: Float, minValue: Float = 1f, maxValue: Float = defaultValue, showInTooltip: Boolean = true, orderIndex: Int = 0): StackPropertyFloat {
+        val property = StackPropertyFloat(name, defaultValue, minValue, maxValue, showInTooltip, orderIndex, getSynchronizerFloat())
+        registerProperty(property)
+        return property
+    }
+
     fun registerBoolProperty(name: String, defaultValue: Boolean, showInTooltip: Boolean = true, orderIndex: Int = 0): StackPropertyBool {
         val property = StackPropertyBool(name, defaultValue, showInTooltip, orderIndex, getSynchronizerBool())
         registerProperty(property)
@@ -95,6 +101,10 @@ abstract class StackPropertyHandler(private val parentName: String) : IPropertyA
 
     open fun getSynchronizerInt() = { itemId: Int, property: StackProperty<Int>, value: Int ->
         MessageSyncPropertyInt(itemId, property.name, value).send()
+    }
+
+    open fun getSynchronizerFloat() = { itemId: Int, property: StackProperty<Float>, value: Float ->
+        MessageSyncPropertyFloat(itemId, property.name, value).send()
     }
 
     open fun getSynchronizerBool() = { itemId: Int, property: StackProperty<Boolean>, value: Boolean ->

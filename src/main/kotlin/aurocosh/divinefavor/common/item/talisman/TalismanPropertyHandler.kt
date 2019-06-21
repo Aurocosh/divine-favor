@@ -11,6 +11,10 @@ class TalismanPropertyHandler(parentName: String) : StackPropertyHandler(parentN
         MessageSyncTalismanPropertyInt(itemId, property.name, value).send()
     }
 
+    override fun getSynchronizerFloat() = { itemId: Int, property: StackProperty<Float>, value: Float ->
+        MessageSyncTalismanPropertyFloat(itemId, property.name, value).send()
+    }
+
     override fun getSynchronizerBool() = { itemId: Int, property: StackProperty<Boolean>, value: Boolean ->
         MessageSyncTalismanPropertyBool(itemId, property.name, value).send()
     }

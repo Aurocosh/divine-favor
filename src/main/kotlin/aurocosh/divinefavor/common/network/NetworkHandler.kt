@@ -66,11 +66,13 @@ object NetworkHandler {
         autoWrapper.register(MessageSyncPropertyIBlockState::class.java, Side.SERVER)
         autoWrapper.register(MessageSyncPropertyBlockPos::class.java, Side.SERVER)
         autoWrapper.register(MessageSyncPropertyEnumFacing::class.java, Side.SERVER)
+        autoWrapper.register(MessageSyncPropertyFloat::class.java, Side.SERVER)
 
         autoWrapper.register(MessageSyncTalismanPropertyBool::class.java, Side.SERVER)
         autoWrapper.register(MessageSyncTalismanPropertyInt::class.java, Side.SERVER)
         autoWrapper.register(MessageSyncTalismanPropertyIBlockState::class.java, Side.SERVER)
         autoWrapper.register(MessageSyncTalismanPropertyBlockPos::class.java, Side.SERVER)
         autoWrapper.register(MessageSyncTalismanPropertyEnumFacing::class.java, Side.SERVER)
+        autoWrapper.register(MessageSyncTalismanPropertyFloat::class.java, Side.SERVER)
     }
 }
