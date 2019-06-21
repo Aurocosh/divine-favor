@@ -1,6 +1,10 @@
 package aurocosh.divinefavor.common.config.common;
 
 import aurocosh.divinefavor.DivineFavor;
+import aurocosh.divinefavor.common.config.entries.tool_talismans.DestroyBlocks;
+import aurocosh.divinefavor.common.config.entries.tool_talismans.DestroyCuboid;
+import aurocosh.divinefavor.common.config.entries.tool_talismans.DestroySide;
+import aurocosh.divinefavor.common.config.entries.tool_talismans.DestroySurface;
 import aurocosh.divinefavor.common.config.entries.tool_talismans.*;
 import net.minecraftforge.common.config.Config;
 
@@ -27,4 +31,12 @@ public class ConfigTool {
     public static BreakSide breakSide = new BreakSide();
     @Config.Name("Break surface")
     public static BreakSurface breakSurface = new BreakSurface();
+    @Config.Name("Destroy blocks")
+    public static DestroyBlocks destroyBlocks = new DestroyBlocks();
+    @Config.Name("Destroy surface")
+    public static DestroySurface destroySurface = new DestroySurface();
+    @Config.Name("Destroy side")
+    public static DestroySide destroySide = new DestroySide();
+    @Config.Name("Destroy cuboid")
+    public static DestroyCuboid destroyCuboid = new DestroyCuboid();
 }

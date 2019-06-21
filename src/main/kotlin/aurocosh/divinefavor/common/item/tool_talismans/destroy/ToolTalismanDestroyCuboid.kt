@@ -1,7 +1,6 @@
-package aurocosh.divinefavor.common.item.spell_talismans.destroy
+package aurocosh.divinefavor.common.item.tool_talismans.destroy
 
 import aurocosh.divinefavor.common.coordinate_generators.CuboidCoordinateGenerator
-import aurocosh.divinefavor.common.item.spell_talismans.base.SpellOptions
 import aurocosh.divinefavor.common.item.spell_talismans.context.TalismanContext
 import aurocosh.divinefavor.common.lib.extensions.filter
 import aurocosh.divinefavor.common.lib.extensions.get
@@ -10,9 +9,8 @@ import aurocosh.divinefavor.common.stack_properties.StackPropertyInt
 import aurocosh.divinefavor.common.util.UtilPlayer
 import net.minecraft.item.ItemStack
 import net.minecraft.util.math.BlockPos
-import java.util.*
 
-class SpellTalismanDestroyCuboid(name: String, spirit: ModSpirit, favorCost: Int, options: EnumSet<SpellOptions>) : SpellTalismanDestroy(name, spirit, favorCost, options) {
+class ToolTalismanDestroyCuboid(name: String, spirit: ModSpirit, favorCost: Int) : ToolTalismanDestroy(name, spirit, favorCost) {
     private val up: StackPropertyInt = propertyHandler.registerIntProperty("up", 1, 0, 10)
     private val down: StackPropertyInt = propertyHandler.registerIntProperty("down", 1, 0, 10)
     private val left: StackPropertyInt = propertyHandler.registerIntProperty("left", 1, 0, 10)
@@ -30,9 +28,8 @@ class SpellTalismanDestroyCuboid(name: String, spirit: ModSpirit, favorCost: Int
         val (player, stack, world) = context.getCommon()
         val (left, right, up, down, depth) = context.stack.get(left, right, up, down, depth)
 
-        val blockPos = positionPropertyWrapper.getPosition(context)
         val directions = UtilPlayer.getRelativeDirections(player, context.facing)
-        val sequence = coordinateGenerator.getCoordinates(directions, blockPos, up, down, left, right, depth)
+        val sequence = coordinateGenerator.getCoordinates(directions, context.pos, up, down, left, right, depth)
         if (stack.get(isFuzzy))
             return sequence.toList()
         val state = stack.get(selectPropertyWrapper.selectedBlock)

@@ -1,4 +1,4 @@
-package aurocosh.divinefavor.common.item.tool_talismans
+package aurocosh.divinefavor.common.item.tool_talismans.break_blocks
 
 import aurocosh.divinefavor.common.coordinate_generators.WallCoordinateGenerator
 import aurocosh.divinefavor.common.item.spell_talismans.context.TalismanContext

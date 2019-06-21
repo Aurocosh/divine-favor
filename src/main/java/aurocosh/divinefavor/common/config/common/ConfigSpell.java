@@ -208,14 +208,6 @@ public class ConfigSpell {
     // New configs
     @Config.Name("Replace cuboid")
     public static ReplaceCuboid replaceCuboid = new ReplaceCuboid();
-    @Config.Name("Destroy blocks")
-    public static DestroyBlocks destroyBlocks = new DestroyBlocks();
-    @Config.Name("Destroy surface")
-    public static DestroySurface destroySurface = new DestroySurface();
-    @Config.Name("Destroy side")
-    public static DestroySide destroySide = new DestroySide();
-    @Config.Name("Destroy cuboid")
-    public static DestroyCuboid destroyCuboid = new DestroyCuboid();
     @Config.Name("Replace side")
     public static ReplaceSide replaceSide = new ReplaceSide();
     @Config.Name("Replace blocks")

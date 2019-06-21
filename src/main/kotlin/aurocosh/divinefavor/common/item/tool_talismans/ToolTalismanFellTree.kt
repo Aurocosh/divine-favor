@@ -2,6 +2,7 @@ package aurocosh.divinefavor.common.item.tool_talismans
 
 import aurocosh.divinefavor.common.coordinate_generators.TreeCoordinateGenerator
 import aurocosh.divinefavor.common.item.spell_talismans.context.TalismanContext
+import aurocosh.divinefavor.common.item.tool_talismans.break_blocks.ToolTalismanBreak
 import aurocosh.divinefavor.common.lib.extensions.get
 import aurocosh.divinefavor.common.spirit.base.ModSpirit
 import aurocosh.divinefavor.common.stack_properties.StackPropertyInt

@@ -7,10 +7,6 @@ import aurocosh.divinefavor.common.item.spell_talismans.*
 import aurocosh.divinefavor.common.item.spell_talismans.base.*
 import aurocosh.divinefavor.common.item.spell_talismans.build.*
 import aurocosh.divinefavor.common.item.spell_talismans.build.base.SpellTalismanBuildBlockRelative
-import aurocosh.divinefavor.common.item.spell_talismans.destroy.SpellTalismanDestroyBlocks
-import aurocosh.divinefavor.common.item.spell_talismans.destroy.SpellTalismanDestroyCuboid
-import aurocosh.divinefavor.common.item.spell_talismans.destroy.SpellTalismanDestroySide
-import aurocosh.divinefavor.common.item.spell_talismans.destroy.SpellTalismanDestroySurface
 import aurocosh.divinefavor.common.item.spell_talismans.replace.SpellTalismanReplaceBlocks
 import aurocosh.divinefavor.common.item.spell_talismans.replace.SpellTalismanReplaceCuboid
 import aurocosh.divinefavor.common.item.spell_talismans.replace.SpellTalismanReplaceSide
@@ -133,10 +129,6 @@ object ModSpellTalismans {
 
     // New fields
     lateinit var replace_cuboid: ItemSpellTalisman
-    lateinit var destroy_blocks: ItemSpellTalisman
-    lateinit var destroy_surface: ItemSpellTalisman
-    lateinit var destroy_side: ItemSpellTalisman
-    lateinit var destroy_cuboid: ItemSpellTalisman
     lateinit var replace_side: ItemSpellTalisman
     lateinit var replace_blocks: ItemSpellTalisman
     lateinit var build_wall_relative: ItemSpellTalisman
@@ -283,11 +275,6 @@ object ModSpellTalismans {
 
         // New instances
         replace_cuboid = SpellTalismanReplaceCuboid("replace_cuboid", ModSpirits.romol, ConfigSpell.replaceCuboid.favorCost, SpellOptions.ALL_CAST_TRACE)
-        destroy_blocks = SpellTalismanDestroyBlocks("destroy_blocks", ModSpirits.romol, ConfigSpell.destroyBlocks.favorCost, SpellOptions.ALL_CAST_TRACE)
-        destroy_surface = SpellTalismanDestroySurface("destroy_surface", ModSpirits.romol, ConfigSpell.destroySurface.favorCost, SpellOptions.ALL_CAST_TRACE)
-        destroy_side = SpellTalismanDestroySide("destroy_side", ModSpirits.romol, ConfigSpell.destroySide.favorCost, SpellOptions.ALL_CAST_TRACE)
-        destroy_cuboid = SpellTalismanDestroyCuboid("destroy_cuboid", ModSpirits.romol, ConfigSpell.destroyCuboid.favorCost, SpellOptions.ALL_CAST_TRACE)
-        replace_side = SpellTalismanReplaceSide("replace_side", ModSpirits.romol, ConfigSpell.replaceSide.favorCost, SpellOptions.ALL_CAST_TRACE)
         replace_blocks = SpellTalismanReplaceBlocks("replace_blocks", ModSpirits.romol, ConfigSpell.replaceBlocks.favorCost, SpellOptions.ALL_CAST_TRACE)
         build_wall_relative = SpellTalismanBuildWallRelative("build_wall_relative", ModSpirits.romol, ConfigSpell.buildWallRelative.favorCost, SpellOptions.ALL_CAST_TRACE)
         build_horizontal_line_relative = SpellTalismanBuildHorizontalLineRelative("build_horizontal_line_relative", ModSpirits.romol, ConfigSpell.buildHorizontalLineRelative.favorCost, SpellOptions.ALL_CAST_TRACE)
@@ -309,6 +296,7 @@ object ModSpellTalismans {
         replace_surface = SpellTalismanReplaceSurface("replace_surface", ModSpirits.romol, ConfigSpell.replaceSurface.favorCost, SpellOptions.ALL_CAST_TRACE)
         build_column = SpellTalismanBuildColumn("build_column", ModSpirits.romol, ConfigSpell.buildColumn.favorCost, SpellOptions.ALL_CAST_TRACE)
         bind_ice_arrows = SpellTalismanBindIceArrows("bind_ice_arrows", ModSpirits.blizrabi, ConfigSpell.bindIceArrows.favorCost, SpellOptions.ALL_CAST)
+        replace_side = SpellTalismanReplaceSide("replace_side", ModSpirits.romol, ConfigSpell.replaceSide.favorCost, SpellOptions.ALL_CAST_TRACE)
     }
 
     fun init() {}

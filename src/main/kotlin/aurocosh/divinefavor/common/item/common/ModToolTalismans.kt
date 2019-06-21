@@ -1,8 +1,17 @@
 package aurocosh.divinefavor.common.item.common
 
+import aurocosh.divinefavor.common.config.common.ConfigSpell
 import aurocosh.divinefavor.common.config.common.ConfigTool
+import aurocosh.divinefavor.common.item.spell_talismans.base.SpellOptions
 import aurocosh.divinefavor.common.item.tool_talismans.*
 import aurocosh.divinefavor.common.item.tool_talismans.base.ItemToolTalisman
+import aurocosh.divinefavor.common.item.tool_talismans.break_blocks.ToolTalismanBreakRadius
+import aurocosh.divinefavor.common.item.tool_talismans.break_blocks.ToolTalismanBreakSide
+import aurocosh.divinefavor.common.item.tool_talismans.break_blocks.ToolTalismanBreakSurface
+import aurocosh.divinefavor.common.item.tool_talismans.destroy.ToolTalismanDestroyBlocks
+import aurocosh.divinefavor.common.item.tool_talismans.destroy.ToolTalismanDestroyCuboid
+import aurocosh.divinefavor.common.item.tool_talismans.destroy.ToolTalismanDestroySide
+import aurocosh.divinefavor.common.item.tool_talismans.destroy.ToolTalismanDestroySurface
 import aurocosh.divinefavor.common.lib.extensions.isIce
 import aurocosh.divinefavor.common.lib.extensions.isLava
 import aurocosh.divinefavor.common.lib.extensions.isWater
@@ -23,6 +32,10 @@ object ModToolTalismans {
     lateinit var break_side: ItemToolTalisman
     lateinit var break_surface: ItemToolTalisman
     lateinit var break_radius: ItemToolTalisman
+    lateinit var destroy_blocks: ItemToolTalisman
+    lateinit var destroy_surface: ItemToolTalisman
+    lateinit var destroy_side: ItemToolTalisman
+    lateinit var destroy_cuboid: ItemToolTalisman
 
     fun preInit() {
         // arbow;
@@ -52,5 +65,9 @@ object ModToolTalismans {
         break_side = ToolTalismanBreakSide("break_side", ModSpirits.romol, ConfigTool.breakSide.favorCost)
         break_surface = ToolTalismanBreakSurface("break_surface", ModSpirits.romol, ConfigTool.breakSurface.favorCost)
         break_radius = ToolTalismanBreakRadius("break_radius", ModSpirits.romol, ConfigTool.breakRadius.favorCost)
+        destroy_blocks = ToolTalismanDestroyBlocks("destroy_blocks", ModSpirits.romol, ConfigTool.destroyBlocks.favorCost)
+        destroy_surface = ToolTalismanDestroySurface("destroy_surface", ModSpirits.romol, ConfigTool.destroySurface.favorCost)
+        destroy_side = ToolTalismanDestroySide("destroy_side", ModSpirits.romol, ConfigTool.destroySide.favorCost)
+        destroy_cuboid = ToolTalismanDestroyCuboid("destroy_cuboid", ModSpirits.romol, ConfigTool.destroyCuboid.favorCost)
     }
 }

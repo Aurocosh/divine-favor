@@ -186,10 +186,6 @@ item.divinefavor:ice_arrow.name=Ice arrow
 
 ## SPELL TALISMAN NAMES
 item.divinefavor:spell_talisman_replace_cuboid.name=Replace cuboid
-item.divinefavor:spell_talisman_destroy_blocks.name=Destroy blocks
-item.divinefavor:spell_talisman_destroy_surface.name=Destroy surface
-item.divinefavor:spell_talisman_destroy_side.name=Destroy side
-item.divinefavor:spell_talisman_destroy_cuboid.name=Destroy cuboid
 item.divinefavor:spell_talisman_replace_side.name=Replace side
 item.divinefavor:spell_talisman_replace_blocks.name=Replace blocks
 item.divinefavor:spell_talisman_build_wall_relative.name=Build wall relative
@@ -405,6 +401,10 @@ item.divinefavor:tool_talisman_wood_peck.name=Wood pick
 item.divinefavor:tool_talisman_break_side.name=Break side
 item.divinefavor:tool_talisman_break_surface.name=Break surface
 item.divinefavor:tool_talisman_break_radius.name=Break radius talisman
+item.divinefavor:tool_talisman_destroy_blocks.name=Destroy blocks
+item.divinefavor:tool_talisman_destroy_surface.name=Destroy surface
+item.divinefavor:tool_talisman_destroy_side.name=Destroy side
+item.divinefavor:tool_talisman_destroy_cuboid.name=Destroy cuboid
 
 # EFFECT NAMES
 potion.divinefavor:armor_of_pacifist.name=Armor of pacifist
@@ -606,10 +606,6 @@ item.divinefavor:ice_arrow.description=Delicate arrows made of ice. They are fra
 
 ## SPELL TALISMAN DESCRIPTIONS
 item.divinefavor:spell_talisman_replace_cuboid.description=This talisman allows you to instantly replace any blocks in shape of cuboid.
-item.divinefavor:spell_talisman_destroy_blocks.description=This talisman allows you to instantly destroy any connected chunk of blocks with another type of block. Warning you will not get block drops!
-item.divinefavor:spell_talisman_destroy_surface.description=This talisman allows you to instantly destroy any surface with another type of block. Warning you will not get block drops!
-item.divinefavor:spell_talisman_destroy_side.description=This talisman allows you to instantly destroy any continuous surface without angles with another type of block. Warning you will not get block drops!
-item.divinefavor:spell_talisman_destroy_cuboid.description=This talisman allows you to instantly destroy any blocks in shape of cuboid. Warning you will not get block drops!
 item.divinefavor:spell_talisman_replace_side.description=This talisman allows you to instantly replace any continuous surface without angles with another type of block
 item.divinefavor:spell_talisman_replace_blocks.description=This talisman allows you to instantly replace any connected chunk of blocks with another type of block
 item.divinefavor:spell_talisman_build_wall_relative.description=This talisman allows you to instantly build walls. You can freely adjust walls built with it in all directions anywhere around you.
@@ -821,6 +817,10 @@ item.divinefavor:tool_talisman_wood_peck.description=This talisman allows spell 
 item.divinefavor:tool_talisman_break_side.description=When spell pick with this talisman breaks a block it will also break some blocks on the same continuous surface.
 item.divinefavor:tool_talisman_break_surface.description=When spell pick with this talisman breaks a block it will also break some blocks on the same surface.
 item.divinefavor:tool_talisman_break_radius.description=When spell pick with this talisman breaks a block it will also break blocks in certain radius around original block.
+item.divinefavor:tool_talisman_destroy_blocks.description=This talisman allows you to instantly destroy any connected chunk of blocks with another type of block. Warning you will not get block drops!
+item.divinefavor:tool_talisman_destroy_surface.description=This talisman allows you to instantly destroy any surface with another type of block. Warning you will not get block drops!
+item.divinefavor:tool_talisman_destroy_side.description=This talisman allows you to instantly destroy any continuous surface without angles with another type of block. Warning you will not get block drops!
+item.divinefavor:tool_talisman_destroy_cuboid.description=This talisman allows you to instantly destroy any blocks in shape of cuboid. Warning you will not get block drops!
 
 #PATCHOULI
 ## CONTRACTS
