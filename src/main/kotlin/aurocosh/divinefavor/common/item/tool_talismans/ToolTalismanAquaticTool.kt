@@ -7,11 +7,6 @@ import net.minecraft.item.ItemStack
 import net.minecraftforge.event.entity.player.PlayerEvent
 
 class ToolTalismanAquaticTool(name: String, spirit: ModSpirit, favorCost: Int) : ItemToolTalisman(name, spirit, favorCost) {
-    override fun canHarvest(stack: ItemStack, event: PlayerEvent.HarvestCheck) {
-        if (event.entityPlayer.isInWater)
-            event.setCanHarvest(true)
-    }
-
     override fun getMiningSpeed(stack: ItemStack, event: PlayerEvent.BreakSpeed) {
         if (event.entityPlayer.isInWater)
             event.newSpeed += ConfigTool.aquaticTool.miningSpeed

@@ -19,6 +19,7 @@ import aurocosh.divinefavor.common.item.talisman_tools.spell_pick.capability.Spe
 import aurocosh.divinefavor.common.item.talisman_tools.spell_pick.capability.SpellPickStorage
 import aurocosh.divinefavor.common.item.tool_talismans.base.ItemToolTalisman
 import aurocosh.divinefavor.common.lib.extensions.cap
+import aurocosh.divinefavor.common.lib.extensions.divinePlayerData
 import aurocosh.divinefavor.common.lib.interfaces.IBlockCatcher
 import aurocosh.divinefavor.common.stack_properties.IPropertyAccessor
 import aurocosh.divinefavor.common.stack_properties.IPropertyContainer
@@ -60,15 +61,16 @@ open class ItemSpellPick(name: String, texturePath: String, orderIndex: Int = 0,
 
     override fun onBlockStartBreak(itemstack: ItemStack, pos: BlockPos, player: EntityPlayer): Boolean {
         val success = performBreakCast(itemstack, pos, player);
-        if (success)
-            return super.onBlockStartBreak(itemstack, pos, player)
+        if (!success)
+            return true
         return false
     }
 
     private fun performBreakCast(stack: ItemStack, pos: BlockPos, player: EntityPlayer): Boolean {
         val (talismanStack, talisman) = TalismanAdapter.getTalisman<ItemToolTalisman>(stack) ?: return true
         val context = TalismanContextGenerator.pick(talismanStack, player, pos, stack)
-        return talisman.cast(context)
+        val cast = talisman.cast(context)
+        return cast && talisman.shouldBreakBlock(context)
     }
 
     override fun hitEntity(stack: ItemStack, target: EntityLivingBase, attacker: EntityLivingBase): Boolean {
@@ -147,13 +149,18 @@ open class ItemSpellPick(name: String, texturePath: String, orderIndex: Int = 0,
         catcher.catchDrops(talismanStack, stack, event)
     }
 
-    fun canHarvest(stack: ItemStack, event: PlayerEvent.HarvestCheck) {
-        val (talismanStack, talisman) = TalismanAdapter.getTalisman<ItemToolTalisman>(stack) ?: return
-        talisman.canHarvest(talismanStack, event)
+    override fun canHarvestBlock(state: IBlockState, stack: ItemStack): Boolean {
+        val toolCanHarvest = super.canHarvestBlock(state, stack)
+        val (talismanStack, talisman) = TalismanAdapter.getTalisman<ItemToolTalisman>(stack) ?: return toolCanHarvest
+        return talisman.canHarvest(talismanStack, state, toolCanHarvest)
     }
 
     fun getMiningSpeed(stack: ItemStack, event: PlayerEvent.BreakSpeed) {
         val (talismanStack, talisman) = TalismanAdapter.getTalisman<ItemToolTalisman>(stack) ?: return
+        val spiritData = event.entityPlayer.divinePlayerData.spiritData
+        val favor = spiritData.getFavor(talisman.spiritId)
+        if(favor < talisman.getApproximateFavorCost(stack))
+            return
         talisman.getMiningSpeed(talismanStack, event)
     }
 

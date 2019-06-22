@@ -13,6 +13,8 @@ public class ConfigTool {
     @Config.Name("Break radius")
     public static BreakRadius breakRadius = new BreakRadius();
     // New configs
+    @Config.Name("Void tool")
+    public static VoidTool voidTool = new VoidTool();
     @Config.Name("Aquatic tool")
     public static AquaticTool aquaticTool = new AquaticTool();
     @Config.Name("Molten tool")

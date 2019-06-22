@@ -18,6 +18,7 @@ import net.minecraft.init.Blocks
 
 object ModToolTalismans {
     // New fields
+    lateinit var void_tool: ItemToolTalisman
     lateinit var aquatic_tool: ItemToolTalisman
     lateinit var molten_tool: ItemToolTalisman
     lateinit var break_blocks: ItemToolTalisman
@@ -63,6 +64,7 @@ object ModToolTalismans {
         // squarefury;
 
         // New instances
+        void_tool = ToolTalismanVoidTool("void_tool", ModSpirits.neblaze, ConfigTool.voidTool.favorCost)
         break_blocks = ToolTalismanBreakBlocks("break_blocks", ModSpirits.romol)
         fell_tree = ToolTalismanFellTree("fell_tree", ModSpirits.romol)
         volcanic_glass_cutter = ToolTalismanVolcanicGlassCutter("volcanic_glass_cutter", ModSpirits.romol, ConfigTool.volcanicGlassCutter.favorCost)

@@ -1,9 +1,9 @@
 {
   "result": {
-    "item": "divinefavor:tool_talisman_break_blocks"
+    "item": "divinefavor:tool_talisman_void_tool"
   },
   "stones": [
-    "divinefavor:calling_stone_romol"
+    "divinefavor:calling_stone_neblaze"
   ],
   "ingredients": [
     {
@@ -20,7 +20,15 @@
     },
     {
       "type": "stack",
-      "item": "minecraft:golden_pickaxe"
+      "item": "minecraft:iron_pickaxe"
+    },
+    {
+      "type": "stack",
+      "item": "minecraft:ender_eye"
+    },
+    {
+      "type": "ore",
+      "ore": "obsidian"
     }
   ]
 }

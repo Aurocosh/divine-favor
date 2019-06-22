@@ -9,7 +9,6 @@ import net.minecraftforge.fml.common.Mod.EventBusSubscriber
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent
 import net.minecraftforge.event.entity.player.PlayerEvent
 
-
 @EventBusSubscriber(modid = DivineFavor.MOD_ID)
 object BreakEventHandler {
     @SubscribeEvent
@@ -19,10 +18,6 @@ object BreakEventHandler {
         val stack = player.getHeldItem(hand)
         val blockCatcher = stack.item as IBlockCatcher
         blockCatcher.catchDrops(stack, stack, event)
-
-
-//        event.drops.removeIf{blockCatcher()}
-//        event.drops.removeIf(player::addItemStackToInventory)
     }
 
     @SubscribeEvent
@@ -32,6 +27,5 @@ object BreakEventHandler {
         if (item is ItemSpellPick)
             item.getMiningSpeed(stack, event)
     }
-
 }
 
