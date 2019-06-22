@@ -12,8 +12,14 @@ object BreakEventHandler {
     @SubscribeEvent
     fun catchBlockDrops(event: BlockEvent.HarvestDropsEvent) {
         val player = event.harvester ?: return
-        UtilPlayer.getHandWithItem(player) { it is IBlockCatcher } ?: return
-        event.drops.removeIf(player::addItemStackToInventory)
+        val hand = UtilPlayer.getHandWithItem(player) { it is IBlockCatcher } ?: return
+        val stack = player.getHeldItem(hand)
+        val blockCatcher = stack.item as IBlockCatcher
+        blockCatcher.catch(player, stack, event)
+
+
+//        event.drops.removeIf{blockCatcher()}
+//        event.drops.removeIf(player::addItemStackToInventory)
     }
 }
 

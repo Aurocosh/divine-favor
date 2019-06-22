@@ -18,6 +18,7 @@ import aurocosh.divinefavor.common.item.talisman_tools.spell_blade.capability.Sp
 import aurocosh.divinefavor.common.item.talisman_tools.spell_blade.capability.SpellBladeDataHandler.CAPABILITY_SPELL_BLADE
 import aurocosh.divinefavor.common.item.talisman_tools.spell_blade.capability.SpellBladeProvider
 import aurocosh.divinefavor.common.lib.extensions.cap
+import aurocosh.divinefavor.common.lib.interfaces.IBlockCatcher
 import aurocosh.divinefavor.common.stack_properties.IPropertyAccessor
 import aurocosh.divinefavor.common.stack_properties.IPropertyContainer
 import aurocosh.divinefavor.common.stack_properties.StackPropertyHandler
@@ -38,11 +39,12 @@ import net.minecraft.util.*
 import net.minecraft.util.math.BlockPos
 import net.minecraft.world.World
 import net.minecraftforge.common.capabilities.ICapabilityProvider
+import net.minecraftforge.event.world.BlockEvent
 import net.minecraftforge.fml.relauncher.Side
 import net.minecraftforge.fml.relauncher.SideOnly
 import net.minecraftforge.oredict.OreDictionary
 
-open class ItemSpellBlade(name: String, texturePath: String, orderIndex: Int = 0, val config: SpellBlade, val material: ToolMaterial) : ModItem(name, texturePath, orderIndex), ITalismanStackContainer, ITalismanToolContainer, IPropertyContainer {
+open class ItemSpellBlade(name: String, texturePath: String, orderIndex: Int = 0, val config: SpellBlade, val material: ToolMaterial) : ModItem(name, texturePath, orderIndex), ITalismanStackContainer, ITalismanToolContainer, IPropertyContainer, IBlockCatcher {
     protected val propertyHandler: StackPropertyHandler = TalismanPropertyHandler(name)
     override val properties: IPropertyAccessor = propertyHandler
     private val bookPropertyWrapper = BookPropertyWrapper(propertyHandler)
@@ -147,6 +149,14 @@ open class ItemSpellBlade(name: String, texturePath: String, orderIndex: Int = 0
     }
 
     override fun getTalismanTool(stack: ItemStack): ITalismanTool = stack.cap(CAPABILITY_SPELL_BLADE)
+
+    override fun catch(player: EntityPlayer, stack: ItemStack, event: BlockEvent.HarvestDropsEvent) {
+        val talismanStack = getTalismanStack(stack)
+        if (talismanStack.isEmpty)
+            return
+        val catcher = talismanStack.item as IBlockCatcher
+        catcher.catch(player, talismanStack, event)
+    }
 
     override fun getTalismanStack(stack: ItemStack): ItemStack {
         if (stack.item !== this)

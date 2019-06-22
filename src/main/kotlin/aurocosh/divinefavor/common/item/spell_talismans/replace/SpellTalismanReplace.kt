@@ -10,9 +10,12 @@ import aurocosh.divinefavor.common.lib.interfaces.IBlockCatcher
 import aurocosh.divinefavor.common.spirit.base.ModSpirit
 import aurocosh.divinefavor.common.stack_properties.StackPropertyBool
 import aurocosh.divinefavor.common.stack_properties.StackPropertyInt
-import aurocosh.divinefavor.common.tasks.BlockPlacingTask
 import aurocosh.divinefavor.common.tasks.BlockReplacingTask
+import aurocosh.divinefavor.common.util.UtilPlayer
+import net.minecraft.entity.player.EntityPlayer
+import net.minecraft.item.ItemStack
 import net.minecraftforge.client.event.RenderWorldLastEvent
+import net.minecraftforge.event.world.BlockEvent
 import net.minecraftforge.fml.relauncher.Side
 import net.minecraftforge.fml.relauncher.SideOnly
 import java.util.*
@@ -22,8 +25,8 @@ abstract class SpellTalismanReplace(name: String, spirit: ModSpirit, favorCost: 
     protected val isFuzzy: StackPropertyBool = propertyHandler.registerBoolProperty("fuzzy", false)
     override val positionPropertyWrapper: PositionPropertyWrapper = PositionPropertyWrapper(propertyHandler)
 
-    override fun getRenderCoordinates(context: TalismanContext) = getCoordinates(context).filterNot{context.world.isAirBlock(it)}
-    override fun getFinalCoordinates(context: TalismanContext) = getCoordinates(context).filterNot{context.world.isAirBlock(it)}.shuffled()
+    override fun getRenderCoordinates(context: TalismanContext) = getCoordinates(context).filterNot { context.world.isAirBlock(it) }
+    override fun getFinalCoordinates(context: TalismanContext) = getCoordinates(context).filterNot { context.world.isAirBlock(it) }.shuffled()
 
     override fun performActionServer(context: TalismanContext) {
         val (player, stack) = context.getCommon()
@@ -39,5 +42,7 @@ abstract class SpellTalismanReplace(name: String, spirit: ModSpirit, favorCost: 
         BlockExchangeRendering.render(lastEvent, context.player, state, coordinates)
     }
 
-    override fun canCatch() = true
+    override fun catch(player: EntityPlayer, stack: ItemStack, event: BlockEvent.HarvestDropsEvent) {
+        event.drops.removeIf(player::addItemStackToInventory)
+    }
 }

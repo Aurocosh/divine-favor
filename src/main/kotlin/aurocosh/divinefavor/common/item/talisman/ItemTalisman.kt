@@ -5,6 +5,7 @@ import aurocosh.divinefavor.common.item.base.ModItem
 import aurocosh.divinefavor.common.item.spell_talismans.base.CastType
 import aurocosh.divinefavor.common.item.spell_talismans.context.TalismanContext
 import aurocosh.divinefavor.common.lib.extensions.divinePlayerData
+import aurocosh.divinefavor.common.lib.interfaces.IBlockCatcher
 import aurocosh.divinefavor.common.network.message.client.spirit_data.MessageSyncFavor
 import aurocosh.divinefavor.common.spirit.base.ModSpirit
 import aurocosh.divinefavor.common.stack_properties.IPropertyAccessor
@@ -17,10 +18,11 @@ import net.minecraft.item.EnumRarity
 import net.minecraft.item.ItemStack
 import net.minecraft.world.World
 import net.minecraftforge.client.event.RenderWorldLastEvent
+import net.minecraftforge.event.world.BlockEvent
 import net.minecraftforge.fml.relauncher.Side
 import net.minecraftforge.fml.relauncher.SideOnly
 
-abstract class ItemTalisman(val name: String, texturePath: String, val spirit: ModSpirit, protected val favorCost: Int) : ModItem(name, texturePath), ITalismanStackContainer, IPropertyContainer {
+abstract class ItemTalisman(val name: String, texturePath: String, val spirit: ModSpirit, protected val favorCost: Int) : ModItem(name, texturePath), ITalismanStackContainer, IPropertyContainer, IBlockCatcher {
     protected val propertyHandler: StackPropertyHandler = TalismanPropertyHandler("talisman $name properties")
     override val properties: IPropertyAccessor = propertyHandler
 
@@ -125,6 +127,9 @@ abstract class ItemTalisman(val name: String, texturePath: String, val spirit: M
 
     @SideOnly(Side.CLIENT)
     open fun handleRendering(context: TalismanContext, lastEvent: RenderWorldLastEvent) {
+    }
+
+    override fun catch(player: EntityPlayer, stack: ItemStack, event: BlockEvent.HarvestDropsEvent) {
     }
 
     override fun getTalismanStack(stack: ItemStack): ItemStack {

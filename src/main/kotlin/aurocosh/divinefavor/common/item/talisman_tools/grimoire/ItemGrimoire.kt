@@ -15,6 +15,7 @@ import aurocosh.divinefavor.common.item.talisman_tools.grimoire.capability.Grimo
 import aurocosh.divinefavor.common.item.talisman_tools.grimoire.capability.GrimoireProvider
 import aurocosh.divinefavor.common.item.talisman_tools.grimoire.capability.GrimoireStorage
 import aurocosh.divinefavor.common.lib.extensions.cap
+import aurocosh.divinefavor.common.lib.interfaces.IBlockCatcher
 import aurocosh.divinefavor.common.util.UtilItem
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.item.ItemStack
@@ -26,8 +27,9 @@ import net.minecraft.util.EnumHand
 import net.minecraft.util.math.BlockPos
 import net.minecraft.world.World
 import net.minecraftforge.common.capabilities.ICapabilityProvider
+import net.minecraftforge.event.world.BlockEvent
 
-class ItemGrimoire : ModItem("grimoire", "grimoire", ConstMainTabOrder.CONTAINERS), ITalismanStackContainer, ITalismanToolContainer {
+class ItemGrimoire : ModItem("grimoire", "grimoire", ConstMainTabOrder.CONTAINERS), ITalismanStackContainer, ITalismanToolContainer, IBlockCatcher {
     init {
         setMaxStackSize(1)
         creativeTab = DivineFavor.TAB_MAIN
@@ -63,6 +65,14 @@ class ItemGrimoire : ModItem("grimoire", "grimoire", ConstMainTabOrder.CONTAINER
     }
 
     override fun getTalismanTool(stack: ItemStack): ITalismanTool = stack.cap(CAPABILITY_GRIMOIRE)
+
+    override fun catch(player: EntityPlayer, stack: ItemStack, event: BlockEvent.HarvestDropsEvent) {
+        val talismanStack = getTalismanStack(stack)
+        if (talismanStack.isEmpty)
+            return
+        val catcher = talismanStack.item as IBlockCatcher
+        catcher.catch(player, talismanStack, event)
+    }
 
     override fun getTalismanStack(stack: ItemStack): ItemStack {
         if (stack.item !== this)

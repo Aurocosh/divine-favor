@@ -21,6 +21,7 @@ import aurocosh.divinefavor.common.item.talisman_tools.spell_pick.capability.Spe
 import aurocosh.divinefavor.common.item.tool_talismans.base.ItemToolTalisman
 import aurocosh.divinefavor.common.item.tool_talismans.base.PickDestroySpeedType
 import aurocosh.divinefavor.common.lib.extensions.cap
+import aurocosh.divinefavor.common.lib.interfaces.IBlockCatcher
 import aurocosh.divinefavor.common.stack_properties.IPropertyAccessor
 import aurocosh.divinefavor.common.stack_properties.IPropertyContainer
 import aurocosh.divinefavor.common.stack_properties.StackPropertyHandler
@@ -41,11 +42,12 @@ import net.minecraft.util.*
 import net.minecraft.util.math.BlockPos
 import net.minecraft.world.World
 import net.minecraftforge.common.capabilities.ICapabilityProvider
+import net.minecraftforge.event.world.BlockEvent
 import net.minecraftforge.fml.relauncher.Side
 import net.minecraftforge.fml.relauncher.SideOnly
 import net.minecraftforge.oredict.OreDictionary
 
-open class ItemSpellPick(name: String, texturePath: String, orderIndex: Int = 0, val config: SpellPick, val material: ToolMaterial) : ModItemPickaxe(name, texturePath, orderIndex, material), ITalismanStackContainer, ITalismanToolContainer, IPropertyContainer {
+open class ItemSpellPick(name: String, texturePath: String, orderIndex: Int = 0, val config: SpellPick, val material: ToolMaterial) : ModItemPickaxe(name, texturePath, orderIndex, material), ITalismanStackContainer, ITalismanToolContainer, IPropertyContainer, IBlockCatcher {
     protected val propertyHandler: StackPropertyHandler = TalismanPropertyHandler(name)
     override val properties: IPropertyAccessor = propertyHandler
     private val bookPropertyWrapper = BookPropertyWrapper(propertyHandler)
@@ -155,6 +157,14 @@ open class ItemSpellPick(name: String, texturePath: String, orderIndex: Int = 0,
             return super.getIsRepairable(toRepair, repair)
         if (!OreDictionary.itemMatches(stack, repair, false)) return super.getIsRepairable(toRepair, repair)
         return true
+    }
+
+    override fun catch(player: EntityPlayer, stack: ItemStack, event: BlockEvent.HarvestDropsEvent) {
+        val talismanStack = getTalismanStack(stack)
+        if (talismanStack.isEmpty)
+            return
+        val catcher = talismanStack.item as IBlockCatcher
+        catcher.catch(player, talismanStack, event)
     }
 
     override fun getItemAttributeModifiers(equipmentSlot: EntityEquipmentSlot): Multimap<String, AttributeModifier> {
