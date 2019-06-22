@@ -2,6 +2,7 @@ package aurocosh.divinefavor.common.util
 
 import net.minecraft.block.Block
 import net.minecraft.block.BlockLiquid
+import net.minecraft.block.material.EnumPushReaction
 import net.minecraft.block.state.IBlockState
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.init.Blocks
@@ -162,6 +163,33 @@ object UtilBlock {
         val blockToPlace = Block.getBlockFromItem(item)
         val stateForPlacement = blockToPlace.getStateForPlacement(world, pos, EnumFacing.UP, 0f, 0f, 0f, stack.itemDamage, player, hand)
         item.placeBlockAt(stack, player, world, pos, EnumFacing.UP, 0f, 0f, 0f, stateForPlacement)
+        return true
+    }
+
+    fun moveBlock(player: EntityPlayer, world: World, pos: BlockPos, facing: EnumFacing): Boolean {
+        val state = world.getBlockState(pos)
+        val block = state.block
+        if (world.getTileEntity(pos) != null)
+            return false
+        if (state.pushReaction != EnumPushReaction.NORMAL)
+            return false
+        if (!block.canSilkHarvest(world, pos, state, player))
+            return false
+        if (state.getPlayerRelativeBlockHardness(player, world, pos) <= 0)
+            return false
+        if (!canBreakBlock(player, world, pos, false))
+            return false
+
+        val shiftVec = facing.directionVec
+        val shiftPos = pos.add(shiftVec)
+
+        if (!canReplaceBlock(player, world, shiftPos))
+            return false
+        if (!isAirOrReplaceable(world, shiftPos))
+            return false
+
+        world.setBlockState(shiftPos, state, 1 or 2)
+        world.setBlockToAir(pos)
         return true
     }
 

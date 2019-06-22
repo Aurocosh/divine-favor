@@ -1,6 +1,6 @@
 package aurocosh.divinefavor.common.item.tool_talismans.destroy
 
-import aurocosh.divinefavor.client.block_ovelay.BlockDestructionRendering
+import aurocosh.divinefavor.client.block_ovelay.BlockHighlightRendering
 import aurocosh.divinefavor.common.config.common.ConfigGeneral
 import aurocosh.divinefavor.common.item.spell_talismans.base.CastType
 import aurocosh.divinefavor.common.item.spell_talismans.common_build_properties.BlockSelectPropertyWrapper
@@ -52,7 +52,7 @@ abstract class ToolTalismanDestroy(name: String, spirit: ModSpirit) : ItemToolTa
     @SideOnly(Side.CLIENT)
     override fun handleRendering(context: TalismanContext, lastEvent: RenderWorldLastEvent) {
         val coordinates = getRenderCoordinates(context)
-        BlockDestructionRendering.render(lastEvent, context.player, coordinates)
+        BlockHighlightRendering.render(lastEvent, context.player, coordinates)
     }
 
     override fun preProcess(context: TalismanContext): Boolean {

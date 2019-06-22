@@ -3,7 +3,6 @@ package aurocosh.divinefavor.common.network.message.sever
 import aurocosh.divinefavor.common.item.talisman.ITalismanStackContainer
 import aurocosh.divinefavor.common.item.talisman.ItemTalisman
 import aurocosh.divinefavor.common.network.message.base.DivineServerMessage
-import aurocosh.divinefavor.common.item.talisman_tools.TalismanAdapter
 import net.minecraft.entity.player.EntityPlayerMP
 
 class MessageSyncTalismanPropertyIndex : DivineServerMessage {

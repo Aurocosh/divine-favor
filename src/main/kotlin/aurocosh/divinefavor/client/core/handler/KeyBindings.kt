@@ -4,7 +4,6 @@ import aurocosh.divinefavor.DivineFavor
 import aurocosh.divinefavor.common.core.ResourceNamer
 import aurocosh.divinefavor.common.item.talisman.ITalismanToolContainer
 import aurocosh.divinefavor.common.item.talisman.ItemTalisman
-import aurocosh.divinefavor.common.item.talisman_tools.TalismanAdapter
 import aurocosh.divinefavor.common.util.UtilPlayer
 import net.minecraft.client.settings.KeyBinding
 import net.minecraftforge.client.settings.IKeyConflictContext

@@ -1,7 +1,6 @@
 package aurocosh.divinefavor.common.item.spell_talismans.context
 
 import aurocosh.divinefavor.common.item.spell_talismans.base.CastType
-import aurocosh.divinefavor.common.lib.extensions.get
 import net.minecraft.entity.EntityLivingBase
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.item.ItemStack
@@ -10,6 +9,8 @@ import net.minecraft.util.EnumHand
 import net.minecraft.util.math.BlockPos
 import net.minecraft.util.math.Vec3d
 import net.minecraft.world.World
+import kotlin.collections.HashMap
+import kotlin.collections.set
 
 data class ContextProperty<T>(val name: String, val defaultValue: T)
 data class CommonContextValues(val player: EntityPlayer, val stack: ItemStack, val world: World)

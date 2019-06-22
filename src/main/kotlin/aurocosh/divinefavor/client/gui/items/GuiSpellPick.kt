@@ -1,8 +1,6 @@
 package aurocosh.divinefavor.client.gui.items
 
 import aurocosh.divinefavor.common.constants.ConstResources
-import aurocosh.divinefavor.common.item.talisman_tools.spell_blade.capability.SpellBladeDataHandler.CAPABILITY_SPELL_BLADE
-import aurocosh.divinefavor.common.item.talisman_tools.spell_blade.SpellBladeContainer
 import aurocosh.divinefavor.common.item.talisman_tools.spell_pick.SpellPickContainer
 import aurocosh.divinefavor.common.item.talisman_tools.spell_pick.capability.SpellPickDataHandler.CAPABILITY_SPELL_PICK
 import aurocosh.divinefavor.common.lib.extensions.cap

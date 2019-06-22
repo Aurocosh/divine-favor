@@ -3,9 +3,6 @@ package aurocosh.divinefavor.common.lib.extensions
 import aurocosh.divinefavor.common.item.spell_talismans.context.TalismanContext
 import aurocosh.divinefavor.common.lib.Quadruple
 import aurocosh.divinefavor.common.lib.Quintuple
-import aurocosh.divinefavor.common.stack_properties.StackProperty
-import net.minecraft.item.ItemStack
-import net.minecraft.nbt.NBTTagCompound
 
 fun <T> TalismanContext.get(one: (TalismanContext) -> T): T {
     return one.invoke(this)

@@ -4,7 +4,6 @@ import aurocosh.divinefavor.DivineFavor
 import aurocosh.divinefavor.common.lib.extensions.S
 import aurocosh.divinefavor.common.lib.extensions.compound
 import aurocosh.divinefavor.common.network.message.sever.stack_properties.*
-import aurocosh.divinefavor.common.network.message.sever.talisman_properties.*
 import net.minecraft.block.state.IBlockState
 import net.minecraft.client.resources.I18n
 import net.minecraft.item.ItemStack

@@ -1,7 +1,6 @@
 package aurocosh.divinefavor.common.integrations.patchouli.processors
 
 import aurocosh.divinefavor.DivineFavor
-import aurocosh.divinefavor.common.item.blade_talismans.base.ItemBladeTalisman
 import aurocosh.divinefavor.common.item.tool_talismans.base.ItemToolTalisman
 import net.minecraft.item.Item
 import net.minecraft.item.ItemStack

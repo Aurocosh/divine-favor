@@ -5,10 +5,7 @@ import aurocosh.divinefavor.common.config.common.ConfigSpell
 import aurocosh.divinefavor.common.item.spell_talismans.context.TalismanContextGenerator
 import aurocosh.divinefavor.common.potions.base.potion.ModPotionToggleLimited
 import aurocosh.divinefavor.common.potions.common.ModPotions
-import aurocosh.divinefavor.common.util.UtilPlayer
 import net.minecraft.entity.player.EntityPlayer
-import net.minecraft.item.ItemStack
-import net.minecraft.util.EnumHand
 import net.minecraftforge.event.entity.living.LivingEvent
 import net.minecraftforge.fml.common.Mod
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent

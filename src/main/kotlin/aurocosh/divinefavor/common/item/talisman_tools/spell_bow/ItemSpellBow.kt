@@ -13,14 +13,11 @@ import aurocosh.divinefavor.common.item.talisman.ITalismanToolContainer
 import aurocosh.divinefavor.common.item.talisman.TalismanPropertyHandler
 import aurocosh.divinefavor.common.item.talisman_tools.BookPropertyWrapper
 import aurocosh.divinefavor.common.item.talisman_tools.ITalismanTool
-import aurocosh.divinefavor.common.item.talisman_tools.TalismanAdapter
 import aurocosh.divinefavor.common.item.talisman_tools.TalismanContainerMode
 import aurocosh.divinefavor.common.item.talisman_tools.spell_bow.capability.SpellBowDataHandler.CAPABILITY_SPELL_BOW
 import aurocosh.divinefavor.common.item.talisman_tools.spell_bow.capability.SpellBowProvider
 import aurocosh.divinefavor.common.item.talisman_tools.spell_bow.capability.SpellBowStorage
-import aurocosh.divinefavor.common.item.talisman_tools.spell_pick.capability.SpellPickDataHandler
 import aurocosh.divinefavor.common.lib.extensions.cap
-import aurocosh.divinefavor.common.lib.extensions.compound
 import aurocosh.divinefavor.common.stack_properties.IPropertyAccessor
 import aurocosh.divinefavor.common.stack_properties.IPropertyContainer
 import aurocosh.divinefavor.common.stack_properties.StackPropertyHandler

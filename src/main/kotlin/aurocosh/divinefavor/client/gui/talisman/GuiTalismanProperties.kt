@@ -9,7 +9,6 @@ import aurocosh.divinefavor.client.gui.interfaces.ITooltipProvider
 import aurocosh.divinefavor.common.constants.ConstResources
 import aurocosh.divinefavor.common.item.talisman.ITalismanStackContainer
 import aurocosh.divinefavor.common.item.talisman.ItemTalisman
-import aurocosh.divinefavor.common.item.talisman_tools.TalismanAdapter
 import aurocosh.divinefavor.common.lib.TooltipCache
 import aurocosh.divinefavor.common.lib.extensions.S
 import aurocosh.divinefavor.common.network.message.sever.MessageSyncTalismanPropertyIndex

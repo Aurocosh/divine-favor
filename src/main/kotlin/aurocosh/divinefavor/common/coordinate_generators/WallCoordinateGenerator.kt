@@ -3,8 +3,6 @@ package aurocosh.divinefavor.common.coordinate_generators
 import aurocosh.divinefavor.common.lib.extensions.S
 import aurocosh.divinefavor.common.lib.extensions.toBlockPos
 import aurocosh.divinefavor.common.util.UtilPlayer
-import net.minecraft.entity.player.EntityPlayer
-import net.minecraft.util.EnumFacing
 import net.minecraft.util.math.BlockPos
 
 fun generateWallCoordinates(directions: UtilPlayer.RelativeDirections, blockPos: BlockPos, up: Int, down: Int, left: Int, right: Int): List<BlockPos> {

@@ -4,7 +4,6 @@ import aurocosh.divinefavor.DivineFavor
 import aurocosh.divinefavor.client.core.handler.talisman_container.TalismanSelectGui
 import aurocosh.divinefavor.common.constants.ConstGuiIDs
 import aurocosh.divinefavor.common.item.talisman.ITalismanToolContainer
-import aurocosh.divinefavor.common.item.talisman_tools.TalismanAdapter
 import aurocosh.divinefavor.common.util.UtilPlayer
 import net.minecraft.client.Minecraft
 import net.minecraftforge.fml.common.Mod

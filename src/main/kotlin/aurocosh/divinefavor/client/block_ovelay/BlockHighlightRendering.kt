@@ -29,7 +29,7 @@ import javax.vecmath.Color3f
  * BuildingGadgets is Open Source and distributed under MIT
  */
 
-object BlockDestructionRendering {
+object BlockHighlightRendering {
     private val mc = Minecraft.getMinecraft()
     private val cacheDestructionOverlay = CacheBuilder
             .newBuilder()

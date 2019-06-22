@@ -2,7 +2,6 @@ package aurocosh.divinefavor.common.potions.base.potion
 
 import aurocosh.divinefavor.DivineFavor
 import aurocosh.divinefavor.common.item.talisman.ItemTalisman
-import aurocosh.divinefavor.common.util.UtilPlayer
 import net.minecraft.client.Minecraft
 import net.minecraft.client.resources.I18n
 import net.minecraft.item.ItemStack

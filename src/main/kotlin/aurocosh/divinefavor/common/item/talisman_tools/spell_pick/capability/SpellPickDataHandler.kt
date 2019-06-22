@@ -1,6 +1,5 @@
 package aurocosh.divinefavor.common.item.talisman_tools.spell_pick.capability
 
-import aurocosh.divinefavor.common.item.talisman_tools.spell_blade.capability.ISpellBladeHandler
 import net.minecraftforge.common.MinecraftForge
 import net.minecraftforge.common.capabilities.Capability
 import net.minecraftforge.common.capabilities.CapabilityInject

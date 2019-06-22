@@ -2,11 +2,7 @@ package aurocosh.divinefavor.common.item.talisman_tools
 
 import aurocosh.divinefavor.common.item.talisman.ITalismanStackContainer
 import aurocosh.divinefavor.common.item.talisman.ItemTalisman
-import aurocosh.divinefavor.common.item.talisman_tools.grimoire.ItemGrimoire
-import aurocosh.divinefavor.common.item.talisman_tools.spell_blade.ItemSpellBlade
-import aurocosh.divinefavor.common.item.talisman_tools.spell_bow.ItemSpellBow
 import aurocosh.divinefavor.common.network.message.sever.MessageSyncTalismanContainerSlot
-import net.minecraft.item.Item
 import net.minecraft.item.ItemStack
 
 data class TalismanStackWrapper<T : ItemTalisman>(val stack: ItemStack, val talisman: T)

@@ -1,6 +1,6 @@
 package aurocosh.divinefavor.common.item.tool_talismans.break_blocks
 
-import aurocosh.divinefavor.client.block_ovelay.BlockDestructionRendering
+import aurocosh.divinefavor.client.block_ovelay.BlockHighlightRendering
 import aurocosh.divinefavor.common.config.common.ConfigGeneral
 import aurocosh.divinefavor.common.item.spell_talismans.base.CastType
 import aurocosh.divinefavor.common.item.spell_talismans.common_build_properties.BlockSelectPropertyWrapper
@@ -70,7 +70,7 @@ abstract class ToolTalismanBreak(name: String, spirit: ModSpirit) : ItemToolTali
     @SideOnly(Side.CLIENT)
     override fun handleRendering(context: TalismanContext, lastEvent: RenderWorldLastEvent) {
         val coordinates = getRenderCoordinates(context)
-        BlockDestructionRendering.render(lastEvent, context.player, coordinates, renderColor)
+        BlockHighlightRendering.render(lastEvent, context.player, coordinates, renderColor)
     }
 
     protected abstract fun getCoordinates(context: TalismanContext): List<BlockPos>

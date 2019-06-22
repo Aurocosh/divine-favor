@@ -10,7 +10,7 @@ import net.minecraft.item.ItemStack
 import net.minecraft.util.math.BlockPos
 
 class SpellTalismanReplaceSide(name: String, spirit: ModSpirit) : SpellTalismanReplace(name, spirit) {
-    override fun getBlockCount(stack: ItemStack): Int = favorCost * blockCount.getValue(stack)
+    override fun getBlockCount(stack: ItemStack): Int = blockCount.getValue(stack)
 
     override fun getCoordinates(context: TalismanContext): List<BlockPos> {
         val (stack, world, facing) = context.get(stackField, worldField, facingField)
