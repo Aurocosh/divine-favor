@@ -1,9 +1,9 @@
 {
   "result": {
-    "item": "divinefavor:spell_talisman_destroy_cuboid"
+    "item": "divinefavor:spell_talisman_replace_blocks"
   },
   "stones": [
-    "divinefavor:calling_stone_romol"
+    "divinefavor:calling_stone_loon"
   ],
   "ingredients": [
     {
@@ -16,11 +16,11 @@
     },
     {
       "type": "ore",
-      "ore": "dyeRed"
+      "ore": "dyePurple"
     },
     {
       "type": "stack",
-      "item": "minecraft:diamond_pickaxe"
+      "item": "minecraft:golden_pickaxe"
     }
   ]
 }

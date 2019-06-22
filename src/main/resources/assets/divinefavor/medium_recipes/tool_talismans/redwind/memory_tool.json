@@ -3,7 +3,7 @@
     "item": "divinefavor:tool_talisman_memory_tool"
   },
   "stones": [
-    "divinefavor:calling_stone_romol"
+    "divinefavor:calling_stone_redwind"
   ],
   "ingredients": [
     {
@@ -24,7 +24,7 @@
     },
     {
       "type": "stack",
-      "item": "minecraft:TODO" 
+      "item": "minecraft:book" 
     }
   ]
 }

@@ -40,36 +40,36 @@ object ModToolTalismans {
         // arbow;
 
         // blizrabi;
+        aquatic_tool = ToolTalismanAquaticTool("aquatic_tool", ModSpirits.blizrabi, ConfigTool.aquaticTool.favorCost)
+        ice_carving = ToolTalismanCarving("ice_carving", ModSpirits.blizrabi, ConfigTool.iceCarving.favorCost, Blocks.ICE, UtilPredicate.or(Block::isWater, Block::isIce))
 
         // endererer;
 
         // loon;
 
         // neblaze;
+        destroy_blocks = ToolTalismanDestroyBlocks("destroy_blocks", ModSpirits.neblaze, ConfigTool.destroyBlocks.favorCost)
+        destroy_surface = ToolTalismanDestroySurface("destroy_surface", ModSpirits.neblaze, ConfigTool.destroySurface.favorCost)
+        destroy_side = ToolTalismanDestroySide("destroy_side", ModSpirits.neblaze, ConfigTool.destroySide.favorCost)
+        destroy_cuboid = ToolTalismanDestroyCuboid("destroy_cuboid", ModSpirits.neblaze, ConfigTool.destroyCuboid.favorCost)
+        molten_tool = ToolTalismanMoltenTool("molten_tool", ModSpirits.neblaze, ConfigTool.moltenTool.favorCost)
+        obsidian_carving = ToolTalismanObsidianCarving("obsidian_carving", ModSpirits.neblaze, ConfigTool.obsidianCarving.favorCost,Blocks.OBSIDIAN, Block::isLava)
 
         // redwind;
+        memory_tool = ToolTalismanMemoryTool("memory_tool", ModSpirits.redwind, ConfigTool.memoryTool.favorCost)
 
         // romol;
 
         // squarefury;
 
         // New instances
-        aquatic_tool = ToolTalismanAquaticTool("aquatic_tool", ModSpirits.blizrabi, ConfigTool.aquaticTool.favorCost)
-        molten_tool = ToolTalismanMoltenTool("molten_tool", ModSpirits.romol, ConfigTool.moltenTool.favorCost)
         break_blocks = ToolTalismanBreakBlocks("break_blocks", ModSpirits.romol, ConfigTool.breakBlocks.favorCost)
-        memory_tool = ToolTalismanMemoryTool("memory_tool", ModSpirits.romol, ConfigTool.memoryTool.favorCost)
         fell_tree = ToolTalismanFellTree("fell_tree", ModSpirits.romol, ConfigTool.fellTree.favorCost)
-        obsidian_carving = ToolTalismanObsidianCarving("obsidian_carving", ModSpirits.neblaze, ConfigTool.obsidianCarving.favorCost,Blocks.OBSIDIAN, Block::isLava)
-        ice_carving = ToolTalismanCarving("ice_carving", ModSpirits.blizrabi, ConfigTool.iceCarving.favorCost, Blocks.ICE, UtilPredicate.or(Block::isWater, Block::isIce))
         volcanic_glass_cutter = ToolTalismanVolcanicGlassCutter("volcanic_glass_cutter", ModSpirits.romol, ConfigTool.volcanicGlassCutter.favorCost)
         ground_pick = ToolTalismanGroundPick("ground_pick", ModSpirits.romol, ConfigTool.groundPick.favorCost)
         wood_peck = ToolTalismanWoodPeck("wood_peck", ModSpirits.romol, ConfigTool.woodPeck.favorCost)
         break_side = ToolTalismanBreakSide("break_side", ModSpirits.romol, ConfigTool.breakSide.favorCost)
         break_surface = ToolTalismanBreakSurface("break_surface", ModSpirits.romol, ConfigTool.breakSurface.favorCost)
         break_radius = ToolTalismanBreakRadius("break_radius", ModSpirits.romol, ConfigTool.breakRadius.favorCost)
-        destroy_blocks = ToolTalismanDestroyBlocks("destroy_blocks", ModSpirits.romol, ConfigTool.destroyBlocks.favorCost)
-        destroy_surface = ToolTalismanDestroySurface("destroy_surface", ModSpirits.romol, ConfigTool.destroySurface.favorCost)
-        destroy_side = ToolTalismanDestroySide("destroy_side", ModSpirits.romol, ConfigTool.destroySide.favorCost)
-        destroy_cuboid = ToolTalismanDestroyCuboid("destroy_cuboid", ModSpirits.romol, ConfigTool.destroyCuboid.favorCost)
     }
 }

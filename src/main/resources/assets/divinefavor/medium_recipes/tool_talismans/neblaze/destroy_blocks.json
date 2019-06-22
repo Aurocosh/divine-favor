@@ -1,9 +1,9 @@
 {
   "result": {
-    "item": "divinefavor:spell_talisman_destroy_surface"
+    "item": "divinefavor:spell_talisman_destroy_blocks"
   },
   "stones": [
-    "divinefavor:calling_stone_romol"
+    "divinefavor:calling_stone_neblaze"
   ],
   "ingredients": [
     {
@@ -20,7 +20,7 @@
     },
     {
       "type": "stack",
-      "item": "minecraft:iron_axe"
+      "item": "minecraft:golden_pickaxe"
     }
   ]
 }

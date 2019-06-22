@@ -26,11 +26,30 @@ object ModSpellTalismans {
     lateinit var armor_of_pacifist: ItemSpellTalisman
     lateinit var arrow_deflection: ItemSpellTalisman
     lateinit var arrow_throw_talisman: ItemSpellTalisman
+    lateinit var bind_ice_arrows: ItemSpellTalisman
     lateinit var blade_of_grass: ItemSpellTalisman
     lateinit var blazing_palm: ItemSpellTalisman
     lateinit var blink: ItemSpellTalisman
     lateinit var blood_of_grass: ItemSpellTalisman
     lateinit var bonemeal: ItemSpellTalisman
+    lateinit var build_block_relative: ItemSpellTalisman
+    lateinit var build_column: ItemSpellTalisman
+    lateinit var build_column_relative: ItemSpellTalisman
+    lateinit var build_extrusion: ItemSpellTalisman
+    lateinit var build_floor: ItemSpellTalisman
+    lateinit var build_floor_relative: ItemSpellTalisman
+    lateinit var build_from_surface: ItemSpellTalisman
+    lateinit var build_hollow_sphere: ItemSpellTalisman
+    lateinit var build_hollow_sphere_relative: ItemSpellTalisman
+    lateinit var build_horizontal_line: ItemSpellTalisman
+    lateinit var build_horizontal_line_relative: ItemSpellTalisman
+    lateinit var build_sphere: ItemSpellTalisman
+    lateinit var build_square_floor: ItemSpellTalisman
+    lateinit var build_square_floor_relative: ItemSpellTalisman
+    lateinit var build_square_wall: ItemSpellTalisman
+    lateinit var build_square_wall_relative: ItemSpellTalisman
+    lateinit var build_wall: ItemSpellTalisman
+    lateinit var build_wall_relative: ItemSpellTalisman
     lateinit var clock: ItemSpellTalisman
     lateinit var combustion: ItemSpellTalisman
     lateinit var consuming_fury: ItemSpellTalisman
@@ -74,7 +93,6 @@ object ModSpellTalismans {
     lateinit var nether_surge: ItemSpellTalisman
     lateinit var night_eye: ItemSpellTalisman
     lateinit var obsidian_bubble: ItemSpellTalisman
-    lateinit var obsidian_carving: ItemSpellTalisman
     lateinit var obsidian_road: ItemSpellTalisman
     lateinit var pearl_crumbs: ItemSpellTalisman
     lateinit var piercing_inferno: ItemSpellTalisman
@@ -85,6 +103,10 @@ object ModSpellTalismans {
     lateinit var red_pulse: ItemSpellTalisman
     lateinit var red_signal: ItemSpellTalisman
     lateinit var remote_chest: ItemSpellTalisman
+    lateinit var replace_blocks: ItemSpellTalisman
+    lateinit var replace_cuboid: ItemSpellTalisman
+    lateinit var replace_side: ItemSpellTalisman
+    lateinit var replace_surface: ItemSpellTalisman
     lateinit var searing_pulse: ItemSpellTalisman
     lateinit var sense_block_approximate: ItemSpellTalisman
     lateinit var sense_block_close: ItemSpellTalisman
@@ -128,29 +150,6 @@ object ModSpellTalismans {
     lateinit var wooden_punch: ItemSpellTalisman
 
     // New fields
-    lateinit var replace_cuboid: ItemSpellTalisman
-    lateinit var replace_side: ItemSpellTalisman
-    lateinit var replace_blocks: ItemSpellTalisman
-    lateinit var build_wall_relative: ItemSpellTalisman
-    lateinit var build_horizontal_line_relative: ItemSpellTalisman
-    lateinit var build_hollow_sphere_relative: ItemSpellTalisman
-    lateinit var build_floor_relative: ItemSpellTalisman
-    lateinit var build_column_relative: ItemSpellTalisman
-    lateinit var build_square_wall_relative: ItemSpellTalisman
-    lateinit var build_square_floor_relative: ItemSpellTalisman
-    lateinit var build_block_relative: ItemSpellTalisman
-    lateinit var build_extrusion: ItemSpellTalisman
-    lateinit var build_horizontal_line: ItemSpellTalisman
-    lateinit var build_from_surface: ItemSpellTalisman
-    lateinit var build_sphere: ItemSpellTalisman
-    lateinit var build_hollow_sphere: ItemSpellTalisman
-    lateinit var build_square_wall: ItemSpellTalisman
-    lateinit var build_square_floor: ItemSpellTalisman
-    lateinit var build_floor: ItemSpellTalisman
-    lateinit var build_wall: ItemSpellTalisman
-    lateinit var replace_surface: ItemSpellTalisman
-    lateinit var build_column: ItemSpellTalisman
-    lateinit var bind_ice_arrows: ItemSpellTalisman
 
     fun preInit() {
         // arbow
@@ -158,6 +157,7 @@ object ModSpellTalismans {
 
         // blizzrabi
         armor_of_pacifist = SpellTalismanModPotionToggle("armor_of_pacifist", ModSpirits.blizrabi, ConfigSpell.armorOfPacifist.favorCost, ModPotions.armor_of_pacifist)
+        bind_ice_arrows = SpellTalismanBindIceArrows("bind_ice_arrows", ModSpirits.blizrabi, ConfigSpell.bindIceArrows.favorCost, SpellOptions.ALL_CAST)
         crystalline_road = SpellTalismanModPotion("crystalline_road", ModSpirits.blizrabi, ConfigSpell.crystallineRoad.favorCost, ModPotions.crystalline_road, ConfigSpell.crystallineRoad.duration)
         extreme_buoyancy = SpellTalismanModPotionToggle("extreme_buoyancy", ModSpirits.blizrabi, ConfigSpell.extremeBuoyancy.favorCost, ModPotions.extreme_buoyancy)
         fins = SpellTalismanModPotion("fins", ModSpirits.blizrabi, ConfigSpell.fins.favorCost, ModPotions.fins, ConfigSpell.fins.duration)
@@ -193,6 +193,10 @@ object ModSpellTalismans {
         follow = SpellTalismanFollow("follow", ModSpirits.loon, ConfigSpell.follow.favorCost, SpellOptions.RIGHT_CAST)
         night_eye = SpellTalismanModPotionToggle("night_eye", ModSpirits.loon, ConfigSpell.nightEye.favorCost, ModPotions.night_eye)
         prismatic_eyes = SpellTalismanModPotionToggle("prismatic_eyes", ModSpirits.loon, ConfigSpell.prismaticEyes.favorCost, ModPotions.prismatic_eyes)
+        replace_blocks = SpellTalismanReplaceBlocks("replace_blocks", ModSpirits.loon, ConfigSpell.replaceBlocks.favorCost, SpellOptions.ALL_CAST_TRACE)
+        replace_cuboid = SpellTalismanReplaceCuboid("replace_cuboid", ModSpirits.loon, ConfigSpell.replaceCuboid.favorCost, SpellOptions.ALL_CAST_TRACE)
+        replace_side = SpellTalismanReplaceSide("replace_side", ModSpirits.loon, ConfigSpell.replaceSide.favorCost, SpellOptions.ALL_CAST_TRACE)
+        replace_surface = SpellTalismanReplaceSurface("replace_surface", ModSpirits.loon, ConfigSpell.replaceSurface.favorCost, SpellOptions.ALL_CAST_TRACE)
         spider_might = SpellTalismanModPotionToggle("spider_might", ModSpirits.loon, ConfigSpell.spider_might.favorCost, ModPotions.spider_might)
         summon_creeper = SpellTalismanSummonMinion("summon_creeper", ModSpirits.loon, ConfigSpell.summonCreeper.favorCost, SpellOptions.USE_CAST, EntityMinionCreeper::class.java)
         summon_husk = SpellTalismanSummonMinion("summon_husk", ModSpirits.loon, ConfigSpell.summonHusk.favorCost, SpellOptions.USE_CAST, EntityMinionHusk::class.java)
@@ -274,8 +278,7 @@ object ModSpellTalismans {
         starvation = SpellTalismanModPotion("starvation", ModSpirits.timber, ConfigSpell.starvation.favorCost, ModPotions.starvation, ConfigSpell.starvation.duration)
 
         // New instances
-        replace_cuboid = SpellTalismanReplaceCuboid("replace_cuboid", ModSpirits.romol, ConfigSpell.replaceCuboid.favorCost, SpellOptions.ALL_CAST_TRACE)
-        replace_blocks = SpellTalismanReplaceBlocks("replace_blocks", ModSpirits.romol, ConfigSpell.replaceBlocks.favorCost, SpellOptions.ALL_CAST_TRACE)
+
         build_wall_relative = SpellTalismanBuildWallRelative("build_wall_relative", ModSpirits.romol, ConfigSpell.buildWallRelative.favorCost, SpellOptions.ALL_CAST_TRACE)
         build_horizontal_line_relative = SpellTalismanBuildHorizontalLineRelative("build_horizontal_line_relative", ModSpirits.romol, ConfigSpell.buildHorizontalLineRelative.favorCost, SpellOptions.ALL_CAST_TRACE)
         build_hollow_sphere_relative = SpellTalismanBuildHollowSphereRelative("build_hollow_sphere_relative", ModSpirits.romol, ConfigSpell.buildHollowSphereRelative.favorCost, SpellOptions.ALL_CAST_TRACE)
@@ -293,10 +296,7 @@ object ModSpellTalismans {
         build_square_floor = SpellTalismanBuildSquareFloor("build_square_floor", ModSpirits.romol, ConfigSpell.buildSquareFloor.favorCost, SpellOptions.ALL_CAST_TRACE)
         build_floor = SpellTalismanBuildFloor("build_floor", ModSpirits.romol, ConfigSpell.buildFloor.favorCost, SpellOptions.ALL_CAST_TRACE)
         build_wall = SpellTalismanBuildWall("build_wall", ModSpirits.romol, ConfigSpell.buildWall.favorCost, SpellOptions.ALL_CAST_TRACE)
-        replace_surface = SpellTalismanReplaceSurface("replace_surface", ModSpirits.romol, ConfigSpell.replaceSurface.favorCost, SpellOptions.ALL_CAST_TRACE)
         build_column = SpellTalismanBuildColumn("build_column", ModSpirits.romol, ConfigSpell.buildColumn.favorCost, SpellOptions.ALL_CAST_TRACE)
-        bind_ice_arrows = SpellTalismanBindIceArrows("bind_ice_arrows", ModSpirits.blizrabi, ConfigSpell.bindIceArrows.favorCost, SpellOptions.ALL_CAST)
-        replace_side = SpellTalismanReplaceSide("replace_side", ModSpirits.romol, ConfigSpell.replaceSide.favorCost, SpellOptions.ALL_CAST_TRACE)
     }
 
     fun init() {}
