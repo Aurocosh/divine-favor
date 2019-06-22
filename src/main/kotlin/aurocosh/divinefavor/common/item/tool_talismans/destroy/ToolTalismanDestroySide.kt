@@ -10,7 +10,7 @@ import net.minecraft.block.state.IBlockState
 import net.minecraft.item.ItemStack
 import net.minecraft.util.math.BlockPos
 
-class ToolTalismanDestroySide(name: String, spirit: ModSpirit, favorCost: Int) : ToolTalismanDestroy(name, spirit, favorCost) {
+class ToolTalismanDestroySide(name: String, spirit: ModSpirit) : ToolTalismanDestroy(name, spirit) {
     val blockCount: StackPropertyInt = propertyHandler.registerIntProperty("block_count", 6, 1, 64)
 
     override fun getBlockCount(stack: ItemStack): Int = favorCost * blockCount.getValue(stack)

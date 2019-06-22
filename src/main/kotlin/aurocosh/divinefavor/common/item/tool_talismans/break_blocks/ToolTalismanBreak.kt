@@ -1,13 +1,13 @@
 package aurocosh.divinefavor.common.item.tool_talismans.break_blocks
 
 import aurocosh.divinefavor.client.block_ovelay.BlockDestructionRendering
+import aurocosh.divinefavor.common.config.common.ConfigGeneral
 import aurocosh.divinefavor.common.item.spell_talismans.base.CastType
 import aurocosh.divinefavor.common.item.spell_talismans.common_build_properties.BlockSelectPropertyWrapper
 import aurocosh.divinefavor.common.item.spell_talismans.context.ContextProperty
 import aurocosh.divinefavor.common.item.spell_talismans.context.TalismanContext
 import aurocosh.divinefavor.common.item.talisman_tools.spell_pick.ItemSpellPick
 import aurocosh.divinefavor.common.item.tool_talismans.base.ItemToolTalisman
-import aurocosh.divinefavor.common.lib.extensions.S
 import aurocosh.divinefavor.common.lib.extensions.filter
 import aurocosh.divinefavor.common.lib.extensions.get
 import aurocosh.divinefavor.common.spirit.base.ModSpirit
@@ -20,7 +20,7 @@ import net.minecraftforge.fml.relauncher.Side
 import net.minecraftforge.fml.relauncher.SideOnly
 import javax.vecmath.Color3f
 
-abstract class ToolTalismanBreak(name: String, spirit: ModSpirit, favorCost: Int) : ItemToolTalisman(name, spirit, favorCost) {
+abstract class ToolTalismanBreak(name: String, spirit: ModSpirit) : ItemToolTalisman(name, spirit, ConfigGeneral.blockBreakingCost) {
     protected val finalCoordinates = ContextProperty<List<BlockPos>>("coordinates", emptyList())
 
     val isFuzzy: StackPropertyBool = propertyHandler.registerBoolProperty("fuzzy", true)

@@ -2,7 +2,6 @@ package aurocosh.divinefavor.common.item.spell_talismans.replace
 
 import aurocosh.divinefavor.common.lib.CachedContainer
 import aurocosh.divinefavor.common.coordinate_generators.generateSurfaceCoordinates
-import aurocosh.divinefavor.common.item.spell_talismans.base.SpellOptions
 import aurocosh.divinefavor.common.item.spell_talismans.context.TalismanContext
 import aurocosh.divinefavor.common.item.spell_talismans.context.posField
 import aurocosh.divinefavor.common.item.spell_talismans.context.stackField
@@ -11,9 +10,8 @@ import aurocosh.divinefavor.common.lib.extensions.get
 import aurocosh.divinefavor.common.spirit.base.ModSpirit
 import net.minecraft.item.ItemStack
 import net.minecraft.util.math.BlockPos
-import java.util.*
 
-class SpellTalismanReplaceSurface(name: String, spirit: ModSpirit, favorCost: Int, options: EnumSet<SpellOptions>) : SpellTalismanReplace(name, spirit, favorCost, options) {
+class SpellTalismanReplaceSurface(name: String, spirit: ModSpirit) : SpellTalismanReplace(name, spirit) {
     override fun getBlockCount(stack: ItemStack): Int = favorCost * blockCount.getValue(stack)
 
     override fun getCoordinates(context: TalismanContext): List<BlockPos> {

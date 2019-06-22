@@ -48,10 +48,10 @@ object ModToolTalismans {
         // loon;
 
         // neblaze;
-        destroy_blocks = ToolTalismanDestroyBlocks("destroy_blocks", ModSpirits.neblaze, ConfigTool.destroyBlocks.favorCost)
-        destroy_surface = ToolTalismanDestroySurface("destroy_surface", ModSpirits.neblaze, ConfigTool.destroySurface.favorCost)
-        destroy_side = ToolTalismanDestroySide("destroy_side", ModSpirits.neblaze, ConfigTool.destroySide.favorCost)
-        destroy_cuboid = ToolTalismanDestroyCuboid("destroy_cuboid", ModSpirits.neblaze, ConfigTool.destroyCuboid.favorCost)
+        destroy_blocks = ToolTalismanDestroyBlocks("destroy_blocks", ModSpirits.neblaze)
+        destroy_surface = ToolTalismanDestroySurface("destroy_surface", ModSpirits.neblaze)
+        destroy_side = ToolTalismanDestroySide("destroy_side", ModSpirits.neblaze)
+        destroy_cuboid = ToolTalismanDestroyCuboid("destroy_cuboid", ModSpirits.neblaze)
         molten_tool = ToolTalismanMoltenTool("molten_tool", ModSpirits.neblaze, ConfigTool.moltenTool.favorCost)
         obsidian_carving = ToolTalismanObsidianCarving("obsidian_carving", ModSpirits.neblaze, ConfigTool.obsidianCarving.favorCost,Blocks.OBSIDIAN, Block::isLava)
 
@@ -63,13 +63,13 @@ object ModToolTalismans {
         // squarefury;
 
         // New instances
-        break_blocks = ToolTalismanBreakBlocks("break_blocks", ModSpirits.romol, ConfigTool.breakBlocks.favorCost)
-        fell_tree = ToolTalismanFellTree("fell_tree", ModSpirits.romol, ConfigTool.fellTree.favorCost)
+        break_blocks = ToolTalismanBreakBlocks("break_blocks", ModSpirits.romol)
+        fell_tree = ToolTalismanFellTree("fell_tree", ModSpirits.romol)
         volcanic_glass_cutter = ToolTalismanVolcanicGlassCutter("volcanic_glass_cutter", ModSpirits.romol, ConfigTool.volcanicGlassCutter.favorCost)
         ground_pick = ToolTalismanGroundPick("ground_pick", ModSpirits.romol, ConfigTool.groundPick.favorCost)
         wood_peck = ToolTalismanWoodPeck("wood_peck", ModSpirits.romol, ConfigTool.woodPeck.favorCost)
-        break_side = ToolTalismanBreakSide("break_side", ModSpirits.romol, ConfigTool.breakSide.favorCost)
-        break_surface = ToolTalismanBreakSurface("break_surface", ModSpirits.romol, ConfigTool.breakSurface.favorCost)
-        break_radius = ToolTalismanBreakRadius("break_radius", ModSpirits.romol, ConfigTool.breakRadius.favorCost)
+        break_side = ToolTalismanBreakSide("break_side", ModSpirits.romol)
+        break_surface = ToolTalismanBreakSurface("break_surface", ModSpirits.romol)
+        break_radius = ToolTalismanBreakRadius("break_radius", ModSpirits.romol)
     }
 }

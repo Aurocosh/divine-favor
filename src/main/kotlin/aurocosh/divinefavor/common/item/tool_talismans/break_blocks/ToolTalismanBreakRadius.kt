@@ -11,7 +11,7 @@ import aurocosh.divinefavor.common.util.UtilPlayer
 import net.minecraft.item.ItemStack
 import net.minecraft.util.math.BlockPos
 
-class ToolTalismanBreakRadius(name: String, spirit: ModSpirit, favorCost: Int) : ToolTalismanBreak(name, spirit, favorCost) {
+class ToolTalismanBreakRadius(name: String, spirit: ModSpirit) : ToolTalismanBreak(name, spirit) {
     private val radius: StackPropertyInt = propertyHandler.registerIntProperty("radius", 2, 1, 10)
 
     override fun getCoordinates(context: TalismanContext): List<BlockPos> {

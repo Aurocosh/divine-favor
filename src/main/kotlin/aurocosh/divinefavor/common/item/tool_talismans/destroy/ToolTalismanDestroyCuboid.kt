@@ -11,7 +11,7 @@ import aurocosh.divinefavor.common.util.UtilPlayer
 import net.minecraft.item.ItemStack
 import net.minecraft.util.math.BlockPos
 
-class ToolTalismanDestroyCuboid(name: String, spirit: ModSpirit, favorCost: Int) : ToolTalismanDestroy(name, spirit, favorCost) {
+class ToolTalismanDestroyCuboid(name: String, spirit: ModSpirit) : ToolTalismanDestroy(name, spirit) {
     private val up: StackPropertyInt = propertyHandler.registerIntProperty("up", 1, 0, 10)
     private val down: StackPropertyInt = propertyHandler.registerIntProperty("down", 1, 0, 10)
     private val left: StackPropertyInt = propertyHandler.registerIntProperty("left", 1, 0, 10)

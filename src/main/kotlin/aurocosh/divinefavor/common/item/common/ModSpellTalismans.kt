@@ -184,10 +184,10 @@ object ModSpellTalismans {
         follow = SpellTalismanFollow("follow", ModSpirits.loon, ConfigSpell.follow.favorCost, SpellOptions.RIGHT_CAST)
         night_eye = SpellTalismanModPotionToggle("night_eye", ModSpirits.loon, ConfigSpell.nightEye.favorCost, ModPotions.night_eye)
         prismatic_eyes = SpellTalismanModPotionToggle("prismatic_eyes", ModSpirits.loon, ConfigSpell.prismaticEyes.favorCost, ModPotions.prismatic_eyes)
-        replace_blocks = SpellTalismanReplaceBlocks("replace_blocks", ModSpirits.loon, ConfigSpell.replaceBlocks.favorCost, SpellOptions.ALL_CAST_TRACE)
-        replace_cuboid = SpellTalismanReplaceCuboid("replace_cuboid", ModSpirits.loon, ConfigSpell.replaceCuboid.favorCost, SpellOptions.ALL_CAST_TRACE)
-        replace_side = SpellTalismanReplaceSide("replace_side", ModSpirits.loon, ConfigSpell.replaceSide.favorCost, SpellOptions.ALL_CAST_TRACE)
-        replace_surface = SpellTalismanReplaceSurface("replace_surface", ModSpirits.loon, ConfigSpell.replaceSurface.favorCost, SpellOptions.ALL_CAST_TRACE)
+        replace_blocks = SpellTalismanReplaceBlocks("replace_blocks", ModSpirits.loon)
+        replace_cuboid = SpellTalismanReplaceCuboid("replace_cuboid", ModSpirits.loon)
+        replace_side = SpellTalismanReplaceSide("replace_side", ModSpirits.loon)
+        replace_surface = SpellTalismanReplaceSurface("replace_surface", ModSpirits.loon)
         spider_might = SpellTalismanModPotionToggle("spider_might", ModSpirits.loon, ConfigSpell.spider_might.favorCost, ModPotions.spider_might)
         summon_creeper = SpellTalismanSummonMinion("summon_creeper", ModSpirits.loon, ConfigSpell.summonCreeper.favorCost, SpellOptions.USE_CAST, EntityMinionCreeper::class.java)
         summon_husk = SpellTalismanSummonMinion("summon_husk", ModSpirits.loon, ConfigSpell.summonHusk.favorCost, SpellOptions.USE_CAST, EntityMinionHusk::class.java)
@@ -211,7 +211,6 @@ object ModSpellTalismans {
         searing_pulse = SpellTalismanSearingPulse("searing_pulse", ModSpirits.neblaze, ConfigSpell.searingPulse.favorCost, SpellOptions.USE_CAST)
         small_fireball_throw = SpellTalismanSmallFireballThrow("small_fireball_throw", ModSpirits.neblaze, ConfigSpell.smallFireballThrow.favorCost, SpellOptions.ALL_CAST)
 
-
         // redwind
         arrow_deflection = SpellTalismanModPotion("arrow_deflection", ModSpirits.redwind, ConfigSpell.arrowDeflection.favorCost, ModPotions.arrow_deflection, ConfigSpell.arrowDeflection.duration)
         clock = SpellTalismanClock("clock", ModSpirits.redwind, ConfigSpell.clock.favorCost, SpellOptions.ALL_CAST)
@@ -229,6 +228,16 @@ object ModSpellTalismans {
         place_torch = SpellTalismanPlaceTorch("place_torch", ModSpirits.redwind, ConfigSpell.placeTorch.favorCost, SpellOptions.TRACE_ONLY_CAST)
 
         // romol
+        build_column = SpellTalismanBuildColumn("build_column", ModSpirits.romol)
+        build_extrusion = SpellTalismanBuildExtrusion("build_extrusion", ModSpirits.romol)
+        build_floor = SpellTalismanBuildFloor("build_floor", ModSpirits.romol)
+        build_from_surface = SpellTalismanBuildFromSurface("build_from_surface", ModSpirits.romol)
+        build_hollow_sphere = SpellTalismanBuildHollowSphere("build_hollow_sphere", ModSpirits.romol)
+        build_horizontal_line = SpellTalismanBuildHorizontalLine("build_horizontal_line", ModSpirits.romol)
+        build_sphere = SpellTalismanBuildSphere("build_sphere", ModSpirits.romol)
+        build_square_floor = SpellTalismanBuildSquareFloor("build_square_floor", ModSpirits.romol)
+        build_square_wall = SpellTalismanBuildSquareWall("build_square_wall", ModSpirits.romol)
+        build_wall = SpellTalismanBuildWall("build_wall", ModSpirits.romol)
         crushing_palm = SpellTalismanModPotionToggle("crushing_palm", ModSpirits.romol, ConfigSpell.crushingPalm.favorCost, ModPotions.crushing_palm)
         empower_axe = SpellTalismanModPotion("empower_axe", ModSpirits.romol, ConfigSpell.empowerAxe.favorCost, ModPotions.empower_axe, ConfigSpell.empowerAxe.duration)
         empower_pickaxe = SpellTalismanModPotion("empower_pickaxe", ModSpirits.romol, ConfigSpell.empowerPickaxe.favorCost, ModPotions.empower_pickaxe, ConfigSpell.empowerPickaxe.duration)
@@ -269,16 +278,6 @@ object ModSpellTalismans {
         starvation = SpellTalismanModPotion("starvation", ModSpirits.timber, ConfigSpell.starvation.favorCost, ModPotions.starvation, ConfigSpell.starvation.duration)
 
         // New instances
-        build_extrusion = SpellTalismanBuildExtrusion("build_extrusion", ModSpirits.romol, ConfigSpell.buildExtrusion.favorCost, SpellOptions.ALL_CAST_TRACE)
-        build_horizontal_line = SpellTalismanBuildHorizontalLine("build_horizontal_line", ModSpirits.romol, ConfigSpell.buildHorizontalLine.favorCost, SpellOptions.ALL_CAST_TRACE)
-        build_from_surface = SpellTalismanBuildFromSurface("build_from_surface", ModSpirits.romol, ConfigSpell.buildFromSurface.favorCost, SpellOptions.ALL_CAST_TRACE)
-        build_sphere = SpellTalismanBuildSphere("build_sphere", ModSpirits.romol, ConfigSpell.buildSphere.favorCost, SpellOptions.ALL_CAST_TRACE)
-        build_hollow_sphere = SpellTalismanBuildHollowSphere("build_hollow_sphere", ModSpirits.romol, ConfigSpell.buildHollowSphere.favorCost, SpellOptions.ALL_CAST_TRACE)
-        build_square_wall = SpellTalismanBuildSquareWall("build_square_wall", ModSpirits.romol, ConfigSpell.buildSquareWall.favorCost, SpellOptions.ALL_CAST_TRACE)
-        build_square_floor = SpellTalismanBuildSquareFloor("build_square_floor", ModSpirits.romol, ConfigSpell.buildSquareFloor.favorCost, SpellOptions.ALL_CAST_TRACE)
-        build_floor = SpellTalismanBuildFloor("build_floor", ModSpirits.romol, ConfigSpell.buildFloor.favorCost, SpellOptions.ALL_CAST_TRACE)
-        build_wall = SpellTalismanBuildWall("build_wall", ModSpirits.romol, ConfigSpell.buildWall.favorCost, SpellOptions.ALL_CAST_TRACE)
-        build_column = SpellTalismanBuildColumn("build_column", ModSpirits.romol, ConfigSpell.buildColumn.favorCost, SpellOptions.ALL_CAST_TRACE)
     }
 
     fun init() {}

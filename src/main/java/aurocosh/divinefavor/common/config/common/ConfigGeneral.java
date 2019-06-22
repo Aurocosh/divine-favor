@@ -14,13 +14,18 @@ public class ConfigGeneral {
     @Config.Name("Particle radius")
     public static int particleRadius = 32;
     @Config.Name("Talisman cast distance")
-    public static int talismanCastDistance = 48;
+    public static int talismanCastDistance = 64;
     @Config.Name("Max climbing radius")
     public static int maxClimbingRadius = 12;
-    @Config.Name("Ray trace range")
-    public static double rayTraceRange = 64;
-    @Config.Name("Block placing speed")
-    public static int blockPlacingSpeed = 3;
+
+    @Config.Name("Block breaking cost")
+    public static int blockBreakingCost = 8;
+    @Config.Name("Block destruction cost")
+    public static int blockDestructionCost = 2;
+    @Config.Name("Block replacing cost")
+    public static int blockReplacingCost = 4;
+    @Config.Name("Block building cost")
+    public static int blockBuildingCost = 1;
 
     @Config.Name("Ore blocks")
     public static String[] oreBlocks = new String[]{

@@ -1,7 +1,7 @@
 package aurocosh.divinefavor.common.item.spell_talismans.replace
 
 import aurocosh.divinefavor.client.block_ovelay.BlockExchangeRendering
-import aurocosh.divinefavor.common.item.spell_talismans.base.SpellOptions
+import aurocosh.divinefavor.common.config.common.ConfigGeneral
 import aurocosh.divinefavor.common.item.spell_talismans.build.base.SpellTalismanBuild
 import aurocosh.divinefavor.common.item.spell_talismans.common_build_properties.PositionPropertyWrapper
 import aurocosh.divinefavor.common.item.spell_talismans.context.TalismanContext
@@ -16,9 +16,8 @@ import net.minecraftforge.client.event.RenderWorldLastEvent
 import net.minecraftforge.event.world.BlockEvent
 import net.minecraftforge.fml.relauncher.Side
 import net.minecraftforge.fml.relauncher.SideOnly
-import java.util.*
 
-abstract class SpellTalismanReplace(name: String, spirit: ModSpirit, favorCost: Int, options: EnumSet<SpellOptions>) : SpellTalismanBuild(name, spirit, favorCost, options), IBlockCatcher {
+abstract class SpellTalismanReplace(name: String, spirit: ModSpirit) : SpellTalismanBuild(name, spirit, ConfigGeneral.blockReplacingCost), IBlockCatcher {
     protected val blockCount: StackPropertyInt = propertyHandler.registerIntProperty("block_count", 6, 1, 64)
     protected val isFuzzy: StackPropertyBool = propertyHandler.registerBoolProperty("fuzzy", false)
     override val positionPropertyWrapper: PositionPropertyWrapper = PositionPropertyWrapper(propertyHandler)

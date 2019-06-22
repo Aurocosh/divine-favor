@@ -12,7 +12,7 @@ import aurocosh.divinefavor.common.stack_properties.StackPropertyInt
 import net.minecraft.item.ItemStack
 import net.minecraft.util.math.BlockPos
 
-class ToolTalismanBreakSurface(name: String, spirit: ModSpirit, favorCost: Int) : ToolTalismanBreak(name, spirit, favorCost) {
+class ToolTalismanBreakSurface(name: String, spirit: ModSpirit) : ToolTalismanBreak(name, spirit) {
     val blockCount: StackPropertyInt = propertyHandler.registerIntProperty("block_count", 6, 1, 64)
 
     override fun getBlockCount(stack: ItemStack): Int = favorCost * blockCount.getValue(stack)

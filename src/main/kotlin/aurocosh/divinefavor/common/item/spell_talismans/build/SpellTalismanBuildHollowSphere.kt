@@ -1,7 +1,6 @@
 package aurocosh.divinefavor.common.item.spell_talismans.build
 
 import aurocosh.divinefavor.common.lib.CachedContainer
-import aurocosh.divinefavor.common.item.spell_talismans.base.SpellOptions
 import aurocosh.divinefavor.common.item.spell_talismans.build.base.SpellTalismanBuildShifted
 import aurocosh.divinefavor.common.item.spell_talismans.context.TalismanContext
 import aurocosh.divinefavor.common.lib.extensions.*
@@ -10,9 +9,8 @@ import aurocosh.divinefavor.common.stack_properties.StackPropertyInt
 import aurocosh.divinefavor.common.util.UtilCoordinates
 import net.minecraft.item.ItemStack
 import net.minecraft.util.math.BlockPos
-import java.util.*
 
-class SpellTalismanBuildHollowSphere(name: String, spirit: ModSpirit, favorCost: Int, options: EnumSet<SpellOptions>) : SpellTalismanBuildShifted(name, spirit, favorCost, options) {
+class SpellTalismanBuildHollowSphere(name: String, spirit: ModSpirit) : SpellTalismanBuildShifted(name, spirit) {
     private val radius_internal: StackPropertyInt = propertyHandler.registerIntProperty("radius_internal", 3, 1, 10)
     private val radius_external: StackPropertyInt = propertyHandler.registerIntProperty("radius_external", 1, 1, 10)
 

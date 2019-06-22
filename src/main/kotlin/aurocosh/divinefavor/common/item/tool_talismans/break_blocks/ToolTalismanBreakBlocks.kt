@@ -10,10 +10,10 @@ import net.minecraft.block.state.IBlockState
 import net.minecraft.item.ItemStack
 import net.minecraft.util.math.BlockPos
 
-class ToolTalismanBreakBlocks(name: String, spirit: ModSpirit, favorCost: Int) : ToolTalismanBreak(name, spirit, favorCost) {
+class ToolTalismanBreakBlocks(name: String, spirit: ModSpirit) : ToolTalismanBreak(name, spirit) {
     val blockCount: StackPropertyInt = propertyHandler.registerIntProperty("block_count", 6, 1, 64)
 
-    override fun getBlockCount(stack: ItemStack): Int = favorCost * blockCount.getValue(stack)
+    override fun getBlockCount(stack: ItemStack): Int = blockCount.getValue(stack)
 
     override fun getCoordinates(context: TalismanContext): List<BlockPos> {
         val (stack, world, pos, facing) = context.get(stackField, worldField, posField, facingField)

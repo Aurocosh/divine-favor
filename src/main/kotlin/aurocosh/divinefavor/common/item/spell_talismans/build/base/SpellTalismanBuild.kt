@@ -1,6 +1,7 @@
 package aurocosh.divinefavor.common.item.spell_talismans.build.base
 
 import aurocosh.divinefavor.client.block_ovelay.BlockConstructionRendering
+import aurocosh.divinefavor.common.config.common.ConfigGeneral
 import aurocosh.divinefavor.common.item.spell_talismans.base.CastType
 import aurocosh.divinefavor.common.item.spell_talismans.base.ItemSpellTalisman
 import aurocosh.divinefavor.common.item.spell_talismans.base.SpellOptions
@@ -18,9 +19,8 @@ import net.minecraft.util.math.BlockPos
 import net.minecraftforge.client.event.RenderWorldLastEvent
 import net.minecraftforge.fml.relauncher.Side
 import net.minecraftforge.fml.relauncher.SideOnly
-import java.util.*
 
-abstract class SpellTalismanBuild(name: String, spirit: ModSpirit, favorCost: Int, options: EnumSet<SpellOptions>) : ItemSpellTalisman(name, spirit, favorCost, options) {
+abstract class SpellTalismanBuild(name: String, spirit: ModSpirit, favorCost: Int = ConfigGeneral.blockBuildingCost) : ItemSpellTalisman(name, spirit, favorCost, SpellOptions.ALL_CAST_TRACE) {
     protected val finalCoordinates = ContextProperty<List<BlockPos>>("coordinates", emptyList())
 
     protected abstract val positionPropertyWrapper : PositionPropertyWrapper

@@ -2,7 +2,6 @@ package aurocosh.divinefavor.common.item.spell_talismans.replace
 
 import aurocosh.divinefavor.common.lib.CachedContainer
 import aurocosh.divinefavor.common.coordinate_generators.generateCuboid
-import aurocosh.divinefavor.common.item.spell_talismans.base.SpellOptions
 import aurocosh.divinefavor.common.item.spell_talismans.context.*
 import aurocosh.divinefavor.common.lib.extensions.filter
 import aurocosh.divinefavor.common.lib.extensions.get
@@ -11,9 +10,8 @@ import aurocosh.divinefavor.common.stack_properties.StackPropertyInt
 import aurocosh.divinefavor.common.util.UtilPlayer
 import net.minecraft.item.ItemStack
 import net.minecraft.util.math.BlockPos
-import java.util.*
 
-class SpellTalismanReplaceCuboid(name: String, spirit: ModSpirit, favorCost: Int, options: EnumSet<SpellOptions>) : SpellTalismanReplace(name, spirit, favorCost, options) {
+class SpellTalismanReplaceCuboid(name: String, spirit: ModSpirit) : SpellTalismanReplace(name, spirit) {
     private val up: StackPropertyInt = propertyHandler.registerIntProperty("up", 1, 0, 10)
     private val down: StackPropertyInt = propertyHandler.registerIntProperty("down", 1, 0, 10)
     private val left: StackPropertyInt = propertyHandler.registerIntProperty("left", 1, 0, 10)

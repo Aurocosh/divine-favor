@@ -2,15 +2,13 @@ package aurocosh.divinefavor.common.item.spell_talismans.replace
 
 import aurocosh.divinefavor.common.lib.CachedContainer
 import aurocosh.divinefavor.common.coordinate_generators.generateFloodFillCoordinates
-import aurocosh.divinefavor.common.item.spell_talismans.base.SpellOptions
 import aurocosh.divinefavor.common.item.spell_talismans.context.*
 import aurocosh.divinefavor.common.lib.extensions.get
 import aurocosh.divinefavor.common.spirit.base.ModSpirit
 import net.minecraft.item.ItemStack
 import net.minecraft.util.math.BlockPos
-import java.util.*
 
-class SpellTalismanReplaceBlocks(name: String, spirit: ModSpirit, favorCost: Int, options: EnumSet<SpellOptions>) : SpellTalismanReplace(name, spirit, favorCost, options) {
+class SpellTalismanReplaceBlocks(name: String, spirit: ModSpirit) : SpellTalismanReplace(name, spirit) {
     override fun getBlockCount(stack: ItemStack): Int = favorCost * blockCount.getValue(stack)
 
     override fun getCoordinates(context: TalismanContext): List<BlockPos> {

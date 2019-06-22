@@ -7,13 +7,12 @@ import aurocosh.divinefavor.common.lib.extensions.get
 import aurocosh.divinefavor.common.spirit.base.ModSpirit
 import aurocosh.divinefavor.common.stack_properties.StackPropertyInt
 import net.minecraft.block.material.Material
-import net.minecraft.block.state.IBlockState
 import net.minecraft.item.ItemStack
 import net.minecraft.util.math.BlockPos
 import aurocosh.divinefavor.common.item.spell_talismans.context.*
 import net.minecraftforge.event.entity.player.PlayerEvent
 
-class ToolTalismanFellTree(name: String, spirit: ModSpirit, favorCost: Int) : ToolTalismanBreak(name, spirit, favorCost) {
+class ToolTalismanFellTree(name: String, spirit: ModSpirit) : ToolTalismanBreak(name, spirit) {
     val blockCount: StackPropertyInt = propertyHandler.registerIntProperty("block_count", 6, 1, 500)
 
     override fun isCustomToolClasses(stack: ItemStack) = true
