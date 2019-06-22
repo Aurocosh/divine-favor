@@ -11,7 +11,6 @@ import aurocosh.divinefavor.common.spirit.base.ModSpirit
 import aurocosh.divinefavor.common.stack_properties.StackPropertyBool
 import aurocosh.divinefavor.common.stack_properties.StackPropertyInt
 import aurocosh.divinefavor.common.tasks.BlockReplacingTask
-import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.item.ItemStack
 import net.minecraftforge.client.event.RenderWorldLastEvent
 import net.minecraftforge.event.world.BlockEvent
@@ -41,7 +40,7 @@ abstract class SpellTalismanReplace(name: String, spirit: ModSpirit, favorCost: 
         BlockExchangeRendering.render(lastEvent, context.player, state, coordinates)
     }
 
-    override fun catchDrops(player: EntityPlayer, stack: ItemStack, toolStack: ItemStack, event: BlockEvent.HarvestDropsEvent) {
-        event.drops.removeIf(player::addItemStackToInventory)
+    override fun catchDrops(stack: ItemStack, toolStack: ItemStack, event: BlockEvent.HarvestDropsEvent) {
+        event.drops.removeIf(event.harvester::addItemStackToInventory)
     }
 }

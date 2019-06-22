@@ -1,0 +1,15 @@
+{
+  "name": "Aquatic tool",
+  "icon": "divinefavor:tool_talisman_aquatic_tool",
+  "category": "tool_talismans",
+  "pages": [
+    {
+      "type": "item_description",
+      "talisman": "divinefavor:tool_talisman_aquatic_tool"
+    },
+    {
+      "type": "tool_talisman_stats",
+      "talisman": "divinefavor:tool_talisman_aquatic_tool"
+    }
+  ]
+}

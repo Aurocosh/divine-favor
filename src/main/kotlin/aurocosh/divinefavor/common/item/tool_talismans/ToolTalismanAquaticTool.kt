@@ -1,21 +1,19 @@
 package aurocosh.divinefavor.common.item.tool_talismans
 
+import aurocosh.divinefavor.common.config.common.ConfigTool
 import aurocosh.divinefavor.common.item.tool_talismans.base.ItemToolTalisman
 import aurocosh.divinefavor.common.spirit.base.ModSpirit
-import net.minecraft.block.material.Material
 import net.minecraft.item.ItemStack
 import net.minecraftforge.event.entity.player.PlayerEvent
 
-class ToolTalismanWoodPeck(name: String, spirit: ModSpirit, favorCost: Int) : ItemToolTalisman(name, spirit, favorCost) {
-    override fun isCustomToolClasses(stack: ItemStack) = true
-    override fun getCustomToolClasses(stack: ItemStack) = toolClasses
-
+class ToolTalismanAquaticTool(name: String, spirit: ModSpirit, favorCost: Int) : ItemToolTalisman(name, spirit, favorCost) {
     override fun canHarvest(stack: ItemStack, event: PlayerEvent.HarvestCheck) {
-        if (event.targetBlock.material == Material.WOOD)
+        if (event.entityPlayer.isInWater)
             event.setCanHarvest(true)
     }
 
-    companion object {
-        val toolClasses = setOf("axe")
+    override fun getMiningSpeed(stack: ItemStack, event: PlayerEvent.BreakSpeed) {
+        if (event.entityPlayer.isInWater)
+            event.newSpeed += ConfigTool.aquaticTool.miningSpeed
     }
 }

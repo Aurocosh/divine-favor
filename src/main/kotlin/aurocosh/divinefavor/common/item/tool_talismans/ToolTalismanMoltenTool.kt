@@ -5,7 +5,6 @@ import aurocosh.divinefavor.common.item.talisman_tools.spell_pick.ItemSpellPick
 import aurocosh.divinefavor.common.item.tool_talismans.base.ItemToolTalisman
 import aurocosh.divinefavor.common.spirit.base.ModSpirit
 import aurocosh.divinefavor.common.util.UtilRandom
-import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.item.ItemStack
 import net.minecraftforge.event.world.BlockEvent
 import net.minecraft.item.crafting.FurnaceRecipes
@@ -17,7 +16,7 @@ class ToolTalismanMoltenTool(name: String, spirit: ModSpirit, favorCost: Int) : 
         return true
     }
 
-    override fun catchDrops(player: EntityPlayer, stack: ItemStack, toolStack: ItemStack, event: BlockEvent.HarvestDropsEvent) {
+    override fun catchDrops(stack: ItemStack, toolStack: ItemStack, event: BlockEvent.HarvestDropsEvent) {
         val spellPick = toolStack.item as? ItemSpellPick ?: return
         if (!spellPick.canHarvestBlock(event.state))
             return

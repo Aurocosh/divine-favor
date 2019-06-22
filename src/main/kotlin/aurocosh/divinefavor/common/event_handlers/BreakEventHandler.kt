@@ -1,11 +1,14 @@
 package aurocosh.divinefavor.common.event_handlers
 
 import aurocosh.divinefavor.DivineFavor
+import aurocosh.divinefavor.common.item.talisman_tools.spell_pick.ItemSpellPick
 import aurocosh.divinefavor.common.lib.interfaces.IBlockCatcher
 import aurocosh.divinefavor.common.util.UtilPlayer
 import net.minecraftforge.event.world.BlockEvent
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent
+import net.minecraftforge.event.entity.player.PlayerEvent
+
 
 @EventBusSubscriber(modid = DivineFavor.MOD_ID)
 object BreakEventHandler {
@@ -15,11 +18,20 @@ object BreakEventHandler {
         val hand = UtilPlayer.getHandWithItem(player) { it is IBlockCatcher } ?: return
         val stack = player.getHeldItem(hand)
         val blockCatcher = stack.item as IBlockCatcher
-        blockCatcher.catchDrops(player, stack, stack, event)
+        blockCatcher.catchDrops(stack, stack, event)
 
 
 //        event.drops.removeIf{blockCatcher()}
 //        event.drops.removeIf(player::addItemStackToInventory)
     }
+
+    @SubscribeEvent
+    fun breakSpeed(event: PlayerEvent.BreakSpeed) {
+        val stack = event.entityPlayer.inventory.getCurrentItem()
+        val item = stack.item
+        if (item is ItemSpellPick)
+            item.getMiningSpeed(stack, event)
+    }
+
 }
 

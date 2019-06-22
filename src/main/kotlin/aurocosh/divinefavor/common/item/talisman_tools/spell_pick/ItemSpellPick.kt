@@ -18,7 +18,6 @@ import aurocosh.divinefavor.common.item.talisman_tools.spell_pick.capability.Spe
 import aurocosh.divinefavor.common.item.talisman_tools.spell_pick.capability.SpellPickProvider
 import aurocosh.divinefavor.common.item.talisman_tools.spell_pick.capability.SpellPickStorage
 import aurocosh.divinefavor.common.item.tool_talismans.base.ItemToolTalisman
-import aurocosh.divinefavor.common.item.tool_talismans.base.PickDestroySpeedType
 import aurocosh.divinefavor.common.lib.extensions.cap
 import aurocosh.divinefavor.common.lib.interfaces.IBlockCatcher
 import aurocosh.divinefavor.common.stack_properties.IPropertyAccessor
@@ -41,6 +40,7 @@ import net.minecraft.util.*
 import net.minecraft.util.math.BlockPos
 import net.minecraft.world.World
 import net.minecraftforge.common.capabilities.ICapabilityProvider
+import net.minecraftforge.event.entity.player.PlayerEvent
 import net.minecraftforge.event.world.BlockEvent
 import net.minecraftforge.fml.relauncher.Side
 import net.minecraftforge.fml.relauncher.SideOnly
@@ -122,25 +122,6 @@ open class ItemSpellPick(name: String, texturePath: String, orderIndex: Int = 0,
         return super.getToolClasses(stack)
     }
 
-    override fun getDestroySpeed(stack: ItemStack, state: IBlockState): Float {
-        val (talismanStack, talisman) = TalismanAdapter.getTalisman<ItemToolTalisman>(stack)
-                ?: return super.getDestroySpeed(stack, state)
-
-        return when (talisman.getDestroySpeedType(talismanStack, state)) {
-            PickDestroySpeedType.GET_FROM_TALISMAN -> talisman.getCustomDestroySpeed(talismanStack, state)
-            PickDestroySpeedType.ADD_FROM_TALISMAN -> talisman.getCustomDestroySpeed(talismanStack, state) + super.getDestroySpeed(stack, state)
-            else -> super.getDestroySpeed(stack, state)
-        }
-    }
-
-    override fun canHarvestBlock(state: IBlockState, stack: ItemStack): Boolean {
-        val (talismanStack, talisman) = TalismanAdapter.getTalisman<ItemToolTalisman>(stack)
-                ?: return super.canHarvestBlock(state)
-        if (talisman.isHarvestCustom(talismanStack, state))
-            return talisman.getCustomHarvest(talismanStack, state)
-        return super.canHarvestBlock(state)
-    }
-
     @SideOnly(Side.CLIENT)
     override fun isFull3D(): Boolean {
         return true
@@ -158,12 +139,22 @@ open class ItemSpellPick(name: String, texturePath: String, orderIndex: Int = 0,
         return true
     }
 
-    override fun catchDrops(player: EntityPlayer, stack: ItemStack, toolStack: ItemStack, event: BlockEvent.HarvestDropsEvent) {
+    override fun catchDrops(stack: ItemStack, toolStack: ItemStack, event: BlockEvent.HarvestDropsEvent) {
         val talismanStack = getTalismanStack(stack)
         if (talismanStack.isEmpty)
             return
         val catcher = talismanStack.item as IBlockCatcher
-        catcher.catchDrops(player, talismanStack, stack, event)
+        catcher.catchDrops(talismanStack, stack, event)
+    }
+
+    fun canHarvest(stack: ItemStack, event: PlayerEvent.HarvestCheck) {
+        val (talismanStack, talisman) = TalismanAdapter.getTalisman<ItemToolTalisman>(stack) ?: return
+        talisman.canHarvest(talismanStack, event)
+    }
+
+    fun getMiningSpeed(stack: ItemStack, event: PlayerEvent.BreakSpeed) {
+        val (talismanStack, talisman) = TalismanAdapter.getTalisman<ItemToolTalisman>(stack) ?: return
+        talisman.getMiningSpeed(talismanStack, event)
     }
 
     override fun getItemAttributeModifiers(equipmentSlot: EntityEquipmentSlot): Multimap<String, AttributeModifier> {

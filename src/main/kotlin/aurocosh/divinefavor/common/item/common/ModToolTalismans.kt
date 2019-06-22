@@ -18,6 +18,7 @@ import net.minecraft.init.Blocks
 
 object ModToolTalismans {
     // New fields
+    lateinit var aquatic_tool: ItemToolTalisman
     lateinit var molten_tool: ItemToolTalisman
     lateinit var break_blocks: ItemToolTalisman
     lateinit var memory_tool: ItemToolTalisman
@@ -53,6 +54,7 @@ object ModToolTalismans {
         // squarefury;
 
         // New instances
+        aquatic_tool = ToolTalismanAquaticTool("aquatic_tool", ModSpirits.blizrabi, ConfigTool.aquaticTool.favorCost)
         molten_tool = ToolTalismanMoltenTool("molten_tool", ModSpirits.romol, ConfigTool.moltenTool.favorCost)
         break_blocks = ToolTalismanBreakBlocks("break_blocks", ModSpirits.romol, ConfigTool.breakBlocks.favorCost)
         memory_tool = ToolTalismanMemoryTool("memory_tool", ModSpirits.romol, ConfigTool.memoryTool.favorCost)

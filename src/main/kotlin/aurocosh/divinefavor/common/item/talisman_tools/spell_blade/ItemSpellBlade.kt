@@ -151,12 +151,12 @@ open class ItemSpellBlade(name: String, texturePath: String, orderIndex: Int = 0
 
     override fun getTalismanTool(stack: ItemStack): ITalismanTool = stack.cap(CAPABILITY_SPELL_BLADE)
 
-    override fun catchDrops(player: EntityPlayer, stack: ItemStack, toolStack: ItemStack, event: BlockEvent.HarvestDropsEvent) {
+    override fun catchDrops(stack: ItemStack, toolStack: ItemStack, event: BlockEvent.HarvestDropsEvent) {
         val talismanStack = getTalismanStack(stack)
         if (talismanStack.isEmpty)
             return
         val catcher = talismanStack.item as IBlockCatcher
-        catcher.catchDrops(player, talismanStack, toolStack, event)
+        catcher.catchDrops(talismanStack, toolStack, event)
     }
 
     override fun getTalismanStack(stack: ItemStack): ItemStack {

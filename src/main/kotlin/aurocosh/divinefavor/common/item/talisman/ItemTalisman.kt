@@ -18,6 +18,7 @@ import net.minecraft.item.EnumRarity
 import net.minecraft.item.ItemStack
 import net.minecraft.world.World
 import net.minecraftforge.client.event.RenderWorldLastEvent
+import net.minecraftforge.event.entity.player.PlayerEvent
 import net.minecraftforge.event.world.BlockEvent
 import net.minecraftforge.fml.relauncher.Side
 import net.minecraftforge.fml.relauncher.SideOnly
@@ -129,8 +130,7 @@ abstract class ItemTalisman(val name: String, texturePath: String, val spirit: M
     open fun handleRendering(context: TalismanContext, lastEvent: RenderWorldLastEvent) {
     }
 
-    override fun catchDrops(player: EntityPlayer, stack: ItemStack, toolStack: ItemStack, event: BlockEvent.HarvestDropsEvent) {
-    }
+    override fun catchDrops(stack: ItemStack, toolStack: ItemStack, event: BlockEvent.HarvestDropsEvent) {}
 
     override fun getTalismanStack(stack: ItemStack): ItemStack {
         return if (stack.item is ItemTalisman) stack else ItemStack.EMPTY

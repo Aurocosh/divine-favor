@@ -11,16 +11,19 @@ import net.minecraft.block.state.IBlockState
 import net.minecraft.item.ItemStack
 import net.minecraft.util.math.BlockPos
 import aurocosh.divinefavor.common.item.spell_talismans.context.*
+import net.minecraftforge.event.entity.player.PlayerEvent
 
 class ToolTalismanFellTree(name: String, spirit: ModSpirit, favorCost: Int) : ToolTalismanBreak(name, spirit, favorCost) {
     val blockCount: StackPropertyInt = propertyHandler.registerIntProperty("block_count", 6, 1, 500)
 
     override fun isCustomToolClasses(stack: ItemStack) = true
     override fun getCustomToolClasses(stack: ItemStack) = toolClasses
-    override fun isHarvestCustom(stack: ItemStack, state: IBlockState) = true
-    override fun getCustomHarvest(stack: ItemStack, state: IBlockState) = state.material == Material.WOOD
-
     override fun getBlockCount(stack: ItemStack): Int = favorCost * stack.get(blockCount)
+
+    override fun canHarvest(stack: ItemStack, event: PlayerEvent.HarvestCheck) {
+        if (event.targetBlock.material == Material.WOOD)
+            event.setCanHarvest(true)
+    }
 
     override fun getCoordinates(context: TalismanContext): List<BlockPos> {
         val (pos, world, stack) = context.get(posField, worldField, stackField)

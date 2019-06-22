@@ -391,6 +391,7 @@ item.divinefavor:blade_talisman_vengeful_blade.name=Vengeful blade talisman
 item.divinefavor:blade_talisman_wither_coating.name=Wither coating talisman
 
 ## TOOL TALISMAN NAMES
+item.divinefavor:tool_talisman_aquatic_tool.name=Aquatic tool
 item.divinefavor:tool_talisman_molten_tool.name=Molten tool
 item.divinefavor:tool_talisman_break_blocks.name=Break blocks
 item.divinefavor:tool_talisman_memory_tool.name=Memory tool
@@ -433,6 +434,7 @@ potion.divinefavor:toadic_jump.name=Toadic jump
 potion.divinefavor:wild_charge.name=Wild sprint
 potion.divinefavor:wild_sprint.name=Wild sprint
 potion.divinefavor:wooden_punch.name=Wooden punch
+potion.divinefavor:potion_gills.name=Gills
 
 # BLEND EFFECT NAMES
 potion.divinefavor:arboreal_aura.name=Arboreal aura
@@ -809,6 +811,7 @@ item.divinefavor:blade_talisman_vengeful_blade.description=Deals additional dama
 item.divinefavor:blade_talisman_wither_coating.description=Inflicts withering on hit
 
 ## TOOL TALISMAN DESCRIPTIONS
+item.divinefavor:tool_talisman_aquatic_tool.description=This talisman grants extra mining speed under water.
 item.divinefavor:tool_talisman_molten_tool.description=This talisman will instantly smelt broken blocks.
 item.divinefavor:tool_talisman_break_blocks.description=When spell pick with this talisman breaks a block it will also break some connected blocks.
 item.divinefavor:tool_talisman_memory_tool.description=This tool memorizes last type of block broken. If you break same type of block repeatedly your mining speed will increase with each broken block. But if you break another type of block then tool speed resets.
