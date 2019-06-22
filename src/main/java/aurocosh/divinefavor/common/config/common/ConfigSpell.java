@@ -212,22 +212,6 @@ public class ConfigSpell {
     public static ReplaceSide replaceSide = new ReplaceSide();
     @Config.Name("Replace blocks")
     public static ReplaceBlocks replaceBlocks = new ReplaceBlocks();
-    @Config.Name("Build wall relative")
-    public static BuildWallRelative buildWallRelative = new BuildWallRelative();
-    @Config.Name("Build horizontal line relative")
-    public static BuildHorizontalLineRelative buildHorizontalLineRelative = new BuildHorizontalLineRelative();
-    @Config.Name("Build hollow sphere relative")
-    public static BuildHollowSphereRelative buildHollowSphereRelative = new BuildHollowSphereRelative();
-    @Config.Name("Build floor relative")
-    public static BuildFloorRelative buildFloorRelative = new BuildFloorRelative();
-    @Config.Name("Build column relative")
-    public static BuildColumnRelative buildColumnRelative = new BuildColumnRelative();
-    @Config.Name("Build square wall relative")
-    public static BuildSquareWallRelative buildSquareWallRelative = new BuildSquareWallRelative();
-    @Config.Name("Build square floor relative")
-    public static BuildSquareFloorRelative buildSquareFloorRelative = new BuildSquareFloorRelative();
-    @Config.Name("Build block relative")
-    public static BuildBlockRelative buildBlockRelative = new BuildBlockRelative();
     @Config.Name("Build extrusion")
     public static BuildExtrusion buildExtrusion = new BuildExtrusion();
     @Config.Name("Build horizontal line")

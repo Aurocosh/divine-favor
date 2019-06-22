@@ -23,7 +23,7 @@ class SpellTalismanBuildFromSurface(name: String, spirit: ModSpirit, favorCost: 
         val stack = context.stack
         val blockCount = getBlockCount(stack)
         val facing = facingPropertyWrapper.getFacing(stack, context.facing)
-        val blockPos = positionPropertyWrapper.getPosition(context, context.pos)
+        val blockPos = positionPropertyWrapper.getPosition(context)
 
         return cachedContainer.getValue(blockPos, blockCount) {
             generateLineCoordinates(blockPos, facing, blockCount)

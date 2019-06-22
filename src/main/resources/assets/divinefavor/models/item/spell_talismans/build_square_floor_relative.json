@@ -1,7 +1,0 @@
-{
-    "parent": "item/generated",
-    "textures": {
-        "layer1": "divinefavor:items/spell_talismans/build_square_floor_relative",
-        "layer0": "divinefavor:items/spell_talismans/base"
-    }
-}

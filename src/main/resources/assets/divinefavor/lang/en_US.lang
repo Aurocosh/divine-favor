@@ -188,14 +188,6 @@ item.divinefavor:ice_arrow.name=Ice arrow
 item.divinefavor:spell_talisman_replace_cuboid.name=Replace cuboid
 item.divinefavor:spell_talisman_replace_side.name=Replace side
 item.divinefavor:spell_talisman_replace_blocks.name=Replace blocks
-item.divinefavor:spell_talisman_build_wall_relative.name=Build wall relative
-item.divinefavor:spell_talisman_build_horizontal_line_relative.name=Build horizontal line relative
-item.divinefavor:spell_talisman_build_hollow_sphere_relative.name=Build hollow sphere relative
-item.divinefavor:spell_talisman_build_floor_relative.name=Build floor relative
-item.divinefavor:spell_talisman_build_column_relative.name=Build column relative
-item.divinefavor:spell_talisman_build_square_wall_relative.name=Build square wall relative
-item.divinefavor:spell_talisman_build_square_floor_relative.name=Build square floor relative
-item.divinefavor:spell_talisman_build_block_relative.name=Build block relative
 item.divinefavor:spell_talisman_build_extrusion.name=Build extrusion
 item.divinefavor:spell_talisman_build_horizontal_line.name=Build horizontal line
 item.divinefavor:spell_talisman_build_from_surface.name=Build from surface
@@ -612,14 +604,6 @@ item.divinefavor:ice_arrow.description=Delicate arrows made of ice. They are fra
 item.divinefavor:spell_talisman_replace_cuboid.description=This talisman allows you to instantly replace any blocks in shape of cuboid.
 item.divinefavor:spell_talisman_replace_side.description=This talisman allows you to instantly replace any continuous surface without angles with another type of block
 item.divinefavor:spell_talisman_replace_blocks.description=This talisman allows you to instantly replace any connected chunk of blocks with another type of block
-item.divinefavor:spell_talisman_build_wall_relative.description=This talisman allows you to instantly build walls. You can freely adjust walls built with it in all directions anywhere around you.
-item.divinefavor:spell_talisman_build_horizontal_line_relative.description=This talisman allows you to instantly build horizontal lines of arbitrary size anywhere around you.
-item.divinefavor:spell_talisman_build_hollow_sphere_relative.description=This talisman allows you to instantly build hollow spheres anywhere around you.
-item.divinefavor:spell_talisman_build_floor_relative.description=This talisman allows you to instantly build floors with arbitrary size anywhere around you.
-item.divinefavor:spell_talisman_build_column_relative.description=This talisman allows you to instantly build columns of variable height from any blocks anywhere around you.
-item.divinefavor:spell_talisman_build_square_wall_relative.description=This talisman allows you to instantly build square walls anywhere around you.
-item.divinefavor:spell_talisman_build_square_floor_relative.description=This talisman allows you to instantly build square floors anywhere around you.
-item.divinefavor:spell_talisman_build_block_relative.description=This talisman allows you to place block remotely.
 item.divinefavor:spell_talisman_build_extrusion.description=This talisman allows you to instantly build extrusions in shape of any surface.
 item.divinefavor:spell_talisman_build_horizontal_line.description=This talisman allows you to instantly build horizontal lines of arbitrary size.
 item.divinefavor:spell_talisman_build_from_surface.description=This talisman allows you to instantly build block lines from any surface.
@@ -873,6 +857,7 @@ name.divinefavor:property.shift_up=Shift up: %1$s
 name.divinefavor:property.shift=Shift: %1$s
 
 name.divinefavor:property.lock_position=Position lock: %1$s
+name.divinefavor:property.is_relative=Relative: %1$s
 name.divinefavor:property.lock_rotation=Rotation lock: %1$s
 name.divinefavor:property.lock_facing=Block face lock: %1$s
 
@@ -913,6 +898,7 @@ tooltip.divinefavor:property.shift_up=Shifts origin of build up and down
 tooltip.divinefavor:property.shift=Shifts origin of build by this value
 
 tooltip.divinefavor:property.lock_position=Locks origin of current build to the current position
+tooltip.divinefavor:property.is_relative=When enabled position of the build will be relative to the player.
 tooltip.divinefavor:property.lock_rotation=Locks rotation of current build to the current rotation
 tooltip.divinefavor:property.lock_facing=Locks facing of current build to the current face of block
 

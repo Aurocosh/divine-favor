@@ -23,7 +23,7 @@ class SpellTalismanBuildSphere(name: String, spirit: ModSpirit, favorCost: Int, 
 
     override fun getCoordinates(context: TalismanContext): List<BlockPos> {
         val radius = context.stack.get(radius)
-        val blockPos = positionPropertyWrapper.getPosition(context, context.pos)
+        val blockPos = positionPropertyWrapper.getPosition(context)
 
         return cachedContainer.getValue(blockPos, radius) {
             UtilCoordinates.getBlocksInSphere(blockPos, radius).toList()

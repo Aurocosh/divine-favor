@@ -23,7 +23,7 @@ class SpellTalismanBuildColumn(name: String, spirit: ModSpirit, favorCost: Int, 
     override fun getCoordinates(context: TalismanContext): List<BlockPos> {
         val (stack, pos) = context.get(stackField, posField)
         val count = getBlockCount(stack)
-        val blockPos = positionPropertyWrapper.getPosition(context, pos)
+        val blockPos = positionPropertyWrapper.getPosition(context)
 
         return cachedContainer.getValue(blockPos, count) {
             generateLineCoordinates(blockPos, EnumFacing.UP, count)

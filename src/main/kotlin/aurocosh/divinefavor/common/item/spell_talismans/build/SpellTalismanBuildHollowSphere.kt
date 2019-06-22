@@ -48,7 +48,7 @@ class SpellTalismanBuildHollowSphere(name: String, spirit: ModSpirit, favorCost:
 
     override fun getCoordinates(context: TalismanContext): List<BlockPos> {
         val (internal, external) = getRadiuses(context.stack)
-        val blockPos = positionPropertyWrapper.getPosition(context, context.pos)
+        val blockPos = positionPropertyWrapper.getPosition(context)
 
         return cachedContainer.getValue(blockPos, internal, external) {
             UtilCoordinates.getSphereOutline(blockPos, internal, external).toList()

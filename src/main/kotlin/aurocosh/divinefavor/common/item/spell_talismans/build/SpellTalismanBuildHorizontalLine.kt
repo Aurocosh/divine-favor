@@ -26,7 +26,7 @@ class SpellTalismanBuildHorizontalLine(name: String, spirit: ModSpirit, favorCos
         val (player, stack, pos) = context.get(playerField, stackField, posField)
         val (left, right) = context.stack.get(left, right)
 
-        val blockPos = positionPropertyWrapper.getPosition(context, pos)
+        val blockPos = positionPropertyWrapper.getPosition(context)
         val facing = rotationPropertyWrapper.getRotation(stack, player.horizontalFacing)
 
         return cachedContainer.getValue(facing, blockPos, left, right) {

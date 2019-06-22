@@ -24,7 +24,7 @@ class SpellTalismanBuildFloor(name: String, spirit: ModSpirit, favorCost: Int, o
         val (player, stack, pos) = context.get(playerField, stackField, posField)
         val (left, right, front, back) = stack.get(left, right, front, back)
 
-        val blockPos = positionPropertyWrapper.getPosition(context, pos)
+        val blockPos = positionPropertyWrapper.getPosition(context)
         val facing = rotationPropertyWrapper.getRotation(stack, player.horizontalFacing)
 
         return cachedContainer.getValue(facing, blockPos, front, back, left, right) {

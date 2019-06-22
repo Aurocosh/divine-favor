@@ -6,7 +6,6 @@ import aurocosh.divinefavor.common.entity.minions.*
 import aurocosh.divinefavor.common.item.spell_talismans.*
 import aurocosh.divinefavor.common.item.spell_talismans.base.*
 import aurocosh.divinefavor.common.item.spell_talismans.build.*
-import aurocosh.divinefavor.common.item.spell_talismans.build.base.SpellTalismanBuildBlockRelative
 import aurocosh.divinefavor.common.item.spell_talismans.replace.SpellTalismanReplaceBlocks
 import aurocosh.divinefavor.common.item.spell_talismans.replace.SpellTalismanReplaceCuboid
 import aurocosh.divinefavor.common.item.spell_talismans.replace.SpellTalismanReplaceSide
@@ -32,24 +31,16 @@ object ModSpellTalismans {
     lateinit var blink: ItemSpellTalisman
     lateinit var blood_of_grass: ItemSpellTalisman
     lateinit var bonemeal: ItemSpellTalisman
-    lateinit var build_block_relative: ItemSpellTalisman
     lateinit var build_column: ItemSpellTalisman
-    lateinit var build_column_relative: ItemSpellTalisman
     lateinit var build_extrusion: ItemSpellTalisman
     lateinit var build_floor: ItemSpellTalisman
-    lateinit var build_floor_relative: ItemSpellTalisman
     lateinit var build_from_surface: ItemSpellTalisman
     lateinit var build_hollow_sphere: ItemSpellTalisman
-    lateinit var build_hollow_sphere_relative: ItemSpellTalisman
     lateinit var build_horizontal_line: ItemSpellTalisman
-    lateinit var build_horizontal_line_relative: ItemSpellTalisman
     lateinit var build_sphere: ItemSpellTalisman
     lateinit var build_square_floor: ItemSpellTalisman
-    lateinit var build_square_floor_relative: ItemSpellTalisman
     lateinit var build_square_wall: ItemSpellTalisman
-    lateinit var build_square_wall_relative: ItemSpellTalisman
     lateinit var build_wall: ItemSpellTalisman
-    lateinit var build_wall_relative: ItemSpellTalisman
     lateinit var clock: ItemSpellTalisman
     lateinit var combustion: ItemSpellTalisman
     lateinit var consuming_fury: ItemSpellTalisman
@@ -278,15 +269,6 @@ object ModSpellTalismans {
         starvation = SpellTalismanModPotion("starvation", ModSpirits.timber, ConfigSpell.starvation.favorCost, ModPotions.starvation, ConfigSpell.starvation.duration)
 
         // New instances
-
-        build_wall_relative = SpellTalismanBuildWallRelative("build_wall_relative", ModSpirits.romol, ConfigSpell.buildWallRelative.favorCost, SpellOptions.ALL_CAST_TRACE)
-        build_horizontal_line_relative = SpellTalismanBuildHorizontalLineRelative("build_horizontal_line_relative", ModSpirits.romol, ConfigSpell.buildHorizontalLineRelative.favorCost, SpellOptions.ALL_CAST_TRACE)
-        build_hollow_sphere_relative = SpellTalismanBuildHollowSphereRelative("build_hollow_sphere_relative", ModSpirits.romol, ConfigSpell.buildHollowSphereRelative.favorCost, SpellOptions.ALL_CAST_TRACE)
-        build_floor_relative = SpellTalismanBuildFloorRelative("build_floor_relative", ModSpirits.romol, ConfigSpell.buildFloorRelative.favorCost, SpellOptions.ALL_CAST_TRACE)
-        build_column_relative = SpellTalismanBuildColumnRelative("build_column_relative", ModSpirits.romol, ConfigSpell.buildColumnRelative.favorCost, SpellOptions.ALL_CAST_TRACE)
-        build_square_wall_relative = SpellTalismanBuildSquareWallRelative("build_square_wall_relative", ModSpirits.romol, ConfigSpell.buildSquareWallRelative.favorCost, SpellOptions.ALL_CAST_TRACE)
-        build_square_floor_relative = SpellTalismanBuildSquareFloorRelative("build_square_floor_relative", ModSpirits.romol, ConfigSpell.buildSquareFloorRelative.favorCost, SpellOptions.ALL_CAST_TRACE)
-        build_block_relative = SpellTalismanBuildBlockRelative("build_block_relative", ModSpirits.romol, ConfigSpell.buildBlockRelative.favorCost, SpellOptions.ALL_CAST_TRACE)
         build_extrusion = SpellTalismanBuildExtrusion("build_extrusion", ModSpirits.romol, ConfigSpell.buildExtrusion.favorCost, SpellOptions.ALL_CAST_TRACE)
         build_horizontal_line = SpellTalismanBuildHorizontalLine("build_horizontal_line", ModSpirits.romol, ConfigSpell.buildHorizontalLine.favorCost, SpellOptions.ALL_CAST_TRACE)
         build_from_surface = SpellTalismanBuildFromSurface("build_from_surface", ModSpirits.romol, ConfigSpell.buildFromSurface.favorCost, SpellOptions.ALL_CAST_TRACE)

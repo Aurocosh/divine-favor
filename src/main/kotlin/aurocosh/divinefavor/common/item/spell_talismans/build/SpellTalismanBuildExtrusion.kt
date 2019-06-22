@@ -21,7 +21,7 @@ class SpellTalismanBuildExtrusion(name: String, spirit: ModSpirit, favorCost: In
     override fun getCoordinates(context: TalismanContext): List<BlockPos> {
         val (pos, facing, stack, world) = context.get(posField, facingField, stackField, worldField)
         val (length, surface) = stack.get(length, surface)
-        val origin = positionPropertyWrapper.getPosition(context, pos)
+        val origin = positionPropertyWrapper.getPosition(context)
 
         return cachedContainer.getValue(pos, origin, facing, surface, length) {
             generateExtrusionCoordinates(pos, origin, world, facing, surface, length)
