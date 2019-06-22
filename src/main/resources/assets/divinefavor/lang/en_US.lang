@@ -360,6 +360,7 @@ item.divinefavor:arrow_talisman_yummy_smell.name=Yummy smell talisman
 item.divinefavor:arrow_talisman_zero_g.name=Zero g arrow talisman
 
 ## BLADE TALISMAN NAMES
+item.divinefavor:blade_talisman_obliteration.name=Obliteration
 item.divinefavor:blade_talisman_yummy_smell.name=Yummy smell
 item.divinefavor:blade_talisman_wind_leash.name=Wind leash
 item.divinefavor:blade_talisman_suffocating_fumes.name=Suffocating fumes
@@ -431,6 +432,7 @@ potion.divinefavor:wild_sprint.name=Wild sprint
 potion.divinefavor:wooden_punch.name=Wooden punch
 potion.divinefavor:potion_gills.name=Gills
 potion.divinefavor:spider_might.name=Might of spider
+potion.divinefavor:night_eye.name=Night eye
 
 # BLEND EFFECT NAMES
 potion.divinefavor:arboreal_aura.name=Arboreal aura
@@ -777,6 +779,7 @@ item.divinefavor:arrow_talisman_yummy_smell.description=Arrow shot with this tal
 item.divinefavor:arrow_talisman_zero_g.description=Arrow shot with this talisman will not be affected by gravity.
 
 ## BLADE TALISMAN DESCRIPTIONS
+item.divinefavor:blade_talisman_obliteration.description=This talisman will deal a lot of damage to mobs, but any mob that was hit with this talisman will not drop anything.
 item.divinefavor:blade_talisman_yummy_smell.description=Enemies hit with this talisman will be cursed with alluring smell. Cursed creatures will attract unwanted attention. All monsters near cursed creature will attack it. To lift this curse you need attract a lot of creatures at once.
 item.divinefavor:blade_talisman_wind_leash.description=Enemies hit with this talisman will be cursed with unnatural force. Cursed creatures will be dragged in random direction by invisible force. To lift this curse you need look at direction where you are being dragged.
 item.divinefavor:blade_talisman_suffocating_fumes.description=Enemies hit with this talisman will be cursed with suffocation. Cursed creature suffocate without any reason. To lift this curse you will have to climb as high as you can.

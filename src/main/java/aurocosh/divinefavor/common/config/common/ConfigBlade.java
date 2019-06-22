@@ -36,6 +36,8 @@ public class ConfigBlade {
     public static WitherCoating witherCoating = new WitherCoating();
 
     // New configs
+    @Config.Name("Obliteration")
+    public static Obliteration obliteration = new Obliteration();
     @Config.Name("Yummy smell")
     public static YummySmell yummySmell = new YummySmell();
     @Config.Name("Wind leash")

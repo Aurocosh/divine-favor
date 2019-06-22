@@ -1,0 +1,26 @@
+{
+  "result": {
+    "item": "divinefavor:blade_talisman_obliteration"
+  },
+  "stones": [
+    "divinefavor:calling_stone_squarefury"
+  ],
+  "ingredients": [
+    {
+      "type": "ore",
+      "ore": "paper"
+    },
+    {
+      "type": "ore",
+      "ore": "dyeBlack"
+    },
+    {
+      "type": "stack",
+      "item": "minecraft:iron_sword"
+    },
+    {
+      "type": "stack",
+      "item": "minecraft:TODO" 
+    }
+  ]
+}
