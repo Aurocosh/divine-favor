@@ -129,7 +129,7 @@ abstract class ItemTalisman(val name: String, texturePath: String, val spirit: M
     open fun handleRendering(context: TalismanContext, lastEvent: RenderWorldLastEvent) {
     }
 
-    override fun catch(player: EntityPlayer, stack: ItemStack, event: BlockEvent.HarvestDropsEvent) {
+    override fun catchDrops(player: EntityPlayer, stack: ItemStack, toolStack: ItemStack, event: BlockEvent.HarvestDropsEvent) {
     }
 
     override fun getTalismanStack(stack: ItemStack): ItemStack {

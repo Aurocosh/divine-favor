@@ -5,7 +5,6 @@ import aurocosh.divinefavor.common.config.entries.items.SpellPick
 import aurocosh.divinefavor.common.constants.ConstGuiIDs
 import aurocosh.divinefavor.common.item.base.ModItemPickaxe
 import aurocosh.divinefavor.common.item.blade_talismans.base.ItemBladeTalisman
-import aurocosh.divinefavor.common.item.spell_talismans.base.ItemSpellTalisman
 import aurocosh.divinefavor.common.item.spell_talismans.context.TalismanContextGenerator
 import aurocosh.divinefavor.common.item.talisman.ITalismanStackContainer
 import aurocosh.divinefavor.common.item.talisman.ITalismanToolContainer
@@ -159,12 +158,12 @@ open class ItemSpellPick(name: String, texturePath: String, orderIndex: Int = 0,
         return true
     }
 
-    override fun catch(player: EntityPlayer, stack: ItemStack, event: BlockEvent.HarvestDropsEvent) {
+    override fun catchDrops(player: EntityPlayer, stack: ItemStack, toolStack: ItemStack, event: BlockEvent.HarvestDropsEvent) {
         val talismanStack = getTalismanStack(stack)
         if (talismanStack.isEmpty)
             return
         val catcher = talismanStack.item as IBlockCatcher
-        catcher.catch(player, talismanStack, event)
+        catcher.catchDrops(player, talismanStack, stack, event)
     }
 
     override fun getItemAttributeModifiers(equipmentSlot: EntityEquipmentSlot): Multimap<String, AttributeModifier> {

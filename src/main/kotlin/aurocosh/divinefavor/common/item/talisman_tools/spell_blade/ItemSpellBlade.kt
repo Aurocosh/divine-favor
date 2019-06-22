@@ -74,7 +74,8 @@ open class ItemSpellBlade(name: String, texturePath: String, orderIndex: Int = 0
         if (bookPropertyWrapper.getModeOrTransform(containerStack, player) != TalismanContainerMode.NORMAL)
             return EnumActionResult.PASS
 
-        val (talismanStack, talisman) = TalismanAdapter.getTalisman<ItemSpellTalisman>(containerStack) ?: return EnumActionResult.PASS
+        val (talismanStack, talisman) = TalismanAdapter.getTalisman<ItemSpellTalisman>(containerStack)
+                ?: return EnumActionResult.PASS
         val context = TalismanContextGenerator.useCast(player, world, pos, hand, facing, talismanStack, containerStack)
         val success = talisman.cast(context)
         return actionResultPass(success)
@@ -150,12 +151,12 @@ open class ItemSpellBlade(name: String, texturePath: String, orderIndex: Int = 0
 
     override fun getTalismanTool(stack: ItemStack): ITalismanTool = stack.cap(CAPABILITY_SPELL_BLADE)
 
-    override fun catch(player: EntityPlayer, stack: ItemStack, event: BlockEvent.HarvestDropsEvent) {
+    override fun catchDrops(player: EntityPlayer, stack: ItemStack, toolStack: ItemStack, event: BlockEvent.HarvestDropsEvent) {
         val talismanStack = getTalismanStack(stack)
         if (talismanStack.isEmpty)
             return
         val catcher = talismanStack.item as IBlockCatcher
-        catcher.catch(player, talismanStack, event)
+        catcher.catchDrops(player, talismanStack, toolStack, event)
     }
 
     override fun getTalismanStack(stack: ItemStack): ItemStack {

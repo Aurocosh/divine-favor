@@ -13,6 +13,8 @@ public class ConfigTool {
     @Config.Name("Break radius")
     public static BreakRadius breakRadius = new BreakRadius();
     // New configs
+    @Config.Name("Molten tool")
+    public static MoltenTool moltenTool = new MoltenTool();
     @Config.Name("Break blocks")
     public static BreakBlocks breakBlocks = new BreakBlocks();
     @Config.Name("Memory tool")

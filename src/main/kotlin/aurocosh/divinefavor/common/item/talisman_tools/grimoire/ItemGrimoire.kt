@@ -37,7 +37,8 @@ class ItemGrimoire : ModItem("grimoire", "grimoire", ConstMainTabOrder.CONTAINER
 
     override fun onItemUse(player: EntityPlayer, world: World, pos: BlockPos, hand: EnumHand, facing: EnumFacing, hitX: Float, hitY: Float, hitZ: Float): EnumActionResult {
         val containerStack = player.getHeldItem(hand)
-        val (talismanStack, talisman) = TalismanAdapter.getTalisman<ItemSpellTalisman>(containerStack) ?: return EnumActionResult.PASS
+        val (talismanStack, talisman) = TalismanAdapter.getTalisman<ItemSpellTalisman>(containerStack)
+                ?: return EnumActionResult.PASS
         val context = TalismanContextGenerator.useCast(player, world, pos, hand, facing, talismanStack, containerStack)
         val success = talisman.cast(context)
         return UtilItem.actionResultPass(success || player.isSneaking)
@@ -66,12 +67,12 @@ class ItemGrimoire : ModItem("grimoire", "grimoire", ConstMainTabOrder.CONTAINER
 
     override fun getTalismanTool(stack: ItemStack): ITalismanTool = stack.cap(CAPABILITY_GRIMOIRE)
 
-    override fun catch(player: EntityPlayer, stack: ItemStack, event: BlockEvent.HarvestDropsEvent) {
+    override fun catchDrops(player: EntityPlayer, stack: ItemStack, toolStack: ItemStack, event: BlockEvent.HarvestDropsEvent) {
         val talismanStack = getTalismanStack(stack)
         if (talismanStack.isEmpty)
             return
         val catcher = talismanStack.item as IBlockCatcher
-        catcher.catch(player, talismanStack, event)
+        catcher.catchDrops(player, talismanStack, toolStack, event)
     }
 
     override fun getTalismanStack(stack: ItemStack): ItemStack {

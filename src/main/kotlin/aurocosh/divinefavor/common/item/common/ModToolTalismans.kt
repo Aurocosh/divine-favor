@@ -18,6 +18,7 @@ import net.minecraft.init.Blocks
 
 object ModToolTalismans {
     // New fields
+    lateinit var molten_tool: ItemToolTalisman
     lateinit var break_blocks: ItemToolTalisman
     lateinit var memory_tool: ItemToolTalisman
     lateinit var fell_tree: ItemToolTalisman
@@ -52,6 +53,7 @@ object ModToolTalismans {
         // squarefury;
 
         // New instances
+        molten_tool = ToolTalismanMoltenTool("molten_tool", ModSpirits.romol, ConfigTool.moltenTool.favorCost)
         break_blocks = ToolTalismanBreakBlocks("break_blocks", ModSpirits.romol, ConfigTool.breakBlocks.favorCost)
         memory_tool = ToolTalismanMemoryTool("memory_tool", ModSpirits.romol, ConfigTool.memoryTool.favorCost)
         fell_tree = ToolTalismanFellTree("fell_tree", ModSpirits.romol, ConfigTool.fellTree.favorCost)

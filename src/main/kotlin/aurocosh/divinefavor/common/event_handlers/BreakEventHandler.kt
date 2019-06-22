@@ -15,7 +15,7 @@ object BreakEventHandler {
         val hand = UtilPlayer.getHandWithItem(player) { it is IBlockCatcher } ?: return
         val stack = player.getHeldItem(hand)
         val blockCatcher = stack.item as IBlockCatcher
-        blockCatcher.catch(player, stack, event)
+        blockCatcher.catchDrops(player, stack, stack, event)
 
 
 //        event.drops.removeIf{blockCatcher()}

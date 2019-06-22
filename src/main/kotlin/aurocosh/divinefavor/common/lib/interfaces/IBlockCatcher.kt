@@ -5,5 +5,5 @@ import net.minecraft.item.ItemStack
 import net.minecraftforge.event.world.BlockEvent
 
 interface IBlockCatcher {
-    fun catch(player: EntityPlayer, stack: ItemStack, event: BlockEvent.HarvestDropsEvent)
+    fun catchDrops(player: EntityPlayer, stack: ItemStack, toolStack: ItemStack, event: BlockEvent.HarvestDropsEvent)
 }
