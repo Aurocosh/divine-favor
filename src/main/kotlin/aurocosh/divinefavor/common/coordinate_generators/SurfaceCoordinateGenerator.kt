@@ -6,21 +6,14 @@ import net.minecraft.init.Blocks
 import net.minecraft.util.math.BlockPos
 import net.minecraft.world.World
 
-class SurfaceCoordinateGenerator : CachedCoordinateGenerator() {
-    fun getCoordinates(pos: BlockPos, count: Int, world: World, fuzzy: Boolean): List<BlockPos> {
-        if(isCached(pos, count, world, fuzzy))
-            return cachedCoordinates
+fun generateSurfaceCoordinates(pos: BlockPos, count: Int, world: World, fuzzy: Boolean): List<BlockPos> {
+    val filter = if (fuzzy) Blocks.AIR.defaultState else world.getBlockState(pos)
 
-        val filter = if (fuzzy) Blocks.AIR.defaultState else world.getBlockState(pos)
-
-        val start = listOf(pos)
-        val expansionDirs = BlockPosConstants.DIRECT_AND_DIAGONAL
-        val blockPredicate: (BlockPos) -> Boolean = {
-            if (fuzzy) true else world.getBlockState(it) == filter
-        }
-
-        val floodFiller = SurfaceFloodFiller(world)
-        cachedCoordinates = floodFiller.floodFill(start, expansionDirs, blockPredicate, count)
-        return cachedCoordinates
+    val expansionDirs = BlockPosConstants.DIRECT_AND_DIAGONAL
+    val blockPredicate: (BlockPos) -> Boolean = {
+        if (fuzzy) true else world.getBlockState(it) == filter
     }
+
+    val floodFiller = SurfaceFloodFiller(world)
+    return floodFiller.floodFill(listOf(pos), expansionDirs, blockPredicate, count)
 }

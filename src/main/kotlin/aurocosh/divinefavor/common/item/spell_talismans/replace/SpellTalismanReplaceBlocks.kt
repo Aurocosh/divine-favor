@@ -1,8 +1,9 @@
 package aurocosh.divinefavor.common.item.spell_talismans.replace
 
-import aurocosh.divinefavor.common.coordinate_generators.FloodFillCoordinateGenerator
+import aurocosh.divinefavor.common.lib.CachedContainer
+import aurocosh.divinefavor.common.coordinate_generators.generateFloodFillCoordinates
 import aurocosh.divinefavor.common.item.spell_talismans.base.SpellOptions
-import aurocosh.divinefavor.common.item.spell_talismans.context.TalismanContext
+import aurocosh.divinefavor.common.item.spell_talismans.context.*
 import aurocosh.divinefavor.common.lib.extensions.get
 import aurocosh.divinefavor.common.spirit.base.ModSpirit
 import net.minecraft.item.ItemStack
@@ -13,7 +14,7 @@ class SpellTalismanReplaceBlocks(name: String, spirit: ModSpirit, favorCost: Int
     override fun getBlockCount(stack: ItemStack): Int = favorCost * blockCount.getValue(stack)
 
     override fun getCoordinates(context: TalismanContext): List<BlockPos> {
-        val (_, stack, world) = context.getCommon()
+        val (stack, world) = context.get(stackField, worldField)
         val state = stack.get(selectPropertyWrapper.selectedBlock)
         if (state == world.getBlockState(context.pos))
             return emptyList()
@@ -21,10 +22,13 @@ class SpellTalismanReplaceBlocks(name: String, spirit: ModSpirit, favorCost: Int
         val fuzzy = stack.get(isFuzzy)
         val count = getBlockCount(stack)
         val blockPos = positionPropertyWrapper.getPosition(context)
-        return coordinateGenerator.getCoordinates(blockPos, count, world, fuzzy)
+
+        return cachedContainer.getValue(blockPos, count, fuzzy) {
+            generateFloodFillCoordinates(blockPos, count, world, fuzzy)
+        }
     }
 
     companion object {
-        private val coordinateGenerator: FloodFillCoordinateGenerator = FloodFillCoordinateGenerator()
+        private val cachedContainer = CachedContainer { emptyList<BlockPos>() }
     }
 }

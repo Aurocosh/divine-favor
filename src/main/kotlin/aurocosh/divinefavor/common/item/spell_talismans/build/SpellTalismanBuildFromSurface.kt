@@ -1,6 +1,7 @@
 package aurocosh.divinefavor.common.item.spell_talismans.build
 
-import aurocosh.divinefavor.common.coordinate_generators.ColumnCoordinateGenerator
+import aurocosh.divinefavor.common.lib.CachedContainer
+import aurocosh.divinefavor.common.coordinate_generators.generateLineCoordinates
 import aurocosh.divinefavor.common.item.spell_talismans.base.SpellOptions
 import aurocosh.divinefavor.common.item.spell_talismans.build.base.SpellTalismanBuildShifted
 import aurocosh.divinefavor.common.item.spell_talismans.common_build_properties.FacingPropertyWrapper
@@ -23,10 +24,13 @@ class SpellTalismanBuildFromSurface(name: String, spirit: ModSpirit, favorCost: 
         val blockCount = getBlockCount(stack)
         val facing = facingPropertyWrapper.getFacing(stack, context.facing)
         val blockPos = positionPropertyWrapper.getPosition(context, context.pos)
-        return coordinateGenerator.getCoordinates(blockPos, facing, blockCount)
+
+        return cachedContainer.getValue(blockPos, blockCount) {
+            generateLineCoordinates(blockPos, facing, blockCount)
+        }
     }
 
     companion object {
-        private val coordinateGenerator: ColumnCoordinateGenerator = ColumnCoordinateGenerator()
+        private val cachedContainer = CachedContainer { emptyList<BlockPos>() }
     }
 }

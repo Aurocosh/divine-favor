@@ -1,4 +1,4 @@
-package aurocosh.divinefavor.common.coordinate_generators
+package aurocosh.divinefavor.common.lib
 
 
 class CachedContainer<T>(generator: () -> T) {

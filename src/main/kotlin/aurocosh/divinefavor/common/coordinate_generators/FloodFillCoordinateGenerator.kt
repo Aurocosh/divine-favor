@@ -6,27 +6,20 @@ import net.minecraft.init.Blocks
 import net.minecraft.util.math.BlockPos
 import net.minecraft.world.World
 
-class FloodFillCoordinateGenerator : CachedCoordinateGenerator() {
-    fun getCoordinates(pos: BlockPos, count: Int, world: World, fuzzy: Boolean): List<BlockPos> {
-        if(isCached(pos, count, world, fuzzy))
-            return cachedCoordinates
+fun generateFloodFillCoordinates(pos: BlockPos, count: Int, world: World, fuzzy: Boolean): List<BlockPos> {
+    val airState = Blocks.AIR.defaultState
+    val filter = if (fuzzy) Blocks.AIR.defaultState else world.getBlockState(pos)
 
-        val airState = Blocks.AIR.defaultState
-        val filter = if (fuzzy) Blocks.AIR.defaultState else world.getBlockState(pos)
-
-        val start = listOf(pos)
-        val expansionDirs = BlockPosConstants.DIRECT_AND_DIAGONAL
-        val blockPredicate: (BlockPos) -> Boolean = {
-            val state = world.getBlockState(it)
-            when {
-                state == airState -> false
-                fuzzy -> true
-                else -> state == filter
-            }
+    val expansionDirs = BlockPosConstants.DIRECT_AND_DIAGONAL
+    val blockPredicate: (BlockPos) -> Boolean = {
+        val state = world.getBlockState(it)
+        when {
+            state == airState -> false
+            fuzzy -> true
+            else -> state == filter
         }
-
-        val floodFiller = FloodFiller()
-        cachedCoordinates = floodFiller.floodFill(start, expansionDirs, blockPredicate, count)
-        return cachedCoordinates
     }
+
+    val floodFiller = FloodFiller()
+    return floodFiller.floodFill(listOf(pos), expansionDirs, blockPredicate, count)
 }

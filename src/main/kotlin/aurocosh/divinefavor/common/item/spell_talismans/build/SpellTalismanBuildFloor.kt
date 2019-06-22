@@ -1,10 +1,11 @@
 package aurocosh.divinefavor.common.item.spell_talismans.build
 
-import aurocosh.divinefavor.common.coordinate_generators.FloorCoordinateGenerator
+import aurocosh.divinefavor.common.lib.CachedContainer
+import aurocosh.divinefavor.common.coordinate_generators.generateFloorCoordinates
 import aurocosh.divinefavor.common.item.spell_talismans.base.SpellOptions
 import aurocosh.divinefavor.common.item.spell_talismans.build.base.SpellTalismanBuildShifted
 import aurocosh.divinefavor.common.item.spell_talismans.common_build_properties.RotationPropertyWrapper
-import aurocosh.divinefavor.common.item.spell_talismans.context.TalismanContext
+import aurocosh.divinefavor.common.item.spell_talismans.context.*
 import aurocosh.divinefavor.common.lib.extensions.get
 import aurocosh.divinefavor.common.spirit.base.ModSpirit
 import aurocosh.divinefavor.common.stack_properties.StackPropertyInt
@@ -20,12 +21,15 @@ class SpellTalismanBuildFloor(name: String, spirit: ModSpirit, favorCost: Int, o
     private val rotationPropertyWrapper = RotationPropertyWrapper(propertyHandler)
 
     override fun getCoordinates(context: TalismanContext): List<BlockPos> {
-        val (player, stack) = context.getCommon()
-        val (left, right, front, back) = context.stack.get(left, right, front, back)
+        val (player, stack, pos) = context.get(playerField, stackField, posField)
+        val (left, right, front, back) = stack.get(left, right, front, back)
 
-        val blockPos = positionPropertyWrapper.getPosition(context, context.pos)
+        val blockPos = positionPropertyWrapper.getPosition(context, pos)
         val facing = rotationPropertyWrapper.getRotation(stack, player.horizontalFacing)
-        return coordinateGenerator.getCoordinates(facing, blockPos, front, back, left, right)
+
+        return cachedContainer.getValue(facing, blockPos, front, back, left, right) {
+            generateFloorCoordinates(facing, blockPos, front, back, left, right)
+        }
     }
 
     override fun getBlockCount(stack: ItemStack): Int {
@@ -36,6 +40,6 @@ class SpellTalismanBuildFloor(name: String, spirit: ModSpirit, favorCost: Int, o
     }
 
     companion object {
-        private val coordinateGenerator: FloorCoordinateGenerator = FloorCoordinateGenerator()
+        private val cachedContainer = CachedContainer { emptyList<BlockPos>() }
     }
 }

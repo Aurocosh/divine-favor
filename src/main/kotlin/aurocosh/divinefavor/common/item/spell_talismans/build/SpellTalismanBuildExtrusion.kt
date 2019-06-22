@@ -1,9 +1,10 @@
 package aurocosh.divinefavor.common.item.spell_talismans.build
 
-import aurocosh.divinefavor.common.coordinate_generators.ExtrusionCoordinateGenerator
+import aurocosh.divinefavor.common.lib.CachedContainer
+import aurocosh.divinefavor.common.coordinate_generators.generateExtrusionCoordinates
 import aurocosh.divinefavor.common.item.spell_talismans.base.SpellOptions
 import aurocosh.divinefavor.common.item.spell_talismans.build.base.SpellTalismanBuildShifted
-import aurocosh.divinefavor.common.item.spell_talismans.context.TalismanContext
+import aurocosh.divinefavor.common.item.spell_talismans.context.*
 import aurocosh.divinefavor.common.lib.extensions.get
 import aurocosh.divinefavor.common.spirit.base.ModSpirit
 import aurocosh.divinefavor.common.stack_properties.StackPropertyInt
@@ -18,13 +19,16 @@ class SpellTalismanBuildExtrusion(name: String, spirit: ModSpirit, favorCost: In
     override fun getBlockCount(stack: ItemStack): Int = stack.get(surface) * stack.get(length)
 
     override fun getCoordinates(context: TalismanContext): List<BlockPos> {
-        val (_, stack, world) = context.getCommon()
+        val (pos, facing, stack, world) = context.get(posField, facingField, stackField, worldField)
         val (length, surface) = stack.get(length, surface)
-        val origin = positionPropertyWrapper.getPosition(context, context.pos)
-        return coordinateGenerator.getCoordinates(context.pos, origin, world, context.facing, surface, length)
+        val origin = positionPropertyWrapper.getPosition(context, pos)
+
+        return cachedContainer.getValue(pos, origin, facing, surface, length) {
+            generateExtrusionCoordinates(pos, origin, world, facing, surface, length)
+        }
     }
 
     companion object {
-        private val coordinateGenerator: ExtrusionCoordinateGenerator = ExtrusionCoordinateGenerator()
+        private val cachedContainer = CachedContainer { emptyList<BlockPos>() }
     }
 }

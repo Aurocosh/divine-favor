@@ -1,12 +1,13 @@
 package aurocosh.divinefavor.common.item.spell_talismans.build
 
-import aurocosh.divinefavor.common.coordinate_generators.HollowSphereCoordinateGenerator
+import aurocosh.divinefavor.common.lib.CachedContainer
 import aurocosh.divinefavor.common.item.spell_talismans.base.SpellOptions
 import aurocosh.divinefavor.common.item.spell_talismans.context.TalismanContext
 import aurocosh.divinefavor.common.lib.extensions.get
 import aurocosh.divinefavor.common.lib.extensions.set
 import aurocosh.divinefavor.common.spirit.base.ModSpirit
 import aurocosh.divinefavor.common.stack_properties.StackPropertyInt
+import aurocosh.divinefavor.common.util.UtilCoordinates
 import net.minecraft.item.ItemStack
 import net.minecraft.util.math.BlockPos
 import java.util.*
@@ -48,10 +49,13 @@ class SpellTalismanBuildHollowSphereRelative(name: String, spirit: ModSpirit, fa
     override fun getCoordinates(context: TalismanContext): List<BlockPos> {
         val (internal, external) = getRadiuses(context.stack)
         val blockPos = positionPropertyWrapper.getPosition(context)
-        return coordinateGenerator.getCoordinates(blockPos, internal, external)
+
+        return cachedContainer.getValue(blockPos, internal, external) {
+            UtilCoordinates.getSphereOutline(blockPos, internal, external).toList()
+        }
     }
 
     companion object {
-        private val coordinateGenerator: HollowSphereCoordinateGenerator = HollowSphereCoordinateGenerator()
+        private val cachedContainer = CachedContainer { emptyList<BlockPos>() }
     }
 }
