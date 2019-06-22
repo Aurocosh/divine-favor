@@ -10,8 +10,7 @@ import aurocosh.divinefavor.common.spirit.base.ModSpirit
 import aurocosh.divinefavor.common.util.UtilBlock
 import java.util.*
 
-class SpellTalismanPushSideSide(name: String, spirit: ModSpirit, favorCost: Int, options: EnumSet<SpellOptions>) : SpellTalismanPullSide(name, spirit, favorCost, options) {
-
+class SpellTalismanPushSide(name: String, spirit: ModSpirit, favorCost: Int, options: EnumSet<SpellOptions>) : SpellTalismanPullSide(name, spirit, favorCost, options) {
     override fun performActionServer(context: TalismanContext) {
         val (player, world, facing) = context.get(playerField, worldField, facingField)
         val coordinates = getFinalCoordinates(context)

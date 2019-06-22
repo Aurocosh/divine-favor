@@ -206,6 +206,8 @@ public class ConfigSpell {
     public static WoodenPunch woodenPunch = new WoodenPunch();
 
     // New configs
+    @Config.Name("Push side")
+    public static PushSide pushSide = new PushSide();
     @Config.Name("Pull side")
     public static PullSide pullSide = new PullSide();
     @Config.Name("Replace cuboid")

@@ -7,6 +7,7 @@ import aurocosh.divinefavor.common.item.spell_talismans.*
 import aurocosh.divinefavor.common.item.spell_talismans.base.*
 import aurocosh.divinefavor.common.item.spell_talismans.build.*
 import aurocosh.divinefavor.common.item.spell_talismans.move.SpellTalismanPullSide
+import aurocosh.divinefavor.common.item.spell_talismans.move.SpellTalismanPushSide
 import aurocosh.divinefavor.common.item.spell_talismans.replace.SpellTalismanReplaceBlocks
 import aurocosh.divinefavor.common.item.spell_talismans.replace.SpellTalismanReplaceCuboid
 import aurocosh.divinefavor.common.item.spell_talismans.replace.SpellTalismanReplaceSide
@@ -142,6 +143,7 @@ object ModSpellTalismans {
     lateinit var wooden_punch: ItemSpellTalisman
 
     // New fields
+    lateinit var push_side: ItemSpellTalisman
     lateinit var pull_side: ItemSpellTalisman
 
     fun preInit() {
@@ -280,6 +282,7 @@ object ModSpellTalismans {
         starvation = SpellTalismanModPotion("starvation", ModSpirits.timber, ConfigSpell.starvation.favorCost, ModPotions.starvation, ConfigSpell.starvation.duration)
 
         // New instances
+        push_side = SpellTalismanPushSide("push_side", ModSpirits.romol, ConfigSpell.pushSide.favorCost, SpellOptions.ALL_CAST_TRACE)
         pull_side = SpellTalismanPullSide("pull_side", ModSpirits.romol, ConfigSpell.pullSide.favorCost, SpellOptions.ALL_CAST_TRACE)
     }
 
