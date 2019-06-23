@@ -10,6 +10,11 @@
     {
       "type": "spell_talisman_stats",
       "talisman": "divinefavor:spell_talisman_summon_spider"
+    },
+    {
+      "type": "entity",
+      "entity": "divinefavor:entity.minion_spider",
+      "text": "Arachnoid minion."
     }
   ]
 }

@@ -1,0 +1,20 @@
+{
+  "name": "Summon blaze",
+  "icon": "divinefavor:spell_talisman_summon_blaze",
+  "category": "spell_talismans",
+  "pages": [
+    {
+      "type": "item_description",
+      "talisman": "divinefavor:spell_talisman_summon_blaze"
+    },
+    {
+      "type": "spell_talisman_stats",
+      "talisman": "divinefavor:spell_talisman_summon_blaze"
+    },
+    {
+      "type": "entity",
+      "entity": "divinefavor:entity.minion_blaze",
+      "text": "Blazing minion."
+    }
+  ]
+}

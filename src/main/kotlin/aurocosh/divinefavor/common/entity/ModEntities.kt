@@ -20,6 +20,7 @@ object ModEntities {
         registerModEntity(EntitySpookyArrow::class.java, "spooky", 256, 1, true)
         registerModEntity(EntityIceArrow::class.java, "ice_arrow", 256, 1, true)
 
+        registerModEntity(EntityMinionBlaze::class.java, "minion_blaze", 80, 3, false)
         registerModEntity(EntityMinionCaveSpider::class.java, "minion_cave_spider", 80, 3, false)
         registerModEntity(EntityMinionCreeper::class.java, "minion_creeper", 80, 3, false)
         registerModEntity(EntityMinionHusk::class.java, "minion_husk", 80, 3, false)

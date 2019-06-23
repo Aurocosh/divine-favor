@@ -143,6 +143,7 @@ object ModSpellTalismans {
     lateinit var wooden_punch: ItemSpellTalisman
 
     // New fields
+    lateinit var summon_blaze: ItemSpellTalisman
     lateinit var summon_cave_spider: ItemSpellTalisman
     lateinit var summon_spider: ItemSpellTalisman
     lateinit var rotten_might: ItemSpellTalisman
@@ -285,6 +286,7 @@ object ModSpellTalismans {
         starvation = SpellTalismanModPotion("starvation", ModSpirits.timber, ConfigSpell.starvation.favorCost, ModPotions.starvation, ConfigSpell.starvation.duration)
 
         // New instances
+        summon_blaze = SpellTalismanSummonMinion("summon_blaze", ModSpirits.neblaze, ConfigSpell.summonBlaze.favorCost, SpellOptions.USE_CAST, EntityMinionBlaze::class.java)
         summon_cave_spider = SpellTalismanSummonMinion("summon_cave_spider", ModSpirits.loon, ConfigSpell.summonCaveSpider.favorCost, SpellOptions.USE_CAST, EntityMinionCaveSpider::class.java)
         summon_spider = SpellTalismanSummonMinion("summon_spider", ModSpirits.loon, ConfigSpell.summonSpider.favorCost, SpellOptions.USE_CAST, EntityMinionSpider::class.java)
         rotten_might = SpellTalismanModPotionToggle("rotten_might", ModSpirits.loon, ConfigSpell.rottenMight.favorCost, ModPotions.rotten_might, false, 1)
