@@ -1,7 +1,7 @@
 package aurocosh.divinefavor.common.potions.curses
 
 import aurocosh.divinefavor.DivineFavor
-import aurocosh.divinefavor.common.config.common.ConfigArrow
+import aurocosh.divinefavor.common.config.common.ConfigCurses
 import aurocosh.divinefavor.common.lib.LoopedCounter
 import aurocosh.divinefavor.common.potions.base.potion.ModPotion
 import aurocosh.divinefavor.common.potions.common.ModCurses
@@ -32,7 +32,7 @@ class PotionHollowLeg : ModPotion("hollow_leg", 0x7FB8A4) {
             return
         if (livingBase !is EntityPlayer)
             return
-        livingBase.foodStats.addExhaustion(ConfigArrow.hollowLeg.exaustionValue)
+        livingBase.foodStats.addExhaustion(ConfigCurses.hollowLeg.exaustionValue)
         //        player.getFoodStats().addStats(1, 0.1F);
     }
 
@@ -41,7 +41,7 @@ class PotionHollowLeg : ModPotion("hollow_leg", 0x7FB8A4) {
     }
 
     companion object {
-        private val COUNTER = LoopedCounter(ConfigArrow.hollowLeg.exaustionRate)
+        private val COUNTER = LoopedCounter(ConfigCurses.hollowLeg.exaustionRate)
 
         @SubscribeEvent
         fun onItemUse(event: LivingEntityUseItemEvent.Finish) {

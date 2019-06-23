@@ -1,7 +1,7 @@
 package aurocosh.divinefavor.common.potions.curses
 
 import aurocosh.divinefavor.DivineFavor
-import aurocosh.divinefavor.common.config.common.ConfigArrow
+import aurocosh.divinefavor.common.config.common.ConfigCurses
 import aurocosh.divinefavor.common.lib.LoopedCounter
 import aurocosh.divinefavor.common.lib.extensions.divineLivingData
 import aurocosh.divinefavor.common.potions.base.potion.ModPotion
@@ -28,7 +28,7 @@ class PotionSuffocatingFumes : ModPotion("suffocating_fumes", 0x7FB8A4) {
         if (livingBase.world.isRemote)
             return
         if (DAMAGE_COUNTER.isFinished)
-            livingBase.attackEntityFrom(DamageSource.DROWN, ConfigArrow.suffocatingFumes.damage)
+            livingBase.attackEntityFrom(DamageSource.DROWN, ConfigCurses.suffocatingFumes.damage)
         if (CURE_COUNTER.isFinished && isCured(livingBase))
             livingBase.removePotionEffect(ModCurses.suffocating_fumes)
     }
@@ -40,12 +40,12 @@ class PotionSuffocatingFumes : ModPotion("suffocating_fumes", 0x7FB8A4) {
     private fun isCured(livingBase: EntityLivingBase): Boolean {
         val oldY = livingBase.divineLivingData.suffocatingFumesData.y
         val newY = livingBase.position.y
-        return newY - oldY > ConfigArrow.suffocatingFumes.heightToClimb
+        return newY - oldY > ConfigCurses.suffocatingFumes.heightToClimb
     }
 
     companion object {
-        private val DAMAGE_COUNTER = LoopedCounter(ConfigArrow.suffocatingFumes.damageRate)
-        private val CURE_COUNTER = LoopedCounter(ConfigArrow.suffocatingFumes.cureRate)
+        private val DAMAGE_COUNTER = LoopedCounter(ConfigCurses.suffocatingFumes.damageRate)
+        private val CURE_COUNTER = LoopedCounter(ConfigCurses.suffocatingFumes.cureRate)
 
         @SubscribeEvent
         fun serverTickEnd(event: TickEvent.ServerTickEvent) {

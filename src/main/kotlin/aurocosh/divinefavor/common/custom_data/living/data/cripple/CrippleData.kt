@@ -1,10 +1,10 @@
 package aurocosh.divinefavor.common.custom_data.living.data.cripple
 
-import aurocosh.divinefavor.common.config.common.ConfigArrow
+import aurocosh.divinefavor.common.config.common.ConfigCurses
 import aurocosh.divinefavor.common.lib.SimpleCounter
 
 class CrippleData {
-    private val counter: SimpleCounter = SimpleCounter(ConfigArrow.cripple.cureRate)
+    private val counter: SimpleCounter = SimpleCounter(ConfigCurses.cripple.cureRate)
 
     var cureTicks: Int
         get() = counter.count

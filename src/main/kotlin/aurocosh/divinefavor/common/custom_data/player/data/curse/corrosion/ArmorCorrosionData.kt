@@ -1,13 +1,13 @@
 package aurocosh.divinefavor.common.custom_data.player.data.curse.corrosion
 
-import aurocosh.divinefavor.common.config.common.ConfigArrow
+import aurocosh.divinefavor.common.config.common.ConfigCurses
 import aurocosh.divinefavor.common.lib.LoopedCounter
 import java.util.*
 
 // The default implementation of the capability. Holds all the logic.
 class ArmorCorrosionData {
     private val corrodedSlots: MutableList<Int> = ArrayList()
-    private val loopedCounter: LoopedCounter = LoopedCounter(ConfigArrow.armorCorrosion.corrosionRate)
+    private val loopedCounter: LoopedCounter = LoopedCounter(ConfigCurses.armorCorrosion.corrosionRate)
 
     var corrodedArmorSlots: List<Int>
         get() = Collections.unmodifiableList(corrodedSlots)

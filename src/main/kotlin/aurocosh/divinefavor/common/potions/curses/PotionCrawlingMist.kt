@@ -1,7 +1,7 @@
 package aurocosh.divinefavor.common.potions.curses
 
 import aurocosh.divinefavor.DivineFavor
-import aurocosh.divinefavor.common.config.common.ConfigArrow
+import aurocosh.divinefavor.common.config.common.ConfigCurses
 import aurocosh.divinefavor.common.lib.LoopedCounter
 import aurocosh.divinefavor.common.lib.extensions.divinePlayerData
 import aurocosh.divinefavor.common.potions.base.potion.ModPotion
@@ -50,8 +50,8 @@ class PotionCrawlingMist : ModPotion("crawling_mist", 0x7FB8A4) {
 
     companion object {
         private val FRAMES_TO_INIT_FOG = 5
-        private val CURE_DISTANCE_SQ = ConfigArrow.crawlingMist.cureDistance * ConfigArrow.crawlingMist.cureDistance
-        private val CURE_COUNTER = LoopedCounter(ConfigArrow.crawlingMist.cureRate)
+        private val CURE_DISTANCE_SQ = ConfigCurses.crawlingMist.cureDistance * ConfigCurses.crawlingMist.cureDistance
+        private val CURE_COUNTER = LoopedCounter(ConfigCurses.crawlingMist.cureRate)
         private var initFrames = FRAMES_TO_INIT_FOG
 
         @SideOnly(Side.CLIENT)
@@ -70,8 +70,8 @@ class PotionCrawlingMist : ModPotion("crawling_mist", 0x7FB8A4) {
             if (isActive(event)) {
                 if (initFrames-- <= 0) {
                     event.density = 0.85f
-                    GlStateManager.setFogStart(ConfigArrow.crawlingMist.fogStart.toFloat())
-                    GlStateManager.setFogEnd(ConfigArrow.crawlingMist.fogEnd.toFloat())
+                    GlStateManager.setFogStart(ConfigCurses.crawlingMist.fogStart.toFloat())
+                    GlStateManager.setFogEnd(ConfigCurses.crawlingMist.fogEnd.toFloat())
                     event.isCanceled = true
                 }
             } else

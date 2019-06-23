@@ -1,6 +1,6 @@
 package aurocosh.divinefavor.common.potions.curses
 
-import aurocosh.divinefavor.common.config.common.ConfigArrow
+import aurocosh.divinefavor.common.config.common.ConfigCurses
 import aurocosh.divinefavor.common.config.data.DoubleInterval
 import aurocosh.divinefavor.common.lib.extensions.divineLivingData
 import aurocosh.divinefavor.common.network.message.client.syncing.MessageSyncWindLeash
@@ -22,9 +22,9 @@ class PotionWindLeash : ModPotion("wind_leash", 0x7FB8A4) {
         val z = directionInterval.random()
         val vec3d = Vec3d(x, 0.0, z)
 
-        var vector = vec3d.normalize().scale(ConfigArrow.windLeash.motionSpeed.toDouble())
+        var vector = vec3d.normalize().scale(ConfigCurses.windLeash.motionSpeed.toDouble())
         if (livingBase is EntityPlayer)
-            vector = vector.scale(ConfigArrow.windLeash.playerMultiplier.toDouble())
+            vector = vector.scale(ConfigCurses.windLeash.playerMultiplier.toDouble())
         livingBase.divineLivingData.windLeashData.vector = vector
 
         MessageSyncWindLeash(vector).sendTo(livingBase)
@@ -44,7 +44,7 @@ class PotionWindLeash : ModPotion("wind_leash", 0x7FB8A4) {
     }
 
     private fun isLookingInDirection(livingBase: EntityLivingBase, vec3d: Vec3d): Boolean {
-        return vec3d.dotProduct(livingBase.lookVec) >= ConfigArrow.windLeash.tolerance
+        return vec3d.dotProduct(livingBase.lookVec) >= ConfigCurses.windLeash.tolerance
     }
 
     override fun isReady(duration: Int, amplifier: Int): Boolean {

@@ -1,7 +1,7 @@
 package aurocosh.divinefavor.common.potions.curses
 
 import aurocosh.divinefavor.DivineFavor
-import aurocosh.divinefavor.common.config.common.ConfigArrow
+import aurocosh.divinefavor.common.config.common.ConfigCurses
 import aurocosh.divinefavor.common.lib.extensions.divinePlayerData
 import aurocosh.divinefavor.common.potions.base.potion.ModPotion
 import aurocosh.divinefavor.common.potions.common.ModCurses
@@ -29,7 +29,7 @@ class PotionArmorCorrosion : ModPotion("armor_corrosion", 0x7FB8A4) {
         corrosionData.removeAllCorrosion()
 
         val slots = asList(0,1,2,3)
-        val slotsToCorrode = UtilRandom.nextInt(ConfigArrow.armorCorrosion.minSlotsToCorrode, ConfigArrow.armorCorrosion.maxSlotsToCorrode)
+        val slotsToCorrode = UtilRandom.nextInt(ConfigCurses.armorCorrosion.minSlotsToCorrode, ConfigCurses.armorCorrosion.maxSlotsToCorrode)
         for (i in 0 until slotsToCorrode) {
             val index = UtilRandom.getRandomIndex(slots)
             corrosionData.addCorrosionToArmorSlot(slots[index])
@@ -61,7 +61,7 @@ class PotionArmorCorrosion : ModPotion("armor_corrosion", 0x7FB8A4) {
                 if (stack.isEmpty)
                     livingBase.divinePlayerData.armorCorrosionData.removeCorrosionFromArmorSlot(slot)
                 else
-                    stack.damageItem(ConfigArrow.armorCorrosion.corrosionDamage, livingBase)
+                    stack.damageItem(ConfigCurses.armorCorrosion.corrosionDamage, livingBase)
             }
         }
     }

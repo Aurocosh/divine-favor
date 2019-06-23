@@ -1,6 +1,7 @@
 package aurocosh.divinefavor.common.item.common
 
 import aurocosh.divinefavor.common.config.common.ConfigArrow
+import aurocosh.divinefavor.common.config.common.ConfigCurses
 import aurocosh.divinefavor.common.item.arrow_talismans.*
 import aurocosh.divinefavor.common.item.arrow_talismans.base.ArrowOptions
 import aurocosh.divinefavor.common.item.arrow_talismans.base.ArrowTalismanCurse
@@ -128,19 +129,19 @@ object ModArrowTalismans {
         val curseColor1 = Color(88, 4, 130)
         val curseColor2 = Color(90, 23, 0)
         val curseColor3 = Color(90, 90, 0)
-        armor_corrosion = ArrowTalismanCurse("armor_corrosion", ModSpirits.timber, ConfigArrow.armorCorrosion.favorCost, curseColor1, ModCurses.armor_corrosion, ConfigArrow.armorCorrosion.duration)
-        crawling_mist = ArrowTalismanCurse("crawling_mist", ModSpirits.timber, ConfigArrow.crawlingMist.favorCost, curseColor2, ModCurses.crawling_mist, ConfigArrow.crawlingMist.duration)
-        cripple = ArrowTalismanCurse("cripple", ModSpirits.timber, ConfigArrow.cripple.favorCost, curseColor3, ModCurses.cripple, ConfigArrow.cripple.duration)
-        fiery_mark = ArrowTalismanCurse("fiery_mark", ModSpirits.neblaze, ConfigArrow.fieryMark.favorCost, curseColor1, ModCurses.fiery_mark, ConfigArrow.fieryMark.duration)
-        fill_lungs = ArrowTalismanCurse("fill_lungs", ModSpirits.timber, ConfigArrow.fillLungs.favorCost, curseColor2, ModCurses.fill_lungs, ConfigArrow.fillLungs.duration)
-        hollow_leg = ArrowTalismanCurse("hollow_leg", ModSpirits.timber, ConfigArrow.hollowLeg.favorCost, curseColor3, ModCurses.hollow_leg, ConfigArrow.hollowLeg.duration)
-        limp_leg = ArrowTalismanCurse("limp_leg", ModSpirits.timber, ConfigArrow.limpLeg.favorCost, curseColor3, ModCurses.limp_leg, ConfigArrow.limpLeg.duration)
-        petrification = ArrowTalismanCurse("petrification", ModSpirits.timber, ConfigArrow.petrification.favorCost, curseColor2, ModCurses.petrification, ConfigArrow.petrification.duration)
-        roots = ArrowTalismanCurse("roots", ModSpirits.timber, ConfigArrow.roots.favorCost, curseColor2, ModCurses.roots, ConfigArrow.roots.duration)
-        skyfall = ArrowTalismanCurse("skyfall", ModSpirits.timber, ConfigArrow.skyfall.favorCost, curseColor1, ModCurses.skyfall, ConfigArrow.skyfall.duration)
-        suffocating_fumes = ArrowTalismanCurse("suffocating_fumes", ModSpirits.timber, ConfigArrow.suffocatingFumes.favorCost, curseColor1, ModCurses.suffocating_fumes, ConfigArrow.suffocatingFumes.duration)
-        wind_leash = ArrowTalismanCurse("wind_leash", ModSpirits.timber, ConfigArrow.windLeash.favorCost, curseColor1, ModCurses.wind_leash, ConfigArrow.windLeash.duration)
-        yummy_smell = ArrowTalismanCurse("yummy_smell", ModSpirits.timber, ConfigArrow.yummySmell.favorCost, curseColor2, ModCurses.yummy_smell, ConfigArrow.yummySmell.duration)
+        armor_corrosion = ArrowTalismanCurse("armor_corrosion", ModSpirits.timber, ConfigArrow.armorCorrosion.favorCost, curseColor1, ModCurses.armor_corrosion, ConfigCurses.armorCorrosion.duration)
+        crawling_mist = ArrowTalismanCurse("crawling_mist", ModSpirits.timber, ConfigArrow.crawlingMist.favorCost, curseColor2, ModCurses.crawling_mist, ConfigCurses.crawlingMist.duration)
+        cripple = ArrowTalismanCurse("cripple", ModSpirits.timber, ConfigArrow.cripple.favorCost, curseColor3, ModCurses.cripple, ConfigCurses.cripple.duration)
+        fiery_mark = ArrowTalismanCurse("fiery_mark", ModSpirits.neblaze, ConfigArrow.fieryMark.favorCost, curseColor1, ModCurses.fiery_mark, ConfigCurses.fieryMark.duration)
+        fill_lungs = ArrowTalismanCurse("fill_lungs", ModSpirits.timber, ConfigArrow.fillLungs.favorCost, curseColor2, ModCurses.fill_lungs, ConfigCurses.fillLungs.duration)
+        hollow_leg = ArrowTalismanCurse("hollow_leg", ModSpirits.timber, ConfigArrow.hollowLeg.favorCost, curseColor3, ModCurses.hollow_leg, ConfigCurses.hollowLeg.duration)
+        limp_leg = ArrowTalismanCurse("limp_leg", ModSpirits.timber, ConfigArrow.limpLeg.favorCost, curseColor3, ModCurses.limp_leg, ConfigCurses.limpLeg.duration)
+        petrification = ArrowTalismanCurse("petrification", ModSpirits.timber, ConfigArrow.petrification.favorCost, curseColor2, ModCurses.petrification, ConfigCurses.petrification.duration)
+        roots = ArrowTalismanCurse("roots", ModSpirits.timber, ConfigArrow.roots.favorCost, curseColor2, ModCurses.roots, ConfigCurses.roots.duration)
+        skyfall = ArrowTalismanCurse("skyfall", ModSpirits.timber, ConfigArrow.skyfall.favorCost, curseColor1, ModCurses.skyfall, ConfigCurses.skyfall.duration)
+        suffocating_fumes = ArrowTalismanCurse("suffocating_fumes", ModSpirits.timber, ConfigArrow.suffocatingFumes.favorCost, curseColor1, ModCurses.suffocating_fumes, ConfigCurses.suffocatingFumes.duration)
+        wind_leash = ArrowTalismanCurse("wind_leash", ModSpirits.timber, ConfigArrow.windLeash.favorCost, curseColor1, ModCurses.wind_leash, ConfigCurses.windLeash.duration)
+        yummy_smell = ArrowTalismanCurse("yummy_smell", ModSpirits.timber, ConfigArrow.yummySmell.favorCost, curseColor2, ModCurses.yummy_smell, ConfigCurses.yummySmell.duration)
 
         // New instances
         lucky_arrow = ArrowTalismanLuckyArrow("lucky_arrow", ModSpirits.arbow, ConfigArrow.luckyArrow.favorCost, Color.gray,ConfigArrow.luckyArrow.damage.toDouble(), ArrowOptions.NORMAL, ArrowType.WOODEN_ARROW)
