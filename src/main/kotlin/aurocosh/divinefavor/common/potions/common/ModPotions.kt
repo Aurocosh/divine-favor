@@ -31,6 +31,7 @@ object ModPotions {
     lateinit var night_eye: ModPotionToggle
     lateinit var obsidian_road: ModPotion
     lateinit var prismatic_eyes: ModPotionToggle
+    lateinit var rotten_might: ModPotionToggle
     lateinit var spider_might: ModPotionToggle
     lateinit var starvation: ModPotion
     lateinit var stone_fever: ModPotion
@@ -63,6 +64,7 @@ object ModPotions {
         night_eye = PotionNightEye()
         obsidian_road = PotionLiquidWalking("obsidian_road", Blocks.LAVA)
         prismatic_eyes = PotionPrismaticEyes()
+        rotten_might = PotionRottenMight()
         spider_might = PotionSpiderMight()
         starvation = PotionStarvation()
         stone_fever = PotionStoneFever()

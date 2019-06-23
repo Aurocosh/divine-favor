@@ -185,6 +185,7 @@ item.divinefavor:rope_teleporting.name=Warping rope
 item.divinefavor:ice_arrow.name=Ice arrow
 
 ## SPELL TALISMAN NAMES
+item.divinefavor:spell_talisman_rotten_might.name=Rotten might
 item.divinefavor:spell_talisman_push_side.name=Push side
 item.divinefavor:spell_talisman_pull_side.name=Pull side
 item.divinefavor:spell_talisman_replace_cuboid.name=Replace cuboid
@@ -431,8 +432,9 @@ potion.divinefavor:wild_charge.name=Wild sprint
 potion.divinefavor:wild_sprint.name=Wild sprint
 potion.divinefavor:wooden_punch.name=Wooden punch
 potion.divinefavor:potion_gills.name=Gills
-potion.divinefavor:spider_might.name=Might of spider
+potion.divinefavor:spider_might.name=Spider might
 potion.divinefavor:night_eye.name=Night eye
+potion.divinefavor:rotten_might.name=Rotten might
 
 # BLEND EFFECT NAMES
 potion.divinefavor:arboreal_aura.name=Arboreal aura
@@ -607,6 +609,7 @@ item.divinefavor:rope_teleporting.description=Unusual trapping device. It will t
 item.divinefavor:ice_arrow.description=Delicate arrows made of ice. They are frail and because of this they deal less damage then regular arrows and break easily, but in a pinch they can be very useful. This type of arrow also cannot be tipped in potion, but on the other hand it deals extra damage to hellish mobs.
 
 ## SPELL TALISMAN DESCRIPTIONS
+item.divinefavor:spell_talisman_rotten_might.description=This talisman grants you power of the undead. You will become faster and stronger. But alongside power it also grants you weaknesses. You will self ignite in sunlight like zombie, bright light will blind you, and you will be weak against fire and smite enchantment. Also this power is infectious.
 item.divinefavor:spell_talisman_push_side.description=This talisman allows you to push any continuous surface without angles like a piston.
 item.divinefavor:spell_talisman_pull_side.description=This talisman allows you to pull any continuous surface without angles like sticky piston.
 item.divinefavor:spell_talisman_replace_cuboid.description=This talisman allows you to instantly replace any blocks in shape of cuboid.

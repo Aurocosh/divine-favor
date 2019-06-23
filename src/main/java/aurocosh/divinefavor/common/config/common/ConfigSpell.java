@@ -206,6 +206,8 @@ public class ConfigSpell {
     public static WoodenPunch woodenPunch = new WoodenPunch();
 
     // New configs
+    @Config.Name("Rotten might")
+    public static RottenMight rottenMight = new RottenMight();
     @Config.Name("Push side")
     public static PushSide pushSide = new PushSide();
     @Config.Name("Pull side")

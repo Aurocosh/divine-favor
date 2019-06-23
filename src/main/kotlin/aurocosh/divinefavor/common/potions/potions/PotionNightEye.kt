@@ -5,6 +5,7 @@ import aurocosh.divinefavor.common.config.common.ConfigSpell
 import aurocosh.divinefavor.common.lib.LoopedCounter
 import aurocosh.divinefavor.common.potions.base.potion.ModPotionToggle
 import aurocosh.divinefavor.common.util.UtilTick
+import aurocosh.divinefavor.common.util.UtilWorld
 import net.minecraft.entity.EntityLivingBase
 import net.minecraft.init.MobEffects
 import net.minecraft.potion.PotionEffect
@@ -24,10 +25,8 @@ class PotionNightEye : ModPotionToggle("night_eye", 0x7FB8A4) {
             return
 
         val pos = livingBase.position
-        val skyLightSub = world.calculateSkylightSubtracted(1.0f)
-        val lightBlock = world.getLightFor(EnumSkyBlock.BLOCK, pos)
-        val lightSky = world.getLightFor(EnumSkyBlock.SKY, pos) - skyLightSub
-        if (Math.max(lightBlock, lightSky) <= ConfigSpell.nightEye.tolerableLightLevel)
+        val lightLevel = UtilWorld.getLightLevel(world, pos)
+        if (lightLevel <= ConfigSpell.nightEye.tolerableLightLevel)
             livingBase.addPotionEffect(PotionEffect(MobEffects.NIGHT_VISION, ConfigSpell.nightEye.nightVisionDuration))
         else
             livingBase.addPotionEffect(PotionEffect(MobEffects.BLINDNESS, ConfigSpell.nightEye.blindnessDuration))

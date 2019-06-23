@@ -1,0 +1,26 @@
+{
+  "result": {
+    "item": "divinefavor:spell_talisman_rotten_might"
+  },
+  "stones": [
+    "divinefavor:calling_stone_loon"
+  ],
+  "ingredients": [
+    {
+      "type": "ore",
+      "ore": "paper"
+    },
+    {
+      "type": "ore",
+      "ore": "dyeBlack"
+    },
+    {
+      "type": "stack",
+      "item": "minecraft:TODO"
+    },
+    {
+      "type": "stack",
+      "item": "minecraft:TODO"
+    }
+  ]
+}

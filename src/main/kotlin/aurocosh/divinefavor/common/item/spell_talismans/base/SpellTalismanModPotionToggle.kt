@@ -6,7 +6,7 @@ import aurocosh.divinefavor.common.potions.base.potion.ModPotionToggle
 import aurocosh.divinefavor.common.potions.base.potion.ModPotionToggleLimited
 import aurocosh.divinefavor.common.spirit.base.ModSpirit
 
-class SpellTalismanModPotionToggle(name: String, spirit: ModSpirit, favorCost: Int, private val potion: ModPotionToggle, val isCastFree: Boolean = false) : ItemSpellTalisman(name, spirit, favorCost, SpellOptions.ALL_CAST) {
+class SpellTalismanModPotionToggle(name: String, spirit: ModSpirit, favorCost: Int, private val potion: ModPotionToggle, val isCastFree: Boolean = false, val amplifier: Int = 0) : ItemSpellTalisman(name, spirit, favorCost, SpellOptions.ALL_CAST) {
 
     init {
         if (potion is ModPotionToggleLimited)
@@ -18,7 +18,7 @@ class SpellTalismanModPotionToggle(name: String, spirit: ModSpirit, favorCost: I
         if (player.isPotionActive(potion))
             player.removePotionEffect(potion)
         else
-            player.addPotionEffect(ModEffectToggle(potion))
+            player.addPotionEffect(ModEffectToggle(potion, amplifier))
     }
 
     public override fun isConsumeCharge(context: TalismanContext): Boolean {
