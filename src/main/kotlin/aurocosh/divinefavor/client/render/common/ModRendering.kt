@@ -18,6 +18,7 @@ import aurocosh.divinefavor.common.entity.projectile.EntityStoneball
 import aurocosh.divinefavor.common.entity.rope.*
 import aurocosh.divinefavor.common.item.common.ModItems
 import net.minecraft.client.Minecraft
+import net.minecraft.client.renderer.entity.RenderCaveSpider
 import net.minecraft.client.renderer.entity.RenderCreeper
 import net.minecraft.client.renderer.entity.RenderSnowball
 import net.minecraft.client.renderer.entity.RenderSpider
@@ -32,12 +33,13 @@ object ModRendering {
         manager.entityRenderMap[EntitySpellArrow::class.java] = RenderSpellArrow(manager)
         manager.entityRenderMap[EntityIceArrow::class.java] = RenderIceArrow(manager)
 
-        manager.entityRenderMap[EntityMinionZombie::class.java] = RenderMinionZombie(manager)
+        manager.entityRenderMap[EntityMinionCaveSpider::class.java] = RenderCaveSpider(manager)
+        manager.entityRenderMap[EntityMinionCreeper::class.java] = RenderCreeper(manager)
         manager.entityRenderMap[EntityMinionHusk::class.java] = RenderMinionHusk(manager)
         manager.entityRenderMap[EntityMinionSkeleton::class.java] = RenderMinionSkeleton(manager)
-        manager.entityRenderMap[EntityMinionStray::class.java] = RenderMinionStray(manager)
-        manager.entityRenderMap[EntityMinionCreeper::class.java] = RenderCreeper(manager)
         manager.entityRenderMap[EntityMinionSpider::class.java] = RenderSpider(manager)
+        manager.entityRenderMap[EntityMinionStray::class.java] = RenderMinionStray(manager)
+        manager.entityRenderMap[EntityMinionZombie::class.java] = RenderMinionZombie(manager)
 
         manager.entityRenderMap[EntityDirewolf::class.java] = RenderDirewolf(manager)
 

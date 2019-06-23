@@ -20,12 +20,13 @@ object ModEntities {
         registerModEntity(EntitySpookyArrow::class.java, "spooky", 256, 1, true)
         registerModEntity(EntityIceArrow::class.java, "ice_arrow", 256, 1, true)
 
-        registerModEntity(EntityMinionZombie::class.java, "minion_zombie", 80, 3, false)
+        registerModEntity(EntityMinionCaveSpider::class.java, "minion_cave_spider", 80, 3, false)
+        registerModEntity(EntityMinionCreeper::class.java, "minion_creeper", 80, 3, false)
         registerModEntity(EntityMinionHusk::class.java, "minion_husk", 80, 3, false)
         registerModEntity(EntityMinionSkeleton::class.java, "minion_skeleton", 80, 3, false)
-        registerModEntity(EntityMinionStray::class.java, "minion_stray", 80, 3, false)
-        registerModEntity(EntityMinionCreeper::class.java, "minion_creeper", 80, 3, false)
         registerModEntity(EntityMinionSpider::class.java, "minion_spider", 80, 3, false)
+        registerModEntity(EntityMinionStray::class.java, "minion_stray", 80, 3, false)
+        registerModEntity(EntityMinionZombie::class.java, "minion_zombie", 80, 3, false)
 
         registerModEntity(EntityDirewolf::class.java, "direwolf", 80, 3, false)
 

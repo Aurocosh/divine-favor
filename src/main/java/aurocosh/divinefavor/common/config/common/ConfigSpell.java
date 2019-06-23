@@ -206,6 +206,8 @@ public class ConfigSpell {
     public static WoodenPunch woodenPunch = new WoodenPunch();
 
     // New configs
+    @Config.Name("Summon cave spider")
+    public static SummonCaveSpider summonCaveSpider = new SummonCaveSpider();
     @Config.Name("Summon spider")
     public static SummonSpider summonSpider = new SummonSpider();
     @Config.Name("Rotten might")

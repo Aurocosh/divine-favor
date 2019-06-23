@@ -18,4 +18,6 @@ public class ConfigMinion {
     public static MinionZombie zombie = new MinionZombie();
     @Config.Name("Spider minion")
     public static MinionSpider spider = new MinionSpider();
+    @Config.Name("Cave spider minion")
+    public static MinionCaveSpider caveSpider = new MinionCaveSpider();
 }

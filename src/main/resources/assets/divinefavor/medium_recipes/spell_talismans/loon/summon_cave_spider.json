@@ -1,0 +1,34 @@
+{
+  "result": {
+    "item": "divinefavor:spell_talisman_summon_cave_spider"
+  },
+  "stones": [
+    "divinefavor:calling_stone_loon"
+  ],
+  "ingredients": [
+    {
+      "type": "ore",
+      "ore": "paper"
+    },
+    {
+      "type": "ore",
+      "ore": "dyeGreen"
+    },
+    {
+      "type": "ore",
+      "ore": "dyeRed"
+    },
+    {
+      "type": "ore",
+      "ore": "string"
+    },
+    {
+      "type": "stack",
+      "item": "minecraft:fermented_spider_eye"
+    },
+    {
+      "type": "stack",
+      "item": "minecraft:fermented_spider_eye"
+    }
+  ]
+}

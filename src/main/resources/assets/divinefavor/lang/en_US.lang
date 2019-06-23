@@ -185,6 +185,7 @@ item.divinefavor:rope_teleporting.name=Warping rope
 item.divinefavor:ice_arrow.name=Ice arrow
 
 ## SPELL TALISMAN NAMES
+item.divinefavor:spell_talisman_summon_cave_spider.name=Summon cave spider
 item.divinefavor:spell_talisman_summon_spider.name=Summon spider
 item.divinefavor:spell_talisman_rotten_might.name=Rotten might
 item.divinefavor:spell_talisman_push_side.name=Push side
@@ -610,6 +611,7 @@ item.divinefavor:rope_teleporting.description=Unusual trapping device. It will t
 item.divinefavor:ice_arrow.description=Delicate arrows made of ice. They are frail and because of this they deal less damage then regular arrows and break easily, but in a pinch they can be very useful. This type of arrow also cannot be tipped in potion, but on the other hand it deals extra damage to hellish mobs.
 
 ## SPELL TALISMAN DESCRIPTIONS
+item.divinefavor:spell_talisman_summon_cave_spider.description=Minion talisman. Allows you to summon cave spiders. Minions will follow you and fight for you. You can command them directly with some special talismans.
 item.divinefavor:spell_talisman_summon_spider.description=Minion talisman. Allows you to summon spiders. Minions will follow you and fight for you. You can command them directly with some special talismans.
 item.divinefavor:spell_talisman_rotten_might.description=This talisman grants you power of the undead. You will become faster and stronger. But alongside power it also grants you weaknesses. You will self ignite in sunlight like zombie, bright light will blind you, and you will be weak against fire and smite enchantment. Also this power is infectious.
 item.divinefavor:spell_talisman_push_side.description=This talisman allows you to push any continuous surface without angles like a piston.
@@ -839,6 +841,7 @@ item.divinefavor:contract.no_effects=This contract has no effects
 
 #ENTITIES
 ##MINIONS
+entity.minion_cave_spider.name=Minion cave spider
 entity.minion_creeper.name=Minion creeper
 entity.minion_husk.name=Minion husk
 entity.minion_skeleton.name=Minion skeleton
