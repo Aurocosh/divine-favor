@@ -20,6 +20,7 @@ import aurocosh.divinefavor.common.item.common.ModItems
 import net.minecraft.client.Minecraft
 import net.minecraft.client.renderer.entity.RenderCreeper
 import net.minecraft.client.renderer.entity.RenderSnowball
+import net.minecraft.client.renderer.entity.RenderSpider
 
 object ModRendering {
 
@@ -36,6 +37,7 @@ object ModRendering {
         manager.entityRenderMap[EntityMinionSkeleton::class.java] = RenderMinionSkeleton(manager)
         manager.entityRenderMap[EntityMinionStray::class.java] = RenderMinionStray(manager)
         manager.entityRenderMap[EntityMinionCreeper::class.java] = RenderCreeper(manager)
+        manager.entityRenderMap[EntityMinionSpider::class.java] = RenderSpider(manager)
 
         manager.entityRenderMap[EntityDirewolf::class.java] = RenderDirewolf(manager)
 

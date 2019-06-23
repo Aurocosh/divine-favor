@@ -33,13 +33,13 @@ class MinionBehaviourSkeleton<T>(minion: T) : MinionBehaviour<T>() where T : IMi
         tasks.addTask(2, EntityAIFleeSun(minion, 1.0))
         tasks.addTask(2, EntityAIAvoidEntity(minion, EntityWolf::class.java, 6.0f, 1.0, 1.2))
 
-        tasks.addTask(3, EntityAIFollowOwner(minion, 2.0, 5.0f, 2.0f, true, { minionData.isFollowing }))
+        tasks.addTask(3, EntityAIFollowOwner(minion, 1.0, 5.0f, 2.0f, true, { minionData.isFollowing }))
         tasks.addTask(4, EntityAIMinionWait(minion, { minionData.isFollowing || minionData.isWaiting }))
 
         // attack task here
 
         tasks.addTask(6, EntityAIWander(minion, 1.0))
-        tasks.addTask(6, EntityAIFollowOwner(minion, 2.0, 5.0f, 2.0f, false, { true }))
+        tasks.addTask(6, EntityAIFollowOwner(minion, 1.0, 5.0f, 2.0f, false, { true }))
         tasks.addTask(7, EntityAIWatchClosest(minion, EntityPlayer::class.java, 8.0f))
         tasks.addTask(7, EntityAILookIdle(minion))
         tasks.addTask(8, aurocosh.divinefavor.common.entity.ai.EntityAIBeg(minion, 8.0f, Items.CHICKEN))
