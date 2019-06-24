@@ -27,7 +27,7 @@ class ArrowTalismanStatProcessor : IComponentProcessor {
     }
 
     override fun process(key: String): String? {
-        if (!itemStack.isEmpty)
+        if (itemStack.isEmpty)
             return null
 
         when {
