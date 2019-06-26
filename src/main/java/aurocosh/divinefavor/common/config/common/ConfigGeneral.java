@@ -1,6 +1,7 @@
 package aurocosh.divinefavor.common.config.common;
 
 import aurocosh.divinefavor.DivineFavor;
+import aurocosh.divinefavor.common.util.UtilTick;
 import net.minecraft.block.Block;
 import net.minecraftforge.common.config.Config;
 
@@ -17,6 +18,8 @@ public class ConfigGeneral {
     public static int talismanCastDistance = 64;
     @Config.Name("Max climbing radius")
     public static int maxClimbingRadius = 12;
+    @Config.Name("Time sync period")
+    public static int timeSyncPeriod = UtilTick.INSTANCE.secondsToTicks(1);
 
     @Config.Name("Block breaking cost")
     public static int blockBreakingCost = 8;
