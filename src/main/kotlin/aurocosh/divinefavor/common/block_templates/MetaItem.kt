@@ -1,4 +1,4 @@
-package aurocosh.divinefavor.common.item.spell_talismans.copy
+package aurocosh.divinefavor.common.block_templates
 
 import net.minecraft.init.Items
 import net.minecraft.item.Item

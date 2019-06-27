@@ -2,8 +2,8 @@ package aurocosh.divinefavor.common.network.message.client
 
 import aurocosh.divinefavor.DivineFavor
 import aurocosh.divinefavor.common.custom_data.global.TemplateData
-import aurocosh.divinefavor.common.item.spell_talismans.copy.BlockTemplate
-import aurocosh.divinefavor.common.item.spell_talismans.copy.BlockTemplateSerializer
+import aurocosh.divinefavor.common.block_templates.BlockTemplate
+import aurocosh.divinefavor.common.block_templates.BlockTemplateSerializer
 import aurocosh.divinefavor.common.lib.EmptyConst.emptyUUID
 import aurocosh.divinefavor.common.lib.extensions.get
 import aurocosh.divinefavor.common.network.message.base.DivineClientMessage

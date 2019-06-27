@@ -2,6 +2,8 @@ package aurocosh.divinefavor.common.item.spell_talismans.copy
 
 import aurocosh.divinefavor.client.block_ovelay.BlockHighlightRendering
 import aurocosh.divinefavor.client.block_ovelay.BoxRendering
+import aurocosh.divinefavor.common.block_templates.BlockTemplate
+import aurocosh.divinefavor.common.block_templates.MetaItem
 import aurocosh.divinefavor.common.config.common.ConfigGeneral
 import aurocosh.divinefavor.common.custom_data.global.TemplateData
 import aurocosh.divinefavor.common.item.spell_talismans.base.ItemSpellTalisman

@@ -1,4 +1,4 @@
-package aurocosh.divinefavor.common.item.spell_talismans
+package aurocosh.divinefavor.common.item.spell_talismans.template
 
 import aurocosh.divinefavor.client.block_ovelay.BlockTemplateRendering
 import aurocosh.divinefavor.common.custom_data.global.TemplateData
@@ -10,13 +10,12 @@ import aurocosh.divinefavor.common.item.spell_talismans.context.ContextProperty
 import aurocosh.divinefavor.common.item.spell_talismans.context.TalismanContext
 import aurocosh.divinefavor.common.item.spell_talismans.context.playerField
 import aurocosh.divinefavor.common.item.spell_talismans.context.worldField
-import aurocosh.divinefavor.common.item.spell_talismans.copy.MetaItem
+import aurocosh.divinefavor.common.block_templates.MetaItem
+import aurocosh.divinefavor.common.block_templates.TemplateFinalBlockState
+import aurocosh.divinefavor.common.lib.extensions.S
 import aurocosh.divinefavor.common.lib.extensions.divinePlayerData
 import aurocosh.divinefavor.common.lib.extensions.get
 import aurocosh.divinefavor.common.spirit.base.ModSpirit
-import aurocosh.divinefavor.common.item.spell_talismans.copy.TemplateBlockState
-import aurocosh.divinefavor.common.item.spell_talismans.copy.TemplateFinalBlockState
-import aurocosh.divinefavor.common.lib.extensions.S
 import aurocosh.divinefavor.common.util.UtilBlock
 import aurocosh.divinefavor.common.util.UtilPlayer
 import net.minecraft.block.state.IBlockState
@@ -28,7 +27,6 @@ import net.minecraft.world.World
 import net.minecraftforge.client.event.RenderWorldLastEvent
 import net.minecraftforge.fml.relauncher.Side
 import net.minecraftforge.fml.relauncher.SideOnly
-import sun.audio.AudioPlayer.player
 import java.util.*
 
 class SpellTalismanBuildTemplate(name: String, spirit: ModSpirit, favorCost: Int, options: EnumSet<SpellOptions>) : ItemSpellTalisman(name, spirit, favorCost, options) {
@@ -57,7 +55,7 @@ class SpellTalismanBuildTemplate(name: String, spirit: ModSpirit, favorCost: Int
         val validBlockStates = blockMapList.S
                 .filter { UtilBlock.canReplaceBlock(player, world, it.pos) }
                 .filter { UtilBlock.isAirOrReplaceable(world, it.pos) }
-                .map { stackMap[it.state]?.let { metaItem -> TemplateFinalBlockState(it.pos,it.state, metaItem) } }
+                .map { stackMap[it.state]?.let { metaItem -> TemplateFinalBlockState(it.pos, it.state, metaItem) } }
                 .filterNotNull()
                 .toList()
 

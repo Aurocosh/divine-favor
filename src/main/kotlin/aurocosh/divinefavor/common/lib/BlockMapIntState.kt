@@ -1,6 +1,6 @@
 package aurocosh.divinefavor.common.lib
 
-import aurocosh.divinefavor.common.item.spell_talismans.copy.MetaItem
+import aurocosh.divinefavor.common.block_templates.MetaItem
 import aurocosh.divinefavor.common.util.UtilBlock
 import net.minecraft.block.state.IBlockState
 import net.minecraft.entity.player.EntityPlayer

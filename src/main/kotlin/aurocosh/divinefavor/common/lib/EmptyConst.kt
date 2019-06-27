@@ -8,6 +8,6 @@ object EmptyConst {
     fun emptyLocation(): ResourceLocation = resourceLocation
 
     // TODO rework
-    private val uuid = UUID.fromString("00000000-0000-0000-0000-000000000000")
+    private val uuid = UUID(0,0)
     fun emptyUUID(): UUID = uuid
 }

@@ -33,8 +33,8 @@ object EventClientTickHandler {
 
         val templateSavedData = player.world[TemplateData]
         val templatesInInventory = player.getInventoryCapability().asSequence()
-                .filter { it.item is ITemplateContainer }
-                .mapPairs { it.item as ITemplateContainer }
+                .mapPairs { it.item as? ITemplateContainer }
+                .filterNotNull()
                 .map { (stack, container) -> container.getTemplatesIds(stack) }
                 .flatten()
                 .filter { !templateSavedData.contains(it) }

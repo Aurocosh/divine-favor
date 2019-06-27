@@ -1,7 +1,7 @@
 package aurocosh.divinefavor.client.render.block_overlay
 
 import aurocosh.divinefavor.common.custom_data.global.TemplateData
-import aurocosh.divinefavor.common.item.spell_talismans.copy.BlockTemplate
+import aurocosh.divinefavor.common.block_templates.BlockTemplate
 import aurocosh.divinefavor.common.lib.CustomBufferBuilder
 import aurocosh.divinefavor.common.lib.extensions.get
 import net.minecraft.client.Minecraft

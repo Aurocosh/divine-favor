@@ -140,10 +140,16 @@ fun <T> Sequence<T>.process(processor: (T) -> Any): Sequence<T> {
 }
 
 
-inline fun <T, K> Iterable<T>.mapPairs(processor: (T) -> K): List<Pair<T, K>> {
-    return this.map { Pair(it, processor.invoke(it)) }
+inline fun <T, K> Iterable<T>.mapPairs(processor: (T) -> K?): List<Pair<T, K>?> {
+    return this.map {
+        val value = processor.invoke(it)
+        if (value == null) null else Pair(it, value)
+    }
 }
 
-fun <T, K> Sequence<T>.mapPairs(processor: (T) -> K): Sequence<Pair<T, K>> {
-    return this.map { Pair(it, processor.invoke(it)) }
+fun <T, K> Sequence<T>.mapPairs(processor: (T) -> K?): Sequence<Pair<T, K>?> {
+    return this.map {
+        val value = processor.invoke(it)
+        if (value == null) null else Pair(it, value)
+    }
 }

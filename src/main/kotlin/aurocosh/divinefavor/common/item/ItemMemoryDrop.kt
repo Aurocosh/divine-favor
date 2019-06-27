@@ -3,8 +3,10 @@ package aurocosh.divinefavor.common.item
 import aurocosh.divinefavor.DivineFavor
 import aurocosh.divinefavor.common.item.base.ModItem
 import aurocosh.divinefavor.common.lib.EmptyConst.emptyUUID
+import aurocosh.divinefavor.common.lib.extensions.divinePlayerData
 import aurocosh.divinefavor.common.lib.extensions.get
 import aurocosh.divinefavor.common.lib.extensions.isPropertySet
+import aurocosh.divinefavor.common.network.message.client.syncing.MessageSyncSelectedTemplate
 import aurocosh.divinefavor.common.stack_properties.IPropertyAccessor
 import aurocosh.divinefavor.common.stack_properties.PropertyGenerator
 import aurocosh.divinefavor.common.stack_properties.StackPropertyHandler
@@ -35,7 +37,10 @@ open class ItemMemoryDrop(name: String, texturePath: String, orderIndex: Int = 0
 
     override fun onItemRightClick(worldIn: World, player: EntityPlayer, hand: EnumHand): ActionResult<ItemStack> {
         val stack = player.getHeldItem(hand)
-        return actionResult(false, stack)
+        val templateId = getSelectedTemplateId(stack) ?: return actionResult(false, stack)
+        player.divinePlayerData.templateData.currentTemplate = templateId
+        MessageSyncSelectedTemplate(templateId).sendTo(player)
+        return actionResult(true, stack)
     }
 
     override fun getSelectedTemplateId(stack: ItemStack): UUID? {

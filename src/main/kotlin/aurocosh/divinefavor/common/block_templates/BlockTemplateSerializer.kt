@@ -1,4 +1,4 @@
-package aurocosh.divinefavor.common.item.spell_talismans.copy
+package aurocosh.divinefavor.common.block_templates
 
 import aurocosh.divinefavor.common.lib.BlockMapIntState
 import aurocosh.divinefavor.common.lib.extensions.*

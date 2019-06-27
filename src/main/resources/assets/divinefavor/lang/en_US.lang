@@ -190,6 +190,7 @@ item.divinefavor:item_memory_drop.name=Memory drop
 item.divinefavor:ice_arrow.name=Ice arrow
 
 ## SPELL TALISMAN NAMES
+item.divinefavor:spell_talisman_crystalyze_memory.name=Crystalyze memory
 item.divinefavor:spell_talisman_build_template.name=Build template
 item.divinefavor:spell_talisman_copy_area.name=Copy area
 item.divinefavor:spell_talisman_armor_of_pacifist.name=Armor of pacifist talisman
@@ -623,6 +624,7 @@ item.divinefavor:item_memory_drop.description=TODO
 item.divinefavor:ice_arrow.description=Delicate arrows made of ice. They are frail and because of this they deal less damage then regular arrows and break easily, but in a pinch they can be very useful. This type of arrow also cannot be tipped in potion, but on the other hand it deals extra damage to hellish mobs.
 
 ## SPELL TALISMAN DESCRIPTIONS
+item.divinefavor:spell_talisman_crystalyze_memory.description=TODO
 item.divinefavor:spell_talisman_build_template.description=TODO
 item.divinefavor:spell_talisman_copy_area.description=TODO
 item.divinefavor:spell_talisman_armor_of_pacifist.description=Grants user armor of pacifist. Player will be protected from most damage types, but in turn will not be able to attack anyone.

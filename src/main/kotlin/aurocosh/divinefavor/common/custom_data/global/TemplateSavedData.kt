@@ -1,7 +1,7 @@
 package aurocosh.divinefavor.common.custom_data.global
 
-import aurocosh.divinefavor.common.item.spell_talismans.copy.BlockTemplate
-import aurocosh.divinefavor.common.item.spell_talismans.copy.BlockTemplateSerializer
+import aurocosh.divinefavor.common.block_templates.BlockTemplate
+import aurocosh.divinefavor.common.block_templates.BlockTemplateSerializer
 import aurocosh.divinefavor.common.lib.EmptyConst.emptyUUID
 import net.minecraft.nbt.NBTTagCompound
 import java.util.*

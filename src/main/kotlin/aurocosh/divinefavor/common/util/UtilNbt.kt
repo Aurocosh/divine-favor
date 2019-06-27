@@ -1,6 +1,6 @@
 package aurocosh.divinefavor.common.util
 
-import aurocosh.divinefavor.common.item.spell_talismans.copy.MetaItem
+import aurocosh.divinefavor.common.block_templates.MetaItem
 import com.google.common.collect.Multiset
 import net.minecraft.item.Item
 import net.minecraft.nbt.NBTTagCompound
