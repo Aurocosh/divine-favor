@@ -2,6 +2,7 @@ package aurocosh.divinefavor.common.network
 
 import aurocosh.autonetworklib.network.AutoNetworkWrapper
 import aurocosh.divinefavor.DivineFavor
+import aurocosh.divinefavor.common.network.message.client.MessageSendBlockTemplate
 import aurocosh.divinefavor.common.network.message.client.activity.MessageSpiritBecameActive
 import aurocosh.divinefavor.common.network.message.client.activity.MessageSpiritBecameInactive
 import aurocosh.divinefavor.common.network.message.client.config.MessageConfigOreBlocks
@@ -11,11 +12,13 @@ import aurocosh.divinefavor.common.network.message.client.spirit_data.MessageSyn
 import aurocosh.divinefavor.common.network.message.client.spirit_data.MessageSyncFavor
 import aurocosh.divinefavor.common.network.message.client.spirit_data.MessageSyncFavorInfinite
 import aurocosh.divinefavor.common.network.message.client.syncing.*
-import aurocosh.divinefavor.common.network.message.sever.*
+import aurocosh.divinefavor.common.network.message.sever.MessageRequestTemplate
 import aurocosh.divinefavor.common.network.message.sever.petrification.MessagePetrificationCure
 import aurocosh.divinefavor.common.network.message.sever.petrification.MessagePetrificationDamage
 import aurocosh.divinefavor.common.network.message.sever.petrification.MessagePetrificationReset
 import aurocosh.divinefavor.common.network.message.sever.stack_properties.*
+import aurocosh.divinefavor.common.network.message.sever.talisman.MessageSyncTalismanContainerSlot
+import aurocosh.divinefavor.common.network.message.sever.talisman.MessageSyncTalismanPropertyIndex
 import aurocosh.divinefavor.common.network.message.sever.talisman_properties.*
 import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper
 import net.minecraftforge.fml.relauncher.Side
@@ -54,6 +57,8 @@ object NetworkHandler {
         autoWrapper.register(MessageSpiritBecameActive::class.java, Side.CLIENT)
         autoWrapper.register(MessageSpiritBecameInactive::class.java, Side.CLIENT)
 
+        autoWrapper.register(MessageSendBlockTemplate::class.java, Side.CLIENT)
+
         // Server messages
         autoWrapper.register(MessagePetrificationCure::class.java, Side.SERVER)
         autoWrapper.register(MessagePetrificationDamage::class.java, Side.SERVER)
@@ -61,18 +66,22 @@ object NetworkHandler {
         autoWrapper.register(MessageSyncTalismanPropertyIndex::class.java, Side.SERVER)
         autoWrapper.register(MessageSyncTalismanContainerSlot::class.java, Side.SERVER)
 
-        autoWrapper.register(MessageSyncPropertyBool::class.java, Side.SERVER)
-        autoWrapper.register(MessageSyncPropertyInt::class.java, Side.SERVER)
-        autoWrapper.register(MessageSyncPropertyIBlockState::class.java, Side.SERVER)
         autoWrapper.register(MessageSyncPropertyBlockPos::class.java, Side.SERVER)
+        autoWrapper.register(MessageSyncPropertyBool::class.java, Side.SERVER)
         autoWrapper.register(MessageSyncPropertyEnumFacing::class.java, Side.SERVER)
         autoWrapper.register(MessageSyncPropertyFloat::class.java, Side.SERVER)
+        autoWrapper.register(MessageSyncPropertyIBlockState::class.java, Side.SERVER)
+        autoWrapper.register(MessageSyncPropertyInt::class.java, Side.SERVER)
+        autoWrapper.register(MessageSyncPropertyUUID::class.java, Side.SERVER)
 
-        autoWrapper.register(MessageSyncTalismanPropertyBool::class.java, Side.SERVER)
-        autoWrapper.register(MessageSyncTalismanPropertyInt::class.java, Side.SERVER)
-        autoWrapper.register(MessageSyncTalismanPropertyIBlockState::class.java, Side.SERVER)
         autoWrapper.register(MessageSyncTalismanPropertyBlockPos::class.java, Side.SERVER)
+        autoWrapper.register(MessageSyncTalismanPropertyBool::class.java, Side.SERVER)
         autoWrapper.register(MessageSyncTalismanPropertyEnumFacing::class.java, Side.SERVER)
         autoWrapper.register(MessageSyncTalismanPropertyFloat::class.java, Side.SERVER)
+        autoWrapper.register(MessageSyncTalismanPropertyIBlockState::class.java, Side.SERVER)
+        autoWrapper.register(MessageSyncTalismanPropertyInt::class.java, Side.SERVER)
+        autoWrapper.register(MessageSyncTalismanPropertyUUID::class.java, Side.SERVER)
+
+        autoWrapper.register(MessageRequestTemplate::class.java, Side.SERVER)
     }
 }

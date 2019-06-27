@@ -7,7 +7,7 @@ import net.minecraft.nbt.NBTTagCompound
 import net.minecraftforge.fml.relauncher.Side
 import net.minecraftforge.fml.relauncher.SideOnly
 
-class StackPropertyBool(name: String, defaultValue: Boolean, showInTooltip: Boolean, orderIndex: Int, serverSync: (Int, StackProperty<Boolean>, Boolean) -> Unit) : StackProperty<Boolean>(name, defaultValue, showInTooltip, orderIndex, serverSync) {
+class StackPropertyBool(name: String, defaultValue: Boolean, showInTooltip: Boolean, showInGui: Boolean, orderIndex: Int, serverSync: (Int, StackProperty<Boolean>, Boolean) -> Unit) : StackProperty<Boolean>(name, defaultValue, showInTooltip, showInGui, orderIndex, serverSync) {
     override fun getValueFromTag(compound: NBTTagCompound): Boolean {
         return compound.getBoolean(tag)
     }

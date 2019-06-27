@@ -9,7 +9,6 @@ import aurocosh.divinefavor.common.item.spell_talismans.context.TalismanContextG
 import aurocosh.divinefavor.common.item.talisman.ITalismanStackContainer
 import aurocosh.divinefavor.common.item.talisman.ITalismanToolContainer
 import aurocosh.divinefavor.common.item.talisman.ItemTalisman
-import aurocosh.divinefavor.common.item.talisman.TalismanPropertyHandler
 import aurocosh.divinefavor.common.item.talisman_tools.BookPropertyWrapper
 import aurocosh.divinefavor.common.item.talisman_tools.ITalismanTool
 import aurocosh.divinefavor.common.item.talisman_tools.TalismanAdapter
@@ -48,7 +47,7 @@ import net.minecraftforge.fml.relauncher.SideOnly
 import net.minecraftforge.oredict.OreDictionary
 
 open class ItemSpellPick(name: String, texturePath: String, orderIndex: Int = 0, val config: SpellPick, val material: ToolMaterial) : ModItemPickaxe(name, texturePath, orderIndex, material), ITalismanStackContainer, ITalismanToolContainer, IPropertyContainer, IBlockCatcher {
-    protected val propertyHandler: StackPropertyHandler = TalismanPropertyHandler(name)
+    protected val propertyHandler: StackPropertyHandler = StackPropertyHandler(name)
     override val properties: IPropertyAccessor = propertyHandler
     private val bookPropertyWrapper = BookPropertyWrapper(propertyHandler)
 

@@ -11,6 +11,7 @@ import aurocosh.divinefavor.common.spirit.base.ModSpirit
 import aurocosh.divinefavor.common.stack_properties.IPropertyAccessor
 import aurocosh.divinefavor.common.stack_properties.IPropertyContainer
 import aurocosh.divinefavor.common.stack_properties.StackPropertyHandler
+import aurocosh.divinefavor.common.stack_properties.TalismanPropertyGenerator
 import net.minecraft.client.resources.I18n
 import net.minecraft.client.util.ITooltipFlag
 import net.minecraft.entity.player.EntityPlayer
@@ -23,7 +24,7 @@ import net.minecraftforge.fml.relauncher.Side
 import net.minecraftforge.fml.relauncher.SideOnly
 
 abstract class ItemTalisman(val name: String, texturePath: String, val spirit: ModSpirit, protected val favorCost: Int) : ModItem(name, texturePath), ITalismanStackContainer, IPropertyContainer, IBlockCatcher {
-    protected val propertyHandler: StackPropertyHandler = TalismanPropertyHandler("talisman $name properties")
+    protected val propertyHandler: StackPropertyHandler = StackPropertyHandler("talisman $name properties", TalismanPropertyGenerator())
     override val properties: IPropertyAccessor = propertyHandler
 
     val spiritId: Int

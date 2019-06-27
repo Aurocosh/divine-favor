@@ -55,6 +55,26 @@ fun <T, C : MutableCollection<in T>, K> Sequence<T>.filterTo(destination: C, con
     return filterTo(destination) { predicate.invoke(converter.invoke(it)) }
 }
 
+
+inline fun <T, K> Iterable<T>.filterNot(converter: (T) -> K, predicate: (K) -> Boolean): List<T> {
+    return filterNotTo(ArrayList(), converter, predicate)
+}
+
+inline fun <T, C : MutableCollection<in T>, K> Iterable<T>.filterNotTo(destination: C, converter: (T) -> K, predicate: (K) -> Boolean): C {
+    for (element in this)
+        if (!predicate(converter.invoke(element)))
+            destination.add(element)
+    return destination
+}
+
+fun <T, K> Sequence<T>.filterNot(converter: (T) -> K, predicate: (K) -> Boolean): Sequence<T> {
+    return filterNot { predicate.invoke(converter.invoke(it)) }
+}
+
+fun <T, C : MutableCollection<in T>, K> Sequence<T>.filterNotTo(destination: C, converter: (T) -> K, predicate: (K) -> Boolean): C {
+    return filterNotTo(destination) { predicate.invoke(converter.invoke(it)) }
+}
+
 fun <T> Iterable<T>.filterAnd(vararg predicate: (T) -> Boolean): List<T> {
     return filterAndTo(ArrayList(), predicate)
 }
@@ -120,4 +140,10 @@ fun <T> Sequence<T>.process(processor: (T) -> Any): Sequence<T> {
 }
 
 
+inline fun <T, K> Iterable<T>.mapPairs(processor: (T) -> K): List<Pair<T, K>> {
+    return this.map { Pair(it, processor.invoke(it)) }
+}
 
+fun <T, K> Sequence<T>.mapPairs(processor: (T) -> K): Sequence<Pair<T, K>> {
+    return this.map { Pair(it, processor.invoke(it)) }
+}

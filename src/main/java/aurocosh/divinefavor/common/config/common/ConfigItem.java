@@ -58,6 +58,8 @@ public class ConfigItem {
     public static SpellPick spellPickOrange = new SpellPick();
 
     // New configs
+    @Config.Name("Memory drop")
+    public static MemoryDrop memoryDrop = new MemoryDrop();
     @Config.Name("Ice")
     public static IceArrow iceArrow = new IceArrow();
 }

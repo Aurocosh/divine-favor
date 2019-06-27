@@ -1,11 +1,15 @@
 package aurocosh.divinefavor.common.lib.extensions
 
+import aurocosh.divinefavor.client.block_ovelay.MetaItem
 import net.minecraft.block.state.IBlockState
 import net.minecraft.init.Blocks
+import net.minecraft.item.Item
 import net.minecraft.nbt.NBTTagCompound
+import net.minecraft.nbt.NBTTagList
 import net.minecraft.nbt.NBTUtil
 import net.minecraft.util.math.BlockPos
 import net.minecraft.util.math.Vec3d
+import java.util.*
 
 fun NBTTagCompound.setBlockPos(tag: String, value: BlockPos) {
     this.setLong(tag, value.toLong())
@@ -35,7 +39,7 @@ fun NBTTagCompound.setBlockState(tag: String, state: IBlockState) {
 }
 
 fun NBTTagCompound.getBlockState(tag: String): IBlockState {
-    if(!this.hasKey(tag))
+    if (!this.hasKey(tag))
         return Blocks.AIR.defaultState
     return NBTUtil.readBlockState(this.getCompoundTag(tag))
 }
@@ -59,6 +63,53 @@ fun <T> NBTTagCompound.setNullable(tag: String, setter: (NBTTagCompound, String,
         setter.invoke(this, tag, value)
 }
 
+private const val tagItem = "item"
+private const val tagMeta = "meta"
+
+fun NBTTagCompound.setMetaItem(tag: String, metaItem: MetaItem) {
+    val itemTag = NBTTagCompound()
+    val itemId = metaItem.item.regName.toString()
+    itemTag.setString(tagItem, itemId)
+    itemTag.setInteger(tagMeta, metaItem.meta)
+    this.setTag(tag, itemTag)
+}
+
+fun NBTTagCompound.getMetaItem(tag: String): MetaItem {
+    if (!this.hasKey(tag))
+        return MetaItem()
+    val itemTag = this.getCompoundTag(tag)
+    val itemId = itemTag.getString(tagItem)
+    val item = Item.getByNameOrId(itemId) ?: return MetaItem()
+    val meta = itemTag.getInteger(tagMeta)
+    return MetaItem(item, meta)
+}
+
 fun NBTTagCompound.hasKey(vararg tags: String): Boolean {
     return tags.all(this::hasKey)
+}
+
+private const val tagKey = "key"
+private const val tagValue = "value"
+
+fun <K, V> NBTTagCompound.setMap(tag: String, map: Map<K, V>, keyWriter: (NBTTagCompound, String, K) -> Unit, valueWriter: (NBTTagCompound, String, V) -> Unit) {
+    val tagList = NBTTagList()
+    for ((key, value) in map) {
+        val pairTag = NBTTagCompound()
+        keyWriter.invoke(pairTag, tagKey, key)
+        valueWriter.invoke(pairTag, tagValue, value)
+        tagList.appendTag(pairTag)
+    }
+    this.setTag(tag, tagList)
+}
+
+fun <K, V> NBTTagCompound.getMap(tag: String, keyReader: (NBTTagCompound, String) -> K, valueReader: (NBTTagCompound, String) -> V): MutableMap<K, V> {
+    val tagList = this.getTag(tag) as? NBTTagList ?: return HashMap()
+    val map = HashMap<K, V>()
+    for (i in 0 until tagList.tagCount()) {
+        val pairTag = tagList.getCompoundTagAt(i)
+        val key = keyReader.invoke(pairTag, tagKey)
+        val value = valueReader.invoke(pairTag, tagValue)
+        map[key] = value
+    }
+    return map
 }

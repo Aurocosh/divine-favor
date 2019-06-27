@@ -43,6 +43,7 @@ divinefavor:favor_infinite=Infinite
 # MESSAGES
 message.divinefavor:marked_glass.spirit_is_active=Spirit is active right now! Spirit will be active for %1$d hours and %2$d minutes
 message.divinefavor:marked_glass.spirit_is_inactive=Spirit is inactive. Spirit will become active after %1$d hours and %2$d minutes
+message.divinefavor:copy_area_is_too_big=Copy area is too big. Any side of copied area cannot be bigger then %1$d!
 
 # TOOLTIPS
 tooltip.divinefavor:talisman.infinite_use=Infinite use
@@ -70,6 +71,8 @@ divinefavor:spirit.squarefury.name=Squarefury
 divinefavor:spirit.timber.name=Timber
 
 # ITEM NAMES
+item.divinefavor:item_memory_drop.name=Memory drop
+item.divinefavor:item_memory_drop.name=Memory drop
 ## GEMS
 item.divinefavor:invite_gem.name=Invite gem
 item.divinefavor:invite_pebble.name=Invite pebble
@@ -182,9 +185,12 @@ item.divinefavor:rope_luminous.name=Luminous rope
 item.divinefavor:rope_teleporting.name=Warping rope
 
 ## NEW ITEM NAMES
+item.divinefavor:item_memory_drop.name=Memory drop
+item.divinefavor:item_memory_drop.name=Memory drop
 item.divinefavor:ice_arrow.name=Ice arrow
 
 ## SPELL TALISMAN NAMES
+item.divinefavor:spell_talisman_copy_area.name=Copy area
 item.divinefavor:spell_talisman_armor_of_pacifist.name=Armor of pacifist talisman
 item.divinefavor:spell_talisman_arrow_deflection.name=Arrow deflection talisman
 item.divinefavor:spell_talisman_arrow_throw.name=Arrow throw talisman
@@ -496,6 +502,8 @@ tile.divinefavor:red_pulse.description=Ghostly block that emits redstone signal 
 tile.divinefavor:red_signal.description=Ghostly block that emits strong redstone signal and disappears shortly
 
 #ITEM DESCRIPTIONS FOR JEI AND PATCHOULI
+item.divinefavor:item_memory_drop.description=TODO
+item.divinefavor:item_memory_drop.description=TODO
 ## GEMS
 item.divinefavor:invite_gem.description=Instantly teleports you to creator of the gem. Works across dimensions. Can be created with appropriate talisman.
 item.divinefavor:invite_pebble.description=Instantly teleports you to creator of the gem. Does not work across dimensions. Can be created with appropriate talisman.
@@ -609,9 +617,12 @@ item.divinefavor:rope_teleporting.description=Unusual trapping device. It will t
 
 
 ## NEW ITEM DESCRIPTIONS
+item.divinefavor:item_memory_drop.description=TODO
+item.divinefavor:item_memory_drop.description=TODO
 item.divinefavor:ice_arrow.description=Delicate arrows made of ice. They are frail and because of this they deal less damage then regular arrows and break easily, but in a pinch they can be very useful. This type of arrow also cannot be tipped in potion, but on the other hand it deals extra damage to hellish mobs.
 
 ## SPELL TALISMAN DESCRIPTIONS
+item.divinefavor:spell_talisman_copy_area.description=TODO
 item.divinefavor:spell_talisman_armor_of_pacifist.description=Grants user armor of pacifist. Player will be protected from most damage types, but in turn will not be able to attack anyone.
 item.divinefavor:spell_talisman_arrow_deflection.description=This talisman will temporarily give player ability to deflect incoming arrows. Though deflection is not perfect. Also when player hit with something other then arrows duration of spell will decrease drastically.
 item.divinefavor:spell_talisman_bind_ice_arrows.description=This talisman creates frail ice arrows. Those arrows are weaker then regular arrows, but this talisman may help you if you run out of arrows in the field. Also ice arrows are very effective against spawns of nether.

@@ -1,16 +1,16 @@
 package aurocosh.divinefavor.common.area
 
-import aurocosh.divinefavor.common.lib.math.CubeCoordinates
+import aurocosh.divinefavor.common.lib.math.CuboidBoundingBox
 import net.minecraft.util.math.BlockPos
 import java.util.*
 
 class WorldArea {
     private val positions: MutableSet<BlockPos>
-    private var boundingBox: CubeCoordinates
+    private var boundingBox: CuboidBoundingBox
 
     init {
         positions = HashSet()
-        boundingBox = CubeCoordinates()
+        boundingBox = CuboidBoundingBox()
     }
 
     fun addPositions(posList: List<BlockPos>) {
@@ -34,7 +34,7 @@ class WorldArea {
     }
 
     private fun refreshBoundingBox() {
-        boundingBox = CubeCoordinates.getBoundingBox(positions)
+        boundingBox = CuboidBoundingBox.getBoundingBox(positions)
     }
 
     fun isApartOfArea(position: BlockPos): Boolean {

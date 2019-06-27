@@ -2,7 +2,7 @@ package aurocosh.divinefavor.common.muliblock.common
 
 import aurocosh.divinefavor.DivineFavor
 import aurocosh.divinefavor.common.constants.ConstResources
-import aurocosh.divinefavor.common.lib.math.CubeCoordinates
+import aurocosh.divinefavor.common.lib.math.CuboidBoundingBox
 import aurocosh.divinefavor.common.muliblock.ModMultiBlock
 import aurocosh.divinefavor.common.muliblock.MultiBlockConfiguration
 import aurocosh.divinefavor.common.muliblock.serialization.BlockPosToByteSerializer
@@ -49,11 +49,11 @@ object MultiblockLoader {
     private fun generateConfigurations(name: String, data: MultiBlockData): List<MultiBlockConfiguration> {
         val localBounds = ArrayList<BlockPos>()
         for (part in data.parts) {
-            val coordinates = CubeCoordinates.getBoundingBox(part.positions)
+            val coordinates = CuboidBoundingBox.getBoundingBox(part.positions)
             localBounds.add(coordinates.lowerCorner)
             localBounds.add(coordinates.upperCorner)
         }
-        val boundingBox = CubeCoordinates.getBoundingBox(localBounds)
+        val boundingBox = CuboidBoundingBox.getBoundingBox(localBounds)
 
         val configurations = ArrayList<MultiBlockConfiguration>()
         var configuration = MultiBlockConfiguration(name, true, data.basePosition, data.controllerPosition, data.parts, boundingBox)

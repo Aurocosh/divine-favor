@@ -1,0 +1,51 @@
+package aurocosh.divinefavor.client.core.handler
+
+import aurocosh.divinefavor.DivineFavor
+import aurocosh.divinefavor.common.custom_data.global.TemplateData
+import aurocosh.divinefavor.common.item.ItemMemoryDrop
+import aurocosh.divinefavor.common.lib.LoopedCounter
+import aurocosh.divinefavor.common.lib.extensions.asSequence
+import aurocosh.divinefavor.common.lib.extensions.get
+import aurocosh.divinefavor.common.lib.extensions.getInventoryCapability
+import aurocosh.divinefavor.common.lib.extensions.isPropertySet
+import aurocosh.divinefavor.common.network.message.sever.MessageRequestTemplate
+import aurocosh.divinefavor.common.util.UtilTick
+import net.minecraft.client.Minecraft
+import net.minecraftforge.fml.common.Mod.EventBusSubscriber
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent
+import net.minecraftforge.fml.common.gameevent.TickEvent
+import net.minecraftforge.fml.common.network.FMLNetworkEvent
+import net.minecraftforge.fml.relauncher.Side
+import net.minecraftforge.fml.relauncher.SideOnly
+
+@EventBusSubscriber(modid = DivineFavor.MOD_ID, value = [Side.CLIENT])
+@SideOnly(Side.CLIENT)
+object EventClientTickHandler {
+    private val refreshPeriod = UtilTick.secondsToTicks(60f)
+    private val connectRefreshDelay = UtilTick.secondsToTicks(10f)
+
+    private val mc = Minecraft.getMinecraft()
+    private val refreshCounter = LoopedCounter(refreshPeriod);
+
+    @SubscribeEvent
+    fun onClientTick(event: TickEvent.ClientTickEvent) {
+        if (!refreshCounter.tick())
+            return
+
+        val player = mc.player ?: return
+        val templateSavedData = player.world[TemplateData]
+        val templatesToSync = player.getInventoryCapability().asSequence()
+                .filter { it.item is ItemMemoryDrop }
+                .filter { it.isPropertySet(ItemMemoryDrop.uuid) }
+                .map { it.get(ItemMemoryDrop.uuid) }
+                .filter { !templateSavedData.contains(it) }
+                .toList()
+
+        MessageRequestTemplate(templatesToSync).send()
+    }
+
+    @SubscribeEvent
+    fun onClientConnect(event: FMLNetworkEvent.ClientConnectedToServerEvent) {
+        refreshCounter.count = refreshPeriod - connectRefreshDelay
+    }
+}

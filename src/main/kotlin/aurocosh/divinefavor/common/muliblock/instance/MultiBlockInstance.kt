@@ -1,7 +1,7 @@
 package aurocosh.divinefavor.common.muliblock.instance
 
 import aurocosh.divinefavor.common.lib.extensions.S
-import aurocosh.divinefavor.common.lib.math.CubeCoordinates
+import aurocosh.divinefavor.common.lib.math.CuboidBoundingBox
 import aurocosh.divinefavor.common.muliblock.ModMultiBlock
 import aurocosh.divinefavor.common.muliblock.MultiBlockConfiguration
 import aurocosh.divinefavor.common.muliblock.validators.AirStateValidator
@@ -9,7 +9,7 @@ import net.minecraft.util.math.BlockPos
 import java.util.*
 
 open class MultiBlockInstance(val multiBlock: ModMultiBlock, val configuration: MultiBlockConfiguration, controllerPosition: BlockPos) {
-    val boundingBox: CubeCoordinates
+    val boundingBox: CuboidBoundingBox
     val multiBlockOrigin: BlockPos
     val positionsOfSolids: Set<BlockPos>
     val positionsOfAir: Set<BlockPos>

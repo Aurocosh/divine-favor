@@ -7,7 +7,7 @@ import net.minecraft.util.math.MathHelper
 import net.minecraftforge.fml.relauncher.Side
 import net.minecraftforge.fml.relauncher.SideOnly
 
-class StackPropertyInt(name: String, defaultValue: Int, val minValue: Int, val maxValue: Int, showInTooltip: Boolean, orderIndex: Int, serverSync: (Int, StackProperty<Int>, Int) -> Unit) : StackProperty<Int>(name, defaultValue, showInTooltip, orderIndex, serverSync) {
+class StackPropertyInt(name: String, defaultValue: Int, val minValue: Int, val maxValue: Int, showInTooltip: Boolean, showInGui: Boolean, orderIndex: Int, serverSync: (Int, StackProperty<Int>, Int) -> Unit) : StackProperty<Int>(name, defaultValue, showInTooltip, showInGui, orderIndex, serverSync) {
     override fun getValueFromTag(compound: NBTTagCompound): Int {
         return compound.getInteger(tag)
     }

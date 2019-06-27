@@ -4,11 +4,11 @@ import net.minecraft.item.ItemStack
 import net.minecraft.nbt.NBTTagCompound
 
 class UniqueItemStack(stack: ItemStack) {
-    val uniqueItem: UniqueItem
+    val metaItem: MetaItem
     val nbt: NBTTagCompound?
 
     init {
-        uniqueItem = UniqueItem(stack.item, stack.metadata)
+        metaItem = MetaItem(stack.item, stack.metadata)
         nbt = stack.tagCompound
     }
 
@@ -20,10 +20,10 @@ class UniqueItemStack(stack: ItemStack) {
             return false
 
         val other = obj as UniqueItemStack?
-        return uniqueItem == other!!.uniqueItem && if (nbt != null) nbt == other.nbt else if (other.nbt != null) other.nbt == nbt else true
+        return metaItem == other!!.metaItem && if (nbt != null) nbt == other.nbt else if (other.nbt != null) other.nbt == nbt else true
     }
 
     override fun hashCode(): Int {
-        return uniqueItem.hashCode() xor (nbt?.hashCode() ?: 0)
+        return metaItem.hashCode() xor (nbt?.hashCode() ?: 0)
     }
 }

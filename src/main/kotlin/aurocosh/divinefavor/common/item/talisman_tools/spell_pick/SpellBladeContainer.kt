@@ -2,7 +2,7 @@ package aurocosh.divinefavor.common.item.talisman_tools.spell_pick
 
 import aurocosh.divinefavor.common.item.base.GenericContainer
 import aurocosh.divinefavor.common.item.talisman_tools.spell_pick.capability.ISpellPickHandler
-import aurocosh.divinefavor.common.network.message.sever.MessageSyncTalismanContainerSlot
+import aurocosh.divinefavor.common.network.message.sever.talisman.MessageSyncTalismanContainerSlot
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.inventory.ClickType
 import net.minecraft.item.ItemStack

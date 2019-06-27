@@ -4,7 +4,7 @@ import aurocosh.divinefavor.common.constants.BlockPosConstants
 import aurocosh.divinefavor.common.util.UtilBlockPos
 import net.minecraft.util.math.BlockPos
 
-class CubeCoordinates {
+class CuboidBoundingBox {
     val lowerCorner: BlockPos
     val upperCorner: BlockPos
 
@@ -19,6 +19,9 @@ class CubeCoordinates {
 
     val sizeZ: Int
         get() = upperCorner.z - lowerCorner.z + 1
+
+    val blockCount: Int
+        get() = sizeX * sizeY * sizeZ
 
     val allPositionsInside: List<BlockPos>
         get() {
@@ -57,13 +60,13 @@ class CubeCoordinates {
         this.upperCorner = BlockPos(upperX, upperY, upperZ)
     }
 
-    fun add(vector: BlockPos): CubeCoordinates {
+    fun add(vector: BlockPos): CuboidBoundingBox {
         val lower = lowerCorner.add(vector)
         val upper = upperCorner.add(vector)
-        return CubeCoordinates(lower, upper)
+        return CuboidBoundingBox(lower, upper)
     }
 
-    fun subtract(vector: BlockPos): CubeCoordinates {
+    fun subtract(vector: BlockPos): CuboidBoundingBox {
         return add(BlockPos.ORIGIN.subtract(vector))
     }
 
@@ -73,28 +76,28 @@ class CubeCoordinates {
                 && lowerCorner.z <= coordinate.z && coordinate.z <= upperCorner.z)
     }
 
-    fun expandBoundingBox(positions: List<BlockPos>): CubeCoordinates {
+    fun expandBoundingBox(positions: List<BlockPos>): CuboidBoundingBox {
         return getBoundingBox(lowerCorner, upperCorner, positions)
     }
 
     companion object {
 
-        fun getBoundingBox(positions: Collection<BlockPos>): CubeCoordinates {
+        fun getBoundingBox(positions: Collection<BlockPos>): CuboidBoundingBox {
             val min = BlockPosConstants.MAX
             val max = BlockPosConstants.MIN
             return getBoundingBox(min, max, positions)
         }
 
-        fun getBoundingBox(currentMin: BlockPos, currentMax: BlockPos, positions: Collection<BlockPos>): CubeCoordinates {
+        fun getBoundingBox(currentMin: BlockPos, currentMax: BlockPos, positions: Collection<BlockPos>): CuboidBoundingBox {
             var min = currentMin
             var max = currentMax
             if (positions.isEmpty())
-                return CubeCoordinates()
+                return CuboidBoundingBox()
             for (pos in positions) {
                 min = UtilBlockPos.getMinCoordinates(min, pos)
                 max = UtilBlockPos.getMaxCoordinates(max, pos)
             }
-            return CubeCoordinates(min, max)
+            return CuboidBoundingBox(min, max)
         }
     }
 }

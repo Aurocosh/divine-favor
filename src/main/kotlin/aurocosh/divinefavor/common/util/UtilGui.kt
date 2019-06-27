@@ -3,12 +3,8 @@ package aurocosh.divinefavor.common.util
 import aurocosh.divinefavor.common.lib.math.Vector2i
 import net.minecraft.client.Minecraft
 import net.minecraft.client.gui.Gui
-import net.minecraft.client.renderer.BufferBuilder
 import net.minecraft.client.renderer.GlStateManager
-import net.minecraft.client.renderer.Tessellator
-import net.minecraft.client.renderer.vertex.DefaultVertexFormats
 import net.minecraft.util.ResourceLocation
-import net.minecraft.util.math.BlockPos
 import net.minecraftforge.fml.relauncher.Side
 import net.minecraftforge.fml.relauncher.SideOnly
 import org.lwjgl.opengl.GL11
@@ -33,32 +29,6 @@ object UtilGui {
         GL11.glEnd()
         GlStateManager.enableDepth()
         GL11.glEnable(GL11.GL_TEXTURE_2D)
-    }
-
-    @SideOnly(Side.CLIENT)
-    fun renderBox(tessellator: Tessellator, bufferBuilder: BufferBuilder, start: BlockPos, end: BlockPos, red: Int, green: Int, blue: Int) {
-        GlStateManager.glLineWidth(2.0f)
-        bufferBuilder.begin(3, DefaultVertexFormats.POSITION_COLOR)
-        bufferBuilder.pos(start.x.toDouble(), start.y.toDouble(), start.z.toDouble()).color(green.toFloat(), green.toFloat(), green.toFloat(), 0.0f).endVertex()
-        bufferBuilder.pos(start.x.toDouble(), start.y.toDouble(), start.z.toDouble()).color(green, green, green, red).endVertex()
-        bufferBuilder.pos(end.x.toDouble(), start.y.toDouble(), start.z.toDouble()).color(green, blue, blue, red).endVertex()
-        bufferBuilder.pos(end.x.toDouble(), start.y.toDouble(), end.z.toDouble()).color(green, green, green, red).endVertex()
-        bufferBuilder.pos(start.x.toDouble(), start.y.toDouble(), end.z.toDouble()).color(green, green, green, red).endVertex()
-        bufferBuilder.pos(start.x.toDouble(), start.y.toDouble(), start.z.toDouble()).color(blue, blue, green, red).endVertex()
-        bufferBuilder.pos(start.x.toDouble(), end.y.toDouble(), start.z.toDouble()).color(blue, green, blue, red).endVertex()
-        bufferBuilder.pos(end.x.toDouble(), end.y.toDouble(), start.z.toDouble()).color(green, green, green, red).endVertex()
-        bufferBuilder.pos(end.x.toDouble(), end.y.toDouble(), end.z.toDouble()).color(green, green, green, red).endVertex()
-        bufferBuilder.pos(start.x.toDouble(), end.y.toDouble(), end.z.toDouble()).color(green, green, green, red).endVertex()
-        bufferBuilder.pos(start.x.toDouble(), end.y.toDouble(), start.z.toDouble()).color(green, green, green, red).endVertex()
-        bufferBuilder.pos(start.x.toDouble(), end.y.toDouble(), end.z.toDouble()).color(green, green, green, red).endVertex()
-        bufferBuilder.pos(start.x.toDouble(), start.y.toDouble(), end.z.toDouble()).color(green, green, green, red).endVertex()
-        bufferBuilder.pos(end.x.toDouble(), start.y.toDouble(), end.z.toDouble()).color(green, green, green, red).endVertex()
-        bufferBuilder.pos(end.x.toDouble(), end.y.toDouble(), end.z.toDouble()).color(green, green, green, red).endVertex()
-        bufferBuilder.pos(end.x.toDouble(), end.y.toDouble(), start.z.toDouble()).color(green, green, green, red).endVertex()
-        bufferBuilder.pos(end.x.toDouble(), start.y.toDouble(), start.z.toDouble()).color(green, green, green, red).endVertex()
-        bufferBuilder.pos(end.x.toDouble(), start.y.toDouble(), start.z.toDouble()).color(green.toFloat(), green.toFloat(), green.toFloat(), 0.0f).endVertex()
-        tessellator.draw()
-        GlStateManager.glLineWidth(1.0f)
     }
 
     fun findClosestPoint(target: Vector2i, points: Collection<Vector2i>, defaultValue: Vector2i): Vector2i {

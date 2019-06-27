@@ -41,6 +41,10 @@ fun <T> ItemStack.set(property: StackProperty<T>, value: T, sync: Boolean = fals
     return property.setValue(this, value, sync)
 }
 
+fun <T> ItemStack.isPropertySet(property: StackProperty<T>): Boolean {
+    return this.checkForTag(property.tag)
+}
+
 fun <T> ItemStack.get(one: StackProperty<T>): T {
     return one.getValue(this)
 }

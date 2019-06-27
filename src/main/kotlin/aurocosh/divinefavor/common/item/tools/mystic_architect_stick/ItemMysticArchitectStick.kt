@@ -4,7 +4,7 @@ import aurocosh.divinefavor.DivineFavor
 import aurocosh.divinefavor.common.constants.ConstMainTabOrder
 import aurocosh.divinefavor.common.item.base.ModItem
 import aurocosh.divinefavor.common.lib.extensions.*
-import aurocosh.divinefavor.common.lib.math.CubeCoordinates
+import aurocosh.divinefavor.common.lib.math.CuboidBoundingBox
 import aurocosh.divinefavor.common.muliblock.MultiBlockPart
 import aurocosh.divinefavor.common.muliblock.serialization.BlockPosToByteSerializer
 import aurocosh.divinefavor.common.muliblock.serialization.MultiBlockData
@@ -123,7 +123,7 @@ class ItemMysticArchitectStick : ModItem("mystic_architect_stick", "mystic_archi
     }
 
     private fun getTemplateData(world: World, firstCorner: BlockPos, secondCorner: BlockPos, controllerPosition: BlockPos, basePosition: BlockPos, airMarker: String): String {
-        val coordinatesWorld = CubeCoordinates(firstCorner, secondCorner)
+        val coordinatesWorld = CuboidBoundingBox(firstCorner, secondCorner)
         val positions = coordinatesWorld.allPositionsInside
         val lowerCorner = coordinatesWorld.lowerCorner
         val airMarkerName = ResourceLocation(airMarker)

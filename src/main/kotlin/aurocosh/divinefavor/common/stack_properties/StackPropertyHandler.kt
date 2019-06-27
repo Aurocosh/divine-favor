@@ -3,7 +3,6 @@ package aurocosh.divinefavor.common.stack_properties
 import aurocosh.divinefavor.DivineFavor
 import aurocosh.divinefavor.common.lib.extensions.S
 import aurocosh.divinefavor.common.lib.extensions.compound
-import aurocosh.divinefavor.common.network.message.sever.stack_properties.*
 import net.minecraft.block.state.IBlockState
 import net.minecraft.client.resources.I18n
 import net.minecraft.item.ItemStack
@@ -11,8 +10,11 @@ import net.minecraft.util.EnumFacing
 import net.minecraft.util.math.BlockPos
 import net.minecraftforge.fml.relauncher.Side
 import net.minecraftforge.fml.relauncher.SideOnly
+import java.util.*
+import kotlin.collections.ArrayList
+import kotlin.collections.HashMap
 
-abstract class StackPropertyHandler(private val parentName: String) : IPropertyAccessor {
+open class StackPropertyHandler(private val parentName: String, private val propertyGenerator: StackPropertyGenerator = StackPropertyGenerator()) : IPropertyAccessor {
     private val propertyList = ArrayList<StackProperty<out Any>>()
     private val propertyMap = HashMap<String, StackProperty<out Any>>()
 
@@ -50,41 +52,26 @@ abstract class StackPropertyHandler(private val parentName: String) : IPropertyA
         return property
     }
 
-    fun registerIntProperty(name: String, defaultValue: Int, minValue: Int = 1, maxValue: Int = defaultValue, showInTooltip: Boolean = true, orderIndex: Int = 0): StackPropertyInt {
-        val property = StackPropertyInt(name, defaultValue, minValue, maxValue, showInTooltip, orderIndex, getSynchronizerInt())
-        registerProperty(property)
-        return property
-    }
+    fun registerIntProperty(name: String, defaultValue: Int, minValue: Int = 1, maxValue: Int = defaultValue, showInTooltip: Boolean = true, showInGui: Boolean = true, orderIndex: Int = 0) =
+            registerProperty(propertyGenerator.makeIntProperty(name, defaultValue, minValue, maxValue, showInTooltip, showInGui, orderIndex))
 
-    fun registerFloatProperty(name: String, defaultValue: Float, minValue: Float = 1f, maxValue: Float = defaultValue, showInTooltip: Boolean = true, orderIndex: Int = 0): StackPropertyFloat {
-        val property = StackPropertyFloat(name, defaultValue, minValue, maxValue, showInTooltip, orderIndex, getSynchronizerFloat())
-        registerProperty(property)
-        return property
-    }
+    fun registerFloatProperty(name: String, defaultValue: Float, minValue: Float = 1f, maxValue: Float = defaultValue, showInTooltip: Boolean = true, showInGui: Boolean = true, orderIndex: Int = 0) =
+            registerProperty(propertyGenerator.makeFloatProperty(name, defaultValue, minValue, maxValue, showInTooltip, showInGui, orderIndex))
 
-    fun registerBoolProperty(name: String, defaultValue: Boolean, showInTooltip: Boolean = true, orderIndex: Int = 0): StackPropertyBool {
-        val property = StackPropertyBool(name, defaultValue, showInTooltip, orderIndex, getSynchronizerBool())
-        registerProperty(property)
-        return property
-    }
+    fun registerBoolProperty(name: String, defaultValue: Boolean, showInTooltip: Boolean = true, showInGui: Boolean = true, orderIndex: Int = 0) =
+            registerProperty(propertyGenerator.makeBoolProperty(name, defaultValue, showInTooltip, showInGui, orderIndex))
 
-    fun registerBlockStateProperty(name: String, defaultValue: IBlockState, showInTooltip: Boolean = false, orderIndex: Int = 0): StackPropertyIBlockState {
-        val property = StackPropertyIBlockState(name, defaultValue, showInTooltip, orderIndex, getSynchronizerIBlockState())
-        registerProperty(property)
-        return property
-    }
+    fun registerBlockStateProperty(name: String, defaultValue: IBlockState, showInTooltip: Boolean = false, showInGui: Boolean = true, orderIndex: Int = 0) =
+            registerProperty(propertyGenerator.makeBlockStateProperty(name, defaultValue, showInTooltip, showInGui, orderIndex))
 
-    fun registerBlockPosProperty(name: String, defaultValue: BlockPos, showInTooltip: Boolean = false, orderIndex: Int = 0): StackPropertyBlockPos {
-        val property = StackPropertyBlockPos(name, defaultValue, showInTooltip, orderIndex, getSynchronizerBlockPos())
-        registerProperty(property)
-        return property
-    }
+    fun registerBlockPosProperty(name: String, defaultValue: BlockPos, showInTooltip: Boolean = false, showInGui: Boolean = true, orderIndex: Int = 0) =
+            registerProperty(propertyGenerator.makeBlockPosProperty(name, defaultValue, showInTooltip, showInGui, orderIndex))
 
-    fun registerEnumFacingProperty(name: String, defaultValue: EnumFacing, showInTooltip: Boolean = false, orderIndex: Int = 0): StackPropertyEnumFacing {
-        val property = StackPropertyEnumFacing(name, defaultValue, showInTooltip, orderIndex, getSynchronizerEnumFacing())
-        registerProperty(property)
-        return property
-    }
+    fun registerEnumFacingProperty(name: String, defaultValue: EnumFacing, showInTooltip: Boolean = false, showInGui: Boolean = true, orderIndex: Int = 0) =
+            registerProperty(propertyGenerator.makeEnumFacingProperty(name, defaultValue, showInTooltip, showInGui, orderIndex))
+
+    fun registerUUIDProperty(name: String, defaultValue: UUID, showInTooltip: Boolean = false, showInGui: Boolean = true, orderIndex: Int = 0) =
+            registerProperty(propertyGenerator.makeUUIDProperty(name, defaultValue, showInTooltip, showInGui, orderIndex))
 
     @SideOnly(Side.CLIENT)
     override fun getPropertyTooltip(stack: ItemStack): List<String> {
@@ -96,30 +83,6 @@ abstract class StackPropertyHandler(private val parentName: String) : IPropertyA
         tooltip.add(I18n.format("tooltip.divinefavor:property_list"))
         propertyList.S.filter { it.showInTooltip }.map { it.toLocalString(stack) }.forEach { tooltip.add(it) }
         return tooltip
-    }
-
-    open fun getSynchronizerInt() = { itemId: Int, property: StackProperty<Int>, value: Int ->
-        MessageSyncPropertyInt(itemId, property.name, value).send()
-    }
-
-    open fun getSynchronizerFloat() = { itemId: Int, property: StackProperty<Float>, value: Float ->
-        MessageSyncPropertyFloat(itemId, property.name, value).send()
-    }
-
-    open fun getSynchronizerBool() = { itemId: Int, property: StackProperty<Boolean>, value: Boolean ->
-        MessageSyncPropertyBool(itemId, property.name, value).send()
-    }
-
-    open fun getSynchronizerEnumFacing() = { itemId: Int, property: StackProperty<EnumFacing>, value: EnumFacing ->
-        MessageSyncPropertyEnumFacing(itemId, property.name, value).send()
-    }
-
-    open fun getSynchronizerBlockPos() = { itemId: Int, property: StackProperty<BlockPos>, value: BlockPos ->
-        MessageSyncPropertyBlockPos(itemId, property.name, value).send()
-    }
-
-    open fun getSynchronizerIBlockState() = { itemId: Int, property: StackProperty<IBlockState>, value: IBlockState ->
-        MessageSyncPropertyIBlockState(itemId, property.name, value).send()
     }
 
     companion object {

@@ -10,7 +10,6 @@ import aurocosh.divinefavor.common.item.spell_talismans.context.TalismanContext
 import aurocosh.divinefavor.common.item.spell_talismans.context.TalismanContextGenerator
 import aurocosh.divinefavor.common.item.talisman.ITalismanStackContainer
 import aurocosh.divinefavor.common.item.talisman.ITalismanToolContainer
-import aurocosh.divinefavor.common.item.talisman.TalismanPropertyHandler
 import aurocosh.divinefavor.common.item.talisman_tools.BookPropertyWrapper
 import aurocosh.divinefavor.common.item.talisman_tools.ITalismanTool
 import aurocosh.divinefavor.common.item.talisman_tools.TalismanContainerMode
@@ -44,7 +43,7 @@ import net.minecraftforge.common.capabilities.ICapabilityProvider
 import net.minecraftforge.event.ForgeEventFactory
 
 class ItemSpellBow : ModItem("spell_bow", "spell_bow/spell_bow", ConstMainTabOrder.CONTAINERS), ITalismanStackContainer, ITalismanToolContainer, IPropertyContainer {
-    protected val propertyHandler: StackPropertyHandler = TalismanPropertyHandler("spell_bow")
+    protected val propertyHandler: StackPropertyHandler = StackPropertyHandler("spell_bow")
     override val properties: IPropertyAccessor = propertyHandler
     private val bookPropertyWrapper = BookPropertyWrapper(propertyHandler)
 

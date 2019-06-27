@@ -1,14 +1,14 @@
 package aurocosh.divinefavor.common.muliblock
 
-import aurocosh.divinefavor.common.lib.math.CubeCoordinates
+import aurocosh.divinefavor.common.lib.math.CuboidBoundingBox
 import net.minecraft.util.math.BlockPos
 import net.minecraft.world.World
 import java.util.*
 
-class MultiBlockConfiguration(val name: String, val primary: Boolean, val baseRelPosition: BlockPos, val controllerRelPosition: BlockPos, parts: List<MultiBlockPart>, val boundingBox: CubeCoordinates) {
+class MultiBlockConfiguration(val name: String, val primary: Boolean, val baseRelPosition: BlockPos, val controllerRelPosition: BlockPos, parts: List<MultiBlockPart>, val boundingBox: CuboidBoundingBox) {
     val parts: List<MultiBlockPart> = Collections.unmodifiableList(parts)
 
-    val boundingBoxRelative: CubeCoordinates
+    val boundingBoxRelative: CuboidBoundingBox
         get() = boundingBox.subtract(controllerRelPosition)
 
     fun isValid(world: World, controller: BlockPos): Boolean {
@@ -35,8 +35,8 @@ class MultiBlockConfiguration(val name: String, val primary: Boolean, val baseRe
         return MultiBlockConfiguration(name, false, baseRelPosition, controllerRelPositionNew, partsNew, boundingBoxNew)
     }
 
-    private fun getPartsBoundingBox(parts: List<MultiBlockPart>): CubeCoordinates {
-        var boundingBox = CubeCoordinates()
+    private fun getPartsBoundingBox(parts: List<MultiBlockPart>): CuboidBoundingBox {
+        var boundingBox = CuboidBoundingBox()
         for (part in parts)
             boundingBox = boundingBox.expandBoundingBox(part.positions)
         return boundingBox

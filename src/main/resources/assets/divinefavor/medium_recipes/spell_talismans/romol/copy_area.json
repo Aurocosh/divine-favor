@@ -1,0 +1,26 @@
+{
+  "result": {
+    "item": "divinefavor:spell_talisman_copy_area"
+  },
+  "stones": [
+    "divinefavor:calling_stone_romol"
+  ],
+  "ingredients": [
+    {
+      "type": "ore",
+      "ore": "paper"
+    },
+    {
+      "type": "ore",
+      "ore": "dyeBlack"
+    },
+    {
+      "type": "stack",
+      "item": "minecraft:TODO"
+    },
+    {
+      "type": "stack",
+      "item": "minecraft:TODO"
+    }
+  ]
+}

@@ -1,12 +1,12 @@
-package aurocosh.divinefavor.common.item.talisman
+package aurocosh.divinefavor.common.stack_properties
 
 import aurocosh.divinefavor.common.network.message.sever.talisman_properties.*
-import aurocosh.divinefavor.common.stack_properties.*
 import net.minecraft.block.state.IBlockState
 import net.minecraft.util.EnumFacing
 import net.minecraft.util.math.BlockPos
+import java.util.*
 
-class TalismanPropertyHandler(parentName: String) : StackPropertyHandler(parentName) {
+open class TalismanPropertyGenerator() : StackPropertyGenerator() {
     override fun getSynchronizerInt() = { itemId: Int, property: StackProperty<Int>, value: Int ->
         MessageSyncTalismanPropertyInt(itemId, property.name, value).send()
     }
@@ -29,5 +29,9 @@ class TalismanPropertyHandler(parentName: String) : StackPropertyHandler(parentN
 
     override fun getSynchronizerIBlockState() = { itemId: Int, property: StackProperty<IBlockState>, value: IBlockState ->
         MessageSyncTalismanPropertyIBlockState(itemId, property.name, value).send()
+    }
+
+    override fun getSynchronizerUUID() = { itemId: Int, property: StackProperty<UUID>, value: UUID ->
+        MessageSyncTalismanPropertyUUID(itemId, property.name, value).send()
     }
 }

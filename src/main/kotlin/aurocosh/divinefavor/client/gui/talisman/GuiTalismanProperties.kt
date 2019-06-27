@@ -11,7 +11,7 @@ import aurocosh.divinefavor.common.item.talisman.ITalismanStackContainer
 import aurocosh.divinefavor.common.item.talisman.ItemTalisman
 import aurocosh.divinefavor.common.lib.TooltipCache
 import aurocosh.divinefavor.common.lib.extensions.S
-import aurocosh.divinefavor.common.network.message.sever.MessageSyncTalismanPropertyIndex
+import aurocosh.divinefavor.common.network.message.sever.talisman.MessageSyncTalismanPropertyIndex
 import aurocosh.divinefavor.common.stack_properties.StackProperty
 import aurocosh.divinefavor.common.stack_properties.StackPropertyBool
 import aurocosh.divinefavor.common.stack_properties.StackPropertyInt
@@ -68,6 +68,9 @@ class GuiTalismanProperties(stack: ItemStack, private val playerSlot: Int) : Gui
     }
 
     private fun addPropertyToGui(property: StackProperty<out Any>) {
+        if (!property.showInGui)
+            return
+
         val index = propertyGuiElements.size
         val selector = {
             selectedPropertyIndex = index
