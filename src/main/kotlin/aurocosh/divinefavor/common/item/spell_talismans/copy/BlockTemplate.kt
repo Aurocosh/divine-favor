@@ -2,7 +2,6 @@ package aurocosh.divinefavor.common.item.spell_talismans.copy
 
 import aurocosh.divinefavor.common.lib.BlockMapIntState
 import aurocosh.divinefavor.common.lib.math.CuboidBoundingBox
-import aurocosh.divinefavor.common.util.TemplateBlockState
 import aurocosh.divinefavor.common.util.UtilBlockPos
 import net.minecraft.util.math.BlockPos
 import java.util.*

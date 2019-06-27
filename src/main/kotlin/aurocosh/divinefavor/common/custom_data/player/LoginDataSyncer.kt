@@ -6,6 +6,7 @@ import aurocosh.divinefavor.common.lib.extensions.divinePlayerData
 import aurocosh.divinefavor.common.network.message.client.spirit_data.MessageSyncAllSpiritData
 import aurocosh.divinefavor.common.network.message.client.syncing.MessageSyncFury
 import aurocosh.divinefavor.common.network.message.client.syncing.MessageSyncGrudge
+import aurocosh.divinefavor.common.network.message.client.syncing.MessageSyncSelectedTemplate
 import aurocosh.divinefavor.common.network.message.client.syncing.MessageSyncWindLeash
 import net.minecraft.entity.player.EntityPlayerMP
 import net.minecraftforge.fml.common.Mod
@@ -16,15 +17,15 @@ import net.minecraftforge.fml.common.gameevent.PlayerEvent
 object LoginDataSyncer {
     @SubscribeEvent
     fun onPlayerLogin(event: PlayerEvent.PlayerLoggedInEvent) {
-        if (event.player !is EntityPlayerMP)
-            return
+        val player = event.player as? EntityPlayerMP ?: return
 
-        val handler = event.player.divinePlayerData
-        MessageSyncAllSpiritData(handler.spiritData).sendTo(event.player)
-        MessageSyncFury(handler.focusedFuryData.mobTypeId).sendTo(event.player)
-        MessageSyncGrudge(handler.grudgeData.mobTypeId).sendTo(event.player)
+        val handler = player.divinePlayerData
+        MessageSyncAllSpiritData(handler.spiritData).sendTo(player)
+        MessageSyncFury(handler.focusedFuryData.mobTypeId).sendTo(player)
+        MessageSyncGrudge(handler.grudgeData.mobTypeId).sendTo(player)
+        MessageSyncSelectedTemplate(handler.templateData.currentTemplate).sendTo(player)
 
-        val livingDataHandler = event.player.divineLivingData
-        MessageSyncWindLeash(livingDataHandler.windLeashData.vector).sendTo(event.player)
+        val livingDataHandler = player.divineLivingData
+        MessageSyncWindLeash(livingDataHandler.windLeashData.vector).sendTo(player)
     }
 }

@@ -1,6 +1,6 @@
 package aurocosh.divinefavor.common.lib.extensions
 
-import aurocosh.divinefavor.client.block_ovelay.MetaItem
+import aurocosh.divinefavor.common.item.spell_talismans.copy.MetaItem
 import net.minecraft.block.state.IBlockState
 import net.minecraft.init.Blocks
 import net.minecraft.item.Item

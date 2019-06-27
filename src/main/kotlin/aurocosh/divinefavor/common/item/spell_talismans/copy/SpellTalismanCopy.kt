@@ -2,11 +2,8 @@ package aurocosh.divinefavor.common.item.spell_talismans.copy
 
 import aurocosh.divinefavor.client.block_ovelay.BlockHighlightRendering
 import aurocosh.divinefavor.client.block_ovelay.BoxRendering
-import aurocosh.divinefavor.client.block_ovelay.MetaItem
 import aurocosh.divinefavor.common.config.common.ConfigGeneral
 import aurocosh.divinefavor.common.custom_data.global.TemplateData
-import aurocosh.divinefavor.common.item.ItemMemoryDrop
-import aurocosh.divinefavor.common.item.common.ModItems
 import aurocosh.divinefavor.common.item.spell_talismans.base.ItemSpellTalisman
 import aurocosh.divinefavor.common.item.spell_talismans.base.SpellOptions
 import aurocosh.divinefavor.common.item.spell_talismans.context.ContextProperty
@@ -17,10 +14,10 @@ import aurocosh.divinefavor.common.lib.BlockMapIntState
 import aurocosh.divinefavor.common.lib.extensions.*
 import aurocosh.divinefavor.common.lib.math.CuboidBoundingBox
 import aurocosh.divinefavor.common.network.message.client.MessageSendBlockTemplate
+import aurocosh.divinefavor.common.network.message.client.syncing.MessageSyncSelectedTemplate
 import aurocosh.divinefavor.common.spirit.base.ModSpirit
 import aurocosh.divinefavor.common.util.UtilBlockPos
 import aurocosh.divinefavor.common.util.UtilBlockState
-import aurocosh.divinefavor.common.util.UtilPlayer
 import com.google.common.collect.HashMultiset
 import net.minecraft.block.Block
 import net.minecraft.block.state.IBlockState
@@ -136,12 +133,15 @@ abstract class SpellTalismanCopy(name: String, spirit: ModSpirit, favorCost: Int
 
         val templateSavedData = world[TemplateData]
         templateSavedData[uuid] = blockTemplate
+        MessageSendBlockTemplate(uuid, blockTemplate).sendTo(player)
 
-        val stack = ItemStack(ModItems.memory_drop)
-        stack.set(ItemMemoryDrop.uuid, uuid)
-        UtilPlayer.addStackToInventoryOrDrop(player, stack)
+        player.divinePlayerData.templateData.currentTemplate = uuid
+        MessageSyncSelectedTemplate(uuid).sendTo(player)
 
-        MessageSendBlockTemplate(uuid, blockTemplate)
+//        val stack = ItemStack(ModItems.memory_drop)
+//        stack.set(ItemMemoryDrop.uuid, uuid)
+//        UtilPlayer.addStackToInventoryOrDrop(player, stack)
+
 
         if (tileEntityCount > 0) {
             player.sendStatusMessage(TextComponentString(TextFormatting.YELLOW.toString() + TextComponentTranslation("message.gadget.TEinCopy").unformattedComponentText + ": " + tileEntityCount), true)

@@ -20,12 +20,17 @@ import net.minecraft.world.World
 import net.minecraftforge.common.ForgeHooks
 import net.minecraftforge.common.IPlantable
 import net.minecraftforge.common.MinecraftForge
+import net.minecraftforge.common.util.BlockSnapshot
 import net.minecraftforge.event.ForgeEventFactory
 import net.minecraftforge.event.world.BlockEvent
 import net.minecraftforge.fluids.IFluidBlock
 
 object UtilBlock {
-    private fun canReplaceBlock(player: EntityPlayer, world: World, pos: BlockPos): Boolean {
+    fun canReplaceBlock(player: EntityPlayer, world: World, pos: BlockPos): Boolean {
+        if(pos.y < 0)
+            return false
+        if(!player.isAllowEdit)
+            return false
         if (world.isRemote)
             return false
         if (!world.isBlockLoaded(pos))
@@ -151,6 +156,9 @@ object UtilBlock {
     fun replaceBlock(player: EntityPlayer, world: World, pos: BlockPos, newState: IBlockState): Boolean {
         if (!canReplaceBlock(player, world, pos))
             return false
+        val blockSnapshot = BlockSnapshot.getBlockSnapshot(world, pos)
+        if (ForgeEventFactory.onPlayerBlockPlace(player, blockSnapshot, EnumFacing.UP, EnumHand.MAIN_HAND).isCanceled)
+            return false
         world.setBlockState(pos, newState)
         return true
     }
@@ -159,7 +167,9 @@ object UtilBlock {
         val item = stack.item as? ItemBlock ?: return false
         if (!canReplaceBlock(player, world, pos))
             return false
-
+        val blockSnapshot = BlockSnapshot.getBlockSnapshot(world, pos)
+        if (ForgeEventFactory.onPlayerBlockPlace(player, blockSnapshot, EnumFacing.UP, hand).isCanceled)
+            return false
         val blockToPlace = Block.getBlockFromItem(item)
         val stateForPlacement = blockToPlace.getStateForPlacement(world, pos, EnumFacing.UP, 0f, 0f, 0f, stack.itemDamage, player, hand)
         item.placeBlockAt(stack, player, world, pos, EnumFacing.UP, 0f, 0f, 0f, stateForPlacement)

@@ -23,12 +23,13 @@ import aurocosh.divinefavor.common.custom_data.player.data.presence.predatory.Pr
 import aurocosh.divinefavor.common.custom_data.player.data.presence.scorching.ScorchingPresenceDataSerializer
 import aurocosh.divinefavor.common.custom_data.player.data.presence.towering.ToweringPresenceDataSerializer
 import aurocosh.divinefavor.common.custom_data.player.data.spell.escape_plan.EscapePlanDataSerializer
-import aurocosh.divinefavor.common.custom_data.player.data.spell.vengeful_blade.VengfulBladeDataSerializer
 import aurocosh.divinefavor.common.custom_data.player.data.spell.focused_fury.FocusedFuryDataSerializer
 import aurocosh.divinefavor.common.custom_data.player.data.spell.gills.GillsDataSerializer
 import aurocosh.divinefavor.common.custom_data.player.data.spell.grudge.GrudgeDataSerializer
 import aurocosh.divinefavor.common.custom_data.player.data.spell.molten_skin.MoltenSkinDataSerializer
 import aurocosh.divinefavor.common.custom_data.player.data.spell.pearl_crumbs.PearlCrumbsDataSerializer
+import aurocosh.divinefavor.common.custom_data.player.data.spell.vengeful_blade.VengfulBladeDataSerializer
+import aurocosh.divinefavor.common.custom_data.player.data.templates.TemplateDataSerializer
 import net.minecraft.entity.Entity
 import net.minecraft.entity.EntityLivingBase
 import net.minecraftforge.common.MinecraftForge
@@ -78,6 +79,7 @@ class PlayerDataDataHandler {
             storage.addSerializer(InteractionDataSerializer(), IPlayerDataHandler::interactionData)
             storage.addSerializer(MoltenSkinDataSerializer(), IPlayerDataHandler::moltenSkinData)
             storage.addSerializer(PearlCrumbsDataSerializer(), IPlayerDataHandler::pearlCrumbsData)
+            storage.addSerializer(TemplateDataSerializer(), IPlayerDataHandler::templateData)
             storage.addSerializer(VengfulBladeDataSerializer(), IPlayerDataHandler::vengefulBladeData)
 
             storage.addSerializer(ArborealAuraDataSerializer(), IPlayerDataHandler::arborealAuraData)

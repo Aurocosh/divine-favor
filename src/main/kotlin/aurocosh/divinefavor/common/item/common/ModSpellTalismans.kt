@@ -143,6 +143,7 @@ object ModSpellTalismans {
     lateinit var wooden_punch: ItemSpellTalisman
 
     // New fields
+    lateinit var build_template: ItemSpellTalisman
     lateinit var copy_area: ItemSpellTalisman
     lateinit var summon_blaze: ItemSpellTalisman
     lateinit var summon_cave_spider: ItemSpellTalisman
@@ -287,6 +288,7 @@ object ModSpellTalismans {
         starvation = SpellTalismanModPotion("starvation", ModSpirits.timber, ConfigSpell.starvation.favorCost, ModPotions.starvation, ConfigSpell.starvation.duration)
 
         // New instances
+        build_template = SpellTalismanBuildTemplate("build_template", ModSpirits.romol, ConfigSpell.buildTemplate.favorCost, SpellOptions.ALL_CAST)
         copy_area = SpellTalismanCopyArea("copy_area", ModSpirits.romol, ConfigSpell.copyArea.favorCost)
         summon_blaze = SpellTalismanSummonMinion("summon_blaze", ModSpirits.neblaze, ConfigSpell.summonBlaze.favorCost, SpellOptions.USE_CAST, EntityMinionBlaze::class.java)
         summon_cave_spider = SpellTalismanSummonMinion("summon_cave_spider", ModSpirits.loon, ConfigSpell.summonCaveSpider.favorCost, SpellOptions.USE_CAST, EntityMinionCaveSpider::class.java)

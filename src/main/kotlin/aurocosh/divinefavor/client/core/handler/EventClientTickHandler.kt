@@ -2,12 +2,9 @@ package aurocosh.divinefavor.client.core.handler
 
 import aurocosh.divinefavor.DivineFavor
 import aurocosh.divinefavor.common.custom_data.global.TemplateData
-import aurocosh.divinefavor.common.item.ItemMemoryDrop
+import aurocosh.divinefavor.common.item.ITemplateContainer
 import aurocosh.divinefavor.common.lib.LoopedCounter
-import aurocosh.divinefavor.common.lib.extensions.asSequence
-import aurocosh.divinefavor.common.lib.extensions.get
-import aurocosh.divinefavor.common.lib.extensions.getInventoryCapability
-import aurocosh.divinefavor.common.lib.extensions.isPropertySet
+import aurocosh.divinefavor.common.lib.extensions.*
 import aurocosh.divinefavor.common.network.message.sever.MessageRequestTemplate
 import aurocosh.divinefavor.common.util.UtilTick
 import net.minecraft.client.Minecraft
@@ -33,13 +30,17 @@ object EventClientTickHandler {
             return
 
         val player = mc.player ?: return
+
         val templateSavedData = player.world[TemplateData]
-        val templatesToSync = player.getInventoryCapability().asSequence()
-                .filter { it.item is ItemMemoryDrop }
-                .filter { it.isPropertySet(ItemMemoryDrop.uuid) }
-                .map { it.get(ItemMemoryDrop.uuid) }
+        val templatesInInventory = player.getInventoryCapability().asSequence()
+                .filter { it.item is ITemplateContainer }
+                .mapPairs { it.item as ITemplateContainer }
+                .map { (stack, container) -> container.getTemplatesIds(stack) }
+                .flatten()
                 .filter { !templateSavedData.contains(it) }
-                .toList()
+
+        val currentTemplate = sequenceOf(player.divinePlayerData.templateData.currentTemplate)
+        val templatesToSync = (templatesInInventory + currentTemplate).toList()
 
         MessageRequestTemplate(templatesToSync).send()
     }

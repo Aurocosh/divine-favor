@@ -206,6 +206,8 @@ public class ConfigSpell {
     public static WoodenPunch woodenPunch = new WoodenPunch();
 
     // New configs
+    @Config.Name("Build template")
+    public static BuildTemplate buildTemplate = new BuildTemplate();
     @Config.Name("Copy area")
     public static CopyArea copyArea = new CopyArea();
     @Config.Name("Summon blaze")

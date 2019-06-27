@@ -1,4 +1,4 @@
-package aurocosh.divinefavor.common.util
+package aurocosh.divinefavor.common.item.spell_talismans.copy
 
 import net.minecraft.block.state.IBlockState
 import net.minecraft.util.math.BlockPos

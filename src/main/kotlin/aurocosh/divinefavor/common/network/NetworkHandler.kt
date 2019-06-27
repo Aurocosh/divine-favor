@@ -58,6 +58,7 @@ object NetworkHandler {
         autoWrapper.register(MessageSpiritBecameInactive::class.java, Side.CLIENT)
 
         autoWrapper.register(MessageSendBlockTemplate::class.java, Side.CLIENT)
+        autoWrapper.register(MessageSyncSelectedTemplate::class.java, Side.CLIENT)
 
         // Server messages
         autoWrapper.register(MessagePetrificationCure::class.java, Side.SERVER)

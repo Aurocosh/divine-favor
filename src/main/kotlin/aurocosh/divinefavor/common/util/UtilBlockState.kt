@@ -1,6 +1,6 @@
 package aurocosh.divinefavor.common.util
 
-import aurocosh.divinefavor.client.block_ovelay.MetaItem
+import aurocosh.divinefavor.common.item.spell_talismans.copy.MetaItem
 import com.google.common.collect.ImmutableSet
 import net.minecraft.block.*
 import net.minecraft.block.BlockPortal.AXIS

@@ -2,6 +2,9 @@ package aurocosh.divinefavor.common.item
 
 import aurocosh.divinefavor.DivineFavor
 import aurocosh.divinefavor.common.item.base.ModItem
+import aurocosh.divinefavor.common.lib.EmptyConst.emptyUUID
+import aurocosh.divinefavor.common.lib.extensions.get
+import aurocosh.divinefavor.common.lib.extensions.isPropertySet
 import aurocosh.divinefavor.common.stack_properties.IPropertyAccessor
 import aurocosh.divinefavor.common.stack_properties.PropertyGenerator
 import aurocosh.divinefavor.common.stack_properties.StackPropertyHandler
@@ -16,7 +19,7 @@ import net.minecraft.util.math.BlockPos
 import net.minecraft.world.World
 import java.util.*
 
-open class ItemMemoryDrop(name: String, texturePath: String, orderIndex: Int = 0) : ModItem(name, texturePath, orderIndex) {
+open class ItemMemoryDrop(name: String, texturePath: String, orderIndex: Int = 0) : ModItem(name, texturePath, orderIndex), ITemplateContainer {
     protected val propertyHandler: StackPropertyHandler = StackPropertyHandler(name)
     val properties: IPropertyAccessor = propertyHandler
 
@@ -35,8 +38,20 @@ open class ItemMemoryDrop(name: String, texturePath: String, orderIndex: Int = 0
         return actionResult(false, stack)
     }
 
+    override fun getSelectedTemplateId(stack: ItemStack): UUID? {
+        if (stack.isPropertySet(uuid))
+            return stack.get(uuid)
+        return null
+    }
+
+    override fun getTemplatesIds(stack: ItemStack): List<UUID> {
+        if (stack.isPropertySet(uuid))
+            return listOf(stack.get(uuid))
+        return emptyList()
+    }
+
     companion object {
-        val uuid = PropertyGenerator.stack.makeUUIDProperty("uuid", UUID.randomUUID(), showInTooltip = false, showInGui = false)
+        val uuid = PropertyGenerator.stack.makeUUIDProperty("uuid", emptyUUID(), showInTooltip = false, showInGui = false)
     }
 }
 
