@@ -10,8 +10,6 @@ import aurocosh.divinefavor.common.item.spell_talismans.base.ItemSpellTalisman
 import aurocosh.divinefavor.common.item.spell_talismans.base.SpellOptions
 import aurocosh.divinefavor.common.item.spell_talismans.context.ContextProperty
 import aurocosh.divinefavor.common.item.spell_talismans.context.TalismanContext
-import aurocosh.divinefavor.common.item.spell_talismans.context.playerField
-import aurocosh.divinefavor.common.item.spell_talismans.context.worldField
 import aurocosh.divinefavor.common.lib.BlockMapIntState
 import aurocosh.divinefavor.common.lib.extensions.*
 import aurocosh.divinefavor.common.lib.math.CuboidBoundingBox
@@ -39,41 +37,29 @@ import java.util.*
 import javax.vecmath.Color3f
 
 abstract class SpellTalismanCopy(name: String, spirit: ModSpirit, favorCost: Int = ConfigGeneral.blockBuildingCost) : ItemSpellTalisman(name, spirit, favorCost, SpellOptions.TRACE_ONLY_CAST) {
-    protected val finalCoordinates = ContextProperty<List<BlockPos>>("coordinates", emptyList())
+    protected data class CopyCoordinates(val coordinates: List<BlockPos>, val boundingBox: CuboidBoundingBox)
+
+    protected val finalCoordinates = ContextProperty<CopyCoordinates>("coordinates", CopyCoordinates(emptyList(), CuboidBoundingBox()))
 
     override fun validate(context: TalismanContext): Boolean {
-        val coordinates = context.get(finalCoordinates)
-        val cubeCoordinates = CuboidBoundingBox.getBoundingBox(coordinates)
-
-        val (player, world) = context.get(playerField, worldField)
-
-        val maxSize: Int = sequenceOf(cubeCoordinates.sizeX, cubeCoordinates.sizeY, cubeCoordinates.sizeZ).max() as Int
+        val boundingBox = context.get(finalCoordinates).boundingBox
+        val maxSize: Int = sequenceOf(boundingBox.sizeX, boundingBox.sizeY, boundingBox.sizeZ).max() as Int
         if (maxSize > 125) {
-            player.sendStatusMessage(TextComponentString(TextFormatting.RED.toString() + TextComponentTranslation("message.divinefavor:copy_area_is_too_big", 125).unformattedComponentText), true)
+            context.player.sendStatusMessage(TextComponentString(TextFormatting.RED.toString() + TextComponentTranslation("message.divinefavor:copy_area_is_too_big", 125).unformattedComponentText), true)
             return false
         }
-
 
         return true
     }
 
     override fun preProcess(context: TalismanContext): Boolean {
-        val coordinates = getFinalCoordinates(context)
-        context.set(finalCoordinates, coordinates)
-        return coordinates.isNotEmpty()
-    }
-
-    protected open fun getCommonCoordinates(context: TalismanContext): List<BlockPos> {
-        val world = context.world
         val coordinates = getCoordinates(context)
-        return coordinates.S.filterNot(world::isAirBlock).toList()
+        context.set(finalCoordinates, coordinates)
+        return coordinates.coordinates.isNotEmpty()
     }
-
-    protected open fun getRenderCoordinates(context: TalismanContext): List<BlockPos> = getCommonCoordinates(context)
-    protected open fun getFinalCoordinates(context: TalismanContext): List<BlockPos> = getCommonCoordinates(context)
 
     override fun performActionServer(context: TalismanContext) {
-        val coordinates = context.get(finalCoordinates)
+        val coordinates = context.get(finalCoordinates).coordinates
         copyBlocks(context.world, context.player, coordinates)
     }
 
@@ -156,14 +142,13 @@ abstract class SpellTalismanCopy(name: String, spirit: ModSpirit, favorCost: Int
     @SideOnly(Side.CLIENT)
     override fun handleRendering(context: TalismanContext, lastEvent: RenderWorldLastEvent) {
         val player = context.player
-        val coordinates = getRenderCoordinates(context)
+        val (coordinates, boundingBox) = getCoordinates(context)
         BlockHighlightRendering.render(lastEvent, player, coordinates, Color3f(0.3f, 0.3f, 0f))
 
-        val cubeCoordinates = CuboidBoundingBox.getBoundingBox(coordinates)
-        BoxRendering.render(lastEvent, player, cubeCoordinates.lowerCorner, cubeCoordinates.upperCorner)
+        BoxRendering.render(lastEvent, player, boundingBox.lowerCorner, boundingBox.upperCorner)
     }
 
-    protected abstract fun getCoordinates(context: TalismanContext): List<BlockPos>
+    protected abstract fun getCoordinates(context: TalismanContext): CopyCoordinates
 
 
 }

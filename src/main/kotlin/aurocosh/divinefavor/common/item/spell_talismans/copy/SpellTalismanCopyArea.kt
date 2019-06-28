@@ -4,6 +4,7 @@ import aurocosh.divinefavor.common.item.spell_talismans.base.CastType
 import aurocosh.divinefavor.common.item.spell_talismans.context.TalismanContext
 import aurocosh.divinefavor.common.item.spell_talismans.context.posField
 import aurocosh.divinefavor.common.item.spell_talismans.context.stackField
+import aurocosh.divinefavor.common.item.spell_talismans.context.worldField
 import aurocosh.divinefavor.common.lib.extensions.get
 import aurocosh.divinefavor.common.lib.extensions.set
 import aurocosh.divinefavor.common.lib.math.CuboidBoundingBox
@@ -54,9 +55,11 @@ class SpellTalismanCopyArea(name: String, spirit: ModSpirit, favorCost: Int) : S
         return true
     }
 
-    override fun getCoordinates(context: TalismanContext): List<BlockPos> {
-        val (first, second) = context.stack.get(firstCorner, secondCorner)
-        val cubeCoordinates = CuboidBoundingBox(first, second)
-        return cubeCoordinates.allPositionsInside
+    override fun getCoordinates(context: TalismanContext): CopyCoordinates {
+        val (stack, world) = context.get(stackField, worldField)
+        val (first, second) = stack.get(firstCorner, secondCorner)
+        val boundingBox = CuboidBoundingBox(first, second)
+        val coordinates = boundingBox.allPositionsInside.filterNot(world::isAirBlock).toList()
+        return CopyCoordinates(coordinates, boundingBox)
     }
 }

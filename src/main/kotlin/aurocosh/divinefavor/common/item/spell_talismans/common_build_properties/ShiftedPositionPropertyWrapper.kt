@@ -10,6 +10,7 @@ import aurocosh.divinefavor.common.stack_properties.StackPropertyHandler
 import aurocosh.divinefavor.common.stack_properties.properties.StackPropertyInt
 import aurocosh.divinefavor.common.util.UtilEntity
 import net.minecraft.item.ItemStack
+import net.minecraft.util.EnumFacing
 import net.minecraft.util.math.BlockPos
 
 class ShiftedPositionPropertyWrapper(propertyHandler: StackPropertyHandler) : PositionPropertyWrapper(propertyHandler) {
@@ -24,6 +25,13 @@ class ShiftedPositionPropertyWrapper(propertyHandler: StackPropertyHandler) : Po
         return when {
             context.stack.get(isRelative) -> getRelativePosition(context)
             else -> getShiftedPosition(context)
+        }
+    }
+
+    fun getFacing(context: TalismanContext): EnumFacing {
+        return when {
+            context.stack.get(isRelative) -> EnumFacing.getDirectionFromEntityLiving(context.pos,context.player)
+            else -> context.facing
         }
     }
 

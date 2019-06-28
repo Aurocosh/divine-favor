@@ -9,6 +9,7 @@ import aurocosh.divinefavor.common.item.spell_talismans.context.stackField
 import aurocosh.divinefavor.common.item.spell_talismans.context.worldField
 import aurocosh.divinefavor.common.lib.CachedContainer
 import aurocosh.divinefavor.common.lib.extensions.get
+import aurocosh.divinefavor.common.lib.math.CuboidBoundingBox
 import aurocosh.divinefavor.common.spirit.base.ModSpirit
 import aurocosh.divinefavor.common.stack_properties.properties.StackPropertyBool
 import aurocosh.divinefavor.common.stack_properties.properties.StackPropertyInt
@@ -25,20 +26,24 @@ class SpellTalismanCopyBlocks(name: String, spirit: ModSpirit, favorCost: Int) :
 
     @SideOnly(Side.CLIENT)
     override fun shouldRender(context: TalismanContext): Boolean = positionPropertyWrapper.shouldRender(context)
+
     override fun raycastBlock(stack: ItemStack, castType: CastType) = positionPropertyWrapper.shouldRaycastBlock(stack)
 
     fun getBlockCount(stack: ItemStack): Int = blockCount.getValue(stack)
 
-    override fun getCoordinates(context: TalismanContext): List<BlockPos> {
+    override fun getCoordinates(context: TalismanContext): CopyCoordinates {
         val (stack, world, player) = context.get(stackField, worldField, playerField)
         val (fuzzy, doNotSelect) = stack.get(isFuzzy, doNotSelectBelow)
         val count = getBlockCount(stack)
         val blockPos = positionPropertyWrapper.getPosition(context)
 
-        return cachedContainer.getValue(blockPos, count, fuzzy, doNotSelect) {
+        val coordinates = cachedContainer.getValue(blockPos, count, fuzzy, doNotSelect) {
             val playerPos = player.position
-            generateFloodFillCoordinates(blockPos, count, world, fuzzy) {pos,_-> !doNotSelect || pos.y >= playerPos.y }
+            val posList = generateFloodFillCoordinates(blockPos, count, world, fuzzy) { pos, _ -> !doNotSelect || pos.y >= playerPos.y }
+            posList.filterNot(world::isAirBlock).toList()
         }
+        val boundingBox = CuboidBoundingBox.getBoundingBox(coordinates)
+        return CopyCoordinates(coordinates, boundingBox)
     }
 
     companion object {

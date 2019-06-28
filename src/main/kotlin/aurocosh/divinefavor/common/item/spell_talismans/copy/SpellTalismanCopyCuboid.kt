@@ -2,11 +2,15 @@ package aurocosh.divinefavor.common.item.spell_talismans.copy
 
 import aurocosh.divinefavor.common.coordinate_generators.generateCuboid
 import aurocosh.divinefavor.common.item.spell_talismans.base.CastType
-import aurocosh.divinefavor.common.item.spell_talismans.common_build_properties.PositionPropertyWrapper
 import aurocosh.divinefavor.common.item.spell_talismans.common_build_properties.ShiftedPositionPropertyWrapper
 import aurocosh.divinefavor.common.item.spell_talismans.context.TalismanContext
+import aurocosh.divinefavor.common.item.spell_talismans.context.playerField
+import aurocosh.divinefavor.common.item.spell_talismans.context.stackField
 import aurocosh.divinefavor.common.lib.CachedContainer
+import aurocosh.divinefavor.common.lib.extensions.directionPos
 import aurocosh.divinefavor.common.lib.extensions.get
+import aurocosh.divinefavor.common.lib.extensions.scale
+import aurocosh.divinefavor.common.lib.math.CuboidBoundingBox
 import aurocosh.divinefavor.common.spirit.base.ModSpirit
 import aurocosh.divinefavor.common.stack_properties.properties.StackPropertyInt
 import aurocosh.divinefavor.common.util.UtilPlayer
@@ -21,10 +25,11 @@ class SpellTalismanCopyCuboid(name: String, spirit: ModSpirit, favorCost: Int) :
     private val left: StackPropertyInt = propertyHandler.registerIntProperty("left", 1, 0, 50)
     private val right: StackPropertyInt = propertyHandler.registerIntProperty("right", 1, 0, 50)
     private val depth: StackPropertyInt = propertyHandler.registerIntProperty("depth", 3, 1, 50)
-    val positionPropertyWrapper: PositionPropertyWrapper = ShiftedPositionPropertyWrapper(propertyHandler)
+    val positionPropertyWrapper = ShiftedPositionPropertyWrapper(propertyHandler)
 
     @SideOnly(Side.CLIENT)
     override fun shouldRender(context: TalismanContext): Boolean = positionPropertyWrapper.shouldRender(context)
+
     override fun raycastBlock(stack: ItemStack, castType: CastType) = positionPropertyWrapper.shouldRaycastBlock(stack)
 
     fun getBlockCount(stack: ItemStack): Int {
@@ -34,15 +39,35 @@ class SpellTalismanCopyCuboid(name: String, spirit: ModSpirit, favorCost: Int) :
         return (width * height * depth)
     }
 
-    override fun getCoordinates(context: TalismanContext): List<BlockPos> {
-        val (left, right, up, down, depth) = context.stack.get(left, right, up, down, depth)
+    override fun getCoordinates(context: TalismanContext): CopyCoordinates {
+        val (stack, player) = context.get(stackField, playerField)
+        val (left, right, up, down, depth) = stack.get(left, right, up, down, depth)
         val pos = positionPropertyWrapper.getPosition(context)
-        val facing = context.facing
+        val facing = positionPropertyWrapper.getFacing(context)
 
-        return cachedContainer.getValue(facing, pos, up, down, left, right, depth) {
-            val directions = UtilPlayer.getRelativeDirections(context.player, facing)
-            generateCuboid(directions, pos, up, down, left, right, depth).toList()
+        val directions = UtilPlayer.getRelativeDirections(player, facing)
+        val boundingBox = getBoundingBox(directions, right, down, left, up, depth, pos)
+
+        val coordinates = cachedContainer.getValue(facing, pos, up, down, left, right, depth) {
+            val world = context.world
+            generateCuboid(directions, pos, up, down, left, right, depth).filterNot(world::isAirBlock).toList()
         }
+
+        return CopyCoordinates(coordinates, boundingBox)
+    }
+
+    private fun getBoundingBox(directions: UtilPlayer.RelativeDirections, right: Int, down: Int, left: Int, up: Int, depth: Int, pos: BlockPos): CuboidBoundingBox {
+        val rightShift = directions.right.directionPos.scale(right)
+        val downShift = directions.down.directionPos.scale(down)
+
+        val leftShift = directions.left.directionPos.scale(left)
+        val upShift = directions.up.directionPos.scale(up)
+        val depthShift = directions.back.directionPos.scale(depth)
+
+        val firstCorner = pos.add(rightShift).add(downShift)
+        val secondCorner = pos.add(leftShift).add(upShift).add(depthShift)
+
+        return CuboidBoundingBox(firstCorner, secondCorner)
     }
 
     companion object {
