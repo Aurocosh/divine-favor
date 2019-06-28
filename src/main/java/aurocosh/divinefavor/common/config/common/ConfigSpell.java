@@ -206,6 +206,8 @@ public class ConfigSpell {
     public static WoodenPunch woodenPunch = new WoodenPunch();
 
     // New configs
+    @Config.Name("Copy blocks")
+    public static CopyBlocks copyBlocks = new CopyBlocks();
     @Config.Name("Crystalyze memory")
     public static CrystalyzeMemory crystalyzeMemory = new CrystalyzeMemory();
     @Config.Name("Build template")

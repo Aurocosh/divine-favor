@@ -190,6 +190,7 @@ item.divinefavor:item_memory_drop.name=Memory drop
 item.divinefavor:ice_arrow.name=Ice arrow
 
 ## SPELL TALISMAN NAMES
+item.divinefavor:spell_talisman_copy_blocks.name=Copy blocks
 item.divinefavor:spell_talisman_crystalyze_memory.name=Crystalyze memory
 item.divinefavor:spell_talisman_build_template.name=Build template
 item.divinefavor:spell_talisman_copy_area.name=Copy area
@@ -624,6 +625,7 @@ item.divinefavor:item_memory_drop.description=TODO
 item.divinefavor:ice_arrow.description=Delicate arrows made of ice. They are frail and because of this they deal less damage then regular arrows and break easily, but in a pinch they can be very useful. This type of arrow also cannot be tipped in potion, but on the other hand it deals extra damage to hellish mobs.
 
 ## SPELL TALISMAN DESCRIPTIONS
+item.divinefavor:spell_talisman_copy_blocks.description=TODO
 item.divinefavor:spell_talisman_crystalyze_memory.description=TODO
 item.divinefavor:spell_talisman_build_template.description=TODO
 item.divinefavor:spell_talisman_copy_area.description=TODO
@@ -917,6 +919,7 @@ name.divinefavor:property.surface=Surface: %1$s
 name.divinefavor:property.depth=Depth: %1$s
 
 name.divinefavor:property.do_not_break_below=Don't break below
+name.divinefavor:property.do_not_select_below=Don't select below
 
 ## TALISMAN PROPERTY TOOLTIPS
 tooltip.divinefavor:property.blink_distance=Teleportation distance
@@ -958,3 +961,4 @@ tooltip.divinefavor:property.surface=Determines max surface area of the build
 tooltip.divinefavor:property.depth=Determines depth of the build
 
 tooltip.divinefavor:property.do_not_break_below=If this option is enabled then no blocks below your feet will be broken
+tooltip.divinefavor:property.do_not_select_below=If this option is enabled then no blocks below your feet will be selected

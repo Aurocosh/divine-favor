@@ -1,0 +1,15 @@
+{
+  "name": "Copy blocks",
+  "icon": "divinefavor:spell_talisman_copy_blocks",
+  "category": "spell_talismans",
+  "pages": [
+    {
+      "type": "item_description",
+      "talisman": "divinefavor:spell_talisman_copy_blocks"
+    },
+    {
+      "type": "spell_talisman_stats",
+      "talisman": "divinefavor:spell_talisman_copy_blocks"
+    }
+  ]
+}
