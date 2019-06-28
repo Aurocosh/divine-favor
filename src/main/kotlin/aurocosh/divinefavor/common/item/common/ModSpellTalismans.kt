@@ -8,6 +8,7 @@ import aurocosh.divinefavor.common.item.spell_talismans.base.*
 import aurocosh.divinefavor.common.item.spell_talismans.build.*
 import aurocosh.divinefavor.common.item.spell_talismans.copy.SpellTalismanCopyArea
 import aurocosh.divinefavor.common.item.spell_talismans.copy.SpellTalismanCopyBlocks
+import aurocosh.divinefavor.common.item.spell_talismans.copy.SpellTalismanCopyCuboid
 import aurocosh.divinefavor.common.item.spell_talismans.move.SpellTalismanPullSide
 import aurocosh.divinefavor.common.item.spell_talismans.move.SpellTalismanPushSide
 import aurocosh.divinefavor.common.item.spell_talismans.replace.SpellTalismanReplaceBlocks
@@ -147,6 +148,7 @@ object ModSpellTalismans {
     lateinit var wooden_punch: ItemSpellTalisman
 
     // New fields
+    lateinit var copy_cuboid: ItemSpellTalisman
     lateinit var copy_blocks: ItemSpellTalisman
     lateinit var crystalyze_memory: ItemSpellTalisman
     lateinit var build_template: ItemSpellTalisman
@@ -294,6 +296,7 @@ object ModSpellTalismans {
         starvation = SpellTalismanModPotion("starvation", ModSpirits.timber, ConfigSpell.starvation.favorCost, ModPotions.starvation, ConfigSpell.starvation.duration)
 
         // New instances
+        copy_cuboid = SpellTalismanCopyCuboid("copy_cuboid", ModSpirits.romol, ConfigSpell.copyCuboid.favorCost)
         copy_blocks = SpellTalismanCopyBlocks("copy_blocks", ModSpirits.blizrabi, ConfigSpell.copyBlocks.favorCost)
         crystalyze_memory = SpellTalismanCrystalyzeMemory("crystalyze_memory", ModSpirits.blizrabi, ConfigSpell.crystalyzeMemory.favorCost, SpellOptions.ALL_CAST)
         build_template = SpellTalismanBuildTemplate("build_template", ModSpirits.romol, ConfigSpell.buildTemplate.favorCost, SpellOptions.ALL_CAST)

@@ -206,6 +206,8 @@ public class ConfigSpell {
     public static WoodenPunch woodenPunch = new WoodenPunch();
 
     // New configs
+    @Config.Name("Copy cuboid")
+    public static CopyCuboid copyCuboid = new CopyCuboid();
     @Config.Name("Copy blocks")
     public static CopyBlocks copyBlocks = new CopyBlocks();
     @Config.Name("Crystalyze memory")

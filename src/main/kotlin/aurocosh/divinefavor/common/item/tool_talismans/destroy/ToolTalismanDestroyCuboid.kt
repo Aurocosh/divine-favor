@@ -1,8 +1,8 @@
 package aurocosh.divinefavor.common.item.tool_talismans.destroy
 
-import aurocosh.divinefavor.common.lib.CachedContainer
 import aurocosh.divinefavor.common.coordinate_generators.generateCuboid
 import aurocosh.divinefavor.common.item.spell_talismans.context.*
+import aurocosh.divinefavor.common.lib.CachedContainer
 import aurocosh.divinefavor.common.lib.extensions.filter
 import aurocosh.divinefavor.common.lib.extensions.get
 import aurocosh.divinefavor.common.spirit.base.ModSpirit
@@ -22,7 +22,7 @@ class ToolTalismanDestroyCuboid(name: String, spirit: ModSpirit) : ToolTalismanD
         val (left, right, up, down, depth) = stack.get(left, right, up, down, depth)
         val width = left + 1 + right
         val height = up + 1 + down
-        return favorCost * (width * height * depth)
+        return (width * height * depth)
     }
 
     override fun getCoordinates(context: TalismanContext): List<BlockPos> {
