@@ -8,8 +8,8 @@ import aurocosh.divinefavor.common.item.spell_talismans.context.TalismanContext
 import aurocosh.divinefavor.common.lib.extensions.get
 import aurocosh.divinefavor.common.lib.interfaces.IBlockCatcher
 import aurocosh.divinefavor.common.spirit.base.ModSpirit
-import aurocosh.divinefavor.common.stack_properties.StackPropertyBool
-import aurocosh.divinefavor.common.stack_properties.StackPropertyInt
+import aurocosh.divinefavor.common.stack_properties.properties.StackPropertyBool
+import aurocosh.divinefavor.common.stack_properties.properties.StackPropertyInt
 import aurocosh.divinefavor.common.tasks.BlockReplacingTask
 import net.minecraft.item.ItemStack
 import net.minecraftforge.client.event.RenderWorldLastEvent

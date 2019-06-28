@@ -74,6 +74,7 @@ object NetworkHandler {
         autoWrapper.register(MessageSyncPropertyIBlockState::class.java, Side.SERVER)
         autoWrapper.register(MessageSyncPropertyInt::class.java, Side.SERVER)
         autoWrapper.register(MessageSyncPropertyUUID::class.java, Side.SERVER)
+        autoWrapper.register(MessageSyncPropertyEnum::class.java, Side.SERVER)
 
         autoWrapper.register(MessageSyncTalismanPropertyBlockPos::class.java, Side.SERVER)
         autoWrapper.register(MessageSyncTalismanPropertyBool::class.java, Side.SERVER)
@@ -82,6 +83,7 @@ object NetworkHandler {
         autoWrapper.register(MessageSyncTalismanPropertyIBlockState::class.java, Side.SERVER)
         autoWrapper.register(MessageSyncTalismanPropertyInt::class.java, Side.SERVER)
         autoWrapper.register(MessageSyncTalismanPropertyUUID::class.java, Side.SERVER)
+        autoWrapper.register(MessageSyncTalismanPropertyEnum::class.java, Side.SERVER)
 
         autoWrapper.register(MessageRequestTemplate::class.java, Side.SERVER)
     }

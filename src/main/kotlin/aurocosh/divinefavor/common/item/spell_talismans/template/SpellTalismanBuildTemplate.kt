@@ -1,20 +1,20 @@
 package aurocosh.divinefavor.common.item.spell_talismans.template
 
 import aurocosh.divinefavor.client.block_ovelay.BlockTemplateRendering
+import aurocosh.divinefavor.common.block_templates.MetaItem
+import aurocosh.divinefavor.common.block_templates.TemplateFinalBlockState
+import aurocosh.divinefavor.common.config.common.ConfigGeneral
 import aurocosh.divinefavor.common.custom_data.global.TemplateData
 import aurocosh.divinefavor.common.item.spell_talismans.base.CastType
 import aurocosh.divinefavor.common.item.spell_talismans.base.ItemSpellTalisman
 import aurocosh.divinefavor.common.item.spell_talismans.base.SpellOptions
 import aurocosh.divinefavor.common.item.spell_talismans.common_build_properties.ShiftedPositionPropertyWrapper
-import aurocosh.divinefavor.common.item.spell_talismans.context.ContextProperty
-import aurocosh.divinefavor.common.item.spell_talismans.context.TalismanContext
-import aurocosh.divinefavor.common.item.spell_talismans.context.playerField
-import aurocosh.divinefavor.common.item.spell_talismans.context.worldField
-import aurocosh.divinefavor.common.block_templates.MetaItem
-import aurocosh.divinefavor.common.block_templates.TemplateFinalBlockState
+import aurocosh.divinefavor.common.item.spell_talismans.context.*
+import aurocosh.divinefavor.common.lib.IIndexedEnum
 import aurocosh.divinefavor.common.lib.extensions.S
 import aurocosh.divinefavor.common.lib.extensions.divinePlayerData
 import aurocosh.divinefavor.common.lib.extensions.get
+import aurocosh.divinefavor.common.lib.math.CuboidBoundingBox
 import aurocosh.divinefavor.common.spirit.base.ModSpirit
 import aurocosh.divinefavor.common.util.UtilBlock
 import aurocosh.divinefavor.common.util.UtilPlayer
@@ -29,9 +29,11 @@ import net.minecraftforge.fml.relauncher.Side
 import net.minecraftforge.fml.relauncher.SideOnly
 import java.util.*
 
-class SpellTalismanBuildTemplate(name: String, spirit: ModSpirit, favorCost: Int, options: EnumSet<SpellOptions>) : ItemSpellTalisman(name, spirit, favorCost, options) {
+class SpellTalismanBuildTemplate(name: String, spirit: ModSpirit, options: EnumSet<SpellOptions>) : ItemSpellTalisman(name, spirit, ConfigGeneral.blockBuildingCost, options) {
     protected val finalTemplate = ContextProperty<List<TemplateFinalBlockState>>("final_template", emptyList())
 
+    val converter: IIndexedEnum<TemplateAnchor> = TemplateAnchor
+    protected val anchor = propertyHandler.registerEnumProperty("template_anchor", TemplateAnchor.Center, converter, true)
     protected val positionPropertyWrapper = ShiftedPositionPropertyWrapper(propertyHandler)
 
     override fun getApproximateFavorCost(itemStack: ItemStack) = favorCost
@@ -43,14 +45,18 @@ class SpellTalismanBuildTemplate(name: String, spirit: ModSpirit, favorCost: Int
     override fun raycastBlock(stack: ItemStack, castType: CastType) = positionPropertyWrapper.shouldRaycastBlock(stack)
 
     override fun preProcess(context: TalismanContext): Boolean {
-        val (player, world) = context.get(playerField, worldField)
+        val (player, world, stack) = context.get(playerField, worldField, stackField)
+        if (world.isRemote)
+            return false
+
         val uuid = player.divinePlayerData.templateData.currentTemplate
+        val blockTemplate = world[TemplateData][uuid] ?: return false
         val position = positionPropertyWrapper.getPosition(context)
-        val templateSavedData = world[TemplateData]
-        val blockTemplate = templateSavedData.get(uuid) ?: return false
+        val anchor = stack.get(anchor)
+        val finalPosition = getPosition(position, anchor, blockTemplate.boundingBox)
 
         val stackMap = blockTemplate.blockMapIntState.intStackMap
-        val blockMapList = blockTemplate.getBlockMapList(position)
+        val blockMapList = blockTemplate.getBlockMapList(finalPosition)
 
         val validBlockStates = blockMapList.S
                 .filter { UtilBlock.canReplaceBlock(player, world, it.pos) }
@@ -76,10 +82,23 @@ class SpellTalismanBuildTemplate(name: String, spirit: ModSpirit, favorCost: Int
 
     @SideOnly(Side.CLIENT)
     override fun handleRendering(context: TalismanContext, lastEvent: RenderWorldLastEvent) {
-        val player = context.player
+        val (player, world, stack) = context.get(playerField, worldField, stackField)
         val uuid = player.divinePlayerData.templateData.currentTemplate
+        val template = world[TemplateData][uuid] ?: return
         val position = positionPropertyWrapper.getPosition(context)
-        BlockTemplateRendering.render(lastEvent, player, uuid, position)
+        val anchor = stack.get(anchor)
+        val finalPosition = getPosition(position, anchor, template.boundingBox)
+        BlockTemplateRendering.render(lastEvent, player, uuid, finalPosition)
+    }
+
+    fun getPosition(pos: BlockPos, anchor: TemplateAnchor, cuboidBoundingBox: CuboidBoundingBox): BlockPos {
+        return when (anchor) {
+            TemplateAnchor.NorthWest -> pos
+            TemplateAnchor.SouthWest -> pos.add(0, 0, -cuboidBoundingBox.sizeZ)
+            TemplateAnchor.NorthEast -> pos.add(-cuboidBoundingBox.sizeX, 0, 0)
+            TemplateAnchor.SouthEast -> pos.add(-cuboidBoundingBox.sizeX, 0, -cuboidBoundingBox.sizeZ)
+            TemplateAnchor.Center -> pos.add(-cuboidBoundingBox.sizeX / 2, 0, -cuboidBoundingBox.sizeZ / 2)
+        }
     }
 
     private fun buildBlock(player: EntityPlayer, world: World, pos: BlockPos, state: IBlockState, metaItem: MetaItem) {

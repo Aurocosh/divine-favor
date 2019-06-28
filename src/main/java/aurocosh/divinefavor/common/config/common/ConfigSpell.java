@@ -212,8 +212,6 @@ public class ConfigSpell {
     public static CopyBlocks copyBlocks = new CopyBlocks();
     @Config.Name("Crystalyze memory")
     public static CrystalyzeMemory crystalyzeMemory = new CrystalyzeMemory();
-    @Config.Name("Build template")
-    public static BuildTemplate buildTemplate = new BuildTemplate();
     @Config.Name("Copy area")
     public static CopyArea copyArea = new CopyArea();
     @Config.Name("Summon blaze")

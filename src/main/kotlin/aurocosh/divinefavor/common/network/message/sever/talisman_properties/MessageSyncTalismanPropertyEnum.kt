@@ -1,17 +1,20 @@
 package aurocosh.divinefavor.common.network.message.sever.talisman_properties
 
 import aurocosh.divinefavor.common.item.talisman.ITalismanStackContainer
-import aurocosh.divinefavor.common.lib.extensions.set
-import aurocosh.divinefavor.common.network.message.sever.stack_properties.MessageSyncProperty
 import aurocosh.divinefavor.common.stack_properties.IPropertyContainer
-import aurocosh.divinefavor.common.stack_properties.properties.StackProperty
+import aurocosh.divinefavor.common.stack_properties.properties.StackPropertyEnum
 import aurocosh.divinefavor.common.util.UtilPlayer
 import net.minecraft.entity.player.EntityPlayerMP
 import net.minecraft.item.Item
 
-abstract class MessageSyncTalismanProperty<T> : MessageSyncProperty<T> {
+class MessageSyncTalismanPropertyEnum : MessageSyncTalismanProperty<Int> {
+    override var value: Int = 0
+
     constructor()
-    constructor(itemId: Int, name: String) : super(itemId, name)
+
+    constructor(itemId: Int, name: String, value: Int) : super(itemId, name) {
+        this.value = value
+    }
 
     override fun handleSafe(serverPlayer: EntityPlayerMP) {
         val talisman = Item.getItemById(itemId) ?: return
@@ -29,8 +32,8 @@ abstract class MessageSyncTalismanProperty<T> : MessageSyncProperty<T> {
         if (!talisman.properties.exist(name))
             return
 
-        val property = talisman.properties.get(name) as? StackProperty<T>
+        val property = talisman.properties.get(name) as? StackPropertyEnum
                 ?: return
-        talismanStack.set(property, value)
+        property.setOrdinalValue(talismanStack, value)
     }
 }

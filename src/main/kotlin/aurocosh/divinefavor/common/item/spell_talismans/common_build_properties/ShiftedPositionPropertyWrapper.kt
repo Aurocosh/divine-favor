@@ -7,7 +7,7 @@ import aurocosh.divinefavor.common.lib.extensions.scale
 import aurocosh.divinefavor.common.lib.extensions.set
 import aurocosh.divinefavor.common.lib.extensions.toBlockPos
 import aurocosh.divinefavor.common.stack_properties.StackPropertyHandler
-import aurocosh.divinefavor.common.stack_properties.StackPropertyInt
+import aurocosh.divinefavor.common.stack_properties.properties.StackPropertyInt
 import aurocosh.divinefavor.common.util.UtilEntity
 import net.minecraft.item.ItemStack
 import net.minecraft.util.math.BlockPos

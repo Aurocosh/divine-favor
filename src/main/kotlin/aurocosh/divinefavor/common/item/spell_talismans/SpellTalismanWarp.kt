@@ -6,7 +6,7 @@ import aurocosh.divinefavor.common.item.spell_talismans.base.SpellOptions
 import aurocosh.divinefavor.common.item.spell_talismans.context.TalismanContext
 import aurocosh.divinefavor.common.particles.ModParticles
 import aurocosh.divinefavor.common.particles.particles.ImmobileParticle
-import aurocosh.divinefavor.common.stack_properties.StackPropertyInt
+import aurocosh.divinefavor.common.stack_properties.properties.StackPropertyInt
 import aurocosh.divinefavor.common.spirit.base.ModSpirit
 import aurocosh.divinefavor.common.util.UtilEntity
 import aurocosh.divinefavor.common.util.UtilRandom

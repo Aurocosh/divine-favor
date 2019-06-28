@@ -10,7 +10,7 @@ import aurocosh.divinefavor.common.item.tool_talismans.base.ItemToolTalisman
 import aurocosh.divinefavor.common.lib.extensions.get
 import aurocosh.divinefavor.common.lib.extensions.isAirOrReplacable
 import aurocosh.divinefavor.common.spirit.base.ModSpirit
-import aurocosh.divinefavor.common.stack_properties.StackPropertyBool
+import aurocosh.divinefavor.common.stack_properties.properties.StackPropertyBool
 import aurocosh.divinefavor.common.tasks.BlockPlacingTask
 import aurocosh.divinefavor.common.util.UtilBlock
 import net.minecraft.init.Blocks

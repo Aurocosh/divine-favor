@@ -1,9 +1,11 @@
 package aurocosh.divinefavor.client.gui.talisman
 
 import aurocosh.divinefavor.client.gui.elements.GuiButtonCustomToggle
+import aurocosh.divinefavor.client.gui.elements.GuiEnumSlider
 import aurocosh.divinefavor.client.gui.elements.GuiSliderInt
-import aurocosh.divinefavor.common.stack_properties.StackPropertyBool
-import aurocosh.divinefavor.common.stack_properties.StackPropertyInt
+import aurocosh.divinefavor.common.stack_properties.properties.StackPropertyBool
+import aurocosh.divinefavor.common.stack_properties.properties.StackPropertyEnum
+import aurocosh.divinefavor.common.stack_properties.properties.StackPropertyInt
 import net.minecraft.item.ItemStack
 import net.minecraftforge.fml.client.config.GuiSlider
 import java.awt.Color
@@ -21,6 +23,22 @@ object PropertyGuiHelper {
                 x, y, width, height,
                 property.displayKey, property.tooltipKey, value, property.defaultValue,
                 property.minValue, property.maxValue,
+                false, true, Color.DARK_GRAY,
+                valueChangedAction)
+    }
+
+    fun addNewEnumSlider(property: StackPropertyEnum<*>, stack: ItemStack, x: Int, y: Int, width: Int, height: Int, selector: () -> Unit): GuiEnumSlider {
+        val valueChangedAction = GuiSlider.ISlider {
+            val value = it.valueInt
+            property.setOrdinalValue(stack, value, true)
+            selector.invoke()
+        }
+
+        val value = property.getValue(stack).ordinal
+        return GuiEnumSlider(
+                x, y, width, height,
+                property.displayKey, property.tooltipKey, value, property.defaultValue.ordinal, property,
+                0, property.getMaxOrdinal(),
                 false, true, Color.DARK_GRAY,
                 valueChangedAction)
     }

@@ -11,7 +11,7 @@ import aurocosh.divinefavor.common.item.tool_talismans.base.ItemToolTalisman
 import aurocosh.divinefavor.common.lib.extensions.filter
 import aurocosh.divinefavor.common.lib.extensions.get
 import aurocosh.divinefavor.common.spirit.base.ModSpirit
-import aurocosh.divinefavor.common.stack_properties.StackPropertyBool
+import aurocosh.divinefavor.common.stack_properties.properties.StackPropertyBool
 import aurocosh.divinefavor.common.tasks.BlockBreakingTask
 import net.minecraft.item.ItemStack
 import net.minecraft.util.math.BlockPos

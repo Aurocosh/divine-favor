@@ -9,8 +9,8 @@ import aurocosh.divinefavor.common.item.spell_talismans.context.*
 import aurocosh.divinefavor.common.lib.CachedContainer
 import aurocosh.divinefavor.common.lib.extensions.get
 import aurocosh.divinefavor.common.spirit.base.ModSpirit
-import aurocosh.divinefavor.common.stack_properties.StackPropertyBool
-import aurocosh.divinefavor.common.stack_properties.StackPropertyInt
+import aurocosh.divinefavor.common.stack_properties.properties.StackPropertyBool
+import aurocosh.divinefavor.common.stack_properties.properties.StackPropertyInt
 import aurocosh.divinefavor.common.util.UtilBlock
 import net.minecraft.block.state.IBlockState
 import net.minecraft.item.ItemStack

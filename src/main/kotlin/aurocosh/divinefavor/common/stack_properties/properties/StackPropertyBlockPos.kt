@@ -1,4 +1,4 @@
-package aurocosh.divinefavor.common.stack_properties
+package aurocosh.divinefavor.common.stack_properties.properties
 
 import aurocosh.divinefavor.common.lib.extensions.getBlockPos
 import aurocosh.divinefavor.common.lib.extensions.setBlockPos

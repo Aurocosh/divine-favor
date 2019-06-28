@@ -4,8 +4,8 @@ import aurocosh.divinefavor.DivineFavor
 import aurocosh.divinefavor.common.item.spell_talismans.context.TalismanContext
 import aurocosh.divinefavor.common.stack_properties.StackPropertyHandler
 import aurocosh.divinefavor.common.lib.extensions.get
-import aurocosh.divinefavor.common.stack_properties.StackPropertyBlockPos
-import aurocosh.divinefavor.common.stack_properties.StackPropertyBool
+import aurocosh.divinefavor.common.stack_properties.properties.StackPropertyBlockPos
+import aurocosh.divinefavor.common.stack_properties.properties.StackPropertyBool
 import aurocosh.divinefavor.common.util.UtilEntity
 import net.minecraft.item.ItemStack
 import net.minecraft.util.math.BlockPos

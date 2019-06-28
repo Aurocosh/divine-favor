@@ -27,7 +27,7 @@ abstract class MapSavedData<K, V>(name: String, private val keyReader: (NBTTagCo
         return templateMap.contains(key)
     }
 
-    fun get(key: K): V? {
+    operator fun get(key: K): V? {
         return templateMap[key]
     }
 

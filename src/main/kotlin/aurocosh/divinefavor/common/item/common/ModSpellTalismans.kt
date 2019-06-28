@@ -299,7 +299,7 @@ object ModSpellTalismans {
         copy_cuboid = SpellTalismanCopyCuboid("copy_cuboid", ModSpirits.romol, ConfigSpell.copyCuboid.favorCost)
         copy_blocks = SpellTalismanCopyBlocks("copy_blocks", ModSpirits.blizrabi, ConfigSpell.copyBlocks.favorCost)
         crystalyze_memory = SpellTalismanCrystalyzeMemory("crystalyze_memory", ModSpirits.blizrabi, ConfigSpell.crystalyzeMemory.favorCost, SpellOptions.ALL_CAST)
-        build_template = SpellTalismanBuildTemplate("build_template", ModSpirits.romol, ConfigSpell.buildTemplate.favorCost, SpellOptions.ALL_CAST)
+        build_template = SpellTalismanBuildTemplate("build_template", ModSpirits.romol, SpellOptions.ALL_CAST)
         copy_area = SpellTalismanCopyArea("copy_area", ModSpirits.romol, ConfigSpell.copyArea.favorCost)
         summon_blaze = SpellTalismanSummonMinion("summon_blaze", ModSpirits.neblaze, ConfigSpell.summonBlaze.favorCost, SpellOptions.USE_CAST, EntityMinionBlaze::class.java)
         summon_cave_spider = SpellTalismanSummonMinion("summon_cave_spider", ModSpirits.loon, ConfigSpell.summonCaveSpider.favorCost, SpellOptions.USE_CAST, EntityMinionCaveSpider::class.java)

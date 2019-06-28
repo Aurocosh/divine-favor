@@ -11,8 +11,8 @@ import aurocosh.divinefavor.common.lib.wrapper.AreaPredicate
 import aurocosh.divinefavor.common.lib.wrapper.ConvertingPredicate
 import aurocosh.divinefavor.common.spirit.base.ModSpirit
 import aurocosh.divinefavor.common.tasks.BlockProcessingTask
-import aurocosh.divinefavor.common.stack_properties.StackPropertyBool
-import aurocosh.divinefavor.common.stack_properties.StackPropertyInt
+import aurocosh.divinefavor.common.stack_properties.properties.StackPropertyBool
+import aurocosh.divinefavor.common.stack_properties.properties.StackPropertyInt
 import aurocosh.divinefavor.common.util.UtilBlock
 import aurocosh.divinefavor.common.util.UtilCoordinates
 import aurocosh.divinefavor.common.util.UtilPredicate

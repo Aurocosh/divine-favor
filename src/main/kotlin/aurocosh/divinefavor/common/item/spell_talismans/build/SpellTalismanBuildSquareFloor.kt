@@ -9,7 +9,7 @@ import aurocosh.divinefavor.common.item.spell_talismans.context.stackField
 import aurocosh.divinefavor.common.lib.CachedContainer
 import aurocosh.divinefavor.common.lib.extensions.get
 import aurocosh.divinefavor.common.spirit.base.ModSpirit
-import aurocosh.divinefavor.common.stack_properties.StackPropertyInt
+import aurocosh.divinefavor.common.stack_properties.properties.StackPropertyInt
 import net.minecraft.item.ItemStack
 import net.minecraft.util.math.BlockPos
 

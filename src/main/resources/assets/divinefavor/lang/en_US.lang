@@ -923,6 +923,13 @@ name.divinefavor:property.depth=Depth: %1$s
 name.divinefavor:property.do_not_break_below=Don't break below
 name.divinefavor:property.do_not_select_below=Don't select below
 
+name.divinefavor:property.template_anchor=Anchor: %1$s
+name.divinefavor:property.template_anchor_value_center=Center
+name.divinefavor:property.template_anchor_value_northeast=North-East
+name.divinefavor:property.template_anchor_value_southeast=South-East
+name.divinefavor:property.template_anchor_value_southwest=South-West
+name.divinefavor:property.template_anchor_value_northwest=North-West
+
 ## TALISMAN PROPERTY TOOLTIPS
 tooltip.divinefavor:property.blink_distance=Teleportation distance
 tooltip.divinefavor:property.block_count=Amount of blocks affected by spell
@@ -964,3 +971,5 @@ tooltip.divinefavor:property.depth=Determines depth of the build
 
 tooltip.divinefavor:property.do_not_break_below=If this option is enabled then no blocks below your feet will be broken
 tooltip.divinefavor:property.do_not_select_below=If this option is enabled then no blocks below your feet will be selected
+
+tooltip.divinefavor:property.template_anchor=This property determines anchor point of the block template.

@@ -18,7 +18,7 @@ import net.minecraftforge.fml.client.config.GuiSlider
 import java.awt.Color
 import java.awt.Rectangle
 
-class GuiSliderInt(
+open class GuiSliderInt(
         val xGlob: Int, val yGlob: Int, width: Int, height: Int, private val displayKey: String,
         override val tooltipKey: String, currentValue: Int, val defaultValue: Int,
         val minVal: Int, val maxVal: Int, showDec: Boolean, drawStr: Boolean, color: Color,
@@ -78,7 +78,7 @@ class GuiSliderInt(
         renderText(mc, this, buttonText)
     }
 
-    private fun renderText(mc: Minecraft, component: GuiButton, text: String) {
+    open fun renderText(mc: Minecraft, component: GuiButton, text: String) {
         val color = if (!enabled) 10526880 else if (hovered) 16777120 else -1
 
         var buttonText = text

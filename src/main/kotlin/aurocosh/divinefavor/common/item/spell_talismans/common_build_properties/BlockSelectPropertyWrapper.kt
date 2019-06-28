@@ -3,7 +3,7 @@ package aurocosh.divinefavor.common.item.spell_talismans.common_build_properties
 import aurocosh.divinefavor.common.item.spell_talismans.base.CastType
 import aurocosh.divinefavor.common.item.spell_talismans.context.TalismanContext
 import aurocosh.divinefavor.common.stack_properties.StackPropertyHandler
-import aurocosh.divinefavor.common.stack_properties.StackPropertyIBlockState
+import aurocosh.divinefavor.common.stack_properties.properties.StackPropertyIBlockState
 import net.minecraft.init.Blocks
 
 class BlockSelectPropertyWrapper(propertyHandler: StackPropertyHandler) {

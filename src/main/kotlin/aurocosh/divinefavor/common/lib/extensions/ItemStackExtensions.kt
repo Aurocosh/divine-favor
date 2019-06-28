@@ -2,7 +2,7 @@ package aurocosh.divinefavor.common.lib.extensions
 
 import aurocosh.divinefavor.common.lib.Quadruple
 import aurocosh.divinefavor.common.lib.Quintuple
-import aurocosh.divinefavor.common.stack_properties.StackProperty
+import aurocosh.divinefavor.common.stack_properties.properties.StackProperty
 import net.minecraft.item.ItemStack
 import net.minecraft.nbt.NBTTagCompound
 

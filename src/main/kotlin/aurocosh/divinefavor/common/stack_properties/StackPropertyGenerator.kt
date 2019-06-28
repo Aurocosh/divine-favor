@@ -1,6 +1,8 @@
 package aurocosh.divinefavor.common.stack_properties
 
+import aurocosh.divinefavor.common.lib.IIndexedEnum
 import aurocosh.divinefavor.common.network.message.sever.stack_properties.*
+import aurocosh.divinefavor.common.stack_properties.properties.*
 import net.minecraft.block.state.IBlockState
 import net.minecraft.util.EnumFacing
 import net.minecraft.util.math.BlockPos
@@ -35,6 +37,10 @@ open class StackPropertyGenerator() {
         return StackPropertyUUID(name, defaultValue, showInTooltip, showInGui, orderIndex, getSynchronizerUUID())
     }
 
+    fun <T> makeEnumProperty(name: String, defaultValue: T, converter: IIndexedEnum<T>, showInTooltip: Boolean = false, showInGui: Boolean = true, orderIndex: Int = 0): StackPropertyEnum<T> where T : Enum<T> {
+        return StackPropertyEnum(name, defaultValue, converter, showInTooltip, showInGui, orderIndex, getSynchronizerEnum())
+    }
+
     protected open fun getSynchronizerInt() = { itemId: Int, property: StackProperty<Int>, value: Int ->
         MessageSyncPropertyInt(itemId, property.name, value).send()
     }
@@ -61,5 +67,11 @@ open class StackPropertyGenerator() {
 
     protected open fun getSynchronizerUUID() = { itemId: Int, property: StackProperty<UUID>, value: UUID ->
         MessageSyncPropertyUUID(itemId, property.name, value).send()
+    }
+
+    protected open fun <T> getSynchronizerEnum(): (Int, StackProperty<T>, T) -> Unit where T : Enum<T> {
+        return { itemId: Int, property: StackProperty<T>, value: T ->
+            MessageSyncPropertyEnum(itemId, property.name, value.ordinal).send()
+        }
     }
 }

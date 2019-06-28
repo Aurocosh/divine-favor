@@ -1,4 +1,4 @@
-package aurocosh.divinefavor.common.stack_properties
+package aurocosh.divinefavor.common.stack_properties.properties
 
 import aurocosh.divinefavor.common.constants.ConstLang
 import net.minecraft.client.resources.I18n

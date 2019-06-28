@@ -6,7 +6,7 @@ import aurocosh.divinefavor.common.item.spell_talismans.context.*
 import aurocosh.divinefavor.common.lib.extensions.filter
 import aurocosh.divinefavor.common.lib.extensions.get
 import aurocosh.divinefavor.common.spirit.base.ModSpirit
-import aurocosh.divinefavor.common.stack_properties.StackPropertyInt
+import aurocosh.divinefavor.common.stack_properties.properties.StackPropertyInt
 import aurocosh.divinefavor.common.util.UtilPlayer
 import net.minecraft.item.ItemStack
 import net.minecraft.util.math.BlockPos

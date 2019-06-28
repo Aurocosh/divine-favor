@@ -12,9 +12,10 @@ import aurocosh.divinefavor.common.item.talisman.ItemTalisman
 import aurocosh.divinefavor.common.lib.TooltipCache
 import aurocosh.divinefavor.common.lib.extensions.S
 import aurocosh.divinefavor.common.network.message.sever.talisman.MessageSyncTalismanPropertyIndex
-import aurocosh.divinefavor.common.stack_properties.StackProperty
-import aurocosh.divinefavor.common.stack_properties.StackPropertyBool
-import aurocosh.divinefavor.common.stack_properties.StackPropertyInt
+import aurocosh.divinefavor.common.stack_properties.properties.StackProperty
+import aurocosh.divinefavor.common.stack_properties.properties.StackPropertyBool
+import aurocosh.divinefavor.common.stack_properties.properties.StackPropertyEnum
+import aurocosh.divinefavor.common.stack_properties.properties.StackPropertyInt
 import aurocosh.divinefavor.common.util.UtilMouse
 import net.minecraft.client.Minecraft
 import net.minecraft.client.gui.Gui
@@ -81,6 +82,10 @@ class GuiTalismanProperties(stack: ItemStack, private val playerSlot: Int) : Gui
         when (property) {
             is StackPropertyInt -> {
                 val slider = PropertyGuiHelper.addNewSlider(property, itemStack, nextElementX, nextElementY, elementWidth, elementHeight, selector)
+                addGuiElement(slider)
+            }
+            is StackPropertyEnum -> {
+                val slider = PropertyGuiHelper.addNewEnumSlider(property, itemStack, nextElementX, nextElementY, elementWidth, elementHeight, selector)
                 addGuiElement(slider)
             }
             is StackPropertyBool -> {
