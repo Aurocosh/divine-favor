@@ -9,6 +9,7 @@ object ConstGuiIDs {
     val IRON_MEDIUM_NO_STONE = nextId++
     val IRON_MEDIUM_WITH_STONE = nextId++
     val MEMORY_POUCH = nextId++
+    val MEMORY_POUCH_TEMPLATE = nextId++
     val RITUAL_POUCH = nextId++
     val SOULBOUND_LECTERN_ACTIVE = nextId++
     val SOULBOUND_LECTERN_EMPTY = nextId++

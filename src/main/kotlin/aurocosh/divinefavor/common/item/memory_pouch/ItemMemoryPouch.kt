@@ -26,13 +26,13 @@ class ItemMemoryPouch : ModItem("memory_pouch", "memory_pouch", ConstMainTabOrde
 
     override fun onItemRightClick(world: World, player: EntityPlayer, hand: EnumHand): ActionResult<ItemStack> {
         val stack = player.getHeldItem(hand)
-        if(player.isSneaking){
+        if (player.isSneaking) {
             player.openGui(DivineFavor, ConstGuiIDs.MEMORY_POUCH, world, player.posX.toInt(), player.posY.toInt(), player.posZ.toInt())
             return actionResult(true, stack)
+        } else {
+            player.openGui(DivineFavor, ConstGuiIDs.MEMORY_POUCH_TEMPLATE, world, player.posX.toInt(), player.posY.toInt(), player.posZ.toInt())
+            return actionResult(true, stack)
         }
-
-        //TODO
-        return actionResult(false, stack)
     }
 
     override fun initCapabilities(item: ItemStack, nbt: NBTTagCompound?): ICapabilityProvider? {
