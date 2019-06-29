@@ -9,6 +9,7 @@ import aurocosh.divinefavor.common.entity.ModEntities
 import aurocosh.divinefavor.common.item.bathing_blend.ModBathingBlends
 import aurocosh.divinefavor.common.item.common.*
 import aurocosh.divinefavor.common.item.contract.ModContracts
+import aurocosh.divinefavor.common.item.memory_pouch.capability.MemoryPouchDataHandler
 import aurocosh.divinefavor.common.item.talisman_tools.grimoire.capability.GrimoireDataHandler
 import aurocosh.divinefavor.common.item.talisman_tools.spell_blade.capability.SpellBladeDataHandler
 import aurocosh.divinefavor.common.item.talisman_tools.spell_bow.capability.SpellBowDataHandler
@@ -20,9 +21,9 @@ import aurocosh.divinefavor.common.potions.common.ModBlendEffects
 import aurocosh.divinefavor.common.potions.common.ModBlessings
 import aurocosh.divinefavor.common.potions.common.ModCurses
 import aurocosh.divinefavor.common.potions.common.ModPotions
-import aurocosh.divinefavor.common.receipes.common.ModMediumRecipes
 import aurocosh.divinefavor.common.receipes.RecipeLoader
 import aurocosh.divinefavor.common.receipes.common.ModContactRecipes
+import aurocosh.divinefavor.common.receipes.common.ModMediumRecipes
 import aurocosh.divinefavor.common.spirit.ModSpirits
 import com.google.common.util.concurrent.ListenableFuture
 import net.minecraft.entity.player.EntityPlayer
@@ -76,10 +77,11 @@ open class CommonProxy {
         PlayerDataDataHandler.register()
         WorldDataDataHandler.register()
 
-        SpellBladeDataHandler.register()
-        SpellPickDataHandler.register()
-        SpellBowDataHandler.register()
         GrimoireDataHandler.register()
+        MemoryPouchDataHandler.register()
+        SpellBladeDataHandler.register()
+        SpellBowDataHandler.register()
+        SpellPickDataHandler.register()
 
         NetworkRegistry.INSTANCE.registerGuiHandler(DivineFavor, GuiHandler())
     }

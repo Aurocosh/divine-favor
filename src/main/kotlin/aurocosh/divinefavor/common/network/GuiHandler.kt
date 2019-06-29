@@ -19,6 +19,9 @@ import aurocosh.divinefavor.common.block.soulbound_lectern.ContainerSoulboundLec
 import aurocosh.divinefavor.common.block.soulbound_lectern.TileSoulboundLectern
 import aurocosh.divinefavor.common.constants.ConstGuiIDs
 import aurocosh.divinefavor.common.item.contract_binder.ContractBinderContainer
+import aurocosh.divinefavor.common.item.memory_pouch.ItemMemoryPouch
+import aurocosh.divinefavor.common.item.memory_pouch.MemoryPouchNormalContainer
+import aurocosh.divinefavor.common.item.memory_pouch.capability.MemoryPouchDataHandler.CAPABILITY_MEMORY_POUCH
 import aurocosh.divinefavor.common.item.ritual_pouch.RitualBagContainer
 import aurocosh.divinefavor.common.item.talisman.ITalismanStackContainer
 import aurocosh.divinefavor.common.item.talisman_tools.grimoire.GrimoireContainer
@@ -80,6 +83,12 @@ class GuiHandler : IGuiHandler {
                 val handler = stack.cap(CAPABILITY_SPELL_BOW)
                 return SpellBowContainer(player, handler, hand)
             }
+            ConstGuiIDs.MEMORY_POUCH -> {
+                val hand = UtilPlayer.getHandWithItem(player) { it is ItemMemoryPouch } ?: return null
+                val stack = player.getHeldItem(hand)
+                val handler = stack.cap(CAPABILITY_MEMORY_POUCH)
+                return MemoryPouchNormalContainer(player, handler, hand)
+            }
             ConstGuiIDs.SOULBOUND_LECTERN_ACTIVE -> return ContainerSoulboundLecternActive(player, (world.getTileEntity(BlockPos(x, y, z)) as TileSoulboundLectern))
             ConstGuiIDs.SOULBOUND_LECTERN_WITH_SHARD -> return ContainerSoulboundLecternWithShard(player, (world.getTileEntity(BlockPos(x, y, z)) as TileSoulboundLectern))
             ConstGuiIDs.SOULBOUND_LECTERN_EMPTY -> return ContainerSoulboundLecternEmpty(player, (world.getTileEntity(BlockPos(x, y, z)) as TileSoulboundLectern))
@@ -119,6 +128,11 @@ class GuiHandler : IGuiHandler {
                 val hand = UtilPlayer.getHand { h -> player.getHeldItem(h).item is ItemSpellBow } ?: return null
                 val stack = player.getHeldItem(hand)
                 return GuiSpellBow(player, stack, hand)
+            }
+            ConstGuiIDs.MEMORY_POUCH -> {
+                val hand = UtilPlayer.getHandWithItem(player) { it is ItemMemoryPouch } ?: return null
+                val stack = player.getHeldItem(hand)
+                return GuiMemoryPouchNormal(player, stack, hand)
             }
             ConstGuiIDs.SOULBOUND_LECTERN_ACTIVE -> return GuiSoulboundLecternActive(player, (world.getTileEntity(BlockPos(x, y, z)) as TileSoulboundLectern))
             ConstGuiIDs.SOULBOUND_LECTERN_WITH_SHARD -> return GuiSoulboundLecternWithShard(player, (world.getTileEntity(BlockPos(x, y, z)) as TileSoulboundLectern))

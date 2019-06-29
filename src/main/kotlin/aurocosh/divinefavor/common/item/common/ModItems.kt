@@ -17,6 +17,7 @@ import aurocosh.divinefavor.common.item.gems.ItemInviteMarker
 import aurocosh.divinefavor.common.item.gems.ItemMarkedGlass
 import aurocosh.divinefavor.common.item.gems.ItemWarpMarker
 import aurocosh.divinefavor.common.item.gems.storage_gem.ItemStorageGem
+import aurocosh.divinefavor.common.item.memory_pouch.ItemMemoryPouch
 import aurocosh.divinefavor.common.item.ritual_pouch.ItemRitualPouch
 import aurocosh.divinefavor.common.item.talisman_tools.grimoire.ItemGrimoire
 import aurocosh.divinefavor.common.item.talisman_tools.spell_blade.ItemSpellBlade
@@ -36,6 +37,7 @@ object ModItems {
     lateinit var bone_key: ModItem
     lateinit var contract_binder: ModItem
     lateinit var grimoire: ModItem
+    lateinit var memory_pouch: ModItem
     lateinit var milky_apple: ModItem
     lateinit var mystic_architect_stick: ModItem
     lateinit var ritual_pouch: ModItem
@@ -67,6 +69,7 @@ object ModItems {
         bone_key = ItemBoneKey()
         contract_binder = ItemContractBinder()
         grimoire = ItemGrimoire()
+        memory_pouch = ItemMemoryPouch()
         invite_gem = ItemInviteMarker("invite_gem", true)
         invite_pebble = ItemInviteMarker("invite_pebble", false)
         milky_apple = ItemMilkyApple()

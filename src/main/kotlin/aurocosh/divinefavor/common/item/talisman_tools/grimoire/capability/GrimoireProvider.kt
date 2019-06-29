@@ -1,34 +1,35 @@
 package aurocosh.divinefavor.common.item.talisman_tools.grimoire.capability
 
+import aurocosh.divinefavor.common.item.talisman_tools.grimoire.capability.GrimoireDataHandler.CAPABILITY_GRIMOIRE
 import net.minecraft.nbt.NBTTagCompound
 import net.minecraft.util.EnumFacing
 import net.minecraftforge.common.capabilities.Capability
 import net.minecraftforge.common.capabilities.ICapabilitySerializable
-import net.minecraftforge.items.CapabilityItemHandler
+import net.minecraftforge.items.CapabilityItemHandler.ITEM_HANDLER_CAPABILITY
 
 class GrimoireProvider : ICapabilitySerializable<NBTTagCompound> {
-    internal var instance = GrimoireDataHandler.CAPABILITY_GRIMOIRE.defaultInstance as IGrimoireHandler
+    internal var instance = CAPABILITY_GRIMOIRE.defaultInstance as IGrimoireHandler
 
     override fun hasCapability(capability: Capability<*>, facing: EnumFacing?): Boolean {
-        return if (capability === GrimoireDataHandler.CAPABILITY_GRIMOIRE) true else capability === CapabilityItemHandler.ITEM_HANDLER_CAPABILITY
+        return if (capability === CAPABILITY_GRIMOIRE) true else capability === ITEM_HANDLER_CAPABILITY
     }
 
     override fun <T> getCapability(capability: Capability<T>, facing: EnumFacing?): T? {
         if (!hasCapability(capability, facing))
             return null
         return when {
-            capability === GrimoireDataHandler.CAPABILITY_GRIMOIRE -> GrimoireDataHandler.CAPABILITY_GRIMOIRE.cast<T>(instance)
-            else -> CapabilityItemHandler.ITEM_HANDLER_CAPABILITY.cast<T>(instance.getStackHandler())
+            capability === CAPABILITY_GRIMOIRE -> CAPABILITY_GRIMOIRE.cast<T>(instance)
+            else -> ITEM_HANDLER_CAPABILITY.cast<T>(instance.getStackHandler())
         }
     }
 
     override fun serializeNBT(): NBTTagCompound {
-        val storage = GrimoireDataHandler.CAPABILITY_GRIMOIRE.storage
-        return storage.writeNBT(GrimoireDataHandler.CAPABILITY_GRIMOIRE, instance, null) as NBTTagCompound
+        val storage = CAPABILITY_GRIMOIRE.storage
+        return storage.writeNBT(CAPABILITY_GRIMOIRE, instance, null) as NBTTagCompound
     }
 
     override fun deserializeNBT(nbt: NBTTagCompound) {
-        val storage = GrimoireDataHandler.CAPABILITY_GRIMOIRE.storage
-        storage.readNBT(GrimoireDataHandler.CAPABILITY_GRIMOIRE, instance, null, nbt)
+        val storage = CAPABILITY_GRIMOIRE.storage
+        storage.readNBT(CAPABILITY_GRIMOIRE, instance, null, nbt)
     }
 }
