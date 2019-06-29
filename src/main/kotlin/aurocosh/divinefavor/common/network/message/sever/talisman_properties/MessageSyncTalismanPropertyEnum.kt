@@ -1,7 +1,7 @@
 package aurocosh.divinefavor.common.network.message.sever.talisman_properties
 
 import aurocosh.divinefavor.common.item.talisman.ITalismanStackContainer
-import aurocosh.divinefavor.common.stack_properties.IPropertyContainer
+import aurocosh.divinefavor.common.stack_properties.interfaces.IPropertyContainer
 import aurocosh.divinefavor.common.stack_properties.properties.StackPropertyEnum
 import aurocosh.divinefavor.common.util.UtilPlayer
 import net.minecraft.entity.player.EntityPlayerMP

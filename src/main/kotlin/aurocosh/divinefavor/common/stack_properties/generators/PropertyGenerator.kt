@@ -1,4 +1,4 @@
-package aurocosh.divinefavor.common.stack_properties
+package aurocosh.divinefavor.common.stack_properties.generators
 
 object PropertyGenerator {
     val stack = StackPropertyGenerator()

@@ -1,4 +1,4 @@
-package aurocosh.divinefavor.common.stack_properties
+package aurocosh.divinefavor.common.stack_properties.generators
 
 import aurocosh.divinefavor.common.lib.IIndexedEnum
 import aurocosh.divinefavor.common.network.message.sever.stack_properties.*
@@ -37,6 +37,10 @@ open class StackPropertyGenerator() {
         return StackPropertyUUID(name, defaultValue, showInTooltip, showInGui, orderIndex, getSynchronizerUUID())
     }
 
+    fun makeStringProperty(name: String, defaultValue: String, showInTooltip: Boolean = false, showInGui: Boolean = true, orderIndex: Int = 0): StackPropertyString {
+        return StackPropertyString(name, defaultValue, showInTooltip, showInGui, orderIndex, getSynchronizerString())
+    }
+
     fun <T> makeEnumProperty(name: String, defaultValue: T, converter: IIndexedEnum<T>, showInTooltip: Boolean = false, showInGui: Boolean = true, orderIndex: Int = 0): StackPropertyEnum<T> where T : Enum<T> {
         return StackPropertyEnum(name, defaultValue, converter, showInTooltip, showInGui, orderIndex, getSynchronizerEnum())
     }
@@ -67,6 +71,10 @@ open class StackPropertyGenerator() {
 
     protected open fun getSynchronizerUUID() = { itemId: Int, property: StackProperty<UUID>, value: UUID ->
         MessageSyncPropertyUUID(itemId, property.name, value).send()
+    }
+
+    protected open fun getSynchronizerString() = { itemId: Int, property: StackProperty<String>, value: String ->
+        MessageSyncPropertyString(itemId, property.name, value).send()
     }
 
     protected open fun <T> getSynchronizerEnum(): (Int, StackProperty<T>, T) -> Unit where T : Enum<T> {

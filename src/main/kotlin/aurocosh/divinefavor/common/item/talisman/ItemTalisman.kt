@@ -8,10 +8,10 @@ import aurocosh.divinefavor.common.lib.extensions.divinePlayerData
 import aurocosh.divinefavor.common.lib.interfaces.IBlockCatcher
 import aurocosh.divinefavor.common.network.message.client.spirit_data.MessageSyncFavor
 import aurocosh.divinefavor.common.spirit.base.ModSpirit
-import aurocosh.divinefavor.common.stack_properties.IPropertyAccessor
-import aurocosh.divinefavor.common.stack_properties.IPropertyContainer
+import aurocosh.divinefavor.common.stack_properties.interfaces.IPropertyAccessor
+import aurocosh.divinefavor.common.stack_properties.interfaces.IPropertyContainer
 import aurocosh.divinefavor.common.stack_properties.StackPropertyHandler
-import aurocosh.divinefavor.common.stack_properties.TalismanPropertyGenerator
+import aurocosh.divinefavor.common.stack_properties.generators.TalismanPropertyGenerator
 import net.minecraft.client.resources.I18n
 import net.minecraft.client.util.ITooltipFlag
 import net.minecraft.entity.player.EntityPlayer

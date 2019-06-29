@@ -6,7 +6,7 @@ import aurocosh.divinefavor.common.lib.extensions.divinePlayerData
 import aurocosh.divinefavor.common.network.message.client.spirit_data.MessageSyncAllSpiritData
 import aurocosh.divinefavor.common.network.message.client.syncing.MessageSyncFury
 import aurocosh.divinefavor.common.network.message.client.syncing.MessageSyncGrudge
-import aurocosh.divinefavor.common.network.message.client.syncing.MessageSyncSelectedTemplate
+import aurocosh.divinefavor.common.network.message.client.syncing.MessageSyncTemplateClient
 import aurocosh.divinefavor.common.network.message.client.syncing.MessageSyncWindLeash
 import net.minecraft.entity.player.EntityPlayerMP
 import net.minecraftforge.fml.common.Mod
@@ -23,7 +23,7 @@ object LoginDataSyncer {
         MessageSyncAllSpiritData(handler.spiritData).sendTo(player)
         MessageSyncFury(handler.focusedFuryData.mobTypeId).sendTo(player)
         MessageSyncGrudge(handler.grudgeData.mobTypeId).sendTo(player)
-        MessageSyncSelectedTemplate(handler.templateData.currentTemplate).sendTo(player)
+        MessageSyncTemplateClient(handler.templateData.currentTemplate).sendTo(player)
 
         val livingDataHandler = player.divineLivingData
         MessageSyncWindLeash(livingDataHandler.windLeashData.vector).sendTo(player)

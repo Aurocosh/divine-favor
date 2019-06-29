@@ -18,8 +18,8 @@ import aurocosh.divinefavor.common.item.talisman_tools.spell_blade.capability.Sp
 import aurocosh.divinefavor.common.item.talisman_tools.spell_blade.capability.SpellBladeStorage
 import aurocosh.divinefavor.common.lib.extensions.cap
 import aurocosh.divinefavor.common.lib.interfaces.IBlockCatcher
-import aurocosh.divinefavor.common.stack_properties.IPropertyAccessor
-import aurocosh.divinefavor.common.stack_properties.IPropertyContainer
+import aurocosh.divinefavor.common.stack_properties.interfaces.IPropertyAccessor
+import aurocosh.divinefavor.common.stack_properties.interfaces.IPropertyContainer
 import aurocosh.divinefavor.common.stack_properties.StackPropertyHandler
 import aurocosh.divinefavor.common.util.UtilItem.actionResult
 import aurocosh.divinefavor.common.util.UtilItem.actionResultPass

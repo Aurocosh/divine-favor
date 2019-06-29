@@ -1,4 +1,4 @@
-package aurocosh.divinefavor.common.network.message.sever.talisman
+package aurocosh.divinefavor.common.network.message.sever.syncing
 
 import aurocosh.divinefavor.common.item.talisman.ITalismanToolContainer
 import aurocosh.divinefavor.common.network.message.base.DivineServerMessage

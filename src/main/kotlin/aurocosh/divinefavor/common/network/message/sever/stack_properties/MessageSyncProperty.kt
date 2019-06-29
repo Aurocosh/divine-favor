@@ -1,7 +1,7 @@
 package aurocosh.divinefavor.common.network.message.sever.stack_properties
 
 import aurocosh.divinefavor.common.network.message.base.DivineServerMessage
-import aurocosh.divinefavor.common.stack_properties.IPropertyContainer
+import aurocosh.divinefavor.common.stack_properties.interfaces.IPropertyContainer
 import aurocosh.divinefavor.common.stack_properties.properties.StackProperty
 import aurocosh.divinefavor.common.util.UtilPlayer
 import net.minecraft.entity.player.EntityPlayerMP

@@ -7,7 +7,7 @@ import net.minecraftforge.fml.relauncher.Side
 import net.minecraftforge.fml.relauncher.SideOnly
 import java.util.*
 
-class MessageSyncSelectedTemplate : DivineClientMessage {
+class MessageSyncTemplateClient : DivineClientMessage {
     lateinit var currentTemplate: UUID
 
     constructor()

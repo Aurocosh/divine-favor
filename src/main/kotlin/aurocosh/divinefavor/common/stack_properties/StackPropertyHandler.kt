@@ -4,6 +4,8 @@ import aurocosh.divinefavor.DivineFavor
 import aurocosh.divinefavor.common.lib.IIndexedEnum
 import aurocosh.divinefavor.common.lib.extensions.S
 import aurocosh.divinefavor.common.lib.extensions.compound
+import aurocosh.divinefavor.common.stack_properties.generators.StackPropertyGenerator
+import aurocosh.divinefavor.common.stack_properties.interfaces.IPropertyAccessor
 import aurocosh.divinefavor.common.stack_properties.properties.StackProperty
 import net.minecraft.block.state.IBlockState
 import net.minecraft.client.resources.I18n
@@ -74,6 +76,9 @@ open class StackPropertyHandler(private val parentName: String, private val prop
 
     fun registerUUIDProperty(name: String, defaultValue: UUID, showInTooltip: Boolean = false, showInGui: Boolean = true, orderIndex: Int = 0) =
             registerProperty(propertyGenerator.makeUUIDProperty(name, defaultValue, showInTooltip, showInGui, orderIndex))
+
+    fun registerStringProperty(name: String, defaultValue: String, showInTooltip: Boolean = false, showInGui: Boolean = true, orderIndex: Int = 0) =
+            registerProperty(propertyGenerator.makeStringProperty(name, defaultValue, showInTooltip, showInGui, orderIndex))
 
     fun <T> registerEnumProperty(name: String, defaultValue: T, converter: IIndexedEnum<T>, showInTooltip: Boolean = false, showInGui: Boolean = true, orderIndex: Int = 0) where T : Enum<T> =
             registerProperty(propertyGenerator.makeEnumProperty(name, defaultValue, converter, showInTooltip, showInGui, orderIndex))

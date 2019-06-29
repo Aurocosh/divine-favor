@@ -1,4 +1,4 @@
-package aurocosh.divinefavor.common.stack_properties
+package aurocosh.divinefavor.common.stack_properties.interfaces
 
 import aurocosh.divinefavor.common.stack_properties.properties.StackProperty
 import net.minecraft.item.ItemStack

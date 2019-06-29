@@ -11,7 +11,7 @@ import aurocosh.divinefavor.common.item.talisman.ITalismanStackContainer
 import aurocosh.divinefavor.common.item.talisman.ItemTalisman
 import aurocosh.divinefavor.common.lib.TooltipCache
 import aurocosh.divinefavor.common.lib.extensions.S
-import aurocosh.divinefavor.common.network.message.sever.talisman.MessageSyncTalismanPropertyIndex
+import aurocosh.divinefavor.common.network.message.sever.syncing.MessageSyncTalismanPropertyIndex
 import aurocosh.divinefavor.common.stack_properties.properties.StackProperty
 import aurocosh.divinefavor.common.stack_properties.properties.StackPropertyBool
 import aurocosh.divinefavor.common.stack_properties.properties.StackPropertyEnum

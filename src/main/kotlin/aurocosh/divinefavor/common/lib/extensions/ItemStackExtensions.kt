@@ -45,6 +45,12 @@ fun <T> ItemStack.isPropertySet(property: StackProperty<T>): Boolean {
     return this.checkForTag(property.tag)
 }
 
+fun <T> ItemStack.getOrNull(property: StackProperty<T>): T? {
+    if(this.isPropertySet(property))
+        return property.getValue(this)
+    return null
+}
+
 fun <T> ItemStack.get(one: StackProperty<T>): T {
     return one.getValue(this)
 }

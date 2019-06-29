@@ -14,7 +14,7 @@ import aurocosh.divinefavor.common.lib.BlockMapIntState
 import aurocosh.divinefavor.common.lib.extensions.*
 import aurocosh.divinefavor.common.lib.math.CuboidBoundingBox
 import aurocosh.divinefavor.common.network.message.client.MessageSendBlockTemplate
-import aurocosh.divinefavor.common.network.message.client.syncing.MessageSyncSelectedTemplate
+import aurocosh.divinefavor.common.network.message.client.syncing.MessageSyncTemplateClient
 import aurocosh.divinefavor.common.spirit.base.ModSpirit
 import aurocosh.divinefavor.common.util.UtilBlockPos
 import aurocosh.divinefavor.common.util.UtilBlockState
@@ -124,7 +124,7 @@ abstract class SpellTalismanCopy(name: String, spirit: ModSpirit, favorCost: Int
         MessageSendBlockTemplate(uuid, blockTemplate).sendTo(player)
 
         player.divinePlayerData.templateData.currentTemplate = uuid
-        MessageSyncSelectedTemplate(uuid).sendTo(player)
+        MessageSyncTemplateClient(uuid).sendTo(player)
 
 //        val stack = ItemStack(ModItems.memory_drop)
 //        stack.set(ItemMemoryDrop.uuid, uuid)

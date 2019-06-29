@@ -2,7 +2,7 @@ package aurocosh.divinefavor.common.item.talisman_tools.grimoire
 
 import aurocosh.divinefavor.common.item.base.GenericContainer
 import aurocosh.divinefavor.common.item.talisman_tools.grimoire.capability.IGrimoireHandler
-import aurocosh.divinefavor.common.network.message.sever.talisman.MessageSyncTalismanContainerSlot
+import aurocosh.divinefavor.common.network.message.sever.syncing.MessageSyncTalismanContainerSlot
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.inventory.ClickType
 import net.minecraft.item.ItemStack

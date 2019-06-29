@@ -17,8 +17,8 @@ import aurocosh.divinefavor.common.item.talisman_tools.spell_bow.capability.Spel
 import aurocosh.divinefavor.common.item.talisman_tools.spell_bow.capability.SpellBowProvider
 import aurocosh.divinefavor.common.item.talisman_tools.spell_bow.capability.SpellBowStorage
 import aurocosh.divinefavor.common.lib.extensions.cap
-import aurocosh.divinefavor.common.stack_properties.IPropertyAccessor
-import aurocosh.divinefavor.common.stack_properties.IPropertyContainer
+import aurocosh.divinefavor.common.stack_properties.interfaces.IPropertyAccessor
+import aurocosh.divinefavor.common.stack_properties.interfaces.IPropertyContainer
 import aurocosh.divinefavor.common.stack_properties.StackPropertyHandler
 import aurocosh.divinefavor.common.util.UtilBow
 import aurocosh.divinefavor.common.util.UtilItem.actionResult

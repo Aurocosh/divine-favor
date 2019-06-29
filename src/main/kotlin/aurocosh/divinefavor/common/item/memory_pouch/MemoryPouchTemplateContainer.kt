@@ -1,8 +1,12 @@
 package aurocosh.divinefavor.common.item.memory_pouch
 
+import aurocosh.divinefavor.common.item.ItemMemoryDrop
 import aurocosh.divinefavor.common.item.base.GenericContainer
 import aurocosh.divinefavor.common.item.memory_pouch.capability.IMemoryPouch
-import aurocosh.divinefavor.common.network.message.sever.talisman.MessageSyncTalismanContainerSlot
+import aurocosh.divinefavor.common.lib.extensions.divinePlayerData
+import aurocosh.divinefavor.common.lib.extensions.get
+import aurocosh.divinefavor.common.network.message.sever.syncing.MessageSyncMemoryPouchSlot
+import aurocosh.divinefavor.common.network.message.sever.syncing.MessageSyncTemplateServer
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.inventory.ClickType
 import net.minecraft.item.ItemStack
@@ -14,16 +18,27 @@ class MemoryPouchTemplateContainer(player: EntityPlayer, private val pouch: IMem
     }
 
     override fun slotClick(slot: Int, button: Int, flag: ClickType, player: EntityPlayer): ItemStack {
-        if (false)
-            return ItemStack.EMPTY
-        if (flag == ClickType.CLONE) {
-            pouch.selectedSlotIndex = slot
+        if (button == 2) {
+            selectSlot(slot, player)
             player.closeScreen()
-            val playerSlot = if (hand == EnumHand.OFF_HAND) 40 else player.inventory.currentItem
-            MessageSyncTalismanContainerSlot(playerSlot, slot).send()
+            return ItemStack.EMPTY
+        } else if (button == 1 || button == 0) {
+            selectSlot(slot, player)
             return ItemStack.EMPTY
         }
 
         return super.slotClick(slot, button, flag, player)
+    }
+
+    private fun selectSlot(slot: Int, player: EntityPlayer) {
+        pouch.selectedSlotIndex = slot
+        val stack = pouch.getSelectedStack()
+        val uuid = stack.get(ItemMemoryDrop.uuid)
+
+        player.divinePlayerData.templateData.currentTemplate = uuid
+        MessageSyncTemplateServer(uuid).send()
+
+        val playerSlot = if (hand == EnumHand.OFF_HAND) 40 else player.inventory.currentItem
+        MessageSyncMemoryPouchSlot(playerSlot, slot).send()
     }
 }

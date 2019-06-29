@@ -6,10 +6,10 @@ import aurocosh.divinefavor.common.lib.EmptyConst.emptyUUID
 import aurocosh.divinefavor.common.lib.extensions.divinePlayerData
 import aurocosh.divinefavor.common.lib.extensions.get
 import aurocosh.divinefavor.common.lib.extensions.isPropertySet
-import aurocosh.divinefavor.common.network.message.client.syncing.MessageSyncSelectedTemplate
-import aurocosh.divinefavor.common.stack_properties.IPropertyAccessor
-import aurocosh.divinefavor.common.stack_properties.PropertyGenerator
+import aurocosh.divinefavor.common.network.message.client.syncing.MessageSyncTemplateClient
 import aurocosh.divinefavor.common.stack_properties.StackPropertyHandler
+import aurocosh.divinefavor.common.stack_properties.generators.PropertyGenerator
+import aurocosh.divinefavor.common.stack_properties.interfaces.IPropertyAccessor
 import aurocosh.divinefavor.common.util.UtilItem.actionResult
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.item.ItemStack
@@ -27,6 +27,7 @@ open class ItemMemoryDrop(name: String, texturePath: String, orderIndex: Int = 0
 
     init {
         propertyHandler.registerProperty(uuid)
+        propertyHandler.registerProperty(templateName)
         creativeTab = DivineFavor.TAB_MAIN
     }
 
@@ -39,7 +40,7 @@ open class ItemMemoryDrop(name: String, texturePath: String, orderIndex: Int = 0
         val stack = player.getHeldItem(hand)
         val templateId = getSelectedTemplateId(stack) ?: return actionResult(false, stack)
         player.divinePlayerData.templateData.currentTemplate = templateId
-        MessageSyncSelectedTemplate(templateId).sendTo(player)
+        MessageSyncTemplateClient(templateId).sendTo(player)
         return actionResult(true, stack)
     }
 
@@ -57,6 +58,7 @@ open class ItemMemoryDrop(name: String, texturePath: String, orderIndex: Int = 0
 
     companion object {
         val uuid = PropertyGenerator.stack.makeUUIDProperty("uuid", emptyUUID(), showInTooltip = false, showInGui = false)
+        val templateName = PropertyGenerator.stack.makeStringProperty("template_name", "Template", showInTooltip = true, showInGui = false)
     }
 }
 

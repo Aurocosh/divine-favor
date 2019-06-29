@@ -20,8 +20,8 @@ import aurocosh.divinefavor.common.item.tool_talismans.base.ItemToolTalisman
 import aurocosh.divinefavor.common.lib.extensions.cap
 import aurocosh.divinefavor.common.lib.extensions.divinePlayerData
 import aurocosh.divinefavor.common.lib.interfaces.IBlockCatcher
-import aurocosh.divinefavor.common.stack_properties.IPropertyAccessor
-import aurocosh.divinefavor.common.stack_properties.IPropertyContainer
+import aurocosh.divinefavor.common.stack_properties.interfaces.IPropertyAccessor
+import aurocosh.divinefavor.common.stack_properties.interfaces.IPropertyContainer
 import aurocosh.divinefavor.common.stack_properties.StackPropertyHandler
 import aurocosh.divinefavor.common.util.UtilItem.actionResult
 import aurocosh.divinefavor.common.util.UtilItem.actionResultPass

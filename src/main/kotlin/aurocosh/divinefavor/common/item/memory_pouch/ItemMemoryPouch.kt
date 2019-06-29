@@ -3,12 +3,17 @@ package aurocosh.divinefavor.common.item.memory_pouch
 import aurocosh.divinefavor.DivineFavor
 import aurocosh.divinefavor.common.constants.ConstGuiIDs
 import aurocosh.divinefavor.common.constants.ConstMainTabOrder
+import aurocosh.divinefavor.common.item.ITemplateContainer
+import aurocosh.divinefavor.common.item.ItemMemoryDrop
 import aurocosh.divinefavor.common.item.base.ModItem
 import aurocosh.divinefavor.common.item.common.ModItems
 import aurocosh.divinefavor.common.item.memory_pouch.capability.MemoryPouchDataHandler.CAPABILITY_MEMORY_POUCH
 import aurocosh.divinefavor.common.item.memory_pouch.capability.MemoryPouchProvider
 import aurocosh.divinefavor.common.item.memory_pouch.capability.MemoryPouchStorage
+import aurocosh.divinefavor.common.lib.extensions.S
 import aurocosh.divinefavor.common.lib.extensions.cap
+import aurocosh.divinefavor.common.lib.extensions.get
+import aurocosh.divinefavor.common.lib.extensions.isPropertySet
 import aurocosh.divinefavor.common.util.UtilItem.actionResult
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.item.ItemStack
@@ -17,8 +22,9 @@ import net.minecraft.util.ActionResult
 import net.minecraft.util.EnumHand
 import net.minecraft.world.World
 import net.minecraftforge.common.capabilities.ICapabilityProvider
+import java.util.*
 
-class ItemMemoryPouch : ModItem("memory_pouch", "memory_pouch", ConstMainTabOrder.CONTAINERS) {
+class ItemMemoryPouch : ModItem("memory_pouch", "memory_pouch", ConstMainTabOrder.CONTAINERS), ITemplateContainer {
     init {
         setMaxStackSize(1)
         creativeTab = DivineFavor.TAB_MAIN
@@ -37,6 +43,24 @@ class ItemMemoryPouch : ModItem("memory_pouch", "memory_pouch", ConstMainTabOrde
 
     override fun initCapabilities(item: ItemStack, nbt: NBTTagCompound?): ICapabilityProvider? {
         return if (item.item === ModItems.memory_pouch) MemoryPouchProvider() else null
+    }
+
+    override fun getSelectedTemplateId(stack: ItemStack): UUID? {
+        val pouch = stack.cap(CAPABILITY_MEMORY_POUCH)
+        val dropStack = pouch.getSelectedStack()
+        if (dropStack.isPropertySet(ItemMemoryDrop.uuid))
+            return dropStack.get(ItemMemoryDrop.uuid)
+        return null
+    }
+
+    override fun getTemplatesIds(stack: ItemStack): List<UUID> {
+        val pouch = stack.cap(CAPABILITY_MEMORY_POUCH)
+        val stacks = pouch.getAllStacks()
+        return stacks.S
+                .filterNot(ItemStack::isEmpty)
+                .filter { it.isPropertySet(ItemMemoryDrop.uuid) }
+                .map { it.get(ItemMemoryDrop.uuid) }
+                .toList()
     }
 
     override fun getShareTag(): Boolean {
