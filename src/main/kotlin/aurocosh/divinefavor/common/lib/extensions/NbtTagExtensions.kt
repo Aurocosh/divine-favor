@@ -88,10 +88,10 @@ fun NBTTagCompound.hasKey(vararg tags: String): Boolean {
     return tags.all(this::hasKey)
 }
 
-private const val tagKey = "key"
-private const val tagValue = "value"
+private const val defaultKeyTag = "key"
+private const val defaultValueTag = "value"
 
-fun <K, V> NBTTagCompound.setMap(tag: String, map: Map<K, V>, keyWriter: (NBTTagCompound, String, K) -> Unit, valueWriter: (NBTTagCompound, String, V) -> Unit) {
+fun <K, V> NBTTagCompound.setMap(tag: String, map: Map<K, V>, keyWriter: (NBTTagCompound, String, K) -> Unit, valueWriter: (NBTTagCompound, String, V) -> Unit, tagKey: String = defaultKeyTag, tagValue: String = defaultValueTag) {
     val tagList = NBTTagList()
     for ((key, value) in map) {
         val pairTag = NBTTagCompound()
@@ -102,7 +102,7 @@ fun <K, V> NBTTagCompound.setMap(tag: String, map: Map<K, V>, keyWriter: (NBTTag
     this.setTag(tag, tagList)
 }
 
-fun <K, V> NBTTagCompound.getMap(tag: String, keyReader: (NBTTagCompound, String) -> K, valueReader: (NBTTagCompound, String) -> V): MutableMap<K, V> {
+fun <K, V> NBTTagCompound.getMap(tag: String, keyReader: (NBTTagCompound, String) -> K, valueReader: (NBTTagCompound, String) -> V, tagKey: String = defaultKeyTag, tagValue: String = defaultValueTag): MutableMap<K, V> {
     val tagList = this.getTag(tag) as? NBTTagList ?: return HashMap()
     val map = HashMap<K, V>()
     for (i in 0 until tagList.tagCount()) {

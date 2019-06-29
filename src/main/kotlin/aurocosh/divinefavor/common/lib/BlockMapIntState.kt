@@ -5,8 +5,6 @@ import aurocosh.divinefavor.common.util.UtilBlock
 import net.minecraft.block.state.IBlockState
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.init.Blocks
-import net.minecraft.init.Items
-import net.minecraft.item.ItemStack
 import net.minecraft.util.math.BlockPos
 import java.util.*
 
@@ -48,27 +46,23 @@ class BlockMapIntState(val intStateMap: MutableMap<Short, IBlockState> = HashMap
         return intStateMap.get(slot) ?: Blocks.AIR.defaultState
     }
 
+    fun generateStackMapFromStateMap(player: EntityPlayer) {
+        intStackMap.clear()
+        for (value in intStateMap.values)
+            intStackMap[value] = blockStateToMetaItem(value, player, BlockPos.ORIGIN)
+    }
+
     companion object {
-
-        fun blockStateToUniqueItem(state: IBlockState, player: EntityPlayer, pos: BlockPos): MetaItem {
-            var itemStack: ItemStack
-            //if (state.getBlock().canSilkHarvest(player.world, pos, state, player)) {
-            //    itemStack = InventoryManipulation.getSilkTouchDrop(state);
-            //} else {
-            //}
-            try {
-                itemStack = state.block.getPickBlock(state, null, player.world, pos, player)
+        fun blockStateToMetaItem(state: IBlockState, player: EntityPlayer, pos: BlockPos): MetaItem {
+            var itemStack = try {
+                state.block.getPickBlock(state, null, player.world, pos, player)
             } catch (e: Exception) {
-                itemStack = UtilBlock.getSilkTouchDrop(state)
+                UtilBlock.getSilkTouchDrop(state)
             }
 
-            if (itemStack.isEmpty) {
+            if (itemStack.isEmpty)
                 itemStack = UtilBlock.getSilkTouchDrop(state)
-            }
-            return if (!itemStack.isEmpty) {
-                MetaItem(itemStack.item, itemStack.metadata)
-            } else MetaItem(Items.AIR, 0)
-//throw new IllegalArgumentException("A UniqueItem could net be retrieved for the the follwing state (at position " + pos + "): " + state);
+            return if (itemStack.isEmpty) MetaItem() else MetaItem(itemStack.item, itemStack.metadata)
         }
     }
 }
