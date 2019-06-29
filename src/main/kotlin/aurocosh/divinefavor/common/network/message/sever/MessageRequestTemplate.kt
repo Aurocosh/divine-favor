@@ -3,7 +3,7 @@ package aurocosh.divinefavor.common.network.message.sever
 import aurocosh.divinefavor.common.custom_data.global.TemplateData
 import aurocosh.divinefavor.common.lib.extensions.get
 import aurocosh.divinefavor.common.network.message.base.DivineServerMessage
-import aurocosh.divinefavor.common.network.message.client.MessageSendBlockTemplate
+import aurocosh.divinefavor.common.network.message.client.MessageSendBlockTemplateClient
 import net.minecraft.entity.player.EntityPlayerMP
 import java.util.*
 
@@ -19,9 +19,9 @@ class MessageRequestTemplate : DivineServerMessage {
     override fun handleSafe(serverPlayer: EntityPlayerMP) {
         val templateSavedData = serverPlayer.world[TemplateData]
         for (uuid in requestedMapUUIDS) {
-            val template = templateSavedData.get(uuid)
+            val template = templateSavedData[uuid]
             if (template != null)
-                MessageSendBlockTemplate(uuid, template).sendTo(serverPlayer)
+                MessageSendBlockTemplateClient(template).sendTo(serverPlayer)
         }
     }
 }

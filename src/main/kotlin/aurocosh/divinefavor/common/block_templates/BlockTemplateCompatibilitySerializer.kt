@@ -6,6 +6,7 @@ import aurocosh.divinefavor.common.lib.extensions.getMap
 import aurocosh.divinefavor.common.lib.extensions.setBlockState
 import aurocosh.divinefavor.common.lib.extensions.setMap
 import aurocosh.divinefavor.common.lib.math.CuboidBoundingBox
+import aurocosh.divinefavor.common.util.UtilBlockPos
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.nbt.NBTTagCompound
 import net.minecraft.nbt.NBTUtil
@@ -39,24 +40,32 @@ object BlockTemplateCompatibilitySerializer {
         return compound
     }
 
-    fun deserialize(player: EntityPlayer): BlockTemplate {
-        val compound = NBTTagCompound()
+    fun deserialize(compound: NBTTagCompound, player: EntityPlayer): BlockTemplate {
         val intStateMap = compound.getMap(tagMapIntState, NBTTagCompound::getShort, NBTTagCompound::getBlockState, tagKey, tagValue)
 
-        val posIntArray = compound.getIntArray(tagPosIntArray)
-        val stateIntArray = compound.getIntArray(tagStateIntArray)
+        val startPos = posFromNbtTag(compound, tagStartPos)
+        val endPos = posFromNbtTag(compound, tagEndPos)
 
-        val lowerCorner = posFromNbtTag(compound, tagStartPos)
-        val upperCorner = posFromNbtTag(compound, tagEndPos)
+        val boundingBox = CuboidBoundingBox(startPos, endPos)
+
+        val stateIntArray = compound.getIntArray(tagStateIntArray)
+        val posIntArray = compound.getIntArray(tagPosIntArray)
+        val fixedIntArray = posIntArray.asSequence()
+                .map { UtilBlockPos.relativeIntToPosition(startPos, it) }
+                .map { UtilBlockPos.relativePositionToInt(boundingBox.lowerCorner, it) }
+                .toList() // Cant convert to array directly
+                .toIntArray()
 
         val blockMapIntState = BlockMapIntState(intStateMap)
         blockMapIntState.generateStackMapFromStateMap(player)
 
-        return BlockTemplate(UUID.randomUUID(), blockMapIntState, posIntArray, stateIntArray, CuboidBoundingBox(lowerCorner, upperCorner), 0, player.name)
+        return BlockTemplate(UUID.randomUUID(), blockMapIntState, fixedIntArray, stateIntArray, boundingBox, 0, player.name)
     }
 
     private fun posFromNbtTag(tagCompound: NBTTagCompound, tagName: String): BlockPos {
         val posTag = tagCompound.getCompoundTag(tagName)
         return if (posTag == NBTTagCompound()) BlockPos.ORIGIN else NBTUtil.getPosFromTag(posTag)
     }
+
+
 }

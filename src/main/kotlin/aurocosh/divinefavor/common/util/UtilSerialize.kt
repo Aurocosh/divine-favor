@@ -1,6 +1,10 @@
 package aurocosh.divinefavor.common.util
 
 import aurocosh.divinefavor.common.lib.GlobalBlockPos
+import net.minecraft.nbt.CompressedStreamTools
+import net.minecraft.nbt.NBTTagCompound
+import java.io.ByteArrayOutputStream
+import java.io.IOException
 import java.util.*
 
 object UtilSerialize {
@@ -41,5 +45,12 @@ object UtilSerialize {
             return null
         }
 
+    }
+
+    @Throws(IOException::class)
+    fun getPasteStream(compound: NBTTagCompound): ByteArrayOutputStream? {
+        val outputStream = ByteArrayOutputStream()
+        CompressedStreamTools.writeCompressed(compound, outputStream)
+        return if (outputStream.size() < Short.MAX_VALUE - 200) outputStream else null
     }
 }

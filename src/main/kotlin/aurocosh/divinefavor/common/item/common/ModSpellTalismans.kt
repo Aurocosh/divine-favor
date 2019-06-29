@@ -18,6 +18,7 @@ import aurocosh.divinefavor.common.item.spell_talismans.replace.SpellTalismanRep
 import aurocosh.divinefavor.common.item.spell_talismans.sense.*
 import aurocosh.divinefavor.common.item.spell_talismans.template.SpellTalismanBuildTemplate
 import aurocosh.divinefavor.common.item.spell_talismans.template.SpellTalismanCrystalyzeMemory
+import aurocosh.divinefavor.common.item.spell_talismans.template_serialization.SpellTalismanDeserializeMemory
 import aurocosh.divinefavor.common.item.spell_talismans.template_serialization.SpellTalismanSerializeMemory
 import aurocosh.divinefavor.common.lib.extensions.isIce
 import aurocosh.divinefavor.common.lib.extensions.isLava
@@ -149,6 +150,7 @@ object ModSpellTalismans {
     lateinit var wooden_punch: ItemSpellTalisman
 
     // New fields
+    lateinit var deserialize_memory: ItemSpellTalisman
     lateinit var serialize_memory: ItemSpellTalisman
     lateinit var copy_cuboid: ItemSpellTalisman
     lateinit var copy_blocks: ItemSpellTalisman
@@ -298,6 +300,7 @@ object ModSpellTalismans {
         starvation = SpellTalismanModPotion("starvation", ModSpirits.timber, ConfigSpell.starvation.favorCost, ModPotions.starvation, ConfigSpell.starvation.duration)
 
         // New instances
+        deserialize_memory = SpellTalismanDeserializeMemory("deserialize_memory", ModSpirits.romol, ConfigSpell.deserializeMemory.favorCost, SpellOptions.ALL_CAST)
         serialize_memory = SpellTalismanSerializeMemory("serialize_memory", ModSpirits.romol, ConfigSpell.serializeMemory.favorCost, SpellOptions.ALL_CAST)
         copy_cuboid = SpellTalismanCopyCuboid("copy_cuboid", ModSpirits.romol, ConfigSpell.copyCuboid.favorCost)
         copy_blocks = SpellTalismanCopyBlocks("copy_blocks", ModSpirits.blizrabi, ConfigSpell.copyBlocks.favorCost)

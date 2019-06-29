@@ -11,20 +11,18 @@ import aurocosh.divinefavor.common.item.spell_talismans.context.playerField
 import aurocosh.divinefavor.common.item.spell_talismans.context.worldField
 import aurocosh.divinefavor.common.lib.extensions.divinePlayerData
 import aurocosh.divinefavor.common.lib.extensions.get
+import aurocosh.divinefavor.common.lib.extensions.sendStatusMessage
 import aurocosh.divinefavor.common.spirit.base.ModSpirit
+import aurocosh.divinefavor.common.util.UtilSerialize
+import aurocosh.divinefavor.common.util.UtilStatus.formatString
 import net.minecraft.client.gui.GuiScreen
 import net.minecraft.entity.player.EntityPlayer
-import net.minecraft.nbt.CompressedStreamTools
-import net.minecraft.nbt.NBTTagCompound
-import net.minecraft.util.text.TextComponentString
-import net.minecraft.util.text.TextComponentTranslation
 import net.minecraft.util.text.TextFormatting
-import java.io.ByteArrayOutputStream
 import java.io.IOException
 import java.util.*
 
 class SpellTalismanSerializeMemory(name: String, spirit: ModSpirit, favorCost: Int, options: EnumSet<SpellOptions>) : ItemSpellTalisman(name, spirit, favorCost, options) {
-    override fun performActionServer(context: TalismanContext) {
+    override fun performActionClient(context: TalismanContext) {
         val (player, world) = context.get(playerField, worldField)
         val currentTemplate = player.divinePlayerData.templateData.currentTemplate
         val blockTemplate = world[TemplateData][currentTemplate] ?: return
@@ -34,27 +32,16 @@ class SpellTalismanSerializeMemory(name: String, spirit: ModSpirit, favorCost: I
     private fun copyTemplate(player: EntityPlayer, template: BlockTemplate) {
         val compound = BlockTemplateCompatibilitySerializer.serialize(template)
         try {
-            if (getPasteStream(compound) != null) {
+            if (UtilSerialize.getPasteStream(compound) != null) {
                 val jsonTag = compound.toString()
                 GuiScreen.setClipboardString(jsonTag)
-                player.sendStatusMessage(TextComponentString(TextFormatting.AQUA.toString() + TextComponentTranslation("message.gadget.copysuccess").unformattedComponentText), false)
+                player.sendStatusMessage("message.divinefavor.copysuccess", formatString(TextFormatting.AQUA));
             } else {
-                pasteIsTooLarge(player)
+                player.sendStatusMessage("message.divinefavor.pastetoobig", formatString(TextFormatting.RED))
             }
         } catch (e: IOException) {
             DivineFavor.logger.error("Failed to evaluate template network size. Template will be considered too large.", e)
-            pasteIsTooLarge(player)
+            player.sendStatusMessage("message.divinefavor.pastetoobig", formatString(TextFormatting.RED))
         }
-    }
-
-    @Throws(IOException::class)
-    fun getPasteStream(compound: NBTTagCompound): ByteArrayOutputStream? {
-        val outputStream = ByteArrayOutputStream()
-        CompressedStreamTools.writeCompressed(compound, outputStream)
-        return if (outputStream.size() < Short.MAX_VALUE - 200) outputStream else null
-    }
-
-    private fun pasteIsTooLarge(player: EntityPlayer) {
-        player.sendStatusMessage(TextComponentString(TextFormatting.RED.toString() + TextComponentTranslation("message.gadget.pastetoobig").unformattedComponentText), false)
     }
 }

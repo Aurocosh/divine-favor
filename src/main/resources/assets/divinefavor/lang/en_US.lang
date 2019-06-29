@@ -45,6 +45,15 @@ message.divinefavor:marked_glass.spirit_is_active=Spirit is active right now! Sp
 message.divinefavor:marked_glass.spirit_is_inactive=Spirit is inactive. Spirit will become active after %1$d hours and %2$d minutes
 message.divinefavor:copy_area_is_too_big=Copy area is too big. Any side of copied area cannot be bigger then %1$d!
 
+message.divinefavor.copied=Area Copied
+message.divinefavor.copysuccess=Copy to Clipboard successful
+message.divinefavor.pastefailed=Paste Failed, Invalid JSON
+message.divinefavor.pastefailed.linkcopied=Paste Failed. Please copy the raw json data, instead of a Link
+message.divinefavor.pastesuccess=Paste from Clipboard successful
+message.divinefavor.pastetoobig=Paste is too large
+message.divinefavor.toomanyblocks=Too Many Blocks, Limit is 32,768
+message.divinefavor.TEinCopy=Area Copied, Number of tile entities not copied
+
 # TOOLTIPS
 tooltip.divinefavor:talisman.infinite_use=Infinite use
 tooltip.divinefavor:talisman.unusable=Unusable
@@ -190,6 +199,7 @@ item.divinefavor:memory_drop.name=Memory drop
 item.divinefavor:ice_arrow.name=Ice arrow
 
 ## SPELL TALISMAN NAMES
+item.divinefavor:spell_talisman_deserialize_memory.name=Deserialize memory
 item.divinefavor:spell_talisman_serialize_memory.name=Serialize memory
 item.divinefavor:spell_talisman_copy_cuboid.name=Copy cuboid
 item.divinefavor:spell_talisman_copy_blocks.name=Copy blocks
@@ -628,6 +638,7 @@ item.divinefavor:item_memory_drop.description=TODO
 item.divinefavor:ice_arrow.description=Delicate arrows made of ice. They are frail and because of this they deal less damage then regular arrows and break easily, but in a pinch they can be very useful. This type of arrow also cannot be tipped in potion, but on the other hand it deals extra damage to hellish mobs.
 
 ## SPELL TALISMAN DESCRIPTIONS
+item.divinefavor:spell_talisman_deserialize_memory.description=TODO
 item.divinefavor:spell_talisman_serialize_memory.description=TODO
 item.divinefavor:spell_talisman_copy_cuboid.description=TODO
 item.divinefavor:spell_talisman_copy_blocks.description=TODO

@@ -206,6 +206,8 @@ public class ConfigSpell {
     public static WoodenPunch woodenPunch = new WoodenPunch();
 
     // New configs
+    @Config.Name("Deserialize memory")
+    public static DeserializeMemory deserializeMemory = new DeserializeMemory();
     @Config.Name("Serialize memory")
     public static SerializeMemory serializeMemory = new SerializeMemory();
     @Config.Name("Copy cuboid")

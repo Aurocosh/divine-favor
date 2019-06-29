@@ -3,6 +3,7 @@ package aurocosh.divinefavor.common.lib.extensions
 import aurocosh.divinefavor.common.util.UtilRandom
 import net.minecraft.util.math.MathHelper
 import java.util.*
+import kotlin.collections.Collection
 import kotlin.collections.Iterable
 import kotlin.collections.List
 import kotlin.collections.MutableCollection
@@ -152,4 +153,11 @@ fun <T, K> Sequence<T>.mapPairs(processor: (T) -> K?): Sequence<Pair<T, K>?> {
         val value = processor.invoke(it)
         if (value == null) null else Pair(it, value)
     }
+}
+
+@Suppress("UNCHECKED_CAST")
+inline fun <reified T> Collection<T>.toTypedArray(size: Int): Array<T> {
+    @Suppress("PLATFORM_CLASS_MAPPED_TO_KOTLIN")
+    val thisCollection = this as java.util.Collection<T>
+    return thisCollection.toArray(arrayOfNulls<T>(0)) as Array<T>
 }

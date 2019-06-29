@@ -2,7 +2,7 @@ package aurocosh.divinefavor.common.network
 
 import aurocosh.autonetworklib.network.AutoNetworkWrapper
 import aurocosh.divinefavor.DivineFavor
-import aurocosh.divinefavor.common.network.message.client.MessageSendBlockTemplate
+import aurocosh.divinefavor.common.network.message.client.MessageSendBlockTemplateClient
 import aurocosh.divinefavor.common.network.message.client.activity.MessageSpiritBecameActive
 import aurocosh.divinefavor.common.network.message.client.activity.MessageSpiritBecameInactive
 import aurocosh.divinefavor.common.network.message.client.config.MessageConfigOreBlocks
@@ -13,6 +13,7 @@ import aurocosh.divinefavor.common.network.message.client.spirit_data.MessageSyn
 import aurocosh.divinefavor.common.network.message.client.spirit_data.MessageSyncFavorInfinite
 import aurocosh.divinefavor.common.network.message.client.syncing.*
 import aurocosh.divinefavor.common.network.message.sever.MessageRequestTemplate
+import aurocosh.divinefavor.common.network.message.sever.MessageSendBlockTemplateServer
 import aurocosh.divinefavor.common.network.message.sever.petrification.MessagePetrificationCure
 import aurocosh.divinefavor.common.network.message.sever.petrification.MessagePetrificationDamage
 import aurocosh.divinefavor.common.network.message.sever.petrification.MessagePetrificationReset
@@ -56,7 +57,7 @@ object NetworkHandler {
         autoWrapper.register(MessageSpiritBecameActive::class.java, Side.CLIENT)
         autoWrapper.register(MessageSpiritBecameInactive::class.java, Side.CLIENT)
 
-        autoWrapper.register(MessageSendBlockTemplate::class.java, Side.CLIENT)
+        autoWrapper.register(MessageSendBlockTemplateClient::class.java, Side.CLIENT)
         autoWrapper.register(MessageSyncTemplateClient::class.java, Side.CLIENT)
 
         // Server messages
@@ -90,5 +91,6 @@ object NetworkHandler {
         autoWrapper.register(MessageSyncTalismanPropertyString::class.java, Side.SERVER)
 
         autoWrapper.register(MessageRequestTemplate::class.java, Side.SERVER)
+        autoWrapper.register(MessageSendBlockTemplateServer::class.java, Side.SERVER)
     }
 }

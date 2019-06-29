@@ -13,7 +13,7 @@ import aurocosh.divinefavor.common.item.spell_talismans.context.TalismanContext
 import aurocosh.divinefavor.common.lib.BlockMapIntState
 import aurocosh.divinefavor.common.lib.extensions.*
 import aurocosh.divinefavor.common.lib.math.CuboidBoundingBox
-import aurocosh.divinefavor.common.network.message.client.MessageSendBlockTemplate
+import aurocosh.divinefavor.common.network.message.client.MessageSendBlockTemplateClient
 import aurocosh.divinefavor.common.network.message.client.syncing.MessageSyncTemplateClient
 import aurocosh.divinefavor.common.spirit.base.ModSpirit
 import aurocosh.divinefavor.common.util.UtilBlockPos
@@ -96,7 +96,7 @@ abstract class SpellTalismanCopy(name: String, spirit: ModSpirit, favorCost: Int
                     blockMapIntState.addToStackMap(uniqueItem, actualState)
                     blockCount++
                     if (blockCount > 32768) {
-                        player.sendStatusMessage(TextComponentString(TextFormatting.RED.toString() + TextComponentTranslation("message.gadget.toomanyblocks").unformattedComponentText), true)
+                        player.sendStatusMessage(TextComponentString(TextFormatting.RED.toString() + TextComponentTranslation("message.divinefavor.toomanyblocks").unformattedComponentText), true)
                         return false
                     }
                     val drops = NonNullList.create<ItemStack>()
@@ -121,7 +121,7 @@ abstract class SpellTalismanCopy(name: String, spirit: ModSpirit, favorCost: Int
 
         val templateSavedData = world[TemplateData]
         templateSavedData[uuid] = blockTemplate
-        MessageSendBlockTemplate(uuid, blockTemplate).sendTo(player)
+        MessageSendBlockTemplateClient(blockTemplate).sendTo(player)
 
         player.divinePlayerData.templateData.currentTemplate = uuid
         MessageSyncTemplateClient(uuid).sendTo(player)
@@ -132,9 +132,9 @@ abstract class SpellTalismanCopy(name: String, spirit: ModSpirit, favorCost: Int
 
 
         if (tileEntityCount > 0) {
-            player.sendStatusMessage(TextComponentString(TextFormatting.YELLOW.toString() + TextComponentTranslation("message.gadget.TEinCopy").unformattedComponentText + ": " + tileEntityCount), true)
+            player.sendStatusMessage(TextComponentString(TextFormatting.YELLOW.toString() + TextComponentTranslation("message.divinefavor.TEinCopy").unformattedComponentText + ": " + tileEntityCount), true)
         } else {
-            player.sendStatusMessage(TextComponentString(TextFormatting.AQUA.toString() + TextComponentTranslation("message.gadget.copied").unformattedComponentText), true)
+            player.sendStatusMessage(TextComponentString(TextFormatting.AQUA.toString() + TextComponentTranslation("message.divinefavor.copied").unformattedComponentText), true)
         }
         return true
     }
