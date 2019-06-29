@@ -1,8 +1,8 @@
 package aurocosh.divinefavor.common.item.spell_talismans.template
 
 import aurocosh.divinefavor.client.block_ovelay.BlockTemplateRendering
-import aurocosh.divinefavor.common.item.ItemMemoryDrop
 import aurocosh.divinefavor.common.item.common.ModItems
+import aurocosh.divinefavor.common.item.memory_drop.ItemMemoryDrop
 import aurocosh.divinefavor.common.item.spell_talismans.base.CastType
 import aurocosh.divinefavor.common.item.spell_talismans.base.ItemSpellTalisman
 import aurocosh.divinefavor.common.item.spell_talismans.base.SpellOptions

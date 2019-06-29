@@ -18,7 +18,12 @@ import org.lwjgl.util.glu.Project
 import java.util.*
 import kotlin.math.sign
 
-class GuiBlockTemplateView(private val world: World, private val panel: Rectangle, private val mc: Minecraft, private val guiTop: Int, private val guiLeft: Int, private val scrollSpeed: Int)
+/**
+ * Parts of this class were adapted from code written by Direwolf20 for the BuildingGadgets mod: https://github.com/Direwolf20-MC/BuildingGadgets
+ * BuildingGadgets is Open Source and distributed under MIT
+ */
+
+class GuiBlockTemplateView(private val world: World, private val panel: Rectangle, private val mc: Minecraft, private val guiTop: Int, private val guiLeft: Int, private val scrollSpeed: Int, private val defaultZoom: Float = -80f)
     : Gui() {
 
     private var panelClicked: Boolean = false
@@ -53,7 +58,6 @@ class GuiBlockTemplateView(private val world: World, private val panel: Rectangl
 
         GlStateManager.color(1.0f, 1.0f, 1.0f, 1.0f)
 
-        //float rotX = 165, rotY = 0, zoom = 1;
         if (uuid.isInvalid()) {
             resetStructureView()
             return
@@ -93,10 +97,10 @@ class GuiBlockTemplateView(private val world: World, private val panel: Rectangl
         GlStateManager.matrixMode(GL11.GL_PROJECTION)
         GlStateManager.pushMatrix()
         GlStateManager.loadIdentity()
-        //int scale = new ScaledResolution(mc).getScaleFactor();
+
         Project.gluPerspective(60f, panel.width.toFloat() / panel.height, 0.01f, 4000f)
         GlStateManager.matrixMode(GL11.GL_MODELVIEW)
-        //GlStateManager.translate(-panel.getX() - panel.getWidth() / 2, -panel.getY() - panel.getHeight() / 2, 0);
+
         GlStateManager.viewport((guiLeft + panel.x) * scale, mc.displayHeight - (guiTop + panel.y + panel.height) * scale, panel.width * scale, panel.height * scale)
         GlStateManager.clear(GL11.GL_DEPTH_BUFFER_BIT)
 
@@ -214,9 +218,5 @@ class GuiBlockTemplateView(private val world: World, private val panel: Rectangl
             val scroll = sign(dWheel.toFloat()) * scrollSpeed
             zoom = MathHelper.clamp(zoom + scroll, -200f, 1000f)
         }
-    }
-
-    companion object {
-        const val defaultZoom = -80f
     }
 }

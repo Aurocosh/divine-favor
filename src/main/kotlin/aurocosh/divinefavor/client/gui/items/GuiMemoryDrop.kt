@@ -2,15 +2,9 @@ package aurocosh.divinefavor.client.gui.items
 
 import aurocosh.divinefavor.common.constants.ConstResources
 import aurocosh.divinefavor.common.item.memory_drop.ItemMemoryDrop
-import aurocosh.divinefavor.common.item.memory_pouch.MemoryPouchTemplateContainer
-import aurocosh.divinefavor.common.item.memory_pouch.capability.IMemoryPouch
-import aurocosh.divinefavor.common.item.memory_pouch.capability.MemoryPouchDataHandler.CAPABILITY_MEMORY_POUCH
-import aurocosh.divinefavor.common.lib.extensions.cap
+import aurocosh.divinefavor.common.item.memory_drop.MemoryDropContainer
 import aurocosh.divinefavor.common.lib.extensions.get
 import aurocosh.divinefavor.common.lib.extensions.set
-import aurocosh.divinefavor.common.network.message.sever.syncing.MessageSyncMemoryPouchDropName
-import aurocosh.divinefavor.common.util.UtilPlayer
-import net.minecraft.client.gui.Gui
 import net.minecraft.client.gui.GuiTextField
 import net.minecraft.client.gui.inventory.GuiContainer
 import net.minecraft.entity.player.EntityPlayer
@@ -18,13 +12,11 @@ import net.minecraft.item.ItemStack
 import net.minecraft.util.EnumHand
 import net.minecraft.util.ResourceLocation
 import org.lwjgl.util.Rectangle
-import java.util.*
 
-class GuiMemoryPouchTemplate(val player: EntityPlayer, internal var stack: ItemStack, hand: EnumHand, private val pouch: IMemoryPouch = stack.cap(CAPABILITY_MEMORY_POUCH))
-    : GuiContainer(MemoryPouchTemplateContainer(player, pouch, hand)) {
+class GuiMemoryDrop(val player: EntityPlayer, internal var stack: ItemStack, hand: EnumHand)
+    : GuiContainer(MemoryDropContainer()) {
 
     private var currentTemplateName = ""
-    private val playerSlotIndex = UtilPlayer.getHandIndex(player, hand)
 
     private lateinit var nameField: GuiTextField
     private lateinit var templateView: GuiBlockTemplateView
@@ -38,7 +30,7 @@ class GuiMemoryPouchTemplate(val player: EntityPlayer, internal var stack: ItemS
         nameField.maxStringLength = 50
         nameField.visible = true
 
-        val panel = Rectangle(8, 18, 160, 95)
+        val panel = Rectangle(8, 18, 160, 150)
         templateView = GuiBlockTemplateView(player.world, panel, mc, guiTop, guiLeft, 15)
     }
 
@@ -52,19 +44,12 @@ class GuiMemoryPouchTemplate(val player: EntityPlayer, internal var stack: ItemS
         mc.textureManager.bindTexture(backgroundTexture)
         drawTexturedModalRect(guiLeft, guiTop, 0, 0, xSize, ySize)
 
-        val selectedStack = getSelectedStack()
-        setTemplateName(selectedStack.get(ItemMemoryDrop.templateName))
-
+        val templateName = stack.get(ItemMemoryDrop.templateName)
+        setTemplateName(templateName)
         nameField.drawTextBox()
 
-        val uuid = getSelectedTemplate()
+        val uuid = stack.get(ItemMemoryDrop.uuid)
         templateView.drawStructure(uuid)
-
-        val slotIndex = pouch.selectedSlotIndex
-        val slot = inventorySlots.getSlot(slotIndex)
-
-        mc.textureManager.bindTexture(dropSelectorTexture)
-        Gui.drawModalRectWithCustomSizedTexture(slot.xPos + guiLeft, slot.yPos + guiTop, 0f, 0f, 16, 16, 16f, 16f)
     }
 
     private fun setTemplateName(name: String) {
@@ -74,14 +59,9 @@ class GuiMemoryPouchTemplate(val player: EntityPlayer, internal var stack: ItemS
     }
 
     override fun keyTyped(typedChar: Char, keyCode: Int) {
-        if (nameField.textboxKeyTyped(typedChar, keyCode)) {
-            val selectedStack = pouch.getSelectedStack()
-            if (!selectedStack.isEmpty) {
-                val text = nameField.text
-                selectedStack.set(ItemMemoryDrop.templateName, text)
-                MessageSyncMemoryPouchDropName(playerSlotIndex, pouch.selectedSlotIndex, text).send()
-            }
-        } else
+        if (nameField.textboxKeyTyped(typedChar, keyCode))
+            stack.set(ItemMemoryDrop.templateName, nameField.text, true)
+        else
             super.keyTyped(typedChar, keyCode)
     }
 
@@ -112,20 +92,9 @@ class GuiMemoryPouchTemplate(val player: EntityPlayer, internal var stack: ItemS
         templateView.handleMouseInput()
     }
 
-    private fun getSelectedTemplate(): UUID {
-        val stack = getSelectedStack()
-        return stack.get(ItemMemoryDrop.uuid)
-    }
-
-    private fun getSelectedStack(): ItemStack {
-        val slot = slotUnderMouse
-        return if (slot != null && slot.hasStack) slot.stack else pouch.getSelectedStack()
-    }
-
     companion object {
         const val WIDTH = 175
         const val HEIGHT = 178
-        private val backgroundTexture = ResourceLocation(ConstResources.GUI_MEMORY_POUCH_TEMPLATE)
-        private val dropSelectorTexture = ResourceLocation(ConstResources.GUI_MEMORY_POUCH_DROP_SELECTOR)
+        private val backgroundTexture = ResourceLocation(ConstResources.GUI_MEMORY_DROP)
     }
 }

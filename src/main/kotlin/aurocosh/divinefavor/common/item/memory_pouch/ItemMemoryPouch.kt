@@ -4,9 +4,9 @@ import aurocosh.divinefavor.DivineFavor
 import aurocosh.divinefavor.common.constants.ConstGuiIDs
 import aurocosh.divinefavor.common.constants.ConstMainTabOrder
 import aurocosh.divinefavor.common.item.ITemplateContainer
-import aurocosh.divinefavor.common.item.ItemMemoryDrop
 import aurocosh.divinefavor.common.item.base.ModItem
 import aurocosh.divinefavor.common.item.common.ModItems
+import aurocosh.divinefavor.common.item.memory_drop.ItemMemoryDrop
 import aurocosh.divinefavor.common.item.memory_pouch.capability.MemoryPouchDataHandler.CAPABILITY_MEMORY_POUCH
 import aurocosh.divinefavor.common.item.memory_pouch.capability.MemoryPouchProvider
 import aurocosh.divinefavor.common.item.memory_pouch.capability.MemoryPouchStorage

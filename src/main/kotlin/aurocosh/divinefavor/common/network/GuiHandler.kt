@@ -19,6 +19,8 @@ import aurocosh.divinefavor.common.block.soulbound_lectern.ContainerSoulboundLec
 import aurocosh.divinefavor.common.block.soulbound_lectern.TileSoulboundLectern
 import aurocosh.divinefavor.common.constants.ConstGuiIDs
 import aurocosh.divinefavor.common.item.contract_binder.ContractBinderContainer
+import aurocosh.divinefavor.common.item.memory_drop.ItemMemoryDrop
+import aurocosh.divinefavor.common.item.memory_drop.MemoryDropContainer
 import aurocosh.divinefavor.common.item.memory_pouch.ItemMemoryPouch
 import aurocosh.divinefavor.common.item.memory_pouch.MemoryPouchNormalContainer
 import aurocosh.divinefavor.common.item.memory_pouch.MemoryPouchTemplateContainer
@@ -96,6 +98,7 @@ class GuiHandler : IGuiHandler {
                 val handler = stack.cap(CAPABILITY_MEMORY_POUCH)
                 return MemoryPouchTemplateContainer(player, handler, hand)
             }
+            ConstGuiIDs.MEMORY_DROP -> return MemoryDropContainer()
             ConstGuiIDs.SOULBOUND_LECTERN_ACTIVE -> return ContainerSoulboundLecternActive(player, (world.getTileEntity(BlockPos(x, y, z)) as TileSoulboundLectern))
             ConstGuiIDs.SOULBOUND_LECTERN_WITH_SHARD -> return ContainerSoulboundLecternWithShard(player, (world.getTileEntity(BlockPos(x, y, z)) as TileSoulboundLectern))
             ConstGuiIDs.SOULBOUND_LECTERN_EMPTY -> return ContainerSoulboundLecternEmpty(player, (world.getTileEntity(BlockPos(x, y, z)) as TileSoulboundLectern))
@@ -145,6 +148,11 @@ class GuiHandler : IGuiHandler {
                 val hand = UtilPlayer.getHandWithItem(player) { it is ItemMemoryPouch } ?: return null
                 val stack = player.getHeldItem(hand)
                 return GuiMemoryPouchTemplate(player, stack, hand)
+            }
+            ConstGuiIDs.MEMORY_DROP -> {
+                val hand = UtilPlayer.getHandWithItem(player) { it is ItemMemoryDrop } ?: return null
+                val stack = player.getHeldItem(hand)
+                return GuiMemoryDrop(player, stack, hand)
             }
             ConstGuiIDs.SOULBOUND_LECTERN_ACTIVE -> return GuiSoulboundLecternActive(player, (world.getTileEntity(BlockPos(x, y, z)) as TileSoulboundLectern))
             ConstGuiIDs.SOULBOUND_LECTERN_WITH_SHARD -> return GuiSoulboundLecternWithShard(player, (world.getTileEntity(BlockPos(x, y, z)) as TileSoulboundLectern))

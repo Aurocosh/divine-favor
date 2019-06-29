@@ -1,6 +1,8 @@
-package aurocosh.divinefavor.common.item
+package aurocosh.divinefavor.common.item.memory_drop
 
 import aurocosh.divinefavor.DivineFavor
+import aurocosh.divinefavor.common.constants.ConstGuiIDs
+import aurocosh.divinefavor.common.item.ITemplateContainer
 import aurocosh.divinefavor.common.item.base.ModItem
 import aurocosh.divinefavor.common.lib.EmptyConst.emptyUUID
 import aurocosh.divinefavor.common.lib.extensions.divinePlayerData
@@ -36,8 +38,13 @@ open class ItemMemoryDrop(name: String, texturePath: String, orderIndex: Int = 0
         return EnumActionResult.PASS
     }
 
-    override fun onItemRightClick(worldIn: World, player: EntityPlayer, hand: EnumHand): ActionResult<ItemStack> {
+    override fun onItemRightClick(world: World, player: EntityPlayer, hand: EnumHand): ActionResult<ItemStack> {
         val stack = player.getHeldItem(hand)
+        if (player.isSneaking) {
+            player.openGui(DivineFavor, ConstGuiIDs.MEMORY_DROP, world, player.posX.toInt(), player.posY.toInt(), player.posZ.toInt())
+            return actionResult(true, stack)
+        }
+
         val templateId = getSelectedTemplateId(stack) ?: return actionResult(false, stack)
         player.divinePlayerData.templateData.currentTemplate = templateId
         MessageSyncTemplateClient(templateId).sendTo(player)

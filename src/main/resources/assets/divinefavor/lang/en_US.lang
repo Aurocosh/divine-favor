@@ -71,8 +71,8 @@ divinefavor:spirit.squarefury.name=Squarefury
 divinefavor:spirit.timber.name=Timber
 
 # ITEM NAMES
-item.divinefavor:item_memory_drop.name=Memory drop
-item.divinefavor:item_memory_drop.name=Memory drop
+item.divinefavor:memory_drop.name=Memory drop
+
 ## GEMS
 item.divinefavor:invite_gem.name=Invite gem
 item.divinefavor:invite_pebble.name=Invite pebble
@@ -186,8 +186,7 @@ item.divinefavor:rope_luminous.name=Luminous rope
 item.divinefavor:rope_teleporting.name=Warping rope
 
 ## NEW ITEM NAMES
-item.divinefavor:item_memory_drop.name=Memory drop
-item.divinefavor:item_memory_drop.name=Memory drop
+item.divinefavor:memory_drop.name=Memory drop
 item.divinefavor:ice_arrow.name=Ice arrow
 
 ## SPELL TALISMAN NAMES

@@ -1,6 +1,6 @@
 package aurocosh.divinefavor.common.item.memory_pouch.capability
 
-import aurocosh.divinefavor.common.item.ItemMemoryDrop
+import aurocosh.divinefavor.common.item.memory_drop.ItemMemoryDrop
 import aurocosh.divinefavor.common.item.memory_pouch.ItemMemoryPouch
 import net.minecraft.item.ItemStack
 import net.minecraft.util.math.MathHelper

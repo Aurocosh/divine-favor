@@ -1,6 +1,6 @@
 package aurocosh.divinefavor.common.network.message.sever.syncing
 
-import aurocosh.divinefavor.common.item.ItemMemoryDrop
+import aurocosh.divinefavor.common.item.memory_drop.ItemMemoryDrop
 import aurocosh.divinefavor.common.item.memory_pouch.ItemMemoryPouch
 import aurocosh.divinefavor.common.item.memory_pouch.capability.MemoryPouchDataHandler.CAPABILITY_MEMORY_POUCH
 import aurocosh.divinefavor.common.lib.extensions.cap

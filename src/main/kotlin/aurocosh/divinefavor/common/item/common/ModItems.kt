@@ -4,7 +4,6 @@ import aurocosh.divinefavor.common.config.common.ConfigItem
 import aurocosh.divinefavor.common.constants.ConstGemTabOrder
 import aurocosh.divinefavor.common.constants.ConstMainTabOrder
 import aurocosh.divinefavor.common.item.ItemIceArrow
-import aurocosh.divinefavor.common.item.ItemMemoryDrop
 import aurocosh.divinefavor.common.item.ItemMilkyApple
 import aurocosh.divinefavor.common.item.ItemStoneball
 import aurocosh.divinefavor.common.item.base.ModItem
@@ -17,6 +16,7 @@ import aurocosh.divinefavor.common.item.gems.ItemInviteMarker
 import aurocosh.divinefavor.common.item.gems.ItemMarkedGlass
 import aurocosh.divinefavor.common.item.gems.ItemWarpMarker
 import aurocosh.divinefavor.common.item.gems.storage_gem.ItemStorageGem
+import aurocosh.divinefavor.common.item.memory_drop.ItemMemoryDrop
 import aurocosh.divinefavor.common.item.memory_pouch.ItemMemoryPouch
 import aurocosh.divinefavor.common.item.ritual_pouch.ItemRitualPouch
 import aurocosh.divinefavor.common.item.talisman_tools.grimoire.ItemGrimoire

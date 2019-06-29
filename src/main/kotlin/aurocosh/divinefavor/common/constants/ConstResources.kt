@@ -36,6 +36,7 @@ object ConstResources {
     const val GUI_MEMORY_POUCH_NORMAL = PREFIX_GUI + "memory_pouch/normal.png"
     const val GUI_MEMORY_POUCH_TEMPLATE = PREFIX_GUI + "memory_pouch/template.png"
     const val GUI_MEMORY_POUCH_DROP_SELECTOR = PREFIX_GUI + "memory_pouch/drop_selector.png"
+    const val GUI_MEMORY_DROP = PREFIX_GUI + "memory_drop.png"
 
     const val GUI_TALISMAN_MARKER = PREFIX_GUI + "talisman_gui/marker.png"
 
