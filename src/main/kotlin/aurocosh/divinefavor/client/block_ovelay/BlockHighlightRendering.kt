@@ -15,6 +15,7 @@ import net.minecraft.client.renderer.vertex.DefaultVertexFormats
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.util.EnumFacing
 import net.minecraft.util.math.BlockPos
+import net.minecraft.util.math.Vec3d
 import net.minecraftforge.client.ForgeHooksClient
 import net.minecraftforge.client.MinecraftForgeClient
 import net.minecraftforge.client.event.RenderWorldLastEvent
@@ -30,14 +31,15 @@ import javax.vecmath.Color3f
  */
 
 object BlockHighlightRendering {
+    private val sides = EnumFacing.values()
     private val mc = Minecraft.getMinecraft()
     private val cacheDestructionOverlay = CacheBuilder
             .newBuilder()
             .maximumSize(1)
             .expireAfterWrite(1, TimeUnit.SECONDS)
-            .removalListener { removal: RemovalNotification<Pair<List<Any>,Color3f>, Int> ->
+            .removalListener { removal: RemovalNotification<Pair<List<Any>, Color3f>, Int> ->
                 GLAllocation.deleteDisplayLists(removal.value)
-            }.build<Pair<List<Any>,Color3f>, Int>();
+            }.build<Pair<List<Any>, Color3f>, Int>();
 
     fun render(lastEvent: RenderWorldLastEvent, player: EntityPlayer, coordinates: List<BlockPos>, color: Color3f = Color3f(1f, 0f, 0f)) {
         val unmodifiableList = Collections.unmodifiableList(coordinates)
@@ -74,29 +76,28 @@ object BlockHighlightRendering {
         val t = Tessellator.getInstance()
         val bufferBuilder = t.buffer
 
+        val world = player.world
         for (coordinate in sortedCoordinates) {
-            var invisible = true
-            val state = player.world.getBlockState(coordinate)
-            for (side in EnumFacing.values()) {
-                if (state.shouldSideBeRendered(player.world, coordinate, side)) {
-                    invisible = false
-                    break
-                }
-            }
-
-            if (invisible)
+            val state = world.getBlockState(coordinate)
+            val sideToDraw = sides.filter { state.shouldSideBeRendered(world,coordinate,it) }
+            if(sideToDraw.isEmpty())
                 continue
 
             GlStateManager.pushMatrix()//Push matrix again just because
             GlStateManager.translate(coordinate.x.toFloat(), coordinate.y.toFloat(), coordinate.z.toFloat())//Now move the render position to the coordinates we want to render at
             GlStateManager.rotate(-90.0f, 0.0f, 1.0f, 0.0f) //Rotate it because i'm not sure why but we need to
-            GlStateManager.translate(-0.005f, -0.005f, 0.005f)
-            GlStateManager.scale(1.01f, 1.01f, 1.01f)//Slightly Larger block to avoid z-fighting.
 
             GlStateManager.disableLighting()
             GlStateManager.disableTexture2D()
 
-            renderBoxSolid(t, bufferBuilder, 0.0, 0.0, -1.0, 1.0, 1.0, 0.0, color.x, color.y, color.z, 0.5f)
+            for (facing in sideToDraw) {
+                val shift = getSideShift(facing)
+                GlStateManager.translate(shift.x, shift.y, shift.z)
+                renderBoxSide(t, bufferBuilder, facing, 0.0, 0.0, -1.0, 1.0, 1.0, 0.0, color.x, color.y, color.z, 0.5f)
+                GlStateManager.translate(-shift.x, -shift.y, -shift.z)
+            }
+
+//            renderBoxSolid(t, bufferBuilder, 0.0, 0.0, -1.0, 1.0, 1.0, 0.0, color.x, color.y, color.z, 0.5f)
 
             GlStateManager.enableTexture2D()
             GlStateManager.enableLighting()
@@ -110,44 +111,57 @@ object BlockHighlightRendering {
         GlStateManager.popMatrix()
     }
 
-    private fun renderBoxSolid(tessellator: Tessellator, bufferBuilder: BufferBuilder, startX: Double, startY: Double, startZ: Double, endX: Double, endY: Double, endZ: Double, red: Float, green: Float, blue: Float, alpha: Float) {
+    private fun getSideShift(facing: EnumFacing): Vec3d {
+        return when (facing) {
+            EnumFacing.DOWN -> Vec3d(0.0, -0.0001, 0.0)
+            EnumFacing.UP -> Vec3d(0.0, 0.0001, 0.0)
+            EnumFacing.NORTH -> Vec3d(-0.0001, 0.0, 0.0)
+            EnumFacing.SOUTH -> Vec3d(0.0001, 0.0, 0.0)
+            EnumFacing.WEST -> Vec3d(0.0, 0.0, -0.0001)
+            EnumFacing.EAST -> Vec3d(0.0, 0.0, 0.0001)
+        }
+    }
+
+    private fun renderBoxSide(tessellator: Tessellator, bufferBuilder: BufferBuilder, facing: EnumFacing, startX: Double, startY: Double, startZ: Double, endX: Double, endY: Double, endZ: Double, red: Float, green: Float, blue: Float, alpha: Float) {
         bufferBuilder.begin(7, DefaultVertexFormats.POSITION_COLOR)
-
-        //down
-        bufferBuilder.pos(startX, startY, startZ).color(red, green, blue, alpha).endVertex()
-        bufferBuilder.pos(endX, startY, startZ).color(red, green, blue, alpha).endVertex()
-        bufferBuilder.pos(endX, startY, endZ).color(red, green, blue, alpha).endVertex()
-        bufferBuilder.pos(startX, startY, endZ).color(red, green, blue, alpha).endVertex()
-
-        //up
-        bufferBuilder.pos(startX, endY, startZ).color(red, green, blue, alpha).endVertex()
-        bufferBuilder.pos(startX, endY, endZ).color(red, green, blue, alpha).endVertex()
-        bufferBuilder.pos(endX, endY, endZ).color(red, green, blue, alpha).endVertex()
-        bufferBuilder.pos(endX, endY, startZ).color(red, green, blue, alpha).endVertex()
-
-        //east
-        bufferBuilder.pos(startX, startY, startZ).color(red, green, blue, alpha).endVertex()
-        bufferBuilder.pos(startX, endY, startZ).color(red, green, blue, alpha).endVertex()
-        bufferBuilder.pos(endX, endY, startZ).color(red, green, blue, alpha).endVertex()
-        bufferBuilder.pos(endX, startY, startZ).color(red, green, blue, alpha).endVertex()
-
-        //west
-        bufferBuilder.pos(startX, startY, endZ).color(red, green, blue, alpha).endVertex()
-        bufferBuilder.pos(endX, startY, endZ).color(red, green, blue, alpha).endVertex()
-        bufferBuilder.pos(endX, endY, endZ).color(red, green, blue, alpha).endVertex()
-        bufferBuilder.pos(startX, endY, endZ).color(red, green, blue, alpha).endVertex()
-
-        //south
-        bufferBuilder.pos(endX, startY, startZ).color(red, green, blue, alpha).endVertex()
-        bufferBuilder.pos(endX, endY, startZ).color(red, green, blue, alpha).endVertex()
-        bufferBuilder.pos(endX, endY, endZ).color(red, green, blue, alpha).endVertex()
-        bufferBuilder.pos(endX, startY, endZ).color(red, green, blue, alpha).endVertex()
-
-        //north
-        bufferBuilder.pos(startX, startY, startZ).color(red, green, blue, alpha).endVertex()
-        bufferBuilder.pos(startX, startY, endZ).color(red, green, blue, alpha).endVertex()
-        bufferBuilder.pos(startX, endY, endZ).color(red, green, blue, alpha).endVertex()
-        bufferBuilder.pos(startX, endY, startZ).color(red, green, blue, alpha).endVertex()
+        when (facing) {
+            EnumFacing.DOWN -> {
+                bufferBuilder.pos(startX, startY, startZ).color(red, green, blue, alpha).endVertex()
+                bufferBuilder.pos(endX, startY, startZ).color(red, green, blue, alpha).endVertex()
+                bufferBuilder.pos(endX, startY, endZ).color(red, green, blue, alpha).endVertex()
+                bufferBuilder.pos(startX, startY, endZ).color(red, green, blue, alpha).endVertex()
+            }
+            EnumFacing.UP -> {
+                bufferBuilder.pos(startX, endY, startZ).color(red, green, blue, alpha).endVertex()
+                bufferBuilder.pos(startX, endY, endZ).color(red, green, blue, alpha).endVertex()
+                bufferBuilder.pos(endX, endY, endZ).color(red, green, blue, alpha).endVertex()
+                bufferBuilder.pos(endX, endY, startZ).color(red, green, blue, alpha).endVertex()
+            }
+            EnumFacing.NORTH -> {
+                bufferBuilder.pos(startX, startY, startZ).color(red, green, blue, alpha).endVertex()
+                bufferBuilder.pos(startX, startY, endZ).color(red, green, blue, alpha).endVertex()
+                bufferBuilder.pos(startX, endY, endZ).color(red, green, blue, alpha).endVertex()
+                bufferBuilder.pos(startX, endY, startZ).color(red, green, blue, alpha).endVertex()
+            }
+            EnumFacing.SOUTH -> {
+                bufferBuilder.pos(endX, startY, startZ).color(red, green, blue, alpha).endVertex()
+                bufferBuilder.pos(endX, endY, startZ).color(red, green, blue, alpha).endVertex()
+                bufferBuilder.pos(endX, endY, endZ).color(red, green, blue, alpha).endVertex()
+                bufferBuilder.pos(endX, startY, endZ).color(red, green, blue, alpha).endVertex()
+            }
+            EnumFacing.WEST -> {
+                bufferBuilder.pos(startX, startY, endZ).color(red, green, blue, alpha).endVertex()
+                bufferBuilder.pos(endX, startY, endZ).color(red, green, blue, alpha).endVertex()
+                bufferBuilder.pos(endX, endY, endZ).color(red, green, blue, alpha).endVertex()
+                bufferBuilder.pos(startX, endY, endZ).color(red, green, blue, alpha).endVertex()
+            }
+            EnumFacing.EAST -> {
+                bufferBuilder.pos(startX, startY, startZ).color(red, green, blue, alpha).endVertex()
+                bufferBuilder.pos(startX, endY, startZ).color(red, green, blue, alpha).endVertex()
+                bufferBuilder.pos(endX, endY, startZ).color(red, green, blue, alpha).endVertex()
+                bufferBuilder.pos(endX, startY, startZ).color(red, green, blue, alpha).endVertex()
+            }
+        }
         tessellator.draw()
     }
 }

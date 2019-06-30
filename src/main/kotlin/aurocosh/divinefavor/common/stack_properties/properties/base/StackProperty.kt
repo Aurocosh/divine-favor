@@ -40,9 +40,6 @@ abstract class StackProperty<T : Any>(val name: String, val defaultValue: T, val
         return true
     }
 
-    @Suppress("UNCHECKED_CAST")
-    open fun unsafeValueSet(stack: ItemStack, value: Any, sync: Boolean = false) = setValue(stack, value as T, sync)
-
     abstract fun getValueFromTag(compound: NBTTagCompound): T
     abstract fun setValueToTag(compound: NBTTagCompound, value: T)
 

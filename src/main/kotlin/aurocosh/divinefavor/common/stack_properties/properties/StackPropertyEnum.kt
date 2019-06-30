@@ -21,10 +21,6 @@ class StackPropertyEnum<T>(name: String, defaultValue: T, private val converter:
         compound.setInteger(tag, value.ordinal)
     }
 
-    override fun unsafeValueSet(stack: ItemStack, value: Any, sync: Boolean): Boolean {
-        return if (value is Int) setOrdinalValue(stack, value, sync) else super.unsafeValueSet(stack, value, sync)
-    }
-
     fun setOrdinalValue(stack: ItemStack, value: Int, syncBoolean: Boolean = false): Boolean {
         val enumValue = converter[value]
         return setValue(stack, enumValue, syncBoolean)
