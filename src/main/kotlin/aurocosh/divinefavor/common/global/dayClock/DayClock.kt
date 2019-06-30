@@ -58,7 +58,7 @@ object DayClock {
     }
 
     private fun syncTime() {
-        val world = DimensionManager.getWorld(TRACKED_DIMENSION_ID)
+        val world = DimensionManager.getWorld(TRACKED_DIMENSION_ID) ?: return
         val time = UtilDayTime.getDayTime(world)
         DAY_TIME_COUNTER.count = time
 
