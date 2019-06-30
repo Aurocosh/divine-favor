@@ -6,6 +6,7 @@ import net.minecraft.nbt.NBTTagCompound
 import java.io.ByteArrayOutputStream
 import java.io.IOException
 import java.util.*
+import kotlin.collections.ArrayList
 
 object UtilSerialize {
     fun serializeGlobalBlockPosArray(posArrayList: List<GlobalBlockPos>): IntArray {
@@ -52,5 +53,52 @@ object UtilSerialize {
         val outputStream = ByteArrayOutputStream()
         CompressedStreamTools.writeCompressed(compound, outputStream)
         return if (outputStream.size() < Short.MAX_VALUE - 200) outputStream else null
+    }
+
+    fun splitArray(arrayToSplit: ByteArray, chunkSize: Int): List<ByteArray> {
+        if (chunkSize <= 0)
+            return emptyList()
+
+        // first we have to check if the array can be split in multiple
+        // arrays of equal 'chunk' size
+        val rest = arrayToSplit.size % chunkSize  // if rest>0 then our last array will have less elements than the others
+        // then we check in how many arrays we can split our input array
+        val chunks = arrayToSplit.size / chunkSize + if (rest > 0) 1 else 0 // we may have to add an additional array for the 'rest'
+        // now we know how many arrays we need and create our result array
+        val arrays = ArrayList<ByteArray>(chunks)
+        // we create our resulting arrays by copying the corresponding
+        // part from the input array. If we have a rest (rest>0), then
+        // the last array will have less elements than the others. This
+        // needs to be handled separately, so we iterate 1 times less.
+        for (i in 0 until if (rest > 0) chunks - 1 else chunks) {
+            // this copies 'chunk' times 'chunkSize' elements into a new array
+            val chunk = Arrays.copyOfRange(arrayToSplit, i * chunkSize, i * chunkSize + chunkSize)
+            arrays.add(chunk)
+        }
+        if (rest > 0) { // only when we have a rest
+            // we copy the remaining elements into the last chunk
+            val chunk = Arrays.copyOfRange(arrayToSplit, (chunks - 1) * chunkSize, (chunks - 1) * chunkSize + rest)
+            arrays.add(chunk)
+        }
+        return arrays // that's it
+    }
+
+    fun joinByteArrays(arrays: List<ByteArray>): ByteArray {
+        if (arrays.isEmpty())
+            return ByteArray(0)
+        val firstArray = arrays.first()
+        if (arrays.size == 1)
+            return firstArray.copyOf()
+
+        val finalSize = arrays.sumBy(ByteArray::size)
+        val otherArrays = arrays.subList(1, arrays.size - 1)
+
+        val finalArray = firstArray.copyOf(finalSize)
+        var nextIndexStart = firstArray.size
+        for (array in otherArrays) {
+            System.arraycopy(array, 0, finalArray, nextIndexStart, array.size)
+            nextIndexStart += array.size
+        }
+        return finalArray
     }
 }

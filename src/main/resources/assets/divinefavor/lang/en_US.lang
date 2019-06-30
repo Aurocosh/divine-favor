@@ -518,7 +518,6 @@ tile.divinefavor:red_signal.description=Ghostly block that emits strong redstone
 
 #ITEM DESCRIPTIONS FOR JEI AND PATCHOULI
 item.divinefavor:item_memory_drop.description=TODO
-item.divinefavor:item_memory_drop.description=TODO
 ## GEMS
 item.divinefavor:invite_gem.description=Instantly teleports you to creator of the gem. Works across dimensions. Can be created with appropriate talisman.
 item.divinefavor:invite_pebble.description=Instantly teleports you to creator of the gem. Does not work across dimensions. Can be created with appropriate talisman.
@@ -633,13 +632,12 @@ item.divinefavor:rope_teleporting.description=Unusual trapping device. It will t
 
 
 ## NEW ITEM DESCRIPTIONS
-item.divinefavor:item_memory_drop.description=TODO
-item.divinefavor:item_memory_drop.description=TODO
+item.divinefavor:item_memory_drop.description=This tiny crystal stores memory of a place so it could be recreated later. Right click to memorize structure. Sneak right click to see the memory inside.
 item.divinefavor:ice_arrow.description=Delicate arrows made of ice. They are frail and because of this they deal less damage then regular arrows and break easily, but in a pinch they can be very useful. This type of arrow also cannot be tipped in potion, but on the other hand it deals extra damage to hellish mobs.
 
 ## SPELL TALISMAN DESCRIPTIONS
 item.divinefavor:spell_talisman_deserialize_memory.description=TODO
-item.divinefavor:spell_talisman_serialize_memory.description=TODO
+item.divinefavor:spell_talisman_serialize_memory.description=Converts current memorized block template into string and stores it to clipboard. Serialized template compatible with building gadgets.
 item.divinefavor:spell_talisman_copy_cuboid.description=TODO
 item.divinefavor:spell_talisman_copy_blocks.description=TODO
 item.divinefavor:spell_talisman_crystalyze_memory.description=TODO

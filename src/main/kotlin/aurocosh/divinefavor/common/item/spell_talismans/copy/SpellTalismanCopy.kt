@@ -13,7 +13,7 @@ import aurocosh.divinefavor.common.item.spell_talismans.context.TalismanContext
 import aurocosh.divinefavor.common.lib.BlockMapIntState
 import aurocosh.divinefavor.common.lib.extensions.*
 import aurocosh.divinefavor.common.lib.math.CuboidBoundingBox
-import aurocosh.divinefavor.common.network.message.client.MessageSendBlockTemplateClient
+import aurocosh.divinefavor.common.network.TemplateNetHandlers
 import aurocosh.divinefavor.common.network.message.client.syncing.MessageSyncTemplateClient
 import aurocosh.divinefavor.common.spirit.base.ModSpirit
 import aurocosh.divinefavor.common.util.UtilBlockPos
@@ -121,7 +121,7 @@ abstract class SpellTalismanCopy(name: String, spirit: ModSpirit, favorCost: Int
 
         val templateSavedData = world[TemplateData]
         templateSavedData[uuid] = blockTemplate
-        MessageSendBlockTemplateClient(blockTemplate).sendTo(player)
+        TemplateNetHandlers.clientHandler.send(player, blockTemplate)
 
         player.divinePlayerData.templateData.currentTemplate = uuid
         MessageSyncTemplateClient(uuid).sendTo(player)

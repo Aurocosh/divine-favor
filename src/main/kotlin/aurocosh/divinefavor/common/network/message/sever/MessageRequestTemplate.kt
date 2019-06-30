@@ -2,6 +2,7 @@ package aurocosh.divinefavor.common.network.message.sever
 
 import aurocosh.divinefavor.common.custom_data.global.TemplateData
 import aurocosh.divinefavor.common.lib.extensions.get
+import aurocosh.divinefavor.common.network.TemplateNetHandlers
 import aurocosh.divinefavor.common.network.message.base.DivineServerMessage
 import aurocosh.divinefavor.common.network.message.client.MessageSendBlockTemplateClient
 import net.minecraft.entity.player.EntityPlayerMP
@@ -21,7 +22,7 @@ class MessageRequestTemplate : DivineServerMessage {
         for (uuid in requestedMapUUIDS) {
             val template = templateSavedData[uuid]
             if (template != null)
-                MessageSendBlockTemplateClient(template).sendTo(serverPlayer)
+                TemplateNetHandlers.clientHandler.send(serverPlayer, template)
         }
     }
 }
