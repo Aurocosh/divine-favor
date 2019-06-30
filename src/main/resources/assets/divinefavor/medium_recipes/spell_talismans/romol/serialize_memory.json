@@ -12,15 +12,15 @@
     },
     {
       "type": "ore",
-      "ore": "dyeBlack"
+      "ore": "dyePurple"
+    },
+    {
+      "type": "ore",
+      "ore": "dyeOrange"
     },
     {
       "type": "stack",
-      "item": "minecraft:TODO"
-    },
-    {
-      "type": "stack",
-      "item": "minecraft:TODO"
+      "item": "minecraft:map"
     }
   ]
 }

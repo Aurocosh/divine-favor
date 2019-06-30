@@ -15,12 +15,20 @@
       "ore": "dyeBlack"
     },
     {
-      "type": "stack",
-      "item": "minecraft:TODO"
+      "type": "ore",
+      "ore": "dyeBlack"
     },
     {
       "type": "stack",
-      "item": "minecraft:TODO"
+      "item": "minecraft:glass"
+    },
+    {
+      "type": "stack",
+      "item": "minecraft:ice"
+    },
+    {
+      "type": "stack",
+      "item": "minecraft:book"
     }
   ]
 }

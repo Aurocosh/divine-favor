@@ -12,15 +12,19 @@
     },
     {
       "type": "ore",
-      "ore": "dyeBlack"
+      "ore": "dyeGray"
+    },
+    {
+      "type": "ore",
+      "ore": "dyeYellow"
     },
     {
       "type": "stack",
-      "item": "minecraft:TODO"
+      "item": "minecraft:map"
     },
     {
-      "type": "stack",
-      "item": "minecraft:TODO"
+      "type": "ore",
+      "ore": "stone"
     }
   ]
 }

@@ -7,7 +7,6 @@ object EmptyConst {
     private val resourceLocation: ResourceLocation = ResourceLocation("")
     fun emptyLocation(): ResourceLocation = resourceLocation
 
-    // TODO rework
     private val uuid = UUID(0,0)
     fun emptyUUID(): UUID = uuid
 }

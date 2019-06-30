@@ -16,11 +16,15 @@
     },
     {
       "type": "stack",
-      "item": "minecraft:TODO"
+      "item": "minecraft:blaze_rod"
     },
     {
       "type": "stack",
-      "item": "minecraft:TODO"
+      "item": "minecraft:blaze_rod"
+    },
+    {
+      "type": "stack",
+      "item": "minecraft:blaze_rod"
     }
   ]
 }

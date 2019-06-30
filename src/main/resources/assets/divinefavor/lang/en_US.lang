@@ -517,7 +517,8 @@ tile.divinefavor:red_pulse.description=Ghostly block that emits redstone signal 
 tile.divinefavor:red_signal.description=Ghostly block that emits strong redstone signal and disappears shortly
 
 #ITEM DESCRIPTIONS FOR JEI AND PATCHOULI
-item.divinefavor:item_memory_drop.description=TODO
+item.divinefavor:item_memory_drop.description=This tiny crystal stores memory of a place so it could be recreated later. Right click to memorize structure. Sneak right click to see the memory inside.
+
 ## GEMS
 item.divinefavor:invite_gem.description=Instantly teleports you to creator of the gem. Works across dimensions. Can be created with appropriate talisman.
 item.divinefavor:invite_pebble.description=Instantly teleports you to creator of the gem. Does not work across dimensions. Can be created with appropriate talisman.
@@ -632,17 +633,17 @@ item.divinefavor:rope_teleporting.description=Unusual trapping device. It will t
 
 
 ## NEW ITEM DESCRIPTIONS
-item.divinefavor:item_memory_drop.description=This tiny crystal stores memory of a place so it could be recreated later. Right click to memorize structure. Sneak right click to see the memory inside.
+item.divinefavor:item_memory_drop.description=Memory drop
 item.divinefavor:ice_arrow.description=Delicate arrows made of ice. They are frail and because of this they deal less damage then regular arrows and break easily, but in a pinch they can be very useful. This type of arrow also cannot be tipped in potion, but on the other hand it deals extra damage to hellish mobs.
 
 ## SPELL TALISMAN DESCRIPTIONS
-item.divinefavor:spell_talisman_deserialize_memory.description=TODO
+item.divinefavor:spell_talisman_deserialize_memory.description=This talisman reads block template from string in your clipboard and burns it into your memory. Serialized template compatible with building gadgets.
 item.divinefavor:spell_talisman_serialize_memory.description=Converts current memorized block template into string and stores it to clipboard. Serialized template compatible with building gadgets.
-item.divinefavor:spell_talisman_copy_cuboid.description=TODO
-item.divinefavor:spell_talisman_copy_blocks.description=TODO
-item.divinefavor:spell_talisman_crystalyze_memory.description=TODO
-item.divinefavor:spell_talisman_build_template.description=TODO
-item.divinefavor:spell_talisman_copy_area.description=TODO
+item.divinefavor:spell_talisman_copy_cuboid.description=This talisman creates block template from blocks inside of variable size cuboid and burns it into your memory.
+item.divinefavor:spell_talisman_copy_blocks.description=This talisman creates block template from chunk of adjacent blocks and burns it into your memory.
+item.divinefavor:spell_talisman_crystalyze_memory.description=This block crystalizes your current memorized block template into memory drop. Memory drops are storage items for block templates.
+item.divinefavor:spell_talisman_build_template.description=This talisman builds copy of your current memorized block template into the world.
+item.divinefavor:spell_talisman_copy_area.description=This talisman creates block template from blocks inside area designated by two points and burns it into your memory.
 item.divinefavor:spell_talisman_armor_of_pacifist.description=Grants user armor of pacifist. Player will be protected from most damage types, but in turn will not be able to attack anyone.
 item.divinefavor:spell_talisman_arrow_deflection.description=This talisman will temporarily give player ability to deflect incoming arrows. Though deflection is not perfect. Also when player hit with something other then arrows duration of spell will decrease drastically.
 item.divinefavor:spell_talisman_bind_ice_arrows.description=This talisman creates frail ice arrows. Those arrows are weaker then regular arrows, but this talisman may help you if you run out of arrows in the field. Also ice arrows are very effective against spawns of nether.

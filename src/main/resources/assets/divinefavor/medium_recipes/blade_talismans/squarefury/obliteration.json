@@ -15,12 +15,20 @@
       "ore": "dyeBlack"
     },
     {
+      "type": "ore",
+      "ore": "dyeRed"
+    },
+    {
       "type": "stack",
       "item": "minecraft:iron_sword"
     },
     {
-      "type": "stack",
-      "item": "minecraft:TODO" 
+      "type": "ore",
+      "ore": "gemDiamond"
+    },
+    {
+      "type": "ore",
+      "ore": "obsidian"
     }
   ]
 }

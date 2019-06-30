@@ -16,11 +16,23 @@
     },
     {
       "type": "stack",
-      "item": "minecraft:TODO"
+      "item": "minecraft:rotten_flesh"
     },
     {
       "type": "stack",
-      "item": "minecraft:TODO"
+      "item": "minecraft:rotten_flesh"
+    },
+    {
+      "type": "stack",
+      "item": "minecraft:rotten_flesh"
+    },
+    {
+      "type": "stack",
+      "item": "minecraft:rotten_flesh"
+    },
+    {
+      "type": "stack",
+      "item": "minecraft:rotten_flesh"
     }
   ]
 }
