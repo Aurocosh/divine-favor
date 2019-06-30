@@ -6,8 +6,5 @@ class MessageSyncPropertyEnumFacing : MessageSyncProperty<EnumFacing> {
     override var value: EnumFacing = EnumFacing.UP
 
     constructor()
-
-    constructor(itemId: Int, name: String, value: EnumFacing) : super(itemId, name) {
-        this.value = value
-    }
+    constructor(itemId: Int, propertyName: String, value: EnumFacing) : super(itemId, propertyName, value)
 }

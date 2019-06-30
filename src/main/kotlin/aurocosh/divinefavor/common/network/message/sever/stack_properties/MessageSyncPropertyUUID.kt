@@ -1,14 +1,10 @@
 package aurocosh.divinefavor.common.network.message.sever.stack_properties
 
-import aurocosh.divinefavor.common.lib.EmptyConst.emptyUUID
 import java.util.*
 
 class MessageSyncPropertyUUID : MessageSyncProperty<UUID> {
-    override var value: UUID = emptyUUID()
+    override lateinit var value: UUID
 
     constructor()
-
-    constructor(itemId: Int, name: String, value: UUID) : super(itemId, name) {
-        this.value = value
-    }
+    constructor(itemId: Int, propertyName: String, value: UUID) : super(itemId, propertyName, value)
 }

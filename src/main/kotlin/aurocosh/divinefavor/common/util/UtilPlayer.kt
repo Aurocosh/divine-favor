@@ -39,8 +39,8 @@ object UtilPlayer {
         return if (!stack.isEmpty && predicate.invoke(stack.item)) EnumHand.OFF_HAND else null
     }
 
-    fun getHeldStacks(player: EntityPlayer): List<HeldStack> {
-        return listOf(
+    fun getHeldStacks(player: EntityPlayer): Sequence<HeldStack> {
+        return sequenceOf(
                 HeldStack(EnumHand.MAIN_HAND, player.inventory.currentItem, player.heldItemMainhand),
                 HeldStack(EnumHand.OFF_HAND, InventoryIndexes.Offhand.value, player.heldItemOffhand)
         )

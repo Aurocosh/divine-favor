@@ -1,13 +1,14 @@
 package aurocosh.divinefavor.common.stack_properties.properties
 
 import aurocosh.divinefavor.common.constants.ConstLang
+import aurocosh.divinefavor.common.stack_properties.properties.base.StackProperty
 import net.minecraft.client.resources.I18n
 import net.minecraft.item.ItemStack
 import net.minecraft.nbt.NBTTagCompound
 import net.minecraftforge.fml.relauncher.Side
 import net.minecraftforge.fml.relauncher.SideOnly
 
-class StackPropertyBool(name: String, defaultValue: Boolean, showInTooltip: Boolean, showInGui: Boolean, orderIndex: Int, serverSync: (Int, StackProperty<Boolean>, Boolean) -> Unit) : StackProperty<Boolean>(name, defaultValue, showInTooltip, showInGui, orderIndex, serverSync) {
+class StackPropertyBool(name: String, defaultValue: Boolean, showInTooltip: Boolean, showInGui: Boolean, orderIndex: Int) : StackProperty<Boolean>(name, defaultValue, showInTooltip, showInGui, orderIndex) {
     override fun getValueFromTag(compound: NBTTagCompound): Boolean {
         return compound.getBoolean(tag)
     }

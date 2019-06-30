@@ -85,6 +85,6 @@ class ShiftedPositionPropertyWrapper(propertyHandler: StackPropertyHandler) : Po
     }
 
     override fun shouldRender(context: TalismanContext): Boolean {
-        return context.stack.get(isRelative) || super.shouldRender(context)
+        return context.stack.get(isRelative) || context.stack.get(isLockPosition) || super.shouldRender(context)
     }
 }

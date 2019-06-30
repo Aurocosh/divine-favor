@@ -19,7 +19,6 @@ import aurocosh.divinefavor.common.network.message.sever.petrification.MessagePe
 import aurocosh.divinefavor.common.network.message.sever.petrification.MessagePetrificationReset
 import aurocosh.divinefavor.common.network.message.sever.stack_properties.*
 import aurocosh.divinefavor.common.network.message.sever.syncing.*
-import aurocosh.divinefavor.common.network.message.sever.talisman_properties.*
 import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper
 import net.minecraftforge.fml.relauncher.Side
 
@@ -64,7 +63,6 @@ object NetworkHandler {
         autoWrapper.register(MessagePetrificationCure::class.java, Side.SERVER)
         autoWrapper.register(MessagePetrificationDamage::class.java, Side.SERVER)
 
-        autoWrapper.register(MessageSyncMemoryPouchDropName::class.java, Side.SERVER)
         autoWrapper.register(MessageSyncMemoryPouchSlot::class.java, Side.SERVER)
         autoWrapper.register(MessageSyncTalismanContainerSlot::class.java, Side.SERVER)
         autoWrapper.register(MessageSyncTalismanPropertyIndex::class.java, Side.SERVER)
@@ -79,16 +77,6 @@ object NetworkHandler {
         autoWrapper.register(MessageSyncPropertyUUID::class.java, Side.SERVER)
         autoWrapper.register(MessageSyncPropertyEnum::class.java, Side.SERVER)
         autoWrapper.register(MessageSyncPropertyString::class.java, Side.SERVER)
-
-        autoWrapper.register(MessageSyncTalismanPropertyBlockPos::class.java, Side.SERVER)
-        autoWrapper.register(MessageSyncTalismanPropertyBool::class.java, Side.SERVER)
-        autoWrapper.register(MessageSyncTalismanPropertyEnumFacing::class.java, Side.SERVER)
-        autoWrapper.register(MessageSyncTalismanPropertyFloat::class.java, Side.SERVER)
-        autoWrapper.register(MessageSyncTalismanPropertyIBlockState::class.java, Side.SERVER)
-        autoWrapper.register(MessageSyncTalismanPropertyInt::class.java, Side.SERVER)
-        autoWrapper.register(MessageSyncTalismanPropertyUUID::class.java, Side.SERVER)
-        autoWrapper.register(MessageSyncTalismanPropertyEnum::class.java, Side.SERVER)
-        autoWrapper.register(MessageSyncTalismanPropertyString::class.java, Side.SERVER)
 
         autoWrapper.register(MessageRequestTemplate::class.java, Side.SERVER)
         autoWrapper.register(MessageSendBlockTemplateServer::class.java, Side.SERVER)

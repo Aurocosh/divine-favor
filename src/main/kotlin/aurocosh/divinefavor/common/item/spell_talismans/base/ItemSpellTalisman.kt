@@ -26,6 +26,8 @@ open class ItemSpellTalisman// Talisman functions
 
     constructor(name: String, spirit: ModSpirit, favorCost: Int, options: EnumSet<SpellOptions>) : this(name, "", spirit, favorCost, options)
 
+
+
     private fun getTexturePath(path: Array<String>): String {
         return path.joinToString("/")
     }

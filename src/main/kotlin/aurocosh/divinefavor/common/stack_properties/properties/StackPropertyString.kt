@@ -1,12 +1,13 @@
 package aurocosh.divinefavor.common.stack_properties.properties
 
+import aurocosh.divinefavor.common.stack_properties.properties.base.StackProperty
 import net.minecraft.client.resources.I18n
 import net.minecraft.item.ItemStack
 import net.minecraft.nbt.NBTTagCompound
 import net.minecraftforge.fml.relauncher.Side
 import net.minecraftforge.fml.relauncher.SideOnly
 
-class StackPropertyString(name: String, defaultValue: String, showInTooltip: Boolean, showInGui: Boolean, orderIndex: Int, serverSync: (Int, StackProperty<String>, String) -> Unit) : StackProperty<String>(name, defaultValue, showInTooltip, showInGui, orderIndex, serverSync) {
+class StackPropertyString(name: String, defaultValue: String, showInTooltip: Boolean, showInGui: Boolean, orderIndex: Int) : StackProperty<String>(name, defaultValue, showInTooltip, showInGui, orderIndex) {
     override fun getValueFromTag(compound: NBTTagCompound): String {
         return compound.getString(tag)
     }

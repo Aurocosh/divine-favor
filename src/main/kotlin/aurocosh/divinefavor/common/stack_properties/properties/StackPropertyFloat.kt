@@ -1,5 +1,6 @@
 package aurocosh.divinefavor.common.stack_properties.properties
 
+import aurocosh.divinefavor.common.stack_properties.properties.base.StackProperty
 import net.minecraft.client.resources.I18n
 import net.minecraft.item.ItemStack
 import net.minecraft.nbt.NBTTagCompound
@@ -7,7 +8,7 @@ import net.minecraft.util.math.MathHelper
 import net.minecraftforge.fml.relauncher.Side
 import net.minecraftforge.fml.relauncher.SideOnly
 
-class StackPropertyFloat(name: String, defaultValue: Float, val minValue: Float, val maxValue: Float, showInTooltip: Boolean, showInGui: Boolean, orderIndex: Int, serverSync: (Int, StackProperty<Float>, Float) -> Unit) : StackProperty<Float>(name, defaultValue, showInTooltip, showInGui, orderIndex, serverSync) {
+class StackPropertyFloat(name: String, defaultValue: Float, val minValue: Float, val maxValue: Float, showInTooltip: Boolean, showInGui: Boolean, orderIndex: Int) : StackProperty<Float>(name, defaultValue, showInTooltip, showInGui, orderIndex) {
     override fun getValueFromTag(compound: NBTTagCompound): Float {
         return compound.getFloat(tag)
     }

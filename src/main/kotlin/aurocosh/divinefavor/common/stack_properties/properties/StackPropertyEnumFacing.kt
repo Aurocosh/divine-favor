@@ -1,5 +1,6 @@
 package aurocosh.divinefavor.common.stack_properties.properties
 
+import aurocosh.divinefavor.common.stack_properties.properties.base.StackProperty
 import net.minecraft.client.resources.I18n
 import net.minecraft.item.ItemStack
 import net.minecraft.nbt.NBTTagCompound
@@ -7,7 +8,7 @@ import net.minecraft.util.EnumFacing
 import net.minecraftforge.fml.relauncher.Side
 import net.minecraftforge.fml.relauncher.SideOnly
 
-class StackPropertyEnumFacing(name: String, defaultValue: EnumFacing, showInTooltip: Boolean, showInGui: Boolean, orderIndex: Int, serverSync: (Int, StackProperty<EnumFacing>, EnumFacing) -> Unit) : StackProperty<EnumFacing>(name, defaultValue, showInTooltip, showInGui, orderIndex, serverSync) {
+class StackPropertyEnumFacing(name: String, defaultValue: EnumFacing, showInTooltip: Boolean, showInGui: Boolean, orderIndex: Int) : StackProperty<EnumFacing>(name, defaultValue, showInTooltip, showInGui, orderIndex) {
     override fun getValueFromTag(compound: NBTTagCompound): EnumFacing {
         return EnumFacing.byIndex(compound.getInteger(tag))
     }

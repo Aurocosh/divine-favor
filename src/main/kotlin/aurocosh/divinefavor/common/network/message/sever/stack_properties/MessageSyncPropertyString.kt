@@ -1,11 +1,8 @@
 package aurocosh.divinefavor.common.network.message.sever.stack_properties
 
 class MessageSyncPropertyString : MessageSyncProperty<String> {
-    override var value: String = ""
+    override lateinit var value: String
 
     constructor()
-
-    constructor(itemId: Int, name: String, value: String) : super(itemId, name) {
-        this.value = value
-    }
+    constructor(itemId: Int, propertyName: String, value: String) : super(itemId, propertyName, value)
 }

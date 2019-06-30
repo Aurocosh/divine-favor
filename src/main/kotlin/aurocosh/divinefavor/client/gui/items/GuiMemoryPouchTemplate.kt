@@ -8,7 +8,6 @@ import aurocosh.divinefavor.common.item.memory_pouch.capability.MemoryPouchDataH
 import aurocosh.divinefavor.common.lib.extensions.cap
 import aurocosh.divinefavor.common.lib.extensions.get
 import aurocosh.divinefavor.common.lib.extensions.set
-import aurocosh.divinefavor.common.network.message.sever.syncing.MessageSyncMemoryPouchDropName
 import aurocosh.divinefavor.common.util.UtilPlayer
 import net.minecraft.client.gui.Gui
 import net.minecraft.client.gui.GuiTextField
@@ -78,8 +77,7 @@ class GuiMemoryPouchTemplate(val player: EntityPlayer, internal var stack: ItemS
             val selectedStack = pouch.getSelectedStack()
             if (!selectedStack.isEmpty) {
                 val text = nameField.text
-                selectedStack.set(ItemMemoryDrop.templateName, text)
-                MessageSyncMemoryPouchDropName(playerSlotIndex, pouch.selectedSlotIndex, text).send()
+                selectedStack.set(ItemMemoryDrop.templateName, text, true)
             }
         } else
             super.keyTyped(typedChar, keyCode)

@@ -1,4 +1,4 @@
-package aurocosh.divinefavor.common.stack_properties.properties
+package aurocosh.divinefavor.common.stack_properties.properties.base
 
 import aurocosh.divinefavor.common.core.ResourceNamer
 import aurocosh.divinefavor.common.lib.extensions.checkForTag
@@ -9,15 +9,16 @@ import net.minecraft.nbt.NBTTagCompound
 import net.minecraftforge.fml.relauncher.Side
 import net.minecraftforge.fml.relauncher.SideOnly
 
-abstract class StackProperty<T>(val name: String, val defaultValue: T, val showInTooltip: Boolean, val showInGui: Boolean, val orderIndex: Int, private val serverSync: (Int, StackProperty<T>, T) -> Unit) {
+abstract class StackProperty<T : Any>(val name: String, val defaultValue: T, val showInTooltip: Boolean, val showInGui: Boolean, val orderIndex: Int) {
     val tag = "tag_$name"
     val tooltipKey = ResourceNamer.getTypedNameString("tooltip", "property", name)
     val displayKey = ResourceNamer.getTypedNameString("name", "property", name)
 
     private val changeListeners: MutableSet<(ItemStack, T) -> Unit> = HashSet()
+    private val syncListeners: MutableSet<(Int, StackProperty<T>, T) -> Unit> = HashSet()
 
     fun addChangeListener(listener: (ItemStack, T) -> Unit) = changeListeners.add(listener)
-    fun removeChangeListener(listener: (ItemStack, T) -> Unit) = changeListeners.remove(listener)
+    fun addSyncListener(listener: (Int, StackProperty<T>, T) -> Unit) = syncListeners.add(listener)
 
     fun getValue(stack: ItemStack): T {
         if (!stack.checkForTag(tag))
@@ -34,10 +35,13 @@ abstract class StackProperty<T>(val name: String, val defaultValue: T, val showI
         changeListeners.forEach { it.invoke(stack, value) }
         if (sync) {
             val itemId = Item.getIdFromItem(stack.item)
-            serverSync.invoke(itemId, this, value)
+            syncListeners.forEach { it.invoke(itemId, this, value) }
         }
         return true
     }
+
+    @Suppress("UNCHECKED_CAST")
+    open fun unsafeValueSet(stack: ItemStack, value: Any, sync: Boolean = false) = setValue(stack, value as T, sync)
 
     abstract fun getValueFromTag(compound: NBTTagCompound): T
     abstract fun setValueToTag(compound: NBTTagCompound, value: T)

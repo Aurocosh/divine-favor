@@ -1,14 +1,10 @@
 package aurocosh.divinefavor.common.network.message.sever.stack_properties
 
 import net.minecraft.block.state.IBlockState
-import net.minecraft.init.Blocks
 
 class MessageSyncPropertyIBlockState : MessageSyncProperty<IBlockState> {
-    override var value: IBlockState = Blocks.AIR.defaultState
+    override lateinit var value: IBlockState
 
     constructor()
-
-    constructor(itemId: Int, name: String, value: IBlockState) : super(itemId, name) {
-        this.value = value
-    }
+    constructor(itemId: Int, propertyName: String, value: IBlockState) : super(itemId, propertyName, value)
 }

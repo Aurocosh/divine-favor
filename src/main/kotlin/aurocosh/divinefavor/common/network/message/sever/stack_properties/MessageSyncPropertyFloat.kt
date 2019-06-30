@@ -4,8 +4,5 @@ class MessageSyncPropertyFloat : MessageSyncProperty<Float> {
     override var value: Float = 0f
 
     constructor()
-
-    constructor(itemId: Int, name: String, value: Float) : super(itemId, name) {
-        this.value = value
-    }
+    constructor(itemId: Int, propertyName: String, value: Float) : super(itemId, propertyName, value)
 }

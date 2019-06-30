@@ -14,8 +14,13 @@ import aurocosh.divinefavor.common.lib.extensions.S
 import aurocosh.divinefavor.common.lib.extensions.cap
 import aurocosh.divinefavor.common.lib.extensions.get
 import aurocosh.divinefavor.common.lib.extensions.isPropertySet
+import aurocosh.divinefavor.common.stack_properties.StackPropertyHandler
+import aurocosh.divinefavor.common.stack_properties.interfaces.IPropertyAccessor
+import aurocosh.divinefavor.common.stack_properties.interfaces.IPropertyContainer
+import aurocosh.divinefavor.common.stack_properties.properties.base.StackProperty
 import aurocosh.divinefavor.common.util.UtilItem.actionResult
 import net.minecraft.entity.player.EntityPlayer
+import net.minecraft.item.Item
 import net.minecraft.item.ItemStack
 import net.minecraft.nbt.NBTTagCompound
 import net.minecraft.util.ActionResult
@@ -24,10 +29,28 @@ import net.minecraft.world.World
 import net.minecraftforge.common.capabilities.ICapabilityProvider
 import java.util.*
 
-class ItemMemoryPouch : ModItem("memory_pouch", "memory_pouch", ConstMainTabOrder.CONTAINERS), ITemplateContainer {
+class ItemMemoryPouch : ModItem("memory_pouch", "memory_pouch", ConstMainTabOrder.CONTAINERS), ITemplateContainer, IPropertyContainer {
+    protected val propertyHandler: StackPropertyHandler = StackPropertyHandler("grimoire")
+    override val properties: IPropertyAccessor = propertyHandler
+
     init {
         setMaxStackSize(1)
         creativeTab = DivineFavor.TAB_MAIN
+    }
+
+    override fun findProperty(stack: ItemStack, item: Item, propertyName: String): Pair<ItemStack, StackProperty<out Any>>? {
+        if (item == this) {
+            val property = propertyHandler[propertyName] ?: return null
+            return Pair(stack, property)
+        }
+
+        val handler = stack.cap(CAPABILITY_MEMORY_POUCH)
+        val selectedStack = handler.getSelectedStack()
+
+        val selectedItem = selectedStack.item
+        if (selectedItem !is IPropertyContainer)
+            return null
+        return selectedItem.findProperty(selectedStack, item, propertyName)
     }
 
     override fun onItemRightClick(world: World, player: EntityPlayer, hand: EnumHand): ActionResult<ItemStack> {

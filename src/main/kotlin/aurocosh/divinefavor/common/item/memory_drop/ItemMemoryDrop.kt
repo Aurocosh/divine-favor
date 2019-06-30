@@ -10,10 +10,14 @@ import aurocosh.divinefavor.common.lib.extensions.get
 import aurocosh.divinefavor.common.lib.extensions.isPropertySet
 import aurocosh.divinefavor.common.network.message.client.syncing.MessageSyncTemplateClient
 import aurocosh.divinefavor.common.stack_properties.StackPropertyHandler
-import aurocosh.divinefavor.common.stack_properties.generators.PropertyGenerator
 import aurocosh.divinefavor.common.stack_properties.interfaces.IPropertyAccessor
+import aurocosh.divinefavor.common.stack_properties.interfaces.IPropertyContainer
+import aurocosh.divinefavor.common.stack_properties.properties.StackPropertyString
+import aurocosh.divinefavor.common.stack_properties.properties.StackPropertyUUID
+import aurocosh.divinefavor.common.stack_properties.properties.base.StackProperty
 import aurocosh.divinefavor.common.util.UtilItem.actionResult
 import net.minecraft.entity.player.EntityPlayer
+import net.minecraft.item.Item
 import net.minecraft.item.ItemStack
 import net.minecraft.util.ActionResult
 import net.minecraft.util.EnumActionResult
@@ -23,9 +27,9 @@ import net.minecraft.util.math.BlockPos
 import net.minecraft.world.World
 import java.util.*
 
-open class ItemMemoryDrop(name: String, texturePath: String, orderIndex: Int = 0) : ModItem(name, texturePath, orderIndex), ITemplateContainer {
+open class ItemMemoryDrop(name: String, texturePath: String, orderIndex: Int = 0) : ModItem(name, texturePath, orderIndex), ITemplateContainer, IPropertyContainer {
     protected val propertyHandler: StackPropertyHandler = StackPropertyHandler(name)
-    val properties: IPropertyAccessor = propertyHandler
+    override val properties: IPropertyAccessor = propertyHandler
 
     init {
         propertyHandler.registerProperty(uuid)
@@ -33,9 +37,11 @@ open class ItemMemoryDrop(name: String, texturePath: String, orderIndex: Int = 0
         creativeTab = DivineFavor.TAB_MAIN
     }
 
-    override fun onItemUse(player: EntityPlayer, world: World, pos: BlockPos, hand: EnumHand, facing: EnumFacing, hitX: Float, hitY: Float, hitZ: Float): EnumActionResult {
-
-        return EnumActionResult.PASS
+    override fun findProperty(stack: ItemStack, item: Item, propertyName: String): Pair<ItemStack, StackProperty<out Any>>? {
+        if(item != this)
+            return null
+        val property = propertyHandler.get(propertyName)
+        return if (property != null) Pair(stack, property) else null
     }
 
     override fun onItemRightClick(world: World, player: EntityPlayer, hand: EnumHand): ActionResult<ItemStack> {
@@ -64,8 +70,8 @@ open class ItemMemoryDrop(name: String, texturePath: String, orderIndex: Int = 0
     }
 
     companion object {
-        val uuid = PropertyGenerator.stack.makeUUIDProperty("uuid", emptyUUID(), showInTooltip = false, showInGui = false)
-        val templateName = PropertyGenerator.stack.makeStringProperty("template_name", "Template", showInTooltip = true, showInGui = false)
+        val uuid = StackPropertyUUID("uuid", emptyUUID(), showInTooltip = false, showInGui = false, orderIndex = 0)
+        val templateName = StackPropertyString("template_name", "Template", showInTooltip = true, showInGui = false, orderIndex = 0)
     }
 }
 
