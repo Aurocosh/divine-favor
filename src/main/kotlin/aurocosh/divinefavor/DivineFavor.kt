@@ -1,6 +1,6 @@
 package aurocosh.divinefavor
 
-import aurocosh.divinefavor.common.core.creative_tabs.*
+import aurocosh.divinefavor.common.core.creative_tabs.DivineFavorCreativeTab
 import aurocosh.divinefavor.common.core.proxy.CommonProxy
 import aurocosh.divinefavor.common.item.common.*
 import net.minecraftforge.fml.common.Loader
@@ -19,7 +19,7 @@ object DivineFavor {
     // Mod Constants
     const val MOD_ID = "divinefavor"
     const val MOD_NAME = "Divine Favor"
-    const val MOD_DEPS = "required-after:patchouli;required:forgelin;required:autonetworklib@[1.0.30,)"
+    const val MOD_DEPS = "required-after:patchouli;required:forgelin;required:autonetworklib@[1.0.36,)"
 
     const val KEYBIND_CATEGORY = "key.categories.$MOD_ID"
 
