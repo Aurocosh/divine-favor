@@ -9,7 +9,7 @@ import net.minecraftforge.fml.relauncher.SideOnly
 import java.util.*
 
 class MessageConfigOreBlocks : DivineConfigSyncMessage() {
-    lateinit var oreBlocks: ArrayList<String>
+    var oreBlocks: List<String> = emptyList()
 
 //    lateinit var testMap: HashMap<Int, String>
 

@@ -17,10 +17,9 @@ abstract class MessageSyncProperty<T : Any> : DivineServerMessage {
     constructor()
 
     @Suppress("LeakingThis")
-    constructor(itemId: Int, propertyName: String, value: T) : super() {
+    constructor(itemId: Int, propertyName: String) : super() {
         this.itemId = itemId
         this.propertyName = propertyName
-        this.value = value
     }
 
     override fun handleSafe(serverPlayer: EntityPlayerMP) {

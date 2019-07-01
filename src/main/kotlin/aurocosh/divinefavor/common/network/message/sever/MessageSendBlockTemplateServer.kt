@@ -1,6 +1,7 @@
 package aurocosh.divinefavor.common.network.message.sever
 
 import aurocosh.divinefavor.common.custom_data.global.TemplateData
+import aurocosh.divinefavor.common.lib.EmptyConst.invalidUUID
 import aurocosh.divinefavor.common.lib.extensions.get
 import aurocosh.divinefavor.common.network.TemplateNetHandlers
 import aurocosh.divinefavor.common.network.TemplatePart
@@ -9,10 +10,10 @@ import net.minecraft.entity.player.EntityPlayerMP
 import java.util.*
 
 class MessageSendBlockTemplateServer : DivineServerMessage {
-    lateinit var uuid: UUID
+    var uuid: UUID = invalidUUID()
     var partIndex = 0
     var partCount = 0
-    lateinit var bytes: ByteArray
+    var bytes: ByteArray = ByteArray(0)
 
     constructor()
 

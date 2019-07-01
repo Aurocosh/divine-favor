@@ -1,14 +1,15 @@
 package aurocosh.divinefavor.common.network.message.sever
 
 import aurocosh.divinefavor.common.custom_data.global.TemplateData
+import aurocosh.divinefavor.common.lib.EmptyConst.invalidUUID
 import aurocosh.divinefavor.common.lib.extensions.get
 import aurocosh.divinefavor.common.network.TemplateNetHandlers
 import aurocosh.divinefavor.common.network.message.base.DivineServerMessage
-import aurocosh.divinefavor.common.network.message.client.MessageSendBlockTemplateClient
 import net.minecraft.entity.player.EntityPlayerMP
 import java.util.*
 
 class MessageRequestTemplate : DivineServerMessage {
+    var uuid: UUID = invalidUUID()
     var requestedMapUUIDS: List<UUID> = emptyList()
 
     constructor()

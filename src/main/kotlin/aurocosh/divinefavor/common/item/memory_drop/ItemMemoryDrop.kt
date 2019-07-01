@@ -4,7 +4,7 @@ import aurocosh.divinefavor.DivineFavor
 import aurocosh.divinefavor.common.constants.ConstGuiIDs
 import aurocosh.divinefavor.common.item.ITemplateContainer
 import aurocosh.divinefavor.common.item.base.ModItem
-import aurocosh.divinefavor.common.lib.EmptyConst.emptyUUID
+import aurocosh.divinefavor.common.lib.EmptyConst.invalidUUID
 import aurocosh.divinefavor.common.lib.extensions.divinePlayerData
 import aurocosh.divinefavor.common.lib.extensions.get
 import aurocosh.divinefavor.common.lib.extensions.isPropertySet
@@ -20,10 +20,7 @@ import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.item.Item
 import net.minecraft.item.ItemStack
 import net.minecraft.util.ActionResult
-import net.minecraft.util.EnumActionResult
-import net.minecraft.util.EnumFacing
 import net.minecraft.util.EnumHand
-import net.minecraft.util.math.BlockPos
 import net.minecraft.world.World
 import java.util.*
 
@@ -70,7 +67,7 @@ open class ItemMemoryDrop(name: String, texturePath: String, orderIndex: Int = 0
     }
 
     companion object {
-        val uuid = StackPropertyUUID("uuid", emptyUUID(), showInTooltip = false, showInGui = false, orderIndex = 0)
+        val uuid = StackPropertyUUID("uuid", invalidUUID(), showInTooltip = false, showInGui = false, orderIndex = 0)
         val templateName = StackPropertyString("template_name", "Template", showInTooltip = true, showInGui = false, orderIndex = 0)
     }
 }

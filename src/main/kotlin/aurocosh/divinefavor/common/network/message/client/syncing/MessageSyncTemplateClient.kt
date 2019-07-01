@@ -1,6 +1,7 @@
 package aurocosh.divinefavor.common.network.message.client.syncing
 
 import aurocosh.divinefavor.DivineFavor
+import aurocosh.divinefavor.common.lib.EmptyConst.invalidUUID
 import aurocosh.divinefavor.common.lib.extensions.divinePlayerData
 import aurocosh.divinefavor.common.network.message.base.DivineClientMessage
 import net.minecraftforge.fml.relauncher.Side
@@ -8,7 +9,7 @@ import net.minecraftforge.fml.relauncher.SideOnly
 import java.util.*
 
 class MessageSyncTemplateClient : DivineClientMessage {
-    lateinit var currentTemplate: UUID
+    var currentTemplate: UUID = invalidUUID()
 
     constructor()
 

@@ -16,6 +16,7 @@ import aurocosh.divinefavor.common.item.talisman_tools.spell_bow.capability.Spel
 import aurocosh.divinefavor.common.item.talisman_tools.spell_pick.capability.SpellPickDataHandler
 import aurocosh.divinefavor.common.muliblock.common.ModMultiBlocks
 import aurocosh.divinefavor.common.network.GuiHandler
+import aurocosh.divinefavor.common.network.ModBufSerializers
 import aurocosh.divinefavor.common.network.NetworkHandler
 import aurocosh.divinefavor.common.potions.common.ModBlendEffects
 import aurocosh.divinefavor.common.potions.common.ModBlessings
@@ -47,6 +48,8 @@ open class CommonProxy {
         get() = throw IllegalStateException("This should only be called from client side")
 
     open fun preInit(event: FMLPreInitializationEvent) {
+        ModBufSerializers.preInit()
+
         ModSpirits.preInit()
         ModMultiBlocks.preInit()
 

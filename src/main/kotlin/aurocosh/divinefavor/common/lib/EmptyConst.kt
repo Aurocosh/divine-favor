@@ -8,5 +8,5 @@ object EmptyConst {
     fun emptyLocation(): ResourceLocation = resourceLocation
 
     private val uuid = UUID(0,0)
-    fun emptyUUID(): UUID = uuid
+    fun invalidUUID(): UUID = uuid
 }

@@ -4,5 +4,7 @@ class MessageSyncPropertyBool : MessageSyncProperty<Boolean> {
     override var value: Boolean = false
 
     constructor()
-    constructor(itemId: Int, propertyName: String, value: Boolean) : super(itemId, propertyName, value)
+    constructor(itemId: Int, propertyName: String, value: Boolean) : super(itemId, propertyName) {
+        this.value = value
+    }
 }

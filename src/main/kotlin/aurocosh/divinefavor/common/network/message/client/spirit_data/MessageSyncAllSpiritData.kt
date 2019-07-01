@@ -9,9 +9,9 @@ import net.minecraftforge.fml.relauncher.Side
 import net.minecraftforge.fml.relauncher.SideOnly
 
 class MessageSyncAllSpiritData : DivineClientMessage {
-    lateinit var contracts: NBTTagCompound
-    lateinit var favorValues: IntArray
-    lateinit var favorInfinite: BooleanArray
+    var contracts: NBTTagCompound = NBTTagCompound()
+    var favorValues: IntArray = IntArray(0)
+    var favorInfinite: BooleanArray = BooleanArray(0)
 
     constructor()
 

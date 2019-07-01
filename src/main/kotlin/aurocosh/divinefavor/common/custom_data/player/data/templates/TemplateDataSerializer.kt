@@ -1,6 +1,6 @@
 package aurocosh.divinefavor.common.custom_data.player.data.templates
 
-import aurocosh.divinefavor.common.lib.EmptyConst.emptyUUID
+import aurocosh.divinefavor.common.lib.EmptyConst.invalidUUID
 import aurocosh.divinefavor.common.lib.interfaces.INbtSerializer
 import net.minecraft.nbt.NBTTagCompound
 
@@ -12,7 +12,7 @@ class TemplateDataSerializer : INbtSerializer<TemplateData> {
     }
 
     override fun deserialize(nbt: NBTTagCompound, instance: TemplateData) {
-        instance.currentTemplate = nbt.getUniqueId(tagCurrentTemplate) ?: emptyUUID()
+        instance.currentTemplate = nbt.getUniqueId(tagCurrentTemplate) ?: invalidUUID()
     }
 
     companion object {

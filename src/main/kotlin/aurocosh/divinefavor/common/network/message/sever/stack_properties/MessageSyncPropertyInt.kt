@@ -4,5 +4,7 @@ class MessageSyncPropertyInt : MessageSyncProperty<Int> {
     override var value: Int = 0
 
     constructor()
-    constructor(itemId: Int, propertyName: String, value: Int) : super(itemId, propertyName, value)
+    constructor(itemId: Int, propertyName: String, value: Int) : super(itemId, propertyName) {
+        this.value = value
+    }
 }
