@@ -23,8 +23,10 @@ class PotionToweringPresence : ModPotion("towering_presence", 0x7FB8A4) {
 
     override fun onPotionRemoved(livingBase: EntityLivingBase) {
         super.onPotionRemoved(livingBase)
-        if (livingBase is EntityPlayer)
+        if (livingBase is EntityPlayer) {
             UtilSpirit.convertMarksToInvites(livingBase, ModSpirits.timber, ModCallingStones.calling_stone_timber)
+            MaterialPresence.onInviteGiven(livingBase)
+        }
     }
 
     override fun performEffect(livingBase: EntityLivingBase, amplifier: Int) {

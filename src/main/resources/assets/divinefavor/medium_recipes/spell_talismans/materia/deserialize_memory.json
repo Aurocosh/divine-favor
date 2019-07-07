@@ -1,0 +1,26 @@
+{
+  "result": {
+    "item": "divinefavor:spell_talisman_deserialize_memory"
+  },
+  "stones": [
+    "divinefavor:calling_stone_materia"
+  ],
+  "ingredients": [
+    {
+      "type": "ore",
+      "ore": "paper"
+    },
+    {
+      "type": "ore",
+      "ore": "dyePurple"
+    },
+    {
+      "type": "ore",
+      "ore": "dyeGreen"
+    },
+    {
+      "type": "stack",
+      "item": "minecraft:map"
+    }
+  ]
+}

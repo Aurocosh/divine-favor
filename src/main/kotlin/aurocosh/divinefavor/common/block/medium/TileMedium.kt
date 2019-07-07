@@ -8,7 +8,7 @@ import aurocosh.divinefavor.common.misc.SlotStack
 import aurocosh.divinefavor.common.muliblock.IMultiblockController
 import aurocosh.divinefavor.common.muliblock.common.MultiblockWatcher
 import aurocosh.divinefavor.common.muliblock.instance.MultiBlockInstance
-import aurocosh.divinefavor.common.muliblock.instance.MultiBlockInstanceAltar
+import aurocosh.divinefavor.common.muliblock.instance.MultiBlockSpiritInstance
 import aurocosh.divinefavor.common.receipes.common.ModMediumRecipes
 import aurocosh.divinefavor.common.util.UtilHandler
 import aurocosh.divinefavor.common.util.UtilTick
@@ -34,7 +34,7 @@ class TileMedium : TickableTileEntity(false, true), IMultiblockController {
     // server side
     private var extraActiveTime: Int = 0
     private var isRejecting: Boolean = false
-    private var multiBlockInstance: MultiBlockInstanceAltar? = null
+    private var multiBlockSpiritInstance: MultiBlockSpiritInstance? = null
 
     private var stateId = 0 // increases by one every time something in inventory is changed
     private var lastCheckedStateId = -1
@@ -47,7 +47,7 @@ class TileMedium : TickableTileEntity(false, true), IMultiblockController {
         override fun onContentsChanged(slot: Int) {
             if (!world.isRemote) {
                 isRejecting = true
-                if (multiBlockInstance == null)
+                if (multiBlockSpiritInstance == null)
                     tryToFormMultiBlockInternal()
                 updateState()
                 val blockState = world.getBlockState(pos)
@@ -196,7 +196,7 @@ class TileMedium : TickableTileEntity(false, true), IMultiblockController {
 
     override fun updateFiltered() {
         val stoneStack = stoneStack
-        if (!stoneStack.isEmpty && multiBlockInstance != null) {
+        if (!stoneStack.isEmpty && multiBlockSpiritInstance != null) {
             val callingStone = stoneStack.item as ItemCallingStone
             val slotStacks = UtilHandler.getNotEmptyStacksWithSlotIndexes(combinedHandler)
             checkForOfferings(callingStone, slotStacks)
@@ -243,7 +243,7 @@ class TileMedium : TickableTileEntity(false, true), IMultiblockController {
     }
 
     override fun getMultiblockInstance(): MultiBlockInstance? {
-        return multiBlockInstance
+        return multiBlockSpiritInstance
     }
 
     override fun getControllerWorld(): World {
@@ -252,14 +252,14 @@ class TileMedium : TickableTileEntity(false, true), IMultiblockController {
 
     override fun multiblockDeconstructed() {
         MultiblockWatcher.unRegisterController(this)
-        multiBlockInstance = null
+        multiBlockSpiritInstance = null
         updateState()
         //        AltarsData altarsData = WorldData.get(world).getAltarsData();
         //        altarsData.removeAltarLocation(pos);
     }
 
     override fun multiblockDamaged(player: EntityPlayer, world: World, pos: BlockPos, state: IBlockState) {
-        val instance = multiBlockInstance
+        val instance = multiBlockSpiritInstance
         multiblockDeconstructed()
         if (instance != null && instance.spirit.isActive)
             instance.spirit.punishment.execute(player, world, pos, state, instance)
@@ -273,7 +273,7 @@ class TileMedium : TickableTileEntity(false, true), IMultiblockController {
     private fun tryToFormMultiBlockInternal() {
         if (world.isRemote)
             return
-        if (multiBlockInstance != null)
+        if (multiBlockSpiritInstance != null)
             return
         val stack = stoneStackHandler.getStackInSlot(0)
         if (stack.isEmpty)
@@ -281,8 +281,8 @@ class TileMedium : TickableTileEntity(false, true), IMultiblockController {
 
         val callingStone = stack.item as ItemCallingStone
         val multiBlock = callingStone.multiBlock
-        multiBlockInstance = multiBlock.makeMultiBlock(callingStone.spirit, world, pos)
-        if (multiBlockInstance != null) {
+        multiBlockSpiritInstance = multiBlock.makeMultiBlock(callingStone.spirit, world, pos)
+        if (multiBlockSpiritInstance != null) {
             MultiblockWatcher.registerController(this)
             //            AltarsData altarsData = WorldData.get(world).getAltarsData();
             //            altarsData.addAltarLocation(callingStone.spirit, pos);
@@ -312,7 +312,7 @@ class TileMedium : TickableTileEntity(false, true), IMultiblockController {
             else if (callingStone == ModCallingStones.calling_stone_timber)
                 setStone(MediumStone.TIMBER)
 
-            if (multiBlockInstance != null) {
+            if (multiBlockSpiritInstance != null) {
                 val spirit = callingStone.spirit
                 if (spirit.isActive || extraActiveTime > 0)
                     setState(MediumState.ACTIVE)

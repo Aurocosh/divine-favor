@@ -17,10 +17,10 @@ object ModSoulShards {
 
     fun preInit() {
         shard_end = ItemSoulShard("end", ModSpirits.endererer)
-        shard_mind = ItemSoulShard("mind", ModSpirits.romol)
+        shard_mind = ItemSoulShard("mind", ModSpirits.romol, ModSpirits.materia)
         shard_nether = ItemSoulShard("nether", ModSpirits.neblaze)
         shard_peace = ItemSoulShard("peace", ModSpirits.arbow)
-        shard_will = ItemSoulShardPlayer("will", ModSpirits.redwind)
+        shard_will = ItemSoulShardPlayer("will", ModSpirits.redwind, ModSpirits.materia)
         shard_undeath = ItemSoulShard("undeath", ModSpirits.loon)
         shard_water = ItemSoulShard("water", ModSpirits.blizrabi)
         shard_wild = ItemSoulShard("wild", ModSpirits.squarefury)

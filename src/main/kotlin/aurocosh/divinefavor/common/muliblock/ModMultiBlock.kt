@@ -2,7 +2,7 @@ package aurocosh.divinefavor.common.muliblock
 
 import aurocosh.divinefavor.common.core.ResourceNamer
 import aurocosh.divinefavor.common.muliblock.instance.MultiBlockInstance
-import aurocosh.divinefavor.common.muliblock.instance.MultiBlockInstanceAltar
+import aurocosh.divinefavor.common.muliblock.instance.MultiBlockSpiritInstance
 import aurocosh.divinefavor.common.registry.ModRegistries
 import aurocosh.divinefavor.common.spirit.base.ModSpirit
 import net.minecraft.util.math.BlockPos
@@ -30,8 +30,8 @@ class ModMultiBlock(val name: String, configurations: List<MultiBlockConfigurati
         return if (configuration != null) MultiBlockInstance(this, configuration, controller) else null
     }
 
-    fun makeMultiBlock(spirit: ModSpirit, world: World, controller: BlockPos): MultiBlockInstanceAltar? {
+    fun makeMultiBlock(spirit: ModSpirit, world: World, controller: BlockPos): MultiBlockSpiritInstance? {
         val configuration = match(world, controller)
-        return if (configuration != null) MultiBlockInstanceAltar(this, configuration, controller, spirit) else null
+        return if (configuration != null) MultiBlockSpiritInstance(this, configuration, controller, spirit) else null
     }
 }

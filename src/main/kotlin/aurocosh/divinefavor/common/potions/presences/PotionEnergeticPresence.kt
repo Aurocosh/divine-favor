@@ -42,6 +42,7 @@ class PotionEnergeticPresence : ModPotion("energetic_presence", 0x7FB8A4) {
         else if (presenceData.count() && !livingBase.world.isRemote) {
             livingBase.removePotionEffect(ModBlessings.energetic_presence)
             UtilSpirit.convertMarksToInvites(livingBase, ModSpirits.redwind, ModCallingStones.calling_stone_redwind)
+            MaterialPresence.onInviteGiven(livingBase)
         }
     }
 

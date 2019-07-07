@@ -1,0 +1,26 @@
+{
+  "result": {
+    "item": "divinefavor:spell_talisman_push_side"
+  },
+  "stones": [
+    "divinefavor:calling_stone_materia"
+  ],
+  "ingredients": [
+    {
+      "type": "ore",
+      "ore": "paper"
+    },
+    {
+      "type": "ore",
+      "ore": "dyeBlack"
+    },
+    {
+      "type": "ore",
+      "ore": "dyeBrown"
+    },
+    {
+      "type": "stack",
+      "item": "minecraft:piston"
+    }
+  ]
+}

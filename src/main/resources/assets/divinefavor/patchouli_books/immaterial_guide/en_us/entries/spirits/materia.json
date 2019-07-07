@@ -1,0 +1,31 @@
+{
+  "name": "Materia",
+  "icon": "divinefavor:calling_stone_materia",
+  "category": "spirits",
+  "sortnum": 0,
+  "pages": [
+    {
+      "type": "spirit_info",
+      "spirit": "divinefavor:spirit.materia",
+      "text": "Creative spirit of matter and construction. Call upon this spirit if you want to harness his constructive powers."
+    },
+    {
+      "type": "text",
+      "text": "This spirit is unusual. You can't contact him directly, there is not special blend that can use to attract him and you don't need to impress him like other spirits. Instead he will give you invite randomly whenever any other spirit gives you his invite. Probability that he will give you his invite is not 100 percent. But each time you get invited your chances of getting his invite are increasing."
+    },
+    {
+      "type": "spotlight",
+      "item": "divinefavor:calling_stone_materia",
+      "text": "So if you need this spirit then just keep his symbol in your inventory while you are trying to get invite from other spirits. You will only have chance to get his invite if other spirits summoning ritual was successful."
+    },
+    {
+      "type": "multiblock",
+      "multiblock_id": "divinefavor:patchouli.altar_materia",
+      "text": "Altar of materia. Put invite in medium to finish altar."
+    },
+    {
+      "type": "spirit_offering",
+      "spirit": "divinefavor:spirit.materia"
+    }
+  ]
+}

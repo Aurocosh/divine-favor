@@ -9,6 +9,7 @@ object ModCallingStones {
     lateinit var calling_stone_blizrabi: ItemCallingStone
     lateinit var calling_stone_endererer: ItemCallingStone
     lateinit var calling_stone_loon: ItemCallingStone
+    lateinit var calling_stone_materia: ItemCallingStone
     lateinit var calling_stone_neblaze: ItemCallingStone
     lateinit var calling_stone_redwind: ItemCallingStone
     lateinit var calling_stone_romol: ItemCallingStone
@@ -20,6 +21,7 @@ object ModCallingStones {
         calling_stone_blizrabi = ItemCallingStone("blizrabi", ModSpirits.blizrabi, ModMultiBlocks.altar_blizrabi)
         calling_stone_endererer = ItemCallingStone("endererer", ModSpirits.endererer, ModMultiBlocks.altar_endererer)
         calling_stone_loon = ItemCallingStone("loon", ModSpirits.loon, ModMultiBlocks.altar_loon)
+        calling_stone_materia = ItemCallingStone("materia", ModSpirits.materia, ModMultiBlocks.altar_materia)
         calling_stone_neblaze = ItemCallingStone("neblaze", ModSpirits.neblaze, ModMultiBlocks.altar_neblaze)
         calling_stone_redwind = ItemCallingStone("redwind", ModSpirits.redwind, ModMultiBlocks.altar_redwind)
         calling_stone_romol = ItemCallingStone("romol", ModSpirits.romol, ModMultiBlocks.altar_romol)

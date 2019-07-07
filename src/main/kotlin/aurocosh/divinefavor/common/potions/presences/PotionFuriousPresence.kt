@@ -58,6 +58,7 @@ class PotionFuriousPresence : ModPotion("furious_presence", 0x7FB8A4) {
             if (attacker.divinePlayerData.furiousPresenceData.count()) {
                 attacker.removePotionEffect(ModBlessings.furious_presence)
                 UtilSpirit.convertMarksToInvites(attacker, ModSpirits.squarefury, ModCallingStones.calling_stone_squarefury)
+                MaterialPresence.onInviteGiven(attacker)
             }
         }
     }

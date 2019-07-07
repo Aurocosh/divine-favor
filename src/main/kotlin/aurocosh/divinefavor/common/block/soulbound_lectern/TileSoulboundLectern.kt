@@ -1,11 +1,14 @@
 package aurocosh.divinefavor.common.block.soulbound_lectern
 
 import aurocosh.divinefavor.common.item.gems.soul_shards.ItemSoulShard
+import aurocosh.divinefavor.common.lib.extensions.S
+import aurocosh.divinefavor.common.lib.extensions.mapPairs
 import aurocosh.divinefavor.common.muliblock.IMultiblockController
 import aurocosh.divinefavor.common.muliblock.ModMultiBlock
 import aurocosh.divinefavor.common.muliblock.common.ModMultiBlocks
 import aurocosh.divinefavor.common.muliblock.common.MultiblockWatcher
 import aurocosh.divinefavor.common.muliblock.instance.MultiBlockInstance
+import aurocosh.divinefavor.common.muliblock.instance.MultiBlockSpiritInstance
 import aurocosh.divinefavor.common.spirit.ModSpirits
 import net.minecraft.block.state.IBlockState
 import net.minecraft.entity.player.EntityPlayer
@@ -23,33 +26,18 @@ import net.minecraftforge.items.ItemStackHandler
 import java.util.*
 
 class TileSoulboundLectern : TileEntity(), IMultiblockController {
+    private val syncHandler = TilePropertySyncHandler()
 
     private var isRejecting: Boolean = false
-    private var multiBlockInstance: MultiBlockInstance? = null
+    private var multiBlockInstance: MultiBlockSpiritInstance? = null
 
-    private var _state = SoulboundLecternState.INACTIVE
-    var state: SoulboundLecternState
-        set(value) {
-            if (_state === value)
-                return
-            _state = value
-            markDirty()
-            val blockState = world.getBlockState(pos)
-            world.notifyBlockUpdate(pos, blockState, blockState, 3)
-        }
-        get() = _state
+    private val spiritIdDelegate = TileEntityPropertyDelegate(spiritProperty, syncHandler::sync)
+    private val gemDelegate = TileEntityPropertyDelegate(gemProperty, syncHandler::sync)
+    private val stateDelegate = TileEntityPropertyDelegate(stateProperty, syncHandler::sync)
 
-    private var _gem = SoulboundLecternGem.NONE
-    var gem: SoulboundLecternGem
-        set(value) {
-            if (_gem === value)
-                return
-            _gem = value
-            markDirty()
-            val blockState = world.getBlockState(pos)
-            world.notifyBlockUpdate(pos, blockState, blockState, 3)
-        }
-        get() = _gem
+    var spiritId: Int by spiritIdDelegate
+    var gem: SoulboundLecternGem by gemDelegate
+    var state: SoulboundLecternState by stateDelegate
 
     val shardStackHandler: ItemStackHandler = object : ItemStackHandler(1) {
         override fun isItemValid(slot: Int, stack: ItemStack): Boolean {
@@ -72,20 +60,8 @@ class TileSoulboundLectern : TileEntity(), IMultiblockController {
         }
     }
 
-    val isMultiblockValid: Boolean
-        get() = multiBlockInstance != null
-
-    val shardStack: ItemStack
-        get() = shardStackHandler.getStackInSlot(0)
-
-    val favorId: Int
-        get() {
-            val stack = shardStack
-            if (stack.isEmpty)
-                return -1
-            val soulShard = stack.item as ItemSoulShard
-            return soulShard.spirit.id
-        }
+    val isMultiblockValid: Boolean get() = multiBlockInstance != null
+    val shardStack: ItemStack get() = shardStackHandler.getStackInSlot(0)
 
     init {
         isRejecting = false
@@ -93,20 +69,23 @@ class TileSoulboundLectern : TileEntity(), IMultiblockController {
 
     override fun onLoad() {
         tryToFormMultiBlockInternal()
+        syncHandler.autoSync = !world.isRemote
     }
 
     override fun readFromNBT(compound: NBTTagCompound) {
         super.readFromNBT(compound)
-        _state = SoulboundLecternState[compound.getInteger(TAG_STATE_LECTERN)]
-        _gem = SoulboundLecternGem[compound.getInteger(TAG_GEM_LECTERN)]
+        stateDelegate.readFromNbt(compound)
+        gemDelegate.readFromNbt(compound)
+        spiritIdDelegate.readFromNbt(compound)
         if (compound.hasKey(TAG_SHARD))
             shardStackHandler.deserializeNBT(compound.getTag(TAG_SHARD) as NBTTagCompound)
     }
 
     override fun writeToNBT(compound: NBTTagCompound): NBTTagCompound {
         super.writeToNBT(compound)
-        compound.setInteger(TAG_STATE_LECTERN, state.ordinal)
-        compound.setInteger(TAG_GEM_LECTERN, gem.ordinal)
+        stateDelegate.writeToNbt(compound)
+        gemDelegate.writeToNbt(compound)
+        spiritIdDelegate.writeToNbt(compound)
         compound.setTag(TAG_SHARD, shardStackHandler.serializeNBT())
         return compound
     }
@@ -135,8 +114,9 @@ class TileSoulboundLectern : TileEntity(), IMultiblockController {
     override fun getUpdateTag(): NBTTagCompound {
         val nbtTag = super.getUpdateTag()
         nbtTag.setTag(TAG_SHARD, shardStackHandler.serializeNBT())
-        nbtTag.setInteger(TAG_STATE_LECTERN, state.ordinal)
-        nbtTag.setInteger(TAG_GEM_LECTERN, gem.ordinal)
+        stateDelegate.writeToNbt(nbtTag)
+        gemDelegate.writeToNbt(nbtTag)
+        spiritIdDelegate.writeToNbt(nbtTag)
         return nbtTag
     }
 
@@ -150,13 +130,15 @@ class TileSoulboundLectern : TileEntity(), IMultiblockController {
         val compound = packet!!.nbtCompound
         shardStackHandler.deserializeNBT(compound.getCompoundTag(TAG_SHARD))
 
-        val stateIndex = compound.getInteger(TAG_STATE_LECTERN)
-        val gemIndex = compound.getInteger(TAG_GEM_LECTERN)
-        if (stateIndex != state.ordinal || gemIndex != gem.ordinal) {
-            gem = SoulboundLecternGem[gemIndex]
-            state = SoulboundLecternState[stateIndex]
+        val oldGem = gem
+        val oldState = state
+
+        stateDelegate.readFromNbt(compound)
+        gemDelegate.readFromNbt(compound)
+        spiritIdDelegate.readFromNbt(compound)
+
+        if (state != oldState || gem != oldGem)
             world.markBlockRangeForRenderUpdate(pos, pos)
-        }
     }
 
     override fun getMultiblockInstance(): MultiBlockInstance? {
@@ -166,6 +148,7 @@ class TileSoulboundLectern : TileEntity(), IMultiblockController {
     override fun multiblockDeconstructed() {
         MultiblockWatcher.unRegisterController(this)
         state = SoulboundLecternState.INACTIVE
+        spiritId = -1
         multiBlockInstance = null
     }
 
@@ -187,11 +170,12 @@ class TileSoulboundLectern : TileEntity(), IMultiblockController {
         if (stack.isEmpty)
             return
         val soulShard = stack.item as ItemSoulShard
-        val multiBlock = multiblocks[soulShard.spirit.id]
-        if (multiBlock != null) {
-            multiBlockInstance = multiBlock.makeMultiBlock(world, pos)
-            if (multiBlockInstance != null)
-                MultiblockWatcher.registerController(this)
+        val possibleMultiblocks = soulShard.spirits.S.mapPairs { multiblocks[it.id] }.filterNotNull().toList()
+        multiBlockInstance = possibleMultiblocks.map { it.second.makeMultiBlock(it.first, world, pos) }.firstOrNull { it != null }
+        val instance = multiBlockInstance
+        if (instance != null) {
+            spiritId = instance.spirit.id
+            MultiblockWatcher.registerController(this)
         }
     }
 
@@ -204,27 +188,18 @@ class TileSoulboundLectern : TileEntity(), IMultiblockController {
         if (stack.isEmpty)
             return
         val soulShard = stack.item as ItemSoulShard
-        val spirit = soulShard.spirit
-        if (spirit == ModSpirits.endererer)
-            gem = SoulboundLecternGem.END
-        else if (spirit == ModSpirits.romol)
-            gem = SoulboundLecternGem.MIND
-        else if (spirit == ModSpirits.neblaze)
-            gem = SoulboundLecternGem.NETHER
-        else if (spirit == ModSpirits.arbow)
-            gem = SoulboundLecternGem.PEACE
-        else if (spirit == ModSpirits.redwind)
-            gem = SoulboundLecternGem.WILL
-        else if (spirit == ModSpirits.loon)
-            gem = SoulboundLecternGem.UNDEATH
-        else if (spirit == ModSpirits.blizrabi)
-            gem = SoulboundLecternGem.WATER
-        else if (spirit == ModSpirits.squarefury)
-            gem = SoulboundLecternGem.WILD
-        else if (spirit == ModSpirits.timber)
-            gem = SoulboundLecternGem.WITHER
-        else
-            gem = SoulboundLecternGem.NONE
+        gem = when (soulShard.name) {
+            "end" -> SoulboundLecternGem.END
+            "mind" -> SoulboundLecternGem.MIND
+            "nether" -> SoulboundLecternGem.NETHER
+            "peace" -> SoulboundLecternGem.PEACE
+            "will" -> SoulboundLecternGem.WILL
+            "undeath" -> SoulboundLecternGem.UNDEATH
+            "water" -> SoulboundLecternGem.WATER
+            "wild" -> SoulboundLecternGem.WILD
+            "wither" -> SoulboundLecternGem.WITHER
+            else -> SoulboundLecternGem.NONE
+        }
 
         if (multiBlockInstance == null)
             state = SoulboundLecternState.INACTIVE
@@ -233,9 +208,12 @@ class TileSoulboundLectern : TileEntity(), IMultiblockController {
     }
 
     companion object {
-        private val TAG_SHARD = "Shard"
-        private val TAG_STATE_LECTERN = "StateLectern"
-        private val TAG_GEM_LECTERN = "GemLectern"
+        private val gemProperty = NbtPropertyEnum("GemLectern", SoulboundLecternGem.NONE, SoulboundLecternGem)
+        private val stateProperty = NbtPropertyEnum("StateLectern", SoulboundLecternState.INACTIVE, SoulboundLecternState)
+        private val spiritProperty = NbtPropertyInt("SpiritId", -1)
+
+        private const val TAG_SHARD = "Shard"
+
         private val multiblocks = HashMap<Int, ModMultiBlock>()
 
         init {
@@ -243,6 +221,7 @@ class TileSoulboundLectern : TileEntity(), IMultiblockController {
             multiblocks[ModSpirits.blizrabi.id] = ModMultiBlocks.soulbound_lectern_blizrabi
             multiblocks[ModSpirits.endererer.id] = ModMultiBlocks.soulbound_lectern_endererer
             multiblocks[ModSpirits.loon.id] = ModMultiBlocks.soulbound_lectern_loon
+            multiblocks[ModSpirits.materia.id] = ModMultiBlocks.soulbound_lectern_materia
             multiblocks[ModSpirits.neblaze.id] = ModMultiBlocks.soulbound_lectern_neblaze
             multiblocks[ModSpirits.redwind.id] = ModMultiBlocks.soulbound_lectern_redwind
             multiblocks[ModSpirits.romol.id] = ModMultiBlocks.soulbound_lectern_romol

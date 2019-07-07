@@ -1,0 +1,17 @@
+{
+  "name": "Materia",
+  "icon": "divinefavor:soul_shard_will",
+  "category": "lecterns",
+  "sortnum": 1,
+  "pages": [
+    {
+      "type": "text",
+      "text": "This lectern will allow you to get favor of Materia. You will have to insert $(item)Soul shard of will$() in lectern to activate it."
+    },
+    {
+      "type": "multiblock",
+      "multiblock_id": "divinefavor:patchouli.soulbound_lectern_materia",
+      "text": "Soulbound lectern of Materia."
+    }
+  ]
+}

@@ -15,6 +15,7 @@ import aurocosh.divinefavor.common.custom_data.player.data.curse.evil_eye.EvilEy
 import aurocosh.divinefavor.common.custom_data.player.data.curse.red_fury.RedFuryData
 import aurocosh.divinefavor.common.custom_data.player.data.favor.SpiritData
 import aurocosh.divinefavor.common.custom_data.player.data.interaction_handler.InteractionData
+import aurocosh.divinefavor.common.custom_data.player.data.materia.MaterialPresenceData
 import aurocosh.divinefavor.common.custom_data.player.data.presence.energetic.EnergeticPresenceData
 import aurocosh.divinefavor.common.custom_data.player.data.presence.furious.FuriousPresenceData
 import aurocosh.divinefavor.common.custom_data.player.data.presence.industrious.IndustriousPresenceData
@@ -64,6 +65,7 @@ interface IPlayerDataHandler {
     val furiousPresenceData: FuriousPresenceData
     val industriousPresenceData: IndustriousPresenceData
     val manipulativePresenceData: ManipulativePresenceData
+    val materialPresenceData: MaterialPresenceData
     val predatoryPresenceData: PredatoryPresenceData
     val scorchingPresenceData: ScorchingPresenceData
     val toweringPresenceData: ToweringPresenceData

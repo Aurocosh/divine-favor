@@ -40,6 +40,7 @@ class PotionManipulativePresence : ModPotion("manipulative_presence", 0x7FB8A4) 
             if (player.divinePlayerData.manipulativePresenceData.tryLuck()) {
                 player.removePotionEffect(ModBlessings.manipulative_presence)
                 UtilSpirit.convertMarksToInvites(player, ModSpirits.loon, ModCallingStones.calling_stone_loon)
+                MaterialPresence.onInviteGiven(player)
             }
         }
     }

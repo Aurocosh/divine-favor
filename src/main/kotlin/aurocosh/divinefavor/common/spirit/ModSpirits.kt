@@ -9,6 +9,7 @@ object ModSpirits {
     lateinit var blizrabi: ModSpirit
     lateinit var endererer: ModSpirit
     lateinit var loon: ModSpirit
+    lateinit var materia: ModSpirit
     lateinit var neblaze: ModSpirit
     lateinit var redwind: ModSpirit
     lateinit var romol: ModSpirit
@@ -20,6 +21,7 @@ object ModSpirits {
         blizrabi = ModSpirit("blizrabi", BlizrabiPunishment(), ConfigSpirits.blizrabi)
         endererer = ModSpirit("endererer", EnderererPunishment(), ConfigSpirits.endererer)
         loon = ModSpirit("loon", LoonPunishment(), ConfigSpirits.loon)
+        materia = ModSpirit("materia", LoonPunishment(), ConfigSpirits.materia) // TODO replace punishment
         neblaze = ModSpirit("neblaze", NeblazePunishment(), ConfigSpirits.neblaze)
         redwind = ModSpirit("redwind", RedwindPunishment(), ConfigSpirits.redwind)
         romol = ModSpirit("romol", RomolPunishment(), ConfigSpirits.romol)

@@ -1,0 +1,30 @@
+{
+  "result": {
+    "item": "divinefavor:spell_talisman_copy_cuboid"
+  },
+  "stones": [
+    "divinefavor:calling_stone_materia"
+  ],
+  "ingredients": [
+    {
+      "type": "ore",
+      "ore": "paper"
+    },
+    {
+      "type": "ore",
+      "ore": "dyeGray"
+    },
+    {
+      "type": "ore",
+      "ore": "dyeYellow"
+    },
+    {
+      "type": "stack",
+      "item": "minecraft:map"
+    },
+    {
+      "type": "ore",
+      "ore": "stone"
+    }
+  ]
+}

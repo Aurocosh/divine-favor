@@ -37,6 +37,7 @@ class PotionScorchingPresence : ModPotion("scorching_presence", 0x7FB8A4) {
             if (!entity.world.isRemote && entity.divinePlayerData.scorchingPresenceData.tryLuck()) {
                 entity.removePotionEffect(ModBlessings.scorching_presence)
                 UtilSpirit.convertMarksToInvites(entity, ModSpirits.neblaze, ModCallingStones.calling_stone_neblaze)
+                MaterialPresence.onInviteGiven(entity)
             }
         }
     }

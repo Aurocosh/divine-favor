@@ -1,0 +1,26 @@
+{
+  "result": {
+    "item": "divinefavor:spell_talisman_build_sphere"
+  },
+  "stones": [
+    "divinefavor:calling_stone_materia"
+  ],
+  "ingredients": [
+    {
+      "type": "ore",
+      "ore": "paper"
+    },
+    {
+      "type": "ore",
+      "ore": "dyeBlack"
+    },
+    {
+      "type": "ore",
+      "ore": "dyeGray"
+    },
+    {
+      "type": "ore",
+      "ore": "cropPotato"
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "result": {
+    "item": "divinefavor:spell_talisman_build_template"
+  },
+  "stones": [
+    "divinefavor:calling_stone_materia"
+  ],
+  "ingredients": [
+    {
+      "type": "ore",
+      "ore": "paper"
+    },
+    {
+      "type": "ore",
+      "ore": "dyeGray"
+    },
+    {
+      "type": "ore",
+      "ore": "dyeOrange"
+    },
+    {
+      "type": "stack",
+      "item": "minecraft:map"
+    },
+    {
+      "type": "ore",
+      "ore": "stone"
+    }
+  ]
+}

@@ -43,14 +43,25 @@ class SpiritData {
 
     fun serializeContracts(): NBTTagCompound {
         val contractsCompound = NBTTagCompound()
-        for (i in contractsStackHandlers.indices)
-            contractsCompound.setTag(i.toString(), contractsStackHandlers[i].serializeNBT())
+        for (i in contractsStackHandlers.indices) {
+            val name = ModMappers.spirits[i].name
+            val compound = contractsStackHandlers[i].serializeNBT()
+            contractsCompound.setTag(name, compound)
+        }
         return contractsCompound
     }
 
     fun deserializeContracts(compound: NBTTagCompound) {
-        for (i in contractsStackHandlers.indices)
-            contractsStackHandlers[i].deserializeNBT(compound.getCompoundTag(i.toString()))
+        for (i in contractsStackHandlers.indices) {
+            val name = ModMappers.spirits[i].name
+            if (compound.hasKey(name)) {
+                contractsStackHandlers[i].deserializeNBT(compound.getCompoundTag(name))
+            } else {
+                val oldTag = oldStackMapping[name]
+                if (oldTag != null)
+                    contractsStackHandlers[i].deserializeNBT(compound.getCompoundTag(oldTag))
+            }
+        }
         refreshContracts()
     }
 
@@ -158,5 +169,18 @@ class SpiritData {
 
     companion object {
         const val CONTRACT_SLOT_COUNT = 22
+        val oldStackMapping = HashMap<String, String>()
+
+        init {
+            oldStackMapping["arbow"] = "0"
+            oldStackMapping["blizrabi"] = "1"
+            oldStackMapping["endererer"] = "2"
+            oldStackMapping["loon"] = "3"
+            oldStackMapping["neblaze"] = "4"
+            oldStackMapping["redwind"] = "5"
+            oldStackMapping["romol"] = "6"
+            oldStackMapping["squarefury"] = "7"
+            oldStackMapping["timber"] = "8"
+        }
     }
 }

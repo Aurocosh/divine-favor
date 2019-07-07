@@ -10,6 +10,7 @@ import aurocosh.divinefavor.common.util.UtilCoordinates
 import aurocosh.divinefavor.common.util.UtilRandom
 import aurocosh.divinefavor.common.util.UtilSpirit
 import net.minecraft.entity.EntityLivingBase
+import net.minecraft.entity.player.EntityPlayer
 import net.minecraftforge.fml.common.Mod
 
 @Mod.EventBusSubscriber(modid = DivineFavor.MOD_ID)
@@ -32,7 +33,11 @@ class PotionChillingPresence : ModPotion("chilling_presence", 0x7FB8A4) {
 
     override fun onPotionRemoved(livingBase: EntityLivingBase) {
         super.onPotionRemoved(livingBase)
+        if (livingBase !is EntityPlayer)
+            return
+
         UtilSpirit.convertMarksToInvites(livingBase, ModSpirits.blizrabi, ModCallingStones.calling_stone_blizrabi)
+        MaterialPresence.onInviteGiven(livingBase)
     }
 
 }

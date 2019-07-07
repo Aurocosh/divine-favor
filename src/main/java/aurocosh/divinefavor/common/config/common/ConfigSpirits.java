@@ -17,6 +17,8 @@ public class ConfigSpirits {
     public static SpiritConfig endererer = new SpiritConfig("minecraft:ender_pearl", 2, new TimePeriodConfig(19, 23), 0, maxFavor, 0);
     @Config.Name("loon")
     public static SpiritConfig loon = new SpiritConfig("minecraft:quartz", 16, new TimePeriodConfig(1, 4), 0, maxFavor, 0);
+    @Config.Name("materia")
+    public static SpiritConfig materia = new SpiritConfig("minecraft:brick", 32, new TimePeriodConfig(5, 9), 0, maxFavor, 0);
     @Config.Name("neblaze")
     public static SpiritConfig neblaze = new SpiritConfig("minecraft:blaze_powder", 20, new TimePeriodConfig(10, 14), 0, maxFavor, 0);
     @Config.Name("redwind")

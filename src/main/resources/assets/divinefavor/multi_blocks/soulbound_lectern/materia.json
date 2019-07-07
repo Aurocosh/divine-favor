@@ -1,0 +1,10 @@
+{
+  "symmetrical":false,
+  "basePosition":[2,0,3],
+  "controllerPosition":[1,1,3],
+  "parts":[
+    {"validator":{"type":"block","name":"divinefavor:soulbound_lectern_iron"},"positions":[[1,1,3]]},
+    {"validator":{"type":"block","name":"minecraft:stone"},"positions":[[0,0,1],[0,0,5],[0,1,1],[0,1,5],[0,2,1],[0,2,5],[1,0,1],[1,0,5],[1,2,1],[1,2,5],[2,0,1],[2,0,5],[2,1,1],[2,1,5],[2,2,1],[2,2,5]]},
+    {"validator":{"type":"block","name":"minecraft:stained_glass"},"positions":[[0,1,0],[0,1,6],[1,1,0],[1,1,1],[1,1,2],[1,1,4],[1,1,5],[1,1,6],[2,1,0],[2,1,6]]}
+  ]
+}

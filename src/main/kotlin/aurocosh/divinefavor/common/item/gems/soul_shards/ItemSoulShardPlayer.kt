@@ -10,7 +10,7 @@ import net.minecraft.item.EnumRarity
 import net.minecraft.item.ItemStack
 import net.minecraft.world.World
 
-class ItemSoulShardPlayer(name: String, spirit: ModSpirit) : ItemSoulShard(name, spirit) {
+class ItemSoulShardPlayer(name: String, vararg spirits: ModSpirit) : ItemSoulShard(name, *spirits) {
     init {
         creativeTab = DivineFavor.TAB_GEMS
     }

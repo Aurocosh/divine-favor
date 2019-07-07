@@ -14,7 +14,7 @@ import net.minecraft.item.ItemStack
 import net.minecraft.world.World
 import java.util.*
 
-open class ItemSoulShard(name: String, val spirit: ModSpirit) : ModItem("soul_shard_$name", "soul_shards/$name", ConstGemTabOrder.SOUL_SHARD) {
+open class ItemSoulShard(val name: String, vararg val spirits: ModSpirit) : ModItem("soul_shard_$name", "soul_shards/$name", ConstGemTabOrder.SOUL_SHARD) {
 
     init {
         creativeTab = DivineFavor.TAB_GEMS

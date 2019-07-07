@@ -72,6 +72,7 @@ class PotionIndustriousPresence : ModPotion("industrious_presence", 0x7FB8A4) {
             if (player.divinePlayerData.industriousPresenceData.count()) {
                 player.removePotionEffect(ModBlessings.industrious_presence)
                 UtilSpirit.convertMarksToInvites(player, ModSpirits.romol, ModCallingStones.calling_stone_romol)
+                MaterialPresence.onInviteGiven(player)
             }
         }
 

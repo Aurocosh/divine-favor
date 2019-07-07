@@ -24,4 +24,6 @@ public class ConfigPresence {
     public static ToweringPresence toweringPresence = new ToweringPresence();
     @Config.Name("Warping presence")
     public static WarpingPresence warpingPresence = new WarpingPresence();
+    @Config.Name("Material presence")
+    public static MaterialPresence materialPresence = new MaterialPresence();
 }

@@ -33,6 +33,7 @@ class PotionWarpingPresence : ModPotion("warping_presence", 0x7FB8A4) {
             if (!entity.world.isRemote && entity.divinePlayerData.warpingPresenceData.tryLuck()) {
                 entity.removePotionEffect(ModBlessings.warping_presence)
                 UtilSpirit.convertMarksToInvites(entity, ModSpirits.endererer, ModCallingStones.calling_stone_endererer)
+                MaterialPresence.onInviteGiven(entity)
             }
         }
     }

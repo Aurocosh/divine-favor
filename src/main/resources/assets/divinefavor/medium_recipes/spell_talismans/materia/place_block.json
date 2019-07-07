@@ -1,0 +1,22 @@
+{
+  "result": {
+    "item": "divinefavor:spell_talisman_place_block"
+  },
+  "stones": [
+    "divinefavor:calling_stone_materia"
+  ],
+  "ingredients": [
+    {
+      "type": "ore",
+      "ore": "paper"
+    },
+    {
+      "type": "ore",
+      "ore": "dyeGray"
+    },
+    {
+      "type": "ore",
+      "ore": "stickWood"
+    }
+  ]
+}

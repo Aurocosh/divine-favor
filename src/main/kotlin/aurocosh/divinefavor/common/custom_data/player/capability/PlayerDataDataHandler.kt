@@ -16,6 +16,7 @@ import aurocosh.divinefavor.common.custom_data.player.data.curse.evil_eye.EvilEy
 import aurocosh.divinefavor.common.custom_data.player.data.curse.red_fury.RedFuryDataSerializer
 import aurocosh.divinefavor.common.custom_data.player.data.favor.SpiritDataSerializer
 import aurocosh.divinefavor.common.custom_data.player.data.interaction_handler.InteractionDataSerializer
+import aurocosh.divinefavor.common.custom_data.player.data.materia.MaterialPresenceDataSerializer
 import aurocosh.divinefavor.common.custom_data.player.data.presence.energetic.EnergeticPresenceDataSerializer
 import aurocosh.divinefavor.common.custom_data.player.data.presence.furious.FuriousPresenceDataSerializer
 import aurocosh.divinefavor.common.custom_data.player.data.presence.manipulative.ManipulativePresenceDataSerializer
@@ -94,6 +95,7 @@ class PlayerDataDataHandler {
             storage.addSerializer(EnergeticPresenceDataSerializer(), IPlayerDataHandler::energeticPresenceData)
             storage.addSerializer(FuriousPresenceDataSerializer(), IPlayerDataHandler::furiousPresenceData)
             storage.addSerializer(ManipulativePresenceDataSerializer(), IPlayerDataHandler::manipulativePresenceData)
+            storage.addSerializer(MaterialPresenceDataSerializer(), IPlayerDataHandler::materialPresenceData)
             storage.addSerializer(PredatoryPresenceDataSerializer(), IPlayerDataHandler::predatoryPresenceData)
             storage.addSerializer(ScorchingPresenceDataSerializer(), IPlayerDataHandler::scorchingPresenceData)
             storage.addSerializer(ToweringPresenceDataSerializer(), IPlayerDataHandler::toweringPresenceData)

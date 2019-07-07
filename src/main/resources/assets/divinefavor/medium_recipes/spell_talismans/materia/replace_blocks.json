@@ -1,0 +1,26 @@
+{
+  "result": {
+    "item": "divinefavor:spell_talisman_replace_blocks"
+  },
+  "stones": [
+    "divinefavor:calling_stone_materia"
+  ],
+  "ingredients": [
+    {
+      "type": "ore",
+      "ore": "paper"
+    },
+    {
+      "type": "ore",
+      "ore": "dyeBlack"
+    },
+    {
+      "type": "ore",
+      "ore": "dyePurple"
+    },
+    {
+      "type": "stack",
+      "item": "minecraft:golden_pickaxe"
+    }
+  ]
+}

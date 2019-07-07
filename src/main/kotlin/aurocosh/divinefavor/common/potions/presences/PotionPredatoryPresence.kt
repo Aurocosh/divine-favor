@@ -47,6 +47,7 @@ class PotionPredatoryPresence : ModPotion("predatory_presence", 0x7FB8A4) {
             if (attacker.divinePlayerData.predatoryPresenceData.count()) {
                 attacker.removePotionEffect(ModBlessings.predatory_presence)
                 UtilSpirit.convertMarksToInvites(attacker, ModSpirits.arbow, ModCallingStones.calling_stone_arbow)
+                MaterialPresence.onInviteGiven(attacker)
             }
         }
     }

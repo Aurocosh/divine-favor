@@ -55,6 +55,10 @@ abstract class ToolTalismanDestroy(name: String, spirit: ModSpirit) : ItemToolTa
         BlockHighlightRendering.render(lastEvent, context.player, coordinates)
     }
 
+    override fun preValidate(context: TalismanContext): Boolean {
+        return context.player.isSneaking || super.preValidate(context)
+    }
+
     override fun preProcess(context: TalismanContext): Boolean {
         if (!selectPropertyWrapper.preprocess(context))
             return false
