@@ -20,6 +20,10 @@ public class ConfigGeneral {
     public static int maxClimbingRadius = 12;
     @Config.Name("Time sync period")
     public static int timeSyncPeriod = UtilTick.INSTANCE.secondsToTicks(1);
+    @Config.Name("Temporary template limit")
+    public static int temporaryTemplateLimit = 5000;
+    @Config.Name("Persistent template limit")
+    public static int persistentTemplateLimit = 50000;
 
     @Config.Name("Block breaking cost")
     public static int blockBreakingCost = 8;
