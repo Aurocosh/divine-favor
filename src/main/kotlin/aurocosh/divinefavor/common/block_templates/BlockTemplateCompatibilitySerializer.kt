@@ -52,14 +52,15 @@ object BlockTemplateCompatibilitySerializer {
         val posIntArray = compound.getIntArray(tagPosIntArray)
         val fixedIntArray = posIntArray.asSequence()
                 .map { UtilBlockPos.relativeIntToPosition(startPos, it) }
-                .map { UtilBlockPos.relativePositionToInt(boundingBox.lowerCorner, it) }
+                .map { it.subtract(boundingBox.lowerCorner) }
+                .map { UtilBlockPos.blockPosToInt(it) }
                 .toList() // Cant convert to array directly
                 .toIntArray()
 
         val blockMapIntState = BlockMapIntState(intStateMap)
         blockMapIntState.generateStackMapFromStateMap(player)
 
-        return BlockTemplate(UUID.randomUUID(), blockMapIntState, fixedIntArray, stateIntArray, boundingBox, 0, player.name)
+        return BlockTemplate(UUID.randomUUID(), blockMapIntState, fixedIntArray, stateIntArray, boundingBox.moveToOrigin(), 0, player.name)
     }
 
     private fun posFromNbtTag(tagCompound: NBTTagCompound, tagName: String): BlockPos {

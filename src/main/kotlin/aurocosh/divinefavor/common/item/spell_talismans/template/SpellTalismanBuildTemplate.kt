@@ -56,7 +56,7 @@ class SpellTalismanBuildTemplate(name: String, spirit: ModSpirit, options: EnumS
         val finalPosition = getPosition(position, anchor, blockTemplate.boundingBox)
 
         val stackMap = blockTemplate.blockMapIntState.intStackMap
-        val blockMapList = blockTemplate.getBlockMapList(finalPosition)
+        val blockMapList = blockTemplate.getAbsoluteBlockMap(finalPosition)
 
         val validBlockStates = blockMapList.S
                 .filter { UtilBlock.canReplaceBlock(player, world, it.pos) }

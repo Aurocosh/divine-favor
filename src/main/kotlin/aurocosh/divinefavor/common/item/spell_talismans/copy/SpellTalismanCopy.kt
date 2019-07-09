@@ -14,10 +14,10 @@ import aurocosh.divinefavor.common.lib.BlockMapIntState
 import aurocosh.divinefavor.common.lib.extensions.*
 import aurocosh.divinefavor.common.lib.math.CuboidBoundingBox
 import aurocosh.divinefavor.common.network.TemplateNetHandlers
-import aurocosh.divinefavor.common.network.message.client.syncing.MessageSyncTemplateClient
 import aurocosh.divinefavor.common.spirit.base.ModSpirit
 import aurocosh.divinefavor.common.util.UtilBlockPos
 import aurocosh.divinefavor.common.util.UtilBlockState
+import aurocosh.divinefavor.common.util.UtilTemplate
 import com.google.common.collect.HashMultiset
 import net.minecraft.block.Block
 import net.minecraft.block.state.IBlockState
@@ -64,8 +64,8 @@ abstract class SpellTalismanCopy(name: String, spirit: ModSpirit, favorCost: Int
     }
 
     private fun copyBlocks(world: World, player: EntityPlayer, coordinates: List<BlockPos>): Boolean {
-        val cubeCoordinates = CuboidBoundingBox.getBoundingBox(coordinates)
-        val origin = cubeCoordinates.lowerCorner
+        val boundingBox = CuboidBoundingBox.getBoundingBox(coordinates)
+        val relativeOrigin = boundingBox.lowerCorner
 
         val tileEntityCount = coordinates.S
                 .filter(world::hasTileEntity)
@@ -87,9 +87,10 @@ abstract class SpellTalismanCopy(name: String, spirit: ModSpirit, favorCost: Int
             val assignState = UtilBlockState.getSpecificStates(tempState, world, player, pos, true)
             val actualState: IBlockState? = assignState.getActualState(world, pos)
             if (actualState != null) {
-                val uniqueItem = UtilBlockState.blockStateToUniqueItem(actualState, player, pos)
+                val relativePos = pos.subtract(relativeOrigin)
+                val uniqueItem = UtilBlockState.blockStateToUniqueItem(actualState, player, relativePos)
                 if (uniqueItem.item !== Items.AIR) {
-                    posIntArrayList.add(UtilBlockPos.relativePositionToInt(origin, pos))
+                    posIntArrayList.add(UtilBlockPos.blockPosToInt(relativePos))
                     blockMapIntState.addToMap(actualState)
                     stateIntArrayList.add(blockMapIntState.findSlot(actualState).toInt())
 
@@ -117,14 +118,12 @@ abstract class SpellTalismanCopy(name: String, spirit: ModSpirit, favorCost: Int
         }
 
         val uuid = UUID.randomUUID()
-        val blockTemplate = BlockTemplate(uuid, blockMapIntState, posIntArrayList.toIntArray(), stateIntArrayList.toIntArray(), cubeCoordinates, player.dimension, player.name)
+        val blockTemplate = BlockTemplate(uuid, blockMapIntState, posIntArrayList.toIntArray(), stateIntArrayList.toIntArray(), boundingBox.moveToOrigin(), player.dimension, player.name)
 
         val templateSavedData = world[TemplateData]
         templateSavedData[uuid] = blockTemplate
         TemplateNetHandlers.clientHandler.send(player, blockTemplate)
-
-        player.divinePlayerData.templateData.currentTemplate = uuid
-        MessageSyncTemplateClient(uuid).sendTo(player)
+        UtilTemplate.setCurrent(player,uuid)
 
 //        val stack = ItemStack(ModItems.memory_drop)
 //        stack.set(ItemMemoryDrop.uuid, uuid)

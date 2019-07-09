@@ -39,7 +39,7 @@ object BlockTemplateBufferBuilder {
     private fun buildBuffer(template: BlockTemplate, world: World): CustomBufferBuilder? {
         //        long time = System.nanoTime();
 
-        val blockMapList = template.getBlockMapList(BlockPos.ORIGIN)
+        val blockMapList = template.getAbsoluteBlockMap(BlockPos.ORIGIN)
         if (blockMapList.isEmpty())
             return null
 

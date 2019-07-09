@@ -70,6 +70,10 @@ class CuboidBoundingBox {
         return add(BlockPos.ORIGIN.subtract(vector))
     }
 
+    fun moveToOrigin(): CuboidBoundingBox {
+        return subtract(lowerCorner)
+    }
+
     fun isCoordinateInside(coordinate: BlockPos): Boolean {
         return (lowerCorner.x <= coordinate.x && coordinate.x <= upperCorner.x
                 && lowerCorner.y <= coordinate.y && coordinate.y <= upperCorner.y

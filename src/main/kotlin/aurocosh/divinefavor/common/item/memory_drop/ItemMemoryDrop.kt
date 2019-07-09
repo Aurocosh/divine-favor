@@ -5,10 +5,8 @@ import aurocosh.divinefavor.common.constants.ConstGuiIDs
 import aurocosh.divinefavor.common.item.ITemplateContainer
 import aurocosh.divinefavor.common.item.base.ModItem
 import aurocosh.divinefavor.common.lib.EmptyConst.invalidUUID
-import aurocosh.divinefavor.common.lib.extensions.divinePlayerData
 import aurocosh.divinefavor.common.lib.extensions.get
 import aurocosh.divinefavor.common.lib.extensions.isPropertySet
-import aurocosh.divinefavor.common.network.message.client.syncing.MessageSyncTemplateClient
 import aurocosh.divinefavor.common.stack_properties.StackPropertyHandler
 import aurocosh.divinefavor.common.stack_properties.interfaces.IPropertyAccessor
 import aurocosh.divinefavor.common.stack_properties.interfaces.IPropertyContainer
@@ -16,6 +14,7 @@ import aurocosh.divinefavor.common.stack_properties.properties.StackPropertyStri
 import aurocosh.divinefavor.common.stack_properties.properties.StackPropertyUUID
 import aurocosh.divinefavor.common.stack_properties.properties.base.StackProperty
 import aurocosh.divinefavor.common.util.UtilItem.actionResult
+import aurocosh.divinefavor.common.util.UtilTemplate
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.item.Item
 import net.minecraft.item.ItemStack
@@ -35,7 +34,7 @@ open class ItemMemoryDrop(name: String, texturePath: String, orderIndex: Int = 0
     }
 
     override fun findProperty(stack: ItemStack, item: Item, propertyName: String): Pair<ItemStack, StackProperty<out Any>>? {
-        if(item != this)
+        if (item != this)
             return null
         val property = propertyHandler.get(propertyName)
         return if (property != null) Pair(stack, property) else null
@@ -49,8 +48,7 @@ open class ItemMemoryDrop(name: String, texturePath: String, orderIndex: Int = 0
         }
 
         val templateId = getSelectedTemplateId(stack) ?: return actionResult(false, stack)
-        player.divinePlayerData.templateData.currentTemplate = templateId
-        MessageSyncTemplateClient(templateId).sendTo(player)
+        UtilTemplate.setCurrent(player,templateId)
         return actionResult(true, stack)
     }
 

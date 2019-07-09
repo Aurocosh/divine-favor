@@ -6,7 +6,7 @@ import aurocosh.divinefavor.common.item.memory_pouch.capability.IMemoryPouch
 import aurocosh.divinefavor.common.lib.extensions.divinePlayerData
 import aurocosh.divinefavor.common.lib.extensions.get
 import aurocosh.divinefavor.common.network.message.sever.syncing.MessageSyncMemoryPouchSlot
-import aurocosh.divinefavor.common.network.message.sever.syncing.MessageSyncTemplateServer
+import aurocosh.divinefavor.common.util.UtilTemplate
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.inventory.ClickType
 import net.minecraft.item.ItemStack
@@ -34,9 +34,7 @@ class MemoryPouchTemplateContainer(player: EntityPlayer, private val pouch: IMem
         pouch.selectedSlotIndex = slot
         val stack = pouch.getSelectedStack()
         val uuid = stack.get(ItemMemoryDrop.uuid)
-
-        player.divinePlayerData.templateData.currentTemplate = uuid
-        MessageSyncTemplateServer(uuid).send()
+        UtilTemplate.setCurrent(player,uuid)
 
         val playerSlot = if (hand == EnumHand.OFF_HAND) 40 else player.inventory.currentItem
         MessageSyncMemoryPouchSlot(playerSlot, slot).send()

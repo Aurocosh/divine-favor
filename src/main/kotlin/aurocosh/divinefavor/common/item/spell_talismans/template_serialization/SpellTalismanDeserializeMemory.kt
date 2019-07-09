@@ -8,13 +8,11 @@ import aurocosh.divinefavor.common.item.spell_talismans.base.SpellOptions
 import aurocosh.divinefavor.common.item.spell_talismans.context.TalismanContext
 import aurocosh.divinefavor.common.item.spell_talismans.context.playerField
 import aurocosh.divinefavor.common.item.spell_talismans.context.worldField
-import aurocosh.divinefavor.common.lib.extensions.divinePlayerData
 import aurocosh.divinefavor.common.lib.extensions.get
 import aurocosh.divinefavor.common.lib.extensions.sendStatusMessage
-import aurocosh.divinefavor.common.network.TemplateNetHandlers
-import aurocosh.divinefavor.common.network.message.sever.syncing.MessageSyncTemplateServer
 import aurocosh.divinefavor.common.spirit.base.ModSpirit
 import aurocosh.divinefavor.common.util.UtilStatus.formatString
+import aurocosh.divinefavor.common.util.UtilTemplate
 import net.minecraft.client.gui.GuiScreen
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.nbt.JsonToNBT
@@ -41,10 +39,7 @@ class SpellTalismanDeserializeMemory(name: String, spirit: ModSpirit, favorCost:
             val compound = JsonToNBT.getTagFromJson(clipString)
             val template = BlockTemplateCompatibilitySerializer.deserialize(compound, player)
             world[TemplateData][template.uuid] = template
-            TemplateNetHandlers.serverHandler.send(player, template)
-
-            player.divinePlayerData.templateData.currentTemplate = template.uuid
-            MessageSyncTemplateServer(template.uuid).send()
+            UtilTemplate.setCurrent(player, template)
 
             player.sendStatusMessage("message.divinefavor.pastesuccess", formatString(TextFormatting.AQUA))
         } catch (t: Throwable) {

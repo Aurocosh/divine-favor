@@ -57,10 +57,10 @@ class SpellTalismanCopyCuboid(name: String, spirit: ModSpirit, favorCost: Int) :
     }
 
     private fun getBoundingBox(directions: UtilPlayer.RelativeDirections, right: Int, down: Int, left: Int, up: Int, depth: Int, pos: BlockPos): CuboidBoundingBox {
-        val rightShift = directions.right.directionPos.scale(right)
+        val rightShift = directions.right.directionPos.scale(left)
         val downShift = directions.down.directionPos.scale(down)
 
-        val leftShift = directions.left.directionPos.scale(left)
+        val leftShift = directions.left.directionPos.scale(right)
         val upShift = directions.up.directionPos.scale(up)
         val depthShift = directions.back.directionPos.scale(depth)
 
