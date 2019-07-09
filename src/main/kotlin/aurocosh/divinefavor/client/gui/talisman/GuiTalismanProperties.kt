@@ -12,10 +12,12 @@ import aurocosh.divinefavor.common.item.talisman.ItemTalisman
 import aurocosh.divinefavor.common.lib.TooltipCache
 import aurocosh.divinefavor.common.lib.extensions.S
 import aurocosh.divinefavor.common.network.message.sever.syncing.MessageSyncTalismanPropertyIndex
-import aurocosh.divinefavor.common.stack_properties.properties.base.StackProperty
+import aurocosh.divinefavor.common.stack_actions.interfaces.IActionContainer
+import aurocosh.divinefavor.common.stack_actions.StackAction
 import aurocosh.divinefavor.common.stack_properties.properties.StackPropertyBool
 import aurocosh.divinefavor.common.stack_properties.properties.StackPropertyEnum
 import aurocosh.divinefavor.common.stack_properties.properties.StackPropertyInt
+import aurocosh.divinefavor.common.stack_properties.properties.base.StackProperty
 import aurocosh.divinefavor.common.util.UtilMouse
 import net.minecraft.client.Minecraft
 import net.minecraft.client.gui.Gui
@@ -32,6 +34,9 @@ class GuiTalismanProperties(stack: ItemStack, private val playerSlot: Int) : Gui
     private var selectedPropertyIndex: Int
     private val properties: List<StackProperty<out Any>>
     private var propertyGuiElements: MutableList<IButtonContainer> = ArrayList()
+
+    private val actions: List<StackAction>
+    private var actionGuiElements: MutableList<IActionContainer> = ArrayList()
 
     private val yMargin = 20
     private val xMargin = 20
@@ -60,10 +65,12 @@ class GuiTalismanProperties(stack: ItemStack, private val playerSlot: Int) : Gui
 
         selectedPropertyIndex = item.properties.getSelectedIndex(stack)
         properties = item.properties.list
+        actions = item.actions.list
     }
 
     override fun initGui() {
         properties.forEach(this::addPropertyToGui)
+        actions.forEach(this::addActionToGui)
         val buttonStack = GuiButtonStack(width / 2 - 8, 20, 16, 16, itemStack, Color.LIGHT_GRAY) {}
         buttonStack.components.forEach { this.addButton(it) }
     }
@@ -81,11 +88,11 @@ class GuiTalismanProperties(stack: ItemStack, private val playerSlot: Int) : Gui
 
         when (property) {
             is StackPropertyInt -> {
-                val slider = PropertyGuiHelper.addNewSlider(property, itemStack, nextElementX, nextElementY, elementWidth, elementHeight, selector)
+                val slider = PropertyGuiHelper.getSlider(property, itemStack, nextElementX, nextElementY, elementWidth, elementHeight, selector)
                 addGuiElement(slider)
             }
             is StackPropertyEnum -> {
-                val slider = PropertyGuiHelper.addNewEnumSlider(property, itemStack, nextElementX, nextElementY, elementWidth, elementHeight, selector)
+                val slider = PropertyGuiHelper.getEnumSlider(property, itemStack, nextElementX, nextElementY, elementWidth, elementHeight, selector)
                 addGuiElement(slider)
             }
             is StackPropertyBool -> {
@@ -93,6 +100,11 @@ class GuiTalismanProperties(stack: ItemStack, private val playerSlot: Int) : Gui
                 addGuiElement(slider)
             }
         }
+    }
+
+    private fun addActionToGui(action: StackAction) {
+        val button = PropertyGuiHelper.getActionButton(action, itemStack, nextElementX, nextElementY, elementWidth, elementHeight)
+        addGuiElement(button)
     }
 
     private fun addGuiElement(element: IButtonContainer) {
@@ -107,7 +119,7 @@ class GuiTalismanProperties(stack: ItemStack, private val playerSlot: Int) : Gui
         renderTooltips();
     }
 
-    fun drawMarker() {
+    private fun drawMarker() {
         if (selectedPropertyIndex < 0 || selectedPropertyIndex >= propertyGuiElements.size)
             return
 

@@ -1,4 +1,4 @@
-package aurocosh.divinefavor.common.network.message.client
+package aurocosh.divinefavor.common.network.message.client.template
 
 import aurocosh.divinefavor.DivineFavor
 import aurocosh.divinefavor.common.custom_data.global.TemplateData

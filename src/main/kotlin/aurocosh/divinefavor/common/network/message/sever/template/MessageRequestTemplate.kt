@@ -1,4 +1,4 @@
-package aurocosh.divinefavor.common.network.message.sever
+package aurocosh.divinefavor.common.network.message.sever.template
 
 import aurocosh.divinefavor.common.custom_data.global.TemplateData
 import aurocosh.divinefavor.common.lib.EmptyConst.invalidUUID

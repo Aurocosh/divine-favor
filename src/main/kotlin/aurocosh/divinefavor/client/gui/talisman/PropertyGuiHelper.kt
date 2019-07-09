@@ -1,8 +1,11 @@
 package aurocosh.divinefavor.client.gui.talisman
 
+import aurocosh.divinefavor.DivineFavor
 import aurocosh.divinefavor.client.gui.elements.GuiButtonCustomToggle
 import aurocosh.divinefavor.client.gui.elements.GuiEnumSlider
 import aurocosh.divinefavor.client.gui.elements.GuiSliderInt
+import aurocosh.divinefavor.client.gui.elements.GuiStackActionButton
+import aurocosh.divinefavor.common.stack_actions.StackAction
 import aurocosh.divinefavor.common.stack_properties.properties.StackPropertyBool
 import aurocosh.divinefavor.common.stack_properties.properties.StackPropertyEnum
 import aurocosh.divinefavor.common.stack_properties.properties.StackPropertyInt
@@ -11,7 +14,7 @@ import net.minecraftforge.fml.client.config.GuiSlider
 import java.awt.Color
 
 object PropertyGuiHelper {
-    fun addNewSlider(property: StackPropertyInt, stack: ItemStack, x: Int, y: Int, width: Int, height: Int, selector: () -> Unit): GuiSliderInt {
+    fun getSlider(property: StackPropertyInt, stack: ItemStack, x: Int, y: Int, width: Int, height: Int, selector: () -> Unit): GuiSliderInt {
         val valueChangedAction = GuiSlider.ISlider {
             val value = it.valueInt
             property.setValue(stack, value, true)
@@ -27,7 +30,7 @@ object PropertyGuiHelper {
                 valueChangedAction)
     }
 
-    fun addNewEnumSlider(property: StackPropertyEnum<*>, stack: ItemStack, x: Int, y: Int, width: Int, height: Int, selector: () -> Unit): GuiEnumSlider {
+    fun getEnumSlider(property: StackPropertyEnum<*>, stack: ItemStack, x: Int, y: Int, width: Int, height: Int, selector: () -> Unit): GuiEnumSlider {
         val valueChangedAction = GuiSlider.ISlider {
             val value = it.valueInt
             property.setOrdinalValue(stack, value, true)
@@ -51,5 +54,14 @@ object PropertyGuiHelper {
         }
 
         return GuiButtonCustomToggle(x, y, width, height, value, property.defaultValue, property.displayKey, property.tooltipKey, Color.DARK_GRAY, toggleAction)
+    }
+
+    fun getActionButton(action: StackAction, stack: ItemStack, x: Int, y: Int, width: Int, height: Int): GuiStackActionButton {
+        val player = DivineFavor.proxy.clientPlayer
+        val toggleAction: () -> Unit = {
+            action.activateClient(player, stack)
+        }
+
+        return GuiStackActionButton(x, y, width, height, action.displayKey, action.tooltipKey, Color.DARK_GRAY, toggleAction)
     }
 }

@@ -2,7 +2,6 @@ package aurocosh.divinefavor.common.network
 
 import aurocosh.autonetworklib.network.AutoNetworkWrapper
 import aurocosh.divinefavor.DivineFavor
-import aurocosh.divinefavor.common.network.message.client.MessageSendBlockTemplateClient
 import aurocosh.divinefavor.common.network.message.client.activity.MessageSpiritBecameActive
 import aurocosh.divinefavor.common.network.message.client.activity.MessageSpiritBecameInactive
 import aurocosh.divinefavor.common.network.message.client.config.MessageConfigOreBlocks
@@ -12,13 +11,18 @@ import aurocosh.divinefavor.common.network.message.client.spirit_data.MessageSyn
 import aurocosh.divinefavor.common.network.message.client.spirit_data.MessageSyncFavor
 import aurocosh.divinefavor.common.network.message.client.spirit_data.MessageSyncFavorInfinite
 import aurocosh.divinefavor.common.network.message.client.syncing.*
-import aurocosh.divinefavor.common.network.message.sever.MessageRequestTemplate
-import aurocosh.divinefavor.common.network.message.sever.MessageSendBlockTemplateServer
+import aurocosh.divinefavor.common.network.message.client.template.MessageSendBlockTemplateClient
+import aurocosh.divinefavor.common.network.message.sever.MessagePerformStackAction
 import aurocosh.divinefavor.common.network.message.sever.petrification.MessagePetrificationCure
 import aurocosh.divinefavor.common.network.message.sever.petrification.MessagePetrificationDamage
 import aurocosh.divinefavor.common.network.message.sever.petrification.MessagePetrificationReset
 import aurocosh.divinefavor.common.network.message.sever.stack_properties.*
-import aurocosh.divinefavor.common.network.message.sever.syncing.*
+import aurocosh.divinefavor.common.network.message.sever.syncing.MessageSyncMemoryPouchSlot
+import aurocosh.divinefavor.common.network.message.sever.syncing.MessageSyncTalismanContainerSlot
+import aurocosh.divinefavor.common.network.message.sever.syncing.MessageSyncTalismanPropertyIndex
+import aurocosh.divinefavor.common.network.message.sever.syncing.MessageSyncTemplateServer
+import aurocosh.divinefavor.common.network.message.sever.template.MessageRequestTemplate
+import aurocosh.divinefavor.common.network.message.sever.template.MessageSendBlockTemplateServer
 import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper
 import net.minecraftforge.fml.relauncher.Side
 
@@ -80,5 +84,7 @@ object NetworkHandler {
 
         autoWrapper.register(MessageRequestTemplate::class.java, Side.SERVER)
         autoWrapper.register(MessageSendBlockTemplateServer::class.java, Side.SERVER)
+
+        autoWrapper.register(MessagePerformStackAction::class.java, Side.SERVER)
     }
 }

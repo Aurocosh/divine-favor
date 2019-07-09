@@ -8,6 +8,9 @@ import aurocosh.divinefavor.common.lib.extensions.divinePlayerData
 import aurocosh.divinefavor.common.lib.interfaces.IBlockCatcher
 import aurocosh.divinefavor.common.network.message.client.spirit_data.MessageSyncFavor
 import aurocosh.divinefavor.common.spirit.base.ModSpirit
+import aurocosh.divinefavor.common.stack_actions.StackActionHandler
+import aurocosh.divinefavor.common.stack_actions.interfaces.IActionAccessor
+import aurocosh.divinefavor.common.stack_actions.interfaces.IActionContainer
 import aurocosh.divinefavor.common.stack_properties.StackPropertyHandler
 import aurocosh.divinefavor.common.stack_properties.interfaces.IPropertyAccessor
 import aurocosh.divinefavor.common.stack_properties.interfaces.IPropertyContainer
@@ -22,12 +25,13 @@ import net.minecraftforge.event.world.BlockEvent
 import net.minecraftforge.fml.relauncher.Side
 import net.minecraftforge.fml.relauncher.SideOnly
 
-abstract class ItemTalisman(val name: String, texturePath: String, val spirit: ModSpirit, protected val favorCost: Int) : ModItem(name, texturePath), ITalismanStackContainer, IPropertyContainer, IBlockCatcher {
-    protected val propertyHandler: StackPropertyHandler = StackPropertyHandler("talisman $name properties")
+abstract class ItemTalisman(val name: String, texturePath: String, val spirit: ModSpirit, protected val favorCost: Int) : ModItem(name, texturePath), ITalismanStackContainer, IPropertyContainer, IActionContainer, IBlockCatcher {
+    protected val propertyHandler: StackPropertyHandler = StackPropertyHandler("talisman $name")
     override val properties: IPropertyAccessor = propertyHandler
+    protected val actionHandler: StackActionHandler = StackActionHandler("talisman $name")
+    override val actions: IActionAccessor = actionHandler
 
-    val spiritId: Int
-        get() = spirit.id
+    val spiritId: Int get() = spirit.id
 
     init {
         setMaxStackSize(1)

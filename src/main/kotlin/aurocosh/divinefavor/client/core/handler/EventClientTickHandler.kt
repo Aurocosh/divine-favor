@@ -5,7 +5,7 @@ import aurocosh.divinefavor.common.custom_data.global.TemplateData
 import aurocosh.divinefavor.common.item.ITemplateContainer
 import aurocosh.divinefavor.common.lib.LoopedCounter
 import aurocosh.divinefavor.common.lib.extensions.*
-import aurocosh.divinefavor.common.network.message.sever.MessageRequestTemplate
+import aurocosh.divinefavor.common.network.message.sever.template.MessageRequestTemplate
 import aurocosh.divinefavor.common.util.UtilTick
 import net.minecraft.client.Minecraft
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber
