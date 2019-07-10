@@ -20,6 +20,10 @@ import aurocosh.divinefavor.common.item.tool_talismans.base.ItemToolTalisman
 import aurocosh.divinefavor.common.lib.extensions.cap
 import aurocosh.divinefavor.common.lib.extensions.divinePlayerData
 import aurocosh.divinefavor.common.lib.interfaces.IBlockCatcher
+import aurocosh.divinefavor.common.stack_actions.StackAction
+import aurocosh.divinefavor.common.stack_actions.StackActionHandler
+import aurocosh.divinefavor.common.stack_actions.interfaces.IActionAccessor
+import aurocosh.divinefavor.common.stack_actions.interfaces.IActionContainer
 import aurocosh.divinefavor.common.stack_properties.StackPropertyHandler
 import aurocosh.divinefavor.common.stack_properties.interfaces.IPropertyAccessor
 import aurocosh.divinefavor.common.stack_properties.interfaces.IPropertyContainer
@@ -47,13 +51,17 @@ import net.minecraftforge.fml.relauncher.Side
 import net.minecraftforge.fml.relauncher.SideOnly
 import net.minecraftforge.oredict.OreDictionary
 
-open class ItemSpellPick(name: String, texturePath: String, orderIndex: Int = 0, val config: SpellPick, val material: ToolMaterial) : ModItemPickaxe(name, texturePath, orderIndex, material), ITalismanStackContainer, ITalismanToolContainer, IPropertyContainer, IBlockCatcher {
+open class ItemSpellPick(name: String, texturePath: String, orderIndex: Int = 0, val config: SpellPick, val material: ToolMaterial) : ModItemPickaxe(name, texturePath, orderIndex, material), ITalismanStackContainer, ITalismanToolContainer, IPropertyContainer, IActionContainer, IBlockCatcher {
     protected val propertyHandler: StackPropertyHandler = StackPropertyHandler(name)
     override val properties: IPropertyAccessor = propertyHandler
+    protected val actionHandler: StackActionHandler = StackActionHandler(name)
+    override val actions: IActionAccessor = actionHandler
     private val bookPropertyWrapper = BookPropertyWrapper(propertyHandler)
 
     override fun findProperty(stack: ItemStack, item: Item, propertyName: String) =
             TalismanAdapter.findProperty(stack, item, propertyName, this, propertyHandler, CAPABILITY_SPELL_PICK)
+    override fun findAction(stack: ItemStack, item: Item, actionName: String): Pair<ItemStack, StackAction>? =
+            TalismanAdapter.findAction(stack, item, actionName, this, actionHandler, CAPABILITY_SPELL_PICK)
 
     init {
         creativeTab = DivineFavor.TAB_MAIN
@@ -162,7 +170,7 @@ open class ItemSpellPick(name: String, texturePath: String, orderIndex: Int = 0,
         val (talismanStack, talisman) = TalismanAdapter.getTalisman<ItemToolTalisman>(stack) ?: return
         val spiritData = event.entityPlayer.divinePlayerData.spiritData
         val favor = spiritData.getFavor(talisman.spiritId)
-        if(favor < talisman.getApproximateFavorCost(stack))
+        if (favor < talisman.getApproximateFavorCost(stack))
             return
         talisman.getMiningSpeed(talismanStack, event)
     }

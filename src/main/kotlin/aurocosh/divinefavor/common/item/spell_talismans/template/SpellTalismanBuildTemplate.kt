@@ -10,7 +10,10 @@ import aurocosh.divinefavor.common.item.spell_talismans.base.ItemSpellTalisman
 import aurocosh.divinefavor.common.item.spell_talismans.base.SpellOptions
 import aurocosh.divinefavor.common.item.spell_talismans.common_build_properties.ShiftedPositionPropertyWrapper
 import aurocosh.divinefavor.common.item.spell_talismans.context.*
+import aurocosh.divinefavor.common.item.spell_talismans.template.converters.BlockTemplateMirrorConverter
+import aurocosh.divinefavor.common.item.spell_talismans.template.converters.BlockTemplateRotationConverter
 import aurocosh.divinefavor.common.lib.IIndexedEnum
+import aurocosh.divinefavor.common.lib.RotationDirection
 import aurocosh.divinefavor.common.lib.extensions.S
 import aurocosh.divinefavor.common.lib.extensions.divinePlayerData
 import aurocosh.divinefavor.common.lib.extensions.get
@@ -21,6 +24,7 @@ import aurocosh.divinefavor.common.util.UtilPlayer
 import net.minecraft.block.state.IBlockState
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.item.ItemStack
+import net.minecraft.util.EnumFacing
 import net.minecraft.util.NonNullList
 import net.minecraft.util.math.BlockPos
 import net.minecraft.world.World
@@ -36,13 +40,37 @@ class SpellTalismanBuildTemplate(name: String, spirit: ModSpirit, options: EnumS
     protected val anchor = propertyHandler.registerEnumProperty("template_anchor", TemplateAnchor.Center, converter, true)
     protected val positionPropertyWrapper = ShiftedPositionPropertyWrapper(propertyHandler)
 
+    init {
+        var row = 5;
+        actionHandler.registerAction("rotateClockX", row, 0, 0, 70, 14, serverAction = this::rotateClockX)
+        actionHandler.registerAction("rotateContrX", row++, 74, 0, 70, 14, serverAction = this::rotateContrX)
+        actionHandler.registerAction("rotateClockY", row, 0, 0, 70, 14, serverAction = this::rotateClockY)
+        actionHandler.registerAction("rotateContrY", row++, 74, 0, 70, 14, serverAction = this::rotateContrY)
+        actionHandler.registerAction("rotateClockZ", row, 0, 0, 70, 14, serverAction = this::rotateClockZ)
+        actionHandler.registerAction("rotateContrZ", row++, 74, 0, 70, 14, serverAction = this::rotateContrZ)
+
+        actionHandler.registerAction("mirrorX", row, 0, 0, 50, 14, serverAction = this::mirrorX)
+        actionHandler.registerAction("mirrorY", row, 50, 0, 50, 14, serverAction = this::mirrorY)
+        actionHandler.registerAction("mirrorZ", row++, 100, 0, 50, 14, serverAction = this::mirrorZ)
+    }
+
     override fun getApproximateFavorCost(itemStack: ItemStack) = favorCost
     override fun getFinalFavorCost(context: TalismanContext) = favorCost * context.get(finalTemplate).size
 
     @SideOnly(Side.CLIENT)
     override fun shouldRender(context: TalismanContext): Boolean = positionPropertyWrapper.shouldRender(context)
-
     override fun raycastBlock(stack: ItemStack, castType: CastType) = positionPropertyWrapper.shouldRaycastBlock(stack)
+
+    private fun mirrorX(player: EntityPlayer, stack: ItemStack) = BlockTemplateMirrorConverter(EnumFacing.Axis.X).convert(player)
+    private fun mirrorY(player: EntityPlayer, stack: ItemStack) = BlockTemplateMirrorConverter(EnumFacing.Axis.Y).convert(player)
+    private fun mirrorZ(player: EntityPlayer, stack: ItemStack) = BlockTemplateMirrorConverter(EnumFacing.Axis.Z).convert(player)
+
+    private fun rotateClockX(player: EntityPlayer, stack: ItemStack) = BlockTemplateRotationConverter(EnumFacing.Axis.X, RotationDirection.Clockwise).convert(player)
+    private fun rotateContrX(player: EntityPlayer, stack: ItemStack) = BlockTemplateRotationConverter(EnumFacing.Axis.X, RotationDirection.Counter).convert(player)
+    private fun rotateClockY(player: EntityPlayer, stack: ItemStack) = BlockTemplateRotationConverter(EnumFacing.Axis.Y, RotationDirection.Clockwise).convert(player)
+    private fun rotateContrY(player: EntityPlayer, stack: ItemStack) = BlockTemplateRotationConverter(EnumFacing.Axis.Y, RotationDirection.Counter).convert(player)
+    private fun rotateClockZ(player: EntityPlayer, stack: ItemStack) = BlockTemplateRotationConverter(EnumFacing.Axis.Z, RotationDirection.Clockwise).convert(player)
+    private fun rotateContrZ(player: EntityPlayer, stack: ItemStack) = BlockTemplateRotationConverter(EnumFacing.Axis.Z, RotationDirection.Counter).convert(player)
 
     override fun preProcess(context: TalismanContext): Boolean {
         val (player, world, stack) = context.get(playerField, worldField, stackField)

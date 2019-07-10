@@ -6,10 +6,11 @@ import aurocosh.divinefavor.common.network.message.sever.MessagePerformStackActi
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.item.Item
 import net.minecraft.item.ItemStack
+import java.awt.Rectangle
 
-class StackAction(val name: String, val clientAction: (EntityPlayer, ItemStack) -> Unit = Lambdas::emptyLambda, val serverAction: (EntityPlayer, ItemStack) -> Unit = Lambdas::emptyLambda, val orderIndex: Int = 0) {
-    val tooltipKey = ResourceNamer.getTypedNameString("tooltip", "property", name)
-    val displayKey = ResourceNamer.getTypedNameString("name", "property", name)
+class StackAction(val name: String, val row: Int, val rectangle: Rectangle, val clientAction: (EntityPlayer, ItemStack) -> Unit = Lambdas::emptyLambda, val serverAction: (EntityPlayer, ItemStack) -> Unit = Lambdas::emptyLambda, val orderIndex: Int = 0) {
+    val tooltipKey = ResourceNamer.getTypedNameString("tooltip", "action", name)
+    val displayKey = ResourceNamer.getTypedNameString("name", "action", name)
 
     fun activateServer(player: EntityPlayer, stack: ItemStack) {
         serverAction.invoke(player, stack)

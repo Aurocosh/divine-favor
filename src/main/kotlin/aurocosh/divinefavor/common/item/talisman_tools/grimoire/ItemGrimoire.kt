@@ -16,6 +16,10 @@ import aurocosh.divinefavor.common.item.talisman_tools.grimoire.capability.Grimo
 import aurocosh.divinefavor.common.item.talisman_tools.grimoire.capability.GrimoireStorage
 import aurocosh.divinefavor.common.lib.extensions.cap
 import aurocosh.divinefavor.common.lib.interfaces.IBlockCatcher
+import aurocosh.divinefavor.common.stack_actions.StackAction
+import aurocosh.divinefavor.common.stack_actions.StackActionHandler
+import aurocosh.divinefavor.common.stack_actions.interfaces.IActionAccessor
+import aurocosh.divinefavor.common.stack_actions.interfaces.IActionContainer
 import aurocosh.divinefavor.common.stack_properties.StackPropertyHandler
 import aurocosh.divinefavor.common.stack_properties.interfaces.IPropertyAccessor
 import aurocosh.divinefavor.common.stack_properties.interfaces.IPropertyContainer
@@ -33,9 +37,11 @@ import net.minecraft.world.World
 import net.minecraftforge.common.capabilities.ICapabilityProvider
 import net.minecraftforge.event.world.BlockEvent
 
-class ItemGrimoire : ModItem("grimoire", "grimoire", ConstMainTabOrder.CONTAINERS), ITalismanStackContainer, ITalismanToolContainer, IPropertyContainer, IBlockCatcher {
+class ItemGrimoire : ModItem("grimoire", "grimoire", ConstMainTabOrder.CONTAINERS), ITalismanStackContainer, ITalismanToolContainer, IPropertyContainer, IActionContainer, IBlockCatcher {
     protected val propertyHandler: StackPropertyHandler = StackPropertyHandler("grimoire")
     override val properties: IPropertyAccessor = propertyHandler
+    protected val actionHandler: StackActionHandler = StackActionHandler("grimoire")
+    override val actions: IActionAccessor = actionHandler
 
     init {
         setMaxStackSize(1)
@@ -43,7 +49,9 @@ class ItemGrimoire : ModItem("grimoire", "grimoire", ConstMainTabOrder.CONTAINER
     }
 
     override fun findProperty(stack: ItemStack, item: Item, propertyName: String) =
-            TalismanAdapter.findProperty(stack,item,propertyName,this,propertyHandler, CAPABILITY_GRIMOIRE)
+            TalismanAdapter.findProperty(stack, item, propertyName, this, propertyHandler, CAPABILITY_GRIMOIRE)
+    override fun findAction(stack: ItemStack, item: Item, actionName: String): Pair<ItemStack, StackAction>? =
+            TalismanAdapter.findAction(stack, item, actionName, this, actionHandler, CAPABILITY_GRIMOIRE)
 
     override fun onItemUse(player: EntityPlayer, world: World, pos: BlockPos, hand: EnumHand, facing: EnumFacing, hitX: Float, hitY: Float, hitZ: Float): EnumActionResult {
         val containerStack = player.getHeldItem(hand)

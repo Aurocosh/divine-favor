@@ -12,8 +12,8 @@ import aurocosh.divinefavor.common.item.talisman.ItemTalisman
 import aurocosh.divinefavor.common.lib.TooltipCache
 import aurocosh.divinefavor.common.lib.extensions.S
 import aurocosh.divinefavor.common.network.message.sever.syncing.MessageSyncTalismanPropertyIndex
-import aurocosh.divinefavor.common.stack_actions.interfaces.IActionContainer
 import aurocosh.divinefavor.common.stack_actions.StackAction
+import aurocosh.divinefavor.common.stack_actions.interfaces.IActionContainer
 import aurocosh.divinefavor.common.stack_properties.properties.StackPropertyBool
 import aurocosh.divinefavor.common.stack_properties.properties.StackPropertyEnum
 import aurocosh.divinefavor.common.stack_properties.properties.StackPropertyInt
@@ -26,6 +26,7 @@ import net.minecraft.client.settings.GameSettings
 import net.minecraft.item.ItemStack
 import net.minecraft.util.ResourceLocation
 import java.awt.Color
+import kotlin.math.max
 
 class GuiTalismanProperties(stack: ItemStack, private val playerSlot: Int) : GuiScreen() {
     private val item: ItemTalisman
@@ -103,7 +104,9 @@ class GuiTalismanProperties(stack: ItemStack, private val playerSlot: Int) : Gui
     }
 
     private fun addActionToGui(action: StackAction) {
-        val button = PropertyGuiHelper.getActionButton(action, itemStack, nextElementX, nextElementY, elementWidth, elementHeight)
+        val top = xMargin
+        val left = yMargin + elementStepY * max(action.row - 1, 0)
+        val button = PropertyGuiHelper.getActionButton(action, itemStack, left, top)
         addGuiElement(button)
     }
 

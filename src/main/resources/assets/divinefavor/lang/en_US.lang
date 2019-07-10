@@ -996,3 +996,27 @@ tooltip.divinefavor:property.do_not_break_below=If this option is enabled then n
 tooltip.divinefavor:property.do_not_select_below=If this option is enabled then no blocks below your feet will be selected
 
 tooltip.divinefavor:property.template_anchor=This property determines anchor point of the block template.
+
+## TALISMAN ACTIONS
+name.divinefavor:action.mirrorX=Mirror X
+name.divinefavor:action.mirrorY=Mirror Y
+name.divinefavor:action.mirrorZ=Mirror Z
+
+name.divinefavor:action.rotateClockX=<- Rotate X
+name.divinefavor:action.rotateContrX=Rotate X ->
+name.divinefavor:action.rotateClockY=<- Rotate Y
+name.divinefavor:action.rotateContrY=Rotate Y ->
+name.divinefavor:action.rotateClockZ=<- Rotate Z
+name.divinefavor:action.rotateContrZ=Rotate Z ->
+
+## TALISMAN ACTION TOOLTIPS
+tooltip.divinefavor:action.mirrorX=This action will mirror currently memorized template in x axis.
+tooltip.divinefavor:action.mirrorY=This action will mirror currently memorized template in y axis.
+tooltip.divinefavor:action.mirrorZ=This action will mirror currently memorized template in z axis.
+
+tooltip.divinefavor:action.rotateClockX=This action will rotate currently memorized template around x axis clockwise.
+tooltip.divinefavor:action.rotateContrX=This action will rotate currently memorized template around x axis counter clockwise.
+tooltip.divinefavor:action.rotateClockY=This action will rotate currently memorized template around y axis clockwise.
+tooltip.divinefavor:action.rotateContrY=This action will rotate currently memorized template around y axis counter clockwise.
+tooltip.divinefavor:action.rotateClockZ=This action will rotate currently memorized template around z axis clockwise.
+tooltip.divinefavor:action.rotateContrZ=This action will rotate currently memorized template around z axis counter clockwise.

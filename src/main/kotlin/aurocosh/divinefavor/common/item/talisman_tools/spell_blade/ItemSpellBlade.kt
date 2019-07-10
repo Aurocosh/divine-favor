@@ -18,6 +18,10 @@ import aurocosh.divinefavor.common.item.talisman_tools.spell_blade.capability.Sp
 import aurocosh.divinefavor.common.item.talisman_tools.spell_blade.capability.SpellBladeStorage
 import aurocosh.divinefavor.common.lib.extensions.cap
 import aurocosh.divinefavor.common.lib.interfaces.IBlockCatcher
+import aurocosh.divinefavor.common.stack_actions.StackAction
+import aurocosh.divinefavor.common.stack_actions.StackActionHandler
+import aurocosh.divinefavor.common.stack_actions.interfaces.IActionAccessor
+import aurocosh.divinefavor.common.stack_actions.interfaces.IActionContainer
 import aurocosh.divinefavor.common.stack_properties.StackPropertyHandler
 import aurocosh.divinefavor.common.stack_properties.interfaces.IPropertyAccessor
 import aurocosh.divinefavor.common.stack_properties.interfaces.IPropertyContainer
@@ -44,9 +48,11 @@ import net.minecraftforge.fml.relauncher.Side
 import net.minecraftforge.fml.relauncher.SideOnly
 import net.minecraftforge.oredict.OreDictionary
 
-open class ItemSpellBlade(name: String, texturePath: String, orderIndex: Int = 0, val config: SpellBlade, val material: ToolMaterial) : ModItem(name, texturePath, orderIndex), ITalismanStackContainer, ITalismanToolContainer, IPropertyContainer, IBlockCatcher {
+open class ItemSpellBlade(name: String, texturePath: String, orderIndex: Int = 0, val config: SpellBlade, val material: ToolMaterial) : ModItem(name, texturePath, orderIndex), ITalismanStackContainer, ITalismanToolContainer, IPropertyContainer, IActionContainer, IBlockCatcher {
     protected val propertyHandler: StackPropertyHandler = StackPropertyHandler(name)
     override val properties: IPropertyAccessor = propertyHandler
+    protected val actionHandler: StackActionHandler = StackActionHandler(name)
+    override val actions: IActionAccessor = actionHandler
     private val bookPropertyWrapper = BookPropertyWrapper(propertyHandler)
 
     init {
@@ -58,6 +64,8 @@ open class ItemSpellBlade(name: String, texturePath: String, orderIndex: Int = 0
 
     override fun findProperty(stack: ItemStack, item: Item, propertyName: String) =
             TalismanAdapter.findProperty(stack, item, propertyName, this, propertyHandler, CAPABILITY_SPELL_BLADE)
+    override fun findAction(stack: ItemStack, item: Item, actionName: String): Pair<ItemStack, StackAction>? =
+            TalismanAdapter.findAction(stack, item, actionName, this, actionHandler, CAPABILITY_SPELL_BLADE)
 
     override fun hitEntity(stack: ItemStack, target: EntityLivingBase, attacker: EntityLivingBase): Boolean {
         stack.damageItem(1, attacker)

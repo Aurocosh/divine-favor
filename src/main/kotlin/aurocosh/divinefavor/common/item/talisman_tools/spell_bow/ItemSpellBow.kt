@@ -18,6 +18,10 @@ import aurocosh.divinefavor.common.item.talisman_tools.spell_bow.capability.Spel
 import aurocosh.divinefavor.common.item.talisman_tools.spell_bow.capability.SpellBowProvider
 import aurocosh.divinefavor.common.item.talisman_tools.spell_bow.capability.SpellBowStorage
 import aurocosh.divinefavor.common.lib.extensions.cap
+import aurocosh.divinefavor.common.stack_actions.StackAction
+import aurocosh.divinefavor.common.stack_actions.StackActionHandler
+import aurocosh.divinefavor.common.stack_actions.interfaces.IActionAccessor
+import aurocosh.divinefavor.common.stack_actions.interfaces.IActionContainer
 import aurocosh.divinefavor.common.stack_properties.StackPropertyHandler
 import aurocosh.divinefavor.common.stack_properties.interfaces.IPropertyAccessor
 import aurocosh.divinefavor.common.stack_properties.interfaces.IPropertyContainer
@@ -43,13 +47,17 @@ import net.minecraft.world.World
 import net.minecraftforge.common.capabilities.ICapabilityProvider
 import net.minecraftforge.event.ForgeEventFactory
 
-class ItemSpellBow : ModItem("spell_bow", "spell_bow/spell_bow", ConstMainTabOrder.CONTAINERS), ITalismanStackContainer, ITalismanToolContainer, IPropertyContainer {
+class ItemSpellBow : ModItem("spell_bow", "spell_bow/spell_bow", ConstMainTabOrder.CONTAINERS), ITalismanStackContainer, ITalismanToolContainer, IPropertyContainer, IActionContainer {
     protected val propertyHandler: StackPropertyHandler = StackPropertyHandler("spell_bow")
     override val properties: IPropertyAccessor = propertyHandler
+    protected val actionHandler: StackActionHandler = StackActionHandler("spell_bow")
+    override val actions: IActionAccessor = actionHandler
     private val bookPropertyWrapper = BookPropertyWrapper(propertyHandler)
 
     override fun findProperty(stack: ItemStack, item: Item, propertyName: String) =
             TalismanAdapter.findProperty(stack, item, propertyName, this, propertyHandler, CAPABILITY_SPELL_BOW)
+    override fun findAction(stack: ItemStack, item: Item, actionName: String): Pair<ItemStack, StackAction>? =
+            TalismanAdapter.findAction(stack, item, actionName, this, actionHandler, CAPABILITY_SPELL_BOW)
 
     init {
         maxStackSize = 1

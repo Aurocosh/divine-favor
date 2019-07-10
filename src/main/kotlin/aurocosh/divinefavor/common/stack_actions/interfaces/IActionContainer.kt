@@ -6,10 +6,10 @@ import net.minecraft.item.ItemStack
 
 interface IActionContainer {
     val actions: IActionAccessor
-    fun findAction(stack: ItemStack, item: Item, propertyName: String): Pair<ItemStack, StackAction>? {
+    fun findAction(stack: ItemStack, item: Item, actionName: String): Pair<ItemStack, StackAction>? {
         if (item != this)
             return null
-        val property = actions.get(propertyName) ?: return null
+        val property = actions.get(actionName) ?: return null
         return Pair(stack, property)
     }
 }

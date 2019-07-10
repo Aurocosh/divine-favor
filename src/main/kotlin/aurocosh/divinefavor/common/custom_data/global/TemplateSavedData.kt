@@ -3,8 +3,8 @@ package aurocosh.divinefavor.common.custom_data.global
 import aurocosh.divinefavor.common.block_templates.BlockTemplate
 import aurocosh.divinefavor.common.block_templates.BlockTemplateSerializer
 import aurocosh.divinefavor.common.config.common.ConfigGeneral
-import aurocosh.divinefavor.common.lib.CornerOrientation
 import aurocosh.divinefavor.common.lib.EmptyConst.invalidUUID
+import aurocosh.divinefavor.common.lib.FaceDiagonalOrientation
 import aurocosh.divinefavor.common.lib.LimitedMap
 import aurocosh.divinefavor.common.lib.extensions.getMap
 import aurocosh.divinefavor.common.lib.extensions.setMap
@@ -17,9 +17,9 @@ class TemplateSavedData(name: String) : WorldSavedData(name) {
     private val temporaryData = LimitedMap<UUID, BlockTemplate>(ConfigGeneral.temporaryTemplateLimit)
     private val persistentData = LimitedMap<UUID, BlockTemplate>(ConfigGeneral.persistentTemplateLimit)
 
-    private val variations = LimitedMap<UUID, MutableMap<CornerOrientation, UUID>>(ConfigGeneral.templateVariationLimit);
+    private val variations = LimitedMap<UUID, MutableMap<FaceDiagonalOrientation, UUID>>(ConfigGeneral.templateVariationLimit);
 
-    fun addVariation(key: UUID, variationKey: UUID, orientation: CornerOrientation) {
+    fun addVariation(key: UUID, variationKey: UUID, orientation: FaceDiagonalOrientation) {
         val variationMap = variations.computeIfAbsent(key) { HashMap() }
         variations[variationKey] = variationMap
         val template = get(key) ?: return
@@ -27,7 +27,7 @@ class TemplateSavedData(name: String) : WorldSavedData(name) {
         variationMap[orientation] = variationKey
     }
 
-    fun getVariation(key: UUID, orientation: CornerOrientation): UUID? {
+    fun getVariation(key: UUID, orientation: FaceDiagonalOrientation): UUID? {
         return variations[key]?.get(orientation)
     }
 

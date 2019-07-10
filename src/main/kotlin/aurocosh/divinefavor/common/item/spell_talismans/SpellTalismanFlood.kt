@@ -21,7 +21,7 @@ import net.minecraft.util.math.Vec3d
 import java.util.*
 
 class SpellTalismanFlood(name: String, spirit: ModSpirit, favorCost: Int, options: EnumSet<SpellOptions>) : ItemSpellTalisman(name, spirit, favorCost, options) {
-    val testAction = actionHandler.registerAction("test", serverAction = this::perfServer)
+//    val testAction = actionHandler.registerAction("test", serverAction = this::perfServer)
 
 
     override fun performActionServer(context: TalismanContext) {

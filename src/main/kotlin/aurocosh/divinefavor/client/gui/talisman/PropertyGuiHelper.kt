@@ -56,12 +56,12 @@ object PropertyGuiHelper {
         return GuiButtonCustomToggle(x, y, width, height, value, property.defaultValue, property.displayKey, property.tooltipKey, Color.DARK_GRAY, toggleAction)
     }
 
-    fun getActionButton(action: StackAction, stack: ItemStack, x: Int, y: Int, width: Int, height: Int): GuiStackActionButton {
+    fun getActionButton(action: StackAction, stack: ItemStack, top: Int, left: Int): GuiStackActionButton {
         val player = DivineFavor.proxy.clientPlayer
         val toggleAction: () -> Unit = {
             action.activateClient(player, stack)
         }
-
-        return GuiStackActionButton(x, y, width, height, action.displayKey, action.tooltipKey, Color.DARK_GRAY, toggleAction)
+        val rect = action.rectangle
+        return GuiStackActionButton(left + rect.x, top + rect.y, rect.width, rect.height, action.displayKey, action.tooltipKey, Color.DARK_GRAY, toggleAction)
     }
 }

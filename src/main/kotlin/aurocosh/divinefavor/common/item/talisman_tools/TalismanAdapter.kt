@@ -4,6 +4,9 @@ import aurocosh.divinefavor.common.item.talisman.ITalismanStackContainer
 import aurocosh.divinefavor.common.item.talisman.ItemTalisman
 import aurocosh.divinefavor.common.lib.extensions.cap
 import aurocosh.divinefavor.common.network.message.sever.syncing.MessageSyncTalismanContainerSlot
+import aurocosh.divinefavor.common.stack_actions.StackAction
+import aurocosh.divinefavor.common.stack_actions.StackActionHandler
+import aurocosh.divinefavor.common.stack_actions.interfaces.IActionContainer
 import aurocosh.divinefavor.common.stack_properties.StackPropertyHandler
 import aurocosh.divinefavor.common.stack_properties.interfaces.IPropertyContainer
 import aurocosh.divinefavor.common.stack_properties.properties.base.StackProperty
@@ -42,5 +45,20 @@ object TalismanAdapter {
         if (selectedItem !is IPropertyContainer)
             return null
         return selectedItem.findProperty(selectedStack, item, propertyName)
+    }
+
+    fun <T : ITalismanTool> findAction(stack: ItemStack, item: Item, actionName: String, container: Item, actionHandler: StackActionHandler, capability: Capability<T>): Pair<ItemStack, StackAction>? {
+        if (item == container) {
+            val property = actionHandler[actionName] ?: return null
+            return Pair(stack, property)
+        }
+
+        val handler = stack.cap(capability)
+        val selectedStack = handler.getSelectedStack()
+
+        val selectedItem = selectedStack.item
+        if (selectedItem !is IActionContainer)
+            return null
+        return selectedItem.findAction(selectedStack, item, actionName)
     }
 }
