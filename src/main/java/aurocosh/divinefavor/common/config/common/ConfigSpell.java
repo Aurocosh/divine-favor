@@ -206,8 +206,6 @@ public class ConfigSpell {
     public static WoodenPunch woodenPunch = new WoodenPunch();
 
     // New configs
-    @Config.Name("Alter memory")
-    public static AlterMemory alterMemory = new AlterMemory();
     @Config.Name("Deserialize memory")
     public static DeserializeMemory deserializeMemory = new DeserializeMemory();
     @Config.Name("Serialize memory")

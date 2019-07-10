@@ -16,7 +16,6 @@ import aurocosh.divinefavor.common.item.spell_talismans.replace.SpellTalismanRep
 import aurocosh.divinefavor.common.item.spell_talismans.replace.SpellTalismanReplaceSide
 import aurocosh.divinefavor.common.item.spell_talismans.replace.SpellTalismanReplaceSurface
 import aurocosh.divinefavor.common.item.spell_talismans.sense.*
-import aurocosh.divinefavor.common.item.spell_talismans.template.SpellTalismanAlterMemory
 import aurocosh.divinefavor.common.item.spell_talismans.template.SpellTalismanBuildTemplate
 import aurocosh.divinefavor.common.item.spell_talismans.template.SpellTalismanCrystallizeMemory
 import aurocosh.divinefavor.common.item.spell_talismans.template_serialization.SpellTalismanDeserializeMemory
@@ -151,7 +150,6 @@ object ModSpellTalismans {
     lateinit var wooden_punch: ItemSpellTalisman
 
     // New fields
-    lateinit var alter_memory: ItemSpellTalisman
     lateinit var deserialize_memory: ItemSpellTalisman
     lateinit var serialize_memory: ItemSpellTalisman
     lateinit var copy_cuboid: ItemSpellTalisman
@@ -317,7 +315,6 @@ object ModSpellTalismans {
         starvation = SpellTalismanModPotion("starvation", ModSpirits.timber, ConfigSpell.starvation.favorCost, ModPotions.starvation, ConfigSpell.starvation.duration)
 
         // New instances
-        alter_memory = SpellTalismanAlterMemory("alter_memory", ModSpirits.materia, ConfigSpell.alterMemory.favorCost, SpellOptions.ALL_CAST)
 
     }
 

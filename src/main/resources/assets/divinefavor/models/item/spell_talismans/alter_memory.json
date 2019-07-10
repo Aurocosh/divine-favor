@@ -1,7 +1,0 @@
-{
-    "parent": "item/generated",
-    "textures": {
-        "layer1": "divinefavor:items/spell_talismans/alter_memory",
-        "layer0": "divinefavor:items/spell_talismans/base"
-    }
-}
