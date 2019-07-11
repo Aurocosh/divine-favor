@@ -1,0 +1,15 @@
+{
+  "name": "Build cylinder",
+  "icon": "divinefavor:spell_talisman_build_cylinder",
+  "category": "spell_talismans",
+  "pages": [
+    {
+      "type": "item_description",
+      "talisman": "divinefavor:spell_talisman_build_cylinder"
+    },
+    {
+      "type": "spell_talisman_stats",
+      "talisman": "divinefavor:spell_talisman_build_cylinder"
+    }
+  ]
+}

@@ -3,6 +3,7 @@ package aurocosh.divinefavor.common.lib.extensions
 import aurocosh.divinefavor.common.custom_data.player.capability.IPlayerDataHandler
 import aurocosh.divinefavor.common.custom_data.player.capability.PlayerDataDataHandler
 import net.minecraft.entity.player.EntityPlayer
+import net.minecraft.util.EnumFacing
 import net.minecraft.util.text.TextComponentString
 import net.minecraft.util.text.TextComponentTranslation
 import net.minecraftforge.items.CapabilityItemHandler.ITEM_HANDLER_CAPABILITY
@@ -10,6 +11,12 @@ import net.minecraftforge.items.IItemHandler
 
 val EntityPlayer.divinePlayerData: IPlayerDataHandler
     get() = this.getCapability(PlayerDataDataHandler.CAPABILITY_PLAYER_DATA, null) as IPlayerDataHandler
+
+val EntityPlayer.facing: EnumFacing
+    get() {
+        val pos = this.position.toVec3d().add(this.lookVec.scale(5.0)).toBlockPos()
+        return EnumFacing.getDirectionFromEntityLiving(pos, this)
+    }
 
 fun EntityPlayer.getInventoryCapability(): IItemHandler {
     return this.getCapability(ITEM_HANDLER_CAPABILITY, null) as IItemHandler

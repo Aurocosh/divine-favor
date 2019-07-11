@@ -3,7 +3,7 @@ package aurocosh.divinefavor.common.item.spell_talismans.build
 import aurocosh.divinefavor.common.lib.CachedContainer
 import aurocosh.divinefavor.common.coordinate_generators.generateFloorCoordinates
 import aurocosh.divinefavor.common.item.spell_talismans.build.base.SpellTalismanBuildShifted
-import aurocosh.divinefavor.common.item.spell_talismans.common_build_properties.RotationPropertyWrapper
+import aurocosh.divinefavor.common.item.spell_talismans.common_build_properties.PlayerRotationPropertyWrapper
 import aurocosh.divinefavor.common.item.spell_talismans.context.*
 import aurocosh.divinefavor.common.lib.extensions.get
 import aurocosh.divinefavor.common.spirit.base.ModSpirit
@@ -16,7 +16,7 @@ class SpellTalismanBuildFloor(name: String, spirit: ModSpirit) : SpellTalismanBu
     private val right: StackPropertyInt = propertyHandler.registerIntProperty("right", 2, 0, 10)
     private val front: StackPropertyInt = propertyHandler.registerIntProperty("front", 3, 0, 10)
     private val back: StackPropertyInt = propertyHandler.registerIntProperty("back", 0, 0, 10)
-    private val rotationPropertyWrapper = RotationPropertyWrapper(propertyHandler)
+    private val rotationPropertyWrapper = PlayerRotationPropertyWrapper(propertyHandler)
 
     override fun getCoordinates(context: TalismanContext): List<BlockPos> {
         val (player, stack) = context.get(playerField, stackField)

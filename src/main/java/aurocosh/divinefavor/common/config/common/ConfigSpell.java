@@ -232,34 +232,6 @@ public class ConfigSpell {
     public static PushSide pushSide = new PushSide();
     @Config.Name("Pull side")
     public static PullSide pullSide = new PullSide();
-    @Config.Name("Replace cuboid")
-    public static ReplaceCuboid replaceCuboid = new ReplaceCuboid();
-    @Config.Name("Replace side")
-    public static ReplaceSide replaceSide = new ReplaceSide();
-    @Config.Name("Replace blocks")
-    public static ReplaceBlocks replaceBlocks = new ReplaceBlocks();
-    @Config.Name("Build extrusion")
-    public static BuildExtrusion buildExtrusion = new BuildExtrusion();
-    @Config.Name("Build horizontal line")
-    public static BuildHorizontalLine buildHorizontalLine = new BuildHorizontalLine();
-    @Config.Name("Build from surface")
-    public static BuildFromSurface buildFromSurface = new BuildFromSurface();
-    @Config.Name("Build sphere")
-    public static BuildSphere buildSphere = new BuildSphere();
-    @Config.Name("Build hollow sphere")
-    public static BuildHollowSphere buildHollowSphere = new BuildHollowSphere();
-    @Config.Name("Build square wall")
-    public static BuildSquareWall buildSquareWall = new BuildSquareWall();
-    @Config.Name("Build square floor")
-    public static BuildSquareFloor buildSquareFloor = new BuildSquareFloor();
-    @Config.Name("Build floor")
-    public static BuildFloor buildFloor = new BuildFloor();
-    @Config.Name("Build wall")
-    public static BuildWall buildWall = new BuildWall();
-    @Config.Name("Replace surface")
-    public static ReplaceSurface replaceSurface = new ReplaceSurface();
-    @Config.Name("Build column")
-    public static BuildColumn buildColumn = new BuildColumn();
     @Config.Name("Bind")
     public static BindIceArrows bindIceArrows = new BindIceArrows();
 }

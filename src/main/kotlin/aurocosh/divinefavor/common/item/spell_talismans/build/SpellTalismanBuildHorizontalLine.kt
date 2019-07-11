@@ -4,7 +4,7 @@ import aurocosh.divinefavor.common.lib.CachedContainer
 import aurocosh.divinefavor.common.coordinate_generators.generateWallCoordinates
 import aurocosh.divinefavor.common.item.spell_talismans.build.base.SpellTalismanBuildShifted
 import aurocosh.divinefavor.common.item.spell_talismans.context.TalismanContext
-import aurocosh.divinefavor.common.item.spell_talismans.common_build_properties.RotationPropertyWrapper
+import aurocosh.divinefavor.common.item.spell_talismans.common_build_properties.PlayerRotationPropertyWrapper
 import aurocosh.divinefavor.common.item.spell_talismans.context.playerField
 import aurocosh.divinefavor.common.item.spell_talismans.context.posField
 import aurocosh.divinefavor.common.item.spell_talismans.context.stackField
@@ -18,7 +18,7 @@ import net.minecraft.util.math.BlockPos
 class SpellTalismanBuildHorizontalLine(name: String, spirit: ModSpirit) : SpellTalismanBuildShifted(name, spirit) {
     private val left: StackPropertyInt = propertyHandler.registerIntProperty("left", 2, 0, 10)
     private val right: StackPropertyInt = propertyHandler.registerIntProperty("right", 2, 0, 10)
-    private val rotationPropertyWrapper = RotationPropertyWrapper(propertyHandler)
+    private val rotationPropertyWrapper = PlayerRotationPropertyWrapper(propertyHandler)
 
     override fun getCoordinates(context: TalismanContext): List<BlockPos> {
         val (player, stack, pos) = context.get(playerField, stackField, posField)
