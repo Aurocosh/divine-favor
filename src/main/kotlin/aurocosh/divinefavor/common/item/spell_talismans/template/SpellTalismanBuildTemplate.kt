@@ -19,6 +19,7 @@ import aurocosh.divinefavor.common.lib.extensions.divinePlayerData
 import aurocosh.divinefavor.common.lib.extensions.get
 import aurocosh.divinefavor.common.lib.math.CuboidBoundingBox
 import aurocosh.divinefavor.common.spirit.base.ModSpirit
+import aurocosh.divinefavor.common.undo.UndoBuild
 import aurocosh.divinefavor.common.util.UtilBlock
 import aurocosh.divinefavor.common.util.UtilPlayer
 import net.minecraft.block.state.IBlockState
@@ -59,6 +60,7 @@ class SpellTalismanBuildTemplate(name: String, spirit: ModSpirit, options: EnumS
 
     @SideOnly(Side.CLIENT)
     override fun shouldRender(context: TalismanContext): Boolean = positionPropertyWrapper.shouldRender(context)
+
     override fun raycastBlock(stack: ItemStack, castType: CastType) = positionPropertyWrapper.shouldRaycastBlock(stack)
 
     private fun mirrorX(player: EntityPlayer, stack: ItemStack) = BlockTemplateMirrorConverter(EnumFacing.Axis.X).convert(player)
@@ -102,6 +104,10 @@ class SpellTalismanBuildTemplate(name: String, spirit: ModSpirit, options: EnumS
         val template = context.get(finalTemplate)
         for (blockState in template)
             buildBlock(player, world, blockState.pos, blockState.state, blockState.metaItem)
+
+        val coordinates = template.map(TemplateFinalBlockState::pos)
+        val undoBuild = UndoBuild(coordinates)
+        player.divinePlayerData.undoData.addAction(undoBuild)
     }
 
     override fun performActionClient(context: TalismanContext) {

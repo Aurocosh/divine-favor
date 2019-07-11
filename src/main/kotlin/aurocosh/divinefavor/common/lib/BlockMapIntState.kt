@@ -1,6 +1,7 @@
 package aurocosh.divinefavor.common.lib
 
 import aurocosh.divinefavor.common.block_templates.MetaItem
+import aurocosh.divinefavor.common.lib.extensions.S
 import aurocosh.divinefavor.common.util.UtilBlock
 import net.minecraft.block.state.IBlockState
 import net.minecraft.entity.player.EntityPlayer
@@ -19,27 +20,16 @@ class BlockMapIntState(val intStateMap: MutableMap<Short, IBlockState> = HashMap
     }
 
     fun addToStackMap(metaItem: MetaItem, blockState: IBlockState) {
-        if (findStackSlot(metaItem) !== blockState) {
+        if (findStackSlot(metaItem) !== blockState)
             intStackMap[blockState] = metaItem
-        }
     }
 
     fun findSlot(mapState: IBlockState): Short {
-        for ((key, value) in intStateMap) {
-            if (value === mapState) {
-                return key
-            }
-        }
-        return -1
+        return intStateMap.entries.S.firstOrNull { (_, value) -> value == mapState }?.key ?: -1
     }
 
     private fun findStackSlot(metaItem: MetaItem): IBlockState? {
-        for ((key, value) in intStackMap) {
-            if (value.item === metaItem.item && value.meta == metaItem.meta) {
-                return key
-            }
-        }
-        return null
+        return intStackMap.entries.S.firstOrNull { (_, value) -> value.item === metaItem.item && value.meta == metaItem.meta }?.key
     }
 
     fun getStateFromSlot(slot: Short?): IBlockState {

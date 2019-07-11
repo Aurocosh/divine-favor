@@ -9,7 +9,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent
 import net.minecraftforge.fml.common.gameevent.TickEvent
 import java.util.*
 
-class BlockPlacingTask(blocksToPlace: List<BlockPos>, private val state: IBlockState, private val player: EntityPlayer, private val blocksPerTick: Int) : ServerSideTask(player.world) {
+open class BlockPlacingTask(blocksToPlace: List<BlockPos>, private val state: IBlockState, private val player: EntityPlayer, private val blocksPerTick: Int) : ServerSideTask(player.world) {
     private val blocksToPlace: Queue<BlockPos>
 
     init {

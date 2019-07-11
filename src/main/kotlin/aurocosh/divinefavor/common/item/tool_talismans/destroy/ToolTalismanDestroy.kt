@@ -6,13 +6,18 @@ import aurocosh.divinefavor.common.item.spell_talismans.base.CastType
 import aurocosh.divinefavor.common.item.spell_talismans.common_build_properties.BlockSelectPropertyWrapper
 import aurocosh.divinefavor.common.item.spell_talismans.context.ContextProperty
 import aurocosh.divinefavor.common.item.spell_talismans.context.TalismanContext
+import aurocosh.divinefavor.common.item.spell_talismans.context.playerField
+import aurocosh.divinefavor.common.item.spell_talismans.context.worldField
 import aurocosh.divinefavor.common.item.tool_talismans.base.ItemToolTalisman
+import aurocosh.divinefavor.common.lib.extensions.divinePlayerData
 import aurocosh.divinefavor.common.lib.extensions.get
 import aurocosh.divinefavor.common.lib.extensions.isAirOrReplacable
 import aurocosh.divinefavor.common.spirit.base.ModSpirit
 import aurocosh.divinefavor.common.stack_properties.properties.StackPropertyBool
 import aurocosh.divinefavor.common.tasks.BlockPlacingTask
+import aurocosh.divinefavor.common.undo.UndoDestruction
 import aurocosh.divinefavor.common.util.UtilBlock
+import aurocosh.divinefavor.common.util.UtilTick
 import net.minecraft.init.Blocks
 import net.minecraft.item.ItemStack
 import net.minecraft.util.math.BlockPos
@@ -45,8 +50,19 @@ abstract class ToolTalismanDestroy(name: String, spirit: ModSpirit) : ItemToolTa
     protected open fun getCommonCoordinates(context: TalismanContext) = getCoordinates(context).filterNot { context.world.isAirOrReplacable(it) }
 
     override fun performActionServer(context: TalismanContext) {
+        val (player, world) = context.get(playerField, worldField)
+
         val coordinates = context.get(finalCoordinates)
-        BlockPlacingTask(coordinates, Blocks.AIR.defaultState, context.player, 1).start()
+        val destroyedStates = coordinates.map { Pair(it, world.getBlockState(it)) }
+
+        val breakTime = UtilTick.secondsToTicks(2f)
+        val blocksPerTick = if(breakTime > coordinates.size) 1 else coordinates.size / breakTime
+        val placingTask = BlockPlacingTask(coordinates, Blocks.AIR.defaultState, player, blocksPerTick)
+        placingTask.addFinishAction {
+            val undoDestruction = UndoDestruction(destroyedStates)
+            player.divinePlayerData.undoData.addAction(undoDestruction)
+        }
+        placingTask.start()
     }
 
     @SideOnly(Side.CLIENT)

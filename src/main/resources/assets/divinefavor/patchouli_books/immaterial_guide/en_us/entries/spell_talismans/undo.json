@@ -1,0 +1,15 @@
+{
+  "name": "Undo",
+  "icon": "divinefavor:spell_talisman_undo",
+  "category": "spell_talismans",
+  "pages": [
+    {
+      "type": "item_description",
+      "talisman": "divinefavor:spell_talisman_undo"
+    },
+    {
+      "type": "spell_talisman_stats",
+      "talisman": "divinefavor:spell_talisman_undo"
+    }
+  ]
+}

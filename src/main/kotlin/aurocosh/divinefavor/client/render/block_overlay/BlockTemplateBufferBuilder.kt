@@ -1,8 +1,10 @@
 package aurocosh.divinefavor.client.render.block_overlay
 
-import aurocosh.divinefavor.common.custom_data.global.TemplateData
 import aurocosh.divinefavor.common.block_templates.BlockTemplate
+import aurocosh.divinefavor.common.config.common.ConfigGeneral
+import aurocosh.divinefavor.common.custom_data.global.TemplateData
 import aurocosh.divinefavor.common.lib.CustomBufferBuilder
+import aurocosh.divinefavor.common.lib.LimitedMap
 import aurocosh.divinefavor.common.lib.extensions.get
 import net.minecraft.client.Minecraft
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats
@@ -13,16 +15,11 @@ import net.minecraftforge.fml.relauncher.Side
 import net.minecraftforge.fml.relauncher.SideOnly
 import org.lwjgl.opengl.GL11
 import java.util.*
-import kotlin.collections.HashMap
 
 @SideOnly(Side.CLIENT)
 object BlockTemplateBufferBuilder {
-    private val bufferMap: MutableMap<UUID, CustomBufferBuilder> = HashMap()
-
-    // TODO limit buffer size
-    fun clearMaps() {
-        bufferMap.clear()
-    }
+    val limit = ConfigGeneral.temporaryTemplateLimit + ConfigGeneral.persistentTemplateLimit
+    private val bufferMap: LimitedMap<UUID, CustomBufferBuilder> = LimitedMap(limit)
 
     fun getBuffer(uuid: UUID, world: World): CustomBufferBuilder? {
         val bufferBuilder = bufferMap[uuid]

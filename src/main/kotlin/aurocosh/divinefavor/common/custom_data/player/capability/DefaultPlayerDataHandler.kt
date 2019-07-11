@@ -32,6 +32,7 @@ import aurocosh.divinefavor.common.custom_data.player.data.spell.molten_skin.Mol
 import aurocosh.divinefavor.common.custom_data.player.data.spell.pearl_crumbs.PearlCrumbsData
 import aurocosh.divinefavor.common.custom_data.player.data.spell.vengeful_blade.VengefulBladeData
 import aurocosh.divinefavor.common.custom_data.player.data.templates.TemplateData
+import aurocosh.divinefavor.common.custom_data.player.data.undo_data.UndoData
 
 // The default implementation of the capability. Holds all the logic.
 class DefaultPlayerDataHandler : IPlayerDataHandler {
@@ -50,6 +51,7 @@ class DefaultPlayerDataHandler : IPlayerDataHandler {
     override val moltenSkinData: MoltenSkinData = MoltenSkinData()
     override val pearlCrumbsData: PearlCrumbsData = PearlCrumbsData()
     override val templateData: TemplateData = TemplateData()
+    override val undoData: UndoData = UndoData()
     override val vengefulBladeData: VengefulBladeData = VengefulBladeData()
 
     override val arborealAuraData: ArborealAuraData = ArborealAuraData()

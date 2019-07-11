@@ -206,6 +206,8 @@ public class ConfigSpell {
     public static WoodenPunch woodenPunch = new WoodenPunch();
 
     // New configs
+    @Config.Name("Undo")
+    public static Undo undo = new Undo();
     @Config.Name("Deserialize memory")
     public static DeserializeMemory deserializeMemory = new DeserializeMemory();
     @Config.Name("Serialize memory")
