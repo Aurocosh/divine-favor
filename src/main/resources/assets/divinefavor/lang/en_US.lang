@@ -200,7 +200,6 @@ item.divinefavor:rope_luminous.name=Luminous rope
 item.divinefavor:rope_teleporting.name=Warping rope
 
 ## NEW ITEM NAMES
-item.divinefavor:memory_drop.name=Memory drop
 item.divinefavor:ice_arrow.name=Ice arrow
 
 ## SPELL TALISMAN NAMES
@@ -327,7 +326,6 @@ item.divinefavor:spell_talisman_summon_stray.name=Summon stray talisman
 item.divinefavor:spell_talisman_summon_zombie.name=Summon zombie talisman
 item.divinefavor:spell_talisman_surface_blink.name=Surface blink talisman
 item.divinefavor:spell_talisman_surface_shift.name=Surface shift talisman
-item.divinefavor:spell_talisman_target.name=Target talisman
 item.divinefavor:spell_talisman_target.name=Target talisman
 item.divinefavor:spell_talisman_toadic_jump.name=Toadic jump talisman
 item.divinefavor:spell_talisman_vitalize.name=Vitalize talisman
@@ -525,7 +523,7 @@ tile.divinefavor:red_pulse.description=Ghostly block that emits redstone signal 
 tile.divinefavor:red_signal.description=Ghostly block that emits strong redstone signal and disappears shortly
 
 #ITEM DESCRIPTIONS FOR JEI AND PATCHOULI
-item.divinefavor:item_memory_drop.description=This tiny crystal stores memory of a place so it could be recreated later. Right click to memorize structure. Sneak right click to see the memory inside.
+item.divinefavor:memory_drop.description=This tiny crystal stores memory of a place so it could be recreated later. Right click to memorize structure. Sneak right click to see the memory inside.
 
 ## GEMS
 item.divinefavor:invite_gem.description=Instantly teleports you to creator of the gem. Works across dimensions. Can be created with appropriate talisman.
@@ -644,7 +642,6 @@ item.divinefavor:rope_teleporting.description=Unusual trapping device. It will t
 
 
 ## NEW ITEM DESCRIPTIONS
-item.divinefavor:item_memory_drop.description=Memory drop
 item.divinefavor:ice_arrow.description=Delicate arrows made of ice. They are frail and because of this they deal less damage then regular arrows and break easily, but in a pinch they can be very useful. This type of arrow also cannot be tipped in potion, but on the other hand it deals extra damage to hellish mobs.
 
 ## SPELL TALISMAN DESCRIPTIONS
