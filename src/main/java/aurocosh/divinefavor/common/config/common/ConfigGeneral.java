@@ -26,6 +26,8 @@ public class ConfigGeneral {
     public static int temporaryTemplateLimit = 5000;
     @Config.Name("Persistent template limit")
     public static int persistentTemplateLimit = 50000;
+    @Config.Name("Redo actions count")
+    public static int redoActionsCount = 30;
     @Config.Name("Undo actions count")
     public static int undoActionsCount = 30;
 

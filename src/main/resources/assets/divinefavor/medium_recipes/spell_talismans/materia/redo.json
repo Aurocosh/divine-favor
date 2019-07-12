@@ -1,0 +1,26 @@
+{
+  "result": {
+    "item": "divinefavor:spell_talisman_redo"
+  },
+  "stones": [
+    "divinefavor:calling_stone_materia"
+  ],
+  "ingredients": [
+    {
+      "type": "ore",
+      "ore": "paper"
+    },
+    {
+      "type": "ore",
+      "ore": "dyeGreen"
+    },
+    {
+      "type": "stack",
+      "item": "minecraft:sapling"
+    },
+    {
+      "type": "stack",
+      "item": "minecraft:deadbush"
+    }
+  ]
+}

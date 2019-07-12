@@ -150,6 +150,7 @@ object ModSpellTalismans {
     lateinit var wooden_punch: ItemSpellTalisman
 
     // New fields
+    lateinit var redo: ItemSpellTalisman
     lateinit var build_cylinder: ItemSpellTalisman
     lateinit var undo: ItemSpellTalisman
     lateinit var deserialize_memory: ItemSpellTalisman
@@ -317,6 +318,7 @@ object ModSpellTalismans {
         starvation = SpellTalismanModPotion("starvation", ModSpirits.timber, ConfigSpell.starvation.favorCost, ModPotions.starvation, ConfigSpell.starvation.duration)
 
         // New instances
+        redo = SpellTalismanRedo("redo", ModSpirits.materia, ConfigSpell.redo.favorCost, SpellOptions.ALL_CAST)
         build_cylinder = SpellTalismanBuildCylinder("build_cylinder", ModSpirits.materia)
         undo = SpellTalismanUndo("undo", ModSpirits.materia, ConfigSpell.undo.favorCost, SpellOptions.ALL_CAST)
 

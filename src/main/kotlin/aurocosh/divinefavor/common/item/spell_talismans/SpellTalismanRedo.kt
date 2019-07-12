@@ -12,15 +12,15 @@ import net.minecraft.item.ItemStack
 import net.minecraftforge.event.world.BlockEvent
 import java.util.*
 
-class SpellTalismanUndo(name: String, spirit: ModSpirit, favorCost: Int, options: EnumSet<SpellOptions>) : ItemSpellTalisman(name, spirit, favorCost, options) {
+class SpellTalismanRedo(name: String, spirit: ModSpirit, favorCost: Int, options: EnumSet<SpellOptions>) : ItemSpellTalisman(name, spirit, favorCost, options) {
     override fun validate(context: TalismanContext): Boolean {
-        return context.player.divinePlayerData.blockOperationsData.hasUndoActions()
+        return context.player.divinePlayerData.blockOperationsData.hasRedoActions()
     }
 
     override fun performActionServer(context: TalismanContext) {
         val (player, world) = context.get(playerField, worldField)
-        val undoOperation = player.divinePlayerData.blockOperationsData.getUndoAction()
-        undoOperation.perform(player, world)
+        val buildOperation = player.divinePlayerData.blockOperationsData.getRedoAction()
+        buildOperation.perform(player, world)
     }
 
     override fun catchDrops(stack: ItemStack, toolStack: ItemStack, event: BlockEvent.HarvestDropsEvent) {

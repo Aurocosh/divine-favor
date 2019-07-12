@@ -1,7 +1,7 @@
 package aurocosh.divinefavor.common.item.spell_talismans.template
 
 import aurocosh.divinefavor.client.block_ovelay.BlockTemplateRendering
-import aurocosh.divinefavor.common.block_templates.MetaItem
+import aurocosh.divinefavor.common.block_operations.`do`.TemplateBuildOperation
 import aurocosh.divinefavor.common.block_templates.TemplateFinalBlockState
 import aurocosh.divinefavor.common.config.common.ConfigGeneral
 import aurocosh.divinefavor.common.custom_data.global.TemplateData
@@ -19,16 +19,11 @@ import aurocosh.divinefavor.common.lib.extensions.divinePlayerData
 import aurocosh.divinefavor.common.lib.extensions.get
 import aurocosh.divinefavor.common.lib.math.CuboidBoundingBox
 import aurocosh.divinefavor.common.spirit.base.ModSpirit
-import aurocosh.divinefavor.common.undo.UndoBuild
 import aurocosh.divinefavor.common.util.UtilBlock
-import aurocosh.divinefavor.common.util.UtilPlayer
-import net.minecraft.block.state.IBlockState
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.item.ItemStack
 import net.minecraft.util.EnumFacing
-import net.minecraft.util.NonNullList
 import net.minecraft.util.math.BlockPos
-import net.minecraft.world.World
 import net.minecraftforge.client.event.RenderWorldLastEvent
 import net.minecraftforge.fml.relauncher.Side
 import net.minecraftforge.fml.relauncher.SideOnly
@@ -102,12 +97,9 @@ class SpellTalismanBuildTemplate(name: String, spirit: ModSpirit, options: EnumS
     override fun performActionServer(context: TalismanContext) {
         val (player, world) = context.get(playerField, worldField)
         val template = context.get(finalTemplate)
-        for (blockState in template)
-            buildBlock(player, world, blockState.pos, blockState.state, blockState.metaItem)
-
-        val coordinates = template.map(TemplateFinalBlockState::pos)
-        val undoBuild = UndoBuild(coordinates)
-        player.divinePlayerData.undoData.addAction(undoBuild)
+        val buildOperation = TemplateBuildOperation(template)
+        buildOperation.perform(player, world)
+        player.divinePlayerData.blockOperationsData.clearRedoActions()
     }
 
     override fun performActionClient(context: TalismanContext) {
@@ -133,17 +125,5 @@ class SpellTalismanBuildTemplate(name: String, spirit: ModSpirit, options: EnumS
             TemplateAnchor.SouthEast -> pos.add(-cuboidBoundingBox.sizeX, 0, -cuboidBoundingBox.sizeZ)
             TemplateAnchor.Center -> pos.add(-cuboidBoundingBox.sizeX / 2, 0, -cuboidBoundingBox.sizeZ / 2)
         }
-    }
-
-    private fun buildBlock(player: EntityPlayer, world: World, pos: BlockPos, state: IBlockState, metaItem: MetaItem) {
-        val drops = NonNullList.create<ItemStack>()
-        state.block.getDrops(drops, world, pos, state, 0)
-
-        val stack = metaItem.toStack()
-        val dropCount = drops.filter { it.item == stack.item }.count()
-        val itemsToConsume = if (dropCount > 0) dropCount else 1
-
-        if (UtilPlayer.consumeItems(stack, player, itemsToConsume))
-            UtilBlock.replaceBlock(player, world, pos, state)
     }
 }

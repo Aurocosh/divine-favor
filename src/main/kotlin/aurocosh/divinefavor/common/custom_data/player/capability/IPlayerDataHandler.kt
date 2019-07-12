@@ -32,7 +32,7 @@ import aurocosh.divinefavor.common.custom_data.player.data.spell.molten_skin.Mol
 import aurocosh.divinefavor.common.custom_data.player.data.spell.pearl_crumbs.PearlCrumbsData
 import aurocosh.divinefavor.common.custom_data.player.data.spell.vengeful_blade.VengefulBladeData
 import aurocosh.divinefavor.common.custom_data.player.data.templates.TemplateData
-import aurocosh.divinefavor.common.custom_data.player.data.undo_data.UndoData
+import aurocosh.divinefavor.common.custom_data.player.data.undo_data.BlockOperationsData
 
 interface IPlayerDataHandler {
     val spiritData: SpiritData
@@ -50,7 +50,7 @@ interface IPlayerDataHandler {
     val moltenSkinData: MoltenSkinData
     val pearlCrumbsData: PearlCrumbsData
     val templateData: TemplateData
-    val undoData: UndoData
+    val blockOperationsData: BlockOperationsData
     val vengefulBladeData: VengefulBladeData
 
     val arborealAuraData: ArborealAuraData

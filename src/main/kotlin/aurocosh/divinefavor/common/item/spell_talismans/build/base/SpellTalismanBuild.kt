@@ -1,24 +1,19 @@
 package aurocosh.divinefavor.common.item.spell_talismans.build.base
 
 import aurocosh.divinefavor.client.block_ovelay.BlockConstructionRendering
+import aurocosh.divinefavor.common.block_operations.`do`.SimpleBuildOperation
 import aurocosh.divinefavor.common.config.common.ConfigGeneral
 import aurocosh.divinefavor.common.item.spell_talismans.base.CastType
 import aurocosh.divinefavor.common.item.spell_talismans.base.ItemSpellTalisman
 import aurocosh.divinefavor.common.item.spell_talismans.base.SpellOptions
 import aurocosh.divinefavor.common.item.spell_talismans.common_build_properties.BlockSelectPropertyWrapper
 import aurocosh.divinefavor.common.item.spell_talismans.common_build_properties.PositionPropertyWrapper
-import aurocosh.divinefavor.common.item.spell_talismans.context.ContextProperty
-import aurocosh.divinefavor.common.item.spell_talismans.context.TalismanContext
-import aurocosh.divinefavor.common.item.spell_talismans.context.playerField
-import aurocosh.divinefavor.common.item.spell_talismans.context.stackField
+import aurocosh.divinefavor.common.item.spell_talismans.context.*
 import aurocosh.divinefavor.common.lib.extensions.divinePlayerData
 import aurocosh.divinefavor.common.lib.extensions.get
 import aurocosh.divinefavor.common.lib.extensions.isAirOrReplacable
 import aurocosh.divinefavor.common.spirit.base.ModSpirit
-import aurocosh.divinefavor.common.tasks.BlockPlacingTask
-import aurocosh.divinefavor.common.undo.UndoBuild
 import aurocosh.divinefavor.common.util.UtilBlock
-import aurocosh.divinefavor.common.util.UtilTick
 import net.minecraft.item.ItemStack
 import net.minecraft.util.math.BlockPos
 import net.minecraftforge.client.event.RenderWorldLastEvent
@@ -56,17 +51,12 @@ abstract class SpellTalismanBuild(name: String, spirit: ModSpirit, favorCost: In
     protected open fun getFinalCoordinates(context: TalismanContext) = getCoordinates(context).filter { context.world.isAirOrReplacable(it) }.shuffled()
 
     override fun performActionServer(context: TalismanContext) {
-        val (stack, player) = context.get(stackField, playerField)
+        val (stack, player, world) = context.get(stackField, playerField, worldField)
         val coordinates = context.get(finalCoordinates)
         val state = stack.get(selectPropertyWrapper.selectedBlock)
-        val buildTime = UtilTick.secondsToTicks(2f)
-        val blocksPerTick = if(buildTime > coordinates.size) 1 else coordinates.size / buildTime
-        val blockPlacingTask = BlockPlacingTask(coordinates, state, player, blocksPerTick)
-        blockPlacingTask.addFinishAction {
-            val undoBuild = UndoBuild(coordinates)
-            player.divinePlayerData.undoData.addAction(undoBuild)
-        }
-        blockPlacingTask.start()
+        val buildOperation = SimpleBuildOperation(coordinates, state)
+        buildOperation.perform(player, world)
+        player.divinePlayerData.blockOperationsData.clearRedoActions()
     }
 
     override fun performActionClient(context: TalismanContext) {

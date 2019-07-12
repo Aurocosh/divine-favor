@@ -23,7 +23,7 @@ class BlockBreakingTask(blocksToRemove: List<BlockPos>, private val player: Enti
 
         var breakCount = Math.min(blocksPerTick, blocksToRemove.size)
         while (breakCount-- > 0)
-            UtilBlock.removeBlock(player, world, tool, blocksToRemove.remove(), true, false, false)
+            UtilBlock.removeBlock(player, world, tool, blocksToRemove.remove(), dropItem = true, isToolRequired = false, particles = false)
         if (blocksToRemove.isEmpty())
             finish()
     }

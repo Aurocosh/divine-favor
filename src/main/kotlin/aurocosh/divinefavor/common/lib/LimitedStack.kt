@@ -6,6 +6,7 @@ class LimitedStack<T>(private val limit: Int) {
     private val values = LinkedList<T>()
 
     fun size() = values.size
+    fun clear() = values.clear()
     fun isEmpty() = values.isEmpty()
     fun isNotEmpty() = values.isNotEmpty()
 
