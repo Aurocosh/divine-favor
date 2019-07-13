@@ -12,7 +12,7 @@ class TemplateBuildOperation(private val template: List<TemplateFinalBlockState>
     override fun getBuildingTask(player: EntityPlayer, world: World): Pair<BaseTask, UndoOperation> {
         val coordinates = template.map(TemplateFinalBlockState::pos)
         val undoBuild = UndoBuild(coordinates, this, Int.MAX_VALUE)
-        val placingTask = TemplatePlacingTask(template, player, Int.MAX_VALUE)
+        val placingTask = TemplatePlacingTask(template.shuffled(), player, Int.MAX_VALUE)
         return Pair(placingTask, undoBuild)
     }
 }

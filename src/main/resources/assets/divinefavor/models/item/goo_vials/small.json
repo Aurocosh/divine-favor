@@ -1,0 +1,32 @@
+{
+  "parent": "item/handheld",
+  "textures": {
+    "layer0": "divinefavor:items/goo_vial/small/vial"
+  },
+  "overrides": [
+    {
+	  "predicate": {
+	    "fullness": 1
+	  },
+	  "model": "divinefavor:item/goo_vials/small/quarter"
+	},
+    {
+	  "predicate": {
+	    "fullness": 2
+	  },
+	  "model": "divinefavor:item/goo_vials/small/half"
+	},
+    {
+	  "predicate": {
+	    "fullness": 3
+	  },
+	  "model": "divinefavor:item/goo_vials/small/3quarter"
+	},
+    {
+	  "predicate": {
+	    "fullness": 4
+	  },
+	  "model": "divinefavor:item/goo_vials/small/full"
+	}
+  ]
+}

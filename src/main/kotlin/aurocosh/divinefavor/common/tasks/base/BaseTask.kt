@@ -17,11 +17,14 @@ open class BaseTask(protected val world: World) {
     open fun start() {
         isRunning = true
         MinecraftForge.EVENT_BUS.register(this)
-        finishActions.forEach { it.invoke(world) }
     }
 
     fun finish() {
         isRunning = false
         MinecraftForge.EVENT_BUS.unregister(this)
+        finishActions.forEach { it.invoke(world) }
+        onFinish()
     }
+
+    open fun onFinish() {}
 }

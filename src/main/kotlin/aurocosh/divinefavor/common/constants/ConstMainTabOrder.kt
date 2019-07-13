@@ -8,6 +8,7 @@ object ConstMainTabOrder {
     val SWORDS = orderIndex++
     val PICKS = orderIndex++
     val TOOLS = orderIndex++
+    val VIALS = orderIndex++
     val CONTAINERS = orderIndex++
     val CONTRACTS = orderIndex++
     val ROPES = orderIndex++

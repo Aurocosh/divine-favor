@@ -22,19 +22,18 @@ abstract class SpellTalismanReplace(name: String, spirit: ModSpirit) : SpellTali
     protected val isFuzzy: StackPropertyBool = propertyHandler.registerBoolProperty("fuzzy", false)
     override val positionPropertyWrapper: PositionPropertyWrapper = PositionPropertyWrapper(propertyHandler)
 
-    override fun getRenderCoordinates(context: TalismanContext) = getCoordinates(context).filterNot { context.world.isAirBlock(it) }
-    override fun getFinalCoordinates(context: TalismanContext) = getCoordinates(context).filterNot { context.world.isAirBlock(it) }.shuffled()
+    override fun getCommonCoordinates(context: TalismanContext) = getCoordinates(context).filterNot { context.world.isAirBlock(it) }
 
     override fun performActionServer(context: TalismanContext) {
         val (player, stack) = context.getCommon()
         val state = stack.get(selectPropertyWrapper.selectedBlock)
-        val coordinates = getFinalCoordinates(context)
+        val coordinates = getCommonCoordinates(context)
         BlockReplacingTask(coordinates, state, player, 1).start()
     }
 
     @SideOnly(Side.CLIENT)
     override fun handleRendering(context: TalismanContext, lastEvent: RenderWorldLastEvent) {
-        val coordinates = getRenderCoordinates(context)
+        val coordinates = getCommonCoordinates(context)
         val state = context.stack.get(selectPropertyWrapper.selectedBlock)
         BlockExchangeRendering.render(lastEvent, context.player, state, coordinates)
     }

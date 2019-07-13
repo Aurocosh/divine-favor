@@ -1,16 +1,17 @@
 package aurocosh.divinefavor.common.util
 
+import aurocosh.divinefavor.common.block.common.ModBlocks
+import aurocosh.divinefavor.common.item.ItemGooVial
 import aurocosh.divinefavor.common.lib.SlotData
 import aurocosh.divinefavor.common.lib.enums.InventoryIndexes
-import aurocosh.divinefavor.common.lib.extensions.asSequence
-import aurocosh.divinefavor.common.lib.extensions.asSlotSequence
-import aurocosh.divinefavor.common.lib.extensions.getAllInventoryCapabilities
+import aurocosh.divinefavor.common.lib.extensions.*
 import aurocosh.divinefavor.common.network.message.client.syncing.MessageSyncFlyingCapability
 import net.minecraft.block.state.IBlockState
 import net.minecraft.entity.item.EntityItem
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.init.SoundEvents
 import net.minecraft.item.Item
+import net.minecraft.item.ItemBlock
 import net.minecraft.item.ItemStack
 import net.minecraft.util.EnumFacing
 import net.minecraft.util.EnumHand
@@ -18,6 +19,7 @@ import net.minecraft.util.SoundCategory
 import net.minecraft.util.math.BlockPos
 import net.minecraft.world.World
 import net.minecraftforge.items.IItemHandler
+import kotlin.math.min
 
 data class HeldStack(val hand: EnumHand, val slot: Int, val stack: ItemStack)
 
@@ -131,15 +133,110 @@ object UtilPlayer {
 
         return player.getAllInventoryCapabilities()
                 .flatMap(IItemHandler::asSequence)
+                .filter(ItemStack::isNotEmpty)
                 .filter { it.item === itemStack.item && it.metadata == itemStack.metadata }
                 .sumBy { it.count }
     }
 
-    fun consumeItems(itemStack: ItemStack, player: EntityPlayer, count: Int, makeSureThereIsEnough: Boolean = true): Boolean {
+    fun countRequiredItems(itemStack: ItemStack, player: EntityPlayer, required: Int): Int {
+        if (required == 0)
+            return 0
         if (player.capabilities.isCreativeMode)
-            return true
+            return required
+
+        val sequence = player.getAllInventoryCapabilities()
+                .flatMap(IItemHandler::asSequence)
+                .filter(ItemStack::isNotEmpty)
+                .filter { it.item === itemStack.item && it.metadata == itemStack.metadata }
+                .map { it.count }
+        var left = required
+        for (itemCount in sequence) {
+            if (left == 0)
+                break
+            left -= min(left, itemCount)
+        }
+        return required - left
+    }
+
+    fun countGoo(player: EntityPlayer): Int {
+        if (player.capabilities.isCreativeMode)
+            return Integer.MAX_VALUE
+        return player.getAllInventoryCapabilities()
+                .flatMap(IItemHandler::asSequence)
+                .filter(ItemStack::isNotEmpty)
+                .map(this::getGooCountFromStack)
+                .sum()
+    }
+
+    fun countRequiredGoo(player: EntityPlayer, required: Int): Int {
+        if (required == 0)
+            return 0
+        if (player.capabilities.isCreativeMode)
+            return required
+        val vialSequence = player.getAllInventoryCapabilities()
+                .flatMap(IItemHandler::asSequence)
+                .filter(ItemStack::isNotEmpty)
+                .map(this::getGooCountFromStack)
+                .filter { it > 0 }
+        var left = required
+        for (count in vialSequence) {
+            if (left == 0)
+                return required
+            left -= min(left, count)
+        }
+        return required - left
+    }
+
+    private fun getGooCountFromStack(stack: ItemStack): Int {
+        val item = stack.item
+        return when {
+            item is ItemBlock && item.block === ModBlocks.ethereal_goo -> stack.count
+            item is ItemGooVial -> stack.get(ItemGooVial.gooCount)
+            else -> 0
+        }
+    }
+
+    fun addGooToContainers(player: EntityPlayer, stack: ItemStack) {
+        val item = stack.item
+        if (item is ItemBlock && item.block === ModBlocks.ethereal_goo) {
+            val added = addGooToContainers(player, stack.count)
+            stack.shrink(added)
+        }
+    }
+
+    fun addGooToContainers(player: EntityPlayer, count: Int): Int {
+        if (count == 0)
+            return 0
+        val sequence = player.getAllInventoryCapabilities()
+                .flatMap(IItemHandler::asSequence)
+                .filter(ItemStack::isNotEmpty)
+                .filter { it.item is ItemGooVial }
+
+        var left = count
+        for (stack in sequence) {
+            if (left <= 0)
+                return count
+            val itemGooVial = stack.item as ItemGooVial
+            val capacity = itemGooVial.capacity
+            val gooCount = stack.get(ItemGooVial.gooCount)
+            val canAdd = capacity - gooCount
+            if (canAdd > 0) {
+                val added = min(canAdd, left)
+                val newCount = gooCount + added
+                stack.set(ItemGooVial.gooCount, newCount)
+                left -= added
+            }
+        }
+        return count - left
+    }
+
+    fun consumeItems(itemStack: ItemStack, player: EntityPlayer, count: Int, makeSureThereIsEnough: Boolean = true): Int {
+        if (count == 0)
+            return 0
+        if (player.capabilities.isCreativeMode)
+            return count
         if (makeSureThereIsEnough && countItems(itemStack, player) < count)
-            return false
+            return 0
 
         val sequence = player.getAllInventoryCapabilities()
                 .flatMap(IItemHandler::asSlotSequence)
@@ -147,11 +244,50 @@ object UtilPlayer {
         var toRemove = count
 
         for ((handler, index, stack) in sequence) {
-            val removed = Math.min(toRemove, stack.count)
+            if (toRemove == 0)
+                break
+            val removed = min(toRemove, stack.count)
             toRemove -= removed
             handler.extractItem(index, removed, false)
         }
-        return toRemove == 0
+        return count - toRemove
+    }
+
+    fun consumeGoo(player: EntityPlayer, count: Int, makeSureThereIsEnough: Boolean = true): Int {
+        if (count == 0)
+            return 0
+        if (player.capabilities.isCreativeMode)
+            return count
+        if (makeSureThereIsEnough && countGoo(player) < count)
+            return 0
+
+        val vialsSequence = player.getAllInventoryCapabilities()
+                .flatMap(IItemHandler::asSlotSequence)
+                .filter { it.stack.item is ItemGooVial }
+        var toRemove = count
+
+        for ((_, _, stack) in vialsSequence) {
+            if (toRemove == 0)
+                break
+            var stored = stack.get(ItemGooVial.gooCount)
+            val removed = min(toRemove, stored)
+            toRemove -= removed
+            stored -= removed
+            stack.set(ItemGooVial.gooCount, stored)
+        }
+
+        val gooSequence = player.getAllInventoryCapabilities()
+                .flatMap(IItemHandler::asSlotSequence)
+                .filter({ it.stack.item }) { it is ItemBlock && it.block === ModBlocks.ethereal_goo }
+
+        for ((handler, index, stack) in gooSequence) {
+            if (toRemove == 0)
+                break
+            val removed = min(toRemove, stack.count)
+            toRemove -= removed
+            handler.extractItem(index, removed, false)
+        }
+        return count - toRemove
     }
 
     fun getShift(player: EntityPlayer, forwardShift: Int, upShift: Int, rightShift: Int): BlockPos {
@@ -164,12 +300,12 @@ object UtilPlayer {
     fun countBlocks(player: EntityPlayer, world: World, state: IBlockState, required: Int = Int.MAX_VALUE): Int {
         val itemStack = UtilBlock.getSilkDropIfPresent(world, state, player)
         val itemCount = countItems(itemStack, player)
-        return Math.min(itemCount, required)
+        return min(itemCount, required)
     }
 
-    fun consumeBlocks(player: EntityPlayer, world: World, state: IBlockState, count: Int): Boolean {
+    fun consumeBlocks(player: EntityPlayer, world: World, state: IBlockState, count: Int, makeSureThereIsEnough: Boolean = true): Int {
         val itemStack = UtilBlock.getSilkDropIfPresent(world, state, player)
-        return consumeItems(itemStack, player, count)
+        return consumeItems(itemStack, player, count, makeSureThereIsEnough)
     }
 
     data class RelativeDirections(val forward: EnumFacing, val back: EnumFacing, val up: EnumFacing, val down: EnumFacing, val right: EnumFacing, val left: EnumFacing)

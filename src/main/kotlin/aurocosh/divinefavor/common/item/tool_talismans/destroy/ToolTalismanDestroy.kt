@@ -14,7 +14,6 @@ import aurocosh.divinefavor.common.lib.extensions.get
 import aurocosh.divinefavor.common.lib.extensions.isAirOrReplacable
 import aurocosh.divinefavor.common.spirit.base.ModSpirit
 import aurocosh.divinefavor.common.stack_properties.properties.StackPropertyBool
-import aurocosh.divinefavor.common.util.UtilBlock
 import net.minecraft.item.ItemStack
 import net.minecraft.util.math.BlockPos
 import net.minecraftforge.client.event.RenderWorldLastEvent
@@ -41,8 +40,6 @@ abstract class ToolTalismanDestroy(name: String, spirit: ModSpirit) : ItemToolTa
         return pos != playerPos && pos.distanceSq(playerPos) < hudDistanceSq
     }
 
-    protected open fun getRenderCoordinates(context: TalismanContext) = getCommonCoordinates(context)
-    protected open fun getFinalCoordinates(context: TalismanContext) = getCommonCoordinates(context).shuffled()
     protected open fun getCommonCoordinates(context: TalismanContext) = getCoordinates(context).filterNot { context.world.isAirOrReplacable(it) }
 
     override fun performActionServer(context: TalismanContext) {
@@ -54,7 +51,7 @@ abstract class ToolTalismanDestroy(name: String, spirit: ModSpirit) : ItemToolTa
 
     @SideOnly(Side.CLIENT)
     override fun handleRendering(context: TalismanContext, lastEvent: RenderWorldLastEvent) {
-        val coordinates = getRenderCoordinates(context)
+        val coordinates = getCommonCoordinates(context)
         BlockHighlightRendering.render(lastEvent, context.player, coordinates)
     }
 
@@ -66,12 +63,8 @@ abstract class ToolTalismanDestroy(name: String, spirit: ModSpirit) : ItemToolTa
         if (!selectPropertyWrapper.preprocess(context))
             return false
 
-        val (player, stack, world) = context.getCommon()
-        val state = stack.get(selectPropertyWrapper.selectedBlock)
-
-        val coordinates = getFinalCoordinates(context)
-        val validCoordinates = UtilBlock.getBlocksForPlacement(player, world, state, coordinates)
-        context.set(finalCoordinates, validCoordinates)
+        val coordinates = getCommonCoordinates(context)
+        context.set(finalCoordinates, coordinates)
         return coordinates.isNotEmpty()
     }
 

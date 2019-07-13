@@ -1,0 +1,7 @@
+{
+  "parent": "item/generated",
+  "textures": {
+	"layer1": "divinefavor:items/goo_vial/small/3quarter",
+	"layer0": "divinefavor:items/goo_vial/small/vial"
+  }
+}

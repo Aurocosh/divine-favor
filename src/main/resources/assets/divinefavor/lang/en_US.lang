@@ -45,6 +45,9 @@ message.divinefavor:marked_glass.spirit_is_active=Spirit is active right now! Sp
 message.divinefavor:marked_glass.spirit_is_inactive=Spirit is inactive. Spirit will become active after %1$d hours and %2$d minutes
 message.divinefavor:copy_area_is_too_big=Copy area is too big. Any side of copied area cannot be bigger then %1$d!
 
+message.divinefavor.collecting_goo=Vial is now collecting goo
+message.divinefavor.placing_goo=Vial is now placing goo
+
 message.divinefavor.copied=Area Copied
 message.divinefavor.copysuccess=Copy to Clipboard successful
 message.divinefavor.pastefailed=Paste Failed, Invalid JSON
@@ -63,6 +66,10 @@ tooltip.divinefavor:wishingStone.favor_count=Restores %1$d favor of %2$s
 tooltip.divinefavor:marked_glass.spirit_is_active=Spirit is active
 tooltip.divinefavor:marked_glass.spirit_is_inactive=Spirit is inactive
 tooltip.divinefavor:property_list=Talisman properties:
+tooltip.divinefavor:goo_vial.count=Goo in vial: %1$d
+tooltip.divinefavor:goo_vial.capacity=Vial capacity: %1$d
+tooltip.divinefavor:goo_vial.collecting=Collectiong goo
+tooltip.divinefavor:goo_vial.placing=Placing goo
 
 # WORDS
 word.divinefavor:on=On
@@ -81,6 +88,7 @@ divinefavor:spirit.squarefury.name=Squarefury
 divinefavor:spirit.timber.name=Timber
 
 # ITEM NAMES
+item.divinefavor:item_goo_vial.name=Goo vial
 item.divinefavor:memory_drop.name=Memory drop
 
 ## GEMS
@@ -200,6 +208,7 @@ item.divinefavor:rope_luminous.name=Luminous rope
 item.divinefavor:rope_teleporting.name=Warping rope
 
 ## NEW ITEM NAMES
+item.divinefavor:item_goo_vial.name=Goo vial
 item.divinefavor:ice_arrow.name=Ice arrow
 
 ## SPELL TALISMAN NAMES
@@ -523,6 +532,7 @@ tile.divinefavor:red_pulse.description=Ghostly block that emits redstone signal 
 tile.divinefavor:red_signal.description=Ghostly block that emits strong redstone signal and disappears shortly
 
 #ITEM DESCRIPTIONS FOR JEI AND PATCHOULI
+item.divinefavor:item_goo_vial.description=TODO
 item.divinefavor:memory_drop.description=This tiny crystal stores memory of a place so it could be recreated later. Right click to memorize structure. Sneak right click to see the memory inside.
 
 ## GEMS
@@ -642,6 +652,7 @@ item.divinefavor:rope_teleporting.description=Unusual trapping device. It will t
 
 
 ## NEW ITEM DESCRIPTIONS
+item.divinefavor:item_goo_vial.description=TODO
 item.divinefavor:ice_arrow.description=Delicate arrows made of ice. They are frail and because of this they deal less damage then regular arrows and break easily, but in a pinch they can be very useful. This type of arrow also cannot be tipped in potion, but on the other hand it deals extra damage to hellish mobs.
 
 ## SPELL TALISMAN DESCRIPTIONS

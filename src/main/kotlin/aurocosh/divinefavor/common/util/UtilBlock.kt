@@ -1,5 +1,7 @@
 package aurocosh.divinefavor.common.util
 
+import aurocosh.divinefavor.common.block.common.ModBlocks
+import aurocosh.divinefavor.common.block.doppel.TileEtherealGoo
 import net.minecraft.block.Block
 import net.minecraft.block.BlockLiquid
 import net.minecraft.block.material.EnumPushReaction
@@ -27,9 +29,9 @@ import net.minecraftforge.fluids.IFluidBlock
 
 object UtilBlock {
     fun canReplaceBlock(player: EntityPlayer, world: World, pos: BlockPos): Boolean {
-        if(pos.y < 0)
+        if (pos.y < 0)
             return false
-        if(!player.isAllowEdit)
+        if (!player.isAllowEdit)
             return false
         if (world.isRemote)
             return false
@@ -163,6 +165,22 @@ object UtilBlock {
         return true
     }
 
+    fun replaceBlockWithGoo(player: EntityPlayer, world: World, pos: BlockPos, newState: IBlockState): Boolean {
+        if (!canReplaceBlock(player, world, pos))
+            return false
+        val blockSnapshot = BlockSnapshot.getBlockSnapshot(world, pos)
+        if (ForgeEventFactory.onPlayerBlockPlace(player, blockSnapshot, EnumFacing.UP, EnumHand.MAIN_HAND).isCanceled)
+            return false
+
+        val gooState = ModBlocks.ethereal_goo.defaultState
+        world.setBlockState(pos, gooState)
+
+        val tileEntity = world.getTileEntity(pos) as? TileEtherealGoo ?: return false
+        tileEntity.blockState = newState
+        tileEntity.actualBlockState = newState
+        return true
+    }
+
     fun replaceBlock(player: EntityPlayer, world: World, pos: BlockPos, stack: ItemStack, hand: EnumHand): Boolean {
         val item = stack.item as? ItemBlock ?: return false
         if (!canReplaceBlock(player, world, pos))
@@ -231,9 +249,4 @@ object UtilBlock {
         return ItemStack(item, 1, meta)
     }
 
-    fun getBlocksForPlacement(player: EntityPlayer, world: World, state: IBlockState, coordinates: List<BlockPos>): List<BlockPos> {
-        val blocksToPlace = UtilPlayer.countBlocks(player, world, state, coordinates.count())
-        UtilPlayer.consumeBlocks(player, world, state, blocksToPlace)
-        return coordinates.take(blocksToPlace).toList()
-    }
 }

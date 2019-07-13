@@ -32,12 +32,11 @@ open class SpellTalismanPullSide(name: String, spirit: ModSpirit, favorCost: Int
     override fun getFinalFavorCost(context: TalismanContext) = favorCost * context.get(finalCoordinates).size
 
     protected fun getBlockCount(stack: ItemStack): Int = blockCount.getValue(stack)
-    private fun getRenderCoordinates(context: TalismanContext) = getCoordinates(context).filterNot { context.world.isAirBlock(it) }
-    protected fun getFinalCoordinates(context: TalismanContext) = getCoordinates(context).filterNot { context.world.isAirBlock(it) }.shuffled()
+    protected fun getCommonCoordinates(context: TalismanContext) = getCoordinates(context).filterNot { context.world.isAirBlock(it) }
 
     override fun performActionServer(context: TalismanContext) {
         val (player, world, facing) = context.get(playerField, worldField, facingField)
-        val coordinates = getFinalCoordinates(context)
+        val coordinates = getCommonCoordinates(context)
         coordinates.forEach { UtilBlock.moveBlock(player, world, it, facing) }
     }
 
@@ -46,7 +45,7 @@ open class SpellTalismanPullSide(name: String, spirit: ModSpirit, favorCost: Int
 
     @SideOnly(Side.CLIENT)
     override fun handleRendering(context: TalismanContext, lastEvent: RenderWorldLastEvent) {
-        val coordinates = getRenderCoordinates(context)
+        val coordinates = getCommonCoordinates(context)
         BlockHighlightRendering.render(lastEvent, context.player, coordinates, color)
     }
 
@@ -67,12 +66,8 @@ open class SpellTalismanPullSide(name: String, spirit: ModSpirit, favorCost: Int
         if (!selectPropertyWrapper.preprocess(context))
             return false
 
-        val (player, stack, world) = context.getCommon()
-        val state = stack.get(selectPropertyWrapper.selectedBlock)
-
-        val coordinates = getFinalCoordinates(context)
-        val validCoordinates = UtilBlock.getBlocksForPlacement(player, world, state, coordinates)
-        context.set(finalCoordinates, validCoordinates)
+        val coordinates = getCommonCoordinates(context)
+        context.set(finalCoordinates, coordinates)
         return coordinates.isNotEmpty()
     }
 

@@ -13,7 +13,7 @@ import java.util.*
 class SpellTalismanPushSide(name: String, spirit: ModSpirit, favorCost: Int, options: EnumSet<SpellOptions>) : SpellTalismanPullSide(name, spirit, favorCost, options) {
     override fun performActionServer(context: TalismanContext) {
         val (player, world, facing) = context.get(playerField, worldField, facingField)
-        val coordinates = getFinalCoordinates(context)
+        val coordinates = getCommonCoordinates(context)
         coordinates.forEach { UtilBlock.moveBlock(player, world, it, facing.opposite) }
     }
 }

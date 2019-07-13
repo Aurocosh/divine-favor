@@ -3,6 +3,7 @@ package aurocosh.divinefavor.common.item.common
 import aurocosh.divinefavor.common.config.common.ConfigItem
 import aurocosh.divinefavor.common.constants.ConstGemTabOrder
 import aurocosh.divinefavor.common.constants.ConstMainTabOrder
+import aurocosh.divinefavor.common.item.ItemGooVial
 import aurocosh.divinefavor.common.item.ItemIceArrow
 import aurocosh.divinefavor.common.item.ItemMilkyApple
 import aurocosh.divinefavor.common.item.ItemStoneball
@@ -58,6 +59,10 @@ object ModItems {
     lateinit var spell_pick_blue: ModItemPickaxe
     lateinit var spell_pick_orange: ModItemPickaxe
 
+    lateinit var goo_vial_small: ItemGooVial
+    lateinit var goo_vial_medium: ItemGooVial
+    lateinit var goo_vial_big: ItemGooVial
+
     val markedGlasses: MutableList<ItemMarkedGlass> = ArrayList()
 
     // New fields
@@ -89,6 +94,10 @@ object ModItems {
 
         spell_pick_blue = ItemSpellPick("spell_pick_blue", "spell_pick_blue/model", ConstMainTabOrder.PICKS, ConfigItem.spellPickBlue, Item.ToolMaterial.IRON)
         spell_pick_orange = ItemSpellPick("spell_pick_orange", "spell_pick_orange/model", ConstMainTabOrder.PICKS, ConfigItem.spellPickOrange, Item.ToolMaterial.IRON)
+
+        goo_vial_small = ItemGooVial("small", 512)
+        goo_vial_medium = ItemGooVial("medium", 2048)
+        goo_vial_big = ItemGooVial("big", 8192)
 
         for (spirit in ModMappers.spirits.values)
             markedGlasses.add(ItemMarkedGlass(spirit, ConstGemTabOrder.MARKED_GLASS))

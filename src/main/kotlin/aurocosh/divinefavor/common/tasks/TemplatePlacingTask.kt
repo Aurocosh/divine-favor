@@ -34,9 +34,19 @@ open class TemplatePlacingTask(template: List<TemplateFinalBlockState>, private 
 
         val stack = blockState.metaItem.toStack()
         val dropCount = drops.filter { it.item == stack.item }.count()
-        val itemsToConsume = if (dropCount > 0) dropCount else 1
 
-        if (UtilPlayer.consumeItems(stack, player, itemsToConsume))
+        val toConsume = if (dropCount > 0) dropCount else 1
+        val itemsPresent = UtilPlayer.countRequiredItems(stack, player, toConsume)
+        if (itemsPresent == toConsume) {
+            UtilPlayer.consumeItems(stack, player, toConsume)
             UtilBlock.replaceBlock(player, world, blockState.pos, blockState.state)
+            return
+        }
+
+        val gooPresent = UtilPlayer.countRequiredGoo(player, toConsume)
+        if (gooPresent == toConsume) {
+            UtilPlayer.consumeGoo(player, toConsume)
+            UtilBlock.replaceBlockWithGoo(player, world, blockState.pos, blockState.state)
+        }
     }
 }

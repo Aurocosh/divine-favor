@@ -53,6 +53,7 @@ object BlockExchangeRendering {
 
         // Check if we have the blocks required
         var blockCount = UtilPlayer.countItems(itemStack, player)
+        blockCount += UtilPlayer.countGoo(player)
 
         // Prepare the fake world -- using a fake world lets us render things properly, like fences connecting.
         fakeWorld.setWorldAndState(player.world, renderBlockState, coordinates.toHashSet())

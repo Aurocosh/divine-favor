@@ -13,7 +13,6 @@ import aurocosh.divinefavor.common.lib.extensions.divinePlayerData
 import aurocosh.divinefavor.common.lib.extensions.get
 import aurocosh.divinefavor.common.lib.extensions.isAirOrReplacable
 import aurocosh.divinefavor.common.spirit.base.ModSpirit
-import aurocosh.divinefavor.common.util.UtilBlock
 import net.minecraft.item.ItemStack
 import net.minecraft.util.math.BlockPos
 import net.minecraftforge.client.event.RenderWorldLastEvent
@@ -37,18 +36,12 @@ abstract class SpellTalismanBuild(name: String, spirit: ModSpirit, favorCost: In
     override fun preProcess(context: TalismanContext): Boolean {
         if (!selectPropertyWrapper.preprocess(context))
             return false
-
-        val (player, stack, world) = context.getCommon()
-        val state = stack.get(selectPropertyWrapper.selectedBlock)
-
-        val coordinates = getFinalCoordinates(context)
-        val validCoordinates = UtilBlock.getBlocksForPlacement(player, world, state, coordinates)
-        context.set(finalCoordinates, validCoordinates)
+        val coordinates = getCommonCoordinates(context)
+        context.set(finalCoordinates, coordinates)
         return coordinates.isNotEmpty()
     }
 
-    protected open fun getRenderCoordinates(context: TalismanContext) = getCoordinates(context).filter { context.world.isAirOrReplacable(it) }
-    protected open fun getFinalCoordinates(context: TalismanContext) = getCoordinates(context).filter { context.world.isAirOrReplacable(it) }.shuffled()
+    protected open fun getCommonCoordinates(context: TalismanContext) = getCoordinates(context).filter { context.world.isAirOrReplacable(it) }
 
     override fun performActionServer(context: TalismanContext) {
         val (stack, player, world) = context.get(stackField, playerField, worldField)
@@ -66,7 +59,7 @@ abstract class SpellTalismanBuild(name: String, spirit: ModSpirit, favorCost: In
     @SideOnly(Side.CLIENT)
     override fun handleRendering(context: TalismanContext, lastEvent: RenderWorldLastEvent) {
         val (player, stack) = context.getCommon()
-        val coordinates = getRenderCoordinates(context)
+        val coordinates = getCommonCoordinates(context)
         val state = stack.get(selectPropertyWrapper.selectedBlock)
         BlockConstructionRendering.render(lastEvent, player, state, coordinates)
     }

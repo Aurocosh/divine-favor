@@ -11,6 +11,8 @@ import aurocosh.divinefavor.common.item.spell_talismans.copy.SpellTalismanCopyBl
 import aurocosh.divinefavor.common.item.spell_talismans.copy.SpellTalismanCopyCuboid
 import aurocosh.divinefavor.common.item.spell_talismans.move.SpellTalismanPullSide
 import aurocosh.divinefavor.common.item.spell_talismans.move.SpellTalismanPushSide
+import aurocosh.divinefavor.common.item.spell_talismans.operations.SpellTalismanRedo
+import aurocosh.divinefavor.common.item.spell_talismans.operations.SpellTalismanUndo
 import aurocosh.divinefavor.common.item.spell_talismans.replace.SpellTalismanReplaceBlocks
 import aurocosh.divinefavor.common.item.spell_talismans.replace.SpellTalismanReplaceCuboid
 import aurocosh.divinefavor.common.item.spell_talismans.replace.SpellTalismanReplaceSide

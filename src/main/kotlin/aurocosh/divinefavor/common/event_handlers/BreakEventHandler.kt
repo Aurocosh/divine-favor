@@ -4,10 +4,10 @@ import aurocosh.divinefavor.DivineFavor
 import aurocosh.divinefavor.common.item.talisman_tools.spell_pick.ItemSpellPick
 import aurocosh.divinefavor.common.lib.interfaces.IBlockCatcher
 import aurocosh.divinefavor.common.util.UtilPlayer
+import net.minecraftforge.event.entity.player.PlayerEvent
 import net.minecraftforge.event.world.BlockEvent
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent
-import net.minecraftforge.event.entity.player.PlayerEvent
 
 @EventBusSubscriber(modid = DivineFavor.MOD_ID)
 object BreakEventHandler {

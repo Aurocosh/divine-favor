@@ -1,4 +1,4 @@
-package aurocosh.divinefavor.common.item.spell_talismans
+package aurocosh.divinefavor.common.item.spell_talismans.operations
 
 import aurocosh.divinefavor.common.item.spell_talismans.base.ItemSpellTalisman
 import aurocosh.divinefavor.common.item.spell_talismans.base.SpellOptions
@@ -8,6 +8,7 @@ import aurocosh.divinefavor.common.item.spell_talismans.context.worldField
 import aurocosh.divinefavor.common.lib.extensions.divinePlayerData
 import aurocosh.divinefavor.common.lib.extensions.get
 import aurocosh.divinefavor.common.spirit.base.ModSpirit
+import aurocosh.divinefavor.common.util.UtilPlayer
 import net.minecraft.item.ItemStack
 import net.minecraftforge.event.world.BlockEvent
 import java.util.*
@@ -24,6 +25,11 @@ class SpellTalismanUndo(name: String, spirit: ModSpirit, favorCost: Int, options
     }
 
     override fun catchDrops(stack: ItemStack, toolStack: ItemStack, event: BlockEvent.HarvestDropsEvent) {
-        event.drops.removeIf(event.harvester::addItemStackToInventory)
+        val player = event.harvester
+        for (itemStack in event.drops)
+            UtilPlayer.addGooToContainers(player, itemStack)
+
+        event.drops.removeIf(ItemStack::isEmpty)
+        event.drops.removeIf(player::addItemStackToInventory)
     }
 }

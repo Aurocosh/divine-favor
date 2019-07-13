@@ -45,7 +45,7 @@ abstract class ToolTalismanBreak(name: String, spirit: ModSpirit) : ItemToolTali
     override fun preProcess(context: TalismanContext): Boolean {
         if (!selectPropertyWrapper.preprocess(context))
             return false
-        val coordinates = getFinalCoordinates(context)
+        val coordinates = getCommonCoordinates(context)
         context.set(finalCoordinates, coordinates)
         return coordinates.isNotEmpty()
     }
@@ -59,9 +59,6 @@ abstract class ToolTalismanBreak(name: String, spirit: ModSpirit) : ItemToolTali
         return preFiltered.filterNot(world::isAirBlock).filter(world::getBlockState) { spellPick.canHarvestBlock(it, context.containerStack) }.toList()
     }
 
-    protected open fun getRenderCoordinates(context: TalismanContext): List<BlockPos> = getCommonCoordinates(context)
-    protected open fun getFinalCoordinates(context: TalismanContext): List<BlockPos> = getCommonCoordinates(context).shuffled()
-
     override fun performActionServer(context: TalismanContext) {
         val coordinates = context.get(finalCoordinates)
         BlockBreakingTask(coordinates, context.player, context.stack, 1).start()
@@ -69,7 +66,7 @@ abstract class ToolTalismanBreak(name: String, spirit: ModSpirit) : ItemToolTali
 
     @SideOnly(Side.CLIENT)
     override fun handleRendering(context: TalismanContext, lastEvent: RenderWorldLastEvent) {
-        val coordinates = getRenderCoordinates(context)
+        val coordinates = getCommonCoordinates(context)
         BlockHighlightRendering.render(lastEvent, context.player, coordinates, renderColor)
     }
 

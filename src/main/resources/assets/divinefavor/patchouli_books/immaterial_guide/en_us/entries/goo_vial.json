@@ -1,0 +1,11 @@
+{
+  "name": "Goo vial",
+  "icon": "divinefavor:item_goo_vial",
+  "category": "items",
+  "pages": [
+    {
+      "type": "item_description",
+      "talisman": "divinefavor:item_goo_vial"
+    }
+  ]
+}

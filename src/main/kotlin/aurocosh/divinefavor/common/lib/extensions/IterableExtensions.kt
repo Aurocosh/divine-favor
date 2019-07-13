@@ -56,7 +56,6 @@ fun <T, C : MutableCollection<in T>, K> Sequence<T>.filterTo(destination: C, con
     return filterTo(destination) { predicate.invoke(converter.invoke(it)) }
 }
 
-
 inline fun <T, K> Iterable<T>.filterNot(converter: (T) -> K, predicate: (K) -> Boolean): List<T> {
     return filterNotTo(ArrayList(), converter, predicate)
 }
