@@ -91,9 +91,9 @@ class ItemGooVial(name: String, val capacity: Int) : ModItem("goo_vial_$name", "
         if (!player.world.isRemote)
             return
         if (collecting)
-            player.sendStatusMessage("message.divinefavor.collecting_goo", UtilStatus.formatString(TextFormatting.AQUA))
+            player.sendStatusMessage("message.divinefavor.goo_vial.collecting_goo", UtilStatus.formatString(TextFormatting.AQUA), true)
         else
-            player.sendStatusMessage("message.divinefavor.placing_goo", UtilStatus.formatString(TextFormatting.AQUA))
+            player.sendStatusMessage("message.divinefavor.goo_vial.placing_goo", UtilStatus.formatString(TextFormatting.AQUA), true)
     }
 
     @SideOnly(Side.CLIENT)

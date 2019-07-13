@@ -1,6 +1,14 @@
 {
-    "parent": "item/handheld",
-    "textures": {
-        "layer0": "divinefavor:items/ethereal_brush"
+  "parent": "item/handheld",
+  "textures": {
+    "layer0": "divinefavor:items/ethereal_brush/place"
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "painting": 1
+      },
+      "model": "divinefavor:item/ethereal_brush/paint"
     }
+  ]
 }

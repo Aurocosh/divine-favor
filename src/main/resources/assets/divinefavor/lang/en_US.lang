@@ -45,8 +45,10 @@ message.divinefavor:marked_glass.spirit_is_active=Spirit is active right now! Sp
 message.divinefavor:marked_glass.spirit_is_inactive=Spirit is inactive. Spirit will become active after %1$d hours and %2$d minutes
 message.divinefavor:copy_area_is_too_big=Copy area is too big. Any side of copied area cannot be bigger then %1$d!
 
-message.divinefavor.collecting_goo=Vial is now collecting goo
-message.divinefavor.placing_goo=Vial is now placing goo
+message.divinefavor.goo_vial.collecting_goo=Vial is now collecting goo
+message.divinefavor.goo_vial.placing_goo=Vial is now placing goo
+message.divinefavor.brush.placing_goo=Brush is now placing goo
+message.divinefavor.brush.painting_goo=Brush is now painting goo
 
 message.divinefavor.copied=Area Copied
 message.divinefavor.copysuccess=Copy to Clipboard successful
