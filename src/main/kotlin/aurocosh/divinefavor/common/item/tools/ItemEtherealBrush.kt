@@ -58,6 +58,6 @@ class ItemEtherealBrush : ModItem("ethereal_brush", "ethereal_brush", ConstMainT
 
 
     companion object {
-        val state by lazy { StackPropertyIBlockState("state", ModBlocks.etherealGooBlock.defaultState, showInTooltip = false, showInGui = false, orderIndex = 0) }
+        val state by lazy { StackPropertyIBlockState("state", ModBlocks.ethereal_goo.defaultState, showInTooltip = false, showInGui = false, orderIndex = 0) }
     }
 }

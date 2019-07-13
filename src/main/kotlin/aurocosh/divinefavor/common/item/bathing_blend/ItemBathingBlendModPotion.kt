@@ -1,4 +1,4 @@
-package aurocosh.divinefavor.common.item.bathing_blend.base
+package aurocosh.divinefavor.common.item.bathing_blend
 
 import aurocosh.divinefavor.common.config.entries.items.BathingBlendPotion
 import aurocosh.divinefavor.common.potions.base.effect.ModEffect

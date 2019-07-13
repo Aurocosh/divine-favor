@@ -1,8 +1,9 @@
-package aurocosh.divinefavor.common.item.bathing_blend
+package aurocosh.divinefavor.common.item.common
 
 import aurocosh.divinefavor.common.config.common.ConfigItem
-import aurocosh.divinefavor.common.item.bathing_blend.base.ItemBathingBlend
-import aurocosh.divinefavor.common.item.bathing_blend.base.ItemBathingBlendModPotion
+import aurocosh.divinefavor.common.item.bathing_blend.ItemBathingBlend
+import aurocosh.divinefavor.common.item.bathing_blend.ItemBathingBlendEtherealGoo
+import aurocosh.divinefavor.common.item.bathing_blend.ItemBathingBlendModPotion
 import aurocosh.divinefavor.common.potions.common.ModBlendEffects
 
 object ModBathingBlends {
@@ -15,6 +16,7 @@ object ModBathingBlends {
     lateinit var redstone: ItemBathingBlend
     lateinit var snow: ItemBathingBlend
     lateinit var wood: ItemBathingBlend
+    lateinit var ethereal_goo: ItemBathingBlend
 
     fun preInit() {
         charcoal = ItemBathingBlendModPotion("charcoal", ModBlendEffects.charred_aura, ConfigItem.blendCharcoal)
@@ -26,5 +28,7 @@ object ModBathingBlends {
         redstone = ItemBathingBlendModPotion("redstone", ModBlendEffects.energetic_aura, ConfigItem.blendRedstone)
         snow = ItemBathingBlendModPotion("snow", ModBlendEffects.frosty_aura, ConfigItem.blendSnow)
         wood = ItemBathingBlendModPotion("wood", ModBlendEffects.arboreal_aura, ConfigItem.blendWood)
+
+        ethereal_goo = ItemBathingBlendEtherealGoo()
     }
 }

@@ -3,8 +3,11 @@ package aurocosh.divinefavor.common.block.bath_heater
 import aurocosh.divinefavor.common.area.IAreaWatcher
 import aurocosh.divinefavor.common.area.WorldArea
 import aurocosh.divinefavor.common.area.WorldAreaWatcher
+import aurocosh.divinefavor.common.block.soulbound_lectern.NbtPropertyEnum
+import aurocosh.divinefavor.common.block.soulbound_lectern.TileEntityPropertyDelegate
+import aurocosh.divinefavor.common.block.soulbound_lectern.TilePropertySyncHandler
 import aurocosh.divinefavor.common.constants.BlockPosConstants
-import aurocosh.divinefavor.common.item.bathing_blend.base.ItemBathingBlend
+import aurocosh.divinefavor.common.item.bathing_blend.ItemBathingBlend
 import aurocosh.divinefavor.common.lib.LoopedCounter
 import aurocosh.divinefavor.common.lib.extensions.S
 import aurocosh.divinefavor.common.lib.extensions.getBlock
@@ -34,6 +37,8 @@ import net.minecraftforge.items.ItemStackHandler
 import java.util.*
 
 class TileBathHeater : TileEntity(), ITickable, IAreaWatcher {
+    private val syncHandler = TilePropertySyncHandler()
+
     var clientProgressEffect: Int = 0
     var clientProgressBurning: Int = 0
 
@@ -55,40 +60,20 @@ class TileBathHeater : TileEntity(), ITickable, IAreaWatcher {
     private val loopedCounter: LoopedCounter
     private val waterPositions: MutableSet<BlockPos>
 
-    private var _state = BathHeaterState.INACTIVE
-    var state: BathHeaterState
-        set(value) {
-            if (_state == value)
-                return
-            _state = value
-            markDirty()
-            val blockState = world.getBlockState(pos)
-            world.notifyBlockUpdate(pos, blockState, blockState, 3)
-        }
-        get() = _state
+    private val stateDelegate = TileEntityPropertyDelegate(stateProperty, syncHandler::sync)
+    var state: BathHeaterState by stateDelegate
 
     private val fuelStackHandler = object : ItemStackHandler(1) {
-        override fun isItemValid(slot: Int, stack: ItemStack): Boolean {
-            return TileEntityFurnace.getItemBurnTime(stack) > 0
-        }
-
-        override fun onContentsChanged(slot: Int) {
-            markDirty()
-        }
+        override fun isItemValid(slot: Int, stack: ItemStack) = TileEntityFurnace.getItemBurnTime(stack) > 0
+        override fun onContentsChanged(slot: Int) = markDirty()
     }
 
     private val blendStackHandler = object : ItemStackHandler(1) {
-        override fun isItemValid(slot: Int, stack: ItemStack): Boolean {
-            return stack.item is ItemBathingBlend
-        }
-
-        override fun onContentsChanged(slot: Int) {
-            markDirty()
-        }
+        override fun isItemValid(slot: Int, stack: ItemStack) = stack.item is ItemBathingBlend
+        override fun onContentsChanged(slot: Int) = markDirty()
     }
 
-    val isBurning: Boolean
-        get() = state == BathHeaterState.ACTIVE
+    val isBurning: Boolean get() = state == BathHeaterState.ACTIVE
 
     override fun getAreaWorld(): World {
         return world
@@ -115,7 +100,7 @@ class TileBathHeater : TileEntity(), ITickable, IAreaWatcher {
         if (initialized)
             return
         initialized = true
-        area.addPositions(UtilCoordinates.getBlocksInRadius(pos, RADIUS_OF_EFFECT, 0, RADIUS_OF_EFFECT))
+        area.addPositions(UtilCoordinates.getBlocksInRadius(pos, RADIUS_OF_EFFECT, RADIUS_OF_EFFECT, RADIUS_OF_EFFECT))
         WorldAreaWatcher.registerWatcher(this)
     }
 
@@ -125,14 +110,11 @@ class TileBathHeater : TileEntity(), ITickable, IAreaWatcher {
         refresh = false
         waterPositions.clear()
         val posVector = BlockPos(pos)
-        val start = ArrayList<BlockPos>()
-        start.add(posVector.add(BlockPosConstants.EAST))
-        start.add(posVector.add(BlockPosConstants.WEST))
-        start.add(posVector.add(BlockPosConstants.NORTH))
-        start.add(posVector.add(BlockPosConstants.SOUTH))
+        val start = BlockPosConstants.HORIZONTAL_DIRECT.map { posVector.add(it) }
 
         val predicate = ConvertingPredicate(world::getBlock, Block::isWater)::invoke
-        val waterPosList = UtilCoordinates.floodFill(start, BlockPosConstants.HORIZONTAL_DIRECT, predicate, 50)
+        val expansionDirs = (BlockPosConstants.HORIZONTAL_DIRECT.S + BlockPosConstants.DOWN).toList()
+        val waterPosList = UtilCoordinates.floodFill(start, expansionDirs, predicate, 50)
         waterPositions.addAll(waterPosList.S.filter(area::isApartOfArea))
 
         val blockState = world.getBlockState(pos)
@@ -144,7 +126,8 @@ class TileBathHeater : TileEntity(), ITickable, IAreaWatcher {
         maxBurnTime = compound.getInteger(TAG_MAX_BURN_TIME)
         currentBurnTime = compound.getInteger(TAG_CURRENT_BURN_TIME)
         progressBurning = if (maxBurnTime == 0) 0 else currentBurnTime / maxBurnTime
-        _state = BathHeaterState[compound.getInteger(TAG_STATE_HEATER)]
+
+        stateDelegate.readFromNbt(compound)
         waterPositions.clear()
         waterPositions.addAll(UtilBlockPos.deserialize(compound.getIntArray(TAG_WATER_POSITIONS)))
         loopedCounter.tickRate = compound.getInteger(TAG_EFFECT_TICK_RATE)
@@ -156,9 +139,9 @@ class TileBathHeater : TileEntity(), ITickable, IAreaWatcher {
 
     override fun writeToNBT(compound: NBTTagCompound): NBTTagCompound {
         super.writeToNBT(compound)
+        stateDelegate.writeToNbt(compound)
         compound.setInteger(TAG_MAX_BURN_TIME, maxBurnTime)
         compound.setInteger(TAG_CURRENT_BURN_TIME, currentBurnTime)
-        compound.setInteger(TAG_STATE_HEATER, state.ordinal)
         compound.setIntArray(TAG_WATER_POSITIONS, UtilBlockPos.serialize(waterPositions))
         compound.setInteger(TAG_EFFECT_TICK_RATE, loopedCounter.tickRate)
         compound.setTag(TAG_FUEL, fuelStackHandler.serializeNBT())
@@ -187,7 +170,7 @@ class TileBathHeater : TileEntity(), ITickable, IAreaWatcher {
 
     override fun getUpdateTag(): NBTTagCompound {
         val nbtTag = super.getUpdateTag()
-        nbtTag.setInteger(TAG_STATE_HEATER, state.ordinal)
+        stateDelegate.writeToNbt(nbtTag)
         nbtTag.setIntArray(TAG_WATER_POSITIONS, UtilBlockPos.serialize(waterPositions))
         return nbtTag
     }
@@ -197,14 +180,13 @@ class TileBathHeater : TileEntity(), ITickable, IAreaWatcher {
     }
 
     override fun onDataPacket(net: NetworkManager?, packet: SPacketUpdateTileEntity) {
-        val stateIndex = packet.nbtCompound.getInteger(TAG_STATE_HEATER)
-
         if (!world.isRemote)
             return
-        if (stateIndex != state.ordinal) {
-            state = BathHeaterState[stateIndex]
+
+        val oldState = state
+        stateDelegate.readFromNbt(packet.nbtCompound)
+        if (oldState != state)
             world.markBlockRangeForRenderUpdate(pos, pos)
-        }
         waterPositions.clear()
         waterPositions.addAll(UtilBlockPos.deserialize(packet.nbtCompound.getIntArray(TAG_WATER_POSITIONS)))
     }
@@ -257,6 +239,12 @@ class TileBathHeater : TileEntity(), ITickable, IAreaWatcher {
         if (!loopedCounter.tick())
             return
         if (currentEffectTime <= 0) {
+            val blend = activeBlend
+            if (blend != null) {
+                blend.convertBlocks(world, pos, waterPositions.toList())
+                activeBlend = null
+            }
+
             val stack = blendStackHandler.getStackInSlot(0)
             if (!stack.isEmpty) {
                 val item = stack.item
@@ -291,6 +279,11 @@ class TileBathHeater : TileEntity(), ITickable, IAreaWatcher {
     }
 
     companion object {
+
+        private val stateProperty = NbtPropertyEnum("StateBathHeater", BathHeaterState.INACTIVE, BathHeaterState)
+//        private val spiritProperty = NbtPropertyInt("SpiritId", -1)
+
+
         const val FUEL_SIZE = 1
         const val INGREDIENTS_SIZE = 1
 

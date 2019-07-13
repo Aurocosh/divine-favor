@@ -46,6 +46,7 @@ import team.chisel.ctm.api.IFacade
 class BlockEtherealGoo : ModBlock("ethereal_goo", Material.ROCK, 0), IFacade, ICustomStateMappedBlock, ICustomColorHandlerBlock {
 
     init {
+        setHardness(2f)
         defaultState = blockState.baseState.withProperty(BRIGHT, true).withProperty(NEIGHBOR_BRIGHTNESS, false)
         creativeTab = DivineFavor.TAB_MAIN
     }
@@ -192,7 +193,7 @@ class BlockEtherealGoo : ModBlock("ethereal_goo", Material.ROCK, 0), IFacade, IC
 
     private fun getSideBlockState(blockAccess: IBlockAccess, pos: BlockPos, side: EnumFacing): IBlockState {
         val sideBlockState: IBlockState = blockAccess.getBlockState(pos.offset(side))
-        if (sideBlockState.block !== ModBlocks.etherealGooBlock)
+        if (sideBlockState.block !== ModBlocks.ethereal_goo)
             return sideBlockState
         return getActualMimicBlock(blockAccess, pos.offset(side)) ?: sideBlockState
     }
@@ -206,7 +207,7 @@ class BlockEtherealGoo : ModBlock("ethereal_goo", Material.ROCK, 0), IFacade, IC
         }
     }
 
-    override fun getBoundingBox(state: IBlockState?, source: IBlockAccess?, pos: BlockPos?): AxisAlignedBB {
+    override fun getBoundingBox(state: IBlockState, source: IBlockAccess, pos: BlockPos): AxisAlignedBB {
         val mimicBlock = getActualMimicBlock(source, pos) ?: return super.getBoundingBox(state, source, pos)
         return try {
             mimicBlock.block.getBoundingBox(mimicBlock, source, pos)
@@ -227,7 +228,7 @@ class BlockEtherealGoo : ModBlock("ethereal_goo", Material.ROCK, 0), IFacade, IC
 
     }
 
-    override fun isNormalCube(state: IBlockState, world: IBlockAccess?, pos: BlockPos?): Boolean {
+    override fun isNormalCube(state: IBlockState, world: IBlockAccess, pos: BlockPos): Boolean {
         val mimicBlock = getActualMimicBlock(world, pos) ?: return super.isNormalCube(state, world, pos)
         return try {
             mimicBlock.block.isNormalCube(mimicBlock, world, pos)

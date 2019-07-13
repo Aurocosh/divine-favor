@@ -21,13 +21,13 @@ public class TileEtherealGoo extends TileEntity {
     private IBlockState actualBlockState;
 
     public boolean setBlockState(IBlockState state) {
-        blockState = state.getBlock() == ModBlocks.etherealGooBlock ? null : state;
+        blockState = state.getBlock() == ModBlocks.ethereal_goo ? null : state;
         markDirtyClient();
         return true;
     }
 
     public boolean setActualBlockState(IBlockState state) {
-        actualBlockState = state.getBlock() == ModBlocks.etherealGooBlock ? null : state;
+        actualBlockState = state.getBlock() == ModBlocks.ethereal_goo ? null : state;
         markDirtyClient();
         return true;
     }
@@ -52,9 +52,9 @@ public class TileEtherealGoo extends TileEntity {
     public void readFromNBT(NBTTagCompound compound) {
         super.readFromNBT(compound);
         IBlockState state = NBTUtil.readBlockState(compound.getCompoundTag("blockState"));
-        this.blockState = state.getBlock() == ModBlocks.etherealGooBlock ? null : state;;
+        this.blockState = state.getBlock() == ModBlocks.ethereal_goo ? null : state;;
         IBlockState actualState = NBTUtil.readBlockState(compound.getCompoundTag("actualBlockState"));
-        this.actualBlockState = state.getBlock() == ModBlocks.etherealGooBlock ? null : actualState;
+        this.actualBlockState = state.getBlock() == ModBlocks.ethereal_goo ? null : actualState;
         markDirtyClient();
     }
 

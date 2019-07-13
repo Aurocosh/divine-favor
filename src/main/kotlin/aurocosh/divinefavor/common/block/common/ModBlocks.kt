@@ -58,7 +58,7 @@ object ModBlocks {
     lateinit var red_pulse: ModBlock
     lateinit var red_signal: ModBlock
 
-    lateinit var etherealGooBlock: ModBlock
+    lateinit var ethereal_goo: ModBlock
 
     fun preInit() {
         bathHeater = BlockBathHeater()
@@ -90,7 +90,7 @@ object ModBlocks {
         red_pulse = BlockRedPulse("red_pulse", ConfigSpell.redPulse.redLevel, ConfigSpell.redPulse.lightLevel, ConfigSpell.redPulse.despawnDelay)
         red_signal = BlockRedPulse("red_signal", ConfigSpell.redSignal.redLevel, ConfigSpell.redSignal.lightLevel, ConfigSpell.redSignal.despawnDelay)
 
-        etherealGooBlock = BlockEtherealGoo()
+        ethereal_goo = BlockEtherealGoo()
 
         initTileEntities()
     }

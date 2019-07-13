@@ -1,8 +1,8 @@
 package aurocosh.divinefavor.common.receipes.common
 
 import aurocosh.divinefavor.DivineFavor
-import aurocosh.divinefavor.common.item.bathing_blend.ModBathingBlends
-import aurocosh.divinefavor.common.item.bathing_blend.base.ItemBathingBlend
+import aurocosh.divinefavor.common.item.common.ModBathingBlends
+import aurocosh.divinefavor.common.item.bathing_blend.ItemBathingBlend
 import aurocosh.divinefavor.common.item.common.ModCallingStones
 import aurocosh.divinefavor.common.item.common.ModItems
 import aurocosh.divinefavor.common.item.gems.ItemCallingStone
