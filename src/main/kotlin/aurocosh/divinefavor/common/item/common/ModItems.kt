@@ -25,6 +25,7 @@ import aurocosh.divinefavor.common.item.talisman_tools.spell_bow.ItemSpellBow
 import aurocosh.divinefavor.common.item.talisman_tools.spell_pick.ItemSpellPick
 import aurocosh.divinefavor.common.item.tools.ItemBanishingWand
 import aurocosh.divinefavor.common.item.tools.ItemBoneKey
+import aurocosh.divinefavor.common.item.tools.ItemEtherealBrush
 import aurocosh.divinefavor.common.item.tools.mystic_architect_stick.ItemMysticArchitectStick
 import aurocosh.divinefavor.common.registry.mappers.ModMappers
 import net.minecraft.item.Item
@@ -36,6 +37,7 @@ object ModItems {
     lateinit var bone_dagger_awakened: ModItem
     lateinit var bone_key: ModItem
     lateinit var contract_binder: ModItem
+    lateinit var etherealBrush: ModItem
     lateinit var grimoire: ModItem
     lateinit var memory_pouch: ModItem
     lateinit var milky_apple: ModItem
@@ -68,10 +70,11 @@ object ModItems {
         bone_dagger_awakened = ItemBoneDaggerAwakened()
         bone_key = ItemBoneKey()
         contract_binder = ItemContractBinder()
+        etherealBrush = ItemEtherealBrush()
         grimoire = ItemGrimoire()
-        memory_pouch = ItemMemoryPouch()
         invite_gem = ItemInviteMarker("invite_gem", true)
         invite_pebble = ItemInviteMarker("invite_pebble", false)
+        memory_pouch = ItemMemoryPouch()
         milky_apple = ItemMilkyApple()
         mystic_architect_stick = ItemMysticArchitectStick()
         ritual_pouch = ItemRitualPouch()

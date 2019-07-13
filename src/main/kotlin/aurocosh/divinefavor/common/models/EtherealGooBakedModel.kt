@@ -6,6 +6,7 @@ import net.minecraft.block.state.IBlockState
 import net.minecraft.client.Minecraft
 import net.minecraft.client.renderer.block.model.*
 import net.minecraft.client.renderer.texture.TextureAtlasSprite
+import net.minecraft.util.BlockRenderLayer
 import net.minecraft.util.EnumFacing
 import net.minecraftforge.client.MinecraftForgeClient
 import net.minecraftforge.common.property.IExtendedBlockState
@@ -21,15 +22,20 @@ class EtherealGooBakedModel(private val blankConstructionModel: IBakedModel)
     override fun getQuads(state: IBlockState?, side: EnumFacing?, rand: Long): List<BakedQuad> {
         val extendedBlockState = state as IExtendedBlockState? ?: return emptyList()
 
-        val facadeState = extendedBlockState.getValue(BlockEtherealGoo.FACADE_ID) ?: return blankConstructionModel.getQuads(state, side, rand)
-        val extFacadeState = extendedBlockState.getValue(BlockEtherealGoo.FACADE_EXT_STATE)
-        val model: IBakedModel
-
         val layer = MinecraftForgeClient.getRenderLayer()
+        val facadeState = extendedBlockState.getValue(BlockEtherealGoo.FACADE_ID)
+        if (facadeState == null) {
+            if (layer != null && layer != BlockRenderLayer.TRANSLUCENT)
+                return emptyList()
+            return blankConstructionModel.getQuads(state, side, rand)
+        }
+
+        val extFacadeState = extendedBlockState.getValue(BlockEtherealGoo.FACADE_EXT_STATE)
+
         if (layer != null && !facadeState.block.canRenderInLayer(facadeState, layer)) // always render in the null layer or the block-breaking textures don't show up
             return emptyList()
 
-        model = getModel(facadeState)
+        val model = getModel(facadeState)
         return try {
             model.getQuads(extFacadeState, side, rand)
         } catch (e: Exception) {

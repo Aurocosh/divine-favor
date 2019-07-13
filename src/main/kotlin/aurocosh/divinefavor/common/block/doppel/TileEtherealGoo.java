@@ -1,5 +1,6 @@
 package aurocosh.divinefavor.common.block.doppel;
 
+import aurocosh.divinefavor.common.block.common.ModBlocks;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Blocks;
 import net.minecraft.nbt.NBTTagCompound;
@@ -20,13 +21,13 @@ public class TileEtherealGoo extends TileEntity {
     private IBlockState actualBlockState;
 
     public boolean setBlockState(IBlockState state) {
-        blockState = state;
+        blockState = state.getBlock() == ModBlocks.etherealGooBlock ? null : state;
         markDirtyClient();
         return true;
     }
 
     public boolean setActualBlockState(IBlockState state) {
-        actualBlockState = state;
+        actualBlockState = state.getBlock() == ModBlocks.etherealGooBlock ? null : state;
         markDirtyClient();
         return true;
     }
@@ -50,8 +51,10 @@ public class TileEtherealGoo extends TileEntity {
     @Override
     public void readFromNBT(NBTTagCompound compound) {
         super.readFromNBT(compound);
-        blockState = NBTUtil.readBlockState(compound.getCompoundTag("blockState"));
-        actualBlockState = NBTUtil.readBlockState(compound.getCompoundTag("actualBlockState"));
+        IBlockState state = NBTUtil.readBlockState(compound.getCompoundTag("blockState"));
+        this.blockState = state.getBlock() == ModBlocks.etherealGooBlock ? null : state;;
+        IBlockState actualState = NBTUtil.readBlockState(compound.getCompoundTag("actualBlockState"));
+        this.actualBlockState = state.getBlock() == ModBlocks.etherealGooBlock ? null : actualState;
         markDirtyClient();
     }
 

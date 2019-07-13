@@ -110,7 +110,7 @@ class BlockEtherealGoo : ModBlock("ethereal_goo", Material.ROCK, 0), IFacade, IC
 
     @SideOnly(Side.CLIENT)
     override fun canRenderInLayer(state: IBlockState?, layer: BlockRenderLayer?): Boolean {
-        return layer == null || layer == BlockRenderLayer.TRANSLUCENT
+        return true
         // return true // delegated to FacadeBakedModel#getQuads
     }
 
