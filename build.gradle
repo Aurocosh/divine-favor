@@ -87,6 +87,7 @@ dependencies {
 
     compile "com.blamejared:MTLib:3.0.4.8"
     compile  "CraftTweaker2:CraftTweaker2-MC1120-Main:1.12-${ct_version}"
+    deobfCompile "team.chisel.ctm:CTM:MC${mc_sub_version}-${ctm_version}:api"
 
     deobfCompile "vazkii.patchouli:Patchouli:${p_version}"
 

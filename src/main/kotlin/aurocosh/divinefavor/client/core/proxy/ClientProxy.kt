@@ -2,11 +2,14 @@ package aurocosh.divinefavor.client.core.proxy
 
 import aurocosh.divinefavor.client.core.handler.KeyBindings
 import aurocosh.divinefavor.client.render.common.ModRendering
+import aurocosh.divinefavor.common.block.common.ModBlocks
 import aurocosh.divinefavor.common.core.proxy.CommonProxy
+import aurocosh.divinefavor.common.models.BakedModelLoader
 import aurocosh.divinefavor.common.particles.ModParticles
 import com.google.common.util.concurrent.ListenableFuture
 import net.minecraft.client.Minecraft
 import net.minecraft.entity.player.EntityPlayer
+import net.minecraftforge.client.model.ModelLoaderRegistry
 import net.minecraftforge.fml.common.event.FMLInitializationEvent
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent
 
@@ -17,6 +20,8 @@ class ClientProxy : CommonProxy() {
         ModParticles.preInit()
         ModRendering.preInit()
 
+        ModelLoaderRegistry.registerLoader(BakedModelLoader())
+
         //        MinecraftForge.EVENT_BUS.register(new HUDHandler());
         //        ClientRegistry.bindTileEntitySpecialRenderer(TileProgrammer.class, new RenderTileProgrammer());
     }
@@ -25,6 +30,7 @@ class ClientProxy : CommonProxy() {
         super.init(e)
         ModRendering.init()
         KeyBindings.init()
+        ModBlocks.initColorHandlers()
     }
 
     override fun addScheduledTaskClient(runnableToSchedule: Runnable): ListenableFuture<Any> {
@@ -32,7 +38,7 @@ class ClientProxy : CommonProxy() {
     }
 
     override val clientPlayer: EntityPlayer
-        get() =  Minecraft.getMinecraft().player
+        get() = Minecraft.getMinecraft().player
 
     override val hasClientPlayer: Boolean
         get() = Minecraft.getMinecraft().player != null

@@ -1,0 +1,10 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "divinefavor:ethereal_goo"
+  },
+  "variants": {
+    "normal": [{}],
+    "inventory": [{}]
+  }
+}

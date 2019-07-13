@@ -5,6 +5,8 @@ import aurocosh.divinefavor.common.block.BlockRedPulse
 import aurocosh.divinefavor.common.block.base.ModBlock
 import aurocosh.divinefavor.common.block.bath_heater.BlockBathHeater
 import aurocosh.divinefavor.common.block.bath_heater.TileBathHeater
+import aurocosh.divinefavor.common.block.doppel.BlockEtherealGoo
+import aurocosh.divinefavor.common.block.doppel.TileEtherealGoo
 import aurocosh.divinefavor.common.block.ethereal.BlockEtherealFlash
 import aurocosh.divinefavor.common.block.ethereal.BlockEtherealLight
 import aurocosh.divinefavor.common.block.medium.BlockMedium
@@ -17,9 +19,14 @@ import aurocosh.divinefavor.common.block.soulbound_lectern.TileSoulboundLectern
 import aurocosh.divinefavor.common.config.common.ConfigSpell
 import aurocosh.divinefavor.common.constants.ConstBlockNames
 import aurocosh.divinefavor.common.constants.ConstResources
+import aurocosh.divinefavor.common.registry.ModRegistries
+import aurocosh.divinefavor.common.state_mappers.common.ICustomColorHandlerBlock
 import net.minecraft.block.material.Material
+import net.minecraft.client.Minecraft
 import net.minecraft.tileentity.TileEntity
 import net.minecraftforge.fml.common.registry.GameRegistry
+import net.minecraftforge.fml.relauncher.Side
+import net.minecraftforge.fml.relauncher.SideOnly
 
 object ModBlocks {
     lateinit var bathHeater: ModBlock
@@ -51,6 +58,8 @@ object ModBlocks {
     lateinit var red_pulse: ModBlock
     lateinit var red_signal: ModBlock
 
+    lateinit var etherealGooBlock: ModBlock
+
     fun preInit() {
         bathHeater = BlockBathHeater()
 
@@ -81,7 +90,17 @@ object ModBlocks {
         red_pulse = BlockRedPulse("red_pulse", ConfigSpell.redPulse.redLevel, ConfigSpell.redPulse.lightLevel, ConfigSpell.redPulse.despawnDelay)
         red_signal = BlockRedPulse("red_signal", ConfigSpell.redSignal.redLevel, ConfigSpell.redSignal.lightLevel, ConfigSpell.redSignal.despawnDelay)
 
+        etherealGooBlock = BlockEtherealGoo()
+
         initTileEntities()
+    }
+
+    @SideOnly(Side.CLIENT)
+    fun initColorHandlers() {
+        val blockColors = Minecraft.getMinecraft().blockColors
+        for (block in ModRegistries.blocks.values)
+            if (block is ICustomColorHandlerBlock)
+                block.initColorHandler(blockColors)
     }
 
     fun init() {
@@ -92,6 +111,7 @@ object ModBlocks {
         registerTile(TileBathHeater::class.java, ConstBlockNames.BATH_HEATER)
         registerTile(TileMedium::class.java, ConstBlockNames.MEDIUM)
         registerTile(TileSoulboundLectern::class.java, ConstBlockNames.SOULBOUND_LECTERN)
+        registerTile(TileEtherealGoo::class.java, ConstBlockNames.ETHEREAL_GOO)
     }
 
     private fun registerTile(clazz: Class<out TileEntity>, key: String) {
