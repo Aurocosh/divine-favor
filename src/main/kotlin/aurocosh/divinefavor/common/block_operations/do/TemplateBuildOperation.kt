@@ -10,9 +10,10 @@ import net.minecraft.world.World
 
 class TemplateBuildOperation(private val template: List<TemplateFinalBlockState>) : BuildOperation() {
     override fun getBuildingTask(player: EntityPlayer, world: World): Pair<BaseTask, UndoOperation> {
-        val coordinates = template.map(TemplateFinalBlockState::pos)
+        val finalTemplate = template.shuffled()
+        val coordinates = finalTemplate.map(TemplateFinalBlockState::pos)
         val undoBuild = UndoBuild(coordinates, this, Int.MAX_VALUE)
-        val placingTask = TemplatePlacingTask(template.shuffled(), player, Int.MAX_VALUE)
+        val placingTask = TemplatePlacingTask(finalTemplate, player, Int.MAX_VALUE)
         return Pair(placingTask, undoBuild)
     }
 }

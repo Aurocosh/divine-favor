@@ -30,7 +30,7 @@ class SimpleBuildOperation(private val coordinates: List<BlockPos>, private val 
         val buildTime = UtilTick.secondsToTicks(2f)
         val blocksPerTick = if (buildTime > buildData.size) 1 else buildData.size / buildTime
         val blockPlacingTask = BlockBuildingTask(buildData, state, player, blocksPerTick)
-        val undoBuild = UndoBuild(coordinates, this, blocksPerTick)
+        val undoBuild = UndoBuild(coordinates.shuffled(), this, blocksPerTick)
         return Pair(blockPlacingTask, undoBuild)
     }
 }

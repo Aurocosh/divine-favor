@@ -13,10 +13,12 @@ import net.minecraft.world.World
 class DestructionOperation(private val coordinates: List<BlockPos>) : BuildOperation() {
     override fun getBuildingTask(player: EntityPlayer, world: World): Pair<BaseTask, UndoOperation> {
         val breakTime = UtilTick.secondsToTicks(2f)
-        val blocksPerTick = if (breakTime > coordinates.size) 1 else coordinates.size / breakTime
-        val placingTask = BlockPlacingTask(coordinates.shuffled(), Blocks.AIR.defaultState, player, blocksPerTick)
 
-        val destroyedStates = coordinates.map { Pair(it, world.getBlockState(it)) }
+        val finalCoordinates = coordinates.shuffled()
+        val blocksPerTick = if (breakTime > finalCoordinates.size) 1 else finalCoordinates.size / breakTime
+        val placingTask = BlockPlacingTask(finalCoordinates, Blocks.AIR.defaultState, player, blocksPerTick)
+
+        val destroyedStates = finalCoordinates.map { Pair(it, world.getBlockState(it)) }
         val undoDestruction = UndoDestruction(destroyedStates, this, blocksPerTick)
         return Pair(placingTask, undoDestruction)
     }
