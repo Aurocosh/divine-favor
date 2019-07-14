@@ -1,0 +1,20 @@
+{
+  "name": "Memory pouch",
+  "icon": "divinefavor:memory_pouch",
+  "category": "items",
+  "pages": [
+    {
+      "type": "spotlight",
+      "item": "divinefavor:memory_pouch",
+      "text": "This item can store large amount of memory drops. To put drops inside sneak right click. To view and use stored memory drops just right click."
+    },
+    {
+      "type": "text",
+      "text": "Currently selected slot has ornage mark. To rename drop in current slot just change text in upper text field which. To select slot you can either left or right click it. When you are selecting slot you set block template from this slot as your current memorized template. If you middle click slot with drop, then you will memorize template from drop and close pouch gui."
+    },
+    {
+      "type": "text",
+      "text": "When you hover your mouse over slot with drop template from drop will be displayed in window above drop slots. If you are not hovering anithing then window will display template from selected slot. You can zoom in and out template in window with mouse wheel. You can rotate template with left click and dragging. You can pan with right click and dragging."
+    }
+  ]
+}
