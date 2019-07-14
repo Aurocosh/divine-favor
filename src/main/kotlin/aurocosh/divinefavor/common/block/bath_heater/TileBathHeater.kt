@@ -100,7 +100,14 @@ class TileBathHeater : TileEntity(), ITickable, IAreaWatcher {
         if (initialized)
             return
         initialized = true
-        area.addPositions(UtilCoordinates.getBlocksInRadius(pos, RADIUS_OF_EFFECT, RADIUS_OF_EFFECT, RADIUS_OF_EFFECT))
+
+
+        val inRadius = UtilCoordinates.getBlocksInRadius(pos, RADIUS_OF_EFFECT, 0, RADIUS_OF_EFFECT)
+        val positions = generateSequence(inRadius) { it.map(BlockPosConstants.DOWN::add) }
+                .take(RADIUS_OF_EFFECT + 1)
+                .flatten()
+                .toList()
+        area.addPositions(positions)
         WorldAreaWatcher.registerWatcher(this)
     }
 
@@ -109,12 +116,16 @@ class TileBathHeater : TileEntity(), ITickable, IAreaWatcher {
             return
         refresh = false
         waterPositions.clear()
-        val posVector = BlockPos(pos)
-        val start = BlockPosConstants.HORIZONTAL_DIRECT.map { posVector.add(it) }
 
         val predicate = ConvertingPredicate(world::getBlock, Block::isWater)::invoke
         val expansionDirs = (BlockPosConstants.HORIZONTAL_DIRECT.S + BlockPosConstants.DOWN).toList()
-        val waterPosList = UtilCoordinates.floodFill(start, expansionDirs, predicate, 50)
+
+        val posVector = BlockPos(pos)
+        val start = expansionDirs.map(posVector::add)
+
+        val sideLength = 2 * RADIUS_OF_EFFECT + 1
+        val maxPosCount = sideLength * sideLength * RADIUS_OF_EFFECT + 1
+        val waterPosList = UtilCoordinates.floodFill(start, expansionDirs, predicate, maxPosCount)
         waterPositions.addAll(waterPosList.S.filter(area::isApartOfArea))
 
         val blockState = world.getBlockState(pos)
