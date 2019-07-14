@@ -9,6 +9,7 @@ import aurocosh.divinefavor.common.item.spell_talismans.build.*
 import aurocosh.divinefavor.common.item.spell_talismans.copy.SpellTalismanCopyArea
 import aurocosh.divinefavor.common.item.spell_talismans.copy.SpellTalismanCopyBlocks
 import aurocosh.divinefavor.common.item.spell_talismans.copy.SpellTalismanCopyCuboid
+import aurocosh.divinefavor.common.item.spell_talismans.destroy.SpellTalismanDestroyCuboidRemotely
 import aurocosh.divinefavor.common.item.spell_talismans.move.SpellTalismanPullSide
 import aurocosh.divinefavor.common.item.spell_talismans.move.SpellTalismanPushSide
 import aurocosh.divinefavor.common.item.spell_talismans.operations.SpellTalismanRedo
@@ -152,6 +153,7 @@ object ModSpellTalismans {
     lateinit var wooden_punch: ItemSpellTalisman
 
     // New fields
+    lateinit var destroy_cuboid_remotely: ItemSpellTalisman
     lateinit var redo: ItemSpellTalisman
     lateinit var build_cylinder: ItemSpellTalisman
     lateinit var undo: ItemSpellTalisman
@@ -320,6 +322,7 @@ object ModSpellTalismans {
         starvation = SpellTalismanModPotion("starvation", ModSpirits.timber, ConfigSpell.starvation.favorCost, ModPotions.starvation, ConfigSpell.starvation.duration)
 
         // New instances
+        destroy_cuboid_remotely = SpellTalismanDestroyCuboidRemotely("destroy_cuboid_remotely", ModSpirits.neblaze)
         redo = SpellTalismanRedo("redo", ModSpirits.materia, ConfigSpell.redo.favorCost, SpellOptions.ALL_CAST)
         build_cylinder = SpellTalismanBuildCylinder("build_cylinder", ModSpirits.materia)
         undo = SpellTalismanUndo("undo", ModSpirits.materia, ConfigSpell.undo.favorCost, SpellOptions.ALL_CAST)

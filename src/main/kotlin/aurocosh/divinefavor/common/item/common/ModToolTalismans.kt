@@ -49,15 +49,15 @@ object ModToolTalismans {
         // loon;
 
         // materia;
-        destroy_blocks = ToolTalismanDestroyBlocks("destroy_blocks", ModSpirits.materia)
-        destroy_surface = ToolTalismanDestroySurface("destroy_surface", ModSpirits.materia)
-        destroy_side = ToolTalismanDestroySide("destroy_side", ModSpirits.materia)
-        destroy_cuboid = ToolTalismanDestroyCuboid("destroy_cuboid", ModSpirits.materia)
 
         // neblaze;
+        destroy_blocks = ToolTalismanDestroyBlocks("destroy_blocks", ModSpirits.neblaze)
+        destroy_surface = ToolTalismanDestroySurface("destroy_surface", ModSpirits.neblaze)
+        destroy_side = ToolTalismanDestroySide("destroy_side", ModSpirits.neblaze)
+        destroy_cuboid = ToolTalismanDestroyCuboid("destroy_cuboid", ModSpirits.neblaze)
 
         molten_tool = ToolTalismanMoltenTool("molten_tool", ModSpirits.neblaze, ConfigTool.moltenTool.favorCost)
-        obsidian_carving = ToolTalismanObsidianCarving("obsidian_carving", ModSpirits.neblaze, ConfigTool.obsidianCarving.favorCost,Blocks.OBSIDIAN, Block::isLava)
+        obsidian_carving = ToolTalismanObsidianCarving("obsidian_carving", ModSpirits.neblaze, ConfigTool.obsidianCarving.favorCost, Blocks.OBSIDIAN, Block::isLava)
 
         // redwind;
         memory_tool = ToolTalismanMemoryTool("memory_tool", ModSpirits.redwind, ConfigTool.memoryTool.favorCost)
