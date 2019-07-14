@@ -1,0 +1,45 @@
+{
+  "name": "Replace talismans",
+  "icon": "divinefavor:spell_talisman_replace_surface",
+  "category": "block_manipulation",
+  "sortnum": 2,
+  "pages": [
+    {
+      "type": "spotlight",
+      "item": "divinefavor:spell_talisman_replace_surface",
+      "text": "Some spell talismans can be collectively called 'Replace talismans'. Above you can see an example. There are no special tool required for them, they are just spell talismans, but they behaviour is similar to each other. "
+    },
+    {
+      "type": "text",
+      "text": "Replace talismans do on thing - they replace one block with another. However each talisman selects which blocks to replace differently. Specifics for each talisman will be shown on later pages. Before you can use any of those talismans you need to select with which type of block you want to replace others. To select block type just sneak right click any block."
+    },
+    {
+      "type": "text",
+      "text": "When replace talisman is used it will break selected blocks and replace them with selected type of block. Keep in mind that talisman will not work if you don't have enough necessary blocks in your inventory. Thou replace talismans can use ethereal goo to substitute missing blocks just like build talismans. You can read more about goo in dedicated guide entry."
+    },
+    {
+      "type": "text",
+      "text": "Also most of the replace talismans have property 'Fuzzy'. If this property is enabled then talisman will only replace blocks of the same type as the block that player is looking at. If this property is disabled then talisman will replace any encountered blocks regardless of type."
+    },
+    {
+      "type": "spotlight",
+      "item": "divinefavor:spell_talisman_replace_blocks",
+      "text": "This talisman will replace block that player is looking at and blocks adjacent to this block. You can select how many adjacent blocks need to ber replaced."
+    },
+    {
+      "type": "spotlight",
+      "item": "divinefavor:spell_talisman_replace_cuboid",
+      "text": "This talisman will replace blocks inside of arbitrary sized cuboid. You can freely adjust size and position of this cuboid."
+    },
+    {
+      "type": "spotlight",
+      "item": "divinefavor:spell_talisman_replace_side",
+      "text": "This talisman will replace block that player is looking at and blocks adjacent to this block that are on the same straight side. You can select how many adjacent blocks need to ber replaced."
+    },
+    {
+      "type": "spotlight",
+      "item": "divinefavor:spell_talisman_replace_surface",
+      "text": "This talisman will replace block that player is looking at and blocks adjacent to this block that are on the same surface. You can select how many adjacent blocks need to ber replaced."
+    }
+  ]
+}

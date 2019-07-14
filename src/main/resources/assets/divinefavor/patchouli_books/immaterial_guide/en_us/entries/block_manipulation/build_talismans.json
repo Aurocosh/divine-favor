@@ -1,0 +1,92 @@
+{
+  "name": "Build talismans",
+  "icon": "divinefavor:spell_talisman_build_wall",
+  "category": "block_manipulation",
+  "sortnum": 1,
+  "pages": [
+    {
+      "type": "spotlight",
+      "item": "divinefavor:spell_talisman_build_wall",
+      "text": "Among spell talismans there are some that can be collectively called 'Build talismans'. Above you can see an example. There are no special tool required for them, they are just spell talismans, but they behaviour is similar to each other. "
+    },
+    {
+      "type": "text",
+      "text": "All build talismans do exactly the same thing - they build simple structures from blocks. Only type of the structure is different between them. For example some allow you to build lines, other let you build walls. To select type of block to build with you just have to sneak right click desired block. Keep in mind that in order to build something, necessary type of block will be consumed from your inventory."
+    },
+    {
+      "type": "text",
+      "text": "If there are not enough necessary blocks, then build talisman will do nothing. There is however a caveat to that. There is a block called ethereal goo and it can be used as a substitute for others. This block can mimic appearance of others blocks, but it will not copy any functionality of original block. If you building something and you don't have enough necessary blocks, but you have goo, then talisman will consume goo instead and replace missing blocks with it."
+    },
+    {
+      "type": "text",
+      "text": "Build talismans can automatically consume any ethereal goo from your inventory or from goo vials in your inventory. Also keep in mind that most of the build talismans have properties that allow you to change built shape. For example build column talisman allows you to change height of the column. Most build talismans will have unique set of properties, however they share some common properties."
+    },
+    {
+      "type": "text",
+      "text": "Property - 'Relative' determines position where structure will be built. If relative is disabled, then structure will be built starting from block that player iss looking at. If relative is enabled then structure will be built relative to the player some distance away in the direction that player is looking at. Behaviour of common property 'shift' depends on state of property 'Relative'."
+    },
+    {
+      "type": "text",
+      "text": "If relative property is enabled then shift determines how far from player structure will be built. If relative is disabled then shift determines shift from block in direction perpendicular to side that player is looking at. Most build talismans have property 'Position lock' if this property is enabled then current position of the build will be locked and will not change."
+    },
+    {
+      "type": "text",
+      "text": "Some talismans also have property 'Rotation lock'. It works similarly to 'Position lock', but locks rotation of the build instead."
+    },
+    {
+      "type": "spotlight",
+      "item": "divinefavor:spell_talisman_build_column",
+      "text": "This talisman allows you to build columns of arbitrary length."
+    },
+    {
+      "type": "spotlight",
+      "item": "divinefavor:spell_talisman_build_cylinder",
+      "text": "This talisman allows you to build cylinders or circles. They can be built in any orientation."
+    },
+    {
+      "type": "spotlight",
+      "item": "divinefavor:spell_talisman_build_extrusion",
+      "text": "This talisman allows you to build side extrusions. Extrusions are 2d surface shapes repeated several times over and over. You can build extrusions from any 2d surface, and extrusion will be perpendicular to the surface it is built from."
+    },
+    {
+      "type": "spotlight",
+      "item": "divinefavor:spell_talisman_build_floor",
+      "text": "This talisman allows you to build horizontal rectangles of arbitrary size. This talisman allows you to freely adjust size of any side of the rectangle. Rotation of build depends on players orientation and can be locked."
+    },
+    {
+      "type": "spotlight",
+      "item": "divinefavor:spell_talisman_build_from_surface",
+      "text": "This talisman allows you to build block lines of arbitrary size and orientation from any surface. Built line will be perpendicular to the surface it is built from."
+    },
+    {
+      "type": "spotlight",
+      "item": "divinefavor:spell_talisman_build_hollow_sphere",
+      "text": "This talisman allows you to build hollow spheres. Internal and external radius's can be adjusted separately."
+    },
+    {
+      "type": "spotlight",
+      "item": "divinefavor:spell_talisman_build_horizontal_line",
+      "text": "This talisman allows you to build horizontal lines. You can freely change size of line. Rotation of line depends on players orientation and can be locked."
+    },
+    {
+      "type": "spotlight",
+      "item": "divinefavor:spell_talisman_build_sphere",
+      "text": "This talisman allows you to build spheres. You can control radius of built spheres."
+    },
+    {
+      "type": "spotlight",
+      "item": "divinefavor:spell_talisman_build_square_floor",
+      "text": "This talisman allows you to build horizontal squares. Rotation of build depends on players orientation and can be locked."
+    },
+    {
+      "type": "spotlight",
+      "item": "divinefavor:spell_talisman_build_square_wall",
+      "text": "This talisman allows you to build vertical squares. Rotation of build depends on players orientation and can be locked."
+    },
+    {
+      "type": "spotlight",
+      "item": "divinefavor:spell_talisman_build_wall",
+      "text": "This talisman allows you to build vertical rectangles of arbitrary size. This talisman allows you to freely adjust size of any side of the rectangle. Rotation of build depends on players orientation and can be locked."
+    }
+  ]
+}

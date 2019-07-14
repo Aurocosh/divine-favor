@@ -1,0 +1,34 @@
+{
+  "name": "Talisman properties",
+  "icon": "divinefavor:spell_talisman_blink",
+  "category": "basics",
+  "sortnum": 6,
+  "pages": [
+    {
+      "type": "spotlight",
+      "item": "divinefavor:spell_talisman_blink",
+      "text": "Some talismans have properties that you can adjust at will. For example $(item)Blink talisman$() has distance property. This property determines how far talisman will teleport you."
+    },
+    {
+      "type": "text",
+      "text": "To alter talisman properties you will need to press property GUI key. By default this GUI is bound to key R. When you press this key GUI will appear. All talisman properties will be displayed on the left side of the screen, if talisman has any. For each property there will be corresponding slider, a button, or other gui element. When you hover over any button or slider a tooltip for this element will be shown on the left side of screen."
+    },
+    {
+      "type": "text",
+      "text": "You can freely change any available properties on talisman, but keep in mind that property may change cost of talisman use. For example the bigger is distance set on blink talisman, the more favor usage will cost. Talisman properties are abundant on build talismans. Most of the properties in gui you can chandge by either clicking slider or button with a mouse or by hovering gui element with your mouse and scrolling mouse wheel."
+    },
+    {
+      "type": "text",
+      "text": "You can reset any property to default value by middle clicking gui element. You also will notice small green marker on the right side of one of the properties. This marker shows currently selected property. Whenever you change value of property it is automatically selected. When you scroll mouse in property gui and you are not hovering any property then scrolling will affect selected property."
+    },
+    {
+      "type": "text",
+      "text": "Similarly if you click middle mouse button and not hovering anything, then selected property will be reset to default. You can also select properties without changing them by clicking them with right mouse. Also when property gui is displayed you may notice additional talisman icon at the top of the screen. If you hover this icon then text description of the talisman will be displayed on the left side of the screen."
+    },
+    {
+      "type": "spotlight",
+      "item": "divinefavor:spell_talisman_searing_pulse",
+      "text": "So if you forgot what talisman does you can quickly check its description in property gui. Above you will see an example of another spell talisman with adjustable property. Property on this talisman controls how many blocks to smelt."
+    }
+  ]
+}

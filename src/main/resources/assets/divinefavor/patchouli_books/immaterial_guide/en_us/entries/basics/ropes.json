@@ -2,7 +2,7 @@
   "name": "Ropes",
   "icon": "divinefavor:rope_explosive",
   "category": "basics",
-  "sortnum": 9,
+  "sortnum": 10,
   "pages": [
     {
       "type": "text",

@@ -4,6 +4,7 @@ import aurocosh.divinefavor.DivineFavor
 import aurocosh.divinefavor.client.block_ovelay.FakeRenderWorld
 import aurocosh.divinefavor.common.block.base.ModBlock
 import aurocosh.divinefavor.common.block.common.ModBlocks
+import aurocosh.divinefavor.common.constants.ConstMainTabOrder
 import aurocosh.divinefavor.common.models.BlockStateProperty
 import aurocosh.divinefavor.common.models.EtherealGooBakedModel
 import aurocosh.divinefavor.common.state_mappers.common.ICustomColorHandlerBlock
@@ -43,7 +44,7 @@ import team.chisel.ctm.api.IFacade
  */
 
 @Optional.Interface(iface = "team.chisel.ctm.api.IFacade", modid = "ctm-api")
-class BlockEtherealGoo : ModBlock("ethereal_goo", Material.ROCK, 0), IFacade, ICustomStateMappedBlock, ICustomColorHandlerBlock {
+class BlockEtherealGoo : ModBlock("ethereal_goo", Material.ROCK, ConstMainTabOrder.OTHER_BLOCKS), IFacade, ICustomStateMappedBlock, ICustomColorHandlerBlock {
 
     init {
         setHardness(2f)
