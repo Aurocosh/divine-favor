@@ -46,22 +46,6 @@ object UtilBlockPos {
         return posArrayList
     }
 
-    // TODO replace
-    fun relativePositionToInt(origin: BlockPos, pos: BlockPos): Int {
-        val px = pos.x - origin.x and 0xff shl 16
-        val py = pos.y - origin.y and 0xff shl 8
-        val pz = pos.z - origin.z and 0xff
-        return px + py + pz
-    }
-
-    // TODO replace
-    fun relativeIntToPosition(origin: BlockPos, value: Int): BlockPos {
-        val x = origin.x + (value and 0xff0000 shr 16).toByte()
-        val y = origin.y + (value and 0x00ff00 shr 8).toByte()
-        val z = origin.z + (value and 0x0000ff).toByte()
-        return BlockPos(x, y, z)
-    }
-
     fun blockPosToInt(pos: BlockPos): Int {
         val x = pos.x and 0xff shl 16
         val y = pos.y and 0xff shl 8

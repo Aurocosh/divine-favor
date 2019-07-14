@@ -51,9 +51,10 @@ object BlockTemplateCompatibilitySerializer {
         val stateIntArray = compound.getIntArray(tagStateIntArray)
         val posIntArray = compound.getIntArray(tagPosIntArray)
         val fixedIntArray = posIntArray.asSequence()
-                .map { UtilBlockPos.relativeIntToPosition(startPos, it) }
+                .map(UtilBlockPos::intToBlockPos)
+                .map(startPos::add)
                 .map { it.subtract(boundingBox.lowerCorner) }
-                .map { UtilBlockPos.blockPosToInt(it) }
+                .map(UtilBlockPos::blockPosToInt)
                 .toList() // Cant convert to array directly
                 .toIntArray()
 
