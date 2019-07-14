@@ -1,11 +1,11 @@
 {
   "name": "Memory drop",
-  "icon": "divinefavor:item_memory_drop",
+  "icon": "divinefavor:memory_drop",
   "category": "items",
   "pages": [
     {
-      "type": "item_description",
-      "talisman": "divinefavor:item_memory_drop"
+      "type": "spotlight_description",
+      "item": "divinefavor:memory_drop"
     }
   ]
 }

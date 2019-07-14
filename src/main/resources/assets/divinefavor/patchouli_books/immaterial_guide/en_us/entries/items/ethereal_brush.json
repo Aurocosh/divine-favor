@@ -1,0 +1,21 @@
+{
+  "name": "Ethereal brush",
+  "icon": "divinefavor:ethereal_brush",
+  "category": "items",
+  "pages": [
+    {
+      "type": "spotlight",
+      "item": "divinefavor:ethereal_brush",
+      "text": "This brush can be used for painting blocks with goo. Ethereal goo blocks can mimic almost any block but to actialy apply shape of another block to goo you will need either this tool or one of building talismans.X."
+    },
+    {
+      "type": "crafting",
+      "text": "Brush crafting recipe",
+      "recipe": "divinefavor:ethereal_brush"
+    },
+    {
+      "type": "text",
+      "text": "To select block type to paint goo with you need to sneak right click on any block. Brush has two modes: painting and placing. When in painting mode right click goo block to make it mimic currently selected block. When in placing mode brush will take goo from your inventory, place it into the world and then make it mimic currently selected block. Sneak right click air to change cycle between painting and placing modes."
+    }
+  ]
+}

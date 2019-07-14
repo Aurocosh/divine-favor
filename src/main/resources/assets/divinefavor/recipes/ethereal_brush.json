@@ -1,0 +1,27 @@
+{
+  "result": {
+    "item": "divinefavor:ethereal_brush"
+  },
+  "type": "forge:ore_shapeless",
+  "ingredients": [
+    {
+      "type": "forge:ore_dict",
+      "ore": "dyeBlue"
+    },
+    {
+      "type": "forge:ore_dict",
+      "ore": "dyePurple"
+    },
+    {
+      "type": "forge:ore_dict",
+      "ore": "bone"
+    },
+    {
+      "type": "forge:ore_dict",
+      "ore": "feather"
+    },
+    {
+      "item": "divinefavor:bone_dagger_awakened"
+    }
+  ]
+}

@@ -43,8 +43,10 @@ class TileEtherealGoo : TileEntity() {
 
     private fun markDirtyClient() {
         markDirty()
-        val state = world.getBlockState(pos)
-        world.notifyBlockUpdate(pos, state, state, 3)
+        if (world != null) {
+            val state = world.getBlockState(pos)
+            world.notifyBlockUpdate(pos, state, state, 3)
+        }
     }
 
     override fun getUpdateTag(): NBTTagCompound {

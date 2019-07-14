@@ -1,0 +1,21 @@
+{
+  "result": {
+    "item": "divinefavor:goo_vial_small"
+  },
+  "pattern": [
+    " b ",
+    " g ",
+    " g "
+  ],
+  "type": "forge:ore_shaped",
+  "key": {
+    "b": {
+      "type": "forge:ore_dict",
+      "ore": "plankWood"
+    },
+    "g": {
+      "type": "forge:ore_dict",
+      "ore": "paneGlass"
+    }
+  }
+}

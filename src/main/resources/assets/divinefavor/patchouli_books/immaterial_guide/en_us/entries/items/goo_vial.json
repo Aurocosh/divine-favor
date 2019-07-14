@@ -1,0 +1,31 @@
+{
+  "name": "Goo vial",
+  "icon": "divinefavor:goo_vial_small",
+  "category": "items",
+  "pages": [
+    {
+      "type": "spotlight",
+      "item": "divinefavor:goo_vial_small",
+      "text": "Goo vials can store ethereal goo. Those vials can be used to collect goo and store goo. They also can place goo in the world when needed. All other items that can use goo will automatically take stored goo from vials. Vials come in three sizes."
+    },
+    {
+      "type": "crafting",
+      "text": "Small goo vial. Easy to make but can only store relatively small amount of goo.",
+      "recipe": "divinefavor:goo_vial_small"
+    },
+    {
+      "type": "crafting",
+      "text": "Medium goo vial. Affordable and can store significant amount of goo.",
+      "recipe": "divinefavor:goo_vial_medium"
+    },
+    {
+      "type": "crafting",
+      "text": "Big goo vial. Expensive and can store tremendous amount of goo.",
+      "recipe": "divinefavor:goo_vial_big"
+    },
+    {
+      "type": "text",
+      "text": "Any goo that you pickup will be automatically placed in any vial that still has enough space. To switch vial mode between collecting goo and placing goo just right click air."
+    }
+  ]
+}
