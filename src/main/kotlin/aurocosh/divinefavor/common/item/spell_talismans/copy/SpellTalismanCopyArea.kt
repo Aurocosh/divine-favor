@@ -15,7 +15,7 @@ import net.minecraftforge.fml.relauncher.Side
 import net.minecraftforge.fml.relauncher.SideOnly
 
 class SpellTalismanCopyArea(name: String, spirit: ModSpirit, favorCost: Int) : SpellTalismanCopy(name, spirit, favorCost) {
-    private val firstIsSet = propertyHandler.registerBoolProperty("first_is_set", defaultValue = false, showInTooltip = false, showInGui = false)
+    private val areaCorner = propertyHandler.registerEnumProperty("area_corner", defaultValue = AreaCorner.First, converter = AreaCorner)
     private val firstCorner = propertyHandler.registerBlockPosProperty("first_corner", BlockPos.ORIGIN)
     private val secondCorner = propertyHandler.registerBlockPosProperty("second_corner", BlockPos.ORIGIN)
 
@@ -28,13 +28,12 @@ class SpellTalismanCopyArea(name: String, spirit: ModSpirit, favorCost: Int) : S
     override fun raycastBlock(stack: ItemStack, castType: CastType) = true
 
     override fun preProcess(context: TalismanContext): Boolean {
-        if (context.player.isSneaking) {
+        if (!context.player.isSneaking) {
             val (stack, pos) = context.get(stackField, posField)
 
-            val firstSet = stack.get(firstIsSet)
-            val cornerToSet = if (firstSet) secondCorner else firstCorner
+            val areaCorner = stack.get(areaCorner)
+            val cornerToSet = if (areaCorner == AreaCorner.First) secondCorner else firstCorner
             stack.set(cornerToSet, pos)
-            stack.set(firstIsSet, !firstSet)
             return false
         }
         return super.preProcess(context)

@@ -249,7 +249,7 @@ item.divinefavor:spell_talisman_copy_blocks.name=Copy blocks
 item.divinefavor:spell_talisman_copy_cuboid.name=Copy cuboid
 item.divinefavor:spell_talisman_crushing_palm.name=Crushing palm talisman
 item.divinefavor:spell_talisman_crystalline_road.name=Crystalline road talisman
-item.divinefavor:spell_talisman_crystalyze_memory.name=Crystalyze memory
+item.divinefavor:spell_talisman_crystallize_memory.name=Crystallyze memory
 item.divinefavor:spell_talisman_deserialize_memory.name=Deserialize memory
 item.divinefavor:spell_talisman_distant_spark.name=Distant spark talisman
 item.divinefavor:spell_talisman_earthen_dive.name=Earthen dive talisman
@@ -677,7 +677,7 @@ item.divinefavor:spell_talisman_deserialize_memory.description=This talisman rea
 item.divinefavor:spell_talisman_serialize_memory.description=Converts current memorized block template into string and stores it to clipboard. Serialized template compatible with building gadgets.
 item.divinefavor:spell_talisman_copy_cuboid.description=This talisman creates block template from blocks inside of variable size cuboid and burns it into your memory.
 item.divinefavor:spell_talisman_copy_blocks.description=This talisman creates block template from chunk of adjacent blocks and burns it into your memory.
-item.divinefavor:spell_talisman_crystalyze_memory.description=This block crystalizes your current memorized block template into memory drop. Memory drops are storage items for block templates.
+item.divinefavor:spell_talisman_crystallize_memory.description=This block crystalizes your current memorized block template into memory drop. Memory drops are storage items for block templates.
 item.divinefavor:spell_talisman_build_template.description=This talisman builds copy of your current memorized block template into the world.
 item.divinefavor:spell_talisman_copy_area.description=This talisman creates block template from blocks inside area designated by two points and burns it into your memory.
 item.divinefavor:spell_talisman_armor_of_pacifist.description=Grants user armor of pacifist. Player will be protected from most damage types, but in turn will not be able to attack anyone.
@@ -978,6 +978,10 @@ name.divinefavor:property.template_anchor_value_northeast=North-East
 name.divinefavor:property.template_anchor_value_southeast=South-East
 name.divinefavor:property.template_anchor_value_southwest=South-West
 name.divinefavor:property.template_anchor_value_northwest=North-West
+
+name.divinefavor:property.area_corner=Corner: %1$s
+name.divinefavor:property.area_corner_value_first=First
+name.divinefavor:property.area_corner_value_second=Second
 
 ## TALISMAN PROPERTY TOOLTIPS
 tooltip.divinefavor:property.blink_distance=Teleportation distance

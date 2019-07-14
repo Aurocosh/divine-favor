@@ -1,0 +1,51 @@
+{
+  "name": "Block templates",
+  "icon": "divinefavor:memory_drop",
+  "category": "block_manipulation",
+  "sortnum": 5,
+  "pages": [
+    {
+      "type": "spotlight",
+      "item": "divinefavor:memory_drop",
+      "text": "Some spell talismans can create block templates and other can build blocks in the world according to those templates. This entry will attempt to explain how to use all items related to block templates. This entry is overview and you can find further details in other entries."
+    },
+    {
+      "type": "text",
+      "text": "What is block template? Block template is a copy of block states in certain area. Block templates can be stored in two locations: in players and in memory drops. Players can store only one template which will be called in further text 'currently remembered template'. Each memory drop can also store only one template, but you can create as many as you want."
+    },
+    {
+      "type": "spotlight",
+      "item": "divinefavor:spell_talisman_copy_area",
+      "text": "Above you see an example of copy talisman. Copy talismans can be used to create block templates. When casted this talisman will create template from selected blocks and set as your currently remembered template. You can remember only one block template at the time. All other talismans that need block template will use your currently remembered template."
+    },
+    {
+      "type": "text",
+      "text": "Keep in mind that every time you copy template with this talisman your previously remembered template is forgotten, so save it into memory drop beforehand if you need it. You can read more about copy talismans and how to use them in dedicated entry."
+    },
+    {
+      "type": "spotlight",
+      "item": "divinefavor:spell_talisman_build_template",
+      "text": "This talisman is different from all other build talismans. Unlike regular build talismans it can build structures out of many different types of blocks simultaneously, and unlike other build talismans this talisman requires block template to function. You can read more about build template talisman in dedicated entry."
+    },
+    {
+      "type": "spotlight",
+      "item": "divinefavor:spell_talisman_crystallize_memory",
+      "text": "This talisman can create memory drops. When used it will create memory drop and store copy of your currently memorized template in this drop. You can view template stored in drop by sneak right clicking while holding drop in your hand."
+    },
+    {
+      "type": "spotlight",
+      "item": "divinefavor:memory_drop",
+      "text": "They are items that can store block templates. When you right click with this item in your hand template that is currently stored in drop will be set as your currently memorized template. Memory drop is not damaged when used and can be used any number of times."
+    },
+    {
+      "type": "spotlight",
+      "item": "divinefavor:spell_talisman_serialize_memory",
+      "text": "This talisman can convert your currently remembered template into string, which is later copied into your clipboard. Serialized template is compatible with serialized blueprints from Building gadgets."
+    },
+    {
+      "type": "spotlight",
+      "item": "divinefavor:spell_talisman_deserialize_memory",
+      "text": "This talisman can convert serialized block template from your clipboard and recreate it in game. If template is sucessfully deserialized then it will be set as your currently remembered template. It is also compatible with blueprints from Building gadgets."
+    }
+  ]
+}

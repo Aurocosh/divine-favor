@@ -19,6 +19,10 @@
       "ore": "dyeRed"
     },
     {
+      "type": "ore",
+      "ore": "blockDiamond"
+    },
+    {
       "type": "stack",
       "item": "minecraft:diamond_pickaxe"
     }

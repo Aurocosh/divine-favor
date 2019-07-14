@@ -1,0 +1,25 @@
+{
+  "name": "Build template talisman",
+  "icon": "divinefavor:spell_talisman_build_template",
+  "category": "block_manipulation",
+  "sortnum": 7,
+  "pages": [
+    {
+      "type": "spotlight",
+      "item": "divinefavor:spell_talisman_build_template",
+      "text": "This talisman is different from all other build talismans. Unlike regular build talismans it can build structures out of many different types of blocks simultaneously, and unlike other build talismans this talisman requires block template to function. "
+    },
+    {
+      "type": "text",
+      "text": "To build desired template you need all blocks that are present in template. All of necessary blocks will be consumed from your inventory to build template. If there are not enough necessary blocks, then build talisman will do nothing. But just like other talismans this one can substitute blocks with ethereal goo. This block can mimic appearance of others blocks, but it will not copy any functionality of original block."
+    },
+    {
+      "type": "text",
+      "text": "If you building something and you don't have enough necessary blocks, but you have goo, then talisman will consume goo instead and replace missing blocks with it. In addition to normal properties for position and shift this talisman has anchor point property which determines which corner of the block template is considered origin."
+    },
+    {
+      "type": "text",
+      "text": "In addition to that this talisman can mirror and rotate your memorized block template. Each rotation of block template or mirrored versions is considered a new, separate from original block template and replaces it."
+    }
+  ]
+}

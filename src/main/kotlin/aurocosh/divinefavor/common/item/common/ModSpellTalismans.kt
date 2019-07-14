@@ -239,7 +239,7 @@ object ModSpellTalismans {
         copy_area = SpellTalismanCopyArea("copy_area", ModSpirits.materia, ConfigSpell.copyArea.favorCost)
         copy_blocks = SpellTalismanCopyBlocks("copy_blocks", ModSpirits.materia, ConfigSpell.copyBlocks.favorCost)
         copy_cuboid = SpellTalismanCopyCuboid("copy_cuboid", ModSpirits.materia, ConfigSpell.copyCuboid.favorCost)
-        crystalyze_memory = SpellTalismanCrystallizeMemory("crystalyze_memory", ModSpirits.materia, ConfigSpell.crystalyzeMemory.favorCost, SpellOptions.ALL_CAST)
+        crystalyze_memory = SpellTalismanCrystallizeMemory("crystallize_memory", ModSpirits.materia, ConfigSpell.crystallizeMemory.favorCost, SpellOptions.ALL_CAST)
         deserialize_memory = SpellTalismanDeserializeMemory("deserialize_memory", ModSpirits.materia, ConfigSpell.deserializeMemory.favorCost, SpellOptions.ALL_CAST)
         place_block = SpellTalismanPlaceBlock("place_block", ModSpirits.materia, ConfigSpell.woodenPunch.favorCost, SpellOptions.ALL_CAST_TRACE)
         place_torch = SpellTalismanPlaceTorch("place_torch", ModSpirits.materia, ConfigSpell.placeTorch.favorCost, SpellOptions.TRACE_ONLY_CAST)

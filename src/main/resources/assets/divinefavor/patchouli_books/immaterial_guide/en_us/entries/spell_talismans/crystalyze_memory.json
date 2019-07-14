@@ -1,15 +1,15 @@
 {
-  "name": "Crystalyze memory",
-  "icon": "divinefavor:spell_talisman_crystalyze_memory",
+  "name": "Crystallize memory",
+  "icon": "divinefavor:spell_talisman_crystallize_memory",
   "category": "spell_talismans",
   "pages": [
     {
       "type": "item_description",
-      "talisman": "divinefavor:spell_talisman_crystalyze_memory"
+      "talisman": "divinefavor:spell_talisman_crystallize_memory"
     },
     {
       "type": "spell_talisman_stats",
-      "talisman": "divinefavor:spell_talisman_crystalyze_memory"
+      "talisman": "divinefavor:spell_talisman_crystallize_memory"
     }
   ]
 }

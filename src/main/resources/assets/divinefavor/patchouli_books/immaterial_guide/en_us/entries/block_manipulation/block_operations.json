@@ -1,0 +1,26 @@
+{
+  "name": "Block operatioins",
+  "icon": "divinefavor:spell_talisman_undo",
+  "category": "block_manipulation",
+  "sortnum": 8,
+  "pages": [
+    {
+      "type": "spotlight",
+      "item": "divinefavor:spell_talisman_undo",
+      "text": "Most of the block operations performed by talismans can be cancelled and reapplied by special talismans. Above you see example of such talisman. This is undo talisman. When casted it will undo last block operation such as blocks destroyed, or blocks built"
+    },
+    {
+      "type": "spotlight",
+      "item": "divinefavor:spell_talisman_redo",
+      "text": "Whatever operation was cancelled by undo talisman can be repeated by redo talisman. You can see this talisman above. Keep in mind though even if you can redo operation it may behave differently or fail. For example, redoing build may fail if you no longer have needed blocks."
+    },
+    {
+      "type": "text",
+      "text": "To build desired template you need all blocks that are present in template. All of necessary blocks will be consumed from your inventory to build template. If there are not enough necessary blocks, then build talisman will do nothing. But just like other talismans this one can substitute blocks with ethereal goo. This block can mimic appearance of others blocks, but it will not copy any functionality of original block."
+    },
+    {
+      "type": "text",
+      "text": "You can cancel and redo following operations: blocks destroyed, blocks built, template built. Block replacement cannot be cancelled and also block breaking cannot be cancelled. Do not confuse block breaking and block destruction, when block is broken it will drop resources, but when it is destroyed it will not drop anything."
+    }
+  ]
+}

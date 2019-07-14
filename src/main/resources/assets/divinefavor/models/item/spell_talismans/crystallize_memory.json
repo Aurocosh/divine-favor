@@ -1,7 +1,7 @@
 {
     "parent": "item/generated",
     "textures": {
-        "layer1": "divinefavor:items/spell_talismans/crystalyze_memory",
+        "layer1": "divinefavor:items/spell_talismans/crystallize_memory",
         "layer0": "divinefavor:items/spell_talismans/base"
     }
 }

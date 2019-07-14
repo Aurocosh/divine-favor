@@ -219,7 +219,7 @@ public class ConfigSpell {
     @Config.Name("Copy blocks")
     public static CopyBlocks copyBlocks = new CopyBlocks();
     @Config.Name("Crystalyze memory")
-    public static CrystalyzeMemory crystalyzeMemory = new CrystalyzeMemory();
+    public static CrystallizeMemory crystallizeMemory = new CrystallizeMemory();
     @Config.Name("Copy area")
     public static CopyArea copyArea = new CopyArea();
     @Config.Name("Summon blaze")

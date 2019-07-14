@@ -1,0 +1,45 @@
+{
+  "name": "Break talismans",
+  "icon": "divinefavor:tool_talisman_break_surface",
+  "category": "block_manipulation",
+  "sortnum": 4,
+  "pages": [
+    {
+      "type": "spotlight",
+      "item": "divinefavor:tool_talisman_break_surface",
+      "text": "Some spell talismans can be collectively called 'Break talismans'. Above you can see an example. There are no special tool required for them, they are just spell talismans, but they behaviour is similar to each other. "
+    },
+    {
+      "type": "text",
+      "text": "Break talismans break blocks instantly. They are similar to destruction talismans, however unlike destruction talismans they actually drop resources from broken blocks. They all do same thing, break blocks, but each talisman selects which blocks to break differently. Specifics for each talisman will be shown on later pages. Before you can use any of those talismans you need to select which type of block you want to break."
+    },
+    {
+      "type": "text",
+      "text": " To select block type just sneak right click any block. When break talisman is used it will break selected blocks. Also most of the break talismans have property 'Fuzzy'. If this property is enabled then talisman will only break blocks of the same type as the block that player is selected. If this property is disabled then talisman will break any encountered blocks regardless of type."
+    },
+    {
+      "type": "text",
+      "text": "Also some break talismans have property called 'don't select below', if this property is enabled then talisman will not break any blocks that are below your feet."
+    },
+    {
+      "type": "spotlight",
+      "item": "divinefavor:tool_talisman_break_blocks",
+      "text": "This talisman will break block that player is looking at and blocks adjacent to this block. You can select how many adjacent blocks need to be broken."
+    },
+    {
+      "type": "spotlight",
+      "item": "divinefavor:tool_talisman_break_radius",
+      "text": "This talisman will break blocks in radius. For example if you set radius to 3 you pick will break 3 by 3 area instead of just one block. You can freely adjust radius."
+    },
+    {
+      "type": "spotlight",
+      "item": "divinefavor:tool_talisman_break_side",
+      "text": "This talisman will break block that player is looking at and blocks adjacent to this block that are on the same straight side. You can select how many adjacent blocks need to ber broken."
+    },
+    {
+      "type": "spotlight",
+      "item": "divinefavor:tool_talisman_break_surface",
+      "text": "This talisman will break block that player is looking at and blocks adjacent to this block that are on the same surface. You can select how many adjacent blocks need to ber broken."
+    }
+  ]
+}

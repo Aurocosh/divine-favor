@@ -36,10 +36,10 @@ import net.minecraftforge.fml.relauncher.SideOnly
 import java.util.*
 import javax.vecmath.Color3f
 
-abstract class SpellTalismanCopy(name: String, spirit: ModSpirit, favorCost: Int = ConfigGeneral.blockBuildingCost) : ItemSpellTalisman(name, spirit, favorCost, SpellOptions.TRACE_ONLY_CAST) {
+abstract class SpellTalismanCopy(name: String, spirit: ModSpirit, favorCost: Int = ConfigGeneral.blockBuildingCost) : ItemSpellTalisman(name, spirit, favorCost, SpellOptions.ALL_CAST_TRACE) {
     protected data class CopyCoordinates(val coordinates: List<BlockPos>, val boundingBox: CuboidBoundingBox)
 
-    protected val finalCoordinates = ContextProperty<CopyCoordinates>("coordinates", CopyCoordinates(emptyList(), CuboidBoundingBox()))
+    protected val finalCoordinates = ContextProperty("coordinates", CopyCoordinates(emptyList(), CuboidBoundingBox()))
 
     override fun validate(context: TalismanContext): Boolean {
         val boundingBox = context.get(finalCoordinates).boundingBox

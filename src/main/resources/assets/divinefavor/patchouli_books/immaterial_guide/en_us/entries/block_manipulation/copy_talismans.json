@@ -1,0 +1,36 @@
+{
+  "name": "Copy talismans",
+  "icon": "divinefavor:spell_talisman_copy_cuboid",
+  "category": "block_manipulation",
+  "sortnum": 6,
+  "pages": [
+    {
+      "type": "spotlight",
+      "item": "divinefavor:spell_talisman_copy_cuboid",
+      "text": "Some spell talismans can be collectively called 'Copy talismans'. Above you can see an example. There are no special tool required for them, they are just spell talismans, but they behaviour is similar to each other. "
+    },
+    {
+      "type": "text",
+      "text": "Copy talismans are used to create block templates from selected blocks. However each talisman selects which blocks to destroy differently. Specifics for each talisman will be shown on later pages. When copy talisman is used it will create block template and it will set is as your currently remembered template. Every time you create block template, your previously remembered template is forgotten, so save it into memory drop beforehand if you need it."
+    },
+    {
+      "type": "spotlight",
+      "item": "divinefavor:spell_talisman_copy_area",
+      "text": "This talisman will create template from all blocks inside selected area defined by two points in space. You can select points by right clicking while looking at the block. Which point will be set is controlled by talisman property 'Corner'. To create template you need to right click while sneaking."
+    },
+    {
+      "type": "spotlight",
+      "item": "divinefavor:spell_talisman_copy_blocks",
+      "text": "This talisman will create template from block that you are looking at as well as all blocks adjacent to him. You can select how many adjacent blocks to copy. To create template simply look at blocks and right click."
+    },
+    {
+      "type": "text",
+      "text": "Copy blocks talisman has property 'fuzzy' if this property is enabled then only blocks with the same type as very first block will be copied, if it is disabled, then blocks of any type will be copied. Also this talisman has property 'don't select below', if it enabled then talisman will not copy any blocks that are below your feet."
+    },
+    {
+      "type": "spotlight",
+      "item": "divinefavor:spell_talisman_copy_cuboid",
+      "text": "This talisman will copy blocks inside of arbitrary sized cuboid. You can freely adjust size and position of this cuboid."
+    }
+  ]
+}
