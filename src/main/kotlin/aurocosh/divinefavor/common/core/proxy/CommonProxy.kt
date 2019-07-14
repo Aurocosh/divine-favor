@@ -6,7 +6,6 @@ import aurocosh.divinefavor.common.custom_data.living.capability.LivingDataDataH
 import aurocosh.divinefavor.common.custom_data.player.capability.PlayerDataDataHandler
 import aurocosh.divinefavor.common.custom_data.world.capability.WorldDataDataHandler
 import aurocosh.divinefavor.common.entity.ModEntities
-import aurocosh.divinefavor.common.item.common.ModBathingBlends
 import aurocosh.divinefavor.common.item.common.*
 import aurocosh.divinefavor.common.item.contract.ModContracts
 import aurocosh.divinefavor.common.item.memory_pouch.capability.MemoryPouchDataHandler
@@ -92,6 +91,7 @@ open class CommonProxy {
     open fun init(e: FMLInitializationEvent) {
         ModMultiBlocks.init()
         ModItems.init()
+        ModSoulShards.init()
         ModBlocks.init()
         ModContactRecipes.init()
         ModMediumRecipes.init()

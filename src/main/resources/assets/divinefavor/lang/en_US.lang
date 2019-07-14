@@ -200,6 +200,8 @@ item.divinefavor:blend_redstone.name=Mystic redstone blend
 item.divinefavor:blend_snow.name=Evercold snow blend
 item.divinefavor:blend_wood.name=Cursed wood blend
 
+item.divinefavor:blend_ethereal_goo.name=Ethereal goo blend
+
 #ROPES
 item.divinefavor:rope_barrier.name=Barrier rope
 item.divinefavor:rope_explosive.name=Explosive rope
@@ -642,6 +644,8 @@ item.divinefavor:blend_lapis.description=Blend used for contacting spirit Loon
 item.divinefavor:blend_redstone.description=Blend used for contacting spirit Redwind
 item.divinefavor:blend_snow.description=Blend used for contacting spirit Blizrabi
 item.divinefavor:blend_wood.description=Blend used for contacting spirit Timber
+
+item.divinefavor:blend_ethereal_goo.description=This blend is used for brewing ethereal goo. Load this blend into bath heater and it it will convert some water into ethereal goo.
 
 ##ROPES
 item.divinefavor:rope_barrier.description=This rope will repel all creatures except players. Make a circle and stand in the middle or trap somebody by surrounding them with rope. Or cross out entrance to repel mobs. Durability of rope is limited and it will break eventually.

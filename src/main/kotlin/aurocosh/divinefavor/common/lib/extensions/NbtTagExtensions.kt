@@ -1,6 +1,9 @@
 package aurocosh.divinefavor.common.lib.extensions
 
+import aurocosh.divinefavor.common.block.soulbound_lectern.NbtProperty
 import aurocosh.divinefavor.common.block_templates.MetaItem
+import aurocosh.divinefavor.common.lib.Quadruple
+import aurocosh.divinefavor.common.lib.Quintuple
 import net.minecraft.block.state.IBlockState
 import net.minecraft.init.Blocks
 import net.minecraft.item.Item
@@ -112,4 +115,39 @@ fun <K, V> NBTTagCompound.getMap(tag: String, keyReader: (NBTTagCompound, String
         map[key] = value
     }
     return map
+}
+
+
+fun <T : Any> NBTTagCompound.set(property: NbtProperty<T>, value: T): Boolean {
+    return property.setValue(this, value)
+}
+
+fun <T : Any> NBTTagCompound.isPropertySet(property: NbtProperty<T>): Boolean {
+    return this.hasKey(property.tag)
+}
+
+fun <T : Any> NBTTagCompound.getOrNull(property: NbtProperty<T>): T? {
+    if (this.isPropertySet(property))
+        return property.getValue(this)
+    return null
+}
+
+fun <T : Any> NBTTagCompound.get(one: NbtProperty<T>): T {
+    return one.getValue(this)
+}
+
+fun <T : Any, K : Any> NBTTagCompound.get(one: NbtProperty<T>, two: NbtProperty<K>): Pair<T, K> {
+    return Pair(one.getValue(this), two.getValue(this))
+}
+
+fun <A : Any, B : Any, C : Any> NBTTagCompound.get(one: NbtProperty<A>, two: NbtProperty<B>, three: NbtProperty<C>): Triple<A, B, C> {
+    return Triple(one.getValue(this), two.getValue(this), three.getValue(this))
+}
+
+fun <A : Any, B : Any, C : Any, D : Any> NBTTagCompound.get(one: NbtProperty<A>, two: NbtProperty<B>, three: NbtProperty<C>, four: NbtProperty<D>): Quadruple<A, B, C, D> {
+    return Quadruple(one.getValue(this), two.getValue(this), three.getValue(this), four.getValue(this))
+}
+
+fun <A : Any, B : Any, C : Any, D : Any, E : Any> NBTTagCompound.get(one: NbtProperty<A>, two: NbtProperty<B>, three: NbtProperty<C>, four: NbtProperty<D>, five: NbtProperty<E>): Quintuple<A, B, C, D, E> {
+    return Quintuple(one.getValue(this), two.getValue(this), three.getValue(this), four.getValue(this), five.getValue(this))
 }

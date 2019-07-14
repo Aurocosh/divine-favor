@@ -1,0 +1,21 @@
+{
+  "result": {
+    "item": "divinefavor:blend_ethereal_goo"
+  },
+  "pattern": [
+    "sss",
+    "sps",
+    "sss"
+  ],
+  "type": "forge:ore_shaped",
+  "key": {
+    "s": {
+      "type": "forge:ore_dict",
+      "ore": "stone"
+    },
+    "p": {
+      "type": "forge:ore_dict",
+      "ore": "soulShard"
+    }
+  }
+}
