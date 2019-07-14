@@ -1,0 +1,61 @@
+{
+  "name": "Ethereal goo",
+  "icon": "divinefavor:ethereal_goo",
+  "category": "block_manipulation",
+  "sortnum": 9,
+  "pages": [
+    {
+      "type": "spotlight",
+      "item": "divinefavor:ethereal_goo",
+      "text": "Ethereal goo is a polymorphic block that can mimic appearance of other blocks. In normal state this block is purple and translucent and has ripples on its surface despite being solid."
+    },
+    {
+      "type": "spotlight",
+      "item": "divinefavor:goo_vial_small",
+      "text": "Goo vials can store ethereal goo. Those vials can be used to collect goo and store goo. They also can place goo in the world when needed. All other items that can use goo will automatically take stored goo from vials. Vials come in three sizes."
+    },
+    {
+      "type": "spotlight",
+      "item": "divinefavor:ethereal_brush",
+      "text": "You can change shape of ethereal goo block and make it mimic another by using ethereal brush. Brush can either paint existing goo with form of another block, or it can place already painted goo blocks. You can read more about it in dedicated entry."
+    },
+    {
+      "type": "spotlight",
+      "item": "divinefavor:spell_talisman_build_wall",
+      "text": "Also goo can be used by building talismans to replace missing blocks. Goo is consumed automatically if you have it in your inventory. You can read more about it in dedicated entry."
+    },
+    {
+      "type": "crafting",
+      "text": "Goo has many uses but first you need to craft it. To create some goo first you gonna need some $(item)Ethereal goo blend$(). You can see recipe above.",
+      "recipe": "divinefavor:blend_ethereal_goo"
+    },
+    {
+      "type": "spotlight",
+      "item": "divinefavor:bath_heater",
+      "text": "After you crafted ethereal goo blend you will need bath heater. When you have it make a bath and fill it with water. After that you can load blend and fuel in bath heater. Any burnable fuel will do."
+    },
+    {
+      "type": "text",
+      "text": "If you did everything correctly them water in bath will start to bubble and after a while some of the water in bath will be converted to ethereal goo. One blend can usually produce 8 blocks of goo. After either all water is converted or all blends spent you can collect goo by either breaking it with pickaxe or by collecting it with goo vial. Keep in mind thou that baths for goo brewing need to be deep."
+    },
+    {
+      "type": "text",
+      "text": "Bath heatter cannot heat water above itself and it cannot heat water too far away. If water is not heated then it will not be converted to goo. You can tell if water is heated or not by bubbles. If it is bubbling then it is heated. Water will be transformed from bottom to top gradually. On following pages you can see examples of baths intended for goo brewing."
+    },
+    {
+      "type": "multiblock",
+      "multiblock_id": "divinefavor:patchouli.goo_bath_small",
+      "text": "Relatively small bath for goo brewing with window."
+    },
+    {
+      "type": "multiblock",
+      "multiblock_id": "divinefavor:patchouli.goo_bath_medium",
+      "text": "Medium bath for goo brewing."
+    },
+    {
+      "type": "multiblock",
+      "multiblock_id": "divinefavor:patchouli.goo_bath_big",
+      "text": "Large bath for goo brewing with window. Notice that baths for goo brewing have to be deeper then regular baths."
+    }
+  ]
+}

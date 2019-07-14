@@ -52,8 +52,11 @@ object BlockExchangeRendering {
         val itemStack = UtilBlock.getSilkDropIfPresent(player.world, renderBlockState, player)
 
         // Check if we have the blocks required
-        var blockCount = UtilPlayer.countItems(itemStack, player)
-        blockCount += UtilPlayer.countGoo(player)
+        val blocksNeeded = coordinates.size
+        val itemsPresent = UtilPlayer.countRequiredItems(itemStack, player, blocksNeeded)
+        val gooNeeded = blocksNeeded - itemsPresent
+        val gooPresent = UtilPlayer.countRequiredGoo(player, gooNeeded)
+        var blockCount = itemsPresent + gooPresent
 
         // Prepare the fake world -- using a fake world lets us render things properly, like fences connecting.
         fakeWorld.setWorldAndState(player.world, renderBlockState, coordinates.toHashSet())

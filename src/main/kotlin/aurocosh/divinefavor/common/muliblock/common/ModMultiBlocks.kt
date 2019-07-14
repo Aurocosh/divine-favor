@@ -32,6 +32,10 @@ object ModMultiBlocks {
     lateinit var bath_example_second: ModMultiBlock
     lateinit var bath_example_third: ModMultiBlock
 
+    lateinit var goo_bath_small: ModMultiBlock
+    lateinit var goo_bath_medium: ModMultiBlock
+    lateinit var goo_bath_big: ModMultiBlock
+
     fun preInit() {
         altar_arbow = MultiblockLoader.load("altar", "arbow")
         altar_blizrabi = MultiblockLoader.load("altar", "blizrabi")
@@ -61,6 +65,10 @@ object ModMultiBlocks {
         bath_example_first = MultiblockLoader.load("bath_example", "first")
         bath_example_second = MultiblockLoader.load("bath_example", "second")
         bath_example_third = MultiblockLoader.load("bath_example", "third")
+
+        goo_bath_small = MultiblockLoader.load("goo_bath", "small")
+        goo_bath_medium = MultiblockLoader.load("goo_bath", "medium")
+        goo_bath_big = MultiblockLoader.load("goo_bath", "big")
     }
 
     fun init() {
@@ -89,5 +97,9 @@ object ModMultiBlocks {
         PatchouliMultiblockAdapter.register(bath_example_first)
         PatchouliMultiblockAdapter.register(bath_example_second)
         PatchouliMultiblockAdapter.register(bath_example_third)
+
+        PatchouliMultiblockAdapter.register(goo_bath_small)
+        PatchouliMultiblockAdapter.register(goo_bath_medium)
+        PatchouliMultiblockAdapter.register(goo_bath_big)
     }
 }
