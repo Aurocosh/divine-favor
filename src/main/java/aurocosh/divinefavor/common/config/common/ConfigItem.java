@@ -15,11 +15,11 @@ public class ConfigItem {
     @Config.Name("Contract capacity minor")
     public static Contract contractCapacityMinor = new Contract(0, 0, 100, false);
     @Config.Name("Contract capacity major")
-    public static Contract contractCapacityMajor = new Contract(0, 0, 500,false);
+    public static Contract contractCapacityMajor = new Contract(0, 0, 500, false);
     @Config.Name("Contract regen minor")
     public static Contract contractRegenMinor = new Contract(0, 20, 0, false);
     @Config.Name("Contract regen major")
-    public static Contract contractRegenMajor = new Contract(0, 200, 0,false);
+    public static Contract contractRegenMajor = new Contract(0, 200, 0, false);
     @Config.Name("Inform")
     public static Contract contractInform = new Contract(0, 0, 0, true);
     @Config.Name("Creative")
@@ -58,8 +58,12 @@ public class ConfigItem {
     public static SpellPick spellPickOrange = new SpellPick();
 
     // New configs
-    @Config.Name("Goo vial")
-    public static GooVial gooVial = new GooVial();
+    @Config.Name("Small goo vial")
+    public static GooVial smallGooVial = new GooVial(512);
+    @Config.Name("Medium goo vial")
+    public static GooVial mediumGooVial = new GooVial(2048);
+    @Config.Name("Big goo vial")
+    public static GooVial bigGooVial = new GooVial(8192);
     @Config.Name("Memory drop")
     public static MemoryDrop memoryDrop = new MemoryDrop();
     @Config.Name("Ice")

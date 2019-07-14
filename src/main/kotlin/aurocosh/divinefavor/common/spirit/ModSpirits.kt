@@ -21,7 +21,7 @@ object ModSpirits {
         blizrabi = ModSpirit("blizrabi", BlizrabiPunishment(), ConfigSpirits.blizrabi)
         endererer = ModSpirit("endererer", EnderererPunishment(), ConfigSpirits.endererer)
         loon = ModSpirit("loon", LoonPunishment(), ConfigSpirits.loon)
-        materia = ModSpirit("materia", LoonPunishment(), ConfigSpirits.materia) // TODO replace punishment
+        materia = ModSpirit("materia", MateriaPunishment(), ConfigSpirits.materia)
         neblaze = ModSpirit("neblaze", NeblazePunishment(), ConfigSpirits.neblaze)
         redwind = ModSpirit("redwind", RedwindPunishment(), ConfigSpirits.redwind)
         romol = ModSpirit("romol", RomolPunishment(), ConfigSpirits.romol)

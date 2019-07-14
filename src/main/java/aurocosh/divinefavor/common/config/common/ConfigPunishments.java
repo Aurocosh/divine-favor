@@ -14,6 +14,8 @@ public class ConfigPunishments {
     public static EnderererPunishmentConfig endererer = new EnderererPunishmentConfig();
     @Config.Name("Loon")
     public static LoonPunishmentConfig loon = new LoonPunishmentConfig();
+    @Config.Name("Materia")
+    public static MateriaPunishmentConfig materia = new MateriaPunishmentConfig();
     @Config.Name("Neblaze")
     public static NeblazePunishmentConfig neblaze = new NeblazePunishmentConfig();
     @Config.Name("Redwind")

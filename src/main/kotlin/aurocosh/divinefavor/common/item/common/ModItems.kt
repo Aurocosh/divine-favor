@@ -95,9 +95,9 @@ object ModItems {
         spell_pick_blue = ItemSpellPick("spell_pick_blue", "spell_pick_blue/model", ConstMainTabOrder.PICKS, ConfigItem.spellPickBlue, Item.ToolMaterial.IRON)
         spell_pick_orange = ItemSpellPick("spell_pick_orange", "spell_pick_orange/model", ConstMainTabOrder.PICKS, ConfigItem.spellPickOrange, Item.ToolMaterial.IRON)
 
-        goo_vial_small = ItemGooVial("small", 512)
-        goo_vial_medium = ItemGooVial("medium", 2048)
-        goo_vial_big = ItemGooVial("big", 8192)
+        goo_vial_small = ItemGooVial("small", ConfigItem.smallGooVial.capacity)
+        goo_vial_medium = ItemGooVial("medium", ConfigItem.mediumGooVial.capacity)
+        goo_vial_big = ItemGooVial("big", ConfigItem.bigGooVial.capacity)
 
         for (spirit in ModMappers.spirits.values)
             markedGlasses.add(ItemMarkedGlass(spirit, ConstGemTabOrder.MARKED_GLASS))
