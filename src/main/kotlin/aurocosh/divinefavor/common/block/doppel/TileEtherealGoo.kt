@@ -22,10 +22,11 @@ class TileEtherealGoo : TileEntity() {
             return if (field == null || field === Blocks.AIR.defaultState) null else field
         }
         set(value) {
-            field = if (value == null || field == null)
-                value
-            else
-                if (value.block === ModBlocks.ethereal_goo) null else value
+            field = when {
+                value == null -> value
+                value.block === ModBlocks.ethereal_goo -> null
+                else -> value
+            }
             markDirtyClient()
         }
 
@@ -34,10 +35,11 @@ class TileEtherealGoo : TileEntity() {
             return if (field == null || field === Blocks.AIR.defaultState) null else field
         }
         set(value) {
-            field = if (value == null || field == null)
-                value
-            else
-                if (value.block === ModBlocks.ethereal_goo) null else value
+            field = when {
+                value == null -> value
+                value.block === ModBlocks.ethereal_goo -> null
+                else -> value
+            }
             markDirtyClient()
         }
 
