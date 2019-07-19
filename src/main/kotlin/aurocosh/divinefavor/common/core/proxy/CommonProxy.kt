@@ -13,6 +13,7 @@ import aurocosh.divinefavor.common.item.talisman_tools.grimoire.capability.Grimo
 import aurocosh.divinefavor.common.item.talisman_tools.spell_blade.capability.SpellBladeDataHandler
 import aurocosh.divinefavor.common.item.talisman_tools.spell_bow.capability.SpellBowDataHandler
 import aurocosh.divinefavor.common.item.talisman_tools.spell_pick.capability.SpellPickDataHandler
+import aurocosh.divinefavor.common.muliblock.common.ModCustomMultiBlocks
 import aurocosh.divinefavor.common.muliblock.common.ModMultiBlocks
 import aurocosh.divinefavor.common.network.GuiHandler
 import aurocosh.divinefavor.common.network.ModBufSerializers
@@ -36,6 +37,7 @@ import net.minecraftforge.fml.common.event.FMLPostInitializationEvent
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent
 import net.minecraftforge.fml.common.network.NetworkRegistry
+import java.io.File
 
 @Mod.EventBusSubscriber(modid = DivineFavor.MOD_ID)
 open class CommonProxy {
@@ -50,6 +52,7 @@ open class CommonProxy {
         ModBufSerializers.preInit()
 
         ModSpirits.preInit()
+        ModCustomMultiBlocks.preInit(event)
         ModMultiBlocks.preInit()
 
         ModPotions.preInit()

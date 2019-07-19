@@ -4,7 +4,6 @@ import aurocosh.divinefavor.common.constants.BlockPosConstants
 import aurocosh.divinefavor.common.muliblock.MultiBlockPart
 import com.google.gson.annotations.Expose
 import net.minecraft.util.math.BlockPos
-import java.util.*
 
 class MultiBlockData {
     @Expose
@@ -20,7 +19,7 @@ class MultiBlockData {
         symmetrical = true
         basePosition = BlockPosConstants.ZERO
         controllerPosition = BlockPosConstants.ZERO
-        parts = ArrayList()
+        parts = emptyList()
     }
 
     constructor(symmetrical: Boolean, basePosition: BlockPos, controllerPosition: BlockPos, parts: List<MultiBlockPart>) {
@@ -29,4 +28,6 @@ class MultiBlockData {
         this.controllerPosition = controllerPosition
         this.parts = parts
     }
+
+    fun isValid() = parts.isNotEmpty()
 }

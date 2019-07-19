@@ -22,7 +22,7 @@ object MultiblockLoader {
             .registerTypeAdapter(BlockPos::class.java, BlockPosToByteSerializer())
             .create()
 
-    fun load(type: String, name: String, vararg configs: String): ModMultiBlock {
+    fun load(type: String, name: String, configs: Array<out String>): ModMultiBlock {
         val confPaths = ArrayList<String>()
         if (configs.isEmpty())
             confPaths.add(name)
@@ -30,23 +30,27 @@ object MultiblockLoader {
         val configurations = ArrayList<MultiBlockConfiguration>(confPaths.size)
         for (configurationName in confPaths) {
             val jsonString = UtilAssets.loadTextFile(DivineFavor.container, ConstResources.MULTIBLOCK_ASSETS + type + "/" + configurationName + ".json")
-
-            var data: MultiBlockData? = null
-            try {
-                data = gson.fromJson(jsonString, MultiBlockData::class.java)
-            } catch (e: JsonSyntaxException) {
-                e.printStackTrace()
-            }
-
-            if (data == null)
-                data = MultiBlockData()
+            val data = deserializeJson(jsonString)
             configurations.addAll(generateConfigurations(type + "_" + configurationName, data))
         }
 
         return ModMultiBlock(type + "_" + name, configurations)
     }
 
-    private fun generateConfigurations(name: String, data: MultiBlockData): List<MultiBlockConfiguration> {
+    fun deserializeJson(jsonString: String): MultiBlockData {
+        var data: MultiBlockData? = null
+        try {
+            data = MultiblockLoader.gson.fromJson(jsonString, MultiBlockData::class.java)
+        } catch (e: JsonSyntaxException) {
+            e.printStackTrace()
+        }
+
+        if (data == null)
+            data = MultiBlockData()
+        return data
+    }
+
+    fun generateConfigurations(name: String, data: MultiBlockData): List<MultiBlockConfiguration> {
         val localBounds = ArrayList<BlockPos>()
         for (part in data.parts) {
             val coordinates = CuboidBoundingBox.getBoundingBox(part.positions)

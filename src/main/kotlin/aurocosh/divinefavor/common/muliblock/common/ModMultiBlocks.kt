@@ -1,6 +1,7 @@
 package aurocosh.divinefavor.common.muliblock.common
 
 import aurocosh.divinefavor.common.muliblock.ModMultiBlock
+import aurocosh.divinefavor.common.muliblock.common.ModCustomMultiBlocks.getMultiblock
 
 object ModMultiBlocks {
     lateinit var altar_arbow: ModMultiBlock
@@ -37,38 +38,38 @@ object ModMultiBlocks {
     lateinit var goo_bath_big: ModMultiBlock
 
     fun preInit() {
-        altar_arbow = MultiblockLoader.load("altar", "arbow")
-        altar_blizrabi = MultiblockLoader.load("altar", "blizrabi")
-        altar_endererer = MultiblockLoader.load("altar", "endererer")
-        altar_loon = MultiblockLoader.load("altar", "loon")
-        altar_materia = MultiblockLoader.load("altar", "materia")
-        altar_neblaze = MultiblockLoader.load("altar", "neblaze")
-        altar_redwind = MultiblockLoader.load("altar", "redwind")
-        altar_romol = MultiblockLoader.load("altar", "romol")
-        altar_squarefury = MultiblockLoader.load("altar", "squarefury")
-        altar_timber = MultiblockLoader.load("altar", "timber")
+        altar_arbow = getMultiblock("altar", "arbow")
+        altar_blizrabi = getMultiblock("altar", "blizrabi")
+        altar_endererer = getMultiblock("altar", "endererer")
+        altar_loon = getMultiblock("altar", "loon")
+        altar_materia = getMultiblock("altar", "materia")
+        altar_neblaze = getMultiblock("altar", "neblaze")
+        altar_redwind = getMultiblock("altar", "redwind")
+        altar_romol = getMultiblock("altar", "romol")
+        altar_squarefury = getMultiblock("altar", "squarefury")
+        altar_timber = getMultiblock("altar", "timber")
 
-        soulbound_lectern_arbow = MultiblockLoader.load("soulbound_lectern", "arbow")
-        soulbound_lectern_blizrabi = MultiblockLoader.load("soulbound_lectern", "blizrabi")
-        soulbound_lectern_endererer = MultiblockLoader.load("soulbound_lectern", "endererer")
-        soulbound_lectern_loon = MultiblockLoader.load("soulbound_lectern", "loon")
-        soulbound_lectern_materia = MultiblockLoader.load("soulbound_lectern", "materia")
-        soulbound_lectern_neblaze = MultiblockLoader.load("soulbound_lectern", "neblaze")
-        soulbound_lectern_redwind = MultiblockLoader.load("soulbound_lectern", "redwind")
-        soulbound_lectern_romol = MultiblockLoader.load("soulbound_lectern", "romol")
-        soulbound_lectern_squarefury = MultiblockLoader.load("soulbound_lectern", "squarefury")
-        soulbound_lectern_timber = MultiblockLoader.load("soulbound_lectern", "timber")
+        soulbound_lectern_arbow = getMultiblock("soulbound_lectern", "arbow")
+        soulbound_lectern_blizrabi = getMultiblock("soulbound_lectern", "blizrabi")
+        soulbound_lectern_endererer = getMultiblock("soulbound_lectern", "endererer")
+        soulbound_lectern_loon = getMultiblock("soulbound_lectern", "loon")
+        soulbound_lectern_materia = getMultiblock("soulbound_lectern", "materia")
+        soulbound_lectern_neblaze = getMultiblock("soulbound_lectern", "neblaze")
+        soulbound_lectern_redwind = getMultiblock("soulbound_lectern", "redwind")
+        soulbound_lectern_romol = getMultiblock("soulbound_lectern", "romol")
+        soulbound_lectern_squarefury = getMultiblock("soulbound_lectern", "squarefury")
+        soulbound_lectern_timber = getMultiblock("soulbound_lectern", "timber")
 
-        snowman = MultiblockLoader.load("spawn_validation", "snowman")
-        iron_golem = MultiblockLoader.load("spawn_validation", "iron_golem")
+        snowman = getMultiblock("spawn_validation", "snowman")
+        iron_golem = getMultiblock("spawn_validation", "iron_golem")
 
-        bath_example_first = MultiblockLoader.load("bath_example", "first")
-        bath_example_second = MultiblockLoader.load("bath_example", "second")
-        bath_example_third = MultiblockLoader.load("bath_example", "third")
+        bath_example_first = getMultiblock("bath_example", "first")
+        bath_example_second = getMultiblock("bath_example", "second")
+        bath_example_third = getMultiblock("bath_example", "third")
 
-        goo_bath_small = MultiblockLoader.load("goo_bath", "small")
-        goo_bath_medium = MultiblockLoader.load("goo_bath", "medium")
-        goo_bath_big = MultiblockLoader.load("goo_bath", "big")
+        goo_bath_small = getMultiblock("goo_bath", "small")
+        goo_bath_medium = getMultiblock("goo_bath", "medium")
+        goo_bath_big = getMultiblock("goo_bath", "big")
     }
 
     fun init() {
