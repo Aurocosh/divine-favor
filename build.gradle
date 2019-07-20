@@ -92,7 +92,7 @@ dependencies {
     deobfCompile "vazkii.patchouli:Patchouli:${p_version}"
 
     compile group: "net.shadowfacts", name: "Forgelin", version: "${forgelin_version}"
-    compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${kotlin_version}"
+    compile "org.jetbrains.kotlin:kotlin-stdlib:${kotlin_version}"
     compile "aurocosh.autonetworklib:autonetworklib-${mc_sub_version}:${auto_network_version}"
 }
 
