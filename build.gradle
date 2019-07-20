@@ -62,8 +62,11 @@ repositories {
 def currentReleaseType = getReleaseType()
 version = "${mod_version}.${generateVersionCode()}"
 
+def localDependencies = getEnvVar('LOCAL_DEPENDENCIES').toBoolean()
+
 println "Mod version: $version"
 println "Release type: $currentReleaseType"
+println "Local dependencies: $localDependencies"
 //println generateChangeLog('release')
 
 group = mod_group
@@ -77,6 +80,8 @@ minecraft {
     runDir = "run"
     mappings = mc_mappings
     makeObfSourceJar = false
+
+    replace 'required-after:patchouli;required:forgelin', "required-after:patchouli;required:forgelin;required:autonetworklib@[${auto_network_version},)"
 }
 
 dependencies {
@@ -86,14 +91,15 @@ dependencies {
     runtime "mezz.jei:jei_${mc_sub_version}:${jei_version}"
 
     compile "com.blamejared:MTLib:3.0.4.8"
-    compile  "CraftTweaker2:CraftTweaker2-MC1120-Main:1.12-${ct_version}"
+    compile "CraftTweaker2:CraftTweaker2-MC1120-Main:1.12-${ct_version}"
     deobfCompile "team.chisel.ctm:CTM:MC${mc_sub_version}-${ctm_version}:api"
 
     deobfCompile "vazkii.patchouli:Patchouli:${p_version}"
 
     compile group: "net.shadowfacts", name: "Forgelin", version: "${forgelin_version}"
     compile "org.jetbrains.kotlin:kotlin-stdlib:${kotlin_version}"
-    compile "aurocosh.autonetworklib:autonetworklib-${mc_sub_version}:${auto_network_version}"
+    if (!localDependencies)
+        compile "aurocosh.autonetworklib:autonetworklib-${mc_sub_version}:${auto_network_version}"
 }
 
 processResources
@@ -106,7 +112,7 @@ processResources
     from(sourceSets.main.resources.srcDirs) {
         include 'mcmod.info'
         // replace version and mcversion
-        expand 'version':project.version, 'mcversion':project.minecraft.version
+        expand 'version': project.version, 'mcversion': project.minecraft.version
     }
 
     // copy everything else, thats not the mcmod.info
@@ -127,7 +133,7 @@ static def getReleaseType() {
 
 static def generateChangeLog(releaseType) {
     def currentChange = shExec("git log --format=%B -n 1 HEAD")
-    if(releaseType == 'beta')
+    if (releaseType == 'beta')
         return currentChange
 
     def logWithNotes = shExec("git log origin/master --format=%H_%N")
@@ -139,23 +145,27 @@ static def generateChangeLog(releaseType) {
 }
 
 static def shExec(command, ignoreEmptyResult = false, ignoreErrors = false) {
-    if(OperatingSystem.current().isLinux())
-        command = command.replaceAll('"','\\\\"')
+    if (OperatingSystem.current().isLinux())
+        command = command.replaceAll('"', '\\\\"')
 
-    def resultBuilder = ''<<''
-    def errorsBuilder = ''<<''
+    def resultBuilder = '' << ''
+    def errorsBuilder = '' << ''
     def task = command.execute()
     task.waitForProcessOutput(resultBuilder, errorsBuilder)
 
     def result = resultBuilder.toString().trim()
     def errors = errorsBuilder.toString().trim()
-    if((result.empty && !ignoreEmptyResult) || (!errors.empty && !ignoreErrors))
+    if ((result.empty && !ignoreEmptyResult) || (!errors.empty && !ignoreErrors))
         throw new RuntimeException("Could not execute command $command. Cmd output: $result. Errors: $errors")
     return result
 }
 
-jar {
+static def getEnvVar(varName,fallback = '') {
+    def value = System.getenv(varName)
+    return value ? value : fallback
+}
 
+jar {
 }
 
 compileKotlin {
@@ -170,7 +180,7 @@ compileTestKotlin {
 }
 
 curseforge {
-    apiKey = System.getenv('CURSEFORGE_API_KEY') ? System.getenv('CURSEFORGE_API_KEY') : ''
+    apiKey = getEnvVar('CURSEFORGE_API_KEY')
     project {
         id = curse_project_id
         changelog = generateChangeLog(currentReleaseType)
