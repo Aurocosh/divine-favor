@@ -54,7 +54,10 @@ class BlockSoulboundLectern(name: String, material: Material) : ModBlock(ConstBl
     }
 
     override fun getStateFromMeta(meta: Int): IBlockState {
-        return this.defaultState.withProperty(FACING, EnumFacing.byIndex(meta and 7))
+        var facing = EnumFacing.byIndex(meta and 7)
+        if (facing.axis == EnumFacing.Axis.Y)
+            facing = EnumFacing.NORTH
+        return this.defaultState.withProperty(FACING, facing)
     }
 
     override fun getMetaFromState(state: IBlockState): Int {

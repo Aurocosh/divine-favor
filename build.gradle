@@ -61,7 +61,6 @@ repositories {
 //logging.level = LogLevel.DEBUG
 def currentReleaseType = getReleaseType()
 version = "${mod_version}.${generateVersionCode()}"
-
 def localDependencies = getEnvVar('LOCAL_DEPENDENCIES').toBoolean()
 
 println "Mod version: $version"
@@ -81,6 +80,7 @@ minecraft {
     mappings = mc_mappings
     makeObfSourceJar = false
 
+    replaceIn "BuildVars.java"
     replace 'required-after:patchouli;required:forgelin', "required-after:patchouli;required:forgelin;required:autonetworklib@[${auto_network_version},)"
 }
 
