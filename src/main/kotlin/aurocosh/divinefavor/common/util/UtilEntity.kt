@@ -2,10 +2,9 @@ package aurocosh.divinefavor.common.util
 
 import aurocosh.divinefavor.common.config.common.ConfigGeneral
 import aurocosh.divinefavor.common.lib.GlobalBlockPos
-import aurocosh.divinefavor.common.lib.extensions.getBlock
+import aurocosh.divinefavor.common.lib.extensions.getPreviousPosition
 import aurocosh.divinefavor.common.lib.extensions.multicatch
 import com.google.common.base.Predicate
-import net.minecraft.block.Block
 import net.minecraft.entity.Entity
 import net.minecraft.entity.EntityLivingBase
 import net.minecraft.entity.item.EntityItem
@@ -23,6 +22,8 @@ import java.lang.reflect.InvocationTargetException
 import java.util.*
 
 object UtilEntity {
+    private val waterWalkingTolerance : Double = 0.25
+
     fun setVelocity(entity: Entity, direction: Vec3d, velocity: Float) {
         val motion = direction.normalize().scale(velocity.toDouble())
         entity.motionX = motion.x
@@ -37,22 +38,29 @@ object UtilEntity {
         entity.motionZ += motion.z
     }
 
-    fun tickLiquidWalk(livingBase: EntityLivingBase, liquid: Block) {
-        val world = livingBase.entityWorld
-        val pos = livingBase.position
-
-        if (livingBase.isSneaking)
-            return
-        if (!world.isAirBlock(pos))
-            return
-        if (world.getBlock(pos.down()) !== liquid)
-            return
+    fun tickLiquidWalk(livingBase: EntityLivingBase, canWalkOnBlock: (World, BlockPos)->(Boolean)) {
         if (livingBase.motionY >= 0)
             return
+        if (livingBase.isSneaking)
+            return
 
-        livingBase.motionY = 0.0
-        livingBase.onGround = true
-        livingBase.aiMoveSpeed = 0.1f
+        val pos = livingBase.position
+        val world = livingBase.entityWorld
+        val prevPos = livingBase.getPreviousPosition()
+        if (!world.isAirBlock(pos) || !world.isAirBlock(prevPos))
+            return
+        if (!canWalkOnBlock.invoke(world, pos.down()) && !canWalkOnBlock.invoke(world, prevPos.down()))
+            return
+
+        if(livingBase.positionVector.y - livingBase.positionVector.y.toInt() > waterWalkingTolerance)
+        {
+            livingBase.motionY = -0.15
+        }
+        else{
+            livingBase.motionY = 0.0
+            livingBase.onGround = true
+            livingBase.aiMoveSpeed = 0.1f
+        }
     }
 
     fun dropItemsOnGround(world: World, handler: IItemHandler?, pos: BlockPos) {

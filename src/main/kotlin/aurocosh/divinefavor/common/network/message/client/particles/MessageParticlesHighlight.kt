@@ -11,13 +11,13 @@ import aurocosh.divinefavor.common.lib.extensions.isWater
 import aurocosh.divinefavor.common.lib.wrapper.ConvertingPredicate
 import aurocosh.divinefavor.common.network.message.base.DivineClientMessage
 import net.minecraft.block.Block
+import net.minecraft.block.state.IBlockState
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.util.math.BlockPos
 import net.minecraft.util.math.Vec3d
 import net.minecraft.world.World
 import net.minecraftforge.fml.relauncher.Side
 import net.minecraftforge.fml.relauncher.SideOnly
-
 import javax.vecmath.Color3f
 
 abstract class MessageParticlesHighlight : DivineClientMessage {
@@ -67,9 +67,9 @@ abstract class MessageParticlesHighlight : DivineClientMessage {
                 val block = Block.getBlockFromName(blockName)
                 return if (block == null) { _ -> false } else { pos -> world.getBlock(pos) === block }
             }
-            SenseBlockPredicate.WATER -> return ConvertingPredicate(world::getBlock, Block::isWater)::invoke
-            SenseBlockPredicate.LAVA -> return ConvertingPredicate(world::getBlock, Block::isLava)::invoke
-            SenseBlockPredicate.LIQUID -> return ConvertingPredicate(world::getBlock, Block::isLiquid)::invoke
+            SenseBlockPredicate.WATER -> return ConvertingPredicate(world::getBlockState, IBlockState::isWater)::invoke
+            SenseBlockPredicate.LAVA -> return ConvertingPredicate(world::getBlockState, IBlockState::isLava)::invoke
+            SenseBlockPredicate.LIQUID -> return ConvertingPredicate(world::getBlockState, IBlockState::isLiquid)::invoke
             SenseBlockPredicate.ORE -> return ConvertingPredicate(world::getBlock, ConfigGeneral.ORE_BLOCKS::contains)::invoke
             SenseBlockPredicate.AIR -> return world::isAirBlock
         }

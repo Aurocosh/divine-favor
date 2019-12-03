@@ -16,7 +16,7 @@
     },
     {
       "type": "ore",
-      "ore": "oreDiamond"
+      "ore": "oreGold"
     },
     {
       "type": "stack",

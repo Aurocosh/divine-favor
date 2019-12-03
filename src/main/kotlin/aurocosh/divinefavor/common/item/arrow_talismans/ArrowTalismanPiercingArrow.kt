@@ -5,12 +5,14 @@ import aurocosh.divinefavor.common.entity.projectile.EntitySpellArrow
 import aurocosh.divinefavor.common.item.arrow_talismans.base.ArrowOptions
 import aurocosh.divinefavor.common.item.arrow_talismans.base.ArrowType
 import aurocosh.divinefavor.common.item.arrow_talismans.base.ItemArrowTalisman
+import aurocosh.divinefavor.common.lib.extensions.getMotionVector
 import aurocosh.divinefavor.common.spirit.base.ModSpirit
+import aurocosh.divinefavor.common.util.UtilRandom
 import net.minecraft.entity.EntityLivingBase
-import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.util.DamageSource
 import net.minecraft.util.EnumFacing
 import net.minecraft.util.math.BlockPos
+import net.minecraft.util.math.MathHelper
 import java.awt.Color
 import java.util.*
 
@@ -41,7 +43,19 @@ class ArrowTalismanPiercingArrow(name: String, spirit: ModSpirit, favorCost: Int
         val hitsLeft = compound.getInteger(TAG_HITS_LEFT)
         if (hitsLeft == 0)
             return true
-        target.attackEntityFrom(DamageSource.causePlayerDamage(shooter as EntityPlayer), ConfigArrow.lifeStealArrow.damage)
+
+        val motionSpeed = spellArrow.getMotionVector().length()
+        var damage = MathHelper.ceil(motionSpeed * spellArrow.damage)
+
+        if (spellArrow.isCritical)
+            damage += UtilRandom.nextInt(0, damage / 2 + 2)
+
+        val damageSource: DamageSource = if (spellArrow.shootingEntity == null)
+            DamageSource.causeArrowDamage(spellArrow, spellArrow)
+        else
+            DamageSource.causeArrowDamage(spellArrow, spellArrow.shootingEntity)
+
+        target.attackEntityFrom(damageSource, damage.toFloat())
         compound.setInteger(TAG_HITS_LEFT, hitsLeft - 1)
         compound.setInteger(TAG_LAST_HIT_ENTITY, target.entityId)
         spellArrow.talismanDataCommon = compound

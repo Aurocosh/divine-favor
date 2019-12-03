@@ -50,6 +50,7 @@ import net.minecraftforge.event.world.BlockEvent
 import net.minecraftforge.fml.relauncher.Side
 import net.minecraftforge.fml.relauncher.SideOnly
 import net.minecraftforge.oredict.OreDictionary
+import kotlin.math.max
 
 open class ItemSpellPick(name: String, texturePath: String, orderIndex: Int = 0, val config: SpellPick, val material: ToolMaterial) : ModItemPickaxe(name, texturePath, orderIndex, material), ITalismanStackContainer, ITalismanToolContainer, IPropertyContainer, IActionContainer, IBlockCatcher {
     protected val propertyHandler: StackPropertyHandler = StackPropertyHandler(name)
@@ -104,7 +105,7 @@ open class ItemSpellPick(name: String, texturePath: String, orderIndex: Int = 0,
         val (talismanStack, talisman) = wrapper ?: return EnumActionResult.PASS
         val context = TalismanContextGenerator.useCast(player, world, pos, hand, facing, talismanStack, containerStack)
         val success = talisman.cast(context)
-        return actionResultPass(true)
+        return actionResultPass(success)
     }
 
     override fun onItemRightClick(worldIn: World, player: EntityPlayer, hand: EnumHand): ActionResult<ItemStack> {
@@ -158,6 +159,13 @@ open class ItemSpellPick(name: String, texturePath: String, orderIndex: Int = 0,
             return
         val catcher = talismanStack.item as IBlockCatcher
         catcher.catchDrops(talismanStack, stack, event)
+    }
+
+    override fun getHarvestLevel(stack: ItemStack, toolClass: String, player: EntityPlayer?, blockState: IBlockState?): Int {
+        val pickHarvestLevel =  super.getHarvestLevel(stack, toolClass, player, blockState)
+        val (talismanStack, talisman) = TalismanAdapter.getTalisman<ItemToolTalisman>(stack) ?: return pickHarvestLevel
+        val talismanHarvestLevel = talisman.getHarvestLevel(talismanStack, toolClass, player, blockState)
+        return max(pickHarvestLevel, talismanHarvestLevel)
     }
 
     override fun canHarvestBlock(state: IBlockState, stack: ItemStack): Boolean {

@@ -19,7 +19,6 @@ import aurocosh.divinefavor.common.util.UtilBlockPos
 import aurocosh.divinefavor.common.util.UtilBlockState
 import aurocosh.divinefavor.common.util.UtilTemplate
 import com.google.common.collect.HashMultiset
-import net.minecraft.block.Block
 import net.minecraft.block.state.IBlockState
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.init.Items
@@ -74,7 +73,7 @@ abstract class SpellTalismanCopy(name: String, spirit: ModSpirit, favorCost: Int
         val validCoordinates = coordinates.S
                 .filterNot(world::isAirBlock)
                 .filterNot(world::hasTileEntity)
-                .filterNot(world::getBlock, Block::isLiquid)
+                .filterNot(world::getBlockState, IBlockState::isLiquid)
 
         val posIntArrayList = ArrayList<Int>()
         val stateIntArrayList = ArrayList<Int>()

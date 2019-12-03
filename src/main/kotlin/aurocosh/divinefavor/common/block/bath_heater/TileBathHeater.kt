@@ -10,13 +10,11 @@ import aurocosh.divinefavor.common.constants.BlockPosConstants
 import aurocosh.divinefavor.common.item.bathing_blend.ItemBathingBlend
 import aurocosh.divinefavor.common.lib.LoopedCounter
 import aurocosh.divinefavor.common.lib.extensions.S
-import aurocosh.divinefavor.common.lib.extensions.getBlock
 import aurocosh.divinefavor.common.lib.extensions.isWater
 import aurocosh.divinefavor.common.lib.wrapper.ConvertingPredicate
 import aurocosh.divinefavor.common.util.UtilBlockPos
 import aurocosh.divinefavor.common.util.UtilCoordinates
 import aurocosh.divinefavor.common.util.UtilRandom
-import net.minecraft.block.Block
 import net.minecraft.block.state.IBlockState
 import net.minecraft.entity.EntityLivingBase
 import net.minecraft.entity.player.EntityPlayer
@@ -117,7 +115,7 @@ class TileBathHeater : TileEntity(), ITickable, IAreaWatcher {
         refresh = false
         waterPositions.clear()
 
-        val predicate = ConvertingPredicate(world::getBlock, Block::isWater)::invoke
+        val predicate = ConvertingPredicate(world::getBlockState, IBlockState::isWater)::invoke
         val expansionDirs = (BlockPosConstants.HORIZONTAL_DIRECT.S + BlockPosConstants.DOWN).toList()
 
         val posVector = BlockPos(pos)

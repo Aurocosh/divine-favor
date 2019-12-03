@@ -8,6 +8,7 @@ import aurocosh.divinefavor.common.network.message.client.syncing.MessageSyncFur
 import aurocosh.divinefavor.common.network.message.client.syncing.MessageSyncGrudge
 import aurocosh.divinefavor.common.network.message.client.syncing.MessageSyncTemplateClient
 import aurocosh.divinefavor.common.network.message.client.syncing.MessageSyncWindLeash
+import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.entity.player.EntityPlayerMP
 import net.minecraftforge.fml.common.Mod
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent
@@ -17,8 +18,21 @@ import net.minecraftforge.fml.common.gameevent.PlayerEvent
 object LoginDataSyncer {
     @SubscribeEvent
     fun onPlayerLogin(event: PlayerEvent.PlayerLoggedInEvent) {
-        val player = event.player as? EntityPlayerMP ?: return
+        syncData(event.player)
+    }
 
+    @SubscribeEvent
+    fun onPlayerChangedDimension(event: PlayerEvent.PlayerChangedDimensionEvent) {
+        syncData(event.player)
+    }
+
+    @SubscribeEvent
+    fun onPlayerChangedDimension(event: PlayerEvent.PlayerRespawnEvent) {
+        syncData(event.player)
+    }
+
+    private fun syncData(eventPlayer: EntityPlayer){
+        val player = eventPlayer as? EntityPlayerMP ?: return
         val handler = player.divinePlayerData
         MessageSyncAllSpiritData(handler.spiritData).sendTo(player)
         MessageSyncFury(handler.focusedFuryData.mobTypeId).sendTo(player)

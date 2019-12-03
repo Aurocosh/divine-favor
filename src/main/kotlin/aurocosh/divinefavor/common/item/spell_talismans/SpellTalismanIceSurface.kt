@@ -10,13 +10,13 @@ import aurocosh.divinefavor.common.lib.extensions.isWater
 import aurocosh.divinefavor.common.lib.wrapper.AreaPredicate
 import aurocosh.divinefavor.common.lib.wrapper.ConvertingPredicate
 import aurocosh.divinefavor.common.spirit.base.ModSpirit
-import aurocosh.divinefavor.common.tasks.BlockProcessingTask
 import aurocosh.divinefavor.common.stack_properties.properties.StackPropertyBool
 import aurocosh.divinefavor.common.stack_properties.properties.StackPropertyInt
+import aurocosh.divinefavor.common.tasks.BlockProcessingTask
 import aurocosh.divinefavor.common.util.UtilBlock
 import aurocosh.divinefavor.common.util.UtilCoordinates
 import aurocosh.divinefavor.common.util.UtilPredicate
-import net.minecraft.block.Block
+import net.minecraft.block.state.IBlockState
 import net.minecraft.init.Blocks
 import net.minecraft.util.math.BlockPos
 import net.minecraft.util.text.TextComponentTranslation
@@ -45,7 +45,7 @@ class SpellTalismanIceSurface(name: String, spirit: ModSpirit, favorCost: Int, o
         val world = context.world
         val limit = floodLimit.getValue(context.stack)
 
-        val waterPredicate = ConvertingPredicate(world::getBlock, Block::isWater)
+        val waterPredicate = ConvertingPredicate(world::getBlockState, IBlockState::isWater)
         val airPredicate = AreaPredicate(world::getBlock, Blocks.AIR::equals, BlockPosConstants.DIRECT_NEIGHBOURS, 1)
         val predicate = UtilPredicate.and(waterPredicate::invoke, airPredicate::invoke)
 

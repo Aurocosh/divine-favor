@@ -17,9 +17,9 @@ public class ConfigItem {
     @Config.Name("Contract capacity major")
     public static Contract contractCapacityMajor = new Contract(0, 0, 500, false);
     @Config.Name("Contract regen minor")
-    public static Contract contractRegenMinor = new Contract(0, 20, 0, false);
+    public static Contract contractRegenMinor = new Contract(20, 0, 0, false);
     @Config.Name("Contract regen major")
-    public static Contract contractRegenMajor = new Contract(0, 200, 0, false);
+    public static Contract contractRegenMajor = new Contract(200, 0, 0, false);
     @Config.Name("Inform")
     public static Contract contractInform = new Contract(0, 0, 0, true);
     @Config.Name("Creative")
@@ -51,6 +51,9 @@ public class ConfigItem {
     public static SpellBlade spellBladeRed = new SpellBlade();
     @Config.Name("Spell blade green")
     public static SpellBlade spellBladeGreen = new SpellBlade();
+
+    @Config.Name("Spell bow")
+    public static SpellBow spellBow = new SpellBow();
 
     @Config.Name("Spell pick blue")
     public static SpellPick spellPickBlue = new SpellPick();

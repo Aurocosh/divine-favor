@@ -29,7 +29,7 @@ import aurocosh.divinefavor.common.lib.extensions.isWater
 import aurocosh.divinefavor.common.potions.common.ModPotions
 import aurocosh.divinefavor.common.spirit.ModSpirits
 import aurocosh.divinefavor.common.util.UtilPredicate
-import net.minecraft.block.Block
+import net.minecraft.block.state.IBlockState
 import net.minecraft.init.Blocks
 import javax.vecmath.Color3f
 
@@ -184,7 +184,7 @@ object ModSpellTalismans {
         flood = SpellTalismanFlood("flood", ModSpirits.blizrabi, ConfigSpell.flood.favorCost, SpellOptions.ALL_CAST)
         frost_wave = SpellTalismanFrostWave("frost_wave", ModSpirits.blizrabi, ConfigSpell.frostWave.favorCost, SpellOptions.ALL_CAST)
         gills = SpellTalismanModPotionToggle("gills", ModSpirits.blizrabi, ConfigSpell.gills.favorCost, ModPotions.gills)
-        ice_bubble = SpellTalismanReplacmentBubble("ice_bubble", ModSpirits.blizrabi, ConfigSpell.iceBubble, Blocks.AIR, Blocks.ICE, UtilPredicate.or(Block::isWater, Block::isIce))
+        ice_bubble = SpellTalismanReplacmentBubble("ice_bubble", ModSpirits.blizrabi, ConfigSpell.iceBubble, Blocks.AIR, Blocks.ICE, UtilPredicate.or(IBlockState::isWater, IBlockState::isIce))
         ice_surface = SpellTalismanIceSurface("ice_surface", ModSpirits.blizrabi, ConfigSpell.iceSurface.favorCost, SpellOptions.ALL_CAST)
         instant_dive = SpellTalismanModPotionToggle("instant_dive", ModSpirits.blizrabi, ConfigSpell.instantDive.favorCost, ModPotions.instant_dive)
         lake_thawing = SpellTalismanLakeThawing("lake_thawing", ModSpirits.blizrabi, ConfigSpell.lakeThawing.favorCost, SpellOptions.ALL_CAST)
@@ -242,7 +242,6 @@ object ModSpellTalismans {
         crystalyze_memory = SpellTalismanCrystallizeMemory("crystallize_memory", ModSpirits.materia, ConfigSpell.crystallizeMemory.favorCost, SpellOptions.ALL_CAST)
         deserialize_memory = SpellTalismanDeserializeMemory("deserialize_memory", ModSpirits.materia, ConfigSpell.deserializeMemory.favorCost, SpellOptions.ALL_CAST)
         place_block = SpellTalismanPlaceBlock("place_block", ModSpirits.materia, ConfigSpell.woodenPunch.favorCost, SpellOptions.ALL_CAST_TRACE)
-        place_torch = SpellTalismanPlaceTorch("place_torch", ModSpirits.materia, ConfigSpell.placeTorch.favorCost, SpellOptions.TRACE_ONLY_CAST)
         pull_side = SpellTalismanPullSide("pull_side", ModSpirits.materia, ConfigSpell.pullSide.favorCost, SpellOptions.ALL_CAST_TRACE)
         push_side = SpellTalismanPushSide("push_side", ModSpirits.materia, ConfigSpell.pushSide.favorCost, SpellOptions.ALL_CAST_TRACE)
         replace_blocks = SpellTalismanReplaceBlocks("replace_blocks", ModSpirits.materia)
@@ -261,7 +260,7 @@ object ModSpellTalismans {
         infernal_touch = SpellTalismanInfernalTouch("infernal_touch", ModSpirits.neblaze, 1, SpellOptions.USE_CAST)
         molten_skin = SpellTalismanMoltenSkin("molten_skin", ModSpirits.neblaze, ConfigSpell.moltenSkin.favorCost, SpellOptions.ALL_CAST)
         nether_surge = SpellTalismanNetherSurge("nether_surge", ModSpirits.neblaze, ConfigSpell.netherSurge.favorCost, SpellOptions.USE_CAST)
-        obsidian_bubble = SpellTalismanReplacmentBubble("obsidian_bubble", ModSpirits.blizrabi, ConfigSpell.obsidianBubble, Blocks.AIR, Blocks.OBSIDIAN, UtilPredicate.or(Block::isLava, Blocks.OBSIDIAN::equals))
+        obsidian_bubble = SpellTalismanReplacmentBubble("obsidian_bubble", ModSpirits.blizrabi, ConfigSpell.obsidianBubble, Blocks.AIR, Blocks.OBSIDIAN, UtilPredicate.or(IBlockState::isLava, {state:IBlockState -> state.block == Blocks.OBSIDIAN}))
         piercing_inferno = SpellTalismanPiercingInferno("piercing_inferno", ModSpirits.neblaze, ConfigSpell.piercingInferno.favorCost, SpellOptions.USE_CAST)
         searing_pulse = SpellTalismanSearingPulse("searing_pulse", ModSpirits.neblaze, ConfigSpell.searingPulse.favorCost, SpellOptions.USE_CAST)
         small_fireball_throw = SpellTalismanSmallFireballThrow("small_fireball_throw", ModSpirits.neblaze, ConfigSpell.smallFireballThrow.favorCost, SpellOptions.ALL_CAST)
@@ -281,6 +280,7 @@ object ModSpellTalismans {
         toadic_jump = SpellTalismanModPotionToggle("toadic_jump", ModSpirits.redwind, ConfigSpell.toadicJump.favorCost, ModPotions.toadic_jump, true)
         wild_sprint = SpellTalismanModPotion("wild_sprint", ModSpirits.redwind, ConfigSpell.wildSprint.favorCost, ModPotions.wild_charge, ConfigSpell.wildSprint.activationDelay)
         wind_step = SpellTalismanWindStep("wind_step", ModSpirits.redwind, ConfigSpell.windStep.favorCost, SpellOptions.ALL_CAST)
+        place_torch = SpellTalismanPlaceTorch("place_torch", ModSpirits.redwind, ConfigSpell.placeTorch.favorCost, SpellOptions.TRACE_ONLY_CAST)
 
         // romol
         crushing_palm = SpellTalismanModPotionToggle("crushing_palm", ModSpirits.romol, ConfigSpell.crushingPalm.favorCost, ModPotions.crushing_palm)

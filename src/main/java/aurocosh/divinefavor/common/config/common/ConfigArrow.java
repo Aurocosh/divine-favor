@@ -44,9 +44,9 @@ public class ConfigArrow {
     @Config.Name("Hand swap")
     public static HandSwap handSwap = new HandSwap();
     @Config.Name("High speed arrow")
-    public static HighSpeedArrow highSpeedArrow = new HighSpeedArrow(40, 2, 2);
+    public static HighSpeedArrow highSpeedArrow = new HighSpeedArrow(60, 2, 2);
     @Config.Name("Hyper speed arrow")
-    public static HighSpeedArrow hyperSpeedArrow = new HighSpeedArrow(400, 2, 6);
+    public static HighSpeedArrow hyperSpeedArrow = new HighSpeedArrow(200, 2, 6);
     @Config.Name("Hollow leg")
     public static HollowLeg hollowLeg = new HollowLeg();
     @Config.Name("Ice ball arrow")

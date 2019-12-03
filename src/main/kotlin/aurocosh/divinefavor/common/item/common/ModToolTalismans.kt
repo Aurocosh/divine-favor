@@ -13,7 +13,7 @@ import aurocosh.divinefavor.common.lib.extensions.isLava
 import aurocosh.divinefavor.common.lib.extensions.isWater
 import aurocosh.divinefavor.common.spirit.ModSpirits
 import aurocosh.divinefavor.common.util.UtilPredicate
-import net.minecraft.block.Block
+import net.minecraft.block.state.IBlockState
 import net.minecraft.init.Blocks
 
 object ModToolTalismans {
@@ -42,7 +42,7 @@ object ModToolTalismans {
 
         // blizrabi;
         aquatic_tool = ToolTalismanAquaticTool("aquatic_tool", ModSpirits.blizrabi, ConfigTool.aquaticTool.favorCost)
-        ice_carving = ToolTalismanCarving("ice_carving", ModSpirits.blizrabi, ConfigTool.iceCarving.favorCost, Blocks.ICE, UtilPredicate.or(Block::isWater, Block::isIce))
+        ice_carving = ToolTalismanCarving("ice_carving", ModSpirits.blizrabi, ConfigTool.iceCarving.favorCost, Blocks.ICE, UtilPredicate.or(IBlockState::isWater, IBlockState::isIce))
 
         // endererer;
 
@@ -57,7 +57,7 @@ object ModToolTalismans {
         destroy_cuboid = ToolTalismanDestroyCuboid("destroy_cuboid", ModSpirits.neblaze)
 
         molten_tool = ToolTalismanMoltenTool("molten_tool", ModSpirits.neblaze, ConfigTool.moltenTool.favorCost)
-        obsidian_carving = ToolTalismanObsidianCarving("obsidian_carving", ModSpirits.neblaze, ConfigTool.obsidianCarving.favorCost, Blocks.OBSIDIAN, Block::isLava)
+        obsidian_carving = ToolTalismanObsidianCarving("obsidian_carving", ModSpirits.neblaze, ConfigTool.obsidianCarving.favorCost, Blocks.OBSIDIAN, IBlockState::isLava)
 
         // redwind;
         memory_tool = ToolTalismanMemoryTool("memory_tool", ModSpirits.redwind, ConfigTool.memoryTool.favorCost)

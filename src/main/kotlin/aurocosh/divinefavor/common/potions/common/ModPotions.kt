@@ -5,7 +5,7 @@ import aurocosh.divinefavor.common.potions.base.potion.ModPotionCharge
 import aurocosh.divinefavor.common.potions.base.potion.ModPotionToggle
 import aurocosh.divinefavor.common.potions.base.potion.ModPotionToggleLimited
 import aurocosh.divinefavor.common.potions.potions.*
-import net.minecraft.init.Blocks
+import net.minecraft.block.material.Material
 
 object ModPotions {
     lateinit var armor_of_pacifist: ModPotionToggle
@@ -45,7 +45,7 @@ object ModPotions {
         arrow_deflection = PotionArrowDeflection()
         consuming_fury = PotionConsumingFury()
         crushing_palm = PotionCrushingPalm()
-        crystalline_road = PotionLiquidWalking("crystalline_road", Blocks.WATER)
+        crystalline_road = PotionLiquidWalking("crystalline_road") { world, pos -> world.getBlockState(pos).material == Material.WATER }
         empower_axe = PotionEmpowerAxe()
         empower_pickaxe = PotionEmpowerPickaxe()
         escape_plan = PotionEscapePlan()
@@ -62,7 +62,7 @@ object ModPotions {
         mist_blade = PotionMistBlade()
         molten_skin = PotionMoltenSkin()
         night_eye = PotionNightEye()
-        obsidian_road = PotionLiquidWalking("obsidian_road", Blocks.LAVA)
+        obsidian_road = PotionLiquidWalking("obsidian_road") { world, pos -> world.getBlockState(pos).material == Material.LAVA }
         prismatic_eyes = PotionPrismaticEyes()
         rotten_might = PotionRottenMight()
         spider_might = PotionSpiderMight()

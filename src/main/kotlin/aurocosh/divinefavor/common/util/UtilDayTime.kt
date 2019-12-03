@@ -32,6 +32,6 @@ object UtilDayTime {
 
         if(from < to)
             return to - from
-        return TICKS_IN_DAY - to + from
+        return TICKS_IN_DAY - from + to
     }
 }

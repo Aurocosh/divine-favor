@@ -6,7 +6,7 @@ import net.minecraft.entity.EntityLivingBase
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.util.DamageSource
 
-class PotionGills : ModPotionToggle("potion_gills", 0x7FB8A4) {
+class PotionGills : ModPotionToggle("gills", 0x7FB8A4) {
 
     override fun performEffect(livingBase: EntityLivingBase, amplifier: Int) {
         if (livingBase !is EntityPlayer)

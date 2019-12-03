@@ -1,7 +1,6 @@
 package aurocosh.divinefavor.common.potions.blends
 
 import aurocosh.divinefavor.DivineFavor
-import aurocosh.divinefavor.common.config.common.ConfigAura
 import aurocosh.divinefavor.common.config.common.ConfigPresence
 import aurocosh.divinefavor.common.item.ItemBlockEnderPumpkin
 import aurocosh.divinefavor.common.lib.LoopedCounter
@@ -11,10 +10,8 @@ import aurocosh.divinefavor.common.potions.base.potion.ModPotion
 import aurocosh.divinefavor.common.potions.common.ModBlendEffects
 import aurocosh.divinefavor.common.potions.common.ModBlessings
 import aurocosh.divinefavor.common.spirit.ModSpirits
-import aurocosh.divinefavor.common.util.UtilCoordinates
 import aurocosh.divinefavor.common.util.UtilTick
 import net.minecraft.entity.EntityLivingBase
-import net.minecraft.entity.monster.EntityEnderman
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraftforge.fml.common.Mod
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent
@@ -40,13 +37,13 @@ class PotionDistortedAura : ModPotion("distorted_aura", 0x7FB8A4) {
         if (headStack.item !is ItemBlockEnderPumpkin)
             return
 
-        val pos = livingBase.positionVector
-        val radius = ConfigAura.distortedAura.endermanRadius
-        val boundingBox = UtilCoordinates.getBoundingBox(pos, radius.toDouble())
-        val predicate = { e: EntityEnderman? -> e?.attackingEntity !== livingBase }
-        val endermanList = livingBase.world.getEntitiesWithinAABB<EntityEnderman>(EntityEnderman::class.java, boundingBox, predicate)
-        if (endermanList.isEmpty())
-            return
+//        val pos = livingBase.positionVector
+//        val radius = ConfigAura.distortedAura.endermanRadius
+//        val boundingBox = UtilCoordinates.getBoundingBox(pos, radius.toDouble())
+//        val predicate = { e: EntityEnderman? -> e?.attackingEntity !== livingBase }
+//        val endermanList = livingBase.world.getEntitiesWithinAABB<EntityEnderman>(EntityEnderman::class.java, boundingBox, predicate)
+//        if (endermanList.isEmpty())
+//            return
 
         if (livingBase.divinePlayerData.distortedAuraData.tryLuck()) {
             livingBase.removePotionEffect(ModBlendEffects.distorted_aura)

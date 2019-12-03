@@ -29,6 +29,7 @@ import aurocosh.divinefavor.common.util.UtilItem.actionResult
 import aurocosh.divinefavor.common.util.UtilItem.actionResultPass
 import com.google.common.collect.Multimap
 import net.minecraft.block.state.IBlockState
+import net.minecraft.enchantment.EnumEnchantmentType
 import net.minecraft.entity.EntityLivingBase
 import net.minecraft.entity.SharedMonsterAttributes.ATTACK_DAMAGE
 import net.minecraft.entity.SharedMonsterAttributes.ATTACK_SPEED
@@ -57,7 +58,7 @@ open class ItemSpellBlade(name: String, texturePath: String, orderIndex: Int = 0
 
     init {
         creativeTab = DivineFavor.TAB_MAIN
-        this.maxDamage = config.maxUses
+        maxDamage = config.maxUses
 
         addPropertyOverride(ResourceLocation("book_mode")) { stack, _, _ -> bookPropertyWrapper.getValueForModel(stack) }
     }
@@ -199,6 +200,13 @@ open class ItemSpellBlade(name: String, texturePath: String, orderIndex: Int = 0
         val grimoireHandler = stack.cap(CAPABILITY_SPELL_BLADE)
         val tagShare = nbt.getCompoundTag(TAG_SHARE)
         SpellBladeStorage.readNbtBase(grimoireHandler, tagShare)
+    }
+
+    override fun canApplyAtEnchantingTable(stack: ItemStack, enchantment: net.minecraft.enchantment.Enchantment): Boolean {
+        return if(enchantment.type == EnumEnchantmentType.WEAPON)
+            true;
+        else
+            super.canApplyAtEnchantingTable(stack, enchantment)
     }
 
     companion object {

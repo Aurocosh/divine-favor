@@ -20,7 +20,7 @@ class MessageConfigOreBlocks : DivineConfigSyncMessage() {
 //    lateinit var testList2: ArrayList<ArrayList<Int>>
 
     override fun getServerConfigs() {
-        oreBlocks = ArrayList(Arrays.asList(*ConfigGeneral.oreBlocks))
+        oreBlocks = ArrayList(listOf(*ConfigGeneral.oreBlocks))
 
 //        testMap = HashMap()
 //        testMap[1] = "One"

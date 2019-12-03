@@ -39,9 +39,10 @@ object MultiblockWatcher {
     @SubscribeEvent(priority = EventPriority.LOWEST)
     fun onPlaceEvent(event: BlockEvent.PlaceEvent) {
         val controllerSet = controllers[event.world] ?: return
+        val controllers = controllerSet.toTypedArray()
 
         val position = event.pos
-        for (controller in controllerSet) {
+        for (controller in controllers) {
             val multiblockInstance = controller.getMultiblockInstance()
             if (multiblockInstance?.isSupposedToBeEmpty(position) == true)
                 controller.multiblockDamaged(event.player, event.world, event.pos, event.state)

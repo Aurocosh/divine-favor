@@ -23,4 +23,14 @@ class PlayerDataProvider : ICapabilitySerializableAnnotationFix<NBTTagCompound> 
     override fun deserializeNBT(nbt: NBTTagCompound) {
         PlayerDataDataHandler.CAPABILITY_PLAYER_DATA.storage.readNBT(PlayerDataDataHandler.CAPABILITY_PLAYER_DATA, instance, null, nbt)
     }
+
+    companion object{
+        fun serializeNBT(instance: IPlayerDataHandler): NBTTagCompound {
+            return (PlayerDataDataHandler.CAPABILITY_PLAYER_DATA.storage.writeNBT(PlayerDataDataHandler.CAPABILITY_PLAYER_DATA, instance, null) as NBTTagCompound)
+        }
+
+        fun deserializeNBT(instance: IPlayerDataHandler,nbt: NBTTagCompound) {
+            PlayerDataDataHandler.CAPABILITY_PLAYER_DATA.storage.readNBT(PlayerDataDataHandler.CAPABILITY_PLAYER_DATA, instance, null, nbt)
+        }
+    }
 }

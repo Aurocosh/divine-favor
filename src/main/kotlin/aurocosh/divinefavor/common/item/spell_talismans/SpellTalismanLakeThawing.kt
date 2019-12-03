@@ -14,7 +14,7 @@ import aurocosh.divinefavor.common.tasks.BlockProcessingTask
 import aurocosh.divinefavor.common.util.UtilBlock
 import aurocosh.divinefavor.common.util.UtilCoordinates
 import aurocosh.divinefavor.common.util.UtilPredicate
-import net.minecraft.block.Block
+import net.minecraft.block.state.IBlockState
 import net.minecraft.init.Blocks
 import net.minecraft.util.math.BlockPos
 import java.util.*
@@ -24,7 +24,7 @@ class SpellTalismanLakeThawing(name: String, spirit: ModSpirit, favorCost: Int, 
     override fun performActionServer(context: TalismanContext) {
         val world = context.world
 
-        val icePredicate = ConvertingPredicate(world::getBlock, Block::isIce)
+        val icePredicate = ConvertingPredicate(world::getBlockState, IBlockState::isIce)
         val neighbours = BlockPosConstants.HORIZONTAL_DIRECT.asSequence().plus(BlockPosConstants.DOWN).toList()
         val airPredicate = AreaPredicate(world::getBlock, { block -> block !== Blocks.AIR }, neighbours, neighbours.size)
 
