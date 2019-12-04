@@ -2,6 +2,7 @@ package aurocosh.divinefavor.common.block.common
 
 import aurocosh.divinefavor.common.block.BlockEnderPumpkin
 import aurocosh.divinefavor.common.block.BlockRedPulse
+import aurocosh.divinefavor.common.block.SealingStone
 import aurocosh.divinefavor.common.block.base.ModBlock
 import aurocosh.divinefavor.common.block.bath_heater.BlockBathHeater
 import aurocosh.divinefavor.common.block.bath_heater.TileBathHeater
@@ -59,6 +60,7 @@ object ModBlocks {
     lateinit var red_signal: ModBlock
 
     lateinit var ethereal_goo: ModBlock
+    lateinit var sealing_stone_orange: ModBlock
 
     fun preInit() {
         bathHeater = BlockBathHeater()
@@ -91,6 +93,7 @@ object ModBlocks {
         red_signal = BlockRedPulse("red_signal", ConfigSpell.redSignal.redLevel, ConfigSpell.redSignal.lightLevel, ConfigSpell.redSignal.despawnDelay)
 
         ethereal_goo = BlockEtherealGoo()
+        sealing_stone_orange = SealingStone("orange")
 
         initTileEntities()
     }

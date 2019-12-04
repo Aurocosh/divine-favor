@@ -19,6 +19,7 @@ import aurocosh.divinefavor.common.item.talisman_tools.spell_bow.capability.Spel
 import aurocosh.divinefavor.common.item.talisman_tools.spell_bow.capability.SpellBowProvider
 import aurocosh.divinefavor.common.item.talisman_tools.spell_bow.capability.SpellBowStorage
 import aurocosh.divinefavor.common.lib.extensions.cap
+import aurocosh.divinefavor.common.lib.extensions.isNotEmpty
 import aurocosh.divinefavor.common.stack_actions.StackAction
 import aurocosh.divinefavor.common.stack_actions.StackActionHandler
 import aurocosh.divinefavor.common.stack_actions.interfaces.IActionAccessor
@@ -29,6 +30,8 @@ import aurocosh.divinefavor.common.stack_properties.interfaces.IPropertyContaine
 import aurocosh.divinefavor.common.util.UtilBow
 import aurocosh.divinefavor.common.util.UtilItem.actionResult
 import aurocosh.divinefavor.common.util.UtilPlayer
+import net.minecraft.client.resources.I18n
+import net.minecraft.client.util.ITooltipFlag
 import net.minecraft.enchantment.EnchantmentHelper
 import net.minecraft.enchantment.EnumEnchantmentType
 import net.minecraft.entity.EntityLivingBase
@@ -48,6 +51,8 @@ import net.minecraft.util.*
 import net.minecraft.world.World
 import net.minecraftforge.common.capabilities.ICapabilityProvider
 import net.minecraftforge.event.ForgeEventFactory
+import net.minecraftforge.fml.relauncher.Side
+import net.minecraftforge.fml.relauncher.SideOnly
 import net.minecraftforge.oredict.OreDictionary
 
 class ItemSpellBow : ModItem("spell_bow", "spell_bow/spell_bow", ConstMainTabOrder.CONTAINERS), ITalismanStackContainer, ITalismanToolContainer, IPropertyContainer, IActionContainer {
@@ -246,6 +251,18 @@ class ItemSpellBow : ModItem("spell_bow", "spell_bow/spell_bow", ConstMainTabOrd
         return stack.cap(CAPABILITY_SPELL_BOW).getSelectedStack()
     }
 
+    @SideOnly(Side.CLIENT)
+    override fun addInformation(stack: ItemStack, world: World?, tooltip: MutableList<String>, flag: ITooltipFlag) {
+        super.addInformation(stack, world, tooltip, flag)
+
+        val talismanTool = getTalismanTool(stack)
+        val talismanCount = talismanTool.getAllStacks().filter (ItemStack::isNotEmpty).count()
+        val countMessage = I18n.format("tooltip.divinefavor:talisman_tool.talisman_count", talismanCount)
+        tooltip.add(countMessage)
+
+        properties.getPropertyTooltip(stack).forEach { tooltip.add(it) }
+    }
+
     override fun getShareTag(): Boolean {
         return true
     }
@@ -272,7 +289,6 @@ class ItemSpellBow : ModItem("spell_bow", "spell_bow/spell_bow", ConstMainTabOrd
 
     companion object {
         const val SLOT_COUNT = 27
-        const val TAG_IS_IN_BOOK_MODE = "IsInBookMode"
         private const val TAG_SHARE = "SpellBowShare"
     }
 }

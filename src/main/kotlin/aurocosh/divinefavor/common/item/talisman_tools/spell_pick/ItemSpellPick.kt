@@ -19,6 +19,7 @@ import aurocosh.divinefavor.common.item.talisman_tools.spell_pick.capability.Spe
 import aurocosh.divinefavor.common.item.tool_talismans.base.ItemToolTalisman
 import aurocosh.divinefavor.common.lib.extensions.cap
 import aurocosh.divinefavor.common.lib.extensions.divinePlayerData
+import aurocosh.divinefavor.common.lib.extensions.isNotEmpty
 import aurocosh.divinefavor.common.lib.interfaces.IBlockCatcher
 import aurocosh.divinefavor.common.stack_actions.StackAction
 import aurocosh.divinefavor.common.stack_actions.StackActionHandler
@@ -31,6 +32,8 @@ import aurocosh.divinefavor.common.util.UtilItem.actionResult
 import aurocosh.divinefavor.common.util.UtilItem.actionResultPass
 import com.google.common.collect.Multimap
 import net.minecraft.block.state.IBlockState
+import net.minecraft.client.resources.I18n
+import net.minecraft.client.util.ITooltipFlag
 import net.minecraft.entity.EntityLivingBase
 import net.minecraft.entity.SharedMonsterAttributes.ATTACK_DAMAGE
 import net.minecraft.entity.SharedMonsterAttributes.ATTACK_SPEED
@@ -204,6 +207,18 @@ open class ItemSpellPick(name: String, texturePath: String, orderIndex: Int = 0,
         if (stack.item !== this)
             return ItemStack.EMPTY
         return stack.cap(CAPABILITY_SPELL_PICK).getSelectedStack()
+    }
+
+    @SideOnly(Side.CLIENT)
+    override fun addInformation(stack: ItemStack, world: World?, tooltip: MutableList<String>, flag: ITooltipFlag) {
+        super.addInformation(stack, world, tooltip, flag)
+
+        val talismanTool = getTalismanTool(stack)
+        val talismanCount = talismanTool.getAllStacks().filter (ItemStack::isNotEmpty).count()
+        val countMessage = I18n.format("tooltip.divinefavor:talisman_tool.talisman_count", talismanCount)
+        tooltip.add(countMessage)
+
+        properties.getPropertyTooltip(stack).forEach { tooltip.add(it) }
     }
 
     override fun getShareTag(): Boolean {

@@ -5,4 +5,5 @@ object ConstBlockNames {
     const val MEDIUM = "medium"
     const val SOULBOUND_LECTERN = "soulbound_lectern"
     const val ETHEREAL_GOO = "ethereal_goo"
+    const val SEALING_STONE = "sealing_stone"
 }

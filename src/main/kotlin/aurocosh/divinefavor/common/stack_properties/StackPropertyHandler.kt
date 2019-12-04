@@ -10,7 +10,6 @@ import aurocosh.divinefavor.common.stack_properties.interfaces.IPropertyAccessor
 import aurocosh.divinefavor.common.stack_properties.properties.*
 import aurocosh.divinefavor.common.stack_properties.properties.base.StackProperty
 import net.minecraft.block.state.IBlockState
-import net.minecraft.client.resources.I18n
 import net.minecraft.item.ItemStack
 import net.minecraft.util.EnumFacing
 import net.minecraft.util.math.BlockPos
@@ -91,8 +90,8 @@ open class StackPropertyHandler(private val parentName: String, private val sync
             return emptyList()
 
         val tooltip = ArrayList<String>()
-        tooltip.add("")
-        tooltip.add(I18n.format("tooltip.divinefavor:property_list"))
+//        tooltip.add("")
+//        tooltip.add(I18n.format("tooltip.divinefavor:property_list"))
         propertyList.S.filter { it.showInTooltip }.map { it.toLocalString(stack) }.forEach { tooltip.add(it) }
         return tooltip
     }

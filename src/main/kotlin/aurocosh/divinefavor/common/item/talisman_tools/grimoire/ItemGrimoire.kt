@@ -15,6 +15,7 @@ import aurocosh.divinefavor.common.item.talisman_tools.grimoire.capability.Grimo
 import aurocosh.divinefavor.common.item.talisman_tools.grimoire.capability.GrimoireProvider
 import aurocosh.divinefavor.common.item.talisman_tools.grimoire.capability.GrimoireStorage
 import aurocosh.divinefavor.common.lib.extensions.cap
+import aurocosh.divinefavor.common.lib.extensions.isNotEmpty
 import aurocosh.divinefavor.common.lib.interfaces.IBlockCatcher
 import aurocosh.divinefavor.common.stack_actions.StackAction
 import aurocosh.divinefavor.common.stack_actions.StackActionHandler
@@ -24,6 +25,8 @@ import aurocosh.divinefavor.common.stack_properties.StackPropertyHandler
 import aurocosh.divinefavor.common.stack_properties.interfaces.IPropertyAccessor
 import aurocosh.divinefavor.common.stack_properties.interfaces.IPropertyContainer
 import aurocosh.divinefavor.common.util.UtilItem
+import net.minecraft.client.resources.I18n
+import net.minecraft.client.util.ITooltipFlag
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.item.Item
 import net.minecraft.item.ItemStack
@@ -36,6 +39,8 @@ import net.minecraft.util.math.BlockPos
 import net.minecraft.world.World
 import net.minecraftforge.common.capabilities.ICapabilityProvider
 import net.minecraftforge.event.world.BlockEvent
+import net.minecraftforge.fml.relauncher.Side
+import net.minecraftforge.fml.relauncher.SideOnly
 
 class ItemGrimoire : ModItem("grimoire", "grimoire", ConstMainTabOrder.CONTAINERS), ITalismanStackContainer, ITalismanToolContainer, IPropertyContainer, IActionContainer, IBlockCatcher {
     protected val propertyHandler: StackPropertyHandler = StackPropertyHandler("grimoire")
@@ -97,6 +102,18 @@ class ItemGrimoire : ModItem("grimoire", "grimoire", ConstMainTabOrder.CONTAINER
         if (stack.item !== this)
             return ItemStack.EMPTY
         return stack.cap(CAPABILITY_GRIMOIRE).getSelectedStack()
+    }
+
+    @SideOnly(Side.CLIENT)
+    override fun addInformation(stack: ItemStack, world: World?, tooltip: MutableList<String>, flag: ITooltipFlag) {
+        super.addInformation(stack, world, tooltip, flag)
+
+        val talismanTool = getTalismanTool(stack)
+        val talismanCount = talismanTool.getAllStacks().filter (ItemStack::isNotEmpty).count()
+        val countMessage = I18n.format("tooltip.divinefavor:talisman_tool.talisman_count", talismanCount)
+        tooltip.add(countMessage)
+
+        properties.getPropertyTooltip(stack).forEach { tooltip.add(it) }
     }
 
     override fun getShareTag(): Boolean {

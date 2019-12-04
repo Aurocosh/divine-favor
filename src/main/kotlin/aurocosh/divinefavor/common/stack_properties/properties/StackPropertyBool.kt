@@ -8,7 +8,7 @@ import net.minecraft.nbt.NBTTagCompound
 import net.minecraftforge.fml.relauncher.Side
 import net.minecraftforge.fml.relauncher.SideOnly
 
-class StackPropertyBool(name: String, defaultValue: Boolean, showInTooltip: Boolean, showInGui: Boolean, orderIndex: Int) : StackProperty<Boolean>(name, defaultValue, showInTooltip, showInGui, orderIndex) {
+class StackPropertyBool(name: String, defaultValue: Boolean, showInTooltip: Boolean, showInGui: Boolean, orderIndex: Int, val onKey: String = ConstLang.onKey, val offKey: String = ConstLang.offKey) : StackProperty<Boolean>(name, defaultValue, showInTooltip, showInGui, orderIndex) {
     override fun getValueFromTag(compound: NBTTagCompound): Boolean {
         return compound.getBoolean(tag)
     }
@@ -20,7 +20,7 @@ class StackPropertyBool(name: String, defaultValue: Boolean, showInTooltip: Bool
     @SideOnly(Side.CLIENT)
     override fun toLocalString(stack: ItemStack): String {
         val value = getValue(stack)
-        val valueKey = if (value) ConstLang.yesKey else ConstLang.noKey
+        val valueKey = if (value) onKey else offKey
         val valueString = I18n.format(valueKey)
         return I18n.format(displayKey, valueString)
     }

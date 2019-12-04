@@ -4,6 +4,9 @@ import aurocosh.divinefavor.common.core.ResourceNamer
 
 object ConstLang
 {
-    val yesKey: String = ResourceNamer.getTypedNameString("word", "on")
-    val noKey: String = ResourceNamer.getTypedNameString("word", "off")
+    val onKey: String = ResourceNamer.getTypedNameString("word", "on")
+    val offKey: String = ResourceNamer.getTypedNameString("word", "off")
+
+    val yesKey: String = ResourceNamer.getTypedNameString("word", "yes")
+    val noKey: String = ResourceNamer.getTypedNameString("word", "no")
 }

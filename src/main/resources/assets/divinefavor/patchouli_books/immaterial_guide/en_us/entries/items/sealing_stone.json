@@ -1,0 +1,20 @@
+{
+  "name": "Sealing stone",
+  "icon": "divinefavor:sealing_stone_orange",
+  "category": "items",
+  "pages": [
+    {
+      "type": "spotlight",
+      "item": "divinefavor:spell_blade_red",
+      "text": "Sealing stone is a special block that can seal and unseal talisman containers like spell bow and spell blade. Talisman containers can transform into book form. To transform container to book or to transform it back to original form just sneak right click empty space with this item."
+    },
+    {
+      "type": "text",
+      "text": "When in book form you can add or remove talismans from container. And in normal form you can use them as tools or you can cast spells with them. Sealing stone can lock containers in one form. To seal item just place sealing stone on ground and right click it with item that you need to seal or unseal. For example if bow is sealed in normal form you wont be able to transform it while it is sealed."
+    },
+    {
+      "type": "text",
+      "text": "Sealing is especially useful of spell bows. When bow is sealed you can shoot it while sneaking. If bow is unsealed and you try to shoot it while sneaking then it will just transform from book to bow repeatedly."
+    }
+  ]
+}

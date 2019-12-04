@@ -1,0 +1,23 @@
+{
+  "result": {
+    "item": "divinefavor:sealing_stone_orange"
+  },
+  "type": "forge:ore_shapeless",
+  "ingredients": [
+    {
+      "type": "forge:ore_dict",
+      "ore": "stone"
+    },
+    {
+      "type": "forge:ore_dict",
+      "ore": "dustRedstone"
+    },
+    {
+      "type": "forge:ore_dict",
+      "ore": "ingotGold"
+    },
+    {
+      "item": "divinefavor:bone_dagger_awakened"
+    }
+  ]
+}

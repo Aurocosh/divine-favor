@@ -54,7 +54,7 @@ class GuiButtonCustomToggle(x: Int, y: Int, width: Int, height: Int, currentValu
     private fun renderText(mc: Minecraft, component: GuiButton) {
         val color = if (!enabled) 10526880 else if (hovered) 16777120 else -1
 
-        val valueKey = if (toggleState) ConstLang.yesKey else ConstLang.noKey
+        val valueKey = if (toggleState) ConstLang.onKey else ConstLang.offKey
         val valueText = I18n.format(valueKey)
         var buttonText = I18n.format(displayKey, valueText)
 

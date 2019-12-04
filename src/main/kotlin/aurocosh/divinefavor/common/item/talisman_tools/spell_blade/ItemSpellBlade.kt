@@ -17,6 +17,7 @@ import aurocosh.divinefavor.common.item.talisman_tools.spell_blade.capability.Sp
 import aurocosh.divinefavor.common.item.talisman_tools.spell_blade.capability.SpellBladeProvider
 import aurocosh.divinefavor.common.item.talisman_tools.spell_blade.capability.SpellBladeStorage
 import aurocosh.divinefavor.common.lib.extensions.cap
+import aurocosh.divinefavor.common.lib.extensions.isNotEmpty
 import aurocosh.divinefavor.common.lib.interfaces.IBlockCatcher
 import aurocosh.divinefavor.common.stack_actions.StackAction
 import aurocosh.divinefavor.common.stack_actions.StackActionHandler
@@ -29,6 +30,8 @@ import aurocosh.divinefavor.common.util.UtilItem.actionResult
 import aurocosh.divinefavor.common.util.UtilItem.actionResultPass
 import com.google.common.collect.Multimap
 import net.minecraft.block.state.IBlockState
+import net.minecraft.client.resources.I18n
+import net.minecraft.client.util.ITooltipFlag
 import net.minecraft.enchantment.EnumEnchantmentType
 import net.minecraft.entity.EntityLivingBase
 import net.minecraft.entity.SharedMonsterAttributes.ATTACK_DAMAGE
@@ -83,6 +86,7 @@ open class ItemSpellBlade(name: String, texturePath: String, orderIndex: Int = 0
 
     override fun onItemUse(player: EntityPlayer, world: World, pos: BlockPos, hand: EnumHand, facing: EnumFacing, hitX: Float, hitY: Float, hitZ: Float): EnumActionResult {
         val containerStack = player.getHeldItem(hand)
+
         if (bookPropertyWrapper.getModeOrTransform(containerStack, player) != TalismanContainerMode.NORMAL)
             return EnumActionResult.PASS
 
@@ -175,6 +179,18 @@ open class ItemSpellBlade(name: String, texturePath: String, orderIndex: Int = 0
         if (stack.item !== this)
             return ItemStack.EMPTY
         return stack.cap(CAPABILITY_SPELL_BLADE).getSelectedStack()
+    }
+
+    @SideOnly(Side.CLIENT)
+    override fun addInformation(stack: ItemStack, world: World?, tooltip: MutableList<String>, flag: ITooltipFlag) {
+        super.addInformation(stack, world, tooltip, flag)
+
+        val talismanTool = getTalismanTool(stack)
+        val talismanCount = talismanTool.getAllStacks().filter (ItemStack::isNotEmpty).count()
+        val countMessage = I18n.format("tooltip.divinefavor:talisman_tool.talisman_count", talismanCount)
+        tooltip.add(countMessage)
+
+        properties.getPropertyTooltip(stack).forEach { tooltip.add(it) }
     }
 
     override fun getShareTag(): Boolean {
