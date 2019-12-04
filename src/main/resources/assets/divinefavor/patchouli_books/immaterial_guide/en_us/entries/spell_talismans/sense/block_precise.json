@@ -2,6 +2,7 @@
   "name": "Sense block precise",
   "icon": "divinefavor:spell_talisman_sense_block_precise",
   "category": "spell_talismans",
+  "read_by_default": true,
   "pages": [
     {
       "type": "item_description",

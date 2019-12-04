@@ -2,6 +2,7 @@
   "name": "Infernal touch",
   "icon": "divinefavor:spell_talisman_infernal_touch",
   "category": "spell_talismans",
+  "read_by_default": true,
   "pages": [
     {
       "type": "item_description",

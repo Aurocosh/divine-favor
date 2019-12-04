@@ -2,6 +2,7 @@
   "name": "Romol",
   "icon": "divinefavor:soul_shard_mind",
   "category": "lecterns",
+  "read_by_default": true,
   "sortnum": 1,
   "pages": [
     {

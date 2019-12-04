@@ -2,6 +2,7 @@
   "name": "Empower pickaxe",
   "icon": "divinefavor:spell_talisman_empower_pickaxe",
   "category": "spell_talismans",
+  "read_by_default": true,
   "pages": [
     {
       "type": "item_description",

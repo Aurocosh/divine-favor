@@ -2,6 +2,7 @@
   "name": "Place torch",
   "icon": "divinefavor:spell_talisman_place_torch",
   "category": "spell_talismans",
+  "read_by_default": true,
   "pages": [
     {
       "type": "item_description",

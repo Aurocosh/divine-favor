@@ -2,6 +2,7 @@
   "name": "Mist blade",
   "icon": "divinefavor:spell_talisman_mist_blade",
   "category": "spell_talismans",
+  "read_by_default": true,
   "pages": [
     {
       "type": "item_description",

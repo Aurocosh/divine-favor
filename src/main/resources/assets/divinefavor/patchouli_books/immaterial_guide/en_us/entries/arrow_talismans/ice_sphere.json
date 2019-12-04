@@ -2,6 +2,7 @@
   "name": "Ice sphere",
   "icon": "divinefavor:arrow_talisman_ice_sphere",
   "category": "arrow_talismans",
+  "read_by_default": true,
   "pages": [
     {
       "type": "item_description",

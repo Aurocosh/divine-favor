@@ -2,6 +2,7 @@
   "name": "Ground pick",
   "icon": "divinefavor:tool_talisman_ground_pick",
   "category": "tool_talismans",
+  "read_by_default": true,
   "pages": [
     {
       "type": "item_description",

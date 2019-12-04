@@ -2,6 +2,7 @@
   "name": "Neblaze",
   "icon": "divinefavor:calling_stone_neblaze",
   "category": "spirits",
+  "read_by_default": true,
   "sortnum": 0,
   "pages": [
     {

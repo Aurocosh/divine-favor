@@ -2,6 +2,7 @@
   "name": "Wind leash",
   "icon": "divinefavor:arrow_talisman_wind_leash",
   "category": "arrow_talismans",
+  "read_by_default": true,
   "pages": [
     {
       "type": "item_description",

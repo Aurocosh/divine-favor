@@ -2,6 +2,7 @@
   "name": "Destroy cuboid",
   "icon": "divinefavor:tool_talisman_destroy_cuboid",
   "category": "tool_talismans",
+  "read_by_default": true,
   "pages": [
     {
       "type": "item_description",

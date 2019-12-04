@@ -2,6 +2,7 @@
   "name": "Talisman properties",
   "icon": "divinefavor:spell_talisman_blink",
   "category": "basics",
+  "read_by_default": true,
   "sortnum": 6,
   "pages": [
     {

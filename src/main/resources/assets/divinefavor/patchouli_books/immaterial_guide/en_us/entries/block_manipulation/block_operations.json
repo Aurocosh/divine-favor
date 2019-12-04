@@ -2,6 +2,7 @@
   "name": "Block operatioins",
   "icon": "divinefavor:spell_talisman_undo",
   "category": "block_manipulation",
+  "read_by_default": true,
   "sortnum": 8,
   "pages": [
     {

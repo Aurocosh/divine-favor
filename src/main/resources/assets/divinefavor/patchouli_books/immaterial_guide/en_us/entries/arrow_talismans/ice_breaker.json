@@ -2,6 +2,7 @@
   "name": "Ice breaker",
   "icon": "divinefavor:arrow_talisman_ice_breaker",
   "category": "arrow_talismans",
+  "read_by_default": true,
   "pages": [
     {
       "type": "item_description",

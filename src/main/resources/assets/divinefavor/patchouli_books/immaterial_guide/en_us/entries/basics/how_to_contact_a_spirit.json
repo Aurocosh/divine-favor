@@ -2,6 +2,7 @@
   "name": "How to contact a spirit",
   "icon": "divinefavor:calling_stone_neblaze",
   "category": "basics",
+  "read_by_default": true,
   "sortnum": 3,
   "pages": [
     {

@@ -2,6 +2,7 @@
   "name": "Summon spider",
   "icon": "divinefavor:spell_talisman_summon_spider",
   "category": "spell_talismans",
+  "read_by_default": true,
   "pages": [
     {
       "type": "item_description",

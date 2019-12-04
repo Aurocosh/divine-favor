@@ -2,6 +2,7 @@
   "name": "Sense entity passive",
   "icon": "divinefavor:spell_talisman_sense_entity_passive",
   "category": "spell_talismans",
+  "read_by_default": true,
   "pages": [
     {
       "type": "item_description",

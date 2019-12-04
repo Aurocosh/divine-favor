@@ -2,6 +2,7 @@
   "name": "Yummy smell",
   "icon": "divinefavor:arrow_talisman_yummy_smell",
   "category": "arrow_talismans",
+  "read_by_default": true,
   "pages": [
     {
       "type": "item_description",

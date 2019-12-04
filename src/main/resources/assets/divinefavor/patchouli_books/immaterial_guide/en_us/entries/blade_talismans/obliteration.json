@@ -2,6 +2,7 @@
   "name": "Obliteration",
   "icon": "divinefavor:blade_talisman_obliteration",
   "category": "blade_talismans",
+  "read_by_default": true,
   "pages": [
     {
       "type": "item_description",

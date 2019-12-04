@@ -2,6 +2,7 @@
   "name": "Talismans",
   "icon": "divinefavor:spell_talisman_wild_sprint",
   "category": "basics",
+  "read_by_default": true,
   "sortnum": 5,
   "pages": [
     {

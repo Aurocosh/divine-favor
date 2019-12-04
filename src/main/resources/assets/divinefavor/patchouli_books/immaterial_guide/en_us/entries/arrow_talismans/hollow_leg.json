@@ -2,6 +2,7 @@
   "name": "Hollow leg",
   "icon": "divinefavor:arrow_talisman_hollow_leg",
   "category": "arrow_talismans",
+  "read_by_default": true,
   "pages": [
     {
       "type": "item_description",

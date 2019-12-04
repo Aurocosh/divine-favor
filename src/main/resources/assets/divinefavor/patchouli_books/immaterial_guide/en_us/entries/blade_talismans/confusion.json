@@ -2,6 +2,7 @@
   "name": "Confusion",
   "icon": "divinefavor:blade_talisman_confusion",
   "category": "blade_talismans",
+  "read_by_default": true,
   "pages": [
     {
       "type": "item_description",

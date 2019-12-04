@@ -2,6 +2,7 @@
   "name": "Build talismans",
   "icon": "divinefavor:spell_talisman_build_wall",
   "category": "block_manipulation",
+  "read_by_default": true,
   "sortnum": 1,
   "pages": [
     {

@@ -2,6 +2,7 @@
   "name": "Destruction talismans",
   "icon": "divinefavor:tool_talisman_destroy_surface",
   "category": "block_manipulation",
+  "read_by_default": true,
   "sortnum": 4,
   "pages": [
     {

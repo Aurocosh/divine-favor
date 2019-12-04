@@ -2,6 +2,7 @@
   "name": "Prismatic eyes",
   "icon": "divinefavor:spell_talisman_prismatic_eyes",
   "category": "spell_talismans",
+  "read_by_default": true,
   "pages": [
     {
       "type": "item_description",

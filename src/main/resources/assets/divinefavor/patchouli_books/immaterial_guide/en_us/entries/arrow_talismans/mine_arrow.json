@@ -2,6 +2,7 @@
   "name": "Mine arrow",
   "icon": "divinefavor:arrow_talisman_mine",
   "category": "arrow_talismans",
+  "read_by_default": true,
   "pages": [
     {
       "type": "item_description",

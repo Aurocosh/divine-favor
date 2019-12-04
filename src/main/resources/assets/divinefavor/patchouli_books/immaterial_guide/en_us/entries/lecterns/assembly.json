@@ -2,6 +2,7 @@
   "name": "Assembly",
   "icon": "divinefavor:soulbound_lectern_gold",
   "category": "lecterns",
+  "read_by_default": true,
   "sortnum": 0,
   "pages": [
     {

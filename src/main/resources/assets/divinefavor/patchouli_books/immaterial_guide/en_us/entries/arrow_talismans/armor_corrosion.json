@@ -2,6 +2,7 @@
   "name": "Armor corrosion",
   "icon": "divinefavor:arrow_talisman_armor_corrosion",
   "category": "arrow_talismans",
+  "read_by_default": true,
   "pages": [
     {
       "type": "item_description",

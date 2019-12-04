@@ -2,6 +2,7 @@
   "name": "Ethereal goo",
   "icon": "divinefavor:ethereal_goo",
   "category": "block_manipulation",
+  "read_by_default": true,
   "sortnum": 9,
   "pages": [
     {

@@ -2,6 +2,7 @@
   "name": "Copy area",
   "icon": "divinefavor:spell_talisman_copy_area",
   "category": "spell_talismans",
+  "read_by_default": true,
   "pages": [
     {
       "type": "item_description",

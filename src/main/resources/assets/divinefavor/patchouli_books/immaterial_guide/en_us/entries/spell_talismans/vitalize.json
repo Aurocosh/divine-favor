@@ -2,6 +2,7 @@
   "name": "Vitalize",
   "icon": "divinefavor:spell_talisman_vitalize",
   "category": "spell_talismans",
+  "read_by_default": true,
   "pages": [
     {
       "type": "item_description",

@@ -2,6 +2,7 @@
   "name": "Summon skeleton",
   "icon": "divinefavor:spell_talisman_summon_skeleton",
   "category": "spell_talismans",
+  "read_by_default": true,
   "pages": [
     {
       "type": "item_description",

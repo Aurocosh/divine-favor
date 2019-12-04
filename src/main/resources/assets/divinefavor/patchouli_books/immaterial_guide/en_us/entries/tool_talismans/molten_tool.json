@@ -2,6 +2,7 @@
   "name": "Molten tool",
   "icon": "divinefavor:tool_talisman_molten_tool",
   "category": "tool_talismans",
+  "read_by_default": true,
   "pages": [
     {
       "type": "item_description",

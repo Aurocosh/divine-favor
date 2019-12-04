@@ -2,6 +2,7 @@
   "name": "Memory tool",
   "icon": "divinefavor:tool_talisman_memory_tool",
   "category": "tool_talismans",
+  "read_by_default": true,
   "pages": [
     {
       "type": "item_description",

@@ -2,6 +2,7 @@
   "name": "Sense water",
   "icon": "divinefavor:spell_talisman_sense_water",
   "category": "spell_talismans",
+  "read_by_default": true,
   "pages": [
     {
       "type": "item_description",

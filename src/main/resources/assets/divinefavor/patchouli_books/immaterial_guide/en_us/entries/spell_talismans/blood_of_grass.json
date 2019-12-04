@@ -2,6 +2,7 @@
   "name": "Blood of grass",
   "icon": "divinefavor:spell_talisman_blood_of_grass",
   "category": "spell_talismans",
+  "read_by_default": true,
   "pages": [
     {
       "type": "item_description",

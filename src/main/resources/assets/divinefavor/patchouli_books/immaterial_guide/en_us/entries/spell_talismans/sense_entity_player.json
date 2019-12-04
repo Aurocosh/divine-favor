@@ -2,6 +2,7 @@
   "name": "Sense entity player",
   "icon": "divinefavor:spell_talisman_sense_entity_player",
   "category": "spell_talismans",
+  "read_by_default": true,
   "pages": [
     {
       "type": "item_description",

@@ -2,6 +2,7 @@
   "name": "Nether surge",
   "icon": "divinefavor:spell_talisman_nether_surge",
   "category": "spell_talismans",
+  "read_by_default": true,
   "pages": [
     {
       "type": "item_description",

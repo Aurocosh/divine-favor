@@ -2,6 +2,7 @@
   "name": "Piercing arrow",
   "icon": "divinefavor:arrow_talisman_piercing",
   "category": "arrow_talismans",
+  "read_by_default": true,
   "pages": [
     {
       "type": "item_description",

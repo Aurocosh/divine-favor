@@ -2,6 +2,7 @@
   "name": "Destroy cuboid remotely",
   "icon": "divinefavor:spell_talisman_destroy_cuboid_remotely",
   "category": "spell_talismans",
+  "read_by_default": true,
   "pages": [
     {
       "type": "item_description",

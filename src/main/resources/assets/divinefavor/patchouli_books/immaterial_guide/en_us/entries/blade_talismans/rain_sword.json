@@ -2,6 +2,7 @@
   "name": "Rain sword",
   "icon": "divinefavor:blade_talisman_rain_sword",
   "category": "blade_talismans",
+  "read_by_default": true,
   "pages": [
     {
       "type": "item_description",

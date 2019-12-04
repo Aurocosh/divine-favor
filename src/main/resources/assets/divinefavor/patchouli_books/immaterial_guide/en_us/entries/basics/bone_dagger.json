@@ -2,6 +2,7 @@
   "name": "Bone dagger",
   "icon": "divinefavor:bone_dagger",
   "category": "basics",
+  "read_by_default": true,
   "sortnum": 1,
   "pages": [
     {

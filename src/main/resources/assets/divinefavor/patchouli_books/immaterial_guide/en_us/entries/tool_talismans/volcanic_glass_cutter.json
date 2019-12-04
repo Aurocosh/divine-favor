@@ -2,6 +2,7 @@
   "name": "Volcanic glass cutter",
   "icon": "divinefavor:tool_talisman_volcanic_glass_cutter",
   "category": "tool_talismans",
+  "read_by_default": true,
   "pages": [
     {
       "type": "item_description",

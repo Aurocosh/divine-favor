@@ -2,6 +2,7 @@
   "name": "Empower axe",
   "icon": "divinefavor:spell_talisman_empower_axe",
   "category": "spell_talismans",
+  "read_by_default": true,
   "pages": [
     {
       "type": "item_description",

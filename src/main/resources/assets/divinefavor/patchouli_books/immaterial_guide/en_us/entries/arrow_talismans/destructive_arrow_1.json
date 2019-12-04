@@ -2,6 +2,7 @@
   "name": "Destructive arrow I",
   "icon": "divinefavor:arrow_talisman_destructive_1",
   "category": "arrow_talismans",
+  "read_by_default": true,
   "pages": [
     {
       "type": "item_description",

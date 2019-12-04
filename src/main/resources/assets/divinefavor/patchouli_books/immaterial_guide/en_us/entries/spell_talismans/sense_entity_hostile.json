@@ -2,6 +2,7 @@
   "name": "Sense hostile mobs",
   "icon": "divinefavor:spell_talisman_sense_entity_hostile",
   "category": "spell_talismans",
+  "read_by_default": true,
   "pages": [
     {
       "type": "item_description",

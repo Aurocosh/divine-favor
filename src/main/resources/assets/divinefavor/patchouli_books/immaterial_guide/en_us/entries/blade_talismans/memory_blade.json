@@ -2,6 +2,7 @@
   "name": "Memory blade",
   "icon": "divinefavor:blade_talisman_memory_blade",
   "category": "blade_talismans",
+  "read_by_default": true,
   "pages": [
     {
       "type": "item_description",

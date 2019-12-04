@@ -2,6 +2,7 @@
   "name": "Block templates",
   "icon": "divinefavor:memory_drop",
   "category": "block_manipulation",
+  "read_by_default": true,
   "sortnum": 5,
   "pages": [
     {

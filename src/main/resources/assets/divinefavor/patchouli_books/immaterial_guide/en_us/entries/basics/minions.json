@@ -2,6 +2,7 @@
   "name": "Minions",
   "icon": "divinefavor:banishing_wand",
   "category": "basics",
+  "read_by_default": true,
   "sortnum": 12,
   "pages": [
     {

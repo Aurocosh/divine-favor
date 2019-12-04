@@ -2,6 +2,7 @@
   "name": "Loon",
   "icon": "divinefavor:calling_stone_loon",
   "category": "spirits",
+  "read_by_default": true,
   "sortnum": 0,
   "pages": [
     {

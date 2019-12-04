@@ -2,6 +2,7 @@
   "name": "Petrification",
   "icon": "divinefavor:arrow_talisman_petrification",
   "category": "arrow_talismans",
+  "read_by_default": true,
   "pages": [
     {
       "type": "item_description",

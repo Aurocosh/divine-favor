@@ -2,6 +2,7 @@
   "name": "Break blocks",
   "icon": "divinefavor:tool_talisman_break_blocks",
   "category": "tool_talismans",
+  "read_by_default": true,
   "pages": [
     {
       "type": "item_description",

@@ -2,6 +2,7 @@
   "name": "Butchering strike",
   "icon": "divinefavor:blade_talisman_butchering_strike",
   "category": "blade_talismans",
+  "read_by_default": true,
   "pages": [
     {
       "type": "item_description",

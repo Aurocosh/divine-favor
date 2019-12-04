@@ -2,6 +2,7 @@
   "name": "Ice bubble",
   "icon": "divinefavor:spell_talisman_ice_bubble",
   "category": "spell_talismans",
+  "read_by_default": true,
   "pages": [
     {
       "type": "item_description",

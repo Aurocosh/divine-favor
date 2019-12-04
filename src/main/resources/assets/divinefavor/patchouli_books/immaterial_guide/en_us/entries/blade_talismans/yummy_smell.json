@@ -2,6 +2,7 @@
   "name": "Yummy smell",
   "icon": "divinefavor:blade_talisman_yummy_smell",
   "category": "blade_talismans",
+  "read_by_default": true,
   "pages": [
     {
       "type": "item_description",

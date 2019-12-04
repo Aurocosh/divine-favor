@@ -2,6 +2,7 @@
   "name": "Build floor",
   "icon": "divinefavor:spell_talisman_build_floor",
   "category": "spell_talismans",
+  "read_by_default": true,
   "pages": [
     {
       "type": "item_description",

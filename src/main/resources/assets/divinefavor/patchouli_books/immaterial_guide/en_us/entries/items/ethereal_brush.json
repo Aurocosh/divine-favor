@@ -2,6 +2,7 @@
   "name": "Ethereal brush",
   "icon": "divinefavor:ethereal_brush",
   "category": "items",
+  "read_by_default": true,
   "pages": [
     {
       "type": "spotlight",

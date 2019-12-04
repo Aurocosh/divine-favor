@@ -2,6 +2,7 @@
   "name": "Blade of grass",
   "icon": "divinefavor:spell_talisman_blade_of_grass",
   "category": "spell_talismans",
+  "read_by_default": true,
   "pages": [
     {
       "type": "item_description",

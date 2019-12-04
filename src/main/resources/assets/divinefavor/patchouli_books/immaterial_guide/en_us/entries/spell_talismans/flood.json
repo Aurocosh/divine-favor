@@ -2,6 +2,7 @@
   "name": "Flood",
   "icon": "divinefavor:spell_talisman_flood",
   "category": "spell_talismans",
+  "read_by_default": true,
   "pages": [
     {
       "type": "item_description",

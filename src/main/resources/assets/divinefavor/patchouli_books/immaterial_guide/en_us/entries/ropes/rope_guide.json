@@ -2,6 +2,7 @@
   "name": "Guide rope",
   "icon": "divinefavor:rope_guide",
   "category": "ropes",
+  "read_by_default": true,
   "pages": [
     {
       "type": "item_description",

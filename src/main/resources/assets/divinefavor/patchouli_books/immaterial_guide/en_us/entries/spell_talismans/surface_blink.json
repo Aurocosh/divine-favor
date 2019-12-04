@@ -2,6 +2,7 @@
   "name": "Surface blink",
   "icon": "divinefavor:spell_talisman_surface_blink",
   "category": "spell_talismans",
+  "read_by_default": true,
   "pages": [
     {
       "type": "item_description",

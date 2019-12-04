@@ -2,6 +2,7 @@
   "name": "Replace blocks",
   "icon": "divinefavor:spell_talisman_replace_blocks",
   "category": "spell_talismans",
+  "read_by_default": true,
   "pages": [
     {
       "type": "item_description",

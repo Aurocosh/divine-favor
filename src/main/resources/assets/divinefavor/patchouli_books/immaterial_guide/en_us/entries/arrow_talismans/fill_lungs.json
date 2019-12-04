@@ -2,6 +2,7 @@
   "name": "Fill lungs",
   "icon": "divinefavor:arrow_talisman_fill_lungs",
   "category": "arrow_talismans",
+  "read_by_default": true,
   "pages": [
     {
       "type": "item_description",

@@ -2,6 +2,7 @@
   "name": "Build extrusion",
   "icon": "divinefavor:spell_talisman_build_extrusion",
   "category": "spell_talismans",
+  "read_by_default": true,
   "pages": [
     {
       "type": "item_description",

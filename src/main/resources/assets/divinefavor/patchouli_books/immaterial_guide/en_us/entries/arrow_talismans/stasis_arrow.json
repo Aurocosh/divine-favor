@@ -2,6 +2,7 @@
   "name": "Stasis arrow",
   "icon": "divinefavor:arrow_talisman_stasis",
   "category": "arrow_talismans",
+  "read_by_default": true,
   "pages": [
     {
       "type": "item_description",

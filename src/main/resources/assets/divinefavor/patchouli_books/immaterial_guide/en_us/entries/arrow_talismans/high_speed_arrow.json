@@ -2,6 +2,7 @@
   "name": "High speed arrow",
   "icon": "divinefavor:arrow_talisman_high_speed",
   "category": "arrow_talismans",
+  "read_by_default": true,
   "pages": [
     {
       "type": "item_description",

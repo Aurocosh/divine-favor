@@ -2,6 +2,7 @@
   "name": "Destroy side",
   "icon": "divinefavor:tool_talisman_destroy_side",
   "category": "tool_talismans",
+  "read_by_default": true,
   "pages": [
     {
       "type": "item_description",

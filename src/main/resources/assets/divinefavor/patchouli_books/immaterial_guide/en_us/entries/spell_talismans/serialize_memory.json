@@ -2,6 +2,7 @@
   "name": "Serialize memory",
   "icon": "divinefavor:spell_talisman_serialize_memory",
   "category": "spell_talismans",
+  "read_by_default": true,
   "pages": [
     {
       "type": "item_description",

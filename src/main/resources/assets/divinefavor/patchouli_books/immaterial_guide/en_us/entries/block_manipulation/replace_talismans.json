@@ -2,6 +2,7 @@
   "name": "Replace talismans",
   "icon": "divinefavor:spell_talisman_replace_surface",
   "category": "block_manipulation",
+  "read_by_default": true,
   "sortnum": 2,
   "pages": [
     {

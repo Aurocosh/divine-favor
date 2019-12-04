@@ -2,6 +2,7 @@
   "name": "Wooden punch",
   "icon": "divinefavor:spell_talisman_wooden_punch",
   "category": "spell_talismans",
+  "read_by_default": true,
   "pages": [
     {
       "type": "item_description",

@@ -2,6 +2,7 @@
   "name": "Minor capacity contract",
   "icon": "divinefavor:contract_capacity_minor",
   "category": "contracts",
+  "read_by_default": true,
   "pages": [
     {
       "type": "spotlight_description",

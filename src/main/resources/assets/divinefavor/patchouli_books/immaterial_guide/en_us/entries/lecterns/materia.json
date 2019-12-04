@@ -2,6 +2,7 @@
   "name": "Materia",
   "icon": "divinefavor:soul_shard_will",
   "category": "lecterns",
+  "read_by_default": true,
   "sortnum": 1,
   "pages": [
     {

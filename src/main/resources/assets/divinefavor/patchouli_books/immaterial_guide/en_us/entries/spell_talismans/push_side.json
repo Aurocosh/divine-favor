@@ -2,6 +2,7 @@
   "name": "Push side",
   "icon": "divinefavor:spell_talisman_push_side",
   "category": "spell_talismans",
+  "read_by_default": true,
   "pages": [
     {
       "type": "item_description",

@@ -2,6 +2,7 @@
   "name": "Small fireball throw",
   "icon": "divinefavor:spell_talisman_small_fireball_throw",
   "category": "spell_talismans",
+  "read_by_default": true,
   "pages": [
     {
       "type": "item_description",

@@ -2,6 +2,7 @@
   "name": "Build cylinder",
   "icon": "divinefavor:spell_talisman_build_cylinder",
   "category": "spell_talismans",
+  "read_by_default": true,
   "pages": [
     {
       "type": "item_description",

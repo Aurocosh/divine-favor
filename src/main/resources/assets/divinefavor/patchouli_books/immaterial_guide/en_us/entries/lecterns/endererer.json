@@ -2,6 +2,7 @@
   "name": "Endererer",
   "icon": "divinefavor:soul_shard_end",
   "category": "lecterns",
+  "read_by_default": true,
   "sortnum": 1,
   "pages": [
     {

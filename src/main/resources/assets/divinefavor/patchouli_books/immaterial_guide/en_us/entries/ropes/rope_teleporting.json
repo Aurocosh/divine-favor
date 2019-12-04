@@ -2,6 +2,7 @@
   "name": "Warping rope",
   "icon": "divinefavor:rope_teleporting",
   "category": "ropes",
+  "read_by_default": true,
   "pages": [
     {
       "type": "item_description",

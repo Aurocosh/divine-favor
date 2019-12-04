@@ -2,6 +2,7 @@
   "name": "Fell tree",
   "icon": "divinefavor:tool_talisman_fell_tree",
   "category": "tool_talismans",
+  "read_by_default": true,
   "pages": [
     {
       "type": "item_description",
