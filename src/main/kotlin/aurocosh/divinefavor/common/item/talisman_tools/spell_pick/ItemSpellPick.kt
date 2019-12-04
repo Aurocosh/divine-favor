@@ -76,9 +76,7 @@ open class ItemSpellPick(name: String, texturePath: String, orderIndex: Int = 0,
 
     override fun onBlockStartBreak(itemstack: ItemStack, pos: BlockPos, player: EntityPlayer): Boolean {
         val success = performBreakCast(itemstack, pos, player);
-        if (!success)
-            return true
-        return false
+        return !success
     }
 
     private fun performBreakCast(stack: ItemStack, pos: BlockPos, player: EntityPlayer): Boolean {

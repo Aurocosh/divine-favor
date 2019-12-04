@@ -1,0 +1,16 @@
+{
+  "name": "Silky tool",
+  "icon": "divinefavor:tool_talisman_silky_tool",
+  "category": "tool_talismans",
+  "read_by_default": true,
+  "pages": [
+    {
+      "type": "item_description",
+      "talisman": "divinefavor:tool_talisman_silky_tool"
+    },
+    {
+      "type": "tool_talisman_stats",
+      "talisman": "divinefavor:tool_talisman_silky_tool"
+    }
+  ]
+}

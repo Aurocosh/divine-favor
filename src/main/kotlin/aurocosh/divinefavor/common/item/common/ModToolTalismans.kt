@@ -18,6 +18,7 @@ import net.minecraft.init.Blocks
 
 object ModToolTalismans {
     // New fields
+    lateinit var silky_tool: ItemToolTalisman
     lateinit var void_tool: ItemToolTalisman
     lateinit var aquatic_tool: ItemToolTalisman
     lateinit var molten_tool: ItemToolTalisman
@@ -67,6 +68,7 @@ object ModToolTalismans {
         // squarefury;
 
         // New instances
+        silky_tool = ToolTalismanSilkyTool("silky_tool", ModSpirits.romol, ConfigTool.silkyTool.favorCost)
         void_tool = ToolTalismanVoidTool("void_tool", ModSpirits.neblaze, ConfigTool.voidTool.favorCost)
         break_blocks = ToolTalismanBreakBlocks("break_blocks", ModSpirits.romol)
         fell_tree = ToolTalismanFellTree("fell_tree", ModSpirits.romol)

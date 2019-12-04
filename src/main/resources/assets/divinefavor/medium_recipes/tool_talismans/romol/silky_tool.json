@@ -1,0 +1,30 @@
+{
+  "result": {
+    "item": "divinefavor:tool_talisman_silky_tool"
+  },
+  "stones": [
+    "divinefavor:calling_stone_romol"
+  ],
+  "ingredients": [
+    {
+      "type": "ore",
+      "ore": "paper"
+    },
+    {
+      "type": "ore",
+      "ore": "dyeOrange"
+    },
+    {
+      "type": "stack",
+      "item": "minecraft:iron_pickaxe"
+    },
+    {
+      "type": "ore",
+      "ore": "ingotGold"
+    },
+    {
+      "type": "stack",
+      "item": "minecraft:wool"
+    }
+  ]
+}

@@ -439,6 +439,7 @@ item.divinefavor:blade_talisman_wither_coating.name=Wither coating talisman
 item.divinefavor:blade_talisman_yummy_smell.name=Yummy smell
 
 ## TOOL TALISMAN NAMES
+item.divinefavor:tool_talisman_silky_tool.name=Silky tool
 item.divinefavor:tool_talisman_aquatic_tool.name=Aquatic tool
 item.divinefavor:tool_talisman_break_blocks.name=Break blocks
 item.divinefavor:tool_talisman_break_radius.name=Break radius talisman
@@ -890,6 +891,7 @@ item.divinefavor:blade_talisman_wither_coating.description=Inflicts withering on
 item.divinefavor:blade_talisman_yummy_smell.description=Enemies hit with this talisman will be cursed with alluring smell. Cursed creatures will attract unwanted attention. All monsters near cursed creature will attack it. To lift this curse you need attract a lot of creatures at once.
 
 ## TOOL TALISMAN DESCRIPTIONS
+item.divinefavor:tool_talisman_silky_tool.description=This talisman will harvest broken blocks with silk touch
 item.divinefavor:tool_talisman_aquatic_tool.description=This talisman grants extra mining speed under water.
 item.divinefavor:tool_talisman_break_blocks.description=When spell pick with this talisman breaks a block it will also break some connected blocks.
 item.divinefavor:tool_talisman_break_radius.description=When spell pick with this talisman breaks a block it will also break blocks in certain radius around original block.
