@@ -4,7 +4,7 @@ import aurocosh.divinefavor.common.coordinate_generators.generateCuboid
 import aurocosh.divinefavor.common.item.spell_talismans.context.TalismanContext
 import aurocosh.divinefavor.common.item.spell_talismans.context.playerField
 import aurocosh.divinefavor.common.item.spell_talismans.context.worldField
-import aurocosh.divinefavor.common.lib.CachedContainer
+import aurocosh.divinefavor.common.lib.cached_container.CachedContainer
 import aurocosh.divinefavor.common.lib.extensions.filter
 import aurocosh.divinefavor.common.lib.extensions.get
 import aurocosh.divinefavor.common.spirit.base.ModSpirit

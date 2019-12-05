@@ -1,6 +1,6 @@
 package aurocosh.divinefavor.common.item.spell_talismans.build
 
-import aurocosh.divinefavor.common.lib.CachedContainer
+import aurocosh.divinefavor.common.lib.cached_container.CachedContainer
 import aurocosh.divinefavor.common.coordinate_generators.generateWallCoordinates
 import aurocosh.divinefavor.common.item.spell_talismans.build.base.SpellTalismanBuildShifted
 import aurocosh.divinefavor.common.item.spell_talismans.context.TalismanContext

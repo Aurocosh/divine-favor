@@ -4,7 +4,7 @@ import aurocosh.divinefavor.common.coordinate_generators.generateLineCoordinates
 import aurocosh.divinefavor.common.item.spell_talismans.build.base.SpellTalismanBuildShifted
 import aurocosh.divinefavor.common.item.spell_talismans.common_build_properties.FacingPropertyWrapper
 import aurocosh.divinefavor.common.item.spell_talismans.context.TalismanContext
-import aurocosh.divinefavor.common.lib.CachedContainer
+import aurocosh.divinefavor.common.lib.cached_container.CachedContainer
 import aurocosh.divinefavor.common.lib.extensions.get
 import aurocosh.divinefavor.common.spirit.base.ModSpirit
 import aurocosh.divinefavor.common.stack_properties.properties.StackPropertyInt

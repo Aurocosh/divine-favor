@@ -6,7 +6,7 @@ import aurocosh.divinefavor.common.item.spell_talismans.base.ItemSpellTalisman
 import aurocosh.divinefavor.common.item.spell_talismans.base.SpellOptions
 import aurocosh.divinefavor.common.item.spell_talismans.common_build_properties.BlockSelectPropertyWrapper
 import aurocosh.divinefavor.common.item.spell_talismans.context.*
-import aurocosh.divinefavor.common.lib.CachedContainer
+import aurocosh.divinefavor.common.lib.cached_container.CachedContainer
 import aurocosh.divinefavor.common.lib.extensions.get
 import aurocosh.divinefavor.common.spirit.base.ModSpirit
 import aurocosh.divinefavor.common.stack_properties.properties.StackPropertyBool
@@ -19,7 +19,7 @@ import net.minecraftforge.client.event.RenderWorldLastEvent
 import net.minecraftforge.fml.relauncher.Side
 import net.minecraftforge.fml.relauncher.SideOnly
 import java.util.*
-import javax.vecmath.Color3f
+import javax.vecmath.Color4f
 
 open class SpellTalismanPullSide(name: String, spirit: ModSpirit, favorCost: Int, options: EnumSet<SpellOptions>) : ItemSpellTalisman(name, spirit, favorCost, options) {
     private val finalCoordinates = ContextProperty<List<BlockPos>>("coordinates", emptyList())
@@ -72,7 +72,7 @@ open class SpellTalismanPullSide(name: String, spirit: ModSpirit, favorCost: Int
     }
 
     companion object {
-        val color = Color3f(0f, 0.2f, 0.5f)
+        val color = Color4f(0f, 0.2f, 0.5f, 0.3f)
         private val cachedContainer = CachedContainer { emptyList<BlockPos>() }
     }
 }

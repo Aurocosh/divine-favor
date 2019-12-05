@@ -18,7 +18,7 @@ import net.minecraft.util.math.BlockPos
 import net.minecraftforge.client.event.RenderWorldLastEvent
 import net.minecraftforge.fml.relauncher.Side
 import net.minecraftforge.fml.relauncher.SideOnly
-import javax.vecmath.Color3f
+import javax.vecmath.Color4f
 
 abstract class ToolTalismanBreak(name: String, spirit: ModSpirit) : ItemToolTalisman(name, spirit, ConfigGeneral.blockBreakingCost) {
     protected val finalCoordinates = ContextProperty<List<BlockPos>>("coordinates", emptyList())
@@ -31,6 +31,10 @@ abstract class ToolTalismanBreak(name: String, spirit: ModSpirit) : ItemToolTali
     override fun getApproximateFavorCost(itemStack: ItemStack) = favorCost * getBlockCount(itemStack)
     override fun getFinalFavorCost(context: TalismanContext) = favorCost * context.get(finalCoordinates).size
     override fun preValidate(context: TalismanContext) = context.player.isSneaking || super.preValidate(context)
+
+    override fun shouldBreakBlock(context: TalismanContext): Boolean {
+        return false
+    }
 
     @SideOnly(Side.CLIENT)
     override fun shouldRender(context: TalismanContext): Boolean {
@@ -74,7 +78,7 @@ abstract class ToolTalismanBreak(name: String, spirit: ModSpirit) : ItemToolTali
     protected abstract fun getBlockCount(stack: ItemStack): Int
 
     companion object {
-        val renderColor = Color3f(0.2f, 0.6f, 0f)
+        val renderColor = Color4f(0.2f, 0.6f, 0f, 0.2f)
         private const val hudDistance = 6
         const val hudDistanceSq = hudDistance * hudDistance
     }

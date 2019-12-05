@@ -13,6 +13,7 @@ import net.minecraft.client.renderer.Tessellator
 import net.minecraft.client.renderer.texture.TextureMap
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats
 import net.minecraft.entity.player.EntityPlayer
+import net.minecraft.init.Blocks
 import net.minecraft.util.EnumFacing
 import net.minecraft.util.math.BlockPos
 import net.minecraft.util.math.Vec3d
@@ -23,7 +24,7 @@ import org.lwjgl.opengl.GL11
 import java.util.*
 import java.util.concurrent.ExecutionException
 import java.util.concurrent.TimeUnit
-import javax.vecmath.Color3f
+import javax.vecmath.Color4f
 
 /**
  * Parts of this class were adapted from code written by Direwolf20 for the BuildingGadgets mod: https://github.com/Direwolf20-MC/BuildingGadgets
@@ -36,12 +37,12 @@ object BlockHighlightRendering {
     private val cacheDestructionOverlay = CacheBuilder
             .newBuilder()
             .maximumSize(1)
-            .expireAfterWrite(1, TimeUnit.SECONDS)
-            .removalListener { removal: RemovalNotification<Pair<List<Any>, Color3f>, Int> ->
+            .expireAfterWrite(250, TimeUnit.MILLISECONDS)
+            .removalListener { removal: RemovalNotification<Pair<List<Any>, Color4f>, Int> ->
                 GLAllocation.deleteDisplayLists(removal.value)
-            }.build<Pair<List<Any>, Color3f>, Int>();
+            }.build<Pair<List<Any>, Color4f>, Int>();
 
-    fun render(lastEvent: RenderWorldLastEvent, player: EntityPlayer, coordinates: List<BlockPos>, color: Color3f = Color3f(1f, 0f, 0f)) {
+    fun render(lastEvent: RenderWorldLastEvent, player: EntityPlayer, coordinates: List<BlockPos>, color: Color4f = Color4f(1f, 0f, 0f, 0.3f)) {
         val unmodifiableList = Collections.unmodifiableList(coordinates)
         val key = Pair(unmodifiableList, color)
 
@@ -57,14 +58,14 @@ object BlockHighlightRendering {
                 displayList
             })
         } catch (e: ExecutionException) {
-            DivineFavor.logger.error("Error encountered while rendering destruction gadget overlay", e)
+            DivineFavor.logger.error("Error encountered while rendering block highlight", e)
         }
 
         GlStateManager.enableLighting()
         GlStateManager.popMatrix()
     }
 
-    private fun render(player: EntityPlayer, coordinates: List<BlockPos>, color: Color3f) {
+    private fun render(player: EntityPlayer, coordinates: List<BlockPos>, color: Color4f) {
         mc.renderEngine.bindTexture(TextureMap.LOCATION_BLOCKS_TEXTURE)
 
         GlStateManager.pushMatrix()
@@ -77,10 +78,10 @@ object BlockHighlightRendering {
         val bufferBuilder = tessellator.buffer
 
         val world = player.world
+        val state = Blocks.STONE.defaultState
         for (coordinate in sortedCoordinates) {
-            val state = world.getBlockState(coordinate)
-            val sideToDraw = sides.filter { state.shouldSideBeRendered(world,coordinate,it) }
-            if(sideToDraw.isEmpty())
+            val sideToDraw = sides.filter { state.shouldSideBeRendered(world, coordinate, it) }
+            if (sideToDraw.isEmpty())
                 continue
 
             GlStateManager.pushMatrix()//Push matrix again just because
@@ -92,7 +93,7 @@ object BlockHighlightRendering {
             for (facing in sideToDraw) {
                 val shift = getSideShift(facing)
                 GlStateManager.translate(shift.x, shift.y, shift.z)
-                renderBoxSide(tessellator, bufferBuilder, facing, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0, color.x, color.y, color.z, 0.5f)
+                renderBoxSide(tessellator, bufferBuilder, facing, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0, color.x, color.y, color.z, color.w)
                 GlStateManager.translate(-shift.x, -shift.y, -shift.z)
             }
 
@@ -110,12 +111,12 @@ object BlockHighlightRendering {
 
     private fun getSideShift(facing: EnumFacing): Vec3d {
         return when (facing) {
-            EnumFacing.DOWN -> Vec3d(0.0, -0.0001, 0.0)
-            EnumFacing.UP -> Vec3d(0.0, 0.0001, 0.0)
-            EnumFacing.NORTH -> Vec3d(0.0, 0.0, -0.0001)
-            EnumFacing.SOUTH -> Vec3d(0.0, 0.0, 0.0001)
-            EnumFacing.WEST -> Vec3d(-0.0001, 0.0, 0.0)
-            EnumFacing.EAST -> Vec3d(0.0001, 0.0, 0.0)
+            EnumFacing.DOWN -> Vec3d(0.0, -0.001, 0.0)
+            EnumFacing.UP -> Vec3d(0.0, 0.001, 0.0)
+            EnumFacing.NORTH -> Vec3d(0.0, 0.0, -0.001)
+            EnumFacing.SOUTH -> Vec3d(0.0, 0.0, 0.001)
+            EnumFacing.WEST -> Vec3d(-0.001, 0.0, 0.0)
+            EnumFacing.EAST -> Vec3d(0.001, 0.0, 0.0)
         }
     }
 

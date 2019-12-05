@@ -1,11 +1,13 @@
 package aurocosh.divinefavor.common.lib
 
 import net.minecraft.util.math.MathHelper
+import kotlin.math.abs
+import kotlin.math.max
 
 class LoopedCounter {
     var tickRate: Int = 0
         set(value) {
-            field = Math.max(1, Math.abs(value))
+            field = max(1, abs(value))
         }
 
     var count: Int = 0
@@ -25,7 +27,6 @@ class LoopedCounter {
         this.tickRate = tickRate
         count = 0
     }
-
 
     fun reset() {
         count = 0

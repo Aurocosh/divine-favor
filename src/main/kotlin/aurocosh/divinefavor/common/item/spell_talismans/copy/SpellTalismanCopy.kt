@@ -33,7 +33,7 @@ import net.minecraftforge.client.event.RenderWorldLastEvent
 import net.minecraftforge.fml.relauncher.Side
 import net.minecraftforge.fml.relauncher.SideOnly
 import java.util.*
-import javax.vecmath.Color3f
+import javax.vecmath.Color4f
 
 abstract class SpellTalismanCopy(name: String, spirit: ModSpirit, favorCost: Int = ConfigGeneral.blockBuildingCost) : ItemSpellTalisman(name, spirit, favorCost, SpellOptions.ALL_CAST_TRACE) {
     protected data class CopyCoordinates(val coordinates: List<BlockPos>, val boundingBox: CuboidBoundingBox)
@@ -122,7 +122,7 @@ abstract class SpellTalismanCopy(name: String, spirit: ModSpirit, favorCost: Int
         val templateSavedData = world[TemplateData]
         templateSavedData[uuid] = blockTemplate
         TemplateNetHandlers.clientHandler.send(player, blockTemplate)
-        UtilTemplate.setCurrent(player,uuid)
+        UtilTemplate.setCurrent(player, uuid)
 
 //        val stack = ItemStack(ModItems.memory_drop)
 //        stack.set(ItemMemoryDrop.uuid, uuid)
@@ -141,7 +141,7 @@ abstract class SpellTalismanCopy(name: String, spirit: ModSpirit, favorCost: Int
     override fun handleRendering(context: TalismanContext, lastEvent: RenderWorldLastEvent) {
         val player = context.player
         val (coordinates, boundingBox) = getCoordinates(context)
-        BlockHighlightRendering.render(lastEvent, player, coordinates, Color3f(0.3f, 0.3f, 0f))
+        BlockHighlightRendering.render(lastEvent, player, coordinates, Color4f(0.3f, 0.3f, 0f, 0.3f))
 
         BoxRendering.render(lastEvent, player, boundingBox.lowerCorner, boundingBox.upperCorner)
     }

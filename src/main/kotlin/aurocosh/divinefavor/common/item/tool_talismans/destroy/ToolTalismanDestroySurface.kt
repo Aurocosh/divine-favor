@@ -1,6 +1,6 @@
 package aurocosh.divinefavor.common.item.tool_talismans.destroy
 
-import aurocosh.divinefavor.common.lib.CachedContainer
+import aurocosh.divinefavor.common.lib.cached_container.CachedContainer
 import aurocosh.divinefavor.common.coordinate_generators.generateSurfaceCoordinates
 import aurocosh.divinefavor.common.item.spell_talismans.context.TalismanContext
 import aurocosh.divinefavor.common.item.spell_talismans.context.posField

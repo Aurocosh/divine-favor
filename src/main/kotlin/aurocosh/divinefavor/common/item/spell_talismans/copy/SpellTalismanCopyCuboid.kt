@@ -6,7 +6,7 @@ import aurocosh.divinefavor.common.item.spell_talismans.common_build_properties.
 import aurocosh.divinefavor.common.item.spell_talismans.context.TalismanContext
 import aurocosh.divinefavor.common.item.spell_talismans.context.playerField
 import aurocosh.divinefavor.common.item.spell_talismans.context.stackField
-import aurocosh.divinefavor.common.lib.CachedContainer
+import aurocosh.divinefavor.common.lib.cached_container.CachedContainer
 import aurocosh.divinefavor.common.lib.extensions.directionPos
 import aurocosh.divinefavor.common.lib.extensions.get
 import aurocosh.divinefavor.common.lib.extensions.scale

@@ -1,8 +1,8 @@
 package aurocosh.divinefavor.common.item.tool_talismans.break_blocks
 
-import aurocosh.divinefavor.common.lib.CachedContainer
 import aurocosh.divinefavor.common.coordinate_generators.generateSideCoordinates
 import aurocosh.divinefavor.common.item.spell_talismans.context.*
+import aurocosh.divinefavor.common.lib.cached_container.CachedContainer
 import aurocosh.divinefavor.common.lib.extensions.get
 import aurocosh.divinefavor.common.spirit.base.ModSpirit
 import aurocosh.divinefavor.common.stack_properties.properties.StackPropertyInt
