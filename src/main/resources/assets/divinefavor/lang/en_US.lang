@@ -530,8 +530,9 @@ container.divinefavor:contact_ritual.name=Spirit contact
 
 #KEYBINDS
 key.categories.divinefavor=Divine favor
-key.divinefavor:spell_talisman_scroll=Grimoire scroll hud
-key.divinefavor:spell_talisman_select=Grimoire select hud
+key.divinefavor.talisman_scroll=Talisman scroll hud
+key.divinefavor.talisman_select=Talisman select hud
+key.divinefavor.talisman_value_hud=Talisman property hud
 
 #BLOCK DESCRIPTIONS FOR JEI AND PATCHOULI
 ## MEDIUMS
