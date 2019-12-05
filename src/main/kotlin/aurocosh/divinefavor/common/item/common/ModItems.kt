@@ -3,10 +3,7 @@ package aurocosh.divinefavor.common.item.common
 import aurocosh.divinefavor.common.config.common.ConfigItem
 import aurocosh.divinefavor.common.constants.ConstGemTabOrder
 import aurocosh.divinefavor.common.constants.ConstMainTabOrder
-import aurocosh.divinefavor.common.item.ItemGooVial
-import aurocosh.divinefavor.common.item.ItemIceArrow
-import aurocosh.divinefavor.common.item.ItemMilkyApple
-import aurocosh.divinefavor.common.item.ItemStoneball
+import aurocosh.divinefavor.common.item.*
 import aurocosh.divinefavor.common.item.base.ModItem
 import aurocosh.divinefavor.common.item.base.ModItemArrow
 import aurocosh.divinefavor.common.item.base.ModItemPickaxe
@@ -66,6 +63,7 @@ object ModItems {
     val markedGlasses: MutableList<ItemMarkedGlass> = ArrayList()
 
     // New fields
+    lateinit var experience_drop: ModItem
     lateinit var memory_drop: ItemMemoryDrop
     lateinit var ice_arrow: ModItemArrow
 
@@ -103,7 +101,8 @@ object ModItems {
             markedGlasses.add(ItemMarkedGlass(spirit, ConstGemTabOrder.MARKED_GLASS))
 
         // New instances
-        memory_drop = ItemMemoryDrop("memory_drop", "memory_drop")
+        experience_drop = ItemExperienceDrop()
+        memory_drop = ItemMemoryDrop()
         ice_arrow = ItemIceArrow()
     }
 

@@ -153,6 +153,7 @@ object ModSpellTalismans {
     lateinit var wooden_punch: ItemSpellTalisman
 
     // New fields
+    lateinit var crystallize_experience: ItemSpellTalisman
     lateinit var destroy_cuboid_remotely: ItemSpellTalisman
     lateinit var redo: ItemSpellTalisman
     lateinit var build_cylinder: ItemSpellTalisman
@@ -322,6 +323,7 @@ object ModSpellTalismans {
         starvation = SpellTalismanModPotion("starvation", ModSpirits.timber, ConfigSpell.starvation.favorCost, ModPotions.starvation, ConfigSpell.starvation.duration)
 
         // New instances
+        crystallize_experience = SpellTalismanCrystallizeExperience("crystallize_experience", ModSpirits.blizrabi, ConfigSpell.crystallizeExperience.favorCost, SpellOptions.ALL_CAST)
         destroy_cuboid_remotely = SpellTalismanDestroyCuboidRemotely("destroy_cuboid_remotely", ModSpirits.neblaze)
         redo = SpellTalismanRedo("redo", ModSpirits.materia, ConfigSpell.redo.favorCost, SpellOptions.ALL_CAST)
         build_cylinder = SpellTalismanBuildCylinder("build_cylinder", ModSpirits.materia)

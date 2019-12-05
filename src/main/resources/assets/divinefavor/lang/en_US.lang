@@ -96,6 +96,7 @@ divinefavor:spirit.squarefury.name=Squarefury
 divinefavor:spirit.timber.name=Timber
 
 # ITEM NAMES
+item.divinefavor:experience_drop.name=Experience drop
 item.divinefavor:memory_drop.name=Memory drop
 
 ## GEMS
@@ -224,6 +225,7 @@ item.divinefavor:goo_vial_big.name=Big goo vial
 item.divinefavor:ice_arrow.name=Ice arrow
 
 ## SPELL TALISMAN NAMES
+item.divinefavor:spell_talisman_crystallize_experience.name=Crystallize experience
 item.divinefavor:spell_talisman_destroy_cuboid_remotely.name=Destroy cuboid remotely
 item.divinefavor:spell_talisman_armor_of_pacifist.name=Armor of pacifist talisman
 item.divinefavor:spell_talisman_arrow_deflection.name=Arrow deflection talisman
@@ -551,6 +553,7 @@ tile.divinefavor:red_signal.description=Ghostly block that emits strong redstone
 tile.divinefavor:sealing_stone_orange.description=This block can be used to seal talisman containers such as spell bow or a spell blade. To seal something just right click this block with this item. Sealed items will not transform.
 
 #ITEM DESCRIPTIONS FOR JEI AND PATCHOULI
+item.divinefavor:experience_drop.description=This is an experience in crystalline form. When consumed it will give you experience stored inside. Right click to consume one. Sneak right click to consume entire stack.
 item.divinefavor:goo_vial_small.description=Small vial that can store ethereal goo. This vial can be used to collect goo or to place it in world. All other items that can use goo will automatically take stored goo from this vial.
 item.divinefavor:goo_vial_medium.description=Medium vial that can store ethereal goo. This vial can be used to collect goo or to place it in world. All other items that can use goo will automatically take stored goo from this vial.
 item.divinefavor:goo_vial_big.description=Big vial that can store ethereal goo. This vial can be used to collect goo or to place it in world. All other items that can use goo will automatically take stored goo from this vial.
@@ -679,6 +682,7 @@ item.divinefavor:rope_teleporting.description=Unusual trapping device. It will t
 item.divinefavor:ice_arrow.description=Delicate arrows made of ice. They are frail and because of this they deal less damage then regular arrows and break easily, but in a pinch they can be very useful. This type of arrow also cannot be tipped in potion, but on the other hand it deals extra damage to hellish mobs.
 
 ## SPELL TALISMAN DESCRIPTIONS
+item.divinefavor:spell_talisman_crystallize_experience.description=Cristallizes some of your experience into experience drop and lets you store experience in item form. Simple cast will create one drop of experience. If you sneak while casting then all of your available experience will be crystallized.
 item.divinefavor:spell_talisman_destroy_cuboid_remotely.description=This talisman allows you to instantly destroy any blocks in shape of cuboid remotely. Warning you will not get block drops!
 item.divinefavor:spell_talisman_redo.description=This talisman allows you to redo actions canelled by undo talisman
 item.divinefavor:spell_talisman_build_cylinder.description=This talisman allows you to instantly build cylinders and circles.

@@ -28,7 +28,7 @@ import aurocosh.divinefavor.common.stack_properties.StackPropertyHandler
 import aurocosh.divinefavor.common.stack_properties.interfaces.IPropertyAccessor
 import aurocosh.divinefavor.common.stack_properties.interfaces.IPropertyContainer
 import aurocosh.divinefavor.common.util.UtilBow
-import aurocosh.divinefavor.common.util.UtilItem.actionResult
+import aurocosh.divinefavor.common.util.UtilItemStack.actionResult
 import aurocosh.divinefavor.common.util.UtilPlayer
 import net.minecraft.client.resources.I18n
 import net.minecraft.client.util.ITooltipFlag

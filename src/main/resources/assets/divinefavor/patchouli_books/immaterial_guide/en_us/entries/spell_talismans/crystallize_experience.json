@@ -1,0 +1,16 @@
+{
+  "name": "Crystallize experience",
+  "icon": "divinefavor:spell_talisman_crystallize_experience",
+  "category": "spell_talismans",
+  "read_by_default": true,
+  "pages": [
+    {
+      "type": "item_description",
+      "talisman": "divinefavor:spell_talisman_crystallize_experience"
+    },
+    {
+      "type": "spell_talisman_stats",
+      "talisman": "divinefavor:spell_talisman_crystallize_experience"
+    }
+  ]
+}

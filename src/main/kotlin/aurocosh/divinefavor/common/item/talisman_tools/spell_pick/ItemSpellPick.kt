@@ -28,8 +28,8 @@ import aurocosh.divinefavor.common.stack_actions.interfaces.IActionContainer
 import aurocosh.divinefavor.common.stack_properties.StackPropertyHandler
 import aurocosh.divinefavor.common.stack_properties.interfaces.IPropertyAccessor
 import aurocosh.divinefavor.common.stack_properties.interfaces.IPropertyContainer
-import aurocosh.divinefavor.common.util.UtilItem.actionResult
-import aurocosh.divinefavor.common.util.UtilItem.actionResultPass
+import aurocosh.divinefavor.common.util.UtilItemStack.actionResult
+import aurocosh.divinefavor.common.util.UtilItemStack.actionResultPass
 import com.google.common.collect.Multimap
 import net.minecraft.block.state.IBlockState
 import net.minecraft.client.resources.I18n

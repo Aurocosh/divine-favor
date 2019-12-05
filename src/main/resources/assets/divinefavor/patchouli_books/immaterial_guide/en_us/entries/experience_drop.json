@@ -1,0 +1,12 @@
+{
+  "name": "Experience drop",
+  "icon": "divinefavor:experience_drop",
+  "category": "items",
+  "read_by_default": true,
+  "pages": [
+    {
+      "type": "item_description",
+      "talisman": "divinefavor:experience_drop"
+    }
+  ]
+}

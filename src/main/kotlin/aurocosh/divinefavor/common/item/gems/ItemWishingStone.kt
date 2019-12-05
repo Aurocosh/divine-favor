@@ -5,13 +5,13 @@ import aurocosh.divinefavor.common.item.base.ModItem
 import aurocosh.divinefavor.common.lib.extensions.divinePlayerData
 import aurocosh.divinefavor.common.network.message.client.spirit_data.MessageSyncFavor
 import aurocosh.divinefavor.common.spirit.base.ModSpirit
+import aurocosh.divinefavor.common.util.UtilItemStack
 import net.minecraft.client.resources.I18n
 import net.minecraft.client.util.ITooltipFlag
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.item.EnumRarity
 import net.minecraft.item.ItemStack
 import net.minecraft.util.ActionResult
-import net.minecraft.util.EnumActionResult
 import net.minecraft.util.EnumHand
 import net.minecraft.world.World
 import net.minecraftforge.fml.relauncher.Side
@@ -26,8 +26,7 @@ class ItemWishingStone(val spirit: ModSpirit, private val favorCount: Int, typeN
 
     override fun onItemRightClick(world: World?, player: EntityPlayer, hand: EnumHand): ActionResult<ItemStack> {
         val stack = player.getHeldItem(hand)
-        val result = if (addFavor(player, stack)) EnumActionResult.SUCCESS else EnumActionResult.PASS
-        return ActionResult(result, stack)
+        return UtilItemStack.actionResult(addFavor(player, stack), stack)
     }
 
     private fun addFavor(player: EntityPlayer, stack: ItemStack): Boolean {

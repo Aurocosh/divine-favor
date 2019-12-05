@@ -5,8 +5,8 @@ import aurocosh.divinefavor.common.item.spell_talismans.context.TalismanContext
 import aurocosh.divinefavor.common.item.spell_talismans.context.TalismanContextGenerator
 import aurocosh.divinefavor.common.item.talisman.ItemTalisman
 import aurocosh.divinefavor.common.spirit.base.ModSpirit
-import aurocosh.divinefavor.common.util.UtilItem.actionResult
-import aurocosh.divinefavor.common.util.UtilItem.actionResultPass
+import aurocosh.divinefavor.common.util.UtilItemStack.actionResult
+import aurocosh.divinefavor.common.util.UtilItemStack.actionResultPass
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.item.ItemStack
 import net.minecraft.util.ActionResult

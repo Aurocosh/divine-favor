@@ -24,7 +24,7 @@ import aurocosh.divinefavor.common.stack_actions.interfaces.IActionContainer
 import aurocosh.divinefavor.common.stack_properties.StackPropertyHandler
 import aurocosh.divinefavor.common.stack_properties.interfaces.IPropertyAccessor
 import aurocosh.divinefavor.common.stack_properties.interfaces.IPropertyContainer
-import aurocosh.divinefavor.common.util.UtilItem
+import aurocosh.divinefavor.common.util.UtilItemStack
 import net.minecraft.client.resources.I18n
 import net.minecraft.client.util.ITooltipFlag
 import net.minecraft.entity.player.EntityPlayer
@@ -64,13 +64,13 @@ class ItemGrimoire : ModItem("grimoire", "grimoire", ConstMainTabOrder.CONTAINER
                 ?: return EnumActionResult.PASS
         val context = TalismanContextGenerator.useCast(player, world, pos, hand, facing, talismanStack, containerStack)
         val success = talisman.cast(context)
-        return UtilItem.actionResultPass(success || player.isSneaking)
+        return UtilItemStack.actionResultPass(success || player.isSneaking)
     }
 
     override fun onItemRightClick(world: World, player: EntityPlayer, hand: EnumHand): ActionResult<ItemStack> {
         val stack = player.getHeldItem(hand)
         val success = performRightClickAction(world, player, hand, stack)
-        return UtilItem.actionResult(success, stack)
+        return UtilItemStack.actionResult(success, stack)
     }
 
     private fun performRightClickAction(world: World, player: EntityPlayer, hand: EnumHand, stack: ItemStack): Boolean {

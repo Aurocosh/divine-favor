@@ -1,6 +1,6 @@
 {
   "result": {
-    "item": "divinefavor:spell_talisman_crystallize_memory"
+    "item": "divinefavor:spell_talisman_crystallize_experience"
   },
   "stones": [
     "divinefavor:calling_stone_blizrabi"
@@ -16,7 +16,7 @@
     },
     {
       "type": "ore",
-      "ore": "dyePurple"
+      "ore": "dyeGreen"
     },
     {
       "type": "stack",

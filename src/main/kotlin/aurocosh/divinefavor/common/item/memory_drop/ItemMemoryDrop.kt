@@ -1,6 +1,7 @@
 package aurocosh.divinefavor.common.item.memory_drop
 
 import aurocosh.divinefavor.DivineFavor
+import aurocosh.divinefavor.common.constants.ConstGemTabOrder
 import aurocosh.divinefavor.common.constants.ConstGuiIDs
 import aurocosh.divinefavor.common.item.ITemplateContainer
 import aurocosh.divinefavor.common.item.base.ModItem
@@ -13,7 +14,7 @@ import aurocosh.divinefavor.common.stack_properties.interfaces.IPropertyContaine
 import aurocosh.divinefavor.common.stack_properties.properties.StackPropertyString
 import aurocosh.divinefavor.common.stack_properties.properties.StackPropertyUUID
 import aurocosh.divinefavor.common.stack_properties.properties.base.StackProperty
-import aurocosh.divinefavor.common.util.UtilItem.actionResult
+import aurocosh.divinefavor.common.util.UtilItemStack.actionResult
 import aurocosh.divinefavor.common.util.UtilTemplate
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.item.Item
@@ -23,14 +24,14 @@ import net.minecraft.util.EnumHand
 import net.minecraft.world.World
 import java.util.*
 
-open class ItemMemoryDrop(name: String, texturePath: String, orderIndex: Int = 0) : ModItem(name, texturePath, orderIndex), ITemplateContainer, IPropertyContainer {
+open class ItemMemoryDrop : ModItem(name, name, ConstGemTabOrder.OTHER_GEMS), ITemplateContainer, IPropertyContainer {
     protected val propertyHandler: StackPropertyHandler = StackPropertyHandler(name)
     override val properties: IPropertyAccessor = propertyHandler
 
     init {
         propertyHandler.registerProperty(uuid)
         propertyHandler.registerProperty(templateName)
-        creativeTab = DivineFavor.TAB_MAIN
+        creativeTab = DivineFavor.TAB_GEMS
     }
 
     override fun findProperty(stack: ItemStack, item: Item, propertyName: String): Pair<ItemStack, StackProperty<out Any>>? {
@@ -48,7 +49,7 @@ open class ItemMemoryDrop(name: String, texturePath: String, orderIndex: Int = 0
         }
 
         val templateId = getSelectedTemplateId(stack) ?: return actionResult(false, stack)
-        UtilTemplate.setCurrent(player,templateId)
+        UtilTemplate.setCurrent(player, templateId)
         return actionResult(true, stack)
     }
 
@@ -65,6 +66,7 @@ open class ItemMemoryDrop(name: String, texturePath: String, orderIndex: Int = 0
     }
 
     companion object {
+        private const val name = "memory_drop"
         val uuid = StackPropertyUUID("uuid", invalidUUID(), showInTooltip = false, showInGui = false, orderIndex = 0)
         val templateName = StackPropertyString("template_name", "Template", showInTooltip = true, showInGui = false, orderIndex = 0)
     }

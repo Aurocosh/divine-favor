@@ -206,6 +206,8 @@ public class ConfigSpell {
     public static WoodenPunch woodenPunch = new WoodenPunch();
 
     // New configs
+    @Config.Name("Crystallize experience")
+    public static CrystallizeExperience crystallizeExperience = new CrystallizeExperience();
     @Config.Name("Redo")
     public static Redo redo = new Redo();
     @Config.Name("Undo")

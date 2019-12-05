@@ -18,7 +18,7 @@ import aurocosh.divinefavor.common.stack_properties.StackPropertyHandler
 import aurocosh.divinefavor.common.stack_properties.interfaces.IPropertyAccessor
 import aurocosh.divinefavor.common.stack_properties.interfaces.IPropertyContainer
 import aurocosh.divinefavor.common.stack_properties.properties.base.StackProperty
-import aurocosh.divinefavor.common.util.UtilItem.actionResult
+import aurocosh.divinefavor.common.util.UtilItemStack.actionResult
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.item.Item
 import net.minecraft.item.ItemStack

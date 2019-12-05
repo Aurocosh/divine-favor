@@ -10,8 +10,8 @@ import aurocosh.divinefavor.common.lib.extensions.set
 import aurocosh.divinefavor.common.stack_properties.properties.StackPropertyBool
 import aurocosh.divinefavor.common.stack_properties.properties.StackPropertyInt
 import aurocosh.divinefavor.common.util.UtilBlock
-import aurocosh.divinefavor.common.util.UtilItem.actionResult
-import aurocosh.divinefavor.common.util.UtilItem.actionResultPass
+import aurocosh.divinefavor.common.util.UtilItemStack.actionResult
+import aurocosh.divinefavor.common.util.UtilItemStack.actionResultPass
 import aurocosh.divinefavor.common.util.UtilStatus
 import net.minecraft.client.resources.I18n
 import net.minecraft.client.util.ITooltipFlag
