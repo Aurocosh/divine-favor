@@ -1,6 +1,6 @@
 {
   "name": "Grimoire",
-  "icon": "divinefavor:grimoire",
+  "icon": "divinefavor:grimoire_red",
   "category": "items",
   "read_by_default": true,
   "pages": [
@@ -10,7 +10,7 @@
     },
     {
       "type": "spotlight",
-      "item": "divinefavor:grimoire",
+      "item": "divinefavor:grimoire_blue",
       "text": "When opened you will see grimoire inventory. You can only put spell talismans inside, any other item will be rejected. You can select talisman by using middle click. To cast selected talisman in grimoire just hold grimoire in hand and use it like you would any normal spell talisman."
     },
     {
@@ -20,6 +20,11 @@
     {
       "type": "text",
       "text": "When second hud is activated all talismans currently in grimoire will appear in spiral pattern on your screen. Also your cursor will appear on the screen and you will be able to select any talisman by moving your cursor over it and releasing hud key."
+    },
+    {
+      "type": "spotlight",
+      "item": "divinefavor:grimoire_black",
+      "text": "Grimoires come in several different colors. Functionally differently colored grimoires are identical. If you are using more then one grimoire at a time then having grimoires with different colors will help you to tell them apart."
     }
   ]
 }

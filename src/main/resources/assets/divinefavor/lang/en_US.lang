@@ -116,7 +116,6 @@ item.divinefavor:mystic_architect_stick.name=Mystic architect stick
 
 ## CONTAINERS
 item.divinefavor:contract_binder.name=Contract binder
-item.divinefavor:grimoire.name=Grimoire
 item.divinefavor:memory_pouch.name=Memory pouch
 item.divinefavor:ritual_pouch.name=Ritual pouch
 item.divinefavor:spell_blade_green.name=Spell blade
@@ -124,6 +123,15 @@ item.divinefavor:spell_blade_red.name=Spell blade
 item.divinefavor:spell_bow.name=Spell bow
 item.divinefavor:spell_pick_blue.name=Spell pick
 item.divinefavor:spell_pick_orange.name=Spell pick
+
+## GRIMOIRES
+item.divinefavor:grimoire_black.name=Black grimoire
+item.divinefavor:grimoire_blue.name=Blue grimoire
+item.divinefavor:grimoire_cyan.name=Cyan grimoire
+item.divinefavor:grimoire_green.name=Green grimoire
+item.divinefavor:grimoire_purple.name=Purple grimoire
+item.divinefavor:grimoire_red.name=Red grimoire
+item.divinefavor:grimoire_yellow.name=Yellow grimoire
 
 ## CONSUMABLES
 item.divinefavor:milky_apple.name=Milky apple
@@ -576,7 +584,6 @@ item.divinefavor:mystic_architect_stick.description=Debug item. Creative only.
 
 ## CONTAINERS
 item.divinefavor:contract_binder.description=Stores contracts inside. Can be placed into soulbound lecterns.
-item.divinefavor:grimoire.description=Spell talisman container. Can be used to store and use large quantity of spell talismans.
 item.divinefavor:memory_pouch.description=This item can store large amount of memory drops. To put drops inside sneak right click. To view and use stored memory drops just right click.
 item.divinefavor:ritual_pouch.description=Item used for spiritual trade at spirit altars. Right click to open and put inside stuff that you want to trade.
 item.divinefavor:spell_blade_green.description=Spell talisman container. Can be used to store and use large quantity of talismans. Can only store spell and blade talismans.
@@ -584,6 +591,15 @@ item.divinefavor:spell_blade_red.description=Spell talisman container. Can be us
 item.divinefavor:spell_bow.description=Arrow talisman container. Can be used to store and use large quantity of arrow talismans.
 item.divinefavor:spell_pick_blue.description=Spell talisman container. Can be used to store and use large quantity of talismans. Can only store spell and tool talismans.
 item.divinefavor:spell_pick_orange.description=Spell talisman container. Can be used to store and use large quantity of talismans. Can only store spell and tool talismans.
+
+## GRIMOIRES
+item.divinefavor:grimoire_black.description=Spell talisman container. Can be used to store and use large quantity of spell talismans.
+item.divinefavor:grimoire_blue.description=Spell talisman container. Can be used to store and use large quantity of spell talismans.
+item.divinefavor:grimoire_cyan.description=Spell talisman container. Can be used to store and use large quantity of spell talismans.
+item.divinefavor:grimoire_green.description=Spell talisman container. Can be used to store and use large quantity of spell talismans.
+item.divinefavor:grimoire_purple.description=Spell talisman container. Can be used to store and use large quantity of spell talismans.
+item.divinefavor:grimoire_red.description=Spell talisman container. Can be used to store and use large quantity of spell talismans.
+item.divinefavor:grimoire_yellow.description=Spell talisman container. Can be used to store and use large quantity of spell talismans.
 
 ## CONSUMABLES
 item.divinefavor:milky_apple.description=Removes all curses when consumed

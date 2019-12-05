@@ -4,7 +4,6 @@ import aurocosh.divinefavor.DivineFavor
 import aurocosh.divinefavor.common.constants.ConstGuiIDs
 import aurocosh.divinefavor.common.constants.ConstMainTabOrder
 import aurocosh.divinefavor.common.item.base.ModItem
-import aurocosh.divinefavor.common.item.common.ModItems
 import aurocosh.divinefavor.common.item.spell_talismans.base.ItemSpellTalisman
 import aurocosh.divinefavor.common.item.spell_talismans.context.TalismanContextGenerator
 import aurocosh.divinefavor.common.item.talisman.ITalismanStackContainer
@@ -42,7 +41,7 @@ import net.minecraftforge.event.world.BlockEvent
 import net.minecraftforge.fml.relauncher.Side
 import net.minecraftforge.fml.relauncher.SideOnly
 
-class ItemGrimoire : ModItem("grimoire", "grimoire", ConstMainTabOrder.CONTAINERS), ITalismanStackContainer, ITalismanToolContainer, IPropertyContainer, IActionContainer, IBlockCatcher {
+class ItemGrimoire(name: String) : ModItem("grimoire_$name", "grimoires/$name", ConstMainTabOrder.CONTAINERS), ITalismanStackContainer, ITalismanToolContainer, IPropertyContainer, IActionContainer, IBlockCatcher {
     protected val propertyHandler: StackPropertyHandler = StackPropertyHandler("grimoire")
     override val properties: IPropertyAccessor = propertyHandler
     protected val actionHandler: StackActionHandler = StackActionHandler("grimoire")
@@ -85,7 +84,7 @@ class ItemGrimoire : ModItem("grimoire", "grimoire", ConstMainTabOrder.CONTAINER
     }
 
     override fun initCapabilities(item: ItemStack, nbt: NBTTagCompound?): ICapabilityProvider? {
-        return if (item.item === ModItems.grimoire) GrimoireProvider() else null
+        return if (item.item is ItemGrimoire) GrimoireProvider() else null
     }
 
     override fun getTalismanTool(stack: ItemStack): ITalismanTool = stack.cap(CAPABILITY_GRIMOIRE)

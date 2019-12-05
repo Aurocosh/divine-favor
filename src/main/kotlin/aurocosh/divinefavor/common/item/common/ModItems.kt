@@ -36,7 +36,6 @@ object ModItems {
     lateinit var bone_key: ModItem
     lateinit var contract_binder: ModItem
     lateinit var etherealBrush: ModItem
-    lateinit var grimoire: ModItem
     lateinit var memory_pouch: ModItem
     lateinit var milky_apple: ModItem
     lateinit var mystic_architect_stick: ModItem
@@ -50,6 +49,14 @@ object ModItems {
     lateinit var warp_gem: ModItem
     lateinit var warp_pebble: ModItem
 
+    lateinit var grimoire_red: ModItem
+    lateinit var grimoire_black: ModItem
+    lateinit var grimoire_blue: ModItem
+    lateinit var grimoire_green: ModItem
+    lateinit var grimoire_yellow: ModItem
+    lateinit var grimoire_cyan: ModItem
+    lateinit var grimoire_purple: ModItem
+
     lateinit var spell_blade_green: ModItem
     lateinit var spell_blade_red: ModItem
 
@@ -59,6 +66,7 @@ object ModItems {
     lateinit var goo_vial_small: ItemGooVial
     lateinit var goo_vial_medium: ItemGooVial
     lateinit var goo_vial_big: ItemGooVial
+
 
     val markedGlasses: MutableList<ItemMarkedGlass> = ArrayList()
 
@@ -74,7 +82,6 @@ object ModItems {
         bone_key = ItemBoneKey()
         contract_binder = ItemContractBinder()
         etherealBrush = ItemEtherealBrush()
-        grimoire = ItemGrimoire()
         invite_gem = ItemInviteMarker("invite_gem", true)
         invite_pebble = ItemInviteMarker("invite_pebble", false)
         memory_pouch = ItemMemoryPouch()
@@ -86,6 +93,14 @@ object ModItems {
         storage_gem = ItemStorageGem()
         warp_gem = ItemWarpMarker("warp_gem", true)
         warp_pebble = ItemWarpMarker("warp_pebble", false)
+
+        grimoire_red = ItemGrimoire("red")
+        grimoire_black = ItemGrimoire("black")
+        grimoire_blue = ItemGrimoire("blue")
+        grimoire_green = ItemGrimoire("green")
+        grimoire_yellow = ItemGrimoire("yellow")
+        grimoire_cyan = ItemGrimoire("cyan")
+        grimoire_purple = ItemGrimoire("purple")
 
         spell_blade_green = ItemSpellBlade("spell_blade_green", "spell_blade_green/model", ConstMainTabOrder.SWORDS, ConfigItem.spellBladeGreen, Item.ToolMaterial.IRON)
         spell_blade_red = ItemSpellBlade("spell_blade_red", "spell_blade_red/model", ConstMainTabOrder.SWORDS, ConfigItem.spellBladeRed, Item.ToolMaterial.IRON)

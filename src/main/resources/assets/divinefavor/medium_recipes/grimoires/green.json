@@ -1,6 +1,6 @@
 {
   "result": {
-    "item": "divinefavor:grimoire"
+    "item": "divinefavor:grimoire_green"
   },
   "stones": [
     "divinefavor:calling_stone_arbow",
@@ -20,11 +20,7 @@
     },
     {
       "type": "ore",
-      "ore": "dyeBrown"
-    },
-    {
-      "type": "ore",
-      "ore": "dyeOrange"
+      "ore": "dyeGreen"
     },
     {
       "type": "ore",

@@ -48,7 +48,7 @@ object DivineFavor {
         logger = LogManager.getLogger()
         container = Loader.instance().modObjectList.inverse()[instance] as ModContainer
 
-        TAB_MAIN = DivineFavorCreativeTab("main") { ModItems.grimoire }
+        TAB_MAIN = DivineFavorCreativeTab("main") { ModItems.grimoire_red }
         TAB_GEMS = DivineFavorCreativeTab("gems") { ModCallingStones.calling_stone_neblaze }
         TAB_ARROW_TALISMANS = DivineFavorCreativeTab("arrow_talismans") { ModArrowTalismans.fill_lungs }
         TAB_BLADE_TALISMANS = DivineFavorCreativeTab("blade_talismans") { ModBladeTalismans.rain_sword }
