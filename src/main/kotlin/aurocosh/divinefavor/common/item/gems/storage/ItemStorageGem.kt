@@ -56,10 +56,6 @@ class ItemStorageGem(name: String, override val consumeOnUse: Boolean, override 
     }
 
     override fun cast(context: CastContext): Boolean {
-        val world = context.world
-        if (world.isRemote)
-            return true
-
         val stack = context.stack
         if (stack.isEmpty)
             return false
@@ -68,12 +64,15 @@ class ItemStorageGem(name: String, override val consumeOnUse: Boolean, override 
         if (!stack.isPropertySet(position))
             return false
 
+        val world = context.world
         val player = context.player
         val dimension = stack.get(dimension)
         if (dimension != player.dimension)
             return false
         if (!consumeFavor(player))
             return false
+        if (world.isRemote)
+            return true
 
         val pos = stack.get(position)
         val iLockableContainer = getContainer(world, pos) ?: return false

@@ -51,10 +51,6 @@ class ItemInviteMarker(name: String, private val canTeleportToDimensions: Boolea
     }
 
     override fun cast(context: CastContext): Boolean {
-        val world = context.world
-        if (world.isRemote)
-            return false
-
         val stack = context.stack
         if (stack.isEmpty)
             return false
@@ -63,6 +59,7 @@ class ItemInviteMarker(name: String, private val canTeleportToDimensions: Boolea
         if (!stack.isPropertySet(ItemWarpMarker.position))
             return false
 
+        val world = context.world
         val uuid = stack.get(playerId)
         val server = world.minecraftServer ?: return false
         val playerList = server.playerList
@@ -73,6 +70,8 @@ class ItemInviteMarker(name: String, private val canTeleportToDimensions: Boolea
         if (!canTeleportToDimensions && dimension != player.dimension)
             return false
         if (!consumeFavor(player))
+            return false
+        if (world.isRemote)
             return false
 
         UtilEntity.teleport(player, dimension, targetPlayer.position)

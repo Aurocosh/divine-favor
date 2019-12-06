@@ -51,9 +51,6 @@ class ItemWarpMarker(name: String, private val canTeleportToDimensions: Boolean,
     }
 
     override fun cast(context: CastContext): Boolean {
-        if (context.world.isRemote)
-            return false
-
         val stack = context.stack
         if (stack.isEmpty)
             return false
@@ -67,6 +64,8 @@ class ItemWarpMarker(name: String, private val canTeleportToDimensions: Boolean,
         if (!canTeleportToDimensions && dimension != player.dimension)
             return false
         if (!consumeFavor(player))
+            return false
+        if (context.world.isRemote)
             return false
 
         val destination = stack.get(position)
