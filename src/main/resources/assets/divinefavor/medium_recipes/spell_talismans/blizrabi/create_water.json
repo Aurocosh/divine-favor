@@ -1,0 +1,22 @@
+{
+  "result": {
+    "item": "divinefavor:spell_talisman_create_water"
+  },
+  "stones": [
+    "divinefavor:calling_stone_blizrabi"
+  ],
+  "ingredients": [
+    {
+      "type": "ore",
+      "ore": "paper"
+    },
+    {
+      "type": "ore",
+      "ore": "dyeBlue"
+    },
+    {
+      "type": "stack",
+      "item": "minecraft:water_bucket"
+    }
+  ]
+}

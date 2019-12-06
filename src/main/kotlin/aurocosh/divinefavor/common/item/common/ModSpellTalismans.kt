@@ -153,6 +153,7 @@ object ModSpellTalismans {
     lateinit var wooden_punch: ItemSpellTalisman
 
     // New fields
+    lateinit var create_water: ItemSpellTalisman
     lateinit var crystallize_experience: ItemSpellTalisman
     lateinit var destroy_cuboid_remotely: ItemSpellTalisman
     lateinit var redo: ItemSpellTalisman
@@ -193,6 +194,8 @@ object ModSpellTalismans {
         snowball_throw = SpellTalismanSnowballThrow("snowball_throw", ModSpirits.blizrabi, ConfigSpell.snowballThrow.favorCost, SpellOptions.ALL_CAST)
         vitalize = SpellTalismanVitalize("vitalize", ModSpirits.blizrabi, ConfigSpell.vitalize.favorCost, SpellOptions.ALL_CAST)
         winter_breath = SpellTalismanWinterBreath("winter_breath", ModSpirits.blizrabi, ConfigSpell.winterBreath.favorCost, SpellOptions.ALL_CAST)
+        create_water = SpellTalismanAirReplace("create_water", ModSpirits.blizrabi, ConfigSpell.createWater.favorCost, SpellOptions.ALL_CAST) { Blocks.WATER }
+        crystallize_experience = SpellTalismanCrystallizeExperience("crystallize_experience", ModSpirits.blizrabi, ConfigSpell.crystallizeExperience.favorCost, SpellOptions.ALL_CAST)
 
         // endererer
         blink = SpellTalismanBlink("blink", ModSpirits.endererer, ConfigSpell.blink.favorCost, SpellOptions.ALL_CAST)
@@ -250,6 +253,9 @@ object ModSpellTalismans {
         replace_side = SpellTalismanReplaceSide("replace_side", ModSpirits.materia)
         replace_surface = SpellTalismanReplaceSurface("replace_surface", ModSpirits.materia)
         serialize_memory = SpellTalismanSerializeMemory("serialize_memory", ModSpirits.materia, ConfigSpell.serializeMemory.favorCost, SpellOptions.ALL_CAST)
+        redo = SpellTalismanRedo("redo", ModSpirits.materia, ConfigSpell.redo.favorCost, SpellOptions.ALL_CAST)
+        build_cylinder = SpellTalismanBuildCylinder("build_cylinder", ModSpirits.materia)
+        undo = SpellTalismanUndo("undo", ModSpirits.materia, ConfigSpell.undo.favorCost, SpellOptions.ALL_CAST)
 
         // neblaze
         blazing_palm = SpellTalismanBlazingPalm("blazing_palm", ModSpirits.neblaze, ConfigSpell.blazingPalm.favorCost, SpellOptions.ALL_CAST)
@@ -261,11 +267,12 @@ object ModSpellTalismans {
         infernal_touch = SpellTalismanInfernalTouch("infernal_touch", ModSpirits.neblaze, 1, SpellOptions.USE_CAST)
         molten_skin = SpellTalismanMoltenSkin("molten_skin", ModSpirits.neblaze, ConfigSpell.moltenSkin.favorCost, SpellOptions.ALL_CAST)
         nether_surge = SpellTalismanNetherSurge("nether_surge", ModSpirits.neblaze, ConfigSpell.netherSurge.favorCost, SpellOptions.USE_CAST)
-        obsidian_bubble = SpellTalismanReplacmentBubble("obsidian_bubble", ModSpirits.blizrabi, ConfigSpell.obsidianBubble, Blocks.AIR, Blocks.OBSIDIAN, UtilPredicate.or(IBlockState::isLava, {state:IBlockState -> state.block == Blocks.OBSIDIAN}))
+        obsidian_bubble = SpellTalismanReplacmentBubble("obsidian_bubble", ModSpirits.blizrabi, ConfigSpell.obsidianBubble, Blocks.AIR, Blocks.OBSIDIAN, UtilPredicate.or(IBlockState::isLava, { state: IBlockState -> state.block == Blocks.OBSIDIAN }))
         piercing_inferno = SpellTalismanPiercingInferno("piercing_inferno", ModSpirits.neblaze, ConfigSpell.piercingInferno.favorCost, SpellOptions.USE_CAST)
         searing_pulse = SpellTalismanSearingPulse("searing_pulse", ModSpirits.neblaze, ConfigSpell.searingPulse.favorCost, SpellOptions.USE_CAST)
         small_fireball_throw = SpellTalismanSmallFireballThrow("small_fireball_throw", ModSpirits.neblaze, ConfigSpell.smallFireballThrow.favorCost, SpellOptions.ALL_CAST)
         summon_blaze = SpellTalismanSummonMinion("summon_blaze", ModSpirits.neblaze, ConfigSpell.summonBlaze.favorCost, SpellOptions.USE_CAST, EntityMinionBlaze::class.java)
+        destroy_cuboid_remotely = SpellTalismanDestroyCuboidRemotely("destroy_cuboid_remotely", ModSpirits.neblaze)
 
         // redwind
         arrow_deflection = SpellTalismanModPotion("arrow_deflection", ModSpirits.redwind, ConfigSpell.arrowDeflection.favorCost, ModPotions.arrow_deflection, ConfigSpell.arrowDeflection.duration)
@@ -323,12 +330,6 @@ object ModSpellTalismans {
         starvation = SpellTalismanModPotion("starvation", ModSpirits.timber, ConfigSpell.starvation.favorCost, ModPotions.starvation, ConfigSpell.starvation.duration)
 
         // New instances
-        crystallize_experience = SpellTalismanCrystallizeExperience("crystallize_experience", ModSpirits.blizrabi, ConfigSpell.crystallizeExperience.favorCost, SpellOptions.ALL_CAST)
-        destroy_cuboid_remotely = SpellTalismanDestroyCuboidRemotely("destroy_cuboid_remotely", ModSpirits.neblaze)
-        redo = SpellTalismanRedo("redo", ModSpirits.materia, ConfigSpell.redo.favorCost, SpellOptions.ALL_CAST)
-        build_cylinder = SpellTalismanBuildCylinder("build_cylinder", ModSpirits.materia)
-        undo = SpellTalismanUndo("undo", ModSpirits.materia, ConfigSpell.undo.favorCost, SpellOptions.ALL_CAST)
-
     }
 
     fun init() {}

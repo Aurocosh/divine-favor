@@ -246,6 +246,7 @@ item.divinefavor:rope_luminous.name=Luminous rope
 item.divinefavor:rope_teleporting.name=Warping rope
 
 ## SPELL TALISMAN NAMES
+item.divinefavor:spell_talisman_create_water.name=Create water
 item.divinefavor:spell_talisman_crystallize_experience.name=Crystallize experience
 item.divinefavor:spell_talisman_destroy_cuboid_remotely.name=Destroy cuboid remotely
 item.divinefavor:spell_talisman_armor_of_pacifist.name=Armor of pacifist talisman
@@ -717,6 +718,7 @@ item.divinefavor:rope_luminous.description=This rope will slowly decay and light
 item.divinefavor:rope_teleporting.description=Unusual trapping device. It will teleport anything it touches to the end of the rope. You can use it to move peaceful mobs to otherwise hard to reach places or to teleport unsuspecting players in traps.
 
 ## SPELL TALISMAN DESCRIPTIONS
+item.divinefavor:spell_talisman_create_water.description=Creates source block of water when used.
 item.divinefavor:spell_talisman_crystallize_experience.description=Cristallizes some of your experience into experience drop and lets you store experience in item form. Simple cast will create one drop of experience. If you sneak while casting then all of your available experience will be crystallized.
 item.divinefavor:spell_talisman_destroy_cuboid_remotely.description=This talisman allows you to instantly destroy any blocks in shape of cuboid remotely. Warning you will not get block drops!
 item.divinefavor:spell_talisman_redo.description=This talisman allows you to redo actions canelled by undo talisman
