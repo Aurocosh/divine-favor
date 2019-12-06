@@ -41,6 +41,7 @@ divinefavor:spirit_offering=If you need to trade for something and cant or don't
 divinefavor:spirit_became_active=Spirit %1$s became active
 divinefavor:spirit_became_inactive=Spirit %1$s became inactive
 divinefavor:favor_infinite=Infinite
+divinefavor:cost_no_favor=No cost
 
 # MESSAGES
 message.divinefavor:marked_glass.spirit_is_active=Spirit is active right now! Spirit will be active for %1$d hours and %2$d minutes
@@ -65,6 +66,7 @@ message.divinefavor.TEinCopy=Area Copied, Number of tile entities not copied
 tooltip.divinefavor:talisman.infinite_use=Infinite use
 tooltip.divinefavor:talisman.unusable=Unusable
 tooltip.divinefavor:talisman.cost=Cost: %1$d Uses: %2$d
+
 tooltip.divinefavor:talisman.spirit=Spirit: %1$s
 tooltip.divinefavor:wishingStone.favor_count=Restores %1$d favor of %2$s
 tooltip.divinefavor:marked_glass.spirit_is_active=Spirit is active
@@ -76,6 +78,11 @@ tooltip.divinefavor:goo_vial.collecting=Collectiong goo
 tooltip.divinefavor:goo_vial.placing=Placing goo
 
 tooltip.divinefavor:talisman_tool.talisman_count=Talismans inside: %1$d
+
+tooltip.divinefavor:gem.infinite_use=Infinite use
+tooltip.divinefavor:gem.unusable=Unusable
+tooltip.divinefavor:gem.cost=Cost: %1$d Uses: %2$d
+tooltip.divinefavor:gem.consume_uses=Uses: %1$d
 
 # WORDS
 word.divinefavor:on=On

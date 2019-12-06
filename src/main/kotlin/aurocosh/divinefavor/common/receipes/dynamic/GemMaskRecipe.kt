@@ -1,6 +1,6 @@
 package aurocosh.divinefavor.common.receipes.dynamic
 
-import aurocosh.divinefavor.common.item.gems.base.IGemWithMask
+import aurocosh.divinefavor.common.item.gems.base.IUsableGemItem
 import aurocosh.divinefavor.common.item.gems.properties.GemMaskProperties
 import aurocosh.divinefavor.common.lib.extensions.*
 import aurocosh.divinefavor.common.receipes.base.ModRecipe
@@ -20,8 +20,8 @@ class GemMaskRecipe : ModRecipe("gem_mask_recipe") {
 
     override fun getCraftingResult(inv: InventoryCrafting): ItemStack {
         val stacks = inv.asSequence().filter(ItemStack::isNotEmpty).toList()
-        val stacksToMask = stacks.first { it.item is IGemWithMask }
-        val stackUsedAsMask = stacks.first { it.item !is IGemWithMask }
+        val stacksToMask = stacks.first { it.item is IUsableGemItem }
+        val stackUsedAsMask = stacks.first { it.item !is IUsableGemItem }
 
         val maskId = stackUsedAsMask.item.regName.toString()
         val maskMeta = stackUsedAsMask.metadata
@@ -38,7 +38,7 @@ class GemMaskRecipe : ModRecipe("gem_mask_recipe") {
         if (stacks.size != 2)
             return false
 
-        val stacksWithMask = stacks.filter { it.item is IGemWithMask }
+        val stacksWithMask = stacks.filter { it.item is IUsableGemItem }
         return stacksWithMask.size == 1
     }
 
@@ -46,7 +46,7 @@ class GemMaskRecipe : ModRecipe("gem_mask_recipe") {
         val stacks = NonNullList.withSize(inv.sizeInventory, ItemStack.EMPTY)
         for (index in inv.indices) {
             val stack = inv.getStackInSlot(index)
-            if (!stack.isEmpty && stack.item !is IGemWithMask){
+            if (!stack.isEmpty && stack.item !is IUsableGemItem){
                 val remainingStack = stack.copy()
                 remainingStack.count = 1
                 stacks[index] = remainingStack
