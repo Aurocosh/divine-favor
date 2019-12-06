@@ -77,6 +77,9 @@ object ModItems {
     val markedGlasses: MutableList<ItemMarkedGlass> = ArrayList()
 
     // New fields
+    lateinit var stable_warp_pebble: ModItem
+    lateinit var stable_invite_pebble: ModItem
+    lateinit var stable_invite_gem: ModItem
     lateinit var gem_pouch: ModItem
     lateinit var pebble_stabilizer: ModItem
     lateinit var gem_stabilizer: ModItem
@@ -91,8 +94,6 @@ object ModItems {
         bone_key = ItemBoneKey()
         contract_binder = ItemContractBinder()
         etherealBrush = ItemEtherealBrush()
-        invite_gem = ItemInviteMarker("invite_gem", true)
-        invite_pebble = ItemInviteMarker("invite_pebble", false)
         memory_pouch = ItemMemoryPouch()
         milky_apple = ItemMilkyApple()
         mystic_architect_stick = ItemMysticArchitectStick()
@@ -103,8 +104,13 @@ object ModItems {
 
         warp_gem = ItemWarpMarker("warp_gem", true, true, 0, ModSpirits.endererer, 64)
         warp_pebble = ItemWarpMarker("warp_pebble", false, true, 0, ModSpirits.endererer, 64)
-
         stable_warp_gem = ItemWarpMarker("stable_warp_gem", true, false, ConfigItem.stableWarpGem.favorCost, ModSpirits.endererer, 1)
+        stable_warp_pebble = ItemWarpMarker("stable_warp_pebble", false, false, ConfigItem.stableWarpPebble.favorCost, ModSpirits.endererer, 1)
+
+        invite_gem = ItemInviteMarker("invite_gem", true, true, 0, ModSpirits.endererer, 64)
+        invite_pebble = ItemInviteMarker("invite_pebble", false, true, 0, ModSpirits.endererer, 64)
+        stable_invite_gem = ItemInviteMarker("stable_invite_gem", true, false, ConfigItem.stableInviteGem.favorCost, ModSpirits.endererer, 1)
+        stable_invite_pebble = ItemInviteMarker("stable_invite_pebble", false, false, ConfigItem.stableInvitePebble.favorCost, ModSpirits.endererer, 1)
 
         grimoire_red = ItemGrimoire("red")
         grimoire_black = ItemGrimoire("black")

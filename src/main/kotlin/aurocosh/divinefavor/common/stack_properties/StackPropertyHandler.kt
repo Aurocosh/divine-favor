@@ -57,7 +57,7 @@ open class StackPropertyHandler(private val parentName: String = "", private val
         return property
     }
 
-    fun copy(from: ItemStack, to: ItemStack) {
+    override fun copy(from: ItemStack, to: ItemStack) {
         for (property in propertyList)
             property.copy(from, to)
     }

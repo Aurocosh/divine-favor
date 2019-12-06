@@ -61,6 +61,12 @@ public class ConfigItem {
     public static SpellPick spellPickOrange = new SpellPick();
 
     // New configs
+    @Config.Name("Stable warp pebble")
+    public static StableWarpPebble stableWarpPebble = new StableWarpPebble();
+    @Config.Name("Stable invite pebble")
+    public static StableInvitePebble stableInvitePebble = new StableInvitePebble();
+    @Config.Name("Stable invite gem")
+    public static StableInviteGem stableInviteGem = new StableInviteGem();
     @Config.Name("Gem pouch")
     public static GemPouch gemPouch = new GemPouch();
     @Config.Name("Stable warp gem")

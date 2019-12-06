@@ -2,17 +2,15 @@ package aurocosh.divinefavor.client.core.handler.stable_gem
 
 import aurocosh.divinefavor.client.core.handler.base.IHudDescriptionRenderer
 import aurocosh.divinefavor.client.core.handler.common.DisplayStackExtractors
+import aurocosh.divinefavor.common.item.base.ModItem
 import aurocosh.divinefavor.common.item.gems.base.IUsableGemItem
-import aurocosh.divinefavor.common.item.gems.properties.GemMaskProperties
 import aurocosh.divinefavor.common.lib.extensions.divinePlayerData
-import aurocosh.divinefavor.common.lib.extensions.get
 import net.minecraft.client.Minecraft
 import net.minecraft.client.gui.Gui
 import net.minecraft.client.gui.GuiIngame
 import net.minecraft.client.renderer.GlStateManager
 import net.minecraft.client.resources.I18n
 import net.minecraft.entity.player.EntityPlayer
-import net.minecraft.item.Item
 import net.minecraft.item.ItemStack
 import net.minecraftforge.fml.relauncher.ReflectionHelper
 import net.minecraftforge.fml.relauncher.Side
@@ -27,7 +25,8 @@ object WarpMarkerHudDescriptionRenderer : IHudDescriptionRenderer {
         if (stack.isEmpty)
             return
 
-        val gemItem = stack.item as IUsableGemItem
+        val item = stack.item
+        val gemItem = item as IUsableGemItem
         val description = getUseInfo(player, stack, gemItem)
 
         val spirit = gemItem.spirit
@@ -66,8 +65,8 @@ object WarpMarkerHudDescriptionRenderer : IHudDescriptionRenderer {
         GlStateManager.pushMatrix()
         GlStateManager.translate(x.toFloat(), y.toFloat(), 0f)
 
-        if (drawName) {
-            val translatedName = I18n.format(stack.item.translationKey)
+        if (drawName && item is ModItem) {
+            val translatedName = I18n.format(item.nameKey)
             mc.fontRenderer.drawStringWithShadow(translatedName, 24f, -10f, color)
         }
 

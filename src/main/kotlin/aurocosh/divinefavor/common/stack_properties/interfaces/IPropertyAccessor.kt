@@ -18,6 +18,8 @@ interface IPropertyAccessor {
     fun getSelectedIndex(stack: ItemStack): Int
     fun setSelectedIndex(stack: ItemStack, index: Int)
 
+    fun copy(from: ItemStack, to: ItemStack)
+
     @SideOnly(Side.CLIENT)
     fun getPropertyTooltip(stack: ItemStack): List<String>
 }

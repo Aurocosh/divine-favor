@@ -1,7 +1,7 @@
 package aurocosh.divinefavor.client.core.handler.common
 
 import aurocosh.divinefavor.client.core.handler.base.IDisplayStackExtractor
-import aurocosh.divinefavor.common.item.gems.ItemWarpMarker
+import aurocosh.divinefavor.common.item.gems.base.IUsableGemItem
 import net.minecraft.item.ItemStack
 
 object DisplayStackExtractors {
@@ -11,7 +11,7 @@ object DisplayStackExtractors {
 
     private fun getDisplayStackExtractor(stack: ItemStack): IDisplayStackExtractor {
         return when (stack.item) {
-            is ItemWarpMarker -> WarpMarkerDisplayStackExtractor
+            is IUsableGemItem -> WarpMarkerDisplayStackExtractor
             else -> StandardDisplayStackExtractor
         }
     }

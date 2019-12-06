@@ -20,11 +20,11 @@
     },
     {
       "type": "ore",
-      "ore": "dyeBlack"
+      "ore": "dyeGray"
     },
     {
       "type": "stack",
-      "item": "minecraft:TODO" 
+      "item": "divinefavor:warp_pebble"
     }
   ]
 }

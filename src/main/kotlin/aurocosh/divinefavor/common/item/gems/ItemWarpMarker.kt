@@ -2,7 +2,6 @@ package aurocosh.divinefavor.common.item.gems
 
 import aurocosh.divinefavor.DivineFavor
 import aurocosh.divinefavor.common.constants.ConstGemTabOrder
-import aurocosh.divinefavor.common.item.base.ICastable
 import aurocosh.divinefavor.common.item.base.ModItem
 import aurocosh.divinefavor.common.item.gems.base.IUsableGemItem
 import aurocosh.divinefavor.common.item.gems.properties.GemMaskProperties
@@ -29,7 +28,7 @@ import net.minecraft.util.EnumHand
 import net.minecraft.util.math.BlockPos
 import net.minecraft.world.World
 
-class ItemWarpMarker(name: String, private val canTeleportToDimensions: Boolean, override val consumeOnUse: Boolean, override val favorCost: Int, override val spirit: ModSpirit, maxStackSize: Int) : ModItem(name, name, ConstGemTabOrder.OTHER_GEMS), IPropertyContainer, IUsableGemItem, ISelectedStackProvider, ICastable {
+class ItemWarpMarker(name: String, private val canTeleportToDimensions: Boolean, override val consumeOnUse: Boolean, override val favorCost: Int, override val spirit: ModSpirit, maxStackSize: Int) : ModItem(name, name, ConstGemTabOrder.OTHER_GEMS), IPropertyContainer, IUsableGemItem, ISelectedStackProvider {
     override val properties: IPropertyAccessor = propertyHandler
 
     init {

@@ -1,0 +1,7 @@
+{
+    "parent": "item/generated",
+    "textures": {
+      "layer1": "divinefavor:items/invite_gem",
+      "layer0": "divinefavor:items/gem_stabilizer"
+    }
+}

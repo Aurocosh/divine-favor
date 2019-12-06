@@ -1,10 +1,12 @@
 package aurocosh.divinefavor.common.receipes.dynamic
 
+import aurocosh.divinefavor.common.item.common.ModItems
 import aurocosh.divinefavor.common.item.gems.base.IUsableGemItem
 import aurocosh.divinefavor.common.item.gems.properties.GemMaskProperties
 import aurocosh.divinefavor.common.lib.extensions.*
 import aurocosh.divinefavor.common.receipes.base.ModRecipe
 import net.minecraft.inventory.InventoryCrafting
+import net.minecraft.item.Item
 import net.minecraft.item.ItemStack
 import net.minecraft.util.NonNullList
 import net.minecraft.world.World
@@ -38,20 +40,25 @@ class GemMaskRecipe : ModRecipe("gem_mask_recipe") {
         if (stacks.size != 2)
             return false
 
-        val stacksWithMask = stacks.filter { it.item is IUsableGemItem }
-        return stacksWithMask.size == 1
+        val stabilizerCount = stacks.S.filter { isStabilizer(it.item) }.count()
+        val gemCount = stacks.S.filter { it.item is IUsableGemItem }.count()
+        return stabilizerCount == 0 && gemCount == 1
     }
 
     override fun getRemainingItems(inv: InventoryCrafting): NonNullList<ItemStack> {
         val stacks = NonNullList.withSize(inv.sizeInventory, ItemStack.EMPTY)
         for (index in inv.indices) {
             val stack = inv.getStackInSlot(index)
-            if (!stack.isEmpty && stack.item !is IUsableGemItem){
+            if (!stack.isEmpty && stack.item !is IUsableGemItem) {
                 val remainingStack = stack.copy()
                 remainingStack.count = 1
                 stacks[index] = remainingStack
             }
         }
         return stacks
+    }
+
+    private fun isStabilizer(item: Item): Boolean {
+        return item === ModItems.gem_stabilizer || item === ModItems.pebble_stabilizer
     }
 }

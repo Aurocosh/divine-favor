@@ -103,6 +103,9 @@ divinefavor:spirit.squarefury.name=Squarefury
 divinefavor:spirit.timber.name=Timber
 
 # ITEM NAMES
+item.divinefavor:stable_warp_pebble.name=Stable warp pebble
+item.divinefavor:stable_invite_pebble.name=Stable invite pebble
+item.divinefavor:stable_invite_gem.name=Stable invite gem
 item.divinefavor:gem_pouch.name=Gem pouch
 item.divinefavor:stable_warp_gem.name=Stable warp gem
 item.divinefavor:pebble_stabilizer.name=Pebble stabilizer
@@ -571,6 +574,9 @@ tile.divinefavor:red_signal.description=Ghostly block that emits strong redstone
 tile.divinefavor:sealing_stone_orange.description=This block can be used to seal talisman containers such as spell bow or a spell blade. To seal something just right click this block with this item. Sealed items will not transform.
 
 #ITEM DESCRIPTIONS FOR JEI AND PATCHOULI
+item.divinefavor:stable_warp_pebble.description=TODO
+item.divinefavor:stable_invite_pebble.description=TODO
+item.divinefavor:stable_invite_gem.description=TODO
 item.divinefavor:gem_pouch.description=Gem container. Can be used to store and use large quantity of gems.
 item.divinefavor:stable_warp_gem.description=Instantly teleports you to place where it was created. Works across dimensions. Can be created by combining normal warp gem with gem stabilizer. Not consumed on use, but requires favor to use.
 item.divinefavor:pebble_stabilizer.description=TODO

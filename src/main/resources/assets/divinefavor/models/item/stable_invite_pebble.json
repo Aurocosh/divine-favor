@@ -1,0 +1,7 @@
+{
+    "parent": "item/generated",
+    "textures": {
+      "layer1": "divinefavor:items/invite_pebble",
+      "layer0": "divinefavor:items/pebble_stabilizer"
+    }
+}

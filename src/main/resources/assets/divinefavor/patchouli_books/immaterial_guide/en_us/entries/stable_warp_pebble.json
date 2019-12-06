@@ -1,0 +1,12 @@
+{
+  "name": "Stable warp pebble",
+  "icon": "divinefavor:stable_warp_pebble",
+  "category": "items",
+  "read_by_default": true,
+  "pages": [
+    {
+      "type": "item_description",
+      "talisman": "divinefavor:stable_warp_pebble"
+    }
+  ]
+}

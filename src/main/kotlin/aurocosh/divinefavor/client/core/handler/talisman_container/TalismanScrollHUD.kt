@@ -1,13 +1,14 @@
 package aurocosh.divinefavor.client.core.handler.talisman_container
 
+import aurocosh.divinefavor.client.core.handler.common.DisplayStackExtractors
 import aurocosh.divinefavor.common.item.talisman_tools.IStackContainer
+import aurocosh.divinefavor.common.lib.extensions.S
 import net.minecraft.client.Minecraft
 import net.minecraft.client.renderer.GlStateManager
 import net.minecraft.item.ItemStack
 import net.minecraftforge.fml.relauncher.Side
 import net.minecraftforge.fml.relauncher.SideOnly
 import org.lwjgl.opengl.GL11
-import java.util.*
 
 class TalismanScrollHUD {
     private var state = 0
@@ -52,12 +53,12 @@ class TalismanScrollHUD {
         handler = stackContainer
         state = stackContainer.getState()
 
-        val next = stackContainer.getNextStacks()
-        val previous = ArrayList(stackContainer.getPreviousStacks())
+        val next = stackContainer.getNextStacks().map(DisplayStackExtractors::getDisplayStack)
+        val previous = stackContainer.getPreviousStacks().S.map(DisplayStackExtractors::getDisplayStack).toMutableList()
         for (stack in next)
             previous.remove(stack)
 
-        selectedStack = stackContainer.getSelectedStack()
+        selectedStack = DisplayStackExtractors.getDisplayStack(stackContainer.getSelectedStack())
         previousStacks = previous
         nextStacks = next
     }
