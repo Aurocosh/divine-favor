@@ -5,8 +5,18 @@
   "read_by_default": true,
   "pages": [
     {
-      "type": "item_description",
-      "talisman": "divinefavor:gem_stabilizer"
+      "type": "text",
+      "text": "Some items can be used stabilize usable gems and pebbles. Gems and pebbles are single use items and they are consumed when used. You can combine in crafting grid any gem or pebble with appropriate stabilizer and it will become stable item that is not consumed on use. Stable gems and pebbles can be used indefinetly, but unlike normal ones they require favor to use."
+    },
+    {
+      "type": "spotlight",
+      "item": "divinefavor:gem_stabilizer",
+      "text": "This item can stabilize gems. Combine in crafting grid with gem to stabilize it."
+    },
+    {
+      "type": "spotlight",
+      "item": "divinefavor:pebble_stabilizer",
+      "text": "This item can stabilize pebbles. Combine in crafting grid with pebble to stabilize it."
     }
   ]
 }
