@@ -2,7 +2,7 @@ package aurocosh.divinefavor.common.potions.potions
 
 import aurocosh.divinefavor.DivineFavor
 import aurocosh.divinefavor.common.config.common.ConfigSpell
-import aurocosh.divinefavor.common.item.spell_talismans.context.TalismanContextGenerator
+import aurocosh.divinefavor.common.item.spell_talismans.context.CastContextGenerator
 import aurocosh.divinefavor.common.potions.base.potion.ModPotionToggleLimited
 import aurocosh.divinefavor.common.potions.common.ModPotions
 import net.minecraft.entity.player.EntityPlayer
@@ -25,7 +25,7 @@ object ToadicJump {
             return
 
         val talisman = ModPotions.toadic_jump.talisman
-        val context = TalismanContextGenerator.player(entity)
+        val context = CastContextGenerator.player(entity)
         if (talisman.claimCost(context))
             entity.motionY += ConfigSpell.toadicJump.jumpBoost.toDouble()
     }

@@ -14,7 +14,7 @@ import net.minecraft.util.math.BlockPos
 class ToolTalismanBreakRadius(name: String, spirit: ModSpirit) : ToolTalismanBreak(name, spirit) {
     private val radius: StackPropertyInt = propertyHandler.registerIntProperty("radius", 2, 1, 10)
 
-    override fun getCoordinates(context: TalismanContext): List<BlockPos> {
+    override fun getCoordinates(context: CastContext): List<BlockPos> {
         val (player, stack, world) = context.get(playerField, stackField, worldField)
         val (fuzzy, state) = stack.get(isFuzzy, selectPropertyWrapper.selectedBlock)
         if (!fuzzy && state == world.getBlockState(context.pos))

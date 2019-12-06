@@ -4,7 +4,7 @@ import aurocosh.divinefavor.client.block_ovelay.BlockExchangeRendering
 import aurocosh.divinefavor.common.config.common.ConfigGeneral
 import aurocosh.divinefavor.common.item.spell_talismans.build.base.SpellTalismanBuild
 import aurocosh.divinefavor.common.item.spell_talismans.common_build_properties.PositionPropertyWrapper
-import aurocosh.divinefavor.common.item.spell_talismans.context.TalismanContext
+import aurocosh.divinefavor.common.item.spell_talismans.context.CastContext
 import aurocosh.divinefavor.common.lib.extensions.S
 import aurocosh.divinefavor.common.lib.extensions.get
 import aurocosh.divinefavor.common.lib.interfaces.IBlockCatcher
@@ -29,9 +29,9 @@ abstract class SpellTalismanReplace(name: String, spirit: ModSpirit) : SpellTali
     protected val isFuzzy: StackPropertyBool = propertyHandler.registerBoolProperty("fuzzy", false)
     override val positionPropertyWrapper: PositionPropertyWrapper = PositionPropertyWrapper(propertyHandler)
 
-    override fun getCommonCoordinates(context: TalismanContext) = getCoordinates(context).filterNot { context.world.isAirBlock(it) }
+    override fun getCommonCoordinates(context: CastContext) = getCoordinates(context).filterNot { context.world.isAirBlock(it) }
 
-    override fun performActionServer(context: TalismanContext) {
+    override fun performActionServer(context: CastContext) {
         val (player, stack) = context.getCommon()
         val state = stack.get(selectPropertyWrapper.selectedBlock)
         val coordinates = getCommonCoordinates(context)
@@ -58,7 +58,7 @@ abstract class SpellTalismanReplace(name: String, spirit: ModSpirit) : SpellTali
     }
 
     @SideOnly(Side.CLIENT)
-    override fun handleRendering(context: TalismanContext, lastEvent: RenderWorldLastEvent) {
+    override fun handleRendering(context: CastContext, lastEvent: RenderWorldLastEvent) {
         val coordinates = getCommonCoordinates(context)
         val state = context.stack.get(selectPropertyWrapper.selectedBlock)
         BlockExchangeRendering.render(lastEvent, context.player, state, coordinates)

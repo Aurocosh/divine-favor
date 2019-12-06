@@ -1,7 +1,7 @@
 package aurocosh.divinefavor.client.core.handler
 
 import aurocosh.divinefavor.DivineFavor
-import aurocosh.divinefavor.common.item.talisman.ITalismanToolContainer
+import aurocosh.divinefavor.common.item.talisman.IStackContainerProvider
 import aurocosh.divinefavor.common.item.talisman.ItemTalisman
 import aurocosh.divinefavor.common.util.UtilPlayer
 import net.minecraft.client.settings.KeyBinding
@@ -38,7 +38,7 @@ object KeyBindings {
         override fun isActive(): Boolean {
             if (!DivineFavor.proxy.hasClientPlayer)
                 return false
-            return UtilPlayer.getHandWithItem(DivineFavor.proxy.clientPlayer) { it is ITalismanToolContainer } != null
+            return UtilPlayer.getHandWithItem(DivineFavor.proxy.clientPlayer) { it is IStackContainerProvider } != null
         }
 
         override fun conflicts(other: IKeyConflictContext): Boolean {
@@ -50,7 +50,7 @@ object KeyBindings {
         override fun isActive(): Boolean {
             if (!DivineFavor.proxy.hasClientPlayer)
                 return false
-            return UtilPlayer.getHandWithItem(DivineFavor.proxy.clientPlayer) { it is ItemTalisman || it is ITalismanToolContainer } != null
+            return UtilPlayer.getHandWithItem(DivineFavor.proxy.clientPlayer) { it is ItemTalisman || it is IStackContainerProvider } != null
         }
 
         override fun conflicts(other: IKeyConflictContext): Boolean {

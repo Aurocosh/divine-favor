@@ -18,11 +18,11 @@ import net.minecraft.util.math.BlockPos
 import net.minecraft.world.World
 
 class ToolTalismanSilkyTool(name: String, spirit: ModSpirit, favorCost: Int) : ItemToolTalisman(name, spirit, favorCost) {
-    override fun validate(context: TalismanContext): Boolean {
+    override fun validate(context: CastContext): Boolean {
         return true
     }
 
-    override fun shouldBreakBlock(context: TalismanContext): Boolean {
+    override fun shouldBreakBlock(context: CastContext): Boolean {
         return false
     }
 
@@ -30,7 +30,7 @@ class ToolTalismanSilkyTool(name: String, spirit: ModSpirit, favorCost: Int) : I
         return true
     }
 
-    override fun performActionServer(context: TalismanContext) {
+    override fun performActionServer(context: CastContext) {
         val (world, player, pos, stack) = context.get(worldField, playerField, posField, stackField)
         val state = world.getBlockState(pos);
 

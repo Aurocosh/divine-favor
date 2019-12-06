@@ -9,7 +9,7 @@ import aurocosh.divinefavor.common.item.spell_talismans.base.SpellOptions
 import aurocosh.divinefavor.common.item.spell_talismans.common_build_properties.BlockSelectPropertyWrapper
 import aurocosh.divinefavor.common.item.spell_talismans.common_build_properties.PositionFacingPropertyWrapper
 import aurocosh.divinefavor.common.item.spell_talismans.context.ContextProperty
-import aurocosh.divinefavor.common.item.spell_talismans.context.TalismanContext
+import aurocosh.divinefavor.common.item.spell_talismans.context.CastContext
 import aurocosh.divinefavor.common.item.spell_talismans.context.playerField
 import aurocosh.divinefavor.common.item.spell_talismans.context.worldField
 import aurocosh.divinefavor.common.lib.extensions.get
@@ -30,37 +30,37 @@ abstract class SpellTalismanDestroy(name: String, spirit: ModSpirit) : ItemSpell
     protected val selectPropertyWrapper = BlockSelectPropertyWrapper(propertyHandler)
 
     override fun getApproximateFavorCost(itemStack: ItemStack) = favorCost * getBlockCount(itemStack)
-    override fun getFinalFavorCost(context: TalismanContext) = favorCost * context.get(finalCoordinates).size
+    override fun getFinalFavorCost(context: CastContext) = favorCost * context.get(finalCoordinates).size
 
 
     @SideOnly(Side.CLIENT)
-    override fun shouldRender(context: TalismanContext): Boolean = positionPropertyWrapper.shouldRender(context)
+    override fun shouldRender(context: CastContext): Boolean = positionPropertyWrapper.shouldRender(context)
     override fun raycastBlock(stack: ItemStack, castType: CastType) = positionPropertyWrapper.shouldRaycastBlock(stack)
 
-    protected open fun getCommonCoordinates(context: TalismanContext) = getCoordinates(context).filterNot { context.world.isAirOrReplacable(it) }
+    protected open fun getCommonCoordinates(context: CastContext) = getCoordinates(context).filterNot { context.world.isAirOrReplacable(it) }
 
-    override fun performActionServer(context: TalismanContext) {
+    override fun performActionServer(context: CastContext) {
         val (player, world) = context.get(playerField, worldField)
         val coordinates = context.get(finalCoordinates)
         val destructionOperation = DestructionOperation(coordinates)
         destructionOperation.perform(player, world)
     }
 
-    override fun performActionClient(context: TalismanContext) {
+    override fun performActionClient(context: CastContext) {
         positionPropertyWrapper.isLockPosition.setValue(context.stack, value = false, sync = true)
     }
 
     @SideOnly(Side.CLIENT)
-    override fun handleRendering(context: TalismanContext, lastEvent: RenderWorldLastEvent) {
+    override fun handleRendering(context: CastContext, lastEvent: RenderWorldLastEvent) {
         val coordinates = getCommonCoordinates(context)
         BlockHighlightRendering.render(lastEvent, context.player, coordinates)
     }
 
-    override fun preValidate(context: TalismanContext): Boolean {
+    override fun preValidate(context: CastContext): Boolean {
         return context.player.isSneaking || super.preValidate(context)
     }
 
-    override fun preProcess(context: TalismanContext): Boolean {
+    override fun preProcess(context: CastContext): Boolean {
         if (!selectPropertyWrapper.preprocess(context))
             return false
 
@@ -69,6 +69,6 @@ abstract class SpellTalismanDestroy(name: String, spirit: ModSpirit) : ItemSpell
         return coordinates.isNotEmpty()
     }
 
-    protected abstract fun getCoordinates(context: TalismanContext): List<BlockPos>
+    protected abstract fun getCoordinates(context: CastContext): List<BlockPos>
     protected abstract fun getBlockCount(stack: ItemStack): Int
 }

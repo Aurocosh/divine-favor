@@ -1,5 +1,5 @@
 package aurocosh.divinefavor.common.item.talisman_tools.grimoire.capability
 
-import aurocosh.divinefavor.common.item.talisman_tools.ITalismanTool
+import aurocosh.divinefavor.common.item.talisman_tools.IStackContainer
 
-interface IGrimoireHandler : ITalismanTool
+interface IGrimoireHandler : IStackContainer

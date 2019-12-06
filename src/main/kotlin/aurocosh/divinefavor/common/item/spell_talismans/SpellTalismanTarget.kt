@@ -4,7 +4,7 @@ import aurocosh.divinefavor.common.entity.minions.base.IMinion
 import aurocosh.divinefavor.common.entity.minions.base.MinionMode
 import aurocosh.divinefavor.common.item.spell_talismans.base.ItemSpellTalisman
 import aurocosh.divinefavor.common.item.spell_talismans.base.SpellOptions
-import aurocosh.divinefavor.common.item.spell_talismans.context.TalismanContext
+import aurocosh.divinefavor.common.item.spell_talismans.context.CastContext
 import aurocosh.divinefavor.common.lib.extensions.getDistanceSq
 import aurocosh.divinefavor.common.spirit.base.ModSpirit
 import aurocosh.divinefavor.common.util.UtilCoordinates
@@ -13,11 +13,11 @@ import java.util.*
 
 class SpellTalismanTarget(name: String, spirit: ModSpirit, favorCost: Int, options: EnumSet<SpellOptions>) : ItemSpellTalisman(name, spirit, favorCost, options) {
 
-    override fun validate(context: TalismanContext): Boolean {
+    override fun validate(context: CastContext): Boolean {
         return context.target != null
     }
 
-    override fun performActionServer(context: TalismanContext) {
+    override fun performActionServer(context: CastContext) {
         val origin = context.player.positionVector
         val radiusSq = RADIUS * RADIUS
         val boundingBox = UtilCoordinates.getBoundingBox(origin, RADIUS)

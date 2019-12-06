@@ -2,8 +2,8 @@ package aurocosh.divinefavor.client.core.handler.talisman_container
 
 import aurocosh.divinefavor.DivineFavor
 import aurocosh.divinefavor.client.core.handler.KeyBindings
-import aurocosh.divinefavor.common.item.talisman.ITalismanToolContainer
-import aurocosh.divinefavor.common.item.talisman_tools.TalismanAdapter
+import aurocosh.divinefavor.common.item.talisman.IStackContainerProvider
+import aurocosh.divinefavor.common.item.talisman_tools.CastableAdapter
 import aurocosh.divinefavor.common.util.UtilPlayer
 import net.minecraft.util.EnumHand
 import net.minecraftforge.client.event.MouseEvent
@@ -25,18 +25,18 @@ object MouseHandler {
             return
 
         val player = DivineFavor.proxy.clientPlayer
-        val hand = UtilPlayer.getHandWithItem(player) { it is ITalismanToolContainer } ?: return
+        val hand = UtilPlayer.getHandWithItem(player) { it is IStackContainerProvider } ?: return
 
         val stack = player.getHeldItem(hand)
-        val toolContainer = stack.item as ITalismanToolContainer
-        val talismanTool = toolContainer.getTalismanTool(stack)
+        val toolContainer = stack.item as IStackContainerProvider
+        val talismanTool = toolContainer.getStackContainer(stack)
 
         if (dWheel < 0)
             talismanTool.switchToPrevious()
         else
             talismanTool.switchToNext()
         val playerSlot = if (hand == EnumHand.OFF_HAND) 40 else player.inventory.currentItem
-        TalismanAdapter.selectSlot(playerSlot, talismanTool.selectedSlotIndex)
+        CastableAdapter.selectSlot(playerSlot, talismanTool.selectedSlotIndex)
         event.isCanceled = true
     }
 }

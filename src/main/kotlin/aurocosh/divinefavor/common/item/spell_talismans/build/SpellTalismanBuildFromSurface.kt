@@ -3,7 +3,7 @@ package aurocosh.divinefavor.common.item.spell_talismans.build
 import aurocosh.divinefavor.common.coordinate_generators.generateLineCoordinates
 import aurocosh.divinefavor.common.item.spell_talismans.build.base.SpellTalismanBuildShifted
 import aurocosh.divinefavor.common.item.spell_talismans.common_build_properties.FacingPropertyWrapper
-import aurocosh.divinefavor.common.item.spell_talismans.context.TalismanContext
+import aurocosh.divinefavor.common.item.spell_talismans.context.CastContext
 import aurocosh.divinefavor.common.lib.cached_container.CachedContainer
 import aurocosh.divinefavor.common.lib.extensions.get
 import aurocosh.divinefavor.common.spirit.base.ModSpirit
@@ -17,7 +17,7 @@ class SpellTalismanBuildFromSurface(name: String, spirit: ModSpirit) : SpellTali
 
     override fun getBlockCount(stack: ItemStack) = stack.get(length)
 
-    override fun getCoordinates(context: TalismanContext): List<BlockPos> {
+    override fun getCoordinates(context: CastContext): List<BlockPos> {
         val stack = context.stack
         val blockCount = getBlockCount(stack)
         val facing = facingPropertyWrapper.getFacing(stack, context.facing)

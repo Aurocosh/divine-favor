@@ -4,10 +4,9 @@ import aurocosh.divinefavor.DivineFavor
 import aurocosh.divinefavor.common.block.base.ModBlock
 import aurocosh.divinefavor.common.constants.ConstBlockNames
 import aurocosh.divinefavor.common.constants.ConstMainTabOrder
-import aurocosh.divinefavor.common.item.talisman.ITalismanToolContainer
+import aurocosh.divinefavor.common.item.talisman.IStackContainerProvider
 import aurocosh.divinefavor.common.item.talisman_tools.BookPropertyWrapper.Companion.isToolSealed
 import aurocosh.divinefavor.common.lib.extensions.get
-import aurocosh.divinefavor.common.lib.extensions.isPropertySet
 import aurocosh.divinefavor.common.lib.extensions.set
 import net.minecraft.block.SoundType
 import net.minecraft.block.material.Material
@@ -30,7 +29,7 @@ class SealingStone(name: String) : ModBlock(ConstBlockNames.SEALING_STONE + "_" 
     override fun onBlockActivated(world: World, pos: BlockPos, state: IBlockState, player: EntityPlayer, hand: EnumHand, side: EnumFacing, hitX: Float, hitY: Float, hitZ: Float): Boolean {
 
         for (stack in player.heldEquipment) {
-            if(stack.item is ITalismanToolContainer)
+            if(stack.item is IStackContainerProvider)
                 stack.set(isToolSealed, !stack.get(isToolSealed))
         }
 

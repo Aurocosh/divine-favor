@@ -14,9 +14,9 @@ class ToolTalismanVoidTool(name: String, spirit: ModSpirit, favorCost: Int) : It
     override fun isCustomToolClasses(stack: ItemStack) = true
     override fun getCustomToolClasses(stack: ItemStack) = emptySet<String>()
     override fun canHarvest(stack: ItemStack, state: IBlockState, toolCanHarvest: Boolean) = false
-    override fun shouldBreakBlock(context: TalismanContext) = false
+    override fun shouldBreakBlock(context: CastContext) = false
 
-    override fun performActionServer(context: TalismanContext) {
+    override fun performActionServer(context: CastContext) {
         val (player, world, stack, pos) = context.get(playerField, worldField, containerStackField, posField)
         UtilBlock.removeBlock(player, world, stack, pos, false, false, true)
         stack.damageItem(1, player)

@@ -25,7 +25,7 @@ class SpellTalismanReplaceCuboid(name: String, spirit: ModSpirit) : SpellTalisma
         return favorCost * (width * height * depth)
     }
 
-    override fun getCoordinates(context: TalismanContext): List<BlockPos> {
+    override fun getCoordinates(context: CastContext): List<BlockPos> {
         val (player, stack, world, facing) = context.get(playerField, stackField, worldField, facingField)
         val (left, right, up, down, depth) = context.stack.get(left, right, up, down, depth)
 

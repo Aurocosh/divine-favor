@@ -1,6 +1,6 @@
 package aurocosh.divinefavor.common.network.message.sever.syncing
 
-import aurocosh.divinefavor.common.item.talisman.ITalismanToolContainer
+import aurocosh.divinefavor.common.item.talisman.IStackContainerProvider
 import aurocosh.divinefavor.common.network.message.base.DivineServerMessage
 import net.minecraft.entity.player.EntityPlayerMP
 
@@ -17,8 +17,8 @@ class MessageSyncTalismanContainerSlot : DivineServerMessage {
 
     override fun handleSafe(serverPlayer: EntityPlayerMP) {
         val stack = serverPlayer.inventory.getStackInSlot(playerSlotIndex)
-        val toolContainer = stack.item as? ITalismanToolContainer ?: return
-        val talismanTool = toolContainer.getTalismanTool(stack)
+        val toolContainer = stack.item as? IStackContainerProvider ?: return
+        val talismanTool = toolContainer.getStackContainer(stack)
         talismanTool.selectedSlotIndex = selectedToolIndex
     }
 }

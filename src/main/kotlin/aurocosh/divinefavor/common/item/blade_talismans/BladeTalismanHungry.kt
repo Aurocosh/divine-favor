@@ -2,14 +2,14 @@ package aurocosh.divinefavor.common.item.blade_talismans
 
 import aurocosh.divinefavor.common.config.common.ConfigBlade
 import aurocosh.divinefavor.common.item.blade_talismans.base.ItemBladeTalisman
-import aurocosh.divinefavor.common.item.spell_talismans.context.TalismanContext
+import aurocosh.divinefavor.common.item.spell_talismans.context.CastContext
 import aurocosh.divinefavor.common.spirit.base.ModSpirit
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.init.SoundEvents
 import net.minecraft.util.SoundCategory
 
 class BladeTalismanHungry(name: String, spirit: ModSpirit, favorCost: Int) : ItemBladeTalisman(name, spirit, favorCost) {
-    override fun performActionServer(context: TalismanContext) {
+    override fun performActionServer(context: CastContext) {
         val target = context.target as? EntityPlayer ?: return
         val player = context.player
 

@@ -3,7 +3,7 @@ package aurocosh.divinefavor.common.item.spell_talismans.build
 import aurocosh.divinefavor.common.coordinate_generators.generateCylinderCoordinates
 import aurocosh.divinefavor.common.item.spell_talismans.build.base.SpellTalismanBuildShifted
 import aurocosh.divinefavor.common.item.spell_talismans.common_build_properties.RotationPropertyWrapper
-import aurocosh.divinefavor.common.item.spell_talismans.context.TalismanContext
+import aurocosh.divinefavor.common.item.spell_talismans.context.CastContext
 import aurocosh.divinefavor.common.item.spell_talismans.context.playerField
 import aurocosh.divinefavor.common.item.spell_talismans.context.stackField
 import aurocosh.divinefavor.common.lib.cached_container.CachedContainer
@@ -20,7 +20,7 @@ class SpellTalismanBuildCylinder(name: String, spirit: ModSpirit) : SpellTalisma
     private val length: StackPropertyInt = propertyHandler.registerIntProperty("length", 1, 1, 50)
     private val rotationPropertyWrapper = RotationPropertyWrapper(propertyHandler)
 
-    override fun getCoordinates(context: TalismanContext): List<BlockPos> {
+    override fun getCoordinates(context: CastContext): List<BlockPos> {
         val (player, stack) = context.get(playerField, stackField)
         val (radius, length) = context.stack.get(radius, length)
 

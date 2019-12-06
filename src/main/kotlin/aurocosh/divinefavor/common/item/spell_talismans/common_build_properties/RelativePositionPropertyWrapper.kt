@@ -1,7 +1,7 @@
 package aurocosh.divinefavor.common.item.spell_talismans.common_build_properties
 
 import aurocosh.divinefavor.DivineFavor
-import aurocosh.divinefavor.common.item.spell_talismans.context.TalismanContext
+import aurocosh.divinefavor.common.item.spell_talismans.context.CastContext
 import aurocosh.divinefavor.common.stack_properties.StackPropertyHandler
 import aurocosh.divinefavor.common.lib.extensions.get
 import aurocosh.divinefavor.common.lib.extensions.toBlockPos
@@ -13,9 +13,9 @@ class RelativePositionPropertyWrapper(propertyHandler: StackPropertyHandler) : P
     val distance: StackPropertyInt = propertyHandler.registerIntProperty("distance", 6, 1, 16)
 
     override fun shouldRaycastBlock(stack: ItemStack) = false
-    override fun shouldRender(context: TalismanContext) = true
+    override fun shouldRender(context: CastContext) = true
 
-    override fun getPosition(context: TalismanContext): BlockPos {
+    override fun getPosition(context: CastContext): BlockPos {
         val (player, stack) = context.getCommon()
         val playerPos = player.positionVector
         val truncated = BlockPos(playerPos.x.toInt(), playerPos.y.toInt(), playerPos.z.toInt())

@@ -4,7 +4,7 @@ import aurocosh.divinefavor.common.config.common.ConfigSpell
 import aurocosh.divinefavor.common.constants.BlockPosConstants
 import aurocosh.divinefavor.common.item.spell_talismans.base.ItemSpellTalisman
 import aurocosh.divinefavor.common.item.spell_talismans.base.SpellOptions
-import aurocosh.divinefavor.common.item.spell_talismans.context.TalismanContext
+import aurocosh.divinefavor.common.item.spell_talismans.context.CastContext
 import aurocosh.divinefavor.common.stack_properties.properties.StackPropertyInt
 import aurocosh.divinefavor.common.lib.extensions.inverse
 import aurocosh.divinefavor.common.spirit.base.ModSpirit
@@ -27,7 +27,7 @@ class SpellTalismanPiercingInferno(name: String, spirit: ModSpirit, favorCost: I
         return favorCost * depth * surface;
     }
 
-    override fun performActionServer(context: TalismanContext) {
+    override fun performActionServer(context: CastContext) {
         val world = context.world
         val facing = context.facing
         val itemStack = context.stack

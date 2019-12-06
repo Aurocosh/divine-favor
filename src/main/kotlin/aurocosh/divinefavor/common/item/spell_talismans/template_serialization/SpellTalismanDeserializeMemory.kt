@@ -5,7 +5,7 @@ import aurocosh.divinefavor.common.block_templates.BlockTemplateCompatibilitySer
 import aurocosh.divinefavor.common.custom_data.global.TemplateData
 import aurocosh.divinefavor.common.item.spell_talismans.base.ItemSpellTalisman
 import aurocosh.divinefavor.common.item.spell_talismans.base.SpellOptions
-import aurocosh.divinefavor.common.item.spell_talismans.context.TalismanContext
+import aurocosh.divinefavor.common.item.spell_talismans.context.CastContext
 import aurocosh.divinefavor.common.item.spell_talismans.context.playerField
 import aurocosh.divinefavor.common.item.spell_talismans.context.worldField
 import aurocosh.divinefavor.common.lib.extensions.get
@@ -21,7 +21,7 @@ import net.minecraft.world.World
 import java.util.*
 
 class SpellTalismanDeserializeMemory(name: String, spirit: ModSpirit, favorCost: Int, options: EnumSet<SpellOptions>) : ItemSpellTalisman(name, spirit, favorCost, options) {
-    override fun performActionClient(context: TalismanContext) {
+    override fun performActionClient(context: CastContext) {
         val (player, world) = context.get(playerField, worldField)
 
         val clipString = GuiScreen.getClipboardString()

@@ -3,7 +3,7 @@ package aurocosh.divinefavor.common.item.spell_talismans.copy
 import aurocosh.divinefavor.common.coordinate_generators.generateFloodFillCoordinates
 import aurocosh.divinefavor.common.item.spell_talismans.base.CastType
 import aurocosh.divinefavor.common.item.spell_talismans.common_build_properties.PositionPropertyWrapper
-import aurocosh.divinefavor.common.item.spell_talismans.context.TalismanContext
+import aurocosh.divinefavor.common.item.spell_talismans.context.CastContext
 import aurocosh.divinefavor.common.item.spell_talismans.context.playerField
 import aurocosh.divinefavor.common.item.spell_talismans.context.stackField
 import aurocosh.divinefavor.common.item.spell_talismans.context.worldField
@@ -25,13 +25,13 @@ class SpellTalismanCopyBlocks(name: String, spirit: ModSpirit, favorCost: Int) :
     val positionPropertyWrapper: PositionPropertyWrapper = PositionPropertyWrapper(propertyHandler)
 
     @SideOnly(Side.CLIENT)
-    override fun shouldRender(context: TalismanContext): Boolean = positionPropertyWrapper.shouldRender(context)
+    override fun shouldRender(context: CastContext): Boolean = positionPropertyWrapper.shouldRender(context)
 
     override fun raycastBlock(stack: ItemStack, castType: CastType) = positionPropertyWrapper.shouldRaycastBlock(stack)
 
     fun getBlockCount(stack: ItemStack): Int = blockCount.getValue(stack)
 
-    override fun getCoordinates(context: TalismanContext): CopyCoordinates {
+    override fun getCoordinates(context: CastContext): CopyCoordinates {
         val (stack, world, player) = context.get(stackField, worldField, playerField)
         val (fuzzy, doNotSelect) = stack.get(isFuzzy, doNotSelectBelow)
         val count = getBlockCount(stack)

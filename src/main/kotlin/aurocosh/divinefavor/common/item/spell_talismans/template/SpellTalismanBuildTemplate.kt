@@ -51,10 +51,10 @@ class SpellTalismanBuildTemplate(name: String, spirit: ModSpirit, options: EnumS
     }
 
     override fun getApproximateFavorCost(itemStack: ItemStack) = favorCost
-    override fun getFinalFavorCost(context: TalismanContext) = favorCost * context.get(finalTemplate).size
+    override fun getFinalFavorCost(context: CastContext) = favorCost * context.get(finalTemplate).size
 
     @SideOnly(Side.CLIENT)
-    override fun shouldRender(context: TalismanContext): Boolean = positionPropertyWrapper.shouldRender(context)
+    override fun shouldRender(context: CastContext): Boolean = positionPropertyWrapper.shouldRender(context)
 
     override fun raycastBlock(stack: ItemStack, castType: CastType) = positionPropertyWrapper.shouldRaycastBlock(stack)
 
@@ -69,7 +69,7 @@ class SpellTalismanBuildTemplate(name: String, spirit: ModSpirit, options: EnumS
     private fun rotateClockZ(player: EntityPlayer, stack: ItemStack) = BlockTemplateRotationConverter(EnumFacing.Axis.Z, RotationDirection.Clockwise).convert(player)
     private fun rotateContrZ(player: EntityPlayer, stack: ItemStack) = BlockTemplateRotationConverter(EnumFacing.Axis.Z, RotationDirection.Counter).convert(player)
 
-    override fun preProcess(context: TalismanContext): Boolean {
+    override fun preProcess(context: CastContext): Boolean {
         val (player, world, stack) = context.get(playerField, worldField, stackField)
         if (world.isRemote)
             return false
@@ -94,7 +94,7 @@ class SpellTalismanBuildTemplate(name: String, spirit: ModSpirit, options: EnumS
         return validBlockStates.isNotEmpty()
     }
 
-    override fun performActionServer(context: TalismanContext) {
+    override fun performActionServer(context: CastContext) {
         val (player, world) = context.get(playerField, worldField)
         val template = context.get(finalTemplate)
         val buildOperation = TemplateBuildOperation(template)
@@ -102,12 +102,12 @@ class SpellTalismanBuildTemplate(name: String, spirit: ModSpirit, options: EnumS
         player.divinePlayerData.blockOperationsData.clearRedoActions()
     }
 
-    override fun performActionClient(context: TalismanContext) {
+    override fun performActionClient(context: CastContext) {
         positionPropertyWrapper.isLockPosition.setValue(context.stack, false, true)
     }
 
     @SideOnly(Side.CLIENT)
-    override fun handleRendering(context: TalismanContext, lastEvent: RenderWorldLastEvent) {
+    override fun handleRendering(context: CastContext, lastEvent: RenderWorldLastEvent) {
         val (player, world, stack) = context.get(playerField, worldField, stackField)
         val uuid = player.divinePlayerData.templateData.currentTemplate
         val template = world[TemplateData][uuid] ?: return

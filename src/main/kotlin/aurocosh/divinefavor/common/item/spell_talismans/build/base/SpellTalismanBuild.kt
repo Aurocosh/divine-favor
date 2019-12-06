@@ -26,14 +26,14 @@ abstract class SpellTalismanBuild(name: String, spirit: ModSpirit, favorCost: In
     protected val selectPropertyWrapper = BlockSelectPropertyWrapper(propertyHandler)
 
     override fun getApproximateFavorCost(itemStack: ItemStack) = favorCost * getBlockCount(itemStack)
-    override fun getFinalFavorCost(context: TalismanContext) = favorCost * context.get(finalCoordinates).size
+    override fun getFinalFavorCost(context: CastContext) = favorCost * context.get(finalCoordinates).size
 
     @SideOnly(Side.CLIENT)
-    override fun shouldRender(context: TalismanContext): Boolean = positionPropertyWrapper.shouldRender(context)
+    override fun shouldRender(context: CastContext): Boolean = positionPropertyWrapper.shouldRender(context)
 
     override fun raycastBlock(stack: ItemStack, castType: CastType) = positionPropertyWrapper.shouldRaycastBlock(stack)
 
-    override fun preProcess(context: TalismanContext): Boolean {
+    override fun preProcess(context: CastContext): Boolean {
         if (!selectPropertyWrapper.preprocess(context))
             return false
         val coordinates = getCommonCoordinates(context)
@@ -41,9 +41,9 @@ abstract class SpellTalismanBuild(name: String, spirit: ModSpirit, favorCost: In
         return coordinates.isNotEmpty()
     }
 
-    protected open fun getCommonCoordinates(context: TalismanContext) = getCoordinates(context).filter { context.world.isAirOrReplacable(it) }
+    protected open fun getCommonCoordinates(context: CastContext) = getCoordinates(context).filter { context.world.isAirOrReplacable(it) }
 
-    override fun performActionServer(context: TalismanContext) {
+    override fun performActionServer(context: CastContext) {
         val (stack, player, world) = context.get(stackField, playerField, worldField)
         val coordinates = context.get(finalCoordinates)
         val state = stack.get(selectPropertyWrapper.selectedBlock)
@@ -52,18 +52,18 @@ abstract class SpellTalismanBuild(name: String, spirit: ModSpirit, favorCost: In
         player.divinePlayerData.blockOperationsData.clearRedoActions()
     }
 
-    override fun performActionClient(context: TalismanContext) {
+    override fun performActionClient(context: CastContext) {
         positionPropertyWrapper.isLockPosition.setValue(context.stack, value = false, sync = true)
     }
 
     @SideOnly(Side.CLIENT)
-    override fun handleRendering(context: TalismanContext, lastEvent: RenderWorldLastEvent) {
+    override fun handleRendering(context: CastContext, lastEvent: RenderWorldLastEvent) {
         val (player, stack) = context.getCommon()
         val coordinates = getCommonCoordinates(context)
         val state = stack.get(selectPropertyWrapper.selectedBlock)
         BlockConstructionRendering.render(lastEvent, player, state, coordinates)
     }
 
-    protected abstract fun getCoordinates(context: TalismanContext): List<BlockPos>
+    protected abstract fun getCoordinates(context: CastContext): List<BlockPos>
     protected abstract fun getBlockCount(stack: ItemStack): Int
 }

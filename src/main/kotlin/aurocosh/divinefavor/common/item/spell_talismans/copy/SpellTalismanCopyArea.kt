@@ -1,7 +1,7 @@
 package aurocosh.divinefavor.common.item.spell_talismans.copy
 
 import aurocosh.divinefavor.common.item.spell_talismans.base.CastType
-import aurocosh.divinefavor.common.item.spell_talismans.context.TalismanContext
+import aurocosh.divinefavor.common.item.spell_talismans.context.CastContext
 import aurocosh.divinefavor.common.item.spell_talismans.context.posField
 import aurocosh.divinefavor.common.item.spell_talismans.context.stackField
 import aurocosh.divinefavor.common.item.spell_talismans.context.worldField
@@ -20,14 +20,14 @@ class SpellTalismanCopyArea(name: String, spirit: ModSpirit, favorCost: Int) : S
     private val secondCorner = propertyHandler.registerBlockPosProperty("second_corner", BlockPos.ORIGIN)
 
     @SideOnly(Side.CLIENT)
-    override fun shouldRender(context: TalismanContext): Boolean {
+    override fun shouldRender(context: CastContext): Boolean {
         val (first, second) = context.stack.get(firstCorner, secondCorner)
         return isValidPoints(first, second)
     }
 
     override fun raycastBlock(stack: ItemStack, castType: CastType) = true
 
-    override fun preProcess(context: TalismanContext): Boolean {
+    override fun preProcess(context: CastContext): Boolean {
         if (!context.player.isSneaking) {
             val (stack, pos) = context.get(stackField, posField)
 
@@ -39,7 +39,7 @@ class SpellTalismanCopyArea(name: String, spirit: ModSpirit, favorCost: Int) : S
         return super.preProcess(context)
     }
 
-    override fun validate(context: TalismanContext): Boolean {
+    override fun validate(context: CastContext): Boolean {
         val (first, second) = context.stack.get(firstCorner, secondCorner)
         return isValidPoints(first, second) && super.validate(context)
     }
@@ -54,7 +54,7 @@ class SpellTalismanCopyArea(name: String, spirit: ModSpirit, favorCost: Int) : S
         return true
     }
 
-    override fun getCoordinates(context: TalismanContext): CopyCoordinates {
+    override fun getCoordinates(context: CastContext): CopyCoordinates {
         val (stack, world) = context.get(stackField, worldField)
         val (first, second) = stack.get(firstCorner, secondCorner)
         val boundingBox = CuboidBoundingBox(first, second)

@@ -41,6 +41,14 @@ object UtilPlayer {
         return if (!stack.isEmpty && predicate.invoke(stack.item)) EnumHand.OFF_HAND else null
     }
 
+    fun getHeldItem(player: EntityPlayer, predicate: (Item) -> Boolean): Pair<EnumHand, ItemStack>? {
+        var stack = player.heldItemMainhand
+        if (!stack.isEmpty && predicate.invoke(stack.item))
+            return Pair(EnumHand.MAIN_HAND, stack)
+        stack = player.heldItemOffhand
+        return if (!stack.isEmpty && predicate.invoke(stack.item)) Pair(EnumHand.OFF_HAND, stack) else null
+    }
+
     fun getHeldStacks(player: EntityPlayer): Sequence<HeldStack> {
         return sequenceOf(
                 HeldStack(EnumHand.MAIN_HAND, player.inventory.currentItem, player.heldItemMainhand),

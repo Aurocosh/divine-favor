@@ -1,6 +1,6 @@
 package aurocosh.divinefavor.client.core.handler.talisman_container
 
-import aurocosh.divinefavor.common.item.talisman_tools.ITalismanTool
+import aurocosh.divinefavor.common.item.talisman_tools.IStackContainer
 import net.minecraft.client.Minecraft
 import net.minecraft.client.renderer.GlStateManager
 import net.minecraft.item.ItemStack
@@ -11,15 +11,15 @@ import java.util.*
 
 class TalismanScrollHUD {
     private var state = 0
-    private var handler: ITalismanTool? = null
+    private var handler: IStackContainer? = null
 
     private var selectedStack = ItemStack.EMPTY
     private var nextStacks: List<ItemStack>? = null
     private var previousStacks: MutableList<ItemStack>? = null
 
     @SideOnly(Side.CLIENT)
-    fun draw(mc: Minecraft, width: Int, height: Int, talismanTool: ITalismanTool) {
-        refreshItemStacks(talismanTool)
+    fun draw(mc: Minecraft, width: Int, height: Int, stackContainer: IStackContainer) {
+        refreshItemStacks(stackContainer)
         if (selectedStack.isEmpty)
             return
         val nextStacks = nextStacks ?: return
@@ -45,19 +45,19 @@ class TalismanScrollHUD {
         GlStateManager.disableBlend()
     }
 
-    private fun refreshItemStacks(talismanTool: ITalismanTool) {
-        if (handler === talismanTool && state == talismanTool.getState())
+    private fun refreshItemStacks(stackContainer: IStackContainer) {
+        if (handler === stackContainer && state == stackContainer.getState())
             return
 
-        handler = talismanTool
-        state = talismanTool.getState()
+        handler = stackContainer
+        state = stackContainer.getState()
 
-        val next = talismanTool.getNextStacks()
-        val previous = ArrayList(talismanTool.getPreviousStacks())
+        val next = stackContainer.getNextStacks()
+        val previous = ArrayList(stackContainer.getPreviousStacks())
         for (stack in next)
             previous.remove(stack)
 
-        selectedStack = talismanTool.getSelectedStack()
+        selectedStack = stackContainer.getSelectedStack()
         previousStacks = previous
         nextStacks = next
     }

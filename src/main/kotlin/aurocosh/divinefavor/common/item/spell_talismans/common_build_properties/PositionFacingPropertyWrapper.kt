@@ -1,7 +1,7 @@
 package aurocosh.divinefavor.common.item.spell_talismans.common_build_properties
 
 import aurocosh.divinefavor.DivineFavor
-import aurocosh.divinefavor.common.item.spell_talismans.context.TalismanContext
+import aurocosh.divinefavor.common.item.spell_talismans.context.CastContext
 import aurocosh.divinefavor.common.lib.extensions.get
 import aurocosh.divinefavor.common.stack_properties.StackPropertyHandler
 import aurocosh.divinefavor.common.stack_properties.properties.StackPropertyEnumFacing
@@ -16,7 +16,7 @@ open class PositionFacingPropertyWrapper(propertyHandler: StackPropertyHandler) 
         isLockPosition.addChangeListener { stack, value -> this.onFacingLock(stack, value) }
     }
 
-    open fun getFacing(context: TalismanContext): EnumFacing {
+    open fun getFacing(context: CastContext): EnumFacing {
         return if (context.stack.get(isLockPosition)) context.stack.get(lockedFacing) else context.facing
     }
 

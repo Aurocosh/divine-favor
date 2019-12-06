@@ -4,7 +4,7 @@ import aurocosh.divinefavor.common.config.common.ConfigSpell
 import aurocosh.divinefavor.common.item.common.ModItems
 import aurocosh.divinefavor.common.item.spell_talismans.base.ItemSpellTalisman
 import aurocosh.divinefavor.common.item.spell_talismans.base.SpellOptions
-import aurocosh.divinefavor.common.item.spell_talismans.context.TalismanContext
+import aurocosh.divinefavor.common.item.spell_talismans.context.CastContext
 import aurocosh.divinefavor.common.lib.extensions.divinePlayerData
 import aurocosh.divinefavor.common.spirit.base.ModSpirit
 import aurocosh.divinefavor.common.util.UtilExperience
@@ -18,7 +18,7 @@ import kotlin.math.min
 
 class SpellTalismanCrystallizeExperience(name: String, spirit: ModSpirit, favorCost: Int, options: EnumSet<SpellOptions>) : ItemSpellTalisman(name, spirit, favorCost, options) {
 
-    override fun getFinalFavorCost(context: TalismanContext): Int {
+    override fun getFinalFavorCost(context: CastContext): Int {
         val dropCount = getDropCount(context.player)
         return dropCount * favorCost
     }
@@ -33,12 +33,12 @@ class SpellTalismanCrystallizeExperience(name: String, spirit: ModSpirit, favorC
         return min(dropsAvailableExperience, dropsAvailableFavor)
     }
 
-    override fun validate(context: TalismanContext): Boolean {
+    override fun validate(context: CastContext): Boolean {
         val player = context.player
         return player.capabilities.isCreativeMode || UtilExperience.getPlayerXP(player) >= ConfigSpell.crystallizeExperience.experiencePerCast
     }
 
-    override fun performActionServer(context: TalismanContext) {
+    override fun performActionServer(context: CastContext) {
         val player = context.player
         val dropCount = getDropCount(context.player)
         UtilExperience.removePlayerXP(player, ConfigSpell.crystallizeExperience.experiencePerCast * dropCount)

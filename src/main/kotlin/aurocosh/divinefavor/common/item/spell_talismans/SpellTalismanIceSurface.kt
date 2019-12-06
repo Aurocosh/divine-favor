@@ -4,7 +4,7 @@ import aurocosh.divinefavor.common.config.common.ConfigSpell
 import aurocosh.divinefavor.common.constants.BlockPosConstants
 import aurocosh.divinefavor.common.item.spell_talismans.base.ItemSpellTalisman
 import aurocosh.divinefavor.common.item.spell_talismans.base.SpellOptions
-import aurocosh.divinefavor.common.item.spell_talismans.context.TalismanContext
+import aurocosh.divinefavor.common.item.spell_talismans.context.CastContext
 import aurocosh.divinefavor.common.lib.extensions.getBlock
 import aurocosh.divinefavor.common.lib.extensions.isWater
 import aurocosh.divinefavor.common.lib.wrapper.AreaPredicate
@@ -34,7 +34,7 @@ class SpellTalismanIceSurface(name: String, spirit: ModSpirit, favorCost: Int, o
         testB = propertyHandler.registerBoolProperty("safety_lock", false)
     }
 
-    override fun performActionServer(context: TalismanContext) {
+    override fun performActionServer(context: CastContext) {
         val value = testB.getValue(context.stack)
         if(value)
         {

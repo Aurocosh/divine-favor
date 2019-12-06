@@ -2,7 +2,7 @@ package aurocosh.divinefavor.common.item.tool_talismans.break_blocks
 
 import aurocosh.divinefavor.common.lib.cached_container.CachedContainer
 import aurocosh.divinefavor.common.coordinate_generators.generateTreeCoordinates
-import aurocosh.divinefavor.common.item.spell_talismans.context.TalismanContext
+import aurocosh.divinefavor.common.item.spell_talismans.context.CastContext
 import aurocosh.divinefavor.common.lib.extensions.get
 import aurocosh.divinefavor.common.spirit.base.ModSpirit
 import aurocosh.divinefavor.common.stack_properties.properties.StackPropertyInt
@@ -23,7 +23,7 @@ class ToolTalismanFellTree(name: String, spirit: ModSpirit) : ToolTalismanBreak(
         return toolCanHarvest || state.material == Material.WOOD
     }
 
-    override fun getCoordinates(context: TalismanContext): List<BlockPos> {
+    override fun getCoordinates(context: CastContext): List<BlockPos> {
         val (pos, world, stack) = context.get(posField, worldField, stackField)
         val count = stack.get(blockCount)
 

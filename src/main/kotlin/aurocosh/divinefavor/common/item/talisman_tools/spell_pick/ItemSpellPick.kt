@@ -5,13 +5,12 @@ import aurocosh.divinefavor.common.config.entries.items.SpellPick
 import aurocosh.divinefavor.common.constants.ConstGuiIDs
 import aurocosh.divinefavor.common.item.base.ModItemPickaxe
 import aurocosh.divinefavor.common.item.blade_talismans.base.ItemBladeTalisman
-import aurocosh.divinefavor.common.item.spell_talismans.context.TalismanContextGenerator
-import aurocosh.divinefavor.common.item.talisman.ITalismanStackContainer
-import aurocosh.divinefavor.common.item.talisman.ITalismanToolContainer
+import aurocosh.divinefavor.common.item.spell_talismans.context.CastContextGenerator
+import aurocosh.divinefavor.common.item.talisman.IStackContainerProvider
 import aurocosh.divinefavor.common.item.talisman.ItemTalisman
 import aurocosh.divinefavor.common.item.talisman_tools.BookPropertyWrapper
-import aurocosh.divinefavor.common.item.talisman_tools.ITalismanTool
-import aurocosh.divinefavor.common.item.talisman_tools.TalismanAdapter
+import aurocosh.divinefavor.common.item.talisman_tools.IStackContainer
+import aurocosh.divinefavor.common.item.talisman_tools.CastableAdapter
 import aurocosh.divinefavor.common.item.talisman_tools.TalismanContainerMode
 import aurocosh.divinefavor.common.item.talisman_tools.spell_pick.capability.SpellPickDataHandler.CAPABILITY_SPELL_PICK
 import aurocosh.divinefavor.common.item.talisman_tools.spell_pick.capability.SpellPickProvider
@@ -55,7 +54,7 @@ import net.minecraftforge.fml.relauncher.SideOnly
 import net.minecraftforge.oredict.OreDictionary
 import kotlin.math.max
 
-open class ItemSpellPick(name: String, texturePath: String, orderIndex: Int = 0, val config: SpellPick, val material: ToolMaterial) : ModItemPickaxe(name, texturePath, orderIndex, material), ITalismanStackContainer, ITalismanToolContainer, IPropertyContainer, IActionContainer, IBlockCatcher {
+open class ItemSpellPick(name: String, texturePath: String, orderIndex: Int = 0, val config: SpellPick, val material: ToolMaterial) : ModItemPickaxe(name, texturePath, orderIndex, material), IStackContainerProvider, IPropertyContainer, IActionContainer, IBlockCatcher {
     protected val propertyHandler: StackPropertyHandler = StackPropertyHandler(name)
     override val properties: IPropertyAccessor = propertyHandler
     protected val actionHandler: StackActionHandler = StackActionHandler(name)
@@ -63,9 +62,9 @@ open class ItemSpellPick(name: String, texturePath: String, orderIndex: Int = 0,
     private val bookPropertyWrapper = BookPropertyWrapper(propertyHandler)
 
     override fun findProperty(stack: ItemStack, item: Item, propertyName: String) =
-            TalismanAdapter.findProperty(stack, item, propertyName, this, propertyHandler, CAPABILITY_SPELL_PICK)
+            CastableAdapter.findProperty(stack, item, propertyName, this, propertyHandler, CAPABILITY_SPELL_PICK)
     override fun findAction(stack: ItemStack, item: Item, actionName: String): Pair<ItemStack, StackAction>? =
-            TalismanAdapter.findAction(stack, item, actionName, this, actionHandler, CAPABILITY_SPELL_PICK)
+            CastableAdapter.findAction(stack, item, actionName, this, actionHandler, CAPABILITY_SPELL_PICK)
 
     init {
         creativeTab = DivineFavor.TAB_MAIN
@@ -80,8 +79,8 @@ open class ItemSpellPick(name: String, texturePath: String, orderIndex: Int = 0,
     }
 
     private fun performBreakCast(stack: ItemStack, pos: BlockPos, player: EntityPlayer): Boolean {
-        val (talismanStack, talisman) = TalismanAdapter.getTalisman<ItemToolTalisman>(stack) ?: return true
-        val context = TalismanContextGenerator.pick(talismanStack, player, pos, stack)
+        val (talismanStack, talisman) = CastableAdapter.getCastableStack<ItemToolTalisman>(stack) ?: return true
+        val context = CastContextGenerator.pick(talismanStack, player, pos, stack)
         val cast = talisman.cast(context)
         return cast && talisman.shouldBreakBlock(context)
     }
@@ -94,17 +93,17 @@ open class ItemSpellPick(name: String, texturePath: String, orderIndex: Int = 0,
         if (bookPropertyWrapper.getModeOrTransform(stack, attacker) != TalismanContainerMode.NORMAL)
             return true
 
-        val (talismanStack, talisman) = TalismanAdapter.getTalisman<ItemBladeTalisman>(stack) ?: return true
-        val context = TalismanContextGenerator.blade(talismanStack, target, attacker, stack)
+        val (talismanStack, talisman) = CastableAdapter.getCastableStack<ItemBladeTalisman>(stack) ?: return true
+        val context = CastContextGenerator.blade(talismanStack, target, attacker, stack)
         talisman.cast(context)
         return true
     }
 
     override fun onItemUse(player: EntityPlayer, world: World, pos: BlockPos, hand: EnumHand, facing: EnumFacing, hitX: Float, hitY: Float, hitZ: Float): EnumActionResult {
         val containerStack = player.getHeldItem(hand)
-        val wrapper = TalismanAdapter.getTalisman<ItemTalisman>(containerStack)
+        val wrapper = CastableAdapter.getCastableStack<ItemTalisman>(containerStack)
         val (talismanStack, talisman) = wrapper ?: return EnumActionResult.PASS
-        val context = TalismanContextGenerator.useCast(player, world, pos, hand, facing, talismanStack, containerStack)
+        val context = CastContextGenerator.useCast(player, world, pos, hand, facing, talismanStack, containerStack)
         val success = talisman.cast(context)
         return actionResultPass(success)
     }
@@ -122,15 +121,15 @@ open class ItemSpellPick(name: String, texturePath: String, orderIndex: Int = 0,
         if (mode == TalismanContainerMode.BOOK)
             player.openGui(DivineFavor, ConstGuiIDs.SPELL_PICK, world, player.posX.toInt(), player.posY.toInt(), player.posZ.toInt())
         else if (mode == TalismanContainerMode.NORMAL) {
-            val (talismanStack, talisman) = TalismanAdapter.getTalisman<ItemTalisman>(stack) ?: return true
-            val context = TalismanContextGenerator.rightClick(world, player, hand, talismanStack, stack)
+            val (talismanStack, talisman) = CastableAdapter.getCastableStack<ItemTalisman>(stack) ?: return true
+            val context = CastContextGenerator.rightClick(world, player, hand, talismanStack, stack)
             talisman.cast(context)
         }
         return true
     }
 
     override fun getToolClasses(stack: ItemStack): Set<String> {
-        val (talismanStack, talisman) = TalismanAdapter.getTalisman<ItemToolTalisman>(stack)
+        val (talismanStack, talisman) = CastableAdapter.getCastableStack<ItemToolTalisman>(stack)
                 ?: return super.getToolClasses(stack)
         if (talisman.isCustomToolClasses(talismanStack))
             return talisman.getCustomToolClasses(talismanStack)
@@ -155,7 +154,7 @@ open class ItemSpellPick(name: String, texturePath: String, orderIndex: Int = 0,
     }
 
     override fun catchDrops(stack: ItemStack, toolStack: ItemStack, event: BlockEvent.HarvestDropsEvent) {
-        val talismanStack = getTalismanStack(stack)
+        val talismanStack = getSelectedStack(stack)
         if (talismanStack.isEmpty)
             return
         val catcher = talismanStack.item as IBlockCatcher
@@ -164,19 +163,19 @@ open class ItemSpellPick(name: String, texturePath: String, orderIndex: Int = 0,
 
     override fun getHarvestLevel(stack: ItemStack, toolClass: String, player: EntityPlayer?, blockState: IBlockState?): Int {
         val pickHarvestLevel =  super.getHarvestLevel(stack, toolClass, player, blockState)
-        val (talismanStack, talisman) = TalismanAdapter.getTalisman<ItemToolTalisman>(stack) ?: return pickHarvestLevel
+        val (talismanStack, talisman) = CastableAdapter.getCastableStack<ItemToolTalisman>(stack) ?: return pickHarvestLevel
         val talismanHarvestLevel = talisman.getHarvestLevel(talismanStack, toolClass, player, blockState)
         return max(pickHarvestLevel, talismanHarvestLevel)
     }
 
     override fun canHarvestBlock(state: IBlockState, stack: ItemStack): Boolean {
         val toolCanHarvest = super.canHarvestBlock(state, stack)
-        val (talismanStack, talisman) = TalismanAdapter.getTalisman<ItemToolTalisman>(stack) ?: return toolCanHarvest
+        val (talismanStack, talisman) = CastableAdapter.getCastableStack<ItemToolTalisman>(stack) ?: return toolCanHarvest
         return talisman.canHarvest(talismanStack, state, toolCanHarvest)
     }
 
     fun getMiningSpeed(stack: ItemStack, event: PlayerEvent.BreakSpeed) {
-        val (talismanStack, talisman) = TalismanAdapter.getTalisman<ItemToolTalisman>(stack) ?: return
+        val (talismanStack, talisman) = CastableAdapter.getCastableStack<ItemToolTalisman>(stack) ?: return
         val spiritData = event.entityPlayer.divinePlayerData.spiritData
         val favor = spiritData.getFavor(talisman.spiritId)
         if (favor < talisman.getApproximateFavorCost(stack))
@@ -199,9 +198,9 @@ open class ItemSpellPick(name: String, texturePath: String, orderIndex: Int = 0,
         return if (item.item is ItemSpellPick) SpellPickProvider() else null
     }
 
-    override fun getTalismanTool(stack: ItemStack): ITalismanTool = stack.cap(CAPABILITY_SPELL_PICK)
+    override fun getStackContainer(stack: ItemStack): IStackContainer = stack.cap(CAPABILITY_SPELL_PICK)
 
-    override fun getTalismanStack(stack: ItemStack): ItemStack {
+    override fun getSelectedStack(stack: ItemStack): ItemStack {
         if (stack.item !== this)
             return ItemStack.EMPTY
         return stack.cap(CAPABILITY_SPELL_PICK).getSelectedStack()
@@ -211,7 +210,7 @@ open class ItemSpellPick(name: String, texturePath: String, orderIndex: Int = 0,
     override fun addInformation(stack: ItemStack, world: World?, tooltip: MutableList<String>, flag: ITooltipFlag) {
         super.addInformation(stack, world, tooltip, flag)
 
-        val talismanTool = getTalismanTool(stack)
+        val talismanTool = getStackContainer(stack)
         val talismanCount = talismanTool.getAllStacks().filter (ItemStack::isNotEmpty).count()
         val countMessage = I18n.format("tooltip.divinefavor:talisman_tool.talisman_count", talismanCount)
         tooltip.add(countMessage)

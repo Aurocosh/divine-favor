@@ -2,7 +2,7 @@ package aurocosh.divinefavor.common.item.spell_talismans
 
 import aurocosh.divinefavor.common.item.spell_talismans.base.ItemSpellTalisman
 import aurocosh.divinefavor.common.item.spell_talismans.base.SpellOptions
-import aurocosh.divinefavor.common.item.spell_talismans.context.TalismanContext
+import aurocosh.divinefavor.common.item.spell_talismans.context.CastContext
 import aurocosh.divinefavor.common.spirit.base.ModSpirit
 import aurocosh.divinefavor.common.util.UtilPlayer
 import aurocosh.divinefavor.common.util.UtilRandom
@@ -20,7 +20,7 @@ import java.util.*
 
 class SpellTalismanArrowThrow(name: String, spirit: ModSpirit, favorCost: Int, options: EnumSet<SpellOptions>) : ItemSpellTalisman(name, spirit, favorCost, options) {
 
-    override fun performActionServer(context: TalismanContext) {
+    override fun performActionServer(context: CastContext) {
         val stack = context.player.getHeldItem(context.hand)
         shootArrow(stack, context.world, context.player, 15)
     }

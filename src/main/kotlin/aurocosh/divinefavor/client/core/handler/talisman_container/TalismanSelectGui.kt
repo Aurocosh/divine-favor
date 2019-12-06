@@ -2,11 +2,12 @@ package aurocosh.divinefavor.client.core.handler.talisman_container
 
 import aurocosh.divinefavor.DivineFavor
 import aurocosh.divinefavor.client.core.handler.KeyBindings
-import aurocosh.divinefavor.client.core.handler.talisman.TalismanHUD
+import aurocosh.divinefavor.client.core.handler.common.DisplayStackExtractors
+import aurocosh.divinefavor.client.core.handler.common.HudRenderers
 import aurocosh.divinefavor.common.constants.ConstResources
-import aurocosh.divinefavor.common.item.talisman.ITalismanToolContainer
-import aurocosh.divinefavor.common.item.talisman_tools.ITalismanTool
-import aurocosh.divinefavor.common.item.talisman_tools.TalismanAdapter
+import aurocosh.divinefavor.common.item.talisman.IStackContainerProvider
+import aurocosh.divinefavor.common.item.talisman_tools.IStackContainer
+import aurocosh.divinefavor.common.item.talisman_tools.CastableAdapter
 import aurocosh.divinefavor.common.lib.math.Vector2i
 import aurocosh.divinefavor.common.util.UtilGui
 import aurocosh.divinefavor.common.util.UtilPlayer
@@ -31,7 +32,7 @@ class TalismanSelectGui : GuiScreen() {
     private var hand: EnumHand = EnumHand.MAIN_HAND
     private var state: Int = 0
     private var selectedIndex: Int = -1
-    private var handler: ITalismanTool? = null
+    private var handler: IStackContainer? = null
 
     private var allStacks: List<ItemStack>? = null
     private var slotPositions: List<Vector2i>? = null
@@ -52,22 +53,23 @@ class TalismanSelectGui : GuiScreen() {
         super.drawScreen(mx, my, partialTicks)
 
         val player = DivineFavor.proxy.clientPlayer
-        hand = UtilPlayer.getHandWithItem(player) { it is ITalismanToolContainer} ?: return
+        hand = UtilPlayer.getHandWithItem(player) { it is IStackContainerProvider} ?: return
 
         val stack = player.getHeldItem(hand)
-        val toolContainer = stack.item as ITalismanToolContainer
-        val talismanTool = toolContainer.getTalismanTool(stack)
+        val toolContainer = stack.item as IStackContainerProvider
+        val talismanTool = toolContainer.getStackContainer(stack)
 
         refreshStackData(talismanTool)
         renderSpellMassSelector(mx, my, talismanTool)
 
-        if (selectedIndex > 0) {
-            val talismanStack = talismanTool.getStackInSlot(selectedIndex)
-            TalismanHUD.drawTalismanDescription(mc, width, height, player, talismanStack, true)
+        if (selectedIndex >= 0) {
+            val selectedStack = talismanTool.getStackInSlot(selectedIndex)
+            val renderer = HudRenderers.getRenderer(selectedStack.item)
+            renderer?.drawDescription(mc, width, height, player, selectedStack, true)
         }
     }
 
-    private fun renderSpellMassSelector(mx: Int, my: Int, talismanTool: ITalismanTool) {
+    private fun renderSpellMassSelector(mx: Int, my: Int, stackContainer: IStackContainer) {
         val slotPositions = slotPositions ?: return
         val allStacks = allStacks ?: return
 
@@ -90,7 +92,7 @@ class TalismanSelectGui : GuiScreen() {
         UtilGui.drawPolyline(mouseLine, 0.3f, 0f, 1f, 0.3f)
 
         GL11.glColor4f(1f, 1f, 1f, 1f)
-        val currentSlotIndex = talismanTool.selectedSlotIndex
+        val currentSlotIndex = stackContainer.selectedSlotIndex
         val (x1, y1) = slotPositions[currentSlotIndex]
 
         mc.textureManager.bindTexture(marker)
@@ -109,23 +111,23 @@ class TalismanSelectGui : GuiScreen() {
         GlStateManager.disableBlend()
     }
 
-    private fun refreshStackData(talismanTool: ITalismanTool) {
+    private fun refreshStackData(stackContainer: IStackContainer) {
         val k = 3 //scalar
         val a = 0.15 //a-value
         val aDec = -0.0008 // a-value change over time
 
-        if (slotPositions == null || handler !== talismanTool)
-            slotPositions = UtilGui.generateSpiral(talismanTool.getSlotCount(), 4, k, a, aDec, 9.0, 7.0)
+        if (slotPositions == null || handler !== stackContainer)
+            slotPositions = UtilGui.generateSpiral(stackContainer.getSlotCount(), 4, k, a, aDec, 9.0, 7.0)
 
-        if (handler === talismanTool && state == talismanTool.getState())
+        if (handler === stackContainer && state == stackContainer.getState())
             return
 
-        handler = talismanTool
-        state = talismanTool.getState()
+        handler = stackContainer
+        state = stackContainer.getState()
 
-        allStacks = talismanTool.getAllStacks()
+        allStacks = stackContainer.getAllStacks().map { DisplayStackExtractors.getDisplayStack(it) }.toList()
 
-        val activeIndexes = talismanTool.getSlotIndexes { !it.isEmpty }
+        val activeIndexes = stackContainer.getSlotIndexes { !it.isEmpty }
 
         activePositionMap.clear()
         for (index in activeIndexes)
@@ -140,7 +142,7 @@ class TalismanSelectGui : GuiScreen() {
             if (selectedIndex != -1) {
                 val player = DivineFavor.proxy.clientPlayer
                 val playerSlot = if (hand == EnumHand.OFF_HAND) 40 else player.inventory.currentItem
-                TalismanAdapter.selectSlot(playerSlot, selectedIndex)
+                CastableAdapter.selectSlot(playerSlot, selectedIndex)
                 selectedIndex = -1
             }
         }

@@ -25,7 +25,7 @@ class ToolTalismanDestroyCuboid(name: String, spirit: ModSpirit) : ToolTalismanD
         return (width * height * depth)
     }
 
-    override fun getCoordinates(context: TalismanContext): List<BlockPos> {
+    override fun getCoordinates(context: CastContext): List<BlockPos> {
         val (facing, pos) = context.get(facingField, posField)
         val (left, right, up, down, depth) = context.stack.get(left, right, up, down, depth)
 

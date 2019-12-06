@@ -1,7 +1,7 @@
 package aurocosh.divinefavor.common.item.spell_talismans.common_build_properties
 
 import aurocosh.divinefavor.DivineFavor
-import aurocosh.divinefavor.common.item.spell_talismans.context.TalismanContext
+import aurocosh.divinefavor.common.item.spell_talismans.context.CastContext
 import aurocosh.divinefavor.common.stack_properties.StackPropertyHandler
 import aurocosh.divinefavor.common.lib.extensions.get
 import aurocosh.divinefavor.common.stack_properties.properties.StackPropertyBlockPos
@@ -19,9 +19,9 @@ open class PositionPropertyWrapper(propertyHandler: StackPropertyHandler) {
     }
 
     open fun shouldRaycastBlock(stack: ItemStack): Boolean = !stack.get(isLockPosition)
-    open fun shouldRender(context: TalismanContext): Boolean = context.raycastValid || context.stack.get(isLockPosition)
+    open fun shouldRender(context: CastContext): Boolean = context.raycastValid || context.stack.get(isLockPosition)
 
-    open fun getPosition(context: TalismanContext): BlockPos {
+    open fun getPosition(context: CastContext): BlockPos {
         return if (context.stack.get(isLockPosition)) context.stack.get(lockedPosition) else context.pos
     }
 

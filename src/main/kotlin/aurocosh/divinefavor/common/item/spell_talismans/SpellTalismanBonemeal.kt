@@ -2,7 +2,7 @@ package aurocosh.divinefavor.common.item.spell_talismans
 
 import aurocosh.divinefavor.common.item.spell_talismans.base.ItemSpellTalisman
 import aurocosh.divinefavor.common.item.spell_talismans.base.SpellOptions
-import aurocosh.divinefavor.common.item.spell_talismans.context.TalismanContext
+import aurocosh.divinefavor.common.item.spell_talismans.context.CastContext
 import aurocosh.divinefavor.common.spirit.base.ModSpirit
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.init.Items
@@ -13,7 +13,7 @@ import java.util.*
 
 class SpellTalismanBonemeal(name: String, spirit: ModSpirit, favorCost: Int, options: EnumSet<SpellOptions>) : ItemSpellTalisman(name, spirit, favorCost, options) {
 
-    override fun performActionServer(context: TalismanContext) {
+    override fun performActionServer(context: CastContext) {
         if (!bonemeal(context.player, context.pos))
             bonemeal(context.player, context.pos.down())
     }

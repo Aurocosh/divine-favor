@@ -3,18 +3,18 @@ package aurocosh.divinefavor.common.item.spell_talismans
 import aurocosh.divinefavor.common.config.common.ConfigSpell
 import aurocosh.divinefavor.common.item.spell_talismans.base.ItemSpellTalisman
 import aurocosh.divinefavor.common.item.spell_talismans.base.SpellOptions
-import aurocosh.divinefavor.common.item.spell_talismans.context.TalismanContext
+import aurocosh.divinefavor.common.item.spell_talismans.context.CastContext
 import aurocosh.divinefavor.common.spirit.base.ModSpirit
 import net.minecraft.entity.player.EntityPlayer
 import java.util.*
 
 class SpellTalismanWindStep(name: String, spirit: ModSpirit, favorCost: Int, options: EnumSet<SpellOptions>) : ItemSpellTalisman(name, spirit, favorCost, options) {
 
-    override fun performActionServer(context: TalismanContext) {
+    override fun performActionServer(context: CastContext) {
         addVelocity(context.player)
     }
 
-    override fun performActionClient(context: TalismanContext) {
+    override fun performActionClient(context: CastContext) {
         addVelocity(context.player)
     }
 

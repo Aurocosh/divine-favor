@@ -15,7 +15,7 @@ class ToolTalismanDestroySide(name: String, spirit: ModSpirit) : ToolTalismanDes
 
     override fun getBlockCount(stack: ItemStack): Int = blockCount.getValue(stack)
 
-    override fun getCoordinates(context: TalismanContext): List<BlockPos> {
+    override fun getCoordinates(context: CastContext): List<BlockPos> {
         val (stack, world, pos, facing) = context.get(stackField, worldField, posField, facingField)
         val (fuzzy, state) = stack.get(isFuzzy, selectPropertyWrapper.selectedBlock)
         val count = getBlockCount(stack)

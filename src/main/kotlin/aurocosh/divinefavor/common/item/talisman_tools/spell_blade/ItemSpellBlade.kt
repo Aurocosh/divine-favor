@@ -6,12 +6,11 @@ import aurocosh.divinefavor.common.constants.ConstGuiIDs
 import aurocosh.divinefavor.common.item.base.ModItem
 import aurocosh.divinefavor.common.item.blade_talismans.base.ItemBladeTalisman
 import aurocosh.divinefavor.common.item.spell_talismans.base.ItemSpellTalisman
-import aurocosh.divinefavor.common.item.spell_talismans.context.TalismanContextGenerator
-import aurocosh.divinefavor.common.item.talisman.ITalismanStackContainer
-import aurocosh.divinefavor.common.item.talisman.ITalismanToolContainer
+import aurocosh.divinefavor.common.item.spell_talismans.context.CastContextGenerator
+import aurocosh.divinefavor.common.item.talisman.IStackContainerProvider
 import aurocosh.divinefavor.common.item.talisman_tools.BookPropertyWrapper
-import aurocosh.divinefavor.common.item.talisman_tools.ITalismanTool
-import aurocosh.divinefavor.common.item.talisman_tools.TalismanAdapter
+import aurocosh.divinefavor.common.item.talisman_tools.IStackContainer
+import aurocosh.divinefavor.common.item.talisman_tools.CastableAdapter
 import aurocosh.divinefavor.common.item.talisman_tools.TalismanContainerMode
 import aurocosh.divinefavor.common.item.talisman_tools.spell_blade.capability.SpellBladeDataHandler.CAPABILITY_SPELL_BLADE
 import aurocosh.divinefavor.common.item.talisman_tools.spell_blade.capability.SpellBladeProvider
@@ -52,7 +51,7 @@ import net.minecraftforge.fml.relauncher.Side
 import net.minecraftforge.fml.relauncher.SideOnly
 import net.minecraftforge.oredict.OreDictionary
 
-open class ItemSpellBlade(name: String, texturePath: String, orderIndex: Int = 0, val config: SpellBlade, val material: ToolMaterial) : ModItem(name, texturePath, orderIndex), ITalismanStackContainer, ITalismanToolContainer, IPropertyContainer, IActionContainer, IBlockCatcher {
+open class ItemSpellBlade(name: String, texturePath: String, orderIndex: Int = 0, val config: SpellBlade, val material: ToolMaterial) : ModItem(name, texturePath, orderIndex), IStackContainerProvider, IPropertyContainer, IActionContainer, IBlockCatcher {
     protected val propertyHandler: StackPropertyHandler = StackPropertyHandler(name)
     override val properties: IPropertyAccessor = propertyHandler
     protected val actionHandler: StackActionHandler = StackActionHandler(name)
@@ -67,9 +66,9 @@ open class ItemSpellBlade(name: String, texturePath: String, orderIndex: Int = 0
     }
 
     override fun findProperty(stack: ItemStack, item: Item, propertyName: String) =
-            TalismanAdapter.findProperty(stack, item, propertyName, this, propertyHandler, CAPABILITY_SPELL_BLADE)
+            CastableAdapter.findProperty(stack, item, propertyName, this, propertyHandler, CAPABILITY_SPELL_BLADE)
     override fun findAction(stack: ItemStack, item: Item, actionName: String): Pair<ItemStack, StackAction>? =
-            TalismanAdapter.findAction(stack, item, actionName, this, actionHandler, CAPABILITY_SPELL_BLADE)
+            CastableAdapter.findAction(stack, item, actionName, this, actionHandler, CAPABILITY_SPELL_BLADE)
 
     override fun hitEntity(stack: ItemStack, target: EntityLivingBase, attacker: EntityLivingBase): Boolean {
         stack.damageItem(1, attacker)
@@ -78,8 +77,8 @@ open class ItemSpellBlade(name: String, texturePath: String, orderIndex: Int = 0
         if (bookPropertyWrapper.getModeOrTransform(stack, attacker) != TalismanContainerMode.NORMAL)
             return true
 
-        val (talismanStack, talisman) = TalismanAdapter.getTalisman<ItemBladeTalisman>(stack) ?: return true
-        val context = TalismanContextGenerator.blade(talismanStack, target, attacker, stack)
+        val (talismanStack, talisman) = CastableAdapter.getCastableStack<ItemBladeTalisman>(stack) ?: return true
+        val context = CastContextGenerator.blade(talismanStack, target, attacker, stack)
         talisman.cast(context)
         return true
     }
@@ -90,9 +89,9 @@ open class ItemSpellBlade(name: String, texturePath: String, orderIndex: Int = 0
         if (bookPropertyWrapper.getModeOrTransform(containerStack, player) != TalismanContainerMode.NORMAL)
             return EnumActionResult.PASS
 
-        val (talismanStack, talisman) = TalismanAdapter.getTalisman<ItemSpellTalisman>(containerStack)
+        val (talismanStack, talisman) = CastableAdapter.getCastableStack<ItemSpellTalisman>(containerStack)
                 ?: return EnumActionResult.PASS
-        val context = TalismanContextGenerator.useCast(player, world, pos, hand, facing, talismanStack, containerStack)
+        val context = CastContextGenerator.useCast(player, world, pos, hand, facing, talismanStack, containerStack)
         val success = talisman.cast(context)
         return actionResultPass(success)
     }
@@ -110,8 +109,8 @@ open class ItemSpellBlade(name: String, texturePath: String, orderIndex: Int = 0
         if (mode == TalismanContainerMode.BOOK)
             player.openGui(DivineFavor, ConstGuiIDs.SPELL_BLADE, world, player.posX.toInt(), player.posY.toInt(), player.posZ.toInt())
         else if (mode == TalismanContainerMode.NORMAL) {
-            val (talismanStack, talisman) = TalismanAdapter.getTalisman<ItemSpellTalisman>(stack) ?: return true
-            val context = TalismanContextGenerator.rightClick(world, player, hand, talismanStack, stack)
+            val (talismanStack, talisman) = CastableAdapter.getCastableStack<ItemSpellTalisman>(stack) ?: return true
+            val context = CastContextGenerator.rightClick(world, player, hand, talismanStack, stack)
             talisman.cast(context)
         }
         return true
@@ -165,17 +164,17 @@ open class ItemSpellBlade(name: String, texturePath: String, orderIndex: Int = 0
         return if (item.item is ItemSpellBlade) SpellBladeProvider() else null
     }
 
-    override fun getTalismanTool(stack: ItemStack): ITalismanTool = stack.cap(CAPABILITY_SPELL_BLADE)
+    override fun getStackContainer(stack: ItemStack): IStackContainer = stack.cap(CAPABILITY_SPELL_BLADE)
 
     override fun catchDrops(stack: ItemStack, toolStack: ItemStack, event: BlockEvent.HarvestDropsEvent) {
-        val talismanStack = getTalismanStack(stack)
+        val talismanStack = getSelectedStack(stack)
         if (talismanStack.isEmpty)
             return
         val catcher = talismanStack.item as IBlockCatcher
         catcher.catchDrops(talismanStack, toolStack, event)
     }
 
-    override fun getTalismanStack(stack: ItemStack): ItemStack {
+    override fun getSelectedStack(stack: ItemStack): ItemStack {
         if (stack.item !== this)
             return ItemStack.EMPTY
         return stack.cap(CAPABILITY_SPELL_BLADE).getSelectedStack()
@@ -185,7 +184,7 @@ open class ItemSpellBlade(name: String, texturePath: String, orderIndex: Int = 0
     override fun addInformation(stack: ItemStack, world: World?, tooltip: MutableList<String>, flag: ITooltipFlag) {
         super.addInformation(stack, world, tooltip, flag)
 
-        val talismanTool = getTalismanTool(stack)
+        val talismanTool = getStackContainer(stack)
         val talismanCount = talismanTool.getAllStacks().filter (ItemStack::isNotEmpty).count()
         val countMessage = I18n.format("tooltip.divinefavor:talisman_tool.talisman_count", talismanCount)
         tooltip.add(countMessage)

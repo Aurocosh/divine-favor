@@ -1,6 +1,6 @@
 package aurocosh.divinefavor.common.item.spell_talismans.base
 
-import aurocosh.divinefavor.common.item.spell_talismans.context.TalismanContext
+import aurocosh.divinefavor.common.item.spell_talismans.context.CastContext
 import aurocosh.divinefavor.common.lib.extensions.multicatch
 import aurocosh.divinefavor.common.spirit.base.ModSpirit
 import net.minecraft.entity.EntityLiving
@@ -11,7 +11,7 @@ import java.util.*
 
 open class SpellTalismanSummonEntity<T : EntityLiving>(name: String, spirit: ModSpirit, favorCost: Int, options: EnumSet<SpellOptions>, private val clazz: Class<out T>) : ItemSpellTalisman(name, spirit, favorCost, options) {
 
-    override fun performActionServer(context: TalismanContext) {
+    override fun performActionServer(context: CastContext) {
         try {
             val world = context.world
             val spawnPos = getPosition(context)
@@ -33,11 +33,11 @@ open class SpellTalismanSummonEntity<T : EntityLiving>(name: String, spirit: Mod
         }
     }
 
-    protected fun getPosition(context: TalismanContext): BlockPos {
+    protected fun getPosition(context: CastContext): BlockPos {
         return context.pos.offset(context.facing)
     }
 
-    protected fun preProcessEntity(entityLiving: T, context: TalismanContext) {}
+    protected fun preProcessEntity(entityLiving: T, context: CastContext) {}
 
-    protected open fun postProcessEntity(entityLiving: T, context: TalismanContext) {}
+    protected open fun postProcessEntity(entityLiving: T, context: CastContext) {}
 }

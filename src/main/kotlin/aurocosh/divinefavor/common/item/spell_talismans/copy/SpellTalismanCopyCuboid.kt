@@ -3,7 +3,7 @@ package aurocosh.divinefavor.common.item.spell_talismans.copy
 import aurocosh.divinefavor.common.coordinate_generators.generateCuboid
 import aurocosh.divinefavor.common.item.spell_talismans.base.CastType
 import aurocosh.divinefavor.common.item.spell_talismans.common_build_properties.ShiftedPositionPropertyWrapper
-import aurocosh.divinefavor.common.item.spell_talismans.context.TalismanContext
+import aurocosh.divinefavor.common.item.spell_talismans.context.CastContext
 import aurocosh.divinefavor.common.item.spell_talismans.context.playerField
 import aurocosh.divinefavor.common.item.spell_talismans.context.stackField
 import aurocosh.divinefavor.common.lib.cached_container.CachedContainer
@@ -28,7 +28,7 @@ class SpellTalismanCopyCuboid(name: String, spirit: ModSpirit, favorCost: Int) :
     val positionPropertyWrapper = ShiftedPositionPropertyWrapper(propertyHandler)
 
     @SideOnly(Side.CLIENT)
-    override fun shouldRender(context: TalismanContext): Boolean = positionPropertyWrapper.shouldRender(context)
+    override fun shouldRender(context: CastContext): Boolean = positionPropertyWrapper.shouldRender(context)
 
     override fun raycastBlock(stack: ItemStack, castType: CastType) = positionPropertyWrapper.shouldRaycastBlock(stack)
 
@@ -39,7 +39,7 @@ class SpellTalismanCopyCuboid(name: String, spirit: ModSpirit, favorCost: Int) :
         return (width * height * depth)
     }
 
-    override fun getCoordinates(context: TalismanContext): CopyCoordinates {
+    override fun getCoordinates(context: CastContext): CopyCoordinates {
         val (stack, player) = context.get(stackField, playerField)
         val (left, right, up, down, depth) = stack.get(left, right, up, down, depth)
         val pos = positionPropertyWrapper.getPosition(context)

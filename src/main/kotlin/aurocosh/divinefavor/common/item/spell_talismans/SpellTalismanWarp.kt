@@ -3,7 +3,7 @@ package aurocosh.divinefavor.common.item.spell_talismans
 import aurocosh.divinefavor.common.config.common.ConfigSpell
 import aurocosh.divinefavor.common.item.spell_talismans.base.ItemSpellTalisman
 import aurocosh.divinefavor.common.item.spell_talismans.base.SpellOptions
-import aurocosh.divinefavor.common.item.spell_talismans.context.TalismanContext
+import aurocosh.divinefavor.common.item.spell_talismans.context.CastContext
 import aurocosh.divinefavor.common.particles.ModParticles
 import aurocosh.divinefavor.common.particles.particles.ImmobileParticle
 import aurocosh.divinefavor.common.stack_properties.properties.StackPropertyInt
@@ -26,12 +26,12 @@ class SpellTalismanWarp(name: String, spirit: ModSpirit, favorCost: Int, options
         return favorCost * blinkDistance.getValue(itemStack);
     }
 
-    override fun performActionServer(context: TalismanContext) {
+    override fun performActionServer(context: CastContext) {
         val target = getTarget(context, 0.0)
         UtilEntity.teleport(context.player, target)
     }
 
-    private fun getTarget(context: TalismanContext, shift: Double): Vec3d {
+    private fun getTarget(context: CastContext, shift: Double): Vec3d {
         val pos = context.player.positionVector
         val look = context.player.lookVec
         val distance = blinkDistance.getValue(context.stack)
@@ -40,7 +40,7 @@ class SpellTalismanWarp(name: String, spirit: ModSpirit, favorCost: Int, options
     }
 
     @SideOnly(Side.CLIENT)
-    override fun handleRendering(context: TalismanContext, lastEvent: RenderWorldLastEvent) {
+    override fun handleRendering(context: CastContext, lastEvent: RenderWorldLastEvent) {
         val target = getTarget(context, context.player.eyeHeight.toDouble())
         val nextRadius = UtilRandom.nextDouble(0.2, 1.2)
         val shift = UtilRandom.nextDirection().scale(nextRadius)

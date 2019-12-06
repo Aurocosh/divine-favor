@@ -2,7 +2,7 @@ package aurocosh.divinefavor.common.item.tool_talismans.break_blocks
 
 import aurocosh.divinefavor.common.lib.cached_container.CachedContainer
 import aurocosh.divinefavor.common.coordinate_generators.generateSurfaceCoordinates
-import aurocosh.divinefavor.common.item.spell_talismans.context.TalismanContext
+import aurocosh.divinefavor.common.item.spell_talismans.context.CastContext
 import aurocosh.divinefavor.common.item.spell_talismans.context.posField
 import aurocosh.divinefavor.common.item.spell_talismans.context.stackField
 import aurocosh.divinefavor.common.item.spell_talismans.context.worldField
@@ -17,7 +17,7 @@ class ToolTalismanBreakSurface(name: String, spirit: ModSpirit) : ToolTalismanBr
 
     override fun getBlockCount(stack: ItemStack): Int = blockCount.getValue(stack)
 
-    override fun getCoordinates(context: TalismanContext): List<BlockPos> {
+    override fun getCoordinates(context: CastContext): List<BlockPos> {
         val (stack, world, pos) = context.get(stackField, worldField, posField)
         val fuzzy = stack.get(isFuzzy)
         val count = getBlockCount(stack)

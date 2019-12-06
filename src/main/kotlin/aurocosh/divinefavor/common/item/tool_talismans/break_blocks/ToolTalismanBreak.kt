@@ -5,7 +5,7 @@ import aurocosh.divinefavor.common.config.common.ConfigGeneral
 import aurocosh.divinefavor.common.item.spell_talismans.base.CastType
 import aurocosh.divinefavor.common.item.spell_talismans.common_build_properties.BlockSelectPropertyWrapper
 import aurocosh.divinefavor.common.item.spell_talismans.context.ContextProperty
-import aurocosh.divinefavor.common.item.spell_talismans.context.TalismanContext
+import aurocosh.divinefavor.common.item.spell_talismans.context.CastContext
 import aurocosh.divinefavor.common.item.talisman_tools.spell_pick.ItemSpellPick
 import aurocosh.divinefavor.common.item.tool_talismans.base.ItemToolTalisman
 import aurocosh.divinefavor.common.lib.extensions.filter
@@ -29,15 +29,15 @@ abstract class ToolTalismanBreak(name: String, spirit: ModSpirit) : ItemToolTali
 
     override fun raycastBlock(stack: ItemStack, castType: CastType) = true
     override fun getApproximateFavorCost(itemStack: ItemStack) = favorCost * getBlockCount(itemStack)
-    override fun getFinalFavorCost(context: TalismanContext) = favorCost * context.get(finalCoordinates).size
-    override fun preValidate(context: TalismanContext) = context.player.isSneaking || super.preValidate(context)
+    override fun getFinalFavorCost(context: CastContext) = favorCost * context.get(finalCoordinates).size
+    override fun preValidate(context: CastContext) = context.player.isSneaking || super.preValidate(context)
 
-    override fun shouldBreakBlock(context: TalismanContext): Boolean {
+    override fun shouldBreakBlock(context: CastContext): Boolean {
         return false
     }
 
     @SideOnly(Side.CLIENT)
-    override fun shouldRender(context: TalismanContext): Boolean {
+    override fun shouldRender(context: CastContext): Boolean {
         if (!context.raycastValid)
             return false
 
@@ -46,7 +46,7 @@ abstract class ToolTalismanBreak(name: String, spirit: ModSpirit) : ItemToolTali
         return pos != playerPos && pos.distanceSq(playerPos) < hudDistanceSq
     }
 
-    override fun preProcess(context: TalismanContext): Boolean {
+    override fun preProcess(context: CastContext): Boolean {
         if (!selectPropertyWrapper.preprocess(context))
             return false
         val coordinates = getCommonCoordinates(context)
@@ -54,7 +54,7 @@ abstract class ToolTalismanBreak(name: String, spirit: ModSpirit) : ItemToolTali
         return coordinates.isNotEmpty()
     }
 
-    protected open fun getCommonCoordinates(context: TalismanContext): List<BlockPos> {
+    protected open fun getCommonCoordinates(context: CastContext): List<BlockPos> {
         val spellPick = context.containerStack.item as? ItemSpellPick ?: return emptyList()
         val world = context.world
         val coordinates = getCoordinates(context)
@@ -63,18 +63,18 @@ abstract class ToolTalismanBreak(name: String, spirit: ModSpirit) : ItemToolTali
         return preFiltered.filterNot(world::isAirBlock).filter(world::getBlockState) { spellPick.canHarvestBlock(it, context.containerStack) }.toList()
     }
 
-    override fun performActionServer(context: TalismanContext) {
+    override fun performActionServer(context: CastContext) {
         val coordinates = context.get(finalCoordinates)
         BlockBreakingTask(coordinates, context.player, context.stack, 1).start()
     }
 
     @SideOnly(Side.CLIENT)
-    override fun handleRendering(context: TalismanContext, lastEvent: RenderWorldLastEvent) {
+    override fun handleRendering(context: CastContext, lastEvent: RenderWorldLastEvent) {
         val coordinates = getCommonCoordinates(context)
         BlockHighlightRendering.render(lastEvent, context.player, coordinates, renderColor)
     }
 
-    protected abstract fun getCoordinates(context: TalismanContext): List<BlockPos>
+    protected abstract fun getCoordinates(context: CastContext): List<BlockPos>
     protected abstract fun getBlockCount(stack: ItemStack): Int
 
     companion object {

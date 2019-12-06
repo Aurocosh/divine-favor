@@ -11,14 +11,14 @@ import net.minecraft.util.math.Vec3d
 import net.minecraft.world.World
 import kotlin.reflect.KProperty1
 
-val playerField: (TalismanContext) -> EntityPlayer = TalismanContext::player
-val targetField: KProperty1<TalismanContext, EntityLivingBase?> = TalismanContext::target
-val worldField: (TalismanContext) -> World = TalismanContext::world
-val posField: (TalismanContext) -> BlockPos = TalismanContext::pos
-val posVecField: KProperty1<TalismanContext, Vec3d> = TalismanContext::posVec
-val handField: KProperty1<TalismanContext, EnumHand> = TalismanContext::hand
-val facingField: KProperty1<TalismanContext, EnumFacing> = TalismanContext::facing
-val castTypeField: KProperty1<TalismanContext, CastType> = TalismanContext::castType
-val stackField: (TalismanContext) -> ItemStack = TalismanContext::stack
-val containerStackField: (TalismanContext) -> ItemStack = TalismanContext::containerStack
+val playerField: (CastContext) -> EntityPlayer = CastContext::player
+val targetField: KProperty1<CastContext, EntityLivingBase?> = CastContext::target
+val worldField: (CastContext) -> World = CastContext::world
+val posField: (CastContext) -> BlockPos = CastContext::pos
+val posVecField: KProperty1<CastContext, Vec3d> = CastContext::posVec
+val handField: KProperty1<CastContext, EnumHand> = CastContext::hand
+val facingField: KProperty1<CastContext, EnumFacing> = CastContext::facing
+val castTypeField: KProperty1<CastContext, CastType> = CastContext::castType
+val stackField: (CastContext) -> ItemStack = CastContext::stack
+val containerStackField: (CastContext) -> ItemStack = CastContext::containerStack
 

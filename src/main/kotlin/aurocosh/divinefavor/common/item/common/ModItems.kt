@@ -10,6 +10,7 @@ import aurocosh.divinefavor.common.item.base.ModItemPickaxe
 import aurocosh.divinefavor.common.item.bone_dagger.ItemBoneDagger
 import aurocosh.divinefavor.common.item.bone_dagger.ItemBoneDaggerAwakened
 import aurocosh.divinefavor.common.item.contract_binder.ItemContractBinder
+import aurocosh.divinefavor.common.item.gem_pouch.ItemGemPouch
 import aurocosh.divinefavor.common.item.gem_stabilizer.ItemGemStabilizer
 import aurocosh.divinefavor.common.item.gems.ItemInviteMarker
 import aurocosh.divinefavor.common.item.gems.ItemMarkedGlass
@@ -76,6 +77,7 @@ object ModItems {
     val markedGlasses: MutableList<ItemMarkedGlass> = ArrayList()
 
     // New fields
+    lateinit var gem_pouch: ModItem
     lateinit var pebble_stabilizer: ModItem
     lateinit var gem_stabilizer: ModItem
     lateinit var experience_drop: ModItem
@@ -126,6 +128,7 @@ object ModItems {
             markedGlasses.add(ItemMarkedGlass(spirit, ConstGemTabOrder.MARKED_GLASS))
 
         // New instances
+        gem_pouch = ItemGemPouch()
         pebble_stabilizer = ItemPebbleStabilizer()
         gem_stabilizer = ItemGemStabilizer()
         experience_drop = ItemExperienceDrop()

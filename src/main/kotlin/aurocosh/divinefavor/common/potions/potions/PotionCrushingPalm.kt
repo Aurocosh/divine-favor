@@ -1,7 +1,7 @@
 package aurocosh.divinefavor.common.potions.potions
 
 import aurocosh.divinefavor.DivineFavor
-import aurocosh.divinefavor.common.item.spell_talismans.context.TalismanContextGenerator
+import aurocosh.divinefavor.common.item.spell_talismans.context.CastContextGenerator
 import aurocosh.divinefavor.common.potions.base.potion.ModPotionToggleLimited
 import aurocosh.divinefavor.common.potions.common.ModPotions
 import aurocosh.divinefavor.common.util.UtilBlock
@@ -29,7 +29,7 @@ object CrushingPalm {
             return
 
         val talisman = ModPotions.crushing_palm.talisman
-        val context = TalismanContextGenerator.player(player)
+        val context = CastContextGenerator.player(player)
         if (!talisman.claimCost(context))
             return
 

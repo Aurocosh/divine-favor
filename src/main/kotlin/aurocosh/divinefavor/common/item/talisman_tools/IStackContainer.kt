@@ -3,7 +3,7 @@ package aurocosh.divinefavor.common.item.talisman_tools
 import net.minecraft.item.ItemStack
 import net.minecraftforge.items.ItemStackHandler
 
-interface ITalismanTool {
+interface IStackContainer {
     var selectedSlotIndex: Int
 
     fun getSlotCount(): Int

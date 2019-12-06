@@ -16,7 +16,7 @@ class SpellTalismanBuildExtrusion(name: String, spirit: ModSpirit) : SpellTalism
 
     override fun getBlockCount(stack: ItemStack): Int = stack.get(surface) * stack.get(length)
 
-    override fun getCoordinates(context: TalismanContext): List<BlockPos> {
+    override fun getCoordinates(context: CastContext): List<BlockPos> {
         val (pos, facing, stack, world) = context.get(posField, facingField, stackField, worldField)
         val (length, surface) = stack.get(length, surface)
         val origin = positionPropertyWrapper.getPosition(context)

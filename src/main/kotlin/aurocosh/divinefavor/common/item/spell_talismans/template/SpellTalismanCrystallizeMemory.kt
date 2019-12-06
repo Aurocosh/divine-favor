@@ -8,7 +8,7 @@ import aurocosh.divinefavor.common.item.spell_talismans.base.CastType
 import aurocosh.divinefavor.common.item.spell_talismans.base.ItemSpellTalisman
 import aurocosh.divinefavor.common.item.spell_talismans.base.SpellOptions
 import aurocosh.divinefavor.common.item.spell_talismans.common_build_properties.ShiftedPositionPropertyWrapper
-import aurocosh.divinefavor.common.item.spell_talismans.context.TalismanContext
+import aurocosh.divinefavor.common.item.spell_talismans.context.CastContext
 import aurocosh.divinefavor.common.item.spell_talismans.context.playerField
 import aurocosh.divinefavor.common.item.spell_talismans.context.worldField
 import aurocosh.divinefavor.common.lib.extensions.divinePlayerData
@@ -27,11 +27,11 @@ class SpellTalismanCrystallizeMemory(name: String, spirit: ModSpirit, favorCost:
     protected val positionPropertyWrapper = ShiftedPositionPropertyWrapper(propertyHandler)
 
     @SideOnly(Side.CLIENT)
-    override fun shouldRender(context: TalismanContext): Boolean = positionPropertyWrapper.shouldRender(context)
+    override fun shouldRender(context: CastContext): Boolean = positionPropertyWrapper.shouldRender(context)
 
     override fun raycastBlock(stack: ItemStack, castType: CastType) = positionPropertyWrapper.shouldRaycastBlock(stack)
 
-    override fun performActionServer(context: TalismanContext) {
+    override fun performActionServer(context: CastContext) {
         val (player, world) = context.get(playerField, worldField)
         val uuid = player.divinePlayerData.templateData.currentTemplate
         if (uuid.isInvalid())
@@ -44,7 +44,7 @@ class SpellTalismanCrystallizeMemory(name: String, spirit: ModSpirit, favorCost:
     }
 
     @SideOnly(Side.CLIENT)
-    override fun handleRendering(context: TalismanContext, lastEvent: RenderWorldLastEvent) {
+    override fun handleRendering(context: CastContext, lastEvent: RenderWorldLastEvent) {
         val player = context.player
         val uuid = player.divinePlayerData.templateData.currentTemplate
         val position = positionPropertyWrapper.getPosition(context)

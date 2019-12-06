@@ -7,13 +7,13 @@ import aurocosh.divinefavor.common.constants.ConstMainTabOrder
 import aurocosh.divinefavor.common.item.arrow_talismans.base.ItemArrowTalisman
 import aurocosh.divinefavor.common.item.base.ModItem
 import aurocosh.divinefavor.common.item.common.ModItems
-import aurocosh.divinefavor.common.item.spell_talismans.context.TalismanContext
-import aurocosh.divinefavor.common.item.spell_talismans.context.TalismanContextGenerator
-import aurocosh.divinefavor.common.item.talisman.ITalismanStackContainer
-import aurocosh.divinefavor.common.item.talisman.ITalismanToolContainer
+import aurocosh.divinefavor.common.item.spell_talismans.context.CastContext
+import aurocosh.divinefavor.common.item.spell_talismans.context.CastContextGenerator
+import aurocosh.divinefavor.common.item.talisman.ISelectedStackProvider
+import aurocosh.divinefavor.common.item.talisman.IStackContainerProvider
 import aurocosh.divinefavor.common.item.talisman_tools.BookPropertyWrapper
-import aurocosh.divinefavor.common.item.talisman_tools.ITalismanTool
-import aurocosh.divinefavor.common.item.talisman_tools.TalismanAdapter
+import aurocosh.divinefavor.common.item.talisman_tools.IStackContainer
+import aurocosh.divinefavor.common.item.talisman_tools.CastableAdapter
 import aurocosh.divinefavor.common.item.talisman_tools.TalismanContainerMode
 import aurocosh.divinefavor.common.item.talisman_tools.spell_bow.capability.SpellBowDataHandler.CAPABILITY_SPELL_BOW
 import aurocosh.divinefavor.common.item.talisman_tools.spell_bow.capability.SpellBowProvider
@@ -55,7 +55,7 @@ import net.minecraftforge.fml.relauncher.Side
 import net.minecraftforge.fml.relauncher.SideOnly
 import net.minecraftforge.oredict.OreDictionary
 
-class ItemSpellBow : ModItem("spell_bow", "spell_bow/spell_bow", ConstMainTabOrder.CONTAINERS), ITalismanStackContainer, ITalismanToolContainer, IPropertyContainer, IActionContainer {
+class ItemSpellBow : ModItem("spell_bow", "spell_bow/spell_bow", ConstMainTabOrder.CONTAINERS), ISelectedStackProvider, IStackContainerProvider, IPropertyContainer, IActionContainer {
     protected val propertyHandler: StackPropertyHandler = StackPropertyHandler("spell_bow")
     override val properties: IPropertyAccessor = propertyHandler
     protected val actionHandler: StackActionHandler = StackActionHandler("spell_bow")
@@ -64,9 +64,9 @@ class ItemSpellBow : ModItem("spell_bow", "spell_bow/spell_bow", ConstMainTabOrd
     private val material: ToolMaterial = ToolMaterial.WOOD
 
     override fun findProperty(stack: ItemStack, item: Item, propertyName: String) =
-            TalismanAdapter.findProperty(stack, item, propertyName, this, propertyHandler, CAPABILITY_SPELL_BOW)
+            CastableAdapter.findProperty(stack, item, propertyName, this, propertyHandler, CAPABILITY_SPELL_BOW)
     override fun findAction(stack: ItemStack, item: Item, actionName: String): Pair<ItemStack, StackAction>? =
-            TalismanAdapter.findAction(stack, item, actionName, this, actionHandler, CAPABILITY_SPELL_BOW)
+            CastableAdapter.findAction(stack, item, actionName, this, actionHandler, CAPABILITY_SPELL_BOW)
 
     init {
         maxStackSize = 1
@@ -118,10 +118,10 @@ class ItemSpellBow : ModItem("spell_bow", "spell_bow/spell_bow", ConstMainTabOrd
         val stackIsInfinite = entityLiving.capabilities.isCreativeMode || arrowStack.item is ItemArrow && (arrowStack.item as ItemArrow).isInfinite(arrowStack, bowStack, entityLiving)
         if (!world.isRemote) {
 
-            val container = bowStack.item as ITalismanStackContainer
-            val talismanStack = container.getTalismanStack(bowStack)
+            val container = bowStack.item as ISelectedStackProvider
+            val talismanStack = container.getSelectedStack(bowStack)
 
-            val context = TalismanContextGenerator.arrowShot(world, entityLiving, talismanStack, bowStack)
+            val context = CastContextGenerator.arrowShot(world, entityLiving, talismanStack, bowStack)
 
             val (arrowTalisman, entityArrow) = getArrow(context, arrowStack)
             entityArrow.shoot(entityLiving, entityLiving.rotationPitch, entityLiving.rotationYaw, 0.0f, velocity * 3.0f, 1.0f)
@@ -155,7 +155,7 @@ class ItemSpellBow : ModItem("spell_bow", "spell_bow/spell_bow", ConstMainTabOrd
         entityLiving.addStat(StatList.getObjectUseStats(this)!!)
     }
 
-    private fun getArrow(context: TalismanContext, arrowStack: ItemStack): Pair<ItemArrowTalisman?, EntityArrow> {
+    private fun getArrow(context: CastContext, arrowStack: ItemStack): Pair<ItemArrowTalisman?, EntityArrow> {
         val talisman = context.stack.item
         if (talisman !is ItemArrowTalisman || !talisman.claimCost(context))
             return Pair(null, getStandardArrow(context.world, arrowStack, context.player))
@@ -243,9 +243,9 @@ class ItemSpellBow : ModItem("spell_bow", "spell_bow/spell_bow", ConstMainTabOrd
         return true
     }
 
-    override fun getTalismanTool(stack: ItemStack): ITalismanTool = stack.cap(CAPABILITY_SPELL_BOW)
+    override fun getStackContainer(stack: ItemStack): IStackContainer = stack.cap(CAPABILITY_SPELL_BOW)
 
-    override fun getTalismanStack(stack: ItemStack): ItemStack {
+    override fun getSelectedStack(stack: ItemStack): ItemStack {
         if (stack.item !== this)
             return ItemStack.EMPTY
         return stack.cap(CAPABILITY_SPELL_BOW).getSelectedStack()
@@ -255,7 +255,7 @@ class ItemSpellBow : ModItem("spell_bow", "spell_bow/spell_bow", ConstMainTabOrd
     override fun addInformation(stack: ItemStack, world: World?, tooltip: MutableList<String>, flag: ITooltipFlag) {
         super.addInformation(stack, world, tooltip, flag)
 
-        val talismanTool = getTalismanTool(stack)
+        val talismanTool = getStackContainer(stack)
         val talismanCount = talismanTool.getAllStacks().filter (ItemStack::isNotEmpty).count()
         val countMessage = I18n.format("tooltip.divinefavor:talisman_tool.talisman_count", talismanCount)
         tooltip.add(countMessage)

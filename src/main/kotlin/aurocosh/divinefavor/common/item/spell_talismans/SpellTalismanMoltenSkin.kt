@@ -2,7 +2,7 @@ package aurocosh.divinefavor.common.item.spell_talismans
 
 import aurocosh.divinefavor.common.item.spell_talismans.base.ItemSpellTalisman
 import aurocosh.divinefavor.common.item.spell_talismans.base.SpellOptions
-import aurocosh.divinefavor.common.item.spell_talismans.context.TalismanContext
+import aurocosh.divinefavor.common.item.spell_talismans.context.CastContext
 import aurocosh.divinefavor.common.network.message.client.syncing.MessageSyncFireImmunity
 import aurocosh.divinefavor.common.potions.base.effect.ModEffectToggle
 import aurocosh.divinefavor.common.potions.common.ModPotions
@@ -14,7 +14,7 @@ import java.util.*
 
 class SpellTalismanMoltenSkin(name: String, spirit: ModSpirit, favorCost: Int, options: EnumSet<SpellOptions>) : ItemSpellTalisman(name, spirit, favorCost, options) {
 
-    override fun performActionServer(context: TalismanContext) {
+    override fun performActionServer(context: CastContext) {
         val player = context.player
         val newImmunityState = !player.isPotionActive(ModPotions.molten_skin)
         ReflectionHelper.setPrivateValue<EntityPlayer, Boolean>(Entity::class.java, player, newImmunityState, 54)

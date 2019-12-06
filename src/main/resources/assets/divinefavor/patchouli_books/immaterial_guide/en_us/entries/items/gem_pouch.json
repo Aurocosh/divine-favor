@@ -1,0 +1,29 @@
+{
+  "name": "Gem pouch",
+  "icon": "divinefavor:gem_pouch",
+  "category": "items",
+  "read_by_default": true,
+  "pages": [
+    {
+      "type": "text",
+      "text": "Gem pouch is a tool intended to store gems. This item can store gems, pebbles, stable gems and stable pebbles. This pouch works very similarly to grimoires and other spell tools, except it stores and uses gems instead of talismans. To open pouch you need to sneak and right click while holding this item."
+    },
+    {
+      "type": "spotlight",
+      "item": "divinefavor:gem_pouch",
+      "text": "When opened you will see gem pouch inventory. You can only put gems inside, any other item will be rejected. You can select gem by using middle click. To use selected gem in pouch just hold it in hand and use it like you would any normal gem."
+    },
+    {
+      "type": "text",
+      "text": "Gem pouch also has convenient hud that you can use to select gems. There are two ways to do that, both are activated by separate key bindings that you can configure in settings. First hud when activated will display current active gems as well as several gems before and after it in pouch at the top of the screen. When this hud is displayed you can change active gem by scrolling your mouse wheel."
+    },
+    {
+      "type": "text",
+      "text": "When second hud is activated all gems currently in grimoire will appear in spiral pattern on your screen. Also your cursor will appear on the screen and you will be able to select any gem by moving your cursor over it and releasing hud key. To use hud effectively you need to set masks on the gems. To do so you need to combine gem with any other item in crafting grid."
+    },
+    {
+      "type": "text",
+      "text": "You will not lose any item when you combine gem with something in crafting grid, all ingredients will remain untouched. After you comined gem with some item this item will be displayed in hud instead of gem. This will help you tell apart multiple gems with the same type."
+    }
+  ]
+}

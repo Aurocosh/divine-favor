@@ -29,27 +29,27 @@ open class SpellTalismanPullSide(name: String, spirit: ModSpirit, favorCost: Int
     protected val selectPropertyWrapper = BlockSelectPropertyWrapper(propertyHandler)
 
     override fun getApproximateFavorCost(itemStack: ItemStack) = favorCost * getBlockCount(itemStack)
-    override fun getFinalFavorCost(context: TalismanContext) = favorCost * context.get(finalCoordinates).size
+    override fun getFinalFavorCost(context: CastContext) = favorCost * context.get(finalCoordinates).size
 
     protected fun getBlockCount(stack: ItemStack): Int = blockCount.getValue(stack)
-    protected fun getCommonCoordinates(context: TalismanContext) = getCoordinates(context).filterNot { context.world.isAirBlock(it) }
+    protected fun getCommonCoordinates(context: CastContext) = getCoordinates(context).filterNot { context.world.isAirBlock(it) }
 
-    override fun performActionServer(context: TalismanContext) {
+    override fun performActionServer(context: CastContext) {
         val (player, world, facing) = context.get(playerField, worldField, facingField)
         val coordinates = getCommonCoordinates(context)
         coordinates.forEach { UtilBlock.moveBlock(player, world, it, facing) }
     }
 
     @SideOnly(Side.CLIENT)
-    override fun shouldRender(context: TalismanContext): Boolean = context.raycastValid
+    override fun shouldRender(context: CastContext): Boolean = context.raycastValid
 
     @SideOnly(Side.CLIENT)
-    override fun handleRendering(context: TalismanContext, lastEvent: RenderWorldLastEvent) {
+    override fun handleRendering(context: CastContext, lastEvent: RenderWorldLastEvent) {
         val coordinates = getCommonCoordinates(context)
         BlockHighlightRendering.render(lastEvent, context.player, coordinates, color)
     }
 
-    open fun getCoordinates(context: TalismanContext): List<BlockPos> {
+    open fun getCoordinates(context: CastContext): List<BlockPos> {
         val (stack, world, facing, pos) = context.get(stackField, worldField, facingField, posField)
         val fuzzy = stack.get(isFuzzy)
 
@@ -62,7 +62,7 @@ open class SpellTalismanPullSide(name: String, spirit: ModSpirit, favorCost: Int
         }
     }
 
-    override fun preProcess(context: TalismanContext): Boolean {
+    override fun preProcess(context: CastContext): Boolean {
         if (!selectPropertyWrapper.preprocess(context))
             return false
 

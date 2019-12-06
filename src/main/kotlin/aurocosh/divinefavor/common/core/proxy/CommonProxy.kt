@@ -8,6 +8,7 @@ import aurocosh.divinefavor.common.custom_data.world.capability.WorldDataDataHan
 import aurocosh.divinefavor.common.entity.ModEntities
 import aurocosh.divinefavor.common.item.common.*
 import aurocosh.divinefavor.common.item.contract.ModContracts
+import aurocosh.divinefavor.common.item.gem_pouch.capability.GemPouchDataHandler
 import aurocosh.divinefavor.common.item.memory_pouch.capability.MemoryPouchDataHandler
 import aurocosh.divinefavor.common.item.talisman_tools.grimoire.capability.GrimoireDataHandler
 import aurocosh.divinefavor.common.item.talisman_tools.spell_blade.capability.SpellBladeDataHandler
@@ -83,6 +84,7 @@ open class CommonProxy {
         PlayerDataDataHandler.register()
         WorldDataDataHandler.register()
 
+        GemPouchDataHandler.register()
         GrimoireDataHandler.register()
         MemoryPouchDataHandler.register()
         SpellBladeDataHandler.register()

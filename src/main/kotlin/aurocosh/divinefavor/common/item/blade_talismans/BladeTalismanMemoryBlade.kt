@@ -2,14 +2,14 @@ package aurocosh.divinefavor.common.item.blade_talismans
 
 import aurocosh.divinefavor.common.config.common.ConfigBlade
 import aurocosh.divinefavor.common.item.blade_talismans.base.ItemBladeTalisman
-import aurocosh.divinefavor.common.item.spell_talismans.context.TalismanContext
+import aurocosh.divinefavor.common.item.spell_talismans.context.CastContext
 import aurocosh.divinefavor.common.lib.extensions.attackEntityNoTimer
 import aurocosh.divinefavor.common.lib.extensions.compound
 import aurocosh.divinefavor.common.spirit.base.ModSpirit
 import net.minecraft.util.DamageSource
 
 class BladeTalismanMemoryBlade(name: String, spirit: ModSpirit, favorCost: Int) : ItemBladeTalisman(name, spirit, favorCost) {
-    override fun performActionServer(context: TalismanContext) {
+    override fun performActionServer(context: CastContext) {
         val target = context.target ?: return
         val compound = context.stack.compound
 

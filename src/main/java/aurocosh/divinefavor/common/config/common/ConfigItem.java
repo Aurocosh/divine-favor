@@ -61,6 +61,8 @@ public class ConfigItem {
     public static SpellPick spellPickOrange = new SpellPick();
 
     // New configs
+    @Config.Name("Gem pouch")
+    public static GemPouch gemPouch = new GemPouch();
     @Config.Name("Stable warp gem")
     public static StableWarpGem stableWarpGem = new StableWarpGem();
     @Config.Name("Small goo vial")

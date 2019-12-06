@@ -1,7 +1,7 @@
 package aurocosh.divinefavor.common.item.spell_talismans.common_build_properties
 
 import aurocosh.divinefavor.DivineFavor
-import aurocosh.divinefavor.common.item.spell_talismans.context.TalismanContext
+import aurocosh.divinefavor.common.item.spell_talismans.context.CastContext
 import aurocosh.divinefavor.common.lib.extensions.get
 import aurocosh.divinefavor.common.lib.extensions.scale
 import aurocosh.divinefavor.common.lib.extensions.set
@@ -21,14 +21,14 @@ class ShiftedPositionPropertyWrapper(propertyHandler: StackPropertyHandler) : Po
         isRelative.addChangeListener(this::onRelativityChange)
     }
 
-    override fun getPosition(context: TalismanContext): BlockPos {
+    override fun getPosition(context: CastContext): BlockPos {
         return when {
             context.stack.get(isRelative) -> getRelativePosition(context)
             else -> getShiftedPosition(context)
         }
     }
 
-    fun getFacing(context: TalismanContext): EnumFacing {
+    fun getFacing(context: CastContext): EnumFacing {
         return when {
             context.stack.get(isRelative) -> EnumFacing.getDirectionFromEntityLiving(context.pos,context.player)
             else -> context.facing
@@ -47,14 +47,14 @@ class ShiftedPositionPropertyWrapper(propertyHandler: StackPropertyHandler) : Po
         stack.set(shift, newShift, true)
     }
 
-    private fun getShiftedPosition(context: TalismanContext): BlockPos {
+    private fun getShiftedPosition(context: CastContext): BlockPos {
         val blockPos = if (context.stack.get(isLockPosition)) context.stack.get(lockedPosition) else context.pos
         val shiftValue = context.stack.get(shift)
         val shiftVec = context.facing.directionVec.toBlockPos().scale(shiftValue)
         return blockPos.add(shiftVec)
     }
 
-    private fun getRelativePosition(context: TalismanContext): BlockPos {
+    private fun getRelativePosition(context: CastContext): BlockPos {
         val (player, stack) = context.getCommon()
         val playerPos = player.positionVector
         val truncated = BlockPos(playerPos.x.toInt(), playerPos.y.toInt(), playerPos.z.toInt())
@@ -84,7 +84,7 @@ class ShiftedPositionPropertyWrapper(propertyHandler: StackPropertyHandler) : Po
         return !stack.get(isRelative) && super.shouldRaycastBlock(stack)
     }
 
-    override fun shouldRender(context: TalismanContext): Boolean {
+    override fun shouldRender(context: CastContext): Boolean {
         return context.stack.get(isRelative) || context.stack.get(isLockPosition) || super.shouldRender(context)
     }
 }

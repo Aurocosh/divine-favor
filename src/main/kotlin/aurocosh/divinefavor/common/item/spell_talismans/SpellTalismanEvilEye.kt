@@ -3,7 +3,7 @@ package aurocosh.divinefavor.common.item.spell_talismans
 import aurocosh.divinefavor.common.config.common.ConfigSpell
 import aurocosh.divinefavor.common.item.spell_talismans.base.ItemSpellTalisman
 import aurocosh.divinefavor.common.item.spell_talismans.base.SpellOptions
-import aurocosh.divinefavor.common.item.spell_talismans.context.TalismanContext
+import aurocosh.divinefavor.common.item.spell_talismans.context.CastContext
 import aurocosh.divinefavor.common.lib.extensions.divinePlayerData
 import aurocosh.divinefavor.common.network.message.client.syncing.MessageSyncEvilEye
 import aurocosh.divinefavor.common.potions.base.effect.ModEffect
@@ -17,11 +17,11 @@ import java.util.*
 
 class SpellTalismanEvilEye(name: String, spirit: ModSpirit, favorCost: Int, options: EnumSet<SpellOptions>) : ItemSpellTalisman(name, spirit, favorCost, options) {
 
-    override fun validate(context: TalismanContext): Boolean {
+    override fun validate(context: CastContext): Boolean {
         return context.target != null
     }
 
-    override fun performActionServer(context: TalismanContext) {
+    override fun performActionServer(context: CastContext) {
         val player = context.player
 
         val evilEyeData = player.divinePlayerData.evilEyeData

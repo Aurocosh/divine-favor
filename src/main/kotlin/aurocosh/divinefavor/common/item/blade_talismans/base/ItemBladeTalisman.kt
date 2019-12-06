@@ -3,7 +3,7 @@ package aurocosh.divinefavor.common.item.blade_talismans.base
 import aurocosh.divinefavor.DivineFavor
 import aurocosh.divinefavor.common.item.talisman.ItemTalisman
 import aurocosh.divinefavor.common.item.spell_talismans.base.CastType
-import aurocosh.divinefavor.common.item.spell_talismans.context.TalismanContext
+import aurocosh.divinefavor.common.item.spell_talismans.context.CastContext
 import aurocosh.divinefavor.common.spirit.base.ModSpirit
 
 open class ItemBladeTalisman// Talisman functions
@@ -20,7 +20,7 @@ open class ItemBladeTalisman// Talisman functions
     // Talisman functions
     constructor(name: String, spirit: ModSpirit, favorCost: Int) : this(name, "", spirit, favorCost)
 
-    override fun preValidate(context: TalismanContext): Boolean {
+    override fun preValidate(context: CastContext): Boolean {
         return context.castType == CastType.BladeCast && super.preValidate(context)
     }
 }

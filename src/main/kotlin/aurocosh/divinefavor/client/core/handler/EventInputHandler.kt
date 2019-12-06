@@ -3,7 +3,7 @@ package aurocosh.divinefavor.client.core.handler
 import aurocosh.divinefavor.DivineFavor
 import aurocosh.divinefavor.client.core.handler.talisman_container.TalismanSelectGui
 import aurocosh.divinefavor.common.constants.ConstGuiIDs
-import aurocosh.divinefavor.common.item.talisman.ITalismanToolContainer
+import aurocosh.divinefavor.common.item.talisman.IStackContainerProvider
 import aurocosh.divinefavor.common.util.UtilPlayer
 import net.minecraft.client.Minecraft
 import net.minecraftforge.fml.common.Mod
@@ -21,7 +21,7 @@ object EventInputHandler {
         val mc = Minecraft.getMinecraft()
 
         if (KeyBindings.talismanSelect.isKeyDown) {
-            if (UtilPlayer.getHandWithItem(mc.player) { it is ITalismanToolContainer } != null)
+            if (UtilPlayer.getHandWithItem(mc.player) { it is IStackContainerProvider } != null)
                 mc.displayGuiScreen(TalismanSelectGui.INSTANCE)
         } else if (KeyBindings.talismanValueHud.isKeyDown) {
             mc.player.openGui(DivineFavor, ConstGuiIDs.TALISMAN_HUD, mc.world, 0, 0, 0)

@@ -4,7 +4,7 @@ import aurocosh.divinefavor.common.config.common.ConfigGeneral
 import aurocosh.divinefavor.common.config.entries.spell_talismans.generic.SenseConfig
 import aurocosh.divinefavor.common.item.spell_talismans.base.ItemSpellTalisman
 import aurocosh.divinefavor.common.item.spell_talismans.base.SpellOptions
-import aurocosh.divinefavor.common.item.spell_talismans.context.TalismanContext
+import aurocosh.divinefavor.common.item.spell_talismans.context.CastContext
 import aurocosh.divinefavor.common.network.message.client.particles.MessageParticlesHighlightEntities
 import aurocosh.divinefavor.common.spirit.base.ModSpirit
 import java.util.*
@@ -15,7 +15,7 @@ class SpellTalismanSenseEntities(name: String, spirit: ModSpirit, options: EnumS
     protected val minShift: Float = senseConfig.minShift
     protected val maxShift: Float = senseConfig.maxShift
 
-    override fun performActionServer(context: TalismanContext) {
+    override fun performActionServer(context: CastContext) {
         val world = context.player.world
         MessageParticlesHighlightEntities(50, radius, world.provider.dimension, context.pos, minShift, maxShift, color3f, predicate)
                 .sendToAllAround(world, context.player.position, ConfigGeneral.particleRadius)

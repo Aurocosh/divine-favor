@@ -15,7 +15,7 @@ import kotlin.collections.set
 data class ContextProperty<T>(val name: String, val defaultValue: T)
 data class CommonContextValues(val player: EntityPlayer, val stack: ItemStack, val world: World)
 
-class TalismanContext(
+class CastContext(
         val player: EntityPlayer, val target: EntityLivingBase?, val world: World,
         val pos: BlockPos, val posVec: Vec3d, val hand: EnumHand, val facing: EnumFacing,
         val castType: CastType, val stack: ItemStack,

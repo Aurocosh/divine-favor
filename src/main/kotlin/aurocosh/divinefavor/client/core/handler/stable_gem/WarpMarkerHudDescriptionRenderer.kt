@@ -1,10 +1,11 @@
 package aurocosh.divinefavor.client.core.handler.stable_gem
 
+import aurocosh.divinefavor.client.core.handler.base.IHudDescriptionRenderer
+import aurocosh.divinefavor.client.core.handler.common.DisplayStackExtractors
 import aurocosh.divinefavor.common.item.gems.base.IUsableGemItem
 import aurocosh.divinefavor.common.item.gems.properties.GemMaskProperties
 import aurocosh.divinefavor.common.lib.extensions.divinePlayerData
 import aurocosh.divinefavor.common.lib.extensions.get
-import com.google.common.cache.CacheBuilder
 import net.minecraft.client.Minecraft
 import net.minecraft.client.gui.Gui
 import net.minecraft.client.gui.GuiIngame
@@ -18,15 +19,11 @@ import net.minecraftforge.fml.relauncher.Side
 import net.minecraftforge.fml.relauncher.SideOnly
 import org.lwjgl.opengl.GL11
 
-object WarpMarkerHUD {
-    private val stackChache = CacheBuilder
-            .newBuilder()
-            .maximumSize(64)
-            .build<String, ItemStack>();
+object WarpMarkerHudDescriptionRenderer : IHudDescriptionRenderer {
 
     private val REMAINING_HIGHLIGHT_TICKS_INDEX = 12
 
-    fun drawGemDescription(mc: Minecraft, width: Int, height: Int, player: EntityPlayer, stack: ItemStack, drawName: Boolean) {
+    override fun drawDescription(mc: Minecraft, width: Int, height: Int, player: EntityPlayer, stack: ItemStack, drawName: Boolean) {
         if (stack.isEmpty)
             return
 
@@ -36,7 +33,7 @@ object WarpMarkerHUD {
         val spirit = gemItem.spirit
         val spiritData = player.divinePlayerData.spiritData
 
-        val maskStack = getMaskStack(stack)
+        val displayStack = DisplayStackExtractors.getDisplayStack(stack)
 
         val favorDescription =
                 when {
@@ -82,7 +79,7 @@ object WarpMarkerHUD {
         // talisman icon
         GlStateManager.scale(alpha / 255f, 1f, 1f)
         GlStateManager.color(1f, 1f, 1f)
-        mc.renderItem.renderItemIntoGUI(maskStack, 5, -6)
+        mc.renderItem.renderItemIntoGUI(displayStack, 5, -6)
 
         // spirit icon
         mc.renderEngine.bindTexture(spirit.icon)
@@ -113,15 +110,5 @@ object WarpMarkerHUD {
             useCount == 0 -> I18n.format("tooltip.divinefavor:gem.unusable")
             else -> I18n.format("tooltip.divinefavor:gem.cost", gem.favorCost, useCount)
         }
-    }
-
-    fun getMaskStack(stack: ItemStack): ItemStack {
-        val itemId = stack.get(GemMaskProperties.maskItemId)
-        val itemMeta = stack.get(GemMaskProperties.maskItemMeta)
-
-        val item = Item.getByNameOrId(itemId) ?: return stack
-        val key = itemId + itemMeta;
-
-        return stackChache.get(key) { ItemStack(item,1,itemMeta) }
     }
 }

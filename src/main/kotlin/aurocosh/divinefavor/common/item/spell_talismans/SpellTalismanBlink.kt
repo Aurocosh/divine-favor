@@ -3,7 +3,7 @@ package aurocosh.divinefavor.common.item.spell_talismans
 import aurocosh.divinefavor.common.config.common.ConfigSpell
 import aurocosh.divinefavor.common.item.spell_talismans.base.ItemSpellTalisman
 import aurocosh.divinefavor.common.item.spell_talismans.base.SpellOptions
-import aurocosh.divinefavor.common.item.spell_talismans.context.TalismanContext
+import aurocosh.divinefavor.common.item.spell_talismans.context.CastContext
 import aurocosh.divinefavor.common.lib.extensions.toBlockPos
 import aurocosh.divinefavor.common.particles.ModParticles
 import aurocosh.divinefavor.common.particles.particles.ImmobileParticle
@@ -27,19 +27,19 @@ class SpellTalismanBlink(name: String, spirit: ModSpirit, favorCost: Int, option
         return favorCost * blinkDistance.getValue(itemStack);
     }
 
-    public override fun validate(context: TalismanContext): Boolean {
+    public override fun validate(context: CastContext): Boolean {
         val world = context.world
         val target = getBlinkTarget(context, 0.0)
         val pos = target.toBlockPos()
         return world.isAirBlock(pos) && world.isAirBlock(pos)
     }
 
-    override fun performActionServer(context: TalismanContext) {
+    override fun performActionServer(context: CastContext) {
         val target = getBlinkTarget(context, 0.0)
         UtilEntity.teleport(context.player, target)
     }
 
-    private fun getBlinkTarget(context: TalismanContext, shift: Double): Vec3d {
+    private fun getBlinkTarget(context: CastContext, shift: Double): Vec3d {
         val player = context.player
         val pos = player.positionVector
         val look = player.lookVec
@@ -48,7 +48,7 @@ class SpellTalismanBlink(name: String, spirit: ModSpirit, favorCost: Int, option
     }
 
     @SideOnly(Side.CLIENT)
-    override fun handleRendering(context: TalismanContext, lastEvent: RenderWorldLastEvent) {
+    override fun handleRendering(context: CastContext, lastEvent: RenderWorldLastEvent) {
         val target = getBlinkTarget(context, context.player.eyeHeight.toDouble())
         val isAir = context.world.isAirBlock(target.toBlockPos())
         if (!isAir)

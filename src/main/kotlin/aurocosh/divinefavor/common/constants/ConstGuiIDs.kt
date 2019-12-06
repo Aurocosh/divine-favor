@@ -6,6 +6,7 @@ object ConstGuiIDs {
     val BATH_HEATER = nextId++
     val CONTRACT_BINDER = nextId++
     val GRIMOIRE = nextId++
+    val GEM_POUCH = nextId++
     val IRON_MEDIUM_NO_STONE = nextId++
     val IRON_MEDIUM_WITH_STONE = nextId++
     val MEMORY_POUCH = nextId++

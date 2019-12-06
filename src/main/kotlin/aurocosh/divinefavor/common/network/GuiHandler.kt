@@ -19,6 +19,8 @@ import aurocosh.divinefavor.common.block.soulbound_lectern.ContainerSoulboundLec
 import aurocosh.divinefavor.common.block.soulbound_lectern.TileSoulboundLectern
 import aurocosh.divinefavor.common.constants.ConstGuiIDs
 import aurocosh.divinefavor.common.item.contract_binder.ContractBinderContainer
+import aurocosh.divinefavor.common.item.gem_pouch.GemPouchContainer
+import aurocosh.divinefavor.common.item.gem_pouch.ItemGemPouch
 import aurocosh.divinefavor.common.item.memory_drop.ItemMemoryDrop
 import aurocosh.divinefavor.common.item.memory_drop.MemoryDropContainer
 import aurocosh.divinefavor.common.item.memory_pouch.ItemMemoryPouch
@@ -26,7 +28,8 @@ import aurocosh.divinefavor.common.item.memory_pouch.MemoryPouchNormalContainer
 import aurocosh.divinefavor.common.item.memory_pouch.MemoryPouchTemplateContainer
 import aurocosh.divinefavor.common.item.memory_pouch.capability.MemoryPouchDataHandler.CAPABILITY_MEMORY_POUCH
 import aurocosh.divinefavor.common.item.ritual_pouch.RitualBagContainer
-import aurocosh.divinefavor.common.item.talisman.ITalismanStackContainer
+import aurocosh.divinefavor.common.item.talisman.ISelectedStackProvider
+import aurocosh.divinefavor.common.item.talisman.ItemTalisman
 import aurocosh.divinefavor.common.item.talisman_tools.grimoire.GrimoireContainer
 import aurocosh.divinefavor.common.item.talisman_tools.grimoire.ItemGrimoire
 import aurocosh.divinefavor.common.item.talisman_tools.grimoire.capability.GrimoireDataHandler.CAPABILITY_GRIMOIRE
@@ -67,6 +70,10 @@ class GuiHandler : IGuiHandler {
                 val stack = player.getHeldItem(hand)
                 val handler = stack.cap(CAPABILITY_GRIMOIRE)
                 return GrimoireContainer(player, handler, hand)
+            }
+            ConstGuiIDs.GEM_POUCH -> {
+                val (hand, stack) = UtilPlayer.getHeldItem(player) { it is ItemGemPouch } ?: return null
+                return GemPouchContainer(player, stack, hand)
             }
             ConstGuiIDs.SPELL_BLADE -> {
                 val hand = UtilPlayer.getHand { h -> player.getHeldItem(h).item is ItemSpellBlade } ?: return null
@@ -124,6 +131,11 @@ class GuiHandler : IGuiHandler {
                 val stack = player.getHeldItem(hand)
                 return GuiGrimoire(player, stack, hand)
             }
+            ConstGuiIDs.GEM_POUCH -> {
+                val hand = UtilPlayer.getHand { h -> player.getHeldItem(h).item is ItemGemPouch } ?: return null
+                val stack = player.getHeldItem(hand)
+                return GuiGemPouch(player, stack, hand)
+            }
             ConstGuiIDs.SPELL_BLADE -> {
                 val hand = UtilPlayer.getHand { h -> player.getHeldItem(h).item is ItemSpellBlade } ?: return null
                 val stack = player.getHeldItem(hand)
@@ -160,14 +172,14 @@ class GuiHandler : IGuiHandler {
             ConstGuiIDs.BATH_HEATER -> return GuiBathHeater(player, (world.getTileEntity(BlockPos(x, y, z)) as TileBathHeater))
 
             ConstGuiIDs.TALISMAN_HUD -> {
-                val (slotIndex, stack) = UtilPlayer.findStackInInventory(player) { it.item is ITalismanStackContainer }
+                val (slotIndex, stack) = UtilPlayer.findStackInInventory(player) { it.item is ISelectedStackProvider }
                 if (stack.isEmpty)
                     return null
-                val container = stack.item as ITalismanStackContainer
-                val talismanStack = container.getTalismanStack(stack)
-                if (talismanStack.isEmpty)
+                val container = stack.item as ISelectedStackProvider
+                val selectedStack = container.getSelectedStack(stack)
+                if (selectedStack.isEmpty || selectedStack.item !is ItemTalisman)
                     return null
-                return GuiTalismanProperties(talismanStack, slotIndex)
+                return GuiTalismanProperties(selectedStack, slotIndex)
             }
         }
         return null

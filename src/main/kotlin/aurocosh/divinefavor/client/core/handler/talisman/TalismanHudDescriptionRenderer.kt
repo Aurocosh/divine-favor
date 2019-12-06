@@ -1,5 +1,6 @@
 package aurocosh.divinefavor.client.core.handler.talisman
 
+import aurocosh.divinefavor.client.core.handler.base.IHudDescriptionRenderer
 import aurocosh.divinefavor.common.item.talisman.ItemTalisman
 import aurocosh.divinefavor.common.lib.extensions.divinePlayerData
 import net.minecraft.client.Minecraft
@@ -12,15 +13,15 @@ import net.minecraft.item.ItemStack
 import net.minecraftforge.fml.relauncher.ReflectionHelper
 import org.lwjgl.opengl.GL11
 
-object TalismanHUD {
+object TalismanHudDescriptionRenderer : IHudDescriptionRenderer {
     private val REMAINING_HIGHLIGHT_TICKS_INDEX = 12
 
-    fun drawTalismanDescription(mc: Minecraft, width: Int, height: Int, player: EntityPlayer, talismanStack: ItemStack, drawName: Boolean) {
-        if (talismanStack.isEmpty)
+    override fun drawDescription(mc: Minecraft, width: Int, height: Int, player: EntityPlayer, stack: ItemStack, drawName: Boolean) {
+        if (stack.isEmpty)
             return
 
-        val talisman = talismanStack.item as ItemTalisman
-        val description = talisman.getUseInfo(player, talismanStack)
+        val talisman = stack.item as ItemTalisman
+        val description = talisman.getUseInfo(player, stack)
 
         val spirit = talisman.spirit
         val spiritData = player.divinePlayerData.spiritData
@@ -67,7 +68,7 @@ object TalismanHUD {
         // talisman icon
         GlStateManager.scale(alpha / 255f, 1f, 1f)
         GlStateManager.color(1f, 1f, 1f)
-        mc.renderItem.renderItemIntoGUI(talismanStack, 5, -6)
+        mc.renderItem.renderItemIntoGUI(stack, 5, -6)
 
         // spirit icon
         mc.renderEngine.bindTexture(spirit.icon)

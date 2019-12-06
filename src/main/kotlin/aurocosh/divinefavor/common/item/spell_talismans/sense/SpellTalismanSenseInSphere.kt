@@ -4,7 +4,7 @@ import aurocosh.divinefavor.common.config.common.ConfigGeneral
 import aurocosh.divinefavor.common.config.entries.spell_talismans.generic.SenseConfig
 import aurocosh.divinefavor.common.item.spell_talismans.base.ItemSpellTalisman
 import aurocosh.divinefavor.common.item.spell_talismans.base.SpellOptions
-import aurocosh.divinefavor.common.item.spell_talismans.context.TalismanContext
+import aurocosh.divinefavor.common.item.spell_talismans.context.CastContext
 import aurocosh.divinefavor.common.network.message.client.particles.MessageParticlesHighlightInSphere
 import aurocosh.divinefavor.common.spirit.base.ModSpirit
 import net.minecraft.entity.player.EntityPlayer
@@ -17,7 +17,7 @@ abstract class SpellTalismanSenseInSphere(name: String, spirit: ModSpirit, optio
     protected val minShift: Float = senseConfig.minShift
     protected val maxShift: Float = senseConfig.maxShift
 
-    override fun performActionServer(context: TalismanContext) {
+    override fun performActionServer(context: CastContext) {
         val player = context.player
         highlightBlocks(radius, player, player.position, minShift, maxShift, color3f, "")
     }

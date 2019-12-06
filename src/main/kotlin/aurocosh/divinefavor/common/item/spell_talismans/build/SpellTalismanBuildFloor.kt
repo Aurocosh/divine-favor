@@ -18,7 +18,7 @@ class SpellTalismanBuildFloor(name: String, spirit: ModSpirit) : SpellTalismanBu
     private val back: StackPropertyInt = propertyHandler.registerIntProperty("back", 0, 0, 10)
     private val rotationPropertyWrapper = PlayerRotationPropertyWrapper(propertyHandler)
 
-    override fun getCoordinates(context: TalismanContext): List<BlockPos> {
+    override fun getCoordinates(context: CastContext): List<BlockPos> {
         val (player, stack) = context.get(playerField, stackField)
         val (left, right, front, back) = stack.get(left, right, front, back)
 

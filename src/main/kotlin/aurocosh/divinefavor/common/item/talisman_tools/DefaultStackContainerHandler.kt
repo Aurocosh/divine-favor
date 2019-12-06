@@ -6,7 +6,7 @@ import net.minecraftforge.items.ItemStackHandler
 import java.util.*
 
 // The default implementation of the capability. Holds all the logic.
-abstract class DefaultTalismanHandler(slotCount: Int) : ITalismanTool {
+abstract class DefaultStackContainerHandler(slotCount: Int) : IStackContainer {
     private val maxIndex = slotCount - 1
     private val stacksDisplayed = 3
 

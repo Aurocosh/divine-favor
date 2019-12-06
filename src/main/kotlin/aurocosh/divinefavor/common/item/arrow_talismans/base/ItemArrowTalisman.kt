@@ -4,7 +4,7 @@ import aurocosh.divinefavor.DivineFavor
 import aurocosh.divinefavor.common.entity.projectile.EntitySpellArrow
 import aurocosh.divinefavor.common.item.talisman.ItemTalisman
 import aurocosh.divinefavor.common.item.spell_talismans.base.CastType
-import aurocosh.divinefavor.common.item.spell_talismans.context.TalismanContext
+import aurocosh.divinefavor.common.item.spell_talismans.context.CastContext
 import aurocosh.divinefavor.common.spirit.base.ModSpirit
 import net.minecraft.entity.EntityLivingBase
 import net.minecraft.entity.player.EntityPlayer
@@ -19,7 +19,7 @@ import java.util.*
 
 open class ItemArrowTalisman(name: String, spirit: ModSpirit, favorCost: Int, val color: Color, val arrowDamage: Double, val options: EnumSet<ArrowOptions>, val arrowType: ArrowType) : ItemTalisman("arrow_talisman_$name", "arrow_talismans/$name", spirit, favorCost) {
 
-    override fun preValidate(context: TalismanContext): Boolean {
+    override fun preValidate(context: CastContext): Boolean {
         return context.castType == CastType.BowCast && super.preValidate(context)
     }
 
@@ -35,7 +35,7 @@ open class ItemArrowTalisman(name: String, spirit: ModSpirit, favorCost: Int, va
     }
 
     // Talisman functions
-    fun createArrow(context: TalismanContext): EntityArrow {
+    fun createArrow(context: CastContext): EntityArrow {
         val player = context.player
         val spellArrow = getArrow(context.world, player)
         spellArrow.setSpell(this, player)
@@ -81,7 +81,7 @@ open class ItemArrowTalisman(name: String, spirit: ModSpirit, favorCost: Int, va
     open fun spawnParticles(spellArrow: EntitySpellArrow) {
     }
 
-    override fun isConsumeCharge(context: TalismanContext): Boolean {
+    override fun isConsumeCharge(context: CastContext): Boolean {
         return false
     }
 }

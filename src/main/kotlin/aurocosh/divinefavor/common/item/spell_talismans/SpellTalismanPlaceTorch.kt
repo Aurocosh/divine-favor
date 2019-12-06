@@ -3,7 +3,7 @@ package aurocosh.divinefavor.common.item.spell_talismans
 import aurocosh.divinefavor.common.config.common.ConfigSpell
 import aurocosh.divinefavor.common.item.spell_talismans.base.ItemSpellTalisman
 import aurocosh.divinefavor.common.item.spell_talismans.base.SpellOptions
-import aurocosh.divinefavor.common.item.spell_talismans.context.TalismanContext
+import aurocosh.divinefavor.common.item.spell_talismans.context.CastContext
 import aurocosh.divinefavor.common.lib.extensions.allInvSequence
 import aurocosh.divinefavor.common.lib.extensions.isAirOrReplacable
 import aurocosh.divinefavor.common.spirit.base.ModSpirit
@@ -15,7 +15,7 @@ import net.minecraft.item.ItemStack
 import java.util.*
 
 class SpellTalismanPlaceTorch(name: String, spirit: ModSpirit, favorCost: Int, options: EnumSet<SpellOptions>) : ItemSpellTalisman(name, spirit, favorCost, options) {
-    override fun validate(context: TalismanContext): Boolean {
+    override fun validate(context: CastContext): Boolean {
         if (!Blocks.TORCH.canPlaceBlockAt(context.world, context.pos))
             return false
         val player = context.player
@@ -26,7 +26,7 @@ class SpellTalismanPlaceTorch(name: String, spirit: ModSpirit, favorCost: Int, o
         return player.inventory.allInvSequence().any(torchPredicate)
     }
 
-    override fun performActionServer(context: TalismanContext) {
+    override fun performActionServer(context: CastContext) {
         val pos = context.pos
         val world = context.world
         val player = context.player

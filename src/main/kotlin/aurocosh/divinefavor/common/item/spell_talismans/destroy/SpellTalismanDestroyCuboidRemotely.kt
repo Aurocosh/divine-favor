@@ -1,7 +1,7 @@
 package aurocosh.divinefavor.common.item.spell_talismans.destroy
 
 import aurocosh.divinefavor.common.coordinate_generators.generateCuboid
-import aurocosh.divinefavor.common.item.spell_talismans.context.TalismanContext
+import aurocosh.divinefavor.common.item.spell_talismans.context.CastContext
 import aurocosh.divinefavor.common.item.spell_talismans.context.playerField
 import aurocosh.divinefavor.common.item.spell_talismans.context.worldField
 import aurocosh.divinefavor.common.lib.cached_container.CachedContainer
@@ -27,7 +27,7 @@ class SpellTalismanDestroyCuboidRemotely(name: String, spirit: ModSpirit) : Spel
         return (width * height * depth)
     }
 
-    override fun getCoordinates(context: TalismanContext): List<BlockPos> {
+    override fun getCoordinates(context: CastContext): List<BlockPos> {
         val stack = context.stack
         val fuzzy = stack.get(isFuzzy)
         val facing = positionPropertyWrapper.getFacing(context)

@@ -9,7 +9,7 @@ import aurocosh.divinefavor.common.custom_data.global.TemplateData
 import aurocosh.divinefavor.common.item.spell_talismans.base.ItemSpellTalisman
 import aurocosh.divinefavor.common.item.spell_talismans.base.SpellOptions
 import aurocosh.divinefavor.common.item.spell_talismans.context.ContextProperty
-import aurocosh.divinefavor.common.item.spell_talismans.context.TalismanContext
+import aurocosh.divinefavor.common.item.spell_talismans.context.CastContext
 import aurocosh.divinefavor.common.lib.BlockMapIntState
 import aurocosh.divinefavor.common.lib.extensions.*
 import aurocosh.divinefavor.common.lib.math.CuboidBoundingBox
@@ -40,7 +40,7 @@ abstract class SpellTalismanCopy(name: String, spirit: ModSpirit, favorCost: Int
 
     protected val finalCoordinates = ContextProperty("coordinates", CopyCoordinates(emptyList(), CuboidBoundingBox()))
 
-    override fun validate(context: TalismanContext): Boolean {
+    override fun validate(context: CastContext): Boolean {
         val boundingBox = context.get(finalCoordinates).boundingBox
         val maxSize: Int = sequenceOf(boundingBox.sizeX, boundingBox.sizeY, boundingBox.sizeZ).max() as Int
         if (maxSize > 125) {
@@ -51,13 +51,13 @@ abstract class SpellTalismanCopy(name: String, spirit: ModSpirit, favorCost: Int
         return true
     }
 
-    override fun preProcess(context: TalismanContext): Boolean {
+    override fun preProcess(context: CastContext): Boolean {
         val coordinates = getCoordinates(context)
         context.set(finalCoordinates, coordinates)
         return coordinates.coordinates.isNotEmpty()
     }
 
-    override fun performActionServer(context: TalismanContext) {
+    override fun performActionServer(context: CastContext) {
         val coordinates = context.get(finalCoordinates).coordinates
         copyBlocks(context.world, context.player, coordinates)
     }
@@ -138,7 +138,7 @@ abstract class SpellTalismanCopy(name: String, spirit: ModSpirit, favorCost: Int
     }
 
     @SideOnly(Side.CLIENT)
-    override fun handleRendering(context: TalismanContext, lastEvent: RenderWorldLastEvent) {
+    override fun handleRendering(context: CastContext, lastEvent: RenderWorldLastEvent) {
         val player = context.player
         val (coordinates, boundingBox) = getCoordinates(context)
         BlockHighlightRendering.render(lastEvent, player, coordinates, Color4f(0.3f, 0.3f, 0f, 0.3f))
@@ -146,7 +146,7 @@ abstract class SpellTalismanCopy(name: String, spirit: ModSpirit, favorCost: Int
         BoxRendering.render(lastEvent, player, boundingBox.lowerCorner, boundingBox.upperCorner)
     }
 
-    protected abstract fun getCoordinates(context: TalismanContext): CopyCoordinates
+    protected abstract fun getCoordinates(context: CastContext): CopyCoordinates
 
 
 }

@@ -4,7 +4,7 @@ import aurocosh.divinefavor.DivineFavor
 import aurocosh.divinefavor.common.config.common.ConfigSpell
 import aurocosh.divinefavor.common.item.spell_talismans.base.ItemSpellTalisman
 import aurocosh.divinefavor.common.item.spell_talismans.base.SpellOptions
-import aurocosh.divinefavor.common.item.spell_talismans.context.TalismanContext
+import aurocosh.divinefavor.common.item.spell_talismans.context.CastContext
 import aurocosh.divinefavor.common.lib.distributed_random.DistributedRandomList
 import aurocosh.divinefavor.common.spirit.base.ModSpirit
 import aurocosh.divinefavor.common.util.UtilBlock
@@ -43,7 +43,7 @@ class SpellTalismanNetherSurge(name: String, spirit: ModSpirit, favorCost: Int, 
         possibleEnemies.add(EntityWither::class.java, 0.0001)
     }
 
-    override fun performActionServer(context: TalismanContext) {
+    override fun performActionServer(context: CastContext) {
         val blocksSelect = UtilRandom.nextInt(ConfigSpell.netherSurge.minBlocksToReplace, ConfigSpell.netherSurge.maxBlocksToReplace)
         val blocksToReplace = UtilCoordinates.getRandomNeighbours(context.pos, blocksSelect, ConfigSpell.netherSurge.minNeighboursToAdd, ConfigSpell.netherSurge.maxNeighboursToAdd, CYCLE_LIMIT) { true }
 
@@ -55,7 +55,7 @@ class SpellTalismanNetherSurge(name: String, spirit: ModSpirit, favorCost: Int, 
             spawnNetherMob(context)
     }
 
-    private fun spawnNetherMob(context: TalismanContext) {
+    private fun spawnNetherMob(context: CastContext) {
         val spawnRadius = ConfigSpell.netherSurge.spawnRadius
         var spawnPos: BlockPos? = UtilCoordinates.getRandomNeighbour(context.pos, spawnRadius, 0, spawnRadius)
         if (spawnPos == null)

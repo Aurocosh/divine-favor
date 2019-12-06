@@ -2,7 +2,7 @@ package aurocosh.divinefavor.common.item.spell_talismans.build
 
 import aurocosh.divinefavor.common.lib.cached_container.CachedContainer
 import aurocosh.divinefavor.common.item.spell_talismans.build.base.SpellTalismanBuildShifted
-import aurocosh.divinefavor.common.item.spell_talismans.context.TalismanContext
+import aurocosh.divinefavor.common.item.spell_talismans.context.CastContext
 import aurocosh.divinefavor.common.lib.extensions.get
 import aurocosh.divinefavor.common.spirit.base.ModSpirit
 import aurocosh.divinefavor.common.stack_properties.properties.StackPropertyInt
@@ -19,7 +19,7 @@ class SpellTalismanBuildSphere(name: String, spirit: ModSpirit) : SpellTalismanB
         return volume.toInt()
     }
 
-    override fun getCoordinates(context: TalismanContext): List<BlockPos> {
+    override fun getCoordinates(context: CastContext): List<BlockPos> {
         val radius = context.stack.get(radius)
         val blockPos = positionPropertyWrapper.getPosition(context)
 

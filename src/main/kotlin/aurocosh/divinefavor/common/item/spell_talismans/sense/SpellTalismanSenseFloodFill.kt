@@ -4,7 +4,7 @@ import aurocosh.divinefavor.common.config.common.ConfigGeneral
 import aurocosh.divinefavor.common.config.entries.spell_talismans.generic.SenseConfig
 import aurocosh.divinefavor.common.item.spell_talismans.base.ItemSpellTalisman
 import aurocosh.divinefavor.common.item.spell_talismans.base.SpellOptions
-import aurocosh.divinefavor.common.item.spell_talismans.context.TalismanContext
+import aurocosh.divinefavor.common.item.spell_talismans.context.CastContext
 import aurocosh.divinefavor.common.network.message.client.particles.MessageParticlesHighlightFloodFill
 import aurocosh.divinefavor.common.spirit.base.ModSpirit
 import java.util.*
@@ -14,7 +14,7 @@ class SpellTalismanSenseFloodFill(name: String, spirit: ModSpirit, options: Enum
     protected val minShift: Float = senseConfig.minShift
     protected val maxShift: Float = senseConfig.maxShift
 
-    override fun performActionServer(context: TalismanContext) {
+    override fun performActionServer(context: CastContext) {
         val player = context.player
         val world = player.world
 

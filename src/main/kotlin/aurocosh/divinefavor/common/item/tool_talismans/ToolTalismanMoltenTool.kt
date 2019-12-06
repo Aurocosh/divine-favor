@@ -1,6 +1,6 @@
 package aurocosh.divinefavor.common.item.tool_talismans
 
-import aurocosh.divinefavor.common.item.spell_talismans.context.TalismanContext
+import aurocosh.divinefavor.common.item.spell_talismans.context.CastContext
 import aurocosh.divinefavor.common.item.talisman_tools.spell_pick.ItemSpellPick
 import aurocosh.divinefavor.common.item.tool_talismans.base.ItemToolTalisman
 import aurocosh.divinefavor.common.spirit.base.ModSpirit
@@ -12,7 +12,7 @@ import net.minecraft.init.Enchantments
 import net.minecraft.enchantment.EnchantmentHelper
 
 class ToolTalismanMoltenTool(name: String, spirit: ModSpirit, favorCost: Int) : ItemToolTalisman(name, spirit, favorCost) {
-    override fun validate(context: TalismanContext): Boolean {
+    override fun validate(context: CastContext): Boolean {
         return true
     }
 

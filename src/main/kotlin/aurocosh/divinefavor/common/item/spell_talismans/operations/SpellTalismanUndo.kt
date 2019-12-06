@@ -2,7 +2,7 @@ package aurocosh.divinefavor.common.item.spell_talismans.operations
 
 import aurocosh.divinefavor.common.item.spell_talismans.base.ItemSpellTalisman
 import aurocosh.divinefavor.common.item.spell_talismans.base.SpellOptions
-import aurocosh.divinefavor.common.item.spell_talismans.context.TalismanContext
+import aurocosh.divinefavor.common.item.spell_talismans.context.CastContext
 import aurocosh.divinefavor.common.item.spell_talismans.context.playerField
 import aurocosh.divinefavor.common.item.spell_talismans.context.worldField
 import aurocosh.divinefavor.common.lib.extensions.divinePlayerData
@@ -14,11 +14,11 @@ import net.minecraftforge.event.world.BlockEvent
 import java.util.*
 
 class SpellTalismanUndo(name: String, spirit: ModSpirit, favorCost: Int, options: EnumSet<SpellOptions>) : ItemSpellTalisman(name, spirit, favorCost, options) {
-    override fun validate(context: TalismanContext): Boolean {
+    override fun validate(context: CastContext): Boolean {
         return context.player.divinePlayerData.blockOperationsData.hasUndoActions()
     }
 
-    override fun performActionServer(context: TalismanContext) {
+    override fun performActionServer(context: CastContext) {
         val (player, world) = context.get(playerField, worldField)
         val undoOperation = player.divinePlayerData.blockOperationsData.getUndoAction()
         undoOperation.perform(player, world)

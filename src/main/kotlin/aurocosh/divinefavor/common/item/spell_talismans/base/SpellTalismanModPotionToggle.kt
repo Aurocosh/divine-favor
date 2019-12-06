@@ -1,6 +1,6 @@
 package aurocosh.divinefavor.common.item.spell_talismans.base
 
-import aurocosh.divinefavor.common.item.spell_talismans.context.TalismanContext
+import aurocosh.divinefavor.common.item.spell_talismans.context.CastContext
 import aurocosh.divinefavor.common.potions.base.effect.ModEffectToggle
 import aurocosh.divinefavor.common.potions.base.potion.ModPotionToggle
 import aurocosh.divinefavor.common.potions.base.potion.ModPotionToggleLimited
@@ -13,7 +13,7 @@ class SpellTalismanModPotionToggle(name: String, spirit: ModSpirit, favorCost: I
             potion.talisman = this
     }
 
-    override fun performActionServer(context: TalismanContext) {
+    override fun performActionServer(context: CastContext) {
         val player = context.player
         if (player.isPotionActive(potion))
             player.removePotionEffect(potion)
@@ -21,7 +21,7 @@ class SpellTalismanModPotionToggle(name: String, spirit: ModSpirit, favorCost: I
             player.addPotionEffect(ModEffectToggle(potion, amplifier))
     }
 
-    public override fun isConsumeCharge(context: TalismanContext): Boolean {
+    public override fun isConsumeCharge(context: CastContext): Boolean {
         return !isCastFree && !context.player.isPotionActive(potion)
     }
 }

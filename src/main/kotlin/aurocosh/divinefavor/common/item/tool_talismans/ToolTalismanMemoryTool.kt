@@ -1,7 +1,7 @@
 package aurocosh.divinefavor.common.item.tool_talismans
 
 import aurocosh.divinefavor.common.config.common.ConfigTool
-import aurocosh.divinefavor.common.item.spell_talismans.context.TalismanContext
+import aurocosh.divinefavor.common.item.spell_talismans.context.CastContext
 import aurocosh.divinefavor.common.item.tool_talismans.base.ItemToolTalisman
 import aurocosh.divinefavor.common.lib.extensions.get
 import aurocosh.divinefavor.common.lib.extensions.getBlock
@@ -19,7 +19,7 @@ class ToolTalismanMemoryTool(name: String, spirit: ModSpirit, favorCost: Int) : 
         event.newSpeed += stack.get(speedBonus)
     }
 
-    override fun performActionServer(context: TalismanContext) {
+    override fun performActionServer(context: CastContext) {
         val block = context.world.getBlock(context.pos)
         val blockId = Block.getIdFromBlock(block)
         val oldBlockId = context.stack.get(selectedBlockId)

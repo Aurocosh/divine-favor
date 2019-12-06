@@ -5,11 +5,10 @@ import aurocosh.divinefavor.common.constants.ConstGuiIDs
 import aurocosh.divinefavor.common.constants.ConstMainTabOrder
 import aurocosh.divinefavor.common.item.base.ModItem
 import aurocosh.divinefavor.common.item.spell_talismans.base.ItemSpellTalisman
-import aurocosh.divinefavor.common.item.spell_talismans.context.TalismanContextGenerator
-import aurocosh.divinefavor.common.item.talisman.ITalismanStackContainer
-import aurocosh.divinefavor.common.item.talisman.ITalismanToolContainer
-import aurocosh.divinefavor.common.item.talisman_tools.ITalismanTool
-import aurocosh.divinefavor.common.item.talisman_tools.TalismanAdapter
+import aurocosh.divinefavor.common.item.spell_talismans.context.CastContextGenerator
+import aurocosh.divinefavor.common.item.talisman.IStackContainerProvider
+import aurocosh.divinefavor.common.item.talisman_tools.IStackContainer
+import aurocosh.divinefavor.common.item.talisman_tools.CastableAdapter
 import aurocosh.divinefavor.common.item.talisman_tools.grimoire.capability.GrimoireDataHandler.CAPABILITY_GRIMOIRE
 import aurocosh.divinefavor.common.item.talisman_tools.grimoire.capability.GrimoireProvider
 import aurocosh.divinefavor.common.item.talisman_tools.grimoire.capability.GrimoireStorage
@@ -41,7 +40,7 @@ import net.minecraftforge.event.world.BlockEvent
 import net.minecraftforge.fml.relauncher.Side
 import net.minecraftforge.fml.relauncher.SideOnly
 
-class ItemGrimoire(name: String) : ModItem("grimoire_$name", "grimoires/$name", ConstMainTabOrder.CONTAINERS), ITalismanStackContainer, ITalismanToolContainer, IPropertyContainer, IActionContainer, IBlockCatcher {
+class ItemGrimoire(name: String) : ModItem("grimoire_$name", "grimoires/$name", ConstMainTabOrder.CONTAINERS), IStackContainerProvider, IPropertyContainer, IActionContainer, IBlockCatcher {
     protected val propertyHandler: StackPropertyHandler = StackPropertyHandler("grimoire")
     override val properties: IPropertyAccessor = propertyHandler
     protected val actionHandler: StackActionHandler = StackActionHandler("grimoire")
@@ -53,15 +52,15 @@ class ItemGrimoire(name: String) : ModItem("grimoire_$name", "grimoires/$name", 
     }
 
     override fun findProperty(stack: ItemStack, item: Item, propertyName: String) =
-            TalismanAdapter.findProperty(stack, item, propertyName, this, propertyHandler, CAPABILITY_GRIMOIRE)
+            CastableAdapter.findProperty(stack, item, propertyName, this, propertyHandler, CAPABILITY_GRIMOIRE)
     override fun findAction(stack: ItemStack, item: Item, actionName: String): Pair<ItemStack, StackAction>? =
-            TalismanAdapter.findAction(stack, item, actionName, this, actionHandler, CAPABILITY_GRIMOIRE)
+            CastableAdapter.findAction(stack, item, actionName, this, actionHandler, CAPABILITY_GRIMOIRE)
 
     override fun onItemUse(player: EntityPlayer, world: World, pos: BlockPos, hand: EnumHand, facing: EnumFacing, hitX: Float, hitY: Float, hitZ: Float): EnumActionResult {
         val containerStack = player.getHeldItem(hand)
-        val (talismanStack, talisman) = TalismanAdapter.getTalisman<ItemSpellTalisman>(containerStack)
+        val (talismanStack, talisman) = CastableAdapter.getCastableStack<ItemSpellTalisman>(containerStack)
                 ?: return EnumActionResult.PASS
-        val context = TalismanContextGenerator.useCast(player, world, pos, hand, facing, talismanStack, containerStack)
+        val context = CastContextGenerator.useCast(player, world, pos, hand, facing, talismanStack, containerStack)
         val success = talisman.cast(context)
         return UtilItemStack.actionResultPass(success || player.isSneaking)
     }
@@ -76,8 +75,8 @@ class ItemGrimoire(name: String) : ModItem("grimoire_$name", "grimoires/$name", 
         if (player.isSneaking) {
             player.openGui(DivineFavor, ConstGuiIDs.GRIMOIRE, world, player.posX.toInt(), player.posY.toInt(), player.posZ.toInt())
         } else {
-            val (talismanStack, talisman) = TalismanAdapter.getTalisman<ItemSpellTalisman>(stack) ?: return true
-            val context = TalismanContextGenerator.rightClick(world, player, hand, talismanStack, stack)
+            val (talismanStack, talisman) = CastableAdapter.getCastableStack<ItemSpellTalisman>(stack) ?: return true
+            val context = CastContextGenerator.rightClick(world, player, hand, talismanStack, stack)
             talisman.cast(context)
         }
         return true
@@ -87,17 +86,17 @@ class ItemGrimoire(name: String) : ModItem("grimoire_$name", "grimoires/$name", 
         return if (item.item is ItemGrimoire) GrimoireProvider() else null
     }
 
-    override fun getTalismanTool(stack: ItemStack): ITalismanTool = stack.cap(CAPABILITY_GRIMOIRE)
+    override fun getStackContainer(stack: ItemStack): IStackContainer = stack.cap(CAPABILITY_GRIMOIRE)
 
     override fun catchDrops(stack: ItemStack, toolStack: ItemStack, event: BlockEvent.HarvestDropsEvent) {
-        val talismanStack = getTalismanStack(stack)
+        val talismanStack = getSelectedStack(stack)
         if (talismanStack.isEmpty)
             return
         val catcher = talismanStack.item as IBlockCatcher
         catcher.catchDrops(talismanStack, toolStack, event)
     }
 
-    override fun getTalismanStack(stack: ItemStack): ItemStack {
+    override fun getSelectedStack(stack: ItemStack): ItemStack {
         if (stack.item !== this)
             return ItemStack.EMPTY
         return stack.cap(CAPABILITY_GRIMOIRE).getSelectedStack()
@@ -107,7 +106,7 @@ class ItemGrimoire(name: String) : ModItem("grimoire_$name", "grimoires/$name", 
     override fun addInformation(stack: ItemStack, world: World?, tooltip: MutableList<String>, flag: ITooltipFlag) {
         super.addInformation(stack, world, tooltip, flag)
 
-        val talismanTool = getTalismanTool(stack)
+        val talismanTool = getStackContainer(stack)
         val talismanCount = talismanTool.getAllStacks().filter (ItemStack::isNotEmpty).count()
         val countMessage = I18n.format("tooltip.divinefavor:talisman_tool.talisman_count", talismanCount)
         tooltip.add(countMessage)
