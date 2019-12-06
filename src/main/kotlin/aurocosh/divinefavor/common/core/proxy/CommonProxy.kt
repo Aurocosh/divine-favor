@@ -25,6 +25,7 @@ import aurocosh.divinefavor.common.potions.common.ModPotions
 import aurocosh.divinefavor.common.receipes.RecipeLoader
 import aurocosh.divinefavor.common.receipes.common.ModContactRecipes
 import aurocosh.divinefavor.common.receipes.common.ModMediumRecipes
+import aurocosh.divinefavor.common.receipes.common.ModRecipes
 import aurocosh.divinefavor.common.spirit.ModSpirits
 import com.google.common.util.concurrent.ListenableFuture
 import net.minecraft.entity.player.EntityPlayer
@@ -37,7 +38,6 @@ import net.minecraftforge.fml.common.event.FMLPostInitializationEvent
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent
 import net.minecraftforge.fml.common.network.NetworkRegistry
-import java.io.File
 
 @Mod.EventBusSubscriber(modid = DivineFavor.MOD_ID)
 open class CommonProxy {
@@ -63,6 +63,7 @@ open class CommonProxy {
         ModBladeTalismans.preInit()
         ModToolTalismans.preInit()
         ModItems.preInit()
+        ModRecipes.preInit()
         ModRopes.preInit()
         ModSoulShards.preInit()
         ModSpellTalismans.preInit()

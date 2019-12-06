@@ -3,6 +3,7 @@ package aurocosh.divinefavor.common.stack_properties.properties.base
 import aurocosh.divinefavor.common.core.ResourceNamer
 import aurocosh.divinefavor.common.lib.extensions.checkForTag
 import aurocosh.divinefavor.common.lib.extensions.compound
+import aurocosh.divinefavor.common.lib.extensions.isPropertySet
 import net.minecraft.item.Item
 import net.minecraft.item.ItemStack
 import net.minecraft.nbt.NBTTagCompound
@@ -38,6 +39,11 @@ abstract class StackProperty<T : Any>(val name: String, val defaultValue: T, val
             syncListeners.forEach { it.invoke(itemId, this, value) }
         }
         return true
+    }
+
+    fun copy(fromStack: ItemStack, toStack: ItemStack, sync: Boolean = false) {
+        if (fromStack.isPropertySet(this))
+            setValue(toStack, getValue(fromStack), sync)
     }
 
     abstract fun getValueFromTag(compound: NBTTagCompound): T

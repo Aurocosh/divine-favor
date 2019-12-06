@@ -1,0 +1,26 @@
+{
+  "result": {
+    "item": "divinefavor:gem_stabilizer"
+  },
+  "stones": [
+    "divinefavor:calling_stone_blizrabi"
+  ],
+  "ingredients": [
+    {
+      "type": "ore",
+      "ore": "blockDiamond"
+    },
+    {
+      "type": "ore",
+      "ore": "ingotGold"
+    },
+    {
+      "type": "ore",
+      "ore": "enderpearl"
+    },
+    {
+      "type": "ore",
+      "ore": "enderpearl"
+    }
+  ]
+}

@@ -4,9 +4,10 @@ import aurocosh.divinefavor.DivineFavor
 import aurocosh.divinefavor.common.constants.ConstGemTabOrder
 import aurocosh.divinefavor.common.constants.FacingConstants
 import aurocosh.divinefavor.common.item.base.ModItem
-import aurocosh.divinefavor.common.lib.extensions.hasKey
-import aurocosh.divinefavor.common.lib.extensions.compound
-import aurocosh.divinefavor.common.lib.extensions.getBlockPos
+import aurocosh.divinefavor.common.item.gems.properties.GemPositionProperties
+import aurocosh.divinefavor.common.lib.extensions.get
+import aurocosh.divinefavor.common.lib.extensions.isPropertySet
+import aurocosh.divinefavor.common.stack_properties.StackPropertyHandler
 import net.minecraft.block.BlockChest
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.init.Blocks
@@ -41,14 +42,13 @@ class ItemStorageGem : ModItem("storage_gem", "storage_gem", ConstGemTabOrder.OT
     fun openChest(stack: ItemStack, world: World, playerIn: EntityPlayer): Boolean {
         if (world.isRemote)
             return true
-        val compound = stack.compound
-        if (!compound.hasKey(TAG_POSITION, TAG_DIMENSION))
+        if (!stack.isPropertySet(position))
             return false
-        val pos = compound.getBlockPos(TAG_POSITION)
-        val dimension = compound.getInteger(TAG_DIMENSION)
+        val dimension = stack.get(dimension)
         if (playerIn.dimension != dimension)
             return false
 
+        val pos = stack.get(position)
         val iLockableContainer = getContainer(world, pos) ?: return false
 
         playerIn.displayGUIChest(StorageGemInventoryWrapper(iLockableContainer))
@@ -83,7 +83,8 @@ class ItemStorageGem : ModItem("storage_gem", "storage_gem", ConstGemTabOrder.OT
     }
 
     companion object {
-        var TAG_POSITION = "Position"
-        var TAG_DIMENSION = "Dimension"
+        val propertyHandler = StackPropertyHandler()
+        val position = propertyHandler.registerProperty(GemPositionProperties.position)
+        val dimension = propertyHandler.registerProperty(GemPositionProperties.dimension)
     }
 }

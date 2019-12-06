@@ -19,17 +19,17 @@ import java.util.*
 import kotlin.collections.ArrayList
 import kotlin.collections.HashMap
 
-open class StackPropertyHandler(private val parentName: String, private val synchronizer: IPropertySynchronizer = StackPropertySynchronizer) : IPropertyAccessor {
+open class StackPropertyHandler(private val parentName: String = "", private val synchronizer: IPropertySynchronizer = StackPropertySynchronizer) : IPropertyAccessor {
     private val propertyList = ArrayList<StackProperty<out Any>>()
     private val propertyMap = HashMap<String, StackProperty<out Any>>()
 
     override val list get() = propertyList
-
     override fun get(index: Int) = propertyList[index]
     override operator fun get(name: String) = propertyMap[name]
 
     override fun exist(index: Int): Boolean = (index > 0 && index < propertyList.size)
     override fun exist(name: String) = propertyMap.containsKey(name)
+    override fun exist(property: StackProperty<out Any>): Boolean = propertyMap.containsKey(property.tag)
 
     override fun getSelectedIndex(stack: ItemStack): Int {
         if (propertyList.isEmpty())
@@ -55,6 +55,11 @@ open class StackPropertyHandler(private val parentName: String, private val sync
             property.addSyncListener(synchronizer.getSynchronizer(property))
         }
         return property
+    }
+
+    fun copy(from: ItemStack, to: ItemStack) {
+        for (property in propertyList)
+            property.copy(from, to)
     }
 
     fun registerIntProperty(name: String, defaultValue: Int, minValue: Int = 1, maxValue: Int = defaultValue, showInTooltip: Boolean = true, showInGui: Boolean = true, orderIndex: Int = 0) =

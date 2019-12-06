@@ -1,0 +1,12 @@
+{
+  "name": "Gem stabilizer",
+  "icon": "divinefavor:gem_stabilizer",
+  "category": "items",
+  "read_by_default": true,
+  "pages": [
+    {
+      "type": "item_description",
+      "talisman": "divinefavor:gem_stabilizer"
+    }
+  ]
+}

@@ -47,8 +47,12 @@ fun <T : Any> ItemStack.isPropertySet(property: StackProperty<T>): Boolean {
     return this.checkForTag(property.tag)
 }
 
+fun <T : Any, K : Any> ItemStack.isPropertySet(one: StackProperty<T>, two: StackProperty<K>): Boolean {
+    return this.checkForTag(one.tag) && this.checkForTag(two.tag)
+}
+
 fun <T : Any> ItemStack.getOrNull(property: StackProperty<T>): T? {
-    if(this.isPropertySet(property))
+    if (this.isPropertySet(property))
         return property.getValue(this)
     return null
 }
@@ -79,7 +83,7 @@ fun ItemStack.removeEnchantment(enchantment: Enchantment) {
         return
 
     val compound = this.tagCompound as NBTTagCompound
-    if(!compound.hasKey("ench",9))
+    if (!compound.hasKey("ench", 9))
         return
 
     val nbtTagList = compound.getTagList("ench", 10)

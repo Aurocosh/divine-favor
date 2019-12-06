@@ -1,6 +1,7 @@
 {
     "parent": "item/generated",
     "textures": {
-        "layer0": "divinefavor:items/spell_talismans/warp_gem"
+        "layer1": "divinefavor:items/spell_talismans/warp_gem",
+        "layer0": "divinefavor:items/spell_talismans/base"
     }
 }

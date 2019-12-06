@@ -1,0 +1,12 @@
+{
+  "name": "Pebble stabilizer",
+  "icon": "divinefavor:pebble_stabilizer",
+  "category": "items",
+  "read_by_default": true,
+  "pages": [
+    {
+      "type": "item_description",
+      "talisman": "divinefavor:pebble_stabilizer"
+    }
+  ]
+}

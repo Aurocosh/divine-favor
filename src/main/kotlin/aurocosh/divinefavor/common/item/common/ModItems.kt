@@ -10,6 +10,7 @@ import aurocosh.divinefavor.common.item.base.ModItemPickaxe
 import aurocosh.divinefavor.common.item.bone_dagger.ItemBoneDagger
 import aurocosh.divinefavor.common.item.bone_dagger.ItemBoneDaggerAwakened
 import aurocosh.divinefavor.common.item.contract_binder.ItemContractBinder
+import aurocosh.divinefavor.common.item.gem_stabilizer.ItemGemStabilizer
 import aurocosh.divinefavor.common.item.gems.ItemInviteMarker
 import aurocosh.divinefavor.common.item.gems.ItemMarkedGlass
 import aurocosh.divinefavor.common.item.gems.ItemWarpMarker
@@ -26,6 +27,7 @@ import aurocosh.divinefavor.common.item.tools.ItemBoneKey
 import aurocosh.divinefavor.common.item.tools.ItemEtherealBrush
 import aurocosh.divinefavor.common.item.tools.mystic_architect_stick.ItemMysticArchitectStick
 import aurocosh.divinefavor.common.registry.mappers.ModMappers
+import aurocosh.divinefavor.common.spirit.ModSpirits
 import net.minecraft.item.Item
 import java.util.*
 
@@ -46,8 +48,11 @@ object ModItems {
     lateinit var invite_gem: ModItem
     lateinit var invite_pebble: ModItem
     lateinit var storage_gem: ModItem
+
     lateinit var warp_gem: ModItem
     lateinit var warp_pebble: ModItem
+
+    lateinit var stable_warp_gem: ModItem
 
     lateinit var grimoire_red: ModItem
     lateinit var grimoire_black: ModItem
@@ -71,6 +76,8 @@ object ModItems {
     val markedGlasses: MutableList<ItemMarkedGlass> = ArrayList()
 
     // New fields
+    lateinit var pebble_stabilizer: ModItem
+    lateinit var gem_stabilizer: ModItem
     lateinit var experience_drop: ModItem
     lateinit var memory_drop: ItemMemoryDrop
     lateinit var ice_arrow: ModItemArrow
@@ -91,8 +98,11 @@ object ModItems {
         spell_bow = ItemSpellBow()
         stoneball = ItemStoneball()
         storage_gem = ItemStorageGem()
-        warp_gem = ItemWarpMarker("warp_gem", true)
-        warp_pebble = ItemWarpMarker("warp_pebble", false)
+
+        warp_gem = ItemWarpMarker("warp_gem", true, true, 0, ModSpirits.endererer, 64)
+        warp_pebble = ItemWarpMarker("warp_pebble", false, true, 0, ModSpirits.endererer, 64)
+
+        stable_warp_gem = ItemWarpMarker("stable_warp_gem", true, false, ConfigItem.stableWarpGem.favorCost, ModSpirits.endererer, 1)
 
         grimoire_red = ItemGrimoire("red")
         grimoire_black = ItemGrimoire("black")
@@ -116,6 +126,8 @@ object ModItems {
             markedGlasses.add(ItemMarkedGlass(spirit, ConstGemTabOrder.MARKED_GLASS))
 
         // New instances
+        pebble_stabilizer = ItemPebbleStabilizer()
+        gem_stabilizer = ItemGemStabilizer()
         experience_drop = ItemExperienceDrop()
         memory_drop = ItemMemoryDrop()
         ice_arrow = ItemIceArrow()

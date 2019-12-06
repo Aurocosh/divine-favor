@@ -7,7 +7,7 @@ import net.minecraft.nbt.NBTTagCompound
 import net.minecraftforge.fml.relauncher.Side
 import net.minecraftforge.fml.relauncher.SideOnly
 
-class StackPropertyString(name: String, defaultValue: String, showInTooltip: Boolean, showInGui: Boolean, orderIndex: Int) : StackProperty<String>(name, defaultValue, showInTooltip, showInGui, orderIndex) {
+class StackPropertyString(name: String, defaultValue: String, showInTooltip: Boolean = false, showInGui: Boolean = false, orderIndex: Int = 0) : StackProperty<String>(name, defaultValue, showInTooltip, showInGui, orderIndex) {
     override fun getValueFromTag(compound: NBTTagCompound): String {
         return compound.getString(tag)
     }

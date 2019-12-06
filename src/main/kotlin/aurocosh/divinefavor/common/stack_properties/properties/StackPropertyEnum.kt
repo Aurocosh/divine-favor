@@ -8,7 +8,7 @@ import net.minecraft.nbt.NBTTagCompound
 import net.minecraftforge.fml.relauncher.Side
 import net.minecraftforge.fml.relauncher.SideOnly
 
-class StackPropertyEnum<T>(name: String, defaultValue: T, private val converter: IIndexedEnum<T>, showInTooltip: Boolean, showInGui: Boolean, orderIndex: Int) : StackProperty<T>(name, defaultValue, showInTooltip, showInGui, orderIndex) where T : Enum<T> {
+class StackPropertyEnum<T>(name: String, defaultValue: T, private val converter: IIndexedEnum<T>, showInTooltip: Boolean = false, showInGui: Boolean = false, orderIndex: Int = 0) : StackProperty<T>(name, defaultValue, showInTooltip, showInGui, orderIndex) where T : Enum<T> {
 
     fun getMaxOrdinal() = converter.getMaxOrdinal()
 

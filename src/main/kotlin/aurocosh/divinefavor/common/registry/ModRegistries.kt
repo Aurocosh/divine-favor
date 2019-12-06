@@ -7,12 +7,14 @@ import aurocosh.divinefavor.common.item.base.ModItemBlock
 import aurocosh.divinefavor.common.item.base.ModItemPickaxe
 import aurocosh.divinefavor.common.muliblock.ModMultiBlock
 import aurocosh.divinefavor.common.potions.base.potion.ModPotion
+import aurocosh.divinefavor.common.receipes.base.ModRecipe
 import aurocosh.divinefavor.common.spirit.base.ModSpirit
 
 object ModRegistries {
     var itemBlocks = RegistryAssistant<ModItemBlock>()
     var blocks = RegistryAssistant<ModBlock>()
     var items = RegistryAssistant<ModItem>()
+    var recipes = RegistryAssistant<ModRecipe>()
     var pickaxes = RegistryAssistant<ModItemPickaxe>()
     var arrows = RegistryAssistant<ModItemArrow>()
     var multiBlocks = RegistryAssistant<ModMultiBlock>()

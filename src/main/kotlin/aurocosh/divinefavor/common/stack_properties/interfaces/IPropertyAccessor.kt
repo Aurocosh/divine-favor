@@ -13,6 +13,7 @@ interface IPropertyAccessor {
 
     fun exist(index: Int): Boolean
     fun exist(name: String): Boolean
+    fun exist(property: StackProperty<out Any>): Boolean
 
     fun getSelectedIndex(stack: ItemStack): Int
     fun setSelectedIndex(stack: ItemStack, index: Int)
