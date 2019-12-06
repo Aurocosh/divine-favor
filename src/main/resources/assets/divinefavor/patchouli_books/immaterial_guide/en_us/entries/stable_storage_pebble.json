@@ -1,0 +1,12 @@
+{
+  "name": "Stable storage pebble",
+  "icon": "divinefavor:stable_storage_pebble",
+  "category": "items",
+  "read_by_default": true,
+  "pages": [
+    {
+      "type": "item_description",
+      "talisman": "divinefavor:stable_storage_pebble"
+    }
+  ]
+}

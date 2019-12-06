@@ -21,15 +21,21 @@ object MissingItemRemapper {
             val talismanName = mapping.key.path.substring(9)
             val fullName = ResourceNamer.getItemName("spell_talisman", talismanName)
             val item = Item.getByNameOrId(fullName.toString())
-            if(item != null)
+            if (item != null)
                 mapping.remap(item)
         }
 
         val grimoireMappings = myMappings.S.filter { it.key.path == "grimoire" }
-
         for (mapping in grimoireMappings) {
-            val item = Item.getByNameOrId("grimoire_red")
-            if(item != null)
+            val item = Item.getByNameOrId(ResourceNamer.getNameString("grimoire_red"))
+            if (item != null)
+                mapping.remap(item)
+        }
+
+        val storageGemMappings = myMappings.S.filter { it.key.path == "storage_gem" }
+        for (mapping in storageGemMappings) {
+            val item = Item.getByNameOrId(ResourceNamer.getNameString("storage_pebble"))
+            if (item != null)
                 mapping.remap(item)
         }
     }

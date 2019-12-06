@@ -1,4 +1,4 @@
-package aurocosh.divinefavor.common.item.gems.storage_gem
+package aurocosh.divinefavor.common.item.gems.storage
 
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.inventory.IInventory

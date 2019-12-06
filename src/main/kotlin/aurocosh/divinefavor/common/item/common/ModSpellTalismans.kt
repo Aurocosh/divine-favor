@@ -201,7 +201,7 @@ object ModSpellTalismans {
         invite_gem = SpellTalismanInviteMarker("invite_gem", ModSpirits.endererer, ConfigSpell.inviteGem.favorCost, SpellOptions.ALL_CAST, ModItems.invite_gem)
         invite_pebble = SpellTalismanInviteMarker("invite_pebble", ModSpirits.endererer, ConfigSpell.invitePebble.favorCost, SpellOptions.ALL_CAST, ModItems.invite_pebble)
         pearl_crumbs = SpellTalismanPearlCrumbs("pearl_crumbs", ModSpirits.endererer, ConfigSpell.pearlCrumbs.favorCost, SpellOptions.ALL_CAST)
-        remote_chest = SpellTalismanRemoteChest("remote_chest", ModSpirits.endererer, ConfigSpell.remoteChest.favorCost, SpellOptions.USE_CAST, ModItems.storage_gem)
+        remote_chest = SpellTalismanRemoteChest("remote_chest", ModSpirits.endererer, ConfigSpell.remoteChest.favorCost, SpellOptions.USE_CAST, ModItems.storage_pebble)
         surface_blink = SpellTalismanSurfaceBlink("surface_blink", ModSpirits.endererer, ConfigSpell.surfaceBlink.favorCost, SpellOptions.ALL_CAST_TRACE)
         surface_shift = SpellTalismanSurfaceShift("surface_shift", ModSpirits.endererer, ConfigSpell.surfaceShift.favorCost, SpellOptions.ALL_CAST)
         wall_slip = SpellTalismanWallSlip("wall_slip", ModSpirits.endererer, ConfigSpell.wallSlip.favorCost, SpellOptions.USE_CAST)

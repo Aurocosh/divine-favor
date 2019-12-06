@@ -1,6 +1,7 @@
 package aurocosh.divinefavor.common.item.common
 
 import aurocosh.divinefavor.common.config.common.ConfigItem
+import aurocosh.divinefavor.common.config.common.ConfigSpell
 import aurocosh.divinefavor.common.constants.ConstGemTabOrder
 import aurocosh.divinefavor.common.constants.ConstMainTabOrder
 import aurocosh.divinefavor.common.item.*
@@ -15,7 +16,7 @@ import aurocosh.divinefavor.common.item.gem_stabilizer.ItemGemStabilizer
 import aurocosh.divinefavor.common.item.gems.ItemInviteMarker
 import aurocosh.divinefavor.common.item.gems.ItemMarkedGlass
 import aurocosh.divinefavor.common.item.gems.ItemWarpMarker
-import aurocosh.divinefavor.common.item.gems.storage_gem.ItemStorageGem
+import aurocosh.divinefavor.common.item.gems.storage.ItemStorageGem
 import aurocosh.divinefavor.common.item.memory_drop.ItemMemoryDrop
 import aurocosh.divinefavor.common.item.memory_pouch.ItemMemoryPouch
 import aurocosh.divinefavor.common.item.ritual_pouch.ItemRitualPouch
@@ -48,7 +49,7 @@ object ModItems {
 
     lateinit var invite_gem: ModItem
     lateinit var invite_pebble: ModItem
-    lateinit var storage_gem: ModItem
+    lateinit var storage_pebble: ModItem
 
     lateinit var warp_gem: ModItem
     lateinit var warp_pebble: ModItem
@@ -77,6 +78,7 @@ object ModItems {
     val markedGlasses: MutableList<ItemMarkedGlass> = ArrayList()
 
     // New fields
+    lateinit var stable_storage_pebble: ModItem
     lateinit var stable_warp_pebble: ModItem
     lateinit var stable_invite_pebble: ModItem
     lateinit var stable_invite_gem: ModItem
@@ -100,17 +102,19 @@ object ModItems {
         ritual_pouch = ItemRitualPouch()
         spell_bow = ItemSpellBow()
         stoneball = ItemStoneball()
-        storage_gem = ItemStorageGem()
+
+        storage_pebble = ItemStorageGem("storage_pebble", true, 0, ModSpirits.endererer, 16)
+        stable_storage_pebble = ItemStorageGem("stable_storage_pebble", false, ConfigSpell.remoteChest.favorCost, ModSpirits.endererer, 1)
 
         warp_gem = ItemWarpMarker("warp_gem", true, true, 0, ModSpirits.endererer, 64)
         warp_pebble = ItemWarpMarker("warp_pebble", false, true, 0, ModSpirits.endererer, 64)
-        stable_warp_gem = ItemWarpMarker("stable_warp_gem", true, false, ConfigItem.stableWarpGem.favorCost, ModSpirits.endererer, 1)
-        stable_warp_pebble = ItemWarpMarker("stable_warp_pebble", false, false, ConfigItem.stableWarpPebble.favorCost, ModSpirits.endererer, 1)
+        stable_warp_gem = ItemWarpMarker("stable_warp_gem", true, false, ConfigSpell.warpGem.favorCost, ModSpirits.endererer, 1)
+        stable_warp_pebble = ItemWarpMarker("stable_warp_pebble", false, false, ConfigSpell.warpPebble.favorCost, ModSpirits.endererer, 1)
 
         invite_gem = ItemInviteMarker("invite_gem", true, true, 0, ModSpirits.endererer, 64)
         invite_pebble = ItemInviteMarker("invite_pebble", false, true, 0, ModSpirits.endererer, 64)
-        stable_invite_gem = ItemInviteMarker("stable_invite_gem", true, false, ConfigItem.stableInviteGem.favorCost, ModSpirits.endererer, 1)
-        stable_invite_pebble = ItemInviteMarker("stable_invite_pebble", false, false, ConfigItem.stableInvitePebble.favorCost, ModSpirits.endererer, 1)
+        stable_invite_gem = ItemInviteMarker("stable_invite_gem", true, false, ConfigSpell.inviteGem.favorCost, ModSpirits.endererer, 1)
+        stable_invite_pebble = ItemInviteMarker("stable_invite_pebble", false, false, ConfigSpell.invitePebble.favorCost, ModSpirits.endererer, 1)
 
         grimoire_red = ItemGrimoire("red")
         grimoire_black = ItemGrimoire("black")

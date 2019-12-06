@@ -1,7 +1,7 @@
 package aurocosh.divinefavor.common.item.spell_talismans
 
 import aurocosh.divinefavor.common.item.base.ModItem
-import aurocosh.divinefavor.common.item.gems.storage_gem.ItemStorageGem
+import aurocosh.divinefavor.common.item.gems.storage.ItemStorageGem
 import aurocosh.divinefavor.common.item.spell_talismans.base.ItemSpellTalisman
 import aurocosh.divinefavor.common.item.spell_talismans.base.SpellOptions
 import aurocosh.divinefavor.common.item.spell_talismans.context.CastContext

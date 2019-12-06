@@ -103,6 +103,7 @@ divinefavor:spirit.squarefury.name=Squarefury
 divinefavor:spirit.timber.name=Timber
 
 # ITEM NAMES
+item.divinefavor:stable_storage_pebble.name=Stable storage pebble
 item.divinefavor:stable_warp_pebble.name=Stable warp pebble
 item.divinefavor:stable_invite_pebble.name=Stable invite pebble
 item.divinefavor:stable_invite_gem.name=Stable invite gem
@@ -120,7 +121,7 @@ item.divinefavor:ice_arrow.name=Ice arrow
 ## GEMS
 item.divinefavor:invite_gem.name=Invite gem
 item.divinefavor:invite_pebble.name=Invite pebble
-item.divinefavor:storage_gem.name=Storage gem
+item.divinefavor:storage_pebble.name=Storage pebble
 item.divinefavor:warp_gem.name=Warp gem
 item.divinefavor:warp_pebble.name=Warp pebble
 
@@ -574,6 +575,7 @@ tile.divinefavor:red_signal.description=Ghostly block that emits strong redstone
 tile.divinefavor:sealing_stone_orange.description=This block can be used to seal talisman containers such as spell bow or a spell blade. To seal something just right click this block with this item. Sealed items will not transform.
 
 #ITEM DESCRIPTIONS FOR JEI AND PATCHOULI
+item.divinefavor:stable_storage_pebble.description=TODO
 item.divinefavor:stable_warp_pebble.description=TODO
 item.divinefavor:stable_invite_pebble.description=TODO
 item.divinefavor:stable_invite_gem.description=TODO
@@ -591,7 +593,7 @@ item.divinefavor:ice_arrow.description=Delicate arrows made of ice. They are fra
 ## GEMS
 item.divinefavor:invite_gem.description=Instantly teleports you to creator of the gem. Works across dimensions. Can be created with appropriate talisman.
 item.divinefavor:invite_pebble.description=Instantly teleports you to creator of the gem. Does not work across dimensions. Can be created with appropriate talisman.
-item.divinefavor:storage_gem.description=Allows you to remotely access chest. Can be created with appropriate talisman.
+item.divinefavor:storage_pebble.description=Allows you to remotely access chest. Can be created with appropriate talisman.
 item.divinefavor:warp_gem.description=Instantly teleports you to place where it was created. Works across dimensions. Can be created with appropriate talisman.
 item.divinefavor:warp_pebble.description=Instantly teleports you to place where it was created. Does not work across dimensions. Can be created with appropriate talisman.
 
@@ -800,7 +802,7 @@ item.divinefavor:spell_talisman_pull_side.description=This talisman allows you t
 item.divinefavor:spell_talisman_push_side.description=This talisman allows you to push any continuous surface without angles like a piston.
 item.divinefavor:spell_talisman_red_pulse.description=On cast it will create untouchable temporary block that emits redstone signal. This block will also emit small amount of light.
 item.divinefavor:spell_talisman_red_signal.description=On cast it will create untouchable temporary block that emits strong redstone signal. This block will also emit light. It is stronger version of red pulse talisman.
-item.divinefavor:spell_talisman_remote_chest.description=When used on chest it will create storage gem. When used storage gem will let you access bound chest remotely.
+item.divinefavor:spell_talisman_remote_chest.description=When used on chest it will create storage pebble. When used storage pebble will let you access bound chest remotely.
 item.divinefavor:spell_talisman_replace_blocks.description=This talisman allows you to instantly replace any connected chunk of blocks with another type of block
 item.divinefavor:spell_talisman_replace_cuboid.description=This talisman allows you to instantly replace any blocks in shape of cuboid.
 item.divinefavor:spell_talisman_replace_side.description=This talisman allows you to instantly replace any continuous surface without angles with another type of block
