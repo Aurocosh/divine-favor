@@ -191,6 +191,8 @@ curseforge {
             requiredDependency 'auto-network-lib'
             optionalDependency 'jei'
             optionalDependency 'crafttweaker'
+            optionalDependency 'mtlib'
+            optionalDependency 'max-potion-id-extender'
         }
     }
 }
