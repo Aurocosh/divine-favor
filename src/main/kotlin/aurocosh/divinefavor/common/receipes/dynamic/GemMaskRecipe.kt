@@ -35,7 +35,7 @@ class GemMaskRecipe : ModRecipe("gem_mask_recipe") {
         return result
     }
 
-    override fun matches(inv: InventoryCrafting, worldIn: World): Boolean {
+    override fun matches(inv: InventoryCrafting, world: World?): Boolean {
         val stacks = inv.asSequence().filter(ItemStack::isNotEmpty).toList()
         if (stacks.size != 2)
             return false

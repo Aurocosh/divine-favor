@@ -30,7 +30,7 @@ abstract class StabilizerRecipe(name: String) : ModRecipe(name) {
         return result
     }
 
-    override fun matches(inv: InventoryCrafting, worldIn: World): Boolean {
+    override fun matches(inv: InventoryCrafting, world: World?): Boolean {
         var gemCount = 0
         var otherCount = 0
         var stabilizerCount = 0
