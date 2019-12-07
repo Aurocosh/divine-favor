@@ -1,16 +1,18 @@
 package aurocosh.divinefavor.common.item.tool_talismans
 
-import aurocosh.divinefavor.common.item.spell_talismans.context.*
+import aurocosh.divinefavor.common.item.spell_talismans.context.CastContext
+import aurocosh.divinefavor.common.item.spell_talismans.context.playerField
+import aurocosh.divinefavor.common.item.spell_talismans.context.posField
+import aurocosh.divinefavor.common.item.spell_talismans.context.worldField
 import aurocosh.divinefavor.common.item.tool_talismans.base.ItemToolTalisman
 import aurocosh.divinefavor.common.lib.extensions.get
-import aurocosh.divinefavor.common.lib.extensions.removeEnchantment
 import aurocosh.divinefavor.common.spirit.base.ModSpirit
 import aurocosh.divinefavor.common.util.UtilBlock
 import net.minecraft.block.state.IBlockState
-import net.minecraft.enchantment.EnchantmentHelper
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.init.Blocks
 import net.minecraft.init.Enchantments
+import net.minecraft.init.Items
 import net.minecraft.item.ItemStack
 import net.minecraft.tileentity.TileEntity
 import net.minecraft.util.EnumHand
@@ -31,17 +33,13 @@ class ToolTalismanSilkyTool(name: String, spirit: ModSpirit, favorCost: Int) : I
     }
 
     override fun performActionServer(context: CastContext) {
-        val (world, player, pos, stack) = context.get(worldField, playerField, posField, stackField)
+        val (world, player, pos) = context.get(worldField, playerField, posField)
         val state = world.getBlockState(pos);
 
-        val hasSilkTouch = EnchantmentHelper.getEnchantmentLevel(Enchantments.SILK_TOUCH, stack) > 0
-        if (!hasSilkTouch)
-            stack.addEnchantment(Enchantments.SILK_TOUCH, 1)
+        val toolStack = ItemStack(Items.DIAMOND_PICKAXE)
+        toolStack.addEnchantment(Enchantments.SILK_TOUCH, 1)
 
-        harvestBlock(world, player, pos, state, world.getTileEntity(pos), stack)
-
-        if (!hasSilkTouch)
-            stack.removeEnchantment(Enchantments.SILK_TOUCH)
+        harvestBlock(world, player, pos, state, world.getTileEntity(pos), toolStack)
     }
 
     private fun harvestBlock(world: World, player: EntityPlayer, pos: BlockPos, state: IBlockState, tileEntity: TileEntity?, stack: ItemStack) {
