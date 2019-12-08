@@ -32,7 +32,7 @@ import aurocosh.divinefavor.common.custom_data.player.data.spell.pearl_crumbs.Pe
 import aurocosh.divinefavor.common.custom_data.player.data.spell.vengeful_blade.VengfulBladeDataSerializer
 import aurocosh.divinefavor.common.custom_data.player.data.templates.TemplateDataSerializer
 import net.minecraft.entity.Entity
-import net.minecraft.entity.EntityLivingBase
+import net.minecraft.entity.player.EntityPlayer
 import net.minecraftforge.common.MinecraftForge
 import net.minecraftforge.common.capabilities.Capability
 import net.minecraftforge.common.capabilities.CapabilityInject
@@ -45,7 +45,7 @@ class PlayerDataDataHandler {
     // Allows the provider to be attached to a target entity.
     @SubscribeEvent
     fun attachCapabilities(event: AttachCapabilitiesEvent<Entity>) {
-        if (event.getObject() is EntityLivingBase)
+        if (event.getObject() is EntityPlayer)
             event.addCapability(ResourceNamer.getFullName("capability_player_data"), PlayerDataProvider())
     }
 
