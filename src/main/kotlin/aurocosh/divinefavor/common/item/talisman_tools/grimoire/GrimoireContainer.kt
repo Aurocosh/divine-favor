@@ -1,14 +1,16 @@
 package aurocosh.divinefavor.common.item.talisman_tools.grimoire
 
 import aurocosh.divinefavor.common.item.base.GenericContainer
-import aurocosh.divinefavor.common.item.talisman_tools.grimoire.capability.IGrimoireHandler
+import aurocosh.divinefavor.common.item.talisman_tools.grimoire.capability.GrimoireDataHandler
+import aurocosh.divinefavor.common.lib.extensions.cap
 import aurocosh.divinefavor.common.network.message.sever.syncing.MessageSyncTalismanContainerSlot
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.inventory.ClickType
 import net.minecraft.item.ItemStack
 import net.minecraft.util.EnumHand
 
-class GrimoireContainer(private val player: EntityPlayer, private val grimoireHandler: IGrimoireHandler, private val hand: EnumHand) : GenericContainer(ItemGrimoire.SLOT_COUNT) {
+class GrimoireContainer(player: EntityPlayer, stack: ItemStack, private val hand: EnumHand) : GenericContainer(ItemGrimoire.SLOT_COUNT) {
+    private val grimoireHandler = stack.cap(GrimoireDataHandler.CAPABILITY_GRIMOIRE)
     private val blocked: Int
 
     init {

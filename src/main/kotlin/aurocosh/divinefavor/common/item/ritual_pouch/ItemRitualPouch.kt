@@ -13,7 +13,7 @@ import net.minecraft.util.EnumActionResult
 import net.minecraft.util.EnumHand
 import net.minecraft.world.World
 import net.minecraftforge.common.capabilities.ICapabilityProvider
-import net.minecraftforge.items.CapabilityItemHandler
+import net.minecraftforge.items.CapabilityItemHandler.ITEM_HANDLER_CAPABILITY
 import net.minecraftforge.items.IItemHandler
 import net.minecraftforge.items.ItemStackHandler
 
@@ -44,8 +44,8 @@ class ItemRitualPouch : ModItem("ritual_pouch", "ritual_pouch", ConstMainTabOrde
         if (tag == null)
             tag = NBTTagCompound()
 
-        val inventory = (stack.getCapability<IItemHandler>(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null) as ItemStackHandler?)!!
-        tag.setTag(TAG_SHARE, inventory.serializeNBT())
+        val inventory = (stack.getCapability<IItemHandler>(ITEM_HANDLER_CAPABILITY, null) as ItemStackHandler?)!!
+        tag.setTag(ShareTagName, inventory.serializeNBT())
         return tag
     }
 
@@ -53,13 +53,13 @@ class ItemRitualPouch : ModItem("ritual_pouch", "ritual_pouch", ConstMainTabOrde
         super.readNBTShareTag(stack, nbt)
         if (nbt == null)
             return
-        val inventory = (stack.getCapability<IItemHandler>(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null) as ItemStackHandler?)!!
-        inventory.deserializeNBT(nbt.getCompoundTag(TAG_SHARE))
+        val inventory = (stack.getCapability<IItemHandler>(ITEM_HANDLER_CAPABILITY, null) as ItemStackHandler?)!!
+        inventory.deserializeNBT(nbt.getCompoundTag(ShareTagName))
     }
 
     companion object {
-        val SIZE = 7
-        private val TAG_SHARE = "Ritual"
+        const val InventorySize = 7
+        private const val ShareTagName = "Ritual"
     }
 }
 

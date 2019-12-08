@@ -1,13 +1,12 @@
 package aurocosh.divinefavor.client.gui.items
 
 import aurocosh.divinefavor.common.constants.ConstResources
-import aurocosh.divinefavor.common.item.ritual_pouch.RitualBagContainer
+import aurocosh.divinefavor.common.item.compressed_item_drop.CompressedItemsDropContainer
 import net.minecraft.client.gui.inventory.GuiContainer
 import net.minecraft.entity.player.EntityPlayer
-import net.minecraft.item.ItemStack
 import net.minecraft.util.ResourceLocation
 
-class GuiRitualPouch(player: EntityPlayer, pouch: ItemStack) : GuiContainer(RitualBagContainer(player, pouch)) {
+class GuiCompressedItemsDrop(player: EntityPlayer) : GuiContainer(CompressedItemsDropContainer(player)) {
 
     override fun initGui() {
         xSize = GuiWidth
@@ -29,6 +28,6 @@ class GuiRitualPouch(player: EntityPlayer, pouch: ItemStack) : GuiContainer(Ritu
     companion object {
         const val GuiWidth = 175
         const val GuiHeight = 165
-        private val texture = ResourceLocation(ConstResources.GUI_RITUAL_POUCH)
+        private val texture = ResourceLocation(ConstResources.GUI_COMPRESSED_ITEMS_DROP)
     }
 }

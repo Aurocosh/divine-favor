@@ -1,5 +1,7 @@
 package aurocosh.divinefavor.common.util
 
+import aurocosh.divinefavor.common.lib.extensions.asSlotSequence
+import aurocosh.divinefavor.common.lib.iterators.IItemHandlerSlot
 import aurocosh.divinefavor.common.misc.SlotStack
 import net.minecraft.item.ItemStack
 import net.minecraftforge.items.IItemHandler
@@ -38,4 +40,7 @@ object UtilHandler {
             stackList.add(itemHandler.getStackInSlot(i))
         return stackList
     }
+
+
 }
+

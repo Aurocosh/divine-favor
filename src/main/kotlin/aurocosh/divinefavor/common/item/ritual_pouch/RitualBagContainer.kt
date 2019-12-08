@@ -1,16 +1,19 @@
 package aurocosh.divinefavor.common.item.ritual_pouch
 
 import aurocosh.divinefavor.common.item.base.GenericContainer
+import aurocosh.divinefavor.common.lib.extensions.cap
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.inventory.ClickType
 import net.minecraft.item.ItemStack
-import net.minecraftforge.items.IItemHandler
+import net.minecraftforge.items.CapabilityItemHandler.ITEM_HANDLER_CAPABILITY
 import net.minecraftforge.items.SlotItemHandler
 
-class RitualBagContainer(player: EntityPlayer, itemHandler: IItemHandler) : GenericContainer(ItemRitualPouch.SIZE) {
+class RitualBagContainer(player: EntityPlayer, stack: ItemStack) : GenericContainer(ItemRitualPouch.InventorySize) {
     private val blocked: Int
 
     init {
+        val itemHandler = stack.cap(ITEM_HANDLER_CAPABILITY)
+
         var x = 62
         var y = 18
 

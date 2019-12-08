@@ -1,0 +1,30 @@
+{
+  "result": {
+    "item": "divinefavor:spell_talisman_compress_items"
+  },
+  "stones": [
+    "divinefavor:calling_stone_romol"
+  ],
+  "ingredients": [
+    {
+      "type": "ore",
+      "ore": "paper"
+    },
+    {
+      "type": "ore",
+      "ore": "dyeGray"
+    },
+    {
+      "type": "ore",
+      "ore": "chest"
+    },
+    {
+      "type": "ore",
+      "ore": "obsidian"
+    },
+    {
+      "type": "stack",
+      "item": "minecraft:piston"
+    }
+  ]
+}

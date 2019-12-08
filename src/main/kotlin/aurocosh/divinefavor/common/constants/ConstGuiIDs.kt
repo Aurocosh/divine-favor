@@ -13,6 +13,7 @@ object ConstGuiIDs {
     val MEMORY_POUCH_TEMPLATE = nextId++
     val MEMORY_DROP = nextId++
     val RITUAL_POUCH = nextId++
+    val COMPRESSED_ITEMS_DROP = nextId++
     val SOULBOUND_LECTERN_ACTIVE = nextId++
     val SOULBOUND_LECTERN_EMPTY = nextId++
     val SOULBOUND_LECTERN_WITH_SHARD = nextId++

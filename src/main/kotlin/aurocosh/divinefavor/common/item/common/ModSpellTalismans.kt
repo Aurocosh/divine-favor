@@ -153,6 +153,7 @@ object ModSpellTalismans {
     lateinit var wooden_punch: ItemSpellTalisman
 
     // New fields
+    lateinit var compress_items: ItemSpellTalisman
     lateinit var create_water: ItemSpellTalisman
     lateinit var crystallize_experience: ItemSpellTalisman
     lateinit var destroy_cuboid_remotely: ItemSpellTalisman
@@ -330,6 +331,7 @@ object ModSpellTalismans {
         starvation = SpellTalismanModPotion("starvation", ModSpirits.timber, ConfigSpell.starvation.favorCost, ModPotions.starvation, ConfigSpell.starvation.duration)
 
         // New instances
+        compress_items = SpellTalismanCompressItems("compress_items", ModSpirits.romol, ConfigSpell.compressItems.favorCost, SpellOptions.ALL_CAST)
     }
 
     fun init() {}

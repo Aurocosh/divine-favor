@@ -22,6 +22,7 @@ object ConstResources {
     const val GUI_JEI_IMMATERIAL_MEDIUM_RECIPE = PREFIX_GUI + "jei/immaterial_medium.png"
     const val GUI_JEI_CONTACT_RITUAL_RECIPE = PREFIX_GUI + "jei/contact_ritual.png"
     const val GUI_RITUAL_POUCH = PREFIX_GUI + "ritual_pouch.png"
+    const val GUI_COMPRESSED_ITEMS_DROP = PREFIX_GUI + "compressed_items_drop.png"
     const val GUI_SELECT_COST_UNIT_BUTTON = PREFIX_GUI + "select_cost_unit_button.png"
     const val GUI_TALISMAN = PREFIX_GUI + "talisman.png"
     const val GUI_ENDER_PUMPKIN = PREFIX_GUI + "ender_pumpkin_blur.png"

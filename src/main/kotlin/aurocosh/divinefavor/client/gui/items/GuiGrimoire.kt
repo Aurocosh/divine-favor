@@ -2,20 +2,18 @@ package aurocosh.divinefavor.client.gui.items
 
 import aurocosh.divinefavor.common.constants.ConstResources
 import aurocosh.divinefavor.common.item.talisman_tools.grimoire.GrimoireContainer
-import aurocosh.divinefavor.common.item.talisman_tools.grimoire.capability.GrimoireDataHandler.CAPABILITY_GRIMOIRE
-import aurocosh.divinefavor.common.lib.extensions.cap
 import net.minecraft.client.gui.inventory.GuiContainer
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.item.ItemStack
 import net.minecraft.util.EnumHand
 import net.minecraft.util.ResourceLocation
 
-class GuiGrimoire(player: EntityPlayer, internal var grimoire: ItemStack, hand: EnumHand)
-    : GuiContainer(GrimoireContainer(player, grimoire.cap(CAPABILITY_GRIMOIRE), hand)) {
+class GuiGrimoire(player: EntityPlayer, stack: ItemStack, hand: EnumHand)
+    : GuiContainer(GrimoireContainer(player, stack, hand)) {
 
     override fun initGui() {
-        xSize = WIDTH
-        ySize = HEIGHT
+        xSize = GuiWidth
+        ySize = GuiHeight
         super.initGui()
     }
 
@@ -31,8 +29,8 @@ class GuiGrimoire(player: EntityPlayer, internal var grimoire: ItemStack, hand: 
     }
 
     companion object {
-        val WIDTH = 175
-        val HEIGHT = 165
+        const val GuiWidth = 175
+        const val GuiHeight = 165
         private val texture = ResourceLocation(ConstResources.GUI_GRIMOIRE)
     }
 }

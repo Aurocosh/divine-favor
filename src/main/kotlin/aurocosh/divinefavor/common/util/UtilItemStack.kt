@@ -34,4 +34,16 @@ object UtilItemStack {
         }
         return resultStacks
     }
+
+    fun canMergeStacks(stack1: ItemStack, stack2: ItemStack): Boolean {
+        return !stack1.isEmpty && this.stackEqualExact(stack1, stack2) && stack1.isStackable && stack1.count < stack1.maxStackSize && stack1.count < this.getInventoryStackLimit()
+    }
+
+    private fun stackEqualExact(stack1: ItemStack, stack2: ItemStack): Boolean {
+        return stack1.item === stack2.item && (!stack1.hasSubtypes || stack1.metadata == stack2.metadata) && ItemStack.areItemStackTagsEqual(stack1, stack2)
+    }
+
+    private fun getInventoryStackLimit(): Int {
+        return 64
+    }
 }

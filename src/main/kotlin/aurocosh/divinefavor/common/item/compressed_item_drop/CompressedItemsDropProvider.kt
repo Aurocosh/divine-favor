@@ -1,15 +1,15 @@
-package aurocosh.divinefavor.common.item.ritual_pouch
+package aurocosh.divinefavor.common.item.compressed_item_drop
 
 import net.minecraft.nbt.NBTTagCompound
 import net.minecraft.util.EnumFacing
 import net.minecraftforge.common.capabilities.Capability
 import net.minecraftforge.common.capabilities.ICapabilityProvider
 import net.minecraftforge.common.capabilities.ICapabilitySerializable
-import net.minecraftforge.items.CapabilityItemHandler
+import net.minecraftforge.items.CapabilityItemHandler.ITEM_HANDLER_CAPABILITY
 import net.minecraftforge.items.ItemStackHandler
 
-class RitualPouchProvider : ICapabilityProvider, ICapabilitySerializable<NBTTagCompound> {
-    private val inventory: ItemStackHandler = ItemStackHandler(ItemRitualPouch.InventorySize)
+class CompressedItemsDropProvider : ICapabilityProvider, ICapabilitySerializable<NBTTagCompound> {
+    private val inventory: ItemStackHandler = ItemStackHandler(ItemCompressedItemsDrop.InventorySize)
 
     override fun serializeNBT(): NBTTagCompound {
         return inventory.serializeNBT()
@@ -20,11 +20,11 @@ class RitualPouchProvider : ICapabilityProvider, ICapabilitySerializable<NBTTagC
     }
 
     override fun hasCapability(capability: Capability<*>, facing: EnumFacing?): Boolean {
-        return capability === CapabilityItemHandler.ITEM_HANDLER_CAPABILITY
+        return capability === ITEM_HANDLER_CAPABILITY
     }
 
     override fun <T> getCapability(capability: Capability<T>, facing: EnumFacing?): T? {
-        return if (capability === CapabilityItemHandler.ITEM_HANDLER_CAPABILITY)
-            CapabilityItemHandler.ITEM_HANDLER_CAPABILITY.cast<T>(inventory) else null
+        return if (capability === ITEM_HANDLER_CAPABILITY)
+            ITEM_HANDLER_CAPABILITY.cast<T>(inventory) else null
     }
 }

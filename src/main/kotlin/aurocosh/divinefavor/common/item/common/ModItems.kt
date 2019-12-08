@@ -10,6 +10,7 @@ import aurocosh.divinefavor.common.item.base.ModItemArrow
 import aurocosh.divinefavor.common.item.base.ModItemPickaxe
 import aurocosh.divinefavor.common.item.bone_dagger.ItemBoneDagger
 import aurocosh.divinefavor.common.item.bone_dagger.ItemBoneDaggerAwakened
+import aurocosh.divinefavor.common.item.compressed_item_drop.ItemCompressedItemsDrop
 import aurocosh.divinefavor.common.item.contract_binder.ItemContractBinder
 import aurocosh.divinefavor.common.item.gem_pouch.ItemGemPouch
 import aurocosh.divinefavor.common.item.gem_stabilizer.ItemGemStabilizer
@@ -78,6 +79,7 @@ object ModItems {
     val markedGlasses: MutableList<ItemMarkedGlass> = ArrayList()
 
     // New fields
+    lateinit var compressed_items_drop: ModItem
     lateinit var stable_storage_pebble: ModItem
     lateinit var stable_warp_pebble: ModItem
     lateinit var stable_invite_pebble: ModItem
@@ -138,6 +140,7 @@ object ModItems {
             markedGlasses.add(ItemMarkedGlass(spirit, ConstGemTabOrder.MARKED_GLASS))
 
         // New instances
+        compressed_items_drop = ItemCompressedItemsDrop()
         gem_pouch = ItemGemPouch()
         pebble_stabilizer = ItemPebbleStabilizer()
         gem_stabilizer = ItemGemStabilizer()

@@ -18,6 +18,7 @@ import aurocosh.divinefavor.common.block.soulbound_lectern.ContainerSoulboundLec
 import aurocosh.divinefavor.common.block.soulbound_lectern.ContainerSoulboundLecternWithShard
 import aurocosh.divinefavor.common.block.soulbound_lectern.TileSoulboundLectern
 import aurocosh.divinefavor.common.constants.ConstGuiIDs
+import aurocosh.divinefavor.common.item.compressed_item_drop.CompressedItemsDropContainer
 import aurocosh.divinefavor.common.item.contract_binder.ContractBinderContainer
 import aurocosh.divinefavor.common.item.gem_pouch.GemPouchContainer
 import aurocosh.divinefavor.common.item.gem_pouch.ItemGemPouch
@@ -27,12 +28,12 @@ import aurocosh.divinefavor.common.item.memory_pouch.ItemMemoryPouch
 import aurocosh.divinefavor.common.item.memory_pouch.MemoryPouchNormalContainer
 import aurocosh.divinefavor.common.item.memory_pouch.MemoryPouchTemplateContainer
 import aurocosh.divinefavor.common.item.memory_pouch.capability.MemoryPouchDataHandler.CAPABILITY_MEMORY_POUCH
+import aurocosh.divinefavor.common.item.ritual_pouch.ItemRitualPouch
 import aurocosh.divinefavor.common.item.ritual_pouch.RitualBagContainer
 import aurocosh.divinefavor.common.item.talisman.ISelectedStackProvider
 import aurocosh.divinefavor.common.item.talisman.ItemTalisman
 import aurocosh.divinefavor.common.item.talisman_tools.grimoire.GrimoireContainer
 import aurocosh.divinefavor.common.item.talisman_tools.grimoire.ItemGrimoire
-import aurocosh.divinefavor.common.item.talisman_tools.grimoire.capability.GrimoireDataHandler.CAPABILITY_GRIMOIRE
 import aurocosh.divinefavor.common.item.talisman_tools.spell_blade.ItemSpellBlade
 import aurocosh.divinefavor.common.item.talisman_tools.spell_blade.SpellBladeContainer
 import aurocosh.divinefavor.common.item.talisman_tools.spell_blade.capability.SpellBladeDataHandler.CAPABILITY_SPELL_BLADE
@@ -56,9 +57,11 @@ class GuiHandler : IGuiHandler {
             ConstGuiIDs.IRON_MEDIUM_NO_STONE -> return ContainerMediumNoStone(player, (world.getTileEntity(BlockPos(x, y, z)) as TileMedium))
             ConstGuiIDs.IRON_MEDIUM_WITH_STONE -> return ContainerMediumWithStone(player, (world.getTileEntity(BlockPos(x, y, z)) as TileMedium))
             ConstGuiIDs.RITUAL_POUCH -> {
-                val pouch = player.heldItemMainhand
-                val handler = pouch.cap(ITEM_HANDLER_CAPABILITY)
-                return RitualBagContainer(player, handler)
+                val (_, stack) = UtilPlayer.getHeldItem(player) { it is ItemRitualPouch } ?: return null
+                return RitualBagContainer(player, stack)
+            }
+            ConstGuiIDs.COMPRESSED_ITEMS_DROP -> {
+                return CompressedItemsDropContainer(player)
             }
             ConstGuiIDs.CONTRACT_BINDER -> {
                 val pouch = player.heldItemMainhand
@@ -66,10 +69,8 @@ class GuiHandler : IGuiHandler {
                 return ContractBinderContainer(player, handler)
             }
             ConstGuiIDs.GRIMOIRE -> {
-                val hand = UtilPlayer.getHand { h -> player.getHeldItem(h).item is ItemGrimoire } ?: return null
-                val stack = player.getHeldItem(hand)
-                val handler = stack.cap(CAPABILITY_GRIMOIRE)
-                return GrimoireContainer(player, handler, hand)
+                val (hand, stack) = UtilPlayer.getHeldItem(player) { it is ItemGrimoire } ?: return null
+                return GrimoireContainer(player, stack, hand)
             }
             ConstGuiIDs.GEM_POUCH -> {
                 val (hand, stack) = UtilPlayer.getHeldItem(player) { it is ItemGemPouch } ?: return null
@@ -119,8 +120,11 @@ class GuiHandler : IGuiHandler {
             ConstGuiIDs.IRON_MEDIUM_NO_STONE -> return GuiIronMediumNoStone(player, (world.getTileEntity(BlockPos(x, y, z)) as TileMedium))
             ConstGuiIDs.IRON_MEDIUM_WITH_STONE -> return GuiIronMediumWithStone(player, (world.getTileEntity(BlockPos(x, y, z)) as TileMedium))
             ConstGuiIDs.RITUAL_POUCH -> {
-                val pouch = player.heldItemMainhand
-                return GuiRitualPouch(player, pouch)
+                val (_, stack) = UtilPlayer.getHeldItem(player) { it is ItemRitualPouch } ?: return null
+                return GuiRitualPouch(player, stack)
+            }
+            ConstGuiIDs.COMPRESSED_ITEMS_DROP -> {
+                return GuiCompressedItemsDrop(player)
             }
             ConstGuiIDs.CONTRACT_BINDER -> {
                 val pouch = player.heldItemMainhand

@@ -206,6 +206,8 @@ public class ConfigSpell {
     public static WoodenPunch woodenPunch = new WoodenPunch();
 
     // New configs
+    @Config.Name("Compress items")
+    public static CompressItems compressItems = new CompressItems();
     @Config.Name("Create water")
     public static CreateWater createWater = new CreateWater();
     @Config.Name("Crystallize experience")

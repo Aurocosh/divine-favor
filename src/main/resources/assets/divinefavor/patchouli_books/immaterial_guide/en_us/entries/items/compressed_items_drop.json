@@ -1,0 +1,17 @@
+{
+  "name": "Compressed items drop",
+  "icon": "divinefavor:compressed_items_drop",
+  "category": "items",
+  "read_by_default": true,
+  "pages": [
+    {
+      "type": "item_description",
+      "talisman": "divinefavor:compressed_items_drop"
+    },
+    {
+      "type": "spotlight",
+      "item": "divinefavor:spell_talisman_compress_items",
+      "text": "This item can be created with item compression talisman."
+    }
+  ]
+}
