@@ -9,7 +9,7 @@ import net.minecraft.item.ItemStack
 import net.minecraft.util.ResourceLocation
 
 class GuiIronMediumWithStone(player: EntityPlayer, ironMedium: TileMedium) : GuiContainer(ContainerMediumWithStone(player, ironMedium)) {
-    var stoneStack: ItemStack = ironMedium.stoneStack
+    var stoneStack: ItemStack = ironMedium.gemStack
 
     override fun initGui() {
         xSize = WIDTH

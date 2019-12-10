@@ -15,6 +15,14 @@ class TileEntityPropertyDelegate<T, K : TileEntity>(private val nbtProperty: Nbt
         value = nbtProperty.getValue(compound)
     }
 
+    fun readIfNotEqual(compound: NBTTagCompound): Boolean {
+        val newValue = nbtProperty.getValue(compound)
+        if(newValue == value)
+            return false
+        value = newValue
+        return true
+    }
+
     override operator fun getValue(thisRef: Any?, property: KProperty<*>): T {
         return value
     }
@@ -24,7 +32,7 @@ class TileEntityPropertyDelegate<T, K : TileEntity>(private val nbtProperty: Nbt
         if (this.value == value)
             return
         this.value = value
-        val lectern = thisRef as K
-        sync.invoke(lectern)
+        val tileEntity = thisRef as K
+        sync.invoke(tileEntity)
     }
 }

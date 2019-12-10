@@ -289,7 +289,7 @@ class TileBathHeater : TileEntity(), ITickable, IAreaWatcher {
 
     companion object {
 
-        private val stateProperty = NbtPropertyEnum("StateBathHeater", BathHeaterState.INACTIVE, BathHeaterState)
+        private val stateProperty = NbtPropertyEnum("StateBathHeater", BathHeaterState.INACTIVE, BathHeaterState, listOf("tag_StateBathHeater"))
 //        private val spiritProperty = NbtPropertyInt("SpiritId", -1)
 
 

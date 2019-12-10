@@ -208,9 +208,9 @@ class TileSoulboundLectern : TileEntity(), IMultiblockController {
     }
 
     companion object {
-        private val gemProperty = NbtPropertyEnum("GemLectern", SoulboundLecternGem.NONE, SoulboundLecternGem)
-        private val stateProperty = NbtPropertyEnum("StateLectern", SoulboundLecternState.INACTIVE, SoulboundLecternState)
-        private val spiritProperty = NbtPropertyInt("SpiritId", -1)
+        private val gemProperty = NbtPropertyEnum("GemLectern", SoulboundLecternGem.NONE, SoulboundLecternGem, listOf("tag_GemLectern"))
+        private val stateProperty = NbtPropertyEnum("StateLectern", SoulboundLecternState.INACTIVE, SoulboundLecternState, listOf("tag_StateLectern"))
+        private val spiritProperty = NbtPropertyInt("SpiritId", -1, listOf("tag_SpiritId"))
 
         private const val TAG_SHARD = "Shard"
 

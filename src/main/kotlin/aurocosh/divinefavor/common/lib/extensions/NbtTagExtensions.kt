@@ -123,11 +123,11 @@ fun <T : Any> NBTTagCompound.set(property: NbtProperty<T>, value: T): Boolean {
 }
 
 fun <T : Any> NBTTagCompound.isPropertySet(property: NbtProperty<T>): Boolean {
-    return this.hasKey(property.tag)
+    return property.allNames.any(this::hasKey)
 }
 
 fun <T : Any, K : Any> NBTTagCompound.isPropertySet(one: NbtProperty<T>, two: NbtProperty<K>): Boolean {
-    return this.hasKey(one.tag) && this.hasKey(two.tag)
+    return one.allNames.any(this::hasKey) && two.allNames.any(this::hasKey)
 }
 
 fun <T : Any> NBTTagCompound.getOrNull(property: NbtProperty<T>): T? {

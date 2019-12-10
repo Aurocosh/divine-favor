@@ -38,7 +38,7 @@ class BlockMedium(name: String, material: Material) : ModBlock(ConstBlockNames.M
 
     override fun getActualState(state: IBlockState, world: IBlockAccess?, pos: BlockPos): IBlockState {
         val te = if (world is ChunkCache) world.getTileEntity(pos, Chunk.EnumCreateEntityType.CHECK) else world!!.getTileEntity(pos)
-        return if (te is TileMedium) state.withProperty(STATE, te.getState()).withProperty(STONE, te.getStone()) else super.getActualState(state, world, pos)
+        return if (te is TileMedium) state.withProperty(STATE, te.state).withProperty(STONE, te.stone) else super.getActualState(state, world, pos)
     }
 
     override fun getStateForPlacement(worldIn: World, pos: BlockPos, facing: EnumFacing, hitX: Float, hitY: Float, hitZ: Float, meta: Int, placer: EntityLivingBase): IBlockState {
@@ -63,7 +63,7 @@ class BlockMedium(name: String, material: Material) : ModBlock(ConstBlockNames.M
         val tileEntity = world.getTileEntity(pos) as? TileMedium ?: return false
         if (!tileEntity.isUsableByPlayer(player))
             return false
-        else if (!tileEntity.stoneStack.isEmpty)
+        else if (!tileEntity.gemStack.isEmpty)
             player.openGui(DivineFavor, ConstGuiIDs.IRON_MEDIUM_WITH_STONE, world, pos.x, pos.y, pos.z)
         else
             player.openGui(DivineFavor, ConstGuiIDs.IRON_MEDIUM_NO_STONE, world, pos.x, pos.y, pos.z)
@@ -77,12 +77,11 @@ class BlockMedium(name: String, material: Material) : ModBlock(ConstBlockNames.M
     override fun breakBlock(world: World, pos: BlockPos, state: IBlockState) {
         val entity = world.getTileEntity(pos)
         if (entity is TileMedium) {
-            val medium = entity as TileMedium?
-            medium!!.multiblockDeconstructed()
+            entity.multiblockDeconstructed()
 
-            UtilEntity.dropItemsOnGround(world, medium.stoneStackHandler, pos)
-            UtilEntity.dropItemsOnGround(world, medium.leftStackHandler, pos)
-            UtilEntity.dropItemsOnGround(world, medium.rightStackHandler, pos)
+            UtilEntity.dropItemsOnGround(world, entity.stoneStackHandler, pos)
+            UtilEntity.dropItemsOnGround(world, entity.leftStackHandler, pos)
+            UtilEntity.dropItemsOnGround(world, entity.rightStackHandler, pos)
         }
         super.breakBlock(world, pos, state)
     }

@@ -8,7 +8,7 @@ class TilePropertySyncHandler(var autoSync: Boolean = true) {
             return
         tileEntity.markDirty()
         val pos = tileEntity.pos
-        val world = tileEntity.world
+        val world = tileEntity.world ?: return
         val blockState = world.getBlockState(pos)
         world.notifyBlockUpdate(pos, blockState, blockState, 3)
     }

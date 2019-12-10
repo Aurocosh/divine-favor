@@ -21,8 +21,8 @@ class GemPouchStorage : Capability.IStorage<IGemPouchHandler> {
     }
 
     companion object {
-        private val selectedSlot = NbtPropertyInt("SelectedSlot", 0)
-        private val inventory = NbtPropertyNbtTag("Inventory", NBTTagCompound())
+        private val selectedSlot = NbtPropertyInt("SelectedSlot", 0, listOf("tag_SelectedSlot"))
+        private val inventory = NbtPropertyNbtTag("Inventory", NBTTagCompound(), listOf("tag_Inventory"))
 
         fun getNbtBase(instance: IGemPouchHandler): NBTTagCompound {
             val tag = NBTTagCompound()
@@ -36,6 +36,4 @@ class GemPouchStorage : Capability.IStorage<IGemPouchHandler> {
             instance.getStackHandler().deserializeNBT(nbt.get(inventory))
         }
     }
-
-
 }

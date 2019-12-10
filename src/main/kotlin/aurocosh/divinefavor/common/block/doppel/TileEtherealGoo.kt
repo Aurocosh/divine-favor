@@ -95,7 +95,7 @@ class TileEtherealGoo : TileEntity() {
     }
 
     companion object {
-        private val stateProperty = NbtPropertyIBlockState("blockState", Blocks.AIR.defaultState)
-        private val actualStateProperty = NbtPropertyIBlockState("actualBlockState", Blocks.AIR.defaultState)
+        private val stateProperty = NbtPropertyIBlockState("blockState", Blocks.AIR.defaultState, listOf("tag_blockState"))
+        private val actualStateProperty = NbtPropertyIBlockState("actualBlockState", Blocks.AIR.defaultState, listOf("tag_actualBlockState"))
     }
 }

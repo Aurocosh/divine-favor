@@ -1,16 +1,14 @@
 package aurocosh.divinefavor.common.block.medium
 
 import aurocosh.divinefavor.common.block.base.TickableTileEntity
-import aurocosh.divinefavor.common.item.gems.ItemCallingStone
-import aurocosh.divinefavor.common.item.common.ModCallingStones
-import aurocosh.divinefavor.common.item.common.ModItems
-import aurocosh.divinefavor.common.misc.SlotStack
+import aurocosh.divinefavor.common.block.soulbound_lectern.*
+import aurocosh.divinefavor.common.item.gems.base.IMediumGemItem
+import aurocosh.divinefavor.common.lib.extensions.*
+import aurocosh.divinefavor.common.lib.iterators.IItemHandlerSlot
 import aurocosh.divinefavor.common.muliblock.IMultiblockController
 import aurocosh.divinefavor.common.muliblock.common.MultiblockWatcher
 import aurocosh.divinefavor.common.muliblock.instance.MultiBlockInstance
 import aurocosh.divinefavor.common.muliblock.instance.MultiBlockSpiritInstance
-import aurocosh.divinefavor.common.receipes.common.ModMediumRecipes
-import aurocosh.divinefavor.common.util.UtilHandler
 import aurocosh.divinefavor.common.util.UtilTick
 import net.minecraft.block.state.IBlockState
 import net.minecraft.entity.player.EntityPlayer
@@ -22,14 +20,18 @@ import net.minecraft.util.EnumFacing
 import net.minecraft.util.math.BlockPos
 import net.minecraft.world.World
 import net.minecraftforge.common.capabilities.Capability
-import net.minecraftforge.items.CapabilityItemHandler
+import net.minecraftforge.items.CapabilityItemHandler.ITEM_HANDLER_CAPABILITY
 import net.minecraftforge.items.ItemStackHandler
 import net.minecraftforge.items.wrapper.CombinedInvWrapper
-import java.util.Arrays.asList
 
 class TileMedium : TickableTileEntity(false, true), IMultiblockController {
-    private var state = MediumState.INVALID
-    private var stone = MediumStone.NONE
+    private val syncHandler = TilePropertySyncHandler()
+
+    private val stateDelegate = TileEntityPropertyDelegate(stateMediumProp, syncHandler::sync)
+    private val stoneDelegate = TileEntityPropertyDelegate(stoneMediumProp, syncHandler::sync)
+
+    var state: MediumState by stateDelegate
+    var stone: MediumStone by stoneDelegate
 
     // server side
     private var extraActiveTime: Int = 0
@@ -41,7 +43,7 @@ class TileMedium : TickableTileEntity(false, true), IMultiblockController {
 
     val stoneStackHandler: ItemStackHandler = object : ItemStackHandler(1) {
         override fun isItemValid(slot: Int, stack: ItemStack): Boolean {
-            return stack.item is ItemCallingStone && stack.count == 1
+            return stack.item is IMediumGemItem && stack.count == 1
         }
 
         override fun onContentsChanged(slot: Int) {
@@ -74,8 +76,7 @@ class TileMedium : TickableTileEntity(false, true), IMultiblockController {
 
     internal var combinedHandler = CombinedInvWrapper(leftStackHandler, rightStackHandler)
 
-    val stoneStack: ItemStack
-        get() = stoneStackHandler.getStackInSlot(0)
+    val gemStack: ItemStack get() = stoneStackHandler.getStackInSlot(0)
 
     init {
         extraActiveTime = 0
@@ -89,25 +90,25 @@ class TileMedium : TickableTileEntity(false, true), IMultiblockController {
 
     override fun readFromNBT(compound: NBTTagCompound) {
         super.readFromNBT(compound)
-        extraActiveTime = compound.getInteger(TAG_EXTRA_ACTIVE_TIME)
-        state = MediumState[compound.getInteger(TAG_STATE_MEDIUM)]
-        stone = MediumStone[compound.getInteger(TAG_STONE_MEDIUM)]
-        if (compound.hasKey(TAG_CALLING_STONE))
-            stoneStackHandler.deserializeNBT(compound.getTag(TAG_CALLING_STONE) as NBTTagCompound)
-        if (compound.hasKey(TAG_ITEMS_LEFT))
-            leftStackHandler.deserializeNBT(compound.getTag(TAG_ITEMS_LEFT) as NBTTagCompound)
-        if (compound.hasKey(TAG_ITEMS_RIGHT))
-            rightStackHandler.deserializeNBT(compound.getTag(TAG_ITEMS_RIGHT) as NBTTagCompound)
+        extraActiveTime = compound.get(extraActiveTimeProp)
+        state = compound.get(stateMediumProp)
+        stone = compound.get(stoneMediumProp)
+        if (compound.isPropertySet(callingStoneProp))
+            stoneStackHandler.deserializeNBT(compound.get(callingStoneProp))
+        if (compound.isPropertySet(itemsLeftProp))
+            leftStackHandler.deserializeNBT(compound.get(itemsLeftProp))
+        if (compound.isPropertySet(itemsRightProp))
+            rightStackHandler.deserializeNBT(compound.get(itemsRightProp))
     }
 
     override fun writeToNBT(compound: NBTTagCompound): NBTTagCompound {
         super.writeToNBT(compound)
-        compound.setInteger(TAG_EXTRA_ACTIVE_TIME, extraActiveTime)
-        compound.setInteger(TAG_STATE_MEDIUM, state.ordinal)
-        compound.setInteger(TAG_STONE_MEDIUM, stone.ordinal)
-        compound.setTag(TAG_CALLING_STONE, stoneStackHandler.serializeNBT())
-        compound.setTag(TAG_ITEMS_LEFT, leftStackHandler.serializeNBT())
-        compound.setTag(TAG_ITEMS_RIGHT, rightStackHandler.serializeNBT())
+        compound.set(extraActiveTimeProp, extraActiveTime)
+        compound.set(stateMediumProp, state)
+        compound.set(stoneMediumProp, stone)
+        compound.set(callingStoneProp, stoneStackHandler.serializeNBT())
+        compound.set(itemsLeftProp, leftStackHandler.serializeNBT())
+        compound.set(itemsRightProp, rightStackHandler.serializeNBT())
         return compound
     }
 
@@ -121,24 +122,24 @@ class TileMedium : TickableTileEntity(false, true), IMultiblockController {
     }
 
     override fun hasCapability(capability: Capability<*>, facing: EnumFacing?): Boolean {
-        return if (capability === CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) facing == EnumFacing.WEST || facing == EnumFacing.EAST else super.hasCapability(capability, facing)
+        return if (capability === ITEM_HANDLER_CAPABILITY) facing == EnumFacing.WEST || facing == EnumFacing.EAST else super.hasCapability(capability, facing)
     }
 
     override fun <T> getCapability(capability: Capability<T>, facing: EnumFacing?): T? {
-        if (capability === CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) {
+        if (capability === ITEM_HANDLER_CAPABILITY) {
             if (facing == EnumFacing.WEST)
-                return CapabilityItemHandler.ITEM_HANDLER_CAPABILITY.cast<T>(leftStackHandler)
+                return ITEM_HANDLER_CAPABILITY.cast<T>(leftStackHandler)
             else if (facing == EnumFacing.EAST)
-                return CapabilityItemHandler.ITEM_HANDLER_CAPABILITY.cast<T>(rightStackHandler)
+                return ITEM_HANDLER_CAPABILITY.cast<T>(rightStackHandler)
         }
         return super.getCapability(capability, facing)
     }
 
     override fun getUpdateTag(): NBTTagCompound {
         val nbtTag = super.getUpdateTag()
-        nbtTag.setInteger(TAG_STATE_MEDIUM, state.ordinal)
-        nbtTag.setInteger(TAG_STONE_MEDIUM, stone.ordinal)
-        nbtTag.setTag(TAG_CALLING_STONE, stoneStackHandler.serializeNBT())
+        nbtTag.set(stateMediumProp, state)
+        nbtTag.set(stoneMediumProp, stone)
+        nbtTag.set(callingStoneProp, stoneStackHandler.serializeNBT())
         return nbtTag
     }
 
@@ -150,57 +151,26 @@ class TileMedium : TickableTileEntity(false, true), IMultiblockController {
         if (!world.isRemote)
             return
 
-        val compound = packet!!.nbtCompound
-        val stateIndex = compound.getInteger(TAG_STATE_MEDIUM)
-        if (stateIndex != state.ordinal) {
-            state = MediumState[stateIndex]
+        val compound = packet?.nbtCompound ?: return
+
+        val stateChanged = stateDelegate.readIfNotEqual(compound)
+        val stoneChanged = stoneDelegate.readIfNotEqual(compound)
+
+        if (compound.isPropertySet(callingStoneProp))
+            stoneStackHandler.deserializeNBT(compound.get(callingStoneProp))
+
+        if (stateChanged || stoneChanged)
             world.markBlockRangeForRenderUpdate(pos, pos)
-        }
-        val stoneIndex = compound.getInteger(TAG_STONE_MEDIUM)
-        if (stoneIndex != stone.ordinal) {
-            stone = MediumStone[stoneIndex]
-            world.markBlockRangeForRenderUpdate(pos, pos)
-        }
-
-        if (compound.hasKey(TAG_CALLING_STONE))
-            stoneStackHandler.deserializeNBT(compound.getCompoundTag(TAG_CALLING_STONE))
-    }
-
-    fun getStone(): MediumStone {
-        return stone
-    }
-
-    fun setStone(stone: MediumStone) {
-        if (this.stone == stone)
-            return
-
-        this.stone = stone
-        markDirty()
-        val blockState = world.getBlockState(pos)
-        world.notifyBlockUpdate(pos, blockState, blockState, 3)
-    }
-
-    fun getState(): MediumState {
-        return state
-    }
-
-    fun setState(state: MediumState) {
-        if (this.state == state)
-            return
-
-        this.state = state
-        markDirty()
-        val blockState = world.getBlockState(pos)
-        world.notifyBlockUpdate(pos, blockState, blockState, 3)
     }
 
     override fun updateFiltered() {
-        val stoneStack = stoneStack
+        val stoneStack = gemStack
         if (!stoneStack.isEmpty && multiBlockSpiritInstance != null) {
-            val callingStone = stoneStack.item as ItemCallingStone
-            val slotStacks = UtilHandler.getNotEmptyStacksWithSlotIndexes(combinedHandler)
-            checkForOfferings(callingStone, slotStacks)
-            processCraftingRecipes(callingStone, slotStacks)
+            val gemItem = stoneStack.item as IMediumGemItem
+            val slotStacks = combinedHandler.asSlotSequence().filter { it.stack.isNotEmpty() }.toList()
+
+            checkForOfferings(gemItem, slotStacks)
+            processCraftingRecipes(gemItem, slotStacks)
         }
 
         updateState()
@@ -209,36 +179,25 @@ class TileMedium : TickableTileEntity(false, true), IMultiblockController {
             extraActiveTime -= TICK_RATE
     }
 
-    private fun checkForOfferings(callingStone: ItemCallingStone, slotStacks: List<SlotStack>) {
-        val offering = callingStone.spirit.offering
-        val offeringCount = callingStone.spirit.offeringCount
+    private fun checkForOfferings(gemItem: IMediumGemItem, slotStacks: List<IItemHandlerSlot>) {
+        if (!gemItem.acceptsOfferings)
+            return
 
-        for ((index, stack) in slotStacks) {
-            if (stack.item === offering) {
-                if (stack.count >= offeringCount)
-                    extraActiveTime = OFFERING_ACTIVE_TIME
-                combinedHandler.setStackInSlot(index, ItemStack.EMPTY)
-            }
-        }
+        val offering = gemItem.spirit.offering
+        val offeringCount = gemItem.spirit.offeringCount
+
+        val offeringSlots = slotStacks.filter { it.stack.item === offering && it.stack.count >= offeringCount }.toList()
+        extraActiveTime = if (offeringSlots.isNotEmpty()) OFFERING_ACTIVE_TIME else 0
+        offeringSlots.forEach { it.extractItem() }
     }
 
-    private fun processCraftingRecipes(callingStone: ItemCallingStone, slotStacks: List<SlotStack>) {
-        if (!callingStone.spirit.isActive && extraActiveTime <= 0)
+    private fun processCraftingRecipes(gemItem: IMediumGemItem, slotStacks: List<IItemHandlerSlot>) {
+        if (!gemItem.spirit.isActive && extraActiveTime <= 0)
             return
-        if(stateId == lastCheckedStateId)
+        if (stateId == lastCheckedStateId)
             return
 
-        for ((_, stack) in slotStacks) {
-            if (stack.item === ModItems.ritual_pouch) {
-                val handler = stack.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null)
-                if (handler != null)
-                    ModMediumRecipes.exchangeRecipe(callingStone, handler, slotIndexesPouch)
-            }
-        }
-
-        ModMediumRecipes.exchangeRecipe(callingStone, leftStackHandler, slotIndexesAltar)
-        ModMediumRecipes.exchangeRecipe(callingStone, rightStackHandler, slotIndexesAltar)
-
+        gemItem.exchangeItems(slotStacks, leftStackHandler, rightStackHandler)
         lastCheckedStateId = stateId
     }
 
@@ -254,8 +213,6 @@ class TileMedium : TickableTileEntity(false, true), IMultiblockController {
         MultiblockWatcher.unRegisterController(this)
         multiBlockSpiritInstance = null
         updateState()
-        //        AltarsData altarsData = WorldData.get(world).getAltarsData();
-        //        altarsData.removeAltarLocation(pos);
     }
 
     override fun multiblockDamaged(player: EntityPlayer, world: World, pos: BlockPos, state: IBlockState) {
@@ -279,66 +236,42 @@ class TileMedium : TickableTileEntity(false, true), IMultiblockController {
         if (stack.isEmpty)
             return
 
-        val callingStone = stack.item as ItemCallingStone
-        val multiBlock = callingStone.multiBlock
-        multiBlockSpiritInstance = multiBlock.makeMultiBlock(callingStone.spirit, world, pos)
-        if (multiBlockSpiritInstance != null) {
+        val gemItem = stack.item as IMediumGemItem
+        val multiBlock = gemItem.multiBlock
+        multiBlockSpiritInstance = multiBlock.makeMultiBlock(gemItem.spirit, world, pos)
+        if (multiBlockSpiritInstance != null)
             MultiblockWatcher.registerController(this)
-            //            AltarsData altarsData = WorldData.get(world).getAltarsData();
-            //            altarsData.addAltarLocation(callingStone.spirit, pos);
-        }
     }
 
     private fun updateState() {
-        val stack = stoneStack
+        val stack = gemStack
         if (!stack.isEmpty) {
-            val callingStone = stack.item as ItemCallingStone
-            if (callingStone == ModCallingStones.calling_stone_arbow)
-                setStone(MediumStone.ARBOW)
-            else if (callingStone == ModCallingStones.calling_stone_blizrabi)
-                setStone(MediumStone.BLIZRABI)
-            else if (callingStone == ModCallingStones.calling_stone_endererer)
-                setStone(MediumStone.ENDERERER)
-            else if (callingStone == ModCallingStones.calling_stone_loon)
-                setStone(MediumStone.LOON)
-            else if (callingStone == ModCallingStones.calling_stone_neblaze)
-                setStone(MediumStone.NEBLAZE)
-            else if (callingStone == ModCallingStones.calling_stone_redwind)
-                setStone(MediumStone.REDWIND)
-            else if (callingStone == ModCallingStones.calling_stone_romol)
-                setStone(MediumStone.ROMOL)
-            else if (callingStone == ModCallingStones.calling_stone_squarefury)
-                setStone(MediumStone.SQUAREFURY)
-            else if (callingStone == ModCallingStones.calling_stone_timber)
-                setStone(MediumStone.TIMBER)
-
-            if (multiBlockSpiritInstance != null) {
-                val spirit = callingStone.spirit
-                if (spirit.isActive || extraActiveTime > 0)
-                    setState(MediumState.ACTIVE)
+            val gemItem = stack.item as IMediumGemItem
+            stone = gemItem.stoneType
+            state = if (multiBlockSpiritInstance != null) {
+                if (gemItem.spirit.isActive || extraActiveTime > 0)
+                    MediumState.ACTIVE
                 else
-                    setState(MediumState.VALID)
+                    MediumState.VALID
             } else
-                setState(MediumState.INVALID)
+                MediumState.INVALID
         } else {
-            setStone(MediumStone.NONE)
-            setState(MediumState.INVALID)
+            stone = MediumStone.NONE
+            state = MediumState.INVALID
         }
     }
 
     companion object {
         const val SIZE = 27
-        val TICK_RATE = UtilTick.secondsToTicks(2f)
-        val OFFERING_ACTIVE_TIME = UtilTick.secondsToTicks(10f)
-        private const val TAG_CALLING_STONE = "CallingStone"
-        private const val TAG_ITEMS_LEFT = "ItemsLeft"
-        private const val TAG_ITEMS_RIGHT = "ItemsRight"
-        private const val TAG_STATE_MEDIUM = "StateMedium"
-        private const val TAG_STONE_MEDIUM = "StoneMedium"
-        private const val TAG_EXTRA_ACTIVE_TIME = "ExtraActiveTime"
+        private val TICK_RATE = UtilTick.secondsToTicks(2f)
+        private val OFFERING_ACTIVE_TIME = UtilTick.secondsToTicks(10f)
 
-        private val slotIndexesPouch = asList(3, 1, 5, 0, 2, 4, 6)
-        private val slotIndexesAltar = asList(4, 1, 3, 5, 7, 0, 2, 6, 8)
+        private val callingStoneProp = NbtPropertyNbtTag("CallingStone", NBTTagCompound())
+        private val itemsLeftProp = NbtPropertyNbtTag("ItemsLeft", NBTTagCompound())
+        private val itemsRightProp = NbtPropertyNbtTag("ItemsRight", NBTTagCompound())
+        private val stateMediumProp = NbtPropertyEnum("StateMedium", MediumState.INVALID, MediumState)
+        private val stoneMediumProp = NbtPropertyEnum("StoneMedium", MediumStone.NONE, MediumStone)
+        private val extraActiveTimeProp = NbtPropertyInt("ExtraActiveTime", 0)
 
     }
 }
