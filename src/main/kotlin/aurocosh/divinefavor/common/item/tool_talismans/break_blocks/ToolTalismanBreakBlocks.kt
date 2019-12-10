@@ -1,6 +1,6 @@
 package aurocosh.divinefavor.common.item.tool_talismans.break_blocks
 
-import aurocosh.divinefavor.common.coordinate_generators.generateSideCoordinates
+import aurocosh.divinefavor.common.coordinate_generators.generateFloodFillCoordinates
 import aurocosh.divinefavor.common.item.spell_talismans.context.*
 import aurocosh.divinefavor.common.lib.cached_container.CachedContainer
 import aurocosh.divinefavor.common.lib.extensions.get
@@ -17,12 +17,13 @@ class ToolTalismanBreakBlocks(name: String, spirit: ModSpirit) : ToolTalismanBre
 
     override fun getCoordinates(context: CastContext): List<BlockPos> {
         val (stack, world, pos, facing) = context.get(stackField, worldField, posField, facingField)
-        val (fuzzy, state) = stack.get(isFuzzy, selectPropertyWrapper.selectedBlock)
+        val fuzzy = stack.get(isFuzzy)
         val count = getBlockCount(stack)
+        val state = world.getBlockState(pos)
 
         return cachedContainer.getValue(facing, pos, count, fuzzy) {
-            val predicate: (IBlockState) -> Boolean = { fuzzy || it == state }
-            generateSideCoordinates(pos, count, world, facing, predicate)
+            val predicate: (BlockPos, IBlockState) -> Boolean = { _, blockState -> blockState == state }
+            generateFloodFillCoordinates(pos, count, world, fuzzy, predicate)
         }
     }
 

@@ -15,8 +15,9 @@ class ToolTalismanBreakRadius(name: String, spirit: ModSpirit) : ToolTalismanBre
     private val radius: StackPropertyInt = propertyHandler.registerIntProperty("radius", 2, 1, 10)
 
     override fun getCoordinates(context: CastContext): List<BlockPos> {
-        val (player, stack, world) = context.get(playerField, stackField, worldField)
-        val (fuzzy, state) = stack.get(isFuzzy, selectPropertyWrapper.selectedBlock)
+        val (player, stack, world, pos) = context.get(playerField, stackField, worldField, posField)
+        val fuzzy = stack.get(isFuzzy)
+        val state = world.getBlockState(pos)
         if (!fuzzy && state == world.getBlockState(context.pos))
             return emptyList()
 

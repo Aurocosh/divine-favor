@@ -4,9 +4,8 @@ import aurocosh.divinefavor.client.block_ovelay.BlockHighlightRendering
 import aurocosh.divinefavor.common.block_operations.`do`.DestructionOperation
 import aurocosh.divinefavor.common.config.common.ConfigGeneral
 import aurocosh.divinefavor.common.item.spell_talismans.base.CastType
-import aurocosh.divinefavor.common.item.spell_talismans.common_build_properties.BlockSelectPropertyWrapper
-import aurocosh.divinefavor.common.item.spell_talismans.context.ContextProperty
 import aurocosh.divinefavor.common.item.spell_talismans.context.CastContext
+import aurocosh.divinefavor.common.item.spell_talismans.context.ContextProperty
 import aurocosh.divinefavor.common.item.spell_talismans.context.playerField
 import aurocosh.divinefavor.common.item.spell_talismans.context.worldField
 import aurocosh.divinefavor.common.item.tool_talismans.base.ItemToolTalisman
@@ -24,7 +23,6 @@ abstract class ToolTalismanDestroy(name: String, spirit: ModSpirit) : ItemToolTa
     protected val finalCoordinates = ContextProperty<List<BlockPos>>("coordinates", emptyList())
 
     protected val isFuzzy: StackPropertyBool = propertyHandler.registerBoolProperty("fuzzy", false)
-    protected val selectPropertyWrapper = BlockSelectPropertyWrapper(propertyHandler)
 
     override fun raycastBlock(stack: ItemStack, castType: CastType) = true
     override fun getApproximateFavorCost(itemStack: ItemStack) = favorCost * getBlockCount(itemStack)
@@ -56,13 +54,10 @@ abstract class ToolTalismanDestroy(name: String, spirit: ModSpirit) : ItemToolTa
     }
 
     override fun preValidate(context: CastContext): Boolean {
-        return context.player.isSneaking || super.preValidate(context)
+        return !context.player.isSneaking && super.preValidate(context)
     }
 
     override fun preProcess(context: CastContext): Boolean {
-        if (!selectPropertyWrapper.preprocess(context))
-            return false
-
         val coordinates = getCommonCoordinates(context)
         context.set(finalCoordinates, coordinates)
         return coordinates.isNotEmpty()

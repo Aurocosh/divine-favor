@@ -1,11 +1,11 @@
 package aurocosh.divinefavor.common.item.tool_talismans.destroy
 
-import aurocosh.divinefavor.common.lib.cached_container.CachedContainer
 import aurocosh.divinefavor.common.coordinate_generators.generateSurfaceCoordinates
 import aurocosh.divinefavor.common.item.spell_talismans.context.CastContext
 import aurocosh.divinefavor.common.item.spell_talismans.context.posField
 import aurocosh.divinefavor.common.item.spell_talismans.context.stackField
 import aurocosh.divinefavor.common.item.spell_talismans.context.worldField
+import aurocosh.divinefavor.common.lib.cached_container.CachedContainer
 import aurocosh.divinefavor.common.lib.extensions.get
 import aurocosh.divinefavor.common.spirit.base.ModSpirit
 import aurocosh.divinefavor.common.stack_properties.properties.StackPropertyInt
@@ -20,10 +20,6 @@ class ToolTalismanDestroySurface(name: String, spirit: ModSpirit) : ToolTalisman
     override fun getCoordinates(context: CastContext): List<BlockPos> {
         val (stack, world, pos) = context.get(stackField, worldField, posField)
         val fuzzy = stack.get(isFuzzy)
-        val state = stack.get(selectPropertyWrapper.selectedBlock)
-        if (!fuzzy && state == world.getBlockState(pos))
-            return emptyList()
-
         val count = getBlockCount(stack)
         return cachedContainer.getValue(pos, count, fuzzy) {
             generateSurfaceCoordinates(pos, count, world, fuzzy)

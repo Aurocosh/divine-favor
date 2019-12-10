@@ -54,30 +54,32 @@ object ModBladeTalismans {
         // romol;
 
         // squarefury;
-        butchering_strike = BladeTalismanButcheringStrike("butchering_strike", ModSpirits.squarefury, ConfigBlade.butcheringStrike.favorCost)
-        confusion = BladeTalismanConfusion("confusion", ModSpirits.squarefury, ConfigBlade.confusion.favorCost)
-        corrosion = BladeTalismanCorrosion("corrosion", ModSpirits.squarefury, ConfigBlade.corrosion.favorCost)
         gamble = BladeTalismanGamble("gamble", ModSpirits.squarefury, ConfigBlade.gamble.favorCost)
-        hand_swap = BladeTalismanHandSwap("hand_swap", ModSpirits.squarefury, ConfigBlade.handSwap.favorCost)
-        heavy_blade = BladeTalismanHeavy("heavy_blade", ModSpirits.squarefury, ConfigBlade.heavyBlade.favorCost)
-        holy_blade = BladeTalismanHoly("holy_blade", ModSpirits.squarefury, ConfigBlade.holyBlade.favorCost)
         hungry_blade = BladeTalismanHungry("hungry_blade", ModSpirits.squarefury, ConfigBlade.hungryBlade.favorCost)
         poison_coating = BladeTalismanPoisonCoating("poison_coating", ModSpirits.squarefury, ConfigBlade.poisonCoating.favorCost)
         vengeful_blade = BladeTalismanVengeful("vengeful_blade", ModSpirits.squarefury, ConfigBlade.vengefulBlade.favorCost)
 
+        butchering_strike = BladeTalismanButcheringStrike("butchering_strike", ModSpirits.squarefury, ConfigBlade.butcheringStrike.favorCost)
+        confusion = BladeTalismanConfusion("confusion", ModSpirits.squarefury, ConfigBlade.confusion.favorCost)
+        corrosion = BladeTalismanCorrosion("corrosion", ModSpirits.squarefury, ConfigBlade.corrosion.favorCost)
+        hand_swap = BladeTalismanHandSwap("hand_swap", ModSpirits.squarefury, ConfigBlade.handSwap.favorCost)
+        heavy_blade = BladeTalismanHeavy("heavy_blade", ModSpirits.squarefury, ConfigBlade.heavyBlade.favorCost)
+        holy_blade = BladeTalismanHoly("holy_blade", ModSpirits.squarefury, ConfigBlade.holyBlade.favorCost)
+        obliteration = BladeTalismanObliteration("obliteration", ModSpirits.squarefury, ConfigBlade.obliteration.favorCost)
+
         // timber;
         wither_coating = BladeTalismanWitherCoating("wither_coating", ModSpirits.timber, ConfigBlade.witherCoating.favorCost)
+        fill_lungs = BladeTalismanModPotion("fill_lungs", ModSpirits.timber, ConfigBlade.fillLungs.favorCost, ModCurses.fill_lungs, ConfigBlade.fillLungs.duration)
+        suffocating_fumes = BladeTalismanModPotion("suffocating_fumes", ModSpirits.timber, ConfigBlade.suffocatingFumes.favorCost, ModCurses.suffocating_fumes, ConfigBlade.suffocatingFumes.duration)
 
-        // New instances
-        obliteration = BladeTalismanObliteration("obliteration", ModSpirits.squarefury, ConfigBlade.obliteration.favorCost)
         yummy_smell = BladeTalismanModPotion("yummy_smell", ModSpirits.timber, ConfigBlade.yummySmell.favorCost, ModCurses.yummy_smell, ConfigBlade.yummySmell.duration)
         wind_leash = BladeTalismanModPotion("wind_leash", ModSpirits.timber, ConfigBlade.windLeash.favorCost, ModCurses.wind_leash, ConfigBlade.windLeash.duration)
-        suffocating_fumes = BladeTalismanModPotion("suffocating_fumes", ModSpirits.timber, ConfigBlade.suffocatingFumes.favorCost, ModCurses.suffocating_fumes, ConfigBlade.suffocatingFumes.duration)
         skyfall = BladeTalismanModPotion("skyfall", ModSpirits.timber, ConfigBlade.skyfall.favorCost, ModCurses.skyfall, ConfigBlade.skyfall.duration)
-        fill_lungs = BladeTalismanModPotion("fill_lungs", ModSpirits.timber, ConfigBlade.fillLungs.favorCost, ModCurses.fill_lungs, ConfigBlade.fillLungs.duration)
         fiery_mark = BladeTalismanModPotion("fiery_mark", ModSpirits.neblaze, ConfigBlade.fieryMark.favorCost, ModCurses.fiery_mark, ConfigBlade.fieryMark.duration)
         crawling_mist = BladeTalismanModPotion("crawling_mist", ModSpirits.timber, ConfigBlade.crawlingMist.favorCost, ModCurses.crawling_mist, ConfigBlade.crawlingMist.duration)
         lucky_strike = BladeTalismanLuckyStrike("lucky_strike", ModSpirits.squarefury, ConfigBlade.luckyStrike.favorCost)
         memory_blade = BladeTalismanMemoryBlade("memory_blade", ModSpirits.squarefury, ConfigBlade.memoryBlade.favorCost)
+
+        // New instances
     }
 }

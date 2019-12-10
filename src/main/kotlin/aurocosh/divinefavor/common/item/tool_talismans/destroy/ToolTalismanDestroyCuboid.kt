@@ -33,7 +33,7 @@ class ToolTalismanDestroyCuboid(name: String, spirit: ModSpirit) : ToolTalismanD
             val (player, stack, world) = context.get(playerField, stackField, worldField)
             val directions = UtilPlayer.getRelativeDirections(player, context.facing)
             val sequence = generateCuboid(directions, pos, up, down, left, right, depth)
-            val state = stack.get(selectPropertyWrapper.selectedBlock)
+            val state = world.getBlockState(pos)
             if (stack.get(isFuzzy))
                 sequence.toList()
             else

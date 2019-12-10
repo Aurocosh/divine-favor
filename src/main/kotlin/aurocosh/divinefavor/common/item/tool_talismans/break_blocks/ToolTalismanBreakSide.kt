@@ -1,8 +1,8 @@
 package aurocosh.divinefavor.common.item.tool_talismans.break_blocks
 
-import aurocosh.divinefavor.common.lib.cached_container.CachedContainer
 import aurocosh.divinefavor.common.coordinate_generators.generateSideCoordinates
 import aurocosh.divinefavor.common.item.spell_talismans.context.*
+import aurocosh.divinefavor.common.lib.cached_container.CachedContainer
 import aurocosh.divinefavor.common.lib.extensions.get
 import aurocosh.divinefavor.common.spirit.base.ModSpirit
 import aurocosh.divinefavor.common.stack_properties.properties.StackPropertyInt
@@ -17,8 +17,9 @@ class ToolTalismanBreakSide(name: String, spirit: ModSpirit) : ToolTalismanBreak
 
     override fun getCoordinates(context: CastContext): List<BlockPos> {
         val (stack, world, pos, facing) = context.get(stackField, worldField, posField, facingField)
-        val (fuzzy, state) = stack.get(isFuzzy, selectPropertyWrapper.selectedBlock)
+        val fuzzy = stack.get(isFuzzy)
         val count = getBlockCount(stack)
+        val state = world.getBlockState(pos)
 
         return cachedContainer.getValue(facing, pos, count, fuzzy) {
             val predicate: (IBlockState) -> Boolean = { fuzzy || it == state }

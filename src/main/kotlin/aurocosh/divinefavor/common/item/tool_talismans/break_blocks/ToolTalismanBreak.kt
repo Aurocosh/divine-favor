@@ -3,9 +3,8 @@ package aurocosh.divinefavor.common.item.tool_talismans.break_blocks
 import aurocosh.divinefavor.client.block_ovelay.BlockHighlightRendering
 import aurocosh.divinefavor.common.config.common.ConfigGeneral
 import aurocosh.divinefavor.common.item.spell_talismans.base.CastType
-import aurocosh.divinefavor.common.item.spell_talismans.common_build_properties.BlockSelectPropertyWrapper
-import aurocosh.divinefavor.common.item.spell_talismans.context.ContextProperty
 import aurocosh.divinefavor.common.item.spell_talismans.context.CastContext
+import aurocosh.divinefavor.common.item.spell_talismans.context.ContextProperty
 import aurocosh.divinefavor.common.item.talisman_tools.spell_pick.ItemSpellPick
 import aurocosh.divinefavor.common.item.tool_talismans.base.ItemToolTalisman
 import aurocosh.divinefavor.common.lib.extensions.filter
@@ -25,12 +24,11 @@ abstract class ToolTalismanBreak(name: String, spirit: ModSpirit) : ItemToolTali
 
     val isFuzzy: StackPropertyBool = propertyHandler.registerBoolProperty("fuzzy", true)
     val doNotBreakBelow = propertyHandler.registerBoolProperty("do_not_break_below", false)
-    protected val selectPropertyWrapper = BlockSelectPropertyWrapper(propertyHandler)
 
     override fun raycastBlock(stack: ItemStack, castType: CastType) = true
     override fun getApproximateFavorCost(itemStack: ItemStack) = favorCost * getBlockCount(itemStack)
     override fun getFinalFavorCost(context: CastContext) = favorCost * context.get(finalCoordinates).size
-    override fun preValidate(context: CastContext) = context.player.isSneaking || super.preValidate(context)
+    override fun preValidate(context: CastContext) = !context.player.isSneaking && super.preValidate(context)
 
     override fun shouldBreakBlock(context: CastContext): Boolean {
         return false
@@ -47,8 +45,6 @@ abstract class ToolTalismanBreak(name: String, spirit: ModSpirit) : ItemToolTali
     }
 
     override fun preProcess(context: CastContext): Boolean {
-        if (!selectPropertyWrapper.preprocess(context))
-            return false
         val coordinates = getCommonCoordinates(context)
         context.set(finalCoordinates, coordinates)
         return coordinates.isNotEmpty()

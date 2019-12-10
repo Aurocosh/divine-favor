@@ -20,10 +20,6 @@ class ToolTalismanDestroyBlocks(name: String, spirit: ModSpirit) : ToolTalismanD
     override fun getCoordinates(context: CastContext): List<BlockPos> {
         val (stack, world, pos) = context.get(stackField, worldField, posField)
         val fuzzy = stack.get(isFuzzy)
-        val state = stack.get(selectPropertyWrapper.selectedBlock)
-        if (!fuzzy && state != world.getBlockState(pos))
-            return emptyList()
-
         val count = getBlockCount(stack)
         return cachedContainer.getValue(pos, count, fuzzy) {
             generateFloodFillCoordinates(pos, count, world, fuzzy)
