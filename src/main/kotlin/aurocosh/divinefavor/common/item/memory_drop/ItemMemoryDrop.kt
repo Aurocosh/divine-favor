@@ -9,8 +9,8 @@ import aurocosh.divinefavor.common.lib.EmptyConst.invalidUUID
 import aurocosh.divinefavor.common.lib.extensions.get
 import aurocosh.divinefavor.common.lib.extensions.isPropertySet
 import aurocosh.divinefavor.common.stack_properties.StackPropertyHandler
-import aurocosh.divinefavor.common.stack_properties.interfaces.IPropertyAccessor
-import aurocosh.divinefavor.common.stack_properties.interfaces.IPropertyContainer
+import aurocosh.divinefavor.common.stack_properties.interfaces.IStackPropertyAccessor
+import aurocosh.divinefavor.common.stack_properties.interfaces.IStackPropertyContainer
 import aurocosh.divinefavor.common.stack_properties.properties.StackPropertyString
 import aurocosh.divinefavor.common.stack_properties.properties.StackPropertyUUID
 import aurocosh.divinefavor.common.stack_properties.properties.base.StackProperty
@@ -24,9 +24,9 @@ import net.minecraft.util.EnumHand
 import net.minecraft.world.World
 import java.util.*
 
-open class ItemMemoryDrop : ModItem(name, name, ConstGemTabOrder.OTHER_GEMS), ITemplateContainer, IPropertyContainer {
+open class ItemMemoryDrop : ModItem(name, name, ConstGemTabOrder.OTHER_GEMS), ITemplateContainer, IStackPropertyContainer {
     protected val propertyHandler: StackPropertyHandler = StackPropertyHandler(name)
-    override val properties: IPropertyAccessor = propertyHandler
+    override val properties: IStackPropertyAccessor = propertyHandler
 
     init {
         propertyHandler.registerProperty(uuid)

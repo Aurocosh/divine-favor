@@ -3,15 +3,18 @@ package aurocosh.divinefavor.common.block.bath_heater
 import aurocosh.divinefavor.common.area.IAreaWatcher
 import aurocosh.divinefavor.common.area.WorldArea
 import aurocosh.divinefavor.common.area.WorldAreaWatcher
-import aurocosh.divinefavor.common.block.soulbound_lectern.NbtPropertyEnum
+import aurocosh.divinefavor.common.block.base.ModTileEntity
+import aurocosh.divinefavor.common.block.medium.TileMedium
 import aurocosh.divinefavor.common.block.soulbound_lectern.TileEntityPropertyDelegate
 import aurocosh.divinefavor.common.block.soulbound_lectern.TilePropertySyncHandler
+import aurocosh.divinefavor.common.block.soulbound_lectern.TileSoulboundLectern
 import aurocosh.divinefavor.common.constants.BlockPosConstants
 import aurocosh.divinefavor.common.item.bathing_blend.ItemBathingBlend
 import aurocosh.divinefavor.common.lib.LoopedCounter
 import aurocosh.divinefavor.common.lib.extensions.S
 import aurocosh.divinefavor.common.lib.extensions.isWater
 import aurocosh.divinefavor.common.lib.wrapper.ConvertingPredicate
+import aurocosh.divinefavor.common.nbt_properties.*
 import aurocosh.divinefavor.common.util.UtilBlockPos
 import aurocosh.divinefavor.common.util.UtilCoordinates
 import aurocosh.divinefavor.common.util.UtilRandom
@@ -31,10 +34,11 @@ import net.minecraft.util.math.BlockPos
 import net.minecraft.world.World
 import net.minecraftforge.common.capabilities.Capability
 import net.minecraftforge.items.CapabilityItemHandler
+import net.minecraftforge.items.CapabilityItemHandler.ITEM_HANDLER_CAPABILITY
 import net.minecraftforge.items.ItemStackHandler
 import java.util.*
 
-class TileBathHeater : TileEntity(), ITickable, IAreaWatcher {
+class TileBathHeater : ModTileEntity(), ITickable, IAreaWatcher {
     private val syncHandler = TilePropertySyncHandler()
 
     var clientProgressEffect: Int = 0
@@ -92,6 +96,22 @@ class TileBathHeater : TileEntity(), ITickable, IAreaWatcher {
         area = WorldArea()
         waterPositions = HashSet()
         loopedCounter = LoopedCounter()
+
+        val waterPositionsSerializer = GenericPropertySerializer(waterPositionsProp, { UtilBlockPos.serialize(waterPositions) }) {
+            waterPositions.clear()
+            waterPositions.addAll(UtilBlockPos.deserialize(it))
+        }
+
+        stateSerializer.registerSerializer(stateDelegate)
+        stateSerializer.registerSerializer(StackHandlerPropertySerializer(fuelProp, fuelStackHandler))
+        stateSerializer.registerSerializer(StackHandlerPropertySerializer(ingredientsProp, blendStackHandler))
+        stateSerializer.registerSerializer(GenericPropertySerializer(maxBurnTimeProp, { maxBurnTime }, { maxBurnTime = it }))
+        stateSerializer.registerSerializer(GenericPropertySerializer(currentBurnTimeProp, { currentBurnTime }, { currentBurnTime = it }))
+        stateSerializer.registerSerializer(GenericPropertySerializer(effectTickRateProp, { loopedCounter.tickRate }, { loopedCounter.tickRate = it }))
+        stateSerializer.registerSerializer(waterPositionsSerializer)
+
+        updateSerializer.registerSerializer(stateDelegate)
+        updateSerializer.registerSerializer(waterPositionsSerializer)
     }
 
     fun initialize() {
@@ -132,30 +152,7 @@ class TileBathHeater : TileEntity(), ITickable, IAreaWatcher {
 
     override fun readFromNBT(compound: NBTTagCompound) {
         super.readFromNBT(compound)
-        maxBurnTime = compound.getInteger(TAG_MAX_BURN_TIME)
-        currentBurnTime = compound.getInteger(TAG_CURRENT_BURN_TIME)
         progressBurning = if (maxBurnTime == 0) 0 else currentBurnTime / maxBurnTime
-
-        stateDelegate.readFromNbt(compound)
-        waterPositions.clear()
-        waterPositions.addAll(UtilBlockPos.deserialize(compound.getIntArray(TAG_WATER_POSITIONS)))
-        loopedCounter.tickRate = compound.getInteger(TAG_EFFECT_TICK_RATE)
-        if (compound.hasKey(TAG_FUEL))
-            fuelStackHandler.deserializeNBT(compound.getTag(TAG_FUEL) as NBTTagCompound)
-        if (compound.hasKey(TAG_INGREDIENTS))
-            blendStackHandler.deserializeNBT(compound.getTag(TAG_INGREDIENTS) as NBTTagCompound)
-    }
-
-    override fun writeToNBT(compound: NBTTagCompound): NBTTagCompound {
-        super.writeToNBT(compound)
-        stateDelegate.writeToNbt(compound)
-        compound.setInteger(TAG_MAX_BURN_TIME, maxBurnTime)
-        compound.setInteger(TAG_CURRENT_BURN_TIME, currentBurnTime)
-        compound.setIntArray(TAG_WATER_POSITIONS, UtilBlockPos.serialize(waterPositions))
-        compound.setInteger(TAG_EFFECT_TICK_RATE, loopedCounter.tickRate)
-        compound.setTag(TAG_FUEL, fuelStackHandler.serializeNBT())
-        compound.setTag(TAG_INGREDIENTS, blendStackHandler.serializeNBT())
-        return compound
     }
 
     fun isUsableByPlayer(playerIn: EntityPlayer): Boolean {
@@ -164,40 +161,21 @@ class TileBathHeater : TileEntity(), ITickable, IAreaWatcher {
     }
 
     override fun hasCapability(capability: Capability<*>, facing: EnumFacing?): Boolean {
-        return if (capability === CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) facing == EnumFacing.UP || facing == EnumFacing.DOWN else super.hasCapability(capability, facing)
+        return if (capability === ITEM_HANDLER_CAPABILITY) facing == EnumFacing.UP || facing == EnumFacing.DOWN else super.hasCapability(capability, facing)
     }
 
     override fun <T> getCapability(capability: Capability<T>, facing: EnumFacing?): T? {
-        if (capability === CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) {
+        if (capability === ITEM_HANDLER_CAPABILITY) {
             if (facing == EnumFacing.UP)
-                return CapabilityItemHandler.ITEM_HANDLER_CAPABILITY.cast<T>(blendStackHandler)
+                return ITEM_HANDLER_CAPABILITY.cast<T>(blendStackHandler)
             else if (facing == EnumFacing.DOWN)
-                return CapabilityItemHandler.ITEM_HANDLER_CAPABILITY.cast<T>(fuelStackHandler)
+                return ITEM_HANDLER_CAPABILITY.cast<T>(fuelStackHandler)
         }
         return super.getCapability(capability, facing)
     }
 
-    override fun getUpdateTag(): NBTTagCompound {
-        val nbtTag = super.getUpdateTag()
-        stateDelegate.writeToNbt(nbtTag)
-        nbtTag.setIntArray(TAG_WATER_POSITIONS, UtilBlockPos.serialize(waterPositions))
-        return nbtTag
-    }
-
-    override fun getUpdatePacket(): SPacketUpdateTileEntity? {
-        return SPacketUpdateTileEntity(pos, 1, updateTag)
-    }
-
-    override fun onDataPacket(net: NetworkManager?, packet: SPacketUpdateTileEntity) {
-        if (!world.isRemote)
-            return
-
-        val oldState = state
-        stateDelegate.readFromNbt(packet.nbtCompound)
-        if (oldState != state)
-            world.markBlockRangeForRenderUpdate(pos, pos)
-        waterPositions.clear()
-        waterPositions.addAll(UtilBlockPos.deserialize(packet.nbtCompound.getIntArray(TAG_WATER_POSITIONS)))
+    override fun getRenderStateKey(): Array<out Any> {
+        return arrayOf(state)
     }
 
     override fun update() {
@@ -288,23 +266,18 @@ class TileBathHeater : TileEntity(), ITickable, IAreaWatcher {
     }
 
     companion object {
-
-        private val stateProperty = NbtPropertyEnum("StateBathHeater", BathHeaterState.INACTIVE, BathHeaterState, listOf("tag_StateBathHeater"))
-//        private val spiritProperty = NbtPropertyInt("SpiritId", -1)
-
-
         const val FUEL_SIZE = 1
         const val INGREDIENTS_SIZE = 1
 
         private const val MAX_PROGRESS = 100
         private const val RADIUS_OF_EFFECT = 3
 
-        private const val TAG_FUEL = "FUEL"
-        private const val TAG_MAX_BURN_TIME = "MaxBurnTime"
-        private const val TAG_CURRENT_BURN_TIME = "CurrentBurnTime"
-        private const val TAG_INGREDIENTS = "Ingredients"
-        private const val TAG_STATE_HEATER = "StateHeater"
-        private const val TAG_WATER_POSITIONS = "WaterPositions"
-        private const val TAG_EFFECT_TICK_RATE = "EffectTickRate"
+        private val fuelProp = NbtPropertyNbtTag("Fuel", oldNames = listOf("FUEL"))
+        private val ingredientsProp = NbtPropertyNbtTag("Ingredients")
+        private val maxBurnTimeProp = NbtPropertyInt("MaxBurnTime")
+        private val currentBurnTimeProp = NbtPropertyInt("CurrentBurnTime")
+        private val effectTickRateProp = NbtPropertyInt("EffectTickRate")
+        private val waterPositionsProp = NbtPropertyIntArray("WaterPositions")
+        private val stateProperty = NbtPropertyEnum("StateBathHeater", BathHeaterState.INACTIVE, BathHeaterState, listOf("tag_StateBathHeater"))
     }
 }

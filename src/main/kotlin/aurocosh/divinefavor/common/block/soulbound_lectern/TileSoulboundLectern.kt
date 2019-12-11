@@ -1,5 +1,8 @@
 package aurocosh.divinefavor.common.block.soulbound_lectern
 
+import aurocosh.divinefavor.common.block.base.ModTileEntity
+import aurocosh.divinefavor.common.block.soulbound_lectern.enums.SoulboundLecternGem
+import aurocosh.divinefavor.common.block.soulbound_lectern.enums.SoulboundLecternState
 import aurocosh.divinefavor.common.item.gems.soul_shards.ItemSoulShard
 import aurocosh.divinefavor.common.lib.extensions.S
 import aurocosh.divinefavor.common.lib.extensions.mapPairs
@@ -9,23 +12,24 @@ import aurocosh.divinefavor.common.muliblock.common.ModMultiBlocks
 import aurocosh.divinefavor.common.muliblock.common.MultiblockWatcher
 import aurocosh.divinefavor.common.muliblock.instance.MultiBlockInstance
 import aurocosh.divinefavor.common.muliblock.instance.MultiBlockSpiritInstance
+import aurocosh.divinefavor.common.nbt_properties.NbtPropertyEnum
+import aurocosh.divinefavor.common.nbt_properties.NbtPropertyInt
+import aurocosh.divinefavor.common.nbt_properties.NbtPropertyNbtTag
+import aurocosh.divinefavor.common.nbt_properties.StackHandlerPropertySerializer
 import aurocosh.divinefavor.common.spirit.ModSpirits
 import net.minecraft.block.state.IBlockState
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.item.ItemStack
 import net.minecraft.nbt.NBTTagCompound
-import net.minecraft.network.NetworkManager
-import net.minecraft.network.play.server.SPacketUpdateTileEntity
-import net.minecraft.tileentity.TileEntity
 import net.minecraft.util.EnumFacing
 import net.minecraft.util.math.BlockPos
 import net.minecraft.world.World
 import net.minecraftforge.common.capabilities.Capability
-import net.minecraftforge.items.CapabilityItemHandler
+import net.minecraftforge.items.CapabilityItemHandler.ITEM_HANDLER_CAPABILITY
 import net.minecraftforge.items.ItemStackHandler
 import java.util.*
 
-class TileSoulboundLectern : TileEntity(), IMultiblockController {
+class TileSoulboundLectern : ModTileEntity(), IMultiblockController {
     private val syncHandler = TilePropertySyncHandler()
 
     private var isRejecting: Boolean = false
@@ -65,29 +69,21 @@ class TileSoulboundLectern : TileEntity(), IMultiblockController {
 
     init {
         isRejecting = false
+
+        stateSerializer.registerSerializer(spiritIdDelegate)
+        stateSerializer.registerSerializer(gemDelegate)
+        stateSerializer.registerSerializer(stateDelegate)
+        stateSerializer.registerSerializer(StackHandlerPropertySerializer(shardProp, shardStackHandler))
+
+        updateSerializer.registerSerializer(spiritIdDelegate)
+        updateSerializer.registerSerializer(gemDelegate)
+        updateSerializer.registerSerializer(stateDelegate)
+        updateSerializer.registerSerializer(StackHandlerPropertySerializer(shardProp, shardStackHandler))
     }
 
     override fun onLoad() {
         tryToFormMultiBlockInternal()
         syncHandler.autoSync = !world.isRemote
-    }
-
-    override fun readFromNBT(compound: NBTTagCompound) {
-        super.readFromNBT(compound)
-        stateDelegate.readFromNbt(compound)
-        gemDelegate.readFromNbt(compound)
-        spiritIdDelegate.readFromNbt(compound)
-        if (compound.hasKey(TAG_SHARD))
-            shardStackHandler.deserializeNBT(compound.getTag(TAG_SHARD) as NBTTagCompound)
-    }
-
-    override fun writeToNBT(compound: NBTTagCompound): NBTTagCompound {
-        super.writeToNBT(compound)
-        stateDelegate.writeToNbt(compound)
-        gemDelegate.writeToNbt(compound)
-        spiritIdDelegate.writeToNbt(compound)
-        compound.setTag(TAG_SHARD, shardStackHandler.serializeNBT())
-        return compound
     }
 
     fun isUsableByPlayer(playerIn: EntityPlayer): Boolean {
@@ -100,45 +96,19 @@ class TileSoulboundLectern : TileEntity(), IMultiblockController {
     }
 
     override fun hasCapability(capability: Capability<*>, facing: EnumFacing?): Boolean {
-        return if (capability === CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) facing == null else super.hasCapability(capability, facing)
+        return if (capability === ITEM_HANDLER_CAPABILITY) facing == null else super.hasCapability(capability, facing)
     }
 
     override fun <T> getCapability(capability: Capability<T>, facing: EnumFacing?): T? {
-        if (capability === CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) {
+        if (capability === ITEM_HANDLER_CAPABILITY) {
             if (facing == null)
-                return CapabilityItemHandler.ITEM_HANDLER_CAPABILITY.cast<T>(shardStackHandler)
+                return ITEM_HANDLER_CAPABILITY.cast<T>(shardStackHandler)
         }
         return super.getCapability(capability, facing)
     }
 
-    override fun getUpdateTag(): NBTTagCompound {
-        val nbtTag = super.getUpdateTag()
-        nbtTag.setTag(TAG_SHARD, shardStackHandler.serializeNBT())
-        stateDelegate.writeToNbt(nbtTag)
-        gemDelegate.writeToNbt(nbtTag)
-        spiritIdDelegate.writeToNbt(nbtTag)
-        return nbtTag
-    }
-
-    override fun getUpdatePacket(): SPacketUpdateTileEntity? {
-        return SPacketUpdateTileEntity(pos, 1, updateTag)
-    }
-
-    override fun onDataPacket(net: NetworkManager?, packet: SPacketUpdateTileEntity?) {
-        if (!world.isRemote)
-            return
-        val compound = packet!!.nbtCompound
-        shardStackHandler.deserializeNBT(compound.getCompoundTag(TAG_SHARD))
-
-        val oldGem = gem
-        val oldState = state
-
-        stateDelegate.readFromNbt(compound)
-        gemDelegate.readFromNbt(compound)
-        spiritIdDelegate.readFromNbt(compound)
-
-        if (state != oldState || gem != oldGem)
-            world.markBlockRangeForRenderUpdate(pos, pos)
+    override fun getRenderStateKey(): Array<out Any> {
+        return arrayOf(gem, state)
     }
 
     override fun getMultiblockInstance(): MultiBlockInstance? {
@@ -201,18 +171,17 @@ class TileSoulboundLectern : TileEntity(), IMultiblockController {
             else -> SoulboundLecternGem.NONE
         }
 
-        if (multiBlockInstance == null)
-            state = SoulboundLecternState.INACTIVE
+        state = if (multiBlockInstance == null)
+            SoulboundLecternState.INACTIVE
         else
-            state = SoulboundLecternState.ACTIVE
+            SoulboundLecternState.ACTIVE
     }
 
     companion object {
         private val gemProperty = NbtPropertyEnum("GemLectern", SoulboundLecternGem.NONE, SoulboundLecternGem, listOf("tag_GemLectern"))
         private val stateProperty = NbtPropertyEnum("StateLectern", SoulboundLecternState.INACTIVE, SoulboundLecternState, listOf("tag_StateLectern"))
         private val spiritProperty = NbtPropertyInt("SpiritId", -1, listOf("tag_SpiritId"))
-
-        private const val TAG_SHARD = "Shard"
+        private val shardProp = NbtPropertyNbtTag("Shard", NBTTagCompound())
 
         private val multiblocks = HashMap<Int, ModMultiBlock>()
 

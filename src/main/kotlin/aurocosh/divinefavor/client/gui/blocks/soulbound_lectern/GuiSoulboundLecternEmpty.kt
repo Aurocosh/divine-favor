@@ -1,6 +1,6 @@
 package aurocosh.divinefavor.client.gui.blocks.soulbound_lectern
 
-import aurocosh.divinefavor.common.block.soulbound_lectern.ContainerSoulboundLecternEmpty
+import aurocosh.divinefavor.common.block.soulbound_lectern.containers.ContainerSoulboundLecternEmpty
 import aurocosh.divinefavor.common.block.soulbound_lectern.TileSoulboundLectern
 import aurocosh.divinefavor.common.constants.ConstResources
 import net.minecraft.client.gui.inventory.GuiContainer

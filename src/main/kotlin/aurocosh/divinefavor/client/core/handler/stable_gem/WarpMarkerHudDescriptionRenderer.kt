@@ -3,7 +3,7 @@ package aurocosh.divinefavor.client.core.handler.stable_gem
 import aurocosh.divinefavor.client.core.handler.base.IHudDescriptionRenderer
 import aurocosh.divinefavor.client.core.handler.common.DisplayStackExtractors
 import aurocosh.divinefavor.common.item.base.ModItem
-import aurocosh.divinefavor.common.item.gems.base.IUsableGemItem
+import aurocosh.divinefavor.common.item.gems.base.IStackUsableGemItem
 import aurocosh.divinefavor.common.lib.extensions.divinePlayerData
 import net.minecraft.client.Minecraft
 import net.minecraft.client.gui.Gui
@@ -26,7 +26,7 @@ object WarpMarkerHudDescriptionRenderer : IHudDescriptionRenderer {
             return
 
         val item = stack.item
-        val gemItem = item as IUsableGemItem
+        val gemItem = item as IStackUsableGemItem
         val description = getUseInfo(player, stack, gemItem)
 
         val spirit = gemItem.spirit
@@ -93,7 +93,7 @@ object WarpMarkerHudDescriptionRenderer : IHudDescriptionRenderer {
     }
 
     @SideOnly(Side.CLIENT)
-    fun getUseInfo(player: EntityPlayer, stack: ItemStack, gem: IUsableGemItem): String {
+    fun getUseInfo(player: EntityPlayer, stack: ItemStack, gem: IStackUsableGemItem): String {
         val useCount = if (gem.consumeOnUse) stack.count
         else {
             val spiritData = player.divinePlayerData.spiritData

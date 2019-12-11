@@ -1,4 +1,4 @@
-package aurocosh.divinefavor.common.block.soulbound_lectern
+package aurocosh.divinefavor.common.nbt_properties
 
 import net.minecraft.nbt.NBTTagCompound
 

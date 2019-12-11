@@ -1,21 +1,22 @@
 package aurocosh.divinefavor.common.block.medium
 
 import aurocosh.divinefavor.common.block.base.TickableTileEntity
-import aurocosh.divinefavor.common.block.soulbound_lectern.*
+import aurocosh.divinefavor.common.block.soulbound_lectern.TileEntityPropertyDelegate
+import aurocosh.divinefavor.common.block.soulbound_lectern.TilePropertySyncHandler
 import aurocosh.divinefavor.common.item.gems.base.IMediumGemItem
-import aurocosh.divinefavor.common.lib.extensions.*
+import aurocosh.divinefavor.common.lib.extensions.asSlotSequence
+import aurocosh.divinefavor.common.lib.extensions.isNotEmpty
 import aurocosh.divinefavor.common.lib.iterators.IItemHandlerSlot
 import aurocosh.divinefavor.common.muliblock.IMultiblockController
 import aurocosh.divinefavor.common.muliblock.common.MultiblockWatcher
 import aurocosh.divinefavor.common.muliblock.instance.MultiBlockInstance
 import aurocosh.divinefavor.common.muliblock.instance.MultiBlockSpiritInstance
+import aurocosh.divinefavor.common.nbt_properties.*
 import aurocosh.divinefavor.common.util.UtilTick
 import net.minecraft.block.state.IBlockState
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.item.ItemStack
 import net.minecraft.nbt.NBTTagCompound
-import net.minecraft.network.NetworkManager
-import net.minecraft.network.play.server.SPacketUpdateTileEntity
 import net.minecraft.util.EnumFacing
 import net.minecraft.util.math.BlockPos
 import net.minecraft.world.World
@@ -74,7 +75,7 @@ class TileMedium : TickableTileEntity(false, true), IMultiblockController {
         }
     }
 
-    internal var combinedHandler = CombinedInvWrapper(leftStackHandler, rightStackHandler)
+    private var combinedHandler = CombinedInvWrapper(leftStackHandler, rightStackHandler)
 
     val gemStack: ItemStack get() = stoneStackHandler.getStackInSlot(0)
 
@@ -82,34 +83,21 @@ class TileMedium : TickableTileEntity(false, true), IMultiblockController {
         extraActiveTime = 0
         isRejecting = false
         setTickRate(TICK_RATE)
+
+        stateSerializer.registerSerializer(GenericPropertySerializer(extraActiveTimeProp, { extraActiveTime }, { extraActiveTime = it }))
+        stateSerializer.registerSerializer(stateDelegate)
+        stateSerializer.registerSerializer(stoneDelegate)
+        stateSerializer.registerSerializer(StackHandlerPropertySerializer(callingStoneProp, stoneStackHandler))
+        stateSerializer.registerSerializer(StackHandlerPropertySerializer(itemsLeftProp, leftStackHandler))
+        stateSerializer.registerSerializer(StackHandlerPropertySerializer(itemsRightProp, rightStackHandler))
+
+        updateSerializer.registerSerializer(stateDelegate)
+        updateSerializer.registerSerializer(stoneDelegate)
+        updateSerializer.registerSerializer(StackHandlerPropertySerializer(callingStoneProp, stoneStackHandler))
     }
 
     override fun onLoad() {
         tryToFormMultiBlockInternal()
-    }
-
-    override fun readFromNBT(compound: NBTTagCompound) {
-        super.readFromNBT(compound)
-        extraActiveTime = compound.get(extraActiveTimeProp)
-        state = compound.get(stateMediumProp)
-        stone = compound.get(stoneMediumProp)
-        if (compound.isPropertySet(callingStoneProp))
-            stoneStackHandler.deserializeNBT(compound.get(callingStoneProp))
-        if (compound.isPropertySet(itemsLeftProp))
-            leftStackHandler.deserializeNBT(compound.get(itemsLeftProp))
-        if (compound.isPropertySet(itemsRightProp))
-            rightStackHandler.deserializeNBT(compound.get(itemsRightProp))
-    }
-
-    override fun writeToNBT(compound: NBTTagCompound): NBTTagCompound {
-        super.writeToNBT(compound)
-        compound.set(extraActiveTimeProp, extraActiveTime)
-        compound.set(stateMediumProp, state)
-        compound.set(stoneMediumProp, stone)
-        compound.set(callingStoneProp, stoneStackHandler.serializeNBT())
-        compound.set(itemsLeftProp, leftStackHandler.serializeNBT())
-        compound.set(itemsRightProp, rightStackHandler.serializeNBT())
-        return compound
     }
 
     fun isUsableByPlayer(playerIn: EntityPlayer): Boolean {
@@ -135,32 +123,8 @@ class TileMedium : TickableTileEntity(false, true), IMultiblockController {
         return super.getCapability(capability, facing)
     }
 
-    override fun getUpdateTag(): NBTTagCompound {
-        val nbtTag = super.getUpdateTag()
-        nbtTag.set(stateMediumProp, state)
-        nbtTag.set(stoneMediumProp, stone)
-        nbtTag.set(callingStoneProp, stoneStackHandler.serializeNBT())
-        return nbtTag
-    }
-
-    override fun getUpdatePacket(): SPacketUpdateTileEntity? {
-        return SPacketUpdateTileEntity(pos, 1, updateTag)
-    }
-
-    override fun onDataPacket(net: NetworkManager?, packet: SPacketUpdateTileEntity?) {
-        if (!world.isRemote)
-            return
-
-        val compound = packet?.nbtCompound ?: return
-
-        val stateChanged = stateDelegate.readIfNotEqual(compound)
-        val stoneChanged = stoneDelegate.readIfNotEqual(compound)
-
-        if (compound.isPropertySet(callingStoneProp))
-            stoneStackHandler.deserializeNBT(compound.get(callingStoneProp))
-
-        if (stateChanged || stoneChanged)
-            world.markBlockRangeForRenderUpdate(pos, pos)
+    override fun getRenderStateKey(): Array<out Any> {
+        return arrayOf(stone,state)
     }
 
     override fun updateFiltered() {
@@ -272,6 +236,5 @@ class TileMedium : TickableTileEntity(false, true), IMultiblockController {
         private val stateMediumProp = NbtPropertyEnum("StateMedium", MediumState.INVALID, MediumState)
         private val stoneMediumProp = NbtPropertyEnum("StoneMedium", MediumStone.NONE, MediumStone)
         private val extraActiveTimeProp = NbtPropertyInt("ExtraActiveTime", 0)
-
     }
 }

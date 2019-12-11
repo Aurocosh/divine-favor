@@ -3,7 +3,7 @@ package aurocosh.divinefavor.common.item.gems
 import aurocosh.divinefavor.DivineFavor
 import aurocosh.divinefavor.common.constants.ConstGemTabOrder
 import aurocosh.divinefavor.common.item.base.ModItem
-import aurocosh.divinefavor.common.item.gems.base.IUsableGemItem
+import aurocosh.divinefavor.common.item.gems.base.IStackUsableGemItem
 import aurocosh.divinefavor.common.item.gems.properties.GemMaskProperties
 import aurocosh.divinefavor.common.item.gems.properties.GemPositionProperties
 import aurocosh.divinefavor.common.item.spell_talismans.context.CastContext
@@ -14,8 +14,8 @@ import aurocosh.divinefavor.common.lib.extensions.get
 import aurocosh.divinefavor.common.lib.extensions.isPropertySet
 import aurocosh.divinefavor.common.spirit.base.ModSpirit
 import aurocosh.divinefavor.common.stack_properties.StackPropertyHandler
-import aurocosh.divinefavor.common.stack_properties.interfaces.IPropertyAccessor
-import aurocosh.divinefavor.common.stack_properties.interfaces.IPropertyContainer
+import aurocosh.divinefavor.common.stack_properties.interfaces.IStackPropertyAccessor
+import aurocosh.divinefavor.common.stack_properties.interfaces.IStackPropertyContainer
 import aurocosh.divinefavor.common.util.UtilEntity
 import aurocosh.divinefavor.common.util.UtilItemStack.actionResult
 import aurocosh.divinefavor.common.util.UtilItemStack.actionResultPass
@@ -28,8 +28,8 @@ import net.minecraft.util.EnumHand
 import net.minecraft.util.math.BlockPos
 import net.minecraft.world.World
 
-class ItemWarpMarker(name: String, private val canTeleportToDimensions: Boolean, override val consumeOnUse: Boolean, override val favorCost: Int, override val spirit: ModSpirit, maxStackSize: Int) : ModItem(name, name, ConstGemTabOrder.OTHER_GEMS), IPropertyContainer, IUsableGemItem, ISelectedStackProvider {
-    override val properties: IPropertyAccessor = propertyHandler
+class ItemWarpMarker(name: String, private val canTeleportToDimensions: Boolean, override val consumeOnUse: Boolean, override val favorCost: Int, override val spirit: ModSpirit, maxStackSize: Int) : ModItem(name, name, ConstGemTabOrder.OTHER_GEMS), IStackPropertyContainer, IStackUsableGemItem, ISelectedStackProvider {
+    override val properties: IStackPropertyAccessor = propertyHandler
 
     init {
         setMaxStackSize(maxStackSize)

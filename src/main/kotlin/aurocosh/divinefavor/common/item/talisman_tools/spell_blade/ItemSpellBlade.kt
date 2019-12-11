@@ -23,8 +23,8 @@ import aurocosh.divinefavor.common.stack_actions.StackActionHandler
 import aurocosh.divinefavor.common.stack_actions.interfaces.IActionAccessor
 import aurocosh.divinefavor.common.stack_actions.interfaces.IActionContainer
 import aurocosh.divinefavor.common.stack_properties.StackPropertyHandler
-import aurocosh.divinefavor.common.stack_properties.interfaces.IPropertyAccessor
-import aurocosh.divinefavor.common.stack_properties.interfaces.IPropertyContainer
+import aurocosh.divinefavor.common.stack_properties.interfaces.IStackPropertyAccessor
+import aurocosh.divinefavor.common.stack_properties.interfaces.IStackPropertyContainer
 import aurocosh.divinefavor.common.util.UtilItemStack.actionResult
 import aurocosh.divinefavor.common.util.UtilItemStack.actionResultPass
 import com.google.common.collect.Multimap
@@ -51,9 +51,9 @@ import net.minecraftforge.fml.relauncher.Side
 import net.minecraftforge.fml.relauncher.SideOnly
 import net.minecraftforge.oredict.OreDictionary
 
-open class ItemSpellBlade(name: String, texturePath: String, orderIndex: Int = 0, val config: SpellBlade, val material: ToolMaterial) : ModItem(name, texturePath, orderIndex), IStackContainerProvider, IPropertyContainer, IActionContainer, IBlockCatcher {
+open class ItemSpellBlade(name: String, texturePath: String, orderIndex: Int = 0, val config: SpellBlade, val material: ToolMaterial) : ModItem(name, texturePath, orderIndex), IStackContainerProvider, IStackPropertyContainer, IActionContainer, IBlockCatcher {
     protected val propertyHandler: StackPropertyHandler = StackPropertyHandler(name)
-    override val properties: IPropertyAccessor = propertyHandler
+    override val properties: IStackPropertyAccessor = propertyHandler
     protected val actionHandler: StackActionHandler = StackActionHandler(name)
     override val actions: IActionAccessor = actionHandler
     private val bookPropertyWrapper = BookPropertyWrapper(propertyHandler)

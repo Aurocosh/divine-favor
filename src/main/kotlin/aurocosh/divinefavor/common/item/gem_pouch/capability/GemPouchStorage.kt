@@ -1,7 +1,7 @@
 package aurocosh.divinefavor.common.item.gem_pouch.capability
 
-import aurocosh.divinefavor.common.block.soulbound_lectern.NbtPropertyInt
-import aurocosh.divinefavor.common.block.soulbound_lectern.NbtPropertyNbtTag
+import aurocosh.divinefavor.common.nbt_properties.NbtPropertyInt
+import aurocosh.divinefavor.common.nbt_properties.NbtPropertyNbtTag
 import aurocosh.divinefavor.common.lib.extensions.get
 import aurocosh.divinefavor.common.lib.extensions.set
 import net.minecraft.nbt.NBTBase

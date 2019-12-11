@@ -6,7 +6,7 @@ import aurocosh.divinefavor.common.lib.extensions.S
 import aurocosh.divinefavor.common.lib.extensions.compound
 import aurocosh.divinefavor.common.stack_properties.generators.IPropertySynchronizer
 import aurocosh.divinefavor.common.stack_properties.generators.StackPropertySynchronizer
-import aurocosh.divinefavor.common.stack_properties.interfaces.IPropertyAccessor
+import aurocosh.divinefavor.common.stack_properties.interfaces.IStackPropertyAccessor
 import aurocosh.divinefavor.common.stack_properties.properties.*
 import aurocosh.divinefavor.common.stack_properties.properties.base.StackProperty
 import net.minecraft.block.state.IBlockState
@@ -19,7 +19,7 @@ import java.util.*
 import kotlin.collections.ArrayList
 import kotlin.collections.HashMap
 
-open class StackPropertyHandler(private val parentName: String = "", private val synchronizer: IPropertySynchronizer = StackPropertySynchronizer) : IPropertyAccessor {
+open class StackPropertyHandler(private val parentName: String = "", private val synchronizer: IPropertySynchronizer = StackPropertySynchronizer) : IStackPropertyAccessor {
     private val propertyList = ArrayList<StackProperty<out Any>>()
     private val propertyMap = HashMap<String, StackProperty<out Any>>()
 

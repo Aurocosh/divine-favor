@@ -3,7 +3,7 @@ package aurocosh.divinefavor.common.receipes.dynamic
 import aurocosh.divinefavor.common.lib.extensions.asSequence
 import aurocosh.divinefavor.common.lib.extensions.isNotEmpty
 import aurocosh.divinefavor.common.receipes.base.ModRecipe
-import aurocosh.divinefavor.common.stack_properties.interfaces.IPropertyContainer
+import aurocosh.divinefavor.common.stack_properties.interfaces.IStackPropertyContainer
 import net.minecraft.inventory.InventoryCrafting
 import net.minecraft.item.Item
 import net.minecraft.item.ItemStack
@@ -22,7 +22,7 @@ abstract class StabilizerRecipe(name: String) : ModRecipe(name) {
     override fun getCraftingResult(inv: InventoryCrafting): ItemStack {
         val gem = inv.asSequence().filter(ItemStack::isNotEmpty).first { isUnstableGem(it.item) }
         val gemItem = gem.item
-        if (gemItem !is IPropertyContainer)
+        if (gemItem !is IStackPropertyContainer)
             return gem
 
         val result = ItemStack(getStableGem(gemItem))

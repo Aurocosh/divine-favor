@@ -20,8 +20,8 @@ import aurocosh.divinefavor.common.stack_actions.StackActionHandler
 import aurocosh.divinefavor.common.stack_actions.interfaces.IActionAccessor
 import aurocosh.divinefavor.common.stack_actions.interfaces.IActionContainer
 import aurocosh.divinefavor.common.stack_properties.StackPropertyHandler
-import aurocosh.divinefavor.common.stack_properties.interfaces.IPropertyAccessor
-import aurocosh.divinefavor.common.stack_properties.interfaces.IPropertyContainer
+import aurocosh.divinefavor.common.stack_properties.interfaces.IStackPropertyAccessor
+import aurocosh.divinefavor.common.stack_properties.interfaces.IStackPropertyContainer
 import aurocosh.divinefavor.common.util.UtilItemStack
 import net.minecraft.client.resources.I18n
 import net.minecraft.client.util.ITooltipFlag
@@ -40,9 +40,9 @@ import net.minecraftforge.event.world.BlockEvent
 import net.minecraftforge.fml.relauncher.Side
 import net.minecraftforge.fml.relauncher.SideOnly
 
-class ItemGrimoire(name: String) : ModItem("grimoire_$name", "grimoires/$name", ConstMainTabOrder.CONTAINERS), IStackContainerProvider, IPropertyContainer, IActionContainer, IBlockCatcher {
+class ItemGrimoire(name: String) : ModItem("grimoire_$name", "grimoires/$name", ConstMainTabOrder.CONTAINERS), IStackContainerProvider, IStackPropertyContainer, IActionContainer, IBlockCatcher {
     protected val propertyHandler: StackPropertyHandler = StackPropertyHandler("grimoire")
-    override val properties: IPropertyAccessor = propertyHandler
+    override val properties: IStackPropertyAccessor = propertyHandler
     protected val actionHandler: StackActionHandler = StackActionHandler("grimoire")
     override val actions: IActionAccessor = actionHandler
 

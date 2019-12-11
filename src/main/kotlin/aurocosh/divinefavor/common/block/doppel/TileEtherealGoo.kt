@@ -1,7 +1,7 @@
 package aurocosh.divinefavor.common.block.doppel
 
 import aurocosh.divinefavor.common.block.common.ModBlocks
-import aurocosh.divinefavor.common.block.soulbound_lectern.NbtPropertyIBlockState
+import aurocosh.divinefavor.common.nbt_properties.NbtPropertyIBlockState
 import aurocosh.divinefavor.common.lib.extensions.getOrNull
 import aurocosh.divinefavor.common.lib.extensions.set
 import net.minecraft.block.state.IBlockState

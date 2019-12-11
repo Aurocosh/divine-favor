@@ -5,7 +5,7 @@ import net.minecraft.item.ItemStack
 import net.minecraftforge.fml.relauncher.Side
 import net.minecraftforge.fml.relauncher.SideOnly
 
-interface IPropertyAccessor {
+interface IStackPropertyAccessor {
     val list: List<StackProperty<out Any>>
 
     fun get(index: Int): StackProperty<out Any>

@@ -8,7 +8,7 @@ import aurocosh.divinefavor.common.stack_actions.StackAction
 import aurocosh.divinefavor.common.stack_actions.StackActionHandler
 import aurocosh.divinefavor.common.stack_actions.interfaces.IActionContainer
 import aurocosh.divinefavor.common.stack_properties.StackPropertyHandler
-import aurocosh.divinefavor.common.stack_properties.interfaces.IPropertyContainer
+import aurocosh.divinefavor.common.stack_properties.interfaces.IStackPropertyContainer
 import aurocosh.divinefavor.common.stack_properties.properties.base.StackProperty
 import net.minecraft.item.Item
 import net.minecraft.item.ItemStack
@@ -42,7 +42,7 @@ object CastableAdapter {
         val selectedStack = handler.getSelectedStack()
 
         val selectedItem = selectedStack.item
-        if (selectedItem !is IPropertyContainer)
+        if (selectedItem !is IStackPropertyContainer)
             return null
         return selectedItem.findProperty(selectedStack, item, propertyName)
     }

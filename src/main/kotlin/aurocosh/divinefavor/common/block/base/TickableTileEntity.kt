@@ -1,10 +1,9 @@
 package aurocosh.divinefavor.common.block.base
 
-import net.minecraft.tileentity.TileEntity
 import net.minecraft.util.ITickable
 import net.minecraft.world.World
 
-abstract class TickableTileEntity(private val tickOnClient: Boolean, private val tickOnServer: Boolean) : TileEntity(), ITickable {
+abstract class TickableTileEntity(private val tickOnClient: Boolean, private val tickOnServer: Boolean) : ModTileEntity(), ITickable {
     private var tickRate: Int = 0
     private var tickCounter: Int = 0
 

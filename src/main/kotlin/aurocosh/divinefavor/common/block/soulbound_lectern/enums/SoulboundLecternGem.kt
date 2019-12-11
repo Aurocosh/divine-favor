@@ -1,4 +1,4 @@
-package aurocosh.divinefavor.common.block.soulbound_lectern
+package aurocosh.divinefavor.common.block.soulbound_lectern.enums
 
 import aurocosh.divinefavor.common.lib.EnumIndexer
 import aurocosh.divinefavor.common.lib.IIndexedEnum

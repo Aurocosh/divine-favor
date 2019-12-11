@@ -1,7 +1,7 @@
 package aurocosh.divinefavor.common.network.message.sever.stack_properties
 
 import aurocosh.divinefavor.common.network.message.base.DivineServerMessage
-import aurocosh.divinefavor.common.stack_properties.interfaces.IPropertyContainer
+import aurocosh.divinefavor.common.stack_properties.interfaces.IStackPropertyContainer
 import aurocosh.divinefavor.common.stack_properties.properties.base.StackProperty
 import aurocosh.divinefavor.common.util.HeldStack
 import aurocosh.divinefavor.common.util.UtilPlayer
@@ -42,7 +42,7 @@ abstract class MessageSyncProperty<T : Any> : DivineServerMessage {
 
     private fun findProperty(heldStack: HeldStack, item: Item): Pair<ItemStack, StackProperty<out Any>>? {
         val stack = heldStack.stack
-        val container = stack.item as? IPropertyContainer ?: return null
+        val container = stack.item as? IStackPropertyContainer ?: return null
         return container.findProperty(stack, item, propertyName)
     }
 }

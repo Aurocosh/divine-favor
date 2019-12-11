@@ -2,6 +2,8 @@ package aurocosh.divinefavor.common.block.soulbound_lectern
 
 import aurocosh.divinefavor.DivineFavor
 import aurocosh.divinefavor.common.block.base.ModBlock
+import aurocosh.divinefavor.common.block.soulbound_lectern.enums.SoulboundLecternGem
+import aurocosh.divinefavor.common.block.soulbound_lectern.enums.SoulboundLecternState
 import aurocosh.divinefavor.common.constants.ConstBlockNames
 import aurocosh.divinefavor.common.constants.ConstGuiIDs
 import aurocosh.divinefavor.common.constants.ConstMainTabOrder

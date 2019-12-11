@@ -4,8 +4,8 @@ import aurocosh.divinefavor.common.stack_properties.properties.base.StackPropert
 import net.minecraft.item.Item
 import net.minecraft.item.ItemStack
 
-interface IPropertyContainer {
-    val properties: IPropertyAccessor
+interface IStackPropertyContainer {
+    val properties: IStackPropertyAccessor
     fun findProperty(stack: ItemStack, item: Item, propertyName: String): Pair<ItemStack, StackProperty<out Any>>? {
         if (item != this)
             return null

@@ -13,8 +13,8 @@ import aurocosh.divinefavor.common.stack_actions.StackActionHandler
 import aurocosh.divinefavor.common.stack_actions.interfaces.IActionAccessor
 import aurocosh.divinefavor.common.stack_actions.interfaces.IActionContainer
 import aurocosh.divinefavor.common.stack_properties.StackPropertyHandler
-import aurocosh.divinefavor.common.stack_properties.interfaces.IPropertyAccessor
-import aurocosh.divinefavor.common.stack_properties.interfaces.IPropertyContainer
+import aurocosh.divinefavor.common.stack_properties.interfaces.IStackPropertyAccessor
+import aurocosh.divinefavor.common.stack_properties.interfaces.IStackPropertyContainer
 import net.minecraft.client.resources.I18n
 import net.minecraft.client.util.ITooltipFlag
 import net.minecraft.entity.player.EntityPlayer
@@ -26,9 +26,9 @@ import net.minecraftforge.event.world.BlockEvent
 import net.minecraftforge.fml.relauncher.Side
 import net.minecraftforge.fml.relauncher.SideOnly
 
-abstract class ItemTalisman(val name: String, texturePath: String, val spirit: ModSpirit, protected val favorCost: Int) : ModItem(name, texturePath), ISelectedStackProvider, IPropertyContainer, IActionContainer, IBlockCatcher, ICastable {
+abstract class ItemTalisman(val name: String, texturePath: String, val spirit: ModSpirit, protected val favorCost: Int) : ModItem(name, texturePath), ISelectedStackProvider, IStackPropertyContainer, IActionContainer, IBlockCatcher, ICastable {
     protected val propertyHandler: StackPropertyHandler = StackPropertyHandler("talisman $name")
-    override val properties: IPropertyAccessor = propertyHandler
+    override val properties: IStackPropertyAccessor = propertyHandler
     protected val actionHandler: StackActionHandler = StackActionHandler("talisman $name")
     override val actions: IActionAccessor = actionHandler
 

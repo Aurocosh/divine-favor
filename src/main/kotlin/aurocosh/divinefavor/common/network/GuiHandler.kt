@@ -13,9 +13,9 @@ import aurocosh.divinefavor.common.block.bath_heater.TileBathHeater
 import aurocosh.divinefavor.common.block.medium.ContainerMediumNoStone
 import aurocosh.divinefavor.common.block.medium.ContainerMediumWithStone
 import aurocosh.divinefavor.common.block.medium.TileMedium
-import aurocosh.divinefavor.common.block.soulbound_lectern.ContainerSoulboundLecternActive
-import aurocosh.divinefavor.common.block.soulbound_lectern.ContainerSoulboundLecternEmpty
-import aurocosh.divinefavor.common.block.soulbound_lectern.ContainerSoulboundLecternWithShard
+import aurocosh.divinefavor.common.block.soulbound_lectern.containers.ContainerSoulboundLecternActive
+import aurocosh.divinefavor.common.block.soulbound_lectern.containers.ContainerSoulboundLecternEmpty
+import aurocosh.divinefavor.common.block.soulbound_lectern.containers.ContainerSoulboundLecternWithShard
 import aurocosh.divinefavor.common.block.soulbound_lectern.TileSoulboundLectern
 import aurocosh.divinefavor.common.constants.ConstGuiIDs
 import aurocosh.divinefavor.common.item.compressed_item_drop.CompressedItemsDropContainer

@@ -25,8 +25,8 @@ import aurocosh.divinefavor.common.stack_actions.StackActionHandler
 import aurocosh.divinefavor.common.stack_actions.interfaces.IActionAccessor
 import aurocosh.divinefavor.common.stack_actions.interfaces.IActionContainer
 import aurocosh.divinefavor.common.stack_properties.StackPropertyHandler
-import aurocosh.divinefavor.common.stack_properties.interfaces.IPropertyAccessor
-import aurocosh.divinefavor.common.stack_properties.interfaces.IPropertyContainer
+import aurocosh.divinefavor.common.stack_properties.interfaces.IStackPropertyAccessor
+import aurocosh.divinefavor.common.stack_properties.interfaces.IStackPropertyContainer
 import aurocosh.divinefavor.common.util.UtilBow
 import aurocosh.divinefavor.common.util.UtilItemStack.actionResult
 import aurocosh.divinefavor.common.util.UtilPlayer
@@ -55,9 +55,9 @@ import net.minecraftforge.fml.relauncher.Side
 import net.minecraftforge.fml.relauncher.SideOnly
 import net.minecraftforge.oredict.OreDictionary
 
-class ItemSpellBow : ModItem("spell_bow", "spell_bow/spell_bow", ConstMainTabOrder.CONTAINERS), ISelectedStackProvider, IStackContainerProvider, IPropertyContainer, IActionContainer {
+class ItemSpellBow : ModItem("spell_bow", "spell_bow/spell_bow", ConstMainTabOrder.CONTAINERS), ISelectedStackProvider, IStackContainerProvider, IStackPropertyContainer, IActionContainer {
     protected val propertyHandler: StackPropertyHandler = StackPropertyHandler("spell_bow")
-    override val properties: IPropertyAccessor = propertyHandler
+    override val properties: IStackPropertyAccessor = propertyHandler
     protected val actionHandler: StackActionHandler = StackActionHandler("spell_bow")
     override val actions: IActionAccessor = actionHandler
     private val bookPropertyWrapper = BookPropertyWrapper(propertyHandler)

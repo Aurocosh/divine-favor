@@ -1,5 +1,8 @@
 package aurocosh.divinefavor.common.block.soulbound_lectern
 
+import aurocosh.divinefavor.common.lib.interfaces.INbtSerializable
+import aurocosh.divinefavor.common.lib.interfaces.IPropertyDelegate
+import aurocosh.divinefavor.common.nbt_properties.NbtProperty
 import net.minecraft.nbt.NBTTagCompound
 import net.minecraft.tileentity.TileEntity
 import kotlin.reflect.KProperty

@@ -1,6 +1,6 @@
 package aurocosh.divinefavor.common.lib.extensions
 
-import aurocosh.divinefavor.common.block.soulbound_lectern.NbtProperty
+import aurocosh.divinefavor.common.nbt_properties.NbtProperty
 import aurocosh.divinefavor.common.block_templates.MetaItem
 import aurocosh.divinefavor.common.lib.Quadruple
 import aurocosh.divinefavor.common.lib.Quintuple
