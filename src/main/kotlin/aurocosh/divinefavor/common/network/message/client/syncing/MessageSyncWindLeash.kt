@@ -20,6 +20,8 @@ class MessageSyncWindLeash : DivineClientMessage {
 
     @SideOnly(Side.CLIENT)
     override fun handleSafe() {
+        if (!DivineFavor.proxy.hasClientPlayer)
+            return
         val player = DivineFavor.proxy.clientPlayer
         val windLeash = player.divineLivingData.windLeashData
         windLeash.vector = Vec3d(x, 0.0, z)
