@@ -1,6 +1,5 @@
 package aurocosh.divinefavor
 
-import aurocosh.divinefavor.common.BuildVars
 import aurocosh.divinefavor.common.core.creative_tabs.DivineFavorCreativeTab
 import aurocosh.divinefavor.common.core.proxy.CommonProxy
 import aurocosh.divinefavor.common.item.common.*
@@ -15,7 +14,7 @@ import net.minecraftforge.fml.common.event.FMLServerStartingEvent
 import org.apache.logging.log4j.LogManager
 import org.apache.logging.log4j.Logger
 
-@Mod(modid = DivineFavor.MOD_ID, name = DivineFavor.MOD_NAME, dependencies = BuildVars.dependencies, modLanguageAdapter = "net.shadowfacts.forgelin.KotlinAdapter")
+@Mod(modid = DivineFavor.MOD_ID, name = DivineFavor.MOD_NAME, dependencies = "required-after:patchouli;required:forgelin;required:autonetworklib@[1.0.36,)", modLanguageAdapter = "net.shadowfacts.forgelin.KotlinAdapter")
 object DivineFavor {
     // Mod Constants
     const val MOD_ID = "divinefavor"

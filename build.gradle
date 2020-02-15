@@ -1,4 +1,4 @@
-import org.gradle.internal.os.OperatingSystem;
+import org.gradle.internal.os.OperatingSystem
 
 buildscript {
     ext.kotlin_version = kotlin_version
@@ -79,9 +79,6 @@ minecraft {
     runDir = "run"
     mappings = mc_mappings
     makeObfSourceJar = false
-
-    replaceIn "BuildVars.java"
-    replace 'required-after:patchouli;required:forgelin', "required-after:patchouli;required:forgelin;required:autonetworklib@[${auto_network_version},)"
 }
 
 dependencies {
