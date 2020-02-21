@@ -7,4 +7,4 @@ fun InventoryCrafting.asSequence(): Sequence<ItemStack> {
     return indices.S.map(this::getStackInSlot)
 }
 
-val InventoryCrafting.indices: IntRange get() = (0..this.sizeInventory)
+val InventoryCrafting.indices: IntRange get() = (0..(this.sizeInventory-1))
