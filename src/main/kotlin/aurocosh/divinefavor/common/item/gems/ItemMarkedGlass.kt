@@ -5,7 +5,6 @@ import aurocosh.divinefavor.common.global.dayClock.DayClock
 import aurocosh.divinefavor.common.item.base.ModItem
 import aurocosh.divinefavor.common.spirit.base.ModSpirit
 import aurocosh.divinefavor.common.util.UtilDayTime
-import net.minecraft.client.resources.I18n
 import net.minecraft.client.util.ITooltipFlag
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.item.EnumRarity
@@ -67,9 +66,9 @@ class ItemMarkedGlass(val spirit: ModSpirit, orderIndex: Int) : ModItem("marked_
     @SideOnly(Side.CLIENT)
     override fun addInformation(stack: ItemStack, world: World?, tooltip: MutableList<String>, flag: ITooltipFlag) {
         super.addInformation(stack, world, tooltip, flag)
-
-        val state = if(spirit.isActive) "active" else "inactive"
-        val translationKey = "tooltip.divinefavor:marked_glass.spirit_is_$state"
-        tooltip.add(I18n.format(translationKey))
+//
+//        val state = if(spirit.isActive) "active" else "inactive"
+//        val translationKey = "tooltip.divinefavor:marked_glass.spirit_is_$state"
+//        tooltip.add(I18n.format(translationKey))
     }
 }
