@@ -20,7 +20,7 @@ abstract class StabilizerRecipe(name: String) : ModRecipe(name) {
     }
 
     override fun getCraftingResult(inv: InventoryCrafting): ItemStack {
-        val gem = inv.asSequence().filter(ItemStack::isNotEmpty).first { isUnstableGem(it.item) }
+        val gem = inv.asSequence().filterNotNull().filter(ItemStack::isNotEmpty).first { isUnstableGem(it.item) }
         val gemItem = gem.item
         if (gemItem !is IStackPropertyContainer)
             return gem
@@ -35,7 +35,7 @@ abstract class StabilizerRecipe(name: String) : ModRecipe(name) {
         var otherCount = 0
         var stabilizerCount = 0
 
-        val stacks = inv.asSequence().filter(ItemStack::isNotEmpty)
+        val stacks = inv.asSequence().filterNotNull().filter(ItemStack::isNotEmpty)
         for (stack in stacks) {
             when {
                 isStabilizer(stack.item) -> stabilizerCount++
