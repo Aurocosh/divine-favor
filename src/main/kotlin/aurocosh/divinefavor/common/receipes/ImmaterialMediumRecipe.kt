@@ -13,7 +13,7 @@ class ImmaterialMediumRecipe(val result: ItemStack, val callingStones: List<Ingr
         get() = result.item.registryName ?: emptyLocation()
 
     private val acceptableStones = callingStones.map { it.getMatchingStacks().first().item }.toSet()
-    private val possibleItemIds = ingredients.flatMap { it.getMatchingStacks().asIterable() }.map { Item.getIdFromItem(it.item) }.toSet()
+    private val possibleItemIds : Set<Int> by lazy { ingredients.flatMap { it.getMatchingStacks().asIterable() }.map { Item.getIdFromItem(it.item) }.toSet() }
 
     fun isMatching(callingStone: ItemCallingStone, stacks: List<ItemStack>): Boolean {
         if (stacks.size != ingredients.size)
