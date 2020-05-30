@@ -50,7 +50,9 @@ class EntityAIFollowOwner<T>(private val minion: T, private val followSpeed: Dou
      * Returns whether an in-progress EntityAIBase should continue executing
      */
     override fun shouldContinueExecuting(): Boolean {
-        return !petPathfinder.noPath() && minion.getDistanceSq(owner!!) > maxDist * maxDist && shouldFollow.invoke()
+        if(owner == null)
+            return false;
+        return !petPathfinder.noPath() && minion.getDistanceSq(owner) > maxDist * maxDist && shouldFollow.invoke()
     }
 
     /**
@@ -71,8 +73,8 @@ class EntityAIFollowOwner<T>(private val minion: T, private val followSpeed: Dou
         minion.setPathPriority(PathNodeType.WATER, oldWaterCost)
     }
 
-    private fun isEmptyBlock(pos: BlockPos?): Boolean {
-        val state = world.getBlockState(pos!!)
+    private fun isEmptyBlock(pos: BlockPos): Boolean {
+        val state = world.getBlockState(pos)
         return state.material === Material.AIR || !state.isFullCube
     }
 
@@ -80,45 +82,47 @@ class EntityAIFollowOwner<T>(private val minion: T, private val followSpeed: Dou
      * Updates the task
      */
     override fun updateTask() {
-        minion.lookHelper.setLookPositionWithEntity(owner!!, 10.0f, minion.verticalFaceSpeed.toFloat())
+        val owner = owner ?: return
+        minion.lookHelper.setLookPositionWithEntity(owner, 10.0f, minion.verticalFaceSpeed.toFloat())
         if (minion.minionData.mode === MinionMode.Wait)
             return
 
         if (--timeToRecalcPath <= 0) {
             timeToRecalcPath = 10
-            if (!petPathfinder.tryMoveToEntityLiving(owner!!, followSpeed) && teleportIfTooFar)
+            if (!petPathfinder.tryMoveToEntityLiving(owner, followSpeed) && teleportIfTooFar)
                 tryToTelepotToOwner()
         }
     }
 
     fun tryToTelepotToOwner() {
+        val owner = owner ?: return
         if (minion.leashed)
             return
-        if (minion.getDistanceSq(owner!!) < 144.0)
+        if (minion.getDistanceSq(owner) < 144.0)
             return
 
         var teleported = false
-        var attempts = TELEPORT_ATTEMPTS
+        var attempts = TeleportAttempts
         while (!teleported && attempts-- > 0) {
-            var pos: BlockPos? = UtilCoordinates.getRandomNeighbour(owner!!.position, TELEPORT_RADIUS, 0, TELEPORT_RADIUS)
+            var pos: BlockPos = UtilCoordinates.getRandomNeighbour(owner.position, TeleportRadius, 0, TeleportRadius)
             teleported = safeTeleport(pos)
             if (!teleported) {
-                pos = UtilCoordinates.findPlaceToStand(pos!!, minion.world, TELEPORT_RADIUS)
+                pos = UtilCoordinates.findPlaceToStand(pos, minion.world, TeleportRadius) ?: return
                 teleported = safeTeleport(pos)
             }
         }
         petPathfinder.clearPath()
     }
 
-    private fun safeTeleport(pos: BlockPos?): Boolean {
+    private fun safeTeleport(pos: BlockPos): Boolean {
         if (!isEmptyBlock(pos))
             return false
-        UtilEntity.teleport(minion, pos!!)
+        UtilEntity.teleport(minion, pos)
         return true
     }
 
     companion object {
-        private val TELEPORT_ATTEMPTS = 4
-        private val TELEPORT_RADIUS = 4
+        private const val TeleportAttempts = 4
+        private const val TeleportRadius = 4
     }
 }

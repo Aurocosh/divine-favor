@@ -58,7 +58,6 @@ open class EntityAIBeg<T>(protected val minion: T, private val minPlayerDistance
      * Resets the task
      */
     override fun resetTask() {
-
         minion.minionData.isBegging = false
         player = null
     }
@@ -67,7 +66,8 @@ open class EntityAIBeg<T>(protected val minion: T, private val minPlayerDistance
      * Updates the task
      */
     override fun updateTask() {
-        minion.lookHelper.setLookPosition(player!!.posX, player!!.posY + player!!.getEyeHeight(), player!!.posZ, 10.0f, minion.verticalFaceSpeed.toFloat())
+        val player = player ?: return
+        minion.lookHelper.setLookPosition(player.posX, player.posY + player.getEyeHeight(), player.posZ, 10.0f, minion.verticalFaceSpeed.toFloat())
         --timeoutCounter
     }
 
