@@ -226,7 +226,7 @@ class TileMedium : TickableTileEntity(false, true), IMultiblockController {
     }
 
     companion object {
-        const val SIZE = 27
+        const val SIZE = 18
         private val TICK_RATE = UtilTick.secondsToTicks(2f)
         private val OFFERING_ACTIVE_TIME = UtilTick.secondsToTicks(10f)
 

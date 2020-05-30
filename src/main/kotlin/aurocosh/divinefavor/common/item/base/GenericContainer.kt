@@ -1,5 +1,6 @@
 package aurocosh.divinefavor.common.item.base
 
+import aurocosh.divinefavor.DivineFavor
 import aurocosh.divinefavor.common.lib.int_interval.IntInterval
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.entity.player.InventoryPlayer
@@ -72,7 +73,7 @@ open class GenericContainer(private val inventorySize: Int) : Container() {
         return nextSlotIndex
     }
 
-    override fun transferStackInSlot(playerIn: EntityPlayer?, index: Int): ItemStack {
+    override fun transferStackInSlot(player: EntityPlayer?, index: Int): ItemStack {
         val slot = inventorySlots[index]
         if (slot == null || !slot.hasStack)
             return ItemStack.EMPTY
@@ -80,15 +81,24 @@ open class GenericContainer(private val inventorySize: Int) : Container() {
         val itemStack = slot.stack
         val itemStackCopy = itemStack.copy()
 
-        if (index < inventorySize && canTransferTo(index) && mergeItemStack(itemStack, inventorySize, inventorySlots.size, true))
-            return itemStackCopy
-        else if (mergeItemStack(itemStack, 0, inventorySize, false))
-            return itemStackCopy
+        if (index < inventorySize) { // 0 to inventorySize - tile slots
+            if (!mergeItemStack(itemStack, inventorySize, inventorySlots.size, true)) // merge to player inventory
+                return ItemStack.EMPTY;
+        } else if (index < inventorySlots.size) { // inventorySize to inventorySlots.size - player slots
+            if (!mergeItemStack(itemStack, 0, inventorySize, false)) // merge to tile inventory
+                return ItemStack.EMPTY;
+        } else {
+            DivineFavor.logger.error("Invalid slot index: $index")
+            return ItemStack.EMPTY;
+        }
 
         if (itemStack.isEmpty)
             slot.putStack(ItemStack.EMPTY)
         else
             slot.onSlotChanged()
-        return ItemStack.EMPTY
+
+        if(player != null)
+            slot.onTake(player, itemStack)
+        return itemStackCopy
     }
 }
