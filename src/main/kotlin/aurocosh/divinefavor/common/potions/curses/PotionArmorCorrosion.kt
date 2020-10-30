@@ -10,7 +10,6 @@ import net.minecraft.entity.EntityLivingBase
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraftforge.fml.common.Mod
 import java.util.*
-import java.util.Arrays.asList
 
 @Mod.EventBusSubscriber(modid = DivineFavor.MOD_ID)
 class PotionArmorCorrosion : ModPotion("armor_corrosion", 0x7FB8A4) {
@@ -28,7 +27,7 @@ class PotionArmorCorrosion : ModPotion("armor_corrosion", 0x7FB8A4) {
         val corrosionData = livingBase.divinePlayerData.armorCorrosionData
         corrosionData.removeAllCorrosion()
 
-        val slots = asList(0,1,2,3)
+        val slots = mutableListOf(0,1,2,3)
         val slotsToCorrode = UtilRandom.nextInt(ConfigCurses.armorCorrosion.minSlotsToCorrode, ConfigCurses.armorCorrosion.maxSlotsToCorrode)
         for (i in 0 until slotsToCorrode) {
             val index = UtilRandom.getRandomIndex(slots)

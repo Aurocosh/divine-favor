@@ -488,6 +488,7 @@ item.divinefavor:tool_talisman_wood_peck.name=Wood Pick
 # EFFECT NAMES
 potion.divinefavor:armor_of_pacifist.name=Armor of pacifist
 potion.divinefavor:arrow_deflection.name=Arrow Deflection
+potion.divinefavor:armor_corrosion.name=Armor Corrosion
 potion.divinefavor:consuming_fury.name=Consuming Fury
 potion.divinefavor:crushing_palm.name=Crushing Palm
 potion.divinefavor:crystalline_road.name=Crystalline Road
