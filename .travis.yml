@@ -27,4 +27,6 @@ deploy:
     ./gradlew curseforge
   skip_cleanup: true # to upload artifacts created during the build
   on:
-    branch: master
+    all_branches: true
+    condition: $TRAVIS_BRANCH =~ ^(1.12)$
+    #condition: $TRAVIS_BRANCH =~ ^(master|1.12)$
