@@ -60,7 +60,24 @@ object DayClock {
     private fun syncTime() {
         val world = DimensionManager.getWorld(TRACKED_DIMENSION_ID) ?: return
         val time = UtilDayTime.getDayTime(world)
+
+        val oldTimeValue = DAY_TIME_COUNTER.count
         DAY_TIME_COUNTER.count = time
+
+        if (time > oldTimeValue || (oldTimeValue > time && oldTimeValue - time >= UtilDayTime.TICKS_IN_HOUR)) {
+            val predicate: (DayTimeAlarm) -> Boolean =
+                    if (oldTimeValue < time) {
+                        { it.time in oldTimeValue..time }
+                    } else {
+                        { it.time <= time || it.time >= oldTimeValue }
+                    }
+
+            for(alarm in alarms.filter(predicate)){
+                alarm.activate()
+                if (!alarm.repeat)
+                    alarms.remove(alarm)
+            }
+        }
 
         alarms.sortWith(DayTimeAlarmComparator())
         val alarmsToMove = ArrayList<DayTimeAlarm>()
