@@ -105,11 +105,6 @@ dependencies {
     // Forgelin
     implementation 'curse.maven:forgelin-continuous-456403:5361696'
 
-    // Kotlin
-    implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.9.24'
-    implementation 'org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.3'
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.8.1'
-
     // compile against the JEI API but do not include it at runtime
     api rfg.deobf("mezz.jei:jei_${mc_sub_version}:${jei_version}:api")
     // at runtime, use the full JEI jar
