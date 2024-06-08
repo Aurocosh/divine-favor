@@ -20,6 +20,7 @@ class PotionEscapePlan : ModPotion("escape_plan", 0x7FB8A4) {
     companion object {
 
         @SubscribeEvent
+        @JvmStatic
         fun onEntityDamaged(event: LivingDamageEvent) {
             val entity = event.entity as? EntityPlayer ?: return
             if (entity.health > entity.maxHealth / 2)

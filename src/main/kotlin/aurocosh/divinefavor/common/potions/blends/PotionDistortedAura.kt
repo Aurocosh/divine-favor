@@ -60,6 +60,7 @@ class PotionDistortedAura : ModPotion("distorted_aura", 0x7FB8A4) {
         private val COUNTER = LoopedCounter(CHECK_RATE)
 
         @SubscribeEvent
+        @JvmStatic
         fun serverTickEnd(event: TickEvent.ServerTickEvent) {
             if (event.phase == TickEvent.Phase.END)
                 COUNTER.tick()

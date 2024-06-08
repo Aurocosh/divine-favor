@@ -20,6 +20,7 @@ class PotionWoodenPunch : ModPotionToggleLimited("wooden_punch", 0x7FB8A4) {
 @Mod.EventBusSubscriber(modid = DivineFavor.MOD_ID)
 object WoodenPunch {
     @SubscribeEvent
+    @JvmStatic
     fun onPlayerLeftClickBlock(event: PlayerInteractEvent.LeftClickBlock) {
         val world = event.world
         if (world.isRemote)

@@ -29,6 +29,7 @@ class PotionPredatoryPresence : ModPotion("predatory_presence", 0x7FB8A4) {
     companion object {
 
         @SubscribeEvent
+        @JvmStatic
         fun onEntityDamaged(event: LivingDamageEvent) {
             val target = event.entity as? EntityLivingBase ?: return
             if (target.isPotionActive(ModBlessings.predatory_presence))
@@ -36,6 +37,7 @@ class PotionPredatoryPresence : ModPotion("predatory_presence", 0x7FB8A4) {
         }
 
         @SubscribeEvent(priority = EventPriority.LOWEST)
+        @JvmStatic
         fun onMobDeath(event: LivingDeathEvent) {
             val source = event.source as? EntityDamageSource ?: return
             val attacker = source.trueSource as? EntityPlayer ?: return

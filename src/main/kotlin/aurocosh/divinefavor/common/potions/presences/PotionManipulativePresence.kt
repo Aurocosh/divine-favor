@@ -28,6 +28,7 @@ class PotionManipulativePresence : ModPotion("manipulative_presence", 0x7FB8A4) 
     companion object {
 
         @SubscribeEvent(priority = EventPriority.LOWEST)
+        @JvmStatic
         fun onEntityConstructing(event: BlockEvent.PlaceEvent) {
             val player = event.player
             if (!player.isPotionActive(ModBlessings.manipulative_presence))

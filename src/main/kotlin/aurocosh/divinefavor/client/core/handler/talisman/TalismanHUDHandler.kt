@@ -16,6 +16,7 @@ import net.minecraftforge.fml.relauncher.SideOnly
 @Mod.EventBusSubscriber(modid = DivineFavor.MOD_ID, value = [Side.CLIENT])
 object TalismanHUDHandler {
     @SubscribeEvent(priority = EventPriority.LOWEST)
+    @JvmStatic
     fun renderWorldLastEvent(lastEvent: RenderWorldLastEvent) {
         val player = DivineFavor.proxy.clientPlayer
         val hand = UtilPlayer.getHandWithItem(player) { it is ISelectedStackProvider } ?: return

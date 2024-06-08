@@ -18,6 +18,7 @@ import net.minecraftforge.fml.relauncher.SideOnly
 object ClimbingHandler {
     @SideOnly(Side.CLIENT)
     @SubscribeEvent
+    @JvmStatic
     fun onPlayerTickEvent(event: TickEvent.PlayerTickEvent) {
         if (event.phase != TickEvent.Phase.END)
             return

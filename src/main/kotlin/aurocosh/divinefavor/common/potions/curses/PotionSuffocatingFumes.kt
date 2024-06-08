@@ -48,6 +48,7 @@ class PotionSuffocatingFumes : ModPotion("suffocating_fumes", 0x7FB8A4) {
         private val CURE_COUNTER = LoopedCounter(ConfigCurses.suffocatingFumes.cureRate)
 
         @SubscribeEvent
+        @JvmStatic
         fun serverTickEnd(event: TickEvent.ServerTickEvent) {
             if (event.phase != TickEvent.Phase.END)
                 return

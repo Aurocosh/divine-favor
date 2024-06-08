@@ -19,8 +19,9 @@ import net.minecraftforge.fml.relauncher.SideOnly
 object HUDHandler {
     private val ENDER_PUMPKIN_BLUR_TEX = ResourceLocation(ConstResources.GUI_ENDER_PUMPKIN)
 
-    @SubscribeEvent
     @SideOnly(Side.CLIENT)
+    @SubscribeEvent
+    @JvmStatic
     fun onDraw(event: RenderGameOverlayEvent.Post) {
         if (event.type != RenderGameOverlayEvent.ElementType.ALL)
             return

@@ -22,6 +22,7 @@ object HUDHandler {
     private val scrollHUD = TalismanScrollHUD()
 
     @SubscribeEvent
+    @JvmStatic
     fun onDraw(event: RenderGameOverlayEvent.Post) {
         if (event.type != ElementType.ALL)
             return

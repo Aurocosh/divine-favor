@@ -15,6 +15,7 @@ import net.minecraftforge.fml.relauncher.SideOnly
 object CustomStateMapperHandler {
     @SideOnly(Side.CLIENT)
     @SubscribeEvent
+    @JvmStatic
     fun registerModels(@Suppress("UNUSED_PARAMETER") event: ModelRegistryEvent) {
         for (block in ModRegistries.blocks.values)
             if (block is ICustomStateMappedBlock)

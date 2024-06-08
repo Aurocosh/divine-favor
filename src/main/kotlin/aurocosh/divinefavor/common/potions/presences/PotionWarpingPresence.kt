@@ -26,6 +26,7 @@ class PotionWarpingPresence : ModPotion("warping_presence", 0x7FB8A4) {
     companion object {
 
         @SubscribeEvent(priority = EventPriority.LOWEST)
+        @JvmStatic
         fun onEntityDamaged(event: EnderTeleportEvent) {
             val entity = event.entity as? EntityPlayer ?: return
             if (!entity.isPotionActive(ModBlessings.warping_presence))

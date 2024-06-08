@@ -29,6 +29,7 @@ class PotionCharredAura : ModPotion("charred_aura", 0x7FB8A4) {
     companion object {
 
         @SubscribeEvent(priority = EventPriority.LOWEST)
+        @JvmStatic
         fun onBlockPlaced(event: BlockEvent.PlaceEvent) {
             val player = event.player
             if (!player.isPotionActive(ModBlendEffects.charred_aura))

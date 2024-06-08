@@ -10,6 +10,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent
 @Mod.EventBusSubscriber(modid = DivineFavor.MOD_ID)
 object DeathDataCloner {
     @SubscribeEvent
+    @JvmStatic
     fun clonePlayer(event: PlayerEvent.Clone) {
         val originalData = event.original.divinePlayerData
         val cloneData = event.entityPlayer.divinePlayerData

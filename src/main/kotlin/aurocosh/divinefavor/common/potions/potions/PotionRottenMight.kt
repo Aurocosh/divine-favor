@@ -61,6 +61,7 @@ class PotionRottenMight : ModPotionToggle("rotten_might", 0x7FB8A4) {
         private val TICK_COUNTER = LoopedCounter(TICK_RATE)
 
         @SubscribeEvent
+        @JvmStatic
         fun handleInfection(event: LivingDamageEvent) {
             val source = event.source as? EntityDamageSource ?: return
             val entity = source.trueSource as? EntityLivingBase ?: return
@@ -70,6 +71,7 @@ class PotionRottenMight : ModPotionToggle("rotten_might", 0x7FB8A4) {
         }
 
         @SubscribeEvent
+        @JvmStatic
         fun handleWeakness(event: LivingDamageEvent) {
             val livingBase = event.entityLiving
             if (!livingBase.isPotionActive(ModPotions.rotten_might))
@@ -90,6 +92,7 @@ class PotionRottenMight : ModPotionToggle("rotten_might", 0x7FB8A4) {
         }
 
         @SubscribeEvent
+        @JvmStatic
         fun serverTickEnd(event: TickEvent.ServerTickEvent) {
             if (event.phase == TickEvent.Phase.END)
                 TICK_COUNTER.tick()

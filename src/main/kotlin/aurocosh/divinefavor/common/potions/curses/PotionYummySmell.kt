@@ -40,6 +40,7 @@ class PotionYummySmell : ModPotion("yummy_smell", 0x7FB8A4) {
         private val TICK_COUNTER = LoopedCounter(ConfigCurses.yummySmell.effectRate)
 
         @SubscribeEvent
+        @JvmStatic
         fun serverTickEnd(event: TickEvent.ServerTickEvent) {
             if (event.phase == TickEvent.Phase.END)
                 TICK_COUNTER.tick()

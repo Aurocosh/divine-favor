@@ -14,12 +14,12 @@ import net.minecraftforge.fml.common.event.FMLServerStartingEvent
 import org.apache.logging.log4j.LogManager
 import org.apache.logging.log4j.Logger
 
-@Mod(modid = DivineFavor.MOD_ID, name = DivineFavor.MOD_NAME, dependencies = "required-after:patchouli;required:forgelin;required:autonetworklib@[1.0.36,)", modLanguageAdapter = "net.shadowfacts.forgelin.KotlinAdapter")
+@Mod(modid = DivineFavor.MOD_ID, name = DivineFavor.MOD_NAME, dependencies = "required-after:patchouli;required:forgelin_continuous;required:autonetworklib", modLanguageAdapter = "io.github.chaosunity.forgelin.KotlinAdapter")
+//@Mod(modid = DivineFavor.MOD_ID, name = DivineFavor.MOD_NAME, dependencies = "required-after:patchouli;required:forgelin;required:autonetworklib@[1.0.36,)", modLanguageAdapter = "net.shadowfacts.forgelin.KotlinAdapter")
 object DivineFavor {
     // Mod Constants
     const val MOD_ID = "divinefavor"
     const val MOD_NAME = "Divine Favor"
-//    const val MOD_DEPS = "required-after:patchouli;required:forgelin;required:autonetworklib@[1.0.36,)"
 
     const val KEYBIND_CATEGORY = "key.categories.$MOD_ID"
 

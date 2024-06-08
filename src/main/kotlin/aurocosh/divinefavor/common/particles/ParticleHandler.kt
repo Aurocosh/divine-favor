@@ -24,6 +24,7 @@ object ParticleHandler {
     }
 
     @SubscribeEvent
+    @JvmStatic
     fun onRenderLast(event: RenderWorldLastEvent) {
         val mc = Minecraft.getMinecraft()
         mc.profiler.func_194340_a(ResourceNamer.debugSection("particleRendering"))
@@ -34,6 +35,7 @@ object ParticleHandler {
     }
 
     @SubscribeEvent
+    @JvmStatic
     fun onClientTick(event: TickEvent.ClientTickEvent) {
         if (event.phase == TickEvent.Phase.END)
             particleManagers.forEach { it.updateParticles() }

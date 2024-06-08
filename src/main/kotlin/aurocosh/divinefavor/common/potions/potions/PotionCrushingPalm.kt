@@ -19,6 +19,7 @@ class PotionCrushingPalm : ModPotionToggleLimited("crushing_palm", 0x7FB8A4) {
 @Mod.EventBusSubscriber(modid = DivineFavor.MOD_ID)
 object CrushingPalm {
     @SubscribeEvent
+    @JvmStatic
     fun onPlayerLeftClickBlock(event: PlayerInteractEvent.LeftClickBlock) {
         val world = event.world
         if (world.isRemote)

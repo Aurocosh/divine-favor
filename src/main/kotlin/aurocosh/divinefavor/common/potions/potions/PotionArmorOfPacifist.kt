@@ -19,6 +19,7 @@ class PotionArmorOfPacifist : ModPotionToggle("armor_of_pacifist", 0x7FB8A4) {
     companion object {
 
         @SubscribeEvent
+        @JvmStatic
         fun onEntityDamaged(event: LivingDamageEvent) {
             protectPlayer(event)
             preventAttackFromPlayer(event)

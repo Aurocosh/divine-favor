@@ -41,6 +41,7 @@ class PotionNightEye : ModPotionToggle("night_eye", 0x7FB8A4) {
         private val TICK_COUNTER = LoopedCounter(TICK_RATE)
 
         @SubscribeEvent
+        @JvmStatic
         fun serverTickEnd(event: TickEvent.ServerTickEvent) {
             if (event.phase == TickEvent.Phase.END)
                 TICK_COUNTER.tick()

@@ -47,6 +47,7 @@ class PotionArrowDeflection : ModPotion("arrow_deflection", 0x7FB8A4) {
         private val RADIUS_SQ = ConfigSpell.arrowDeflection.radius * ConfigSpell.arrowDeflection.radius
 
         @SubscribeEvent(priority = EventPriority.LOWEST)
+        @JvmStatic
         fun onEntityDamaged(event: LivingDamageEvent) {
             val livingBase = event.entityLiving
             if (!livingBase.isPotionActive(ModPotions.arrow_deflection))

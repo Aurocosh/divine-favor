@@ -30,6 +30,7 @@ object WorldAreaWatcher {
     }
 
     @SubscribeEvent(priority = EventPriority.LOWEST)
+    @JvmStatic
     fun onBlockChanged(event: BlockEvent) {
         cleanup()
         val controllerSet = watchers[event.world] ?: return

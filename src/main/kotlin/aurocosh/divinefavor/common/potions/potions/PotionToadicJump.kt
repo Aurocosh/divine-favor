@@ -19,6 +19,7 @@ class PotionToadicJump : ModPotionToggleLimited("toadic_jump", 0x7FB8A4) {
 @Mod.EventBusSubscriber(modid = DivineFavor.MOD_ID)
 object ToadicJump {
     @SubscribeEvent
+    @JvmStatic
     fun onPlayerJump(event: LivingEvent.LivingJumpEvent) {
         val entity = event.entityLiving as? EntityPlayer ?: return
         if (!entity.isPotionActive(ModPotions.toadic_jump))

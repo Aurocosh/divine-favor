@@ -19,6 +19,7 @@ class PotionFallNegation : ModPotionCharge("fall_negation", 0x7FB8A4) {
 
     companion object {
         @SubscribeEvent
+        @JvmStatic
         fun onPlayerLand(event: LivingFallEvent) {
             val entity = event.entityLiving as? EntityPlayer ?: return
             if (!entity.isPotionActive(ModPotions.fall_negation))

@@ -12,6 +12,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent
 @Mod.EventBusSubscriber(modid = DivineFavor.MOD_ID)
 object BlockClickTracker {
     @SubscribeEvent(priority = EventPriority.LOWEST)
+    @JvmStatic
     fun onPlayerLeftClickBlock(event: PlayerInteractEvent.LeftClickBlock) {
         val world = event.world
         if (world.isRemote)

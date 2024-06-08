@@ -44,6 +44,7 @@ class PotionHollowLeg : ModPotion("hollow_leg", 0x7FB8A4) {
         private val COUNTER = LoopedCounter(ConfigCurses.hollowLeg.exaustionRate)
 
         @SubscribeEvent
+        @JvmStatic
         fun onItemUse(event: LivingEntityUseItemEvent.Finish) {
             val entity = event.entityLiving
             if (!entity.isPotionActive(ModCurses.hollow_leg))
@@ -56,6 +57,7 @@ class PotionHollowLeg : ModPotion("hollow_leg", 0x7FB8A4) {
         }
 
         @SubscribeEvent
+        @JvmStatic
         fun serverTickEnd(event: TickEvent.ServerTickEvent) {
             if (event.phase == TickEvent.Phase.END)
                 COUNTER.tick()

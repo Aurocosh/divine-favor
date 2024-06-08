@@ -1,26 +1,21 @@
 import org.gradle.internal.os.OperatingSystem
 
-buildscript {
-    ext.kotlin_version = kotlin_version
-    repositories {
-        maven { url = 'https://maven.minecraftforge.net/' }
-        mavenCentral()
-    }
-    dependencies {
-        classpath "net.minecraftforge.gradle:ForgeGradle:2.3-SNAPSHOT"
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:${kotlin_version}"
-    }
-}
-
 plugins {
-    id 'com.matthewprenger.cursegradle' version '1.2.0'
+    id 'org.jetbrains.gradle.plugin.idea-ext' version '1.1.7'
+    id 'com.gtnewhorizons.retrofuturagradle' version '1.3.27'
+    id 'com.matthewprenger.cursegradle' version '1.4.0'
+    id 'org.jetbrains.kotlin.jvm' version '1.9.24'
+    id 'org.jetbrains.kotlin.plugin.serialization' version '1.9.24'
 }
-
-apply plugin: 'net.minecraftforge.gradle.forge'
-apply plugin: 'kotlin'
-apply plugin: 'java'
 
 repositories {
+    maven {
+        name 'CurseMaven'
+        url 'https://cursemaven.com'
+        content {
+            includeGroup 'curse.maven'
+        }
+    }
     maven {
         // location of the maven that hosts JEI files
         name = "Progwml6 maven"
@@ -33,18 +28,20 @@ repositories {
     }
     maven { // TOP
         name 'tterrag maven'
-        url "http://maven.tterrag.com/"
+        url "https://maven.tterrag.com/"
     }
     maven { // Patchouli
         url 'https://maven.blamejared.com'
     }
     maven {
-        url "http://maven.shadowfacts.net/"
+        url "https://maven.cleanroommc.com"
     }
+
     maven {
         url 'https://repo.repsy.io/mvn/aurocosh/default'
     }
-    mavenCentral()
+
+    mavenLocal()
 }
 
 //logging.level = LogLevel.DEBUG
@@ -53,6 +50,7 @@ version = "${mod_version}.${generateVersionCode()}"
 def localDependencies = getEnvVar('LOCAL_DEPENDENCIES').toBoolean()
 
 println "Mod version: $version"
+println "Mod version: $version"
 println "Release type: $currentReleaseType"
 println "Local dependencies: $localDependencies"
 //println generateChangeLog('release')
@@ -60,50 +58,91 @@ println "Local dependencies: $localDependencies"
 group = mod_group
 archivesBaseName = mod_archives_base_name
 
-sourceCompatibility = 1.8
-targetCompatibility = 1.8
+// Set the toolchain version to decouple the Java we run Gradle with from the Java used to compile and run the mod
+java {
+    toolchain {
+        languageVersion.set(JavaLanguageVersion.of(8))
+        // Azul covers the most platforms for Java 8 toolchains, crucially including MacOS arm64
+        vendor.set(JvmVendorSpec.AZUL)
+    }
+    // Generate sources and javadocs jars when building and publishing
+//    withSourcesJar()
+//    withJavadocJar()
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+}
+
+configurations {
+    embed
+    implementation.extendsFrom(embed)
+}
 
 minecraft {
-    version = "${mc_sub_version}-${forge_version}"
-    runDir = "run"
-    mappings = mc_mappings
-    makeObfSourceJar = false
+    mcVersion = '1.12.2'
+
+    // MCP Mappings
+    mcpMappingChannel = 'stable'
+    mcpMappingVersion = '39'
+
+    // Set username here, the UUID will be looked up automatically
+    username = 'Aurocosh'
+
+    // Add any properties you want to swap out for a dynamic value at build time here
+    // Any properties here will be added to a class at build time, the name can be configured below
+    // Example:
+    injectedTags.put('VERSION', project.version)
+}
+
+// Generate a group.archives_base_name.Tags class
+tasks.injectTags.configure {
+    // Change Tags class' name here:
+    outputClassName.set("${mod_group}.${mod_archives_base_name.toLowerCase()}.Tags")
 }
 
 dependencies {
+    // Forgelin
+    implementation 'curse.maven:forgelin-continuous-456403:5361696'
+
+    // Kotlin
+    implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.9.24'
+    implementation 'org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.3'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.8.1'
+
     // compile against the JEI API but do not include it at runtime
-    deobfProvided "mezz.jei:jei_${mc_sub_version}:${jei_version}:api"
+    api rfg.deobf("mezz.jei:jei_${mc_sub_version}:${jei_version}:api")
     // at runtime, use the full JEI jar
-    runtime "mezz.jei:jei_${mc_sub_version}:${jei_version}"
+    runtimeOnly "mezz.jei:jei_${mc_sub_version}:${jei_version}"
 
-    compile "com.blamejared:MTLib:3.0.4.8"
-    compile "CraftTweaker2:CraftTweaker2-MC1120-Main:1.12-${ct_version}"
-    deobfCompile "team.chisel.ctm:CTM:MC${mc_sub_version}-${ctm_version}:api"
-
-    deobfCompile "vazkii.patchouli:Patchouli:${p_version}"
-
-    compile group: "net.shadowfacts", name: "Forgelin", version: "${forgelin_version}"
-    compile "org.jetbrains.kotlin:kotlin-stdlib:${kotlin_version}"
-    if (!localDependencies)
-        compile "aurocosh.autonetworklib:autonetworklib-${mc_sub_version}:${auto_network_version}"
-}
-
-processResources
-{
-    // this will ensure that this task is redone when the versions change.
-    inputs.property "version", project.version
-    inputs.property "mcversion", project.minecraft.version
-
-    // replace stuff in mcmod.info, nothing else
-    from(sourceSets.main.resources.srcDirs) {
-        include 'mcmod.info'
-        // replace version and mcversion
-        expand 'version': project.version, 'mcversion': project.minecraft.version
+    // CraftTweaker
+    implementation rfg.deobf("com.blamejared:MTLib:${mt_version}")
+    implementation(rfg.deobf("CraftTweaker2:CraftTweaker2-MC1120-Main:1.12-${ct_version}")) {
+        exclude module: "gson"
     }
 
-    // copy everything else, thats not the mcmod.info
-    from(sourceSets.main.resources.srcDirs) {
-        exclude 'mcmod.info'
+    // Chisel
+    api rfg.deobf("team.chisel.ctm:CTM:MC${mc_sub_version}-${ctm_version}:api")
+
+    // Patchouli
+    implementation rfg.deobf("vazkii.patchouli:Patchouli:${p_version}")
+
+//    if (!localDependencies)
+//        implementation "aurocosh.autonetworklib:autonetworklib-${mc_sub_version}:${auto_network_version}"
+}
+
+processResources {
+    // This will ensure that this task is redone when the versions change
+    inputs.property 'version', project.version
+    inputs.property 'mcversion', project.minecraft.version
+
+    // Replace various properties in mcmod.info and pack.mcmeta if applicable
+    filesMatching(['mcmod.info', 'pack.mcmeta']) { fcd ->
+        // Replace version and mcversion
+        fcd.expand (
+                'version': project.version,
+                'mcversion': project.minecraft.version
+        )
     }
 }
 
@@ -150,19 +189,8 @@ static def getEnvVar(varName,fallback = '') {
     def value = System.getenv(varName)
     return value ? value : fallback
 }
-
+//
 jar {
-}
-
-compileKotlin {
-    kotlinOptions {
-        jvmTarget = "1.8"
-    }
-}
-compileTestKotlin {
-    kotlinOptions {
-        jvmTarget = "1.8"
-    }
 }
 
 curseforge {
@@ -181,4 +209,41 @@ curseforge {
             optionalDependency 'max-potion-id-extender'
         }
     }
+}
+
+//
+//idea {
+//    module {
+//        inheritOutputDirs = true
+//    }
+//    project {
+//        settings {
+//            runConfigurations {
+//                "1. Run Client"(Gradle) {
+//                    taskNames = ["runClient"]
+//                }
+//                "2. Run Server"(Gradle) {
+//                    taskNames = ["runServer"]
+//                }
+//                "3. Run Obfuscated Client"(Gradle) {
+//                    taskNames = ["runObfClient"]
+//                }
+//                "4. Run Obfuscated Server"(Gradle) {
+//                    taskNames = ["runObfServer"]
+//                }
+//            }
+//            compiler.javac {
+//                afterEvaluate {
+//                    javacAdditionalOptions = "-encoding utf8"
+//                    moduleJavacAdditionalOptions = [
+//                            (project.name + ".main"): tasks.compileJava.options.compilerArgs.collect { '"' + it + '"' }.join(' ')
+//                    ]
+//                }
+//            }
+//        }
+//    }
+//}
+
+tasks.named("processIdeaSettings").configure {
+    dependsOn("injectTags")
 }

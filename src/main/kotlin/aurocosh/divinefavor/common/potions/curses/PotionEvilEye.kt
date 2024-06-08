@@ -39,8 +39,9 @@ class PotionEvilEye : ModPotion("evil_eye", 0x7FB8A4) {
     companion object {
         private val EVIL_EYE_BLUR_TEXTURE = ResourceLocation(ConstResources.GUI_EVIL_EYE_BLUR)
 
-        @SubscribeEvent
         @SideOnly(Side.CLIENT)
+        @SubscribeEvent
+        @JvmStatic
         fun onDraw(event: RenderGameOverlayEvent.Post) {
             if (event.type != RenderGameOverlayEvent.ElementType.ALL)
                 return

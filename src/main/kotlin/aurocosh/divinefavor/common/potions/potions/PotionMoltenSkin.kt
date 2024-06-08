@@ -47,6 +47,7 @@ class PotionMoltenSkin : ModPotionToggle("molten_skin", 0x7FB8A4) {
     companion object {
         @SideOnly(Side.CLIENT)
         @SubscribeEvent(priority = EventPriority.LOW, receiveCanceled = true)
+        @JvmStatic
         fun onFogDensity(event: EntityViewRenderEvent.FogDensity) {
             if (isInLavaWithMoltenSkin(event)) {
                 GlStateManager.setFog(GlStateManager.FogMode.EXP)
@@ -56,6 +57,7 @@ class PotionMoltenSkin : ModPotionToggle("molten_skin", 0x7FB8A4) {
         }
 
         @SubscribeEvent
+        @JvmStatic
         fun onEntityUpdate(event: LivingEvent.LivingUpdateEvent) {
             val entity = event.entityLiving ?: return
             if (!entity.isPotionActive(ModPotions.molten_skin))

@@ -17,6 +17,7 @@ import net.minecraftforge.fml.relauncher.SideOnly
 object EventInputHandler {
     @SideOnly(Side.CLIENT)
     @SubscribeEvent
+    @JvmStatic
     fun onKeyInput(@Suppress("UNUSED_PARAMETER") event: InputEvent.KeyInputEvent) {
         val mc = Minecraft.getMinecraft()
 

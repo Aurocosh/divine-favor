@@ -21,8 +21,9 @@ class PotionPrismaticEyes : ModPotionToggle("prismatic_eyes", 0x7FB8A4) {
     companion object {
         private val EVIL_PRISMATIC_EYES_TEXTURE = ResourceLocation(ConstResources.GUI_PRISMATIC_EYES_BLUR)
 
-        @SubscribeEvent
         @SideOnly(Side.CLIENT)
+        @SubscribeEvent
+        @JvmStatic
         fun onDraw(event: RenderGameOverlayEvent.Post) {
             if (event.type != RenderGameOverlayEvent.ElementType.ALL)
                 return

@@ -46,6 +46,7 @@ object DayClock {
     }
 
     @SubscribeEvent
+    @JvmStatic
     fun serverTickEnd(event: TickEvent.ServerTickEvent) {
         if (event.phase == TickEvent.Phase.END)
             return
@@ -107,6 +108,7 @@ object DayClock {
     }
 
     @SubscribeEvent
+    @JvmStatic
     fun onCommand(event: CommandEvent) {
         val command = event.command
         val name = command.name
@@ -115,6 +117,7 @@ object DayClock {
     }
 
     @SubscribeEvent
+    @JvmStatic
     fun onSleep(event: PlayerSleepInBedEvent) {
         syncTime()
     }

@@ -25,6 +25,7 @@ object EventClientTickHandler {
     private val refreshCounter = LoopedCounter(refreshPeriod);
 
     @SubscribeEvent
+    @JvmStatic
     fun onClientTick(event: TickEvent.ClientTickEvent) {
         if (!refreshCounter.tick())
             return
@@ -46,6 +47,7 @@ object EventClientTickHandler {
     }
 
     @SubscribeEvent
+    @JvmStatic
     fun onClientConnect(event: FMLNetworkEvent.ClientConnectedToServerEvent) {
         refreshCounter.count = refreshPeriod - connectRefreshDelay
     }

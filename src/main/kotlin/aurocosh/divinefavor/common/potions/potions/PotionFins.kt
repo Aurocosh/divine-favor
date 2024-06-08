@@ -14,6 +14,7 @@ class PotionFins : ModPotion("fins", 0x7FB8A4) {
         private val SPEED_MODIFIER = 0.14f
 
         @SubscribeEvent
+        @JvmStatic
         fun onEntityUpdate(event: LivingEvent.LivingUpdateEvent) {
             val entity = event.entityLiving ?: return
             if (!entity.isPotionActive(ModPotions.fins))

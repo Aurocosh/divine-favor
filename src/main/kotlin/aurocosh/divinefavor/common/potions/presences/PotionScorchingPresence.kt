@@ -27,6 +27,7 @@ class PotionScorchingPresence : ModPotion("scorching_presence", 0x7FB8A4) {
     companion object {
 
         @SubscribeEvent(priority = EventPriority.LOWEST)
+        @JvmStatic
         fun onEntityDamaged(event: LivingDamageEvent) {
             val source = event.source
             if (!(source === DamageSource.IN_FIRE) && !(source === DamageSource.ON_FIRE))

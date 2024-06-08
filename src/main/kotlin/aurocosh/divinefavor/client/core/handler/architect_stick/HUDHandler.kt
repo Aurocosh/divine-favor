@@ -15,8 +15,9 @@ import net.minecraftforge.fml.relauncher.SideOnly
 @SideOnly(Side.CLIENT)
 @Mod.EventBusSubscriber(modid = DivineFavor.MOD_ID, value = [Side.CLIENT])
 object HUDHandler {
-    @SubscribeEvent
     @SideOnly(Side.CLIENT)
+    @SubscribeEvent
+    @JvmStatic
     fun renderWorldLastEvent(event: RenderWorldLastEvent) {
         val player = DivineFavor.proxy.clientPlayer
         val stack = player.heldItemMainhand

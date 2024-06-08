@@ -37,6 +37,7 @@ class PotionConsumingFury : ModPotion("consuming_fury", 0x7FB8A4) {
         private val killCounts = HashMap<EntityPlayer, Int>()
 
         @SubscribeEvent
+        @JvmStatic
         fun onEntityDamaged(event: LivingDamageEvent) {
             val source = event.source as? EntityDamageSource ?: return
             val entity = source.trueSource as? EntityPlayer ?: return
@@ -46,6 +47,7 @@ class PotionConsumingFury : ModPotion("consuming_fury", 0x7FB8A4) {
         }
 
         @SubscribeEvent
+        @JvmStatic
         fun onEntityDeath(event: LivingDeathEvent) {
             val source = event.source as? EntityDamageSource ?: return
             val player = source.trueSource as? EntityPlayer ?: return

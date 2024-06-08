@@ -18,7 +18,9 @@ import net.minecraftforge.fml.relauncher.SideOnly
 @Mod.EventBusSubscriber(modid = DivineFavor.MOD_ID, value = [Side.CLIENT])
 object ModelHandler {
     @SubscribeEvent
-    fun onRegister(@Suppress("UNUSED_PARAMETER") event: ModelRegistryEvent) {
+    @JvmStatic
+    fun onRegister(event: ModelRegistryEvent) {
+
         ModRegistries.items.values.forEach(this::registerItemModel)
         ModRegistries.arrows.values.forEach(this::registerItemModel)
         ModRegistries.pickaxes.values.forEach(this::registerItemModel)

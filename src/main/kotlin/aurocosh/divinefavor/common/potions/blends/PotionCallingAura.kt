@@ -29,6 +29,7 @@ class PotionCallingAura : ModPotion("calling_aura", 0x7FB8A4) {
     companion object {
 
         @SubscribeEvent(priority = EventPriority.LOWEST)
+        @JvmStatic
         fun onPlaceEvent(event: BlockEvent.PlaceEvent) {
             val player = event.player
             if (!player.isPotionActive(ModBlendEffects.calling_aura))

@@ -56,6 +56,7 @@ class PotionCrawlingMist : ModPotion("crawling_mist", 0x7FB8A4) {
 
         @SideOnly(Side.CLIENT)
         @SubscribeEvent(priority = EventPriority.NORMAL, receiveCanceled = true)
+        @JvmStatic
         fun onFogColor(event: EntityViewRenderEvent.FogColors) {
             if (!isActive(event))
                 return
@@ -66,6 +67,7 @@ class PotionCrawlingMist : ModPotion("crawling_mist", 0x7FB8A4) {
 
         @SideOnly(Side.CLIENT)
         @SubscribeEvent(priority = EventPriority.NORMAL, receiveCanceled = true)
+        @JvmStatic
         fun onFogDensity(event: EntityViewRenderEvent.FogDensity) {
             if (isActive(event)) {
                 if (initFrames-- <= 0) {
@@ -84,6 +86,7 @@ class PotionCrawlingMist : ModPotion("crawling_mist", 0x7FB8A4) {
         }
 
         @SubscribeEvent
+        @JvmStatic
         fun serverTickEnd(event: TickEvent.ServerTickEvent) {
             if (event.phase == TickEvent.Phase.END)
                 CURE_COUNTER.tick()

@@ -24,6 +24,7 @@ object MultiblockWatcher {
     }
 
     @SubscribeEvent(priority = EventPriority.LOWEST)
+    @JvmStatic
     fun onBreakEvent(event: BlockEvent.BreakEvent) {
         val controllerSet = controllers[event.world] ?: return
         val controllers = controllerSet.toTypedArray()
@@ -37,6 +38,7 @@ object MultiblockWatcher {
     }
 
     @SubscribeEvent(priority = EventPriority.LOWEST)
+    @JvmStatic
     fun onPlaceEvent(event: BlockEvent.PlaceEvent) {
         val controllerSet = controllers[event.world] ?: return
         val controllers = controllerSet.toTypedArray()

@@ -62,6 +62,7 @@ class PotionIndustriousPresence : ModPotion("industrious_presence", 0x7FB8A4) {
         }
 
         @SubscribeEvent(priority = EventPriority.LOWEST)
+        @JvmStatic
         fun onBlockBroken(event: BlockEvent.BreakEvent) {
             val player = event.player
             if (!player.isPotionActive(ModBlessings.industrious_presence))
@@ -77,6 +78,7 @@ class PotionIndustriousPresence : ModPotion("industrious_presence", 0x7FB8A4) {
         }
 
         @SubscribeEvent
+        @JvmStatic
         fun serverTickEnd(event: TickEvent.ServerTickEvent) {
             if (event.phase == TickEvent.Phase.END)
                 TICK_COUNTER.tick()

@@ -20,6 +20,7 @@ class BladeTalismanVengeful(name: String, spirit: ModSpirit, favorCost: Int) : I
 
     companion object {
         @SubscribeEvent
+        @JvmStatic
         fun onEntityDamaged(event: LivingDamageEvent) {
             val player = event.entity as? EntityPlayer ?: return
             player.divinePlayerData.vengefulBladeData.lastDamage = event.amount

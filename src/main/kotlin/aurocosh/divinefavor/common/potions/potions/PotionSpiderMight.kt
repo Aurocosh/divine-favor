@@ -18,6 +18,7 @@ class PotionSpiderMight : ModPotionToggle("spider_might", 0x7FB8A4) {
         val CLIMB_SPEED = 0.288
 
         @SubscribeEvent
+        @JvmStatic
         fun onEntityDamaged(event: LivingDamageEvent) {
             val livingBase = event.entityLiving
             if (!livingBase.isPotionActive(ModPotions.spider_might))
@@ -38,6 +39,7 @@ class PotionSpiderMight : ModPotionToggle("spider_might", 0x7FB8A4) {
         }
 
         @SubscribeEvent
+        @JvmStatic
         fun onEntityUpdate(event: LivingEvent.LivingUpdateEvent) {
             val entity = event.entityLiving ?: return
             if (!entity.isPotionActive(ModPotions.spider_might))

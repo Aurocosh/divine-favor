@@ -23,6 +23,7 @@ class PotionMistBlade : ModPotionToggle("mist_blade", 0x7FB8A4) {
         private var intitFrames = FRAMES_TO_INIT_FOG
 
         @SubscribeEvent
+        @JvmStatic
         fun onEntityDamaged(event: LivingDamageEvent) {
             val source = event.source as? EntityDamageSource ?: return
             val entity = source.trueSource as? EntityPlayer ?: return
@@ -37,6 +38,7 @@ class PotionMistBlade : ModPotionToggle("mist_blade", 0x7FB8A4) {
 
         @SideOnly(Side.CLIENT)
         @SubscribeEvent(priority = EventPriority.NORMAL, receiveCanceled = true)
+        @JvmStatic
         fun onFogColors(event: EntityViewRenderEvent.FogColors) {
             if (!isMistBladeActive(event))
                 return
@@ -47,6 +49,7 @@ class PotionMistBlade : ModPotionToggle("mist_blade", 0x7FB8A4) {
 
         @SideOnly(Side.CLIENT)
         @SubscribeEvent(priority = EventPriority.NORMAL, receiveCanceled = true)
+        @JvmStatic
         fun onFogDensity(event: EntityViewRenderEvent.FogDensity) {
             if (isMistBladeActive(event)) {
                 if (intitFrames-- <= 0) {

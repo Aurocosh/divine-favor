@@ -28,6 +28,7 @@ class PotionMineralAura : ModPotion("mineral_aura", 0x7FB8A4) {
     companion object {
 
         @SubscribeEvent(priority = EventPriority.LOWEST)
+        @JvmStatic
         fun onBlockBroken(event: BlockEvent.BreakEvent) {
             val player = event.player
             if (!player.isPotionActive(ModBlendEffects.mineral_aura))

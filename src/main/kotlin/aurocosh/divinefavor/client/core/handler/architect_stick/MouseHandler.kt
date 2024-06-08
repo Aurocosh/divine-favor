@@ -17,6 +17,7 @@ import org.lwjgl.input.Keyboard
 @Mod.EventBusSubscriber(modid = DivineFavor.MOD_ID, value = [Side.CLIENT])
 object MouseHandler {
     @SubscribeEvent
+    @JvmStatic
     fun onMouseEvent(event: MouseEvent) {
         if (Keyboard.isKeyDown(Keyboard.KEY_LCONTROL))
             return

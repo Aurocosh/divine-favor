@@ -116,6 +116,7 @@ open class CommonProxy {
     companion object {
 
         @SubscribeEvent
+        @JvmStatic
         fun onConfigChangedEvent(event: ConfigChangedEvent.OnConfigChangedEvent) {
             if (event.modID == DivineFavor.MOD_ID)
                 ConfigManager.sync(DivineFavor.MOD_ID, Config.Type.INSTANCE)

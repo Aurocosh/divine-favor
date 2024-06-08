@@ -34,6 +34,7 @@ class PotionFieryMark : ModPotion("fiery_mark", 0x7FB8A4) {
     companion object {
 
         @SubscribeEvent(priority = EventPriority.LOWEST)
+        @JvmStatic
         fun onMobDeath(event: LivingDeathEvent) {
             val entity = event.entity as? EntityLivingBase ?: return
             if (entity.isPotionActive(ModCurses.fiery_mark))

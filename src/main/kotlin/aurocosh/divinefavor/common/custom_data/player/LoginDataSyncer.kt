@@ -17,16 +17,19 @@ import net.minecraftforge.fml.common.gameevent.PlayerEvent
 @Mod.EventBusSubscriber(modid = DivineFavor.MOD_ID)
 object LoginDataSyncer {
     @SubscribeEvent
+    @JvmStatic
     fun onPlayerLogin(event: PlayerEvent.PlayerLoggedInEvent) {
         syncData(event.player)
     }
 
     @SubscribeEvent
+    @JvmStatic
     fun onPlayerChangedDimension(event: PlayerEvent.PlayerChangedDimensionEvent) {
         syncData(event.player)
     }
 
     @SubscribeEvent
+    @JvmStatic
     fun onPlayerChangedDimension(event: PlayerEvent.PlayerRespawnEvent) {
         syncData(event.player)
     }

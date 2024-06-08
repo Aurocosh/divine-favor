@@ -33,6 +33,7 @@ class PotionVisceralAura : ModPotion("visceral_aura", 0x7FB8A4) {
     companion object {
 
         @SubscribeEvent(priority = EventPriority.LOWEST)
+        @JvmStatic
         fun onMobDeath(event: LivingDeathEvent) {
             if (!ModSpirits.squarefury.isActive)
                 return

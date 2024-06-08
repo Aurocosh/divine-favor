@@ -37,6 +37,7 @@ class PotionLimpLeg : ModPotion("limp_leg", 0x7FB8A4) {
     companion object {
 
         @SubscribeEvent
+        @JvmStatic
         fun onPlayerJump(event: LivingEvent.LivingJumpEvent) {
             val entity = event.entityLiving
             if (!entity.isPotionActive(ModCurses.limp_leg))

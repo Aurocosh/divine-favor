@@ -21,6 +21,7 @@ class PotionEmpowerPickaxe : ModPotion("empower_pickaxe", 0x7FB8A4) {
     companion object {
 
         @SubscribeEvent
+        @JvmStatic
         fun onPlayerLeftClickBlock(event: PlayerInteractEvent.LeftClickBlock) {
             val world = event.world
             if (world.isRemote)

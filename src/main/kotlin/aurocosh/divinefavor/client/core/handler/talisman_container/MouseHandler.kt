@@ -16,6 +16,7 @@ import net.minecraftforge.fml.relauncher.SideOnly
 @Mod.EventBusSubscriber(modid = DivineFavor.MOD_ID, value = [Side.CLIENT])
 object MouseHandler {
     @SubscribeEvent
+    @JvmStatic
     fun onMouseEvent(event: MouseEvent) {
         if (!KeyBindings.talismanScroll.isKeyDown)
             return

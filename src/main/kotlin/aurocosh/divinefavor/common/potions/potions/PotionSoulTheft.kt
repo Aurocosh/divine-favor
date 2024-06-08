@@ -23,6 +23,7 @@ class PotionSoulTheft : ModPotionToggle("soul_theft", 0x7FB8A4) {
         var EXTRA_DAMAGE = 6f
 
         @SubscribeEvent
+        @JvmStatic
         fun onEntityDamaged(event: LivingDamageEvent) {
             val source = event.source as? EntityDamageSource ?: return
             val entityAttacker = source.trueSource as? EntityLivingBase ?: return
