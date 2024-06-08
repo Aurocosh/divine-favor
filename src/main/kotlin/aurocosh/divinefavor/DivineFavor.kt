@@ -1,5 +1,6 @@
 package aurocosh.divinefavor
 
+import aurocosh.autonetworklib.network.serialization.serializer_provider.BufSerializerProvider
 import aurocosh.divinefavor.common.core.creative_tabs.DivineFavorCreativeTab
 import aurocosh.divinefavor.common.core.proxy.CommonProxy
 import aurocosh.divinefavor.common.item.common.*
@@ -14,8 +15,7 @@ import net.minecraftforge.fml.common.event.FMLServerStartingEvent
 import org.apache.logging.log4j.LogManager
 import org.apache.logging.log4j.Logger
 
-@Mod(modid = DivineFavor.MOD_ID, name = DivineFavor.MOD_NAME, dependencies = "required-after:patchouli;required:forgelin_continuous;required:autonetworklib", modLanguageAdapter = "io.github.chaosunity.forgelin.KotlinAdapter")
-//@Mod(modid = DivineFavor.MOD_ID, name = DivineFavor.MOD_NAME, dependencies = "required-after:patchouli;required:forgelin;required:autonetworklib@[1.0.36,)", modLanguageAdapter = "net.shadowfacts.forgelin.KotlinAdapter")
+@Mod(modid = DivineFavor.MOD_ID, name = DivineFavor.MOD_NAME, dependencies = "required-after:patchouli;required:forgelin_continuous", modLanguageAdapter = "io.github.chaosunity.forgelin.KotlinAdapter")
 object DivineFavor {
     // Mod Constants
     const val MOD_ID = "divinefavor"
@@ -44,6 +44,8 @@ object DivineFavor {
 
     @Mod.EventHandler
     fun preInit(event: FMLPreInitializationEvent) {
+        BufSerializerProvider.preInit()
+
         logger = LogManager.getLogger()
         container = Loader.instance().modObjectList.inverse()[instance] as ModContainer
 
