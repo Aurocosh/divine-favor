@@ -189,7 +189,7 @@ static def getEnvVar(varName,fallback = '') {
     def value = System.getenv(varName)
     return value ? value : fallback
 }
-//
+
 jar {
 }
 
@@ -200,9 +200,8 @@ curseforge {
         changelog = generateChangeLog(currentReleaseType)
         releaseType = currentReleaseType
         relations {
-            requiredDependency 'shadowfacts-forgelin'
+            requiredDependency 'forgelin_continuous'
             requiredDependency 'patchouli'
-            requiredDependency 'auto-network-lib'
             optionalDependency 'jei'
             optionalDependency 'crafttweaker'
             optionalDependency 'mtlib'
