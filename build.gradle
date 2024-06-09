@@ -47,12 +47,12 @@ repositories {
 }
 
 //logging.level = LogLevel.DEBUG
-def currentReleaseType = getReleaseType()
+//def currentReleaseType = getReleaseType()
 version = "${mod_version}.${generateVersionCode()}"
 def localDependencies = getEnvVar('LOCAL_DEPENDENCIES').toBoolean()
 
 println "Mod version: $version"
-println "Release type: $currentReleaseType"
+println "Release type: $release_type"
 println "Local dependencies: $localDependencies"
 //println generateChangeLog('release')
 
@@ -141,11 +141,11 @@ static def generateVersionCode() {
     return shExec("git rev-list HEAD --count").toInteger()
 }
 
-static def getReleaseType() {
-    def tags = shExec("git notes show", true, true)
-    def isRelease = tags.contains('release')
-    (isRelease) ? "release" : "beta"
-}
+//static def getReleaseType() {
+//    def tags = shExec("git notes show", true, true)
+//    def isRelease = tags.contains('release')
+//    (isRelease) ? "release" : "beta"
+//}
 
 static def generateChangeLog(releaseType) {
     def currentChange = shExec("git log --format=%B -n 1 HEAD")
@@ -185,8 +185,8 @@ curseforge {
     apiKey = getEnvVar('CURSEFORGE_API_KEY')
     project {
         id = curse_project_id
-        changelog = generateChangeLog(currentReleaseType)
-        releaseType = currentReleaseType
+        changelog = generateChangeLog(release_type)
+        releaseType = release_type
         relations {
             requiredDependency 'forgelin_continuous'
             requiredDependency 'patchouli'
