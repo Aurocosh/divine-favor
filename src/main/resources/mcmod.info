@@ -1,15 +1,15 @@
 [
-{
-  "modid": "divinefavor",
-  "name": "Divine Favor",
-  "description": "Divine Favor",
-  "version": "${version}",
-  "mcversion": "${mcversion}",
-  "url": "",
-  "updateUrl": "",
-  "authorList": ["Aurocosh"],
-  "credits": "Aurocosh",
-  "logoFile": "",
-  "screenshots": []
-}
+  {
+    "modid": "divinefavor",
+    "name": "Divine Favor",
+    "description": "Divine Favor",
+    "version": "${version}",
+    "mcversion": "${mcversion}",
+    "url": "",
+    "updateUrl": "",
+    "authorList": ["Aurocosh"],
+    "credits": "Aurocosh",
+    "logoFile": "",
+    "screenshots": []
+  }
 ]

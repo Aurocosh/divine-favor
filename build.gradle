@@ -1,14 +1,20 @@
 import org.gradle.internal.os.OperatingSystem
+import org.jetbrains.gradle.ext.Gradle
 
 plugins {
     id 'org.jetbrains.gradle.plugin.idea-ext' version '1.1.7'
-    id 'com.gtnewhorizons.retrofuturagradle' version '1.3.27'
+    id 'com.gtnewhorizons.retrofuturagradle' version '1.3.36'
     id 'com.matthewprenger.cursegradle' version '1.4.0'
     id 'org.jetbrains.kotlin.jvm' version '1.9.24'
     id 'org.jetbrains.kotlin.plugin.serialization' version '1.9.24'
 }
 
 repositories {
+    mavenCentral()
+    maven {
+        name = "forge"
+        url = "https://maven.minecraftforge.net/"
+    }
     maven {
         name 'CurseMaven'
         url 'https://cursemaven.com'
@@ -17,15 +23,19 @@ repositories {
         }
     }
     maven {
+        name 'CleanroomMC Maven'
+        url 'https://maven.cleanroommc.com'
+    }
+    maven {
         // location of the maven that hosts JEI files
         name = "Progwml6 maven"
         url = "https://dvs1.progwml6.com/files/maven/"
     }
-    maven {
-        // location of a maven mirror for JEI files, as a fallback
-        name = "ModMaven"
-        url = "https://modmaven.k-4u.nl"
-    }
+//    maven {
+//        // location of a maven mirror for JEI files, as a fallback
+//        name = "ModMaven"
+//        url = "https://modmaven.dev"
+//    }
     maven { // TOP
         name 'tterrag maven'
         url "https://maven.tterrag.com/"
@@ -33,14 +43,6 @@ repositories {
     maven { // Patchouli
         url 'https://maven.blamejared.com'
     }
-    maven {
-        url "https://maven.cleanroommc.com"
-    }
-
-    maven {
-        url 'https://repo.repsy.io/mvn/aurocosh/default'
-    }
-
     mavenLocal()
 }
 
@@ -49,7 +51,6 @@ def currentReleaseType = getReleaseType()
 version = "${mod_version}.${generateVersionCode()}"
 def localDependencies = getEnvVar('LOCAL_DEPENDENCIES').toBoolean()
 
-println "Mod version: $version"
 println "Mod version: $version"
 println "Release type: $currentReleaseType"
 println "Local dependencies: $localDependencies"
@@ -72,11 +73,6 @@ java {
 
 tasks.withType(JavaCompile).configureEach {
     options.encoding = 'UTF-8'
-}
-
-configurations {
-    embed
-    implementation.extendsFrom(embed)
 }
 
 minecraft {
@@ -185,9 +181,6 @@ static def getEnvVar(varName,fallback = '') {
     return value ? value : fallback
 }
 
-jar {
-}
-
 curseforge {
     apiKey = getEnvVar('CURSEFORGE_API_KEY')
     project {
@@ -205,38 +198,46 @@ curseforge {
     }
 }
 
-//
-//idea {
-//    module {
-//        inheritOutputDirs = true
-//    }
-//    project {
-//        settings {
-//            runConfigurations {
-//                "1. Run Client"(Gradle) {
-//                    taskNames = ["runClient"]
-//                }
-//                "2. Run Server"(Gradle) {
-//                    taskNames = ["runServer"]
-//                }
-//                "3. Run Obfuscated Client"(Gradle) {
-//                    taskNames = ["runObfClient"]
-//                }
-//                "4. Run Obfuscated Server"(Gradle) {
-//                    taskNames = ["runObfServer"]
-//                }
-//            }
-//            compiler.javac {
-//                afterEvaluate {
-//                    javacAdditionalOptions = "-encoding utf8"
-//                    moduleJavacAdditionalOptions = [
-//                            (project.name + ".main"): tasks.compileJava.options.compilerArgs.collect { '"' + it + '"' }.join(' ')
-//                    ]
-//                }
-//            }
-//        }
-//    }
-//}
+
+idea {
+    module {
+        inheritOutputDirs true
+        downloadJavadoc true
+        downloadSources true
+    }
+    project {
+        settings {
+            runConfigurations {
+                '1. Setup Workspace'(Gradle) {
+                    taskNames = ['setupDecompWorkspace']
+                }
+                '2. Run Client'(Gradle) {
+                    taskNames = ['runClient']
+                }
+                '3. Run Server'(Gradle) {
+                    taskNames = ['runServer']
+                }
+                '4. Run Obfuscated Client'(Gradle) {
+                    taskNames = ['runObfClient']
+                }
+                '5. Run Obfuscated Server'(Gradle) {
+                    taskNames = ['runObfServer']
+                }
+                '6. Build Jars'(Gradle) {
+                    taskNames = ['build']
+                }
+            }
+            compiler.javac {
+                afterEvaluate {
+                    javacAdditionalOptions = '-encoding utf8'
+                    moduleJavacAdditionalOptions = [
+                            (project.name + ".main"): tasks.compileJava.options.compilerArgs.collect { '"' + it + '"' }.join(' ')
+                    ]
+                }
+            }
+        }
+    }
+}
 
 tasks.named("processIdeaSettings").configure {
     dependsOn("injectTags")
