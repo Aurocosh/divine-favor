@@ -21,7 +21,8 @@ jobs:
 
     runs-on: ubuntu-latest
     permissions:
-      contents: read
+      # contents: read
+      contents: write
 
     steps:
     - name: Checkout repo
@@ -49,29 +50,25 @@ jobs:
     - name: Build with Gradle Wrapper
       run: ./gradlew build
 
+    - uses: Kir-Antipov/mc-publish@v3.3
+      with:
+        # Only include this section if you wish to publish
+        # your assets on Modrinth.
+        # modrinth-id: AANobbMI
+        # modrinth-token: ${{ secrets.MODRINTH_TOKEN }}
+
+        # Only include this section if you wish to publish
+        # your assets on CurseForge.
+        # curseforge-id: 394468
+        # curseforge-token: ${{ secrets.CURSEFORGE_TOKEN }}
+
+        # Only include this section if you wish to publish
+        # your assets on GitHub.
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+
     #- name: Publish on CurseForge
     #  run: ./gradlew curseforge
 
-    - name: Get commit count
-      id: get_commit_count  # Assign a unique ID to the step
-      run: |
-        commit_count=$(git rev-list HEAD --count)
-        echo "##@set-output name=commit_count::$commit_count"
-    
-    - name: Print commit count
-      run: |
-        echo "Commit Count: ${{ steps.get_commit_count.outputs.commit_count }}"
-
-    - name: Read release_type from gradle.properties
-      id: release_type
-      uses: Reedyuk/read-properties@v1.0.1
-      with:
-        path: './gradle.properties'
-        property: 'release_type'
-        
-    - name: Print release type
-      run: |
-        echo "Release type: ${{ steps.release_type.outputs.result  }}"
       
     # NOTE: The Gradle Wrapper is the default and recommended way to run Gradle (https://docs.gradle.org/current/userguide/gradle_wrapper.html).
     # If your project does not have the Gradle Wrapper configured, you can use the following configuration to run Gradle with a specified version.
