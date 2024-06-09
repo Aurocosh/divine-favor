@@ -65,6 +65,8 @@ jobs:
         # Only include this section if you wish to publish
         # your assets on GitHub.
         github-token: ${{ secrets.GITHUB_TOKEN }}
+        
+        files: build/libs/!(*-@(dev|sources|all)).jar
 
     #- name: Publish on CurseForge
     #  run: ./gradlew curseforge
