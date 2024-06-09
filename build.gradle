@@ -242,3 +242,17 @@ idea {
 tasks.named("processIdeaSettings").configure {
     dependsOn("injectTags")
 }
+
+tasks.register('printToGitHubActions') {
+    onlyIf { System.getenv().GITHUB_OUTPUT }
+    doLast {
+//        same as those in mc-publish
+        FileWriter fw = new FileWriter(System.getenv().GITHUB_OUTPUT)
+        fw.write("version=${project.version}\n")
+        fw.write("game_versions=${project.minecraft.version}\n")
+        fw.write("release_type=${release_type}\n")
+        fw.close()
+    }
+}
+
+tasks.build.finalizedBy(printToGitHubActions)
