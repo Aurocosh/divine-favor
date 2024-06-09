@@ -208,6 +208,7 @@ tasks.register('printToGitHubActions') {
         fw.write("version=${project.version}\n")
         fw.write("game_versions=${project.minecraft.version}\n")
         fw.write("release_type=${release_type}\n")
+        fw.write("github_tag=${mod_archives_base_name}-${project.version}\n")
         fw.write("name=Divine Favor ${project.version}\n")
         fw.close()
     }

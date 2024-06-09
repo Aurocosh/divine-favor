@@ -67,7 +67,7 @@ jobs:
         curseforge-token: ${{ secrets.CURSEFORGE_TOKEN }}
 
         # GitHub publishing
-        github-tag: ${{ steps.build.outputs.name }}
+        github-tag: ${{ steps.build.outputs.github_tag }}
         github-generate-changelog: true
         github-prerelease: false
         github-token: ${{ secrets.GITHUB_TOKEN }}
