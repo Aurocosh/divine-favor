@@ -53,8 +53,6 @@ def localDependencies = getEnvVar('LOCAL_DEPENDENCIES').toBoolean()
 
 println "Mod version: $version"
 println "Release type: $release_type"
-println "Local dependencies: $localDependencies"
-//println generateChangeLog('release')
 
 group = mod_group
 archivesBaseName = mod_archives_base_name
@@ -117,9 +115,6 @@ dependencies {
 
     // Patchouli
     implementation rfg.deobf("vazkii.patchouli:Patchouli:${p_version}")
-
-//    if (!localDependencies)
-//        implementation "aurocosh.autonetworklib:autonetworklib-${mc_sub_version}:${auto_network_version}"
 }
 
 processResources {
@@ -139,25 +134,6 @@ processResources {
 
 static def generateVersionCode() {
     return shExec("git rev-list HEAD --count").toInteger()
-}
-
-//static def getReleaseType() {
-//    def tags = shExec("git notes show", true, true)
-//    def isRelease = tags.contains('release')
-//    (isRelease) ? "release" : "beta"
-//}
-
-static def generateChangeLog(releaseType) {
-    def currentChange = shExec("git log --format=%B -n 1 HEAD")
-    if (releaseType == 'beta')
-        return currentChange
-
-    def logWithNotes = shExec("git log origin/master --format=%H_%N")
-    def matches = logWithNotes =~ '([0-9a-f]{5,40})_.*release'
-    def lastReleaseHash = matches[1][1]
-
-    def logFromPreviousBetas = shExec("git log --format=%s $lastReleaseHash..HEAD~1", true)
-    return "Last change:\n$currentChange\n\nChangelog from previous beta versions:\n$logFromPreviousBetas"
 }
 
 static def shExec(command, ignoreEmptyResult = false, ignoreErrors = false) {
@@ -180,24 +156,6 @@ static def getEnvVar(varName,fallback = '') {
     def value = System.getenv(varName)
     return value ? value : fallback
 }
-
-curseforge {
-    apiKey = getEnvVar('CURSEFORGE_API_KEY')
-    project {
-        id = curse_project_id
-        changelog = generateChangeLog(release_type)
-        releaseType = release_type
-        relations {
-            requiredDependency 'forgelin_continuous'
-            requiredDependency 'patchouli'
-            optionalDependency 'jei'
-            optionalDependency 'crafttweaker'
-            optionalDependency 'mtlib'
-            optionalDependency 'max-potion-id-extender'
-        }
-    }
-}
-
 
 idea {
     module {
@@ -246,7 +204,6 @@ tasks.named("processIdeaSettings").configure {
 tasks.register('printToGitHubActions') {
     onlyIf { System.getenv().GITHUB_OUTPUT }
     doLast {
-//        same as those in mc-publish
         FileWriter fw = new FileWriter(System.getenv().GITHUB_OUTPUT)
         fw.write("version=${project.version}\n")
         fw.write("game_versions=${project.minecraft.version}\n")
