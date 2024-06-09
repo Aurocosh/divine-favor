@@ -71,7 +71,7 @@ jobs:
         files: build/libs/!(*-@(dev|sources|all)).jar
 
         dependencies: |
-          forgelin_continuous(required)
+          forgelin-continuous(required)
           patchouli(required)
           jei(optional)
           crafttweaker(optional)
