@@ -50,6 +50,9 @@ jobs:
     - uses: Kir-Antipov/mc-publish@v3.3
       with:
         loaders: forge
+        version-type: beta
+        game-versions: 1.12.2
+        java: Java 1.8
         
         # Only include this section if you wish to publish
         # your assets on Modrinth.
@@ -66,6 +69,14 @@ jobs:
         # github-token: ${{ secrets.GITHUB_TOKEN }}
         
         # files: build/libs/!(*-@(dev|sources|all)).jar
+
+        dependencies: |
+          forgelin_continuous(required)
+          patchouli(required)
+          jei(optional)
+          crafttweaker(optional)
+          mtlib(optional)
+          max-potion-id-extender(optional)
 
     #- name: Publish on CurseForge
     #  run: ./gradlew curseforge
