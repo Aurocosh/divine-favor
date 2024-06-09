@@ -45,9 +45,11 @@ jobs:
       run: ./gradlew setupDecompWorkspace
       
     - name: Build with Gradle Wrapper
+      id: build
       run: ./gradlew build
 
-    - uses: Kir-Antipov/mc-publish@v3.3
+    - name: Publish mod
+      uses: Kir-Antipov/mc-publish@v3.3
       with:
         loaders: forge
 #        version-type: beta
@@ -70,6 +72,10 @@ jobs:
         # Only include this section if you wish to publish
         # your assets on GitHub.
         # github-token: ${{ secrets.GITHUB_TOKEN }}
+
+        github-tag: ${{ steps.build.outputs.github_tag }}
+        github-generate-changelog: true
+        github-token: ${{ secrets.GITHUB_TOKEN }}
         
         files: build/libs/!(*-@(dev|sources|all)).jar
 
@@ -81,10 +87,6 @@ jobs:
           mtlib(optional)
           max-potion-id-extender(optional)
 
-    #- name: Publish on CurseForge
-    #  run: ./gradlew curseforge
-
-      
     # NOTE: The Gradle Wrapper is the default and recommended way to run Gradle (https://docs.gradle.org/current/userguide/gradle_wrapper.html).
     # If your project does not have the Gradle Wrapper configured, you can use the following configuration to run Gradle with a specified version.
     #
