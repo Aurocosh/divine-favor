@@ -68,7 +68,7 @@ jobs:
         # your assets on GitHub.
         # github-token: ${{ secrets.GITHUB_TOKEN }}
         
-        # files: build/libs/!(*-@(dev|sources|all)).jar
+        files: build/libs/!(*-@(dev|sources|all)).jar
 
         dependencies: |
           forgelin_continuous(required)
