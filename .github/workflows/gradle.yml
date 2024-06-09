@@ -51,6 +51,7 @@ jobs:
       uses: Kir-Antipov/mc-publish@v3.3
       with:
         loaders: forge
+        name: ${{ steps.build.outputs.name }}
         version: ${{ steps.build.outputs.version }}
         version-type: ${{ steps.build.outputs.release_type }}
         game-versions: 1.12.2
@@ -66,7 +67,7 @@ jobs:
         curseforge-token: ${{ secrets.CURSEFORGE_TOKEN }}
 
         # GitHub publishing
-        github-tag: ${{ steps.build.outputs.github_tag }}
+        github-tag: ${{ steps.build.outputs.name }}
         github-generate-changelog: true
         github-prerelease: false
         github-token: ${{ secrets.GITHUB_TOKEN }}
