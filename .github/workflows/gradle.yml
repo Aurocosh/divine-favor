@@ -62,6 +62,7 @@ jobs:
         # curseforge-id: 394468
         # curseforge-token: ${{ secrets.CURSEFORGE_TOKEN }}
 
+        github-tag: ${{ github.ref }}
         # Only include this section if you wish to publish
         # your assets on GitHub.
         github-token: ${{ secrets.GITHUB_TOKEN }}
