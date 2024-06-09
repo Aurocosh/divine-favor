@@ -49,6 +49,8 @@ jobs:
 
     - uses: Kir-Antipov/mc-publish@v3.3
       with:
+        loaders: forge
+        
         # Only include this section if you wish to publish
         # your assets on Modrinth.
         # modrinth-id: AANobbMI
@@ -58,7 +60,7 @@ jobs:
         # your assets on CurseForge.
         curseforge-id: 322571
         curseforge-token: ${{ secrets.CURSEFORGE_TOKEN }}
-
+        
         # Only include this section if you wish to publish
         # your assets on GitHub.
         # github-token: ${{ secrets.GITHUB_TOKEN }}
