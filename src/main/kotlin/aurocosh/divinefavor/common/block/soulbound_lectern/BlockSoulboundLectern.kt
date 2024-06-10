@@ -38,15 +38,18 @@ class BlockSoulboundLectern(name: String, material: Material) : ModBlock(ConstBl
         creativeTab = DivineFavor.TAB_MAIN
     }
 
-    override fun getActualState(state: IBlockState, world: IBlockAccess?, pos: BlockPos): IBlockState {
-        val te = if (world is ChunkCache) world.getTileEntity(pos, Chunk.EnumCreateEntityType.CHECK) else world?.getTileEntity(pos)
+    @Deprecated("Deprecated in Java")
+    override fun getActualState(state: IBlockState, world: IBlockAccess, pos: BlockPos): IBlockState {
+        val te = if (world is ChunkCache) world.getTileEntity(pos, Chunk.EnumCreateEntityType.CHECK) else world.getTileEntity(pos)
         if (te is TileSoulboundLectern) {
             val soulboundLectern = te as TileSoulboundLectern?
             return state.withProperty(STATE, soulboundLectern!!.state).withProperty(GEM, soulboundLectern.gem)
         }
+        @Suppress("DEPRECATION")
         return super.getActualState(state, world, pos)
     }
 
+    @Deprecated("Deprecated in Java")
     override fun getStateForPlacement(worldIn: World, pos: BlockPos, facing: EnumFacing, hitX: Float, hitY: Float, hitZ: Float, meta: Int, placer: EntityLivingBase): IBlockState {
         return this.defaultState.withProperty(FACING, placer.horizontalFacing.opposite)
     }
@@ -55,6 +58,7 @@ class BlockSoulboundLectern(name: String, material: Material) : ModBlock(ConstBl
         return BlockStateContainer(this, FACING, STATE, GEM)
     }
 
+    @Deprecated("Deprecated in Java")
     override fun getStateFromMeta(meta: Int): IBlockState {
         var facing = EnumFacing.byIndex(meta and 7)
         if (facing.axis == EnumFacing.Axis.Y)
@@ -66,10 +70,10 @@ class BlockSoulboundLectern(name: String, material: Material) : ModBlock(ConstBl
         return state.getValue(FACING).index
     }
 
-    override fun onBlockActivated(world: World, pos: BlockPos?, state: IBlockState, player: EntityPlayer, hand: EnumHand, side: EnumFacing?, hitX: Float, hitY: Float, hitZ: Float): Boolean {
+    override fun onBlockActivated(world: World, pos: BlockPos, state: IBlockState, player: EntityPlayer, hand: EnumHand, side: EnumFacing, hitX: Float, hitY: Float, hitZ: Float): Boolean {
         if (world.isRemote)
             return true
-        val tileEntity = world.getTileEntity(pos!!) as? TileSoulboundLectern ?: return false
+        val tileEntity = world.getTileEntity(pos) as? TileSoulboundLectern ?: return false
         if (!tileEntity.isUsableByPlayer(player))
             return false
 
@@ -82,7 +86,7 @@ class BlockSoulboundLectern(name: String, material: Material) : ModBlock(ConstBl
         return true
     }
 
-    override fun createNewTileEntity(world: World?, meta: Int): TileEntity? {
+    override fun createNewTileEntity(world: World, meta: Int): TileEntity {
         return TileSoulboundLectern()
     }
 
