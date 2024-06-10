@@ -40,9 +40,6 @@ jobs:
     - name: Grant execute permission for gradlew
       run: chmod +x ./gradlew
 
-#    - name: Setup decompilation workspace
-#      run: ./gradlew setupDecompWorkspace
-      
     - name: Build with Gradle Wrapper
       id: build
       run: ./gradlew build

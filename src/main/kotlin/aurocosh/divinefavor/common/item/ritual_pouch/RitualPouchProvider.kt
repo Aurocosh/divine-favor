@@ -1,5 +1,6 @@
 package aurocosh.divinefavor.common.item.ritual_pouch
 
+import net.minecraft.item.ItemStack
 import net.minecraft.nbt.NBTTagCompound
 import net.minecraft.util.EnumFacing
 import net.minecraftforge.common.capabilities.Capability
@@ -9,7 +10,9 @@ import net.minecraftforge.items.CapabilityItemHandler
 import net.minecraftforge.items.ItemStackHandler
 
 class RitualPouchProvider : ICapabilityProvider, ICapabilitySerializable<NBTTagCompound> {
-    private val inventory: ItemStackHandler = ItemStackHandler(ItemRitualPouch.InventorySize)
+    private val inventory: ItemStackHandler =  object : ItemStackHandler(ItemRitualPouch.InventorySize) {
+        override fun isItemValid(slot: Int, stack: ItemStack) = stack.item !is ItemRitualPouch
+    }
 
     override fun serializeNBT(): NBTTagCompound {
         return inventory.serializeNBT()
