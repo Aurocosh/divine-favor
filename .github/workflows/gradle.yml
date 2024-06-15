@@ -59,8 +59,7 @@ jobs:
 
     # Separate CurseForge and Modrinth uploads due to dependency difference
     - name: Publish mod on CurseForge (Optional)
-#      if: ${{ steps.build.outputs.publish_mod == 'true' }}
-      if: ${{ false }} # Temporarily disable CurseForge uploads
+      if: ${{ steps.build.outputs.publish_mod == 'true' }}
       uses: Kir-Antipov/mc-publish@v3.3
       with:
         loaders: forge
