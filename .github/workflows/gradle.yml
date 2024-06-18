@@ -44,21 +44,7 @@ jobs:
       id: build
       run: ./gradlew build
 
-    - name: Publish mod on Github (Optional)
-      if: ${{ steps.build.outputs.publish_mod == 'true' }}
-      uses: Kir-Antipov/mc-publish@v3.3
-      with:
-        changelog: ${{ github.event.head_commit.message }}
-        files: build/libs/!(*-@(dev|sources|all)).jar
-
-        # GitHub publishing
-        github-tag: ${{ steps.build.outputs.github_tag }}
-        github-generate-changelog: true
-        github-prerelease: false
-        github-token: ${{ secrets.GITHUB_TOKEN }}
-
-    # Separate CurseForge and Modrinth uploads due to dependency difference
-    - name: Publish mod on CurseForge (Optional)
+    - name: Publish mod on CurseForge, Modrinth and Github (Optional)
       if: ${{ steps.build.outputs.publish_mod == 'true' }}
       uses: Kir-Antipov/mc-publish@v3.3
       with:
@@ -70,10 +56,6 @@ jobs:
         java: Java 1.8
         changelog: ${{ github.event.head_commit.message }}
         files: build/libs/!(*-@(dev|sources|all)).jar
-
-        # CurseForge publishing
-        curseforge-id: 322571
-        curseforge-token: ${{ secrets.CURSEFORGE_TOKEN }}
 
         dependencies: |
           forgelin-continuous(required)
@@ -83,31 +65,19 @@ jobs:
           mtlib(optional)
           max-potion-id-extender(optional)
 
-      # Separate CurseForge and Modrinth uploads due to dependency difference
-    - name: Publish mod on Modrinth (Optional)
-      if: ${{ steps.build.outputs.publish_mod == 'true' }}
-      uses: Kir-Antipov/mc-publish@v3.3
-      with:
-        loaders: forge
-        name: ${{ steps.build.outputs.name }}
-        version: ${{ steps.build.outputs.version }}
-        version-type: ${{ steps.build.outputs.release_type }}
-        game-versions: 1.12.2
-        java: Java 1.8
-        changelog: ${{ github.event.head_commit.message }}
-        files: build/libs/!(*-@(dev|sources|all)).jar
+        # CurseForge publishing
+        curseforge-id: 322571
+        curseforge-token: ${{ secrets.CURSEFORGE_TOKEN }}
 
         # Modrinth publishing
         modrinth-id: rT6tg86B
         modrinth-token: ${{ secrets.MODRINTH_TOKEN }}
 
-        dependencies: |
-          forgelin-continuous(required)
-          patchouli(required)
-          jei(optional)
-          crafttweaker(optional)
-          mtlib(optional)
-#          max-potion-id-extender(optional) # Not available on Modrinth at the moment
+        # GitHub publishing
+        github-tag: ${{ steps.build.outputs.github_tag }}
+        github-generate-changelog: true
+        github-prerelease: false
+        github-token: ${{ secrets.GITHUB_TOKEN }}
 
     # NOTE: The Gradle Wrapper is the default and recommended way to run Gradle (https://docs.gradle.org/current/userguide/gradle_wrapper.html).
     # If your project does not have the Gradle Wrapper configured, you can use the following configuration to run Gradle with a specified version.
